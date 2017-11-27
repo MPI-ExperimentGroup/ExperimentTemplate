@@ -16,15 +16,15 @@
     </presenter>
     <presenter displayOrder="2" menuLabel="Accord" next="stimuliScreen" type="metadata" self="Accord" title="Accord">
         <htmlText featureText="Welkom bij dit experiment!&lt;br/&gt;&lt;br/&gt;
-In dit experiment krijg je een aantal woorden aangeboden. Sommige zijn bestaande Nederlands woorden en sommige zijn nepwoorden.&lt;br/&gt;
-Geef voor elk woord aan of het een woord is dat jij kent of niet.&lt;br/&gt;&lt;br/&gt;
-Rechter knop: JA, ik ken dit woord&lt;br/&gt;
-Linker knop: NEE, ik ken dit woord niet&lt;br/&gt;&lt;br/&gt;
+In dit experiment krijg je een aantal woorden aangeboden. Sommige zijn bestaande Nederlandse woorden en sommige zijn nepwoorden.&lt;br/&gt;
+Geef voor elk woord met een muisklik aan of jij het woord kent of niet.&lt;br/&gt;&lt;br/&gt;
+Rechts: : JA, ik ken dit woord&lt;br/&gt;
+Links: NEE, ik ken dit woord niet&lt;br/&gt;&lt;br/&gt;
 Let op: zeg geen ja bij woorden die je niet kent, omdat ja-antwoorden voor nepwoorden streng bestraft worden.&lt;br/&gt;&lt;br/&gt;
 Veel succes!"/>
         <targetButton featureText="Begin experiment" target="stimuliScreen"/>
     </presenter>
-    <presenter displayOrder="9" menuLabel="stimuliN" next="EditUser" type="stimulus" self="stimuliScreen" title="stimuliScreen">
+    <presenter displayOrder="9" menuLabel="stimuliN" next="End" type="stimulus" self="stimuliScreen" title="stimuliScreen">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider"  repeatRandomWindow="0" eventTag="stimuliN" randomise="false" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
@@ -41,27 +41,17 @@ Veel succes!"/>
                 <sendStimuliReport type="fast_track" />
                 <sendStimuliReport type="fine_tuning" />
                 <showStimuliReport/>
-                <targetButton featureText="Volgende" target="EditUser"/>
+                <targetButton featureText="Volgende" target="End"/>
                 <!--                <autoNextPresenter/>-->
             </endOfStimulus>
             <randomGrouping/>
             <stimuli/>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="10" menuLabel="EditUser" next="End" type="metadata" self="EditUser" title="EditUser">
-        <htmlText featureText="Wat denk je over dit experiment?"/>
-        <metadataField fieldName="feedBack"/>
-        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
-            <onError/>
-            <onSuccess>
-                <autoNextPresenter/>
-            </onSuccess>
-        </saveMetadataButton>
-    </presenter>
-    <presenter displayOrder="11" menuLabel="End" type="transmission" self="End" title="End">
+    <presenter displayOrder="10" menuLabel="End" type="transmission" self="End" title="End">
         <sendAllData>
             <onSuccess>
-                <htmlText featureText="Gedaan! Heel erg bedankt voor het deelnemen!"/>-->
+                <htmlText featureText="Einde van de taak. Dankjewel voor je deelname!"/>-->
                 <addPadding/>
 <!--                <generateCompletionCode/>-->
                 <addPadding/>
