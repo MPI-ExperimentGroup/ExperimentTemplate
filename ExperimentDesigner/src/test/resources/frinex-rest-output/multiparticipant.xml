@@ -151,7 +151,7 @@
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                                     <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <addPadding/>
-                                        <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                        <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                         <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                                     </stimulusImage>
                                 </conditionFalse>
@@ -215,7 +215,7 @@
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                                     <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <addPadding/>
-                                        <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                        <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                         <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                                     </stimulusImage>
                                 </conditionFalse>
@@ -279,7 +279,7 @@
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                                     <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <addPadding/>
-                                        <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                        <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                         <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                                     </stimulusImage>
                                 </conditionFalse>
@@ -338,7 +338,7 @@
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -458,7 +458,7 @@
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -578,7 +578,7 @@
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -698,7 +698,7 @@
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -818,7 +818,7 @@
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -938,7 +938,7 @@
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -1058,7 +1058,7 @@
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -1176,7 +1176,7 @@
                             <htmlText featureText="&amp;nbsp;"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -1224,7 +1224,7 @@
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                                     <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <addPadding/>
-                                        <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                        <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                         <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                                     </stimulusImage>
                                 </conditionFalse>
@@ -1288,7 +1288,7 @@
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                                     <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <addPadding/>
-                                        <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                        <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                         <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                                     </stimulusImage>
                                 </conditionFalse>
@@ -1352,7 +1352,7 @@
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                                     <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <addPadding/>
-                                        <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                        <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                         <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                                     </stimulusImage>
                                 </conditionFalse>
@@ -1411,7 +1411,7 @@
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -1531,7 +1531,7 @@
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -1651,7 +1651,7 @@
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -1771,7 +1771,7 @@
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -1891,7 +1891,7 @@
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -2011,7 +2011,7 @@
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -2131,7 +2131,7 @@
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -2249,7 +2249,7 @@
                             <htmlText featureText="&amp;nbsp;"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -2292,7 +2292,7 @@
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -2412,7 +2412,7 @@
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -2532,7 +2532,7 @@
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -2652,7 +2652,7 @@
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -2772,7 +2772,7 @@
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -2892,7 +2892,7 @@
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -3012,7 +3012,7 @@
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
@@ -3130,7 +3130,7 @@
                             <htmlText featureText="&amp;nbsp;"/>
                             <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
-                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm]{2,} ?){1,}" inputErrorMessage=" "/>
+                                <stimulusFreeText featureText=" " hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="([wetuiopasfghknm] )?([wetuiopasfghknm]{2,} ?[wetuiopasfghknm]?){1,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
                             </stimulusImage>
                         </groupNetworkActivity>
