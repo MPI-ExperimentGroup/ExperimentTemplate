@@ -196,6 +196,7 @@ public class TimedStimulusView extends ComplexView {
                     event.getNativeEvent().preventDefault();
                     enterKeyListner.eventFired();
                     errorLabel.setVisible(false);
+                    textBox.setStylePrimaryName("metadataOK");
                 } else if (allowedCharCodes != null) {
                     final int maxLength = 27;
                     if (0 > allowedCharCodes.indexOf(charCode) || textBox.getText().length() > maxLength) {
@@ -205,6 +206,7 @@ public class TimedStimulusView extends ComplexView {
 //                            final String messageString = "The key '<keycode>' is not allowed. " + validationChallenge;
                             errorLabel.setText(keyCodeChallenge.replace("<keycode>", "" + charCode) + validationChallenge);
                             errorLabel.setVisible(true);
+                            textBox.setStylePrimaryName("metadataError");
                         } else {
                             final int cursorPos = textBox.getCursorPos();
                             String pretext = textBox.getText().substring(0, cursorPos);
@@ -212,12 +214,15 @@ public class TimedStimulusView extends ComplexView {
                             textBox.setText(pretext + invertedCaseCode + posttext);
                             textBox.setCursorPos(cursorPos + 1);
                             errorLabel.setVisible(false);
+                            textBox.setStylePrimaryName("metadataOK");
                         }
                     } else {
                         errorLabel.setVisible(false);
+                        textBox.setStylePrimaryName("metadataOK");
                     }
                 } else {
                     errorLabel.setVisible(false);
+                    textBox.setStylePrimaryName("metadataOK");
                 }
             }
         });
