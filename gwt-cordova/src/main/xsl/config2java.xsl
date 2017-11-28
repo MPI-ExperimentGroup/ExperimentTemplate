@@ -362,7 +362,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         </xsl:text>
     </xsl:template>
     <!--it should be possible to merge the two following templates into one-->
-    <xsl:template match="stimulusButton|targetButton|actionButton|targetFooterButton|actionFooterButton"> 
+    <xsl:template match="touchInputStimulusButton|stimulusButton|targetButton|actionButton|targetFooterButton|actionFooterButton"> 
         <xsl:value-of select="local-name()"/>
         <xsl:text>(new PresenterEventListner() {
 
@@ -398,6 +398,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>
             }
             }</xsl:text>
+        <xsl:value-of select="if(local-name() eq 'touchInputStimulusButton') then concat(', &quot;', @eventTag, '&quot;') else ''" />
         <xsl:value-of select="if(local-name() eq 'targetFooterButton' or local-name() eq 'actionFooterButton') then '' else if(@styleName) then concat(', &quot;', @styleName, '&quot;') else ', null'" />
         <xsl:text>);
         </xsl:text>
