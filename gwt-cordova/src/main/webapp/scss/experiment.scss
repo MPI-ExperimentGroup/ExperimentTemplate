@@ -372,8 +372,9 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
 }
 .gwt-Button.optionButton.leftOverlayButton.optionButtonActivated,
 .gwt-Button.optionButton.rightOverlayButton.optionButtonActivated,
-.gwt-Button.optionButton.rightOverlayButton:hover, .gwt-Button.optionButton.leftOverlayButton:hover,
-.gwt-Button.optionButton.rightOverlayButton:active, .gwt-Button.optionButton.leftOverlayButton:active,
+/*.gwt-Button.optionButton.rightOverlayButton:hover, .gwt-Button.optionButton.leftOverlayButton:hover,*/
+/*.gwt-Button.optionButton.rightOverlayButton:active, .gwt-Button.optionButton.leftOverlayButton:active,*/
+.gwt-Button.optionButton.rightOverlayButtonIntersection, .gwt-Button.optionButton.leftOverlayButtonIntersection,
 {
     opacity: 0.5;
 }
