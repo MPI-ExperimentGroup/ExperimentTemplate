@@ -48,6 +48,7 @@ import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.TouchInputCapture;
+import nl.mpi.tg.eg.experiment.client.listener.TouchInputZone;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
@@ -1046,6 +1047,36 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         } else {
             incorrectListener.postLoadTimerFired();
         }
+    }
+
+    public void touchInputStimulusButton(final PresenterEventListner presenterListerner, final String eventTag, final String styleName) {
+        final ButtonBase buttonItem = ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName);
+        buttonList.add(buttonItem);
+        touchInputCapture.addTouchZone(new TouchInputZone() {
+            @Override
+            public String getEventTag() {
+                return eventTag;
+            }
+
+            @Override
+            public boolean intersects(int xPos, int yPos) {
+                boolean returnValue = (yPos >= buttonItem.getAbsoluteTop()
+                        && yPos <= buttonItem.getAbsoluteTop() + buttonItem.getOffsetHeight()
+                        && xPos >= buttonItem.getAbsoluteLeft()
+                        && xPos <= buttonItem.getAbsoluteLeft() + buttonItem.getOffsetWidth());
+                if (returnValue) {
+                    buttonItem.addStyleName(styleName + "Intersection");
+                } else {
+                    buttonItem.removeStyleName(styleName + "Intersection");
+                }
+                return returnValue;
+            }
+
+            @Override
+            public void triggerEvent() {
+                presenterListerner.eventFired(null, null);
+            }
+        });
     }
 
     public void stimulusButton(final PresenterEventListner presenterListerner, String styleName) {
