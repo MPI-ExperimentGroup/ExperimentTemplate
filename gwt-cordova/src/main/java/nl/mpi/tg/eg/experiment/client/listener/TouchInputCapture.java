@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.listener;
 
+import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.dom.client.Touch;
 import com.google.gwt.event.dom.client.HandlesAllTouchEvents;
@@ -27,6 +28,7 @@ import com.google.gwt.event.dom.client.TouchEndEvent;
 import com.google.gwt.event.dom.client.TouchEvent;
 import com.google.gwt.event.dom.client.TouchMoveEvent;
 import com.google.gwt.event.dom.client.TouchStartEvent;
+import java.util.ArrayList;
 
 /**
  * @since Oct 23, 2017 2:10:09 PM (creation date)
@@ -35,14 +37,29 @@ import com.google.gwt.event.dom.client.TouchStartEvent;
 public abstract class TouchInputCapture extends HandlesAllTouchEvents implements MouseMoveHandler {
 
     private final StringBuilder recordedTouches = new StringBuilder();
+    private final ArrayList<TouchInputZone> touchZones = new ArrayList<>();
+    private final Duration duration = new Duration();
 
     public abstract void setDebugLabel(String debugLabel);
 
     private void appendTouch(int xPos, int yPos) {
+        recordedTouches.append(duration.elapsedMillis());
+        recordedTouches.append(",");
         recordedTouches.append(xPos);
         recordedTouches.append(",");
         recordedTouches.append(yPos);
-        recordedTouches.append(" ");
+        recordedTouches.append(",");
+        for (TouchInputZone zone : touchZones) {
+            if (zone.intersects(xPos, yPos)) {
+                recordedTouches.append(zone.getEventTag());
+            }
+            recordedTouches.append(",");
+        }
+        recordedTouches.append("\n");
+    }
+
+    public void addTouchZone(TouchInputZone touchZone) {
+        touchZones.add(touchZone);
     }
 
     private void recordTouches(TouchEvent event) {
