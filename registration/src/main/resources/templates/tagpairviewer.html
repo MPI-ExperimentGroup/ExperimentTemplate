@@ -59,22 +59,30 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <td th:text="${prod.eventTag}">eventTag</td>
                     <td th:text="${prod.tagValue1}">tagValue1</td>
                     <td th:if="${prod.eventTag ne 'touchInputReport'}" th:text="${prod.tagValue2}">tagValue2</td>
-                    <td th:if="${prod.eventTag eq 'touchInputReport'}"><span th:text="${prod.tagValue2.length()}"></span>
+                    <td th:if="${prod.eventTag eq 'touchInputReport'}">
+                        <!--<span th:text="${prod.tagValue2.length()}"></span>-->
                         <svg xmlns="http://www.w3.org/2000/svg" th:id="${'svg_'+prodIndex.index}" version="1.1" width="100" height="100"></svg>
                         <script th:inline="javascript">
                             /*<![CDATA[*/
                             var touchData = /*[[${prod.tagValue2}]]*/ '';
                             var svgTagId = /*[[${'#svg_'+prodIndex.index}]]*/ '';
 //                            $(svgTagId).mouseover(function () {
-                            var maxWidth = -1;
-                            var maxHeight = -1;
+                            var scaleFactor = -1;
                             var maxMs = -1;
                             $.each(touchData.split("\n"), function (lineIndex, lineString) {
                                 var lineParts = lineString.split(",");
-                                if (maxWidth === -1) {
-                                    maxWidth = lineParts[1];
-                                    maxHeight = lineParts[2];
+                                if (scaleFactor === -1) {
+                                    var maxWidth = lineParts[1];
+                                    var maxHeight = lineParts[2];
                                     maxMs = lineParts[0];
+                                    scaleFactor = (maxWidth > maxHeight) ? maxWidth : maxHeight;
+                                    $(svgTagId).append($(document.createElementNS('http://www.w3.org/2000/svg', 'rect'))
+                                            .attr({
+                                                width: (maxWidth / scaleFactor * 100),
+                                                height: (maxHeight / scaleFactor * 100),
+                                                r: 1,
+                                                fill: 'grey'
+                                            }));
                                 } else if (lineParts.length > 2) {
                                     var dotColour = 'green';
                                     var partIndex;
@@ -85,8 +93,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                     }
                                     $(svgTagId).append($(document.createElementNS('http://www.w3.org/2000/svg', 'circle'))
                                             .attr({
-                                                cx: (lineParts[1] / maxWidth * 100),
-                                                cy: (lineParts[2] / maxHeight * 100),
+                                                cx: (lineParts[1] / scaleFactor * 100),
+                                                cy: (lineParts[2] / scaleFactor * 100),
                                                 r: 1,
                                                 fill: dotColour
                                             }));
