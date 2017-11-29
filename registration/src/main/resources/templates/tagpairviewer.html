@@ -50,7 +50,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="prod : ${allTagPairData}">
+                <tr th:each="prod,prodIndex : ${allTagPairData}">
                     <!--<td th:text="${prod.id}">id</td>-->
                     <td th:text="${prod.userId}" id="clickablerow" th:onclick="'javascript:window.location=\'participantdetail?id=' + ${prod.userId} + '\';'">userId</td>
                     <!--<td th:text="${prod.submitDate}">submitDate</td>-->
@@ -58,7 +58,44 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     <td th:text="${prod.screenName}">screenName</td>
                     <td th:text="${prod.eventTag}">eventTag</td>
                     <td th:text="${prod.tagValue1}">tagValue1</td>
-                    <td th:text="${prod.tagValue2}">tagValue2</td>
+                    <td th:if="${prod.eventTag ne 'touchInputReport'}" th:text="${prod.tagValue2}">tagValue2</td>
+                    <td th:if="${prod.eventTag eq 'touchInputReport'}"><span th:text="${prod.tagValue2.length()}"></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" th:id="${'svg_'+prodIndex.index}" version="1.1" width="100" height="100"></svg>
+                        <script th:inline="javascript">
+                            /*<![CDATA[*/
+                            var touchData = /*[[${prod.tagValue2}]]*/ '';
+                            var svgTagId = /*[[${'#svg_'+prodIndex.index}]]*/ '';
+//                            $(svgTagId).mouseover(function () {
+                            var maxWidth = -1;
+                            var maxHeight = -1;
+                            var maxMs = -1;
+                            $.each(touchData.split("\n"), function (lineIndex, lineString) {
+                                var lineParts = lineString.split(",");
+                                if (maxWidth === -1) {
+                                    maxWidth = lineParts[1];
+                                    maxHeight = lineParts[2];
+                                    maxMs = lineParts[0];
+                                } else if (lineParts.length > 2) {
+                                    var dotColour = 'green';
+                                    var partIndex;
+                                    for (partIndex = 3; partIndex < lineParts.length; partIndex++) {
+                                        if (lineParts[partIndex].length > 0) {
+                                            dotColour = 'blue';
+                                        }
+                                    }
+                                    $(svgTagId).append($(document.createElementNS('http://www.w3.org/2000/svg', 'circle'))
+                                            .attr({
+                                                cx: (lineParts[1] / maxWidth * 100),
+                                                cy: (lineParts[2] / maxHeight * 100),
+                                                r: 1,
+                                                fill: dotColour
+                                            }));
+                                }
+                            });
+//                            });
+                            /*]]>*/
+                        </script>
+                    </td>
                     <td th:text="${prod.eventMs}">eventMs</td>
                     <td th:text="${prod.tagDate}">tagDate</td>
                 </tr>
