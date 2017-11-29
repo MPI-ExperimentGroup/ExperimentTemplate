@@ -43,7 +43,10 @@ public class TagPairData {
     private String screenName;
     private String eventTag;
     private String tagValue1;
-    @Column(length = 4096)
+//    @Column(length = 8192)
+//    @Column(length = 16384)
+//    @Column(length = 32768)
+    @Column(length = 63536)
     private String tagValue2;
     private String userId;
     private int eventMs;
