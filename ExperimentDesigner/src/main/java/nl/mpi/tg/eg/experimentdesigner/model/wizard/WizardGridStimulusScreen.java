@@ -335,8 +335,8 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 //        nextStimulusL.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusL");
 //        nextStimulusL.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
 //        touchInputZoneL.getPresenterFeatureList().add(nextStimulusL);
-        final PresenterFeature leftOverlayButton = new PresenterFeature(FeatureType.stimulusButton, "Left Overlay Button");
-        leftOverlayButton.addFeatureAttributes(FeatureAttribute.eventTag, "Left Overlay Button");
+        final PresenterFeature leftOverlayButton = new PresenterFeature(FeatureType.touchInputStimulusButton, "Left Overlay Button");
+        leftOverlayButton.addFeatureAttributes(FeatureAttribute.eventTag, "Left");
         leftOverlayButton.addFeatureAttributes(FeatureAttribute.styleName, "leftOverlayButton");
         leftOverlayButton.getPresenterFeatureList().add(new PresenterFeature(FeatureType.disableStimulusButtons, null));
         final PresenterFeature responseAudio1 = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
@@ -346,8 +346,8 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         responseAudio1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.enableStimulusButtons, null));
         leftOverlayButton.getPresenterFeatureList().add(responseAudio1);
         stimulusCodeAudio3.getPresenterFeatureList().add(leftOverlayButton);
-        final PresenterFeature rightOverlayButton = new PresenterFeature(FeatureType.stimulusButton, "Right Overlay Button");
-        rightOverlayButton.addFeatureAttributes(FeatureAttribute.eventTag, "Right Overlay Button");
+        final PresenterFeature rightOverlayButton = new PresenterFeature(FeatureType.touchInputStimulusButton, "Right Overlay Button");
+        rightOverlayButton.addFeatureAttributes(FeatureAttribute.eventTag, "Right");
         rightOverlayButton.addFeatureAttributes(FeatureAttribute.styleName, "rightOverlayButton");
         rightOverlayButton.getPresenterFeatureList().add(new PresenterFeature(FeatureType.disableStimulusButtons, null));
         final PresenterFeature responseAudio2 = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
