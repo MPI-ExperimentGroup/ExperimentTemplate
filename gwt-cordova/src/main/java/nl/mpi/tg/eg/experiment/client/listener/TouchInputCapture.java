@@ -111,7 +111,13 @@ public abstract class TouchInputCapture extends HandlesAllTouchEvents implements
         setDebugLabel(event.toDebugString() + " " + event.getClientX() + "," + event.getClientY());
     }
 
-    public String getTouchReport() {
+    public String getTouchReport(int screenWidth, int screenHeight) {
+        recordedTouches.insert(0, "\n");
+        recordedTouches.insert(0, screenHeight);
+        recordedTouches.insert(0, ",");
+        recordedTouches.insert(0, screenWidth);
+        recordedTouches.insert(0, ",");
+        recordedTouches.insert(0, duration.elapsedMillis());
         return recordedTouches.toString();
     }
 }
