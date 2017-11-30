@@ -28,6 +28,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
         <script src="webjars/jquery/jquery.min.js"></script>
         <script language="javascript" type="text/javascript">
+            var memberCodes = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+            var probabilities = {'A': 0.0, 'B': 0.7, 'C': 0.75, 'D': 0.8, 'E': 0.85, 'F': 0.9, 'G': 0.95, 'H': 1.0};
+            var group; // is null when all groups are run simultanepusly
             function robot() {
                 var robotMessagesDiv = document.getElementById("robot_messages");
                 robotMessagesDiv.innerHTML = "robot started";
@@ -37,16 +40,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //                if (document.getElementById('groupName').value === "") {
                 document.getElementById('groupName').value = "robot group at " + new Date().toLocaleTimeString();
 //                }
-                var memberCodes = ['A', 'C', 'E', 'G', 'B', 'D', 'F', 'H'];
                 for (frameIndex = 0; frameIndex < iframes.length; ++frameIndex) {
                     var iframeTimer = setTimeout(function (frameIndex) {
                         iframes[frameIndex].style.width = '1920px';
                         iframes[frameIndex].style.height = '1080px';
                         iframes[frameIndex].src = "/advocas?" + sizeSelectValue + "&testuser=" + Math.floor((Math.random() * 1000000000) + 1) + "&group=" + document.getElementById('groupName').value + "&member=" + memberCodes[frameIndex];
                     }, 1000 * frameIndex, frameIndex);
-                    findAndClick(memberCodes[frameIndex]);
                 }
-
+                group=null;
+                findAndClick();
             }
             function reloadIframes() {
                 var iframes = document.getElementsByTagName("iframe");
@@ -67,9 +69,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 document.getElementsByTagName("body")[0].append(iframe);
                 var robotMessagesDiv = document.getElementById("robot_messages");
                 robotMessagesDiv.innerHTML = "robot started " + memberCode;
-                findAndClick(memberCode);
+                group = memberCode;
+                findAndClick();
             }
-            function findAndClick(memberCode) {
+            function findAndClick() {
                 if (document.getElementById("pauseRobot").checked) {
                     document.getElementById("robot_messages").innerHTML = "robot paused";
                 } else {
@@ -108,7 +111,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 // probabilistic click
                                 // the button on the left is with index 0;
                                 // the button(s) on the left is with index 1;
-                                var prob = memberProbabilities(memberCode);
+                                var prob = - 1.0;
+                                if (group === null) { // we are in "all" mode
+                                    prob = probabilities[memberCodes[frameIndex]];
+                                } else { // we are in the single frame mode
+                                    prob = probabilities[group];
+                                }
+                                
                                 var reaction = answeringMachine(iframes[frameIndex], prob);
                                 var randomIndex = reaction ? 1 : 0;
                                 if (buttons[randomIndex] !== 'undefined' && buttons[randomIndex] !== null) {
@@ -122,7 +131,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     }
                 }
                 var robotTimer = setTimeout(function () {
-                    findAndClick(memberCode);
+                    findAndClick();
                 }, document.getElementById('robotSpeed').value);
             }
 
@@ -139,38 +148,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 }
             }
 
-            function memberProbabilities(memberCode) {
-                switch (memberCode) {
-                    case "A":
-                        return 0.0;
-                        break;
-                    case "B":
-                        return 1.0;
-                        break;
-                    case "C":
-                        return 0.7;
-                        break;
-                    case "D":
-                        return 0.75;
-                        break;
-                    case "E":
-                        return 0.8;
-                        break;
-                    case "F":
-                        return 0.85;
-                        break;
-                    case "G":
-                        return 0.9;
-                        break;
-                    case "H":
-                        return 0.95;
-                        break;
-                    default:
-                        return 1.0;
-                        break;
-                }
-
-            }
         </script>
     </head>
     <body style="width: 100%; height: 100%;">
@@ -180,14 +157,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <option value="2">R0_8</option>
         </select>
         <button type="button" class="startRobotButton" onclick="robot();">All</button>
-        <button type="button" class="startRobotButton" onclick="singleFrame('A');">A</button>
-        <button type="button" class="startRobotButton" onclick="singleFrame('B');">B</button>
-        <button type="button" class="startRobotButton" onclick="singleFrame('C');">C</button>
-        <button type="button" class="startRobotButton" onclick="singleFrame('D');">D</button>
-        <button type="button" class="startRobotButton" onclick="singleFrame('E');">E</button>
-        <button type="button" class="startRobotButton" onclick="singleFrame('F');">F</button>
-        <button type="button" class="startRobotButton" onclick="singleFrame('G');">G</button>
-        <button type="button" class="startRobotButton" onclick="singleFrame('H');">H</button>
+        <button type="button" class="startRobotButton" onclick="singleFrame('A');">A, corr.prob=<script type='text/javascript'>document.write(probabilities['A'])</script></button>
+        <button type="button" class="startRobotButton" onclick="singleFrame('B');">B, p=<script type='text/javascript'>document.write(probabilities['B'])</script></button>
+        <button type="button" class="startRobotButton" onclick="singleFrame('C');">C, p=<script type='text/javascript'>document.write(probabilities['C'])</script></button>
+        <button type="button" class="startRobotButton" onclick="singleFrame('D');">D, p=<script type='text/javascript'>document.write(probabilities['C'])</script></button>
+        <button type="button" class="startRobotButton" onclick="singleFrame('E');">E, p=<script type='text/javascript'>document.write(probabilities['E'])</script></button>
+        <button type="button" class="startRobotButton" onclick="singleFrame('F');">F, p=<script type='text/javascript'>document.write(probabilities['F'])</script></button>
+        <button type="button" class="startRobotButton" onclick="singleFrame('G');">G, p=<script type='text/javascript'>document.write(probabilities['G'])</script></button>
+        <button type="button" class="startRobotButton" onclick="singleFrame('H');">H, p=<script type='text/javascript'>document.write(probabilities['H'])</script></button>
         <input type="text" id="groupName" placeholder="Type a group name...">  
         <input type="number" id="robotSpeed" value="1000" max="10000" min="100">  
         Pause Robot: <input type="checkbox" id="pauseRobot" />
