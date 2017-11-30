@@ -72,8 +72,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             $.each(touchData.split("\n"), function (lineIndex, lineString) {
                                 var lineParts = lineString.split(",");
                                 if (scaleFactor === -1) {
-                                    var maxWidth = lineParts[1];
-                                    var maxHeight = lineParts[2];
+                                    var maxWidth = parseFloat(lineParts[1]);
+                                    var maxHeight = parseFloat(lineParts[2]);
                                     maxMs = lineParts[0];
                                     scaleFactor = (maxWidth > maxHeight) ? maxWidth : maxHeight;
                                     $(svgTagId).append($(document.createElementNS('http://www.w3.org/2000/svg', 'rect'))
