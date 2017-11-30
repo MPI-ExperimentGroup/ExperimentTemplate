@@ -33,6 +33,7 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 import java.util.ArrayList;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 
 /**
  * @since Oct 6, 2015 1:30:16 PM (creation date)
@@ -47,7 +48,7 @@ public class StimulusGrid extends FlexTable {
         this.domHandlerArrayParent = domHandlerArrayParent;
     }
 
-    private ButtonBase addButton(final PresenterEventListner menuItemListerner, final ButtonBase pushButton, final int rowIndex, final int columnIndex, final int hotKeyIndex) {
+    private StimulusButton addButton(final PresenterEventListner menuItemListerner, final ButtonBase pushButton, final int rowIndex, final int columnIndex, final int hotKeyIndex) {
         this.setStylePrimaryName("gridTable");
         pushButton.addStyleName("stimulusButton");
         pushButton.setEnabled(true);
@@ -101,15 +102,25 @@ public class StimulusGrid extends FlexTable {
         verticalPanelOuter.add(verticalPanel);
         this.setWidget(rowIndex, columnIndex, verticalPanelOuter);
         this.getCellFormatter().setHorizontalAlignment(rowIndex, columnIndex, HasHorizontalAlignment.ALIGN_CENTER);
-        return pushButton;
+        return new StimulusButton() {
+            @Override
+            public ButtonBase getButton() {
+                return pushButton;
+            }
+
+            @Override
+            public SingleShotEventListner getSingleShotEventListner() {
+                return singleShotEventListner;
+            }
+        };
     }
 
-    public ButtonBase addStringItem(final PresenterEventListner menuItemListerner, final String labelString, final int rowIndex, final int columnIndex, final int hotKeyIndex) {
+    public StimulusButton addStringItem(final PresenterEventListner menuItemListerner, final String labelString, final int rowIndex, final int columnIndex, final int hotKeyIndex) {
         final Button pushButton = new Button(labelString);
         return addButton(menuItemListerner, pushButton, rowIndex, columnIndex, hotKeyIndex);
     }
 
-    public ButtonBase addImageItem(final PresenterEventListner menuItemListerner, final SafeUri imagePath, final int rowIndex, final int columnIndex, final String widthString, final String styleName, final int hotKeyIndex) {
+    public StimulusButton addImageItem(final PresenterEventListner menuItemListerner, final SafeUri imagePath, final int rowIndex, final int columnIndex, final String widthString, final String styleName, final int hotKeyIndex) {
         final Image image = new Image(imagePath);
         image.setWidth(widthString);
         if (styleName != null) {

@@ -17,17 +17,15 @@
  */
 package nl.mpi.tg.eg.experiment.client.listener;
 
+import com.google.gwt.user.client.ui.ButtonBase;
+
 /**
- * @since Nov 28, 2017 3:41:36 PM (creation date)
+ * @since Nov 30, 2017 4:04:58 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public interface TouchInputZone {
+public interface StimulusButton {
 
-    public String getEventTag();
+    ButtonBase getButton();
 
-    public boolean intersects(int xPos, int yPos);
-
-    public void triggerEvent();
-
-    public void clearEvent();
+    SingleShotEventListner getSingleShotEventListner();
 }

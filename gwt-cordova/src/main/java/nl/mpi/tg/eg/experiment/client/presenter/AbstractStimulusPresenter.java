@@ -29,7 +29,6 @@ import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
@@ -48,6 +47,7 @@ import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.experiment.client.listener.TouchInputCapture;
 import nl.mpi.tg.eg.experiment.client.listener.TouchInputZone;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
@@ -88,7 +88,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     private GroupParticipantService groupParticipantService = null;
     final UserResults userResults;
     private final Duration duration;
-    final ArrayList<ButtonBase> buttonList = new ArrayList<>();
+    final ArrayList<StimulusButton> buttonList = new ArrayList<>();
     private TimedStimulusListener hasMoreStimulusListener;
     private TimedStimulusListener endOfStimulusListener;
     final private ArrayList<PresenterEventListner> nextButtonEventListnerList = new ArrayList<>();
@@ -1051,7 +1051,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     public void touchInputStimulusButton(final PresenterEventListner presenterListerner, final String eventTag, final String styleName) {
-        final ButtonBase buttonItem = ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName);
+        final StimulusButton buttonItem = ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName);
         buttonList.add(buttonItem);
         touchInputCapture.addTouchZone(new TouchInputZone() {
             @Override
@@ -1061,27 +1061,29 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
             @Override
             public boolean intersects(int xPos, int yPos) {
-                boolean returnValue = (yPos >= buttonItem.getAbsoluteTop()
-                        && yPos <= buttonItem.getAbsoluteTop() + buttonItem.getOffsetHeight()
-                        && xPos >= buttonItem.getAbsoluteLeft()
-                        && xPos <= buttonItem.getAbsoluteLeft() + buttonItem.getOffsetWidth());
-                if (returnValue) {
-                    buttonItem.addStyleName(styleName + "Intersection");
-                } else {
-                    buttonItem.removeStyleName(styleName + "Intersection");
-                }
+                boolean returnValue = (yPos >= buttonItem.getButton().getAbsoluteTop()
+                        && yPos <= buttonItem.getButton().getAbsoluteTop() + buttonItem.getButton().getOffsetHeight()
+                        && xPos >= buttonItem.getButton().getAbsoluteLeft()
+                        && xPos <= buttonItem.getButton().getAbsoluteLeft() + buttonItem.getButton().getOffsetWidth());
+                // this will only highlight on the last touch count, move this to the touchInputCapture
                 return returnValue;
             }
 
             @Override
             public void triggerEvent() {
-                presenterListerner.eventFired(null, null);
+                buttonItem.getButton().addStyleName(styleName + "Intersection");
+                buttonItem.getSingleShotEventListner().eventFired();
+            }
+
+            @Override
+            public void clearEvent() {
+                buttonItem.getButton().removeStyleName(styleName + "Intersection");
             }
         });
     }
 
     public void stimulusButton(final PresenterEventListner presenterListerner, String styleName) {
-        final ButtonBase buttonItem = ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName);
+        final StimulusButton buttonItem = ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName);
         buttonList.add(buttonItem);
     }
 
@@ -1234,7 +1236,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 groupResponseOptions += ",";
             }
             groupResponseOptions += nextJpgStimulus.getUniqueId();
-            final ButtonBase imageItem = ((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus(), nextJpgStimulus, correctTimedListener, incorrectTimedListener), UriUtils.fromString(nextJpgStimulus.getImage()), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth, styleName, imageCounter);
+            final StimulusButton imageItem = ((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus(), nextJpgStimulus, correctTimedListener, incorrectTimedListener), UriUtils.fromString(nextJpgStimulus.getImage()), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth, styleName, imageCounter);
             buttonList.add(imageItem);
         }
         if (groupParticipantService != null) {
@@ -1271,7 +1273,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).endHorizontalPanel();
     }
 
-    private PresenterEventListner getEventListener(final ArrayList<ButtonBase> buttonList, final String eventTag, final Stimulus correctStimulusItem, final Stimulus currentStimulusItem, final TimedStimulusListener correctTimedListener, final TimedStimulusListener incorrectTimedListener) {
+    private PresenterEventListner getEventListener(final ArrayList<StimulusButton> buttonList, final String eventTag, final Stimulus correctStimulusItem, final Stimulus currentStimulusItem, final TimedStimulusListener correctTimedListener, final TimedStimulusListener incorrectTimedListener) {
         final String tagValue1 = correctStimulusItem.getImage();
         final String tagValue2 = currentStimulusItem.getImage();
         return new PresenterEventListner() {
@@ -1288,8 +1290,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                for (ButtonBase currentButton : buttonList) {
-                    currentButton.setEnabled(false);
+                for (StimulusButton currentButton : buttonList) {
+                    currentButton.getButton().setEnabled(false);
                 }
                 if (groupParticipantService != null) {
                     groupParticipantService.setResponseStimulusId(currentStimulusItem.getUniqueId());
@@ -1308,30 +1310,30 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     public void disableStimulusButtons() {
-        for (ButtonBase currentButton : buttonList) {
-            currentButton.setEnabled(false);
+        for (StimulusButton currentButton : buttonList) {
+            currentButton.getButton().setEnabled(false);
         }
 //        ((TimedStimulusView) simpleView).addText("disableStimulusButtons: " + duration.elapsedMillis() + "ms");
     }
 
     public void hideStimulusButtons() {
-        for (ButtonBase currentButton : buttonList) {
-            currentButton.setVisible(false);
+        for (StimulusButton currentButton : buttonList) {
+            currentButton.getButton().setVisible(false);
         }
 //        ((TimedStimulusView) simpleView).addText("hideStimulusButtons: " + duration.elapsedMillis() + "ms");
     }
 
     public void showStimulusButtons() {
-        for (ButtonBase currentButton : buttonList) {
-            currentButton.setVisible(true);
+        for (StimulusButton currentButton : buttonList) {
+            currentButton.getButton().setVisible(true);
         }
 //        ((TimedStimulusView) simpleView).addText("showStimulusButtons: " + duration.elapsedMillis() + "ms");
     }
 
     public void enableStimulusButtons() {
-        for (ButtonBase currentButton : buttonList) {
-            currentButton.setEnabled(true);
-            currentButton.removeStyleName("optionButtonActivated");
+        for (StimulusButton currentButton : buttonList) {
+            currentButton.getButton().setEnabled(true);
+            currentButton.getButton().removeStyleName("optionButtonActivated");
         }
 //        ((TimedStimulusView) simpleView).addText("enableStimulusButtons: " + duration.elapsedMillis() + "ms");
     }
@@ -1525,8 +1527,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
         };
         nextButtonEventListnerList.add(eventListner);
-        final Button prevButton = ((TimedStimulusView) simpleView).addOptionButton(eventListner);
-        prevButton.setEnabled(stimulusProvider.hasNextStimulus(-1));
+        final StimulusButton prevButton = ((TimedStimulusView) simpleView).addOptionButton(eventListner);
+        prevButton.getButton().setEnabled(stimulusProvider.hasNextStimulus(-1));
     }
 
     protected void nextStimulusButton(final String eventTag, final String buttonLabel, final boolean repeatIncorrect, final int hotKey) {
@@ -1549,7 +1551,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
         };
         nextButtonEventListnerList.add(eventListner);
-        final Button nextButton = ((TimedStimulusView) simpleView).addOptionButton(eventListner);
+        final StimulusButton nextButton = ((TimedStimulusView) simpleView).addOptionButton(eventListner);
 //        final boolean disableAtEnd = false;
 //        nextButton.setEnabled(stimulusProvider.hasNextStimulus(1));
     }

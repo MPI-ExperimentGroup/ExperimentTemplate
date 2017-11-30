@@ -34,6 +34,7 @@ import nl.mpi.tg.eg.experiment.client.exception.MetadataFieldException;
 import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
@@ -140,7 +141,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
 
     protected void selectUserMenu(final AppEventListner appEventListner) {
         for (final UserLabelData labelData : localStorage.getUserIdList(metadataFieldProvider.workerIdMetadataField)) {
-            final Button optionButton = ((MetadataView) simpleView).addOptionButton(new PresenterEventListner() {
+            final StimulusButton optionButton = ((MetadataView) simpleView).addOptionButton(new PresenterEventListner() {
 
                 @Override
                 public String getLabel() {
@@ -164,7 +165,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
                 }
             });
             if (labelData.getUserId().equals(userResults.getUserData().getUserId())) {
-                optionButton.addStyleName("optionButtonHighlight");
+                optionButton.getButton().addStyleName("optionButtonHighlight");
             }
         }
     }

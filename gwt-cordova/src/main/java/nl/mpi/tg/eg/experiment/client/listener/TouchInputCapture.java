@@ -29,6 +29,7 @@ import com.google.gwt.event.dom.client.TouchEvent;
 import com.google.gwt.event.dom.client.TouchMoveEvent;
 import com.google.gwt.event.dom.client.TouchStartEvent;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @since Oct 23, 2017 2:10:09 PM (creation date)
@@ -37,12 +38,12 @@ import java.util.ArrayList;
 public abstract class TouchInputCapture extends HandlesAllTouchEvents implements MouseMoveHandler {
 
     private final StringBuilder recordedTouches = new StringBuilder();
-    private final ArrayList<TouchInputZone> touchZones = new ArrayList<>();
+    private final List<TouchInputZone> touchZones = new ArrayList<>();
     private final Duration duration = new Duration();
 
     public abstract void setDebugLabel(String debugLabel);
 
-    private void appendTouch(int xPos, int yPos) {
+    private void appendTouch(int xPos, int yPos, final List<TouchInputZone> triggeredZones) {
         recordedTouches.append(duration.elapsedMillis());
         recordedTouches.append(",");
         recordedTouches.append(xPos);
@@ -52,6 +53,7 @@ public abstract class TouchInputCapture extends HandlesAllTouchEvents implements
         for (TouchInputZone zone : touchZones) {
             if (zone.intersects(xPos, yPos)) {
                 recordedTouches.append(zone.getEventTag());
+                triggeredZones.add(zone);
             }
             recordedTouches.append(",");
         }
@@ -62,11 +64,23 @@ public abstract class TouchInputCapture extends HandlesAllTouchEvents implements
         touchZones.add(touchZone);
     }
 
+    private void triggerZones(final List<TouchInputZone> triggeredZones) {
+        for (TouchInputZone zone : touchZones) {
+            if (triggeredZones.contains(zone)) {
+                zone.triggerEvent();
+            } else {
+                zone.clearEvent();
+            }
+        }
+    }
+
     private void recordTouches(TouchEvent event) {
         final JsArray<Touch> targetTouches = event.getTouches();
+        final List<TouchInputZone> triggeredZones = new ArrayList<>();
         for (int index = 0; index < targetTouches.length(); index++) {
-            appendTouch(targetTouches.get(index).getScreenX(), targetTouches.get(index).getScreenY());
+            appendTouch(targetTouches.get(index).getScreenX(), targetTouches.get(index).getScreenY(), triggeredZones);
         }
+        triggerZones(triggeredZones);
     }
 
     private void touchesToDebugLabel(TouchEvent event) {
@@ -107,8 +121,10 @@ public abstract class TouchInputCapture extends HandlesAllTouchEvents implements
 
     @Override
     public void onMouseMove(MouseMoveEvent event) {
-        appendTouch(event.getClientX(), event.getClientY());
+        final List<TouchInputZone> triggeredZones = new ArrayList<>();
+        appendTouch(event.getClientX(), event.getClientY(), triggeredZones);
         setDebugLabel(event.toDebugString() + " " + event.getClientX() + "," + event.getClientY());
+        triggerZones(triggeredZones);
     }
 
     public String getTouchReport(int screenWidth, int screenHeight) {

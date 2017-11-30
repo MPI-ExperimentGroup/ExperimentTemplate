@@ -35,6 +35,7 @@ import com.google.gwt.event.dom.client.TouchStartEvent;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
@@ -53,6 +54,7 @@ import java.util.List;
 import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.experiment.client.listener.TouchInputCapture;
 
 /**
@@ -275,23 +277,23 @@ public class ComplexView extends SimpleView {
         anchor.addStyleName("pageLink");
     }
 
-    public Button addOptionButton(final PresenterEventListner presenterListerner) {
+    public StimulusButton addOptionButton(final PresenterEventListner presenterListerner) {
         return addOptionButton(presenterListerner, null);
     }
 
-    public Button addOptionButton(final PresenterEventListner presenterListerner, String styleName) {
-        Button nextButton = getOptionButton(presenterListerner);
+    public StimulusButton addOptionButton(final PresenterEventListner presenterListerner, String styleName) {
+        StimulusButton nextButton = getOptionButton(presenterListerner);
         if (styleName != null) {
-            nextButton.addStyleName(styleName);
+            nextButton.getButton().addStyleName(styleName);
         }
-        getActivePanel().add(nextButton);
+        getActivePanel().add(nextButton.getButton());
         return nextButton;
     }
 
-    public Button addFooterButton(final PresenterEventListner presenterListener) {
-        Button nextButton = getOptionButton(presenterListener);
-        nextButton.addStyleName("footerButton");
-        addToFooter(nextButton);
+    public StimulusButton addFooterButton(final PresenterEventListner presenterListener) {
+        StimulusButton nextButton = getOptionButton(presenterListener);
+        nextButton.getButton().addStyleName("footerButton");
+        addToFooter(nextButton.getButton());
         return nextButton;
     }
 
@@ -308,12 +310,12 @@ public class ComplexView extends SimpleView {
         }
         final HorizontalPanel buttonsPanel = new HorizontalPanel();
         for (PresenterEventListner listener : presenterListeners) {
-            Button nextButton = getOptionButton(listener);
+            StimulusButton nextButton = getOptionButton(listener);
             if (footerButtons) {
-                nextButton.addStyleName("footerButton");
+                nextButton.getButton().addStyleName("footerButton");
             }
-            buttonsPanel.add(nextButton);
-            buttonsPanel.setCellWidth(nextButton, (100 / presenterListeners.size()) + "%");
+            buttonsPanel.add(nextButton.getButton());
+            buttonsPanel.setCellWidth(nextButton.getButton(), (100 / presenterListeners.size()) + "%");
         }
         verticalPanel.setWidth("100%");
         labelsPanel.setWidth("100%");
@@ -354,7 +356,7 @@ public class ComplexView extends SimpleView {
         }
     }
 
-    public Button getOptionButton(final PresenterEventListner presenterListerner) {
+    public StimulusButton getOptionButton(final PresenterEventListner presenterListerner) {
         final Button nextButton = new Button(presenterListerner.getLabel());
         nextButton.addStyleName("optionButton");
         nextButton.setEnabled(true);
@@ -374,7 +376,18 @@ public class ComplexView extends SimpleView {
         nextButton.addTouchMoveHandler(singleShotEventListner);
         nextButton.addTouchEndHandler(singleShotEventListner);
         addHotKeyListner(presenterListerner, singleShotEventListner);
-        return nextButton;
+        return new StimulusButton() {
+            @Override
+            public ButtonBase getButton() {
+                return nextButton;
+            }
+
+            @Override
+            public SingleShotEventListner getSingleShotEventListner() {
+                return singleShotEventListner;
+            }
+
+        };
     }
 
     public void clearDomHandlers() {
