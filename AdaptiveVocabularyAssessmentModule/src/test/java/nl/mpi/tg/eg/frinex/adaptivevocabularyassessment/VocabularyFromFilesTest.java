@@ -32,6 +32,8 @@ import org.junit.Test;
  */
 public class VocabularyFromFilesTest {
     
+    final String NONWORD_FILE_LOCATION = "2.selection_words_nonwords.csv";
+    
     public VocabularyFromFilesTest() {
     }
     
@@ -69,10 +71,14 @@ public class VocabularyFromFilesTest {
     @Test
     public void testParseNonwordInputCSV() throws Exception {
         System.out.println("parseNonwordInputCSV");
-        VocabularyFromFiles instance = new VocabularyFromFiles();
-        //instance.parseNonwordInputCSV("dummylocation");
-        // TODO review the generated test code and remove the default call to fail.
-       //fail("The test case is a prototype.");
+        VocabularyFromFiles.parseNonwordInputCSV(NONWORD_FILE_LOCATION);
+        ArrayList<AdVocAsAtomStimulus> nonwords = VocabularyFromFiles.getNonwords();
+        StringBuilder stBuilder = new StringBuilder("[");
+        for (AdVocAsAtomStimulus nonword: nonwords) {
+            stBuilder.append("'").append(nonword.getLabel()).append("', ");
+        }
+        stBuilder .append("]");
+        System.out.println(stBuilder);
     }
 
     /**
