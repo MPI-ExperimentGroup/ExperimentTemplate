@@ -45,6 +45,7 @@ public enum FeatureType {
     targetButton(false, true, new FeatureAttribute[]{target, styleName}),
     actionButton(true, true, new FeatureAttribute[]{hotKey, styleName}),
     stimulusButton(true, true, new FeatureAttribute[]{hotKey, styleName}),
+    touchInputStimulusButton(true, true, new FeatureAttribute[]{hotKey, styleName}),
     touchInputCaptureStart(false, false, new FeatureAttribute[]{showControls}),
     touchInputReportSubmit(false, false, new FeatureAttribute[]{}),
     sendGroupMessageButton(false, true, new FeatureAttribute[]{hotKey, eventTag, repeatIncorrect, incrementPhase, /* incrementPhaseOnDictionaryincrementStimulus */}),
