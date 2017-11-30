@@ -28,6 +28,7 @@ import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.HTML;
@@ -1476,7 +1477,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void touchInputReportSubmit() {
         if (touchInputCapture != null) {
-            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "touchInputReport", stimulusProvider.getCurrentStimulus().getUniqueId(), touchInputCapture.getTouchReport(), duration.elapsedMillis());
+            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "touchInputReport", stimulusProvider.getCurrentStimulus().getUniqueId(), touchInputCapture.getTouchReport(Window.getClientWidth(), Window.getClientHeight()), duration.elapsedMillis());
         }
         touchInputCapture = null;
     }
