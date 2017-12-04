@@ -224,6 +224,7 @@ public class TimedStimulusView extends ComplexView {
                     errorLabel.setVisible(false);
                     textBox.setStylePrimaryName("metadataOK");
                 }
+                textBox.setText(textBox.getValue().replaceAll(" {1,}", " "));
             }
         });
         final StimulusFreeText stimulusFreeText = new StimulusFreeText() {
