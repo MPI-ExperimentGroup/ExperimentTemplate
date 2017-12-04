@@ -217,6 +217,12 @@ public class TimedStimulusView extends ComplexView {
                             textBox.setStylePrimaryName("metadataOK");
                         }
                     } else {
+                        event.getNativeEvent().preventDefault();
+                        final int cursorPos = textBox.getCursorPos();
+                        String pretext = textBox.getText().substring(0, cursorPos);
+                        String posttext = textBox.getText().substring(textBox.getCursorPos());
+                        textBox.setText(pretext + charCode + posttext);
+                        textBox.setCursorPos(cursorPos + 1);
                         errorLabel.setVisible(false);
                         textBox.setStylePrimaryName("metadataOK");
                     }
