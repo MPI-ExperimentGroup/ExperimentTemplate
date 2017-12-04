@@ -80,7 +80,8 @@ public class MultiParticipant {
             + "Als je niet zeker weet of een woord is toegestaan, vraag ons dit dan van tevoren. Het doel van het spel is goed te "
             + "communiceren in een nieuwe fantasietaal. Daarom moeten we helaas de hele groep uitsluiten van het spel als er een woord "
             + "gebruikt wordt dat niet is toegestaan.<br/><br/>" + "Verder mag je niet praten, gebaren of wijzen tijdens het experiment, "
-            + "je communiceert enkel door beschrijvingen te typen.<br/><br/>" + "Veel succes!<br/><br/>";
+            + "je communiceert enkel door beschrijvingen te typen.<br/><br/>"
+            + "Voer minimaal twee geldige letters in. Spaties zijn toegestaan, maar geen dubbele spaties.<br/><br/>" + "Veel succes!<br/><br/>";
     final private String ronde0NAMING = "Om het spel te "
             + "kunnen spelen moet je eerst acht beschrijvingen voor acht scènes in de fantasietaal creëren. <br/><br/>" + "Gebruik geen "
             + "bestaande dingen in het Nederlands of in een andere taal - probeer creatief te zijn en gebruik je fantasie om een taal "
