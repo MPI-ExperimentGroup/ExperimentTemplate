@@ -92,7 +92,9 @@ public class MultiParticipantTest {
             "gi pop k k",
             "t o k",
             "kk k kko",
-            "u u ka"}) {
+            "u u ka",
+            "a e",
+            " a   e    "}) {
             System.out.println(input);
             assertEquals(input + " : " + MultiParticipant.WETUIOPASFGHKNM_2, true, input.matches(MultiParticipant.WETUIOPASFGHKNM_2));
         }
