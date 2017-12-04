@@ -4,7 +4,7 @@
     <groupId>nl.mpi.tg.eg.frinex</groupId>
     <artifactId>frinex-experiment-designer</artifactId>
     <name>Frinex Experiment Designer</name>
-    <version>0.2.1091-multiparticipant</version>
+    <version>0.2.1092-multiparticipant</version>
     <packaging>war</packaging>
     <parent>
         <groupId>nl.mpi.tg.eg.frinex</groupId>

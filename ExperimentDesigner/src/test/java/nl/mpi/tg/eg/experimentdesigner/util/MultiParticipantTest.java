@@ -78,6 +78,7 @@ public class MultiParticipantTest {
     public void testTextInputRegex() {
         System.out.println("testTextInputRegex");
         for (String input : new String[]{"m mm",
+            "t g",
             "ta g",
             "kk kk k",
             "kik p",
@@ -94,7 +95,8 @@ public class MultiParticipantTest {
             "kk k kko",
             "u u ka",
             "a e",
-            " a   e    "}) {
+            " a e",
+            "a e "}) {
             System.out.println(input);
             assertEquals(input + " : " + MultiParticipant.WETUIOPASFGHKNM_2, true, input.matches(MultiParticipant.WETUIOPASFGHKNM_2));
         }
@@ -104,7 +106,12 @@ public class MultiParticipantTest {
             " p",
             "  t",
             "  t  ",
-            "t  "}) {
+            "t  ",
+            " a   e    ",
+            "  ae",
+            "ae  ",
+            "ae   ",
+            "   ae"}) {
             System.out.println(input);
             assertEquals(input + " : " + MultiParticipant.WETUIOPASFGHKNM_2, false, input.matches(MultiParticipant.WETUIOPASFGHKNM_2));
         }
