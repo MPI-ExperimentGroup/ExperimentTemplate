@@ -42,6 +42,7 @@ public class MultiParticipantTest {
 
     /**
      * Test of getWizardData method, of class HRPretest.
+     *
      * @throws java.io.IOException
      * @throws javax.xml.bind.JAXBException
      * @throws java.net.URISyntaxException
@@ -68,5 +69,32 @@ public class MultiParticipantTest {
         jaxbMarshaller.marshal(result, new File(new File(testXmlUri).getParentFile(), "multiparticipant-testoutput.xml"));
         jaxbMarshaller.marshal(result, stringWriter);
         assertEquals(expResult, stringWriter.toString());
+    }
+
+    /**
+     * Test of getTestRound method, of class MultiParticipant.
+     */
+    @Test
+    public void testTextInputRegex() {
+        System.out.println("testTextInputRegex");
+        for (String input : new String[]{"m mm",
+            "ta g",
+            "kk kk k",
+            "kik p",
+            "t kk t",
+            "tt tt tu t",
+            "ta ta t",
+            "f ff f",
+            "am m ki",
+            "t uuu t uuu",
+            "ta t t ",
+            "kik i kik",
+            "gi pop k k",
+            "t o k",
+            "kk k kko",
+            "u u ka"}) {
+            System.out.println(input);
+            assertEquals(input + " : " + MultiParticipant.WETUIOPASFGHKNM_2, true, input.matches(MultiParticipant.WETUIOPASFGHKNM_2));
+        }
     }
 }
