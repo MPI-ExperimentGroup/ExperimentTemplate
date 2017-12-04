@@ -96,5 +96,15 @@ public class MultiParticipantTest {
             System.out.println(input);
             assertEquals(input + " : " + MultiParticipant.WETUIOPASFGHKNM_2, true, input.matches(MultiParticipant.WETUIOPASFGHKNM_2));
         }
+        for (String input : new String[]{" m ",
+            "a ",
+            "k  ",
+            " p",
+            "  t",
+            "  t  ",
+            "t  "}) {
+            System.out.println(input);
+            assertEquals(input + " : " + MultiParticipant.WETUIOPASFGHKNM_2, false, input.matches(MultiParticipant.WETUIOPASFGHKNM_2));
+        }
     }
 }

@@ -366,7 +366,8 @@ public class MultiParticipant {
 
         return wizardData;
     }
-    protected static final String WETUIOPASFGHKNM_2 = "([wetuiopasfghknm] ){0,}[wetuiopasfghknm]{2,}[wetuiopasfghknm ]{0,}";
+//    protected static final String WETUIOPASFGHKNM_2 = "([wetuiopasfghknm] ){0,}[wetuiopasfghknm]{2,}[wetuiopasfghknm ]{0,}";
+    protected static final String WETUIOPASFGHKNM_2 = " ?[wetuiopasfghknm] ?[wetuiopasfghknm][wetuiopasfghknm ]{0,}";
     private static final String SEQUENTIAL = "sequential";
     private static final String RANDOMISE = "randomise";
 
