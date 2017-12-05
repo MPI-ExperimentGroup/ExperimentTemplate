@@ -30,6 +30,7 @@ import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Widget;
 import java.util.ArrayList;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
@@ -104,8 +105,28 @@ public class StimulusGrid extends FlexTable {
         this.getCellFormatter().setHorizontalAlignment(rowIndex, columnIndex, HasHorizontalAlignment.ALIGN_CENTER);
         return new StimulusButton() {
             @Override
-            public ButtonBase getButton() {
+            public Widget getWidget() {
                 return pushButton;
+            }
+
+            @Override
+            public void addStyleName(String styleName) {
+                pushButton.addStyleName(styleName);
+            }
+
+            @Override
+            public void removeStyleName(String styleName) {
+                pushButton.removeStyleName(styleName);
+            }
+
+            @Override
+            public void setEnabled(boolean enabled) {
+                pushButton.setEnabled(enabled);
+            }
+
+            @Override
+            public void setVisible(boolean visible) {
+                pushButton.setVisible(visible);
             }
 
             @Override
