@@ -134,6 +134,8 @@ public enum FeatureType {
     stimulusCodeVideo(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, codeFormat, styleName, showControls}),
     stimulusCodeAudio(true, false, new FeatureAttribute[]{msToNext, codeFormat}),
     stimulusAudio(true, false, new FeatureAttribute[]{msToNext, showPlaybackIndicator}),
+    playVideo(false, false, new FeatureAttribute[]{}),
+    pauseVideo(false, false, new FeatureAttribute[]{}),
     stimulusImageCapture(true, true, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext}),
     //    captureStimulusImage(true, true, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth}),
     VideoPanel(false, false, new FeatureAttribute[]{mp4, ogg, webm, percentOfPage, maxHeight, maxWidth, poster}),
