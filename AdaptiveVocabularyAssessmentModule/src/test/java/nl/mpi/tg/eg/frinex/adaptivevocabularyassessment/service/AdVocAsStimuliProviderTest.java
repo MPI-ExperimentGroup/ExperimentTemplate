@@ -20,10 +20,11 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsNonWords;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import org.junit.After;
@@ -68,13 +69,13 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
         instance.initialiseStimuliState("");
         
-        ArrayList<ArrayList<AtomBookkeepingStimulus>> words = instance.getWords();
+        ArrayList<ArrayList<AdVocAsStimulus>> words = instance.getWords();
         assertEquals(Constants.NUMBER_OF_BANDS, words.size());
         for (int i=0; i<Constants.NUMBER_OF_BANDS; i++){
             assertEquals(Constants.WORDS_PER_BAND, words.get(i).size());
         }
         
-        ArrayList<AtomBookkeepingStimulus> nonwords = instance.getNonwords();
+        ArrayList<AdVocAsStimulus> nonwords = instance.getNonwords();
         assertEquals(ConstantsNonWords.NONWORDS_ARRAY.length, nonwords.size());
         
         int expectedTotalsStimuli = Constants.NUMBER_OF_BANDS * Constants.WORDS_PER_BAND + ConstantsNonWords.NONWORDS_ARRAY.length;
@@ -145,7 +146,7 @@ public class AdVocAsStimuliProviderTest {
         String label = stimulus.getLabel();
         assertTrue(label != null);
         System.out.println("Label: " + label);
-        AtomBookkeepingStimulus bStimulus = instance.getResponseRecord().get(instance.getCurrentStimulusIndex());
+        AdVocAsBookkeepingStimulus bStimulus = instance.getResponseRecord().get(instance.getCurrentStimulusIndex());
         int expectedBand = stimulus.getCorrectResponses().equals(Constants.WORD) ? Constants.START_BAND : -1;
         assertEquals(expectedBand, bStimulus.getBandNumber());
     }
@@ -163,7 +164,7 @@ public class AdVocAsStimuliProviderTest {
         boolean result = instance.isCorrectResponse(stimulus, stimulus.getCorrectResponses());
         assertTrue(result);
         
-        AtomBookkeepingStimulus bStimulus = instance.getResponseRecord().get(0);
+        AdVocAsBookkeepingStimulus bStimulus = instance.getResponseRecord().get(0);
         assertTrue(bStimulus.getCorrectness());
         
         boolean expectedReaction = stimulus.getCorrectResponses().equals(Constants.WORD);
@@ -185,7 +186,7 @@ public class AdVocAsStimuliProviderTest {
         boolean result2 = instance.isCorrectResponse(stimulus2, response2);
         assertFalse(result2);
         
-        AtomBookkeepingStimulus bStimulus2 = instance.getResponseRecord().get(1);
+        AdVocAsBookkeepingStimulus bStimulus2 = instance.getResponseRecord().get(1);
         assertFalse(bStimulus2.getCorrectness());
         
         boolean expectedCorrectReaction2 = stimulus2.getCorrectResponses().equals(Constants.WORD);
@@ -292,7 +293,7 @@ public class AdVocAsStimuliProviderTest {
         //experiment 0, correct answer
         int ind1 = instance.getCurrentStimulusIndex();
         assertEquals(0, ind1);
-        AdVocAsAtomStimulus stimulus = instance.getCurrentStimulus();
+        BookkeepingStimulus stimulus = instance.getCurrentStimulus();
         
         instance.isCorrectResponse(stimulus, stimulus.getCorrectResponses());
         
@@ -310,7 +311,7 @@ public class AdVocAsStimuliProviderTest {
         int ind2 = instance.getCurrentStimulusIndex();
         assertEquals(1, ind2);
         
-        AdVocAsAtomStimulus stimulus2 = instance.getCurrentStimulus();
+        BookkeepingStimulus stimulus2 = instance.getCurrentStimulus();
         String correctResponse = stimulus2.getCorrectResponses();
         String response = null;
         if (correctResponse.equals(Constants.WORD)) {
@@ -337,7 +338,7 @@ public class AdVocAsStimuliProviderTest {
         
         int ind3 = instance.getCurrentStimulusIndex();
         assertEquals(2, ind3);
-        AdVocAsAtomStimulus stimulus3 = instance.getCurrentStimulus();
+        BookkeepingStimulus stimulus3 = instance.getCurrentStimulus();
         String correctResponse3 = stimulus3.getCorrectResponses();
         String response3 = null;
         if (correctResponse3.equals(Constants.WORD)) {
@@ -426,9 +427,9 @@ public class AdVocAsStimuliProviderTest {
         assertEquals(4, bandNumber2); 
     }
    
-    private int getListOfListLength(ArrayList<ArrayList<AtomBookkeepingStimulus>> ll) {
+    private int getListOfListLength(ArrayList<ArrayList<AdVocAsStimulus>> ll) {
         int retVal = 0;
-        for (ArrayList<AtomBookkeepingStimulus> l : ll) {
+        for (ArrayList<AdVocAsStimulus> l : ll) {
             retVal += l.size();
         }
         return retVal;

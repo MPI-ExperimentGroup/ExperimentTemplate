@@ -23,7 +23,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsStimulus;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
@@ -33,8 +33,8 @@ import org.apache.commons.csv.CSVRecord;
  */
 public class VocabularyFromFiles {
 
-    private static final AdVocAsAtomStimulus[][] localWORDS = new AdVocAsAtomStimulus[Constants.NUMBER_OF_BANDS][Constants.WORDS_PER_BAND];
-    private static final ArrayList<AdVocAsAtomStimulus> localNONWORDS = new ArrayList<>(); // unknow length, cannot allocte in advance
+    private static final AdVocAsStimulus[][] localWORDS = new AdVocAsStimulus[Constants.NUMBER_OF_BANDS][Constants.WORDS_PER_BAND];
+    private static final ArrayList<AdVocAsStimulus> localNONWORDS = new ArrayList<>(); // unknow length, cannot allocte in advance
 
     private static void parseWordInputCSV(String wordFileLocation) throws IOException {
         File inputFileWords = new File(wordFileLocation);
@@ -51,7 +51,7 @@ public class VocabularyFromFiles {
             String spelling = record.get("spelling");
             long millis = System.currentTimeMillis();
             String id = spelling + "_" + millis;
-            AdVocAsAtomStimulus stimulus = new AdVocAsAtomStimulus(id, spelling, Constants.WORD, bandNumber);
+            AdVocAsStimulus stimulus = new AdVocAsStimulus(id, spelling, Constants.WORD, bandNumber);
             localWORDS[bandNumber - 1][counter[bandNumber - 1]] = stimulus;
             counter[bandNumber - 1]++;
         }
@@ -62,7 +62,7 @@ public class VocabularyFromFiles {
                 String id = localWORDS[bandIndex][i].getUniqueId();
                 String spelling = localWORDS[bandIndex][i].getLabel();
                 int bandNumber = localWORDS[bandIndex][i].getBandNumber();
-                //AdVocAsAtomStimulus[][] test = { {new AdVocAsAtomStimulus(id, spelling, Constants.WORD, bandNumber)}, {}};
+                //AdVocAsAtomStimulus[][] test = { {new AdVocAsStimulus(id, spelling, Constants.WORD, bandNumber)}, {}};
                 System.out.println("new AdVocAsAtomStimulus(\"" + id + "\", \"" + spelling + "\", \"word\", " + bandNumber + "),");
             }
             System.out.println(" }, ");
@@ -81,18 +81,18 @@ public class VocabularyFromFiles {
             long millis = System.currentTimeMillis();
             String id = spelling + "_" + millis;
             System.out.println("new AdVocAsAtomStimulus(\"" + id + "\", \"" + spelling + "\", \"nonword\" " + "),");
-            AdVocAsAtomStimulus stimulus = new AdVocAsAtomStimulus(id, spelling, Constants.NONWORD, -1);
+            AdVocAsStimulus stimulus = new AdVocAsStimulus(id, spelling, Constants.NONWORD, -1);
             localNONWORDS.add(stimulus);
         }
         System.out.println(" }; ");
          
     }
 
-    public static AdVocAsAtomStimulus[][] getWords() {
+    public static AdVocAsStimulus[][] getWords() {
         return localWORDS;
     }
 
-    public static ArrayList<AdVocAsAtomStimulus> getNonwords() {
+    public static ArrayList<AdVocAsStimulus> getNonwords() {
         return localNONWORDS;
     }
 

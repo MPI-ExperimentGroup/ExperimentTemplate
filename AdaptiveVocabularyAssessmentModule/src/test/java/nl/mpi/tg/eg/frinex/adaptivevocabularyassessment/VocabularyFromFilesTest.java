@@ -19,7 +19,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
 import utils.VocabularyFromFiles;
 import java.util.ArrayList;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -72,9 +72,9 @@ public class VocabularyFromFilesTest {
     public void testParseNonwordInputCSV() throws Exception {
         System.out.println("parseNonwordInputCSV");
         VocabularyFromFiles.parseNonwordInputCSV(NONWORD_FILE_LOCATION);
-        ArrayList<AdVocAsAtomStimulus> nonwords = VocabularyFromFiles.getNonwords();
+        ArrayList<AdVocAsStimulus> nonwords = VocabularyFromFiles.getNonwords();
         StringBuilder stBuilder = new StringBuilder("[");
-        for (AdVocAsAtomStimulus nonword: nonwords) {
+        for (AdVocAsStimulus nonword: nonwords) {
             stBuilder.append("'").append(nonword.getLabel()).append("', ");
         }
         stBuilder .append("]");
@@ -87,7 +87,7 @@ public class VocabularyFromFilesTest {
     @Test
     public void testGetWords() {
         System.out.println("getWords");
-        AdVocAsAtomStimulus[][] result = VocabularyFromFiles.getWords();
+        AdVocAsStimulus[][] result = VocabularyFromFiles.getWords();
         //assertArrayEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
        //fail("The test case is a prototype.");
@@ -99,7 +99,7 @@ public class VocabularyFromFilesTest {
     @Test
     public void testGetNonwords() {
         System.out.println("getNonwords");
-        ArrayList<AdVocAsAtomStimulus> result = VocabularyFromFiles.getNonwords();
+        ArrayList<AdVocAsStimulus> result = VocabularyFromFiles.getNonwords();
         //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
        //fail("The test case is a prototype.");

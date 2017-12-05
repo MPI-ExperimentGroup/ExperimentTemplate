@@ -17,10 +17,11 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client;
 
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsBookkeepingStimulus;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -60,12 +61,12 @@ public class VocabularyTest {
     public void testInitialiseWords() {
         System.out.println("initialiseWords");
         Vocabulary instance = new Vocabulary();
-        ArrayList<ArrayList<AtomBookkeepingStimulus>> words = instance.initialiseWords(ConstantsWords.WORDS);
+        ArrayList<ArrayList<AdVocAsStimulus>> words = instance.initialiseWords(ConstantsWords.WORDS);
         assertEquals(Constants.NUMBER_OF_BANDS, words.size());
         for (int i = 0; i < Constants.NUMBER_OF_BANDS; i++) {
             ArrayList<String> spellings = new ArrayList<>(words.get(i).size());
-            for (AtomBookkeepingStimulus stimulus : words.get(i)) {
-                spellings.add(stimulus.getSpelling());
+            for (AdVocAsStimulus stimulus : words.get(i)) {
+                spellings.add(stimulus.getLabel());
                 assertEquals(i+1,stimulus.getBandNumber());
             }
             HashSet<String> set = new HashSet(spellings);
@@ -80,12 +81,12 @@ public class VocabularyTest {
     public void testInitialiseNonwords() {
         System.out.println("initialiseNonwords");
         Vocabulary instance = new Vocabulary();
-        ArrayList<AdVocAsAtomStimulus> nonwordstmp = new ArrayList<>();
+        ArrayList<AdVocAsStimulus> nonwordstmp = new ArrayList<>();
         nonwordstmp.addAll(Arrays.asList(ConstantsNonWords.NONWORDS_ARRAY));
-        ArrayList<AtomBookkeepingStimulus> nonwords = instance.initialiseNonwords(nonwordstmp);
+        ArrayList<AdVocAsStimulus> nonwords = instance.initialiseNonwords(nonwordstmp);
         ArrayList<String> spellings = new ArrayList<>(nonwords.size());
-        for (AtomBookkeepingStimulus stimulus : nonwords) {
-            spellings.add(stimulus.getSpelling());
+        for (AdVocAsStimulus stimulus : nonwords) {
+            spellings.add(stimulus.getLabel());
         }
         HashSet<String> set = new HashSet(spellings);
         assertEquals(ConstantsNonWords.NONWORDS_ARRAY.length, set.size()); // fails if there are repititions or permutation was incorrect

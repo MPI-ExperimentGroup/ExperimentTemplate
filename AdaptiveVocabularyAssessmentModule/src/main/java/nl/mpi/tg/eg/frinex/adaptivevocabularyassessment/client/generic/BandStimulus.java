@@ -15,25 +15,28 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.common.model.AbstractStimulus;
 
 /**
  * @since Oct 27, 2017 2:13:03 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class AdVocAsAtomStimulus extends AbstractStimulus {
+public abstract class BandStimulus extends AbstractStimulus {
 
-    private final int bandNumber; 
+    private int bandNumber; 
    
-    public AdVocAsAtomStimulus(String uniqueId, String label, String correctResponses, int bandNumber) {
-        super(uniqueId, new Tag[0], label, Constants.NONWORD+','+Constants.WORD, correctResponses);
+    public BandStimulus(String uniqueId, Tag tags[], String label, String ratingLabels, String correctResponses, int bandNumber) {
+        super(uniqueId, tags, label, ratingLabels, correctResponses);
         this.bandNumber = bandNumber;
     }
     
     public int getBandNumber (){
         return this.bandNumber;
+    }
+    
+     public void setBandNumber (int bNummer){
+        this.bandNumber=bNummer;
     }
 }

@@ -20,13 +20,12 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 import utils.Utils;
 import java.util.Random;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -81,7 +80,7 @@ public class MainTest {
             provider.nextStimulus(0);
             currentExperimentCount = provider.getCurrentStimulusIndex();
             //System.out.println(currentExperimentCount);
-            AdVocAsAtomStimulus stimulus = provider.getCurrentStimulus();
+            BookkeepingStimulus stimulus = provider.getCurrentStimulus();
             String answer = this.probabilisticAnswerer(stimulus, prob, rnd);
             boolean isCorrect = provider.isCorrectResponse(stimulus, answer);
             hasNextStimulus = provider.hasNextStimulus(0);
@@ -120,7 +119,7 @@ public class MainTest {
         // make to wrong answers to start fine tuning immediately
         provider.hasNextStimulus(0);
         provider.nextStimulus(0);
-        AdVocAsAtomStimulus stimulus = provider.getCurrentStimulus();
+        BookkeepingStimulus stimulus = provider.getCurrentStimulus();
         String answer = this.makeResponseWrong(stimulus);
         boolean isCorrect = provider.isCorrectResponse(stimulus, answer);
         
@@ -169,7 +168,7 @@ public class MainTest {
         System.out.println("Done with the long test");
     }
 
-    private String probabilisticAnswerer(AdVocAsAtomStimulus stimulus, double correctnessUpperBound, Random rnd) throws Exception {
+    private String probabilisticAnswerer(BookkeepingStimulus stimulus, double correctnessUpperBound, Random rnd) throws Exception {
         String retVal = stimulus.getCorrectResponses();
         double rndDouble = rnd.nextDouble();
         //System.out.println("*****");
@@ -191,7 +190,7 @@ public class MainTest {
         return retVal;
     }
     
-    private String makeResponseWrong(AdVocAsAtomStimulus stimulus){
+    private String makeResponseWrong(BookkeepingStimulus stimulus){
        String answer = Constants.NONWORD;
         if (stimulus.getCorrectResponses().equals(Constants.NONWORD)) {
             answer = Constants.WORD;

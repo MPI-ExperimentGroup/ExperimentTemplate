@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsBookkeepingStimulus;
 import utils.VocabularyFromFiles;
 import java.util.ArrayList;
 import org.junit.After;
@@ -70,7 +70,7 @@ public class UtilsTest {
     @Test
     public void testWriteCsvFileFastTrack() throws Exception {
         System.out.println("writeCsvFileFastTrack");
-        ArrayList<AtomBookkeepingStimulus> stimulae = null;
+        ArrayList<AdVocAsBookkeepingStimulus> stimulae = null;
         int stopBand = 0;
         //Utils.writeCsvFileFastTrack(stimulae, stopBand);
         // TODO review the generated test code and remove the default call to fail.

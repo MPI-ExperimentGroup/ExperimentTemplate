@@ -18,7 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client;
 
 import java.util.ArrayList;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsStimulus;
 
 /**
  *
@@ -27,44 +27,44 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtom
 public class Vocabulary {
     
      // the sequence of words in each band should be randomly reshuffled any time we generate it
-    public ArrayList<ArrayList<AtomBookkeepingStimulus>> initialiseWords(AdVocAsAtomStimulus[][] wrds) {
+    public ArrayList<ArrayList<AdVocAsStimulus>> initialiseWords(AdVocAsStimulus[][] wrds) {
         if (wrds == null || wrds.length == 0) {
             System.out.println("Empty array of words in bands");
             return new ArrayList<>();
         }
-        ArrayList<ArrayList<AtomBookkeepingStimulus>> retVal = new ArrayList<>(Constants.NUMBER_OF_BANDS);
+        ArrayList<ArrayList<AdVocAsStimulus>> retVal = new ArrayList<>(Constants.NUMBER_OF_BANDS);
         for (int bandIndex = 0; bandIndex < wrds.length; bandIndex++) {
             if (wrds[bandIndex] == null && wrds[bandIndex].length == 0) {
                 System.out.println("Empty array of words for band " + bandIndex + "is empty.");
-                retVal.add(new ArrayList<AtomBookkeepingStimulus>());
+                retVal.add(new ArrayList<AdVocAsStimulus>());
             } else {
                 int[] index =RandomIndexing.generateRandomArray(wrds[bandIndex].length);
                 
-                retVal.add(new ArrayList<AtomBookkeepingStimulus>(Constants.WORDS_PER_BAND));
+                retVal.add(new ArrayList<AdVocAsStimulus>(Constants.WORDS_PER_BAND));
                 for (int i = 0;i < wrds[bandIndex].length; i ++) {
                     int ind = index[i];
-                    AtomBookkeepingStimulus stimulus = new AtomBookkeepingStimulus(wrds[bandIndex][ind]);
-                    retVal.get(bandIndex).add(stimulus);
+                    retVal.get(bandIndex).add(wrds[bandIndex][ind]);
                 }
             }
         }
         return retVal;
     }
+    
+    
 
     // the sequence of nonwords should be randomly reshuffled any time we generate it
-    public ArrayList<AtomBookkeepingStimulus> initialiseNonwords(ArrayList<AdVocAsAtomStimulus> nonwrds) {
+    public ArrayList<AdVocAsStimulus> initialiseNonwords(ArrayList<AdVocAsStimulus> nonwrds) {
         if (nonwrds == null || nonwrds.isEmpty()) {
             System.out.println("Empty array of nonwords");
             return new ArrayList<>();
         }
         
-        ArrayList<AtomBookkeepingStimulus> retVal = new ArrayList<>(nonwrds.size());
+        ArrayList<AdVocAsStimulus> retVal = new ArrayList<>(nonwrds.size());
         int[] index = RandomIndexing.generateRandomArray(nonwrds.size());
                 
         for (int i=0; i<index.length; i++) {
             int ind=index[i];
-            AtomBookkeepingStimulus stimulus = new AtomBookkeepingStimulus(nonwrds.get(ind));
-            retVal.add(stimulus);
+            retVal.add(nonwrds.get(ind));
         }
         return retVal;
     }

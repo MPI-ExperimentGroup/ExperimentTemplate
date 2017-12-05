@@ -23,9 +23,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.AtomBookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsAtomStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 
 /**
@@ -35,18 +35,18 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsSt
 public class Utils {
 
     public static void testPrint() {
-        AdVocAsAtomStimulus[][] tmpwords = VocabularyFromFiles.getWords();
+        AdVocAsStimulus[][] tmpwords = VocabularyFromFiles.getWords();
         System.out.println("Words \n");
 
         for (int i = 0; i < tmpwords.length; i++) {
             System.out.println(i + 1);
-            for (AdVocAsAtomStimulus unit : tmpwords[i]) {
+            for (AdVocAsStimulus unit : tmpwords[i]) {
                 System.out.println(unit.getLabel());
             }
         }
-        ArrayList<AdVocAsAtomStimulus> tmpnonwords = VocabularyFromFiles.getNonwords();
+        ArrayList<AdVocAsStimulus> tmpnonwords = VocabularyFromFiles.getNonwords();
         System.out.println("Non words \n");
-        for (AdVocAsAtomStimulus nonword : tmpnonwords) {
+        for (AdVocAsStimulus nonword : tmpnonwords) {
             System.out.println(nonword.getLabel());
         }
     }
