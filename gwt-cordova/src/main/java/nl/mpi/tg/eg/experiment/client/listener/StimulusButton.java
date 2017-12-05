@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.listener;
 
-import com.google.gwt.user.client.ui.ButtonBase;
+import com.google.gwt.user.client.ui.Widget;
 
 /**
  * @since Nov 30, 2017 4:04:58 PM (creation date)
@@ -25,7 +25,15 @@ import com.google.gwt.user.client.ui.ButtonBase;
  */
 public interface StimulusButton {
 
-    ButtonBase getButton();
+    Widget getWidget();
+
+    void addStyleName(String styleName);
+
+    void removeStyleName(String styleName);
+
+    void setEnabled(boolean enabled);
+
+    void setVisible(boolean visible);
 
     SingleShotEventListner getSingleShotEventListner();
 }
