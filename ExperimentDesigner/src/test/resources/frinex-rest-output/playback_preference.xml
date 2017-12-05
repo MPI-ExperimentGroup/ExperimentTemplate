@@ -77,12 +77,14 @@
                 <touchInputCaptureStart showControls="true"/>
                 <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayCurtain" src="huisje_02.jpg">
                     <disableStimulusButtons/>
+                    <playVideo/>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
                 <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" styleName="rightOverlayCurtain" src="huisje_02.jpg">
                     <disableStimulusButtons/>
+                    <playVideo/>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
