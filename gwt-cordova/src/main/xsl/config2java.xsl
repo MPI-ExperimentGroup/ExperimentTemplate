@@ -400,6 +400,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             }</xsl:text>
         <xsl:value-of select="if(local-name() eq 'touchInputStimulusButton') then concat(', &quot;', @eventTag, '&quot;') else ''" />
         <xsl:value-of select="if(local-name() eq 'targetFooterButton' or local-name() eq 'actionFooterButton') then '' else if(@styleName) then concat(', &quot;', @styleName, '&quot;') else ', null'" />
+        <xsl:value-of select="if(local-name() eq 'touchInputStimulusButton') then if(@src) then concat(', &quot;', @src, '&quot;') else ', null' else ''" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
@@ -480,8 +481,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@src) then concat(', &quot;', @src, '&quot;') else ''" />
         <!--<xsl:value-of select="if(@styleName and local-name() ne 'touchInputZone') then ', ' else ''" />-->        
         <xsl:value-of select="if(@showControls) then @showControls eq 'true' else ''" />        
-        <xsl:value-of select="if(@styleName) then concat(', &quot;', @styleName, '&quot;') else ''" />        
-        <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />        
+        <xsl:value-of select="if(@styleName) then concat(', &quot;', @styleName, '&quot;') else ''" />    
+        <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />
         <xsl:value-of select="if(@autoPlay) then concat(', ', @autoPlay) else ''" />        
         <xsl:value-of select="if(local-name() eq 'nextStimulusButton' or local-name() eq 'sendGroupMessageButton') then ', ' else ''" />        
         <xsl:value-of select="if(@repeatIncorrect) then @repeatIncorrect eq 'true' else ''" />
