@@ -165,7 +165,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
                 }
             });
             if (labelData.getUserId().equals(userResults.getUserData().getUserId())) {
-                optionButton.getButton().addStyleName("optionButtonHighlight");
+                optionButton.addStyleName("optionButtonHighlight");
             }
         }
     }
