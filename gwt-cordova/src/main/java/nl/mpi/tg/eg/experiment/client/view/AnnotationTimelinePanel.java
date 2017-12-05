@@ -42,6 +42,7 @@ import java.util.Set;
 import nl.mpi.tg.eg.experiment.client.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationData;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationSet;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -55,7 +56,7 @@ public class AnnotationTimelinePanel extends FocusPanel {
 
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     private final HashMap<AnnotationData, Label> annotationLebels = new HashMap<>();
-    private final HashMap<Stimulus, ButtonBase> stimulusButtons = new HashMap<>();
+    private final HashMap<Stimulus, StimulusButton> stimulusButtons = new HashMap<>();
     private final HashMap<Stimulus, Integer> tierTopPositions = new HashMap<>();
     private final ArrayList<Stimulus> stimulusArray = new ArrayList<>();
     AbsolutePanel absolutePanel = new AbsolutePanel();
@@ -152,11 +153,11 @@ public class AnnotationTimelinePanel extends FocusPanel {
                         }
                     }
                     // since we dont have an included and excluded list, we instead clear all highlights then set the known highlights after that
-                    for (ButtonBase button : stimulusButtons.values()) {
+                    for (StimulusButton button : stimulusButtons.values()) {
                         button.removeStyleName("stimulusButtonHighlight");
                     }
                     for (Stimulus intersectedStimulus : intersectedStimuli) {
-                        final ButtonBase stimulusButton = stimulusButtons.get(intersectedStimulus);
+                        final StimulusButton stimulusButton = stimulusButtons.get(intersectedStimulus);
                         if (stimulusButton != null) {
                             stimulusButton.addStyleName("stimulusButtonHighlight");
                         }
@@ -197,7 +198,7 @@ public class AnnotationTimelinePanel extends FocusPanel {
                 insertAnnotation(stimulus, videoPanel, annotationTimelineView, dataFactory);
                 singleShotEventListner.resetSingleShot();
             }
-        }, UriUtils.fromString(stimulus.getImage()), stimulusCounter / columnCount, 1 + stimulusCounter % columnCount, imageWidth, null, -1).getButton());
+        }, UriUtils.fromString(stimulus.getImage()), stimulusCounter / columnCount, 1 + stimulusCounter % columnCount, imageWidth, null, -1));
     }
 
     public void insertAnnotation(final Stimulus stimulus, final VideoPanel videoPanel, final AnnotationTimelineView annotationTimelineView, final DataFactory dataFactory) {
