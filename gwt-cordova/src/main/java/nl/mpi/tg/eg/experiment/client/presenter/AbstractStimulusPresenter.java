@@ -1415,6 +1415,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         showStimulus(null, increment);
     }
 
+    protected void playVideo() {
+        ((TimedStimulusView) simpleView).startVideo();
+    }
+
+    protected void pauseVideo() {
+        ((TimedStimulusView) simpleView).stopVideo();
+    }
+
     protected void groupResponseStimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         stimulusImage(stimulusProvider.getStimuliFromString(groupParticipantService.getResponseStimulusId()), percentOfPage, maxHeight, maxWidth, animateType, false, null, postLoadMs, null, null, timedStimulusListener, null);
     }
