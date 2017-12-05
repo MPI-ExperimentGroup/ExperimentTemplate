@@ -35,7 +35,6 @@ import com.google.gwt.event.dom.client.TouchStartEvent;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
@@ -49,6 +48,7 @@ import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Widget;
 import java.util.ArrayList;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.Messages;
@@ -284,16 +284,16 @@ public class ComplexView extends SimpleView {
     public StimulusButton addOptionButton(final PresenterEventListner presenterListerner, String styleName) {
         StimulusButton nextButton = getOptionButton(presenterListerner);
         if (styleName != null) {
-            nextButton.getButton().addStyleName(styleName);
+            nextButton.addStyleName(styleName);
         }
-        getActivePanel().add(nextButton.getButton());
+        getActivePanel().add(nextButton.getWidget());
         return nextButton;
     }
 
     public StimulusButton addFooterButton(final PresenterEventListner presenterListener) {
         StimulusButton nextButton = getOptionButton(presenterListener);
-        nextButton.getButton().addStyleName("footerButton");
-        addToFooter(nextButton.getButton());
+        nextButton.addStyleName("footerButton");
+        addToFooter(nextButton.getWidget());
         return nextButton;
     }
 
@@ -312,10 +312,10 @@ public class ComplexView extends SimpleView {
         for (PresenterEventListner listener : presenterListeners) {
             StimulusButton nextButton = getOptionButton(listener);
             if (footerButtons) {
-                nextButton.getButton().addStyleName("footerButton");
+                nextButton.addStyleName("footerButton");
             }
-            buttonsPanel.add(nextButton.getButton());
-            buttonsPanel.setCellWidth(nextButton.getButton(), (100 / presenterListeners.size()) + "%");
+            buttonsPanel.add(nextButton.getWidget());
+            buttonsPanel.setCellWidth(nextButton.getWidget(), (100 / presenterListeners.size()) + "%");
         }
         verticalPanel.setWidth("100%");
         labelsPanel.setWidth("100%");
@@ -377,9 +377,30 @@ public class ComplexView extends SimpleView {
         nextButton.addTouchEndHandler(singleShotEventListner);
         addHotKeyListner(presenterListerner, singleShotEventListner);
         return new StimulusButton() {
+
             @Override
-            public ButtonBase getButton() {
+            public Widget getWidget() {
                 return nextButton;
+            }
+
+            @Override
+            public void addStyleName(String styleName) {
+                nextButton.addStyleName(styleName);
+            }
+
+            @Override
+            public void removeStyleName(String styleName) {
+                nextButton.removeStyleName(styleName);
+            }
+
+            @Override
+            public void setEnabled(boolean enabled) {
+                nextButton.setEnabled(enabled);
+            }
+
+            @Override
+            public void setVisible(boolean visible) {
+                nextButton.setVisible(visible);
             }
 
             @Override
@@ -397,10 +418,13 @@ public class ComplexView extends SimpleView {
         }
     }
 
-    public void addImageButton(final PresenterEventListner presenterListerner, final SafeUri imagePath, final String styleName) {
+    public StimulusButton addImageButton(final PresenterEventListner presenterListerner, final SafeUri imagePath, final String styleName) {
         final Image image = new Image(imagePath);
         final Button imageButton = new Button();
         imageButton.getElement().appendChild(image.getElement());
+        if (styleName != null) {
+            image.addStyleName(styleName);
+        }
         imageButton.addStyleName((styleName == null) ? "imageButton" : styleName);
         imageButton.setEnabled(true);
         getActivePanel().add(imageButton);
@@ -419,6 +443,39 @@ public class ComplexView extends SimpleView {
         imageButton.addTouchMoveHandler(singleShotEventListner);
         imageButton.addTouchEndHandler(singleShotEventListner);
         addHotKeyListner(presenterListerner, singleShotEventListner);
+        return new StimulusButton() {
+            @Override
+            public Widget getWidget() {
+                return imageButton;
+            }
+
+            @Override
+            public void addStyleName(String styleName) {
+                imageButton.addStyleName(styleName);
+                image.addStyleName(styleName);
+            }
+
+            @Override
+            public void removeStyleName(String styleName) {
+                imageButton.removeStyleName(styleName);
+                image.removeStyleName(styleName);
+            }
+
+            @Override
+            public void setEnabled(boolean enabled) {
+                imageButton.setEnabled(enabled);
+            }
+
+            @Override
+            public void setVisible(boolean visible) {
+                imageButton.setVisible(visible);
+            }
+
+            @Override
+            public SingleShotEventListner getSingleShotEventListner() {
+                return singleShotEventListner;
+            }
+        };
     }
 
     public HorizontalPanel addProgressBar(int minimum, int value, int maximum) {
