@@ -355,6 +355,37 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
 .gwt-Button.optionButton.leftOverlayButton, .borderedVideoLeft {
     left: 1vw;
 }
+.gwt-Image.leftOverlayCurtain, .gwt-Image.rightOverlayCurtain,
+.gwt-Button.leftOverlayCurtain, .gwt-Button.rightOverlayCurtain,
+.gwt-Button.optionButton.leftOverlayCurtain, .gwt-Button.optionButton.rightOverlayCurtain {
+    -webkit-transition: width 2s;
+    transition: width 2s;
+    top: 80px;
+    position: fixed;
+    height: 36vw;
+}
+.gwt-Image.leftOverlayCurtain, .gwt-Image.rightOverlayCurtain {
+    width: 50%;
+
+}
+.gwt-Button.leftOverlayCurtain:hover, .gwt-Button.rightOverlayCurtain:hover,
+.gwt-Button.leftOverlayCurtain[disabled]:hover, .gwt-Button.rightOverlayCurtain[disabled]:hover,
+.gwt-Button.leftOverlayCurtain, .gwt-Button.rightOverlayCurtain {
+    width: 100%;    
+    background: none;
+    border: none;
+}
+.gwt-Image.leftOverlayCurtainIntersection, .gwt-Image.rightOverlayCurtainIntersection {
+    width: 1vw;
+}
+.gwt-Image.rightOverlayCurtain,
+.gwt-Button.optionButton.rightOverlayCurtain {
+    right: 0vw;
+}
+.gwt-Image.leftOverlayCurtain,
+.gwt-Button.optionButton.leftOverlayCurtain {
+    left: 0vw;
+}
 .gwt-Button.optionButton.rightOverlayButton, .gwt-Button.optionButton.leftOverlayButton {
     top: 80px;
     position: fixed;
