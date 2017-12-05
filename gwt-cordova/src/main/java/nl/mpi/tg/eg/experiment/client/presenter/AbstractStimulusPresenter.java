@@ -1050,8 +1050,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    public void touchInputStimulusButton(final PresenterEventListner presenterListerner, final String eventTag, final String styleName) {
-        final StimulusButton buttonItem = ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName);
+    public void touchInputStimulusButton(final PresenterEventListner presenterListerner, final String eventTag, final String styleName, final String imagePath) {
+        final StimulusButton buttonItem;
+        if (imagePath == null) {
+            buttonItem = ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName);
+        } else {
+            buttonItem = ((ComplexView) simpleView).addImageButton(presenterListerner, UriUtils.fromString(serviceLocations.staticFilesUrl() + imagePath), styleName);
+        }
         buttonList.add(buttonItem);
         touchInputCapture.addTouchZone(new TouchInputZone() {
             @Override
@@ -1061,23 +1066,23 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
             @Override
             public boolean intersects(int xPos, int yPos) {
-                boolean returnValue = (yPos >= buttonItem.getButton().getAbsoluteTop()
-                        && yPos <= buttonItem.getButton().getAbsoluteTop() + buttonItem.getButton().getOffsetHeight()
-                        && xPos >= buttonItem.getButton().getAbsoluteLeft()
-                        && xPos <= buttonItem.getButton().getAbsoluteLeft() + buttonItem.getButton().getOffsetWidth());
+                boolean returnValue = (yPos >= buttonItem.getWidget().getAbsoluteTop()
+                        && yPos <= buttonItem.getWidget().getAbsoluteTop() + buttonItem.getWidget().getOffsetHeight()
+                        && xPos >= buttonItem.getWidget().getAbsoluteLeft()
+                        && xPos <= buttonItem.getWidget().getAbsoluteLeft() + buttonItem.getWidget().getOffsetWidth());
                 // this will only highlight on the last touch count, move this to the touchInputCapture
                 return returnValue;
             }
 
             @Override
             public void triggerEvent() {
-                buttonItem.getButton().addStyleName(styleName + "Intersection");
+                buttonItem.addStyleName(styleName + "Intersection");
                 buttonItem.getSingleShotEventListner().eventFired();
             }
 
             @Override
             public void clearEvent() {
-                buttonItem.getButton().removeStyleName(styleName + "Intersection");
+                buttonItem.removeStyleName(styleName + "Intersection");
             }
         });
     }
@@ -1291,7 +1296,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 for (StimulusButton currentButton : buttonList) {
-                    currentButton.getButton().setEnabled(false);
+                    currentButton.setEnabled(false);
                 }
                 if (groupParticipantService != null) {
                     groupParticipantService.setResponseStimulusId(currentStimulusItem.getUniqueId());
@@ -1311,29 +1316,29 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     public void disableStimulusButtons() {
         for (StimulusButton currentButton : buttonList) {
-            currentButton.getButton().setEnabled(false);
+            currentButton.setEnabled(false);
         }
 //        ((TimedStimulusView) simpleView).addText("disableStimulusButtons: " + duration.elapsedMillis() + "ms");
     }
 
     public void hideStimulusButtons() {
         for (StimulusButton currentButton : buttonList) {
-            currentButton.getButton().setVisible(false);
+            currentButton.setVisible(false);
         }
 //        ((TimedStimulusView) simpleView).addText("hideStimulusButtons: " + duration.elapsedMillis() + "ms");
     }
 
     public void showStimulusButtons() {
         for (StimulusButton currentButton : buttonList) {
-            currentButton.getButton().setVisible(true);
+            currentButton.setVisible(true);
         }
 //        ((TimedStimulusView) simpleView).addText("showStimulusButtons: " + duration.elapsedMillis() + "ms");
     }
 
     public void enableStimulusButtons() {
         for (StimulusButton currentButton : buttonList) {
-            currentButton.getButton().setEnabled(true);
-            currentButton.getButton().removeStyleName("optionButtonActivated");
+            currentButton.setEnabled(true);
+            currentButton.removeStyleName("optionButtonActivated");
         }
 //        ((TimedStimulusView) simpleView).addText("enableStimulusButtons: " + duration.elapsedMillis() + "ms");
     }
@@ -1528,7 +1533,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         };
         nextButtonEventListnerList.add(eventListner);
         final StimulusButton prevButton = ((TimedStimulusView) simpleView).addOptionButton(eventListner);
-        prevButton.getButton().setEnabled(stimulusProvider.hasNextStimulus(-1));
+        prevButton.setEnabled(stimulusProvider.hasNextStimulus(-1));
     }
 
     protected void nextStimulusButton(final String eventTag, final String buttonLabel, final boolean repeatIncorrect, final int hotKey) {
