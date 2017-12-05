@@ -392,6 +392,14 @@ public class TimedStimulusView extends ComplexView {
         }
     }
 
+    public void startVideo() {
+        for (Video video : videoList) {
+            if (video != null) {
+                video.play();
+            }
+        }
+    }
+
     public void stopTimers() {
         for (Timer timer : timerList) {
             if (timer != null) {
