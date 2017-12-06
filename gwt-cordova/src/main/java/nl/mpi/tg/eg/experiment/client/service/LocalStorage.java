@@ -51,19 +51,19 @@ public class LocalStorage {
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
 
     private String getAPP_STATE(UserId userId) {
-        return messages.appNameInternal() + ".AppState." + userId.toString();
+        return messages.appNameInternal() + "." + userId.toString() + ".AppState";
     }
 
     private String getUSER_RESULTS(UserId userId, String valueName) {
-        return messages.appNameInternal() + ".UserResults." + userId.toString() + "." + valueName;
+        return messages.appNameInternal() + "." + userId.toString() + ".UserResults." + valueName;
     }
 
     private boolean isUSER_RESULTS(String keyName, String postName) {
-        return keyName.startsWith(messages.appNameInternal() + ".UserResults.") && keyName.endsWith(postName);
+        return keyName.startsWith(messages.appNameInternal()) && keyName.endsWith(".UserResults." + postName);
     }
 
     private String getUSER_RESULTS_CONNECTION(UserId userId, String valueName) {
-        return messages.appNameInternal() + ".UserResults." + userId.toString() + "." + valueName + ".connectedUserId";
+        return messages.appNameInternal() + "." + userId.toString() + ".UserResults." + valueName + ".connectedUserId";
     }
 
     private String getLAST_USER_ID() {
@@ -72,20 +72,20 @@ public class LocalStorage {
 
     private String getGAME_DATA(UserId userId) {
         // todo: perhaps merge game and screen data concepts
-        return messages.appNameInternal() + ".GameData." + userId.toString();
+        return messages.appNameInternal() + "." + userId.toString() + ".GameData";
     }
 
     private String getGAME_DATA(String label, UserId userId) {
         // todo: perhaps merge game and screen data concepts
-        return messages.appNameInternal() + ".GameData." + label + "." + userId.toString();
+        return messages.appNameInternal() + "." + userId.toString() + ".GameData." + label;
     }
 
     private String getSTIMULI_DATA(UserId userId, Stimulus stimulus) {
-        return messages.appNameInternal() + ".StimuliData." + userId.toString() + "." + stimulus.getUniqueId();
+        return messages.appNameInternal() + "." + userId.toString() + ".StimuliData." + stimulus.getUniqueId();
     }
 
     private String getSCREEN_DATA(String endPoint, UserId userId) {
-        return messages.appNameInternal() + ".ScreenData." + endPoint + "." + userId.toString(); // this is an exception in the order of the key parts, is this avoidable?
+        return messages.appNameInternal() + "." + userId.toString() + ".ScreenData." + endPoint; // this is an exception in the order of the key parts, is this avoidable?
 //        STOWED_DATA = messages.appNameInternal() + ".SentData.";
 //        FAILED_DATA = messages.appNameInternal() + ".FailedData.";
     }
@@ -97,7 +97,7 @@ public class LocalStorage {
         return dataStore;
     }
 
-    public void clearApplicationData(UserId userId) {
+    public void clearUserData(UserId userId) {
         loadStorage();
         // todo: it would be good to do this on an application basis
 //        clear();
