@@ -17,13 +17,21 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import utils.Utils;
 import java.util.Random;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service.AdVocAsStimuliProviderTest;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -60,143 +68,59 @@ public class MainTest {
      */
     @Test
     public void testMain() throws Exception {
-        for (int i = 1; i<11; i++) {
-            double prob = 0.5+i*0.05;
+        for (int i = 1; i < 11; i++) {
+            double prob = 0.5 + i * 0.05;
             //System.out.println(prob);
             this.testRound(prob);
         }
-        this.longTest();
     }
-    
-    private void testRound(double prob) throws Exception{
-        Random rnd = new Random();
 
-        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
-        provider.initialiseStimuliState("");
+    private void testRound(double prob) throws Exception {
+        AdVocAsStimuliProviderTest tester = new AdVocAsStimuliProviderTest();
+        AdVocAsStimuliProvider provider = tester.testRound(prob);
 
-        boolean hasNextStimulus = provider.hasNextStimulus(0);
-        int currentExperimentCount = 0;
-        while (hasNextStimulus) {
-            provider.nextStimulus(0);
-            currentExperimentCount = provider.getCurrentStimulusIndex();
-            //System.out.println(currentExperimentCount);
-            BookkeepingStimulus stimulus = provider.getCurrentStimulus();
-            String answer = this.probabilisticAnswerer(stimulus, prob, rnd);
-            boolean isCorrect = provider.isCorrectResponse(stimulus, answer);
-            hasNextStimulus = provider.hasNextStimulus(0);
-        }
-
-        
         boolean enoughFineTuningStimulae = provider.getEnoughFinetuningStimuli();
         boolean cycle2 = provider.getCycel2();
         boolean champion = provider.getChampion();
         boolean looser = provider.getLooser();
-        
+
         int lastCorrectBandFastTrack = provider.getBestFastTrackBand();
         System.out.println("last correct band fast track: " + lastCorrectBandFastTrack);
         //Utils.writeCsvFileFastTrack(provider, lastCorrectBandFastTrack, OUTPUT_DIRECTORY);
 
-        String message = "correct_"+prob+"__cycel2_" + cycle2
+        String message = "correct_" + prob + "__cycel2_" + cycle2
                 + "__champion_" + champion + "__looser_" + looser + "__enough_" + enoughFineTuningStimulae;
 
         long millis = System.currentTimeMillis();
         //String fileNameCSV = "Fine_tuning_short_history_" + message + "_" + millis + ".csv";
         //Utils.writeCsvFileFineTuningHistoryShortened(provider, OUTPUT_DIRECTORY, fileNameCSV);
-        
+
         String fileNameHTML = "Full_user_history_" + message + "_" + millis + ".html";
         Utils.writeHtmlFullUserResults(provider, OUTPUT_DIRECTORY, fileNameHTML);
-        
+
         Utils.writeCsvMapAsOneCsv(provider, OUTPUT_DIRECTORY, "Full_user_history_" + message + "_" + millis + ".csv");
-        System.out.println("Done with probability  "+prob);
+        System.out.println("Done with probability  " + prob);
     }
-    
-    
-    public void longTest() throws Exception{
-        
-        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
-        provider.initialiseStimuliState("");
-        
-        // make to wrong answers to start fine tuning immediately
-        provider.hasNextStimulus(0);
-        provider.nextStimulus(0);
-        BookkeepingStimulus stimulus = provider.getCurrentStimulus();
-        String answer = this.makeResponseWrong(stimulus);
-        boolean isCorrect = provider.isCorrectResponse(stimulus, answer);
-        
-        provider.hasNextStimulus(0);
-        provider.nextStimulus(0);
-        stimulus = provider.getCurrentStimulus();
-        answer = this.makeResponseWrong(stimulus);
-        isCorrect = provider.isCorrectResponse(stimulus, answer);
-        
-        boolean hasNextStimulus = provider.hasNextStimulus(0);
-        // fine tuning correct till the band is 53 or more then back till the band is 20 or less
-        int currentExperimentCount = 0;
-        boolean runHigher=true;
-        while (hasNextStimulus) {
-            if (runHigher && provider.getCurrentBandNumber() == 54) {
-               runHigher = false; // start climbing backwards
-            }
-            if (!runHigher && provider.getCurrentBandNumber() == 20) {
-               runHigher = true; // start climbing forward
-            }
-            provider.nextStimulus(0);
-            currentExperimentCount = provider.getCurrentStimulusIndex();
-            //System.out.println(currentExperimentCount);
-            stimulus = provider.getCurrentStimulus();
-            if (runHigher) {
-                answer = stimulus.getCorrectResponses();
-            } else {
-                answer = this.makeResponseWrong(stimulus);
-             }
-            isCorrect = provider.isCorrectResponse(stimulus, answer);
-            hasNextStimulus = provider.hasNextStimulus(0);
-        }
+
+    @Test
+    public void notEnoughStimuliTest() throws Exception {
+
+        AdVocAsStimuliProviderTest tester = new AdVocAsStimuliProviderTest();
+        AdVocAsStimuliProvider provider = tester.longFineTuningTest();
+
         boolean enoughFineTuningStimulae = provider.getEnoughFinetuningStimuli();
         boolean cycle2 = provider.getCycel2();
         boolean champion = provider.getChampion();
         boolean looser = provider.getLooser();
-        
-       
-        String message = "longtest"+"__cycel2_" + cycle2
+
+        String message = "longtest" + "__cycel2_" + cycle2
                 + "__champion_" + champion + "__looser_" + looser + "__enough_" + enoughFineTuningStimulae;
 
         String fileNameHTML = "Full_user_history_" + message + ".html";
         Utils.writeHtmlFullUserResults(provider, OUTPUT_DIRECTORY, fileNameHTML);
-        
-        Utils.writeCsvMapAsOneCsv(provider, OUTPUT_DIRECTORY, "Full_user_history_" + message +  ".csv");
+
+        Utils.writeCsvMapAsOneCsv(provider, OUTPUT_DIRECTORY, "Full_user_history_" + message + ".csv");
         System.out.println("Done with the long test");
     }
 
-    private String probabilisticAnswerer(BookkeepingStimulus stimulus, double correctnessUpperBound, Random rnd) throws Exception {
-        String retVal = stimulus.getCorrectResponses();
-        double rndDouble = rnd.nextDouble();
-        //System.out.println("*****");
-        //System.out.println(retVal);
-        //System.out.println(rndDouble);
-        if (rndDouble > correctnessUpperBound) { // spoil the answer
-            if (retVal.equals(Constants.WORD)) {
-                retVal = Constants.NONWORD;
-            } else {
-                if (retVal.equals(Constants.NONWORD)) {
-                    retVal =Constants.WORD;
-                } else {
-                    throw new Exception("Wrong correct reaction in the stimulus, neither word, nor nonword: " + retVal);
-                }
-            }
-        }
-        //System.out.println(retVal);
-        //System.out.println("*****");
-        return retVal;
-    }
-    
-    private String makeResponseWrong(BookkeepingStimulus stimulus){
-       String answer = Constants.NONWORD;
-        if (stimulus.getCorrectResponses().equals(Constants.NONWORD)) {
-            answer = Constants.WORD;
-        };
-        return answer;
-    }
-
- 
 }

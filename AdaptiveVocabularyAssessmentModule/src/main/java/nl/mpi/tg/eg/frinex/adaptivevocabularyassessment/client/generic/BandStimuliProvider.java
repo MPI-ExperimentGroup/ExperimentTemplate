@@ -114,11 +114,17 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     public int getCurrentBandNumber() {
         return (this.currentBandIndex + 1);
     }
+    
+    public ArrayList<RecordStimulus> getFTtuple(){
+        return this.tupleFT;
+    }
 
- 
+    public int getEndFastTrackTimeTick(){
+        return this.timeTickEndFastTrack;
+    }
       // prepared by next stimulus
     @Override
-    public BookkeepingStimulus getCurrentStimulus() {
+    public RecordStimulus getCurrentStimulus() {
         return this.responseRecord.get(this.getCurrentStimulusIndex());
     }
 
@@ -364,7 +370,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
                 ended = this.tupleFT.isEmpty();
             }
 
-            retVal = toBeContinuedLoopChecker();
+            retVal = this.toBeContinuedLoopChecker();
         }
         
         if (retVal) {
