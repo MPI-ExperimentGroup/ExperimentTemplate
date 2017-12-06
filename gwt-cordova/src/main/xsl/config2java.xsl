@@ -112,7 +112,7 @@
             <xsl:value-of select="@self" />
             <xsl:text>Presenter(widgetTag</xsl:text>
             <xsl:value-of select="
-if(@type = 'transmission' or @type = 'metadata'  or @type = 'colourReport') then ', submissionService, userResults' else
+if(@type = 'transmission' or @type = 'metadata'  or @type = 'colourReport') then ', submissionService, userResults, localStorage' else
 if(@type = 'preload') then ', new AudioPlayer(this), submissionService, userResults' else
 if(@type = 'menu') then ', userResults, localStorage' else
 if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', new AudioPlayer(this), submissionService, userResults, localStorage' else ''" />
@@ -224,7 +224,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <xsl:value-of select="@self" />
             <xsl:text>Presenter(RootLayoutPanel widgetTag</xsl:text>
             <xsl:value-of select="
-if(@type = 'transmission' or @type = 'metadata' or @type = 'colourReport') then ', DataSubmissionService submissionService, UserResults userResults' else 
+if(@type = 'transmission' or @type = 'metadata' or @type = 'colourReport') then ', DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage' else 
 if(@type = 'preload') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults' else 
 if(@type = 'menu') then ', UserResults userResults, LocalStorage localStorage' else
 if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage' else ''" />
@@ -261,7 +261,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 </xsl:when>
                 <xsl:when test="@type = 'metadata' or @type = 'transmission' or @type = 'colourReport'">
                     <xsl:text>
-                        super(widgetTag, submissionService, userResults);
+                        super(widgetTag, submissionService, userResults, localStorage);
                     </xsl:text>
                 </xsl:when>
                 <xsl:otherwise>
