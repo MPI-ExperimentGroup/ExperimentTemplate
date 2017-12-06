@@ -276,8 +276,8 @@ public class DataSubmissionService extends AbstractSubmissionService {
         }
     }
 
-    public void terminateAndDeleteStoredData(final UserId userId) {
-        localStorage.clearApplicationData(userId);
+    public void eraseUsersStoredData(final UserId userId) {
+        localStorage.clearUserData(userId);
     }
 
     private static native void trackView(String applicationState) /*-{
