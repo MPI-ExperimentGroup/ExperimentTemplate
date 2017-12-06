@@ -35,6 +35,8 @@ import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
+import nl.mpi.tg.eg.experiment.client.model.UserData;
+import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 
 /**
  * @since Jul 16, 2015 11:05:26 AM (creation date)
@@ -46,10 +48,12 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
     private final DataSubmissionService submissionService;
     final UserResults userResults;
     private final Duration duration;
+    final LocalStorage localStorage;
 
-    public AbstractDataSubmissionPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults) {
+    public AbstractDataSubmissionPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage) {
         super(widgetTag, new ComplexView());
         duration = new Duration();
+        this.localStorage = localStorage;
         this.submissionService = submissionService;
         this.userResults = userResults;
     }
@@ -80,6 +84,28 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
             @Override
             public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
                 onSuccess.postLoadTimerFired();
+            }
+        });
+    }
+
+    protected void createUserButton(final AppEventListner appEventListner, final String label, final ApplicationController.ApplicationState targetApplicationState) {
+        ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
+
+            @Override
+            public String getLabel() {
+                return label;
+            }
+
+            @Override
+            public int getHotKey() {
+                return -1;
+            }
+
+            @Override
+            public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+                userResults.setUser(new UserData());
+                localStorage.storeData(userResults);
+                appEventListner.requestApplicationState(targetApplicationState);
             }
         });
     }
