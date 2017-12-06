@@ -33,7 +33,6 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.TextBox;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
@@ -187,32 +186,38 @@ public abstract class LocalStoragePresenter extends AbstractPresenter {
         ((ComplexView) simpleView).addWidget(mouseLabel);
         ((ComplexView) simpleView).addWidget(wheelLabel);
         ((ComplexView) simpleView).addWidget(keyDownLabel);
-        final TextBox textBox = new TextBox();
-        ((ComplexView) simpleView).addWidget(textBox);
-        textBox.addKeyUpHandler(new KeyUpHandler() {
+        RootPanel root = RootPanel.get();
+        root.addDomHandler(new KeyUpHandler() {
             @Override
             public void onKeyUp(KeyUpEvent event) {
                 clickLabel.setText(event.toDebugString());
             }
-        });
-        textBox.addMouseWheelHandler(new MouseWheelHandler() {
+        }, KeyUpEvent.getType());
+        root.addDomHandler(new MouseWheelHandler() {
             @Override
             public void onMouseWheel(MouseWheelEvent event) {
-                wheelLabel.setText(event.toDebugString());
+                wheelLabel.setText(event.getX() + " : " + event.getY() + " DeltaY: " + event.getDeltaY());
             }
-        });
-        textBox.addMouseMoveHandler(new MouseMoveHandler() {
+        }, MouseWheelEvent.getType());
+        root.addDomHandler(new MouseMoveHandler() {
             @Override
             public void onMouseMove(MouseMoveEvent event) {
-                mouseLabel.setText(event.toDebugString());
+                mouseLabel.setText(event.getX() + " : " + event.getY());
             }
-        });
-        RootPanel root = RootPanel.get();
+        }, MouseMoveEvent.getType());
         root.addDomHandler(new KeyDownHandler() {
             @Override
             public void onKeyDown(KeyDownEvent event) {
 //                final int nativeKeyCode = event.getNativeKeyCode();
-                keyDownLabel.setText(event.toDebugString());
+                keyDownLabel.setText("NativeKeyCode: " + event.getNativeKeyCode()
+                        + " AltKey:" + event.isAltKeyDown()
+                        + " ControlKey:" + event.isControlKeyDown()
+                        + " DownArrow:" + event.isDownArrow()
+                        + " LeftArrow:" + event.isLeftArrow()
+                        + " MetaKey:" + event.isMetaKeyDown()
+                        + " RightArrow:" + event.isRightArrow()
+                        + " ShiftKey:" + event.isShiftKeyDown()
+                        + " UpArrow:" + event.isUpArrow());
             }
         }, KeyDownEvent.getType());
     }
