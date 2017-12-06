@@ -188,7 +188,7 @@ public class GuineaPigProject {
             testStimulusScreen.setBackWizardScreen(menuScreen);
             testStimulusScreen.setNextWizardScreen(textMenuScreen);
         }
-        WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true, true, completionScreenText2,
+        WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, false, true, true, completionScreenText2,
                 "Opnieuw beginnen",
                 "Einde van het experiment",
                 "Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.",
@@ -237,6 +237,7 @@ public class GuineaPigProject {
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
         wizardAboutScreen.setBackWizardScreen(menuScreen);
         completionScreen.setBackWizardScreen(menuScreen);
+        completionScreen.setNextWizardScreen(wizardEditUserScreen);
         wizardData.addScreen(wizardAboutScreen);
         wizardEditUserScreen.setBackWizardScreen(selectUserScreen);
 
