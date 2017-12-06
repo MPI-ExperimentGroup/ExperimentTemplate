@@ -47,11 +47,14 @@ public class LocalStorage {
     protected final String TOTAL_POTENTIAL = "totalPotential";
     protected final String CURRENT_SCORE = "currentScore";
     protected final String TOTAL_SCORE = "totalScore";
-    private final String COMPLETION_CODE = "completionCode";
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
 
     private String getAPP_STATE(UserId userId) {
         return messages.appNameInternal() + "." + userId.toString() + ".AppState";
+    }
+
+    private String getCOMPLETION_CODE(UserId userId) {
+        return messages.appNameInternal() + "." + userId.toString() + ".completionCode";
     }
 
     private String getUSER_RESULTS(UserId userId, String valueName) {
@@ -304,13 +307,13 @@ public class LocalStorage {
 
     public void saveCompletionCode(UserId userId, String completionCode) {
         loadStorage();
-        dataStore.setItem(COMPLETION_CODE + "." + userId.toString(), completionCode);
+        dataStore.setItem(getCOMPLETION_CODE(userId), completionCode);
     }
 
     public String getCompletionCode(UserId userId) {
         loadStorage();
         if (dataStore != null) {
-            final String completionCode = getCleanStoredData(COMPLETION_CODE + "." + userId.toString());
+            final String completionCode = getCleanStoredData(getCOMPLETION_CODE(userId));
             if (!completionCode.isEmpty()) {
                 return completionCode;
             }
@@ -341,7 +344,7 @@ public class LocalStorage {
             for (int itemIndex = 0; itemIndex < dataStore.getLength(); itemIndex++) {
                 final String key = dataStore.key(itemIndex);
                 if (isUSER_RESULTS(key, postName)) {
-                    final String userIdString = key.split("\\.")[2];
+                    final String userIdString = key.split("\\.")[1];
                     final String cleanStoredData = getCleanStoredData(key);
 //                    if (!cleanStoredData.isEmpty()) {
                     try {
