@@ -489,6 +489,8 @@ public class AdVocAsStimuliProviderTest {
             assertEquals(Constants.NUMBER_OF_BANDS, provider.getScore());
         }
 
+        this.checkFastTrack(provider.getResponseRecord(), provider.getEndFastTrackTimeTick(), provider.getBestFastTrackBand());
+        
         this.checkFineTuning(provider.getResponseRecord(), provider.getEndFastTrackTimeTick(), provider.getBestFastTrackBand(), cycle2, provider.getScore());
 
         return provider;
@@ -558,6 +560,7 @@ public class AdVocAsStimuliProviderTest {
         assertFalse(champion);
         assertEquals(20, provider.getBestFastTrackBand());
 
+        this.checkFastTrack(provider.getResponseRecord(), provider.getEndFastTrackTimeTick(), provider.getBestFastTrackBand());
         this.checkFineTuning(provider.getResponseRecord(), provider.getEndFastTrackTimeTick(), provider.getBestFastTrackBand(), cycle2, provider.getScore());
 
         return provider;
@@ -637,10 +640,61 @@ public class AdVocAsStimuliProviderTest {
         assertEquals(sz, records.size());
     }
 
+    private void checkFastTrack(ArrayList<AdVocAsBookkeepingStimulus> records, int lastTimeTickFastTrack, int bestFastTrackBand) {
+        AdVocAsBookkeepingStimulus stimulus = records.get(0);
+        AdVocAsBookkeepingStimulus previousStimulus;
+        if (stimulus.getBandNumber() > 0) {
+            assertEquals(Constants.START_BAND, stimulus.getBandNumber());
+        }
+        for (int i = 1; i <= lastTimeTickFastTrack; i++) {
+            previousStimulus = stimulus;
+            stimulus = records.get(i);
+            if (previousStimulus.getCorrectness()) { // correcr reaction
+                if (previousStimulus.getBandNumber() > 0 && stimulus.getBandNumber() > 0 && previousStimulus.getBandNumber() < Constants.NUMBER_OF_BANDS) {
+                    assertEquals(previousStimulus.getBandNumber() + 1, stimulus.getBandNumber());
+                }
+            } else {
+                if (i >= 2) { // check pre-previous answer
+                    boolean prepreCorrectness = records.get(i - 2).getCorrectness();
+                    if (prepreCorrectness) {
+                        // we had the first incorrect answer in a row coming to this band
+                        // this is the second chance stimulus
+                        if (previousStimulus.getBandNumber() > 0 && stimulus.getBandNumber() > 0) {
+                            // second chance
+                            assertEquals(previousStimulus.getBandNumber(), stimulus.getBandNumber());
+                        }
+                    } else {
+                        // preprevious and previous reaction were wrong!!!
+                        // we have proceeded after the second wrong answer in a row, it should not happen!!
+                        assertTrue(false);
+                    }
+                }
+            }
+        }
+        
+        stimulus = records.get(lastTimeTickFastTrack);
+        if (stimulus.getCorrectness()) {
+            // we stopped fast track because we have reached the end of the bands
+             if (stimulus.getBandNumber()>0) {
+                 assertEquals(Constants.NUMBER_OF_BANDS, stimulus.getBandNumber());
+             }
+        } else {
+            // we stopped because there were two incorrect answers in a row
+            previousStimulus = records.get(lastTimeTickFastTrack-1);
+            assertFalse(previousStimulus.getCorrectness());
+            if (lastTimeTickFastTrack>=2) {
+               assertTrue(records.get(lastTimeTickFastTrack-2).getCorrectness()); 
+            }
+        }
+        if (stimulus.getBandNumber()>0){
+            assertEquals(bestFastTrackBand, stimulus.getBandNumber());
+        }
+        
+    }
+
     private void checkFineTuning(ArrayList<AdVocAsBookkeepingStimulus> records, int lastTimeTickFastTrack, int bestFastTrackBand, boolean cycle2, int score) {
         int counterInTuple = 0;
         AdVocAsBookkeepingStimulus stimulus;
-        ArrayList<Integer> lastPosInBand = new ArrayList<>();
         ArrayList<Integer> bandSequence = new ArrayList<>();
         ArrayList<Boolean> bandSwitchReason = new ArrayList<>();
         int currentBandNumber = -1;
@@ -655,7 +709,6 @@ public class AdVocAsStimuliProviderTest {
                 if (counterInTuple == Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE) {
                     // all  4 ccorrect answers in a row
                     // they all must be in 1 band (except the nonword)
-                    lastPosInBand.add(i);
                     bandSequence.add(currentBandNumber);
                     bandSwitchReason.add(true);
                     int nonWordCounter = 0;
@@ -677,7 +730,6 @@ public class AdVocAsStimuliProviderTest {
                     counterInTuple = 0;
                 }
             } else { // wrong answer -- switch band to the lower one
-                lastPosInBand.add(i);
                 bandSequence.add(currentBandNumber);
                 bandSwitchReason.add(false);
                 // initialise next step
@@ -728,7 +780,7 @@ public class AdVocAsStimuliProviderTest {
                 // the reason for changing for the current band from the previous one 
                 //was an error of the previous band
                 if (bandSequence.get(i - 1) != 1) {
-                     assertEquals(bandSequence.get(i - 1) - 1, bandSequence.get(i).intValue());
+                    assertEquals(bandSequence.get(i - 1) - 1, bandSequence.get(i).intValue());
                 }
             }
         }
