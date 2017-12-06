@@ -35,11 +35,25 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
         super(WizardScreenEnum.WizardCompletionScreen, "Completion", "Completion", "Completion");
     }
 
-    public WizardCompletionScreen(String completedText1, final boolean allowUserRestart, boolean generateCompletionCode, String completedText2, String eraseUsersDataButtonlabel, final String screenTitle, final String could_not_contact_the_server_please_check, final String retryButtonLabel) {
+    public WizardCompletionScreen(String completedText1, final boolean allowDeleteUserRestart, boolean generateCompletionCode, String completedText2, String eraseUsersDataButtonlabel, final String screenTitle, final String could_not_contact_the_server_please_check, final String retryButtonLabel) {
         super(WizardScreenEnum.WizardCompletionScreen, screenTitle, screenTitle, screenTitle);
         wizardScreenData.setScreenText(0, completedText1);
         wizardScreenData.setScreenText(1, completedText2);
-        wizardScreenData.setScreenBoolean(0, allowUserRestart);
+        wizardScreenData.setScreenBoolean(0, allowDeleteUserRestart);
+        wizardScreenData.setScreenBoolean(3, false);
+        wizardScreenData.setScreenBoolean(1, generateCompletionCode);
+        wizardScreenData.setScreenBoolean(2, true);
+        wizardScreenData.setScreenText(2, could_not_contact_the_server_please_check);
+        wizardScreenData.setNextButton(new String[]{retryButtonLabel, eraseUsersDataButtonlabel});
+
+    }
+
+    public WizardCompletionScreen(String completedText1, final boolean allowDeleteUserRestart, final boolean allowCreateUserRestart, boolean generateCompletionCode, String completedText2, String eraseUsersDataButtonlabel, final String screenTitle, final String could_not_contact_the_server_please_check, final String retryButtonLabel) {
+        super(WizardScreenEnum.WizardCompletionScreen, screenTitle, screenTitle, screenTitle);
+        wizardScreenData.setScreenText(0, completedText1);
+        wizardScreenData.setScreenText(1, completedText2);
+        wizardScreenData.setScreenBoolean(0, allowDeleteUserRestart);
+        wizardScreenData.setScreenBoolean(3, allowCreateUserRestart);
         wizardScreenData.setScreenBoolean(1, generateCompletionCode);
         wizardScreenData.setScreenBoolean(2, true);
         wizardScreenData.setScreenText(2, could_not_contact_the_server_please_check);
@@ -52,7 +66,7 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenBooleanInfo(int index) {
-        return new String[]{"Allow User Restart", "Generate Completion Code", "Send Data"}[index];
+        return new String[]{"Allow Erase User Restart", "Generate Completion Code", "Send Data", "Allow Create User Restart"}[index];
     }
 
     @Override
@@ -106,6 +120,12 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
         if (storedWizardScreenData.getScreenBoolean(0)) {
             onSuccessFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
             onSuccessFeatureList.add(new PresenterFeature(FeatureType.eraseUsersDataButton, storedWizardScreenData.getNextButton()[1]));
+        }
+        if (storedWizardScreenData.getScreenBoolean(3)) {
+            onSuccessFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
+            final PresenterFeature createUserButton = new PresenterFeature(FeatureType.createUserButton, storedWizardScreenData.getNextButton()[1]);
+            createUserButton.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getNextWizardScreenData().getScreenTag());
+            onSuccessFeatureList.add(createUserButton);
         }
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
         return storedWizardScreenData.getPresenterScreen();
