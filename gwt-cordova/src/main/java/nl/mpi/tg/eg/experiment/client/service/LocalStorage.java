@@ -41,40 +41,53 @@ public class LocalStorage {
 
     protected final Messages messages = GWT.create(Messages.class);
     private Storage dataStore = null;
-    private final String APP_STATE;
-    private final String USER_RESULTS;
-    private final String LAST_USER_ID;
-    private final String GAME_DATA; // todo: perhaps merge game and screen data concepts
-    private final String STIMULI_DATA;
-    private final String SCREEN_DATA;
-//    private final String STOWED_DATA; // todo: send the stowed data to the server when the user has completed the entire application
-//    private final String FAILED_DATA;
-    protected final String CONNECTION = "userId";
-    protected final String MAX_SCORE;
-    protected final String GAMES_PLAYED;
-    protected final String CURRENT_POTENTIAL;
-    protected final String TOTAL_POTENTIAL;
-    protected final String CURRENT_SCORE;
-    protected final String TOTAL_SCORE;
-    private final String COMPLETION_CODE;
+    protected final String MAX_SCORE = "maxScore";
+    protected final String GAMES_PLAYED = "gamesPlayed";
+    protected final String CURRENT_POTENTIAL = "currentPotential";
+    protected final String TOTAL_POTENTIAL = "totalPotential";
+    protected final String CURRENT_SCORE = "currentScore";
+    protected final String TOTAL_SCORE = "totalScore";
+    private final String COMPLETION_CODE = "completionCode";
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
 
-    public LocalStorage() {
-        APP_STATE = messages.appNameInternal() + ".AppState.";
-        USER_RESULTS = messages.appNameInternal() + ".UserResults.";
-        LAST_USER_ID = messages.appNameInternal() + ".LastUserId";
-        GAME_DATA = messages.appNameInternal() + ".GameData.";
-        STIMULI_DATA = messages.appNameInternal() + ".StimuliData.";
-        SCREEN_DATA = messages.appNameInternal() + ".ScreenData.";
+    private String getAPP_STATE(UserId userId) {
+        return messages.appNameInternal() + ".AppState." + userId.toString();
+    }
+
+    private String getUSER_RESULTS(UserId userId, String valueName) {
+        return messages.appNameInternal() + ".UserResults." + userId.toString() + "." + valueName;
+    }
+
+    private boolean isUSER_RESULTS(String keyName, String postName) {
+        return keyName.startsWith(messages.appNameInternal() + ".UserResults.") && keyName.endsWith(postName);
+    }
+
+    private String getUSER_RESULTS_CONNECTION(UserId userId, String valueName) {
+        return messages.appNameInternal() + ".UserResults." + userId.toString() + "." + valueName + ".connectedUserId";
+    }
+
+    private String getLAST_USER_ID() {
+        return messages.appNameInternal() + ".LastUserId";
+    }
+
+    private String getGAME_DATA(UserId userId) {
+        // todo: perhaps merge game and screen data concepts
+        return messages.appNameInternal() + ".GameData." + userId.toString();
+    }
+
+    private String getGAME_DATA(String label, UserId userId) {
+        // todo: perhaps merge game and screen data concepts
+        return messages.appNameInternal() + ".GameData." + label + "." + userId.toString();
+    }
+
+    private String getSTIMULI_DATA(UserId userId, Stimulus stimulus) {
+        return messages.appNameInternal() + ".StimuliData." + userId.toString() + "." + stimulus.getUniqueId();
+    }
+
+    private String getSCREEN_DATA(String endPoint, UserId userId) {
+        return messages.appNameInternal() + ".ScreenData." + endPoint + "." + userId.toString(); // this is an exception in the order of the key parts, is this avoidable?
 //        STOWED_DATA = messages.appNameInternal() + ".SentData.";
 //        FAILED_DATA = messages.appNameInternal() + ".FailedData.";
-        MAX_SCORE = messages.appNameInternal() + ".maxScore";
-        GAMES_PLAYED = messages.appNameInternal() + ".gamesPlayed";
-        CURRENT_POTENTIAL = messages.appNameInternal() + ".currentPotential";
-        TOTAL_POTENTIAL = messages.appNameInternal() + ".totalPotential";
-        CURRENT_SCORE = messages.appNameInternal() + ".currentScore";
-        TOTAL_SCORE = messages.appNameInternal() + ".totalScore";
-        COMPLETION_CODE = messages.appNameInternal() + ".completionCode";
     }
 
     private Storage loadStorage() {
@@ -91,35 +104,16 @@ public class LocalStorage {
         if (dataStore != null) {
             for (int itemIndex = dataStore.getLength() - 1; itemIndex > -1; itemIndex--) {
                 final String key = dataStore.key(itemIndex);
-                if (key.startsWith(messages.appNameInternal())) { // && key.contains(userId.toString())) {
+                if (key.startsWith(messages.appNameInternal() + "." + userId.toString())) {
                     dataStore.removeItem(key);
                 }
             }
         }
-//        dataStore.setItem(APP_STATE, "");
-//        dataStore.setItem(USER_RESULTS + userId.toString(), "");
-//        dataStore.setItem(LAST_USER_ID + userId.toString(), "");
-//        dataStore.setItem(GAME_DATA + userId.toString(), "");
-//        dataStore.setItem(SCREEN_DATA + userId.toString(), "");
-//        dataStore.setItem(STOWED_DATA + userId.toString(), "");
-//        dataStore.setItem(MAX_SCORE + userId.toString(), "");
-//        dataStore.setItem(GAMES_PLAYED + userId.toString(), "");
-//        dataStore.setItem(COMPLETION_CODE + userId.toString(), "");
-//
-//        dataStore.removeItem(APP_STATE);
-//        dataStore.removeItem(USER_RESULTS + userId.toString());
-//        dataStore.removeItem(LAST_USER_ID + userId.toString());
-//        dataStore.removeItem(GAME_DATA + userId.toString());
-//        dataStore.removeItem(SCREEN_DATA + userId.toString());
-//        dataStore.removeItem(STOWED_DATA + userId.toString());
-//        dataStore.removeItem(MAX_SCORE + userId.toString());
-//        dataStore.removeItem(GAMES_PLAYED + userId.toString());
-//        dataStore.removeItem(COMPLETION_CODE + userId.toString());
     }
 
     public String getStoredGameData(UserId userId) {
         loadStorage();
-        return getCleanStoredData(GAME_DATA + userId.toString());
+        return getCleanStoredData(getGAME_DATA(userId));
     }
 
 //    public String getSowedData(UserId userId) {
@@ -128,7 +122,7 @@ public class LocalStorage {
 //    }
     public void addStoredGameData(UserId userId, String serialisedGameData) {
         loadStorage();
-        dataStore.setItem(GAME_DATA + userId.toString(), getCleanStoredData(GAME_DATA + userId.toString()) + serialisedGameData);
+        dataStore.setItem(getGAME_DATA(userId), getCleanStoredData(getGAME_DATA(userId)) + serialisedGameData);
     }
 
 //    public void addFailedData(String serialisedGameData) {
@@ -146,12 +140,12 @@ public class LocalStorage {
 //    }
     public String getStoredScreenData(UserId userId, String endpoint) {
         loadStorage();
-        return getCleanStoredData(SCREEN_DATA + endpoint + "." + userId.toString());
+        return getCleanStoredData(getSCREEN_DATA(endpoint, userId));
     }
 
     public void deleteStoredScreenData(UserId userId, String endpoint, String segmentToDelete) {
         loadStorage();
-        final String sentStoredData = getCleanStoredData(SCREEN_DATA + endpoint + "." + userId.toString());
+        final String sentStoredData = getCleanStoredData(getSCREEN_DATA(endpoint, userId));
         String remainingStoredData = sentStoredData.replaceFirst("^,", "") + ",";
 // replacing this segment will sometimes fail due to non matching strings, but the result of failure is only a second transmission of the data which is a preferred option over complexity
         for (String segment : segmentToDelete.split("\\},\\{")) {
@@ -160,13 +154,13 @@ public class LocalStorage {
             segment = (segment.endsWith("}")) ? segment + "," : segment + "},";
             remainingStoredData = remainingStoredData.replace(segment, "");
         }
-        dataStore.setItem(SCREEN_DATA + endpoint + "." + userId.toString(), remainingStoredData.replaceFirst("^,", "").replaceFirst(",$", ""));
+        dataStore.setItem(getSCREEN_DATA(endpoint, userId), remainingStoredData.replaceFirst("^,", "").replaceFirst(",$", ""));
 //        stowSentData(userId, segmentToDelete);
     }
 
     public JSONObject getStoredJSONObject(UserId userId, Stimulus stimulus) {
         loadStorage();
-        final String cleanStoredData = getCleanStoredData(STIMULI_DATA + userId.toString() + "." + stimulus.getUniqueId());
+        final String cleanStoredData = getCleanStoredData(getSTIMULI_DATA(userId, stimulus));
         if (cleanStoredData.isEmpty()) {
             return null;
         }
@@ -176,38 +170,38 @@ public class LocalStorage {
 
     public void setStoredJSONObject(UserId userId, Stimulus stimulus, JSONObject jSONObject) {
         loadStorage();
-        dataStore.setItem(STIMULI_DATA + userId.toString() + "." + stimulus.getUniqueId(), jSONObject.toString());
+        dataStore.setItem(getSTIMULI_DATA(userId, stimulus), jSONObject.toString());
         // with android versions this JSON data is saved to the SDcard via the StimulusPresenter
     }
 
     public String getStoredDataValue(UserId userId, String label) {
         loadStorage();
-        return getCleanStoredData(GAME_DATA + label + "." + userId.toString());
+        return getCleanStoredData(getGAME_DATA(label, userId));
     }
 
     public void deleteStoredDataValue(UserId userId, String label) {
         loadStorage();
-        dataStore.removeItem(GAME_DATA + label + "." + userId.toString());
+        dataStore.removeItem(getGAME_DATA(label, userId));
     }
 
     public void appendStoredDataValue(UserId userId, String label, String value) {
         loadStorage();
-        final String cleanStoredData = getCleanStoredData(GAME_DATA + label + "." + userId.toString());
-        dataStore.setItem(GAME_DATA + label + "." + userId.toString(), cleanStoredData + value);
+        final String cleanStoredData = getCleanStoredData(getGAME_DATA(label, userId));
+        dataStore.setItem(getGAME_DATA(label, userId), cleanStoredData + value);
     }
 
     public void setStoredDataValue(UserId userId, String label, String value) {
         loadStorage();
-        dataStore.setItem(GAME_DATA + label + "." + userId.toString(), value);
+        dataStore.setItem(getGAME_DATA(label, userId), value);
     }
 
     public void addStoredScreenData(UserId userId, String endpoint, String serialisedScreenData) {
         loadStorage();
-        final String cleanStoredData = getCleanStoredData(SCREEN_DATA + endpoint + "." + userId.toString());
+        final String cleanStoredData = getCleanStoredData(getSCREEN_DATA(endpoint, userId));
         if (cleanStoredData.isEmpty()) {
-            dataStore.setItem(SCREEN_DATA + endpoint + "." + userId.toString(), cleanStoredData + serialisedScreenData);
+            dataStore.setItem(getSCREEN_DATA(endpoint, userId), cleanStoredData + serialisedScreenData);
         } else {
-            dataStore.setItem(SCREEN_DATA + endpoint + "." + userId.toString(), cleanStoredData + "," + serialisedScreenData);
+            dataStore.setItem(getSCREEN_DATA(endpoint, userId), cleanStoredData + "," + serialisedScreenData);
         }
     }
 
@@ -216,19 +210,19 @@ public class LocalStorage {
         loadStorage();
         if (dataStore != null) {
             for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
-                userData.setMetadataValue(metadataField, getCleanStoredData(USER_RESULTS + userData.getUserId().toString() + "." + metadataField.getPostName()));
-                final String cleanedUserId = getCleanStoredData(USER_RESULTS + userData.getUserId().toString() + "." + metadataField.getPostName() + "." + CONNECTION);
+                userData.setMetadataValue(metadataField, getCleanStoredData(getUSER_RESULTS(userData.getUserId(), metadataField.getPostName())));
+                final String cleanedUserId = getCleanStoredData(getUSER_RESULTS_CONNECTION(userData.getUserId(), metadataField.getPostName()));
                 if (cleanedUserId != null && !cleanedUserId.isEmpty()) {
                     userData.setMetadataConnection(metadataField, new UserId(cleanedUserId));
                 }
             }
         }
-        userData.updateBestScore(getCleanStoredDouble(USER_RESULTS + userData.getUserId().toString() + "." + MAX_SCORE));
-        userData.setGamesPlayed(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + GAMES_PLAYED));
-        userData.setCurrentScore(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + CURRENT_SCORE));
-        userData.setTotalScore(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + TOTAL_SCORE));
-        userData.setPotentialScore(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + CURRENT_POTENTIAL));
-        userData.setTotalPotentialScore(getCleanStoredInt(USER_RESULTS + userData.getUserId().toString() + "." + TOTAL_POTENTIAL));
+        userData.updateBestScore(getCleanStoredDouble(getUSER_RESULTS(userData.getUserId(), MAX_SCORE)));
+        userData.setGamesPlayed(getCleanStoredInt(getUSER_RESULTS(userData.getUserId(), GAMES_PLAYED)));
+        userData.setCurrentScore(getCleanStoredInt(getUSER_RESULTS(userData.getUserId(), CURRENT_SCORE)));
+        userData.setTotalScore(getCleanStoredInt(getUSER_RESULTS(userData.getUserId(), TOTAL_SCORE)));
+        userData.setPotentialScore(getCleanStoredInt(getUSER_RESULTS(userData.getUserId(), CURRENT_POTENTIAL)));
+        userData.setTotalPotentialScore(getCleanStoredInt(getUSER_RESULTS(userData.getUserId(), TOTAL_POTENTIAL)));
         return userData;
     }
 
@@ -264,43 +258,43 @@ public class LocalStorage {
 
     public void storeUserScore(UserResults userResults) {
         loadStorage();
-        dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + MAX_SCORE, Double.toString(userResults.getUserData().getBestScore()));
-        dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + GAMES_PLAYED, Integer.toString(userResults.getUserData().getGamesPlayed()));
-        dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + CURRENT_SCORE, Integer.toString(userResults.getUserData().getCurrentScore()));
-        dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + TOTAL_SCORE, Integer.toString(userResults.getUserData().getTotalScore()));
-        dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + CURRENT_POTENTIAL, Integer.toString(userResults.getUserData().getPotentialScore()));
-        dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + TOTAL_POTENTIAL, Integer.toString(userResults.getUserData().getTotalPotentialScore()));
+        dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), MAX_SCORE), Double.toString(userResults.getUserData().getBestScore()));
+        dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), GAMES_PLAYED), Integer.toString(userResults.getUserData().getGamesPlayed()));
+        dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), CURRENT_SCORE), Integer.toString(userResults.getUserData().getCurrentScore()));
+        dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), TOTAL_SCORE), Integer.toString(userResults.getUserData().getTotalScore()));
+        dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), CURRENT_POTENTIAL), Integer.toString(userResults.getUserData().getPotentialScore()));
+        dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), TOTAL_POTENTIAL), Integer.toString(userResults.getUserData().getTotalPotentialScore()));
     }
 
     public void storeData(UserResults userResults) {
         loadStorage();
         if (dataStore != null) {
             for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
-                dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + metadataField.getPostName(), userResults.getUserData().getMetadataValue(metadataField));
+                dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), metadataField.getPostName()), userResults.getUserData().getMetadataValue(metadataField));
                 final UserId metadataConnection = userResults.getUserData().getMetadataConnection(metadataField);
                 if (metadataConnection != null && !metadataConnection.toString().isEmpty()) {
-                    dataStore.setItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + metadataField.getPostName() + "." + CONNECTION, metadataConnection.toString());
+                    dataStore.setItem(getUSER_RESULTS_CONNECTION(userResults.getUserData().getUserId(), metadataField.getPostName()), metadataConnection.toString());
                 } else {
-                    dataStore.removeItem(USER_RESULTS + userResults.getUserData().getUserId().toString() + "." + metadataField.getPostName() + "." + CONNECTION);
+                    dataStore.removeItem(getUSER_RESULTS_CONNECTION(userResults.getUserData().getUserId(), metadataField.getPostName()));
                 }
             }
         }
         storeUserScore(userResults);
         if ((Window.Location.getParameter("testuser") == null)) {
             // only store the last user id if the id is not a URL defined test user
-            dataStore.setItem(LAST_USER_ID, userResults.getUserData().getUserId().toString());
+            dataStore.setItem(getLAST_USER_ID(), userResults.getUserData().getUserId().toString());
         }
     }
 
     public void saveAppState(UserId userId, String appState) {
         loadStorage();
-        dataStore.setItem(APP_STATE + "." + userId.toString(), appState);
+        dataStore.setItem(getAPP_STATE(userId), appState);
     }
 
     public String getAppState(UserId userId) {
         loadStorage();
         if (dataStore != null) {
-            final String appState = getCleanStoredData(APP_STATE + "." + userId.toString());
+            final String appState = getCleanStoredData(getAPP_STATE(userId));
             if (!appState.isEmpty()) {
                 return appState;
             }
@@ -331,7 +325,7 @@ public class LocalStorage {
         } else if (Window.Location.getParameter("prolific_pid") != null) {
             return new UserId("prolific_pid-" + Window.Location.getParameter("prolific_pid")); // 
         } else if (dataStore != null) {
-            final String storedUserId = getCleanStoredData(LAST_USER_ID);
+            final String storedUserId = getCleanStoredData(getLAST_USER_ID());
             if (!storedUserId.isEmpty()) {
                 return new UserId(storedUserId);
             }
@@ -344,10 +338,9 @@ public class LocalStorage {
         ArrayList<UserLabelData> userIdList = new ArrayList<>();
         loadStorage();
         if (dataStore != null) {
-
             for (int itemIndex = 0; itemIndex < dataStore.getLength(); itemIndex++) {
                 final String key = dataStore.key(itemIndex);
-                if (key.startsWith(USER_RESULTS) && key.endsWith(postName)) {
+                if (isUSER_RESULTS(key, postName)) {
                     final String userIdString = key.split("\\.")[2];
                     final String cleanStoredData = getCleanStoredData(key);
 //                    if (!cleanStoredData.isEmpty()) {
