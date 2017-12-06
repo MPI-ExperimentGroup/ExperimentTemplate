@@ -50,7 +50,7 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
     protected final UserResults userResults;
     final LocalStorage localStorage;
 
-    public AbstractColourReportPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults) {
+    public AbstractColourReportPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage) {
         super(widgetTag, new ReportView());
         this.localStorage = new LocalStorage();
         this.userResults = userResults;
