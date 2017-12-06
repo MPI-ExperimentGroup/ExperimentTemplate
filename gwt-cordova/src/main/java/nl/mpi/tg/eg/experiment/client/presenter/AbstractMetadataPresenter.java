@@ -53,9 +53,9 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
     private final DataSubmissionService submissionService;
     final LocalStorage localStorage;
 
-    public AbstractMetadataPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults) {
+    public AbstractMetadataPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage) {
         super(widgetTag, new MetadataView());
-        this.localStorage = new LocalStorage();
+        this.localStorage = localStorage;
         this.userResults = userResults;
         this.submissionService = submissionService;
     }
