@@ -99,7 +99,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                submissionService.terminateAndDeleteStoredData(userResults.getUserData().getUserId());
+                submissionService.eraseUsersStoredData(userResults.getUserData().getUserId());
                 Window.Location.replace(Window.Location.getPath());
             }
         });
@@ -120,7 +120,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                submissionService.terminateAndDeleteStoredData(userResults.getUserData().getUserId());
+                submissionService.eraseUsersStoredData(userResults.getUserData().getUserId());
             }
         });
     }
