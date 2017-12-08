@@ -480,18 +480,18 @@ public class AdVocAsStimuliProviderTest {
             assertFalse(lastStimulus.getCorrectness());
             assertTrue(cycle2 || looser);
             if (looser) {
-                assertEquals(1, provider.getScore());
+                assertEquals(1, provider.getBandScore());
             }
 
         }
 
         if (champion) {
-            assertEquals(Constants.NUMBER_OF_BANDS, provider.getScore());
+            assertEquals(Constants.NUMBER_OF_BANDS, provider.getBandScore());
         }
 
         this.checkFastTrack(provider.getResponseRecord(), provider.getEndFastTrackTimeTick(), provider.getBestFastTrackBand());
         
-        this.checkFineTuning(provider.getResponseRecord(), provider.getEndFastTrackTimeTick(), provider.getBestFastTrackBand(), cycle2, provider.getScore());
+        this.checkFineTuning(provider.getResponseRecord(), provider.getEndFastTrackTimeTick(), provider.getBestFastTrackBand(), cycle2, provider.getBandScore());
 
         return provider;
     }
@@ -561,7 +561,7 @@ public class AdVocAsStimuliProviderTest {
         assertEquals(20, provider.getBestFastTrackBand());
 
         this.checkFastTrack(provider.getResponseRecord(), provider.getEndFastTrackTimeTick(), provider.getBestFastTrackBand());
-        this.checkFineTuning(provider.getResponseRecord(), provider.getEndFastTrackTimeTick(), provider.getBestFastTrackBand(), cycle2, provider.getScore());
+        this.checkFineTuning(provider.getResponseRecord(), provider.getEndFastTrackTimeTick(), provider.getBestFastTrackBand(), cycle2, provider.getBandScore());
 
         return provider;
 

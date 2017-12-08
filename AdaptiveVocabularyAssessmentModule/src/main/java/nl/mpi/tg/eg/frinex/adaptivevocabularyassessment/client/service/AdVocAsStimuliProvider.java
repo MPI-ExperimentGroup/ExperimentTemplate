@@ -21,6 +21,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimuliProvider;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Random;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
@@ -178,5 +179,155 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
             ended = this.tupleFT.isEmpty();
         }
 
+    }
+
+    @Override
+    public String getStringFastTrack(String startRow, String endRow, String startColumn, String endColumn) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(startRow);
+        stringBuilder.append(startColumn).append("Label").append(endColumn);
+        stringBuilder.append(startColumn).append("BandNumber").append(endColumn);
+        stringBuilder.append(startColumn).append("UserAnswer").append(endColumn);
+        stringBuilder.append(startColumn).append("IsAnswerCorrect").append(endColumn);
+        stringBuilder.append(startColumn).append("NonwordsFrequencyAtThisPoint").append(endColumn);
+        stringBuilder.append(endRow);
+        int counterNonwords = 0;
+        for (int i = 0; i <= this.timeTickEndFastTrack; i++) {
+            BookkeepingStimulus stimulus = this.responseRecord.get(i);
+            if (stimulus.getBandNumber() == -1) {
+                counterNonwords++;
+            }
+            double frequency = ((double) counterNonwords) / ((double) (i + 1));
+
+            StringBuilder row = new StringBuilder();
+            row.append(startColumn).append(stimulus.getLabel()).append(endColumn);
+            row.append(startColumn).append(stimulus.getBandNumber()).append(endColumn);
+            row.append(startColumn).append(stimulus.getReaction()).append(endColumn);
+            row.append(startColumn).append(stimulus.getCorrectness()).append(endColumn);
+            row.append(startColumn).append(frequency).append(endColumn);
+            stringBuilder.append(startRow).append(row).append(endRow);
+        }
+        return stringBuilder.toString();
+
+    }
+
+    @Override
+    public String getHtmlStimuliReport() {
+
+        StringBuilder htmlStringBuilder = new StringBuilder();
+
+        String experimenteeReport = this.getHtmlExperimenteeReport();
+        htmlStringBuilder.append(experimenteeReport);
+
+        htmlStringBuilder.append("<br><br><p>Detailed report for researcher</p>");
+
+        String summary = this.getStringSummary("<tr>", "</tr>", "<td>", "</td>");
+        String inhoudFastTrack = this.getStringFastTrack("<tr>", "</tr>", "<td>", "</td>");
+        String inhoudFineTuning = this.getStringFineTuningHistory("<tr>", "</tr>", "<td>", "</td>", "html");
+
+        htmlStringBuilder.append("<p>User summary</p><table border=1>").append(summary).append("</table><br><br>");
+        htmlStringBuilder.append("<p>Fast Track History</p><table border=1>").append(inhoudFastTrack).append("</table><br><b>");
+        htmlStringBuilder.append("<p>Fine tuning History</p><table border=1>").append(inhoudFineTuning).append("</table>");
+        return htmlStringBuilder.toString();
+        //return "<table><tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr><tr><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>0</td></tr></table>";
+    }
+
+    private String getHtmlExperimenteeReport() {
+        StringBuilder htmlStringBuilder = new StringBuilder();
+        HashMap<String, ArrayList<AdVocAsBookkeepingStimulus>> wordTables = this.generateWordNonWordSequences(this.responseRecord);
+
+        String experimenteeWordTable = this.getHtmlExperimenteeRecords(wordTables.get("words"), "Je woorden");
+        String experimenteeNonwordTable = this.getHtmlExperimenteeRecords(wordTables.get("nonwords"), "Je niet-woorden");
+        String experimenteePositionDiagram = this.getHtmlExperimenteePositionDiagram();
+
+        htmlStringBuilder.append("<p>Uw resultaten: woorden</p>").append(experimenteeWordTable).append("<br><br>");
+        htmlStringBuilder.append("<p>Uw resultaten: niet-woorden</p>").append(experimenteeNonwordTable).append("<br><br>");
+        htmlStringBuilder.append("<p>Uw score: </p>").append(this.percentageScore).append("<br><br>");
+        htmlStringBuilder.append("<p>Uw kennis wan de Nederlandse woordenschat</p>").append(experimenteePositionDiagram).append("<br><br>");
+
+        return htmlStringBuilder.toString();
+    }
+
+    private String getHtmlExperimenteeRecords(ArrayList<AdVocAsBookkeepingStimulus> atoms, String tableTitle) {
+        StringBuilder htmlStringBuilder = new StringBuilder();
+        htmlStringBuilder.append("<p><b>").append(tableTitle).append("</b></p>");
+        htmlStringBuilder.append("<table>");
+        String color;
+        for (AdVocAsBookkeepingStimulus atom : atoms) {
+            if (atom.getCorrectness()) {
+                color = "style=\"color:green\"";
+            } else {
+                color = "style=\"color:red\"";
+            }
+            htmlStringBuilder.append("<tr ").append(color).append(">");
+            htmlStringBuilder.append("<td>").append(atom.getLabel()).append("</td>");
+            htmlStringBuilder.append("</tr>");
+        }
+        htmlStringBuilder.append("</table>");
+
+        return htmlStringBuilder.toString();
+    }
+
+    private String getHtmlExperimenteePositionDiagram() {
+        StringBuilder htmlStringBuilder = new StringBuilder();
+        HashMap<Long, String> content = this.generateDiagramSequence(this.responseRecord);
+        htmlStringBuilder.append("<table>");
+        for (Long key : content.keySet()) {
+            if (key.equals(this.percentageScore)) {
+                htmlStringBuilder.append("<tr style=\"font-weight:bold;\">");
+            } else {
+                htmlStringBuilder.append("<tr>");
+            }
+            htmlStringBuilder.append("<td>").append(key).append("</td>");
+            htmlStringBuilder.append("<td>").append(content.get(key)).append("</td>");
+            htmlStringBuilder.append("</tr>");
+        }
+        htmlStringBuilder.append("</table>");
+
+        return htmlStringBuilder.toString();
+    }
+
+    private HashMap<Long, String> generateDiagramSequence(ArrayList<AdVocAsBookkeepingStimulus> records) {
+        HashMap<Long, String> retVal = new HashMap<Long, String>();
+        for (AdVocAsBookkeepingStimulus bStimulus : records) {
+            int bandNumber = bStimulus.getBandNumber();
+            Long percentage = this.bandNumberIntoPercentage(bandNumber);
+            if (Constants.WORD.equals(bStimulus.getCorrectResponses())) {
+                if (!retVal.containsKey(percentage)) {
+                    retVal.put(percentage, bStimulus.getLabel());
+                }
+            }
+        }
+
+        // fill in absent persentages
+        for (int i = Constants.START_BAND; i <= Constants.NUMBER_OF_BANDS; i++) {
+            Long percentage = this.bandNumberIntoPercentage(i);
+            if (!retVal.containsKey(percentage)) {
+                // unseen word in the band means that there must be for sure
+                // non-used words for this band in the words-container
+                // if there will be array out of boud exception
+                // on get(0) then something went terribly wrong
+                String value = this.words.get(i).get(0).getLabel();
+                retVal.put(percentage, value);
+            }
+        }
+
+        return retVal;
+    }
+
+    private HashMap<String, ArrayList<AdVocAsBookkeepingStimulus>> generateWordNonWordSequences(ArrayList<AdVocAsBookkeepingStimulus> records) {
+        HashMap<String, ArrayList<AdVocAsBookkeepingStimulus>> retVal = new HashMap<String, ArrayList<AdVocAsBookkeepingStimulus>>();
+        retVal.put("words", new ArrayList<AdVocAsBookkeepingStimulus>());
+        retVal.put("nonwords", new ArrayList<AdVocAsBookkeepingStimulus>());
+
+        for (AdVocAsBookkeepingStimulus bStimulus : records) {
+            if (Constants.WORD.equals(bStimulus.getCorrectResponses())) {
+                retVal.get("words").add(bStimulus);
+            }
+            if (Constants.NONWORD.equals(bStimulus.getCorrectResponses())) {
+                retVal.get("nonwords").add(bStimulus);
+            }
+        }
+        return retVal;
     }
 }

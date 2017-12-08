@@ -38,7 +38,8 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStimulus> extends AbstractStimuliProvider {
 
-    private int score = -1;
+    private int bandScore = -1;
+    protected long percentageScore = 0;
     protected Boolean isCorrectCurrentResponse;
     protected int currentBandIndex = 0;
     protected int totalStimuli;
@@ -49,7 +50,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     private int bestBandFastTrack = -1;
     private boolean isFastTrackIsStillOn = true;
     protected boolean secondChanceFastTrackIsFired = false;
-    private int timeTickEndFastTrack = -1;
+    protected int timeTickEndFastTrack = -1;
 
     // fine tuning stuff
     protected final ArrayList<RecordStimulus> tupleFT = new ArrayList<>(Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE);
@@ -107,10 +108,13 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         return this.bestBandFastTrack;
     }
 
-    public int getScore() {
-        return this.score;
+    public int getBandScore() {
+        return this.bandScore;
     }
 
+    public long getPercentageScore() {
+        return this.percentageScore;
+    }
     public int getCurrentBandNumber() {
         return (this.currentBandIndex + 1);
     }
@@ -343,7 +347,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
                 if (this.currentBandIndex == Constants.NUMBER_OF_BANDS - 1) { // the last band is hit
                     if (this.justVisitedLastBand) {
                         this.champion = true;
-                        this.score = Constants.NUMBER_OF_BANDS;
+                        this.bandScore = Constants.NUMBER_OF_BANDS;
                         retVal = false; // stop interation, the last band visied twice in a row
                     } else {
                         this.justVisitedLastBand = true; // the second trial to be sure
@@ -380,10 +384,19 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
             if (!this.enoughFineTuningStimulae) {
                 System.out.println("Not enough fine-tuning compound stimula left for the band " + this.currentBandIndex);
                 retVal = false;
-                this.score = this.mostOftenVisitedBandNumber(this.bandVisitCounter, this.currentBandIndex);
+                this.bandScore = this.mostOftenVisitedBandNumber(this.bandVisitCounter, this.currentBandIndex);
+                this.percentageScore = this.bandNumberIntoPercentage(this.bandScore);
             }
 
         }
+        return retVal;
+    }
+    
+    // can be overriden by the concrete implementation
+    protected long bandNumberIntoPercentage(int bandNumber) {
+        double tmp = (double) bandNumber / Constants.NUMBER_OF_BANDS;
+        long tmpRound = Math.round(tmp);
+        long retVal = tmpRound * 100;
         return retVal;
     }
 
@@ -399,10 +412,10 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         this.cycle2 = detectLoop(cycle2helper);
         if (this.cycle2) {
             System.out.println("Detected: Constants.FINE_TUNING_UPPER_BOUND_FOR_2CYCLES times oscillation between two neighbouring bands");
-            this.score = this.cycle2helper[0];
+            this.bandScore = this.cycle2helper[0];
             for (int i = 1; i < this.cycle2helper.length; i++) {
-                if (this.score > this.cycle2helper[i]) {
-                    this.score = this.cycle2helper[i];
+                if (this.bandScore > this.cycle2helper[i]) {
+                    this.bandScore = this.cycle2helper[i];
                 }
             }
             retVal = false;
@@ -410,7 +423,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
             if (this.currentBandIndex == 0) {
                 if (this.justVisitedFirstBand) {
                     this.looser = true;// stop interation, the first band is visited twice in a row
-                    this.score = 1;
+                    this.bandScore = 1;
                     retVal = false;
                 } else {
                     this.justVisitedFirstBand = true; // give the second chance
@@ -502,20 +515,14 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         stringBuilder.append(startColumn).append("IsAnswerCorrect").append(endColumn);
         stringBuilder.append(startColumn).append("NonwordsFrequencyAtThisPoint").append(endColumn);
         stringBuilder.append(endRow);
-        int counterNonwords = 0;
         for (int i = 0; i <= this.timeTickEndFastTrack; i++) {
             BookkeepingStimulus stimulus = this.responseRecord.get(i);
-            if (stimulus.getBandNumber() == -1) {
-                counterNonwords++;
-            }
-            double frequency = ((double) counterNonwords) / ((double) (i + 1));
-
+            
             StringBuilder row = new StringBuilder();
             row.append(startColumn).append(stimulus.getLabel()).append(endColumn);
             row.append(startColumn).append(stimulus.getBandNumber()).append(endColumn);
             row.append(startColumn).append(stimulus.getReaction()).append(endColumn);
             row.append(startColumn).append(stimulus.getCorrectness()).append(endColumn);
-            row.append(startColumn).append(frequency).append(endColumn);
             stringBuilder.append(startRow).append(row).append(endRow);
         }
         return stringBuilder.toString();
@@ -544,7 +551,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
             stringBuilder.append(startRow).append(row).append(endRow);
             if (!format.equals("csv")) {
                 modCounter++;
-                if (!stimulus.getCorrectness() || modCounter == 4) {
+                if (!stimulus.getCorrectness() || modCounter == Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE) {
                     stringBuilder.append(startRow).append(endRow); // skeep between tuples
                     stringBuilder.append(startRow).append(endRow);
                     modCounter = 0;
@@ -575,7 +582,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         stringBuilder.append(startColumn).append("Looser").append(endColumn);
         stringBuilder.append(endRow);
         stringBuilder.append(startRow);
-        stringBuilder.append(startColumn).append(this.score).append(endColumn);
+        stringBuilder.append(startColumn).append(this.bandScore).append(endColumn);
         stringBuilder.append(startColumn).append(this.bestBandFastTrack).append(endColumn);
         stringBuilder.append(startColumn).append(this.cycle2).append(endColumn);
         stringBuilder.append(startColumn).append(this.enoughFineTuningStimulae).append(endColumn);
