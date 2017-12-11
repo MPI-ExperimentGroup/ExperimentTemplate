@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="Playhouse Study" appNameInternal="playhouse_study" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="false" textFontSize="17">
     <metadata>
-        <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
+        <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="ppcode"/>
         <field controlledMessage="Voer een getal." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="datOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
-        <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="gender" preventServerDuplicates="false" registrationField="Geslacht"/>
+        <field controlledMessage="." controlledRegex="[01]?[0-9]?[0-9]" postName="groupCode" preventServerDuplicates="false" registrationField="Group Code"/>
+        <field controlledMessage="." controlledRegex="1|2|3|4" postName="experimentVersion" preventServerDuplicates="false" registrationField="Experiment Version"/>
     </metadata>
     <presenter back="Menu" displayOrder="1" menuLabel="Bluetooth Instructions" type="text" self="Bluetooth_Instructions" title="Bluetooth Instructions">
         <htmlText featureText="When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A."/>
@@ -32,7 +33,8 @@
     <presenter back="SelectUser" displayOrder="5" menuLabel="Terug" next="Introduction_1" type="metadata" self="Edit_User" title="Gegevens">
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="datOfBirth"/>
-        <metadataField fieldName="gender"/>
+        <metadataField fieldName="groupCode"/>
+        <metadataField fieldName="experimentVersion"/>
         <saveMetadataButton featureText="Volgende" sendData="false" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
             <onError/>
             <onSuccess>
