@@ -240,8 +240,9 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         String experimenteeNonwordTable = this.getHtmlExperimenteeRecords(wordTables.get("nonwords"), "Je niet-woorden");
         String experimenteePositionDiagram = this.getHtmlExperimenteePositionDiagram();
 
-        htmlStringBuilder.append("<p>Uw resultaten: woorden</p>").append(experimenteeWordTable).append("<br><br>");
-        htmlStringBuilder.append("<p>Uw resultaten: niet-woorden</p>").append(experimenteeNonwordTable).append("<br><br>");
+        htmlStringBuilder.append("<table><tr><td>Uw resultaten: woorden</td><td></td><td>Uw resultaten: niet-woorden</td></tr>");
+        htmlStringBuilder.append("<tr style=\"vertical-align: top;\"><td>").append(experimenteeWordTable).append("</td><td></td><td>").append(experimenteeNonwordTable).append("</td></tr></table>");
+        
         htmlStringBuilder.append("<p>Uw score: </p>").append(this.percentageScore).append("<br><br>");
         htmlStringBuilder.append("<p>Uw kennis wan de Nederlandse woordenschat</p>").append(experimenteePositionDiagram).append("<br><br>");
 
@@ -250,8 +251,8 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
 
     private String getHtmlExperimenteeRecords(ArrayList<AdVocAsBookkeepingStimulus> atoms, String tableTitle) {
         StringBuilder htmlStringBuilder = new StringBuilder();
-        htmlStringBuilder.append("<p><b>").append(tableTitle).append("</b></p>");
         htmlStringBuilder.append("<table>");
+        htmlStringBuilder.append("<tr><td><b>").append(tableTitle).append("</b></td></tr>");
         String color;
         for (AdVocAsBookkeepingStimulus atom : atoms) {
             if (atom.getCorrectness()) {
@@ -306,8 +307,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
                 // unseen word in the band means that there must be for sure
                 // non-used words for this band in the words-container
                 // if there will be array out of boud exception
-                // on get(0) then something went terribly wrong
-                String value = this.words.get(i).get(0).getLabel();
+                String value = this.words.get(i-1).get(0).getLabel();
                 retVal.put(percentage, value);
             }
         }

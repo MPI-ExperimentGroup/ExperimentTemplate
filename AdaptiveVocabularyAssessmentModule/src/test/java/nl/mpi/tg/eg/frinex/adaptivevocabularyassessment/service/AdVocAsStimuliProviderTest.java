@@ -271,6 +271,27 @@ public class AdVocAsStimuliProviderTest {
         System.out.println("hasNextStimulus-3");
         this.testHasNextStimulus();
     }
+    
+    @Test
+    public void testBandNumberIntoPercentage(){
+       AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
+       instance.initialiseStimuliState("");
+       long result1 = instance.bandNumberIntoPercentage(0);
+       assertEquals(0, result1);
+       long result2 = instance.bandNumberIntoPercentage(Constants.NUMBER_OF_BANDS);
+       assertEquals(100, result2);
+       if (Constants.NUMBER_OF_BANDS == 54) {
+           long result3 = instance.bandNumberIntoPercentage(20);
+           assertEquals(37, result3);
+           long result4 = instance.bandNumberIntoPercentage(Constants.START_BAND_FOR_GRAPH);
+           assertEquals(30, result4);
+           long result5 = instance.bandNumberIntoPercentage(43);
+           assertEquals(80, result5);
+       } else {
+           // add tests for other values of the number of bands
+           assertTrue(false);
+       }
+    }
 
     // also tests nextStimulus
     private AdVocAsStimuliProvider testHasNextStimulus() throws Exception {

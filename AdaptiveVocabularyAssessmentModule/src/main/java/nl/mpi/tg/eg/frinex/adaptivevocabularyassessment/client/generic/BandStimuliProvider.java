@@ -393,10 +393,9 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     }
     
     // can be overriden by the concrete implementation
-    protected long bandNumberIntoPercentage(int bandNumber) {
-        double tmp = (double) bandNumber / Constants.NUMBER_OF_BANDS;
-        long tmpRound = Math.round(tmp);
-        long retVal = tmpRound * 100;
+    public long bandNumberIntoPercentage(int bandNumber) {
+        double tmp = (double) bandNumber * 100.0 / Constants.NUMBER_OF_BANDS;
+        long retVal = Math.round(tmp);
         return retVal;
     }
 
