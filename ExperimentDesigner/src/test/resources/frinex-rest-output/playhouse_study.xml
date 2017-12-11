@@ -30,7 +30,7 @@
     <presenter displayOrder="4" menuLabel="Menu" type="menu" self="Menu" title="Menu">
         <allMenuItems/>
     </presenter>
-    <presenter back="SelectUser" displayOrder="5" menuLabel="Terug" next="Introduction_1" type="metadata" self="Edit_User" title="Gegevens">
+    <presenter back="SelectUser" displayOrder="5" menuLabel="Terug" next="Practice" type="metadata" self="Edit_User" title="Gegevens">
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="datOfBirth"/>
         <metadataField fieldName="groupCode"/>
@@ -42,36 +42,9 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Menu" displayOrder="6" menuLabel="Introduction 1" next="Introduction_2" type="stimulus" self="Introduction_1" title="Introduction 1">
-        <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
-        <htmlText featureText="&amp;nbsp;"/>
-        <audioButton eventTag="intro_1" src="intro_1" hotKey="ENTER" styleName="titleBarButton" autoPlay="false" poster="intro_1.jpg">
-            <pause msToNext="0">
-                <autoNextPresenter/>
-            </pause>
-        </audioButton>
-    </presenter>
-    <presenter back="Menu" displayOrder="7" menuLabel="Introduction 2" next="Introduction_3" type="stimulus" self="Introduction_2" title="Introduction 2">
-        <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
-        <htmlText featureText="&amp;nbsp;"/>
-        <audioButton eventTag="intro_2" src="intro_2" hotKey="ENTER" styleName="titleBarButton" autoPlay="false" poster="intro_2.jpg">
-            <pause msToNext="0">
-                <autoNextPresenter/>
-            </pause>
-        </audioButton>
-    </presenter>
-    <presenter back="Menu" displayOrder="8" menuLabel="Introduction 3" next="Training" type="stimulus" self="Introduction_3" title="Introduction 3">
-        <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
-        <htmlText featureText="&amp;nbsp;"/>
-        <audioButton eventTag="intro_3" src="intro_3" hotKey="ENTER" styleName="titleBarButton" autoPlay="false" poster="intro_3.jpg">
-            <pause msToNext="0">
-                <autoNextPresenter/>
-            </pause>
-        </audioButton>
-    </presenter>
-    <presenter back="Menu" displayOrder="9" menuLabel="Training" next="TestMenu" type="stimulus" self="Training" title="Training">
+    <presenter back="Menu" displayOrder="9" menuLabel="Practice" next="Matching" type="stimulus" self="Practice" title="Practice">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToGarden">
-            <loadStimulus eventTag="Training" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <loadStimulus eventTag="Practice" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                 <hasMoreStimulus>
                     <backgroundImage msToNext="0" src="" styleName=""/>
                     <clearPage styleName="fullScreenWidth"/>
@@ -118,7 +91,61 @@
                 </endOfStimulus>
                 <randomGrouping/>
                 <stimuli>
-                    <tag>Training</tag>
+                    <tag>Practice</tag>
+                </stimuli>
+            </loadStimulus>
+        </backgroundImage>
+    </presenter>
+    <presenter back="Menu" displayOrder="9" menuLabel="Matching" next="TestMenu" type="stimulus" self="Matching" title="Matching">
+        <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToGarden">
+            <loadStimulus eventTag="Matching" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+                <hasMoreStimulus>
+                    <backgroundImage msToNext="0" src="" styleName=""/>
+                    <clearPage styleName="fullScreenWidth"/>
+                    <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="false">
+                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="false"/>
+                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
+                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
+                            <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
+                                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayButton">
+                                    <disableStimulusButtons/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                                        <enableStimulusButtons/>
+                                    </stimulusCodeAudio>
+                                </touchInputStimulusButton>
+                                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" styleName="rightOverlayButton">
+                                    <disableStimulusButtons/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                                        <enableStimulusButtons/>
+                                    </stimulusCodeAudio>
+                                </touchInputStimulusButton>
+                                <table styleName="titleBarButton">
+                                    <row>
+                                        <column>
+                                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_A">
+                                                <touchInputReportSubmit/>
+                                                <showStimulus/>
+                                            </actionButton>
+                                        </column>
+                                        <column>
+                                            <actionButton featureText="Next" eventTag="Next" hotKey="ENTER">
+                                                <touchInputReportSubmit/>
+                                                <nextStimulus repeatIncorrect="false"/>
+                                            </actionButton>
+                                        </column>
+                                    </row>
+                                </table>
+                            </stimulusCodeAudio>
+                        </stimulusCodeVideo>
+                    </stimulusCodeAudio>
+                    <touchInputCaptureStart showControls="true"/>
+                </hasMoreStimulus>
+                <endOfStimulus>
+                    <autoNextPresenter/>
+                </endOfStimulus>
+                <randomGrouping/>
+                <stimuli>
+                    <tag>Matching</tag>
                 </stimuli>
             </loadStimulus>
         </backgroundImage>
@@ -386,16 +413,28 @@
     </presenter>
     <stimuli>
         <stimulus audioPath="training_1" code="training_1" identifier="training_1" imagePath="training_1" pauseMs="0">
-            <tag>Training</tag>
+            <tag>Practice</tag>
         </stimulus>
         <stimulus audioPath="training_2" code="training_2" identifier="training_2" imagePath="training_2" pauseMs="0">
-            <tag>Training</tag>
+            <tag>Practice</tag>
         </stimulus>
         <stimulus audioPath="training_3" code="training_3" identifier="training_3" imagePath="training_3" pauseMs="0">
-            <tag>Training</tag>
+            <tag>Practice</tag>
         </stimulus>
         <stimulus audioPath="training_4" code="training_4" identifier="training_4" imagePath="training_4" pauseMs="0">
-            <tag>Training</tag>
+            <tag>Practice</tag>
+        </stimulus>
+        <stimulus audioPath="training_1" code="training_1" identifier="training_1" imagePath="training_1" pauseMs="0">
+            <tag>Matching</tag>
+        </stimulus>
+        <stimulus audioPath="training_2" code="training_2" identifier="training_2" imagePath="training_2" pauseMs="0">
+            <tag>Matching</tag>
+        </stimulus>
+        <stimulus audioPath="training_3" code="training_3" identifier="training_3" imagePath="training_3" pauseMs="0">
+            <tag>Matching</tag>
+        </stimulus>
+        <stimulus audioPath="training_4" code="training_4" identifier="training_4" imagePath="training_4" pauseMs="0">
+            <tag>Matching</tag>
         </stimulus>
         <stimulus audioPath="test_1" code="test_1" identifier="test_1" imagePath="adjacency_a" pauseMs="0">
             <tag>Test_1</tag>
