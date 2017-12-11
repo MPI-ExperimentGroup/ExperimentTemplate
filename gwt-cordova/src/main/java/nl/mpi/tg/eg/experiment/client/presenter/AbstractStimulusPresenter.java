@@ -882,6 +882,18 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addBackgroundImage((imageSrc == null || imageSrc.isEmpty()) ? null : UriUtils.fromTrustedString((imageSrc.startsWith("file")) ? imageSrc : serviceLocations.staticFilesUrl() + imageSrc), styleName, postLoadMs, timedStimulusListener);
     }
 
+    protected void stimulusImage(final String styleName, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        final String imageString = stimulusProvider.getCurrentStimulus().getImage();
+        final String uniqueId = stimulusProvider.getCurrentStimulus().getUniqueId();
+        final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
+            @Override
+            public void postLoadTimerFired() {
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "StimulusImageShown", uniqueId, imageString, duration.elapsedMillis());
+            }
+        };
+        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(imageString), 0, 0, 0, styleName, null, postLoadMs, shownStimulusListener, timedStimulusListener, null);
+    }
+
     @Deprecated
     protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         stimulusImage(percentOfPage, maxHeight, maxWidth, AnimateTypes.none, postLoadMs, timedStimulusListener);
