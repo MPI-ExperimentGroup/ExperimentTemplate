@@ -85,6 +85,7 @@ public enum FeatureAttribute {
     minStimuliPerTag, // for each tag there should be at least N of each represented in the final list
     maxStimuliPerTag, // for each tag there should be no more than N of each represented in the final list
     maxStimuli,
+    excludeRegex,
     //    alias, // alias is used to specify a tag or set of tags via GET parameters
     condition0Tag,
     condition1Tag,
