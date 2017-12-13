@@ -28,7 +28,7 @@ import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.*;
  */
 public enum FeatureType {
 
-    htmlText(false, true, null),
+    htmlText(false, true, new FeatureAttribute[]{styleName}),
     htmlTokenText(false, true, null) /* string tokens will be replaced with score values eg <groupScore> <channelScore> etc. */,
     plainText(false, true, null),
     image(true, false, new FeatureAttribute[]{src, styleName, msToNext}),
@@ -75,6 +75,7 @@ public enum FeatureType {
     showCurrentMs(false, false, null),
     enableStimulusButtons(false, false, null),
     disableStimulusButtons(false, false, null),
+    disablePauseTimers(false, false, null),
     showStimulusProgress(false, false, new FeatureAttribute[]{styleName}),
     hideStimulusButtons(false, false, null),
     showStimulusButtons(false, false, null),
@@ -126,6 +127,8 @@ public enum FeatureType {
     singleUser(true, false, null),
     aboveThreshold(true, false, null),
     belowThreshold(true, false, null),
+//    clearRegion(true, false, new FeatureAttribute[]{target}), // these tags would require the handling the clearing of timers and button handlers
+//    updateRegion(true, false, new FeatureAttribute[]{target}), // these tags would require the handling the clearing of timers and button handlers
     table(true, false, new FeatureAttribute[]{styleName}),
     row(true, false, null),
     column(true, false, new FeatureAttribute[]{styleName}),
