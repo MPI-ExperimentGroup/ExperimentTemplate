@@ -139,6 +139,44 @@ public class TimedStimulusView extends ComplexView {
         super.clearPage();
     }
 
+    public void addTimedImage(SafeUri imagePath, final String styleName, final int postLoadMs, final TimedStimulusListener shownStimulusListener, final TimedStimulusListener timedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
+        final Image image = new Image(imagePath);
+        if (styleName != null) {
+            image.addStyleName(styleName);
+        }
+        image.addLoadHandler(new LoadHandler() {
+
+            @Override
+            public void onLoad(LoadEvent event) {
+                shownStimulusListener.postLoadTimerFired();
+                Timer timer = new Timer() {
+                    @Override
+                    public void run() {
+                        timedStimulusListener.postLoadTimerFired();
+                    }
+                };
+                timerList.add(timer);
+                timer.schedule(postLoadMs);
+            }
+        });
+        if (clickedStimulusListener != null) {
+            final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
+
+                @Override
+                protected void singleShotFired() {
+                    clickedStimulusListener.postLoadTimerFired();
+                    resetSingleShot();
+                }
+            };
+            image.addClickHandler(singleShotEventListner);
+            image.addTouchStartHandler(singleShotEventListner);
+            image.addTouchMoveHandler(singleShotEventListner);
+            image.addTouchEndHandler(singleShotEventListner);
+        }
+        getActivePanel().add(image);
+    }
+
+    @Deprecated
     public void addTimedImage(SafeUri imagePath, int percentOfPage, int maxHeight, int maxWidth, final String animateStyle, final Integer fixedPositionY, final int postLoadMs, final TimedStimulusListener shownStimulusListener, final TimedStimulusListener timedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
         final Image image = new Image(imagePath);
         if (animateStyle != null) {
