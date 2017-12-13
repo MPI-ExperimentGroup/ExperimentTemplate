@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
@@ -25,6 +26,8 @@ import java.util.Set;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsNonWords;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsWords;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Vocabulary;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
@@ -271,28 +274,8 @@ public class AdVocAsStimuliProviderTest {
         System.out.println("hasNextStimulus-3");
         this.testHasNextStimulus();
     }
-    
-    @Test
-    public void testBandNumberIntoPercentage(){
-       AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-       instance.initialiseStimuliState("");
-       long result1 = instance.bandNumberIntoPercentage(0);
-       assertEquals(0, result1);
-       long result2 = instance.bandNumberIntoPercentage(Constants.NUMBER_OF_BANDS);
-       assertEquals(100, result2);
-       if (Constants.NUMBER_OF_BANDS == 54) {
-           long result3 = instance.bandNumberIntoPercentage(20);
-           assertEquals(37, result3);
-           long result4 = instance.bandNumberIntoPercentage(Constants.START_BAND_FOR_GRAPH);
-           assertEquals(30, result4);
-           long result5 = instance.bandNumberIntoPercentage(43);
-           assertEquals(80, result5);
-       } else {
-           // add tests for other values of the number of bands
-           assertTrue(false);
-       }
-    }
 
+   
     // also tests nextStimulus
     private AdVocAsStimuliProvider testHasNextStimulus() throws Exception {
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
@@ -428,8 +411,8 @@ public class AdVocAsStimuliProviderTest {
      * Test of shiftFIFO method, of class AdVocAsStimuliProvider.
      */
     @Test
-    public void testMostOftenVisitedBandBumberHelp() {
-        System.out.println(" MostOftenVisitedBandBumberHelp");
+    public void testMostOftenVisitedBandNumber() {
+        System.out.println(" MostOftenVisitedBandMumber");
         int[] visitCounter = {1, 3, 2, 3, 3, 3, 1};
         // indices {1,3,4,5}
         // ind = 1, indSym = 2
@@ -449,6 +432,32 @@ public class AdVocAsStimuliProviderTest {
             retVal += l.size();
         }
         return retVal;
+    }
+
+    @Test
+    public void testPercentageBAndTable() {
+        System.out.println(" Test getBandNumberFromPercentage");
+
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
+        provider.initialiseStimuliState("");
+        
+        HashMap<Long, Integer> percentageTable = provider.getPercentageBandTable();
+        int result1 = percentageTable.get(new Long(1));
+        assertEquals(1, result1);
+        long result2 = percentageTable.get(new Long(100));
+        assertEquals(Constants.NUMBER_OF_BANDS, result2);
+        if (Constants.NUMBER_OF_BANDS == 54) {
+            long result3 = percentageTable.get(new Long(37));
+            assertEquals(20, result3);
+            long result4 = percentageTable.get(new Long(30));
+            assertEquals(16, result4);
+            long result5 = percentageTable.get(new Long(80));
+            assertEquals(43, result5);
+        } else {
+            // add tests for other values of the number of bands
+            assertTrue(false);
+        }
+        
     }
 
     @Test
@@ -502,20 +511,61 @@ public class AdVocAsStimuliProviderTest {
             assertTrue(cycle2 || looser);
             if (looser) {
                 assertEquals(1, provider.getBandScore());
+                assertEquals(2, provider.getPercentageScore()); // 100/54 = 1.85... rounded to two
+            } else {
+                assertTrue(provider.getPercentageScore() > 1);
             }
 
         }
 
         if (champion) {
             assertEquals(Constants.NUMBER_OF_BANDS, provider.getBandScore());
+            assertEquals(100, provider.getPercentageScore());
         }
 
         this.checkFastTrack(provider.getResponseRecord(), provider.getEndFastTrackTimeTick(), provider.getBestFastTrackBand());
-        
         this.checkFineTuning(provider.getResponseRecord(), provider.getEndFastTrackTimeTick(), provider.getBestFastTrackBand(), cycle2, provider.getBandScore());
+
+        // checking generating graph
+        // first check if the sample set is generated ok
+        HashMap<Integer, String> samples = provider.retrieveSampleWords(provider.getResponseRecord());
+        
+        Vocabulary vocab = new Vocabulary();
+        ArrayList<ArrayList<AdVocAsStimulus>> wordsInBands = vocab.initialiseWords(ConstantsWords.WORDS);
+        
+        assertEquals(Constants.NUMBER_OF_BANDS, samples.keySet().size());
+        for (int bandNumber = 1; bandNumber <= Constants.NUMBER_OF_BANDS; bandNumber++) {
+            assertTrue(samples.containsKey(bandNumber));
+            String sample = samples.get(bandNumber);
+            assertNotNull(sample);
+            ArrayList<String> words = this.getSpellings(wordsInBands.get(bandNumber - 1));
+            assertTrue(words.contains(sample));
+        }
+
+        // now check if the graph sequence for percentage is ok 
+        HashMap<Long, String> graph = provider.generateDiagramSequence(provider.getResponseRecord());
+        for (long p = Constants.START_PERCENTAGE_FOR_GRAPH; p <= 100; p = p+10) {
+            assertTrue(graph.containsKey(p));
+            assertNotNull(graph.get(p));
+            int bandNumber = provider.getPercentageBandTable().get(p);
+            ArrayList<String> words = this.getSpellings(wordsInBands.get(bandNumber - 1));
+            assertTrue(words.contains(graph.get(p)));
+        }
+        long percentageScore = provider.getPercentageScore();
+        assertTrue(graph.containsKey(percentageScore));
 
         return provider;
     }
+
+    private ArrayList<String> getSpellings(ArrayList<AdVocAsStimulus> stimuli) {
+        ArrayList<String> retVal = new ArrayList<>(stimuli.size());
+        for (AdVocAsStimulus stimulus : stimuli) {
+            retVal.add(stimulus.getLabel());
+        }
+        return retVal;
+    }
+
+    ; 
 
     public AdVocAsStimuliProvider longFineTuningTest() throws Exception {
 
@@ -692,25 +742,25 @@ public class AdVocAsStimuliProviderTest {
                 }
             }
         }
-        
+
         stimulus = records.get(lastTimeTickFastTrack);
         if (stimulus.getCorrectness()) {
             // we stopped fast track because we have reached the end of the bands
-             if (stimulus.getBandNumber()>0) {
-                 assertEquals(Constants.NUMBER_OF_BANDS, stimulus.getBandNumber());
-             }
+            if (stimulus.getBandNumber() > 0) {
+                assertEquals(Constants.NUMBER_OF_BANDS, stimulus.getBandNumber());
+            }
         } else {
             // we stopped because there were two incorrect answers in a row
-            previousStimulus = records.get(lastTimeTickFastTrack-1);
+            previousStimulus = records.get(lastTimeTickFastTrack - 1);
             assertFalse(previousStimulus.getCorrectness());
-            if (lastTimeTickFastTrack>=2) {
-               assertTrue(records.get(lastTimeTickFastTrack-2).getCorrectness()); 
+            if (lastTimeTickFastTrack >= 2) {
+                assertTrue(records.get(lastTimeTickFastTrack - 2).getCorrectness());
             }
         }
-        if (stimulus.getBandNumber()>0){
+        if (stimulus.getBandNumber() > 0) {
             assertEquals(bestFastTrackBand, stimulus.getBandNumber());
         }
-        
+
     }
 
     private void checkFineTuning(ArrayList<AdVocAsBookkeepingStimulus> records, int lastTimeTickFastTrack, int bestFastTrackBand, boolean cycle2, int score) {

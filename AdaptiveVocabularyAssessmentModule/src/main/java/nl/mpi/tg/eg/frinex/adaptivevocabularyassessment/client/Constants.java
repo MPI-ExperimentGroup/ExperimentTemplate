@@ -45,6 +45,6 @@ public class Constants {
             
     public static final String WORD = "JA&#44; ik ken dit woord";
     
-    public static final int START_BAND_FOR_GRAPH = 16;
+    public static final int START_PERCENTAGE_FOR_GRAPH = 30;
 
 }

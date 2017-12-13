@@ -236,23 +236,22 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         StringBuilder htmlStringBuilder = new StringBuilder();
         HashMap<String, ArrayList<AdVocAsBookkeepingStimulus>> wordTables = this.generateWordNonWordSequences(this.responseRecord);
 
-        String experimenteeWordTable = this.getHtmlExperimenteeRecords(wordTables.get("words"), "Je woorden");
-        String experimenteeNonwordTable = this.getHtmlExperimenteeRecords(wordTables.get("nonwords"), "Je niet-woorden");
+        String experimenteeWordTable = this.getHtmlExperimenteeRecords(wordTables.get("words"));
+        String experimenteeNonwordTable = this.getHtmlExperimenteeRecords(wordTables.get("nonwords"));
         String experimenteePositionDiagram = this.getHtmlExperimenteePositionDiagram();
 
         htmlStringBuilder.append("<table><tr><td>Uw resultaten: woorden</td><td></td><td>Uw resultaten: niet-woorden</td></tr>");
         htmlStringBuilder.append("<tr style=\"vertical-align: top;\"><td>").append(experimenteeWordTable).append("</td><td></td><td>").append(experimenteeNonwordTable).append("</td></tr></table>");
-        
-        htmlStringBuilder.append("<p>Uw score: </p>").append(this.percentageScore).append("<br><br>");
+
+        htmlStringBuilder.append("<p>Uw score: </p>").append(this.getPercentageScore()).append("<br><br>");
         htmlStringBuilder.append("<p>Uw kennis wan de Nederlandse woordenschat</p>").append(experimenteePositionDiagram).append("<br><br>");
 
         return htmlStringBuilder.toString();
     }
 
-    private String getHtmlExperimenteeRecords(ArrayList<AdVocAsBookkeepingStimulus> atoms, String tableTitle) {
+    private String getHtmlExperimenteeRecords(ArrayList<AdVocAsBookkeepingStimulus> atoms) {
         StringBuilder htmlStringBuilder = new StringBuilder();
         htmlStringBuilder.append("<table>");
-        htmlStringBuilder.append("<tr><td><b>").append(tableTitle).append("</b></td></tr>");
         String color;
         for (AdVocAsBookkeepingStimulus atom : atoms) {
             if (atom.getCorrectness()) {
@@ -271,10 +270,11 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
 
     private String getHtmlExperimenteePositionDiagram() {
         StringBuilder htmlStringBuilder = new StringBuilder();
+        long perScore = this.getPercentageScore();
         HashMap<Long, String> content = this.generateDiagramSequence(this.responseRecord);
         htmlStringBuilder.append("<table>");
         for (Long key : content.keySet()) {
-            if (key.equals(this.percentageScore)) {
+            if (key.equals(perScore)) {
                 htmlStringBuilder.append("<tr style=\"font-weight:bold;\">");
             } else {
                 htmlStringBuilder.append("<tr>");
@@ -287,33 +287,63 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
 
         return htmlStringBuilder.toString();
     }
-
-    private HashMap<Long, String> generateDiagramSequence(ArrayList<AdVocAsBookkeepingStimulus> records) {
+    
+    
+    public HashMap<Long, String> generateDiagramSequence(ArrayList<AdVocAsBookkeepingStimulus> records) {
         HashMap<Long, String> retVal = new HashMap<Long, String>();
+
+        HashMap<Integer, String> sampleWords = this.retrieveSampleWords(records);
+
+        Long perScore = this.getPercentageScore();
+        boolean experimenteeResultAdded=false;
+        
+        if (perScore<Constants.START_PERCENTAGE_FOR_GRAPH) {
+               Integer bScore = this.getBandScore();
+               retVal.put(perScore, sampleWords.get(bScore)); 
+               experimenteeResultAdded = true;
+            }
+        
+        for (long percentage = Constants.START_PERCENTAGE_FOR_GRAPH; percentage <= 100; percentage = percentage + 10) {
+            if (!experimenteeResultAdded && perScore<percentage) {
+               Integer bScore = this.getBandScore();
+               retVal.put(perScore, sampleWords.get(bScore)); 
+               experimenteeResultAdded = true;
+            }
+            Integer bandNumber = this.getPercentageBandTable().get(percentage);
+            String value = sampleWords.get(bandNumber);
+            retVal.put(percentage, value);
+        }
+
+        
+        return retVal;
+    }
+
+    public HashMap<Integer, String> retrieveSampleWords(ArrayList<AdVocAsBookkeepingStimulus> records) {
+        HashMap<Integer, String> retVal = new HashMap<Integer, String>();
         for (AdVocAsBookkeepingStimulus bStimulus : records) {
-            int bandNumber = bStimulus.getBandNumber();
-            Long percentage = this.bandNumberIntoPercentage(bandNumber);
-            if (Constants.WORD.equals(bStimulus.getCorrectResponses())) {
-                if (!retVal.containsKey(percentage)) {
-                    retVal.put(percentage, bStimulus.getLabel());
+            if (bStimulus.getCorrectResponses().equals(Constants.WORD)) { // is a word
+                Integer key = bStimulus.getBandNumber();
+                if (!retVal.containsKey(key)) {
+                    retVal.put(key, bStimulus.getLabel());
                 }
             }
         }
 
-        // fill in absent persentages
-        for (int i = Constants.START_BAND; i <= Constants.NUMBER_OF_BANDS; i++) {
-            Long percentage = this.bandNumberIntoPercentage(i);
-            if (!retVal.containsKey(percentage)) {
+        // fill in absent values
+        for (int i = 1; i <= Constants.NUMBER_OF_BANDS; i++) {
+            Integer bandNumber = i;
+            if (!retVal.containsKey(bandNumber)) {
                 // unseen word in the band means that there must be for sure
                 // non-used words for this band in the words-container
                 // if there will be array out of boud exception
                 String value = this.words.get(i-1).get(0).getLabel();
-                retVal.put(percentage, value);
+                retVal.put(bandNumber, value);
             }
         }
 
         return retVal;
     }
+
 
     private HashMap<String, ArrayList<AdVocAsBookkeepingStimulus>> generateWordNonWordSequences(ArrayList<AdVocAsBookkeepingStimulus> records) {
         HashMap<String, ArrayList<AdVocAsBookkeepingStimulus>> retVal = new HashMap<String, ArrayList<AdVocAsBookkeepingStimulus>>();

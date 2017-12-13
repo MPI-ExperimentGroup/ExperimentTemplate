@@ -33,9 +33,8 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 /**
  * Generic BandStimuliProvider class.
  *
- * @param <RecordStimulus> 
+ * @param <RecordStimulus>
  */
-
 public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStimulus> extends AbstractStimuliProvider {
 
     private int bandScore = -1;
@@ -45,6 +44,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     protected int totalStimuli;
 
     protected ArrayList<RecordStimulus> responseRecord;
+    protected HashMap<Long, Integer> percentageBandTable;
 
     // fast track stuff
     private int bestBandFastTrack = -1;
@@ -66,8 +66,6 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     private boolean justVisitedFirstBand = false;
 
     // add experiment specific stuff here
-    
-    
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
 
@@ -82,7 +80,28 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
 
         this.responseRecord = new ArrayList<>();
         this.currentBandIndex = Constants.START_BAND - 1;
+        this.percentageBandTable = this.generatePercentageBandTable();
     }
+
+    private HashMap<Long, Integer> generatePercentageBandTable() {
+        HashMap<Long, Integer> retVal = new HashMap<Long, Integer>();
+        for (int i = 1; i <= Constants.NUMBER_OF_BANDS; i++) {
+            Long key = this.bandNumberIntoPercentage(i);
+            retVal.put(key, i);
+        }
+        for (long p = 1; p <= 100; p++) {
+            if (!retVal.containsKey(p)) {
+                Integer value = this.percentageIntoBandNumber(p);
+                retVal.put(p, value);
+            }
+        }
+        return retVal;
+    }
+    
+    public HashMap<Long, Integer> getPercentageBandTable() {
+        return this.percentageBandTable;
+    }
+    
 
     public ArrayList<RecordStimulus> getResponseRecord() {
         return this.responseRecord;
@@ -113,25 +132,29 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     }
 
     public long getPercentageScore() {
+        if (this.percentageScore <= 0) { // not computed yet
+            this.percentageScore = this.bandNumberIntoPercentage(this.bandScore);
+        }
         return this.percentageScore;
     }
+
     public int getCurrentBandNumber() {
         return (this.currentBandIndex + 1);
     }
-    
-    public ArrayList<RecordStimulus> getFTtuple(){
+
+    public ArrayList<RecordStimulus> getFTtuple() {
         return this.tupleFT;
     }
 
-    public int getEndFastTrackTimeTick(){
+    public int getEndFastTrackTimeTick() {
         return this.timeTickEndFastTrack;
     }
-      // prepared by next stimulus
+    // prepared by next stimulus
+
     @Override
     public RecordStimulus getCurrentStimulus() {
         return this.responseRecord.get(this.getCurrentStimulusIndex());
     }
-
 
     // aka get current experiment 
     @Override
@@ -143,8 +166,6 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     public int getTotalStimuli() {
         return this.totalStimuli;
     }
-    
-    
 
     // actually defines if the series is to be continued or stopped
     // also set the band indices
@@ -328,7 +349,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     }
 
     //(also) updates the indices
-     // may be experiment specific and overridden
+    // may be experiment specific and overridden
     private boolean fineTuningToBeContinued() {
 
         boolean retVal;
@@ -376,7 +397,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
 
             retVal = this.toBeContinuedLoopChecker();
         }
-        
+
         if (retVal) {
             shiftFIFO(cycle2helper, currentBandNumber);
             // check if there are enough stimuli left
@@ -385,17 +406,23 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
                 System.out.println("Not enough fine-tuning compound stimula left for the band " + this.currentBandIndex);
                 retVal = false;
                 this.bandScore = this.mostOftenVisitedBandNumber(this.bandVisitCounter, this.currentBandIndex);
-                this.percentageScore = this.bandNumberIntoPercentage(this.bandScore);
             }
 
         }
         return retVal;
     }
-    
+
     // can be overriden by the concrete implementation
-    public long bandNumberIntoPercentage(int bandNumber) {
-        double tmp = (double) bandNumber * 100.0 / Constants.NUMBER_OF_BANDS;
+    protected long bandNumberIntoPercentage(int bandNumber) {
+        double tmp = ((double) bandNumber * 100.0) / Constants.NUMBER_OF_BANDS;
         long retVal = Math.round(tmp);
+        return retVal;
+    }
+
+    // can be overriden by the concrete implementation
+    protected int percentageIntoBandNumber(long percentage) {
+        float tmp = ((float) percentage * Constants.NUMBER_OF_BANDS) / 100;
+        int retVal = Math.round(tmp);
         return retVal;
     }
 
@@ -516,7 +543,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         stringBuilder.append(endRow);
         for (int i = 0; i <= this.timeTickEndFastTrack; i++) {
             BookkeepingStimulus stimulus = this.responseRecord.get(i);
-            
+
             StringBuilder row = new StringBuilder();
             row.append(startColumn).append(stimulus.getLabel()).append(endColumn);
             row.append(startColumn).append(stimulus.getBandNumber()).append(endColumn);

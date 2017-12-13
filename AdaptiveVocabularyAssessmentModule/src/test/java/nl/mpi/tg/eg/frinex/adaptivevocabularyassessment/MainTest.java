@@ -17,23 +17,14 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import utils.Utils;
-import java.util.Random;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service.AdVocAsStimuliProviderTest;
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -66,6 +57,7 @@ public class MainTest {
     /**
      * Test of main method, of class Main.
      */
+    @Ignore
     @Test
     public void testMain() throws Exception {
         for (int i = 1; i < 11; i++) {
@@ -102,6 +94,7 @@ public class MainTest {
         System.out.println("Done with probability  " + prob);
     }
 
+    @Ignore
     @Test
     public void notEnoughStimuliTest() throws Exception {
 
