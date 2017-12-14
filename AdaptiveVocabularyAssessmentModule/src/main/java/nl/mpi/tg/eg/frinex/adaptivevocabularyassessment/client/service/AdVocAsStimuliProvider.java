@@ -240,11 +240,12 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         String experimenteeNonwordTable = this.getHtmlExperimenteeRecords(wordTables.get("nonwords"));
         String experimenteePositionDiagram = this.getHtmlExperimenteePositionDiagram();
 
-        htmlStringBuilder.append("<table><tr><td>Uw resultaten: woorden</td><td></td><td>Uw resultaten: niet-woorden</td></tr>");
+        htmlStringBuilder.append("<p>Uw resultaten</p>Correctheid<br>(Groen betekent juiste antwoord, rood staat voor fout.)");
+        htmlStringBuilder.append("<table><tr><td>woorden</td><td></td><td>niet-woorden</td></tr>");
         htmlStringBuilder.append("<tr style=\"vertical-align: top;\"><td>").append(experimenteeWordTable).append("</td><td></td><td>").append(experimenteeNonwordTable).append("</td></tr></table>");
 
-        htmlStringBuilder.append("<p>Uw score: </p>").append(this.getPercentageScore()).append("<br><br>");
-        htmlStringBuilder.append("<p>Uw kennis wan de Nederlandse woordenschat</p>").append(experimenteePositionDiagram).append("<br><br>");
+        htmlStringBuilder.append("<p>Opsomming: u kent ongeveer ").append(this.getPercentageScore()).append(" precent van alle nederlandse woorden</p>");
+        htmlStringBuilder.append("<p>Uw kennis wan de Nederlandse woordenschat graphisch</p>").append(experimenteePositionDiagram);
 
         return htmlStringBuilder.toString();
     }
@@ -273,13 +274,16 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         long perScore = this.getPercentageScore();
         HashMap<Long, String> content = this.generateDiagramSequence(this.responseRecord);
         htmlStringBuilder.append("<table>");
+        htmlStringBuilder.append("<tr><td>percentage</td><td></td><td>voorbeeld woord</td></tr>");
         for (Long key : content.keySet()) {
+            htmlStringBuilder.append("<tr>");
+            String percent = key.toString();
             if (key.equals(perScore)) {
-                htmlStringBuilder.append("<tr style=\"font-weight:bold;\">");
-            } else {
-                htmlStringBuilder.append("<tr>");
-            }
-            htmlStringBuilder.append("<td>").append(key).append("</td>");
+                percent= percent + " (uw positie)";
+            } 
+            String bar = this.makeDiagramBar(key);
+            htmlStringBuilder.append("<td>").append(percent).append("</td>");
+            htmlStringBuilder.append("<td>").append(bar).append("</td>");
             htmlStringBuilder.append("<td>").append(content.get(key)).append("</td>");
             htmlStringBuilder.append("</tr>");
         }
@@ -287,6 +291,21 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
 
         return htmlStringBuilder.toString();
     }
+    
+    //<table cellspacing="0" cellpadding="0" class="bargraphOuter" style="width: 100px; height: 10px;"><tbody><tr><td align="left" style="vertical-align: top;"><table cellspacing="0" cellpadding="0" class="bargraphInner" style="width: 27px; height: 10px;"><tbody><tr></tr></tbody></table></td></tr></tbody></table>
+    
+    private String makeDiagramBar(Long percentage){
+      long width = percentage;  
+      StringBuilder htmlStringBuilder = new StringBuilder();
+      htmlStringBuilder.append("<table cellspacing=\"0\" cellpadding=\"0\" class=\"bargraphOuter\" style=\"width: 100px; height: 10px;\">")
+              .append("<tbody><tr><td align=\"left\" style=\"vertical-align: top;\">")
+              .append("<table cellspacing=\"0\" cellpadding=\"0\" class=\"bargraphInner\" style=\"width: ")
+              .append(width)
+              .append("px; height: 10px;\">")
+              .append("<tbody><tr></tr></tbody></table></td></tr></tbody></table>");
+      return htmlStringBuilder.toString();
+    }
+    
     
     
     public HashMap<Long, String> generateDiagramSequence(ArrayList<AdVocAsBookkeepingStimulus> records) {
