@@ -711,6 +711,16 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:apply-templates select="onError" />
         <xsl:apply-templates select="onSuccess" />
         <xsl:text>);
-        </xsl:text>
+        </xsl:text>        
+        <xsl:if test="local-name() eq 'loadStimulus'">
+            <!--itterate oer all undefined attributes and call them on the loadStimulusClass as setters-->
+            <xsl:for-each select="@*">
+                <xsl:if test="name() ne 'eventTag'">                
+                    <xsl:text>((</xsl:text>     
+                    <xsl:value-of select="if(@class) then @class else 'nl.mpi.tg.eg.experiment.client.service.StimulusProvider'" />
+                    <xsl:value-of select="concat(')stimulusProvider).set', name(), '(&quot;', ., '&quot;);')"/>
+                </xsl:if>
+            </xsl:for-each>
+        </xsl:if>
     </xsl:template>
 </xsl:stylesheet>
