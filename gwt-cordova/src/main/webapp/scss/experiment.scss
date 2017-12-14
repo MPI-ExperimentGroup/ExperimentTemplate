@@ -370,6 +370,9 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
     position: fixed;
     height: 36vw;
 }
+.gwt-Image.borderedVideoLeft, .gwt-Image.borderedVideoRight {
+    object-fit: contain;
+}
 .gwt-Image.leftOverlayCurtain, .gwt-Image.rightOverlayCurtain {
     width: 50%;
 
