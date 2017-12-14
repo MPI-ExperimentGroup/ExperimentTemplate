@@ -58,6 +58,22 @@ public class StimulusProvider extends AbstractStimuliProvider {
 //        totalStimuli = stimulusSubsetArray.size();
     }
 
+    public void setrandomise(String notUsed) {
+        // these values are passed as parameters in this version
+    }
+
+    public void setrepeatRandomWindow(String notUsed) {
+        // these values are passed as parameters in this version
+    }
+
+    public void setmaxStimuli(String notUsed) {
+        // these values are passed as parameters in this version
+    }
+
+    public void setrepeatCount(String notUsed) {
+        // these values are passed as parameters in this version
+    }
+
     @Override
     public void getAll() {
         stimulusSubsetArray.addAll(stimulusArray);
