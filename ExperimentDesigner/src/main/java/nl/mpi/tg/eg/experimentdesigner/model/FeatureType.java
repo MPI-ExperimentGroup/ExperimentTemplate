@@ -127,8 +127,8 @@ public enum FeatureType {
     singleUser(true, false, null),
     aboveThreshold(true, false, null),
     belowThreshold(true, false, null),
-//    clearRegion(true, false, new FeatureAttribute[]{target}), // these tags would require the handling the clearing of timers and button handlers
-//    updateRegion(true, false, new FeatureAttribute[]{target}), // these tags would require the handling the clearing of timers and button handlers
+    //    clearRegion(true, false, new FeatureAttribute[]{target}), // these tags would require the handling the clearing of timers and button handlers
+    //    updateRegion(true, false, new FeatureAttribute[]{target}), // these tags would require the handling the clearing of timers and button handlers
     table(true, false, new FeatureAttribute[]{styleName}),
     row(true, false, null),
     column(true, false, new FeatureAttribute[]{styleName}),
@@ -150,7 +150,7 @@ public enum FeatureType {
     helpDialogue(false, true, new FeatureAttribute[]{closeButtonLabel}),
     userInfo(false, false, null),
     versionData(false, false, null),
-    preventWindowClose(false, false, null),
+    preventWindowClose(false, true, null),
     showColourReport(true, false, new FeatureAttribute[]{scoreThreshold}, false, false, Contitionals.hasThreshold),
     // @todo: groupMembers could be used to determing the sequence of who goes when and therefore could be changed to groupMembersSequence
     groupNetwork(true, false, new FeatureAttribute[]{groupMembers, groupCommunicationChannels, phasesPerStimulus}, false, false, Contitionals.hasGroupActivities),
