@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment appNameDisplay="Playhouse Study" appNameInternal="playhouse_study" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="false" textFontSize="17">
+<experiment appNameDisplay="Playhouse Study" appNameInternal="playhouse_study" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="ppcode"/>
         <field controlledMessage="Voer een getal." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="datOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
@@ -97,7 +97,7 @@
             </loadStimulus>
         </backgroundImage>
     </presenter>
-    <presenter back="Menu" displayOrder="9" menuLabel="Matching" next="TestMenu" type="stimulus" self="Matching" title="Matching">
+    <presenter back="Menu" displayOrder="9" menuLabel="Matching" next="Menu" type="stimulus" self="Matching" title="Matching">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToGarden">
             <loadStimulus eventTag="Matching" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                 <hasMoreStimulus>
@@ -151,14 +151,14 @@
             </loadStimulus>
         </backgroundImage>
     </presenter>
-    <presenter back="Menu" displayOrder="10" menuLabel="TestMenu" next="Attic" type="menu" self="TestMenu" title="TestMenu">
+<!--    <presenter back="Menu" displayOrder="10" menuLabel="TestMenu" next="Attic" type="menu" self="TestMenu" title="TestMenu">
         <menuItem featureText="Test 1" target="Test_1"/>
         <menuItem featureText="Test 2" target="Test_2"/>
         <menuItem featureText="Test 3" target="Test_3"/>
         <menuItem featureText="Test 4" target="Test_4"/>
         <activateRandomItem/>
-    </presenter>
-    <presenter back="Menu" displayOrder="11" menuLabel="Test 1" next="TestMenu" type="stimulus" self="Test_1" title="Test 1">
+    </presenter>-->
+<!--    <presenter back="Menu" displayOrder="11" menuLabel="Test 1" next="TestMenu" type="stimulus" self="Test_1" title="Test 1">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock1">
             <audioButton eventTag="room_1" src="room_1" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
@@ -215,8 +215,8 @@
                 </pause>
             </audioButton>
         </backgroundImage>
-    </presenter>
-    <presenter back="Menu" displayOrder="12" menuLabel="Test 2" next="TestMenu" type="stimulus" self="Test_2" title="Test 2">
+    </presenter>-->
+<!--    <presenter back="Menu" displayOrder="12" menuLabel="Test 2" next="TestMenu" type="stimulus" self="Test_2" title="Test 2">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock2">
             <audioButton eventTag="room_2" src="room_2" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
@@ -273,8 +273,8 @@
                 </pause>
             </audioButton>
         </backgroundImage>
-    </presenter>
-    <presenter back="Menu" displayOrder="13" menuLabel="Test 3" next="TestMenu" type="stimulus" self="Test_3" title="Test 3">
+    </presenter>-->
+<!--    <presenter back="Menu" displayOrder="13" menuLabel="Test 3" next="TestMenu" type="stimulus" self="Test_3" title="Test 3">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock3">
             <audioButton eventTag="room_3" src="room_3" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
@@ -331,8 +331,8 @@
                 </pause>
             </audioButton>
         </backgroundImage>
-    </presenter>
-    <presenter back="Menu" displayOrder="14" menuLabel="Test 4" next="TestMenu" type="stimulus" self="Test_4" title="Test 4">
+    </presenter>-->
+<!--    <presenter back="Menu" displayOrder="14" menuLabel="Test 4" next="TestMenu" type="stimulus" self="Test_4" title="Test 4">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock4">
             <audioButton eventTag="room_4" src="room_4" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
@@ -389,7 +389,7 @@
                 </pause>
             </audioButton>
         </backgroundImage>
-    </presenter>
+    </presenter>-->
     <presenter back="Menu" displayOrder="15" menuLabel="Einde van het experiment" type="transmission" self="completion" title="Einde van het experiment">
         <htmlText featureText="Data will not be collected in this version."/>
         <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;Hartelijk dank voor uw deelname! &lt;br/&gt;&lt;br/&gt;"/>
@@ -419,7 +419,7 @@
         <stimulus audioPath="P2" code="P2" identifier="practice_2" imagePath="P2.jpg" pauseMs="0">
             <tag>Practice</tag>
         </stimulus>
-        <stimulus audioPath="P3" code="P3" identifier="training_3" imagePath="P3.jpg" pauseMs="0">
+        <stimulus audioPath="P3" code="P3" identifier="training_3" imagePath="P3.png" pauseMs="0">
             <tag>Practice</tag>
         </stimulus>
         <stimulus audioPath="training_4" code="training_4" identifier="training_4" imagePath="training_4" pauseMs="0">
