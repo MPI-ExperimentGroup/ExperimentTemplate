@@ -74,12 +74,17 @@
             this.label = label;
             }
             } 
-
+            @Override
+            boolean preserveLastState() {
+            return </xsl:text>
+        <xsl:value-of select="experiment/@preserveLastState" />
+        <xsl:text>;
+            }
             public ApplicationController(RootLayoutPanel widgetTag) throws UserIdException {
             super(widgetTag);
         </xsl:text>
         <!--todo: does this even work?-->
-        <xsl:value-of select="if(experiment/preventWindowClose) then concat('preventWindowClose(&quot;', experiment/preventWindowClose, '&quot;);') else ''" />
+        <xsl:value-of select="if(experiment/preventWindowClose) then concat('preventWindowClose(messages.', generate-id(experiment/preventWindowClose), '());') else ''" />
         <xsl:text>        
             }
             
@@ -715,7 +720,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:if test="local-name() eq 'loadStimulus'">
             <!--itterate oer all undefined attributes and call them on the loadStimulusClass as setters-->
             <xsl:for-each select="@*">
-                <xsl:if test="name() ne 'eventTag'">                
+                <xsl:if test="name() ne 'eventTag' and name() ne 'class'">                
                     <xsl:text>((</xsl:text>     
                     <xsl:value-of select="if(@class) then @class else 'nl.mpi.tg.eg.experiment.client.service.StimulusProvider'" />
                     <xsl:value-of select="concat(')stimulusProvider).set', name(), '(&quot;', ., '&quot;);')"/>
