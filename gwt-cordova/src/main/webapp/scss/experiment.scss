@@ -364,18 +364,22 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
 .gwt-Image.leftOverlayCurtain, .gwt-Image.rightOverlayCurtain,
 .gwt-Button.leftOverlayCurtain, .gwt-Button.rightOverlayCurtain,
 .gwt-Button.optionButton.leftOverlayCurtain, .gwt-Button.optionButton.rightOverlayCurtain {
-    -webkit-transition: width 2s;
-    transition: width 2s;
-    top: 80px;
+    -webkit-transition: width 1s;
+    transition: width 1s;
+    top: 50px;
     position: fixed;
-    height: 36vw;
+    height: 100%;
 }
-.gwt-Image.borderedVideoLeft, .gwt-Image.borderedVideoRight {
+.gwt-Image.borderedVideoLeft, .gwt-Image.borderedVideoRight, .borderedVideoFull {
     object-fit: contain;
+}
+.borderedVideoFull {
+    width: 90vw;
+    left: 4vw;
+    top: 50px;
 }
 .gwt-Image.leftOverlayCurtain, .gwt-Image.rightOverlayCurtain {
     width: 50%;
-
 }
 .gwt-Button.leftOverlayCurtain:hover, .gwt-Button.rightOverlayCurtain:hover,
 .gwt-Button.leftOverlayCurtain[disabled]:hover, .gwt-Button.rightOverlayCurtain[disabled]:hover,
@@ -419,10 +423,12 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
     opacity: 0.5;
 }
 .borderedVideoLeft, .borderedVideoRight {
-    top: 80px;
-    position: fixed;
     width: 45vw;
     height: 34vw;
+    top: 80px;
+}
+.borderedVideoLeft, .borderedVideoRight, .borderedVideoFull {
+    position: fixed;
     padding: 1vw;
     border-color: $primaryColour2;
     border-radius: 15px;
