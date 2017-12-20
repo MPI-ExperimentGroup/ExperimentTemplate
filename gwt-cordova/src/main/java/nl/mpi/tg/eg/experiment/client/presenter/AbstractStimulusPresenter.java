@@ -81,7 +81,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
     private static final String LOADED_STIMULUS_LIST = "loadedStimulusList";
     private static final String SEEN_STIMULUS_INDEX = "seenStimulusIndex";
-    private final StimuliProvider stimulusProvider;
+    protected final StimuliProvider stimulusProvider;
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     private final LocalStorage localStorage;
     private final DataSubmissionService submissionService;
