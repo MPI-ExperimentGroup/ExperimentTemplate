@@ -66,6 +66,9 @@ public class Experiment implements Serializable {
     private String backgroundColour;
     private int textFontSize = 17;
     private boolean isScalable = true;
+    private boolean isRotatable = true;
+    private boolean preserveLastState = true;
+    private boolean preventWindowClose = true;
     private float defaultScale = 1;
 
     @OneToMany(mappedBy = "experiment")
@@ -132,6 +135,32 @@ public class Experiment implements Serializable {
 
     public void setIsScalable(boolean isScalable) {
         this.isScalable = isScalable;
+    }
+
+    @XmlAttribute
+    public boolean isRotatable() {
+        return isRotatable;
+    }
+
+    public void setRotatable(boolean isRotatable) {
+        this.isRotatable = isRotatable;
+    }
+
+    @XmlAttribute
+    public boolean isPreserveLastState() {
+        return preserveLastState;
+    }
+
+    public void setPreserveLastState(boolean preserveLastState) {
+        this.preserveLastState = preserveLastState;
+    }
+
+    public boolean preventWindowClose() {
+        return preventWindowClose;
+    }
+
+    public void setPreventWindowClose(boolean preventWindowClose) {
+        this.preventWindowClose = preventWindowClose;
     }
 
     @XmlAttribute

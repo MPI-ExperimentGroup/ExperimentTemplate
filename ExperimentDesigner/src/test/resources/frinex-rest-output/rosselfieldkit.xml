@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment appNameDisplay="RosselFieldKit" appNameInternal="rosselfieldkit" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="true" textFontSize="17">
+<experiment appNameDisplay="RosselFieldKit" appNameInternal="rosselfieldkit" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17">
     <metadata>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Participant ID"/>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="connectionString" preventServerDuplicates="false" registrationField="connection"/>
@@ -150,7 +150,7 @@
     </presenter>
     <presenter back="Menu" displayOrder="10" menuLabel="Task 2" next="Menu" type="stimulus" self="Task_2" title="Task 2">
         <centrePage/>
-        <loadSdCardStimulus eventTag="Task 2" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+        <loadSdCardStimulus eventTag="Task 2" randomise="true" repeatRandomWindow="0" excludeRegex=".*_question\....$" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="Task 2" wavFormat="true" filePerStimulus="false"/>
                 <clearPage/>
