@@ -52,6 +52,7 @@
         <!--<experiment.configuration.name>multiparticipant</experiment.configuration.name>-->
         <!--<experiment.configuration.name>sentences_rating_task</experiment.configuration.name>-->
         <!--<experiment.configuration.name>french_audio</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>french_conversation</experiment.configuration.name>-->
         <!--<experiment.configuration.name>dobes_annotator</experiment.configuration.name>-->
         <!--<experiment.configuration.name>antwoordraden</experiment.configuration.name>-->
         <!--<experiment.configuration.name>leeservaring</experiment.configuration.name>-->
@@ -78,7 +79,11 @@
         <!--<experiment.configuration.displayName>ld_screensize</experiment.configuration.displayName>-->
         <!--<experiment.configuration.name>ld_screensize</experiment.configuration.name>-->
         <experiment.configuration.name>advocas</experiment.configuration.name>
+        <!--<experiment.configuration.name>joseco02</experiment.configuration.name>-->
         <!--<experiment.configuration.name>guineapigproject01</experiment.configuration.name>-->
+        <!--<experiment.configuration.displayName>playback_preference</experiment.configuration.displayName>-->
+        <!--<experiment.configuration.name>playback_preference</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>playhouse_study</experiment.configuration.name>-->
         <experiment.configuration.admin.password></experiment.configuration.admin.password>
         <experiment.configuration.db.password></experiment.configuration.db.password>        
         
