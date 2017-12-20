@@ -77,8 +77,8 @@
         <!--<experiment.configuration.name>wellspringssamoan</experiment.configuration.name>-->
         <!--<experiment.configuration.name>nonwacq</experiment.configuration.name>-->
         <!--<experiment.configuration.displayName>ld_screensize</experiment.configuration.displayName>-->
-        <!--<experiment.configuration.name>ld_screensize</experiment.configuration.name>-->
-        <experiment.configuration.name>advocas</experiment.configuration.name>
+        <experiment.configuration.name>ld_screensize</experiment.configuration.name>
+        <!--<experiment.configuration.name>advocas</experiment.configuration.name>-->
         <!--<experiment.configuration.name>joseco02</experiment.configuration.name>-->
         <!--<experiment.configuration.name>guineapigproject01</experiment.configuration.name>-->
         <!--<experiment.configuration.displayName>playback_preference</experiment.configuration.displayName>-->
