@@ -99,9 +99,13 @@ public class AllWizardDataTest {
         testGetWizardData(new MultiParticipant().getExperiment());
         testGetWizardData(new ShortMultiparticipant01().getExperiment());
         testGetWizardData(new ManipulatedContours().getExperiment());
+        testGetWizardData(new FrenchConversation().getExperiment());
         testGetWizardData(new NonWacq().getExperiment());
         testGetWizardData(new SentencesRatingTask().getExperiment());
         testGetWizardData(new WellspringsSamoanFieldKit().getExperiment());
         testGetWizardData(new GuineaPigProject().getExperiment());
+        testGetWizardData(new Joost01().getExperiment());
+        testGetWizardData(new Joost02().getExperiment());
+        testGetWizardData(new PlaybackPreferenceMeasureExperiment().getExperiment());
     }
 }
