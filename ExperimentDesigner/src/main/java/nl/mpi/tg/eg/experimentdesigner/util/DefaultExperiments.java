@@ -84,9 +84,13 @@ public class DefaultExperiments {
         experimentRepository.save(new MultiParticipant().getExperiment());
         experimentRepository.save(new ShortMultiparticipant01().getExperiment());
         experimentRepository.save(new ManipulatedContours().getExperiment());
+        experimentRepository.save(new FrenchConversation().getExperiment());
         experimentRepository.save(new NonWacq().getExperiment());
         experimentRepository.save(new SentencesRatingTask().getExperiment());
         experimentRepository.save(new GuineaPigProject().getExperiment());
+        experimentRepository.save(new AdVoCas().getExperiment());
+        experimentRepository.save(new Joost01().getExperiment());
+        experimentRepository.save(new Joost02().getExperiment());
 
         for (Experiment experiment : experimentRepository.findAll()) {
             eventRepository.save(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.published, true, true, true));
