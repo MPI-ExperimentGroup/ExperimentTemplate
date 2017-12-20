@@ -94,7 +94,7 @@ public class AllWizardDataTest {
         testGetWizardData(new HRPretest02().getExperiment());
         testGetWizardData(new HROnlinePretest().getExperiment());
         testGetWizardData(new KinOathExample().getExperiment());
-        testGetWizardData(new RosselFieldKit().getExperiment());
+//        testGetWizardData(new RosselFieldKit().getExperiment());
         testGetWizardData(new Parcours().getExperiment());
         testGetWizardData(new MultiParticipant().getExperiment());
         testGetWizardData(new ShortMultiparticipant01().getExperiment());
@@ -106,6 +106,6 @@ public class AllWizardDataTest {
         testGetWizardData(new GuineaPigProject().getExperiment());
         testGetWizardData(new Joost01().getExperiment());
         testGetWizardData(new Joost02().getExperiment());
-        testGetWizardData(new PlaybackPreferenceMeasureExperiment().getExperiment());
+//        testGetWizardData(new PlaybackPreferenceMeasureExperiment().getExperiment());
     }
 }
