@@ -48,6 +48,7 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
 
     protected static final Logger logger = Logger.getLogger(AppController.class.getName());
     private final Version version = GWT.create(Version.class);
+    protected final Messages messages = GWT.create(Messages.class);
     final LocalStorage localStorage = new LocalStorage();
     final DataSubmissionService submissionService = new DataSubmissionService(localStorage);
     protected final RootLayoutPanel widgetTag;
@@ -85,7 +86,7 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
 //        detectWindowDefocus(widgetTag);
     }
 
-    protected void preventWindowClose(final String messageString) {
+    final protected void preventWindowClose(final String messageString) {
 
         // on page close, back etc. provide a warning that their session will be invalide and they will not be paid etc.
         Window.addWindowClosingHandler(new Window.ClosingHandler() {
@@ -131,6 +132,8 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
         presenter.setState(this, ApplicationState.start, null);
     }
 
+    abstract boolean preserveLastState();
+
     public void start() {
         setBackButtonAction();
         try {
@@ -152,7 +155,7 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
             }
             try {
                 final String appState = localStorage.getAppState(userResults.getUserData().getUserId());
-                final ApplicationState lastAppState = (appState != null) ? ApplicationState.valueOf(appState) : ApplicationState.start;
+                final ApplicationState lastAppState = (preserveLastState() && appState != null) ? ApplicationState.valueOf(appState) : ApplicationState.start;
                 requestApplicationState(lastAppState);
             } catch (IllegalArgumentException argumentException) {
                 requestApplicationState(ApplicationState.start);
