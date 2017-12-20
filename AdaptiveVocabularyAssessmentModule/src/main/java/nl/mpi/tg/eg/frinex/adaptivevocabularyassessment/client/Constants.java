@@ -22,14 +22,24 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client;
  * @author olhshk
  */
 public class Constants {
+    
+    // must go to config's xml (for now)
+    
+    public static final int N_SERIES = 2;
 
     public static final int NUMBER_OF_BANDS = 54;
 
     public static final int WORDS_PER_BAND = 40;
-
+    
+    public static final int START_BAND = 20;
+    
     public static final int AVRERAGE_NON_WORD_POSITION = 3;
 
-    public static final int START_BAND = 20;
+    public static final int START_PERCENTAGE_FOR_GRAPH = 30;
+    
+    // that's all for now
+    
+    public static final int WORDS_PER_BAND_IN_SERIES = WORDS_PER_BAND / N_SERIES;
 
     public static final int NONWORDS_PER_BLOCK = 4; // the lesser it is, the nicer but more predictable positions of nonwords one will get
 
@@ -44,7 +54,5 @@ public class Constants {
     public static final String NONWORD = "NEE&#44; ik ken dit woord niet";
             
     public static final String WORD = "JA&#44; ik ken dit woord";
-    
-    public static final int START_PERCENTAGE_FOR_GRAPH = 30;
 
 }

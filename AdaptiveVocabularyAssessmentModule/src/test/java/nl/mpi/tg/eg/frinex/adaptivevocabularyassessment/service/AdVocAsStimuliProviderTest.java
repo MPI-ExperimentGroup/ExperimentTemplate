@@ -25,8 +25,10 @@ import java.util.Random;
 import java.util.Set;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsNonWords;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsWords;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsNonWords1;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsNonWords2;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsWords1;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsWords2;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Vocabulary;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsStimulus;
@@ -72,18 +74,21 @@ public class AdVocAsStimuliProviderTest {
     public void testItialiseStimuliState() {
         System.out.println("initialiseStimuliState");
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        instance.initialiseStimuliState("");
+        instance.initialiseStimuliState("currentSeriesN:0");
 
         ArrayList<ArrayList<AdVocAsStimulus>> words = instance.getWords();
         assertEquals(Constants.NUMBER_OF_BANDS, words.size());
         for (int i = 0; i < Constants.NUMBER_OF_BANDS; i++) {
-            assertEquals(Constants.WORDS_PER_BAND, words.get(i).size());
+            assertEquals(Constants.WORDS_PER_BAND_IN_SERIES, words.get(i).size());
         }
 
         ArrayList<AdVocAsStimulus> nonwords = instance.getNonwords();
-        assertEquals(ConstantsNonWords.NONWORDS_ARRAY.length, nonwords.size());
 
-        int expectedTotalsStimuli = Constants.NUMBER_OF_BANDS * Constants.WORDS_PER_BAND + ConstantsNonWords.NONWORDS_ARRAY.length;
+        int expectedNonwordsLength = (Constants.N_SERIES == 2) ? 
+                ConstantsNonWords2.NONWORDS_SERIES[0].length : ConstantsNonWords1.NONWORDS_SERIES[0].length;
+        assertEquals(expectedNonwordsLength, nonwords.size());
+        
+        int expectedTotalsStimuli = Constants.NUMBER_OF_BANDS * Constants.WORDS_PER_BAND_IN_SERIES + expectedNonwordsLength;
         assertEquals(expectedTotalsStimuli, instance.getTotalStimuli());
 
         ArrayList<Integer> nonWordIndices = instance.getNonWordsIndices();
@@ -101,7 +106,7 @@ public class AdVocAsStimuliProviderTest {
     public void testGetCurrentStimulusIndex() {
         System.out.println("getCurrentStimulusIndex");
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        instance.initialiseStimuliState("");
+        instance.initialiseStimuliState("currentSeriesN:0");
         instance.hasNextStimulus(0);
         instance.nextStimulus(0);
         int result = instance.getCurrentStimulusIndex();
@@ -140,7 +145,7 @@ public class AdVocAsStimuliProviderTest {
 
     private void testGetCurrentStimulus() {
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        instance.initialiseStimuliState("");
+        instance.initialiseStimuliState("currentSeriesN:0");
         instance.hasNextStimulus(0);
         instance.nextStimulus(0);
         assertEquals(1, instance.getResponseRecord().size());
@@ -158,7 +163,7 @@ public class AdVocAsStimuliProviderTest {
     public void testIsCorrectResponse() throws Exception {
         System.out.println("isCorrectResponse");
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        instance.initialiseStimuliState("");
+        instance.initialiseStimuliState("currentSeriesN:0");
 
         //stimulus 1
         instance.hasNextStimulus(0);
@@ -204,9 +209,11 @@ public class AdVocAsStimuliProviderTest {
     public void testGetTotalStimuli() {
         System.out.println("getTotalStimuli");
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        instance.initialiseStimuliState("");
+        instance.initialiseStimuliState("currentSeriesN:0");
         int totalStimuli = instance.getTotalStimuli();
-        assertEquals(ConstantsNonWords.NONWORDS_ARRAY.length + Constants.NUMBER_OF_BANDS * Constants.WORDS_PER_BAND, totalStimuli);
+        int nonWordsLength = (Constants.N_SERIES == 2) ? 
+                ConstantsNonWords2.NONWORDS_SERIES[0].length : ConstantsNonWords1.NONWORDS_SERIES[0].length; 
+        assertEquals(nonWordsLength + Constants.NUMBER_OF_BANDS * Constants.WORDS_PER_BAND_IN_SERIES, totalStimuli);
     }
 
     /**
@@ -275,11 +282,10 @@ public class AdVocAsStimuliProviderTest {
         this.testHasNextStimulus();
     }
 
-   
     // also tests nextStimulus
     private AdVocAsStimuliProvider testHasNextStimulus() throws Exception {
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        instance.initialiseStimuliState("");
+        instance.initialiseStimuliState("currentSeriesN:0");
         boolean result = instance.hasNextStimulus(0);// does not depend on increment
         int invariant = instance.getResponseRecord().size() + instance.getNonwords().size() + this.getListOfListLength(instance.getWords());
 
@@ -369,7 +375,7 @@ public class AdVocAsStimuliProviderTest {
     public void testGetCurrentStimulusUniqueId() {
         System.out.println("getCurrentStimulusUniqueId");
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        instance.initialiseStimuliState("");
+        instance.initialiseStimuliState("currentSeriesN:0");
         instance.hasNextStimulus(0);
         instance.nextStimulus(0);
         String result = instance.getCurrentStimulusUniqueId();
@@ -439,8 +445,8 @@ public class AdVocAsStimuliProviderTest {
         System.out.println(" Test getBandNumberFromPercentage");
 
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
-        provider.initialiseStimuliState("");
-        
+        provider.initialiseStimuliState("currentSeriesN:0");
+
         HashMap<Long, Integer> percentageTable = provider.getPercentageBandTable();
         int result1 = percentageTable.get(new Long(1));
         assertEquals(1, result1);
@@ -457,7 +463,7 @@ public class AdVocAsStimuliProviderTest {
             // add tests for other values of the number of bands
             assertTrue(false);
         }
-        
+
     }
 
     @Test
@@ -478,7 +484,7 @@ public class AdVocAsStimuliProviderTest {
         Random rnd = new Random();
 
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
-        provider.initialiseStimuliState("");
+        provider.initialiseStimuliState("currentSeriesN:0");
 
         boolean hasNextStimulus = provider.hasNextStimulus(0);
         int currentExperimentCount = 0;
@@ -529,10 +535,12 @@ public class AdVocAsStimuliProviderTest {
         // checking generating graph
         // first check if the sample set is generated ok
         HashMap<Integer, String> samples = provider.retrieveSampleWords(provider.getResponseRecord());
-        
+
         Vocabulary vocab = new Vocabulary();
-        ArrayList<ArrayList<AdVocAsStimulus>> wordsInBands = vocab.initialiseWords(ConstantsWords.WORDS);
-        
+        AdVocAsStimulus[][] wordArray= (Constants.N_SERIES == 2) ? 
+                ConstantsWords2.WORDS_SERIES[0] :  ConstantsWords1.WORDS_SERIES[0];
+        ArrayList<ArrayList<AdVocAsStimulus>> wordsInBands = vocab.initialiseWords(wordArray);
+
         assertEquals(Constants.NUMBER_OF_BANDS, samples.keySet().size());
         for (int bandNumber = 1; bandNumber <= Constants.NUMBER_OF_BANDS; bandNumber++) {
             assertTrue(samples.containsKey(bandNumber));
@@ -544,7 +552,7 @@ public class AdVocAsStimuliProviderTest {
 
         // now check if the graph sequence for percentage is ok 
         HashMap<Long, String> graph = provider.generateDiagramSequence(provider.getResponseRecord());
-        for (long p = Constants.START_PERCENTAGE_FOR_GRAPH; p <= 100; p = p+10) {
+        for (long p = Constants.START_PERCENTAGE_FOR_GRAPH; p <= 100; p = p + 10) {
             assertTrue(graph.containsKey(p));
             assertNotNull(graph.get(p));
             int bandNumber = provider.getPercentageBandTable().get(p);
@@ -570,7 +578,7 @@ public class AdVocAsStimuliProviderTest {
     public AdVocAsStimuliProvider longFineTuningTest() throws Exception {
 
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
-        provider.initialiseStimuliState("");
+        provider.initialiseStimuliState("currentSeriesN:0");
 
         // make to wrong answers to start fine tuning immediately
         provider.hasNextStimulus(0);

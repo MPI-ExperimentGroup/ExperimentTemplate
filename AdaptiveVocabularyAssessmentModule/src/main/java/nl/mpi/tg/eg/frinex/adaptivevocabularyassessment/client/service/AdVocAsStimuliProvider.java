@@ -25,8 +25,10 @@ import java.util.HashMap;
 import java.util.Random;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsNonWords;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsWords;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsNonWords1;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsNonWords2;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsWords1;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsWords2;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.RandomIndexing;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Vocabulary;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
@@ -55,9 +57,17 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         super.initialiseStimuliState(stimuliStateSnapshot);
 
         Vocabulary vocab = new Vocabulary();
-        this.words = vocab.initialiseWords(ConstantsWords.WORDS);
+
         ArrayList<AdVocAsStimulus> nonwordstmp = new ArrayList<>();
-        nonwordstmp.addAll(Arrays.asList(ConstantsNonWords.NONWORDS_ARRAY));
+
+        if (Constants.N_SERIES == 2) {
+            this.words = vocab.initialiseWords(ConstantsWords2.WORDS_SERIES[this.currentSeriesN-1]);
+            nonwordstmp.addAll(Arrays.asList(ConstantsNonWords2.NONWORDS_SERIES[this.currentSeriesN-1]));
+        } else {
+            this.words = vocab.initialiseWords(ConstantsWords1.WORDS_SERIES[0]);
+            nonwordstmp.addAll(Arrays.asList(ConstantsNonWords1.NONWORDS_SERIES[0]));
+        }
+
         this.nonwords = vocab.initialiseNonwords(nonwordstmp);
 
         this.totalStimuli = this.nonwords.size();
@@ -279,8 +289,8 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
             htmlStringBuilder.append("<tr>");
             String percent = key.toString();
             if (key.equals(perScore)) {
-                percent= percent + " (uw positie)";
-            } 
+                percent = percent + " (uw positie)";
+            }
             String bar = this.makeDiagramBar(key);
             htmlStringBuilder.append("<td>").append(percent).append("</td>");
             htmlStringBuilder.append("<td>").append(bar).append("</td>");
@@ -291,49 +301,45 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
 
         return htmlStringBuilder.toString();
     }
-    
+
     //<table cellspacing="0" cellpadding="0" class="bargraphOuter" style="width: 100px; height: 10px;"><tbody><tr><td align="left" style="vertical-align: top;"><table cellspacing="0" cellpadding="0" class="bargraphInner" style="width: 27px; height: 10px;"><tbody><tr></tr></tbody></table></td></tr></tbody></table>
-    
-    private String makeDiagramBar(Long percentage){
-      long width = percentage;  
-      StringBuilder htmlStringBuilder = new StringBuilder();
-      htmlStringBuilder.append("<table cellspacing=\"0\" cellpadding=\"0\" class=\"bargraphOuter\" style=\"width: 100px; height: 10px;\">")
-              .append("<tbody><tr><td align=\"left\" style=\"vertical-align: top;\">")
-              .append("<table cellspacing=\"0\" cellpadding=\"0\" class=\"bargraphInner\" style=\"width: ")
-              .append(width)
-              .append("px; height: 10px;\">")
-              .append("<tbody><tr></tr></tbody></table></td></tr></tbody></table>");
-      return htmlStringBuilder.toString();
+    private String makeDiagramBar(Long percentage) {
+        long width = percentage;
+        StringBuilder htmlStringBuilder = new StringBuilder();
+        htmlStringBuilder.append("<table cellspacing=\"0\" cellpadding=\"0\" class=\"bargraphOuter\" style=\"width: 100px; height: 10px;\">")
+                .append("<tbody><tr><td align=\"left\" style=\"vertical-align: top;\">")
+                .append("<table cellspacing=\"0\" cellpadding=\"0\" class=\"bargraphInner\" style=\"width: ")
+                .append(width)
+                .append("px; height: 10px;\">")
+                .append("<tbody><tr></tr></tbody></table></td></tr></tbody></table>");
+        return htmlStringBuilder.toString();
     }
-    
-    
-    
+
     public HashMap<Long, String> generateDiagramSequence(ArrayList<AdVocAsBookkeepingStimulus> records) {
         HashMap<Long, String> retVal = new HashMap<Long, String>();
 
         HashMap<Integer, String> sampleWords = this.retrieveSampleWords(records);
 
         Long perScore = this.getPercentageScore();
-        boolean experimenteeResultAdded=false;
-        
-        if (perScore<Constants.START_PERCENTAGE_FOR_GRAPH) {
-               Integer bScore = this.getBandScore();
-               retVal.put(perScore, sampleWords.get(bScore)); 
-               experimenteeResultAdded = true;
-            }
-        
+        boolean experimenteeResultAdded = false;
+
+        if (perScore < Constants.START_PERCENTAGE_FOR_GRAPH) {
+            Integer bScore = this.getBandScore();
+            retVal.put(perScore, sampleWords.get(bScore));
+            experimenteeResultAdded = true;
+        }
+
         for (long percentage = Constants.START_PERCENTAGE_FOR_GRAPH; percentage <= 100; percentage = percentage + 10) {
-            if (!experimenteeResultAdded && perScore<percentage) {
-               Integer bScore = this.getBandScore();
-               retVal.put(perScore, sampleWords.get(bScore)); 
-               experimenteeResultAdded = true;
+            if (!experimenteeResultAdded && perScore < percentage) {
+                Integer bScore = this.getBandScore();
+                retVal.put(perScore, sampleWords.get(bScore));
+                experimenteeResultAdded = true;
             }
             Integer bandNumber = this.getPercentageBandTable().get(percentage);
             String value = sampleWords.get(bandNumber);
             retVal.put(percentage, value);
         }
 
-        
         return retVal;
     }
 
@@ -355,14 +361,13 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
                 // unseen word in the band means that there must be for sure
                 // non-used words for this band in the words-container
                 // if there will be array out of boud exception
-                String value = this.words.get(i-1).get(0).getLabel();
+                String value = this.words.get(i - 1).get(0).getLabel();
                 retVal.put(bandNumber, value);
             }
         }
 
         return retVal;
     }
-
 
     private HashMap<String, ArrayList<AdVocAsBookkeepingStimulus>> generateWordNonWordSequences(ArrayList<AdVocAsBookkeepingStimulus> records) {
         HashMap<String, ArrayList<AdVocAsBookkeepingStimulus>> retVal = new HashMap<String, ArrayList<AdVocAsBookkeepingStimulus>>();

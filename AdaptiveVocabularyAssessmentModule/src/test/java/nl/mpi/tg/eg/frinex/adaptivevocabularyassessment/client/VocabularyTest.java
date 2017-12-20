@@ -17,7 +17,6 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client;
 
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsBookkeepingStimulus;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -61,16 +60,19 @@ public class VocabularyTest {
     public void testInitialiseWords() {
         System.out.println("initialiseWords");
         Vocabulary instance = new Vocabulary();
-        ArrayList<ArrayList<AdVocAsStimulus>> words = instance.initialiseWords(ConstantsWords.WORDS);
+        AdVocAsStimulus[][] wordsArray = (Constants.N_SERIES == 2)
+                ? ConstantsWords2.WORDS_SERIES[0] : ConstantsWords2.WORDS_SERIES[0];
+
+        ArrayList<ArrayList<AdVocAsStimulus>> words = instance.initialiseWords(wordsArray);
         assertEquals(Constants.NUMBER_OF_BANDS, words.size());
         for (int i = 0; i < Constants.NUMBER_OF_BANDS; i++) {
             ArrayList<String> spellings = new ArrayList<>(words.get(i).size());
             for (AdVocAsStimulus stimulus : words.get(i)) {
                 spellings.add(stimulus.getLabel());
-                assertEquals(i+1,stimulus.getBandNumber());
+                assertEquals(i + 1, stimulus.getBandNumber());
             }
             HashSet<String> set = new HashSet(spellings);
-            assertEquals(ConstantsWords.WORDS[i].length, set.size()); // fails if there are repititions or permutation was incorrect
+            assertEquals(wordsArray[i].length, set.size()); // fails if there are repititions or permutation was incorrect
         }
     }
 
@@ -82,15 +84,18 @@ public class VocabularyTest {
         System.out.println("initialiseNonwords");
         Vocabulary instance = new Vocabulary();
         ArrayList<AdVocAsStimulus> nonwordstmp = new ArrayList<>();
-        nonwordstmp.addAll(Arrays.asList(ConstantsNonWords.NONWORDS_ARRAY));
+         AdVocAsStimulus[] nonwordsArray = (Constants.N_SERIES == 2)
+                ? ConstantsNonWords2.NONWORDS_SERIES[0] : ConstantsNonWords1.NONWORDS_SERIES[0];
+
+        nonwordstmp.addAll(Arrays.asList(nonwordsArray));
         ArrayList<AdVocAsStimulus> nonwords = instance.initialiseNonwords(nonwordstmp);
         ArrayList<String> spellings = new ArrayList<>(nonwords.size());
         for (AdVocAsStimulus stimulus : nonwords) {
             spellings.add(stimulus.getLabel());
         }
         HashSet<String> set = new HashSet(spellings);
-        assertEquals(ConstantsNonWords.NONWORDS_ARRAY.length, set.size()); // fails if there are repititions or permutation was incorrect
-       
+        assertEquals(nonwordsArray.length, set.size()); 
+
         // checking if the Equality is implemented OK on Strings
         ArrayList<String> testEqualityList = new ArrayList<>(2);
         testEqualityList.add("ok");
@@ -98,7 +103,7 @@ public class VocabularyTest {
         assertEquals(2, testEqualityList.size());
         HashSet<String> testEqualitySet = new HashSet(testEqualityList);
         assertEquals(1, testEqualitySet.size());
-    
+
     }
 
 }

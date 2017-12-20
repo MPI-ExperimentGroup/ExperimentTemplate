@@ -19,11 +19,13 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
 import utils.VocabularyFromFiles;
 import java.util.ArrayList;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -31,24 +33,26 @@ import org.junit.Test;
  * @author olhshk
  */
 public class VocabularyFromFilesTest {
-    
-    final String NONWORD_FILE_LOCATION = "2.selection_words_nonwords.csv";
-    
+
+    //final String NONWORD_FILE_LOCATION = "2.selection_words_nonwords.csv";
+    final String NONWORD_FILE_LOCATION = "nonwords_selection_2.csv";
+    final String WORD_FILE_LOCATION = "words_selection_2.csv";
+
     public VocabularyFromFilesTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -59,25 +63,38 @@ public class VocabularyFromFilesTest {
     @Test
     public void testParseWordInputCSV() throws Exception {
         System.out.println("parseWordInputCSV");
-        VocabularyFromFiles instance = new VocabularyFromFiles();
-        //instance.parseWordInputCSV("dummylocation");
-        // TODO review the generated test code and remove the default call to fail.
-       //fail("The test case is a prototype.");
+        VocabularyFromFiles.parseWordInputCSV(WORD_FILE_LOCATION);
+        AdVocAsStimulus[][] words = VocabularyFromFiles.getWords();
+        StringBuilder stBuilder = new StringBuilder("{");
+        for (AdVocAsStimulus[] wordband : words) {
+            stBuilder.append("\n{\n");
+            for (AdVocAsStimulus word : wordband) {
+                String id= word.getUniqueId();
+                String spelling = word.getLabel();
+                int band = word.getBandNumber();
+                String serialisedDescr = "new AdVocAsStimulus(\"" + id + "\", \"" + spelling + "\", \""+Constants.WORD+"\" " + ","+band+")";
+                stBuilder.append(serialisedDescr).append(",\n");
+            }
+           stBuilder.append("}\n,");
+        }
+        stBuilder.append("}");
+        System.out.println(stBuilder);
     }
 
     /**
      * Test of parseNonwordInputCSV method, of class VocabularyFromFiles.
      */
+    @Ignore
     @Test
     public void testParseNonwordInputCSV() throws Exception {
         System.out.println("parseNonwordInputCSV");
         VocabularyFromFiles.parseNonwordInputCSV(NONWORD_FILE_LOCATION);
         ArrayList<AdVocAsStimulus> nonwords = VocabularyFromFiles.getNonwords();
         StringBuilder stBuilder = new StringBuilder("[");
-        for (AdVocAsStimulus nonword: nonwords) {
+        for (AdVocAsStimulus nonword : nonwords) {
             stBuilder.append("'").append(nonword.getLabel()).append("', ");
         }
-        stBuilder .append("]");
+        stBuilder.append("]");
         System.out.println(stBuilder);
     }
 
@@ -90,7 +107,7 @@ public class VocabularyFromFilesTest {
         AdVocAsStimulus[][] result = VocabularyFromFiles.getWords();
         //assertArrayEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-       //fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -102,7 +119,7 @@ public class VocabularyFromFilesTest {
         ArrayList<AdVocAsStimulus> result = VocabularyFromFiles.getNonwords();
         //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-       //fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -113,7 +130,7 @@ public class VocabularyFromFilesTest {
         System.out.println("initialiseVocabulary");
         //instance.initialiseVocabulary("dummylocation", "dummylocation");
         // TODO review the generated test code and remove the default call to fail.
-       //fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
-    
+
 }

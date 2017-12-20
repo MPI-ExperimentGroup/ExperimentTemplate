@@ -37,6 +37,8 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  */
 public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStimulus> extends AbstractStimuliProvider {
 
+    protected int currentSeriesN = 0;
+    
     private int bandScore = -1;
     protected long percentageScore = 0;
     protected Boolean isCorrectCurrentResponse;
@@ -66,16 +68,19 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     private boolean justVisitedFirstBand = false;
 
     // add experiment specific stuff here
+    // ...
+    
+    
+    
+    
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
 
-        // todo!
         for (String splitValue : stimuliStateSnapshot.split(",")) {
-            switch (splitValue) {
-                case "bestFastTrackRecord:":
-                    break;
+            if (splitValue.startsWith("currentSeriesN:")) {
+               String val = splitValue.substring("currentSeriesN:".length());
+               this.currentSeriesN = Integer.parseInt(val)+1;
             }
-
         }
 
         this.responseRecord = new ArrayList<>();
@@ -96,6 +101,11 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
             }
         }
         return retVal;
+    }
+    
+    @Override
+    public String generateStimuliStateSnapshot() {
+        return "currentSeriesN:"+this.currentSeriesN;
     }
     
     public HashMap<Long, Integer> getPercentageBandTable() {
@@ -214,11 +224,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         return getCurrentStimulus().getUniqueId();
     }
 
-    @Override
-    public String generateStimuliStateSnapshot() {
-        return "";
-    }
-
+  
     @Override
     public String getHtmlStimuliReport() {
         String summary = this.getStringSummary("<tr>", "</tr>", "<td>", "</td>");

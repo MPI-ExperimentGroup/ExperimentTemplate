@@ -33,10 +33,10 @@ import org.apache.commons.csv.CSVRecord;
  */
 public class VocabularyFromFiles {
 
-    private static final AdVocAsStimulus[][] localWORDS = new AdVocAsStimulus[Constants.NUMBER_OF_BANDS][Constants.WORDS_PER_BAND];
+    private static final AdVocAsStimulus[][] localWORDS = new AdVocAsStimulus[Constants.NUMBER_OF_BANDS][Constants.WORDS_PER_BAND_IN_SERIES];
     private static final ArrayList<AdVocAsStimulus> localNONWORDS = new ArrayList<>(); // unknow length, cannot allocte in advance
 
-    private static void parseWordInputCSV(String wordFileLocation) throws IOException {
+    public static void parseWordInputCSV(String wordFileLocation) throws IOException {
         File inputFileWords = new File(wordFileLocation);
         final Reader reader = new InputStreamReader(inputFileWords.toURL().openStream(), "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
         Iterable<CSVRecord> records = CSVFormat.newFormat(';').withHeader().parse(reader);
@@ -45,9 +45,7 @@ public class VocabularyFromFiles {
             counter[i] = 0;
         }
         for (CSVRecord record : records) {
-            //String number = record.get("nr");
             int bandNumber = Integer.parseInt(record.get("Band"));
-            //String uniqueId, String label, String correctResponses, int bandNumber)
             String spelling = record.get("spelling");
             long millis = System.currentTimeMillis();
             String id = spelling + "_" + millis;
@@ -55,32 +53,18 @@ public class VocabularyFromFiles {
             localWORDS[bandNumber - 1][counter[bandNumber - 1]] = stimulus;
             counter[bandNumber - 1]++;
         }
-        System.out.println("public static AdVocAsAtomStimulus[][] WORDS = { ");
-        for (int bandIndex = 0; bandIndex < Constants.NUMBER_OF_BANDS; bandIndex++) {
-            System.out.println(" { ");
-            for (int i = 0; i < localWORDS[bandIndex].length; i++) {
-                String id = localWORDS[bandIndex][i].getUniqueId();
-                String spelling = localWORDS[bandIndex][i].getLabel();
-                int bandNumber = localWORDS[bandIndex][i].getBandNumber();
-                //AdVocAsAtomStimulus[][] test = { {new AdVocAsStimulus(id, spelling, Constants.WORD, bandNumber)}, {}};
-                System.out.println("new AdVocAsAtomStimulus(\"" + id + "\", \"" + spelling + "\", \"word\", " + bandNumber + "),");
-            }
-            System.out.println(" }, ");
-        }
-        System.out.println(" }; ");
-
-    }
+      }
 
     public static void parseNonwordInputCSV(String nonwordFileLocation) throws IOException {
         final File inputFileNonWords = new File(nonwordFileLocation);
         final Reader reader = new InputStreamReader(inputFileNonWords.toURL().openStream(), "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
         Iterable<CSVRecord> records = CSVFormat.newFormat(';').withHeader().parse(reader);
-        System.out.println("public static AdVocAsAtomStimulus[] NONWORDS_ARRAY = { ");
+        System.out.println("public static AdVocAsStimulus[] NONWORDS_ARRAY = { ");
         for (CSVRecord record : records) {
             String spelling = record.get("spelling");
             long millis = System.currentTimeMillis();
             String id = spelling + "_" + millis;
-            System.out.println("new AdVocAsAtomStimulus(\"" + id + "\", \"" + spelling + "\", \"nonword\" " + "),");
+            System.out.println("new AdVocAsStimulus(\"" + id + "\", \"" + spelling + "\", \""+Constants.NONWORD+"\" " + ",-1),");
             AdVocAsStimulus stimulus = new AdVocAsStimulus(id, spelling, Constants.NONWORD, -1);
             localNONWORDS.add(stimulus);
         }
