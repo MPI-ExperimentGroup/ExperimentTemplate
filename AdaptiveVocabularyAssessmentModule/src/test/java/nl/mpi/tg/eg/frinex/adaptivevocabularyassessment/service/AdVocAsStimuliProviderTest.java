@@ -74,7 +74,7 @@ public class AdVocAsStimuliProviderTest {
     public void testItialiseStimuliState() {
         System.out.println("initialiseStimuliState");
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        instance.initialiseStimuliState("currentSeriesN:0");
+        instance.initialiseStimuliState("");
 
         ArrayList<ArrayList<AdVocAsStimulus>> words = instance.getWords();
         assertEquals(Constants.NUMBER_OF_BANDS, words.size());
@@ -106,7 +106,7 @@ public class AdVocAsStimuliProviderTest {
     public void testGetCurrentStimulusIndex() {
         System.out.println("getCurrentStimulusIndex");
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        instance.initialiseStimuliState("currentSeriesN:0");
+        instance.initialiseStimuliState("");
         instance.hasNextStimulus(0);
         instance.nextStimulus(0);
         int result = instance.getCurrentStimulusIndex();
@@ -145,7 +145,7 @@ public class AdVocAsStimuliProviderTest {
 
     private void testGetCurrentStimulus() {
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        instance.initialiseStimuliState("currentSeriesN:0");
+        instance.initialiseStimuliState("");
         instance.hasNextStimulus(0);
         instance.nextStimulus(0);
         assertEquals(1, instance.getResponseRecord().size());
@@ -163,7 +163,7 @@ public class AdVocAsStimuliProviderTest {
     public void testIsCorrectResponse() throws Exception {
         System.out.println("isCorrectResponse");
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        instance.initialiseStimuliState("currentSeriesN:0");
+        instance.initialiseStimuliState("");
 
         //stimulus 1
         instance.hasNextStimulus(0);
@@ -209,7 +209,7 @@ public class AdVocAsStimuliProviderTest {
     public void testGetTotalStimuli() {
         System.out.println("getTotalStimuli");
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        instance.initialiseStimuliState("currentSeriesN:0");
+        instance.initialiseStimuliState("");
         int totalStimuli = instance.getTotalStimuli();
         int nonWordsLength = (Constants.N_SERIES == 2) ? 
                 ConstantsNonWords2.NONWORDS_SERIES[0].length : ConstantsNonWords1.NONWORDS_SERIES[0].length; 
@@ -285,7 +285,7 @@ public class AdVocAsStimuliProviderTest {
     // also tests nextStimulus
     private AdVocAsStimuliProvider testHasNextStimulus() throws Exception {
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        instance.initialiseStimuliState("currentSeriesN:0");
+        instance.initialiseStimuliState("");
         boolean result = instance.hasNextStimulus(0);// does not depend on increment
         int invariant = instance.getResponseRecord().size() + instance.getNonwords().size() + this.getListOfListLength(instance.getWords());
 
@@ -375,7 +375,7 @@ public class AdVocAsStimuliProviderTest {
     public void testGetCurrentStimulusUniqueId() {
         System.out.println("getCurrentStimulusUniqueId");
         AdVocAsStimuliProvider instance = new AdVocAsStimuliProvider();
-        instance.initialiseStimuliState("currentSeriesN:0");
+        instance.initialiseStimuliState("");
         instance.hasNextStimulus(0);
         instance.nextStimulus(0);
         String result = instance.getCurrentStimulusUniqueId();
@@ -445,7 +445,7 @@ public class AdVocAsStimuliProviderTest {
         System.out.println(" Test getBandNumberFromPercentage");
 
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
-        provider.initialiseStimuliState("currentSeriesN:0");
+        provider.initialiseStimuliState("");
 
         HashMap<Long, Integer> percentageTable = provider.getPercentageBandTable();
         int result1 = percentageTable.get(new Long(1));
@@ -484,7 +484,7 @@ public class AdVocAsStimuliProviderTest {
         Random rnd = new Random();
 
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
-        provider.initialiseStimuliState("currentSeriesN:0");
+        provider.initialiseStimuliState("");
 
         boolean hasNextStimulus = provider.hasNextStimulus(0);
         int currentExperimentCount = 0;
@@ -578,7 +578,7 @@ public class AdVocAsStimuliProviderTest {
     public AdVocAsStimuliProvider longFineTuningTest() throws Exception {
 
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
-        provider.initialiseStimuliState("currentSeriesN:0");
+        provider.initialiseStimuliState("");
 
         // make to wrong answers to start fine tuning immediately
         provider.hasNextStimulus(0);

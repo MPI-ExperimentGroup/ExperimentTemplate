@@ -37,8 +37,8 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  */
 public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStimulus> extends AbstractStimuliProvider {
 
-    protected int currentSeriesN = 0;
-    
+    protected String type = "0";
+
     private int bandScore = -1;
     protected long percentageScore = 0;
     protected Boolean isCorrectCurrentResponse;
@@ -70,21 +70,31 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     // add experiment specific stuff here
     // ...
     
-    
-    
+    public void settype(String type){
+        this.type=type;
+    }
     
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
 
-        for (String splitValue : stimuliStateSnapshot.split(",")) {
-            if (splitValue.startsWith("currentSeriesN:")) {
-               String val = splitValue.substring("currentSeriesN:".length());
-               this.currentSeriesN = Integer.parseInt(val)+1;
-            }
-        }
-
-        this.responseRecord = new ArrayList<>();
+        
+        this.bandScore = -1;
+        this.percentageScore =0;
+        this.isCorrectCurrentResponse = null;
         this.currentBandIndex = Constants.START_BAND - 1;
+        //this.totalStimuli: see the child class
+        this.enoughFineTuningStimulae = true;
+        for (int i=0; i<Constants.NUMBER_OF_BANDS; i++){
+            this.bandVisitCounter[i]=0;
+        }
+        for (int i=0; i<Constants.FINE_TUNING_UPPER_BOUND_FOR_2CYCLES * 2 + 1; i++){
+            this.cycle2helper[i]=0;
+        }
+        this.cycle2 = false;
+        this.champion = false;
+        this.looser = false;
+        justVisitedLastBand = false;
+        this.responseRecord = new ArrayList<>();
         this.percentageBandTable = this.generatePercentageBandTable();
     }
 
@@ -102,16 +112,15 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         }
         return retVal;
     }
-    
+
     @Override
     public String generateStimuliStateSnapshot() {
-        return "currentSeriesN:"+this.currentSeriesN;
+        return "";
     }
-    
+
     public HashMap<Long, Integer> getPercentageBandTable() {
         return this.percentageBandTable;
     }
-    
 
     public ArrayList<RecordStimulus> getResponseRecord() {
         return this.responseRecord;
@@ -224,7 +233,6 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         return getCurrentStimulus().getUniqueId();
     }
 
-  
     @Override
     public String getHtmlStimuliReport() {
         String summary = this.getStringSummary("<tr>", "</tr>", "<td>", "</td>");

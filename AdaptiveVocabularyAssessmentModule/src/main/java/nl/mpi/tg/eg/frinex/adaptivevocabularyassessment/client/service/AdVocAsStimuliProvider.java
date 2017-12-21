@@ -61,8 +61,8 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         ArrayList<AdVocAsStimulus> nonwordstmp = new ArrayList<>();
 
         if (Constants.N_SERIES == 2) {
-            this.words = vocab.initialiseWords(ConstantsWords2.WORDS_SERIES[this.currentSeriesN-1]);
-            nonwordstmp.addAll(Arrays.asList(ConstantsNonWords2.NONWORDS_SERIES[this.currentSeriesN-1]));
+            this.words = vocab.initialiseWords(ConstantsWords2.WORDS_SERIES[Integer.parseInt(type)]);
+            nonwordstmp.addAll(Arrays.asList(ConstantsNonWords2.NONWORDS_SERIES[Integer.parseInt(type)]));
         } else {
             this.words = vocab.initialiseWords(ConstantsWords1.WORDS_SERIES[0]);
             nonwordstmp.addAll(Arrays.asList(ConstantsNonWords1.NONWORDS_SERIES[0]));
