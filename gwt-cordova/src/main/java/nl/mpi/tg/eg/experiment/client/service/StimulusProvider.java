@@ -58,20 +58,36 @@ public class StimulusProvider extends AbstractStimuliProvider {
 //        totalStimuli = stimulusSubsetArray.size();
     }
 
-    public void setrandomise(String notUsed) {
-        // these values are passed as parameters in this version
+    private int attributeMaxStimulusCount = 3;
+    private boolean attributeRandomise = true;
+    private int attributeRepeatCount = 1;
+    private int attributeRepeatRandomWindow = 6;
+    private int attributeAdjacencyThreshold = 3;
+
+    public void setmaxStimuli(String maxStimulusCount) {
+        this.attributeMaxStimulusCount = Integer.parseInt(maxStimulusCount);
     }
 
-    public void setrepeatRandomWindow(String notUsed) {
-        // these values are passed as parameters in this version
+    public void setrandomise(String randomise) {
+        this.attributeRandomise = Boolean.valueOf(randomise);
     }
 
-    public void setmaxStimuli(String notUsed) {
-        // these values are passed as parameters in this version
+    public void setrepeatCount(String repeatCount) {
+        this.attributeRepeatCount = Integer.parseInt(repeatCount);
     }
 
-    public void setrepeatCount(String notUsed) {
-        // these values are passed as parameters in this version
+    public void setrepeatRandomWindow(String repeatRandomWindow) {
+        this.attributeRepeatRandomWindow = Integer.parseInt(repeatRandomWindow);
+    }
+
+    public void setadjacencyThreshold(String adjacencyThreshold) {
+        this.attributeAdjacencyThreshold = Integer.parseInt(adjacencyThreshold);
+    }
+    public void setminStimuliPerTag(String minStimuliPerTag) {
+        // todo: this value is not used at this point
+    }
+    public void setmaxStimuliPerTag(String maxStimuliPerTag) {
+        // todo: this value is not used at this point
     }
 
     @Override
@@ -158,6 +174,10 @@ public class StimulusProvider extends AbstractStimuliProvider {
 
     @Override
     // todo: start using the StimulusSelector which contains min and max count values
+    public void getSubset(final List<Tag> selectionTags, final String storedStimulusList, final int currentStimuliIndex) {
+        getSubset(selectionTags, attributeMaxStimulusCount, attributeRandomise, attributeRepeatCount, attributeRepeatRandomWindow, attributeAdjacencyThreshold, storedStimulusList, currentStimuliIndex);
+    }
+
     public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final String storedStimulusList, final int currentStimuliIndex) {
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
         this.currentStimuliIndex = currentStimuliIndex;
