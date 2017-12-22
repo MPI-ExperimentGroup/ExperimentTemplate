@@ -70,7 +70,7 @@ public interface StimuliProvider {
 
     void getSubset(final List<Stimulus.Tag> selectionTags, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final String storedStimulusList, final int currentStimuliIndex);
 
-    void getSubset(final List<Stimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final String storedStimulusList, final int currentStimuliIndex);
+    void getSubset(final List<Stimulus.Tag> selectionTags, final String storedStimulusList, final int currentStimuliIndex);
 
     void getSubset(final List<Stimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final String storedStimulusList, List<Stimulus> stimulusListCopy);
 
