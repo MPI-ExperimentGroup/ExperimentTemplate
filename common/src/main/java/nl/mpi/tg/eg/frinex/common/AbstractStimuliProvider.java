@@ -54,7 +54,7 @@ public abstract class AbstractStimuliProvider implements StimuliProvider {
     }
 
     @Override
-    public void getSubset(List<Stimulus.Tag> selectionTags, int maxStimulusCount, boolean randomise, int repeatCount, int repeatRandomWindow, int adjacencyThreshold, String stimuliStateSnapshot, int currentStimuliIndex) {
+    public void getSubset(List<Stimulus.Tag> selectionTags, String stimuliStateSnapshot, int currentStimuliIndex) {
         initialiseStimuliState(stimuliStateSnapshot);
     }
 
