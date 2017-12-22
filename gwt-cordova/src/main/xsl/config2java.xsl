@@ -658,6 +658,16 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         </xsl:if>
     </xsl:template>
     <xsl:template match="resetStimulus|groupMessageLabel|groupMemberCodeLabel|groupMemberLabel|groupScoreLabel|groupChannelScoreLabel|scoreLabel|clearCurrentScore|scoreIncrement|scoreAboveThreshold|bestScoreAboveThreshold|withMatchingStimulus|showColourReport|submitTestResults|VideoPanel|startAudioRecorder|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|loadStimulus|loadSdCardStimulus|loadAllStimulus|loadSubsetStimulus|currentStimulusHasTag|existingUserCheck|playVideo|pauseVideo">
+        <xsl:if test="local-name() eq 'loadStimulus'">
+            <!--iterate oer all undefined attributes and call them on the loadStimulusClass as setters-->
+            <xsl:for-each select="@*">
+                <xsl:if test="name() ne 'eventTag' and name() ne 'class'">                
+                    <xsl:text>((</xsl:text>     
+                    <xsl:value-of select="if(../@class) then ../@class else 'nl.mpi.tg.eg.experiment.client.service.StimulusProvider'" />
+                    <xsl:value-of select="concat(')stimulusProvider).set', name(), '(&quot;', ., '&quot;);')"/>
+                </xsl:if>
+            </xsl:for-each>
+        </xsl:if>
         <xsl:value-of select="if(ends-with(local-name(), 'Panel')) then '    set' else '    '" />
         <xsl:value-of select="local-name()" />
         <!--        <xsl:text>(new </xsl:text>
@@ -686,21 +696,21 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@condition0Tag) then concat(', Tag.tag_', @condition0Tag, '') else ''" />
         <xsl:value-of select="if(@condition1Tag) then concat(', Tag.tag_', @condition1Tag, '') else ''" />
         <xsl:value-of select="if(@condition2Tag) then concat(', Tag.tag_', @condition2Tag, '') else ''" />
-        <xsl:value-of select="if(@maxStimuli) then concat(', ', @maxStimuli, '') else ''" />
-        <xsl:value-of select="if(@minStimuliPerTag) then concat(', ', @minStimuliPerTag, '') else ''" />
-        <xsl:value-of select="if(@maxStimuliPerTag) then concat(', ', @maxStimuliPerTag, '') else ''" />
+        <!--<xsl:value-of select="if(@maxStimuli) then concat(', ', @maxStimuli, '') else ''" />-->
+        <!--<xsl:value-of select="if(@minStimuliPerTag) then concat(', ', @minStimuliPerTag, '') else ''" />-->
+        <!--<xsl:value-of select="if(@maxStimuliPerTag) then concat(', ', @maxStimuliPerTag, '') else ''" />-->
         <xsl:value-of select="if(@scoreThreshold) then concat('', @scoreThreshold, '') else ''" /> <!-- the trailing comma is needed for SynQuiz2, needs to be checked for other configurations. -->
         <xsl:value-of select="if(@scoreThreshold and (local-name() eq 'showColourReport' or local-name() eq 'submitTestResults')) then ', ' else ''" />
         <xsl:value-of select="if(@scoreValue) then concat('', @scoreValue, '') else ''" />
         <xsl:value-of select="if(@columnCount) then concat(', ', @columnCount, '') else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
         <xsl:value-of select="if(local-name() eq 'loadSdCardStimulus') then if(@excludeRegex) then concat(', &quot;', @excludeRegex, '&quot;') else ', null' else ''" />
-        <xsl:value-of select="if(@randomise) then concat(', ', @randomise eq 'true') else ''" />
-        <xsl:value-of select="if(@repeatCount) then concat(', ', @repeatCount) else ''" />
-        <xsl:value-of select="if(@repeatRandomWindow) then concat(', ', @repeatRandomWindow) else ''" />
-        <xsl:if test="@repeatRandomWindow">
+        <!--<xsl:value-of select="if(@randomise) then concat(', ', @randomise eq 'true') else ''" />-->
+        <!--<xsl:value-of select="if(@repeatCount) then concat(', ', @repeatCount) else ''" />-->
+        <!--<xsl:value-of select="if(@repeatRandomWindow) then concat(', ', @repeatRandomWindow) else ''" />-->
+        <!--        <xsl:if test="@repeatRandomWindow">
             <xsl:value-of select="if(@adjacencyThreshold) then concat(', ', @adjacencyThreshold) else ', 0'" />
-        </xsl:if>
+        </xsl:if>-->
         <xsl:apply-templates select="hasMoreStimulus" />
         <xsl:apply-templates select="endOfStimulus" />
         <xsl:apply-templates select="hasTag" />
@@ -716,16 +726,6 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:apply-templates select="onError" />
         <xsl:apply-templates select="onSuccess" />
         <xsl:text>);
-        </xsl:text>        
-        <xsl:if test="local-name() eq 'loadStimulus'">
-            <!--itterate oer all undefined attributes and call them on the loadStimulusClass as setters-->
-            <xsl:for-each select="@*">
-                <xsl:if test="name() ne 'eventTag' and name() ne 'class'">                
-                    <xsl:text>((</xsl:text>     
-                    <xsl:value-of select="if(@class) then @class else 'nl.mpi.tg.eg.experiment.client.service.StimulusProvider'" />
-                    <xsl:value-of select="concat(')stimulusProvider).set', name(), '(&quot;', ., '&quot;);')"/>
-                </xsl:if>
-            </xsl:for-each>
-        </xsl:if>
+        </xsl:text> 
     </xsl:template>
 </xsl:stylesheet>
