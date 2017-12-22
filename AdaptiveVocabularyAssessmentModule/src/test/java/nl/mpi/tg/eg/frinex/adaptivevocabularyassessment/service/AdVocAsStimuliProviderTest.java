@@ -871,7 +871,22 @@ public class AdVocAsStimuliProviderTest {
             assertEquals(bandSequence.get(lastIndex - 1).intValue(), bandSequence.get(lastIndex - 5).intValue());
             assertEquals(bandSequence.get(lastIndex - 2).intValue(), bandSequence.get(lastIndex - 4).intValue());
             assertNotEquals(bandSequence.get(lastIndex - 1).intValue(), bandSequence.get(lastIndex - 2).intValue());
-            int expectedScore = bandSequence.get(lastIndex - 1) < bandSequence.get(lastIndex - 2) ? bandSequence.get(lastIndex - 1) : bandSequence.get(lastIndex - 2);
+            
+              //Here implemented loop-based approach , with the last element excluded from loop detection
+            // x, x+1, x, x+1, x, (x+1)  (error, could have passed to x, if was not stopped) -> x
+            // x+1, x, x+1, x, x+1, (x+2)  (error, could have passed to x+1, if was not stopped) -> x+1
+            
+            //Alternative-2 loop-based with the last element taken into account during the loop detection
+            // x, x+1, x, x+1, x  (error) -> x
+            // x+1, x, x+1, x, x+1 (error) -> x+1
+           
+            
+            
+            //Alternative-1 oscillation-based
+            // x, x+1, x, x+1, x, x+1 (error) -> x+1
+            // x+1, x, x+1, x, x+1, x (error) -> x
+            
+            int expectedScore = bandSequence.get(lastIndex - 1);
             assertEquals(expectedScore, score);
         }
 

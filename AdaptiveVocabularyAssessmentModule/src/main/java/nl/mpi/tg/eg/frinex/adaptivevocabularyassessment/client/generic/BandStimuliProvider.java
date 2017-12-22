@@ -413,7 +413,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         }
 
         if (retVal) {
-            shiftFIFO(cycle2helper, currentBandNumber);
+            shiftFIFO(cycle2helper, currentBandNumber); // update the loop detector
             // check if there are enough stimuli left
             this.enoughFineTuningStimulae = this.initialiseNextFineTuningTuple();
             if (!this.enoughFineTuningStimulae) {
@@ -452,12 +452,23 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         this.cycle2 = detectLoop(cycle2helper);
         if (this.cycle2) {
             System.out.println("Detected: Constants.FINE_TUNING_UPPER_BOUND_FOR_2CYCLES times oscillation between two neighbouring bands");
-            this.bandScore = this.cycle2helper[0];
-            for (int i = 1; i < this.cycle2helper.length; i++) {
-                if (this.bandScore > this.cycle2helper[i]) {
-                    this.bandScore = this.cycle2helper[i];
-                }
-            }
+            this.bandScore = this.cycle2helper[cycle2helper.length-1];
+              
+            //Here implemented loop-based approach , with the last element excluded from loop detection
+            // x, x+1, x, x+1, x, (x+1)  (error, could have passed to x, if was not stopped) -> x
+            // x+1, x, x+1, x, x+1, (x+2)  (error, could have passed to x+1, if was not stopped) -> x+1
+            
+            //Alternative-2 loop-based with the last element taken into account during the loop detection
+            // x, x+1, x, x+1, x  (error) -> x
+            // x+1, x, x+1, x, x+1 (error) -> x+1
+           
+            
+            
+            //Alternative-1 oscillation-based
+            // x, x+1, x, x+1, x, x+1 (error) -> x+1
+            // x+1, x, x+1, x, x+1, x (error) -> x
+            
+            
             retVal = false;
         } else {
             if (this.currentBandIndex == 0) {
