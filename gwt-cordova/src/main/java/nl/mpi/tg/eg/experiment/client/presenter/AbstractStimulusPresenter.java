@@ -284,26 +284,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void loadStimulus(String eventTag, final StimulusSelector[] selectionTags, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
-        loadStimulus(eventTag, selectionTags, new StimulusSelector[0], null, maxStimulusCount, null, null, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, hasMoreStimulusListener, endOfStimulusListener);
-    }
-
-    protected void loadStimulus(String eventTag, final StimulusSelector[] selectionTags, final StimulusSelector[] randomTags, final MetadataField stimulusAllocationField, final int maxStimulusCount, final boolean randomise, int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
-        // todo: remove this when the experiment definition is updated
-        loadStimulus(eventTag, selectionTags, randomTags, stimulusAllocationField, maxStimulusCount, maxStimulusCount, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, hasMoreStimulusListener, endOfStimulusListener);
-    }
-
     protected void loadStimulus(String eventTag,
             final StimulusSelector[] selectionTags, // only stimuli with tags in this list can be included
             final StimulusSelector[] randomTags,
             final MetadataField stimulusAllocationField,
-            final int maxStimulusCount,
-            final Integer minStimuliPerTag,
-            final Integer maxStimuliPerTag,
-            final boolean randomise,
-            int repeatCount,
-            final int repeatRandomWindow,
-            final int adjacencyThreshold,
             final TimedStimulusListener hasMoreStimulusListener,
             final TimedStimulusListener endOfStimulusListener
     ) {
@@ -347,7 +331,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
         }
         // @todo: add the limits for maxStimulusCount and maxStimulusPerTag -
-        stimulusProvider.getSubset(allocatedTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, storedStimulusList, seenStimulusIndex);
+        stimulusProvider.getSubset(allocatedTags, storedStimulusList, seenStimulusIndex);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
         showStimulus(null, 0);
