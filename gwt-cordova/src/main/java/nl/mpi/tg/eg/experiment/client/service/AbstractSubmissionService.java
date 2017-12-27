@@ -27,13 +27,15 @@ import nl.mpi.tg.eg.experiment.client.Version;
  * @since Oct 29, 2014 11:18:31 AM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public class AbstractSubmissionService {
+public abstract class AbstractSubmissionService {
 
     final protected static Logger logger = Logger.getLogger(AbstractSubmissionService.class.getName());
     final protected ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     final protected MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
     final protected Version version = GWT.create(Version.class);
     protected final Messages messages = GWT.create(Messages.class);
+
+    abstract boolean isProductionVersion();
 
     // todo: move common parts to this class
 }
