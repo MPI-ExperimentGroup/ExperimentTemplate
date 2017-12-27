@@ -36,6 +36,7 @@ import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.presenter.StorageFullPresenter;
+import nl.mpi.tg.eg.experiment.client.presenter.TestingVersionPresenter;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
@@ -153,12 +154,17 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
                 submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "deviceUUID", getDeviceUUID(), 0);
                 submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "deviceVersion", getDeviceVersion(), 0);
             }
+            ApplicationState lastAppState = ApplicationState.start;
             try {
                 final String appState = localStorage.getAppState(userResults.getUserData().getUserId());
-                final ApplicationState lastAppState = (preserveLastState() && appState != null) ? ApplicationState.valueOf(appState) : ApplicationState.start;
-                requestApplicationState(lastAppState);
+                lastAppState = (preserveLastState() && appState != null) ? ApplicationState.valueOf(appState) : ApplicationState.start;
             } catch (IllegalArgumentException argumentException) {
-                requestApplicationState(ApplicationState.start);
+            }
+            if (!submissionService.isProductionVersion()) {
+                this.presenter = new TestingVersionPresenter(widgetTag, lastAppState);
+                presenter.setState(this, null, null);
+            } else {
+                requestApplicationState(lastAppState);
             }
             addKeyboardEvents();
         } catch (Exception exception) {
