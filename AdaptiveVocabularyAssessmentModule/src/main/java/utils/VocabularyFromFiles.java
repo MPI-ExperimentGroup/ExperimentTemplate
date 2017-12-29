@@ -32,16 +32,26 @@ import org.apache.commons.csv.CSVRecord;
  * @author olhshk
  */
 public class VocabularyFromFiles {
+    
+    private final int numberOfBands;
+    private final int wordsPerBand;
+    private final int wordsPerBandInSeries;
+    private final AdVocAsStimulus[][] localWORDS;
+    private final ArrayList<AdVocAsStimulus> localNONWORDS = new ArrayList<>(); // unknow length, cannot allocte in advance
 
-    private static final AdVocAsStimulus[][] localWORDS = new AdVocAsStimulus[Constants.NUMBER_OF_BANDS][Constants.WORDS_PER_BAND_IN_SERIES];
-    private static final ArrayList<AdVocAsStimulus> localNONWORDS = new ArrayList<>(); // unknow length, cannot allocte in advance
-
-    public static void parseWordInputCSV(String wordFileLocation) throws IOException {
+    
+     public VocabularyFromFiles(int numberOfBands, int wordsPerBand, int numberOfSeries){
+        this.numberOfBands = numberOfBands;
+        this.wordsPerBand  = wordsPerBand;
+        this.wordsPerBandInSeries = this.wordsPerBand/numberOfSeries;
+        this.localWORDS = new AdVocAsStimulus[this.numberOfBands][this.wordsPerBandInSeries];
+    }
+    public void parseWordInputCSV(String wordFileLocation) throws IOException {
         File inputFileWords = new File(wordFileLocation);
         final Reader reader = new InputStreamReader(inputFileWords.toURL().openStream(), "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
         Iterable<CSVRecord> records = CSVFormat.newFormat(';').withHeader().parse(reader);
-        int[] counter = new int[Constants.NUMBER_OF_BANDS];
-        for (int i = 0; i < Constants.NUMBER_OF_BANDS; i++) {
+        int[] counter = new int[this.numberOfBands];
+        for (int i = 0; i < this.numberOfBands; i++) {
             counter[i] = 0;
         }
         for (CSVRecord record : records) {
@@ -55,7 +65,7 @@ public class VocabularyFromFiles {
         }
       }
 
-    public static void parseNonwordInputCSV(String nonwordFileLocation) throws IOException {
+    public void parseNonwordInputCSV(String nonwordFileLocation) throws IOException {
         final File inputFileNonWords = new File(nonwordFileLocation);
         final Reader reader = new InputStreamReader(inputFileNonWords.toURL().openStream(), "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
         Iterable<CSVRecord> records = CSVFormat.newFormat(';').withHeader().parse(reader);
@@ -72,17 +82,17 @@ public class VocabularyFromFiles {
          
     }
 
-    public static AdVocAsStimulus[][] getWords() {
+    public AdVocAsStimulus[][] getWords() {
         return localWORDS;
     }
 
-    public static ArrayList<AdVocAsStimulus> getNonwords() {
+    public ArrayList<AdVocAsStimulus> getNonwords() {
         return localNONWORDS;
     }
 
-    public static void initialiseVocabulary(String wordFileLocation, String nonwordFileLocation) throws IOException {
-        parseWordInputCSV(wordFileLocation);
-        parseNonwordInputCSV(nonwordFileLocation);
+    public void initialiseVocabulary(String wordFileLocation, String nonwordFileLocation) throws IOException {
+        this.parseWordInputCSV(wordFileLocation);
+        this.parseNonwordInputCSV(nonwordFileLocation);
     }
 
 }

@@ -26,13 +26,21 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsStim
  */
 public class Vocabulary {
     
+    private final int numberOfBands;
+    private final int wordsPerBandInSeries;
+    
+    public Vocabulary(int numberOfBands, int wordsPerBandInSeries){
+        this.numberOfBands = numberOfBands;
+        this.wordsPerBandInSeries  = wordsPerBandInSeries;
+    }
+    
      // the sequence of words in each band should be randomly reshuffled any time we generate it
     public ArrayList<ArrayList<AdVocAsStimulus>> initialiseWords(AdVocAsStimulus[][] wrds) {
         if (wrds == null || wrds.length == 0) {
             System.out.println("Empty array of words in bands");
             return new ArrayList<>();
         }
-        ArrayList<ArrayList<AdVocAsStimulus>> retVal = new ArrayList<>(Constants.NUMBER_OF_BANDS);
+        ArrayList<ArrayList<AdVocAsStimulus>> retVal = new ArrayList<>(this.numberOfBands);
         for (int bandIndex = 0; bandIndex < wrds.length; bandIndex++) {
             if (wrds[bandIndex] == null && wrds[bandIndex].length == 0) {
                 System.out.println("Empty array of words for band " + bandIndex + "is empty.");
@@ -40,7 +48,7 @@ public class Vocabulary {
             } else {
                 int[] index =RandomIndexing.generateRandomArray(wrds[bandIndex].length);
                 
-                retVal.add(new ArrayList<AdVocAsStimulus>(Constants.WORDS_PER_BAND));
+                retVal.add(new ArrayList<AdVocAsStimulus>(this.wordsPerBandInSeries));
                 for (int i = 0;i < wrds[bandIndex].length; i ++) {
                     int ind = index[i];
                     retVal.get(bandIndex).add(wrds[bandIndex][ind]);

@@ -34,8 +34,6 @@ public class Main {
 
         final String NONWORD_FILE_LOCATION = "2.selection_words_nonwords.csv";
 
-        VocabularyFromFiles.initialiseVocabulary(WORD_FILE_LOCATION, NONWORD_FILE_LOCATION);
-        
     }
 
 }

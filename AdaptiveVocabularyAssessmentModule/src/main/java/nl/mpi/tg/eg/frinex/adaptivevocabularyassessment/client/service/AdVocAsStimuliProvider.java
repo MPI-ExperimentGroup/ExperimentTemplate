@@ -44,7 +44,9 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
     // experiment specific stuff here
     private RandomIndexing rndIndexing;
     private ArrayList<Integer> nonWordsIndexes;
-
+    private int wordsPerBand;
+    private int wordsPerBandInSeries; 
+    
     private ArrayList<ArrayList<AdVocAsStimulus>> words;
     private ArrayList<AdVocAsStimulus> nonwords;
 
@@ -56,13 +58,14 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
 
         super.initialiseStimuliState(stimuliStateSnapshot);
 
-        Vocabulary vocab = new Vocabulary();
+        this.wordsPerBandInSeries = this.wordsPerBand / this.numberOfSeries;
+        Vocabulary vocab = new Vocabulary(this.numberOfBands, this.wordsPerBandInSeries);
 
         ArrayList<AdVocAsStimulus> nonwordstmp = new ArrayList<>();
 
-        if (Constants.N_SERIES == 2) {
-            this.words = vocab.initialiseWords(ConstantsWords2.WORDS_SERIES[Integer.parseInt(type)]);
-            nonwordstmp.addAll(Arrays.asList(ConstantsNonWords2.NONWORDS_SERIES[Integer.parseInt(type)]));
+        if (this.numberOfSeries == 2) {
+            this.words = vocab.initialiseWords(ConstantsWords2.WORDS_SERIES[type]);
+            nonwordstmp.addAll(Arrays.asList(ConstantsNonWords2.NONWORDS_SERIES[type]));
         } else {
             this.words = vocab.initialiseWords(ConstantsWords1.WORDS_SERIES[0]);
             nonwordstmp.addAll(Arrays.asList(ConstantsNonWords1.NONWORDS_SERIES[0]));
@@ -71,15 +74,19 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         this.nonwords = vocab.initialiseNonwords(nonwordstmp);
 
         this.totalStimuli = this.nonwords.size();
-        for (int i = 0; i < Constants.NUMBER_OF_BANDS; i++) {
+        for (int i = 0; i < this.numberOfBands; i++) {
             this.totalStimuli += this.words.get(i).size();
         }
 
         // int startBand, int nonwordsPerBlock, int averageNonwordPosition, int nonwordsAvailable
-        this.rndIndexing = new RandomIndexing(Constants.START_BAND, Constants.NONWORDS_PER_BLOCK, Constants.AVRERAGE_NON_WORD_POSITION, nonwords.size());
+        this.rndIndexing = new RandomIndexing(this.startBand, this.numberOfBands, Constants.NONWORDS_PER_BLOCK, this.averageNonWordPosition, nonwords.size());
         this.nonWordsIndexes = this.rndIndexing.updateAndGetIndices();
 
         this.rnd = new Random();
+    }
+    
+    public void setwordsPerBand(String wordsPerBand){
+        this.wordsPerBand = Integer.parseInt(wordsPerBand);
     }
 
     public ArrayList<ArrayList<AdVocAsStimulus>> getWords() {
@@ -323,13 +330,13 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         Long perScore = this.getPercentageScore();
         boolean experimenteeResultAdded = false;
 
-        if (perScore < Constants.START_PERCENTAGE_FOR_GRAPH) {
+        if (perScore < this.startPercentageGraph) {
             Integer bScore = this.getBandScore();
             retVal.put(perScore, sampleWords.get(bScore));
             experimenteeResultAdded = true;
         }
 
-        for (long percentage = Constants.START_PERCENTAGE_FOR_GRAPH; percentage <= 100; percentage = percentage + 10) {
+        for (long percentage = this.startPercentageGraph; percentage <= 100; percentage = percentage + 10) {
             if (!experimenteeResultAdded && perScore < percentage) {
                 Integer bScore = this.getBandScore();
                 retVal.put(perScore, sampleWords.get(bScore));
@@ -355,7 +362,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         }
 
         // fill in absent values
-        for (int i = 1; i <= Constants.NUMBER_OF_BANDS; i++) {
+        for (int i = 1; i <= this.numberOfBands; i++) {
             Integer bandNumber = i;
             if (!retVal.containsKey(bandNumber)) {
                 // unseen word in the band means that there must be for sure

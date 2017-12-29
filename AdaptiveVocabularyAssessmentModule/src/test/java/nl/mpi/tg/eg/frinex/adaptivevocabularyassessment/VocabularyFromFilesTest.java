@@ -37,6 +37,9 @@ public class VocabularyFromFilesTest {
     //final String NONWORD_FILE_LOCATION = "2.selection_words_nonwords.csv";
     final String NONWORD_FILE_LOCATION = "nonwords_selection_2.csv";
     final String WORD_FILE_LOCATION = "words_selection_2.csv";
+    final int numberOfBands = 54;
+    final int wordsPerBand = 40;
+    final int numberOfSeries = 2;
 
     public VocabularyFromFilesTest() {
     }
@@ -63,19 +66,23 @@ public class VocabularyFromFilesTest {
     @Test
     public void testParseWordInputCSV() throws Exception {
         System.out.println("parseWordInputCSV");
-        VocabularyFromFiles.parseWordInputCSV(WORD_FILE_LOCATION);
-        AdVocAsStimulus[][] words = VocabularyFromFiles.getWords();
+
+        // VocabularyFromFiles(int numberOfBands, int wordsPerBand, int numberOfSeries)
+        VocabularyFromFiles instance = new VocabularyFromFiles(this.numberOfBands, this.wordsPerBand, this.numberOfSeries);
+
+        instance.parseWordInputCSV(WORD_FILE_LOCATION);
+        AdVocAsStimulus[][] words = instance.getWords();
         StringBuilder stBuilder = new StringBuilder("{");
         for (AdVocAsStimulus[] wordband : words) {
             stBuilder.append("\n{\n");
             for (AdVocAsStimulus word : wordband) {
-                String id= word.getUniqueId();
+                String id = word.getUniqueId();
                 String spelling = word.getLabel();
                 int band = word.getBandNumber();
-                String serialisedDescr = "new AdVocAsStimulus(\"" + id + "\", \"" + spelling + "\", \""+Constants.WORD+"\" " + ","+band+")";
+                String serialisedDescr = "new AdVocAsStimulus(\"" + id + "\", \"" + spelling + "\", \"" + Constants.WORD + "\" " + "," + band + ")";
                 stBuilder.append(serialisedDescr).append(",\n");
             }
-           stBuilder.append("}\n,");
+            stBuilder.append("}\n,");
         }
         stBuilder.append("}");
         System.out.println(stBuilder);
@@ -88,8 +95,9 @@ public class VocabularyFromFilesTest {
     @Test
     public void testParseNonwordInputCSV() throws Exception {
         System.out.println("parseNonwordInputCSV");
-        VocabularyFromFiles.parseNonwordInputCSV(NONWORD_FILE_LOCATION);
-        ArrayList<AdVocAsStimulus> nonwords = VocabularyFromFiles.getNonwords();
+        VocabularyFromFiles instance = new VocabularyFromFiles(this.numberOfBands, this.wordsPerBand, this.numberOfSeries);
+        instance.parseNonwordInputCSV(NONWORD_FILE_LOCATION);
+        ArrayList<AdVocAsStimulus> nonwords = instance.getNonwords();
         StringBuilder stBuilder = new StringBuilder("[");
         for (AdVocAsStimulus nonword : nonwords) {
             stBuilder.append("'").append(nonword.getLabel()).append("', ");
@@ -104,7 +112,8 @@ public class VocabularyFromFilesTest {
     @Test
     public void testGetWords() {
         System.out.println("getWords");
-        AdVocAsStimulus[][] result = VocabularyFromFiles.getWords();
+        VocabularyFromFiles instance = new VocabularyFromFiles(this.numberOfBands, this.wordsPerBand, this.numberOfSeries);
+        AdVocAsStimulus[][] result = instance.getWords();
         //assertArrayEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
@@ -116,7 +125,8 @@ public class VocabularyFromFilesTest {
     @Test
     public void testGetNonwords() {
         System.out.println("getNonwords");
-        ArrayList<AdVocAsStimulus> result = VocabularyFromFiles.getNonwords();
+        VocabularyFromFiles instance = new VocabularyFromFiles(this.numberOfBands, this.wordsPerBand, this.numberOfSeries);
+        ArrayList<AdVocAsStimulus> result = instance.getNonwords();
         //assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");

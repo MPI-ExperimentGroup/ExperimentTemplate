@@ -37,7 +37,13 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  */
 public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStimulus> extends AbstractStimuliProvider {
 
-    protected String type = "0";
+    protected int type = 0;
+    protected int numberOfBands = 0;
+    protected int numberOfSeries= 0;
+    protected int startBand=0;
+    protected int averageNonWordPosition=0;
+    protected int startPercentageGraph=0;
+    protected int fineTuningTupleLength=0;
 
     private int bandScore = -1;
     protected long percentageScore = 0;
@@ -59,7 +65,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
 
     // fine tuning stopping
     private boolean enoughFineTuningStimulae = true;
-    private final int[] bandVisitCounter = new int[Constants.NUMBER_OF_BANDS];
+    private final int[] bandVisitCounter = new int[this.numberOfBands];
     private final int[] cycle2helper = new int[Constants.FINE_TUNING_UPPER_BOUND_FOR_2CYCLES * 2 + 1];
     private boolean cycle2 = false;
     private boolean champion = false;
@@ -71,7 +77,31 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     // ...
     
     public void settype(String type){
-        this.type=type;
+        this.type=Integer.parseInt(type);
+    }
+    
+    public void setnumberOfBands(String numberOfBands){
+        this.numberOfBands=Integer.parseInt(numberOfBands);
+    }
+    
+    public void setnumberOfSeries(String numberOfSeries){
+        this.numberOfSeries=Integer.parseInt(numberOfSeries);
+    }
+    
+    public void setstartBand(String startBand){
+        this.startBand=Integer.parseInt(startBand);
+    }
+    
+    public void setaverageNonWordPosition(String averageNonWordPosition){
+        this.averageNonWordPosition=Integer.parseInt(averageNonWordPosition);
+    }
+    
+    public void setstartPercentageGraph(String startPercentageGraph){
+        this.startPercentageGraph=Integer.parseInt(startPercentageGraph);
+    }
+    
+    public void setfineTuningTupleLength(String fineTuningTupleLength){
+        this.fineTuningTupleLength=Integer.parseInt(fineTuningTupleLength);
     }
     
     @Override
@@ -81,10 +111,11 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         this.bandScore = -1;
         this.percentageScore =0;
         this.isCorrectCurrentResponse = null;
-        this.currentBandIndex = Constants.START_BAND - 1;
+        this.currentBandIndex = this.startBand - 1;
+        
         //this.totalStimuli: see the child class
         this.enoughFineTuningStimulae = true;
-        for (int i=0; i<Constants.NUMBER_OF_BANDS; i++){
+        for (int i=0; i<this.numberOfBands; i++){
             this.bandVisitCounter[i]=0;
         }
         for (int i=0; i<Constants.FINE_TUNING_UPPER_BOUND_FOR_2CYCLES * 2 + 1; i++){
@@ -93,14 +124,14 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         this.cycle2 = false;
         this.champion = false;
         this.looser = false;
-        justVisitedLastBand = false;
+        this.justVisitedLastBand = false;
         this.responseRecord = new ArrayList<>();
         this.percentageBandTable = this.generatePercentageBandTable();
     }
 
     private HashMap<Long, Integer> generatePercentageBandTable() {
         HashMap<Long, Integer> retVal = new HashMap<Long, Integer>();
-        for (int i = 1; i <= Constants.NUMBER_OF_BANDS; i++) {
+        for (int i = 1; i <= this.numberOfBands; i++) {
             Long key = this.bandNumberIntoPercentage(i);
             retVal.put(key, i);
         }
@@ -314,7 +345,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         if (this.isCorrectCurrentResponse) {
             this.secondChanceFastTrackIsFired = false;
             if (isWord) {
-                if (this.currentBandIndex == (Constants.NUMBER_OF_BANDS - 1)) {
+                if (this.currentBandIndex == (this.numberOfBands - 1)) {
                     retVal = false;
                 } else {
                     this.currentBandIndex++;
@@ -379,10 +410,10 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
                 this.bandVisitCounter[this.currentBandIndex]++;
 
                 // tranistion to the higher band ?
-                if (this.currentBandIndex == Constants.NUMBER_OF_BANDS - 1) { // the last band is hit
+                if (this.currentBandIndex == this.numberOfBands - 1) { // the last band is hit
                     if (this.justVisitedLastBand) {
                         this.champion = true;
-                        this.bandScore = Constants.NUMBER_OF_BANDS;
+                        this.bandScore = this.numberOfBands;
                         retVal = false; // stop interation, the last band visied twice in a row
                     } else {
                         this.justVisitedLastBand = true; // the second trial to be sure
@@ -428,14 +459,14 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
 
     // can be overriden by the concrete implementation
     protected long bandNumberIntoPercentage(int bandNumber) {
-        double tmp = ((double) bandNumber * 100.0) / Constants.NUMBER_OF_BANDS;
+        double tmp = ((double) bandNumber * 100.0) / this.numberOfBands;
         long retVal = Math.round(tmp);
         return retVal;
     }
 
     // can be overriden by the concrete implementation
     protected int percentageIntoBandNumber(long percentage) {
-        float tmp = ((float) percentage * Constants.NUMBER_OF_BANDS) / 100;
+        float tmp = ((float) percentage * this.numberOfBands) / 100;
         int retVal = Math.round(tmp);
         return retVal;
     }

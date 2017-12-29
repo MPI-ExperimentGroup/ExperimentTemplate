@@ -32,6 +32,9 @@ import static org.junit.Assert.*;
  */
 public class RandomIndexingTest {
     
+    private final int numberOfBands = 54;
+    private final int wordsPerBand = 40;
+    
     public RandomIndexingTest() {
     }
     
@@ -61,9 +64,10 @@ public class RandomIndexingTest {
         int nonWordsAvailable = 300;
         int averageNonwordPosition = 3;
         int nonWordsPerBlock = 4; // smotheness regulator
-        RandomIndexing instance = new RandomIndexing(startBand, nonWordsPerBlock, averageNonwordPosition, nonWordsAvailable);
+        //public RandomIndexing(int startBand, int this.numberOfBands, int nonwordsPerBlock, int averageNonwordPosition, int nonwordsAvailable)
+        RandomIndexing instance = new RandomIndexing(startBand, this.numberOfBands, nonWordsPerBlock, averageNonwordPosition, nonWordsAvailable);
         ArrayList<Integer> result = instance.updateAndGetIndices();
-        int allWords = (Constants.NUMBER_OF_BANDS - startBand+1)*2; // 2 times on one band because of the second chance
+        int allWords = (this.numberOfBands - startBand+1)*2; // 2 times on one band because of the second chance
         int expectedFastTrackSequenceLength = (allWords* 3)/2;
         int expectedAmountOfNonWords = expectedFastTrackSequenceLength/3; 
         assertEquals(expectedAmountOfNonWords, result.size());
@@ -85,7 +89,7 @@ public class RandomIndexingTest {
         int nonWordsAvailable = 100;
         int averageNonwordPosition = 3;
         int nonWordsPerBlock = 4; // smotheness regulator
-        RandomIndexing instance = new RandomIndexing(startBand, nonWordsPerBlock, averageNonwordPosition, nonWordsAvailable);
+        RandomIndexing instance = new RandomIndexing(startBand, this.numberOfBands, nonWordsPerBlock, averageNonwordPosition, nonWordsAvailable);
         ArrayList<Integer> result = instance.getIndices();
         assertEquals(null, result); // not initialised yet, look for testUpdateAndGetIndices for non empty index-list
     }
@@ -100,11 +104,11 @@ public class RandomIndexingTest {
         int nonWordsAvailable = 200;
         int averageNonwordPosition = 3;
         int nonWordsPerBlock = 4; // smotheness regulator
-        RandomIndexing instance = new RandomIndexing(startBand, nonWordsPerBlock, averageNonwordPosition, nonWordsAvailable);
+        RandomIndexing instance = new RandomIndexing(startBand, this.numberOfBands, nonWordsPerBlock, averageNonwordPosition, nonWordsAvailable);
         ArrayList<Integer> result = instance.updateAndGetIndices();
         instance.updateFrequencesOfNonWordIndices();
         double[] frequences= instance.getFrequencesOfNonWordindices();
-        int allWords = ((Constants.NUMBER_OF_BANDS - startBand)+1)*2;
+        int allWords = ((this.numberOfBands - startBand)+1)*2;
         int expectedFastTrackSequenceLength = (allWords* 3)/2;
         assertEquals(expectedFastTrackSequenceLength, frequences.length);
         double oneThird = 1.0/3.0;
@@ -124,8 +128,8 @@ public class RandomIndexingTest {
         int nonWordsAvailable = 200;
         int averageNonwordPosition = 3;
         int nonWordsPerBlock = 4; // smotheness regulator
-        RandomIndexing instance = new RandomIndexing(startBand, nonWordsPerBlock, averageNonwordPosition, nonWordsAvailable);
-        int allWords = ((Constants.NUMBER_OF_BANDS - startBand)+1)*2;
+        RandomIndexing instance = new RandomIndexing(startBand, this.numberOfBands, nonWordsPerBlock, averageNonwordPosition, nonWordsAvailable);
+        int allWords = ((this.numberOfBands - startBand)+1)*2;
         int expectedFastTrackSequenceLength = (allWords*3)/2;
         assertEquals(expectedFastTrackSequenceLength, instance.getFastTrackSequenceLength());
     }
@@ -134,9 +138,38 @@ public class RandomIndexingTest {
      * Test of generateRandomArray method, of class RandomIndexing.
      */
     @Test
-    public void testGenerateRandomArray() {
+    public void testGenerateRandomArray1() {
         System.out.println("generateRandomArray");
-        int n = Constants.WORDS_PER_BAND -1;
+        int numberOfSeries = 1;
+        int wordsPerBandInSeries = this.wordsPerBand/numberOfSeries;
+        int n = wordsPerBandInSeries -1;
+        int[] result = RandomIndexing.generateRandomArray(n);
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i=0; i<n; i++){
+            list.add(result[i]);
+        }
+        HashSet<Integer> set = new HashSet(list);
+        assertEquals(n, set.size()); // fails if the permutation is to short/long or gives repetitive values
+        
+        // checking if the Equality is implemented OK on Integers
+        ArrayList<Integer> testEqualityList = new ArrayList<>(2);
+        testEqualityList.add(1);
+        testEqualityList.add(1);
+        assertEquals(2, testEqualityList.size());
+        HashSet<Integer> testEqualitySet = new HashSet(testEqualityList);
+        assertEquals(1, testEqualitySet.size());
+        
+    }
+    
+    /**
+     * Test of generateRandomArray method, of class RandomIndexing.
+     */
+    @Test
+    public void testGenerateRandomArray2() {
+        System.out.println("generateRandomArray");
+        int numberOfSeries = 2;
+        int wordsPerBandInSeries = this.wordsPerBand/numberOfSeries;
+        int n = wordsPerBandInSeries -1;
         int[] result = RandomIndexing.generateRandomArray(n);
         ArrayList<Integer> list = new ArrayList<>();
         for (int i=0; i<n; i++){

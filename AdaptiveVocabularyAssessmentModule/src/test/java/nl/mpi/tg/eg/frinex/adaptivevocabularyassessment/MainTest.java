@@ -69,7 +69,7 @@ public class MainTest {
 
     private void testRound(double prob) throws Exception {
         AdVocAsStimuliProviderTest tester = new AdVocAsStimuliProviderTest();
-        AdVocAsStimuliProvider provider = tester.testRound(prob);
+        AdVocAsStimuliProvider provider = tester.testRound1(prob);
 
         boolean enoughFineTuningStimulae = provider.getEnoughFinetuningStimuli();
         boolean cycle2 = provider.getCycel2();

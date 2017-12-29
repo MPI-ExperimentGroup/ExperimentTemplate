@@ -21,11 +21,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Map;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 
 /**
@@ -34,26 +31,11 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsSt
  */
 public class Utils {
 
-    public static void testPrint() {
-        AdVocAsStimulus[][] tmpwords = VocabularyFromFiles.getWords();
-        System.out.println("Words \n");
+   
 
-        for (int i = 0; i < tmpwords.length; i++) {
-            System.out.println(i + 1);
-            for (AdVocAsStimulus unit : tmpwords[i]) {
-                System.out.println(unit.getLabel());
-            }
-        }
-        ArrayList<AdVocAsStimulus> tmpnonwords = VocabularyFromFiles.getNonwords();
-        System.out.println("Non words \n");
-        for (AdVocAsStimulus nonword : tmpnonwords) {
-            System.out.println(nonword.getLabel());
-        }
-    }
-
-    public static void writeCsvFileFastTrack(AdVocAsStimuliProvider provider, int stopBand, String outputDir) throws IOException {
+    public static void writeCsvFileFastTrack(AdVocAsStimuliProvider provider, int stopBand, String outputDir, int averageNonWordPosition) throws IOException {
         long millis = System.currentTimeMillis();
-        int blockSize = Constants.NONWORDS_PER_BLOCK * Constants.AVRERAGE_NON_WORD_POSITION;
+        int blockSize = Constants.NONWORDS_PER_BLOCK * averageNonWordPosition;
         String fileName = "Fast_track_test_stopped_at_band_" + stopBand + "_" + blockSize + "_" + millis + ".csv";
         System.out.println("writeCsvFile: " + outputDir + fileName);
         final File csvFile = new File(outputDir, fileName);
@@ -63,9 +45,9 @@ public class Utils {
         output.close();
     }
 
-    public static void writeHtmlFileFastTrack(AdVocAsStimuliProvider provider, int stopBand, String outputDir) throws IOException {
+    public static void writeHtmlFileFastTrack(AdVocAsStimuliProvider provider, int stopBand, String outputDir, int averageNonWordPosition) throws IOException {
         long millis = System.currentTimeMillis();
-        int blockSize = Constants.NONWORDS_PER_BLOCK * Constants.AVRERAGE_NON_WORD_POSITION;
+        int blockSize = Constants.NONWORDS_PER_BLOCK * averageNonWordPosition;
         String fileName = "Fast_track_test_stopped_at_band_" + stopBand + "_" + blockSize + "_" + millis + ".html";
         System.out.println("writeCsvFile: " + outputDir + fileName);
         final File htmlFile = new File(outputDir, fileName);
