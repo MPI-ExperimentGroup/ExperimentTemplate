@@ -1061,7 +1061,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         if (imagePath == null) {
             buttonItem = ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName);
         } else {
-            buttonItem = ((ComplexView) simpleView).addImageButton(presenterListerner, UriUtils.fromString(serviceLocations.staticFilesUrl() + imagePath), styleName);
+            buttonItem = ((ComplexView) simpleView).addImageButton(presenterListerner, UriUtils.fromString(serviceLocations.staticFilesUrl() + imagePath), styleName, true);
         }
         buttonList.add(buttonItem);
         touchInputCapture.addTouchZone(new TouchInputZone() {
@@ -1076,14 +1076,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                         && yPos <= buttonItem.getWidget().getAbsoluteTop() + buttonItem.getWidget().getOffsetHeight()
                         && xPos >= buttonItem.getWidget().getAbsoluteLeft()
                         && xPos <= buttonItem.getWidget().getAbsoluteLeft() + buttonItem.getWidget().getOffsetWidth());
-                // this will only highlight on the last touch count, move this to the touchInputCapture
                 return returnValue;
             }
 
             @Override
             public void triggerEvent() {
                 buttonItem.addStyleName(styleName + "Intersection");
-                buttonItem.getSingleShotEventListner().eventFired();
+                buttonItem.triggerSingleShotEventListner();
             }
 
             @Override
@@ -1385,6 +1384,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         buttonList.clear();
     }
 
+    protected void prevStimulus(final boolean repeatIncorrect) {
+        nextStimulus(repeatIncorrect, -1);
+    }
+
     protected void nextStimulus(final boolean repeatIncorrect) {
         nextStimulus(repeatIncorrect, 1);
     }
@@ -1524,9 +1527,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 @Override
                 public void setDebugLabel(String debugLabel) {
                     if (debugHtmlLabel != null) {
-                        if (debugHtmlLabel.getParent() == null) {
-                            ((TimedStimulusView) simpleView).add(debugHtmlLabel);
-                        }
+                        ((TimedStimulusView) simpleView).addWidget(debugHtmlLabel);
                         debugHtmlLabel.setHTML(debugLabel);
                     }
                 }
@@ -1631,7 +1632,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 });
             }
         };
-        ((TimedStimulusView) simpleView).addImageButton(presenterEventListner, UriUtils.fromString(serviceLocations.staticFilesUrl() + imagePath), styleName);
+        ((TimedStimulusView) simpleView).addImageButton(presenterEventListner, UriUtils.fromString(serviceLocations.staticFilesUrl() + imagePath), styleName, false);
         if (autoPlay) {
             presenterEventListner.eventFired(null, null);
         }
