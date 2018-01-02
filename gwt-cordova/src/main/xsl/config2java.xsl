@@ -478,7 +478,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="touchInputCaptureStart|touchInputReportSubmit|logTimeStamp|audioButton|prevStimulusButton|nextStimulusButton|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage">
+    <xsl:template match="touchInputCaptureStart|touchInputReportSubmit|logTimeStamp|audioButton|prevStimulusButton|nextStimulusButton|prevStimulus|nextStimulus|nextMatchingStimulus|sendGroupMessageButton|sendGroupMessage|sendGroupEndOfStimuli|sendGroupStoredMessage">
         <xsl:text>    </xsl:text>
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
