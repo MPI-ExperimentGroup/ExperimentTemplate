@@ -55,6 +55,15 @@ public class DataSubmissionService extends AbstractSubmissionService {
         this.experimentName = messages.appNameInternal();
     }
 
+    @Override
+    public boolean isProductionVersion() {
+        boolean dataSubmitUrlOk = serviceLocations.dataSubmitUrl().contains("ems12");
+        boolean groupServerUrlOk = serviceLocations.groupServerUrl().contains("ems12");
+//        boolean registrationUrlOk = serviceLocations.registrationUrl().contains("www.mpi.nl");
+        boolean staticFilesUrlOk = serviceLocations.staticFilesUrl().contains("ems12");
+        return dataSubmitUrlOk && groupServerUrlOk && staticFilesUrlOk;
+    }
+
     public String getCompletionCode(UserId userId) {
         // todo: this should be generated on the server rather than on the client
         String completionCode = localStorage.getCompletionCode(userId);
