@@ -94,6 +94,7 @@ public enum FeatureType {
     prevStimulusButton(false, true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey}),
     nextStimulusButton(false, true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey}),
     nextStimulus(false, false, new FeatureAttribute[]{/*eventTag,*/repeatIncorrect}),
+    prevStimulus(false, false, new FeatureAttribute[]{/*eventTag,*/repeatIncorrect}),
     nextMatchingStimulus(false, false, null),
     addKinTypeGui(false, false, new FeatureAttribute[]{diagramName}),
     hasGetParameter(true, false, new FeatureAttribute[]{parameterName}, false, false, Contitionals.hasTrueFalseCondition),
