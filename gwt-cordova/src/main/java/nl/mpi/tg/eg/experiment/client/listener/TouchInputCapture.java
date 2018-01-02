@@ -28,6 +28,7 @@ import com.google.gwt.event.dom.client.TouchEndEvent;
 import com.google.gwt.event.dom.client.TouchEvent;
 import com.google.gwt.event.dom.client.TouchMoveEvent;
 import com.google.gwt.event.dom.client.TouchStartEvent;
+import com.google.gwt.user.client.Event;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,7 @@ import java.util.List;
  * @since Oct 23, 2017 2:10:09 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public abstract class TouchInputCapture extends HandlesAllTouchEvents implements MouseMoveHandler {
+public abstract class TouchInputCapture extends HandlesAllTouchEvents implements MouseMoveHandler, Event.NativePreviewHandler {
 
     private final StringBuilder recordedTouches = new StringBuilder();
     private final List<TouchInputZone> touchZones = new ArrayList<>();
@@ -125,6 +126,21 @@ public abstract class TouchInputCapture extends HandlesAllTouchEvents implements
         appendTouch(event.getClientX(), event.getClientY(), triggeredZones);
         setDebugLabel(event.toDebugString() + " " + event.getClientX() + "," + event.getClientY());
         triggerZones(triggeredZones);
+    }
+
+    @Override
+    public void onPreviewNativeEvent(Event.NativePreviewEvent event) {
+        final int eventType = event.getTypeInt();
+        final List<TouchInputZone> triggeredZones = new ArrayList<>();
+        switch (eventType) {
+            case Event.ONMOUSEOUT:
+            case Event.ONMOUSEMOVE:
+                appendTouch(event.getNativeEvent().getClientX(), event.getNativeEvent().getClientY(), triggeredZones);
+                setDebugLabel(event.toDebugString() + " " + event.getNativeEvent().getClientX() + "," + event.getNativeEvent().getClientY());
+                triggerZones(triggeredZones);
+                break;
+            default:
+        }
     }
 
     public String getTouchReport(int screenWidth, int screenHeight) {
