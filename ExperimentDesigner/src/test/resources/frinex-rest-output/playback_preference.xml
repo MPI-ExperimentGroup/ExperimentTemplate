@@ -49,7 +49,7 @@
         </saveMetadataButton>
     </presenter>
     <presenter back="StimuliMenu" displayOrder="9" menuLabel="PRAY" next="StimuliMenu" type="stimulus" self="PRAY" title="PRAY">
-        <loadStimulus eventTag="PRAY" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+        <loadStimulus eventTag="PRAY" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
@@ -118,7 +118,7 @@
         </loadStimulus>
     </presenter>
     <presenter back="StimuliMenu" displayOrder="9" menuLabel="COW" next="StimuliMenu" type="stimulus" self="COW" title="COW">
-        <loadStimulus eventTag="COW" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+        <loadStimulus eventTag="COW" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
@@ -171,7 +171,7 @@
         </loadStimulus>
     </presenter>
     <presenter back="StimuliMenu" displayOrder="9" menuLabel="FATHER" next="StimuliMenu" type="stimulus" self="FATHER" title="FATHER">
-        <loadStimulus eventTag="FATHER" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+        <loadStimulus eventTag="FATHER" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
@@ -224,7 +224,7 @@
         </loadStimulus>
     </presenter>
     <presenter back="StimuliMenu" displayOrder="9" menuLabel="GHOST_a" next="StimuliMenu" type="stimulus" self="GHOST_a" title="GHOST_a">
-        <loadStimulus eventTag="GHOST_a" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+        <loadStimulus eventTag="GHOST_a" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
@@ -277,7 +277,7 @@
         </loadStimulus>
     </presenter>
     <presenter back="StimuliMenu" displayOrder="9" menuLabel="GHOST_b" next="StimuliMenu" type="stimulus" self="GHOST_b" title="GHOST_b">
-        <loadStimulus eventTag="GHOST_b" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+        <loadStimulus eventTag="GHOST_b" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
@@ -330,7 +330,7 @@
         </loadStimulus>
     </presenter>
     <presenter back="StimuliMenu" displayOrder="9" menuLabel="SHY" next="StimuliMenu" type="stimulus" self="SHY" title="SHY">
-        <loadStimulus eventTag="SHY" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+        <loadStimulus eventTag="SHY" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
