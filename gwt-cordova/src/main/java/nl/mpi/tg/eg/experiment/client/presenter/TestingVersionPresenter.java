@@ -58,9 +58,10 @@ public class TestingVersionPresenter extends LocalStoragePresenter implements Pr
         ((ComplexView) simpleView).addText("Once you have verified that this version suits your needs, please request deployment of the production version.");
         ((ComplexView) simpleView).addPadding();
         ((ComplexView) simpleView).addPadding();
-        ((ComplexView) simpleView).addText("Framework For Interactive Experiments\n" + "Version: " + version.majorVersion() + "."
-                + version.minorVersion() + "."
-                + version.buildVersion() + "-"
+        ((ComplexView) simpleView).addText("Framework For Interactive Experiments\n" + "Version: "
+//                + version.majorVersion() + "."
+//                + version.minorVersion() + "."
+//                + version.buildVersion() + "-"
                 + version.projectVersion() + "\n");
         ((ComplexView) simpleView).addPadding();
 
