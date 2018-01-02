@@ -63,6 +63,7 @@ public class StimulusProvider extends AbstractStimuliProvider {
     private int attributeRepeatCount = 1;
     private int attributeRepeatRandomWindow = 6;
     private int attributeAdjacencyThreshold = 3;
+    private boolean rememberLastStimuli = true;
 
     public void setmaxStimuli(String maxStimulusCount) {
         this.attributeMaxStimulusCount = Integer.parseInt(maxStimulusCount);
@@ -70,6 +71,10 @@ public class StimulusProvider extends AbstractStimuliProvider {
 
     public void setrandomise(String randomise) {
         this.attributeRandomise = Boolean.valueOf(randomise);
+    }
+
+    public void setrememberLastStimuli(String randomise) {
+        this.rememberLastStimuli = Boolean.valueOf(randomise);
     }
 
     public void setrepeatCount(String repeatCount) {
@@ -83,9 +88,11 @@ public class StimulusProvider extends AbstractStimuliProvider {
     public void setadjacencyThreshold(String adjacencyThreshold) {
         this.attributeAdjacencyThreshold = Integer.parseInt(adjacencyThreshold);
     }
+
     public void setminStimuliPerTag(String minStimuliPerTag) {
         // todo: this value is not used at this point
     }
+
     public void setmaxStimuliPerTag(String maxStimuliPerTag) {
         // todo: this value is not used at this point
     }
@@ -180,8 +187,10 @@ public class StimulusProvider extends AbstractStimuliProvider {
 
     public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final String storedStimulusList, final int currentStimuliIndex) {
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
-        this.currentStimuliIndex = currentStimuliIndex;
-        if (!storedStimulusList.isEmpty()) {
+        if (rememberLastStimuli) {
+            this.currentStimuliIndex = currentStimuliIndex;
+        }
+        if (rememberLastStimuli && !storedStimulusList.isEmpty()) {
             // todo: also load the list for other getSubset related methods
             loadStoredStimulusList(storedStimulusList, stimulusArray);
         } else {
