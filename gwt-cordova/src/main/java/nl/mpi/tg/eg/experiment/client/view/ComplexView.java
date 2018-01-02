@@ -30,6 +30,7 @@ import com.google.gwt.event.dom.client.TouchCancelEvent;
 import com.google.gwt.event.dom.client.TouchEndEvent;
 import com.google.gwt.event.dom.client.TouchMoveEvent;
 import com.google.gwt.event.dom.client.TouchStartEvent;
+import com.google.gwt.user.client.Event;
 //import com.google.gwt.event.dom.client.DragStartEvent;
 //import com.google.gwt.event.dom.client.DragStartHandler;
 import com.google.gwt.user.client.Window;
@@ -336,6 +337,7 @@ public class ComplexView extends SimpleView {
         domHandlerArray.add(root.addDomHandler(touchInputCapture, TouchEndEvent.getType()));
         domHandlerArray.add(root.addDomHandler(touchInputCapture, TouchCancelEvent.getType()));
         domHandlerArray.add(root.addDomHandler(touchInputCapture, MouseMoveEvent.getType()));
+        domHandlerArray.add(Event.addNativePreviewHandler(touchInputCapture));
     }
 
     private void addHotKeyListner(final PresenterEventListner presenterListerner, final SingleShotEventListner singleShotEventListner) {
@@ -404,10 +406,9 @@ public class ComplexView extends SimpleView {
             }
 
             @Override
-            public SingleShotEventListner getSingleShotEventListner() {
-                return singleShotEventListner;
+            public void triggerSingleShotEventListner() {
+                singleShotEventListner.eventFired();
             }
-
         };
     }
 
@@ -418,7 +419,7 @@ public class ComplexView extends SimpleView {
         }
     }
 
-    public StimulusButton addImageButton(final PresenterEventListner presenterListerner, final SafeUri imagePath, final String styleName) {
+    public StimulusButton addImageButton(final PresenterEventListner presenterListerner, final SafeUri imagePath, final String styleName, final boolean isTouchZone) {
         final Image image = new Image(imagePath);
         final Button imageButton = new Button();
         imageButton.getElement().appendChild(image.getElement());
@@ -426,7 +427,6 @@ public class ComplexView extends SimpleView {
             image.addStyleName(styleName);
         }
         imageButton.addStyleName((styleName == null) ? "imageButton" : styleName);
-        imageButton.setEnabled(true);
         getActivePanel().add(imageButton);
         final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
 
@@ -438,12 +438,17 @@ public class ComplexView extends SimpleView {
                 resetSingleShot();
             }
         };
-        imageButton.addClickHandler(singleShotEventListner);
-        imageButton.addTouchStartHandler(singleShotEventListner);
-        imageButton.addTouchMoveHandler(singleShotEventListner);
-        imageButton.addTouchEndHandler(singleShotEventListner);
-        addHotKeyListner(presenterListerner, singleShotEventListner);
-        return new StimulusButton() {
+        if (!isTouchZone) {
+            imageButton.setEnabled(true);
+            imageButton.addClickHandler(singleShotEventListner);
+            imageButton.addTouchStartHandler(singleShotEventListner);
+            imageButton.addTouchMoveHandler(singleShotEventListner);
+            imageButton.addTouchEndHandler(singleShotEventListner);
+            addHotKeyListner(presenterListerner, singleShotEventListner);
+        }
+        final StimulusButton stimulusButton = new StimulusButton() {
+            boolean isEnabled = true;
+
             @Override
             public Widget getWidget() {
                 return imageButton;
@@ -463,7 +468,10 @@ public class ComplexView extends SimpleView {
 
             @Override
             public void setEnabled(boolean enabled) {
-                imageButton.setEnabled(enabled);
+                isEnabled = enabled;
+                if (!isTouchZone) {
+                    imageButton.setEnabled(enabled);
+                }
             }
 
             @Override
@@ -472,10 +480,13 @@ public class ComplexView extends SimpleView {
             }
 
             @Override
-            public SingleShotEventListner getSingleShotEventListner() {
-                return singleShotEventListner;
+            public void triggerSingleShotEventListner() {
+                if (isEnabled) {
+                    singleShotEventListner.eventFired();
+                }
             }
         };
+        return stimulusButton;
     }
 
     public HorizontalPanel addProgressBar(int minimum, int value, int maximum) {
