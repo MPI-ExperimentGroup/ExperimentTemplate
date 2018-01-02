@@ -35,5 +35,5 @@ public interface StimulusButton {
 
     void setVisible(boolean visible);
 
-    SingleShotEventListner getSingleShotEventListner();
+    void triggerSingleShotEventListner();
 }
