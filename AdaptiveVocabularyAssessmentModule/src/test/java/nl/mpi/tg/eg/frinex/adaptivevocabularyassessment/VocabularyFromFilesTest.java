@@ -63,6 +63,7 @@ public class VocabularyFromFilesTest {
     /**
      * Test of parseWordInputCSV method, of class VocabularyFromFiles.
      */
+    @Ignore
     @Test
     public void testParseWordInputCSV() throws Exception {
         System.out.println("parseWordInputCSV");

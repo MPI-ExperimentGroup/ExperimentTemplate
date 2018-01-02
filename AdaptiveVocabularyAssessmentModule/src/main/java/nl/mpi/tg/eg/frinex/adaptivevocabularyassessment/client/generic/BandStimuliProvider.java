@@ -65,7 +65,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
 
     // fine tuning stopping
     private boolean enoughFineTuningStimulae = true;
-    private final int[] bandVisitCounter = new int[this.numberOfBands];
+    private int[] bandVisitCounter;
     private final int[] cycle2helper = new int[Constants.FINE_TUNING_UPPER_BOUND_FOR_2CYCLES * 2 + 1];
     private boolean cycle2 = false;
     private boolean champion = false;
@@ -112,6 +112,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         this.percentageScore =0;
         this.isCorrectCurrentResponse = null;
         this.currentBandIndex = this.startBand - 1;
+        this.bandVisitCounter = new int[this.numberOfBands];
         
         //this.totalStimuli: see the child class
         this.enoughFineTuningStimulae = true;

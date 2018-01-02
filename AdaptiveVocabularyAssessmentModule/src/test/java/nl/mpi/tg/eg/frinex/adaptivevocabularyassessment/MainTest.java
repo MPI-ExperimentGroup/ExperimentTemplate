@@ -94,7 +94,7 @@ public class MainTest {
         System.out.println("Done with probability  " + prob);
     }
 
-    @Ignore
+    //@Ignore
     @Test
     public void notEnoughStimuliTest() throws Exception {
 

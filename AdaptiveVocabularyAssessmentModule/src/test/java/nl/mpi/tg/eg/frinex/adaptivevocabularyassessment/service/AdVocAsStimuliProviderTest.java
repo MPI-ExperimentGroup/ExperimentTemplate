@@ -115,7 +115,7 @@ public class AdVocAsStimuliProviderTest {
         provider.initialiseStimuliState("");
 
         ArrayList<ArrayList<AdVocAsStimulus>> words = provider.getWords();
-        assertEquals(numberOfBands, words.size());
+        assertEquals(nOfBands, words.size());
         for (int i = 0; i < nOfBands; i++) {
             assertEquals(wordsPerBandInSeries, words.get(i).size());
         }
@@ -164,7 +164,7 @@ public class AdVocAsStimuliProviderTest {
         provider.initialiseStimuliState("");
 
         ArrayList<ArrayList<AdVocAsStimulus>> words = provider.getWords();
-        assertEquals(numberOfBands, words.size());
+        assertEquals(nOfBands, words.size());
         for (int i = 0; i < nOfBands; i++) {
             assertEquals(wordsPerBandInSeries, words.get(i).size());
         }
@@ -213,7 +213,7 @@ public class AdVocAsStimuliProviderTest {
         provider.initialiseStimuliState("");
 
         ArrayList<ArrayList<AdVocAsStimulus>> words = provider.getWords();
-        assertEquals(numberOfBands, words.size());
+        assertEquals(nOfBands, words.size());
         for (int i = 0; i < nOfBands; i++) {
             assertEquals(wordsPerBandInSeries, words.get(i).size());
         }
@@ -241,6 +241,17 @@ public class AdVocAsStimuliProviderTest {
     public void testGetCurrentStimulusIndex() {
         System.out.println("getCurrentStimulusIndex");
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
+        int nOfBands = Integer.parseInt(this.numberOfBands);
+        String numberOfSeries = "2";
+        int nOfSeries = Integer.parseInt(numberOfSeries);
+        provider.setnumberOfSeries(numberOfSeries);
+        provider.settype("1");
+        provider.setnumberOfBands(this.numberOfBands);
+        provider.setwordsPerBand(this.wordsPerBand);
+        provider.setstartBand(this.startBand);
+        provider.setaverageNonWordPosition(this.averageNonWordPoistion);
+        provider.setstartPercentageGraph(this.startPositionGraph);
+        provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
         provider.hasNextStimulus(0);
         provider.nextStimulus(0);
@@ -298,10 +309,6 @@ public class AdVocAsStimuliProviderTest {
         provider.setstartPercentageGraph(this.startPositionGraph);
         provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
-        
-        
-        
-        provider.initialiseStimuliState("");
         provider.hasNextStimulus(0);
         provider.nextStimulus(0);
         assertEquals(1, provider.getResponseRecord().size());
@@ -319,6 +326,23 @@ public class AdVocAsStimuliProviderTest {
     public void testIsCorrectResponse() throws Exception {
         System.out.println("isCorrectResponse");
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
+                
+        int nOfBands = Integer.parseInt(this.numberOfBands);
+        String numberOfSeries = "1";
+        int nOfSeries = Integer.parseInt(numberOfSeries);
+        int wPerBand = Integer.parseInt(this.wordsPerBand);
+        int wordsPerBandInSeries = wPerBand / nOfSeries;
+        int sBand = Integer.parseInt(this.startBand);
+        int aNonWordPosition = Integer.parseInt(this.averageNonWordPoistion);
+        
+        provider.setnumberOfSeries(numberOfSeries);
+        provider.settype("1");
+        provider.setnumberOfBands(this.numberOfBands);
+        provider.setwordsPerBand(this.wordsPerBand);
+        provider.setstartBand(this.startBand);
+        provider.setaverageNonWordPosition(this.averageNonWordPoistion);
+        provider.setstartPercentageGraph(this.startPositionGraph);
+        provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
 
         //stimulus 1
@@ -429,9 +453,7 @@ public class AdVocAsStimuliProviderTest {
         int nOfBands = Integer.parseInt(this.numberOfBands);
         String numberOfSeries = "2";
         int nOfSeries = Integer.parseInt(numberOfSeries);
-        
         provider.setnumberOfSeries(numberOfSeries);
-         
         provider.settype("1");
         provider.setnumberOfBands(this.numberOfBands);
         provider.setwordsPerBand(this.wordsPerBand);
@@ -517,6 +539,18 @@ public class AdVocAsStimuliProviderTest {
     // also tests nextStimulus
     private AdVocAsStimuliProvider testHasNextStimulus() throws Exception {
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
+        int nOfBands = Integer.parseInt(this.numberOfBands);
+        String numberOfSeries = "1";
+        int nOfSeries = Integer.parseInt(numberOfSeries);
+        provider.setnumberOfSeries(numberOfSeries);
+        provider.settype("0");
+        provider.setnumberOfBands(this.numberOfBands);
+        provider.setwordsPerBand(this.wordsPerBand);
+        provider.setstartBand(this.startBand);
+        provider.setaverageNonWordPosition(this.averageNonWordPoistion);
+        provider.setstartPercentageGraph(this.startPositionGraph);
+        provider.setfineTuningTupleLength("4");
+        provider.initialiseStimuliState("");
         provider.initialiseStimuliState("");
         boolean result = provider.hasNextStimulus(0);// does not depend on increment
         int invariant = provider.getResponseRecord().size() + provider.getNonwords().size() + this.getListOfListLength(provider.getWords());
@@ -608,6 +642,17 @@ public class AdVocAsStimuliProviderTest {
     public void testGetCurrentStimulusUniqueId() {
         System.out.println("getCurrentStimulusUniqueId");
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
+        int nOfBands = Integer.parseInt(this.numberOfBands);
+        String numberOfSeries = "2";
+        int nOfSeries = Integer.parseInt(numberOfSeries);
+        provider.setnumberOfSeries(numberOfSeries);
+        provider.settype("1");
+        provider.setnumberOfBands(this.numberOfBands);
+        provider.setwordsPerBand(this.wordsPerBand);
+        provider.setstartBand(this.startBand);
+        provider.setaverageNonWordPosition(this.averageNonWordPoistion);
+        provider.setstartPercentageGraph(this.startPositionGraph);
+        provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
         provider.hasNextStimulus(0);
         provider.nextStimulus(0);
@@ -674,17 +719,28 @@ public class AdVocAsStimuliProviderTest {
     }
 
     @Test
-    public void testPercentageBAndTable() {
+    public void testPercentageBandTable() {
         System.out.println(" Test getBandNumberFromPercentage");
 
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
+        int nOfBands = Integer.parseInt(this.numberOfBands);
+        String numberOfSeries = "2";
+        int nOfSeries = Integer.parseInt(numberOfSeries);
+        provider.setnumberOfSeries(numberOfSeries);
+        provider.settype("1");
+        provider.setnumberOfBands(this.numberOfBands);
+        provider.setwordsPerBand(this.wordsPerBand);
+        provider.setstartBand(this.startBand);
+        provider.setaverageNonWordPosition(this.averageNonWordPoistion);
+        provider.setstartPercentageGraph(this.startPositionGraph);
+        provider.setfineTuningTupleLength("4");
+        provider.initialiseStimuliState("");
         provider.initialiseStimuliState("");
 
         HashMap<Long, Integer> percentageTable = provider.getPercentageBandTable();
         int result1 = percentageTable.get(new Long(1));
         assertEquals(1, result1);
         long result2 = percentageTable.get(new Long(100));
-        int nOfBands = Integer.parseInt(this.numberOfBands);
         assertEquals(nOfBands, result2);
         if (nOfBands == 54) {
             long result3 = percentageTable.get(new Long(37));
