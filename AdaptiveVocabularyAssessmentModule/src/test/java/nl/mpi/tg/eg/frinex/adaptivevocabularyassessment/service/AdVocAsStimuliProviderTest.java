@@ -983,7 +983,7 @@ public class AdVocAsStimuliProviderTest {
         this.longFineTuningTest();
     }
 
-    private AdVocAsStimuliProvider testRound(double prob, String numberOfSeries, String type) throws Exception {
+    public AdVocAsStimuliProvider testRound(double prob, String numberOfSeries, String type) throws Exception {
         Random rnd = new Random();
 
         int nOfBands = Integer.parseInt(this.numberOfBands);
