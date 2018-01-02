@@ -130,8 +130,8 @@ public class StimulusGrid extends FlexTable {
             }
 
             @Override
-            public SingleShotEventListner getSingleShotEventListner() {
-                return singleShotEventListner;
+            public void triggerSingleShotEventListner() {
+                singleShotEventListner.eventFired();
             }
         };
     }
