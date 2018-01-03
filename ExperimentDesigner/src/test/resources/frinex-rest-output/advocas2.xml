@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="Adaptive Vocabulary Assessment 2" appNameInternal="advocas2" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
-     <preventWindowClose featureText="Bij reload worden ingetypte data verwiderd"/>
-      <metadata>
+    <preventWindowClose featureText="Bij reload worden ingetypte data verwiderd"/>
+    <metadata>
         <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Wat is je naam?"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuli" preventServerDuplicates="false" registrationField="stimuli"/>
         <field controlledMessage="Input at least 3 letters." controlledRegex="['\\'S'\\'s]'{'3,'}'" postName="feedBack" preventServerDuplicates="false" registrationField=""/>
@@ -15,7 +15,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Edit_User" displayOrder="2" menuLabel="Accord" next="stimuliScreenA" type="metadata" self="Accord" title="">
+    <presenter back="Edit_User" displayOrder="2" menuLabel="Accord" next="stimuliScreenV1" type="metadata" self="Accord" title="">
         <htmlText featureText="Welkom bij dit experiment!&lt;br/&gt;&lt;br/&gt;
 In dit experiment krijg je een aantal woorden aangeboden. Sommige zijn bestaande Nederlandse woorden en sommige zijn nepwoorden.&lt;br/&gt;
 Geef voor elk woord met een muisklik aan of jij het woord kent of niet.&lt;br/&gt;&lt;br/&gt;
@@ -23,10 +23,12 @@ Rechts: : JA, ik ken dit woord&lt;br/&gt;
 Links: NEE, ik ken dit woord niet&lt;br/&gt;&lt;br/&gt;
 Let op: zeg geen ja bij woorden die je niet kent, omdat ja-antwoorden voor nepwoorden streng bestraft worden.&lt;br/&gt;&lt;br/&gt;
 Veel succes!"/>
-        <targetButton featureText="Begin experiment" target="stimuliScreenA"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreenV1"/>
     </presenter>
-    <presenter back="Edit_User" displayOrder="3" menuLabel="stimuliN" next="End" type="stimulus" self="stimuliScreenA" title="Series 1">
-        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider" type="0" eventTag="stimuliN">
+    <presenter back="Edit_User" displayOrder="3" menuLabel="Stimuli Version 1" next="End" type="stimulus" self="stimuliScreenV1" title="Series 1">
+        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider" type="0" eventTag="stimuliN" 
+                      numberOfSeries="2" numberOfBands="54" wordsPerBand="40" startBand="20" averageNonWordPosition="3" startPercentageGraph="30"
+                      fineTuningTupleLength="4">
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
@@ -38,9 +40,9 @@ Veel succes!"/>
                 </stimulusRatingButton>
             </hasMoreStimulus>
             <endOfStimulus>
-                <sendStimuliReport type="user_summary" />
-                <sendStimuliReport type="fast_track" />
-                <sendStimuliReport type="fine_tuning" />
+                <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
+                <sendStimuliReport type="fast_track" separator=";" headerKey="row000000"/>
+                <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
                 <showStimuliReport/>
                 <targetButton featureText="Volgende: begin ronde 2" target="enterSecondRound"/>
             </endOfStimulus>
@@ -50,7 +52,7 @@ Veel succes!"/>
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter back="Edit_User" displayOrder="4" menuLabel="enterSecondRound" next="stimuliScreenB" type="metadata" self="enterSecondRound" title="">
+    <presenter back="Edit_User" displayOrder="4" menuLabel="enterSecondRound" next="stimuliScreenV2" type="metadata" self="enterSecondRound" title="">
         <metadataField fieldName="workerId"/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
@@ -59,8 +61,10 @@ Veel succes!"/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Edit_User" displayOrder="5" menuLabel="stimuliN" next="End" type="stimulus" self="stimuliScreenB" title="Series 2">
-        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider" type="1" eventTag="stimuliN">
+    <presenter back="Edit_User" displayOrder="5" menuLabel="Stimuli Version 2" next="End" type="stimulus" self="stimuliScreenV2" title="Series 2">
+        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider" type="1" eventTag="stimuliN"
+                      numberOfSeries="2" numberOfBands="54" wordsPerBand="40" startBand="20" averageNonWordPosition="3" startPercentageGraph="30"
+                      fineTuningTupleLength="4">
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
@@ -71,9 +75,9 @@ Veel succes!"/>
                 </stimulusRatingButton>
             </hasMoreStimulus>
             <endOfStimulus>
-                <sendStimuliReport type="user_summary" />
-                <sendStimuliReport type="fast_track" />
-                <sendStimuliReport type="fine_tuning" />
+                <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
+                <sendStimuliReport type="fast_track" separator=";" headerKey="row000000"/>
+                <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
                 <showStimuliReport/>
                 <targetButton featureText="Volgende: einde" target="End"/>
             </endOfStimulus>
@@ -88,7 +92,7 @@ Veel succes!"/>
             <onSuccess>
                 <htmlText featureText="Einde van de taak. Dankjewel voor je deelname!"/>-->
                 <addPadding/>
-<!--                <generateCompletionCode/>-->
+                <!--                <generateCompletionCode/>-->
                 <addPadding/>
                 <eraseUsersDataButton featureText="Opnieuw beginnen"/>
             </onSuccess>
