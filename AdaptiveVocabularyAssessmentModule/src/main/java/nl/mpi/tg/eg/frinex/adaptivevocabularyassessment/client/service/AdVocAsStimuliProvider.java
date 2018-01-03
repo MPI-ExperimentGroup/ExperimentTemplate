@@ -257,11 +257,12 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         String experimenteeNonwordTable = this.getHtmlExperimenteeRecords(wordTables.get("nonwords"));
         String experimenteePositionDiagram = this.getHtmlExperimenteePositionDiagram();
 
-        htmlStringBuilder.append("<p>Uw resultaten</p>Correctheid<br>(Groen betekent juiste antwoord, rood staat voor fout.)");
+        htmlStringBuilder.append("<p>Opsomming: u kent ongeveer ").append(this.getPercentageScore()).append(" precent van alle nederlandse woorden</p>");
+        
+        htmlStringBuilder.append("<p>Overzich van uw resultaten</p>Correctheid<br>(Groen betekent juiste antwoord, rood staat voor fout.)");
         htmlStringBuilder.append("<table><tr><td>woorden</td><td></td><td>niet-woorden</td></tr>");
         htmlStringBuilder.append("<tr style=\"vertical-align: top;\"><td>").append(experimenteeWordTable).append("</td><td></td><td>").append(experimenteeNonwordTable).append("</td></tr></table>");
 
-        htmlStringBuilder.append("<p>Opsomming: u kent ongeveer ").append(this.getPercentageScore()).append(" precent van alle nederlandse woorden</p>");
         htmlStringBuilder.append("<p>Uw kennis wan de Nederlandse woordenschat graphisch</p>").append(experimenteePositionDiagram);
 
         return htmlStringBuilder.toString();
