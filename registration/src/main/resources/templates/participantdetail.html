@@ -121,6 +121,33 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tr>
             </tbody>
         </table>
+        <h3>TODO: test this display of CSV report data</h3>
+        <table id="datatable">
+            <!--/*/ <th:block th:each="tagPairData : ${participantTagPairData}" th:with="reportType=${CsvReportTypes.getCsvReportType()}"> /*/-->
+            <thead th:if="${reportType !=null && reportType.isHeader(tagPairData.eventTag, tagPairData.tagValue1)}">
+                <tr>
+                    <!--todo: complete these row headers-->
+                    <th>id</th>
+                    <th>userId</th>
+                    <th th:text="${tagPairData.tagValue1}"></th>
+                    <th th:text="${tagPairData.tagValue2}"></th>
+                    <th>Screen Name</th>
+                    <th>View Date</th>
+                </tr>
+            </thead>
+            <tr id="clickablerow" th:if="${reportType !=null && reportType.isRow(tagPairData.eventTag, tagPairData.tagValue1)}">
+                <!--todo: complete these rows-->
+                <td th:text="${tagPairData.screenName}">screenName</td>
+                <td th:text="${tagPairData.tagDate}">tagDate</td>
+                <!--<td th:text="${tagPairData.submitDate}">submitDate</td>-->
+                <!--<td th:text="${tagPairData.experimentName}">experimentName</td>-->
+                <td th:text="${tagPairData.eventTag}">eventTag</td>
+                <td th:text="${tagPairData.tagValue1}">tagValue1</td>
+                <td th:text="${tagPairData.tagValue2}">tagValue2</td>
+                <td th:text="${tagPairData.eventMs}">eventMs</td>
+            </tr>
+            <!--/*/ </th:block> /*/-->
+        </table>
         <h3>Tag Pair Data</h3>
         <table id="datatable">       
             <thead>
