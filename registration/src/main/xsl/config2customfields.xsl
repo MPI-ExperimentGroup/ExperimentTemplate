@@ -124,11 +124,32 @@
                 enum CsvTagTypes {
             </xsl:text>
             <xsl:for-each select="experiment//sendStimuliReport">
+                <xsl:value-of select="generate-id(.)" />
+                <xsl:text>("</xsl:text>
                 <xsl:value-of select="@type" />
-                <xsl:text>,
+                <xsl:text>","</xsl:text>
+                <xsl:value-of select="@headerKey" />
+                <xsl:text>","</xsl:text>
+                <xsl:value-of select="@separator" />
+                <xsl:text>")
                 </xsl:text>
+                <xsl:if test="position() != last()">
+                    <xsl:text>,</xsl:text> 
+                </xsl:if>
+                <xsl:if test="position() = last()">
+                    <xsl:text>;</xsl:text> 
+                </xsl:if>
             </xsl:for-each>
             <xsl:text>
+                public final String type;
+                public final String separator;
+                public final String headerKey;
+
+                private CsvTagTypes(final String type, final String separator, final String headerKey) {
+                this.type = type;
+                this.separator = separator;
+                this.headerKey = headerKey;
+                }
                 }
                 enum ScreenReports {
             </xsl:text>
