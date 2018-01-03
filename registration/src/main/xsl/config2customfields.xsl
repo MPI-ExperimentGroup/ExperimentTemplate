@@ -27,16 +27,16 @@
                 @Entity                     
                 public class Participant implements Serializable, Comparable&lt;Participant&gt; {
 
-                    @Id
-                    @GeneratedValue(strategy = GenerationType.AUTO)
-                    private long id;
+                @Id
+                @GeneratedValue(strategy = GenerationType.AUTO)
+                private long id;
 
-                    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-                    private Date submitDate;
-                    private String userId;
-                    private String remoteAddr;
-                    private String acceptLang;
-                    private String userAgent;
+                @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+                private Date submitDate;
+                private String userId;
+                private String remoteAddr;
+                private String acceptLang;
+                private String userAgent;
             </xsl:text>
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>
@@ -115,6 +115,41 @@
             </xsl:for-each>
             <xsl:text>              
                 }    </xsl:text>
+        </xsl:result-document>
+        <xsl:result-document href="{$targetClientDirectory}/model/ReportTypes.java" method="text">
+            <xsl:text>package nl.mpi.tg.eg.frinex.model;
+
+                public class ReportTypes {
+                
+                enum CsvTagTypes {
+            </xsl:text>
+            <xsl:for-each select="experiment//sendStimuliReport">
+                <xsl:value-of select="@type" />
+                <xsl:text>,
+                </xsl:text>
+            </xsl:for-each>
+            <xsl:text>
+                }
+                enum ScreenReports {
+            </xsl:text>
+            <xsl:for-each select="experiment/presenter">
+                <xsl:value-of select="@self" />
+                <xsl:text>,
+                </xsl:text>
+            </xsl:for-each>
+            <xsl:text>
+                }
+                enum LoadStimulusReports {
+            </xsl:text>
+            <xsl:for-each select="experiment/presenter[loadStimulus]">
+                <xsl:value-of select="@self" />
+                <xsl:text>,
+                </xsl:text>
+            </xsl:for-each>
+            <xsl:text>
+                }
+                }
+            </xsl:text>
         </xsl:result-document>
         <xsl:result-document href="{$targetClientDirectory}/util/ParticipantCsvExporter.java" method="text">
             <xsl:text>package nl.mpi.tg.eg.frinex.util;
