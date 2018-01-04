@@ -29,8 +29,10 @@ import com.google.gwt.event.dom.client.TouchEvent;
 import com.google.gwt.event.dom.client.TouchMoveEvent;
 import com.google.gwt.event.dom.client.TouchStartEvent;
 import com.google.gwt.user.client.Event;
+import com.google.gwt.user.client.Timer;
 import java.util.ArrayList;
 import java.util.List;
+import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 
 /**
  * @since Oct 23, 2017 2:10:09 PM (creation date)
@@ -40,7 +42,20 @@ public abstract class TouchInputCapture extends HandlesAllTouchEvents implements
 
     private final StringBuilder recordedTouches = new StringBuilder();
     private final List<TouchInputZone> touchZones = new ArrayList<>();
+    private final TimedStimulusListener endOfTouchEventListner;
+    private final int msAfterEndOfTouchToNext;
+    private final Timer endOfTouchTimer;
     private final Duration duration = new Duration();
+
+    public TouchInputCapture(final TimedStimulusListener endOfTouchEventListner, final int msAfterEndOfTouchToNext) {
+        this.endOfTouchEventListner = endOfTouchEventListner;
+        this.msAfterEndOfTouchToNext = msAfterEndOfTouchToNext;
+        endOfTouchTimer = new Timer() {
+            public void run() {
+                triggerZones(new ArrayList<TouchInputZone>());
+            }
+        };
+    }
 
     public abstract void setDebugLabel(String debugLabel);
 
@@ -72,6 +87,12 @@ public abstract class TouchInputCapture extends HandlesAllTouchEvents implements
             } else {
                 zone.clearEvent();
             }
+        }
+        if (triggeredZones.isEmpty()) {
+            endOfTouchTimer.cancel();
+            endOfTouchEventListner.postLoadTimerFired();
+        } else if (msAfterEndOfTouchToNext > 0) {
+            endOfTouchTimer.schedule(msAfterEndOfTouchToNext);
         }
     }
 
