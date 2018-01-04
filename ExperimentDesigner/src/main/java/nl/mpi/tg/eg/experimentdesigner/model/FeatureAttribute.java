@@ -74,6 +74,7 @@ public enum FeatureAttribute {
     wavFormat,
     poster,
     autoPlay,
+    loop,
     columnCount,
     kintypestring,
     diagramName,
