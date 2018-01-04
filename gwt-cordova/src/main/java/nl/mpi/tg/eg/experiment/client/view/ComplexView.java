@@ -445,6 +445,8 @@ public class ComplexView extends SimpleView {
             imageButton.addTouchMoveHandler(singleShotEventListner);
             imageButton.addTouchEndHandler(singleShotEventListner);
             addHotKeyListner(presenterListerner, singleShotEventListner);
+        } else {
+            imageButton.setEnabled(false);
         }
         final StimulusButton stimulusButton = new StimulusButton() {
             boolean isEnabled = true;
@@ -482,7 +484,11 @@ public class ComplexView extends SimpleView {
             @Override
             public void triggerSingleShotEventListner() {
                 if (isEnabled) {
-                    singleShotEventListner.eventFired();
+                    if (isTouchZone) {
+                        presenterListerner.eventFired(imageButton, null);
+                    } else {
+                        singleShotEventListner.eventFired();
+                    }
                 }
             }
         };
