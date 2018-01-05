@@ -368,10 +368,22 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
     transition: width 1s;
     top: 50px;
     position: fixed;
-    height: 100%;
+    height: 100%;    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .gwt-Image.borderedVideoLeft, .gwt-Image.borderedVideoRight, .borderedVideoFull {
     object-fit: contain;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .borderedVideoFull {
     width: 100vw;
@@ -421,6 +433,15 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
 .gwt-Button.optionButton.rightOverlayButtonIntersection, .gwt-Button.optionButton.leftOverlayButtonIntersection,
 {
     opacity: 0.5;
+}
+
+.gwt-Button {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 .borderedVideoLeft, .borderedVideoRight {
     width: 45vw;
