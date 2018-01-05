@@ -46,12 +46,14 @@ public abstract class TouchInputCapture extends HandlesAllTouchEvents implements
     private final int msAfterEndOfTouchToNext;
     private final Timer endOfTouchTimer;
     private final Duration duration = new Duration();
+    boolean disableMouseEvents = false;
 
     public TouchInputCapture(final TimedStimulusListener endOfTouchEventListner, final int msAfterEndOfTouchToNext) {
         this.endOfTouchEventListner = endOfTouchEventListner;
         this.msAfterEndOfTouchToNext = msAfterEndOfTouchToNext;
         endOfTouchTimer = new Timer() {
             public void run() {
+                setDebugLabel("Triggered:msAfterLastTouchEvent");
                 triggerZones(new ArrayList<TouchInputZone>());
             }
         };
@@ -119,30 +121,37 @@ public abstract class TouchInputCapture extends HandlesAllTouchEvents implements
 
     @Override
     public void onTouchStart(TouchStartEvent event) {
+        disableMouseEvents = true;
         touchesToDebugLabel(event);
         recordTouches(event);
     }
 
     @Override
     public void onTouchMove(TouchMoveEvent event) {
+        disableMouseEvents = true;
         touchesToDebugLabel(event);
         recordTouches(event);
     }
 
     @Override
     public void onTouchEnd(TouchEndEvent event) {
+        disableMouseEvents = true;
         touchesToDebugLabel(event);
         recordTouches(event);
     }
 
     @Override
     public void onTouchCancel(TouchCancelEvent event) {
+        disableMouseEvents = true;
         touchesToDebugLabel(event);
         recordTouches(event);
     }
 
     @Override
     public void onMouseMove(MouseMoveEvent event) {
+//        if (disableMouseEvents) {
+//            return;
+//        }
         final List<TouchInputZone> triggeredZones = new ArrayList<>();
         appendTouch(event.getClientX(), event.getClientY(), triggeredZones);
         setDebugLabel(event.toDebugString() + " " + event.getClientX() + "," + event.getClientY());
@@ -151,6 +160,9 @@ public abstract class TouchInputCapture extends HandlesAllTouchEvents implements
 
     @Override
     public void onPreviewNativeEvent(Event.NativePreviewEvent event) {
+//        if (disableMouseEvents) {
+//            return;
+//        }
         final int eventType = event.getTypeInt();
         final List<TouchInputZone> triggeredZones = new ArrayList<>();
         switch (eventType) {
