@@ -1443,6 +1443,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).startVideo();
     }
 
+    protected void rewindVideo() {
+        ((TimedStimulusView) simpleView).rewindVideo();
+    }
+
     protected void pauseVideo() {
         ((TimedStimulusView) simpleView).stopVideo();
     }
