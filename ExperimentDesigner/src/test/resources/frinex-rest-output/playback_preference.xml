@@ -63,14 +63,20 @@
                 </touchInputCaptureStart>
                 <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayCurtain" src="curtain_left.png">
                     <disableStimulusButtons/>
-                    <playVideo/>
+                    <rewindVideo/>
+                    <pause msToNext="1000">                        
+                        <playVideo/>
+                    </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
                 <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" styleName="rightOverlayCurtain" src="curtain_right.png">
                     <disableStimulusButtons/>
-                    <playVideo/>
+                    <rewindVideo/>
+                    <pause msToNext="1000">                        
+                        <playVideo/>
+                    </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
@@ -132,14 +138,20 @@
                 </touchInputCaptureStart>
                 <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayCurtain" src="curtain_left.png">
                     <disableStimulusButtons/>
-                    <playVideo/>
+                    <rewindVideo/>
+                    <pause msToNext="1000">                        
+                        <playVideo/>
+                    </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
                 <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" styleName="rightOverlayCurtain" src="curtain_right.png">
                     <disableStimulusButtons/>
-                    <playVideo/>
+                    <rewindVideo/>
+                    <pause msToNext="1000">                        
+                        <playVideo/>
+                    </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
@@ -188,14 +200,20 @@
                 </touchInputCaptureStart>
                 <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayCurtain" src="curtain_left.png">
                     <disableStimulusButtons/>
-                    <playVideo/>
+                    <rewindVideo/>
+                    <pause msToNext="1000">                        
+                        <playVideo/>
+                    </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
                 <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" styleName="rightOverlayCurtain" src="curtain_right.png">
                     <disableStimulusButtons/>
-                    <playVideo/>
+                    <rewindVideo/>
+                    <pause msToNext="1000">                        
+                        <playVideo/>
+                    </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
@@ -244,14 +262,20 @@
                 </touchInputCaptureStart>
                 <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayCurtain" src="curtain_left.png">
                     <disableStimulusButtons/>
-                    <playVideo/>
+                    <rewindVideo/>
+                    <pause msToNext="1000">                        
+                        <playVideo/>
+                    </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
                 <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" styleName="rightOverlayCurtain" src="curtain_right.png">
                     <disableStimulusButtons/>
-                    <playVideo/>
+                    <rewindVideo/>
+                    <pause msToNext="1000">                        
+                        <playVideo/>
+                    </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
@@ -300,14 +324,20 @@
                 </touchInputCaptureStart>
                 <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayCurtain" src="curtain_left.png">
                     <disableStimulusButtons/>
-                    <playVideo/>
+                    <rewindVideo/>
+                    <pause msToNext="1000">                        
+                        <playVideo/>
+                    </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
                 <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" styleName="rightOverlayCurtain" src="curtain_right.png">
                     <disableStimulusButtons/>
-                    <playVideo/>
+                    <rewindVideo/>
+                    <pause msToNext="1000">                        
+                        <playVideo/>
+                    </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
@@ -356,14 +386,20 @@
                 </touchInputCaptureStart>
                 <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayCurtain" src="curtain_left.png">
                     <disableStimulusButtons/>
-                    <playVideo/>
+                    <rewindVideo/>
+                    <pause msToNext="1000">                        
+                        <playVideo/>
+                    </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
                 <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" styleName="rightOverlayCurtain" src="curtain_right.png">
                     <disableStimulusButtons/>
-                    <playVideo/>
+                    <rewindVideo/>
+                    <pause msToNext="1000">                        
+                        <playVideo/>
+                    </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
