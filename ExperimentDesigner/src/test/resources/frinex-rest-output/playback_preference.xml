@@ -57,7 +57,7 @@
                 <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" styleName="borderedVideoFull" autoPlay="false" loop="true" showControls="false" maxWidth="100"/>
                 <!--<stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100"/>-->               
                 <!--</updateRegion>-->
-                <touchInputCaptureStart showControls="true" msToNext="1500">
+                <touchInputCaptureStart showControls="true" msToNext="-1">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
@@ -126,7 +126,7 @@
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
                 <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" styleName="borderedVideoFull" autoPlay="false" loop="true" showControls="false" maxWidth="100"/>
-                <touchInputCaptureStart showControls="true" msToNext="1500">
+                <touchInputCaptureStart showControls="true" msToNext="-1">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
@@ -182,7 +182,7 @@
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
                 <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" styleName="borderedVideoFull" autoPlay="false" loop="true" showControls="false" maxWidth="100"/>
-                <touchInputCaptureStart showControls="true" msToNext="1500">
+                <touchInputCaptureStart showControls="true" msToNext="-1">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
@@ -238,7 +238,7 @@
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
                 <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" styleName="borderedVideoFull" autoPlay="false" loop="true" showControls="false" maxWidth="100"/>
-                <touchInputCaptureStart showControls="true" msToNext="1500">
+                <touchInputCaptureStart showControls="true" msToNext="-1">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
@@ -294,7 +294,7 @@
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
                 <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" styleName="borderedVideoFull" autoPlay="false" loop="true" showControls="false" maxWidth="100"/>
-                <touchInputCaptureStart showControls="true" msToNext="1500">
+                <touchInputCaptureStart showControls="true" msToNext="-1">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
@@ -350,7 +350,7 @@
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
                 <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" styleName="borderedVideoFull" autoPlay="false" loop="true" showControls="false" maxWidth="100"/>
-                <touchInputCaptureStart showControls="true" msToNext="1500">
+                <touchInputCaptureStart showControls="true" msToNext="-1">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
