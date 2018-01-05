@@ -368,6 +368,7 @@ public class TimedStimulusView extends ComplexView {
     public void addTimedVideo(SafeUri oggPath, SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, final int postLoadMs, final TimedStimulusListener shownStimulusListener, final TimedStimulusListener timedStimulusListener) {
         final Video video = Video.createIfSupported();
         if (video != null) {
+            video.setAutoplay(autoPlay);
             videoList.add(video);
 //            video.setPoster(poster);
             video.setControls(showControls);
@@ -409,7 +410,10 @@ public class TimedStimulusView extends ComplexView {
                     }
                 }
             });
-            video.setAutoplay(autoPlay);
+            if (!autoPlay) {
+                video.pause();
+                video.setCurrentTime(0);
+            }
             video.setLoop(loop);
             video.load();
         }
@@ -435,6 +439,14 @@ public class TimedStimulusView extends ComplexView {
         for (Video video : videoList) {
             if (video != null) {
                 video.play();
+            }
+        }
+    }
+
+    public void rewindVideo() {
+        for (Video video : videoList) {
+            if (video != null) {
+                video.setCurrentTime(0);
             }
         }
     }
