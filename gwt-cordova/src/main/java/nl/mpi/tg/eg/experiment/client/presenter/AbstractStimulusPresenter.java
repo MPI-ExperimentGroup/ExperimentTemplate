@@ -1065,6 +1065,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
         buttonList.add(buttonItem);
         touchInputCapture.addTouchZone(new TouchInputZone() {
+            boolean isTriggered = false;
+
             @Override
             public String getEventTag() {
                 return eventTag;
@@ -1081,13 +1083,17 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
             @Override
             public void triggerEvent() {
-                buttonItem.addStyleName(styleName + "Intersection");
-                buttonItem.triggerSingleShotEventListner();
+                if (!isTriggered) {
+                    isTriggered = true;
+                    buttonItem.addStyleName(styleName + "Intersection");
+                    buttonItem.triggerSingleShotEventListner();
+                }
             }
 
             @Override
             public void clearEvent() {
                 buttonItem.removeStyleName(styleName + "Intersection");
+                isTriggered = false;
             }
         });
     }
