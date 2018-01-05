@@ -140,32 +140,36 @@
                     <xsl:text>;</xsl:text> 
                 </xsl:if>
             </xsl:for-each>
+            <xsl:if test="experiment//sendStimuliReport">
+                <xsl:text>
+                    public final String type;
+                    public final String separator;
+                    public final String headerKey;
+
+                    private CsvReportTypes(final String type, final String separator, final String headerKey) {
+                    this.type = type;
+                    this.separator = separator;
+                    this.headerKey = headerKey;
+                    }
+                    static public CsvReportTypes getCsvReportType(final String eventTag) {
+                    for (CsvReportTypes crt : values()) {
+                    if (eventTag.equals(crt.type)) {
+                    return crt;
+                    }
+                    }
+                    return null;
+                    }
+
+                    public boolean isHeader(final String eventTag, final String tagValue1) {
+                    return eventTag.equals(type) &amp;&amp; tagValue1.equals(headerKey);
+                    }
+
+                    public boolean isRow(final String eventTag, final String tagValue1) {
+                    return eventTag.equals(type) &amp;&amp; !tagValue1.equals(headerKey);
+                    }
+                </xsl:text> 
+            </xsl:if>
             <xsl:text>
-                public final String type;
-                public final String separator;
-                public final String headerKey;
-
-                private CsvReportTypes(final String type, final String separator, final String headerKey) {
-                this.type = type;
-                this.separator = separator;
-                this.headerKey = headerKey;
-                }
-                static public CsvReportTypes getCsvReportType(final String eventTag) {
-                for (CsvReportTypes crt : values()) {
-                if (eventTag.equals(crt.type)) {
-                return crt;
-                }
-                }
-                return null;
-                }
-
-                public boolean isHeader(final String eventTag, final String tagValue1) {
-                return eventTag.equals(type) &amp;&amp; tagValue1.equals(headerKey);
-                }
-
-                public boolean isRow(final String eventTag, final String tagValue1) {
-                return eventTag.equals(type) &amp;&amp; !tagValue1.equals(headerKey);
-                }
                 }
                 enum ScreenReports {
             </xsl:text>
