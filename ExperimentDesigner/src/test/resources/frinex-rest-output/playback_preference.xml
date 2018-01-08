@@ -450,43 +450,43 @@
         <versionData/>
     </presenter>
     <stimuli>
-        <stimulus code="COW" identifier="COW" pauseMs="0">
+        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0">
             <tag>COW</tag>
         </stimulus>
-        <stimulus code="COWmis" identifier="COW_mis" pauseMs="0">
+        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis" imagePath="COWmis" pauseMs="0">
             <tag>COW</tag>
         </stimulus>
-        <stimulus code="COWmis-5" identifier="COW_mis-5" pauseMs="0">
+        <stimulus audioPath="COWmis-5" code="COWmis-5" identifier="COWmis-5" imagePath="COWmis-5" pauseMs="0">
             <tag>COW</tag>
         </stimulus>  
-        <stimulus code="FATHER" identifier="FATHER" pauseMs="0">
+        <stimulus audioPath="FATHER" code="FATHER" identifier="FATHER" imagePath="FATHER" pauseMs="0">
             <tag>FATHER</tag>
         </stimulus>
-        <stimulus code="FATHERmis" identifier="FATHER_mis" pauseMs="0">
+        <stimulus audioPath="FATHERmis" code="FATHERmis" identifier="FATHERmis" imagePath="FATHERmis" pauseMs="0">
             <tag>FATHER</tag>
         </stimulus>        
-        <stimulus code="GHOST-a" identifier="GHOST_a" pauseMs="0">
+        <stimulus audioPath="GHOST-a" code="GHOST-a" identifier="GHOST-a" imagePath="GHOST-a" pauseMs="0">
             <tag>GHOST_a</tag>
         </stimulus>
-        <stimulus code="GHOST-amis" identifier="GHOST_a_mis" pauseMs="0">
+        <stimulus audioPath="GHOST-amis" code="GHOST-amis" identifier="GHOST-amis" imagePath="GHOST-amis" pauseMs="0">
             <tag>GHOST_a</tag>
         </stimulus>
-        <stimulus code="GHOST-b" identifier="GHOST_b" pauseMs="0">
+        <stimulus audioPath="GHOST-b" code="GHOST-b" identifier="GHOST-b" imagePath="GHOST-b" pauseMs="0">
             <tag>GHOST_b</tag>
         </stimulus>
-        <stimulus code="GHOST-bmis" identifier="GHOST_b_mis" pauseMs="0">
+        <stimulus audioPath="GHOST-bmis" code="GHOST-bmis" identifier="GHOST-bmis" imagePath="GHOST-bmis" pauseMs="0">
             <tag>GHOST_b</tag>
         </stimulus>
-        <stimulus code="PRAY" identifier="PRAY" pauseMs="0">
+        <stimulus audioPath="PRAY" code="PRAY" identifier="PRAY" imagePath="PRAY" pauseMs="0">
             <tag>PRAY</tag>
         </stimulus>
-        <stimulus code="PRAYmis" identifier="PRAYmis" pauseMs="0">
+        <stimulus audioPath="PRAYmis" code="PRAYmis" identifier="PRAYmis" imagePath="PRAYmis" pauseMs="0">
             <tag>PRAY</tag>
         </stimulus>
-        <stimulus code="SHY" identifier="SHY" pauseMs="0">
+        <stimulus audioPath="SHY" code="SHY" identifier="SHY" imagePath="SHY" pauseMs="0">
             <tag>SHY</tag>
         </stimulus>
-        <stimulus code="SHYmis" identifier="SHYmis" pauseMs="0">
+        <stimulus audioPath="SHYmis" code="SHYmis" identifier="SHYmis" imagePath="SHYmis" pauseMs="0">
             <tag>SHY</tag>
         </stimulus>
     </stimuli>
