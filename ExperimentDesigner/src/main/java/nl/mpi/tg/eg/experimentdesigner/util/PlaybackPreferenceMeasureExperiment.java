@@ -21,7 +21,6 @@ import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioTestScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardExistingUserCheckScreen;
@@ -73,58 +72,27 @@ public class PlaybackPreferenceMeasureExperiment {
 
         final WizardMenuScreen menuScreen = new WizardMenuScreen("Menu", "Menu", "Menu");
         wizardData.addScreen(menuScreen);
+
+        final WizardMenuScreen textMenuScreen = new WizardMenuScreen("StimuliMenu", "StimuliMenu", "StimuliMenu");
+        textMenuScreen.setJumpToRandomScreen(false);
+        wizardData.addScreen(textMenuScreen);
+
         wizardData.addScreen(wizardEditUserScreen);
         String backgroundImage = "huisje_02.jpg";
-        WizardAudioTestScreen introductionAudio1 = new WizardAudioTestScreen("Introduction 1", "&nbsp;", "continue button", "intro_1");
-        wizardData.addScreen(introductionAudio1);
-        WizardAudioTestScreen introductionAudio2 = new WizardAudioTestScreen("Introduction 2", "&nbsp;", "continue button", "intro_2");
-        wizardData.addScreen(introductionAudio2);
-        WizardAudioTestScreen introductionAudio3 = new WizardAudioTestScreen("Introduction 3", "&nbsp;", "continue button", "intro_3");
-        wizardData.addScreen(introductionAudio3);
-        introductionAudio1.setBackgroundImage(backgroundImage);
-        introductionAudio2.setBackgroundImage(backgroundImage);
-        introductionAudio3.setBackgroundImage(backgroundImage);
-//        introductionAudio1.setAutoPlay(true); //@todo: do not auto play, in future version the play button may be hidden
-//        introductionAudio2.setAutoPlay(true);
-//        introductionAudio3.setAutoPlay(true);
-        introductionAudio1.setAutoNext(true);
-        introductionAudio2.setAutoNext(true);
-        introductionAudio3.setAutoNext(true);
-        introductionAudio1.setAudioHotKey("ENTER");
-        introductionAudio2.setAudioHotKey("ENTER");
-        introductionAudio3.setAudioHotKey("ENTER");
-//        introductionAudio1.setNextHotKey("ENTER");
-//        introductionAudio2.setNextHotKey("ENTER");
-//        introductionAudio3.setNextHotKey("ENTER");
-        introductionAudio1.setStyleName("titleBarButton");
-        introductionAudio2.setStyleName("titleBarButton");
-        introductionAudio3.setStyleName("titleBarButton");
         String[][][] testList = new String[][][]{
-            {{"Test 1", "zoomToBlock1", "room_1"}, {"test_1",
-                "test_2",
-                "filler_1",}}, {{"Test 2", "zoomToBlock2", "room_2"}, {
-                "test_3",
-                "test_4",
-                "filler_2",}}, {{"Test 3", "zoomToBlock3", "room_3"}, {
-                "test_5",
-                "test_6",
-                "filler_3",}}, {{"Test 4", "zoomToBlock4", "room_4"}, {
-                "test_7",
-                "test_8",
-                "filler_4",}}};
-        String[] trainingList = new String[]{
-            "training_1",
-            "training_2",
-            "training_3",
-            "training_4",};
-        final WizardGridStimulusScreen trainingStimulusScreen = new WizardGridStimulusScreen("Training", false, trainingList,
-                null, 1000, false, null, 0, 0, null); // @todo: this screen is in the garden
-        trainingStimulusScreen.setBackgroundImage(backgroundImage);
-        trainingStimulusScreen.setBackgroundStyle("zoomToGarden");
-        wizardData.addScreen(trainingStimulusScreen);
-        final WizardMenuScreen textMenuScreen = new WizardMenuScreen("TestMenu", "TestMenu", "TestMenu");
-        textMenuScreen.setJumpToRandomScreen(true);
-        wizardData.addScreen(textMenuScreen);
+            {{"COW", "zoomToBlock1", "room_1"}, {"COW",
+                "COWmis",
+                "COWmis-5",}}, {{"FATHER", "zoomToBlock2", "room_2"}, {
+                "FATHER",
+                "FATHERmis",}}, {{"GHOST_a", "zoomToBlock3", "room_3"}, {
+                "GHOST-a",
+                "GHOST-amis",}}, {{"GHOST_b", "zoomToBlock4", "room_4"}, {
+                "GHOST-b",
+                "GHOST-bmis",}}, {{"PRAY", "zoomToBlock4", "room_4"}, {
+                "PRAY",
+                "PRAYmis",}}, {{"SHY", "zoomToBlock4", "room_4"}, {
+                "SHY",
+                "SHYmis",}}};
         for (String[][] testSubList : testList) {
             final WizardGridStimulusScreen testStimulusScreen = new WizardGridStimulusScreen(testSubList[0][0], false, testSubList[1],
                     null, 1000, false, null, 0, 0, null);
@@ -134,8 +102,7 @@ public class PlaybackPreferenceMeasureExperiment {
             testStimulusScreen.setIntroAudioDelay(2000);
             textMenuScreen.addTargetScreen(testStimulusScreen);
             wizardData.addScreen(testStimulusScreen);
-            testStimulusScreen.setBackWizardScreen(menuScreen);
-            testStimulusScreen.setNextWizardScreen(textMenuScreen);
+            testStimulusScreen.setBackWizardScreen(textMenuScreen);
         }
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true, true, completionScreenText2,
                 "Opnieuw beginnen",
@@ -146,42 +113,14 @@ public class PlaybackPreferenceMeasureExperiment {
         wizardData.addScreen(completionScreen);
         completionScreen.setScreenTag("completion");
 
-        WizardAudioTestScreen atticScreen = new WizardAudioTestScreen("Attic", "&nbsp;", "continue button", "room_5");
-        wizardData.addScreen(atticScreen);
-        atticScreen.setBackgroundImage(backgroundImage);
-        atticScreen.setBackgroundStyle("zoomToAttic");
-        atticScreen.setAutoPlay(true);
-        atticScreen.setAutoNext(true);
-        atticScreen.setAutoNextDelay(2000);
-        atticScreen.setAudioHotKey("R1_MA_A");
-        atticScreen.setImageName("intro_1.jpg");
-        atticScreen.setNextHotKey("ENTER");
-        atticScreen.setStyleName("titleBarButton");
-        atticScreen.setBackWizardScreen(menuScreen);
-        atticScreen.setNextWizardScreen(completionScreen);
         bluetoothInstructionsScreen.setBackWizardScreen(menuScreen);
-        bluetoothInstructionsScreen.setNextWizardScreen(introductionAudio1);
+        bluetoothInstructionsScreen.setNextWizardScreen(wizardEditUserScreen);
 
-//        existingUserCheckScreen.setNextWizardScreen(selectUserScreen);
         selectUserScreen.setBackWizardScreen(existingUserCheckScreen);
         selectUserScreen.setNextWizardScreen(wizardEditUserScreen);
 
-//        wizardTextScreen.setNextWizardScreen(wizardEditUserScreen);
-//        agreementScreen.setNextWizardScreen(wizardTextScreen);
-//        wizardTextScreen.setBackWizardScreen(agreementScreen);
-        wizardEditUserScreen.setNextWizardScreen(introductionAudio1);
-        introductionAudio1.setNextWizardScreen(introductionAudio2);
-        introductionAudio2.setNextWizardScreen(introductionAudio3);
-        introductionAudio3.setNextWizardScreen(trainingStimulusScreen);
-//        fillerStimulusScreen.setNextWizardScreen(trainingStimulusScreen);
-        trainingStimulusScreen.setNextWizardScreen(textMenuScreen);
-        introductionAudio1.setBackWizardScreen(menuScreen);
-        introductionAudio2.setBackWizardScreen(menuScreen);
-        introductionAudio3.setBackWizardScreen(menuScreen);
-//        fillerStimulusScreen.setBackWizardScreen(introductionAudio3);
-        trainingStimulusScreen.setBackWizardScreen(menuScreen);
+        wizardEditUserScreen.setNextWizardScreen(textMenuScreen);
         textMenuScreen.setBackWizardScreen(menuScreen);
-        textMenuScreen.setNextWizardScreen(atticScreen);
 
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
         wizardAboutScreen.setBackWizardScreen(menuScreen);
