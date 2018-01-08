@@ -3,12 +3,12 @@
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="ppcode"/>
         <field controlledMessage="Voer een getal." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="datOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
-        <field controlledMessage="." controlledRegex="[01]?[0-9]?[0-9]" postName="groupCode" preventServerDuplicates="false" registrationField="Group Code"/>
-        <field controlledMessage="." controlledRegex="1|2|3|4" postName="experimentVersion" preventServerDuplicates="false" registrationField="Experiment Version"/>
+        <field controlledMessage="Voer een nummer (000-199)" controlledRegex="[01]?[0-9]?[0-9]" postName="groupCode" preventServerDuplicates="false" registrationField="Group Code"/>
+        <field controlledMessage="Kies en experiment." controlledRegex="1|2|3|4" postName="experimentVersion" preventServerDuplicates="false" registrationField="Experiment Version"/>
     </metadata>
     <presenter back="Menu" displayOrder="1" menuLabel="Bluetooth Instructions" type="text" self="Bluetooth_Instructions" title="Bluetooth Instructions">
         <htmlText featureText="When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A."/>
-        <targetButton featureText="Volgende" hotKey="ENTER" target="Practice"/>
+        <targetButton featureText="Volgende" hotKey="ENTER" target="Start"/>
     </presenter>
     <presenter displayOrder="2" menuLabel="Start" type="metadata" self="Start" title="Start">
         <existingUserCheck>
