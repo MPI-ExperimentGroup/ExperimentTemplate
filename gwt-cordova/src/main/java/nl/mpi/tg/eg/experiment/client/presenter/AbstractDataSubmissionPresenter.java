@@ -64,12 +64,27 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
         this.nextState = nextState;
     }
 
-    public void generateCompletionCode() {
-        String completionCode = submissionService.getCompletionCode(userResults.getUserData().getUserId());
-        // todo: consider changing this to something other than just a tag value
-//        submissionService.submitTagValue(userResults.getUserData().getUserId(), "CompletionCode", completionCode, duration.elapsedMillis());
-        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "DataSubmissionComplete", "CompletionCode", completionCode, 0);
+    public void displayCompletionCode() {
+        final String completionCode = submissionService.getCompletionCode(userResults.getUserData().getUserId());
         ((ComplexView) simpleView).addTextField(completionCode, true);
+    }
+
+    public void generateCompletionCode(final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+        // this method requires, send all data success before displaying the code
+        final String completionCode = submissionService.getCompletionCode(userResults.getUserData().getUserId());
+        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "DataSubmission", "CompletionCode", completionCode, 0);
+
+        submissionService.submitAllData(userResults, new DataSubmissionListener() {
+            @Override
+            public void scoreSubmissionFailed(DataSubmissionException exception) {
+                onError.postLoadTimerFired();
+            }
+
+            @Override
+            public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                onSuccess.postLoadTimerFired();
+            }
+        });
     }
 
     // todo: update xslt so the nullObject can be removed
