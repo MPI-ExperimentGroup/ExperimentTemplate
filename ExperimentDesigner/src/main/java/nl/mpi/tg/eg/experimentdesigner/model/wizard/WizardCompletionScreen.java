@@ -90,7 +90,7 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.transmission);
         final List<PresenterFeature> onSuccessFeatureList;
         if (storedWizardScreenData.getScreenBoolean(2)) {
-            final PresenterFeature sendAllDataFeature = new PresenterFeature(FeatureType.sendAllData, null);
+            final PresenterFeature sendAllDataFeature = (storedWizardScreenData.getScreenBoolean(1)) ? new PresenterFeature(FeatureType.generateCompletionCode, null) : new PresenterFeature(FeatureType.sendAllData, null);
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(sendAllDataFeature);
 
             final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
@@ -111,7 +111,7 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
         onSuccessFeatureList.add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
         onSuccessFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
         if (storedWizardScreenData.getScreenBoolean(1)) {
-            onSuccessFeatureList.add(new PresenterFeature(FeatureType.generateCompletionCode, null));
+            onSuccessFeatureList.add(new PresenterFeature(FeatureType.displayCompletionCode, null));
         }
         if (storedWizardScreenData.getScreenText(1) != null) {
             onSuccessFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
