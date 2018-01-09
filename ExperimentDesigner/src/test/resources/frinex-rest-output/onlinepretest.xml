@@ -54,17 +54,17 @@
         </loadStimulus>
     </presenter>
     <presenter displayOrder="6" menuLabel="Finished" type="transmission" self="Finished" title="Finished">
-        <sendAllData>
+        <generateCompletionCode>
             <onSuccess>
                 <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Bedankt voor je deelname!"/>
                 <addPadding/>
-                <generateCompletionCode/>
+                <displayCompletionCode/>
             </onSuccess>
             <onError>
                 <plainText featureText="Could not contact the server, please check your internet connection and try again."/>
                 <targetButton featureText="Retry" target="Finished"/>
             </onError>
-        </sendAllData>
+        </generateCompletionCode>
     </presenter>
     <presenter back="Edit_User" displayOrder="7" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>

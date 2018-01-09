@@ -123,17 +123,17 @@
         </saveMetadataButton>
     </presenter>
     <presenter displayOrder="10" menuLabel="Fini" type="transmission" self="Fini" title="Fini">
-        <sendAllData>
+        <generateCompletionCode>
             <onSuccess>
                 <htmlText featureText="L'expérience est terminée.&lt;br/&gt;&lt;br/&gt;Voici votre code d'expérience. Vos devez le mettre sur Crowdflower afin d'être payé.&lt;br/&gt;&lt;br/&gt;Merci beaucoup pour votre participation!"/>
                 <addPadding/>
-                <generateCompletionCode/>
+                <displayCompletionCode/>
             </onSuccess>
             <onError>
                 <plainText featureText="Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît."/>
                 <targetButton featureText="Réessayer" target="Fini"/>
             </onError>
-        </sendAllData>
+        </generateCompletionCode>
     </presenter>
     <presenter back="Edit_User" displayOrder="11" menuLabel="about" type="debug" self="about" title="about">
         <versionData/>

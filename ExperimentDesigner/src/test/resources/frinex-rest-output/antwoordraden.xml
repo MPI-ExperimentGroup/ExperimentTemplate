@@ -105,11 +105,11 @@
         </loadStimulus>
     </presenter>
     <presenter displayOrder="7" menuLabel="Finished" type="transmission" self="Finished" title="Finished">
-        <sendAllData>
+        <generateCompletionCode>
             <onSuccess>
                 <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;&lt;br/&gt;Ter bevestiging van je deelname willen we je vragen om de volgende code te sturen naar dorine.vanbelzen@mpi.nl. Pas na ontvangst van deze code, kun je worden uitbetaald.&lt;br/&gt;&lt;br/&gt;Bedankt voor je deelname!"/>
                 <addPadding/>
-                <generateCompletionCode/>
+                <displayCompletionCode/>
                 <addPadding/>
                 <htmlText featureText="Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop."/>
                 <addPadding/>
@@ -119,7 +119,7 @@
                 <plainText featureText="Could not contact the server, please check your internet connection and try again."/>
                 <targetButton featureText="Retry" target="Finished"/>
             </onError>
-        </sendAllData>
+        </generateCompletionCode>
     </presenter>
     <stimuli>
         <stimulus code="T_001" identifier="practice/groupA/T_001_N_A" imagePath="practice/groupA/T_001_N_A.JPG" pauseMs="0">

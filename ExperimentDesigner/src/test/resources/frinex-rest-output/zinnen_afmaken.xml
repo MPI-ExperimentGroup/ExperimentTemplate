@@ -54,11 +54,11 @@
         </loadStimulus>
     </presenter>
     <presenter displayOrder="5" menuLabel="Einde van het experiment" type="transmission" self="completion" title="Einde van het experiment">
-        <sendAllData>
+        <generateCompletionCode>
             <onSuccess>
                 <htmlText featureText="Beste participant,&lt;br/&gt;In dit onderzoek waren we geïnteresseerd in de door u ingevulde woorden. Wellicht heeft u al opgemerkt dat sommige van de zinnen heel specifiek waren (en u dus meteen wist wat het laatste woord zou kunnen zijn), terwijl andere zinnen wat vager waren. Het idee was om van iedere zin een vage en een specifieke versie te maken. Dus mocht u op gegeven moment een vage zin hebben gezien, dan zou een andere proefpersoon daarvan de specifieke versie krijgen. Wij zijn met name geïnteresseerd in hoe de ingevulde woorden over de versies heen verschillen. Met behulp van deze resultaten zouden wij dan op een latere termijn een ander onderzoek kunnen doen.&lt;br/&gt;Hartstikke bedankt voor het meedoen!&lt;br/&gt;&lt;br/&gt;Met vriendelijke groeten,&lt;br/&gt;René Terporten&lt;br/&gt;PhD candidaat&lt;br/&gt;Max Planck Instituut voor Psycholinguïstiek"/>
                 <addPadding/>
-                <generateCompletionCode/>
+                <displayCompletionCode/>
                 <addPadding/>
                 <htmlText featureText="Stuur deze nummer alstublieft per email terug naar de onderzoeker."/>
             </onSuccess>
@@ -66,7 +66,7 @@
                 <plainText featureText="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw."/>
                 <targetButton featureText="Probeer opnieuw" target="completion"/>
             </onError>
-        </sendAllData>
+        </generateCompletionCode>
     </presenter>
     <presenter back="Gegevens" displayOrder="6" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>

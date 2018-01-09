@@ -58,17 +58,17 @@
         </actionButton>
     </presenter>
     <presenter back="Round_8___4" displayOrder="5" menuLabel="Fini" type="transmission" self="Fini" title="Fini">
-        <sendAllData>
+        <generateCompletionCode>
             <onSuccess>
                 <htmlText featureText="completionScreenText1"/>
                 <addPadding/>
-                <generateCompletionCode/>
+                <displayCompletionCode/>
             </onSuccess>
             <onError>
                 <plainText featureText="Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît."/>
                 <targetButton featureText="Réessayer" target="Fini"/>
             </onError>
-        </sendAllData>
+        </generateCompletionCode>
     </presenter>
     <stimuli/>
 </experiment>

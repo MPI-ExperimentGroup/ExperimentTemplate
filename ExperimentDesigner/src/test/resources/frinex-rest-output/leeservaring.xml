@@ -199,11 +199,11 @@
         <targetButton featureText="Opnieuw beginnen" target="Completion"/>
     </presenter>
     <presenter displayOrder="15" menuLabel="Completion" type="transmission" self="Completion" title="Leeservaring 15">
-        <sendAllData>
+        <generateCompletionCode>
             <onSuccess>
                 <htmlText featureText="Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop."/>
                 <addPadding/>
-                <generateCompletionCode/>
+                <displayCompletionCode/>
                 <addPadding/>
                 <eraseUsersDataButton featureText="Opnieuw beginnen"/>
             </onSuccess>
@@ -211,14 +211,14 @@
                 <plainText featureText="De server is niet bereikbaar. Controleer de internetverbinding en probeer opnieuw."/>
                 <targetButton featureText="Probeer opnieuw" target="Completion"/>
             </onError>
-        </sendAllData>
+        </generateCompletionCode>
     </presenter>
     <presenter displayOrder="16" menuLabel="Registered" type="transmission" self="Registered" title="Leeservaring 16">
-        <sendAllData>
+        <generateCompletionCode>
             <onSuccess>
                 <htmlText featureText="Leuk dat u geïnteresseerd bent. Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop."/>
                 <addPadding/>
-                <generateCompletionCode/>
+                <displayCompletionCode/>
                 <addPadding/>
                 <eraseUsersDataButton featureText="Opnieuw beginnen"/>
             </onSuccess>
@@ -226,7 +226,7 @@
                 <plainText featureText="De server is niet bereikbaar. Controleer de internetverbinding en probeer opnieuw."/>
                 <targetButton featureText="Probeer opnieuw" target="Registered"/>
             </onError>
-        </sendAllData>
+        </generateCompletionCode>
     </presenter>
     <stimuli>
         <stimulus identifier="IntroductionAFact:U gaat zo een tekst lezen van Martin" label="U gaat zo een tekst lezen van Martin Rombouts. Hij is een jonge Nederlandse columnist. Hij schrijft over alledaagse dingen die hij meemaakt, altijd geïnspireerd door een waargebeurd verhaal." pauseMs="0">

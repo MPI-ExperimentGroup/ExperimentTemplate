@@ -60,11 +60,11 @@
         </loadStimulus>
     </presenter>
     <presenter displayOrder="5" menuLabel="Finished" type="transmission" self="Finished" title="Finished">
-        <sendAllData>
+        <generateCompletionCode>
             <onSuccess>
                 <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Bedankt voor je deelname!"/>
                 <addPadding/>
-                <generateCompletionCode/>
+                <displayCompletionCode/>
                 <addPadding/>
                 <htmlText featureText="Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop."/>
                 <addPadding/>
@@ -74,7 +74,7 @@
                 <plainText featureText="Could not contact the server, please check your internet connection and try again."/>
                 <targetButton featureText="Retry" target="Finished"/>
             </onError>
-        </sendAllData>
+        </generateCompletionCode>
     </presenter>
     <stimuli>
         <stimulus audioPath="prevoicing9_e_440Hz_coda_k" code="AV_happy" identifier="list_1/list_2:AV_happy.mpg:prevoicing9_e_440Hz_coda_k.wav:bik,bek" pauseMs="0" ratingLabels="bik,bek">
