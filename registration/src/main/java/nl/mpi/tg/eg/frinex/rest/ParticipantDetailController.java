@@ -17,6 +17,10 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import nl.mpi.tg.eg.frinex.model.TagPairData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,11 +45,23 @@ public class ParticipantDetailController {
     @Autowired
     private TimeStampRepository timeStampRepository;
 
+    private ArrayList<String[]> userSummary;
+    private ArrayList<String[]> fastTrack;
+    private ArrayList<String[]> fineTuning;
+
     @RequestMapping("participantdetail")
     public String participantDetail(@RequestParam(value = "id", required = true) String id, Model model) {
+
+        List<TagPairData> tagPairData = this.tagPairRepository.findByUserIdOrderByTagDateAsc(id);
+
+        this.fetchCvsTables(tagPairData);
+
         model.addAttribute("participantData", this.participantRepository.findByUserId(id));
         model.addAttribute("participantScreenData", this.screenDataRepository.findByUserIdOrderByViewDateAsc(id));
         model.addAttribute("countOfBrowserWindowClosed", this.screenDataRepository.countDistinctViewDateByUserIdAndScreenName(id, BROWSER_WINDOW_CLOSED));
+        model.addAttribute("userSummary", this.userSummary);
+        model.addAttribute("fastTrack", this.fastTrack);
+        model.addAttribute("fineTuning", this.fineTuning);
         model.addAttribute("participantTagPairData", this.tagPairRepository.findByUserIdOrderByTagDateAsc(id));
         model.addAttribute("participantSubsetStimulus", this.tagPairRepository.findByUserIdAndEventTagOrderByTagDateAsc(id, SUBSET_STIMULUS));
         model.addAttribute("participantCompletionCode", this.tagRepository.findByUserIdAndEventTagOrderByTagDateAsc(id, COMPLETION_CODE));
@@ -60,4 +76,46 @@ public class ParticipantDetailController {
     private static final String BROWSER_WINDOW_CLOSED = "BrowserWindowClosed";
     private static final String STIMULUS1_NEXT = "stimulus1Next";
     private static final String SUBSET_STIMULUS = "SubsetStimulus";
+
+    private void fetchCvsTables(List<TagPairData> bulk) {
+        this.userSummary = new ArrayList<String[]>();
+        this.fineTuning = new ArrayList<String[]>();
+        this.fastTrack = new ArrayList<String[]>();
+        for (TagPairData tagPairData : bulk) {
+            if (tagPairData.getEventTag().equals("user_summary")) {
+                this.addCsvRow(this.userSummary, tagPairData);
+            } else {
+                if (tagPairData.getEventTag().equals("fast_track")) {
+                    this.addCsvRow(this.fastTrack, tagPairData);
+                } else {
+                    if (tagPairData.getEventTag().equals("fine_tuning")) {
+                        this.addCsvRow(this.fineTuning, tagPairData);
+                    }
+                }
+            }
+
+        }
+    }
+
+    private void addCsvRow(ArrayList<String[]> table, TagPairData tagPairData) {
+        String[] row = tagPairData.getTagValue2().split(";");
+        String[] csvRow = new String[row.length + 1];
+        for (int i = 0; i < row.length; i++) {
+            csvRow[i] = row[i];
+        }
+        String tag1 = tagPairData.getTagValue1();
+        if (tag1.endsWith("000000")) {
+            String[] empty1 = new String[row.length + 1];
+            String[] empty2 = new String[row.length + 1];
+            String[] empty3 = new String[row.length + 1];
+            table.add(empty1);
+            table.add(empty2);
+            table.add(empty3);
+            csvRow[row.length] = "Screen name";
+        } else {
+            csvRow[row.length] = tagPairData.getScreenName();
+        }
+        table.add(csvRow);
+    }
+
 }
