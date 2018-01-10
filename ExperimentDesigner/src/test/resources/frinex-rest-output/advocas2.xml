@@ -94,7 +94,7 @@ Veel succes!"/>
                 <addPadding/>
                 <!--                <generateCompletionCode/>-->
                 <addPadding/>
-                <eraseUsersDataButton featureText="Opnieuw beginnen" target="Edit_User"/>
+                <createUserButton featureText="Opnieuw beginnen" target="Edit_User"/>
             </onSuccess>
             <onError>
                 <plainText featureText="Cannot connect to the server, please check your internet connection."/>
