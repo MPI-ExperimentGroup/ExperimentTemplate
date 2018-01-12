@@ -21,6 +21,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimuliProvider;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Random;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsBookkeepingStimulus;
@@ -200,33 +201,40 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
 
     @Override
     public String getStringFastTrack(String startRow, String endRow, String startColumn, String endColumn) {
-        StringBuilder stringBuilder = new StringBuilder();
+       StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(startRow);
         stringBuilder.append(startColumn).append("Label").append(endColumn);
         stringBuilder.append(startColumn).append("BandNumber").append(endColumn);
         stringBuilder.append(startColumn).append("UserAnswer").append(endColumn);
         stringBuilder.append(startColumn).append("IsAnswerCorrect").append(endColumn);
+        stringBuilder.append(startColumn).append("Timestamp").append(endColumn);
         stringBuilder.append(startColumn).append("NonwordsFrequencyAtThisPoint").append(endColumn);
         stringBuilder.append(endRow);
-        int counterNonwords = 0;
+        int nonwordCounter =0;
         for (int i = 0; i <= this.timeTickEndFastTrack; i++) {
             BookkeepingStimulus stimulus = this.responseRecord.get(i);
-            if (stimulus.getBandNumber() == -1) {
-                counterNonwords++;
+            if (stimulus.getBandNumber() < 0) {
+                nonwordCounter++;
             }
-            double frequency = ((double) counterNonwords) / ((double) (i + 1));
-
+            double frequency = ((double) nonwordCounter) / ((double) (i+1));
             StringBuilder row = new StringBuilder();
+            
+            String time = (new Date(stimulus.getTimeStamp())).toString();
+            
             row.append(startColumn).append(stimulus.getLabel()).append(endColumn);
             row.append(startColumn).append(stimulus.getBandNumber()).append(endColumn);
             row.append(startColumn).append(stimulus.getReaction()).append(endColumn);
             row.append(startColumn).append(stimulus.getCorrectness()).append(endColumn);
+            row.append(startColumn).append(time).append(endColumn);
             row.append(startColumn).append(frequency).append(endColumn);
             stringBuilder.append(startRow).append(row).append(endRow);
         }
         return stringBuilder.toString();
 
+
     }
+    
+    
 
     @Override
     public String getHtmlStimuliReport() {
