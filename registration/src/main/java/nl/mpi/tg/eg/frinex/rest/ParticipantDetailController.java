@@ -19,7 +19,10 @@ package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 import nl.mpi.tg.eg.frinex.model.TagPairData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -45,9 +48,16 @@ public class ParticipantDetailController {
     @Autowired
     private TimeStampRepository timeStampRepository;
 
-    private ArrayList<String[]> userSummary;
-    private ArrayList<String[]> fastTrack;
-    private ArrayList<String[]> fineTuning;
+    // the first ibdex is the label report, e.g. screen1 or screen2
+    // the first index is the row number
+    // the third index if the cell/ column  in the row
+    private HashMap<String, String[][]> userSummary;
+    private HashMap<String, String[][]> fastTrack;
+    private HashMap<String, String[][]> fineTuning;
+    
+    private List<String> userSummarySortedKeys;
+    private List<String> fastTrackSortedKeys;
+    private List<String> fineTuningSortedKeys;
 
     @RequestMapping("participantdetail")
     public String participantDetail(@RequestParam(value = "id", required = true) String id, Model model) {
@@ -62,6 +72,9 @@ public class ParticipantDetailController {
         model.addAttribute("userSummary", this.userSummary);
         model.addAttribute("fastTrack", this.fastTrack);
         model.addAttribute("fineTuning", this.fineTuning);
+        model.addAttribute("userSummarySortedKeys", this.userSummarySortedKeys);
+        model.addAttribute("fastTrackSortedKeys", this.fastTrackSortedKeys);
+        model.addAttribute("fineTuningSortedKeys", this.fineTuningSortedKeys);
         model.addAttribute("participantTagPairData", this.tagPairRepository.findByUserIdOrderByTagDateAsc(id));
         model.addAttribute("participantSubsetStimulus", this.tagPairRepository.findByUserIdAndEventTagOrderByTagDateAsc(id, SUBSET_STIMULUS));
         model.addAttribute("participantCompletionCode", this.tagRepository.findByUserIdAndEventTagOrderByTagDateAsc(id, COMPLETION_CODE));
@@ -78,44 +91,85 @@ public class ParticipantDetailController {
     private static final String SUBSET_STIMULUS = "SubsetStimulus";
 
     private void fetchCvsTables(List<TagPairData> bulk) {
-        this.userSummary = new ArrayList<String[]>();
-        this.fineTuning = new ArrayList<String[]>();
-        this.fastTrack = new ArrayList<String[]>();
+
+        HashMap<String, ArrayList<String[]>> userSummaryHelper = new HashMap<String, ArrayList<String[]>>();
+        HashMap<String, ArrayList<String[]>> fastTrackHelper = new HashMap<String, ArrayList<String[]>>();
+        HashMap<String, ArrayList<String[]>> fineTuningHelper = new HashMap<String, ArrayList<String[]>>();
+        
+        this.userSummarySortedKeys = new ArrayList<String>();
+        this.fastTrackSortedKeys = new ArrayList<String>();
+        this.fineTuningSortedKeys = new ArrayList<String>();
+        
         for (TagPairData tagPairData : bulk) {
+
+            String screen = tagPairData.getScreenName();
+
+            if (!userSummaryHelper.containsKey(screen)) {
+                userSummaryHelper.put(screen, new ArrayList<String[]>()); 
+                this.userSummarySortedKeys.add(screen);
+            }
+            if (!fastTrackHelper.containsKey(screen)) {
+                fastTrackHelper.put(screen, new ArrayList<String[]>());
+                this.fastTrackSortedKeys.add(screen);
+            }
+            if (!fineTuningHelper.containsKey(screen)) {
+                fineTuningHelper.put(screen, new ArrayList<String[]>());
+                this.fineTuningSortedKeys.add(screen);
+                
+            }
+
             if (tagPairData.getEventTag().equals("user_summary")) {
-                this.addCsvRow(this.userSummary, tagPairData);
+                this.addCsvRow(userSummaryHelper.get(screen), tagPairData);
             } else {
                 if (tagPairData.getEventTag().equals("fast_track")) {
-                    this.addCsvRow(this.fastTrack, tagPairData);
+                    this.addCsvRow(fastTrackHelper.get(screen), tagPairData);
                 } else {
                     if (tagPairData.getEventTag().equals("fine_tuning")) {
-                        this.addCsvRow(this.fineTuning, tagPairData);
+                        this.addCsvRow(fineTuningHelper.get(screen), tagPairData);
                     }
                 }
             }
-
         }
+
+        this.userSummary = this.createOrderedTable(userSummaryHelper);
+        this.fastTrack = this.createOrderedTable(fastTrackHelper);
+        this.fineTuning = this.createOrderedTable(fineTuningHelper);
+        
+        
+        Collections.sort(this.userSummarySortedKeys);
+        Collections.sort(this.fastTrackSortedKeys);
+        Collections.sort(this.fineTuningSortedKeys);
     }
 
     private void addCsvRow(ArrayList<String[]> table, TagPairData tagPairData) {
         String[] row = tagPairData.getTagValue2().split(";");
         String[] csvRow = new String[row.length + 1];
+        csvRow[0] = tagPairData.getTagValue1(); // gets row label
         for (int i = 0; i < row.length; i++) {
-            csvRow[i] = row[i];
-        }
-        String tag1 = tagPairData.getTagValue1();
-        if (tag1.endsWith("000000")) {
-            String[] empty1 = new String[row.length + 1];
-            String[] empty2 = new String[row.length + 1];
-            String[] empty3 = new String[row.length + 1];
-            table.add(empty1);
-            table.add(empty2);
-            table.add(empty3);
-            csvRow[row.length] = "Screen name";
-        } else {
-            csvRow[row.length] = tagPairData.getScreenName();
+            csvRow[i + 1] = row[i];
         }
         table.add(csvRow);
+    }
+
+    private String[][] orderByRowTag(ArrayList<String[]> buffer) {
+        String[][] retVal = new String[buffer.size()][]; // amount of rows
+        for (String[] csvRow : buffer) {
+            String strIndex = csvRow[0].substring("row".length());
+            int index = Integer.parseInt(strIndex);
+            retVal[index] = Arrays.copyOfRange(csvRow, 1, csvRow.length);
+        }
+        return retVal;
+    }
+
+    private HashMap<String, String[][]> createOrderedTable(HashMap<String, ArrayList<String[]>> unorderedTable) {
+        HashMap<String, String[][]> retVal = new HashMap<String, String[][]>();
+        Set<String> summaryKeys = unorderedTable.keySet();
+        for (String key : summaryKeys) {
+            String[][] orderedRow = this.orderByRowTag(unorderedTable.get(key));
+            retVal.put(key, orderedRow);
+
+        }
+        return retVal;
     }
 
 }
