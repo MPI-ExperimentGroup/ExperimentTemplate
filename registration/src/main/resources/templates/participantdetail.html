@@ -121,31 +121,37 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tr>
             </tbody>
         </table>
-        <h3>User summary</h3>
-        <table id="datatable"> 
-            <tbody>
-                <tr id="clickablerow" th:each="csvTableRow : ${userSummary}">
-                    <td th:each="csvTableCell : ${csvTableRow}" th:text="${csvTableCell}"></td>
-                </tr>
-            </tbody>
-        </table>
-        <h3>Fast Track</h3>
-        <table id="datatable"> 
-            <tbody>
-                <tr id="clickablerow" th:each="csvTableRow : ${fastTrack}">
-                    <td th:each="csvTableCell : ${csvTableRow}" th:text="${csvTableCell}"></td>
-                </tr>
-            </tbody>
-        </table>
-        <h3>Fine Tuning</h3>
-        <table id="datatable"> 
-            <tbody>
-                <tr id="clickablerow" th:each="csvTableRow : ${fineTuning}">
-                    <td th:each="csvTableCell : ${csvTableRow}" th:text="${csvTableCell}"></td>
-                </tr>
-            </tbody>
-        </table>
-        <h3>TODO: test this display of CSV report data</h3>
+        <div  th:each="csvTable : ${userSummarySortedKeys}">
+            <h3 th:text="${'User summary '+csvTable}"></h3>
+            <table id="datatable"> 
+                <tbody>
+                    <tr id="clickablerow" th:each="csvTableRow : ${userSummary.get(csvTable)}">
+                        <td th:each="csvTableCell : ${csvTableRow}" th:text="${csvTableCell}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div  th:each="csvTable : ${fastTrackSortedKeys}">
+            <h3  th:text="${'Fast Track '+csvTable}"></h3>
+            <table id="datatable"> 
+                <tbody>
+                    <tr id="clickablerow" th:each="csvTableRow : ${fastTrack.get(csvTable)}">
+                        <td th:each="csvTableCell : ${csvTableRow}" th:text="${csvTableCell}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div  th:each="csvTable : ${fineTuningSortedKeys}">
+            <h3  th:text="${'Fine tuning '+csvTable}"></h3>
+            <table id="datatable"> 
+                <tbody>
+                    <tr id="clickablerow" th:each="csvTableRow : ${fineTuning.get(csvTable)}">
+                        <td th:each="csvTableCell : ${csvTableRow}" th:text="${csvTableCell}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h3>Raw data</h3>
         <table id="datatable">
             <!--/*/ <th:block th:each="tagPairData : ${participantTagPairData}"> /*/-->
             <thead>
