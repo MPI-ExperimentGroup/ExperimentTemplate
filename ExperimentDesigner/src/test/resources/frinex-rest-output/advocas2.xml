@@ -62,14 +62,14 @@ Veel succes!"/>
     </presenter>
     <presenter displayOrder="5" next="stimuliScreenV2" type="metadata" self="enterSecondRound" title="">
         <metadataField fieldName="workerId"/>
-        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
+        <sendMetadata featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onSuccess>   
                 <autoNextPresenter/>
             </onSuccess>
             <onError>   
                 <autoNextPresenter/>
             </onError>
-        </saveMetadataButton>
+        </sendMetadata>
     </presenter>
     <presenter displayOrder="6" next="End" type="stimulus" self="stimuliScreenV2" title="Series 2">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider" type="1" eventTag="stimuliN"
@@ -98,7 +98,7 @@ Veel succes!"/>
         </loadStimulus>
     </presenter>
     <presenter displayOrder="7" type="transmission" self="End" title="End">
-        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection and/or upload data later.
+        <sendMetadata featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection and/or upload data later.
                 Do not clean the browser's cache.">
           <onSuccess>  
                 <sendAllData>
@@ -121,7 +121,7 @@ Veel succes!"/>
                 <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later and do not clean the browser's cache."/>
                 <targetButton featureText="Retry" target="End"/>
             </onError>      
-        </saveMetadataButton>
+        </sendMetadata>
     </presenter>
     <presenter back="Menu" displayOrder="8" menuLabel="Data Upload" next="UploadParticipantData" type="metadata" self="DeelnemersLijst" title="Kiez deelnemer">
         <selectUserMenu/>
