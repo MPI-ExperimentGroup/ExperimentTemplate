@@ -82,6 +82,7 @@ public enum FeatureType {
     displayCompletionCode(false, false, null),
     generateCompletionCode(false, false, null, false, false, Contitionals.hasErrorSuccess),
     sendAllData(false, false, null, false, false, Contitionals.hasErrorSuccess),
+    sendMetadata(false, false, null, false, false, Contitionals.hasErrorSuccess),
     eraseLocalStorageOnWindowClosing(false, false, null),
     //    nextStimulus(false, false, null),
     keepStimulus(false, false, null),
