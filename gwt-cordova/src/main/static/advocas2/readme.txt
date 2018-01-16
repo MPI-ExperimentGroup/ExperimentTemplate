@@ -1,0 +1,1 @@
+Static resource files can be included here for use in the experiment application.

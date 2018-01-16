@@ -73,6 +73,22 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
     }
 
     // todo: update xslt so the nullObject can be removed
+    public void sendMetadata(Object nullObject, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+        submissionService.submitMetadata(userResults, new DataSubmissionListener() {
+
+            @Override
+            public void scoreSubmissionFailed(DataSubmissionException exception) {
+                onError.postLoadTimerFired();
+            }
+
+            @Override
+            public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                onSuccess.postLoadTimerFired();
+            }
+        });
+    }
+
+    // todo: update xslt so the nullObject can be removed
     public void sendAllData(Object nullObject, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         submissionService.submitAllData(userResults, new DataSubmissionListener() {
 
