@@ -60,8 +60,8 @@ public class DataSubmissionService extends AbstractSubmissionService {
         boolean dataSubmitUrlOk = serviceLocations.dataSubmitUrl().contains("ems12");
         boolean groupServerUrlOk = serviceLocations.groupServerUrl().contains("ems12");
 //        boolean registrationUrlOk = serviceLocations.registrationUrl().contains("www.mpi.nl");
-        boolean staticFilesUrlOk = serviceLocations.staticFilesUrl().contains("ems12");
-        return dataSubmitUrlOk && groupServerUrlOk && staticFilesUrlOk;
+//        boolean staticFilesUrlOk = serviceLocations.staticFilesUrl().contains("ems12");
+        return dataSubmitUrlOk && groupServerUrlOk; // && staticFilesUrlOk;
     }
 
     public String getCompletionCode(UserId userId) {
