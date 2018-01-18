@@ -134,6 +134,21 @@ public class PresenterFeature {
         return featureType;
     }
 
+    public PresenterFeature addFeature(FeatureType featureType, String text, String... attributes) {
+        if (featureType.canHaveText() == (text != null && !text.isEmpty())) {
+            final PresenterFeature presenterFeature = new PresenterFeature(featureType, text);
+            getPresenterFeatureList().add(presenterFeature);
+            if (featureType.getFeatureAttributes() != null) {
+                for (int index = 0; index < featureType.getFeatureAttributes().length; index++) {
+                    presenterFeature.addFeatureAttributes(featureType.getFeatureAttributes()[index], attributes[index]);
+                }
+            }
+            return presenterFeature;
+        } else {
+            throw new UnsupportedOperationException(featureType.name() + ((featureType.canHaveText()) ? " requires feature text." : " cannot have text"));
+        }
+    }
+
     public void setFeatureType(FeatureType featureType) {
         this.featureType = featureType;
     }
