@@ -91,7 +91,7 @@ public enum FeatureType {
     clearStimulus(false, false, null),
     centrePage(false, false, null),
     clearPage(false, false, null),
-    backgroundImage(true, false, new FeatureAttribute[]{src, styleName, msToNext}),
+    backgroundImage(true, false, new FeatureAttribute[]{msToNext, src, styleName}),
     allMenuItems(false, false, null),
     prevStimulusButton(false, true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey}),
     nextStimulusButton(false, true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey}),
@@ -138,7 +138,7 @@ public enum FeatureType {
     stimulusImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement}), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
     stimulusCodeImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, codeFormat, animate}),
     stimulusCodeVideo(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, codeFormat, styleName, autoPlay, loop, showControls}),
-    stimulusCodeAudio(true, false, new FeatureAttribute[]{msToNext, codeFormat}),
+    stimulusCodeAudio(true, false, new FeatureAttribute[]{msToNext, codeFormat, showPlaybackIndicator}),
     stimulusAudio(true, false, new FeatureAttribute[]{msToNext, showPlaybackIndicator}),
     playVideo(false, false, new FeatureAttribute[]{}),
     rewindVideo(false, false, new FeatureAttribute[]{}),
