@@ -19,6 +19,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -39,11 +40,11 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
 
     protected int type = 0;
     protected int numberOfBands = 0;
-    protected int numberOfSeries= 0;
-    protected int startBand=0;
-    protected int averageNonWordPosition=0;
-    protected int startPercentageGraph=0;
-    protected int fineTuningTupleLength=0;
+    protected int numberOfSeries = 0;
+    protected int startBand = 0;
+    protected int averageNonWordPosition = 0;
+    protected int startPercentageGraph = 0;
+    protected int fineTuningTupleLength = 0;
 
     private int bandScore = -1;
     protected long percentageScore = 0;
@@ -75,52 +76,50 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
 
     // add experiment specific stuff here
     // ...
-    
-    public void settype(String type){
-        this.type=Integer.parseInt(type);
+    public void settype(String type) {
+        this.type = Integer.parseInt(type);
     }
-    
-    public void setnumberOfBands(String numberOfBands){
-        this.numberOfBands=Integer.parseInt(numberOfBands);
+
+    public void setnumberOfBands(String numberOfBands) {
+        this.numberOfBands = Integer.parseInt(numberOfBands);
     }
-    
-    public void setnumberOfSeries(String numberOfSeries){
-        this.numberOfSeries=Integer.parseInt(numberOfSeries);
+
+    public void setnumberOfSeries(String numberOfSeries) {
+        this.numberOfSeries = Integer.parseInt(numberOfSeries);
     }
-    
-    public void setstartBand(String startBand){
-        this.startBand=Integer.parseInt(startBand);
+
+    public void setstartBand(String startBand) {
+        this.startBand = Integer.parseInt(startBand);
     }
-    
-    public void setaverageNonWordPosition(String averageNonWordPosition){
-        this.averageNonWordPosition=Integer.parseInt(averageNonWordPosition);
+
+    public void setaverageNonWordPosition(String averageNonWordPosition) {
+        this.averageNonWordPosition = Integer.parseInt(averageNonWordPosition);
     }
-    
-    public void setstartPercentageGraph(String startPercentageGraph){
-        this.startPercentageGraph=Integer.parseInt(startPercentageGraph);
+
+    public void setstartPercentageGraph(String startPercentageGraph) {
+        this.startPercentageGraph = Integer.parseInt(startPercentageGraph);
     }
-    
-    public void setfineTuningTupleLength(String fineTuningTupleLength){
-        this.fineTuningTupleLength=Integer.parseInt(fineTuningTupleLength);
+
+    public void setfineTuningTupleLength(String fineTuningTupleLength) {
+        this.fineTuningTupleLength = Integer.parseInt(fineTuningTupleLength);
     }
-    
+
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
 
-        
         this.bandScore = -1;
-        this.percentageScore =0;
+        this.percentageScore = 0;
         this.isCorrectCurrentResponse = null;
         this.currentBandIndex = this.startBand - 1;
         this.bandVisitCounter = new int[this.numberOfBands];
-        
+
         //this.totalStimuli: see the child class
         this.enoughFineTuningStimulae = true;
-        for (int i=0; i<this.numberOfBands; i++){
-            this.bandVisitCounter[i]=0;
+        for (int i = 0; i < this.numberOfBands; i++) {
+            this.bandVisitCounter[i] = 0;
         }
-        for (int i=0; i<Constants.FINE_TUNING_UPPER_BOUND_FOR_2CYCLES * 2 + 1; i++){
-            this.cycle2helper[i]=0;
+        for (int i = 0; i < Constants.FINE_TUNING_UPPER_BOUND_FOR_2CYCLES * 2 + 1; i++) {
+            this.cycle2helper[i] = 0;
         }
         this.cycle2 = false;
         this.champion = false;
@@ -324,6 +323,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     @Override
     public boolean isCorrectResponse(Stimulus stimulus, String stimulusResponse) {
         int index = this.getCurrentStimulusIndex();
+        this.responseRecord.get(index).setTimeStamp(System.currentTimeMillis());
         this.isCorrectCurrentResponse = this.analyseCorrectness(stimulus, stimulusResponse);
         this.responseRecord.get(index).setCorrectness(this.isCorrectCurrentResponse);
         this.responseRecord.get(index).setReaction(stimulusResponse);
@@ -484,23 +484,17 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         this.cycle2 = detectLoop(cycle2helper);
         if (this.cycle2) {
             System.out.println("Detected: Constants.FINE_TUNING_UPPER_BOUND_FOR_2CYCLES times oscillation between two neighbouring bands");
-            this.bandScore = this.cycle2helper[cycle2helper.length-1];
-              
+            this.bandScore = this.cycle2helper[cycle2helper.length - 1];
+
             //Here implemented loop-based approach , with the last element excluded from loop detection
             // x, x+1, x, x+1, x, (x+1)  (error, could have passed to x, if was not stopped) -> x
             // x+1, x, x+1, x, x+1, (x+2)  (error, could have passed to x+1, if was not stopped) -> x+1
-            
             //Alternative-2 loop-based with the last element taken into account during the loop detection
             // x, x+1, x, x+1, x  (error) -> x
             // x+1, x, x+1, x, x+1 (error) -> x+1
-           
-            
-            
             //Alternative-1 oscillation-based
             // x, x+1, x, x+1, x, x+1 (error) -> x+1
             // x+1, x, x+1, x, x+1, x (error) -> x
-            
-            
             retVal = false;
         } else {
             if (this.currentBandIndex == 0) {
@@ -596,16 +590,20 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         stringBuilder.append(startColumn).append("BandNumber").append(endColumn);
         stringBuilder.append(startColumn).append("UserAnswer").append(endColumn);
         stringBuilder.append(startColumn).append("IsAnswerCorrect").append(endColumn);
-        stringBuilder.append(startColumn).append("NonwordsFrequencyAtThisPoint").append(endColumn);
+        stringBuilder.append(startColumn).append("Timestamp").append(endColumn);
         stringBuilder.append(endRow);
         for (int i = 0; i <= this.timeTickEndFastTrack; i++) {
             BookkeepingStimulus stimulus = this.responseRecord.get(i);
 
             StringBuilder row = new StringBuilder();
+
+            String time = (new Date(stimulus.getTimeStamp())).toString();
+
             row.append(startColumn).append(stimulus.getLabel()).append(endColumn);
             row.append(startColumn).append(stimulus.getBandNumber()).append(endColumn);
             row.append(startColumn).append(stimulus.getReaction()).append(endColumn);
             row.append(startColumn).append(stimulus.getCorrectness()).append(endColumn);
+            row.append(startColumn).append(time).append(endColumn);
             stringBuilder.append(startRow).append(row).append(endRow);
         }
         return stringBuilder.toString();
@@ -613,32 +611,41 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     }
 
     public String getStringFineTuningHistory(String startRow, String endRow, String startColumn, String endColumn, String format) {
+        StringBuilder empty = new StringBuilder();
+        empty.append(startColumn).append(" ").append(endColumn);
+        empty.append(startColumn).append(" ").append(endColumn);
+        empty.append(startColumn).append(" ").append(endColumn);
+        empty.append(startColumn).append(" ").append(endColumn);
+        empty.append(startColumn).append(" ").append(endColumn);
+        empty.append(startColumn).append(" ").append(endColumn);
+        
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(startRow);
         stringBuilder.append(startColumn).append("BandNumber").append(endColumn);
         stringBuilder.append(startColumn).append("Label").append(endColumn);
         stringBuilder.append(startColumn).append("UserAnswer").append(endColumn);
         stringBuilder.append(startColumn).append("IsAnswerCorrect").append(endColumn);
-        stringBuilder.append(startColumn).append("VisitingTime").append(endColumn);
+        stringBuilder.append(startColumn).append("Timestamp").append(endColumn);
+        stringBuilder.append(startColumn).append("Visiting Number").append(endColumn);
         stringBuilder.append(endRow);
         int modCounter = 0;
         ArrayList<String> spellingsCheck = new ArrayList<>();
         for (int i = this.timeTickEndFastTrack + 1; i < this.responseRecord.size(); i++) {
             BookkeepingStimulus stimulus = this.responseRecord.get(i);
             StringBuilder row = new StringBuilder();
+            String time = (new Date(stimulus.getTimeStamp())).toString();
             row.append(startColumn).append(stimulus.getBandNumber()).append(endColumn);
             row.append(startColumn).append(stimulus.getLabel()).append(endColumn);
             row.append(startColumn).append(stimulus.getReaction()).append(endColumn);
             row.append(startColumn).append(stimulus.getCorrectness()).append(endColumn);
+            row.append(startColumn).append(time).append(endColumn);
             row.append(startColumn).append(i).append(endColumn);
             stringBuilder.append(startRow).append(row).append(endRow);
-            if (!format.equals("csv")) {
-                modCounter++;
-                if (!stimulus.getCorrectness() || modCounter == Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE) {
-                    stringBuilder.append(startRow).append(endRow); // skeep between tuples
-                    stringBuilder.append(startRow).append(endRow);
-                    modCounter = 0;
-                }
+            modCounter++;
+            if (!stimulus.getCorrectness() || modCounter == Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE) {
+                stringBuilder.append(startRow).append(empty).append(endRow); // skeep between tuples
+                stringBuilder.append(startRow).append(empty).append(endRow);
+                modCounter = 0;
             }
             spellingsCheck.add(stimulus.getLabel());
         }
