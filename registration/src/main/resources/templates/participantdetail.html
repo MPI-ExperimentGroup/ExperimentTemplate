@@ -151,32 +151,37 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tbody>
             </table>
         </div>
-        <h3>Raw data</h3>
+        <h3>Tag Pair Data</h3>
         <table id="datatable">
-            <!--/*/ <th:block th:each="tagPairData : ${participantTagPairData}"> /*/-->
             <thead>
                 <tr>
-                    <!--todo: complete these row headers-->
-                    <th>screenName</th>
-                    <th>Time</th>
-                    <th>Event Tag</th>
-                    <th>Stimulus</th>
-                    <th>Participant reaction</th>
-                    <th>Duration in ms</th>
+                    <!--<th>id</th>-->
+                    <!--<th>userId</th>-->
+                    <th>Screen</th>
+                    <th>Date</th>
+                    <!--<th>submitDate</th>-->
+                    <!--<th>experimentName</th>-->
+                    <th>Tag</th>
+                    <th>Value 1</th>
+                    <th>Value 2</th>
+                    <th>Event Milliseconds</th>
                 </tr>
             </thead>
-            <tr id="clickablerow">
-                <!--todo: complete these rows-->
+            <tbody>
+                <tr id="clickablerow" th:each="tagPairData : ${participantTagPairData}">
+                    <!--<td th:text="${tagPairData.id}">id</td>-->
+                    <!--<td th:text="${tagPairData.userId}">userId</td>-->
                 <td th:text="${tagPairData.screenName}">screenName</td>
                 <td th:text="${tagPairData.tagDate}">tagDate</td>
+                    <!--<td th:text="${tagPairData.submitDate}">submitDate</td>-->
+                    <!--<td th:text="${tagPairData.experimentName}">experimentName</td>-->
                 <td th:text="${tagPairData.eventTag}">eventTag</td>
                 <td th:text="${tagPairData.tagValue1}">tagValue1</td>
                 <td th:text="${tagPairData.tagValue2}">tagValue2</td>
                 <td th:text="${tagPairData.eventMs}">eventMs</td>
             </tr>
-            <!--/*/ </th:block> /*/-->
+            </tbody>
         </table>
-
         <h3>Tag Data</h3>
         <table id="datatable">
             <thead>
