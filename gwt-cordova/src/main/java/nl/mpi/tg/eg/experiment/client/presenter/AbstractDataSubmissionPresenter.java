@@ -23,6 +23,7 @@ import com.google.gwt.core.client.JsArray;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import java.util.List;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
@@ -36,6 +37,7 @@ import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
+import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 
 /**
@@ -45,6 +47,7 @@ import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter implements Presenter {
 
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
+    final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
     private final DataSubmissionService submissionService;
     final UserResults userResults;
     private final Duration duration;
@@ -141,7 +144,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
         });
     }
 
-    protected void eraseUsersDataButton(final String buttonLabel) {
+    protected void eraseUsersDataButton(final String buttonLabel, final ApplicationController.ApplicationState nextState) {
         ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
 
             @Override
@@ -157,6 +160,11 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 submissionService.eraseUsersStoredData(userResults.getUserData().getUserId());
+                List<UserLabelData> userList = localStorage.getUserIdList(metadataFieldProvider.workerIdMetadataField);
+                if (!userList.isEmpty()) {
+                    final UserLabelData nextUser = userList.get(0);
+                    localStorage.saveAppState(nextUser.getUserId(), nextState);
+                }
                 Window.Location.replace(Window.Location.getPath());
             }
         });
