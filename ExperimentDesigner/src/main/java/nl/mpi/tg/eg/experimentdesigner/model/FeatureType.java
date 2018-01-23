@@ -71,7 +71,7 @@ public enum FeatureType {
     createUserButton(false, true, new FeatureAttribute[]{target}),
     selectUserMenu(false, false, null),
     eraseLocalStorageButton(false, false, null),
-    eraseUsersDataButton(false, true, null),
+    eraseUsersDataButton(false, true, new FeatureAttribute[]{target}), // if users still exist in the system target will be used, otherwise the application will start at the begining.
     showCurrentMs(false, false, null),
     enableStimulusButtons(false, false, null),
     disableStimulusButtons(false, false, null),
