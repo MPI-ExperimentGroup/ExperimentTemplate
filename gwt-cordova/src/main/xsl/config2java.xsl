@@ -90,7 +90,7 @@
             
             @Override
             public void requestApplicationState(ApplicationState applicationState) {
-            localStorage.saveAppState(userResults.getUserData().getUserId(), applicationState.name());
+            localStorage.saveAppState(userResults.getUserData().getUserId(), applicationState);
             if (presenter != null) {
             presenter.savePresenterState();
             }
@@ -316,8 +316,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>());
         </xsl:text>
     </xsl:template>
-    <xsl:template match="image">
-        <xsl:text>    </xsl:text>
+    <!--    <xsl:template match="image">
+        <xsl:text>    ((ComplexView) simpleView).</xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>                
         <xsl:text>"</xsl:text>
@@ -335,7 +335,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             }
             });
         </xsl:text>
-    </xsl:template>
+    </xsl:template>-->
     <xsl:template match="menuItem">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
@@ -449,6 +449,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else ''" />
         <xsl:value-of select="if(@sendData) then concat(', ', @sendData eq 'true') else ''" />    
         <xsl:value-of select="if(@matchingRegex) then concat('&quot;', @matchingRegex, '&quot;') else ''" />
+        <xsl:value-of select="if(@target) then concat(', ApplicationState.', @target) else ''" />
         <xsl:value-of select="if(local-name() eq 'sendAllData' or local-name() eq 'sendMetadata' or local-name() eq 'generateCompletionCode') then 'null' else ''" />   
         <xsl:value-of select="if(local-name() eq 'saveMetadataButton') then concat(', messages.errorMessage', generate-id(.), '()') else ''" />
         <xsl:value-of select="if(local-name() eq 'helpDialogue') then concat(', messages.closeButtonLabel', generate-id(.), '()') else ''" />
@@ -574,7 +575,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="groupResponseStimulusImage|backgroundImage|pause|countdownLabel|stimulusImage|stimulusImageCapture|stimulusCodeImage|stimulusCodeAudio|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupNetworkActivity|table|row|column">
+    <xsl:template match="image|groupResponseStimulusImage|backgroundImage|pause|countdownLabel|stimulusImage|stimulusImageCapture|stimulusCodeImage|stimulusCodeAudio|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupNetworkActivity|table|row|column">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>
