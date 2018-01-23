@@ -25,6 +25,7 @@ import com.google.gwt.storage.client.Storage;
 import com.google.gwt.user.client.Window;
 import java.util.ArrayList;
 import java.util.List;
+import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
@@ -289,9 +290,13 @@ public class LocalStorage {
         }
     }
 
-    public void saveAppState(UserId userId, String appState) {
+    public void saveAppState(UserId userId, ApplicationController.ApplicationState appState) {
         loadStorage();
-        dataStore.setItem(getAPP_STATE(userId), appState);
+        if ((Window.Location.getParameter("testuser") == null)) {
+            // only store the last user id if the id is not a URL defined test user
+            dataStore.setItem(getLAST_USER_ID(), userId.toString());
+        }
+        dataStore.setItem(getAPP_STATE(userId), appState.name());
     }
 
     public String getAppState(UserId userId) {
