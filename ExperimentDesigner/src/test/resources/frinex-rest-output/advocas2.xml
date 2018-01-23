@@ -12,14 +12,16 @@
         <addPadding/>
         <addPadding/>
         <htmlText featureText="Welkom bij deze woordenschat-test."/>
-        <!--<targetButton featureText="Naar de administratie pagina" target="Admin" />-->
         <addPadding/>
         <addPadding/>
         <targetButton featureText="Naar het experiment" target="Edit_User" />
+        <addPadding/>
+        <addPadding/>
+        <targetButton featureText="Naar de administratie pagina" target="Admin" />
     </presenter>
     <presenter displayOrder="2" menuLabel="Edit User" next="Accord" type="metadata" self="Edit_User" title="">
         <metadataField fieldName="workerId"/>
-        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="&amp;nbsp;">
+        <saveMetadataButton featureText="Volgende" sendData="false" networkErrorMessage="&amp;nbsp;">
             <onSuccess>   
                 <autoNextPresenter/>
             </onSuccess>
@@ -28,6 +30,24 @@
             </onError>      
         </saveMetadataButton>
     </presenter>
+    <!--    <presenter displayOrder="2" menuLabel="Edit User" next="Accord" type="metadata" self="Edit_User" title="">
+        <metadataField fieldName="workerId"/>
+        <saveMetadataButton featureText="Volgende" sendData="false" networkErrorMessage="&amp;nbsp;">
+            <onSuccess>   
+                <sendMetadata>
+                    <onSuccess>
+                        <autoNextPresenter/>
+                    </onSuccess>
+                    <onError>
+                        <autoNextPresenter/>
+                    </onError>
+                </sendMetadata>                
+            </onSuccess>
+            <onError>   
+                <autoNextPresenter/>
+            </onError>      
+        </saveMetadataButton>
+    </presenter>-->
     <presenter displayOrder="3" next="stimuliScreenV1" type="metadata" self="Accord" title="" >
         <centrePage/>
         <htmlText featureText="&lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt;"/>
@@ -107,39 +127,46 @@ Geef voor elk woord met een muisklik aan of jij het woord kent of niet."/>
         </loadStimulus>
     </presenter>
     <presenter displayOrder="7" type="transmission" self="Admin" title="Administratie">
-        <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
-        <addPadding/>
-        <addPadding/>
-        <targetButton featureText="Upload data (if i-net connection was broken)" target="ListParticipants"/>
-    </presenter>
-    <presenter back="Menu" displayOrder="8" menuLabel="Deelnemer lijst" next="UploadParticipant" type="metadata" self="ListParticipants" title="Kiez deelnemer">
-        <selectUserMenu/>
-    </presenter>
-    <presenter displayOrder="9" type="transmission" self="UploadParticipant" title="Upload deelnemer">
         <sendMetadata>
             <onSuccess> 
                 <sendAllData>
                     <onSuccess>
-                        <htmlText featureText="De data zijn geupload"/>
+                        <htmlText featureText="The participant's data are uploaded to the server"/>
                         <addPadding/>
                         <addPadding/>
-                        <eraseUsersDataButton featureText="Delete user data in the browser"/>
+                        <eraseUsersDataButton featureText="Remove the user's data from the browser" target="Admin" />
                         <addPadding/>
                         <addPadding/>
-                        <targetButton featureText="Naar de administratie pagina" target="Admin" />
+                        <targetButton featureText="To the administration page" target="Admin" />
                     </onSuccess>
                     <onError>
                         <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
+                        <addPadding/>
+                        <addPadding/>
                         <targetButton featureText="Retry" target="Admin"/>
+                        <addPadding/>
+                        <addPadding/>
+                        <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
                     </onError>
                 </sendAllData>
             </onSuccess>
             <onError>   
                 <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
+                <addPadding/>
+                <addPadding/>
                 <targetButton featureText="Retry" target="Admin"/>
+                <addPadding/>
+                <addPadding/>
+                <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
             </onError>      
         </sendMetadata>
     </presenter>
+    <presenter back="Menu" displayOrder="8" menuLabel="Deelnemer lijst" next="Admin" type="metadata" self="ListParticipants" title="Kiez deelnemer">
+        <selectUserMenu/>
+        <addPadding/>
+        <addPadding/>
+        <targetButton featureText="To the landing page" target="Menu"/>  
+    </presenter>   
     <presenter back="Menu" displayOrder="20" menuLabel="about" type="debug" self="about" title="about">
         <versionData/>
         <eraseLocalStorageButton/>
