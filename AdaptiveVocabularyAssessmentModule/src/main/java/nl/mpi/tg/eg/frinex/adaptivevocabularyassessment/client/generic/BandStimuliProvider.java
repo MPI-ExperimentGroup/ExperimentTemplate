@@ -131,16 +131,19 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
 
     private HashMap<Long, Integer> generatePercentageBandTable() {
         HashMap<Long, Integer> retVal = new HashMap<Long, Integer>();
-        for (int i = 1; i <= this.numberOfBands; i++) {
-            Long key = this.bandNumberIntoPercentage(i);
-            retVal.put(key, i);
+        //TODO 
+        //-- when experiment finished, add user results inbetween (implementation of grfaiek)
+        //-- remove redundant 40 by formulae
+        Integer value1 = this.percentageIntoBandNumber(1);
+        retVal.put(new Long(1), value1);
+        for (int p = 1; p <= 9; p++) {
+            long percentage = p * 10;
+            Integer value = this.percentageIntoBandNumber(percentage);
+            retVal.put(percentage, value);
+
         }
-        for (long p = 1; p <= 100; p++) {
-            if (!retVal.containsKey(p)) {
-                Integer value = this.percentageIntoBandNumber(p);
-                retVal.put(p, value);
-            }
-        }
+        Integer value99 = this.percentageIntoBandNumber(99);
+        retVal.put(new Long(99), value99);
         return retVal;
     }
 
@@ -618,7 +621,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         empty.append(startColumn).append(" ").append(endColumn);
         empty.append(startColumn).append(" ").append(endColumn);
         empty.append(startColumn).append(" ").append(endColumn);
-        
+
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(startRow);
         stringBuilder.append(startColumn).append("BandNumber").append(endColumn);

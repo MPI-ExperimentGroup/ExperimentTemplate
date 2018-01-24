@@ -371,30 +371,30 @@ public class AdVocAsStimuliProviderTest {
         int expectedBand = stimulus.getCorrectResponses().equals(Constants.WORD) ? Integer.parseInt(this.startBand) : -1;
         assertEquals(expectedBand, bStimulus.getBandNumber());
     }
-    
-     /**
+
+    /**
      * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
      */
     @Test
-    public void testIsCorrectResponse_1() throws Exception{
+    public void testIsCorrectResponse_1() throws Exception {
         this.testIsCorrectResponse("1", "0", "testIsCorrectResponse_1");
 
     }
-    
-     /**
+
+    /**
      * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
      */
     @Test
-    public void testIsCorrectResponse_20() throws Exception{
+    public void testIsCorrectResponse_20() throws Exception {
         this.testIsCorrectResponse("2", "0", "testIsCorrectResponse_20");
 
     }
-    
-     /**
+
+    /**
      * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
      */
     @Test
-    public void testIsCorrectResponse_21() throws Exception{
+    public void testIsCorrectResponse_21() throws Exception {
         this.testIsCorrectResponse("2", "1", "testIsCorrectResponse_21");
 
     }
@@ -790,35 +790,35 @@ public class AdVocAsStimuliProviderTest {
         return provider;
 
     }
-    
+
     /**
      * Test of getCurrentStimulusUniqueId method, of class
      * AdVocAsStimuliProvider.
      */
     @Test
     public void testGetCurrentStimulusUniqueId_1() {
-       this.testGetCurrentStimulusUniqueId("1", "0", "testGetCurrentStimulusUniqueId_1"); 
+        this.testGetCurrentStimulusUniqueId("1", "0", "testGetCurrentStimulusUniqueId_1");
     }
-    
+
     /**
      * Test of getCurrentStimulusUniqueId method, of class
      * AdVocAsStimuliProvider.
      */
     @Test
     public void testGetCurrentStimulusUniqueId_20() {
-       this.testGetCurrentStimulusUniqueId("2", "0", "testGetCurrentStimulusUniqueId_20"); 
+        this.testGetCurrentStimulusUniqueId("2", "0", "testGetCurrentStimulusUniqueId_20");
     }
-    
+
     /**
      * Test of getCurrentStimulusUniqueId method, of class
      * AdVocAsStimuliProvider.
      */
     @Test
     public void testGetCurrentStimulusUniqueId_21() {
-       this.testGetCurrentStimulusUniqueId("2", "1", "testGetCurrentStimulusUniqueId_21"); 
+        this.testGetCurrentStimulusUniqueId("2", "1", "testGetCurrentStimulusUniqueId_21");
     }
 
-   private void testGetCurrentStimulusUniqueId(String numberOfSeries, String type, String info) {
+    private void testGetCurrentStimulusUniqueId(String numberOfSeries, String type, String info) {
         System.out.println(info);
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
         int nOfBands = Integer.parseInt(this.numberOfBands);
@@ -913,36 +913,38 @@ public class AdVocAsStimuliProviderTest {
         provider.initialiseStimuliState("");
 
         HashMap<Long, Integer> percentageTable = provider.getPercentageBandTable();
-        int result1 = percentageTable.get(new Long(1));
-        assertEquals(1, result1);
-        long result2 = percentageTable.get(new Long(100));
-        assertEquals(nOfBands, result2);
-        if (nOfBands == 54) {
-            long result3 = percentageTable.get(new Long(37));
-            assertEquals(20, result3);
-            long result4 = percentageTable.get(new Long(30));
-            assertEquals(16, result4);
-            long result5 = percentageTable.get(new Long(80));
-            assertEquals(43, result5);
-        } else {
-            // add tests for other values of the number of bands
-            assertTrue(false);
+
+        Long one = new Long(1);
+       // which band number correspond to 1 percent of # 54 is 100%?
+        // 54/100 = 0.54 ~ 1
+        assertEquals(new Integer(1), percentageTable.get(one));
+
+        Long nn = new Long(99);
+        // which band number correspond to 99 percent of # 54 is 100%?
+        // 54*0.99 = 53.46 ~ 53
+        assertEquals(new Integer(53), percentageTable.get(nn));
+
+        for (long p = 1; p <= 9; p++) {
+            Long percentage = p * 10;
+            float bnd = ((float) (54*percentage))/ ((float) 100);
+            int roundBnd = Math.round(bnd);
+            assertEquals(new Integer(roundBnd), percentageTable.get(percentage));
         }
 
     }
-    
+
     @Test
     public void testPercentageBandTable_1() {
         this.testPercentageBandTable("1", "0", "testPercentageBandTable_1");
 
     }
-    
+
     @Test
     public void testPercentageBandTable_20() {
         this.testPercentageBandTable("2", "0", "testPercentageBandTable_20");
 
     }
-    
+
     @Test
     public void testPercentageBandTable_21() {
         this.testPercentageBandTable("2", "1", "testPercentageBandTable_21");
@@ -957,7 +959,7 @@ public class AdVocAsStimuliProviderTest {
             this.testRound(prob, "1", "0");
         }
     }
-    
+
     @Test
     public void generalRandomTest2() throws Exception {
         for (int i = 1; i < 11; i++) {
@@ -965,14 +967,14 @@ public class AdVocAsStimuliProviderTest {
             System.out.println("Probabilistic test for 2 rounds, prob of corret answer is " + prob);
             System.out.println("Round 1");
             AdVocAsStimuliProvider provider1 = this.testRound(prob, "2", "0");
-            int score1=provider1.getBandScore();
+            int score1 = provider1.getBandScore();
             System.out.println("Band Score: " + score1);
             System.out.println("Round 2");
             AdVocAsStimuliProvider provider2 = this.testRound(prob, "2", "0");
-            int score2=provider2.getBandScore();
+            int score2 = provider2.getBandScore();
             System.out.println("Band Score: " + score2);
             if (score1 != score2) {
-               System.out.println("Attention. difference between score in consecutive rounds is detected, score 1 and 2 are "+score1+" and "+score2+ " respectively."); 
+                System.out.println("Attention. difference between score in consecutive rounds is detected, score 1 and 2 are " + score1 + " and " + score2 + " respectively.");
             }
             System.out.println("***");
         }
@@ -1052,7 +1054,7 @@ public class AdVocAsStimuliProviderTest {
 
         // checking generating graph
         // first check if the sample set is generated ok
-        HashMap<Integer, String> samples = provider.retrieveSampleWords(provider.getResponseRecord());
+        HashMap<Integer, String> samples = provider.retrieveSampleWords(provider.getResponseRecord(), provider.getWords());
 
         Vocabulary vocab = new Vocabulary(nOfBands, wordsPerBandInSeries);
         AdVocAsStimulus[][] wordArray = ConstantsWords1.WORDS_SERIES[0];
@@ -1068,17 +1070,45 @@ public class AdVocAsStimuliProviderTest {
         }
 
         // now check if the graph sequence for percentage is ok 
-        HashMap<Long, String> graph = provider.generateDiagramSequence(provider.getResponseRecord());
+        HashMap<Long, String> graph = provider.generateDiagramSequence(provider.getResponseRecord(), provider.getPercentageBandTable());
 
-        for (long p = Integer.parseInt(this.startPositionGraph); p <= 100; p = p + 10) {
-            assertTrue(graph.containsKey(p));
-            assertNotNull(graph.get(p));
-            int bandNumber = provider.getPercentageBandTable().get(p);
-            ArrayList<String> words = this.getSpellings(wordsInBands.get(bandNumber - 1));
-            assertTrue(words.contains(graph.get(p)));
+        Integer bandScore = provider.getBandScore();
+
+        Long percentScore = provider.getPercentageScore();
+        assertTrue(graph.containsKey(percentScore));
+        assertNotNull(graph.get(percentScore));
+        ArrayList<String> wordsBS = this.getSpellings(wordsInBands.get(bandScore - 1));
+        assertTrue(wordsBS.contains(graph.get(percentScore)));
+
+        if (percentScore >= 5) {
+            Long one = new Long(1);
+            assertTrue(graph.containsKey(one));
+            assertNotNull(graph.get(one));
+            // which band number correspond to 1 percent of # 54 is 100%?
+            // 54/100 = 0.54 ~ 1
+            ArrayList<String> wordsOnePercent = this.getSpellings(wordsInBands.get(0));
+            assertTrue(wordsOnePercent.contains(graph.get(one)));
         }
-        long percentageScore = provider.getPercentageScore();
-        assertTrue(graph.containsKey(percentageScore));
+
+        if (percentScore < 95) {
+            Long nn = new Long(99);
+            assertTrue(graph.containsKey(nn));
+            assertNotNull(graph.get(nn));
+            // which band number correspond to 99 percent of # 54 is 100%?
+            // 54*0.99 = 53.46 ~ 53
+            ArrayList<String> words99Percent = this.getSpellings(wordsInBands.get(52));
+            assertTrue(words99Percent.contains(graph.get(nn)));
+        }
+
+        for (long p = 1; p <= 9; p++) {
+            Long percentage = p * 10;
+            if (percentScore >= percentage - 5 && percentScore < percentage + 5 && !percentage.equals(percentScore)) {
+                assertFalse(graph.containsKey(percentage)); // the participant score is instead
+            } else {
+                assertTrue(graph.containsKey(percentage));
+            }
+
+        }
 
         return provider;
     }
