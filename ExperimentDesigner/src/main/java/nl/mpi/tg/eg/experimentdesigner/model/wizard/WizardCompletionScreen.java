@@ -110,7 +110,7 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
         }
         onSuccessFeatureList.add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
         onSuccessFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
-        if (storedWizardScreenData.getScreenBoolean(1)) {
+        if (storedWizardScreenData.getScreenBoolean(2) && storedWizardScreenData.getScreenBoolean(1)) {
             onSuccessFeatureList.add(new PresenterFeature(FeatureType.displayCompletionCode, null));
         }
         if (storedWizardScreenData.getScreenText(1) != null) {
