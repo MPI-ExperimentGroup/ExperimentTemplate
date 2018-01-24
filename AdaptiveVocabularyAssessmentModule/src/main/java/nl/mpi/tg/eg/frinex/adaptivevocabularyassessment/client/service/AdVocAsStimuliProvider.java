@@ -261,26 +261,30 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
 
         ArrayList<AdVocAsBookkeepingStimulus> woorden = wordTables.get("words");
         ArrayList<AdVocAsBookkeepingStimulus> nietWoorden = wordTables.get("nonwords");
-        String experimenteeWordTable = this.getHtmlExperimenteeRecords(woorden, null);
-        String experimenteeNonWordTable = this.getHtmlExperimenteeRecords(nietWoorden, null);
+        String experimenteeWordTable = this.getHtmlExperimenteeRecords(woorden, null, "Woorden");
+        String experimenteeNonWordTable = this.getHtmlExperimenteeRecords(nietWoorden, null, "Nep-woorden");
         String experimenteePositionDiagram = this.getHtmlExperimenteePositionDiagram();
 
         htmlStringBuilder.append("<p>Overzicht van uw resultaten:</p>");
         htmlStringBuilder.append("<p>U kent ongeveer <big><big><b>").append(this.getPercentageScore()).append("</b></big></big> &#37; van alle Nederlandse woorden.</p>");
-
-        htmlStringBuilder.append("<br><br><br>");
-        htmlStringBuilder.append("<div style=\"font-size: 14px;text-align: left;\">Groen=Correct herkend, Rood=Niet correct herkend.</div>");
-        htmlStringBuilder.append("<table><tr><td><big>Woorden</big></td><td style=\"padding-left: 5px;\"><big>Nep-woorden</big></td><td style=\"padding-left: 200px;\"></td></tr>");
-        htmlStringBuilder.append("<tr style=\"vertical-align: top;\"><td>").append(experimenteeWordTable).append("</td><td td style=\"padding-left: 5px;\">");
-        htmlStringBuilder.append(experimenteeNonWordTable).append("</td><td style=\"padding-left: 200px;\">");
-        htmlStringBuilder.append(experimenteePositionDiagram).append("</td></tr></table>");
+        
+        
+        String twoColumnTable = this.getHtmlTwoColumnTable(experimenteeWordTable, experimenteeNonWordTable);
+        String capture = "Groen=Correct herkend, Rood=Niet correct herkend";
+        String twoColumnTableWitCapture = this.getHtmlElementWithCapture(twoColumnTable, capture);
+        
+        htmlStringBuilder.append("<table><tr style=\"vertical-align: top;\"><td>");
+        htmlStringBuilder.append(twoColumnTableWitCapture).append("</td>");
+        htmlStringBuilder.append("<td style=\"padding-left: 200px;\">").append(experimenteePositionDiagram).append("</td></tr></table>");
+        
 
         return htmlStringBuilder.toString();
     }
 
-    private String getHtmlExperimenteeRecords(ArrayList<AdVocAsBookkeepingStimulus> atoms, String colour) {
+    private String getHtmlExperimenteeRecords(ArrayList<AdVocAsBookkeepingStimulus> atoms, String colour, String header) {
         StringBuilder htmlStringBuilder = new StringBuilder();
         htmlStringBuilder.append("<table>");
+        htmlStringBuilder.append("<tr><td><big>").append(header).append("</big></td></tr>");
         String colorStyle = "";
         if (colour != null) {
             colorStyle = "style=\"color:" + colour + "\"";
@@ -302,12 +306,30 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
 
         return htmlStringBuilder.toString();
     }
+    
+    private String getHtmlTwoColumnTable(String leftColumn, String rightColumn) {
+        StringBuilder htmlStringBuilder = new StringBuilder();
+        htmlStringBuilder.append("<table>");
+        htmlStringBuilder.append("<tr style=\"vertical-align: top;\"><td>").append(leftColumn).append("</td>");
+        htmlStringBuilder.append("<td style=\"padding-left: 5px;\">").append(rightColumn).append("</td></tr></table>");
+        return htmlStringBuilder.toString();
+    }
+    
+    private String getHtmlElementWithCapture(String element, String capture) {
+        StringBuilder htmlStringBuilder = new StringBuilder();
+        htmlStringBuilder.append("<table>");
+        htmlStringBuilder.append("<tr><td>").append(capture).append("</td></tr>");
+        htmlStringBuilder.append("<tr><td>").append(element).append("</td></tr></table>");
+        return htmlStringBuilder.toString();
+    }
+    
 
     private String getHtmlExperimenteePositionDiagram() {
         StringBuilder htmlStringBuilder = new StringBuilder();
         long perScore = this.getPercentageScore();
         HashMap<Long, String> content = this.generateDiagramSequence(this.responseRecord, this.percentageBandTable);
-        htmlStringBuilder.append("<table frame=\"box\">");
+        //htmlStringBuilder.append("<table frame=\"box\">");
+        htmlStringBuilder.append("<table>");
         htmlStringBuilder.append("<tr><td>PERCENTAGE</td><td></td><td>VOORBEELD woord</td></tr>");
         for (Long key : content.keySet()) {
             htmlStringBuilder.append("<tr>");
