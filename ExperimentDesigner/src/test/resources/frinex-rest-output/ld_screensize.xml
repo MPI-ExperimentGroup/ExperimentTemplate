@@ -364,7 +364,6 @@
         <htmlText featureText="Data will not be collected in this version."/>
         <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;Hartelijk dank voor uw deelname! &lt;br/&gt;&lt;br/&gt;"/>
         <addPadding/>
-        <generateCompletionCode/>
         <addPadding/>
         <htmlText featureText="&lt;br/&gt;Het bovenstaande nummer is het bewijs dat u het experiment heeft voltooid, en is vereist voor het in orde maken van uw vergoeding."/>
         <addPadding/>
