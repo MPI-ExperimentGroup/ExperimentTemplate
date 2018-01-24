@@ -127,29 +127,20 @@ public class GuineaPigProject {
         //            "room_3",
         //            "room_4",
         //            "room_5",
-        String[][][] testList = new String[][][]{
+        String[][][][] testList = new String[][][][]{
             // @todo: all of test, filler and training need to be grouped by test_1 and order by test_1_1, test_1_2, test_1_3 *** change the stimuli to test_1 and code to add the _1 _2 _3 on the screen
             // @todo: test_1 and test_5 for example must never be ajacent, perhaps this can be done with the exisiting adjacency code, by adding a test_x_1 and moving the _1 to code
             //@todo: blank screen with audio 1
             //@todo: videos and audio 2
             //@todo: still of video and audio 3 with touch input can be collected during audio 1 2 and 3, touch input does not cause any action, only the remote can move to the next stimulus
-            {{"Test 1", "zoomToBlock1", "room_1"}, {"test_1",
-                "test_2",
-                "filler_1",}}, {{"Test 2", "zoomToBlock2", "room_2"}, {
-                "test_3",
-                "test_4",
-                "filler_2",}}, {{"Test 3", "zoomToBlock3", "room_3"}, {
-                "test_5",
-                "test_6",
-                "filler_3",}}, {{"Test 4", "zoomToBlock4", "room_4"}, {
-                "test_7",
-                "test_8",
-                "filler_4",}}};
-        String[] trainingList = new String[]{
-            "training_1",
-            "training_2",
-            "training_3",
-            "training_4",};
+            {{{"Test 1", "zoomToBlock1", "room_1"}, {}}, {{"test_1", "adjacency_a"}, {"test_2", "adjacency_b"}, {"filler_1", "filler_1"}}},
+            {{{"Test 2", "zoomToBlock2", "room_2"}, {}},{{"test_3", "adjacency_c"}, {"test_4", "adjacency_d"}, {"filler_2", "filler_2"}}},
+            {{{"Test 3", "zoomToBlock3", "room_3"}, {}},{{"test_5", "adjacency_a"}, {"test_6", "adjacency_b"}, {"filler_3", "filler_3"}}},
+            {{{"Test 4", "zoomToBlock4", "room_4"}, {}},{{"test_7", "adjacency_c"}, {"test_8", "adjacency_d"}, {"filler_4", "filler_4"}}},
+        };
+        String[][] trainingList = new String[][]{
+            {"training_1", "training_1"}, {"training_2", "training_2"}, {"training_3", "training_3"}, {"training_4", "training_4"}
+        };
 
 //        final WizardGridStimulusScreen fillerStimulusScreen = new WizardGridStimulusScreen("fillerScreen", false, fillerList,
 //                new String[]{
@@ -158,13 +149,14 @@ public class GuineaPigProject {
 //        wizardData.addScreen(fillerStimulusScreen);
         final WizardGridStimulusScreen trainingStimulusScreen = new WizardGridStimulusScreen("Training", false, trainingList,
                 null, 1000, false, null, 0, 0, null); // @todo: this screen is in the garden
+        trainingStimulusScreen.setCodeAudio(true);
         trainingStimulusScreen.setBackgroundImage(backgroundImage);
         trainingStimulusScreen.setBackgroundStyle("zoomToGarden");
         wizardData.addScreen(trainingStimulusScreen);
         final WizardMenuScreen textMenuScreen = new WizardMenuScreen("TestMenu", "TestMenu", "TestMenu");
         textMenuScreen.setJumpToRandomScreen(true);
         wizardData.addScreen(textMenuScreen);
-        for (String[][] testSubList : testList) {
+        for (String[][][] testSubList : testList) {
 //            WizardAudioTestScreen testIntroAudio = new WizardAudioTestScreen(testSubList[0][0] + "a", "&nbsp;", "continue button", testSubList[0][2]);
 //            wizardData.addScreen(testIntroAudio);
 //            testIntroAudio.setBackgroundImage(backgroundImage);
@@ -177,11 +169,12 @@ public class GuineaPigProject {
 //            testIntroAudio.setNextHotKey("ENTER");
 //            testIntroAudio.setStyleName("titleBarButton");
 
-            final WizardGridStimulusScreen testStimulusScreen = new WizardGridStimulusScreen(testSubList[0][0], false, testSubList[1],
+            final WizardGridStimulusScreen testStimulusScreen = new WizardGridStimulusScreen(testSubList[0][0][0], false, testSubList[1],
                     null, 1000, false, null, 0, 0, null);
+            testStimulusScreen.setCodeAudio(true);
             testStimulusScreen.setBackgroundImage(backgroundImage);
-            testStimulusScreen.setBackgroundStyle(testSubList[0][1]);
-            testStimulusScreen.setIntroAudio(testSubList[0][2]);
+            testStimulusScreen.setBackgroundStyle(testSubList[0][0][1]);
+            testStimulusScreen.setIntroAudio(testSubList[0][0][2]);
             testStimulusScreen.setIntroAudioDelay(2000);
             textMenuScreen.addTargetScreen(testStimulusScreen);
             wizardData.addScreen(testStimulusScreen);
