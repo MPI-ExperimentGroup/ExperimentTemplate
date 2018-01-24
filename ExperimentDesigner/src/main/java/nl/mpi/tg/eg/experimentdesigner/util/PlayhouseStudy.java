@@ -27,6 +27,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardExistingUserCheckScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardGridStimulusScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSelectUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 
@@ -45,7 +46,7 @@ public class PlayhouseStudy {
 
     public WizardData getWizardData() {
         WizardData wizardData = new WizardData();
-        wizardData.setAppName("ld-screensize");
+        wizardData.setAppName("Playhouse Study");
         wizardData.setShowMenuBar(false);
         wizardData.setTextFontSize(17);
         wizardData.setObfuscateScreenNames(false);
@@ -66,70 +67,63 @@ public class PlayhouseStudy {
         wizardEditUserScreen.setSendData(false);
         wizardEditUserScreen.setOn_Error_Text("Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.");
         wizardEditUserScreen.setCustomFields(new String[]{
-            "workerId:Proefpersoon ID:.'{'3,'}':Voer minimaal drie letters.", // @todo: update the regex to date format and in the future add a calandar popup
+            "workerId:ppcode:.'{'3,'}':Voer minimaal drie letters.", // @todo: update the regex to date format and in the future add a calandar popup
             "datOfBirth:Geboortedatum:[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]:Voer een getal.",
-            "gender:Geslacht:|man|vrouw|anders:."
+            "groupCode:Group Code:[01]?[0-9]?[0-9]:Voer een nummer (000-199).",
+            "experimentVersion:Experiment Version:1|2|3|4:Kies en experiment."
         });
 
         final WizardMenuScreen menuScreen = new WizardMenuScreen("Menu", "Menu", "Menu");
         wizardData.addScreen(menuScreen);
         wizardData.addScreen(wizardEditUserScreen);
         String backgroundImage = "huisje_02.jpg";
-        WizardAudioTestScreen introductionAudio1 = new WizardAudioTestScreen("Introduction 1", "&nbsp;", "continue button", "intro_1");
-        wizardData.addScreen(introductionAudio1);
-        WizardAudioTestScreen introductionAudio2 = new WizardAudioTestScreen("Introduction 2", "&nbsp;", "continue button", "intro_2");
-        wizardData.addScreen(introductionAudio2);
-        WizardAudioTestScreen introductionAudio3 = new WizardAudioTestScreen("Introduction 3", "&nbsp;", "continue button", "intro_3");
-        wizardData.addScreen(introductionAudio3);
-        introductionAudio1.setBackgroundImage(backgroundImage);
-        introductionAudio2.setBackgroundImage(backgroundImage);
-        introductionAudio3.setBackgroundImage(backgroundImage);
-        introductionAudio1.setAutoNext(true);
-        introductionAudio2.setAutoNext(true);
-        introductionAudio3.setAutoNext(true);
-        introductionAudio1.setAudioHotKey("ENTER");
-        introductionAudio2.setAudioHotKey("ENTER");
-        introductionAudio3.setAudioHotKey("ENTER");
-        introductionAudio1.setStyleName("titleBarButton");
-        introductionAudio2.setStyleName("titleBarButton");
-        introductionAudio3.setStyleName("titleBarButton");
-        String[][][] testList = new String[][][]{
-            {{"Test 1", "zoomToBlock1", "room_1"}, {"test_1",
-                "test_2",
-                "filler_1",}}, {{"Test 2", "zoomToBlock2", "room_2"}, {
-                "test_3",
-                "test_4",
-                "filler_2",}}, {{"Test 3", "zoomToBlock3", "room_3"}, {
-                "test_5",
-                "test_6",
-                "filler_3",}}, {{"Test 4", "zoomToBlock4", "room_4"}, {
-                "test_7",
-                "test_8",
-                "filler_4",}}};
-        String[] trainingList = new String[]{
-            "training_1",
-            "training_2",
-            "training_3",
-            "training_4",};
-        final WizardGridStimulusScreen trainingStimulusScreen = new WizardGridStimulusScreen("Training", false, trainingList,
-                null, 1000, false, null, 0, 0, null); // @todo: this screen is in the garden
-        trainingStimulusScreen.setBackgroundImage(backgroundImage);
-        trainingStimulusScreen.setBackgroundStyle("zoomToGarden");
-        wizardData.addScreen(trainingStimulusScreen);
-        final WizardMenuScreen textMenuScreen = new WizardMenuScreen("TestMenu", "TestMenu", "TestMenu");
-        textMenuScreen.setJumpToRandomScreen(true);
-        wizardData.addScreen(textMenuScreen);
-        for (String[][] testSubList : testList) {
-            final WizardGridStimulusScreen testStimulusScreen = new WizardGridStimulusScreen(testSubList[0][0], false, testSubList[1],
+//        WizardAudioTestScreen introductionAudio1 = new WizardAudioTestScreen("Introduction 1", "&nbsp;", "continue button", "intro_1");
+//        wizardData.addScreen(introductionAudio1);
+//        WizardAudioTestScreen introductionAudio2 = new WizardAudioTestScreen("Introduction 2", "&nbsp;", "continue button", "intro_2");
+//        wizardData.addScreen(introductionAudio2);
+//        WizardAudioTestScreen introductionAudio3 = new WizardAudioTestScreen("Introduction 3", "&nbsp;", "continue button", "intro_3");
+//        wizardData.addScreen(introductionAudio3);
+//        introductionAudio1.setBackgroundImage(backgroundImage);
+//        introductionAudio2.setBackgroundImage(backgroundImage);
+//        introductionAudio3.setBackgroundImage(backgroundImage);
+//        introductionAudio1.setAutoNext(true);
+//        introductionAudio2.setAutoNext(true);
+//        introductionAudio3.setAutoNext(true);
+//        introductionAudio1.setAudioHotKey("ENTER");
+//        introductionAudio2.setAudioHotKey("ENTER");
+//        introductionAudio3.setAudioHotKey("ENTER");
+//        introductionAudio1.setStyleName("titleBarButton");
+//        introductionAudio2.setStyleName("titleBarButton");
+//        introductionAudio3.setStyleName("titleBarButton");
+        String[][][][] testList = new String[][][][]{
+            {{{"Practice", "zoomToGarden", "Practice"}, {}},
+            {{"P_01_NL", "P_01_NL.jpg"}, {"P_02_NL", "P_02_NL.jpg"}, {"P_03_Eng", "P_03_Eng.jpg"}, {"P_04_Eng", "P_04_Eng.jpg"}}},
+            {{{"Matching1", "zoomToBlock1", "Matching1"}, {}},
+            {{"M_01", "M_01.jpg"}, {"M_02", "M_02.jpg"}, {"M_03", "M_03.jpg"}, {"M_04", "M_04.jpg"}, {"M_05", "M_05.jpg"}, {"M_06", "M_06.jpg"}}},
+            {{{"Matching2", "zoomToBlock2", "Matching2"}, {}},
+            {{"M_07", "M_07.jpg"}, {"M_08", "M_08.jpg"}, {"M_09", "M_09.jpg"}, {"M_10", "M_10.jpg"}, {"M_11", "M_11.jpg"}, {"M_12", "M_12.jpg"}}},
+            {{{"Test3", "zoomToBlock3", "Test3"}, {}},
+            {{"T_01", "T_01.jpg"}, {"T_02", "T_02.jpg"}, {"T_03", "T_03.jpg"}, {"T_04", "T_04.jpg"}, {"T_05", "T_05.jpg"}, {"T_06", "T_06.jpg"}, {"T_07", "T_07.jpg"}, {"T_08", "T_08.jpg"}, {"T_09", "T_09.jpg"}}},
+            {{{"Test4", "zoomToBlock4", "Test4"}, {}},
+            {{"T_10", "T_10.jpg"}, {"T_11", "T_11.jpg"}, {"T_12", "T_12.jpg"}, {"T_13", "T_13.jpg"}, {"T_14", "T_14.jpg"}, {"T_15", "T_15.jpg"}, {"T_16", "T_16.jpg"}, {"T_17", "T_17.jpg"}, {"T_18", "T_18.jpg"}}},};
+//        final WizardMenuScreen textMenuScreen = new WizardMenuScreen("TestMenu", "TestMenu", "TestMenu");
+//        textMenuScreen.setJumpToRandomScreen(true);
+//        wizardData.addScreen(textMenuScreen);
+        WizardScreen backScreen = wizardEditUserScreen;
+        for (String[][][] testSubList : testList) {
+            final WizardGridStimulusScreen testStimulusScreen = new WizardGridStimulusScreen(testSubList[0][0][0], false, testSubList[1],
                     null, 1000, false, null, 0, 0, null);
             testStimulusScreen.setBackgroundImage(backgroundImage);
-            testStimulusScreen.setBackgroundStyle(testSubList[0][1]);
-            testStimulusScreen.setIntroAudio(testSubList[0][2]);
-            testStimulusScreen.setIntroAudioDelay(2000);
-            textMenuScreen.addTargetScreen(testStimulusScreen);
+            testStimulusScreen.setCodeAudio(false);
+            testStimulusScreen.setBackgroundStyle(testSubList[0][0][1]);
+//            testStimulusScreen.setIntroAudio(testSubList[0][2]);
+//            testStimulusScreen.setIntroAudioDelay(2000);
+//            textMenuScreen.addTargetScreen(testStimulusScreen);
             wizardData.addScreen(testStimulusScreen);
-            testStimulusScreen.setBackWizardScreen(menuScreen);
-            testStimulusScreen.setNextWizardScreen(textMenuScreen);
+            testStimulusScreen.setBackWizardScreen(backScreen);
+            backScreen.setNextWizardScreen(testStimulusScreen);
+            backScreen = testStimulusScreen;
+//            testStimulusScreen.setNextWizardScreen(textMenuScreen);
         }
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, false, true, true, completionScreenText2,
                 "Opnieuw beginnen",
@@ -154,7 +148,7 @@ public class PlayhouseStudy {
         atticScreen.setBackWizardScreen(menuScreen);
         atticScreen.setNextWizardScreen(completionScreen);
         bluetoothInstructionsScreen.setBackWizardScreen(menuScreen);
-        bluetoothInstructionsScreen.setNextWizardScreen(introductionAudio1);
+        bluetoothInstructionsScreen.setNextWizardScreen(existingUserCheckScreen);
 
 //        existingUserCheckScreen.setNextWizardScreen(selectUserScreen);
         selectUserScreen.setBackWizardScreen(existingUserCheckScreen);
@@ -163,20 +157,19 @@ public class PlayhouseStudy {
 //        wizardTextScreen.setNextWizardScreen(wizardEditUserScreen);
 //        agreementScreen.setNextWizardScreen(wizardTextScreen);
 //        wizardTextScreen.setBackWizardScreen(agreementScreen);
-        wizardEditUserScreen.setNextWizardScreen(introductionAudio1);
-        introductionAudio1.setNextWizardScreen(introductionAudio2);
-        introductionAudio2.setNextWizardScreen(introductionAudio3);
-        introductionAudio3.setNextWizardScreen(trainingStimulusScreen);
+//        wizardEditUserScreen.setNextWizardScreen(trainingStimulusScreen);
+//        introductionAudio1.setNextWizardScreen(introductionAudio2);
+//        introductionAudio2.setNextWizardScreen(introductionAudio3);
+//        introductionAudio3.setNextWizardScreen(trainingStimulusScreen);
 //        fillerStimulusScreen.setNextWizardScreen(trainingStimulusScreen);
-        trainingStimulusScreen.setNextWizardScreen(textMenuScreen);
-        introductionAudio1.setBackWizardScreen(menuScreen);
-        introductionAudio2.setBackWizardScreen(menuScreen);
-        introductionAudio3.setBackWizardScreen(menuScreen);
+//        trainingStimulusScreen.setNextWizardScreen(textMenuScreen);
+//        introductionAudio1.setBackWizardScreen(menuScreen);
+//        introductionAudio2.setBackWizardScreen(menuScreen);
+//        introductionAudio3.setBackWizardScreen(menuScreen);
 //        fillerStimulusScreen.setBackWizardScreen(introductionAudio3);
-        trainingStimulusScreen.setBackWizardScreen(menuScreen);
-        textMenuScreen.setBackWizardScreen(menuScreen);
-        textMenuScreen.setNextWizardScreen(atticScreen);
-
+//        trainingStimulusScreen.setBackWizardScreen(menuScreen);
+//        textMenuScreen.setBackWizardScreen(menuScreen);
+//        textMenuScreen.setNextWizardScreen(atticScreen);
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
         wizardAboutScreen.setBackWizardScreen(menuScreen);
         completionScreen.setBackWizardScreen(menuScreen);
@@ -186,6 +179,7 @@ public class PlayhouseStudy {
 
         return wizardData;
     }
+
     public Experiment getExperiment() {
         return wizardController.getExperiment(getWizardData());
     }
