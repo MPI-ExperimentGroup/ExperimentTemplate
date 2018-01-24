@@ -39,6 +39,7 @@ import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
+import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 
 /**
  * @since Jul 16, 2015 11:05:26 AM (creation date)
