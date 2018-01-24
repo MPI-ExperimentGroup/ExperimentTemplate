@@ -7,11 +7,12 @@
         <field controlledMessage="Input at least 3 letters." controlledRegex="['\\'S'\\'s]'{'3,'}'" postName="feedBack" preventServerDuplicates="false" registrationField=""/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Menu" type="menu" self="Menu" title="Menu">
+        <centrePage/>
         <addPadding/>
         <htmlText featureText="&lt;img src=&quot;static/logo-max.gif&quot; hspace=&quot;50&quot;/&gt; &lt;img src=&quot;static/logo-lil.png&quot;/&gt;"/>
         <addPadding/>
         <addPadding/>
-        <htmlText featureText="Welkom bij deze woordenschat-test."/>
+        <htmlText featureText="Welkom bij deze woordenschat test."/>
         <addPadding/>
         <addPadding/>
         <targetButton featureText="Naar het experiment" target="Edit_User" />
@@ -89,7 +90,7 @@ Geef voor elk woord met een muisklik aan of jij het woord kent of niet."/>
                 <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
                 <showStimuliReport/>
                 <addPadding/>
-                <targetButton featureText="Heel goed gedaan. Nu komt de tweede ronde. Click op de button om door te gaan. Veel Succes!" target="stimuliScreenV2"/>
+                <targetButton featureText="Heel goed gedaan. Nu komt de tweede ronde. Klik op de button om door te gaan. Veel Succes!" target="stimuliScreenV2"/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -126,7 +127,7 @@ Geef voor elk woord met een muisklik aan of jij het woord kent of niet."/>
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="7" type="transmission" self="Admin" title="Administratie">
+    <presenter displayOrder="7" type="transmission" self="Admin" title="Administratie" next="ListParticipants">
         <sendMetadata>
             <onSuccess> 
                 <sendAllData>
@@ -134,10 +135,13 @@ Geef voor elk woord met een muisklik aan of jij het woord kent of niet."/>
                         <htmlText featureText="The participant's data are uploaded to the server"/>
                         <addPadding/>
                         <addPadding/>
-                        <eraseUsersDataButton featureText="Remove the user's data from the browser" target="Admin" />
+                        <eraseUsersDataButton featureText="Remove the user's data from the browser" target="ListParticipants" />
                         <addPadding/>
                         <addPadding/>
                         <targetButton featureText="To the administration page" target="Admin" />
+                        <addPadding/>
+                        <addPadding/>
+                        <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
                     </onSuccess>
                     <onError>
                         <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
@@ -161,11 +165,15 @@ Geef voor elk woord met een muisklik aan of jij het woord kent of niet."/>
             </onError>      
         </sendMetadata>
     </presenter>
-    <presenter back="Menu" displayOrder="8" menuLabel="Deelnemer lijst" next="Admin" type="metadata" self="ListParticipants" title="Kiez deelnemer">
+    <presenter back="Menu" displayOrder="8" menuLabel="Deelnemer lijst" type="metadata" self="ListParticipants" title="Kiez deelnemer">
+        <htmlText featureText="The participants which are still in local browser memory:"/>
         <selectUserMenu/>
         <addPadding/>
         <addPadding/>
-        <targetButton featureText="To the landing page" target="Menu"/>  
+        <targetButton featureText="To the landing page" target="Menu"/> 
+        <addPadding/>
+        <addPadding/>
+        <targetButton featureText="To the admin page" target="Admin"/>   
     </presenter>   
     <presenter back="Menu" displayOrder="20" menuLabel="about" type="debug" self="about" title="about">
         <versionData/>
