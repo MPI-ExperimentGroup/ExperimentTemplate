@@ -48,10 +48,10 @@
                 <hasMoreStimulus>
                     <backgroundImage msToNext="0" src="" styleName=""/>
                     <clearPage styleName="fullScreenWidth"/>
-                    <stimulusImage msToNext="250" styleName="borderedVideoLeft">
+                    <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="borderedVideoLeft">
                         <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                             <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
-                            <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayButton">
+                            <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="" styleName="leftOverlayButton">
                                 <disableStimulusButtons/>
                                 <disablePauseTimers/>
                                 <pause msToNext="1000">
@@ -67,8 +67,27 @@
                                 <showStimulus/>
                             </pause>
                         </stimulusAudio>
-                    </stimulusImage>
-                    <htmlText featureText="&amp;nbsp;" styleName="borderedVideoRight"/>
+                    </stimulusCodeImage>
+                    <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="borderedVideoRight">
+                        <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                            <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
+                            <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="" styleName="rightOverlayButton">
+                                <disableStimulusButtons/>
+                                <disablePauseTimers/>
+                                <pause msToNext="1000">
+                                    <clearPage/>
+                                    <backgroundImage msToNext="0" src="P0.png" styleName=""/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                                        <touchInputReportSubmit/>
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </stimulusCodeAudio>
+                                </pause>
+                            </touchInputStimulusButton>
+                            <pause msToNext="3000">
+                                <showStimulus/>
+                            </pause>
+                        </stimulusAudio>
+                    </stimulusCodeImage>
                     <touchInputCaptureStart msToNext="-1" showControls="true"/>
                     <table styleName="titleBarButton">
                         <row>
@@ -103,10 +122,10 @@
                 <hasMoreStimulus>
                     <backgroundImage msToNext="0" src="" styleName=""/>
                     <clearPage styleName="fullScreenWidth"/>
-                    <stimulusImage msToNext="250" styleName="borderedVideoLeft">
+                    <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="borderedVideoLeft">
                         <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                             <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
-                            <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayButton">
+                            <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="" styleName="leftOverlayButton">
                                 <disableStimulusButtons/>
                                 <disablePauseTimers/>
                                 <pause msToNext="1000">
@@ -122,8 +141,27 @@
                                 <showStimulus/>
                             </pause>
                         </stimulusAudio>
-                    </stimulusImage>
-                    <htmlText featureText="&amp;nbsp;" styleName="borderedVideoRight"/>
+                    </stimulusCodeImage>
+                    <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="borderedVideoRight">
+                        <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                            <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
+                            <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="" styleName="rightOverlayButton">
+                                <disableStimulusButtons/>
+                                <disablePauseTimers/>
+                                <pause msToNext="1000">
+                                    <clearPage/>
+                                    <backgroundImage msToNext="0" src="P0.png" styleName=""/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                                        <touchInputReportSubmit/>
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </stimulusCodeAudio>
+                                </pause>
+                            </touchInputStimulusButton>
+                            <pause msToNext="3000">
+                                <showStimulus/>
+                            </pause>
+                        </stimulusAudio>
+                    </stimulusCodeImage>
                     <touchInputCaptureStart msToNext="-1" showControls="true"/>
                     <table styleName="titleBarButton">
                         <row>
@@ -158,10 +196,10 @@
                 <hasMoreStimulus>
                     <backgroundImage msToNext="0" src="" styleName=""/>
                     <clearPage styleName="fullScreenWidth"/>
-                    <stimulusImage msToNext="250" styleName="borderedVideoLeft">
+                    <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="borderedVideoLeft">
                         <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                             <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
-                            <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayButton">
+                            <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="" styleName="leftOverlayButton">
                                 <disableStimulusButtons/>
                                 <disablePauseTimers/>
                                 <pause msToNext="1000">
@@ -177,8 +215,27 @@
                                 <showStimulus/>
                             </pause>
                         </stimulusAudio>
-                    </stimulusImage>
-                    <htmlText featureText="&amp;nbsp;" styleName="borderedVideoRight"/>
+                    </stimulusCodeImage>
+                    <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="borderedVideoRight">
+                        <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                            <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
+                            <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="" styleName="rightOverlayButton">
+                                <disableStimulusButtons/>
+                                <disablePauseTimers/>
+                                <pause msToNext="1000">
+                                    <clearPage/>
+                                    <backgroundImage msToNext="0" src="P0.png" styleName=""/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                                        <touchInputReportSubmit/>
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </stimulusCodeAudio>
+                                </pause>
+                            </touchInputStimulusButton>
+                            <pause msToNext="3000">
+                                <showStimulus/>
+                            </pause>
+                        </stimulusAudio>
+                    </stimulusCodeImage>
                     <touchInputCaptureStart msToNext="-1" showControls="true"/>
                     <table styleName="titleBarButton">
                         <row>
@@ -213,10 +270,10 @@
                 <hasMoreStimulus>
                     <backgroundImage msToNext="0" src="" styleName=""/>
                     <clearPage styleName="fullScreenWidth"/>
-                    <stimulusImage msToNext="250" styleName="borderedVideoLeft">
+                    <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="borderedVideoLeft">
                         <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                             <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
-                            <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayButton">
+                            <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="" styleName="leftOverlayButton">
                                 <disableStimulusButtons/>
                                 <disablePauseTimers/>
                                 <pause msToNext="1000">
@@ -232,8 +289,27 @@
                                 <showStimulus/>
                             </pause>
                         </stimulusAudio>
-                    </stimulusImage>
-                    <htmlText featureText="&amp;nbsp;" styleName="borderedVideoRight"/>
+                    </stimulusCodeImage>
+                    <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="borderedVideoRight">
+                        <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                            <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
+                            <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="" styleName="rightOverlayButton">
+                                <disableStimulusButtons/>
+                                <disablePauseTimers/>
+                                <pause msToNext="1000">
+                                    <clearPage/>
+                                    <backgroundImage msToNext="0" src="P0.png" styleName=""/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                                        <touchInputReportSubmit/>
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </stimulusCodeAudio>
+                                </pause>
+                            </touchInputStimulusButton>
+                            <pause msToNext="3000">
+                                <showStimulus/>
+                            </pause>
+                        </stimulusAudio>
+                    </stimulusCodeImage>
                     <touchInputCaptureStart msToNext="-1" showControls="true"/>
                     <table styleName="titleBarButton">
                         <row>
@@ -268,10 +344,10 @@
                 <hasMoreStimulus>
                     <backgroundImage msToNext="0" src="" styleName=""/>
                     <clearPage styleName="fullScreenWidth"/>
-                    <stimulusImage msToNext="250" styleName="borderedVideoLeft">
+                    <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="borderedVideoLeft">
                         <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                             <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
-                            <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayButton">
+                            <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="" styleName="leftOverlayButton">
                                 <disableStimulusButtons/>
                                 <disablePauseTimers/>
                                 <pause msToNext="1000">
@@ -287,8 +363,27 @@
                                 <showStimulus/>
                             </pause>
                         </stimulusAudio>
-                    </stimulusImage>
-                    <htmlText featureText="&amp;nbsp;" styleName="borderedVideoRight"/>
+                    </stimulusCodeImage>
+                    <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="borderedVideoRight">
+                        <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                            <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
+                            <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="" styleName="rightOverlayButton">
+                                <disableStimulusButtons/>
+                                <disablePauseTimers/>
+                                <pause msToNext="1000">
+                                    <clearPage/>
+                                    <backgroundImage msToNext="0" src="P0.png" styleName=""/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                                        <touchInputReportSubmit/>
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </stimulusCodeAudio>
+                                </pause>
+                            </touchInputStimulusButton>
+                            <pause msToNext="3000">
+                                <showStimulus/>
+                            </pause>
+                        </stimulusAudio>
+                    </stimulusCodeImage>
                     <touchInputCaptureStart msToNext="-1" showControls="true"/>
                     <table styleName="titleBarButton">
                         <row>
