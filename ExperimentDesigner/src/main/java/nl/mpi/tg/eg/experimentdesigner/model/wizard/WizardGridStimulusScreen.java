@@ -377,22 +377,22 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             rightOverlayButton.getPresenterFeatureList().add(responseAudio2);
             stimulusRelatedTags.getPresenterFeatureList().add(rightOverlayButton);
         } else {
-            final PresenterFeature stimulusImage = new PresenterFeature(FeatureType.stimulusImage, null);
-            stimulusImage.addFeatureAttributes(FeatureAttribute.msToNext, "250");
-            stimulusImage.addFeatureAttributes(FeatureAttribute.styleName, "borderedVideoLeft");
-
-            final PresenterFeature stimulusAudio = new PresenterFeature(FeatureType.stimulusAudio, null);
-            stimulusAudio.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
-            stimulusAudio.addFeatureAttributes(FeatureAttribute.msToNext, "0");
-            stimulusImage.getPresenterFeatureList().add(stimulusAudio);
-
-            final PresenterFeature backgroundImage = new PresenterFeature(FeatureType.backgroundImage, null);
-            backgroundImage.addFeatureAttributes(FeatureAttribute.styleName, "backgroundHighlight");
-            backgroundImage.addFeatureAttributes(FeatureAttribute.msToNext, "0");
-            backgroundImage.addFeatureAttributes(FeatureAttribute.src, "");
-            stimulusAudio.getPresenterFeatureList().add(backgroundImage);
-
-            hasMoreStimulusFeature.getPresenterFeatureList().add(stimulusImage);
+            for (String[] additionString : new String[][]{{"<code>_left.jpg", "borderedVideoLeft", "Left Overlay Button", "Left", "leftOverlayButton"}, {"<code>_right.jpg", "borderedVideoRight", "Right Overlay Button", "Right", "rightOverlayButton"}}) {
+                final PresenterFeature stimulusImage = hasMoreStimulusFeature.addFeature(FeatureType.stimulusCodeImage, null, "250", additionString[0], additionString[1]);
+                final PresenterFeature stimulusAudio = stimulusImage.addFeature(FeatureType.stimulusAudio, null, "0", Boolean.toString(false));
+                stimulusAudio.addFeature(FeatureType.backgroundImage, null, "0", "", "backgroundHighlight");
+                final PresenterFeature leftOverlayButton = stimulusAudio.addFeature(FeatureType.touchInputStimulusButton, additionString[2], additionString[3], "", additionString[4]);
+                leftOverlayButton.addFeature(FeatureType.disableStimulusButtons, null);
+                leftOverlayButton.addFeature(FeatureType.disablePauseTimers, null);
+                final PresenterFeature pause = leftOverlayButton.addFeature(FeatureType.pause, null, "1000");
+                pause.addFeature(FeatureType.clearPage, null);
+                pause.addFeature(FeatureType.backgroundImage, null, "0", "P0.png", "");
+                final PresenterFeature stimulusCodeAudio = pause.addFeature(FeatureType.stimulusCodeAudio, null, "500", "Correct", "false");
+                stimulusCodeAudio.addFeature(FeatureType.touchInputReportSubmit, null);
+                stimulusCodeAudio.addFeature(FeatureType.nextStimulus, null, "false");
+                final PresenterFeature pause2 = stimulusAudio.addFeature(FeatureType.pause, null, "3000");
+                pause2.addFeature(FeatureType.showStimulus, null);
+            }
             stimulusRelatedTags = hasMoreStimulusFeature;
 
 //                                        <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayButton">
@@ -410,24 +410,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 //                            <pause msToNext="3000">
 //                                <showStimulus/>
 //                            </pause>
-            final PresenterFeature leftOverlayButton = new PresenterFeature(FeatureType.touchInputStimulusButton, "Left Overlay Button");
-            leftOverlayButton.addFeatureAttributes(FeatureAttribute.eventTag, "Left");
-            leftOverlayButton.addFeatureAttributes(FeatureAttribute.styleName, "leftOverlayButton");
-            leftOverlayButton.getPresenterFeatureList().add(new PresenterFeature(FeatureType.disableStimulusButtons, null));
-            leftOverlayButton.getPresenterFeatureList().add(new PresenterFeature(FeatureType.disablePauseTimers, null));
-            final PresenterFeature pause = leftOverlayButton.addFeature(FeatureType.pause, null, "1000");
-            pause.addFeature(FeatureType.clearPage, null);
-            pause.addFeature(FeatureType.backgroundImage, null, "0", "P0.png", "");
-            final PresenterFeature stimulusCodeAudio = pause.addFeature(FeatureType.stimulusCodeAudio, null, "500", "Correct", "false");
-
-            stimulusCodeAudio.addFeature(FeatureType.touchInputReportSubmit, null);
-            stimulusCodeAudio.addFeature(FeatureType.nextStimulus, null, "false");
-//            leftOverlayButton.getPresenterFeatureList().add(pause);
-            stimulusAudio.getPresenterFeatureList().add(leftOverlayButton);
-            final PresenterFeature pause2 = stimulusAudio.addFeature(FeatureType.pause, null, "3000");
-            pause2.addFeature(FeatureType.showStimulus, null);
-
-            hasMoreStimulusFeature.addFeature(FeatureType.htmlText, "&nbsp;", "borderedVideoRight");
+//            hasMoreStimulusFeature.addFeature(FeatureType.htmlText, "&nbsp;");
             hasMoreStimulusFeature.addFeature(FeatureType.touchInputCaptureStart, null, "true", "-1");
 //            final PresenterFeature rightOverlayButton = new PresenterFeature(FeatureType.touchInputStimulusButton, "Right Overlay Button");
 //            rightOverlayButton.addFeatureAttributes(FeatureAttribute.eventTag, "Right");
