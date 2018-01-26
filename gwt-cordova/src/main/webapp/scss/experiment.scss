@@ -350,6 +350,17 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
     position: fixed;
 }
 
+table.stimulusContainerTab {
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    min-height: 700px;
+}
+
+.stimulusContainerCol {
+    width: 100%;
+}
+
 .backgroundHighlight {
     // added for playhouse_study
     background: #90ee9024;
