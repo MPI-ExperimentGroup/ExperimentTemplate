@@ -12,6 +12,10 @@
         <htmlText featureText="&lt;div style=&quot;width:100&#37;&quot; &gt; &lt;img src=&quot;static/logo-max.gif&quot; align=&quot;left&quot; /&gt; &lt;img src=&quot;static/logo-lil.png&quot; align=&quot;right&quot;/&gt; &lt;/div&gt;"/>
         <addPadding/>
         <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
         <htmlText featureText="Welkom bij deze woordenschat test."/>
         <addPadding/>
         <addPadding/>
@@ -76,12 +80,19 @@ Geef voor elk woord met een muisklik aan of jij het woord kent of niet."/>
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
+              
                 <!--                <showStimulusProgress/>-->
-                <stimulusLabel styleName="groupMessageLabel"/>
-                <addPadding/>
-                <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                    <nextStimulus repeatIncorrect="false"/>
-                </stimulusRatingButton>
+                <table styleName="stimulusContainerTab">
+                    <row>
+                        <column styleName="stimulusContainerCol"> 
+                            <stimulusLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
+                            <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
+                                <nextStimulus repeatIncorrect="false"/>
+                            </stimulusRatingButton>
+                        </column>
+                    </row>
+                </table>
             </hasMoreStimulus>
             <endOfStimulus>
                 <centrePage/>
@@ -105,11 +116,17 @@ Geef voor elk woord met een muisklik aan of jij het woord kent of niet."/>
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
-                <stimulusLabel styleName="groupMessageLabel"/>
-                <addPadding/>
-                <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                    <nextStimulus repeatIncorrect="false"/>
-                </stimulusRatingButton>
+                <table styleName="stimulusContainerTab">
+                    <row>
+                        <column styleName="stimulusContainerCol"> 
+                            <stimulusLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
+                            <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
+                                <nextStimulus repeatIncorrect="false"/>
+                            </stimulusRatingButton>
+                        </column>
+                    </row>
+                </table>
             </hasMoreStimulus>
             <endOfStimulus>
                 <centrePage/>
