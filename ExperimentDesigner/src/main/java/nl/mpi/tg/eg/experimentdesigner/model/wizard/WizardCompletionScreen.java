@@ -117,9 +117,12 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
             onSuccessFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
             onSuccessFeatureList.add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(1)));
         }
-        if (storedWizardScreenData.getScreenBoolean(0)) {
+        if (storedWizardScreenData.getScreenBoolean(2) && storedWizardScreenData.getScreenBoolean(0)) {
             onSuccessFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
-            onSuccessFeatureList.add(new PresenterFeature(FeatureType.eraseUsersDataButton, storedWizardScreenData.getNextButton()[1]));
+            // this erase data should not be shown unless the data has been sent, therefore we  check ScreenBoolean(2) here
+            final PresenterFeature eraseUserButton = new PresenterFeature(FeatureType.eraseUsersDataButton, storedWizardScreenData.getNextButton()[1]);
+            onSuccessFeatureList.add(eraseUserButton);
+            eraseUserButton.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getNextWizardScreenData().getScreenTag());
         }
         if (storedWizardScreenData.getScreenBoolean(3)) {
             onSuccessFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
