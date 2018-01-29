@@ -46,6 +46,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         setCodeAudio(false);
         setSdCardStimuli(false);
         setIntroAudio(null);
+        setRewardImage(null);
         setIntroAudioDelay(0);
         this.wizardScreenData.setButtonLabelEventTag("");
         this.wizardScreenData.setCentreScreen(true);
@@ -62,6 +63,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         setSdCardStimuli(false);
         setCodeAudio(false);
         setIntroAudio(null);
+        setRewardImage(null);
         setIntroAudioDelay(0);
         this.wizardScreenData.setStimulusCodeFormat(codeFormat);
         this.wizardScreenData.setStimuliCount(maxStimuli);
@@ -110,6 +112,14 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenText(2, initialAudio);
     }
 
+    private String getRewardImage(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(3);
+    }
+
+    final public void setRewardImage(String rewardImage) {
+        this.wizardScreenData.setScreenText(3, rewardImage);
+    }
+
     private String getBackgroundStyle(WizardScreenData storedWizardScreenData) {
         return storedWizardScreenData.getScreenText(1);
     }
@@ -149,7 +159,8 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         return new String[]{
             "BackgroundImage",
             "BackgroundStyle",
-            "IntroAudio"
+            "IntroAudio",
+            "RewardImage"
         }[index];
     }
 
@@ -386,7 +397,9 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                 leftOverlayButton.addFeature(FeatureType.disablePauseTimers, null);
                 final PresenterFeature pause = leftOverlayButton.addFeature(FeatureType.pause, null, "1000");
                 pause.addFeature(FeatureType.clearPage, null);
-                pause.addFeature(FeatureType.backgroundImage, null, "0", "P0.png", "");
+                if (getRewardImage(storedWizardScreenData) != null) {
+                    pause.addFeature(FeatureType.backgroundImage, null, "0", getRewardImage(storedWizardScreenData), "");
+                }
                 final PresenterFeature stimulusCodeAudio = pause.addFeature(FeatureType.stimulusCodeAudio, null, "500", "Correct", "false");
                 stimulusCodeAudio.addFeature(FeatureType.touchInputReportSubmit, null);
                 stimulusCodeAudio.addFeature(FeatureType.nextStimulus, null, "false");
@@ -411,7 +424,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 //                                <showStimulus/>
 //                            </pause>
 //            hasMoreStimulusFeature.addFeature(FeatureType.htmlText, "&nbsp;");
-            hasMoreStimulusFeature.addFeature(FeatureType.touchInputCaptureStart, null, "true", "-1");
+            hasMoreStimulusFeature.addFeature(FeatureType.touchInputCaptureStart, null, "false", "-1");
 //            final PresenterFeature rightOverlayButton = new PresenterFeature(FeatureType.touchInputStimulusButton, "Right Overlay Button");
 //            rightOverlayButton.addFeatureAttributes(FeatureAttribute.eventTag, "Right");
 //            rightOverlayButton.addFeatureAttributes(FeatureAttribute.styleName, "rightOverlayButton");
