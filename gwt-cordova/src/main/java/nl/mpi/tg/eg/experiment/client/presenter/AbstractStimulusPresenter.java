@@ -982,7 +982,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void stimulusCodeImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, String codeFormat, TimedStimulusListener timedStimulusListener) {
+//    protected void stimulusCodeImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, String codeFormat, TimedStimulusListener timedStimulusListener) {
+    protected void stimulusCodeImage(final String styleName, int postLoadMs, String codeFormat, TimedStimulusListener timedStimulusListener) {
         final String formattedCode = codeFormat.replace("<code>", stimulusProvider.getCurrentStimulus().getCode());
         final String uniqueId = stimulusProvider.getCurrentStimulus().getUniqueId();
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeImage", formattedCode, duration.elapsedMillis());
@@ -992,7 +993,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "StimulusCodeImageShown", uniqueId, formattedCode, duration.elapsedMillis());
             }
         };
-        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + formattedCode), percentOfPage, maxHeight, maxWidth, (animateType.equals(AnimateTypes.bounce)) ? "bounceAnimation" : null, null, postLoadMs, shownStimulusListener, timedStimulusListener, null);
+        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + formattedCode), styleName, postLoadMs, shownStimulusListener, timedStimulusListener, null);
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
     }
 
@@ -1058,7 +1059,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     public void touchInputStimulusButton(final PresenterEventListner presenterListerner, final String eventTag, final String styleName, final String imagePath) {
         final StimulusButton buttonItem;
-        if (imagePath == null) {
+        if (imagePath == null || imagePath.isEmpty()) {
             buttonItem = ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName);
         } else {
             buttonItem = ((ComplexView) simpleView).addImageButton(presenterListerner, UriUtils.fromString(serviceLocations.staticFilesUrl() + imagePath), styleName, true);
