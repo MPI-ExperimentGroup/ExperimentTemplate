@@ -148,6 +148,7 @@ public abstract class SentenceCompletion {
         wizardTextScreen.setNextWizardScreen(wizardEditUserScreen);
         agreementScreen.setNextWizardScreen(wizardTextScreen);
         wizardEditUserScreen.setNextWizardScreen(list1234Screen);
+        completionScreen.setNextWizardScreen(wizardTextScreen);
 
         wizardEditUserScreen.setBackWizardScreen(wizardTextScreen);
         wizardTextScreen.setBackWizardScreen(agreementScreen);
