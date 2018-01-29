@@ -101,6 +101,7 @@ public class HRExperiment01 {
         agreementScreen.setNextWizardScreen(wizardTextScreen);
         wizardEditUserScreen.setNextWizardScreen(list1234Screen);
         list1234Screen.setNextWizardScreen(completionScreen);
+        completionScreen.setNextWizardScreen(wizardTextScreen);
         return wizardData;
     }
 
