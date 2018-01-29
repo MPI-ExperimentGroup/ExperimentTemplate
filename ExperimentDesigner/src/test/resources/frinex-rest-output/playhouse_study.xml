@@ -56,7 +56,7 @@
                                 <disablePauseTimers/>
                                 <pause msToNext="1000">
                                     <clearPage/>
-                                    <backgroundImage msToNext="0" src="P0.png" styleName=""/>
+                                    <backgroundImage msToNext="0" src="P_00.jpg" styleName=""/>
                                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                                         <touchInputReportSubmit/>
                                         <nextStimulus repeatIncorrect="false"/>
@@ -76,7 +76,7 @@
                                 <disablePauseTimers/>
                                 <pause msToNext="1000">
                                     <clearPage/>
-                                    <backgroundImage msToNext="0" src="P0.png" styleName=""/>
+                                    <backgroundImage msToNext="0" src="P_00.jpg" styleName=""/>
                                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                                         <touchInputReportSubmit/>
                                         <nextStimulus repeatIncorrect="false"/>
@@ -88,7 +88,7 @@
                             </pause>
                         </stimulusAudio>
                     </stimulusCodeImage>
-                    <touchInputCaptureStart msToNext="-1" showControls="true"/>
+                    <touchInputCaptureStart msToNext="-1" showControls="false"/>
                     <table styleName="titleBarButton">
                         <row>
                             <column>
@@ -130,7 +130,6 @@
                                 <disablePauseTimers/>
                                 <pause msToNext="1000">
                                     <clearPage/>
-                                    <backgroundImage msToNext="0" src="P0.png" styleName=""/>
                                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                                         <touchInputReportSubmit/>
                                         <nextStimulus repeatIncorrect="false"/>
@@ -150,7 +149,6 @@
                                 <disablePauseTimers/>
                                 <pause msToNext="1000">
                                     <clearPage/>
-                                    <backgroundImage msToNext="0" src="P0.png" styleName=""/>
                                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                                         <touchInputReportSubmit/>
                                         <nextStimulus repeatIncorrect="false"/>
@@ -162,7 +160,7 @@
                             </pause>
                         </stimulusAudio>
                     </stimulusCodeImage>
-                    <touchInputCaptureStart msToNext="-1" showControls="true"/>
+                    <touchInputCaptureStart msToNext="-1" showControls="false"/>
                     <table styleName="titleBarButton">
                         <row>
                             <column>
@@ -204,7 +202,6 @@
                                 <disablePauseTimers/>
                                 <pause msToNext="1000">
                                     <clearPage/>
-                                    <backgroundImage msToNext="0" src="P0.png" styleName=""/>
                                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                                         <touchInputReportSubmit/>
                                         <nextStimulus repeatIncorrect="false"/>
@@ -224,7 +221,6 @@
                                 <disablePauseTimers/>
                                 <pause msToNext="1000">
                                     <clearPage/>
-                                    <backgroundImage msToNext="0" src="P0.png" styleName=""/>
                                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                                         <touchInputReportSubmit/>
                                         <nextStimulus repeatIncorrect="false"/>
@@ -236,7 +232,7 @@
                             </pause>
                         </stimulusAudio>
                     </stimulusCodeImage>
-                    <touchInputCaptureStart msToNext="-1" showControls="true"/>
+                    <touchInputCaptureStart msToNext="-1" showControls="false"/>
                     <table styleName="titleBarButton">
                         <row>
                             <column>
@@ -278,7 +274,6 @@
                                 <disablePauseTimers/>
                                 <pause msToNext="1000">
                                     <clearPage/>
-                                    <backgroundImage msToNext="0" src="P0.png" styleName=""/>
                                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                                         <touchInputReportSubmit/>
                                         <nextStimulus repeatIncorrect="false"/>
@@ -298,7 +293,6 @@
                                 <disablePauseTimers/>
                                 <pause msToNext="1000">
                                     <clearPage/>
-                                    <backgroundImage msToNext="0" src="P0.png" styleName=""/>
                                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                                         <touchInputReportSubmit/>
                                         <nextStimulus repeatIncorrect="false"/>
@@ -310,7 +304,7 @@
                             </pause>
                         </stimulusAudio>
                     </stimulusCodeImage>
-                    <touchInputCaptureStart msToNext="-1" showControls="true"/>
+                    <touchInputCaptureStart msToNext="-1" showControls="false"/>
                     <table styleName="titleBarButton">
                         <row>
                             <column>
@@ -352,7 +346,6 @@
                                 <disablePauseTimers/>
                                 <pause msToNext="1000">
                                     <clearPage/>
-                                    <backgroundImage msToNext="0" src="P0.png" styleName=""/>
                                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                                         <touchInputReportSubmit/>
                                         <nextStimulus repeatIncorrect="false"/>
@@ -372,7 +365,6 @@
                                 <disablePauseTimers/>
                                 <pause msToNext="1000">
                                     <clearPage/>
-                                    <backgroundImage msToNext="0" src="P0.png" styleName=""/>
                                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                                         <touchInputReportSubmit/>
                                         <nextStimulus repeatIncorrect="false"/>
@@ -384,7 +376,7 @@
                             </pause>
                         </stimulusAudio>
                     </stimulusCodeImage>
-                    <touchInputCaptureStart msToNext="-1" showControls="true"/>
+                    <touchInputCaptureStart msToNext="-1" showControls="false"/>
                     <table styleName="titleBarButton">
                         <row>
                             <column>
