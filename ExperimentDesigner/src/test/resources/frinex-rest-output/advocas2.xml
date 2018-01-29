@@ -96,12 +96,15 @@ Geef voor elk woord met een muisklik aan of jij het woord kent of niet."/>
             </hasMoreStimulus>
             <endOfStimulus>
                 <centrePage/>
+                <targetButton featureText="Heel goed gedaan. Nu komt de tweede ronde. Klik op de button om door te gaan. Veel Succes!" target="stimuliScreenV2"/>
+                <addPadding/>
                 <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
                 <sendStimuliReport type="fast_track" separator=";" headerKey="row000000"/>
                 <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
                 <showStimuliReport/>
                 <addPadding/>
                 <targetButton featureText="Heel goed gedaan. Nu komt de tweede ronde. Klik op de button om door te gaan. Veel Succes!" target="stimuliScreenV2"/>
+                <addPadding/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -130,6 +133,8 @@ Geef voor elk woord met een muisklik aan of jij het woord kent of niet."/>
             </hasMoreStimulus>
             <endOfStimulus>
                 <centrePage/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
                 <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
                 <sendStimuliReport type="fast_track" separator=";" headerKey="row000000"/>
                 <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
@@ -137,6 +142,7 @@ Geef voor elk woord met een muisklik aan of jij het woord kent of niet."/>
                 <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
                 <addPadding/>
                 <targetButton featureText="Naar de administratie pagina" target="Admin"/>
+                <addPadding/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
