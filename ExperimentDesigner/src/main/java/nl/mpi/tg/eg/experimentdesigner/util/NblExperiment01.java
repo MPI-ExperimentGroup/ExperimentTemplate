@@ -101,11 +101,10 @@ public class NblExperiment01 {
         agreementScreen.setNextWizardScreen(wizardTextScreen);
         wizardEditUserScreen.setNextWizardScreen(list1234Screen);
         list1234Screen.setNextWizardScreen(completionScreen);
-
+        completionScreen.setNextWizardScreen(agreementScreen);
         wizardEditUserScreen.setBackWizardScreen(wizardTextScreen);
         wizardTextScreen.setBackWizardScreen(agreementScreen);
         list1234Screen.setBackWizardScreen(wizardEditUserScreen);
-        //completionScreen.setBackWizardScreen(list1234Screen);
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
         wizardAboutScreen.setBackWizardScreen(wizardEditUserScreen);
         wizardData.addScreen(wizardAboutScreen);
