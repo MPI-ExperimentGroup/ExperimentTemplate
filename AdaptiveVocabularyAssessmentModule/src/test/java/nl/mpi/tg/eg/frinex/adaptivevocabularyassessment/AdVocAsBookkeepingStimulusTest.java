@@ -18,7 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsBookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Vocabulary;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Vocabulary;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsStimulus;
 import org.junit.After;
 import org.junit.AfterClass;

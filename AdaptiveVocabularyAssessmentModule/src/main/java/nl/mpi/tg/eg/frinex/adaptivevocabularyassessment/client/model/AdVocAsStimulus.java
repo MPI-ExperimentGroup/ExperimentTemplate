@@ -18,7 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model;
 
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Vocabulary;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Vocabulary;
 
 /**
  * @since Oct 27, 2017 2:13:03 PM (creation date)
