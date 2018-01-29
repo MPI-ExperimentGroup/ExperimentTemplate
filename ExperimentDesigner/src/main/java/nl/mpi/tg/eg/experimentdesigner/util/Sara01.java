@@ -848,6 +848,7 @@ public class Sara01 {
         wizardAudioTestScreen.setNextWizardScreen(randomStimulusScreenP);
         randomStimulusScreenP.setNextWizardScreen(randomStimulusScreenE);
         randomStimulusScreenE.setNextWizardScreen(completionScreen);
+        completionScreen.setNextWizardScreen(agreementScreen);
 //                        completionScreen
         return wizardData;
     }
