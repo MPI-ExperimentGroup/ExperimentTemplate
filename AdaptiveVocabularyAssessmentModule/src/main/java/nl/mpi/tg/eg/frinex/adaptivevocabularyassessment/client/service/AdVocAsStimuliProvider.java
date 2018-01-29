@@ -266,6 +266,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         String experimenteePositionDiagram = this.getHtmlExperimenteePositionDiagram();
 
         htmlStringBuilder.append("<p>Overzicht van uw resultaten:</p>");
+        htmlStringBuilder.append("<p><small>(Scroll om volledig resultaten te bekijken als dat nodig is.)</small></p>");
         htmlStringBuilder.append("<p>U kent ongeveer <big><big><b>").append(this.getPercentageScore()).append("</b></big></big> &#37; van alle Nederlandse woorden.</p>");
         
         
