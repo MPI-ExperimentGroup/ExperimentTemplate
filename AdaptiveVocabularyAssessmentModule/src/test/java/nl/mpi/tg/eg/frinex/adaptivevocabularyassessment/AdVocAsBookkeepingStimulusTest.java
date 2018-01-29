@@ -18,8 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsBookkeepingStimulus;
-import java.util.ArrayList;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Vocabulary;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -60,7 +59,7 @@ public class AdVocAsBookkeepingStimulusTest {
     public void testGetSpelling() {
         System.out.println("getSpelling");
         //AdVocAsAtomStimulus(String uniqueId, String label, String correctResponses, int bandNumber)
-        AdVocAsStimulus pureStimulus = new AdVocAsStimulus("test_"+System.currentTimeMillis(), "test-spelling", Constants.WORD, 37);
+        AdVocAsStimulus pureStimulus = new AdVocAsStimulus("test_"+System.currentTimeMillis(), "test-spelling", Vocabulary.WORD, 37);
         AdVocAsBookkeepingStimulus instance = new AdVocAsBookkeepingStimulus(pureStimulus);
         String expResult = "test-spelling";
         String result = instance.getLabel();
@@ -74,7 +73,7 @@ public class AdVocAsBookkeepingStimulusTest {
     @Test
     public void testGetBandNumber() {
         System.out.println("getBandNumber");
-        AdVocAsStimulus pureStimulus = new AdVocAsStimulus("test_"+System.currentTimeMillis(), "test-spelling", Constants.WORD, 37);
+        AdVocAsStimulus pureStimulus = new AdVocAsStimulus("test_"+System.currentTimeMillis(), "test-spelling", Vocabulary.WORD, 37);
         AdVocAsBookkeepingStimulus instance = new AdVocAsBookkeepingStimulus(pureStimulus);
         int result = instance.getBandNumber();
         assertEquals(37, result);
@@ -87,7 +86,7 @@ public class AdVocAsBookkeepingStimulusTest {
     @Test
     public void testGetReaction() {
         System.out.println("getReaction");
-        AdVocAsStimulus pureStimulus = new AdVocAsStimulus("test_"+System.currentTimeMillis(), "test-spelling", Constants.WORD, 37);
+        AdVocAsStimulus pureStimulus = new AdVocAsStimulus("test_"+System.currentTimeMillis(), "test-spelling", Vocabulary.WORD, 37);
         
         AdVocAsBookkeepingStimulus instance = new AdVocAsBookkeepingStimulus(pureStimulus);
         Boolean result = instance.getReaction();
@@ -100,7 +99,7 @@ public class AdVocAsBookkeepingStimulusTest {
     @Test
     public void testGetCorrectness() {
         System.out.println("getCorrectness");
-        AdVocAsStimulus pureStimulus = new AdVocAsStimulus("test_"+System.currentTimeMillis(), "test-spelling", Constants.WORD, 37);
+        AdVocAsStimulus pureStimulus = new AdVocAsStimulus("test_"+System.currentTimeMillis(), "test-spelling", Vocabulary.WORD, 37);
         
         AdVocAsBookkeepingStimulus instance = new AdVocAsBookkeepingStimulus(pureStimulus);
         Boolean result = instance.getCorrectness();
@@ -113,10 +112,10 @@ public class AdVocAsBookkeepingStimulusTest {
     @Test
     public void testSetReaction() {
         System.out.println("setReaction");
-        AdVocAsStimulus pureStimulus = new AdVocAsStimulus("test_"+System.currentTimeMillis(), "test-spelling", Constants.WORD, 37);
+        AdVocAsStimulus pureStimulus = new AdVocAsStimulus("test_"+System.currentTimeMillis(), "test-spelling", Vocabulary.WORD, 37);
         
         AdVocAsBookkeepingStimulus instance = new AdVocAsBookkeepingStimulus(pureStimulus);
-        instance.setReaction(Constants.NONWORD);
+        instance.setReaction(Vocabulary.NONWORD);
         Boolean result = instance.getReaction();
         assertEquals(false, result);
     }
@@ -127,7 +126,7 @@ public class AdVocAsBookkeepingStimulusTest {
     @Test
     public void testSetCorrectness() {
         System.out.println("setCorrectness");
-        AdVocAsStimulus pureStimulus = new AdVocAsStimulus("test_"+System.currentTimeMillis(), "test-spelling", Constants.WORD, 37);
+        AdVocAsStimulus pureStimulus = new AdVocAsStimulus("test_"+System.currentTimeMillis(), "test-spelling", Vocabulary.WORD, 37);
         
         AdVocAsBookkeepingStimulus instance = new AdVocAsBookkeepingStimulus(pureStimulus);
         instance.setCorrectness(true);

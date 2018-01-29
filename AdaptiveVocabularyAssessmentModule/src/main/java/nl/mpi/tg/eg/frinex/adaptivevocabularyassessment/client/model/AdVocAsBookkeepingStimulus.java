@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model;
 
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Vocabulary;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimulus;
 
@@ -41,13 +41,13 @@ public class AdVocAsBookkeepingStimulus extends BookkeepingStimulus<Boolean> {
     public void setReaction(String reaction) {
         String stimulusResponseProcessed = new String(reaction);
         stimulusResponseProcessed = stimulusResponseProcessed.replaceAll(",", "&#44;");
-        if (!(stimulusResponseProcessed.equals(Constants.WORD) || (stimulusResponseProcessed.equals(Constants.NONWORD)))) {
+        if (!(stimulusResponseProcessed.equals(Vocabulary.WORD) || (stimulusResponseProcessed.equals(Vocabulary.NONWORD)))) {
             System.out.println("Erroenous input: neither word nor nonword; something went terrible wrong.");
         }
-        if (stimulusResponseProcessed.equals(Constants.WORD)) {
+        if (stimulusResponseProcessed.equals(Vocabulary.WORD)) {
             this.userReaction = true;
         }
-        if (stimulusResponseProcessed.equals(Constants.NONWORD)) {
+        if (stimulusResponseProcessed.equals(Vocabulary.NONWORD)) {
             this.userReaction = false;
         }
     }

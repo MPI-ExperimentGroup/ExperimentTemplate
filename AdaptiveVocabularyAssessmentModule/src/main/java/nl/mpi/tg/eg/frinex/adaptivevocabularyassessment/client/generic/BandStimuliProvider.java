@@ -23,7 +23,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.common.AbstractStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
@@ -43,8 +42,9 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     protected int numberOfSeries = 0;
     protected int startBand = 0;
     protected int averageNonWordPosition = 0;
-    protected int startPercentageGraph = 0;
     protected int fineTuningTupleLength = 0;
+    protected int fineTuningNumberOfAtomsPerTuple;
+    protected int fineTuningUpperBoundForCycles;
 
     private int bandScore = -1;
     protected long percentageScore = 0;
@@ -62,12 +62,12 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     protected int timeTickEndFastTrack = -1;
 
     // fine tuning stuff
-    protected final ArrayList<RecordStimulus> tupleFT = new ArrayList<>(Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE);
+    protected final ArrayList<RecordStimulus> tupleFT = new ArrayList<>(this.fineTuningNumberOfAtomsPerTuple);
 
     // fine tuning stopping
     private boolean enoughFineTuningStimulae = true;
     private int[] bandVisitCounter;
-    private final int[] cycle2helper = new int[Constants.FINE_TUNING_UPPER_BOUND_FOR_2CYCLES * 2 + 1];
+    private int[] cycle2helper;
     private boolean cycle2 = false;
     private boolean champion = false;
     private boolean looser = false;
@@ -78,6 +78,10 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     // ...
     public void settype(String type) {
         this.type = Integer.parseInt(type);
+    }
+
+    public void setfineTuningNumberOfAtomsPerTuple(String fineTuningNumberOfAtomsPerTuple) {
+        this.fineTuningNumberOfAtomsPerTuple = Integer.parseInt(fineTuningNumberOfAtomsPerTuple);
     }
 
     public void setnumberOfBands(String numberOfBands) {
@@ -95,14 +99,16 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     public void setaverageNonWordPosition(String averageNonWordPosition) {
         this.averageNonWordPosition = Integer.parseInt(averageNonWordPosition);
     }
-
-    public void setstartPercentageGraph(String startPercentageGraph) {
-        this.startPercentageGraph = Integer.parseInt(startPercentageGraph);
-    }
-
+    
     public void setfineTuningTupleLength(String fineTuningTupleLength) {
         this.fineTuningTupleLength = Integer.parseInt(fineTuningTupleLength);
     }
+
+    public void setfineTuningUpperBoundForCycles(String fineTuningUpperBoundForCycles) {
+        this.fineTuningUpperBoundForCycles = Integer.parseInt(fineTuningUpperBoundForCycles);
+    }
+    
+   
 
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
@@ -118,7 +124,9 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         for (int i = 0; i < this.numberOfBands; i++) {
             this.bandVisitCounter[i] = 0;
         }
-        for (int i = 0; i < Constants.FINE_TUNING_UPPER_BOUND_FOR_2CYCLES * 2 + 1; i++) {
+        
+        this.cycle2helper = new int[this.fineTuningUpperBoundForCycles * 2 + 1];
+        for (int i = 0; i < this.fineTuningUpperBoundForCycles * 2 + 1; i++) {
             this.cycle2helper[i] = 0;
         }
         this.cycle2 = false;
@@ -391,7 +399,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     // experiment specific, must be overridden
     public boolean initialiseNextFineTuningTuple() {
 
-        for (int i = 0; i < Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE; i++) {
+        for (int i = 0; i < this.fineTuningNumberOfAtomsPerTuple; i++) {
             this.tupleFT.add(null);
         }
         return true;
@@ -486,7 +494,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         // detecting is should be stopped
         this.cycle2 = detectLoop(cycle2helper);
         if (this.cycle2) {
-            System.out.println("Detected: Constants.FINE_TUNING_UPPER_BOUND_FOR_2CYCLES times oscillation between two neighbouring bands");
+            System.out.println("Detected: "+this.fineTuningUpperBoundForCycles +" times oscillation between two neighbouring bands");
             this.bandScore = this.cycle2helper[cycle2helper.length - 1];
 
             //Here implemented loop-based approach , with the last element excluded from loop detection
@@ -645,7 +653,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
             row.append(startColumn).append(i).append(endColumn);
             stringBuilder.append(startRow).append(row).append(endRow);
             modCounter++;
-            if (!stimulus.getCorrectness() || modCounter == Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE) {
+            if (!stimulus.getCorrectness() || modCounter == this.fineTuningNumberOfAtomsPerTuple) {
                 stringBuilder.append(startRow).append(empty).append(endRow); // skeep between tuples
                 stringBuilder.append(startRow).append(empty).append(endRow);
                 modCounter = 0;

@@ -18,7 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model;
 
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Vocabulary;
 
 /**
  * @since Oct 27, 2017 2:13:03 PM (creation date)
@@ -27,7 +27,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 public class AdVocAsStimulus extends BandStimulus {
 
     public AdVocAsStimulus(String uniqueId, String label, String correctResponses, int bandNumber) {
-        super(uniqueId, new Tag[0], label, Constants.NONWORD+','+Constants.WORD, correctResponses, bandNumber);
+        super(uniqueId, new Tag[0], label, Vocabulary.NONWORD+','+Vocabulary.WORD, correctResponses, bandNumber);
     }
   
 }

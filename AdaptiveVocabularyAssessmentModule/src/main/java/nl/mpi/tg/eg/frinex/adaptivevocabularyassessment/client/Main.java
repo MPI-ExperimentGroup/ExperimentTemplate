@@ -17,8 +17,6 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client;
 
-import utils.VocabularyFromFiles;
-
 /**
  * @since Oct 20, 2017 11:38:57 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>

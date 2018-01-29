@@ -23,10 +23,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsBookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsNonWords1;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsNonWords2;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsWords1;
@@ -48,6 +48,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
     private ArrayList<Integer> nonWordsIndexes;
     private int wordsPerBand;
     private int wordsPerBandInSeries;
+    private int nonWordsPerBlock;
 
     private ArrayList<ArrayList<AdVocAsStimulus>> words;
     private ArrayList<AdVocAsStimulus> nonwords;
@@ -81,10 +82,14 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         }
 
         // int startBand, int nonwordsPerBlock, int averageNonwordPosition, int nonwordsAvailable
-        this.rndIndexing = new RandomIndexing(this.startBand, this.numberOfBands, Constants.NONWORDS_PER_BLOCK, this.averageNonWordPosition, nonwords.size());
+        this.rndIndexing = new RandomIndexing(this.startBand, this.numberOfBands, this.nonWordsPerBlock, this.averageNonWordPosition, nonwords.size());
         this.nonWordsIndexes = this.rndIndexing.updateAndGetIndices();
 
         this.rnd = new Random();
+    }
+
+    public void setnonwordsPerBlock(String nonWrodsPerBlock) {
+        this.nonWordsPerBlock = Integer.parseInt(nonWrodsPerBlock);
     }
 
     public void setwordsPerBand(String wordsPerBand) {
@@ -124,15 +129,15 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         boolean retVal;
         String stimulusResponseProcessed = new String(stimulusResponse);
         stimulusResponseProcessed = stimulusResponseProcessed.replaceAll(",", "&#44;");
-        if (!(stimulusResponseProcessed.equals(Constants.WORD) || (stimulusResponseProcessed.equals(Constants.NONWORD)))) {
+        if (!(stimulusResponseProcessed.equals(Vocabulary.WORD) || (stimulusResponseProcessed.equals(Vocabulary.NONWORD)))) {
             System.out.println("Erroenous input: neither word nor nonword; something went terrible wrong.");
             return false;
         }
         int index = this.getCurrentStimulusIndex();
         if (this.responseRecord.get(index).getBandNumber() > -1) {
-            retVal = stimulusResponseProcessed.equals(Constants.WORD);
+            retVal = stimulusResponseProcessed.equals(Vocabulary.WORD);
         } else {
-            retVal = stimulusResponseProcessed.equals(Constants.NONWORD);
+            retVal = stimulusResponseProcessed.equals(Vocabulary.NONWORD);
         }
         return retVal;
     }
@@ -163,10 +168,10 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         if (this.nonwords.size() < 1) {
             return false;
         }
-        if (this.words.get(this.currentBandIndex).size() < Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE - 1) {
+        if (this.words.get(this.currentBandIndex).size() < this.fineTuningNumberOfAtomsPerTuple - 1) {
             return false;
         }
-        int nonWordPos = rnd.nextInt(Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE);
+        int nonWordPos = rnd.nextInt(this.fineTuningNumberOfAtomsPerTuple);
         AdVocAsBookkeepingStimulus bStimulus;
         for (int i = 0; i < nonWordPos; i++) {
             bStimulus = new AdVocAsBookkeepingStimulus(this.words.get(this.currentBandIndex).remove(0)); //injection constructor
@@ -174,7 +179,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         }
         bStimulus = new AdVocAsBookkeepingStimulus(this.nonwords.remove(0)); // injection constructor
         this.tupleFT.add(bStimulus);
-        for (int i = nonWordPos + 1; i < Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE; i++) {
+        for (int i = nonWordPos + 1; i < this.fineTuningNumberOfAtomsPerTuple; i++) {
             bStimulus = new AdVocAsBookkeepingStimulus(this.words.get(this.currentBandIndex).remove(0));//injection constructor
             this.tupleFT.add(bStimulus);
         }
@@ -268,16 +273,14 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         htmlStringBuilder.append("<p>Overzicht van uw resultaten:</p>");
         htmlStringBuilder.append("<p><small>(Scroll om volledig resultaten te bekijken als dat nodig is.)</small></p>");
         htmlStringBuilder.append("<p>U kent ongeveer <big><big><b>").append(this.getPercentageScore()).append("</b></big></big> &#37; van alle Nederlandse woorden.</p>");
-        
-        
+
         String twoColumnTable = this.getHtmlTwoColumnTable(experimenteeWordTable, experimenteeNonWordTable);
         String capture = "Groen=Correct herkend, Rood=Niet correct herkend";
         String twoColumnTableWitCapture = this.getHtmlElementWithCapture(twoColumnTable, capture);
-        
+
         htmlStringBuilder.append("<table><tr style=\"vertical-align: top;\"><td>");
         htmlStringBuilder.append(twoColumnTableWitCapture).append("</td>");
         htmlStringBuilder.append("<td style=\"padding-left: 200px;\">").append(experimenteePositionDiagram).append("</td></tr></table>");
-        
 
         return htmlStringBuilder.toString();
     }
@@ -307,7 +310,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
 
         return htmlStringBuilder.toString();
     }
-    
+
     private String getHtmlTwoColumnTable(String leftColumn, String rightColumn) {
         StringBuilder htmlStringBuilder = new StringBuilder();
         htmlStringBuilder.append("<table>");
@@ -315,7 +318,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         htmlStringBuilder.append("<td style=\"padding-left: 5px;\">").append(rightColumn).append("</td></tr></table>");
         return htmlStringBuilder.toString();
     }
-    
+
     private String getHtmlElementWithCapture(String element, String capture) {
         StringBuilder htmlStringBuilder = new StringBuilder();
         htmlStringBuilder.append("<table>");
@@ -323,7 +326,6 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         htmlStringBuilder.append("<tr><td>").append(element).append("</td></tr></table>");
         return htmlStringBuilder.toString();
     }
-    
 
     private String getHtmlExperimenteePositionDiagram() {
         StringBuilder htmlStringBuilder = new StringBuilder();
@@ -371,7 +373,25 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         Long perScore = this.getPercentageScore();
         Integer bScore = this.getBandScore();
 
-        Set<Long> keys = percentageBandTable.keySet();
+        Set<Long> keysTmp = percentageBandTable.keySet();
+        Set<Long> keys = new HashSet<Long>(keysTmp);
+
+        Long one = new Long(1);
+        Long nn = new Long(99);
+        keys.remove(one);
+        keys.remove(nn);
+
+        
+        if (perScore < 5) {
+            retVal.put(perScore, sampleWords.get(bScore));
+        } else {
+            Integer bandNumber = percentageBandTable.get(one);
+            String value = sampleWords.get(bandNumber);
+            retVal.put(one, value);
+        }
+        
+        
+
         for (Long key : keys) {
             if (perScore >= key - 5 && perScore < key + 5) {
                 // put the participant score here
@@ -383,6 +403,14 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
                 retVal.put(key, value);
             }
         }
+        
+        if (perScore >= 95) {
+            retVal.put(perScore, sampleWords.get(bScore));
+        } else {
+            Integer bandNumber = percentageBandTable.get(nn);
+            String value = sampleWords.get(bandNumber);
+            retVal.put(nn, value);
+        }
 
         return retVal;
     }
@@ -390,7 +418,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
     public HashMap<Integer, String> retrieveSampleWords(ArrayList<AdVocAsBookkeepingStimulus> records, ArrayList<ArrayList<AdVocAsStimulus>> nonusedWords) {
         HashMap<Integer, String> retVal = new HashMap<Integer, String>();
         for (AdVocAsBookkeepingStimulus bStimulus : records) {
-            if (bStimulus.getCorrectResponses().equals(Constants.WORD)) { // is a word
+            if (bStimulus.getCorrectResponses().equals(Vocabulary.WORD)) { // is a word
                 Integer key = bStimulus.getBandNumber();
                 if (!retVal.containsKey(key)) {
                     retVal.put(key, bStimulus.getLabel());
@@ -419,10 +447,10 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         retVal.put("nonwords", new ArrayList<AdVocAsBookkeepingStimulus>());
 
         for (AdVocAsBookkeepingStimulus bStimulus : records) {
-            if (Constants.WORD.equals(bStimulus.getCorrectResponses())) {
+            if (Vocabulary.WORD.equals(bStimulus.getCorrectResponses())) {
                 retVal.get("words").add(bStimulus);
             }
-            if (Constants.NONWORD.equals(bStimulus.getCorrectResponses())) {
+            if (Vocabulary.NONWORD.equals(bStimulus.getCorrectResponses())) {
                 retVal.get("nonwords").add(bStimulus);
             }
         }

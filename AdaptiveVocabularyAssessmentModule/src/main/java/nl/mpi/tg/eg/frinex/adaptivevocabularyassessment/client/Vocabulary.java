@@ -26,6 +26,11 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsStim
  */
 public class Vocabulary {
     
+    public static final String NONWORD = "NEE&#44; ik ken dit woord niet";
+            
+    public static final String WORD = "JA&#44; ik ken dit woord";
+
+    
     private final int numberOfBands;
     private final int wordsPerBandInSeries;
     

@@ -24,11 +24,9 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsBookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsNonWords1;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsNonWords2;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsWords1;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ConstantsWords2;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Vocabulary;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsStimulus;
@@ -49,9 +47,11 @@ public class AdVocAsStimuliProviderTest {
 
     private final String numberOfBands = "54";
     private final String wordsPerBand = "40";
+    private final String nonwordsPerBlock = "4";
     private final String startBand = "20";
     private final String averageNonWordPoistion = "3";
-    private final String startPositionGraph = "30";
+    private final String fineTuningNumberOfAtomsPerTuple="4";
+    private final String fineTuningUpperBoundForCycles="2";
 
     public AdVocAsStimuliProviderTest() {
     }
@@ -103,11 +103,13 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype("0");
-        provider.setnumberOfBands(this.numberOfBands);
-        provider.setwordsPerBand(this.wordsPerBand);
+        provider.setnumberOfBands(this.numberOfBands); 
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
+        provider.setwordsPerBand(this.wordsPerBand); 
+        provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setstartPercentageGraph(this.startPositionGraph);
         provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
 
@@ -152,11 +154,13 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype("0");
-        provider.setnumberOfBands(this.numberOfBands);
+        provider.setnumberOfBands(this.numberOfBands); 
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
         provider.setwordsPerBand(this.wordsPerBand);
+        provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setstartPercentageGraph(this.startPositionGraph);
         provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
 
@@ -201,11 +205,13 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype("1");
-        provider.setnumberOfBands(this.numberOfBands);
+        provider.setnumberOfBands(this.numberOfBands); 
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
         provider.setwordsPerBand(this.wordsPerBand);
+        provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setstartPercentageGraph(this.startPositionGraph);
         provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
 
@@ -243,11 +249,13 @@ public class AdVocAsStimuliProviderTest {
         int nOfSeries = Integer.parseInt(numberOfSeries);
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype("1");
-        provider.setnumberOfBands(this.numberOfBands);
+        provider.setnumberOfBands(this.numberOfBands); 
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
+        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
         provider.setwordsPerBand(this.wordsPerBand);
+        provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setstartPercentageGraph(this.startPositionGraph);
         provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
         provider.hasNextStimulus(0);
@@ -352,11 +360,13 @@ public class AdVocAsStimuliProviderTest {
 
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype(type);
-        provider.setnumberOfBands(this.numberOfBands);
+        provider.setnumberOfBands(this.numberOfBands); 
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
         provider.setwordsPerBand(this.wordsPerBand);
+        provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setstartPercentageGraph(this.startPositionGraph);
         provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
         provider.hasNextStimulus(0);
@@ -368,7 +378,7 @@ public class AdVocAsStimuliProviderTest {
         assertTrue(label != null);
         //System.out.println("Label: " + label);
         AdVocAsBookkeepingStimulus bStimulus = provider.getResponseRecord().get(provider.getCurrentStimulusIndex());
-        int expectedBand = stimulus.getCorrectResponses().equals(Constants.WORD) ? Integer.parseInt(this.startBand) : -1;
+        int expectedBand = stimulus.getCorrectResponses().equals(Vocabulary.WORD) ? Integer.parseInt(this.startBand) : -1;
         assertEquals(expectedBand, bStimulus.getBandNumber());
     }
 
@@ -412,11 +422,12 @@ public class AdVocAsStimuliProviderTest {
 
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype(type);
-        provider.setnumberOfBands(this.numberOfBands);
+        provider.setnumberOfBands(this.numberOfBands); provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
         provider.setwordsPerBand(this.wordsPerBand);
+        provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setstartPercentageGraph(this.startPositionGraph);
         provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
 
@@ -430,7 +441,7 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsBookkeepingStimulus bStimulus = provider.getResponseRecord().get(0);
         assertTrue(bStimulus.getCorrectness());
 
-        boolean expectedReaction = stimulus.getCorrectResponses().equals(Constants.WORD);
+        boolean expectedReaction = stimulus.getCorrectResponses().equals(Vocabulary.WORD);
         assertEquals(expectedReaction, bStimulus.getReaction());
 
         // stimulus 2
@@ -438,11 +449,11 @@ public class AdVocAsStimuliProviderTest {
         provider.nextStimulus(0);
         Stimulus stimulus2 = provider.getCurrentStimulus();
         // making worng response
-        String response2 = Constants.NONWORD;
-        if (stimulus2.getCorrectResponses().equals(Constants.NONWORD)) {
-            response2 = Constants.WORD;
+        String response2 = Vocabulary.NONWORD;
+        if (stimulus2.getCorrectResponses().equals(Vocabulary.NONWORD)) {
+            response2 = Vocabulary.WORD;
         } else {
-            if (!stimulus2.getCorrectResponses().equals(Constants.WORD)) {
+            if (!stimulus2.getCorrectResponses().equals(Vocabulary.WORD)) {
                 throw new Exception("The reaction is neither nonword nor word, something went terribly worng.");
             }
         }
@@ -452,7 +463,7 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsBookkeepingStimulus bStimulus2 = provider.getResponseRecord().get(1);
         assertFalse(bStimulus2.getCorrectness());
 
-        boolean expectedCorrectReaction2 = stimulus2.getCorrectResponses().equals(Constants.WORD);
+        boolean expectedCorrectReaction2 = stimulus2.getCorrectResponses().equals(Vocabulary.WORD);
         assertEquals(!expectedCorrectReaction2, bStimulus2.getReaction());
 
     }
@@ -466,11 +477,13 @@ public class AdVocAsStimuliProviderTest {
         provider.setnumberOfSeries(numberOfSeries);
 
         provider.settype(type);
-        provider.setnumberOfBands(this.numberOfBands);
+        provider.setnumberOfBands(this.numberOfBands); 
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
         provider.setwordsPerBand(this.wordsPerBand);
+        provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setstartPercentageGraph(this.startPositionGraph);
         provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
         int wPerBand = Integer.parseInt(this.wordsPerBand);
@@ -701,11 +714,13 @@ public class AdVocAsStimuliProviderTest {
         int nOfSeries = Integer.parseInt(numberOfSeries);
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype(type);
-        provider.setnumberOfBands(this.numberOfBands);
+        provider.setnumberOfBands(this.numberOfBands); 
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
         provider.setwordsPerBand(this.wordsPerBand);
+        provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setstartPercentageGraph(this.startPositionGraph);
         provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
         provider.initialiseStimuliState("");
@@ -730,7 +745,7 @@ public class AdVocAsStimuliProviderTest {
         boolean result1 = provider.hasNextStimulus(0);
         assertTrue(result1);
         int sBand = Integer.parseInt(this.startBand);
-        int expectedBand = stimulus.getCorrectResponses().equals(Constants.WORD) ? (sBand + 1) : sBand;
+        int expectedBand = stimulus.getCorrectResponses().equals(Vocabulary.WORD) ? (sBand + 1) : sBand;
         assertEquals(expectedBand, provider.getCurrentBandNumber());
 
         provider.nextStimulus(0);
@@ -745,11 +760,11 @@ public class AdVocAsStimuliProviderTest {
         BookkeepingStimulus stimulus2 = provider.getCurrentStimulus();
         String correctResponse = stimulus2.getCorrectResponses();
         String response = null;
-        if (correctResponse.equals(Constants.WORD)) {
-            response = Constants.NONWORD;
+        if (correctResponse.equals(Vocabulary.WORD)) {
+            response = Vocabulary.NONWORD;
         }
-        if (correctResponse.equals(Constants.NONWORD)) {
-            response = Constants.WORD;
+        if (correctResponse.equals(Vocabulary.NONWORD)) {
+            response = Vocabulary.WORD;
         }
         if (response == null) {
             throw new Exception("Wrong reaction");
@@ -771,11 +786,11 @@ public class AdVocAsStimuliProviderTest {
         BookkeepingStimulus stimulus3 = provider.getCurrentStimulus();
         String correctResponse3 = stimulus3.getCorrectResponses();
         String response3 = null;
-        if (correctResponse3.equals(Constants.WORD)) {
-            response3 = Constants.NONWORD;
+        if (correctResponse3.equals(Vocabulary.WORD)) {
+            response3 = Vocabulary.NONWORD;
         }
-        if (correctResponse3.equals(Constants.NONWORD)) {
-            response3 = Constants.WORD;
+        if (correctResponse3.equals(Vocabulary.NONWORD)) {
+            response3 = Vocabulary.WORD;
         }
         if (response3 == null) {
             throw new Exception("Wrong reaction");
@@ -825,11 +840,13 @@ public class AdVocAsStimuliProviderTest {
         int nOfSeries = Integer.parseInt(numberOfSeries);
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype(type);
-        provider.setnumberOfBands(this.numberOfBands);
+        provider.setnumberOfBands(this.numberOfBands); 
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
         provider.setwordsPerBand(this.wordsPerBand);
+        provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setstartPercentageGraph(this.startPositionGraph);
         provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
         provider.hasNextStimulus(0);
@@ -904,11 +921,13 @@ public class AdVocAsStimuliProviderTest {
         int nOfSeries = Integer.parseInt(numberOfSeries);
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype(type);
-        provider.setnumberOfBands(this.numberOfBands);
+        provider.setnumberOfBands(this.numberOfBands); 
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
         provider.setwordsPerBand(this.wordsPerBand);
+        provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setstartPercentageGraph(this.startPositionGraph);
         provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
 
@@ -974,7 +993,7 @@ public class AdVocAsStimuliProviderTest {
             int score2 = provider2.getBandScore();
             System.out.println("Band Score: " + score2);
             if (score1 != score2) {
-                System.out.println("Attention. difference between score in consecutive rounds is detected, score 1 and 2 are " + score1 + " and " + score2 + " respectively.");
+                System.out.println("Attention. Difference between score in consecutive rounds is detected, score 1 and 2 are " + score1 + " and " + score2 + " respectively.");
             }
             System.out.println("***");
         }
@@ -998,11 +1017,13 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype(type);
-        provider.setnumberOfBands(this.numberOfBands);
+        provider.setnumberOfBands(this.numberOfBands); 
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
         provider.setwordsPerBand(this.wordsPerBand);
+        provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setstartPercentageGraph(this.startPositionGraph);
         provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
 
@@ -1092,6 +1113,9 @@ public class AdVocAsStimuliProviderTest {
 
         if (percentScore < 95) {
             Long nn = new Long(99);
+            if (!graph.containsKey(nn)) {
+                System.out.println("alarm: no key for percentageScore "+nn.toString());
+            }
             assertTrue(graph.containsKey(nn));
             assertNotNull(graph.get(nn));
             // which band number correspond to 99 percent of # 54 is 100%?
@@ -1136,11 +1160,13 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype("0");
-        provider.setnumberOfBands(this.numberOfBands);
+        provider.setnumberOfBands(this.numberOfBands); 
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
         provider.setwordsPerBand(this.wordsPerBand);
+        provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setstartPercentageGraph(this.startPositionGraph);
         provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
         provider.initialiseStimuliState("");
@@ -1190,7 +1216,7 @@ public class AdVocAsStimuliProviderTest {
 
         this.checkAllWordsAreDifferent(provider.getResponseRecord());
 
-        int minTuples = (9 / (Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE - 1)) * (nOfBands - sBand);
+        int minTuples = (9 / (Integer.parseInt(this.fineTuningNumberOfAtomsPerTuple) - 1)) * (nOfBands - sBand);
         assertTrue(tupleCounter > minTuples);
 
         boolean enoughFineTuningStimulae = provider.getEnoughFinetuningStimuli();
@@ -1218,11 +1244,11 @@ public class AdVocAsStimuliProviderTest {
         //System.out.println(retVal);
         //System.out.println(rndDouble);
         if (rndDouble > correctnessUpperBound) { // spoil the answer
-            if (retVal.equals(Constants.WORD)) {
-                retVal = Constants.NONWORD;
+            if (retVal.equals(Vocabulary.WORD)) {
+                retVal = Vocabulary.NONWORD;
             } else {
-                if (retVal.equals(Constants.NONWORD)) {
-                    retVal = Constants.WORD;
+                if (retVal.equals(Vocabulary.NONWORD)) {
+                    retVal = Vocabulary.WORD;
                 } else {
                     throw new Exception("Wrong correct reaction in the stimulus, neither word, nor nonword: " + retVal);
                 }
@@ -1234,9 +1260,9 @@ public class AdVocAsStimuliProviderTest {
     }
 
     private String makeResponseWrong(BookkeepingStimulus stimulus) {
-        String answer = Constants.NONWORD;
-        if (stimulus.getCorrectResponses().equals(Constants.NONWORD)) {
-            answer = Constants.WORD;
+        String answer = Vocabulary.NONWORD;
+        if (stimulus.getCorrectResponses().equals(Vocabulary.NONWORD)) {
+            answer = Vocabulary.WORD;
         };
         return answer;
     }
@@ -1350,7 +1376,7 @@ public class AdVocAsStimuliProviderTest {
             }
             if (stimulus.getCorrectness()) {
                 counterInTuple++;
-                if (counterInTuple == Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE) {
+                if (counterInTuple == Integer.parseInt(this.fineTuningNumberOfAtomsPerTuple)) {
                     // all  4 ccorrect answers in a row
                     // they all must be in 1 band (except the nonword)
                     bandSequence.add(currentBandNumber);
@@ -1358,7 +1384,7 @@ public class AdVocAsStimuliProviderTest {
                     int nonWordCounter = 0;
 
                     // check the tuple
-                    for (int j = 0; j < Constants.FINE_TUNING_NUMBER_OF_ATOMS_PER_TUPLE; j++) {
+                    for (int j = 0; j < Integer.parseInt(this.fineTuningNumberOfAtomsPerTuple); j++) {
                         if (records.get(i - j).getBandNumber() > 0) {
                             // all words in the tuple must be in one band
                             assertEquals(currentBandNumber, records.get(i - j).getBandNumber());

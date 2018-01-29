@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Vocabulary;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsStimulus;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
@@ -59,7 +59,7 @@ public class VocabularyFromFiles {
             String spelling = record.get("spelling");
             long millis = System.currentTimeMillis();
             String id = spelling + "_" + millis;
-            AdVocAsStimulus stimulus = new AdVocAsStimulus(id, spelling, Constants.WORD, bandNumber);
+            AdVocAsStimulus stimulus = new AdVocAsStimulus(id, spelling, Vocabulary.WORD, bandNumber);
             localWORDS[bandNumber - 1][counter[bandNumber - 1]] = stimulus;
             counter[bandNumber - 1]++;
         }
@@ -74,8 +74,8 @@ public class VocabularyFromFiles {
             String spelling = record.get("spelling");
             long millis = System.currentTimeMillis();
             String id = spelling + "_" + millis;
-            System.out.println("new AdVocAsStimulus(\"" + id + "\", \"" + spelling + "\", \""+Constants.NONWORD+"\" " + ",-1),");
-            AdVocAsStimulus stimulus = new AdVocAsStimulus(id, spelling, Constants.NONWORD, -1);
+            System.out.println("new AdVocAsStimulus(\"" + id + "\", \"" + spelling + "\", \""+Vocabulary.NONWORD+"\" " + ",-1),");
+            AdVocAsStimulus stimulus = new AdVocAsStimulus(id, spelling, Vocabulary.NONWORD, -1);
             localNONWORDS.add(stimulus);
         }
         System.out.println(" }; ");

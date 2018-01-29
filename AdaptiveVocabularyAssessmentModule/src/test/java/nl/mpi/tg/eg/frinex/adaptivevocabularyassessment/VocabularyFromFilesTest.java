@@ -19,7 +19,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
 import utils.VocabularyFromFiles;
 import java.util.ArrayList;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Vocabulary;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -80,7 +80,7 @@ public class VocabularyFromFilesTest {
                 String id = word.getUniqueId();
                 String spelling = word.getLabel();
                 int band = word.getBandNumber();
-                String serialisedDescr = "new AdVocAsStimulus(\"" + id + "\", \"" + spelling + "\", \"" + Constants.WORD + "\" " + "," + band + ")";
+                String serialisedDescr = "new AdVocAsStimulus(\"" + id + "\", \"" + spelling + "\", \"" + Vocabulary.WORD + "\" " + "," + band + ")";
                 stBuilder.append(serialisedDescr).append(",\n");
             }
             stBuilder.append("}\n,");

@@ -22,7 +22,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Map;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.Constants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 
 /**
@@ -33,9 +32,9 @@ public class Utils {
 
    
 
-    public static void writeCsvFileFastTrack(AdVocAsStimuliProvider provider, int stopBand, String outputDir, int averageNonWordPosition) throws IOException {
+    public static void writeCsvFileFastTrack(AdVocAsStimuliProvider provider, int stopBand, String outputDir, int averageNonWordPosition, int nonWordsPerBlock) throws IOException {
         long millis = System.currentTimeMillis();
-        int blockSize = Constants.NONWORDS_PER_BLOCK * averageNonWordPosition;
+        int blockSize = nonWordsPerBlock * averageNonWordPosition;
         String fileName = "Fast_track_test_stopped_at_band_" + stopBand + "_" + blockSize + "_" + millis + ".csv";
         System.out.println("writeCsvFile: " + outputDir + fileName);
         final File csvFile = new File(outputDir, fileName);
@@ -45,9 +44,9 @@ public class Utils {
         output.close();
     }
 
-    public static void writeHtmlFileFastTrack(AdVocAsStimuliProvider provider, int stopBand, String outputDir, int averageNonWordPosition) throws IOException {
+    public static void writeHtmlFileFastTrack(AdVocAsStimuliProvider provider, int stopBand, String outputDir, int averageNonWordPosition, int nonWordsPerBlock) throws IOException {
         long millis = System.currentTimeMillis();
-        int blockSize = Constants.NONWORDS_PER_BLOCK * averageNonWordPosition;
+        int blockSize = nonWordsPerBlock * averageNonWordPosition;
         String fileName = "Fast_track_test_stopped_at_band_" + stopBand + "_" + blockSize + "_" + millis + ".html";
         System.out.println("writeCsvFile: " + outputDir + fileName);
         final File htmlFile = new File(outputDir, fileName);
