@@ -198,14 +198,14 @@
         <htmlText featureText="Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop."/>
         <targetButton featureText="Opnieuw beginnen" target="Completion"/>
     </presenter>
-    <presenter displayOrder="15" menuLabel="Completion" type="transmission" self="Completion" title="Leeservaring 15">
+    <presenter displayOrder="15" menuLabel="Completion" next="Toestemming" type="transmission" self="Completion" title="Leeservaring 15">
         <generateCompletionCode>
             <onSuccess>
                 <htmlText featureText="Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop."/>
                 <addPadding/>
                 <displayCompletionCode/>
                 <addPadding/>
-                <eraseUsersDataButton featureText="Opnieuw beginnen"/>
+                <eraseUsersDataButton featureText="Opnieuw beginnen" target="Toestemming"/>
             </onSuccess>
             <onError>
                 <plainText featureText="De server is niet bereikbaar. Controleer de internetverbinding en probeer opnieuw."/>
@@ -213,14 +213,14 @@
             </onError>
         </generateCompletionCode>
     </presenter>
-    <presenter displayOrder="16" menuLabel="Registered" type="transmission" self="Registered" title="Leeservaring 16">
+    <presenter displayOrder="16" menuLabel="Registered" next="Toestemming" type="transmission" self="Registered" title="Leeservaring 16">
         <generateCompletionCode>
             <onSuccess>
                 <htmlText featureText="Leuk dat u geïnteresseerd bent. Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop."/>
                 <addPadding/>
                 <displayCompletionCode/>
                 <addPadding/>
-                <eraseUsersDataButton featureText="Opnieuw beginnen"/>
+                <eraseUsersDataButton featureText="Opnieuw beginnen" target="Toestemming"/>
             </onSuccess>
             <onError>
                 <plainText featureText="De server is niet bereikbaar. Controleer de internetverbinding en probeer opnieuw."/>

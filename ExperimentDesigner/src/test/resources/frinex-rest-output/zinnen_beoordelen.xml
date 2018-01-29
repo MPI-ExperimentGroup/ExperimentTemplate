@@ -53,7 +53,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="5" menuLabel="Finished" type="transmission" self="Finished" title="Finished">
+    <presenter displayOrder="5" menuLabel="Finished" next="Toestemming" type="transmission" self="Finished" title="Finished">
         <generateCompletionCode>
             <onSuccess>
                 <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Bedankt voor je deelname!"/>
@@ -62,7 +62,7 @@
                 <addPadding/>
                 <htmlText featureText="Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop."/>
                 <addPadding/>
-                <eraseUsersDataButton featureText="Opnieuw beginnen"/>
+                <eraseUsersDataButton featureText="Opnieuw beginnen" target="Toestemming"/>
             </onSuccess>
             <onError>
                 <plainText featureText="Could not contact the server, please check your internet connection and try again."/>

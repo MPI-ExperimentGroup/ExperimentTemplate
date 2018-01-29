@@ -53,7 +53,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="5" menuLabel="Einde van het experiment" type="transmission" self="completion" title="Einde van het experiment">
+    <presenter displayOrder="5" menuLabel="Einde van het experiment" next="Informatie" type="transmission" self="completion" title="Einde van het experiment">
         <generateCompletionCode>
             <onSuccess>
                 <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;Hartelijk dank voor uw deelname! &lt;br/&gt;&lt;br/&gt;"/>
