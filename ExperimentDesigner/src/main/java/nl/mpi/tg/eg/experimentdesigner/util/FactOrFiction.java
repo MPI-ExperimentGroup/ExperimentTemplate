@@ -377,6 +377,8 @@ public class FactOrFiction {
         final WizardEditUserScreen completionScreen = new WizardEditUserScreen("Bedankt", "Bedankt", completionScreenText, "Registreren", nog_een_keer_meedoen, restartScreen, "Opnieuw beginnen", true, could_not_contact_the_server_please_check);
         completionScreen.setCustomFields(new String[]{"emaill::^[^@]+@[^@]+$:Geef een geldig e-mailadres."});
 //        completionScreen.setBackPresenter(restartScreen);
+        restartScreen.setNextWizardScreen(wizardAgreementScreen);
+        registeredScreen.setNextWizardScreen(wizardAgreementScreen);
         completionScreen.setNextWizardScreen(registeredScreen);
         wizardAgreementScreen.setNextWizardScreen(editUserScreen);
         editUserScreen.setNextWizardScreen(groupAorBScreen);
