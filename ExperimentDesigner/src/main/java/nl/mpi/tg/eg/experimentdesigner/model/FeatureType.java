@@ -45,7 +45,7 @@ public enum FeatureType {
     targetButton(false, true, new FeatureAttribute[]{target, styleName}),
     actionButton(true, true, new FeatureAttribute[]{hotKey, styleName}),
     stimulusButton(true, true, new FeatureAttribute[]{hotKey, styleName}),
-    touchInputStimulusButton(true, true, new FeatureAttribute[]{hotKey, styleName}),
+    touchInputStimulusButton(true, true, new FeatureAttribute[]{eventTag, src, styleName}),
     touchInputCaptureStart(true, false, new FeatureAttribute[]{showControls, msToNext}), /* sub elements are triggered after the touch ends or after msToNext of no touch activity */
     touchInputReportSubmit(false, false, new FeatureAttribute[]{}),
     sendGroupMessageButton(false, true, new FeatureAttribute[]{hotKey, eventTag, repeatIncorrect, incrementPhase, /* incrementPhaseOnDictionaryincrementStimulus */}),
@@ -136,7 +136,7 @@ public enum FeatureType {
     row(true, false, null),
     column(true, false, new FeatureAttribute[]{styleName}),
     stimulusImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement}), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
-    stimulusCodeImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, codeFormat, animate}),
+    stimulusCodeImage(true, false, new FeatureAttribute[]{msToNext, codeFormat, styleName}),
     stimulusCodeVideo(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, codeFormat, styleName, autoPlay, loop, showControls}),
     stimulusCodeAudio(true, false, new FeatureAttribute[]{msToNext, codeFormat, showPlaybackIndicator}),
     stimulusAudio(true, false, new FeatureAttribute[]{msToNext, showPlaybackIndicator}),
