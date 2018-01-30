@@ -35,6 +35,7 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -50,6 +51,7 @@ import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.experiment.client.listener.TouchInputCapture;
 import nl.mpi.tg.eg.experiment.client.listener.TouchInputZone;
+import nl.mpi.tg.eg.experiment.client.listener.TriggerListener;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
@@ -94,6 +96,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     private TimedStimulusListener endOfStimulusListener;
     final private ArrayList<PresenterEventListner> nextButtonEventListnerList = new ArrayList<>();
     private final ArrayList<StimulusFreeText> stimulusFreeTextList = new ArrayList<>();
+    private final HashMap<String, TriggerListener> triggerListeners = new HashMap<>();
     MatchingStimuliGroup matchingStimuliGroup = null;
     private boolean hasSubdirectories = false;
     private TouchInputCapture touchInputCapture = null;
@@ -1324,6 +1327,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 }
             }
         };
+    }
+
+    public void triggerListener(final String listenerId, final int threshold, final int maximum, final TimedStimulusListener triggerListener) {
+        triggerListeners.put(listenerId, new TriggerListener(listenerId, threshold, maximum, triggerListener));
+    }
+
+    public void trigger(final String listenerId) {
+        triggerListeners.get(listenerId).trigger();
     }
 
     public void disablePauseTimers() {
