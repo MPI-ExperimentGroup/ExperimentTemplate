@@ -130,22 +130,22 @@
                     <backgroundImage msToNext="0" src="" styleName=""/>
                     <clearPage styleName="fullScreenWidth"/>
                     <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
+                        <backgroundImage msToNext="0" src="" styleName=""/>
+                        <disableStimulusButtons/>
                         <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;a" showPlaybackIndicator="false">
-                            <backgroundImage msToNext="0" src="" styleName=""/>
-                            <disableStimulusButtons/>
                             <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;b" showPlaybackIndicator="false">
                                 <enableStimulusButtons/>
                                 <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
                                 <pause msToNext="3000">
-                                    <stimulusCodeAudio msToNext="3000" codeFormat="drukophetplaatje" showPlaybackIndicator="false">
-                                        <touchInputReportSubmit/>
-                                        <nextStimulus repeatIncorrect="false"/>
+                                    <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;b" showPlaybackIndicator="false">
+                                        <stimulusCodeAudio msToNext="3000" codeFormat="drukophetplaatje" showPlaybackIndicator="false">
+                                            <touchInputReportSubmit/>
+                                            <nextStimulus repeatIncorrect="false"/>
+                                        </stimulusCodeAudio>
                                     </stimulusCodeAudio>
                                 </pause>
                             </stimulusCodeAudio>
                         </stimulusCodeAudio>
-                    </triggerListener>
-                    <triggerListener listenerId="loopAction" maximum="-1" threshold="1">
                     </triggerListener>
                     <disableStimulusButtons/>
                     <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="borderedVideoLeft">
@@ -212,43 +212,54 @@
                 <hasMoreStimulus>
                     <backgroundImage msToNext="0" src="" styleName=""/>
                     <clearPage styleName="fullScreenWidth"/>
-                    <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="borderedVideoLeft">
-                        <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                            <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
-                            <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="" styleName="leftOverlayButton">
-                                <disableStimulusButtons/>
-                                <disablePauseTimers/>
-                                <pause msToNext="1000">
-                                    <clearPage/>
-                                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
-                                        <touchInputReportSubmit/>
-                                        <nextStimulus repeatIncorrect="false"/>
+                    <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
+                        <backgroundImage msToNext="0" src="" styleName=""/>
+                        <disableStimulusButtons/>
+                        <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;a" showPlaybackIndicator="false">
+                            <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;b" showPlaybackIndicator="false">
+                                <enableStimulusButtons/>
+                                <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
+                                <pause msToNext="3000">
+                                    <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;b" showPlaybackIndicator="false">
+                                        <stimulusCodeAudio msToNext="3000" codeFormat="drukophetplaatje" showPlaybackIndicator="false">
+                                            <touchInputReportSubmit/>
+                                            <nextStimulus repeatIncorrect="false"/>
+                                        </stimulusCodeAudio>
                                     </stimulusCodeAudio>
                                 </pause>
-                            </touchInputStimulusButton>
-                            <pause msToNext="3000">
-                                <showStimulus/>
+                            </stimulusCodeAudio>
+                        </stimulusCodeAudio>
+                    </triggerListener>
+                    <disableStimulusButtons/>
+                    <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="borderedVideoLeft">
+                        <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="" styleName="leftOverlayButton">
+                            <disableStimulusButtons/>
+                            <disablePauseTimers/>
+                            <pause msToNext="2000">
+                                <clearPage/>
+                                <pause msToNext="1000">
+                                    <touchInputReportSubmit/>
+                                    <nextStimulus repeatIncorrect="false"/>
+                                </pause>
                             </pause>
-                        </stimulusAudio>
+                        </touchInputStimulusButton>
+                        <disableStimulusButtons/>
+                        <trigger listenerId="imageLoadedAction"/>
                     </stimulusCodeImage>
                     <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="borderedVideoRight">
-                        <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                            <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
-                            <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="" styleName="rightOverlayButton">
-                                <disableStimulusButtons/>
-                                <disablePauseTimers/>
+                        <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="" styleName="rightOverlayButton">
+                            <disableStimulusButtons/>
+                            <disablePauseTimers/>
+                            <pause msToNext="2000">
+                                <clearPage/>
                                 <pause msToNext="1000">
-                                    <clearPage/>
-                                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
-                                        <touchInputReportSubmit/>
-                                        <nextStimulus repeatIncorrect="false"/>
-                                    </stimulusCodeAudio>
+                                    <touchInputReportSubmit/>
+                                    <nextStimulus repeatIncorrect="false"/>
                                 </pause>
-                            </touchInputStimulusButton>
-                            <pause msToNext="3000">
-                                <showStimulus/>
                             </pause>
-                        </stimulusAudio>
+                        </touchInputStimulusButton>
+                        <disableStimulusButtons/>
+                        <trigger listenerId="imageLoadedAction"/>
                     </stimulusCodeImage>
                     <touchInputCaptureStart msToNext="-1" showControls="false"/>
                     <table styleName="titleBarButton">
