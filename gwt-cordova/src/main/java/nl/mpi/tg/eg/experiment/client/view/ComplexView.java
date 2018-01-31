@@ -401,6 +401,11 @@ public class ComplexView extends SimpleView {
             }
 
             @Override
+            public boolean isEnabled() {
+                return nextButton.isEnabled();
+            }
+
+            @Override
             public void setVisible(boolean visible) {
                 nextButton.setVisible(visible);
             }
@@ -474,6 +479,11 @@ public class ComplexView extends SimpleView {
                 if (!isTouchZone) {
                     imageButton.setEnabled(enabled);
                 }
+            }
+
+            @Override
+            public boolean isEnabled() {
+                return imageButton.isEnabled();
             }
 
             @Override
