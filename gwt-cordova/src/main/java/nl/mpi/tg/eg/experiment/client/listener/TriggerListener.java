@@ -44,7 +44,8 @@ public class TriggerListener {
 
     public void trigger() {
         triggerCounter++;
-        if (triggerCounter >= threshold && triggerCounter <= maximum) {
+        boolean noMaximum = maximum <= 0;
+        if (triggerCounter >= threshold && (noMaximum || triggerCounter <= maximum)) {
             triggerListener.postLoadTimerFired();
         }
     }
