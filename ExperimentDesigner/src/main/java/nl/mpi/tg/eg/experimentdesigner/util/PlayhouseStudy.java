@@ -100,7 +100,7 @@ public class PlayhouseStudy {
             {{"P_01_NL", "P_01_NL.jpg"}, {"P_02_NL", "P_02_NL.jpg"}, {"P_03_Eng", "P_03_Eng.jpg"}, {"P_04_Eng", "P_04_Eng.jpg"}}},
             {{{"Matching1", "zoomToBlock1", "Matching1", null, "AudioAB", "2000", null}, {}},
             {{"M_01", "M_01.jpg"}, {"M_02", "M_02.jpg"}, {"M_03", "M_03.jpg"}, {"M_04", "M_04.jpg"}, {"M_05", "M_05.jpg"}, {"M_06", "M_06.jpg"}}},
-            {{{"Matching2", "zoomToBlock2", "Matching2", null, null, "1000", "Correct"}, {}},
+            {{{"Matching2", "zoomToBlock2", "Matching2", null, "AudioAB", "2000", null}, {}},
             {{"M_07", "M_07.jpg"}, {"M_08", "M_08.jpg"}, {"M_09", "M_09.jpg"}, {"M_10", "M_10.jpg"}, {"M_11", "M_11.jpg"}, {"M_12", "M_12.jpg"}}},
             {{{"Test3", "zoomToBlock3", "Test3", null, null, "1000", "Correct"}, {}},
             {{"T_01", "T_01.jpg"}, {"T_02", "T_02.jpg"}, {"T_03", "T_03.jpg"}, {"T_04", "T_04.jpg"}, {"T_05", "T_05.jpg"}, {"T_06", "T_06.jpg"}, {"T_07", "T_07.jpg"}, {"T_08", "T_08.jpg"}, {"T_09", "T_09.jpg"}}},
