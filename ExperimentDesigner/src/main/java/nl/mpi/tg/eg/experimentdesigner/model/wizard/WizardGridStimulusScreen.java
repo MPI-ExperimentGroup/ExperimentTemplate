@@ -44,10 +44,13 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 //        setStimulusMsDelay(0);
         setFullScreenGrid(false);
         setCodeAudio(false);
+        setAudioAB(false);
         setSdCardStimuli(false);
         setIntroAudio(null);
+        setCorrectAudio(null);
         setRewardImage(null);
         setIntroAudioDelay(0);
+        setSelectedPause(0);
         this.wizardScreenData.setButtonLabelEventTag("");
         this.wizardScreenData.setCentreScreen(true);
     }
@@ -62,9 +65,12 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         setFullScreenGrid(false);
         setSdCardStimuli(false);
         setCodeAudio(false);
+        setAudioAB(false);
         setIntroAudio(null);
+        setCorrectAudio(null);
         setRewardImage(null);
         setIntroAudioDelay(0);
+        setSelectedPause(0);
         this.wizardScreenData.setStimulusCodeFormat(codeFormat);
         this.wizardScreenData.setStimuliCount(maxStimuli);
         setRandomiseStimuli(randomiseStimuli);
@@ -104,28 +110,52 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenText(0, backgroundImage);
     }
 
-    final public void setIntroAudioDelay(int initialAudioDelay) {
-        this.wizardScreenData.setScreenIntegers(0, initialAudioDelay);
-    }
-
     final public void setIntroAudio(String initialAudio) {
         this.wizardScreenData.setScreenText(2, initialAudio);
     }
 
-    private String getRewardImage(WizardScreenData storedWizardScreenData) {
+    private String getIntroAudio(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(2);
+    }
+
+    final public void setCorrectAudio(String correctAudio) {
+        this.wizardScreenData.setScreenText(3, correctAudio);
+    }
+
+    private String getCorrectAudio(WizardScreenData storedWizardScreenData) {
         return storedWizardScreenData.getScreenText(3);
     }
 
+    private String getRewardImage(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(4);
+    }
+
     final public void setRewardImage(String rewardImage) {
-        this.wizardScreenData.setScreenText(3, rewardImage);
+        this.wizardScreenData.setScreenText(4, rewardImage);
+    }
+
+    private boolean isAudioAB(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenBoolean(4);
+    }
+
+    final public void setAudioAB(boolean audioAB) {
+        this.wizardScreenData.setScreenBoolean(4, audioAB);
     }
 
     private String getBackgroundStyle(WizardScreenData storedWizardScreenData) {
         return storedWizardScreenData.getScreenText(1);
     }
 
-    private String getIntroAudio(WizardScreenData storedWizardScreenData) {
-        return storedWizardScreenData.getScreenText(2);
+    final public void setIntroAudioDelay(int initialAudioDelay) {
+        this.wizardScreenData.setScreenIntegers(0, initialAudioDelay);
+    }
+
+    private int getSelectedPause(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenInteger(1);
+    }
+
+    final public void setSelectedPause(int selectedPause) {
+        this.wizardScreenData.setScreenIntegers(1, selectedPause);
     }
 
     private int getIntroAudioDelay(WizardScreenData storedWizardScreenData) {
@@ -150,7 +180,8 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             "Randomise Stimuli",
             "Full Screen Grid",
             "SDcard Stimuli",
-            "StimulusCodeAudio"
+            "StimulusCodeAudio",
+            "AudioAB"
         }[index];
     }
 
@@ -160,6 +191,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             "BackgroundImage",
             "BackgroundStyle",
             "IntroAudio",
+            "CorrectAudio",
             "RewardImage"
         }[index];
     }
@@ -171,7 +203,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenIntegerInfo(int index) {
-        return new String[]{"IntroAudioDelay"}[index];
+        return new String[]{"IntroAudioDelay", "SelectedPause"}[index];
     }
 
     public final void setStimuliSet(String[][] stimuliSet) {
@@ -388,23 +420,33 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             rightOverlayButton.getPresenterFeatureList().add(responseAudio2);
             stimulusRelatedTags.getPresenterFeatureList().add(rightOverlayButton);
         } else {
+            final PresenterFeature imageLoadedAction = hasMoreStimulusFeature.addFeature(FeatureType.triggerListener, null, "imageLoadedAction", "1", "1");
+            imageLoadedAction.addFeature(FeatureType.trigger, null, "loopAction");
+            final PresenterFeature loopAction = hasMoreStimulusFeature.addFeature(FeatureType.triggerListener, null, "loopAction", "1", "-1");
+            loopAction.addFeature(FeatureType.backgroundImage, null, "0", "", "");
+            loopAction.addFeature(FeatureType.disableStimulusButtons, null);
+            final PresenterFeature stimulusAudio = (isAudioAB(storedWizardScreenData)) ? loopAction.addFeature(FeatureType.stimulusCodeAudio, null, "500", "<code>a", Boolean.toString(false)).addFeature(FeatureType.stimulusCodeAudio, null, "0", "<code>b", Boolean.toString(false)) : loopAction.addFeature(FeatureType.stimulusAudio, null, "0", Boolean.toString(false));
+            stimulusAudio.addFeature(FeatureType.enableStimulusButtons, null);
+            stimulusAudio.addFeature(FeatureType.backgroundImage, null, "0", "", "backgroundHighlight");
+            final PresenterFeature pause2 = stimulusAudio.addFeature(FeatureType.pause, null, "3000");
+            pause2.addFeature(FeatureType.trigger, null, "loopAction");
+            hasMoreStimulusFeature.addFeature(FeatureType.disableStimulusButtons, null);
             for (String[] additionString : new String[][]{{"<code>_left.jpg", "borderedVideoLeft", "Left Overlay Button", "Left", "leftOverlayButton"}, {"<code>_right.jpg", "borderedVideoRight", "Right Overlay Button", "Right", "rightOverlayButton"}}) {
                 final PresenterFeature stimulusImage = hasMoreStimulusFeature.addFeature(FeatureType.stimulusCodeImage, null, "250", additionString[0], additionString[1]);
-                final PresenterFeature stimulusAudio = stimulusImage.addFeature(FeatureType.stimulusAudio, null, "0", Boolean.toString(false));
-                stimulusAudio.addFeature(FeatureType.backgroundImage, null, "0", "", "backgroundHighlight");
-                final PresenterFeature leftOverlayButton = stimulusAudio.addFeature(FeatureType.touchInputStimulusButton, additionString[2], additionString[3], "", additionString[4]);
+                final PresenterFeature leftOverlayButton = stimulusImage.addFeature(FeatureType.touchInputStimulusButton, additionString[2], additionString[3], "", additionString[4]);
                 leftOverlayButton.addFeature(FeatureType.disableStimulusButtons, null);
                 leftOverlayButton.addFeature(FeatureType.disablePauseTimers, null);
-                final PresenterFeature pause = leftOverlayButton.addFeature(FeatureType.pause, null, "1000");
+//                leftOverlayButton.addFeature(FeatureType.trigger, null, "buttonAction");
+                final PresenterFeature pause = leftOverlayButton.addFeature(FeatureType.pause, null, Integer.toString(getSelectedPause(storedWizardScreenData)));
                 pause.addFeature(FeatureType.clearPage, null);
                 if (getRewardImage(storedWizardScreenData) != null) {
                     pause.addFeature(FeatureType.backgroundImage, null, "0", getRewardImage(storedWizardScreenData), "");
                 }
-                final PresenterFeature stimulusCodeAudio = pause.addFeature(FeatureType.stimulusCodeAudio, null, "500", "Correct", "false");
+                final PresenterFeature stimulusCodeAudio = (getCorrectAudio(storedWizardScreenData) == null) ? pause.addFeature(FeatureType.pause, null, "1000") : pause.addFeature(FeatureType.stimulusCodeAudio, null, "500", getCorrectAudio(storedWizardScreenData), "false");
                 stimulusCodeAudio.addFeature(FeatureType.touchInputReportSubmit, null);
                 stimulusCodeAudio.addFeature(FeatureType.nextStimulus, null, "false");
-                final PresenterFeature pause2 = stimulusAudio.addFeature(FeatureType.pause, null, "3000");
-                pause2.addFeature(FeatureType.showStimulus, null);
+                stimulusImage.addFeature(FeatureType.disableStimulusButtons, null);
+                stimulusImage.addFeature(FeatureType.trigger, null, "imageLoadedAction");
             }
             stimulusRelatedTags = hasMoreStimulusFeature;
 
