@@ -33,6 +33,8 @@ public interface StimulusButton {
 
     void setEnabled(boolean enabled);
 
+    boolean isEnabled();
+
     void setVisible(boolean visible);
 
     void triggerSingleShotEventListner();
