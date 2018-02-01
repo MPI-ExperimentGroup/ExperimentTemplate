@@ -96,15 +96,15 @@ public class PlayhouseStudy {
 //        introductionAudio2.setStyleName("titleBarButton");
 //        introductionAudio3.setStyleName("titleBarButton");
         String[][][][] testList = new String[][][][]{
-            {{{"Practice", "zoomToGarden", "Practice", "P_00.jpg", "LoopAction", "1000", "Correct"}, {}},
+            {{{"Practice", "zoomToGarden", "Practice", "P_00.png", "AudioRepeat1", "1000", "Correct", null}, {}},
             {{"P_01_NL", "P_01_NL.jpg"}, {"P_02_NL", "P_02_NL.jpg"}, {"P_03_Eng", "P_03_Eng.jpg"}, {"P_04_Eng", "P_04_Eng.jpg"}}},
-            {{{"Matching1", "zoomToBlock1", "Matching1", null, "AudioAB", "2000", null}, {}},
+            {{{"Matching1", "zoomToBlock1", "Matching1", null, "AudioAB", "2000", null, "BeginMatching"}, {}},
             {{"M_01", "M_01.jpg"}, {"M_02", "M_02.jpg"}, {"M_03", "M_03.jpg"}, {"M_04", "M_04.jpg"}, {"M_05", "M_05.jpg"}, {"M_06", "M_06.jpg"}}},
-            {{{"Matching2", "zoomToBlock2", "Matching2", null, "AudioAB", "2000", null}, {}},
+            {{{"Matching2", "zoomToBlock2", "Matching2", null, "AudioAB", "2000", null, "ChangeMatching"}, {}},
             {{"M_07", "M_07.jpg"}, {"M_08", "M_08.jpg"}, {"M_09", "M_09.jpg"}, {"M_10", "M_10.jpg"}, {"M_11", "M_11.jpg"}, {"M_12", "M_12.jpg"}}},
-            {{{"Test3", "zoomToBlock3", "Test3", null, "AudioRepeat", "2000", null}, {}},
+            {{{"Test3", "zoomToBlock3", "Test3", null, "AudioRepeat2", "2000", null, "BeginTest"}, {}},
             {{"T_01", "T_01.jpg"}, {"T_02", "T_02.jpg"}, {"T_03", "T_03.jpg"}, {"T_04", "T_04.jpg"}, {"T_05", "T_05.jpg"}, {"T_06", "T_06.jpg"}, {"T_07", "T_07.jpg"}, {"T_08", "T_08.jpg"}, {"T_09", "T_09.jpg"}}},
-            {{{"Test4", "zoomToBlock4", "Test4", null, "AudioRepeat", "2000", null}, {}},
+            {{{"Test4", "zoomToBlock4", "Test4", null, "AudioRepeat2", "2000", null, "ChangeTest"}, {}},
             {{"T_10", "T_10.jpg"}, {"T_11", "T_11.jpg"}, {"T_12", "T_12.jpg"}, {"T_13", "T_13.jpg"}, {"T_14", "T_14.jpg"}, {"T_15", "T_15.jpg"}, {"T_16", "T_16.jpg"}, {"T_17", "T_17.jpg"}, {"T_18", "T_18.jpg"}}},};
 //        final WizardMenuScreen textMenuScreen = new WizardMenuScreen("TestMenu", "TestMenu", "TestMenu");
 //        textMenuScreen.setJumpToRandomScreen(true);
@@ -120,8 +120,8 @@ public class PlayhouseStudy {
             testStimulusScreen.setAudioAB(testSubList[0][0][4]);
             testStimulusScreen.setSelectedPause(Integer.parseInt(testSubList[0][0][5]));
             testStimulusScreen.setCorrectAudio(testSubList[0][0][6]);
-//            testStimulusScreen.setIntroAudio(testSubList[0][2]);
-//            testStimulusScreen.setIntroAudioDelay(2000);
+            testStimulusScreen.setIntroAudio(testSubList[0][0][7]);
+            testStimulusScreen.setIntroAudioDelay(2000);
 //            textMenuScreen.addTargetScreen(testStimulusScreen);
             wizardData.addScreen(testStimulusScreen);
             testStimulusScreen.setBackWizardScreen(backScreen);
