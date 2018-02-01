@@ -96,7 +96,7 @@ public class PlayhouseStudy {
 //        introductionAudio2.setStyleName("titleBarButton");
 //        introductionAudio3.setStyleName("titleBarButton");
         String[][][][] testList = new String[][][][]{
-            {{{"Practice", "zoomToGarden", "Practice", "P_00.jpg", null, "1000", "Correct"}, {}},
+            {{{"Practice", "zoomToGarden", "Practice", "P_00.jpg", "LoopAction", "1000", "Correct"}, {}},
             {{"P_01_NL", "P_01_NL.jpg"}, {"P_02_NL", "P_02_NL.jpg"}, {"P_03_Eng", "P_03_Eng.jpg"}, {"P_04_Eng", "P_04_Eng.jpg"}}},
             {{{"Matching1", "zoomToBlock1", "Matching1", null, "AudioAB", "2000", null}, {}},
             {{"M_01", "M_01.jpg"}, {"M_02", "M_02.jpg"}, {"M_03", "M_03.jpg"}, {"M_04", "M_04.jpg"}, {"M_05", "M_05.jpg"}, {"M_06", "M_06.jpg"}}},
