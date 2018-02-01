@@ -29,7 +29,8 @@ public class TriggerListener {
     final private int threshold;
     final private int maximum;
     final private TimedStimulusListener triggerListener;
-    private int triggerCounter = 0;
+    private int maximumCounter = 0;
+    private int thresholdCounter = 0;
 
     public TriggerListener(String listenerId, int threshold, int maximum, TimedStimulusListener triggerListener) {
         this.listenerId = listenerId;
@@ -43,9 +44,10 @@ public class TriggerListener {
     }
 
     public void trigger() {
-        triggerCounter++;
+        thresholdCounter++;
         boolean noMaximum = maximum <= 0;
-        if (triggerCounter >= threshold && (noMaximum || triggerCounter <= maximum)) {
+        if (thresholdCounter >= threshold && (noMaximum || maximumCounter <= maximum)) {
+            maximumCounter++;
             triggerListener.postLoadTimerFired();
         }
     }
