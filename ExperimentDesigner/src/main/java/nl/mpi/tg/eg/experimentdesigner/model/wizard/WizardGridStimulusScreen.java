@@ -44,7 +44,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 //        setStimulusMsDelay(0);
         setFullScreenGrid(false);
         setCodeAudio(false);
-        setAudioAB(null);
+        setAudioAB("");
         setSdCardStimuli(false);
         setIntroAudio(null);
         setCorrectAudio(null);
@@ -65,7 +65,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         setFullScreenGrid(false);
         setSdCardStimuli(false);
         setCodeAudio(false);
-        setAudioAB(null);
+        setAudioAB("");
         setIntroAudio(null);
         setCorrectAudio(null);
         setRewardImage(null);
@@ -420,7 +420,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             rightOverlayButton.getPresenterFeatureList().add(responseAudio2);
             stimulusRelatedTags.getPresenterFeatureList().add(rightOverlayButton);
         } else {
-            final PresenterFeature imageLoadedAction = hasMoreStimulusFeature.addFeature(FeatureType.triggerListener, null, "imageLoadedAction", ("AudioRepeat".equals(getAudioAB(storedWizardScreenData))) ? "2" : "1", "1");
+            final PresenterFeature imageLoadedAction = hasMoreStimulusFeature.addFeature(FeatureType.triggerListener, null, "imageLoadedAction", ("AudioRepeat2".equals(getAudioAB(storedWizardScreenData))) ? "2" : "1", "1");
             final PresenterFeature currentAction;
             if ("LoopAction".equals(getAudioAB(storedWizardScreenData))) {
                 imageLoadedAction.addFeature(FeatureType.trigger, null, "loopAction");
@@ -448,11 +448,15 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                     pause3a.addFeature(FeatureType.touchInputReportSubmit, null);
                     pause3a.addFeature(FeatureType.nextStimulus, null, "false");
                     break;
-                case "AudioRepeat":
+                case "AudioRepeat1":
+                case "AudioRepeat2":
                     final PresenterFeature repeatAudio = pause2.addFeature(FeatureType.stimulusAudio, null, "3000", Boolean.toString(false));
                     repeatAudio.addFeature(FeatureType.disableStimulusButtons, null);
                     repeatAudio.addFeature(FeatureType.disablePauseTimers, null);
                     repeatAudio.addFeature(FeatureType.clearPage, null);
+                    if (getRewardImage(storedWizardScreenData) != null) {
+                        repeatAudio.addFeature(FeatureType.backgroundImage, null, "0", getRewardImage(storedWizardScreenData), "");
+                    }
                     final PresenterFeature pause3b = repeatAudio.addFeature(FeatureType.pause, null, "1000");
                     pause3b.addFeature(FeatureType.touchInputReportSubmit, null);
                     pause3b.addFeature(FeatureType.nextStimulus, null, "false");
