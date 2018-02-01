@@ -139,8 +139,13 @@
                                 <pause msToNext="3000">
                                     <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;b" showPlaybackIndicator="false">
                                         <stimulusCodeAudio msToNext="3000" codeFormat="drukophetplaatje" showPlaybackIndicator="false">
-                                            <touchInputReportSubmit/>
-                                            <nextStimulus repeatIncorrect="false"/>
+                                            <disableStimulusButtons/>
+                                            <disablePauseTimers/>
+                                            <clearPage/>
+                                            <pause msToNext="1000">
+                                                <touchInputReportSubmit/>
+                                                <nextStimulus repeatIncorrect="false"/>
+                                            </pause>
                                         </stimulusCodeAudio>
                                     </stimulusCodeAudio>
                                 </pause>
@@ -222,8 +227,13 @@
                                 <pause msToNext="3000">
                                     <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;b" showPlaybackIndicator="false">
                                         <stimulusCodeAudio msToNext="3000" codeFormat="drukophetplaatje" showPlaybackIndicator="false">
-                                            <touchInputReportSubmit/>
-                                            <nextStimulus repeatIncorrect="false"/>
+                                            <disableStimulusButtons/>
+                                            <disablePauseTimers/>
+                                            <clearPage/>
+                                            <pause msToNext="1000">
+                                                <touchInputReportSubmit/>
+                                                <nextStimulus repeatIncorrect="false"/>
+                                            </pause>
                                         </stimulusCodeAudio>
                                     </stimulusCodeAudio>
                                 </pause>
@@ -304,8 +314,13 @@
                             <pause msToNext="3000">
                                 <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                                     <pause msToNext="3000">
-                                        <touchInputReportSubmit/>
-                                        <nextStimulus repeatIncorrect="false"/>
+                                        <disableStimulusButtons/>
+                                        <disablePauseTimers/>
+                                        <clearPage/>
+                                        <pause msToNext="1000">
+                                            <touchInputReportSubmit/>
+                                            <nextStimulus repeatIncorrect="false"/>
+                                        </pause>
                                     </pause>
                                 </stimulusAudio>
                             </pause>
@@ -385,8 +400,13 @@
                             <pause msToNext="3000">
                                 <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                                     <pause msToNext="3000">
-                                        <touchInputReportSubmit/>
-                                        <nextStimulus repeatIncorrect="false"/>
+                                        <disableStimulusButtons/>
+                                        <disablePauseTimers/>
+                                        <clearPage/>
+                                        <pause msToNext="1000">
+                                            <touchInputReportSubmit/>
+                                            <nextStimulus repeatIncorrect="false"/>
+                                        </pause>
                                     </pause>
                                 </stimulusAudio>
                             </pause>
