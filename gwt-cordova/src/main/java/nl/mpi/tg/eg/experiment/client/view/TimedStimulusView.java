@@ -23,6 +23,8 @@ import com.google.gwt.event.dom.client.CanPlayThroughEvent;
 import com.google.gwt.event.dom.client.CanPlayThroughHandler;
 import com.google.gwt.event.dom.client.EndedEvent;
 import com.google.gwt.event.dom.client.EndedHandler;
+import com.google.gwt.event.dom.client.ErrorEvent;
+import com.google.gwt.event.dom.client.ErrorHandler;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
@@ -144,10 +146,18 @@ public class TimedStimulusView extends ComplexView {
         if (styleName != null) {
             image.addStyleName(styleName);
         }
+        image.setVisible(false);
+        image.addErrorHandler(new ErrorHandler() {
+            @Override
+            public void onError(ErrorEvent event) {
+                // todo: consider adding an on error handler from the configuration file
+            }
+        });
         image.addLoadHandler(new LoadHandler() {
 
             @Override
             public void onLoad(LoadEvent event) {
+                image.setVisible(true);
                 shownStimulusListener.postLoadTimerFired();
                 Timer timer = new Timer() {
                     @Override
