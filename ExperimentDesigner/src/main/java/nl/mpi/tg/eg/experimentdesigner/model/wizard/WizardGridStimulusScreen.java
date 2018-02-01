@@ -422,11 +422,11 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         } else {
             final PresenterFeature imageLoadedAction = hasMoreStimulusFeature.addFeature(FeatureType.triggerListener, null, "imageLoadedAction", ("AudioRepeat".equals(getAudioAB(storedWizardScreenData))) ? "2" : "1", "1");
             final PresenterFeature currentAction;
-            if (getAudioAB(storedWizardScreenData) != null) {
-                currentAction = imageLoadedAction;
-            } else {
+            if ("LoopAction".equals(getAudioAB(storedWizardScreenData))) {
                 imageLoadedAction.addFeature(FeatureType.trigger, null, "loopAction");
                 currentAction = hasMoreStimulusFeature.addFeature(FeatureType.triggerListener, null, "loopAction", "1", "-1");
+            } else {
+                currentAction = imageLoadedAction;
             }
             currentAction.addFeature(FeatureType.backgroundImage, null, "0", "", "");
             currentAction.addFeature(FeatureType.disableStimulusButtons, null);
@@ -434,18 +434,29 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             stimulusAudio.addFeature(FeatureType.enableStimulusButtons, null);
             stimulusAudio.addFeature(FeatureType.backgroundImage, null, "0", "", "backgroundHighlight");
             final PresenterFeature pause2 = stimulusAudio.addFeature(FeatureType.pause, null, "3000");
-            if (("AudioAB".equals(getAudioAB(storedWizardScreenData)))) {
-                final PresenterFeature repeatAudioB = pause2.addFeature(FeatureType.stimulusCodeAudio, null, "3000", "<code>b", Boolean.toString(false));
-                final PresenterFeature drukophetplaatje = repeatAudioB.addFeature(FeatureType.stimulusCodeAudio, null, "3000", "drukophetplaatje", Boolean.toString(false));
-                drukophetplaatje.addFeature(FeatureType.touchInputReportSubmit, null);
-                drukophetplaatje.addFeature(FeatureType.nextStimulus, null, "false");
-            } else if (("AudioRepeat".equals(getAudioAB(storedWizardScreenData)))) {
-                final PresenterFeature repeatAudio = pause2.addFeature(FeatureType.stimulusAudio, null, "0", Boolean.toString(false));
-                final PresenterFeature pause3 = repeatAudio.addFeature(FeatureType.pause, null, "3000");
-                pause3.addFeature(FeatureType.touchInputReportSubmit, null);
-                pause3.addFeature(FeatureType.nextStimulus, null, "false");
-            } else {
-                pause2.addFeature(FeatureType.trigger, null, "loopAction");
+            switch (getAudioAB(storedWizardScreenData)) {
+                case "LoopAction":
+                    pause2.addFeature(FeatureType.trigger, null, "loopAction");
+                    break;
+                case "AudioAB":
+                    final PresenterFeature repeatAudioB = pause2.addFeature(FeatureType.stimulusCodeAudio, null, "3000", "<code>b", Boolean.toString(false));
+                    final PresenterFeature drukophetplaatje = repeatAudioB.addFeature(FeatureType.stimulusCodeAudio, null, "3000", "drukophetplaatje", Boolean.toString(false));
+                    drukophetplaatje.addFeature(FeatureType.disableStimulusButtons, null);
+                    drukophetplaatje.addFeature(FeatureType.disablePauseTimers, null);
+                    drukophetplaatje.addFeature(FeatureType.clearPage, null);
+                    final PresenterFeature pause3a = drukophetplaatje.addFeature(FeatureType.pause, null, "1000");
+                    pause3a.addFeature(FeatureType.touchInputReportSubmit, null);
+                    pause3a.addFeature(FeatureType.nextStimulus, null, "false");
+                    break;
+                case "AudioRepeat":
+                    final PresenterFeature repeatAudio = pause2.addFeature(FeatureType.stimulusAudio, null, "3000", Boolean.toString(false));
+                    repeatAudio.addFeature(FeatureType.disableStimulusButtons, null);
+                    repeatAudio.addFeature(FeatureType.disablePauseTimers, null);
+                    repeatAudio.addFeature(FeatureType.clearPage, null);
+                    final PresenterFeature pause3b = repeatAudio.addFeature(FeatureType.pause, null, "1000");
+                    pause3b.addFeature(FeatureType.touchInputReportSubmit, null);
+                    pause3b.addFeature(FeatureType.nextStimulus, null, "false");
+                    break;
             }
             hasMoreStimulusFeature.addFeature(FeatureType.disableStimulusButtons, null);
             for (String[] additionString : new String[][]{{"<code>_left.jpg", "borderedVideoLeft", "Left Overlay Button", "Left", "leftOverlayButton"}, {"<code>_right.jpg", "borderedVideoRight", "Right Overlay Button", "Right", "rightOverlayButton"}}) {
