@@ -138,17 +138,17 @@ public class PlayhouseStudy {
         wizardData.addScreen(completionScreen);
         completionScreen.setScreenTag("completion");
 
-        WizardAudioTestScreen atticScreen = new WizardAudioTestScreen("Attic", "&nbsp;", "continue button", "room_5");
+        WizardAudioTestScreen atticScreen = new WizardAudioTestScreen("Attic", "&nbsp;", "continue button", null);
         wizardData.addScreen(atticScreen);
         atticScreen.setBackgroundImage(backgroundImage);
         atticScreen.setBackgroundStyle("zoomToAttic");
         atticScreen.setAutoPlay(true);
-        atticScreen.setAutoNext(true);
+        atticScreen.setAutoNext(false);
         atticScreen.setAutoNextDelay(2000);
         atticScreen.setAudioHotKey("R1_MA_A");
-        atticScreen.setImageName("intro_1.jpg");
+        atticScreen.setImageName("Playroom.jpg");
         atticScreen.setNextHotKey("ENTER");
-        atticScreen.setStyleName("titleBarButton");
+        atticScreen.setStyleName("zoomToPlayroom");
         atticScreen.setBackWizardScreen(menuScreen);
         atticScreen.setNextWizardScreen(completionScreen);
         bluetoothInstructionsScreen.setBackWizardScreen(menuScreen);
@@ -173,7 +173,7 @@ public class PlayhouseStudy {
 //        fillerStimulusScreen.setBackWizardScreen(introductionAudio3);
 //        trainingStimulusScreen.setBackWizardScreen(menuScreen);
 //        textMenuScreen.setBackWizardScreen(menuScreen);
-//        textMenuScreen.setNextWizardScreen(atticScreen);
+        backScreen.setNextWizardScreen(atticScreen);
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
         wizardAboutScreen.setBackWizardScreen(menuScreen);
         completionScreen.setBackWizardScreen(menuScreen);
