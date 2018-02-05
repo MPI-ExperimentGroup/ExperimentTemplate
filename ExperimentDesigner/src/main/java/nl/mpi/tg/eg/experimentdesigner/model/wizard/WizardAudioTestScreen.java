@@ -179,25 +179,41 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
 //        populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.stimulus);
         final String backgroundImage = getBackgroundImage(storedWizardScreenData);
+        final PresenterFeature backgoundFeature;
         if (backgroundImage != null && !backgroundImage.isEmpty()) {
-            final PresenterFeature backgoundFeature = new PresenterFeature(FeatureType.backgroundImage, null);
+            backgoundFeature = new PresenterFeature(FeatureType.backgroundImage, null);
             backgoundFeature.addFeatureAttributes(FeatureAttribute.msToNext, "1000");
             backgoundFeature.addFeatureAttributes(FeatureAttribute.styleName, getBackgroundStyle(storedWizardScreenData));
             backgoundFeature.addFeatureAttributes(FeatureAttribute.src, backgroundImage);
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(backgoundFeature);
+        } else {
+            backgoundFeature = null;
         }
-        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
         final PresenterFeature presenterFeature;
-        presenterFeature = new PresenterFeature(FeatureType.audioButton, null);
-        presenterFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenMediaPath());
-        presenterFeature.addFeatureAttributes(FeatureAttribute.src, storedWizardScreenData.getScreenMediaPath());
-        presenterFeature.addFeatureAttributes(FeatureAttribute.poster, (getImageName(storedWizardScreenData) != null) ? getImageName(storedWizardScreenData) : storedWizardScreenData.getScreenMediaPath() + ".jpg");
-        presenterFeature.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(getAutoPlay(storedWizardScreenData)));
-        presenterFeature.addFeatureAttributes(FeatureAttribute.hotKey, getAudioHotKey(storedWizardScreenData));
+        if (storedWizardScreenData.getScreenMediaPath() != null) {
+            presenterFeature = new PresenterFeature(FeatureType.audioButton, null);
+            presenterFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenMediaPath());
+            presenterFeature.addFeatureAttributes(FeatureAttribute.src, storedWizardScreenData.getScreenMediaPath());
+            presenterFeature.addFeatureAttributes(FeatureAttribute.poster, (getImageName(storedWizardScreenData) != null) ? getImageName(storedWizardScreenData) : storedWizardScreenData.getScreenMediaPath() + ".jpg");
+            presenterFeature.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(getAutoPlay(storedWizardScreenData)));
+            presenterFeature.addFeatureAttributes(FeatureAttribute.hotKey, getAudioHotKey(storedWizardScreenData));
+        } else {
+            presenterFeature = new PresenterFeature(FeatureType.backgroundImage, null);
+            presenterFeature.addFeatureAttributes(FeatureAttribute.src, getImageName(storedWizardScreenData));
+            presenterFeature.addFeatureAttributes(FeatureAttribute.styleName, getStyleName(storedWizardScreenData));
+            presenterFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+        }
         if (getStyleName(storedWizardScreenData) != null) {
             presenterFeature.addFeatureAttributes(FeatureAttribute.styleName, getStyleName(storedWizardScreenData));
         }
-        storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(presenterFeature);
+        if (storedWizardScreenData.getScreenMediaPath() == null && backgoundFeature != null) {
+//            final PresenterFeature clearBackgroundImage = backgoundFeature.addFeature(FeatureType.backgroundImage, null, "0", "", "");
+            backgoundFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
+            backgoundFeature.getPresenterFeatureList().add(presenterFeature);
+        } else {
+            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
+            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(presenterFeature);
+        }
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
         if (getAutoNext(storedWizardScreenData)) {
             final PresenterFeature pauseFeature = new PresenterFeature(FeatureType.pause, null);
