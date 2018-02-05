@@ -504,7 +504,7 @@
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName="zoomToAttic">
             <htmlText featureText="&amp;nbsp;"/>
             <backgroundImage msToNext="0" src="Playroom.jpg" styleName="zoomToPlayroom">
-                <actionButton featureText="continue button" hotKey="ENTER">
+                <actionButton featureText="continue button" hotKey="ENTER" styleName="titleBarButton">
                     <autoNextPresenter/>
                 </actionButton>
             </backgroundImage>
