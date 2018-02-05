@@ -114,9 +114,9 @@ public class GuineaPigProject {
 //        introductionAudio1.setNextHotKey("ENTER");
 //        introductionAudio2.setNextHotKey("ENTER");
 //        introductionAudio3.setNextHotKey("ENTER");
-        introductionAudio1.setStyleName("titleBarButton");
-        introductionAudio2.setStyleName("titleBarButton");
-        introductionAudio3.setStyleName("titleBarButton");
+        introductionAudio1.setButtonStyle("titleBarButton");
+        introductionAudio2.setButtonStyle("titleBarButton");
+        introductionAudio3.setButtonStyle("titleBarButton");
 
 //        String[] fillerList = new String[]{};
         //            "intro_1",
@@ -200,7 +200,7 @@ public class GuineaPigProject {
         atticScreen.setAudioHotKey("R1_MA_A");
         atticScreen.setImageName("intro_1.jpg");
         atticScreen.setNextHotKey("ENTER");
-        atticScreen.setStyleName("titleBarButton");
+        atticScreen.setButtonStyle("titleBarButton");
         atticScreen.setBackWizardScreen(menuScreen);
         atticScreen.setNextWizardScreen(completionScreen);
         bluetoothInstructionsScreen.setBackWizardScreen(menuScreen);
