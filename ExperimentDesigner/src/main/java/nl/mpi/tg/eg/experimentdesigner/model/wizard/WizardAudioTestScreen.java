@@ -236,10 +236,13 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
                 actionButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, getNextHotKey(storedWizardScreenData));
             }
             if (getButtonStyle(storedWizardScreenData) != null) {
-                
-                actionButtonFeature.addFeatureAttributes(FeatureAttribute.styleName, getButtonStyle(storedWizardScreenData));
+                final PresenterFeature tableFeature = new PresenterFeature(FeatureType.table, null);
+                tableFeature.addFeatureAttributes(FeatureAttribute.styleName, getButtonStyle(storedWizardScreenData));
+                tableFeature.addFeature(FeatureType.row, null).addFeature(FeatureType.column, null, "").getPresenterFeatureList().add(actionButtonFeature);
+                presenterFeature.getPresenterFeatureList().add(tableFeature);
+            } else {
+                presenterFeature.getPresenterFeatureList().add(actionButtonFeature);
             }
-            presenterFeature.getPresenterFeatureList().add(actionButtonFeature);
             actionButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
         }
         return storedWizardScreenData.getPresenterScreen();
