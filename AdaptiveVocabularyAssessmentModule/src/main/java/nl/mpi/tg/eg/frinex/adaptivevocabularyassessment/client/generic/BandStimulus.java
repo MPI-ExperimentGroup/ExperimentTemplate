@@ -29,10 +29,11 @@ public abstract class BandStimulus extends AbstractStimulus {
     
     private long timeStamp;
    
-    public BandStimulus(String uniqueId, Tag tags[], String label, String ratingLabels, String correctResponses, int bandNumber) {
-        super(uniqueId, tags, label, ratingLabels, correctResponses);
-        this.bandNumber = bandNumber;
+    public BandStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, int bandNumber){
+      super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses);
+      this.bandNumber = bandNumber; 
     }
+    
     
     public int getBandNumber (){
         return this.bandNumber;

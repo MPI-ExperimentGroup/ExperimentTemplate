@@ -26,7 +26,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsBookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsNonWords1;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsNonWords2;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsWords1;
@@ -34,7 +34,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspo
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.RandomIndexing;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Vocabulary;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
@@ -49,6 +49,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
     private int wordsPerBand;
     private int wordsPerBandInSeries;
     private int nonWordsPerBlock;
+    private int averageNonWordPosition = 0;
 
     private ArrayList<ArrayList<AdVocAsStimulus>> words;
     private ArrayList<AdVocAsStimulus> nonwords;
@@ -94,6 +95,10 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
 
     public void setwordsPerBand(String wordsPerBand) {
         this.wordsPerBand = Integer.parseInt(wordsPerBand);
+    }
+
+    public void setaverageNonWordPosition(String averageNonWordPosition) {
+        this.averageNonWordPosition = Integer.parseInt(averageNonWordPosition);
     }
 
     public ArrayList<ArrayList<AdVocAsStimulus>> getWords() {
@@ -161,14 +166,16 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         return retVal;
     }
 
-// we already at the right band, the last band in the fast track with the correct answer
+    // we already at the right band, the last band in the fast track with the correct answer
     // return false if there is not enough words and nonwords
     @Override
     public boolean initialiseNextFineTuningTuple() {
         if (this.nonwords.size() < 1) {
+            this.errorMessage = "There is no non-words left.";
             return false;
         }
         if (this.words.get(this.currentBandIndex).size() < this.fineTuningNumberOfAtomsPerTuple - 1) {
+            this.errorMessage = "There is not enough stimuli for the band "+this.currentBandIndex;
             return false;
         }
         int nonWordPos = rnd.nextInt(this.fineTuningNumberOfAtomsPerTuple);
@@ -381,7 +388,6 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         keys.remove(one);
         keys.remove(nn);
 
-        
         if (perScore < 5) {
             retVal.put(perScore, sampleWords.get(bScore));
         } else {
@@ -389,8 +395,6 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
             String value = sampleWords.get(bandNumber);
             retVal.put(one, value);
         }
-        
-        
 
         for (Long key : keys) {
             if (perScore >= key - 5 && perScore < key + 5) {
@@ -403,7 +407,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
                 retVal.put(key, value);
             }
         }
-        
+
         if (perScore >= 95) {
             retVal.put(perScore, sampleWords.get(bScore));
         } else {
@@ -478,4 +482,6 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         }
         return retVal;
     }
+    
+    
 }

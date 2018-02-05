@@ -25,7 +25,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspo
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.AdVocAsStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

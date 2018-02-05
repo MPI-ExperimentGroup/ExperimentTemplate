@@ -41,12 +41,13 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     protected int numberOfBands = 0;
     protected int numberOfSeries = 0;
     protected int startBand = 0;
-    protected int averageNonWordPosition = 0;
     protected int fineTuningTupleLength = 0;
     protected int fineTuningNumberOfAtomsPerTuple;
     protected int fineTuningUpperBoundForCycles;
+    protected boolean fastTrackPresent = true;
+    protected boolean fineTuningFirstWrongOut = true;
 
-    private int bandScore = -1;
+    protected int bandScore = -1;
     protected long percentageScore = 0;
     protected Boolean isCorrectCurrentResponse;
     protected int currentBandIndex = 0;
@@ -57,7 +58,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
 
     // fast track stuff
     private int bestBandFastTrack = -1;
-    private boolean isFastTrackIsStillOn = true;
+    protected boolean isFastTrackIsStillOn = true;
     protected boolean secondChanceFastTrackIsFired = false;
     protected int timeTickEndFastTrack = -1;
 
@@ -65,19 +66,30 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     protected final ArrayList<RecordStimulus> tupleFT = new ArrayList<>(this.fineTuningNumberOfAtomsPerTuple);
 
     // fine tuning stopping
-    private boolean enoughFineTuningStimulae = true;
-    private int[] bandVisitCounter;
-    private int[] cycle2helper;
-    private boolean cycle2 = false;
-    private boolean champion = false;
-    private boolean looser = false;
-    private boolean justVisitedLastBand = false;
-    private boolean justVisitedFirstBand = false;
+    protected boolean enoughFineTuningStimulae = true;
+    protected int[] bandVisitCounter;
+    protected int[] cycle2helper;
+    protected boolean cycle2 = false;
+    protected boolean champion = false;
+    protected boolean looser = false;
+    protected boolean justVisitedLastBand = false;
+    protected boolean justVisitedFirstBand = false;
+    
+    protected String errorMessage;
+
 
     // add experiment specific stuff here
     // ...
     public void settype(String type) {
         this.type = Integer.parseInt(type);
+    }
+
+    public void setfastTrackPresent(String fastTrackPresent) {
+        this.fastTrackPresent = Boolean.parseBoolean(fastTrackPresent);
+    }
+
+    public void setfineTuningFirstWrongOut(String fineTuningFirstWrongOut) {
+        this.fineTuningFirstWrongOut = Boolean.parseBoolean(fineTuningFirstWrongOut);
     }
 
     public void setfineTuningNumberOfAtomsPerTuple(String fineTuningNumberOfAtomsPerTuple) {
@@ -96,10 +108,6 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         this.startBand = Integer.parseInt(startBand);
     }
 
-    public void setaverageNonWordPosition(String averageNonWordPosition) {
-        this.averageNonWordPosition = Integer.parseInt(averageNonWordPosition);
-    }
-    
     public void setfineTuningTupleLength(String fineTuningTupleLength) {
         this.fineTuningTupleLength = Integer.parseInt(fineTuningTupleLength);
     }
@@ -107,8 +115,6 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     public void setfineTuningUpperBoundForCycles(String fineTuningUpperBoundForCycles) {
         this.fineTuningUpperBoundForCycles = Integer.parseInt(fineTuningUpperBoundForCycles);
     }
-    
-   
 
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
@@ -124,7 +130,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         for (int i = 0; i < this.numberOfBands; i++) {
             this.bandVisitCounter[i] = 0;
         }
-        
+
         this.cycle2helper = new int[this.fineTuningUpperBoundForCycles * 2 + 1];
         for (int i = 0; i < this.fineTuningUpperBoundForCycles * 2 + 1; i++) {
             this.cycle2helper[i] = 0;
@@ -139,9 +145,6 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
 
     private HashMap<Long, Integer> generatePercentageBandTable() {
         HashMap<Long, Integer> retVal = new HashMap<Long, Integer>();
-        //TODO 
-        //-- when experiment finished, add user results inbetween (implementation of grfaiek)
-        //-- remove redundant 40 by formulae
         Integer value1 = this.percentageIntoBandNumber(1);
         retVal.put(new Long(1), value1);
         for (int p = 1; p <= 9; p++) {
@@ -210,14 +213,13 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     public int getEndFastTrackTimeTick() {
         return this.timeTickEndFastTrack;
     }
-    // prepared by next stimulus
 
+    // prepared by next stimulus
     @Override
     public RecordStimulus getCurrentStimulus() {
         return this.responseRecord.get(this.getCurrentStimulusIndex());
     }
 
-    // aka get current experiment 
     @Override
     public int getCurrentStimulusIndex() {
         return (this.responseRecord.size() - 1);
@@ -232,13 +234,17 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     // also set the band indices
     @Override
     public boolean hasNextStimulus(int increment) {
-        if (this.isFastTrackIsStillOn) { // fast track is still on, update it
-            this.isFastTrackIsStillOn = this.fastTrackToBeContinuedWithSecondChance();
-            if (this.isFastTrackIsStillOn) {
-                return true;
+        if (this.fastTrackPresent) {
+            if (this.isFastTrackIsStillOn) { // fast track is still on, update it
+                this.isFastTrackIsStillOn = this.fastTrackToBeContinuedWithSecondChance();
+                if (this.isFastTrackIsStillOn) {
+                    return true;
+                } else {
+                    // return false if not enough stimuli left
+                    return this.switchToFineTuning();
+                }
             } else {
-                // return false if not enough stimuli left
-                return this.switchToFineTuning();
+                return this.fineTuningToBeContinued();
             }
         } else {
             return this.fineTuningToBeContinued();
@@ -250,8 +256,12 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     @Override
     public void nextStimulus(int increment) {
         RecordStimulus bStimulus;
-        if (this.isFastTrackIsStillOn) {
-            bStimulus = this.deriveNextFastTrackStimulus();
+        if (this.fastTrackPresent) {
+            if (this.isFastTrackIsStillOn) {
+                bStimulus = this.deriveNextFastTrackStimulus();
+            } else {
+                bStimulus = this.tupleFT.remove(0);
+            }
         } else {
             bStimulus = this.tupleFT.remove(0);
         }
@@ -278,14 +288,15 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     @Override
     public String getHtmlStimuliReport() {
         String summary = this.getStringSummary("<tr>", "</tr>", "<td>", "</td>");
-        String inhoudFastTrack = this.getStringFastTrack("<tr>", "</tr>", "<td>", "</td>");
         String inhoudFineTuning = this.getStringFineTuningHistory("<tr>", "</tr>", "<td>", "</td>", "html");
         StringBuilder htmlStringBuilder = new StringBuilder();
         htmlStringBuilder.append("<p>User summary</p><table border=1>").append(summary).append("</table><br><br>");
-        htmlStringBuilder.append("<p>Fast Track History</p><table border=1>").append(inhoudFastTrack).append("</table><br><b>");
+        if (this.fastTrackPresent) {
+            String inhoudFastTrack = this.getStringFastTrack("<tr>", "</tr>", "<td>", "</td>");
+            htmlStringBuilder.append("<p>Fast Track History</p><table border=1>").append(inhoudFastTrack).append("</table><br><b>");
+        }
         htmlStringBuilder.append("<p>Fine tuning History</p><table border=1>").append(inhoudFineTuning).append("</table>");
         return htmlStringBuilder.toString();
-        //return "<table><tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr><tr><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>0</td></tr></table>";
     }
 
     @Override
@@ -402,12 +413,19 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         for (int i = 0; i < this.fineTuningNumberOfAtomsPerTuple; i++) {
             this.tupleFT.add(null);
         }
-        return true;
+        this.errorMessage = "This method must have been overriden in the implementing class";
+        return false;
     }
 
-    //(also) updates the indices
-    // may be experiment specific and overridden
     private boolean fineTuningToBeContinued() {
+        if (this.fineTuningFirstWrongOut) {
+            return this.fineTuningToBeContinuedFirstWrongOut();
+        } else {
+            return this.fineTuningToBeContinuedWholeTuple();
+        }
+    }
+
+    private boolean fineTuningToBeContinuedFirstWrongOut() {
 
         boolean retVal;
         int currentBandNumber = this.currentBandIndex + 1; // memoise currentBandNumber == index +1
@@ -460,7 +478,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
             // check if there are enough stimuli left
             this.enoughFineTuningStimulae = this.initialiseNextFineTuningTuple();
             if (!this.enoughFineTuningStimulae) {
-                System.out.println("Not enough fine-tuning compound stimula left for the band " + this.currentBandIndex);
+                System.out.println(this.errorMessage);
                 retVal = false;
                 this.bandScore = this.mostOftenVisitedBandNumber(this.bandVisitCounter, this.currentBandIndex);
             }
@@ -469,14 +487,82 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         return retVal;
     }
 
-    // can be overriden by the concrete implementation
+    protected boolean fineTuningToBeContinuedWholeTuple() {
+
+        boolean retVal;
+        int currentBandNumber = this.currentBandIndex + 1; // memoise currentBandNumber == index +1
+
+        if (this.tupleIsNotEmpty()) {
+            // we have not hit the last atom in the tuple yet
+            // continue
+            return true;
+        } else {
+            // register finishing band 
+            this.bandVisitCounter[this.currentBandIndex]++;
+
+            // analyse correctness of the last tuple as a whole
+            boolean allTupleCorrect = this.allTupleIsCorrect();
+
+            if (allTupleCorrect) {
+                if (this.currentBandIndex == this.numberOfBands - 1) { // the last band is hit
+                    if (this.justVisitedLastBand) {
+                        this.champion = true;
+                        this.bandScore = this.numberOfBands;
+                        retVal = false; // stop interation, the last band visied twice in a row
+                    } else {
+                        this.justVisitedLastBand = true; // the second trial to be sure
+                        // nextBand is the same
+                        retVal = true;
+                    }
+                } else {
+                    // ordinary next band iteration
+                    this.justVisitedLastBand = false;
+                    // go to the next band
+                    this.currentBandIndex++;
+                    retVal = true;
+                }
+            } else {
+                // register finishing band 
+                this.bandVisitCounter[this.currentBandIndex]++;
+                retVal = this.toBeContinuedLoopChecker();
+            }
+        }
+        if (retVal) {
+            shiftFIFO(cycle2helper, currentBandNumber); // update the loop detector
+            // check if there are enough stimuli left
+            this.enoughFineTuningStimulae = this.initialiseNextFineTuningTuple();
+            if (!this.enoughFineTuningStimulae) {
+                System.out.println(this.errorMessage);
+                retVal = false;
+                this.bandScore = this.mostOftenVisitedBandNumber(this.bandVisitCounter, this.currentBandIndex);
+            }
+
+        }
+        return retVal;
+    }
+
+    protected boolean tupleIsNotEmpty() {
+        return this.tupleFT.size() > 0;
+    }
+
+    protected boolean allTupleIsCorrect() {
+        boolean allTupleCorrect = true;
+         int lastIndex = this.responseRecord.size() - 1;
+        for (int i = 0; i < this.fineTuningNumberOfAtomsPerTuple; i++) {
+            if (!this.responseRecord.get(lastIndex - i).getCorrectness()) {
+                allTupleCorrect = false;
+                break;
+            }
+        }
+        return allTupleCorrect;
+    }
+
     protected long bandNumberIntoPercentage(int bandNumber) {
         double tmp = ((double) bandNumber * 100.0) / this.numberOfBands;
         long retVal = Math.round(tmp);
         return retVal;
     }
 
-    // can be overriden by the concrete implementation
     protected int percentageIntoBandNumber(long percentage) {
         float tmp = ((float) percentage * this.numberOfBands) / 100;
         int retVal = Math.round(tmp);
@@ -488,13 +574,12 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
 
     }
 
-    // may be experiment specific and overridden
-    private boolean toBeContinuedLoopChecker() {
+    protected boolean toBeContinuedLoopChecker() {
         boolean retVal;
         // detecting is should be stopped
         this.cycle2 = detectLoop(cycle2helper);
         if (this.cycle2) {
-            System.out.println("Detected: "+this.fineTuningUpperBoundForCycles +" times oscillation between two neighbouring bands");
+            System.out.println("Detected: " + this.fineTuningUpperBoundForCycles + " times oscillation between two neighbouring bands");
             this.bandScore = this.cycle2helper[cycle2helper.length - 1];
 
             //Here implemented loop-based approach , with the last element excluded from loop detection

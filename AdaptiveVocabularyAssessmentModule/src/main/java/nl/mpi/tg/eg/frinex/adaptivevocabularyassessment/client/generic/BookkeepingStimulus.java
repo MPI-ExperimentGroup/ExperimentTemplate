@@ -23,29 +23,32 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
  */
 /**
  * Generic BookkeepingStimulus class.
+ *
  * @param <T> userRecation, can be string, boolean, double, etc.
  */
-public abstract class BookkeepingStimulus<T> extends BandStimulus{
+public abstract class BookkeepingStimulus<T> extends BandStimulus {
 
-   
     protected T userReaction; // can be string, boolean, double, etc.
-    private Boolean correctness;
+    protected Boolean correctness;
 
-    public BookkeepingStimulus(String uniqueId, Tag tags[], String label, String ratingLabels, String correctResponses, int bandNumber) {
-        //BandStimulus(String uniqueId, Tag tags[], String label, String ratingLabels, String correctResponses, int bandNumber)
-        super(uniqueId, tags, label, ratingLabels, correctResponses, bandNumber);
+    /*
+    public BandStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, int bandNumber){
+     */
+    public BookkeepingStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, int bandNumber) {
+        super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses, bandNumber);
         this.userReaction = null;
         this.correctness = null;
     }
-    
+
     // injection
     public BookkeepingStimulus(BandStimulus stimulus) {
-        //BandStimulus(String uniqueId, Tag tags[], String label, String ratingLabels, String correctResponses, int bandNumber)
-        super(stimulus.getUniqueId(), stimulus.getTags().toArray(new Tag[0]), stimulus.getLabel(), stimulus.getRatingLabels(), stimulus.getCorrectResponses(), stimulus.getBandNumber());
+       super(stimulus.getUniqueId(), stimulus.getTags().toArray(new Tag[0]), stimulus.getLabel(), 
+                stimulus.getCode(), stimulus.getPauseMs(), stimulus.getAudio(), stimulus.getVideo(), stimulus.getImage(), 
+                stimulus.getRatingLabels(), stimulus.getCorrectResponses(), stimulus.getBandNumber());
         this.userReaction = null;
         this.correctness = null;
     }
-   
+
     public T getReaction() {
         return this.userReaction;
     }
@@ -62,7 +65,5 @@ public abstract class BookkeepingStimulus<T> extends BandStimulus{
     public void setCorrectness(boolean eval) {
         this.correctness = eval;
     }
-    
-  
 
 }
