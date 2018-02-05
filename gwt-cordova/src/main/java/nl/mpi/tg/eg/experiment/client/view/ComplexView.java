@@ -104,7 +104,7 @@ public class ComplexView extends SimpleView {
 
     public void startCell(String styleName) {
         cellPanel = new VerticalPanel();
-        if (styleName != null) {
+        if (styleName != null && !styleName.isEmpty()) {
             cellPanel.addStyleName(styleName);
         }
         cellPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
