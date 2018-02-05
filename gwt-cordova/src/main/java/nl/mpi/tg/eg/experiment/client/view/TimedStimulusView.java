@@ -189,7 +189,7 @@ public class TimedStimulusView extends ComplexView {
     @Deprecated
     public void addTimedImage(SafeUri imagePath, int percentOfPage, int maxHeight, int maxWidth, final String animateStyle, final Integer fixedPositionY, final int postLoadMs, final TimedStimulusListener shownStimulusListener, final TimedStimulusListener timedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
         final Image image = new Image(imagePath);
-        if (animateStyle != null) {
+        if (animateStyle != null && !animateStyle.isEmpty()) {
             image.addStyleName(animateStyle);
             if (fixedPositionY != null) {
                 image.getElement().getStyle().setLeft(fixedPositionY, Style.Unit.PCT);
