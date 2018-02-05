@@ -166,6 +166,7 @@
                                         <include>**/*.ogg</include>
                                         <include>**/*.ogv</include>
                                         <include>**/*.mp4</include>
+                                        <include>**/*.mp3</include>
                                     </includes>
 <!--                                    <excludes>
                                         <exclude>**/*.xlsx</exclude>
