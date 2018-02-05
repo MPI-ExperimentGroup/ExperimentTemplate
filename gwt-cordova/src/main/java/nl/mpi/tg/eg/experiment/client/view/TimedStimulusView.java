@@ -107,11 +107,11 @@ public class TimedStimulusView extends ComplexView {
 //            this.getElement().getStyle().setProperty("backgroundSize", "100% 100%");
         this.getElement().getStyle().setProperty("backgroundRepeat", "no-repeat");
         this.getElement().getStyle().setProperty("backgroundPosition", "50% 50%");
+        // remove the custom styles but keep the page width style
+        this.setStyleName(this.getStyleName().contains("normalWidth") ? "normalWidth" : "narrowWidth");
         if (styleName != null && !styleName.isEmpty()) {
             this.addStyleName(styleName);
         } else {
-            // remove the custom styles but keep the page width style
-            this.setStyleName(this.getStyleName().contains("normalWidth") ? "normalWidth" : "narrowWidth");
             this.getElement().getStyle().setProperty("backgroundSize", "cover");
 //            resizeView(); // this is to put back the screen size styles
         }
