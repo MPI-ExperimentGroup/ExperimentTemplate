@@ -148,7 +148,8 @@ public class PlayhouseStudy {
         atticScreen.setAudioHotKey("R1_MA_A");
         atticScreen.setImageName("Playroom.jpg");
         atticScreen.setNextHotKey("ENTER");
-        atticScreen.setStyleName("zoomToPlayroom");
+        atticScreen.setImageStyle("zoomToPlayroom");
+        atticScreen.setButtonStyle("titleBarButton");
         atticScreen.setBackWizardScreen(menuScreen);
         atticScreen.setNextWizardScreen(completionScreen);
         bluetoothInstructionsScreen.setBackWizardScreen(menuScreen);
