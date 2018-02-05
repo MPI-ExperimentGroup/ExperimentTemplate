@@ -160,14 +160,25 @@
                             <resources>          
                                 <resource>
                                     <directory>src/main/static/${experiment.configuration.name}</directory>
-                                    <excludes>
+                                    <includes>
+                                        <include>**/*.jpg</include>
+                                        <include>**/*.png</include>
+                                        <include>**/*.ogg</include>
+                                        <include>**/*.ogv</include>
+                                        <include>**/*.mp4</include>
+                                    </includes>
+<!--                                    <excludes>
                                         <exclude>**/*.xlsx</exclude>
                                         <exclude>**/*.docx</exclude>
                                         <exclude>**/*.mov</exclude>
                                         <exclude>**/*.wav</exclude>
                                         <exclude>**/*.avi</exclude>
                                         <exclude>**/*.mpeg</exclude>
-                                    </excludes>            
+                                        <exclude>**/*.zip</exclude>
+                                        <exclude>**/*.tar</exclude>
+                                        <exclude>**/*.txt</exclude>
+                                        <exclude>**/*.sh</exclude>
+                                    </excludes>            -->
                                 </resource>
                             </resources>              
                         </configuration>                                                    
