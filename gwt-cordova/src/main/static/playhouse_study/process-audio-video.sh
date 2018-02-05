@@ -17,8 +17,15 @@ for filePath in */*.mpeg ; do
     ffmpeg -n -i "$filePath" -c:v libx264  -b:v 500k -vf "scale=640:-1" -r 25 -profile:v baseline -level 3.0 -c:a aac -strict -2 -ar 44100 -ac 1 -b:a 64k "${filePath%.*}".mp4
 done
 
-for filePath in */*.wav ; do 
+for filePath in */*.wav *.wav ; do 
     echo $filePath
     ffmpeg -n -i "$filePath" -acodec libmp3lame "${filePath%.*}".mp3 
     ffmpeg -n -i "$filePath" -acodec libvorbis "${filePath%.*}".ogg 
+done
+
+for filePath in *.jpg ; do 
+# by changing the suffix of the original, it will not be included in the final app, which is needed to keep the app small
+        echo $filePath
+        mv -n $filePath $filePath-original
+        convert $filePath-original -resize 640x640\> $filePath
 done
