@@ -403,7 +403,7 @@
             </audioButton>
         </backgroundImage>
     </presenter>
-    <presenter back="Test3" displayOrder="10" menuLabel="Test4" type="stimulus" self="Test4" title="Test4">
+    <presenter back="Test3" displayOrder="10" menuLabel="Test4" next="Attic" type="stimulus" self="Test4" title="Test4">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock4">
             <audioButton eventTag="ChangeTest" src="ChangeTest" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
@@ -501,13 +501,14 @@
         <createUserButton featureText="Opnieuw beginnen" target="Edit_User"/>
     </presenter>
     <presenter back="Menu" displayOrder="12" menuLabel="Attic" next="completion" type="stimulus" self="Attic" title="Attic">
-        <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName="zoomToAttic"/>
-        <htmlText featureText="&amp;nbsp;"/>
-        <audioButton eventTag="room_5" src="room_5" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
-            <pause msToNext="2000">
-                <autoNextPresenter/>
-            </pause>
-        </audioButton>
+        <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName="zoomToAttic">
+            <htmlText featureText="&amp;nbsp;"/>
+            <backgroundImage msToNext="0" src="Playroom.jpg" styleName="zoomToPlayroom">
+                <actionButton featureText="continue button" hotKey="ENTER">
+                    <autoNextPresenter/>
+                </actionButton>
+            </backgroundImage>
+        </backgroundImage>
     </presenter>
     <presenter back="Menu" displayOrder="13" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
