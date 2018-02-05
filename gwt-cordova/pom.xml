@@ -121,7 +121,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>adaptive-vocabulary-assessment-module</artifactId>
-            <version>${project.version}</version>
+            <version>0.1-testing-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
@@ -173,7 +173,7 @@
                         </configuration>                                                    
                     </execution>                   
                     <execution>
-                        <id>copy-setup-cordova-script</id>
+                        <id>copy-setup-cordova-electron-scripts</id>
                         <phase>validate</phase>
                         <goals>
                             <goal>copy-resources</goal>
@@ -185,6 +185,13 @@
                                     <directory>${basedir}/src/main/cordova</directory>
                                     <includes>
                                         <include>setup-cordova.sh</include>
+                                    </includes>  
+                                    <filtering>true</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>${basedir}/src/main/electron</directory>
+                                    <includes>
+                                        <include>setup-electron.sh</include>
                                     </includes>  
                                     <filtering>true</filtering>
                                 </resource>
@@ -561,6 +568,7 @@
                     <finalName>${project.build.finalName}</finalName>
                     <descriptors>
                         <descriptor>${project.build.sourceDirectory}/../cordova/cordova-assembly.xml</descriptor>
+                        <descriptor>${project.build.sourceDirectory}/../electron/electron-assembly.xml</descriptor>
                         <!--<descriptor>${project.build.sourceDirectory}/../chromeapp/chromeapp-assembly.xml</descriptor>-->
                     </descriptors>
                     <runOnlyAtExecutionRoot>true</runOnlyAtExecutionRoot>
