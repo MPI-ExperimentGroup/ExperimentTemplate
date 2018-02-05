@@ -179,6 +179,18 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
     will-change: transform;
 }
 
+.zoomToPlayroom {
+    background-size: contain;
+    animation-name: zoomToGardenKeyFrames;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: reverse;
+    animation-fill-mode: forwards;
+    will-change: transform;
+}
+
 .zoomToBlock1 {
     background-size: contain;
     animation-name: zoomToBlock1KeyFrames;
