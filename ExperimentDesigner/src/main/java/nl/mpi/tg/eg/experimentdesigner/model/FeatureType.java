@@ -34,12 +34,12 @@ public enum FeatureType {
     image(true, false, new FeatureAttribute[]{src, styleName, msToNext}),
     menuItem(false, true, new FeatureAttribute[]{target, hotKey}),
     //    popupMessage(true, true, null),
-    loadSubsetStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, condition0Tag, condition1Tag, condition2Tag}, true, true, Contitionals.none),
-    loadStimulus(false, false, new FeatureAttribute[]{eventTag, minStimuliPerTag, maxStimuliPerTag, maxStimuli, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, Contitionals.hasMoreStimulus),
-    withMatchingStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, randomise, repeatCount, repeatRandomWindow, matchingRegex}, false, false, Contitionals.hasMoreStimulus),
-    loadSdCardStimulus(false, false, new FeatureAttribute[]{eventTag, /*minStimuliPerTag, maxStimuliPerTag,*/ maxStimuli, excludeRegex, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, Contitionals.hasMoreStimulus),
-    loadAllStimulus(false, false, new FeatureAttribute[]{eventTag, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, false, Contitionals.hasMoreStimulus),
-    currentStimulusHasTag(true, false, new FeatureAttribute[]{msToNext}, true, false, Contitionals.hasStimulusTag),
+    loadSubsetStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, condition0Tag, condition1Tag, condition2Tag}, true, true, false, Contitionals.none),
+    loadStimulus(false, false, new FeatureAttribute[]{eventTag, minStimuliPerTag, maxStimuliPerTag, maxStimuli, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.hasMoreStimulus),
+    withMatchingStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, randomise, repeatCount, repeatRandomWindow, matchingRegex}, false, false, false, Contitionals.hasMoreStimulus),
+    loadSdCardStimulus(false, false, new FeatureAttribute[]{eventTag, /*minStimuliPerTag, maxStimuliPerTag,*/ maxStimuli, excludeRegex, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.hasMoreStimulus),
+    loadAllStimulus(false, false, new FeatureAttribute[]{eventTag, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, false, false, Contitionals.hasMoreStimulus),
+    currentStimulusHasTag(true, false, new FeatureAttribute[]{msToNext}, true, false, false, Contitionals.hasStimulusTag),
     showStimuliReport(false, false, null),
     sendStimuliReport(false, false, new FeatureAttribute[]{type}),
     targetButton(false, true, new FeatureAttribute[]{target, styleName}),
@@ -55,8 +55,8 @@ public enum FeatureType {
     ratingButton(false, false, new FeatureAttribute[]{eventTier, ratingLabels, ratingLabelLeft, ratingLabelRight}),
     stimulusFreeText(true, true, new FeatureAttribute[]{validationRegex, allowedCharCodes, hotKey, styleName}),
     stimulusRatingButton(false, false, new FeatureAttribute[]{eventTier, ratingLabelLeft, ratingLabelRight}),
-    stimulusHasRatingOptions(true, false, new FeatureAttribute[]{}, false, false, Contitionals.hasTrueFalseCondition),
-    stimulusHasResponse(true, false, new FeatureAttribute[]{}, false, false, Contitionals.hasTrueFalseCondition),
+    stimulusHasRatingOptions(true, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition),
+    stimulusHasResponse(true, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition),
     ratingFooterButton(false, true, new FeatureAttribute[]{eventTier, ratingLabels, ratingLabelLeft, ratingLabelRight}),
     targetFooterButton(false, true, new FeatureAttribute[]{target}),
     actionFooterButton(true, true, new FeatureAttribute[]{eventTag, hotKey}),
@@ -67,7 +67,7 @@ public enum FeatureType {
     metadataField(false, false, new FeatureAttribute[]{fieldName}),
     stimulusMetadataField(false, false, new FeatureAttribute[]{fieldName}),
     metadataFieldConnection(false, false, new FeatureAttribute[]{fieldName, linkedFieldName}),
-    saveMetadataButton(true, true, new FeatureAttribute[]{sendData, networkErrorMessage}, false, false, Contitionals.hasErrorSuccess),
+    saveMetadataButton(true, true, new FeatureAttribute[]{sendData, networkErrorMessage}, false, false, false, Contitionals.hasErrorSuccess),
     createUserButton(false, true, new FeatureAttribute[]{target}),
     selectUserMenu(false, false, null),
     eraseLocalStorageButton(false, false, null),
@@ -80,9 +80,9 @@ public enum FeatureType {
     hideStimulusButtons(false, false, null),
     showStimulusButtons(false, false, null),
     displayCompletionCode(false, false, null),
-    generateCompletionCode(false, false, null, false, false, Contitionals.hasErrorSuccess),
-    sendAllData(false, false, null, false, false, Contitionals.hasErrorSuccess),
-    sendMetadata(false, false, null, false, false, Contitionals.hasErrorSuccess),
+    generateCompletionCode(false, false, null, false, false, false, Contitionals.hasErrorSuccess),
+    sendAllData(false, false, null, false, false, false, Contitionals.hasErrorSuccess),
+    sendMetadata(false, false, null, false, false, false, Contitionals.hasErrorSuccess),
     eraseLocalStorageOnWindowClosing(false, false, null),
     //    nextStimulus(false, false, null),
     keepStimulus(false, false, null),
@@ -99,15 +99,15 @@ public enum FeatureType {
     prevStimulus(false, false, new FeatureAttribute[]{/*eventTag,*/repeatIncorrect}),
     nextMatchingStimulus(false, false, null),
     addKinTypeGui(false, false, new FeatureAttribute[]{diagramName}),
-    hasGetParameter(true, false, new FeatureAttribute[]{parameterName}, false, false, Contitionals.hasTrueFalseCondition),
+    hasGetParameter(true, false, new FeatureAttribute[]{parameterName}, false, false, false, Contitionals.hasTrueFalseCondition),
     activateRandomItem(false, false, new FeatureAttribute[]{}),
     autoNextPresenter(false, false, new FeatureAttribute[]{target}),
     logTimeStamp(false, false, new FeatureAttribute[]{eventTag}),
     audioButton(true, false, new FeatureAttribute[]{eventTag, poster, autoPlay, hotKey, styleName}),
-    preloadAllStimuli(true, false, null, true, false, Contitionals.none),
-    showStimulus(true, false, null, false, false, Contitionals.none), // todo: should this be here? or should it have an increment for next back etc
-    showStimulusGrid(true, false, new FeatureAttribute[]{maxStimuli, columnCount, imageWidth, eventTag, animate}, true, false, Contitionals.hasCorrectIncorrect),
-    matchingStimulusGrid(false, false, new FeatureAttribute[]{columnCount, maxWidth, animate, matchingRegex, maxStimuli, randomise}, false, false, Contitionals.hasCorrectIncorrect),
+    preloadAllStimuli(true, false, null, true, false, false, Contitionals.none),
+    showStimulus(true, false, null, false, false, false, Contitionals.none), // todo: should this be here? or should it have an increment for next back etc
+    showStimulusGrid(true, false, new FeatureAttribute[]{maxStimuli, columnCount, imageWidth, eventTag, animate}, true, false, false, Contitionals.hasCorrectIncorrect),
+    matchingStimulusGrid(false, false, new FeatureAttribute[]{columnCount, maxWidth, animate, matchingRegex, maxStimuli, randomise}, false, false, false, Contitionals.hasCorrectIncorrect),
     pause(true, false, new FeatureAttribute[]{msToNext}),
     triggerListener(true, false, new FeatureAttribute[]{listenerId, threshold, maximum}),
     trigger(false, false, new FeatureAttribute[]{listenerId}),
@@ -127,7 +127,7 @@ public enum FeatureType {
     endOfStimulus(true, false, null),
     hasTag(true, false, null),
     withoutTag(true, false, null),
-    existingUserCheck(true, false, null, false, false, Contitionals.hasUserCount),
+    existingUserCheck(true, false, null, false, false, false, Contitionals.hasUserCount),
     multipleUsers(true, false, null),
     singleUser(true, false, null),
     aboveThreshold(true, false, null),
@@ -148,7 +148,7 @@ public enum FeatureType {
     stimulusImageCapture(true, true, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext}),
     //    captureStimulusImage(true, true, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth}),
     VideoPanel(false, false, new FeatureAttribute[]{mp4, ogg, webm, percentOfPage, maxHeight, maxWidth, poster}),
-    AnnotationTimelinePanel(true, false, new FeatureAttribute[]{mp4, ogg, webm, poster, eventTag, columnCount, maxStimuli}, true, false, Contitionals.none),
+    AnnotationTimelinePanel(true, false, new FeatureAttribute[]{mp4, ogg, webm, poster, eventTag, columnCount, maxStimuli}, true, false, false, Contitionals.none),
     startAudioRecorder(false, false, new FeatureAttribute[]{wavFormat, filePerStimulus, eventTag}),
     stopAudioRecorder(false, false, new FeatureAttribute[]{}),
     startAudioRecorderTag(false, false, new FeatureAttribute[]{eventTier}),
@@ -157,29 +157,30 @@ public enum FeatureType {
     userInfo(false, false, null),
     versionData(false, false, null),
     preventWindowClose(false, true, null),
-    showColourReport(true, false, new FeatureAttribute[]{scoreThreshold}, false, false, Contitionals.hasThreshold),
+    showColourReport(true, false, new FeatureAttribute[]{scoreThreshold}, false, false, false, Contitionals.hasThreshold),
     // @todo: groupMembers could be used to determing the sequence of who goes when and therefore could be changed to groupMembersSequence
-    groupNetwork(true, false, new FeatureAttribute[]{groupMembers, groupCommunicationChannels, phasesPerStimulus}, false, false, Contitionals.hasGroupActivities),
-    groupNetworkActivity(true, false, new FeatureAttribute[]{groupRole}, false, false, Contitionals.none),
+    groupNetwork(true, false, new FeatureAttribute[]{groupMembers, groupCommunicationChannels, phasesPerStimulus}, false, false, false, Contitionals.hasGroupActivities),
+    groupNetworkActivity(true, false, new FeatureAttribute[]{groupRole}, false, false, false, Contitionals.none),
     groupMemberCodeLabel(false, false, new FeatureAttribute[]{styleName}),
     groupMemberLabel(false, false, new FeatureAttribute[]{styleName}),
     groupMessageLabel(false, false, new FeatureAttribute[]{styleName}),
     groupResponseStimulusImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, animate}),
-    groupResponseFeedback(false, false, new FeatureAttribute[]{}, false, false, Contitionals.hasCorrectIncorrect),
+    groupResponseFeedback(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasCorrectIncorrect),
     groupScoreLabel(false, false, new FeatureAttribute[]{styleName}),
     groupChannelScoreLabel(false, false, new FeatureAttribute[]{styleName}),
     scoreLabel(false, false, new FeatureAttribute[]{styleName}),
     submitGroupEvent(false, false, null),
-    clearCurrentScore(false, false, new FeatureAttribute[]{}, false, false, Contitionals.none),
-    scoreIncrement(true, false, new FeatureAttribute[]{scoreValue}, false, false, Contitionals.none),
-    bestScoreAboveThreshold(true, false, new FeatureAttribute[]{scoreThreshold}, false, false, Contitionals.hasThreshold),
-    scoreAboveThreshold(true, false, new FeatureAttribute[]{scoreThreshold}, false, false, Contitionals.hasThreshold),
-    resetStimulus(false, false, new FeatureAttribute[]{target}, false, false, Contitionals.none),
-    submitTestResults(true, false, null, false, false, Contitionals.hasErrorSuccess);
+    clearCurrentScore(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.none),
+    scoreIncrement(true, false, new FeatureAttribute[]{scoreValue}, false, false, false, Contitionals.none),
+    bestScoreAboveThreshold(true, false, new FeatureAttribute[]{scoreThreshold}, false, false, false, Contitionals.hasThreshold),
+    scoreAboveThreshold(true, false, new FeatureAttribute[]{scoreThreshold}, false, false, false, Contitionals.hasThreshold),
+    resetStimulus(false, false, new FeatureAttribute[]{target}, false, false, false, Contitionals.none),
+    submitTestResults(true, false, null, false, false, false, Contitionals.hasErrorSuccess);
     private final boolean canHaveFeatures;
     private final boolean canHaveText;
     private final boolean canHaveStimulusTags; // todo: this could well be canHaveTagList so that it is more generic
     private final boolean canHaveRandomGrouping;
+    private final boolean canHaveUndefinedAttribute;
     private final FeatureAttribute[] featureAttributes;
     private final Contitionals contitionals;
 
@@ -202,15 +203,17 @@ public enum FeatureType {
         this.contitionals = Contitionals.none;
         this.canHaveStimulusTags = false;
         this.canHaveRandomGrouping = false;
+        this.canHaveUndefinedAttribute = false;
     }
 
-    private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean canHaveStimulus, boolean canHaveRandomGrouping, Contitionals contitionals) {
+    private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean canHaveStimulus, boolean canHaveRandomGrouping, boolean canHaveUndefinedAttribute, Contitionals contitionals) {
         this.canHaveFeatures = canHaveFeatures;
         this.canHaveText = canHaveText;
         this.featureAttributes = featureAttributes;
         this.canHaveStimulusTags = canHaveStimulus;
         this.canHaveRandomGrouping = canHaveRandomGrouping;
         this.contitionals = contitionals;
+        this.canHaveUndefinedAttribute = canHaveUndefinedAttribute;
     }
 
     public boolean canHaveFeatures() {
@@ -227,6 +230,10 @@ public enum FeatureType {
 
     public boolean isCanHaveRandomGrouping() {
         return canHaveRandomGrouping;
+    }
+
+    public boolean isCanHaveUndefinedAttribute() {
+        return canHaveUndefinedAttribute;
     }
 
     public FeatureAttribute[] getFeatureAttributes() {
