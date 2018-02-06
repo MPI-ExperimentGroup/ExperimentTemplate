@@ -44,6 +44,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 //        setStimulusMsDelay(0);
         setFullScreenGrid(false);
         setCodeAudio(false);
+        setRememberLastStimuli(true);
         setAudioAB("");
         setSdCardStimuli(false);
         setIntroAudio(null);
@@ -65,6 +66,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         setFullScreenGrid(false);
         setSdCardStimuli(false);
         setCodeAudio(false);
+        setRememberLastStimuli(true);
         setAudioAB("");
         setIntroAudio(null);
         setCorrectAudio(null);
@@ -174,13 +176,22 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         return wizardScreenData.getScreenBoolean(1);
     }
 
+    final public void setRememberLastStimuli(boolean rememberLastStimuli) {
+        this.wizardScreenData.setScreenBoolean(4, rememberLastStimuli);
+    }
+
+    private boolean isRememberLastStimuli(WizardScreenData wizardScreenData) {
+        return wizardScreenData.getScreenBoolean(4);
+    }
+
     @Override
     public String getScreenBooleanInfo(int index) {
         return new String[]{
             "Randomise Stimuli",
             "Full Screen Grid",
             "SDcard Stimuli",
-            "StimulusCodeAudio"
+            "StimulusCodeAudio",
+            "RememberLastStimuli"
         }[index];
     }
 
@@ -322,9 +333,13 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 //        }
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(isRandomiseStimuli(storedWizardScreenData)));
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
-        loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(storedWizardScreenData.getStimuliCount()));
+        if (!isRememberLastStimuli(storedWizardScreenData)) {
+            loadStimuliFeature.addUndefinedAttribute("rememberLastStimuli", "false");
+        } else {
+            loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
+            loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
+            loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(storedWizardScreenData.getStimuliCount()));
+        }
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
 
