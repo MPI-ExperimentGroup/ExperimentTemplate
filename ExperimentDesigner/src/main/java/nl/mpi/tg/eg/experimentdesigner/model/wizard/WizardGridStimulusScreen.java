@@ -47,6 +47,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         setRememberLastStimuli(true);
         setAudioAB("");
         setSdCardStimuli(false);
+        setShowCurtains(false);
         setIntroAudio(null);
         setCorrectAudio(null);
         setRewardImage(null);
@@ -67,6 +68,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         setSdCardStimuli(false);
         setCodeAudio(false);
         setRememberLastStimuli(true);
+        setShowCurtains(false);
         setAudioAB("");
         setIntroAudio(null);
         setCorrectAudio(null);
@@ -184,6 +186,14 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         return wizardScreenData.getScreenBoolean(4);
     }
 
+    final public void setShowCurtains(boolean showCurtains) {
+        this.wizardScreenData.setScreenBoolean(5, showCurtains);
+    }
+
+    private boolean isShowCurtains(WizardScreenData wizardScreenData) {
+        return wizardScreenData.getScreenBoolean(5);
+    }
+
     @Override
     public String getScreenBooleanInfo(int index) {
         return new String[]{
@@ -191,7 +201,8 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             "Full Screen Grid",
             "SDcard Stimuli",
             "StimulusCodeAudio",
-            "RememberLastStimuli"
+            "RememberLastStimuli",
+            "ShowCurtains"
         }[index];
     }
 
@@ -353,7 +364,23 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         hasMoreStimulusFeature.getPresenterFeatureList().add(clearScreenFeature);
 
         final PresenterFeature stimulusRelatedTags;
-        if (isCodeAudio(storedWizardScreenData)) {
+        if (isShowCurtains(storedWizardScreenData)) {
+            stimulusRelatedTags = hasMoreStimulusFeature;
+            hasMoreStimulusFeature.addFeature(FeatureType.stimulusCodeVideo, null, "0", "100", "Monkey_mp4/<code>", "0", "true", "borderedVideoFull", "false", "false", "100");
+            final PresenterFeature touchInputCaptureStart = hasMoreStimulusFeature.addFeature(FeatureType.touchInputCaptureStart, null, "true", "-1");
+            touchInputCaptureStart.addFeature(FeatureType.pauseVideo, null);
+            touchInputCaptureStart.addFeature(FeatureType.enableStimulusButtons, null);
+            final PresenterFeature touchInputStimulusButton1 = hasMoreStimulusFeature.addFeature(FeatureType.touchInputStimulusButton, "Left Overlay Button", "Left", "curtain_left.png", "leftOverlayCurtain");
+            touchInputStimulusButton1.addFeature(FeatureType.disableStimulusButtons, null);
+            touchInputStimulusButton1.addFeature(FeatureType.rewindVideo, null);
+            touchInputStimulusButton1.addFeature(FeatureType.pause, null, "1000").addFeature(FeatureType.playVideo, null);
+            touchInputStimulusButton1.addFeature(FeatureType.stimulusCodeAudio, null, "500", "Correct", "false").addFeature(FeatureType.enableStimulusButtons, null);
+            final PresenterFeature touchInputStimulusButton2 = hasMoreStimulusFeature.addFeature(FeatureType.touchInputStimulusButton, "Right Overlay Button", "Right", "curtain_right.png", "rightOverlayCurtain");
+            touchInputStimulusButton2.addFeature(FeatureType.disableStimulusButtons, null);
+            touchInputStimulusButton2.addFeature(FeatureType.rewindVideo, null);
+            touchInputStimulusButton2.addFeature(FeatureType.pause, null, "1000").addFeature(FeatureType.playVideo, null);
+            touchInputStimulusButton2.addFeature(FeatureType.stimulusCodeAudio, null, "500", "Correct", "false").addFeature(FeatureType.enableStimulusButtons, null);
+        } else if (isCodeAudio(storedWizardScreenData)) {
             final PresenterFeature stimulusCodeAudio1 = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
             stimulusCodeAudio1.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
             stimulusCodeAudio1.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>_1");
@@ -528,35 +555,20 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 
         }
 
-        final PresenterFeature repeatStimulusButton = new PresenterFeature(FeatureType.actionButton, "Repeat");
-        repeatStimulusButton.addFeatureAttributes(FeatureAttribute.eventTag, "Repeat");
-        repeatStimulusButton.addFeatureAttributes(FeatureAttribute.hotKey, "R1_MA_A");
-        final PresenterFeature repeatStimulus = new PresenterFeature(FeatureType.showStimulus, null);
-        repeatStimulusButton.getPresenterFeatureList().add(new PresenterFeature(FeatureType.touchInputReportSubmit, null));
-        repeatStimulusButton.getPresenterFeatureList().add(repeatStimulus);
-        final PresenterFeature nextStimulusButton = new PresenterFeature(FeatureType.actionButton, "Next");
-        nextStimulusButton.addFeatureAttributes(FeatureAttribute.eventTag, "Next");
-        nextStimulusButton.addFeatureAttributes(FeatureAttribute.hotKey, "ENTER");
-        final PresenterFeature nextStimulus = new PresenterFeature(FeatureType.nextStimulus, null);
-        nextStimulus.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
-        nextStimulusButton.getPresenterFeatureList().add(new PresenterFeature(FeatureType.touchInputReportSubmit, null));
-        nextStimulusButton.getPresenterFeatureList().add(nextStimulus);
         final PresenterFeature tableFeature = new PresenterFeature(FeatureType.table, null);
         tableFeature.addFeatureAttributes(FeatureAttribute.styleName, "titleBarButton");
         stimulusRelatedTags.getPresenterFeatureList().add(tableFeature);
         final PresenterFeature rowFeature = new PresenterFeature(FeatureType.row, null);
         tableFeature.getPresenterFeatureList().add(rowFeature);
-        final PresenterFeature leftColumnFeature = new PresenterFeature(FeatureType.column, null);
-        rowFeature.getPresenterFeatureList().add(leftColumnFeature);
-//        final PresenterFeature middleColumnFeature = new PresenterFeature(FeatureType.column, null);
-//        final PresenterFeature middlePadding = new PresenterFeature(FeatureType.htmlText, "&nbsp;");
-//        middleColumnFeature.getPresenterFeatureList().add(middlePadding);
-//        rowFeature.getPresenterFeatureList().add(middleColumnFeature);
-        final PresenterFeature rightColumnFeature = new PresenterFeature(FeatureType.column, null);
-        rowFeature.getPresenterFeatureList().add(rightColumnFeature);
-        leftColumnFeature.getPresenterFeatureList().add(repeatStimulusButton);
-        rightColumnFeature.getPresenterFeatureList().add(nextStimulusButton);
-
+        final PresenterFeature previousStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Prev", "R1_MA_LEFT", "Prev", "");
+        previousStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null);
+        previousStimulusButton.addFeature(FeatureType.prevStimulus, null, "false");
+        final PresenterFeature repeatStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Repeat", "R1_MA_DOWN", "Repeat", "");
+        repeatStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null);
+        repeatStimulusButton.addFeature(FeatureType.showStimulus, null);
+        final PresenterFeature nextStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Next", "R1_MA_RIGHT", "Next", "");
+        nextStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null);
+        nextStimulusButton.addFeature(FeatureType.nextStimulus, null, "false");        
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
         final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
         endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
