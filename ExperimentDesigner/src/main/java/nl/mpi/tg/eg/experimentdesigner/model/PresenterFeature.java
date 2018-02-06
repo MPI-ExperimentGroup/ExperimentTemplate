@@ -65,6 +65,7 @@ public class PresenterFeature {
     @OrderBy("displayOrder ASC")
     private List<PresenterFeature> presenterFeatures = new ArrayList<>();
     private HashMap<FeatureAttribute, String> featureAttributes = new HashMap<>();
+    private HashMap<String, String> undefinedAttributes = new HashMap<>();
     @XmlTransient
     @ManyToOne(cascade = CascadeType.ALL)
     private FeatureText translatable;
@@ -209,10 +210,15 @@ public class PresenterFeature {
     @XmlAnyAttribute
     public Map<QName, String> getFeatureAttributes() {
         Map<QName, String> attributeMap = new HashMap();
-        final ArrayList<FeatureAttribute> keyList = new ArrayList<>(featureAttributes.keySet());
-        keyList.sort(Enum::compareTo);
-        keyList.stream().forEach((featureAttribute) -> {
+        final ArrayList<FeatureAttribute> keyList1 = new ArrayList<>(featureAttributes.keySet());
+        keyList1.sort(Enum::compareTo);
+        keyList1.stream().forEach((featureAttribute) -> {
             attributeMap.put(new QName(featureAttribute.name()), featureAttributes.get(featureAttribute));
+        });
+        final ArrayList<String> keyList2 = new ArrayList<>(undefinedAttributes.keySet());
+        keyList2.sort(String::compareTo);
+        keyList2.stream().forEach((featureAttribute) -> {
+            attributeMap.put(new QName(featureAttribute), undefinedAttributes.get(featureAttribute));
         });
         return attributeMap;
     }
@@ -226,6 +232,22 @@ public class PresenterFeature {
             throw new IllegalArgumentException("attributeValue cannot be null: " + featureAttribute.name());
         }
         this.featureAttributes.put(featureAttribute, attributeValue);
+    }
+
+    public void addUndefinedAttribute(String undefinedAttribute, String attributeValue) {
+        if (featureType.isCanHaveUndefinedAttribute()) {
+            if (attributeValue == null) {
+                throw new IllegalArgumentException("attributeValue cannot be null: " + undefinedAttribute);
+            }
+            for (FeatureAttribute featureAttribute : FeatureAttribute.values()) {
+                if (featureAttribute.toString().equals(undefinedAttribute)) {
+                    throw new IllegalArgumentException("attributeValue cannot be be a member of FeatureAttribute: " + undefinedAttribute);
+                }
+            }
+            this.undefinedAttributes.put(undefinedAttribute, attributeValue);
+        } else {
+            throw new UnsupportedOperationException("UndefinedAttribute is not supported in this type");
+        }
     }
 
     public void setFeatureAttributes(HashMap<FeatureAttribute, String> featureAttributes) {
