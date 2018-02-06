@@ -78,33 +78,35 @@ public class PlaybackPreferenceMeasureExperiment {
         wizardData.addScreen(textMenuScreen);
 
         wizardData.addScreen(wizardEditUserScreen);
-        String backgroundImage = "huisje_02.jpg";
-        String[][][] testList = new String[][][]{
-            {{"COW", "zoomToBlock1", "room_1"}, {"COW",
-                "COWmis",
-                "COWmis-5",}}, {{"FATHER", "zoomToBlock2", "room_2"}, {
-                "FATHER",
-                "FATHERmis",}}, {{"GHOST_a", "zoomToBlock3", "room_3"}, {
-                "GHOST-a",
-                "GHOST-amis",}}, {{"GHOST_b", "zoomToBlock4", "room_4"}, {
-                "GHOST-b",
-                "GHOST-bmis",}}, {{"PRAY", "zoomToBlock4", "room_4"}, {
-                "PRAY",
-                "PRAYmis",}}, {{"SHY", "zoomToBlock4", "room_4"}, {
-                "SHY",
-                "SHYmis",}}};
-        for (String[][] testSubList : testList) {
-            final WizardGridStimulusScreen testStimulusScreen = new WizardGridStimulusScreen(testSubList[0][0], false, testSubList[1],
+//        String backgroundImage = "huisje_02.jpg";
+        String[][][][] testList = new String[][][][]{
+            {{{"COW", "zoomToBlock1", "room_1"}, {}},
+            {{"COW", "COW"}, {"COWmis", "COWmis"}, {"COWmis-5", "COWmis-5"}}},
+            {{{"FATHER", "zoomToBlock2", "room_2"}, {}},
+            {{"FATHER", "FATHER"}, {"FATHERmis", "FATHERmis"}}},
+            {{{"GHOST_a", "zoomToBlock3", "room_3"}, {}},
+            {{"GHOST-a", "GHOST-a"}, {"GHOST-amis", "GHOST-amis"}}},
+            {{{"GHOST_b", "zoomToBlock4", "room_4"}, {}},
+            {{"GHOST-b", "GHOST-b"}, {"GHOST-bmis", "GHOST-bmis"}}},
+            {{{"PRAY", "zoomToBlock4", "room_4"}, {}},
+            {{"PRAY", "PRAY"}, {"PRAYmis", "PRAYmis"}}},
+            {{{"SHY", "zoomToBlock4", "room_4"}, {}},
+            {{"SHY", "SHY"}, {"SHYmis", "SHYmis"}}}};
+        for (String[][][] testSubList : testList) {
+            final WizardGridStimulusScreen testStimulusScreen = new WizardGridStimulusScreen(testSubList[0][0][0], false, testSubList[1],
                     null, 1000, false, null, 0, 0, null);
-            testStimulusScreen.setBackgroundImage(backgroundImage);
-            testStimulusScreen.setBackgroundStyle(testSubList[0][1]);
-            testStimulusScreen.setIntroAudio(testSubList[0][2]);
-            testStimulusScreen.setIntroAudioDelay(2000);
+//            testStimulusScreen.setBackgroundImage(backgroundImage);
+            testStimulusScreen.setBackgroundStyle(testSubList[0][0][1]);
+//            testStimulusScreen.setIntroAudio(testSubList[0][0][2]);
+//            testStimulusScreen.setIntroAudioDelay(2000);
+            testStimulusScreen.setRememberLastStimuli(false);
+            testStimulusScreen.setShowCurtains(true);
             textMenuScreen.addTargetScreen(testStimulusScreen);
             wizardData.addScreen(testStimulusScreen);
             testStimulusScreen.setBackWizardScreen(textMenuScreen);
+            testStimulusScreen.setNextWizardScreen(textMenuScreen);
         }
-        WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true, true, completionScreenText2,
+        WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true, true, false, completionScreenText2,
                 "Opnieuw beginnen",
                 "Einde van het experiment",
                 "Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.",
@@ -112,7 +114,7 @@ public class PlaybackPreferenceMeasureExperiment {
         completionScreen.setSendData(false);
         wizardData.addScreen(completionScreen);
         completionScreen.setScreenTag("completion");
-
+        completionScreen.setNextWizardScreen(existingUserCheckScreen);
         bluetoothInstructionsScreen.setBackWizardScreen(menuScreen);
         bluetoothInstructionsScreen.setNextWizardScreen(wizardEditUserScreen);
 
