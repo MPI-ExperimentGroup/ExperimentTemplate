@@ -92,14 +92,20 @@
                                 </touchInputStimulusButton>
                                 <table styleName="titleBarButton">
                                     <row>
-                                        <column>
-                                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_A">
+                                        <column styleName="">
+                                            <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT" styleName="">
+                                                <touchInputReportSubmit/>
+                                                <prevStimulus repeatIncorrect="false"/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
+                                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN" styleName="">
                                                 <touchInputReportSubmit/>
                                                 <showStimulus/>
                                             </actionButton>
                                         </column>
-                                        <column>
-                                            <actionButton featureText="Next" eventTag="Next" hotKey="ENTER">
+                                        <column styleName="">
+                                            <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT" styleName="">
                                                 <touchInputReportSubmit/>
                                                 <nextStimulus repeatIncorrect="false"/>
                                             </actionButton>
@@ -155,14 +161,20 @@
                                         </touchInputStimulusButton>
                                         <table styleName="titleBarButton">
                                             <row>
-                                                <column>
-                                                    <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_A">
+                                                <column styleName="">
+                                                    <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT" styleName="">
+                                                        <touchInputReportSubmit/>
+                                                        <prevStimulus repeatIncorrect="false"/>
+                                                    </actionButton>
+                                                </column>
+                                                <column styleName="">
+                                                    <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN" styleName="">
                                                         <touchInputReportSubmit/>
                                                         <showStimulus/>
                                                     </actionButton>
                                                 </column>
-                                                <column>
-                                                    <actionButton featureText="Next" eventTag="Next" hotKey="ENTER">
+                                                <column styleName="">
+                                                    <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT" styleName="">
                                                         <touchInputReportSubmit/>
                                                         <nextStimulus repeatIncorrect="false"/>
                                                     </actionButton>
@@ -213,14 +225,20 @@
                                         </touchInputStimulusButton>
                                         <table styleName="titleBarButton">
                                             <row>
-                                                <column>
-                                                    <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_A">
+                                                <column styleName="">
+                                                    <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT" styleName="">
+                                                        <touchInputReportSubmit/>
+                                                        <prevStimulus repeatIncorrect="false"/>
+                                                    </actionButton>
+                                                </column>
+                                                <column styleName="">
+                                                    <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN" styleName="">
                                                         <touchInputReportSubmit/>
                                                         <showStimulus/>
                                                     </actionButton>
                                                 </column>
-                                                <column>
-                                                    <actionButton featureText="Next" eventTag="Next" hotKey="ENTER">
+                                                <column styleName="">
+                                                    <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT" styleName="">
                                                         <touchInputReportSubmit/>
                                                         <nextStimulus repeatIncorrect="false"/>
                                                     </actionButton>
@@ -271,14 +289,20 @@
                                         </touchInputStimulusButton>
                                         <table styleName="titleBarButton">
                                             <row>
-                                                <column>
-                                                    <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_A">
+                                                <column styleName="">
+                                                    <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT" styleName="">
+                                                        <touchInputReportSubmit/>
+                                                        <prevStimulus repeatIncorrect="false"/>
+                                                    </actionButton>
+                                                </column>
+                                                <column styleName="">
+                                                    <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN" styleName="">
                                                         <touchInputReportSubmit/>
                                                         <showStimulus/>
                                                     </actionButton>
                                                 </column>
-                                                <column>
-                                                    <actionButton featureText="Next" eventTag="Next" hotKey="ENTER">
+                                                <column styleName="">
+                                                    <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT" styleName="">
                                                         <touchInputReportSubmit/>
                                                         <nextStimulus repeatIncorrect="false"/>
                                                     </actionButton>
@@ -329,14 +353,20 @@
                                         </touchInputStimulusButton>
                                         <table styleName="titleBarButton">
                                             <row>
-                                                <column>
-                                                    <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_A">
+                                                <column styleName="">
+                                                    <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT" styleName="">
+                                                        <touchInputReportSubmit/>
+                                                        <prevStimulus repeatIncorrect="false"/>
+                                                    </actionButton>
+                                                </column>
+                                                <column styleName="">
+                                                    <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN" styleName="">
                                                         <touchInputReportSubmit/>
                                                         <showStimulus/>
                                                     </actionButton>
                                                 </column>
-                                                <column>
-                                                    <actionButton featureText="Next" eventTag="Next" hotKey="ENTER">
+                                                <column styleName="">
+                                                    <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT" styleName="">
                                                         <touchInputReportSubmit/>
                                                         <nextStimulus repeatIncorrect="false"/>
                                                     </actionButton>
