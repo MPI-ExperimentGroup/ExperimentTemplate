@@ -367,7 +367,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         if (isShowCurtains(storedWizardScreenData)) {
             stimulusRelatedTags = hasMoreStimulusFeature;
             hasMoreStimulusFeature.addFeature(FeatureType.stimulusCodeVideo, null, "0", "100", "Monkey_mp4/<code>", "0", "true", "borderedVideoFull", "false", "false", "100");
-            final PresenterFeature touchInputCaptureStart = hasMoreStimulusFeature.addFeature(FeatureType.touchInputCaptureStart, null, "true", "-1");
+            final PresenterFeature touchInputCaptureStart = hasMoreStimulusFeature.addFeature(FeatureType.touchInputCaptureStart, null, "false", "3000");
             touchInputCaptureStart.addFeature(FeatureType.pauseVideo, null);
             touchInputCaptureStart.addFeature(FeatureType.enableStimulusButtons, null);
             final PresenterFeature touchInputStimulusButton1 = hasMoreStimulusFeature.addFeature(FeatureType.touchInputStimulusButton, "Left Overlay Button", "Left", "curtain_left.png", "leftOverlayCurtain");
@@ -560,6 +560,9 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         stimulusRelatedTags.getPresenterFeatureList().add(tableFeature);
         final PresenterFeature rowFeature = new PresenterFeature(FeatureType.row, null);
         tableFeature.getPresenterFeatureList().add(rowFeature);
+        final PresenterFeature menuStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Menu", "R1_MA_BACK", "Menu", "");
+        menuStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null);
+        menuStimulusButton.addFeature(FeatureType.autoNextPresenter, null, storedWizardScreenData.getNextWizardScreenData().getScreenTag());
         final PresenterFeature previousStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Prev", "R1_MA_LEFT", "Prev", "");
         previousStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null);
         previousStimulusButton.addFeature(FeatureType.prevStimulus, null, "false");
@@ -568,7 +571,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         repeatStimulusButton.addFeature(FeatureType.showStimulus, null);
         final PresenterFeature nextStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Next", "R1_MA_RIGHT", "Next", "");
         nextStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null);
-        nextStimulusButton.addFeature(FeatureType.nextStimulus, null, "false");        
+        nextStimulusButton.addFeature(FeatureType.nextStimulus, null, "false");
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
         final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
         endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
