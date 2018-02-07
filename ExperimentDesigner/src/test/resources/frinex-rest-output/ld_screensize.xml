@@ -93,6 +93,12 @@
                                 <table styleName="titleBarButton">
                                     <row>
                                         <column styleName="">
+                                            <actionButton featureText="Menu" eventTag="Menu" hotKey="R1_MA_BACK" styleName="">
+                                                <touchInputReportSubmit/>
+                                                <autoNextPresenter target="TestMenu"/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
                                             <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT" styleName="">
                                                 <touchInputReportSubmit/>
                                                 <prevStimulus repeatIncorrect="false"/>
@@ -162,6 +168,12 @@
                                         <table styleName="titleBarButton">
                                             <row>
                                                 <column styleName="">
+                                                    <actionButton featureText="Menu" eventTag="Menu" hotKey="R1_MA_BACK" styleName="">
+                                                        <touchInputReportSubmit/>
+                                                        <autoNextPresenter target="TestMenu"/>
+                                                    </actionButton>
+                                                </column>
+                                                <column styleName="">
                                                     <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT" styleName="">
                                                         <touchInputReportSubmit/>
                                                         <prevStimulus repeatIncorrect="false"/>
@@ -225,6 +237,12 @@
                                         </touchInputStimulusButton>
                                         <table styleName="titleBarButton">
                                             <row>
+                                                <column styleName="">
+                                                    <actionButton featureText="Menu" eventTag="Menu" hotKey="R1_MA_BACK" styleName="">
+                                                        <touchInputReportSubmit/>
+                                                        <autoNextPresenter target="TestMenu"/>
+                                                    </actionButton>
+                                                </column>
                                                 <column styleName="">
                                                     <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT" styleName="">
                                                         <touchInputReportSubmit/>
@@ -290,6 +308,12 @@
                                         <table styleName="titleBarButton">
                                             <row>
                                                 <column styleName="">
+                                                    <actionButton featureText="Menu" eventTag="Menu" hotKey="R1_MA_BACK" styleName="">
+                                                        <touchInputReportSubmit/>
+                                                        <autoNextPresenter target="TestMenu"/>
+                                                    </actionButton>
+                                                </column>
+                                                <column styleName="">
                                                     <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT" styleName="">
                                                         <touchInputReportSubmit/>
                                                         <prevStimulus repeatIncorrect="false"/>
@@ -353,6 +377,12 @@
                                         </touchInputStimulusButton>
                                         <table styleName="titleBarButton">
                                             <row>
+                                                <column styleName="">
+                                                    <actionButton featureText="Menu" eventTag="Menu" hotKey="R1_MA_BACK" styleName="">
+                                                        <touchInputReportSubmit/>
+                                                        <autoNextPresenter target="TestMenu"/>
+                                                    </actionButton>
+                                                </column>
                                                 <column styleName="">
                                                     <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT" styleName="">
                                                         <touchInputReportSubmit/>
