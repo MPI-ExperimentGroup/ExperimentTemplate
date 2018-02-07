@@ -48,20 +48,20 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="StimuliMenu" displayOrder="9" menuLabel="PRAY" next="StimuliMenu" type="stimulus" self="PRAY" title="PRAY">
-        <loadStimulus eventTag="PRAY" randomise="false" rememberLastStimuli="false">
+    <presenter back="StimuliMenu" displayOrder="7" menuLabel="COW" next="StimuliMenu" type="stimulus" self="COW" title="COW">
+        <loadStimulus eventTag="COW" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
                 <!--<updateRegion>-->
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" styleName="borderedVideoFull" autoPlay="false" loop="true" showControls="false" maxWidth="100"/>
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" autoPlay="false" showControls="false" maxWidth="100"/>
                 <!--<stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100"/>-->               
                 <!--</updateRegion>-->
-                <touchInputCaptureStart showControls="true" msToNext="-1">
+                <touchInputCaptureStart msToNext="-1" showControls="true">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayCurtain" src="curtain_left.png">
+                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="curtain_left.png" styleName="leftOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">                        
@@ -71,7 +71,7 @@
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" styleName="rightOverlayCurtain" src="curtain_right.png">
+                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="curtain_right.png" styleName="rightOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">                        
@@ -95,83 +95,21 @@
                     <!--loading stimuli from the sdcard, should offer subdirectories and have two ordered stimuli per directory-->
                     <!--there is an error in the curtains where the left works fine but the right snaps and continues to open when the touch ends-->
                     <row>
-                        <column>
+                        <column styleName="">
                             <!--todo: implement this previosu button-->
-                            <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT">
+                            <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT" styleName="">
                                 <touchInputReportSubmit/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
-                        <column>
-                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN">
+                        <column styleName="">
+                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN" styleName="">
                                 <touchInputReportSubmit/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
-                        <column>
-                            <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT">
-                                <touchInputReportSubmit/>
-                                <nextStimulus repeatIncorrect="false"/>
-                            </actionButton>
-                        </column>
-                    </row>
-                </table>
-            </hasMoreStimulus>
-            <endOfStimulus>
-                <autoNextPresenter/>
-            </endOfStimulus>
-            <randomGrouping/>
-            <stimuli>
-                <tag>PRAY</tag>
-            </stimuli>
-        </loadStimulus>
-    </presenter>
-    <presenter back="StimuliMenu" displayOrder="9" menuLabel="COW" next="StimuliMenu" type="stimulus" self="COW" title="COW">
-        <loadStimulus eventTag="COW" randomise="false" rememberLastStimuli="false">
-            <hasMoreStimulus>
-                <backgroundImage msToNext="0" src="" styleName=""/>
-                <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" styleName="borderedVideoFull" autoPlay="false" loop="true" showControls="false" maxWidth="100"/>
-                <touchInputCaptureStart showControls="true" msToNext="-1">
-                    <pauseVideo/>
-                    <enableStimulusButtons/>
-                </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayCurtain" src="curtain_left.png">
-                    <disableStimulusButtons/>
-                    <rewindVideo/>
-                    <pause msToNext="1000">                        
-                        <playVideo/>
-                    </pause>
-                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
-                        <enableStimulusButtons/>
-                    </stimulusCodeAudio>
-                </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" styleName="rightOverlayCurtain" src="curtain_right.png">
-                    <disableStimulusButtons/>
-                    <rewindVideo/>
-                    <pause msToNext="1000">                        
-                        <playVideo/>
-                    </pause>
-                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
-                        <enableStimulusButtons/>
-                    </stimulusCodeAudio>
-                </touchInputStimulusButton>
-                <table styleName="titleBarButton">
-                    <row>
-                        <column>
-                            <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT">
-                                <touchInputReportSubmit/>
-                                <prevStimulus repeatIncorrect="false"/>
-                            </actionButton>
-                        </column>
-                        <column>
-                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN">
-                                <touchInputReportSubmit/>
-                                <showStimulus/>
-                            </actionButton>
-                        </column>
-                        <column>
-                            <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT">
+                        <column styleName="">
+                            <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT" styleName="">
                                 <touchInputReportSubmit/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
@@ -188,17 +126,17 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter back="StimuliMenu" displayOrder="9" menuLabel="FATHER" next="StimuliMenu" type="stimulus" self="FATHER" title="FATHER">
+    <presenter back="StimuliMenu" displayOrder="8" menuLabel="FATHER" next="StimuliMenu" type="stimulus" self="FATHER" title="FATHER">
         <loadStimulus eventTag="FATHER" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" styleName="borderedVideoFull" autoPlay="false" loop="true" showControls="false" maxWidth="100"/>
-                <touchInputCaptureStart showControls="true" msToNext="-1">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" autoPlay="false" showControls="false" maxWidth="100"/>
+                <touchInputCaptureStart msToNext="-1" showControls="true">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayCurtain" src="curtain_left.png">
+                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="curtain_left.png" styleName="leftOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">                        
@@ -208,7 +146,7 @@
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" styleName="rightOverlayCurtain" src="curtain_right.png">
+                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="curtain_right.png" styleName="rightOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">                        
@@ -220,20 +158,20 @@
                 </touchInputStimulusButton>
                 <table styleName="titleBarButton">
                     <row>
-                        <column>
-                            <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT">
+                        <column styleName="">
+                            <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT" styleName="">
                                 <touchInputReportSubmit/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
-                        <column>
-                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN">
+                        <column styleName="">
+                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN" styleName="">
                                 <touchInputReportSubmit/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
-                        <column>
-                            <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT">
+                        <column styleName="">
+                            <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT" styleName="">
                                 <touchInputReportSubmit/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
@@ -255,12 +193,12 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" styleName="borderedVideoFull" autoPlay="false" loop="true" showControls="false" maxWidth="100"/>
-                <touchInputCaptureStart showControls="true" msToNext="-1">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" autoPlay="false" showControls="false" maxWidth="100"/>
+                <touchInputCaptureStart msToNext="-1" showControls="true">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayCurtain" src="curtain_left.png">
+                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="curtain_left.png" styleName="leftOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">                        
@@ -270,7 +208,7 @@
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" styleName="rightOverlayCurtain" src="curtain_right.png">
+                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="curtain_right.png" styleName="rightOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">                        
@@ -282,20 +220,20 @@
                 </touchInputStimulusButton>
                 <table styleName="titleBarButton">
                     <row>
-                        <column>
-                            <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT">
+                        <column styleName="">
+                            <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT" styleName="">
                                 <touchInputReportSubmit/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
-                        <column>
-                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN">
+                        <column styleName="">
+                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN" styleName="">
                                 <touchInputReportSubmit/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
-                        <column>
-                            <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT">
+                        <column styleName="">
+                            <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT" styleName="">
                                 <touchInputReportSubmit/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
@@ -312,17 +250,17 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter back="StimuliMenu" displayOrder="9" menuLabel="GHOST_b" next="StimuliMenu" type="stimulus" self="GHOST_b" title="GHOST_b">
+    <presenter back="StimuliMenu" displayOrder="10" menuLabel="GHOST_b" next="StimuliMenu" type="stimulus" self="GHOST_b" title="GHOST_b">
         <loadStimulus eventTag="GHOST_b" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" styleName="borderedVideoFull" autoPlay="false" loop="true" showControls="false" maxWidth="100"/>
-                <touchInputCaptureStart showControls="true" msToNext="-1">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" autoPlay="false" showControls="false" maxWidth="100"/>
+                <touchInputCaptureStart msToNext="-1" showControls="true">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayCurtain" src="curtain_left.png">
+                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="curtain_left.png" styleName="leftOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">                        
@@ -332,7 +270,7 @@
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" styleName="rightOverlayCurtain" src="curtain_right.png">
+                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="curtain_right.png" styleName="rightOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">                        
@@ -344,20 +282,20 @@
                 </touchInputStimulusButton>
                 <table styleName="titleBarButton">
                     <row>
-                        <column>
-                            <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT">
+                        <column styleName="">
+                            <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT" styleName="">
                                 <touchInputReportSubmit/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
-                        <column>
-                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN">
+                        <column styleName="">
+                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN" styleName="">
                                 <touchInputReportSubmit/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
-                        <column>
-                            <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT">
+                        <column styleName="">
+                            <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT" styleName="">
                                 <touchInputReportSubmit/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
@@ -374,17 +312,17 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter back="StimuliMenu" displayOrder="9" menuLabel="SHY" next="StimuliMenu" type="stimulus" self="SHY" title="SHY">
-        <loadStimulus eventTag="SHY" randomise="false" rememberLastStimuli="false">
+    <presenter back="StimuliMenu" displayOrder="11" menuLabel="PRAY" next="StimuliMenu" type="stimulus" self="PRAY" title="PRAY">
+        <loadStimulus eventTag="PRAY" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" styleName="borderedVideoFull" autoPlay="false" loop="true" showControls="false" maxWidth="100"/>
-                <touchInputCaptureStart showControls="true" msToNext="-1">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" autoPlay="false" showControls="false" maxWidth="100"/>
+                <touchInputCaptureStart msToNext="-1" showControls="true">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayCurtain" src="curtain_left.png">
+                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="curtain_left.png" styleName="leftOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">                        
@@ -394,7 +332,7 @@
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" styleName="rightOverlayCurtain" src="curtain_right.png">
+                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="curtain_right.png" styleName="rightOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">                        
@@ -406,20 +344,82 @@
                 </touchInputStimulusButton>
                 <table styleName="titleBarButton">
                     <row>
-                        <column>
-                            <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT">
+                        <column styleName="">
+                            <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT" styleName="">
                                 <touchInputReportSubmit/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
-                        <column>
-                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN">
+                        <column styleName="">
+                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN" styleName="">
                                 <touchInputReportSubmit/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
-                        <column>
-                            <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT">
+                        <column styleName="">
+                            <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT" styleName="">
+                                <touchInputReportSubmit/>
+                                <nextStimulus repeatIncorrect="false"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                </table>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <autoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>PRAY</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="StimuliMenu" displayOrder="12" menuLabel="SHY" next="StimuliMenu" type="stimulus" self="SHY" title="SHY">
+        <loadStimulus eventTag="SHY" randomise="false" rememberLastStimuli="false">
+            <hasMoreStimulus>
+                <backgroundImage msToNext="0" src="" styleName=""/>
+                <clearPage styleName="fullScreenWidth"/>
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" autoPlay="false" showControls="false" maxWidth="100"/>
+                <touchInputCaptureStart msToNext="-1" showControls="true">
+                    <pauseVideo/>
+                    <enableStimulusButtons/>
+                </touchInputCaptureStart>
+                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="curtain_left.png" styleName="leftOverlayCurtain">
+                    <disableStimulusButtons/>
+                    <rewindVideo/>
+                    <pause msToNext="1000">                        
+                        <playVideo/>
+                    </pause>
+                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                        <enableStimulusButtons/>
+                    </stimulusCodeAudio>
+                </touchInputStimulusButton>
+                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="curtain_right.png" styleName="rightOverlayCurtain">
+                    <disableStimulusButtons/>
+                    <rewindVideo/>
+                    <pause msToNext="1000">                        
+                        <playVideo/>
+                    </pause>
+                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                        <enableStimulusButtons/>
+                    </stimulusCodeAudio>
+                </touchInputStimulusButton>
+                <table styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT" styleName="">
+                                <touchInputReportSubmit/>
+                                <prevStimulus repeatIncorrect="false"/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN" styleName="">
+                                <touchInputReportSubmit/>
+                                <showStimulus/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT" styleName="">
                                 <touchInputReportSubmit/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
@@ -436,17 +436,17 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter back="Menu" displayOrder="15" menuLabel="Einde van het experiment" type="transmission" self="completion" title="Einde van het experiment">
+    <presenter back="Menu" displayOrder="13" menuLabel="Einde van het experiment" next="Start" type="transmission" self="completion" title="Einde van het experiment">
         <htmlText featureText="Data will not be collected in this version."/>
         <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;Hartelijk dank voor uw deelname! &lt;br/&gt;&lt;br/&gt;"/>
         <addPadding/>
-        <generateCompletionCode/>
+        <!--<generateCompletionCode/>-->
         <addPadding/>
         <htmlText featureText="&lt;br/&gt;Het bovenstaande nummer is het bewijs dat u het experiment heeft voltooid, en is vereist voor het in orde maken van uw vergoeding."/>
         <addPadding/>
-        <eraseUsersDataButton featureText="Opnieuw beginnen"/>
+        <createUserButton featureText="Opnieuw beginnen" target="Start"/>
     </presenter>
-    <presenter back="Menu" displayOrder="17" menuLabel="Over" type="debug" self="about" title="Over">
+    <presenter back="Menu" displayOrder="14" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
     </presenter>
     <stimuli>
