@@ -1078,15 +1078,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
             @Override
             public boolean intersects(int xPos, int yPos) {
-                if (buttonItem.isEnabled()) {
-                    boolean returnValue = (yPos >= buttonItem.getWidget().getAbsoluteTop()
-                            && yPos <= buttonItem.getWidget().getAbsoluteTop() + buttonItem.getWidget().getOffsetHeight()
-                            && xPos >= buttonItem.getWidget().getAbsoluteLeft()
-                            && xPos <= buttonItem.getWidget().getAbsoluteLeft() + buttonItem.getWidget().getOffsetWidth());
-                    return returnValue;
-                } else {
-                    return false;
-                }
+                boolean returnValue = (yPos >= buttonItem.getWidget().getAbsoluteTop()
+                        && yPos <= buttonItem.getWidget().getAbsoluteTop() + buttonItem.getWidget().getOffsetHeight()
+                        && xPos >= buttonItem.getWidget().getAbsoluteLeft()
+                        && xPos <= buttonItem.getWidget().getAbsoluteLeft() + buttonItem.getWidget().getOffsetWidth());
+                return returnValue;
             }
 
             @Override
