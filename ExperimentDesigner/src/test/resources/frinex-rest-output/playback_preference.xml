@@ -495,6 +495,51 @@
         <addPadding/>
         <createUserButton featureText="Opnieuw beginnen" target="Start"/>
     </presenter>
+    <presenter back="Menu" displayOrder="14" menuLabel="Data Management" next="DataUpload" type="metadata" self="DataManagement" title="Data Management">
+        <htmlText featureText="The participants which are still in the application memory:"/>
+        <selectUserMenu/>
+    </presenter>   
+    <presenter displayOrder="15" type="transmission" self="DataUpload" title="Data Upload" next="DataManagement">
+        <sendMetadata>
+            <onSuccess> 
+                <sendAllData>
+                    <onSuccess>
+                        <htmlText featureText="The participant's data has been uploaded to the server"/>
+                        <addPadding/>
+                        <addPadding/>
+                        <eraseUsersDataButton featureText="Remove the user's data from this application" target="DataManagement" />
+                        <addPadding/>
+                        <addPadding/>
+                        <targetButton featureText="Keep local copy of the user's data" target="DataManagement" />
+                        <addPadding/>
+                        <addPadding/>
+                    </onSuccess>
+                    <onError>
+                        <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later."/>
+                        <addPadding/>
+                        <addPadding/>
+                        <targetButton featureText="Retry" target="DataUpload"/>
+                        <addPadding/>
+                        <addPadding/>
+                        <targetButton featureText="User's Data Listing" target="DataManagement" />
+                        <addPadding/>
+                        <addPadding/>
+                    </onError>
+                </sendAllData>
+            </onSuccess>
+            <onError>   
+                <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
+                <addPadding/>
+                <addPadding/>
+                <targetButton featureText="Retry" target="DataUpload"/>
+                <addPadding/>
+                <addPadding/>
+                <targetButton featureText="User's Data Listing" target="DataManagement" />
+                <addPadding/>
+                <addPadding/>
+            </onError>      
+        </sendMetadata>
+    </presenter>
     <presenter back="Menu" displayOrder="14" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
     </presenter>
