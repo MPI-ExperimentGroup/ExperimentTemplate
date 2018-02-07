@@ -487,7 +487,7 @@ public class ComplexView extends SimpleView {
 
             @Override
             public boolean isEnabled() {
-                return imageButton.isEnabled();
+                return isEnabled;
             }
 
             @Override
