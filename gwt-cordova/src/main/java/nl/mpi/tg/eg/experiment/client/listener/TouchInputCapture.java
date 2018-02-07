@@ -83,18 +83,24 @@ public abstract class TouchInputCapture extends HandlesAllTouchEvents implements
     }
 
     private void triggerZones(final List<TouchInputZone> triggeredZones) {
-        for (TouchInputZone zone : touchZones) {
-            if (triggeredZones.contains(zone)) {
-                zone.triggerEvent();
-            } else {
+        if (triggeredZones.isEmpty()) {
+            for (TouchInputZone zone : touchZones) {
                 zone.clearEvent();
             }
-        }
-        if (triggeredZones.isEmpty()) {
             endOfTouchTimer.cancel();
             endOfTouchEventListner.postLoadTimerFired();
-        } else if (msAfterEndOfTouchToNext > 0) {
-            endOfTouchTimer.schedule(msAfterEndOfTouchToNext);
+        } else {
+            for (TouchInputZone zone : touchZones) {
+//            if (triggeredZones.contains(zone)) {
+                zone.triggerEvent();
+//                break;
+//            } else {
+//                zone.clearEvent();
+//            }
+            }
+            if (msAfterEndOfTouchToNext > 0) {
+                endOfTouchTimer.schedule(msAfterEndOfTouchToNext);
+            }
         }
     }
 
