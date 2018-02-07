@@ -42,7 +42,6 @@ var PropertiesReader = require('properties-reader');
         var stagingServer = properties.get('staging.serverName');
         var stagingServerUrl = properties.get('staging.serverUrl');
         var stagingGroupsSocketUrl = properties.get('staging.groupsSocketUrl');
-//var configServer = properties.get('webservice.configServer');
 //var productionServer = properties.get('production.serverName');
 //var productionServerUrl = properties.get('production.serverUrl');
 //var productionGroupsSocketUrl = properties.get('production.groupsSocketUrl');
