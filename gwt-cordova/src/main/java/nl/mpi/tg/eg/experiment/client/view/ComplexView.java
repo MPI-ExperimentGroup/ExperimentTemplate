@@ -136,7 +136,7 @@ public class ComplexView extends SimpleView {
 
     public void startTable(final String styleName) {
         gridPanel = new FlexTable();
-        if (styleName != null) {
+        if (styleName != null && !styleName.isEmpty()) {
             gridPanel.addStyleName(styleName);
         }
         outerPanel.add(gridPanel);
@@ -187,7 +187,7 @@ public class ComplexView extends SimpleView {
 
     public HTML addHtmlText(String textString, String styleName) {
         HTML html = new HTML(new SafeHtmlBuilder().appendHtmlConstant(textString).toSafeHtml());
-        if (styleName != null) {
+        if (styleName != null && !styleName.isEmpty()) {
             html.addStyleName(styleName);
         }
         getActivePanel().add(html);
@@ -284,7 +284,7 @@ public class ComplexView extends SimpleView {
 
     public StimulusButton addOptionButton(final PresenterEventListner presenterListerner, String styleName) {
         StimulusButton nextButton = getOptionButton(presenterListerner);
-        if (styleName != null) {
+        if (styleName != null && !styleName.isEmpty()) {
             nextButton.addStyleName(styleName);
         }
         getActivePanel().add(nextButton.getWidget());
@@ -387,7 +387,9 @@ public class ComplexView extends SimpleView {
 
             @Override
             public void addStyleName(String styleName) {
-                nextButton.addStyleName(styleName);
+                if (styleName != null && !styleName.isEmpty()) {
+                    nextButton.addStyleName(styleName);
+                }
             }
 
             @Override
@@ -428,10 +430,10 @@ public class ComplexView extends SimpleView {
         final Image image = new Image(imagePath);
         final Button imageButton = new Button();
         imageButton.getElement().appendChild(image.getElement());
-        if (styleName != null) {
+        if (styleName != null && !styleName.isEmpty()) {
             image.addStyleName(styleName);
         }
-        imageButton.addStyleName((styleName == null) ? "imageButton" : styleName);
+        imageButton.addStyleName((styleName == null || styleName.isEmpty()) ? "imageButton" : styleName);
         getActivePanel().add(imageButton);
         final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
 
@@ -463,8 +465,10 @@ public class ComplexView extends SimpleView {
 
             @Override
             public void addStyleName(String styleName) {
-                imageButton.addStyleName(styleName);
-                image.addStyleName(styleName);
+                if (styleName != null && !styleName.isEmpty()) {
+                    imageButton.addStyleName(styleName);
+                    image.addStyleName(styleName);
+                }
             }
 
             @Override
