@@ -103,7 +103,7 @@ public class PlaybackPreferenceMeasureExperiment {
             testStimulusScreen.setShowCurtains(true);
             textMenuScreen.addTargetScreen(testStimulusScreen);
             wizardData.addScreen(testStimulusScreen);
-            testStimulusScreen.setBackWizardScreen(textMenuScreen);
+//            testStimulusScreen.setBackWizardScreen(textMenuScreen);
             testStimulusScreen.setNextWizardScreen(textMenuScreen);
         }
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true, true, false, completionScreenText2,
