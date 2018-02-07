@@ -37,6 +37,7 @@ import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
+import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
@@ -165,6 +166,8 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
                 if (!userList.isEmpty()) {
                     final UserLabelData nextUser = userList.get(0);
                     localStorage.saveAppState(nextUser.getUserId(), nextState);
+                } else {
+                    localStorage.saveAppState(new UserId(), ApplicationController.ApplicationState.start);
                 }
                 Window.Location.replace(Window.Location.getPath());
             }
