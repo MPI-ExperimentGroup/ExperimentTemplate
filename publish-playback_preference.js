@@ -35,7 +35,7 @@
 var PropertiesReader = require('properties-reader');
         var properties = PropertiesReader('publish.properties');
 //var request = require('request');
-//var execSync = require('child_process').execSync;
+var execSync = require('child_process').execSync;
 //var http = require('http');
 //        var fs = require('fs');
 //var configServer = properties.get('webservice.configServer');
