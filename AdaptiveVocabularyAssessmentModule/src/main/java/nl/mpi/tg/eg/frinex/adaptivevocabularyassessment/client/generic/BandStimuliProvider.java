@@ -20,8 +20,8 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import nl.mpi.tg.eg.frinex.common.AbstractStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -54,7 +54,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     protected int totalStimuli;
 
     protected ArrayList<RecordStimulus> responseRecord;
-    protected HashMap<Long, Integer> percentageBandTable;
+    protected LinkedHashMap<Long, Integer> percentageBandTable;
 
     // fast track stuff
     private int bestBandFastTrack = -1;
@@ -143,8 +143,8 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         this.percentageBandTable = this.generatePercentageBandTable();
     }
 
-    private HashMap<Long, Integer> generatePercentageBandTable() {
-        HashMap<Long, Integer> retVal = new HashMap<Long, Integer>();
+    private LinkedHashMap<Long, Integer> generatePercentageBandTable() {
+        LinkedHashMap<Long, Integer> retVal = new LinkedHashMap<Long, Integer>();
         Integer value1 = this.percentageIntoBandNumber(1);
         retVal.put(new Long(1), value1);
         for (int p = 1; p <= 9; p++) {
@@ -163,7 +163,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         return "";
     }
 
-    public HashMap<Long, Integer> getPercentageBandTable() {
+    public LinkedHashMap<Long, Integer> getPercentageBandTable() {
         return this.percentageBandTable;
     }
 
@@ -301,12 +301,12 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
 
     @Override
     public Map<String, String> getStimuliReport(String reportType) {
-        final HashMap<String, String> returnMap = new HashMap<>();
+        final LinkedHashMap<String, String> returnMap = new LinkedHashMap<>();
 
         switch (reportType) {
             case "user_summary": {
                 String summary = this.getStringSummary("", "\n", "", ";");
-                HashMap<String, String> summaryMap = this.makeMapFromCsvString(summary);
+                LinkedHashMap<String, String> summaryMap = this.makeMapFromCsvString(summary);
                 for (String key : summaryMap.keySet()) {
                     returnMap.put(key, summaryMap.get(key));
                 }
@@ -314,7 +314,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
             }
             case "fast_track": {
                 String inhoudFastTrack = this.getStringFastTrack("", "\n", "", ";");
-                HashMap<String, String> fastTrackMap = this.makeMapFromCsvString(inhoudFastTrack);
+                LinkedHashMap<String, String> fastTrackMap = this.makeMapFromCsvString(inhoudFastTrack);
                 for (String key : fastTrackMap.keySet()) {
                     returnMap.put(key, fastTrackMap.get(key));
                 }
@@ -322,7 +322,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
             }
             case "fine_tuning": {
                 String inhoudFineTuning = this.getStringFineTuningHistory("", "\n", "", ";", "csv");
-                HashMap<String, String> fineTuningBriefMap = this.makeMapFromCsvString(inhoudFineTuning);
+                LinkedHashMap<String, String> fineTuningBriefMap = this.makeMapFromCsvString(inhoudFineTuning);
                 for (String key : fineTuningBriefMap.keySet()) {
                     returnMap.put(key, fineTuningBriefMap.get(key));
                 }
@@ -545,7 +545,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         return this.tupleFT.size() > 0;
     }
 
-    protected boolean allTupleIsCorrect() {
+    protected Boolean allTupleIsCorrect() {
         boolean allTupleCorrect = true;
          int lastIndex = this.responseRecord.size() - 1;
         for (int i = 0; i < this.fineTuningNumberOfAtomsPerTuple; i++) {
@@ -778,9 +778,9 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         return stringBuilder.toString();
     }
 
-    private HashMap<String, String> makeMapFromCsvString(String csvTable) {
+    private LinkedHashMap<String, String> makeMapFromCsvString(String csvTable) {
         String[] rows = csvTable.split("\n");
-        HashMap<String, String> retVal = new HashMap();
+        LinkedHashMap<String, String> retVal = new LinkedHashMap();
         for (int i = 0; i < rows.length; i++) {
             String paddedInt = "" + i;
             while (paddedInt.length() < 6) {

@@ -17,18 +17,12 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audioaspool;
 
-import java.util.Map;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Trial;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialCondition;
-
 /**
  *
  * @author olhshk
  */
 public class AudioPool2 {
     
-    // // x[contdition][i][j] is the list of all trials satisfying "condition" for the band i of the length j
-    
-    public static final Map<TrialCondition, Trial[][][]> TRIALS = null;
+    public static final String[] TRIAL_ROWS={ };
     
 }

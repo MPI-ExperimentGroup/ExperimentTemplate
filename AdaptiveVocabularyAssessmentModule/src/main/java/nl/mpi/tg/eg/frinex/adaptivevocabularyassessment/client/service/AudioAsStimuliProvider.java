@@ -18,13 +18,17 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Random;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimuliProvider;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsList;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Trial;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioAsStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioUtils;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.PermutationPair;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialCondition;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialTuple;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.WordType;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audioaspool.AudioPool2;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -35,39 +39,35 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  */
 public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus> {
 
-  
+    private String dirName = "/";
+
     private Random rnd;
-    private ArrayList<Trial> currentTrialTuple;
+    private TrialTuple currentTrialTuple;
 
     // x[contdition][i][j] is the list of all trials satisfying "condition" for the band i of the length j
     private Map<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> trials;
-    
+
     // requirements
-    // TODO: add validation check for requirements
-    private final int[] requiredLengths = {3,4,5,6};
-    private final TrialCondition[] requiredTrialTypes= {TrialCondition.TARGET_ONLY, TrialCondition.TARGET_AND_FOIL, TrialCondition.NO_TARGET, TrialCondition.NO_TARGET};
-    private final Map<TrialCondition,Integer> requiredWordTypeDistribution = new HashMap<TrialCondition, Integer>()
-{
-    {
-        put(TrialCondition.TARGET_ONLY, 1);
-        put(TrialCondition.TARGET_AND_FOIL, 1);
-        put(TrialCondition.NO_TARGET, 2);
-    }
-};
-    
-  
-    // in this experiment thr "null" in the list ArrayList<RecordStimulus> responseRecord is a marker used to separate tuples
+    private final ArrayList<Integer> requiredLengths = new ArrayList<Integer>(Arrays.asList(3, 4, 5, 6));
+    private final int maxLength = 6;
+    private final ArrayList<TrialCondition> requiredTrialTypes = new ArrayList<TrialCondition>(Arrays.asList(TrialCondition.TARGET_ONLY, TrialCondition.TARGET_AND_FOIL, TrialCondition.NO_TARGET, TrialCondition.NO_TARGET));
+
+    private ArrayList<ArrayList<Integer>> trialLengtPermutations; // list of permutations of members requiredLengths
+    private ArrayList<ArrayList<TrialCondition>> trialTypesPermutations; // list of permutations of members 
+    private ArrayList<PermutationPair> availableCombinations; // are there available trials to form a tuple with length permutations like trialLengtPermutations[i] and type permutations trialTypesPermutations[j]
+
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
 
         super.initialiseStimuliState(stimuliStateSnapshot);
-        this.rnd = new Random();
-        
-        for (TrialCondition trialType: this.requiredTrialTypes) {
-           ArrayList<ArrayList<ArrayList<Trial>>> typeTrials =  this.initialiseTrials(AudioPool2.TRIALS.get(trialType), this.rnd);
-           trials.put(trialType, typeTrials);
-        }
-        
+        this.trials = AudioUtils.initialiseTrials(AudioPool2.TRIAL_ROWS, this.numberOfBands, this.maxLength, this.dirName);
+
+        UtilsList<TrialCondition> utilTrials = new UtilsList<TrialCondition>();
+        this.trialTypesPermutations = utilTrials.generatePermutations(this.requiredTrialTypes);
+        UtilsList<Integer> utilSizes = new UtilsList<Integer>();
+        this.trialLengtPermutations = utilSizes.generatePermutations(this.requiredLengths);
+        this.currentBandIndex = this.startBand - 1;
+
         /*
         if (this.numberOfSeries == 2) {
 
@@ -76,130 +76,47 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         
          */
         this.currentBandIndex = this.startBand - 1;
-        this.responseRecord.add(null);
-
+        this.availableCombinations = AudioUtils.initialiseAvailabilityList(this.trials,
+                this.trialLengtPermutations, this.trialTypesPermutations, this.currentBandIndex, this.fineTuningTupleLength);
         boolean init = this.initialiseNextFineTuningTuple();
         if (!init) {
             System.out.println(this.errorMessage);
         }
     }
 
-    // also permutes all trials within given class, band, length.
-    private ArrayList<ArrayList<ArrayList<Trial>>> initialiseTrials(Trial[][][] sourceArray, Random rnd) {
-        ArrayList<ArrayList<ArrayList<Trial>>> retVal = new ArrayList<ArrayList<ArrayList<Trial>>>(this.numberOfBands);
-        for (int i = 0; i < this.numberOfBands; i++) {
-            ArrayList<ArrayList<Trial>> listByLength = new ArrayList<ArrayList<Trial>>(sourceArray[i].length);
-            retVal.add(i, listByLength);
-            for (int j=0; j < sourceArray[i].length; j++) { 
-                ArrayList<Trial> listOfCurrentLength = new ArrayList<Trial>(sourceArray[i][j].length);
-                listByLength.add(j, listOfCurrentLength);
-                int[] permutIndex = this.permutation(sourceArray[i][j].length, rnd);
-                for (int k = 0; k < sourceArray[i][j].length; k++) {
-                    sourceArray[i][j][permutIndex[k]].clearUsages(); // reinitialise static variable
-                    listOfCurrentLength.add(k, sourceArray[i][j][permutIndex[k]]);
-                }
-            }
-        }
-        return retVal;
-
-    }
-
-    private int[] permutation(int length, Random rnd) {
-        int[] retVal = new int[length];
-        ArrayList<Integer> tmp = new ArrayList<Integer>(length);
-        for (int i = 0; i < length; i++) {
-            tmp.add(i);
-        }
-        int j = 0;
-        while (tmp.size() > 0) {
-            int rIndex = rnd.nextInt(tmp.size());
-            retVal[j] = tmp.get(rIndex);
-            tmp.remove(rIndex);
-            j++;
-        }
-        return retVal;
-    }
-
-    
-    // there must be 1 trial with target, 1 with target-and-foil, and 2 no-targets
-    // there must be trials of length 3,4,5,6
-    // with side effect: removing used stimuli from source lists targetOnlyTrials, targetAndFoilTrials, notargetTrials
     @Override
     public boolean initialiseNextFineTuningTuple() {
-        
-        this.currentTrialTuple = new ArrayList<Trial>(this.fineTuningTupleLength);
-        // get permutation of types 
-        int[] permutTrialTypes = this.permutation(this.requiredTrialTypes.length, this.rnd);
-         // get permutation of 3,4,5,6
-         
-        // TODO find length leftovers for this type and band and chose from them !! 
-        int[] permutLengthes =  this.permutation(this.requiredLengths.length, this.rnd);
-        
-        for (int i=0; i<this.fineTuningTupleLength; i++){
-          TrialCondition trialType = this.requiredTrialTypes[permutTrialTypes[i]];
-          int lngth = this.requiredLengths[permutLengthes[i]];
-          ArrayList<Trial> candidateTrials = this.trials.get(trialType).get(this.currentBandIndex).get(lngth);
-          if (candidateTrials.size()<0) {
-              int bandNumber = this.currentBandIndex+1;
-              this.errorMessage = "There is no trails left of type "+trialType+" for band "+bandNumber+ " of length "+lngth;
-              return false;
-          }
-          this.currentTrialTuple.add(candidateTrials.get(0));
-          candidateTrials.remove(0);
+
+        this.currentTrialTuple = TrialTuple.createTuple(this.availableCombinations, this.trials, this.fineTuningTupleLength, this.currentBandIndex);
+        if (this.currentTrialTuple == null) {
+            this.errorMessage = "There is no trial combinations satisfying the specification!";
+            return false;
+        } else {
+            this.currentTrialTuple.setCorrectness(true);
+            return true;
         }
-       
-        return true;
     }
 
     @Override
     public void nextStimulus(int increment) {
-        // find first nonempty trial in the current trial tuple and pick up the first stimuli out of here
-        // there must be at least one nonempty trial, ensured by "fineTuningToBecontinued"
-        int i = 0;
-        while (this.currentTrialTuple.get(i).getStimuliList().size() < 1) {
-            i++;
-        }
-        AudioAsStimulus bStimulus = this.currentTrialTuple.get(i).getStimuliList().remove(0);
+        AudioAsStimulus bStimulus = this.currentTrialTuple.removeFirstAvailableStimulus();
         this.responseRecord.add(bStimulus);
     }
 
     @Override
     protected boolean tupleIsNotEmpty() {
-        int i = 0;
-        while (this.currentTrialTuple.get(i).getStimuliList().size() < 1 && i < trials.size()) {
-            i++;
-        }
-        if (i < trials.size()) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.currentTrialTuple.isNotEmpty();
     }
 
     @Override
-    protected boolean allTupleIsCorrect() {
-        boolean allTupleCorrect = true;
-        int i = this.responseRecord.size() - 1;
-        // we go down till we hit the first separator between tuples (which is null)
-        while (this.responseRecord.get(i) != null && allTupleCorrect) {
-            AudioAsStimulus audioStimulus = this.responseRecord.get(i);
-            WordType stimulusType = audioStimulus.getWordType();
-            if (stimulusType.equals(WordType.EXAMPLE_TARGET_NON_WORD)) { // we do not check correctness for example stimuli
-                i--;
-            } else {
-                if (!audioStimulus.getCorrectness()) {
-                    allTupleCorrect = false;
-                } else {
-                    i--;
-                }
-            }
-        }
-        return allTupleCorrect;
+    protected Boolean allTupleIsCorrect() {
+        return this.currentTrialTuple.getCorrectness();
     }
 
     // also evaluates and sets correctenss of the current stimulus
     @Override
-    public boolean isCorrectResponse(Stimulus stimulus, String stimulusResponse) {
+    public boolean isCorrectResponse(Stimulus stimulus, String stimulusResponse
+    ) {
         int index = this.getCurrentStimulusIndex();
         AudioAsStimulus audioStimulus = this.responseRecord.get(index);
         audioStimulus.setTimeStamp(System.currentTimeMillis());
@@ -225,6 +142,9 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
                 }
             }
             audioStimulus.setCorrectness(correctness);
+            if (!correctness && this.currentTrialTuple.getCorrectness()) {
+                this.currentTrialTuple.setCorrectness(false);
+            }
             return correctness;
         }
     }

@@ -22,8 +22,8 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimu
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Random;
 import java.util.Set;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsBookkeepingStimulus;
@@ -269,7 +269,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
 
     private String getHtmlExperimenteeReport() {
         StringBuilder htmlStringBuilder = new StringBuilder();
-        HashMap<String, ArrayList<AdVocAsBookkeepingStimulus>> wordTables = this.generateWordNonWordSequences(this.responseRecord);
+        LinkedHashMap<String, ArrayList<AdVocAsBookkeepingStimulus>> wordTables = this.generateWordNonWordSequences(this.responseRecord);
 
         ArrayList<AdVocAsBookkeepingStimulus> woorden = wordTables.get("words");
         ArrayList<AdVocAsBookkeepingStimulus> nietWoorden = wordTables.get("nonwords");
@@ -337,7 +337,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
     private String getHtmlExperimenteePositionDiagram() {
         StringBuilder htmlStringBuilder = new StringBuilder();
         long perScore = this.getPercentageScore();
-        HashMap<Long, String> content = this.generateDiagramSequence(this.responseRecord, this.percentageBandTable);
+        LinkedHashMap<Long, String> content = this.generateDiagramSequence(this.responseRecord, this.percentageBandTable);
         //htmlStringBuilder.append("<table frame=\"box\">");
         htmlStringBuilder.append("<table>");
         htmlStringBuilder.append("<tr><td>PERCENTAGE</td><td></td><td>VOORBEELD woord</td></tr>");
@@ -372,10 +372,10 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         return htmlStringBuilder.toString();
     }
 
-    public HashMap<Long, String> generateDiagramSequence(ArrayList<AdVocAsBookkeepingStimulus> records, HashMap<Long, Integer> percentageBandTable) {
-        HashMap<Long, String> retVal = new HashMap<Long, String>();
+    public LinkedHashMap<Long, String> generateDiagramSequence(ArrayList<AdVocAsBookkeepingStimulus> records, LinkedHashMap<Long, Integer> percentageBandTable) {
+        LinkedHashMap<Long, String> retVal = new LinkedHashMap<Long, String>();
 
-        HashMap<Integer, String> sampleWords = this.retrieveSampleWords(records, this.words);
+        LinkedHashMap<Integer, String> sampleWords = this.retrieveSampleWords(records, this.words);
 
         Long perScore = this.getPercentageScore();
         Integer bScore = this.getBandScore();
@@ -419,8 +419,8 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         return retVal;
     }
 
-    public HashMap<Integer, String> retrieveSampleWords(ArrayList<AdVocAsBookkeepingStimulus> records, ArrayList<ArrayList<AdVocAsStimulus>> nonusedWords) {
-        HashMap<Integer, String> retVal = new HashMap<Integer, String>();
+    public LinkedHashMap<Integer, String> retrieveSampleWords(ArrayList<AdVocAsBookkeepingStimulus> records, ArrayList<ArrayList<AdVocAsStimulus>> nonusedWords) {
+        LinkedHashMap<Integer, String> retVal = new LinkedHashMap<Integer, String>();
         for (AdVocAsBookkeepingStimulus bStimulus : records) {
             if (bStimulus.getCorrectResponses().equals(Vocabulary.WORD)) { // is a word
                 Integer key = bStimulus.getBandNumber();
@@ -445,8 +445,8 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         return retVal;
     }
 
-    private HashMap<String, ArrayList<AdVocAsBookkeepingStimulus>> generateWordNonWordSequences(ArrayList<AdVocAsBookkeepingStimulus> records) {
-        HashMap<String, ArrayList<AdVocAsBookkeepingStimulus>> retVal = new HashMap<String, ArrayList<AdVocAsBookkeepingStimulus>>();
+    private LinkedHashMap<String, ArrayList<AdVocAsBookkeepingStimulus>> generateWordNonWordSequences(ArrayList<AdVocAsBookkeepingStimulus> records) {
+        LinkedHashMap<String, ArrayList<AdVocAsBookkeepingStimulus>> retVal = new LinkedHashMap<String, ArrayList<AdVocAsBookkeepingStimulus>>();
         retVal.put("words", new ArrayList<AdVocAsBookkeepingStimulus>());
         retVal.put("nonwords", new ArrayList<AdVocAsBookkeepingStimulus>());
 

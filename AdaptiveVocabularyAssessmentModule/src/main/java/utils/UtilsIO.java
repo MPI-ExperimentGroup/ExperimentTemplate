@@ -28,7 +28,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsSt
  *
  * @author olhshk
  */
-public class Utils {
+public class UtilsIO {
 
    
 
@@ -69,7 +69,7 @@ public class Utils {
     public static void writeHtmlFileFineTuningHistory(AdVocAsStimuliProvider provider, String outputDir, String fileName) throws IOException {
         System.out.println("writeHtmlFile: " + outputDir + fileName);
         final File htmlFile = new File(outputDir, fileName);
-        String inhoud = provider.getStringFineTuningHistory("<tr>", "<tr>", "<td>", "<td>",  "html");
+        String inhoud = provider.getStringFineTuningHistory("<tr>", "<tr>", "<td>", "<td>", "html");
         BufferedWriter output = new BufferedWriter(new FileWriter(htmlFile));
         String htmlString = "<!DOCTYPE html><html><body><table border=1>" + inhoud + "</table></body></html>";
         output.write(htmlString);

@@ -17,28 +17,44 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import org.junit.Ignore;
+
 /**
  *
  * @author olhshk
  */
-public enum TrialCondition {
-    TARGET_ONLY, TARGET_AND_FOIL, NO_TARGET;
+public class PermutationPairTest {
     
-    public static TrialCondition stringToCondition(String conditionString){
-       TrialCondition retVal;
-       switch (conditionString) {
-            case "Target-only":
-                retVal = TrialCondition.TARGET_ONLY;
-                break;
-            case "Target+Foil":
-                retVal = TrialCondition.TARGET_AND_FOIL;
-                break;
-            case "NoTarget":
-                retVal = TrialCondition.NO_TARGET;
-                break;
-            default:
-                throw new IllegalArgumentException("No trial condition value for the string "+conditionString);
-        } 
-       return retVal;
+    public PermutationPairTest() {
     }
+    
+    @BeforeClass
+    public static void setUpClass() {
+    }
+    
+    @AfterClass
+    public static void tearDownClass() {
+    }
+    
+    @Before
+    public void setUp() {
+    }
+    
+    @After
+    public void tearDown() {
+    }
+
+    @Ignore
+    @Test
+    public void testSomeMethod() {
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+    
 }

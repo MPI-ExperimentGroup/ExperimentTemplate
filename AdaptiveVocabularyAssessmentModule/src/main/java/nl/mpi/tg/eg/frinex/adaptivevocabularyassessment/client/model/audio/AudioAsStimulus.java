@@ -51,12 +51,15 @@ public class AudioAsStimulus extends BookkeepingStimulus<Boolean> {
             if (reaction.equals(AUDIO_RATING_LABEL)) {
                 this.userReaction = true;
             } else {
-                // something went terribly wrong 
-                this.userReaction = null;
+                if (reaction.equals("")) {
+                    this.userReaction = false;
+                } else {
+                    // something went terribly wrong 
+                    this.userReaction = null;
+                }
             }
         }
     }
-    
-   
+
 
 }

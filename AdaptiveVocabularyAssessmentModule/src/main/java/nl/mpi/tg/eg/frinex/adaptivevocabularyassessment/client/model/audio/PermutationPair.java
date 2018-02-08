@@ -17,28 +17,22 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author olhshk
  */
-public enum TrialCondition {
-    TARGET_ONLY, TARGET_AND_FOIL, NO_TARGET;
-    
-    public static TrialCondition stringToCondition(String conditionString){
-       TrialCondition retVal;
-       switch (conditionString) {
-            case "Target-only":
-                retVal = TrialCondition.TARGET_ONLY;
-                break;
-            case "Target+Foil":
-                retVal = TrialCondition.TARGET_AND_FOIL;
-                break;
-            case "NoTarget":
-                retVal = TrialCondition.NO_TARGET;
-                break;
-            default:
-                throw new IllegalArgumentException("No trial condition value for the string "+conditionString);
-        } 
-       return retVal;
+public class PermutationPair {
+
+        public final ArrayList<TrialCondition> trialTypes;
+        public final ArrayList<Integer> trialLengths;
+
+        public PermutationPair(ArrayList<TrialCondition> trialTypes, ArrayList<Integer> trialLengths) {
+            this.trialTypes = trialTypes;
+            this.trialLengths = trialLengths;
+        }
+        
+       
+        
     }
-}

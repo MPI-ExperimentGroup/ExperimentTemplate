@@ -18,8 +18,8 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
@@ -931,7 +931,7 @@ public class AdVocAsStimuliProviderTest {
         provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
 
-        HashMap<Long, Integer> percentageTable = provider.getPercentageBandTable();
+        LinkedHashMap<Long, Integer> percentageTable = provider.getPercentageBandTable();
 
         Long one = new Long(1);
        // which band number correspond to 1 percent of # 54 is 100%?
@@ -1075,7 +1075,7 @@ public class AdVocAsStimuliProviderTest {
 
         // checking generating graph
         // first check if the sample set is generated ok
-        HashMap<Integer, String> samples = provider.retrieveSampleWords(provider.getResponseRecord(), provider.getWords());
+        LinkedHashMap<Integer, String> samples = provider.retrieveSampleWords(provider.getResponseRecord(), provider.getWords());
 
         Vocabulary vocab = new Vocabulary(nOfBands, wordsPerBandInSeries);
         AdVocAsStimulus[][] wordArray = ConstantsWords1.WORDS_SERIES[0];
@@ -1091,7 +1091,7 @@ public class AdVocAsStimuliProviderTest {
         }
 
         // now check if the graph sequence for percentage is ok 
-        HashMap<Long, String> graph = provider.generateDiagramSequence(provider.getResponseRecord(), provider.getPercentageBandTable());
+        LinkedHashMap<Long, String> graph = provider.generateDiagramSequence(provider.getResponseRecord(), provider.getPercentageBandTable());
 
         Integer bandScore = provider.getBandScore();
 

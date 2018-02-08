@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
-import utils.Utils;
+import utils.UtilsIO;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service.AdVocAsStimuliProviderTest;
 import org.junit.After;
@@ -88,9 +88,9 @@ public class MainTest {
         //Utils.writeCsvFileFineTuningHistoryShortened(provider, OUTPUT_DIRECTORY, fileNameCSV);
 
         String fileNameHTML = "Full_user_history_" + message + "_" + millis + ".html";
-        Utils.writeHtmlFullUserResults(provider, OUTPUT_DIRECTORY, fileNameHTML);
+        UtilsIO.writeHtmlFullUserResults(provider, OUTPUT_DIRECTORY, fileNameHTML);
 
-        Utils.writeCsvMapAsOneCsv(provider, OUTPUT_DIRECTORY, "Full_user_history_" + message + "_" + millis + ".csv");
+        UtilsIO.writeCsvMapAsOneCsv(provider, OUTPUT_DIRECTORY, "Full_user_history_" + message + "_" + millis + ".csv");
         System.out.println("Done with probability  " + prob);
     }
 
@@ -110,9 +110,9 @@ public class MainTest {
                 + "__champion_" + champion + "__looser_" + looser + "__enough_" + enoughFineTuningStimulae;
 
         String fileNameHTML = "Full_user_history_" + message + ".html";
-        Utils.writeHtmlFullUserResults(provider, OUTPUT_DIRECTORY, fileNameHTML);
+        UtilsIO.writeHtmlFullUserResults(provider, OUTPUT_DIRECTORY, fileNameHTML);
 
-        Utils.writeCsvMapAsOneCsv(provider, OUTPUT_DIRECTORY, "Full_user_history_" + message + ".csv");
+        UtilsIO.writeCsvMapAsOneCsv(provider, OUTPUT_DIRECTORY, "Full_user_history_" + message + ".csv");
         System.out.println("Done with the long test");
     }
 

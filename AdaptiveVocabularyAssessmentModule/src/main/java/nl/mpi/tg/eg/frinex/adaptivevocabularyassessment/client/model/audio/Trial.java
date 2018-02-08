@@ -18,7 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Set;
 
 /**
@@ -33,12 +33,12 @@ public class Trial {
     private final int numberOfSyllables;
     private final TrialCondition condition;
     private final int lgth;
-    public final int PAUSE_EXAMPLE = 900;
-    public final int PAUSE  = 500;
-    public final int bandNumber;
-    public final String dirName;
+    private final int PAUSE_EXAMPLE = 900;
+    private final int PAUSE  = 500;
+    private final int bandNumber;
+    private final String dirName;
 
-    public Trial(String word, String targetNonword, int nOfSyllables, String condition, int length, HashMap<String,WordType> words, int bandNumber, String dirName) {
+    public Trial(String word, String targetNonword, int nOfSyllables, TrialCondition condition, int length, LinkedHashMap<String,WordType> words, int bandNumber, String dirName) {
 
         this.word = word;
         this.targetNonWord = targetNonword;
@@ -46,20 +46,7 @@ public class Trial {
         this.lgth = length;
         this.bandNumber = bandNumber;
         this.dirName = dirName;
-        switch (condition) {
-            case "Target-only":
-                this.condition = TrialCondition.TARGET_ONLY;
-                break;
-            case "Target+Foil":
-                this.condition = TrialCondition.TARGET_AND_FOIL;
-                break;
-            case "NoTarget":
-                this.condition = TrialCondition.NO_TARGET;
-                break;
-            default:
-                this.condition = null;
-                break;
-        }
+        this.condition = condition;
         this.wordList = new ArrayList<AudioAsStimulus>(length+1);
         AudioAsStimulus example = this.makeExampleStimulus(targetNonword);
         this.wordList.add(example);
@@ -78,6 +65,14 @@ public class Trial {
     public String getWord() {
         return this.word;
     }
+    
+    public String getDirName() {
+        return this.dirName;
+    }
+    
+    public int getBandNumber() {
+        return this.bandNumber;
+    }
 
     public String getTargetNonWord() {
         return this.targetNonWord;
@@ -95,12 +90,31 @@ public class Trial {
         return this.lgth;
     }
     
+    public static TrialCondition stringToCondition(String conditionString){
+       TrialCondition retVal;
+       switch (conditionString) {
+            case "Target-only":
+                retVal = TrialCondition.TARGET_ONLY;
+                break;
+            case "Target+Foil":
+                retVal = TrialCondition.TARGET_AND_FOIL;
+                break;
+            case "NoTarget":
+                retVal = TrialCondition.NO_TARGET;
+                break;
+            default:
+                retVal = null;
+                break;
+        } 
+       return retVal;
+    }
+    
     private AudioAsStimulus makeExampleStimulus(String targetNonword){
         
         // public AudioAsStimulus(String uniqueId, String label, int pauseMs, String audioPath, String correctResponses, int bandNumber, WordType wordtype) 
         String uniqueId = targetNonword+System.currentTimeMillis();
         String audioPath = this.dirName+"/"+targetNonword+"_"+this.bandNumber; // Florian is it so??
-        AudioAsStimulus retVal = new AudioAsStimulus(uniqueId, targetNonword, PAUSE, audioPath, null, this.bandNumber, WordType.EXAMPLE_TARGET_NON_WORD);
+        AudioAsStimulus retVal = new AudioAsStimulus(uniqueId, targetNonword, PAUSE_EXAMPLE, audioPath, null, this.bandNumber, WordType.EXAMPLE_TARGET_NON_WORD);
         return retVal;
     }
     
