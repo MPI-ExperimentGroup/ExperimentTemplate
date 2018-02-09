@@ -25,7 +25,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 
 /**
  *
@@ -80,7 +79,7 @@ public class TrialTest {
         retVal.put("kijn", WordType.NON_WORD);
         return retVal;
     }
-    
+
     private final Trial[] instance = new Trial[4];
 
     public TrialTest() {
@@ -104,7 +103,7 @@ public class TrialTest {
         //107	vuur	fjon	1	Target+Foil	5 targetNonWords	fjodschelg	fjon	wisdaag	tuik	poks		fjodschelg
         this.instance[2] = new Trial("vuur", "fjon", 1, TrialCondition.TARGET_AND_FOIL, 5, map3, 22, "/3");
         //156	pop	lop	1	NoTarget	4 targetNonWords	voorserm	muiland	fraal	kijn	
-        this.instance[3]= new Trial("pop", "lop", 1, TrialCondition.NO_TARGET, 4, map4, 22, "/2");
+        this.instance[3] = new Trial("pop", "lop", 1, TrialCondition.NO_TARGET, 4, map4, 22, "/2");
 
     }
 
@@ -119,22 +118,22 @@ public class TrialTest {
     public void testGetStimuliList() {
         System.out.println("getStimuliList");
         ArrayList<AudioAsStimulus>[] stimuli = new ArrayList[this.instance.length];
-        for (int i=0; i<this.instance.length; i++){
-            stimuli[i]=this.instance[i].getStimuliList();
+        for (int i = 0; i < this.instance.length; i++) {
+            stimuli[i] = this.instance[i].getStimuliList();
         }
         assertEquals(4, stimuli[0].size());
         assertEquals("smoer", stimuli[0].get(0).getLabel());
         assertEquals("deerbal", stimuli[0].get(1).getLabel());
         assertEquals("smoer", stimuli[0].get(2).getLabel());
         assertEquals("wijp", stimuli[0].get(3).getLabel());
-        
+
         assertEquals(5, stimuli[1].size());
         assertEquals("hers", stimuli[1].get(0).getLabel());
         assertEquals("geider", stimuli[1].get(1).getLabel());
         assertEquals("hers", stimuli[1].get(2).getLabel());
         assertEquals("atgraus", stimuli[1].get(3).getLabel());
         assertEquals("hamp", stimuli[1].get(4).getLabel());
-        
+
         assertEquals(6, stimuli[2].size());
         assertEquals("fjon", stimuli[2].get(0).getLabel());
         assertEquals("fjodschelg", stimuli[2].get(1).getLabel());
@@ -142,7 +141,7 @@ public class TrialTest {
         assertEquals("wisdaag", stimuli[2].get(3).getLabel());
         assertEquals("tuik", stimuli[2].get(4).getLabel());
         assertEquals("poks", stimuli[2].get(5).getLabel());
-        
+
         assertEquals(5, stimuli[3].size());
         assertEquals("lop", stimuli[3].get(0).getLabel());
         assertEquals("voorserm", stimuli[3].get(1).getLabel());
@@ -158,8 +157,8 @@ public class TrialTest {
     public void testGetWord() {
         System.out.println("getWord");
         String[] words = new String[this.instance.length];
-        for (int i=0; i<this.instance.length; i++){
-            words[i]=this.instance[i].getWord();
+        for (int i = 0; i < this.instance.length; i++) {
+            words[i] = this.instance[i].getWord();
         }
         assertEquals("vloer", words[0]);
         assertEquals("kers", words[1]);
@@ -174,8 +173,8 @@ public class TrialTest {
     public void testGetDirName() {
         System.out.println("getDirName");
         String[] dirNames = new String[this.instance.length];
-        for (int i=0; i<this.instance.length; i++){
-            dirNames[i]=this.instance[i].getDirName();
+        for (int i = 0; i < this.instance.length; i++) {
+            dirNames[i] = this.instance[i].getDirName();
         }
         assertEquals("/1", dirNames[0]);
         assertEquals("/2", dirNames[1]);
@@ -190,8 +189,8 @@ public class TrialTest {
     public void testGetBandNumber() {
         System.out.println("getBandNumber");
         int[] bands = new int[this.instance.length];
-        for (int i=0; i<this.instance.length; i++){
-            bands[i]=this.instance[i].getBandNumber();
+        for (int i = 0; i < this.instance.length; i++) {
+            bands[i] = this.instance[i].getBandNumber();
         }
         assertEquals(20, bands[0]);
         assertEquals(21, bands[1]);
@@ -206,8 +205,8 @@ public class TrialTest {
     public void testGetTargetNonWord() {
         System.out.println("getTargetNonWord");
         String[] targetNonWords = new String[this.instance.length];
-        for (int i=0; i<this.instance.length; i++){
-            targetNonWords[i]=this.instance[i].getTargetNonWord();
+        for (int i = 0; i < this.instance.length; i++) {
+            targetNonWords[i] = this.instance[i].getTargetNonWord();
         }
         assertEquals("smoer", targetNonWords[0]);
         assertEquals("hers", targetNonWords[1]);
@@ -222,8 +221,8 @@ public class TrialTest {
     public void testGetNumberOfSyllables() {
         System.out.println("getNumberOfSyllables");
         int[] syllabN = new int[this.instance.length];
-        for (int i=0; i<this.instance.length; i++){
-            syllabN[i]=this.instance[i].getNumberOfSyllables();
+        for (int i = 0; i < this.instance.length; i++) {
+            syllabN[i] = this.instance[i].getNumberOfSyllables();
         }
         assertEquals(1, syllabN[0]);
         assertEquals(1, syllabN[1]);
@@ -238,8 +237,8 @@ public class TrialTest {
     public void testGetCondition() {
         System.out.println("getCondition");
         TrialCondition[] consitions = new TrialCondition[this.instance.length];
-        for (int i=0; i<this.instance.length; i++){
-            consitions[i]=this.instance[i].getCondition();
+        for (int i = 0; i < this.instance.length; i++) {
+            consitions[i] = this.instance[i].getCondition();
         }
         assertEquals(TrialCondition.TARGET_ONLY, consitions[0]);
         assertEquals(TrialCondition.TARGET_ONLY, consitions[1]);
@@ -250,27 +249,25 @@ public class TrialTest {
     /**
      * Test of getTrialLength method, of class Trial.
      */
-   @Test
+    @Test
     public void testGetTrialLength() {
         System.out.println("getTrialLength");
-         int[] trailL = new int[this.instance.length];
-         ArrayList<AudioAsStimulus>[] stimuli = new ArrayList[this.instance.length];
-        
-        for (int i=0; i<this.instance.length; i++){
-            trailL[i]=this.instance[i].getTrialLength();
-            stimuli[i]=this.instance[i].getStimuliList();
+        int[] trailL = new int[this.instance.length];
+        ArrayList<AudioAsStimulus>[] stimuli = new ArrayList[this.instance.length];
+
+        for (int i = 0; i < this.instance.length; i++) {
+            trailL[i] = this.instance[i].getTrialLength();
+            stimuli[i] = this.instance[i].getStimuliList();
         }
         assertEquals(3, trailL[0]);
         assertEquals(4, trailL[1]);
         assertEquals(5, trailL[2]);
         assertEquals(4, trailL[3]);
-       
-        assertEquals(trailL[0]+1, stimuli[0].size());
-        assertEquals(trailL[1]+1, stimuli[1].size());
-        assertEquals(trailL[2]+1, stimuli[2].size());
-        assertEquals(trailL[3]+1, stimuli[3].size());
-    }
 
-    
+        assertEquals(trailL[0] + 1, stimuli[0].size());
+        assertEquals(trailL[1] + 1, stimuli[1].size());
+        assertEquals(trailL[2] + 1, stimuli[2].size());
+        assertEquals(trailL[3] + 1, stimuli[3].size());
+    }
 
 }

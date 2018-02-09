@@ -29,7 +29,7 @@ public class TrialTuple {
 
     private final ArrayList<Trial> trials;
     private Boolean correctness;
-    private static final Random rnd = new Random();
+    private static final Random RND = new Random();
 
     public TrialTuple(ArrayList<Trial> trials) {
         this.trials = trials;
@@ -44,6 +44,10 @@ public class TrialTuple {
         AudioAsStimulus retVal = this.trials.get(i).getStimuliList().remove(0);
         return retVal;
     }
+    
+    public ArrayList<Trial> getTrials(){
+        return this.trials;
+    }
 
     public Boolean getCorrectness() {
         if (this.isNotEmpty()) {
@@ -54,11 +58,14 @@ public class TrialTuple {
     }
 
     public void setCorrectness(boolean correct) {
-        this.correctness = correct;
+        if (this.isNotEmpty()) {
+             // do nothing, it is too early to get correctness, not all trials are fired!
+        } else {
+            this.correctness = correct;
+        }
+
     }
 
-   
-    
     public boolean isNotEmpty() {
         int i = 0;
         // try to find first non-empty trial
@@ -71,20 +78,20 @@ public class TrialTuple {
         }
         return false; // all trials are fired!
     }
-    
+
     public static TrialTuple createTuple(ArrayList<PermutationPair> availablePermutations, Map<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> trialMatrix, int size, int bandIndex) {
-      if (availablePermutations.size() < 1) {
+        if (availablePermutations.size() < 1) {
             return null;
         }
-        
+
         ArrayList<Trial> trials = new ArrayList<Trial>(size);
-        int combinationIndex = rnd.nextInt(availablePermutations.size());
+        int combinationIndex = RND.nextInt(availablePermutations.size());
         PermutationPair permPair = availablePermutations.get(combinationIndex);
         for (int i = 0; i < size; i++) {
             TrialCondition trialType = permPair.trialTypes.get(i);
             Integer length = permPair.trialLengths.get(i);
-            ArrayList<Trial> possibilities =  trialMatrix.get(trialType).get(bandIndex).get(length);
-            int trialIndex = rnd.nextInt(possibilities.size());
+            ArrayList<Trial> possibilities = trialMatrix.get(trialType).get(bandIndex).get(length);
+            int trialIndex = RND.nextInt(possibilities.size());
             Trial currentTrial = possibilities.remove(trialIndex);
             trials.add(currentTrial);
         }
