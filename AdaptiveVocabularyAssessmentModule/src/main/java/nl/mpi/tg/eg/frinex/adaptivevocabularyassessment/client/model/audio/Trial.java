@@ -90,25 +90,7 @@ public class Trial {
         return this.lgth;
     }
     
-    public static TrialCondition stringToCondition(String conditionString){
-       TrialCondition retVal;
-       switch (conditionString) {
-            case "Target-only":
-                retVal = TrialCondition.TARGET_ONLY;
-                break;
-            case "Target+Foil":
-                retVal = TrialCondition.TARGET_AND_FOIL;
-                break;
-            case "NoTarget":
-                retVal = TrialCondition.NO_TARGET;
-                break;
-            default:
-                retVal = null;
-                break;
-        } 
-       return retVal;
-    }
-    
+  
     private AudioAsStimulus makeExampleStimulus(String targetNonword){
         
         // public AudioAsStimulus(String uniqueId, String label, int pauseMs, String audioPath, String correctResponses, int bandNumber, WordType wordtype) 
@@ -128,11 +110,5 @@ public class Trial {
         return retVal;
     }
     
-    public void clearUsages(){
-        for (AudioAsStimulus stimulus:this.wordList) {
-            stimulus.setCorrectness(false);
-            stimulus.setReaction(null);
-        }
-    }
-
+  
 }
