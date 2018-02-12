@@ -25,11 +25,6 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.event.dom.client.MouseMoveEvent;
-import com.google.gwt.event.dom.client.TouchCancelEvent;
-import com.google.gwt.event.dom.client.TouchEndEvent;
-import com.google.gwt.event.dom.client.TouchMoveEvent;
-import com.google.gwt.event.dom.client.TouchStartEvent;
 import com.google.gwt.user.client.Event;
 //import com.google.gwt.event.dom.client.DragStartEvent;
 //import com.google.gwt.event.dom.client.DragStartHandler;
@@ -331,12 +326,16 @@ public class ComplexView extends SimpleView {
     }
 
     public void addTouchInputCapture(TouchInputCapture touchInputCapture) {
-        RootPanel root = RootPanel.get();
-        domHandlerArray.add(root.addDomHandler(touchInputCapture, TouchStartEvent.getType()));
-        domHandlerArray.add(root.addDomHandler(touchInputCapture, TouchMoveEvent.getType()));
-        domHandlerArray.add(root.addDomHandler(touchInputCapture, TouchEndEvent.getType()));
-        domHandlerArray.add(root.addDomHandler(touchInputCapture, TouchCancelEvent.getType()));
-        domHandlerArray.add(root.addDomHandler(touchInputCapture, MouseMoveEvent.getType()));
+//        RootPanel root = RootPanel.get();
+//        domHandlerArray.add(root.addDomHandler(touchInputCapture, TouchStartEvent.getType()));
+//        domHandlerArray.add(root.addDomHandler(touchInputCapture, TouchMoveEvent.getType()));
+//        domHandlerArray.add(root.addDomHandler(touchInputCapture, TouchEndEvent.getType()));
+//        domHandlerArray.add(root.addDomHandler(touchInputCapture, TouchCancelEvent.getType()));
+//        domHandlerArray.add(root.addDomHandler(touchInputCapture, MouseMoveEvent.getType()));
+//        domHandlerArray.add(root.addDomHandler(touchInputCapture, MouseDownEvent.getType()));
+//        domHandlerArray.add(root.addDomHandler(touchInputCapture, MouseUpEvent.getType()));
+//        domHandlerArray.add(root.addDomHandler(touchInputCapture, MouseOutEvent.getType()));
+//        domHandlerArray.add(root.addDomHandler(touchInputCapture, MouseOverEvent.getType()));
         domHandlerArray.add(Event.addNativePreviewHandler(touchInputCapture));
     }
 
@@ -453,7 +452,8 @@ public class ComplexView extends SimpleView {
             imageButton.addTouchEndHandler(singleShotEventListner);
             addHotKeyListner(presenterListerner, singleShotEventListner);
         } else {
-            imageButton.setEnabled(false);
+            // setting this to false breaks the touch input capture
+//            imageButton.setEnabled(false);
         }
         final StimulusButton stimulusButton = new StimulusButton() {
             boolean isEnabled = true;
