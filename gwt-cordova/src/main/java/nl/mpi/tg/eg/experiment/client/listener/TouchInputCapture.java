@@ -20,14 +20,26 @@ package nl.mpi.tg.eg.experiment.client.listener;
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.dom.client.Touch;
-import com.google.gwt.event.dom.client.HandlesAllTouchEvents;
+import com.google.gwt.event.dom.client.MouseDownEvent;
+import com.google.gwt.event.dom.client.MouseDownHandler;
+import com.google.gwt.event.dom.client.MouseEvent;
 import com.google.gwt.event.dom.client.MouseMoveEvent;
 import com.google.gwt.event.dom.client.MouseMoveHandler;
+import com.google.gwt.event.dom.client.MouseOutEvent;
+import com.google.gwt.event.dom.client.MouseOutHandler;
+import com.google.gwt.event.dom.client.MouseOverEvent;
+import com.google.gwt.event.dom.client.MouseOverHandler;
+import com.google.gwt.event.dom.client.MouseUpEvent;
+import com.google.gwt.event.dom.client.MouseUpHandler;
 import com.google.gwt.event.dom.client.TouchCancelEvent;
+import com.google.gwt.event.dom.client.TouchCancelHandler;
 import com.google.gwt.event.dom.client.TouchEndEvent;
+import com.google.gwt.event.dom.client.TouchEndHandler;
 import com.google.gwt.event.dom.client.TouchEvent;
 import com.google.gwt.event.dom.client.TouchMoveEvent;
+import com.google.gwt.event.dom.client.TouchMoveHandler;
 import com.google.gwt.event.dom.client.TouchStartEvent;
+import com.google.gwt.event.dom.client.TouchStartHandler;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.Timer;
 import java.util.ArrayList;
@@ -38,7 +50,7 @@ import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
  * @since Oct 23, 2017 2:10:09 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public abstract class TouchInputCapture extends HandlesAllTouchEvents implements MouseMoveHandler, Event.NativePreviewHandler {
+public abstract class TouchInputCapture implements Event.NativePreviewHandler, MouseDownHandler, MouseMoveHandler, MouseOutHandler, MouseOverHandler, MouseUpHandler, TouchCancelHandler, TouchEndHandler, TouchMoveHandler, TouchStartHandler {
 
     private final StringBuilder recordedTouches = new StringBuilder();
     private final List<TouchInputZone> touchZones = new ArrayList<>();
@@ -91,6 +103,7 @@ public abstract class TouchInputCapture extends HandlesAllTouchEvents implements
             endOfTouchEventListner.postLoadTimerFired();
         } else {
             for (TouchInputZone zone : touchZones) {
+                // todo: renable this separation between zone activation and implement <touchIntersectionStart></touchIntersectionStart> and <touchIntersectionEnd></touchIntersectionEnd> or an equivalent
 //            if (triggeredZones.contains(zone)) {
                 zone.triggerEvent();
 //                break;
@@ -104,18 +117,15 @@ public abstract class TouchInputCapture extends HandlesAllTouchEvents implements
         }
     }
 
-    private void recordTouches(TouchEvent event) {
-        final JsArray<Touch> targetTouches = event.getTouches();
-        final List<TouchInputZone> triggeredZones = new ArrayList<>();
+    private void recordTouches(final JsArray<Touch> targetTouches, final List<TouchInputZone> triggeredZones) {
         for (int index = 0; index < targetTouches.length(); index++) {
             appendTouch(targetTouches.get(index).getScreenX(), targetTouches.get(index).getScreenY(), triggeredZones);
         }
-        triggerZones(triggeredZones);
     }
 
-    private void touchesToDebugLabel(TouchEvent event) {
+    private void touchesToDebugLabel(final JsArray<Touch> targetTouches) {
         StringBuilder builder = new StringBuilder();
-        final JsArray<Touch> targetTouches = event.getTouches();
+//        final JsArray<Touch> targetTouches = event.getTouches();
         for (int index = 0; index < targetTouches.length(); index++) {
             builder.append(targetTouches.get(index).getScreenX());
             builder.append(", ");
@@ -124,61 +134,109 @@ public abstract class TouchInputCapture extends HandlesAllTouchEvents implements
         }
         setDebugLabel(builder.toString());
     }
+    private boolean isMouseDown = false;
 
-    @Override
-    public void onTouchStart(TouchStartEvent event) {
-        disableMouseEvents = true;
-        touchesToDebugLabel(event);
-        recordTouches(event);
-    }
-
-    @Override
-    public void onTouchMove(TouchMoveEvent event) {
-        disableMouseEvents = true;
-        touchesToDebugLabel(event);
-        recordTouches(event);
-    }
-
-    @Override
-    public void onTouchEnd(TouchEndEvent event) {
-        disableMouseEvents = true;
-        touchesToDebugLabel(event);
-        recordTouches(event);
-    }
-
-    @Override
-    public void onTouchCancel(TouchCancelEvent event) {
-        disableMouseEvents = true;
-        touchesToDebugLabel(event);
-        recordTouches(event);
-    }
-
-    @Override
-    public void onMouseMove(MouseMoveEvent event) {
-//        if (disableMouseEvents) {
-//            return;
-//        }
+    private void onAnyTouch(TouchEvent event) {
         final List<TouchInputZone> triggeredZones = new ArrayList<>();
-        appendTouch(event.getClientX(), event.getClientY(), triggeredZones);
-        setDebugLabel(event.toDebugString() + " " + event.getClientX() + "," + event.getClientY());
+        touchesToDebugLabel(event.getTouches());
+        recordTouches(event.getTouches(), triggeredZones);
+        triggerZones(triggeredZones);
+    }
+
+    private void onAnyMouse(MouseEvent event) {
+        final List<TouchInputZone> triggeredZones = new ArrayList<>();
+        if (isMouseDown) {
+            appendTouch(event.getNativeEvent().getClientX(), event.getNativeEvent().getClientY(), triggeredZones);
+        }
+        setDebugLabel(event.toDebugString() + " " + event.getNativeEvent().getClientX() + "," + event.getNativeEvent().getClientY());
         triggerZones(triggeredZones);
     }
 
     @Override
+    public void onTouchStart(TouchStartEvent event) {
+        onAnyTouch(event);
+    }
+
+    @Override
+    public void onTouchMove(TouchMoveEvent event) {
+        onAnyTouch(event);
+    }
+
+    @Override
+    public void onTouchEnd(TouchEndEvent event) {
+        onAnyTouch(event);
+    }
+
+    @Override
+    public void onTouchCancel(TouchCancelEvent event) {
+        onAnyTouch(event);
+    }
+
+    @Override
+    public void onMouseDown(MouseDownEvent event) {
+        isMouseDown = true;
+        onAnyMouse(event);
+    }
+
+    @Override
+    public void onMouseMove(MouseMoveEvent event) {
+        onAnyMouse(event);
+    }
+
+    @Override
+    public void onMouseOut(MouseOutEvent event) {
+        onAnyMouse(event);
+    }
+
+    @Override
+    public void onMouseOver(MouseOverEvent event) {
+        onAnyMouse(event);
+    }
+
+    @Override
+    public void onMouseUp(MouseUpEvent event) {
+        isMouseDown = false;
+        onAnyMouse(event);
+    }
+
+    @Override
     public void onPreviewNativeEvent(Event.NativePreviewEvent event) {
-//        if (disableMouseEvents) {
-//            return;
-//        }
         final int eventType = event.getTypeInt();
         final List<TouchInputZone> triggeredZones = new ArrayList<>();
         switch (eventType) {
+            case Event.ONMOUSEDOWN:
+                isMouseDown = true;
+                break;
+            case Event.ONCLICK:
+            case Event.ONDBLCLICK:
+            case Event.ONMOUSEUP:
+                isMouseDown = false;
+                break;
+        }
+        switch (eventType) {
+            case Event.ONCLICK:
+            case Event.ONDBLCLICK:
+            case Event.ONMOUSEDOWN:
             case Event.ONMOUSEOUT:
             case Event.ONMOUSEMOVE:
-                appendTouch(event.getNativeEvent().getClientX(), event.getNativeEvent().getClientY(), triggeredZones);
+            case Event.ONMOUSEOVER:
+            case Event.ONMOUSEUP:
+                if (isMouseDown) {
+                    appendTouch(event.getNativeEvent().getClientX(), event.getNativeEvent().getClientY(), triggeredZones);
+                }
                 setDebugLabel(event.toDebugString() + " " + event.getNativeEvent().getClientX() + "," + event.getNativeEvent().getClientY());
                 triggerZones(triggeredZones);
                 break;
+            case Event.ONTOUCHCANCEL:
+            case Event.ONTOUCHEND:
+            case Event.ONTOUCHMOVE:
+            case Event.ONTOUCHSTART:
+                touchesToDebugLabel(event.getNativeEvent().getTouches());
+                recordTouches(event.getNativeEvent().getTouches(), triggeredZones);
+                triggerZones(triggeredZones);
+                break;
             default:
+                setDebugLabel(event.toDebugString());
         }
     }
 
