@@ -48,12 +48,13 @@ public class AudioStimuliFromFiles {
             
             String targetNonword = record.get("Target_nonword");
             strBuilder.append("targetNonWord:").append(targetNonword).append(',');
-            
-            String condition = record.get("Condition");
-            strBuilder.append("condition:").append(condition).append(',');
+           
             
             String nOfSyllables =record.get("Syllables");
             strBuilder.append("nOfSyllables:").append(nOfSyllables).append(',');
+            
+            String condition = record.get("Condition");
+            strBuilder.append("condition:").append(condition).append(',');
             
             String length =record.get("Length_list").substring(0, 1);
             strBuilder.append("length:").append(length).append(',');
@@ -77,7 +78,7 @@ public class AudioStimuliFromFiles {
             strBuilder.append("Word6:").append(currentWord6).append(',');
             
             String foil = record.get("Foil");
-            strBuilder.append("Foil:").append(foil);
+            strBuilder.append("foil:").append(foil);
             
             String row =  strBuilder.toString();
             retVal.add(row);
@@ -91,7 +92,7 @@ public class AudioStimuliFromFiles {
         
         StringBuilder builder = new StringBuilder("public static final String[] TRIAL_ROWS={") ;
         for(String row:rows){
-           builder.append(row).append(","); 
+           builder.append("\"").append(row).append("\"").append(",\n"); 
         }
         builder.append("}");
         return builder.toString();

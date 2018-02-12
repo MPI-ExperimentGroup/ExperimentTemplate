@@ -79,7 +79,7 @@ public class TrialTuple {
         return false; // all trials are fired!
     }
 
-    public static TrialTuple createTuple(ArrayList<PermutationPair> availablePermutations, Map<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> trialMatrix, int size, int bandIndex) {
+    public static TrialTuple createTupleForBand(ArrayList<PermutationPair> availablePermutations, Map<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> trialMatrix, int size, int bandIndex) {
         if (availablePermutations.size() < 1) {
             return null;
         }

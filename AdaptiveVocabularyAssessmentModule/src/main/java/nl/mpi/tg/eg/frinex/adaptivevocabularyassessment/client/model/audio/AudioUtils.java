@@ -27,39 +27,8 @@ import java.util.Map;
  */
 public class AudioUtils {
     
-    public static ArrayList<PermutationPair> initialiseAvailabilityList(Map<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> trials,
-            ArrayList<ArrayList<Integer>> lengthPermuations, ArrayList<ArrayList<TrialCondition>> trialTypePermutations, int bandNumber, int tupleSize) {
-
-        ArrayList<PermutationPair> retVal = new ArrayList<PermutationPair>();
-        for (int i = 0; i < trialTypePermutations.size(); i++) {
-            ArrayList<TrialCondition> trialPermutation = trialTypePermutations.get(i);
-            for (int j = 0; j < lengthPermuations.size(); j++) {
-                ArrayList<Integer> sizePermutation = lengthPermuations.get(j);
-                Boolean enough = true;
-                int k = 0;
-                while (enough && k < tupleSize) {
-                    TrialCondition currentTrialCondition = trialPermutation.get(k);
-                    Integer currentLength = sizePermutation.get(k);
-                    //x[contdition][i][j] is the list of all trials satisfying "condition" for the band i of the length j
-                    ArrayList<Trial> possibleTrials = trials.get(currentTrialCondition).get(bandNumber).get(currentLength);
-                    if (possibleTrials.size() < 1) {
-                        enough = false;
-                    } else {
-                        k++;
-                    }
-                }
-                if (enough) {
-                    PermutationPair permPair = new PermutationPair(trialPermutation, sizePermutation);
-                    retVal.add(permPair);
-                }
-            }
-
-        }
-        return retVal;
-    }
-
-    private static Map<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> initMatrix(int numbOfBands, int maxLength) {
-        Map<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> retVal = new LinkedHashMap<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>>();
+     public static LinkedHashMap<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> initMatrix(int numbOfBands, int maxLength) {
+        LinkedHashMap<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> retVal = new LinkedHashMap<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>>();
 
         // initialisation: creating empty matrices
         for (TrialCondition trialType : TrialCondition.values()) {
@@ -77,10 +46,14 @@ public class AudioUtils {
         return retVal;
     }
     
-    public static Map<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> initialiseTrials(String[] rows, int numberOfBands, int maxLength, String dirName) {
-        Map<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> retVal = initMatrix(numberOfBands, maxLength);
-
+    
+    
+    
+    public static LinkedHashMap<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> initialiseTrials(String[] rows, int numberOfBands, int maxLength, String dirName) {
+        LinkedHashMap<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> retVal = initMatrix(numberOfBands, maxLength);
+        
         for (String row : rows) {
+            
             String[] parts = row.split(",");
             String[] wordBuffer = new String[maxLength];
 
@@ -123,39 +96,30 @@ public class AudioUtils {
                             break;
                         case "Word4":
                             wordBuffer[3] = null;
-                            if (attrVal[1] != null) {
-                                if (!attrVal[1].trim().isEmpty()) {
-                                    wordBuffer[3] = attrVal[1].trim();
-                                }
+                            if (thereIsSecondPart(attrVal)) {
+                                wordBuffer[3] = attrVal[1].trim();
                             }
                             break;
                         case "Word5":
                             wordBuffer[4] = null;
-                            if (attrVal[1] != null) {
-                                if (!attrVal[1].trim().isEmpty()) {
-                                    wordBuffer[4] = attrVal[1].trim();
-                                }
+                            if (thereIsSecondPart(attrVal)) {
+                                wordBuffer[4] = attrVal[1].trim();
                             }
                             break;
                         case "Word6":
                             wordBuffer[5] = null;
-                            if (attrVal[1] != null) {
-                                if (!attrVal[1].trim().isEmpty()) {
-                                    wordBuffer[5] = attrVal[1].trim();
-                                }
+                            if (thereIsSecondPart(attrVal)) {
+                                wordBuffer[5] = attrVal[1].trim();
                             }
                             break;
 
                         case "foil":
-                            if (attrVal[1] != null) {
-                                if (!attrVal[1].trim().isEmpty()) {
-                                    foil = attrVal[1].trim();
-                                }
+                            if (thereIsSecondPart(attrVal)) {
+                                foil = attrVal[1].trim();
                             }
                             break;
                     }
                 }
-
             }
 
             LinkedHashMap<String, WordType> words = makeClassifiedWordList(wordBuffer, word, targetNonWord, foil);
@@ -169,12 +133,46 @@ public class AudioUtils {
 
     }
     
-     private static LinkedHashMap<String, WordType> makeClassifiedWordList(String[] wrds, String word, String targetNonWord, String foil) {
+    // returns list of satisfying the requirements permutation pairs ((type-1, ..., type-tupleSize), (length-1, ..., length-tupleSize)) for a given bandIndex, 
+    // such that there ARE trials of type-i of length-i for tuples of tupleSize,  for bandNummer
+    public static ArrayList<PermutationPair> initialiseAvailabilityList(Map<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> trials,
+            ArrayList<ArrayList<Integer>> lengthPermuations, ArrayList<ArrayList<TrialCondition>> trialTypePermutations, int bandIndex, int tupleSize) {
+
+        ArrayList<PermutationPair> retVal = new ArrayList<PermutationPair>();
+        for (int i = 0; i < trialTypePermutations.size(); i++) {
+            ArrayList<TrialCondition> trialPermutation = trialTypePermutations.get(i);
+            for (int j = 0; j < lengthPermuations.size(); j++) {
+                ArrayList<Integer> sizePermutation = lengthPermuations.get(j);
+                Boolean enough = true;
+                int k = 0;
+                while (enough && k < tupleSize) {
+                    TrialCondition currentTrialCondition = trialPermutation.get(k);
+                    Integer currentLength = sizePermutation.get(k);
+                    //x[contdition][i][j] is the list of all trials satisfying "condition" for the band i of the length j
+                    ArrayList<Trial> possibleTrials = trials.get(currentTrialCondition).get(bandIndex).get(currentLength);
+                    if (possibleTrials.size() < 1) {
+                        enough = false;
+                    } else {
+                        k++;
+                    }
+                }
+                if (enough) {
+                    PermutationPair permPair = new PermutationPair(trialPermutation, sizePermutation);
+                    retVal.add(permPair);
+                }
+            }
+
+        }
+        return retVal;
+    }
+
+   
+     public static LinkedHashMap<String, WordType> makeClassifiedWordList(String[] wrds, String word, String targetNonWord, String foil) {
         LinkedHashMap<String, WordType> retVal = new LinkedHashMap<String, WordType>();
         for (int i = 0; i < wrds.length; i++) {
             if (wrds[i] != null) {
 
-                WordType wtype = WordType.TARGET_NON_WORD;
+                WordType wtype = WordType.NON_WORD;
                 if (wrds[i].equals(word)) {
                     wtype = WordType.WORD;
                 }
@@ -183,7 +181,7 @@ public class AudioUtils {
                 }
                 if (foil != null) {
                     if (wrds[i].equals(foil)) {
-                        wtype = WordType.TARGET_NON_WORD;
+                        wtype = WordType.FOIL;
                     }
                 }
                 retVal.put(wrds[i], wtype);
@@ -210,5 +208,18 @@ public class AudioUtils {
         }
         return toRemove;
     }
+       
+       private static boolean thereIsSecondPart(String[] parts){
+           if (parts.length<2) {
+               return false;
+           }
+           if (parts[0] == null) {
+               return false;
+           }
+           if (parts[0].isEmpty()) {
+               return false;
+           }
+           return true;
+       }
 
 }

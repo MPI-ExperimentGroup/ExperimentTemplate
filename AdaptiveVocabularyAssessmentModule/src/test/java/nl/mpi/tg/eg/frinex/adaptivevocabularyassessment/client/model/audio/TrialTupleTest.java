@@ -26,7 +26,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 
 /**
  *
@@ -215,7 +214,7 @@ public class TrialTupleTest {
     }
 
     /**
-     * Test of createTuple method, of class TrialTuple.
+     * Test of createTupleForBand method, of class TrialTuple.
      */
     @Test
     public void testCreateTuple() {
@@ -259,14 +258,28 @@ public class TrialTupleTest {
 
         int size = 4;
         int bandIndex = 19;
-        TrialTuple result = TrialTuple.createTuple(availablePermutations, trialMatrix, size, bandIndex);
+        TrialTuple result = TrialTuple.createTupleForBand(availablePermutations, trialMatrix, size, bandIndex);
         ArrayList<Trial> trialsTest = result.getTrials();
         
         assertEquals(TrialCondition.TARGET_ONLY, trialsTest.get(0).getCondition());
-        assertEquals(TrialCondition.TARGET_ONLY, trialsTest.get(0).getCondition());
+        assertEquals(4, trialsTest.get(0).getTrialLength());
+        assertEquals("kers", trialsTest.get(0).getWord());
+        assertEquals("hers", trialsTest.get(0).getTargetNonWord());
+        
         assertEquals(TrialCondition.NO_TARGET, trialsTest.get(1).getCondition());
+        assertEquals(4, trialsTest.get(1).getTrialLength());
+        assertEquals("pop", trialsTest.get(1).getWord());
+        assertEquals("lop", trialsTest.get(1).getTargetNonWord());
+        
         assertEquals(TrialCondition.TARGET_AND_FOIL, trialsTest.get(2).getCondition());
+        assertEquals(5, trialsTest.get(2).getTrialLength());
+        assertEquals("vuur", trialsTest.get(2).getWord());
+        assertEquals("fjon", trialsTest.get(2).getTargetNonWord());
+        
         assertEquals(TrialCondition.TARGET_ONLY, trialsTest.get(3).getCondition());
+        assertEquals(3, trialsTest.get(3).getTrialLength());
+        assertEquals("vloer", trialsTest.get(3).getWord());
+        assertEquals("smoer", trialsTest.get(3).getTargetNonWord());
     }
 
 }

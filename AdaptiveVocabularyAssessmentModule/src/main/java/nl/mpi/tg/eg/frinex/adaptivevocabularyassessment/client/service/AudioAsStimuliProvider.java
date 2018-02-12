@@ -20,7 +20,6 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
-import java.util.Random;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimuliProvider;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsList;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Trial;
@@ -41,7 +40,6 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
     private String dirName = "/";
 
-    private Random rnd;
     private TrialTuple currentTrialTuple;
 
     // x[contdition][i][j] is the list of all trials satisfying "condition" for the band i of the length j
@@ -54,7 +52,9 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
     private ArrayList<ArrayList<Integer>> trialLengtPermutations; // list of permutations of members requiredLengths
     private ArrayList<ArrayList<TrialCondition>> trialTypesPermutations; // list of permutations of members 
-    private ArrayList<PermutationPair> availableCombinations; // are there available trials to form a tuple with length permutations like trialLengtPermutations[i] and type permutations trialTypesPermutations[j]
+    private ArrayList<ArrayList<PermutationPair>> availableCombinations; // x[i] is the list of permutations with non-empty possibilities to instantiate them using trials matrix of unused trials
+    
+    
 
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
@@ -76,8 +76,13 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         
          */
         this.currentBandIndex = this.startBand - 1;
-        this.availableCombinations = AudioUtils.initialiseAvailabilityList(this.trials,
-                this.trialLengtPermutations, this.trialTypesPermutations, this.currentBandIndex, this.fineTuningTupleLength);
+        this.availableCombinations = new ArrayList<ArrayList<PermutationPair>>(this.numberOfBands);
+        for (int i=0; i<this.numberOfBands; i++) {
+        ArrayList<PermutationPair> permCurrentBand = AudioUtils.initialiseAvailabilityList(this.trials,
+                this.trialLengtPermutations, this.trialTypesPermutations, i, this.fineTuningTupleLength);
+        this.availableCombinations.add(i, permCurrentBand);
+        }
+        
         boolean init = this.initialiseNextFineTuningTuple();
         if (!init) {
             System.out.println(this.errorMessage);
@@ -87,7 +92,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     @Override
     public boolean initialiseNextFineTuningTuple() {
 
-        this.currentTrialTuple = TrialTuple.createTuple(this.availableCombinations, this.trials, this.fineTuningTupleLength, this.currentBandIndex);
+        this.currentTrialTuple = TrialTuple.createTupleForBand(this.availableCombinations.get(this.currentBandIndex), this.trials, this.fineTuningTupleLength, this.currentBandIndex);
         if (this.currentTrialTuple == null) {
             this.errorMessage = "There is no trial combinations satisfying the specification!";
             return false;

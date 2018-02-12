@@ -25,7 +25,7 @@ import java.util.ArrayList;
  */
 public class UtilsList<T> {
     
-     public boolean listelementExists(ArrayList<ArrayList<T>> source, ArrayList<T> candidate) {
+     public boolean listElementExists(ArrayList<ArrayList<T>> source, ArrayList<T> candidate) {
         for (ArrayList<T> list : source) {
             boolean coinside = true;
             int i = 0;
@@ -44,6 +44,21 @@ public class UtilsList<T> {
     }
 
     public ArrayList<ArrayList<T>> generatePermutations(ArrayList<T> elements) {
+        
+        if (elements == null) {
+            return null;
+        }
+        
+        if (elements.isEmpty()) {
+            return new ArrayList<ArrayList<T>>();
+        }
+        
+         if (elements.size()==1) {
+            ArrayList<ArrayList<T>> retVal = new ArrayList<ArrayList<T>>(1); 
+            retVal.add(0,elements);
+            return retVal;
+        }
+        
         ArrayList<ArrayList<T>> retVal = new ArrayList<ArrayList<T>>();
         for (int i = 0; i < elements.size(); i++) {
             ArrayList<T> copyReferences = new ArrayList<T>(elements.size());
@@ -56,7 +71,7 @@ public class UtilsList<T> {
                 ArrayList<T> permutation = new ArrayList<T>(tailPermutation.size() + 1);
                 permutation.add(element);
                 permutation.addAll(tailPermutation);
-                boolean duplication = this.listelementExists(retVal, permutation);
+                boolean duplication = this.listElementExists(retVal, permutation);
                 if (!duplication) {
                     retVal.add(permutation);
                 }
