@@ -53,8 +53,6 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     private ArrayList<ArrayList<Integer>> trialLengtPermutations; // list of permutations of members requiredLengths
     private ArrayList<ArrayList<TrialCondition>> trialTypesPermutations; // list of permutations of members 
     private ArrayList<ArrayList<PermutationPair>> availableCombinations; // x[i] is the list of permutations with non-empty possibilities to instantiate them using trials matrix of unused trials
-    
-    
 
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
@@ -75,14 +73,13 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         }
         
          */
-        this.currentBandIndex = this.startBand - 1;
         this.availableCombinations = new ArrayList<ArrayList<PermutationPair>>(this.numberOfBands);
-        for (int i=0; i<this.numberOfBands; i++) {
-        ArrayList<PermutationPair> permCurrentBand = AudioUtils.initialiseAvailabilityList(this.trials,
-                this.trialLengtPermutations, this.trialTypesPermutations, i, this.fineTuningTupleLength);
-        this.availableCombinations.add(i, permCurrentBand);
+        for (int i = 0; i < this.numberOfBands; i++) {
+            ArrayList<PermutationPair> permCurrentBand = AudioUtils.initialiseAvailabilityList(this.trials,
+                    this.trialLengtPermutations, this.trialTypesPermutations, i, this.fineTuningTupleLength);
+            this.availableCombinations.add(i, permCurrentBand);
         }
-        
+
         boolean init = this.initialiseNextFineTuningTuple();
         if (!init) {
             System.out.println(this.errorMessage);
@@ -152,5 +149,9 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             }
             return correctness;
         }
+    }
+
+    public TrialTuple getTrialTuple() {
+        return this.currentTrialTuple;
     }
 }

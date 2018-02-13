@@ -44,25 +44,17 @@ public class TrialTuple {
         AudioAsStimulus retVal = this.trials.get(i).getStimuliList().remove(0);
         return retVal;
     }
-    
-    public ArrayList<Trial> getTrials(){
+
+    public ArrayList<Trial> getTrials() {
         return this.trials;
     }
 
     public Boolean getCorrectness() {
-        if (this.isNotEmpty()) {
-            return null; // it is too early to get correctness, not all trials are fired!
-        } else {
-            return this.correctness;
-        }
+        return this.correctness;
     }
 
     public void setCorrectness(boolean correct) {
-        if (this.isNotEmpty()) {
-             // do nothing, it is too early to get correctness, not all trials are fired!
-        } else {
-            this.correctness = correct;
-        }
+        this.correctness = correct;
 
     }
 

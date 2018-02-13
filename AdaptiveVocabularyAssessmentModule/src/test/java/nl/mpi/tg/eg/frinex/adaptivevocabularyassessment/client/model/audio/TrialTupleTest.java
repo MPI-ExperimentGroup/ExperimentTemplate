@@ -167,36 +167,18 @@ public class TrialTupleTest {
         assertEquals(null, result6.getCorrectResponses());
     }
 
+ 
     /**
-     * Test of getCorrectness method, of class TrialTuple.
+     * Test of getCorrectness and setCorrectness method, of class TrialTuple.
      */
     @Test
-    public void testGetCorrectness() {
-        System.out.println("getCorrectness");
-        assertNull(this.instance.getCorrectness()); // to early to ask for correctness
-        int allTogetherStimuli = 4 + 5 + 6 + 5;
-        for (int count = 1; count <= allTogetherStimuli - 1; count++) {
-            this.instance.removeFirstAvailableStimulus();
-            assertNull(this.instance.getCorrectness()); // to early to ask for correctness
-        }
-        this.instance.removeFirstAvailableStimulus();
-        assertNull(this.instance.getCorrectness());  // correctness is not set yet
-    }
-
-    /**
-     * Test of setCorrectness method, of class TrialTuple.
-     */
-    @Test
-    public void testSetCorrectness() {
+    public void testGetSetCorrectness() {
         System.out.println("setCorrectness");
-        int allTogetherStimuli = 4 + 5 + 6 + 5;
-        for (int count = 1; count <= allTogetherStimuli - 1; count++) {
-            this.instance.removeFirstAvailableStimulus();
-        }
-        this.instance.removeFirstAvailableStimulus();
         assertNull(this.instance.getCorrectness());  // correctness is not set yet
         this.instance.setCorrectness(true);
         assertTrue(this.instance.getCorrectness());
+        this.instance.setCorrectness(false);
+        assertFalse(this.instance.getCorrectness());
     }
 
     /**
