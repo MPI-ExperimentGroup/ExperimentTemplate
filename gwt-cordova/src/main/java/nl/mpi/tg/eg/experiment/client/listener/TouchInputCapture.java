@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experiment.client.listener;
 
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.JsArray;
+import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.dom.client.Touch;
 import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.dom.client.MouseDownHandler;
@@ -202,28 +203,19 @@ public abstract class TouchInputCapture implements Event.NativePreviewHandler, M
     @Override
     public void onPreviewNativeEvent(Event.NativePreviewEvent event) {
         final int eventType = event.getTypeInt();
+        int button = event.getNativeEvent().getButton();
+        // in chrome (gwt debug) event.getNativeEvent().getButton() is always returning 1
+        isMouseDown = (button & (NativeEvent.BUTTON_LEFT | NativeEvent.BUTTON_RIGHT)) != 0;
         final List<TouchInputZone> triggeredZones = new ArrayList<>();
         switch (eventType) {
             case Event.ONMOUSEDOWN:
-                isMouseDown = true;
-                break;
-            case Event.ONCLICK:
-            case Event.ONDBLCLICK:
-            case Event.ONMOUSEUP:
-                isMouseDown = false;
-                break;
-        }
-        switch (eventType) {
-            case Event.ONCLICK:
-            case Event.ONDBLCLICK:
-            case Event.ONMOUSEDOWN:
-            case Event.ONMOUSEOUT:
             case Event.ONMOUSEMOVE:
             case Event.ONMOUSEOVER:
+                appendTouch(event.getNativeEvent().getClientX(), event.getNativeEvent().getClientY(), triggeredZones);
+            case Event.ONCLICK:
+            case Event.ONDBLCLICK:
             case Event.ONMOUSEUP:
-                if (isMouseDown) {
-                    appendTouch(event.getNativeEvent().getClientX(), event.getNativeEvent().getClientY(), triggeredZones);
-                }
+            case Event.ONMOUSEOUT:
                 setDebugLabel(event.toDebugString() + " " + event.getNativeEvent().getClientX() + "," + event.getNativeEvent().getClientY());
                 triggerZones(triggeredZones);
                 break;
