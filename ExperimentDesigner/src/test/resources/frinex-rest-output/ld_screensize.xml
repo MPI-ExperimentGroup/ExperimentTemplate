@@ -75,8 +75,8 @@
                     <clearPage styleName="fullScreenWidth"/>
                     <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="false">
                         <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="false"/>
-                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
-                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
+                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" loop="false" styleName="borderedVideoLeft" autoPlay="true" showControls="false" maxWidth="100"/>
+                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" loop="false" styleName="borderedVideoRight" autoPlay="true" showControls="false" maxWidth="100">
                             <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
                                 <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayButton">
                                     <disableStimulusButtons/>
@@ -121,7 +121,7 @@
                             </stimulusCodeAudio>
                         </stimulusCodeVideo>
                     </stimulusCodeAudio>
-                    <touchInputCaptureStart showControls="true"/>
+                    <touchInputCaptureStart msToNext="-1" showControls="true"/>
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <autoNextPresenter/>
@@ -150,8 +150,8 @@
                             <clearPage styleName="fullScreenWidth"/>
                             <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="false">
                                 <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="false"/>
-                                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
-                                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
+                                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" loop="false" styleName="borderedVideoLeft" autoPlay="true" showControls="false" maxWidth="100"/>
+                                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" loop="false" styleName="borderedVideoRight" autoPlay="true" showControls="false" maxWidth="100">
                                     <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
                                         <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayButton">
                                             <disableStimulusButtons/>
@@ -196,7 +196,7 @@
                                     </stimulusCodeAudio>
                                 </stimulusCodeVideo>
                             </stimulusCodeAudio>
-                            <touchInputCaptureStart showControls="true"/>
+                            <touchInputCaptureStart msToNext="-1" showControls="true"/>
                         </hasMoreStimulus>
                         <endOfStimulus>
                             <autoNextPresenter/>
@@ -220,8 +220,8 @@
                             <clearPage styleName="fullScreenWidth"/>
                             <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="false">
                                 <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="false"/>
-                                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
-                                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
+                                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" loop="false" styleName="borderedVideoLeft" autoPlay="true" showControls="false" maxWidth="100"/>
+                                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" loop="false" styleName="borderedVideoRight" autoPlay="true" showControls="false" maxWidth="100">
                                     <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
                                         <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayButton">
                                             <disableStimulusButtons/>
@@ -266,7 +266,7 @@
                                     </stimulusCodeAudio>
                                 </stimulusCodeVideo>
                             </stimulusCodeAudio>
-                            <touchInputCaptureStart showControls="true"/>
+                            <touchInputCaptureStart msToNext="-1" showControls="true"/>
                         </hasMoreStimulus>
                         <endOfStimulus>
                             <autoNextPresenter/>
@@ -290,8 +290,8 @@
                             <clearPage styleName="fullScreenWidth"/>
                             <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="false">
                                 <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="false"/>
-                                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
-                                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
+                                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" loop="false" styleName="borderedVideoLeft" autoPlay="true" showControls="false" maxWidth="100"/>
+                                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" loop="false" styleName="borderedVideoRight" autoPlay="true" showControls="false" maxWidth="100">
                                     <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
                                         <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayButton">
                                             <disableStimulusButtons/>
@@ -336,7 +336,7 @@
                                     </stimulusCodeAudio>
                                 </stimulusCodeVideo>
                             </stimulusCodeAudio>
-                            <touchInputCaptureStart showControls="true"/>
+                            <touchInputCaptureStart msToNext="-1" showControls="true"/>
                         </hasMoreStimulus>
                         <endOfStimulus>
                             <autoNextPresenter/>
@@ -360,8 +360,8 @@
                             <clearPage styleName="fullScreenWidth"/>
                             <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" showPlaybackIndicator="false">
                                 <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" showPlaybackIndicator="false"/>
-                                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" styleName="borderedVideoLeft" showControls="false" maxWidth="100"/>
-                                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100">
+                                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" loop="false" styleName="borderedVideoLeft" autoPlay="true" showControls="false" maxWidth="100"/>
+                                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" loop="false" styleName="borderedVideoRight" autoPlay="true" showControls="false" maxWidth="100">
                                     <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" showPlaybackIndicator="false">
                                         <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayButton">
                                             <disableStimulusButtons/>
@@ -406,7 +406,7 @@
                                     </stimulusCodeAudio>
                                 </stimulusCodeVideo>
                             </stimulusCodeAudio>
-                            <touchInputCaptureStart showControls="true"/>
+                            <touchInputCaptureStart msToNext="-1" showControls="true"/>
                         </hasMoreStimulus>
                         <endOfStimulus>
                             <autoNextPresenter/>
