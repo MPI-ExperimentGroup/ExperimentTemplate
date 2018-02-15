@@ -4,6 +4,10 @@
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
         <field controlledMessage="Voer een getal." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="datOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
         <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="gender" preventServerDuplicates="false" registrationField="Geslacht"/>
+        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_Test_1" preventServerDuplicates="false" registrationField="groupAllocation_Test_1"/>
+        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_Test_2" preventServerDuplicates="false" registrationField="groupAllocation_Test_2"/>
+        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_Test_3" preventServerDuplicates="false" registrationField="groupAllocation_Test_3"/>
+        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_Test_4" preventServerDuplicates="false" registrationField="groupAllocation_Test_4"/>
     </metadata>
     <presenter back="Menu" displayOrder="1" menuLabel="Bluetooth Instructions" type="text" self="Bluetooth_Instructions" title="Bluetooth Instructions">
         <htmlText featureText="When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A."/>
@@ -201,9 +205,14 @@
                         <endOfStimulus>
                             <autoNextPresenter/>
                         </endOfStimulus>
-                        <randomGrouping/>
-                        <stimuli>
+                        <randomGrouping consumedTagGroup="allRooms" storageField="groupAllocation_Test_1">
                             <tag>Test_1</tag>
+                            <tag>Test_2</tag>
+                            <tag>Test_3</tag>
+                            <tag>Test_4</tag>
+                        </randomGrouping>
+                        <stimuli>
+                            <tag>allRooms</tag>
                         </stimuli>
                     </loadStimulus>
                 </pause>
@@ -271,9 +280,14 @@
                         <endOfStimulus>
                             <autoNextPresenter/>
                         </endOfStimulus>
-                        <randomGrouping/>
-                        <stimuli>
+                        <randomGrouping consumedTagGroup="allRooms" storageField="groupAllocation_Test_2">
+                            <tag>Test_1</tag>
                             <tag>Test_2</tag>
+                            <tag>Test_3</tag>
+                            <tag>Test_4</tag>
+                        </randomGrouping>
+                        <stimuli>
+                            <tag>allRooms</tag>
                         </stimuli>
                     </loadStimulus>
                 </pause>
@@ -341,9 +355,14 @@
                         <endOfStimulus>
                             <autoNextPresenter/>
                         </endOfStimulus>
-                        <randomGrouping/>
-                        <stimuli>
+                        <randomGrouping consumedTagGroup="allRooms" storageField="groupAllocation_Test_3">
+                            <tag>Test_1</tag>
+                            <tag>Test_2</tag>
                             <tag>Test_3</tag>
+                            <tag>Test_4</tag>
+                        </randomGrouping>
+                        <stimuli>
+                            <tag>allRooms</tag>
                         </stimuli>
                     </loadStimulus>
                 </pause>
@@ -411,9 +430,14 @@
                         <endOfStimulus>
                             <autoNextPresenter/>
                         </endOfStimulus>
-                        <randomGrouping/>
-                        <stimuli>
+                        <randomGrouping consumedTagGroup="allRooms" storageField="groupAllocation_Test_4">
+                            <tag>Test_1</tag>
+                            <tag>Test_2</tag>
+                            <tag>Test_3</tag>
                             <tag>Test_4</tag>
+                        </randomGrouping>
+                        <stimuli>
+                            <tag>allRooms</tag>
                         </stimuli>
                     </loadStimulus>
                 </pause>
@@ -456,39 +480,51 @@
         </stimulus>
         <stimulus audioPath="test_1" code="test_1" identifier="test_1" imagePath="adjacency_a" pauseMs="0">
             <tag>Test_1</tag>
+            <tag>allRooms</tag>
         </stimulus>
         <stimulus audioPath="test_2" code="test_2" identifier="test_2" imagePath="adjacency_b" pauseMs="0">
             <tag>Test_1</tag>
+            <tag>allRooms</tag>
         </stimulus>
         <stimulus audioPath="filler_1" code="filler_1" identifier="filler_1" imagePath="filler_1" pauseMs="0">
             <tag>Test_1</tag>
+            <tag>allRooms</tag>
         </stimulus>
         <stimulus audioPath="test_3" code="test_3" identifier="test_3" imagePath="adjacency_c" pauseMs="0">
             <tag>Test_2</tag>
+            <tag>allRooms</tag>
         </stimulus>
         <stimulus audioPath="test_4" code="test_4" identifier="test_4" imagePath="adjacency_d" pauseMs="0">
             <tag>Test_2</tag>
+            <tag>allRooms</tag>
         </stimulus>
         <stimulus audioPath="filler_2" code="filler_2" identifier="filler_2" imagePath="filler_2" pauseMs="0">
             <tag>Test_2</tag>
+            <tag>allRooms</tag>
         </stimulus>
         <stimulus audioPath="test_5" code="test_5" identifier="test_5" imagePath="adjacency_a" pauseMs="0">
             <tag>Test_3</tag>
+            <tag>allRooms</tag>
         </stimulus>
         <stimulus audioPath="test_6" code="test_6" identifier="test_6" imagePath="adjacency_b" pauseMs="0">
             <tag>Test_3</tag>
+            <tag>allRooms</tag>
         </stimulus>
         <stimulus audioPath="filler_3" code="filler_3" identifier="filler_3" imagePath="filler_3" pauseMs="0">
             <tag>Test_3</tag>
+            <tag>allRooms</tag>
         </stimulus>
         <stimulus audioPath="test_7" code="test_7" identifier="test_7" imagePath="adjacency_c" pauseMs="0">
             <tag>Test_4</tag>
+            <tag>allRooms</tag>
         </stimulus>
         <stimulus audioPath="test_8" code="test_8" identifier="test_8" imagePath="adjacency_d" pauseMs="0">
             <tag>Test_4</tag>
+            <tag>allRooms</tag>
         </stimulus>
         <stimulus audioPath="filler_4" code="filler_4" identifier="filler_4" imagePath="filler_4" pauseMs="0">
             <tag>Test_4</tag>
+            <tag>allRooms</tag>
         </stimulus>
     </stimuli>
 </experiment>
