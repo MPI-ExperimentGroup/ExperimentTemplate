@@ -46,6 +46,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         setCodeAudio(false);
         setRememberLastStimuli(true);
         setAudioAB("");
+        setConsumedTagGroup(null);
         setSdCardStimuli(false);
         setShowCurtains(false);
         setIntroAudio(null);
@@ -57,7 +58,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setCentreScreen(true);
     }
 
-    public WizardGridStimulusScreen(String screenName, boolean centreScreen, String[][] stimuliStringArray, String[] randomStimuliTags, int maxStimuli, final boolean randomiseStimuli, String stimulusCodeMatch, int stimulusDelay, int codeStimulusDelay, String codeFormat) {
+    public WizardGridStimulusScreen(String screenName, boolean centreScreen, String[][] stimuliStringArray, String[] randomStimuliTags, int maxStimuli, final boolean randomiseStimuli, String stimulusCodeMatch, int stimulusDelay, int codeStimulusDelay, String codeFormat, String... tagNames) {
         super(WizardScreenEnum.WizardGridStimulusScreen, screenName, screenName, screenName);
         this.setScreenTitle(screenName);
         this.wizardScreenData.setStimuliRandomTags(randomStimuliTags);
@@ -70,6 +71,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         setRememberLastStimuli(true);
         setShowCurtains(false);
         setAudioAB("");
+        setConsumedTagGroup(null);
         setIntroAudio(null);
         setCorrectAudio(null);
         setRewardImage(null);
@@ -79,7 +81,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setStimuliCount(maxStimuli);
         setRandomiseStimuli(randomiseStimuli);
         this.wizardScreenData.setCentreScreen(centreScreen);
-        setStimuliSet(stimuliStringArray);
+        setStimuliSet(stimuliStringArray, tagNames);
     }
 
     final public void setRandomiseStimuli(boolean randomiseStimuli) {
@@ -144,6 +146,14 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 
     final public void setAudioAB(String audioAB) {
         this.wizardScreenData.setScreenText(5, audioAB);
+    }
+
+    private String getConsumedTagGroup(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(6);
+    }
+
+    final public void setConsumedTagGroup(String consumedGroupName) {
+        this.wizardScreenData.setScreenText(6, consumedGroupName);
     }
 
     private String getBackgroundStyle(WizardScreenData storedWizardScreenData) {
@@ -214,7 +224,8 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             "IntroAudio",
             "CorrectAudio",
             "RewardImage",
-            "AudioAB"
+            "AudioAB",
+            "ConsumedTagGroup"
         }[index];
     }
 
@@ -228,7 +239,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         return new String[]{"IntroAudioDelay", "SelectedPause"}[index];
     }
 
-    public final void setStimuliSet(String[][] stimuliSet) {
+    public final void setStimuliSet(String[][] stimuliSet, String... tagNames) {
 //        String[] tempStimuli = {
 //            "filler_1_1", "intro_1", "test_2_2", "test_6_2", "training_2_2",
 //            "filler_1_2", "intro_2", "test_2_3", "test_6_3", "training_2_3",
@@ -247,6 +258,9 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         }
         final List<Stimulus> stimuliList = this.wizardScreenData.getStimuli();
         final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{this.wizardScreenData.getScreenTitle()}));
+        for (String tagName : tagNames) {
+            tagSet.add(tagName);
+        }
         for (String[] stimulusEntry : stimuliSet) {
             // @todo: perhaps this is clearer if there is an explicit adjacency regex used on the identifyer in the GUI app or an explicit adjacency / sort field in the stimuli
 //            final String adjacencyString = stimulusEntry.replaceAll("test_[15]", "adjacency_a").replaceAll("test_[26]", "adjacency_b").replaceAll("test_[37]", "adjacency_c").replaceAll("test_[48]", "adjacency_d");
@@ -328,8 +342,13 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             presenterFeatureList = pauseFeature.getPresenterFeatureList();
         }
         final PresenterFeature loadStimuliFeature = new PresenterFeature((!isSdCardStimuli(storedWizardScreenData)) ? FeatureType.loadStimulus : FeatureType.loadSdCardStimulus, null);
-        loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTitle());
         final RandomGrouping randomGrouping = new RandomGrouping();
+        if (getConsumedTagGroup(storedWizardScreenData) != null) {
+            randomGrouping.setConsumedTagGroup(getConsumedTagGroup(storedWizardScreenData));
+            loadStimuliFeature.addStimulusTag(getConsumedTagGroup(storedWizardScreenData));
+        } else {
+            loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTitle());
+        }
         if (storedWizardScreenData.getStimuliRandomTags() != null) {
             for (String randomTag : storedWizardScreenData.getStimuliRandomTags()) {
                 randomGrouping.addRandomTag(randomTag);
