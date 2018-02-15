@@ -82,6 +82,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
     private static final String LOADED_STIMULUS_LIST = "loadedStimulusList";
+    private static final String CONSUMED_TAGS_LIST = "consumedTagsList";
     private static final String SEEN_STIMULUS_INDEX = "seenStimulusIndex";
     protected final StimuliProvider stimulusProvider;
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
@@ -291,6 +292,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             final StimulusSelector[] selectionTags, // only stimuli with tags in this list can be included
             final StimulusSelector[] randomTags,
             final MetadataField stimulusAllocationField,
+            final String consumedTagsGroupName,
             final TimedStimulusListener hasMoreStimulusListener,
             final TimedStimulusListener endOfStimulusListener
     ) {
@@ -316,8 +318,17 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     }
                 }
             } else {
-//                final Stimulus.Tag[] tagsArray = (Stimulus.Tag[]) randomTags.values().toArray();
-                StimulusSelector stimulusAllocation = randomTags[new Random().nextInt(randomTags.length)];
+                final List<StimulusSelector> randomTagsList = new ArrayList();
+                if (consumedTagsGroupName != null) {
+                    String consumedTagsGroupString = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), CONSUMED_TAGS_LIST + consumedTagsGroupName);
+                    for (StimulusSelector currentSelector : randomTags) {
+                        if (!consumedTagsGroupString.contains("-" + currentSelector.getAlias() + "-")) {
+                            randomTagsList.add(currentSelector);
+                        }
+                    }
+                }
+                StimulusSelector stimulusAllocation = randomTagsList.get(new Random().nextInt(randomTagsList.size()));
+                localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), CONSUMED_TAGS_LIST + consumedTagsGroupName, "-" + stimulusAllocation.getAlias() + "-");
                 userResults.getUserData().setMetadataValue(stimulusAllocationField, stimulusAllocation.getAlias());
                 localStorage.storeData(userResults);
                 allocatedTags.add(stimulusAllocation.getTag());
