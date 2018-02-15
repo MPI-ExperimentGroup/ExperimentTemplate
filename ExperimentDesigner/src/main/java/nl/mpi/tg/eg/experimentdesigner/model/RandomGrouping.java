@@ -42,6 +42,7 @@ public class RandomGrouping implements Serializable {
     private long id;
 
     private String storageField;
+    private String consumedTagGroup = null;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @ElementCollection
@@ -72,4 +73,14 @@ public class RandomGrouping implements Serializable {
     public void setStorageField(String storageField) {
         this.storageField = storageField;
     }
+
+    @XmlAttribute
+    public String getConsumedTagGroup() {
+        return consumedTagGroup;
+    }
+
+    public void setConsumedTagGroup(String consumedTagGroup) {
+        this.consumedTagGroup = consumedTagGroup;
+    }
+
 }
