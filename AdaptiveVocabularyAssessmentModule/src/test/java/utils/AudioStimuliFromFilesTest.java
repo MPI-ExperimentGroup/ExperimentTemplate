@@ -18,13 +18,13 @@
 package utils;
 
 import java.util.ArrayList;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audioaspool.AudioIndexMap;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 
 /**
  *
@@ -58,15 +58,17 @@ public class AudioStimuliFromFilesTest {
     public void testParseTrialsInputCSV() throws Exception {
         System.out.println("parseTrialsInputCSV");
         ///Users/olhshk/Documents/ExperimentTemplate/AdaptiveVocabularyAssessmentModule/src/test/java/utils/Stimuli_NonwordMonitoring_26jan18.csv
-        String wordFileLocation = "src/test/java/utils/Stimuli_NonwordMonitoring_26jan18.csv";
+        String wordFileLocation = "src/test/java/utils/Stimuli_NonwordMonitoring_4Olha.csv";
         AudioStimuliFromFiles instance = new AudioStimuliFromFiles();
         ArrayList<String> result = instance.parseTrialsInputCSV(wordFileLocation);
-        assertEquals(168,result.size());
-        //Nr;Word;Target_nonword;Syllables;Condition;Length_list;Word1;Word2;Word3;Word4;Word5;Word6;Foil;
-        //1;vloer;smoer;1;Target-only;3 words;deebral;smoer;wijp;;;;;;;
-        assertEquals("word:vloer,targetNonWord:smoer,nOfSyllables:1,condition:Target-only,length:3,Word1:deebral,Word2:smoer,Word3:wijp,Word4:,Word5:,Word6:,foil:",result.get(0)); 
-        //110;stuur;hies;1;Target+Foil;5 words;vaatlal;nos;hiemrief;hies;fots;;hiemrief;;;
-        assertEquals("word:stuur,targetNonWord:hies,nOfSyllables:1,condition:Target+Foil,length:5,Word1:vaatlal,Word2:nos,Word3:hiemrief,Word4:hies,Word5:fots,Word6:,foil:hiemrief",result.get(109)); 
+        assertEquals(96,result.size());
+        //Nr;Word;Target_nonword;Syllables;Condition;Length_list;Word1;Word2;Word3;Word4;Word5;Word6;Noise_level;Foil;
+        
+        //1;kof;kof_filler.wav;1;NoTarget;3 words;lan_filler_2dB.wav;lep_filler_2dB.wav;lif_filler_2dB.wav;;;;2dB;
+        assertEquals("word:kof,targetNonWord:kof_filler.wav,nOfSyllables:1,condition:NoTarget,length:3,Word1:lan_filler_2dB.wav,Word2:lep_filler_2dB.wav,Word3:lif_filler_2dB.wav,Word4:,Word5:,Word6:,foil:,bandLabel:2dB",result.get(0)); 
+        
+        //19;pag;pag_filler.wav;1;NoTarget;6 words;neg_filler_2dB.wav;par_filler_2dB.wav;lup_filler_2dB.wav;nom_filler_2dB.wav;rin_filler_2dB.wav;sog_filler_2dB.wav;2dB;
+        assertEquals("word:pag,targetNonWord:pag_filler.wav,nOfSyllables:1,condition:NoTarget,length:6,Word1:neg_filler_2dB.wav,Word2:par_filler_2dB.wav,Word3:lup_filler_2dB.wav,Word4:nom_filler_2dB.wav,Word5:rin_filler_2dB.wav,Word6:sog_filler_2dB.wav,foil:,bandLabel:2dB",result.get(18)); 
         
     }
 
@@ -77,15 +79,18 @@ public class AudioStimuliFromFilesTest {
     @Test
     public void testArrayListAsStringArray() throws Exception{
         System.out.println("arrayListAsStringArray");
-        String wordFileLocation = "src/test/java/utils/Stimuli_NonwordMonitoring_26jan18.csv";
+        String wordFileLocation = "src/test/java/utils/Stimuli_NonwordMonitoring_4Olha.csv";
         
         AudioStimuliFromFiles instance = new AudioStimuliFromFiles();
         ArrayList<String> rows = instance.parseTrialsInputCSV(wordFileLocation);
-        String result = instance.arrayListAsStringArray(rows);
+        String result = instance.arrayListAsStringArray(rows, instance.mainClassDeclaration);
         assertNotNull(result);
         assertTrue(result.length()>168*10+20);
         System.out.println("OK");
         System.out.println(result);
+        System.out.println("**");
+        String bandIndexMap = instance.arrayListAsStringArray(instance.bandIndex, instance.indexDeclaration);
+        System.out.println(bandIndexMap);
     }
     
 }

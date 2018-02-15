@@ -64,7 +64,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         this.trialTypesPermutations = utilTrials.generatePermutations(this.requiredTrialTypes);
         UtilsList<Integer> utilSizes = new UtilsList<Integer>();
         this.trialLengtPermutations = utilSizes.generatePermutations(this.requiredLengths);
-        this.currentBandIndex = this.startBand - 1;
+        this.currentBandIndex = this.startBand;
 
         /*
         if (this.numberOfSeries == 2) {

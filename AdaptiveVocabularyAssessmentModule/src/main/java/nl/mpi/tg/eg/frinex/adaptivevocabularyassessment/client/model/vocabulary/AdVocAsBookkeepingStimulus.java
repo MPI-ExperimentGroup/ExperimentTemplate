@@ -19,24 +19,23 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary
 
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Vocabulary;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimulus;
 
 /**
  *
  * @author olhshk
  */
-public class AdVocAsBookkeepingStimulus extends BookkeepingStimulus<Boolean> {
+public class AdVocAsBookkeepingStimulus extends BookkeepingStimulus<Boolean,Integer> {
 
     /*
-    public BookkeepingStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, int bandNumber) {
+    public BookkeepingStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, String bandNumber) {
     */
     
-    public AdVocAsBookkeepingStimulus(String uniqueId, Tag tags[], String label, String ratingLabels, String correctResponses, int bandNumber) {
-        super(uniqueId, tags, label, null, -1, null, null, null, ratingLabels, correctResponses, bandNumber);
+    public AdVocAsBookkeepingStimulus(String uniqueId, Tag tags[], String label, String ratingLabels, String correctResponses, Integer bandNumber) {
+        super(uniqueId, tags, label, null, -1, null, null, null, ratingLabels, correctResponses, bandNumber, bandNumber-1);
     }
 
     // injection
-    public AdVocAsBookkeepingStimulus(BandStimulus stimulus) {
+    public AdVocAsBookkeepingStimulus(AdVocAsStimulus stimulus) {
         super(stimulus);
     }
 

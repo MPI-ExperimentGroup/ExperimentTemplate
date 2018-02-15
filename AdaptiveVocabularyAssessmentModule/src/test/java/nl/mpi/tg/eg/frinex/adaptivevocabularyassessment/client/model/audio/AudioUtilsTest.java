@@ -18,9 +18,11 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsList;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audioaspool.AudioIndexMap;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audioaspool.AudioPool2;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -86,8 +88,31 @@ public class AudioUtilsTest {
     private final ArrayList<Trial> trials = new ArrayList<Trial>(4);
 
     private TrialTuple tuple;
+    
+    private ArrayList<String> indexMap;
+    
+    private int numberOfBands;
 
     public AudioUtilsTest() {
+        
+        
+        //Trial(String word, String targetNonword, int nOfSyllables, TrialCondition condition, int length, LinkedHashMap<String,WordType> targetNonWords, String BandLabel, int bandIndex, String dirName)
+        //1	vloer	smoer	1	Target-only	3 targetNonWords	deebral	smoer	wijp
+        this.trials.add(0, new Trial("vloer", "smoer_10.wav", 1, TrialCondition.TARGET_ONLY, 3, map1, "10bD", 2,  "/1"));
+        //19	kers	hers	1	Target-only	4 targetNonWords	geider	hers	atgraus	hamp
+        this.trials.add(1, new Trial("kers", "hers_10.wav", 1, TrialCondition.TARGET_ONLY, 4, map2, "10bD", 2,  "/2"));
+        //107	vuur	fjon	1	Target+Foil	5 targetNonWords	fjodschelg	fjon	wisdaag	tuik	poks		fjodschelg
+        this.trials.add(2, new Trial("vuur", "fjon_10.wav", 1, TrialCondition.TARGET_AND_FOIL, 5, map3, "10bD", 2,  "/3"));
+        //156	pop	lop	1	NoTarget	4 targetNonWords	voorserm	muiland	fraal	kijn	
+        this.trials.add(3, new Trial("pop", "lop_10.wav", 1, TrialCondition.NO_TARGET, 4, map4, "10bD", 2,  "/2"));
+
+       this.tuple = new TrialTuple(this.trials);
+        
+       this.indexMap = new ArrayList<String>(Arrays.asList(AudioIndexMap.INDEX_ARRAY));
+       
+       this.numberOfBands = this.indexMap.size();
+        
+
     }
 
     @BeforeClass
@@ -101,18 +126,6 @@ public class AudioUtilsTest {
     @Before
     public void setUp() {
 
-        //Trial(String word, String targetNonword, int nOfSyllables, TrialCondition condition, int length, LinkedHashMap<String,WordType> targetNonWords, int bandIndex, String dirName)
-        //1	vloer	smoer	1	Target-only	3 targetNonWords	deebral	smoer	wijp
-        this.trials.add(0, new Trial("vloer", "smoer", 1, TrialCondition.TARGET_ONLY, 3, map1, 20, "/1"));
-        //19	kers	hers	1	Target-only	4 targetNonWords	geider	hers	atgraus	hamp
-        this.trials.add(1, new Trial("kers", "hers", 1, TrialCondition.TARGET_ONLY, 4, map2, 20, "/2"));
-        //107	vuur	fjon	1	Target+Foil	5 targetNonWords	fjodschelg	fjon	wisdaag	tuik	poks		fjodschelg
-        this.trials.add(2, new Trial("vuur", "fjon", 1, TrialCondition.TARGET_AND_FOIL, 5, map3, 20, "/3"));
-        //156	pop	lop	1	NoTarget	4 targetNonWords	voorserm	muiland	fraal	kijn	
-        this.trials.add(3, new Trial("pop", "lop", 1, TrialCondition.NO_TARGET, 4, map4, 20, "/2"));
-
-        this.tuple = new TrialTuple(this.trials);
-
     }
 
     @After
@@ -125,39 +138,38 @@ public class AudioUtilsTest {
     @Test
     public void testInitMatrix() {
         System.out.println("initMatrix");
-        int numbOfBands = 54;
         int maxLength = 6;
-        Map<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> result = AudioUtils.initMatrix(numbOfBands, maxLength);
+        Map<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> result = AudioUtils.initMatrix(this.numberOfBands, maxLength);
         assertEquals(3, result.keySet().size());
-        assertEquals(54, result.get(TrialCondition.TARGET_ONLY).size());
-        assertEquals(7, result.get(TrialCondition.TARGET_ONLY).get(0).size());
-        assertEquals(7, result.get(TrialCondition.TARGET_ONLY).get(19).size());
-        assertEquals(7, result.get(TrialCondition.TARGET_ONLY).get(53).size());
-        assertEquals(0, result.get(TrialCondition.TARGET_ONLY).get(19).get(0).size());
-        assertEquals(0, result.get(TrialCondition.TARGET_ONLY).get(19).get(3).size());
-        assertEquals(0, result.get(TrialCondition.TARGET_ONLY).get(19).get(4).size());
-        assertEquals(0, result.get(TrialCondition.TARGET_ONLY).get(19).get(5).size());
-        assertEquals(0, result.get(TrialCondition.TARGET_ONLY).get(19).get(6).size());
+        assertEquals(this.numberOfBands, result.get(TrialCondition.TARGET_ONLY).size());
+        assertEquals(7, result.get(TrialCondition.TARGET_ONLY).get(2).size());
+        assertEquals(7, result.get(TrialCondition.TARGET_ONLY).get(2).size());
+        assertEquals(7, result.get(TrialCondition.TARGET_ONLY).get(2).size());
+        assertEquals(0, result.get(TrialCondition.TARGET_ONLY).get(0).get(0).size());
+        assertEquals(0, result.get(TrialCondition.TARGET_ONLY).get(1).get(3).size());
+        assertEquals(0, result.get(TrialCondition.TARGET_ONLY).get(2).get(4).size());
+        assertEquals(0, result.get(TrialCondition.TARGET_ONLY).get(2).get(5).size());
+        assertEquals(0, result.get(TrialCondition.TARGET_ONLY).get(2).get(6).size());
 
-        assertEquals(54, result.get(TrialCondition.NO_TARGET).size());
+        assertEquals(this.numberOfBands, result.get(TrialCondition.NO_TARGET).size());
         assertEquals(7, result.get(TrialCondition.NO_TARGET).get(0).size());
-        assertEquals(7, result.get(TrialCondition.NO_TARGET).get(19).size());
-        assertEquals(7, result.get(TrialCondition.NO_TARGET).get(53).size());
-        assertEquals(0, result.get(TrialCondition.NO_TARGET).get(28).get(0).size());
-        assertEquals(0, result.get(TrialCondition.NO_TARGET).get(28).get(3).size());
-        assertEquals(0, result.get(TrialCondition.NO_TARGET).get(28).get(4).size());
-        assertEquals(0, result.get(TrialCondition.NO_TARGET).get(28).get(5).size());
-        assertEquals(0, result.get(TrialCondition.NO_TARGET).get(28).get(6).size());
+        assertEquals(7, result.get(TrialCondition.NO_TARGET).get(1).size());
+        assertEquals(7, result.get(TrialCondition.NO_TARGET).get(2).size());
+        assertEquals(0, result.get(TrialCondition.NO_TARGET).get(1).get(0).size());
+        assertEquals(0, result.get(TrialCondition.NO_TARGET).get(1).get(3).size());
+        assertEquals(0, result.get(TrialCondition.NO_TARGET).get(1).get(4).size());
+        assertEquals(0, result.get(TrialCondition.NO_TARGET).get(1).get(5).size());
+        assertEquals(0, result.get(TrialCondition.NO_TARGET).get(1).get(6).size());
 
-        assertEquals(54, result.get(TrialCondition.TARGET_AND_FOIL).size());
+        assertEquals(this.numberOfBands, result.get(TrialCondition.TARGET_AND_FOIL).size());
         assertEquals(7, result.get(TrialCondition.TARGET_AND_FOIL).get(0).size());
-        assertEquals(7, result.get(TrialCondition.TARGET_AND_FOIL).get(19).size());
-        assertEquals(7, result.get(TrialCondition.TARGET_AND_FOIL).get(53).size());
-        assertEquals(0, result.get(TrialCondition.TARGET_AND_FOIL).get(35).get(0).size());
-        assertEquals(0, result.get(TrialCondition.TARGET_AND_FOIL).get(35).get(3).size());
-        assertEquals(0, result.get(TrialCondition.TARGET_AND_FOIL).get(35).get(4).size());
-        assertEquals(0, result.get(TrialCondition.TARGET_AND_FOIL).get(35).get(5).size());
-        assertEquals(0, result.get(TrialCondition.TARGET_AND_FOIL).get(35).get(6).size());
+        assertEquals(7, result.get(TrialCondition.TARGET_AND_FOIL).get(1).size());
+        assertEquals(7, result.get(TrialCondition.TARGET_AND_FOIL).get(2).size());
+        assertEquals(0, result.get(TrialCondition.TARGET_AND_FOIL).get(2).get(0).size());
+        assertEquals(0, result.get(TrialCondition.TARGET_AND_FOIL).get(2).get(3).size());
+        assertEquals(0, result.get(TrialCondition.TARGET_AND_FOIL).get(2).get(4).size());
+        assertEquals(0, result.get(TrialCondition.TARGET_AND_FOIL).get(2).get(5).size());
+        assertEquals(0, result.get(TrialCondition.TARGET_AND_FOIL).get(2).get(6).size());
 
     }
 
@@ -209,73 +221,75 @@ public class AudioUtilsTest {
     public void testInitialiseTrials() {
         System.out.println("initialiseTrials");
         String[] rows = AudioPool2.TRIAL_ROWS;
-        int numberOfBands = 54;
         int maxLength = 6;
         String dirName = "/audiosources";
-        LinkedHashMap<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> result = AudioUtils.initialiseTrials(rows, numberOfBands, maxLength, dirName);
+        LinkedHashMap<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> result = AudioUtils.initialiseTrials(rows, this.numberOfBands, maxLength, dirName);
         assertEquals(3, result.keySet().size());
 
-        assertEquals(54, result.get(TrialCondition.NO_TARGET).size());
-        assertEquals(54, result.get(TrialCondition.TARGET_ONLY).size());
-        assertEquals(54, result.get(TrialCondition.TARGET_AND_FOIL).size());
+        assertEquals(this.numberOfBands, result.get(TrialCondition.NO_TARGET).size());
+        assertEquals(this.numberOfBands, result.get(TrialCondition.TARGET_ONLY).size());
+        assertEquals(this.numberOfBands, result.get(TrialCondition.TARGET_AND_FOIL).size());
 
         assertEquals(7, result.get(TrialCondition.NO_TARGET).get(0).size());
         assertEquals(7, result.get(TrialCondition.TARGET_ONLY).get(0).size());
         assertEquals(7, result.get(TrialCondition.TARGET_AND_FOIL).get(0).size());
 
-        assertEquals(7, result.get(TrialCondition.NO_TARGET).get(19).size());
-        assertEquals(7, result.get(TrialCondition.TARGET_ONLY).get(19).size());
-        assertEquals(7, result.get(TrialCondition.TARGET_AND_FOIL).get(19).size());
+        assertEquals(7, result.get(TrialCondition.NO_TARGET).get(1).size());
+        assertEquals(7, result.get(TrialCondition.TARGET_ONLY).get(1).size());
+        assertEquals(7, result.get(TrialCondition.TARGET_AND_FOIL).get(1).size());
 
-        assertEquals(7, result.get(TrialCondition.NO_TARGET).get(53).size());
-        assertEquals(7, result.get(TrialCondition.TARGET_ONLY).get(53).size());
-        assertEquals(7, result.get(TrialCondition.TARGET_AND_FOIL).get(53).size());
+        assertEquals(7, result.get(TrialCondition.NO_TARGET).get(2).size());
+        assertEquals(7, result.get(TrialCondition.TARGET_ONLY).get(2).size());
+        assertEquals(7, result.get(TrialCondition.TARGET_AND_FOIL).get(2).size());
 
-        assertTrue(result.get(TrialCondition.TARGET_ONLY).get(19).get(0).isEmpty());
-        assertTrue(result.get(TrialCondition.TARGET_ONLY).get(19).get(1).isEmpty());
-        assertTrue(result.get(TrialCondition.TARGET_ONLY).get(19).get(2).isEmpty());
-        assertTrue(result.get(TrialCondition.TARGET_ONLY).get(19).get(3).size() > 0);
-        assertTrue(result.get(TrialCondition.TARGET_ONLY).get(19).get(4).size() > 0);
-        assertTrue(result.get(TrialCondition.TARGET_ONLY).get(19).get(5).size() > 0);
-        assertTrue(result.get(TrialCondition.TARGET_ONLY).get(19).get(6).size() > 0);
+        assertTrue(result.get(TrialCondition.TARGET_ONLY).get(1).get(0).isEmpty());
+        assertTrue(result.get(TrialCondition.TARGET_ONLY).get(1).get(1).isEmpty());
+        assertTrue(result.get(TrialCondition.TARGET_ONLY).get(1).get(2).isEmpty());
+        assertTrue(result.get(TrialCondition.TARGET_ONLY).get(2).get(3).size()>0);
+        assertTrue(result.get(TrialCondition.TARGET_ONLY).get(2).get(4).size()>0);
+        assertTrue(result.get(TrialCondition.TARGET_ONLY).get(2).get(5).size()>0);
+        assertTrue(result.get(TrialCondition.TARGET_ONLY).get(2).get(6).size()>0);
 
-        assertTrue(result.get(TrialCondition.TARGET_AND_FOIL).get(15).get(0).isEmpty());
-        assertTrue(result.get(TrialCondition.TARGET_AND_FOIL).get(15).get(1).isEmpty());
-        assertTrue(result.get(TrialCondition.TARGET_AND_FOIL).get(15).get(2).isEmpty());
-        assertTrue(result.get(TrialCondition.TARGET_AND_FOIL).get(15).get(3).size() > 0);
-        assertTrue(result.get(TrialCondition.TARGET_AND_FOIL).get(15).get(4).size() > 0);
-        assertTrue(result.get(TrialCondition.TARGET_AND_FOIL).get(15).get(5).size() > 0);
-        assertTrue(result.get(TrialCondition.TARGET_AND_FOIL).get(15).get(6).size() > 0);
+        assertTrue(result.get(TrialCondition.TARGET_AND_FOIL).get(0).get(3).size()>0);
+        assertTrue(result.get(TrialCondition.TARGET_AND_FOIL).get(0).get(4).isEmpty());
+        assertTrue(result.get(TrialCondition.TARGET_AND_FOIL).get(1).get(1).isEmpty());
+        assertTrue(result.get(TrialCondition.TARGET_AND_FOIL).get(1).get(2).isEmpty());
+        assertTrue(result.get(TrialCondition.TARGET_AND_FOIL).get(2).get(3).isEmpty());
+        assertTrue(result.get(TrialCondition.TARGET_AND_FOIL).get(2).get(4).isEmpty());
+        assertTrue(result.get(TrialCondition.TARGET_AND_FOIL).get(2).get(5).size()> 0);
+        assertTrue(result.get(TrialCondition.TARGET_AND_FOIL).get(2).get(6).size()>0);
 
-        assertTrue(result.get(TrialCondition.NO_TARGET).get(29).get(0).isEmpty());
-        assertTrue(result.get(TrialCondition.NO_TARGET).get(29).get(1).isEmpty());
-        assertTrue(result.get(TrialCondition.NO_TARGET).get(29).get(2).isEmpty());
-        assertTrue(result.get(TrialCondition.NO_TARGET).get(29).get(3).size() > 0);
-        assertTrue(result.get(TrialCondition.NO_TARGET).get(29).get(4).size() > 0);
-        assertTrue(result.get(TrialCondition.NO_TARGET).get(29).get(5).size() > 0);
-        assertTrue(result.get(TrialCondition.NO_TARGET).get(29).get(6).size() > 0);
+        assertTrue(result.get(TrialCondition.NO_TARGET).get(0).get(0).isEmpty());
+        assertTrue(result.get(TrialCondition.NO_TARGET).get(0).get(1).isEmpty());
+        assertTrue(result.get(TrialCondition.NO_TARGET).get(0).get(2).isEmpty());
+        assertTrue(result.get(TrialCondition.NO_TARGET).get(2).get(3).size()>0);
+        assertTrue(result.get(TrialCondition.NO_TARGET).get(2).get(4).size()> 0);
+        assertTrue(result.get(TrialCondition.NO_TARGET).get(2).get(5).size()>0);
+        assertTrue(result.get(TrialCondition.NO_TARGET).get(2).get(6).size()>0);
 
-        // 1;vloer;smoer;1;Target-only;3 words;deebral;smoer;wijp;;;;;;;
-        Trial firstTrial = result.get(TrialCondition.TARGET_ONLY).get(19).get(3).get(0);
-        assertEquals("vloer", firstTrial.getWord());
-        assertEquals("smoer", firstTrial.getTargetNonWord());
-        assertEquals(20, firstTrial.getBandNumber());
+        //52;baf;baf_filler.wav;1;Target-only;3 words;bag_filler_10dB.wav;baf_filler_10dB.wav;beg_filler_10dB.wav;;;;10dB;
+        Trial firstTrial = result.get(TrialCondition.TARGET_ONLY).get(2).get(3).get(0);
+        assertEquals("baf", firstTrial.getWord());
+        assertEquals("baf_filler.wav", firstTrial.getTargetNonWord());
+        assertEquals(2, firstTrial.getBandIndex());
         assertEquals(TrialCondition.TARGET_ONLY, firstTrial.getCondition());
         assertEquals("/audiosources", firstTrial.getDirName());
         assertEquals(1, firstTrial.getNumberOfSyllables());
         assertEquals(3, firstTrial.getTrialLength());
         assertEquals(4, firstTrial.getStimuliList().size());
-        assertEquals("smoer", firstTrial.getStimuliList().get(0).getLabel());
-        assertEquals("deebral", firstTrial.getStimuliList().get(1).getLabel());
-        assertEquals("smoer", firstTrial.getStimuliList().get(2).getLabel());
-        assertEquals("wijp", firstTrial.getStimuliList().get(3).getLabel());
-
+        assertEquals("baf_filler.wav", firstTrial.getStimuliList().get(0).getLabel());
+        assertEquals("bag_filler_10dB.wav", firstTrial.getStimuliList().get(1).getLabel());
+        assertEquals("baf_filler_10dB.wav", firstTrial.getStimuliList().get(2).getLabel());
+        assertEquals("beg_filler_10dB.wav", firstTrial.getStimuliList().get(3).getLabel());
+    
         for (TrialCondition cond : TrialCondition.values()) {
-            for (int i = 0; i < 54; i++) {
+            for (int i = 0; i < 3; i++) {
                 for (int j = 0; j <= 6; j++) {
                     for (Trial trial : result.get(cond).get(i).get(j)) {
                         assertEquals(j, trial.getTrialLength());
-                        assertEquals(i + 1, trial.getBandNumber());
+                        assertEquals(i, trial.getBandIndex());
+                        int bandIndex = this.indexMap.indexOf(trial.getBandLabel());
+                        assertEquals(i, bandIndex);
                         assertEquals(cond, trial.getCondition());
                         assertEquals(trial.getTargetNonWord(), trial.getStimuliList().get(0).getLabel());
                         assertEquals(j + 1, trial.getStimuliList().size());
@@ -294,7 +308,6 @@ public class AudioUtilsTest {
     public void testInitialiseAvailabilityList() {
         System.out.println("initialiseAvailabilityList");
         String[] rows = AudioPool2.TRIAL_ROWS;
-        int numberOfBands = 54;
         int maxLength = 6;
         String dirName = "/audiosources";
         int tupleSize = 4;
@@ -315,8 +328,8 @@ public class AudioUtilsTest {
         generatorSet2.add(3, TrialCondition.TARGET_AND_FOIL);
         ArrayList<ArrayList<TrialCondition>> trialTypePermutations = utilTrial.generatePermutations(generatorSet2);
 
-        for (int bandIndex = 0; bandIndex < 54; bandIndex++) {
-            LinkedHashMap<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> matrix = AudioUtils.initialiseTrials(rows, numberOfBands, maxLength, dirName);
+        for (int bandIndex = 0; bandIndex < this.numberOfBands; bandIndex++) {
+            LinkedHashMap<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> matrix = AudioUtils.initialiseTrials(rows, this.numberOfBands, maxLength, dirName);
             ArrayList<PermutationPair> result = AudioUtils.initialiseAvailabilityList(matrix, lengthPermuations, trialTypePermutations, bandIndex, tupleSize);
             for (PermutationPair permPair : result) {
                 for (int i = 0; i < tupleSize; i++) {
@@ -336,7 +349,6 @@ public class AudioUtilsTest {
     public void testEmptiedPossibilities() {
         System.out.println("emptiedPossibilities");
         String[] rows = AudioPool2.TRIAL_ROWS;
-        int numberOfBands = 54;
         int maxLength = 6;
         String dirName = "/audiosources";
         int tupleSize = 4;
@@ -356,9 +368,10 @@ public class AudioUtilsTest {
         generatorSet2.add(2, TrialCondition.NO_TARGET);
         generatorSet2.add(3, TrialCondition.TARGET_AND_FOIL);
         ArrayList<ArrayList<TrialCondition>> trialTypePermutations = utilTrial.generatePermutations(generatorSet2);
-
-        for (int bandIndex = 0; bandIndex < 54; bandIndex++) {
-            LinkedHashMap<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> matrix = AudioUtils.initialiseTrials(rows, numberOfBands, maxLength, dirName);
+        
+        LinkedHashMap<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> matrix = AudioUtils.initialiseTrials(rows, this.numberOfBands, maxLength, dirName);
+            
+        for (int bandIndex = 0; bandIndex < this.numberOfBands; bandIndex++) {
             ArrayList<PermutationPair> available = AudioUtils.initialiseAvailabilityList(matrix, lengthPermuations, trialTypePermutations, bandIndex, tupleSize);
             ArrayList<PermutationPair> result = AudioUtils.emptiedPossibilities(available, matrix, bandIndex, tupleSize);
             assertTrue(result.isEmpty()); // nothing has been removed

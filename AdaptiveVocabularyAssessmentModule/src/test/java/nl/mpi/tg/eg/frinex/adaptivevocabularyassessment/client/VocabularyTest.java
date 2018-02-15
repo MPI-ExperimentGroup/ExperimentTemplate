@@ -78,7 +78,7 @@ public class VocabularyTest {
             ArrayList<String> spellings = new ArrayList<>(words.get(i).size());
             for (AdVocAsStimulus stimulus : words.get(i)) {
                 spellings.add(stimulus.getLabel());
-                assertEquals(i + 1, stimulus.getBandNumber());
+                assertEquals(i + 1, stimulus.getBandLabel().longValue());
             }
             HashSet<String> set = new HashSet(spellings);
             assertEquals(wordsArray[i].length, set.size()); // fails if there are repititions or permutation was incorrect
@@ -101,7 +101,7 @@ public class VocabularyTest {
             ArrayList<String> spellings = new ArrayList<>(words.get(i).size());
             for (AdVocAsStimulus stimulus : words.get(i)) {
                 spellings.add(stimulus.getLabel());
-                assertEquals(i + 1, stimulus.getBandNumber());
+                assertEquals(i + 1, stimulus.getBandLabel().longValue());
             }
             HashSet<String> set = new HashSet(spellings);
             assertEquals(wordsArray[i].length, set.size()); // fails if there are repititions or permutation was incorrect

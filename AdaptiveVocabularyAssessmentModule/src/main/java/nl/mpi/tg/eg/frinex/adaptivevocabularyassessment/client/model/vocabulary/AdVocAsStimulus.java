@@ -24,16 +24,16 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspo
  * @since Oct 27, 2017 2:13:03 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class AdVocAsStimulus extends BandStimulus {
+public class AdVocAsStimulus extends BandStimulus<Integer> {
     
     
     /*
-    public BandStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, int bandNumber){
+    public BandStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, S bandLabel){
    */
     
 
-    public AdVocAsStimulus(String uniqueId, String label, String correctResponses, int bandNumber) {
-        super(uniqueId, new Tag[0], label, null, -1, null, null, null, Vocabulary.NONWORD+','+Vocabulary.WORD, correctResponses, bandNumber);
+    public AdVocAsStimulus(String uniqueId, String label, String correctResponses, Integer bandNumber) {
+        super(uniqueId, new Tag[0], label, null, -1, null, null, null, Vocabulary.NONWORD+','+Vocabulary.WORD, correctResponses, bandNumber, bandNumber-1);
     }
     
     

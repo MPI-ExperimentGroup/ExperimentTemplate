@@ -26,25 +26,25 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
  *
  * @param <T> userRecation, can be string, boolean, double, etc.
  */
-public abstract class BookkeepingStimulus<T> extends BandStimulus {
+public abstract class BookkeepingStimulus<T,S> extends BandStimulus<S> {
 
     protected T userReaction; // can be string, boolean, double, etc.
     protected Boolean correctness;
 
     /*
-    public BandStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, int bandNumber){
+    public BandStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, String bandLabel){
      */
-    public BookkeepingStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, int bandNumber) {
-        super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses, bandNumber);
+    public BookkeepingStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, S bandLabel, int bandIndex) {
+        super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses, bandLabel, bandIndex);
         this.userReaction = null;
         this.correctness = null;
     }
 
     // injection
-    public BookkeepingStimulus(BandStimulus stimulus) {
+    public BookkeepingStimulus(BandStimulus<S> stimulus) {
        super(stimulus.getUniqueId(), stimulus.getTags().toArray(new Tag[0]), stimulus.getLabel(), 
                 stimulus.getCode(), stimulus.getPauseMs(), stimulus.getAudio(), stimulus.getVideo(), stimulus.getImage(), 
-                stimulus.getRatingLabels(), stimulus.getCorrectResponses(), stimulus.getBandNumber());
+                stimulus.getRatingLabels(), stimulus.getCorrectResponses(), stimulus.getBandLabel(),  stimulus.getBandIndex());
         this.userReaction = null;
         this.correctness = null;
     }

@@ -68,14 +68,14 @@ public class AdVocAsBookkeepingStimulusTest {
 
   
     /**
-     * Test of getBandNumber method, of class AdVocAsBookkeepingStimulus.
+     * Test of getBandLabel method, of class AdVocAsBookkeepingStimulus.
      */
     @Test
     public void testGetBandNumber() {
         System.out.println("getBandNumber");
         AdVocAsStimulus pureStimulus = new AdVocAsStimulus("test_"+System.currentTimeMillis(), "test-spelling", Vocabulary.WORD, 37);
         AdVocAsBookkeepingStimulus instance = new AdVocAsBookkeepingStimulus(pureStimulus);
-        int result = instance.getBandNumber();
+        int result = instance.getBandLabel();
         assertEquals(37, result);
     }
 

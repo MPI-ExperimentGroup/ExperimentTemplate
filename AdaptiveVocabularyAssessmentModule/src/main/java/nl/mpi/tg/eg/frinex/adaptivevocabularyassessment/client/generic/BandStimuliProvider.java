@@ -74,9 +74,8 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     protected boolean looser = false;
     protected boolean justVisitedLastBand = false;
     protected boolean justVisitedFirstBand = false;
-    
-    protected String errorMessage;
 
+    protected String errorMessage;
 
     // add experiment specific stuff here
     // ...
@@ -162,6 +161,14 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     public String generateStimuliStateSnapshot() {
         return "";
     }
+    
+    public int getCurrentBandIndex() {
+        return this.currentBandIndex;
+    }
+
+    public int getNumberOfBands() {
+        return this.numberOfBands;
+    }
 
     public LinkedHashMap<Long, Integer> getPercentageBandTable() {
         return this.percentageBandTable;
@@ -202,10 +209,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         return this.percentageScore;
     }
 
-    public int getCurrentBandNumber() {
-        return (this.currentBandIndex + 1);
-    }
-
+   
     public ArrayList<RecordStimulus> getFTtuple() {
         return this.tupleFT;
     }
@@ -357,26 +361,22 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         return true;
     }
 
-    // updates indices 
-    private boolean fastTrackToBeContinuedWithSecondChance() {
+    // also updates indices
+    // OVerride in the child class
+    protected boolean fastTrackToBeContinuedWithSecondChance() {
         if (this.responseRecord.isEmpty()) {// just started the first experiment...
             return true;
         }
         boolean retVal;
-        int index = this.responseRecord.size() - 1;
-        boolean isWord = this.responseRecord.get(index).getBandNumber() > -1;
         if (this.isCorrectCurrentResponse) {
             this.secondChanceFastTrackIsFired = false;
-            if (isWord) {
-                if (this.currentBandIndex == (this.numberOfBands - 1)) {
-                    retVal = false;
-                } else {
-                    this.currentBandIndex++;
-                    retVal = true;
-                }
+            if (this.currentBandIndex == (this.numberOfBands - 1)) {
+                retVal = false;
             } else {
+                this.currentBandIndex++;
                 retVal = true;
             }
+
         } else {
             // hit incorrect? 
             if (this.secondChanceFastTrackIsFired) {
@@ -547,7 +547,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
 
     protected Boolean allTupleIsCorrect() {
         boolean allTupleCorrect = true;
-         int lastIndex = this.responseRecord.size() - 1;
+        int lastIndex = this.responseRecord.size() - 1;
         for (int i = 0; i < this.fineTuningNumberOfAtomsPerTuple; i++) {
             if (!this.responseRecord.get(lastIndex - i).getCorrectness()) {
                 allTupleCorrect = false;
@@ -696,7 +696,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
             String time = (new Date(stimulus.getTimeStamp())).toString();
 
             row.append(startColumn).append(stimulus.getLabel()).append(endColumn);
-            row.append(startColumn).append(stimulus.getBandNumber()).append(endColumn);
+            row.append(startColumn).append(stimulus.getBandLabel()).append(endColumn);
             row.append(startColumn).append(stimulus.getReaction()).append(endColumn);
             row.append(startColumn).append(stimulus.getCorrectness()).append(endColumn);
             row.append(startColumn).append(time).append(endColumn);
@@ -730,7 +730,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
             BookkeepingStimulus stimulus = this.responseRecord.get(i);
             StringBuilder row = new StringBuilder();
             String time = (new Date(stimulus.getTimeStamp())).toString();
-            row.append(startColumn).append(stimulus.getBandNumber()).append(endColumn);
+            row.append(startColumn).append(stimulus.getBandLabel()).append(endColumn);
             row.append(startColumn).append(stimulus.getLabel()).append(endColumn);
             row.append(startColumn).append(stimulus.getReaction()).append(endColumn);
             row.append(startColumn).append(stimulus.getCorrectness()).append(endColumn);

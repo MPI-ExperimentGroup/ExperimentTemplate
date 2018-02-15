@@ -112,6 +112,11 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
     public ArrayList<Integer> getNonWordsIndices() {
         return this.nonWordsIndexes;
     }
+    
+     public int getCurrentBandNumber() {
+        return (this.currentBandIndex + 1);
+    }
+
 
     // experiment-specific, must be overridden
     // current band index is prepared by hasNextStimulus method
@@ -139,13 +144,55 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
             return false;
         }
         int index = this.getCurrentStimulusIndex();
-        if (this.responseRecord.get(index).getBandNumber() > -1) {
+        Integer bandNumber = this.responseRecord.get(index).getBandLabel();
+        if (bandNumber > -1) {
             retVal = stimulusResponseProcessed.equals(Vocabulary.WORD);
         } else {
             retVal = stimulusResponseProcessed.equals(Vocabulary.NONWORD);
         }
         return retVal;
     }
+    
+    @Override 
+    protected boolean fastTrackToBeContinuedWithSecondChance() {
+        if (this.responseRecord.isEmpty()) {// just started the first experiment...
+            return true;
+        }
+        boolean retVal;
+        int index = this.responseRecord.size() - 1;
+        Integer bandNumber = this.responseRecord.get(index).getBandLabel();
+        boolean isWord = bandNumber > -1;
+        if (this.isCorrectCurrentResponse) {
+            this.secondChanceFastTrackIsFired = false;
+            if (isWord) {
+                if (this.currentBandIndex == (this.numberOfBands - 1)) {
+                    retVal = false;
+                } else {
+                    this.currentBandIndex++;
+                    retVal = true;
+                }
+            } else {
+                retVal = true;
+            }
+        } else {
+            // hit incorrect? 
+            if (this.secondChanceFastTrackIsFired) {
+                retVal = false;
+            } else {
+                // giving the second chanse
+                this.secondChanceFastTrackIsFired = true;
+                retVal = true;
+            }
+        }
+
+        if (retVal) {
+            // check if we still have data for the next experiment
+            retVal = this.enoughStimuliForFastTrack();
+        }
+
+        return retVal;
+    }
+   
 
     @Override
     protected boolean enoughStimuliForFastTrack() {
@@ -199,8 +246,8 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         while (!ended) {
             AdVocAsBookkeepingStimulus bStimulus = this.tupleFT.remove(0);
             //(String uniqueId, String label, String correctResponses, int bandNumber)
-            AdVocAsStimulus stimulus = new AdVocAsStimulus(bStimulus.getUniqueId(), bStimulus.getLabel(), bStimulus.getCorrectResponses(), bStimulus.getBandNumber());
-            int bandNumber = stimulus.getBandNumber();
+            AdVocAsStimulus stimulus = new AdVocAsStimulus(bStimulus.getUniqueId(), bStimulus.getLabel(), bStimulus.getCorrectResponses(), bStimulus.getBandLabel());
+            int bandNumber = stimulus.getBandLabel();
             if (bandNumber > -1) { // a word
                 // bandIndex is 1 less then band number 
                 this.words.get(bandNumber - 1).add(stimulus);
@@ -225,8 +272,9 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         stringBuilder.append(endRow);
         int nonwordCounter = 0;
         for (int i = 0; i <= this.timeTickEndFastTrack; i++) {
-            BookkeepingStimulus stimulus = this.responseRecord.get(i);
-            if (stimulus.getBandNumber() < 0) {
+            AdVocAsBookkeepingStimulus stimulus = this.responseRecord.get(i);
+            Integer bandNumber = stimulus.getBandLabel();
+            if (bandNumber < 0) {
                 nonwordCounter++;
             }
             double frequency = ((double) nonwordCounter) / ((double) (i + 1));
@@ -235,7 +283,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
             String time = (new Date(stimulus.getTimeStamp())).toString();
 
             row.append(startColumn).append(stimulus.getLabel()).append(endColumn);
-            row.append(startColumn).append(stimulus.getBandNumber()).append(endColumn);
+            row.append(startColumn).append(stimulus.getBandLabel()).append(endColumn);
             row.append(startColumn).append(stimulus.getReaction()).append(endColumn);
             row.append(startColumn).append(stimulus.getCorrectness()).append(endColumn);
             row.append(startColumn).append(time).append(endColumn);
@@ -423,7 +471,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         LinkedHashMap<Integer, String> retVal = new LinkedHashMap<Integer, String>();
         for (AdVocAsBookkeepingStimulus bStimulus : records) {
             if (bStimulus.getCorrectResponses().equals(Vocabulary.WORD)) { // is a word
-                Integer key = bStimulus.getBandNumber();
+                Integer key = bStimulus.getBandLabel();
                 if (!retVal.containsKey(key)) {
                     retVal.put(key, bStimulus.getLabel());
                 }

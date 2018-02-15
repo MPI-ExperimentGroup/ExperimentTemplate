@@ -17,26 +17,31 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audioaspool.AudioIndexMap;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  *
  * @author olhshk
  */
-public class AudioAsStimulus extends BookkeepingStimulus<Boolean> {
+public class AudioAsStimulus extends BookkeepingStimulus<Boolean,String> {
 
     private final WordType wordtype;
     public static String AUDIO_RATING_LABEL = "YES";
 
     /*
-    public BookkeepingStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, int bandNumber) {
+    public BookkeepingStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, S bandLabel) {
      */
-    public AudioAsStimulus(String uniqueId, String label, int pauseMs, String audioPath, String correctResponses, int bandNumber, WordType wordtype) {
-        super(uniqueId, new Stimulus.Tag[0], label, null, pauseMs, audioPath, null, null, AUDIO_RATING_LABEL, correctResponses, bandNumber);
+    public AudioAsStimulus(String uniqueId, String label, int pauseMs, String audioPath, String correctResponses, String bandLabel, int bandIndex, WordType wordtype) {
+        super(uniqueId, new Stimulus.Tag[0], label, null, pauseMs, audioPath, null, null, AUDIO_RATING_LABEL, correctResponses, bandLabel, bandIndex);
         this.wordtype = wordtype;
         this.userReaction = null;
         this.correctness = null;
+        ArrayList<String> tmp = new ArrayList<String>(Arrays.asList(AudioIndexMap.INDEX_ARRAY)); 
+        this.bandIndex = tmp.indexOf(bandLabel);
     }
 
     public WordType getWordType() {

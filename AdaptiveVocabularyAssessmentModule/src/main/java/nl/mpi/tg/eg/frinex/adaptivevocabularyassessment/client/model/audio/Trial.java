@@ -29,26 +29,28 @@ public class Trial {
 
     private final ArrayList<AudioAsStimulus> wordList;  // the first one (zero index) is the cue, it is in the order it should appear for the participant
     private final String word;
-    private final String targetNonWord;
+    private final String targetNonWordFile;
     private final int numberOfSyllables;
     private final TrialCondition condition;
     private final int lgth;
     private final int PAUSE_EXAMPLE = 900;
     private final int PAUSE  = 500;
-    private final int bandNumber;
+    private final int bandIndex;
+    private final String bandLabel;
     private final String dirName;
 
-    public Trial(String word, String targetNonword, int nOfSyllables, TrialCondition condition, int length, LinkedHashMap<String,WordType> words, int bandNumber, String dirName) {
+    public Trial(String word, String targetNonwordFile, int nOfSyllables, TrialCondition condition, int length, LinkedHashMap<String,WordType> words, String bandLabel, int bandIndex, String dirName) {
 
         this.word = word;
-        this.targetNonWord = targetNonword;
+        this.targetNonWordFile = targetNonwordFile;
         this.numberOfSyllables = nOfSyllables;
         this.lgth = length;
-        this.bandNumber = bandNumber;
+        this.bandLabel = bandLabel;
+        this.bandIndex = bandIndex;
         this.dirName = dirName;
         this.condition = condition;
         this.wordList = new ArrayList<AudioAsStimulus>(length+1);
-        AudioAsStimulus example = this.makeExampleStimulus(targetNonword);
+        AudioAsStimulus example = this.makeExampleStimulus(targetNonwordFile);
         this.wordList.add(example);
         Set<String> keys = words.keySet();
         for (String label:keys){
@@ -70,12 +72,16 @@ public class Trial {
         return this.dirName;
     }
     
-    public int getBandNumber() {
-        return this.bandNumber;
+    public int getBandIndex() {
+        return this.bandIndex;
+    }
+    
+     public String getBandLabel() {
+        return this.bandLabel;
     }
 
     public String getTargetNonWord() {
-        return this.targetNonWord;
+        return this.targetNonWordFile;
     }
 
     public int getNumberOfSyllables() {
@@ -91,22 +97,22 @@ public class Trial {
     }
     
   
-    private AudioAsStimulus makeExampleStimulus(String targetNonword){
+    private AudioAsStimulus makeExampleStimulus(String targetNonwordFile){
         
         // public AudioAsStimulus(String uniqueId, String label, int pauseMs, String audioPath, String correctResponses, int bandNumber, WordType wordtype) 
-        String uniqueId = targetNonword+System.currentTimeMillis();
-        String audioPath = this.dirName+"/"+targetNonword+"_"+this.bandNumber; // Florian is it so??
-        AudioAsStimulus retVal = new AudioAsStimulus(uniqueId, targetNonword, PAUSE_EXAMPLE, audioPath, null, this.bandNumber, WordType.EXAMPLE_TARGET_NON_WORD);
+        String uniqueId = targetNonwordFile+System.currentTimeMillis();
+        String audioPath = this.dirName+"/"+targetNonwordFile; // Florian is it so??
+        AudioAsStimulus retVal = new AudioAsStimulus(uniqueId, targetNonwordFile, PAUSE_EXAMPLE, audioPath, null, this.bandLabel, this.bandIndex, WordType.EXAMPLE_TARGET_NON_WORD);
         return retVal;
     }
     
-    private AudioAsStimulus makeStimulus(String word, WordType wordtype){
+    private AudioAsStimulus makeStimulus(String wordFile, WordType wordtype){
         
         // public AudioAsStimulus(String uniqueId, String label, int pauseMs, String audioPath, String correctResponses, int bandNumber, WordType wordtype) 
-        String uniqueId = word+System.currentTimeMillis();
-        String audioPath = this.dirName+"/"+word+"_"+this.bandNumber; // Florian is it so??
+        String uniqueId = wordFile+System.currentTimeMillis();
+        String audioPath = this.dirName+"/"+wordFile; // Florian is it so??
         String correctResponses = (wordtype.equals(WordType.TARGET_NON_WORD)) ? AudioAsStimulus.AUDIO_RATING_LABEL : null;
-        AudioAsStimulus retVal = new AudioAsStimulus(uniqueId, word, PAUSE, audioPath, correctResponses, this.bandNumber, wordtype);
+        AudioAsStimulus retVal = new AudioAsStimulus(uniqueId, wordFile, PAUSE, audioPath, correctResponses, this.bandLabel, this.bandIndex, wordtype);
         return retVal;
     }
     

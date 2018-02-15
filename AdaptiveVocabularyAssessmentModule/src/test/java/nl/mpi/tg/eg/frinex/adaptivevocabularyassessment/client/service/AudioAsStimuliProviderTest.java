@@ -22,6 +22,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Audio
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Trial;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialCondition;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.WordType;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audioaspool.AudioIndexMap;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -29,7 +30,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 
 /**
  *
@@ -38,8 +38,9 @@ import org.junit.Ignore;
 public class AudioAsStimuliProviderTest {
 
     private AudioAsStimuliProvider instance;
-    private final int startBand = 1;
+    private final int startBand = 0;
     private final int tupleSize = 4;
+    private final int numberOfBands = AudioIndexMap.INDEX_ARRAY.length;
 
     public AudioAsStimuliProviderTest() {
     }
@@ -59,7 +60,7 @@ public class AudioAsStimuliProviderTest {
         this.instance.setfineTuningFirstWrongOut("False");
         this.instance.setfineTuningTupleLength(Integer.toString(this.tupleSize));
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfBands("10");
+        this.instance.setnumberOfBands(Integer.toString(this.numberOfBands));
         this.instance.setnumberOfSeries("1");
         this.instance.setstartBand(Integer.toString(this.startBand));
         this.instance.settype("0");
@@ -77,6 +78,7 @@ public class AudioAsStimuliProviderTest {
         System.out.println("initialiseStimuliState");
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
+        assertEquals(AudioIndexMap.INDEX_ARRAY.length, this.instance.getNumberOfBands());
         assertEquals(this.tupleSize, this.instance.getTrialTuple().getTrials().size());
         ArrayList<Integer> leng = new ArrayList<Integer>(this.tupleSize);
         ArrayList<TrialCondition> types = new ArrayList<TrialCondition>(this.tupleSize);
@@ -84,7 +86,7 @@ public class AudioAsStimuliProviderTest {
             Trial currentTrial = this.instance.getTrialTuple().getTrials().get(i);
             leng.add(i, currentTrial.getTrialLength());
             types.add(i, currentTrial.getCondition());
-            assertEquals(this.startBand, currentTrial.getBandNumber());
+            assertEquals(this.startBand, currentTrial.getBandIndex());
             ArrayList<AudioAsStimulus> stimuli = currentTrial.getStimuliList();
             assertEquals(WordType.EXAMPLE_TARGET_NON_WORD, stimuli.get(0).getWordType()); // the first stimulus should always example
             assertEquals(currentTrial.getTrialLength() + 1, stimuli.size());
@@ -101,7 +103,7 @@ public class AudioAsStimuliProviderTest {
         assertEquals(3, types.size());
         assertTrue(types.indexOf(TrialCondition.NO_TARGET) > -1);
 
-        assertEquals(this.startBand, this.instance.getCurrentBandNumber());
+        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
     }
 
     /**
@@ -112,7 +114,7 @@ public class AudioAsStimuliProviderTest {
         System.out.println("nextStimulus");
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
-        assertEquals(this.startBand, this.instance.getCurrentBandNumber());
+        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
         assertTrue(this.instance.hasNextStimulus(0));
         this.instance.nextStimulus(0);
         assertEquals(WordType.EXAMPLE_TARGET_NON_WORD, this.instance.getCurrentStimulus().getWordType());

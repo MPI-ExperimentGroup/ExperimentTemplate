@@ -18,7 +18,9 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audioaspool.AudioIndexMap;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -81,8 +83,13 @@ public class TrialTest {
     }
 
     private final Trial[] instance = new Trial[4];
+    
+    private final ArrayList<String> indexMap;
 
     public TrialTest() {
+        
+        this.indexMap = new ArrayList<String>(Arrays.asList(AudioIndexMap.INDEX_ARRAY));
+
     }
 
     @BeforeClass
@@ -97,14 +104,14 @@ public class TrialTest {
     public void setUp() {
         //Trial(String word, String targetNonword, int nOfSyllables, TrialCondition condition, int length, LinkedHashMap<String,WordType> targetNonWords, int bandNumber, String dirName)
         //1	vloer	smoer	1	Target-only	3 targetNonWords	deebral	smoer	wijp
-        this.instance[0] = new Trial("vloer", "smoer", 1, TrialCondition.TARGET_ONLY, 3, map1, 20, "/1");
+        this.instance[0] = new Trial("vloer", "smoer", 1, TrialCondition.TARGET_ONLY, 3, map1, "6dB", 1, "/1");
         //19	kers	hers	1	Target-only	4 targetNonWords	geider	hers	atgraus	hamp
-        this.instance[1] = new Trial("kers", "hers", 1, TrialCondition.TARGET_ONLY, 4, map2, 21, "/2");
+        this.instance[1] = new Trial("kers", "hers", 1, TrialCondition.TARGET_ONLY, 4, map2, "10dB", 2, "/2");
         //107	vuur	fjon	1	Target+Foil	5 targetNonWords	fjodschelg	fjon	wisdaag	tuik	poks		fjodschelg
-        this.instance[2] = new Trial("vuur", "fjon", 1, TrialCondition.TARGET_AND_FOIL, 5, map3, 22, "/3");
+        this.instance[2] = new Trial("vuur", "fjon", 1, TrialCondition.TARGET_AND_FOIL, 5, map3, "10dB", 2, "/3");
         //156	pop	lop	1	NoTarget	4 targetNonWords	voorserm	muiland	fraal	kijn	
-        this.instance[3] = new Trial("pop", "lop", 1, TrialCondition.NO_TARGET, 4, map4, 22, "/2");
-
+        this.instance[3] = new Trial("pop", "lop", 1, TrialCondition.NO_TARGET, 4, map4, "2dB", 0, "/2");
+        
     }
 
     @After
@@ -186,16 +193,34 @@ public class TrialTest {
      * Test of getBandNumber method, of class Trial.
      */
     @Test
-    public void testGetBandNumber() {
+    public void testGetBandIndex() {
         System.out.println("getBandNumber");
         int[] bands = new int[this.instance.length];
         for (int i = 0; i < this.instance.length; i++) {
-            bands[i] = this.instance[i].getBandNumber();
+            bands[i] = this.instance[i].getBandIndex();
         }
-        assertEquals(20, bands[0]);
-        assertEquals(21, bands[1]);
-        assertEquals(22, bands[2]);
-        assertEquals(22, bands[3]);
+        assertEquals(1, bands[0]);
+        assertEquals(2, bands[1]);
+        assertEquals(2, bands[2]);
+        assertEquals(0, bands[3]);
+    }
+    
+      @Test
+    public void testGetBandLabel() {
+        System.out.println("getBandLabel");
+        String[] bands = new String[this.instance.length];
+        for (int i = 0; i < this.instance.length; i++) {
+            bands[i] = this.instance[i].getBandLabel();
+        }
+        assertEquals("6dB", bands[0]);
+        assertEquals("10dB", bands[1]);
+        assertEquals("10dB", bands[2]);
+        assertEquals("2dB", bands[3]);
+        assertEquals(1, this.indexMap.indexOf(bands[0]));
+        assertEquals(2, this.indexMap.indexOf(bands[1]));
+        assertEquals(2, this.indexMap.indexOf(bands[2]));
+        assertEquals(0, this.indexMap.indexOf(bands[3]));
+        
     }
 
     /**

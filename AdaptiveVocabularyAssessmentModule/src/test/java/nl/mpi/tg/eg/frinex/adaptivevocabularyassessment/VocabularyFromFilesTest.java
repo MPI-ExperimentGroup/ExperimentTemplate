@@ -79,7 +79,7 @@ public class VocabularyFromFilesTest {
             for (AdVocAsStimulus word : wordband) {
                 String id = word.getUniqueId();
                 String spelling = word.getLabel();
-                int band = word.getBandNumber();
+                int band = word.getBandLabel();
                 String serialisedDescr = "new AdVocAsStimulus(\"" + id + "\", \"" + spelling + "\", \"" + Vocabulary.WORD + "\" " + "," + band + ")";
                 stBuilder.append(serialisedDescr).append(",\n");
             }

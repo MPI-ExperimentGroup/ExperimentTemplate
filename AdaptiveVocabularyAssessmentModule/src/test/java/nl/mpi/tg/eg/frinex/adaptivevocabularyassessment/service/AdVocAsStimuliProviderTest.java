@@ -379,7 +379,7 @@ public class AdVocAsStimuliProviderTest {
         //System.out.println("Label: " + label);
         AdVocAsBookkeepingStimulus bStimulus = provider.getResponseRecord().get(provider.getCurrentStimulusIndex());
         int expectedBand = stimulus.getCorrectResponses().equals(Vocabulary.WORD) ? Integer.parseInt(this.startBand) : -1;
-        assertEquals(expectedBand, bStimulus.getBandNumber());
+        assertEquals(expectedBand, bStimulus.getBandLabel().intValue());
     }
 
     /**
@@ -1272,8 +1272,8 @@ public class AdVocAsStimuliProviderTest {
         for (AdVocAsBookkeepingStimulus stimulus : tuple) {
             assertEquals(null, stimulus.getReaction());
             assertEquals(null, stimulus.getCorrectness());
-            assertNotEquals(0, stimulus.getBandNumber());
-            if (stimulus.getBandNumber() < 0) {
+            assertNotEquals(0, stimulus.getBandLabel().intValue());
+            if (stimulus.getBandLabel() < 0) {
                 nNonwords++;
             }
         }
@@ -1286,7 +1286,7 @@ public class AdVocAsStimuliProviderTest {
 
         for (int i = 0; i <= timeTick; i++) {
             BookkeepingStimulus stimulus = records.get(i);
-            if (stimulus.getBandNumber() == -1) {
+            if (stimulus.getBandLabel().equals(-1)) {
                 counterNonwords++;
             }
             frequency = ((double) counterNonwords) / ((double) (i + 1));
@@ -1313,15 +1313,15 @@ public class AdVocAsStimuliProviderTest {
     private void checkFastTrack(ArrayList<AdVocAsBookkeepingStimulus> records, int lastTimeTickFastTrack, int bestFastTrackBand) {
         AdVocAsBookkeepingStimulus stimulus = records.get(0);
         AdVocAsBookkeepingStimulus previousStimulus;
-        if (stimulus.getBandNumber() > 0) {
-            assertEquals(Integer.parseInt(this.startBand), stimulus.getBandNumber());
+        if (stimulus.getBandLabel() > 0) {
+            assertEquals(Integer.parseInt(this.startBand), stimulus.getBandLabel().longValue());
         }
         for (int i = 1; i <= lastTimeTickFastTrack; i++) {
             previousStimulus = stimulus;
             stimulus = records.get(i);
             if (previousStimulus.getCorrectness()) { // correcr reaction
-                if (previousStimulus.getBandNumber() > 0 && stimulus.getBandNumber() > 0 && previousStimulus.getBandNumber() < Integer.parseInt(this.numberOfBands)) {
-                    assertEquals(previousStimulus.getBandNumber() + 1, stimulus.getBandNumber());
+                if (previousStimulus.getBandLabel() > 0 && stimulus.getBandLabel() > 0 && previousStimulus.getBandLabel() < Integer.parseInt(this.numberOfBands)) {
+                    assertEquals(previousStimulus.getBandLabel() + 1, stimulus.getBandLabel().longValue());
                 }
             } else {
                 if (i >= 2) { // check pre-previous answer
@@ -1329,9 +1329,9 @@ public class AdVocAsStimuliProviderTest {
                     if (prepreCorrectness) {
                         // we had the first incorrect answer in a row coming to this band
                         // this is the second chance stimulus
-                        if (previousStimulus.getBandNumber() > 0 && stimulus.getBandNumber() > 0) {
+                        if (previousStimulus.getBandLabel() > 0 && stimulus.getBandLabel() > 0) {
                             // second chance
-                            assertEquals(previousStimulus.getBandNumber(), stimulus.getBandNumber());
+                            assertEquals(previousStimulus.getBandLabel(), stimulus.getBandLabel());
                         }
                     } else {
                         // preprevious and previous reaction were wrong!!!
@@ -1345,8 +1345,8 @@ public class AdVocAsStimuliProviderTest {
         stimulus = records.get(lastTimeTickFastTrack);
         if (stimulus.getCorrectness()) {
             // we stopped fast track because we have reached the end of the bands
-            if (stimulus.getBandNumber() > 0) {
-                assertEquals(Integer.parseInt(this.numberOfBands), stimulus.getBandNumber());
+            if (stimulus.getBandLabel() > 0) {
+                assertEquals(Integer.parseInt(this.numberOfBands), stimulus.getBandLabel().longValue());
             }
         } else {
             // we stopped because there were two incorrect answers in a row
@@ -1356,8 +1356,8 @@ public class AdVocAsStimuliProviderTest {
                 assertTrue(records.get(lastTimeTickFastTrack - 2).getCorrectness());
             }
         }
-        if (stimulus.getBandNumber() > 0) {
-            assertEquals(bestFastTrackBand, stimulus.getBandNumber());
+        if (stimulus.getBandLabel() > 0) {
+            assertEquals(bestFastTrackBand, stimulus.getBandLabel().intValue());
         }
 
     }
@@ -1371,8 +1371,8 @@ public class AdVocAsStimuliProviderTest {
 
         for (int i = lastTimeTickFastTrack + 1; i < records.size(); i++) {
             stimulus = records.get(i);
-            if (stimulus.getBandNumber() > 0) {
-                currentBandNumber = stimulus.getBandNumber();
+            if (stimulus.getBandLabel() > 0) {
+                currentBandNumber = stimulus.getBandLabel();
             }
             if (stimulus.getCorrectness()) {
                 counterInTuple++;
@@ -1385,9 +1385,9 @@ public class AdVocAsStimuliProviderTest {
 
                     // check the tuple
                     for (int j = 0; j < Integer.parseInt(this.fineTuningNumberOfAtomsPerTuple); j++) {
-                        if (records.get(i - j).getBandNumber() > 0) {
+                        if (records.get(i - j).getBandLabel() > 0) {
                             // all words in the tuple must be in one band
-                            assertEquals(currentBandNumber, records.get(i - j).getBandNumber());
+                            assertEquals(currentBandNumber, records.get(i - j).getBandLabel().intValue());
                         } else {
                             nonWordCounter++;
                         }

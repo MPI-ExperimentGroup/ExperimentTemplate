@@ -18,8 +18,10 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audioaspool.AudioIndexMap;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -44,7 +46,7 @@ public class TrialTupleTest {
         return retVal;
     }
 
-    //19	kers	hers	1	Target-only	4 targetNonWords	geider	hers	atgraus	hamp
+    //2	kers	hers	1	Target-only	4 targetNonWords	geider	hers	atgraus	hamp
     private final LinkedHashMap<String, WordType> map2 = createMap2();
 
     private LinkedHashMap<String, WordType> createMap2() {
@@ -84,8 +86,12 @@ public class TrialTupleTest {
     private final ArrayList<Trial> trials = new ArrayList<Trial>(4);
 
     private TrialTuple instance;
+    
+     private final ArrayList<String> indexMap;
 
     public TrialTupleTest() {
+        
+        this.indexMap = new ArrayList<String>(Arrays.asList(AudioIndexMap.INDEX_ARRAY));
     }
 
     @BeforeClass
@@ -102,13 +108,13 @@ public class TrialTupleTest {
 
         //Trial(String word, String targetNonword, int nOfSyllables, TrialCondition condition, int length, LinkedHashMap<String,WordType> targetNonWords, int bandNumber, String dirName)
         //1	vloer	smoer	1	Target-only	3 targetNonWords	deebral	smoer	wijp
-        this.trials.add(0, new Trial("vloer", "smoer", 1, TrialCondition.TARGET_ONLY, 3, map1, 20, "/1"));
+        this.trials.add(0, new Trial("vloer", "smoer", 1, TrialCondition.TARGET_ONLY, 3, map1, "10dB", 2,  "/1"));
         //19	kers	hers	1	Target-only	4 targetNonWords	geider	hers	atgraus	hamp
-        this.trials.add(1, new Trial("kers", "hers", 1, TrialCondition.TARGET_ONLY, 4, map2, 20, "/2"));
+        this.trials.add(1, new Trial("kers", "hers", 1, TrialCondition.TARGET_ONLY, 4, map2, "10dB", 2, "/2"));
         //107	vuur	fjon	1	Target+Foil	5 targetNonWords	fjodschelg	fjon	wisdaag	tuik	poks		fjodschelg
-        this.trials.add(2, new Trial("vuur", "fjon", 1, TrialCondition.TARGET_AND_FOIL, 5, map3, 20, "/3"));
+        this.trials.add(2, new Trial("vuur", "fjon", 1, TrialCondition.TARGET_AND_FOIL, 5, map3,"10dB", 2, "/3"));
         //156	pop	lop	1	NoTarget	4 targetNonWords	voorserm	muiland	fraal	kijn	
-        this.trials.add(3, new Trial("pop", "lop", 1, TrialCondition.NO_TARGET, 4, map4, 20, "/2"));
+        this.trials.add(3, new Trial("pop", "lop", 1, TrialCondition.NO_TARGET, 4, map4, "10dB", 2, "/2"));
 
         this.instance = new TrialTuple(this.trials);
 
@@ -142,7 +148,7 @@ public class TrialTupleTest {
         assertEquals(true, result2.getReaction());
         result2.setCorrectness(false);
         assertFalse(result2.getCorrectness());
-        assertEquals(20, result2.getBandNumber());
+        assertEquals("10dB", result2.getBandLabel());
 
         AudioAsStimulus result3 = this.instance.removeFirstAvailableStimulus();
         assertEquals("smoer", result3.getLabel());
@@ -222,9 +228,9 @@ public class TrialTupleTest {
         Map<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> trialMatrix = new LinkedHashMap();
         // initialisation
         for (TrialCondition trialType : TrialCondition.values()) {
-            ArrayList<ArrayList<ArrayList<Trial>>> matrix3 = new ArrayList<ArrayList<ArrayList<Trial>>>(54);
+            ArrayList<ArrayList<ArrayList<Trial>>> matrix3 = new ArrayList<ArrayList<ArrayList<Trial>>>(3);
             trialMatrix.put(trialType, matrix3);
-            for (int i = 0; i < 54; i++) {
+            for (int i = 0; i < 3; i++) {
                 ArrayList<ArrayList<Trial>> matrix2 = new ArrayList<ArrayList<Trial>>();
                 matrix3.add(i, matrix2); // band
                 for (int j=0; j<=6; j++) {
@@ -233,13 +239,13 @@ public class TrialTupleTest {
                 }
             }
         }
-        trialMatrix.get(TrialCondition.TARGET_ONLY).get(19).get(3).add(this.trials.get(0));
-        trialMatrix.get(TrialCondition.TARGET_ONLY).get(19).get(4).add(this.trials.get(1));
-        trialMatrix.get(TrialCondition.TARGET_AND_FOIL).get(19).get(5).add(this.trials.get(2));
-        trialMatrix.get(TrialCondition.NO_TARGET).get(19).get(4).add(this.trials.get(3));
+        trialMatrix.get(TrialCondition.TARGET_ONLY).get(2).get(3).add(this.trials.get(0));
+        trialMatrix.get(TrialCondition.TARGET_ONLY).get(2).get(4).add(this.trials.get(1));
+        trialMatrix.get(TrialCondition.TARGET_AND_FOIL).get(2).get(5).add(this.trials.get(2));
+        trialMatrix.get(TrialCondition.NO_TARGET).get(2).get(4).add(this.trials.get(3));
 
         int size = 4;
-        int bandIndex = 19;
+        int bandIndex = 2;
         TrialTuple result = TrialTuple.createTupleForBand(availablePermutations, trialMatrix, size, bandIndex);
         ArrayList<Trial> trialsTest = result.getTrials();
         
