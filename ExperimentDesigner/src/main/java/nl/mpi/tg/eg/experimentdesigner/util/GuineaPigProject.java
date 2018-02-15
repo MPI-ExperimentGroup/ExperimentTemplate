@@ -134,14 +134,13 @@ public class GuineaPigProject {
             //@todo: videos and audio 2
             //@todo: still of video and audio 3 with touch input can be collected during audio 1 2 and 3, touch input does not cause any action, only the remote can move to the next stimulus
             {{{"Test 1", "zoomToBlock1", "room_1"}, {}}, {{"test_1", "adjacency_a"}, {"test_2", "adjacency_b"}, {"filler_1", "filler_1"}}},
-            {{{"Test 2", "zoomToBlock2", "room_2"}, {}},{{"test_3", "adjacency_c"}, {"test_4", "adjacency_d"}, {"filler_2", "filler_2"}}},
-            {{{"Test 3", "zoomToBlock3", "room_3"}, {}},{{"test_5", "adjacency_a"}, {"test_6", "adjacency_b"}, {"filler_3", "filler_3"}}},
-            {{{"Test 4", "zoomToBlock4", "room_4"}, {}},{{"test_7", "adjacency_c"}, {"test_8", "adjacency_d"}, {"filler_4", "filler_4"}}},
-        };
+            {{{"Test 2", "zoomToBlock2", "room_2"}, {}}, {{"test_3", "adjacency_c"}, {"test_4", "adjacency_d"}, {"filler_2", "filler_2"}}},
+            {{{"Test 3", "zoomToBlock3", "room_3"}, {}}, {{"test_5", "adjacency_a"}, {"test_6", "adjacency_b"}, {"filler_3", "filler_3"}}},
+            {{{"Test 4", "zoomToBlock4", "room_4"}, {}}, {{"test_7", "adjacency_c"}, {"test_8", "adjacency_d"}, {"filler_4", "filler_4"}}},};
         String[][] trainingList = new String[][]{
             {"training_1", "training_1"}, {"training_2", "training_2"}, {"training_3", "training_3"}, {"training_4", "training_4"}
         };
-
+        String[] groupTagArray = {"Test_1", "Test_2", "Test_3", "Test_4"};
 //        final WizardGridStimulusScreen fillerStimulusScreen = new WizardGridStimulusScreen("fillerScreen", false, fillerList,
 //                new String[]{
         //                    "list_b",
@@ -170,7 +169,7 @@ public class GuineaPigProject {
 //            testIntroAudio.setStyleName("titleBarButton");
 
             final WizardGridStimulusScreen testStimulusScreen = new WizardGridStimulusScreen(testSubList[0][0][0], false, testSubList[1],
-                    null, 1000, false, null, 0, 0, null);
+                    null, 1000, false, null, 0, 0, null, "allRooms");
             testStimulusScreen.setCodeAudio(true);
             testStimulusScreen.setBackgroundImage(backgroundImage);
             testStimulusScreen.setBackgroundStyle(testSubList[0][0][1]);
@@ -180,6 +179,8 @@ public class GuineaPigProject {
             wizardData.addScreen(testStimulusScreen);
             testStimulusScreen.setBackWizardScreen(menuScreen);
             testStimulusScreen.setNextWizardScreen(textMenuScreen);
+            testStimulusScreen.getWizardScreenData().setStimuliRandomTags(groupTagArray);
+            testStimulusScreen.setConsumedTagGroup("allRooms");
         }
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, false, true, true, completionScreenText2,
                 "Opnieuw beginnen",
