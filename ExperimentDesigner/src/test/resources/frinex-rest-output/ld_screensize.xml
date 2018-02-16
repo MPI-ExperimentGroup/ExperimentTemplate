@@ -47,7 +47,7 @@
     <presenter back="Menu" displayOrder="6" menuLabel="Introduction 1" next="Introduction_2" type="stimulus" self="Introduction_1" title="Introduction 1">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
         <htmlText featureText="&amp;nbsp;"/>
-        <audioButton eventTag="intro_1" src="intro_1" hotKey="ENTER" styleName="titleBarButton" autoPlay="false" poster="intro_1.jpg">
+        <audioButton eventTag="intro_1" src="intro_1" hotKey="ENTER" styleName="titleBarButton" autoPlay="false" poster="audiobutton.jpg">
             <pause msToNext="0">
                 <autoNextPresenter/>
             </pause>
@@ -56,7 +56,7 @@
     <presenter back="Menu" displayOrder="7" menuLabel="Introduction 2" next="Introduction_3" type="stimulus" self="Introduction_2" title="Introduction 2">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
         <htmlText featureText="&amp;nbsp;"/>
-        <audioButton eventTag="intro_2" src="intro_2" hotKey="ENTER" styleName="titleBarButton" autoPlay="false" poster="intro_2.jpg">
+        <audioButton eventTag="intro_2" src="intro_2" hotKey="ENTER" styleName="titleBarButton" autoPlay="false" poster="audiobutton.jpg">
             <pause msToNext="0">
                 <autoNextPresenter/>
             </pause>
@@ -65,13 +65,13 @@
     <presenter back="Menu" displayOrder="8" menuLabel="Introduction 3" next="Training" type="stimulus" self="Introduction_3" title="Introduction 3">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
         <htmlText featureText="&amp;nbsp;"/>
-        <audioButton eventTag="intro_3" src="intro_3" hotKey="ENTER" styleName="titleBarButton" autoPlay="false" poster="intro_3.jpg">
+        <audioButton eventTag="intro_3" src="intro_3" hotKey="ENTER" styleName="titleBarButton" autoPlay="false" poster="audiobutton.jpg">
             <pause msToNext="0">
                 <autoNextPresenter/>
             </pause>
         </audioButton>
     </presenter>
-    <presenter back="Menu" displayOrder="9" menuLabel="Training" next="TestMenu" type="stimulus" self="Training" title="Training">
+    <presenter back="Menu" displayOrder="9" menuLabel="Training" next="Test_1" type="stimulus" self="Training" title="Training">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToGarden">
             <loadStimulus eventTag="Training" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                 <hasMoreStimulus>
@@ -99,7 +99,7 @@
                                         <column styleName="">
                                             <actionButton featureText="Menu" eventTag="Menu" hotKey="R1_MA_BACK" styleName="">
                                                 <touchInputReportSubmit/>
-                                                <autoNextPresenter target="TestMenu"/>
+                                                <autoNextPresenter target="Test_1"/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
@@ -137,14 +137,13 @@
             </loadStimulus>
         </backgroundImage>
     </presenter>
-    <presenter back="Menu" displayOrder="10" menuLabel="TestMenu" next="Attic" type="menu" self="TestMenu" title="TestMenu">
+    <presenter back="Menu" displayOrder="10" menuLabel="TestMenu" type="menu" self="TestMenu" title="TestMenu">
         <menuItem featureText="Test 1" target="Test_1"/>
         <menuItem featureText="Test 2" target="Test_2"/>
         <menuItem featureText="Test 3" target="Test_3"/>
         <menuItem featureText="Test 4" target="Test_4"/>
-        <activateRandomItem/>
     </presenter>
-    <presenter back="Menu" displayOrder="11" menuLabel="Test 1" next="TestMenu" type="stimulus" self="Test_1" title="Test 1">
+    <presenter back="Menu" displayOrder="11" menuLabel="Test 1" next="Test_2" type="stimulus" self="Test_1" title="Test 1">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock1">
             <audioButton eventTag="room_1" src="room_1" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
@@ -174,7 +173,7 @@
                                                 <column styleName="">
                                                     <actionButton featureText="Menu" eventTag="Menu" hotKey="R1_MA_BACK" styleName="">
                                                         <touchInputReportSubmit/>
-                                                        <autoNextPresenter target="TestMenu"/>
+                                                        <autoNextPresenter target="Test_2"/>
                                                     </actionButton>
                                                 </column>
                                                 <column styleName="">
@@ -219,7 +218,7 @@
             </audioButton>
         </backgroundImage>
     </presenter>
-    <presenter back="Menu" displayOrder="12" menuLabel="Test 2" next="TestMenu" type="stimulus" self="Test_2" title="Test 2">
+    <presenter back="Menu" displayOrder="12" menuLabel="Test 2" next="Test_3" type="stimulus" self="Test_2" title="Test 2">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock2">
             <audioButton eventTag="room_2" src="room_2" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
@@ -249,7 +248,7 @@
                                                 <column styleName="">
                                                     <actionButton featureText="Menu" eventTag="Menu" hotKey="R1_MA_BACK" styleName="">
                                                         <touchInputReportSubmit/>
-                                                        <autoNextPresenter target="TestMenu"/>
+                                                        <autoNextPresenter target="Test_3"/>
                                                     </actionButton>
                                                 </column>
                                                 <column styleName="">
@@ -294,7 +293,7 @@
             </audioButton>
         </backgroundImage>
     </presenter>
-    <presenter back="Menu" displayOrder="13" menuLabel="Test 3" next="TestMenu" type="stimulus" self="Test_3" title="Test 3">
+    <presenter back="Menu" displayOrder="13" menuLabel="Test 3" next="Test_4" type="stimulus" self="Test_3" title="Test 3">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock3">
             <audioButton eventTag="room_3" src="room_3" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
@@ -324,7 +323,7 @@
                                                 <column styleName="">
                                                     <actionButton featureText="Menu" eventTag="Menu" hotKey="R1_MA_BACK" styleName="">
                                                         <touchInputReportSubmit/>
-                                                        <autoNextPresenter target="TestMenu"/>
+                                                        <autoNextPresenter target="Test_4"/>
                                                     </actionButton>
                                                 </column>
                                                 <column styleName="">
@@ -369,7 +368,7 @@
             </audioButton>
         </backgroundImage>
     </presenter>
-    <presenter back="Menu" displayOrder="14" menuLabel="Test 4" next="TestMenu" type="stimulus" self="Test_4" title="Test 4">
+    <presenter back="Menu" displayOrder="14" menuLabel="Test 4" next="Attic" type="stimulus" self="Test_4" title="Test 4">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock4">
             <audioButton eventTag="room_4" src="room_4" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
@@ -399,7 +398,7 @@
                                                 <column styleName="">
                                                     <actionButton featureText="Menu" eventTag="Menu" hotKey="R1_MA_BACK" styleName="">
                                                         <touchInputReportSubmit/>
-                                                        <autoNextPresenter target="TestMenu"/>
+                                                        <autoNextPresenter target="Attic"/>
                                                     </actionButton>
                                                 </column>
                                                 <column styleName="">
@@ -456,10 +455,17 @@
     <presenter back="Menu" displayOrder="16" menuLabel="Attic" next="completion" type="stimulus" self="Attic" title="Attic">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName="zoomToAttic"/>
         <htmlText featureText="&amp;nbsp;"/>
-        <audioButton eventTag="room_5" src="room_5" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
-            <pause msToNext="2000">
-                <autoNextPresenter/>
-            </pause>
+        <audioButton eventTag="room_5" src="room_5" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="audiobutton.jpg">
+            <backgroundImage msToNext="0" src="Playroom.jpg" styleName="zoomToPlayroom"/>
+            <table styleName="titleBarButton">
+                <row>
+                    <column styleName="">
+                        <actionButton featureText="continue button" hotKey="ENTER">
+                            <autoNextPresenter/>
+                        </actionButton>
+                    </column>
+                </row>
+            </table>
         </audioButton>
     </presenter>
     <presenter back="Menu" displayOrder="17" menuLabel="Over" type="debug" self="about" title="Over">
