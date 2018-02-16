@@ -25,7 +25,7 @@
     </presenter>
     <presenter displayOrder="4" menuLabel="AudioTest" next="Pretest_Screen" type="stimulus" self="AudioTest" title="AudioTest">
         <htmlText featureText="Cette expérience en ligne est une expérience audio. Pour cette raison, nous vous demandons de tester les réglages sonores de votre ordinateur en cliquant sur le gros bouton ci-dessous.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Vous n'entendez aucun son?&lt;/b&gt; Dans ce cas, il y a quelque chose qui ne va pas avec les réglages sonores de votre ordinateur. Personnalisez les réglages et essayez de nouveau.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Entendez-vous un son?&lt;/b&gt; Dans ce cas, vos réglages sonores sont bons. Ajustez le volume de l'ordinateur à un niveau confortable.&lt;br/&gt;&lt;br/&gt;----------------------------------------------------------------&lt;br/&gt;ATTENTION: Faites UNIQUEMENT cette expérience si vous vous trouvez dans un environment calme sans aucun bruit de fond. C'est très important!&lt;br/&gt;----------------------------------------------------------------&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;[Cliquez sur SUIVANT si vos réglages sonores sont bons...]"/>
-        <audioButton eventTag="bienvenue" src="bienvenue" hotKey="" autoPlay="false" poster="bienvenue.jpg">
+        <audioButton eventTag="bienvenue" src="bienvenue" hotKey="" autoPlay="false" poster="audiobutton.jpg">
             <actionButton featureText="suivant [ barre d'espacement ]">
                 <autoNextPresenter/>
             </actionButton>
