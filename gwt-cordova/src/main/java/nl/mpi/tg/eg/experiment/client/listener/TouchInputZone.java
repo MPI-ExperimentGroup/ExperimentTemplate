@@ -25,6 +25,8 @@ public interface TouchInputZone {
 
     public String getEventTag();
 
+    public String getGroupName();
+
     public boolean intersects(int xPos, int yPos);
 
     public void triggerEvent();
