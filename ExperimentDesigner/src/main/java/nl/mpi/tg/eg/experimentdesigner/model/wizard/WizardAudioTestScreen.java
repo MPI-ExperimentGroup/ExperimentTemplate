@@ -204,11 +204,14 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
             presenterFeature = new PresenterFeature(FeatureType.audioButton, null);
             presenterFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenMediaPath());
             presenterFeature.addFeatureAttributes(FeatureAttribute.src, storedWizardScreenData.getScreenMediaPath());
-            presenterFeature.addFeatureAttributes(FeatureAttribute.poster, (getImageName(storedWizardScreenData) != null) ? getImageName(storedWizardScreenData) : storedWizardScreenData.getScreenMediaPath() + ".jpg");
+            presenterFeature.addFeatureAttributes(FeatureAttribute.poster, "audiobutton.jpg");
             presenterFeature.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(getAutoPlay(storedWizardScreenData)));
             presenterFeature.addFeatureAttributes(FeatureAttribute.hotKey, getAudioHotKey(storedWizardScreenData));
             if (getButtonStyle(storedWizardScreenData) != null) {
                 presenterFeature.addFeatureAttributes(FeatureAttribute.styleName, getButtonStyle(storedWizardScreenData));
+            }
+            if (getImageName(storedWizardScreenData) != null) {
+                presenterFeature.addFeature(FeatureType.backgroundImage, null, "0", getImageName(storedWizardScreenData), getImageStyle(storedWizardScreenData));
             }
         } else {
             presenterFeature = new PresenterFeature(FeatureType.backgroundImage, null);
