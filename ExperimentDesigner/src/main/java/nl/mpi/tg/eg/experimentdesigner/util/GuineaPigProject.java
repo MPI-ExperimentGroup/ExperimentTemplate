@@ -27,6 +27,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardExistingUserCheckScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardGridStimulusScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSelectUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 
@@ -153,8 +154,9 @@ public class GuineaPigProject {
         trainingStimulusScreen.setBackgroundStyle("zoomToGarden");
         wizardData.addScreen(trainingStimulusScreen);
         final WizardMenuScreen textMenuScreen = new WizardMenuScreen("TestMenu", "TestMenu", "TestMenu");
-        textMenuScreen.setJumpToRandomScreen(true);
+//        textMenuScreen.setJumpToRandomScreen(true);
         wizardData.addScreen(textMenuScreen);
+        WizardScreen backScreen = trainingStimulusScreen;
         for (String[][][] testSubList : testList) {
 //            WizardAudioTestScreen testIntroAudio = new WizardAudioTestScreen(testSubList[0][0] + "a", "&nbsp;", "continue button", testSubList[0][2]);
 //            wizardData.addScreen(testIntroAudio);
@@ -176,11 +178,13 @@ public class GuineaPigProject {
             testStimulusScreen.setIntroAudio(testSubList[0][0][2]);
             testStimulusScreen.setIntroAudioDelay(2000);
             textMenuScreen.addTargetScreen(testStimulusScreen);
+            backScreen.setNextWizardScreenData(testStimulusScreen.getWizardScreenData());
             wizardData.addScreen(testStimulusScreen);
             testStimulusScreen.setBackWizardScreen(menuScreen);
             testStimulusScreen.setNextWizardScreen(textMenuScreen);
             testStimulusScreen.getWizardScreenData().setStimuliRandomTags(groupTagArray);
             testStimulusScreen.setConsumedTagGroup("allRooms");
+            backScreen = testStimulusScreen;
         }
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, false, true, true, completionScreenText2,
                 "Opnieuw beginnen",
@@ -196,11 +200,12 @@ public class GuineaPigProject {
         atticScreen.setBackgroundImage(backgroundImage);
         atticScreen.setBackgroundStyle("zoomToAttic");
         atticScreen.setAutoPlay(true);
-        atticScreen.setAutoNext(true);
+        atticScreen.setAutoNext(false);
         atticScreen.setAutoNextDelay(2000);
         atticScreen.setAudioHotKey("R1_MA_A");
-        atticScreen.setImageName("intro_1.jpg");
+        atticScreen.setImageName("Playroom.jpg");
         atticScreen.setNextHotKey("ENTER");
+        atticScreen.setImageStyle("zoomToPlayroom");
         atticScreen.setButtonStyle("titleBarButton");
         atticScreen.setBackWizardScreen(menuScreen);
         atticScreen.setNextWizardScreen(completionScreen);
@@ -219,14 +224,14 @@ public class GuineaPigProject {
         introductionAudio2.setNextWizardScreen(introductionAudio3);
         introductionAudio3.setNextWizardScreen(trainingStimulusScreen);
 //        fillerStimulusScreen.setNextWizardScreen(trainingStimulusScreen);
-        trainingStimulusScreen.setNextWizardScreen(textMenuScreen);
+//        trainingStimulusScreen.setNextWizardScreen(textMenuScreen);
         introductionAudio1.setBackWizardScreen(menuScreen);
         introductionAudio2.setBackWizardScreen(menuScreen);
         introductionAudio3.setBackWizardScreen(menuScreen);
 //        fillerStimulusScreen.setBackWizardScreen(introductionAudio3);
         trainingStimulusScreen.setBackWizardScreen(menuScreen);
         textMenuScreen.setBackWizardScreen(menuScreen);
-        textMenuScreen.setNextWizardScreen(atticScreen);
+        backScreen.setNextWizardScreenData(atticScreen.getWizardScreenData());
 
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
         wizardAboutScreen.setBackWizardScreen(menuScreen);
