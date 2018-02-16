@@ -32,7 +32,7 @@
     </presenter>
     <presenter displayOrder="4" menuLabel="AudioTest" next="StimulusScreenP" type="stimulus" self="AudioTest" title="AudioTest">
         <htmlText featureText="Voordat we met het echte experiment beginnen, willen we je vragen even te testen of je geluidsinstellingen goed zijn voor het experiment. Druk op de onderstaande knop om een kort voorbeeldfragment te horen. De echte fragmenten variëren in sterkte, maar het voorbeeld is ongeveer net zo zacht als het zachtste fragment. Het is belangrijk dat je dit goed kunt verstaan. Als het te zacht klinkt (of te hard), probeer dan de het geluidsniveau op je computer aan te passen. Je kunt net zo vaak op de knop drukken tot het goed te verstaan is.&lt;br/&gt; &lt;br/&gt;Daarnaast willen we je ook vragen te testen of dit fragment (vooral) in je linkeroor te horen is. Zo niet, kun je dan je koptelefoon (of luidsprekers) omdraaien?&lt;br/&gt; &lt;br/&gt;Als de geluidssterkte goed is en je het geluid links hoort, kun je op de knop &quot;Het geluid is OK&quot; drukken om te beginnen met het experiment. Denk eraan om de context steeds goed op je in te laten werken voordat je verder gaat naar het geluidsfragment."/>
-        <audioButton eventTag="static/testwav/test_wav" src="static/testwav/test_wav" hotKey="" autoPlay="false" poster="static/testwav/test_wav.jpg">
+        <audioButton eventTag="static/testwav/test_wav" src="static/testwav/test_wav" hotKey="" autoPlay="false" poster="audiobutton.jpg">
             <actionButton featureText="Het geluid is OK">
                 <autoNextPresenter/>
             </actionButton>
