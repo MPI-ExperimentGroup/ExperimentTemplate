@@ -19,7 +19,7 @@
     </presenter>
     <presenter displayOrder="3" menuLabel="AudioTest" next="InformationScreen1" type="stimulus" self="AudioTest" title="AudioTest">
         <htmlText featureText="Dit online experiment is een luisterexperiment. Daarom vragen we je nu de geluidsinstellingen van je computersysteem te testen door op de grote ronde knop hieronder te klikken.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Hoor je geen geluid?&lt;/b&gt; Dan is er iets mis met je huidige geluidsinstellingen. Pas deze zelf aan en probeer het nogmaals.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Hoor je een geluid?&lt;/b&gt; Dan staan je geluidsinstellingen goed ingesteld. Stel zelf het volume van je computersysteem in op een comfortabel niveau.&lt;br/&gt;&lt;br/&gt;----------------------------------------------------------------&lt;br/&gt;LET OP: Doe dit experiment ALLEEN als je in een rustige omgeving zit zonder achtergrondgeluid. Dit is heel belangrijk!&lt;br/&gt;----------------------------------------------------------------&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;[Druk pas op VOLGENDE als de geluidsinstellingen goed zijn...]"/>
-        <audioButton eventTag="welkom" src="welkom" hotKey="" autoPlay="false" poster="welkom.jpg">
+        <audioButton eventTag="welkom" src="welkom" hotKey="" autoPlay="false" poster="audiobutton.jpg">
             <actionButton featureText="volgende [ spatiebalk ]">
                 <autoNextPresenter/>
             </actionButton>
