@@ -1071,7 +1071,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    public void touchInputStimulusButton(final PresenterEventListner presenterListerner, final String eventTag, final String styleName, final String imagePath) {
+    public void touchInputStimulusButton(final PresenterEventListner presenterListerner, final String eventTag, final String styleName, final String imagePath, final String buttonGroup) {
         final StimulusButton buttonItem;
         if (imagePath == null || imagePath.isEmpty()) {
             buttonItem = ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName);
@@ -1085,6 +1085,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             @Override
             public String getEventTag() {
                 return eventTag;
+            }
+
+            @Override
+            public String getGroupName() {
+                return buttonGroup;
             }
 
             @Override
