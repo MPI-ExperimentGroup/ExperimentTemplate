@@ -44,7 +44,9 @@ import com.google.gwt.event.dom.client.TouchStartHandler;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.Timer;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 
 /**
@@ -96,6 +98,10 @@ public abstract class TouchInputCapture implements Event.NativePreviewHandler, M
     }
 
     private void triggerZones(final List<TouchInputZone> triggeredZones) {
+        final Set<String> triggeredZoneGroups = new HashSet<String>();
+        for (TouchInputZone zone : triggeredZones) {
+            triggeredZoneGroups.add(zone.getGroupName());
+        }
         if (triggeredZones.isEmpty()) {
             for (TouchInputZone zone : touchZones) {
                 zone.clearEvent();
@@ -104,13 +110,11 @@ public abstract class TouchInputCapture implements Event.NativePreviewHandler, M
             endOfTouchEventListner.postLoadTimerFired();
         } else {
             for (TouchInputZone zone : touchZones) {
-                // todo: renable this separation between zone activation and implement <touchIntersectionStart></touchIntersectionStart> and <touchIntersectionEnd></touchIntersectionEnd> or an equivalent
-//            if (triggeredZones.contains(zone)) {
-                zone.triggerEvent();
-//                break;
-//            } else {
-//                zone.clearEvent();
-//            }
+                if (triggeredZoneGroups.contains(zone.getGroupName())) {
+                    zone.triggerEvent();
+                } else {
+                    zone.clearEvent();
+                }
             }
             if (msAfterEndOfTouchToNext > 0) {
                 endOfTouchTimer.schedule(msAfterEndOfTouchToNext);
