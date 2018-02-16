@@ -27,5 +27,5 @@ for filePath in *.jpg ; do
 # by changing the suffix of the original, it will not be included in the final app, which is needed to keep the app small
         echo $filePath
         mv -n $filePath $filePath-original
-        convert $filePath-original -resize 640x640\> $filePath
+        convert $filePath-original -resize 700x700\> $filePath
 done
