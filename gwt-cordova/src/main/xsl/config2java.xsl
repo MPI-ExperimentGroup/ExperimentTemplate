@@ -407,6 +407,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(local-name() eq 'touchInputStimulusButton') then concat(', &quot;', @eventTag, '&quot;') else ''" />
         <xsl:value-of select="if(local-name() eq 'targetFooterButton' or local-name() eq 'actionFooterButton') then '' else if(@styleName) then concat(', &quot;', @styleName, '&quot;') else ', null'" />
         <xsl:value-of select="if(local-name() eq 'touchInputStimulusButton') then if(@src) then concat(', &quot;', @src, '&quot;') else ', null' else ''" />
+        <xsl:value-of select="if(@listenerId) then concat(', &quot;',@listenerId, '&quot;') else ''" />
         <xsl:text>);
         </xsl:text>
     </xsl:template>
