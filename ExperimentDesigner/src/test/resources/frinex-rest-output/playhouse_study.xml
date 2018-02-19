@@ -71,7 +71,7 @@
                         </triggerListener>
                         <disableStimulusButtons/>
                         <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="borderedVideoLeft">
-                            <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="" styleName="leftOverlayButton">
+                            <touchInputStimulusButton featureText="Left Overlay Button" listenerId="leftButtonGroup" eventTag="Left" src="" styleName="leftOverlayButton">
                                 <disableStimulusButtons/>
                                 <disablePauseTimers/>
                                 <pause msToNext="1000">
@@ -87,7 +87,7 @@
                             <trigger listenerId="imageLoadedAction"/>
                         </stimulusCodeImage>
                         <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="borderedVideoRight">
-                            <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="" styleName="rightOverlayButton">
+                            <touchInputStimulusButton featureText="Right Overlay Button" listenerId="rightButtonGroup" eventTag="Right" src="" styleName="rightOverlayButton">
                                 <disableStimulusButtons/>
                                 <disablePauseTimers/>
                                 <pause msToNext="1000">
@@ -105,14 +105,26 @@
                         <touchInputCaptureStart msToNext="-1" showControls="false"/>
                         <table styleName="titleBarButton">
                             <row>
-                                <column>
-                                    <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_A">
+                                <column styleName="">
+                                    <actionButton featureText="Menu" eventTag="Menu" hotKey="R1_MA_BACK" styleName="">
+                                        <touchInputReportSubmit/>
+                                        <autoNextPresenter target="Matching1"/>
+                                    </actionButton>
+                                </column>
+                                <column styleName="">
+                                    <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT" styleName="">
+                                        <touchInputReportSubmit/>
+                                        <prevStimulus repeatIncorrect="false"/>
+                                    </actionButton>
+                                </column>
+                                <column styleName="">
+                                    <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN" styleName="">
                                         <touchInputReportSubmit/>
                                         <showStimulus/>
                                     </actionButton>
                                 </column>
-                                <column>
-                                    <actionButton featureText="Next" eventTag="Next" hotKey="ENTER">
+                                <column styleName="">
+                                    <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT" styleName="">
                                         <touchInputReportSubmit/>
                                         <nextStimulus repeatIncorrect="false"/>
                                     </actionButton>
@@ -164,7 +176,7 @@
                             </triggerListener>
                             <disableStimulusButtons/>
                             <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="borderedVideoLeft">
-                                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="" styleName="leftOverlayButton">
+                                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="leftButtonGroup" eventTag="Left" src="" styleName="leftOverlayButton">
                                     <disableStimulusButtons/>
                                     <disablePauseTimers/>
                                     <pause msToNext="2000">
@@ -179,7 +191,7 @@
                                 <trigger listenerId="imageLoadedAction"/>
                             </stimulusCodeImage>
                             <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="borderedVideoRight">
-                                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="" styleName="rightOverlayButton">
+                                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="rightButtonGroup" eventTag="Right" src="" styleName="rightOverlayButton">
                                     <disableStimulusButtons/>
                                     <disablePauseTimers/>
                                     <pause msToNext="2000">
@@ -196,14 +208,26 @@
                             <touchInputCaptureStart msToNext="-1" showControls="false"/>
                             <table styleName="titleBarButton">
                                 <row>
-                                    <column>
-                                        <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_A">
+                                    <column styleName="">
+                                        <actionButton featureText="Menu" eventTag="Menu" hotKey="R1_MA_BACK" styleName="">
+                                            <touchInputReportSubmit/>
+                                            <autoNextPresenter target="Matching2"/>
+                                        </actionButton>
+                                    </column>
+                                    <column styleName="">
+                                        <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT" styleName="">
+                                            <touchInputReportSubmit/>
+                                            <prevStimulus repeatIncorrect="false"/>
+                                        </actionButton>
+                                    </column>
+                                    <column styleName="">
+                                        <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN" styleName="">
                                             <touchInputReportSubmit/>
                                             <showStimulus/>
                                         </actionButton>
                                     </column>
-                                    <column>
-                                        <actionButton featureText="Next" eventTag="Next" hotKey="ENTER">
+                                    <column styleName="">
+                                        <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT" styleName="">
                                             <touchInputReportSubmit/>
                                             <nextStimulus repeatIncorrect="false"/>
                                         </actionButton>
@@ -256,7 +280,7 @@
                             </triggerListener>
                             <disableStimulusButtons/>
                             <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="borderedVideoLeft">
-                                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="" styleName="leftOverlayButton">
+                                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="leftButtonGroup" eventTag="Left" src="" styleName="leftOverlayButton">
                                     <disableStimulusButtons/>
                                     <disablePauseTimers/>
                                     <pause msToNext="2000">
@@ -271,7 +295,7 @@
                                 <trigger listenerId="imageLoadedAction"/>
                             </stimulusCodeImage>
                             <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="borderedVideoRight">
-                                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="" styleName="rightOverlayButton">
+                                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="rightButtonGroup" eventTag="Right" src="" styleName="rightOverlayButton">
                                     <disableStimulusButtons/>
                                     <disablePauseTimers/>
                                     <pause msToNext="2000">
@@ -288,14 +312,26 @@
                             <touchInputCaptureStart msToNext="-1" showControls="false"/>
                             <table styleName="titleBarButton">
                                 <row>
-                                    <column>
-                                        <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_A">
+                                    <column styleName="">
+                                        <actionButton featureText="Menu" eventTag="Menu" hotKey="R1_MA_BACK" styleName="">
+                                            <touchInputReportSubmit/>
+                                            <autoNextPresenter target="Test3"/>
+                                        </actionButton>
+                                    </column>
+                                    <column styleName="">
+                                        <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT" styleName="">
+                                            <touchInputReportSubmit/>
+                                            <prevStimulus repeatIncorrect="false"/>
+                                        </actionButton>
+                                    </column>
+                                    <column styleName="">
+                                        <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN" styleName="">
                                             <touchInputReportSubmit/>
                                             <showStimulus/>
                                         </actionButton>
                                     </column>
-                                    <column>
-                                        <actionButton featureText="Next" eventTag="Next" hotKey="ENTER">
+                                    <column styleName="">
+                                        <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT" styleName="">
                                             <touchInputReportSubmit/>
                                             <nextStimulus repeatIncorrect="false"/>
                                         </actionButton>
@@ -344,7 +380,7 @@
                             </triggerListener>
                             <disableStimulusButtons/>
                             <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="borderedVideoLeft">
-                                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="" styleName="leftOverlayButton">
+                                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="leftButtonGroup" eventTag="Left" src="" styleName="leftOverlayButton">
                                     <disableStimulusButtons/>
                                     <disablePauseTimers/>
                                     <pause msToNext="2000">
@@ -359,7 +395,7 @@
                                 <trigger listenerId="imageLoadedAction"/>
                             </stimulusCodeImage>
                             <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="borderedVideoRight">
-                                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="" styleName="rightOverlayButton">
+                                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="rightButtonGroup" eventTag="Right" src="" styleName="rightOverlayButton">
                                     <disableStimulusButtons/>
                                     <disablePauseTimers/>
                                     <pause msToNext="2000">
@@ -376,14 +412,26 @@
                             <touchInputCaptureStart msToNext="-1" showControls="false"/>
                             <table styleName="titleBarButton">
                                 <row>
-                                    <column>
-                                        <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_A">
+                                    <column styleName="">
+                                        <actionButton featureText="Menu" eventTag="Menu" hotKey="R1_MA_BACK" styleName="">
+                                            <touchInputReportSubmit/>
+                                            <autoNextPresenter target="Test4"/>
+                                        </actionButton>
+                                    </column>
+                                    <column styleName="">
+                                        <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT" styleName="">
+                                            <touchInputReportSubmit/>
+                                            <prevStimulus repeatIncorrect="false"/>
+                                        </actionButton>
+                                    </column>
+                                    <column styleName="">
+                                        <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN" styleName="">
                                             <touchInputReportSubmit/>
                                             <showStimulus/>
                                         </actionButton>
                                     </column>
-                                    <column>
-                                        <actionButton featureText="Next" eventTag="Next" hotKey="ENTER">
+                                    <column styleName="">
+                                        <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT" styleName="">
                                             <touchInputReportSubmit/>
                                             <nextStimulus repeatIncorrect="false"/>
                                         </actionButton>
@@ -432,7 +480,7 @@
                             </triggerListener>
                             <disableStimulusButtons/>
                             <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="borderedVideoLeft">
-                                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="" styleName="leftOverlayButton">
+                                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="leftButtonGroup" eventTag="Left" src="" styleName="leftOverlayButton">
                                     <disableStimulusButtons/>
                                     <disablePauseTimers/>
                                     <pause msToNext="2000">
@@ -447,7 +495,7 @@
                                 <trigger listenerId="imageLoadedAction"/>
                             </stimulusCodeImage>
                             <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="borderedVideoRight">
-                                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="" styleName="rightOverlayButton">
+                                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="rightButtonGroup" eventTag="Right" src="" styleName="rightOverlayButton">
                                     <disableStimulusButtons/>
                                     <disablePauseTimers/>
                                     <pause msToNext="2000">
@@ -464,14 +512,26 @@
                             <touchInputCaptureStart msToNext="-1" showControls="false"/>
                             <table styleName="titleBarButton">
                                 <row>
-                                    <column>
-                                        <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_A">
+                                    <column styleName="">
+                                        <actionButton featureText="Menu" eventTag="Menu" hotKey="R1_MA_BACK" styleName="">
+                                            <touchInputReportSubmit/>
+                                            <autoNextPresenter target="Attic"/>
+                                        </actionButton>
+                                    </column>
+                                    <column styleName="">
+                                        <actionButton featureText="Prev" eventTag="Prev" hotKey="R1_MA_LEFT" styleName="">
+                                            <touchInputReportSubmit/>
+                                            <prevStimulus repeatIncorrect="false"/>
+                                        </actionButton>
+                                    </column>
+                                    <column styleName="">
+                                        <actionButton featureText="Repeat" eventTag="Repeat" hotKey="R1_MA_DOWN" styleName="">
                                             <touchInputReportSubmit/>
                                             <showStimulus/>
                                         </actionButton>
                                     </column>
-                                    <column>
-                                        <actionButton featureText="Next" eventTag="Next" hotKey="ENTER">
+                                    <column styleName="">
+                                        <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT" styleName="">
                                             <touchInputReportSubmit/>
                                             <nextStimulus repeatIncorrect="false"/>
                                         </actionButton>
