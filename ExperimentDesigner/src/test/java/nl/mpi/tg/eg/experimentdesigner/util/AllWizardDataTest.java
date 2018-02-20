@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experimentdesigner.util;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.net.URI;
@@ -62,7 +63,8 @@ public class AllWizardDataTest {
         StringWriter stringWriter = new StringWriter();
         final String testOutputName = experiment.getAppNameInternal() + "-testoutput.xml";
 //        jaxbMarshaller.marshal(result, System.out);
-        jaxbMarshaller.marshal(experiment, new File(new File(testXmlUri).getParentFile(), testOutputName));
+        FileWriter fileWriter = new FileWriter(new File(new File(testXmlUri).getParentFile(), testOutputName));
+        jaxbMarshaller.marshal(experiment, fileWriter);
         jaxbMarshaller.marshal(experiment, stringWriter);
         assertEquals(testOutputName, expResult, stringWriter.toString());
     }
@@ -86,7 +88,7 @@ public class AllWizardDataTest {
         testGetWizardData(new ShawiFieldKit().getShawiExperiment());
         testGetWizardData(new Sara01().getExperiment());
         testGetWizardData(new FactOrFiction().getExperiment());
-        testGetWizardData(defaultTranslations.applyTranslations(new SynQuiz2().getExperiment()));
+//        testGetWizardData(defaultTranslations.applyTranslations(new SynQuiz2().getExperiment()));
         testGetWizardData(new RdExperiment02().getExperiment());
         testGetWizardData(new NblExperiment01().getExperiment());
         testGetWizardData(new HRExperiment01().getExperiment());
@@ -107,6 +109,6 @@ public class AllWizardDataTest {
         testGetWizardData(new PlayhouseStudy().getExperiment());
         testGetWizardData(new Joost01().getExperiment());
         testGetWizardData(new Joost02().getExperiment());
-//        testGetWizardData(new PlaybackPreferenceMeasureExperiment().getExperiment());
+        testGetWizardData(new PlaybackPreferenceMeasureExperiment().getExperiment());
     }
 }
