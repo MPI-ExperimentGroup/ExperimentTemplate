@@ -59,7 +59,7 @@ public class WizardVideoTimelineScreen extends AbstractWizardScreen {
     }
 
     @Override
-    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+    public PresenterScreen[] populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.timeline);
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setNextPresenter(null);
@@ -74,6 +74,6 @@ public class WizardVideoTimelineScreen extends AbstractWizardScreen {
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(presenterFeature1);
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
         experiment.appendUniqueStimuli(storedWizardScreenData.getStimuli());
-        return storedWizardScreenData.getPresenterScreen();
+        return new PresenterScreen[]{storedWizardScreenData.getPresenterScreen()};
     }
 }

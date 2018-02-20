@@ -94,7 +94,7 @@ public class WizardSynQuizIntroductionScreen extends AbstractWizardScreen {
     }
 
     @Override
-    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+    public PresenterScreen[] populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.text);
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         final PresenterScreen presenterScreen = storedWizardScreenData.getPresenterScreen();
@@ -124,6 +124,6 @@ public class WizardSynQuizIntroductionScreen extends AbstractWizardScreen {
         presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(4)));
         presenterFeatureList.add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(5)));
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
-        return storedWizardScreenData.getPresenterScreen();
+        return new PresenterScreen[]{storedWizardScreenData.getPresenterScreen()};
     }
 }

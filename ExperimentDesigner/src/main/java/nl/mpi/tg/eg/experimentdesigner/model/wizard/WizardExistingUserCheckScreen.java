@@ -63,7 +63,7 @@ public class WizardExistingUserCheckScreen extends AbstractWizardScreen {
     }
 
     @Override
-    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+    public PresenterScreen[] populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.metadata);
         final PresenterFeature userCheckFeature = new PresenterFeature(FeatureType.existingUserCheck, null);
@@ -86,6 +86,6 @@ public class WizardExistingUserCheckScreen extends AbstractWizardScreen {
         multipleUsersFeature.getPresenterFeatureList().add(selectUserFeature);
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(userCheckFeature);
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
-        return storedWizardScreenData.getPresenterScreen();
+        return new PresenterScreen[]{storedWizardScreenData.getPresenterScreen()};
     }
 }

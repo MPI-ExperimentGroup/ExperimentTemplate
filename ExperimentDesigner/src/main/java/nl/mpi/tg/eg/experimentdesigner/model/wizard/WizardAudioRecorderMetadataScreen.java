@@ -73,7 +73,7 @@ public class WizardAudioRecorderMetadataScreen extends AbstractWizardScreen {
     }
 
     @Override
-    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+    public PresenterScreen[] populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.stimulus);
         //    Metadata is collected in the spoken form (audio recording) with screen prompts for each item in metadataStrings:
@@ -127,6 +127,6 @@ public class WizardAudioRecorderMetadataScreen extends AbstractWizardScreen {
 //        endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
-        return storedWizardScreenData.getPresenterScreen();
+        return new PresenterScreen[]{storedWizardScreenData.getPresenterScreen()};
     }
 }

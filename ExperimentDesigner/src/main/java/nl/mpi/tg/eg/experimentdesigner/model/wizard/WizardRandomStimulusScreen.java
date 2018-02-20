@@ -257,7 +257,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
     private static final String BASE_FILE_REGEX = "\\.[a-zA-Z34]+$";
 
     @Override
-    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+    public PresenterScreen[] populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         experiment.appendUniqueStimuli(storedWizardScreenData.getStimuli());
 //        final PresenterScreen presenterScreen = new PresenterScreen((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : getScreenTitle(), getScreenTitle(), backPresenter, screenName, null, PresenterType.stimulus, displayOrder);
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
@@ -373,6 +373,6 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
-        return storedWizardScreenData.getPresenterScreen();
+        return new PresenterScreen[]{storedWizardScreenData.getPresenterScreen()};
     }
 }

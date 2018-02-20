@@ -342,7 +342,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
     }
 
     @Override
-    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+    public PresenterScreen[] populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         experiment.appendUniqueStimuli(storedWizardScreenData.getStimuli());
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.stimulus);
@@ -769,7 +769,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         }
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
-        return storedWizardScreenData.getPresenterScreen();
+        return new PresenterScreen[]{storedWizardScreenData.getPresenterScreen()};
     }
 
     protected PresenterFeature addStimuliGrid(String eventTagString, final List<PresenterFeature> responseCorrectFeatures, final List<PresenterFeature> responseIncorrectFeatures) {

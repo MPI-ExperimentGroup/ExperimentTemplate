@@ -184,7 +184,7 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
 //        return namedFields.get(fieldName);
 //    }
     @Override
-    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, final Experiment experiment, final boolean obfuscateScreenNames, final long displayOrder) {
+    public PresenterScreen[] populatePresenterScreen(WizardScreenData storedWizardScreenData, final Experiment experiment, final boolean obfuscateScreenNames, final long displayOrder) {
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
 //        populatePresenterScreen(experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.stimulus);
@@ -248,6 +248,6 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
             }
             actionButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
         }
-        return storedWizardScreenData.getPresenterScreen();
+        return new PresenterScreen[]{storedWizardScreenData.getPresenterScreen()};
     }
 }

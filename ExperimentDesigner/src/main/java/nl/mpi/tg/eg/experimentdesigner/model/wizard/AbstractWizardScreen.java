@@ -104,7 +104,7 @@ public abstract class AbstractWizardScreen implements WizardScreen {
     }
 
     @Override
-    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, final Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+    public PresenterScreen[] populatePresenterScreen(WizardScreenData storedWizardScreenData, final Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         storedWizardScreenData.getPresenterScreen().setTitle((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : storedWizardScreenData.getScreenTitle());
         storedWizardScreenData.getPresenterScreen().setMenuLabel((storedWizardScreenData.getMenuLabel() != null) ? storedWizardScreenData.getMenuLabel() : storedWizardScreenData.getScreenTitle());
         final String currentTagString = (storedWizardScreenData.getScreenTag() != null) ? storedWizardScreenData.getScreenTag() : storedWizardScreenData.getScreenTitle();
@@ -116,6 +116,6 @@ public abstract class AbstractWizardScreen implements WizardScreen {
             storedWizardScreenData.getPresenterScreen().setNextPresenter(storedWizardScreenData.getNextWizardScreenData().getPresenterScreen());
         }
         storedWizardScreenData.getPresenterScreen().setDisplayOrder(displayOrder);
-        return storedWizardScreenData.getPresenterScreen();
+        return new PresenterScreen[]{storedWizardScreenData.getPresenterScreen()};
     }
 }

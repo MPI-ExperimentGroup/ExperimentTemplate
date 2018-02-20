@@ -37,6 +37,7 @@ public enum WizardScreenEnum {
     WizardAudioRecorderMetadataScreen(new WizardAudioRecorderMetadataScreen()),
     WizardAudioTestScreen(new WizardAudioTestScreen()),
     WizardCompletionScreen(new WizardCompletionScreen()),
+    WizardOfflineCompletionScreen(new WizardOfflineCompletionScreen()),
     WizardEditUserScreen(new WizardEditUserScreen()),
     WizardStimuliJsonMetadataScreen(new WizardStimuliJsonMetadataScreen()),
     WizardExistingUserCheckScreen(new WizardExistingUserCheckScreen()),

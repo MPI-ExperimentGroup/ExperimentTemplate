@@ -108,7 +108,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
     }
 
     @Override
-    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+    public PresenterScreen[] populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         experiment.appendUniqueStimuli(storedWizardScreenData.getStimuli());
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.stimulus);
@@ -264,7 +264,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
-        return storedWizardScreenData.getPresenterScreen();
+        return new PresenterScreen[]{storedWizardScreenData.getPresenterScreen()};
     }
     private static final String MATCHING_REGEX = "([^_]*_)*";
 

@@ -66,7 +66,7 @@ public class WizardWelcomeScreen extends AbstractWizardScreen {
     }
 
     @Override
-    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+    public PresenterScreen[] populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.menu);
         final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.menuItem, storedWizardScreenData.getNextButton()[1]);
@@ -76,6 +76,6 @@ public class WizardWelcomeScreen extends AbstractWizardScreen {
         presenterFeature1.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getMenuWizardScreenData().get(0).getScreenTag());
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(presenterFeature1);
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
-        return storedWizardScreenData.getPresenterScreen();
+        return new PresenterScreen[]{storedWizardScreenData.getPresenterScreen()};
     }
 }

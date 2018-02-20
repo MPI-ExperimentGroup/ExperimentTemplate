@@ -75,7 +75,7 @@ public class WizardKinDiagramScreen extends AbstractWizardScreen {
     }
 
     @Override
-    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
+    public PresenterScreen[] populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.kindiagram);
         switch (exampleType) {
@@ -111,6 +111,6 @@ public class WizardKinDiagramScreen extends AbstractWizardScreen {
                 experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
                 break;
         }
-        return storedWizardScreenData.getPresenterScreen();
+        return new PresenterScreen[]{storedWizardScreenData.getPresenterScreen()};
     }
 }

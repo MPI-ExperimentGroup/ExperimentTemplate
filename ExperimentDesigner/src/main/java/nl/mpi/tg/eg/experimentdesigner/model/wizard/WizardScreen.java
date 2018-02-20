@@ -63,7 +63,7 @@ public interface WizardScreen {
 //    public String getFieldValue(String fieldName);
 //    @Deprecated
 //    PresenterScreen getPresenterScreen();
-    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, final Experiment experiment, final boolean obfuscateScreenNames, final long displayOrder);
+    public PresenterScreen[] populatePresenterScreen(WizardScreenData storedWizardScreenData, final Experiment experiment, final boolean obfuscateScreenNames, final long displayOrder);
 
 //    public WizardScreen getBackWizardScreen();
 //    public void setBackWizardScreen(WizardScreen backWizardScreen);
