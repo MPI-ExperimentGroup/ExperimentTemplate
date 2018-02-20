@@ -22,6 +22,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardOfflineCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardExistingUserCheckScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardGridStimulusScreen;
@@ -115,6 +116,11 @@ public class PlaybackPreferenceMeasureExperiment {
         wizardData.addScreen(completionScreen);
         completionScreen.setScreenTag("completion");
         completionScreen.setNextWizardScreen(existingUserCheckScreen);
+
+        WizardOfflineCompletionScreen offlineCompletionScreen = new WizardOfflineCompletionScreen();
+        wizardData.addScreen(offlineCompletionScreen);
+        offlineCompletionScreen.setBackWizardScreen(menuScreen);
+
         bluetoothInstructionsScreen.setBackWizardScreen(menuScreen);
         bluetoothInstructionsScreen.setNextWizardScreen(wizardEditUserScreen);
 
