@@ -109,7 +109,8 @@ public class WizardController {
             final WizardScreen wizardScreenType = wizardScreen.getWizardScreenType().wizardScreen;
 //            wizardScreenType.set
             // get the wizard screen defined in the enumeration which is storable in the DB
-            PresenterScreen currentScreen = wizardScreenType.populatePresenterScreen(wizardScreen, experiment, wizardData.isObfuscateScreenNames(), currentDisplaySequence++);
+            PresenterScreen[] addedScreens = wizardScreenType.populatePresenterScreen(wizardScreen, experiment, wizardData.isObfuscateScreenNames(), currentDisplaySequence);
+            currentDisplaySequence += addedScreens.length;
         }
         return experiment;
     }
