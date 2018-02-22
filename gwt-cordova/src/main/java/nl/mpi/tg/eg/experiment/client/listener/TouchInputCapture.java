@@ -57,6 +57,7 @@ public abstract class TouchInputCapture implements Event.NativePreviewHandler, M
 
     private final StringBuilder recordedTouches = new StringBuilder();
     private final List<TouchInputZone> touchZones = new ArrayList<>();
+    private final Set<String> currentTriggeredZoneGroups = new HashSet<>();
     private final TimedStimulusListener endOfTouchEventListner;
     private final int msAfterEndOfTouchToNext;
     private final Timer endOfTouchTimer;
@@ -75,6 +76,8 @@ public abstract class TouchInputCapture implements Event.NativePreviewHandler, M
     }
 
     public abstract void setDebugLabel(String debugLabel);
+
+    public abstract void endOfTouchEvent(String debugLabel);
 
     private void appendTouch(int xPos, int yPos, final List<TouchInputZone> triggeredZones) {
         recordedTouches.append(duration.elapsedMillis());
@@ -120,6 +123,13 @@ public abstract class TouchInputCapture implements Event.NativePreviewHandler, M
                 endOfTouchTimer.schedule(msAfterEndOfTouchToNext);
             }
         }
+        for (String currentTriggeredZone : currentTriggeredZoneGroups) {
+            if (!triggeredZoneGroups.contains(currentTriggeredZone)) {
+                endOfTouchEvent(currentTriggeredZone);
+            }
+        }
+        currentTriggeredZoneGroups.retainAll(triggeredZoneGroups);
+        currentTriggeredZoneGroups.addAll(triggeredZoneGroups);
     }
 
     private void recordTouches(final JsArray<Touch> targetTouches, final List<TouchInputZone> triggeredZones) {
