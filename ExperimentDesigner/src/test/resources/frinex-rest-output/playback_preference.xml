@@ -53,42 +53,25 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <!--<updateRegion>-->
                 <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" autoPlay="false" showControls="false" maxWidth="100"/>
-                <!--<stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" styleName="borderedVideoRight" showControls="false" maxWidth="100"/>-->               
-                <!--</updateRegion>-->
                 <touchInputCaptureStart msToNext="3000" showControls="false">
-                    <!--                    <touchIntersectionStart>
-                        <disableStimulusButtons/>
-                        <rewindVideo/>
-                        <pause msToNext="1000">                        
-                            <playVideo/>
-                        </pause>
-                        <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
-                            <enableStimulusButtons/>
-                        </stimulusCodeAudio>
-                    </touchIntersectionStart>
-                    <touchIntersectionEnd>-->
                     <pauseVideo/>
                     <enableStimulusButtons/>
-                    <!--</touchIntersectionEnd>-->
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="curtain_left.png" styleName="leftOverlayCurtain">
-                    <!--these actions are replaced in this experiment by touchIntersectionStart-->
+                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
-                    <pause msToNext="1000">                        
+                    <pause msToNext="1000">
                         <playVideo/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="curtain_right.png" styleName="rightOverlayCurtain">
-                    <!--these actions are replaced in this experiment by touchIntersectionStart-->
+                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
-                    <pause msToNext="1000">                        
+                    <pause msToNext="1000">
                         <playVideo/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
@@ -96,18 +79,6 @@
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
                 <table styleName="titleBarButton">
-                    <!--for now sdcard is not needed if the stimuli are included and the data is retrospectively sent to the server-->
-                    
-                    <!--hide show title bar-->
-                    <!--curtain full screen--> 
-                    <!--video full screen, but this should just happen when there is one-->
-                    <!--the snapping shut on next or repeat is not an issue, but one possible workaround would be to fade in the curtains-->
-                    <!--a re touch should replay the video-->
-                    <!--video should loop while curtains are open-->
-                    <!--closing the curtians could be faster (x 2)-->
-                    <!--record video from the front camera-->
-                    <!--loading stimuli from the sdcard, should offer subdirectories and have two ordered stimuli per directory-->
-                    <!--there is an error in the curtains where the left works fine but the right snaps and continues to open when the touch ends-->
                     <row>
                         <column styleName="">
                             <actionButton featureText="Menu" eventTag="Menu" hotKey="R1_MA_BACK" styleName="">
@@ -155,20 +126,20 @@
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="curtain_left.png" styleName="leftOverlayCurtain">
+                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
-                    <pause msToNext="1000">                        
+                    <pause msToNext="1000">
                         <playVideo/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="curtain_right.png" styleName="rightOverlayCurtain">
+                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
-                    <pause msToNext="1000">                        
+                    <pause msToNext="1000">
                         <playVideo/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
@@ -223,20 +194,20 @@
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="curtain_left.png" styleName="leftOverlayCurtain">
+                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
-                    <pause msToNext="1000">                        
+                    <pause msToNext="1000">
                         <playVideo/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="curtain_right.png" styleName="rightOverlayCurtain">
+                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
-                    <pause msToNext="1000">                        
+                    <pause msToNext="1000">
                         <playVideo/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
@@ -291,20 +262,20 @@
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="curtain_left.png" styleName="leftOverlayCurtain">
+                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
-                    <pause msToNext="1000">                        
+                    <pause msToNext="1000">
                         <playVideo/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="curtain_right.png" styleName="rightOverlayCurtain">
+                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
-                    <pause msToNext="1000">                        
+                    <pause msToNext="1000">
                         <playVideo/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
@@ -359,20 +330,20 @@
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="curtain_left.png" styleName="leftOverlayCurtain">
+                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
-                    <pause msToNext="1000">                        
+                    <pause msToNext="1000">
                         <playVideo/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="curtain_right.png" styleName="rightOverlayCurtain">
+                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
-                    <pause msToNext="1000">                        
+                    <pause msToNext="1000">
                         <playVideo/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
@@ -427,20 +398,20 @@
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="curtain_left.png" styleName="leftOverlayCurtain">
+                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
-                    <pause msToNext="1000">                        
+                    <pause msToNext="1000">
                         <playVideo/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                         <enableStimulusButtons/>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" eventTag="Right" src="curtain_right.png" styleName="rightOverlayCurtain">
+                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain">
                     <disableStimulusButtons/>
                     <rewindVideo/>
-                    <pause msToNext="1000">                        
+                    <pause msToNext="1000">
                         <playVideo/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
@@ -489,58 +460,57 @@
         <htmlText featureText="Data will not be collected in this version."/>
         <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;Hartelijk dank voor uw deelname! &lt;br/&gt;&lt;br/&gt;"/>
         <addPadding/>
-        <!--<generateCompletionCode/>-->
         <addPadding/>
         <htmlText featureText="&lt;br/&gt;Het bovenstaande nummer is het bewijs dat u het experiment heeft voltooid, en is vereist voor het in orde maken van uw vergoeding."/>
         <addPadding/>
         <createUserButton featureText="Opnieuw beginnen" target="Start"/>
     </presenter>
     <presenter back="Menu" displayOrder="14" menuLabel="Data Management" next="DataUpload" type="metadata" self="DataManagement" title="Data Management">
-        <htmlText featureText="The participants which are still in the application memory:"/>
+        <htmlText featureText="Participants with data in the application memory:"/>
         <selectUserMenu/>
-    </presenter>   
-    <presenter displayOrder="15" type="transmission" self="DataUpload" title="Data Upload" next="DataManagement">
+    </presenter>
+    <presenter back="DataManagement" displayOrder="15" menuLabel="Data Upload" next="DataManagement" type="transmission" self="DataUpload" title="Data Upload">
         <sendMetadata>
-            <onSuccess> 
+            <onSuccess>
                 <sendAllData>
                     <onSuccess>
-                        <htmlText featureText="The participant's data has been uploaded to the server"/>
+                        <htmlText featureText="The participant's data has been uploaded to the server" styleName=""/>
                         <addPadding/>
                         <addPadding/>
-                        <eraseUsersDataButton featureText="Remove the user's data from this application" target="DataManagement" />
+                        <eraseUsersDataButton featureText="Remove the participants's data from this application" target="DataManagement"/>
                         <addPadding/>
                         <addPadding/>
-                        <targetButton featureText="Keep local copy of the user's data" target="DataManagement" />
+                        <targetButton featureText="Keep local copy of the participants's data" styleName="" target="DataManagement"/>
                         <addPadding/>
                         <addPadding/>
                     </onSuccess>
                     <onError>
-                        <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later."/>
+                        <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
                         <addPadding/>
                         <addPadding/>
-                        <targetButton featureText="Retry" target="DataUpload"/>
+                        <targetButton featureText="Retry" styleName="" target="DataUpload"/>
                         <addPadding/>
                         <addPadding/>
-                        <targetButton featureText="User's Data Listing" target="DataManagement" />
+                        <targetButton featureText="Participant's Data Listing" styleName="" target="DataManagement"/>
                         <addPadding/>
                         <addPadding/>
                     </onError>
                 </sendAllData>
             </onSuccess>
-            <onError>   
+            <onError>
                 <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
                 <addPadding/>
                 <addPadding/>
-                <targetButton featureText="Retry" target="DataUpload"/>
+                <targetButton featureText="Retry" styleName="" target="DataUpload"/>
                 <addPadding/>
                 <addPadding/>
-                <targetButton featureText="User's Data Listing" target="DataManagement" />
+                <targetButton featureText="Participant's Data Listing" styleName="" target="DataManagement"/>
                 <addPadding/>
                 <addPadding/>
-            </onError>      
+            </onError>
         </sendMetadata>
     </presenter>
-    <presenter back="Menu" displayOrder="14" menuLabel="Over" type="debug" self="about" title="Over">
+    <presenter back="Menu" displayOrder="16" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
     </presenter>
     <stimuli>
@@ -552,13 +522,13 @@
         </stimulus>
         <stimulus audioPath="COWmis-5" code="COWmis-5" identifier="COWmis-5" imagePath="COWmis-5" pauseMs="0">
             <tag>COW</tag>
-        </stimulus>  
+        </stimulus>
         <stimulus audioPath="FATHER" code="FATHER" identifier="FATHER" imagePath="FATHER" pauseMs="0">
             <tag>FATHER</tag>
         </stimulus>
         <stimulus audioPath="FATHERmis" code="FATHERmis" identifier="FATHERmis" imagePath="FATHERmis" pauseMs="0">
             <tag>FATHER</tag>
-        </stimulus>        
+        </stimulus>
         <stimulus audioPath="GHOST-a" code="GHOST-a" identifier="GHOST-a" imagePath="GHOST-a" pauseMs="0">
             <tag>GHOST_a</tag>
         </stimulus>
