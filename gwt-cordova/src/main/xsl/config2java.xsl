@@ -397,7 +397,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             </xsl:when>
             <xsl:otherwise>
                 <!--// todo: should this @eventTag exist in this button type given that tags can only happen in a stimulus presenter?-->
-                <xsl:value-of select="if(@eventTag) then concat('logTimeStamp(&quot;', @eventTag, '&quot;);') else ''" />
+                <xsl:value-of select="if(@eventTag) then concat('logTimeStamp(&quot;', local-name(), '&quot;, &quot;', @eventTag, '&quot;);') else ''" />
                 <xsl:apply-templates/>
             </xsl:otherwise>
         </xsl:choose>
