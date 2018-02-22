@@ -303,7 +303,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
     }
 
     @Override
-    public PresenterScreen populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment,
+    public PresenterScreen[] populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment,
             boolean obfuscateScreenNames, long displayOrder
     ) {
         experiment.appendUniqueStimuli(storedWizardScreenData.getStimuli());
@@ -389,12 +389,12 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             final PresenterFeature touchInputCaptureStart = hasMoreStimulusFeature.addFeature(FeatureType.touchInputCaptureStart, null, "false", "3000");
             touchInputCaptureStart.addFeature(FeatureType.pauseVideo, null);
             touchInputCaptureStart.addFeature(FeatureType.enableStimulusButtons, null);
-            final PresenterFeature touchInputStimulusButton1 = hasMoreStimulusFeature.addFeature(FeatureType.touchInputStimulusButton, "Left Overlay Button", "Left", "curtain_left.png", "leftOverlayCurtain", "allCurtainGroup");
+            final PresenterFeature touchInputStimulusButton1 = hasMoreStimulusFeature.addFeature(FeatureType.touchInputStimulusButton, "Left Overlay Button", "Curtain", "curtain_left.png", "leftOverlayCurtain", "allCurtainGroup");
             touchInputStimulusButton1.addFeature(FeatureType.disableStimulusButtons, null);
             touchInputStimulusButton1.addFeature(FeatureType.rewindVideo, null);
             touchInputStimulusButton1.addFeature(FeatureType.pause, null, "1000").addFeature(FeatureType.playVideo, null);
             touchInputStimulusButton1.addFeature(FeatureType.stimulusCodeAudio, null, "500", "Correct", "false").addFeature(FeatureType.enableStimulusButtons, null);
-            final PresenterFeature touchInputStimulusButton2 = hasMoreStimulusFeature.addFeature(FeatureType.touchInputStimulusButton, "Right Overlay Button", "Right", "curtain_right.png", "rightOverlayCurtain", "allCurtainGroup");
+            final PresenterFeature touchInputStimulusButton2 = hasMoreStimulusFeature.addFeature(FeatureType.touchInputStimulusButton, "Right Overlay Button", "Curtain", "curtain_right.png", "rightOverlayCurtain", "allCurtainGroup");
             touchInputStimulusButton2.addFeature(FeatureType.disableStimulusButtons, null);
             touchInputStimulusButton2.addFeature(FeatureType.rewindVideo, null);
             touchInputStimulusButton2.addFeature(FeatureType.pause, null, "1000").addFeature(FeatureType.playVideo, null);
@@ -494,9 +494,9 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                     break;
             }
             hasMoreStimulusFeature.addFeature(FeatureType.disableStimulusButtons, null);
-            for (String[] additionString : new String[][]{{"<code>_left.jpg", "borderedVideoLeft", "Left Overlay Button", "Left", "leftOverlayButton"}, {"<code>_right.jpg", "borderedVideoRight", "Right Overlay Button", "Right", "rightOverlayButton"}}) {
+            for (String[] additionString : new String[][]{{"<code>_left.jpg", "borderedVideoLeft", "Left Overlay Button", "Left", "leftOverlayButton", "leftButtonGroup"}, {"<code>_right.jpg", "borderedVideoRight", "Right Overlay Button", "Right", "rightOverlayButton", "rightButtonGroup"}}) {
                 final PresenterFeature stimulusImage = hasMoreStimulusFeature.addFeature(FeatureType.stimulusCodeImage, null, "250", additionString[0], additionString[1]);
-                final PresenterFeature leftOverlayButton = stimulusImage.addFeature(FeatureType.touchInputStimulusButton, additionString[2], additionString[3], "", additionString[4]);
+                final PresenterFeature leftOverlayButton = stimulusImage.addFeature(FeatureType.touchInputStimulusButton, additionString[2], additionString[3], "", additionString[4], additionString[5]);
                 leftOverlayButton.addFeature(FeatureType.disableStimulusButtons, null);
                 leftOverlayButton.addFeature(FeatureType.disablePauseTimers, null);
 //                leftOverlayButton.addFeature(FeatureType.trigger, null, "buttonAction");
@@ -567,6 +567,6 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
-        return storedWizardScreenData.getPresenterScreen();
+        return new PresenterScreen[]{storedWizardScreenData.getPresenterScreen()};
     }
 }
