@@ -1201,7 +1201,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void logTimeStamp(String eventTag) {
-        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "CustomTag", stimulusProvider.getCurrentStimulus().getUniqueId(), eventTag, duration.elapsedMillis());
+        logTimeStamp("logTimeStamp", eventTag);
+    }
+
+    protected void logTimeStamp(String eventName, String eventTag) {
+        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), eventName, stimulusProvider.getCurrentStimulus().getUniqueId(), eventTag, duration.elapsedMillis());
     }
 
     protected void endAudioRecorderTag(int tier, String tagString) {
@@ -1568,6 +1572,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                         ((TimedStimulusView) simpleView).addWidget(debugHtmlLabel);
                         debugHtmlLabel.setHTML(debugLabel);
                     }
+                }
+
+                @Override
+                public void endOfTouchEvent(String groupName) {
+                    logTimeStamp("endOfTouchEvent", groupName);
                 }
 
             };
