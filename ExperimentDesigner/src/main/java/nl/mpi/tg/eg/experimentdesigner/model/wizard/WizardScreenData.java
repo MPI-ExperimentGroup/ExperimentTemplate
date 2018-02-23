@@ -33,6 +33,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlIDREF;
 import javax.xml.bind.annotation.XmlTransient;
@@ -139,6 +140,7 @@ public class WizardScreenData implements Serializable {
     }
 
     @XmlIDREF
+    @XmlElement(name = "backScreen")
     public WizardScreenData getBackWizardScreenData() {
         return backWizardScreenData;
     }
@@ -148,6 +150,7 @@ public class WizardScreenData implements Serializable {
     }
 
     @XmlIDREF
+    @XmlElement(name = "nextScreen")
     public WizardScreenData getNextWizardScreenData() {
         return nextWizardScreenData;
     }
@@ -157,6 +160,7 @@ public class WizardScreenData implements Serializable {
     }
 
     @XmlIDREF
+    @XmlElement(name = "menuScreen")
     public List<WizardScreenData> getMenuWizardScreenData() {
         return menuWizardScreenData;
     }
