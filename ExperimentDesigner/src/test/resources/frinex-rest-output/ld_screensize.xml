@@ -99,7 +99,7 @@
                                         <column styleName="">
                                             <actionButton featureText="Menu" eventTag="Menu" hotKey="R1_MA_BACK" styleName="">
                                                 <touchInputReportSubmit/>
-                                                <autoNextPresenter target="Test_1"/>
+                                                <autoNextPresenter target="Menu"/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
@@ -115,7 +115,7 @@
                                             </actionButton>
                                         </column>
                                         <column styleName="">
-                                            <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT" styleName="">
+                                            <actionButton featureText="Test 1" eventTag="Test 1" hotKey="R1_MA_RIGHT" styleName="">
                                                 <touchInputReportSubmit/>
                                                 <nextStimulus repeatIncorrect="false"/>
                                             </actionButton>
@@ -125,7 +125,7 @@
                             </stimulusCodeAudio>
                         </stimulusCodeVideo>
                     </stimulusCodeAudio>
-                    <touchInputCaptureStart msToNext="-1" showControls="true"/>
+                    <touchInputCaptureStart msToNext="-1" showControls="false"/>
                 </hasMoreStimulus>
                 <endOfStimulus>
                     <autoNextPresenter/>
@@ -143,7 +143,7 @@
         <menuItem featureText="Test 3" target="Test_3"/>
         <menuItem featureText="Test 4" target="Test_4"/>
     </presenter>
-    <presenter back="Menu" displayOrder="11" menuLabel="Test 1" next="Test_2" type="stimulus" self="Test_1" title="Test 1">
+    <presenter displayOrder="11" menuLabel="Test 1" next="Test_2" type="stimulus" self="Test_1" title="Test 1">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock1">
             <audioButton eventTag="room_1" src="room_1" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
@@ -173,7 +173,7 @@
                                                 <column styleName="">
                                                     <actionButton featureText="Menu" eventTag="Menu" hotKey="R1_MA_BACK" styleName="">
                                                         <touchInputReportSubmit/>
-                                                        <autoNextPresenter target="Test_2"/>
+                                                        <autoNextPresenter target="Menu"/>
                                                     </actionButton>
                                                 </column>
                                                 <column styleName="">
@@ -189,7 +189,7 @@
                                                     </actionButton>
                                                 </column>
                                                 <column styleName="">
-                                                    <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT" styleName="">
+                                                    <actionButton featureText="Test 2" eventTag="Test 2" hotKey="R1_MA_RIGHT" styleName="">
                                                         <touchInputReportSubmit/>
                                                         <nextStimulus repeatIncorrect="false"/>
                                                     </actionButton>
@@ -199,7 +199,7 @@
                                     </stimulusCodeAudio>
                                 </stimulusCodeVideo>
                             </stimulusCodeAudio>
-                            <touchInputCaptureStart msToNext="-1" showControls="true"/>
+                            <touchInputCaptureStart msToNext="-1" showControls="false"/>
                         </hasMoreStimulus>
                         <endOfStimulus>
                             <autoNextPresenter/>
@@ -218,7 +218,7 @@
             </audioButton>
         </backgroundImage>
     </presenter>
-    <presenter back="Menu" displayOrder="12" menuLabel="Test 2" next="Test_3" type="stimulus" self="Test_2" title="Test 2">
+    <presenter displayOrder="12" menuLabel="Test 2" next="Test_3" type="stimulus" self="Test_2" title="Test 2">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock2">
             <audioButton eventTag="room_2" src="room_2" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
@@ -248,7 +248,7 @@
                                                 <column styleName="">
                                                     <actionButton featureText="Menu" eventTag="Menu" hotKey="R1_MA_BACK" styleName="">
                                                         <touchInputReportSubmit/>
-                                                        <autoNextPresenter target="Test_3"/>
+                                                        <autoNextPresenter target="Menu"/>
                                                     </actionButton>
                                                 </column>
                                                 <column styleName="">
@@ -264,7 +264,7 @@
                                                     </actionButton>
                                                 </column>
                                                 <column styleName="">
-                                                    <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT" styleName="">
+                                                    <actionButton featureText="Test 3" eventTag="Test 3" hotKey="R1_MA_RIGHT" styleName="">
                                                         <touchInputReportSubmit/>
                                                         <nextStimulus repeatIncorrect="false"/>
                                                     </actionButton>
@@ -274,7 +274,7 @@
                                     </stimulusCodeAudio>
                                 </stimulusCodeVideo>
                             </stimulusCodeAudio>
-                            <touchInputCaptureStart msToNext="-1" showControls="true"/>
+                            <touchInputCaptureStart msToNext="-1" showControls="false"/>
                         </hasMoreStimulus>
                         <endOfStimulus>
                             <autoNextPresenter/>
@@ -293,7 +293,7 @@
             </audioButton>
         </backgroundImage>
     </presenter>
-    <presenter back="Menu" displayOrder="13" menuLabel="Test 3" next="Test_4" type="stimulus" self="Test_3" title="Test 3">
+    <presenter displayOrder="13" menuLabel="Test 3" next="Test_4" type="stimulus" self="Test_3" title="Test 3">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock3">
             <audioButton eventTag="room_3" src="room_3" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
@@ -323,7 +323,7 @@
                                                 <column styleName="">
                                                     <actionButton featureText="Menu" eventTag="Menu" hotKey="R1_MA_BACK" styleName="">
                                                         <touchInputReportSubmit/>
-                                                        <autoNextPresenter target="Test_4"/>
+                                                        <autoNextPresenter target="Menu"/>
                                                     </actionButton>
                                                 </column>
                                                 <column styleName="">
@@ -339,7 +339,7 @@
                                                     </actionButton>
                                                 </column>
                                                 <column styleName="">
-                                                    <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT" styleName="">
+                                                    <actionButton featureText="Test 4" eventTag="Test 4" hotKey="R1_MA_RIGHT" styleName="">
                                                         <touchInputReportSubmit/>
                                                         <nextStimulus repeatIncorrect="false"/>
                                                     </actionButton>
@@ -349,7 +349,7 @@
                                     </stimulusCodeAudio>
                                 </stimulusCodeVideo>
                             </stimulusCodeAudio>
-                            <touchInputCaptureStart msToNext="-1" showControls="true"/>
+                            <touchInputCaptureStart msToNext="-1" showControls="false"/>
                         </hasMoreStimulus>
                         <endOfStimulus>
                             <autoNextPresenter/>
@@ -368,7 +368,7 @@
             </audioButton>
         </backgroundImage>
     </presenter>
-    <presenter back="Menu" displayOrder="14" menuLabel="Test 4" next="Attic" type="stimulus" self="Test_4" title="Test 4">
+    <presenter displayOrder="14" menuLabel="Test 4" next="Attic" type="stimulus" self="Test_4" title="Test 4">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock4">
             <audioButton eventTag="room_4" src="room_4" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
@@ -398,7 +398,7 @@
                                                 <column styleName="">
                                                     <actionButton featureText="Menu" eventTag="Menu" hotKey="R1_MA_BACK" styleName="">
                                                         <touchInputReportSubmit/>
-                                                        <autoNextPresenter target="Attic"/>
+                                                        <autoNextPresenter target="Menu"/>
                                                     </actionButton>
                                                 </column>
                                                 <column styleName="">
@@ -414,7 +414,7 @@
                                                     </actionButton>
                                                 </column>
                                                 <column styleName="">
-                                                    <actionButton featureText="Next" eventTag="Next" hotKey="R1_MA_RIGHT" styleName="">
+                                                    <actionButton featureText="Attic" eventTag="Attic" hotKey="R1_MA_RIGHT" styleName="">
                                                         <touchInputReportSubmit/>
                                                         <nextStimulus repeatIncorrect="false"/>
                                                     </actionButton>
@@ -424,7 +424,7 @@
                                     </stimulusCodeAudio>
                                 </stimulusCodeVideo>
                             </stimulusCodeAudio>
-                            <touchInputCaptureStart msToNext="-1" showControls="true"/>
+                            <touchInputCaptureStart msToNext="-1" showControls="false"/>
                         </hasMoreStimulus>
                         <endOfStimulus>
                             <autoNextPresenter/>
