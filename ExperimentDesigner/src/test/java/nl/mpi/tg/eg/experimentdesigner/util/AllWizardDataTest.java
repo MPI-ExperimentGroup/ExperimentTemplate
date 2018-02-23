@@ -80,7 +80,7 @@ public class AllWizardDataTest {
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
         StringWriter stringWriter = new StringWriter();
         jaxbMarshaller.marshal(wizardData, stringWriter);
-        FileWriter fileWriter = new FileWriter(new File(new File(outputDirectoryUri), wizardData.getAppName() + "-wizarddata.xml"));
+        FileWriter fileWriter = new FileWriter(new File(new File(outputDirectoryUri), wizardData.getAppName().replaceAll("[^A-Za-z0-9]", "_").toLowerCase() + "-wizarddata.xml"));
         jaxbMarshaller.marshal(wizardData, fileWriter);
         System.out.println(stringWriter);
     }
