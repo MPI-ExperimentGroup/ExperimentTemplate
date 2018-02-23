@@ -152,6 +152,7 @@ public class GuineaPigProject {
         trainingStimulusScreen.setCodeAudio(true);
         trainingStimulusScreen.setBackgroundImage(backgroundImage);
         trainingStimulusScreen.setBackgroundStyle("zoomToGarden");
+        trainingStimulusScreen.getWizardScreenData().getMenuWizardScreenData().add(menuScreen.getWizardScreenData());
         wizardData.addScreen(trainingStimulusScreen);
         final WizardMenuScreen textMenuScreen = new WizardMenuScreen("TestMenu", "TestMenu", "TestMenu");
 //        textMenuScreen.setJumpToRandomScreen(true);
@@ -180,7 +181,7 @@ public class GuineaPigProject {
             textMenuScreen.addTargetScreen(testStimulusScreen);
             backScreen.setNextWizardScreenData(testStimulusScreen.getWizardScreenData());
             wizardData.addScreen(testStimulusScreen);
-            testStimulusScreen.setBackWizardScreen(menuScreen);
+            testStimulusScreen.getWizardScreenData().getMenuWizardScreenData().add(menuScreen.getWizardScreenData());
             testStimulusScreen.setNextWizardScreen(textMenuScreen);
             testStimulusScreen.getWizardScreenData().setStimuliRandomTags(groupTagArray);
             testStimulusScreen.setConsumedTagGroup("allRooms");
