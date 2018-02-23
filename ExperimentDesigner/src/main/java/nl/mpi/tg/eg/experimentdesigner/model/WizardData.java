@@ -30,6 +30,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreenData;
 
 /**
@@ -41,6 +42,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreenData;
 public class WizardData {
 
     @Id
+    @XmlTransient
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String appName = "";
