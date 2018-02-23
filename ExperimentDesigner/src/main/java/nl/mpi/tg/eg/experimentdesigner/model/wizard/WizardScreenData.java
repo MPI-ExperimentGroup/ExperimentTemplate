@@ -131,6 +131,7 @@ public class WizardScreenData implements Serializable {
         this.displayOrder = displayOrder;
     }
 
+    @XmlElement(name = "wizardScreenType")
     public WizardScreenEnum getWizardScreenType() {
         return wizardScreenType;
     }
