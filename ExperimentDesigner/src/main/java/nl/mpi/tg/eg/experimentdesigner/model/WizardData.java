@@ -51,7 +51,7 @@ public class WizardData {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @OrderBy("displayOrder ASC")
-    @XmlElement
+    @XmlElement(name = "wizardScreen")
     private final List<WizardScreenData> wizardScreenList = new ArrayList<>();
 
     public WizardData() {
