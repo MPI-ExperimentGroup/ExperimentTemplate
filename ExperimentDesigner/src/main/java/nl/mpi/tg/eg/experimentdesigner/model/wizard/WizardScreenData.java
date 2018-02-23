@@ -169,6 +169,7 @@ public class WizardScreenData implements Serializable {
         this.menuWizardScreenData = menuWizardScreenData;
     }
 
+    @XmlElement(name = "text")
     public List<ScreenText> getScreenText() {
         return screenText;
     }
@@ -187,6 +188,7 @@ public class WizardScreenData implements Serializable {
         this.screenText.get(index).screenText = screenTextString;
     }
 
+    @XmlElement(name = "boolean")
     public List<Boolean> getScreenBooleans() {
         return screenBooleans;
     }
@@ -205,6 +207,7 @@ public class WizardScreenData implements Serializable {
         this.screenBooleans.set(index, screenBoolean);
     }
 
+    @XmlElement(name = "integer")
     public List<Integer> getScreenIntegers() {
         return screenIntegers;
     }
