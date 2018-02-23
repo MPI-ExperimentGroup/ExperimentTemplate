@@ -32,6 +32,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -67,6 +68,21 @@ public class AllWizardDataTest {
         jaxbMarshaller.marshal(experiment, fileWriter);
         jaxbMarshaller.marshal(experiment, stringWriter);
         assertEquals(testOutputName, expResult, stringWriter.toString());
+    }
+
+    public void testSerialiseWizardData(WizardData wizardData) throws IOException, JAXBException, URISyntaxException {
+        System.out.println("testSerialiseWizardData: " + wizardData.getAppName());
+        final String outputDirectory = "/frinex-rest-output/";
+        URI outputDirectoryUri = this.getClass().getResource(outputDirectory).toURI();
+        System.out.println(outputDirectory);
+        JAXBContext jaxbContext = JAXBContext.newInstance(WizardData.class);
+        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        StringWriter stringWriter = new StringWriter();
+        jaxbMarshaller.marshal(wizardData, stringWriter);
+        FileWriter fileWriter = new FileWriter(new File(new File(outputDirectoryUri), wizardData.getAppName() + "-wizarddata.xml"));
+        jaxbMarshaller.marshal(wizardData, fileWriter);
+        System.out.println(stringWriter);
     }
 
     /**
@@ -110,5 +126,48 @@ public class AllWizardDataTest {
         testGetWizardData(new Joost01().getExperiment());
         testGetWizardData(new Joost02().getExperiment());
         testGetWizardData(new PlaybackPreferenceMeasureExperiment().getExperiment());
+    }
+
+    /**
+     * Test of testAllSerialiseWizardData method, of multiple wizard classes.
+     *
+     * @throws java.io.IOException
+     * @throws javax.xml.bind.JAXBException
+     * @throws java.net.URISyntaxException
+     */
+    @Test
+    public void testAllSerialiseWizardData() throws IOException, JAXBException, URISyntaxException {
+        System.out.println("testAllSerialiseWizardData");
+//        final DefaultTranslations defaultTranslations = new DefaultTranslations();
+//        defaultTranslations.insertTranslations();
+//        testSerialiseWizardData(new DefaultExperiments().getAllOptionsExperiment(null, null, null));
+        testSerialiseWizardData(new DobesAnnotator().getWizardData());
+        testSerialiseWizardData(new JenaFieldKit().getWizardData());
+        testSerialiseWizardData(new TransmissionChain().getWizardData());
+        testSerialiseWizardData(new ShawiFieldKit().getWizardData());
+        testSerialiseWizardData(new Sara01().getWizardData());
+        testSerialiseWizardData(new FactOrFiction().getWizardData());
+//        testSerialiseWizardData(defaultTranslations.applyTranslations(new SynQuiz2().getWizardData()));
+        testSerialiseWizardData(new RdExperiment02().getWizardData());
+        testSerialiseWizardData(new NblExperiment01().getWizardData());
+        testSerialiseWizardData(new HRExperiment01().getWizardData());
+        testSerialiseWizardData(new HRPretest().getWizardData());
+        testSerialiseWizardData(new HRPretest02().getWizardData());
+        testSerialiseWizardData(new HROnlinePretest().getWizardData());
+        testSerialiseWizardData(new KinOathExample().getWizardData());
+        testSerialiseWizardData(new RosselFieldKit().getWizardData());
+        testSerialiseWizardData(new Parcours().getWizardData());
+        testSerialiseWizardData(new MultiParticipant().getWizardData());
+        testSerialiseWizardData(new ShortMultiparticipant01().getWizardData());
+        testSerialiseWizardData(new ManipulatedContours().getWizardData());
+        testSerialiseWizardData(new FrenchConversation().getWizardData());
+        testSerialiseWizardData(new NonWacq().getWizardData());
+        testSerialiseWizardData(new SentencesRatingTask().getWizardData());
+        testSerialiseWizardData(new WellspringsSamoanFieldKit().getWizardData());
+        testSerialiseWizardData(new GuineaPigProject().getWizardData());
+        testSerialiseWizardData(new PlayhouseStudy().getWizardData());
+        testSerialiseWizardData(new Joost01().getWizardData());
+        testSerialiseWizardData(new Joost02().getWizardData());
+        testSerialiseWizardData(new PlaybackPreferenceMeasureExperiment().getWizardData());
     }
 }
