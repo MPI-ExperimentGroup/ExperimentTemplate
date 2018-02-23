@@ -27,8 +27,8 @@ import static nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardKinDiagramScree
  * @since Oct 25(new ()), 2016 2:21:49 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-//@XmlType
-//@XmlEnum(String.class)
+@XmlType
+@XmlEnum(String.class)
 public enum WizardScreenEnum {
     WizardDebugAboutScreen(new WizardAboutScreen(true)),
     WizardAboutScreen(new WizardAboutScreen(false)),
