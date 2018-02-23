@@ -23,6 +23,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  * @since Nov 4, 2016 2:15:50 PM (creation date)
@@ -32,6 +34,7 @@ import javax.validation.constraints.Size;
 public class ScreenText implements Serializable {
 
     @Id
+    @XmlTransient
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
@@ -42,6 +45,7 @@ public class ScreenText implements Serializable {
         return id;
     }
 
+    @XmlAttribute(name = "value")
     public String getScreenText() {
         return screenText;
     }
