@@ -30,6 +30,8 @@ import java.util.Comparator;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
@@ -41,6 +43,8 @@ import static org.junit.Assert.*;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public class AllWizardDataTest {
+
+    private final WizardController wizardController = new WizardController();
 
     public AllWizardDataTest() {
     }
@@ -70,6 +74,13 @@ public class AllWizardDataTest {
         assertEquals(testOutputName, expResult, stringWriter.toString());
     }
 
+    private void testDeserialiseWizardData(final File serialisedFile) throws IOException, JAXBException, URISyntaxException {
+        JAXBContext jaxbContext = JAXBContext.newInstance(WizardData.class);
+        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+        WizardData wizardData = (WizardData) jaxbUnmarshaller.unmarshal(serialisedFile);
+        testGetWizardData(wizardController.getExperiment(wizardData));
+    }
+
     public void testSerialiseWizardData(WizardData wizardData) throws IOException, JAXBException, URISyntaxException {
         System.out.println("testSerialiseWizardData: " + wizardData.getAppName());
         final String outputDirectory = "/frinex-rest-output/";
@@ -78,11 +89,14 @@ public class AllWizardDataTest {
         JAXBContext jaxbContext = JAXBContext.newInstance(WizardData.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-        StringWriter stringWriter = new StringWriter();
-        jaxbMarshaller.marshal(wizardData, stringWriter);
+//        StringWriter stringWriter = new StringWriter();
+//        jaxbMarshaller.marshal(wizardData, stringWriter);
         FileWriter fileWriter = new FileWriter(new File(new File(outputDirectoryUri), wizardData.getAppName().replaceAll("[^A-Za-z0-9]", "_").toLowerCase() + "-wizarddata.xml"));
         jaxbMarshaller.marshal(wizardData, fileWriter);
-        System.out.println(stringWriter);
+//        System.out.println(stringWriter);
+
+        // todo: when wizard serialisation is ready, include the following test
+        // testDeserialiseWizardData(new File(new File(outputDirectoryUri), wizardData.getAppName().replaceAll("[^A-Za-z0-9]", "_").toLowerCase() + "-wizarddata.xml"));
     }
 
     /**
