@@ -37,6 +37,7 @@
                 private String remoteAddr;
                 private String acceptLang;
                 private String userAgent;
+                private boolean staleCopy = false;
             </xsl:text>
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>
