@@ -32,6 +32,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import com.google.gwt.user.client.ui.Widget;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -427,9 +428,21 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void table(final String styleName, final TimedStimulusListener timedStimulusListener) {
-        ((TimedStimulusView) simpleView).startTable(styleName);
+        table(styleName, false, timedStimulusListener);
+    }
+
+    protected void table(final String styleName, boolean showOnBackButton, final TimedStimulusListener timedStimulusListener) {
+        final Widget tableWidget = ((TimedStimulusView) simpleView).startTable(styleName);
         timedStimulusListener.postLoadTimerFired();
         ((TimedStimulusView) simpleView).endTable();
+        if (showOnBackButton) {
+            backEventListners.add(new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+                    tableWidget.setVisible(!tableWidget.isVisible());
+                }
+            });
+        }
     }
 
     protected void row(final TimedStimulusListener timedStimulusListener) {
