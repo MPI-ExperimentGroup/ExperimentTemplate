@@ -129,12 +129,13 @@ public class ComplexView extends SimpleView {
         }
     }
 
-    public void startTable(final String styleName) {
+    public Widget startTable(final String styleName) {
         gridPanel = new FlexTable();
         if (styleName != null && !styleName.isEmpty()) {
             gridPanel.addStyleName(styleName);
         }
         outerPanel.add(gridPanel);
+        return gridPanel;
     }
 
     public void endTable() {
