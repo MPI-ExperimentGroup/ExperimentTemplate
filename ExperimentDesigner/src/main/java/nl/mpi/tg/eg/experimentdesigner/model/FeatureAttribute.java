@@ -48,6 +48,7 @@ public enum FeatureAttribute {
     align,
     target,
     styleName,
+    showOnBackButton,
     eventTier,
     filePerStimulus, // when recording audio this boolean determins if a separate recording should be made for each stimulus or one recording for the set of stimuli
     eventTag,
