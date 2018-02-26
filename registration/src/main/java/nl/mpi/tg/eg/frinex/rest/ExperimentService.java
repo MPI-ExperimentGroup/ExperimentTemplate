@@ -173,6 +173,7 @@ public class ExperimentService {
                 }
                 participant.setAcceptLang(acceptLang);
                 participant.setUserAgent(userAgent);
+                participantRepository.setAsStaleByUserId(participant.getUserId());
                 participantRepository.save(participant);
 //                }
             }
