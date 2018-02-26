@@ -134,7 +134,7 @@ public enum FeatureType {
     belowThreshold(true, false, null),
     //    clearRegion(true, false, new FeatureAttribute[]{target}), // these tags would require the handling the clearing of timers and button handlers
     //    updateRegion(true, false, new FeatureAttribute[]{target}), // these tags would require the handling the clearing of timers and button handlers
-    table(true, false, new FeatureAttribute[]{styleName}),
+    table(true, false, new FeatureAttribute[]{styleName, showOnBackButton}),
     row(true, false, null),
     column(true, false, new FeatureAttribute[]{styleName}),
     stimulusImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement}), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
