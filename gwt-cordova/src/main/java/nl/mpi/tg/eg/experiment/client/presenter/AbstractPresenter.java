@@ -22,6 +22,8 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import java.util.ArrayList;
+import java.util.List;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
@@ -41,6 +43,7 @@ public abstract class AbstractPresenter implements Presenter {
     protected final RootLayoutPanel widgetTag;
     final protected SimpleView simpleView;
     private PresenterEventListner backEventListner = null;
+    protected final List<TimedStimulusListener> backEventListners = new ArrayList<>();
     private PresenterEventListner nextEventListner = null;
     private PresenterEventListner windowClosingEventListner = null;
     private final Timer audioTickerTimer;
@@ -147,6 +150,10 @@ public abstract class AbstractPresenter implements Presenter {
     public void fireBackEvent() {
         if (backEventListner != null) {
             backEventListner.eventFired(null, null);
+        } else {
+            for (TimedStimulusListener listner : backEventListners) {
+                listner.postLoadTimerFired();
+            }
         }
     }
 
