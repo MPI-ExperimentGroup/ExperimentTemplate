@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioAsStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Trial;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialCondition;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialTuple;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.WordType;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audioaspool.AudioIndexMap;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -285,7 +284,7 @@ public class AudioAsStimuliProviderTest {
      */
     @Test
     public void testHasNextStimulusChampion() {
-        System.out.println("hasNextStimulus");
+        System.out.println("hasNextStimulus Champion");
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
         assertEquals(this.startBand, this.instance.getCurrentBandIndex());
@@ -307,7 +306,7 @@ public class AudioAsStimuliProviderTest {
 
         ArrayList<AudioAsStimulus> record = this.instance.getResponseRecord();
         this.printRecord(record);
-        
+
     }
 
     /**
@@ -315,7 +314,7 @@ public class AudioAsStimuliProviderTest {
      */
     @Test
     public void testHasNextStimulusLooser() {
-        System.out.println("hasNextStimulus");
+        System.out.println("hasNextStimulus Looser");
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
         assertEquals(this.startBand, this.instance.getCurrentBandIndex());
@@ -335,7 +334,7 @@ public class AudioAsStimuliProviderTest {
                     if (correctResponce.equals("YES")) {
                         this.instance.isCorrectResponse(stimulus, "");
                     } else {
-                       this.instance.isCorrectResponse(stimulus, "YES"); 
+                        this.instance.isCorrectResponse(stimulus, "YES");
                     }
                 }
             } else {
@@ -356,8 +355,62 @@ public class AudioAsStimuliProviderTest {
         ArrayList<AudioAsStimulus> record = this.instance.getResponseRecord();
         this.printRecord(record);
     }
-    
-    private void printRecord(ArrayList<AudioAsStimulus> record){
+
+    /**
+     * Test of hasNextStimulus method, of class AudioAsStimuliProvider.
+     */
+    @Test
+    public void testHasNextStimulusLoop() {
+        System.out.println("hasNextStimulus Loop");
+        String stimuliStateSnapshot = "";
+        this.instance.initialiseStimuliState(stimuliStateSnapshot);
+        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
+
+        int i = 0;
+        boolean distort = false;
+        int previousBandIndex = 0;
+        while (this.instance.hasNextStimulus(i)) {
+            this.instance.nextStimulus(i);
+            AudioAsStimulus audioStimulus = this.instance.getCurrentStimulus();
+            Stimulus stimulus = audioStimulus;
+            String correctResponce = audioStimulus.getCorrectResponses();
+            i++;
+
+            if (this.instance.getCurrentBandIndex() > previousBandIndex) {
+                distort = true; // we jumped to the higher band, need to make a mistake to force looping
+            } else {
+                distort = false;
+            }
+
+            if (!audioStimulus.getWordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
+                previousBandIndex = this.instance.getCurrentBandIndex();
+            }
+
+            if (distort) {
+                if (correctResponce == null) {
+                    this.instance.isCorrectResponse(stimulus, "YES");
+                } else {
+                    if (correctResponce.equals("YES")) {
+                        this.instance.isCorrectResponse(stimulus, "");
+                    } else {
+                        this.instance.isCorrectResponse(stimulus, "YES");
+                    }
+                }
+            } else {
+                this.instance.isCorrectResponse(stimulus, correctResponce);
+            }
+        }
+
+        assertFalse(this.instance.getChampion());
+        assertTrue(this.instance.getCycel2());
+        assertFalse(this.instance.getLooser());
+        assertEquals(2, this.instance.getBandScore());
+
+        ArrayList<AudioAsStimulus> record = this.instance.getResponseRecord();
+        this.printRecord(record);
+    }
+
+    private void printRecord(ArrayList<AudioAsStimulus> record) {
         for (AudioAsStimulus stimulus : record) {
             System.out.print(stimulus.getBandLabel());
             System.out.print("  ");
