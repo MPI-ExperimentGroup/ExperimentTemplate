@@ -547,7 +547,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         final PresenterFeature tableFeature = new PresenterFeature(FeatureType.table, null);
         tableFeature.addFeatureAttributes(FeatureAttribute.styleName, "titleBarButton");
         tableFeature.addFeatureAttributes(FeatureAttribute.showOnBackButton, "true");
-        stimulusRelatedTags.getPresenterFeatureList().add(tableFeature);
+        hasMoreStimulusFeature.getPresenterFeatureList().add(tableFeature);
         final PresenterFeature rowFeature = new PresenterFeature(FeatureType.row, null);
         tableFeature.getPresenterFeatureList().add(rowFeature);
         WizardScreenData menuScreenData = storedWizardScreenData.getMenuWizardScreenData().get(0);
