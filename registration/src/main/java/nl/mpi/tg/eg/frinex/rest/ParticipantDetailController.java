@@ -22,7 +22,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import javax.servlet.ServletRequest;
 import nl.mpi.tg.eg.frinex.model.TagPairData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -60,13 +62,19 @@ public class ParticipantDetailController {
     private List<String> fineTuningSortedKeys;
 
     @RequestMapping("participantdetail")
-    public String participantDetail(@RequestParam(value = "id", required = true) String id, Model model) {
+    public String participantDetail(ServletRequest request, @RequestParam(value = "id", required = true) String id, Model model) {
 
         List<TagPairData> tagPairData = this.tagPairRepository.findByUserIdOrderByTagDateAsc(id);
 
         this.fetchCvsTables(tagPairData);
 
-        model.addAttribute("participantData", this.participantRepository.findByStaleCopyAndUserId(false, id));
+        Map<String, String[]> paramMap = request.getParameterMap();
+        boolean showStale = paramMap.containsKey("detailed");
+        if (showStale) {
+            model.addAttribute("participantData", this.participantRepository.findByUserId(id));
+        } else {
+            model.addAttribute("participantData", this.participantRepository.findByStaleCopyAndUserId(false, id));
+        }
         model.addAttribute("participantScreenData", this.screenDataRepository.findByUserIdOrderByViewDateAsc(id));
         model.addAttribute("countOfBrowserWindowClosed", this.screenDataRepository.countDistinctViewDateByUserIdAndScreenName(id, BROWSER_WINDOW_CLOSED));
         model.addAttribute("userSummary", this.userSummary);
