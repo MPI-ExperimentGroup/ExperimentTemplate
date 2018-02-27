@@ -165,7 +165,7 @@ public class RosselFieldKit {
         final WizardSelectUserScreen wizardSelectUserScreen = new WizardSelectUserScreen("Select Participant");
         wizardSelectUserScreen.setBackWizardScreen(welcomePresenter);
         wizardSelectUserScreen.setNextWizardScreen(menuScreen);
-        final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Information about the participant", "Edit User", null, "Save and continue", null, null, null, false, "Could not contact the server, please check your internet connection and try again.");
+        final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Information about the participant", "Edit User", null, "Save and continue", null, null, null, false, false, "Could not contact the server, please check your internet connection and try again.");
         editUserPresenter.setCustomFields(new String[]{"workerId:Participant ID:.'{'3,'}':Please enter at least three letters.",
             "connectionString:connection:.'{'3,'}':Please enter at least three letters."});
         final WizardAboutScreen debugScreenPresenter = new WizardAboutScreen("About this app", true);
