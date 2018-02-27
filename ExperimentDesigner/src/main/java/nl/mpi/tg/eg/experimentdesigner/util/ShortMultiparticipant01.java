@@ -49,7 +49,7 @@ public class ShortMultiparticipant01 {
                 "volgende [ spatiebalk ]"
         );
         WizardAgreementScreen agreementScreen = new WizardAgreementScreen("Accord", "agreementScreenText", "Je suis d'accord");
-        final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen("screenTitle", "screenTag", "dispalyText", "saveButtonLabel", "postText", instructionsScreen, "alternateButtonLabel", true, "on_Error_Text");
+        final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen("screenTitle", "screenTag", "dispalyText", "saveButtonLabel", "postText", instructionsScreen, "alternateButtonLabel", true, false, "on_Error_Text");
         final WizardMultiParticipantScreen multiParticipantScreen = new WizardMultiParticipantScreen("Round 8 - 4",
                 "groupMembers4", 1,
                 "A|B|C|D",
