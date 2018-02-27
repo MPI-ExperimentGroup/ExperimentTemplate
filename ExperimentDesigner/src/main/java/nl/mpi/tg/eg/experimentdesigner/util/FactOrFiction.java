@@ -354,7 +354,7 @@ public class FactOrFiction {
             "hoeveelJaarNederlands:Als Nederlands niet uw moedertaal is, hoeveel jaar leert u al Nederlands?:[0-9]*:Voer een getal in."
         };
         final String could_not_contact_the_server_please_check = "De server is niet bereikbaar. Controleer de internetverbinding en probeer opnieuw.";
-        final WizardEditUserScreen editUserScreen = new WizardEditUserScreen("Participant", "Participant", null, "Volgende", null, null, null, true, could_not_contact_the_server_please_check);
+        final WizardEditUserScreen editUserScreen = new WizardEditUserScreen("Participant", "Participant", null, "Volgende", null, null, null, true, false, could_not_contact_the_server_please_check);
         editUserScreen.setCustomFields(medataFields);
         final WizardRandomStimulusScreen groupAorBScreen = new WizardRandomStimulusScreen("Introduction", false, stimuliGroupAorB,
                 new String[]{"IntroductionAFact", "IntroductionBFiction"}, 1, true, null, 0, 0, null, null, null, null, "volgende [ spatiebalk ]");
@@ -374,7 +374,7 @@ public class FactOrFiction {
         final WizardCompletionScreen restartScreen = new WizardCompletionScreen(wil_nog_iemand_op_dit_apparaat_deelnemen_, true, true, null, "Opnieuw beginnen", "Completion", could_not_contact_the_server_please_check, retry);
         final WizardCompletionScreen registeredScreen = new WizardCompletionScreen("Leuk dat u geïnteresseerd bent. " + wil_nog_iemand_op_dit_apparaat_deelnemen_, true, true, null, "Opnieuw beginnen", "Registered", could_not_contact_the_server_please_check, retry);
         final String nog_een_keer_meedoen = wil_nog_iemand_op_dit_apparaat_deelnemen_; //"Nog een keer meedoen?";
-        final WizardEditUserScreen completionScreen = new WizardEditUserScreen("Bedankt", "Bedankt", completionScreenText, "Registreren", nog_een_keer_meedoen, restartScreen, "Opnieuw beginnen", true, could_not_contact_the_server_please_check);
+        final WizardEditUserScreen completionScreen = new WizardEditUserScreen("Bedankt", "Bedankt", completionScreenText, "Registreren", nog_een_keer_meedoen, restartScreen, "Opnieuw beginnen", true, false, could_not_contact_the_server_please_check);
         completionScreen.setCustomFields(new String[]{"emaill::^[^@]+@[^@]+$:Geef een geldig e-mailadres."});
 //        completionScreen.setBackPresenter(restartScreen);
         restartScreen.setNextWizardScreen(wizardAgreementScreen);
