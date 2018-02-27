@@ -230,7 +230,7 @@ public class GuineaPigProject {
         introductionAudio2.setBackWizardScreen(menuScreen);
         introductionAudio3.setBackWizardScreen(menuScreen);
 //        fillerStimulusScreen.setBackWizardScreen(introductionAudio3);
-        trainingStimulusScreen.setBackWizardScreen(menuScreen);
+//        trainingStimulusScreen.setBackWizardScreen(menuScreen);
         textMenuScreen.setBackWizardScreen(menuScreen);
         backScreen.setNextWizardScreenData(atticScreen.getWizardScreenData());
 
