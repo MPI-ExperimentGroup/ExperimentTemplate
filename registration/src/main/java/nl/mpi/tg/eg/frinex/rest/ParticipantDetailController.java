@@ -54,7 +54,7 @@ public class ParticipantDetailController {
     private HashMap<String, String[][]> userSummary;
     private HashMap<String, String[][]> fastTrack;
     private HashMap<String, String[][]> fineTuning;
-    
+
     private List<String> userSummarySortedKeys;
     private List<String> fastTrackSortedKeys;
     private List<String> fineTuningSortedKeys;
@@ -66,7 +66,7 @@ public class ParticipantDetailController {
 
         this.fetchCvsTables(tagPairData);
 
-        model.addAttribute("participantData", this.participantRepository.findByUserId(id));
+        model.addAttribute("participantData", this.participantRepository.findByStaleCopyAndUserId(false, id));
         model.addAttribute("participantScreenData", this.screenDataRepository.findByUserIdOrderByViewDateAsc(id));
         model.addAttribute("countOfBrowserWindowClosed", this.screenDataRepository.countDistinctViewDateByUserIdAndScreenName(id, BROWSER_WINDOW_CLOSED));
         model.addAttribute("userSummary", this.userSummary);
@@ -95,17 +95,17 @@ public class ParticipantDetailController {
         HashMap<String, ArrayList<String[]>> userSummaryHelper = new HashMap<String, ArrayList<String[]>>();
         HashMap<String, ArrayList<String[]>> fastTrackHelper = new HashMap<String, ArrayList<String[]>>();
         HashMap<String, ArrayList<String[]>> fineTuningHelper = new HashMap<String, ArrayList<String[]>>();
-        
+
         this.userSummarySortedKeys = new ArrayList<String>();
         this.fastTrackSortedKeys = new ArrayList<String>();
         this.fineTuningSortedKeys = new ArrayList<String>();
-        
+
         for (TagPairData tagPairData : bulk) {
 
             String screen = tagPairData.getScreenName();
 
             if (!userSummaryHelper.containsKey(screen)) {
-                userSummaryHelper.put(screen, new ArrayList<String[]>()); 
+                userSummaryHelper.put(screen, new ArrayList<String[]>());
                 this.userSummarySortedKeys.add(screen);
             }
             if (!fastTrackHelper.containsKey(screen)) {
@@ -115,7 +115,7 @@ public class ParticipantDetailController {
             if (!fineTuningHelper.containsKey(screen)) {
                 fineTuningHelper.put(screen, new ArrayList<String[]>());
                 this.fineTuningSortedKeys.add(screen);
-                
+
             }
 
             if (tagPairData.getEventTag().equals("user_summary")) {
@@ -134,8 +134,7 @@ public class ParticipantDetailController {
         this.userSummary = this.createOrderedTable(userSummaryHelper);
         this.fastTrack = this.createOrderedTable(fastTrackHelper);
         this.fineTuning = this.createOrderedTable(fineTuningHelper);
-        
-        
+
         Collections.sort(this.userSummarySortedKeys);
         Collections.sort(this.fastTrackSortedKeys);
         Collections.sort(this.fineTuningSortedKeys);
