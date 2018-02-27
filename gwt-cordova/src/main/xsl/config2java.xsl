@@ -588,6 +588,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;, ') else ''" />
         <xsl:value-of select="if(@animate) then concat('AnimateTypes.', @animate, ', ') else ''" />
         <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;, ') else ''" />
+        <xsl:value-of select="if(@showOnBackButton) then concat(@showOnBackButton eq 'true', ', ') else ''" />
         <xsl:value-of select="if(@autoPlay) then concat(@autoPlay, ', ') else ''" />
         <xsl:value-of select="if(@loop) then concat(@loop, ', ') else ''" />
         <xsl:value-of select="if(@showControls) then concat(@showControls, ', ') else ''" />
