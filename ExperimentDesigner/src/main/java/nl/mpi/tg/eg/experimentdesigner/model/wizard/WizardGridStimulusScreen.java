@@ -546,20 +546,21 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 
         final PresenterFeature tableFeature = new PresenterFeature(FeatureType.table, null);
         tableFeature.addFeatureAttributes(FeatureAttribute.styleName, "titleBarButton");
+        tableFeature.addFeatureAttributes(FeatureAttribute.showOnBackButton, "true");
         stimulusRelatedTags.getPresenterFeatureList().add(tableFeature);
         final PresenterFeature rowFeature = new PresenterFeature(FeatureType.row, null);
         tableFeature.getPresenterFeatureList().add(rowFeature);
         WizardScreenData menuScreenData = storedWizardScreenData.getMenuWizardScreenData().get(0);
-        final PresenterFeature menuStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, menuScreenData.getMenuLabel(), "R1_MA_BACK", menuScreenData.getMenuLabel(), "");
+        final PresenterFeature menuStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, menuScreenData.getMenuLabel() + " (O)", "R1_MA_ENTER", "R1_MA_ENTER", "");
         menuStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null);
         menuStimulusButton.addFeature(FeatureType.autoNextPresenter, null, menuScreenData.getScreenTag());
-        final PresenterFeature previousStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Prev", "R1_MA_LEFT", "Prev", "");
+        final PresenterFeature previousStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Prev (left)", "R1_MA_LEFT", "R1_MA_LEFT", "");
         previousStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null);
         previousStimulusButton.addFeature(FeatureType.prevStimulus, null, "false");
-        final PresenterFeature repeatStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Repeat", "R1_MA_DOWN", "Repeat", "");
+        final PresenterFeature repeatStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Repeat (A)", "R1_MA_A", "R1_MA_A", "");
         repeatStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null);
         repeatStimulusButton.addFeature(FeatureType.showStimulus, null);
-        final PresenterFeature nextStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, storedWizardScreenData.getNextWizardScreenData().getMenuLabel(), "R1_MA_RIGHT", storedWizardScreenData.getNextWizardScreenData().getMenuLabel(), "");
+        final PresenterFeature nextStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Next (right)", "R1_MA_RIGHT", "R1_MA_RIGHT", "");
         nextStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null);
         nextStimulusButton.addFeature(FeatureType.nextStimulus, null, "false");
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
