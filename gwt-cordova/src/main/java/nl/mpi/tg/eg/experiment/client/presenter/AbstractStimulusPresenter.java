@@ -436,6 +436,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         timedStimulusListener.postLoadTimerFired();
         ((TimedStimulusView) simpleView).endTable();
         if (showOnBackButton) {
+            tableWidget.setVisible(false);
+            // todo: backEventListners list should be emptied on screen clear etc
             backEventListners.add(new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
@@ -1481,6 +1483,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         nextButtonEventListnerList.clear(); // clear this now to prevent refires of the event
         stimulusFreeTextList.clear();
         buttonList.clear();
+        backEventListners.clear();
         showStimulus(null, increment);
     }
 
@@ -1522,6 +1525,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).clearPage();
         stimulusFreeTextList.clear();
         buttonList.clear();
+        backEventListners.clear();
         ((TimedStimulusView) simpleView).addText("Waiting for a group response."); // + eventTag + ":" + originPhase + ":" + incrementPhase + ":" + groupParticipantService.getRequestedPhase());
     }
 
@@ -1557,6 +1561,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 stimulusFreeTextList.clear();
                 buttonList.clear();
                 nextButtonEventListnerList.clear(); // clear this now to prevent refires of the event
+                backEventListners.clear();
             }
         };
         nextButtonEventListnerList.add(eventListner);
