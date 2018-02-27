@@ -20,6 +20,9 @@ package nl.mpi.tg.eg.experiment.client;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.logical.shared.CloseEvent;
 import com.google.gwt.event.logical.shared.CloseHandler;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.Window.ClosingEvent;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
@@ -137,6 +140,13 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
 
     public void start() {
         setBackButtonAction();
+        History.addValueChangeHandler(new ValueChangeHandler<String>() {
+            @Override
+            public void onValueChange(ValueChangeEvent<String> event) {
+                // this causes both back and forward history actions to trigger the back action, however no forward navigation will available unless the back action is to hide/show the stimuli menu, in which case it is ok
+                backAction();
+            }
+        });
         try {
             submissionService.submitScreenChange(userResults.getUserData().getUserId(), "ApplicationStarted");
             // application specific information
