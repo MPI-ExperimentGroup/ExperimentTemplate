@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioAsStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Trial;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialCondition;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialTuple;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.WordType;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audioaspool.AudioIndexMap;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -130,7 +131,7 @@ public class AudioAsStimuliProviderTest {
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
         assertTrue(this.instance.allTupleIsCorrect()); // initially the tuple is set correct, it will change to false once it hist first wron answer
-        this.instance.getTrialTuple().setCorrectness(false); 
+        this.instance.getTrialTuple().setCorrectness(false);
         assertFalse(this.instance.allTupleIsCorrect());
     }
 
@@ -142,22 +143,22 @@ public class AudioAsStimuliProviderTest {
         System.out.println("isCorrectResponse");
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
-        
+
         this.instance.hasNextStimulus(0);
         this.instance.nextStimulus(0);
         AudioAsStimulus audioStimulus = this.instance.getCurrentStimulus();
         Stimulus stimulus = audioStimulus; // upcasting
-        
+
         assertTrue(instance.isCorrectResponse(stimulus, null));
         assertTrue(instance.getTrialTuple().getCorrectness());
         assertTrue(instance.isCorrectResponse(stimulus, ""));
         assertTrue(instance.getTrialTuple().getCorrectness());
-        
+
         this.instance.hasNextStimulus(0);
         this.instance.nextStimulus(0);
         AudioAsStimulus audioStimulus2 = this.instance.getCurrentStimulus();
         Stimulus stimulus2 = audioStimulus2; // upcasting
-        
+
         String correctResponse = audioStimulus2.getCorrectResponses();
         assertTrue(instance.isCorrectResponse(stimulus2, correctResponse));
         assertTrue(instance.getTrialTuple().getCorrectness());
@@ -165,12 +166,209 @@ public class AudioAsStimuliProviderTest {
         if (correctResponse == null) {
             wrongResponse = AudioAsStimulus.AUDIO_RATING_LABEL;
         } else {
-            if (correctResponse.length()==0) {
-               wrongResponse = AudioAsStimulus.AUDIO_RATING_LABEL; 
+            if (correctResponse.length() == 0) {
+                wrongResponse = AudioAsStimulus.AUDIO_RATING_LABEL;
             }
         }
         assertFalse(instance.isCorrectResponse(stimulus2, wrongResponse));
         assertFalse(instance.getTrialTuple().getCorrectness());
     }
 
+    /**
+     * Test of initialiseNextFineTuningTuple method, of class
+     * AudioAsStimuliProvider.
+     */
+    @Test
+    public void testInitialiseNextFineTuningTuple() {
+        System.out.println("initialiseNextFineTuningTuple");
+
+        String stimuliStateSnapshot = "";
+        this.instance.initialiseStimuliState(stimuliStateSnapshot);
+
+        while (this.instance.getTrialTuple().isNotEmpty()) {
+            this.instance.getTrialTuple().removeFirstAvailableStimulus();
+        }
+
+        boolean result = this.instance.initialiseNextFineTuningTuple();
+        assertEquals(this.tupleSize, this.instance.getTrialTuple().getTrials().size());
+        assertTrue(this.instance.getTrialTuple().getCorrectness());
+    }
+
+    /**
+     * Test of tupleIsNotEmpty method, of class AudioAsStimuliProvider.
+     */
+    @Test
+    public void testTupleIsNotEmpty() {
+        System.out.println("tupleIsNotEmpty");
+
+        String stimuliStateSnapshot = "";
+        this.instance.initialiseStimuliState(stimuliStateSnapshot);
+
+        for (int i = 0; i < this.tupleSize; i++) {
+            assertTrue(this.instance.getTrialTuple().getTrials().get(i).getStimuliList().size() > 1);
+        }
+
+        while (this.instance.getTrialTuple().isNotEmpty()) {
+            this.instance.getTrialTuple().removeFirstAvailableStimulus();
+        }
+
+        for (int i = 0; i < this.tupleSize; i++) {
+            assertEquals(0, this.instance.getTrialTuple().getTrials().get(i).getStimuliList().size());
+        }
+
+    }
+
+    /**
+     * Test of getTrialTuple method, of class AudioAsStimuliProvider.
+     */
+    @Test
+    public void testGetTrialTuple() {
+        System.out.println("getTrialTuple");
+        System.out.println("tupleIsNotEmpty");
+
+        String stimuliStateSnapshot = "";
+        this.instance.initialiseStimuliState(stimuliStateSnapshot);
+
+        for (int i = 0; i < this.tupleSize; i++) {
+            Trial trial = this.instance.getTrialTuple().getTrials().get(i);
+            TrialCondition cond = trial.getCondition();
+            ArrayList<AudioAsStimulus> stimuli = trial.getStimuliList();
+            assertTrue(stimuli.size() > 1);
+            int countFoil = 0;
+            int countTarget = 0;
+            int countNonWord = 0;
+            for (AudioAsStimulus stimulus : stimuli) {
+                if (stimulus.getWordType().equals(WordType.FOIL)) {
+                    countFoil++;
+                }
+                if (stimulus.getWordType().equals(WordType.TARGET_NON_WORD)) {
+                    countTarget++;
+                }
+                if (stimulus.getWordType().equals(WordType.NON_WORD)) {
+                    countNonWord++;
+                }
+            }
+            if (cond.equals(TrialCondition.NO_TARGET)) {
+                assertEquals(0, countFoil);
+                assertEquals(0, countTarget);
+                assertEquals(stimuli.size() - 1, countNonWord);
+            }
+            if (cond.equals(TrialCondition.TARGET_ONLY)) {
+                assertEquals(0, countFoil);
+                assertEquals(1, countTarget);
+                assertEquals(stimuli.size() - 2, countNonWord);
+            }
+            if (cond.equals(TrialCondition.TARGET_AND_FOIL)) {
+                assertEquals(1, countFoil);
+                assertEquals(1, countTarget);
+                assertEquals(stimuli.size() - 3, countNonWord);
+            }
+        }
+
+    }
+
+    /**
+     * Test of hasNextStimulus method, of class AudioAsStimuliProvider.
+     */
+    @Test
+    public void testHasNextStimulus() {
+        System.out.println("hasNextStimulus");
+        String stimuliStateSnapshot = "";
+        this.instance.initialiseStimuliState(stimuliStateSnapshot);
+        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
+        assertTrue(this.instance.hasNextStimulus(0));
+        this.instance.nextStimulus(0);
+    }
+
+    /**
+     * Test of hasNextStimulus method, of class AudioAsStimuliProvider.
+     */
+    @Test
+    public void testHasNextStimulusChampion() {
+        System.out.println("hasNextStimulus");
+        String stimuliStateSnapshot = "";
+        this.instance.initialiseStimuliState(stimuliStateSnapshot);
+        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
+
+        int i = 0;
+        while (this.instance.hasNextStimulus(i)) {
+            this.instance.nextStimulus(i);
+            AudioAsStimulus audioStimulus = this.instance.getCurrentStimulus();
+            Stimulus stimulus = audioStimulus;
+            String correctResponce = audioStimulus.getCorrectResponses();
+            this.instance.isCorrectResponse(stimulus, correctResponce);
+            i++;
+        }
+
+        assertTrue(this.instance.getChampion());
+        assertFalse(this.instance.getCycel2());
+        assertFalse(this.instance.getLooser());
+        assertEquals(this.numberOfBands, this.instance.getBandScore());
+
+        ArrayList<AudioAsStimulus> record = this.instance.getResponseRecord();
+        this.printRecord(record);
+        
+    }
+
+    /**
+     * Test of hasNextStimulus method, of class AudioAsStimuliProvider.
+     */
+    @Test
+    public void testHasNextStimulusLooser() {
+        System.out.println("hasNextStimulus");
+        String stimuliStateSnapshot = "";
+        this.instance.initialiseStimuliState(stimuliStateSnapshot);
+        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
+
+        int i = 0;
+        boolean disturt = false;
+        while (this.instance.hasNextStimulus(i)) {
+            this.instance.nextStimulus(i);
+            AudioAsStimulus audioStimulus = this.instance.getCurrentStimulus();
+            Stimulus stimulus = audioStimulus;
+            String correctResponce = audioStimulus.getCorrectResponses();
+            i++;
+            if (disturt) {
+                if (correctResponce == null) {
+                    this.instance.isCorrectResponse(stimulus, "YES");
+                } else {
+                    if (correctResponce.equals("YES")) {
+                        this.instance.isCorrectResponse(stimulus, "");
+                    } else {
+                       this.instance.isCorrectResponse(stimulus, "YES"); 
+                    }
+                }
+            } else {
+                this.instance.isCorrectResponse(stimulus, correctResponce);
+            }
+            if (audioStimulus.getWordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
+                disturt = true;
+            } else {
+                disturt = false;
+            }
+        }
+
+        assertFalse(this.instance.getChampion());
+        assertFalse(this.instance.getCycel2());
+        assertTrue(this.instance.getLooser());
+        assertEquals(1, this.instance.getBandScore());
+
+        ArrayList<AudioAsStimulus> record = this.instance.getResponseRecord();
+        this.printRecord(record);
+    }
+    
+    private void printRecord(ArrayList<AudioAsStimulus> record){
+        for (AudioAsStimulus stimulus : record) {
+            System.out.print(stimulus.getBandLabel());
+            System.out.print("  ");
+            System.out.print(stimulus.getLabel());
+            System.out.print("  ");
+            System.out.print(stimulus.getWordType());
+            System.out.print("  ");
+            System.out.print(stimulus.getCorrectResponses());
+            System.out.print("  ");
+            System.out.print(stimulus.getReaction());
+            System.out.println();
+        }
+    }
 }

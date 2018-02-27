@@ -18,7 +18,6 @@
 package utils;
 
 import java.util.ArrayList;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audioaspool.AudioIndexMap;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

@@ -490,8 +490,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     protected boolean fineTuningToBeContinuedWholeTuple() {
 
         boolean retVal;
-        int currentBandNumber = this.currentBandIndex + 1; // memoise currentBandNumber == index +1
-
+        
         if (this.tupleIsNotEmpty()) {
             // we have not hit the last atom in the tuple yet
             // continue
@@ -528,6 +527,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
             }
         }
         if (retVal) {
+            int currentBandNumber = this.currentBandIndex + 1; // memoise currentBandNumber == index +1
             shiftFIFO(cycle2helper, currentBandNumber); // update the loop detector
             // check if there are enough stimuli left
             this.enoughFineTuningStimulae = this.initialiseNextFineTuningTuple();
