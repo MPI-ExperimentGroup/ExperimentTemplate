@@ -41,7 +41,7 @@ public class WizardScreenTest {
             new WizardAgreementScreen("screenTitle", "screenText", "agreementButtonLabel"),
             new WizardAudioTestScreen("screenName", "pageText", "buttonLabel", "audioPath"),
             new WizardCompletionScreen("completedText1", true, true, "completedText2", "eraseUsersDataButtonlabel", "screenTitle", "could_not_contact_the_server_please_check", "retryButtonLabel"),
-            new WizardEditUserScreen("screenTitle", "screenTag", "dispalyText", "saveButtonLabel", "postText", new WizardAboutScreen("screenTitle", true), "alternateButtonLabel", true, "on_Error_Text"),
+            new WizardEditUserScreen("screenTitle", "screenTag", "dispalyText", "saveButtonLabel", "postText", new WizardAboutScreen("screenTitle", true), "alternateButtonLabel", true, false, "on_Error_Text"),
             new WizardScoreThresholdScreen("screenText1", 8, "screenTitle", new WizardAboutScreen("screenTitle", true), "retryButton"),
             new WizardTextScreen("screenName", "screenText", "nextButtonLabel"),
             new WizardMenuScreen("screenTitle", "menuLabel", "screenTag"),
