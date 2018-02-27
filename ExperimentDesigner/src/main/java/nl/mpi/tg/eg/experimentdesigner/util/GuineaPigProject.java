@@ -198,7 +198,7 @@ public class GuineaPigProject {
         wizardData.addScreen(completionScreen);
         completionScreen.setScreenTag("completion");
 
-        WizardAudioTestScreen atticScreen = new WizardAudioTestScreen("Attic", "&nbsp;", "continue button", "room_5");
+        WizardAudioTestScreen atticScreen = new WizardAudioTestScreen("Attic", "&nbsp;", "completion", "room_5");
         wizardData.addScreen(atticScreen);
         atticScreen.setBackgroundImage(backgroundImage);
         atticScreen.setBackgroundStyle("zoomToAttic");
