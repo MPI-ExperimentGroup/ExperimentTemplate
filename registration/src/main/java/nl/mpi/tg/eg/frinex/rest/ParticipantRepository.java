@@ -38,7 +38,7 @@ public interface ParticipantRepository extends PagingAndSortingRepository<Partic
 //    Participant findById(@Param("id") long id);
     Page<Participant> findByStaleCopy(@Param("staleCopy") boolean staleCopy, Pageable pageable);
 
-    List<Participant> findByUserId(@Param("userId") String userId);
+    List<Participant> findByStaleCopyAndUserId(@Param("staleCopy") boolean staleCopy, @Param("userId") String userId);
 
 //    @Query("select distinct new Participant() from Participant order by submitDate desc")
     List<Participant> findAllByOrderBySubmitDateDesc();
