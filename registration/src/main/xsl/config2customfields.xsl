@@ -56,6 +56,10 @@
                 return id;
                 }
 
+                public boolean getStaleCopy() {
+                return staleCopy;
+                }
+                
                 public String getUserId() {
                 return userId;
                 }
@@ -363,6 +367,7 @@
         &lt;table&gt;
                     &lt;tr th:fragment="participantheader"&gt;
                     &lt;th th:if="${param.detailed}"&gt;&lt;a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;amp;sort=id'"&gt;ID&lt;/a&gt;&lt;/th&gt;
+                    &lt;th th:if="${param.detailed}"&gt;&lt;a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;amp;sort=staleCopy'"&gt;Stale&lt;/a&gt;&lt;/th&gt;
                     &lt;th th:if="${param.detailed}"&gt;&lt;a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;amp;sort=userId'"&gt;UUID&lt;/a&gt;&lt;/th&gt;
                     &lt;th th:if="${param.detailed}"&gt;&lt;a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;amp;sort=userAgent'"&gt;User Agent&lt;/a&gt;&lt;/th&gt;
                     &lt;th th:if="${param.detailed}"&gt;&lt;a th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;amp;sort=acceptLang'"&gt;Browser Language&lt;/a&gt;&lt;/th&gt;
@@ -382,6 +387,7 @@
                 &lt;/tr&gt;
                     &lt;tr th:fragment="participantrows"&gt;
                     &lt;td th:if="${param.detailed}" th:text="${participant.id}"&gt;id&lt;/td&gt;
+                    &lt;td th:if="${param.detailed}" th:text="${participant.staleCopy}"&gt;staleCopy&lt;/td&gt;
                     &lt;td th:if="${param.detailed}" th:text="${participant.userId}"&gt;userId&lt;/td&gt;
                     &lt;td th:if="${param.detailed}" th:text="${participant.userAgent}"&gt;userAgent&lt;/td&gt;
                     &lt;td th:if="${param.detailed}" th:text="${participant.acceptLang}"&gt;acceptLang&lt;/td&gt;
