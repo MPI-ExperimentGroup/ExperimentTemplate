@@ -27,6 +27,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardExistingUserCheckScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardGridStimulusScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardOfflineCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSelectUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
@@ -79,7 +80,8 @@ public class GuineaPigProject {
         wizardEditUserScreen.setMenuLabel("Terug");
         wizardEditUserScreen.setScreenTag("Edit User");
         wizardEditUserScreen.setNextButton("Volgende");
-        wizardEditUserScreen.setSendData(false);
+        wizardEditUserScreen.setSendData(true);
+        wizardEditUserScreen.setIgnoreNetworkError(true);
         wizardEditUserScreen.setOn_Error_Text("Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.");
         wizardEditUserScreen.setCustomFields(new String[]{
             "workerId:Proefpersoon ID:.'{'3,'}':Voer minimaal drie letters.", // @todo: update the regex to date format and in the future add a calandar popup
@@ -134,10 +136,10 @@ public class GuineaPigProject {
             //@todo: blank screen with audio 1
             //@todo: videos and audio 2
             //@todo: still of video and audio 3 with touch input can be collected during audio 1 2 and 3, touch input does not cause any action, only the remote can move to the next stimulus
-            {{{"Test 1", "zoomToBlock1", "room_1"}, {}}, {{"test_1", "adjacency_a"}, {"test_2", "adjacency_b"}, {"filler_1", "filler_1"}}},
-            {{{"Test 2", "zoomToBlock2", "room_2"}, {}}, {{"test_3", "adjacency_c"}, {"test_4", "adjacency_d"}, {"filler_2", "filler_2"}}},
-            {{{"Test 3", "zoomToBlock3", "room_3"}, {}}, {{"test_5", "adjacency_a"}, {"test_6", "adjacency_b"}, {"filler_3", "filler_3"}}},
-            {{{"Test 4", "zoomToBlock4", "room_4"}, {}}, {{"test_7", "adjacency_c"}, {"test_8", "adjacency_d"}, {"filler_4", "filler_4"}}},};
+            {{{"Test 1", "zoomToBlock1", "room_1"}, {}}, {{"test_1", "adjacency_a"}, {"test_8", "adjacency_b"}, {"filler_1", "filler_1"}}},
+            {{{"Test 2", "zoomToBlock2", "room_2"}, {}}, {{"test_2", "adjacency_c"}, {"test_3", "adjacency_d"}, {"filler_3", "filler_3"}}},
+            {{{"Test 3", "zoomToBlock3", "room_3"}, {}}, {{"test_5", "adjacency_a"}, {"test_4", "adjacency_b"}, {"filler_2", "filler_2"}}},
+            {{{"Test 4", "zoomToBlock4", "room_4"}, {}}, {{"test_6", "adjacency_c"}, {"test_7", "adjacency_d"}, {"filler_4", "filler_4"}}},};
         String[][] trainingList = new String[][]{
             {"training_1", "training_1"}, {"training_2", "training_2"}, {"training_3", "training_3"}, {"training_4", "training_4"}
         };
@@ -208,10 +210,10 @@ public class GuineaPigProject {
         atticScreen.setNextHotKey("ENTER");
         atticScreen.setImageStyle("zoomToPlayroom");
         atticScreen.setButtonStyle("titleBarButton");
-        atticScreen.setBackWizardScreen(menuScreen);
+//        atticScreen.setBackWizardScreen(menuScreen);
         atticScreen.setNextWizardScreen(completionScreen);
         bluetoothInstructionsScreen.setBackWizardScreen(menuScreen);
-        bluetoothInstructionsScreen.setNextWizardScreen(introductionAudio1);
+        bluetoothInstructionsScreen.setNextWizardScreen(existingUserCheckScreen);
 
 //        existingUserCheckScreen.setNextWizardScreen(selectUserScreen);
         selectUserScreen.setBackWizardScreen(existingUserCheckScreen);
@@ -233,6 +235,10 @@ public class GuineaPigProject {
 //        trainingStimulusScreen.setBackWizardScreen(menuScreen);
         textMenuScreen.setBackWizardScreen(menuScreen);
         backScreen.setNextWizardScreenData(atticScreen.getWizardScreenData());
+
+        WizardOfflineCompletionScreen offlineCompletionScreen = new WizardOfflineCompletionScreen();
+        wizardData.addScreen(offlineCompletionScreen);
+        offlineCompletionScreen.setBackWizardScreen(menuScreen);
 
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
         wizardAboutScreen.setBackWizardScreen(menuScreen);
