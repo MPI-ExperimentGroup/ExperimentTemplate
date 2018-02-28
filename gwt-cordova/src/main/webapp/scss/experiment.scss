@@ -947,9 +947,14 @@ table#screenExample td {
     border-style: solid;
     padding: 10px 10px;
 } 
+.debugLabel {
+    bottom: 30px;
+}
 .recordingLabel, .notRecordingLabel {
-    right: 0;
     top: 0;
+}
+.recordingLabel, .notRecordingLabel, .debugLabel {
+    right: 0;
     position: fixed;
     border-radius: 20px;
     height: 30px;
@@ -958,7 +963,7 @@ table#screenExample td {
     padding: 5px;
     font-size: 15pt;
 }
-.recordingLabel {
+.recordingLabel, .debugLabel {
     background: red;
     color: white;
 }
