@@ -127,9 +127,9 @@ public abstract class LocalStoragePresenter extends AbstractPresenter {
 
                 @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
-                    final HTML simuliValidationHtmlText = ((ComplexView) simpleView).addHtmlText("simuliValidation: " + tag.name());
-                    final HTML sampleCount = ((ComplexView) simpleView).addHtmlText("sampleCount");
-                    final HTML uniqueCount = ((ComplexView) simpleView).addHtmlText("uniqueCount");
+                    final HTML simuliValidationHtmlText = ((ComplexView) simpleView).addHtmlText("simuliValidation: " + tag.name(), null);
+                    final HTML sampleCount = ((ComplexView) simpleView).addHtmlText("sampleCount", null);
+                    final HTML uniqueCount = ((ComplexView) simpleView).addHtmlText("uniqueCount", null);
                     final FlexTable outputTable = new FlexTable();
                     ((ComplexView) simpleView).addWidget(outputTable);
                     final FlexTable transitionTable = new FlexTable();
