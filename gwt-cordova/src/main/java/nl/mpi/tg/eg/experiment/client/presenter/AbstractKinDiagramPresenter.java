@@ -143,7 +143,7 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
 //        ((TimedStimulusView) simpleView).addSvgImage(UriUtils.fromString("http://ems12.mpi.nl:80/kinoath-rest/kinoath/getkin/svg?kts=" + kinTypeString), 100, postLoadMs, timedStimulusListener);        
         } catch (IOException | KinElementException | OldFormatException | UnsortablePointsException exception) {
 //            // todo: handle such errors in a more user friendly way
-            ((TimedStimulusView) simpleView).addHtmlText(exception.getMessage());
+            ((TimedStimulusView) simpleView).addHtmlText(exception.getMessage(), null);
         }
     }
 
@@ -156,7 +156,7 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
     }
 
     public void addKinTypeGui(final AppEventListner appEventListner, final String diagramName) {
-        ((KinTypeView) simpleView).addHtmlText(loadKinTypeString(diagramName));
+        ((KinTypeView) simpleView).addHtmlText(loadKinTypeString(diagramName), null);
         ((KinTypeView) simpleView).addKinTypeGui();
         ((KinTypeView) simpleView).addOptionButton(new PresenterEventListner() {
 
@@ -173,7 +173,7 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 saveKinTypeString(diagramName, ((KinTypeView) simpleView).getKinTypeString());
-                ((TimedStimulusView) simpleView).clearPage();
+                ((TimedStimulusView) simpleView).clearPageAndTimers(null);
                 setContent(appEventListner);
                 submissionService.submitTimeStamp(userResults.getUserData().getUserId(), "AddToDiagram", duration.elapsedMillis());
             }
@@ -210,7 +210,7 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 clearKinTypeString(diagramName);
-                ((TimedStimulusView) simpleView).clearPage();
+                ((TimedStimulusView) simpleView).clearPageAndTimers(null);
                 setContent(appEventListner);
                 submissionService.submitTimeStamp(userResults.getUserData().getUserId(), "ClearDiagram", duration.elapsedMillis());
             }
