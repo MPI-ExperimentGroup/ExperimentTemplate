@@ -126,6 +126,22 @@ public abstract class AbstractPresenter implements Presenter {
         widgetTag.add(simpleView);
     }
 
+    protected void addText(String textString) {
+        ((ComplexView) simpleView).addText(textString);
+    }
+
+    protected void addHtmlText(String textString) {
+        ((ComplexView) simpleView).addHtmlText(textString, null);
+    }
+
+    protected void addHtmlText(String textString, String styleName) {
+        ((ComplexView) simpleView).addHtmlText(textString, styleName);
+    }
+
+    protected void addPadding() {
+        ((ComplexView) simpleView).addPadding();
+    }
+
     public void actionFooterButton(final PresenterEventListner presenterListerner) {
         ((ComplexView) simpleView).addFooterButton(presenterListerner);
     }
