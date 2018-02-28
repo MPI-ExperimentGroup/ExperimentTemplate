@@ -156,11 +156,7 @@ public class ComplexView extends SimpleView {
         return (cellPanel != null) ? cellPanel : (horizontalPanel != null) ? horizontalPanel : outerPanel;
     }
 
-    public void clearPage() {
-        clearPage(null);
-    }
-
-    public void clearPage(String styleName) {
+    public void clearPageAndTimers(String styleName) {
         outerPanel.clear();
         if (styleName != null && !styleName.isEmpty()) {
             outerPanel.setStyleName(styleName);
@@ -175,10 +171,6 @@ public class ComplexView extends SimpleView {
     public void addText(String textString) {
         HTML html = new HTML(new SafeHtmlBuilder().appendEscapedLines(textString).toSafeHtml());
         getActivePanel().add(html);
-    }
-
-    public HTML addHtmlText(String textString) {
-        return addHtmlText(textString, null);
     }
 
     public HTML addHtmlText(String textString, String styleName) {
@@ -424,6 +416,7 @@ public class ComplexView extends SimpleView {
         for (HandlerRegistration domHandler : domHandlerArray) {
             domHandler.removeHandler();
         }
+        domHandlerArray.clear();
     }
 
     public StimulusButton addImageButton(final PresenterEventListner presenterListerner, final SafeUri imagePath, final String styleName, final boolean isTouchZone) {
