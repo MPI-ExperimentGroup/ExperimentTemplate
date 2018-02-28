@@ -133,12 +133,13 @@ public class TimedStimulusView extends ComplexView {
     }
 
     @Override
-    public void clearPage() {
+    public void clearPageAndTimers(String styleName) {
         stopTimers();
         stopAudio();
         stopVideo();
         this.getElement().getStyle().setBackgroundImage(null);
-        super.clearPage();
+        super.clearPageAndTimers(styleName);
+        videoList.clear();
     }
 
     public void addTimedImage(SafeUri imagePath, final String styleName, final int postLoadMs, final TimedStimulusListener shownStimulusListener, final TimedStimulusListener timedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
@@ -467,5 +468,6 @@ public class TimedStimulusView extends ComplexView {
                 timer.cancel();
             }
         }
+        timerList.clear();
     }
 }
