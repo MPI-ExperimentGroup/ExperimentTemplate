@@ -304,20 +304,20 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
     </xsl:template>
     <xsl:template match="text()" /><!--prevent text nodes slipping into the output-->
     <xsl:template match="htmlText">
-        <xsl:text>    ((ComplexView) simpleView).addHtmlText(messages.</xsl:text>
+        <xsl:text>    addHtmlText(messages.</xsl:text>
         <xsl:value-of select="generate-id(.)" />
         <xsl:text>(), </xsl:text>
         <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else 'null'" />
         <xsl:text>);</xsl:text>
     </xsl:template>
     <xsl:template match="plainText">
-        <xsl:text>    ((ComplexView) simpleView).addText(messages.</xsl:text>
+        <xsl:text>    addText(messages.</xsl:text>
         <xsl:value-of select="generate-id(.)" />
         <xsl:text>());
         </xsl:text>
     </xsl:template>
     <!--    <xsl:template match="image">
-        <xsl:text>    ((ComplexView) simpleView).</xsl:text>
+        <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>                
         <xsl:text>"</xsl:text>
@@ -460,7 +460,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         </xsl:text>
     </xsl:template>
     <xsl:template match="centrePage|clearPage|addPadding">
-        <xsl:text>    ((ComplexView) simpleView).</xsl:text>    
+        <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
         <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else ''" />
@@ -633,13 +633,13 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         </xsl:if>
     </xsl:template>
     <xsl:template match="userInfo">
-        <xsl:text>    ((ComplexView) simpleView).addHtmlText(messages.</xsl:text>
+        <xsl:text>    addHtmlText(messages.</xsl:text>
         <xsl:value-of select="generate-id(.)" />
         <xsl:text>(userNameValue, userResults.getUserData().getUserId().toString()));
         </xsl:text>
     </xsl:template>
     <xsl:template match="versionData">
-        <xsl:text>    ((ComplexView) simpleView).addText("Framework For Interactive Experiments\n" + "Version: " + version.majorVersion() + "."
+        <xsl:text>    addText("Framework For Interactive Experiments\n" + "Version: " + version.majorVersion() + "."
             + version.minorVersion() + "."
             + version.buildVersion() + "-"
             + version.projectVersion() + "\n"
