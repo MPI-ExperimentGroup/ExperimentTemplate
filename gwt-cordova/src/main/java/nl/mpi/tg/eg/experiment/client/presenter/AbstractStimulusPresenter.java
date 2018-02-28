@@ -31,6 +31,7 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import java.util.ArrayList;
@@ -114,6 +115,17 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         this.userResults = userResults;
         this.localStorage = localStorage;
         this.stimulusProvider = stimulusProvider;
+
+//        final Label debugLabel = new Label();
+//        debugLabel.setStyleName("debugLabel");
+//        new Timer() {
+//            public void run() {
+//                final String debugString = "BEL:" + backEventListners.size() + "PT:" + pauseTimers.size() + "NB:" + nextButtonEventListnerList.size() + "FT:" + stimulusFreeTextList.size() + "TL:" + triggerListeners.size() + "BL:" + buttonList.size();
+//                debugLabel.setText(debugString);
+//                ((TimedStimulusView) simpleView).addWidget(debugLabel);
+//                schedule(1000);
+//            }
+//        }.schedule(1000);
     }
 
     @Override
@@ -228,7 +240,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         stimulusProvider.getSdCardSubset(directoryTagArray, directoryList, new TimedStimulusListener() {
             @Override
             public void postLoadTimerFired() {
-                ((TimedStimulusView) simpleView).clearPage();
+                clearPage();
                 if (directoryList.isEmpty()) {
                     showStimulus(null, 0);
                 } else {
@@ -464,10 +476,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void pause(int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-        Timer timer = new Timer() {
+        final Timer timer = new Timer() {
             @Override
             public void run() {
                 timedStimulusListener.postLoadTimerFired();
+                pauseTimers.remove(this);
             }
         };
         pauseTimers.add(timer);
@@ -572,7 +585,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 @Override
                 public void postLoadTimerFired() {
                     // do not clear the screen at this point because reconnects when the stimuli list is at the end will need to keep its UI items
-                    ((ComplexView) simpleView).clearPage();
+                    clearPage();
                     ((ComplexView) simpleView).addPadding();
                     if (groupParticipantService.isConnected()) {
                         ((ComplexView) simpleView).addText("connected, waiting for other members");
@@ -585,7 +598,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }, new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
-                    ((ComplexView) simpleView).clearPage();
+                    clearPage();
                     ((ComplexView) simpleView).addPadding();
 //                    ((ComplexView) simpleView).addText("connected: " + groupParticipantService.isConnected());
                     ((ComplexView) simpleView).addHtmlText("Group not ready", "highlightedText");
@@ -856,7 +869,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         final SdCardImageCapture sdCardImageCapture = new SdCardImageCapture(new TimedStimulusListener() {
             @Override
             public void postLoadTimerFired() {
-                ((TimedStimulusView) simpleView).clearPage();
+                clearPage();
                 // cause the taken image to be shown
                 hasMoreStimulusListener.postLoadTimerFired();
             }
@@ -1433,7 +1446,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         return false;
     }*/
     protected void clearStimulus() {
-        ((TimedStimulusView) simpleView).clearPage();
+        // when is this used?
+        clearPage();
         buttonList.clear();
     }
 
@@ -1476,15 +1490,23 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             stimulusProvider.pushCurrentStimulusToEnd();
         }
         userResults.getUserData().clearCurrentResponse();
+        clearPage();
+        showStimulus(null, increment);
+    }
+
+    protected void clearPage() {
+        clearPage(null);
+    }
+
+    protected void clearPage(String styleName) {
         ((TimedStimulusView) simpleView).stopTimers();
         ((TimedStimulusView) simpleView).stopAudio();
         ((TimedStimulusView) simpleView).stopVideo();
-        ((TimedStimulusView) simpleView).clearPage();
+        ((TimedStimulusView) simpleView).clearPageAndTimers(styleName);
         nextButtonEventListnerList.clear(); // clear this now to prevent refires of the event
         stimulusFreeTextList.clear();
         buttonList.clear();
         backEventListners.clear();
-        showStimulus(null, increment);
     }
 
     protected void playVideo() {
@@ -1521,11 +1543,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         if (groupParticipantService != null) {
             groupParticipantService.messageGroup(originPhase, incrementPhase, uniqueId, Integer.toString(stimulusProvider.getCurrentStimulusIndex()), groupParticipantService.getMessageString(), groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId(), (int) userResults.getUserData().getCurrentScore(), expectedRespondents);
         }
-        ((TimedStimulusView) simpleView).stopAudio();
-        ((TimedStimulusView) simpleView).clearPage();
-        stimulusFreeTextList.clear();
-        buttonList.clear();
-        backEventListners.clear();
+        clearPage();
         ((TimedStimulusView) simpleView).addText("Waiting for a group response."); // + eventTag + ":" + originPhase + ":" + incrementPhase + ":" + groupParticipantService.getRequestedPhase());
     }
 
@@ -1556,12 +1574,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 }
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), eventTag, (stimulusProvider.getCurrentStimulusIndex() < stimulusProvider.getTotalStimuli()) ? stimulusProvider.getCurrentStimulus().getUniqueId() : null, messageString, duration.elapsedMillis());
                 groupParticipantService.messageGroup(originPhase, incrementPhase, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), messageString, groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId(), (int) userResults.getUserData().getCurrentScore(), expectedRespondents);
-                ((TimedStimulusView) simpleView).stopAudio();
-                ((TimedStimulusView) simpleView).clearPage();
-                stimulusFreeTextList.clear();
-                buttonList.clear();
-                nextButtonEventListnerList.clear(); // clear this now to prevent refires of the event
-                backEventListners.clear();
+                clearPage();
             }
         };
         nextButtonEventListnerList.add(eventListner);
