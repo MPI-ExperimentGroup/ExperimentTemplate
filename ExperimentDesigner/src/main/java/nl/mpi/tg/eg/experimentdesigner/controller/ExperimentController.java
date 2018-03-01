@@ -45,6 +45,7 @@ import nl.mpi.tg.eg.experimentdesigner.util.Parcours;
 import nl.mpi.tg.eg.experimentdesigner.util.RdExperiment02;
 import nl.mpi.tg.eg.experimentdesigner.util.RosselFieldKit;
 import nl.mpi.tg.eg.experimentdesigner.util.Sara01;
+import nl.mpi.tg.eg.experimentdesigner.util.SentenceCompletion;
 import nl.mpi.tg.eg.experimentdesigner.util.SentencesRatingTask;
 import nl.mpi.tg.eg.experimentdesigner.util.ShawiFieldKit;
 import nl.mpi.tg.eg.experimentdesigner.util.ShortMultiparticipant01;
@@ -214,7 +215,7 @@ public class ExperimentController {
                     wizardData = new ManipulatedContours().getWizardData();
                     break;
                 case "Parcours01":
-                    wizardData = new Parcours().getWizardData();
+                    wizardData = new SentenceCompletion(new Parcours()).getWizardData();
                     break;
                 case "ShortMultiparticipant01":
                     wizardData = new ShortMultiparticipant01().getWizardData();
@@ -252,6 +253,7 @@ public class ExperimentController {
 //        experimentRepository.save(createdExperiment);
         model.addAttribute("contextPath", request.getContextPath());
         model.addAttribute("detailType", "translations");
+//        model.addAttribute("localeList", translationRepository.getAllLocales());
         model.addAttribute("localeList", new String[]{"en", "nl", "de", "ru"}); // todo: add a qeury for the local list
         model.addAttribute("translationTexts", translationRepository.findAll());
         return "design";
