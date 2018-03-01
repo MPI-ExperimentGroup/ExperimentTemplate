@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.util;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -101,10 +102,9 @@ public class AllWizardDataTest {
     }
 
     private void testDeserialiseWizardUtil(final File serialisedFile) throws IOException, JAXBException, URISyntaxException {
-        JAXBContext jaxbContext = JAXBContext.newInstance(SentenceCompletion.class);
-        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-        SentenceCompletion wizardData = (SentenceCompletion) jaxbUnmarshaller.unmarshal(serialisedFile);
-        testGetWizardData(wizardController.getExperiment(wizardData.getWizardData()));
+        ObjectMapper mapper = new ObjectMapper();
+        WizardUtilData wizardData = mapper.readValue(serialisedFile, WizardUtilData.class);
+        testGetWizardData(wizardController.getExperiment(new SentenceCompletion(wizardData).getWizardData()));
     }
 
     public void testSerialiseWizardUtil(WizardUtilData wizardUtil) throws IOException, JAXBException, URISyntaxException {
@@ -112,17 +112,10 @@ public class AllWizardDataTest {
         final String outputDirectory = "/frinex-rest-output/";
         URI outputDirectoryUri = this.getClass().getResource(outputDirectory).toURI();
         System.out.println(outputDirectory);
-        JAXBContext jaxbContext = JAXBContext.newInstance(WizardUtilData.class);
-        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-//        StringWriter stringWriter = new StringWriter();
-//        jaxbMarshaller.marshal(wizardData, stringWriter);
-        FileWriter fileWriter = new FileWriter(new File(new File(outputDirectoryUri), wizardUtil.getExperimentTitle().replaceAll("[^A-Za-z0-9]", "_").toLowerCase() + "-wizardutildata.xml"));
-        jaxbMarshaller.marshal(wizardUtil, fileWriter);
-//        System.out.println(stringWriter);
 
-        // todo: when wizard serialisation is ready, include the following test
-        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), wizardUtil.getExperimentTitle().replaceAll("[^A-Za-z0-9]", "_").toLowerCase() + "-wizardutildata.xml"));
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writerWithDefaultPrettyPrinter().writeValue(new File(new File(outputDirectoryUri), wizardUtil.getExperimentTitle().replaceAll("[^A-Za-z0-9]", "_").toLowerCase() + "-wizardutildata.json"), wizardUtil);
+        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), wizardUtil.getExperimentTitle().replaceAll("[^A-Za-z0-9]", "_").toLowerCase() + "-wizardutildata.json"));
     }
 
     /**
@@ -153,7 +146,7 @@ public class AllWizardDataTest {
         testGetWizardData(new HROnlinePretest().getExperiment());
         testGetWizardData(new KinOathExample().getExperiment());
 //        testGetWizardData(new RosselFieldKit().getExperiment());
-        testGetWizardData(new Parcours().getExperiment());
+        testGetWizardData(new SentenceCompletion(new Parcours()).getExperiment());
         testGetWizardData(new MultiParticipant().getExperiment());
         testGetWizardData(new ShortMultiparticipant01().getExperiment());
         testGetWizardData(new ManipulatedContours().getExperiment());
@@ -163,8 +156,8 @@ public class AllWizardDataTest {
         testGetWizardData(new WellspringsSamoanFieldKit().getExperiment());
         testGetWizardData(new GuineaPigProject().getExperiment());
         testGetWizardData(new PlayhouseStudy().getExperiment());
-        testGetWizardData(new Joost01().getExperiment());
-        testGetWizardData(new Joost02().getExperiment());
+        testGetWizardData(new SentenceCompletion(new Joost01()).getExperiment());
+        testGetWizardData(new SentenceCompletion(new Joost02()).getExperiment());
         testGetWizardData(new PlaybackPreferenceMeasureExperiment().getExperiment());
     }
 
@@ -209,8 +202,20 @@ public class AllWizardDataTest {
 //        testSerialiseWizardData(new Joost01().getWizardData());
 //        testSerialiseWizardData(new Joost02().getWizardData());
 //        testSerialiseWizardData(new PlaybackPreferenceMeasureExperiment().getWizardData());
+    }
 
+    /**
+     * Test of testAllSerialiseWizardUtil method, of multiple wizard classes.
+     *
+     * @throws java.io.IOException
+     * @throws javax.xml.bind.JAXBException
+     * @throws java.net.URISyntaxException
+     */
+    @Test
+    public void testAllSerialiseWizardUtil() throws IOException, JAXBException, URISyntaxException {
+        System.out.println("testAllSerialiseWizardUtil");
         testSerialiseWizardUtil(new Joost01());
         testSerialiseWizardUtil(new Joost02());
+        testSerialiseWizardUtil(new Parcours());
     }
 }
