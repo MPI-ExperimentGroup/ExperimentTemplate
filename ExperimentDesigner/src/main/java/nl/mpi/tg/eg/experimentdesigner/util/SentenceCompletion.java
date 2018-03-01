@@ -32,23 +32,28 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilData;
  * @since Nov 16, 2017 3:25:23 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class SentenceCompletion extends WizardUtilData {
+public class SentenceCompletion {
 
     private final WizardController wizardController = new WizardController();
+    private final WizardUtilData wizardUtilData;
+
+    public SentenceCompletion(WizardUtilData wizardUtilData) {
+        this.wizardUtilData = wizardUtilData;
+    }
 
     public WizardData getWizardData() {
         WizardData wizardData = new WizardData();
-        wizardData.setAppName(getExperimentTitle());
+        wizardData.setAppName(wizardUtilData.getExperimentTitle());
         wizardData.setShowMenuBar(true);
         wizardData.setTextFontSize(17);
         wizardData.setObfuscateScreenNames(false);
-        WizardTextScreen wizardTextScreen = new WizardTextScreen("Informatie", getInstructionsText(),
+        WizardTextScreen wizardTextScreen = new WizardTextScreen("Informatie", wizardUtilData.getInstructionsText(),
                 "volgende [ spatiebalk ]"
         );
         wizardTextScreen.setMenuLabel("Terug");
         //Information screen 
         //Agreement
-        WizardAgreementScreen agreementScreen = new WizardAgreementScreen("Toestemming", getAgreementText(), "Akkoord");
+        WizardAgreementScreen agreementScreen = new WizardAgreementScreen("Toestemming", wizardUtilData.getAgreementText(), "Akkoord");
         agreementScreen.setMenuLabel("Terug");
 //        wizardData.setAgreementText("agreementText");
 //        wizardData.setDisagreementScreenText("disagreementScreenText");
@@ -77,26 +82,26 @@ public class SentenceCompletion extends WizardUtilData {
         wizardData.addScreen(wizardTextScreen);
         wizardData.addScreen(wizardEditUserScreen);
 
-        final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen("Zinnen afmaken", false, getStimuliArray(),
-                getRandomStimuliTags(), 1000, true, null, 0, 0, null, null, null, null, "Volgende [tab + enter]");
+        final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen("Zinnen afmaken", false, wizardUtilData.getStimuliArray(),
+                wizardUtilData.getRandomStimuliTags(), 1000, true, null, 0, 0, null, null, null, null, "Volgende [tab + enter]");
         list1234Screen.setStimulusFreeText(true, ".{2,}",
-                getFreeTextValidationMessage());
-        list1234Screen.setAllowedCharCodes(getAllowedCharCodes());
+                wizardUtilData.getFreeTextValidationMessage());
+        list1234Screen.setAllowedCharCodes(wizardUtilData.getAllowedCharCodes());
         list1234Screen.setInputKeyErrorMessage("Sorry, dit teken is niet toegestaan.");
         list1234Screen.getWizardScreenData().setStimulusResponseLabelLeft("");
         list1234Screen.getWizardScreenData().setStimulusResponseLabelRight("");
         list1234Screen.setRandomStimuliTagsField("item");
         list1234Screen.setAllowHotkeyButtons(false);
-        if (isShowProgress()) {
+        if (wizardUtilData.isShowProgress()) {
             list1234Screen.setShowProgress(true);
         }
         wizardData.addScreen(list1234Screen);
 
         // @todo: remove the restart button
         // 
-        WizardCompletionScreen completionScreen = new WizardCompletionScreen(getDebriefingText1(), isAllowUserRestart(), true,
+        WizardCompletionScreen completionScreen = new WizardCompletionScreen(wizardUtilData.getDebriefingText1(), wizardUtilData.isAllowUserRestart(), true,
                 //                "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.",
-                getDebriefingText2(),
+                wizardUtilData.getDebriefingText2(),
                 "Opnieuw beginnen",
                 "Einde van het experiment",
                 "Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.",
@@ -104,12 +109,12 @@ public class SentenceCompletion extends WizardUtilData {
         wizardData.addScreen(completionScreen);
         completionScreen.setScreenTag("completion");
 
-        if (getFeedbackScreenText() != null) {
+        if (wizardUtilData.getFeedbackScreenText() != null) {
             final WizardEditUserScreen wizardFeedbackScreen = new WizardEditUserScreen();
             wizardFeedbackScreen.setScreenTitle("Opmerkingen");
             wizardFeedbackScreen.setScreenTag("opmerkingen");
             wizardFeedbackScreen.setMenuLabel("Opmerkingen");
-            wizardFeedbackScreen.setScreenText(getFeedbackScreenText());
+            wizardFeedbackScreen.setScreenText(wizardUtilData.getFeedbackScreenText());
             wizardFeedbackScreen.setSendData(true);
             wizardFeedbackScreen.setNextButton("Volgende");
             wizardFeedbackScreen.setOn_Error_Text("Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.");
