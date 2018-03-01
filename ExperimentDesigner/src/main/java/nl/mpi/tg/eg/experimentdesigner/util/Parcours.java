@@ -17,11 +17,13 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.util;
 
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilData;
+
 /**
  * @since Jan 25, 2017 16:39:41 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class Parcours extends SentenceCompletion {
+public class Parcours extends WizardUtilData {
 
     final String agreementScreenText = "Toestemmingsverklaring voor deelname aan het onderzoek:<br/>"
             + "<br/>"
