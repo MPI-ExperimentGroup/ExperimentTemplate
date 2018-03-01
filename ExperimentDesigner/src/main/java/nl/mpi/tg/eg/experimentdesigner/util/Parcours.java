@@ -413,66 +413,66 @@ public class Parcours extends SentenceCompletion {
         "setnr_108/cond_c/list_c:Rutger werkt als restaurateur en is al een tijd bezig aan een groot project.<br/>Margriet vraagt: hoe ziet het er nu uit?<br/>Rutger zegt: je kunt momenteel nog steeds de beschadigingen op de"};
 
     @Override
-    String getInstructionsText() {
+    public String getInstructionsText() {
         return informationScreenText;
     }
 
     @Override
-    String getAllowedCharCodes() {
+    public String getAllowedCharCodes() {
         return null;
     }
 
     @Override
-    String getFreeTextValidationMessage() {
+    public String getFreeTextValidationMessage() {
         return "Vul één of enkele woorden in die volgens u het beste aan het eind van de zin passen.";
     }
 
     @Override
-    String getFeedbackScreenText() {
+    public String getFeedbackScreenText() {
         return null;
     }
 
     @Override
-    String getAgreementText() {
+    public String getAgreementText() {
         return agreementScreenText;
     }
 
     @Override
-    String getDebriefingText1() {
+    public String getDebriefingText1() {
         return completionScreenText1;
     }
 
     @Override
-    String getDebriefingText2() {
+    public String getDebriefingText2() {
         return "<br/>"
                 + "Het bovenstaande nummer is het bewijs dat u het experiment heeft voltooid, en is vereist voor het in orde maken van uw vergoeding. Gelieve het nummer te kopieëren en per email terug te sturen naar de onderzoeker:  <br/>"
                 + "marlou.rasenberg@mpi.nl";
     }
 
     @Override
-    String[] getStimuliArray() {
+    public String[] getStimuliArray() {
         return stimuliString;
     }
 
     @Override
-    boolean isShowProgress() {
+    public boolean isShowProgress() {
         return false;
     }
 
     @Override
-    boolean isAllowUserRestart() {
+    public boolean isAllowUserRestart() {
         return false;
     }
 
     @Override
-    String[] getRandomStimuliTags() {
+    public String[] getRandomStimuliTags() {
         return new String[]{"list_a",
             "list_b",
             "list_c"};
     }
 
     @Override
-    String getExperimentTitle() {
+    public String getExperimentTitle() {
         return "Parcours01";
     }
 }
