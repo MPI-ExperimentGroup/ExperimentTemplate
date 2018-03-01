@@ -26,38 +26,15 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardRandomStimulusScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilData;
 
 /**
  * @since Nov 16, 2017 3:25:23 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public abstract class SentenceCompletion {
+public class SentenceCompletion extends WizardUtilData {
 
     private final WizardController wizardController = new WizardController();
-
-    abstract String getExperimentTitle();
-
-    abstract String getAllowedCharCodes();
-
-    abstract String getFreeTextValidationMessage();
-
-    abstract String getFeedbackScreenText();
-
-    abstract String getInstructionsText();
-
-    abstract String getAgreementText();
-
-    abstract boolean isShowProgress();
-
-    abstract boolean isAllowUserRestart();
-
-    abstract String getDebriefingText1();
-
-    abstract String getDebriefingText2();
-
-    abstract String[] getStimuliArray();
-
-    abstract String[] getRandomStimuliTags();
 
     public WizardData getWizardData() {
         WizardData wizardData = new WizardData();
