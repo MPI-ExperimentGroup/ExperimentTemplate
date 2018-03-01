@@ -54,7 +54,7 @@ public class ParcoursTest {
         Parcours instance = new Parcours();
         URI testXmlUri = this.getClass().getResource("/frinex-rest-output/parcours.xml").toURI();
         String expResult = new String(Files.readAllBytes(Paths.get(testXmlUri)), StandardCharsets.UTF_8);
-        Experiment result = instance.getExperiment();
+        Experiment result = new SentenceCompletion(instance).getExperiment();
         result.getPresenterScreen().sort(new Comparator<PresenterScreen>() {
             // because the experiment has not been stored and retrieved from the DB we need to sort this manually
             @Override
