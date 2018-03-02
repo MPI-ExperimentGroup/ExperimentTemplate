@@ -46,7 +46,8 @@ public class TagPairData {
 //    @Column(length = 8192)
 //    @Column(length = 16384)
 //    @Column(length = 32768)
-    @Column(length = 63536)
+//    @Column(length = 63536) // touch input data can be greater than 63536 
+    @Column(length = 126976) 
     private String tagValue2;
     private String userId;
     private int eventMs;
