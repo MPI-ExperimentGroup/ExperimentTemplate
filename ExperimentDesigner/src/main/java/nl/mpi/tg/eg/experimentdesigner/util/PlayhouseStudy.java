@@ -106,9 +106,9 @@ public class PlayhouseStudy {
             {{"T_01", "T_01.jpg"}, {"T_02", "T_02.jpg"}, {"T_03", "T_03.jpg"}, {"T_04", "T_04.jpg"}, {"T_05", "T_05.jpg"}, {"T_06", "T_06.jpg"}, {"T_07", "T_07.jpg"}, {"T_08", "T_08.jpg"}, {"T_09", "T_09.jpg"}}},
             {{{"Test4", "zoomToBlock4", "Test4", null, "AudioRepeat2", "2000", null, "ChangeTest"}, {}},
             {{"T_10", "T_10.jpg"}, {"T_11", "T_11.jpg"}, {"T_12", "T_12.jpg"}, {"T_13", "T_13.jpg"}, {"T_14", "T_14.jpg"}, {"T_15", "T_15.jpg"}, {"T_16", "T_16.jpg"}, {"T_17", "T_17.jpg"}, {"T_18", "T_18.jpg"}}},};
-//        final WizardMenuScreen textMenuScreen = new WizardMenuScreen("TestMenu", "TestMenu", "TestMenu");
+        final WizardMenuScreen textMenuScreen = new WizardMenuScreen("TestMenu", "TestMenu", "TestMenu");
 //        textMenuScreen.setJumpToRandomScreen(true);
-//        wizardData.addScreen(textMenuScreen);
+        wizardData.addScreen(textMenuScreen);
         WizardScreen backScreen = wizardEditUserScreen;
         for (String[][][] testSubList : testList) {
             final WizardGridStimulusScreen testStimulusScreen = new WizardGridStimulusScreen(testSubList[0][0][0], false, testSubList[1],
@@ -122,9 +122,9 @@ public class PlayhouseStudy {
             testStimulusScreen.setCorrectAudio(testSubList[0][0][6]);
             testStimulusScreen.setIntroAudio(testSubList[0][0][7]);
             testStimulusScreen.setIntroAudioDelay(2000);
-//            textMenuScreen.addTargetScreen(testStimulusScreen);
+            textMenuScreen.addTargetScreen(testStimulusScreen);
             wizardData.addScreen(testStimulusScreen);
-            testStimulusScreen.setBackWizardScreen(backScreen);
+            testStimulusScreen.getWizardScreenData().getMenuWizardScreenData().add(textMenuScreen.getWizardScreenData());
             backScreen.setNextWizardScreen(testStimulusScreen);
             backScreen = testStimulusScreen;
 //            testStimulusScreen.setNextWizardScreen(textMenuScreen);
@@ -173,7 +173,7 @@ public class PlayhouseStudy {
 //        introductionAudio3.setBackWizardScreen(menuScreen);
 //        fillerStimulusScreen.setBackWizardScreen(introductionAudio3);
 //        trainingStimulusScreen.setBackWizardScreen(menuScreen);
-//        textMenuScreen.setBackWizardScreen(menuScreen);
+        textMenuScreen.setBackWizardScreen(menuScreen);
         backScreen.setNextWizardScreen(atticScreen);
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
         wizardAboutScreen.setBackWizardScreen(menuScreen);
