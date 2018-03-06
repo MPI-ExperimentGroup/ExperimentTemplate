@@ -19,8 +19,6 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import nl.mpi.tg.eg.frinex.common.AbstractStimuliProvider;
@@ -42,7 +40,6 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     protected int numberOfSeries = 0;
     protected int startBand = 0;
     protected int fineTuningTupleLength = 0;
-    protected int fineTuningNumberOfAtomsPerTuple;
     protected int fineTuningUpperBoundForCycles;
     protected boolean fastTrackPresent = true;
     protected boolean fineTuningFirstWrongOut = true;
@@ -53,7 +50,8 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     protected int currentBandIndex = 0;
     protected int totalStimuli;
 
-    protected ArrayList<RecordStimulus> responseRecord;
+    final protected ArrayList<RecordStimulus> responseRecord = new ArrayList<>();
+
     protected LinkedHashMap<Long, Integer> percentageBandTable;
 
     // fast track stuff
@@ -63,7 +61,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     protected int timeTickEndFastTrack = -1;
 
     // fine tuning stuff
-    protected final ArrayList<RecordStimulus> tupleFT = new ArrayList<>(this.fineTuningNumberOfAtomsPerTuple);
+    protected final ArrayList<RecordStimulus> tupleFT = new ArrayList<>(this.fineTuningTupleLength);
 
     // fine tuning stopping
     protected boolean enoughFineTuningStimulae = true;
@@ -74,6 +72,8 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     protected boolean looser = false;
     protected boolean justVisitedLastBand = false;
     protected boolean justVisitedFirstBand = false;
+
+    protected String htmlReport = "";
 
     protected String errorMessage;
 
@@ -89,10 +89,6 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
 
     public void setfineTuningFirstWrongOut(String fineTuningFirstWrongOut) {
         this.fineTuningFirstWrongOut = Boolean.parseBoolean(fineTuningFirstWrongOut);
-    }
-
-    public void setfineTuningNumberOfAtomsPerTuple(String fineTuningNumberOfAtomsPerTuple) {
-        this.fineTuningNumberOfAtomsPerTuple = Integer.parseInt(fineTuningNumberOfAtomsPerTuple);
     }
 
     public void setnumberOfBands(String numberOfBands) {
@@ -117,7 +113,6 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
 
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
-
         this.bandScore = -1;
         this.percentageScore = 0;
         this.isCorrectCurrentResponse = null;
@@ -138,8 +133,8 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         this.champion = false;
         this.looser = false;
         this.justVisitedLastBand = false;
-        this.responseRecord = new ArrayList<>();
         this.percentageBandTable = this.generatePercentageBandTable();
+
     }
 
     private LinkedHashMap<Long, Integer> generatePercentageBandTable() {
@@ -159,9 +154,9 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
 
     @Override
     public String generateStimuliStateSnapshot() {
-        return "";
+        return this.htmlReport;
     }
-    
+
     public int getCurrentBandIndex() {
         return this.currentBandIndex;
     }
@@ -209,7 +204,6 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         return this.percentageScore;
     }
 
-   
     public ArrayList<RecordStimulus> getFTtuple() {
         return this.tupleFT;
     }
@@ -238,6 +232,9 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     // also set the band indices
     @Override
     public boolean hasNextStimulus(int increment) {
+        if (!this.htmlReport.equals("")) { // the report is generated, no stimuli more
+            return false;
+        }
         if (this.fastTrackPresent) {
             if (this.isFastTrackIsStillOn) { // fast track is still on, update it
                 this.isFastTrackIsStillOn = this.fastTrackToBeContinuedWithSecondChance();
@@ -291,22 +288,32 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
 
     @Override
     public String getHtmlStimuliReport() {
-        String summary = this.getStringSummary("<tr>", "</tr>", "<td>", "</td>");
-        String inhoudFineTuning = this.getStringFineTuningHistory("<tr>", "</tr>", "<td>", "</td>", "html");
-        StringBuilder htmlStringBuilder = new StringBuilder();
-        htmlStringBuilder.append("<p>User summary</p><table border=1>").append(summary).append("</table><br><br>");
-        if (this.fastTrackPresent) {
-            String inhoudFastTrack = this.getStringFastTrack("<tr>", "</tr>", "<td>", "</td>");
-            htmlStringBuilder.append("<p>Fast Track History</p><table border=1>").append(inhoudFastTrack).append("</table><br><b>");
+        if (this.htmlReport.equals("")) {
+            String summary = this.getStringSummary("<tr>", "</tr>", "<td>", "</td>");
+            String inhoudFineTuning = this.getStringFineTuningHistory("<tr>", "</tr>", "<td>", "</td>", "html");
+            StringBuilder htmlStringBuilder = new StringBuilder();
+            htmlStringBuilder.append("<p>User summary</p><table border=1>").append(summary).append("</table><br><br>");
+            if (this.fastTrackPresent) {
+                String inhoudFastTrack = this.getStringFastTrack("<tr>", "</tr>", "<td>", "</td>");
+                htmlStringBuilder.append("<p>Fast Track History</p><table border=1>").append(inhoudFastTrack).append("</table><br><b>");
+            }
+            htmlStringBuilder.append("<p>Fine tuning History</p><table border=1>").append(inhoudFineTuning).append("</table>");
+            this.htmlReport = htmlStringBuilder.toString();
         }
-        htmlStringBuilder.append("<p>Fine tuning History</p><table border=1>").append(inhoudFineTuning).append("</table>");
-        return htmlStringBuilder.toString();
+        return this.htmlReport;
     }
 
     @Override
     public Map<String, String> getStimuliReport(String reportType) {
+        
+        
         final LinkedHashMap<String, String> returnMap = new LinkedHashMap<>();
 
+        if (!this.htmlReport.equals("")) { // reports have been already generated 
+          return returnMap;
+        }
+        
+        
         switch (reportType) {
             case "user_summary": {
                 String summary = this.getStringSummary("", "\n", "", ";");
@@ -336,7 +343,6 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
                 break;
 
         }
-
         //returnMap.put("example_1", "1;2;3;4;5;6;7;8;9");
         //returnMap.put("example_2", "A;B;C;D;E;F;G;H;I");
         //returnMap.put("example_3", "X;X;X;X;X;X");
@@ -410,7 +416,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     // experiment specific, must be overridden
     public boolean initialiseNextFineTuningTuple() {
 
-        for (int i = 0; i < this.fineTuningNumberOfAtomsPerTuple; i++) {
+        for (int i = 0; i < this.fineTuningTupleLength; i++) {
             this.tupleFT.add(null);
         }
         this.errorMessage = "This method must have been overriden in the implementing class";
@@ -490,7 +496,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     protected boolean fineTuningToBeContinuedWholeTuple() {
 
         boolean retVal;
-        
+
         if (this.tupleIsNotEmpty()) {
             // we have not hit the last atom in the tuple yet
             // continue
@@ -545,10 +551,11 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         return this.tupleFT.size() > 0;
     }
 
+    // must be overriden for trial tuples
     protected Boolean allTupleIsCorrect() {
         boolean allTupleCorrect = true;
         int lastIndex = this.responseRecord.size() - 1;
-        for (int i = 0; i < this.fineTuningNumberOfAtomsPerTuple; i++) {
+        for (int i = 0; i < this.fineTuningTupleLength; i++) {
             if (!this.responseRecord.get(lastIndex - i).getCorrectness()) {
                 allTupleCorrect = false;
                 break;
@@ -679,81 +686,14 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
 
     }
 
+    // Override,  very dependant  on the type of experiment
     public String getStringFastTrack(String startRow, String endRow, String startColumn, String endColumn) {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(startRow);
-        stringBuilder.append(startColumn).append("Label").append(endColumn);
-        stringBuilder.append(startColumn).append("BandNumber").append(endColumn);
-        stringBuilder.append(startColumn).append("UserAnswer").append(endColumn);
-        stringBuilder.append(startColumn).append("IsAnswerCorrect").append(endColumn);
-        stringBuilder.append(startColumn).append("Timestamp").append(endColumn);
-        stringBuilder.append(endRow);
-        for (int i = 0; i <= this.timeTickEndFastTrack; i++) {
-            BookkeepingStimulus stimulus = this.responseRecord.get(i);
-
-            StringBuilder row = new StringBuilder();
-
-            String time = (new Date(stimulus.getTimeStamp())).toString();
-
-            row.append(startColumn).append(stimulus.getLabel()).append(endColumn);
-            row.append(startColumn).append(stimulus.getBandLabel()).append(endColumn);
-            row.append(startColumn).append(stimulus.getReaction()).append(endColumn);
-            row.append(startColumn).append(stimulus.getCorrectness()).append(endColumn);
-            row.append(startColumn).append(time).append(endColumn);
-            stringBuilder.append(startRow).append(row).append(endRow);
-        }
-        return stringBuilder.toString();
-
+        return "";
     }
 
+    // Override,  very dependant  on the type of experiment
     public String getStringFineTuningHistory(String startRow, String endRow, String startColumn, String endColumn, String format) {
-        StringBuilder empty = new StringBuilder();
-        empty.append(startColumn).append(" ").append(endColumn);
-        empty.append(startColumn).append(" ").append(endColumn);
-        empty.append(startColumn).append(" ").append(endColumn);
-        empty.append(startColumn).append(" ").append(endColumn);
-        empty.append(startColumn).append(" ").append(endColumn);
-        empty.append(startColumn).append(" ").append(endColumn);
-
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(startRow);
-        stringBuilder.append(startColumn).append("BandNumber").append(endColumn);
-        stringBuilder.append(startColumn).append("Label").append(endColumn);
-        stringBuilder.append(startColumn).append("UserAnswer").append(endColumn);
-        stringBuilder.append(startColumn).append("IsAnswerCorrect").append(endColumn);
-        stringBuilder.append(startColumn).append("Timestamp").append(endColumn);
-        stringBuilder.append(startColumn).append("Visiting Number").append(endColumn);
-        stringBuilder.append(endRow);
-        int modCounter = 0;
-        ArrayList<String> spellingsCheck = new ArrayList<>();
-        for (int i = this.timeTickEndFastTrack + 1; i < this.responseRecord.size(); i++) {
-            BookkeepingStimulus stimulus = this.responseRecord.get(i);
-            StringBuilder row = new StringBuilder();
-            String time = (new Date(stimulus.getTimeStamp())).toString();
-            row.append(startColumn).append(stimulus.getBandLabel()).append(endColumn);
-            row.append(startColumn).append(stimulus.getLabel()).append(endColumn);
-            row.append(startColumn).append(stimulus.getReaction()).append(endColumn);
-            row.append(startColumn).append(stimulus.getCorrectness()).append(endColumn);
-            row.append(startColumn).append(time).append(endColumn);
-            row.append(startColumn).append(i).append(endColumn);
-            stringBuilder.append(startRow).append(row).append(endRow);
-            modCounter++;
-            if (!stimulus.getCorrectness() || modCounter == this.fineTuningNumberOfAtomsPerTuple) {
-                stringBuilder.append(startRow).append(empty).append(endRow); // skeep between tuples
-                stringBuilder.append(startRow).append(empty).append(endRow);
-                modCounter = 0;
-            }
-            spellingsCheck.add(stimulus.getLabel());
-        }
-
-        // check if there are repititions
-        HashSet<String> set = new HashSet(spellingsCheck);
-        if (set.size() < spellingsCheck.size()) {
-            stringBuilder.append(startRow).append(startColumn)
-                    .append("Repetitions of stimuli detected")
-                    .append(endColumn).append(endRow);
-        }
-        return stringBuilder.toString();
+        return "";
     }
 
     public String getStringSummary(String startRow, String endRow, String startColumn, String endColumn) {
@@ -761,7 +701,9 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(startRow);
         stringBuilder.append(startColumn).append("Score").append(endColumn);
-        stringBuilder.append(startColumn).append("BestFastTrack").append(endColumn);
+        if (this.fastTrackPresent) {
+            stringBuilder.append(startColumn).append("BestFastTrack").append(endColumn);
+        }
         stringBuilder.append(startColumn).append("Cycel2oscillation").append(endColumn);
         stringBuilder.append(startColumn).append("EnoughFineTuningStimuli").append(endColumn);
         stringBuilder.append(startColumn).append("Champion").append(endColumn);
@@ -769,7 +711,9 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         stringBuilder.append(endRow);
         stringBuilder.append(startRow);
         stringBuilder.append(startColumn).append(this.bandScore).append(endColumn);
-        stringBuilder.append(startColumn).append(this.bestBandFastTrack).append(endColumn);
+        if (this.fastTrackPresent) {
+            stringBuilder.append(startColumn).append(this.bestBandFastTrack).append(endColumn);
+        }
         stringBuilder.append(startColumn).append(this.cycle2).append(endColumn);
         stringBuilder.append(startColumn).append(this.enoughFineTuningStimulae).append(endColumn);
         stringBuilder.append(startColumn).append(this.champion).append(endColumn);

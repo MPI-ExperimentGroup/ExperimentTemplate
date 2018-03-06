@@ -50,7 +50,7 @@ public class AdVocAsStimuliProviderTest {
     private final String nonwordsPerBlock = "4";
     private final String startBand = "20";
     private final String averageNonWordPoistion = "3";
-    private final String fineTuningNumberOfAtomsPerTuple="4";
+    private final String fineTuningTupleLength="4";
     private final String fineTuningUpperBoundForCycles="2";
 
     public AdVocAsStimuliProviderTest() {
@@ -105,7 +105,7 @@ public class AdVocAsStimuliProviderTest {
         provider.settype("0");
         provider.setnumberOfBands(this.numberOfBands); 
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
-        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
+        provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand); 
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
@@ -156,7 +156,7 @@ public class AdVocAsStimuliProviderTest {
         provider.settype("0");
         provider.setnumberOfBands(this.numberOfBands); 
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
-        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
+        provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
@@ -207,7 +207,7 @@ public class AdVocAsStimuliProviderTest {
         provider.settype("1");
         provider.setnumberOfBands(this.numberOfBands); 
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
-        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
+        provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
@@ -251,7 +251,7 @@ public class AdVocAsStimuliProviderTest {
         provider.settype("1");
         provider.setnumberOfBands(this.numberOfBands); 
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
-        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
+        provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
@@ -362,7 +362,7 @@ public class AdVocAsStimuliProviderTest {
         provider.settype(type);
         provider.setnumberOfBands(this.numberOfBands); 
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
-        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
+        provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
@@ -423,7 +423,7 @@ public class AdVocAsStimuliProviderTest {
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype(type);
         provider.setnumberOfBands(this.numberOfBands); provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
-        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
+        provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
@@ -479,7 +479,7 @@ public class AdVocAsStimuliProviderTest {
         provider.settype(type);
         provider.setnumberOfBands(this.numberOfBands); 
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
-        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
+        provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
@@ -716,13 +716,12 @@ public class AdVocAsStimuliProviderTest {
         provider.settype(type);
         provider.setnumberOfBands(this.numberOfBands); 
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
-        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
+        provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
         provider.setfineTuningTupleLength("4");
-        provider.initialiseStimuliState("");
         provider.initialiseStimuliState("");
         boolean result = provider.hasNextStimulus(0);// does not depend on increment
         int invariant = provider.getResponseRecord().size() + provider.getNonwords().size() + this.getListOfListLength(provider.getWords());
@@ -842,7 +841,7 @@ public class AdVocAsStimuliProviderTest {
         provider.settype(type);
         provider.setnumberOfBands(this.numberOfBands); 
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
-        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
+        provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
@@ -923,7 +922,7 @@ public class AdVocAsStimuliProviderTest {
         provider.settype(type);
         provider.setnumberOfBands(this.numberOfBands); 
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
-        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
+        provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
@@ -1019,7 +1018,7 @@ public class AdVocAsStimuliProviderTest {
         provider.settype(type);
         provider.setnumberOfBands(this.numberOfBands); 
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
-        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
+        provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
@@ -1162,13 +1161,12 @@ public class AdVocAsStimuliProviderTest {
         provider.settype("0");
         provider.setnumberOfBands(this.numberOfBands); 
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
-        provider.setfineTuningNumberOfAtomsPerTuple(this.fineTuningNumberOfAtomsPerTuple);
+        provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
         provider.setfineTuningTupleLength("4");
-        provider.initialiseStimuliState("");
         provider.initialiseStimuliState("");
 
         // make to wrong answers to start fine tuning immediately
@@ -1216,7 +1214,7 @@ public class AdVocAsStimuliProviderTest {
 
         this.checkAllWordsAreDifferent(provider.getResponseRecord());
 
-        int minTuples = (9 / (Integer.parseInt(this.fineTuningNumberOfAtomsPerTuple) - 1)) * (nOfBands - sBand);
+        int minTuples = (9 / (Integer.parseInt(this.fineTuningTupleLength) - 1)) * (nOfBands - sBand);
         assertTrue(tupleCounter > minTuples);
 
         boolean enoughFineTuningStimulae = provider.getEnoughFinetuningStimuli();
@@ -1376,7 +1374,7 @@ public class AdVocAsStimuliProviderTest {
             }
             if (stimulus.getCorrectness()) {
                 counterInTuple++;
-                if (counterInTuple == Integer.parseInt(this.fineTuningNumberOfAtomsPerTuple)) {
+                if (counterInTuple == Integer.parseInt(this.fineTuningTupleLength)) {
                     // all  4 ccorrect answers in a row
                     // they all must be in 1 band (except the nonword)
                     bandSequence.add(currentBandNumber);
@@ -1384,7 +1382,7 @@ public class AdVocAsStimuliProviderTest {
                     int nonWordCounter = 0;
 
                     // check the tuple
-                    for (int j = 0; j < Integer.parseInt(this.fineTuningNumberOfAtomsPerTuple); j++) {
+                    for (int j = 0; j < Integer.parseInt(this.fineTuningTupleLength); j++) {
                         if (records.get(i - j).getBandLabel() > 0) {
                             // all words in the tuple must be in one band
                             assertEquals(currentBandNumber, records.get(i - j).getBandLabel().intValue());

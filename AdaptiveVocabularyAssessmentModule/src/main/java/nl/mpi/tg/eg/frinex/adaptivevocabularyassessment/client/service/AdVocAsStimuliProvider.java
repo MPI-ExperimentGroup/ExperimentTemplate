@@ -60,33 +60,36 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
 
-        super.initialiseStimuliState(stimuliStateSnapshot);
+        this.htmlReport = stimuliStateSnapshot;
+        if (stimuliStateSnapshot.equals("")) { // no report is generated, start from scratch for now
+            super.initialiseStimuliState(stimuliStateSnapshot);
 
-        this.wordsPerBandInSeries = this.wordsPerBand / this.numberOfSeries;
-        Vocabulary vocab = new Vocabulary(this.numberOfBands, this.wordsPerBandInSeries);
+            this.wordsPerBandInSeries = this.wordsPerBand / this.numberOfSeries;
+            Vocabulary vocab = new Vocabulary(this.numberOfBands, this.wordsPerBandInSeries);
 
-        ArrayList<AdVocAsStimulus> nonwordstmp = new ArrayList<>();
+            ArrayList<AdVocAsStimulus> nonwordstmp = new ArrayList<>();
 
-        if (this.numberOfSeries == 2) {
-            this.words = vocab.initialiseWords(ConstantsWords2.WORDS_SERIES[type]);
-            nonwordstmp.addAll(Arrays.asList(ConstantsNonWords2.NONWORDS_SERIES[type]));
-        } else {
-            this.words = vocab.initialiseWords(ConstantsWords1.WORDS_SERIES[0]);
-            nonwordstmp.addAll(Arrays.asList(ConstantsNonWords1.NONWORDS_SERIES[0]));
-        }
+            if (this.numberOfSeries == 2) {
+                this.words = vocab.initialiseWords(ConstantsWords2.WORDS_SERIES[type]);
+                nonwordstmp.addAll(Arrays.asList(ConstantsNonWords2.NONWORDS_SERIES[type]));
+            } else {
+                this.words = vocab.initialiseWords(ConstantsWords1.WORDS_SERIES[0]);
+                nonwordstmp.addAll(Arrays.asList(ConstantsNonWords1.NONWORDS_SERIES[0]));
+            }
 
-        this.nonwords = vocab.initialiseNonwords(nonwordstmp);
+            this.nonwords = vocab.initialiseNonwords(nonwordstmp);
 
-        this.totalStimuli = this.nonwords.size();
-        for (int i = 0; i < this.numberOfBands; i++) {
-            this.totalStimuli += this.words.get(i).size();
-        }
+            this.totalStimuli = this.nonwords.size();
+            for (int i = 0; i < this.numberOfBands; i++) {
+                this.totalStimuli += this.words.get(i).size();
+            }
 
-        // int startBand, int nonwordsPerBlock, int averageNonwordPosition, int nonwordsAvailable
-        this.rndIndexing = new RandomIndexing(this.startBand, this.numberOfBands, this.nonWordsPerBlock, this.averageNonWordPosition, nonwords.size());
-        this.nonWordsIndexes = this.rndIndexing.updateAndGetIndices();
+            // int startBand, int nonwordsPerBlock, int averageNonwordPosition, int nonwordsAvailable
+            this.rndIndexing = new RandomIndexing(this.startBand, this.numberOfBands, this.nonWordsPerBlock, this.averageNonWordPosition, nonwords.size());
+            this.nonWordsIndexes = this.rndIndexing.updateAndGetIndices();
 
-        this.rnd = new Random();
+            this.rnd = new Random();
+        } 
     }
 
     public void setnonwordsPerBlock(String nonWrodsPerBlock) {
@@ -112,11 +115,10 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
     public ArrayList<Integer> getNonWordsIndices() {
         return this.nonWordsIndexes;
     }
-    
-     public int getCurrentBandNumber() {
+
+    public int getCurrentBandNumber() {
         return (this.currentBandIndex + 1);
     }
-
 
     // experiment-specific, must be overridden
     // current band index is prepared by hasNextStimulus method
@@ -152,8 +154,8 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         }
         return retVal;
     }
-    
-    @Override 
+
+    @Override
     protected boolean fastTrackToBeContinuedWithSecondChance() {
         if (this.responseRecord.isEmpty()) {// just started the first experiment...
             return true;
@@ -192,7 +194,6 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
 
         return retVal;
     }
-   
 
     @Override
     protected boolean enoughStimuliForFastTrack() {
@@ -221,11 +222,11 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
             this.errorMessage = "There is no non-words left.";
             return false;
         }
-        if (this.words.get(this.currentBandIndex).size() < this.fineTuningNumberOfAtomsPerTuple - 1) {
-            this.errorMessage = "There is not enough stimuli for the band "+this.currentBandIndex;
+        if (this.words.get(this.currentBandIndex).size() < this.fineTuningTupleLength - 1) {
+            this.errorMessage = "There is not enough stimuli for the band  with index " + this.currentBandIndex;
             return false;
         }
-        int nonWordPos = rnd.nextInt(this.fineTuningNumberOfAtomsPerTuple);
+        int nonWordPos = rnd.nextInt(this.fineTuningTupleLength);
         AdVocAsBookkeepingStimulus bStimulus;
         for (int i = 0; i < nonWordPos; i++) {
             bStimulus = new AdVocAsBookkeepingStimulus(this.words.get(this.currentBandIndex).remove(0)); //injection constructor
@@ -233,7 +234,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         }
         bStimulus = new AdVocAsBookkeepingStimulus(this.nonwords.remove(0)); // injection constructor
         this.tupleFT.add(bStimulus);
-        for (int i = nonWordPos + 1; i < this.fineTuningNumberOfAtomsPerTuple; i++) {
+        for (int i = nonWordPos + 1; i < this.fineTuningTupleLength; i++) {
             bStimulus = new AdVocAsBookkeepingStimulus(this.words.get(this.currentBandIndex).remove(0));//injection constructor
             this.tupleFT.add(bStimulus);
         }
@@ -295,24 +296,66 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
     }
 
     @Override
+    public String getStringFineTuningHistory(String startRow, String endRow, String startColumn, String endColumn, String format) {
+        StringBuilder empty = new StringBuilder();
+        empty.append(startColumn).append(" ").append(endColumn);
+        empty.append(startColumn).append(" ").append(endColumn);
+        empty.append(startColumn).append(" ").append(endColumn);
+        empty.append(startColumn).append(" ").append(endColumn);
+        empty.append(startColumn).append(" ").append(endColumn);
+        empty.append(startColumn).append(" ").append(endColumn);
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(startRow);
+        stringBuilder.append(startColumn).append("BandNumber").append(endColumn);
+        stringBuilder.append(startColumn).append("Label").append(endColumn);
+        stringBuilder.append(startColumn).append("UserAnswer").append(endColumn);
+        stringBuilder.append(startColumn).append("IsAnswerCorrect").append(endColumn);
+        stringBuilder.append(startColumn).append("Timestamp").append(endColumn);
+        stringBuilder.append(startColumn).append("Visiting Number").append(endColumn);
+        stringBuilder.append(endRow);
+        int modCounter = 0;
+        ArrayList<String> spellingsCheck = new ArrayList<>();
+        for (int i = this.timeTickEndFastTrack + 1; i < this.responseRecord.size(); i++) {
+            BookkeepingStimulus stimulus = this.responseRecord.get(i);
+            StringBuilder row = new StringBuilder();
+            String time = (new Date(stimulus.getTimeStamp())).toString();
+            row.append(startColumn).append(stimulus.getBandLabel()).append(endColumn);
+            row.append(startColumn).append(stimulus.getLabel()).append(endColumn);
+            row.append(startColumn).append(stimulus.getReaction()).append(endColumn);
+            row.append(startColumn).append(stimulus.getCorrectness()).append(endColumn);
+            row.append(startColumn).append(time).append(endColumn);
+            row.append(startColumn).append(i).append(endColumn);
+            stringBuilder.append(startRow).append(row).append(endRow);
+            modCounter++;
+            if (!stimulus.getCorrectness() || modCounter == this.fineTuningTupleLength) {
+                stringBuilder.append(startRow).append(empty).append(endRow); // skip between tuples
+                stringBuilder.append(startRow).append(empty).append(endRow);
+                modCounter = 0;
+            }
+            spellingsCheck.add(stimulus.getLabel());
+        }
+
+        // check if there are repititions
+        HashSet<String> set = new HashSet(spellingsCheck);
+        if (set.size() < spellingsCheck.size()) {
+            stringBuilder.append(startRow).append(startColumn)
+                    .append("Repetitions of stimuli detected")
+                    .append(endColumn).append(endRow);
+        }
+        return stringBuilder.toString();
+    }
+
+    @Override
     public String getHtmlStimuliReport() {
+        if (this.htmlReport.equals("")) {
+            StringBuilder htmlStringBuilder = new StringBuilder();
+            String experimenteeReport = this.getHtmlExperimenteeReport();
+            htmlStringBuilder.append(experimenteeReport);
+            this.htmlReport = htmlStringBuilder.toString();
+        }
 
-        StringBuilder htmlStringBuilder = new StringBuilder();
-
-        String experimenteeReport = this.getHtmlExperimenteeReport();
-        htmlStringBuilder.append(experimenteeReport);
-
-        /* htmlStringBuilder.append("<br><br><p>Detailed report for researcher</p>");
-
-        String summary = this.getStringSummary("<tr>", "</tr>", "<td>", "</td>");
-        String inhoudFastTrack = this.getStringFastTrack("<tr>", "</tr>", "<td>", "</td>");
-        String inhoudFineTuning = this.getStringFineTuningHistory("<tr>", "</tr>", "<td>", "</td>", "html");
-
-        htmlStringBuilder.append("<p>User summary</p><table border=1>").append(summary).append("</table><br><br>");
-        htmlStringBuilder.append("<p>Fast Track History</p><table border=1>").append(inhoudFastTrack).append("</table><br><b>");
-        htmlStringBuilder.append("<p>Fine tuning History</p><table border=1>").append(inhoudFineTuning).append("</table>");
-         */
-        return htmlStringBuilder.toString();
+        return this.htmlReport;
     }
 
     private String getHtmlExperimenteeReport() {
@@ -530,6 +573,5 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
         }
         return retVal;
     }
-    
-    
+
 }
