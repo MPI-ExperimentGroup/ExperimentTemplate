@@ -27,6 +27,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardRandomStimulusScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilData;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilStimuliData;
 
 /**
  * @since Nov 16, 2017 3:25:23 PM (creation date)
@@ -82,21 +83,30 @@ public class SentenceCompletion {
         wizardData.addScreen(wizardTextScreen);
         wizardData.addScreen(wizardEditUserScreen);
 
-        final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen("Zinnen afmaken", false, wizardUtilData.getStimuliArray(),
-                wizardUtilData.getRandomStimuliTags(), 1000, true, null, 0, 0, null, null, null, null, "Volgende [tab + enter]");
-        list1234Screen.setStimulusFreeText(true, ".{2,}",
-                wizardUtilData.getFreeTextValidationMessage());
-        list1234Screen.setAllowedCharCodes(wizardUtilData.getAllowedCharCodes());
-        list1234Screen.setInputKeyErrorMessage("Sorry, dit teken is niet toegestaan.");
-        list1234Screen.getWizardScreenData().setStimulusResponseLabelLeft("");
-        list1234Screen.getWizardScreenData().setStimulusResponseLabelRight("");
-        list1234Screen.setRandomStimuliTagsField("item");
-        list1234Screen.setAllowHotkeyButtons(false);
-        if (wizardUtilData.isShowProgress()) {
-            list1234Screen.setShowProgress(true);
-        }
-        wizardData.addScreen(list1234Screen);
+        WizardRandomStimulusScreen firstStimuliScreen = null;
+        WizardRandomStimulusScreen lastStimuliScreen = null;
+        for (final WizardUtilStimuliData stimuliData : wizardUtilData.getStimuliData()) {
 
+            final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen("Zinnen afmaken", false, stimuliData.getStimuliArray(),
+                    stimuliData.getRandomStimuliTags(), 1000, true, null, 0, 0, null, null, null, null, "Volgende [tab + enter]");
+            list1234Screen.setStimulusFreeText(true, ".{2,}",
+                    wizardUtilData.getFreeTextValidationMessage());
+            list1234Screen.setAllowedCharCodes(wizardUtilData.getAllowedCharCodes());
+            list1234Screen.setInputKeyErrorMessage("Sorry, dit teken is niet toegestaan.");
+            list1234Screen.getWizardScreenData().setStimulusResponseLabelLeft("");
+            list1234Screen.getWizardScreenData().setStimulusResponseLabelRight("");
+            list1234Screen.setRandomStimuliTagsField("item");
+            list1234Screen.setAllowHotkeyButtons(false);
+            if (wizardUtilData.isShowProgress()) {
+                list1234Screen.setShowProgress(true);
+            }
+            wizardData.addScreen(list1234Screen);
+
+            if (firstStimuliScreen == null) {
+                firstStimuliScreen = list1234Screen;
+            }
+            lastStimuliScreen = list1234Screen;
+        }
         // @todo: remove the restart button
         // 
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(wizardUtilData.getDebriefingText1(), wizardUtilData.isAllowUserRestart(), true,
@@ -122,14 +132,20 @@ public class SentenceCompletion {
                 "feedBack::.*:."
             });
             wizardData.addScreen(wizardFeedbackScreen);
-            list1234Screen.setNextWizardScreen(wizardFeedbackScreen);
+            if (lastStimuliScreen != null) {
+                lastStimuliScreen.setNextWizardScreen(wizardFeedbackScreen);
+            }
             wizardFeedbackScreen.setNextWizardScreen(completionScreen);
         } else {
-            list1234Screen.setNextWizardScreen(completionScreen);
+            if (lastStimuliScreen != null) {
+                lastStimuliScreen.setNextWizardScreen(completionScreen);
+            }
         }
         wizardTextScreen.setNextWizardScreen(wizardEditUserScreen);
         agreementScreen.setNextWizardScreen(wizardTextScreen);
-        wizardEditUserScreen.setNextWizardScreen(list1234Screen);
+        if (firstStimuliScreen != null) {
+            wizardEditUserScreen.setNextWizardScreen(firstStimuliScreen);
+        }
         completionScreen.setNextWizardScreen(wizardTextScreen);
 
         wizardEditUserScreen.setBackWizardScreen(wizardTextScreen);
