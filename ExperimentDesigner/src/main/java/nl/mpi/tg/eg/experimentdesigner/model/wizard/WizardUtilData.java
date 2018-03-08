@@ -46,11 +46,9 @@ public class WizardUtilData {
 
     protected String debriefingText1;
 
-    protected String debriefingText2; 
+    protected String debriefingText2;
 
-    protected String[] stimuliArray;
-
-    protected String[] randomStimuliTags;
+    protected WizardUtilStimuliData[] stimuliData;
 
     public WizardUtilEnum getWizardUtilEnum() {
         return wizardUtilEnum;
@@ -140,19 +138,11 @@ public class WizardUtilData {
         this.debriefingText2 = debriefingText2;
     }
 
-    public String[] getStimuliArray() {
-        return stimuliArray;
+    public WizardUtilStimuliData[] getStimuliData() {
+        return stimuliData;
     }
 
-    public void setStimuliArray(String[] stimuliArray) {
-        this.stimuliArray = stimuliArray;
-    }
-
-    public String[] getRandomStimuliTags() {
-        return randomStimuliTags;
-    }
-
-    public void setRandomStimuliTags(String[] randomStimuliTags) {
-        this.randomStimuliTags = randomStimuliTags;
+    public void setStimuliData(WizardUtilStimuliData[] stimuliData) {
+        this.stimuliData = stimuliData;
     }
 }
