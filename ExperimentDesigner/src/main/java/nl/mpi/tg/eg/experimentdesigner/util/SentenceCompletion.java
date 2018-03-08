@@ -87,7 +87,7 @@ public class SentenceCompletion {
         WizardRandomStimulusScreen lastStimuliScreen = null;
         for (final WizardUtilStimuliData stimuliData : wizardUtilData.getStimuliData()) {
 
-            final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen("Zinnen afmaken", false, stimuliData.getStimuliArray(),
+            final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen(stimuliData.getStimuliName(), false, stimuliData.getStimuliArray(),
                     stimuliData.getRandomStimuliTags(), 1000, true, null, 0, 0, null, null, null, null, "Volgende [tab + enter]");
             list1234Screen.setStimulusFreeText(true, ".{2,}",
                     wizardUtilData.getFreeTextValidationMessage());
