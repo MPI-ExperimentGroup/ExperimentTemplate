@@ -18,6 +18,8 @@
 package nl.mpi.tg.eg.experimentdesigner.util;
 
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilData;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilEnum;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilStimuliData;
 
 /**
  * @since Jan 25, 2017 16:39:41 AM (creation date)
@@ -452,8 +454,25 @@ public class Parcours extends WizardUtilData {
     }
 
     @Override
-    public String[] getStimuliArray() {
-        return stimuliString;
+    public WizardUtilStimuliData[] getStimuliData() {
+        return new WizardUtilStimuliData[]{new WizardUtilStimuliData() {
+            @Override
+            public String[] getStimuliArray() {
+                return stimuliString;
+            }
+
+            @Override
+            public String[] getRandomStimuliTags() {
+                return new String[]{"list_a",
+                    "list_b",
+                    "list_c"};
+            }
+        }};
+    }
+
+    @Override
+    public WizardUtilEnum getWizardUtilEnum() {
+        return WizardUtilEnum.SentenceCompletion;
     }
 
     @Override
@@ -464,13 +483,6 @@ public class Parcours extends WizardUtilData {
     @Override
     public boolean isAllowUserRestart() {
         return false;
-    }
-
-    @Override
-    public String[] getRandomStimuliTags() {
-        return new String[]{"list_a",
-            "list_b",
-            "list_c"};
     }
 
     @Override
