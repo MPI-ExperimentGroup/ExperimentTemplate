@@ -102,6 +102,7 @@ public class AllWizardDataTest {
     }
 
     private void testDeserialiseWizardUtil(final File serialisedFile) throws IOException, JAXBException, URISyntaxException {
+        System.out.println(serialisedFile);
         ObjectMapper mapper = new ObjectMapper();
         WizardUtilData wizardData = mapper.readValue(serialisedFile, WizardUtilData.class);
         testGetWizardData(wizardController.getExperiment(new SentenceCompletion(wizardData).getWizardData()));
@@ -217,5 +218,21 @@ public class AllWizardDataTest {
         testSerialiseWizardUtil(new Joost01());
         testSerialiseWizardUtil(new Joost02());
         testSerialiseWizardUtil(new Parcours());
+    }
+
+    /**
+     * Test of JsonOnly wizard experiments
+     *
+     * @throws java.io.IOException
+     * @throws javax.xml.bind.JAXBException
+     * @throws java.net.URISyntaxException
+     */
+    @Test
+    public void testJsonOnlyWizardUtil() throws IOException, JAXBException, URISyntaxException {
+        System.out.println("testJsonOnlyWizardUtil");
+        final String inputDirectory = "/frinex-rest-output/";
+        URI outputDirectoryUri = this.getClass().getResource(inputDirectory).toURI();
+        System.out.println(inputDirectory);
+        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "heoexp01.json"));
     }
 }
