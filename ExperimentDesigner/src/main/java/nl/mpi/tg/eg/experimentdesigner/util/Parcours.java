@@ -457,6 +457,11 @@ public class Parcours extends WizardUtilData {
     public WizardUtilStimuliData[] getStimuliData() {
         return new WizardUtilStimuliData[]{new WizardUtilStimuliData() {
             @Override
+            public String getStimuliName() {
+                return "Zinnen afmaken";
+            }
+
+            @Override
             public String[] getStimuliArray() {
                 return stimuliString;
             }
