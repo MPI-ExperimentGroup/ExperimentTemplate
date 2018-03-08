@@ -2,9 +2,9 @@
 <experiment appNameDisplay="Adaptive Vocabulary Assessment 2" appNameInternal="advocas2" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
     <preventWindowClose featureText="Bij reload worden ingetypte data verwiderd"/>
     <metadata>
-        <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Wat is je naam?"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuli" preventServerDuplicates="false" registrationField="stimuli"/>
-        <field controlledMessage="Input at least 3 letters." controlledRegex="['\\'S'\\'s]'{'3,'}'" postName="feedBack" preventServerDuplicates="false" registrationField=""/>
+        <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="true" registrationField="Wat is je naam?"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuli" preventServerDuplicates="true" registrationField="stimuli"/>
+        <field controlledMessage="Input at least 3 letters." controlledRegex="['\\'S'\\'s]'{'3,'}'" postName="feedBack" preventServerDuplicates="true" registrationField=""/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Menu" type="menu" self="Menu" title="Menu">
         <centrePage/>
@@ -26,7 +26,7 @@
     </presenter>
     <presenter displayOrder="2" menuLabel="Edit User" next="Accord" type="metadata" self="Edit_User" title="">
         <metadataField fieldName="workerId"/>
-        <saveMetadataButton featureText="Volgende" sendData="false" networkErrorMessage="&amp;nbsp;">
+        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="&amp;nbsp;">
             <onSuccess>   
                 <autoNextPresenter/>
             </onSuccess>
@@ -76,7 +76,7 @@ Geef voor elk woord met een muisklik aan of jij het woord kent of niet."/>
     <presenter displayOrder="4" type="stimulus" self="stimuliScreenV1" title="Series 1">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider" type="0" eventTag="stimuliN" 
                       numberOfSeries="2" numberOfBands="54" wordsPerBand="40" startBand="20" averageNonWordPosition="3" 
-                      fineTuningTupleLength="4" nonwordsPerBlock="4" fineTuningNumberOfAtomsPerTuple="4" fineTuningUpperBoundForCycles="2"
+                      fineTuningTupleLength="4" nonwordsPerBlock="4" fineTuningUpperBoundForCycles="2"
                       fastTrackPresent="true" fineTuningFirstWrongOut="true">
             <hasMoreStimulus>
                 <clearPage/>
@@ -116,7 +116,7 @@ Geef voor elk woord met een muisklik aan of jij het woord kent of niet."/>
     <presenter displayOrder="6" type="stimulus" self="stimuliScreenV2" title="Series 2">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider" type="1" eventTag="stimuliN"
                       numberOfSeries="2" numberOfBands="54" wordsPerBand="40" startBand="20" averageNonWordPosition="3" 
-                      fineTuningTupleLength="4" nonwordsPerBlock="4" fineTuningNumberOfAtomsPerTuple="4" fineTuningUpperBoundForCycles="2"
+                      fineTuningTupleLength="4" nonwordsPerBlock="4" fineTuningUpperBoundForCycles="2"
                       fastTrackPresent="true" fineTuningFirstWrongOut="true">
             <hasMoreStimulus>
                 <clearPage/>
