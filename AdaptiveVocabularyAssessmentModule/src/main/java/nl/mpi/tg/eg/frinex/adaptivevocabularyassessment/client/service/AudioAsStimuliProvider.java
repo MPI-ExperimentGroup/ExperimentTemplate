@@ -19,6 +19,8 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.Map;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimuliProvider;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsList;
@@ -38,7 +40,7 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  */
 public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus> {
 
-    private String dirName = "/";
+    private String dirName;
 
     private TrialTuple currentTrialTuple;
 
@@ -53,6 +55,10 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     private ArrayList<ArrayList<Integer>> trialLengtPermutations; // list of permutations of members requiredLengths
     private ArrayList<ArrayList<TrialCondition>> trialTypesPermutations; // list of permutations of members 
     private ArrayList<ArrayList<PermutationPair>> availableCombinations; // x[i] is the list of permutations with non-empty possibilities to instantiate them using trials matrix of unused trials
+
+    public void setdirName(String dirName) {
+        this.dirName = dirName;
+    }
 
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
@@ -114,11 +120,12 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     protected Boolean allTupleIsCorrect() {
         return this.currentTrialTuple.getCorrectness();
     }
+    
+    
 
     // also evaluates and sets correctenss of the current stimulus
     @Override
-    public boolean isCorrectResponse(Stimulus stimulus, String stimulusResponse
-    ) {
+    public boolean isCorrectResponse(Stimulus stimulus, String stimulusResponse) {
         int index = this.getCurrentStimulusIndex();
         AudioAsStimulus audioStimulus = this.responseRecord.get(index);
         audioStimulus.setTimeStamp(System.currentTimeMillis());
@@ -153,5 +160,55 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
     public TrialTuple getTrialTuple() {
         return this.currentTrialTuple;
+    }
+
+    @Override
+    public String getStringFineTuningHistory(String startRow, String endRow, String startColumn, String endColumn, String format) {
+        StringBuilder empty = new StringBuilder();
+        empty.append(startColumn).append(" ").append(endColumn);
+        empty.append(startColumn).append(" ").append(endColumn);
+        empty.append(startColumn).append(" ").append(endColumn);
+        empty.append(startColumn).append(" ").append(endColumn);
+        empty.append(startColumn).append(" ").append(endColumn);
+        empty.append(startColumn).append(" ").append(endColumn);
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(startRow);
+        stringBuilder.append(startColumn).append("BandIndex").append(endColumn);
+        stringBuilder.append(startColumn).append("BandLabel").append(endColumn);
+        stringBuilder.append(startColumn).append("Label").append(endColumn);
+        stringBuilder.append(startColumn).append("StimulusType").append(endColumn);
+        stringBuilder.append(startColumn).append("CorrectResponse").append(endColumn);
+        stringBuilder.append(startColumn).append("UserAnswer").append(endColumn);
+        stringBuilder.append(startColumn).append("IsAnswerCorrect").append(endColumn);
+        stringBuilder.append(startColumn).append("Timestamp").append(endColumn);
+        stringBuilder.append(startColumn).append("Visiting Number").append(endColumn);
+        stringBuilder.append(endRow);
+        ArrayList<String> spellingsCheck = new ArrayList<>();
+        for (int i = 0; i < this.responseRecord.size(); i++) {
+            AudioAsStimulus stimulus = this.responseRecord.get(i);
+            StringBuilder row = new StringBuilder();
+            String time = (new Date(stimulus.getTimeStamp())).toString();
+            row.append(startColumn).append(stimulus.getBandIndex()).append(endColumn);
+            row.append(startColumn).append(stimulus.getBandLabel()).append(endColumn);
+            row.append(startColumn).append(stimulus.getLabel()).append(endColumn);
+            row.append(startColumn).append(stimulus.getWordType()).append(endColumn);
+            row.append(startColumn).append(stimulus.getCorrectResponses()).append(endColumn);
+            row.append(startColumn).append(stimulus.getReaction()).append(endColumn);
+            row.append(startColumn).append(stimulus.getCorrectness()).append(endColumn);
+            row.append(startColumn).append(time).append(endColumn);
+            row.append(startColumn).append(i).append(endColumn);
+            stringBuilder.append(startRow).append(row).append(endRow);
+            spellingsCheck.add(stimulus.getLabel());
+        }
+
+        // check if there are repititions
+        HashSet<String> set = new HashSet(spellingsCheck);
+        if (set.size() < spellingsCheck.size()) {
+            stringBuilder.append(startRow).append(startColumn)
+                    .append("Repetitions of stimuli detected")
+                    .append(endColumn).append(endRow);
+        }
+        return stringBuilder.toString();
     }
 }

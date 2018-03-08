@@ -98,13 +98,13 @@ public class AudioUtilsTest {
         
         //Trial(String word, String targetNonword, int nOfSyllables, TrialCondition condition, int length, LinkedHashMap<String,WordType> targetNonWords, String BandLabel, int bandIndex, String dirName)
         //1	vloer	smoer	1	Target-only	3 targetNonWords	deebral	smoer	wijp
-        this.trials.add(0, new Trial("vloer", "smoer_10.wav", 1, TrialCondition.TARGET_ONLY, 3, map1, "10bD", 2,  "/1"));
+        this.trials.add(0, new Trial("vloer", "smoer_10", 1, TrialCondition.TARGET_ONLY, 3, map1, "10bD", 2,  "/1"));
         //19	kers	hers	1	Target-only	4 targetNonWords	geider	hers	atgraus	hamp
-        this.trials.add(1, new Trial("kers", "hers_10.wav", 1, TrialCondition.TARGET_ONLY, 4, map2, "10bD", 2,  "/2"));
+        this.trials.add(1, new Trial("kers", "hers_10", 1, TrialCondition.TARGET_ONLY, 4, map2, "10bD", 2,  "/2"));
         //107	vuur	fjon	1	Target+Foil	5 targetNonWords	fjodschelg	fjon	wisdaag	tuik	poks		fjodschelg
-        this.trials.add(2, new Trial("vuur", "fjon_10.wav", 1, TrialCondition.TARGET_AND_FOIL, 5, map3, "10bD", 2,  "/3"));
+        this.trials.add(2, new Trial("vuur", "fjon_10", 1, TrialCondition.TARGET_AND_FOIL, 5, map3, "10bD", 2,  "/3"));
         //156	pop	lop	1	NoTarget	4 targetNonWords	voorserm	muiland	fraal	kijn	
-        this.trials.add(3, new Trial("pop", "lop_10.wav", 1, TrialCondition.NO_TARGET, 4, map4, "10bD", 2,  "/2"));
+        this.trials.add(3, new Trial("pop", "lop_10", 1, TrialCondition.NO_TARGET, 4, map4, "10bD", 2,  "/2"));
 
        this.tuple = new TrialTuple(this.trials);
         
@@ -267,20 +267,20 @@ public class AudioUtilsTest {
         assertTrue(result.get(TrialCondition.NO_TARGET).get(2).get(5).size()>0);
         assertTrue(result.get(TrialCondition.NO_TARGET).get(2).get(6).size()>0);
 
-        //52;baf;baf_filler.wav;1;Target-only;3 words;bag_filler_10dB.wav;baf_filler_10dB.wav;beg_filler_10dB.wav;;;;10dB;
+        //52;baf;baf_filler;1;Target-only;3 words;bag_filler_10dB;baf_filler_10dB;beg_filler_10dB;;;;10dB;
         Trial firstTrial = result.get(TrialCondition.TARGET_ONLY).get(2).get(3).get(0);
         assertEquals("baf", firstTrial.getWord());
-        assertEquals("baf_filler.wav", firstTrial.getTargetNonWord());
+        assertEquals("baf_filler", firstTrial.getTargetNonWord());
         assertEquals(2, firstTrial.getBandIndex());
         assertEquals(TrialCondition.TARGET_ONLY, firstTrial.getCondition());
         assertEquals("/audiosources", firstTrial.getDirName());
         assertEquals(1, firstTrial.getNumberOfSyllables());
         assertEquals(3, firstTrial.getTrialLength());
         assertEquals(4, firstTrial.getStimuliList().size());
-        assertEquals("baf_filler.wav", firstTrial.getStimuliList().get(0).getLabel());
-        assertEquals("bag_filler_10dB.wav", firstTrial.getStimuliList().get(1).getLabel());
-        assertEquals("baf_filler_10dB.wav", firstTrial.getStimuliList().get(2).getLabel());
-        assertEquals("beg_filler_10dB.wav", firstTrial.getStimuliList().get(3).getLabel());
+        assertEquals("baf_filler", firstTrial.getStimuliList().get(0).getLabel());
+        assertEquals("bag_filler_10dB", firstTrial.getStimuliList().get(1).getLabel());
+        assertEquals("baf_filler_10dB", firstTrial.getStimuliList().get(2).getLabel());
+        assertEquals("beg_filler_10dB", firstTrial.getStimuliList().get(3).getLabel());
     
         for (TrialCondition cond : TrialCondition.values()) {
             for (int i = 0; i < 3; i++) {

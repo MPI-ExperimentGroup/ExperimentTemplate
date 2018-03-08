@@ -33,8 +33,6 @@ public class Trial {
     private final int numberOfSyllables;
     private final TrialCondition condition;
     private final int lgth;
-    private final int PAUSE_EXAMPLE = 900;
-    private final int PAUSE  = 500;
     private final int bandIndex;
     private final String bandLabel;
     private final String dirName;
@@ -101,8 +99,8 @@ public class Trial {
         
         // public AudioAsStimulus(String uniqueId, String label, int pauseMs, String audioPath, String correctResponses, int bandNumber, WordType wordtype) 
         String uniqueId = targetNonwordFile+System.currentTimeMillis();
-        String audioPath = this.dirName+"/"+targetNonwordFile; // Florian is it so??
-        AudioAsStimulus retVal = new AudioAsStimulus(uniqueId, targetNonwordFile, PAUSE_EXAMPLE, audioPath, null, this.bandLabel, this.bandIndex, WordType.EXAMPLE_TARGET_NON_WORD);
+        String audioPath = this.dirName+"/"+targetNonwordFile; 
+        AudioAsStimulus retVal = new AudioAsStimulus(uniqueId, targetNonwordFile, AudioAsStimulus.PAUSE_EXAMPLE, audioPath, null, this.bandLabel, this.bandIndex, WordType.EXAMPLE_TARGET_NON_WORD, AudioAsStimulus.EXAMPLE_TARGET_LABEL);
         return retVal;
     }
     
@@ -110,9 +108,9 @@ public class Trial {
         
         // public AudioAsStimulus(String uniqueId, String label, int pauseMs, String audioPath, String correctResponses, int bandNumber, WordType wordtype) 
         String uniqueId = wordFile+System.currentTimeMillis();
-        String audioPath = this.dirName+"/"+wordFile; // Florian is it so??
+        String audioPath = this.dirName+"/"+wordFile; 
         String correctResponses = (wordtype.equals(WordType.TARGET_NON_WORD)) ? AudioAsStimulus.AUDIO_RATING_LABEL : null;
-        AudioAsStimulus retVal = new AudioAsStimulus(uniqueId, wordFile, PAUSE, audioPath, correctResponses, this.bandLabel, this.bandIndex, wordtype);
+        AudioAsStimulus retVal = new AudioAsStimulus(uniqueId, wordFile, AudioAsStimulus.PAUSE, audioPath, correctResponses, this.bandLabel, this.bandIndex, wordtype, AudioAsStimulus.AUDIO_RATING_LABEL);
         return retVal;
     }
     

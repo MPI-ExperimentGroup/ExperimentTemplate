@@ -30,13 +30,16 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 public class AudioAsStimulus extends BookkeepingStimulus<Boolean,String> {
 
     private final WordType wordtype;
-    public static String AUDIO_RATING_LABEL = "YES";
-
+    public static final String AUDIO_RATING_LABEL = "YES";
+    public static final String EXAMPLE_TARGET_LABEL = "Press when ready";
+    public static final int PAUSE_EXAMPLE = 60000;
+    public static final int PAUSE  = 900;
+    
     /*
     public BookkeepingStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, S bandLabel) {
      */
-    public AudioAsStimulus(String uniqueId, String label, int pauseMs, String audioPath, String correctResponses, String bandLabel, int bandIndex, WordType wordtype) {
-        super(uniqueId, new Stimulus.Tag[0], label, null, pauseMs, audioPath, null, null, AUDIO_RATING_LABEL, correctResponses, bandLabel, bandIndex);
+    public AudioAsStimulus(String uniqueId, String label, int pauseMs, String audioPath, String correctResponses, String bandLabel, int bandIndex, WordType wordtype, String ratingLabel) {
+        super(uniqueId, new Stimulus.Tag[0], label, null, pauseMs, audioPath, null, null, ratingLabel, correctResponses, bandLabel, bandIndex);
         this.wordtype = wordtype;
         this.userReaction = null;
         this.correctness = null;
@@ -47,6 +50,11 @@ public class AudioAsStimulus extends BookkeepingStimulus<Boolean,String> {
     public WordType getWordType() {
         return this.wordtype;
     }
+    
+     @Override
+     public boolean hasCorrectResponses(){
+         return true;
+     }
 
     @Override
     public void setReaction(String reaction) {
