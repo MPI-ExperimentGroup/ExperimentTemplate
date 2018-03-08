@@ -27,6 +27,14 @@ public class WizardUtilStimuliData {
     protected String[] stimuliArray;
     protected String[] randomStimuliTags;
 
+    public String getStimuliName() {
+        return stimuliName;
+    }
+
+    public void setStimuliName(String stimuliName) {
+        this.stimuliName = stimuliName;
+    }
+
     public String[] getStimuliArray() {
         return stimuliArray;
     }
