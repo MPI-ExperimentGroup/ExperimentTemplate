@@ -65,14 +65,18 @@
                 <table styleName="stimulusContainerTab">
                     <row>
                         <column styleName="stimulusContainerCol">
+                            <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1"> 
+                                <nextStimulus repeatIncorrect="false"/>
+                            </triggerListener>
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false"> 
-                                <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                    <nextStimulus repeatIncorrect="false"/>
-                                </stimulusRatingButton>
+                                <actionButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight"> 
+                                    <trigger listenerId="nextStimulusAction"/>
+                                </actionButton>
                                 <stimulusPause>
-                                    <nextStimulus repeatIncorrect="false"/>
+                                    <trigger listenerId="nextStimulusAction"/>
                                 </stimulusPause>
                             </stimulusAudio>
+                            
                         </column>
                     </row>
                 </table>
@@ -106,12 +110,15 @@
                 <table styleName="stimulusContainerTab">
                     <row>
                         <column styleName="stimulusContainerCol">
+                             <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1"> 
+                                <nextStimulus repeatIncorrect="false"/>
+                            </triggerListener>
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false"> 
-                                <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                    <nextStimulus repeatIncorrect="false"/>
-                                </stimulusRatingButton>
+                                <actionButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight"> 
+                                     <trigger listenerId="nextStimulusAction"/>
+                                </actionButton>
                                 <stimulusPause>
-                                    <nextStimulus repeatIncorrect="false"/>
+                                     <trigger listenerId="nextStimulusAction"/>
                                 </stimulusPause>
                             </stimulusAudio>
                         </column>
