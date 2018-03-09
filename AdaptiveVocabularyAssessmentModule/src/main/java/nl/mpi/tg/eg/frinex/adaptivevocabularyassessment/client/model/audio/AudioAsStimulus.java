@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 import java.util.ArrayList;
 import java.util.Arrays;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audioaspool.AudioIndexMap;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
@@ -27,14 +28,14 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  *
  * @author olhshk
  */
-public class AudioAsStimulus extends BookkeepingStimulus<Boolean,String> {
+public class AudioAsStimulus extends BookkeepingStimulus<Boolean, String> {
 
     private final WordType wordtype;
     public static final String AUDIO_RATING_LABEL = "YES";
     public static final String EXAMPLE_TARGET_LABEL = "Press when ready";
     public static final int PAUSE_EXAMPLE = 60000;
-    public static final int PAUSE  = 900;
-    
+    public static final int PAUSE = 900;
+
     /*
     public BookkeepingStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, S bandLabel) {
      */
@@ -43,18 +44,16 @@ public class AudioAsStimulus extends BookkeepingStimulus<Boolean,String> {
         this.wordtype = wordtype;
         this.userReaction = null;
         this.correctness = null;
-        ArrayList<String> tmp = new ArrayList<String>(Arrays.asList(AudioIndexMap.INDEX_ARRAY)); 
-        this.bandIndex = tmp.indexOf(bandLabel);
     }
 
     public WordType getWordType() {
         return this.wordtype;
     }
-    
-     @Override
-     public boolean hasCorrectResponses(){
-         return true;
-     }
+
+    @Override
+    public boolean hasCorrectResponses() {
+        return true;
+    }
 
     @Override
     public void setReaction(String reaction) {
@@ -74,5 +73,44 @@ public class AudioAsStimulus extends BookkeepingStimulus<Boolean,String> {
         }
     }
 
+    public static AudioAsStimulus toObject(String str) {
+        try {
+
+            // inerited fields
+            String label = UtilsJSONdialect.getKeyWithoutBrackets(str, "label");
+            String audioPath = UtilsJSONdialect.getKeyWithoutBrackets(str, "audioPath");
+            String videoPath = UtilsJSONdialect.getKeyWithoutBrackets(str, "videoPath");
+            String code = UtilsJSONdialect.getKeyWithoutBrackets(str, "code");
+            String correctResponses = UtilsJSONdialect.getKeyWithoutBrackets(str, "correctResponses");
+            String pauseMs = UtilsJSONdialect.getKeyWithoutBrackets(str, "pauseMs");
+            String ratingLabels = UtilsJSONdialect.getKeyWithoutBrackets(str, "ratingLabels");
+            String uniqueId = UtilsJSONdialect.getKeyWithoutBrackets(str, "uniqueId");
+            
+            // specific fields
+            String bandLabel = UtilsJSONdialect.getKeyWithoutBrackets(str, "bandLabel");
+            String bandIndex = UtilsJSONdialect.getKeyWithoutBrackets(str, "bandIndex");
+            String timeStamp = UtilsJSONdialect.getKeyWithoutBrackets(str, "timeStamp");
+            String wordType = UtilsJSONdialect.getKeyWithoutBrackets(str, "wordType");
+
+          
+            // (String uniqueId, String label, int pauseMs, String audioPath, String correctResponses, String bandLabel, int bandIndex, WordType wordtype, String ratingLabel)
+            AudioAsStimulus retVal = new AudioAsStimulus(uniqueId, label, Integer.parseInt(pauseMs), audioPath, correctResponses, bandLabel, Integer.parseInt(bandIndex), WordType.stringToWordType(wordType), ratingLabels);
+            retVal.setTimeStamp(Long.parseLong(timeStamp));
+            return retVal;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("{");
+        builder.append(super.toString());
+        builder.append(",");
+        builder.append("wordType:{").append(this.wordtype).append("}");
+        builder.append("}");
+        return builder.toString();
+    }
 
 }

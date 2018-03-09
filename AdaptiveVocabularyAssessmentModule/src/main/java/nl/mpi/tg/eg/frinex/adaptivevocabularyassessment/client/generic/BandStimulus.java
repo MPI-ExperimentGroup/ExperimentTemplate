@@ -26,35 +26,65 @@ import nl.mpi.tg.eg.frinex.common.model.AbstractStimulus;
 public abstract class BandStimulus<S> extends AbstractStimulus {
 
     private S bandLabel;
-    
+
     protected int bandIndex;
-    
+
     private long timeStamp;
-   
-    public BandStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, S bandLabel, int bandIndex){
-      super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses);
-      this.bandLabel = bandLabel;
-      this.bandIndex = bandIndex;
+
+    public BandStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, S bandLabel, int bandIndex) {
+        super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses);
+        this.bandLabel = bandLabel;
+        this.bandIndex = bandIndex;
     }
-    
-    
-    public S getBandLabel (){
+
+    public S getBandLabel() {
         return this.bandLabel;
     }
-    
-     public void setBandLabel (S bLabel){
-        this.bandLabel=bLabel;
+
+    public void setBandLabel(S bLabel) {
+        this.bandLabel = bLabel;
     }
-     
-     public int getBandIndex (){
+
+    public int getBandIndex() {
         return this.bandIndex;
     }
-    
-     public long getTimeStamp (){
+
+    public long getTimeStamp() {
         return this.timeStamp;
     }
-     
-      public void setTimeStamp (long timestamp){
-        this.timeStamp=timestamp;
+
+    public void setTimeStamp(long timestamp) {
+        this.timeStamp = timestamp;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+
+        // ineritedfields
+        if (this.getAudio() != null) {
+            builder.append("audioPath:{").append(this.getAudio()).append("},");
+        }
+        if (this.getVideo() != null) {
+            builder.append("videoPath:{").append(this.getVideo()).append("},");
+        }
+        if (this.getCode() != null) {
+            builder.append("code:{").append(this.getCode()).append("},");
+        }
+        if (this.getCorrectResponses() != null) {
+            builder.append("correctResponses:{").append(this.getCorrectResponses()).append("},");
+        }
+        builder.append("label:{").append(this.getLabel()).append("},");
+        builder.append("pauseMs:{").append(this.getPauseMs()).append("},");
+        builder.append("ratingLabels:{").append(this.getRatingLabels()).append("},");
+        //builder.append("tags:{").append(this.getTags()).append("},"); // TODO implement mapping list of tags to string
+        builder.append("uniqueId:{").append(this.getUniqueId()).append("},");
+
+        // specific fields
+        builder.append("bandLabel:{").append(this.bandLabel.toString()).append("},");
+        builder.append("bandIndex:{").append(this.bandIndex).append("},");
+        builder.append("timeStamp:{").append(this.timeStamp).append("}");
+        return builder.toString();
+    }
+
 }
