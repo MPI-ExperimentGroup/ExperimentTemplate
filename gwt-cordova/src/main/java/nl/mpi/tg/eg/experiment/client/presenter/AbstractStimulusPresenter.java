@@ -332,16 +332,16 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 }
             } else {
                 final List<StimulusSelector> randomTagsList = new ArrayList();
-                if (consumedTagsGroupName != null) {
-                    String consumedTagsGroupString = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), CONSUMED_TAGS_LIST + consumedTagsGroupName);
-                    for (StimulusSelector currentSelector : randomTags) {
-                        if (!consumedTagsGroupString.contains("-" + currentSelector.getAlias() + "-")) {
-                            randomTagsList.add(currentSelector);
-                        }
+                String consumedTagsGroupString = (consumedTagsGroupName != null) ? localStorage.getStoredDataValue(userResults.getUserData().getUserId(), CONSUMED_TAGS_LIST + consumedTagsGroupName) : "";
+                for (StimulusSelector currentSelector : randomTags) {
+                    if (!consumedTagsGroupString.contains("-" + currentSelector.getAlias() + "-")) {
+                        randomTagsList.add(currentSelector);
                     }
                 }
                 StimulusSelector stimulusAllocation = randomTagsList.get(new Random().nextInt(randomTagsList.size()));
-                localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), CONSUMED_TAGS_LIST + consumedTagsGroupName, "-" + stimulusAllocation.getAlias() + "-");
+                if (consumedTagsGroupName != null) {
+                    localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), CONSUMED_TAGS_LIST + consumedTagsGroupName, "-" + stimulusAllocation.getAlias() + "-");
+                }
                 userResults.getUserData().setMetadataValue(stimulusAllocationField, stimulusAllocation.getAlias());
                 localStorage.storeData(userResults);
                 allocatedTags.add(stimulusAllocation.getTag());
