@@ -27,9 +27,9 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
  * @since Feb 19, 2018 18:20:00 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class WizardOfflineCompletionScreen extends AbstractWizardScreen {
+public class WizardSubmitOfflineDataScreen extends AbstractWizardScreen {
 
-    public WizardOfflineCompletionScreen() {
+    public WizardSubmitOfflineDataScreen() {
         super(WizardScreenEnum.WizardOfflineCompletionScreen, "Data Management", "Data Management", "DataManagement");
         wizardScreenData.setScreenText(0, "Participants with data in the application memory:");
         wizardScreenData.setScreenText(1, "The participant's data has been uploaded to the server");
