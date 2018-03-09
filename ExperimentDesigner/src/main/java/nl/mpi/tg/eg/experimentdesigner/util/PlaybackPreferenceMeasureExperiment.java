@@ -22,7 +22,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardOfflineCompletionScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSubmitOfflineDataScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardExistingUserCheckScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardGridStimulusScreen;
@@ -104,7 +104,7 @@ public class PlaybackPreferenceMeasureExperiment {
             testStimulusScreen.setShowCurtains(true);
             textMenuScreen.addTargetScreen(testStimulusScreen);
             wizardData.addScreen(testStimulusScreen);
-//            testStimulusScreen.setBackWizardScreen(textMenuScreen);
+            testStimulusScreen.getWizardScreenData().getMenuWizardScreenData().add(menuScreen.getWizardScreenData());
             testStimulusScreen.setNextWizardScreen(textMenuScreen);
         }
         WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true, true, false, completionScreenText2,
@@ -117,7 +117,7 @@ public class PlaybackPreferenceMeasureExperiment {
         completionScreen.setScreenTag("completion");
         completionScreen.setNextWizardScreen(existingUserCheckScreen);
 
-        WizardOfflineCompletionScreen offlineCompletionScreen = new WizardOfflineCompletionScreen();
+        WizardSubmitOfflineDataScreen offlineCompletionScreen = new WizardSubmitOfflineDataScreen();
         wizardData.addScreen(offlineCompletionScreen);
         offlineCompletionScreen.setBackWizardScreen(menuScreen);
 
