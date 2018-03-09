@@ -27,7 +27,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardExistingUserCheckScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardGridStimulusScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardOfflineCompletionScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSubmitOfflineDataScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSelectUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
@@ -236,7 +236,7 @@ public class GuineaPigProject {
         textMenuScreen.setBackWizardScreen(menuScreen);
         backScreen.setNextWizardScreenData(atticScreen.getWizardScreenData());
 
-        WizardOfflineCompletionScreen offlineCompletionScreen = new WizardOfflineCompletionScreen();
+        WizardSubmitOfflineDataScreen offlineCompletionScreen = new WizardSubmitOfflineDataScreen();
         wizardData.addScreen(offlineCompletionScreen);
         offlineCompletionScreen.setBackWizardScreen(menuScreen);
 
