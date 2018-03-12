@@ -25,6 +25,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardRandomStimulusScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreenData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilStimuliData;
@@ -83,10 +84,20 @@ public class SentenceCompletion {
         wizardData.addScreen(wizardTextScreen);
         wizardData.addScreen(wizardEditUserScreen);
 
-        WizardRandomStimulusScreen firstStimuliScreen = null;
+        WizardScreenData firstStimuliScreen = wizardEditUserScreen.getWizardScreenData();
         WizardRandomStimulusScreen lastStimuliScreen = null;
         for (final WizardUtilStimuliData stimuliData : wizardUtilData.getStimuliData()) {
-
+            if (stimuliData.getInstructions() != null) {
+                WizardTextScreen stimulusInstructionsScreen = new WizardTextScreen(stimuliData.getStimuliName() + " Informatie", wizardUtilData.getInstructionsText(),
+                        "volgende [ spatiebalk ]"
+                );
+                stimulusInstructionsScreen.setMenuLabel("Terug");
+                wizardData.addScreen(stimulusInstructionsScreen);
+                stimulusInstructionsScreen.setNextWizardScreen(wizardEditUserScreen);
+                agreementScreen.setNextWizardScreen(stimulusInstructionsScreen);
+                firstStimuliScreen.setNextWizardScreenData(stimulusInstructionsScreen.getWizardScreenData());
+                firstStimuliScreen = stimulusInstructionsScreen.getWizardScreenData();
+            }
             final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen(stimuliData.getStimuliName(), false, stimuliData.getStimuliArray(),
                     stimuliData.getRandomStimuliTags(), 1000, true, null, 0, 0, null, null, null, null, "Volgende [tab + enter]");
             list1234Screen.setStimulusFreeText(true, ".{2,}",
@@ -101,10 +112,8 @@ public class SentenceCompletion {
                 list1234Screen.setShowProgress(true);
             }
             wizardData.addScreen(list1234Screen);
-
-            if (firstStimuliScreen == null) {
-                firstStimuliScreen = list1234Screen;
-            }
+            firstStimuliScreen.setNextWizardScreenData(list1234Screen.getWizardScreenData());
+            firstStimuliScreen = list1234Screen.getWizardScreenData();
             lastStimuliScreen = list1234Screen;
         }
         // @todo: remove the restart button
@@ -143,9 +152,6 @@ public class SentenceCompletion {
         }
         wizardTextScreen.setNextWizardScreen(wizardEditUserScreen);
         agreementScreen.setNextWizardScreen(wizardTextScreen);
-        if (firstStimuliScreen != null) {
-            wizardEditUserScreen.setNextWizardScreen(firstStimuliScreen);
-        }
         completionScreen.setNextWizardScreen(wizardTextScreen);
 
         wizardEditUserScreen.setBackWizardScreen(wizardTextScreen);
