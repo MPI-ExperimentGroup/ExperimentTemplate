@@ -64,8 +64,6 @@ public class TestingVersionPresenter extends LocalStoragePresenter implements Pr
 //                + version.buildVersion() + "-"
                 + version.projectVersion() + "\n");
         ((ComplexView) simpleView).addPadding();
-
-        widgetTag.clear();
         ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
 
             @Override
