@@ -1147,7 +1147,27 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     public void stimulusButton(final PresenterEventListner presenterListerner, String styleName) {
-        final StimulusButton buttonItem = ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName);
+        final StimulusButton buttonItem = ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
+            @Override
+            public String getLabel() {
+                return presenterListerner.getLabel();
+            }
+
+            @Override
+            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "StimulusButton", stimulusProvider.getCurrentStimulus().getUniqueId(), presenterListerner.getLabel(), duration.elapsedMillis());
+                if (stimulusProvider.getCurrentStimulus().hasCorrectResponses()) {
+                    // if there are correct responses to this stimulus then increment the score
+                    userResults.getUserData().addPotentialScore(stimulusProvider.isCorrectResponse(stimulusProvider.getCurrentStimulus(), presenterListerner.getLabel()));
+                }
+                presenterListerner.postLoadTimerFired();
+            }
+
+            @Override
+            public int getHotKey() {
+                return presenterListerner.getHotKey();
+            }
+        }, styleName);
         buttonList.add(buttonItem);
     }
 
