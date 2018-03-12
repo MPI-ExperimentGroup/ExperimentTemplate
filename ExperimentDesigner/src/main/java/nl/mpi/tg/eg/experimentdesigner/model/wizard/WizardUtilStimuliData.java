@@ -24,6 +24,7 @@ package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 public class WizardUtilStimuliData {
 
     protected String stimuliName;
+    protected String instructions = null;
     protected String[] stimuliArray;
     protected String[] randomStimuliTags;
 
@@ -33,6 +34,14 @@ public class WizardUtilStimuliData {
 
     public void setStimuliName(String stimuliName) {
         this.stimuliName = stimuliName;
+    }
+
+    public String getInstructions() {
+        return instructions;
+    }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
     }
 
     public String[] getStimuliArray() {
