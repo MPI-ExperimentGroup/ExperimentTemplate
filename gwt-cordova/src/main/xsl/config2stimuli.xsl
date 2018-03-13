@@ -22,7 +22,9 @@
             import nl.mpi.tg.eg.frinex.common.model.AbstractStimulus;
             import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
-            public class GeneratedStimulus extends AbstractStimulus {
+            public class GeneratedStimulus extends </xsl:text>
+        <xsl:value-of select="if(experiment/stimuli[@class]) then concat(experiment/stimuli/@class, '.CustomStimulus') else 'AbstractStimulus'" />
+        <xsl:text> {
             protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
         </xsl:text>    
             
@@ -44,7 +46,8 @@
                 </xsl:text>
             </xsl:for-each>
             <xsl:text>}</xsl:text>
-        </xsl:result-document>
+        </xsl:result-document>        
+        <xsl:variable name="parameter" select="tokenize(experiment/stimuli/@parameters, ' ')"/>
         <xsl:result-document href="{$targetClientDirectory}/util/GeneratedStimulusProvider.java" method="text">
             <xsl:text>
                 package nl.mpi.tg.eg.experiment.client.util;
@@ -76,16 +79,23 @@
                 <xsl:value-of select="generate-id(.)" />
                 <xsl:text>, </xsl:text>
                 <xsl:value-of select="@pauseMs" />
-                <xsl:if test="@audioPath or @videoPath or @ogg or @imagePath">
-                    <xsl:text>, </xsl:text>
-                    <xsl:value-of select="if(@audioPath) then concat('&quot;', @audioPath, '&quot;') else 'null'" />
-                    <xsl:text>, </xsl:text>
-                    <xsl:value-of select="if(@videoPath) then concat('&quot;', @videoPath, '&quot;') else 'null'" />
-                    <xsl:text>, </xsl:text>
-                    <xsl:value-of select="if(@imagePath) then concat('&quot;', @imagePath, '&quot;') else 'null'" />
-                </xsl:if>
+                <!--<xsl:if test="@audioPath or @videoPath or @ogg or @imagePath">-->
+                <xsl:text>, </xsl:text>
+                <xsl:value-of select="if(@audioPath) then concat('&quot;', @audioPath, '&quot;') else 'null'" />
+                <xsl:text>, </xsl:text>
+                <xsl:value-of select="if(@videoPath) then concat('&quot;', @videoPath, '&quot;') else 'null'" />
+                <xsl:text>, </xsl:text>
+                <xsl:value-of select="if(@imagePath) then concat('&quot;', @imagePath, '&quot;') else 'null'" />
+                <!--</xsl:if>-->
                 <xsl:value-of select="if(@ratingLabels) then concat(',&quot;', @ratingLabels, '&quot;') else ',null'" />
                 <xsl:value-of select="if(@correctResponses) then concat(',&quot;', @correctResponses, '&quot;') else ',null'" />
+                <xsl:variable name="stimuliElement" select="."/>
+                <xsl:for-each select="$parameter">
+                    <xsl:variable name="parameterName" select="."/>
+                    <xsl:variable name="parameterValue" select="$stimuliElement/@*[name() = $parameterName]"/>
+                    <xsl:text>,</xsl:text>
+                    <xsl:value-of select="if($parameterValue) then concat('&quot;', $parameterValue, '&quot;') else 'null'" />
+                </xsl:for-each>
                 <xsl:text>)</xsl:text>
                 <xsl:if test="position() != last()">
                     <xsl:text>,
@@ -114,18 +124,35 @@
         <xsl:text>
             }
 
+        </xsl:text>
+        <xsl:for-each select="$parameter">
+            <xsl:text>final String </xsl:text>
+            <xsl:value-of select="." />
+            <xsl:text>;</xsl:text>
+        </xsl:for-each>
+        <xsl:text>
+            
             public static final void fillStimulusList(List&lt;Stimulus&gt; stimulusArray) {
             stimulusArray.addAll(Arrays.asList(GeneratedStimulusProvider.values));</xsl:text>
         <xsl:text>
             }
             
-            public GeneratedStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses) {
+            public GeneratedStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, String ... parameters) {
             super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses);
+        </xsl:text>
+        <xsl:for-each select="$parameter">
+            <xsl:text></xsl:text>
+            <xsl:value-of select="." />
+            <xsl:text>= parameters[</xsl:text>
+            <xsl:value-of select="position()" />                
+            <xsl:text>-1];</xsl:text>
+        </xsl:for-each>
+        <xsl:text>
             }
 
-            public GeneratedStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String ratingLabels, String correctResponses) {
+            /*public GeneratedStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String ratingLabels, String correctResponses) {
             super(uniqueId, tags, label, code, pauseMs, ratingLabels, correctResponses);
-            }
+            }*/
 
             @Override
             public String getAudio() {
