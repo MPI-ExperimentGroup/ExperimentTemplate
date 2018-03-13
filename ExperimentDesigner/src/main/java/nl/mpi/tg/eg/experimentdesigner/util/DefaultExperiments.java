@@ -80,7 +80,7 @@ public class DefaultExperiments {
         experimentRepository.save(new KinOathExample().getExperiment());
         experimentRepository.save(new RosselFieldKit().getExperiment());
         experimentRepository.save(new WellspringsSamoanFieldKit().getExperiment());
-        experimentRepository.save(new Parcours().getExperiment());
+        experimentRepository.save(new SentenceCompletion(new Parcours()).getExperiment());
         experimentRepository.save(new MultiParticipant().getExperiment());
         experimentRepository.save(new ShortMultiparticipant01().getExperiment());
         experimentRepository.save(new ManipulatedContours().getExperiment());
@@ -89,8 +89,9 @@ public class DefaultExperiments {
         experimentRepository.save(new SentencesRatingTask().getExperiment());
         experimentRepository.save(new GuineaPigProject().getExperiment());
 //        experimentRepository.save(new AdVoCas().getExperiment());
-        experimentRepository.save(new Joost01().getExperiment());
-        experimentRepository.save(new Joost02().getExperiment());
+        experimentRepository.save(new SentenceCompletion(new Joost01()).getExperiment());
+        experimentRepository.save(new SentenceCompletion(new Joost02()).getExperiment());
+        experimentRepository.save(new PlaybackPreferenceMeasureExperiment().getExperiment());
 
         for (Experiment experiment : experimentRepository.findAll()) {
             eventRepository.save(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.published, true, true, true));
