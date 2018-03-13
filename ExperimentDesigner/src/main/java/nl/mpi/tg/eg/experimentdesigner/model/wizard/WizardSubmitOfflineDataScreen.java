@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
+import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
@@ -30,7 +31,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 public class WizardSubmitOfflineDataScreen extends AbstractWizardScreen {
 
     public WizardSubmitOfflineDataScreen() {
-        super(WizardScreenEnum.WizardOfflineCompletionScreen, "Data Management", "Data Management", "DataManagement");
+        super(WizardScreenEnum.WizardSubmitOfflineDataScreen, "Data Management", "Data Management", "DataManagement");
         wizardScreenData.setScreenText(0, "Participants with data in the application memory:");
         wizardScreenData.setScreenText(1, "The participant's data has been uploaded to the server");
         wizardScreenData.setScreenText(2, "Remove the participants's data from this application");
@@ -77,10 +78,15 @@ public class WizardSubmitOfflineDataScreen extends AbstractWizardScreen {
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(featureText);
         final PresenterFeature selectUserMenu = new PresenterFeature(FeatureType.selectUserMenu, null);
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(selectUserMenu);
-        final PresenterFeature sendMetadata = new PresenterFeature(FeatureType.sendMetadata, null);
-        uploadPresenterScreen.getPresenterFeatureList().add(sendMetadata);
+        uploadPresenterScreen.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "Uploading matadata"));
+        final PresenterFeature sendPause = new PresenterFeature(FeatureType.pause, null);
+        sendPause.addFeatureAttributes(FeatureAttribute.msToNext, "100");
+        uploadPresenterScreen.getPresenterFeatureList().add(sendPause);
+        final PresenterFeature sendMetadata = sendPause.addFeature(FeatureType.sendMetadata, null);
         final PresenterFeature onSuccess = sendMetadata.addFeature(FeatureType.onSuccess, null);
-        final PresenterFeature sendAllData = onSuccess.addFeature(FeatureType.sendAllData, null);
+        onSuccess.addFeature(FeatureType.htmlText, "Uploading data", "");
+        final PresenterFeature sendAllPause = onSuccess.addFeature(FeatureType.pause, null, "100");
+        final PresenterFeature sendAllData = sendAllPause.addFeature(FeatureType.sendAllData, null);
         final PresenterFeature onSuccess2 = sendAllData.addFeature(FeatureType.onSuccess, null);
         final PresenterFeature htmlText1 = onSuccess2.addFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(1), "");
         onSuccess2.addFeature(FeatureType.addPadding, null);
