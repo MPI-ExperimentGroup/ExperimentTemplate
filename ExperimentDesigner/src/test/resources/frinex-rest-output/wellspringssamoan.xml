@@ -46,7 +46,7 @@
         <targetButton featureText="Ioe (yes)" target="MetadataScreen"/>
     </presenter>
     <presenter back="Afio_mai__welcome_" displayOrder="7" menuLabel="Metadata" next="Stimulus" type="stimulus" self="MetadataScreen" title="Metadata">
-        <loadAllStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" repeatCount="1">
+        <loadStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="Metadata" wavFormat="true" filePerStimulus="false"/>
                 <startAudioRecorderTag eventTier="1"/>
@@ -61,10 +61,11 @@
                 <stopAudioRecorder/>
                 <autoNextPresenter/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>metadata</tag>
             </stimuli>
-        </loadAllStimulus>
+        </loadStimulus>
     </presenter>
     <presenter back="Afio_mai__welcome_" displayOrder="8" menuLabel="Va’ai i le ata (look at the picture)" type="stimulus" self="Stimulus" title="Va’ai i le ata (look at the picture)">
         <loadSdCardStimulus eventTag="Va’ai i le ata (look at the picture)" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
