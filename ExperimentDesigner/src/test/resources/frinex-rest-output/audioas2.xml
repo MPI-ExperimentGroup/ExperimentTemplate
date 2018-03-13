@@ -61,21 +61,41 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
-                 
+              
                 <table styleName="stimulusContainerTab">
                     <row>
                         <column styleName="stimulusContainerCol">
-                            <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1"> 
-                                <nextStimulus repeatIncorrect="false"/>
-                            </triggerListener>
-                            <stimulusAudio msToNext="0" showPlaybackIndicator="false"> 
-                                <actionButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight"> 
-                                    <trigger listenerId="nextStimulusAction"/>
-                                </actionButton>
-                                <stimulusPause>
-                                    <trigger listenerId="nextStimulusAction"/>
-                                </stimulusPause>
-                            </stimulusAudio>
+                            <stimulusHasRatingOptions>
+                                <conditionTrue>
+                                    <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1"> 
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </triggerListener>
+                                    <stimulusAudio msToNext="0" showPlaybackIndicator="false"> 
+                                        <stimulusButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight"> 
+                                            <trigger listenerId="nextStimulusAction"/>
+                                        </stimulusButton>
+                                        <stimulusPause>
+                                            <trigger listenerId="nextStimulusAction"/>
+                                        </stimulusPause>
+                                    </stimulusAudio>
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <htmlText featureText="&lt;div align=&quot;left&quot; &gt; &lt;img src=&quot;static/animated-star-image-0109.gif&quot; /&gt; New trial starts. Lsiten to the sample and press SPACE when ready to continue &lt;/div&gt;"/>
+                                    <pause msToNext="1000">
+                                        <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1"> 
+                                            <nextStimulus repeatIncorrect="false"/>
+                                        </triggerListener>
+                                        <stimulusAudio msToNext="0" showPlaybackIndicator="false"> 
+                                            <actionButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight"> 
+                                                <trigger listenerId="nextStimulusAction"/>
+                                            </actionButton>
+                                            <stimulusPause>
+                                                <trigger listenerId="nextStimulusAction"/>
+                                            </stimulusPause>
+                                        </stimulusAudio>
+                                    </pause>
+                                </conditionFalse> 
+                            </stimulusHasRatingOptions>
                             
                         </column>
                     </row>
@@ -110,17 +130,37 @@
                 <table styleName="stimulusContainerTab">
                     <row>
                         <column styleName="stimulusContainerCol">
-                             <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1"> 
-                                <nextStimulus repeatIncorrect="false"/>
-                            </triggerListener>
-                            <stimulusAudio msToNext="0" showPlaybackIndicator="false"> 
-                                <actionButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight"> 
-                                     <trigger listenerId="nextStimulusAction"/>
-                                </actionButton>
-                                <stimulusPause>
-                                     <trigger listenerId="nextStimulusAction"/>
-                                </stimulusPause>
-                            </stimulusAudio>
+                            <stimulusHasRatingOptions>
+                                <conditionTrue>
+                                    <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1"> 
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </triggerListener>
+                                    <stimulusAudio msToNext="0" showPlaybackIndicator="false"> 
+                                        <stimulusButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight"> 
+                                            <trigger listenerId="nextStimulusAction"/>
+                                        </stimulusButton>
+                                        <stimulusPause>
+                                            <trigger listenerId="nextStimulusAction"/>
+                                        </stimulusPause>
+                                    </stimulusAudio>
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <htmlText featureText="&lt;div align=&quot;left&quot; &gt; &lt;img src=&quot;static/animated-star-image-0109.gif&quot; /&gt; New trial starts. Lsiten to the sample and press SPACE when ready to continue &lt;/div&gt;"/>
+                                    <pause msToNext="1000">
+                                        <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1"> 
+                                            <nextStimulus repeatIncorrect="false"/>
+                                        </triggerListener>
+                                        <stimulusAudio msToNext="0" showPlaybackIndicator="false"> 
+                                            <actionButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight"> 
+                                                <trigger listenerId="nextStimulusAction"/>
+                                            </actionButton>
+                                            <stimulusPause>
+                                                <trigger listenerId="nextStimulusAction"/>
+                                            </stimulusPause>
+                                        </stimulusAudio>
+                                    </pause>
+                                </conditionFalse> 
+                            </stimulusHasRatingOptions>
                         </column>
                     </row>
                 </table>
