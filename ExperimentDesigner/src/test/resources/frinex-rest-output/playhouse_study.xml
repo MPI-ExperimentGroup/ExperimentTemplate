@@ -587,107 +587,39 @@
         <versionData/>
     </presenter>
     <stimuli>
-        <stimulus audioPath="P_01_NL" code="P_01_NL" identifier="P_01_NL" imagePath="P_01_NL.jpg" pauseMs="0">
-            <tag>Practice</tag>
-        </stimulus>
-        <stimulus audioPath="P_02_NL" code="P_02_NL" identifier="P_02_NL" imagePath="P_02_NL.jpg" pauseMs="0">
-            <tag>Practice</tag>
-        </stimulus>
-        <stimulus audioPath="P_03_Eng" code="P_03_Eng" identifier="P_03_Eng" imagePath="P_03_Eng.jpg" pauseMs="0">
-            <tag>Practice</tag>
-        </stimulus>
-        <stimulus audioPath="P_04_Eng" code="P_04_Eng" identifier="P_04_Eng" imagePath="P_04_Eng.jpg" pauseMs="0">
-            <tag>Practice</tag>
-        </stimulus>
-        <stimulus audioPath="M_01" code="M_01" identifier="M_01" imagePath="M_01.jpg" pauseMs="0">
-            <tag>Matching1</tag>
-        </stimulus>
-        <stimulus audioPath="M_02" code="M_02" identifier="M_02" imagePath="M_02.jpg" pauseMs="0">
-            <tag>Matching1</tag>
-        </stimulus>
-        <stimulus audioPath="M_03" code="M_03" identifier="M_03" imagePath="M_03.jpg" pauseMs="0">
-            <tag>Matching1</tag>
-        </stimulus>
-        <stimulus audioPath="M_04" code="M_04" identifier="M_04" imagePath="M_04.jpg" pauseMs="0">
-            <tag>Matching1</tag>
-        </stimulus>
-        <stimulus audioPath="M_05" code="M_05" identifier="M_05" imagePath="M_05.jpg" pauseMs="0">
-            <tag>Matching1</tag>
-        </stimulus>
-        <stimulus audioPath="M_06" code="M_06" identifier="M_06" imagePath="M_06.jpg" pauseMs="0">
-            <tag>Matching1</tag>
-        </stimulus>
-        <stimulus audioPath="M_07" code="M_07" identifier="M_07" imagePath="M_07.jpg" pauseMs="0">
-            <tag>Matching2</tag>
-        </stimulus>
-        <stimulus audioPath="M_08" code="M_08" identifier="M_08" imagePath="M_08.jpg" pauseMs="0">
-            <tag>Matching2</tag>
-        </stimulus>
-        <stimulus audioPath="M_09" code="M_09" identifier="M_09" imagePath="M_09.jpg" pauseMs="0">
-            <tag>Matching2</tag>
-        </stimulus>
-        <stimulus audioPath="M_10" code="M_10" identifier="M_10" imagePath="M_10.jpg" pauseMs="0">
-            <tag>Matching2</tag>
-        </stimulus>
-        <stimulus audioPath="M_11" code="M_11" identifier="M_11" imagePath="M_11.jpg" pauseMs="0">
-            <tag>Matching2</tag>
-        </stimulus>
-        <stimulus audioPath="M_12" code="M_12" identifier="M_12" imagePath="M_12.jpg" pauseMs="0">
-            <tag>Matching2</tag>
-        </stimulus>
-        <stimulus audioPath="T_01" code="T_01" identifier="T_01" imagePath="T_01.jpg" pauseMs="0">
-            <tag>Test3</tag>
-        </stimulus>
-        <stimulus audioPath="T_02" code="T_02" identifier="T_02" imagePath="T_02.jpg" pauseMs="0">
-            <tag>Test3</tag>
-        </stimulus>
-        <stimulus audioPath="T_03" code="T_03" identifier="T_03" imagePath="T_03.jpg" pauseMs="0">
-            <tag>Test3</tag>
-        </stimulus>
-        <stimulus audioPath="T_04" code="T_04" identifier="T_04" imagePath="T_04.jpg" pauseMs="0">
-            <tag>Test3</tag>
-        </stimulus>
-        <stimulus audioPath="T_05" code="T_05" identifier="T_05" imagePath="T_05.jpg" pauseMs="0">
-            <tag>Test3</tag>
-        </stimulus>
-        <stimulus audioPath="T_06" code="T_06" identifier="T_06" imagePath="T_06.jpg" pauseMs="0">
-            <tag>Test3</tag>
-        </stimulus>
-        <stimulus audioPath="T_07" code="T_07" identifier="T_07" imagePath="T_07.jpg" pauseMs="0">
-            <tag>Test3</tag>
-        </stimulus>
-        <stimulus audioPath="T_08" code="T_08" identifier="T_08" imagePath="T_08.jpg" pauseMs="0">
-            <tag>Test3</tag>
-        </stimulus>
-        <stimulus audioPath="T_09" code="T_09" identifier="T_09" imagePath="T_09.jpg" pauseMs="0">
-            <tag>Test3</tag>
-        </stimulus>
-        <stimulus audioPath="T_10" code="T_10" identifier="T_10" imagePath="T_10.jpg" pauseMs="0">
-            <tag>Test4</tag>
-        </stimulus>
-        <stimulus audioPath="T_11" code="T_11" identifier="T_11" imagePath="T_11.jpg" pauseMs="0">
-            <tag>Test4</tag>
-        </stimulus>
-        <stimulus audioPath="T_12" code="T_12" identifier="T_12" imagePath="T_12.jpg" pauseMs="0">
-            <tag>Test4</tag>
-        </stimulus>
-        <stimulus audioPath="T_13" code="T_13" identifier="T_13" imagePath="T_13.jpg" pauseMs="0">
-            <tag>Test4</tag>
-        </stimulus>
-        <stimulus audioPath="T_14" code="T_14" identifier="T_14" imagePath="T_14.jpg" pauseMs="0">
-            <tag>Test4</tag>
-        </stimulus>
-        <stimulus audioPath="T_15" code="T_15" identifier="T_15" imagePath="T_15.jpg" pauseMs="0">
-            <tag>Test4</tag>
-        </stimulus>
-        <stimulus audioPath="T_16" code="T_16" identifier="T_16" imagePath="T_16.jpg" pauseMs="0">
-            <tag>Test4</tag>
-        </stimulus>
-        <stimulus audioPath="T_17" code="T_17" identifier="T_17" imagePath="T_17.jpg" pauseMs="0">
-            <tag>Test4</tag>
-        </stimulus>
-        <stimulus audioPath="T_18" code="T_18" identifier="T_18" imagePath="T_18.jpg" pauseMs="0">
-            <tag>Test4</tag>
-        </stimulus>
+        <stimulus audioPath="P_01_NL" code="P_01_NL" identifier="P_01_NL" imagePath="P_01_NL.jpg" pauseMs="0" tags="Practice"/>
+        <stimulus audioPath="P_02_NL" code="P_02_NL" identifier="P_02_NL" imagePath="P_02_NL.jpg" pauseMs="0" tags="Practice"/>
+        <stimulus audioPath="P_03_Eng" code="P_03_Eng" identifier="P_03_Eng" imagePath="P_03_Eng.jpg" pauseMs="0" tags="Practice"/>
+        <stimulus audioPath="P_04_Eng" code="P_04_Eng" identifier="P_04_Eng" imagePath="P_04_Eng.jpg" pauseMs="0" tags="Practice"/>
+        <stimulus audioPath="M_01" code="M_01" identifier="M_01" imagePath="M_01.jpg" pauseMs="0" tags="Matching1"/>
+        <stimulus audioPath="M_02" code="M_02" identifier="M_02" imagePath="M_02.jpg" pauseMs="0" tags="Matching1"/>
+        <stimulus audioPath="M_03" code="M_03" identifier="M_03" imagePath="M_03.jpg" pauseMs="0" tags="Matching1"/>
+        <stimulus audioPath="M_04" code="M_04" identifier="M_04" imagePath="M_04.jpg" pauseMs="0" tags="Matching1"/>
+        <stimulus audioPath="M_05" code="M_05" identifier="M_05" imagePath="M_05.jpg" pauseMs="0" tags="Matching1"/>
+        <stimulus audioPath="M_06" code="M_06" identifier="M_06" imagePath="M_06.jpg" pauseMs="0" tags="Matching1"/>
+        <stimulus audioPath="M_07" code="M_07" identifier="M_07" imagePath="M_07.jpg" pauseMs="0" tags="Matching2"/>
+        <stimulus audioPath="M_08" code="M_08" identifier="M_08" imagePath="M_08.jpg" pauseMs="0" tags="Matching2"/>
+        <stimulus audioPath="M_09" code="M_09" identifier="M_09" imagePath="M_09.jpg" pauseMs="0" tags="Matching2"/>
+        <stimulus audioPath="M_10" code="M_10" identifier="M_10" imagePath="M_10.jpg" pauseMs="0" tags="Matching2"/>
+        <stimulus audioPath="M_11" code="M_11" identifier="M_11" imagePath="M_11.jpg" pauseMs="0" tags="Matching2"/>
+        <stimulus audioPath="M_12" code="M_12" identifier="M_12" imagePath="M_12.jpg" pauseMs="0" tags="Matching2"/>
+        <stimulus audioPath="T_01" code="T_01" identifier="T_01" imagePath="T_01.jpg" pauseMs="0" tags="Test3"/>
+        <stimulus audioPath="T_02" code="T_02" identifier="T_02" imagePath="T_02.jpg" pauseMs="0" tags="Test3"/>
+        <stimulus audioPath="T_03" code="T_03" identifier="T_03" imagePath="T_03.jpg" pauseMs="0" tags="Test3"/>
+        <stimulus audioPath="T_04" code="T_04" identifier="T_04" imagePath="T_04.jpg" pauseMs="0" tags="Test3"/>
+        <stimulus audioPath="T_05" code="T_05" identifier="T_05" imagePath="T_05.jpg" pauseMs="0" tags="Test3"/>
+        <stimulus audioPath="T_06" code="T_06" identifier="T_06" imagePath="T_06.jpg" pauseMs="0" tags="Test3"/>
+        <stimulus audioPath="T_07" code="T_07" identifier="T_07" imagePath="T_07.jpg" pauseMs="0" tags="Test3"/>
+        <stimulus audioPath="T_08" code="T_08" identifier="T_08" imagePath="T_08.jpg" pauseMs="0" tags="Test3"/>
+        <stimulus audioPath="T_09" code="T_09" identifier="T_09" imagePath="T_09.jpg" pauseMs="0" tags="Test3"/>
+        <stimulus audioPath="T_10" code="T_10" identifier="T_10" imagePath="T_10.jpg" pauseMs="0" tags="Test4"/>
+        <stimulus audioPath="T_11" code="T_11" identifier="T_11" imagePath="T_11.jpg" pauseMs="0" tags="Test4"/>
+        <stimulus audioPath="T_12" code="T_12" identifier="T_12" imagePath="T_12.jpg" pauseMs="0" tags="Test4"/>
+        <stimulus audioPath="T_13" code="T_13" identifier="T_13" imagePath="T_13.jpg" pauseMs="0" tags="Test4"/>
+        <stimulus audioPath="T_14" code="T_14" identifier="T_14" imagePath="T_14.jpg" pauseMs="0" tags="Test4"/>
+        <stimulus audioPath="T_15" code="T_15" identifier="T_15" imagePath="T_15.jpg" pauseMs="0" tags="Test4"/>
+        <stimulus audioPath="T_16" code="T_16" identifier="T_16" imagePath="T_16.jpg" pauseMs="0" tags="Test4"/>
+        <stimulus audioPath="T_17" code="T_17" identifier="T_17" imagePath="T_17.jpg" pauseMs="0" tags="Test4"/>
+        <stimulus audioPath="T_18" code="T_18" identifier="T_18" imagePath="T_18.jpg" pauseMs="0" tags="Test4"/>
     </stimuli>
 </experiment>

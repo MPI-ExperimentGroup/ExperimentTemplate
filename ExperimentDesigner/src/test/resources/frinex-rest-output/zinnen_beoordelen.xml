@@ -74,29 +74,8 @@
         <versionData/>
     </presenter>
     <stimuli>
-        <stimulus identifier="no_181/set_1/condition_1/list_1/list_2:stimulus text 1" label="stimulus text 1" pauseMs="0">
-            <tag>Stimulus</tag>
-            <tag>condition_1</tag>
-            <tag>list_1</tag>
-            <tag>list_2</tag>
-            <tag>no_181</tag>
-            <tag>set_1</tag>
-        </stimulus>
-        <stimulus identifier="no_185/set_5/condition_1/list_1/list_2:stimulus text 2" label="stimulus text 2" pauseMs="0">
-            <tag>Stimulus</tag>
-            <tag>condition_1</tag>
-            <tag>list_1</tag>
-            <tag>list_2</tag>
-            <tag>no_185</tag>
-            <tag>set_5</tag>
-        </stimulus>
-        <stimulus identifier="no_67/set_7/condition_1/list_1/list_2:stimulus text 3" label="stimulus text 3" pauseMs="0">
-            <tag>Stimulus</tag>
-            <tag>condition_1</tag>
-            <tag>list_1</tag>
-            <tag>list_2</tag>
-            <tag>no_67</tag>
-            <tag>set_7</tag>
-        </stimulus>
+        <stimulus identifier="no_181/set_1/condition_1/list_1/list_2:stimulus text 1" label="stimulus text 1" pauseMs="0" tags="Stimulus condition_1 list_1 list_2 no_181 set_1"/>
+        <stimulus identifier="no_185/set_5/condition_1/list_1/list_2:stimulus text 2" label="stimulus text 2" pauseMs="0" tags="Stimulus condition_1 list_1 list_2 no_185 set_5"/>
+        <stimulus identifier="no_67/set_7/condition_1/list_1/list_2:stimulus text 3" label="stimulus text 3" pauseMs="0" tags="Stimulus condition_1 list_1 list_2 no_67 set_7"/>
     </stimuli>
 </experiment>

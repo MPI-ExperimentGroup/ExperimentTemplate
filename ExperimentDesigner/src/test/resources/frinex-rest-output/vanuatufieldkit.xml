@@ -166,23 +166,11 @@
         <localStorageData/>
     </presenter>
     <stimuli>
-        <stimulus identifier="I stap rikod nao. Man o woman we i toktok bai i talem nem blong hem." label="I stap rikod nao. Man o woman we i toktok bai i talem nem blong hem." pauseMs="0">
-            <tag>metadata</tag>
-        </stimulus>
-        <stimulus identifier="Bai i talem nem blong lanwis wea it toktok long hem." label="Bai i talem nem blong lanwis wea it toktok long hem." pauseMs="0">
-            <tag>metadata</tag>
-        </stimulus>
-        <stimulus identifier="Bai i talem nem blong ples wea i stap nao." label="Bai i talem nem blong ples wea i stap nao." pauseMs="0">
-            <tag>metadata</tag>
-        </stimulus>
-        <stimulus identifier="Bai i talem nem blong ples wea i bon long hem." label="Bai i talem nem blong ples wea i bon long hem." pauseMs="0">
-            <tag>metadata</tag>
-        </stimulus>
-        <stimulus identifier="Bai i talem wanem yea i bon." label="Bai i talem wanem yea i bon." pauseMs="0">
-            <tag>metadata</tag>
-        </stimulus>
-        <stimulus identifier="Pictures" imagePath="Pictures" label="Pictures" pauseMs="0">
-            <tag>Pictures</tag>
-        </stimulus>
+        <stimulus identifier="I stap rikod nao. Man o woman we i toktok bai i talem nem blong hem." label="I stap rikod nao. Man o woman we i toktok bai i talem nem blong hem." pauseMs="0" tags="metadata"/>
+        <stimulus identifier="Bai i talem nem blong lanwis wea it toktok long hem." label="Bai i talem nem blong lanwis wea it toktok long hem." pauseMs="0" tags="metadata"/>
+        <stimulus identifier="Bai i talem nem blong ples wea i stap nao." label="Bai i talem nem blong ples wea i stap nao." pauseMs="0" tags="metadata"/>
+        <stimulus identifier="Bai i talem nem blong ples wea i bon long hem." label="Bai i talem nem blong ples wea i bon long hem." pauseMs="0" tags="metadata"/>
+        <stimulus identifier="Bai i talem wanem yea i bon." label="Bai i talem wanem yea i bon." pauseMs="0" tags="metadata"/>
+        <stimulus identifier="Pictures" imagePath="Pictures" label="Pictures" pauseMs="0" tags="Pictures"/>
     </stimuli>
 </experiment>

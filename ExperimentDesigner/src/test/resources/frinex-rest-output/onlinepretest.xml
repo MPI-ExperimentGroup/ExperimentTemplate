@@ -70,13 +70,7 @@
         <versionData/>
     </presenter>
     <stimuli>
-        <stimulus audioPath="termites_ບຸນບັ້ງໄຟ_0" identifier=":termites_ບຸນບັ້ງໄຟ_0.wav:rabbit,cow" pauseMs="0" ratingLabels="rabbit,cow">
-            <tag></tag>
-            <tag>Stimuli</tag>
-        </stimulus>
-        <stimulus audioPath="termites_ບຸນບັ້ງໄຟ_1" identifier=":termites_ບຸນບັ້ງໄຟ_1.wav:moon,star" pauseMs="0" ratingLabels="moon,star">
-            <tag></tag>
-            <tag>Stimuli</tag>
-        </stimulus>
+        <stimulus audioPath="termites_ບຸນບັ້ງໄຟ_0" identifier=":termites_ບຸນບັ້ງໄຟ_0.wav:rabbit,cow" pauseMs="0" ratingLabels="rabbit,cow" tags="Stimuli"/>
+        <stimulus audioPath="termites_ບຸນບັ້ງໄຟ_1" identifier=":termites_ບຸນບັ້ງໄຟ_1.wav:moon,star" pauseMs="0" ratingLabels="moon,star" tags="Stimuli"/>
     </stimuli>
 </experiment>
