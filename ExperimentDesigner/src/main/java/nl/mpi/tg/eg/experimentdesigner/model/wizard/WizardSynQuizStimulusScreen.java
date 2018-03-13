@@ -73,7 +73,7 @@ public class WizardSynQuizStimulusScreen extends AbstractWizardScreen {
         helpDialogue.addFeatureAttributes(FeatureAttribute.closeButtonLabel, storedWizardScreenData.getNextButton()[0]);
         presenterScreen.getPresenterFeatureList().add(helpDialogue);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
-        final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
+        final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadStimulus, null);
         loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTitle());
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "true");
