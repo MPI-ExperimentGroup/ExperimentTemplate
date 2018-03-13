@@ -80,7 +80,7 @@ public class WizardAudioRecorderMetadataScreen extends AbstractWizardScreen {
         experiment.appendUniqueStimuli(storedWizardScreenData.getStimuli());
 //        experiment.setStimuli(stimuliList);
         List<PresenterFeature> presenterFeatureList = storedWizardScreenData.getPresenterScreen().getPresenterFeatureList();
-        final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
+        final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadStimulus, null);
         loadStimuliFeature.addStimulusTag("metadata");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, "Metadata");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "false");
