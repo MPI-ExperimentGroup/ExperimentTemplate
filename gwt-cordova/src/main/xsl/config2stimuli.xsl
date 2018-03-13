@@ -65,7 +65,7 @@
                 -->
                 <xsl:value-of select="if(@identifier) then concat('&quot;', @identifier, '&quot;, ') else concat('&quot;', generate-id(.), '&quot;, ')" />
                 <xsl:text>new Tag[]{</xsl:text>
-                <xsl:for-each select="distinct-values(tag/text())">
+                <xsl:for-each select="distinct-values(tokenize(@tags, ' '))">
                     <xsl:text>tag_</xsl:text>
                     <xsl:value-of select="." />
                     <xsl:if test="position() != last()">
@@ -114,7 +114,7 @@
             public enum Tag implements nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag {
 
         </xsl:text>
-        <xsl:for-each select="distinct-values(experiment/stimuli/stimulus/tag/text())">
+        <xsl:for-each select="distinct-values(tokenize(string-join(experiment/stimuli/stimulus/@tags, ' '), ' '))">
             <xsl:text>tag_</xsl:text>
             <xsl:value-of select="." />
             <xsl:if test="position() != last()">
