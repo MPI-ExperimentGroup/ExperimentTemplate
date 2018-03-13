@@ -470,88 +470,68 @@
         <selectUserMenu/>
     </presenter>
     <presenter back="DataManagement" displayOrder="15" menuLabel="Data Upload" next="DataManagement" type="transmission" self="DataUpload" title="Data Upload">
-        <sendMetadata>
-            <onSuccess>
-                <sendAllData>
-                    <onSuccess>
-                        <htmlText featureText="The participant's data has been uploaded to the server" styleName=""/>
-                        <addPadding/>
-                        <addPadding/>
-                        <eraseUsersDataButton featureText="Remove the participants's data from this application" target="DataManagement"/>
-                        <addPadding/>
-                        <addPadding/>
-                        <targetButton featureText="Keep local copy of the participants's data" styleName="" target="DataManagement"/>
-                        <addPadding/>
-                        <addPadding/>
-                    </onSuccess>
-                    <onError>
-                        <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
-                        <addPadding/>
-                        <addPadding/>
-                        <targetButton featureText="Retry" styleName="" target="DataUpload"/>
-                        <addPadding/>
-                        <addPadding/>
-                        <targetButton featureText="Participant's Data Listing" styleName="" target="DataManagement"/>
-                        <addPadding/>
-                        <addPadding/>
-                    </onError>
-                </sendAllData>
-            </onSuccess>
-            <onError>
-                <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
-                <addPadding/>
-                <addPadding/>
-                <targetButton featureText="Retry" styleName="" target="DataUpload"/>
-                <addPadding/>
-                <addPadding/>
-                <targetButton featureText="Participant's Data Listing" styleName="" target="DataManagement"/>
-                <addPadding/>
-                <addPadding/>
-            </onError>
-        </sendMetadata>
+        <htmlText featureText="Uploading matadata"/>
+        <pause msToNext="100">
+            <sendMetadata>
+                <onSuccess>
+                    <htmlText featureText="Uploading data" styleName=""/>
+                    <pause msToNext="100">
+                        <sendAllData>
+                            <onSuccess>
+                                <htmlText featureText="The participant's data has been uploaded to the server" styleName=""/>
+                                <addPadding/>
+                                <addPadding/>
+                                <eraseUsersDataButton featureText="Remove the participants's data from this application" target="DataManagement"/>
+                                <addPadding/>
+                                <addPadding/>
+                                <targetButton featureText="Keep local copy of the participants's data" styleName="" target="DataManagement"/>
+                                <addPadding/>
+                                <addPadding/>
+                            </onSuccess>
+                            <onError>
+                                <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
+                                <addPadding/>
+                                <addPadding/>
+                                <targetButton featureText="Retry" styleName="" target="DataUpload"/>
+                                <addPadding/>
+                                <addPadding/>
+                                <targetButton featureText="Participant's Data Listing" styleName="" target="DataManagement"/>
+                                <addPadding/>
+                                <addPadding/>
+                            </onError>
+                        </sendAllData>
+                    </pause>
+                </onSuccess>
+                <onError>
+                    <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
+                    <addPadding/>
+                    <addPadding/>
+                    <targetButton featureText="Retry" styleName="" target="DataUpload"/>
+                    <addPadding/>
+                    <addPadding/>
+                    <targetButton featureText="Participant's Data Listing" styleName="" target="DataManagement"/>
+                    <addPadding/>
+                    <addPadding/>
+                </onError>
+            </sendMetadata>
+        </pause>
     </presenter>
     <presenter back="Menu" displayOrder="16" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
     </presenter>
     <stimuli>
-        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0">
-            <tag>COW</tag>
-        </stimulus>
-        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis" imagePath="COWmis" pauseMs="0">
-            <tag>COW</tag>
-        </stimulus>
-        <stimulus audioPath="COWmis-5" code="COWmis-5" identifier="COWmis-5" imagePath="COWmis-5" pauseMs="0">
-            <tag>COW</tag>
-        </stimulus>
-        <stimulus audioPath="FATHER" code="FATHER" identifier="FATHER" imagePath="FATHER" pauseMs="0">
-            <tag>FATHER</tag>
-        </stimulus>
-        <stimulus audioPath="FATHERmis" code="FATHERmis" identifier="FATHERmis" imagePath="FATHERmis" pauseMs="0">
-            <tag>FATHER</tag>
-        </stimulus>
-        <stimulus audioPath="GHOST-a" code="GHOST-a" identifier="GHOST-a" imagePath="GHOST-a" pauseMs="0">
-            <tag>GHOST_a</tag>
-        </stimulus>
-        <stimulus audioPath="GHOST-amis" code="GHOST-amis" identifier="GHOST-amis" imagePath="GHOST-amis" pauseMs="0">
-            <tag>GHOST_a</tag>
-        </stimulus>
-        <stimulus audioPath="GHOST-b" code="GHOST-b" identifier="GHOST-b" imagePath="GHOST-b" pauseMs="0">
-            <tag>GHOST_b</tag>
-        </stimulus>
-        <stimulus audioPath="GHOST-bmis" code="GHOST-bmis" identifier="GHOST-bmis" imagePath="GHOST-bmis" pauseMs="0">
-            <tag>GHOST_b</tag>
-        </stimulus>
-        <stimulus audioPath="PRAY" code="PRAY" identifier="PRAY" imagePath="PRAY" pauseMs="0">
-            <tag>PRAY</tag>
-        </stimulus>
-        <stimulus audioPath="PRAYmis" code="PRAYmis" identifier="PRAYmis" imagePath="PRAYmis" pauseMs="0">
-            <tag>PRAY</tag>
-        </stimulus>
-        <stimulus audioPath="SHY" code="SHY" identifier="SHY" imagePath="SHY" pauseMs="0">
-            <tag>SHY</tag>
-        </stimulus>
-        <stimulus audioPath="SHYmis" code="SHYmis" identifier="SHYmis" imagePath="SHYmis" pauseMs="0">
-            <tag>SHY</tag>
-        </stimulus>
+        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW"/>
+        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis" imagePath="COWmis" pauseMs="0" tags="COW"/>
+        <stimulus audioPath="COWmis-5" code="COWmis-5" identifier="COWmis-5" imagePath="COWmis-5" pauseMs="0" tags="COW"/>
+        <stimulus audioPath="FATHER" code="FATHER" identifier="FATHER" imagePath="FATHER" pauseMs="0" tags="FATHER"/>
+        <stimulus audioPath="FATHERmis" code="FATHERmis" identifier="FATHERmis" imagePath="FATHERmis" pauseMs="0" tags="FATHER"/>
+        <stimulus audioPath="GHOST-a" code="GHOST-a" identifier="GHOST-a" imagePath="GHOST-a" pauseMs="0" tags="GHOST_a"/>
+        <stimulus audioPath="GHOST-amis" code="GHOST-amis" identifier="GHOST-amis" imagePath="GHOST-amis" pauseMs="0" tags="GHOST_a"/>
+        <stimulus audioPath="GHOST-b" code="GHOST-b" identifier="GHOST-b" imagePath="GHOST-b" pauseMs="0" tags="GHOST_b"/>
+        <stimulus audioPath="GHOST-bmis" code="GHOST-bmis" identifier="GHOST-bmis" imagePath="GHOST-bmis" pauseMs="0" tags="GHOST_b"/>
+        <stimulus audioPath="PRAY" code="PRAY" identifier="PRAY" imagePath="PRAY" pauseMs="0" tags="PRAY"/>
+        <stimulus audioPath="PRAYmis" code="PRAYmis" identifier="PRAYmis" imagePath="PRAYmis" pauseMs="0" tags="PRAY"/>
+        <stimulus audioPath="SHY" code="SHY" identifier="SHY" imagePath="SHY" pauseMs="0" tags="SHY"/>
+        <stimulus audioPath="SHYmis" code="SHYmis" identifier="SHYmis" imagePath="SHYmis" pauseMs="0" tags="SHY"/>
     </stimuli>
 </experiment>
