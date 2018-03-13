@@ -53,7 +53,7 @@ public class Sentveri_exp3 {
     private PresenterScreen createStimulusScreen(String screenName, long displayOrder) {
         final PresenterScreen presenterScreen = new PresenterScreen(null, screenName, null, screenName + "Screen", null, PresenterType.stimulus, displayOrder);
         List<PresenterFeature> presenterFeatureList = presenterScreen.getPresenterFeatureList();
-        final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadAllStimulus, null);
+        final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadStimulus, null);
         loadStimuliFeature.addStimulusTag(screenName);
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, screenName);
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "false");
