@@ -475,109 +475,71 @@
         <selectUserMenu/>
     </presenter>
     <presenter back="DataManagement" displayOrder="18" menuLabel="Data Upload" next="DataManagement" type="transmission" self="DataUpload" title="Data Upload">
-        <sendMetadata>
-            <onSuccess>
-                <sendAllData>
-                    <onSuccess>
-                        <htmlText featureText="The participant's data has been uploaded to the server" styleName=""/>
-                        <addPadding/>
-                        <addPadding/>
-                        <eraseUsersDataButton featureText="Remove the participants's data from this application" target="DataManagement"/>
-                        <addPadding/>
-                        <addPadding/>
-                        <targetButton featureText="Keep local copy of the participants's data" styleName="" target="DataManagement"/>
-                        <addPadding/>
-                        <addPadding/>
-                    </onSuccess>
-                    <onError>
-                        <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
-                        <addPadding/>
-                        <addPadding/>
-                        <targetButton featureText="Retry" styleName="" target="DataUpload"/>
-                        <addPadding/>
-                        <addPadding/>
-                        <targetButton featureText="Participant's Data Listing" styleName="" target="DataManagement"/>
-                        <addPadding/>
-                        <addPadding/>
-                    </onError>
-                </sendAllData>
-            </onSuccess>
-            <onError>
-                <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
-                <addPadding/>
-                <addPadding/>
-                <targetButton featureText="Retry" styleName="" target="DataUpload"/>
-                <addPadding/>
-                <addPadding/>
-                <targetButton featureText="Participant's Data Listing" styleName="" target="DataManagement"/>
-                <addPadding/>
-                <addPadding/>
-            </onError>
-        </sendMetadata>
+        <htmlText featureText="Uploading matadata"/>
+        <pause msToNext="100">
+            <sendMetadata>
+                <onSuccess>
+                    <htmlText featureText="Uploading data" styleName=""/>
+                    <pause msToNext="100">
+                        <sendAllData>
+                            <onSuccess>
+                                <htmlText featureText="The participant's data has been uploaded to the server" styleName=""/>
+                                <addPadding/>
+                                <addPadding/>
+                                <eraseUsersDataButton featureText="Remove the participants's data from this application" target="DataManagement"/>
+                                <addPadding/>
+                                <addPadding/>
+                                <targetButton featureText="Keep local copy of the participants's data" styleName="" target="DataManagement"/>
+                                <addPadding/>
+                                <addPadding/>
+                            </onSuccess>
+                            <onError>
+                                <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
+                                <addPadding/>
+                                <addPadding/>
+                                <targetButton featureText="Retry" styleName="" target="DataUpload"/>
+                                <addPadding/>
+                                <addPadding/>
+                                <targetButton featureText="Participant's Data Listing" styleName="" target="DataManagement"/>
+                                <addPadding/>
+                                <addPadding/>
+                            </onError>
+                        </sendAllData>
+                    </pause>
+                </onSuccess>
+                <onError>
+                    <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
+                    <addPadding/>
+                    <addPadding/>
+                    <targetButton featureText="Retry" styleName="" target="DataUpload"/>
+                    <addPadding/>
+                    <addPadding/>
+                    <targetButton featureText="Participant's Data Listing" styleName="" target="DataManagement"/>
+                    <addPadding/>
+                    <addPadding/>
+                </onError>
+            </sendMetadata>
+        </pause>
     </presenter>
     <presenter back="Menu" displayOrder="19" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
     </presenter>
     <stimuli>
-        <stimulus audioPath="training_1" code="training_1" identifier="training_1" imagePath="training_1" pauseMs="0">
-            <tag>Training</tag>
-        </stimulus>
-        <stimulus audioPath="training_2" code="training_2" identifier="training_2" imagePath="training_2" pauseMs="0">
-            <tag>Training</tag>
-        </stimulus>
-        <stimulus audioPath="training_3" code="training_3" identifier="training_3" imagePath="training_3" pauseMs="0">
-            <tag>Training</tag>
-        </stimulus>
-        <stimulus audioPath="training_4" code="training_4" identifier="training_4" imagePath="training_4" pauseMs="0">
-            <tag>Training</tag>
-        </stimulus>
-        <stimulus audioPath="test_1" code="test_1" identifier="test_1" imagePath="adjacency_a" pauseMs="0">
-            <tag>Test_1</tag>
-            <tag>allRooms</tag>
-        </stimulus>
-        <stimulus audioPath="test_8" code="test_8" identifier="test_8" imagePath="adjacency_b" pauseMs="0">
-            <tag>Test_1</tag>
-            <tag>allRooms</tag>
-        </stimulus>
-        <stimulus audioPath="filler_1" code="filler_1" identifier="filler_1" imagePath="filler_1" pauseMs="0">
-            <tag>Test_1</tag>
-            <tag>allRooms</tag>
-        </stimulus>
-        <stimulus audioPath="test_2" code="test_2" identifier="test_2" imagePath="adjacency_c" pauseMs="0">
-            <tag>Test_2</tag>
-            <tag>allRooms</tag>
-        </stimulus>
-        <stimulus audioPath="test_3" code="test_3" identifier="test_3" imagePath="adjacency_d" pauseMs="0">
-            <tag>Test_2</tag>
-            <tag>allRooms</tag>
-        </stimulus>
-        <stimulus audioPath="filler_3" code="filler_3" identifier="filler_3" imagePath="filler_3" pauseMs="0">
-            <tag>Test_2</tag>
-            <tag>allRooms</tag>
-        </stimulus>
-        <stimulus audioPath="test_5" code="test_5" identifier="test_5" imagePath="adjacency_a" pauseMs="0">
-            <tag>Test_3</tag>
-            <tag>allRooms</tag>
-        </stimulus>
-        <stimulus audioPath="test_4" code="test_4" identifier="test_4" imagePath="adjacency_b" pauseMs="0">
-            <tag>Test_3</tag>
-            <tag>allRooms</tag>
-        </stimulus>
-        <stimulus audioPath="filler_2" code="filler_2" identifier="filler_2" imagePath="filler_2" pauseMs="0">
-            <tag>Test_3</tag>
-            <tag>allRooms</tag>
-        </stimulus>
-        <stimulus audioPath="test_6" code="test_6" identifier="test_6" imagePath="adjacency_c" pauseMs="0">
-            <tag>Test_4</tag>
-            <tag>allRooms</tag>
-        </stimulus>
-        <stimulus audioPath="test_7" code="test_7" identifier="test_7" imagePath="adjacency_d" pauseMs="0">
-            <tag>Test_4</tag>
-            <tag>allRooms</tag>
-        </stimulus>
-        <stimulus audioPath="filler_4" code="filler_4" identifier="filler_4" imagePath="filler_4" pauseMs="0">
-            <tag>Test_4</tag>
-            <tag>allRooms</tag>
-        </stimulus>
+        <stimulus audioPath="training_1" code="training_1" identifier="training_1" imagePath="training_1" pauseMs="0" tags="Training"/>
+        <stimulus audioPath="training_2" code="training_2" identifier="training_2" imagePath="training_2" pauseMs="0" tags="Training"/>
+        <stimulus audioPath="training_3" code="training_3" identifier="training_3" imagePath="training_3" pauseMs="0" tags="Training"/>
+        <stimulus audioPath="training_4" code="training_4" identifier="training_4" imagePath="training_4" pauseMs="0" tags="Training"/>
+        <stimulus audioPath="test_1" code="test_1" identifier="test_1" imagePath="adjacency_a" pauseMs="0" tags="Test_1 allRooms"/>
+        <stimulus audioPath="test_8" code="test_8" identifier="test_8" imagePath="adjacency_b" pauseMs="0" tags="Test_1 allRooms"/>
+        <stimulus audioPath="filler_1" code="filler_1" identifier="filler_1" imagePath="filler_1" pauseMs="0" tags="Test_1 allRooms"/>
+        <stimulus audioPath="test_2" code="test_2" identifier="test_2" imagePath="adjacency_c" pauseMs="0" tags="Test_2 allRooms"/>
+        <stimulus audioPath="test_3" code="test_3" identifier="test_3" imagePath="adjacency_d" pauseMs="0" tags="Test_2 allRooms"/>
+        <stimulus audioPath="filler_3" code="filler_3" identifier="filler_3" imagePath="filler_3" pauseMs="0" tags="Test_2 allRooms"/>
+        <stimulus audioPath="test_5" code="test_5" identifier="test_5" imagePath="adjacency_a" pauseMs="0" tags="Test_3 allRooms"/>
+        <stimulus audioPath="test_4" code="test_4" identifier="test_4" imagePath="adjacency_b" pauseMs="0" tags="Test_3 allRooms"/>
+        <stimulus audioPath="filler_2" code="filler_2" identifier="filler_2" imagePath="filler_2" pauseMs="0" tags="Test_3 allRooms"/>
+        <stimulus audioPath="test_6" code="test_6" identifier="test_6" imagePath="adjacency_c" pauseMs="0" tags="Test_4 allRooms"/>
+        <stimulus audioPath="test_7" code="test_7" identifier="test_7" imagePath="adjacency_d" pauseMs="0" tags="Test_4 allRooms"/>
+        <stimulus audioPath="filler_4" code="filler_4" identifier="filler_4" imagePath="filler_4" pauseMs="0" tags="Test_4 allRooms"/>
     </stimuli>
 </experiment>
