@@ -64,6 +64,7 @@ public class StimulusProvider extends AbstractStimuliProvider {
     private int attributeRepeatRandomWindow = 6;
     private int attributeAdjacencyThreshold = 3;
     private boolean rememberLastStimuli = true;
+    private String attributeExcludeRegex = null;
 
     public void setmaxStimuli(String maxStimulusCount) {
         this.attributeMaxStimulusCount = Integer.parseInt(maxStimulusCount);
@@ -75,6 +76,10 @@ public class StimulusProvider extends AbstractStimuliProvider {
 
     public void setrememberLastStimuli(String randomise) {
         this.rememberLastStimuli = Boolean.valueOf(randomise);
+    }
+
+    public void setAttributeExcludeRegex(String attributeExcludeRegex) {
+        this.attributeExcludeRegex = attributeExcludeRegex;
     }
 
     public void setrepeatCount(String repeatCount) {
@@ -123,13 +128,13 @@ public class StimulusProvider extends AbstractStimuliProvider {
     }
 
     @Override
-    public void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final String excludeRegex, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final String storedStimulusList, final int currentStimuliIndex) {
+    public void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final String storedStimulusList, final int currentStimuliIndex) {
         final List<Stimulus> stimulusListCopy = new ArrayList<>();
         stimulusSelectionArray.clear();
-        appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, simulusLoadedListener, simulusErrorListener, maxStimulusCount, excludeRegex, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, storedStimulusList, currentStimuliIndex);
+        appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, simulusLoadedListener, simulusErrorListener, storedStimulusList, currentStimuliIndex);
     }
 
-    private void appendSdCardSubset(final ArrayList<String> directoryTagArray, final List<Stimulus> stimulusListCopy, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final String excludeRegex, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final String storedStimulusList, final int currentStimuliIndex) {
+    private void appendSdCardSubset(final ArrayList<String> directoryTagArray, final List<Stimulus> stimulusListCopy, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final String storedStimulusList, final int currentStimuliIndex) {
         if (directoryTagArray.isEmpty()) {
             final List<Stimulus> stimulusSubsetArrayTemp = new ArrayList<>();
             if (!directoryList.isEmpty()) {
@@ -142,8 +147,8 @@ public class StimulusProvider extends AbstractStimuliProvider {
                     // todo: also load the list for other getSubset related methods
                     loadStoredStimulusList(storedStimulusList, stimulusSubsetArrayTemp);
                 } else {
-                    while (!stimulusListCopy.isEmpty() && maxStimulusCount > stimulusSubsetArrayTemp.size()) {
-                        final int nextIndex = (randomise) ? new Random().nextInt(stimulusListCopy.size()) : 0;
+                    while (!stimulusListCopy.isEmpty() && attributeMaxStimulusCount > stimulusSubsetArrayTemp.size()) {
+                        final int nextIndex = (attributeRandomise) ? new Random().nextInt(stimulusListCopy.size()) : 0;
                         Stimulus stimulus = stimulusListCopy.remove(nextIndex);
                         stimulusSelectionArray.add(stimulus);
 //                    if (!seenList.contains(stimulus.getUniqueId())) {
@@ -151,7 +156,7 @@ public class StimulusProvider extends AbstractStimuliProvider {
                         stimulusSubsetArrayTemp.add(stimulus);
 //                    }
                     }
-                    if (!randomise) {
+                    if (!attributeRandomise) {
                         Collections.sort(stimulusSubsetArrayTemp, new Comparator<Stimulus>() {
                             @Override
                             public int compare(Stimulus o1, Stimulus o2) {
@@ -159,20 +164,20 @@ public class StimulusProvider extends AbstractStimuliProvider {
                             }
                         });
                     }
-                    applyRepeatRandomWindow(stimulusSubsetArrayTemp, repeatCount, repeatRandomWindow, maxStimulusCount);
-                    applyAdjacencyCheck(adjacencyThreshold);
+                    applyRepeatRandomWindow(stimulusSubsetArrayTemp, attributeRepeatCount, attributeRepeatRandomWindow, attributeMaxStimulusCount);
+                    applyAdjacencyCheck(attributeAdjacencyThreshold);
                 }
 //                totalStimuli = stimulusSubsetArray.size();
                 simulusLoadedListener.postLoadTimerFired();
             }
         } else {
             final String directoryTag = directoryTagArray.remove(0);
-            final SdCardStimuli sdCardStimuli = new SdCardStimuli(stimulusListCopy, directoryList, excludeRegex, new TimedStimulusListener() {
+            final SdCardStimuli sdCardStimuli = new SdCardStimuli(stimulusListCopy, directoryList, attributeExcludeRegex, new TimedStimulusListener() {
                 @Override
                 public void postLoadTimerFired() {
                     // todo: should this not take a single directory?
                     // todo: can this take a file limit per directory?
-                    appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, simulusLoadedListener, simulusErrorListener, maxStimulusCount, excludeRegex, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, storedStimulusList, currentStimuliIndex);
+                    appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, simulusLoadedListener, simulusErrorListener, storedStimulusList, currentStimuliIndex);
                 }
             }, simulusErrorListener);
             sdCardStimuli.fillStimulusList(directoryTag);
