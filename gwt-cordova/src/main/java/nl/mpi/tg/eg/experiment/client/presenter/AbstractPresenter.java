@@ -142,6 +142,10 @@ public abstract class AbstractPresenter implements Presenter {
         ((ComplexView) simpleView).addPadding();
     }
 
+    protected void centrePage() {
+        ((ComplexView) simpleView).centrePage();
+    }
+
     public void actionFooterButton(final PresenterEventListner presenterListerner) {
         ((ComplexView) simpleView).addFooterButton(presenterListerner);
     }
