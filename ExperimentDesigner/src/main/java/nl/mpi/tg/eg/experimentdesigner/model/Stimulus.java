@@ -194,7 +194,7 @@ public class Stimulus implements Serializable {
         this.correctResponses = correctResponses;
     }
 
-    @XmlElement(name = "tag")
+    @XmlAttribute(name = "tags")
     public TreeSet<String> getStimulusTags() {
         return stimulusTags;
     }
