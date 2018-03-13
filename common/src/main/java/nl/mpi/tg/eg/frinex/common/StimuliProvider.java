@@ -64,7 +64,7 @@ public interface StimuliProvider {
 
     List<Stimulus> getMatchingStimuli(final String matchingRegex, final int maxStimulusCount);
 
-    void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final int maxStimulusCount, final String excludeRegex, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final String storedStimulusList, final int currentStimuliIndex);
+    void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final String storedStimulusList, final int currentStimuliIndex);
 
     Stimulus getStimuliFromString(final String stimuliString);
 
