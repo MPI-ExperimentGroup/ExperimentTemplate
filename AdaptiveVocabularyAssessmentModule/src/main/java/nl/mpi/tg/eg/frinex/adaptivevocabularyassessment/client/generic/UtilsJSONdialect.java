@@ -61,25 +61,23 @@ public class UtilsJSONdialect<S> {
         }
         throw new Exception("Get key from string parsing error, no matching } ");
     }
-    
-    public static String removeFirstAndLast(String str){
-       if (str == null) {
-           return null;
-       } 
-       if (str.length()<2) {
-           return "";
-       }
-       String retVal =  str.substring(1, str.length()-1);
-       return retVal;
+
+    public static String removeFirstAndLast(String str) {
+        if (str == null) {
+            return null;
+        }
+        if (str.length() < 2) {
+            return "";
+        }
+        String retVal = str.substring(1, str.length() - 1);
+        return retVal;
     }
-    
-    
-     public static String getKeyWithoutBrackets(String jsonString, String key) throws Exception {
-         String buffer = getKey(jsonString, key);
-         String retVal= removeFirstAndLast(buffer);
-         return retVal;
-     }
-    
+
+    public static String getKeyWithoutBrackets(String jsonString, String key) throws Exception {
+        String buffer = getKey(jsonString, key);
+        String retVal = removeFirstAndLast(buffer);
+        return retVal;
+    }
 
     public String arrayListToString(ArrayList<S> list) throws Exception {
         if (list == null) {
@@ -111,12 +109,93 @@ public class UtilsJSONdialect<S> {
         return retVal.toString();
     }
 
-    public ArrayList<String> stringToArrayList(String listStr) throws Exception {
+    public String arrayList2String(ArrayList<ArrayList<S>> list) throws Exception {
+        if (list == null) {
+            return null;
+        }
+        StringBuilder retVal = new StringBuilder();
+        retVal.append("{");
+        for (int i = 0; i < list.size() - 1; i++) {
+            ArrayList<S> subList = list.get(i);
+            retVal.append(i).append(":");
+            String subListString = this.arrayListToString(subList);
+            retVal.append(subListString);
+            retVal.append(",");
+        }
+        int lastIndex = list.size() - 1;
+        ArrayList<S> subList = list.get(lastIndex);
+        retVal.append(lastIndex).append(":");
+        String subListString = this.arrayListToString(subList);
+        retVal.append(subListString);
+        retVal.append("}");
+        return retVal.toString();
+    }
+
+    public String arrayList3String(ArrayList<ArrayList<ArrayList<S>>> list) throws Exception {
+        if (list == null) {
+            return null;
+        }
+        StringBuilder retVal = new StringBuilder();
+        retVal.append("{");
+        for (int i = 0; i < list.size() - 1; i++) {
+            ArrayList<ArrayList<S>> subList = list.get(i);
+            retVal.append(i).append(":");
+            String subListString = this.arrayList2String(subList);
+            retVal.append(subListString);
+            retVal.append(",");
+        }
+        int lastIndex = list.size() - 1;
+        ArrayList<ArrayList<S>> subList = list.get(lastIndex);
+        retVal.append(lastIndex).append(":");
+        String subListString = this.arrayList2String(subList);
+        retVal.append(subListString);
+        retVal.append("}");
+        return retVal.toString();
+    }
+
+    public String intArrayListToString(int[] arr) throws Exception {
+        if (arr == null) {
+            return null;
+        }
+        StringBuilder retVal = new StringBuilder();
+        retVal.append("{");
+        for (int i = 0; i < arr.length - 1; i++) {
+            retVal.append(i).append(":");
+            retVal.append("{").append(arr[i]).append("}");
+            retVal.append(",");
+        }
+        int lastIndex = arr.length - 1;
+        retVal.append(lastIndex).append(":");
+        retVal.append("{").append(arr[lastIndex]).append("}");
+        retVal.append("}");
+        return retVal.toString();
+    }
+    
+     public String doubleArrayListToString(double[] arr) throws Exception {
+        if (arr == null) {
+            return null;
+        }
+        StringBuilder retVal = new StringBuilder();
+        retVal.append("{");
+        for (int i = 0; i < arr.length - 1; i++) {
+            retVal.append(i).append(":");
+            retVal.append("{").append(arr[i]).append("}");
+            retVal.append(",");
+        }
+        int lastIndex = arr.length - 1;
+        retVal.append(lastIndex).append(":");
+        retVal.append("{").append(arr[lastIndex]).append("}");
+        retVal.append("}");
+        return retVal.toString();
+    }
+
+    
+     public ArrayList<String> stringToArrayList(String listStr) throws Exception {
         if (listStr == null) {
             return null;
         }
         ArrayList<String> retVal = new ArrayList<String>();
-        String current = getKey(listStr, "0");
+        String current = this.getKey(listStr, "0");
         if (current == null) {
             return null;
         }
@@ -125,9 +204,44 @@ public class UtilsJSONdialect<S> {
             retVal.add(i, current);
             i++;
             String index = String.valueOf(i);
-            current = getKey(listStr, index);
+            current = this.getKey(listStr, index);
         }
         return retVal;
     }
 
+    public ArrayList<Integer> stringToArrayListInteger(String listStr) throws Exception{
+        ArrayList<String>  buffer = this.stringToArrayList(listStr);
+        ArrayList<Integer> retVal = new  ArrayList<Integer>(buffer.size());
+        for (int i=0; i<buffer.size(); i++) {
+            String val = buffer.get(i);
+            String tmp = removeFirstAndLast(val);
+            Integer valInt = Integer.parseInt(tmp);
+            retVal.add(i, valInt);
+        }
+        return retVal;
+    }
+    
+    public double[] stringToArrayDouble(String listStr) throws Exception{
+        ArrayList<String>  buffer = this.stringToArrayList(listStr);
+        double[] retVal = new  double[buffer.size()];
+        for (int i=0; i<buffer.size(); i++) {
+            String val = buffer.get(i);
+            String tmp = removeFirstAndLast(val);
+            double valInt = Double.parseDouble(tmp);
+            retVal[i]=valInt;
+        }
+        return retVal;
+    }
+    
+//     public ArrayList<S> stringToArrayListGeneric(String listStr, Function<String, S> mapper) throws Exception{
+//        ArrayList<String>  buffer = this.stringToArrayList(listStr);
+//        ArrayList<S> retVal = new  ArrayList<S>(buffer.size());
+//        for (int i=0; i<buffer.size(); i++) {
+//            String val = buffer.get(i);
+//            S valInt = mapper.apply(val);
+//            retVal.add(i, valInt);
+//        }
+//        return retVal;
+//    }
+    
 }

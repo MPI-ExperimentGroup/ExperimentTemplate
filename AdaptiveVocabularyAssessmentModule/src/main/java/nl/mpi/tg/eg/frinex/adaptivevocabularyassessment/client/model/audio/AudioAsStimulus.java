@@ -17,11 +17,8 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audioaspool.AudioIndexMap;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
@@ -31,8 +28,8 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 public class AudioAsStimulus extends BookkeepingStimulus<Boolean, String> {
 
     private final WordType wordtype;
-    public static final String AUDIO_RATING_LABEL = "YES";
-    public static final String EXAMPLE_TARGET_LABEL = "Press when ready";
+    public static final String AUDIO_RATING_LABEL = "&#160;";
+    public static final String EXAMPLE_TARGET_LABEL = null;
     public static final int PAUSE_EXAMPLE = 60000;
     public static final int PAUSE = 900;
 

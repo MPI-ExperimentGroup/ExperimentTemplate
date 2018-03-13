@@ -34,6 +34,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspo
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.RandomIndexing;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Vocabulary;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
@@ -89,7 +90,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
             this.nonWordsIndexes = this.rndIndexing.updateAndGetIndices();
 
             this.rnd = new Random();
-        } 
+        }
     }
 
     public void setnonwordsPerBlock(String nonWrodsPerBlock) {
@@ -572,6 +573,62 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepi
 
         }
         return retVal;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("{");
+//    private RandomIndexing rndIndexing;
+//    private ArrayList<Integer> nonWordsIndexes;
+//    private int wordsPerBand;
+//    private int wordsPerBandInSeries;
+//    private int nonWordsPerBlock;
+//    private int averageNonWordPosition = 0;
+//
+//    private ArrayList<ArrayList<AdVocAsStimulus>> words;
+//    private ArrayList<AdVocAsStimulus> nonwords;
+//
+//    // fine tuning stuff
+//    private Random rnd;
+
+        builder.append("wordsPerBand:{").append(this.wordsPerBand).append("},");
+        builder.append("wordsPerBandInSeries:{").append(this.wordsPerBandInSeries).append("},");
+        builder.append("nonWordsPerBlock:{").append(this.nonWordsPerBlock).append("},");
+        builder.append("averageNonWordPosition:{").append(this.averageNonWordPosition).append("}");
+        
+        String rndIndexingStr = this.rndIndexing.toString();
+        if (rndIndexingStr != null) {
+            builder.append(",rndIndexing:").append(rndIndexingStr);
+        }
+        
+        UtilsJSONdialect<Integer> util = new UtilsJSONdialect<Integer>();
+        try {
+            String nonWordsIndexesStr = util.arrayListToString(this.nonWordsIndexes);
+            if (nonWordsIndexesStr != null) {
+                builder.append(",nonWordsIndexes:").append(nonWordsIndexesStr);
+            }
+        } catch (Exception ex) {
+        }
+        
+        UtilsJSONdialect<AdVocAsStimulus> util1 = new UtilsJSONdialect<AdVocAsStimulus>();
+        try {
+            String wordsStr = util1.arrayList2String(this.words);
+            if (wordsStr != null) {
+                builder.append(",words:").append(wordsStr);
+            }
+        } catch (Exception ex) {
+        }
+        try {
+            String nonwordsStr = util1.arrayListToString(this.nonwords);
+            if (nonwordsStr != null) {
+                builder.append(",nonwords:").append(nonwordsStr);
+            }
+        } catch (Exception ex) {
+        }
+        
+        builder.append("}");
+        return builder.toString();
     }
 
 }

@@ -18,8 +18,11 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
 import java.util.ArrayList;
+import static java.util.Collections.list;
 import java.util.Map;
 import java.util.Random;
+import static jdk.nashorn.internal.runtime.regexp.joni.constants.AsmConstants.S;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 
 /**
  *
@@ -34,6 +37,11 @@ public class TrialTuple {
     public TrialTuple(ArrayList<Trial> trials) {
         this.trials = trials;
         this.correctness = null;
+    }
+    
+    public TrialTuple(ArrayList<Trial> trials, Boolean correctness) {
+        this.trials = trials;
+        this.correctness = correctness;
     }
 
     public AudioAsStimulus removeFirstAvailableStimulus() {
@@ -94,4 +102,58 @@ public class TrialTuple {
         return retVal;
     }
 
+    @Override
+    public String toString() {
+        //private final ArrayList<Trial> trials;
+        //private Boolean correctness;
+
+        StringBuilder builder = new StringBuilder();
+        builder.append("{");
+        UtilsJSONdialect<Trial> util = new UtilsJSONdialect<Trial>();
+        try {
+            String trialsStr = util.arrayListToString(this.trials);
+            builder.append("trials:").append(trialsStr).append(",");
+            builder.append("correcteness:{");
+            if (correctness == null) {
+                builder.append(" }}");
+            } else {
+                if (correctness) {
+                    builder.append("true}}");
+                } else {
+                    builder.append("false}}");
+                }
+            }
+            return builder.toString();
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static TrialTuple toObject(String str) {
+        try {
+            String trialsStr = UtilsJSONdialect.getKey(str, "trials");
+            UtilsJSONdialect<Trial> util = new UtilsJSONdialect<Trial>();
+            ArrayList<String> trialsStrArray = util.stringToArrayList(trialsStr);
+            ArrayList<Trial> trials = new ArrayList<Trial>(trialsStrArray.size());
+            for (int i = 0; i < trialsStrArray.size(); i++) {
+                Trial tr = Trial.toObject(trialsStrArray.get(i));
+                trials.add(i, tr);
+            }
+            String correctnessStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "correctness");
+            Boolean correctness = null;
+            if (correctnessStr.trim().equals("true")){
+               correctness = true; 
+            } else {
+               if (correctnessStr.trim().equals("false")) {
+                   correctness = false;
+               }
+            }
+            
+            TrialTuple retVal = new TrialTuple(trials, correctness);
+            return retVal;
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
 }

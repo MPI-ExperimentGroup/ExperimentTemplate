@@ -23,6 +23,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Map;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimuliProvider;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsList;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Trial;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioAsStimulus;
@@ -120,17 +121,16 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     protected Boolean allTupleIsCorrect() {
         return this.currentTrialTuple.getCorrectness();
     }
-    
-    
 
     // also evaluates and sets correctenss of the current stimulus
+    // the method is not called when the stimulus does not have correct responses
     @Override
     public boolean isCorrectResponse(Stimulus stimulus, String stimulusResponse) {
         int index = this.getCurrentStimulusIndex();
         AudioAsStimulus audioStimulus = this.responseRecord.get(index);
         audioStimulus.setTimeStamp(System.currentTimeMillis());
         WordType stimulusType = audioStimulus.getWordType();
-        if (stimulusType.equals(WordType.EXAMPLE_TARGET_NON_WORD)) { // no reaction is expected
+        if (stimulusType.equals(WordType.EXAMPLE_TARGET_NON_WORD)) { // no actual rating is expected
             audioStimulus.setCorrectness(true);
             audioStimulus.setReaction(null);
             return true;
@@ -210,5 +210,82 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
                     .append(endColumn).append(endRow);
         }
         return stringBuilder.toString();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("{");
+        String superString = super.toString();
+        builder.append(superString).append(",");
+
+//    private String dirName;
+        builder.append("dirName:{").append(this.dirName).append("},");
+//
+//    private TrialTuple currentTrialTuple;
+
+        if (this.currentTrialTuple != null) {
+            builder.append("this.currentTrialTuple:{").append(this.currentTrialTuple.toString()).append("},");
+        }
+
+//    // x[contdition][i][j] is the list of all trials satisfying "condition" for the band i of the length j
+//    private Map<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> trials;
+        String trialsStr = Trial.map3ToString(this.trials);
+        if (trialsStr != null) {
+            builder.append("trials:").append(this.trials).append(",");
+        }
+//
+//
+//    // requirements
+//    private final ArrayList<Integer> requiredLengths = new ArrayList<Integer>(Arrays.asList(3, 4, 5, 6));
+        UtilsJSONdialect<Integer> utils = new UtilsJSONdialect<Integer>();
+        try {
+            String requiredLengthsStr = utils.arrayListToString(this.requiredLengths);
+            if (trialsStr != null) {
+                builder.append("requiredLengths:").append(requiredLengthsStr).append(",");
+            }
+        } catch (Exception ex) {
+            return null;
+        }
+
+//    private final int maxLength = 6;
+        builder.append("maxLength:{").append(this.maxLength).append("},");
+
+//    private final ArrayList<TrialCondition> requiredTrialTypes = new ArrayList<TrialCondition>(Arrays.asList(TrialCondition.TARGET_ONLY, TrialCondition.TARGET_AND_FOIL, TrialCondition.NO_TARGET, TrialCondition.NO_TARGET));
+//
+//    private ArrayList<ArrayList<Integer>> trialLengtPermutations; // list of permutations of members requiredLengths
+        try {
+            String trialLengtPermutationsStr = utils.arrayList2String(this.trialLengtPermutations);
+            if (trialsStr != null) {
+                builder.append("trialLengtPermutations:").append(trialLengtPermutationsStr).append(",");
+            }
+        } catch (Exception ex) {
+            return null;
+        }
+
+//    private ArrayList<ArrayList<TrialCondition>> trialTypesPermutations; // list of permutations of members 
+        UtilsJSONdialect<TrialCondition> utils2 = new UtilsJSONdialect<TrialCondition>();
+        try {
+            String trialTypesPermutationsStr = utils2.arrayList2String(this.trialTypesPermutations);
+            if (trialsStr != null) {
+                builder.append("trialTypesPermutations:").append(trialTypesPermutationsStr).append(",");
+            }
+        } catch (Exception ex) {
+            return null;
+        }
+
+//    private ArrayList<ArrayList<PermutationPair>> availableCombinations;
+        UtilsJSONdialect<PermutationPair> utils3 = new UtilsJSONdialect<PermutationPair>();
+        try {
+            String availableCombinationsStr = utils3.arrayList2String(this.availableCombinations);
+            if (trialsStr != null) {
+                builder.append("availableCombinations:").append(availableCombinationsStr).append(",");
+            }
+        } catch (Exception ex) {
+            return null;
+        }
+        
+        builder.append("}");
+        return builder.toString();
     }
 }

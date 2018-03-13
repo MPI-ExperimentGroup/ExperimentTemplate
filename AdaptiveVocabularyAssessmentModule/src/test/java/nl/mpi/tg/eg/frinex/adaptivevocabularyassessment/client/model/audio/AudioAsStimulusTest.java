@@ -68,8 +68,8 @@ public class AudioAsStimulusTest {
     public void testSetReaction() {
         System.out.println("setReaction");
         //public AudioAsStimulus(String uniqueId, String label, int pauseMs, String audioPath, String correctResponses, int bandNumber, WordType wordtype, String ratingLabel)
-        AudioAsStimulus instance = new AudioAsStimulus("xxx", "test", 100, "/here", null, "6bD", 1, WordType.EXAMPLE_TARGET_NON_WORD, AudioAsStimulus.EXAMPLE_TARGET_LABEL);
-        instance.setReaction("YES");
+        AudioAsStimulus instance = new AudioAsStimulus("xxx", "test", 100, "/here", null, "6bD", 1, WordType.TARGET_NON_WORD, AudioAsStimulus.AUDIO_RATING_LABEL);
+        instance.setReaction(AudioAsStimulus.AUDIO_RATING_LABEL);
         assertEquals(true, instance.getReaction());
         instance.setReaction("");
         assertEquals(false, instance.getReaction());

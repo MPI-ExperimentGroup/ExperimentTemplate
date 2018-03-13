@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
 import java.util.ArrayList;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 
 /**
  *
@@ -25,14 +26,39 @@ import java.util.ArrayList;
  */
 public class PermutationPair {
 
-        public final ArrayList<TrialCondition> trialTypes;
-        public final ArrayList<Integer> trialLengths;
+    public final ArrayList<TrialCondition> trialTypes;
+    public final ArrayList<Integer> trialLengths;
 
-        public PermutationPair(ArrayList<TrialCondition> trialTypes, ArrayList<Integer> trialLengths) {
-            this.trialTypes = trialTypes;
-            this.trialLengths = trialLengths;
+    public PermutationPair(ArrayList<TrialCondition> trialTypes, ArrayList<Integer> trialLengths) {
+        this.trialTypes = trialTypes;
+        this.trialLengths = trialLengths;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("{");
+        UtilsJSONdialect<TrialCondition> util1 = new UtilsJSONdialect<TrialCondition>();
+        
+        try {
+            String trailTypesStr = util1.arrayListToString(this.trialTypes);
+            if (trailTypesStr != null) {
+                builder.append("trialTypes:").append(trailTypesStr).append(",");
+            }
+        } catch (Exception ex) {
         }
         
-       
+        UtilsJSONdialect<Integer> util2 = new UtilsJSONdialect<Integer>();
+        try {
+            String trialLengthsStr = util2.arrayListToString(this.trialLengths);
+            if (trialLengthsStr != null) {
+                builder.append("trialLengths:").append(trialLengthsStr);
+            }
+        } catch (Exception ex) {
+        }
         
+        builder.append("}");
+        return builder.toString();
     }
+
+}

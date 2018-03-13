@@ -19,8 +19,10 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import static java.util.stream.IntStream.builder;
 import nl.mpi.tg.eg.frinex.common.AbstractStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
@@ -305,15 +307,13 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
 
     @Override
     public Map<String, String> getStimuliReport(String reportType) {
-        
-        
+
         final LinkedHashMap<String, String> returnMap = new LinkedHashMap<>();
 
         if (!this.htmlReport.equals("")) { // reports have been already generated 
-          return returnMap;
+            return returnMap;
         }
-        
-        
+
         switch (reportType) {
             case "user_summary": {
                 String summary = this.getStringSummary("", "\n", "", ";");
@@ -734,5 +734,121 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         }
         return retVal;
     }
+
+    @Override
+    public String toString() {
+//    protected int type = 0;
+//    protected int numberOfBands = 0;
+//    protected int numberOfSeries = 0;
+//    protected int startBand = 0;
+//    protected int fineTuningTupleLength = 0;
+//    protected int fineTuningUpperBoundForCycles;
+//    protected boolean fastTrackPresent = true;
+//    protected boolean fineTuningFirstWrongOut = true;
+//
+//    protected int bandScore = -1;
+//    protected long percentageScore = 0;
+//    protected Boolean isCorrectCurrentResponse;
+//    protected int currentBandIndex = 0;
+//    protected int totalStimuli;
+//
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("type:{").append(this.type).append("},");
+        builder.append("numberOfBands:{").append(this.numberOfBands).append("},");
+        builder.append("numberOfSeries:{").append(this.numberOfSeries).append("},");
+        builder.append("startBand:{").append(this.startBand).append("},");
+        builder.append("fineTuningTupleLength:{").append(this.fineTuningTupleLength).append("},");
+        builder.append("fineTuningUpperBoundForCycles:{").append(this.fineTuningUpperBoundForCycles).append("},");
+        builder.append("fastTrackPresent:{").append(this.fastTrackPresent).append("},");
+        builder.append("fineTuningFirstWrongOut:{").append(this.fineTuningFirstWrongOut).append("},");
+
+        builder.append("bandScore:{").append(this.bandScore).append("},");
+        builder.append("percentageScore:{").append(this.percentageScore).append("},");
+        builder.append("isCorrectCurrentResponse:{").append(this.isCorrectCurrentResponse).append("},");
+        builder.append("currentBandIndex:{").append(this.currentBandIndex).append("},");
+        builder.append("totalStimuli:{").append(this.totalStimuli).append("},");
+
+        UtilsJSONdialect<RecordStimulus> util = new UtilsJSONdialect<RecordStimulus>();
+        try {
+            String responseRecordString = util.arrayListToString(this.responseRecord);
+            if (responseRecordString != null) {
+                builder.append("responseRecord:").append(responseRecordString).append(",");
+            }
+
+        } catch (Exception ex) {
+            return null;
+        }
+
+// fast track stuff
+//    private int bestBandFastTrack = -1;
+//    protected boolean isFastTrackIsStillOn = true;
+//    protected boolean secondChanceFastTrackIsFired = false;
+//    protected int timeTickEndFastTrack = -1;
+        builder.append("bestBandFastTrack:{").append(this.bestBandFastTrack).append("},");
+        builder.append("isFastTrackIsStillOn:{").append(this.isFastTrackIsStillOn).append("},");
+        builder.append("secondChanceFastTrackIsFired:{").append(this.secondChanceFastTrackIsFired).append("},");
+        builder.append("timeTickEndFastTrack:{").append(this.timeTickEndFastTrack).append("},");
+
+        // fine tuning stuff
+//    protected final ArrayList<RecordStimulus> tupleFT = new ArrayList<>(this.fineTuningTupleLength);
+        try {
+            String tupleFTString = util.arrayListToString(this.tupleFT);
+            if (tupleFTString != null) {
+                builder.append("tupleFT:").append(tupleFTString).append(",");
+            }
+        } catch (Exception ex) {
+            return null;
+        }
+
+//    // fine tuning stopping
+//    protected boolean enoughFineTuningStimulae = true;
+//    protected int[] bandVisitCounter;
+//    protected int[] cycle2helper;
+//    protected boolean cycle2 = false;
+//    protected boolean champion = false;
+//    protected boolean looser = false;
+//    protected boolean justVisitedLastBand = false;
+//    protected boolean justVisitedFirstBand = false;
+        builder.append("enoughFineTuningStimulae:{").append(this.enoughFineTuningStimulae).append("},");
+
+        try {
+            String bandVisitCounterStr = util.intArrayListToString(this.bandVisitCounter);
+            if (bandVisitCounterStr != null) {
+                builder.append("bandVisitCounter:").append(bandVisitCounterStr).append(",");
+            }
+        } catch (Exception ex) {
+            return null;
+        }
+
+        try {
+            String cycle2helperStr = util.intArrayListToString(this.cycle2helper);
+            if (cycle2helperStr != null) {
+                builder.append("cycle2helper:").append(cycle2helperStr).append(",");
+            }
+        } catch (Exception ex) {
+            return null;
+        }
+
+        builder.append("cycle2:{").append(this.cycle2).append("},");
+
+        builder.append("champion:{").append(this.champion).append("},");
+        builder.append("looser:{").append(this.looser).append("},");
+        builder.append("isFastTrackIsStillOn:{").append(this.isFastTrackIsStillOn).append("},");
+        builder.append("justVisitedLastBand:{").append(this.justVisitedLastBand).append("},");
+        builder.append("justVisitedFirstBand:{").append(this.justVisitedFirstBand).append("},");
+//
+//    protected String htmlReport = "";
+//
+//    protected String errorMessage; 
+
+        builder.append("htmlReport:{").append(this.htmlReport).append("}");
+        if (this.errorMessage != null) {
+            builder.append(",errorMessage:{").append(this.errorMessage).append("}");
+        }
+
+        return builder.toString();
+    }
+    
 
 }

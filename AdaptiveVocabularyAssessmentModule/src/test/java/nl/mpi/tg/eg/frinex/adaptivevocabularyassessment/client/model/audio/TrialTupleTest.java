@@ -144,7 +144,7 @@ public class TrialTupleTest {
         assertEquals(null, result2.getCorrectResponses());
         assertEquals(null, result2.getReaction());
         assertEquals(null, result2.getCorrectness());
-        result2.setReaction("YES");
+        result2.setReaction(AudioAsStimulus.AUDIO_RATING_LABEL);
         assertEquals(true, result2.getReaction());
         result2.setCorrectness(false);
         assertFalse(result2.getCorrectness());
@@ -153,7 +153,7 @@ public class TrialTupleTest {
         AudioAsStimulus result3 = this.instance.removeFirstAvailableStimulus();
         assertEquals("smoer", result3.getLabel());
         assertEquals(WordType.TARGET_NON_WORD, result3.getWordType());
-        assertEquals("YES", result3.getCorrectResponses());
+        assertEquals(AudioAsStimulus.AUDIO_RATING_LABEL, result3.getCorrectResponses());
         assertEquals(null, result3.getReaction());
         assertEquals(null, result3.getCorrectness());
 
