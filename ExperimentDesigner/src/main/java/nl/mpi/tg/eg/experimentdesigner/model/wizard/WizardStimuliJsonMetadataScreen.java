@@ -113,6 +113,9 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         }
         final PresenterFeature loadStimuliFeature = (useSdCard(storedWizardScreenData)) ? new PresenterFeature(FeatureType.loadSdCardStimulus, null) : new PresenterFeature(FeatureType.loadStimulus, null);
         loadStimuliFeature.addStimulusTag("metadata");
+//        if (useSdCard(storedWizardScreenData)) {
+//            loadStimuliFeature.addFeatureAttributes(FeatureAttribute.excludeRegex, ".*_question\\....$");
+//        }
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.eventTag, "Metadata");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.randomise, "false");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatCount, "1");
@@ -137,8 +140,8 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
                 experiment.getMetadata().add(metadata);
             }
             // todo: this metadataFieldConnection use needs to be replaced with wizard parameters
-            final PresenterFeature metadataField = new PresenterFeature(("connectionString".equals(metadata.getPostName())) ? FeatureType.metadataFieldConnection : FeatureType.stimulusMetadataField, null);
-            if ("connectionString".equals(metadata.getPostName())) {
+            final PresenterFeature metadataField = new PresenterFeature((metadata.getPostName().startsWith("connection")) ? FeatureType.metadataFieldConnection : FeatureType.stimulusMetadataField, null);
+            if (metadata.getPostName().startsWith("connection")) {
                 metadataField.addFeatureAttributes(FeatureAttribute.linkedFieldName, "workerId");
             }
             metadataField.addFeatureAttributes(FeatureAttribute.fieldName, metadata.getPostName());

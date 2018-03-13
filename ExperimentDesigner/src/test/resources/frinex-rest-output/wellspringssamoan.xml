@@ -3,6 +3,7 @@
     <metadata>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Igoa/suafa"/>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="connectionString" preventServerDuplicates="false" registrationField="connection"/>
+        <field controlledMessage="Please select a type." controlledRegex="M|F|P|C|S|D" postName="connectionType" preventServerDuplicates="false" registrationField="Type"/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Afio mai (welcome)" type="menu" self="Afio_mai__welcome_" title="Afio mai (welcome)">
         <menuItem featureText="Fa'atonuga (instructions)" target="Fa_atonuga__instructions_"/>
@@ -28,7 +29,8 @@
     </presenter>
     <presenter back="Afio_mai__welcome_" displayOrder="4" menuLabel="Infomesen blong man/woman we i toktok" next="Fa_atagaga__consent_" type="metadata" self="Edit_User" title="Infomesen blong man/woman we i toktok">
         <metadataField fieldName="workerId"/>
-        <metadataField fieldName="connectionString"/>
+        <metadataFieldConnection fieldName="connectionString" linkedFieldName="workerId"/>
+        <metadataFieldConnection fieldName="connectionType" linkedFieldName="workerId"/>
         <saveMetadataButton featureText="Save information" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
             <onSuccess>
@@ -97,17 +99,9 @@
         <localStorageData/>
     </presenter>
     <stimuli>
-        <stimulus identifier="Igoa/suafa atoa ’o lē ’olo’o faia le fa’atalanoaga, nofaga ma aso o le talanoaga (full name of interviewee and location and date)" label="Igoa/suafa atoa ’o lē ’olo’o faia le fa’atalanoaga, nofaga ma aso o le talanoaga (full name of interviewee and location and date)" pauseMs="0">
-            <tag>metadata</tag>
-        </stimulus>
-        <stimulus identifier="Igoa/suafa atoa ’o lē ’olo’o fa’atalanoa (full name of interviewee)" label="Igoa/suafa atoa ’o lē ’olo’o fa’atalanoa (full name of interviewee)" pauseMs="0">
-            <tag>metadata</tag>
-        </stimulus>
-        <stimulus identifier="tausaga ma le itūpā tama’ita’i po ’o le ali’i (po ’o le fa’afafine) (age and gender of interviewee)" label="tausaga ma le itūpā tama’ita’i po ’o le ali’i (po ’o le fa’afafine) (age and gender of interviewee)" pauseMs="0">
-            <tag>metadata</tag>
-        </stimulus>
-        <stimulus identifier="Ata (pictures)" imagePath="Ata (pictures)" label="Ata (pictures)" pauseMs="0">
-            <tag>Ata_pictures_</tag>
-        </stimulus>
+        <stimulus identifier="Igoa/suafa atoa ’o lē ’olo’o faia le fa’atalanoaga, nofaga ma aso o le talanoaga (full name of interviewee and location and date)" label="Igoa/suafa atoa ’o lē ’olo’o faia le fa’atalanoaga, nofaga ma aso o le talanoaga (full name of interviewee and location and date)" pauseMs="0" tags="metadata"/>
+        <stimulus identifier="Igoa/suafa atoa ’o lē ’olo’o fa’atalanoa (full name of interviewee)" label="Igoa/suafa atoa ’o lē ’olo’o fa’atalanoa (full name of interviewee)" pauseMs="0" tags="metadata"/>
+        <stimulus identifier="tausaga ma le itūpā tama’ita’i po ’o le ali’i (po ’o le fa’afafine) (age and gender of interviewee)" label="tausaga ma le itūpā tama’ita’i po ’o le ali’i (po ’o le fa’afafine) (age and gender of interviewee)" pauseMs="0" tags="metadata"/>
+        <stimulus identifier="Ata (pictures)" imagePath="Ata (pictures)" label="Ata (pictures)" pauseMs="0" tags="Ata_pictures_"/>
     </stimuli>
 </experiment>

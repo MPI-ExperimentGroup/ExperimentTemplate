@@ -93,7 +93,8 @@ public class WellspringsSamoanFieldKit {
         final WizardEditUserScreen editUserPresenter = new WizardEditUserScreen("Infomesen blong man/woman we i toktok", "Edit User", null, "Save information", null, null, null, false, false, "Could not contact the server, please check your internet connection and try again.");
         editUserPresenter.setCustomFields(new String[]{
             "workerId:Igoa/suafa:.'{'3,'}':Please enter at least three letters.",
-            "connectionString:connection:.'{'3,'}':Please enter at least three letters."
+            "connectionString:connection:.'{'3,'}':Please enter at least three letters.",
+            "connectionType:Type:M|F|P|C|S|D:Please select a type."
         });
         final WizardAboutScreen debugScreenPresenter = new WizardAboutScreen(true);
         editUserPresenter.setBackWizardScreen(welcomePresenter);
