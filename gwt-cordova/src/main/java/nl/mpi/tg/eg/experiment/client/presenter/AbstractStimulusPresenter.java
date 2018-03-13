@@ -188,22 +188,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void loadAllStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final boolean randomise, int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
-        submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
-        final String storedStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag());
-        int seenStimulusIndex;
-        try {
-            seenStimulusIndex = Integer.parseInt(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag()));
-        } catch (NumberFormatException exception) {
-            seenStimulusIndex = 0;
-        }
-        stimulusProvider.getSubset(selectionTags, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, storedStimulusList, seenStimulusIndex);
-        this.hasMoreStimulusListener = hasMoreStimulusListener;
-        this.endOfStimulusListener = endOfStimulusListener;
-        showStimulus(null, 0);
-    }
-
-    protected void loadSdCardStimulus(final String eventTag, final List<Stimulus.Tag> selectionTags, final List<Stimulus.Tag> randomTags, final MetadataField stimulusAllocationField, final int maxStimulusCount, final String excludeRegex, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadSdCardStimulus(final String eventTag,
+            final StimulusSelector[] selectionTags, // only stimuli with tags in this list can be included
+            final StimulusSelector[] randomTags,
+            final MetadataField stimulusAllocationField,
+            final String consumedTagsGroupName,
+            final TimedStimulusListener hasMoreStimulusListener,
+            final TimedStimulusListener endOfStimulusListener) {
         final String subDirectory = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag());
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final String storedStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag() + subDirectory);
@@ -222,14 +213,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     endOfStimulusListener.postLoadTimerFired();
                 } else {
                     localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), "");
-                    loadSdCardStimulus(eventTag, selectionTags, randomTags, stimulusAllocationField, maxStimulusCount, excludeRegex, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, hasMoreStimulusListener, endOfStimulusListener);
+                    loadSdCardStimulus(eventTag, selectionTags, randomTags, stimulusAllocationField, consumedTagsGroupName, hasMoreStimulusListener, endOfStimulusListener);
                 }
             }
         };
         ArrayList<String> directoryTagArray = new ArrayList<>();
         if (subDirectory == null || subDirectory.isEmpty()) {
-            for (Stimulus.Tag directoryTag : selectionTags) {
-                directoryTagArray.add(directoryTag.name().substring("tag_".length()));
+            for (StimulusSelector directoryTag : selectionTags) {
+                directoryTagArray.add(directoryTag.getTag().name().substring("tag_".length()));
             }
         } else {
             // if a sub directory is passed then only load stimuli from that directory
@@ -257,13 +248,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                                 // show the subdirectorydirectory[0], 
                                 localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), directory[0]);
-                                loadSdCardStimulus(directory[1], selectionTags, randomTags, stimulusAllocationField, maxStimulusCount, excludeRegex, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, hasMoreStimulusListener, new TimedStimulusListener() {
+                                loadSdCardStimulus(directory[1], selectionTags, randomTags, stimulusAllocationField, consumedTagsGroupName, hasMoreStimulusListener, new TimedStimulusListener() {
                                     @Override
                                     public void postLoadTimerFired() {
                                         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "completed-directory-" + directory[0] + "-" + getSelfTag(), Boolean.toString(true));
                                         // go back to the initial directory 
                                         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), "");
-                                        loadSdCardStimulus(eventTag, selectionTags, randomTags, stimulusAllocationField, maxStimulusCount, excludeRegex, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, hasMoreStimulusListener, endOfStimulusListener);
+                                        loadSdCardStimulus(eventTag, selectionTags, randomTags, stimulusAllocationField, consumedTagsGroupName, hasMoreStimulusListener, endOfStimulusListener);
                                     }
                                 });
                             }
@@ -282,7 +273,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 ((TimedStimulusView) simpleView).addText("Stimulus loading error");
                 // @todo: when sdcard stimuli sub directories are used:  + "Plase make sure that the directory " + stimuliDirectory + "/" + cleanedTag + " exists and has stimuli files."
             }
-        }, maxStimulusCount, excludeRegex, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, storedStimulusList, seenStimulusIndex);
+        }, storedStimulusList, seenStimulusIndex);
     }
 
     @Override
@@ -383,6 +374,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     public void htmlTokenText(final String textString, final String styleName) {
         ((TimedStimulusView) simpleView).addHtmlText(new HtmlTokenFormatter(groupParticipantService, userResults.getUserData()).formatString(textString), styleName);
+        // todo: this should be not be so group experiment specific 
         submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "htmlTokenText", new HtmlTokenFormatter(groupParticipantService, userResults.getUserData()).formatString(
                 "Group:'<groupId>';"
                 + "Members:'<groupAllMemberCodes>';"
@@ -1160,7 +1152,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     // if there are correct responses to this stimulus then increment the score
                     userResults.getUserData().addPotentialScore(stimulusProvider.isCorrectResponse(stimulusProvider.getCurrentStimulus(), presenterListerner.getLabel()));
                 }
-                presenterListerner.postLoadTimerFired();
+                presenterListerner.eventFired(button, shotEventListner);
             }
 
             @Override
