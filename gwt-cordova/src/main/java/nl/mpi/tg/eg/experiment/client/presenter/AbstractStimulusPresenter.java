@@ -1493,6 +1493,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
             // @todo: checking the free text boxes is also done in the group stimulus sync code, therefore this should be shared in a single function
             submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), stimulusFreeText.getPostName(), stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusFreeText.getValue(), duration.elapsedMillis());
+            final String responseTimes = stimulusFreeText.getResponseTimes();
+            if (responseTimes != null) {
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), stimulusFreeText.getPostName() + "_ms", stimulusProvider.getCurrentStimulus().getUniqueId(), responseTimes, duration.elapsedMillis());
+            }
             if (stimulusProvider.getCurrentStimulus().hasCorrectResponses()) {
                 // if there are correct responses to this stimulus then increment the score
                 userResults.getUserData().addPotentialScore(stimulusProvider.isCorrectResponse(stimulusProvider.getCurrentStimulus(), stimulusFreeText.getValue()));
