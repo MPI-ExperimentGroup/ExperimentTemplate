@@ -30,10 +30,6 @@ public class WizardUtilData {
 
     protected String experimentTitle;
 
-    protected String allowedCharCodes;
-
-    protected String freeTextValidationMessage;
-
     protected String feedbackScreenText;
 
     protected String instructionsText;
@@ -64,22 +60,6 @@ public class WizardUtilData {
 
     public void setExperimentTitle(String experimentTitle) {
         this.experimentTitle = experimentTitle;
-    }
-
-    public String getAllowedCharCodes() {
-        return allowedCharCodes;
-    }
-
-    public void setAllowedCharCodes(String allowedCharCodes) {
-        this.allowedCharCodes = allowedCharCodes;
-    }
-
-    public String getFreeTextValidationMessage() {
-        return freeTextValidationMessage;
-    }
-
-    public void setFreeTextValidationMessage(String freeTextValidationMessage) {
-        this.freeTextValidationMessage = freeTextValidationMessage;
     }
 
     public String getFeedbackScreenText() {
