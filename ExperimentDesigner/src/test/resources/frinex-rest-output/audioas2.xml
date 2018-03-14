@@ -237,10 +237,6 @@
         <localStorageData/>
     </presenter>
     <stimuli>        
-        <stimulus audioPath="" code="" identifier="example1" pauseMs="0" ratingLabels="stopped,continue">
-            <tag>set1</tag>
-            <tag>set2</tag>
-            <tag>set3</tag>
-        </stimulus>
-    </stimuli>
+       <stimulus audioPath="" code="" identifier="example1" pauseMs="0" ratingLabels="stopped,continue" tags="set1 set2 set3"/>
+   </stimuli>
 </experiment>
