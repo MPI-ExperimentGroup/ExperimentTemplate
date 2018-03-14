@@ -145,6 +145,11 @@ public class MetadataFieldWidget implements StimulusFreeText {
     }
 
     @Override
+    public String getResponseTimes() {
+        return null;
+    }
+
+    @Override
     public boolean isValid() {
         try {
             metadataField.validateValue(getValue());
