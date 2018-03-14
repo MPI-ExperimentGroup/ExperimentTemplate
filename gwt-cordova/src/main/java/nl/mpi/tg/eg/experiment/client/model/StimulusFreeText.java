@@ -27,6 +27,8 @@ public interface StimulusFreeText {
 
     public String getPostName();
 
+    public String getResponseTimes();
+
     public String getValue();
 
     public boolean isValid();
