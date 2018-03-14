@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.view;
 
+import com.google.gwt.core.client.Duration;
 import com.google.gwt.dom.client.MediaElement;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.dom.client.CanPlayThroughEvent;
@@ -244,6 +245,8 @@ public class TimedStimulusView extends ComplexView {
         errorLabel.setStylePrimaryName("metadataErrorMessage");
         errorLabel.setVisible(false);
         outerPanel.add(errorLabel);
+        final Duration duration = new Duration();
+        final StringBuilder responseTimes = new StringBuilder();
         final TextArea textBox = new TextArea();
         if (textValue != null) {
             textBox.setText(textValue);
@@ -284,6 +287,8 @@ public class TimedStimulusView extends ComplexView {
                             errorLabel.setText(keyCodeChallenge.replace("<keycode>", "" + charCode) + validationChallenge);
                             errorLabel.setVisible(true);
                         } else {
+                            responseTimes.append(duration.elapsedMillis());
+                            responseTimes.append(",");
                             // if the case is not allowed, then modify the case to what is
                             final int cursorPos = textBox.getCursorPos();
                             String pretext = textBox.getText().substring(0, cursorPos);
@@ -293,9 +298,13 @@ public class TimedStimulusView extends ComplexView {
                             errorLabel.setVisible(false);
                         }
                     } else {
+                        responseTimes.append(duration.elapsedMillis());
+                        responseTimes.append(",");
                         errorLabel.setVisible(false);
                     }
                 } else {
+                    responseTimes.append(duration.elapsedMillis());
+                    responseTimes.append(",");
                     errorLabel.setVisible(false);
                 }
             }
@@ -305,6 +314,11 @@ public class TimedStimulusView extends ComplexView {
             @Override
             public String getValue() {
                 return textBox.getValue();
+            }
+
+            @Override
+            public String getResponseTimes() {
+                return responseTimes.substring(0, responseTimes.length() - 1);
             }
 
             @Override
