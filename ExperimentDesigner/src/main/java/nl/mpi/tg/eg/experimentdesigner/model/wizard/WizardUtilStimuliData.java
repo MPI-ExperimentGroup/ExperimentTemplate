@@ -27,6 +27,11 @@ public class WizardUtilStimuliData {
     protected String instructions = null;
     protected String[] stimuliArray;
     protected String[] randomStimuliTags;
+    protected String ratingLabels = null;
+    protected String stimuliLabelStyle = null;
+    protected String freeTextValidationRegex = null;
+    protected String freeTextValidationMessage = null;
+    protected String freeTextAllowedCharCodes = null;
 
     public String getStimuliName() {
         return stimuliName;
@@ -42,6 +47,46 @@ public class WizardUtilStimuliData {
 
     public void setInstructions(String instructions) {
         this.instructions = instructions;
+    }
+
+    public String getRatingLabels() {
+        return ratingLabels;
+    }
+
+    public void setRatingLabels(String ratingLabels) {
+        this.ratingLabels = ratingLabels;
+    }
+
+    public String getFreeTextValidationRegex() {
+        return freeTextValidationRegex;
+    }
+
+    public void setFreeTextValidationRegex(String freeTextValidationRegex) {
+        this.freeTextValidationRegex = freeTextValidationRegex;
+    }
+
+    public String getFreeTextValidationMessage() {
+        return freeTextValidationMessage;
+    }
+
+    public void setFreeTextValidationMessage(String freeTextValidationMessage) {
+        this.freeTextValidationMessage = freeTextValidationMessage;
+    }
+
+    public String getFreeTextAllowedCharCodes() {
+        return freeTextAllowedCharCodes;
+    }
+
+    public void setFreeTextAllowedCharCodes(String freeTextAllowedCharCodes) {
+        this.freeTextAllowedCharCodes = freeTextAllowedCharCodes;
+    }
+
+    public String getStimuliLabelStyle() {
+        return stimuliLabelStyle;
+    }
+
+    public void setStimuliLabelStyle(String stimuliLabelStyle) {
+        this.stimuliLabelStyle = stimuliLabelStyle;
     }
 
     public String[] getStimuliArray() {
