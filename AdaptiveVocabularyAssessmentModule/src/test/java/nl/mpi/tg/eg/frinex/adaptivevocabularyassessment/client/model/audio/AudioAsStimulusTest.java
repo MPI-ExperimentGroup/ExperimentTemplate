@@ -69,13 +69,17 @@ public class AudioAsStimulusTest {
         System.out.println("setReaction");
         //public AudioAsStimulus(String uniqueId, String label, int pauseMs, String audioPath, String correctResponses, int bandNumber, WordType wordtype, String ratingLabel)
         AudioAsStimulus instance = new AudioAsStimulus("xxx", "test", 100, "/here", null, "6bD", 1, WordType.TARGET_NON_WORD, AudioAsStimulus.AUDIO_RATING_LABEL);
+        // true on nonempty 
+         
+        assertEquals(null, instance.getReaction());
+        
         instance.setReaction(AudioAsStimulus.AUDIO_RATING_LABEL);
-        assertEquals(true, instance.getReaction());
+        assertEquals(AudioAsStimulus.AUDIO_RATING_LABEL, instance.getReaction());
+        
         instance.setReaction("");
-        assertEquals(false, instance.getReaction());
+        assertEquals("", instance.getReaction());
+        
         instance.setReaction(null);
-        assertEquals(false, instance.getReaction());
-        instance.setReaction("rubbish");
         assertEquals(null, instance.getReaction());
     }
 

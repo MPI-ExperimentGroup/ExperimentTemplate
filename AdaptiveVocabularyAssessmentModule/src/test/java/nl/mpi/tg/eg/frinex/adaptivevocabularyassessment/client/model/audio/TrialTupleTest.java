@@ -145,7 +145,7 @@ public class TrialTupleTest {
         assertEquals(null, result2.getReaction());
         assertEquals(null, result2.getCorrectness());
         result2.setReaction(AudioAsStimulus.AUDIO_RATING_LABEL);
-        assertEquals(true, result2.getReaction());
+        assertEquals(AudioAsStimulus.AUDIO_RATING_LABEL, result2.getReaction());
         result2.setCorrectness(false);
         assertFalse(result2.getCorrectness());
         assertEquals("10dB", result2.getBandLabel());
@@ -270,4 +270,49 @@ public class TrialTupleTest {
         assertEquals("smoer", trialsTest.get(3).getTargetNonWord());
     }
 
+    /**
+     * Test of getTrials method, of class TrialTuple.
+     */
+    @Test
+    public void testGetTrials() {
+        System.out.println("getTrials");
+        ArrayList<Trial> result = this.instance.getTrials();
+        assertEquals(4, result.size());
+        assertEquals("geider", result.get(1).getStimuliList().get(1).getLabel());
+    }
+
+    /**
+     * Test of getNumberOfStimuli method, of class TrialTuple.
+     */
+    @Test
+    public void testGetNumberOfStimuli() {
+        System.out.println("getNumberOfStimuli");
+        int result = this.instance.getNumberOfStimuli();
+        int expectedResult = this.map1.size()+this.map2.size()+this.map3.size()+this.map4.size()+4; //also added cues separately
+        assertEquals(expectedResult, result);
+    }
+
+    /**
+     * Test of getCorrectness method, of class TrialTuple.
+     */
+    @Test
+    public void testGetCorrectness() {
+        System.out.println("getCorrectness");
+        Boolean result = this.instance.getCorrectness();
+        assertEquals(null, result);
+    }
+
+    /**
+     * Test of setCorrectness method, of class TrialTuple.
+     */
+    @Test
+    public void testSetCorrectness() {
+        System.out.println("setCorrectness");
+        this.instance.setCorrectness(true);
+        assertTrue(this.instance.getCorrectness());
+        this.instance.setCorrectness(false);
+        assertFalse(this.instance.getCorrectness());
+    }
+
+ 
 }

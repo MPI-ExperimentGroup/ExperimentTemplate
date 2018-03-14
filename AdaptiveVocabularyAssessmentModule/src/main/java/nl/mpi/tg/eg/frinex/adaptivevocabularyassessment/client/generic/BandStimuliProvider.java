@@ -498,7 +498,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         boolean retVal;
 
         if (this.tupleIsNotEmpty()) {
-            // we have not hit the last atom in the tuple yet
+            // we have not hit the last stimuli in the tuple yet
             // continue
             return true;
         } else {

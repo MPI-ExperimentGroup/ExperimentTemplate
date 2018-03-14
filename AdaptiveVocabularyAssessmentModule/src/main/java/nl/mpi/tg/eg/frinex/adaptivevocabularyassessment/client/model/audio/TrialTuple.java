@@ -18,10 +18,8 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
 import java.util.ArrayList;
-import static java.util.Collections.list;
 import java.util.Map;
 import java.util.Random;
-import static jdk.nashorn.internal.runtime.regexp.joni.constants.AsmConstants.S;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 
 /**
@@ -55,6 +53,14 @@ public class TrialTuple {
 
     public ArrayList<Trial> getTrials() {
         return this.trials;
+    }
+    
+    public int getNumberOfStimuli(){
+        int retVal=0;
+        for(Trial trial:trials) {
+            retVal += trial.getStimuliList().size();
+        }
+        return retVal;
     }
 
     public Boolean getCorrectness() {

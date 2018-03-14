@@ -57,6 +57,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     private ArrayList<ArrayList<TrialCondition>> trialTypesPermutations; // list of permutations of members 
     private ArrayList<ArrayList<PermutationPair>> availableCombinations; // x[i] is the list of permutations with non-empty possibilities to instantiate them using trials matrix of unused trials
 
+    private int nStimuliInTuple = 0;
     public void setdirName(String dirName) {
         this.dirName = dirName;
     }
@@ -97,11 +98,11 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     public boolean initialiseNextFineTuningTuple() {
 
         this.currentTrialTuple = TrialTuple.createTupleForBand(this.availableCombinations.get(this.currentBandIndex), this.trials, this.fineTuningTupleLength, this.currentBandIndex);
+        this.nStimuliInTuple = this.currentTrialTuple.getNumberOfStimuli();
         if (this.currentTrialTuple == null) {
             this.errorMessage = "There is no trial combinations satisfying the specification!";
             return false;
         } else {
-            this.currentTrialTuple.setCorrectness(true);
             return true;
         }
     }
@@ -119,43 +120,39 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
     @Override
     protected Boolean allTupleIsCorrect() {
-        return this.currentTrialTuple.getCorrectness();
+        boolean allTupleCorrect = true;
+        int lastIndex = this.responseRecord.size() - 1;
+        for (int i = 0; i < this.nStimuliInTuple; i++) {
+            AudioAsStimulus audioStimulus = this.responseRecord.get(lastIndex - i);
+            WordType stimulusType = audioStimulus.getWordType();
+            if (!stimulusType.equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
+                boolean correctness = (stimulusType.equals(WordType.TARGET_NON_WORD) && audioStimulus.getReaction()!=null) || ((!stimulusType.equals(WordType.TARGET_NON_WORD)) && audioStimulus.getReaction()==null);
+                audioStimulus.setCorrectness(correctness);
+                if (!correctness && allTupleCorrect) {
+                    allTupleCorrect=false;
+                }
+            }
+        }
+        this.currentTrialTuple.setCorrectness(true);
+        return allTupleCorrect;
     }
 
-    // also evaluates and sets correctenss of the current stimulus
-    // the method is not called when the stimulus does not have correct responses
+    // this method is called only when stimulusButton is pressed
+    // 
     @Override
     public boolean isCorrectResponse(Stimulus stimulus, String stimulusResponse) {
         int index = this.getCurrentStimulusIndex();
         AudioAsStimulus audioStimulus = this.responseRecord.get(index);
         audioStimulus.setTimeStamp(System.currentTimeMillis());
         WordType stimulusType = audioStimulus.getWordType();
-        if (stimulusType.equals(WordType.EXAMPLE_TARGET_NON_WORD)) { // no actual rating is expected
-            audioStimulus.setCorrectness(true);
-            audioStimulus.setReaction(null);
-            return true;
-        } else {
-            audioStimulus.setReaction(stimulusResponse);
-            boolean correctness;
-            if (stimulusResponse == null) {
-                if (stimulus.getCorrectResponses() == null) {
-                    correctness = true;
-                } else {
-                    correctness = false;
-                }
-            } else {
-                if (stimulus.getCorrectResponses() == null) {
-                    correctness = false;
-                } else {
-                    correctness = stimulusResponse.equals(stimulus.getCorrectResponses());
-                }
-            }
-            audioStimulus.setCorrectness(correctness);
-            if (!correctness && this.currentTrialTuple.getCorrectness()) {
-                this.currentTrialTuple.setCorrectness(false);
-            }
-            return correctness;
-        }
+        audioStimulus.setReaction(stimulusResponse);
+        boolean correctness = stimulusType.equals(WordType.TARGET_NON_WORD); // button shoulb be pressed only on the target nonword
+//        audioStimulus.setCorrectness(correctness);
+//        if (!correctness && this.currentTrialTuple.getCorrectness()) {
+//            this.currentTrialTuple.setCorrectness(false);
+//        }
+        return correctness;
+
     }
 
     public TrialTuple getTrialTuple() {
@@ -284,7 +281,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         } catch (Exception ex) {
             return null;
         }
-        
+
         builder.append("}");
         return builder.toString();
     }

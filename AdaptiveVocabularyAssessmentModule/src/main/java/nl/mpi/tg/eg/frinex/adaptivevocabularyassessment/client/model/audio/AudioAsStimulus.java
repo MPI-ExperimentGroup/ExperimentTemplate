@@ -25,7 +25,7 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  *
  * @author olhshk
  */
-public class AudioAsStimulus extends BookkeepingStimulus<Boolean, String> {
+public class AudioAsStimulus extends BookkeepingStimulus<String, String> {
 
     private final WordType wordtype;
     public static final String AUDIO_RATING_LABEL = "&#160;";
@@ -54,20 +54,7 @@ public class AudioAsStimulus extends BookkeepingStimulus<Boolean, String> {
 
     @Override
     public void setReaction(String reaction) {
-        if (reaction == null) { // button is not pressed
-            this.userReaction = false;
-        } else {
-            if (reaction.equals(AUDIO_RATING_LABEL)) {
-                this.userReaction = true;
-            } else {
-                if (reaction.equals("")) {
-                    this.userReaction = false;
-                } else {
-                    // something went terribly wrong 
-                    this.userReaction = null;
-                }
-            }
-        }
+        this.userReaction = reaction;
     }
 
     public static AudioAsStimulus toObject(String str) {

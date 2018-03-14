@@ -125,12 +125,77 @@ public class AudioAsStimuliProviderTest {
      * Test of allTupleIsCorrect method, of class AudioAsStimuliProvider.
      */
     @Test
-    public void testAllTupleIsCorrect() {
+    public void testAllTupleIsCorrect1() {
         System.out.println("allTupleIsCorrect");
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
-        assertTrue(this.instance.allTupleIsCorrect()); // initially the tuple is set correct, it will change to false once it hist first wron answer
-        this.instance.getTrialTuple().setCorrectness(false);
+
+        int n = this.instance.getTrialTuple().getNumberOfStimuli();
+        for (int i = 0; i < n; i++) {
+            this.instance.hasNextStimulus(0);
+            this.instance.nextStimulus(0);
+            AudioAsStimulus audioStimulus = this.instance.getCurrentStimulus();
+            Stimulus stimulus = audioStimulus; // upcasting
+            if (audioStimulus.getWordType().equals(WordType.TARGET_NON_WORD)) {
+                instance.isCorrectResponse(stimulus, AudioAsStimulus.AUDIO_RATING_LABEL);
+            }
+        }
+        assertTrue(this.instance.allTupleIsCorrect());
+    }
+
+    /**
+     * Test of allTupleIsCorrect method, of class AudioAsStimuliProvider.
+     */
+    @Test
+    public void testAllTupleIsCorrect2() {
+        System.out.println("allTupleIsCorrect 2");
+        String stimuliStateSnapshot = "";
+        this.instance.initialiseStimuliState(stimuliStateSnapshot);
+
+        int n = this.instance.getTrialTuple().getNumberOfStimuli();
+        boolean mistaken = false;
+        for (int i = 0; i < n; i++) {
+            this.instance.hasNextStimulus(0);
+            this.instance.nextStimulus(0);
+            AudioAsStimulus audioStimulus = this.instance.getCurrentStimulus();
+            Stimulus stimulus = audioStimulus; // upcasting
+            if (!audioStimulus.getWordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) { //when evaluated
+                if (audioStimulus.getWordType().equals(WordType.TARGET_NON_WORD)) {
+                    instance.isCorrectResponse(stimulus, AudioAsStimulus.AUDIO_RATING_LABEL);
+                }
+                if (!audioStimulus.getWordType().equals(WordType.TARGET_NON_WORD) && !mistaken) { // hitting once worngly
+                    instance.isCorrectResponse(stimulus, AudioAsStimulus.AUDIO_RATING_LABEL);
+                    mistaken = true;
+                }
+            }
+        }
+        assertFalse(this.instance.allTupleIsCorrect());
+    }
+
+    /**
+     * Test of allTupleIsCorrect method, of class AudioAsStimuliProvider.
+     */
+    @Test
+    public void testAllTupleIsCorrect3() {
+        System.out.println("allTupleIsCorrect 3");
+        String stimuliStateSnapshot = "";
+        this.instance.initialiseStimuliState(stimuliStateSnapshot);
+
+        int n = this.instance.getTrialTuple().getNumberOfStimuli();
+        boolean mistaken = false;
+        for (int i = 0; i < n; i++) {
+            this.instance.hasNextStimulus(0);
+            this.instance.nextStimulus(0);
+            AudioAsStimulus audioStimulus = this.instance.getCurrentStimulus();
+            Stimulus stimulus = audioStimulus; // upcasting
+            if (audioStimulus.getWordType().equals(WordType.TARGET_NON_WORD)) { // missing a hit
+                if (mistaken) {
+                    instance.isCorrectResponse(stimulus, AudioAsStimulus.AUDIO_RATING_LABEL);
+                } else {
+                    mistaken = true;  // missing a hit
+                }
+            }
+        }
         assertFalse(this.instance.allTupleIsCorrect());
     }
 
@@ -143,34 +208,28 @@ public class AudioAsStimuliProviderTest {
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
 
-        this.instance.hasNextStimulus(0);
-        this.instance.nextStimulus(0);
-        AudioAsStimulus audioStimulus = this.instance.getCurrentStimulus();
-        Stimulus stimulus = audioStimulus; // upcasting
+        int n = this.instance.getTrialTuple().getNumberOfStimuli();
+        for (int i = 0; i < n; i++) {
+            this.instance.hasNextStimulus(0);
+            this.instance.nextStimulus(0);
+            AudioAsStimulus audioStimulus = this.instance.getCurrentStimulus();
+            Stimulus stimulus = audioStimulus; // upcasting
+            if (audioStimulus.getWordType().equals(WordType.TARGET_NON_WORD)) {
+                assertTrue(instance.isCorrectResponse(stimulus, ""));
+                assertEquals("", audioStimulus.getReaction());
 
-        assertTrue(instance.isCorrectResponse(stimulus, null));
-        assertTrue(instance.getTrialTuple().getCorrectness());
-        assertTrue(instance.isCorrectResponse(stimulus, ""));
-        assertTrue(instance.getTrialTuple().getCorrectness());
+                assertTrue(instance.isCorrectResponse(stimulus, AudioAsStimulus.AUDIO_RATING_LABEL));
+                assertEquals(AudioAsStimulus.AUDIO_RATING_LABEL, audioStimulus.getReaction());
+            } else {
+                if (!audioStimulus.getWordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
+                    assertFalse(instance.isCorrectResponse(stimulus, ""));
+                    assertEquals("", audioStimulus.getReaction());
 
-        this.instance.hasNextStimulus(0);
-        this.instance.nextStimulus(0);
-        AudioAsStimulus audioStimulus2 = this.instance.getCurrentStimulus();
-        Stimulus stimulus2 = audioStimulus2; // upcasting
-
-        String correctResponse = audioStimulus2.getCorrectResponses();
-        assertTrue(instance.isCorrectResponse(stimulus2, correctResponse));
-        assertTrue(instance.getTrialTuple().getCorrectness());
-        String wrongResponse = "";
-        if (correctResponse == null) {
-            wrongResponse = AudioAsStimulus.AUDIO_RATING_LABEL;
-        } else {
-            if (correctResponse.length() == 0) {
-                wrongResponse = AudioAsStimulus.AUDIO_RATING_LABEL;
+                    assertFalse(instance.isCorrectResponse(stimulus, AudioAsStimulus.AUDIO_RATING_LABEL));
+                    assertEquals(AudioAsStimulus.AUDIO_RATING_LABEL, audioStimulus.getReaction());
+                }
             }
         }
-        assertFalse(instance.isCorrectResponse(stimulus2, wrongResponse));
-        assertFalse(instance.getTrialTuple().getCorrectness());
     }
 
     /**
@@ -190,7 +249,7 @@ public class AudioAsStimuliProviderTest {
 
         boolean result = this.instance.initialiseNextFineTuningTuple();
         assertEquals(this.tupleSize, this.instance.getTrialTuple().getTrials().size());
-        assertTrue(this.instance.getTrialTuple().getCorrectness());
+        assertEquals(null, this.instance.getTrialTuple().getCorrectness());
     }
 
     /**
@@ -384,20 +443,15 @@ public class AudioAsStimuliProviderTest {
 
             if (!audioStimulus.getWordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
                 previousBandIndex = this.instance.getCurrentBandIndex();
-            }
-
-            if (distort) {
-                if (correctResponce == null) {
-                    this.instance.isCorrectResponse(stimulus, "YES");
-                } else {
-                    if (correctResponce.equals("YES")) {
-                        this.instance.isCorrectResponse(stimulus, "");
-                    } else {
-                        this.instance.isCorrectResponse(stimulus, "YES");
+                if (distort) { // cal isCorrect (the button is hited) only on non-target
+                    if (!audioStimulus.getWordType().equals(WordType.TARGET_NON_WORD)) {
+                        this.instance.isCorrectResponse(stimulus, AudioAsStimulus.AUDIO_RATING_LABEL);
+                    }
+                } else { // non-distort, call isCorrect only on target
+                    if (audioStimulus.getWordType().equals(WordType.TARGET_NON_WORD)) {
+                        this.instance.isCorrectResponse(stimulus, AudioAsStimulus.AUDIO_RATING_LABEL);
                     }
                 }
-            } else {
-                this.instance.isCorrectResponse(stimulus, correctResponce);
             }
         }
 
