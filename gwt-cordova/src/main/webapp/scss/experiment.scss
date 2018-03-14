@@ -762,7 +762,8 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
     padding: 10px;
 }
 
-.gwt-HTML.groupMessageLabel {
+.gwt-HTML.groupMessageLabel,
+.gwt-HTML.stimuliLabel {
     font-size: 60px;
     padding: 10px;
 }
@@ -770,12 +771,14 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
 /*.menuTable .gwt-HTML,*/
 .menuTable.gwt-HTML.highlightedText,
 .gwt-HTML.groupMessageLabel,
+.gwt-HTML.stimuliLabel,
 .gwt-HTML.countDownLabel {
     text-align: center;
 }
 
 .gwt-HTML.highlightedText,
 .gwt-HTML.groupMessageLabel,
+.gwt-HTML.stimuliLabel,
 .gwt-HTML.countDownLabel {
     font-weight: bold; 
     text-align: center;
