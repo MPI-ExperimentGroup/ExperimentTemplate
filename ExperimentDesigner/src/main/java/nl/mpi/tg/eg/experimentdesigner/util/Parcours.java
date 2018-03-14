@@ -422,16 +422,6 @@ public class Parcours extends WizardUtilData {
     }
 
     @Override
-    public String getAllowedCharCodes() {
-        return null;
-    }
-
-    @Override
-    public String getFreeTextValidationMessage() {
-        return "Vul één of enkele woorden in die volgens u het beste aan het eind van de zin passen.";
-    }
-
-    @Override
     public String getFeedbackScreenText() {
         return null;
     }
@@ -472,6 +462,22 @@ public class Parcours extends WizardUtilData {
                     "list_b",
                     "list_c"};
             }
+
+            @Override
+            public String getFreeTextAllowedCharCodes() {
+                return null;
+            }
+
+            @Override
+            public String getFreeTextValidationMessage() {
+                return "Vul één of enkele woorden in die volgens u het beste aan het eind van de zin passen.";
+            }
+
+            @Override
+            public String getFreeTextValidationRegex() {
+                return ".{2,}";
+            }
+
         }};
     }
 
