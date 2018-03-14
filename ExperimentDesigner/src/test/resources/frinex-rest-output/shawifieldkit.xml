@@ -26,7 +26,7 @@
         <targetButton featureText="Go directly to program" hotKey="SPACE" target="Start"/>
     </presenter>
     <presenter back="AutoMenu" displayOrder="4" menuLabel="Metadata" next="ExperimentMenu" type="stimulus" self="MetadataScreen" title="Metadata">
-        <loadAllStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" repeatCount="1">
+        <loadStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="Metadata" wavFormat="true" filePerStimulus="false"/>
                 <startAudioRecorderTag eventTier="1"/>
@@ -41,10 +41,11 @@
                 <stopAudioRecorder/>
                 <autoNextPresenter/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>metadata</tag>
             </stimuli>
-        </loadAllStimulus>
+        </loadStimulus>
     </presenter>
     <presenter back="Welcome" displayOrder="5" menuLabel="Select User" next="MetadataScreen" type="metadata" self="SelectUser" title="Select User">
         <selectUserMenu/>
