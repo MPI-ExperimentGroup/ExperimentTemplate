@@ -88,7 +88,7 @@ public class SentenceCompletion {
         WizardRandomStimulusScreen lastStimuliScreen = null;
         for (final WizardUtilStimuliData stimuliData : wizardUtilData.getStimuliData()) {
             if (stimuliData.getInstructions() != null) {
-                WizardTextScreen stimulusInstructionsScreen = new WizardTextScreen(stimuliData.getStimuliName() + " Informatie", wizardUtilData.getInstructionsText(),
+                WizardTextScreen stimulusInstructionsScreen = new WizardTextScreen(stimuliData.getStimuliName() + " Informatie", stimuliData.getInstructions(),
                         "volgende [ spatiebalk ]"
                 );
                 stimulusInstructionsScreen.setMenuLabel("Terug");
@@ -100,13 +100,20 @@ public class SentenceCompletion {
             }
             final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen(stimuliData.getStimuliName(), false, stimuliData.getStimuliArray(),
                     stimuliData.getRandomStimuliTags(), 1000, true, null, 0, 0, null, null, null, null, "Volgende [tab + enter]");
-            list1234Screen.setStimulusFreeText(true, ".{2,}",
-                    wizardUtilData.getFreeTextValidationMessage());
-            list1234Screen.setAllowedCharCodes(wizardUtilData.getAllowedCharCodes());
-            list1234Screen.setInputKeyErrorMessage("Sorry, dit teken is niet toegestaan.");
+            if (stimuliData.getRatingLabels() != null) {
+                list1234Screen.getWizardScreenData().setStimulusResponseOptions(stimuliData.getRatingLabels());
+            } else {
+                list1234Screen.setStimulusFreeText(true,
+                        (stimuliData.getFreeTextValidationRegex() == null) ? ".{2,}" : stimuliData.getFreeTextValidationRegex(),
+                        stimuliData.getFreeTextValidationMessage()
+                );
+                list1234Screen.setAllowedCharCodes(stimuliData.getFreeTextAllowedCharCodes());
+                list1234Screen.setInputKeyErrorMessage("Sorry, dit teken is niet toegestaan.");
+            }
             list1234Screen.getWizardScreenData().setStimulusResponseLabelLeft("");
             list1234Screen.getWizardScreenData().setStimulusResponseLabelRight("");
             list1234Screen.setRandomStimuliTagsField("item");
+            list1234Screen.setStimuliLabelStyle(stimuliData.getStimuliLabelStyle());
             list1234Screen.setAllowHotkeyButtons(false);
             if (wizardUtilData.isShowProgress()) {
                 list1234Screen.setShowProgress(true);
