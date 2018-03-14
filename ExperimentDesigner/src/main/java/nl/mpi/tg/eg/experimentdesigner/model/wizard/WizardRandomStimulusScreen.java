@@ -47,6 +47,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         setStimulusFreeText(false);
         setAllowHotkeyButtons(true);
         setShowProgress(false);
+        setStimuliLabelStyle(null);
 //        this.wizardScreenData.setButtonLabelEventTag("");
         this.wizardScreenData.setCentreScreen(true);
     }
@@ -73,6 +74,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             throw new UnsupportedOperationException("button text cannot be null");
         }
         setButtonLabel(spacebar);
+        setStimuliLabelStyle(null);
 //        this.wizardScreenData.setButtonLabelEventTag(spacebar);
         setStimuliSet(stimuliStringArray);
     }
@@ -140,7 +142,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenTextInfo(int index) {
-        return new String[]{"FreeTextValidationMessage", "FreeTextValidationRegex", "RandomStimuliTagsField", "InputKeyErrorMessage", "AllowedCharCodes (case sensitive, input will be switched to an allowed case if it exists)"}[index];
+        return new String[]{"FreeTextValidationMessage", "FreeTextValidationRegex", "RandomStimuliTagsField", "InputKeyErrorMessage", "AllowedCharCodes (case sensitive, input will be switched to an allowed case if it exists)", "Stimuli Label Style"}[index];
     }
 
     @Override
@@ -162,6 +164,14 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
 
     final public void setAllowedCharCodes(String allowedCharCodes) {
         this.wizardScreenData.setScreenText(4, allowedCharCodes);
+    }
+
+    final public void setStimuliLabelStyle(String stimuliLabelStyle) {
+        this.wizardScreenData.setScreenText(5, stimuliLabelStyle);
+    }
+
+    final public String getStimuliLabelStyle(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(5);
     }
 
     private int getStimulusMsDelay(WizardScreenData storedWizardScreenData) {
@@ -293,13 +303,23 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
             hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         }
-        final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
+        final String stimuliLabelStyle = getStimuliLabelStyle(storedWizardScreenData);
+        final PresenterFeature stimuliFeature;
+        if (stimuliLabelStyle != null) {
+            final PresenterFeature labelFeature = new PresenterFeature(FeatureType.stimulusLabel, null);
+            labelFeature.addFeatureAttributes(FeatureAttribute.styleName, stimuliLabelStyle);
+            hasMoreStimulusFeature.getPresenterFeatureList().add(labelFeature);
+            stimuliFeature = hasMoreStimulusFeature;// image features cannot have child nodes
+        } else {
+            final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
+            imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
+            imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
+            imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
+            imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getStimulusMsDelay(storedWizardScreenData)));
+            hasMoreStimulusFeature.getPresenterFeatureList().add(imageFeature);
+            stimuliFeature = imageFeature;
+        }
 
-        hasMoreStimulusFeature.getPresenterFeatureList().add(imageFeature);
-        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
-        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
-        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
-        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getStimulusMsDelay(storedWizardScreenData)));
         final PresenterFeature presenterFeature;
         final String hotKeyString = "SPACE";
         if (storedWizardScreenData.getStimulusCodeFormat() != null) {
@@ -316,7 +336,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.codeFormat, storedWizardScreenData.getStimulusCodeFormat());
             stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.msToNext, "0");
             pauseFeature.getPresenterFeatureList().add(stimulusCodeAudio);
-            imageFeature.getPresenterFeatureList().add(nextButtonFeature);
+            stimuliFeature.getPresenterFeatureList().add(nextButtonFeature);
             stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
             stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "Het antwoord is:"));
             final PresenterFeature logTImeStamp = new PresenterFeature(FeatureType.logTimeStamp, null);
@@ -328,7 +348,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
 //            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "<style=\"text-align: left;\">zeer waarschijnlijk negatief</style><style=\"text-align: right;\">zeer waarschijnlijk positief</style>"));
             presenterFeature = stimulusCodeAudio;
         } else {
-            presenterFeature = imageFeature;
+            presenterFeature = stimuliFeature;
         }
         presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         if (isStimulusFreeText(storedWizardScreenData)) {
