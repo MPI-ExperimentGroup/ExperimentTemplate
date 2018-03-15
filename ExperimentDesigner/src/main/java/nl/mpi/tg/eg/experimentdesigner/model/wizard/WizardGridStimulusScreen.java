@@ -473,7 +473,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                     final PresenterFeature repeatAudioB = pause2.addFeature(FeatureType.stimulusCodeAudio, null, "3000", "<code>b", Boolean.toString(false));
                     final PresenterFeature drukophetplaatje = repeatAudioB.addFeature(FeatureType.stimulusCodeAudio, null, "3000", "drukophetplaatje", Boolean.toString(false));
                     drukophetplaatje.addFeature(FeatureType.disableStimulusButtons, null);
-                    drukophetplaatje.addFeature(FeatureType.disablePauseTimers, null);
+                    drukophetplaatje.addFeature(FeatureType.cancelPauseTimers, null);
                     drukophetplaatje.addFeature(FeatureType.clearPage, null);
                     final PresenterFeature pause3a = drukophetplaatje.addFeature(FeatureType.pause, null, "1000");
                     pause3a.addFeature(FeatureType.touchInputReportSubmit, null);
@@ -483,7 +483,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                 case "AudioRepeat2":
                     final PresenterFeature repeatAudio = pause2.addFeature(FeatureType.stimulusAudio, null, "3000", Boolean.toString(false));
                     repeatAudio.addFeature(FeatureType.disableStimulusButtons, null);
-                    repeatAudio.addFeature(FeatureType.disablePauseTimers, null);
+                    repeatAudio.addFeature(FeatureType.cancelPauseTimers, null);
                     repeatAudio.addFeature(FeatureType.clearPage, null);
                     if (getRewardImage(storedWizardScreenData) != null) {
                         repeatAudio.addFeature(FeatureType.backgroundImage, null, "0", getRewardImage(storedWizardScreenData), "");
@@ -498,7 +498,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                 final PresenterFeature stimulusImage = hasMoreStimulusFeature.addFeature(FeatureType.stimulusCodeImage, null, "250", additionString[0], additionString[1]);
                 final PresenterFeature leftOverlayButton = stimulusImage.addFeature(FeatureType.touchInputStimulusButton, additionString[2], additionString[3], "", additionString[4], additionString[5]);
                 leftOverlayButton.addFeature(FeatureType.disableStimulusButtons, null);
-                leftOverlayButton.addFeature(FeatureType.disablePauseTimers, null);
+                leftOverlayButton.addFeature(FeatureType.cancelPauseTimers, null);
 //                leftOverlayButton.addFeature(FeatureType.trigger, null, "buttonAction");
                 final PresenterFeature pause = leftOverlayButton.addFeature(FeatureType.pause, null, Integer.toString(getSelectedPause(storedWizardScreenData)));
                 pause.addFeature(FeatureType.clearPage, null);
@@ -515,7 +515,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 
 //                                        <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" styleName="leftOverlayButton">
 //                                <disableStimulusButtons/>
-//                                <disablePauseTimers/>
+//                                <cancelPauseTimers/>
 //                                <pause msToNext="1000">
 //                                    <clearPage/>
 //                                    <backgroundImage msToNext="0" src="P0.png" styleName=""/>
