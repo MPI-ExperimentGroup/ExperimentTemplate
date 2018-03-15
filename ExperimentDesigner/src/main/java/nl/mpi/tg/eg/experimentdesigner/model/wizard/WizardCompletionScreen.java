@@ -106,7 +106,7 @@ public class WizardCompletionScreen extends AbstractWizardScreen {
             retryFeature.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getScreenTag());
         } else {
             onSuccessFeatureList = storedWizardScreenData.getPresenterScreen().getPresenterFeatureList();
-            onSuccessFeatureList.add(new PresenterFeature(FeatureType.htmlText, "Data will not be collected in this version."));
+//            onSuccessFeatureList.add(new PresenterFeature(FeatureType.htmlText, "Data will not be collected in this version."));
         }
         onSuccessFeatureList.add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
         onSuccessFeatureList.add(new PresenterFeature(FeatureType.addPadding, null));
