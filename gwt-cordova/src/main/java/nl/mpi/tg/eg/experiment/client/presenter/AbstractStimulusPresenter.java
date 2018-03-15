@@ -94,7 +94,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     final UserResults userResults;
     private final Duration duration;
     final ArrayList<StimulusButton> buttonList = new ArrayList<>();
-    final ArrayList<Timer> pauseTimers = new ArrayList<>();
+    private final ArrayList<Timer> pauseTimers = new ArrayList<>();
     private TimedStimulusListener hasMoreStimulusListener;
     private TimedStimulusListener endOfStimulusListener;
     final private ArrayList<PresenterEventListner> nextButtonEventListnerList = new ArrayList<>();
@@ -1397,13 +1397,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         triggerListeners.get(listenerId).trigger();
     }
 
-    public void disablePauseTimers() {
+    public void cancelPauseTimers() {
 //        ((TimedStimulusView) simpleView).stopTimers();
         for (Timer currentTimer : pauseTimers) {
             if (currentTimer != null) {
                 currentTimer.cancel();
             }
         }
+        pauseTimers.clear();
     }
 
     public void disableStimulusButtons() {
