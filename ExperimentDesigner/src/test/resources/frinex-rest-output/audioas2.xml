@@ -72,6 +72,7 @@
                                 <conditionTrue>
                                     <stimulusAudio msToNext="0" showPlaybackIndicator="true"> 
                                         <stimulusButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight"> 
+                                            <cancelPauseTimers/>
                                             <trigger listenerId="nextStimulusAction"/>
                                         </stimulusButton>
                                         <pause msToNext="900">
