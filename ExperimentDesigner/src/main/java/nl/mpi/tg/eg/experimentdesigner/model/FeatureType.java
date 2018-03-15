@@ -75,7 +75,7 @@ public enum FeatureType {
     showCurrentMs(false, false, null),
     enableStimulusButtons(false, false, null),
     disableStimulusButtons(false, false, null),
-    disablePauseTimers(false, false, null),
+    cancelPauseTimers(false, false, null),
     showStimulusProgress(false, false, new FeatureAttribute[]{styleName}),
     hideStimulusButtons(false, false, null),
     showStimulusButtons(false, false, null),
