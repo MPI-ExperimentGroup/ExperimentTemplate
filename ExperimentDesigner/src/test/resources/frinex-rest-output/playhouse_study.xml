@@ -65,7 +65,7 @@
                                 <pause msToNext="3000">
                                     <stimulusAudio msToNext="3000" showPlaybackIndicator="false">
                                         <disableStimulusButtons/>
-                                        <disablePauseTimers/>
+                                        <cancelPauseTimers/>
                                         <clearPage/>
                                         <backgroundImage msToNext="0" src="P_00.png" styleName=""/>
                                         <pause msToNext="1000">
@@ -80,7 +80,7 @@
                         <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="borderedVideoLeft">
                             <touchInputStimulusButton featureText="Left Overlay Button" listenerId="leftButtonGroup" eventTag="Left" src="" styleName="leftOverlayButton">
                                 <disableStimulusButtons/>
-                                <disablePauseTimers/>
+                                <cancelPauseTimers/>
                                 <pause msToNext="1000">
                                     <clearPage/>
                                     <backgroundImage msToNext="0" src="P_00.png" styleName=""/>
@@ -96,7 +96,7 @@
                         <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="borderedVideoRight">
                             <touchInputStimulusButton featureText="Right Overlay Button" listenerId="rightButtonGroup" eventTag="Right" src="" styleName="rightOverlayButton">
                                 <disableStimulusButtons/>
-                                <disablePauseTimers/>
+                                <cancelPauseTimers/>
                                 <pause msToNext="1000">
                                     <clearPage/>
                                     <backgroundImage msToNext="0" src="P_00.png" styleName=""/>
@@ -169,7 +169,7 @@
                                             <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;b" showPlaybackIndicator="false">
                                                 <stimulusCodeAudio msToNext="3000" codeFormat="drukophetplaatje" showPlaybackIndicator="false">
                                                     <disableStimulusButtons/>
-                                                    <disablePauseTimers/>
+                                                    <cancelPauseTimers/>
                                                     <clearPage/>
                                                     <pause msToNext="1000">
                                                         <touchInputReportSubmit/>
@@ -185,7 +185,7 @@
                             <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="borderedVideoLeft">
                                 <touchInputStimulusButton featureText="Left Overlay Button" listenerId="leftButtonGroup" eventTag="Left" src="" styleName="leftOverlayButton">
                                     <disableStimulusButtons/>
-                                    <disablePauseTimers/>
+                                    <cancelPauseTimers/>
                                     <pause msToNext="2000">
                                         <clearPage/>
                                         <pause msToNext="1000">
@@ -200,7 +200,7 @@
                             <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="borderedVideoRight">
                                 <touchInputStimulusButton featureText="Right Overlay Button" listenerId="rightButtonGroup" eventTag="Right" src="" styleName="rightOverlayButton">
                                     <disableStimulusButtons/>
-                                    <disablePauseTimers/>
+                                    <cancelPauseTimers/>
                                     <pause msToNext="2000">
                                         <clearPage/>
                                         <pause msToNext="1000">
@@ -273,7 +273,7 @@
                                             <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;b" showPlaybackIndicator="false">
                                                 <stimulusCodeAudio msToNext="3000" codeFormat="drukophetplaatje" showPlaybackIndicator="false">
                                                     <disableStimulusButtons/>
-                                                    <disablePauseTimers/>
+                                                    <cancelPauseTimers/>
                                                     <clearPage/>
                                                     <pause msToNext="1000">
                                                         <touchInputReportSubmit/>
@@ -289,7 +289,7 @@
                             <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="borderedVideoLeft">
                                 <touchInputStimulusButton featureText="Left Overlay Button" listenerId="leftButtonGroup" eventTag="Left" src="" styleName="leftOverlayButton">
                                     <disableStimulusButtons/>
-                                    <disablePauseTimers/>
+                                    <cancelPauseTimers/>
                                     <pause msToNext="2000">
                                         <clearPage/>
                                         <pause msToNext="1000">
@@ -304,7 +304,7 @@
                             <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="borderedVideoRight">
                                 <touchInputStimulusButton featureText="Right Overlay Button" listenerId="rightButtonGroup" eventTag="Right" src="" styleName="rightOverlayButton">
                                     <disableStimulusButtons/>
-                                    <disablePauseTimers/>
+                                    <cancelPauseTimers/>
                                     <pause msToNext="2000">
                                         <clearPage/>
                                         <pause msToNext="1000">
@@ -375,7 +375,7 @@
                                     <pause msToNext="3000">
                                         <stimulusAudio msToNext="3000" showPlaybackIndicator="false">
                                             <disableStimulusButtons/>
-                                            <disablePauseTimers/>
+                                            <cancelPauseTimers/>
                                             <clearPage/>
                                             <pause msToNext="1000">
                                                 <touchInputReportSubmit/>
@@ -389,7 +389,7 @@
                             <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="borderedVideoLeft">
                                 <touchInputStimulusButton featureText="Left Overlay Button" listenerId="leftButtonGroup" eventTag="Left" src="" styleName="leftOverlayButton">
                                     <disableStimulusButtons/>
-                                    <disablePauseTimers/>
+                                    <cancelPauseTimers/>
                                     <pause msToNext="2000">
                                         <clearPage/>
                                         <pause msToNext="1000">
@@ -404,7 +404,7 @@
                             <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="borderedVideoRight">
                                 <touchInputStimulusButton featureText="Right Overlay Button" listenerId="rightButtonGroup" eventTag="Right" src="" styleName="rightOverlayButton">
                                     <disableStimulusButtons/>
-                                    <disablePauseTimers/>
+                                    <cancelPauseTimers/>
                                     <pause msToNext="2000">
                                         <clearPage/>
                                         <pause msToNext="1000">
@@ -475,7 +475,7 @@
                                     <pause msToNext="3000">
                                         <stimulusAudio msToNext="3000" showPlaybackIndicator="false">
                                             <disableStimulusButtons/>
-                                            <disablePauseTimers/>
+                                            <cancelPauseTimers/>
                                             <clearPage/>
                                             <pause msToNext="1000">
                                                 <touchInputReportSubmit/>
@@ -489,7 +489,7 @@
                             <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="borderedVideoLeft">
                                 <touchInputStimulusButton featureText="Left Overlay Button" listenerId="leftButtonGroup" eventTag="Left" src="" styleName="leftOverlayButton">
                                     <disableStimulusButtons/>
-                                    <disablePauseTimers/>
+                                    <cancelPauseTimers/>
                                     <pause msToNext="2000">
                                         <clearPage/>
                                         <pause msToNext="1000">
@@ -504,7 +504,7 @@
                             <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="borderedVideoRight">
                                 <touchInputStimulusButton featureText="Right Overlay Button" listenerId="rightButtonGroup" eventTag="Right" src="" styleName="rightOverlayButton">
                                     <disableStimulusButtons/>
-                                    <disablePauseTimers/>
+                                    <cancelPauseTimers/>
                                     <pause msToNext="2000">
                                         <clearPage/>
                                         <pause msToNext="1000">
