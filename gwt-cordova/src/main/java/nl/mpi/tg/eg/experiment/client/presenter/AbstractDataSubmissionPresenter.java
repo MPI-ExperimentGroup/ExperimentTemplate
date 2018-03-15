@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArray;
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
@@ -172,6 +173,16 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
                 Window.Location.replace(Window.Location.getPath());
             }
         });
+    }
+
+    protected void pause(int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        final Timer timer = new Timer() {
+            @Override
+            public void run() {
+                timedStimulusListener.postLoadTimerFired();
+            }
+        };
+        timer.schedule(postLoadMs);
     }
 
     protected void eraseLocalStorageOnWindowClosing() {
