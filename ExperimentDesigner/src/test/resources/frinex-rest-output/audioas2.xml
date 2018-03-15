@@ -61,30 +61,28 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
-              
+                
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1"> 
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
                 <table styleName="stimulusContainerTab">
                     <row>
                         <column styleName="stimulusContainerCol">
                             <stimulusHasRatingOptions>
                                 <conditionTrue>
-                                    <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1"> 
-                                        <nextStimulus repeatIncorrect="false"/>
-                                    </triggerListener>
-                                    <stimulusAudio msToNext="0" showPlaybackIndicator="false"> 
+                                    <stimulusAudio msToNext="0" showPlaybackIndicator="true"> 
                                         <stimulusButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight"> 
                                             <trigger listenerId="nextStimulusAction"/>
                                         </stimulusButton>
-                                        <stimulusPause>
+                                        <pause msToNext="900">
                                             <trigger listenerId="nextStimulusAction"/>
-                                        </stimulusPause>
+                                        </pause> 
                                     </stimulusAudio>
+                                    
                                 </conditionTrue>
                                 <conditionFalse>
                                     <htmlText featureText="&lt;div align=&quot;left&quot; &gt; &lt;img src=&quot;static/animated-star-image-0109.gif&quot; /&gt; New trial starts. Lsiten to the sample and press SPACE when ready to continue &lt;/div&gt;"/>
                                     <pause msToNext="1000">
-                                        <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1"> 
-                                            <nextStimulus repeatIncorrect="false"/>
-                                        </triggerListener>
                                         <stimulusAudio msToNext="0" showPlaybackIndicator="false"> 
                                             <actionButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight"> 
                                                 <trigger listenerId="nextStimulusAction"/>
@@ -96,11 +94,9 @@
                                     </pause>
                                 </conditionFalse> 
                             </stimulusHasRatingOptions>
-                            
                         </column>
                     </row>
                 </table>
-               
             </hasMoreStimulus>
             <endOfStimulus>
                 <centrePage/>
@@ -127,14 +123,14 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1"> 
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
                 <table styleName="stimulusContainerTab">
                     <row>
                         <column styleName="stimulusContainerCol">
                             <stimulusHasRatingOptions>
                                 <conditionTrue>
-                                    <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1"> 
-                                        <nextStimulus repeatIncorrect="false"/>
-                                    </triggerListener>
                                     <stimulusAudio msToNext="0" showPlaybackIndicator="false"> 
                                         <stimulusButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight"> 
                                             <trigger listenerId="nextStimulusAction"/>
@@ -147,9 +143,6 @@
                                 <conditionFalse>
                                     <htmlText featureText="&lt;div align=&quot;left&quot; &gt; &lt;img src=&quot;static/animated-star-image-0109.gif&quot; /&gt; New trial starts. Lsiten to the sample and press SPACE when ready to continue &lt;/div&gt;"/>
                                     <pause msToNext="1000">
-                                        <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1"> 
-                                            <nextStimulus repeatIncorrect="false"/>
-                                        </triggerListener>
                                         <stimulusAudio msToNext="0" showPlaybackIndicator="false"> 
                                             <actionButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight"> 
                                                 <trigger listenerId="nextStimulusAction"/>
@@ -237,6 +230,6 @@
         <localStorageData/>
     </presenter>
     <stimuli>        
-       <stimulus audioPath="" code="" identifier="example1" pauseMs="0" ratingLabels="stopped,continue" tags="set1 set2 set3"/>
-   </stimuli>
+        <stimulus audioPath="" code="" identifier="example1" pauseMs="0" ratingLabels="stopped,continue" tags="set1 set2 set3"/>
+    </stimuli>
 </experiment>
