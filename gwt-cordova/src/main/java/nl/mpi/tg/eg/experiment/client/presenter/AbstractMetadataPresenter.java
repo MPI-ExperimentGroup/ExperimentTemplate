@@ -136,7 +136,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
                 // this should not occur since the field value should have originated from a UserId instance
             }
         }
-        localStorage.storeData(userResults);
+        localStorage.storeData(userResults, metadataFieldProvider);
     }
 
     protected void selectUserMenu(final AppEventListner appEventListner) {
@@ -156,8 +156,8 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
                 @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                     try {
-                        userResults.setUser(localStorage.getStoredData(labelData.getUserId()));
-                        localStorage.storeData(userResults);
+                        userResults.setUser(localStorage.getStoredData(labelData.getUserId(), metadataFieldProvider));
+                        localStorage.storeData(userResults, metadataFieldProvider);
                         appEventListner.requestApplicationState(nextState);
                     } catch (UserIdException exception) {
                         // this should not occur since the field value should have originated from a UserId instance
@@ -186,7 +186,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 userResults.setUser(new UserData());
-                localStorage.storeData(userResults);
+                localStorage.storeData(userResults, metadataFieldProvider);
                 appEventListner.requestApplicationState(targetApplicationState);
             }
         });
