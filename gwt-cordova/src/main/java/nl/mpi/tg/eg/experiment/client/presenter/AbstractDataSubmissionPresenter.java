@@ -141,7 +141,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 userResults.setUser(new UserData());
-                localStorage.storeData(userResults);
+                localStorage.storeData(userResults, metadataFieldProvider);
                 appEventListner.requestApplicationState(targetApplicationState);
             }
         });
