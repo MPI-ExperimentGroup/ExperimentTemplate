@@ -17,7 +17,6 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONParser;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
@@ -26,7 +25,6 @@ import com.google.gwt.user.client.Window;
 import java.util.ArrayList;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
-import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
@@ -40,7 +38,7 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  */
 public class LocalStorage {
 
-    protected final Messages messages = GWT.create(Messages.class);
+    protected final String appNameInternal;
     private Storage dataStore = null;
     protected final String MAX_SCORE = "maxScore";
     protected final String GAMES_PLAYED = "gamesPlayed";
@@ -48,50 +46,53 @@ public class LocalStorage {
     protected final String TOTAL_POTENTIAL = "totalPotential";
     protected final String CURRENT_SCORE = "currentScore";
     protected final String TOTAL_SCORE = "totalScore";
-    final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
+
+    public LocalStorage(String appNameInternal) {
+        this.appNameInternal = appNameInternal;
+    }
 
     private String getAPP_STATE(UserId userId) {
-        return messages.appNameInternal() + "." + userId.toString() + ".AppState";
+        return appNameInternal + "." + userId.toString() + ".AppState";
     }
 
     private String getCOMPLETION_CODE(UserId userId) {
-        return messages.appNameInternal() + "." + userId.toString() + ".completionCode";
+        return appNameInternal + "." + userId.toString() + ".completionCode";
     }
 
     private String getUSER_RESULTS(UserId userId, String valueName) {
-        return messages.appNameInternal() + "." + userId.toString() + ".UserResults." + valueName;
+        return appNameInternal + "." + userId.toString() + ".UserResults." + valueName;
     }
 
     private boolean isUSER_RESULTS(String keyName, String postName) {
-        return keyName.startsWith(messages.appNameInternal()) && keyName.endsWith(".UserResults." + postName);
+        return keyName.startsWith(appNameInternal) && keyName.endsWith(".UserResults." + postName);
     }
 
     private String getUSER_RESULTS_CONNECTION(UserId userId, String valueName) {
-        return messages.appNameInternal() + "." + userId.toString() + ".UserResults." + valueName + ".connectedUserId";
+        return appNameInternal + "." + userId.toString() + ".UserResults." + valueName + ".connectedUserId";
     }
 
     private String getLAST_USER_ID() {
-        return messages.appNameInternal() + ".LastUserId";
+        return appNameInternal + ".LastUserId";
     }
 
     private String getGAME_DATA(UserId userId) {
         // todo: perhaps merge game and screen data concepts
-        return messages.appNameInternal() + "." + userId.toString() + ".GameData";
+        return appNameInternal + "." + userId.toString() + ".GameData";
     }
 
     private String getGAME_DATA(String label, UserId userId) {
         // todo: perhaps merge game and screen data concepts
-        return messages.appNameInternal() + "." + userId.toString() + ".GameData." + label;
+        return appNameInternal + "." + userId.toString() + ".GameData." + label;
     }
 
     private String getSTIMULI_DATA(UserId userId, Stimulus stimulus) {
-        return messages.appNameInternal() + "." + userId.toString() + ".StimuliData." + stimulus.getUniqueId();
+        return appNameInternal + "." + userId.toString() + ".StimuliData." + stimulus.getUniqueId();
     }
 
     private String getSCREEN_DATA(String endPoint, UserId userId) {
-        return messages.appNameInternal() + "." + userId.toString() + ".ScreenData." + endPoint; // this is an exception in the order of the key parts, is this avoidable?
-//        STOWED_DATA = messages.appNameInternal() + ".SentData.";
-//        FAILED_DATA = messages.appNameInternal() + ".FailedData.";
+        return appNameInternal + "." + userId.toString() + ".ScreenData." + endPoint; // this is an exception in the order of the key parts, is this avoidable?
+//        STOWED_DATA = appNameInternal + ".SentData.";
+//        FAILED_DATA = appNameInternal + ".FailedData.";
     }
 
     private Storage loadStorage() {
@@ -108,7 +109,7 @@ public class LocalStorage {
         if (dataStore != null) {
             for (int itemIndex = dataStore.getLength() - 1; itemIndex > -1; itemIndex--) {
                 final String key = dataStore.key(itemIndex);
-                if (key.startsWith(messages.appNameInternal() + "." + userId.toString())) {
+                if (key.startsWith(appNameInternal + "." + userId.toString())) {
                     dataStore.removeItem(key);
                 }
             }
@@ -149,17 +150,22 @@ public class LocalStorage {
 
     public void deleteStoredScreenData(UserId userId, String endpoint, String segmentToDelete) {
         loadStorage();
-        final String sentStoredData = getCleanStoredData(getSCREEN_DATA(endpoint, userId));
-        String remainingStoredData = sentStoredData.replaceFirst("^,", "") + ",";
-// replacing this segment will sometimes fail due to non matching strings, but the result of failure is only a second transmission of the data which is a preferred option over complexity
+        final String storedData = getCleanStoredData(getSCREEN_DATA(endpoint, userId));
+        String remainingStoredData = removeSubmittedPortion(segmentToDelete, storedData);
+        dataStore.setItem(getSCREEN_DATA(endpoint, userId), remainingStoredData);
+//        stowSentData(userId, segmentToDelete);
+    }
+
+    protected String removeSubmittedPortion(final String segmentToDelete, final String storedData) {
+        String remainingStoredData = storedData.replaceFirst("^,", "") + ",";
+        // replacing this segment will sometimes fail due to non matching strings, but the result of failure is only a second transmission of the data which is a preferred option over complexity
         for (String segment : segmentToDelete.split("\\},\\{")) {
             segment = (segment.startsWith("{")) ? segment : "{" + segment;
             segment = segment.replaceFirst(",$", "");
             segment = (segment.endsWith("}")) ? segment + "," : segment + "},";
             remainingStoredData = remainingStoredData.replace(segment, "");
         }
-        dataStore.setItem(getSCREEN_DATA(endpoint, userId), remainingStoredData.replaceFirst("^,", "").replaceFirst(",$", ""));
-//        stowSentData(userId, segmentToDelete);
+        return remainingStoredData.replaceFirst("^,", "").replaceFirst(",$", "");
     }
 
     public JSONObject getStoredJSONObject(UserId userId, Stimulus stimulus) {
@@ -209,7 +215,7 @@ public class LocalStorage {
         }
     }
 
-    public UserData getStoredData(UserId userId) throws UserIdException {
+    public UserData getStoredData(UserId userId, final MetadataFieldProvider metadataFieldProvider) throws UserIdException {
         UserData userData = new UserData(userId);
         loadStorage();
         if (dataStore != null) {
@@ -270,7 +276,7 @@ public class LocalStorage {
         dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), TOTAL_POTENTIAL), Integer.toString(userResults.getUserData().getTotalPotentialScore()));
     }
 
-    public void storeData(UserResults userResults) {
+    public void storeData(UserResults userResults, final MetadataFieldProvider metadataFieldProvider) {
         loadStorage();
         if (dataStore != null) {
             for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
