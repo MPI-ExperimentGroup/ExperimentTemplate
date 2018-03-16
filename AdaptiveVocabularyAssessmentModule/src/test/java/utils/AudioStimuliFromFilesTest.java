@@ -51,7 +51,7 @@ public class AudioStimuliFromFilesTest {
     }
 
     /**
-     * Test of parseTrialsInputCSV method, of class AudioStimuliFromFiles.
+     * Test of parseTrialsInputCSV_V1 method, of class AudioStimuliFromFiles.
      */
     @Test
     public void testParseTrialsInputCSV() throws Exception {
@@ -59,7 +59,7 @@ public class AudioStimuliFromFilesTest {
         ///Users/olhshk/Documents/ExperimentTemplate/AdaptiveVocabularyAssessmentModule/src/test/java/utils/Stimuli_NonwordMonitoring_26jan18.csv
         String wordFileLocation = "src/test/java/utils/Stimuli_NonwordMonitoring_4Olha.csv";
         AudioStimuliFromFiles instance = new AudioStimuliFromFiles();
-        ArrayList<String> result = instance.parseTrialsInputCSV(wordFileLocation);
+        ArrayList<String> result = instance.parseTrialsInputCSV_V1(wordFileLocation);
         assertEquals(96,result.size());
         //Nr;Word;Target_nonword;Syllables;Condition;Length_list;Word1;Word2;Word3;Word4;Word5;Word6;Noise_level;Foil;
         
@@ -81,7 +81,7 @@ public class AudioStimuliFromFilesTest {
         String wordFileLocation = "src/test/java/utils/Stimuli_NonwordMonitoring_4Olha.csv";
         
         AudioStimuliFromFiles instance = new AudioStimuliFromFiles();
-        ArrayList<String> rows = instance.parseTrialsInputCSV(wordFileLocation);
+        ArrayList<String> rows = instance.parseTrialsInputCSV_V1(wordFileLocation);
         String result = instance.arrayListAsStringArray(rows, instance.mainClassDeclaration);
         assertNotNull(result);
         assertTrue(result.length()>168*10+20);
