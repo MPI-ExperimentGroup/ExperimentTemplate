@@ -53,7 +53,7 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
     protected static final Logger logger = Logger.getLogger(AppController.class.getName());
     private final Version version = GWT.create(Version.class);
     protected final Messages messages = GWT.create(Messages.class);
-    final LocalStorage localStorage = new LocalStorage();
+    final LocalStorage localStorage = new LocalStorage(messages.appNameInternal());
     final DataSubmissionService submissionService = new DataSubmissionService(localStorage);
     protected final RootLayoutPanel widgetTag;
     protected Presenter presenter;
@@ -66,9 +66,9 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
         if (lastUserId == null) {
             userResults = new UserResults(new UserData());
             // we save the results here so that the newly created user id is preserved even if the user refreshes
-            localStorage.storeData(userResults);
+            localStorage.storeData(userResults, metadataFieldProvider);
         } else {
-            userResults = new UserResults(localStorage.getStoredData(lastUserId));
+            userResults = new UserResults(localStorage.getStoredData(lastUserId, metadataFieldProvider));
         }
         boolean hasNewMetadata = false;
         for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
@@ -80,7 +80,7 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
             }
         }
         if (hasNewMetadata) {
-            localStorage.storeData(userResults);
+            localStorage.storeData(userResults, metadataFieldProvider);
         }
         String debugValue = Window.Location.getParameter("debug");
         if (debugValue != null) {
