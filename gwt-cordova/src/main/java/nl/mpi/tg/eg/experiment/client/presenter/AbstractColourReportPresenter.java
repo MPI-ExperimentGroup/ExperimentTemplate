@@ -45,29 +45,29 @@ import nl.mpi.tg.eg.experiment.client.util.ScoreCalculator;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public abstract class AbstractColourReportPresenter extends AbstractPresenter implements Presenter {
-    
+
     private final DataSubmissionService submissionService;
     protected final UserResults userResults;
     final LocalStorage localStorage;
-    
+
     public AbstractColourReportPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage) {
         super(widgetTag, new ReportView());
-        this.localStorage = new LocalStorage();
+        this.localStorage = localStorage;
         this.userResults = userResults;
         this.submissionService = submissionService;
     }
-    
+
     @Override
     public void setState(final AppEventListner appEventListner, ApplicationController.ApplicationState prevState, final ApplicationController.ApplicationState nextState) {
         super.setState(appEventListner, prevState, null);
         this.nextState = nextState;
     }
-    
+
     public void submitTestResults(final MetadataField emailAddressMetadataField, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         StringBuilder stringBuilder = new StringBuilder();
         final DateTimeFormat format = DateTimeFormat.getFormat(messages.reportDateFormat());
         final ScoreCalculator scoreCalculator = new ScoreCalculator(userResults);
-        
+
         for (final StimulusResponseGroup stimuliGroup : userResults.getStimulusResponseGroups()) {
             final GroupScoreData calculatedScores = scoreCalculator.calculateScores(stimuliGroup);
             stringBuilder.append("\t");
@@ -82,7 +82,7 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
             stringBuilder.append(calculatedScores.getReactionTimeDeviation());
             stringBuilder.append("\n");
         }
-        
+
         final String scoreLog = stringBuilder.toString();
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "ScoreLog", scoreLog.replaceAll("\t", ","), 0);
         new RegistrationService().submitRegistration(userResults, new RegistrationListener() {
@@ -95,7 +95,7 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
                     public String getLabel() {
                         return "Retry";
                     }
-                    
+
                     @Override
                     public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                         Timer timer = new Timer() {
@@ -107,26 +107,26 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
                         };
                         timer.schedule(1000);
                     }
-                    
+
                     @Override
                     public int getHotKey() {
                         return -1;
                     }
                 });
             }
-            
+
             @Override
             public void registrationComplete() {
                 onSuccess.postLoadTimerFired();
             }
         }, messages.reportDateFormat(), emailAddressMetadataField, scoreLog);
     }
-    
+
     public void showColourReport(final float scoreThreshold, final MetadataField emailAddressMetadataField, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold) { // todo: use scoreThreshold
         final NumberFormat numberFormat2 = NumberFormat.getFormat("0.00");
 //        final NumberFormat numberFormat3 = NumberFormat.getFormat("0.000");
         final ScoreCalculator scoreCalculator = new ScoreCalculator(userResults);
-        
+
         for (final StimulusResponseGroup stimuliGroup : userResults.getStimulusResponseGroups()) {
             final GroupScoreData calculatedScores = scoreCalculator.calculateScores(stimuliGroup);
             ((ReportView) simpleView).showResults(stimuliGroup, calculatedScores);
