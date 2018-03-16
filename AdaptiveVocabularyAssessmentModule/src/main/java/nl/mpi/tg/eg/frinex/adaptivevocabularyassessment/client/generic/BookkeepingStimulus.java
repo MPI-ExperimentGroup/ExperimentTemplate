@@ -26,44 +26,47 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
  *
  * @param <T> userRecation, can be string, boolean, double, etc.
  */
-public abstract class BookkeepingStimulus<T,S> extends BandStimulus<S> {
+public class BookkeepingStimulus<T> {
 
-    protected T userReaction; // can be string, boolean, double, etc.
-    protected Boolean correctness;
+    
+    private final String stimulusId;
+    private T userReaction; // can be string, boolean, double, etc.
+    private Boolean correctness;
+    private long timeStamp; 
+    
 
-    /*
-    public BandStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, String bandLabel){
-     */
-    public BookkeepingStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, S bandLabel, int bandIndex) {
-        super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses, bandLabel, bandIndex);
+   
+    public BookkeepingStimulus(String stimulusId) {
+        this.stimulusId = stimulusId;
         this.userReaction = null;
         this.correctness = null;
     }
 
-    // injection
-    public BookkeepingStimulus(BandStimulus<S> stimulus) {
-       super(stimulus.getUniqueId(), stimulus.getTags().toArray(new Tag[0]), stimulus.getLabel(), 
-                stimulus.getCode(), stimulus.getPauseMs(), stimulus.getAudio(), stimulus.getVideo(), stimulus.getImage(), 
-                stimulus.getRatingLabels(), stimulus.getCorrectResponses(), stimulus.getBandLabel(),  stimulus.getBandIndex());
-        this.userReaction = null;
-        this.correctness = null;
+    public String getStimulusID() {
+        return this.stimulusId;
     }
 
     public T getReaction() {
         return this.userReaction;
     }
-
+    
+      public long getTimeStamp() {
+        return this.timeStamp;
+    }
+   
     public Boolean getCorrectness() {
         return this.correctness;
     }
 
-    // experiment specific
-    public void setReaction(String reaction) {
-        this.userReaction = (T) reaction;
+    public void setReaction(T reaction) {
+        this.userReaction = reaction;
     }
 
     public void setCorrectness(boolean eval) {
         this.correctness = eval;
     }
 
+      public void setTimeStamp(long timeStr) {
+        this.timeStamp = timeStr;
+    }
 }

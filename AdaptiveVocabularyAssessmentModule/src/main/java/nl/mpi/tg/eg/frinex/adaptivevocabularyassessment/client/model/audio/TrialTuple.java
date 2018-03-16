@@ -42,12 +42,12 @@ public class TrialTuple {
         this.correctness = correctness;
     }
 
-    public AudioAsStimulus removeFirstAvailableStimulus() {
+    public String removeFirstAvailableStimulus() {
         int i = 0;
-        while (this.trials.get(i).getStimuliList().size() < 1) {
+        while (this.trials.get(i).getStimuliIDs().size() < 1) {
             i++;
         }
-        AudioAsStimulus retVal = this.trials.get(i).getStimuliList().remove(0);
+        String retVal = this.trials.get(i).getStimuliIDs().remove(0);
         return retVal;
     }
 
@@ -58,7 +58,7 @@ public class TrialTuple {
     public int getNumberOfStimuli(){
         int retVal=0;
         for(Trial trial:trials) {
-            retVal += trial.getStimuliList().size();
+            retVal += trial.getStimuliIDs().size();
         }
         return retVal;
     }
@@ -76,7 +76,7 @@ public class TrialTuple {
         int i = 0;
         // try to find first non-empty trial
         while (i < this.trials.size()) {
-            if (this.trials.get(i).getStimuliList().size() > 0) {
+            if (this.trials.get(i).getStimuliIDs().size() > 0) {
                 return true; // there are nonempty trials!
             } else {
                 i++;

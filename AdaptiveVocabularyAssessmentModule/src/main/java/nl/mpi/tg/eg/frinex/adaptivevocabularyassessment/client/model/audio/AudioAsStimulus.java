@@ -17,34 +17,106 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimulus;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  *
  * @author olhshk
  */
-public class AudioAsStimulus extends BookkeepingStimulus<String, String> {
+abstract public class AudioAsStimulus extends BandStimulus {
 
-    private final WordType wordtype;
+    private final WordType wordType;
+    private final int positionInTrial;
+    
+    
+    private final int trialNumber;
+    private final String trialWord;
+    private final String trialCueFile;
+    private final int trialSyllables;
+    private final TrialCondition trialCondition;
+    private final int trialLength;
+    private final int trialPositionTarget;
+    private final int trialPositionFoil;      
+    
+    
     public static final String AUDIO_RATING_LABEL = "&#160;";
     public static final String EXAMPLE_TARGET_LABEL = null;
     public static final int PAUSE_EXAMPLE = 60000;
     public static final int PAUSE = 900;
-
-    /*
-    public BookkeepingStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, S bandLabel) {
-     */
-    public AudioAsStimulus(String uniqueId, String label, int pauseMs, String audioPath, String correctResponses, String bandLabel, int bandIndex, WordType wordtype, String ratingLabel) {
+    
+ 
+    public AudioAsStimulus(String uniqueId, String label, int pauseMs, String audioPath, String correctResponses, String ratingLabel, 
+            String wordtype, String positionInTrial,
+            String bandLabel, String bandIndex, 
+            String trialNumber, String  trialWord, String cueFile, String trialSyllables, String trialCondition, String trialLength,  String trialPositionTarget, String trialPositionFoil) {
         super(uniqueId, new Stimulus.Tag[0], label, null, pauseMs, audioPath, null, null, ratingLabel, correctResponses, bandLabel, bandIndex);
-        this.wordtype = wordtype;
-        this.userReaction = null;
-        this.correctness = null;
+        
+        this.wordType = WordType.valueOf(wordtype);
+        this.positionInTrial = Integer.parseInt(positionInTrial);
+        
+        this.trialNumber = Integer.parseInt(trialNumber);
+        this.trialWord = trialWord;
+        this.trialCueFile = cueFile;
+        this.trialSyllables = Integer.parseInt(trialSyllables);
+        this.trialCondition = TrialCondition.valueOf(trialCondition);
+        this.trialLength = Integer.parseInt(trialLength);
+        this.trialPositionTarget = Integer.parseInt(trialPositionTarget);
+        this.trialPositionFoil = Integer.parseInt(trialPositionFoil );
     }
 
+ 
+    abstract public String getwordType();
+    abstract public String getpositionInTrial();
+    
+    
+    abstract public String gettrialNumber();
+    abstract public String gettrialWord();
+    abstract public String gettrialCueFile();
+    abstract public String gettrialSyllables();
+    abstract public String gettrialCondition();
+    abstract public String gettrialLength();
+    abstract public String gettrialPositionTarget();
+    abstract public String gettrialPositionFoil();
+   
     public WordType getWordType() {
-        return this.wordtype;
+        return this.wordType;
+    }
+    
+    public int getPositionInTrial() {
+        return this.positionInTrial;
+    }
+    
+    public int getTrialNumber() {
+        return this.trialNumber;
+    }
+    
+    public String getTrialWord() {
+        return this.trialWord;
+    }
+    
+    public String getTrialCueFile() {
+        return this.trialCueFile;
+    }
+    
+    public int getTrialSyllables() {
+        return this.trialSyllables;
+    }
+    
+    public TrialCondition getTrialCondition() {
+        return this.trialCondition;
+    }
+    
+    public int getTrialLength() {
+        return this.trialLength;
+    }
+    
+    public int getTrialPositionTarget() {
+        return this.trialPositionTarget;
+    }
+    
+     public int getTrialPositionFoil() {
+        return this.trialPositionFoil;
     }
 
     @Override
@@ -52,49 +124,7 @@ public class AudioAsStimulus extends BookkeepingStimulus<String, String> {
         return true;
     }
 
-    @Override
-    public void setReaction(String reaction) {
-        this.userReaction = reaction;
-    }
+  
 
-    public static AudioAsStimulus toObject(String str) {
-        try {
-
-            // inerited fields
-            String label = UtilsJSONdialect.getKeyWithoutBrackets(str, "label");
-            String audioPath = UtilsJSONdialect.getKeyWithoutBrackets(str, "audioPath");
-            String videoPath = UtilsJSONdialect.getKeyWithoutBrackets(str, "videoPath");
-            String code = UtilsJSONdialect.getKeyWithoutBrackets(str, "code");
-            String correctResponses = UtilsJSONdialect.getKeyWithoutBrackets(str, "correctResponses");
-            String pauseMs = UtilsJSONdialect.getKeyWithoutBrackets(str, "pauseMs");
-            String ratingLabels = UtilsJSONdialect.getKeyWithoutBrackets(str, "ratingLabels");
-            String uniqueId = UtilsJSONdialect.getKeyWithoutBrackets(str, "uniqueId");
-            
-            // specific fields
-            String bandLabel = UtilsJSONdialect.getKeyWithoutBrackets(str, "bandLabel");
-            String bandIndex = UtilsJSONdialect.getKeyWithoutBrackets(str, "bandIndex");
-            String timeStamp = UtilsJSONdialect.getKeyWithoutBrackets(str, "timeStamp");
-            String wordType = UtilsJSONdialect.getKeyWithoutBrackets(str, "wordType");
-
-          
-            // (String uniqueId, String label, int pauseMs, String audioPath, String correctResponses, String bandLabel, int bandIndex, WordType wordtype, String ratingLabel)
-            AudioAsStimulus retVal = new AudioAsStimulus(uniqueId, label, Integer.parseInt(pauseMs), audioPath, correctResponses, bandLabel, Integer.parseInt(bandIndex), WordType.stringToWordType(wordType), ratingLabels);
-            retVal.setTimeStamp(Long.parseLong(timeStamp));
-            return retVal;
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("{");
-        builder.append(super.toString());
-        builder.append(",");
-        builder.append("wordType:{").append(this.wordtype).append("}");
-        builder.append("}");
-        return builder.toString();
-    }
-
+   
 }

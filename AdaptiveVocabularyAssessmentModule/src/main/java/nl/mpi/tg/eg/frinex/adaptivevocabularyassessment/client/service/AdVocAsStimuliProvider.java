@@ -26,7 +26,6 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Random;
 import java.util.Set;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsBookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsNonWords1;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsNonWords2;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsWords1;
@@ -42,7 +41,7 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  * @since Oct 27, 2017 2:01:33 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsBookkeepingStimulus> {
+public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus> {
 
     // experiment specific stuff here
     private RandomIndexing rndIndexing;

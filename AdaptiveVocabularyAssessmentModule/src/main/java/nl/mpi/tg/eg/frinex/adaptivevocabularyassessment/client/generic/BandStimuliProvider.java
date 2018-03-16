@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import static java.util.stream.IntStream.builder;
 import nl.mpi.tg.eg.frinex.common.AbstractStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
@@ -33,9 +32,9 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 /**
  * Generic BandStimuliProvider class.
  *
- * @param <RecordStimulus>
+ * @param <A>
  */
-public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStimulus> extends AbstractStimuliProvider {
+public abstract class BandStimuliProvider<A extends BandStimulus> extends AbstractStimuliProvider {
 
     protected int type = 0;
     protected int numberOfBands = 0;
@@ -52,7 +51,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     protected int currentBandIndex = 0;
     protected int totalStimuli;
 
-    final protected ArrayList<RecordStimulus> responseRecord = new ArrayList<>();
+    final protected ArrayList<BookkeepingStimulus> responseRecord = new ArrayList<>();
 
     protected LinkedHashMap<Long, Integer> percentageBandTable;
 
@@ -63,7 +62,10 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     protected int timeTickEndFastTrack = -1;
 
     // fine tuning stuff
-    protected final ArrayList<RecordStimulus> tupleFT = new ArrayList<>(this.fineTuningTupleLength);
+    protected final ArrayList<BookkeepingStimulus> tupleFT = new ArrayList<>(this.fineTuningTupleLength);
+    
+    // TODO: update initialisation when Peter is Ready!
+    protected final HashMap<String, A> stimuli = new HashMap<String, A>();
 
     // fine tuning stopping
     protected boolean enoughFineTuningStimulae = true;
@@ -171,7 +173,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         return this.percentageBandTable;
     }
 
-    public ArrayList<RecordStimulus> getResponseRecord() {
+    public ArrayList<BookkeepingStimulus> getResponseRecord() {
         return this.responseRecord;
     }
 
@@ -206,7 +208,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         return this.percentageScore;
     }
 
-    public ArrayList<RecordStimulus> getFTtuple() {
+    public ArrayList<BookkeepingStimulus> getFTtuple() {
         return this.tupleFT;
     }
 
@@ -216,8 +218,9 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
 
     // prepared by next stimulus
     @Override
-    public RecordStimulus getCurrentStimulus() {
-        return this.responseRecord.get(this.getCurrentStimulusIndex());
+    public Stimulus getCurrentStimulus() {
+        String currentStimulusId  = this.responseRecord.get(this.getCurrentStimulusIndex()).getStimulusID();
+        return stimuli.get(currentStimulusId);
     }
 
     @Override
@@ -258,7 +261,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     // all indices are updated in the "hasNextStimulus"
     @Override
     public void nextStimulus(int increment) {
-        RecordStimulus bStimulus;
+        BookkeepingStimulus bStimulus;
         if (this.fastTrackPresent) {
             if (this.isFastTrackIsStillOn) {
                 bStimulus = this.deriveNextFastTrackStimulus();
@@ -273,7 +276,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
     }
 
     // experiment-specific, must be overridden
-    public RecordStimulus deriveNextFastTrackStimulus() {
+    public BookkeepingStimulus deriveNextFastTrackStimulus() {
         return null;
     }
 
@@ -769,7 +772,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         builder.append("currentBandIndex:{").append(this.currentBandIndex).append("},");
         builder.append("totalStimuli:{").append(this.totalStimuli).append("},");
 
-        UtilsJSONdialect<RecordStimulus> util = new UtilsJSONdialect<RecordStimulus>();
+        UtilsJSONdialect<BookkeepingStimulus> util = new UtilsJSONdialect<BookkeepingStimulus>();
         try {
             String responseRecordString = util.arrayListToString(this.responseRecord);
             if (responseRecordString != null) {
@@ -791,7 +794,7 @@ public abstract class BandStimuliProvider<RecordStimulus extends BookkeepingStim
         builder.append("timeTickEndFastTrack:{").append(this.timeTickEndFastTrack).append("},");
 
         // fine tuning stuff
-//    protected final ArrayList<RecordStimulus> tupleFT = new ArrayList<>(this.fineTuningTupleLength);
+//    protected final ArrayList<BookkeepingStimulus> tupleFT = new ArrayList<>(this.fineTuningTupleLength);
         try {
             String tupleFTString = util.arrayListToString(this.tupleFT);
             if (tupleFTString != null) {
