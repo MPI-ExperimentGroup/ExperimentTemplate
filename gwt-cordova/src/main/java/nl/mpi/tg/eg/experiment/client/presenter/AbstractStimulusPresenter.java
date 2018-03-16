@@ -144,7 +144,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         } catch (NumberFormatException exception) {
             stimulusAllocation = new Random().nextInt(5);
             userResults.getUserData().setMetadataValue(stimulusAllocationField, Integer.toString(stimulusAllocation));
-            localStorage.storeData(userResults);
+            localStorage.storeData(userResults, metadataFieldProvider);
         }
         final String storedStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag());
         int seenStimulusIndex;
@@ -334,7 +334,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), CONSUMED_TAGS_LIST + consumedTagsGroupName, "-" + stimulusAllocation.getAlias() + "-");
                 }
                 userResults.getUserData().setMetadataValue(stimulusAllocationField, stimulusAllocation.getAlias());
-                localStorage.storeData(userResults);
+                localStorage.storeData(userResults, metadataFieldProvider);
                 allocatedTags.add(stimulusAllocation.getTag());
                 // submit the user metadata so that the selected stimuli group is stored
                 submissionService.submitMetadata(userResults, new DataSubmissionListener() {
