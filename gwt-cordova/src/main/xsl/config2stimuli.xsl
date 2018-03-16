@@ -23,7 +23,7 @@
             import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
             public class GeneratedStimulus extends </xsl:text>
-        <xsl:value-of select="if(experiment/stimuli[@class]) then concat(experiment/stimuli/@class, '.CustomStimulus') else 'AbstractStimulus'" />
+        <xsl:value-of select="if(experiment/stimuli[@class]) then experiment/stimuli/@class else 'AbstractStimulus'" />
         <xsl:text> {
             protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
         </xsl:text>    
@@ -126,7 +126,7 @@
 
         </xsl:text>
         <xsl:for-each select="$parameter">
-            <xsl:text>final String </xsl:text>
+            <xsl:text>private final String </xsl:text>
             <xsl:value-of select="." />
             <xsl:text>;</xsl:text>
         </xsl:for-each>
@@ -167,8 +167,21 @@
             @Override
             public String getVideo() {
             return serviceLocations.staticFilesUrl() + super.getVideo();
-            }
-            }  
+            }            
+        </xsl:text>
+        <xsl:for-each select="$parameter">
+            <xsl:text>@Override
+                public String get</xsl:text>
+            <xsl:value-of select="." />
+            <xsl:text>() {
+                return </xsl:text>
+            <xsl:value-of select="." />           
+            <xsl:text>;
+                }
+            </xsl:text>
+        </xsl:for-each>
+        <xsl:text>           
+            }   
         </xsl:text>
     </xsl:template>
 </xsl:stylesheet>
