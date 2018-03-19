@@ -28,6 +28,10 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  */
 public abstract class AbstractStimuliProvider implements StimuliProvider {
 
+    @Deprecated
+    public AbstractStimuliProvider() {
+    }
+
     public AbstractStimuliProvider(final Stimulus[] stimulusArray) {
     }
 
