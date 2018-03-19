@@ -7,11 +7,11 @@
     <version>0.1-testing-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>gwt-cordova</module>
-        <module>registration</module>
-        <module>ExperimentDesigner</module>
         <module>common</module>
+        <module>ExperimentDesigner</module>
+        <module>registration</module>
         <module>AdaptiveVocabularyAssessmentModule</module>
+        <module>gwt-cordova</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
