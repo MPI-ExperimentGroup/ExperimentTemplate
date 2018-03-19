@@ -28,6 +28,9 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  */
 public abstract class AbstractStimuliProvider implements StimuliProvider {
 
+    public AbstractStimuliProvider(final Stimulus[] stimulusArray) {
+    }
+
     @Override
     public List<Stimulus> getMatchingStimuli(String matchingRegex, int maxStimulusCount) {
         throw new UnsupportedOperationException("getMatchingStimuli");
