@@ -233,6 +233,7 @@ public class AllWizardDataTest {
         final String inputDirectory = "/frinex-rest-output/";
         URI outputDirectoryUri = this.getClass().getResource(inputDirectory).toURI();
         System.out.println(inputDirectory);
-        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "heoexp01.json"));
+//        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "heoexp01.json"));
+        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "parcours01.json"));
     }
 }
