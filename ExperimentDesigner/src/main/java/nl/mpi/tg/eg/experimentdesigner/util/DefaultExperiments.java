@@ -89,8 +89,8 @@ public class DefaultExperiments {
         experimentRepository.save(new SentencesRatingTask().getExperiment());
         experimentRepository.save(new GuineaPigProject().getExperiment());
 //        experimentRepository.save(new AdVoCas().getExperiment());
-        experimentRepository.save(new SentenceCompletion(new Joost01()).getExperiment());
-        experimentRepository.save(new SentenceCompletion(new Joost02()).getExperiment());
+//        experimentRepository.save(new SentenceCompletion(new Joost01()).getExperiment());
+//        experimentRepository.save(new SentenceCompletion(new Joost02()).getExperiment());
         experimentRepository.save(new PlaybackPreferenceMeasureExperiment().getExperiment());
 
         for (Experiment experiment : experimentRepository.findAll()) {
