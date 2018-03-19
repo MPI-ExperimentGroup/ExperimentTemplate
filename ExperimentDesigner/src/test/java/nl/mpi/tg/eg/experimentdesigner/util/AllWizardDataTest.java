@@ -157,8 +157,8 @@ public class AllWizardDataTest {
         testGetWizardData(new WellspringsSamoanFieldKit().getExperiment());
         testGetWizardData(new GuineaPigProject().getExperiment());
         testGetWizardData(new PlayhouseStudy().getExperiment());
-        testGetWizardData(new SentenceCompletion(new Joost01()).getExperiment());
-        testGetWizardData(new SentenceCompletion(new Joost02()).getExperiment());
+//        testGetWizardData(new SentenceCompletion(new Joost01()).getExperiment());
+//        testGetWizardData(new SentenceCompletion(new Joost02()).getExperiment());
         testGetWizardData(new PlaybackPreferenceMeasureExperiment().getExperiment());
     }
 
@@ -215,8 +215,8 @@ public class AllWizardDataTest {
     @Test
     public void testAllSerialiseWizardUtil() throws IOException, JAXBException, URISyntaxException {
         System.out.println("testAllSerialiseWizardUtil");
-        testSerialiseWizardUtil(new Joost01());
-        testSerialiseWizardUtil(new Joost02());
+//        testSerialiseWizardUtil(new Joost01());
+//        testSerialiseWizardUtil(new Joost02());
         testSerialiseWizardUtil(new Parcours());
     }
 
