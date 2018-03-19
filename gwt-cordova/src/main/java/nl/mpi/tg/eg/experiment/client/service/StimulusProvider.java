@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experiment.client.service;
 import com.google.gwt.regexp.shared.MatchResult;
 import com.google.gwt.regexp.shared.RegExp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -28,8 +29,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import nl.mpi.tg.eg.experiment.client.util.GeneratedStimulusProvider;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
-import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
 import nl.mpi.tg.eg.frinex.common.AbstractStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag;
@@ -49,13 +50,14 @@ public class StimulusProvider extends AbstractStimuliProvider {
     private int currentStimuliIndex = 0;
 //    private Stimulus currentStimulus = null;
 
-    public StimulusProvider() {
-        GeneratedStimulus.fillStimulusList(stimulusArray);
-//        noisyList.addAll(Arrays.asList(Stimulus.NOISE_AUDIO));
-//        Stimulus.fillPictureList(pictureList);
+    public StimulusProvider(Stimulus[] stimulusArrayL) {
+        super(stimulusArrayL);
+        this.stimulusArray.addAll(Arrays.asList(stimulusArrayL));
+    }
 
-        //stimulusSubsetArray.addAll(stimulusArray);
-//        totalStimuli = stimulusSubsetArray.size();
+    public StimulusProvider() {
+        super(GeneratedStimulusProvider.values);
+        this.stimulusArray.addAll(Arrays.asList(GeneratedStimulusProvider.values));
     }
 
     private int attributeMaxStimulusCount = 3;
@@ -102,10 +104,10 @@ public class StimulusProvider extends AbstractStimuliProvider {
         // todo: this value is not used at this point
     }
 
-    @Override
-    public void getAll() {
-        stimulusSubsetArray.addAll(stimulusArray);
-    }
+//    @Override
+//    public void getAll() {
+//        stimulusSubsetArray.addAll(stimulusArray);
+//    }
 
     private Integer getDefaultInt(Integer foundValue) {
         return (foundValue == null) ? 0 : foundValue;
