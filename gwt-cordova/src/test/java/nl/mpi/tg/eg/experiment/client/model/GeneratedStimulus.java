@@ -28,7 +28,7 @@ import java.util.List;
  */
 public class GeneratedStimulus implements Stimulus {
 
-    private static final GeneratedStimulus[] values = new GeneratedStimulus[]{
+    public static final GeneratedStimulus[] values = new GeneratedStimulus[]{
         new GeneratedStimulus("d1e286", "url", new Tag[]{Tag.tag_number, Tag.tag_interesting}, "One", "code", 0, true, true, true, true),
         new GeneratedStimulus("d1e291", "url", new Tag[]{Tag.tag_number, Tag.tag_multiple_words, Tag.tag_interesting}, "Two", "code", 0, true, true, true, true),
         new GeneratedStimulus("d1e298", "url", new Tag[]{Tag.tag_FILLER_AUDIO}, "Three", "code", 0, true, true, true, true),
@@ -643,9 +643,6 @@ public class GeneratedStimulus implements Stimulus {
 
     }
 
-    public static final void fillStimulusList(List<GeneratedStimulus> stimulusArray) {
-        stimulusArray.addAll(Arrays.asList(values));
-    }
     final private String uniqueId;
     final private String urlString;
     final private String imageString;
