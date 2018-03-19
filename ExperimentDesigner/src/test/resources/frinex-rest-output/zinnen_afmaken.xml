@@ -34,7 +34,7 @@
             <hasMoreStimulus>
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
-                    <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." validationRegex=".{2,}"/>
+                    <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." validationRegex=".{2,}" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
                     <actionButton featureText="volgende" eventTag="volgende">
                         <nextStimulus repeatIncorrect="false"/>
                     </actionButton>
