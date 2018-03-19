@@ -559,7 +559,6 @@
         </backgroundImage>
     </presenter>
     <presenter back="Menu" displayOrder="12" menuLabel="Einde van het experiment" next="Edit_User" type="transmission" self="completion" title="Einde van het experiment">
-        <htmlText featureText="Data will not be collected in this version."/>
         <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;Hartelijk dank voor uw deelname! &lt;br/&gt;&lt;br/&gt;"/>
         <addPadding/>
         <addPadding/>
