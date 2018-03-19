@@ -25,48 +25,24 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimu
  */
 abstract public class AudioAsStimulus extends BandStimulus {
 
-    private final WordType wordType;
-    private final int positionInTrial;
-    
-    
-    private final int trialNumber;
-    private final String trialWord;
-    private final String trialCueFile;
-    private final int trialSyllables;
-    private final TrialCondition trialCondition;
-    private final int trialLength;
-    private final int trialPositionTarget;
-    private final int trialPositionFoil;      
-    
     
     public static final String AUDIO_RATING_LABEL = "&#160;";
     public static final String EXAMPLE_TARGET_LABEL = null;
     public static final int PAUSE_EXAMPLE = 60000;
     public static final int PAUSE = 900;
-    
- 
-    public AudioAsStimulus(String uniqueId, Tag tags[], String label, int pauseMs, String audioPath, String correctResponses, String ratingLabel, 
-            String wordtype, String positionInTrial,
-            String bandLabel, String bandIndex, 
-            String trialNumber, String  trialWord, String cueFile, String trialSyllables, String trialCondition, String trialLength,  String trialPositionTarget, String trialPositionFoil) {
-        super(uniqueId, tags, label, null, pauseMs, audioPath, null, null, ratingLabel, correctResponses, bandLabel, bandIndex);
-        
-        this.wordType = WordType.valueOf(wordtype);
-        this.positionInTrial = Integer.parseInt(positionInTrial);
-        
-        this.trialNumber = Integer.parseInt(trialNumber);
-        this.trialWord = trialWord;
-        this.trialCueFile = cueFile;
-        this.trialSyllables = Integer.parseInt(trialSyllables);
-        this.trialCondition = TrialCondition.valueOf(trialCondition);
-        this.trialLength = Integer.parseInt(trialLength);
-        this.trialPositionTarget = Integer.parseInt(trialPositionTarget);
-        this.trialPositionFoil = Integer.parseInt(trialPositionFoil );
-    }
 
+    public AudioAsStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses) {
+        super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses);
+    }
+    
  
     abstract public String getwordType();
     abstract public String getpositionInTrial();
+    abstract public String getbandIndex();
+    
+    public WordType getWordTypeWT(){
+       return WordType.valueOf(this.getwordType()); 
+    }
     
     
     abstract public String gettrialNumber();
@@ -77,45 +53,35 @@ abstract public class AudioAsStimulus extends BandStimulus {
     abstract public String gettrialLength();
     abstract public String gettrialPositionTarget();
     abstract public String gettrialPositionFoil();
+    
+    
+    public int getPositionInTrialInt(){
+       return Integer.parseInt(this.getpositionInTrial()); 
+    }
+    
+    public int getTrialNumberInt(){
+       return Integer.parseInt(this.gettrialNumber()); 
+    }
+    
+    public int getTrialSyllablesInt(){
+       return Integer.parseInt(this.gettrialSyllables()); 
+    }
+    
+    public int getTrialLengthInt(){
+       return Integer.parseInt(this.gettrialLength()); 
+    }
+    
+    public int getTrialPositionTargetInt(){
+       return Integer.parseInt(this.gettrialPositionTarget()); 
+    }
+    
+    public int getTrialPositionFoilInt(){
+       return Integer.parseInt(this.gettrialPositionFoil()); 
+    }
+    
    
-    public WordType getWordType() {
-        return this.wordType;
-    }
-    
-    public int getPositionInTrial() {
-        return this.positionInTrial;
-    }
-    
-    public int getTrialNumber() {
-        return this.trialNumber;
-    }
-    
-    public String getTrialWord() {
-        return this.trialWord;
-    }
-    
-    public String getTrialCueFile() {
-        return this.trialCueFile;
-    }
-    
-    public int getTrialSyllables() {
-        return this.trialSyllables;
-    }
-    
-    public TrialCondition getTrialCondition() {
-        return this.trialCondition;
-    }
-    
-    public int getTrialLength() {
-        return this.trialLength;
-    }
-    
-    public int getTrialPositionTarget() {
-        return this.trialPositionTarget;
-    }
-    
-     public int getTrialPositionFoil() {
-        return this.trialPositionFoil;
+    public TrialCondition getTrialConditionTC(){
+       return TrialCondition.valueOf(this.gettrialCondition()); 
     }
 
     @Override
@@ -123,7 +89,4 @@ abstract public class AudioAsStimulus extends BandStimulus {
         return true;
     }
 
-  
-
-   
 }

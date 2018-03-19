@@ -36,8 +36,10 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  */
 public abstract class BandStimuliProvider<A extends BandStimulus> extends AbstractStimuliProvider {
     
-       // TODO: update initialisation when Peter is Ready!
-    protected final HashMap<String, A> stimuli = new HashMap<String, A>();
+   
+    protected final A[] stimuli;
+    
+    protected HashMap<String, A> hashedStimuli;
 
 
     protected int type = 0;
@@ -55,7 +57,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected int currentBandIndex = 0;
     protected int totalStimuli;
 
-    final protected ArrayList<BookkeepingStimulus> responseRecord = new ArrayList<>();
+    final protected ArrayList<BookkeepingStimulus<A>> responseRecord = new ArrayList<>();
 
     protected LinkedHashMap<Long, Integer> percentageBandTable;
 
@@ -66,7 +68,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected int timeTickEndFastTrack = -1;
 
     // fine tuning stuff
-    protected final ArrayList<BookkeepingStimulus> tupleFT = new ArrayList<>(this.fineTuningTupleLength);
+    protected final ArrayList<BookkeepingStimulus<A>> tupleFT = new ArrayList<>(this.fineTuningTupleLength);
     
  
     // fine tuning stopping
@@ -85,6 +87,12 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
     // add experiment specific stuff here
     // ...
+    
+    public BandStimuliProvider(final A[] stimulusArray) {
+        super(stimulusArray);
+        this.stimuli = stimulusArray;
+    }
+    
     public void settype(String type) {
         this.type = Integer.parseInt(type);
     }
@@ -176,7 +184,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         return this.percentageBandTable;
     }
 
-    public ArrayList<BookkeepingStimulus> getResponseRecord() {
+    public ArrayList<BookkeepingStimulus<A>> getResponseRecord() {
         return this.responseRecord;
     }
 
@@ -211,7 +219,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         return this.percentageScore;
     }
 
-    public ArrayList<BookkeepingStimulus> getFTtuple() {
+    public ArrayList<BookkeepingStimulus<A>> getFTtuple() {
         return this.tupleFT;
     }
 
@@ -222,8 +230,8 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     // prepared by next stimulus
     @Override
     public Stimulus getCurrentStimulus() {
-        String currentStimulusId  = this.responseRecord.get(this.getCurrentStimulusIndex()).getStimulusID();
-        return stimuli.get(currentStimulusId);
+        A  retVal = this.responseRecord.get(this.getCurrentStimulusIndex()).getStimulus();
+        return retVal;
     }
 
     @Override
@@ -775,7 +783,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         builder.append("currentBandIndex:{").append(this.currentBandIndex).append("},");
         builder.append("totalStimuli:{").append(this.totalStimuli).append("},");
 
-        UtilsJSONdialect<BookkeepingStimulus> util = new UtilsJSONdialect<BookkeepingStimulus>();
+        UtilsJSONdialect<BookkeepingStimulus<A>> util = new UtilsJSONdialect<BookkeepingStimulus<A>>();
         try {
             String responseRecordString = util.arrayListToString(this.responseRecord);
             if (responseRecordString != null) {
@@ -856,5 +864,11 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         return builder.toString();
     }
     
+    
+    public A toObjectViaID(String id, HashMap<String, A> stimuli){
+        return stimuli.get(id);
+    }
+
+   
 
 }

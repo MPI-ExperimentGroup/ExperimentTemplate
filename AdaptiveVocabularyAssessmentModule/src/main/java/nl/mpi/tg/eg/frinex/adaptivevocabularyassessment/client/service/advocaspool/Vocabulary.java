@@ -19,7 +19,6 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocasp
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.RandomIndexing;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
 
@@ -35,73 +34,65 @@ public class Vocabulary {
 
     private final int numberOfBands;
     private final int wordsPerBandInSeries;
+    
+    private ArrayList<ArrayList<AdVocAsStimulus>> wordsInBands;
+    private ArrayList<AdVocAsStimulus> nonWords;
+    
+   
+    private HashMap<String, AdVocAsStimulus> hashedStimuli;
+
 
     public Vocabulary(int numberOfBands, int wordsPerBandInSeries) {
         this.numberOfBands = numberOfBands;
         this.wordsPerBandInSeries = wordsPerBandInSeries;
     }
+    
+  
+    public ArrayList<ArrayList<AdVocAsStimulus>> getWordsInBands() {
+        return this.wordsInBands;
+    }
 
-    private WordsAndNonWords initialiseWordsAndNonWordsNonRandom(HashMap<String, AdVocAsStimulus> stimuli) {
-        if (stimuli == null || stimuli.isEmpty()) {
+    public ArrayList<AdVocAsStimulus> getNonwords() {
+        return this.nonWords;
+    }
+
+    public HashMap<String, AdVocAsStimulus> getHashedStimuli() {
+        return this.hashedStimuli;
+    }
+
+    
+
+    public void initialise(AdVocAsStimulus[] stimuli) {
+        if (stimuli == null || stimuli.length==0) {
             System.out.println("Empty array of words in bands");
-            return null;
+            return;
         }
-        ArrayList<ArrayList<AdVocAsStimulus>> wrd = new ArrayList<>(this.numberOfBands);
-        ArrayList<AdVocAsStimulus> nonwrd = new ArrayList<>();
+        
+        this.wordsInBands = new ArrayList<>(this.numberOfBands);
+        this.nonWords  = new ArrayList<>();
+        this.hashedStimuli = new HashMap<String,AdVocAsStimulus>();
+        // initialisation
         for (int bandIndex = 0; bandIndex < this.numberOfBands; bandIndex++) {
-            wrd.add(new ArrayList<AdVocAsStimulus>(this.wordsPerBandInSeries));
+            this.wordsInBands.add(new ArrayList<AdVocAsStimulus>(this.wordsPerBandInSeries));
         }
 
-        Set<String> identifiers = stimuli.keySet();
-        for (String id : identifiers) {
-            AdVocAsStimulus stimulus = stimuli.get(id);
+        int[] permuteIndex = RandomIndexing.generateRandomArray(stimuli.length);
+        
+        for (int i=0; i<stimuli.length; i++) {
+            AdVocAsStimulus stimulus = stimuli[permuteIndex[i]];
             String correctResponse = stimulus.getCorrectResponses();
             if (correctResponse.equals(NONWORD)) {
-                nonwrd.add(stimulus);
+                this.nonWords.add(stimulus);
             } else {
                 if (correctResponse.equals(WORD)) {
-                    int index = stimulus.getBandIndex();
-                    ArrayList<AdVocAsStimulus> bandStimuli = wrd.get(index);
+                    int index = stimulus.getBandIndexInt();
+                    ArrayList<AdVocAsStimulus> bandStimuli = this.wordsInBands.get(index);
                     bandStimuli.add(stimulus);
                 }
             }
-
-        }
-        
-         WordsAndNonWords retVal = new WordsAndNonWords();
-        retVal.setWordsInBands(wrd);
-        retVal.setNonwords(nonwrd);
-        return retVal;
-
-    }
-
-    private ArrayList<AdVocAsStimulus> randomiseStimuliList(ArrayList<AdVocAsStimulus> stimuli) {
-        ArrayList<AdVocAsStimulus> retVal = new ArrayList<>(stimuli.size());
-        int[] index = RandomIndexing.generateRandomArray(stimuli.size());
-        for (int i = 0; i < stimuli.size(); i++) {
-            int ind = index[i];
-            retVal.add(stimuli.get(ind));
-        }
-        return retVal;
-    }
-
-    public WordsAndNonWords initialiseWordsAndNonWords(HashMap<String, AdVocAsStimulus> stimuli) {
-
-        ArrayList<ArrayList<AdVocAsStimulus>> wrdRandom = new ArrayList<ArrayList<AdVocAsStimulus>>(this.numberOfBands);
-        WordsAndNonWords tmp = this.initialiseWordsAndNonWordsNonRandom(stimuli);
-
-        for (int i = 0; i < tmp.getWordsInBands().size(); i++) {
-            ArrayList<AdVocAsStimulus> stimuliInBand = tmp.getWordsInBands().get(i);
-            ArrayList<AdVocAsStimulus> stimuliInBandRandom = this.randomiseStimuliList(stimuliInBand);
-            wrdRandom.add(stimuliInBandRandom);
+         this.hashedStimuli.put(stimulus.getUniqueId(), stimulus);  
         }
 
-        ArrayList<AdVocAsStimulus> nonWrdsRandom = this.randomiseStimuliList(tmp.getNonwords());
-
-        WordsAndNonWords retVal = new WordsAndNonWords();
-        retVal.setWordsInBands(wrdRandom);
-        retVal.setNonwords(nonWrdsRandom);
-        return retVal;
     }
 
 }

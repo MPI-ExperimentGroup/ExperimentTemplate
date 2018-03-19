@@ -26,27 +26,26 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
  *
  * @param <T> userRecation, can be string, boolean, double, etc.
  */
-public class BookkeepingStimulus<T> {
+public class BookkeepingStimulus<A extends BandStimulus> {
 
-    
-    private final String stimulusId;
-    private T userReaction; // can be string, boolean, double, etc.
+    private final A stimulus;
+    private String userReaction; // can be string, boolean, double, etc.
     private Boolean correctness;
     private long timeStamp; 
     
 
    
-    public BookkeepingStimulus(String stimulusId) {
-        this.stimulusId = stimulusId;
+    public BookkeepingStimulus(A stimulus) {
+        this.stimulus = stimulus;
         this.userReaction = null;
         this.correctness = null;
     }
 
-    public String getStimulusID() {
-        return this.stimulusId;
+    public A getStimulus() {
+        return this.stimulus;
     }
 
-    public T getReaction() {
+    public String getReaction() {
         return this.userReaction;
     }
     
@@ -58,7 +57,7 @@ public class BookkeepingStimulus<T> {
         return this.correctness;
     }
 
-    public void setReaction(T reaction) {
+    public void setReaction(String reaction) {
         this.userReaction = reaction;
     }
 

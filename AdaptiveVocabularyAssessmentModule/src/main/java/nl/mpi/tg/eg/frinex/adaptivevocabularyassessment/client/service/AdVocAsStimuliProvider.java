@@ -30,7 +30,6 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspo
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.WordsAndNonWords;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
@@ -50,11 +49,15 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
     private ArrayList<ArrayList<AdVocAsStimulus>> words;
     private ArrayList<AdVocAsStimulus> nonwords;
     
-    private ArrayList<ArrayList<String>> wordIDs;
-    private ArrayList<String> nonwordIDs;
-
+   
     // fine tuning stuff
     private Random rnd;
+
+    public AdVocAsStimuliProvider(AdVocAsStimulus[] stimulusArray) {
+        super(stimulusArray);
+    }
+    
+    
 
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
@@ -66,13 +69,10 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
             this.wordsPerBandInSeries = this.wordsPerBand / this.numberOfSeries;
             Vocabulary vocab = new Vocabulary(this.numberOfBands, this.wordsPerBandInSeries);
 
-            ArrayList<AdVocAsStimulus> nonwordstmp = new ArrayList<>();
-
-            WordsAndNonWords tmp = vocab.initialiseWordsAndNonWords(this.stimuli);
-            this.words = tmp.getWordsInBands();
-            this.nonwords = tmp.getNonwords();
-            this.wordIDs = tmp.getWordIDsInBands();
-            this.nonwordIDs = tmp.getNonwordIDs();
+            vocab.initialise(this.stimuli);
+            this.words = vocab.getWordsInBands();
+            this.nonwords = vocab.getNonwords();
+            this.hashedStimuli = vocab.getHashedStimuli();
         
             this.totalStimuli = this.nonwords.size();
             for (int i = 0; i < this.numberOfBands; i++) {
@@ -85,7 +85,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
 
             this.rnd = new Random();
         } else {
-            
+            // TODO !!!
         }
     }
 
@@ -129,7 +129,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
             stimulus = this.words.get(this.currentBandIndex).remove(0);
         }
 
-        BookkeepingStimulus retVal = new BookkeepingStimulus(stimulus.getUniqueId()); 
+        BookkeepingStimulus<AdVocAsStimulus> retVal = new BookkeepingStimulus<AdVocAsStimulus>(stimulus); 
         return retVal;
     }
 
@@ -143,9 +143,8 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
             return false;
         }
         int index = this.getCurrentStimulusIndex();
-        String stimulusId = this.responseRecord.get(index).getStimulusID();
-        AdVocAsStimulus adVocAsStimulus = this.stimuli.get(stimulusId);
-        Integer bandNumber = Integer.parseInt(adVocAsStimulus.getBandLabel());
+        AdVocAsStimulus adVocAsStimulus = this.responseRecord.get(index).getStimulus();
+        Integer bandNumber = adVocAsStimulus.getBandNumber();
         if (bandNumber > -1) {
             retVal = stimulusResponseProcessed.equals(Vocabulary.WORD);
         } else {
@@ -161,9 +160,8 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         }
         boolean retVal;
         int index = this.responseRecord.size() - 1;
-        String stimulusId = this.responseRecord.get(index).getStimulusID();
-        AdVocAsStimulus adVocAsStimulus = this.stimuli.get(stimulusId);
-        Integer bandNumber = Integer.parseInt(adVocAsStimulus.getBandLabel());
+        AdVocAsStimulus adVocAsStimulus = this.responseRecord.get(index).getStimulus();
+         Integer bandNumber = adVocAsStimulus.getBandNumber();
         boolean isWord = bandNumber > -1;
         if (this.isCorrectCurrentResponse) {
             this.secondChanceFastTrackIsFired = false;
@@ -247,10 +245,10 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
     protected void recycleUnusedStimuli() {
         boolean ended = this.tupleFT.isEmpty();
         while (!ended) {
-            BookkeepingStimulus bStimulus = this.tupleFT.remove(0);
+            BookkeepingStimulus<AdVocAsStimulus> bStimulus = this.tupleFT.remove(0);
             //(String uniqueId, String label, String correctResponses, int bandNumber)
-            AdVocAsStimulus stimulus = new AdVocAsStimulus(bStimulus.getUniqueId(), bStimulus.getLabel(), bStimulus.getCorrectResponses(), bStimulus.getBandLabel());
-            int bandNumber = stimulus.getBandLabel();
+            AdVocAsStimulus stimulus = bStimulus.getStimulus();
+            int bandNumber =stimulus.getBandNumber();
             if (bandNumber > -1) { // a word
                 // bandIndex is 1 less then band number 
                 this.words.get(bandNumber - 1).add(stimulus);
@@ -275,20 +273,21 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         stringBuilder.append(endRow);
         int nonwordCounter = 0;
         for (int i = 0; i <= this.timeTickEndFastTrack; i++) {
-            BookkeepingStimulus stimulus = this.responseRecord.get(i);
-            Integer bandNumber = stimulus.getBandLabel();
+            BookkeepingStimulus<AdVocAsStimulus> bStimulus = this.responseRecord.get(i);
+            AdVocAsStimulus stimulus = bStimulus.getStimulus();
+            Integer bandNumber = stimulus.getBandNumber();
             if (bandNumber < 0) {
                 nonwordCounter++;
             }
             double frequency = ((double) nonwordCounter) / ((double) (i + 1));
             StringBuilder row = new StringBuilder();
 
-            String time = (new Date(stimulus.getTimeStamp())).toString();
+            String time = (new Date(bStimulus.getTimeStamp())).toString();
 
             row.append(startColumn).append(stimulus.getLabel()).append(endColumn);
-            row.append(startColumn).append(stimulus.getBandLabel()).append(endColumn);
-            row.append(startColumn).append(stimulus.getReaction()).append(endColumn);
-            row.append(startColumn).append(stimulus.getCorrectness()).append(endColumn);
+            row.append(startColumn).append(stimulus.getBandNumber()).append(endColumn);
+            row.append(startColumn).append(bStimulus.getReaction()).append(endColumn);
+            row.append(startColumn).append(bStimulus.getCorrectness()).append(endColumn);
             row.append(startColumn).append(time).append(endColumn);
             row.append(startColumn).append(frequency).append(endColumn);
             stringBuilder.append(startRow).append(row).append(endRow);
@@ -319,18 +318,19 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         int modCounter = 0;
         ArrayList<String> spellingsCheck = new ArrayList<>();
         for (int i = this.timeTickEndFastTrack + 1; i < this.responseRecord.size(); i++) {
-            BookkeepingStimulus stimulus = this.responseRecord.get(i);
+            BookkeepingStimulus<AdVocAsStimulus> bStimulus = this.responseRecord.get(i);
+            AdVocAsStimulus stimulus = bStimulus.getStimulus();
             StringBuilder row = new StringBuilder();
-            String time = (new Date(stimulus.getTimeStamp())).toString();
-            row.append(startColumn).append(stimulus.getBandLabel()).append(endColumn);
+            String time = (new Date(bStimulus.getTimeStamp())).toString();
+            row.append(startColumn).append(stimulus.getBandNumber()).append(endColumn);
             row.append(startColumn).append(stimulus.getLabel()).append(endColumn);
-            row.append(startColumn).append(stimulus.getReaction()).append(endColumn);
-            row.append(startColumn).append(stimulus.getCorrectness()).append(endColumn);
+            row.append(startColumn).append(bStimulus.getReaction()).append(endColumn);
+            row.append(startColumn).append(bStimulus.getCorrectness()).append(endColumn);
             row.append(startColumn).append(time).append(endColumn);
             row.append(startColumn).append(i).append(endColumn);
             stringBuilder.append(startRow).append(row).append(endRow);
             modCounter++;
-            if (!stimulus.getCorrectness() || modCounter == this.fineTuningTupleLength) {
+            if (!bStimulus.getCorrectness() || modCounter == this.fineTuningTupleLength) {
                 stringBuilder.append(startRow).append(empty).append(endRow); // skip between tuples
                 stringBuilder.append(startRow).append(empty).append(endRow);
                 modCounter = 0;
@@ -362,10 +362,10 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
 
     private String getHtmlExperimenteeReport() {
         StringBuilder htmlStringBuilder = new StringBuilder();
-        LinkedHashMap<String, ArrayList<BookkeepingStimulus>> wordTables = this.generateWordNonWordSequences(this.responseRecord);
+        LinkedHashMap<String, ArrayList<BookkeepingStimulus<AdVocAsStimulus>>> wordTables = this.generateWordNonWordSequences(this.responseRecord);
 
-        ArrayList<BookkeepingStimulus> woorden = wordTables.get("words");
-        ArrayList<BookkeepingStimulus> nietWoorden = wordTables.get("nonwords");
+        ArrayList<BookkeepingStimulus<AdVocAsStimulus>> woorden = wordTables.get("words");
+        ArrayList<BookkeepingStimulus<AdVocAsStimulus>> nietWoorden = wordTables.get("nonwords");
         String experimenteeWordTable = this.getHtmlExperimenteeRecords(woorden, null, "Woorden");
         String experimenteeNonWordTable = this.getHtmlExperimenteeRecords(nietWoorden, null, "Nep-woorden");
         String experimenteePositionDiagram = this.getHtmlExperimenteePositionDiagram();
@@ -385,7 +385,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         return htmlStringBuilder.toString();
     }
 
-    private String getHtmlExperimenteeRecords(ArrayList<BookkeepingStimulus> atoms, String colour, String header) {
+    private String getHtmlExperimenteeRecords(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> atoms, String colour, String header) {
         StringBuilder htmlStringBuilder = new StringBuilder();
         htmlStringBuilder.append("<table>");
         htmlStringBuilder.append("<tr><td><big>").append(header).append("</big></td></tr>");
@@ -393,7 +393,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         if (colour != null) {
             colorStyle = "style=\"color:" + colour + "\"";
         }
-        for (BookkeepingStimulus atom : atoms) {
+        for (BookkeepingStimulus<AdVocAsStimulus> atom : atoms) {
             if (colour == null) {
                 if (atom.getCorrectness()) {
                     colorStyle = "style=\"color:green\"";
@@ -403,7 +403,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
                 }
             }
             htmlStringBuilder.append("<tr ").append(colorStyle).append(">");
-            htmlStringBuilder.append("<td><big>").append(atom.getLabel()).append("</big></td>");
+            htmlStringBuilder.append("<td><big>").append(atom.getStimulus().getLabel()).append("</big></td>");
             htmlStringBuilder.append("</tr>");
         }
         htmlStringBuilder.append("</table>");
@@ -465,7 +465,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         return htmlStringBuilder.toString();
     }
 
-    public LinkedHashMap<Long, String> generateDiagramSequence(ArrayList<BookkeepingStimulus> records, LinkedHashMap<Long, Integer> percentageBandTable) {
+    public LinkedHashMap<Long, String> generateDiagramSequence(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> records, LinkedHashMap<Long, Integer> percentageBandTable) {
         LinkedHashMap<Long, String> retVal = new LinkedHashMap<Long, String>();
 
         LinkedHashMap<Integer, String> sampleWords = this.retrieveSampleWords(records, this.words);
@@ -512,13 +512,14 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         return retVal;
     }
 
-    public LinkedHashMap<Integer, String> retrieveSampleWords(ArrayList<BookkeepingStimulus> records, ArrayList<ArrayList<AdVocAsStimulus>> nonusedWords) {
+    public LinkedHashMap<Integer, String> retrieveSampleWords(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> records, ArrayList<ArrayList<AdVocAsStimulus>> nonusedWords) {
         LinkedHashMap<Integer, String> retVal = new LinkedHashMap<Integer, String>();
-        for (BookkeepingStimulus bStimulus : records) {
-            if (bStimulus.getCorrectResponses().equals(Vocabulary.WORD)) { // is a word
-                Integer key = bStimulus.getBandLabel();
+        for (BookkeepingStimulus<AdVocAsStimulus> bStimulus : records) {
+            AdVocAsStimulus stimulus = bStimulus.getStimulus();
+            if (stimulus.getCorrectResponses().equals(Vocabulary.WORD)) { // is a word
+                Integer key =stimulus.getBandNumber();
                 if (!retVal.containsKey(key)) {
-                    retVal.put(key, bStimulus.getLabel());
+                    retVal.put(key, stimulus.getLabel());
                 }
             }
         }
@@ -538,25 +539,26 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         return retVal;
     }
 
-    private LinkedHashMap<String, ArrayList<BookkeepingStimulus>> generateWordNonWordSequences(ArrayList<BookkeepingStimulus> records) {
-        LinkedHashMap<String, ArrayList<BookkeepingStimulus>> retVal = new LinkedHashMap<String, ArrayList<BookkeepingStimulus>>();
-        retVal.put("words", new ArrayList<BookkeepingStimulus>());
-        retVal.put("nonwords", new ArrayList<BookkeepingStimulus>());
+    private LinkedHashMap<String, ArrayList<BookkeepingStimulus<AdVocAsStimulus>>> generateWordNonWordSequences(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> records) {
+        LinkedHashMap<String, ArrayList<BookkeepingStimulus<AdVocAsStimulus>>> retVal = new LinkedHashMap<String, ArrayList<BookkeepingStimulus<AdVocAsStimulus>>>();
+        retVal.put("words", new ArrayList<BookkeepingStimulus<AdVocAsStimulus>>());
+        retVal.put("nonwords", new ArrayList<BookkeepingStimulus<AdVocAsStimulus>>());
 
-        for (BookkeepingStimulus bStimulus : records) {
-            if (Vocabulary.WORD.equals(bStimulus.getCorrectResponses())) {
+        for (BookkeepingStimulus<AdVocAsStimulus> bStimulus : records) {
+            AdVocAsStimulus stimulus = bStimulus.getStimulus();
+            if (Vocabulary.WORD.equals(stimulus.getCorrectResponses())) {
                 retVal.get("words").add(bStimulus);
             }
-            if (Vocabulary.NONWORD.equals(bStimulus.getCorrectResponses())) {
+            if (Vocabulary.NONWORD.equals(stimulus.getCorrectResponses())) {
                 retVal.get("nonwords").add(bStimulus);
             }
         }
         return retVal;
     }
 
-    private ArrayList<BookkeepingStimulus> getCorrectAnsweredStimuli(ArrayList<BookkeepingStimulus> records) {
-        ArrayList<BookkeepingStimulus> retVal = new ArrayList<BookkeepingStimulus>();
-        for (BookkeepingStimulus bStimulus : records) {
+    private ArrayList<BookkeepingStimulus<AdVocAsStimulus>> getCorrectAnsweredStimuli(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> records) {
+        ArrayList<BookkeepingStimulus<AdVocAsStimulus>> retVal = new ArrayList<BookkeepingStimulus<AdVocAsStimulus>>();
+        for (BookkeepingStimulus<AdVocAsStimulus> bStimulus : records) {
             if (bStimulus.getCorrectness()) {
                 retVal.add(bStimulus);
             }
@@ -565,9 +567,9 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         return retVal;
     }
 
-    private ArrayList<BookkeepingStimulus> getWronglyAnsweredStimuli(ArrayList<BookkeepingStimulus> records) {
-        ArrayList<BookkeepingStimulus> retVal = new ArrayList<BookkeepingStimulus>();
-        for (BookkeepingStimulus bStimulus : records) {
+    private ArrayList<BookkeepingStimulus<AdVocAsStimulus>> getWronglyAnsweredStimuli(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> records) {
+        ArrayList<BookkeepingStimulus<AdVocAsStimulus>> retVal = new ArrayList<BookkeepingStimulus<AdVocAsStimulus>>();
+        for (BookkeepingStimulus<AdVocAsStimulus> bStimulus : records) {
             if (!(bStimulus.getCorrectness())) {
                 retVal.add(bStimulus);
             }

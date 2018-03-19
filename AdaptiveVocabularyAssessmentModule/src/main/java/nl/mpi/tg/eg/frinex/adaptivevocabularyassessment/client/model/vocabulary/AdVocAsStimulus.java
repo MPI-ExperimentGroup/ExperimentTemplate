@@ -18,21 +18,17 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary;
 
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Vocabulary;
-import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Oct 27, 2017 2:13:03 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 abstract public class AdVocAsStimulus extends BandStimulus {
-    
 
-    public AdVocAsStimulus(String uniqueId, Stimulus.Tag tags[], String label, String correctResponses, String bandNumber) {
-        //BandStimulus(String uniqueId, Stimulus.Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, String bandLabel, String bandIndex)
-        super(uniqueId, tags, label, null, -1, null, null, null, Vocabulary.NONWORD+','+Vocabulary.WORD, correctResponses, bandNumber);
+    public AdVocAsStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses) {
+        super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses);
     }
     
-    
+
   
 }

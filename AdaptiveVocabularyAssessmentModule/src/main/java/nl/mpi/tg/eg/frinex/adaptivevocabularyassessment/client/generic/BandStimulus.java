@@ -25,38 +25,33 @@ import nl.mpi.tg.eg.frinex.common.model.AbstractStimulus;
  */
 public abstract class BandStimulus extends AbstractStimulus {
 
-    protected final String bandLabel;
-
-    protected int bandIndex;
-
-    public BandStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, String bandLabel, String bandIndex) {
-        //  GeneratedStimulus  calls super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses);
+   
+    public BandStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses) {
         super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses);
-        this.bandLabel = bandLabel;
-        this.bandIndex = Integer.parseInt(bandIndex);
     }
-    
-    public BandStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, String bandNumber) {
-        //  GeneratedStimulus  calls super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses);
-        super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses);
-        this.bandLabel = bandNumber;
-        this.bandIndex = Integer.parseInt(bandNumber)-1;
-    }
-     
-   // for Generated stimuli Usage
+
     abstract String getbandLabel();
     
     abstract String getbandIndex();
     
+    public int getBandIndexInt(){
+       return Integer.parseInt(this.getbandIndex()); 
+    }
     
-    // for specific usage, e.g. evaluating correctness of the answer
-    public String getBandLabel() {
-        return this.bandLabel;
+    public int getBandNumber(){
+       return (Integer.parseInt(this.getbandIndex()))+1; 
+    }
+    
+    public String getBandLabel(){
+        return this.getbandLabel();
+    }
+   
+  
+    @Override
+    public String toString(){
+        return this.getUniqueId();
     }
 
-    public int getBandIndex() {
-        return this.bandIndex;
-    }
-
-
+    
+   
 }

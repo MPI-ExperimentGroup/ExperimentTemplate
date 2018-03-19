@@ -18,7 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
 import java.util.ArrayList;
-
+import java.util.HashMap;
 /**
  *
  * @author olhshk
@@ -233,15 +233,6 @@ public class UtilsJSONdialect<S> {
         return retVal;
     }
     
-//     public ArrayList<S> stringToArrayListGeneric(String listStr, Function<String, S> mapper) throws Exception{
-//        ArrayList<String>  buffer = this.stringToArrayList(listStr);
-//        ArrayList<S> retVal = new  ArrayList<S>(buffer.size());
-//        for (int i=0; i<buffer.size(); i++) {
-//            String val = buffer.get(i);
-//            S valInt = mapper.apply(val);
-//            retVal.add(i, valInt);
-//        }
-//        return retVal;
-//    }
+   
     
 }

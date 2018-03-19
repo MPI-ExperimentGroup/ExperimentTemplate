@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
@@ -42,12 +43,12 @@ public class TrialTuple {
         this.correctness = correctness;
     }
 
-    public String removeFirstAvailableStimulus() {
+    public AudioAsStimulus removeFirstAvailableStimulus() {
         int i = 0;
-        while (this.trials.get(i).getStimuliIDs().size() < 1) {
+        while (this.trials.get(i).getStimuli().size() < 1) {
             i++;
         }
-        String retVal = this.trials.get(i).getStimuliIDs().remove(0);
+        AudioAsStimulus retVal = this.trials.get(i).getStimuli().remove(0);
         return retVal;
     }
 
@@ -58,7 +59,7 @@ public class TrialTuple {
     public int getNumberOfStimuli(){
         int retVal=0;
         for(Trial trial:trials) {
-            retVal += trial.getStimuliIDs().size();
+            retVal += trial.getStimuli().size();
         }
         return retVal;
     }
@@ -76,7 +77,7 @@ public class TrialTuple {
         int i = 0;
         // try to find first non-empty trial
         while (i < this.trials.size()) {
-            if (this.trials.get(i).getStimuliIDs().size() > 0) {
+            if (this.trials.get(i).getStimuli().size() > 0) {
                 return true; // there are nonempty trials!
             } else {
                 i++;
@@ -135,14 +136,14 @@ public class TrialTuple {
         }
     }
 
-    public static TrialTuple toObject(String str) {
+    public static TrialTuple toObject(String str, LinkedHashMap<String, AudioAsStimulus> hashedStimuli) {
         try {
             String trialsStr = UtilsJSONdialect.getKey(str, "trials");
             UtilsJSONdialect<Trial> util = new UtilsJSONdialect<Trial>();
             ArrayList<String> trialsStrArray = util.stringToArrayList(trialsStr);
             ArrayList<Trial> trials = new ArrayList<Trial>(trialsStrArray.size());
             for (int i = 0; i < trialsStrArray.size(); i++) {
-                Trial tr = Trial.toObject(trialsStrArray.get(i));
+                Trial tr = Trial.toObject(trialsStrArray.get(i), hashedStimuli);
                 trials.add(i, tr);
             }
             String correctnessStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "correctness");

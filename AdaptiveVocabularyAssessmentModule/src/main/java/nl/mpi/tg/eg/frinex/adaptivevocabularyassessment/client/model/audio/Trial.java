@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 
@@ -28,7 +29,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSON
 public class Trial {
 
     private final int trialId;
-    private final ArrayList<String> stimulusIDs;  // the first one (zero index) is the cue, it is in the order it should appear for the participant
+    private final ArrayList<AudioAsStimulus> stimuli;  // the first one (zero index) is the cue, it is in the order it should appear for the participant
     private final String word;
     private final String cueFile;
     private final int numberOfSyllables;
@@ -46,18 +47,18 @@ public class Trial {
         this.bandLabel = bandLabel;
         this.bandIndex = bandIndex;
         this.condition = condition;
-        this.stimulusIDs = new ArrayList<String>(length + 1);
+        this.stimuli = new ArrayList<AudioAsStimulus>(length + 1);
         for (int i=0; i<length+1; i++){
-           this.stimulusIDs.add(""); 
+           this.stimuli.add(null); 
         }
     }
 
-    public void addStimulusID(String stimulusId, int stimulusPosition){
-        this.stimulusIDs.set(stimulusPosition, stimulusId);
+    public void addStimulus(AudioAsStimulus stimulus, int stimulusPosition){
+        this.stimuli.set(stimulusPosition, stimulus);
     }
 
-    public ArrayList<String> getStimuliIDs() {
-        return this.stimulusIDs;
+    public ArrayList<AudioAsStimulus> getStimuli() {
+        return this.stimuli;
     }
 
     public String getWord() {
@@ -116,10 +117,10 @@ StringBuilder builder = new StringBuilder();
         builder.append("bandIndex:{").append(this.bandIndex).append("},");
         builder.append("bandLabel:{").append(this.bandLabel).append("},");
         builder.append("condition:{").append(this.condition).append("},");
-        UtilsJSONdialect<String> util = new UtilsJSONdialect<String>();
+        UtilsJSONdialect<AudioAsStimulus> util = new UtilsJSONdialect<AudioAsStimulus>();
         String stimulusIDsStr = "";
         try {
-            stimulusIDsStr = util.arrayListToString(this.stimulusIDs);
+            stimulusIDsStr = util.arrayListToString(this.stimuli);
         } catch (Exception ex) {
 
         }
@@ -129,7 +130,7 @@ StringBuilder builder = new StringBuilder();
 
     }
 
-    public static Trial toObject(String str) {
+    public static Trial toObject(String str, LinkedHashMap<String, AudioAsStimulus> hashedStimuli) {
         try {
             String idStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "trialId");
             
@@ -156,7 +157,8 @@ StringBuilder builder = new StringBuilder();
             //Trial(int id, String word, String cueFile, int nOfSyllables, TrialCondition condition, int length, String bandLabel, int bandIndex)
             Trial retVal = new Trial(id, word, cueFile, numberOfSyllables, condition, lgth, bandLabel, bandIndex);
             for (int i=0; i<stimulusIDs.size(); i++) {
-                retVal.addStimulusID(stimulusIDs.get(i), i);
+                AudioAsStimulus stimulus = hashedStimuli.get(stimulusIDs.get(i));
+                retVal.addStimulus(stimulus, i);
             }
             
             return retVal;
