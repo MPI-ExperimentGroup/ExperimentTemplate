@@ -21,6 +21,7 @@ import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
@@ -39,6 +40,7 @@ import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponse;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponseGroup;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
+import nl.mpi.tg.eg.frinex.common.model.StimulusSelector;
 
 /**
  * @since Oct 10, 2014 9:52:25 AM (creation date)
@@ -53,7 +55,7 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
 //    private final int maxStimuli;
     private final UserResults userResults;
     private final ColourPickerCanvasView colourPickerCanvasView;
-    private final StimulusProvider stimulusProvider = new StimulusProvider();
+    protected final StimulusProvider stimulusProvider;
 //    private Stimulus currentStimulus = null;
 //    final List<GeneratedStimulus.Tag> selectionTags;
     private final Duration duration;
@@ -68,8 +70,9 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
     private ApplicationController.ApplicationState nextState;
     private StimulusResponseGroup stimulusResponseGroup = null;
 
-    public AbstractColourPickerPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage) throws CanvasError {
+    public AbstractColourPickerPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final StimulusProvider provider) throws CanvasError {
         this.widgetTag = widgetTag;
+        stimulusProvider = provider;
 //        this.stimuliGroup = userResults.getPendingStimuliGroup();
 //        userResults.setPendingStimuliGroup(null);
 //        this.stimuli = new ArrayList<>(stimuliGroup.getStimuli());
@@ -105,6 +108,10 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
 //
 //        }.serialise(stimulusResponseGroup, userResults.getUserData().getUserId().toString()), 0);
 //    }
+    protected void requestFilePermissions() {
+        // not used but required by default
+    }
+
     private void triggerEvent() {
         if (!stimulusProvider.hasNextStimulus(1)) {
             shownSetCount++;
@@ -209,9 +216,13 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
         colourPickerCanvasView.setInstructions(helpText, messages.helpButtonChar(), closeButtonLabel);
     }
 
-    protected void loadAllStimulus(String eventTag, final List<Stimulus.Tag> selectionTags, final boolean randomise, int repeatCount, final int repeatRandomWindow, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadStimulus(String eventTag, final StimulusSelector[] stimulusSelectors, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
-        stimulusProvider.getSubset(selectionTags, randomise, repeatCount, repeatRandomWindow, 0, "", -1);
+        final List<Stimulus.Tag> selectionTags = new ArrayList<>();
+        for (StimulusSelector selector : stimulusSelectors) {
+            selectionTags.add(selector.getTag());
+        }
+        stimulusProvider.getSubset(selectionTags, "", -1);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
         stimulusResponseGroup = new StimulusResponseGroup(eventTag, eventTag.replaceAll("[^A-Za-z0-9]", "_"));
