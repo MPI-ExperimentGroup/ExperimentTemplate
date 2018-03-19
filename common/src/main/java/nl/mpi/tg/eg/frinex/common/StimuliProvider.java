@@ -29,7 +29,7 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  */
 public interface StimuliProvider {
 
-    void getAll();
+//    void getAll();
 
     /**
      * getCurrentStimulus returns the currently selected stimulus
