@@ -208,6 +208,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService; 
                 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
                 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
+                import nl.mpi.tg.eg.experiment.client.util.GeneratedStimulusProvider;
                 import nl.mpi.tg.eg.frinex.common.model.StimulusSelector;
                         
                 // generated with config2java.xsl
@@ -259,9 +260,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                     <xsl:text>
                         super(widgetTag, audioPlayer, submissionService, userResults, localStorage, 
                     </xsl:text>                    
-                    <xsl:value-of select="if(descendant::loadStimulus/@class) then concat('new ', descendant::loadStimulus/@class, '()') else 'new nl.mpi.tg.eg.experiment.client.service.StimulusProvider()'" />
+                    <xsl:value-of select="if(descendant::loadStimulus/@class) then concat('new ', descendant::loadStimulus/@class, '(') else 'new nl.mpi.tg.eg.experiment.client.service.StimulusProvider('" />
                     <xsl:text>
-                        );
+                        GeneratedStimulusProvider.values));
                     </xsl:text>                    
                 </xsl:when>
                 <xsl:when test="@type = 'metadata' or @type = 'transmission' or @type = 'colourReport'">
