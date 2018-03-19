@@ -768,6 +768,7 @@ public class RdExperiment02 {
         list1234Screen.getWizardScreenData().setStimulusResponseLabelLeft("");
         list1234Screen.getWizardScreenData().setStimulusResponseLabelRight("");
         list1234Screen.setAllowHotkeyButtons(false);
+        list1234Screen.setInputKeyErrorMessage("Sorry, dit teken is niet toegestaan.");
         wizardData.addScreen(list1234Screen);
 
         // @todo: remove the restart button
