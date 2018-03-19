@@ -140,7 +140,8 @@
             <translation featureText="Как работает наше исследование: " locale="ru"/>
         </plainText>
         <addPadding/>
-        <image src="static/study_diagram.svg" maxHeight="80" percentOfPage="80" link="" maxWidth="80"/>
+        <!--<image src="static/study_diagram.svg" maxHeight="80" percentOfPage="80" link="" maxWidth="80"/>-->
+        <htmlText featureText="&lt;img src=&quot;static/study_diagram.svg&quot; /&gt;"/>
         <addPadding/>
         <plainText featureText="The synaesthesia tests take about 20 minutes to complete, and you can choose the ones that apply to you. Depending on your scores, we may send you an email inviting you to participate in the genetics part of the study. There is no cost to participate, and you can do everything from home.">
             <translation featureText="The synaesthesietesten duren ongeveer 20 minuten en je kunt de testen kiezen die op jou betrekking hebben. Afhankelijk van jouw scores sturen we je een e-mail om je uit te nodigen om aan het genetische deel van ons onderzoek deel te nemen. Er zijn geen kosten verbonden aan deelname en je kunt alles thuis doen." locale="nl"/>
@@ -165,6 +166,9 @@
         <metadataField fieldName="optionCheckBox1"/>
         <metadataField fieldName="mandatoryCheckBox"/>
         <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
+            <networkErrorMessage>Could not contact the server, please check your internet connection and try again.</networkErrorMessage>
+            <networkErrorMessage locale="nl">Could not contact the server, please check your internet connection and try again.</networkErrorMessage>
+            <networkErrorMessage locale="ru">Could not contact the server, please check your internet connection and try again.</networkErrorMessage>    
             <onError/>
             <onSuccess>
                 <autoNextPresenter/>
@@ -447,23 +451,23 @@
     </presenter>
     <presenter back="Menu" displayOrder="13" menuLabel="Weekdays" next="Report" type="colourPicker" self="Weekdays" title="Weekdays">
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
-        <loadAllStimulus eventTag="Weekdays" randomise="true" repeatRandomWindow="0" repeatCount="3">
+        <loadStimulus eventTag="Weekdays" randomise="true" repeatRandomWindow="0" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
             <stimuli>
                 <tag>Weekdays</tag>
             </stimuli>
-        </loadAllStimulus>
+        </loadStimulus>
     </presenter>
     <presenter back="Menu" displayOrder="14" menuLabel="Letters and Numbers" next="Report" type="colourPicker" self="LettersNumbers" title="LettersNumbers">
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
-        <loadAllStimulus eventTag="LettersNumbers" randomise="true" repeatRandomWindow="0" repeatCount="3">
+        <loadStimulus eventTag="LettersNumbers" randomise="true" repeatRandomWindow="0" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
             <stimuli>
                 <tag>LettersNumbers</tag>
             </stimuli>
-        </loadAllStimulus>
+        </loadStimulus>
     </presenter>
     <presenter back="Menu" displayOrder="15" menuLabel="Completion" next="Introduction" type="transmission" self="Completion" title="Completion">
         <sendAllData>
@@ -471,7 +475,7 @@
                 <htmlText featureText="Thank you for participating! You may hear from us in the next few weeks to ask if you would like to participate in the genetics part of the study. Your data has been saved, and you can now close your browser. &lt;br&gt;&lt;br&gt;If you have any questions about the study, you can email them to us at &lt;a href=&quot;#&quot; onclick=&quot;window.open('mailto:synaesthesia@mpi.nl','_system'); return false;&quot;&gt;synaesthesia@mpi.nl&lt;/a&gt;. It will be a year or more before there are results, but when we publish our study it will be posted on our &lt;a href=&quot;#&quot; onclick=&quot;window.open('http://www.mpi.nl/departments/language-and-genetics/projects/decoding-the-genetics-of-synaesthesia/publications','_system'); return false;&quot;&gt;website&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;"/>
                 <addPadding/>
                 <addPadding/>
-                <eraseUsersDataButton featureText="Finish this expriment and start from the begining"/>
+                <eraseUsersDataButton featureText="Finish this expriment and start from the begining" target="Introduction"/>
             </onSuccess>
             <onError>
                 <plainText featureText="Could not contact the server, please check your internet connection and try again.">
@@ -489,13 +493,13 @@
     </presenter>
     <presenter back="Menu" displayOrder="16" menuLabel="Months" next="Report" type="colourPicker" self="Months" title="Months">
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
-        <loadAllStimulus eventTag="Months" randomise="true" repeatRandomWindow="0" repeatCount="3">
+        <loadStimulus eventTag="Months" randomise="true" repeatRandomWindow="0" repeatCount="3">
             <hasMoreStimulus/>
             <endOfStimulus/>
             <stimuli>
                 <tag>Months</tag>
             </stimuli>
-        </loadAllStimulus>
+        </loadStimulus>
     </presenter>
     <presenter back="Menu" displayOrder="17" menuLabel="Submit my results" next="Completion" type="colourReport" self="Register" title="Register">
         <submitTestResults>
@@ -527,170 +531,62 @@
         <localStorageData/>
     </presenter>
     <stimuli>
-        <stimulus identifier="Monday" label="Monday" pauseMs="0">
-            <tag>Weekdays</tag>
-        </stimulus>
-        <stimulus identifier="Tuesday" label="Tuesday" pauseMs="0">
-            <tag>Weekdays</tag>
-        </stimulus>
-        <stimulus identifier="Wednesday" label="Wednesday" pauseMs="0">
-            <tag>Weekdays</tag>
-        </stimulus>
-        <stimulus identifier="Thursday" label="Thursday" pauseMs="0">
-            <tag>Weekdays</tag>
-        </stimulus>
-        <stimulus identifier="Friday" label="Friday" pauseMs="0">
-            <tag>Weekdays</tag>
-        </stimulus>
-        <stimulus identifier="Saturday" label="Saturday" pauseMs="0">
-            <tag>Weekdays</tag>
-        </stimulus>
-        <stimulus identifier="Sunday" label="Sunday" pauseMs="0">
-            <tag>Weekdays</tag>
-        </stimulus>
-        <stimulus identifier="A" label="A" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="B" label="B" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="C" label="C" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="D" label="D" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="E" label="E" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="F" label="F" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="G" label="G" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="H" label="H" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="I" label="I" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="J" label="J" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="K" label="K" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="L" label="L" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="M" label="M" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="N" label="N" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="O" label="O" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="P" label="P" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="Q" label="Q" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="R" label="R" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="S" label="S" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="T" label="T" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="U" label="U" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="V" label="V" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="W" label="W" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="X" label="X" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="Y" label="Y" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="Z" label="Z" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="0" label="0" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="1" label="1" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="2" label="2" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="3" label="3" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="4" label="4" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="5" label="5" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="6" label="6" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="7" label="7" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="8" label="8" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="9" label="9" pauseMs="0">
-            <tag>LettersNumbers</tag>
-        </stimulus>
-        <stimulus identifier="January" label="January" pauseMs="0">
-            <tag>Months</tag>
-        </stimulus>
-        <stimulus identifier="February" label="February" pauseMs="0">
-            <tag>Months</tag>
-        </stimulus>
-        <stimulus identifier="March" label="March" pauseMs="0">
-            <tag>Months</tag>
-        </stimulus>
-        <stimulus identifier="April" label="April" pauseMs="0">
-            <tag>Months</tag>
-        </stimulus>
-        <stimulus identifier="May" label="May" pauseMs="0">
-            <tag>Months</tag>
-        </stimulus>
-        <stimulus identifier="June" label="June" pauseMs="0">
-            <tag>Months</tag>
-        </stimulus>
-        <stimulus identifier="July" label="July" pauseMs="0">
-            <tag>Months</tag>
-        </stimulus>
-        <stimulus identifier="August" label="August" pauseMs="0">
-            <tag>Months</tag>
-        </stimulus>
-        <stimulus identifier="September" label="September" pauseMs="0">
-            <tag>Months</tag>
-        </stimulus>
-        <stimulus identifier="October" label="October" pauseMs="0">
-            <tag>Months</tag>
-        </stimulus>
-        <stimulus identifier="November" label="November" pauseMs="0">
-            <tag>Months</tag>
-        </stimulus>
-        <stimulus identifier="December" label="December" pauseMs="0">
-            <tag>Months</tag>
-        </stimulus>
+        <stimulus identifier="Monday" label="Monday" pauseMs="0" tags="Weekdays"/>
+        <stimulus identifier="Tuesday" label="Tuesday" pauseMs="0" tags="Weekdays"/>
+        <stimulus identifier="Wednesday" label="Wednesday" pauseMs="0" tags="Weekdays"/>
+        <stimulus identifier="Thursday" label="Thursday" pauseMs="0" tags="Weekdays"/>
+        <stimulus identifier="Friday" label="Friday" pauseMs="0" tags="Weekdays"/>
+        <stimulus identifier="Saturday" label="Saturday" pauseMs="0" tags="Weekdays"/>
+        <stimulus identifier="Sunday" label="Sunday" pauseMs="0" tags="Weekdays"/>
+        <stimulus identifier="A" label="A" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="B" label="B" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="C" label="C" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="D" label="D" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="E" label="E" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="F" label="F" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="G" label="G" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="H" label="H" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="I" label="I" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="J" label="J" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="K" label="K" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="L" label="L" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="M" label="M" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="N" label="N" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="O" label="O" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="P" label="P" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="Q" label="Q" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="R" label="R" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="S" label="S" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="T" label="T" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="U" label="U" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="V" label="V" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="W" label="W" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="X" label="X" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="Y" label="Y" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="Z" label="Z" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="0" label="0" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="1" label="1" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="2" label="2" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="3" label="3" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="4" label="4" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="5" label="5" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="6" label="6" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="7" label="7" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="8" label="8" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="9" label="9" pauseMs="0" tags="LettersNumbers"/>
+        <stimulus identifier="January" label="January" pauseMs="0" tags="Months"/>
+        <stimulus identifier="February" label="February" pauseMs="0" tags="Months"/>
+        <stimulus identifier="March" label="March" pauseMs="0" tags="Months"/>
+        <stimulus identifier="April" label="April" pauseMs="0" tags="Months"/>
+        <stimulus identifier="May" label="May" pauseMs="0" tags="Months"/>
+        <stimulus identifier="June" label="June" pauseMs="0" tags="Months"/>
+        <stimulus identifier="July" label="July" pauseMs="0" tags="Months"/>
+        <stimulus identifier="August" label="August" pauseMs="0" tags="Months"/>
+        <stimulus identifier="September" label="September" pauseMs="0" tags="Months"/>
+        <stimulus identifier="October" label="October" pauseMs="0" tags="Months"/>
+        <stimulus identifier="November" label="November" pauseMs="0" tags="Months"/>
+        <stimulus identifier="December" label="December" pauseMs="0" tags="Months"/>
+        <stimulus identifier="December" label="December" pauseMs="0" tags="Months"/>
+        <stimulus identifier="Декабрь" label="Декабрь" pauseMs="0" tags="Месяцы"/>
     </stimuli>
 </experiment>
