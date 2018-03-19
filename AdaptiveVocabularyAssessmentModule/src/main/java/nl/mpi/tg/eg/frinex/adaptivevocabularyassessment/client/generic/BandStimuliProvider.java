@@ -35,6 +35,10 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  * @param <A>
  */
 public abstract class BandStimuliProvider<A extends BandStimulus> extends AbstractStimuliProvider {
+    
+       // TODO: update initialisation when Peter is Ready!
+    protected final HashMap<String, A> stimuli = new HashMap<String, A>();
+
 
     protected int type = 0;
     protected int numberOfBands = 0;
@@ -64,9 +68,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     // fine tuning stuff
     protected final ArrayList<BookkeepingStimulus> tupleFT = new ArrayList<>(this.fineTuningTupleLength);
     
-    // TODO: update initialisation when Peter is Ready!
-    protected final HashMap<String, A> stimuli = new HashMap<String, A>();
-
+ 
     // fine tuning stopping
     protected boolean enoughFineTuningStimulae = true;
     protected int[] bandVisitCounter;
@@ -117,6 +119,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
+        //this.stimuli = this.GETPETER!!
         this.bandScore = -1;
         this.percentageScore = 0;
         this.isCorrectCurrentResponse = null;

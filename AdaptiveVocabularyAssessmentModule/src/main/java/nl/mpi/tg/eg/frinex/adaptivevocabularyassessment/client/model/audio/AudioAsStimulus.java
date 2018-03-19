@@ -18,7 +18,6 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimulus;
-import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  *
@@ -46,11 +45,11 @@ abstract public class AudioAsStimulus extends BandStimulus {
     public static final int PAUSE = 900;
     
  
-    public AudioAsStimulus(String uniqueId, String label, int pauseMs, String audioPath, String correctResponses, String ratingLabel, 
+    public AudioAsStimulus(String uniqueId, Tag tags[], String label, int pauseMs, String audioPath, String correctResponses, String ratingLabel, 
             String wordtype, String positionInTrial,
             String bandLabel, String bandIndex, 
             String trialNumber, String  trialWord, String cueFile, String trialSyllables, String trialCondition, String trialLength,  String trialPositionTarget, String trialPositionFoil) {
-        super(uniqueId, new Stimulus.Tag[0], label, null, pauseMs, audioPath, null, null, ratingLabel, correctResponses, bandLabel, bandIndex);
+        super(uniqueId, tags, label, null, pauseMs, audioPath, null, null, ratingLabel, correctResponses, bandLabel, bandIndex);
         
         this.wordType = WordType.valueOf(wordtype);
         this.positionInTrial = Integer.parseInt(positionInTrial);

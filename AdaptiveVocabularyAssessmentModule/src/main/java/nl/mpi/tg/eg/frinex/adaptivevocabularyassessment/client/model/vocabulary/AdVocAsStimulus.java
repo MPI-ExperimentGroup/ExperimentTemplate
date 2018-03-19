@@ -28,9 +28,9 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 abstract public class AdVocAsStimulus extends BandStimulus {
     
 
-    public AdVocAsStimulus(String uniqueId, String label, String correctResponses, String bandNumber) {
+    public AdVocAsStimulus(String uniqueId, Stimulus.Tag tags[], String label, String correctResponses, String bandNumber) {
         //BandStimulus(String uniqueId, Stimulus.Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, String bandLabel, String bandIndex)
-        super(uniqueId, new Tag[0], label, null, -1, null, null, null, Vocabulary.NONWORD+','+Vocabulary.WORD, correctResponses, bandNumber);
+        super(uniqueId, tags, label, null, -1, null, null, null, Vocabulary.NONWORD+','+Vocabulary.WORD, correctResponses, bandNumber);
     }
     
     

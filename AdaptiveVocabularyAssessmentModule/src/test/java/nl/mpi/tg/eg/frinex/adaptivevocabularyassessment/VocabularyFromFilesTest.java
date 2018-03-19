@@ -61,7 +61,7 @@ public class VocabularyFromFilesTest {
     }
 
     /**
-     * Test of parseWordInputCSV method, of class VocabularyFromFiles.
+     * Test of parseWordInputCSVnonXML method, of class VocabularyFromFiles.
      */
     @Ignore
     @Test
@@ -71,7 +71,7 @@ public class VocabularyFromFilesTest {
         // VocabularyFromFiles(int numberOfBands, int wordsPerBand, int numberOfSeries)
         VocabularyFromFiles instance = new VocabularyFromFiles(this.numberOfBands, this.wordsPerBand, this.numberOfSeries);
 
-        instance.parseWordInputCSV(WORD_FILE_LOCATION);
+        instance.parseWordInputCSVnonXML(WORD_FILE_LOCATION);
         AdVocAsStimulus[][] words = instance.getWords();
         StringBuilder stBuilder = new StringBuilder("{");
         for (AdVocAsStimulus[] wordband : words) {
@@ -90,14 +90,14 @@ public class VocabularyFromFilesTest {
     }
 
     /**
-     * Test of parseNonwordInputCSV method, of class VocabularyFromFiles.
+     * Test of parseNonwordInputCSVnonXML method, of class VocabularyFromFiles.
      */
     @Ignore
     @Test
     public void testParseNonwordInputCSV() throws Exception {
         System.out.println("parseNonwordInputCSV");
         VocabularyFromFiles instance = new VocabularyFromFiles(this.numberOfBands, this.wordsPerBand, this.numberOfSeries);
-        instance.parseNonwordInputCSV(NONWORD_FILE_LOCATION);
+        instance.parseNonwordInputCSVnonXML(NONWORD_FILE_LOCATION);
         ArrayList<AdVocAsStimulus> nonwords = instance.getNonwords();
         StringBuilder stBuilder = new StringBuilder("[");
         for (AdVocAsStimulus nonword : nonwords) {
