@@ -4,10 +4,10 @@
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
         <field controlledMessage="Voer een getal." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="datOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
         <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="gender" preventServerDuplicates="false" registrationField="Geslacht"/>
-        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_Test_1" preventServerDuplicates="false" registrationField="groupAllocation_Test_1"/>
-        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_Test_2" preventServerDuplicates="false" registrationField="groupAllocation_Test_2"/>
-        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_Test_3" preventServerDuplicates="false" registrationField="groupAllocation_Test_3"/>
-        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_Test_4" preventServerDuplicates="false" registrationField="groupAllocation_Test_4"/>
+        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_Room_1" preventServerDuplicates="false" registrationField="groupAllocation_Room_1"/>
+        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_Room_2" preventServerDuplicates="false" registrationField="groupAllocation_Room_2"/>
+        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_Room_3" preventServerDuplicates="false" registrationField="groupAllocation_Room_3"/>
+        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_Room_4" preventServerDuplicates="false" registrationField="groupAllocation_Room_4"/>
     </metadata>
     <presenter back="Menu" displayOrder="1" menuLabel="Bluetooth Instructions" type="text" self="Bluetooth_Instructions" title="Bluetooth Instructions">
         <htmlText featureText="When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A."/>
@@ -73,7 +73,7 @@
             </pause>
         </audioButton>
     </presenter>
-    <presenter displayOrder="9" menuLabel="Training" next="Test_1" type="stimulus" self="Training" title="Training">
+    <presenter displayOrder="9" menuLabel="Training" next="Room_1" type="stimulus" self="Training" title="Training">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToGarden">
             <loadStimulus eventTag="Training" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                 <hasMoreStimulus>
@@ -140,16 +140,16 @@
         </backgroundImage>
     </presenter>
     <presenter back="Menu" displayOrder="10" menuLabel="TestMenu" type="menu" self="TestMenu" title="TestMenu">
-        <menuItem featureText="Test 1" target="Test_1"/>
-        <menuItem featureText="Test 2" target="Test_2"/>
-        <menuItem featureText="Test 3" target="Test_3"/>
-        <menuItem featureText="Test 4" target="Test_4"/>
+        <menuItem featureText="Room 1" target="Room_1"/>
+        <menuItem featureText="Room 2" target="Room_2"/>
+        <menuItem featureText="Room 3" target="Room_3"/>
+        <menuItem featureText="Room 4" target="Room_4"/>
     </presenter>
-    <presenter displayOrder="11" menuLabel="Test 1" next="Test_2" type="stimulus" self="Test_1" title="Test 1">
+    <presenter displayOrder="11" menuLabel="Room 1" next="Room_2" type="stimulus" self="Room_1" title="Room 1">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock1">
             <audioButton eventTag="room_1" src="room_1" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
-                    <loadStimulus eventTag="Test 1" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+                    <loadStimulus eventTag="Room 1" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                         <hasMoreStimulus>
                             <backgroundImage msToNext="0" src="" styleName=""/>
                             <clearPage styleName="fullScreenWidth"/>
@@ -206,11 +206,11 @@
                         <endOfStimulus>
                             <autoNextPresenter/>
                         </endOfStimulus>
-                        <randomGrouping consumedTagGroup="allRooms" storageField="groupAllocation_Test_1">
-                            <tag>Test_1</tag>
-                            <tag>Test_2</tag>
-                            <tag>Test_3</tag>
-                            <tag>Test_4</tag>
+                        <randomGrouping consumedTagGroup="allRooms" storageField="groupAllocation_Room_1">
+                            <tag>Set_1</tag>
+                            <tag>Set_2</tag>
+                            <tag>Set_3</tag>
+                            <tag>Set_4</tag>
                         </randomGrouping>
                         <stimuli>
                             <tag>allRooms</tag>
@@ -220,11 +220,11 @@
             </audioButton>
         </backgroundImage>
     </presenter>
-    <presenter displayOrder="12" menuLabel="Test 2" next="Test_3" type="stimulus" self="Test_2" title="Test 2">
+    <presenter displayOrder="12" menuLabel="Room 2" next="Room_3" type="stimulus" self="Room_2" title="Room 2">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock2">
             <audioButton eventTag="room_2" src="room_2" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
-                    <loadStimulus eventTag="Test 2" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+                    <loadStimulus eventTag="Room 2" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                         <hasMoreStimulus>
                             <backgroundImage msToNext="0" src="" styleName=""/>
                             <clearPage styleName="fullScreenWidth"/>
@@ -281,11 +281,11 @@
                         <endOfStimulus>
                             <autoNextPresenter/>
                         </endOfStimulus>
-                        <randomGrouping consumedTagGroup="allRooms" storageField="groupAllocation_Test_2">
-                            <tag>Test_1</tag>
-                            <tag>Test_2</tag>
-                            <tag>Test_3</tag>
-                            <tag>Test_4</tag>
+                        <randomGrouping consumedTagGroup="allRooms" storageField="groupAllocation_Room_2">
+                            <tag>Set_1</tag>
+                            <tag>Set_2</tag>
+                            <tag>Set_3</tag>
+                            <tag>Set_4</tag>
                         </randomGrouping>
                         <stimuli>
                             <tag>allRooms</tag>
@@ -295,11 +295,11 @@
             </audioButton>
         </backgroundImage>
     </presenter>
-    <presenter displayOrder="13" menuLabel="Test 3" next="Test_4" type="stimulus" self="Test_3" title="Test 3">
+    <presenter displayOrder="13" menuLabel="Room 3" next="Room_4" type="stimulus" self="Room_3" title="Room 3">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock3">
             <audioButton eventTag="room_3" src="room_3" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
-                    <loadStimulus eventTag="Test 3" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+                    <loadStimulus eventTag="Room 3" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                         <hasMoreStimulus>
                             <backgroundImage msToNext="0" src="" styleName=""/>
                             <clearPage styleName="fullScreenWidth"/>
@@ -356,11 +356,11 @@
                         <endOfStimulus>
                             <autoNextPresenter/>
                         </endOfStimulus>
-                        <randomGrouping consumedTagGroup="allRooms" storageField="groupAllocation_Test_3">
-                            <tag>Test_1</tag>
-                            <tag>Test_2</tag>
-                            <tag>Test_3</tag>
-                            <tag>Test_4</tag>
+                        <randomGrouping consumedTagGroup="allRooms" storageField="groupAllocation_Room_3">
+                            <tag>Set_1</tag>
+                            <tag>Set_2</tag>
+                            <tag>Set_3</tag>
+                            <tag>Set_4</tag>
                         </randomGrouping>
                         <stimuli>
                             <tag>allRooms</tag>
@@ -370,11 +370,11 @@
             </audioButton>
         </backgroundImage>
     </presenter>
-    <presenter displayOrder="14" menuLabel="Test 4" next="Attic" type="stimulus" self="Test_4" title="Test 4">
+    <presenter displayOrder="14" menuLabel="Room 4" next="Attic" type="stimulus" self="Room_4" title="Room 4">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock4">
             <audioButton eventTag="room_4" src="room_4" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
-                    <loadStimulus eventTag="Test 4" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+                    <loadStimulus eventTag="Room 4" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                         <hasMoreStimulus>
                             <backgroundImage msToNext="0" src="" styleName=""/>
                             <clearPage styleName="fullScreenWidth"/>
@@ -431,11 +431,11 @@
                         <endOfStimulus>
                             <autoNextPresenter/>
                         </endOfStimulus>
-                        <randomGrouping consumedTagGroup="allRooms" storageField="groupAllocation_Test_4">
-                            <tag>Test_1</tag>
-                            <tag>Test_2</tag>
-                            <tag>Test_3</tag>
-                            <tag>Test_4</tag>
+                        <randomGrouping consumedTagGroup="allRooms" storageField="groupAllocation_Room_4">
+                            <tag>Set_1</tag>
+                            <tag>Set_2</tag>
+                            <tag>Set_3</tag>
+                            <tag>Set_4</tag>
                         </randomGrouping>
                         <stimuli>
                             <tag>allRooms</tag>
@@ -446,7 +446,6 @@
         </backgroundImage>
     </presenter>
     <presenter back="Menu" displayOrder="15" menuLabel="Einde van het experiment" next="Edit_User" type="transmission" self="completion" title="Einde van het experiment">
-        <htmlText featureText="Data will not be collected in this version."/>
         <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;Hartelijk dank voor uw deelname! &lt;br/&gt;&lt;br/&gt;"/>
         <addPadding/>
         <addPadding/>
@@ -529,17 +528,17 @@
         <stimulus audioPath="training_2" code="training_2" identifier="training_2" imagePath="training_2" pauseMs="0" tags="Training"/>
         <stimulus audioPath="training_3" code="training_3" identifier="training_3" imagePath="training_3" pauseMs="0" tags="Training"/>
         <stimulus audioPath="training_4" code="training_4" identifier="training_4" imagePath="training_4" pauseMs="0" tags="Training"/>
-        <stimulus audioPath="test_1" code="test_1" identifier="test_1" imagePath="adjacency_a" pauseMs="0" tags="Test_1 allRooms"/>
-        <stimulus audioPath="test_8" code="test_8" identifier="test_8" imagePath="adjacency_b" pauseMs="0" tags="Test_1 allRooms"/>
-        <stimulus audioPath="filler_1" code="filler_1" identifier="filler_1" imagePath="filler_1" pauseMs="0" tags="Test_1 allRooms"/>
-        <stimulus audioPath="test_2" code="test_2" identifier="test_2" imagePath="adjacency_c" pauseMs="0" tags="Test_2 allRooms"/>
-        <stimulus audioPath="test_3" code="test_3" identifier="test_3" imagePath="adjacency_d" pauseMs="0" tags="Test_2 allRooms"/>
-        <stimulus audioPath="filler_3" code="filler_3" identifier="filler_3" imagePath="filler_3" pauseMs="0" tags="Test_2 allRooms"/>
-        <stimulus audioPath="test_5" code="test_5" identifier="test_5" imagePath="adjacency_a" pauseMs="0" tags="Test_3 allRooms"/>
-        <stimulus audioPath="test_4" code="test_4" identifier="test_4" imagePath="adjacency_b" pauseMs="0" tags="Test_3 allRooms"/>
-        <stimulus audioPath="filler_2" code="filler_2" identifier="filler_2" imagePath="filler_2" pauseMs="0" tags="Test_3 allRooms"/>
-        <stimulus audioPath="test_6" code="test_6" identifier="test_6" imagePath="adjacency_c" pauseMs="0" tags="Test_4 allRooms"/>
-        <stimulus audioPath="test_7" code="test_7" identifier="test_7" imagePath="adjacency_d" pauseMs="0" tags="Test_4 allRooms"/>
-        <stimulus audioPath="filler_4" code="filler_4" identifier="filler_4" imagePath="filler_4" pauseMs="0" tags="Test_4 allRooms"/>
+        <stimulus audioPath="test_1" code="test_1" identifier="test_1" imagePath="adjacency_a" pauseMs="0" tags="Room_1 Set_1 allRooms"/>
+        <stimulus audioPath="test_8" code="test_8" identifier="test_8" imagePath="adjacency_b" pauseMs="0" tags="Room_1 Set_1 allRooms"/>
+        <stimulus audioPath="filler_1" code="filler_1" identifier="filler_1" imagePath="filler_1" pauseMs="0" tags="Room_1 Set_1 allRooms"/>
+        <stimulus audioPath="test_3" code="test_3" identifier="test_3" imagePath="adjacency_c" pauseMs="0" tags="Room_2 Set_2 allRooms"/>
+        <stimulus audioPath="test_2" code="test_2" identifier="test_2" imagePath="adjacency_d" pauseMs="0" tags="Room_2 Set_2 allRooms"/>
+        <stimulus audioPath="filler_3" code="filler_3" identifier="filler_3" imagePath="filler_3" pauseMs="0" tags="Room_2 Set_2 allRooms"/>
+        <stimulus audioPath="test_4" code="test_4" identifier="test_4" imagePath="adjacency_a" pauseMs="0" tags="Room_3 Set_3 allRooms"/>
+        <stimulus audioPath="test_5" code="test_5" identifier="test_5" imagePath="adjacency_b" pauseMs="0" tags="Room_3 Set_3 allRooms"/>
+        <stimulus audioPath="filler_2" code="filler_2" identifier="filler_2" imagePath="filler_2" pauseMs="0" tags="Room_3 Set_3 allRooms"/>
+        <stimulus audioPath="test_6" code="test_6" identifier="test_6" imagePath="adjacency_c" pauseMs="0" tags="Room_4 Set_4 allRooms"/>
+        <stimulus audioPath="test_7" code="test_7" identifier="test_7" imagePath="adjacency_d" pauseMs="0" tags="Room_4 Set_4 allRooms"/>
+        <stimulus audioPath="filler_4" code="filler_4" identifier="filler_4" imagePath="filler_4" pauseMs="0" tags="Room_4 Set_4 allRooms"/>
     </stimuli>
 </experiment>
