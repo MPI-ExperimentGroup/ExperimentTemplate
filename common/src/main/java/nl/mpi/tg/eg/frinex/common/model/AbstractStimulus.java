@@ -38,19 +38,18 @@ public abstract class AbstractStimulus implements Stimulus {
     final private String ratingLabels;
     final private String correctResponses;
 
-    public AbstractStimulus(String uniqueId, Tag tags[], String label, String ratingLabels, String correctResponses) {
-        this.uniqueId = uniqueId;
-        this.tags = Arrays.asList(tags);
-        this.label = label;
-        this.code = null;
-        this.pauseMs = 0;
-        this.audioPath = null;
-        this.videoPath = null;
-        this.imagePath = null;
-        this.ratingLabels = ratingLabels;
-        this.correctResponses = correctResponses;
-    }
-
+//    public AbstractStimulus(String uniqueId, Tag tags[], String label, String ratingLabels, String correctResponses) {
+//        this.uniqueId = uniqueId;
+//        this.tags = Arrays.asList(tags);
+//        this.label = label;
+//        this.code = null;
+//        this.pauseMs = 0;
+//        this.audioPath = null;
+//        this.videoPath = null;
+//        this.imagePath = null;
+//        this.ratingLabels = ratingLabels;
+//        this.correctResponses = correctResponses;
+//    }
     public AbstractStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses) {
         this.uniqueId = uniqueId;
         this.tags = Arrays.asList(tags);
@@ -64,19 +63,19 @@ public abstract class AbstractStimulus implements Stimulus {
         this.correctResponses = correctResponses;
     }
 
-    public AbstractStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String ratingLabels, String correctResponses) {
-        this.uniqueId = (uniqueId != null) ? uniqueId : code;
-        this.tags = Arrays.asList(tags);
-        this.label = label;
-        this.code = code;
-        this.pauseMs = pauseMs;
-        this.audioPath = null;
-        this.videoPath = null;
-        this.imagePath = null;
-        this.ratingLabels = ratingLabels;
-        this.correctResponses = correctResponses;
-    }
-
+//    public AbstractStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String ratingLabels, String correctResponses) {
+//        this.uniqueId = (uniqueId != null) ? uniqueId : code;
+//        this.tags = Arrays.asList(tags);
+//        this.label = label;
+//        this.code = code;
+//        this.pauseMs = pauseMs;
+//        this.audioPath = null;
+//        this.videoPath = null;
+//        this.imagePath = null;
+//        this.ratingLabels = ratingLabels;
+//        this.correctResponses = correctResponses;
+//    }
+   
     @Override
     public String getUniqueId() {
         return uniqueId;
