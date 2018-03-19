@@ -42,7 +42,7 @@
         <targetButton featureText="Prestem ples hea sapos yu agri." target="MetadataScreen"/>
     </presenter>
     <presenter back="Welkam" displayOrder="7" menuLabel="Metadata" next="Capture" type="stimulus" self="MetadataScreen" title="Metadata">
-        <loadAllStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" repeatCount="1">
+        <loadStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="Metadata" wavFormat="true" filePerStimulus="false"/>
                 <startAudioRecorderTag eventTier="1"/>
@@ -57,10 +57,11 @@
                 <stopAudioRecorder/>
                 <autoNextPresenter/>
             </endOfStimulus>
+            <randomGrouping/>
             <stimuli>
                 <tag>metadata</tag>
             </stimuli>
-        </loadAllStimulus>
+        </loadStimulus>
     </presenter>
     <presenter back="Welkam" displayOrder="8" menuLabel="Lukluk ol foto" type="stimulus" self="Stimulus" title="Lukluk ol foto">
         <loadSdCardStimulus eventTag="Lukluk ol foto" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
