@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 
 /**
@@ -29,7 +30,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSON
 public class Trial {
 
     private final int trialId;
-    private final ArrayList<AudioAsStimulus> stimuli;  // the first one (zero index) is the cue, it is in the order it should appear for the participant
+    private final ArrayList<BookkeepingStimulus<AudioAsStimulus>> stimuli;  // the first one (zero index) is the cue, it is in the order it should appear for the participant
     private final String word;
     private final String cueFile;
     private final int numberOfSyllables;
@@ -47,17 +48,17 @@ public class Trial {
         this.bandLabel = bandLabel;
         this.bandIndex = bandIndex;
         this.condition = condition;
-        this.stimuli = new ArrayList<AudioAsStimulus>(length + 1);
+        this.stimuli = new ArrayList<BookkeepingStimulus<AudioAsStimulus>>(length + 1);
         for (int i=0; i<length+1; i++){
            this.stimuli.add(null); 
         }
     }
 
-    public void addStimulus(AudioAsStimulus stimulus, int stimulusPosition){
+    public void addStimulus(BookkeepingStimulus<AudioAsStimulus> stimulus, int stimulusPosition){
         this.stimuli.set(stimulusPosition, stimulus);
     }
 
-    public ArrayList<AudioAsStimulus> getStimuli() {
+    public ArrayList<BookkeepingStimulus<AudioAsStimulus>> getStimuli() {
         return this.stimuli;
     }
 
@@ -117,14 +118,14 @@ StringBuilder builder = new StringBuilder();
         builder.append("bandIndex:{").append(this.bandIndex).append("},");
         builder.append("bandLabel:{").append(this.bandLabel).append("},");
         builder.append("condition:{").append(this.condition).append("},");
-        UtilsJSONdialect<AudioAsStimulus> util = new UtilsJSONdialect<AudioAsStimulus>();
+        UtilsJSONdialect<BookkeepingStimulus<AudioAsStimulus>> util = new UtilsJSONdialect<BookkeepingStimulus<AudioAsStimulus>>();
         String stimulusIDsStr = "";
         try {
             stimulusIDsStr = util.arrayListToString(this.stimuli);
         } catch (Exception ex) {
 
         }
-        builder.append("stimulusIDs:").append(stimulusIDsStr);
+        builder.append("stimuli:").append(stimulusIDsStr);
         builder.append("}");
         return builder.toString();
 
@@ -147,18 +148,20 @@ StringBuilder builder = new StringBuilder();
             int lgth = Integer.parseInt(lgthStr);
             int bandIndex = Integer.parseInt(bandIndexStr);
             int id = Integer.parseInt(idStr);
-            TrialCondition condition = TrialCondition.stringToCondition(conditionStr);
+            TrialCondition condition = TrialCondition.valueOf(conditionStr);
 
-            ArrayList<AudioAsStimulus> stimuli = new ArrayList<AudioAsStimulus>();
-            String stimulusIDsStr = UtilsJSONdialect.getKey(str, "stimulusIDs");
-            UtilsJSONdialect<String> util = new UtilsJSONdialect<String>();
-            ArrayList<String> stimulusIDs = util.stringToArrayList(stimulusIDsStr);
+            String stimuliStr = UtilsJSONdialect.getKey(str, "stimuli");
+            
+            UtilsJSONdialect<BookkeepingStimulus<AudioAsStimulus>> util = new UtilsJSONdialect<BookkeepingStimulus<AudioAsStimulus>>();
+            ArrayList<String> bStimuli = util.stringToArrayList(stimuliStr);
            
             //Trial(int id, String word, String cueFile, int nOfSyllables, TrialCondition condition, int length, String bandLabel, int bandIndex)
             Trial retVal = new Trial(id, word, cueFile, numberOfSyllables, condition, lgth, bandLabel, bandIndex);
-            for (int i=0; i<stimulusIDs.size(); i++) {
-                AudioAsStimulus stimulus = hashedStimuli.get(stimulusIDs.get(i));
-                retVal.addStimulus(stimulus, i);
+            for (int i=0; i<bStimuli.size(); i++) {
+                BookkeepingStimulus<AudioAsStimulus> ghost = new BookkeepingStimulus<AudioAsStimulus>(null);
+                BookkeepingStimulus<AudioAsStimulus> bStimulus = ghost.toObject(bStimuli.get(i), hashedStimuli);
+                int position =  bStimulus.getStimulus().getPositionInTrialInt();
+                retVal.addStimulus(bStimulus, position);
             }
             
             return retVal;

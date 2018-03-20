@@ -15,19 +15,37 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audioaspool;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool;
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
 /**
  *
  * @author olhshk
  */
-public class AudioIndexMap {
+@RunWith(Suite.class)
+@Suite.SuiteClasses({VocabularyTest.class})
+public class AdvocaspoolSuite {
 
-    public static final String[] INDEX_ARRAY = {
-        "2dB",
-        "6dB",
-        "10dB",};
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() throws Exception {
+    }
+
+    @After
+    public void tearDown() throws Exception {
+    }
     
-   
-
 }

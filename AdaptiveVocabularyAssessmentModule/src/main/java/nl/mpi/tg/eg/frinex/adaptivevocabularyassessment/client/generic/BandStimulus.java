@@ -30,28 +30,20 @@ public abstract class BandStimulus extends AbstractStimulus {
         super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses);
     }
 
-    abstract String getbandLabel();
+    public abstract String getbandLabel();
     
-    abstract String getbandIndex();
+    public abstract String getbandIndex();
     
     public int getBandIndexInt(){
        return Integer.parseInt(this.getbandIndex()); 
     }
     
-    public int getBandNumber(){
-       return (Integer.parseInt(this.getbandIndex()))+1; 
-    }
-    
-    public String getBandLabel(){
-        return this.getbandLabel();
-    }
-   
+ 
   
     @Override
     public String toString(){
         return this.getUniqueId();
     }
 
-    
    
 }

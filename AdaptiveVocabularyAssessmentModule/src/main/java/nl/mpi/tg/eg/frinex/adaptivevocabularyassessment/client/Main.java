@@ -28,10 +28,6 @@ public class Main {
      */
     public static void main(String[] args) throws Exception {
 
-        final String WORD_FILE_LOCATION = "2.selection_words_nonwords_w.csv";
-
-        final String NONWORD_FILE_LOCATION = "2.selection_words_nonwords.csv";
-
     }
 
 }

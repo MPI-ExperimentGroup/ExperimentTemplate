@@ -29,7 +29,7 @@ import org.junit.runners.Suite;
  * @author olhshk
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.WordTypeTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioUtilsTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.PermutationPairTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialTupleTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioAsStimulusTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialConditionTest.class})
+@Suite.SuiteClasses({nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.WordTypeTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.PermutationPairTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialTupleTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioAsStimulusTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialConditionTest.class})
 public class AudioSuite {
 
     @BeforeClass

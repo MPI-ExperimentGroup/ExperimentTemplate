@@ -18,8 +18,6 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
 import java.util.ArrayList;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioAsStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.WordType;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -95,7 +93,7 @@ public class UtilsJSONdialectTest {
     @Test
     public void testArrayListToString() throws Exception {
         System.out.println("arrayListToString");
-        UtilsJSONdialect instance = new UtilsJSONdialect<String>();
+        UtilsJSONdialect<String> instance = new UtilsJSONdialect<String>();
         ArrayList<String> input = new ArrayList<String>();
         input.add("rhabarber");
         input.add("compot");
@@ -111,7 +109,7 @@ public class UtilsJSONdialectTest {
     @Test
     public void testArrayListToString2() throws Exception {
         System.out.println("arrayListToString");
-        UtilsJSONdialect instance = new UtilsJSONdialect<String>();
+        UtilsJSONdialect<Integer> instance = new UtilsJSONdialect<Integer>();
         ArrayList<Integer> input = new ArrayList<Integer>();
         input.add(100);
         input.add(200);
@@ -121,41 +119,7 @@ public class UtilsJSONdialectTest {
         assertEquals(expResult, result);
     }
 
-    /**
-     * Test of arrayListToString method, of class UtilsJSONdialect.
-     */
-    @Test
-    public void testArrayListToString3() throws Exception {
-        System.out.println("arrayListToString");
-        UtilsJSONdialect instance = new UtilsJSONdialect<String>();
-        ArrayList<AudioAsStimulus> input = new ArrayList<AudioAsStimulus>();
-
-        /*
-    public AudioAsStimulus(String uniqueId, String label, int pauseMs, String audioPath, String correctResponses, String bandLabel, int bandIndex, WordType wordtype, String ratingLabel)
-         */
-        AudioAsStimulus stimulus1 = new AudioAsStimulus("xxx", "test", 100, "/here/test.wav", null, "2dB", 0, WordType.EXAMPLE_TARGET_NON_WORD, AudioAsStimulus.EXAMPLE_TARGET_LABEL);
-        AudioAsStimulus stimulus2 = new AudioAsStimulus("xxx1", "test1", 200, "/here/test1.wav", "YES", "6dB", 1, WordType.TARGET_NON_WORD, AudioAsStimulus.AUDIO_RATING_LABEL);
-        AudioAsStimulus stimulus3 = new AudioAsStimulus("xxx2", "test2", 300, "/here/test2.wav", null, "10dB", 2, WordType.NON_WORD, AudioAsStimulus.AUDIO_RATING_LABEL);
-        long millisec1 = System.currentTimeMillis();
-        stimulus1.setTimeStamp(millisec1);
-        input.add(stimulus1);
-        long millisec2 = System.currentTimeMillis();
-        stimulus2.setTimeStamp(millisec2);
-        input.add(stimulus2);
-        long millisec3 = System.currentTimeMillis();
-        stimulus3.setTimeStamp(millisec3);
-        input.add(stimulus3);
-        
-        String expResult1 = "{audioPath:{/here/test.wav},label:{test},pauseMs:{100},ratingLabels:{"+AudioAsStimulus.EXAMPLE_TARGET_LABEL+"},uniqueId:{xxx},bandLabel:{2dB},bandIndex:{0},timeStamp:{"+millisec1+"},wordType:{"+WordType.EXAMPLE_TARGET_NON_WORD+"}}";
-        String expResult2 = "{audioPath:{/here/test1.wav},correctResponses:{YES},label:{test1},pauseMs:{200},ratingLabels:{"+AudioAsStimulus.AUDIO_RATING_LABEL+"},uniqueId:{xxx1},bandLabel:{6dB},bandIndex:{1},timeStamp:{"+millisec2+"},wordType:{"+WordType.TARGET_NON_WORD+"}}";
-        String expResult3 = "{audioPath:{/here/test2.wav},label:{test2},pauseMs:{300},ratingLabels:{"+AudioAsStimulus.AUDIO_RATING_LABEL+"},uniqueId:{xxx2},bandLabel:{10dB},bandIndex:{2},timeStamp:{"+millisec3+"},wordType:{"+WordType.NON_WORD+"}}";
-        
-        
-        String expResult = "{0:"+expResult1+",1:"+expResult2+",2:"+expResult3+"}";
-        String result = instance.arrayListToString(input);
-        assertEquals(expResult, result);
-    }
-
+    
     /**
      * Test of stringToArrayList method, of class UtilsJSONdialect.
      */
@@ -186,6 +150,123 @@ public class UtilsJSONdialectTest {
         UtilsJSONdialect instance = new UtilsJSONdialect();
         ArrayList<String> result = instance.stringToArrayList(listStr);
         assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of removeFirstAndLast method, of class UtilsJSONdialect.
+     */
+    @Test
+    public void testRemoveFirstAndLast() {
+        System.out.println("removeFirstAndLast");
+        String str = "{abc}";
+        String expResult = "abc";
+        String result = UtilsJSONdialect.removeFirstAndLast(str);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of getKeyWithoutBrackets method, of class UtilsJSONdialect.
+     */
+    @Test
+    public void testGetKeyWithoutBrackets() throws Exception {
+        System.out.println("getKeyWithoutBrackets");
+        String jsonString = "x:{y},param:{value},param1:{value1,value2}";
+        String key = "param";
+        String expResult = "value";
+        String result = UtilsJSONdialect.getKeyWithoutBrackets(jsonString, key);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of arrayList2String method, of class UtilsJSONdialect.
+     */
+    @Test
+    public void testArrayList2String() throws Exception {
+        System.out.println("arrayList2String");
+        UtilsJSONdialect<Integer> instance = new UtilsJSONdialect<Integer>();
+        ArrayList<ArrayList<ArrayList>> input = new  ArrayList<ArrayList<ArrayList>>();
+        String expResult = "";
+        String result = instance.arrayList2String(null);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of arrayList3String method, of class UtilsJSONdialect.
+     */
+    @Test
+    public void testArrayList3String() throws Exception {
+        System.out.println("arrayList3String");
+        UtilsJSONdialect instance = new UtilsJSONdialect();
+        String expResult = "";
+        String result = instance.arrayList3String(null);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of intArrayListToString method, of class UtilsJSONdialect.
+     */
+    @Test
+    public void testIntArrayListToString() throws Exception {
+        System.out.println("intArrayListToString");
+        int[] arr = null;
+        UtilsJSONdialect instance = new UtilsJSONdialect();
+        String expResult = "";
+        String result = instance.intArrayListToString(arr);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of doubleArrayListToString method, of class UtilsJSONdialect.
+     */
+    @Test
+    public void testDoubleArrayListToString() throws Exception {
+        System.out.println("doubleArrayListToString");
+        double[] arr = null;
+        UtilsJSONdialect instance = new UtilsJSONdialect();
+        String expResult = "";
+        String result = instance.doubleArrayListToString(arr);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of stringToArrayListInteger method, of class UtilsJSONdialect.
+     */
+    @Test
+    public void testStringToArrayListInteger() throws Exception {
+        System.out.println("stringToArrayListInteger");
+        String listStr = "";
+        UtilsJSONdialect instance = new UtilsJSONdialect();
+        ArrayList<Integer> expResult = null;
+        ArrayList<Integer> result = instance.stringToArrayListInteger(listStr);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of stringToArrayDouble method, of class UtilsJSONdialect.
+     */
+    @Test
+    public void testStringToArrayDouble() throws Exception {
+        System.out.println("stringToArrayDouble");
+        String listStr = "{0:{0.5},1:{1.4},2:{2.3},3:{3.2}}";
+        UtilsJSONdialect instance = new UtilsJSONdialect();
+        double[] expResult = new double[4];
+        for (int i=0; i<4; i++) {
+            expResult[i] = i + (5-i)/10;
+        }
+        double[] result = instance.stringToArrayDouble(listStr);
+        for (int i=0; i<result.length; i++) {
+             assertTrue(expResult[i]==result[i]);
+        }
     }
 
 }

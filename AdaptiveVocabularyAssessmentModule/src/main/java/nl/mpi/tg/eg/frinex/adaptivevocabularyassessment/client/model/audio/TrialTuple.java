@@ -19,8 +19,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Random;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 
 /**
@@ -31,8 +30,7 @@ public class TrialTuple {
 
     private final ArrayList<Trial> trials;
     private Boolean correctness;
-    private static final Random RND = new Random();
-
+    
     public TrialTuple(ArrayList<Trial> trials) {
         this.trials = trials;
         this.correctness = null;
@@ -43,12 +41,12 @@ public class TrialTuple {
         this.correctness = correctness;
     }
 
-    public AudioAsStimulus removeFirstAvailableStimulus() {
+    public BookkeepingStimulus<AudioAsStimulus> removeFirstAvailableStimulus() {
         int i = 0;
         while (this.trials.get(i).getStimuli().size() < 1) {
             i++;
         }
-        AudioAsStimulus retVal = this.trials.get(i).getStimuli().remove(0);
+        BookkeepingStimulus<AudioAsStimulus> retVal = this.trials.get(i).getStimuli().remove(0);
         return retVal;
     }
 
@@ -86,28 +84,7 @@ public class TrialTuple {
         return false; // all trials are fired!
     }
 
-    public static TrialTuple createTupleForBand(ArrayList<PermutationPair> availablePermutations, Map<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> trialMatrix, int size, int bandIndex) {
-        if (availablePermutations.size() < 1) {
-            return null;
-        }
-
-        ArrayList<Trial> trials = new ArrayList<Trial>(size);
-        int combinationIndex = RND.nextInt(availablePermutations.size());
-        PermutationPair permPair = availablePermutations.get(combinationIndex);
-        for (int i = 0; i < size; i++) {
-            TrialCondition trialType = permPair.trialTypes.get(i);
-            Integer length = permPair.trialLengths.get(i);
-            ArrayList<Trial> possibilities = trialMatrix.get(trialType).get(bandIndex).get(length);
-            int trialIndex = RND.nextInt(possibilities.size());
-            Trial currentTrial = possibilities.remove(trialIndex);
-            trials.add(currentTrial);
-        }
-
-        ArrayList<PermutationPair> toBeRemoved = AudioUtils.emptiedPossibilities(availablePermutations, trialMatrix, bandIndex, size);
-        availablePermutations.removeAll(toBeRemoved);
-        TrialTuple retVal = new TrialTuple(trials);
-        return retVal;
-    }
+   
 
     @Override
     public String toString() {

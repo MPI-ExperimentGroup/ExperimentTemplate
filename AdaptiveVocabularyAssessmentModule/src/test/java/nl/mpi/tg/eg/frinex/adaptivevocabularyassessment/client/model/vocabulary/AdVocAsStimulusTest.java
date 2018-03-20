@@ -15,23 +15,23 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary;
 
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Vocabulary;
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
  * @author olhshk
  */
-public class PermutationPairTest {
+public class AdVocAsStimulusTest {
     
-    public PermutationPairTest() {
+    public AdVocAsStimulusTest() {
     }
     
     @BeforeClass
@@ -50,20 +50,33 @@ public class PermutationPairTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of toString method, of class PermutationPair.
+    /*
+     * Test of getBandNumber method, of class AdVocAsStimulus.
      */
     @Test
-    public void testToString() {
-        System.out.println("toString");
-        PermutationPair instance = null;
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testGetBandNumber() {
+        System.out.println("getBandNumber");
+        AdVocAsStimulus instance = new AdVocAsStimulusImpl1();
+        int result = instance.getBandNumber();
+        assertEquals(20, result);
     }
 
-   
+    public class AdVocAsStimulusImpl1 extends AdVocAsStimulus {
+
+        //AdVocAsStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses)
+        public AdVocAsStimulusImpl1() {
+            super("abc_000", new Tag[1], "abc", "", 0, null, null, null, Vocabulary.NONWORD+","+Vocabulary.WORD, Vocabulary.NONWORD);
+        }
+        
+        @Override
+        public String getbandIndex(){
+            return "19";
+        }
+        
+         @Override
+        public String getbandLabel(){
+            return "20";
+        }
+    }
     
 }

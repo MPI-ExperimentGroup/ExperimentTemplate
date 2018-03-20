@@ -15,9 +15,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package utils;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -29,9 +31,9 @@ import static org.junit.Assert.*;
  *
  * @author olhshk
  */
-public class AudioStimuliFromFilesTest {
+public class VocabularyTest {
     
-    public AudioStimuliFromFilesTest() {
+    public VocabularyTest() {
     }
     
     @BeforeClass
@@ -51,50 +53,56 @@ public class AudioStimuliFromFilesTest {
     }
 
     /**
-     * Test of parseTrialsInputCSV method, of class AudioStimuliFromFiles.
+     * Test of getWordsInBands method, of class Vocabulary.
      */
     @Test
-    public void testParseTrialsInputCSV() throws Exception {
-        System.out.println("parseTrialsInputCSV");
-        String wordFileLocation = "";
-        ArrayList<String> fileNameExtensions = null;
-        String wordColumnsPrefix = "";
-        AudioStimuliFromFiles instance = new AudioStimuliFromFiles();
-        ArrayList<String> expResult = null;
-        ArrayList<String> result = instance.parseTrialsInputCSV(wordFileLocation, fileNameExtensions, wordColumnsPrefix);
+    public void testGetWordsInBands() {
+        System.out.println("getWordsInBands");
+        Vocabulary instance = null;
+        ArrayList<ArrayList<AdVocAsStimulus>> expResult = null;
+        ArrayList<ArrayList<AdVocAsStimulus>> result = instance.getWordsInBands();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of renoveFileNameExtensions method, of class AudioStimuliFromFiles.
+     * Test of getNonwords method, of class Vocabulary.
      */
     @Test
-    public void testRenoveFileNameExtensions() {
-        System.out.println("renoveFileNameExtensions");
-        String fileName = "";
-        ArrayList<String> nameExtensions = null;
-        AudioStimuliFromFiles instance = new AudioStimuliFromFiles();
-        String expResult = "";
-        String result = instance.renoveFileNameExtensions(fileName, nameExtensions);
+    public void testGetNonwords() {
+        System.out.println("getNonwords");
+        Vocabulary instance = null;
+        ArrayList<AdVocAsStimulus> expResult = null;
+        ArrayList<AdVocAsStimulus> result = instance.getNonwords();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of arrayListAsStringArray method, of class AudioStimuliFromFiles.
+     * Test of getHashedStimuli method, of class Vocabulary.
      */
     @Test
-    public void testArrayListAsStringArray() {
-        System.out.println("arrayListAsStringArray");
-        ArrayList<String> rows = null;
-        String declaration = "";
-        AudioStimuliFromFiles instance = new AudioStimuliFromFiles();
-        String expResult = "";
-        String result = instance.arrayListAsStringArray(rows, declaration);
+    public void testGetHashedStimuli() {
+        System.out.println("getHashedStimuli");
+        Vocabulary instance = null;
+        HashMap<String, AdVocAsStimulus> expResult = null;
+        HashMap<String, AdVocAsStimulus> result = instance.getHashedStimuli();
         assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of initialise method, of class Vocabulary.
+     */
+    @Test
+    public void testInitialise() {
+        System.out.println("initialise");
+        AdVocAsStimulus[] stimuli = null;
+        Vocabulary instance = null;
+        instance.initialise(stimuli);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

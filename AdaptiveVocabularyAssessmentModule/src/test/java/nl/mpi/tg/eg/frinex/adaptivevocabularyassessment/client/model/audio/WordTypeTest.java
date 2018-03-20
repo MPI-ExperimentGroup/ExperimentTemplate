@@ -83,4 +83,5 @@ public class WordTypeTest {
         assertEquals(WordType.NON_WORD, result5);
     }
 
+ 
 }

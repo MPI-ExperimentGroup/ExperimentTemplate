@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -83,24 +84,5 @@ public class TrialConditionTest {
         } 
     }
 
-    /**
-     * Test of stringToCondition method, of class TrialCondition.
-     */
-    @Test
-    public void testStringToCondition() {
-        System.out.println("stringToCondition");
-        TrialCondition result1 = TrialCondition.stringToCondition("Target-only");
-        assertEquals(TrialCondition.TARGET_ONLY, result1);
-        TrialCondition result2 = TrialCondition.stringToCondition("Target+Foil");
-        assertEquals(TrialCondition.TARGET_AND_FOIL, result2);
-        TrialCondition result3 = TrialCondition.stringToCondition("NoTarget");
-        assertEquals(TrialCondition.NO_TARGET, result3);
-        try {
-           TrialCondition result4 = TrialCondition.stringToCondition("Rubbish");
-           fail("No exception thrown!");
-        } catch (IllegalArgumentException e) {
-           System.out.println("fine, illegal argument is catched");
-        } 
-    }
-    
+
 }

@@ -23,10 +23,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsBookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsNonWords1;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsNonWords2;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsWords1;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimuliTest;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Vocabulary;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
@@ -100,7 +97,7 @@ public class AdVocAsStimuliProviderTest {
         int sBand = Integer.parseInt(this.startBand);
         int aNonWordPosition = Integer.parseInt(this.averageNonWordPoistion);
 
-        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype("0");
         provider.setnumberOfBands(this.numberOfBands); 
@@ -121,7 +118,7 @@ public class AdVocAsStimuliProviderTest {
 
         ArrayList<AdVocAsStimulus> nonwords = provider.getNonwords();
 
-        int expectedNonwordsLength = ConstantsNonWords1.NONWORDS_SERIES[0].length;
+        int expectedNonwordsLength = 0;
         assertEquals(expectedNonwordsLength, nonwords.size());
 
         int expectedTotalsStimuli = nOfBands * wordsPerBandInSeries + expectedNonwordsLength;
@@ -151,7 +148,7 @@ public class AdVocAsStimuliProviderTest {
         int sBand = Integer.parseInt(this.startBand);
         int aNonWordPosition = Integer.parseInt(this.averageNonWordPoistion);
 
-        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype("0");
         provider.setnumberOfBands(this.numberOfBands); 
@@ -172,7 +169,7 @@ public class AdVocAsStimuliProviderTest {
 
         ArrayList<AdVocAsStimulus> nonwords = provider.getNonwords();
 
-        int expectedNonwordsLength = ConstantsNonWords2.NONWORDS_SERIES[0].length;
+        int expectedNonwordsLength = 0;
         assertEquals(expectedNonwordsLength, nonwords.size());
 
         int expectedTotalsStimuli = nOfBands * wordsPerBandInSeries + expectedNonwordsLength;
@@ -202,7 +199,7 @@ public class AdVocAsStimuliProviderTest {
         int sBand = Integer.parseInt(this.startBand);
         int aNonWordPosition = Integer.parseInt(this.averageNonWordPoistion);
 
-        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype("1");
         provider.setnumberOfBands(this.numberOfBands); 
@@ -223,7 +220,7 @@ public class AdVocAsStimuliProviderTest {
 
         ArrayList<AdVocAsStimulus> nonwords = provider.getNonwords();
 
-        int expectedNonwordsLength = ConstantsNonWords2.NONWORDS_SERIES[1].length;
+        int expectedNonwordsLength = 0;
         assertEquals(expectedNonwordsLength, nonwords.size());
 
         int expectedTotalsStimuli = nOfBands * wordsPerBandInSeries + expectedNonwordsLength;
@@ -243,7 +240,7 @@ public class AdVocAsStimuliProviderTest {
     @Test
     public void testGetCurrentStimulusIndex() {
         System.out.println("getCurrentStimulusIndex");
-        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
         int nOfBands = Integer.parseInt(this.numberOfBands);
         String numberOfSeries = "2";
         int nOfSeries = Integer.parseInt(numberOfSeries);
@@ -349,7 +346,7 @@ public class AdVocAsStimuliProviderTest {
 
         System.out.println(info);
 
-        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
 
         int nOfBands = Integer.parseInt(this.numberOfBands);
         int nOfSeries = Integer.parseInt(numberOfSeries);
@@ -377,9 +374,9 @@ public class AdVocAsStimuliProviderTest {
         String label = stimulus.getLabel();
         assertTrue(label != null);
         //System.out.println("Label: " + label);
-        AdVocAsBookkeepingStimulus bStimulus = provider.getResponseRecord().get(provider.getCurrentStimulusIndex());
+       BookkeepingStimulus<AdVocAsStimulus> bStimulus = provider.getResponseRecord().get(provider.getCurrentStimulusIndex());
         int expectedBand = stimulus.getCorrectResponses().equals(Vocabulary.WORD) ? Integer.parseInt(this.startBand) : -1;
-        assertEquals(expectedBand, bStimulus.getBandLabel().intValue());
+        assertEquals(expectedBand, bStimulus.getStimulus().getbandLabel());
     }
 
     /**
@@ -411,7 +408,7 @@ public class AdVocAsStimuliProviderTest {
 
     private void testIsCorrectResponse(String numberOfSeries, String type, String info) throws Exception {
         System.out.println(info);
-        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
 
         int nOfBands = Integer.parseInt(this.numberOfBands);
         int nOfSeries = Integer.parseInt(numberOfSeries);
@@ -438,7 +435,7 @@ public class AdVocAsStimuliProviderTest {
         boolean result = provider.isCorrectResponse(stimulus, stimulus.getCorrectResponses());
         assertTrue(result);
 
-        AdVocAsBookkeepingStimulus bStimulus = provider.getResponseRecord().get(0);
+        BookkeepingStimulus<AdVocAsStimulus> bStimulus = provider.getResponseRecord().get(0);
         assertTrue(bStimulus.getCorrectness());
 
         boolean expectedReaction = stimulus.getCorrectResponses().equals(Vocabulary.WORD);
@@ -460,7 +457,7 @@ public class AdVocAsStimuliProviderTest {
         boolean result2 = provider.isCorrectResponse(stimulus2, response2);
         assertFalse(result2);
 
-        AdVocAsBookkeepingStimulus bStimulus2 = provider.getResponseRecord().get(1);
+        BookkeepingStimulus<AdVocAsStimulus> bStimulus2 = provider.getResponseRecord().get(1);
         assertFalse(bStimulus2.getCorrectness());
 
         boolean expectedCorrectReaction2 = stimulus2.getCorrectResponses().equals(Vocabulary.WORD);
@@ -470,7 +467,7 @@ public class AdVocAsStimuliProviderTest {
 
     private void testGetTotalStimuli(String numberOfSeries, String type, String info, int nNonwords) {
         System.out.println(info);
-        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
         int nOfBands = Integer.parseInt(this.numberOfBands);
         int nOfSeries = Integer.parseInt(numberOfSeries);
 
@@ -499,7 +496,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetTotalStimuli10_1() {
-        int nonWordsLength = ConstantsNonWords1.NONWORDS_SERIES[0].length;
+        int nonWordsLength = 0;
         this.testGetTotalStimuli("1", "0", "testGetTotalStimuli10_1", nonWordsLength);
     }
 
@@ -508,7 +505,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetTotalStimuli10_2() {
-        int nonWordsLength = ConstantsNonWords1.NONWORDS_SERIES[0].length;
+        int nonWordsLength = 0;
         this.testGetTotalStimuli("1", "0", "testGetTotalStimuli10_1", nonWordsLength);
     }
 
@@ -517,7 +514,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetTotalStimuli10_3() {
-        int nonWordsLength = ConstantsNonWords1.NONWORDS_SERIES[0].length;
+        int nonWordsLength = 0;
         this.testGetTotalStimuli("1", "0", "testGetTotalStimuli10_1", nonWordsLength);
     }
 
@@ -526,7 +523,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetTotalStimuli20_1() {
-        int nonWordsLength = ConstantsNonWords2.NONWORDS_SERIES[0].length;
+        int nonWordsLength = 0;
         this.testGetTotalStimuli("2", "0", "testGetTotalStimuli20_1", nonWordsLength);
     }
 
@@ -535,7 +532,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetTotalStimuli20_2() {
-        int nonWordsLength = ConstantsNonWords2.NONWORDS_SERIES[0].length;
+        int nonWordsLength = 0;
         this.testGetTotalStimuli("2", "0", "testGetTotalStimuli20_2", nonWordsLength);
     }
 
@@ -544,7 +541,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetTotalStimuli20_3() {
-        int nonWordsLength = ConstantsNonWords2.NONWORDS_SERIES[0].length;
+        int nonWordsLength = 0;
         this.testGetTotalStimuli("2", "0", "testGetTotalStimuli20_3", nonWordsLength);
     }
 
@@ -553,7 +550,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetTotalStimuli21_1() {
-        int nonWordsLength = ConstantsNonWords2.NONWORDS_SERIES[1].length;
+        int nonWordsLength = 0;
         this.testGetTotalStimuli("2", "1", "testGetTotalStimuli21_1", nonWordsLength);
     }
 
@@ -562,7 +559,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetTotalStimuli21_2() {
-        int nonWordsLength = ConstantsNonWords2.NONWORDS_SERIES[1].length;
+        int nonWordsLength = 0;
         this.testGetTotalStimuli("2", "1", "testGetTotalStimuli21_2", nonWordsLength);
     }
 
@@ -571,7 +568,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetTotalStimuli21_3() {
-        int nonWordsLength = ConstantsNonWords2.NONWORDS_SERIES[1].length;
+        int nonWordsLength = 0;
         this.testGetTotalStimuli("2", "1", "testGetTotalStimuli21_3", nonWordsLength);
     }
 
@@ -709,7 +706,7 @@ public class AdVocAsStimuliProviderTest {
     // also tests nextStimulus
     private AdVocAsStimuliProvider testHasNextStimulus(String numberOfSeries, String type, String info) throws Exception {
         System.out.println(info);
-        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
         int nOfBands = Integer.parseInt(this.numberOfBands);
         int nOfSeries = Integer.parseInt(numberOfSeries);
         provider.setnumberOfSeries(numberOfSeries);
@@ -737,7 +734,7 @@ public class AdVocAsStimuliProviderTest {
         //experiment 0, correct answer
         int ind1 = provider.getCurrentStimulusIndex();
         assertEquals(0, ind1);
-        BookkeepingStimulus stimulus = provider.getCurrentStimulus();
+        AdVocAsStimulus stimulus = provider.getCurrentStimulus();
 
         provider.isCorrectResponse(stimulus, stimulus.getCorrectResponses());
 
@@ -756,7 +753,7 @@ public class AdVocAsStimuliProviderTest {
         int ind2 = provider.getCurrentStimulusIndex();
         assertEquals(1, ind2);
 
-        BookkeepingStimulus stimulus2 = provider.getCurrentStimulus();
+        AdVocAsStimulus stimulus2 = provider.getCurrentStimulus();
         String correctResponse = stimulus2.getCorrectResponses();
         String response = null;
         if (correctResponse.equals(Vocabulary.WORD)) {
@@ -782,7 +779,7 @@ public class AdVocAsStimuliProviderTest {
 
         int ind3 = provider.getCurrentStimulusIndex();
         assertEquals(2, ind3);
-        BookkeepingStimulus stimulus3 = provider.getCurrentStimulus();
+        AdVocAsStimulus stimulus3 = provider.getCurrentStimulus();
         String correctResponse3 = stimulus3.getCorrectResponses();
         String response3 = null;
         if (correctResponse3.equals(Vocabulary.WORD)) {
@@ -834,7 +831,7 @@ public class AdVocAsStimuliProviderTest {
 
     private void testGetCurrentStimulusUniqueId(String numberOfSeries, String type, String info) {
         System.out.println(info);
-        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
         int nOfBands = Integer.parseInt(this.numberOfBands);
         int nOfSeries = Integer.parseInt(numberOfSeries);
         provider.setnumberOfSeries(numberOfSeries);
@@ -894,7 +891,7 @@ public class AdVocAsStimuliProviderTest {
         int[] visitCounter = {1, 3, 2, 3, 3, 3, 1};
         // indices {1,3,4,5}
         // ind = 1, indSym = 2
-        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
         int currentIndex1 = 2; // at 2
         int bandNumber1 = provider.mostOftenVisitedBandNumber(visitCounter, currentIndex1);
         assertEquals(4, bandNumber1);
@@ -915,7 +912,7 @@ public class AdVocAsStimuliProviderTest {
     private void testPercentageBandTable(String numberOfSeries, String type, String info) {
         System.out.println(info);
 
-        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
         int nOfBands = Integer.parseInt(this.numberOfBands);
         int nOfSeries = Integer.parseInt(numberOfSeries);
         provider.setnumberOfSeries(numberOfSeries);
@@ -1013,7 +1010,7 @@ public class AdVocAsStimuliProviderTest {
         int sBand = Integer.parseInt(this.startBand);
         int aNonWordPosition = Integer.parseInt(this.averageNonWordPoistion);
 
-        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype(type);
         provider.setnumberOfBands(this.numberOfBands); 
@@ -1029,14 +1026,14 @@ public class AdVocAsStimuliProviderTest {
         boolean hasNextStimulus = provider.hasNextStimulus(0);
         int currentExperimentCount = 0;
         while (hasNextStimulus) {
-            ArrayList<AdVocAsBookkeepingStimulus> ft = provider.getFTtuple();
+            ArrayList<BookkeepingStimulus<AdVocAsStimulus>> ft = provider.getFTtuple();
             if (ft.size() == 4) {
                 this.checkFreshFineTuningTuple(ft);
             }
             provider.nextStimulus(0);
             currentExperimentCount = provider.getCurrentStimulusIndex();
             //System.out.println(currentExperimentCount);
-            BookkeepingStimulus stimulus = provider.getCurrentStimulus();
+            AdVocAsStimulus stimulus = provider.getCurrentStimulus();
             String answer = this.probabilisticAnswerer(stimulus, prob, rnd);
             boolean isCorrect = provider.isCorrectResponse(stimulus, answer);
             hasNextStimulus = provider.hasNextStimulus(0);
@@ -1052,7 +1049,7 @@ public class AdVocAsStimuliProviderTest {
 
         if (enoughFineTuningStimulae && !champion) { // the fine tunig has been stoppped because of false reaction and further checks (cycle-2 or looser)
             int recordSize = provider.getResponseRecord().size();
-            AdVocAsBookkeepingStimulus lastStimulus = provider.getResponseRecord().get(recordSize - 1);
+            BookkeepingStimulus<AdVocAsStimulus> lastStimulus = provider.getResponseRecord().get(recordSize - 1);
             assertFalse(lastStimulus.getCorrectness());
             assertTrue(cycle2 || looser);
             if (looser) {
@@ -1077,8 +1074,8 @@ public class AdVocAsStimuliProviderTest {
         LinkedHashMap<Integer, String> samples = provider.retrieveSampleWords(provider.getResponseRecord(), provider.getWords());
 
         Vocabulary vocab = new Vocabulary(nOfBands, wordsPerBandInSeries);
-        AdVocAsStimulus[][] wordArray = ConstantsWords1.WORDS_SERIES[0];
-        ArrayList<ArrayList<AdVocAsStimulus>> wordsInBands = vocab.initialiseWords(wordArray);
+        AdVocAsStimulus[][] wordArray = null;
+        ArrayList<ArrayList<AdVocAsStimulus>> wordsInBands = null;
 
         assertEquals(nOfBands, samples.keySet().size());
         for (int bandNumber = 1; bandNumber <= nOfBands; bandNumber++) {
@@ -1156,7 +1153,7 @@ public class AdVocAsStimuliProviderTest {
         int sBand = Integer.parseInt(this.startBand);
         int aNonWordPosition = Integer.parseInt(this.averageNonWordPoistion);
 
-        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider();
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype("0");
         provider.setnumberOfBands(this.numberOfBands); 
@@ -1172,7 +1169,7 @@ public class AdVocAsStimuliProviderTest {
         // make to wrong answers to start fine tuning immediately
         provider.hasNextStimulus(0);
         provider.nextStimulus(0);
-        BookkeepingStimulus stimulus = provider.getCurrentStimulus();
+        AdVocAsStimulus stimulus = provider.getCurrentStimulus();
         String answer = this.makeResponseWrong(stimulus);
         boolean isCorrect = provider.isCorrectResponse(stimulus, answer);
 
@@ -1188,7 +1185,7 @@ public class AdVocAsStimuliProviderTest {
         int tupleCounter = 0;
         while (hasNextStimulus) {
 
-            ArrayList<AdVocAsBookkeepingStimulus> ft = provider.getFTtuple();
+            ArrayList<BookkeepingStimulus<AdVocAsStimulus>> ft = provider.getFTtuple();
             if (ft.size() == 4) {
                 this.checkFreshFineTuningTuple(ft);
                 tupleCounter++;
@@ -1235,7 +1232,7 @@ public class AdVocAsStimuliProviderTest {
 
     }
 
-    private String probabilisticAnswerer(BookkeepingStimulus stimulus, double correctnessUpperBound, Random rnd) throws Exception {
+    private String probabilisticAnswerer(AdVocAsStimulus stimulus, double correctnessUpperBound, Random rnd) throws Exception {
         String retVal = stimulus.getCorrectResponses();
         double rndDouble = rnd.nextDouble();
         //System.out.println("*****");
@@ -1257,7 +1254,7 @@ public class AdVocAsStimuliProviderTest {
         return retVal;
     }
 
-    private String makeResponseWrong(BookkeepingStimulus stimulus) {
+    private String makeResponseWrong(AdVocAsStimulus stimulus) {
         String answer = Vocabulary.NONWORD;
         if (stimulus.getCorrectResponses().equals(Vocabulary.NONWORD)) {
             answer = Vocabulary.WORD;
@@ -1265,26 +1262,26 @@ public class AdVocAsStimuliProviderTest {
         return answer;
     }
 
-    private void checkFreshFineTuningTuple(ArrayList<AdVocAsBookkeepingStimulus> tuple) {
+    private void checkFreshFineTuningTuple(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> tuple) {
         int nNonwords = 0;
-        for (AdVocAsBookkeepingStimulus stimulus : tuple) {
+        for (BookkeepingStimulus<AdVocAsStimulus> stimulus : tuple) {
             assertEquals(null, stimulus.getReaction());
             assertEquals(null, stimulus.getCorrectness());
-            assertNotEquals(0, stimulus.getBandLabel().intValue());
-            if (stimulus.getBandLabel() < 0) {
+            assertNotEquals(0, stimulus.getStimulus().getBandNumber());
+            if (stimulus.getStimulus().getBandNumber() < 0) {
                 nNonwords++;
             }
         }
         assertEquals(1, nNonwords);
     }
 
-    private void checkNonWordFrequenceFastTrack(ArrayList<AdVocAsBookkeepingStimulus> records, int timeTick) {
+    private void checkNonWordFrequenceFastTrack(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> records, int timeTick) {
         int counterNonwords = 0;
         double frequency = 0;
 
         for (int i = 0; i <= timeTick; i++) {
-            BookkeepingStimulus stimulus = records.get(i);
-            if (stimulus.getBandLabel().equals(-1)) {
+            BookkeepingStimulus<AdVocAsStimulus> stimulus = records.get(i);
+            if (stimulus.getStimulus().getBandNumber() == -1) {
                 counterNonwords++;
             }
             frequency = ((double) counterNonwords) / ((double) (i + 1));
@@ -1301,25 +1298,31 @@ public class AdVocAsStimuliProviderTest {
         }
     }
 
-    private void checkAllWordsAreDifferent(ArrayList<AdVocAsBookkeepingStimulus> records) {
+    private void checkAllWordsAreDifferent(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> records) {
         int sz = records.size();
-        HashSet<AdVocAsBookkeepingStimulus> testEqualitySet = new HashSet(records);
+        HashSet<BookkeepingStimulus<AdVocAsStimulus>> testEqualitySet = new HashSet(records);
         assertEquals(testEqualitySet.size(), sz);
         assertEquals(sz, records.size());
     }
 
-    private void checkFastTrack(ArrayList<AdVocAsBookkeepingStimulus> records, int lastTimeTickFastTrack, int bestFastTrackBand) {
-        AdVocAsBookkeepingStimulus stimulus = records.get(0);
-        AdVocAsBookkeepingStimulus previousStimulus;
-        if (stimulus.getBandLabel() > 0) {
-            assertEquals(Integer.parseInt(this.startBand), stimulus.getBandLabel().longValue());
+    private void checkFastTrack(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> records, int lastTimeTickFastTrack, int bestFastTrackBand) {
+        BookkeepingStimulus<AdVocAsStimulus> bStimulus = records.get(0);
+        BookkeepingStimulus<AdVocAsStimulus> previousbStimulus;
+        AdVocAsStimulus stimulus = bStimulus.getStimulus();
+         AdVocAsStimulus previousStimulus;
+        if (stimulus.getBandNumber() > 0) {
+            assertEquals(Integer.parseInt(this.startBand), stimulus.getBandNumber());
         }
         for (int i = 1; i <= lastTimeTickFastTrack; i++) {
+            previousbStimulus = bStimulus;
             previousStimulus = stimulus;
-            stimulus = records.get(i);
-            if (previousStimulus.getCorrectness()) { // correcr reaction
-                if (previousStimulus.getBandLabel() > 0 && stimulus.getBandLabel() > 0 && previousStimulus.getBandLabel() < Integer.parseInt(this.numberOfBands)) {
-                    assertEquals(previousStimulus.getBandLabel() + 1, stimulus.getBandLabel().longValue());
+            
+            bStimulus = records.get(i);
+            stimulus = bStimulus.getStimulus();
+            
+            if (previousbStimulus.getCorrectness()) { // correcr reaction
+                if (previousStimulus.getBandNumber() > 0 && stimulus.getBandNumber() > 0 && previousStimulus.getBandNumber() < Integer.parseInt(this.numberOfBands)) {
+                    assertEquals(previousStimulus.getBandNumber() + 1, stimulus.getBandNumber());
                 }
             } else {
                 if (i >= 2) { // check pre-previous answer
@@ -1327,9 +1330,9 @@ public class AdVocAsStimuliProviderTest {
                     if (prepreCorrectness) {
                         // we had the first incorrect answer in a row coming to this band
                         // this is the second chance stimulus
-                        if (previousStimulus.getBandLabel() > 0 && stimulus.getBandLabel() > 0) {
+                        if (previousStimulus.getBandNumber() > 0 && stimulus.getBandNumber() > 0) {
                             // second chance
-                            assertEquals(previousStimulus.getBandLabel(), stimulus.getBandLabel());
+                            assertEquals(previousStimulus.getBandNumber(), stimulus.getBandNumber());
                         }
                     } else {
                         // preprevious and previous reaction were wrong!!!
@@ -1340,39 +1343,46 @@ public class AdVocAsStimuliProviderTest {
             }
         }
 
-        stimulus = records.get(lastTimeTickFastTrack);
-        if (stimulus.getCorrectness()) {
+        bStimulus = records.get(lastTimeTickFastTrack);
+        stimulus = bStimulus.getStimulus();
+        
+        if (bStimulus.getCorrectness()) {
             // we stopped fast track because we have reached the end of the bands
-            if (stimulus.getBandLabel() > 0) {
-                assertEquals(Integer.parseInt(this.numberOfBands), stimulus.getBandLabel().longValue());
+            if (stimulus.getBandNumber() > 0) {
+                assertEquals(Integer.parseInt(this.numberOfBands), stimulus.getBandNumber());
             }
         } else {
             // we stopped because there were two incorrect answers in a row
-            previousStimulus = records.get(lastTimeTickFastTrack - 1);
-            assertFalse(previousStimulus.getCorrectness());
+            previousbStimulus = records.get(lastTimeTickFastTrack - 1);
+            previousStimulus = previousbStimulus.getStimulus();
+            
+            assertFalse(previousbStimulus.getCorrectness());
             if (lastTimeTickFastTrack >= 2) {
                 assertTrue(records.get(lastTimeTickFastTrack - 2).getCorrectness());
             }
         }
-        if (stimulus.getBandLabel() > 0) {
-            assertEquals(bestFastTrackBand, stimulus.getBandLabel().intValue());
+        if (stimulus.getBandNumber() > 0) {
+            assertEquals(bestFastTrackBand, stimulus.getBandNumber());
         }
 
     }
 
-    private void checkFineTuning(ArrayList<AdVocAsBookkeepingStimulus> records, int lastTimeTickFastTrack, int bestFastTrackBand, boolean cycle2, int score) {
+    private void checkFineTuning(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> records, int lastTimeTickFastTrack, int bestFastTrackBand, boolean cycle2, int score) {
         int counterInTuple = 0;
-        AdVocAsBookkeepingStimulus stimulus;
+        AdVocAsStimulus stimulus;
         ArrayList<Integer> bandSequence = new ArrayList<>();
         ArrayList<Boolean> bandSwitchReason = new ArrayList<>();
         int currentBandNumber = -1;
 
         for (int i = lastTimeTickFastTrack + 1; i < records.size(); i++) {
-            stimulus = records.get(i);
-            if (stimulus.getBandLabel() > 0) {
-                currentBandNumber = stimulus.getBandLabel();
+            
+            BookkeepingStimulus<AdVocAsStimulus>  bStimulus = records.get(i);
+            stimulus = bStimulus.getStimulus();
+            
+            if (stimulus.getBandNumber() > 0) {
+                currentBandNumber = stimulus.getBandNumber();
             }
-            if (stimulus.getCorrectness()) {
+            if (bStimulus.getCorrectness()) {
                 counterInTuple++;
                 if (counterInTuple == Integer.parseInt(this.fineTuningTupleLength)) {
                     // all  4 ccorrect answers in a row
@@ -1383,9 +1393,9 @@ public class AdVocAsStimuliProviderTest {
 
                     // check the tuple
                     for (int j = 0; j < Integer.parseInt(this.fineTuningTupleLength); j++) {
-                        if (records.get(i - j).getBandLabel() > 0) {
+                        if (records.get(i - j).getStimulus().getBandNumber() > 0) {
                             // all words in the tuple must be in one band
-                            assertEquals(currentBandNumber, records.get(i - j).getBandLabel().intValue());
+                            assertEquals(currentBandNumber, records.get(i - j).getStimulus().getBandNumber());
                         } else {
                             nonWordCounter++;
                         }

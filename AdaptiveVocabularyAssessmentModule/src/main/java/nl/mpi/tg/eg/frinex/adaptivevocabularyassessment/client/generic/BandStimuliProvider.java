@@ -229,7 +229,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
     // prepared by next stimulus
     @Override
-    public Stimulus getCurrentStimulus() {
+    public A getCurrentStimulus() {
         A  retVal = this.responseRecord.get(this.getCurrentStimulusIndex()).getStimulus();
         return retVal;
     }
@@ -864,11 +864,5 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         return builder.toString();
     }
     
-    
-    public A toObjectViaID(String id, HashMap<String, A> stimuli){
-        return stimuli.get(id);
-    }
-
-   
-
+  
 }

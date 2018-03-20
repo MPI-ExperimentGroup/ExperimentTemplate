@@ -17,50 +17,10 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
-import java.util.ArrayList;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
-import static nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect.removeFirstAndLast;
-
 /**
  *
  * @author olhshk
  */
 public enum TrialCondition {
     TARGET_ONLY, TARGET_AND_FOIL, NO_TARGET;
-
-    public static TrialCondition stringToCondition(String conditionString) {
-        TrialCondition retVal;
-        switch (conditionString) {
-            case "Target-only":
-                retVal = TrialCondition.TARGET_ONLY;
-                break;
-            case "Target+Foil":
-                retVal = TrialCondition.TARGET_AND_FOIL;
-                break;
-            case "NoTarget":
-                retVal = TrialCondition.NO_TARGET;
-                break;
-            default:
-                throw new IllegalArgumentException("No trial condition value for the string " + conditionString);
-        }
-        return retVal;
-    }
-
-    public static ArrayList<TrialCondition> toListObject(String str) {
-        UtilsJSONdialect<TrialCondition> util = new UtilsJSONdialect<TrialCondition>();
-        try {
-            ArrayList<String> buffer = util.stringToArrayList(str);
-
-            ArrayList<TrialCondition> retVal = new ArrayList<TrialCondition>(buffer.size());
-            for (int i = 0; i < buffer.size(); i++) {
-                String val = buffer.get(i);
-                String tmp = removeFirstAndLast(val);
-                retVal.add(i, TrialCondition.valueOf(tmp));
-            }
-
-            return retVal;
-        } catch (Exception ex) {
-            return null;
-        }
-    }
 }

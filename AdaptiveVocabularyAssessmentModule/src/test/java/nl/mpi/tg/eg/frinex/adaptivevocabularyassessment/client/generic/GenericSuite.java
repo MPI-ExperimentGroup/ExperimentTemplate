@@ -15,55 +15,37 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
 /**
  *
  * @author olhshk
  */
-public class PermutationPairTest {
-    
-    public PermutationPairTest() {
-    }
-    
+@RunWith(Suite.class)
+@Suite.SuiteClasses({nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulusTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsListTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimuliProviderTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialectTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimulusTest.class})
+public class GenericSuite {
+
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass() throws Exception {
     }
-    
+
     @AfterClass
-    public static void tearDownClass() {
+    public static void tearDownClass() throws Exception {
     }
-    
+
     @Before
-    public void setUp() {
+    public void setUp() throws Exception {
     }
-    
+
     @After
-    public void tearDown() {
+    public void tearDown() throws Exception {
     }
-
-    /**
-     * Test of toString method, of class PermutationPair.
-     */
-    @Test
-    public void testToString() {
-        System.out.println("toString");
-        PermutationPair instance = null;
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-   
     
 }

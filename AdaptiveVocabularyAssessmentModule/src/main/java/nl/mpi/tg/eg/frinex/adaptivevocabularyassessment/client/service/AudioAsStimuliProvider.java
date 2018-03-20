@@ -20,10 +20,10 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
-import java.util.Set;
+import java.util.Map;
+import java.util.Random;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.RandomIndexing;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimuliProvider;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
@@ -31,7 +31,6 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSON
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsList;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Trial;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioAsStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioUtils;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.PermutationPair;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialCondition;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialTuple;
@@ -61,6 +60,8 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     private ArrayList<ArrayList<PermutationPair>> availableCombinations; // x[i] is the list of permutations with non-empty possibilities to instantiate them using trials matrix of unused trials
 
     private int nStimuliInTuple = 0;
+    
+    private Random rnd;
 
     public AudioAsStimuliProvider(AudioAsStimulus[] stimulusArray) {
         super(stimulusArray);
@@ -89,7 +90,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
          */
         this.availableCombinations = new ArrayList<ArrayList<PermutationPair>>(this.numberOfBands);
         for (int i = 0; i < this.numberOfBands; i++) {
-            ArrayList<PermutationPair> permCurrentBand = AudioUtils.initialiseAvailabilityList(this.trials,
+            ArrayList<PermutationPair> permCurrentBand =this.initialiseAvailabilityList(this.trials,
                     this.trialLengtPermutations, this.trialTypesPermutations, i, this.fineTuningTupleLength);
             this.availableCombinations.add(i, permCurrentBand);
         }
@@ -103,7 +104,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     @Override
     public boolean initialiseNextFineTuningTuple() {
 
-        this.currentTrialTuple = TrialTuple.createTupleForBand(this.availableCombinations.get(this.currentBandIndex), this.trials, this.fineTuningTupleLength, this.currentBandIndex);
+        this.currentTrialTuple = this.createTupleForBand(this.availableCombinations.get(this.currentBandIndex), this.trials, this.fineTuningTupleLength, this.currentBandIndex);
         this.nStimuliInTuple = this.currentTrialTuple.getNumberOfStimuli();
         if (this.currentTrialTuple == null) {
             this.errorMessage = "There is no trial combinations satisfying the specification!";
@@ -115,8 +116,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
     @Override
     public void nextStimulus(int increment) {
-        AudioAsStimulus stimulus  = this.currentTrialTuple.removeFirstAvailableStimulus();
-        BookkeepingStimulus<AudioAsStimulus> bStimulus  = new BookkeepingStimulus<AudioAsStimulus>(stimulus);
+        BookkeepingStimulus<AudioAsStimulus> bStimulus  = this.currentTrialTuple.removeFirstAvailableStimulus();
         this.responseRecord.add(bStimulus);
     }
 
@@ -195,7 +195,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             StringBuilder row = new StringBuilder();
             String time = (new Date(bStimulus.getTimeStamp())).toString();
             row.append(startColumn).append(stimulus.getBandIndexInt()).append(endColumn);
-            row.append(startColumn).append(stimulus.getBandLabel()).append(endColumn);
+            row.append(startColumn).append(stimulus.getbandLabel()).append(endColumn);
             row.append(startColumn).append(stimulus.getLabel()).append(endColumn);
             row.append(startColumn).append(stimulus.getWordTypeWT()).append(endColumn);
             row.append(startColumn).append(stimulus.getCorrectResponses()).append(endColumn);
@@ -316,10 +316,11 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     
     private  void initialiseTrials(AudioAsStimulus[] stimuli, int numberOfBands, int maxLength) {
        this.trials = this.initMatrix(numberOfBands, maxLength);
-       int[] permuteIndex = RandomIndexing.generateRandomArray(stimuli.length);
+       ArrayList<Integer> permuteIndex = RandomIndexing.generateRandomArray(stimuli.length);
        
         for (int i=0; i<stimuli.length; i++) {
-            AudioAsStimulus stimulus = stimuli[permuteIndex[i]];
+            AudioAsStimulus stimulus = stimuli[permuteIndex.get(i)];
+            BookkeepingStimulus<AudioAsStimulus> bStimulus = new BookkeepingStimulus<AudioAsStimulus>(stimulus);
             ArrayList<ArrayList<ArrayList<Trial>>> trialGroupByCondition  = this.trials.get(stimulus. getTrialConditionTC());
             ArrayList<ArrayList<Trial>> trialGroupByBand = trialGroupByCondition.get(stimulus.getBandIndexInt());
             ArrayList<Trial> trialGroupByLength = trialGroupByBand.get(stimulus.getTrialLengthInt());
@@ -328,11 +329,11 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
                 //(int id, String word, String cueFile, int nOfSyllables, TrialCondition condition, int length, String bandLabel, int bandIndex)
                Trial freshTrial = new Trial(stimulus.getTrialNumberInt(), stimulus.gettrialWord(), 
                        stimulus.gettrialCueFile(), stimulus.getTrialSyllablesInt(), stimulus.getTrialConditionTC(), stimulus.getTrialLengthInt(),
-                       stimulus.getBandLabel(), stimulus.getBandIndexInt()); 
+                       stimulus.getbandLabel(), stimulus.getBandIndexInt()); 
                trialGroupByLength.add(freshTrial);
                index=this.findIndexOfTrialById(trialGroupByLength, stimulus.getTrialNumberInt());
             }
-            trialGroupByLength.get(index).addStimulus(stimulus, stimulus.getPositionInTrialInt());
+            trialGroupByLength.get(index).addStimulus(bStimulus, stimulus.getPositionInTrialInt());
             this.hashedStimuli.put(stimulus.getUniqueId(), stimulus);
         }
         
@@ -345,6 +346,80 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             }
         }
          return -1;
+    }
+
+       // returns list of satisfying the requirements permutation pairs ((type-1, ..., type-tupleSize), (length-1, ..., length-tupleSize)) for a given bandIndex, 
+    // such that there ARE trials of type-i of length-i for tuples of tupleSize,  for bandIndex
+    public ArrayList<PermutationPair> initialiseAvailabilityList(Map<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> trials,
+            ArrayList<ArrayList<Integer>> lengthPermuations, ArrayList<ArrayList<TrialCondition>> trialTypePermutations, int bandIndex, int tupleSize) {
+
+        ArrayList<PermutationPair> retVal = new ArrayList<PermutationPair>();
+        for (int i = 0; i < trialTypePermutations.size(); i++) {
+            ArrayList<TrialCondition> trialPermutation = trialTypePermutations.get(i);
+            for (int j = 0; j < lengthPermuations.size(); j++) {
+                ArrayList<Integer> sizePermutation = lengthPermuations.get(j);
+                Boolean enough = true;
+                int k = 0;
+                while (enough && k < tupleSize) {
+                    TrialCondition currentTrialCondition = trialPermutation.get(k);
+                    Integer currentLength = sizePermutation.get(k);
+                    //x[contdition][i][j] is the list of all trials satisfying "condition" for the band i of the length j
+                    ArrayList<Trial> possibleTrials = trials.get(currentTrialCondition).get(bandIndex).get(currentLength);
+                    if (possibleTrials.size() < 1) {
+                        enough = false;
+                    } else {
+                        k++;
+                    }
+                }
+                if (enough) {
+                    PermutationPair permPair = new PermutationPair(trialPermutation, sizePermutation);
+                    retVal.add(permPair);
+                }
+            }
+
+        }
+        return retVal;
+    }
+
+
+    public ArrayList<PermutationPair> emptiedPossibilities(ArrayList<PermutationPair> oldList, Map<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> trialMatrix, int bandIndex, int tupleSize) {
+        ArrayList<PermutationPair> toRemove = new ArrayList<PermutationPair>();
+        listLoop:
+        for (PermutationPair permPair : oldList) {
+            for (int i = 0; i < tupleSize; i++) {
+                TrialCondition trialType = permPair.trialTypes.get(i);
+                Integer length = permPair.trialLengths.get(i);
+                ArrayList<Trial> possibilities = trialMatrix.get(trialType).get(bandIndex).get(length);
+                if (possibilities.size() < 1) {
+                    toRemove.add(permPair);
+                    continue listLoop;
+                }
+            }
+        }
+        return toRemove;
+    }
+    
+     public TrialTuple createTupleForBand(ArrayList<PermutationPair> availablePermutations, Map<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> trialMatrix, int size, int bandIndex) {
+        if (availablePermutations.size() < 1) {
+            return null;
+        }
+
+        ArrayList<Trial> trials = new ArrayList<Trial>(size);
+        int combinationIndex = this.rnd.nextInt(availablePermutations.size());
+        PermutationPair permPair = availablePermutations.get(combinationIndex);
+        for (int i = 0; i < size; i++) {
+            TrialCondition trialType = permPair.trialTypes.get(i);
+            Integer length = permPair.trialLengths.get(i);
+            ArrayList<Trial> possibilities = trialMatrix.get(trialType).get(bandIndex).get(length);
+            int trialIndex = this.rnd.nextInt(possibilities.size());
+            Trial currentTrial = possibilities.remove(trialIndex);
+            trials.add(currentTrial);
+        }
+
+        ArrayList<PermutationPair> toBeRemoved = this.emptiedPossibilities(availablePermutations, trialMatrix, bandIndex, size);
+        availablePermutations.removeAll(toBeRemoved);
+        TrialTuple retVal = new TrialTuple(trials);
+        return retVal;
     }
 
 }

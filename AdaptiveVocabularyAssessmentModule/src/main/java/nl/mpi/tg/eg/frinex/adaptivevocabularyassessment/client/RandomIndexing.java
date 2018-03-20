@@ -179,33 +179,48 @@ public class RandomIndexing {
     public int getFastTrackSequenceLength() {
         return this.fastTrackSequenceLength;
     }
-
-    public static int[] generateRandomArray(int n) {
-        int[] index = new int[n];
-        for (int i = 0; i < index.length; i++) {
-            index[i] = i;
-        }
-        randomize(index, index.length);
-        return index;
+    
+    public static ArrayList<Integer> generateRandomArray(int n) {
+       ArrayList<Integer> tmp = new ArrayList<Integer>(n);
+       for (int i=0; i<n; i++) {
+           tmp.add(i);
+       }
+       ArrayList<Integer> retVal = new ArrayList<Integer>(n); 
+       Random r = new Random();
+       for (int i=0; i<n; i++) {
+           int j = r.nextInt(n-i); 
+           Integer x = tmp.remove(j); 
+           retVal.add(x);
+       }
+       return retVal;
     }
-
-    private static void randomize(int arr[], int n) {
-        // Creating a object for Random class
-        Random r = new Random();
-
-        // Start from the last element and swap one by one. We don't
-        // need to run for the first element that's why i > 0
-        for (int i = n - 1; i > 0; i--) {
-
-            // Pick a random index from 0 to i
-            int j = r.nextInt(i);
-
-            // Swap arr[i] with the element at random index
-            int temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
-        }
-    }
+    
+//    public static int[] generateRandomArray(int n) {
+//        int[] index = new int[n];
+//        for (int i = 0; i < index.length; i++) {
+//            index[i] = i;
+//        }
+//        randomize(index, index.length);
+//        return index;
+//    }
+//
+//    private static void randomize(int arr[], int n) {
+//        // Creating a object for Random class
+//        Random r = new Random();
+//
+//        // Start from the last element and swap one by one. We don't
+//        // need to run for the first element that's why i > 0
+//        for (int i = n - 1; i > 0; i--) {
+//
+//            // Pick a random index from 0 to i
+//            int j = r.nextInt(i);
+//
+//            // Swap arr[i] with the element at random index
+//            int temp = arr[i];
+//            arr[i] = arr[j];
+//            arr[j] = temp;
+//        }
+//    }
 
     @Override
     public String toString() {

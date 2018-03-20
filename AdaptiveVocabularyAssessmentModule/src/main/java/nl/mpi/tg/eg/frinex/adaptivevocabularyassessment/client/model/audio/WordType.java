@@ -23,28 +23,4 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
  */
 public enum WordType {
     WORD, EXAMPLE_TARGET_NON_WORD, TARGET_NON_WORD, FOIL, NON_WORD;
-
-    public static WordType stringToWordType(String typeString) {
-        WordType retVal;
-        switch (typeString) {
-            case "WORD":
-                retVal = WordType.WORD;
-                break;
-            case "EXAMPLE_TARGET_NON_WORD":
-                retVal = WordType.EXAMPLE_TARGET_NON_WORD;
-                break;
-            case "TARGET_NON_WORD":
-                retVal = WordType.TARGET_NON_WORD;
-                break;
-            case "FOIL":
-                retVal = WordType.FOIL;
-                break;
-            case "NON_WORD":
-                retVal = WordType.NON_WORD;
-                break;
-            default:
-                throw new IllegalArgumentException("No word type value for the string " + typeString);
-        }
-        return retVal;
-    }
 }

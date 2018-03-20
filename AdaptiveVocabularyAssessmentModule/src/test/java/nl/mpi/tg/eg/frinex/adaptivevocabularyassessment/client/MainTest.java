@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audioaspool;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -28,11 +28,9 @@ import static org.junit.Assert.*;
  *
  * @author olhshk
  */
-public class AudioIndexMapTest {
+public class MainTest {
     
-    private final String postfix  = "Db";
-    
-    public AudioIndexMapTest() {
+    public MainTest() {
     }
     
     @BeforeClass
@@ -51,18 +49,13 @@ public class AudioIndexMapTest {
     public void tearDown() {
     }
 
+    /**
+     * Test of main method, of class Main.
+     */
     @Test
-    public void testOrder() {
-        int length = AudioIndexMap.INDEX_ARRAY[0].trim().length() - postfix.length();
-        int previous = Integer.parseInt(AudioIndexMap.INDEX_ARRAY[0].trim().substring(0, length).trim());
-        int current;
-        for (int i=1; i<AudioIndexMap.INDEX_ARRAY.length; i++){
-            String buffer = AudioIndexMap.INDEX_ARRAY[i].trim();
-            length = buffer.length() - postfix.length();
-            current = Integer.parseInt(buffer.substring(0, length).trim());
-            assertTrue(current>previous);
-            previous = current;
-        }
+    public void testMain() throws Exception {
+        System.out.println("main: empty test");
+      
     }
     
 }

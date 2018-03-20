@@ -76,10 +76,10 @@ public class Vocabulary {
             this.wordsInBands.add(new ArrayList<AdVocAsStimulus>(this.wordsPerBandInSeries));
         }
 
-        int[] permuteIndex = RandomIndexing.generateRandomArray(stimuli.length);
+        ArrayList<Integer> permuteIndex = RandomIndexing.generateRandomArray(stimuli.length);
         
         for (int i=0; i<stimuli.length; i++) {
-            AdVocAsStimulus stimulus = stimuli[permuteIndex[i]];
+            AdVocAsStimulus stimulus = stimuli[permuteIndex.get(i)];
             String correctResponse = stimulus.getCorrectResponses();
             if (correctResponse.equals(NONWORD)) {
                 this.nonWords.add(stimulus);

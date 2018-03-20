@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 Max Planck Institute for Psycholinguistics, Nijmegen
+ * Copyright (C) 2018 Max Planck Institute for Psycholinguistics, Nijmegen
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -15,24 +15,22 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
+package utils;
 
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsBookkeepingStimulus;
-import utils.VocabularyFromFiles;
-import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
  * @author olhshk
  */
-public class UtilsTest {
+public class VocabularyFromFilesTest {
     
-    public UtilsTest() {
+    public VocabularyFromFilesTest() {
     }
     
     @BeforeClass
@@ -51,30 +49,32 @@ public class UtilsTest {
     public void tearDown() {
     }
 
+    /**
+     * Test of parseWordInputCSVtoXMLfragment method, of class VocabularyFromFiles.
+     */
+    @Test
+    public void testParseWordInputCSVtoXMLfragment() throws Exception {
+        System.out.println("parseWordInputCSVtoXMLfragment");
+        String wordFileLocation = "";
+        VocabularyFromFiles instance = null;
+        instance.parseWordInputCSVtoXMLfragment(wordFileLocation);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of parseNonwordInputCSVtoXMLfragment method, of class VocabularyFromFiles.
+     */
+    @Test
+    public void testParseNonwordInputCSVtoXMLfragment() throws Exception {
+        System.out.println("parseNonwordInputCSVtoXMLfragment");
+        String nonwordFileLocation = "";
+        VocabularyFromFiles instance = null;
+        instance.parseNonwordInputCSVtoXMLfragment(nonwordFileLocation);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
    
-    /**
-     * Test of testPrint method, of class Utils.
-     */
-    @Test
-    public void testTestPrint() {
-        System.out.println("testPrint");
-        VocabularyFromFiles bands = null;
-        //Utils.testPrint(bands);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of writeCsvFileFastTrack method, of class Utils.
-     */
-    @Test
-    public void testWriteCsvFileFastTrack() throws Exception {
-        System.out.println("writeCsvFileFastTrack");
-        ArrayList<AdVocAsBookkeepingStimulus> stimulae = null;
-        int stopBand = 0;
-        //Utils.writeCsvFileFastTrack(stimulae, stopBand);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
+    
 }

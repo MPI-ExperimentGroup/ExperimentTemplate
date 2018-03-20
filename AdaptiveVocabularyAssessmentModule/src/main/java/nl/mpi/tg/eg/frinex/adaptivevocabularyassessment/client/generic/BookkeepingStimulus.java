@@ -17,6 +17,8 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
+import java.util.HashMap;
+
 /**
  *
  * @author olhshk
@@ -31,10 +33,8 @@ public class BookkeepingStimulus<A extends BandStimulus> {
     private final A stimulus;
     private String userReaction; // can be string, boolean, double, etc.
     private Boolean correctness;
-    private long timeStamp; 
-    
+    private long timeStamp;
 
-   
     public BookkeepingStimulus(A stimulus) {
         this.stimulus = stimulus;
         this.userReaction = null;
@@ -48,11 +48,11 @@ public class BookkeepingStimulus<A extends BandStimulus> {
     public String getReaction() {
         return this.userReaction;
     }
-    
-      public long getTimeStamp() {
+
+    public long getTimeStamp() {
         return this.timeStamp;
     }
-   
+
     public Boolean getCorrectness() {
         return this.correctness;
     }
@@ -65,7 +65,47 @@ public class BookkeepingStimulus<A extends BandStimulus> {
         this.correctness = eval;
     }
 
-      public void setTimeStamp(long timeStr) {
+    public void setTimeStamp(long timeStr) {
         this.timeStamp = timeStr;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("{");
+        builder.append("stimulus:{").append(this.stimulus.toString()).append("},");
+        builder.append("userReaction:{").append(this.userReaction).append("},");
+        builder.append("correctness:{").append(this.correctness).append("},");
+        builder.append("timeStamp:{").append(this.timeStamp).append("}}");
+        return builder.toString();
+    }
+
+    public BookkeepingStimulus<A> toObject(String serialisation, HashMap<String, A> map) {
+        try {
+            String id = UtilsJSONdialect.getKeyWithoutBrackets(serialisation, "stimulus");
+            A stimulus = map.get(id);
+            BookkeepingStimulus<A> retVal = new BookkeepingStimulus<A>(stimulus);
+            String corr = UtilsJSONdialect.getKeyWithoutBrackets(serialisation, "correctness");
+            if (corr != null) {
+                if (corr.equals("true")) {
+                    retVal.setCorrectness(true);
+                } else {
+                    if (corr.equals("false")) {
+                        retVal.setCorrectness(false);
+                    } else {
+                        return null;
+                    }
+                }
+            }
+            String ur = UtilsJSONdialect.getKeyWithoutBrackets(serialisation, "userReaction");
+            if (ur != null) {
+                retVal.setReaction(ur);
+            }
+            String ts = UtilsJSONdialect.getKeyWithoutBrackets(serialisation, "timeStamp");
+            retVal.setTimeStamp(Long.parseLong(ts));
+            return retVal;
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

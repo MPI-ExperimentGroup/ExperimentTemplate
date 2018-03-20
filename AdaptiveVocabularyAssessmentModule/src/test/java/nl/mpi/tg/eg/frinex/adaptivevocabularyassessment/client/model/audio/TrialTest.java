@@ -18,9 +18,9 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedHashMap;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audioaspool.AudioIndexMap;
+import java.util.Map;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -34,64 +34,9 @@ import static org.junit.Assert.*;
  */
 public class TrialTest {
 
-    //1	vloer	smoer	1	Target-only	3 targetNonWords	deebral	smoer	wijp
-    private static final LinkedHashMap<String, WordType> map1 = createMap1();
-
-    private static LinkedHashMap<String, WordType> createMap1() {
-        LinkedHashMap<String, WordType> retVal = new LinkedHashMap<String, WordType>();
-        retVal.put("deerbal", WordType.NON_WORD);
-        retVal.put("smoer", WordType.TARGET_NON_WORD);
-        retVal.put("wijp", WordType.NON_WORD);
-        return retVal;
-    }
-
-    //19	kers	hers	1	Target-only	4 targetNonWords	geider	hers	atgraus	hamp
-    private static final LinkedHashMap<String, WordType> map2 = createMap2();
-
-    private static LinkedHashMap<String, WordType> createMap2() {
-        LinkedHashMap<String, WordType> retVal = new LinkedHashMap<String, WordType>();
-        retVal.put("geider", WordType.NON_WORD);
-        retVal.put("hers", WordType.TARGET_NON_WORD);
-        retVal.put("atgraus", WordType.NON_WORD);
-        retVal.put("hamp", WordType.NON_WORD);
-        return retVal;
-    }
-
-    //107	vuur	fjon	1	Target+Foil	5 targetNonWords	fjodschelg	fjon	wisdaag	tuik	poks		fjodschelg
-    private static final LinkedHashMap<String, WordType> map3 = createMap3();
-
-    private static LinkedHashMap<String, WordType> createMap3() {
-        LinkedHashMap<String, WordType> retVal = new LinkedHashMap<String, WordType>();
-        retVal.put("fjodschelg", WordType.FOIL);
-        retVal.put("fjon", WordType.TARGET_NON_WORD);
-        retVal.put("wisdaag", WordType.NON_WORD);
-        retVal.put("tuik", WordType.NON_WORD);
-        retVal.put("poks", WordType.NON_WORD);
-        return retVal;
-    }
-
-    //156	pop	lop	1	NoTarget	4 targetNonWords	voorserm	muiland	fraal	kijn	
-    private static final LinkedHashMap<String, WordType> map4 = createMap4();
-
-    private static LinkedHashMap<String, WordType> createMap4() {
-        LinkedHashMap<String, WordType> retVal = new LinkedHashMap<String, WordType>();
-        retVal.put("voorserm", WordType.NON_WORD);
-        retVal.put("muiland", WordType.NON_WORD);
-        retVal.put("fraal", WordType.NON_WORD);
-        retVal.put("kijn", WordType.NON_WORD);
-        return retVal;
-    }
-
-    private final Trial[] instance = new Trial[4];
+   private Trial[] instance = (new TrialTestPool()).trials;
     
-    private final ArrayList<String> indexMap;
-
-    public TrialTest() {
-        
-        this.indexMap = new ArrayList<String>(Arrays.asList(AudioIndexMap.INDEX_ARRAY));
-
-    }
-
+  
     @BeforeClass
     public static void setUpClass() {
     }
@@ -102,15 +47,6 @@ public class TrialTest {
 
     @Before
     public void setUp() {
-        //Trial(String word, String targetNonword, int nOfSyllables, TrialCondition condition, int length, LinkedHashMap<String,WordType> targetNonWords, int bandNumber, String dirName)
-        //1	vloer	smoer	1	Target-only	3 targetNonWords	deebral	smoer	wijp
-        this.instance[0] = new Trial("vloer", "smoer", 1, TrialCondition.TARGET_ONLY, 3, map1, "6dB", 1, "/1");
-        //19	kers	hers	1	Target-only	4 targetNonWords	geider	hers	atgraus	hamp
-        this.instance[1] = new Trial("kers", "hers", 1, TrialCondition.TARGET_ONLY, 4, map2, "10dB", 2, "/2");
-        //107	vuur	fjon	1	Target+Foil	5 targetNonWords	fjodschelg	fjon	wisdaag	tuik	poks		fjodschelg
-        this.instance[2] = new Trial("vuur", "fjon", 1, TrialCondition.TARGET_AND_FOIL, 5, map3, "10dB", 2, "/3");
-        //156	pop	lop	1	NoTarget	4 targetNonWords	voorserm	muiland	fraal	kijn	
-        this.instance[3] = new Trial("pop", "lop", 1, TrialCondition.NO_TARGET, 4, map4, "2dB", 0, "/2");
         
     }
 
@@ -124,37 +60,37 @@ public class TrialTest {
     @Test
     public void testGetStimuliList() {
         System.out.println("getStimuliList");
-        ArrayList<AudioAsStimulus>[] stimuli = new ArrayList[this.instance.length];
+        ArrayList<BookkeepingStimulus<AudioAsStimulus>>[] stimuli = new ArrayList[this.instance.length];
         for (int i = 0; i < this.instance.length; i++) {
-            stimuli[i] = this.instance[i].getStimuliList();
+            stimuli[i] = this.instance[i].getStimuli();
         }
         assertEquals(4, stimuli[0].size());
-        assertEquals("smoer", stimuli[0].get(0).getLabel());
-        assertEquals("deerbal", stimuli[0].get(1).getLabel());
-        assertEquals("smoer", stimuli[0].get(2).getLabel());
-        assertEquals("wijp", stimuli[0].get(3).getLabel());
+        assertEquals("smoer", stimuli[0].get(0).getStimulus().getLabel());
+        assertEquals("deerbal", stimuli[0].get(1).getStimulus().getLabel());
+        assertEquals("smoer", stimuli[0].get(2).getStimulus().getLabel());
+        assertEquals("wijp", stimuli[0].get(3).getStimulus().getLabel());
 
         assertEquals(5, stimuli[1].size());
-        assertEquals("hers", stimuli[1].get(0).getLabel());
-        assertEquals("geider", stimuli[1].get(1).getLabel());
-        assertEquals("hers", stimuli[1].get(2).getLabel());
-        assertEquals("atgraus", stimuli[1].get(3).getLabel());
-        assertEquals("hamp", stimuli[1].get(4).getLabel());
+        assertEquals("hers", stimuli[1].get(0).getStimulus().getLabel());
+        assertEquals("geider", stimuli[1].get(1).getStimulus().getLabel());
+        assertEquals("hers", stimuli[1].get(2).getStimulus().getLabel());
+        assertEquals("atgraus", stimuli[1].get(3).getStimulus().getLabel());
+        assertEquals("hamp", stimuli[1].get(4).getStimulus().getLabel());
 
         assertEquals(6, stimuli[2].size());
-        assertEquals("fjon", stimuli[2].get(0).getLabel());
-        assertEquals("fjodschelg", stimuli[2].get(1).getLabel());
-        assertEquals("fjon", stimuli[2].get(2).getLabel());
-        assertEquals("wisdaag", stimuli[2].get(3).getLabel());
-        assertEquals("tuik", stimuli[2].get(4).getLabel());
-        assertEquals("poks", stimuli[2].get(5).getLabel());
+        assertEquals("fjon", stimuli[2].get(0).getStimulus().getLabel());
+        assertEquals("fjodschelg", stimuli[2].get(1).getStimulus().getLabel());
+        assertEquals("fjon", stimuli[2].get(2).getStimulus().getLabel());
+        assertEquals("wisdaag", stimuli[2].get(3).getStimulus().getLabel());
+        assertEquals("tuik", stimuli[2].get(4).getStimulus().getLabel());
+        assertEquals("poks", stimuli[2].get(5).getStimulus().getLabel());
 
         assertEquals(5, stimuli[3].size());
-        assertEquals("lop", stimuli[3].get(0).getLabel());
-        assertEquals("voorserm", stimuli[3].get(1).getLabel());
-        assertEquals("muiland", stimuli[3].get(2).getLabel());
-        assertEquals("fraal", stimuli[3].get(3).getLabel());
-        assertEquals("kijn", stimuli[3].get(4).getLabel());
+        assertEquals("lop", stimuli[3].get(0).getStimulus().getLabel());
+        assertEquals("voorserm", stimuli[3].get(1).getStimulus().getLabel());
+        assertEquals("muiland", stimuli[3].get(2).getStimulus().getLabel());
+        assertEquals("fraal", stimuli[3].get(3).getStimulus().getLabel());
+        assertEquals("kijn", stimuli[3].get(4).getStimulus().getLabel());
     }
 
     /**
@@ -173,21 +109,6 @@ public class TrialTest {
         assertEquals("pop", words[3]);
     }
 
-    /**
-     * Test of getDirName method, of class Trial.
-     */
-    @Test
-    public void testGetDirName() {
-        System.out.println("getDirName");
-        String[] dirNames = new String[this.instance.length];
-        for (int i = 0; i < this.instance.length; i++) {
-            dirNames[i] = this.instance[i].getDirName();
-        }
-        assertEquals("/1", dirNames[0]);
-        assertEquals("/2", dirNames[1]);
-        assertEquals("/3", dirNames[2]);
-        assertEquals("/2", dirNames[3]);
-    }
 
     /**
      * Test of getBandNumber method, of class Trial.
@@ -216,10 +137,6 @@ public class TrialTest {
         assertEquals("10dB", bands[1]);
         assertEquals("10dB", bands[2]);
         assertEquals("2dB", bands[3]);
-        assertEquals(1, this.indexMap.indexOf(bands[0]));
-        assertEquals(2, this.indexMap.indexOf(bands[1]));
-        assertEquals(2, this.indexMap.indexOf(bands[2]));
-        assertEquals(0, this.indexMap.indexOf(bands[3]));
         
     }
 
@@ -278,11 +195,11 @@ public class TrialTest {
     public void testGetTrialLength() {
         System.out.println("getTrialLength");
         int[] trailL = new int[this.instance.length];
-        ArrayList<AudioAsStimulus>[] stimuli = new ArrayList[this.instance.length];
+        ArrayList<BookkeepingStimulus<AudioAsStimulus>>[] stimuli = new ArrayList[this.instance.length];
 
         for (int i = 0; i < this.instance.length; i++) {
             trailL[i] = this.instance[i].getTrialLength();
-            stimuli[i] = this.instance[i].getStimuliList();
+            stimuli[i] = this.instance[i].getStimuli();
         }
         assertEquals(3, trailL[0]);
         assertEquals(4, trailL[1]);
@@ -293,6 +210,93 @@ public class TrialTest {
         assertEquals(trailL[1] + 1, stimuli[1].size());
         assertEquals(trailL[2] + 1, stimuli[2].size());
         assertEquals(trailL[3] + 1, stimuli[3].size());
+    }
+
+    /**
+     * Test of addStimulus method, of class Trial.
+     */
+    @Test
+    public void testAddStimulus() {
+        System.out.println("addStimulus");
+        StimuliTestPool pool = new  StimuliTestPool();
+        BookkeepingStimulus<AudioAsStimulus> stimulus = pool.stimuli.get(0);
+        int stimulusPosition = 0;
+        Trial instance = null;
+        instance.addStimulus(stimulus, stimulusPosition);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getStimuli method, of class Trial.
+     */
+    @Test
+    public void testGetStimuli() {
+        System.out.println("getStimuli");
+        TrialTestPool pool = new TrialTestPool();
+        Trial instance = pool.trials[0];
+        ArrayList<BookkeepingStimulus<AudioAsStimulus>> expResult = null;
+        ArrayList<BookkeepingStimulus<AudioAsStimulus>> result = instance.getStimuli();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getId method, of class Trial.
+     */
+    @Test
+    public void testGetId() {
+        System.out.println("getId");
+        Trial instance = null;
+        int expResult = 0;
+        int result = instance.getId();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of toString method, of class Trial.
+     */
+    @Test
+    public void testToString() {
+        System.out.println("toString");
+        Trial instance = null;
+        String expResult = "";
+        String result = instance.toString();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of toObject method, of class Trial.
+     */
+    @Test
+    public void testToObject() {
+        System.out.println("toObject");
+        String str = "";
+        LinkedHashMap<String, AudioAsStimulus> hashedStimuli = null;
+        Trial expResult = null;
+        Trial result = Trial.toObject(str, hashedStimuli);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of map3ToString method, of class Trial.
+     */
+    @Test
+    public void testMap3ToString() {
+        System.out.println("map3ToString");
+        Map<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> map = null;
+        String expResult = "";
+        String result = Trial.map3ToString(map);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 
 }

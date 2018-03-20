@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 Max Planck Institute for Psycholinguistics, Nijmegen
+ * Copyright (C) 2018 Max Planck Institute for Psycholinguistics, Nijmegen
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -17,20 +17,35 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary;
 
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimulus;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
 /**
- * @since Oct 27, 2017 2:13:03 PM (creation date)
- * @author Peter Withers <peter.withers@mpi.nl>
+ *
+ * @author olhshk
  */
-abstract public class AdVocAsStimulus extends BandStimulus {
+@RunWith(Suite.class)
+@Suite.SuiteClasses({nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulusTest.class})
+public class VocabularySuite {
 
-    public AdVocAsStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses) {
-        super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses);
+    @BeforeClass
+    public static void setUpClass() throws Exception {
     }
 
-    public int getBandNumber() {
-        return (Integer.parseInt(this.getbandIndex())) + 1;
+    @AfterClass
+    public static void tearDownClass() throws Exception {
     }
 
+    @Before
+    public void setUp() throws Exception {
+    }
+
+    @After
+    public void tearDown() throws Exception {
+    }
+    
 }

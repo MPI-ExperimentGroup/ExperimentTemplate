@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 Max Planck Institute for Psycholinguistics, Nijmegen
+ * Copyright (C) 2018 Max Planck Institute for Psycholinguistics, Nijmegen
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -15,22 +15,28 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool;
 
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
 
 /**
- * @since Oct 27, 2017 2:13:03 PM (creation date)
- * @author Peter Withers <peter.withers@mpi.nl>
+ *
+ * @author olhshk
  */
-abstract public class AdVocAsStimulus extends BandStimulus {
+public class AdVocAsStimulusImp extends AdVocAsStimulus{
+    
+    private String bandIndex;
 
-    public AdVocAsStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses) {
+    public AdVocAsStimulusImp(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, String bandIndex) {
         super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses);
     }
-
-    public int getBandNumber() {
-        return (Integer.parseInt(this.getbandIndex())) + 1;
+    
+    public String getbandIndex(){
+        return this.bandIndex;
     }
-
+    
+    public String getbandLabel(){
+        Integer tmp = Integer.parseInt(this.bandIndex) +1 ;
+        return tmp.toString();
+    }
 }

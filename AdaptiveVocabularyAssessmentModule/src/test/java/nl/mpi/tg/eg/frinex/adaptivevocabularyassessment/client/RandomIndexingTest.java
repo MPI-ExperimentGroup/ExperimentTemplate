@@ -143,10 +143,10 @@ public class RandomIndexingTest {
         int numberOfSeries = 1;
         int wordsPerBandInSeries = this.wordsPerBand/numberOfSeries;
         int n = wordsPerBandInSeries -1;
-        int[] result = RandomIndexing.generateRandomArray(n);
+        ArrayList<Integer> result = RandomIndexing.generateRandomArray(n);
         ArrayList<Integer> list = new ArrayList<>();
         for (int i=0; i<n; i++){
-            list.add(result[i]);
+            list.add(result.get(i));
         }
         HashSet<Integer> set = new HashSet(list);
         assertEquals(n, set.size()); // fails if the permutation is to short/long or gives repetitive values
@@ -170,10 +170,10 @@ public class RandomIndexingTest {
         int numberOfSeries = 2;
         int wordsPerBandInSeries = this.wordsPerBand/numberOfSeries;
         int n = wordsPerBandInSeries -1;
-        int[] result = RandomIndexing.generateRandomArray(n);
+        ArrayList<Integer> result = RandomIndexing.generateRandomArray(n);
         ArrayList<Integer> list = new ArrayList<>();
         for (int i=0; i<n; i++){
-            list.add(result[i]);
+            list.add(result.get(i));
         }
         HashSet<Integer> set = new HashSet(list);
         assertEquals(n, set.size()); // fails if the permutation is to short/long or gives repetitive values
@@ -187,5 +187,6 @@ public class RandomIndexingTest {
         assertEquals(1, testEqualitySet.size());
         
     }
-    
+
+  
 }

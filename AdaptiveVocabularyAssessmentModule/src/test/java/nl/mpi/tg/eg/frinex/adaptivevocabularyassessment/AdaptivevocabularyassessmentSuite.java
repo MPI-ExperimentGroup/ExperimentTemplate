@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment;
 
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.ClientSuite;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -29,8 +30,7 @@ import org.junit.runners.Suite;
  * @author olhshk
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service.ServiceSuite.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.model.ModelSuite.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.AdVocAsBookkeepingStimulusTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.UtilsTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.MainTest.class, 
-    nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.VocabularyFromFilesTest.class})
+@Suite.SuiteClasses({ClientSuite.class})
 public class AdaptivevocabularyassessmentSuite {
 
     @BeforeClass

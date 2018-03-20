@@ -36,23 +36,22 @@ abstract public class AudioAsStimulus extends BandStimulus {
     }
     
  
-    abstract public String getwordType();
-    abstract public String getpositionInTrial();
-    abstract public String getbandIndex();
+    public abstract  String getwordType();
+    public abstract  String getpositionInTrial();
     
     public WordType getWordTypeWT(){
        return WordType.valueOf(this.getwordType()); 
     }
     
     
-    abstract public String gettrialNumber();
-    abstract public String gettrialWord();
-    abstract public String gettrialCueFile();
-    abstract public String gettrialSyllables();
-    abstract public String gettrialCondition();
-    abstract public String gettrialLength();
-    abstract public String gettrialPositionTarget();
-    abstract public String gettrialPositionFoil();
+    public abstract  String gettrialNumber();
+    public abstract  String gettrialWord();
+    public abstract  String gettrialCueFile();
+    public abstract  String gettrialSyllables();
+    public abstract  String gettrialCondition();
+    public abstract  String gettrialLength();
+    public abstract  String gettrialPositionTarget();
+    public abstract  String gettrialPositionFoil();
     
     
     public int getPositionInTrialInt(){
