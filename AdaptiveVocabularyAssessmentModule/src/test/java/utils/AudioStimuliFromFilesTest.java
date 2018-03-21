@@ -25,6 +25,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -57,6 +58,7 @@ public class AudioStimuliFromFilesTest {
     /**
      * Test of parseTrialsInputCSV method, of class AudioStimuliFromFiles.
      */
+    @Ignore
     @Test
     public void testParseTrialsInputCSV() throws Exception {
         System.out.println("parseTrialsInputCSV");

@@ -170,6 +170,9 @@ public class UtilsJSONdialect<S> {
         if (arr == null) {
             return null;
         }
+        if (arr.length == 0) {
+            return "{}";
+        }
         StringBuilder retVal = new StringBuilder();
         retVal.append("{");
         for (int i = 0; i < arr.length - 1; i++) {
@@ -187,6 +190,9 @@ public class UtilsJSONdialect<S> {
      public String doubleArrayListToString(double[] arr) throws Exception {
         if (arr == null) {
             return null;
+        }
+        if (arr.length == 0) {
+            return "{}";
         }
         StringBuilder retVal = new StringBuilder();
         retVal.append("{");
@@ -207,6 +213,12 @@ public class UtilsJSONdialect<S> {
         if (listStr == null) {
             return null;
         }
+        if (listStr.trim().isEmpty()) {
+            return new ArrayList<String>();
+        }
+        if (listStr.trim().equals("{}")) {
+            return new ArrayList<String>();
+        }
         ArrayList<String> retVal = new ArrayList<String>();
         String current = this.getKey(listStr, "0");
         if (current == null) {
@@ -223,7 +235,17 @@ public class UtilsJSONdialect<S> {
     }
 
     public ArrayList<Integer> stringToArrayListInteger(String listStr) throws Exception{
+        if (listStr == null) {
+            return null;
+        }
+        if (listStr.trim().isEmpty()) {
+            return new ArrayList<Integer>();
+        }
+        
         ArrayList<String>  buffer = this.stringToArrayList(listStr);
+         if (buffer.isEmpty()) {
+            return new ArrayList<Integer>();
+        }
         ArrayList<Integer> retVal = new  ArrayList<Integer>(buffer.size());
         for (int i=0; i<buffer.size(); i++) {
             String val = buffer.get(i);

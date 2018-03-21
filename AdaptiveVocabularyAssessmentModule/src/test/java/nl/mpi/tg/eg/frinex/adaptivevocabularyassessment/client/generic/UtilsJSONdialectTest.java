@@ -199,25 +199,52 @@ public class UtilsJSONdialectTest {
     /**
      * Test of arrayList3String method, of class UtilsJSONdialect.
      */
-    @Ignore
     @Test
     public void testArrayList3String() throws Exception {
         System.out.println("arrayList3String");
         int n=3;
-        UtilsJSONdialect<Integer> instance = new UtilsJSONdialect<Integer>();
-        ArrayList<ArrayList<ArrayList<Integer>>> input = new  ArrayList<ArrayList<ArrayList<Integer>>>(n);
+        UtilsJSONdialect<String> instance = new UtilsJSONdialect<String>();
+        ArrayList<ArrayList<ArrayList<String>>> input = new  ArrayList<ArrayList<ArrayList<String>>>(n);
+        ArrayList<ArrayList<String>> l1 = new  ArrayList<ArrayList<String>>(2);
+        ArrayList<ArrayList<String>> l2 = new  ArrayList<ArrayList<String>>();
+        ArrayList<ArrayList<String>> l3 = new  ArrayList<ArrayList<String>>(3);
+        input.add(l1);
+        input.add(l2);
+        input.add(l3);
+        
+        // {{a,b,c},{x,y}}
+        ArrayList<String> l11 = new ArrayList<String>(3);
+        ArrayList<String> l12 = new ArrayList<String>(2);
+        
+        l11.add("a");
+        l11.add("b");
+        l11.add("c");
+        
+        l12.add("x");
+        l12.add("y");
+        
+        l1.add(l11);
+        l1.add(l12);
+        
+        // {}
+        
+        
+        // {{1} {1,2}, {1,2,3}}
+        ArrayList<String> l31 = new ArrayList<String>(1);
+        ArrayList<String> l32 = new ArrayList<String>(2);
+        ArrayList<String> l33 = new ArrayList<String>(3);
+        l3.add(l31);
+        l3.add(l32);
+        l3.add(l33);
+        l31.add("1");
+        l32.add("1");
+        l32.add("2");
+        l33.add("1");
+        l33.add("2");
+        l33.add("3");
+        
        
-        for (int i = 0; i < n; i++) {
-            ArrayList<ArrayList<Integer>> current = new ArrayList<ArrayList<Integer>>(i);
-            input.add(current); // 
-            for (int j = 0; j < i; j++) {
-                 ArrayList<Integer> currentInner = new ArrayList<Integer>(j); //should be {0,1,..,j-1} -> i:{0:{0},1:{1},..,j-1:{j-1}}
-                   for (int k = 0; k < j; k++) { 
-                      currentInner.add(k);
-                   }
-            }
-        }
-        String expResult = "{0:{},1:{0:{}},2:{0:{},1:{0:{0}}}}";
+        String expResult = "{0:{0:{0:{a},1:{b},2:{c}},1:{0:{x},1:{y}}},1:{},2:{0:{0:{1}},1:{0:{1},1:{2}},2:{0:{1},1:{2},2:{3}}}}";
         String result = instance.arrayList3String(input);
         assertEquals(expResult, result);
     }
@@ -225,64 +252,62 @@ public class UtilsJSONdialectTest {
     /**
      * Test of intArrayListToString method, of class UtilsJSONdialect.
      */
-    @Ignore
     @Test
     public void testIntArrayListToString() throws Exception {
         System.out.println("intArrayListToString");
-        int[] arr = null;
+        int[] arr = {1,2,3};
         UtilsJSONdialect instance = new UtilsJSONdialect();
-        String expResult = "";
+        String expResult = "{0:{1},1:{2},2:{3}}";
         String result = instance.intArrayListToString(arr);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(null, instance.intArrayListToString(null));
+        assertEquals("{}", instance.intArrayListToString(new int[0]));
     }
 
     /**
      * Test of doubleArrayListToString method, of class UtilsJSONdialect.
      */
-    @Ignore
     @Test
     public void testDoubleArrayListToString() throws Exception {
         System.out.println("doubleArrayListToString");
-        double[] arr = null;
+        double[] arr = {0.5, 0.8, 100.356785};
         UtilsJSONdialect instance = new UtilsJSONdialect();
-        String expResult = "";
+        String expResult = "{0:{0.5},1:{0.8},2:{100.356785}}";
         String result = instance.doubleArrayListToString(arr);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(null, instance.doubleArrayListToString(null));
+        assertEquals("{}", instance.doubleArrayListToString(new double[0]));
     }
 
     /**
      * Test of stringToArrayListInteger method, of class UtilsJSONdialect.
      */
-    @Ignore
     @Test
     public void testStringToArrayListInteger() throws Exception {
         System.out.println("stringToArrayListInteger");
-        String listStr = "";
+        String listStr = "{0:{100},1:{90},2:{110}}";
         UtilsJSONdialect instance = new UtilsJSONdialect();
-        ArrayList<Integer> expResult = null;
+        ArrayList<Integer> expResult = new ArrayList<Integer>(3);
+        expResult.add(100);
+        expResult.add(90);
+        expResult.add(110);
         ArrayList<Integer> result = instance.stringToArrayListInteger(listStr);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(null, instance.stringToArrayListInteger(null));
+        assertEquals(new ArrayList<Integer>(), instance.stringToArrayListInteger(" "));
+        assertEquals(new ArrayList<Integer>(), instance.stringToArrayListInteger("{}"));
     }
 
     /**
      * Test of stringToArrayDouble method, of class UtilsJSONdialect.
      */
-    @Ignore
     @Test
     public void testStringToArrayDouble() throws Exception {
         System.out.println("stringToArrayDouble");
         String listStr = "{0:{0.5},1:{1.4},2:{2.3},3:{3.2}}";
         UtilsJSONdialect instance = new UtilsJSONdialect();
-        double[] expResult = new double[4];
-        for (int i = 0; i < 4; i++) {
-            expResult[i] = i + (5 - i) / 10;
-        }
+        double[] expResult = {0.5,1.4,2.3,3.2};
+        
         double[] result = instance.stringToArrayDouble(listStr);
         for (int i = 0; i < result.length; i++) {
             assertTrue(expResult[i] == result[i]);
