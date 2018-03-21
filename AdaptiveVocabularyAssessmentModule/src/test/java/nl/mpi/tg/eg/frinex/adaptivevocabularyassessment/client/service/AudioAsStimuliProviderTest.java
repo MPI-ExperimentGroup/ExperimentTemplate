@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
 import java.util.ArrayList;
+import nl.mpi.tg.eg.experiment.client.util.GeneratedStimulusProvider;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioAsStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Trial;
@@ -55,7 +56,7 @@ public class AudioAsStimuliProviderTest {
 
     @Before
     public void setUp() {
-        this.instance = new AudioAsStimuliProvider(null);
+        this.instance = new AudioAsStimuliProvider(GeneratedStimulusProvider.values);
         this.instance.setfastTrackPresent("False");
         this.instance.setfineTuningFirstWrongOut("False");
         this.instance.setfineTuningTupleLength(Integer.toString(this.tupleSize));
@@ -212,7 +213,7 @@ public class AudioAsStimuliProviderTest {
         for (int i = 0; i < n; i++) {
             this.instance.hasNextStimulus(0);
             this.instance.nextStimulus(0);
-            int lastIndex = this.instance.getResponseRecord().size()-1;
+            int lastIndex = this.instance.getResponseRecord().size() - 1;
             BookkeepingStimulus<AudioAsStimulus> bStimulus = this.instance.getResponseRecord().get(lastIndex);
             Stimulus stimulus = bStimulus.getStimulus(); // upcasting
             if (bStimulus.getStimulus().getWordTypeWT().equals(WordType.TARGET_NON_WORD)) {
@@ -468,7 +469,7 @@ public class AudioAsStimuliProviderTest {
 
     private void printRecord(ArrayList<BookkeepingStimulus<AudioAsStimulus>> record) {
         for (BookkeepingStimulus<AudioAsStimulus> bStimulus : record) {
-            AudioAsStimulus stimulus =  bStimulus.getStimulus();
+            AudioAsStimulus stimulus = bStimulus.getStimulus();
             System.out.print(stimulus.getbandLabel());
             System.out.print("  ");
             System.out.print(stimulus.getLabel());
