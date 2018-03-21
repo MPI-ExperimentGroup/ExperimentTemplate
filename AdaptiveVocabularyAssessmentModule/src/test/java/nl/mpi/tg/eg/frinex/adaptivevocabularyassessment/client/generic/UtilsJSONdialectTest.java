@@ -85,8 +85,6 @@ public class UtilsJSONdialectTest {
         assertEquals(expResult3, result3);
 
     }
-    
-   
 
     /**
      * Test of arrayListToString method, of class UtilsJSONdialect.
@@ -120,7 +118,6 @@ public class UtilsJSONdialectTest {
         assertEquals(expResult, result);
     }
 
-    
     /**
      * Test of stringToArrayList method, of class UtilsJSONdialect.
      */
@@ -181,17 +178,22 @@ public class UtilsJSONdialectTest {
     /**
      * Test of arrayList2String method, of class UtilsJSONdialect.
      */
-    @Ignore
     @Test
     public void testArrayList2String() throws Exception {
         System.out.println("arrayList2String");
+        int n=4;
         UtilsJSONdialect<Integer> instance = new UtilsJSONdialect<Integer>();
-        ArrayList<ArrayList<ArrayList>> input = new  ArrayList<ArrayList<ArrayList>>();
-        String expResult = "";
-        String result = instance.arrayList2String(null);
+        ArrayList<ArrayList<Integer>> input = new ArrayList<ArrayList<Integer>>(n);
+        for (int i = 0; i < n; i++) {
+            ArrayList<Integer> current = new ArrayList<Integer>(i);
+            input.add(current); // should be {0,1,..,i-1} -> i:{0:{0},1:{1},..,i-1:{i-1}}
+            for (int j = 0; j < i; j++) {
+                 current.add(j);
+            }
+        }
+        String expResult = "{0:{},1:{0:{0}},2:{0:{0},1:{1}},3:{0:{0},1:{1},2:{2}}}";
+        String result = instance.arrayList2String(input);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -201,12 +203,23 @@ public class UtilsJSONdialectTest {
     @Test
     public void testArrayList3String() throws Exception {
         System.out.println("arrayList3String");
-        UtilsJSONdialect instance = new UtilsJSONdialect();
-        String expResult = "";
-        String result = instance.arrayList3String(null);
+        int n=3;
+        UtilsJSONdialect<Integer> instance = new UtilsJSONdialect<Integer>();
+        ArrayList<ArrayList<ArrayList<Integer>>> input = new  ArrayList<ArrayList<ArrayList<Integer>>>(n);
+       
+        for (int i = 0; i < n; i++) {
+            ArrayList<ArrayList<Integer>> current = new ArrayList<ArrayList<Integer>>(i);
+            input.add(current); // 
+            for (int j = 0; j < i; j++) {
+                 ArrayList<Integer> currentInner = new ArrayList<Integer>(j); //should be {0,1,..,j-1} -> i:{0:{0},1:{1},..,j-1:{j-1}}
+                   for (int k = 0; k < j; k++) { 
+                      currentInner.add(k);
+                   }
+            }
+        }
+        String expResult = "{0:{},1:{0:{}},2:{0:{},1:{0:{0}}}}";
+        String result = instance.arrayList3String(input);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -267,12 +280,12 @@ public class UtilsJSONdialectTest {
         String listStr = "{0:{0.5},1:{1.4},2:{2.3},3:{3.2}}";
         UtilsJSONdialect instance = new UtilsJSONdialect();
         double[] expResult = new double[4];
-        for (int i=0; i<4; i++) {
-            expResult[i] = i + (5-i)/10;
+        for (int i = 0; i < 4; i++) {
+            expResult[i] = i + (5 - i) / 10;
         }
         double[] result = instance.stringToArrayDouble(listStr);
-        for (int i=0; i<result.length; i++) {
-             assertTrue(expResult[i]==result[i]);
+        for (int i = 0; i < result.length; i++) {
+            assertTrue(expResult[i] == result[i]);
         }
     }
 

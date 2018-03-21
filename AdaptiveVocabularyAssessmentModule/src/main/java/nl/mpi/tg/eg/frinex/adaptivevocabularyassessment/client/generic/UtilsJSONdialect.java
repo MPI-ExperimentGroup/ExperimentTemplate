@@ -83,6 +83,9 @@ public class UtilsJSONdialect<S> {
         if (list == null) {
             return null;
         }
+        if (list.isEmpty()) {
+            return "{}";
+        }
         StringBuilder retVal = new StringBuilder();
         retVal.append("{");
         for (int i = 0; i < list.size() - 1; i++) {
@@ -96,6 +99,7 @@ public class UtilsJSONdialect<S> {
             }
             retVal.append(",");
         }
+        
         int lastIndex = list.size() - 1;
         S obj = list.get(lastIndex);
         retVal.append(lastIndex).append(":");
@@ -113,41 +117,50 @@ public class UtilsJSONdialect<S> {
         if (list == null) {
             return null;
         }
+         if (list.isEmpty()) {
+            return "{}";
+        }
         StringBuilder retVal = new StringBuilder();
+        UtilsJSONdialect<S> util = new UtilsJSONdialect<S>();
         retVal.append("{");
         for (int i = 0; i < list.size() - 1; i++) {
             ArrayList<S> subList = list.get(i);
             retVal.append(i).append(":");
-            String subListString = this.arrayListToString(subList);
+            String subListString = util.arrayListToString(subList);
             retVal.append(subListString);
             retVal.append(",");
         }
         int lastIndex = list.size() - 1;
         ArrayList<S> subList = list.get(lastIndex);
         retVal.append(lastIndex).append(":");
-        String subListString = this.arrayListToString(subList);
+        String subListString = util.arrayListToString(subList);
         retVal.append(subListString);
         retVal.append("}");
         return retVal.toString();
     }
 
+    
     public String arrayList3String(ArrayList<ArrayList<ArrayList<S>>> list) throws Exception {
         if (list == null) {
             return null;
         }
+         if (list.isEmpty()) {
+            return "{}";
+        }
         StringBuilder retVal = new StringBuilder();
+        UtilsJSONdialect<S> util = new UtilsJSONdialect<S>();
         retVal.append("{");
         for (int i = 0; i < list.size() - 1; i++) {
             ArrayList<ArrayList<S>> subList = list.get(i);
             retVal.append(i).append(":");
-            String subListString = this.arrayList2String(subList);
+            String subListString = util.arrayList2String(subList);
             retVal.append(subListString);
             retVal.append(",");
         }
         int lastIndex = list.size() - 1;
         ArrayList<ArrayList<S>> subList = list.get(lastIndex);
         retVal.append(lastIndex).append(":");
-        String subListString = this.arrayList2String(subList);
+        String subListString = util.arrayList2String(subList);
         retVal.append(subListString);
         retVal.append("}");
         return retVal.toString();
