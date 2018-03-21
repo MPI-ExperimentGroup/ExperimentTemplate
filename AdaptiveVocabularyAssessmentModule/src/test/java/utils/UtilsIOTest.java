@@ -24,6 +24,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -53,7 +54,7 @@ public class UtilsIOTest {
     /**
      * Test of writeCsvFileFastTrack method, of class UtilsIO.
      */
-    @Test
+    @Ignore @Test
     public void testWriteCsvFileFastTrack() throws Exception {
         System.out.println("writeCsvFileFastTrack");
         AdVocAsStimuliProvider provider = null;
@@ -69,7 +70,7 @@ public class UtilsIOTest {
     /**
      * Test of writeHtmlFileFastTrack method, of class UtilsIO.
      */
-    @Test
+    @Ignore @Test
     public void testWriteHtmlFileFastTrack() throws Exception {
         System.out.println("writeHtmlFileFastTrack");
         AdVocAsStimuliProvider provider = null;
@@ -85,7 +86,7 @@ public class UtilsIOTest {
     /**
      * Test of writeCsvFileFineTuningHistory method, of class UtilsIO.
      */
-    @Test
+    @Ignore @Test
     public void testWriteCsvFileFineTuningHistory() throws Exception {
         System.out.println("writeCsvFileFineTuningHistory");
         AdVocAsStimuliProvider provider = null;
@@ -99,7 +100,7 @@ public class UtilsIOTest {
     /**
      * Test of writeHtmlFileFineTuningHistory method, of class UtilsIO.
      */
-    @Test
+    @Ignore @Test
     public void testWriteHtmlFileFineTuningHistory() throws Exception {
         System.out.println("writeHtmlFileFineTuningHistory");
         AdVocAsStimuliProvider provider = null;
@@ -113,7 +114,7 @@ public class UtilsIOTest {
     /**
      * Test of writeHtmlFullUserResults method, of class UtilsIO.
      */
-    @Test
+    @Ignore @Test
     public void testWriteHtmlFullUserResults() throws Exception {
         System.out.println("writeHtmlFullUserResults");
         AdVocAsStimuliProvider provider = null;
@@ -127,7 +128,7 @@ public class UtilsIOTest {
     /**
      * Test of writeCsvMapAsOneCsv method, of class UtilsIO.
      */
-    @Test
+    @Ignore @Test
     public void testWriteCsvMapAsOneCsv() throws Exception {
         System.out.println("writeCsvMapAsOneCsv");
         AdVocAsStimuliProvider provider = null;

@@ -18,7 +18,6 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -28,6 +27,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -57,6 +57,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of settype method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testSettype() {
         System.out.println("settype");
@@ -70,6 +71,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of setfastTrackPresent method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testSetfastTrackPresent() {
         System.out.println("setfastTrackPresent");
@@ -83,6 +85,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of setfineTuningFirstWrongOut method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testSetfineTuningFirstWrongOut() {
         System.out.println("setfineTuningFirstWrongOut");
@@ -96,6 +99,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of setnumberOfBands method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testSetnumberOfBands() {
         System.out.println("setnumberOfBands");
@@ -109,6 +113,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of setnumberOfSeries method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testSetnumberOfSeries() {
         System.out.println("setnumberOfSeries");
@@ -122,6 +127,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of setstartBand method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testSetstartBand() {
         System.out.println("setstartBand");
@@ -135,6 +141,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of setfineTuningTupleLength method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testSetfineTuningTupleLength() {
         System.out.println("setfineTuningTupleLength");
@@ -148,6 +155,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of setfineTuningUpperBoundForCycles method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testSetfineTuningUpperBoundForCycles() {
         System.out.println("setfineTuningUpperBoundForCycles");
@@ -161,6 +169,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of initialiseStimuliState method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testInitialiseStimuliState() {
         System.out.println("initialiseStimuliState");
@@ -174,6 +183,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of generateStimuliStateSnapshot method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGenerateStimuliStateSnapshot() {
         System.out.println("generateStimuliStateSnapshot");
@@ -188,6 +198,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of getCurrentBandIndex method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGetCurrentBandIndex() {
         System.out.println("getCurrentBandIndex");
@@ -202,6 +213,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of getNumberOfBands method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGetNumberOfBands() {
         System.out.println("getNumberOfBands");
@@ -216,6 +228,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of getPercentageBandTable method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGetPercentageBandTable() {
         System.out.println("getPercentageBandTable");
@@ -230,6 +243,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of getResponseRecord method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGetResponseRecord() {
         System.out.println("getResponseRecord");
@@ -244,6 +258,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of getEnoughFinetuningStimuli method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGetEnoughFinetuningStimuli() {
         System.out.println("getEnoughFinetuningStimuli");
@@ -258,6 +273,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of getCycel2 method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGetCycel2() {
         System.out.println("getCycel2");
@@ -273,6 +289,7 @@ public class BandStimuliProviderTest {
      * Test of getChampion method, of class BandStimuliProvider.
      */
     @Test
+    @Ignore
     public void testGetChampion() {
         System.out.println("getChampion");
         BandStimuliProvider instance = null;
@@ -286,6 +303,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of getLooser method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGetLooser() {
         System.out.println("getLooser");
@@ -300,6 +318,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of getBestFastTrackBand method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGetBestFastTrackBand() {
         System.out.println("getBestFastTrackBand");
@@ -314,6 +333,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of getBandScore method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGetBandScore() {
         System.out.println("getBandScore");
@@ -328,6 +348,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of getPercentageScore method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGetPercentageScore() {
         System.out.println("getPercentageScore");
@@ -342,6 +363,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of getFTtuple method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGetFTtuple() {
         System.out.println("getFTtuple");
@@ -356,6 +378,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of getEndFastTrackTimeTick method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGetEndFastTrackTimeTick() {
         System.out.println("getEndFastTrackTimeTick");
@@ -370,6 +393,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of getCurrentStimulus method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGetCurrentStimulus() {
         System.out.println("getCurrentStimulus");
@@ -384,6 +408,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of getCurrentStimulusIndex method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGetCurrentStimulusIndex() {
         System.out.println("getCurrentStimulusIndex");
@@ -398,6 +423,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of getTotalStimuli method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGetTotalStimuli() {
         System.out.println("getTotalStimuli");
@@ -412,6 +438,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of hasNextStimulus method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testHasNextStimulus() {
         System.out.println("hasNextStimulus");
@@ -427,6 +454,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of nextStimulus method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testNextStimulus() {
         System.out.println("nextStimulus");
@@ -440,6 +468,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of deriveNextFastTrackStimulus method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testDeriveNextFastTrackStimulus() {
         System.out.println("deriveNextFastTrackStimulus");
@@ -454,6 +483,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of setCurrentStimuliIndex method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testSetCurrentStimuliIndex() {
         System.out.println("setCurrentStimuliIndex");
@@ -467,6 +497,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of getCurrentStimulusUniqueId method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGetCurrentStimulusUniqueId() {
         System.out.println("getCurrentStimulusUniqueId");
@@ -481,6 +512,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of getHtmlStimuliReport method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGetHtmlStimuliReport() {
         System.out.println("getHtmlStimuliReport");
@@ -495,6 +527,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of getStimuliReport method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGetStimuliReport() {
         System.out.println("getStimuliReport");
@@ -510,6 +543,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of isCorrectResponse method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testIsCorrectResponse() {
         System.out.println("isCorrectResponse");
@@ -526,6 +560,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of analyseCorrectness method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testAnalyseCorrectness() {
         System.out.println("analyseCorrectness");
@@ -542,6 +577,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of fastTrackToBeContinuedWithSecondChance method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testFastTrackToBeContinuedWithSecondChance() {
         System.out.println("fastTrackToBeContinuedWithSecondChance");
@@ -556,6 +592,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of enoughStimuliForFastTrack method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testEnoughStimuliForFastTrack() {
         System.out.println("enoughStimuliForFastTrack");
@@ -570,6 +607,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of initialiseNextFineTuningTuple method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testInitialiseNextFineTuningTuple() {
         System.out.println("initialiseNextFineTuningTuple");
@@ -584,6 +622,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of fineTuningToBeContinuedWholeTuple method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testFineTuningToBeContinuedWholeTuple() {
         System.out.println("fineTuningToBeContinuedWholeTuple");
@@ -598,6 +637,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of tupleIsNotEmpty method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testTupleIsNotEmpty() {
         System.out.println("tupleIsNotEmpty");
@@ -612,6 +652,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of allTupleIsCorrect method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testAllTupleIsCorrect() {
         System.out.println("allTupleIsCorrect");
@@ -626,6 +667,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of bandNumberIntoPercentage method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testBandNumberIntoPercentage() {
         System.out.println("bandNumberIntoPercentage");
@@ -641,6 +683,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of percentageIntoBandNumber method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testPercentageIntoBandNumber() {
         System.out.println("percentageIntoBandNumber");
@@ -656,6 +699,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of recycleUnusedStimuli method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testRecycleUnusedStimuli() {
         System.out.println("recycleUnusedStimuli");
@@ -668,6 +712,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of toBeContinuedLoopChecker method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testToBeContinuedLoopChecker() {
         System.out.println("toBeContinuedLoopChecker");
@@ -682,6 +727,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of detectLoop method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testDetectLoop() {
         System.out.println("detectLoop");
@@ -696,6 +742,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of shiftFIFO method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testShiftFIFO() {
         System.out.println("shiftFIFO");
@@ -709,6 +756,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of mostOftenVisitedBandNumber method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testMostOftenVisitedBandNumber() {
         System.out.println("mostOftenVisitedBandNumber");
@@ -725,6 +773,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of getStringFastTrack method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGetStringFastTrack() {
         System.out.println("getStringFastTrack");
@@ -743,6 +792,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of getStringFineTuningHistory method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGetStringFineTuningHistory() {
         System.out.println("getStringFineTuningHistory");
@@ -762,6 +812,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of getStringSummary method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testGetStringSummary() {
         System.out.println("getStringSummary");
@@ -780,6 +831,7 @@ public class BandStimuliProviderTest {
     /**
      * Test of toString method, of class BandStimuliProvider.
      */
+    @Ignore
     @Test
     public void testToString() {
         System.out.println("toString");

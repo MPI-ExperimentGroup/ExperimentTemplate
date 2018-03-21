@@ -28,6 +28,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -57,6 +58,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of initialiseStimuliState method, of class AdVocAsStimuliProvider.
      */
+    @Ignore
     @Test
     public void testInitialiseStimuliState() {
         System.out.println("initialiseStimuliState");
@@ -70,7 +72,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of setnonwordsPerBlock method, of class AdVocAsStimuliProvider.
      */
-    @Test
+    @Ignore @Test
     public void testSetnonwordsPerBlock() {
         System.out.println("setnonwordsPerBlock");
         String nonWrodsPerBlock = "";
@@ -83,7 +85,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of setwordsPerBand method, of class AdVocAsStimuliProvider.
      */
-    @Test
+    @Ignore @Test
     public void testSetwordsPerBand() {
         System.out.println("setwordsPerBand");
         String wordsPerBand = "";
@@ -96,7 +98,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of setaverageNonWordPosition method, of class AdVocAsStimuliProvider.
      */
-    @Test
+    @Ignore @Test
     public void testSetaverageNonWordPosition() {
         System.out.println("setaverageNonWordPosition");
         String averageNonWordPosition = "";
@@ -109,7 +111,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getWords method, of class AdVocAsStimuliProvider.
      */
-    @Test
+    @Ignore @Test
     public void testGetWords() {
         System.out.println("getWords");
         AdVocAsStimuliProvider instance = null;
@@ -123,7 +125,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getNonwords method, of class AdVocAsStimuliProvider.
      */
-    @Test
+    @Ignore @Test
     public void testGetNonwords() {
         System.out.println("getNonwords");
         AdVocAsStimuliProvider instance = null;
@@ -137,7 +139,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getNonWordsIndices method, of class AdVocAsStimuliProvider.
      */
-    @Test
+    @Ignore @Test
     public void testGetNonWordsIndices() {
         System.out.println("getNonWordsIndices");
         AdVocAsStimuliProvider instance = null;
@@ -151,7 +153,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getCurrentBandNumber method, of class AdVocAsStimuliProvider.
      */
-    @Test
+    @Ignore @Test
     public void testGetCurrentBandNumber() {
         System.out.println("getCurrentBandNumber");
         AdVocAsStimuliProvider instance = null;
@@ -165,7 +167,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of deriveNextFastTrackStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Test
+    @Ignore @Test
     public void testDeriveNextFastTrackStimulus() {
         System.out.println("deriveNextFastTrackStimulus");
         AdVocAsStimuliProvider instance = null;
@@ -179,7 +181,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of analyseCorrectness method, of class AdVocAsStimuliProvider.
      */
-    @Test
+    @Ignore @Test
     public void testAnalyseCorrectness() {
         System.out.println("analyseCorrectness");
         Stimulus stimulus = null;
@@ -195,7 +197,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of fastTrackToBeContinuedWithSecondChance method, of class AdVocAsStimuliProvider.
      */
-    @Test
+    @Ignore @Test
     public void testFastTrackToBeContinuedWithSecondChance() {
         System.out.println("fastTrackToBeContinuedWithSecondChance");
         AdVocAsStimuliProvider instance = null;
@@ -209,7 +211,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of enoughStimuliForFastTrack method, of class AdVocAsStimuliProvider.
      */
-    @Test
+    @Ignore @Test
     public void testEnoughStimuliForFastTrack() {
         System.out.println("enoughStimuliForFastTrack");
         AdVocAsStimuliProvider instance = null;
@@ -223,7 +225,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of initialiseNextFineTuningTuple method, of class AdVocAsStimuliProvider.
      */
-    @Test
+    @Ignore @Test
     public void testInitialiseNextFineTuningTuple() {
         System.out.println("initialiseNextFineTuningTuple");
         AdVocAsStimuliProvider instance = null;
@@ -237,7 +239,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of recycleUnusedStimuli method, of class AdVocAsStimuliProvider.
      */
-    @Test
+    @Ignore @Test
     public void testRecycleUnusedStimuli() {
         System.out.println("recycleUnusedStimuli");
         AdVocAsStimuliProvider instance = null;
@@ -249,7 +251,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getStringFastTrack method, of class AdVocAsStimuliProvider.
      */
-    @Test
+    @Ignore @Test
     public void testGetStringFastTrack() {
         System.out.println("getStringFastTrack");
         String startRow = "";
@@ -267,7 +269,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getStringFineTuningHistory method, of class AdVocAsStimuliProvider.
      */
-    @Test
+    @Ignore @Test
     public void testGetStringFineTuningHistory() {
         System.out.println("getStringFineTuningHistory");
         String startRow = "";
@@ -286,7 +288,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getHtmlStimuliReport method, of class AdVocAsStimuliProvider.
      */
-    @Test
+    @Ignore @Test
     public void testGetHtmlStimuliReport() {
         System.out.println("getHtmlStimuliReport");
         AdVocAsStimuliProvider instance = null;
@@ -300,7 +302,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of generateDiagramSequence method, of class AdVocAsStimuliProvider.
      */
-    @Test
+    @Ignore @Test
     public void testGenerateDiagramSequence() {
         System.out.println("generateDiagramSequence");
         ArrayList<BookkeepingStimulus<AdVocAsStimulus>> records = null;
@@ -316,7 +318,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of retrieveSampleWords method, of class AdVocAsStimuliProvider.
      */
-    @Test
+    @Ignore @Test
     public void testRetrieveSampleWords() {
         System.out.println("retrieveSampleWords");
         ArrayList<BookkeepingStimulus<AdVocAsStimulus>> records = null;
@@ -332,7 +334,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of toString method, of class AdVocAsStimuliProvider.
      */
-    @Test
+    @Ignore @Test
     public void testToString() {
         System.out.println("toString");
         AdVocAsStimuliProvider instance = null;

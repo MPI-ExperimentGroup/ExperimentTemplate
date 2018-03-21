@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
@@ -33,135 +34,158 @@ public class AudioStimuliFromFiles {
 
     public ArrayList<String> bandIndex = new ArrayList<String>();
 
-    public String mainClassDeclaration = "public static final String[] TRIAL_ROWS";
-    public String indexDeclaration = "public static final String[] INDEX_ARRAY";
+    //Nr;Word;Target_nonword;Syllables;Condition;Length_list;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Noise_level;Position_foil;
+    public String parseTrialsInputCSV(String fileLocation, ArrayList<String> fileNameExtensions, HashMap<String, String> bandIndexing) throws IOException {
 
-    public ArrayList<String> parseTrialsInputCSV(String wordFileLocation, ArrayList<String> fileNameExtensions, String wordColumnsPrefix) throws IOException {
-
-        File inputFileWords = new File(wordFileLocation);
+        File inputFileWords = new File(fileLocation);
         final Reader reader = new InputStreamReader(inputFileWords.toURL().openStream(), "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
         Iterable<CSVRecord> records = CSVFormat.newFormat(';').withHeader().parse(reader);
-        ArrayList<String> retVal = new ArrayList<String>();
+
+        StringBuilder retVal = new StringBuilder();
 
         for (CSVRecord record : records) {
 
-            // making a trial  string
-            StringBuilder strBuilder = new StringBuilder(0);
-
-            String word = record.get("Word").trim();
-            if (word == null || word.isEmpty()) {
-                continue;
-            }
-            strBuilder.append("word:").append(word).append(',');
-
-            String targetNonwordFile = record.get("Target_nonword").trim();
-            if (targetNonwordFile == null || targetNonwordFile.isEmpty()) {
-                continue;
+            String trialNumber = record.get("Nr").trim();
+            if (trialNumber == null) {
+                throw new IOException(trialNumber + "is undefined");
             }
 
-            String targetNonword = this.renoveFileNameExtensions(targetNonwordFile, fileNameExtensions);
-            strBuilder.append("targetNonWord:").append(targetNonword).append(',');
-
-            String nOfSyllables = record.get("Syllables").trim();
-            if (nOfSyllables == null || nOfSyllables.isEmpty()) {
-                continue;
+            String trialWord = record.get("Word").trim();
+            if (trialWord == null) {
+                throw new IOException(trialWord + "is undefined");
             }
-            strBuilder.append("nOfSyllables:").append(nOfSyllables).append(',');
 
-            String condition = record.get("Condition").trim();
-            if (condition == null || condition.isEmpty()) {
-                continue;
+            String trialTargetNonword = record.get("Target_nonword").trim();
+            if (trialTargetNonword == null) {
+                throw new IOException(trialTargetNonword + "is undefined");
             }
-            strBuilder.append("condition:").append(condition).append(',');
+            
 
-            String length = record.get("Length_list").trim().substring(0, 1);
-            if (length == null || length.isEmpty()) {
-                continue;
+            String trialSyllables = record.get("Syllables").trim();
+            if (trialSyllables == null) {
+                throw new IOException(trialSyllables + "is undefined");
             }
-            strBuilder.append("length:").append(length).append(',');
 
-            for (int i = 1; i <= 6; i++) {
-                String filedName = "Word"+i;
+            String trialCondition = record.get("Condition").trim();
+            if (trialCondition == null) {
+                throw new IOException(trialCondition + "is undefined");
+            }
+            String trialLength = record.get("Length_list").trim().substring(0, 1);
+            if (trialLength == null) {
+                throw new IOException(trialLength + "is undefined");
+            }
+            int trialLengthInt = Integer.parseInt(trialLength);
+
+            ArrayList<String> words = new ArrayList<String>(trialLengthInt + 1);
+            for (int i = 0; i < trialLengthInt + 1; i++) {
+                words.add("");
+            }
+
+            words.set(0, trialTargetNonword);
+
+            for (int i = 1; i <= trialLengthInt; i++) {
+                String filedName = "Word" + i;
                 String currentWord = record.get(filedName).trim();
-                if (currentWord == null || currentWord.isEmpty()) {
-                    continue;
+                if (currentWord == null) {
+                    throw new IOException(currentWord + "is undefined");
                 }
-                 strBuilder.append("Word1:").append(filedName).append(',');
+                words.set(i, currentWord);
             }
 
-            //  FOr all words REMOVE .wav at the end 
-            String currentWord1 = record.get("Word1").trim();
-            if (currentWord1 == null || currentWord1.isEmpty()) {
-                continue;
+            String trialPositionTarget = record.get("Position_target").trim();
+            if (trialTargetNonword == null) {
+                throw new IOException(trialTargetNonword + "is undefined");
             }
-            strBuilder.append("Word1:").append(currentWord1).append(',');
-
-            String currentWord2 = record.get("Word2").trim();
-            if (currentWord2 == null || currentWord2.isEmpty()) {
-                continue;
-            }
-            strBuilder.append("Word2:").append(currentWord2).append(',');
-
-            String currentWord3 = record.get("Word3").trim();
-            if (currentWord3 == null || currentWord3.isEmpty()) {
-                continue;
-            }
-            strBuilder.append("Word3:").append(currentWord3).append(',');
-
-            String currentWord4 = record.get("Word4").trim();
-            strBuilder.append("Word4:").append(currentWord4).append(',');
-
-            String currentWord5 = record.get("Word5").trim();
-            strBuilder.append("Word5:").append(currentWord5).append(',');
-
-            String currentWord6 = record.get("Word6").trim();
-            strBuilder.append("Word6:").append(currentWord6).append(',');
-
-            String posTarget = record.get("Position_target").trim();
-            strBuilder.append("posTarget:").append(posTarget).append(',');
-
-            // GET foil from position??
-            String foil = record.get("Foil").trim();
-            strBuilder.append("foil:").append(foil).append(',');
-
-            String bandLabel = record.get("Noise_level").trim();
-            if (bandLabel == null || bandLabel.isEmpty()) {
-                continue;
-            }
-            strBuilder.append("bandLabel:").append(bandLabel);
-
-            if (!bandIndex.contains(bandLabel)) {
-                bandIndex.add(bandLabel);
+            int trialPositionTargetInt = Integer.parseInt(trialPositionTarget);
+            if (trialPositionTarget == null) {
+                throw new IOException(trialPositionTarget + "is undefined");
             }
 
-            String row = strBuilder.toString();
-            retVal.add(row);
+            String trialPositionFoil = record.get("Position_foil").trim();
+            if (trialPositionFoil == null) {
+                throw new IOException(trialPositionFoil + "is undefined");
+            }
+            int trialPositionFoilInt = Integer.parseInt(trialPositionFoil);
+
+            String trialBandLabel = record.get("Noise_level").trim();
+            if (trialBandLabel == null) {
+                throw new IOException(trialBandLabel + "is undefined");
+            }
+
+// <stimulus audioPath="deebral" code="deebral" identifier="deebral" pauseMs="900" ratingLabels="" correctResponses="" tags="round1" positionInTrial="1" wordType="NON_WORD" 
+//trialNumber="1" trialWord="vloer" trialTargetNonword="smoer_1" trialSyllables="1" trialCondition="Target-only" trialLength="3" trialPositionTarget="2" 
+// bandLabel="plus10db" bandIndex="3" trialPositionFoil="0"/>
+            for (int i = 0; i < trialLengthInt; i++) {
+
+                StringBuilder strBuilder = new StringBuilder();
+                strBuilder.append("<stimulus ");
+
+                String wrd = this.removeFileNameExtensions(words.get(i), fileNameExtensions);
+                strBuilder.append("audioPath=\"stimuli/").append(trialBandLabel).append("/").append(wrd).append("\" ");
+
+                strBuilder.append("code=\"").append(wrd).append("\" ");
+
+                strBuilder.append("identifier=\"").append(wrd).append("\" ");
+
+                strBuilder.append("ratingLabels=\"").append("").append("\" ");
+                strBuilder.append("correctResponses=\"").append("").append("\" ");
+                strBuilder.append("tags=\"").append("round1").append("\" ");
+
+                strBuilder.append("positionInTrial=\"").append(i).append("\" ");
+
+                String wordType;
+                if (i == 0) {
+                    strBuilder.append("pauseMs=\"").append(500).append("\" ");
+                    wordType = "EXAMPLE_TARGET_NON_WORD";
+                } else {
+                    strBuilder.append("pauseMs=\"").append(900).append("\" ");
+                    if (trialPositionTargetInt == i) {
+                        wordType = "TARGET_NON_WORD";
+                    } else {
+                        if (trialPositionFoilInt == i) {
+                            wordType = "FOIL";
+                        } else {
+                            wordType = "NON_WORD";
+                        }
+                    }
+                }
+                strBuilder.append("wordType=\"").append(wordType).append("\" ");
+
+                strBuilder.append("trialNumber=\"").append(trialNumber).append("\" ");
+                strBuilder.append("trialWord=\"").append(trialWord).append("\" ");
+                strBuilder.append("trialTargetNonword=\"").append(trialTargetNonword).append("\" ");
+                strBuilder.append("trialSyllables=\"").append(trialSyllables).append("\" ");
+                strBuilder.append("trialCondition=\"").append(trialCondition).append("\" ");
+                strBuilder.append("trialLength=\"").append(trialLength).append("\" ");
+                strBuilder.append("trialPositionTarget=\"").append(trialPositionTarget).append("\" ");
+                strBuilder.append("bandLabel=\"").append(trialBandLabel).append("\" ");
+                if (bandIndexing.get(trialBandLabel) == null) {
+                    throw new IOException("There is no index for " + trialBandLabel + "in the indexing map");
+                }
+
+                strBuilder.append("bandIndex=\"").append(bandIndexing.get(trialBandLabel)).append("\" ");
+                strBuilder.append("trialPositionFoil=\"").append(trialPositionFoil).append("\" ");
+
+                strBuilder.append("/> \n");
+                String row = strBuilder.toString();
+                retVal.append(row);
+            }
 
         }
-        return retVal;
+        return retVal.toString();
     }
 
-    public String renoveFileNameExtensions(String fileName, ArrayList<String> nameExtensions) {
+    public String removeFileNameExtensions(String fileName, ArrayList<String> nameExtensions) {
 
         for (String nameExtension : nameExtensions) {
             String suffix = "." + nameExtension;
             if (fileName.endsWith(suffix)) {
                 int nameLength = fileName.length();
-                return fileName.substring(nameLength - suffix.length());
+                return fileName.substring(0, nameLength - suffix.length());
             }
         }
 
         return fileName;
-    }
-
-    public String arrayListAsStringArray(ArrayList<String> rows, String declaration) {
-
-        StringBuilder builder = new StringBuilder(declaration + " = {\n");
-        for (String row : rows) {
-            builder.append("\"").append(row).append("\"").append(",\n");
-        }
-        builder.append("};");
-        return builder.toString();
     }
 
 }

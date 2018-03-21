@@ -23,6 +23,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -52,7 +53,7 @@ public class BookkeepingStimulusTest {
     /**
      * Test of getStimulus method, of class BookkeepingStimulus.
      */
-    @Test
+    @Ignore @Test
     public void testGetStimulus() {
         System.out.println("getStimulus");
         BookkeepingStimulus instance = null;
@@ -66,7 +67,7 @@ public class BookkeepingStimulusTest {
     /**
      * Test of getReaction method, of class BookkeepingStimulus.
      */
-    @Test
+    @Ignore @Test
     public void testGetReaction() {
         System.out.println("getReaction");
         BookkeepingStimulus instance = null;
@@ -80,7 +81,7 @@ public class BookkeepingStimulusTest {
     /**
      * Test of getTimeStamp method, of class BookkeepingStimulus.
      */
-    @Test
+    @Ignore @Test
     public void testGetTimeStamp() {
         System.out.println("getTimeStamp");
         BookkeepingStimulus instance = null;
@@ -94,7 +95,7 @@ public class BookkeepingStimulusTest {
     /**
      * Test of getCorrectness method, of class BookkeepingStimulus.
      */
-    @Test
+    @Ignore @Test
     public void testGetCorrectness() {
         System.out.println("getCorrectness");
         BookkeepingStimulus instance = null;
@@ -108,7 +109,7 @@ public class BookkeepingStimulusTest {
     /**
      * Test of setReaction method, of class BookkeepingStimulus.
      */
-    @Test
+    @Ignore @Test
     public void testSetReaction() {
         System.out.println("setReaction");
         String reaction = "";
@@ -121,7 +122,7 @@ public class BookkeepingStimulusTest {
     /**
      * Test of setCorrectness method, of class BookkeepingStimulus.
      */
-    @Test
+    @Ignore @Test
     public void testSetCorrectness() {
         System.out.println("setCorrectness");
         boolean eval = false;
@@ -134,7 +135,7 @@ public class BookkeepingStimulusTest {
     /**
      * Test of setTimeStamp method, of class BookkeepingStimulus.
      */
-    @Test
+    @Ignore @Test
     public void testSetTimeStamp() {
         System.out.println("setTimeStamp");
         long timeStr = 0L;

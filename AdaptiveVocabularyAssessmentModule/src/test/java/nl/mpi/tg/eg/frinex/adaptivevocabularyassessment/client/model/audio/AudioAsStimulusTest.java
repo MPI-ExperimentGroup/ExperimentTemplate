@@ -348,6 +348,10 @@ public class AudioAsStimulusTest {
         public String gettrialPositionFoil() {
             return "0";
         }
+        
+        public String gettrialTargetNonword() {
+            return null;
+        }
     }
 
    

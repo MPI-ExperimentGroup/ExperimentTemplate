@@ -46,12 +46,12 @@ abstract public class AudioAsStimulus extends BandStimulus {
     
     public abstract  String gettrialNumber();
     public abstract  String gettrialWord();
-    public abstract  String gettrialCueFile();
     public abstract  String gettrialSyllables();
     public abstract  String gettrialCondition();
     public abstract  String gettrialLength();
     public abstract  String gettrialPositionTarget();
     public abstract  String gettrialPositionFoil();
+    public abstract  String gettrialTargetNonword();
     
     
     public int getPositionInTrialInt(){

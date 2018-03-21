@@ -26,6 +26,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -55,7 +56,7 @@ public class VocabularyTest {
     /**
      * Test of getWordsInBands method, of class Vocabulary.
      */
-    @Test
+    @Ignore @Test
     public void testGetWordsInBands() {
         System.out.println("getWordsInBands");
         Vocabulary instance = null;
@@ -69,7 +70,7 @@ public class VocabularyTest {
     /**
      * Test of getNonwords method, of class Vocabulary.
      */
-    @Test
+    @Ignore @Test
     public void testGetNonwords() {
         System.out.println("getNonwords");
         Vocabulary instance = null;
@@ -83,7 +84,7 @@ public class VocabularyTest {
     /**
      * Test of getHashedStimuli method, of class Vocabulary.
      */
-    @Test
+    @Ignore @Test
     public void testGetHashedStimuli() {
         System.out.println("getHashedStimuli");
         Vocabulary instance = null;
@@ -97,7 +98,7 @@ public class VocabularyTest {
     /**
      * Test of initialise method, of class Vocabulary.
      */
-    @Test
+    @Ignore @Test
     public void testInitialise() {
         System.out.println("initialise");
         AdVocAsStimulus[] stimuli = null;

@@ -24,6 +24,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -180,6 +181,7 @@ public class UtilsJSONdialectTest {
     /**
      * Test of arrayList2String method, of class UtilsJSONdialect.
      */
+    @Ignore
     @Test
     public void testArrayList2String() throws Exception {
         System.out.println("arrayList2String");
@@ -195,6 +197,7 @@ public class UtilsJSONdialectTest {
     /**
      * Test of arrayList3String method, of class UtilsJSONdialect.
      */
+    @Ignore
     @Test
     public void testArrayList3String() throws Exception {
         System.out.println("arrayList3String");
@@ -209,6 +212,7 @@ public class UtilsJSONdialectTest {
     /**
      * Test of intArrayListToString method, of class UtilsJSONdialect.
      */
+    @Ignore
     @Test
     public void testIntArrayListToString() throws Exception {
         System.out.println("intArrayListToString");
@@ -224,6 +228,7 @@ public class UtilsJSONdialectTest {
     /**
      * Test of doubleArrayListToString method, of class UtilsJSONdialect.
      */
+    @Ignore
     @Test
     public void testDoubleArrayListToString() throws Exception {
         System.out.println("doubleArrayListToString");
@@ -239,6 +244,7 @@ public class UtilsJSONdialectTest {
     /**
      * Test of stringToArrayListInteger method, of class UtilsJSONdialect.
      */
+    @Ignore
     @Test
     public void testStringToArrayListInteger() throws Exception {
         System.out.println("stringToArrayListInteger");
@@ -254,6 +260,7 @@ public class UtilsJSONdialectTest {
     /**
      * Test of stringToArrayDouble method, of class UtilsJSONdialect.
      */
+    @Ignore
     @Test
     public void testStringToArrayDouble() throws Exception {
         System.out.println("stringToArrayDouble");

@@ -23,6 +23,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -52,7 +53,7 @@ public class VocabularyFromFilesTest {
     /**
      * Test of parseWordInputCSVtoXMLfragment method, of class VocabularyFromFiles.
      */
-    @Test
+    @Ignore @Test
     public void testParseWordInputCSVtoXMLfragment() throws Exception {
         System.out.println("parseWordInputCSVtoXMLfragment");
         String wordFileLocation = "";
@@ -65,7 +66,7 @@ public class VocabularyFromFilesTest {
     /**
      * Test of parseNonwordInputCSVtoXMLfragment method, of class VocabularyFromFiles.
      */
-    @Test
+    @Ignore @Test
     public void testParseNonwordInputCSVtoXMLfragment() throws Exception {
         System.out.println("parseNonwordInputCSVtoXMLfragment");
         String nonwordFileLocation = "";

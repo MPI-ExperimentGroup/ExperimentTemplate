@@ -29,7 +29,7 @@ public class AudioAsStimulusImplUTest extends AudioAsStimulus {
     private final String bandLabel;
     private final String trialNumber;
     private final String trialWord;
-    private final String trialCueFile;
+    private final String trialTargetNonword;
     private final String trialSyllables;
     private final String trialCondition;
     private final String trialLength;
@@ -37,7 +37,7 @@ public class AudioAsStimulusImplUTest extends AudioAsStimulus {
     private final String trialPositionFoil;
 
     public AudioAsStimulusImplUTest(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses,
-            String wordType, String positionInTrial, String bandIndex, String bandLabel, String trialNumber, String trialWord, String trialCueFile, String trialSyllables,
+            String wordType, String positionInTrial, String bandIndex, String bandLabel, String trialNumber, String trialWord, String trialTargetNonword, String trialSyllables,
             String trialCondition, String trialLength, String trialPositionTarget, String trialPositionFoil) {
         super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses);
         this.wordType = wordType;
@@ -46,7 +46,7 @@ public class AudioAsStimulusImplUTest extends AudioAsStimulus {
         this.bandLabel = bandLabel;
         this.trialNumber = trialNumber;
         this.trialWord = trialWord;
-        this.trialCueFile = trialCueFile;
+        this.trialTargetNonword = trialTargetNonword;
         this.trialSyllables = trialSyllables;
         this.trialCondition = trialCondition;
         this.trialLength = trialLength;
@@ -84,10 +84,6 @@ public class AudioAsStimulusImplUTest extends AudioAsStimulus {
         return this.trialWord;
     }
 
-    @Override
-    public String gettrialCueFile() {
-        return this.trialCueFile;
-    }
 
     @Override
     public String gettrialSyllables() {
@@ -112,6 +108,11 @@ public class AudioAsStimulusImplUTest extends AudioAsStimulus {
     @Override
     public String gettrialPositionFoil() {
         return this.trialPositionFoil;
+    }
+    
+    @Override
+    public String gettrialTargetNonword() {
+        return this.trialTargetNonword;
     }
 
 }

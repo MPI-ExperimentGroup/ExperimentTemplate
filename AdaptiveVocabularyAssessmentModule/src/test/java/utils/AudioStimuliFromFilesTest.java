@@ -18,6 +18,7 @@
 package utils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -30,6 +31,9 @@ import static org.junit.Assert.*;
  * @author olhshk
  */
 public class AudioStimuliFromFilesTest {
+    
+    String[] labelling ={"min10db", "min8db", "min6db", "min4db", "min2db", "zerodb", "plus2db", "plus4db", "plus6db", "plus8db", "plus10db"};
+    String filePath = "/Users/olhshk/Documents/ExperimentTemplate/AdaptiveVocabularyAssessmentModule/src/test/java/utils/Stimuli_NonwordMonitoring_working.csv";
     
     public AudioStimuliFromFilesTest() {
     }
@@ -56,47 +60,35 @@ public class AudioStimuliFromFilesTest {
     @Test
     public void testParseTrialsInputCSV() throws Exception {
         System.out.println("parseTrialsInputCSV");
-        String wordFileLocation = "";
-        ArrayList<String> fileNameExtensions = null;
-        String wordColumnsPrefix = "";
+        ArrayList<String> fileNameExtensions = new ArrayList<String>(1);
+        fileNameExtensions.add("wav");
+        HashMap<String, String> bandIndexing = new HashMap<String, String>();
+        for (int i=0; i<labelling.length; i++){
+           bandIndexing.put(labelling[i], (new Integer(i)).toString());
+        }
+        
+        
+        
         AudioStimuliFromFiles instance = new AudioStimuliFromFiles();
-        ArrayList<String> expResult = null;
-        ArrayList<String> result = instance.parseTrialsInputCSV(wordFileLocation, fileNameExtensions, wordColumnsPrefix);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String result = instance.parseTrialsInputCSV(this.filePath, fileNameExtensions, bandIndexing);
+        System.out.println(result);
+        assertTrue(result.startsWith("<stimulus "));
+        assertTrue(result.endsWith("/> \n"));
     }
 
     /**
-     * Test of renoveFileNameExtensions method, of class AudioStimuliFromFiles.
+     * Test of removeFileNameExtensions method, of class AudioStimuliFromFiles.
      */
     @Test
     public void testRenoveFileNameExtensions() {
         System.out.println("renoveFileNameExtensions");
-        String fileName = "";
-        ArrayList<String> nameExtensions = null;
+        String fileName = "rhabarber.wav";
+        ArrayList<String> fileNameExtensions = new ArrayList<String>(1);
+        fileNameExtensions.add("wav");
         AudioStimuliFromFiles instance = new AudioStimuliFromFiles();
-        String expResult = "";
-        String result = instance.renoveFileNameExtensions(fileName, nameExtensions);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String result = instance.removeFileNameExtensions(fileName, fileNameExtensions);
+        assertEquals("rhabarber", result);
     }
 
-    /**
-     * Test of arrayListAsStringArray method, of class AudioStimuliFromFiles.
-     */
-    @Test
-    public void testArrayListAsStringArray() {
-        System.out.println("arrayListAsStringArray");
-        ArrayList<String> rows = null;
-        String declaration = "";
-        AudioStimuliFromFiles instance = new AudioStimuliFromFiles();
-        String expResult = "";
-        String result = instance.arrayListAsStringArray(rows, declaration);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
+ 
 }

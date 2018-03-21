@@ -39,7 +39,7 @@ public class PermutationPair {
         StringBuilder builder = new StringBuilder();
         builder.append("{");
         UtilsJSONdialect<TrialCondition> util1 = new UtilsJSONdialect<TrialCondition>();
-        
+
         try {
             String trailTypesStr = util1.arrayListToString(this.trialTypes);
             if (trailTypesStr != null) {
@@ -47,7 +47,7 @@ public class PermutationPair {
             }
         } catch (Exception ex) {
         }
-        
+
         UtilsJSONdialect<Integer> util2 = new UtilsJSONdialect<Integer>();
         try {
             String trialLengthsStr = util2.arrayListToString(this.trialLengths);
@@ -56,11 +56,39 @@ public class PermutationPair {
             }
         } catch (Exception ex) {
         }
-        
+
         builder.append("}");
         return builder.toString();
     }
-    
-    
+
+    public PermutationPair toObject(String str) {
+
+        UtilsJSONdialect<String>  util1 = new UtilsJSONdialect<String>();
+        UtilsJSONdialect<Integer> util2 = new UtilsJSONdialect<Integer>();
+
+        try {
+            
+            String triallTypesStr = UtilsJSONdialect.getKey(str, "trialTypes");
+            ArrayList<String> trialTypesArrayStr = util1.stringToArrayList(triallTypesStr);
+            ArrayList<TrialCondition> trialConds = new ArrayList<TrialCondition>(trialTypesArrayStr.size());
+            for (int i=0; i<trialTypesArrayStr.size(); i++) {
+                trialConds.add(null);
+            }
+            for (int i=0; i<trialTypesArrayStr.size(); i++) {
+                TrialCondition tc = TrialCondition.valueOf(trialTypesArrayStr.get(i).trim());
+                trialConds.set(i, tc);
+            }
+            
+            String lengthStr = UtilsJSONdialect.getKey(str, "trialLength");
+            ArrayList<Integer> lengths = util2.stringToArrayListInteger(lengthStr);
+           
+            PermutationPair retVal = new PermutationPair(trialConds, lengths);
+            return retVal;
+            
+        } catch (Exception ex) {
+            return null;
+        }
+  
+    }
 
 }
