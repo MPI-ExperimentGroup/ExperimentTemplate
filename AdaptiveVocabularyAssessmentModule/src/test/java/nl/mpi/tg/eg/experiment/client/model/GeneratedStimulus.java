@@ -50,17 +50,17 @@ public class GeneratedStimulus extends nl.mpi.tg.eg.frinex.adaptivevocabularyass
             }*/
     @Override
     public String getAudio() {
-        return null;
+        return "./static/" + super.getAudio();
     }
 
     @Override
     public String getImage() {
-        return null;
+        return "./static/" + super.getImage();
     }
 
     @Override
     public String getVideo() {
-        return null;
+        return "./static/" + super.getVideo();
     }
 
     @Override
