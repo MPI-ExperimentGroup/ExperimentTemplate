@@ -386,7 +386,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         listLoop:
         for (PermutationPair permPair : oldList) {
             for (int i = 0; i < tupleSize; i++) {
-                TrialCondition trialType = permPair.trialTypes.get(i);
+                TrialCondition trialType = permPair.trialConditions.get(i);
                 Integer length = permPair.trialLengths.get(i);
                 ArrayList<Trial> possibilities = trialMatrix.get(trialType).get(bandIndex).get(length);
                 if (possibilities.size() < 1) {
@@ -407,7 +407,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         int combinationIndex = this.rnd.nextInt(availablePermutations.size());
         PermutationPair permPair = availablePermutations.get(combinationIndex);
         for (int i = 0; i < size; i++) {
-            TrialCondition trialType = permPair.trialTypes.get(i);
+            TrialCondition trialType = permPair.trialConditions.get(i);
             Integer length = permPair.trialLengths.get(i);
             ArrayList<Trial> possibilities = trialMatrix.get(trialType).get(bandIndex).get(length);
             int trialIndex = this.rnd.nextInt(possibilities.size());

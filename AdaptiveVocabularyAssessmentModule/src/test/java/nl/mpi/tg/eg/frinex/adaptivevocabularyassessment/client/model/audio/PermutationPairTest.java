@@ -17,13 +17,13 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -54,16 +54,51 @@ public class PermutationPairTest {
     /**
      * Test of toString method, of class PermutationPair.
      */
-    @Ignore
     @Test
     public void testToString() {
         System.out.println("toString");
-        PermutationPair instance = null;
-        String expResult = "";
+        ArrayList<Integer> lengths=new ArrayList<Integer>(4);
+        lengths.add(4);
+        lengths.add(3);
+        lengths.add(5);
+        lengths.add(6);
+        
+        ArrayList<TrialCondition> conditions=new ArrayList<TrialCondition>(4);
+        conditions.add(TrialCondition.NO_TARGET);
+        conditions.add(TrialCondition.TARGET_AND_FOIL);
+        conditions.add(TrialCondition.NO_TARGET);
+        conditions.add(TrialCondition.TARGET_ONLY);
+        
+        PermutationPair instance = new PermutationPair(conditions,lengths);
+        String expResult = "{trialConditions:{0:{NO_TARGET},1:{TARGET_AND_FOIL},2:{NO_TARGET},3:{TARGET_ONLY}},trialLengths:{0:{4},1:{3},2:{5},3:{6}}}";
         String result = instance.toString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of toObject method, of class PermutationPair.
+     */
+    @Test
+    public void testToObject() {
+        System.out.println("toObject");
+        String str = "{trialConditions:{0:{NO_TARGET},1:{TARGET_AND_FOIL},2:{NO_TARGET},3:{TARGET_ONLY}},trialLengths:{0:{4},1:{3},2:{5},3:{6}}}";
+        PermutationPair result = PermutationPair.toObject(str);
+        
+        ArrayList<Integer> lengths=new ArrayList<Integer>(4);
+        lengths.add(4);
+        lengths.add(3);
+        lengths.add(5);
+        lengths.add(6);
+        
+        ArrayList<TrialCondition> conditions=new ArrayList<TrialCondition>(4);
+        conditions.add(TrialCondition.NO_TARGET);
+        conditions.add(TrialCondition.TARGET_AND_FOIL);
+        conditions.add(TrialCondition.NO_TARGET);
+        conditions.add(TrialCondition.TARGET_ONLY);
+        
+        PermutationPair expResult = new PermutationPair(conditions,lengths);
+        assertEquals(expResult.trialConditions, result.trialConditions);
+        assertEquals(expResult.trialLengths, result.trialLengths);
     }
 
    

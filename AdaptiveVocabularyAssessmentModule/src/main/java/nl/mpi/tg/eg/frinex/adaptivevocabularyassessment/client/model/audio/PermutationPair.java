@@ -26,11 +26,11 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSON
  */
 public class PermutationPair {
 
-    public final ArrayList<TrialCondition> trialTypes;
+    public final ArrayList<TrialCondition> trialConditions;
     public final ArrayList<Integer> trialLengths;
 
-    public PermutationPair(ArrayList<TrialCondition> trialTypes, ArrayList<Integer> trialLengths) {
-        this.trialTypes = trialTypes;
+    public PermutationPair(ArrayList<TrialCondition> trialConditions, ArrayList<Integer> trialLengths) {
+        this.trialConditions = trialConditions;
         this.trialLengths = trialLengths;
     }
 
@@ -41,9 +41,9 @@ public class PermutationPair {
         UtilsJSONdialect<TrialCondition> util1 = new UtilsJSONdialect<TrialCondition>();
 
         try {
-            String trailTypesStr = util1.arrayListToString(this.trialTypes);
+            String trailTypesStr = util1.arrayListToString(this.trialConditions);
             if (trailTypesStr != null) {
-                builder.append("trialTypes:").append(trailTypesStr).append(",");
+                builder.append("trialConditions:").append(trailTypesStr).append(",");
             }
         } catch (Exception ex) {
         }
@@ -61,25 +61,26 @@ public class PermutationPair {
         return builder.toString();
     }
 
-    public PermutationPair toObject(String str) {
+    public static PermutationPair toObject(String str) {
 
         UtilsJSONdialect<String>  util1 = new UtilsJSONdialect<String>();
         UtilsJSONdialect<Integer> util2 = new UtilsJSONdialect<Integer>();
 
         try {
             
-            String triallTypesStr = UtilsJSONdialect.getKey(str, "trialTypes");
-            ArrayList<String> trialTypesArrayStr = util1.stringToArrayList(triallTypesStr);
-            ArrayList<TrialCondition> trialConds = new ArrayList<TrialCondition>(trialTypesArrayStr.size());
-            for (int i=0; i<trialTypesArrayStr.size(); i++) {
+            String triallTypesStr = UtilsJSONdialect.getKey(str, "trialConditions");
+            ArrayList<String> trialConditionsArrayStr = util1.stringToArrayList(triallTypesStr);
+            ArrayList<TrialCondition> trialConds = new ArrayList<TrialCondition>(trialConditionsArrayStr.size());
+            for (int i=0; i<trialConditionsArrayStr.size(); i++) {
                 trialConds.add(null);
             }
-            for (int i=0; i<trialTypesArrayStr.size(); i++) {
-                TrialCondition tc = TrialCondition.valueOf(trialTypesArrayStr.get(i).trim());
+            for (int i=0; i<trialConditionsArrayStr.size(); i++) {
+                String withBrackets = trialConditionsArrayStr.get(i).trim();
+                TrialCondition tc = TrialCondition.valueOf(UtilsJSONdialect.removeFirstAndLast(withBrackets));
                 trialConds.set(i, tc);
             }
             
-            String lengthStr = UtilsJSONdialect.getKey(str, "trialLength");
+            String lengthStr = UtilsJSONdialect.getKey(str, "trialLengths");
             ArrayList<Integer> lengths = util2.stringToArrayListInteger(lengthStr);
            
             PermutationPair retVal = new PermutationPair(trialConds, lengths);
