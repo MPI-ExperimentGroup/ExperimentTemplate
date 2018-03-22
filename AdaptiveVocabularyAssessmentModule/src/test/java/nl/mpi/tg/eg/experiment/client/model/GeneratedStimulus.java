@@ -5,7 +5,7 @@ import java.util.List;
 import nl.mpi.tg.eg.experiment.client.util.GeneratedStimulusProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
-public class GeneratedStimulus extends nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioAsStimulus {
+public class GeneratedStimulus {//extends nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioAsStimulus {
 
     public enum Tag implements nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag {
 
@@ -26,11 +26,11 @@ public class GeneratedStimulus extends nl.mpi.tg.eg.frinex.adaptivevocabularyass
     private final String trialPositionFoil;
 
     public static final void fillStimulusList(List<Stimulus> stimulusArray) {
-        stimulusArray.addAll(Arrays.asList(GeneratedStimulusProvider.values));
+        //stimulusArray.addAll(Arrays.asList(GeneratedStimulusProvider.values));
     }
 
     public GeneratedStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, String... parameters) {
-        super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses);
+        //super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses);
         wordType = parameters[1 - 1];
         positionInTrial = parameters[2 - 1];
         trialNumber = parameters[3 - 1];
@@ -48,79 +48,79 @@ public class GeneratedStimulus extends nl.mpi.tg.eg.frinex.adaptivevocabularyass
     /*public GeneratedStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String ratingLabels, String correctResponses) {
             super(uniqueId, tags, label, code, pauseMs, ratingLabels, correctResponses);
             }*/
-    @Override
-    public String getAudio() {
-        return "./static/" + super.getAudio();
-    }
-
-    @Override
-    public String getImage() {
-        return "./static/" + super.getImage();
-    }
-
-    @Override
-    public String getVideo() {
-        return "./static/" + super.getVideo();
-    }
-
-    @Override
-    public String getwordType() {
-        return wordType;
-    }
-
-    @Override
-    public String getpositionInTrial() {
-        return positionInTrial;
-    }
-
-    @Override
-    public String gettrialNumber() {
-        return trialNumber;
-    }
-
-    @Override
-    public String gettrialWord() {
-        return trialWord;
-    }
-
-    @Override
-    public String gettrialTargetNonword() {
-        return trialTargetNonword;
-    }
-
-    @Override
-    public String gettrialSyllables() {
-        return trialSyllables;
-    }
-
-    @Override
-    public String gettrialCondition() {
-        return trialCondition;
-    }
-
-    @Override
-    public String gettrialLength() {
-        return trialLength;
-    }
-
-    @Override
-    public String gettrialPositionTarget() {
-        return trialPositionTarget;
-    }
-
-    @Override
-    public String getbandLabel() {
-        return bandLabel;
-    }
-
-    @Override
-    public String getbandIndex() {
-        return bandIndex;
-    }
-
-    @Override
-    public String gettrialPositionFoil() {
-        return trialPositionFoil;
-    }
+//    @Override
+//    public String getAudio() {
+//        return "./static/" + super.getAudio();
+//    }
+//
+//    @Override
+//    public String getImage() {
+//        return "./static/" + super.getImage();
+//    }
+//
+//    @Override
+//    public String getVideo() {
+//        return "./static/" + super.getVideo();
+//    }
+//
+//    @Override
+//    public String getwordType() {
+//        return wordType;
+//    }
+//
+//    @Override
+//    public String getpositionInTrial() {
+//        return positionInTrial;
+//    }
+//
+//    @Override
+//    public String gettrialNumber() {
+//        return trialNumber;
+//    }
+//
+//    @Override
+//    public String gettrialWord() {
+//        return trialWord;
+//    }
+//
+//    @Override
+//    public String gettrialTargetNonword() {
+//        return trialTargetNonword;
+//    }
+//
+//    @Override
+//    public String gettrialSyllables() {
+//        return trialSyllables;
+//    }
+//
+//    @Override
+//    public String gettrialCondition() {
+//        return trialCondition;
+//    }
+//
+//    @Override
+//    public String gettrialLength() {
+//        return trialLength;
+//    }
+//
+//    @Override
+//    public String gettrialPositionTarget() {
+//        return trialPositionTarget;
+//    }
+//
+//    @Override
+//    public String getbandLabel() {
+//        return bandLabel;
+//    }
+//
+//    @Override
+//    public String getbandIndex() {
+//        return bandIndex;
+//    }
+//
+//    @Override
+//    public String gettrialPositionFoil() {
+//        return trialPositionFoil;
+//    }
 
 }

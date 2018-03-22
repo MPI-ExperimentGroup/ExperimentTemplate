@@ -17,12 +17,21 @@
  */
 package utils;
 
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.*;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioAsStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Trial;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialCondition;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.WordType;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 
@@ -32,10 +41,8 @@ import org.apache.commons.csv.CSVRecord;
  */
 public class AudioStimuliFromFiles {
 
-    public ArrayList<String> bandIndex = new ArrayList<String>();
-
     //Nr;Word;Target_nonword;Syllables;Condition;Length_list;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Noise_level;Position_foil;
-    public String parseTrialsInputCSV(String fileLocation, ArrayList<String> fileNameExtensions, HashMap<String, String> bandIndexing) throws IOException {
+    public String parseTrialsInputCSV_XML(String fileLocation, ArrayList<String> fileNameExtensions, HashMap<String, String> bandIndexing) throws IOException {
 
         File inputFileWords = new File(fileLocation);
         final Reader reader = new InputStreamReader(inputFileWords.toURL().openStream(), "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
@@ -59,7 +66,6 @@ public class AudioStimuliFromFiles {
             if (trialTargetNonword == null) {
                 throw new IOException(trialTargetNonword + "is undefined");
             }
-            
 
             String trialSyllables = record.get("Syllables").trim();
             if (trialSyllables == null) {
@@ -175,6 +181,140 @@ public class AudioStimuliFromFiles {
         return retVal.toString();
     }
 
+    //Nr;Word;Target_nonword;Syllables;Condition;Length_list;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Noise_level;Position_foil;
+    public ArrayList<Trial> parseTrialsInputCSVIntoTrialsArray(String fileLocation, ArrayList<String> fileNameExtensions, HashMap<String, String> bandIndexing) throws Exception {
+
+        ArrayList<Trial> retVal = new ArrayList<Trial>();
+
+        File inputFileWords = new File(fileLocation);
+        final Reader reader = new InputStreamReader(inputFileWords.toURL().openStream(), "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
+        Iterable<CSVRecord> records = CSVFormat.newFormat(';').withHeader().parse(reader);
+
+        for (CSVRecord record : records) {
+
+            String trialNumber = record.get("Nr").trim();
+            if (trialNumber == null) {
+                throw new IOException(trialNumber + "is undefined");
+            }
+
+            String trialWord = record.get("Word").trim();
+            if (trialWord == null) {
+                throw new IOException(trialWord + "is undefined");
+            }
+
+            String trialTargetNonword = record.get("Target_nonword").trim();
+            if (trialTargetNonword == null) {
+                throw new IOException(trialTargetNonword + "is undefined");
+            }
+
+            String trialSyllables = record.get("Syllables").trim();
+            if (trialSyllables == null) {
+                throw new IOException(trialSyllables + "is undefined");
+            }
+
+            String trialCondition = record.get("Condition").trim();
+            if (trialCondition == null) {
+                throw new IOException(trialCondition + "is undefined");
+            }
+            String trialLength = record.get("Length_list").trim().substring(0, 1);
+            if (trialLength == null) {
+                throw new IOException(trialLength + "is undefined");
+            }
+            int trialLengthInt = Integer.parseInt(trialLength);
+
+            ArrayList<String> words = new ArrayList<String>(trialLengthInt + 1);
+            for (int i = 0; i < trialLengthInt + 1; i++) {
+                words.add("");
+            }
+
+            words.set(0, trialTargetNonword);
+
+            for (int i = 1; i <= trialLengthInt; i++) {
+                String filedName = "Word" + i;
+                String currentWord = record.get(filedName).trim();
+                if (currentWord == null) {
+                    throw new IOException(currentWord + "is undefined");
+                }
+                words.set(i, currentWord);
+            }
+
+            String trialPositionTarget = record.get("Position_target").trim();
+            if (trialTargetNonword == null) {
+                throw new IOException(trialTargetNonword + "is undefined");
+            }
+            int trialPositionTargetInt = Integer.parseInt(trialPositionTarget);
+            if (trialPositionTarget == null) {
+                throw new IOException(trialPositionTarget + "is undefined");
+            }
+
+            String trialPositionFoil = record.get("Position_foil").trim();
+            if (trialPositionFoil == null) {
+                throw new IOException(trialPositionFoil + "is undefined");
+            }
+            int trialPositionFoilInt = Integer.parseInt(trialPositionFoil);
+
+            String bandLabel = record.get("Noise_level").trim();
+            if (bandLabel == null) {
+                throw new IOException(bandLabel + "is undefined");
+            }
+
+            int bandIndex = Integer.parseInt(bandIndexing.get(bandLabel));
+
+            ArrayList<BookkeepingStimulus<AudioAsStimulus>> stimuli = new ArrayList<BookkeepingStimulus<AudioAsStimulus>>();
+
+            for (int i = 0; i < words.size(); i++) {
+
+                //AudioAsStimulus(String uniqueId, Stimulus.Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath,
+                //             String ratingLabels, String correctResponses, String bandLabel, int bandIndex, WordType wordType, int posInTrial)
+                String wrd = this.removeFileNameExtensions(words.get(i), fileNameExtensions);
+                String audioPath = "stimuli/" + bandLabel + "/" + wrd;
+                String uniqueId = wrd+"_"+bandLabel;
+                int pauseMs = 900;
+                WordType wordType;
+                if (i == 0) {
+                    pauseMs = 500;
+                    wordType = WordType.EXAMPLE_TARGET_NON_WORD;
+                } else {
+                    if (trialPositionTargetInt == i) {
+                        wordType = WordType.TARGET_NON_WORD;
+                    } else {
+                        if (trialPositionFoilInt == i) {
+                            wordType = WordType.FOIL;
+                        } else {
+                            wordType = WordType.NON_WORD;
+                        }
+                    }
+                }
+
+                AudioAsStimulus stimulus = new AudioAsStimulus(uniqueId, new Tag[0], wrd, "", pauseMs, audioPath, null, null, "", "", bandLabel, bandIndex, wordType, i);
+                BookkeepingStimulus<AudioAsStimulus> bStimulus = new BookkeepingStimulus<AudioAsStimulus>(stimulus);
+                stimuli.add(bStimulus);
+            }
+
+            TrialCondition tc = null;
+            switch (trialCondition) {
+                case "Target-only":
+                    tc = TrialCondition.TARGET_ONLY;
+                    break;
+                case "Target+Foil":
+                    tc = TrialCondition.TARGET_AND_FOIL;
+                    break;
+                case "NoTarget":
+                    tc = TrialCondition.NO_TARGET;
+                    break;     
+                default:
+                    break;
+            }
+
+            //public Trial(int id, String word, String cueFile, int nOfSyllables, TrialCondition condition, int length, String bandLabel, int bandIndex, ArrayList<BookkeepingStimulus<AudioAsStimulus>> stimuli) throws Exception{
+            Trial nextTrial = new Trial(Integer.parseInt(trialNumber), trialWord, trialTargetNonword, Integer.parseInt(trialSyllables), tc,
+                    Integer.parseInt(trialLength), bandLabel, bandIndex,
+                    Integer.parseInt(trialPositionTarget), Integer.parseInt(trialPositionFoil), stimuli);
+            retVal.add(nextTrial);
+        }
+        return retVal;
+    }
+
     public String removeFileNameExtensions(String fileName, ArrayList<String> nameExtensions) {
 
         for (String nameExtension : nameExtensions) {
@@ -186,6 +326,140 @@ public class AudioStimuliFromFiles {
         }
 
         return fileName;
+    }
+    
+    //Nr;Word;Target_nonword;Syllables;Condition;Length_list;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Noise_level;Position_foil;
+    public ArrayList<Trial> parseTrialsInputCSVStringIntoTrialsArray(String csvString, ArrayList<String> fileNameExtensions, HashMap<String, String> bandIndexing) throws Exception {
+
+        ArrayList<Trial> retVal = new ArrayList<Trial>();
+
+        InputStream in = new ByteArrayInputStream(csvString.getBytes("UTF-8"));
+        final Reader reader = new InputStreamReader(in, "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
+        Iterable<CSVRecord> records = CSVFormat.newFormat(';').withHeader().parse(reader);
+
+        for (CSVRecord record : records) {
+
+            String trialNumber = record.get("Nr").trim();
+            if (trialNumber == null) {
+                throw new IOException(trialNumber + "is undefined");
+            }
+
+            String trialWord = record.get("Word").trim();
+            if (trialWord == null) {
+                throw new IOException(trialWord + "is undefined");
+            }
+
+            String trialTargetNonword = record.get("Target_nonword").trim();
+            if (trialTargetNonword == null) {
+                throw new IOException(trialTargetNonword + "is undefined");
+            }
+
+            String trialSyllables = record.get("Syllables").trim();
+            if (trialSyllables == null) {
+                throw new IOException(trialSyllables + "is undefined");
+            }
+
+            String trialCondition = record.get("Condition").trim();
+            if (trialCondition == null) {
+                throw new IOException(trialCondition + "is undefined");
+            }
+            String trialLength = record.get("Length_list").trim().substring(0, 1);
+            if (trialLength == null) {
+                throw new IOException(trialLength + "is undefined");
+            }
+            int trialLengthInt = Integer.parseInt(trialLength);
+
+            ArrayList<String> words = new ArrayList<String>(trialLengthInt + 1);
+            for (int i = 0; i < trialLengthInt + 1; i++) {
+                words.add("");
+            }
+
+            words.set(0, trialTargetNonword);
+
+            for (int i = 1; i <= trialLengthInt; i++) {
+                String filedName = "Word" + i;
+                String currentWord = record.get(filedName).trim();
+                if (currentWord == null) {
+                    throw new IOException(currentWord + "is undefined");
+                }
+                words.set(i, currentWord);
+            }
+
+            String trialPositionTarget = record.get("Position_target").trim();
+            if (trialTargetNonword == null) {
+                throw new IOException(trialTargetNonword + "is undefined");
+            }
+            int trialPositionTargetInt = Integer.parseInt(trialPositionTarget);
+            if (trialPositionTarget == null) {
+                throw new IOException(trialPositionTarget + "is undefined");
+            }
+
+            String trialPositionFoil = record.get("Position_foil").trim();
+            if (trialPositionFoil == null) {
+                throw new IOException(trialPositionFoil + "is undefined");
+            }
+            int trialPositionFoilInt = Integer.parseInt(trialPositionFoil);
+
+            String bandLabel = record.get("Noise_level").trim();
+            if (bandLabel == null) {
+                throw new IOException(bandLabel + "is undefined");
+            }
+
+            int bandIndex = Integer.parseInt(bandIndexing.get(bandLabel));
+
+            ArrayList<BookkeepingStimulus<AudioAsStimulus>> stimuli = new ArrayList<BookkeepingStimulus<AudioAsStimulus>>();
+
+            for (int i = 0; i < words.size(); i++) {
+
+                //AudioAsStimulus(String uniqueId, Stimulus.Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath,
+                //             String ratingLabels, String correctResponses, String bandLabel, int bandIndex, WordType wordType, int posInTrial)
+                String wrd = this.removeFileNameExtensions(words.get(i), fileNameExtensions);
+                String audioPath = "stimuli/" + bandLabel + "/" + wrd;
+                String uniqueId = wrd+"_"+bandLabel;
+                int pauseMs = 900;
+                WordType wordType;
+                if (i == 0) {
+                    pauseMs = 500;
+                    wordType = WordType.EXAMPLE_TARGET_NON_WORD;
+                } else {
+                    if (trialPositionTargetInt == i) {
+                        wordType = WordType.TARGET_NON_WORD;
+                    } else {
+                        if (trialPositionFoilInt == i) {
+                            wordType = WordType.FOIL;
+                        } else {
+                            wordType = WordType.NON_WORD;
+                        }
+                    }
+                }
+
+                AudioAsStimulus stimulus = new AudioAsStimulus(uniqueId, new Tag[0], wrd, "", pauseMs, audioPath, null, null, "", "", bandLabel, bandIndex, wordType, i);
+                BookkeepingStimulus<AudioAsStimulus> bStimulus = new BookkeepingStimulus<AudioAsStimulus>(stimulus);
+                stimuli.add(bStimulus);
+            }
+
+            TrialCondition tc = null;
+            switch (trialCondition) {
+                case "Target-only":
+                    tc = TrialCondition.TARGET_ONLY;
+                    break;
+                case "Target+Foil":
+                    tc = TrialCondition.TARGET_AND_FOIL;
+                    break;
+                case "NoTarget":
+                    tc = TrialCondition.NO_TARGET;
+                    break;     
+                default:
+                    break;
+            }
+
+            //public Trial(int id, String word, String cueFile, int nOfSyllables, TrialCondition condition, int length, String bandLabel, int bandIndex, ArrayList<BookkeepingStimulus<AudioAsStimulus>> stimuli) throws Exception{
+            Trial nextTrial = new Trial(Integer.parseInt(trialNumber), trialWord, trialTargetNonword, Integer.parseInt(trialSyllables), tc,
+                    Integer.parseInt(trialLength), bandLabel, bandIndex,
+                    Integer.parseInt(trialPositionTarget), Integer.parseInt(trialPositionFoil), stimuli);
+            retVal.add(nextTrial);
+        }
+        return retVal;
     }
 
 }

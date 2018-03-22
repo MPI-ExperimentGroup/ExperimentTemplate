@@ -23,23 +23,27 @@ import nl.mpi.tg.eg.frinex.common.model.AbstractStimulus;
  * @since Oct 27, 2017 2:13:03 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public abstract class BandStimulus extends AbstractStimulus {
+public class BandStimulus extends AbstractStimulus {
+    
+    public final String bandLabel;
+    public final int bandIndex;
 
    
-    public BandStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses) {
+    public BandStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, 
+            String ratingLabels, String correctResponses, String bandLabel, int bandIndex) {
         super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses);
+        this.bandIndex = bandIndex;
+        this.bandLabel = bandLabel;
     }
 
-    public abstract String getbandLabel();
-    
-    public abstract String getbandIndex();
-    
-    public int getBandIndexInt(){
-       return Integer.parseInt(this.getbandIndex()); 
+    public String getbandLabel(){
+        return this.bandLabel;
     }
     
- 
-  
+    public int getbandIndex(){
+        return this.bandIndex;
+    }
+    
     @Override
     public String toString(){
         return this.getUniqueId();

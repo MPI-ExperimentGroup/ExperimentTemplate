@@ -248,8 +248,8 @@ public class BandStimuliProviderTest {
     public void testGetResponseRecord() {
         System.out.println("getResponseRecord");
         BandStimuliProvider instance = null;
-        ArrayList<BookkeepingStimulus<BandStimulusImplUTest>> expResult = null;
-        ArrayList<BookkeepingStimulus<BandStimulusImplUTest>> result = instance.getResponseRecord();
+        ArrayList<BookkeepingStimulus<BandStimulus>> expResult = null;
+        ArrayList<BookkeepingStimulus<BandStimulus>> result = instance.getResponseRecord();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -368,8 +368,8 @@ public class BandStimuliProviderTest {
     public void testGetFTtuple() {
         System.out.println("getFTtuple");
         BandStimuliProvider instance = null;
-        ArrayList<BookkeepingStimulus<BandStimulusImplUTest>> expResult = null;
-        ArrayList<BookkeepingStimulus<BandStimulusImplUTest>> result = instance.getFTtuple();
+        ArrayList<BookkeepingStimulus<BandStimulus>> expResult = null;
+        ArrayList<BookkeepingStimulus<BandStimulus>> result = instance.getFTtuple();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

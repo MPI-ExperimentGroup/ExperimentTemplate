@@ -17,8 +17,11 @@
  */
 package utils;
 
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioStimuliFromString;
 import java.util.ArrayList;
 import java.util.HashMap;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Trial;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -56,12 +59,12 @@ public class AudioStimuliFromFilesTest {
     }
 
     /**
-     * Test of parseTrialsInputCSV method, of class AudioStimuliFromFiles.
+     * Test of parseTrialsInputCSV method, of class AudioStimuliFromString.
      */
     @Ignore
     @Test
-    public void testParseTrialsInputCSV() throws Exception {
-        System.out.println("parseTrialsInputCSV");
+    public void testParseTrialsInputCSVIntoTrialsArray() throws Exception {
+        System.out.println("parseTrialsInputCSVIntoTrialsArray");
         ArrayList<String> fileNameExtensions = new ArrayList<String>(1);
         fileNameExtensions.add("wav");
         HashMap<String, String> bandIndexing = new HashMap<String, String>();
@@ -69,17 +72,33 @@ public class AudioStimuliFromFilesTest {
            bandIndexing.put(labelling[i], (new Integer(i)).toString());
         }
         
-        
-        
         AudioStimuliFromFiles instance = new AudioStimuliFromFiles();
-        String result = instance.parseTrialsInputCSV(this.filePath, fileNameExtensions, bandIndexing);
-        System.out.println(result);
-        assertTrue(result.startsWith("<stimulus "));
-        assertTrue(result.endsWith("/> \n"));
+        ArrayList<Trial> result = instance.parseTrialsInputCSVIntoTrialsArray(this.filePath, fileNameExtensions, bandIndexing);
+        UtilsJSONdialect<Trial> util = new UtilsJSONdialect<Trial>();
+        String resString = util.arrayListToString(result);
+        System.out.println(resString);
     }
 
+    
     /**
-     * Test of removeFileNameExtensions method, of class AudioStimuliFromFiles.
+     * Test of parseTrialsInputCSV method, of class AudioStimuliFromString.
+     */
+    @Test
+    public void testParseTrialsInputCSVStringIntoTrialsArray() throws Exception {
+        System.out.println("parseTrialsInputCSVStringIntoTrialsArray");
+        ArrayList<String> fileNameExtensions = new ArrayList<String>(1);
+        fileNameExtensions.add("wav");
+        HashMap<String, String> bandIndexing = new HashMap<String, String>();
+        for (int i=0; i<labelling.length; i++){
+           bandIndexing.put(labelling[i], (new Integer(i)).toString());
+        }
+        
+        AudioStimuliFromString instance = new AudioStimuliFromString();
+        ArrayList<Trial> result = instance.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv.CSV_CONTENT, fileNameExtensions, bandIndexing);
+        System.out.println(result);
+    }
+    /**
+     * Test of removeFileNameExtensions method, of class AudioStimuliFromString.
      */
     @Test
     public void testRenoveFileNameExtensions() {
@@ -87,7 +106,7 @@ public class AudioStimuliFromFilesTest {
         String fileName = "rhabarber.wav";
         ArrayList<String> fileNameExtensions = new ArrayList<String>(1);
         fileNameExtensions.add("wav");
-        AudioStimuliFromFiles instance = new AudioStimuliFromFiles();
+        AudioStimuliFromString instance = new AudioStimuliFromString();
         String result = instance.removeFileNameExtensions(fileName, fileNameExtensions);
         assertEquals("rhabarber", result);
     }

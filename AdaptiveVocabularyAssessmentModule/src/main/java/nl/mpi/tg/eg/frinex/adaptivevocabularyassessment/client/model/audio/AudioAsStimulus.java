@@ -23,69 +23,34 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimu
  *
  * @author olhshk
  */
-abstract public class AudioAsStimulus extends BandStimulus {
+public class AudioAsStimulus extends BandStimulus {
 
     
     public static final String AUDIO_RATING_LABEL = "&#160;";
     public static final String EXAMPLE_TARGET_LABEL = null;
     public static final int PAUSE_EXAMPLE = 60000;
     public static final int PAUSE = 900;
+    
+    public final WordType wordType;
+    public final int positionInTrial;
 
-    public AudioAsStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses) {
-        super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses);
+    public AudioAsStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath,
+            String ratingLabels, String correctResponses, String bandLabel, int bandIndex, WordType wordType, int posInTrial) {
+        super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses, bandLabel, bandIndex);
+        this.positionInTrial = posInTrial;
+        this.wordType = wordType;
     }
     
  
-    public abstract  String getwordType();
-    public abstract  String getpositionInTrial();
-    
-    public WordType getWordTypeWT(){
-       return WordType.valueOf(this.getwordType()); 
+    public WordType getwordType() {
+          return this.wordType;
     }
-    
-    
-    public abstract  String gettrialNumber();
-    public abstract  String gettrialWord();
-    public abstract  String gettrialSyllables();
-    public abstract  String gettrialCondition();
-    public abstract  String gettrialLength();
-    public abstract  String gettrialPositionTarget();
-    public abstract  String gettrialPositionFoil();
-    public abstract  String gettrialTargetNonword();
-    
-    
-    public int getPositionInTrialInt(){
-       return Integer.parseInt(this.getpositionInTrial()); 
+      
+    public int getpositionInTrial(){
+        return this.positionInTrial;
     }
-    
-    public int getTrialNumberInt(){
-       return Integer.parseInt(this.gettrialNumber()); 
-    }
-    
-    public int getTrialSyllablesInt(){
-       return Integer.parseInt(this.gettrialSyllables()); 
-    }
-    
-    public int getTrialLengthInt(){
-       return Integer.parseInt(this.gettrialLength()); 
-    }
-    
-    public int getTrialPositionTargetInt(){
-       return Integer.parseInt(this.gettrialPositionTarget()); 
-    }
-    
-    public int getTrialPositionFoilInt(){
-       return Integer.parseInt(this.gettrialPositionFoil()); 
-    }
-    
-   
-    public TrialCondition getTrialConditionTC(){
-       return TrialCondition.valueOf(this.gettrialCondition()); 
-    }
-
     @Override
     public boolean hasCorrectResponses() {
-        return true;
-    }
+       return true;    }
 
 }

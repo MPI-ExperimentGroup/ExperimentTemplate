@@ -32,44 +32,43 @@ public class Trial {
     private final int trialId;
     private final ArrayList<BookkeepingStimulus<AudioAsStimulus>> stimuli;  // the first one (zero index) is the cue, it is in the order it should appear for the participant
     private final String word;
-    private final String cueFile;
+    private final String targetNonWord;
     private final int numberOfSyllables;
     private final TrialCondition condition;
     private final int lgth;
     private final int bandIndex;
     private final String bandLabel;
+    private final int positionTarget;
+    private final int positionFoil;
 
-    public Trial(int id, String word, String cueFile, int nOfSyllables, TrialCondition condition, int length, String bandLabel, int bandIndex) {
+    public Trial(int id, String word, String targetNonWord, int nOfSyllables, TrialCondition condition, int length, String bandLabel, int bandIndex, int positionTarget, int positionFoil, ArrayList<BookkeepingStimulus<AudioAsStimulus>> stimuli) throws Exception {
+
+        if (stimuli.size() != length + 1) {
+            throw new Exception("Amount of stimuli " + stimuli.size() + " does not correspond to the specification " + "1 (cue) + " + length + " stimuli.");
+        }
+
         this.trialId = id;
         this.word = word;
-        this.cueFile = cueFile;
+        this.targetNonWord = targetNonWord;
         this.numberOfSyllables = nOfSyllables;
         this.lgth = length;
         this.bandLabel = bandLabel;
         this.bandIndex = bandIndex;
         this.condition = condition;
-        this.stimuli = new ArrayList<BookkeepingStimulus<AudioAsStimulus>>(length + 1);
-        for (int i=0; i<length+1; i++){
-           this.stimuli.add(null); 
-        }
-    }
+        this.positionTarget = positionTarget;
+        this.positionFoil = positionFoil;
+        this.stimuli = stimuli;
 
-    public void addStimulus(BookkeepingStimulus<AudioAsStimulus> stimulus, int stimulusPosition){
-        this.stimuli.set(stimulusPosition, stimulus);
-    }
-
-    public ArrayList<BookkeepingStimulus<AudioAsStimulus>> getStimuli() {
-        return this.stimuli;
     }
 
     public String getWord() {
         return this.word;
     }
 
-  
-     public int getId() {
+    public int getId() {
         return this.trialId;
     }
+
     public int getBandIndex() {
         return this.bandIndex;
     }
@@ -79,7 +78,7 @@ public class Trial {
     }
 
     public String getTargetNonWord() {
-        return this.cueFile;
+        return this.targetNonWord;
     }
 
     public int getNumberOfSyllables() {
@@ -94,30 +93,41 @@ public class Trial {
         return this.lgth;
     }
 
-  
+    public int getPositionTarget() {
+        return this.positionTarget;
+    }
+
+    public int getPositionFoil() {
+        return this.positionFoil;
+    }
+    
+    public ArrayList<BookkeepingStimulus<AudioAsStimulus>> getStimuli(){
+        return this.stimuli;
+    }
 
     @Override
     public String toString() {
-    
+
 //    private final int trialId;
 //    private final ArrayList<String> stimulusIDs;  // the first one (zero index) is the cue, it is in the order it should appear for the participant
 //    private final String word;
-//    private final String cueFile;
+//    private final String targetNonWord;
 //    private final int numberOfSyllables;
 //    private final TrialCondition condition;
 //    private final int lgth;
 //    private final int bandIndex;
 //    private final String bandLabel;
-        
-StringBuilder builder = new StringBuilder();
+        StringBuilder builder = new StringBuilder();
         builder.append("{");
         builder.append("word:{").append(this.word).append("},");
-        builder.append("cueFile:{").append(this.cueFile).append("},");
+        builder.append("targetNonWord:{").append(this.targetNonWord).append("},");
         builder.append("numberOfSyllables:{").append(this.numberOfSyllables).append("},");
         builder.append("lgth:{").append(this.lgth).append("},");
         builder.append("bandIndex:{").append(this.bandIndex).append("},");
         builder.append("bandLabel:{").append(this.bandLabel).append("},");
         builder.append("condition:{").append(this.condition).append("},");
+        builder.append("positionTarget:{").append(this.positionTarget).append("},");
+        builder.append("positionFoil:{").append(this.positionFoil).append("},");
         UtilsJSONdialect<BookkeepingStimulus<AudioAsStimulus>> util = new UtilsJSONdialect<BookkeepingStimulus<AudioAsStimulus>>();
         String stimulusIDsStr = "";
         try {
@@ -131,43 +141,45 @@ StringBuilder builder = new StringBuilder();
 
     }
 
-    public static Trial toObject(String str, LinkedHashMap<String, AudioAsStimulus> hashedStimuli) {
-        try {
-            String idStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "trialId");
-            
-            String word = UtilsJSONdialect.getKeyWithoutBrackets(str, "word");
-            String cueFile = UtilsJSONdialect.getKeyWithoutBrackets(str, "cueFile");
-            
-            String numberOfSyllablesStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "numberOfSyllables");
-            String lgthStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "lgth");
-            String bandIndexStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "bandIndex");
-            String bandLabel = UtilsJSONdialect.getKeyWithoutBrackets(str, "bandLabel");
-            String conditionStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "condition");
-            
-            int numberOfSyllables = Integer.parseInt(numberOfSyllablesStr);
-            int lgth = Integer.parseInt(lgthStr);
-            int bandIndex = Integer.parseInt(bandIndexStr);
-            int id = Integer.parseInt(idStr);
-            TrialCondition condition = TrialCondition.valueOf(conditionStr);
+    public static Trial toObject(String str, LinkedHashMap<String, AudioAsStimulus> hashedStimuli) throws Exception {
+        String idStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "trialId");
 
-            String stimuliStr = UtilsJSONdialect.getKey(str, "stimuli");
-            
-            UtilsJSONdialect<BookkeepingStimulus<AudioAsStimulus>> util = new UtilsJSONdialect<BookkeepingStimulus<AudioAsStimulus>>();
-            ArrayList<String> bStimuli = util.stringToArrayList(stimuliStr);
-           
-            //Trial(int id, String word, String cueFile, int nOfSyllables, TrialCondition condition, int length, String bandLabel, int bandIndex)
-            Trial retVal = new Trial(id, word, cueFile, numberOfSyllables, condition, lgth, bandLabel, bandIndex);
-            for (int i=0; i<bStimuli.size(); i++) {
-                BookkeepingStimulus<AudioAsStimulus> ghost = new BookkeepingStimulus<AudioAsStimulus>(null);
-                BookkeepingStimulus<AudioAsStimulus> bStimulus = ghost.toObject(bStimuli.get(i), hashedStimuli);
-                int position =  bStimulus.getStimulus().getPositionInTrialInt();
-                retVal.addStimulus(bStimulus, position);
-            }
-            
-            return retVal;
-        } catch (Exception ex) {
-            return null;
+        String word = UtilsJSONdialect.getKeyWithoutBrackets(str, "word");
+        String targetNonWord = UtilsJSONdialect.getKeyWithoutBrackets(str, "targetNonWord");
+
+        String numberOfSyllablesStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "numberOfSyllables");
+        String lgthStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "lgth");
+        String bandIndexStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "bandIndex");
+        String bandLabel = UtilsJSONdialect.getKeyWithoutBrackets(str, "bandLabel");
+        String conditionStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "condition");
+        String positionTargetStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "positionTarget");
+        String positionFoilStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "positionFoil");
+
+        int numberOfSyllables = Integer.parseInt(numberOfSyllablesStr);
+        int lgth = Integer.parseInt(lgthStr);
+        int bandIndex = Integer.parseInt(bandIndexStr);
+        int id = Integer.parseInt(idStr);
+        int positionTarget = Integer.parseInt(positionTargetStr);
+        int positionFoil = Integer.parseInt(positionFoilStr);
+
+        TrialCondition condition = TrialCondition.valueOf(conditionStr);
+
+        String stimuliStr = UtilsJSONdialect.getKey(str, "stimuli");
+
+        UtilsJSONdialect<BookkeepingStimulus<AudioAsStimulus>> util = new UtilsJSONdialect<BookkeepingStimulus<AudioAsStimulus>>();
+        ArrayList<String> bStimuliStr = util.stringToArrayList(stimuliStr);
+        ArrayList<BookkeepingStimulus<AudioAsStimulus>> bStimuli = new ArrayList<BookkeepingStimulus<AudioAsStimulus>>(bStimuliStr.size());
+        for (int i = 0; i < bStimuliStr.size(); i++) {
+            BookkeepingStimulus<AudioAsStimulus> ghost = new BookkeepingStimulus<AudioAsStimulus>(null);
+            BookkeepingStimulus<AudioAsStimulus> bStimulus = ghost.toObject(bStimuliStr.get(i), hashedStimuli);
+            int position = bStimulus.getStimulus().getpositionInTrial();
+            bStimuli.set(position, bStimulus);
         }
+
+        //Trial(int id, String word, String targetNonWord, int nOfSyllables, TrialCondition condition, int length, String bandLabel, int bandIndex)
+        Trial retVal = new Trial(id, word, targetNonWord, numberOfSyllables, condition, lgth, bandLabel, bandIndex, positionTarget, positionFoil, bStimuli);
+
+        return retVal;
 
     }
 
@@ -176,15 +188,15 @@ StringBuilder builder = new StringBuilder();
         builder.append("{");
         UtilsJSONdialect<Trial> utils = new UtilsJSONdialect<Trial>();
         TrialCondition[] conditions = TrialCondition.values();
-        int i=0;
+        int i = 0;
         for (TrialCondition condition : conditions) {
             builder.append(condition).append(":");
             ArrayList<ArrayList<ArrayList<Trial>>> list = map.get(condition);
             try {
                 String listStr = utils.arrayList3String(list);
                 builder.append(listStr);
-                if (i < conditions.length-1) {
-                  builder.append(",");  
+                if (i < conditions.length - 1) {
+                    builder.append(",");
                 }
             } catch (Exception ex) {
                 return null;
@@ -194,7 +206,5 @@ StringBuilder builder = new StringBuilder();
         builder.append("}");
         return builder.toString();
     }
-    
-   
 
 }

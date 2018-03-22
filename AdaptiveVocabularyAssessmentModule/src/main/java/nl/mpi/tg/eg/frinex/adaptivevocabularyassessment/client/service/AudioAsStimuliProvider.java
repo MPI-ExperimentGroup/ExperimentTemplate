@@ -20,11 +20,11 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.RandomIndexing;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimuliProvider;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
@@ -44,10 +44,10 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus> {
 
     private String dirName;
-
+    private String[] labelling = {"min10db", "min8db", "min6db", "min4db", "min2db", "zerodb", "plus2db", "plus4db", "plus6db", "plus8db", "plus10db"};
     private TrialTuple currentTrialTuple;
 
-    private final AudioAsStimulus[] stimulusArray;
+    //private final AudioAsStimulus[] stimulusArray;
     // x[contdition][i][j] is the list of all trials (id-s)  satisfying "condition" for the band i of the length j
     private LinkedHashMap<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> trials;
 
@@ -66,7 +66,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
     public AudioAsStimuliProvider(AudioAsStimulus[] stimulusArray) {
         super(stimulusArray);
-        this.stimulusArray = stimulusArray;
+        //this.stimulusArray = stimulusArray;
     }
 
     @Override
@@ -74,7 +74,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
         super.initialiseStimuliState(stimuliStateSnapshot);
 
-        this.initialiseTrials(this.stimuli, this.numberOfBands, this.maxLength);
+        this.initialiseTrials();
 
         UtilsList<TrialCondition> utilTrials = new UtilsList<TrialCondition>();
         this.trialTypesPermutations = utilTrials.generatePermutations(this.requiredTrialTypes);
@@ -133,7 +133,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         for (int i = 0; i < this.nStimuliInTuple; i++) {
             BookkeepingStimulus<AudioAsStimulus> bStimulus = this.responseRecord.get(lastIndex - i);
             AudioAsStimulus audioStimulus = bStimulus.getStimulus();
-            WordType stimulusType = audioStimulus.getWordTypeWT();
+            WordType stimulusType = audioStimulus.getwordType();
             if (!stimulusType.equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
                 boolean correctness = (stimulusType.equals(WordType.TARGET_NON_WORD) && bStimulus.getReaction() != null) || ((!stimulusType.equals(WordType.TARGET_NON_WORD)) && bStimulus.getReaction() == null);
                 bStimulus.setCorrectness(correctness);
@@ -155,7 +155,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         bStimulus.setTimeStamp(System.currentTimeMillis());
 
         AudioAsStimulus audioStimulus = bStimulus.getStimulus();
-        WordType stimulusType = audioStimulus.getWordTypeWT();
+        WordType stimulusType = audioStimulus.getwordType();
 
         bStimulus.setReaction(stimulusResponse);
         boolean correctness = stimulusType.equals(WordType.TARGET_NON_WORD); // button shoulb be pressed only on the target nonword
@@ -195,10 +195,10 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             AudioAsStimulus stimulus = bStimulus.getStimulus();
             StringBuilder row = new StringBuilder();
             String time = (new Date(bStimulus.getTimeStamp())).toString();
-            row.append(startColumn).append(stimulus.getBandIndexInt()).append(endColumn);
+            row.append(startColumn).append(stimulus.getbandIndex()).append(endColumn);
             row.append(startColumn).append(stimulus.getbandLabel()).append(endColumn);
             row.append(startColumn).append(stimulus.getLabel()).append(endColumn);
-            row.append(startColumn).append(stimulus.getWordTypeWT()).append(endColumn);
+            row.append(startColumn).append(stimulus.getwordType()).append(endColumn);
             row.append(startColumn).append(stimulus.getCorrectResponses()).append(endColumn);
             row.append(startColumn).append(bStimulus.getReaction()).append(endColumn);
             row.append(startColumn).append(bStimulus.getCorrectness()).append(endColumn);
@@ -314,28 +314,44 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         return retVal;
     }
 
-    private void initialiseTrials(AudioAsStimulus[] stimuli, int numberOfBands, int maxLength) {
-        this.trials = this.initMatrix(numberOfBands, maxLength);
-        ArrayList<Integer> permuteIndex = RandomIndexing.generateRandomArray(stimuli.length);
-
-        for (int i = 0; i < stimuli.length; i++) {
-            AudioAsStimulus stimulus = stimuli[permuteIndex.get(i)];
-            BookkeepingStimulus<AudioAsStimulus> bStimulus = new BookkeepingStimulus<AudioAsStimulus>(stimulus);
-            ArrayList<ArrayList<ArrayList<Trial>>> trialGroupByCondition = this.trials.get(stimulus.getTrialConditionTC());
-            ArrayList<ArrayList<Trial>> trialGroupByBand = trialGroupByCondition.get(stimulus.getBandIndexInt());
-            ArrayList<Trial> trialGroupByLength = trialGroupByBand.get(stimulus.getTrialLengthInt());
-            int index = this.findIndexOfTrialById(trialGroupByLength, stimulus.getTrialNumberInt());
-            if (index < 0) {
-                //(int id, String word, String cueFile, int nOfSyllables, TrialCondition condition, int length, String bandLabel, int bandIndex)
-                Trial freshTrial = new Trial(stimulus.getTrialNumberInt(), stimulus.gettrialWord(),
-                        stimulus.gettrialTargetNonword(), stimulus.getTrialSyllablesInt(), stimulus.getTrialConditionTC(), stimulus.getTrialLengthInt(),
-                        stimulus.getbandLabel(), stimulus.getBandIndexInt());
-                trialGroupByLength.add(freshTrial);
-                index = this.findIndexOfTrialById(trialGroupByLength, stimulus.getTrialNumberInt());
-            }
-            trialGroupByLength.get(index).addStimulus(bStimulus, stimulus.getPositionInTrialInt());
-            this.hashedStimuli.put(stimulus.getUniqueId(), stimulus);
+    public void initialiseTrials() {
+        AudioStimuliFromString util = new AudioStimuliFromString();
+        try {
+            ArrayList<Trial> trials1 = this.parseTrialsInputCSVStringIntoTrialsArray(util, TrialsCsv1.CSV_CONTENT);
+            ArrayList<Trial> trials2 = this.parseTrialsInputCSVStringIntoTrialsArray(util, TrialsCsv2.CSV_CONTENT);
+            ArrayList<Trial> trials3 = this.parseTrialsInputCSVStringIntoTrialsArray(util, TrialsCsv3.CSV_CONTENT);
+            ArrayList<Trial> trials4 = this.parseTrialsInputCSVStringIntoTrialsArray(util, TrialsCsv4.CSV_CONTENT);
+            ArrayList<Trial> trials5 = this.parseTrialsInputCSVStringIntoTrialsArray(util, TrialsCsv4.CSV_CONTENT);
+            
+            trials1.addAll(trials2);
+            trials1.addAll(trials3);
+            trials1.addAll(trials4);
+            trials1.addAll(trials5);
+            System.out.println("OK");
+        } catch (Exception exc) {
+            System.out.println("something went wrong");
         }
+//        this.trials = this.initMatrix(numberOfBands, maxLength);
+//        ArrayList<Integer> permuteIndex = RandomIndexing.generateRandomArray(stimuli.length);
+//
+//        for (int i = 0; i < stimuli.length; i++) {
+//            AudioAsStimulus stimulus = stimuli[permuteIndex.get(i)];
+//            BookkeepingStimulus<AudioAsStimulus> bStimulus = new BookkeepingStimulus<AudioAsStimulus>(stimulus);
+//            ArrayList<ArrayList<ArrayList<Trial>>> trialGroupByCondition = this.trials.get(stimulus.getTrialConditionTC());
+//            ArrayList<ArrayList<Trial>> trialGroupByBand = trialGroupByCondition.get(stimulus.getBandIndexInt());
+//            ArrayList<Trial> trialGroupByLength = trialGroupByBand.get(stimulus.getTrialLengthInt());
+//            int index = this.findIndexOfTrialById(trialGroupByLength, stimulus.getTrialNumberInt());
+//            if (index < 0) {
+//                //(int id, String word, String cueFile, int nOfSyllables, TrialCondition condition, int length, String bandLabel, int bandIndex)
+//                Trial freshTrial = new Trial(stimulus.getTrialNumberInt(), stimulus.gettrialWord(),
+//                        stimulus.gettrialTargetNonword(), stimulus.getTrialSyllablesInt(), stimulus.getTrialConditionTC(), stimulus.getTrialLengthInt(),
+//                        stimulus.getbandLabel(), stimulus.getBandIndexInt());
+//                trialGroupByLength.add(freshTrial);
+//                index = this.findIndexOfTrialById(trialGroupByLength, stimulus.getTrialNumberInt());
+//            }
+//            trialGroupByLength.get(index).addStimulus(bStimulus, stimulus.getPositionInTrialInt());
+//            this.hashedStimuli.put(stimulus.getUniqueId(), stimulus);
+//        }
 
     }
 
@@ -418,6 +434,18 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         ArrayList<PermutationPair> toBeRemoved = this.emptiedPossibilities(availablePermutations, trialMatrix, bandIndex, size);
         availablePermutations.removeAll(toBeRemoved);
         TrialTuple retVal = new TrialTuple(trials);
+        return retVal;
+    }
+
+    public ArrayList<Trial> parseTrialsInputCSVStringIntoTrialsArray(AudioStimuliFromString util, String string) throws Exception {
+        System.out.println("parseTrialsInputCSVStringIntoTrialsArray");
+        ArrayList<String> fileNameExtensions = new ArrayList<String>(1);
+        fileNameExtensions.add("wav");
+        HashMap<String, String> bandIndexing = new HashMap<String, String>();
+        for (int i = 0; i < labelling.length; i++) {
+            bandIndexing.put(labelling[i], (new Integer(i)).toString());
+        }
+        ArrayList<Trial> retVal = util.parseTrialsInputCSVStringIntoTrialsArray(string, fileNameExtensions, bandIndexing);
         return retVal;
     }
 

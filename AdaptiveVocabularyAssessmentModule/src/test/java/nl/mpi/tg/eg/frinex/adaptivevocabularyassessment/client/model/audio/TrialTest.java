@@ -35,7 +35,7 @@ import org.junit.Ignore;
  */
 public class TrialTest {
 
-   private Trial[] instance = (new TrialTestPool()).trials;
+   private Trial[] instance = null;
     
   
     @BeforeClass
@@ -220,22 +220,7 @@ public class TrialTest {
         assertEquals(trailL[3] + 1, stimuli[3].size());
     }
 
-    /**
-     * Test of addStimulus method, of class Trial.
-     */
-     @Ignore
-    @Test
-    public void testAddStimulus() {
-        System.out.println("addStimulus");
-        StimuliTestPool pool = new  StimuliTestPool();
-        BookkeepingStimulus<AudioAsStimulus> stimulus = pool.stimuli.get(0);
-        int stimulusPosition = 0;
-        Trial instance = null;
-        instance.addStimulus(stimulus, stimulusPosition);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
+   
     /**
      * Test of getStimuli method, of class Trial.
      */
@@ -243,8 +228,7 @@ public class TrialTest {
     @Test
     public void testGetStimuli() {
         System.out.println("getStimuli");
-        TrialTestPool pool = new TrialTestPool();
-        Trial instance = pool.trials[0];
+        Trial instance = null;
         ArrayList<BookkeepingStimulus<AudioAsStimulus>> expResult = null;
         ArrayList<BookkeepingStimulus<AudioAsStimulus>> result = instance.getStimuli();
         assertEquals(expResult, result);
@@ -287,7 +271,7 @@ public class TrialTest {
      */
      @Ignore
     @Test
-    public void testToObject() {
+    public void testToObject() throws Exception{
         System.out.println("toObject");
         String str = "";
         LinkedHashMap<String, AudioAsStimulus> hashedStimuli = null;

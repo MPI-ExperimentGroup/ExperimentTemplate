@@ -85,7 +85,7 @@ public class Vocabulary {
                 this.nonWords.add(stimulus);
             } else {
                 if (correctResponse.equals(WORD)) {
-                    int index = stimulus.getBandIndexInt();
+                    int index = stimulus.getbandIndex();
                     ArrayList<AdVocAsStimulus> bandStimuli = this.wordsInBands.get(index);
                     bandStimuli.add(stimulus);
                 }
