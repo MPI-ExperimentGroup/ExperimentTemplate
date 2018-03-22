@@ -156,6 +156,24 @@ public class LocalStorage {
 //        stowSentData(userId, segmentToDelete);
     }
 
+    private String removeSegment(String segment, String remainingStoredData) {
+        int startIndex = 0;
+        int endIndex = 0;
+        for (int index = 0; index < remainingStoredData.length() && segment.length() > (index - startIndex); index++) {
+            if (remainingStoredData.charAt(index) == segment.charAt(index - startIndex)) {
+                endIndex = index;
+            } else {
+                startIndex = index;
+                endIndex = index;
+            }
+        }
+        if (startIndex == endIndex) {
+            return remainingStoredData;
+        } else {
+            return remainingStoredData.substring(0, startIndex) + remainingStoredData.substring(endIndex + 1);
+        }
+    }
+
     protected String removeSubmittedPortion(final String segmentToDelete, final String storedData) {
         String remainingStoredData = storedData.replaceFirst("^,", "") + ",";
         // replacing this segment will sometimes fail due to non matching strings, but the result of failure is only a second transmission of the data which is a preferred option over complexity
@@ -163,7 +181,8 @@ public class LocalStorage {
             segment = (segment.startsWith("{")) ? segment : "{" + segment;
             segment = segment.replaceFirst(",$", "");
             segment = (segment.endsWith("}")) ? segment + "," : segment + "},";
-            remainingStoredData = remainingStoredData.replace(segment, "");
+//            remainingStoredData = remainingStoredData.replace(segment, "");
+            remainingStoredData = removeSegment(segment, remainingStoredData);
         }
         return remainingStoredData.replaceFirst("^,", "").replaceFirst(",$", "");
     }
