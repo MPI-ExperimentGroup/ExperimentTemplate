@@ -108,9 +108,7 @@ Geef voor elk woord met een muisklik aan of jij het woord kent of niet."/>
                 <addPadding/>
             </endOfStimulus>
             <randomGrouping/>
-            <stimuli>
-                <tag>set1</tag>
-            </stimuli>
+            <stimuli/>
         </loadStimulus>
     </presenter>
     <presenter displayOrder="6" type="stimulus" self="stimuliScreenV2" title="Series 2">
@@ -147,9 +145,7 @@ Geef voor elk woord met een muisklik aan of jij het woord kent of niet."/>
                 <addPadding/>
             </endOfStimulus>
             <randomGrouping/>
-            <stimuli>
-                <tag>set2</tag>
-            </stimuli>
+            <stimuli/>
         </loadStimulus>
     </presenter>
     <presenter displayOrder="7" type="transmission" self="Admin" title="Administratie" next="ListParticipants">
@@ -204,12 +200,9 @@ Geef voor elk woord met een muisklik aan of jij het woord kent of niet."/>
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
-    </presenter>
-    <stimuli>        
-        <stimulus audioPath="" code="" identifier="example1" pauseMs="0" ratingLabels="stopped,continue">
-            <tag>set1</tag>
-            <tag>set2</tag>
-            <tag>set3</tag>
-        </stimulus>
-    </stimuli>
+    </presenter>   
+    <stimuli> 
+       <stimulus audioPath="" code="" identifier="example1" pauseMs="0" ratingLabels="stopped,continue" tag="set1">
+       </stimulus>            
+   </stimuli>
 </experiment>
