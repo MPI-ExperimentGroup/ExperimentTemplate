@@ -224,19 +224,21 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 @Override
                 public void run() {
                     final String storedScreenData = localStorage.getStoredScreenData(userId, endpoint.name());
-                    submitData(endpoint, userId, "[" + storedScreenData + "]", new DataSubmissionListener() {
+                    if (!storedScreenData.isEmpty()) {
+                        submitData(endpoint, userId, "[" + storedScreenData + "]", new DataSubmissionListener() {
 
-                        @Override
-                        public void scoreSubmissionFailed(DataSubmissionException exception) {
-                            dataSubmitTimer[endpoint.ordinal()] = null;
-                        }
+                            @Override
+                            public void scoreSubmissionFailed(DataSubmissionException exception) {
+                                dataSubmitTimer[endpoint.ordinal()] = null;
+                            }
 
-                        @Override
-                        public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
-                            localStorage.deleteStoredScreenData(userId, endpoint.name(), storedScreenData);
-                            dataSubmitTimer[endpoint.ordinal()] = null;
-                        }
-                    });
+                            @Override
+                            public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                                localStorage.deleteStoredScreenData(userId, endpoint.name(), storedScreenData);
+                                dataSubmitTimer[endpoint.ordinal()] = null;
+                            }
+                        });
+                    }
                 }
             };
             // clear previous schedule and set the timer to run 5 seconds.
