@@ -55,7 +55,7 @@
     </presenter>
     <presenter displayOrder="4" type="stimulus" self="stimuliScreenV1" title="Series 1">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider" type="0" eventTag="stimuliN" 
-                      numberOfSeries="2" numberOfBands="3" startBand="0" 
+                      numberOfSeries="2" numberOfBands="11" startBand="6" 
                       fineTuningTupleLength="4" fineTuningUpperBoundForCycles="2"
                       fastTrackPresent="false" fineTuningFirstWrongOut="false">
             <hasMoreStimulus>
@@ -109,12 +109,13 @@
                 <targetButton featureText="Heel goed gedaan. Nu komt de tweede ronde. Klik op de button om door te gaan. Veel Succes!" target="stimuliScreenV2"/>
                 <addPadding/>
             </endOfStimulus>
-            <randomGrouping/>          
+            <randomGrouping/>
+            <stimuli/>          
         </loadStimulus>
     </presenter>
     <presenter displayOrder="6" type="stimulus" self="stimuliScreenV2" title="Series 2">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider" type="1" eventTag="stimuliN" 
-                      numberOfSeries="2" numberOfBands="3" startBand="0" 
+                      numberOfSeries="2" numberOfBands="11" startBand="6" 
                       fineTuningTupleLength="4" fineTuningUpperBoundForCycles="2"
                       fastTrackPresent="false" fineTuningFirstWrongOut="false">
             <hasMoreStimulus>
@@ -170,6 +171,7 @@
                 <addPadding/>
             </endOfStimulus>
             <randomGrouping/>
+            <stimuli/>
         </loadStimulus>
     </presenter>
     <presenter displayOrder="7" type="transmission" self="Admin" title="Administratie" next="ListParticipants">
