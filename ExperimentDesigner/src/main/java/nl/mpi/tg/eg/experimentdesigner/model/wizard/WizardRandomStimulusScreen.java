@@ -333,6 +333,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(storedWizardScreenData.getStimulusCodeMsDelay()));
             nextButtonFeature.getPresenterFeatureList().add(pauseFeature);
             final PresenterFeature stimulusCodeAudio = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
+            stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, "false");
             stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.codeFormat, storedWizardScreenData.getStimulusCodeFormat());
             stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.msToNext, "0");
             pauseFeature.getPresenterFeatureList().add(stimulusCodeAudio);
