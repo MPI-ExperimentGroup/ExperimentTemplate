@@ -85,7 +85,7 @@ public class AudioAsStimuliProviderTest {
         System.out.println("initialiseStimuliState");
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
-        assertEquals(20, this.instance.getNumberOfBands());
+        assertEquals(20, this.instance.getnumberOfBands());
         assertEquals(this.tupleSize, this.instance.getTrialTuple().getTrials().size());
         ArrayList<Integer> leng = new ArrayList<Integer>(this.tupleSize);
         ArrayList<TrialCondition> types = new ArrayList<TrialCondition>(this.tupleSize);

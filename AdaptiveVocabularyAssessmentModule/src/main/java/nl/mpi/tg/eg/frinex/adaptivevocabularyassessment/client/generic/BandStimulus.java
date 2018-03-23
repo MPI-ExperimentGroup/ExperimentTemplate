@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
+import java.util.HashMap;
 import nl.mpi.tg.eg.frinex.common.model.AbstractStimulus;
 
 /**
@@ -47,6 +48,10 @@ public class BandStimulus extends AbstractStimulus {
     @Override
     public String toString(){
         return this.getUniqueId();
+    }
+    
+    public static BandStimulus toObject(String uniqueId, HashMap<String, BandStimulus> map){
+        return map.get(uniqueId);
     }
 
    

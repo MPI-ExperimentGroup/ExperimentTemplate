@@ -17,35 +17,46 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
+import java.util.HashMap;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 
 /**
  *
  * @author olhshk
  */
 public class BookkeepingStimulusTest {
-    
+
+    public final BookkeepingStimulus<BandStimulus> instance;
+     public final BandStimulus stimulus;
+
     public BookkeepingStimulusTest() {
+        String uniqueId = "smoer";
+        String label = "smoer";
+
+        this.stimulus = new BandStimulus(uniqueId, new Stimulus.Tag[0], label, "", 900, "aud", "vid", "img",
+                "a,b,c", "b,c", "plus10db", 10);
+        this.instance = new BookkeepingStimulus<BandStimulus>(stimulus);
+        
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -53,96 +64,85 @@ public class BookkeepingStimulusTest {
     /**
      * Test of getStimulus method, of class BookkeepingStimulus.
      */
-    @Ignore @Test
+    @Test
     public void testGetStimulus() {
         System.out.println("getStimulus");
-        BookkeepingStimulus instance = null;
-        BandStimulus expResult = null;
         BandStimulus result = instance.getStimulus();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(this.stimulus, result);
     }
 
     /**
      * Test of getReaction method, of class BookkeepingStimulus.
      */
-    @Ignore @Test
-    public void testGetReaction() {
+    @Test
+    public void testGetSetReaction() {
         System.out.println("getReaction");
-        BookkeepingStimulus instance = null;
-        String expResult = "";
         String result = instance.getReaction();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(null, result);
+        this.instance.setReaction("false");
+        assertEquals("false",instance.getReaction());
+        this.instance.setReaction("Disagree!");
+        assertEquals("Disagree!",instance.getReaction());
     }
 
     /**
      * Test of getTimeStamp method, of class BookkeepingStimulus.
      */
-    @Ignore @Test
-    public void testGetTimeStamp() {
+    @Test
+    public void testGetSetTimeStamp() {
         System.out.println("getTimeStamp");
-        BookkeepingStimulus instance = null;
-        long expResult = 0L;
         long result = instance.getTimeStamp();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(0, result);
+        long now=System.currentTimeMillis();
+        this.instance.setTimeStamp(now);
+        assertEquals(now, this.instance.getTimeStamp());
     }
 
     /**
      * Test of getCorrectness method, of class BookkeepingStimulus.
      */
-    @Ignore @Test
-    public void testGetCorrectness() {
+    @Test
+    public void testGetSetCorrectness() {
         System.out.println("getCorrectness");
-        BookkeepingStimulus instance = null;
-        Boolean expResult = null;
         Boolean result = instance.getCorrectness();
+       assertEquals(null, result);
+        this.instance.setCorrectness(false);
+        assertFalse(this.instance.getCorrectness());
+        this.instance.setCorrectness(true);
+        assertTrue(this.instance.getCorrectness());
+    }
+
+ 
+    /**
+     * Test of toString method, of class BookkeepingStimulus.
+     */
+    @Test
+    public void testToString() {
+        System.out.println("toString");
+//        builder.append("stimulus:{").append(this.stimulus.toString()).append("},");
+//        builder.append("userReaction:{").append(this.userReaction).append("},");
+//        builder.append("correctness:{").append(this.correctness).append("},");
+//        builder.append("timeStamp:{").append(this.timeStamp).append("}}");
+        String expResult = "{stimulus:{smoer},userReaction:{null},correctness:{null},timeStamp:{0}}";
+        String result = this.instance.toString();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
-     * Test of setReaction method, of class BookkeepingStimulus.
+     * Test of toObject method, of class BookkeepingStimulus.
      */
-    @Ignore @Test
-    public void testSetReaction() {
-        System.out.println("setReaction");
-        String reaction = "";
-        BookkeepingStimulus instance = null;
-        instance.setReaction(reaction);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    @Test
+    public void testToObject() {
+        System.out.println("toObject");
+        long now=System.currentTimeMillis();
+        String input="{stimulus:{smoer},userReaction:{yes},correctness:{false},timeStamp:{"+now+"}}";
+        HashMap<String,BandStimulus> map = new HashMap<String,BandStimulus>();
+        map.put("smoer", this.stimulus);
+        BookkeepingStimulus<BandStimulus> result = this.instance.toObject(input, map);
+        assertEquals("yes",result.getReaction());
+        assertFalse(result.getCorrectness());
+        assertEquals(now,result.getTimeStamp());
+        assertEquals(this.stimulus, result.getStimulus());
     }
 
-    /**
-     * Test of setCorrectness method, of class BookkeepingStimulus.
-     */
-    @Ignore @Test
-    public void testSetCorrectness() {
-        System.out.println("setCorrectness");
-        boolean eval = false;
-        BookkeepingStimulus instance = null;
-        instance.setCorrectness(eval);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setTimeStamp method, of class BookkeepingStimulus.
-     */
-    @Ignore @Test
-    public void testSetTimeStamp() {
-        System.out.println("setTimeStamp");
-        long timeStr = 0L;
-        BookkeepingStimulus instance = null;
-        instance.setTimeStamp(timeStr);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }

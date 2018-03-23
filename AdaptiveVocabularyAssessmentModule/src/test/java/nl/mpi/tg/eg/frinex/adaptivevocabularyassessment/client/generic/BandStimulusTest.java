@@ -17,13 +17,14 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
+import java.util.HashMap;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 
 /**
  *
@@ -31,7 +32,15 @@ import org.junit.Ignore;
  */
 public class BandStimulusTest {
     
+    public final BandStimulus instance;
+    
     public BandStimulusTest() {
+        
+        String uniqueId="smoer";
+        String label = "smoer";
+        
+        this.instance = new BandStimulus(uniqueId,new Tag[0], label, "", 900, "aud", "vid", "img", 
+            "a,b,c", "b,c", "plus10db", 10);
     }
     
     @BeforeClass
@@ -53,12 +62,10 @@ public class BandStimulusTest {
     /**
      * Test of getbandLabel method, of class BandStimulus.
      */
-    @Ignore
     @Test
     public void testGetbandLabel() {
         System.out.println("getbandLabel");
-        BandStimulus instance = null;
-        String expResult = "bandLabel_20";
+        String expResult = "plus10db";
         String result = instance.getbandLabel();
         assertEquals(expResult, result);
     }
@@ -66,12 +73,10 @@ public class BandStimulusTest {
     /**
      * Test of getbandIndex method, of class BandStimulus.
      */
-    @Ignore
     @Test
     public void testGetbandIndex() {
         System.out.println("getbandIndex");
-        BandStimulus instance = null;
-        String expResult = "19";
+        int expResult = 10;
         int result = instance.getbandIndex();
         assertEquals(expResult, result);
     }
@@ -80,14 +85,27 @@ public class BandStimulusTest {
     /**
      * Test of toString method, of class BandStimulus.
      */
-    @Ignore
     @Test
     public void testToString() {
         System.out.println("toString");
-        BandStimulus instance = null;
-        String expResult = "label_0000";
+        String expResult = "smoer";
         String result = instance.toString();
         assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of toObject method, of class BandStimulus.
+     */
+    @Test
+    public void testToObject() {
+        System.out.println("toObject");
+        String uniqueId = "smoer";
+        HashMap<String, BandStimulus> map = new HashMap<String, BandStimulus>();
+        map.put(uniqueId, this.instance);
+        BandStimulus expResult = this.instance;
+        BandStimulus result = BandStimulus.toObject(uniqueId, map);
+        assertEquals(expResult, result);
+        assertEquals(null, BandStimulus.toObject("rhabarber", map));
     }
 
    

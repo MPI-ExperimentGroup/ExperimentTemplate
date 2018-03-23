@@ -53,7 +53,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
     // fine tuning stuff
     private Random rnd;
 
-    public AdVocAsStimuliProvider(AdVocAsStimulus[] stimulusArray) {
+    public AdVocAsStimuliProvider(Stimulus[] stimulusArray) {
         super(stimulusArray);
     }
     
@@ -69,7 +69,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
             this.wordsPerBandInSeries = this.wordsPerBand / this.numberOfSeries;
             Vocabulary vocab = new Vocabulary(this.numberOfBands, this.wordsPerBandInSeries);
 
-            vocab.initialise(this.stimuli);
+            //vocab.initialise(this.stimuli);
             this.words = vocab.getWordsInBands();
             this.nonwords = vocab.getNonwords();
             this.hashedStimuli = vocab.getHashedStimuli();
@@ -85,6 +85,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
 
             this.rnd = new Random();
         } else {
+            
             // TODO !!!
         }
     }

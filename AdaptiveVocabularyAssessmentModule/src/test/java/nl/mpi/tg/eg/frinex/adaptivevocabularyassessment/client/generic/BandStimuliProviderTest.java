@@ -34,22 +34,24 @@ import org.junit.Ignore;
  * @author olhshk
  */
 public class BandStimuliProviderTest {
-    
+
+    private final BandStimuliProvider instance = new BandStimuliProvider(new Stimulus[0]);
+
     public BandStimuliProviderTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -57,131 +59,157 @@ public class BandStimuliProviderTest {
     /**
      * Test of settype method, of class BandStimuliProvider.
      */
-    @Ignore
     @Test
-    public void testSettype() {
+    public void tesSetGettype() {
         System.out.println("settype");
-        String type = "";
-        BandStimuliProvider instance = null;
-        instance.settype(type);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String type = "1";
+        assertTrue(0 == this.instance.gettype());
+        this.instance.settype(type);
+        assertTrue(1 == this.instance.gettype());
     }
 
     /**
      * Test of setfastTrackPresent method, of class BandStimuliProvider.
      */
-    @Ignore
     @Test
-    public void testSetfastTrackPresent() {
+    public void testGetSetfastTrackPresent() {
         System.out.println("setfastTrackPresent");
-        String fastTrackPresent = "";
-        BandStimuliProvider instance = null;
-        instance.setfastTrackPresent(fastTrackPresent);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(this.instance.getfastTrackPresent());
+        String fastTrackPresent = "false";
+        this.instance.setfastTrackPresent(fastTrackPresent);
+        assertFalse(this.instance.getfastTrackPresent());
     }
 
     /**
      * Test of setfineTuningFirstWrongOut method, of class BandStimuliProvider.
      */
-    @Ignore
     @Test
-    public void testSetfineTuningFirstWrongOut() {
+    public void testGetSetfineTuningFirstWrongOut() {
         System.out.println("setfineTuningFirstWrongOut");
-        String fineTuningFirstWrongOut = "";
-        BandStimuliProvider instance = null;
+        String fineTuningFirstWrongOut = "false";
+        assertTrue(this.instance.getfineTuningFirstWrongOut());
         instance.setfineTuningFirstWrongOut(fineTuningFirstWrongOut);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertFalse(this.instance.getfineTuningFirstWrongOut());
     }
 
     /**
      * Test of setnumberOfBands method, of class BandStimuliProvider.
      */
-    @Ignore
     @Test
-    public void testSetnumberOfBands() {
+    public void testGetSetnumberOfBands() {
         System.out.println("setnumberOfBands");
-        String numberOfBands = "";
-        BandStimuliProvider instance = null;
+        String numberOfBands = "40";
+        assertEquals(0, this.instance.getnumberOfBands());
         instance.setnumberOfBands(numberOfBands);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(40, this.instance.getnumberOfBands());
     }
 
     /**
      * Test of setnumberOfSeries method, of class BandStimuliProvider.
      */
-    @Ignore
     @Test
-    public void testSetnumberOfSeries() {
+    public void testGetSetnumberOfSeries() {
         System.out.println("setnumberOfSeries");
-        String numberOfSeries = "";
-        BandStimuliProvider instance = null;
-        instance.setnumberOfSeries(numberOfSeries);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String numberOfSeries = "2";
+        assertEquals(0, this.instance.getnumberOfSeries());
+        this.instance.setnumberOfSeries(numberOfSeries);
+        assertEquals(2, this.instance.getnumberOfSeries());
     }
 
     /**
      * Test of setstartBand method, of class BandStimuliProvider.
      */
-    @Ignore
     @Test
-    public void testSetstartBand() {
+    public void testGetSetstartBand() {
         System.out.println("setstartBand");
-        String startBand = "";
-        BandStimuliProvider instance = null;
-        instance.setstartBand(startBand);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String startBand = "20";
+        assertEquals(0, this.instance.getstartBand());
+        this.instance.setstartBand(startBand);
+        assertEquals(20, this.instance.getstartBand());
     }
 
     /**
      * Test of setfineTuningTupleLength method, of class BandStimuliProvider.
      */
-    @Ignore
     @Test
-    public void testSetfineTuningTupleLength() {
+    public void testGetSetfineTuningTupleLength() {
         System.out.println("setfineTuningTupleLength");
-        String fineTuningTupleLength = "";
-        BandStimuliProvider instance = null;
+        String fineTuningTupleLength = "4";
+        assertEquals(0, this.instance.getfineTuningTupleLength());
         instance.setfineTuningTupleLength(fineTuningTupleLength);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(4, this.instance.getfineTuningTupleLength());
     }
 
     /**
-     * Test of setfineTuningUpperBoundForCycles method, of class BandStimuliProvider.
+     * Test of setfineTuningUpperBoundForCycles method, of class
+     * BandStimuliProvider.
      */
-    @Ignore
     @Test
-    public void testSetfineTuningUpperBoundForCycles() {
+    public void testGetSetfineTuningUpperBoundForCycles() {
         System.out.println("setfineTuningUpperBoundForCycles");
-        String fineTuningUpperBoundForCycles = "";
-        BandStimuliProvider instance = null;
+        String fineTuningUpperBoundForCycles = "2";
+        assertEquals(0, this.instance.getfineTuningUpperBoundForCycles());
         instance.setfineTuningUpperBoundForCycles(fineTuningUpperBoundForCycles);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(2, this.instance.getfineTuningUpperBoundForCycles());
     }
 
     /**
      * Test of initialiseStimuliState method, of class BandStimuliProvider.
      */
-    @Ignore
     @Test
-    public void testInitialiseStimuliState() {
+    public void testInitialiseStimuliStateEmpty() {
         System.out.println("initialiseStimuliState");
         String stimuliStateSnapshot = "";
-        BandStimuliProvider instance = null;
-        instance.initialiseStimuliState(stimuliStateSnapshot);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+        this.instance.setnumberOfBands("40");
+        this.instance.settype("0");
+        this.instance.setfastTrackPresent("true");
+        this.instance.setfineTuningFirstWrongOut("false");
+        this.instance.setfineTuningTupleLength("4");
+        this.instance.setfineTuningUpperBoundForCycles("2");
+        this.instance.setnumberOfSeries("2");
+        this.instance.setstartBand("20");
+        this.instance.initialiseStimuliState(stimuliStateSnapshot);
+// this.bandScore = -1;
+//            this.percentageScore = 0;
+//            this.isCorrectCurrentResponse = null;
+//            this.currentBandIndex = this.startBand - 1;
+//            this.bandVisitCounter = new int[this.numberOfBands];
+//
+//            //this.totalStimuli: see the child class
+//            this.enoughFineTuningStimulae = true;
+//            for (int i = 0; i < this.numberOfBands; i++) {
+//                this.bandVisitCounter[i] = 0;
+//            }
+//
+//            this.cycle2helper = new int[this.fineTuningUpperBoundForCycles * 2 + 1];
+//            for (int i = 0; i < this.fineTuningUpperBoundForCycles * 2 + 1; i++) {
+//                this.cycle2helper[i] = 0;
+//            }
+//            this.cycle2 = false;
+//            this.champion = false;
+//            this.looser = false;
+//            this.justVisitedLastBand = false;
+//            this.percentageBandTable = this.generatePercentageBandTable();
+        assertEquals(-1, this.instance.getBandScore());
+        assertEquals(19, this.instance.getCurrentBandIndex());
+        assertTrue(this.instance.getEnoughFinetuningStimuli());
+        assertTrue(this.instance.getnumberOfBands() == this.instance.getbandVisitCounter().length);
+        for (int i = 0; i < this.instance.getnumberOfBands(); i++) {
+            assertEquals(0, this.instance.getbandVisitCounter()[i]);
+        }
+        assertTrue(this.instance.getfineTuningUpperBoundForCycles() * 2 + 1 == this.instance.getcycle2helper().length);
+        for (int i = 0; i < this.instance.getfineTuningUpperBoundForCycles() * 2 + 1; i++) {
+            assertEquals(0, this.instance.getcycle2helper()[i]);
+        }
+        assertFalse(this.instance.getCycel2());
+        assertFalse(this.instance.getChampion());
+        assertFalse(this.instance.getLooser());
     }
 
     /**
-     * Test of generateStimuliStateSnapshot method, of class BandStimuliProvider.
+     * Test of generateStimuliStateSnapshot method, of class
+     * BandStimuliProvider.
      */
     @Ignore
     @Test
@@ -195,35 +223,7 @@ public class BandStimuliProviderTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of getCurrentBandIndex method, of class BandStimuliProvider.
-     */
-    @Ignore
-    @Test
-    public void testGetCurrentBandIndex() {
-        System.out.println("getCurrentBandIndex");
-        BandStimuliProvider instance = null;
-        int expResult = 0;
-        int result = instance.getCurrentBandIndex();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getNumberOfBands method, of class BandStimuliProvider.
-     */
-    @Ignore
-    @Test
-    public void testGetNumberOfBands() {
-        System.out.println("getNumberOfBands");
-        BandStimuliProvider instance = null;
-        int expResult = 0;
-        int result = instance.getNumberOfBands();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+ 
 
     /**
      * Test of getPercentageBandTable method, of class BandStimuliProvider.
@@ -255,66 +255,7 @@ public class BandStimuliProviderTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of getEnoughFinetuningStimuli method, of class BandStimuliProvider.
-     */
-    @Ignore
-    @Test
-    public void testGetEnoughFinetuningStimuli() {
-        System.out.println("getEnoughFinetuningStimuli");
-        BandStimuliProvider instance = null;
-        boolean expResult = false;
-        boolean result = instance.getEnoughFinetuningStimuli();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getCycel2 method, of class BandStimuliProvider.
-     */
-    @Ignore
-    @Test
-    public void testGetCycel2() {
-        System.out.println("getCycel2");
-        BandStimuliProvider instance = null;
-        boolean expResult = false;
-        boolean result = instance.getCycel2();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getChampion method, of class BandStimuliProvider.
-     */
-    @Test
-    @Ignore
-    public void testGetChampion() {
-        System.out.println("getChampion");
-        BandStimuliProvider instance = null;
-        boolean expResult = false;
-        boolean result = instance.getChampion();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getLooser method, of class BandStimuliProvider.
-     */
-    @Ignore
-    @Test
-    public void testGetLooser() {
-        System.out.println("getLooser");
-        BandStimuliProvider instance = null;
-        boolean expResult = false;
-        boolean result = instance.getLooser();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
+  
     /**
      * Test of getBestFastTrackBand method, of class BandStimuliProvider.
      */
@@ -575,7 +516,8 @@ public class BandStimuliProviderTest {
     }
 
     /**
-     * Test of fastTrackToBeContinuedWithSecondChance method, of class BandStimuliProvider.
+     * Test of fastTrackToBeContinuedWithSecondChance method, of class
+     * BandStimuliProvider.
      */
     @Ignore
     @Test
@@ -605,7 +547,8 @@ public class BandStimuliProviderTest {
     }
 
     /**
-     * Test of initialiseNextFineTuningTuple method, of class BandStimuliProvider.
+     * Test of initialiseNextFineTuningTuple method, of class
+     * BandStimuliProvider.
      */
     @Ignore
     @Test
@@ -620,7 +563,8 @@ public class BandStimuliProviderTest {
     }
 
     /**
-     * Test of fineTuningToBeContinuedWholeTuple method, of class BandStimuliProvider.
+     * Test of fineTuningToBeContinuedWholeTuple method, of class
+     * BandStimuliProvider.
      */
     @Ignore
     @Test
@@ -843,6 +787,4 @@ public class BandStimuliProviderTest {
         fail("The test case is a prototype.");
     }
 
- 
-    
 }

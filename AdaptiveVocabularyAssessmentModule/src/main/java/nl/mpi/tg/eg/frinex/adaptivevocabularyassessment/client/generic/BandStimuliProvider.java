@@ -34,20 +34,16 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  *
  * @param <A>
  */
-public abstract class BandStimuliProvider<A extends BandStimulus> extends AbstractStimuliProvider {
-    
-   
-    protected final A[] stimuli;
-    
-    protected HashMap<String, A> hashedStimuli;
+public class BandStimuliProvider<A extends BandStimulus> extends AbstractStimuliProvider {
 
+    protected HashMap<String, A> hashedStimuli;
 
     protected int type = 0;
     protected int numberOfBands = 0;
     protected int numberOfSeries = 0;
     protected int startBand = 0;
     protected int fineTuningTupleLength = 0;
-    protected int fineTuningUpperBoundForCycles;
+    protected int fineTuningUpperBoundForCycles = 0;
     protected boolean fastTrackPresent = true;
     protected boolean fineTuningFirstWrongOut = true;
 
@@ -69,8 +65,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
     // fine tuning stuff
     protected final ArrayList<BookkeepingStimulus<A>> tupleFT = new ArrayList<>(this.fineTuningTupleLength);
-    
- 
+
     // fine tuning stopping
     protected boolean enoughFineTuningStimulae = true;
     protected int[] bandVisitCounter;
@@ -87,68 +82,107 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
     // add experiment specific stuff here
     // ...
-    
-    public BandStimuliProvider(final A[] stimulusArray) {
+    public BandStimuliProvider(final Stimulus[] stimulusArray) {
         super(stimulusArray);
-        this.stimuli = stimulusArray;
     }
-    
+
+    public Integer gettype() {
+        return this.type;
+    }
+
     public void settype(String type) {
         this.type = Integer.parseInt(type);
+    }
+
+    public boolean getfastTrackPresent() {
+        return this.fastTrackPresent;
     }
 
     public void setfastTrackPresent(String fastTrackPresent) {
         this.fastTrackPresent = Boolean.parseBoolean(fastTrackPresent);
     }
 
+    public boolean getfineTuningFirstWrongOut() {
+        return this.fineTuningFirstWrongOut;
+    }
+
     public void setfineTuningFirstWrongOut(String fineTuningFirstWrongOut) {
         this.fineTuningFirstWrongOut = Boolean.parseBoolean(fineTuningFirstWrongOut);
+    }
+
+    public int getnumberOfBands() {
+        return this.numberOfBands;
     }
 
     public void setnumberOfBands(String numberOfBands) {
         this.numberOfBands = Integer.parseInt(numberOfBands);
     }
 
+    public int getnumberOfSeries() {
+        return this.numberOfSeries;
+    }
+
     public void setnumberOfSeries(String numberOfSeries) {
         this.numberOfSeries = Integer.parseInt(numberOfSeries);
+    }
+
+    public int getstartBand() {
+        return this.startBand;
     }
 
     public void setstartBand(String startBand) {
         this.startBand = Integer.parseInt(startBand);
     }
 
+    public int getfineTuningTupleLength() {
+        return this.fineTuningTupleLength;
+    }
+
     public void setfineTuningTupleLength(String fineTuningTupleLength) {
         this.fineTuningTupleLength = Integer.parseInt(fineTuningTupleLength);
+    }
+
+    public int getfineTuningUpperBoundForCycles() {
+        return this.fineTuningUpperBoundForCycles;
     }
 
     public void setfineTuningUpperBoundForCycles(String fineTuningUpperBoundForCycles) {
         this.fineTuningUpperBoundForCycles = Integer.parseInt(fineTuningUpperBoundForCycles);
     }
+    
+    public int[] getbandVisitCounter(){
+        return this.bandVisitCounter;
+    }
+    
+     public int[] getcycle2helper(){
+        return this.cycle2helper;
+    }
 
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
-        //this.stimuli = this.GETPETER!!
-        this.bandScore = -1;
-        this.percentageScore = 0;
-        this.isCorrectCurrentResponse = null;
-        this.currentBandIndex = this.startBand - 1;
-        this.bandVisitCounter = new int[this.numberOfBands];
+        if (stimuliStateSnapshot.trim().isEmpty()) {
+            this.bandScore = -1;
+            this.percentageScore = 0;
+            this.isCorrectCurrentResponse = null;
+            this.currentBandIndex = this.startBand - 1;
+            this.bandVisitCounter = new int[this.numberOfBands];
 
-        //this.totalStimuli: see the child class
-        this.enoughFineTuningStimulae = true;
-        for (int i = 0; i < this.numberOfBands; i++) {
-            this.bandVisitCounter[i] = 0;
-        }
+            //this.totalStimuli: see the child class
+            this.enoughFineTuningStimulae = true;
+            for (int i = 0; i < this.numberOfBands; i++) {
+                this.bandVisitCounter[i] = 0;
+            }
 
-        this.cycle2helper = new int[this.fineTuningUpperBoundForCycles * 2 + 1];
-        for (int i = 0; i < this.fineTuningUpperBoundForCycles * 2 + 1; i++) {
-            this.cycle2helper[i] = 0;
+            this.cycle2helper = new int[this.fineTuningUpperBoundForCycles * 2 + 1];
+            for (int i = 0; i < this.fineTuningUpperBoundForCycles * 2 + 1; i++) {
+                this.cycle2helper[i] = 0;
+            }
+            this.cycle2 = false;
+            this.champion = false;
+            this.looser = false;
+            this.justVisitedLastBand = false;
+            this.percentageBandTable = this.generatePercentageBandTable();
         }
-        this.cycle2 = false;
-        this.champion = false;
-        this.looser = false;
-        this.justVisitedLastBand = false;
-        this.percentageBandTable = this.generatePercentageBandTable();
 
     }
 
@@ -176,9 +210,6 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         return this.currentBandIndex;
     }
 
-    public int getNumberOfBands() {
-        return this.numberOfBands;
-    }
 
     public LinkedHashMap<Long, Integer> getPercentageBandTable() {
         return this.percentageBandTable;
@@ -230,7 +261,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     // prepared by next stimulus
     @Override
     public A getCurrentStimulus() {
-        A  retVal = this.responseRecord.get(this.getCurrentStimulusIndex()).getStimulus();
+        A retVal = this.responseRecord.get(this.getCurrentStimulusIndex()).getStimulus();
         return retVal;
     }
 
@@ -863,6 +894,5 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
         return builder.toString();
     }
-    
-  
+
 }
