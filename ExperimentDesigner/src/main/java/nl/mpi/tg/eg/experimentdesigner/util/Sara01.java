@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioTestScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
@@ -850,6 +851,9 @@ public class Sara01 {
         randomStimulusScreenE.setNextWizardScreen(completionScreen);
         completionScreen.setNextWizardScreen(agreementScreen);
 //                        completionScreen
+        final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
+        wizardAboutScreen.setBackWizardScreen(agreementScreen);
+        wizardData.addScreen(wizardAboutScreen);
         return wizardData;
     }
 
