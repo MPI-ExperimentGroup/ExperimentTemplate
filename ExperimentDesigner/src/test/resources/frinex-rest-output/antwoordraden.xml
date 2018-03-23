@@ -46,7 +46,7 @@
                     <actionButton featureText="volgende [ spatiebalk ]" eventTag="volgende [ spatiebalk ]" hotKey="SPACE">
                         <clearPage/>
                         <pause msToNext="500">
-                            <stimulusCodeAudio msToNext="0" codeFormat="static/practice/wav/&lt;code&gt;">
+                            <stimulusCodeAudio msToNext="0" codeFormat="static/practice/wav/&lt;code&gt;" showPlaybackIndicator="false">
                                 <clearPage/>
                                 <plainText featureText="Het antwoord is:"/>
                                 <logTimeStamp eventTag="hetAntwoordIs"/>
@@ -79,7 +79,7 @@
                     <actionButton featureText="volgende [ spatiebalk ]" eventTag="volgende [ spatiebalk ]" hotKey="SPACE">
                         <clearPage/>
                         <pause msToNext="500">
-                            <stimulusCodeAudio msToNext="0" codeFormat="static/experiment/wav/&lt;code&gt;">
+                            <stimulusCodeAudio msToNext="0" codeFormat="static/experiment/wav/&lt;code&gt;" showPlaybackIndicator="false">
                                 <clearPage/>
                                 <plainText featureText="Het antwoord is:"/>
                                 <logTimeStamp eventTag="hetAntwoordIs"/>
@@ -120,6 +120,9 @@
                 <targetButton featureText="Retry" target="Finished"/>
             </onError>
         </generateCompletionCode>
+    </presenter>
+    <presenter back="Agreement" displayOrder="8" menuLabel="Over" type="debug" self="about" title="Over">
+        <versionData/>
     </presenter>
     <stimuli>
         <stimulus code="T_001" identifier="practice/groupA/T_001_N_A" imagePath="practice/groupA/T_001_N_A.JPG" pauseMs="0" tags="StimulusScreenP T_001_N_A groupA practice"/>
