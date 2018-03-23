@@ -68,6 +68,11 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         super(stimulusArray);
         //this.stimulusArray = stimulusArray;
     }
+    
+    @Override 
+    public BookkeepingStimulus<AudioAsStimulus> deriveNextFastTrackStimulus(){
+        return null;  // not relevant for this experiment
+    }
 
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {

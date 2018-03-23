@@ -345,4 +345,20 @@ public class AdVocAsStimuliProviderTest {
         fail("The test case is a prototype.");
     }
     
+      /**
+     * Test of hasNextStimulus method, of class BandStimuliProvider.
+     */
+    @Ignore
+    @Test
+    public void testHasNextStimulus() {
+        System.out.println("hasNextStimulus");
+        int increment = 0;
+        //BandStimuliProvider instance = null;
+        boolean expResult = false;
+        //boolean result = instance.hasNextStimulus(increment);
+        //assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+    
 }

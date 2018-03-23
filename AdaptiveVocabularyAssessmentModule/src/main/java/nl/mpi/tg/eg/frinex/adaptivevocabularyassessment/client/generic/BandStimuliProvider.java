@@ -34,7 +34,7 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  *
  * @param <A>
  */
-public class BandStimuliProvider<A extends BandStimulus> extends AbstractStimuliProvider {
+public abstract class BandStimuliProvider<A extends BandStimulus> extends AbstractStimuliProvider {
 
     protected HashMap<String, A> hashedStimuli;
 
@@ -318,9 +318,7 @@ public class BandStimuliProvider<A extends BandStimulus> extends AbstractStimuli
     }
 
     // experiment-specific, must be overridden
-    public BookkeepingStimulus deriveNextFastTrackStimulus() {
-        return null;
-    }
+    public abstract BookkeepingStimulus deriveNextFastTrackStimulus();
 
     @Override
     public void setCurrentStimuliIndex(int currentStimuliIndex) {
@@ -609,7 +607,7 @@ public class BandStimuliProvider<A extends BandStimulus> extends AbstractStimuli
         return allTupleCorrect;
     }
 
-    protected long bandNumberIntoPercentage(int bandNumber) {
+    public long bandNumberIntoPercentage(int bandNumber) {
         double tmp = ((double) bandNumber * 100.0) / this.numberOfBands;
         long retVal = Math.round(tmp);
         return retVal;

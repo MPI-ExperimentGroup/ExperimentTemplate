@@ -61,6 +61,6 @@ public class AdVocAsStimulusTest {
         int result = instance.getBandNumber();
         assertEquals(20, result);
     }
-
+    
    
 }
