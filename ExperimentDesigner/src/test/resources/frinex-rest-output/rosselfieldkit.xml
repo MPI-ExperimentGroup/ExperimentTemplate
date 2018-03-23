@@ -190,9 +190,9 @@
                 </matchingStimulusGrid>
                 <addPadding/>
                 <actionButton featureText="Play Sound" styleName="hiddenTopRight">
-                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_question"/>
+                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_question" showPlaybackIndicator="false"/>
                 </actionButton>
-                <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_question"/>
+                <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_question" showPlaybackIndicator="false"/>
                 <startAudioRecorderTag eventTier="4"/>
                 <actionButton featureText="Skip" eventTag="Skip" hotKey="SPACE" styleName="hiddenBottomRight">
                     <endAudioRecorderTag eventTier="1" eventTag="task 2 skipped"/>
