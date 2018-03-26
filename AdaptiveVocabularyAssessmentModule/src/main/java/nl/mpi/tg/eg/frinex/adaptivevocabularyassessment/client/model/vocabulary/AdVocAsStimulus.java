@@ -18,6 +18,8 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary;
 
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimulus;
+import static nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Vocabulary.NONWORD;
+import static nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Vocabulary.WORD;
 
 /**
  * @since Oct 27, 2017 2:13:03 PM (creation date)
@@ -25,9 +27,8 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimu
  */
 public class AdVocAsStimulus extends BandStimulus {
 
-    public AdVocAsStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, 
-            String ratingLabels, String correctResponses, String bandLabel, int bandIndex) {
-        super(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses, bandLabel, bandIndex);
+    public AdVocAsStimulus(String uniqueId, String label, String correctResponses,  int bandNumber) {
+        super(uniqueId, new Tag[0], label, "", 0, "", "", "", NONWORD +","+WORD, correctResponses, (new Integer(bandNumber-1)).toString(), bandNumber-1);
     }
 
     public int getBandNumber() {
