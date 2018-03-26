@@ -1,37 +1,60 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment appNameDisplay="Adaptive Vocabulary Assessment 1" appNameInternal="advocas1" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
+<experiment appNameDisplay="Adaptive Vocabulary Assessment 2" appNameInternal="advocas2" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
     <preventWindowClose featureText="Bij reload worden ingetypte data verwiderd"/>
-<!--<experiment appNameDisplay="Adaptive Vocabulary Assessment" appNameInternal="advocas" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="false" textFontSize="17">-->
     <metadata>
         <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Wat is je naam?"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuli" preventServerDuplicates="false" registrationField="stimuli"/>
         <field controlledMessage="Input at least 3 letters." controlledRegex="['\\'S'\\'s]'{'3,'}'" postName="feedBack" preventServerDuplicates="false" registrationField=""/>
     </metadata>
-    <presenter displayOrder="1" menuLabel="stop (en herstart)" next="Accord" type="metadata" self="Edit_User" title="">
+    <presenter displayOrder="1" menuLabel="Menu" type="menu" self="Menu" title="Menu">
+        <addPadding/>
+        <htmlText featureText="&lt;img src=&quot;static/logo-max.gif&quot; hspace=&quot;50&quot;/&gt; &lt;img src=&quot;static/logo-lil.png&quot;/&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Welkom bij deze woordenschat-test."/>
+        <!--<targetButton featureText="Naar de administratie pagina" target="Admin" />-->
+        <addPadding/>
+        <addPadding/>
+        <targetButton featureText="Naar het experiment" target="Edit_User" />
+    </presenter>
+    <presenter displayOrder="2" menuLabel="Edit User" next="Accord" type="metadata" self="Edit_User" title="">
         <metadataField fieldName="workerId"/>
-        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
-            <onError/>
-            <onSuccess>
+        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="&amp;nbsp;">
+            <onSuccess>   
                 <autoNextPresenter/>
             </onSuccess>
+            <onError>   
+                <autoNextPresenter/>
+            </onError>      
         </saveMetadataButton>
     </presenter>
-    <presenter back="Edit_User" displayOrder="2" menuLabel="Accord" next="stimuliScreen" type="metadata" self="Accord" title="">
-        <htmlText featureText="Welkom bij dit experiment!&lt;br/&gt;&lt;br/&gt;
-In dit experiment krijg je een aantal woorden aangeboden. Sommige zijn bestaande Nederlandse woorden en sommige zijn nepwoorden.&lt;br/&gt;
-Geef voor elk woord met een muisklik aan of jij het woord kent of niet.&lt;br/&gt;&lt;br/&gt;
-Rechts: : JA, ik ken dit woord&lt;br/&gt;
-Links: NEE, ik ken dit woord niet&lt;br/&gt;&lt;br/&gt;
-Let op: zeg geen ja bij woorden die je niet kent, omdat ja-antwoorden voor nepwoorden streng bestraft worden.&lt;br/&gt;&lt;br/&gt;
-Veel succes!"/>
-        <targetButton featureText="Begin experiment" target="stimuliScreen"/>
+    <presenter displayOrder="3" next="stimuliScreenV1" type="metadata" self="Accord" title="" >
+        <centrePage/>
+        <htmlText featureText="&lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="In dit experiment krijg je een aantal woorden aangeboden.&lt;br/&gt;
+Sommige zijn bestaande Nederlandse woorden en sommige zijn nepwoorden.&lt;br/&gt;
+Geef voor elk woord met een muisklik aan of jij het woord kent of niet."/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="&lt;b&gt;&lt;big&gt;Voorbeeld:&lt;/big&gt;&lt;/b&gt;"/>
+        <addPadding/>
+        <htmlText featureText="&lt;img src=&quot;static/voorbeeld-kleiner.png&quot; style=&quot;border: DarkGray;border-width: 1; border-style: solid;&quot; /&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="&lt;b&gt;&lt;big&gt;Veel succes!&lt;/big&gt;&lt;/b&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <targetButton featureText="Begin experiment" target="stimuliScreenV1"/>
     </presenter>
-    <presenter back="Edit_User" displayOrder="3" menuLabel="stimuliN" next="End" type="stimulus" self="stimuliScreen" title="">
-        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider"  type="0" eventTag="stimuliN">
+    <presenter displayOrder="6" type="stimulus" self="stimuliScreenV1" title="Series 1">
+        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider" type="1" eventTag="stimuliN"
+                      numberOfSeries="1" numberOfBands="54" wordsPerBand="40" startBand="20" averageNonWordPosition="3" startPercentageGraph="30"
+                      fineTuningTupleLength="4">
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
-                <!--                <showStimulusProgress/>-->
                 <stimulusLabel styleName="groupMessageLabel"/>
                 <addPadding/>
                 <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
@@ -39,33 +62,56 @@ Veel succes!"/>
                 </stimulusRatingButton>
             </hasMoreStimulus>
             <endOfStimulus>
-                <sendStimuliReport type="user_summary" />
-                <sendStimuliReport type="fast_track" />
-                <sendStimuliReport type="fine_tuning" />
+                <centrePage/>
+                <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
+                <sendStimuliReport type="fast_track" separator=";" headerKey="row000000"/>
+                <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
                 <showStimuliReport/>
-                <targetButton featureText="Volgende" target="End"/>
-                <!--                <autoNextPresenter/>-->
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <targetButton featureText="Naar de administratie pagina" target="Admin"/>
             </endOfStimulus>
             <randomGrouping/>
-            <stimuli/>
+            <stimuli>
+                <tag>set1</tag>
+            </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter back="Edit_User" displayOrder="4" menuLabel="End" type="transmission" self="End" title="End">
-        <sendAllData>
-            <onSuccess>
-                <htmlText featureText="Einde van de taak. Dankjewel voor je deelname!"/>-->
-                <addPadding/>
-<!--                <generateCompletionCode/>-->
-                <addPadding/>
-                <eraseUsersDataButton featureText="Opnieuw beginnen"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="Cannot connect to the server, please check your internet connection."/>
-                <targetButton featureText="Retry" target="End"/>
-            </onError>
-        </sendAllData>
+    <presenter displayOrder="7" type="transmission" self="Admin" title="Administratie">
+        <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
+        <addPadding/>
+        <addPadding/>
+        <targetButton featureText="Upload data (if i-net connection was broken)" target="ListParticipants"/>
     </presenter>
-    <presenter back="Edit_User" displayOrder="5" menuLabel="about" type="debug" self="about" title="about">
+    <presenter back="Menu" displayOrder="8" menuLabel="Deelnemer lijst" next="UploadParticipant" type="metadata" self="ListParticipants" title="Kiez deelnemer">
+        <selectUserMenu/>
+    </presenter>
+    <presenter displayOrder="9" type="transmission" self="UploadParticipant" title="Upload deelnemer">
+        <sendMetadata>
+            <onSuccess> 
+                <sendAllData>
+                    <onSuccess>
+                        <htmlText featureText="De data zijn geupload"/>
+                        <addPadding/>
+                        <addPadding/>
+                        <eraseUsersDataButton featureText="Delete user data in the browser"/>
+                        <addPadding/>
+                        <addPadding/>
+                        <targetButton featureText="Naar de administratie pagina" target="Admin" />
+                    </onSuccess>
+                    <onError>
+                        <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
+                        <targetButton featureText="Retry" target="Admin"/>
+                    </onError>
+                </sendAllData>
+            </onSuccess>
+            <onError>   
+                <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
+                <targetButton featureText="Retry" target="Admin"/>
+            </onError>      
+        </sendMetadata>
+    </presenter>
+    <presenter back="Menu" displayOrder="20" menuLabel="about" type="debug" self="about" title="about">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
