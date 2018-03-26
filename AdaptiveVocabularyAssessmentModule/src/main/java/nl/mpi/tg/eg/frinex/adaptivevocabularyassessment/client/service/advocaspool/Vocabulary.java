@@ -29,70 +29,61 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.
 public class Vocabulary {
 
     public static final String NONWORD = "NEE&#44; ik ken dit woord niet";
-
+            
     public static final String WORD = "JA&#44; ik ken dit woord";
 
+    
     private final int numberOfBands;
     private final int wordsPerBandInSeries;
     
-    private ArrayList<ArrayList<AdVocAsStimulus>> wordsInBands;
-    private ArrayList<AdVocAsStimulus> nonWords;
-    
-   
-    private HashMap<String, AdVocAsStimulus> hashedStimuli;
-
-
-    public Vocabulary(int numberOfBands, int wordsPerBandInSeries) {
+    public Vocabulary(int numberOfBands, int wordsPerBandInSeries){
         this.numberOfBands = numberOfBands;
-        this.wordsPerBandInSeries = wordsPerBandInSeries;
+        this.wordsPerBandInSeries  = wordsPerBandInSeries;
     }
     
-  
-    public ArrayList<ArrayList<AdVocAsStimulus>> getWordsInBands() {
-        return this.wordsInBands;
-    }
-
-    public ArrayList<AdVocAsStimulus> getNonwords() {
-        return this.nonWords;
-    }
-
-    public HashMap<String, AdVocAsStimulus> getHashedStimuli() {
-        return this.hashedStimuli;
-    }
-
-    
-
-    public void initialise(AdVocAsStimulus[] stimuli) {
-        if (stimuli == null || stimuli.length==0) {
+     // the sequence of words in each band should be randomly reshuffled any time we generate it
+    public ArrayList<ArrayList<AdVocAsStimulus>> initialiseWords(AdVocAsStimulus[][] wrds) {
+        if (wrds == null || wrds.length == 0) {
             System.out.println("Empty array of words in bands");
-            return;
+            return new ArrayList<>();
         }
-        
-        this.wordsInBands = new ArrayList<>(this.numberOfBands);
-        this.nonWords  = new ArrayList<>();
-        this.hashedStimuli = new HashMap<String,AdVocAsStimulus>();
-        // initialisation
-        for (int bandIndex = 0; bandIndex < this.numberOfBands; bandIndex++) {
-            this.wordsInBands.add(new ArrayList<AdVocAsStimulus>(this.wordsPerBandInSeries));
-        }
-
-        ArrayList<Integer> permuteIndex = RandomIndexing.generateRandomArray(stimuli.length);
-        
-        for (int i=0; i<stimuli.length; i++) {
-            AdVocAsStimulus stimulus = stimuli[permuteIndex.get(i)];
-            String correctResponse = stimulus.getCorrectResponses();
-            if (correctResponse.equals(NONWORD)) {
-                this.nonWords.add(stimulus);
+        ArrayList<ArrayList<AdVocAsStimulus>> retVal = new ArrayList<>(this.numberOfBands);
+        for (int bandIndex = 0; bandIndex < wrds.length; bandIndex++) {
+            if (wrds[bandIndex] == null && wrds[bandIndex].length == 0) {
+                System.out.println("Empty array of words for band " + bandIndex + "is empty.");
+                retVal.add(new ArrayList<AdVocAsStimulus>());
             } else {
-                if (correctResponse.equals(WORD)) {
-                    int index = stimulus.getbandIndex();
-                    ArrayList<AdVocAsStimulus> bandStimuli = this.wordsInBands.get(index);
-                    bandStimuli.add(stimulus);
+                ArrayList<Integer> index =RandomIndexing.generateRandomArray(wrds[bandIndex].length);
+                
+                retVal.add(new ArrayList<AdVocAsStimulus>(this.wordsPerBandInSeries));
+                for (int i = 0;i < wrds[bandIndex].length; i++) {
+                    int ind = index.get(i);
+                    retVal.get(bandIndex).add(wrds[bandIndex][ind]);
                 }
             }
-         this.hashedStimuli.put(stimulus.getUniqueId(), stimulus);  
         }
-
+        return retVal;
     }
+    
+    
+
+    // the sequence of nonwords should be randomly reshuffled any time we generate it
+    public ArrayList<AdVocAsStimulus> initialiseNonwords(ArrayList<AdVocAsStimulus> nonwrds) {
+        if (nonwrds == null || nonwrds.isEmpty()) {
+            System.out.println("Empty array of nonwords");
+            return new ArrayList<>();
+        }
+        
+        ArrayList<AdVocAsStimulus> retVal = new ArrayList<>(nonwrds.size());
+        ArrayList<Integer>index = RandomIndexing.generateRandomArray(nonwrds.size());
+                
+        for (int i=0; i<index.size(); i++) {
+            int ind=index.get(i);
+            retVal.add(nonwrds.get(ind));
+        }
+        return retVal;
+    }
+
+    
 
 }

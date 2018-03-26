@@ -18,7 +18,8 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
+import java.util.HashSet;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -26,86 +27,140 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 
 /**
  *
  * @author olhshk
  */
 public class VocabularyTest {
-    
+
+    private final int numberOfBands = 54;
+    private final int wordsPerBand = 40;
+
     public VocabularyTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
     /**
-     * Test of getWordsInBands method, of class Vocabulary.
+     * Test of initialiseWords method, of class Vocabulary.
      */
-    @Ignore @Test
-    public void testGetWordsInBands() {
-        System.out.println("getWordsInBands");
-        Vocabulary instance = null;
-        ArrayList<ArrayList<AdVocAsStimulus>> expResult = null;
-        ArrayList<ArrayList<AdVocAsStimulus>> result = instance.getWordsInBands();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    @Test
+    public void testInitialiseWords1() {
+        System.out.println("initialiseWords-1");
+        int numberOfSeries = 1;
+        int wordsPerBandInSeries = this.wordsPerBand / numberOfSeries;
+        Vocabulary instance = new Vocabulary(this.wordsPerBand, wordsPerBandInSeries);
+        AdVocAsStimulus[][] wordsArray = ConstantsWords1.WORDS_SERIES[0];
+        ArrayList<ArrayList<AdVocAsStimulus>> words = instance.initialiseWords(wordsArray);
+        assertEquals(this.numberOfBands, words.size());
+        for (int i = 0; i < this.numberOfBands; i++) {
+            ArrayList<String> spellings = new ArrayList<>(words.get(i).size());
+            for (AdVocAsStimulus stimulus : words.get(i)) {
+                spellings.add(stimulus.getLabel());
+                assertEquals(i + 1, stimulus.getBandNumber());
+            }
+            HashSet<String> set = new HashSet(spellings);
+            assertEquals(wordsArray[i].length, set.size()); // fails if there are repititions or permutation was incorrect
+        }
     }
 
     /**
-     * Test of getNonwords method, of class Vocabulary.
+     * Test of initialiseWords method, of class Vocabulary.
      */
-    @Ignore @Test
-    public void testGetNonwords() {
-        System.out.println("getNonwords");
-        Vocabulary instance = null;
-        ArrayList<AdVocAsStimulus> expResult = null;
-        ArrayList<AdVocAsStimulus> result = instance.getNonwords();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    @Test
+    public void testInitialiseWords2() {
+        System.out.println("initialiseWords-2");
+        int numberOfSeries = 2;
+        int wordsPerBandInSeries = this.wordsPerBand / numberOfSeries;
+        Vocabulary instance = new Vocabulary(this.wordsPerBand, wordsPerBandInSeries);
+        AdVocAsStimulus[][] wordsArray = ConstantsWords2.WORDS_SERIES[0];
+        ArrayList<ArrayList<AdVocAsStimulus>> words = instance.initialiseWords(wordsArray);
+        assertEquals(this.numberOfBands, words.size());
+        for (int i = 0; i < this.numberOfBands; i++) {
+            ArrayList<String> spellings = new ArrayList<>(words.get(i).size());
+            for (AdVocAsStimulus stimulus : words.get(i)) {
+                spellings.add(stimulus.getLabel());
+                assertEquals(i + 1, stimulus.getBandNumber());
+            }
+            HashSet<String> set = new HashSet(spellings);
+            assertEquals(wordsArray[i].length, set.size()); // fails if there are repititions or permutation was incorrect
+        }
     }
 
     /**
-     * Test of getHashedStimuli method, of class Vocabulary.
+     * Test of initialiseNonwords method, of class Vocabulary.
      */
-    @Ignore @Test
-    public void testGetHashedStimuli() {
-        System.out.println("getHashedStimuli");
-        Vocabulary instance = null;
-        HashMap<String, AdVocAsStimulus> expResult = null;
-        HashMap<String, AdVocAsStimulus> result = instance.getHashedStimuli();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    @Test
+    public void testInitialiseNonwords1() {
+        System.out.println("initialiseNonwords-1");
+        int numberOfSeries = 1;
+        int wordsPerBandInSeries = this.wordsPerBand / numberOfSeries;
+        Vocabulary instance = new Vocabulary(this.wordsPerBand, wordsPerBandInSeries);
+        ArrayList<AdVocAsStimulus> nonwordstmp = new ArrayList<>();
+        AdVocAsStimulus[] nonwordsArray = ConstantsNonWords1.NONWORDS_SERIES[0];
+
+        nonwordstmp.addAll(Arrays.asList(nonwordsArray));
+        ArrayList<AdVocAsStimulus> nonwords = instance.initialiseNonwords(nonwordstmp);
+        ArrayList<String> spellings = new ArrayList<>(nonwords.size());
+        for (AdVocAsStimulus stimulus : nonwords) {
+            spellings.add(stimulus.getLabel());
+        }
+        HashSet<String> set = new HashSet(spellings);
+        assertEquals(nonwordsArray.length, set.size());
+
+        // checking if the Equality is implemented OK on Strings
+        ArrayList<String> testEqualityList = new ArrayList<>(2);
+        testEqualityList.add("ok");
+        testEqualityList.add("ok");
+        assertEquals(2, testEqualityList.size());
+        HashSet<String> testEqualitySet = new HashSet(testEqualityList);
+        assertEquals(1, testEqualitySet.size());
+
     }
 
     /**
-     * Test of initialise method, of class Vocabulary.
+     * Test of initialiseNonwords method, of class Vocabulary.
      */
-    @Ignore @Test
-    public void testInitialise() {
-        System.out.println("initialise");
-        AdVocAsStimulus[] stimuli = null;
-        Vocabulary instance = null;
-        instance.initialise(stimuli);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    @Test
+    public void testInitialiseNonwords2() {
+        System.out.println("initialiseNonwords-2");
+        int numberOfSeries = 2;
+        int wordsPerBandInSeries = this.wordsPerBand / numberOfSeries;
+        Vocabulary instance = new Vocabulary(this.wordsPerBand, wordsPerBandInSeries);
+        ArrayList<AdVocAsStimulus> nonwordstmp = new ArrayList<>();
+        AdVocAsStimulus[] nonwordsArray = ConstantsNonWords2.NONWORDS_SERIES[0];
+
+        nonwordstmp.addAll(Arrays.asList(nonwordsArray));
+        ArrayList<AdVocAsStimulus> nonwords = instance.initialiseNonwords(nonwordstmp);
+        ArrayList<String> spellings = new ArrayList<>(nonwords.size());
+        for (AdVocAsStimulus stimulus : nonwords) {
+            spellings.add(stimulus.getLabel());
+        }
+        HashSet<String> set = new HashSet(spellings);
+        assertEquals(nonwordsArray.length, set.size());
+
+        // checking if the Equality is implemented OK on Strings
+        ArrayList<String> testEqualityList = new ArrayList<>(2);
+        testEqualityList.add("ok");
+        testEqualityList.add("ok");
+        assertEquals(2, testEqualityList.size());
+        HashSet<String> testEqualitySet = new HashSet(testEqualityList);
+        assertEquals(1, testEqualitySet.size());
+
     }
-    
 }
