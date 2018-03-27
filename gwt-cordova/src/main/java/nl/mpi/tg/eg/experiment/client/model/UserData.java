@@ -165,9 +165,9 @@ public class UserData {
         setBestScore((getBestScore() < bestScore) ? bestScore : getBestScore());
     }
 
-    public void validateNameField() throws MetadataFieldException {
-        final MetadataField firstNameMetadataField = new MetadataFieldProvider().workerIdMetadataField;
-        final String nameValue = metadataValues.get(firstNameMetadataField);
-        firstNameMetadataField.validateValue(nameValue);
-    }
+//    public void validateNameField() throws MetadataFieldException {
+//        final MetadataField firstNameMetadataField = new MetadataFieldProvider().workerIdMetadataField;
+//        final String nameValue = metadataValues.get(firstNameMetadataField);
+//        firstNameMetadataField.validateValue(nameValue);
+//    }
 }
