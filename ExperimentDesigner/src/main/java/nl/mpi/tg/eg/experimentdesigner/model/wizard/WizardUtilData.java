@@ -46,6 +46,8 @@ public class WizardUtilData {
 
     protected WizardUtilStimuliData[] stimuliData;
 
+    protected String[] metadataFields;
+
     public WizardUtilEnum getWizardUtilEnum() {
         return wizardUtilEnum;
     }
@@ -124,5 +126,13 @@ public class WizardUtilData {
 
     public void setStimuliData(WizardUtilStimuliData[] stimuliData) {
         this.stimuliData = stimuliData;
+    }
+
+    public String[] getMetadataFields() {
+        return metadataFields;
+    }
+
+    public void setMetadataFields(String[] metadataFields) {
+        this.metadataFields = metadataFields;
     }
 }
