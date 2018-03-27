@@ -39,7 +39,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 
 /**
  *
@@ -1287,7 +1286,9 @@ public class AdVocAsStimuliProviderTest {
     private void checkNonWordFrequenceFastTrack(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> records, int timeTick) {
         int counterNonwords = 0;
         double frequency = 0;
-
+        
+        assertNotEquals(0,records.size());
+        
         for (int i = 0; i <= timeTick; i++) {
             BookkeepingStimulus<AdVocAsStimulus> stimulus = records.get(i);
             if (stimulus.getStimulus().getCorrectResponses().equals(Vocabulary.NONWORD)) {
@@ -1296,7 +1297,17 @@ public class AdVocAsStimuliProviderTest {
             frequency = ((double) counterNonwords) / ((double) (i + 1));
         }
         if (timeTick >= 3) {
-            assertTrue(frequency > 0);
+            StringBuilder builder= new StringBuilder();
+            for (BookkeepingStimulus<AdVocAsStimulus> record:records) {
+                builder.append(record.getStimulus().getLabel()).append("  ");
+                if (record.getStimulus().getBandNumber()>0) {
+                   builder.append("woord");
+                } else {
+                   builder.append("nietwoord"); 
+                }
+                builder.append(",\n");
+            }
+            assertTrue(builder.toString(), frequency>0);
         }
         double idealFrequency = 1.0 / Double.valueOf(this.averageNonWordPoistion);
         double diff = Math.abs(frequency - idealFrequency);

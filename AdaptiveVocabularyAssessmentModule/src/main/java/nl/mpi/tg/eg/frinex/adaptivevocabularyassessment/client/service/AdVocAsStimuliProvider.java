@@ -22,6 +22,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimu
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Random;
@@ -64,10 +65,10 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
 
-        this.htmlReport = stimuliStateSnapshot;
-        if (stimuliStateSnapshot.equals("")) { // no report is generated, start from scratch for now
-            super.initialiseStimuliState(stimuliStateSnapshot);
+        super.initialiseStimuliState(stimuliStateSnapshot);
 
+            
+        if (stimuliStateSnapshot.equals("")) { // no report is generated, start from scratch for now
             this.wordsPerBandInSeries = this.wordsPerBand / this.numberOfSeries;
             Vocabulary vocab = new Vocabulary(this.numberOfBands, this.wordsPerBandInSeries);
 
@@ -93,6 +94,8 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
             this.nonWordsIndexes = this.rndIndexing.updateAndGetIndices();
 
             this.rnd = new Random();
+        } else {
+            
         }
     }
 
@@ -627,6 +630,29 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         
         builder.append("}");
         return builder.toString();
+    }
+    
+    @Override
+    public HashMap<String, AdVocAsStimulus> makeStimuliHashMap(){
+        AdVocAsStimulus[][] woorden;
+        AdVocAsStimulus[] nietWoorden;
+        if (this.numberOfSeries == 2) {
+                woorden = ConstantsWords2.WORDS_SERIES[this.type];
+                nietWoorden = ConstantsNonWords2.NONWORDS_SERIES[this.type];
+            } else {
+                woorden = ConstantsWords1.WORDS_SERIES[0];
+                nietWoorden = ConstantsNonWords1.NONWORDS_SERIES[0];
+            }
+        HashMap<String, AdVocAsStimulus> retVal = new  HashMap<String, AdVocAsStimulus>();
+        for (int i=0; i<woorden.length; i++) {
+            for (int j=0; j<woorden[i].length; j++) {
+               retVal.put(woorden[i][j].getUniqueId(), woorden[i][j]);
+            }
+        }
+        for (int i=0; i<nietWoorden.length; i++) {
+               retVal.put(nietWoorden[i].getUniqueId(), nietWoorden[i]);
+        }
+        return retVal;
     }
 
 }

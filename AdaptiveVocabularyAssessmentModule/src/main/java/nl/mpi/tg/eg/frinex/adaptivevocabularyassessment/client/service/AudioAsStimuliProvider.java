@@ -453,5 +453,10 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         ArrayList<Trial> retVal = util.parseTrialsInputCSVStringIntoTrialsArray(string, fileNameExtensions, bandIndexing);
         return retVal;
     }
+    
+    @Override
+    public HashMap<String, AudioAsStimulus> makeStimuliHashMap() {
+        return null;
+    }
 
 }

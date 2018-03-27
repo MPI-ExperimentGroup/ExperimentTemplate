@@ -18,6 +18,8 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Set;
 /**
  *
  * @author olhshk
@@ -267,5 +269,17 @@ public class UtilsJSONdialect<S> {
         return retVal;
     }
     
-   
+     public int[] stringToArrayInt(String listStr) throws Exception{
+        ArrayList<String>  buffer = this.stringToArrayList(listStr);
+        int[] retVal = new int[buffer.size()];
+        for (int i=0; i<buffer.size(); i++) {
+            String val = buffer.get(i);
+            String tmp = removeFirstAndLast(val);
+            int valInt = Integer.parseInt(tmp);
+            retVal[i]=valInt;
+        }
+        return retVal;
+    }
+     
+    
 }

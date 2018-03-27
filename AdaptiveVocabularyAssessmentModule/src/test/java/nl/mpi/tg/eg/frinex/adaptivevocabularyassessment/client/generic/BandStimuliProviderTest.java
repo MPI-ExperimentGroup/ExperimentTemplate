@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -34,20 +35,24 @@ import org.junit.Ignore;
  * @author olhshk
  */
 public class BandStimuliProviderTest {
-    
-    public final BandStimulus stimulus=new BandStimulus("smoer_xx",new Stimulus.Tag[0], "smoer", "", 900, "aud", "vid", "img", 
+
+    public final BandStimulus stimulus = new BandStimulus("smoer_xx", new Stimulus.Tag[0], "smoer", "", 900, "aud", "vid", "img",
             "a,b,c", "b,c", "plus10db", 10);
 
     private class BandStimuliProviderImp extends BandStimuliProvider<BandStimulus> {
 
         public BandStimuliProviderImp(final Stimulus[] stimulusArray) {
             super(stimulusArray);
-            
+
         }
 
         ;
         @Override
         public BookkeepingStimulus<BandStimulus> deriveNextFastTrackStimulus() {
+            return null;
+        }
+
+        public HashMap<String, BandStimulus> makeStimuliHashMap() {
             return null;
         }
     };
@@ -536,7 +541,7 @@ public class BandStimuliProviderTest {
         try {
             String result = instance.getCurrentStimulusUniqueId();
         } catch (Exception e) {
-            System.out.println("Yes, there must be an exception here, the stimuli list is not initialised yet: "+e);
+            System.out.println("Yes, there must be an exception here, the stimuli list is not initialised yet: " + e);
         }
 
     }
@@ -595,9 +600,9 @@ public class BandStimuliProviderTest {
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         try {
-             boolean result = instance.isCorrectResponse(stimulus, "");
+            boolean result = instance.isCorrectResponse(stimulus, "");
         } catch (Exception e) {
-            System.out.println("Yes, there must be an exception here, the record stimuli list is not initialised yet: "+e);
+            System.out.println("Yes, there must be an exception here, the record stimuli list is not initialised yet: " + e);
         }
     }
 
