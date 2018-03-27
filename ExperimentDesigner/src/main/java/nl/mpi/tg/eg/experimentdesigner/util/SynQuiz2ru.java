@@ -44,7 +44,6 @@ public class SynQuiz2ru {
 
     public Experiment getExperiment() {
         final Experiment experiment = wizardController.getExperiment(getWizardData());
-        wizardController.addMetadata(experiment);
         experiment.appendUniqueStimuli(new SynQuiz2ru().createStimuli());
         return experiment;
     }
