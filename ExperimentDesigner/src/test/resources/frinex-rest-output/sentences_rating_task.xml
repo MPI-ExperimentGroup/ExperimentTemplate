@@ -8,7 +8,7 @@
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="languageOthers" preventServerDuplicates="false" registrationField="Which other languages do you speak?"/>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="nationality" preventServerDuplicates="false" registrationField="What is your nationality?"/>
         <field controlledMessage="." controlledRegex=".*" postName="set" preventServerDuplicates="false" registrationField="set"/>
-        <field controlledMessage="Please enter your login code." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Login code"/>
+        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Worker ID"/>
         <field controlledMessage="Please enter your login code." controlledRegex=".'{'3,'}'" postName="session_id" preventServerDuplicates="false" registrationField="session_id"/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Back" next="Information" type="metadata" self="Consent" title="Consent">
