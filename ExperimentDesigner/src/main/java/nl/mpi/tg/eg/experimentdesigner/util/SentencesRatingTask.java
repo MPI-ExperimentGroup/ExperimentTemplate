@@ -454,7 +454,6 @@ public class SentencesRatingTask {
 
     public Experiment getExperiment() {
         final Experiment experiment = wizardController.getExperiment(getWizardData());
-        experiment.getMetadata().add(new Metadata("workerId", "Login code", ".'{'3,'}'", "Please enter your login code.", false, null));
         experiment.getMetadata().add(new Metadata("session_id", "session_id", ".'{'3,'}'", "Please enter your login code.", false, null));
         return experiment;
     }
