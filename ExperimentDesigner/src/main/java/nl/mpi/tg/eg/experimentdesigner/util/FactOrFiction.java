@@ -430,7 +430,6 @@ public class FactOrFiction {
 
     public Experiment getExperiment() {
         final Experiment experiment = wizardController.getExperiment(getWizardData());
-        wizardController.addMetadata(experiment);
         return experiment;
     }
 }
