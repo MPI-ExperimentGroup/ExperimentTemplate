@@ -83,8 +83,8 @@ public class BookkeepingStimulus<A extends BandStimulus> {
     public BookkeepingStimulus<A> toObject(String serialisation, HashMap<String, A> map) {
         try {
             String id = UtilsJSONdialect.getKeyWithoutBrackets(serialisation, "stimulus");
-            A stimulus = map.get(id);
-            BookkeepingStimulus<A> retVal = new BookkeepingStimulus<A>(stimulus);
+            A localStimulus = map.get(id);
+            BookkeepingStimulus<A> retVal = new BookkeepingStimulus<A>(localStimulus);
             String corr = UtilsJSONdialect.getKeyWithoutBrackets(serialisation, "correctness");
             if (corr != null) {
                 if (corr.equals("true")) {

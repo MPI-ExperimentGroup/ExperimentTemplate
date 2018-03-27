@@ -28,11 +28,11 @@ import static nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.ad
 public class AdVocAsStimulus extends BandStimulus {
 
     public AdVocAsStimulus(String uniqueId, String label, String correctResponses,  int bandNumber) {
-        super(uniqueId, new Tag[0], label, "", 0, "", "", "", NONWORD +","+WORD, correctResponses, (new Integer(bandNumber-1)).toString(), bandNumber-1);
+        super(uniqueId, new Tag[0], label, "", 0, "", "", "", NONWORD +","+WORD, correctResponses, (new Integer(bandNumber)).toString(), bandNumber-1);
     }
 
     public int getBandNumber() {
-        return this.bandIndex+1;
+        return Integer.parseInt(bandLabel);
     }
 
 }

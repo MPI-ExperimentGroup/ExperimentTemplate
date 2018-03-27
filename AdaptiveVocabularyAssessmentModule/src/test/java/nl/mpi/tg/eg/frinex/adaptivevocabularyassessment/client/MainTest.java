@@ -17,12 +17,15 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client;
 
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service.AdVocAsStimuliProviderTest;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.Ignore;
+import utils.UtilsIO;
 
 /**
  *
@@ -30,21 +33,23 @@ import static org.junit.Assert.*;
  */
 public class MainTest {
     
+    final String OUTPUT_DIRECTORY = "../../Data/";
+
     public MainTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -52,10 +57,63 @@ public class MainTest {
     /**
      * Test of main method, of class Main.
      */
+    @Ignore
     @Test
     public void testMain() throws Exception {
-        System.out.println("main: empty test");
-      
+        for (int i = 1; i < 11; i++) {
+            double prob = 0.5 + i * 0.05;
+            //System.out.println(prob);
+            this.testRound(prob);
+        }
+    }
+
+    private void testRound(double prob) throws Exception {
+        AdVocAsStimuliProviderTest tester = new AdVocAsStimuliProviderTest();
+        AdVocAsStimuliProvider provider = tester.testRound(prob, "1", "0");
+
+        boolean enoughFineTuningStimulae = provider.getEnoughFinetuningStimuli();
+        boolean cycle2 = provider.getCycel2();
+        boolean champion = provider.getChampion();
+        boolean looser = provider.getLooser();
+
+        int lastCorrectBandFastTrack = provider.getBestFastTrackBand();
+        System.out.println("last correct band fast track: " + lastCorrectBandFastTrack);
+        //Utils.writeCsvFileFastTrack(provider, lastCorrectBandFastTrack, OUTPUT_DIRECTORY);
+
+        String message = "correct_" + prob + "__cycel2_" + cycle2
+                + "__champion_" + champion + "__looser_" + looser + "__enough_" + enoughFineTuningStimulae;
+
+        long millis = System.currentTimeMillis();
+        //String fileNameCSV = "Fine_tuning_short_history_" + message + "_" + millis + ".csv";
+        //Utils.writeCsvFileFineTuningHistoryShortened(provider, OUTPUT_DIRECTORY, fileNameCSV);
+
+        String fileNameHTML = "Full_user_history_" + message + "_" + millis + ".html";
+        UtilsIO.writeHtmlFullUserResults(provider, OUTPUT_DIRECTORY, fileNameHTML);
+
+        UtilsIO.writeCsvMapAsOneCsv(provider, OUTPUT_DIRECTORY, "Full_user_history_" + message + "_" + millis + ".csv");
+        System.out.println("Done with probability  " + prob);
+    }
+
+    @Ignore
+    @Test
+    public void notEnoughStimuliTest() throws Exception {
+
+        AdVocAsStimuliProviderTest tester = new AdVocAsStimuliProviderTest();
+        AdVocAsStimuliProvider provider = tester.longFineTuningTest();
+
+        boolean enoughFineTuningStimulae = provider.getEnoughFinetuningStimuli();
+        boolean cycle2 = provider.getCycel2();
+        boolean champion = provider.getChampion();
+        boolean looser = provider.getLooser();
+
+        String message = "longtest" + "__cycel2_" + cycle2
+                + "__champion_" + champion + "__looser_" + looser + "__enough_" + enoughFineTuningStimulae;
+
+        String fileNameHTML = "Full_user_history_" + message + ".html";
+        UtilsIO.writeHtmlFullUserResults(provider, OUTPUT_DIRECTORY, fileNameHTML);
+
+        UtilsIO.writeCsvMapAsOneCsv(provider, OUTPUT_DIRECTORY, "Full_user_history_" + message + ".csv");
+        System.out.println("Done with the long test");
     }
     
 }

@@ -18,8 +18,10 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
@@ -27,6 +29,9 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspo
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsNonWords1;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsNonWords2;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsWords1;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -47,8 +52,8 @@ public class AdVocAsStimuliProviderTest {
     private final String nonwordsPerBlock = "4";
     private final String startBand = "20";
     private final String averageNonWordPoistion = "3";
-    private final String fineTuningTupleLength="4";
-    private final String fineTuningUpperBoundForCycles="2";
+    private final String fineTuningTupleLength = "4";
+    private final String fineTuningUpperBoundForCycles = "2";
 
     public AdVocAsStimuliProviderTest() {
     }
@@ -85,7 +90,7 @@ public class AdVocAsStimuliProviderTest {
      * Test of estinItialiseStimuliState method, of class
      * AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testItialiseStimuliState1() {
         System.out.println("initialiseStimuliState-1");
 
@@ -99,11 +104,11 @@ public class AdVocAsStimuliProviderTest {
 
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
         provider.setnumberOfSeries(numberOfSeries);
-        provider.settype("0");
-        provider.setnumberOfBands(this.numberOfBands); 
-        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        //provider.settype("0");
+        provider.setnumberOfBands(this.numberOfBands);
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
-        provider.setwordsPerBand(this.wordsPerBand); 
+        provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
@@ -118,7 +123,7 @@ public class AdVocAsStimuliProviderTest {
 
         ArrayList<AdVocAsStimulus> nonwords = provider.getNonwords();
 
-        int expectedNonwordsLength = 0;
+        int expectedNonwordsLength = 1352;
         assertEquals(expectedNonwordsLength, nonwords.size());
 
         int expectedTotalsStimuli = nOfBands * wordsPerBandInSeries + expectedNonwordsLength;
@@ -136,7 +141,7 @@ public class AdVocAsStimuliProviderTest {
      * Test of estinItialiseStimuliState method, of class
      * AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testItialiseStimuliState20() {
         System.out.println("initialiseStimuliState-20");
 
@@ -151,8 +156,8 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype("0");
-        provider.setnumberOfBands(this.numberOfBands); 
-        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        provider.setnumberOfBands(this.numberOfBands);
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
@@ -169,7 +174,7 @@ public class AdVocAsStimuliProviderTest {
 
         ArrayList<AdVocAsStimulus> nonwords = provider.getNonwords();
 
-        int expectedNonwordsLength = 0;
+        int expectedNonwordsLength = 676;
         assertEquals(expectedNonwordsLength, nonwords.size());
 
         int expectedTotalsStimuli = nOfBands * wordsPerBandInSeries + expectedNonwordsLength;
@@ -187,7 +192,7 @@ public class AdVocAsStimuliProviderTest {
      * Test of estinItialiseStimuliState method, of class
      * AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testItialiseStimuliState21() {
         System.out.println("initialiseStimuliState-21");
 
@@ -202,8 +207,8 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype("1");
-        provider.setnumberOfBands(this.numberOfBands); 
-        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        provider.setnumberOfBands(this.numberOfBands);
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
@@ -220,7 +225,7 @@ public class AdVocAsStimuliProviderTest {
 
         ArrayList<AdVocAsStimulus> nonwords = provider.getNonwords();
 
-        int expectedNonwordsLength = 0;
+        int expectedNonwordsLength = 676;
         assertEquals(expectedNonwordsLength, nonwords.size());
 
         int expectedTotalsStimuli = nOfBands * wordsPerBandInSeries + expectedNonwordsLength;
@@ -237,7 +242,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getCurrentStimulusIndex method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testGetCurrentStimulusIndex() {
         System.out.println("getCurrentStimulusIndex");
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
@@ -246,7 +251,7 @@ public class AdVocAsStimuliProviderTest {
         int nOfSeries = Integer.parseInt(numberOfSeries);
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype("1");
-        provider.setnumberOfBands(this.numberOfBands); 
+        provider.setnumberOfBands(this.numberOfBands);
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
@@ -264,7 +269,6 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
     public void testGetCurrentStimulus1_1() {
         this.testGetCurrentStimulus("1", "0", "getCurrentStimulus10_1");
 
@@ -273,7 +277,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testGetCurrentStimulus1_2() {
         this.testGetCurrentStimulus("1", "0", "getCurrentStimulus10_2");
 
@@ -282,7 +286,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testGetCurrentStimulus1_3() {
         this.testGetCurrentStimulus("1", "0", "getCurrentStimulus10_3");
 
@@ -291,7 +295,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testGetCurrentStimulus20_1() {
         this.testGetCurrentStimulus("2", "0", "getCurrentStimulus20_1");
 
@@ -300,7 +304,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testGetCurrentStimulus20_2() {
         this.testGetCurrentStimulus("2", "0", "getCurrentStimulus20_2");
 
@@ -309,7 +313,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testGetCurrentStimulus20_3() {
         this.testGetCurrentStimulus("2", "0", "getCurrentStimulus20_3");
 
@@ -318,7 +322,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testGetCurrentStimulus21_1() {
         this.testGetCurrentStimulus("2", "1", "getCurrentStimulus20_1");
 
@@ -327,7 +331,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testGetCurrentStimulus21_2() {
         this.testGetCurrentStimulus("2", "1", "getCurrentStimulus20_2");
 
@@ -336,7 +340,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testGetCurrentStimulus21_3() {
         this.testGetCurrentStimulus("2", "1", "getCurrentStimulus20_3");
 
@@ -357,8 +361,8 @@ public class AdVocAsStimuliProviderTest {
 
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype(type);
-        provider.setnumberOfBands(this.numberOfBands); 
-        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        provider.setnumberOfBands(this.numberOfBands);
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
@@ -374,15 +378,15 @@ public class AdVocAsStimuliProviderTest {
         String label = stimulus.getLabel();
         assertTrue(label != null);
         //System.out.println("Label: " + label);
-       BookkeepingStimulus<AdVocAsStimulus> bStimulus = provider.getResponseRecord().get(provider.getCurrentStimulusIndex());
-        int expectedBand = stimulus.getCorrectResponses().equals(Vocabulary.WORD) ? Integer.parseInt(this.startBand) : -1;
-        assertEquals(expectedBand, bStimulus.getStimulus().getbandLabel());
+        BookkeepingStimulus<AdVocAsStimulus> bStimulus = provider.getResponseRecord().get(provider.getCurrentStimulusIndex());
+        int expectedBand = stimulus.getCorrectResponses().equals(Vocabulary.WORD) ? Integer.parseInt(this.startBand) : 0;
+        assertEquals(expectedBand, bStimulus.getStimulus().getBandNumber());
     }
 
     /**
      * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testIsCorrectResponse_1() throws Exception {
         this.testIsCorrectResponse("1", "0", "testIsCorrectResponse_1");
 
@@ -391,7 +395,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testIsCorrectResponse_20() throws Exception {
         this.testIsCorrectResponse("2", "0", "testIsCorrectResponse_20");
 
@@ -400,7 +404,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testIsCorrectResponse_21() throws Exception {
         this.testIsCorrectResponse("2", "1", "testIsCorrectResponse_21");
 
@@ -419,7 +423,8 @@ public class AdVocAsStimuliProviderTest {
 
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype(type);
-        provider.setnumberOfBands(this.numberOfBands); provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        provider.setnumberOfBands(this.numberOfBands);
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
@@ -438,7 +443,7 @@ public class AdVocAsStimuliProviderTest {
         BookkeepingStimulus<AdVocAsStimulus> bStimulus = provider.getResponseRecord().get(0);
         assertTrue(bStimulus.getCorrectness());
 
-        boolean expectedReaction = stimulus.getCorrectResponses().equals(Vocabulary.WORD);
+        String expectedReaction = stimulus.getCorrectResponses();
         assertEquals(expectedReaction, bStimulus.getReaction());
 
         // stimulus 2
@@ -460,8 +465,8 @@ public class AdVocAsStimuliProviderTest {
         BookkeepingStimulus<AdVocAsStimulus> bStimulus2 = provider.getResponseRecord().get(1);
         assertFalse(bStimulus2.getCorrectness());
 
-        boolean expectedCorrectReaction2 = stimulus2.getCorrectResponses().equals(Vocabulary.WORD);
-        assertEquals(!expectedCorrectReaction2, bStimulus2.getReaction());
+        String expectedCorrectReaction2 = stimulus2.getCorrectResponses();
+        assertNotEquals(expectedCorrectReaction2, bStimulus2.getReaction());
 
     }
 
@@ -474,8 +479,8 @@ public class AdVocAsStimuliProviderTest {
         provider.setnumberOfSeries(numberOfSeries);
 
         provider.settype(type);
-        provider.setnumberOfBands(this.numberOfBands); 
-        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        provider.setnumberOfBands(this.numberOfBands);
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
@@ -494,81 +499,81 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testGetTotalStimuli10_1() {
-        int nonWordsLength = 0;
+        int nonWordsLength = ConstantsNonWords1.NONWORDS_SERIES[0].length;
         this.testGetTotalStimuli("1", "0", "testGetTotalStimuli10_1", nonWordsLength);
     }
 
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testGetTotalStimuli10_2() {
-        int nonWordsLength = 0;
+        int nonWordsLength = ConstantsNonWords1.NONWORDS_SERIES[0].length;
         this.testGetTotalStimuli("1", "0", "testGetTotalStimuli10_1", nonWordsLength);
     }
 
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testGetTotalStimuli10_3() {
-        int nonWordsLength = 0;
+        int nonWordsLength = ConstantsNonWords1.NONWORDS_SERIES[0].length;;
         this.testGetTotalStimuli("1", "0", "testGetTotalStimuli10_1", nonWordsLength);
     }
 
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testGetTotalStimuli20_1() {
-        int nonWordsLength = 0;
+        int nonWordsLength = ConstantsNonWords2.NONWORDS_SERIES[0].length;
         this.testGetTotalStimuli("2", "0", "testGetTotalStimuli20_1", nonWordsLength);
     }
 
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testGetTotalStimuli20_2() {
-        int nonWordsLength = 0;
+        int nonWordsLength = ConstantsNonWords2.NONWORDS_SERIES[0].length;
         this.testGetTotalStimuli("2", "0", "testGetTotalStimuli20_2", nonWordsLength);
     }
 
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testGetTotalStimuli20_3() {
-        int nonWordsLength = 0;
+        int nonWordsLength = ConstantsNonWords2.NONWORDS_SERIES[0].length;
         this.testGetTotalStimuli("2", "0", "testGetTotalStimuli20_3", nonWordsLength);
     }
 
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testGetTotalStimuli21_1() {
-        int nonWordsLength = 0;
+        int nonWordsLength = ConstantsNonWords2.NONWORDS_SERIES[1].length;
         this.testGetTotalStimuli("2", "1", "testGetTotalStimuli21_1", nonWordsLength);
     }
 
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testGetTotalStimuli21_2() {
-        int nonWordsLength = 0;
+        int nonWordsLength = ConstantsNonWords2.NONWORDS_SERIES[1].length;
         this.testGetTotalStimuli("2", "1", "testGetTotalStimuli21_2", nonWordsLength);
     }
 
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testGetTotalStimuli21_3() {
-        int nonWordsLength = 0;
+        int nonWordsLength = ConstantsNonWords2.NONWORDS_SERIES[1].length;
         this.testGetTotalStimuli("2", "1", "testGetTotalStimuli21_3", nonWordsLength);
     }
 
@@ -610,7 +615,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void getStimuliReport_1() throws Exception {
         this.getStimuliReport("1", "0", "getStimuliReport_1");
     }
@@ -618,7 +623,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void getStimuliReport_20() throws Exception {
         this.getStimuliReport("2", "0", "getStimuliReport_20");
     }
@@ -626,7 +631,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void getStimuliReport_21() throws Exception {
         this.getStimuliReport("2", "1", "getStimuliReport_21");
     }
@@ -634,7 +639,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of hasNextStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testHasNextStimulus10_1() throws Exception {
         this.testHasNextStimulus("1", "0", "testHasNextStimulus10_1");
     }
@@ -642,7 +647,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of hasNextStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testHasNextStimulus10_2() throws Exception {
         this.testHasNextStimulus("1", "0", "testHasNextStimulus10_2");
     }
@@ -650,7 +655,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of hasNextStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testHasNextStimulus10_3() throws Exception {
         this.testHasNextStimulus("1", "0", "testHasNextStimulus10_3");
     }
@@ -658,7 +663,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of hasNextStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testHasNextStimulus20_1() throws Exception {
         this.testHasNextStimulus("2", "0", "testHasNextStimulus20_1");
     }
@@ -666,7 +671,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of hasNextStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testHasNextStimulus20_2() throws Exception {
         this.testHasNextStimulus("2", "0", "testHasNextStimulus20_2");
     }
@@ -674,7 +679,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of hasNextStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testHasNextStimulus20_3() throws Exception {
         this.testHasNextStimulus("2", "0", "testHasNextStimulus20_3");
     }
@@ -682,7 +687,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of hasNextStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testHasNextStimulus21_1() throws Exception {
         this.testHasNextStimulus("2", "1", "testHasNextStimulus21_1");
     }
@@ -690,7 +695,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of hasNextStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testHasNextStimulus21_2() throws Exception {
         this.testHasNextStimulus("2", "1", "testHasNextStimulus21_2");
     }
@@ -698,7 +703,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of hasNextStimulus method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testHasNextStimulus21_3() throws Exception {
         this.testHasNextStimulus("2", "1", "testHasNextStimulus21_3");
     }
@@ -711,8 +716,8 @@ public class AdVocAsStimuliProviderTest {
         int nOfSeries = Integer.parseInt(numberOfSeries);
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype(type);
-        provider.setnumberOfBands(this.numberOfBands); 
-        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        provider.setnumberOfBands(this.numberOfBands);
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
@@ -806,7 +811,7 @@ public class AdVocAsStimuliProviderTest {
      * Test of getCurrentStimulusUniqueId method, of class
      * AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testGetCurrentStimulusUniqueId_1() {
         this.testGetCurrentStimulusUniqueId("1", "0", "testGetCurrentStimulusUniqueId_1");
     }
@@ -815,7 +820,7 @@ public class AdVocAsStimuliProviderTest {
      * Test of getCurrentStimulusUniqueId method, of class
      * AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testGetCurrentStimulusUniqueId_20() {
         this.testGetCurrentStimulusUniqueId("2", "0", "testGetCurrentStimulusUniqueId_20");
     }
@@ -824,7 +829,7 @@ public class AdVocAsStimuliProviderTest {
      * Test of getCurrentStimulusUniqueId method, of class
      * AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testGetCurrentStimulusUniqueId_21() {
         this.testGetCurrentStimulusUniqueId("2", "1", "testGetCurrentStimulusUniqueId_21");
     }
@@ -836,8 +841,8 @@ public class AdVocAsStimuliProviderTest {
         int nOfSeries = Integer.parseInt(numberOfSeries);
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype(type);
-        provider.setnumberOfBands(this.numberOfBands); 
-        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        provider.setnumberOfBands(this.numberOfBands);
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
@@ -854,7 +859,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of detectLoop method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testDetectLoop() {
         System.out.println("detectLoop");
         int[] arr1 = {42, 43, 42, 43, 42, 43, 42};
@@ -871,7 +876,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of shiftFIFO method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testShiftFIFO() {
         System.out.println("shiftFIFO");
         int[] fifo = {0, 1, 2, 3, 4, 5, 6};
@@ -885,7 +890,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of shiftFIFO method, of class AdVocAsStimuliProvider.
      */
-    @Ignore @Test
+    @Test
     public void testMostOftenVisitedBandNumber() {
         System.out.println(" MostOftenVisitedBandMumber");
         int[] visitCounter = {1, 3, 2, 3, 3, 3, 1};
@@ -917,8 +922,8 @@ public class AdVocAsStimuliProviderTest {
         int nOfSeries = Integer.parseInt(numberOfSeries);
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype(type);
-        provider.setnumberOfBands(this.numberOfBands); 
-        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        provider.setnumberOfBands(this.numberOfBands);
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
@@ -930,7 +935,7 @@ public class AdVocAsStimuliProviderTest {
         LinkedHashMap<Long, Integer> percentageTable = provider.getPercentageBandTable();
 
         Long one = new Long(1);
-       // which band number correspond to 1 percent of # 54 is 100%?
+        // which band number correspond to 1 percent of # 54 is 100%?
         // 54/100 = 0.54 ~ 1
         assertEquals(new Integer(1), percentageTable.get(one));
 
@@ -941,32 +946,32 @@ public class AdVocAsStimuliProviderTest {
 
         for (long p = 1; p <= 9; p++) {
             Long percentage = p * 10;
-            float bnd = ((float) (54*percentage))/ ((float) 100);
+            float bnd = ((float) (54 * percentage)) / ((float) 100);
             int roundBnd = Math.round(bnd);
             assertEquals(new Integer(roundBnd), percentageTable.get(percentage));
         }
 
     }
 
-    @Ignore @Test
+    @Test
     public void testPercentageBandTable_1() {
         this.testPercentageBandTable("1", "0", "testPercentageBandTable_1");
 
     }
 
-    @Ignore @Test
+    @Test
     public void testPercentageBandTable_20() {
         this.testPercentageBandTable("2", "0", "testPercentageBandTable_20");
 
     }
 
-    @Ignore @Test
+    @Test
     public void testPercentageBandTable_21() {
         this.testPercentageBandTable("2", "1", "testPercentageBandTable_21");
 
     }
 
-    @Ignore @Test
+    @Test
     public void generalRandomTest1() throws Exception {
         for (int i = 1; i < 11; i++) {
             double prob = 0.5 + i * 0.05;
@@ -975,7 +980,7 @@ public class AdVocAsStimuliProviderTest {
         }
     }
 
-    @Ignore @Test
+    @Test
     public void generalRandomTest2() throws Exception {
         for (int i = 1; i < 11; i++) {
             double prob = 0.5 + i * 0.05;
@@ -995,7 +1000,7 @@ public class AdVocAsStimuliProviderTest {
         }
     }
 
-    @Ignore @Test
+    @Test
     public void notEnoughStimuliTest() throws Exception {
         this.longFineTuningTest();
     }
@@ -1013,8 +1018,8 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype(type);
-        provider.setnumberOfBands(this.numberOfBands); 
-        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        provider.setnumberOfBands(this.numberOfBands);
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
@@ -1075,14 +1080,19 @@ public class AdVocAsStimuliProviderTest {
 
         Vocabulary vocab = new Vocabulary(nOfBands, wordsPerBandInSeries);
         AdVocAsStimulus[][] wordArray = null;
-        ArrayList<ArrayList<AdVocAsStimulus>> wordsInBands = null;
-
+        if (numberOfSeries.equals("1")) {
+            wordArray = ConstantsWords1.WORDS_SERIES[0];
+        }
+        if (numberOfSeries.equals("2")) {
+            wordArray = ConstantsWords1.WORDS_SERIES[Integer.parseInt(type)];
+        }
+       
         assertEquals(nOfBands, samples.keySet().size());
         for (int bandNumber = 1; bandNumber <= nOfBands; bandNumber++) {
             assertTrue(samples.containsKey(bandNumber));
             String sample = samples.get(bandNumber);
             assertNotNull(sample);
-            ArrayList<String> words = this.getSpellings(wordsInBands.get(bandNumber - 1));
+            ArrayList<String> words = this.getSpellings(wordArray[bandNumber - 1]);
             assertTrue(words.contains(sample));
         }
 
@@ -1094,7 +1104,7 @@ public class AdVocAsStimuliProviderTest {
         Long percentScore = provider.getPercentageScore();
         assertTrue(graph.containsKey(percentScore));
         assertNotNull(graph.get(percentScore));
-        ArrayList<String> wordsBS = this.getSpellings(wordsInBands.get(bandScore - 1));
+        ArrayList<String> wordsBS = this.getSpellings(wordArray[bandScore - 1]);
         assertTrue(wordsBS.contains(graph.get(percentScore)));
 
         if (percentScore >= 5) {
@@ -1103,20 +1113,20 @@ public class AdVocAsStimuliProviderTest {
             assertNotNull(graph.get(one));
             // which band number correspond to 1 percent of # 54 is 100%?
             // 54/100 = 0.54 ~ 1
-            ArrayList<String> wordsOnePercent = this.getSpellings(wordsInBands.get(0));
+            ArrayList<String> wordsOnePercent = this.getSpellings(wordArray[0]);
             assertTrue(wordsOnePercent.contains(graph.get(one)));
         }
 
         if (percentScore < 95) {
             Long nn = new Long(99);
             if (!graph.containsKey(nn)) {
-                System.out.println("alarm: no key for percentageScore "+nn.toString());
+                System.out.println("alarm: no key for percentageScore " + nn.toString());
             }
             assertTrue(graph.containsKey(nn));
             assertNotNull(graph.get(nn));
             // which band number correspond to 99 percent of # 54 is 100%?
             // 54*0.99 = 53.46 ~ 53
-            ArrayList<String> words99Percent = this.getSpellings(wordsInBands.get(52));
+            ArrayList<String> words99Percent = this.getSpellings(wordArray[52]);
             assertTrue(words99Percent.contains(graph.get(nn)));
         }
 
@@ -1133,15 +1143,15 @@ public class AdVocAsStimuliProviderTest {
         return provider;
     }
 
-    private ArrayList<String> getSpellings(ArrayList<AdVocAsStimulus> stimuli) {
+    private ArrayList<String> getSpellings(AdVocAsStimulus[] stimuliAr) {
+        List<AdVocAsStimulus> stimuli = Arrays.asList(stimuliAr);
         ArrayList<String> retVal = new ArrayList<>(stimuli.size());
         for (AdVocAsStimulus stimulus : stimuli) {
             retVal.add(stimulus.getLabel());
         }
         return retVal;
     }
-
-    ; 
+ 
 
     public AdVocAsStimuliProvider longFineTuningTest() throws Exception {
 
@@ -1156,8 +1166,8 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
         provider.setnumberOfSeries(numberOfSeries);
         provider.settype("0");
-        provider.setnumberOfBands(this.numberOfBands); 
-        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles); 
+        provider.setnumberOfBands(this.numberOfBands);
+        provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setwordsPerBand(this.wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
@@ -1267,8 +1277,7 @@ public class AdVocAsStimuliProviderTest {
         for (BookkeepingStimulus<AdVocAsStimulus> stimulus : tuple) {
             assertEquals(null, stimulus.getReaction());
             assertEquals(null, stimulus.getCorrectness());
-            assertNotEquals(0, stimulus.getStimulus().getBandNumber());
-            if (stimulus.getStimulus().getBandNumber() < 0) {
+            if (stimulus.getStimulus().getCorrectResponses().equals(Vocabulary.NONWORD)) {
                 nNonwords++;
             }
         }
@@ -1281,7 +1290,7 @@ public class AdVocAsStimuliProviderTest {
 
         for (int i = 0; i <= timeTick; i++) {
             BookkeepingStimulus<AdVocAsStimulus> stimulus = records.get(i);
-            if (stimulus.getStimulus().getBandNumber() == -1) {
+            if (stimulus.getStimulus().getCorrectResponses().equals(Vocabulary.NONWORD)) {
                 counterNonwords++;
             }
             frequency = ((double) counterNonwords) / ((double) (i + 1));
@@ -1309,17 +1318,17 @@ public class AdVocAsStimuliProviderTest {
         BookkeepingStimulus<AdVocAsStimulus> bStimulus = records.get(0);
         BookkeepingStimulus<AdVocAsStimulus> previousbStimulus;
         AdVocAsStimulus stimulus = bStimulus.getStimulus();
-         AdVocAsStimulus previousStimulus;
+        AdVocAsStimulus previousStimulus;
         if (stimulus.getBandNumber() > 0) {
             assertEquals(Integer.parseInt(this.startBand), stimulus.getBandNumber());
         }
         for (int i = 1; i <= lastTimeTickFastTrack; i++) {
             previousbStimulus = bStimulus;
             previousStimulus = stimulus;
-            
+
             bStimulus = records.get(i);
             stimulus = bStimulus.getStimulus();
-            
+
             if (previousbStimulus.getCorrectness()) { // correcr reaction
                 if (previousStimulus.getBandNumber() > 0 && stimulus.getBandNumber() > 0 && previousStimulus.getBandNumber() < Integer.parseInt(this.numberOfBands)) {
                     assertEquals(previousStimulus.getBandNumber() + 1, stimulus.getBandNumber());
@@ -1345,7 +1354,7 @@ public class AdVocAsStimuliProviderTest {
 
         bStimulus = records.get(lastTimeTickFastTrack);
         stimulus = bStimulus.getStimulus();
-        
+
         if (bStimulus.getCorrectness()) {
             // we stopped fast track because we have reached the end of the bands
             if (stimulus.getBandNumber() > 0) {
@@ -1355,7 +1364,7 @@ public class AdVocAsStimuliProviderTest {
             // we stopped because there were two incorrect answers in a row
             previousbStimulus = records.get(lastTimeTickFastTrack - 1);
             previousStimulus = previousbStimulus.getStimulus();
-            
+
             assertFalse(previousbStimulus.getCorrectness());
             if (lastTimeTickFastTrack >= 2) {
                 assertTrue(records.get(lastTimeTickFastTrack - 2).getCorrectness());
@@ -1375,10 +1384,10 @@ public class AdVocAsStimuliProviderTest {
         int currentBandNumber = -1;
 
         for (int i = lastTimeTickFastTrack + 1; i < records.size(); i++) {
-            
-            BookkeepingStimulus<AdVocAsStimulus>  bStimulus = records.get(i);
+
+            BookkeepingStimulus<AdVocAsStimulus> bStimulus = records.get(i);
             stimulus = bStimulus.getStimulus();
-            
+
             if (stimulus.getBandNumber() > 0) {
                 currentBandNumber = stimulus.getBandNumber();
             }
