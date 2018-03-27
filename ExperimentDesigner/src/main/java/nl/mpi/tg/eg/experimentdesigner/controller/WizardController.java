@@ -112,6 +112,16 @@ public class WizardController {
             PresenterScreen[] addedScreens = wizardScreenType.populatePresenterScreen(wizardScreen, experiment, wizardData.isObfuscateScreenNames(), currentDisplaySequence);
             currentDisplaySequence += addedScreens.length;
         }
+        boolean hasWorkerId = false;
+        for (Metadata metadataItem : experiment.getMetadata()) {
+            if (metadataItem.getPostName().equals("workerId")) {
+                hasWorkerId = true;
+                break;
+            }
+        }
+        if (!hasWorkerId) {
+            addMetadata(experiment);
+        }
         return experiment;
     }
 
