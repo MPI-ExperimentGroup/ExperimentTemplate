@@ -68,17 +68,7 @@ public class SentenceCompletion {
         wizardEditUserScreen.setSendData(true);
         wizardEditUserScreen.setOn_Error_Text("Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.");
 //        wizardData.setAgeField(true);
-        wizardEditUserScreen.setCustomFields(new String[]{
-            "workerId:Proefpersoon ID:.'{'3,'}':Voer minimaal drie letters.",
-            "age:Leeftijd:[0-9]+:Voer een getal.",
-            //            "firstName:Voornaam:.'{'3,'}':Voer minimaal drie letters.",
-            //            "lastName:Achternaam:.'{'3,'}':Voer minimaal drie letters.",
-            //            "education:Opleidingsniveau:primair onderwijs (basisschool)|voortgezet onderwijs|middelbaar beroepsonderwijs (MBO)|hoger onderwijs (HBO, universiteit)|anders:.",
-            "education:Opleidingsniveau:basisonderwijs|voortgezet onderwijs|MBO|HBO|universiteit|anders:.",
-            "educationOther:Opleidingsniveau (anders, namelijk):.*:.",
-            //            "education:Opleidingsniveau:.'{'3,'}':Voer minimaal drie letters.",
-            "gender:Geslacht:|man|vrouw|anders:."
-        });
+        wizardEditUserScreen.setCustomFields(wizardUtilData.getMetadataFields());
 
         wizardData.addScreen(agreementScreen);
         wizardData.addScreen(wizardTextScreen);
