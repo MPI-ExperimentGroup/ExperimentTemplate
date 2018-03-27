@@ -16,7 +16,7 @@
         <field controlledMessage="" controlledRegex=".*" postName="LanguageLon" preventServerDuplicates="false" registrationField="LanguageLon"/>
         <field controlledMessage="" controlledRegex=".*" postName="TimesPlayed" preventServerDuplicates="false" registrationField="TimesPlayed"/>
         <field controlledMessage="" controlledRegex=".*" postName="TimesContextPlayed" preventServerDuplicates="false" registrationField="TimesContextPlayed"/>
-        <field controlledMessage="Please enter your login code." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Login code"/>
+        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Worker ID"/>
     </metadata>
     <presenter back="Menu" displayOrder="1" menuLabel="Sample Stimuli" type="stimulus" self="Sample_Stimuli" title="Sample Stimuli">
         <loadStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
