@@ -2,7 +2,7 @@
 <experiment appNameDisplay="Adaptive Vocabulary Assessment 2" appNameInternal="advocas2" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
     <preventWindowClose featureText="Bij reload worden ingetypte data verwiderd"/>
     <metadata>
-        <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Wat is je naam?"/>
+        <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Wat is je proefpersoonnummer?"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuli" preventServerDuplicates="false" registrationField="stimuli"/>
         <field controlledMessage="Input at least 3 letters." controlledRegex="['\\'S'\\'s]'{'3,'}'" postName="feedBack" preventServerDuplicates="false" registrationField=""/>
     </metadata>
@@ -16,7 +16,7 @@
         <addPadding/>
         <addPadding/>
         <addPadding/>
-        <htmlText featureText="Welkom bij deze woordenschat-test."/>
+        <htmlText featureText="Welkom bij deze woordenschattest."/>
         <!--<targetButton featureText="Naar de administratie pagina" target="Admin" />-->
         <addPadding/>
         <addPadding/>
