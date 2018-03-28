@@ -128,8 +128,7 @@ public class UtilsJSONdialectTest {
         expResult.add("{rhabarber}");
         expResult.add("{compot}");
         expResult.add("{rhabarber,compot}");
-        UtilsJSONdialect instance = new UtilsJSONdialect();
-        ArrayList<String> result = instance.stringToArrayList(listStr);
+        ArrayList<String> result = UtilsJSONdialect.stringToArrayList(listStr);
         assertEquals(expResult, result);
     }
 
@@ -144,8 +143,7 @@ public class UtilsJSONdialectTest {
         expResult.add("{1}");
         expResult.add("{2}");
         expResult.add("{3,4,5}");
-        UtilsJSONdialect instance = new UtilsJSONdialect();
-        ArrayList<String> result = instance.stringToArrayList(listStr);
+        ArrayList<String> result = UtilsJSONdialect.stringToArrayList(listStr);
         assertEquals(expResult, result);
     }
 
@@ -255,12 +253,11 @@ public class UtilsJSONdialectTest {
     public void testIntArrayListToString() throws Exception {
         System.out.println("intArrayListToString");
         int[] arr = {1,2,3};
-        UtilsJSONdialect instance = new UtilsJSONdialect();
         String expResult = "{0:{1},1:{2},2:{3}}";
-        String result = instance.intArrayListToString(arr);
+        String result = UtilsJSONdialect.intArrayListToString(arr);
         assertEquals(expResult, result);
-        assertEquals(null, instance.intArrayListToString(null));
-        assertEquals("{}", instance.intArrayListToString(new int[0]));
+        assertEquals(null, UtilsJSONdialect.intArrayListToString(null));
+        assertEquals("{}", UtilsJSONdialect.intArrayListToString(new int[0]));
     }
 
     /**
@@ -270,12 +267,11 @@ public class UtilsJSONdialectTest {
     public void testDoubleArrayListToString() throws Exception {
         System.out.println("doubleArrayListToString");
         double[] arr = {0.5, 0.8, 100.356785};
-        UtilsJSONdialect instance = new UtilsJSONdialect();
         String expResult = "{0:{0.5},1:{0.8},2:{100.356785}}";
-        String result = instance.doubleArrayListToString(arr);
+        String result = UtilsJSONdialect.doubleArrayListToString(arr);
         assertEquals(expResult, result);
-        assertEquals(null, instance.doubleArrayListToString(null));
-        assertEquals("{}", instance.doubleArrayListToString(new double[0]));
+        assertEquals(null, UtilsJSONdialect.doubleArrayListToString(null));
+        assertEquals("{}", UtilsJSONdialect.doubleArrayListToString(new double[0]));
     }
 
     /**
@@ -285,16 +281,15 @@ public class UtilsJSONdialectTest {
     public void testStringToArrayListInteger() throws Exception {
         System.out.println("stringToArrayListInteger");
         String listStr = "{0:{100},1:{90},2:{110}}";
-        UtilsJSONdialect instance = new UtilsJSONdialect();
         ArrayList<Integer> expResult = new ArrayList<Integer>(3);
         expResult.add(100);
         expResult.add(90);
         expResult.add(110);
-        ArrayList<Integer> result = instance.stringToArrayListInteger(listStr);
+        ArrayList<Integer> result = UtilsJSONdialect.stringToArrayListInteger(listStr);
         assertEquals(expResult, result);
-        assertEquals(null, instance.stringToArrayListInteger(null));
-        assertEquals(new ArrayList<Integer>(), instance.stringToArrayListInteger(" "));
-        assertEquals(new ArrayList<Integer>(), instance.stringToArrayListInteger("{}"));
+        assertEquals(null, UtilsJSONdialect.stringToArrayListInteger(null));
+        assertEquals(new ArrayList<Integer>(), UtilsJSONdialect.stringToArrayListInteger(" "));
+        assertEquals(new ArrayList<Integer>(), UtilsJSONdialect.stringToArrayListInteger("{}"));
     }
 
     /**
@@ -304,10 +299,9 @@ public class UtilsJSONdialectTest {
     public void testStringToArrayDouble() throws Exception {
         System.out.println("stringToArrayDouble");
         String listStr = "{0:{0.5},1:{1.4},2:{2.3},3:{3.2}}";
-        UtilsJSONdialect instance = new UtilsJSONdialect();
         double[] expResult = {0.5,1.4,2.3,3.2};
         
-        double[] result = instance.stringToArrayDouble(listStr);
+        double[] result = UtilsJSONdialect.stringToArrayDouble(listStr);
         for (int i = 0; i < result.length; i++) {
             assertTrue(expResult[i] == result[i]);
         }

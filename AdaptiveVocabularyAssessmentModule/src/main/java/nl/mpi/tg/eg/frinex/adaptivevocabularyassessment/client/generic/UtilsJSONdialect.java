@@ -113,6 +113,8 @@ public class UtilsJSONdialect<S> {
         retVal.append("}");
         return retVal.toString();
     }
+    
+    
 
     public String arrayList2String(ArrayList<ArrayList<S>> list) throws Exception {
         if (list == null) {
@@ -167,7 +169,7 @@ public class UtilsJSONdialect<S> {
         return retVal.toString();
     }
 
-    public String intArrayListToString(int[] arr) throws Exception {
+    public static String intArrayListToString(int[] arr) throws Exception {
         if (arr == null) {
             return null;
         }
@@ -188,7 +190,7 @@ public class UtilsJSONdialect<S> {
         return retVal.toString();
     }
     
-     public String doubleArrayListToString(double[] arr) throws Exception {
+     public static String doubleArrayListToString(double[] arr) throws Exception {
         if (arr == null) {
             return null;
         }
@@ -210,7 +212,7 @@ public class UtilsJSONdialect<S> {
     }
 
     
-     public ArrayList<String> stringToArrayList(String listStr) throws Exception {
+    public static ArrayList<String> stringToArrayList(String listStr) throws Exception {
         if (listStr == null) {
             return null;
         }
@@ -221,21 +223,42 @@ public class UtilsJSONdialect<S> {
             return new ArrayList<String>();
         }
         ArrayList<String> retVal = new ArrayList<String>();
-        String current = this.getKey(listStr, "0");
-        if (current == null) {
-            return null;
-        }
+        String current = getKey(listStr, "0");
+       
         int i = 0;
         while (current != null) {
             retVal.add(i, current);
             i++;
             String index = String.valueOf(i);
-            current = this.getKey(listStr, index);
+            current = getKey(listStr, index);
+        }
+        return retVal;
+    }
+    
+    public static ArrayList<ArrayList<String>> stringToArray2List(String listStr) throws Exception {
+        if (listStr == null) {
+            return null;
+        }
+        if (listStr.trim().isEmpty()) {
+            return new ArrayList<ArrayList<String>>();
+        }
+        if (listStr.trim().equals("{}")) {
+            return new ArrayList<ArrayList<String>>();
+        }
+        ArrayList<ArrayList<String>> retVal = new ArrayList<ArrayList<String>>();
+        String currentStr = getKey(listStr, "0");
+        int i = 0;
+        while (currentStr != null) {
+            ArrayList<String> current = stringToArrayList(currentStr);
+            retVal.add(i, current);
+            i++;
+            String index = String.valueOf(i);
+            currentStr = getKey(listStr, index);
         }
         return retVal;
     }
 
-    public ArrayList<Integer> stringToArrayListInteger(String listStr) throws Exception{
+    public static ArrayList<Integer> stringToArrayListInteger(String listStr) throws Exception{
         if (listStr == null) {
             return null;
         }
@@ -243,7 +266,7 @@ public class UtilsJSONdialect<S> {
             return new ArrayList<Integer>();
         }
         
-        ArrayList<String>  buffer = this.stringToArrayList(listStr);
+        ArrayList<String>  buffer = stringToArrayList(listStr);
          if (buffer.isEmpty()) {
             return new ArrayList<Integer>();
         }
@@ -257,8 +280,8 @@ public class UtilsJSONdialect<S> {
         return retVal;
     }
     
-    public double[] stringToArrayDouble(String listStr) throws Exception{
-        ArrayList<String>  buffer = this.stringToArrayList(listStr);
+    public static double[] stringToArrayDouble(String listStr) throws Exception{
+        ArrayList<String>  buffer = stringToArrayList(listStr);
         double[] retVal = new  double[buffer.size()];
         for (int i=0; i<buffer.size(); i++) {
             String val = buffer.get(i);
@@ -269,8 +292,8 @@ public class UtilsJSONdialect<S> {
         return retVal;
     }
     
-     public int[] stringToArrayInt(String listStr) throws Exception{
-        ArrayList<String>  buffer = this.stringToArrayList(listStr);
+     public static int[] stringToArrayInt(String listStr) throws Exception{
+        ArrayList<String>  buffer = stringToArrayList(listStr);
         int[] retVal = new int[buffer.size()];
         for (int i=0; i<buffer.size(); i++) {
             String val = buffer.get(i);

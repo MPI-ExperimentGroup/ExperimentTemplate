@@ -50,9 +50,5 @@ public class BandStimulus extends AbstractStimulus {
         return this.getUniqueId();
     }
     
-    public static BandStimulus toObject(String uniqueId, HashMap<String, BandStimulus> map){
-        return map.get(uniqueId);
-    }
-
-   
+  
 }

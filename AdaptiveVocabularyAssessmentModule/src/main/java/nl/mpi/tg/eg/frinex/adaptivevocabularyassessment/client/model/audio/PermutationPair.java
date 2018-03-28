@@ -63,13 +63,12 @@ public class PermutationPair {
 
     public static PermutationPair toObject(String str) {
 
-        UtilsJSONdialect<String>  util1 = new UtilsJSONdialect<String>();
         UtilsJSONdialect<Integer> util2 = new UtilsJSONdialect<Integer>();
 
         try {
             
             String triallTypesStr = UtilsJSONdialect.getKey(str, "trialConditions");
-            ArrayList<String> trialConditionsArrayStr = util1.stringToArrayList(triallTypesStr);
+            ArrayList<String> trialConditionsArrayStr = UtilsJSONdialect.stringToArrayList(triallTypesStr);
             ArrayList<TrialCondition> trialConds = new ArrayList<TrialCondition>(trialConditionsArrayStr.size());
             for (int i=0; i<trialConditionsArrayStr.size(); i++) {
                 trialConds.add(null);

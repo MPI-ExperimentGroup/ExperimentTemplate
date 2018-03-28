@@ -863,7 +863,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         builder.append("enoughFineTuningStimulae:{").append(this.enoughFineTuningStimulae).append("},");
 
         try {
-            String bandVisitCounterStr = util.intArrayListToString(this.bandVisitCounter);
+            String bandVisitCounterStr = UtilsJSONdialect.intArrayListToString(this.bandVisitCounter);
             if (bandVisitCounterStr != null) {
                 builder.append("bandVisitCounter:").append(bandVisitCounterStr).append(",");
             }
@@ -872,7 +872,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         }
 
         try {
-            String cycle2helperStr = util.intArrayListToString(this.cycle2helper);
+            String cycle2helperStr = UtilsJSONdialect.intArrayListToString(this.cycle2helper);
             if (cycle2helperStr != null) {
                 builder.append("cycle2helper:").append(cycle2helperStr).append(",");
             }
@@ -930,8 +930,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         this.justVisitedLastBand = Boolean.parseBoolean(UtilsJSONdialect.getKeyWithoutBrackets(str, "justVisitedLastBand"));
 
         String recordString = UtilsJSONdialect.getKey(str, "responseRecord");
-        UtilsJSONdialect<BookkeepingStimulus<A>> util = new UtilsJSONdialect<BookkeepingStimulus<A>>();
-        ArrayList<String> helper = util.stringToArrayList(recordString);
+        ArrayList<String> helper = UtilsJSONdialect.stringToArrayList(recordString);
         this.responseRecord = new ArrayList<BookkeepingStimulus<A>>(helper.size());
         BookkeepingStimulus<A> fake = new BookkeepingStimulus<A>(null);
         for (String record : helper) {
@@ -940,7 +939,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         }
 
         String tupleFTString = UtilsJSONdialect.getKey(str, "tupleFT");
-        ArrayList<String> helperFT = util.stringToArrayList(tupleFTString);
+        ArrayList<String> helperFT = UtilsJSONdialect.stringToArrayList(tupleFTString);
         this.tupleFT = new ArrayList<BookkeepingStimulus<A>>(helperFT.size());
         for (String record : helperFT) {
             BookkeepingStimulus<A> currentRecord = fake.toObject(record, map);
@@ -948,9 +947,9 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         }
 
         String bandCounterStr = UtilsJSONdialect.getKey(str, "bandVisitCounter");
-        this.bandVisitCounter = util.stringToArrayInt(bandCounterStr);
+        this.bandVisitCounter = UtilsJSONdialect.stringToArrayInt(bandCounterStr);
         String cycle2Str = UtilsJSONdialect.getKey(str, "cycle2helper");
-        this.cycle2helper = util.stringToArrayInt(cycle2Str);
+        this.cycle2helper = UtilsJSONdialect.stringToArrayInt(cycle2Str);
 
     }
     

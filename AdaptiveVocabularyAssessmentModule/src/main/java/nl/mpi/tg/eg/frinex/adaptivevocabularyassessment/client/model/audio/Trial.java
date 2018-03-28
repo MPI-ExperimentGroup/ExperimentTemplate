@@ -166,8 +166,7 @@ public class Trial {
 
         String stimuliStr = UtilsJSONdialect.getKey(str, "stimuli");
 
-        UtilsJSONdialect<BookkeepingStimulus<AudioAsStimulus>> util = new UtilsJSONdialect<BookkeepingStimulus<AudioAsStimulus>>();
-        ArrayList<String> bStimuliStr = util.stringToArrayList(stimuliStr);
+        ArrayList<String> bStimuliStr = UtilsJSONdialect.stringToArrayList(stimuliStr);
         ArrayList<BookkeepingStimulus<AudioAsStimulus>> bStimuli = new ArrayList<BookkeepingStimulus<AudioAsStimulus>>(bStimuliStr.size());
         for (int i = 0; i < bStimuliStr.size(); i++) {
             BookkeepingStimulus<AudioAsStimulus> ghost = new BookkeepingStimulus<AudioAsStimulus>(null);

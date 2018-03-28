@@ -57,7 +57,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
 
     // fine tuning stuff
     private Random rnd;
-    
+
     public AdVocAsStimuliProvider(Stimulus[] stimulusArray) {
         super(stimulusArray);
     }
@@ -67,7 +67,6 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
 
         super.initialiseStimuliState(stimuliStateSnapshot);
 
-            
         if (stimuliStateSnapshot.equals("")) { // no report is generated, start from scratch for now
             this.wordsPerBandInSeries = this.wordsPerBand / this.numberOfSeries;
             Vocabulary vocab = new Vocabulary(this.numberOfBands, this.wordsPerBandInSeries);
@@ -95,7 +94,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
 
             this.rnd = new Random();
         } else {
-            
+
         }
     }
 
@@ -320,7 +319,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
             BookkeepingStimulus<AdVocAsStimulus> stimulus = this.responseRecord.get(i);
             StringBuilder row = new StringBuilder();
             String time = (new Date(stimulus.getTimeStamp())).toString();
-            
+
             row.append(startColumn).append(stimulus.getStimulus().getLabel()).append(endColumn);
             row.append(startColumn).append(stimulus.getStimulus().getBandNumber()).append(endColumn);
             row.append(startColumn).append(stimulus.getReaction()).append(endColumn);
@@ -554,32 +553,20 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         return retVal;
     }
 
-    private ArrayList<BookkeepingStimulus<AdVocAsStimulus>> getCorrectAnsweredStimuli(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> records) {
-        ArrayList<BookkeepingStimulus<AdVocAsStimulus>> retVal = new ArrayList<BookkeepingStimulus<AdVocAsStimulus>>();
-        for (BookkeepingStimulus<AdVocAsStimulus> bStimulus : records) {
-            if (bStimulus.getCorrectness()) {
-                retVal.add(bStimulus);
-            }
-
-        }
-        return retVal;
-    }
-
-    private ArrayList<BookkeepingStimulus<AdVocAsStimulus>> getWronglyAnsweredStimuli(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> records) {
-        ArrayList<BookkeepingStimulus<AdVocAsStimulus>> retVal = new ArrayList<BookkeepingStimulus<AdVocAsStimulus>>();
-        for (BookkeepingStimulus<AdVocAsStimulus> bStimulus : records) {
-            if (!(bStimulus.getCorrectness())) {
-                retVal.add(bStimulus);
-            }
-
-        }
-        return retVal;
-    }
-
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("{");
+        String parent = super.toString();
+        builder.append(parent);
+        String specific = this.specificPartToString();
+        builder.append(", ").append(specific);
+        builder.append("}");
+        return builder.toString();
+    }
+
+    public String specificPartToString() {
+        StringBuilder builder = new StringBuilder();
 //    private RandomIndexing rndIndexing;
 //    private ArrayList<Integer> nonWordsIndexes;
 //    private int wordsPerBand;
@@ -597,12 +584,12 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         builder.append("wordsPerBandInSeries:{").append(this.wordsPerBandInSeries).append("},");
         builder.append("nonWordsPerBlock:{").append(this.nonWordsPerBlock).append("},");
         builder.append("averageNonWordPosition:{").append(this.averageNonWordPosition).append("}");
-        
+
         String rndIndexingStr = this.rndIndexing.toString();
         if (rndIndexingStr != null) {
             builder.append(",rndIndexing:").append(rndIndexingStr);
         }
-        
+
         UtilsJSONdialect<Integer> util = new UtilsJSONdialect<Integer>();
         try {
             String nonWordsIndexesStr = util.arrayListToString(this.nonWordsIndexes);
@@ -611,7 +598,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
             }
         } catch (Exception ex) {
         }
-        
+
         UtilsJSONdialect<AdVocAsStimulus> util1 = new UtilsJSONdialect<AdVocAsStimulus>();
         try {
             String wordsStr = util1.arrayList2String(this.words);
@@ -627,32 +614,64 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
             }
         } catch (Exception ex) {
         }
-        
-        builder.append("}");
+
         return builder.toString();
     }
-    
+
     @Override
-    public HashMap<String, AdVocAsStimulus> makeStimuliHashMap(){
+    public HashMap<String, AdVocAsStimulus> makeStimuliHashMap() {
         AdVocAsStimulus[][] woorden;
         AdVocAsStimulus[] nietWoorden;
         if (this.numberOfSeries == 2) {
-                woorden = ConstantsWords2.WORDS_SERIES[this.type];
-                nietWoorden = ConstantsNonWords2.NONWORDS_SERIES[this.type];
-            } else {
-                woorden = ConstantsWords1.WORDS_SERIES[0];
-                nietWoorden = ConstantsNonWords1.NONWORDS_SERIES[0];
-            }
-        HashMap<String, AdVocAsStimulus> retVal = new  HashMap<String, AdVocAsStimulus>();
-        for (int i=0; i<woorden.length; i++) {
-            for (int j=0; j<woorden[i].length; j++) {
-               retVal.put(woorden[i][j].getUniqueId(), woorden[i][j]);
+            woorden = ConstantsWords2.WORDS_SERIES[this.type];
+            nietWoorden = ConstantsNonWords2.NONWORDS_SERIES[this.type];
+        } else {
+            woorden = ConstantsWords1.WORDS_SERIES[0];
+            nietWoorden = ConstantsNonWords1.NONWORDS_SERIES[0];
+        }
+        HashMap<String, AdVocAsStimulus> retVal = new HashMap<String, AdVocAsStimulus>();
+        for (int i = 0; i < woorden.length; i++) {
+            for (int j = 0; j < woorden[i].length; j++) {
+                retVal.put(woorden[i][j].getUniqueId(), woorden[i][j]);
             }
         }
-        for (int i=0; i<nietWoorden.length; i++) {
-               retVal.put(nietWoorden[i].getUniqueId(), nietWoorden[i]);
+        for (int i = 0; i < nietWoorden.length; i++) {
+            retVal.put(nietWoorden[i].getUniqueId(), nietWoorden[i]);
         }
         return retVal;
+    }
+
+    protected void deserialiseToThisSpecific(String str, HashMap<String, AdVocAsStimulus> map) throws Exception {
+        String rndString = UtilsJSONdialect.getKey(str, "rndIndexing");
+        this.rndIndexing = RandomIndexing.toObject(rndString);
+        String nonWordsIndexesStr = UtilsJSONdialect.getKey(str, "nonWordsIndexes");
+        this.nonWordsIndexes = UtilsJSONdialect.stringToArrayListInteger(nonWordsIndexesStr);
+        this.wordsPerBand = Integer.parseInt(UtilsJSONdialect.getKeyWithoutBrackets(str, "wordsPerBand"));
+        this.wordsPerBandInSeries = Integer.parseInt(UtilsJSONdialect.getKeyWithoutBrackets(str, "wordsPerBandInSeries"));
+        this.nonWordsPerBlock = Integer.parseInt(UtilsJSONdialect.getKeyWithoutBrackets(str, "nonWordsPerBlock"));
+        this.averageNonWordPosition = Integer.parseInt(UtilsJSONdialect.getKeyWithoutBrackets(str, "averageNonWordPosition"));
+
+        String nonWordsStr = UtilsJSONdialect.getKey(str, "nonwords");
+        ArrayList<String> nonWordsBuffer = UtilsJSONdialect.stringToArrayList(nonWordsStr);
+        this.nonwords = new ArrayList<AdVocAsStimulus>(nonWordsBuffer.size());
+        for (String presentation : nonWordsBuffer) {
+            String key = UtilsJSONdialect.removeFirstAndLast(presentation);
+            AdVocAsStimulus current = map.get(key);
+            this.nonwords.add(current);
+        }
+
+        String wordsStr = UtilsJSONdialect.getKey(str, "words");
+        ArrayList<ArrayList<String>> wordsBuffer =UtilsJSONdialect.stringToArray2List(wordsStr);
+        for (ArrayList<String> listStr : wordsBuffer) {
+            ArrayList<AdVocAsStimulus> currentarray = new ArrayList<AdVocAsStimulus>(listStr.size());
+            this.words.add(currentarray);
+            for (String presentation : listStr) {
+                String key = UtilsJSONdialect.removeFirstAndLast(presentation);
+                AdVocAsStimulus currentStimulus = map.get(key);
+                currentarray.add(currentStimulus);
+            }
+        }
+
     }
 
 }

@@ -93,21 +93,6 @@ public class BandStimulusTest {
         assertEquals(expResult, result);
     }
 
-    /**
-     * Test of toObject method, of class BandStimulus.
-     */
-    @Test
-    public void testToObject() {
-        System.out.println("toObject");
-        String uniqueId = "smoer";
-        HashMap<String, BandStimulus> map = new HashMap<String, BandStimulus>();
-        map.put(uniqueId, this.instance);
-        BandStimulus expResult = this.instance;
-        BandStimulus result = BandStimulus.toObject(uniqueId, map);
-        assertEquals(expResult, result);
-        assertEquals(null, BandStimulus.toObject("rhabarber", map));
-    }
-
-   
+  
     
 }
