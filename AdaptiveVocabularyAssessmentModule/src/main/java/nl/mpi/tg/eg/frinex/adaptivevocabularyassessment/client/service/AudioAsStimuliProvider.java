@@ -474,4 +474,12 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         return true;
     }
 
+    @Override
+    public void recycleUnusedStimuli() {
+    }
+    
+    @Override
+    public String getStringFastTrack(String startRow, String endRow, String startColumn, String endColumn){
+        return "";
+    }
 }

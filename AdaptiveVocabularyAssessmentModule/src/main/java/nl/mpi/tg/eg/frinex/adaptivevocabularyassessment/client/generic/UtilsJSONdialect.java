@@ -18,8 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.Set;
+
 /**
  *
  * @author olhshk
@@ -100,7 +99,7 @@ public class UtilsJSONdialect<S> {
             }
             retVal.append(",");
         }
-        
+
         int lastIndex = list.size() - 1;
         S obj = list.get(lastIndex);
         retVal.append(lastIndex).append(":");
@@ -113,14 +112,12 @@ public class UtilsJSONdialect<S> {
         retVal.append("}");
         return retVal.toString();
     }
-    
-    
 
     public String arrayList2String(ArrayList<ArrayList<S>> list) throws Exception {
         if (list == null) {
             return null;
         }
-         if (list.isEmpty()) {
+        if (list.isEmpty()) {
             return "{}";
         }
         StringBuilder retVal = new StringBuilder();
@@ -142,12 +139,11 @@ public class UtilsJSONdialect<S> {
         return retVal.toString();
     }
 
-    
     public String arrayList3String(ArrayList<ArrayList<ArrayList<S>>> list) throws Exception {
         if (list == null) {
             return null;
         }
-         if (list.isEmpty()) {
+        if (list.isEmpty()) {
             return "{}";
         }
         StringBuilder retVal = new StringBuilder();
@@ -189,8 +185,8 @@ public class UtilsJSONdialect<S> {
         retVal.append("}");
         return retVal.toString();
     }
-    
-     public static String doubleArrayListToString(double[] arr) throws Exception {
+
+    public static String doubleArrayListToString(double[] arr) throws Exception {
         if (arr == null) {
             return null;
         }
@@ -211,20 +207,23 @@ public class UtilsJSONdialect<S> {
         return retVal.toString();
     }
 
-    
     public static ArrayList<String> stringToArrayList(String listStr) throws Exception {
         if (listStr == null) {
             return null;
         }
-        if (listStr.trim().isEmpty()) {
+        
+        if (listStr.trim().equals("null") || listStr.trim().equals("{null}")) {
+            return null;
+        }
+        
+        if (listStr.trim().isEmpty() || listStr.trim().equals("{}")) {
             return new ArrayList<String>();
         }
-        if (listStr.trim().equals("{}")) {
-            return new ArrayList<String>();
-        }
+
+    
         ArrayList<String> retVal = new ArrayList<String>();
         String current = getKey(listStr, "0");
-       
+
         int i = 0;
         while (current != null) {
             retVal.add(i, current);
@@ -234,17 +233,19 @@ public class UtilsJSONdialect<S> {
         }
         return retVal;
     }
-    
+
     public static ArrayList<ArrayList<String>> stringToArray2List(String listStr) throws Exception {
         if (listStr == null) {
             return null;
         }
-        if (listStr.trim().isEmpty()) {
+         if (listStr.trim().equals("null") || listStr.trim().equals("{null}")) {
+            return null;
+        }
+        
+        if (listStr.trim().isEmpty() || listStr.trim().equals("{}")) {
             return new ArrayList<ArrayList<String>>();
         }
-        if (listStr.trim().equals("{}")) {
-            return new ArrayList<ArrayList<String>>();
-        }
+
         ArrayList<ArrayList<String>> retVal = new ArrayList<ArrayList<String>>();
         String currentStr = getKey(listStr, "0");
         int i = 0;
@@ -258,20 +259,20 @@ public class UtilsJSONdialect<S> {
         return retVal;
     }
 
-    public static ArrayList<Integer> stringToArrayListInteger(String listStr) throws Exception{
+    public static ArrayList<Integer> stringToArrayListInteger(String listStr) throws Exception {
         if (listStr == null) {
             return null;
         }
         if (listStr.trim().isEmpty()) {
             return new ArrayList<Integer>();
         }
-        
-        ArrayList<String>  buffer = stringToArrayList(listStr);
-         if (buffer.isEmpty()) {
+
+        ArrayList<String> buffer = stringToArrayList(listStr);
+        if (buffer.isEmpty()) {
             return new ArrayList<Integer>();
         }
-        ArrayList<Integer> retVal = new  ArrayList<Integer>(buffer.size());
-        for (int i=0; i<buffer.size(); i++) {
+        ArrayList<Integer> retVal = new ArrayList<Integer>(buffer.size());
+        for (int i = 0; i < buffer.size(); i++) {
             String val = buffer.get(i);
             String tmp = removeFirstAndLast(val);
             Integer valInt = Integer.parseInt(tmp);
@@ -279,30 +280,35 @@ public class UtilsJSONdialect<S> {
         }
         return retVal;
     }
-    
-    public static double[] stringToArrayDouble(String listStr) throws Exception{
-        ArrayList<String>  buffer = stringToArrayList(listStr);
-        double[] retVal = new  double[buffer.size()];
-        for (int i=0; i<buffer.size(); i++) {
+
+    public static double[] stringToArrayDouble(String listStr) throws Exception {
+        ArrayList<String> buffer = stringToArrayList(listStr);
+        if (buffer == null) {
+            return null;
+        }
+        double[] retVal = new double[buffer.size()];
+        for (int i = 0; i < buffer.size(); i++) {
             String val = buffer.get(i);
             String tmp = removeFirstAndLast(val);
             double valInt = Double.parseDouble(tmp);
-            retVal[i]=valInt;
+            retVal[i] = valInt;
         }
         return retVal;
     }
-    
-     public static int[] stringToArrayInt(String listStr) throws Exception{
-        ArrayList<String>  buffer = stringToArrayList(listStr);
+
+    public static int[] stringToArrayInt(String listStr) throws Exception {
+        ArrayList<String> buffer = stringToArrayList(listStr);
+        if (buffer == null) {
+            return null;
+        }
         int[] retVal = new int[buffer.size()];
-        for (int i=0; i<buffer.size(); i++) {
+        for (int i = 0; i < buffer.size(); i++) {
             String val = buffer.get(i);
             String tmp = removeFirstAndLast(val);
             int valInt = Integer.parseInt(tmp);
-            retVal[i]=valInt;
+            retVal[i] = valInt;
         }
         return retVal;
     }
-     
-    
+
 }

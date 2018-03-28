@@ -348,14 +348,10 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
 
     @Override
     public String getHtmlStimuliReport() {
-        if (this.htmlReport.equals("")) {
-            StringBuilder htmlStringBuilder = new StringBuilder();
-            String experimenteeReport = this.getHtmlExperimenteeReport();
-            htmlStringBuilder.append(experimenteeReport);
-            this.htmlReport = htmlStringBuilder.toString();
-        }
-
-        return this.htmlReport;
+        StringBuilder htmlStringBuilder = new StringBuilder();
+        String experimenteeReport = this.getHtmlExperimenteeReport();
+        htmlStringBuilder.append(experimenteeReport);
+        return htmlStringBuilder.toString();
     }
 
     private String getHtmlExperimenteeReport() {
@@ -661,7 +657,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         }
 
         String wordsStr = UtilsJSONdialect.getKey(str, "words");
-        ArrayList<ArrayList<String>> wordsBuffer =UtilsJSONdialect.stringToArray2List(wordsStr);
+        ArrayList<ArrayList<String>> wordsBuffer = UtilsJSONdialect.stringToArray2List(wordsStr);
         for (ArrayList<String> listStr : wordsBuffer) {
             ArrayList<AdVocAsStimulus> currentarray = new ArrayList<AdVocAsStimulus>(listStr.size());
             this.words.add(currentarray);

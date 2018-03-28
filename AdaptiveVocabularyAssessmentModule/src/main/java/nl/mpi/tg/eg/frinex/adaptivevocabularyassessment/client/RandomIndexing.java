@@ -81,7 +81,7 @@ public class RandomIndexing {
 
         ArrayList<Integer> retVal = new ArrayList<>();
         int randOffset;
-        int blockSize = nonwordsPerBlock * this.averageNonwordPosition;
+        int blockSize = this.nonwordsPerBlock * this.averageNonwordPosition;
         int numberOfBlocks = this.fastTrackSequenceLength / blockSize;
         Random rnd = new Random();
         for (int i = 0; i < numberOfBlocks; i++) {

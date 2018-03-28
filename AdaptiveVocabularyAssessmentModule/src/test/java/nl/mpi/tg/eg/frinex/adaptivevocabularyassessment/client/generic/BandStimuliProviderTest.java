@@ -28,7 +28,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 
 /**
  *
@@ -51,7 +50,7 @@ public class BandStimuliProviderTest {
         public BookkeepingStimulus<BandStimulus> deriveNextFastTrackStimulus() {
             return null;
         }
-        
+
         @Override
         protected boolean analyseCorrectness(Stimulus stimulus, String stimulusResponse) {
             return true;
@@ -61,22 +60,36 @@ public class BandStimuliProviderTest {
         public HashMap<String, BandStimulus> makeStimuliHashMap() {
             return null;
         }
-        
+
         @Override
         public boolean fastTrackToBeContinuedWithSecondChance() {
             return true;
         }
-        
+
         @Override
         public boolean enoughStimuliForFastTrack() {
             return true;
         }
-        
+
         @Override
         public boolean initialiseNextFineTuningTuple() {
             return true;
         }
+
+        @Override
+        public void recycleUnusedStimuli() {
+        }
+
+        @Override
+        public String getStringFastTrack(String startRow, String endRow, String startColumn, String endColumn) {
+            return "";
+        }
         
+        @Override
+        public String getStringFineTuningHistory(String startRow, String endRow, String startColumn, String endColumn, String format){
+            return "";
+        }
+
     };
 
     private final BandStimuliProvider<BandStimulus> instance = new BandStimuliProviderImp(new Stimulus[0]);
@@ -255,16 +268,22 @@ public class BandStimuliProviderTest {
      * Test of generateStimuliStateSnapshot method, of class
      * BandStimuliProvider.
      */
-    @Ignore
     @Test
     public void testGenerateStimuliStateSnapshot() {
         System.out.println("generateStimuliStateSnapshot");
-        BandStimuliProvider instance = null;
-        String expResult = "";
-        String result = instance.generateStimuliStateSnapshot();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String stimuliStateSnapshot = "";
+
+        this.instance.setnumberOfBands("40");
+        this.instance.settype("0");
+        this.instance.setfastTrackPresent("true");
+        this.instance.setfineTuningFirstWrongOut("false");
+        this.instance.setfineTuningTupleLength("4");
+        this.instance.setfineTuningUpperBoundForCycles("2");
+        this.instance.setnumberOfSeries("2");
+        this.instance.setstartBand("20");
+        this.instance.initialiseStimuliState(stimuliStateSnapshot);
+
+        assertEquals(this.instance.toString(), this.instance.generateStimuliStateSnapshot());
     }
 
     /**
@@ -628,8 +647,6 @@ public class BandStimuliProviderTest {
         }
     }
 
-   
-   
     /**
      * Test of tupleIsNotEmpty method, of class BandStimuliProvider.
      */
@@ -673,173 +690,272 @@ public class BandStimuliProviderTest {
     @Test
     public void testBandNumberIntoPercentage() {
         System.out.println("bandNumberIntoPercentage");
-        int bandNumber = 0;
-        long expResult = 0L;
-        long result = this.instance.bandNumberIntoPercentage(bandNumber);
-        assertEquals(expResult, result);
+        assertEquals(0L, this.instance.bandNumberIntoPercentage(0));
+
+        this.instance.setnumberOfBands("40");
+        assertEquals(100L, this.instance.bandNumberIntoPercentage(40));
+        assertEquals(50L, this.instance.bandNumberIntoPercentage(20));
+        assertEquals(75L, this.instance.bandNumberIntoPercentage(30));
+        assertEquals(25L, this.instance.bandNumberIntoPercentage(10));
+        assertEquals(13L, this.instance.bandNumberIntoPercentage(5));
     }
 
     /**
      * Test of percentageIntoBandNumber method, of class BandStimuliProvider.
      */
-    @Ignore
     @Test
     public void testPercentageIntoBandNumber() {
         System.out.println("percentageIntoBandNumber");
-        long percentage = 0L;
-        BandStimuliProvider instance = null;
-        int expResult = 0;
-        int result = instance.percentageIntoBandNumber(percentage);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        assertEquals(0, this.instance.percentageIntoBandNumber(0));
+        this.instance.setnumberOfBands("54");
+        assertEquals(54, instance.percentageIntoBandNumber(100));
+        assertEquals(53, instance.percentageIntoBandNumber(99));
+        assertEquals(27, instance.percentageIntoBandNumber(50));
+        assertEquals(26, instance.percentageIntoBandNumber(49));
+        assertEquals(5, instance.percentageIntoBandNumber(10));
+        assertEquals(1, instance.percentageIntoBandNumber(1));
+        assertEquals(1, instance.percentageIntoBandNumber(2));
 
-    /**
-     * Test of recycleUnusedStimuli method, of class BandStimuliProvider.
-     */
-    @Ignore
-    @Test
-    public void testRecycleUnusedStimuli() {
-        System.out.println("recycleUnusedStimuli");
-        BandStimuliProvider instance = null;
-        instance.recycleUnusedStimuli();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of toBeContinuedLoopChecker method, of class BandStimuliProvider.
      */
-    @Ignore
     @Test
     public void testToBeContinuedLoopChecker() {
         System.out.println("toBeContinuedLoopChecker");
-        BandStimuliProvider instance = null;
-        boolean expResult = false;
-        boolean result = instance.toBeContinuedLoopChecker();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        this.instance.setnumberOfBands("40");
+        this.instance.settype("0");
+        this.instance.setfastTrackPresent("true");
+        this.instance.setfineTuningFirstWrongOut("false");
+        this.instance.setfineTuningTupleLength("4");
+        this.instance.setfineTuningUpperBoundForCycles("2");
+        this.instance.setnumberOfSeries("2");
+        this.instance.setstartBand("20");
+        this.instance.initialiseStimuliState("");
+
+        assertTrue(instance.toBeContinuedLoopChecker());
+
     }
 
     /**
      * Test of detectLoop method, of class BandStimuliProvider.
      */
-    @Ignore
+    /**
+     * Test of detectLoop method, of class this.instance.
+     */
     @Test
     public void testDetectLoop() {
         System.out.println("detectLoop");
-        int[] arr = null;
-        boolean expResult = false;
-        boolean result = BandStimuliProvider.detectLoop(arr);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        int[] arr1 = {42, 43, 42, 43, 42, 43, 42};
+        boolean result1 = BandStimuliProvider.detectLoop(arr1);
+        assertEquals(true, result1);
+        int[] arr2 = {42, 43, 42, 43, 42, 43, 45};
+        boolean result2 = BandStimuliProvider.detectLoop(arr2);
+        assertEquals(false, result2);
+        int[] arr3 = {43, 42, 43, 42, 43, 42, 45, 42};
+        boolean result3 = BandStimuliProvider.detectLoop(arr3);
+        assertEquals(false, result3);
     }
 
     /**
-     * Test of shiftFIFO method, of class BandStimuliProvider.
+     * Test of shiftFIFO method, of class this.instance.
      */
-    @Ignore
     @Test
     public void testShiftFIFO() {
         System.out.println("shiftFIFO");
-        int[] fifo = null;
-        int newelement = 0;
+        int[] fifo = {0, 1, 2, 3, 4, 5, 6};
+        int newelement = 7;
         BandStimuliProvider.shiftFIFO(fifo, newelement);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        for (int i = 0; i < 7; i++) {
+            assertEquals(i + 1, fifo[i]);
+        }
     }
 
     /**
-     * Test of mostOftenVisitedBandNumber method, of class BandStimuliProvider.
+     * Test of shiftFIFO method, of class this.instance.
      */
-    @Ignore
     @Test
     public void testMostOftenVisitedBandNumber() {
-        System.out.println("mostOftenVisitedBandNumber");
-        int[] bandVisitCounter = null;
-        int controlIndex = 0;
-        BandStimuliProvider instance = null;
-        int expResult = 0;
-        int result = instance.mostOftenVisitedBandNumber(bandVisitCounter, controlIndex);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println(" MostOftenVisitedBandMumber");
+        int[] visitCounter = {1, 3, 2, 3, 3, 3, 1};
+        // indices {1,3,4,5}
+        // ind = 1, indSym = 2
+        int currentIndex1 = 2; // at 2
+        int bandNumber1 = this.instance.mostOftenVisitedBandNumber(visitCounter, currentIndex1);
+        assertEquals(4, bandNumber1);
+
+        int currentIndex2 = 3; // at 3
+        int bandNumber2 = this.instance.mostOftenVisitedBandNumber(visitCounter, currentIndex2);
+        assertEquals(4, bandNumber2);
     }
 
-    /**
-     * Test of getStringFastTrack method, of class BandStimuliProvider.
-     */
-    @Ignore
-    @Test
-    public void testGetStringFastTrack() {
-        System.out.println("getStringFastTrack");
-        String startRow = "";
-        String endRow = "";
-        String startColumn = "";
-        String endColumn = "";
-        BandStimuliProvider instance = null;
-        String expResult = "";
-        String result = instance.getStringFastTrack(startRow, endRow, startColumn, endColumn);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    private int getListOfListLength(ArrayList<ArrayList<BandStimulus>> ll) {
+        int retVal = 0;
+        for (ArrayList<BandStimulus> l : ll) {
+            retVal += l.size();
+        }
+        return retVal;
     }
 
-    /**
-     * Test of getStringFineTuningHistory method, of class BandStimuliProvider.
-     */
-    @Ignore
-    @Test
-    public void testGetStringFineTuningHistory() {
-        System.out.println("getStringFineTuningHistory");
-        String startRow = "";
-        String endRow = "";
-        String startColumn = "";
-        String endColumn = "";
-        String format = "";
-        BandStimuliProvider instance = null;
-        String expResult = "";
-        String result = instance.getStringFineTuningHistory(startRow, endRow, startColumn, endColumn, format);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
     /**
      * Test of getStringSummary method, of class BandStimuliProvider.
      */
-    @Ignore
     @Test
     public void testGetStringSummary() {
         System.out.println("getStringSummary");
+        
+        this.instance.setnumberOfBands("40");
+        this.instance.settype("0");
+        this.instance.setfastTrackPresent("true");
+        this.instance.setfineTuningFirstWrongOut("false");
+        this.instance.setfineTuningTupleLength("4");
+        this.instance.setfineTuningUpperBoundForCycles("2");
+        this.instance.setnumberOfSeries("2");
+        this.instance.setstartBand("20");
+        this.instance.initialiseStimuliState("");
+        
         String startRow = "";
-        String endRow = "";
+        String endRow = "\n";
         String startColumn = "";
-        String endColumn = "";
-        BandStimuliProvider instance = null;
-        String expResult = "";
-        String result = instance.getStringSummary(startRow, endRow, startColumn, endColumn);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String endColumn = ";";
+        String result = this.instance.getStringSummary(startRow, endRow, startColumn, endColumn);
+        String expResult = "Score;BestFastTrack;Cycel2oscillation;EnoughFineTuningStimuli;Champion;Looser;\n-1;-1;false;true;false;false;\n";
+        assertEquals(expResult,result);
+        
+        this.instance.setfastTrackPresent("false");
+        String result2 = this.instance.getStringSummary(startRow, endRow, startColumn, endColumn);
+        String expResult2 = "Score;Cycel2oscillation;EnoughFineTuningStimuli;Champion;Looser;\n-1;false;true;false;false;\n";
+        assertEquals(expResult2,result2);
     }
 
     /**
      * Test of toString method, of class BandStimuliProvider.
      */
-    @Ignore
     @Test
     public void testToString() {
         System.out.println("toString");
-        BandStimuliProvider instance = null;
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+         this.instance.setnumberOfBands("40");
+        this.instance.settype("0");
+        this.instance.setfastTrackPresent("true");
+        this.instance.setfineTuningFirstWrongOut("false");
+        this.instance.setfineTuningTupleLength("4");
+        this.instance.setfineTuningUpperBoundForCycles("2");
+        this.instance.setnumberOfSeries("2");
+        this.instance.setstartBand("20");
+        this.instance.initialiseStimuliState("");
+        String expectedResult = "type:{0},"
+                + "numberOfBands:{40},"
+                + "numberOfSeries:{2},"
+                + "startBand:{20},"
+                + "fineTuningTupleLength:{4},"
+                + "fineTuningUpperBoundForCycles:{2},"
+                +"fastTrackPresent:{true},"
+                + "fineTuningFirstWrongOut:{false},"
+                + "bandScore:{-1},"
+                + "percentageScore:{0},"
+                + "isCorrectCurrentResponse:{null},"
+                + "currentBandIndex:{19},"
+                + "totalStimuli:{0},"
+                + "responseRecord:{},"
+                + "bestBandFastTrack:{-1},"
+                + "isFastTrackIsStillOn:{true},"
+                + "secondChanceFastTrackIsFired:{false},"
+                + "timeTickEndFastTrack:{-1},"
+                + "tupleFT:{},"
+                + "enoughFineTuningStimulae:{true},"
+                + "bandVisitCounter:{0:{0},1:{0},2:{0},3:{0},4:{0},5:{0},6:{0},7:{0},8:{0},9:{0},10:{0},11:{0},12:{0},13:{0},14:{0},15:{0},16:{0},17:{0},18:{0},19:{0},20:{0},21:{0},22:{0},23:{0},24:{0},25:{0},26:{0},27:{0},28:{0},29:{0},30:{0},31:{0},32:{0},33:{0},34:{0},35:{0},36:{0},37:{0},38:{0},39:{0}},"
+                + "cycle2helper:{0:{0},1:{0},2:{0},3:{0},4:{0}},"
+                + "cycle2:{false},"
+                + "champion:{false},"
+                + "looser:{false},"
+                + "justVisitedLastBand:{false},"
+                + "justVisitedFirstBand:{false},"
+                + "errorMessage:{null},";
+        assertEquals(expectedResult, this.instance.toString());
     }
+    
+     /**
+     * Test of toString method, of class BandStimuliProvider.
+     */
+    @Test
+    public void deserialisation() {
+        System.out.println("toString");
+        String input = "type:{1},"
+                + "numberOfBands:{54},"
+                + "numberOfSeries:{1},"
+                + "startBand:{25},"
+                + "fineTuningTupleLength:{4},"
+                + "fineTuningUpperBoundForCycles:{3},"
+                + "fastTrackPresent:{false},"
+                + "fineTuningFirstWrongOut:{false},"
+                + "bandScore:{27},"
+                + "percentageScore:{50},"
+                + "isCorrectCurrentResponse:{true},"
+                + "currentBandIndex:{28},"
+                + "totalStimuli:{10},"
+                + "responseRecord:{null},"
+                + "bestBandFastTrack:{20},"
+                + "isFastTrackIsStillOn:{false},"
+                + "secondChanceFastTrackIsFired:{true},"
+                + "timeTickEndFastTrack:{10},"
+                + "tupleFT:{null},"
+                + "enoughFineTuningStimulae:{false},"
+                + "bandVisitCounter:{0:{1},1:{2},2:{3},3:{4},4:{5},5:{6},6:{7},7:{8},8:{9},9:{10},10:{11},11:{0}},"
+                + "cycle2helper:{0:{10},1:{9},2:{8},3:{7},4:{6}},"
+                + "cycle2:{true},"
+                + "champion:{true},"
+                + "looser:{true},"
+                + "justVisitedLastBand:{true},"
+                + "justVisitedFirstBand:{true},"
+                + "errorMessage:{noError}";
+        this.instance.initialiseStimuliState(input);
+        
+        assertEquals(new Integer(1),this.instance.gettype());
+        assertEquals(54,this.instance.getnumberOfBands());
+        assertEquals(1,this.instance.getnumberOfSeries());
+        assertEquals(25,this.instance.getstartBand());
+        
+        assertEquals(4,this.instance.getfineTuningTupleLength());
+        assertEquals(3,this.instance.getfineTuningUpperBoundForCycles());
+        assertFalse(this.instance.getfastTrackPresent());
+        assertFalse(this.instance.getfineTuningFirstWrongOut());
+        
+        assertEquals(27,this.instance.getBandScore());
+        assertEquals(50,this.instance.getPercentageScore());
+        assertTrue(this.instance.isCorrectCurrentResponse);
+        assertEquals(28,this.instance.getCurrentBandIndex());
+        assertEquals(10,this.instance.getTotalStimuli());
+        assertNull(this.instance.getResponseRecord());
+        assertEquals(20,this.instance.getBestFastTrackBand());
+        assertFalse(this.instance.getIsFastTrackIsStillOn());
+        assertTrue(this.instance.getSecondChanceFastTrackIsFired());
+        assertEquals(10,this.instance.getEndFastTrackTimeTick());
+        assertNull(this.instance.getFTtuple());
+        assertFalse(this.instance.getEnoughFinetuningStimuli());
+        
+        int[] counter=this.instance.getbandVisitCounter();
+        assertEquals(12, counter.length);
+        for (int i=0; i<11; i++) {
+            assertEquals(i+1, counter[i]);
+        }
+        assertEquals(0, counter[11]);
+        
+        int[] helper=this.instance.getcycle2helper();
+        assertEquals(5, helper.length);
+        for (int i=0; i<helper.length; i++) {
+            assertEquals(10-i, helper[i]);
+        }
+        
+        assertTrue(this.instance.getCycel2());
+        assertTrue(this.instance.getLooser());
+        assertTrue(this.instance.getChampion());
+        assertTrue(this.instance.getJustVisitedFirstBand());
+        assertTrue(this.instance.getJustVisitedLastBand());
+        assertEquals("noError", this.instance.getErrorMessage());
+    }
+    
+   
 
 }

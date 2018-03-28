@@ -1287,14 +1287,13 @@ public class AdVocAsStimuliProviderTest {
             }
             frequency = ((double) counterNonwords) / ((double) (i + 1));
         }
-        if (timeTick >= 3) {
-            assertTrue(frequency > 0);
-        }
+        
         double idealFrequency = 1.0 / Double.valueOf(this.averageNonWordPoistion);
+        int blockSize = Integer.parseInt(this.nonwordsPerBlock) * Integer.parseInt(this.averageNonWordPoistion);
         double diff = Math.abs(frequency - idealFrequency);
         //System.out.println(frequency);
         //System.out.println(idealFrequency);
-        if (timeTick >= 12) {
+        if (timeTick >= blockSize) {
             assertTrue(diff <= 0.2);
         }
     }

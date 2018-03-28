@@ -75,9 +75,6 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected boolean looser = false;
     protected boolean justVisitedLastBand = false;
     protected boolean justVisitedFirstBand = false;
-
-    protected String htmlReport = "";
-
     protected String errorMessage;
 
     // add experiment specific stuff here
@@ -158,6 +155,26 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         return this.cycle2helper;
     }
 
+    public boolean getJustVisitedFirstBand() {
+        return this.justVisitedFirstBand;
+    }
+
+    public boolean getJustVisitedLastBand() {
+        return this.justVisitedLastBand;
+    }
+
+    public boolean getIsFastTrackIsStillOn() {
+        return this.isFastTrackIsStillOn;
+    }
+
+    public boolean getSecondChanceFastTrackIsFired() {
+        return this.secondChanceFastTrackIsFired;
+    }
+
+    public String getErrorMessage() {
+        return this.errorMessage;
+    }
+
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
         if (stimuliStateSnapshot.trim().isEmpty()) {
@@ -211,7 +228,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
     @Override
     public String generateStimuliStateSnapshot() {
-        return this.htmlReport;
+        return this.toString();
     }
 
     public int getCurrentBandIndex() {
@@ -286,9 +303,6 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     // also set the band indices
     @Override
     public boolean hasNextStimulus(int increment) {
-        if (!this.htmlReport.equals("")) { // the report is generated, no stimuli more
-            return false;
-        }
         if (this.fastTrackPresent) {
             if (this.isFastTrackIsStillOn) { // fast track is still on, update it
                 this.isFastTrackIsStillOn = this.fastTrackToBeContinuedWithSecondChance();
@@ -339,29 +353,22 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
     @Override
     public String getHtmlStimuliReport() {
-        if (this.htmlReport.equals("")) {
-            String summary = this.getStringSummary("<tr>", "</tr>", "<td>", "</td>");
-            String inhoudFineTuning = this.getStringFineTuningHistory("<tr>", "</tr>", "<td>", "</td>", "html");
-            StringBuilder htmlStringBuilder = new StringBuilder();
-            htmlStringBuilder.append("<p>User summary</p><table border=1>").append(summary).append("</table><br><br>");
-            if (this.fastTrackPresent) {
-                String inhoudFastTrack = this.getStringFastTrack("<tr>", "</tr>", "<td>", "</td>");
-                htmlStringBuilder.append("<p>Fast Track History</p><table border=1>").append(inhoudFastTrack).append("</table><br><b>");
-            }
-            htmlStringBuilder.append("<p>Fine tuning History</p><table border=1>").append(inhoudFineTuning).append("</table>");
-            this.htmlReport = htmlStringBuilder.toString();
+        String summary = this.getStringSummary("<tr>", "</tr>", "<td>", "</td>");
+        String inhoudFineTuning = this.getStringFineTuningHistory("<tr>", "</tr>", "<td>", "</td>", "html");
+        StringBuilder htmlStringBuilder = new StringBuilder();
+        htmlStringBuilder.append("<p>User summary</p><table border=1>").append(summary).append("</table><br><br>");
+        if (this.fastTrackPresent) {
+            String inhoudFastTrack = this.getStringFastTrack("<tr>", "</tr>", "<td>", "</td>");
+            htmlStringBuilder.append("<p>Fast Track History</p><table border=1>").append(inhoudFastTrack).append("</table><br><b>");
         }
-        return this.htmlReport;
+        htmlStringBuilder.append("<p>Fine tuning History</p><table border=1>").append(inhoudFineTuning).append("</table>");
+        return htmlStringBuilder.toString();
     }
 
     @Override
     public Map<String, String> getStimuliReport(String reportType) {
 
         final LinkedHashMap<String, String> returnMap = new LinkedHashMap<>();
-
-        if (!this.htmlReport.equals("")) { // reports have been already generated 
-            return returnMap;
-        }
 
         switch (reportType) {
             case "user_summary": {
@@ -411,7 +418,6 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         return this.isCorrectCurrentResponse;
     }
 
-    
     protected abstract boolean analyseCorrectness(Stimulus stimulus, String stimulusResponse);
 
     // also updates indices
@@ -591,7 +597,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected Boolean allTupleIsCorrect() {
         boolean allTupleCorrect = true;
         int lastIndex = this.responseRecord.size() - 1;
-        int limit = ( this.fineTuningTupleLength < this.responseRecord.size()) ? this.fineTuningTupleLength : this.responseRecord.size();
+        int limit = (this.fineTuningTupleLength < this.responseRecord.size()) ? this.fineTuningTupleLength : this.responseRecord.size();
         for (int i = 0; i < limit; i++) {
             if (!this.responseRecord.get(lastIndex - i).getCorrectness()) {
                 allTupleCorrect = false;
@@ -614,9 +620,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     }
 
     // experiment-specifice, must be overridden
-    protected void recycleUnusedStimuli() {
-
-    }
+    protected abstract void recycleUnusedStimuli();
 
     protected boolean toBeContinuedLoopChecker() {
         boolean retVal;
@@ -724,14 +728,10 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     }
 
     // Override,  very dependant  on the type of experiment
-    public String getStringFastTrack(String startRow, String endRow, String startColumn, String endColumn) {
-        return "";
-    }
+    public abstract String getStringFastTrack(String startRow, String endRow, String startColumn, String endColumn);
 
     // Override,  very dependant  on the type of experiment
-    public String getStringFineTuningHistory(String startRow, String endRow, String startColumn, String endColumn, String format) {
-        return "";
-    }
+    public abstract String getStringFineTuningHistory(String startRow, String endRow, String startColumn, String endColumn, String format);
 
     public String getStringSummary(String startRow, String endRow, String startColumn, String endColumn) {
 
@@ -871,19 +871,9 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
         builder.append("champion:{").append(this.champion).append("},");
         builder.append("looser:{").append(this.looser).append("},");
-        builder.append("isFastTrackIsStillOn:{").append(this.isFastTrackIsStillOn).append("},");
         builder.append("justVisitedLastBand:{").append(this.justVisitedLastBand).append("},");
         builder.append("justVisitedFirstBand:{").append(this.justVisitedFirstBand).append("},");
-//
-//    protected String htmlReport = "";
-//
-//    protected String errorMessage; 
-
-        builder.append("htmlReport:{").append(this.htmlReport).append("}");
-        if (this.errorMessage != null) {
-            builder.append(",errorMessage:{").append(this.errorMessage).append("}");
-        }
-
+        builder.append("errorMessage:{").append(this.errorMessage).append("},");
         return builder.toString();
     }
 
@@ -916,30 +906,41 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         this.justVisitedFirstBand = Boolean.parseBoolean(UtilsJSONdialect.getKeyWithoutBrackets(str, "justVisitedFirstBand"));
         this.justVisitedLastBand = Boolean.parseBoolean(UtilsJSONdialect.getKeyWithoutBrackets(str, "justVisitedLastBand"));
 
+        BookkeepingStimulus<A> fake = new BookkeepingStimulus<A>(null);
+
         String recordString = UtilsJSONdialect.getKey(str, "responseRecord");
         ArrayList<String> helper = UtilsJSONdialect.stringToArrayList(recordString);
-        this.responseRecord = new ArrayList<BookkeepingStimulus<A>>(helper.size());
-        BookkeepingStimulus<A> fake = new BookkeepingStimulus<A>(null);
-        for (String record : helper) {
-            BookkeepingStimulus<A> currentRecord = fake.toObject(record, map);
-            this.responseRecord.add(currentRecord);
+        if (helper != null) {
+            this.responseRecord = new ArrayList<BookkeepingStimulus<A>>(helper.size());
+            for (String record : helper) {
+                BookkeepingStimulus<A> currentRecord = fake.toObject(record, map);
+                this.responseRecord.add(currentRecord);
+            }
+        } else {
+            this.responseRecord = null;
         }
 
         String tupleFTString = UtilsJSONdialect.getKey(str, "tupleFT");
         ArrayList<String> helperFT = UtilsJSONdialect.stringToArrayList(tupleFTString);
-        this.tupleFT = new ArrayList<BookkeepingStimulus<A>>(helperFT.size());
-        for (String record : helperFT) {
-            BookkeepingStimulus<A> currentRecord = fake.toObject(record, map);
-            this.tupleFT.add(currentRecord);
+        if (helperFT != null) {
+            this.tupleFT = new ArrayList<BookkeepingStimulus<A>>(helperFT.size());
+            for (String record : helperFT) {
+                BookkeepingStimulus<A> currentRecord = fake.toObject(record, map);
+                this.tupleFT.add(currentRecord);
+            }
+        } else {
+            this.tupleFT = null;
         }
 
         String bandCounterStr = UtilsJSONdialect.getKey(str, "bandVisitCounter");
         this.bandVisitCounter = UtilsJSONdialect.stringToArrayInt(bandCounterStr);
         String cycle2Str = UtilsJSONdialect.getKey(str, "cycle2helper");
         this.cycle2helper = UtilsJSONdialect.stringToArrayInt(cycle2Str);
+        
+        this.errorMessage = UtilsJSONdialect.getKeyWithoutBrackets(str, "errorMessage");
 
     }
-    
+
     public abstract HashMap<String, A> makeStimuliHashMap();
 
 }
