@@ -670,17 +670,13 @@ public class BandStimuliProviderTest {
     /**
      * Test of bandNumberIntoPercentage method, of class BandStimuliProvider.
      */
-    @Ignore
     @Test
     public void testBandNumberIntoPercentage() {
         System.out.println("bandNumberIntoPercentage");
         int bandNumber = 0;
-        BandStimuliProvider instance = null;
         long expResult = 0L;
-        long result = instance.bandNumberIntoPercentage(bandNumber);
+        long result = this.instance.bandNumberIntoPercentage(bandNumber);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**

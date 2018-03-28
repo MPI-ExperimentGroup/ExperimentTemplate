@@ -24,7 +24,6 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.Ignore;
 import utils.UtilsIO;
 
 /**
@@ -57,7 +56,6 @@ public class MainTest {
     /**
      * Test of main method, of class Main.
      */
-    @Ignore
     @Test
     public void testMain() throws Exception {
         for (int i = 1; i < 11; i++) {
@@ -94,7 +92,6 @@ public class MainTest {
         System.out.println("Done with probability  " + prob);
     }
 
-    @Ignore
     @Test
     public void notEnoughStimuliTest() throws Exception {
 

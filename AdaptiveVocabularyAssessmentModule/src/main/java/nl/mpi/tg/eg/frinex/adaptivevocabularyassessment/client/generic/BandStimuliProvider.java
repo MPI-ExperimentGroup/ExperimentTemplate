@@ -324,8 +324,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
     }
 
-    // experiment-specific, must be overridden
-    public abstract BookkeepingStimulus deriveNextFastTrackStimulus();
+    public abstract BookkeepingStimulus<A> deriveNextFastTrackStimulus();
 
     @Override
     public void setCurrentStimuliIndex(int currentStimuliIndex) {
@@ -412,7 +411,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         return this.isCorrectCurrentResponse;
     }
 
-    // experiment specific, must be overridden
+    
     protected abstract boolean analyseCorrectness(Stimulus stimulus, String stimulusResponse);
 
     // also updates indices
@@ -450,7 +449,6 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         return retVal;
     }
 
-    // experiment specific, should be overridden
     protected abstract boolean enoughStimuliForFastTrack();
 
     private boolean switchToFineTuning() {
@@ -459,7 +457,6 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         return this.initialiseNextFineTuningTuple();
     }
 
-    // experiment specific, must be overridden
     public abstract boolean initialiseNextFineTuningTuple();
 
     private boolean fineTuningToBeContinued() {
