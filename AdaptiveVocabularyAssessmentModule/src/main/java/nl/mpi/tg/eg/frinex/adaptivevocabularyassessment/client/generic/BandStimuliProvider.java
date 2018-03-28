@@ -413,9 +413,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     }
 
     // experiment specific, must be overridden
-    protected boolean analyseCorrectness(Stimulus stimulus, String stimulusResponse) {
-        return true;
-    }
+    protected abstract boolean analyseCorrectness(Stimulus stimulus, String stimulusResponse);
 
     // also updates indices
     // OVerride in the child class
@@ -453,9 +451,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     }
 
     // experiment specific, should be overridden
-    protected boolean enoughStimuliForFastTrack() {
-        return true;
-    }
+    protected abstract boolean enoughStimuliForFastTrack();
 
     private boolean switchToFineTuning() {
         this.timeTickEndFastTrack = this.responseRecord.size() - 1; // the last time on fast track (if we start counting form zero)
@@ -464,14 +460,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     }
 
     // experiment specific, must be overridden
-    public boolean initialiseNextFineTuningTuple() {
-
-        for (int i = 0; i < this.fineTuningTupleLength; i++) {
-            this.tupleFT.add(null);
-        }
-        this.errorMessage = "This method must have been overriden in the implementing class";
-        return false;
-    }
+    public abstract boolean initialiseNextFineTuningTuple();
 
     private boolean fineTuningToBeContinued() {
         if (this.fineTuningFirstWrongOut) {
@@ -605,7 +594,8 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected Boolean allTupleIsCorrect() {
         boolean allTupleCorrect = true;
         int lastIndex = this.responseRecord.size() - 1;
-        for (int i = 0; i < this.fineTuningTupleLength; i++) {
+        int limit = ( this.fineTuningTupleLength < this.responseRecord.size()) ? this.fineTuningTupleLength : this.responseRecord.size();
+        for (int i = 0; i < limit; i++) {
             if (!this.responseRecord.get(lastIndex - i).getCorrectness()) {
                 allTupleCorrect = false;
                 break;

@@ -51,10 +51,32 @@ public class BandStimuliProviderTest {
         public BookkeepingStimulus<BandStimulus> deriveNextFastTrackStimulus() {
             return null;
         }
+        
+        @Override
+        protected boolean analyseCorrectness(Stimulus stimulus, String stimulusResponse) {
+            return true;
+        }
 
+        @Override
         public HashMap<String, BandStimulus> makeStimuliHashMap() {
             return null;
         }
+        
+        @Override
+        public boolean fastTrackToBeContinuedWithSecondChance() {
+            return true;
+        }
+        
+        @Override
+        public boolean enoughStimuliForFastTrack() {
+            return true;
+        }
+        
+        @Override
+        public boolean initialiseNextFineTuningTuple() {
+            return true;
+        }
+        
     };
 
     private final BandStimuliProvider<BandStimulus> instance = new BandStimuliProviderImp(new Stimulus[0]);
@@ -606,114 +628,43 @@ public class BandStimuliProviderTest {
         }
     }
 
-    /**
-     * Test of analyseCorrectness method, of class BandStimuliProvider.
-     */
-    @Ignore
-    @Test
-    public void testAnalyseCorrectness() {
-        System.out.println("analyseCorrectness");
-        Stimulus stimulus = null;
-        String stimulusResponse = "";
-        BandStimuliProvider instance = null;
-        boolean expResult = false;
-        boolean result = instance.analyseCorrectness(stimulus, stimulusResponse);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of fastTrackToBeContinuedWithSecondChance method, of class
-     * BandStimuliProvider.
-     */
-    @Ignore
-    @Test
-    public void testFastTrackToBeContinuedWithSecondChance() {
-        System.out.println("fastTrackToBeContinuedWithSecondChance");
-        BandStimuliProvider instance = null;
-        boolean expResult = false;
-        boolean result = instance.fastTrackToBeContinuedWithSecondChance();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of enoughStimuliForFastTrack method, of class BandStimuliProvider.
-     */
-    @Ignore
-    @Test
-    public void testEnoughStimuliForFastTrack() {
-        System.out.println("enoughStimuliForFastTrack");
-        BandStimuliProvider instance = null;
-        boolean expResult = false;
-        boolean result = instance.enoughStimuliForFastTrack();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of initialiseNextFineTuningTuple method, of class
-     * BandStimuliProvider.
-     */
-    @Ignore
-    @Test
-    public void testInitialiseNextFineTuningTuple() {
-        System.out.println("initialiseNextFineTuningTuple");
-        BandStimuliProvider instance = null;
-        boolean expResult = false;
-        boolean result = instance.initialiseNextFineTuningTuple();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of fineTuningToBeContinuedWholeTuple method, of class
-     * BandStimuliProvider.
-     */
-    @Ignore
-    @Test
-    public void testFineTuningToBeContinuedWholeTuple() {
-        System.out.println("fineTuningToBeContinuedWholeTuple");
-        BandStimuliProvider instance = null;
-        boolean expResult = false;
-        boolean result = instance.fineTuningToBeContinuedWholeTuple();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
+   
+   
     /**
      * Test of tupleIsNotEmpty method, of class BandStimuliProvider.
      */
-    @Ignore
     @Test
     public void testTupleIsNotEmpty() {
         System.out.println("tupleIsNotEmpty");
-        BandStimuliProvider instance = null;
-        boolean expResult = false;
-        boolean result = instance.tupleIsNotEmpty();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        this.instance.setnumberOfBands("40");
+        this.instance.settype("0");
+        this.instance.setfastTrackPresent("true");
+        this.instance.setfineTuningFirstWrongOut("false");
+        this.instance.setfineTuningTupleLength("4");
+        this.instance.setfineTuningUpperBoundForCycles("2");
+        this.instance.setnumberOfSeries("2");
+        this.instance.setstartBand("20");
+        this.instance.initialiseStimuliState("");
+        assertFalse(this.instance.tupleIsNotEmpty());
     }
 
     /**
      * Test of allTupleIsCorrect method, of class BandStimuliProvider.
      */
-    @Ignore
     @Test
     public void testAllTupleIsCorrect() {
         System.out.println("allTupleIsCorrect");
-        BandStimuliProvider instance = null;
-        Boolean expResult = null;
-        Boolean result = instance.allTupleIsCorrect();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        this.instance.setnumberOfBands("40");
+        this.instance.settype("0");
+        this.instance.setfastTrackPresent("true");
+        this.instance.setfineTuningFirstWrongOut("false");
+        this.instance.setfineTuningTupleLength("4");
+        this.instance.setfineTuningUpperBoundForCycles("2");
+        this.instance.setnumberOfSeries("2");
+        this.instance.setstartBand("20");
+        this.instance.initialiseStimuliState("");
+        // false positibe: the tuple is empty
+        assertTrue(this.instance.allTupleIsCorrect());
     }
 
     /**

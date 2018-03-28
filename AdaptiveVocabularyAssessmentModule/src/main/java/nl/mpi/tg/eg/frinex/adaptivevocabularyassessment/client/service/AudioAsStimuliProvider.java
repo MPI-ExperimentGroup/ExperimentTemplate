@@ -68,9 +68,9 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         super(stimulusArray);
         //this.stimulusArray = stimulusArray;
     }
-    
-    @Override 
-    public BookkeepingStimulus<AudioAsStimulus> deriveNextFastTrackStimulus(){
+
+    @Override
+    public BookkeepingStimulus<AudioAsStimulus> deriveNextFastTrackStimulus() {
         return null;  // not relevant for this experiment
     }
 
@@ -327,7 +327,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             ArrayList<Trial> trials3 = this.parseTrialsInputCSVStringIntoTrialsArray(util, TrialsCsv3.CSV_CONTENT);
             ArrayList<Trial> trials4 = this.parseTrialsInputCSVStringIntoTrialsArray(util, TrialsCsv4.CSV_CONTENT);
             ArrayList<Trial> trials5 = this.parseTrialsInputCSVStringIntoTrialsArray(util, TrialsCsv4.CSV_CONTENT);
-            
+
             trials1.addAll(trials2);
             trials1.addAll(trials3);
             trials1.addAll(trials4);
@@ -453,10 +453,25 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         ArrayList<Trial> retVal = util.parseTrialsInputCSVStringIntoTrialsArray(string, fileNameExtensions, bandIndexing);
         return retVal;
     }
-    
+
     @Override
     public HashMap<String, AudioAsStimulus> makeStimuliHashMap() {
         return null;
+    }
+
+    @Override
+    public boolean analyseCorrectness(Stimulus stimulus, String stimulusResponse) {
+        return true;
+    }
+
+    @Override
+    public boolean fastTrackToBeContinuedWithSecondChance() {
+        return true;
+    }
+
+    @Override
+    public boolean enoughStimuliForFastTrack() {
+        return true;
     }
 
 }
