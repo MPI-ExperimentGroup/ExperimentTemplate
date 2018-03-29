@@ -67,7 +67,10 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
 
         super.initialiseStimuliState(stimuliStateSnapshot);
 
-        if (stimuliStateSnapshot.equals("")) { // no report is generated, start from scratch for now
+        
+        // specific part
+        if (stimuliStateSnapshot.trim().isEmpty()) { // no report is generated, start from scratch for now
+            
             this.wordsPerBandInSeries = this.wordsPerBand / this.numberOfSeries;
             Vocabulary vocab = new Vocabulary(this.numberOfBands, this.wordsPerBandInSeries);
 
@@ -94,7 +97,11 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
 
             this.rnd = new Random();
         } else {
-
+            try {
+                this.deserialiseToThisSpecific(stimuliStateSnapshot, this.stimuliHashMap);
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
         }
     }
 

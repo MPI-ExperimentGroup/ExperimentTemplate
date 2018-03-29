@@ -17,7 +17,6 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary;
 
-import java.util.HashMap;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimulus;
 import static nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Vocabulary.NONWORD;
 import static nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Vocabulary.WORD;

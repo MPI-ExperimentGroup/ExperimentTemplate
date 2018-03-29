@@ -1296,25 +1296,28 @@ public class AdVocAsStimuliProviderTest {
             }
             frequency = ((double) counterNonwords) / ((double) (i + 1));
         }
-        if (timeTick >= 3) {
-            StringBuilder builder= new StringBuilder();
-            for (BookkeepingStimulus<AdVocAsStimulus> record:records) {
-                builder.append(record.getStimulus().getLabel()).append("  ");
-                if (record.getStimulus().getBandNumber()>0) {
-                   builder.append("woord");
-                } else {
-                   builder.append("nietwoord"); 
-                }
-                builder.append(",\n");
-            }
-            assertTrue(builder.toString(), frequency>0);
-        }
+//        if (timeTick >= 3) {
+//            StringBuilder builder= new StringBuilder();
+//            for (BookkeepingStimulus<AdVocAsStimulus> record:records) {
+//                builder.append(record.getStimulus().getLabel()).append("  ");
+//                if (record.getStimulus().getBandNumber()>0) {
+//                   builder.append("woord");
+//                } else {
+//                   builder.append("nietwoord"); 
+//                }
+//                builder.append(",\n");
+//            }
+//            assertTrue(builder.toString(), frequency>0);
+//        }
         double idealFrequency = 1.0 / Double.valueOf(this.averageNonWordPoistion);
         double diff = Math.abs(frequency - idealFrequency);
         //System.out.println(frequency);
         //System.out.println(idealFrequency);
-        if (timeTick >= 12) {
-            assertTrue(diff <= 0.2);
+        int blockSize = Integer.parseInt(this.averageNonWordPoistion) * Integer.parseInt(this.nonwordsPerBlock);
+        // timeTick + 1: ticks are counted from 0,1,...,timeTick, altgether timeTick+1 clocks
+        if ((timeTick+1) % blockSize == 0) {
+            System.out.println(frequency);
+            assertTrue(diff <= 0.01);
         }
     }
 

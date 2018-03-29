@@ -76,6 +76,8 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected boolean justVisitedLastBand = false;
     protected boolean justVisitedFirstBand = false;
     protected String errorMessage;
+    
+    protected HashMap<String, A> stimuliHashMap;
 
     // add experiment specific stuff here
     // ...
@@ -177,6 +179,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
+        
         if (stimuliStateSnapshot.trim().isEmpty()) {
             this.bandScore = -1;
             this.percentageScore = 0;
@@ -200,9 +203,9 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
             this.justVisitedLastBand = false;
             this.percentageBandTable = this.generatePercentageBandTable();
         } else {
-            HashMap<String, A> map = this.makeStimuliHashMap();
+            this.stimuliHashMap = this.makeStimuliHashMap();
             try {
-                this.deserialiseToThis(stimuliStateSnapshot, map);
+                this.deserialiseToThis(stimuliStateSnapshot, this.stimuliHashMap);
                 this.percentageBandTable = this.generatePercentageBandTable();
             } catch (Exception ex) {
                 System.out.println(ex);

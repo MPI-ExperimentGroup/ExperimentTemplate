@@ -954,6 +954,12 @@ public class BandStimuliProviderTest {
         assertTrue(this.instance.getJustVisitedFirstBand());
         assertTrue(this.instance.getJustVisitedLastBand());
         assertEquals("noError", this.instance.getErrorMessage());
+        String expResult ="<p>User summary</p><table border=1><tr><td>Score</td><td>Cycel2oscillation</td>"
+                + "<td>EnoughFineTuningStimuli</td><td>Champion</td><td>Looser</td></tr><tr><td>27</td>"
+                + "<td>true</td><td>false</td>"
+                + "<td>true</td><td>true</td></tr>"
+                + "</table><br><br><p>Fine tuning History</p><table border=1></table>";
+        assertEquals(expResult,this.instance.getHtmlStimuliReport());
     }
     
    
