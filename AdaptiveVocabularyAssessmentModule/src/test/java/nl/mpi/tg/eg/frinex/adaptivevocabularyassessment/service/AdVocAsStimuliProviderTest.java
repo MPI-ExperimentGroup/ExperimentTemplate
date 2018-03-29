@@ -518,7 +518,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetTotalStimuli10_3() {
-        int nonWordsLength = ConstantsNonWords1.NONWORDS_SERIES[0].length;;
+        int nonWordsLength = ConstantsNonWords1.NONWORDS_SERIES[0].length;
         this.testGetTotalStimuli("1", "0", "testGetTotalStimuli10_1", nonWordsLength);
     }
 
@@ -1085,7 +1085,7 @@ public class AdVocAsStimuliProviderTest {
         if (numberOfSeries.equals("2")) {
             wordArray = ConstantsWords1.WORDS_SERIES[Integer.parseInt(type)];
         }
-       
+
         assertEquals(nOfBands, samples.keySet().size());
         for (int bandNumber = 1; bandNumber <= nOfBands; bandNumber++) {
             assertTrue(samples.containsKey(bandNumber));
@@ -1150,7 +1150,6 @@ public class AdVocAsStimuliProviderTest {
         }
         return retVal;
     }
- 
 
     public AdVocAsStimuliProvider longFineTuningTest() throws Exception {
 
@@ -1286,9 +1285,9 @@ public class AdVocAsStimuliProviderTest {
     private void checkNonWordFrequenceFastTrack(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> records, int timeTick) {
         int counterNonwords = 0;
         double frequency = 0;
-        
-        assertNotEquals(0,records.size());
-        
+
+        assertNotEquals(0, records.size());
+
         for (int i = 0; i <= timeTick; i++) {
             BookkeepingStimulus<AdVocAsStimulus> stimulus = records.get(i);
             if (stimulus.getStimulus().getCorrectResponses().equals(Vocabulary.NONWORD)) {
@@ -1315,7 +1314,7 @@ public class AdVocAsStimuliProviderTest {
         //System.out.println(idealFrequency);
         int blockSize = Integer.parseInt(this.averageNonWordPoistion) * Integer.parseInt(this.nonwordsPerBlock);
         // timeTick + 1: ticks are counted from 0,1,...,timeTick, altgether timeTick+1 clocks
-        if ((timeTick+1) % blockSize == 0) {
+        if ((timeTick + 1) % blockSize == 0) {
             System.out.println(frequency);
             assertTrue(diff <= 0.01);
         }
@@ -1508,5 +1507,67 @@ public class AdVocAsStimuliProviderTest {
             assertEquals(expectedScore, score);
         }
 
+    }
+
+    /**
+     * Test of getToString method, of class AdVocAsStimuliProvider.
+     */
+    @Test
+    public void testToStringPlusInitialise() {
+        System.out.println("toString");
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
+        provider.setnumberOfBands("40");
+        provider.settype("0");
+        provider.setfastTrackPresent("true");
+        provider.setfineTuningFirstWrongOut("false");
+        provider.setfineTuningTupleLength("4");
+        provider.setfineTuningUpperBoundForCycles("2");
+        provider.setnumberOfSeries("1");
+        provider.setstartBand("20");
+        provider.setnonwordsPerBlock("4");
+        provider.setwordsPerBand("40");
+        provider.setaverageNonWordPosition("3");
+        provider.initialiseStimuliState("");
+        String toStringOut = provider.toString(); // the line is too long (due to word lists) to make a classical unit test on it, so I combine serialisiation and deserialisation
+
+        // testing only specific for AdVocAsProvider implementation part, the parent calss has been tested separately
+        AdVocAsStimuliProvider freshProvider = new AdVocAsStimuliProvider(null);
+        freshProvider.initialiseStimuliState(toStringOut);
+        
+        assertEquals(toStringOut, freshProvider.toString());
+        
+        ArrayList<ArrayList<AdVocAsStimulus>> resultWords = freshProvider.getWords();
+        ArrayList<ArrayList<AdVocAsStimulus>> expectedWords = provider.getWords();
+        assertEquals(resultWords.size(), expectedWords.size());
+        for (int i = 0; i < resultWords.size(); i++) {
+            assertEquals(expectedWords.get(i).size(), resultWords.get(i).size());
+            for (int j = 0; j < resultWords.get(i).size(); j++) {
+                assertEquals(expectedWords.get(i).get(j), resultWords.get(i).get(j)); // even pointer must be the same -- to the same static object of AdVocAsStimulus
+            }
+        }
+        
+        
+        assertEquals(provider.getCurrentBandNumber(), freshProvider.getCurrentBandNumber());
+        assertEquals(provider.getHtmlStimuliReport(), freshProvider.getHtmlStimuliReport());
+
+        ArrayList<Integer> resultNonWordIndices = freshProvider.getNonWordsIndices();
+        ArrayList<Integer> expectedNonWordIndices = provider.getNonWordsIndices();
+        assertEquals(expectedNonWordIndices.size(), resultNonWordIndices.size());
+        for (int i = 0; i < resultNonWordIndices.size(); i++) {
+            assertEquals(expectedNonWordIndices.get(i), resultNonWordIndices.get(i));
+        }
+
+      
+        ArrayList<AdVocAsStimulus> resultNonwords = freshProvider.getNonwords();
+        ArrayList<AdVocAsStimulus> expectedNonWrods = provider.getNonwords();
+        assertEquals(expectedNonWordIndices.size(), resultNonWordIndices.size());
+        for (int i = 0; i < resultNonwords.size(); i++) {
+            assertEquals(expectedNonWrods.get(i), resultNonwords.get(i));
+        }
+        
+        assertEquals(provider.getStringFastTrack("", "\n","", ";"),freshProvider.getStringFastTrack("", "\n","", ";"));
+        
+        assertEquals(provider.getStringFineTuningHistory("", "\n","", ";", "csv"),freshProvider.getStringFineTuningHistory("", "\n","", ";", "csv"));
+        
     }
 }

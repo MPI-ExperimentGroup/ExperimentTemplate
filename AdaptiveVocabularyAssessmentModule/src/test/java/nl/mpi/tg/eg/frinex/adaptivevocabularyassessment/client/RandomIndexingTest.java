@@ -250,6 +250,8 @@ public class RandomIndexingTest {
         RandomIndexing generatedInstance = RandomIndexing.toObject(input);
 
         assertEquals(instanceHelper.getFastTrackSequenceLength(), generatedInstance.getFastTrackSequenceLength());
+        
+        assertEquals(fr.length, (generatedInstance.getFrequencesOfNonWordindices()).length);
 
         for (int i = 0; i < fr.length; i++) {
             assertEquals(fr[i], (generatedInstance.getFrequencesOfNonWordindices())[i],0);

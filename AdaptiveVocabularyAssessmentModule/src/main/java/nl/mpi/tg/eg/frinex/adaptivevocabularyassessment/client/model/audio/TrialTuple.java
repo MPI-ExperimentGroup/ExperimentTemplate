@@ -115,7 +115,7 @@ public class TrialTuple {
 
     public static TrialTuple toObject(String str, LinkedHashMap<String, AudioAsStimulus> hashedStimuli) {
         try {
-            String trialsStr = UtilsJSONdialect.getKey(str, "trials");
+            String trialsStr = UtilsJSONdialect.getKey(str, "trials")[0];
             ArrayList<String> trialsStrArray = UtilsJSONdialect.stringToArrayList(trialsStr);
             ArrayList<Trial> trials = new ArrayList<Trial>(trialsStrArray.size());
             for (int i = 0; i < trialsStrArray.size(); i++) {

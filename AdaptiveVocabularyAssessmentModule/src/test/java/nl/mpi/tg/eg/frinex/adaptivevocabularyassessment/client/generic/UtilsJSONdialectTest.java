@@ -60,27 +60,27 @@ public class UtilsJSONdialectTest {
         String jsonString = "{key1:{val1}}";
         String key = "key1";
         String expResult = "{val1}";
-        String result = UtilsJSONdialect.getKey(jsonString, key);
+        String result = UtilsJSONdialect.getKey(jsonString, key)[0];
         assertEquals(expResult, result);
 
         String jsonString1 = "{key11: {val11} , key2:{val2}}";
         String key1 = "key11";
         String expResult1 = "{val11}";
-        String result1 = UtilsJSONdialect.getKey(jsonString1, key1);
+        String result1 = UtilsJSONdialect.getKey(jsonString1, key1)[0];
         assertEquals(expResult1, result1);
-        String result11 = UtilsJSONdialect.getKey(jsonString1, "key2");
+        String result11 = UtilsJSONdialect.getKey(jsonString1, "key2")[0];
         assertEquals("{val2}", result11);
 
         String jsonString2 = "{key21: {val21} , key22:{val22}, key23:{val23}  }";
         String key2 = "key22";
         String expResult2 = "{val22}";
-        String result2 = UtilsJSONdialect.getKey(jsonString2, key2);
+        String result2 = UtilsJSONdialect.getKey(jsonString2, key2)[0];
         assertEquals(expResult2, result2);
 
         String jsonString3 = "{key21: {val21} , key22:{val22,{},{{val221},{}}}, key23:{val23}  }";
         String key3 = "key22";
         String expResult3 = "{val22,{},{{val221},{}}}";
-        String result3 = UtilsJSONdialect.getKey(jsonString3, key3);
+        String result3 = UtilsJSONdialect.getKey(jsonString3, key3)[0];
         assertEquals(expResult3, result3);
 
     }
@@ -165,7 +165,7 @@ public class UtilsJSONdialectTest {
     @Test
     public void testGetKeyWithoutBrackets() throws Exception {
         System.out.println("getKeyWithoutBrackets");
-        String jsonString = "x:{y},param:{value},param1:{value1,value2}";
+        String jsonString = "{x:{y},param:{value},param1:{value1,value2}}";
         String key = "param";
         String expResult = "value";
         String result = UtilsJSONdialect.getKeyWithoutBrackets(jsonString, key);

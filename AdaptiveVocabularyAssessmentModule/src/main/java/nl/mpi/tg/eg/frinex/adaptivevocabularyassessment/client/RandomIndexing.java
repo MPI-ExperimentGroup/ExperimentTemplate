@@ -298,14 +298,14 @@ public class RandomIndexing {
 
         ArrayList<Integer> randomIndices = null;
         try {
-            String randomIndicesStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "randomIndices");
+            String randomIndicesStr = UtilsJSONdialect.getKey(str, "randomIndices")[0];
             randomIndices = UtilsJSONdialect.stringToArrayListInteger(randomIndicesStr);
         } catch (Exception ex) {
         }
 
         double[] frequences = null;
         try {
-            String frequencesStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "frequences");
+            String frequencesStr = UtilsJSONdialect.getKey(str, "frequences")[0];
             frequences = UtilsJSONdialect.stringToArrayDouble(frequencesStr);
         } catch (Exception ex) {
         }

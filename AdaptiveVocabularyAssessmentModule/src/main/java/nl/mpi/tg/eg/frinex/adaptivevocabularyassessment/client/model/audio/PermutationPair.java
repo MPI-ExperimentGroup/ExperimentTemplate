@@ -67,7 +67,7 @@ public class PermutationPair {
 
         try {
             
-            String triallTypesStr = UtilsJSONdialect.getKey(str, "trialConditions");
+            String triallTypesStr = UtilsJSONdialect.getKey(str, "trialConditions")[0];
             ArrayList<String> trialConditionsArrayStr = UtilsJSONdialect.stringToArrayList(triallTypesStr);
             ArrayList<TrialCondition> trialConds = new ArrayList<TrialCondition>(trialConditionsArrayStr.size());
             for (int i=0; i<trialConditionsArrayStr.size(); i++) {
@@ -79,7 +79,7 @@ public class PermutationPair {
                 trialConds.set(i, tc);
             }
             
-            String lengthStr = UtilsJSONdialect.getKey(str, "trialLengths");
+            String lengthStr = UtilsJSONdialect.getKey(str, "trialLengths")[0];
             ArrayList<Integer> lengths = util2.stringToArrayListInteger(lengthStr);
            
             PermutationPair retVal = new PermutationPair(trialConds, lengths);

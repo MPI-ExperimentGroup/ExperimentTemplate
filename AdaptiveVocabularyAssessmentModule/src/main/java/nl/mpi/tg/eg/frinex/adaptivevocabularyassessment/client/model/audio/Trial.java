@@ -164,7 +164,7 @@ public class Trial {
 
         TrialCondition condition = TrialCondition.valueOf(conditionStr);
 
-        String stimuliStr = UtilsJSONdialect.getKey(str, "stimuli");
+        String stimuliStr = UtilsJSONdialect.getKey(str, "stimuli")[0];
 
         ArrayList<String> bStimuliStr = UtilsJSONdialect.stringToArrayList(stimuliStr);
         ArrayList<BookkeepingStimulus<AudioAsStimulus>> bStimuli = new ArrayList<BookkeepingStimulus<AudioAsStimulus>>(bStimuliStr.size());

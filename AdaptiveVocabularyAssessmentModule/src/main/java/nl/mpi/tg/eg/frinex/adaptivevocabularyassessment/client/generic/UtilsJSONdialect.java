@@ -25,31 +25,50 @@ import java.util.ArrayList;
  */
 public class UtilsJSONdialect<S> {
 
-    public static String getKey(String jsonString, String key) throws Exception {
-        if (jsonString == null) {
-            return null;
+    public static String[] getKey(String jsonStringInit, String key) throws Exception {
+        
+        String[] retVal = new String[2];
+        
+        if (jsonStringInit == null) {
+            retVal[0]=null;
+            retVal[1]=null;
+            return retVal;
         }
         if (key == null) {
-            return jsonString;
+            retVal[0]=jsonStringInit;
+            retVal[1]="";
+            return retVal;
         }
-        String[] parts = jsonString.split(key + ":");
+
+        String jsonString = (new StringBuilder()).append(jsonStringInit).toString();
+        if (jsonStringInit.startsWith("{") && jsonStringInit.endsWith("}")) {
+            jsonString = removeFirstAndLast(jsonStringInit);
+        } 
+
+        String regExp = "(^" + key + ":)|(," + key + ":)|( " + key + ":)";
+
+        String[] parts = jsonString.split(regExp,2);
         if (parts.length < 2) {
-            return null;
+            retVal[0]=null;
+            retVal[1]=null;
+            return retVal;
         }
         String buffer = parts[1].trim();
-        StringBuilder retVal = new StringBuilder();
+        StringBuilder val = new StringBuilder();
         char current = buffer.charAt(0);
         if (current != '{') {
-            throw new Exception("Get key from string parsing error, no { at the beginning of the object");
+            throw new Exception("Json dialect parsing error. Got key from string parsing error, no { at the beginning of the corresponding value");
         }
         int openBrackets = 1;
-        retVal.append("{");
+        val.append("{");
         for (int i = 1; i < buffer.length(); i++) {
             current = buffer.charAt(i);
-            retVal.append(current);
+            val.append(current);
             if (current == '}') {
                 if (openBrackets == 1) {
-                    return retVal.toString();
+                    retVal[0] = val.toString();
+                    retVal[1] = buffer.substring(i+1);
+                    return retVal;
                 }
                 openBrackets--;
             } else {
@@ -59,6 +78,7 @@ public class UtilsJSONdialect<S> {
             }
 
         }
+        
         throw new Exception("Get key from string parsing error, no matching } ");
     }
 
@@ -74,7 +94,7 @@ public class UtilsJSONdialect<S> {
     }
 
     public static String getKeyWithoutBrackets(String jsonString, String key) throws Exception {
-        String buffer = getKey(jsonString, key);
+        String buffer = getKey(jsonString, key)[0];
         String retVal = removeFirstAndLast(buffer);
         return retVal;
     }
@@ -120,23 +140,15 @@ public class UtilsJSONdialect<S> {
         if (list.isEmpty()) {
             return "{}";
         }
-        StringBuilder retVal = new StringBuilder();
         UtilsJSONdialect<S> util = new UtilsJSONdialect<S>();
-        retVal.append("{");
-        for (int i = 0; i < list.size() - 1; i++) {
-            ArrayList<S> subList = list.get(i);
-            retVal.append(i).append(":");
-            String subListString = util.arrayListToString(subList);
-            retVal.append(subListString);
-            retVal.append(",");
+        ArrayList<String> intermediate = new ArrayList<String>();
+        for (ArrayList<S> innerList : list) {
+            String innerListStr = util.arrayListToString(innerList);
+            intermediate.add(innerListStr);
         }
-        int lastIndex = list.size() - 1;
-        ArrayList<S> subList = list.get(lastIndex);
-        retVal.append(lastIndex).append(":");
-        String subListString = util.arrayListToString(subList);
-        retVal.append(subListString);
-        retVal.append("}");
-        return retVal.toString();
+        UtilsJSONdialect<String> util2 = new UtilsJSONdialect<String>();
+        String retVal = util2.arrayListToString(intermediate);
+        return retVal;
     }
 
     public String arrayList3String(ArrayList<ArrayList<ArrayList<S>>> list) throws Exception {
@@ -146,23 +158,15 @@ public class UtilsJSONdialect<S> {
         if (list.isEmpty()) {
             return "{}";
         }
-        StringBuilder retVal = new StringBuilder();
         UtilsJSONdialect<S> util = new UtilsJSONdialect<S>();
-        retVal.append("{");
-        for (int i = 0; i < list.size() - 1; i++) {
-            ArrayList<ArrayList<S>> subList = list.get(i);
-            retVal.append(i).append(":");
-            String subListString = util.arrayList2String(subList);
-            retVal.append(subListString);
-            retVal.append(",");
+        ArrayList<String> intermediate = new ArrayList<String>();
+        for (ArrayList<ArrayList<S>> innerList : list) {
+            String innerListStr = util.arrayList2String(innerList);
+            intermediate.add(innerListStr);
         }
-        int lastIndex = list.size() - 1;
-        ArrayList<ArrayList<S>> subList = list.get(lastIndex);
-        retVal.append(lastIndex).append(":");
-        String subListString = util.arrayList2String(subList);
-        retVal.append(subListString);
-        retVal.append("}");
-        return retVal.toString();
+        UtilsJSONdialect<String> util2 = new UtilsJSONdialect<String>();
+        String retVal = util2.arrayListToString(intermediate);
+        return retVal;
     }
 
     public static String intArrayListToString(int[] arr) throws Exception {
@@ -211,63 +215,47 @@ public class UtilsJSONdialect<S> {
         if (listStr == null) {
             return null;
         }
-        
+
         if (listStr.trim().equals("null") || listStr.trim().equals("{null}")) {
             return null;
         }
-        
+
         if (listStr.trim().isEmpty() || listStr.trim().equals("{}")) {
             return new ArrayList<String>();
         }
 
-    
         ArrayList<String> retVal = new ArrayList<String>();
-        String current = getKey(listStr, "0");
-
+        String[] current = getKey(listStr, "0");
         int i = 0;
-        while (current != null) {
-            retVal.add(i, current);
+        String index = "0";
+        while (current[0] != null) {
+            retVal.add(i, current[0]);
             i++;
-            String index = String.valueOf(i);
-            current = getKey(listStr, index);
+            index = String.valueOf(i);
+            current = getKey(current[1], index);
         }
         return retVal;
     }
 
     public static ArrayList<ArrayList<String>> stringToArray2List(String listStr) throws Exception {
-        if (listStr == null) {
+        ArrayList<String> outer = stringToArrayList(listStr);
+        if (outer == null) {
             return null;
         }
-         if (listStr.trim().equals("null") || listStr.trim().equals("{null}")) {
-            return null;
-        }
-        
-        if (listStr.trim().isEmpty() || listStr.trim().equals("{}")) {
-            return new ArrayList<ArrayList<String>>();
-        }
-
-        ArrayList<ArrayList<String>> retVal = new ArrayList<ArrayList<String>>();
-        String currentStr = getKey(listStr, "0");
-        int i = 0;
-        while (currentStr != null) {
-            ArrayList<String> current = stringToArrayList(currentStr);
-            retVal.add(i, current);
-            i++;
-            String index = String.valueOf(i);
-            currentStr = getKey(listStr, index);
+        ArrayList<ArrayList<String>> retVal = new ArrayList<ArrayList<String>>(outer.size());
+        for (String innerStr : outer) {
+            ArrayList<String> inner = stringToArrayList(innerStr);
+            retVal.add(inner);
         }
         return retVal;
     }
 
     public static ArrayList<Integer> stringToArrayListInteger(String listStr) throws Exception {
-        if (listStr == null) {
-            return null;
-        }
-        if (listStr.trim().isEmpty()) {
-            return new ArrayList<Integer>();
-        }
 
         ArrayList<String> buffer = stringToArrayList(listStr);
+        if (buffer == null) {
+            return null;
+        }
         if (buffer.isEmpty()) {
             return new ArrayList<Integer>();
         }
@@ -286,6 +274,9 @@ public class UtilsJSONdialect<S> {
         if (buffer == null) {
             return null;
         }
+        if (buffer.isEmpty()) {
+            return new double[0];
+        }
         double[] retVal = new double[buffer.size()];
         for (int i = 0; i < buffer.size(); i++) {
             String val = buffer.get(i);
@@ -300,6 +291,9 @@ public class UtilsJSONdialect<S> {
         ArrayList<String> buffer = stringToArrayList(listStr);
         if (buffer == null) {
             return null;
+        }
+        if (buffer.isEmpty()) {
+            return new int[0];
         }
         int[] retVal = new int[buffer.size()];
         for (int i = 0; i < buffer.size(); i++) {

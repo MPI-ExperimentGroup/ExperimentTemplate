@@ -893,7 +893,11 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
         this.bandScore = Integer.parseInt(UtilsJSONdialect.getKeyWithoutBrackets(str, "bandScore"));
         this.percentageScore = Long.parseLong(UtilsJSONdialect.getKeyWithoutBrackets(str, "percentageScore"));
-        this.isCorrectCurrentResponse = Boolean.parseBoolean(UtilsJSONdialect.getKeyWithoutBrackets(str, "isCorrectCurrentResponse"));
+        
+        String correctResponse = UtilsJSONdialect.getKeyWithoutBrackets(str, "isCorrectCurrentResponse");
+        
+        this.isCorrectCurrentResponse = (correctResponse != null && !correctResponse.equals("null")) ? Boolean.parseBoolean(correctResponse) : null;
+        
         this.currentBandIndex = Integer.parseInt(UtilsJSONdialect.getKeyWithoutBrackets(str, "currentBandIndex"));
         this.totalStimuli = Integer.parseInt(UtilsJSONdialect.getKeyWithoutBrackets(str, "totalStimuli"));
 
@@ -911,7 +915,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
         BookkeepingStimulus<A> fake = new BookkeepingStimulus<A>(null);
 
-        String recordString = UtilsJSONdialect.getKey(str, "responseRecord");
+        String recordString = UtilsJSONdialect.getKey(str, "responseRecord")[0];
         ArrayList<String> helper = UtilsJSONdialect.stringToArrayList(recordString);
         if (helper != null) {
             this.responseRecord = new ArrayList<BookkeepingStimulus<A>>(helper.size());
@@ -923,7 +927,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
             this.responseRecord = null;
         }
 
-        String tupleFTString = UtilsJSONdialect.getKey(str, "tupleFT");
+        String tupleFTString = UtilsJSONdialect.getKey(str, "tupleFT")[0];
         ArrayList<String> helperFT = UtilsJSONdialect.stringToArrayList(tupleFTString);
         if (helperFT != null) {
             this.tupleFT = new ArrayList<BookkeepingStimulus<A>>(helperFT.size());
@@ -935,9 +939,9 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
             this.tupleFT = null;
         }
 
-        String bandCounterStr = UtilsJSONdialect.getKey(str, "bandVisitCounter");
+        String bandCounterStr = UtilsJSONdialect.getKey(str, "bandVisitCounter")[0];
         this.bandVisitCounter = UtilsJSONdialect.stringToArrayInt(bandCounterStr);
-        String cycle2Str = UtilsJSONdialect.getKey(str, "cycle2helper");
+        String cycle2Str = UtilsJSONdialect.getKey(str, "cycle2helper")[0];
         this.cycle2helper = UtilsJSONdialect.stringToArrayInt(cycle2Str);
         
         this.errorMessage = UtilsJSONdialect.getKeyWithoutBrackets(str, "errorMessage");

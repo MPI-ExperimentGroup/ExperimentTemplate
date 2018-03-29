@@ -99,6 +99,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         } else {
             try {
                 this.deserialiseToThisSpecific(stimuliStateSnapshot, this.stimuliHashMap);
+                this.rnd = new Random();
             } catch (Exception ex) {
                 System.out.println(ex);
             }
@@ -108,15 +109,32 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
     public void setnonwordsPerBlock(String nonWrodsPerBlock) {
         this.nonWordsPerBlock = Integer.parseInt(nonWrodsPerBlock);
     }
+    
+    public int getNonWrodPerBlock(){
+        return this.nonWordsPerBlock;
+    }
 
     public void setwordsPerBand(String wordsPerBand) {
         this.wordsPerBand = Integer.parseInt(wordsPerBand);
+    }
+    
+    public int getWordsPerBand(){
+        return this.wordsPerBand;
     }
 
     public void setaverageNonWordPosition(String averageNonWordPosition) {
         this.averageNonWordPosition = Integer.parseInt(averageNonWordPosition);
     }
 
+    public int getAverageNonWordPosition(){
+        return this.averageNonWordPosition;
+    }
+    
+    public int getWordsPerBandInSeries(){
+        return this.wordsPerBandInSeries;
+    }
+    
+    
     public ArrayList<ArrayList<AdVocAsStimulus>> getWords() {
         return this.words;
     }
@@ -563,7 +581,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         String parent = super.toString();
         builder.append(parent);
         String specific = this.specificPartToString();
-        builder.append(", ").append(specific);
+        builder.append(",").append(specific);
         builder.append("}");
         return builder.toString();
     }
@@ -645,16 +663,17 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
     }
 
     protected void deserialiseToThisSpecific(String str, HashMap<String, AdVocAsStimulus> map) throws Exception {
-        String rndString = UtilsJSONdialect.getKey(str, "rndIndexing");
+        String rndString = UtilsJSONdialect.getKey(str, "rndIndexing")[0];
         this.rndIndexing = RandomIndexing.toObject(rndString);
-        String nonWordsIndexesStr = UtilsJSONdialect.getKey(str, "nonWordsIndexes");
+        String nonWordsIndexesStr = UtilsJSONdialect.getKey(str, "nonWordsIndexes")[0];
         this.nonWordsIndexes = UtilsJSONdialect.stringToArrayListInteger(nonWordsIndexesStr);
-        this.wordsPerBand = Integer.parseInt(UtilsJSONdialect.getKeyWithoutBrackets(str, "wordsPerBand"));
+        String wordsPerBandStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "wordsPerBand");
+        this.wordsPerBand = Integer.parseInt(wordsPerBandStr);
         this.wordsPerBandInSeries = Integer.parseInt(UtilsJSONdialect.getKeyWithoutBrackets(str, "wordsPerBandInSeries"));
         this.nonWordsPerBlock = Integer.parseInt(UtilsJSONdialect.getKeyWithoutBrackets(str, "nonWordsPerBlock"));
         this.averageNonWordPosition = Integer.parseInt(UtilsJSONdialect.getKeyWithoutBrackets(str, "averageNonWordPosition"));
 
-        String nonWordsStr = UtilsJSONdialect.getKey(str, "nonwords");
+        String nonWordsStr = UtilsJSONdialect.getKey(str, "nonwords")[0];
         ArrayList<String> nonWordsBuffer = UtilsJSONdialect.stringToArrayList(nonWordsStr);
         this.nonwords = new ArrayList<AdVocAsStimulus>(nonWordsBuffer.size());
         for (String presentation : nonWordsBuffer) {
@@ -663,8 +682,9 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
             this.nonwords.add(current);
         }
 
-        String wordsStr = UtilsJSONdialect.getKey(str, "words");
+        String wordsStr = UtilsJSONdialect.getKey(str, "words")[0];
         ArrayList<ArrayList<String>> wordsBuffer = UtilsJSONdialect.stringToArray2List(wordsStr);
+        this.words = new ArrayList<ArrayList<AdVocAsStimulus>>(wordsBuffer.size());
         for (ArrayList<String> listStr : wordsBuffer) {
             ArrayList<AdVocAsStimulus> currentarray = new ArrayList<AdVocAsStimulus>(listStr.size());
             this.words.add(currentarray);

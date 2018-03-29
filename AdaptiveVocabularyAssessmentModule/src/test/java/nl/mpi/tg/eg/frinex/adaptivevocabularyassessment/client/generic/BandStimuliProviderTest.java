@@ -836,7 +836,7 @@ public class BandStimuliProviderTest {
     @Test
     public void testToString() {
         System.out.println("toString");
-         this.instance.setnumberOfBands("40");
+        this.instance.setnumberOfBands("40");
         this.instance.settype("0");
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
