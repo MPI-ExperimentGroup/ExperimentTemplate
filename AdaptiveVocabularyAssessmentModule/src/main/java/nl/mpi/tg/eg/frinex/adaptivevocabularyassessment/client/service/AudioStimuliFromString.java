@@ -17,21 +17,17 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.CsvRecords;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioAsStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Trial;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialCondition;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.WordType;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag;
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVRecord;
 
 /**
  *
@@ -58,11 +54,10 @@ public class AudioStimuliFromString {
 
         ArrayList<Trial> retVal = new ArrayList<Trial>();
 
-        InputStream in = new ByteArrayInputStream(csvString.getBytes("UTF-8"));
-        final Reader reader = new InputStreamReader(in, "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
-        Iterable<CSVRecord> records = CSVFormat.newFormat(';').withHeader().parse(reader);
-
-        for (CSVRecord record : records) {
+        CsvRecords csvWrapper= new  CsvRecords(null, ";", "\n");
+        csvWrapper.readRecords(csvString);
+        ArrayList<LinkedHashMap<String,String>> records = csvWrapper.getRecords();
+        for (LinkedHashMap<String,String> record:records) {
 
             String trialNumber = record.get("Nr").trim();
             if (trialNumber == null) {

@@ -64,9 +64,8 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
     private Random rnd;
 
-    public AudioAsStimuliProvider(AudioAsStimulus[] stimulusArray) {
+    public AudioAsStimuliProvider(Stimulus[] stimulusArray) {
         super(stimulusArray);
-        //this.stimulusArray = stimulusArray;
     }
 
     @Override
