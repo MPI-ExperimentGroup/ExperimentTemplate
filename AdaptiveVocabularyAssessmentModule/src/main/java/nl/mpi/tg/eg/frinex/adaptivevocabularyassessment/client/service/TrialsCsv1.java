@@ -85,7 +85,7 @@ public class TrialsCsv1 {
 "56;draak;praak_1.wav;1;Target-only;6 words;kilk.wav;praak_2.wav;dienel.wav;scheus.wav;hoonpoed.wav;zalgens.wav;2;plus10db;0;\n" +
 "57;vlag;knag_1.wav;1;Target-only;6 words;spoutel.wav;knag_2.wav;teul.wav;rusjen.wav;pacel.wav;pleig.wav;2;plus10db;0;\n" +
 "58;zaag;gaag_1.wav;1;Target-only;6 words;dreu.wav;goelroop.wav;gaag_2.wav;bip.wav;oekheid.wav;mechter.wav;3;plus10db;0;\n" +
-"59;koe;kie _1.wav;1;Target-only;6 words;mastool.wav;smees.wav;kie_2.wav;muipje.wav;aankol.wav;sma.wav;3;plus10db;0;\n" +
+"59;koe;kie_1.wav;1;Target-only;6 words;mastool.wav;smees.wav;kie_2.wav;muipje.wav;aankol.wav;sma.wav;3;plus10db;0;\n" +
 "60;tank;pank_1.wav;1;Target-only;6 words;alktoord.wav;bawo.wav;pank_2.wav;gam.wav;kel.wav;loofteed.wav;3;plus10db;0;\n" +
 "61;kruis;fluis_1.wav;1;Target-only;6 words;viet.wav;knaf.wav;fluis_2.wav;eidind.wav;gruton.wav;goeling.wav;3;plus10db;0;\n" +
 "62;slang;krang_1.wav;1;Target-only;6 words;sproor.wav;dapter.wav;koomlan.wav;krang_2.wav;goem.wav;afschaag.wav;4;plus10db;0;\n" +
@@ -155,7 +155,7 @@ public class TrialsCsv1 {
 "126;streep;wuik_1.wav;1;Target+Foil;6 words;lendaar.wav;grem.wav;wuigkroer.wav;wuik_2.wav;koereek.wav;kork.wav;4;plus10db;3;\n" +
 "127;paars;breeg_1.wav;1;Target+Foil;6 words;hoortbijn.wav;zel.wav;grubond.wav;breelmeeg.wav;breeg_2.wav;scherg.wav;5;plus10db;4;\n" +
 "128;gans;gret_1.wav;1;Target+Foil;6 words;gremdoep.wav;snuim.wav;gret_2.wav;wuil.wav;warnis.wav;winkheek.wav;3;plus10db;1;\n" +
-"2;kuil;baust_1.wav;1;Target+Foil;6 words;baaf.wav;baundleu.wav;foestvag.wav;baust_2.wav;tan.wav;rornas.wav;4;plus10db;2;\n" +
+"129;kuil;baust_1.wav;1;Target+Foil;6 words;baaf.wav;baundleu.wav;foestvag.wav;baust_2.wav;tan.wav;rornas.wav;4;plus10db;2;\n" +
 "130;bad;bam_1.wav;1;Target+Foil;6 words;wirums.wav;mefdel.wav;bafruip.wav;lir.wav;bam_2.wav;lank.wav;5;plus10db;3;\n" +
 "131;klas;roen_1.wav;1;Target+Foil;6 words;zeut.wav;glank.wav;roegtaus.wav;lentar.wav;roen_2.wav;rielak.wav;5;plus10db;3;\n" +
 "132;grot;vlaad_1.wav;1;Target+Foil;6 words;vlaasrig.wav;kalvoon.wav;voornil.wav;vlaad_2.wav;bruip.wav;bax.wav;4;plus10db;1;\n" +
@@ -281,7 +281,7 @@ public class TrialsCsv1 {
 "252;draak;praak_1.wav;1;Target-only;6 words;kilk.wav;praak_2.wav;dienel.wav;scheus.wav;hoonpoed.wav;zalgens.wav;2;plus8db;0;\n" +
 "253;vlag;knag_1.wav;1;Target-only;6 words;spoutel.wav;knag_2.wav;teul.wav;rusjen.wav;pacel.wav;pleig.wav;2;plus8db;0;\n" +
 "254;zaag;gaag_1.wav;1;Target-only;6 words;dreu.wav;goelroop.wav;gaag_2.wav;bip.wav;oekheid.wav;mechter.wav;3;plus8db;0;\n" +
-"255;koe;kie _1.wav;1;Target-only;6 words;mastool.wav;smees.wav;kie_2.wav;muipje.wav;aankol.wav;sma.wav;3;plus8db;0;\n" +
+"255;koe;kie_1.wav;1;Target-only;6 words;mastool.wav;smees.wav;kie_2.wav;muipje.wav;aankol.wav;sma.wav;3;plus8db;0;\n" +
 "256;tank;pank_1.wav;1;Target-only;6 words;alktoord.wav;bawo.wav;pank_2.wav;gam.wav;kel.wav;loofteed.wav;3;plus8db;0;\n" +
 "257;kruis;fluis_1.wav;1;Target-only;6 words;viet.wav;knaf.wav;fluis_2.wav;eidind.wav;gruton.wav;goeling.wav;3;plus8db;0;\n" +
 "258;slang;krang_1.wav;1;Target-only;6 words;sproor.wav;dapter.wav;koomlan.wav;krang_2.wav;goem.wav;afschaag.wav;4;plus8db;0;\n" +
@@ -477,7 +477,7 @@ public class TrialsCsv1 {
 "448;draak;praak_1.wav;1;Target-only;6 words;kilk.wav;praak_2.wav;dienel.wav;scheus.wav;hoonpoed.wav;zalgens.wav;2;plus6db;0;\n" +
 "449;vlag;knag_1.wav;1;Target-only;6 words;spoutel.wav;knag_2.wav;teul.wav;rusjen.wav;pacel.wav;pleig.wav;2;plus6db;0;\n" +
 "450;zaag;gaag_1.wav;1;Target-only;6 words;dreu.wav;goelroop.wav;gaag_2.wav;bip.wav;oekheid.wav;mechter.wav;3;plus6db;0;\n" +
-"451;koe;kie _1.wav;1;Target-only;6 words;mastool.wav;smees.wav;kie_2.wav;muipje.wav;aankol.wav;sma.wav;3;plus6db;0;\n" +
+"451;koe;kie_1.wav;1;Target-only;6 words;mastool.wav;smees.wav;kie_2.wav;muipje.wav;aankol.wav;sma.wav;3;plus6db;0;\n" +
 "452;tank;pank_1.wav;1;Target-only;6 words;alktoord.wav;bawo.wav;pank_2.wav;gam.wav;kel.wav;loofteed.wav;3;plus6db;0;\n" +
 "453;kruis;fluis_1.wav;1;Target-only;6 words;viet.wav;knaf.wav;fluis_2.wav;eidind.wav;gruton.wav;goeling.wav;3;plus6db;0;\n" +
 "454;slang;krang_1.wav;1;Target-only;6 words;sproor.wav;dapter.wav;koomlan.wav;krang_2.wav;goem.wav;afschaag.wav;4;plus6db;0;\n" +
@@ -525,15 +525,5 @@ public class TrialsCsv1 {
 "496;bank;benk_1.wav;1;Target+Foil;4 words;belfnast.wav;akkum.wav;benk_2.wav;vag.wav;;;3;plus6db;1;\n" +
 "497;boot;book_1.wav;1;Target+Foil;4 words;boopdijs.wav;olburcht.wav;book_2.wav;gip.wav;;;3;plus6db;1;\n" +
 "498;zak;zik_1.wav;1;Target+Foil;4 words;zifknil.wav;rar.wav;zik_2.wav;olmeer.wav;;;3;plus6db;1;\n" +
-"499;vuur;fjon_1.wav;1;Target+Foil;5 words;fjodschelg.wav;fjon_2.wav;wisdaag.wav;tuik.wav;poks.wav;;2;plus6db;1;\n" +
-"500;kip;kep_1.wav;1;Target+Foil;5 words;vui.wav;kekmieg.wav;kep_2.wav;peek.wav;tukliek.wav;;3;plus6db;2;\n" +
-"501;hoef;hogt_1.wav;1;Target+Foil;5 words;ontpad.wav;holmdrins.wav;hogt_2.wav;toor.wav;roog.wav;;3;plus6db;2;\n" +
-"502;stuur;hies_1.wav;1;Target+Foil;5 words;vaatlal.wav;nos.wav;hiemrief.wav;hies_2.wav;fots.wav;;4;plus6db;3;\n" +
-"503;boek;zan_1.wav;1;Target+Foil;5 words;dauk.wav;andoer.wav;zallalk.wav;zan_2.wav;slon.wav;;4;plus6db;3;\n" +
-"504;doos;duis_1.wav;1;Target+Foil;5 words;duigjooi.wav;fruik.wav;duis_2.wav;eels.wav;apder.wav;;3;plus6db;1;\n" +
-"505;hond;ked_1.wav;1;Target+Foil;5 words;kergeuk.wav;vierlan.wav;ked_2.wav;dif.wav;volp.wav;;3;plus6db;1;\n" +
-"506;hart;teur_1.wav;1;Target+Foil;5 words;teumsnaf.wav;dorts.wav;teur_2.wav;geegheid.wav;hyk.wav;;3;plus6db;1;\n" +
-"507;hand;kem_1.wav;1;Target+Foil;5 words;guil.wav;kedlim.wav;sorbuin.wav;kem_2.wav;vep.wav;;4;plus6db;2;\n" +
-"508;bed;zarp_1.wav;1;Target+Foil;5 words;vleek.wav;zanskolm.wav;kelf.wav;zarp_2.wav;bolpes.wav;;4;plus6db;2;\n" +
-"509;deur;koef_1.wav;1;Target+Foil;5 words;raandog.wav;koepteik.wav;nocht.wav;koef_2.wav;womp.wav;;4;plus6db;2;\n";
+"499;vuur;fjon_1.wav;1;Target+Foil;5 words;fjodschelg.wav;fjon_2.wav;wisdaag.wav;tuik.wav;poks.wav;;2;plus6db;1;\n";
 }

@@ -17,18 +17,12 @@
  */
 package utils;
 
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioStimuliFromString;
 import java.util.ArrayList;
-import java.util.HashMap;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Trial;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.Ignore;
 
 /**
  *
@@ -36,7 +30,6 @@ import org.junit.Ignore;
  */
 public class AudioStimuliFromFilesTest {
     
-    String[] labelling ={"min10db", "min8db", "min6db", "min4db", "min2db", "zerodb", "plus2db", "plus4db", "plus6db", "plus8db", "plus10db"};
     String filePath = "/Users/olhshk/Documents/ExperimentTemplate/AdaptiveVocabularyAssessmentModule/src/test/java/utils/Stimuli_NonwordMonitoring_working.csv";
     
     public AudioStimuliFromFilesTest() {
@@ -58,57 +51,24 @@ public class AudioStimuliFromFilesTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of parseTrialsInputCSV method, of class AudioStimuliFromString.
-     */
-    @Ignore
-    @Test
-    public void testParseTrialsInputCSVIntoTrialsArray() throws Exception {
-        System.out.println("parseTrialsInputCSVIntoTrialsArray");
-        ArrayList<String> fileNameExtensions = new ArrayList<String>(1);
-        fileNameExtensions.add("wav");
-        HashMap<String, String> bandIndexing = new HashMap<String, String>();
-        for (int i=0; i<labelling.length; i++){
-           bandIndexing.put(labelling[i], (new Integer(i)).toString());
-        }
-        
-        AudioStimuliFromFiles instance = new AudioStimuliFromFiles();
-        ArrayList<Trial> result = instance.parseTrialsInputCSVIntoTrialsArray(this.filePath, fileNameExtensions, bandIndexing);
-        UtilsJSONdialect<Trial> util = new UtilsJSONdialect<Trial>();
-        String resString = util.arrayListToString(result);
-        System.out.println(resString);
-    }
+  
 
-    
     /**
-     * Test of parseTrialsInputCSV method, of class AudioStimuliFromString.
+     * Test of parseInputCSVIntoStringArray method, of class AudioStimuliFromFiles.
      */
     @Test
-    public void testParseTrialsInputCSVStringIntoTrialsArray() throws Exception {
-        System.out.println("parseTrialsInputCSVStringIntoTrialsArray");
-        ArrayList<String> fileNameExtensions = new ArrayList<String>(1);
-        fileNameExtensions.add("wav");
-        HashMap<String, String> bandIndexing = new HashMap<String, String>();
-        for (int i=0; i<labelling.length; i++){
-           bandIndexing.put(labelling[i], (new Integer(i)).toString());
+    public void testParseInputCSVIntoStringArray() throws Exception {
+        System.out.println("parseInputCSVIntoStringArray");
+        AudioStimuliFromFiles instance = new AudioStimuliFromFiles();
+        ArrayList<String> result = instance.parseInputCSVIntoStringArray(this.filePath);
+        for (String row:result) {
+            System.out.println(row);
+            System.out.println("****************");
+            System.out.println("****************");
+            System.out.println("****************");
+            System.out.println("****************");
+            System.out.println("****************");
         }
-        
-        AudioStimuliFromString instance = new AudioStimuliFromString();
-        ArrayList<Trial> result = instance.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv.CSV_CONTENT, fileNameExtensions, bandIndexing);
-        System.out.println(result);
-    }
-    /**
-     * Test of removeFileNameExtensions method, of class AudioStimuliFromString.
-     */
-    @Test
-    public void testRenoveFileNameExtensions() {
-        System.out.println("renoveFileNameExtensions");
-        String fileName = "rhabarber.wav";
-        ArrayList<String> fileNameExtensions = new ArrayList<String>(1);
-        fileNameExtensions.add("wav");
-        AudioStimuliFromString instance = new AudioStimuliFromString();
-        String result = instance.removeFileNameExtensions(fileName, fileNameExtensions);
-        assertEquals("rhabarber", result);
     }
 
  

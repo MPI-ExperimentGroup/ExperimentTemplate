@@ -62,6 +62,8 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
     private int nStimuliInTuple = 0;
 
+    private ArrayList<Trial> trailsAsInCsv;
+
     private Random rnd;
 
     public AudioAsStimuliProvider(Stimulus[] stimulusArray) {
@@ -78,7 +80,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
         super.initialiseStimuliState(stimuliStateSnapshot);
 
-        this.initialiseTrials();
+        this.trailsAsInCsv = this.initialiseTrials();
 
         UtilsList<TrialCondition> utilTrials = new UtilsList<TrialCondition>();
         this.trialTypesPermutations = utilTrials.generatePermutations(this.requiredTrialTypes);
@@ -318,23 +320,29 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         return retVal;
     }
 
-    public void initialiseTrials() {
+    public ArrayList<Trial> initialiseTrials() {
+        ArrayList<Trial> retVal = new ArrayList<Trial>();
         AudioStimuliFromString util = new AudioStimuliFromString();
-        try {
-            ArrayList<Trial> trials1 = this.parseTrialsInputCSVStringIntoTrialsArray(util, TrialsCsv1.CSV_CONTENT);
-            ArrayList<Trial> trials2 = this.parseTrialsInputCSVStringIntoTrialsArray(util, TrialsCsv2.CSV_CONTENT);
-            ArrayList<Trial> trials3 = this.parseTrialsInputCSVStringIntoTrialsArray(util, TrialsCsv3.CSV_CONTENT);
-            ArrayList<Trial> trials4 = this.parseTrialsInputCSVStringIntoTrialsArray(util, TrialsCsv4.CSV_CONTENT);
-            ArrayList<Trial> trials5 = this.parseTrialsInputCSVStringIntoTrialsArray(util, TrialsCsv4.CSV_CONTENT);
-
-            trials1.addAll(trials2);
-            trials1.addAll(trials3);
-            trials1.addAll(trials4);
-            trials1.addAll(trials5);
-            System.out.println("OK");
-        } catch (Exception exc) {
-            System.out.println("something went wrong");
+        HashMap<String, String> bandIndexing = new HashMap<String, String>();
+        for (int i = 0; i < this.labelling.length; i++) {
+            bandIndexing.put(labelling[i], (new Integer(i)).toString());
         }
+        try {
+            retVal = this.parseTrialsInputCSVStringIntoTrialsArray(util, TrialsCsv1.CSV_CONTENT, bandIndexing);
+            ArrayList<Trial> trials2 = this.parseTrialsInputCSVStringIntoTrialsArray(util, TrialsCsv2.CSV_CONTENT, bandIndexing);
+            ArrayList<Trial> trials3 = this.parseTrialsInputCSVStringIntoTrialsArray(util, TrialsCsv3.CSV_CONTENT, bandIndexing);
+            ArrayList<Trial> trials4 = this.parseTrialsInputCSVStringIntoTrialsArray(util, TrialsCsv4.CSV_CONTENT, bandIndexing);
+            ArrayList<Trial> trials5 = this.parseTrialsInputCSVStringIntoTrialsArray(util, TrialsCsv5.CSV_CONTENT, bandIndexing);
+
+            retVal.addAll(trials2);
+            retVal.addAll(trials3);
+            retVal.addAll(trials4);
+            retVal.addAll(trials5);
+        } catch (Exception exc) {
+            System.out.println(exc);
+        }
+        return retVal;
+    }
 //        this.trials = this.initMatrix(numberOfBands, maxLength);
 //        ArrayList<Integer> permuteIndex = RandomIndexing.generateRandomArray(stimuli.length);
 //
@@ -356,8 +364,6 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 //            trialGroupByLength.get(index).addStimulus(bStimulus, stimulus.getPositionInTrialInt());
 //            this.hashedStimuli.put(stimulus.getUniqueId(), stimulus);
 //        }
-
-    }
 
     private int findIndexOfTrialById(ArrayList<Trial> trials, int number) {
         for (int i = 0; i < trials.size(); i++) {
@@ -441,14 +447,11 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         return retVal;
     }
 
-    public ArrayList<Trial> parseTrialsInputCSVStringIntoTrialsArray(AudioStimuliFromString util, String string) throws Exception {
+    public ArrayList<Trial> parseTrialsInputCSVStringIntoTrialsArray(AudioStimuliFromString util, String string, HashMap<String, String> bandIndexing) throws Exception {
         System.out.println("parseTrialsInputCSVStringIntoTrialsArray");
         ArrayList<String> fileNameExtensions = new ArrayList<String>(1);
         fileNameExtensions.add("wav");
-        HashMap<String, String> bandIndexing = new HashMap<String, String>();
-        for (int i = 0; i < labelling.length; i++) {
-            bandIndexing.put(labelling[i], (new Integer(i)).toString());
-        }
+
         ArrayList<Trial> retVal = util.parseTrialsInputCSVStringIntoTrialsArray(string, fileNameExtensions, bandIndexing);
         return retVal;
     }
@@ -476,9 +479,9 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     @Override
     public void recycleUnusedStimuli() {
     }
-    
+
     @Override
-    public String getStringFastTrack(String startRow, String endRow, String startColumn, String endColumn){
+    public String getStringFastTrack(String startRow, String endRow, String startColumn, String endColumn) {
         return "";
     }
 }
