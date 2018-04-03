@@ -1138,6 +1138,13 @@ public class AdVocAsStimuliProviderTest {
             }
 
         }
+        
+        String stateSnapshotExpected = provider.toString();
+        AdVocAsStimuliProvider provider2 = new AdVocAsStimuliProvider(null);
+        provider2.initialiseStimuliState(stateSnapshotExpected);
+        String stateSnapshot = provider2.toString();
+        //System.out.println(stateSnapshotExpected);
+        assertEquals(stateSnapshotExpected, stateSnapshot);
 
         return provider;
     }
@@ -1236,6 +1243,13 @@ public class AdVocAsStimuliProviderTest {
         this.checkFastTrack(provider.getResponseRecord(), provider.getEndFastTrackTimeTick(), provider.getBestFastTrackBand());
         this.checkFineTuning(provider.getResponseRecord(), provider.getEndFastTrackTimeTick(), provider.getBestFastTrackBand(), cycle2, provider.getBandScore());
 
+        String stateSnapshotExpected = provider.toString();
+        AdVocAsStimuliProvider provider2 = new AdVocAsStimuliProvider(null);
+        provider2.initialiseStimuliState(stateSnapshotExpected);
+        String stateSnapshot = provider2.toString();
+        //System.out.println(stateSnapshotExpected);
+        assertEquals(stateSnapshotExpected, stateSnapshot);
+        
         return provider;
 
     }

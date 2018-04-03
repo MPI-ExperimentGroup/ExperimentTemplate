@@ -889,7 +889,9 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         this.fineTuningTupleLength = Integer.parseInt(UtilsJSONdialect.getKeyWithoutBrackets(str, "fineTuningTupleLength"));
         this.fineTuningUpperBoundForCycles = Integer.parseInt(UtilsJSONdialect.getKeyWithoutBrackets(str, "fineTuningUpperBoundForCycles"));
         this.fastTrackPresent = Boolean.parseBoolean(UtilsJSONdialect.getKeyWithoutBrackets(str, "fastTrackPresent"));
-        this.fineTuningFirstWrongOut = Boolean.parseBoolean(UtilsJSONdialect.getKeyWithoutBrackets(str, "fineTuningFirstWrongOut "));
+        
+        String wrongOutStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "fineTuningFirstWrongOut");
+        this.fineTuningFirstWrongOut = Boolean.parseBoolean(wrongOutStr);
 
         this.bandScore = Integer.parseInt(UtilsJSONdialect.getKeyWithoutBrackets(str, "bandScore"));
         this.percentageScore = Long.parseLong(UtilsJSONdialect.getKeyWithoutBrackets(str, "percentageScore"));

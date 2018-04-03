@@ -17,9 +17,9 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client;
 
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 import java.util.ArrayList;
 import java.util.HashSet;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

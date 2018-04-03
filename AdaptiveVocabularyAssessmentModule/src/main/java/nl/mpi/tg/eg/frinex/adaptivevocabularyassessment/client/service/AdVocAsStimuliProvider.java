@@ -163,7 +163,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
             stimulus = this.words.get(this.currentBandIndex).remove(0);
         }
 
-        BookkeepingStimulus<AdVocAsStimulus> retVal = new BookkeepingStimulus<AdVocAsStimulus>(stimulus); // injection constructor:  bans stimulus into a bookkeping stimulus with null-reaction and correctness
+        BookkeepingStimulus<AdVocAsStimulus> retVal = new BookkeepingStimulus<AdVocAsStimulus>(stimulus); 
         return retVal;
     }
 

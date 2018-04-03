@@ -97,6 +97,7 @@ public class UtilsJSONdialect<S> {
         String buffer = getKey(jsonString, key)[0];
         String retVal = removeFirstAndLast(buffer);
         return retVal;
+        
     }
 
     public String arrayListToString(ArrayList<S> list) throws Exception {
