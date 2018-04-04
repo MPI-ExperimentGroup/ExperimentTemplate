@@ -77,8 +77,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected boolean justVisitedFirstBand = false;
     protected String errorMessage;
     
-    protected HashMap<String, A> stimuliHashMap;
-
+    
     // add experiment specific stuff here
     // ...
     public BandStimuliProvider(final Stimulus[] stimulusArray) {
@@ -203,9 +202,9 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
             this.justVisitedLastBand = false;
             this.percentageBandTable = this.generatePercentageBandTable();
         } else {
-            this.stimuliHashMap = this.makeStimuliHashMap();
             try {
-                this.deserialiseToThis(stimuliStateSnapshot, this.stimuliHashMap);
+                this.hashedStimuli = this.generateHashedStimuli();
+                this.deserialiseToThis(stimuliStateSnapshot, this.hashedStimuli);
                 this.percentageBandTable = this.generatePercentageBandTable();
             } catch (Exception ex) {
                 System.out.println(ex);
@@ -228,6 +227,8 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         retVal.put(new Long(99), value99);
         return retVal;
     }
+    
+    public abstract HashMap<String, A> generateHashedStimuli();
 
     @Override
     public String generateStimuliStateSnapshot() {
@@ -551,7 +552,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
             this.bandVisitCounter[this.currentBandIndex]++;
 
             // analyse correctness of the last tuple as a whole
-            boolean allTupleCorrect = this.allTupleIsCorrect();
+            boolean allTupleCorrect = this.isWholeTupleCorrect();
 
             if (allTupleCorrect) {
                 if (this.currentBandIndex == this.numberOfBands - 1) { // the last band is hit
@@ -597,7 +598,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     }
 
     // must be overriden for trial tuples
-    protected Boolean allTupleIsCorrect() {
+    protected Boolean isWholeTupleCorrect() {
         boolean allTupleCorrect = true;
         int lastIndex = this.responseRecord.size() - 1;
         int limit = (this.fineTuningTupleLength < this.responseRecord.size()) ? this.fineTuningTupleLength : this.responseRecord.size();
@@ -950,6 +951,5 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
     }
 
-    public abstract HashMap<String, A> makeStimuliHashMap();
 
 }

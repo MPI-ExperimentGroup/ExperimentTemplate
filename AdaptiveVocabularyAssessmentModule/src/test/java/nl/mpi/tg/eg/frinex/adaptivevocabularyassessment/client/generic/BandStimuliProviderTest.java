@@ -57,7 +57,7 @@ public class BandStimuliProviderTest {
         }
 
         @Override
-        public HashMap<String, BandStimulus> makeStimuliHashMap() {
+        public HashMap<String, BandStimulus> generateHashedStimuli() {
             return null;
         }
 
@@ -681,7 +681,7 @@ public class BandStimuliProviderTest {
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         // false positibe: the tuple is empty
-        assertTrue(this.instance.allTupleIsCorrect());
+        assertTrue(this.instance.isWholeTupleCorrect());
     }
 
     /**

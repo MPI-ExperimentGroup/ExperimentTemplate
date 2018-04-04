@@ -36,7 +36,7 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag;
 public class AudioStimuliFromString {
 
     
-    public String removeFileNameExtensions(String fileName, ArrayList<String> nameExtensions) {
+    public static String removeFileNameExtensions(String fileName, ArrayList<String> nameExtensions) {
 
         for (String nameExtension : nameExtensions) {
             String suffix = "." + nameExtension;
@@ -50,7 +50,7 @@ public class AudioStimuliFromString {
     }
     
     //Nr;Word;Target_nonword;Syllables;Condition;Length_list;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Noise_level;Position_foil;
-    public ArrayList<Trial> parseTrialsInputCSVStringIntoTrialsArray(String csvString, ArrayList<String> fileNameExtensions, HashMap<String, String> bandIndexing) throws Exception {
+    public static ArrayList<Trial> parseTrialsInputCSVStringIntoTrialsArray(String csvString, ArrayList<String> fileNameExtensions, HashMap<String, String> bandIndexing) throws Exception {
 
         ArrayList<Trial> retVal = new ArrayList<Trial>();
 
@@ -133,7 +133,7 @@ public class AudioStimuliFromString {
 
                 //AudioAsStimulus(String uniqueId, Stimulus.Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath,
                 //             String ratingLabels, String correctResponses, String bandLabel, int bandIndex, WordType wordType, int posInTrial)
-                String wrd = this.removeFileNameExtensions(words.get(i), fileNameExtensions);
+                String wrd = removeFileNameExtensions(words.get(i), fileNameExtensions);
                 String audioPath = "stimuli/" + bandLabel + "/" + wrd;
                 String uniqueId = wrd+"_"+bandLabel;
                 int pauseMs = 900;
@@ -178,6 +178,31 @@ public class AudioStimuliFromString {
                     Integer.parseInt(trialLength), bandLabel, bandIndex,
                     Integer.parseInt(trialPositionTarget), Integer.parseInt(trialPositionFoil), stimuli);
             retVal.add(nextTrial);
+        }
+        return retVal;
+    }
+    
+    public static ArrayList<Trial> readTrialsAsCsv(String[] labelling) {
+        ArrayList<Trial> retVal = new ArrayList<Trial>();
+        HashMap<String, String> bandIndexing = new HashMap<String, String>();
+        for (int i = 0; i < labelling.length; i++) {
+            bandIndexing.put(labelling[i], (new Integer(i)).toString());
+        }
+        try {
+            ArrayList<String> fileNameExtensions = new ArrayList<String>(1);
+            fileNameExtensions.add("wav");
+            retVal = AudioStimuliFromString.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv1.CSV_CONTENT, fileNameExtensions, bandIndexing);
+            ArrayList<Trial> trials2 = AudioStimuliFromString.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv2.CSV_CONTENT, fileNameExtensions, bandIndexing);
+            ArrayList<Trial> trials3 = AudioStimuliFromString.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv3.CSV_CONTENT, fileNameExtensions, bandIndexing);
+            ArrayList<Trial> trials4 = AudioStimuliFromString.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv4.CSV_CONTENT, fileNameExtensions, bandIndexing);
+            ArrayList<Trial> trials5 = AudioStimuliFromString.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv5.CSV_CONTENT, fileNameExtensions, bandIndexing);
+
+            retVal.addAll(trials2);
+            retVal.addAll(trials3);
+            retVal.addAll(trials4);
+            retVal.addAll(trials5);
+        } catch (Exception exc) {
+            System.out.println(exc);
         }
         return retVal;
     }

@@ -18,11 +18,19 @@
 package utils;
 
 import java.util.ArrayList;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioAsStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Trial;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialCondition;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.WordType;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  *
@@ -70,6 +78,7 @@ public class AudioStimuliFromFilesTest {
             System.out.println("****************");
         }
     }
-
+    
+   
  
 }

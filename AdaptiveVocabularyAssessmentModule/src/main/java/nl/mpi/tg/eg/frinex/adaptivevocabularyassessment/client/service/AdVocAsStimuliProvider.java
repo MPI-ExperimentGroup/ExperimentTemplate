@@ -98,12 +98,35 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
             this.rnd = new Random();
         } else {
             try {
-                this.deserialiseToThisSpecific(stimuliStateSnapshot, this.stimuliHashMap);
+                this.deserialiseToThisSpecific(stimuliStateSnapshot, this.hashedStimuli);
                 this.rnd = new Random();
             } catch (Exception ex) {
                 System.out.println(ex);
             }
         }
+    }
+    
+    @Override
+    public HashMap<String, AdVocAsStimulus> generateHashedStimuli() {
+        AdVocAsStimulus[][] woorden;
+        AdVocAsStimulus[] nietWoorden;
+        if (this.numberOfSeries == 2) {
+            woorden = ConstantsWords2.WORDS_SERIES[this.type];
+            nietWoorden = ConstantsNonWords2.NONWORDS_SERIES[this.type];
+        } else {
+            woorden = ConstantsWords1.WORDS_SERIES[0];
+            nietWoorden = ConstantsNonWords1.NONWORDS_SERIES[0];
+        }
+        HashMap<String, AdVocAsStimulus> retVal = new HashMap<String, AdVocAsStimulus>();
+        for (int i = 0; i < woorden.length; i++) {
+            for (int j = 0; j < woorden[i].length; j++) {
+                retVal.put(woorden[i][j].getUniqueId(), woorden[i][j]);
+            }
+        }
+        for (int i = 0; i < nietWoorden.length; i++) {
+            retVal.put(nietWoorden[i].getUniqueId(), nietWoorden[i]);
+        }
+        return retVal;
     }
 
     public void setnonwordsPerBlock(String nonWrodsPerBlock) {
@@ -639,28 +662,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         return builder.toString();
     }
 
-    @Override
-    public HashMap<String, AdVocAsStimulus> makeStimuliHashMap() {
-        AdVocAsStimulus[][] woorden;
-        AdVocAsStimulus[] nietWoorden;
-        if (this.numberOfSeries == 2) {
-            woorden = ConstantsWords2.WORDS_SERIES[this.type];
-            nietWoorden = ConstantsNonWords2.NONWORDS_SERIES[this.type];
-        } else {
-            woorden = ConstantsWords1.WORDS_SERIES[0];
-            nietWoorden = ConstantsNonWords1.NONWORDS_SERIES[0];
-        }
-        HashMap<String, AdVocAsStimulus> retVal = new HashMap<String, AdVocAsStimulus>();
-        for (int i = 0; i < woorden.length; i++) {
-            for (int j = 0; j < woorden[i].length; j++) {
-                retVal.put(woorden[i][j].getUniqueId(), woorden[i][j]);
-            }
-        }
-        for (int i = 0; i < nietWoorden.length; i++) {
-            retVal.put(nietWoorden[i].getUniqueId(), nietWoorden[i]);
-        }
-        return retVal;
-    }
+ 
 
     protected void deserialiseToThisSpecific(String str, HashMap<String, AdVocAsStimulus> map) throws Exception {
         String rndString = UtilsJSONdialect.getKey(str, "rndIndexing")[0];

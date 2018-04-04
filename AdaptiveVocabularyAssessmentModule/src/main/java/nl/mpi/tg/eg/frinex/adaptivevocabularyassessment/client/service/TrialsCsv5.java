@@ -1,7 +1,5 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
-import utils.*;
-
 /*
  * Copyright (C) 2018 Max Planck Institute for Psycholinguistics, Nijmegen
  *

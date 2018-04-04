@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Random;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 
@@ -142,6 +143,11 @@ public class Trial {
     }
 
     public static Trial toObject(String str, LinkedHashMap<String, AudioAsStimulus> hashedStimuli) throws Exception {
+        
+        if (hashedStimuli == null) {
+            return null;
+        }
+        
         String idStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "trialId");
 
         String word = UtilsJSONdialect.getKeyWithoutBrackets(str, "word");
@@ -205,5 +211,42 @@ public class Trial {
         builder.append("}");
         return builder.toString();
     }
+    
+    public static ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> prepareTrialMatrix(ArrayList<Trial> csvTrials, int numberOfBands, int maxTrialLength) {
+        ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> retVal = initMatrix(numberOfBands, maxTrialLength);
+        for (Trial trial : csvTrials) {
+            TrialCondition condition = trial.getCondition();
+            int bandIndex = trial.getBandIndex();
+            int trialLength = trial.getTrialLength();
+            ArrayList<Trial> listToInsert = retVal.get(bandIndex).get(trialLength).get(condition);
+            listToInsert.add(trial);
+        }
+        return retVal;
+    }
 
+     private static ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> initMatrix(int numbOfBands, int maxLength) {
+        ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> retVal = new ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>>(numbOfBands);
+
+        for (int i = 0; i < numbOfBands; i++) {
+            ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>> trialslForBand = new ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>(maxLength + 1);
+            retVal.add(i, trialslForBand);
+
+            for (int j = 0; j <= maxLength; j++) {
+
+                LinkedHashMap<TrialCondition, ArrayList<Trial>> trialslForLength = new LinkedHashMap<TrialCondition, ArrayList<Trial>>();
+                trialslForBand.add(j, trialslForLength);
+
+                for (TrialCondition trialType : TrialCondition.values()) {
+                    trialslForLength.put(trialType, new ArrayList<Trial>());
+                }
+            }
+
+        }
+        return retVal;
+    }
+
+    
+
+    
+  
 }
