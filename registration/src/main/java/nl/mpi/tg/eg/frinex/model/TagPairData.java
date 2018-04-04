@@ -47,10 +47,10 @@ public class TagPairData {
 //    @Column(length = 16384)
 //    @Column(length = 32768)
 //    @Column(length = 63536)
-//    @Column(length = 126976) // touch input data can be greater than 126976 
-    @Column(length = 253952)
+//    @Column(length = 126976) // touch input data can be greater than 507904 
+    @Column(length = 507904)
     private String tagValue2;
-//    ALTER TABLE tag_pair_data ALTER COLUMN tag_value2 TYPE character varying(253952);
+//    ALTER TABLE tag_pair_data ALTER COLUMN tag_value2 TYPE character varying(507904);
     private String userId;
     private int eventMs;
 
