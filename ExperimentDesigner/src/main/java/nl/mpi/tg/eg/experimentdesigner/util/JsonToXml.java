@@ -48,30 +48,36 @@ public class JsonToXml {
             final String outputDirectory = args[1];
             System.out.println("inputDirectory: " + inputDirectory);
             System.out.println("outputDirectory: " + outputDirectory);
-            final WizardController wizardController = new WizardController();
-            for (File jsonFile : new File(inputDirectory).listFiles((File dir, String name) -> name.endsWith(".json"))) {
-                System.out.println(jsonFile);
-                try {
-                    ObjectMapper mapper = new ObjectMapper();
-                    WizardUtilData wizardData = mapper.readValue(jsonFile, WizardUtilData.class);
-                    final Experiment experiment = wizardController.getExperiment(new SentenceCompletion(wizardData).getWizardData());
-                    System.out.println("experiment: " + experiment.getAppNameInternal());
-                    final File outputFile = new File(outputDirectory, experiment.getAppNameInternal() + "-generated.xml");
-                    System.out.println(outputFile);
-                    experiment.getPresenterScreen().sort(new Comparator<PresenterScreen>() {
-                        // because the experiment has not been stored and retrieved from the DB we need to sort this manually
-                        @Override
-                        public int compare(PresenterScreen o1, PresenterScreen o2) {
-                            return Long.compare(o1.getDisplayOrder(), o2.getDisplayOrder());
-                        }
-                    });
-                    JAXBContext jaxbContext = JAXBContext.newInstance(Experiment.class);
-                    Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-                    jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-                    FileWriter fileWriter = new FileWriter(outputFile);
-                    jaxbMarshaller.marshal(experiment, fileWriter);
-                } catch (IOException | JAXBException exception) {
-                    System.out.println(exception.getMessage());
+            if (!new File(inputDirectory).exists()) {
+                System.out.println("inputDirectory does not exist");
+            } else if (!new File(outputDirectory).exists()) {
+                System.out.println("outputDirectory does not exist");
+            } else {
+                final WizardController wizardController = new WizardController();
+                for (File jsonFile : new File(inputDirectory).listFiles((File dir, String name) -> name.endsWith(".json"))) {
+                    System.out.println(jsonFile);
+                    try {
+                        ObjectMapper mapper = new ObjectMapper();
+                        WizardUtilData wizardData = mapper.readValue(jsonFile, WizardUtilData.class);
+                        final Experiment experiment = wizardController.getExperiment(new SentenceCompletion(wizardData).getWizardData());
+                        System.out.println("experiment: " + experiment.getAppNameInternal());
+                        final File outputFile = new File(outputDirectory, experiment.getAppNameInternal() + "-generated.xml");
+                        System.out.println(outputFile);
+                        experiment.getPresenterScreen().sort(new Comparator<PresenterScreen>() {
+                            // because the experiment has not been stored and retrieved from the DB we need to sort this manually
+                            @Override
+                            public int compare(PresenterScreen o1, PresenterScreen o2) {
+                                return Long.compare(o1.getDisplayOrder(), o2.getDisplayOrder());
+                            }
+                        });
+                        JAXBContext jaxbContext = JAXBContext.newInstance(Experiment.class);
+                        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+                        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+                        FileWriter fileWriter = new FileWriter(outputFile);
+                        jaxbMarshaller.marshal(experiment, fileWriter);
+                    } catch (IOException | JAXBException exception) {
+                        System.out.println(exception.getMessage());
+                    }
                 }
             }
         }
