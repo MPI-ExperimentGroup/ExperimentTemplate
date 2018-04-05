@@ -854,7 +854,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         builder.append("enoughFineTuningStimulae:{").append(this.enoughFineTuningStimulae).append("},");
 
         try {
-            String bandVisitCounterStr = UtilsJSONdialect.intArrayListToString(this.bandVisitCounter);
+            String bandVisitCounterStr = UtilsJSONdialect.intArrayToString(this.bandVisitCounter);
             if (bandVisitCounterStr != null) {
                 builder.append("bandVisitCounter:").append(bandVisitCounterStr).append(",");
             }
@@ -863,7 +863,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         }
 
         try {
-            String cycle2helperStr = UtilsJSONdialect.intArrayListToString(this.cycle2helper);
+            String cycle2helperStr = UtilsJSONdialect.intArrayToString(this.cycle2helper);
             if (cycle2helperStr != null) {
                 builder.append("cycle2helper:").append(cycle2helperStr).append(",");
             }

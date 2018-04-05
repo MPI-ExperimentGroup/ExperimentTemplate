@@ -20,9 +20,9 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Random;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialectMap;
 
 /**
  *
@@ -101,9 +101,42 @@ public class Trial {
     public int getPositionFoil() {
         return this.positionFoil;
     }
-    
-    public ArrayList<BookkeepingStimulus<AudioAsStimulus>> getStimuli(){
+
+    public ArrayList<BookkeepingStimulus<AudioAsStimulus>> getStimuli() {
         return this.stimuli;
+    }
+
+    public static ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> prepareTrialMatrix(ArrayList<Trial> csvTrials, int numberOfBands, int maxTrialLength) {
+        ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> retVal = initMatrix(numberOfBands, maxTrialLength);
+        for (Trial trial : csvTrials) {
+            TrialCondition condition = trial.getCondition();
+            int bandIndex = trial.getBandIndex();
+            int trialLength = trial.getTrialLength();
+            ArrayList<Trial> listToInsert = retVal.get(bandIndex).get(trialLength).get(condition);
+            listToInsert.add(trial);
+        }
+        return retVal;
+    }
+
+    private static ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> initMatrix(int numbOfBands, int maxLength) {
+        ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> retVal = new ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>>(numbOfBands);
+
+        for (int i = 0; i < numbOfBands; i++) {
+            ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>> trialslForBand = new ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>(maxLength + 1);
+            retVal.add(i, trialslForBand);
+
+            for (int j = 0; j <= maxLength; j++) {
+
+                LinkedHashMap<TrialCondition, ArrayList<Trial>> trialslForLength = new LinkedHashMap<TrialCondition, ArrayList<Trial>>();
+                trialslForBand.add(j, trialslForLength);
+
+                for (TrialCondition trialType : TrialCondition.values()) {
+                    trialslForLength.put(trialType, new ArrayList<Trial>());
+                }
+            }
+
+        }
+        return retVal;
     }
 
     @Override
@@ -118,36 +151,52 @@ public class Trial {
 //    private final int lgth;
 //    private final int bandIndex;
 //    private final String bandLabel;
-        StringBuilder builder = new StringBuilder();
-        builder.append("{");
-        builder.append("word:{").append(this.word).append("},");
-        builder.append("targetNonWord:{").append(this.targetNonWord).append("},");
-        builder.append("numberOfSyllables:{").append(this.numberOfSyllables).append("},");
-        builder.append("lgth:{").append(this.lgth).append("},");
-        builder.append("bandIndex:{").append(this.bandIndex).append("},");
-        builder.append("bandLabel:{").append(this.bandLabel).append("},");
-        builder.append("condition:{").append(this.condition).append("},");
-        builder.append("positionTarget:{").append(this.positionTarget).append("},");
-        builder.append("positionFoil:{").append(this.positionFoil).append("},");
-        UtilsJSONdialect<BookkeepingStimulus<AudioAsStimulus>> util = new UtilsJSONdialect<BookkeepingStimulus<AudioAsStimulus>>();
-        String stimulusIDsStr = "";
+//        StringBuilder builder = new StringBuilder();
+//        builder.append("{");
+//        builder.append("word:{").append(this.word).append("},");
+//        builder.append("targetNonWord:{").append(this.targetNonWord).append("},");
+//        builder.append("numberOfSyllables:{").append(this.numberOfSyllables).append("},");
+//        builder.append("lgth:{").append(this.lgth).append("},");
+//        builder.append("bandIndex:{").append(this.bandIndex).append("},");
+//        builder.append("bandLabel:{").append(this.bandLabel).append("},");
+//        builder.append("condition:{").append(this.condition).append("},");
+//        builder.append("positionTarget:{").append(this.positionTarget).append("},");
+//        builder.append("positionFoil:{").append(this.positionFoil).append("},");
+//        UtilsJSONdialect<BookkeepingStimulus<AudioAsStimulus>> util = new UtilsJSONdialect<BookkeepingStimulus<AudioAsStimulus>>();
+//        String stimulusIDsStr = "";
+//        try {
+//            stimulusIDsStr = util.arrayListToString(this.stimuli);
+//        } catch (Exception ex) {
+//
+//        }
+//        builder.append("stimuli:").append(stimulusIDsStr);
+//        builder.append("}");
+//        
+//        return builder.toString();
+        Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+        map.put("word", this.word);
+        map.put("targetNonWord", this.targetNonWord);
+        map.put("numberOfSyllables", this.numberOfSyllables);
+        map.put("lgth", this.lgth);
+        map.put("bandLabel", this.bandLabel);
+        map.put("positionTarget", this.positionTarget);
+        map.put("positionFoil", this.positionFoil);
+        map.put("stimuli", this.stimuli);
         try {
-            stimulusIDsStr = util.arrayListToString(this.stimuli);
+            String retVal = UtilsJSONdialectMap.paramToString(map);
+            return retVal;
         } catch (Exception ex) {
-
+            System.out.println(ex);
+            return null;
         }
-        builder.append("stimuli:").append(stimulusIDsStr);
-        builder.append("}");
-        return builder.toString();
-
     }
 
     public static Trial toObject(String str, LinkedHashMap<String, AudioAsStimulus> hashedStimuli) throws Exception {
-        
+
         if (hashedStimuli == null) {
             return null;
         }
-        
+
         String idStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "trialId");
 
         String word = UtilsJSONdialect.getKeyWithoutBrackets(str, "word");
@@ -188,65 +237,4 @@ public class Trial {
 
     }
 
-    public static String map3ToString(Map<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> map) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("{");
-        UtilsJSONdialect<Trial> utils = new UtilsJSONdialect<Trial>();
-        TrialCondition[] conditions = TrialCondition.values();
-        int i = 0;
-        for (TrialCondition condition : conditions) {
-            builder.append(condition).append(":");
-            ArrayList<ArrayList<ArrayList<Trial>>> list = map.get(condition);
-            try {
-                String listStr = utils.arrayList3String(list);
-                builder.append(listStr);
-                if (i < conditions.length - 1) {
-                    builder.append(",");
-                }
-            } catch (Exception ex) {
-                return null;
-            }
-            i++;
-        }
-        builder.append("}");
-        return builder.toString();
-    }
-    
-    public static ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> prepareTrialMatrix(ArrayList<Trial> csvTrials, int numberOfBands, int maxTrialLength) {
-        ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> retVal = initMatrix(numberOfBands, maxTrialLength);
-        for (Trial trial : csvTrials) {
-            TrialCondition condition = trial.getCondition();
-            int bandIndex = trial.getBandIndex();
-            int trialLength = trial.getTrialLength();
-            ArrayList<Trial> listToInsert = retVal.get(bandIndex).get(trialLength).get(condition);
-            listToInsert.add(trial);
-        }
-        return retVal;
-    }
-
-     private static ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> initMatrix(int numbOfBands, int maxLength) {
-        ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> retVal = new ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>>(numbOfBands);
-
-        for (int i = 0; i < numbOfBands; i++) {
-            ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>> trialslForBand = new ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>(maxLength + 1);
-            retVal.add(i, trialslForBand);
-
-            for (int j = 0; j <= maxLength; j++) {
-
-                LinkedHashMap<TrialCondition, ArrayList<Trial>> trialslForLength = new LinkedHashMap<TrialCondition, ArrayList<Trial>>();
-                trialslForBand.add(j, trialslForLength);
-
-                for (TrialCondition trialType : TrialCondition.values()) {
-                    trialslForLength.put(trialType, new ArrayList<Trial>());
-                }
-            }
-
-        }
-        return retVal;
-    }
-
-    
-
-    
-  
 }

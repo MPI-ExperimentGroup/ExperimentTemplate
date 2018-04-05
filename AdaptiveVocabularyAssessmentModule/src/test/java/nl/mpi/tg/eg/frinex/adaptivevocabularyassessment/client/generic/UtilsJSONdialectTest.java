@@ -247,31 +247,31 @@ public class UtilsJSONdialectTest {
     }
 
     /**
-     * Test of intArrayListToString method, of class UtilsJSONdialect.
+     * Test of intArrayToString method, of class UtilsJSONdialect.
      */
     @Test
     public void testIntArrayListToString() throws Exception {
         System.out.println("intArrayListToString");
         int[] arr = {1,2,3};
         String expResult = "{0:{1},1:{2},2:{3}}";
-        String result = UtilsJSONdialect.intArrayListToString(arr);
+        String result = UtilsJSONdialect.intArrayToString(arr);
         assertEquals(expResult, result);
-        assertEquals(null, UtilsJSONdialect.intArrayListToString(null));
-        assertEquals("{}", UtilsJSONdialect.intArrayListToString(new int[0]));
+        assertEquals(null, UtilsJSONdialect.intArrayToString(null));
+        assertEquals("{}", UtilsJSONdialect.intArrayToString(new int[0]));
     }
 
     /**
-     * Test of doubleArrayListToString method, of class UtilsJSONdialect.
+     * Test of doubleArrayToString method, of class UtilsJSONdialect.
      */
     @Test
     public void testDoubleArrayListToString() throws Exception {
         System.out.println("doubleArrayListToString");
         double[] arr = {0.5, 0.8, 100.356785};
         String expResult = "{0:{0.5},1:{0.8},2:{100.356785}}";
-        String result = UtilsJSONdialect.doubleArrayListToString(arr);
+        String result = UtilsJSONdialect.doubleArrayToString(arr);
         assertEquals(expResult, result);
-        assertEquals(null, UtilsJSONdialect.doubleArrayListToString(null));
-        assertEquals("{}", UtilsJSONdialect.doubleArrayListToString(new double[0]));
+        assertEquals(null, UtilsJSONdialect.doubleArrayToString(null));
+        assertEquals("{}", UtilsJSONdialect.doubleArrayToString(new double[0]));
     }
 
     /**

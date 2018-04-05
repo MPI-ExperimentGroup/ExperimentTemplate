@@ -214,7 +214,7 @@ public class RandomIndexingTest {
         instance.updateFrequencesOfNonWordIndices();
         double[] fr = instance.getFrequencesOfNonWordindices();
 
-        String frStr = UtilsJSONdialect.doubleArrayListToString(fr);
+        String frStr = UtilsJSONdialect.doubleArrayToString(fr);
         String indxStr = (new UtilsJSONdialect<Integer>()).arrayListToString(indx);
 
         String expResult2 = "{fastTrackSequenceLength:{" + fastTrackSequenceLengthStr + "},averageNonwordPosition:{3},nonwordsPerBlock:{4},numberOfNonwords:{"
@@ -241,7 +241,7 @@ public class RandomIndexingTest {
         instanceHelper.updateFrequencesOfNonWordIndices();
         double[] fr = instanceHelper.getFrequencesOfNonWordindices();
 
-        String frStr = UtilsJSONdialect.doubleArrayListToString(fr);
+        String frStr = UtilsJSONdialect.doubleArrayToString(fr);
         String indxStr = (new UtilsJSONdialect<Integer>()).arrayListToString(indx);
 
         String input = "{fastTrackSequenceLength:{" + fastTrackSequenceLengthStr + "},averageNonwordPosition:{3},nonwordsPerBlock:{4},numberOfNonwords:{"

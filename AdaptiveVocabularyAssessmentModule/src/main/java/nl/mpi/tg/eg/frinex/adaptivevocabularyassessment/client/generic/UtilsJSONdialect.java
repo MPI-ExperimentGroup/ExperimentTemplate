@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
 import java.util.ArrayList;
 
+
 /**
  *
  * @author olhshk
@@ -99,6 +100,8 @@ public class UtilsJSONdialect<S> {
         return retVal;
         
     }
+    
+    
 
     public String arrayListToString(ArrayList<S> list) throws Exception {
         if (list == null) {
@@ -133,7 +136,8 @@ public class UtilsJSONdialect<S> {
         retVal.append("}");
         return retVal.toString();
     }
-
+    
+    
     public String arrayList2String(ArrayList<ArrayList<S>> list) throws Exception {
         if (list == null) {
             return null;
@@ -170,7 +174,7 @@ public class UtilsJSONdialect<S> {
         return retVal;
     }
 
-    public static String intArrayListToString(int[] arr) throws Exception {
+    public static String intArrayToString(int[] arr) throws Exception {
         if (arr == null) {
             return null;
         }
@@ -191,7 +195,7 @@ public class UtilsJSONdialect<S> {
         return retVal.toString();
     }
 
-    public static String doubleArrayListToString(double[] arr) throws Exception {
+    public static String doubleArrayToString(double[] arr) throws Exception {
         if (arr == null) {
             return null;
         }
@@ -228,7 +232,7 @@ public class UtilsJSONdialect<S> {
         ArrayList<String> retVal = new ArrayList<String>();
         String[] current = getKey(listStr, "0");
         int i = 0;
-        String index = "0";
+        String index;
         while (current[0] != null) {
             retVal.add(i, current[0]);
             i++;

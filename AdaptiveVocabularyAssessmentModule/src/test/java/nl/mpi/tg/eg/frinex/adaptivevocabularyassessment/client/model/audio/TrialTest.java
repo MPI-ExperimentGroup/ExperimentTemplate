@@ -294,21 +294,7 @@ public class TrialTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of map3ToString method, of class Trial.
-     */
-     @Ignore
-    @Test
-    public void testMap3ToString() {
-        System.out.println("map3ToString");
-        Map<TrialCondition, ArrayList<ArrayList<ArrayList<Trial>>>> map = null;
-        String expResult = "";
-        String result = Trial.map3ToString(map);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
+ 
      public ArrayList<Trial> parseTrialsInputCSVStringIntoTrialsArray(AudioStimuliFromString util, String string) throws Exception {
         System.out.println("parseTrialsInputCSVStringIntoTrialsArray");
         ArrayList<String> fileNameExtensions = new ArrayList<String>(1);

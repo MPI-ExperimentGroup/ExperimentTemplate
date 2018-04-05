@@ -248,7 +248,7 @@ public class RandomIndexing {
         } catch (Exception ex) {
         }
         try {
-            String frequencesStr = UtilsJSONdialect.doubleArrayListToString(this.frequences);
+            String frequencesStr = UtilsJSONdialect.doubleArrayToString(this.frequences);
             if (frequencesStr != null) {
                 builder.append(",frequences:").append(frequencesStr);
             }

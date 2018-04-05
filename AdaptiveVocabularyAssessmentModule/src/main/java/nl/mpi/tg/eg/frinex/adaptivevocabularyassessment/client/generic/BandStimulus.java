@@ -17,7 +17,6 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
-import java.util.HashMap;
 import nl.mpi.tg.eg.frinex.common.model.AbstractStimulus;
 
 /**

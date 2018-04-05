@@ -28,7 +28,6 @@ import java.util.Set;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Vocabulary;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsNonWords1;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsNonWords2;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsWords1;
@@ -39,6 +38,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -970,6 +970,7 @@ public class AdVocAsStimuliProviderTest {
 
     }
 
+    @Ignore
     @Test
     public void generalRandomTest1() throws Exception {
         for (int i = 1; i < 11; i++) {
@@ -979,6 +980,7 @@ public class AdVocAsStimuliProviderTest {
         }
     }
 
+    @Ignore
     @Test
     public void generalRandomTest2() throws Exception {
         for (int i = 1; i < 11; i++) {
@@ -999,6 +1001,7 @@ public class AdVocAsStimuliProviderTest {
         }
     }
 
+    @Ignore
     @Test
     public void notEnoughStimuliTest() throws Exception {
         this.longFineTuningTest();
