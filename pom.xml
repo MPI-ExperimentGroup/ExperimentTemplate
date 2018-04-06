@@ -33,6 +33,8 @@
         <application.majorVersion>0</application.majorVersion> 
         <application.minorVersion>1</application.minorVersion> 
         <application.branch>pretesting</application.branch> 
+        <versionCheck.allowSnapshots>true</versionCheck.allowSnapshots> 
+        <versionCheck.buildType>staging</versionCheck.buildType> 
         
         <!--<experiment.configuration.path>${project.build.sourceDirectory}/../xml</experiment.configuration.path>-->
         <!--<experiment.configuration.path>${project.build.sourceDirectory}/../../../../../ExperimentBuilder/src/main/xml</experiment.configuration.path>-->      
@@ -114,10 +116,10 @@
                 <configuration>
                     <verbose>true</verbose>
                     <vcsType>git</vcsType>
-                    <allowSnapshots>true</allowSnapshots>
+                    <allowSnapshots>${versionCheck.allowSnapshots}</allowSnapshots>
                     <majorVersion>0</majorVersion>
                     <minorVersion>1</minorVersion>
-                    <buildType>testing</buildType>
+                    <buildType>${versionCheck.buildType}</buildType>
                     <propertiesPrefix>application</propertiesPrefix>
                     <shortVersionModule></shortVersionModule>
                 </configuration>
