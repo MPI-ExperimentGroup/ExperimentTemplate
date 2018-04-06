@@ -19,6 +19,8 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 
 /**
@@ -27,6 +29,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSON
  */
 public class PermutationPair {
 
+    private final static String FLDS = "[trialConditions, trialLengths, trials]";
     private final ArrayList<TrialCondition> trialConditions;
     private final ArrayList<Integer> trialLengths;
     private final ArrayList<ArrayList<Trial>> trials;
@@ -112,76 +115,51 @@ public class PermutationPair {
     // sanity checks must be added for testing
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("{");
-        UtilsJSONdialect<TrialCondition> util1 = new UtilsJSONdialect<TrialCondition>();
-
-        try {
-            String trailTypesStr = util1.arrayListToString(this.trialConditions);
-            if (trailTypesStr != null) {
-                builder.append("trialConditions:").append(trailTypesStr).append(",");
-            }
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-
-        UtilsJSONdialect<Integer> util2 = new UtilsJSONdialect<Integer>();
-        try {
-            String trialLengthsStr = util2.arrayListToString(this.trialLengths);
-            if (trialLengthsStr != null) {
-                builder.append("trialLengths:").append(trialLengthsStr);
-            }
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-
-        UtilsJSONdialect<Trial> util3 = new UtilsJSONdialect<Trial>();
-        try {
-            String trialLengthsStr = util3.arrayList2String(this.trials);
-            if (trialLengthsStr != null) {
-                builder.append("trials:").append(trialLengthsStr);
-            }
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-
-        builder.append("}");
-        return builder.toString();
+        Map<String, Object> map = new LinkedHashMap<String, Object>();
+        map.put("fields", PermutationPair.FLDS);
+        map.put("trials", this.trials);
+        map.put("trialConditions", this.trialConditions);
+        map.put("trialLengthss", this.trialLengths);
+        return map.toString();
     }
 
-    public static PermutationPair toObject(String str, LinkedHashMap<String, AudioAsStimulus> hashedStimuli) {
-
-        UtilsJSONdialect<Integer> util2 = new UtilsJSONdialect<Integer>();
-
+    public static PermutationPair toObject(Map<String, Object> map) {
         try {
 
-            String triallTypesStr = UtilsJSONdialect.getKey(str, "trialConditions")[0];
-            ArrayList<String> trialConditionsArrayStr = UtilsJSONdialect.stringToArrayList(triallTypesStr);
-            ArrayList<TrialCondition> trialConds = new ArrayList<TrialCondition>(trialConditionsArrayStr.size());
-            for (int i = 0; i < trialConditionsArrayStr.size(); i++) {
-                trialConds.add(null);
+            List<Object> triallTypesObj = (List<Object>) map.get("trialConditions");
+            ArrayList<TrialCondition> trialConds = null;
+            if (triallTypesObj != null) {
+                trialConds = new ArrayList<TrialCondition>(triallTypesObj.size());
+                for (int i = 0; i < triallTypesObj.size(); i++) {
+                    String cond = triallTypesObj.get(i).toString();
+                    TrialCondition tc = TrialCondition.valueOf(cond);
+                    trialConds.add(i, tc);
+                }
             }
-            for (int i = 0; i < trialConditionsArrayStr.size(); i++) {
-                String withBrackets = trialConditionsArrayStr.get(i).trim();
-                TrialCondition tc = TrialCondition.valueOf(UtilsJSONdialect.removeFirstAndLast(withBrackets));
-                trialConds.set(i, tc);
+            List<Object> triallLengthObj = (List<Object>) map.get("trialLengths");
+            ArrayList<Integer> trialLengths = null;
+            if (triallLengthObj != null) {
+                trialLengths = new ArrayList<Integer>(triallLengthObj.size());
+                for (int i = 0; i < triallLengthObj.size(); i++) {
+                    String lengthStr = triallLengthObj.get(i).toString();
+                    Integer tc = Integer.parseInt(lengthStr);
+                    trialLengths.add(i, tc);
+                }
             }
 
-            String lengthStr = UtilsJSONdialect.getKey(str, "trialLengths")[0];
-            ArrayList<Integer> lengths = util2.stringToArrayListInteger(lengthStr);
-
-            String trialsStr = UtilsJSONdialect.getKey(str, "trials")[0];
-            ArrayList<ArrayList<String>> trialsStrList = UtilsJSONdialect.stringToArray2List(trialsStr);
-
+          
+            
+            ArrayList<ArrayList<Object>> trialsObj=  (ArrayList<ArrayList<Object>>) map.get("trials");
             ArrayList<ArrayList<Trial>> trials;
 
-            if (trialsStrList != null) {
-                trials = new ArrayList<ArrayList<Trial>>(trialsStrList.size());
-                for (ArrayList<String> inner : trialsStrList) {
+            if (trialsObj != null) {
+                trials = new ArrayList<ArrayList<Trial>>(trialsObj.size());
+                for (ArrayList<Object> inner : trialsObj) {
                     ArrayList<Trial> trialsInTuple = new ArrayList<Trial>(inner.size());
                     trials.add(trialsInTuple);
-                    for (String trStr : inner) {
-                        Trial trial = Trial.toObject(trStr, hashedStimuli);
+                    for (Object trialObj : inner) {
+                        Map<String,Object> mapTrial = (Map<String,Object>) trialObj;
+                        Trial trial = Trial.mapToObject(mapTrial);
                         if (trial != null) {
                             trialsInTuple.add(trial);
                         }
@@ -191,7 +169,7 @@ public class PermutationPair {
                 trials = null;
             }
 
-            PermutationPair retVal = new PermutationPair(trialConds, lengths, trials);
+            PermutationPair retVal = new PermutationPair(trialConds, trialLengths, trials);
             return retVal;
 
         } catch (Exception ex) {

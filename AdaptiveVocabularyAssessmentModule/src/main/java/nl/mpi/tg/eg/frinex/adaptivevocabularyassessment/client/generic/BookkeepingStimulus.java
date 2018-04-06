@@ -17,7 +17,6 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -71,46 +70,43 @@ public class BookkeepingStimulus<A extends BandStimulus> {
     public void setTimeStamp(long timeStr) {
         this.timeStamp = timeStr;
     }
+    
+    
 
     @Override
     public String toString() {
-        Map<Object, Object> map = new LinkedHashMap<Object, Object>();
-        map.put("stimulus", this.stimulus);
+        Map<String, Object> map = new LinkedHashMap<String, Object>();
+        map.put("stimulus", this.stimulus.getSerialisationMap());
         map.put("userReaction", this.userReaction);
         map.put("correctness", this.correctness);
         map.put("timeStamp", this.timeStamp);
-        try {
-            String retVal = UtilsJSONdialectMap.paramToString(map);
-            return retVal;
-        } catch (Exception ex) {
-            System.out.println(ex);
-            return null;
-        }
-//        StringBuilder builder = new StringBuilder();
-//        builder.append("{");
-//        builder.append("stimulus:{").append(this.stimulus.toString()).append("},");
-//        builder.append("userReaction:{").append(this.userReaction).append("},");
-//        builder.append("correctness:{").append(this.correctness).append("},");
-//        builder.append("timeStamp:{").append(this.timeStamp).append("}}");
-//        return builder.toString();
+       return map.toString();
+    }
+    
+    public BookkeepingStimulus<A> toObject(String serialisation) throws Exception {
+        Object object = UtilsJSONdialect.stringToObject(serialisation);
+        BookkeepingStimulus<A> retVal = this.toBookkeepingStimulusObject(object);
+        return retVal;
     }
 
-    public BookkeepingStimulus<A> toObject(String serialisation, HashMap<String, A> hashMap) throws Exception {
-        Object object = UtilsJSONdialectMap.stringToObject(serialisation);
+
+
+    public BookkeepingStimulus<A> toBookkeepingStimulusObject(Object object) throws Exception {
         if (!(object instanceof Map<?, ?>)) {
             throw new Exception("Failed to deserialise input string into the intermediate map of type object to object");
         }
-        Map<Object, Object> map = (Map<Object, Object>) object;
-        Set<Object> keys = map.keySet();
-        String id = null;
+        Map<String, Object> map = (Map<String, Object>) object;
+        Set<String> keys = map.keySet();
         String corr = null;
         String reaction = null;
         String time = null;
-        for (Object key : keys) {
-            String keyStr = key.toString();
-            switch (keyStr) {
+        A localStimulus = null;
+        for (String key : keys) {
+            switch (key) {
                 case "stimulus":
-                    id = map.get(key).toString();
+                    Object stimulusObj = map.get(key);
+                    Map<String, Object> stimulusMap = (Map<String, Object>) stimulusObj;
+                    localStimulus = (A) BandStimulus.mapToBandStimulusObject(stimulusMap);
                     break;
                 case "correctness":
                     corr = map.get(key).toString();
@@ -126,7 +122,6 @@ public class BookkeepingStimulus<A extends BandStimulus> {
 
             }
         }
-        A localStimulus = hashMap.get(id);
         BookkeepingStimulus<A> retVal = new BookkeepingStimulus<A>(localStimulus);
         if (corr != null) {
             if (corr.equals("true")) {
@@ -143,31 +138,4 @@ public class BookkeepingStimulus<A extends BandStimulus> {
         retVal.setTimeStamp(Long.parseLong(time));
         return retVal;
     }
-//        try {
-//            String id = UtilsJSONdialect.getKeyWithoutBrackets(serialisation, "stimulus");
-//            A localStimulus = map.get(id);
-//            BookkeepingStimulus<A> retVal = new BookkeepingStimulus<A>(localStimulus);
-//            String corr = UtilsJSONdialect.getKeyWithoutBrackets(serialisation, "correctness");
-//            if (corr != null) {
-//                if (corr.equals("true")) {
-//                    retVal.setCorrectness(true);
-//                } else {
-//                    if (corr.equals("false")) {
-//                        retVal.setCorrectness(false);
-//                    } else {
-//                        return null;
-//                    }
-//                }
-//            }
-//            String ur = UtilsJSONdialect.getKeyWithoutBrackets(serialisation, "userReaction");
-//            if (ur != null) {
-//                retVal.setReaction(ur);
-//            }
-//            String ts = UtilsJSONdialect.getKeyWithoutBrackets(serialisation, "timeStamp");
-//            retVal.setTimeStamp(Long.parseLong(ts));
-//            return retVal;
-//        } catch (Exception e) {
-//            return null;
-//        }
-//    }
 }

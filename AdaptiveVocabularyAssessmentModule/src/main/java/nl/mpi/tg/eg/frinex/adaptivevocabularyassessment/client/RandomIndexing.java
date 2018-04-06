@@ -19,6 +19,8 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 
@@ -29,6 +31,8 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSON
  * @author olhshk
  */
 public class RandomIndexing {
+    
+    private static final String FLDS = "[fastTrackSequenceLength,averageNonwordPosition,nonwordsPerBlock,numberOfNonwords,numberOfWords,randomIndices,frequences]";
 
     private int fastTrackSequenceLength; //  N
     private final int averageNonwordPosition; // n
@@ -197,120 +201,43 @@ public class RandomIndexing {
         return retVal;
     }
 
-//    public static int[] generateRandomArray(int n) {
-//        int[] index = new int[n];
-//        for (int i = 0; i < index.length; i++) {
-//            index[i] = i;
-//        }
-//        randomize(index, index.length);
-//        return index;
-//    }
-//
-//    private static void randomize(int arr[], int n) {
-//        // Creating a object for Random class
-//        Random r = new Random();
-//
-//        // Start from the last element and swap one by one. We don't
-//        // need to run for the first element that's why i > 0
-//        for (int i = n - 1; i > 0; i--) {
-//
-//            // Pick a random index from 0 to i
-//            int j = r.nextInt(i);
-//
-//            // Swap arr[i] with the element at random index
-//            int temp = arr[i];
-//            arr[i] = arr[j];
-//            arr[j] = temp;
-//        }
-//    }
+
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("{");
-//    private int fastTrackSequenceLength; //  N
-//    private final int averageNonwordPosition; // n
-//    private final int nonwordsPerBlock;
-//    private final int numberOfNonwords; // [1/n * N]
-//    private final int numberOfWords; // [(n-1)/n * N]
-//    private ArrayList<Integer> randomIndices;
-//    private double[] frequences;
-        builder.append("fastTrackSequenceLength:{").append(this.fastTrackSequenceLength).append("},");
-        builder.append("averageNonwordPosition:{").append(this.averageNonwordPosition).append("},");
-        builder.append("nonwordsPerBlock:{").append(this.nonwordsPerBlock).append("},");
-        builder.append("numberOfNonwords:{").append(this.numberOfNonwords).append("},");
-        builder.append("numberOfWords:{").append(this.numberOfWords).append("}");
-        UtilsJSONdialect<Integer> utils = new UtilsJSONdialect<Integer>();
-        try {
-            String randomIndicesStr = utils.arrayListToString(this.randomIndices);
-            if (randomIndicesStr != null) {
-                builder.append(",randomIndices:").append(randomIndicesStr);
-            }
-        } catch (Exception ex) {
-        }
-        try {
-            String frequencesStr = UtilsJSONdialect.doubleArrayToString(this.frequences);
-            if (frequencesStr != null) {
-                builder.append(",frequences:").append(frequencesStr);
-            }
-        } catch (Exception ex) {
-        }
-        builder.append("}");
-        return builder.toString();
+        // "[fastTrackSequenceLength,averageNonwordPosition,nonwordsPerBlock,numberOfNonwords,numberOfWords,randomIndices,frequences]";
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        map.put("fields", RandomIndexing.FLDS);
+        map.put("fastTrackSequenceLength", this.fastTrackSequenceLength);
+        map.put("averageNonwordPosition", this.averageNonwordPosition);
+        map.put("nonwordsPerBlock", this.nonwordsPerBlock);
+        map.put("numberOfNonwords", this.numberOfNonwords);
+        map.put("numberOfWords", this.numberOfWords);
+        map.put("randomIndices", this.randomIndices);
+        map.put("frequences", this.frequences);
+        return map.toString();
+
     }
 
     public static RandomIndexing toObject(String str) {
-        UtilsJSONdialect<Integer> utils = new UtilsJSONdialect<Integer>();
-
-        int fastTrackSequenceLength = 0;
-        try {
-            String fastTrackSequenceLengthStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "fastTrackSequenceLength");
-            fastTrackSequenceLength = Integer.parseInt(fastTrackSequenceLengthStr);
-        } catch (Exception ex) {
-        }
-
-        int averageNonwordPosition = 0;
-        try {
-            String averageNonwordPositionStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "averageNonwordPosition");
-            averageNonwordPosition = Integer.parseInt(averageNonwordPositionStr);
-        } catch (Exception ex) {
-        }
-
-        int nonwordsPerBlock = 0;
-        try {
-            String nonwordsPerBlockStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "nonwordsPerBlock");
-            nonwordsPerBlock = Integer.parseInt(nonwordsPerBlockStr);
-        } catch (Exception ex) {
-        }
-
-        int numberOfNonwords = 0;
-        try {
-            String numberOfNonwordsStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "numberOfNonwords");
-            numberOfNonwords = Integer.parseInt(numberOfNonwordsStr);
-        } catch (Exception ex) {
-        }
-
-        int numberOfWords = 0;
-        try {
-            String numberOfWordsStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "numberOfWords");
-            numberOfWords = Integer.parseInt(numberOfWordsStr);
-        } catch (Exception ex) {
-        }
-
-        ArrayList<Integer> randomIndices = null;
-        try {
-            String randomIndicesStr = UtilsJSONdialect.getKey(str, "randomIndices")[0];
-            randomIndices = UtilsJSONdialect.stringToArrayListInteger(randomIndicesStr);
-        } catch (Exception ex) {
-        }
-
-        double[] frequences = null;
-        try {
-            String frequencesStr = UtilsJSONdialect.getKey(str, "frequences")[0];
-            frequences = UtilsJSONdialect.stringToArrayDouble(frequencesStr);
-        } catch (Exception ex) {
-        }
+        try{
+         Map<String, Object> map = UtilsJSONdialect.stringToObjectMap(str, RandomIndexing.FLDS);
+         int fastTrackSequenceLength1 = Integer.parseInt(map.get("fastTrackSequenceLength").toString());
+         int averageNonwordPosition1 = Integer.parseInt(map.get("averageNonwordPosition").toString());
+         int nonwordsPerBlock1 = Integer.parseInt(map.get("fnonwordsPerBlock").toString());
+         int numberOfNonwords1 = Integer.parseInt(map.get("numberOfNonwords").toString());
+         int numberOfWords1 = Integer.parseInt(map.get("numberOfWords").toString());
+         Object randomIndices1obj = map.get("randomIndices");
+         ArrayList<Integer> randomIndices1 = UtilsJSONdialect.objectToListInteger(randomIndices1obj);
+         Object frequences1obj = map.get("frequences");
+         double[] frequences1 = UtilsJSONdialect.objectToArrayDouble(frequences1obj);
         // RandomIndexing(int fastTrackSequenceLength, int  averageNonwordPosition, int nonwordsPerBlock, int numberOfNonwords, int numberOfWords, ArrayList<Integer> randomIndices, double[] frequences)
-        RandomIndexing retVal = new RandomIndexing(fastTrackSequenceLength, averageNonwordPosition, nonwordsPerBlock, numberOfNonwords, numberOfWords, randomIndices, frequences);
+        RandomIndexing retVal = new RandomIndexing(fastTrackSequenceLength1, averageNonwordPosition1, nonwordsPerBlock1, numberOfNonwords1, numberOfWords1, randomIndices1, frequences1);
         return retVal;
+        } catch (Exception ex) {
+            System.out.println(ex);
+            return null;
+        }
+
+      
     }
 }

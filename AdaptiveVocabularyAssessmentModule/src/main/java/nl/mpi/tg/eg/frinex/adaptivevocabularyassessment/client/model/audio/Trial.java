@@ -19,16 +19,18 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialectMap;
 
 /**
  *
  * @author olhshk
  */
 public class Trial {
+
+    private static final String FLDS = "[trialId, stimuli, word, targetNonWord, numberOfSyllables, condition, lgth, bandIndex, bandLabel, positionTarget, positionFoil]";
 
     private final int trialId;
     private final ArrayList<BookkeepingStimulus<AudioAsStimulus>> stimuli;  // the first one (zero index) is the cue, it is in the order it should appear for the participant
@@ -142,38 +144,8 @@ public class Trial {
     @Override
     public String toString() {
 
-//    private final int trialId;
-//    private final ArrayList<String> stimulusIDs;  // the first one (zero index) is the cue, it is in the order it should appear for the participant
-//    private final String word;
-//    private final String targetNonWord;
-//    private final int numberOfSyllables;
-//    private final TrialCondition condition;
-//    private final int lgth;
-//    private final int bandIndex;
-//    private final String bandLabel;
-//        StringBuilder builder = new StringBuilder();
-//        builder.append("{");
-//        builder.append("word:{").append(this.word).append("},");
-//        builder.append("targetNonWord:{").append(this.targetNonWord).append("},");
-//        builder.append("numberOfSyllables:{").append(this.numberOfSyllables).append("},");
-//        builder.append("lgth:{").append(this.lgth).append("},");
-//        builder.append("bandIndex:{").append(this.bandIndex).append("},");
-//        builder.append("bandLabel:{").append(this.bandLabel).append("},");
-//        builder.append("condition:{").append(this.condition).append("},");
-//        builder.append("positionTarget:{").append(this.positionTarget).append("},");
-//        builder.append("positionFoil:{").append(this.positionFoil).append("},");
-//        UtilsJSONdialect<BookkeepingStimulus<AudioAsStimulus>> util = new UtilsJSONdialect<BookkeepingStimulus<AudioAsStimulus>>();
-//        String stimulusIDsStr = "";
-//        try {
-//            stimulusIDsStr = util.arrayListToString(this.stimuli);
-//        } catch (Exception ex) {
-//
-//        }
-//        builder.append("stimuli:").append(stimulusIDsStr);
-//        builder.append("}");
-//        
-//        return builder.toString();
-        Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+        Map<String, Object> map = new LinkedHashMap<String, Object>();
+        map.put("fields", Trial.FLDS);
         map.put("word", this.word);
         map.put("targetNonWord", this.targetNonWord);
         map.put("numberOfSyllables", this.numberOfSyllables);
@@ -182,33 +154,23 @@ public class Trial {
         map.put("positionTarget", this.positionTarget);
         map.put("positionFoil", this.positionFoil);
         map.put("stimuli", this.stimuli);
-        try {
-            String retVal = UtilsJSONdialectMap.paramToString(map);
-            return retVal;
-        } catch (Exception ex) {
-            System.out.println(ex);
-            return null;
-        }
+        return map.toString();
     }
 
-    public static Trial toObject(String str, LinkedHashMap<String, AudioAsStimulus> hashedStimuli) throws Exception {
+    public static Trial mapToObject(Map<String, Object> map) throws Exception {
 
-        if (hashedStimuli == null) {
-            return null;
-        }
+        String idStr = map.get("trialId").toString();
 
-        String idStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "trialId");
+        String word = map.get("word").toString();
+        String targetNonWord = map.get("targetNonWord").toString();
 
-        String word = UtilsJSONdialect.getKeyWithoutBrackets(str, "word");
-        String targetNonWord = UtilsJSONdialect.getKeyWithoutBrackets(str, "targetNonWord");
-
-        String numberOfSyllablesStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "numberOfSyllables");
-        String lgthStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "lgth");
-        String bandIndexStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "bandIndex");
-        String bandLabel = UtilsJSONdialect.getKeyWithoutBrackets(str, "bandLabel");
-        String conditionStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "condition");
-        String positionTargetStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "positionTarget");
-        String positionFoilStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "positionFoil");
+        String numberOfSyllablesStr = map.get("numberOfSyllables").toString();
+        String lgthStr = map.get("lgth").toString();
+        String bandIndexStr = map.get("bandIndex").toString();
+        String bandLabel = map.get("bandLabel").toString();
+        String conditionStr = map.get("condition").toString();
+        String positionTargetStr = map.get("positionTarget").toString();
+        String positionFoilStr = map.get("positionFoil").toString();
 
         int numberOfSyllables = Integer.parseInt(numberOfSyllablesStr);
         int lgth = Integer.parseInt(lgthStr);
@@ -219,20 +181,33 @@ public class Trial {
 
         TrialCondition condition = TrialCondition.valueOf(conditionStr);
 
-        String stimuliStr = UtilsJSONdialect.getKey(str, "stimuli")[0];
-
-        ArrayList<String> bStimuliStr = UtilsJSONdialect.stringToArrayList(stimuliStr);
-        ArrayList<BookkeepingStimulus<AudioAsStimulus>> bStimuli = new ArrayList<BookkeepingStimulus<AudioAsStimulus>>(bStimuliStr.size());
-        for (int i = 0; i < bStimuliStr.size(); i++) {
-            BookkeepingStimulus<AudioAsStimulus> ghost = new BookkeepingStimulus<AudioAsStimulus>(null);
-            BookkeepingStimulus<AudioAsStimulus> bStimulus = ghost.toObject(bStimuliStr.get(i), hashedStimuli);
-            int position = bStimulus.getStimulus().getpositionInTrial();
-            bStimuli.set(position, bStimulus);
+        Object stimuliObj = map.get("stimuli");
+        ArrayList<BookkeepingStimulus<AudioAsStimulus>> bStimuli;
+        if (stimuliObj == null) {
+            bStimuli = null;
+        } else {
+            List<Object> stimuliObjList = (List<Object>) stimuliObj;
+            bStimuli = new ArrayList<BookkeepingStimulus<AudioAsStimulus>>(stimuliObjList.size());
+            for (int i = 0; i < stimuliObjList.size(); i++) {
+                Map<String, Object> currentMap = (Map<String, Object>) stimuliObjList.get(i);
+                BookkeepingStimulus<AudioAsStimulus> ghost = new BookkeepingStimulus<AudioAsStimulus>(null);
+                BookkeepingStimulus<AudioAsStimulus> bStimulus = ghost.toBookkeepingStimulusObject(currentMap);
+                int position = bStimulus.getStimulus().getpositionInTrial();
+                bStimuli.set(position, bStimulus);
+            }
         }
 
         //Trial(int id, String word, String targetNonWord, int nOfSyllables, TrialCondition condition, int length, String bandLabel, int bandIndex)
         Trial retVal = new Trial(id, word, targetNonWord, numberOfSyllables, condition, lgth, bandLabel, bandIndex, positionTarget, positionFoil, bStimuli);
 
+        return retVal;
+
+    }
+    
+    public static Trial toObject(String str) throws Exception {
+
+        Map<String, Object> map = UtilsJSONdialect.stringToObjectMap(str, Trial.FLDS);
+        Trial retVal = mapToObject(map);
         return retVal;
 
     }

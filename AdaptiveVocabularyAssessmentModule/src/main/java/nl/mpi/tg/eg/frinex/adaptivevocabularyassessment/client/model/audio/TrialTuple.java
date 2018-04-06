@@ -19,6 +19,8 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 
@@ -28,14 +30,16 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSON
  */
 public class TrialTuple {
 
+    private final static String FLDS = "[trials, correctness]";
+
     private final ArrayList<Trial> trials;
     private Boolean correctness;
-    
+
     public TrialTuple(ArrayList<Trial> trials) {
         this.trials = trials;
         this.correctness = null;
     }
-    
+
     public TrialTuple(ArrayList<Trial> trials, Boolean correctness) {
         this.trials = trials;
         this.correctness = correctness;
@@ -53,10 +57,10 @@ public class TrialTuple {
     public ArrayList<Trial> getTrials() {
         return this.trials;
     }
-    
-    public int getNumberOfStimuli(){
-        int retVal=0;
-        for(Trial trial:trials) {
+
+    public int getNumberOfStimuli() {
+        int retVal = 0;
+        for (Trial trial : trials) {
             retVal += trial.getStimuli().size();
         }
         return retVal;
@@ -84,57 +88,59 @@ public class TrialTuple {
         return false; // all trials are fired!
     }
 
-   
-
     @Override
     public String toString() {
-        //private final ArrayList<Trial> trials;
-        //private Boolean correctness;
-
-        StringBuilder builder = new StringBuilder();
-        builder.append("{");
-        UtilsJSONdialect<Trial> util = new UtilsJSONdialect<Trial>();
-        try {
-            String trialsStr = util.arrayListToString(this.trials);
-            builder.append("trials:").append(trialsStr).append(",");
-            builder.append("correcteness:{");
-            if (correctness == null) {
-                builder.append(" }}");
-            } else {
-                if (correctness) {
-                    builder.append("true}}");
-                } else {
-                    builder.append("false}}");
-                }
-            }
-            return builder.toString();
-        } catch (Exception e) {
-            return null;
-        }
+        Map<String, Object> map = new LinkedHashMap<String, Object>();
+        map.put("fields", TrialTuple.FLDS);
+        map.put("trials", this.trials);
+        map.put("correctness", this.correctness);
+        return map.toString();
     }
 
-    public static TrialTuple toObject(String str, LinkedHashMap<String, AudioAsStimulus> hashedStimuli) {
+    public static TrialTuple mapToObject(Map<String, Object> map) {
         try {
-            String trialsStr = UtilsJSONdialect.getKey(str, "trials")[0];
-            ArrayList<String> trialsStrArray = UtilsJSONdialect.stringToArrayList(trialsStr);
-            ArrayList<Trial> trials = new ArrayList<Trial>(trialsStrArray.size());
-            for (int i = 0; i < trialsStrArray.size(); i++) {
-                Trial tr = Trial.toObject(trialsStrArray.get(i), hashedStimuli);
-                trials.add(i, tr);
-            }
-            String correctnessStr = UtilsJSONdialect.getKeyWithoutBrackets(str, "correctness");
-            Boolean correctness = null;
-            if (correctnessStr.trim().equals("true")){
-               correctness = true; 
+            List<Object> trialsObj = (List<Object>) map.get("trials");
+            if (trialsObj == null) {
+                return null;
             } else {
-               if (correctnessStr.trim().equals("false")) {
-                   correctness = false;
-               }
+
+                ArrayList<Trial> trials = new ArrayList<Trial>(trialsObj.size());
+                for (int i = 0; i < trialsObj.size(); i++) {
+                    Map<String, Object> trialMap = (Map<String, Object>) trialsObj.get(i);
+                    Trial tr = Trial.mapToObject(trialMap);
+                    trials.add(i, tr);
+                }
+
+                Object correctnessObj = map.get("correctness");
+                Boolean correctness = null;
+                if (correctnessObj != null) {
+                    if (correctnessObj.toString().equals("true")) {
+                        correctness = true;
+                    } else {
+                        if (correctnessObj.toString().equals("false")) {
+                            correctness = false;
+                        }
+                    }
+                }
+
+                TrialTuple retVal = new TrialTuple(trials, correctness);
+                return retVal;
+
             }
-            
-            TrialTuple retVal = new TrialTuple(trials, correctness);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            return null;
+        }
+
+    }
+
+    public static TrialTuple toObject(String str) {
+        try {
+            Map<String, Object> map = UtilsJSONdialect.stringToObjectMap(str, TrialTuple.FLDS);
+            TrialTuple retVal = mapToObject(map);
             return retVal;
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            System.out.println(ex);
             return null;
         }
 

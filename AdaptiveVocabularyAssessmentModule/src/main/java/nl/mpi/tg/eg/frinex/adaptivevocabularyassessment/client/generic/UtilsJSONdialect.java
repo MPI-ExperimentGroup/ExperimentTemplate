@@ -18,296 +18,326 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
 import java.util.ArrayList;
-
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag;
 
 /**
  *
  * @author olhshk
  */
-public class UtilsJSONdialect<S> {
+public class UtilsJSONdialect {
 
-    public static String[] getKey(String jsonStringInit, String key) throws Exception {
+    
+
+    public static Tag[] toTagArray(Object obj) {
+        if (obj == null) {
+            return null;
+        }
         
-        String[] retVal = new String[2];
-        
+        List<Object> tagsBuffer = (List<Object>) obj;
+        Tag[] tgs = new Tag[tagsBuffer.size()];
+        int i = 0;
+        for (Object objTag : tagsBuffer) {
+            Tag tg = (Tag) objTag;
+            tgs[i] = tg;
+        }
+        return tgs;
+    }
+
+    public static Object stringToObject(String str) throws Exception {
+
+        if (str == null) {
+            return null;
+        }
+
+        String buffer = str.trim();
+        String fields = getKey(buffer, "fields");
+        if (fields!=null) { // a map epresenting an object
+            return stringToObjectMap(buffer, fields);
+        }
+       
+        if (buffer.startsWith("[")) { //is a generic list
+            return stringToList(buffer);
+        }
+
+        if (buffer.startsWith("{")) { // is a generic map
+            return stringToMap(buffer);
+        }
+
+        return str;
+    }
+    
+    public static ArrayList<Integer> objectToListInteger(Object obj) throws Exception {
+        if (obj==null) {
+            return null;
+        }
+        List<Object> objs = (List<Object>) obj;
+        ArrayList<Integer> retVal = new  ArrayList<Integer>(objs.size());
+        for (Object element:objs) {
+            String tmp = element.toString();
+            Integer val = Integer.parseInt(tmp);
+            retVal.add(val);
+        }
+        return retVal;
+    }
+    
+    public static int[] objectToListInt(Object obj) throws Exception {
+        if (obj==null) {
+            return null;
+        }
+        List<Object> objs = (List<Object>) obj;
+        int[] retVal = new  int[objs.size()];
+        for (int i=0; i<objs.size(); i++) {
+            String tmp = objs.get(i).toString();
+            int val = Integer.parseInt(tmp);
+            retVal[i]=val;
+        }
+        return retVal;
+    }
+    
+    public static double[] objectToArrayDouble(Object obj) throws Exception {
+         if (obj==null) {
+            return null;
+        }
+        List<Object> objs = (List<Object>) obj;
+        double[] retVal = new  double[objs.size()];
+        for (int i=0; i<objs.size(); i++) {
+            String tmp = objs.get(i).toString();
+            Double val = Double.parseDouble(tmp);
+            retVal[i]=val;
+        }
+        return retVal;
+    }
+
+    private static String getKey(String jsonStringInit, String key) throws Exception {
+
         if (jsonStringInit == null) {
-            retVal[0]=null;
-            retVal[1]=null;
-            return retVal;
+            return null;
         }
         if (key == null) {
-            retVal[0]=jsonStringInit;
-            retVal[1]="";
-            return retVal;
+            return jsonStringInit;
         }
 
         String jsonString = (new StringBuilder()).append(jsonStringInit).toString();
         if (jsonStringInit.startsWith("{") && jsonStringInit.endsWith("}")) {
             jsonString = removeFirstAndLast(jsonStringInit);
-        } 
+        } else {
+            if (jsonStringInit.startsWith("[") && jsonStringInit.endsWith("]")) {
+                jsonString = removeFirstAndLast(jsonStringInit);
+            }
+        }
 
-        String regExp = "(^" + key + ":)|(," + key + ":)|( " + key + ":)";
+        String regExp = "(^" + key + "=)|( " + key + "=)";
 
-        String[] parts = jsonString.split(regExp,2);
+        String[] parts = jsonString.split(regExp, 2);
         if (parts.length < 2) {
-            retVal[0]=null;
-            retVal[1]=null;
-            return retVal;
+            return null;
         }
         String buffer = parts[1].trim();
         StringBuilder val = new StringBuilder();
         char current = buffer.charAt(0);
-        if (current != '{') {
-            throw new Exception("Json dialect parsing error. Got key from string parsing error, no { at the beginning of the corresponding value");
-        }
-        int openBrackets = 1;
-        val.append("{");
-        for (int i = 1; i < buffer.length(); i++) {
-            current = buffer.charAt(i);
-            val.append(current);
-            if (current == '}') {
-                if (openBrackets == 1) {
-                    retVal[0] = val.toString();
-                    retVal[1] = buffer.substring(i+1);
-                    return retVal;
-                }
-                openBrackets--;
-            } else {
-                if (current == '{') {
-                    openBrackets++;
+        if (current != '{' && current != '[') { // the value is neither a list not a structure, return the sequence till the first comma
+            String[] parts2 = buffer.split(",");
+            return parts2[0].trim();
+        } else { // the value is either a list or a structure
+            char openingBracket = current;
+            char closingBracket = (openingBracket == '{') ? '}' : ']';
+            int openBrackets = 1;
+            val.append(openingBracket);
+            for (int i = 1; i < buffer.length(); i++) {
+                current = buffer.charAt(i);
+                val.append(current);
+                if (current == closingBracket) {
+                    if (openBrackets == 1) {
+                        return val.toString();
+                    }
+                    openBrackets--;
+                } else {
+                    if (current == closingBracket) {
+                        openBrackets++;
+                    }
                 }
             }
 
+            throw new Exception("Get key from string parsing error, no matching } or  ]");
         }
-        
-        throw new Exception("Get key from string parsing error, no matching } ");
+
     }
 
-    public static String removeFirstAndLast(String str) {
+    private static String removeFirstAndLast(String str) {
         if (str == null) {
             return null;
         }
         if (str.length() < 2) {
-            return "";
+            return str;
         }
         String retVal = str.substring(1, str.length() - 1);
         return retVal;
     }
 
-    public static String getKeyWithoutBrackets(String jsonString, String key) throws Exception {
-        String buffer = getKey(jsonString, key)[0];
-        String retVal = removeFirstAndLast(buffer);
-        return retVal;
-        
-    }
-    
-    
-
-    public String arrayListToString(ArrayList<S> list) throws Exception {
-        if (list == null) {
-            return null;
-        }
-        if (list.isEmpty()) {
-            return "{}";
-        }
-        StringBuilder retVal = new StringBuilder();
-        retVal.append("{");
-        for (int i = 0; i < list.size() - 1; i++) {
-            S obj = list.get(i);
-            retVal.append(i).append(":");
-            String objString = obj.toString();
-            if (objString.startsWith("{")) {
-                retVal.append(objString);
-            } else {
-                retVal.append("{").append(objString).append("}");
-            }
-            retVal.append(",");
-        }
-
-        int lastIndex = list.size() - 1;
-        S obj = list.get(lastIndex);
-        retVal.append(lastIndex).append(":");
-        String objString = obj.toString();
-        if (objString.startsWith("{")) {
-            retVal.append(objString);
-        } else {
-            retVal.append("{").append(objString).append("}");
-        }
-        retVal.append("}");
-        return retVal.toString();
-    }
-    
-    
-    public String arrayList2String(ArrayList<ArrayList<S>> list) throws Exception {
-        if (list == null) {
-            return null;
-        }
-        if (list.isEmpty()) {
-            return "{}";
-        }
-        UtilsJSONdialect<S> util = new UtilsJSONdialect<S>();
-        ArrayList<String> intermediate = new ArrayList<String>();
-        for (ArrayList<S> innerList : list) {
-            String innerListStr = util.arrayListToString(innerList);
-            intermediate.add(innerListStr);
-        }
-        UtilsJSONdialect<String> util2 = new UtilsJSONdialect<String>();
-        String retVal = util2.arrayListToString(intermediate);
-        return retVal;
-    }
-
-    public String arrayList3String(ArrayList<ArrayList<ArrayList<S>>> list) throws Exception {
-        if (list == null) {
-            return null;
-        }
-        if (list.isEmpty()) {
-            return "{}";
-        }
-        UtilsJSONdialect<S> util = new UtilsJSONdialect<S>();
-        ArrayList<String> intermediate = new ArrayList<String>();
-        for (ArrayList<ArrayList<S>> innerList : list) {
-            String innerListStr = util.arrayList2String(innerList);
-            intermediate.add(innerListStr);
-        }
-        UtilsJSONdialect<String> util2 = new UtilsJSONdialect<String>();
-        String retVal = util2.arrayListToString(intermediate);
-        return retVal;
-    }
-
-    public static String intArrayToString(int[] arr) throws Exception {
-        if (arr == null) {
-            return null;
-        }
-        if (arr.length == 0) {
-            return "{}";
-        }
-        StringBuilder retVal = new StringBuilder();
-        retVal.append("{");
-        for (int i = 0; i < arr.length - 1; i++) {
-            retVal.append(i).append(":");
-            retVal.append("{").append(arr[i]).append("}");
-            retVal.append(",");
-        }
-        int lastIndex = arr.length - 1;
-        retVal.append(lastIndex).append(":");
-        retVal.append("{").append(arr[lastIndex]).append("}");
-        retVal.append("}");
-        return retVal.toString();
-    }
-
-    public static String doubleArrayToString(double[] arr) throws Exception {
-        if (arr == null) {
-            return null;
-        }
-        if (arr.length == 0) {
-            return "{}";
-        }
-        StringBuilder retVal = new StringBuilder();
-        retVal.append("{");
-        for (int i = 0; i < arr.length - 1; i++) {
-            retVal.append(i).append(":");
-            retVal.append("{").append(arr[i]).append("}");
-            retVal.append(",");
-        }
-        int lastIndex = arr.length - 1;
-        retVal.append(lastIndex).append(":");
-        retVal.append("{").append(arr[lastIndex]).append("}");
-        retVal.append("}");
-        return retVal.toString();
-    }
-
-    public static ArrayList<String> stringToArrayList(String listStr) throws Exception {
+    private static List<Object> stringToList(String listStr) throws Exception {
         if (listStr == null) {
             return null;
         }
-
+        
         if (listStr.trim().equals("null") || listStr.trim().equals("{null}")) {
             return null;
         }
 
-        if (listStr.trim().isEmpty() || listStr.trim().equals("{}")) {
-            return new ArrayList<String>();
+        if (listStr.trim().isEmpty() || listStr.trim().equals("[]")) {
+            return new ArrayList<Object>();
         }
 
-        ArrayList<String> retVal = new ArrayList<String>();
-        String[] current = getKey(listStr, "0");
-        int i = 0;
-        String index;
-        while (current[0] != null) {
-            retVal.add(i, current[0]);
-            i++;
-            index = String.valueOf(i);
-            current = getKey(current[1], index);
+        String buffer = removeFirstAndLast(listStr.trim());
+        List<Integer> innerPositions = positionsWithinParentheses(buffer);
+
+        List<Object> retVal = new ArrayList<Object>();
+        int from = 0;
+
+        while (from < buffer.length()) {
+            int currentCommaPosition = buffer.indexOf(",", from);
+            if (innerPositions.contains(currentCommaPosition)) {
+                continue;
+            }
+            String valStr;
+            if (currentCommaPosition > -1) {
+                valStr = buffer.substring(from, currentCommaPosition);
+                from = currentCommaPosition + 1;
+            } else {
+                valStr = buffer.substring(from, buffer.length());
+                from = buffer.length();
+            }
+            Object val = stringToObject(valStr);
+            retVal.add(val);
         }
         return retVal;
     }
 
-    public static ArrayList<ArrayList<String>> stringToArray2List(String listStr) throws Exception {
-        ArrayList<String> outer = stringToArrayList(listStr);
-        if (outer == null) {
+    public static Map<String, Object> stringToObjectMap(String mapStr, String fieldsStr) throws Exception {
+        if (mapStr == null) {
             return null;
         }
-        ArrayList<ArrayList<String>> retVal = new ArrayList<ArrayList<String>>(outer.size());
-        for (String innerStr : outer) {
-            ArrayList<String> inner = stringToArrayList(innerStr);
-            retVal.add(inner);
-        }
-        return retVal;
-    }
 
-    public static ArrayList<Integer> stringToArrayListInteger(String listStr) throws Exception {
-
-        ArrayList<String> buffer = stringToArrayList(listStr);
-        if (buffer == null) {
+        if (mapStr.trim().equals("null") || mapStr.trim().equals("{null}")) {
             return null;
         }
-        if (buffer.isEmpty()) {
-            return new ArrayList<Integer>();
-        }
-        ArrayList<Integer> retVal = new ArrayList<Integer>(buffer.size());
-        for (int i = 0; i < buffer.size(); i++) {
-            String val = buffer.get(i);
-            String tmp = removeFirstAndLast(val);
-            Integer valInt = Integer.parseInt(tmp);
-            retVal.add(i, valInt);
-        }
-        return retVal;
-    }
 
-    public static double[] stringToArrayDouble(String listStr) throws Exception {
-        ArrayList<String> buffer = stringToArrayList(listStr);
-        if (buffer == null) {
+        if (mapStr.trim().isEmpty() || mapStr.trim().equals("{}")) {
             return null;
         }
-        if (buffer.isEmpty()) {
-            return new double[0];
-        }
-        double[] retVal = new double[buffer.size()];
-        for (int i = 0; i < buffer.size(); i++) {
-            String val = buffer.get(i);
-            String tmp = removeFirstAndLast(val);
-            double valInt = Double.parseDouble(tmp);
-            retVal[i] = valInt;
+
+        String[] fields = removeFirstAndLast(fieldsStr).split(" ,");
+        Map<String, Object> retVal = new HashMap<String, Object>();
+        for (int i = 0; i < fields.length; i++) {
+            String key = fields[i].trim();
+            String current = getKey(mapStr, key);
+            Object object = stringToObject(current);
+            retVal.put(key, object);
         }
         return retVal;
     }
 
-    public static int[] stringToArrayInt(String listStr) throws Exception {
-        ArrayList<String> buffer = stringToArrayList(listStr);
-        if (buffer == null) {
+    private static Map<String, Object> stringToMap(String mapStr) throws Exception {
+        if (mapStr == null) {
             return null;
         }
-        if (buffer.isEmpty()) {
-            return new int[0];
+
+        if (mapStr.trim().equals("null") || mapStr.trim().equals("{null}")) {
+            return null;
         }
-        int[] retVal = new int[buffer.size()];
-        for (int i = 0; i < buffer.size(); i++) {
-            String val = buffer.get(i);
-            String tmp = removeFirstAndLast(val);
-            int valInt = Integer.parseInt(tmp);
-            retVal[i] = valInt;
+
+        if (mapStr.trim().isEmpty() || mapStr.trim().equals("{}")) {
+            return new LinkedHashMap<String, Object>();
+        }
+
+        Map<String, Object> retVal = new LinkedHashMap<String, Object>();
+
+        List<String> keys = findKeys(mapStr);
+        for (String key : keys) {
+            String keyTr = key.trim();
+            String current = getKey(mapStr, keyTr);
+            Object object = stringToObject(current);
+            retVal.put(keyTr, object);
+        }
+
+        return retVal;
+
+    }
+
+    private static List<Integer> positionsWithinParentheses(String str) {
+        List<Integer> retVal = new ArrayList<Integer>();
+        int openBracket = 0;
+        int openCurly = 0;
+        for (int i = 0; i < str.length(); i++) {
+            char current = str.charAt(i);
+            switch (current) {
+                case '[':
+                    openBracket++;
+                    retVal.add(i);
+                    break;
+                case ']':
+                    openBracket--;
+                    retVal.add(i);
+                    break;
+                case '{':
+                    openCurly++;
+                    retVal.add(i);
+                    break;
+                case '}':
+                    openCurly--;
+                    retVal.add(i);
+                    break;
+                default:
+                    if (openBracket > 0 || openCurly > 0) {
+                        retVal.add(i);
+                    }
+                    break;
+            }
         }
         return retVal;
     }
 
+    private static List<String> findKeys(String str) {
+        if (str == null) {
+            return null;
+        }
+
+        String buffer = str.trim();
+        List<Integer> innerPositions = positionsWithinParentheses(buffer);
+
+        List<String> retVal = new ArrayList<String>();
+        int from = 0;
+
+        while (from < buffer.length()) {
+            int currentEqPosition = buffer.indexOf("=", from);
+            if (innerPositions.contains(currentEqPosition)) {
+                continue;
+            }
+            if (currentEqPosition > -1) {
+                int firstSpaceBack = findFirstSeparatorIndexBackwards(str, currentEqPosition - 1, ' ');
+                String key = buffer.substring(firstSpaceBack + 1, currentEqPosition);
+                retVal.add(key);
+                from = currentEqPosition + 1;
+            } else {
+                return retVal;
+            }
+
+        }
+        return retVal;
+    }
+
+    private static int findFirstSeparatorIndexBackwards(String str, int from, char sep) {
+        if (str == null) {
+            return -1;
+        }
+        for (int i = from; i > -1; i--) {
+            if (str.charAt(i) == sep) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }

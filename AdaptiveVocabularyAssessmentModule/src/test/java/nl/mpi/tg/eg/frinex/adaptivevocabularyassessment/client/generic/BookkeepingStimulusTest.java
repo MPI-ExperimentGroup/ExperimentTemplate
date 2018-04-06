@@ -119,7 +119,7 @@ public class BookkeepingStimulusTest {
     @Test
     public void testToString() {
         System.out.println("toString");
-        String expResult = "{stimulus:{smoer},userReaction:{null},correctness:{null},timeStamp:{0}}"+UtilsJSONdialectMap.FIELD_SEPARATOR+"stimulus,userReaction,correctness,timeStamp";
+        String expResult = "{stimulus:{smoer},userReaction:{null},correctness:{null},timeStamp:{0}}"+UtilsJSONdialect.FIELD_SEPARATOR+"stimulus,userReaction,correctness,timeStamp";
         String result = this.instance.toString();
         assertEquals(expResult, result);
     }
@@ -131,7 +131,7 @@ public class BookkeepingStimulusTest {
     public void testToObject() throws Exception{
         System.out.println("toObject");
         long now=System.currentTimeMillis();
-        String input="{stimulus:{smoer},userReaction:{yes},correctness:{false},timeStamp:{"+now+"}}"+UtilsJSONdialectMap.FIELD_SEPARATOR+"stimulus,userReaction,correctness,timeStamp";
+        String input="{stimulus:{smoer},userReaction:{yes},correctness:{false},timeStamp:{"+now+"}}"+UtilsJSONdialect.FIELD_SEPARATOR+"stimulus,userReaction,correctness,timeStamp";
         HashMap<String,BandStimulus> map = new HashMap<String,BandStimulus>();
         map.put("smoer", this.stimulus);
         BookkeepingStimulus<BandStimulus> result = this.instance.toObject(input, map);
