@@ -34,7 +34,7 @@
         <application.minorVersion>1</application.minorVersion> 
         <application.branch>pretesting</application.branch> 
         <versionCheck.allowSnapshots>true</versionCheck.allowSnapshots> 
-        <versionCheck.buildType>staging</versionCheck.buildType> 
+        <versionCheck.buildType>testing</versionCheck.buildType> 
         
         <!--<experiment.configuration.path>${project.build.sourceDirectory}/../xml</experiment.configuration.path>-->
         <!--<experiment.configuration.path>${project.build.sourceDirectory}/../../../../../ExperimentBuilder/src/main/xml</experiment.configuration.path>-->      
