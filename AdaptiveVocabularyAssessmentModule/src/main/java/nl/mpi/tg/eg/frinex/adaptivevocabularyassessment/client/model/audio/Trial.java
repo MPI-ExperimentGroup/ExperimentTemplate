@@ -19,18 +19,14 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Set;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 
 /**
  *
  * @author olhshk
  */
 public class Trial {
-
-    private static final String FLDS = "[trialId, stimuli, word, targetNonWord, numberOfSyllables, condition, lgth, bandIndex, bandLabel, positionTarget, positionFoil]";
 
     private final int trialId;
     private final ArrayList<BookkeepingStimulus<AudioAsStimulus>> stimuli;  // the first one (zero index) is the cue, it is in the order it should appear for the participant
@@ -43,7 +39,7 @@ public class Trial {
     private final String bandLabel;
     private final int positionTarget;
     private final int positionFoil;
-
+    
     public Trial(int id, String word, String targetNonWord, int nOfSyllables, TrialCondition condition, int length, String bandLabel, int bandIndex, int positionTarget, int positionFoil, ArrayList<BookkeepingStimulus<AudioAsStimulus>> stimuli) throws Exception {
 
         if (stimuli.size() != length + 1) {
@@ -108,14 +104,16 @@ public class Trial {
         return this.stimuli;
     }
 
-    public static ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> prepareTrialMatrix(ArrayList<Trial> csvTrials, int numberOfBands, int maxTrialLength) {
+    public static ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> prepareTrialMatrix(LinkedHashMap<Integer, Trial> csvTrials, int numberOfBands, int maxTrialLength) {
         ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> retVal = initMatrix(numberOfBands, maxTrialLength);
-        for (Trial trial : csvTrials) {
+        Set<Integer> keys = csvTrials.keySet();
+        for (Integer i:keys) {
+            Trial trial = csvTrials.get(i);
             TrialCondition condition = trial.getCondition();
             int bandIndex = trial.getBandIndex();
             int trialLength = trial.getTrialLength();
             ArrayList<Trial> listToInsert = retVal.get(bandIndex).get(trialLength).get(condition);
-            listToInsert.add(trial);
+            listToInsert.add(trial);            
         }
         return retVal;
     }
@@ -143,73 +141,57 @@ public class Trial {
 
     @Override
     public String toString() {
-
-        Map<String, Object> map = new LinkedHashMap<String, Object>();
-        map.put("fields", Trial.FLDS);
-        map.put("word", this.word);
-        map.put("targetNonWord", this.targetNonWord);
-        map.put("numberOfSyllables", this.numberOfSyllables);
-        map.put("lgth", this.lgth);
-        map.put("bandLabel", this.bandLabel);
-        map.put("positionTarget", this.positionTarget);
-        map.put("positionFoil", this.positionFoil);
-        map.put("stimuli", this.stimuli);
-        return map.toString();
+         return String.valueOf(this.getId());
     }
 
-    public static Trial mapToObject(Map<String, Object> map) throws Exception {
-
-        String idStr = map.get("trialId").toString();
-
-        String word = map.get("word").toString();
-        String targetNonWord = map.get("targetNonWord").toString();
-
-        String numberOfSyllablesStr = map.get("numberOfSyllables").toString();
-        String lgthStr = map.get("lgth").toString();
-        String bandIndexStr = map.get("bandIndex").toString();
-        String bandLabel = map.get("bandLabel").toString();
-        String conditionStr = map.get("condition").toString();
-        String positionTargetStr = map.get("positionTarget").toString();
-        String positionFoilStr = map.get("positionFoil").toString();
-
-        int numberOfSyllables = Integer.parseInt(numberOfSyllablesStr);
-        int lgth = Integer.parseInt(lgthStr);
-        int bandIndex = Integer.parseInt(bandIndexStr);
-        int id = Integer.parseInt(idStr);
-        int positionTarget = Integer.parseInt(positionTargetStr);
-        int positionFoil = Integer.parseInt(positionFoilStr);
-
-        TrialCondition condition = TrialCondition.valueOf(conditionStr);
-
-        Object stimuliObj = map.get("stimuli");
-        ArrayList<BookkeepingStimulus<AudioAsStimulus>> bStimuli;
-        if (stimuliObj == null) {
-            bStimuli = null;
-        } else {
-            List<Object> stimuliObjList = (List<Object>) stimuliObj;
-            bStimuli = new ArrayList<BookkeepingStimulus<AudioAsStimulus>>(stimuliObjList.size());
-            for (int i = 0; i < stimuliObjList.size(); i++) {
-                Map<String, Object> currentMap = (Map<String, Object>) stimuliObjList.get(i);
-                BookkeepingStimulus<AudioAsStimulus> ghost = new BookkeepingStimulus<AudioAsStimulus>(null);
-                BookkeepingStimulus<AudioAsStimulus> bStimulus = ghost.toBookkeepingStimulusObject(currentMap);
-                int position = bStimulus.getStimulus().getpositionInTrial();
-                bStimuli.set(position, bStimulus);
-            }
-        }
-
-        //Trial(int id, String word, String targetNonWord, int nOfSyllables, TrialCondition condition, int length, String bandLabel, int bandIndex)
-        Trial retVal = new Trial(id, word, targetNonWord, numberOfSyllables, condition, lgth, bandLabel, bandIndex, positionTarget, positionFoil, bStimuli);
-
-        return retVal;
-
+    public static Trial mapToObject(Object obj, LinkedHashMap<Integer, Trial> hashedTrials){
+          return hashedTrials.get(Integer.parseInt(obj.toString()));
     }
-    
-    public static Trial toObject(String str) throws Exception {
 
-        Map<String, Object> map = UtilsJSONdialect.stringToObjectMap(str, Trial.FLDS);
-        Trial retVal = mapToObject(map);
-        return retVal;
-
-    }
+//        String idStr = map.get("trialId").toString();
+//
+//        String word = map.get("word").toString();
+//        String targetNonWord = map.get("targetNonWord").toString();
+//
+//        String numberOfSyllablesStr = map.get("numberOfSyllables").toString();
+//        String lgthStr = map.get("lgth").toString();
+//        String bandIndexStr = map.get("bandIndex").toString();
+//        String bandLabel = map.get("bandLabel").toString();
+//        String conditionStr = map.get("condition").toString();
+//        String positionTargetStr = map.get("positionTarget").toString();
+//        String positionFoilStr = map.get("positionFoil").toString();
+//
+//        int numberOfSyllables = Integer.parseInt(numberOfSyllablesStr);
+//        int lgth = Integer.parseInt(lgthStr);
+//        int bandIndex = Integer.parseInt(bandIndexStr);
+//        int id = Integer.parseInt(idStr);
+//        int positionTarget = Integer.parseInt(positionTargetStr);
+//        int positionFoil = Integer.parseInt(positionFoilStr);
+//
+//        TrialCondition condition = TrialCondition.valueOf(conditionStr);
+//
+//        Object stimuliObj = map.get("stimuli");
+//        ArrayList<BookkeepingStimulus<AudioAsStimulus>> bStimuli;
+//        if (stimuliObj == null) {
+//            bStimuli = null;
+//        } else {
+//            List<Object> stimuliObjList = (List<Object>) stimuliObj;
+//            bStimuli = new ArrayList<BookkeepingStimulus<AudioAsStimulus>>(stimuliObjList.size());
+//            for (int i = 0; i < stimuliObjList.size(); i++) {
+//                Map<String, Object> currentMap = (Map<String, Object>) stimuliObjList.get(i);
+//                BookkeepingStimulus<AudioAsStimulus> ghost = new BookkeepingStimulus<AudioAsStimulus>(null);
+//                BookkeepingStimulus<AudioAsStimulus> bStimulus = ghost.toBookkeepingStimulusObject(currentMap);
+//                int position = bStimulus.getStimulus().getpositionInTrial();
+//                bStimuli.set(position, bStimulus);
+//            }
+//        }
+//
+//        //Trial(int id, String word, String targetNonWord, int nOfSyllables, TrialCondition condition, int length, String bandLabel, int bandIndex)
+//        Trial retVal = new Trial(id, word, targetNonWord, numberOfSyllables, condition, lgth, bandLabel, bandIndex, positionTarget, positionFoil, bStimuli);
+//
+//        return retVal;
+//
+//    }
+//    
 
 }

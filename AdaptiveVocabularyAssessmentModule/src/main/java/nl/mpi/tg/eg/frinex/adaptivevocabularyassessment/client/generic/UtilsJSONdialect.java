@@ -52,11 +52,17 @@ public class UtilsJSONdialect {
         if (str == null) {
             return null;
         }
+        
+        if (str.trim().equals("null")) {
+            return null;
+        }
 
         String buffer = str.trim();
         String fields = getKey(buffer, "fields");
         if (fields!=null) { // a map epresenting an object
-            return stringToObjectMap(buffer, fields);
+            Object object = stringToObject(fields);
+            String[] flds = objectToArrayString(object);
+            return stringToObjectMap(buffer, flds);
         }
        
         if (buffer.startsWith("[")) { //is a generic list
@@ -78,13 +84,13 @@ public class UtilsJSONdialect {
         ArrayList<Integer> retVal = new  ArrayList<Integer>(objs.size());
         for (Object element:objs) {
             String tmp = element.toString();
-            Integer val = Integer.parseInt(tmp);
+            Integer val = Integer.parseInt(tmp.trim());
             retVal.add(val);
         }
         return retVal;
     }
     
-    public static int[] objectToListInt(Object obj) throws Exception {
+    public static int[] objectToArrayInt(Object obj) throws Exception {
         if (obj==null) {
             return null;
         }
@@ -92,22 +98,34 @@ public class UtilsJSONdialect {
         int[] retVal = new  int[objs.size()];
         for (int i=0; i<objs.size(); i++) {
             String tmp = objs.get(i).toString();
-            int val = Integer.parseInt(tmp);
+            int val = Integer.parseInt(tmp.trim());
             retVal[i]=val;
         }
         return retVal;
     }
+    public static String[] objectToArrayString(Object obj) throws Exception {
+        if (obj==null) {
+            return null;
+        }
+        List<Object> objs = (List<Object>) obj;
+        String[] retVal = new String[objs.size()];
+        for (int i=0; i<objs.size(); i++) {
+            String tmp = objs.get(i).toString();
+            retVal[i]=tmp;
+        }
+        return retVal;
+    }
     
-    public static double[] objectToArrayDouble(Object obj) throws Exception {
+    public static ArrayList<Double> objectToListDouble(Object obj) throws Exception {
          if (obj==null) {
             return null;
         }
         List<Object> objs = (List<Object>) obj;
-        double[] retVal = new  double[objs.size()];
+        ArrayList<Double> retVal = new  ArrayList<Double>(objs.size());
         for (int i=0; i<objs.size(); i++) {
             String tmp = objs.get(i).toString();
             Double val = Double.parseDouble(tmp);
-            retVal[i]=val;
+            retVal.add(i,val);
         }
         return retVal;
     }
@@ -216,7 +234,7 @@ public class UtilsJSONdialect {
         return retVal;
     }
 
-    public static Map<String, Object> stringToObjectMap(String mapStr, String fieldsStr) throws Exception {
+    public static LinkedHashMap<String, Object> stringToObjectMap(String mapStr,String[] fields) throws Exception {
         if (mapStr == null) {
             return null;
         }
@@ -229,8 +247,7 @@ public class UtilsJSONdialect {
             return null;
         }
 
-        String[] fields = removeFirstAndLast(fieldsStr).split(" ,");
-        Map<String, Object> retVal = new HashMap<String, Object>();
+        LinkedHashMap<String, Object> retVal = new LinkedHashMap<String, Object>();
         for (int i = 0; i < fields.length; i++) {
             String key = fields[i].trim();
             String current = getKey(mapStr, key);
@@ -240,7 +257,7 @@ public class UtilsJSONdialect {
         return retVal;
     }
 
-    private static Map<String, Object> stringToMap(String mapStr) throws Exception {
+    private static LinkedHashMap<String, Object> stringToMap(String mapStr) throws Exception {
         if (mapStr == null) {
             return null;
         }
@@ -253,7 +270,7 @@ public class UtilsJSONdialect {
             return new LinkedHashMap<String, Object>();
         }
 
-        Map<String, Object> retVal = new LinkedHashMap<String, Object>();
+        LinkedHashMap<String, Object> retVal = new LinkedHashMap<String, Object>();
 
         List<String> keys = findKeys(mapStr);
         for (String key : keys) {

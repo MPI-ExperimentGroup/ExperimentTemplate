@@ -26,6 +26,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -44,6 +45,7 @@ public class PermutationPairTest {
     private final int numberOfBands = 11;
     ArrayList<ArrayList<TrialCondition>> trialTypesPermutations;
     ArrayList<ArrayList<Integer>> trialLengtPermutations;
+    AudioStimuliFromString reader;
 
     public PermutationPairTest() {
         UtilsList<TrialCondition> utilTrials = new UtilsList<TrialCondition>();
@@ -52,8 +54,9 @@ public class PermutationPairTest {
         UtilsList<Integer> utilSizes = new UtilsList<Integer>();
         this.trialLengtPermutations = utilSizes.generatePermutations(this.requiredLengths);
 
-        ArrayList<Trial> trialsAsInCsv = AudioStimuliFromString.readTrialsAsCsv(labelling);
-        this.trials = Trial.prepareTrialMatrix(trialsAsInCsv, this.numberOfBands, this.maxTrialLength);
+        this.reader = new AudioStimuliFromString();
+        this.reader.readTrialsAsCsv(labelling); 
+        this.trials = Trial.prepareTrialMatrix(reader.getHashedTrials(), this.numberOfBands, this.maxTrialLength);
     }
 
     @BeforeClass
@@ -77,7 +80,7 @@ public class PermutationPairTest {
      */
     @Test
     public void testToString() {
-        System.out.println("toString with empty trial List");
+        System.out.println("toString with null trial List");
         ArrayList<Integer> lengths = new ArrayList<Integer>(4);
         lengths.add(4);
         lengths.add(3);
@@ -91,7 +94,8 @@ public class PermutationPairTest {
         conditions.add(TrialCondition.TARGET_ONLY);
 
         PermutationPair instance = new PermutationPair(conditions, lengths, null);
-        String expResult = "{trialConditions:{0:{NO_TARGET},1:{TARGET_AND_FOIL},2:{NO_TARGET},3:{TARGET_ONLY}},trialLengths:{0:{4},1:{3},2:{5},3:{6}}}";
+        String expResult = "{fields=[trialConditions, trialLengths, trials], trialConditions=[NO_TARGET, TARGET_AND_FOIL, NO_TARGET, TARGET_ONLY], trialLengths=[4, 3, 5, 6], trials=null}";
+        System.out.println(instance.toString());
         String result = instance.toString();
         assertEquals(expResult, result);
     }
@@ -101,24 +105,31 @@ public class PermutationPairTest {
      */
     @Test
     public void testToObject() {
-        System.out.println("toObject with empty trialList ");
-        String str = "{trialConditions:{0:{NO_TARGET},1:{TARGET_AND_FOIL},2:{NO_TARGET},3:{TARGET_ONLY}},trialLengths:{0:{4},1:{3},2:{5},3:{6}}}";
-        PermutationPair result = PermutationPair.toObject(str, null);
-
-        ArrayList<Integer> lengths = new ArrayList<Integer>(4);
-        lengths.add(4);
-        lengths.add(3);
-        lengths.add(5);
-        lengths.add(6);
-
+        System.out.println("toObject");
+        
         ArrayList<TrialCondition> conditions = new ArrayList<TrialCondition>(4);
         conditions.add(TrialCondition.NO_TARGET);
         conditions.add(TrialCondition.TARGET_AND_FOIL);
         conditions.add(TrialCondition.NO_TARGET);
         conditions.add(TrialCondition.TARGET_ONLY);
-
+        
+        ArrayList<Integer> lengths = new ArrayList<Integer>(4);
+        lengths.add(4);
+        lengths.add(3);
+        lengths.add(5);
+        lengths.add(6);
+        
+        LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+        map.put("fields", PermutationPair.FLDS);
+        map.put("trialConditions", conditions);
+        map.put("trialLengths", lengths);
+        map.put("trials", null);
+        
+        PermutationPair result = PermutationPair.toObject(map, this.reader.getHashedTrials());
         PermutationPair expResult = new PermutationPair(conditions, lengths, null);
         assertEquals(expResult.getTrialConditions(), result.getTrialConditions());
+        assertEquals(expResult.getTrialLengths(), result.getTrialLengths());
+        assertNull(result.getTrials());
     }
 
     /**
@@ -172,7 +183,7 @@ public class PermutationPairTest {
     }
 
     /**
-     * Test of getTrials method, of class PermutationPair.
+     * Test of getHashedTrials method, of class PermutationPair.
      */
     @Test
     public void testGetTrials() {

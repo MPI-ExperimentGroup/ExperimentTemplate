@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
@@ -31,7 +32,9 @@ import java.util.Set;
  * @param <T> userRecation, can be string, boolean, double, etc.
  */
 public class BookkeepingStimulus<A extends BandStimulus> {
-
+    
+    
+    private final static String[] FLDS = {"stimulus", "userReaction", "correctness", "timeStamp"};
     private final A stimulus;
     private String userReaction; // can be string, boolean, double, etc.
     private Boolean correctness;
@@ -76,26 +79,24 @@ public class BookkeepingStimulus<A extends BandStimulus> {
     @Override
     public String toString() {
         Map<String, Object> map = new LinkedHashMap<String, Object>();
-        map.put("stimulus", this.stimulus.getSerialisationMap());
+        map.put("fields", Arrays.asList(BookkeepingStimulus.FLDS).toString());
+        map.put("stimulus", this.stimulus.getUniqueId());
         map.put("userReaction", this.userReaction);
         map.put("correctness", this.correctness);
         map.put("timeStamp", this.timeStamp);
        return map.toString();
     }
     
-    public BookkeepingStimulus<A> toObject(String serialisation) throws Exception {
-        Object object = UtilsJSONdialect.stringToObject(serialisation);
-        BookkeepingStimulus<A> retVal = this.toBookkeepingStimulusObject(object);
+    public BookkeepingStimulus<A> toObject(String serialisation, LinkedHashMap<String, A> hashedStimuli) throws Exception {
+        Map<String, Object> map = UtilsJSONdialect.stringToObjectMap(serialisation, BookkeepingStimulus.FLDS);
+        BookkeepingStimulus<A> retVal = this.toBookkeepingStimulusObject(map, hashedStimuli);
         return retVal;
     }
 
 
 
-    public BookkeepingStimulus<A> toBookkeepingStimulusObject(Object object) throws Exception {
-        if (!(object instanceof Map<?, ?>)) {
-            throw new Exception("Failed to deserialise input string into the intermediate map of type object to object");
-        }
-        Map<String, Object> map = (Map<String, Object>) object;
+    public BookkeepingStimulus<A> toBookkeepingStimulusObject(Map<String, Object> map, LinkedHashMap<String, A> hashedStimuli) throws Exception {
+       
         Set<String> keys = map.keySet();
         String corr = null;
         String reaction = null;
@@ -104,9 +105,8 @@ public class BookkeepingStimulus<A extends BandStimulus> {
         for (String key : keys) {
             switch (key) {
                 case "stimulus":
-                    Object stimulusObj = map.get(key);
-                    Map<String, Object> stimulusMap = (Map<String, Object>) stimulusObj;
-                    localStimulus = (A) BandStimulus.mapToBandStimulusObject(stimulusMap);
+                    String stimulusId = map.get(key).toString();
+                    localStimulus = hashedStimuli.get(stimulusId);
                     break;
                 case "correctness":
                     corr = map.get(key).toString();

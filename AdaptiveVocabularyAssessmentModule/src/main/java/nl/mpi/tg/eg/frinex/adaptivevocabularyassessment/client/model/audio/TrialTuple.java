@@ -30,7 +30,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSON
  */
 public class TrialTuple {
 
-    private final static String FLDS = "[trials, correctness]";
+    private final static String[] FLDS = {"trials", "correctness"};
 
     private final ArrayList<Trial> trials;
     private Boolean correctness;
@@ -88,6 +88,8 @@ public class TrialTuple {
         return false; // all trials are fired!
     }
 
+   
+
     @Override
     public String toString() {
         Map<String, Object> map = new LinkedHashMap<String, Object>();
@@ -97,7 +99,7 @@ public class TrialTuple {
         return map.toString();
     }
 
-    public static TrialTuple mapToObject(Map<String, Object> map) {
+    public static TrialTuple mapToObject(Map<String, Object> map, LinkedHashMap<Integer, Trial> hashedTrials) {
         try {
             List<Object> trialsObj = (List<Object>) map.get("trials");
             if (trialsObj == null) {
@@ -106,8 +108,8 @@ public class TrialTuple {
 
                 ArrayList<Trial> trials = new ArrayList<Trial>(trialsObj.size());
                 for (int i = 0; i < trialsObj.size(); i++) {
-                    Map<String, Object> trialMap = (Map<String, Object>) trialsObj.get(i);
-                    Trial tr = Trial.mapToObject(trialMap);
+                    Integer id = Integer.parseInt(trialsObj.get(i).toString());
+                    Trial tr = hashedTrials.get(id);
                     trials.add(i, tr);
                 }
 
@@ -134,10 +136,10 @@ public class TrialTuple {
 
     }
 
-    public static TrialTuple toObject(String str) {
+    public static TrialTuple toObject(String str, LinkedHashMap<Integer, Trial> hashedTrials) {
         try {
             Map<String, Object> map = UtilsJSONdialect.stringToObjectMap(str, TrialTuple.FLDS);
-            TrialTuple retVal = mapToObject(map);
+            TrialTuple retVal = mapToObject(map, hashedTrials);
             return retVal;
         } catch (Exception ex) {
             System.out.println(ex);

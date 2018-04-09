@@ -20,12 +20,14 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimuliProvider;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsList;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Trial;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioAsStimulus;
@@ -41,21 +43,26 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  */
 public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus> {
 
+    private final static String[] SPECIFIC_FLDS = {"availableCombinations", "currentTrialTuple", "responseRecord"};
+
     // requirements, possible moving to config
-    // atm do not need serialisation, as it stays the same in any state
+    // do not need serialisation, as it stays the same in any state
     private final String[] labelling = {"min10db", "min8db", "min6db", "min4db", "min2db", "zerodb", "plus2db", "plus4db", "plus6db", "plus8db", "plus10db"};
     private final ArrayList<Integer> requiredLengths = new ArrayList<Integer>(Arrays.asList(3, 4, 5, 6));
     private final int maxTrialLength = 6;
     private final ArrayList<TrialCondition> requiredTrialTypes = new ArrayList<TrialCondition>(Arrays.asList(TrialCondition.TARGET_ONLY, TrialCondition.TARGET_AND_FOIL, TrialCondition.NO_TARGET, TrialCondition.NO_TARGET));
     private final Random rnd = new Random();
-
-    //private final AudioAsStimulus[] stimulusArray;
-    // x[i][j][contdition] is the list of all trials (id-s) of the band-index i  of the length j satisfying "condition"
+    
+    // do not need serialisation
+   // x[i][j][contdition] is the list of all trials (id-s) of the band-index i  of the length j satisfying "condition"
     private ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> trials; // shared between various permutation-pairs, reduced while it is used
+    
+    
+    AudioStimuliFromString reader = new AudioStimuliFromString();
+    // to be serialised
     private ArrayList<ArrayList<PermutationPair>> availableCombinations; // x[i] is the list of permutations with non-empty possibilities to instantiate them using trials matrix of unused trials
-
     private TrialTuple currentTrialTuple;
-
+    
     public AudioAsStimuliProvider(Stimulus[] stimulusArray) {
         super(stimulusArray);
     }
@@ -64,24 +71,35 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     public void initialiseStimuliState(String stimuliStateSnapshot) {
 
         super.initialiseStimuliState(stimuliStateSnapshot);
+        if (stimuliStateSnapshot.isEmpty()) {
+            
 
-        this.currentBandIndex = this.startBand;
+            UtilsList<TrialCondition> utilTrials = new UtilsList<TrialCondition>();
+            ArrayList<ArrayList<TrialCondition>> trialTypesPermutations = utilTrials.generatePermutations(this.requiredTrialTypes);
 
-        UtilsList<TrialCondition> utilTrials = new UtilsList<TrialCondition>();
-        ArrayList<ArrayList<TrialCondition>> trialTypesPermutations = utilTrials.generatePermutations(this.requiredTrialTypes);
+            UtilsList<Integer> utilSizes = new UtilsList<Integer>();
+            ArrayList<ArrayList<Integer>> trialLengtPermutations = utilSizes.generatePermutations(this.requiredLengths);
 
-        UtilsList<Integer> utilSizes = new UtilsList<Integer>();
-        ArrayList<ArrayList<Integer>> trialLengtPermutations = utilSizes.generatePermutations(this.requiredLengths);
+            this.reader = new AudioStimuliFromString();
+            this.reader.readTrialsAsCsv(this.labelling);
+            this.trials = Trial.prepareTrialMatrix(this.reader.getHashedTrials(), this.numberOfBands, this.maxTrialLength);
 
-        ArrayList<Trial> trialsAsInCsv = AudioStimuliFromString.readTrialsAsCsv(labelling);
-        this.trials = Trial.prepareTrialMatrix(trialsAsInCsv, this.numberOfBands, this.maxTrialLength);
-
-        this.availableCombinations = PermutationPair.initialiseAvailabilityList(this.trials, trialLengtPermutations, trialTypesPermutations, this.numberOfBands);
-        boolean init = this.initialiseNextFineTuningTuple();
-        if (!init) {
-            System.out.println(this.errorMessage);
+            this.availableCombinations = PermutationPair.initialiseAvailabilityList(this.trials, trialLengtPermutations, trialTypesPermutations, this.numberOfBands);
+            
+            this.currentBandIndex = this.startBand;
+            boolean init = this.initialiseNextFineTuningTuple();
+            if (!init) {
+                System.out.println(this.errorMessage);
+            }
+        } else {
+            try {
+                this.deserialiseSpecific(stimuliStateSnapshot);
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
         }
     }
+    
 
     @Override
     public boolean initialiseNextFineTuningTuple() {
@@ -216,13 +234,6 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         return stringBuilder.toString();
     }
 
-    @Override
-    public String toString() {
-        return "";
-    }
-
-   
-
     public TrialTuple createTupleForBand(ArrayList<PermutationPair> availablePermutations) {
 
         if (availablePermutations.size() < 1) {
@@ -244,6 +255,60 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         TrialTuple retVal = new TrialTuple(trs);
         return retVal;
     }
+
+    @Override
+    public String toString() {
+        Map<String, Object> map = super.toMap();
+        map.put("availableCombinations", this.availableCombinations);
+        map.put("currentTrialTuple", this.currentTrialTuple);
+        return map.toString();
+    }
+
+    @Override
+    protected void deserialiseSpecific(String str) throws Exception {
+        
+        this.reader.readTrialsAsCsv(this.labelling);
+        
+        this.trials = Trial.prepareTrialMatrix(reader.getHashedTrials(), this.numberOfBands, this.maxTrialLength);
+        
+        Map<String, Object> map = UtilsJSONdialect.stringToObjectMap(str, SPECIFIC_FLDS);
+        
+        Object recordObj = map.get("responseRecord");
+        this.responseRecord = new ArrayList<BookkeepingStimulus<AudioAsStimulus>>();
+        BookkeepingStimulus<AudioAsStimulus> factory = new BookkeepingStimulus<AudioAsStimulus>(null);
+        if (recordObj != null) {
+            List<Object> objs = (List<Object>) recordObj;
+            for (int i = 0; i < objs.size(); i++) {
+                Map<String,Object> mapBStimulus= (Map<String,Object>) objs.get(i);
+                BookkeepingStimulus<AudioAsStimulus> bStimulus = factory.toBookkeepingStimulusObject(mapBStimulus, this.reader.getHashedStimuli());
+                this.responseRecord.add(i, bStimulus);
+            }
+        }
+        
+        ArrayList<ArrayList<Object>> permutObjects = (ArrayList<ArrayList<Object>>) map.get("availableCombinations");
+        this.availableCombinations = new ArrayList<ArrayList<PermutationPair>>(permutObjects.size());
+        for (int i=0; i<permutObjects.size(); i++) {
+            if (permutObjects.get(i) == null) {
+                this.availableCombinations.add(null);
+                continue;
+            }
+            ArrayList<PermutationPair> permForBand = new ArrayList<PermutationPair>(permutObjects.get(i).size());
+            this.availableCombinations.add(permForBand);
+            for (Object object:permutObjects.get(i)) {
+                LinkedHashMap<String, Object> objMap = (LinkedHashMap<String, Object>) object;
+                PermutationPair perm = PermutationPair.toObject(objMap, this.reader.getHashedTrials());
+                permForBand.add(perm);
+            }
+        }
+        
+        
+        
+        LinkedHashMap<String, Object> tupleMap = (LinkedHashMap<String, Object>) map.get("currentTrialTuple");
+        this.currentTrialTuple = TrialTuple.mapToObject(tupleMap, this.reader.getHashedTrials());
+        
+    }
+    
+  
 
     // not relevant for this experiment
     @Override
@@ -272,11 +337,6 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
     @Override
     public BookkeepingStimulus<AudioAsStimulus> deriveNextFastTrackStimulus() {
-        return null;
-    }
-
-    @Override
-    public HashMap<String, AudioAsStimulus> generateHashedStimuli() {
         return null;
     }
 

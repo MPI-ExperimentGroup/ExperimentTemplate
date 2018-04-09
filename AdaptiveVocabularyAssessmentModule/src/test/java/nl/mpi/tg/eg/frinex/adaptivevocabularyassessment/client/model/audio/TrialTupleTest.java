@@ -166,9 +166,9 @@ public class TrialTupleTest {
     public void testToObject() {
         System.out.println("toObject");
         String str = "";
-        LinkedHashMap<String, AudioAsStimulus> hashedStimuli = null;
+        LinkedHashMap<Integer, Trial> hashedTrials = null;
         TrialTuple expResult = null;
-        TrialTuple result = TrialTuple.toObject(str, hashedStimuli);
+        TrialTuple result = TrialTuple.toObject(str, hashedTrials);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

@@ -1529,6 +1529,7 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getToString method, of class AdVocAsStimuliProvider.
      */
+    @Ignore
     @Test
     public void testToStringPlusInitialise() {
         System.out.println("toString");

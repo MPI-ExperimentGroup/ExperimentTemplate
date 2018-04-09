@@ -20,7 +20,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.Set;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioStimuliFromString;
 import org.junit.After;
@@ -38,24 +38,22 @@ import utils.TrialsCsv;
  */
 public class TrialTest {
 
-   private ArrayList<Trial> instance;
-   
-   private String[] labelling = {"min10db", "min8db", "min6db", "min4db", "min2db", "zerodb", "plus2db", "plus4db", "plus6db", "plus8db", "plus10db"};
-    
-    
-    public TrialTest(){
+    LinkedHashMap<Integer, Trial> hashedTrials;
+
+    private String[] labelling = {"min10db", "min8db", "min6db", "min4db", "min2db", "zerodb", "plus2db", "plus4db", "plus6db", "plus8db", "plus10db"};
+
+    public TrialTest() {
         AudioStimuliFromString util = new AudioStimuliFromString();
         try {
-            this.instance = this.parseTrialsInputCSVStringIntoTrialsArray(util, TrialsCsv.CSV_CONTENT);
+            this.hashedTrials = this.parseTrialsInputCSVStringIntoTrialsArray(util, TrialsCsv.CSV_CONTENT);
         } catch (Exception ex) {
-            
-        } 
+
+        }
     }
-  
+
     @BeforeClass
     public static void setUpClass() {
-        
-       
+
     }
 
     @AfterClass
@@ -64,7 +62,7 @@ public class TrialTest {
 
     @Before
     public void setUp() {
-        
+
     }
 
     @After
@@ -77,18 +75,19 @@ public class TrialTest {
     @Test
     public void testGetStimuliList() {
         System.out.println("getStimuliList");
-       
-        Trial   trial1= this.instance.get(0);
-        ArrayList<BookkeepingStimulus<AudioAsStimulus>>  stimuli = trial1.getStimuli();
+
+        Set<Integer> keys = this.hashedTrials.keySet();
         
+        Trial trial1 = this.hashedTrials.get(keys.iterator().next()); // taking the very first key
+        ArrayList<BookkeepingStimulus<AudioAsStimulus>> stimuli = trial1.getStimuli();
+
         //"1;vloer;smoer_1.wav;1;Target-only;3 words;deebral.wav;smoer_2.wav;wijp.wav;;;;2;plus10db;0;\n" 
-        
         assertEquals(4, stimuli.size());
         assertEquals("smoer_1", stimuli.get(0).getStimulus().getLabel());
         assertEquals("deebral", stimuli.get(1).getStimulus().getLabel());
         assertEquals("smoer_2", stimuli.get(2).getStimulus().getLabel());
         assertEquals("wijp", stimuli.get(3).getStimulus().getLabel());
-        
+
         assertEquals(10, trial1.getBandIndex());
         assertEquals("plus10db", trial1.getBandLabel());
         assertEquals(TrialCondition.TARGET_ONLY, trial1.getCondition());
@@ -104,21 +103,9 @@ public class TrialTest {
     @Test
     public void testGetWord() {
         System.out.println("getWord");
-        int testLength = 4;
-        String[] words = new String[testLength];
-        for (int i = 0; i < testLength; i++) {
-            words[i] = this.instance.get(i).getWord();
-        }
-//        "1;vloer;smoer_1.wav;1;Target-only;3 words;deebral.wav;smoer_2.wav;wijp.wav;;;;2;plus10db;0;\n" +
-//"2;pauw;paud_1.wav;1;Target-only;3 words;rolscheegt.wav;paud_2.wav;staap.wav;;;;2;plus10db;0;\n" +
-//"3;krik;grik_1.wav;1;Target-only;3 words;spank.wav;grik_2.wav;pintein.wav;;;;2;plus10db;0;\n" +
-//"4;schelp;schess_1.wav;1;Target-only;3 words;rim.wav;schess_2.wav;werelglal.wav;;;;2;plus10db;0;\n" +
-        assertEquals("vloer", words[0]);
-        assertEquals("pauw", words[1]);
-        assertEquals("krik", words[2]);
-        assertEquals("schelp", words[3]);
+        Set<Integer> keys = this.hashedTrials.keySet();
+        assertEquals("vloer", this.hashedTrials.get(keys.iterator().next()).getWord()); // the very first trial
     }
-
 
     /**
      * Test of getBandNumber method, of class Trial.
@@ -126,29 +113,26 @@ public class TrialTest {
     @Test
     public void testGetBandIndex() {
         System.out.println("getBandNumber");
-        int testLength = 300;
-        int[] bands = new int[testLength];
-        for (int i = 0; i < testLength; i++) {
-            bands[i] = this.instance.get(i).getBandIndex();
+        Set<Integer> keys = this.hashedTrials.keySet();
+        for (Integer i : keys) {
+            ArrayList<BookkeepingStimulus<AudioAsStimulus>> stimuli = this.hashedTrials.get(i).getStimuli();
+            for (BookkeepingStimulus<AudioAsStimulus> bStimulus : stimuli) {
+                assertEquals(this.hashedTrials.get(i).getBandIndex(), bStimulus.getStimulus().getbandIndex());
+            }
         }
-        assertEquals(10, bands[0]);
-        assertEquals(10, bands[1]);
-        assertEquals(10, bands[2]);
-        assertEquals(10, bands[3]);
+
     }
-     @Test
+
+    @Test
     public void testGetBandLabel() {
         System.out.println("getBandLabel");
-        int testLength = 4;
-        String[] bands = new String[testLength];
-        for (int i = 0; i < testLength; i++) {
-            bands[i] = this.instance.get(i).getBandLabel();
+        Set<Integer> keys = this.hashedTrials.keySet();
+        for (Integer i : keys) {
+            ArrayList<BookkeepingStimulus<AudioAsStimulus>> stimuli = this.hashedTrials.get(i).getStimuli();
+            for (BookkeepingStimulus<AudioAsStimulus> bStimulus : stimuli) {
+                assertEquals(this.hashedTrials.get(i).getBandLabel(), bStimulus.getStimulus().getbandLabel());
+            }
         }
-        assertEquals("plus10db", bands[0]);
-        assertEquals("plus10db", bands[1]);
-        assertEquals("plus10db", bands[2]);
-        assertEquals("plus10db", bands[3]);
-        
     }
 
     /**
@@ -161,7 +145,7 @@ public class TrialTest {
         int testLength = 4;
         String[] targetNonWords = new String[testLength];
         for (int i = 0; i < testLength; i++) {
-            targetNonWords[i] = this.instance.get(i).getTargetNonWord();
+            targetNonWords[i] = this.hashedTrials.get(i).getTargetNonWord();
         }
         assertEquals("smoer", targetNonWords[0]);
         assertEquals("hers", targetNonWords[1]);
@@ -172,14 +156,14 @@ public class TrialTest {
     /**
      * Test of getNumberOfSyllables method, of class Trial.
      */
-     @Ignore
+    @Ignore
     @Test
     public void testGetNumberOfSyllables() {
         System.out.println("getNumberOfSyllables");
-        int testLength=4;
+        int testLength = 4;
         int[] syllabN = new int[testLength];
         for (int i = 0; i < testLength; i++) {
-            syllabN[i] = this.instance.get(i).getNumberOfSyllables();
+            syllabN[i] = this.hashedTrials.get(i).getNumberOfSyllables();
         }
         assertEquals(1, syllabN[0]);
         assertEquals(1, syllabN[1]);
@@ -190,14 +174,14 @@ public class TrialTest {
     /**
      * Test of getCondition method, of class Trial.
      */
-     @Ignore
+    @Ignore
     @Test
     public void testGetCondition() {
         System.out.println("getCondition");
-        int testLength=4;
+        int testLength = 4;
         TrialCondition[] consitions = new TrialCondition[testLength];
         for (int i = 0; i < testLength; i++) {
-            consitions[i] = this.instance.get(i).getCondition();
+            consitions[i] = this.hashedTrials.get(i).getCondition();
         }
         assertEquals(TrialCondition.TARGET_ONLY, consitions[0]);
         assertEquals(TrialCondition.TARGET_ONLY, consitions[1]);
@@ -208,18 +192,18 @@ public class TrialTest {
     /**
      * Test of getTrialLength method, of class Trial.
      */
-     @Ignore
+    @Ignore
     @Test
     public void testGetTrialLength() {
         System.out.println("getTrialLength");
-        
+
         int testLength = 4;
         int[] trailL = new int[testLength];
         ArrayList<BookkeepingStimulus<AudioAsStimulus>>[] stimuli = new ArrayList[testLength];
-     
+
         for (int i = 0; i < testLength; i++) {
-            trailL[i] = this.instance.get(i).getTrialLength();
-            stimuli[i] = this.instance.get(i).getStimuli();
+            trailL[i] = this.hashedTrials.get(i).getTrialLength();
+            stimuli[i] = this.hashedTrials.get(i).getStimuli();
         }
         assertEquals(3, trailL[0]);
         assertEquals(4, trailL[1]);
@@ -232,11 +216,10 @@ public class TrialTest {
         assertEquals(trailL[3] + 1, stimuli[3].size());
     }
 
-   
     /**
      * Test of getStimuli method, of class Trial.
      */
-     @Ignore
+    @Ignore
     @Test
     public void testGetStimuli() {
         System.out.println("getStimuli");
@@ -251,7 +234,7 @@ public class TrialTest {
     /**
      * Test of getId method, of class Trial.
      */
-     @Ignore
+    @Ignore
     @Test
     public void testGetId() {
         System.out.println("getId");
@@ -266,7 +249,7 @@ public class TrialTest {
     /**
      * Test of toString method, of class Trial.
      */
-     @Ignore
+    @Ignore
     @Test
     public void testToString() {
         System.out.println("toString");
@@ -281,21 +264,20 @@ public class TrialTest {
     /**
      * Test of toObject method, of class Trial.
      */
-     @Ignore
+    @Ignore
     @Test
-    public void testToObject() throws Exception{
+    public void testToObject() throws Exception {
         System.out.println("toObject");
         String str = "";
-        LinkedHashMap<String, AudioAsStimulus> hashedStimuli = null;
+        LinkedHashMap<Integer, Trial> hashedTrials = null;
         Trial expResult = null;
-        Trial result = Trial.toObject(str, hashedStimuli);
+        Trial result = Trial.mapToObject(str, hashedTrials);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
- 
-     public ArrayList<Trial> parseTrialsInputCSVStringIntoTrialsArray(AudioStimuliFromString util, String string) throws Exception {
+    private LinkedHashMap<Integer, Trial> parseTrialsInputCSVStringIntoTrialsArray(AudioStimuliFromString util, String string) throws Exception {
         System.out.println("parseTrialsInputCSVStringIntoTrialsArray");
         ArrayList<String> fileNameExtensions = new ArrayList<String>(1);
         fileNameExtensions.add("wav");
@@ -303,7 +285,7 @@ public class TrialTest {
         for (int i = 0; i < labelling.length; i++) {
             bandIndexing.put(labelling[i], (new Integer(i)).toString());
         }
-        ArrayList<Trial> retVal = util.parseTrialsInputCSVStringIntoTrialsArray(string, fileNameExtensions, bandIndexing);
+        LinkedHashMap<Integer, Trial> retVal = util.parseTrialsInputCSVStringIntoTrialsArray(string, fileNameExtensions, bandIndexing);
         return retVal;
     }
 }

@@ -34,5 +34,5 @@ public class AdVocAsStimulus extends BandStimulus {
     public int getBandNumber() {
         return Integer.parseInt(bandLabel);
     }
-
+    
 }

@@ -18,10 +18,10 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 
 /**
  *
@@ -29,11 +29,14 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSON
  */
 public class PermutationPair {
 
-    private final static String FLDS = "[trialConditions, trialLengths, trials]";
+    public final static String[] FLDS = {"trialConditions", "trialLengths", "trials"};
+    
     private final ArrayList<TrialCondition> trialConditions;
     private final ArrayList<Integer> trialLengths;
     private final ArrayList<ArrayList<Trial>> trials;
 
+    // TODO in unit test sanity check: all three arrays must have the same length, equal to the tuple size
+    
     public PermutationPair(ArrayList<TrialCondition> trialConditions, ArrayList<Integer> trialLengths, ArrayList<ArrayList<Trial>> trials) {
         this.trialConditions = trialConditions;
         this.trialLengths = trialLengths;
@@ -111,22 +114,26 @@ public class PermutationPair {
         }
         return retVal;
     }
+    
 
-    // sanity checks must be added for testing
+    
+ 
     @Override
     public String toString() {
-        Map<String, Object> map = new LinkedHashMap<String, Object>();
-        map.put("fields", PermutationPair.FLDS);
-        map.put("trials", this.trials);
+        LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+        map.put("fields", Arrays.asList(PermutationPair.FLDS).toString());
         map.put("trialConditions", this.trialConditions);
-        map.put("trialLengthss", this.trialLengths);
+        map.put("trialLengths", this.trialLengths);
+        map.put("trials", this.trials);
         return map.toString();
     }
 
-    public static PermutationPair toObject(Map<String, Object> map) {
+    // the second parameter, trialMap is a map from trail id-s to up-to-date references to existing trial objects
+    // these trial objects must NOT be recreated for a given permuation pair
+    public static PermutationPair toObject(Map<String, Object> permObjectMap, Map<Integer, Trial> trialMap) {
         try {
 
-            List<Object> triallTypesObj = (List<Object>) map.get("trialConditions");
+            List<Object> triallTypesObj = (List<Object>) permObjectMap.get("trialConditions");
             ArrayList<TrialCondition> trialConds = null;
             if (triallTypesObj != null) {
                 trialConds = new ArrayList<TrialCondition>(triallTypesObj.size());
@@ -136,7 +143,7 @@ public class PermutationPair {
                     trialConds.add(i, tc);
                 }
             }
-            List<Object> triallLengthObj = (List<Object>) map.get("trialLengths");
+            List<Object> triallLengthObj = (List<Object>) permObjectMap.get("trialLengths");
             ArrayList<Integer> trialLengths = null;
             if (triallLengthObj != null) {
                 trialLengths = new ArrayList<Integer>(triallLengthObj.size());
@@ -149,20 +156,18 @@ public class PermutationPair {
 
           
             
-            ArrayList<ArrayList<Object>> trialsObj=  (ArrayList<ArrayList<Object>>) map.get("trials");
+            ArrayList<ArrayList<Object>> trialsObj=  (ArrayList<ArrayList<Object>>) permObjectMap.get("trials");
             ArrayList<ArrayList<Trial>> trials;
 
             if (trialsObj != null) {
                 trials = new ArrayList<ArrayList<Trial>>(trialsObj.size());
-                for (ArrayList<Object> inner : trialsObj) {
-                    ArrayList<Trial> trialsInTuple = new ArrayList<Trial>(inner.size());
+                for (int i=0; i<trialsObj.size(); i++) {
+                    ArrayList<Trial> trialsInTuple = new ArrayList<Trial>(trialsObj.get(i).size());
                     trials.add(trialsInTuple);
-                    for (Object trialObj : inner) {
-                        Map<String,Object> mapTrial = (Map<String,Object>) trialObj;
-                        Trial trial = Trial.mapToObject(mapTrial);
-                        if (trial != null) {
-                            trialsInTuple.add(trial);
-                        }
+                    for (int j=0; j<trialsObj.get(i).size(); j++) {
+                        Integer id = Integer.parseInt(trialsObj.get(i).get(j).toString());
+                        Trial trial = trialMap.get(id);
+                        trialsInTuple.add(trial);
                     }
                 }
             } else {

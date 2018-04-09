@@ -34,9 +34,11 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag;
  * @author olhshk
  */
 public class AudioStimuliFromString {
-
     
-    public static String removeFileNameExtensions(String fileName, ArrayList<String> nameExtensions) {
+    private LinkedHashMap<String, AudioAsStimulus> hashedStimuli = new LinkedHashMap<String, AudioAsStimulus>();
+    private LinkedHashMap<Integer, Trial> trials = new LinkedHashMap<Integer, Trial>();
+
+    private String removeFileNameExtensions(String fileName, ArrayList<String> nameExtensions) {
 
         for (String nameExtension : nameExtensions) {
             String suffix = "." + nameExtension;
@@ -48,16 +50,16 @@ public class AudioStimuliFromString {
 
         return fileName;
     }
-    
+
     //Nr;Word;Target_nonword;Syllables;Condition;Length_list;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Noise_level;Position_foil;
-    public static ArrayList<Trial> parseTrialsInputCSVStringIntoTrialsArray(String csvString, ArrayList<String> fileNameExtensions, HashMap<String, String> bandIndexing) throws Exception {
+    public LinkedHashMap<Integer, Trial> parseTrialsInputCSVStringIntoTrialsArray(String csvString, ArrayList<String> fileNameExtensions, HashMap<String, String> bandIndexing) throws Exception {
 
-        ArrayList<Trial> retVal = new ArrayList<Trial>();
+        LinkedHashMap<Integer, Trial> retVal = new LinkedHashMap<Integer, Trial>();
 
-        CsvRecords csvWrapper= new  CsvRecords(null, ";", "\n");
+        CsvRecords csvWrapper = new CsvRecords(null, ";", "\n");
         csvWrapper.readRecords(csvString);
-        ArrayList<LinkedHashMap<String,String>> records = csvWrapper.getRecords();
-        for (LinkedHashMap<String,String> record:records) {
+        ArrayList<LinkedHashMap<String, String>> records = csvWrapper.getRecords();
+        for (LinkedHashMap<String, String> record : records) {
 
             String trialNumber = record.get("Nr").trim();
             if (trialNumber == null) {
@@ -135,7 +137,7 @@ public class AudioStimuliFromString {
                 //             String ratingLabels, String correctResponses, String bandLabel, int bandIndex, WordType wordType, int posInTrial)
                 String wrd = removeFileNameExtensions(words.get(i), fileNameExtensions);
                 String audioPath = "stimuli/" + bandLabel + "/" + wrd;
-                String uniqueId = wrd+"_"+bandLabel;
+                String uniqueId = wrd + "_" + bandLabel;
                 int pauseMs = 900;
                 WordType wordType;
                 if (i == 0) {
@@ -156,6 +158,7 @@ public class AudioStimuliFromString {
                 AudioAsStimulus stimulus = new AudioAsStimulus(uniqueId, new Tag[0], wrd, "", pauseMs, audioPath, null, null, "", "", bandLabel, bandIndex, wordType, i);
                 BookkeepingStimulus<AudioAsStimulus> bStimulus = new BookkeepingStimulus<AudioAsStimulus>(stimulus);
                 stimuli.add(bStimulus);
+                hashedStimuli.put(uniqueId, stimulus);
             }
 
             TrialCondition tc = null;
@@ -168,7 +171,7 @@ public class AudioStimuliFromString {
                     break;
                 case "NoTarget":
                     tc = TrialCondition.NO_TARGET;
-                    break;     
+                    break;
                 default:
                     break;
             }
@@ -177,13 +180,14 @@ public class AudioStimuliFromString {
             Trial nextTrial = new Trial(Integer.parseInt(trialNumber), trialWord, trialTargetNonword, Integer.parseInt(trialSyllables), tc,
                     Integer.parseInt(trialLength), bandLabel, bandIndex,
                     Integer.parseInt(trialPositionTarget), Integer.parseInt(trialPositionFoil), stimuli);
-            retVal.add(nextTrial);
+            retVal.put(nextTrial.getId(), nextTrial);
         }
         return retVal;
     }
+
     
-    public static ArrayList<Trial> readTrialsAsCsv(String[] labelling) {
-        ArrayList<Trial> retVal = new ArrayList<Trial>();
+    public void readTrialsAsCsv(String[] labelling) {
+        this.trials = new LinkedHashMap<Integer, Trial>();
         HashMap<String, String> bandIndexing = new HashMap<String, String>();
         for (int i = 0; i < labelling.length; i++) {
             bandIndexing.put(labelling[i], (new Integer(i)).toString());
@@ -191,20 +195,26 @@ public class AudioStimuliFromString {
         try {
             ArrayList<String> fileNameExtensions = new ArrayList<String>(1);
             fileNameExtensions.add("wav");
-            retVal = AudioStimuliFromString.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv1.CSV_CONTENT, fileNameExtensions, bandIndexing);
-            ArrayList<Trial> trials2 = AudioStimuliFromString.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv2.CSV_CONTENT, fileNameExtensions, bandIndexing);
-            ArrayList<Trial> trials3 = AudioStimuliFromString.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv3.CSV_CONTENT, fileNameExtensions, bandIndexing);
-            ArrayList<Trial> trials4 = AudioStimuliFromString.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv4.CSV_CONTENT, fileNameExtensions, bandIndexing);
-            ArrayList<Trial> trials5 = AudioStimuliFromString.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv5.CSV_CONTENT, fileNameExtensions, bandIndexing);
+            this.trials = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv1.CSV_CONTENT, fileNameExtensions, bandIndexing);
+            LinkedHashMap<Integer, Trial> trials2 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv2.CSV_CONTENT, fileNameExtensions, bandIndexing);
+            LinkedHashMap<Integer, Trial> trials3 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv3.CSV_CONTENT, fileNameExtensions, bandIndexing);
+            LinkedHashMap<Integer, Trial> trials4 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv4.CSV_CONTENT, fileNameExtensions, bandIndexing);
+            LinkedHashMap<Integer, Trial> trials5 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv5.CSV_CONTENT, fileNameExtensions, bandIndexing);
 
-            retVal.addAll(trials2);
-            retVal.addAll(trials3);
-            retVal.addAll(trials4);
-            retVal.addAll(trials5);
+            this.trials.putAll(trials2);
+            this.trials.putAll(trials3);
+            this.trials.putAll(trials4);
+            this.trials.putAll(trials5);
         } catch (Exception exc) {
             System.out.println(exc);
         }
-        return retVal;
     }
-
+   
+    public LinkedHashMap<String, AudioAsStimulus> getHashedStimuli(){
+        return this.hashedStimuli;
+    }
+    
+    public LinkedHashMap<Integer, Trial> getHashedTrials(){
+        return this.trials;
+    }
 }

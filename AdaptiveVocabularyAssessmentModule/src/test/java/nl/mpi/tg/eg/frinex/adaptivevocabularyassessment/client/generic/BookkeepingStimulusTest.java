@@ -17,7 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -119,7 +119,7 @@ public class BookkeepingStimulusTest {
     @Test
     public void testToString() {
         System.out.println("toString");
-        String expResult = "{stimulus:{smoer},userReaction:{null},correctness:{null},timeStamp:{0}}"+UtilsJSONdialect.FIELD_SEPARATOR+"stimulus,userReaction,correctness,timeStamp";
+        String expResult = "{fields=[stimulus, userReaction, correctness, timeStamp], stimulus=smoer, userReaction=null, correctness=null, timeStamp=0}";
         String result = this.instance.toString();
         assertEquals(expResult, result);
     }
@@ -131,8 +131,8 @@ public class BookkeepingStimulusTest {
     public void testToObject() throws Exception{
         System.out.println("toObject");
         long now=System.currentTimeMillis();
-        String input="{stimulus:{smoer},userReaction:{yes},correctness:{false},timeStamp:{"+now+"}}"+UtilsJSONdialect.FIELD_SEPARATOR+"stimulus,userReaction,correctness,timeStamp";
-        HashMap<String,BandStimulus> map = new HashMap<String,BandStimulus>();
+        String input="{fields=[stimulus, userReaction, correctness, timeStamp], stimulus=smoer, userReaction=yes, correctness=false, timeStamp="+now+"}";
+        LinkedHashMap<String,BandStimulus> map = new LinkedHashMap<String,BandStimulus>();
         map.put("smoer", this.stimulus);
         BookkeepingStimulus<BandStimulus> result = this.instance.toObject(input, map);
         assertEquals("yes",result.getReaction());

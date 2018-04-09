@@ -17,8 +17,8 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Set;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioAsStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Trial;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialCondition;
@@ -65,11 +65,25 @@ public class AudioStimuliFromStringTest {
     public void testReadTrialsAsCsv() {
         System.out.println("readTrialsAsCsv");
         String[] labelling = {"min10db", "min8db", "min6db", "min4db", "min2db", "zerodb", "plus2db", "plus4db", "plus6db", "plus8db", "plus10db"};
-        ArrayList<Trial> trials = AudioStimuliFromString.readTrialsAsCsv(labelling);
+        AudioStimuliFromString instance = new AudioStimuliFromString();
+        instance.readTrialsAsCsv(labelling);
+        LinkedHashMap<Integer, Trial> trials = instance.getHashedTrials();
+        Set<Integer> keys = trials.keySet();
         assertEquals(2156, trials.size());
-        for (int i=0; i<trials.size(); i++) {
+        Integer key1=-1;
+        Integer key2=-1;
+        for (Integer i:keys) {
+            
+            if (i.equals(1683)) {
+                key1 = i;
+            }
+            
+            if (i.equals(2156)) {
+                key2 = i;
+            }
+            
             Trial trial = trials.get(i);
-            assertEquals(i+1, trial.getId());
+            assertEquals(i, new Integer(trial.getId()));
             assertEquals(trial.getTrialLength()+1, trial.getStimuli().size());
             
             AudioAsStimulus cue = trial.getStimuli().get(0).getStimulus();
@@ -119,7 +133,7 @@ public class AudioStimuliFromStringTest {
         }
         
         // "1;vloer;smoer_1.wav;1;Target-only;3 words;deebral.wav;smoer_2.wav;wijp.wav;;;;2;plus10db;0;";
-        Trial trial1= trials.get(0);
+        Trial trial1= trials.get(keys.iterator().next());
         assertEquals("vloer", trial1.getWord());
         assertEquals("smoer_1.wav", trial1.getTargetNonWord());
         assertEquals(1, trial1.getNumberOfSyllables());
@@ -135,7 +149,7 @@ public class AudioStimuliFromStringTest {
         assertEquals(0, trial1.getPositionFoil());
         
         // "1683;hand;kem_1.wav;1;Target+Foil;5 words;guil.wav;kedlim.wav;sorbuin.wav;kem_2.wav;vep.wav;;4;min6db;2;";
-        Trial trial2= trials.get(1682);
+        Trial trial2= trials.get(key1);
         assertEquals("hand", trial2.getWord());
         assertEquals("kem_1.wav", trial2.getTargetNonWord());
         assertEquals(1, trial2.getNumberOfSyllables());
@@ -153,7 +167,7 @@ public class AudioStimuliFromStringTest {
         assertEquals(2, trial2.getPositionFoil());
         
         // "2156;wol;pra.wav;1;NoTarget;6 words;reuwel.wav;wog.wav;consmilp.wav;leskert.wav;mels.wav;dwaat.wav;0;min10db;0;";
-        Trial trial3= trials.get(2155);
+        Trial trial3= trials.get(key2);
         assertEquals("wol", trial3.getWord());
         assertEquals("pra.wav", trial3.getTargetNonWord());
         assertEquals(1, trial3.getNumberOfSyllables());

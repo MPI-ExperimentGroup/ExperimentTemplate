@@ -18,8 +18,9 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Random;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
@@ -31,8 +32,8 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSON
  * @author olhshk
  */
 public class RandomIndexing {
-    
-    private static final String FLDS = "[fastTrackSequenceLength,averageNonwordPosition,nonwordsPerBlock,numberOfNonwords,numberOfWords,randomIndices,frequences]";
+
+    private static final String[] FLDS = {"fastTrackSequenceLength","averageNonwordPosition","nonwordsPerBlock","numberOfNonwords","numberOfWords","randomIndices","frequences"};
 
     private int fastTrackSequenceLength; //  N
     private final int averageNonwordPosition; // n
@@ -40,7 +41,7 @@ public class RandomIndexing {
     private final int numberOfNonwords; // [1/n * N]
     private final int numberOfWords; // [(n-1)/n * N]
     private ArrayList<Integer> randomIndices;
-    private double[] frequences;
+    private ArrayList<Double> frequences;
 
     public RandomIndexing(int startBand, int numberOfBands, int nonwordsPerBlock, int averageNonwordPosition, int nonwordsAvailable) {
         this.averageNonwordPosition = averageNonwordPosition;
@@ -60,7 +61,7 @@ public class RandomIndexing {
         this.numberOfNonwords = this.fastTrackSequenceLength - this.numberOfWords;
     }
 
-    public RandomIndexing(int fastTrackSequenceLength, int averageNonwordPosition, int nonwordsPerBlock, int numberOfNonwords, int numberOfWords, ArrayList<Integer> randomIndices, double[] frequences) {
+    public RandomIndexing(int fastTrackSequenceLength, int averageNonwordPosition, int nonwordsPerBlock, int numberOfNonwords, int numberOfWords, ArrayList<Integer> randomIndices, ArrayList<Double> frequences) {
         this.fastTrackSequenceLength = fastTrackSequenceLength;
         this.averageNonwordPosition = averageNonwordPosition;
         this.nonwordsPerBlock = nonwordsPerBlock;
@@ -69,12 +70,12 @@ public class RandomIndexing {
         this.randomIndices = randomIndices;
         this.frequences = frequences;
     }
-    
-    public int getNumberOfNonWords(){
+
+    public int getNumberOfNonWords() {
         return this.numberOfNonwords;
     }
-    
-    public int getNumberOfWords(){
+
+    public int getNumberOfWords() {
         return this.numberOfWords;
     }
 
@@ -155,12 +156,12 @@ public class RandomIndexing {
         return retVal;
     }
 
-    private double[] calculateFrequencesOfNonWordIndices() {
-        double[] retVal = new double[this.fastTrackSequenceLength];
+    private ArrayList<Double> calculateFrequencesOfNonWordIndices() {
+        ArrayList<Double> retVal = new ArrayList<Double>(this.fastTrackSequenceLength);
         int nonwordsCounter;
         for (int i = 0; i < this.fastTrackSequenceLength; i++) {
             nonwordsCounter = amountOfSelectedIndecesBetween(0, i);
-            retVal[i] = ((double) nonwordsCounter) / ((double) (i + 1));
+            retVal.add(i,((double) nonwordsCounter) / ((double) (i + 1)));
         }
         return retVal;
     }
@@ -178,7 +179,7 @@ public class RandomIndexing {
         this.frequences = this.calculateFrequencesOfNonWordIndices();
     }
 
-    public double[] getFrequencesOfNonWordindices() {
+    public ArrayList<Double> getFrequencesOfNonWordindices() {
         return this.frequences;
     }
 
@@ -201,43 +202,49 @@ public class RandomIndexing {
         return retVal;
     }
 
-
     @Override
     public String toString() {
-        // "[fastTrackSequenceLength,averageNonwordPosition,nonwordsPerBlock,numberOfNonwords,numberOfWords,randomIndices,frequences]";
-        HashMap<String, Object> map = new HashMap<String, Object>();
-        map.put("fields", RandomIndexing.FLDS);
+        LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
+        map.put("fields", Arrays.asList(RandomIndexing.FLDS).toString());
         map.put("fastTrackSequenceLength", this.fastTrackSequenceLength);
         map.put("averageNonwordPosition", this.averageNonwordPosition);
         map.put("nonwordsPerBlock", this.nonwordsPerBlock);
         map.put("numberOfNonwords", this.numberOfNonwords);
         map.put("numberOfWords", this.numberOfWords);
         map.put("randomIndices", this.randomIndices);
-        map.put("frequences", this.frequences);
+        map.put("frequences", this.frequences.toString());
         return map.toString();
 
     }
 
-    public static RandomIndexing toObject(String str) {
-        try{
-         Map<String, Object> map = UtilsJSONdialect.stringToObjectMap(str, RandomIndexing.FLDS);
-         int fastTrackSequenceLength1 = Integer.parseInt(map.get("fastTrackSequenceLength").toString());
-         int averageNonwordPosition1 = Integer.parseInt(map.get("averageNonwordPosition").toString());
-         int nonwordsPerBlock1 = Integer.parseInt(map.get("fnonwordsPerBlock").toString());
-         int numberOfNonwords1 = Integer.parseInt(map.get("numberOfNonwords").toString());
-         int numberOfWords1 = Integer.parseInt(map.get("numberOfWords").toString());
-         Object randomIndices1obj = map.get("randomIndices");
-         ArrayList<Integer> randomIndices1 = UtilsJSONdialect.objectToListInteger(randomIndices1obj);
-         Object frequences1obj = map.get("frequences");
-         double[] frequences1 = UtilsJSONdialect.objectToArrayDouble(frequences1obj);
-        // RandomIndexing(int fastTrackSequenceLength, int  averageNonwordPosition, int nonwordsPerBlock, int numberOfNonwords, int numberOfWords, ArrayList<Integer> randomIndices, double[] frequences)
-        RandomIndexing retVal = new RandomIndexing(fastTrackSequenceLength1, averageNonwordPosition1, nonwordsPerBlock1, numberOfNonwords1, numberOfWords1, randomIndices1, frequences1);
-        return retVal;
+    public static RandomIndexing mapToObject(Map<String, Object> map) {
+        try {
+            int fastTrackSequenceLength1 = Integer.parseInt(map.get("fastTrackSequenceLength").toString());
+            int averageNonwordPosition1 = Integer.parseInt(map.get("averageNonwordPosition").toString());
+            int nonwordsPerBlock1 = Integer.parseInt(map.get("nonwordsPerBlock").toString());
+            int numberOfNonwords1 = Integer.parseInt(map.get("numberOfNonwords").toString());
+            int numberOfWords1 = Integer.parseInt(map.get("numberOfWords").toString());
+            Object randomIndices1obj = map.get("randomIndices");
+            ArrayList<Integer> randomIndices1 = UtilsJSONdialect.objectToListInteger(randomIndices1obj);
+            Object frequences1obj = map.get("frequences");
+            ArrayList<Double> frequences1 = UtilsJSONdialect.objectToListDouble(frequences1obj);
+            // RandomIndexing(int fastTrackSequenceLength, int  averageNonwordPosition, int nonwordsPerBlock, int numberOfNonwords, int numberOfWords, ArrayList<Integer> randomIndices, double[] frequences)
+            RandomIndexing retVal = new RandomIndexing(fastTrackSequenceLength1, averageNonwordPosition1, nonwordsPerBlock1, numberOfNonwords1, numberOfWords1, randomIndices1, frequences1);
+            return retVal;
         } catch (Exception ex) {
             System.out.println(ex);
             return null;
         }
 
-      
+    }
+
+    public static RandomIndexing toObject(String str) {
+        try {
+            Map<String, Object> map = UtilsJSONdialect.stringToObjectMap(str, RandomIndexing.FLDS);
+            return mapToObject(map);
+        } catch (Exception ex) {
+            System.out.println(ex);
+            return null;
+        }
     }
 }

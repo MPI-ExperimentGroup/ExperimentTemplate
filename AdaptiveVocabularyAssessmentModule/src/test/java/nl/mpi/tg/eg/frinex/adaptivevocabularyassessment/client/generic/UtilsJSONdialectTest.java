@@ -56,89 +56,31 @@ public class UtilsJSONdialectTest {
     }
 
     /**
-     * Test of paramToString
-     */
-    @Test
-    public void testParamToString() throws Exception {
-        System.out.println("paramToString");
-
-        Object param = new Integer(35);
-        String result = UtilsJSONdialect.paramToString(param);
-        assertEquals("{35}", result);
-
-        ArrayList<String> list = new ArrayList<String>();
-        list.add("rhabarber");
-        list.add("compot");
-        list.add("{rhabarber,compot}");
-        String expResultList = "{0:{rhabarber},1:{compot},2:{rhabarber,compot}}";
-        String resultList = UtilsJSONdialect.paramToString(list);
-        System.out.println(resultList);
-        assertEquals(expResultList, resultList);
-
-        int n = 4;
-        ArrayList<ArrayList<Integer>> list2 = new ArrayList<ArrayList<Integer>>(n);
-        for (int i = 0; i < n; i++) {
-            ArrayList<Integer> current = new ArrayList<Integer>(i);
-            list2.add(current); // should be {0,1,..,i-1} -> i:{0:{0},1:{1},..,i-1:{i-1}}
-            for (int j = 0; j < i; j++) {
-                current.add(j);
-            }
-        }
-        String expResultList2 = "{0:{},1:{0:{0}},2:{0:{0},1:{1}},3:{0:{0},1:{1},2:{2}}}";
-        String resultList2 = UtilsJSONdialect.paramToString(list2);
-        System.out.println(resultList2);
-        assertEquals(expResultList2, resultList2);
-
-        Map<Object, Object> map = new LinkedHashMap<Object, Object>();
-        map.put(TrialCondition.NO_TARGET, new Integer(1));
-        map.put(TrialCondition.TARGET_ONLY, new Integer(2));
-        map.put(TrialCondition.TARGET_AND_FOIL, new Integer(3));
-        String expResult3 = "{NO_TARGET:{1},TARGET_ONLY:{2},TARGET_AND_FOIL:{3}}" + UtilsJSONdialect.FIELD_SEPARATOR + "NO_TARGET,TARGET_ONLY,TARGET_AND_FOIL";
-        String result3 = UtilsJSONdialect.paramToString(map);
-        assertEquals(expResult3, result3);
-
-        Map<Object, Object> map2 = new LinkedHashMap<Object, Object>();
-        List<Integer> listA = new ArrayList<Integer>();
-        List<Integer> listB = new ArrayList<Integer>();
-        listB.add(1);
-        listB.add(2);
-        List<Integer> listC = null;
-
-        map2.put(TrialCondition.NO_TARGET, listA);
-        map2.put(TrialCondition.TARGET_ONLY, listB);
-        map2.put(TrialCondition.TARGET_AND_FOIL, listC);
-        String expResult4 = "{NO_TARGET:{},TARGET_ONLY:{0:{1},1:{2}},TARGET_AND_FOIL:{null}}" + UtilsJSONdialect.FIELD_SEPARATOR + "NO_TARGET,TARGET_ONLY,TARGET_AND_FOIL";
-        String result4 = UtilsJSONdialect.paramToString(map2);
-        assertEquals(expResult4, result4);
-
-    }
-
-    /**
      * Test of stringToObject method, of class UtilsJSONdialect.
      */
     @Test
     public void testStringToObject() throws Exception {
         System.out.println("stringToObject");
 
-        String str = "{NO_TARGET:{1},TARGET_ONLY:{2},TARGET_AND_FOIL:{3}}" + UtilsJSONdialect.FIELD_SEPARATOR + "NO_TARGET,TARGET_ONLY,TARGET_AND_FOIL";
-        Map<Object, Object> expResult = new LinkedHashMap<Object, Object>();
-        expResult.put(TrialCondition.NO_TARGET, new Integer(1));
-        expResult.put(TrialCondition.TARGET_ONLY, new Integer(2));
-        expResult.put(TrialCondition.TARGET_AND_FOIL, new Integer(3));
+        String str = "{NO_TARGET=1, TARGET_ONLY=2, TARGET_AND_FOIL=3, fields=[NO_TARGET, TARGET_ONLY, TARGET_AND_FOIL]}";
+        Map<String, Object> expResult = new LinkedHashMap<String, Object>();
+        expResult.put(TrialCondition.NO_TARGET.toString(), new Integer(1));
+        expResult.put(TrialCondition.TARGET_ONLY.toString(), new Integer(2));
+        expResult.put(TrialCondition.TARGET_AND_FOIL.toString(), new Integer(3));
+
         Object result = UtilsJSONdialect.stringToObject(str);
         assertTrue(result instanceof Map<?, ?>);
 
-        Map<Object, Object> mapResult = (Map<Object, Object>) result;
-        Set<Object> keys = mapResult.keySet();
+        Map<String, Object> mapResult = (Map<String, Object>) result;
+        Set<String> keys = mapResult.keySet();
         assertEquals(3, keys.size());
-        for (Object key : keys) {
-            TrialCondition keyCast = TrialCondition.valueOf((String) key);
+        for (String key : keys) {
             Integer valCast = Integer.parseInt(mapResult.get(key).toString());
-            assertEquals(expResult.get(keyCast), valCast);
+            assertEquals(expResult.get(key), valCast);
         }
 
         // *** //
-        String str2 = "{NO_TARGET:{},TARGET_ONLY:{0:{1},1:{2}},TARGET_AND_FOIL:{null}}" + UtilsJSONdialect.FIELD_SEPARATOR + "NO_TARGET,TARGET_ONLY,TARGET_AND_FOIL";
+        String str2 = "{NO_TARGET=[], TARGET_ONLY=[1,2], TARGET_AND_FOIL=null, fields=[NO_TARGET, TARGET_ONLY, TARGET_AND_FOIL]}";
         Map<TrialCondition, List<Integer>> map2 = new LinkedHashMap<TrialCondition, List<Integer>>();
         List<Integer> listA = new ArrayList<Integer>();
         List<Integer> listB = new ArrayList<Integer>();
@@ -151,31 +93,22 @@ public class UtilsJSONdialectTest {
 
         Object result2 = UtilsJSONdialect.stringToObject(str2);
         assertTrue(result2 instanceof Map<?, ?>);
-        Map<Object, Object> mapResult2 = (Map<Object, Object>) result2;
-        Set<Object> keys2 = mapResult2.keySet();
+        Map<String, Object> mapResult2 = (Map<String, Object>) result2;
+        Set<String> keys2 = mapResult2.keySet();
         assertEquals(3, keys2.size());
-        for (Object key : keys2) {
-            TrialCondition keyCast = TrialCondition.valueOf((String) key);
-            Object listObj = mapResult2.get(key);
-            List<Object> list;
-            if (listObj == null || listObj.equals("null")) {
-                list = null;
-            } else {
-                if (listObj.toString().trim().equals("{}")) {
-                    list = new ArrayList<Object>();
-                } else {
-                    list = (List<Object>) listObj;
-                }
-            }
+        for (String key : keys2) {
+            TrialCondition keyCast = TrialCondition.valueOf(key);
             List<Integer> expectedList = map2.get(keyCast);
             if (expectedList == null) {
-                assertNull(list);
-            } else {
-                assertEquals(expectedList.size(), list.size());
-                for (int i = 0; i < expectedList.size(); i++) {
-                    Integer valCast = Integer.parseInt(list.get(i).toString());
-                    assertEquals(expectedList.get(i), valCast);
-                }
+                assertNull(mapResult2.get(key));
+                continue;
+            }
+            List<Object> listObj = (List<Object>) mapResult2.get(key);
+            assertEquals(expectedList.size(), listObj.size());
+            for (int i = 0; i < expectedList.size(); i++) {
+                Integer valCast = Integer.parseInt(listObj.get(i).toString());
+                assertEquals(expectedList.get(i), valCast);
+
             }
         }
 

@@ -19,9 +19,9 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import nl.mpi.tg.eg.frinex.common.AbstractStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -37,58 +37,14 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  */
 public abstract class BandStimuliProvider<A extends BandStimulus> extends AbstractStimuliProvider {
 
-    protected final static String FLDS = "[type, numberOfBands, numberOfSeries, startBand, fineTuningTupleLength, fineTuningUpperBoundForCycles, fastTrackPresent, fineTuningFirstWrongOut, "
-            + "bandScore, percentageScore, isCorrectCurrentResponse, currentBandIndex, totalStimuli, "
-            + "responseRecord, percentageBandTable, tupleFT, "
-            + "bestBandFastTrack, isFastTrackIsStillOn, secondChanceFastTrackIsFired, timeTickEndFastTrack, "
-            + "enoughFineTuningStimulae, bandVisitCounter, cycle2helper, "
-            + "cycle2, champion, looser, justVisitedLastBand, justVisitedFirstBand, errorMessage]";
+    protected final static String[] FLDS = {"type", "numberOfBands", "numberOfSeries", "startBand", "fineTuningTupleLength", "fineTuningUpperBoundForCycles", "fastTrackPresent", "fineTuningFirstWrongOut", ""
+            + "bandScore", "percentageScore", "isCorrectCurrentResponse", "currentBandIndex", "totalStimuli", ""
+            + "responseRecord", "percentageBandTable", "tupleFT", ""
+            + "bestBandFastTrack", "isFastTrackIsStillOn", "secondChanceFastTrackIsFired", "timeTickEndFastTrack", ""
+            + "enoughFineTuningStimulae", "bandVisitCounter", "cycle2helper", ""
+            + "cycle2", "champion", "looser", "justVisitedLastBand", "justVisitedFirstBand", "errorMessage"};
     
     
-    @Override
-    public String toString() {
-        HashMap<String, Object> map = new HashMap<String, Object>();
-        map.put("fields", BandStimuliProvider.FLDS);
-        map.put("type", this.type);
-        map.put("numberOfBands", this.numberOfBands);
-        map.put("numberOfSeries", this.numberOfSeries);
-        map.put("startBand", this.startBand);
-        map.put("fineTuningTupleLength", this.fineTuningTupleLength);
-        map.put("fineTuningUpperBoundForCycles", this.fineTuningUpperBoundForCycles);
-        map.put("fastTrackPresent", this.fastTrackPresent);
-        map.put("fineTuningFirstWrongOut", this.fineTuningFirstWrongOut);
-        
-        map.put("bandScore", this.type);
-        map.put("percentageScore", this.percentageScore);
-        map.put("isCorrectCurrentResponse", this.isCorrectCurrentResponse);
-        map.put("currentBandIndex", this.currentBandIndex);
-        map.put("totalStimuli", this.totalStimuli);
-        
-        map.put("responseRecord", this.responseRecord);
-        map.put("percentageBandTable", this.percentageBandTable);
-        map.put("tupleFT", this.tupleFT);
-        
-        map.put("bestBandFastTrack", this.bestBandFastTrack);
-        map.put("isFastTrackIsStillOn", this.isFastTrackIsStillOn);
-        map.put("secondChanceFastTrackIsFired", this.secondChanceFastTrackIsFired);
-        map.put("timeTickEndFastTrack", this.timeTickEndFastTrack);
-        
-        map.put("enoughFineTuningStimulae", this.enoughFineTuningStimulae);
-        map.put("bandVisitCounter", this.bandVisitCounter);
-        map.put("cycle2helper", this.cycle2helper);
-        
-        map.put("cycle2", this.cycle2);
-        map.put("champion", this.champion);
-        map.put("looser", this.looser);
-        map.put("justVisitedLastBand", this.justVisitedLastBand);
-        map.put("justVisitedFirstBand", this.justVisitedFirstBand);
-        map.put("errorMessage", this.errorMessage);
-        
-        return map.toString();
-    }
-    
-    protected HashMap<String, A> hashedStimuli;
-
     protected int type = 0;
     protected int numberOfBands = 0;
     protected int numberOfSeries = 0;
@@ -127,6 +83,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected boolean justVisitedLastBand = false;
     protected boolean justVisitedFirstBand = false;
     protected String errorMessage;
+    
 
     // add experiment specific stuff here
     // ...
@@ -253,7 +210,6 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
             this.percentageBandTable = this.generatePercentageBandTable();
         } else {
             try {
-                this.hashedStimuli = this.generateHashedStimuli();
                 this.deserialiseToThis(stimuliStateSnapshot);
                 this.percentageBandTable = this.generatePercentageBandTable();
             } catch (Exception ex) {
@@ -278,7 +234,6 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         return retVal;
     }
 
-    public abstract HashMap<String, A> generateHashedStimuli();
 
     @Override
     public String generateStimuliStateSnapshot() {
@@ -825,8 +780,54 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         }
         return retVal;
     }
+    
+    protected Map<String, Object> toMap(){
+        Map<String, Object> map = new HashMap<String, Object>();
+        //map.put("fields", BandStimuliProvider.FLDS);
+        map.put("type", this.type);
+        map.put("numberOfBands", this.numberOfBands);
+        map.put("numberOfSeries", this.numberOfSeries);
+        map.put("startBand", this.startBand);
+        map.put("fineTuningTupleLength", this.fineTuningTupleLength);
+        map.put("fineTuningUpperBoundForCycles", this.fineTuningUpperBoundForCycles);
+        map.put("fastTrackPresent", this.fastTrackPresent);
+        map.put("fineTuningFirstWrongOut", this.fineTuningFirstWrongOut);
+        
+        map.put("bandScore", this.type);
+        map.put("percentageScore", this.percentageScore);
+        map.put("isCorrectCurrentResponse", this.isCorrectCurrentResponse);
+        map.put("currentBandIndex", this.currentBandIndex);
+        map.put("totalStimuli", this.totalStimuli);
+        
+        map.put("responseRecord", this.responseRecord);
+        map.put("percentageBandTable", this.percentageBandTable);
+        map.put("tupleFT", this.tupleFT);
+        
+        map.put("bestBandFastTrack", this.bestBandFastTrack);
+        map.put("isFastTrackIsStillOn", this.isFastTrackIsStillOn);
+        map.put("secondChanceFastTrackIsFired", this.secondChanceFastTrackIsFired);
+        map.put("timeTickEndFastTrack", this.timeTickEndFastTrack);
+        
+        map.put("enoughFineTuningStimulae", this.enoughFineTuningStimulae);
+        map.put("bandVisitCounter", Arrays.asList(this.bandVisitCounter).toString());
+        map.put("cycle2helper", this.cycle2helper);
+        
+        map.put("cycle2", this.cycle2);
+        map.put("champion", this.champion);
+        map.put("looser", this.looser);
+        map.put("justVisitedLastBand", this.justVisitedLastBand);
+        map.put("justVisitedFirstBand", this.justVisitedFirstBand);
+        map.put("errorMessage", this.errorMessage);
+        return map; 
+    }
 
-  
+   @Override
+    public String toString() {
+        Map<String, Object> map = this.toMap();
+        return map.toString();
+    }
+    
+    protected abstract void deserialiseSpecific(String str) throws Exception;
 
     //  percentageBandTable must be created from scratch. not serialised/deserialised
     protected void deserialiseToThis(String str) throws Exception {
@@ -867,42 +868,17 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         this.justVisitedFirstBand = Boolean.parseBoolean(map.get("justVisitedFirstBand").toString());
         this.justVisitedLastBand = Boolean.parseBoolean(map.get("justVisitedLastBand").toString());
 
-        BookkeepingStimulus<A> fake = new BookkeepingStimulus<A>(null);
-
-        Object recordObj = map.get("responseRecord");
-        this.responseRecord = new ArrayList<BookkeepingStimulus<A>>();
-        if (recordObj!=null) {
-            List<Object> objs = (List<Object>) recordObj;
-            for (int i=0; i<objs.size(); i++) {
-                Object currentObj = objs.get(i);
-                BookkeepingStimulus<A> ghost = new BookkeepingStimulus<A>(null);
-                BookkeepingStimulus<A> bStimulus = ghost.toBookkeepingStimulusObject(currentObj);
-                this.responseRecord.add(i,bStimulus);
-            }
-        }
-        
-        Object tupleFTObj = map.get("tupleFT");
-        this.tupleFT = new ArrayList<BookkeepingStimulus<A>>();
-        if (tupleFTObj!=null) {
-            List<Object> objs = (List<Object>) tupleFTObj;
-            for (int i=0; i<objs.size(); i++) {
-                Object currentObj = objs.get(i);
-                BookkeepingStimulus<A> ghost = new BookkeepingStimulus<A>(null);
-                BookkeepingStimulus<A> bStimulus = ghost.toBookkeepingStimulusObject(currentObj);
-                this.responseRecord.add(i,bStimulus);
-            }
-        }
-        
        
-
         Object bandCounterObj = map.get("bandVisitCounter");
-        this.bandVisitCounter = UtilsJSONdialect.objectToListInt(bandCounterObj);
+        this.bandVisitCounter = UtilsJSONdialect.objectToArrayInt(bandCounterObj);
         
         Object cycle2Str = map.get("cycle2helper");
-        this.cycle2helper =  UtilsJSONdialect.objectToListInt(cycle2Str);
+        this.cycle2helper =  UtilsJSONdialect.objectToArrayInt(cycle2Str);
 
         this.errorMessage = map.get("errorMessage").toString();
-
+        
     }
+    
+    
 
 }
