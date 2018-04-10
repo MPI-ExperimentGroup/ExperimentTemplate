@@ -70,17 +70,7 @@ public class AudioStimuliFromStringTest {
         LinkedHashMap<Integer, Trial> trials = instance.getHashedTrials();
         Set<Integer> keys = trials.keySet();
         assertEquals(2156, trials.size());
-        Integer key1=-1;
-        Integer key2=-1;
         for (Integer i:keys) {
-            
-            if (i.equals(1683)) {
-                key1 = i;
-            }
-            
-            if (i.equals(2156)) {
-                key2 = i;
-            }
             
             Trial trial = trials.get(i);
             assertEquals(i, new Integer(trial.getId()));
@@ -133,9 +123,9 @@ public class AudioStimuliFromStringTest {
         }
         
         // "1;vloer;smoer_1.wav;1;Target-only;3 words;deebral.wav;smoer_2.wav;wijp.wav;;;;2;plus10db;0;";
-        Trial trial1= trials.get(keys.iterator().next());
+        Trial trial1= trials.get(1);
         assertEquals("vloer", trial1.getWord());
-        assertEquals("smoer_1.wav", trial1.getTargetNonWord());
+        assertEquals("smoer_1", trial1.getTargetNonWord());
         assertEquals(1, trial1.getNumberOfSyllables());
         assertEquals(TrialCondition.TARGET_ONLY, trial1.getCondition());
         assertEquals(3, trial1.getTrialLength());
@@ -149,9 +139,9 @@ public class AudioStimuliFromStringTest {
         assertEquals(0, trial1.getPositionFoil());
         
         // "1683;hand;kem_1.wav;1;Target+Foil;5 words;guil.wav;kedlim.wav;sorbuin.wav;kem_2.wav;vep.wav;;4;min6db;2;";
-        Trial trial2= trials.get(key1);
+        Trial trial2= trials.get(1683);
         assertEquals("hand", trial2.getWord());
-        assertEquals("kem_1.wav", trial2.getTargetNonWord());
+        assertEquals("kem_1", trial2.getTargetNonWord());
         assertEquals(1, trial2.getNumberOfSyllables());
         assertEquals(TrialCondition.TARGET_AND_FOIL, trial2.getCondition());
         assertEquals(5, trial2.getTrialLength());
@@ -167,9 +157,9 @@ public class AudioStimuliFromStringTest {
         assertEquals(2, trial2.getPositionFoil());
         
         // "2156;wol;pra.wav;1;NoTarget;6 words;reuwel.wav;wog.wav;consmilp.wav;leskert.wav;mels.wav;dwaat.wav;0;min10db;0;";
-        Trial trial3= trials.get(key2);
+        Trial trial3= trials.get(2156);
         assertEquals("wol", trial3.getWord());
-        assertEquals("pra.wav", trial3.getTargetNonWord());
+        assertEquals("pra", trial3.getTargetNonWord());
         assertEquals(1, trial3.getNumberOfSyllables());
         assertEquals(TrialCondition.NO_TARGET, trial3.getCondition());
         assertEquals(6, trial3.getTrialLength());

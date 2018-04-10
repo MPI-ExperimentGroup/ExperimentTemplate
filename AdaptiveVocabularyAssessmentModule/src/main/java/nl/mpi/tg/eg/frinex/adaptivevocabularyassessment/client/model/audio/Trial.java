@@ -106,8 +106,7 @@ public class Trial {
 
     public static ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> prepareTrialMatrix(LinkedHashMap<Integer, Trial> csvTrials, int numberOfBands, int maxTrialLength) {
         ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> retVal = initMatrix(numberOfBands, maxTrialLength);
-        Set<Integer> keys = csvTrials.keySet();
-        for (Integer i:keys) {
+        for (int i=1; i<=csvTrials.size(); i++) {
             Trial trial = csvTrials.get(i);
             TrialCondition condition = trial.getCondition();
             int bandIndex = trial.getBandIndex();
@@ -143,55 +142,5 @@ public class Trial {
     public String toString() {
          return String.valueOf(this.getId());
     }
-
-    public static Trial mapToObject(Object obj, LinkedHashMap<Integer, Trial> hashedTrials){
-          return hashedTrials.get(Integer.parseInt(obj.toString()));
-    }
-
-//        String idStr = map.get("trialId").toString();
-//
-//        String word = map.get("word").toString();
-//        String targetNonWord = map.get("targetNonWord").toString();
-//
-//        String numberOfSyllablesStr = map.get("numberOfSyllables").toString();
-//        String lgthStr = map.get("lgth").toString();
-//        String bandIndexStr = map.get("bandIndex").toString();
-//        String bandLabel = map.get("bandLabel").toString();
-//        String conditionStr = map.get("condition").toString();
-//        String positionTargetStr = map.get("positionTarget").toString();
-//        String positionFoilStr = map.get("positionFoil").toString();
-//
-//        int numberOfSyllables = Integer.parseInt(numberOfSyllablesStr);
-//        int lgth = Integer.parseInt(lgthStr);
-//        int bandIndex = Integer.parseInt(bandIndexStr);
-//        int id = Integer.parseInt(idStr);
-//        int positionTarget = Integer.parseInt(positionTargetStr);
-//        int positionFoil = Integer.parseInt(positionFoilStr);
-//
-//        TrialCondition condition = TrialCondition.valueOf(conditionStr);
-//
-//        Object stimuliObj = map.get("stimuli");
-//        ArrayList<BookkeepingStimulus<AudioAsStimulus>> bStimuli;
-//        if (stimuliObj == null) {
-//            bStimuli = null;
-//        } else {
-//            List<Object> stimuliObjList = (List<Object>) stimuliObj;
-//            bStimuli = new ArrayList<BookkeepingStimulus<AudioAsStimulus>>(stimuliObjList.size());
-//            for (int i = 0; i < stimuliObjList.size(); i++) {
-//                Map<String, Object> currentMap = (Map<String, Object>) stimuliObjList.get(i);
-//                BookkeepingStimulus<AudioAsStimulus> ghost = new BookkeepingStimulus<AudioAsStimulus>(null);
-//                BookkeepingStimulus<AudioAsStimulus> bStimulus = ghost.toBookkeepingStimulusObject(currentMap);
-//                int position = bStimulus.getStimulus().getpositionInTrial();
-//                bStimuli.set(position, bStimulus);
-//            }
-//        }
-//
-//        //Trial(int id, String word, String targetNonWord, int nOfSyllables, TrialCondition condition, int length, String bandLabel, int bandIndex)
-//        Trial retVal = new Trial(id, word, targetNonWord, numberOfSyllables, condition, lgth, bandLabel, bandIndex, positionTarget, positionFoil, bStimuli);
-//
-//        return retVal;
-//
-//    }
-//    
 
 }

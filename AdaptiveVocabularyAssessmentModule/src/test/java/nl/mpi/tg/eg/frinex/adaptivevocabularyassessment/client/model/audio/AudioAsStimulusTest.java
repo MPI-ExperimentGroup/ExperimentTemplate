@@ -17,13 +17,16 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioStimuliFromString;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 
 /**
  *
@@ -31,7 +34,22 @@ import org.junit.Ignore;
  */
 public class AudioAsStimulusTest {
     
+    private final String[] labelling = {"min10db", "min8db", "min6db", "min4db", "min2db", "zerodb", "plus2db", "plus4db", "plus6db", "plus8db", "plus10db"};
+    private final AudioStimuliFromString reader = new AudioStimuliFromString();
+    private final LinkedHashMap<Integer, Trial> trials;
+    private final ArrayList<BookkeepingStimulus<AudioAsStimulus>> stimuli;
+    private final  AudioAsStimulus instance1;
+    private final  AudioAsStimulus instance2;
+    private final  AudioAsStimulus instance3;
+    
     public AudioAsStimulusTest() {
+        
+        this.reader.readTrialsAsCsv(this.labelling);
+        this.trials = this.reader.getHashedTrials();
+        this.stimuli = trials.get(1).getStimuli();
+        this.instance1 = this.stimuli.get(0).getStimulus();
+        this.instance2 = this.stimuli.get(1).getStimulus();
+        this.instance3 = this.stimuli.get(2).getStimulus();
     }
     
     @BeforeClass
@@ -53,27 +71,39 @@ public class AudioAsStimulusTest {
     /**
      * Test of getwordType method, of class AudioAsStimulus.
      */
-    @Ignore
     @Test
     public void testGetwordType() {
         System.out.println("getwordType");
-        AudioAsStimulus instance = null;
-        WordType result = instance.getwordType();
-        assertEquals(WordType.TARGET_NON_WORD.toString(), result);
+        //"1;vloer;smoer_1.wav;1;Target-only;3 words;deebral.wav;smoer_2.wav;wijp.wav;;;;2;plus10db;0;\n
+        assertEquals(WordType.EXAMPLE_TARGET_NON_WORD, this.instance1.getwordType());
+        
+        assertEquals(WordType.NON_WORD, this.instance2.getwordType());
+        
+        assertEquals(WordType.TARGET_NON_WORD, this.instance3.getwordType());
     }
 
   
     /**
      * Test of hasCorrectResponses method, of class AudioAsStimulus.
      */
-    @Ignore
     @Test
     public void testHasCorrectResponses() {
         System.out.println("hasCorrectResponses");
-        AudioAsStimulus instance = null;
-        boolean expResult = true;
-        boolean result = instance.hasCorrectResponses();
-        assertEquals(expResult, result);
+        System.out.println("getpositionInTrial");
+        assertTrue(this.instance1.hasCorrectResponses());
+        assertTrue(this.instance2.hasCorrectResponses());
+        assertTrue(this.instance3.hasCorrectResponses());
+    }
+
+    /**
+     * Test of getpositionInTrial method, of class AudioAsStimulus.
+     */
+    @Test
+    public void testGetpositionInTrial() {
+        System.out.println("getpositionInTrial");
+        assertEquals(0, this.instance1.getpositionInTrial());
+        assertEquals(1, this.instance2.getpositionInTrial());
+        assertEquals(2, this.instance3.getpositionInTrial());
     }
 
    

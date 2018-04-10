@@ -52,7 +52,7 @@ public class AudioStimuliFromString {
     }
 
     //Nr;Word;Target_nonword;Syllables;Condition;Length_list;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Noise_level;Position_foil;
-    public LinkedHashMap<Integer, Trial> parseTrialsInputCSVStringIntoTrialsArray(String csvString, ArrayList<String> fileNameExtensions, HashMap<String, String> bandIndexing) throws Exception {
+    private LinkedHashMap<Integer, Trial> parseTrialsInputCSVStringIntoTrialsArray(String csvString, ArrayList<String> fileNameExtensions, HashMap<String, String> bandIndexing) throws Exception {
 
         LinkedHashMap<Integer, Trial> retVal = new LinkedHashMap<Integer, Trial>();
 
@@ -177,7 +177,7 @@ public class AudioStimuliFromString {
             }
 
             //public Trial(int id, String word, String cueFile, int nOfSyllables, TrialCondition condition, int length, String bandLabel, int bandIndex, ArrayList<BookkeepingStimulus<AudioAsStimulus>> stimuli) throws Exception{
-            Trial nextTrial = new Trial(Integer.parseInt(trialNumber), trialWord, trialTargetNonword, Integer.parseInt(trialSyllables), tc,
+            Trial nextTrial = new Trial(Integer.parseInt(trialNumber), trialWord, removeFileNameExtensions(trialTargetNonword, fileNameExtensions), Integer.parseInt(trialSyllables), tc,
                     Integer.parseInt(trialLength), bandLabel, bandIndex,
                     Integer.parseInt(trialPositionTarget), Integer.parseInt(trialPositionFoil), stimuli);
             retVal.put(nextTrial.getId(), nextTrial);
