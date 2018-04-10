@@ -26,7 +26,9 @@ import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -38,25 +40,25 @@ import org.junit.Test;
 public class PermutationPairTest {
 
     private final String[] labelling = {"min10db", "min8db", "min6db", "min4db", "min2db", "zerodb", "plus2db", "plus4db", "plus6db", "plus8db", "plus10db"};
-    private ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> trials; // shared between various permutation-pairs, reduced while it is used
-    private final ArrayList<Integer> requiredLengths = new ArrayList<Integer>(Arrays.asList(3, 4, 5, 6));
-    private final int maxTrialLength = 6;
-    private final ArrayList<TrialCondition> requiredTrialTypes = new ArrayList<TrialCondition>(Arrays.asList(TrialCondition.TARGET_ONLY, TrialCondition.TARGET_AND_FOIL, TrialCondition.NO_TARGET, TrialCondition.NO_TARGET));
+    private final AudioStimuliFromString reader = new AudioStimuliFromString();
+    private final LinkedHashMap<Integer, Trial> hashedTrials;
     private final int numberOfBands = 11;
-    ArrayList<ArrayList<TrialCondition>> trialTypesPermutations;
-    ArrayList<ArrayList<Integer>> trialLengtPermutations;
-    AudioStimuliFromString reader;
+    private final int maxtTialLength = 6;
+    private final ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> trialMatrix;
+    private final ArrayList<Integer> requiredLengths = new ArrayList<Integer>(Arrays.asList(3, 4, 5, 6));
+    private final ArrayList<TrialCondition> requiredTrialTypes = new ArrayList<TrialCondition>(Arrays.asList(TrialCondition.TARGET_ONLY, TrialCondition.TARGET_AND_FOIL, TrialCondition.NO_TARGET, TrialCondition.NO_TARGET));
+    private final ArrayList<ArrayList<Integer>> allLengthPermuations;
+    private final ArrayList<ArrayList<TrialCondition>> allConditionPermuations;
+    private final int tupleSize = 4;
 
     public PermutationPairTest() {
-        UtilsList<TrialCondition> utilTrials = new UtilsList<TrialCondition>();
-        this.trialTypesPermutations = utilTrials.generatePermutations(this.requiredTrialTypes);
-
-        UtilsList<Integer> utilSizes = new UtilsList<Integer>();
-        this.trialLengtPermutations = utilSizes.generatePermutations(this.requiredLengths);
-
-        this.reader = new AudioStimuliFromString();
-        this.reader.readTrialsAsCsv(labelling); 
-        this.trials = Trial.prepareTrialMatrix(reader.getHashedTrials(), this.numberOfBands, this.maxTrialLength);
+        this.reader.readTrialsAsCsv(this.labelling);
+        this.hashedTrials = this.reader.getHashedTrials();
+        this.trialMatrix = Trial.prepareTrialMatrix(this.hashedTrials, this.numberOfBands, this.maxtTialLength);
+        UtilsList<Integer> utilInt = new UtilsList<Integer>();
+        this.allLengthPermuations = utilInt.generatePermutations(this.requiredLengths);
+        UtilsList<TrialCondition> utilCond = new UtilsList<TrialCondition>();
+        this.allConditionPermuations = utilCond.generatePermutations(this.requiredTrialTypes);
     }
 
     @BeforeClass
@@ -73,6 +75,99 @@ public class PermutationPairTest {
 
     @After
     public void tearDown() {
+    }
+
+    /**
+     * Test of initialiseAvailabilityList method, of class PermutationPair.
+     */
+    @Test
+    public void testInitialiseAvailabilityList() {
+        System.out.println("initialiseAvailabilityList");
+        ArrayList<ArrayList<PermutationPair>> result = PermutationPair.initialiseAvailabilityList(this.trialMatrix,
+                this.allLengthPermuations,
+                this.allConditionPermuations,
+                this.numberOfBands);
+        assertEquals(this.numberOfBands, result.size());
+        int numberOfPairs = this.allLengthPermuations.size() * this.allConditionPermuations.size();
+        int trialCount = 0;
+        for (int i = 0; i < this.numberOfBands; i++) {
+            assertNotNull(result.get(i));
+            ArrayList<PermutationPair> bandList = result.get(i);
+            assertEquals(numberOfPairs, bandList.size());
+            for (PermutationPair permPair : bandList) {
+
+                assertTrue(permPair.isAvailable());
+
+                ArrayList<Integer> trialLengths = permPair.getTrialLengths();
+                assertEquals(this.tupleSize, trialLengths.size());
+
+                ArrayList<TrialCondition> trialConds = permPair.getTrialConditions();
+                assertEquals(this.tupleSize, trialConds.size());
+
+                ArrayList<ArrayList<Trial>> trials = permPair.getTrials();
+                assertEquals(this.tupleSize, trials.size());
+
+                int countTargetAndFoil = 0;
+                int countNoTarget = 0;
+                int countTargetOnly = 0;
+                int count3 = 0;
+                int count4 = 0;
+                int count5 = 0;
+                int count6 = 0;
+                for (int j = 0; j < this.tupleSize; j++) {
+                    TrialCondition tc = trialConds.get(j);
+                    int tLength = trialLengths.get(j);
+                    ArrayList<Trial> examples = trials.get(j);
+
+                    if (tc.equals(TrialCondition.NO_TARGET)) {
+                        countNoTarget++;
+                    }
+
+                    if (tc.equals(TrialCondition.TARGET_AND_FOIL)) {
+                        countTargetAndFoil++;
+                    }
+
+                    if (tc.equals(TrialCondition.TARGET_ONLY)) {
+                        countTargetOnly++;
+                    }
+
+                    if (tLength == 3) {
+                        count3++;
+                    }
+                    if (tLength == 4) {
+                        count4++;
+                    }
+                    if (tLength == 5) {
+                        count5++;
+                    }
+                    if (tLength == 6) {
+                        count6++;
+                    }
+
+                    for (Trial trial : examples) {
+                        trialCount++;
+                        assertEquals(tc, trial.getCondition());
+                        assertEquals(tLength, trial.getTrialLength());
+                        assertEquals(i, trial.getBandIndex());
+
+                        // references to the trial must be the same
+                        Integer id = trial.getId();
+                        assertEquals(this.hashedTrials.get(id), trial);
+
+                    }
+                }
+                assertEquals(2, countNoTarget);
+                assertEquals(1, countTargetOnly);
+                assertEquals(1, countTargetAndFoil);
+
+                assertEquals(this.tupleSize, count3 + count4 + count5 + count6);
+                assertTrue(count3 <= 1);
+                assertTrue(count4 <= 1);
+                assertTrue(count5 <= 1);
+                assertTrue(count6 <= 1);
+            }
+        }
+
     }
 
     /**
@@ -95,7 +190,6 @@ public class PermutationPairTest {
 
         PermutationPair instance = new PermutationPair(conditions, lengths, null);
         String expResult = "{fields=[trialConditions, trialLengths, trials], trialConditions=[NO_TARGET, TARGET_AND_FOIL, NO_TARGET, TARGET_ONLY], trialLengths=[4, 3, 5, 6], trials=null}";
-        System.out.println(instance.toString());
         String result = instance.toString();
         assertEquals(expResult, result);
     }
@@ -106,25 +200,25 @@ public class PermutationPairTest {
     @Test
     public void testToObject() {
         System.out.println("toObject");
-        
+
         ArrayList<TrialCondition> conditions = new ArrayList<TrialCondition>(4);
         conditions.add(TrialCondition.NO_TARGET);
         conditions.add(TrialCondition.TARGET_AND_FOIL);
         conditions.add(TrialCondition.NO_TARGET);
         conditions.add(TrialCondition.TARGET_ONLY);
-        
+
         ArrayList<Integer> lengths = new ArrayList<Integer>(4);
         lengths.add(4);
         lengths.add(3);
         lengths.add(5);
         lengths.add(6);
-        
+
         LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
         map.put("fields", PermutationPair.FLDS);
         map.put("trialConditions", conditions);
         map.put("trialLengths", lengths);
         map.put("trials", null);
-        
+
         PermutationPair result = PermutationPair.toObject(map, this.reader.getHashedTrials());
         PermutationPair expResult = new PermutationPair(conditions, lengths, null);
         assertEquals(expResult.getTrialConditions(), result.getTrialConditions());
@@ -203,8 +297,8 @@ public class PermutationPairTest {
         PermutationPair instance = new PermutationPair(conditions, lengths, null);
         ArrayList<ArrayList<Trial>> result = instance.getTrials();
         assertEquals(null, result);
-        
-        // add more
+
+        // alos see initialisation
     }
 
     /**
@@ -227,19 +321,30 @@ public class PermutationPairTest {
 
         PermutationPair instance = new PermutationPair(conditions, lengths, null);
         assertFalse(instance.isAvailable());
-    }
 
-    /**
-     * Test of initialiseAvailabilityList method, of class PermutationPair.
-     */
-    @Test
-    public void testInitialiseAvailabilityList() {
-        System.out.println("initialiseAvailabilityList");
-        ArrayList<ArrayList<PermutationPair>> result = PermutationPair.initialiseAvailabilityList(this.trials, 
-                this.trialLengtPermutations, 
-                this.trialTypesPermutations, 
+        ArrayList<ArrayList<PermutationPair>> list = PermutationPair.initialiseAvailabilityList(this.trialMatrix,
+                this.allLengthPermuations,
+                this.allConditionPermuations,
                 this.numberOfBands);
-        
+
+        ArrayList<PermutationPair> middleBand = list.get(5);
+
+        int count = 0;
+        for (PermutationPair permPair : middleBand) {
+
+            int i = count % this.tupleSize;
+
+            if (permPair.isAvailable()) {
+                if (permPair.getTrials().get(i).size() > 1) {
+                    permPair.getTrials().get(i).remove(0);// remove just one candidate for the i-th element of the pair
+                    assertTrue(permPair.isAvailable());
+                }
+            }
+
+            permPair.getTrials().get(i).clear(); // remove all candidates for the i-th element of the pair
+            assertFalse(permPair.isAvailable());
+            count++;
+        }
         
     }
 

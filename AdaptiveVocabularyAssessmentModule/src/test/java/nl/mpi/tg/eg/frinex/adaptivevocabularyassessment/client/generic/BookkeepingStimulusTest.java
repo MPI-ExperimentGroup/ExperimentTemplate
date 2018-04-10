@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import org.junit.After;
@@ -33,16 +34,16 @@ import static org.junit.Assert.*;
 public class BookkeepingStimulusTest {
 
     public final BookkeepingStimulus<BandStimulus> instance;
-     public final BandStimulus stimulus;
+    public final BandStimulus stimulus;
 
     public BookkeepingStimulusTest() {
-        String uniqueId = "smoer";
+        String uniqueId = "smoer_plus10db";
         String label = "smoer";
 
         this.stimulus = new BandStimulus(uniqueId, new Stimulus.Tag[0], label, "", 900, "aud", "vid", "img",
                 "a,b,c", "b,c", "plus10db", 10);
         this.instance = new BookkeepingStimulus<BandStimulus>(stimulus);
-        
+
     }
 
     @BeforeClass
@@ -80,9 +81,9 @@ public class BookkeepingStimulusTest {
         String result = instance.getReaction();
         assertEquals(null, result);
         this.instance.setReaction("false");
-        assertEquals("false",instance.getReaction());
+        assertEquals("false", instance.getReaction());
         this.instance.setReaction("Disagree!");
-        assertEquals("Disagree!",instance.getReaction());
+        assertEquals("Disagree!", instance.getReaction());
     }
 
     /**
@@ -93,7 +94,7 @@ public class BookkeepingStimulusTest {
         System.out.println("getTimeStamp");
         long result = instance.getTimeStamp();
         assertEquals(0, result);
-        long now=System.currentTimeMillis();
+        long now = System.currentTimeMillis();
         this.instance.setTimeStamp(now);
         assertEquals(now, this.instance.getTimeStamp());
     }
@@ -105,40 +106,57 @@ public class BookkeepingStimulusTest {
     public void testGetSetCorrectness() {
         System.out.println("getCorrectness");
         Boolean result = instance.getCorrectness();
-       assertEquals(null, result);
+        assertEquals(null, result);
         this.instance.setCorrectness(false);
         assertFalse(this.instance.getCorrectness());
         this.instance.setCorrectness(true);
         assertTrue(this.instance.getCorrectness());
     }
 
- 
     /**
      * Test of toString method, of class BookkeepingStimulus.
      */
     @Test
     public void testToString() {
         System.out.println("toString");
-        String expResult = "{fields=[stimulus, userReaction, correctness, timeStamp], stimulus=smoer, userReaction=null, correctness=null, timeStamp=0}";
+        String expResult = "{fields=[stimulus, userReaction, correctness, timeStamp], stimulus=smoer_plus10db, userReaction=null, correctness=null, timeStamp=0}";
         String result = this.instance.toString();
         assertEquals(expResult, result);
+        
+        long now = System.currentTimeMillis();
+        this.instance.setTimeStamp(now);
+        this.instance.setReaction("yes");
+        this.instance.setCorrectness(false);
+        String expResult2 = "{fields=[stimulus, userReaction, correctness, timeStamp], stimulus=smoer_plus10db, userReaction=yes, correctness=false, timeStamp=" + now + "}";
+        String result2 = this.instance.toString();
+        assertEquals(expResult2, result2);
     }
 
     /**
      * Test of toObject method, of class BookkeepingStimulus.
      */
     @Test
-    public void testToObject() throws Exception{
+    public void testToBookkeepingStimulusObject() throws Exception {
         System.out.println("toObject");
-        long now=System.currentTimeMillis();
-        String input="{fields=[stimulus, userReaction, correctness, timeStamp], stimulus=smoer, userReaction=yes, correctness=false, timeStamp="+now+"}";
-        LinkedHashMap<String,BandStimulus> map = new LinkedHashMap<String,BandStimulus>();
+        long now = System.currentTimeMillis();
+        LinkedHashMap<String, Object> inputMap =  new LinkedHashMap<String,Object>();
+        String[] flds = {"stimulus", "userReaction", "correctness", "timeStamp"};
+        inputMap.put("fields", Arrays.asList(flds));
+        inputMap.put("stimulus", "smoer");
+        inputMap.put("userReaction", "yes");
+        inputMap.put("correctness", false);
+        inputMap.put("timeStamp", now);
+        
+        
+        LinkedHashMap<String, BandStimulus> map = new LinkedHashMap<String, BandStimulus>();
         map.put("smoer", this.stimulus);
-        BookkeepingStimulus<BandStimulus> result = this.instance.toObject(input, map);
-        assertEquals("yes",result.getReaction());
+        
+        BookkeepingStimulus<BandStimulus> result = this.instance.toBookkeepingStimulusObject(inputMap, map);
+        assertEquals("yes", result.getReaction());
         assertFalse(result.getCorrectness());
-        assertEquals(now,result.getTimeStamp());
+        assertEquals(now, result.getTimeStamp());
         assertEquals(this.stimulus, result.getStimulus());
     }
+
 
 }
