@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import nl.mpi.tg.eg.frinex.common.AbstractStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -75,8 +76,8 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
     // fine tuning stopping
     protected boolean enoughFineTuningStimulae = true;
-    protected int[] bandVisitCounter;
-    protected int[] cycle2helper;
+    protected Integer[] bandVisitCounter;
+    protected Integer[] cycle2helper;
     protected boolean cycle2 = false;
     protected boolean champion = false;
     protected boolean looser = false;
@@ -155,11 +156,11 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         this.fineTuningUpperBoundForCycles = Integer.parseInt(fineTuningUpperBoundForCycles);
     }
 
-    public int[] getbandVisitCounter() {
+    public Integer[] getbandVisitCounter() {
         return this.bandVisitCounter;
     }
 
-    public int[] getcycle2helper() {
+    public Integer[] getcycle2helper() {
         return this.cycle2helper;
     }
 
@@ -191,7 +192,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
             this.percentageScore = 0;
             this.isCorrectCurrentResponse = null;
             this.currentBandIndex = this.startBand - 1;
-            this.bandVisitCounter = new int[this.numberOfBands];
+            this.bandVisitCounter = new Integer[this.numberOfBands];
 
             //this.totalStimuli: see the child class
             this.enoughFineTuningStimulae = true;
@@ -199,7 +200,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
                 this.bandVisitCounter[i] = 0;
             }
 
-            this.cycle2helper = new int[this.fineTuningUpperBoundForCycles * 2 + 1];
+            this.cycle2helper = new Integer[this.fineTuningUpperBoundForCycles * 2 + 1];
             for (int i = 0; i < this.fineTuningUpperBoundForCycles * 2 + 1; i++) {
                 this.cycle2helper[i] = 0;
             }
@@ -670,7 +671,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         return retVal;
     }
 
-    public static boolean detectLoop(int[] arr) {
+    public static boolean detectLoop(Integer[] arr) {
         for (int i = 0; i < arr.length - 2; i++) {
             if (arr[i] == 0 || arr[i + 2] == 0) {
                 return false; // we are at the very beginning, to early to count loops
@@ -682,14 +683,14 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         return true;
     }
 
-    public static void shiftFIFO(int[] fifo, int newelement) {
+    public static void shiftFIFO(Integer[] fifo, int newelement) {
         for (int i = 0; i < fifo.length - 1; i++) {
             fifo[i] = fifo[i + 1];
         }
         fifo[fifo.length - 1] = newelement;
     }
 
-    public int mostOftenVisitedBandNumber(int[] bandVisitCounter, int controlIndex) {
+    public int mostOftenVisitedBandNumber(Integer[] bandVisitCounter, int controlIndex) {
 
         int max = bandVisitCounter[0];
         ArrayList<Integer> indices = new ArrayList<>();
@@ -782,7 +783,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     }
     
     protected Map<String, Object> toMap(){
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new LinkedHashMap<String, Object>();
         //map.put("fields", BandStimuliProvider.FLDS);
         map.put("type", this.type);
         map.put("numberOfBands", this.numberOfBands);
@@ -809,8 +810,11 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         map.put("timeTickEndFastTrack", this.timeTickEndFastTrack);
         
         map.put("enoughFineTuningStimulae", this.enoughFineTuningStimulae);
-        map.put("bandVisitCounter", Arrays.asList(this.bandVisitCounter).toString());
-        map.put("cycle2helper", this.cycle2helper);
+        
+        List<Integer> counter = Arrays.asList(this.bandVisitCounter);
+        map.put("bandVisitCounter", counter);
+        
+        map.put("cycle2helper", Arrays.asList(this.cycle2helper));
         
         map.put("cycle2", this.cycle2);
         map.put("champion", this.champion);
@@ -870,10 +874,10 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
        
         Object bandCounterObj = map.get("bandVisitCounter");
-        this.bandVisitCounter = UtilsJSONdialect.objectToArrayInt(bandCounterObj);
+        this.bandVisitCounter = UtilsJSONdialect.objectToArrayInteger(bandCounterObj);
         
         Object cycle2Str = map.get("cycle2helper");
-        this.cycle2helper =  UtilsJSONdialect.objectToArrayInt(cycle2Str);
+        this.cycle2helper =  UtilsJSONdialect.objectToArrayInteger(cycle2Str);
 
         this.errorMessage = map.get("errorMessage").toString();
         

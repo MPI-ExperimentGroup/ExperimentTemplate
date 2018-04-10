@@ -861,13 +861,13 @@ public class AdVocAsStimuliProviderTest {
     @Test
     public void testDetectLoop() {
         System.out.println("detectLoop");
-        int[] arr1 = {42, 43, 42, 43, 42, 43, 42};
+        Integer[] arr1 = {42, 43, 42, 43, 42, 43, 42};
         boolean result1 = AdVocAsStimuliProvider.detectLoop(arr1);
         assertEquals(true, result1);
-        int[] arr2 = {42, 43, 42, 43, 42, 43, 45};
+        Integer[] arr2 = {42, 43, 42, 43, 42, 43, 45};
         boolean result2 = AdVocAsStimuliProvider.detectLoop(arr2);
         assertEquals(false, result2);
-        int[] arr3 = {43, 42, 43, 42, 43, 42, 45, 42};
+        Integer[] arr3 = {43, 42, 43, 42, 43, 42, 45, 42};
         boolean result3 = AdVocAsStimuliProvider.detectLoop(arr3);
         assertEquals(false, result3);
     }
@@ -878,11 +878,11 @@ public class AdVocAsStimuliProviderTest {
     @Test
     public void testShiftFIFO() {
         System.out.println("shiftFIFO");
-        int[] fifo = {0, 1, 2, 3, 4, 5, 6};
+        Integer[] fifo = {0, 1, 2, 3, 4, 5, 6};
         int newelement = 7;
         AdVocAsStimuliProvider.shiftFIFO(fifo, newelement);
         for (int i = 0; i < 7; i++) {
-            assertEquals(i + 1, fifo[i]);
+            assertEquals(new Integer(i + 1), fifo[i]);
         }
     }
 
@@ -892,7 +892,7 @@ public class AdVocAsStimuliProviderTest {
     @Test
     public void testMostOftenVisitedBandNumber() {
         System.out.println(" MostOftenVisitedBandMumber");
-        int[] visitCounter = {1, 3, 2, 3, 3, 3, 1};
+        Integer[] visitCounter = {1, 3, 2, 3, 3, 3, 1};
         // indices {1,3,4,5}
         // ind = 1, indSym = 2
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);

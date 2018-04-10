@@ -90,12 +90,12 @@ public class UtilsJSONdialect {
         return retVal;
     }
     
-    public static int[] objectToArrayInt(Object obj) throws Exception {
+    public static Integer[] objectToArrayInteger(Object obj) throws Exception {
         if (obj==null) {
             return null;
         }
         List<Object> objs = (List<Object>) obj;
-        int[] retVal = new  int[objs.size()];
+        Integer[] retVal = new  Integer[objs.size()];
         for (int i=0; i<objs.size(); i++) {
             String tmp = objs.get(i).toString();
             int val = Integer.parseInt(tmp.trim());
