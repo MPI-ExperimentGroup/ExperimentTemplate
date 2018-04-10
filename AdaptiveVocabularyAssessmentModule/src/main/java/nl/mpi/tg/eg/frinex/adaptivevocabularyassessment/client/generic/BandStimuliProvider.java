@@ -20,7 +20,6 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -637,7 +636,9 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         // detecting is should be stopped
         this.cycle2 = detectLoop(cycle2helper);
         if (this.cycle2) {
-            System.out.println("Detected: " + this.fineTuningUpperBoundForCycles + " times oscillation between two neighbouring bands");
+            System.out.println("Detected: " + this.fineTuningUpperBoundForCycles + 
+                    " times oscillation between two neighbouring bands, "+
+                    this.cycle2helper[cycle2helper.length - 3] + " and "+this.cycle2helper[cycle2helper.length - 1]);
             this.bandScore = this.cycle2helper[cycle2helper.length - 1];
 
             //Here implemented loop-based approach , with the last element excluded from loop detection
@@ -811,10 +812,9 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         
         map.put("enoughFineTuningStimulae", this.enoughFineTuningStimulae);
         
-        List<Integer> counter = Arrays.asList(this.bandVisitCounter);
-        map.put("bandVisitCounter", counter);
+        map.put("bandVisitCounter", this.bandVisitCounter);
         
-        map.put("cycle2helper", Arrays.asList(this.cycle2helper));
+        map.put("cycle2helper", this.cycle2helper);
         
         map.put("cycle2", this.cycle2);
         map.put("champion", this.champion);

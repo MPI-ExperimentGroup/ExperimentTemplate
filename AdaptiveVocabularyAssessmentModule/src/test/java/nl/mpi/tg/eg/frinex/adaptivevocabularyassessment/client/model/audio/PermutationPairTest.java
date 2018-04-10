@@ -89,7 +89,6 @@ public class PermutationPairTest {
                 this.numberOfBands);
         assertEquals(this.numberOfBands, result.size());
         int numberOfPairs = this.allLengthPermuations.size() * this.allConditionPermuations.size();
-        int trialCount = 0;
         for (int i = 0; i < this.numberOfBands; i++) {
             assertNotNull(result.get(i));
             ArrayList<PermutationPair> bandList = result.get(i);
@@ -145,7 +144,6 @@ public class PermutationPairTest {
                     }
 
                     for (Trial trial : examples) {
-                        trialCount++;
                         assertEquals(tc, trial.getCondition());
                         assertEquals(tLength, trial.getTrialLength());
                         assertEquals(i, trial.getBandIndex());

@@ -173,7 +173,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
     }
 
-    public TrialTuple getTrialTuple() {
+    public TrialTuple getCurrentTrialTuple() {
         return this.currentTrialTuple;
     }
 
@@ -221,7 +221,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             row.append(startColumn).append(time).append(endColumn);
             row.append(startColumn).append(i).append(endColumn);
             stringBuilder.append(startRow).append(row).append(endRow);
-            spellingsCheck.add(stimulus.getLabel());
+            spellingsCheck.add(stimulus.getUniqueId());
         }
 
         // check if there are repititions
@@ -230,7 +230,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             stringBuilder.append(startRow).append(startColumn)
                     .append("Repetitions of stimuli detected")
                     .append(endColumn).append(endRow);
-        }
+        } 
         return stringBuilder.toString();
     }
 
