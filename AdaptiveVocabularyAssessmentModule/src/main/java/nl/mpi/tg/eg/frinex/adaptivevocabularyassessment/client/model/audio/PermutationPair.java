@@ -121,7 +121,7 @@ public class PermutationPair {
     @Override
     public String toString() {
         LinkedHashMap<String, Object> map = new LinkedHashMap<String, Object>();
-        map.put("fields", Arrays.asList(PermutationPair.FLDS).toString());
+        map.put("fields", Arrays.asList(PermutationPair.FLDS));
         map.put("trialConditions", this.trialConditions);
         map.put("trialLengths", this.trialLengths);
         map.put("trials", this.trials);

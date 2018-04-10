@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -93,7 +94,7 @@ public class TrialTuple {
     @Override
     public String toString() {
         Map<String, Object> map = new LinkedHashMap<String, Object>();
-        map.put("fields", TrialTuple.FLDS);
+        map.put("fields", Arrays.asList(TrialTuple.FLDS));
         map.put("trials", this.trials);
         map.put("correctness", this.correctness);
         return map.toString();
@@ -101,14 +102,14 @@ public class TrialTuple {
 
     public static TrialTuple mapToObject(Map<String, Object> map, LinkedHashMap<Integer, Trial> hashedTrials) {
         try {
-            List<Object> trialsObj = (List<Object>) map.get("trials");
+            Object trialsObj = map.get("trials");
             if (trialsObj == null) {
                 return null;
             } else {
-
-                ArrayList<Trial> trials = new ArrayList<Trial>(trialsObj.size());
-                for (int i = 0; i < trialsObj.size(); i++) {
-                    Integer id = Integer.parseInt(trialsObj.get(i).toString());
+               List<Object> ls = (List<Object>) trialsObj;
+                ArrayList<Trial> trials = new ArrayList<Trial>(ls.size());
+                for (int i = 0; i < ls.size(); i++) {
+                    Integer id = Integer.parseInt(ls.get(i).toString());
                     Trial tr = hashedTrials.get(id);
                     trials.add(i, tr);
                 }
@@ -129,18 +130,6 @@ public class TrialTuple {
                 return retVal;
 
             }
-        } catch (Exception ex) {
-            System.out.println(ex);
-            return null;
-        }
-
-    }
-
-    public static TrialTuple toObject(String str, LinkedHashMap<Integer, Trial> hashedTrials) {
-        try {
-            Map<String, Object> map = UtilsJSONdialect.stringToObjectMap(str, TrialTuple.FLDS);
-            TrialTuple retVal = mapToObject(map, hashedTrials);
-            return retVal;
         } catch (Exception ex) {
             System.out.println(ex);
             return null;
