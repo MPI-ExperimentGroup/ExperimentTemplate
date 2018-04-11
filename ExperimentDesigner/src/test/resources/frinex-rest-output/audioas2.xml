@@ -146,7 +146,7 @@
                                 </conditionTrue>
                                 <conditionFalse>
                                     <htmlText featureText="&lt;div align=&quot;left&quot; &gt; &lt;img src=&quot;static/stars.png&quot; /&gt; New trial starts. Listen to the sample and press SPACE when ready to continue &lt;/div&gt;"/>
-                                    <pause msToNext="1000">
+                                    <pause msToNext="500">
                                         <stimulusAudio msToNext="0" showPlaybackIndicator="false"> 
                                             <actionButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight">
                                                 <cancelPauseTimers/> 
