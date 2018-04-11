@@ -65,11 +65,11 @@ public class UtilsJSONdialect {
             return stringToObjectMap(buffer, flds);
         }
        
-        if (buffer.startsWith("[")) { //is a generic list
+        if (buffer.substring(0,1).equals("[")) { //is a generic list
             return stringToList(buffer);
         }
 
-        if (buffer.startsWith("{")) { // is a generic map
+        if (buffer.substring(0,1).equals("{")) { // is a generic map
             return stringToMap(buffer);
         }
 
@@ -138,13 +138,15 @@ public class UtilsJSONdialect {
         if (key == null) {
             return jsonStringInit;
         }
+        
 
-        String jsonString = (new StringBuilder()).append(jsonStringInit).toString();
-        if (jsonStringInit.startsWith("{") && jsonStringInit.endsWith("}")) {
-            jsonString = removeFirstAndLast(jsonStringInit);
+        String jsonString = jsonStringInit.trim();
+        int lg = jsonString.length();
+        if (jsonString.substring(0,1).equals("{") && jsonString.substring(lg-1,lg).equals("}")) {
+            jsonString = removeFirstAndLast(jsonString);
         } else {
-            if (jsonStringInit.startsWith("[") && jsonStringInit.endsWith("]")) {
-                jsonString = removeFirstAndLast(jsonStringInit);
+            if (jsonStringInit.substring(0,1).equals("[") && jsonString.substring(lg-1,lg).equals("]")) {
+                jsonString = removeFirstAndLast(jsonString);
             }
         }
 
@@ -174,7 +176,7 @@ public class UtilsJSONdialect {
                     }
                     openBrackets--;
                 } else {
-                    if (current == closingBracket) {
+                    if (current == openingBracket) {
                         openBrackets++;
                     }
                 }
@@ -218,6 +220,7 @@ public class UtilsJSONdialect {
         while (from < buffer.length()) {
             int currentCommaPosition = buffer.indexOf(",", from);
             if (innerPositions.contains(currentCommaPosition)) {
+                from = currentCommaPosition + 1;
                 continue;
             }
             String valStr;
@@ -244,7 +247,7 @@ public class UtilsJSONdialect {
         }
 
         if (mapStr.trim().isEmpty() || mapStr.trim().equals("{}")) {
-            return null;
+            return new LinkedHashMap<String, Object>();
         }
 
         LinkedHashMap<String, Object> retVal = new LinkedHashMap<String, Object>();
@@ -323,6 +326,10 @@ public class UtilsJSONdialect {
         }
 
         String buffer = str.trim();
+        int lg = buffer.length();
+        if (buffer.substring(0,1).equals("{") && buffer.substring(lg-1,lg).equals("}")) {
+            buffer = removeFirstAndLast(buffer);
+        }
         List<Integer> innerPositions = positionsWithinParentheses(buffer);
 
         List<String> retVal = new ArrayList<String>();

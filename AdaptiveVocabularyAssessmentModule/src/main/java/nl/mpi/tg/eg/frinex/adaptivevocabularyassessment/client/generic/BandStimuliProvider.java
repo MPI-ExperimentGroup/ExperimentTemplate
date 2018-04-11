@@ -812,9 +812,9 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         
         map.put("enoughFineTuningStimulae", this.enoughFineTuningStimulae);
         
-        map.put("bandVisitCounter", this.bandVisitCounter);
+        map.put("bandVisitCounter", Arrays.asList(this.bandVisitCounter));
         
-        map.put("cycle2helper", this.cycle2helper);
+        map.put("cycle2helper", Arrays.asList(this.cycle2helper));
         
         map.put("cycle2", this.cycle2);
         map.put("champion", this.champion);
