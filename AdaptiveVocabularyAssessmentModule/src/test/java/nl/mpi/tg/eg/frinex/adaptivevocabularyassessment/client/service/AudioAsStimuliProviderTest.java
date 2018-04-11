@@ -486,6 +486,7 @@ public class AudioAsStimuliProviderTest {
     /**
      * Test of toString method, of class AudioAsStimuliProvider.
      */
+    
     @Ignore
     @Test
     public void testToString() {

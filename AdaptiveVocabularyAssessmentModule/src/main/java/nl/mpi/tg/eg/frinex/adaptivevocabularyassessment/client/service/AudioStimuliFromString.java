@@ -136,13 +136,15 @@ public class AudioStimuliFromString {
                 //AudioAsStimulus(String uniqueId, Stimulus.Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath,
                 //             String ratingLabels, String correctResponses, String bandLabel, int bandIndex, WordType wordType, int posInTrial)
                 String wrd = removeFileNameExtensions(words.get(i), fileNameExtensions);
-                String audioPath = "stimuli/" + bandLabel + "/" + wrd;
                 String uniqueId = wrd + "_" + bandLabel;
                 int pauseMs = 900;
                 WordType wordType;
+                String ratingLabels="";
+                String audioPath = "static/stimuli/" + bandLabel + "/" + wrd;
                 if (i == 0) {
-                    pauseMs = 500;
                     wordType = WordType.EXAMPLE_TARGET_NON_WORD;
+                    ratingLabels = null;
+                    audioPath = "static/stimuli/clear_mono/" + wrd;
                 } else {
                     if (trialPositionTargetInt == i) {
                         wordType = WordType.TARGET_NON_WORD;
@@ -155,7 +157,8 @@ public class AudioStimuliFromString {
                     }
                 }
 
-                AudioAsStimulus stimulus = new AudioAsStimulus(uniqueId, new Tag[0], wrd, "", pauseMs, audioPath, null, null, "", "", bandLabel, bandIndex, wordType, i);
+                AudioAsStimulus stimulus = new AudioAsStimulus(uniqueId, new Tag[0], wrd, "", pauseMs, audioPath, null, null, ratingLabels, "", bandLabel, bandIndex, wordType, i);
+                stimulus.hasRatingLabels();
                 BookkeepingStimulus<AudioAsStimulus> bStimulus = new BookkeepingStimulus<AudioAsStimulus>(stimulus);
                 stimuli.add(bStimulus);
                 hashedStimuli.put(uniqueId, stimulus);

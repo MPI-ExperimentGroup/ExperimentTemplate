@@ -30,13 +30,11 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag;
  */
 public class UtilsJSONdialect {
 
-    
-
     public static Tag[] toTagArray(Object obj) {
         if (obj == null) {
             return null;
         }
-        
+
         List<Object> tagsBuffer = (List<Object>) obj;
         Tag[] tgs = new Tag[tagsBuffer.size()];
         int i = 0;
@@ -52,80 +50,82 @@ public class UtilsJSONdialect {
         if (str == null) {
             return null;
         }
-        
+
         if (str.trim().equals("null")) {
             return null;
         }
 
         String buffer = str.trim();
+
+        if (buffer.substring(0, 1).equals("[")) { //is a generic list
+            return stringToList(buffer);
+        }
+
         String fields = getKey(buffer, "fields");
-        if (fields!=null) { // a map epresenting an object
+        if (fields != null) { // a map epresenting an object
             Object object = stringToObject(fields);
             String[] flds = objectToArrayString(object);
             return stringToObjectMap(buffer, flds);
         }
-       
-        if (buffer.substring(0,1).equals("[")) { //is a generic list
-            return stringToList(buffer);
-        }
 
-        if (buffer.substring(0,1).equals("{")) { // is a generic map
+        if (buffer.substring(0, 1).equals("{")) { // is a generic map
             return stringToMap(buffer);
         }
 
         return str;
     }
-    
+
     public static ArrayList<Integer> objectToListInteger(Object obj) throws Exception {
-        if (obj==null) {
+        if (obj == null) {
             return null;
         }
         List<Object> objs = (List<Object>) obj;
-        ArrayList<Integer> retVal = new  ArrayList<Integer>(objs.size());
-        for (Object element:objs) {
+        ArrayList<Integer> retVal = new ArrayList<Integer>(objs.size());
+        for (Object element : objs) {
             String tmp = element.toString();
             Integer val = Integer.parseInt(tmp.trim());
             retVal.add(val);
         }
         return retVal;
     }
-    
+
     public static Integer[] objectToArrayInteger(Object obj) throws Exception {
-        if (obj==null) {
+        if (obj == null) {
             return null;
         }
         List<Object> objs = (List<Object>) obj;
-        Integer[] retVal = new  Integer[objs.size()];
-        for (int i=0; i<objs.size(); i++) {
+        Integer[] retVal = new Integer[objs.size()];
+        for (int i = 0; i < objs.size(); i++) {
             String tmp = objs.get(i).toString();
             int val = Integer.parseInt(tmp.trim());
-            retVal[i]=val;
+            retVal[i] = val;
         }
         return retVal;
     }
+
     public static String[] objectToArrayString(Object obj) throws Exception {
-        if (obj==null) {
+        if (obj == null) {
             return null;
         }
         List<Object> objs = (List<Object>) obj;
         String[] retVal = new String[objs.size()];
-        for (int i=0; i<objs.size(); i++) {
+        for (int i = 0; i < objs.size(); i++) {
             String tmp = objs.get(i).toString();
-            retVal[i]=tmp;
+            retVal[i] = tmp;
         }
         return retVal;
     }
-    
+
     public static ArrayList<Double> objectToListDouble(Object obj) throws Exception {
-         if (obj==null) {
+        if (obj == null) {
             return null;
         }
         List<Object> objs = (List<Object>) obj;
-        ArrayList<Double> retVal = new  ArrayList<Double>(objs.size());
-        for (int i=0; i<objs.size(); i++) {
+        ArrayList<Double> retVal = new ArrayList<Double>(objs.size());
+        for (int i = 0; i < objs.size(); i++) {
             String tmp = objs.get(i).toString();
             Double val = Double.parseDouble(tmp);
-            retVal.add(i,val);
+            retVal.add(i, val);
         }
         return retVal;
     }
@@ -138,14 +138,13 @@ public class UtilsJSONdialect {
         if (key == null) {
             return jsonStringInit;
         }
-        
 
         String jsonString = jsonStringInit.trim();
         int lg = jsonString.length();
-        if (jsonString.substring(0,1).equals("{") && jsonString.substring(lg-1,lg).equals("}")) {
+        if (jsonString.substring(0, 1).equals("{") && jsonString.substring(lg - 1, lg).equals("}")) {
             jsonString = removeFirstAndLast(jsonString);
         } else {
-            if (jsonStringInit.substring(0,1).equals("[") && jsonString.substring(lg-1,lg).equals("]")) {
+            if (jsonStringInit.substring(0, 1).equals("[") && jsonString.substring(lg - 1, lg).equals("]")) {
                 jsonString = removeFirstAndLast(jsonString);
             }
         }
@@ -202,7 +201,7 @@ public class UtilsJSONdialect {
         if (listStr == null) {
             return null;
         }
-        
+
         if (listStr.trim().equals("null") || listStr.trim().equals("{null}")) {
             return null;
         }
@@ -212,19 +211,19 @@ public class UtilsJSONdialect {
         }
 
         String buffer = removeFirstAndLast(listStr.trim());
-        List<Integer> innerPositions = positionsWithinParentheses(buffer);
+        List<Integer> allowedPositions = positionsNotWithinParentheses(buffer);
 
         List<Object> retVal = new ArrayList<Object>();
         int from = 0;
 
         while (from < buffer.length()) {
             int currentCommaPosition = buffer.indexOf(",", from);
-            if (innerPositions.contains(currentCommaPosition)) {
-                from = currentCommaPosition + 1;
-                continue;
-            }
             String valStr;
             if (currentCommaPosition > -1) {
+                if (!allowedPositions.contains(currentCommaPosition)) {
+                    from = currentCommaPosition + 1;
+                    continue;
+                }
                 valStr = buffer.substring(from, currentCommaPosition);
                 from = currentCommaPosition + 1;
             } else {
@@ -237,7 +236,7 @@ public class UtilsJSONdialect {
         return retVal;
     }
 
-    public static LinkedHashMap<String, Object> stringToObjectMap(String mapStr,String[] fields) throws Exception {
+    public static LinkedHashMap<String, Object> stringToObjectMap(String mapStr, String[] fields) throws Exception {
         if (mapStr == null) {
             return null;
         }
@@ -287,7 +286,7 @@ public class UtilsJSONdialect {
 
     }
 
-    private static List<Integer> positionsWithinParentheses(String str) {
+    public static List<Integer> positionsNotWithinParentheses(String str) {
         List<Integer> retVal = new ArrayList<Integer>();
         int openBracket = 0;
         int openCurly = 0;
@@ -296,22 +295,18 @@ public class UtilsJSONdialect {
             switch (current) {
                 case '[':
                     openBracket++;
-                    retVal.add(i);
                     break;
                 case ']':
                     openBracket--;
-                    retVal.add(i);
                     break;
                 case '{':
                     openCurly++;
-                    retVal.add(i);
                     break;
                 case '}':
                     openCurly--;
-                    retVal.add(i);
                     break;
                 default:
-                    if (openBracket > 0 || openCurly > 0) {
+                    if (openBracket == 0 && openCurly == 0) {
                         retVal.add(i);
                     }
                     break;
@@ -327,20 +322,22 @@ public class UtilsJSONdialect {
 
         String buffer = str.trim();
         int lg = buffer.length();
-        if (buffer.substring(0,1).equals("{") && buffer.substring(lg-1,lg).equals("}")) {
+        if (buffer.substring(0, 1).equals("{") && buffer.substring(lg - 1, lg).equals("}")) {
             buffer = removeFirstAndLast(buffer);
         }
-        List<Integer> innerPositions = positionsWithinParentheses(buffer);
+        List<Integer> allowedPosition = positionsNotWithinParentheses(buffer);
 
         List<String> retVal = new ArrayList<String>();
         int from = 0;
 
         while (from < buffer.length()) {
             int currentEqPosition = buffer.indexOf("=", from);
-            if (innerPositions.contains(currentEqPosition)) {
-                continue;
-            }
+
             if (currentEqPosition > -1) {
+                if (!allowedPosition.contains(currentEqPosition)) {
+                    from = currentEqPosition + 1;
+                    continue;
+                }
                 int firstSpaceBack = findFirstSeparatorIndexBackwards(str, currentEqPosition - 1, ' ');
                 String key = buffer.substring(firstSpaceBack + 1, currentEqPosition);
                 retVal.add(key);

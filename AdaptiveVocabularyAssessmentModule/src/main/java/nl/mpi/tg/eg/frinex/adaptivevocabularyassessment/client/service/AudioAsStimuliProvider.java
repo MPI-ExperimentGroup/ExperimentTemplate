@@ -70,6 +70,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
 
+        stimuliStateSnapshot = "";
         super.initialiseStimuliState(stimuliStateSnapshot);
         if (stimuliStateSnapshot.isEmpty()) {
             

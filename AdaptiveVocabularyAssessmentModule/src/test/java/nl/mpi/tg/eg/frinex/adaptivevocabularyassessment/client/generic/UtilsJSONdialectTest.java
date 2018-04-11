@@ -29,6 +29,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -58,6 +59,7 @@ public class UtilsJSONdialectTest {
     /**
      * Test of stringToObject method, of class UtilsJSONdialect.
      */
+    
     @Test
     public void testStringToObject() throws Exception {
         System.out.println("stringToObject");
@@ -112,6 +114,23 @@ public class UtilsJSONdialectTest {
             }
         }
 
+    }
+
+   
+
+
+    /**
+     * Test of positionsNotWithinParentheses method, of class UtilsJSONdialect.
+     */
+    @Test
+    public void testPositionsWithinParentheses() {
+        System.out.println("positionsWithinParentheses");
+        String str = "[,],{,[,]},";
+        List<Integer> result = UtilsJSONdialect.positionsNotWithinParentheses(str);
+        assertEquals(2, result.size());
+        assertEquals(3, result.get(0).intValue());
+        assertEquals(10, result.get(1).intValue());
+        
     }
 
 }

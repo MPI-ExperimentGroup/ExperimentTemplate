@@ -78,6 +78,10 @@ public class AudioStimuliFromStringTest {
             
             AudioAsStimulus cue = trial.getStimuli().get(0).getStimulus();
             assertEquals(WordType.EXAMPLE_TARGET_NON_WORD, cue.getwordType());
+            assertFalse(cue.hasRatingLabels());
+            for (int j=1; j<trial.getStimuli().size(); j++ ) {
+                assertTrue(trial.getStimuli().get(j).getStimulus().hasRatingLabels());
+            }
             
             if(trial.getPositionTarget()>0) {
               AudioAsStimulus target = trial.getStimuli().get(trial.getPositionTarget()).getStimulus();  

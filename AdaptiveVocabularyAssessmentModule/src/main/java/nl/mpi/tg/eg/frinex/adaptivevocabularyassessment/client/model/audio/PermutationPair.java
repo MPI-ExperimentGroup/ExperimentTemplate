@@ -70,6 +70,7 @@ public class PermutationPair {
 
     public static ArrayList<ArrayList<PermutationPair>> initialiseAvailabilityList(ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> trials,
             ArrayList<ArrayList<Integer>> lengthPermuations, ArrayList<ArrayList<TrialCondition>> trialTypePermutations, int numberOfBands) {
+        
         ArrayList<ArrayList<PermutationPair>> retVal = new ArrayList<ArrayList<PermutationPair>>(numberOfBands);
 
         for (int i = 0; i < numberOfBands; i++) {
@@ -80,6 +81,7 @@ public class PermutationPair {
 
         return retVal;
     }
+    
 
     private static ArrayList<PermutationPair> initialiseAvailabilityListForBand(ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>> bandTrials,
             ArrayList<ArrayList<Integer>> lengthPermuations, ArrayList<ArrayList<TrialCondition>> trialTypePermutations) {
