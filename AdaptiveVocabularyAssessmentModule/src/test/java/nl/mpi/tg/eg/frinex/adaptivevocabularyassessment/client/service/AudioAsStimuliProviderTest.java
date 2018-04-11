@@ -194,6 +194,8 @@ public class AudioAsStimuliProviderTest {
         System.out.println("isCorrectResponse");
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
+        
+       
 
         int n = this.instance.getCurrentTrialTuple().getNumberOfStimuli();
         for (int i = 0; i < n; i++) {
@@ -204,17 +206,17 @@ public class AudioAsStimuliProviderTest {
             Stimulus stimulus = bStimulus.getStimulus(); // upcasting
             if (bStimulus.getStimulus().getwordType().equals(WordType.TARGET_NON_WORD)) {
                 assertTrue(instance.isCorrectResponse(stimulus, ""));
-                assertEquals("", bStimulus.getReaction());
+                assertEquals(AudioAsStimulus.USER_REACTION, bStimulus.getReaction());
 
                 assertTrue(instance.isCorrectResponse(stimulus, AudioAsStimulus.AUDIO_RATING_LABEL));
-                assertEquals(AudioAsStimulus.AUDIO_RATING_LABEL, bStimulus.getReaction());
+                assertEquals(AudioAsStimulus.USER_REACTION, bStimulus.getReaction());
             } else {
                 if (!bStimulus.getStimulus().getwordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
                     assertFalse(instance.isCorrectResponse(stimulus, ""));
-                    assertEquals("", bStimulus.getReaction());
+                    assertEquals(AudioAsStimulus.USER_REACTION, bStimulus.getReaction());
 
                     assertFalse(instance.isCorrectResponse(stimulus, AudioAsStimulus.AUDIO_RATING_LABEL));
-                    assertEquals(AudioAsStimulus.AUDIO_RATING_LABEL, bStimulus.getReaction());
+                    assertEquals(AudioAsStimulus.USER_REACTION, bStimulus.getReaction());
                 }
             }
         }
@@ -416,6 +418,14 @@ public class AudioAsStimuliProviderTest {
         String history = this.instance.getStringFineTuningHistory(startRow, endRow, startColumn, endColumn, format);
         assertNotNull(history);
         System.out.println(history);
+        
+        String snapShot = this.instance.toString();
+        // clean 
+        //this.instance.initialiseStimuliState("");
+        //this.instance.initialiseStimuliState(snapShot);
+        //String snapShot2 = this.instance.toString();
+        //assertEquals(snapShot, snapShot2);
+        
     }
 
     /**
@@ -487,7 +497,6 @@ public class AudioAsStimuliProviderTest {
      * Test of toString method, of class AudioAsStimuliProvider.
      */
     
-    @Ignore
     @Test
     public void testToString() {
         System.out.println("toString");

@@ -211,28 +211,24 @@ public class UtilsJSONdialect {
         }
 
         String buffer = removeFirstAndLast(listStr.trim());
+        
+        // mark begin and end to avoid case analysis
+        buffer = ", "+buffer+", ";
+
         List<Integer> allowedPositions = positionsNotWithinParentheses(buffer);
-
-        List<Object> retVal = new ArrayList<Object>();
-        int from = 0;
-
-        while (from < buffer.length()) {
-            int currentCommaPosition = buffer.indexOf(",", from);
-            String valStr;
-            if (currentCommaPosition > -1) {
-                if (!allowedPositions.contains(currentCommaPosition)) {
-                    from = currentCommaPosition + 1;
-                    continue;
-                }
-                valStr = buffer.substring(from, currentCommaPosition);
-                from = currentCommaPosition + 1;
-            } else {
-                valStr = buffer.substring(from, buffer.length());
-                from = buffer.length();
+        List<Integer> commaPositions = new ArrayList<Integer>();
+        for (Integer pos : allowedPositions) {
+            if (buffer.charAt(pos) == ',') {
+                commaPositions.add(pos);
             }
+        }
+        List<Object> retVal = new ArrayList<Object>();
+        for (int i = 0; i < commaPositions.size() - 1; i++) {
+            String valStr = buffer.substring(commaPositions.get(i) + 1, commaPositions.get(i + 1)).trim();
             Object val = stringToObject(valStr);
             retVal.add(val);
         }
+
         return retVal;
     }
 
@@ -326,27 +322,23 @@ public class UtilsJSONdialect {
             buffer = removeFirstAndLast(buffer);
         }
         List<Integer> allowedPosition = positionsNotWithinParentheses(buffer);
-
-        List<String> retVal = new ArrayList<String>();
-        int from = 0;
-
-        while (from < buffer.length()) {
-            int currentEqPosition = buffer.indexOf("=", from);
-
-            if (currentEqPosition > -1) {
-                if (!allowedPosition.contains(currentEqPosition)) {
-                    from = currentEqPosition + 1;
-                    continue;
-                }
-                int firstSpaceBack = findFirstSeparatorIndexBackwards(str, currentEqPosition - 1, ' ');
-                String key = buffer.substring(firstSpaceBack + 1, currentEqPosition);
-                retVal.add(key);
-                from = currentEqPosition + 1;
-            } else {
-                return retVal;
+        List<Integer> eqPositions = new ArrayList<Integer>();
+        for (Integer pos :allowedPosition) {
+            if (buffer.charAt(pos) == '=') {
+                eqPositions.add(pos);
             }
-
         }
+        
+        char[] test = buffer.toCharArray();
+                
+        List<String> retVal = new ArrayList<String>();
+        for (int i=0; i<eqPositions.size(); i++) {
+            int firstSpaceBack = findFirstSeparatorIndexBackwards(buffer, eqPositions.get(i) - 1, ' ');
+            String key = buffer.substring(firstSpaceBack + 1, eqPositions.get(i));
+            retVal.add(key);
+        }
+        
+ 
         return retVal;
     }
 

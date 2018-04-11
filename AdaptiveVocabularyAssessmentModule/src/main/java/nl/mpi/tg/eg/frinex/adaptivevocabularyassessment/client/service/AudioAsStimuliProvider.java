@@ -70,7 +70,6 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
 
-        stimuliStateSnapshot = "";
         super.initialiseStimuliState(stimuliStateSnapshot);
         if (stimuliStateSnapshot.isEmpty()) {
             
@@ -109,7 +108,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
         this.currentTrialTuple = this.createTupleForBand(combinations);
         if (this.currentTrialTuple == null) {
-            this.errorMessage = "There is no trial tuples left satisfying the specification. for the band " + this.labelling[this.currentBandIndex];
+            this.errorMessage = "There is no trial tuples left satisfying the specification, for the band " + this.labelling[this.currentBandIndex];
             return false;
         } else {
             // now remove permutation-pairs which have emptied list of trials 
@@ -168,7 +167,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         AudioAsStimulus audioStimulus = bStimulus.getStimulus();
         WordType stimulusType = audioStimulus.getwordType();
 
-        bStimulus.setReaction(stimulusResponse);
+        bStimulus.setReaction(AudioAsStimulus.USER_REACTION);
         boolean correctness = stimulusType.equals(WordType.TARGET_NON_WORD); // button shoulb be pressed only on the target nonword
         return correctness;
 
@@ -180,6 +179,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
     @Override
     public String getStringFineTuningHistory(String startRow, String endRow, String startColumn, String endColumn, String format) {
+        int bandOffset = 5;
         StringBuilder empty = new StringBuilder();
         empty.append(startColumn).append(" ").append(endColumn);
         empty.append(startColumn).append(" ").append(endColumn);
@@ -194,7 +194,6 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         stringBuilder.append(startColumn).append("BandLabel").append(endColumn);
         stringBuilder.append(startColumn).append("Label").append(endColumn);
         stringBuilder.append(startColumn).append("StimulusType").append(endColumn);
-        stringBuilder.append(startColumn).append("CorrectResponse").append(endColumn);
         stringBuilder.append(startColumn).append("UserAnswer").append(endColumn);
         stringBuilder.append(startColumn).append("IsAnswerCorrect").append(endColumn);
         stringBuilder.append(startColumn).append("Timestamp").append(endColumn);
@@ -212,11 +211,10 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             AudioAsStimulus stimulus = bStimulus.getStimulus();
             StringBuilder row = new StringBuilder();
             String time = (new Date(bStimulus.getTimeStamp())).toString();
-            row.append(startColumn).append(stimulus.getbandIndex()).append(endColumn);
+            row.append(startColumn).append(stimulus.getbandIndex()-bandOffset).append(endColumn);
             row.append(startColumn).append(stimulus.getbandLabel()).append(endColumn);
             row.append(startColumn).append(stimulus.getLabel()).append(endColumn);
             row.append(startColumn).append(stimulus.getwordType()).append(endColumn);
-            row.append(startColumn).append(stimulus.getCorrectResponses()).append(endColumn);
             row.append(startColumn).append(bStimulus.getReaction()).append(endColumn);
             row.append(startColumn).append(bStimulus.getCorrectness()).append(endColumn);
             row.append(startColumn).append(time).append(endColumn);
