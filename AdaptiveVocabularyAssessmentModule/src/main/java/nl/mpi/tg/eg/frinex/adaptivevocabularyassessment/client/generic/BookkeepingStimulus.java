@@ -32,8 +32,7 @@ import java.util.Set;
  * @param <T> userRecation, can be string, boolean, double, etc.
  */
 public class BookkeepingStimulus<A extends BandStimulus> {
-    
-    
+
     private final static String[] FLDS = {"stimulus", "userReaction", "correctness", "timeStamp"};
     private final A stimulus;
     private String userReaction; // can be string, boolean, double, etc.
@@ -73,8 +72,6 @@ public class BookkeepingStimulus<A extends BandStimulus> {
     public void setTimeStamp(long timeStr) {
         this.timeStamp = timeStr;
     }
-    
-    
 
     @Override
     public String toString() {
@@ -84,58 +81,65 @@ public class BookkeepingStimulus<A extends BandStimulus> {
         map.put("userReaction", this.userReaction);
         map.put("correctness", this.correctness);
         map.put("timeStamp", this.timeStamp);
-       return map.toString();
+        return map.toString();
     }
-    
+
     public BookkeepingStimulus<A> toObject(String serialisation, LinkedHashMap<String, A> hashedStimuli) throws Exception {
         Map<String, Object> map = UtilsJSONdialect.stringToObjectMap(serialisation, BookkeepingStimulus.FLDS);
         BookkeepingStimulus<A> retVal = this.toBookkeepingStimulusObject(map, hashedStimuli);
         return retVal;
     }
 
-
-
     public BookkeepingStimulus<A> toBookkeepingStimulusObject(Map<String, Object> map, LinkedHashMap<String, A> hashedStimuli) throws Exception {
-       
-        Set<String> keys = map.keySet();
-        String corr = null;
-        String reaction = null;
-        String time = null;
-        A localStimulus = null;
-        for (String key : keys) {
-            switch (key) {
-                case "stimulus":
-                    String stimulusId = map.get(key).toString();
-                    localStimulus = hashedStimuli.get(stimulusId);
-                    break;
-                case "correctness":
-                    corr = map.get(key).toString();
-                    break;
-                case "userReaction":
-                    reaction = map.get(key).toString();
-                    break;
-                case "timeStamp":
-                    time = map.get(key).toString();
-                    break;
-                default:
-                    break;
-
+        try {
+            if (map==null) {
+                return null;
             }
-        }
-        BookkeepingStimulus<A> retVal = new BookkeepingStimulus<A>(localStimulus);
-        if (corr != null) {
-            if (corr.equals("true")) {
-                retVal.setCorrectness(true);
-            } else {
-                if (corr.equals("false")) {
-                    retVal.setCorrectness(false);
-                } else {
-                    return null;
+            Set<String> keys = map.keySet();
+            String corr = null;
+            String reaction = null;
+            String time = null;
+            A localStimulus = null;
+            for (String key : keys) {
+                switch (key) {
+                    case "stimulus":
+                        String stimulusId = map.get(key).toString();
+                        localStimulus = hashedStimuli.get(stimulusId);
+                        break;
+                    case "correctness":
+                        Object hlp = map.get(key);
+                        corr = (hlp != null) ? hlp.toString() : null;
+                        break;
+                    case "userReaction":
+                        Object hlp2 = map.get(key);
+                        reaction = (hlp2 != null) ? hlp2.toString() : null;
+                        break;
+                    case "timeStamp":
+                        time = map.get(key).toString();
+                        break;
+                    default:
+                        break;
+
                 }
             }
+            BookkeepingStimulus<A> retVal = new BookkeepingStimulus<A>(localStimulus);
+            if (corr != null) {
+                if (corr.equals("true")) {
+                    retVal.setCorrectness(true);
+                } else {
+                    if (corr.equals("false")) {
+                        retVal.setCorrectness(false);
+                    } else {
+                        return null;
+                    }
+                }
+            }
+            retVal.setReaction(reaction);
+            retVal.setTimeStamp(Long.parseLong(time));
+            return retVal;
+        } catch (Exception ex) {
+            System.out.println("Exception with map" + map);
+            throw ex;
         }
-        retVal.setReaction(reaction);
-        retVal.setTimeStamp(Long.parseLong(time));
-        return retVal;
     }
 }

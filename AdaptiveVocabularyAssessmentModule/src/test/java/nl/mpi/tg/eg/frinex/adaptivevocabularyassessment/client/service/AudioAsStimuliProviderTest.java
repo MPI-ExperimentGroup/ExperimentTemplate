@@ -351,7 +351,7 @@ public class AudioAsStimuliProviderTest {
         assertEquals(this.numberOfBands, this.instance.getBandScore());
 
         ArrayList<BookkeepingStimulus<AudioAsStimulus>> record = this.instance.getResponseRecord();
-        this.printRecord(record);
+        //this.printRecord(record);
         
         System.out.println("getStringFineTuningHistory");
         String startRow = "";
@@ -362,6 +362,17 @@ public class AudioAsStimuliProviderTest {
         String history = this.instance.getStringFineTuningHistory(startRow, endRow, startColumn, endColumn, format);
         assertNotNull(history);
         //System.out.println(history);
+        
+        System.out.println(" extra-test toString()");
+        String snapShot = this.instance.toString();
+        
+        // clean 
+        this.instance.initialiseStimuliState("");
+        System.out.println(" extra-test reinitialise");
+        this.instance.initialiseStimuliState(snapShot);
+        System.out.println(" extra-test toString()-2");
+        String snapShot2 = this.instance.toString();
+        assertEquals(snapShot, snapShot2);
     }
 
     /**
@@ -407,7 +418,7 @@ public class AudioAsStimuliProviderTest {
         assertEquals(1, this.instance.getBandScore());
 
         ArrayList<BookkeepingStimulus<AudioAsStimulus>> record = this.instance.getResponseRecord();
-        this.printRecord(record);
+        //this.printRecord(record);
         
         System.out.println(" extra-test getStringFineTuningHistory");
         String startRow = "";
@@ -428,7 +439,7 @@ public class AudioAsStimuliProviderTest {
         this.instance.initialiseStimuliState(snapShot);
         System.out.println(" extra-test toString()-2");
         String snapShot2 = this.instance.toString();
-        //assertEquals(snapShot, snapShot2);
+        assertEquals(snapShot, snapShot2);
         
     }
 
@@ -480,7 +491,7 @@ public class AudioAsStimuliProviderTest {
         assertEquals(6, this.instance.getBandScore());
 
         ArrayList<BookkeepingStimulus<AudioAsStimulus>> record = this.instance.getResponseRecord();
-        this.printRecord(record);
+        //this.printRecord(record);
         
         System.out.println("getStringFineTuningHistory");
         String startRow = "";
@@ -492,6 +503,16 @@ public class AudioAsStimuliProviderTest {
         assertNotNull(history);
         //System.out.println(history);
         
+        System.out.println(" extra-test toString()");
+        String snapShot = this.instance.toString();
+        
+        // clean 
+        this.instance.initialiseStimuliState("");
+        System.out.println(" extra-test reinitialise");
+        this.instance.initialiseStimuliState(snapShot);
+        System.out.println(" extra-test toString()-2");
+        String snapShot2 = this.instance.toString();
+        assertEquals(snapShot, snapShot2);
     }
 
    

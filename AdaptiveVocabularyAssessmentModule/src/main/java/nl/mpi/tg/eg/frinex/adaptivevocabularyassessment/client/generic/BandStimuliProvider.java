@@ -212,7 +212,9 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
                 this.deserialiseToThis(stimuliStateSnapshot);
                 this.percentageBandTable = this.generatePercentageBandTable();
             } catch (Exception ex) {
-                System.out.println(ex.toString());
+                System.out.println();
+                System.out.println(Arrays.asList(ex.getStackTrace()));
+                System.out.println();
             }
         }
 
@@ -637,7 +639,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         if (this.cycle2) {
             System.out.println("Detected: " + this.fineTuningUpperBoundForCycles + 
                     " times oscillation between two neighbouring bands, "+
-                    this.cycle2helper[cycle2helper.length - 3] + " and "+this.cycle2helper[cycle2helper.length - 1]);
+                    this.cycle2helper[cycle2helper.length - 2] + " and "+this.cycle2helper[cycle2helper.length - 1]);
             this.bandScore = this.cycle2helper[cycle2helper.length - 1];
 
             //Here implemented loop-based approach , with the last element excluded from loop detection
@@ -878,7 +880,8 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         Object cycle2Str = map.get("cycle2helper");
         this.cycle2helper =  UtilsJSONdialect.objectToArrayInteger(cycle2Str);
 
-        this.errorMessage = map.get("errorMessage").toString();
+        Object help = map.get("errorMessage");
+        this.errorMessage = (help != null) ? help.toString() : null;
         
         
     }

@@ -131,6 +131,7 @@ public class UtilsJSONdialect {
     private static String getKey(String jsonStringInit, String key) throws Exception {
 
         if (jsonStringInit == null) {
+            System.out.println("Warning: looking for key "+key+" in the empty string.");
             return null;
         }
         if (key == null) {
@@ -178,8 +179,9 @@ public class UtilsJSONdialect {
                     }
                 }
             }
-
-            throw new Exception("Cannot get the value for key "+key+ "from string parsing error, no matching } or  ]");
+            String message="Cannot get the value for key "+key+ "from string parsing error, no matching } or  ]";
+            System.out.println(message);
+            throw new Exception(message);
         }
 
     }

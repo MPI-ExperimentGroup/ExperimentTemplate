@@ -95,7 +95,9 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             try {
                 this.deserialiseSpecific(stimuliStateSnapshot);
             } catch (Exception ex) {
-                System.out.println(ex.toString());
+                System.out.println();
+                System.out.println(Arrays.asList(ex.getStackTrace()));
+                System.out.println();
             }
         }
     }
