@@ -9,7 +9,7 @@
     <presenter displayOrder="1" menuLabel="Menu" type="menu" self="Menu" title="Menu">
         <centrePage/>
         <addPadding/>
-        <htmlText featureText="&lt;div style=&quot;width:100&#37;&quot; &gt; &lt;img src=&quot;static/logo-max.gif&quot; align=&quot;left&quot; /&gt; &lt;img src=&quot;static/logo-lil.png&quot; align=&quot;right&quot;/&gt; &lt;/div&gt;"/>
+        <htmlText featureText="&lt;div style=&quot;width:100&#37;&quot; &gt; &lt;img src=&quot;static/logo-max_1.png&quot; align=&quot;left&quot; /&gt; &lt;img src=&quot;static/logo-lil.png&quot; align=&quot;right&quot;/&gt; &lt;/div&gt;"/>
         <addPadding/>
         <addPadding/>
         <addPadding/>
@@ -55,7 +55,7 @@
     </presenter>
     <presenter displayOrder="4" type="stimulus" self="stimuliScreenV1" title="Series 1">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider" type="0" eventTag="stimuliN" 
-                      numberOfSeries="2" numberOfBands="11" startBand="6" 
+                      numberOfSeries="2" numberOfBands="11" startBand="5" 
                       fineTuningTupleLength="4" fineTuningUpperBoundForCycles="2"
                       fastTrackPresent="false" fineTuningFirstWrongOut="false">
             <hasMoreStimulus>
@@ -85,7 +85,7 @@
                                 <conditionFalse>
                                     <htmlText featureText="&lt;div align=&quot;left&quot; &gt; &lt;img src=&quot;static/stars.png&quot; /&gt; New trial starts. Listen to the sample and press SPACE when ready to continue &lt;/div&gt;"/>
                                     <cancelPauseTimers/>
-                                    <pause msToNext="1000">
+                                    <pause msToNext="500">
                                         <actionButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight">
                                             <cancelPauseTimers/> 
                                             <trigger listenerId="nextStimulusAction"/>
@@ -119,7 +119,7 @@
     </presenter>
     <presenter displayOrder="6" type="stimulus" self="stimuliScreenV2" title="Series 2">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider" type="1" eventTag="stimuliN" 
-                      numberOfSeries="2" numberOfBands="11" startBand="6" 
+                      numberOfSeries="2" numberOfBands="11" startBand="5" 
                       fineTuningTupleLength="4" fineTuningUpperBoundForCycles="2"
                       fastTrackPresent="false" fineTuningFirstWrongOut="false">
             <hasMoreStimulus>
