@@ -59,11 +59,14 @@ public class UtilsJSONdialect {
             return stringToList(buffer);
         }
 
-        String fields = getKey(buffer, "fields");
-        if (fields != null) { // a map epresenting an object
-            Object object = stringToObject(fields);
-            String[] flds = objectToArrayString(object);
-            return stringToObjectMap(buffer, flds);
+        int ind = buffer.indexOf("fields=");
+        if (ind > -1) {
+            String fields = getKey(buffer, "fields");
+            if (fields != null) { // a map epresenting an object
+                Object object = stringToObject(fields);
+                String[] flds = objectToArrayString(object);
+                return stringToObjectMap(buffer, flds);
+            }
         }
 
         if (buffer.substring(0, 1).equals("{")) { // is a generic map
@@ -87,7 +90,7 @@ public class UtilsJSONdialect {
         return retVal;
     }
 
-    public static Integer[] objectToArrayInteger(Object obj){
+    public static Integer[] objectToArrayInteger(Object obj) {
         if (obj == null) {
             return null;
         }
@@ -101,7 +104,7 @@ public class UtilsJSONdialect {
         return retVal;
     }
 
-    public static String[] objectToArrayString(Object obj){
+    public static String[] objectToArrayString(Object obj) {
         if (obj == null) {
             return null;
         }
@@ -131,7 +134,7 @@ public class UtilsJSONdialect {
     private static String getKey(String jsonStringInit, String key) throws Exception {
 
         if (jsonStringInit == null) {
-            System.out.println("Warning: looking for key "+key+" in the empty string.");
+            System.out.println("Warning: looking for key " + key + " in the empty string.");
             return null;
         }
         if (key == null) {
@@ -152,6 +155,7 @@ public class UtilsJSONdialect {
 
         String[] parts = jsonString.split(regExp, 2);
         if (parts.length < 2) {
+            System.out.println("Warning. Parser: cannot find the value for the key " + key + " in the string " + jsonString);
             return null;
         }
         String buffer = parts[1].trim();
@@ -179,7 +183,7 @@ public class UtilsJSONdialect {
                     }
                 }
             }
-            String message="Cannot get the value for key "+key+ "from string parsing error, no matching } or  ]";
+            String message = "Cannot get the value for key " + key + "from string parsing error, no matching } or  ]";
             System.out.println(message);
             throw new Exception(message);
         }
@@ -211,9 +215,9 @@ public class UtilsJSONdialect {
         }
 
         String buffer = removeFirstAndLast(listStr.trim());
-        
+
         // mark begin and end to avoid case analysis
-        buffer = ", "+buffer+", ";
+        buffer = ", " + buffer + ", ";
 
         List<Integer> allowedPositions = positionsNotWithinParentheses(buffer);
         List<Integer> commaPositions = new ArrayList<Integer>();
@@ -323,22 +327,21 @@ public class UtilsJSONdialect {
         }
         List<Integer> allowedPosition = positionsNotWithinParentheses(buffer);
         List<Integer> eqPositions = new ArrayList<Integer>();
-        for (Integer pos :allowedPosition) {
+        for (Integer pos : allowedPosition) {
             if (buffer.charAt(pos) == '=') {
                 eqPositions.add(pos);
             }
         }
-        
+
         char[] test = buffer.toCharArray();
-                
+
         List<String> retVal = new ArrayList<String>();
-        for (int i=0; i<eqPositions.size(); i++) {
+        for (int i = 0; i < eqPositions.size(); i++) {
             int firstSpaceBack = findFirstSeparatorIndexBackwards(buffer, eqPositions.get(i) - 1, ' ');
             String key = buffer.substring(firstSpaceBack + 1, eqPositions.get(i));
             retVal.add(key);
         }
-        
- 
+
         return retVal;
     }
 
