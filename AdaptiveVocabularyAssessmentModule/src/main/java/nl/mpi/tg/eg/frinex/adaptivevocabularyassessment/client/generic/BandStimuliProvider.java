@@ -21,7 +21,6 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import nl.mpi.tg.eg.frinex.common.AbstractStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -58,7 +57,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected long percentageScore = 0;
     protected Boolean isCorrectCurrentResponse;
     protected int currentBandIndex = 0;
-    protected int totalStimuli;
+    protected int totalStimuli=0;
 
     protected ArrayList<BookkeepingStimulus<A>> responseRecord = new ArrayList<>();
 
@@ -82,7 +81,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected boolean looser = false;
     protected boolean justVisitedLastBand = false;
     protected boolean justVisitedFirstBand = false;
-    protected String errorMessage;
+    protected String errorMessage="";
     
 
     // add experiment specific stuff here
@@ -213,7 +212,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
                 this.deserialiseToThis(stimuliStateSnapshot);
                 this.percentageBandTable = this.generatePercentageBandTable();
             } catch (Exception ex) {
-                System.out.println(ex);
+                System.out.println(ex.toString());
             }
         }
 
@@ -853,9 +852,9 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         this.bandScore = Integer.parseInt(map.get("bandScore").toString());
         this.percentageScore = Long.parseLong(map.get("percentageScore").toString());
 
-        String correctResponse = map.get("isCorrectCurrentResponse").toString();
+        Object correctResponse = map.get("isCorrectCurrentResponse");
 
-        this.isCorrectCurrentResponse = (correctResponse != null && !correctResponse.equals("null")) ? Boolean.parseBoolean(correctResponse) : null;
+        this.isCorrectCurrentResponse = (correctResponse != null) ? Boolean.parseBoolean(correctResponse.toString()) : null;
 
         this.currentBandIndex = Integer.parseInt(map.get("currentBandIndex").toString());
         this.totalStimuli = Integer.parseInt(map.get("totalStimuli").toString());

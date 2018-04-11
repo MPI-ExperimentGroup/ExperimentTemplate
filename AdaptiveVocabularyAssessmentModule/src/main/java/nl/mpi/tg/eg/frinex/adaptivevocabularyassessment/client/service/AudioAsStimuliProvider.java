@@ -95,7 +95,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             try {
                 this.deserialiseSpecific(stimuliStateSnapshot);
             } catch (Exception ex) {
-                System.out.println(ex);
+                System.out.println(ex.toString());
             }
         }
     }
@@ -284,16 +284,19 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             }
         }
         
-        ArrayList<ArrayList<Object>> permutObjects = (ArrayList<ArrayList<Object>>) map.get("availableCombinations");
-        this.availableCombinations = new ArrayList<ArrayList<PermutationPair>>(permutObjects.size());
-        for (int i=0; i<permutObjects.size(); i++) {
-            if (permutObjects.get(i) == null) {
+        Object obj1=map.get("availableCombinations");
+        List<Object> obj2 = (List<Object>) obj1;
+        this.availableCombinations = new ArrayList<ArrayList<PermutationPair>>(obj2.size());
+        for (int i=0; i<obj2.size(); i++) {
+            Object obj3 = obj2.get(i);
+            if (obj3  == null) {
                 this.availableCombinations.add(null);
                 continue;
             }
-            ArrayList<PermutationPair> permForBand = new ArrayList<PermutationPair>(permutObjects.get(i).size());
+            List<Object> obj4 = (List<Object>) obj3;
+            ArrayList<PermutationPair> permForBand = new ArrayList<PermutationPair>(obj4.size());
             this.availableCombinations.add(permForBand);
-            for (Object object:permutObjects.get(i)) {
+            for (Object object:obj4) {
                 LinkedHashMap<String, Object> objMap = (LinkedHashMap<String, Object>) object;
                 PermutationPair perm = PermutationPair.toObject(objMap, this.reader.getHashedTrials());
                 permForBand.add(perm);

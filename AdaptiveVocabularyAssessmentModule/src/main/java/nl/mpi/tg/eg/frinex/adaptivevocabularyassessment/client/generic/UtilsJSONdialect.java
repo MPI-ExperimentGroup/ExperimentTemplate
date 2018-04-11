@@ -18,10 +18,8 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag;
 
 /**

@@ -361,7 +361,7 @@ public class AudioAsStimuliProviderTest {
         String format = "csv";
         String history = this.instance.getStringFineTuningHistory(startRow, endRow, startColumn, endColumn, format);
         assertNotNull(history);
-        System.out.println(history);
+        //System.out.println(history);
     }
 
     /**
@@ -409,7 +409,7 @@ public class AudioAsStimuliProviderTest {
         ArrayList<BookkeepingStimulus<AudioAsStimulus>> record = this.instance.getResponseRecord();
         this.printRecord(record);
         
-        System.out.println("getStringFineTuningHistory");
+        System.out.println(" extra-test getStringFineTuningHistory");
         String startRow = "";
         String endRow = "\n";
         String startColumn = "";
@@ -417,13 +417,17 @@ public class AudioAsStimuliProviderTest {
         String format = "csv";
         String history = this.instance.getStringFineTuningHistory(startRow, endRow, startColumn, endColumn, format);
         assertNotNull(history);
-        System.out.println(history);
+        //System.out.println(history);
         
+        System.out.println(" extra-test toString()");
         String snapShot = this.instance.toString();
+        
         // clean 
-        //this.instance.initialiseStimuliState("");
-        //this.instance.initialiseStimuliState(snapShot);
-        //String snapShot2 = this.instance.toString();
+        this.instance.initialiseStimuliState("");
+        System.out.println(" extra-test reinitialise");
+        this.instance.initialiseStimuliState(snapShot);
+        System.out.println(" extra-test toString()-2");
+        String snapShot2 = this.instance.toString();
         //assertEquals(snapShot, snapShot2);
         
     }
@@ -486,7 +490,7 @@ public class AudioAsStimuliProviderTest {
         String format = "csv";
         String history = this.instance.getStringFineTuningHistory(startRow, endRow, startColumn, endColumn, format);
         assertNotNull(history);
-        System.out.println(history);
+        //System.out.println(history);
         
     }
 
@@ -496,7 +500,6 @@ public class AudioAsStimuliProviderTest {
     /**
      * Test of toString method, of class AudioAsStimuliProvider.
      */
-    
     @Test
     public void testToString() {
         System.out.println("toString");
