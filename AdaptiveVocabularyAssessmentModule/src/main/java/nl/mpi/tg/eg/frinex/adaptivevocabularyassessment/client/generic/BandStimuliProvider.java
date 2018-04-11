@@ -81,7 +81,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected boolean looser = false;
     protected boolean justVisitedLastBand = false;
     protected boolean justVisitedFirstBand = false;
-    protected String errorMessage="";
+    protected String errorMessage=null;
     
 
     // add experiment specific stuff here
@@ -833,8 +833,8 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected abstract void deserialiseSpecific(String str) throws Exception;
 
     //  percentageBandTable must be created from scratch. not serialised/deserialised
-    protected void deserialiseToThis(String str) throws Exception {
-        
+    protected void deserialiseToThis(String str) throws Exception{
+      
         Map<String,Object> map = UtilsJSONdialect.stringToObjectMap(str,BandStimuliProvider.FLDS);
         
         
@@ -879,6 +879,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         this.cycle2helper =  UtilsJSONdialect.objectToArrayInteger(cycle2Str);
 
         this.errorMessage = map.get("errorMessage").toString();
+        
         
     }
     

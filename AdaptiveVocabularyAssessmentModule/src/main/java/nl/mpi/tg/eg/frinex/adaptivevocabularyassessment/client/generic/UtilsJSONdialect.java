@@ -73,7 +73,7 @@ public class UtilsJSONdialect {
         return str;
     }
 
-    public static ArrayList<Integer> objectToListInteger(Object obj) throws Exception {
+    public static ArrayList<Integer> objectToListInteger(Object obj) {
         if (obj == null) {
             return null;
         }
@@ -87,7 +87,7 @@ public class UtilsJSONdialect {
         return retVal;
     }
 
-    public static Integer[] objectToArrayInteger(Object obj) throws Exception {
+    public static Integer[] objectToArrayInteger(Object obj){
         if (obj == null) {
             return null;
         }
@@ -101,7 +101,7 @@ public class UtilsJSONdialect {
         return retVal;
     }
 
-    public static String[] objectToArrayString(Object obj) throws Exception {
+    public static String[] objectToArrayString(Object obj){
         if (obj == null) {
             return null;
         }
@@ -114,7 +114,7 @@ public class UtilsJSONdialect {
         return retVal;
     }
 
-    public static ArrayList<Double> objectToListDouble(Object obj) throws Exception {
+    public static ArrayList<Double> objectToListDouble(Object obj) {
         if (obj == null) {
             return null;
         }
@@ -179,7 +179,7 @@ public class UtilsJSONdialect {
                 }
             }
 
-            throw new Exception("Get key from string parsing error, no matching } or  ]");
+            throw new Exception("Cannot get the value for key "+key+ "from string parsing error, no matching } or  ]");
         }
 
     }
