@@ -61,7 +61,7 @@ public class JsonToXml {
                         WizardUtilData wizardData = mapper.readValue(jsonFile, WizardUtilData.class);
                         final Experiment experiment = wizardController.getExperiment(new SentenceCompletion(wizardData).getWizardData());
                         System.out.println("experiment: " + experiment.getAppNameInternal());
-                        final File outputFile = new File(outputDirectory, experiment.getAppNameInternal() + "-generated.xml");
+                        final File outputFile = new File(outputDirectory, experiment.getAppNameInternal() + ".xml");
                         System.out.println(outputFile);
                         experiment.getPresenterScreen().sort(new Comparator<PresenterScreen>() {
                             // because the experiment has not been stored and retrieved from the DB we need to sort this manually
