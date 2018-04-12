@@ -38,10 +38,10 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
     protected final static String[] FLDS = {"type", "numberOfBands", "numberOfSeries", "startBand", "fineTuningTupleLength", "fineTuningUpperBoundForCycles", "fastTrackPresent", "fineTuningFirstWrongOut", ""
             + "bandScore", "percentageScore", "isCorrectCurrentResponse", "currentBandIndex", "totalStimuli", ""
-            + "responseRecord", "percentageBandTable", "tupleFT", ""
+            + "responseRecord", "tupleFT", ""
             + "bestBandFastTrack", "isFastTrackIsStillOn", "secondChanceFastTrackIsFired", "timeTickEndFastTrack", ""
             + "enoughFineTuningStimulae", "bandVisitCounter", "cycle2helper", ""
-            + "cycle2", "champion", "looser", "justVisitedLastBand", "justVisitedFirstBand", "reportIsGenerated", "errorMessage"};
+            + "cycle2", "champion", "looser", "justVisitedLastBand", "justVisitedFirstBand", "endOfRound", "errorMessage"};
     
     
     protected int type = 0;
@@ -83,7 +83,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected boolean justVisitedFirstBand = false;
     protected String errorMessage=null;
     
-    protected boolean reportIsGenerated = false;
+    protected boolean endOfRound = false;
 
     // add experiment specific stuff here
     // ...
@@ -314,7 +314,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     // also set the band indices
     @Override
     public boolean hasNextStimulus(int increment) {
-        if (this.reportIsGenerated) {
+        if (this.endOfRound) {
             return false;
         }
         if (this.fastTrackPresent) {
@@ -376,9 +376,6 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
             htmlStringBuilder.append("<p>Fast Track History</p><table border=1>").append(inhoudFastTrack).append("</table><br><b>");
         }
         htmlStringBuilder.append("<p>Fine tuning History</p><table border=1>").append(inhoudFineTuning).append("</table>");
-        
-        this.reportIsGenerated = true;
-         
         return htmlStringBuilder.toString();
         
     }
@@ -417,8 +414,6 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
                 break;
 
         }
-        
-        this.reportIsGenerated = true;
         //returnMap.put("example_1", "1;2;3;4;5;6;7;8;9");
         //returnMap.put("example_2", "A;B;C;D;E;F;G;H;I");
         //returnMap.put("example_3", "X;X;X;X;X;X");
@@ -486,11 +481,14 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     public abstract boolean initialiseNextFineTuningTuple();
 
     private boolean fineTuningToBeContinued() {
+        boolean contRound;
         if (this.fineTuningFirstWrongOut) {
-            return this.fineTuningToBeContinuedFirstWrongOut();
+            contRound = this.fineTuningToBeContinuedFirstWrongOut();
         } else {
-            return this.fineTuningToBeContinuedWholeTuple();
+            contRound=  this.fineTuningToBeContinuedWholeTuple();
         }
+        this.endOfRound = !contRound;
+        return contRound;
     }
 
     private boolean fineTuningToBeContinuedFirstWrongOut() {
@@ -833,7 +831,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         map.put("looser", this.looser);
         map.put("justVisitedLastBand", this.justVisitedLastBand);
         map.put("justVisitedFirstBand", this.justVisitedFirstBand);
-        map.put("reportIsGenerated", this.reportIsGenerated);
+        map.put("endOfRound", this.endOfRound);
         map.put("errorMessage", this.errorMessage);
         return map; 
     }
@@ -892,8 +890,8 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         Object cycle2Str = map.get("cycle2helper");
         this.cycle2helper =  UtilsJSONdialect.objectToArrayInteger(cycle2Str);
 
-        Object reportStatus = map.get("reportIsGenerated");
-        this.reportIsGenerated = Boolean.parseBoolean(reportStatus.toString());
+        Object reportStatus = map.get("endOfRound");
+        this.endOfRound = Boolean.parseBoolean(reportStatus.toString());
         
         Object help = map.get("errorMessage");
         this.errorMessage = (help != null) ? help.toString() : null;

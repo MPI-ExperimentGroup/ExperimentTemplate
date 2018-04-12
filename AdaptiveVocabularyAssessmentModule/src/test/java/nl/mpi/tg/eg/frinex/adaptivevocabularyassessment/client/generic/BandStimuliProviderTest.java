@@ -842,7 +842,7 @@ public class BandStimuliProviderTest {
                 + " enoughFineTuningStimulae=true, "
                 + "bandVisitCounter=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "
                 + "cycle2helper=[0, 0, 0, 0, 0], "
-                + "cycle2=false, champion=false, looser=false, justVisitedLastBand=false, justVisitedFirstBand=false, reportIsGenerated=false, errorMessage=null}";
+                + "cycle2=false, champion=false, looser=false, justVisitedLastBand=false, justVisitedFirstBand=false, endOfRound=false, errorMessage=null}";
         assertEquals(expResult, this.instance.toString());
     }
     
@@ -879,7 +879,7 @@ public class BandStimuliProviderTest {
                 + "looser=true, "
                 + "justVisitedLastBand=true, "
                 + "justVisitedFirstBand=true, "
-                + "reportIsGenerated=true, "
+                + "endOfRound=true, "
                 + "errorMessage=Error!}";
         
         this.instance.initialiseStimuliState(input);
