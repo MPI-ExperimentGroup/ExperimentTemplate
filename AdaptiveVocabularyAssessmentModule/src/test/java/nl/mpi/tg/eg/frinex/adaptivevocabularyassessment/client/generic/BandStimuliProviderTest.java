@@ -842,7 +842,7 @@ public class BandStimuliProviderTest {
                 + " enoughFineTuningStimulae=true, "
                 + "bandVisitCounter=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "
                 + "cycle2helper=[0, 0, 0, 0, 0], "
-                + "cycle2=false, champion=false, looser=false, justVisitedLastBand=false, justVisitedFirstBand=false, errorMessage=null}";
+                + "cycle2=false, champion=false, looser=false, justVisitedLastBand=false, justVisitedFirstBand=false, reportIsGenerated=false, errorMessage=null}";
         assertEquals(expResult, this.instance.toString());
     }
     
@@ -879,7 +879,9 @@ public class BandStimuliProviderTest {
                 + "looser=true, "
                 + "justVisitedLastBand=true, "
                 + "justVisitedFirstBand=true, "
-                + "errorMessage=noError}";
+                + "reportIsGenerated=true, "
+                + "errorMessage=Error!}";
+        
         this.instance.initialiseStimuliState(input);
         
         assertEquals(new Integer(1),this.instance.gettype());
@@ -923,7 +925,7 @@ public class BandStimuliProviderTest {
         assertTrue(this.instance.getChampion());
         assertTrue(this.instance.getJustVisitedFirstBand());
         assertTrue(this.instance.getJustVisitedLastBand());
-        assertEquals("noError", this.instance.getErrorMessage());
+        assertEquals("Error!", this.instance.getErrorMessage());
         String expResult ="<p>User summary</p><table border=1><tr><td>Score</td><td>Cycel2oscillation</td>"
                 + "<td>EnoughFineTuningStimuli</td><td>Champion</td><td>Looser</td></tr><tr><td>27</td>"
                 + "<td>true</td><td>false</td>"

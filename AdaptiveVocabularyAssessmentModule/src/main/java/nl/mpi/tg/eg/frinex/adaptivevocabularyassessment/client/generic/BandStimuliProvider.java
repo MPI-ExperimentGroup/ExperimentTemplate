@@ -41,7 +41,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
             + "responseRecord", "percentageBandTable", "tupleFT", ""
             + "bestBandFastTrack", "isFastTrackIsStillOn", "secondChanceFastTrackIsFired", "timeTickEndFastTrack", ""
             + "enoughFineTuningStimulae", "bandVisitCounter", "cycle2helper", ""
-            + "cycle2", "champion", "looser", "justVisitedLastBand", "justVisitedFirstBand", "errorMessage"};
+            + "cycle2", "champion", "looser", "justVisitedLastBand", "justVisitedFirstBand", "reportIsGenerated", "errorMessage"};
     
     
     protected int type = 0;
@@ -83,6 +83,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected boolean justVisitedFirstBand = false;
     protected String errorMessage=null;
     
+    protected boolean reportIsGenerated = false;
 
     // add experiment specific stuff here
     // ...
@@ -313,6 +314,9 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     // also set the band indices
     @Override
     public boolean hasNextStimulus(int increment) {
+        if (this.reportIsGenerated) {
+            return false;
+        }
         if (this.fastTrackPresent) {
             if (this.isFastTrackIsStillOn) { // fast track is still on, update it
                 this.isFastTrackIsStillOn = this.fastTrackToBeContinuedWithSecondChance();
@@ -372,7 +376,11 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
             htmlStringBuilder.append("<p>Fast Track History</p><table border=1>").append(inhoudFastTrack).append("</table><br><b>");
         }
         htmlStringBuilder.append("<p>Fine tuning History</p><table border=1>").append(inhoudFineTuning).append("</table>");
+        
+        this.reportIsGenerated = true;
+         
         return htmlStringBuilder.toString();
+        
     }
 
     @Override
@@ -409,6 +417,8 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
                 break;
 
         }
+        
+        this.reportIsGenerated = true;
         //returnMap.put("example_1", "1;2;3;4;5;6;7;8;9");
         //returnMap.put("example_2", "A;B;C;D;E;F;G;H;I");
         //returnMap.put("example_3", "X;X;X;X;X;X");
@@ -767,6 +777,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         stringBuilder.append(startColumn).append(this.enoughFineTuningStimulae).append(endColumn);
         stringBuilder.append(startColumn).append(this.champion).append(endColumn);
         stringBuilder.append(startColumn).append(this.looser).append(endColumn);
+        
         stringBuilder.append(endRow);
         return stringBuilder.toString();
     }
@@ -822,6 +833,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         map.put("looser", this.looser);
         map.put("justVisitedLastBand", this.justVisitedLastBand);
         map.put("justVisitedFirstBand", this.justVisitedFirstBand);
+        map.put("reportIsGenerated", this.reportIsGenerated);
         map.put("errorMessage", this.errorMessage);
         return map; 
     }
@@ -880,6 +892,9 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         Object cycle2Str = map.get("cycle2helper");
         this.cycle2helper =  UtilsJSONdialect.objectToArrayInteger(cycle2Str);
 
+        Object reportStatus = map.get("reportIsGenerated");
+        this.reportIsGenerated = Boolean.parseBoolean(reportStatus.toString());
+        
         Object help = map.get("errorMessage");
         this.errorMessage = (help != null) ? help.toString() : null;
         
