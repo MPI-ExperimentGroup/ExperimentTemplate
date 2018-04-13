@@ -1,4 +1,4 @@
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopool;
 
 /*
  * Copyright (C) 2018 Max Planck Institute for Psycholinguistics, Nijmegen

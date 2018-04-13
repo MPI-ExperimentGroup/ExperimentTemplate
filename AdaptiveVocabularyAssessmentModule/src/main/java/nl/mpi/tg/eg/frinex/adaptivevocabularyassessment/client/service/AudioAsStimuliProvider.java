@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopool.AudioStimuliFromString;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;

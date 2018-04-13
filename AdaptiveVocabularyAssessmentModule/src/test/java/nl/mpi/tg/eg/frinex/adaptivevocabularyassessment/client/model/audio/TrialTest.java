@@ -20,7 +20,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioStimuliFromString;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopool.AudioStimuliFromString;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

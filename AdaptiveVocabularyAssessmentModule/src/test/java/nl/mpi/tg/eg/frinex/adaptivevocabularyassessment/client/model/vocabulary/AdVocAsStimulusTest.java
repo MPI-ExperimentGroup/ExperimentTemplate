@@ -17,35 +17,56 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsNonWords1;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsWords1;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Vocabulary;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.Ignore;
 
 /**
  *
  * @author olhshk
  */
 public class AdVocAsStimulusTest {
-    
+
+    private final int wordsPerBandInSeries;
+    private final int wordsPerBand = 40;
+    private final int numberOfSeries = 1;
+    private final int numberOfBands = 54;
+
+    private final Vocabulary vocab;
+    private final ArrayList<AdVocAsStimulus> nonwords;
+    private final ArrayList<ArrayList<AdVocAsStimulus>> words;
+
     public AdVocAsStimulusTest() {
+        this.wordsPerBandInSeries = this.wordsPerBand / this.numberOfSeries;
+        this.vocab = new Vocabulary(this.numberOfBands, this.wordsPerBandInSeries);
+
+        this.words = vocab.initialiseWords(ConstantsWords1.WORDS_SERIES[0]);
+
+        ArrayList<AdVocAsStimulus> nonwordstmp = new ArrayList<>();
+        nonwordstmp.addAll(Arrays.asList(ConstantsNonWords1.NONWORDS_SERIES[0]));
+        this.nonwords = vocab.initialiseNonwords(nonwordstmp);
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -53,14 +74,22 @@ public class AdVocAsStimulusTest {
     /*
      * Test of getBandNumber method, of class AdVocAsStimulus.
      */
-    @Ignore
     @Test
     public void testGetBandNumber() {
         System.out.println("getBandNumber");
-        AdVocAsStimulus instance = null;
-        int result = instance.getBandNumber();
-        assertEquals(20, result);
+        for (int i = 0; i < this.numberOfBands; i++) {
+            for (AdVocAsStimulus stimulus : this.words.get(i)) {
+                assertEquals(i, stimulus.getbandIndex());
+                assertEquals(i + 1, stimulus.getBandNumber());
+                assertEquals(i + 1, Integer.parseInt(stimulus.getbandLabel()));
+            }
+        }
+        for (AdVocAsStimulus stimulus : this.nonwords) {
+            assertEquals(-1, stimulus.getbandIndex());
+            assertEquals(0, stimulus.getBandNumber());
+            assertEquals(0, Integer.parseInt(stimulus.getbandLabel()));
+        }
+
     }
-    
-   
+
 }

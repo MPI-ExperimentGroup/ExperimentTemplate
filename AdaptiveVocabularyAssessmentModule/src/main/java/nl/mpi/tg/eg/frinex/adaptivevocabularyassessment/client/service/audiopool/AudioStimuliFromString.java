@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopool;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -61,9 +61,9 @@ public class AudioStimuliFromString {
         CsvRecords csvWrapper = new CsvRecords(null, ";", "\n");
         csvWrapper.readRecords(csvString);
         ArrayList<LinkedHashMap<String, String>> records = csvWrapper.getRecords();
-        
+
         int countNonFoundStimuli = 0;
-        
+
         for (LinkedHashMap<String, String> record : records) {
 
             String trialNumber = record.get("Nr").trim();
@@ -167,21 +167,28 @@ public class AudioStimuliFromString {
                 BookkeepingStimulus<AudioAsStimulus> bStimulus = new BookkeepingStimulus<AudioAsStimulus>(stimulus);
                 stimuli.add(bStimulus);
                 hashedStimuli.put(uniqueId, stimulus);
-//
-//                
+
+                // sanity check if the files exist
 //                String stimulusFile = bandLabel + "/" + words.get(i);
-//                if (i==0) {
+//                String mp3 = bandLabel + "/" + wrd + ".mp3";
+//                String ogg = bandLabel + "/" + wrd + ".ogg";
+//                if (i == 0) {
 //                    stimulusFile = "clear_mono/" + words.get(0);
+//                    mp3 = "clear_mono/" + wrd + ".mp3";
+//                    ogg = "clear_mono/" + wrd + ".ogg";
 //                }
 //                try {
-//                    BufferedReader br = new BufferedReader(new FileReader(this.audiPathDir +stimulusFile));
+//                    //BufferedReader br = new BufferedReader(new FileReader(this.audiPathDir + stimulusFile));
+//                    BufferedReader br1 = new BufferedReader(new FileReader(this.audiPathDir + mp3));
+//                    BufferedReader br2 = new BufferedReader(new FileReader(this.audiPathDir + ogg));
+//                    
 //                } catch (FileNotFoundException ex) {
 //                    countNonFoundStimuli++;
 //                    System.out.println();
-//                    System.out.println("Not found file number "+countNonFoundStimuli);
-//                    System.out.println("Trial "+Integer.parseInt(trialNumber));
-//                    System.out.println(stimulusFile);
-//                    
+//                    System.out.println("Not found file number " + countNonFoundStimuli);
+//                    System.out.println("Trial " + Integer.parseInt(trialNumber));
+//                    System.out.println(ex);
+//
 //                }
             }
 
