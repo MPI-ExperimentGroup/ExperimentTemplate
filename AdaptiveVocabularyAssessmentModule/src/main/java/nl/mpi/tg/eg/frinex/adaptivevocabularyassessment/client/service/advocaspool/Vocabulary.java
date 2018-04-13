@@ -34,13 +34,16 @@ public class Vocabulary {
 
     private final int numberOfBands;
     private final int wordsPerBandInSeries;
+    private LinkedHashMap<String, AdVocAsStimulus> hashedStimuli;
 
     public Vocabulary(int numberOfBands, int wordsPerBandInSeries) {
         this.numberOfBands = numberOfBands;
         this.wordsPerBandInSeries = wordsPerBandInSeries;
+        this.hashedStimuli = new LinkedHashMap<String, AdVocAsStimulus>();
     }
 
     // the sequence of words in each band should be randomly reshuffled any time we generate it
+    // side effect: also adss stimuli to the hash map
     public ArrayList<ArrayList<AdVocAsStimulus>> initialiseWords(AdVocAsStimulus[][] wrds) {
         if (wrds == null || wrds.length == 0) {
             System.out.println("Empty array of words in bands");
@@ -52,12 +55,13 @@ public class Vocabulary {
                 System.out.println("Empty array of words for band " + bandIndex + "is empty.");
                 retVal.add(new ArrayList<AdVocAsStimulus>());
             } else {
-                ArrayList<Integer> index = RandomIndexing.generateRandomArray(wrds[bandIndex].length);
+                ArrayList<Integer> index = RandomIndexing.generateRandomArray(wrds[bandIndex].length); // permutations without repetitions
 
                 retVal.add(new ArrayList<AdVocAsStimulus>(this.wordsPerBandInSeries));
                 for (int i = 0; i < wrds[bandIndex].length; i++) {
                     int ind = index.get(i);
                     retVal.get(bandIndex).add(wrds[bandIndex][ind]);
+                    this.hashedStimuli.put(wrds[bandIndex][ind].getUniqueId(), wrds[bandIndex][ind]);
                 }
             }
         }
@@ -65,6 +69,7 @@ public class Vocabulary {
     }
 
     // the sequence of nonwords should be randomly reshuffled any time we generate it
+    // side effect: also adss stimuli to the hash map
     public ArrayList<AdVocAsStimulus> initialiseNonwords(ArrayList<AdVocAsStimulus> nonwrds) {
         if (nonwrds == null || nonwrds.isEmpty()) {
             System.out.println("Empty array of nonwords");
@@ -77,10 +82,15 @@ public class Vocabulary {
         for (int i = 0; i < index.size(); i++) {
             int ind = index.get(i);
             retVal.add(nonwrds.get(ind));
+            this.hashedStimuli.put(nonwrds.get(ind).getUniqueId(), nonwrds.get(ind));
         }
         return retVal;
     }
 
+    public LinkedHashMap<String, AdVocAsStimulus> getHashedStimuli() {
+        return this.hashedStimuli;
+    }
+    
     public LinkedHashMap<String, AdVocAsStimulus> hashStimuli(AdVocAsStimulus[][] wrds, AdVocAsStimulus[] nonwrds) {
         LinkedHashMap<String, AdVocAsStimulus> retVal = new LinkedHashMap<String, AdVocAsStimulus>();
         for (int i = 0; i < nonwrds.length; i++) {

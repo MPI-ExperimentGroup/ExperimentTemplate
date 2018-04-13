@@ -580,9 +580,9 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         map.put("nonWordsPerBlock", this.nonWordsPerBlock);
         map.put("averageNonWordPosition", this.averageNonWordPosition);
         map.put("rndIndexing", this.rndIndexing);
-        map.put("nonWordsIndexes", this.nonWordsIndexes);
-        map.put("words", this.words);
-        map.put("nonwords", this.words);
+        map.put("nonWordsIndexes", this.nonWordsIndexes.toString());
+        map.put("words", this.words.toString());
+        map.put("nonwords", this.nonwords.toString());
         return map.toString();
     }
 

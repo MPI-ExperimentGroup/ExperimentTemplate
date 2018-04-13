@@ -83,7 +83,7 @@ public class TrialsCsv5 {
             + "2056;raam;bap_1.wav;1;Target+Foil;4 words;woors.wav;bandars.wav;bap_2.wav;olvin.wav;;;3;min10db;2;\n"
             + "2057;trein;paaks_1.wav;1;Target+Foil;4 words;ner.wav;paandvelm.wav;paaks_2.wav;pernijn.wav;;;3;min10db;2;\n"
             + "2058;hoed;koed_1.wav;1;Target+Foil;4 words;koegpaat.wav;momp.wav;koed_2.wav;noger.wav;;;3;min10db;1;\n"
-            + "2059;blik;drik_1.wav;1;Target+Foil;4 words;dritmeek.wav;stetjel.wav;drik_2.wav;tar.wav;;;3;min10db;1;\n"
+            + "2059;blik;drik_1.wav;1;Target+Foil;4 words;dritmeek.wav;stetjel.wav;drik_2.wav;tar_1.wav;;;3;min10db;1;\n"
             + "2060;arm;von_1.wav;1;Target+Foil;4 words;vormerp.wav;moen.wav;von_2.wav;merbog.wav;;;3;min10db;1;\n"
             + "2061;kerk;nerg_1.wav;1;Target+Foil;4 words;nelktoes.wav;smoek.wav;nerg_2.wav;larnies.wav;;;3;min10db;1;\n"
             + "2062;bal;laam_1.wav;1;Target+Foil;4 words;laakbuim.wav;staks.wav;laam_2.wav;scheennoon.wav;;;3;min10db;1;\n"
@@ -178,7 +178,7 @@ public class TrialsCsv5 {
             + "2151;peen;peef.wav;1;NoTarget;6 words;hesk.wav;kraap.wav;rades.wav;garker.wav;redel.wav;stor.wav;0;min10db;0;\n"
             + "2152;sik;jik.wav;1;NoTarget;6 words;ots.wav;ploots.wav;fiek.wav;keder.wav;laben.wav;faper.wav;0;min10db;0;\n"
             + "2153;sop;sor.wav;1;NoTarget;6 words;raber.wav;hieg.wav;brots.wav;wref.wav;ledoer.wav;meusel.wav;0;min10db;0;\n"
-            + "2154;vak;vaf.wav;1;NoTarget;6 words;zapel.wav;gesplik.wav;vrops.wav;tar.wav;vorn.wav;linsel.wav;0;min10db;0;\n"
+            + "2154;vak;vaf.wav;1;NoTarget;6 words;zapel.wav;gesplik.wav;vrops.wav;tar_2.wav;vorn.wav;linsel.wav;0;min10db;0;\n"
             + "2155;was;wes.wav;1;NoTarget;6 words;colfres.wav;zalper.wav;blojerp.wav;smat.wav;rax.wav;spoeg.wav;0;min10db;0;\n"
             + "2156;wol;pra.wav;1;NoTarget;6 words;reuwel.wav;wog.wav;consmilp.wav;leskert.wav;mels.wav;dwaat.wav;0;min10db;0;\n";
 }

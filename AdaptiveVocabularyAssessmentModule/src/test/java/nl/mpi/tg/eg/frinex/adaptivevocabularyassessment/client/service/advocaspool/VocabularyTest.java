@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocasp
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -162,5 +163,70 @@ public class VocabularyTest {
         HashSet<String> testEqualitySet = new HashSet(testEqualityList);
         assertEquals(1, testEqualitySet.size());
 
+    }
+
+    /**
+     * Test of getHashedStimuli method, of class Vocabulary.
+     */
+    @Test
+    public void testGetHashedStimuli() {
+        System.out.println("getHashedStimuli");
+        int numberOfSeries = 1;
+        int wordsPerBandInSeries = this.wordsPerBand / numberOfSeries;
+        Vocabulary instance = new Vocabulary(this.wordsPerBand, wordsPerBandInSeries);
+
+        ArrayList<AdVocAsStimulus> nonwordstmp = new ArrayList<>();
+        AdVocAsStimulus[] nonwordsArray = ConstantsNonWords1.NONWORDS_SERIES[0];
+        nonwordstmp.addAll(Arrays.asList(nonwordsArray));
+        ArrayList<AdVocAsStimulus> nonwords = instance.initialiseNonwords(nonwordstmp);
+
+        AdVocAsStimulus[][] wordsArray = ConstantsWords1.WORDS_SERIES[0];
+        ArrayList<ArrayList<AdVocAsStimulus>> words = instance.initialiseWords(wordsArray);
+
+        int size = this.numberOfBands * wordsArray[0].length + nonwordsArray.length;
+
+        LinkedHashMap<String, AdVocAsStimulus> result = instance.getHashedStimuli();
+        assertEquals(size, result.size());
+
+        for (int i = 0; i < this.numberOfBands; i++) {
+            for (AdVocAsStimulus stimulus : words.get(i)) {
+                assertEquals(stimulus, result.get(stimulus.getUniqueId()));
+            }
+        }
+
+        for (AdVocAsStimulus stimulus : nonwords) {
+            assertEquals(stimulus, result.get(stimulus.getUniqueId()));
+        }
+    }
+    
+     /**
+     * Test of getHashedStimuli method, of class Vocabulary.
+     */
+    @Test
+    public void testHashStimuli() {
+        System.out.println("hashStimuli");
+        int numberOfSeries = 1;
+        int wordsPerBandInSeries = this.wordsPerBand / numberOfSeries;
+        Vocabulary instance = new Vocabulary(this.wordsPerBand, wordsPerBandInSeries);
+
+        AdVocAsStimulus[] nonwordsArray = ConstantsNonWords1.NONWORDS_SERIES[0];
+        
+        AdVocAsStimulus[][] wordsArray = ConstantsWords1.WORDS_SERIES[0];
+
+        int size = this.numberOfBands * wordsArray[0].length + nonwordsArray.length;
+
+        LinkedHashMap<String, AdVocAsStimulus> result = instance.hashStimuli(wordsArray, nonwordsArray);
+        assertEquals(size, result.size());
+
+        for (int i = 0; i < this.numberOfBands; i++) {
+            for (int j=0; j< wordsArray[i].length; j++) {
+                AdVocAsStimulus stimulus = wordsArray[i][j];
+                assertEquals(stimulus, result.get(stimulus.getUniqueId()));
+            }
+        }
+
+        for (int i = 0; i < nonwordsArray.length; i++) {
+            assertEquals(nonwordsArray[i], result.get(nonwordsArray[i].getUniqueId()));
+        }
     }
 }

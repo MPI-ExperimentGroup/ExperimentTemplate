@@ -17,15 +17,16 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client;
 
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Map;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -214,5 +215,130 @@ public class RandomIndexingTest {
 
         assertEquals(instance.getNumberOfNonWords(), generatedInstance.getNumberOfNonWords());
         assertEquals(instance.getNumberOfWords(), generatedInstance.getNumberOfWords());
+    }
+
+    /**
+     * Test of getNumberOfNonWords method, of class RandomIndexing.
+     */
+    
+    @Ignore
+    @Test
+    public void testGetNumberOfNonWords() {
+        System.out.println("getNumberOfNonWords");
+        RandomIndexing instance = null;
+        int expResult = 0;
+        int result = instance.getNumberOfNonWords();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getNumberOfWords method, of class RandomIndexing.
+     */
+    
+    @Ignore
+    @Test
+    public void testGetNumberOfWords() {
+        System.out.println("getNumberOfWords");
+        RandomIndexing instance = null;
+        int expResult = 0;
+        int result = instance.getNumberOfWords();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of updateFrequencesOfNonWordIndices method, of class RandomIndexing.
+     */
+    
+    @Ignore
+    @Test
+    public void testUpdateFrequencesOfNonWordIndices() {
+        System.out.println("updateFrequencesOfNonWordIndices");
+        RandomIndexing instance = null;
+        instance.updateFrequencesOfNonWordIndices();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getFrequencesOfNonWordindices method, of class RandomIndexing.
+     */
+    
+    @Ignore
+    @Test
+    public void testGetFrequencesOfNonWordindices() {
+        System.out.println("getFrequencesOfNonWordindices");
+        RandomIndexing instance = null;
+        ArrayList<Double> expResult = null;
+        ArrayList<Double> result = instance.getFrequencesOfNonWordindices();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of generateRandomArray method, of class RandomIndexing.
+     */
+    
+    @Ignore
+    @Test
+    public void testGenerateRandomArray() {
+        System.out.println("generateRandomArray");
+        int n = 0;
+        ArrayList<Integer> expResult = null;
+        ArrayList<Integer> result = RandomIndexing.generateRandomArray(n);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of toString method, of class RandomIndexing.
+     */
+    
+    @Ignore
+    @Test
+    public void testToString() {
+        System.out.println("toString");
+        RandomIndexing instance = null;
+        String expResult = "";
+        String result = instance.toString();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of mapToObject method, of class RandomIndexing.
+     */
+    
+    @Ignore
+    @Test
+    public void testMapToObject() {
+        System.out.println("mapToObject");
+        Map<String, Object> map = null;
+        RandomIndexing expResult = null;
+        RandomIndexing result = RandomIndexing.mapToObject(map);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of toObject method, of class RandomIndexing.
+     */
+    @Ignore
+    @Test
+    public void testToObject() {
+        System.out.println("toObject");
+        String str = "";
+        RandomIndexing expResult = null;
+        RandomIndexing result = RandomIndexing.toObject(str);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 }
