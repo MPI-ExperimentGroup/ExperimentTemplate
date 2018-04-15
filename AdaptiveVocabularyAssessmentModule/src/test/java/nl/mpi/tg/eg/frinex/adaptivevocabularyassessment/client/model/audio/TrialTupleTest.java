@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopool.AudioStimuliFromString;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -36,7 +37,6 @@ import static org.junit.Assert.*;
  */
 public class TrialTupleTest {
 
-    private final String[] labelling = {"min10db", "min8db", "min6db", "min4db", "min2db", "zerodb", "plus2db", "plus4db", "plus6db", "plus8db", "plus10db"};
     private final AudioStimuliFromString reader = new AudioStimuliFromString();
     private final LinkedHashMap<Integer, Trial> hashedTrials;
     // "1;vloer;smoer_1.wav;1;Target-only;3 words;deebral.wav;smoer_2.wav;wijp.wav;;;;2;plus10db;0;";
@@ -51,7 +51,7 @@ public class TrialTupleTest {
     private TrialTuple instance;
     
     public TrialTupleTest() {
-        this.reader.readTrialsAsCsv(this.labelling);
+        this.reader.readTrialsAsCsv(AudioAsStimuliProvider.LABELLING);
         this.hashedTrials = this.reader.getHashedTrials();
         this.trial1 = this.hashedTrials.get(1);
         this.trial2 = this.hashedTrials.get(107);

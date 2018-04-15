@@ -17,9 +17,6 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopool;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -172,32 +169,32 @@ public class AudioStimuliFromString {
                 hashedStimuli.put(uniqueId, stimulus);
 
                 //sanity check if the files exist
-                String stimulusFile = bandLabel + "/" + words.get(i);
-                String mp3 = bandLabel + "/" + wrd + ".mp3";
-                String ogg = bandLabel + "/" + wrd + ".ogg";
-                if (i == 0) {
-                    stimulusFile = "clear_mono/" + words.get(0);
-                    mp3 = "clear_mono/" + wrd + ".mp3";
-                    ogg = "clear_mono/" + wrd + ".ogg";
-                }
-                try {
-                    
-                    BufferedReader br = new BufferedReader(new FileReader(this.audiPathDir + stimulusFile));
-                    System.out.println(audioPath);
-                    br.close();
-                    BufferedReader br1 = new BufferedReader(new FileReader(this.audiPathDir + mp3));
-                    br1.close();
-                    BufferedReader br2 = new BufferedReader(new FileReader(this.audiPathDir + ogg));
-                    br2.close();
-
-                } catch (FileNotFoundException ex) {
-                    countNonFoundStimuli++;
-                    System.out.println();
-                    System.out.println("Not found file number " + countNonFoundStimuli);
-                    System.out.println("Trial " + Integer.parseInt(trialNumber));
-                    System.out.println(ex);
-
-                }
+//                String stimulusFile = bandLabel + "/" + words.get(i);
+//                String mp3 = bandLabel + "/" + wrd + ".mp3";
+//                String ogg = bandLabel + "/" + wrd + ".ogg";
+//                if (i == 0) {
+//                    stimulusFile = "clear_mono/" + words.get(0);
+//                    mp3 = "clear_mono/" + wrd + ".mp3";
+//                    ogg = "clear_mono/" + wrd + ".ogg";
+//                }
+//                try {
+//                    
+//                    BufferedReader br = new BufferedReader(new FileReader(this.audiPathDir + stimulusFile));
+//                    System.out.println(audioPath);
+//                    br.close();
+//                    BufferedReader br1 = new BufferedReader(new FileReader(this.audiPathDir + mp3));
+//                    br1.close();
+//                    BufferedReader br2 = new BufferedReader(new FileReader(this.audiPathDir + ogg));
+//                    br2.close();
+//
+//                } catch (FileNotFoundException ex) {
+//                    countNonFoundStimuli++;
+//                    System.out.println();
+//                    System.out.println("Not found file number " + countNonFoundStimuli);
+//                    System.out.println("Trial " + Integer.parseInt(trialNumber));
+//                    System.out.println(ex);
+//
+//                }
             }
 
             TrialCondition tc = null;

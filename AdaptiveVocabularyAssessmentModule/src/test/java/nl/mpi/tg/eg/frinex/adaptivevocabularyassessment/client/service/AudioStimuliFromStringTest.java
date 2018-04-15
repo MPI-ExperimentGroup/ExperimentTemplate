@@ -65,9 +65,8 @@ public class AudioStimuliFromStringTest {
     @Test
     public void testReadTrialsAsCsv() {
         System.out.println("readTrialsAsCsv");
-        String[] labelling = {"min10db", "min8db", "min6db", "min4db", "min2db", "zerodb", "plus2db", "plus4db", "plus6db", "plus8db", "plus10db"};
         AudioStimuliFromString instance = new AudioStimuliFromString();
-        instance.readTrialsAsCsv(labelling);
+        instance.readTrialsAsCsv(AudioAsStimuliProvider.LABELLING);
         LinkedHashMap<Integer, Trial> trials = instance.getHashedTrials();
         Set<Integer> keys = trials.keySet();
         assertEquals(2156, trials.size());
@@ -140,7 +139,7 @@ public class AudioStimuliFromStringTest {
         assertEquals("wijp", trial1.getStimuli().get(3).getStimulus().getLabel());
         assertEquals(2, trial1.getPositionTarget());
         assertEquals("plus10db", trial1.getBandLabel());
-        assertEquals(10, trial1.getBandIndex());
+        assertEquals(0, trial1.getBandIndex());
         assertEquals(0, trial1.getPositionFoil());
         
         // "1683;hand;kem_1.wav;1;Target+Foil;5 words;guil.wav;kedlim.wav;sorbuin.wav;kem_2.wav;vep.wav;;4;min6db;2;";
@@ -158,7 +157,7 @@ public class AudioStimuliFromStringTest {
         assertEquals("vep", trial2.getStimuli().get(5).getStimulus().getLabel());
         assertEquals(4, trial2.getPositionTarget());
         assertEquals("min6db", trial2.getBandLabel());
-        assertEquals(2, trial2.getBandIndex());
+        assertEquals(8, trial2.getBandIndex());
         assertEquals(2, trial2.getPositionFoil());
         
         // "2156;wol;pra.wav;1;NoTarget;6 words;reuwel.wav;wog.wav;consmilp.wav;leskert.wav;mels.wav;dwaat.wav;0;min10db;0;";
@@ -177,7 +176,7 @@ public class AudioStimuliFromStringTest {
         assertEquals("dwaat", trial3.getStimuli().get(6).getStimulus().getLabel());
         assertEquals(0, trial3.getPositionTarget());
         assertEquals("min10db", trial3.getBandLabel());
-        assertEquals(0, trial3.getBandIndex());
+        assertEquals(10, trial3.getBandIndex());
         assertEquals(0, trial3.getPositionFoil());;
     }
     

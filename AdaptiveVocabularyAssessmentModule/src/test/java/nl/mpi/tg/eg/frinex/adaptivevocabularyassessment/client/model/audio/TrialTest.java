@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopool.AudioStimuliFromString;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -34,7 +35,6 @@ import static org.junit.Assert.*;
  */
 public class TrialTest {
 
-    private final String[] labelling = {"min10db", "min8db", "min6db", "min4db", "min2db", "zerodb", "plus2db", "plus4db", "plus6db", "plus8db", "plus10db"};
     private final AudioStimuliFromString reader = new AudioStimuliFromString();
     private final LinkedHashMap<Integer, Trial> hashedTrials;
      // "1;vloer;smoer_1.wav;1;Target-only;3 words;deebral.wav;smoer_2.wav;wijp.wav;;;;2;plus10db;0;";
@@ -45,7 +45,7 @@ public class TrialTest {
     private final Trial trial3;
     
     public TrialTest() {
-        this.reader.readTrialsAsCsv(this.labelling);
+        this.reader.readTrialsAsCsv(AudioAsStimuliProvider.LABELLING);
         this.hashedTrials = this.reader.getHashedTrials();
         this.trial1 = this.hashedTrials.get(1);
         this.trial2 = this.hashedTrials.get(1683);
@@ -86,7 +86,7 @@ public class TrialTest {
         assertEquals("smoer_2", stimuli.get(2).getStimulus().getLabel());
         assertEquals("wijp", stimuli.get(3).getStimulus().getLabel());
 
-        assertEquals(10, trial1.getBandIndex());
+        assertEquals(0, trial1.getBandIndex());
         assertEquals("plus10db", trial1.getBandLabel());
         assertEquals(TrialCondition.TARGET_ONLY, trial1.getCondition());
         assertEquals(1, trial1.getId());
@@ -112,9 +112,9 @@ public class TrialTest {
     @Test
     public void testGetBandIndex() {
         System.out.println("getBandIndex");
-        assertEquals(10,this.trial1.getBandIndex());
-        assertEquals(2, this.trial2.getBandIndex());
-        assertEquals(0, this.trial3.getBandIndex());
+        assertEquals(0,this.trial1.getBandIndex());
+        assertEquals(8, this.trial2.getBandIndex());
+        assertEquals(10, this.trial3.getBandIndex());
     }
 
     @Test
@@ -277,7 +277,7 @@ public class TrialTest {
                      for (Trial trial: trialslOfCondition) {
                          count++;
                          assertEquals(i, trial.getBandIndex());
-                         assertEquals(this.labelling[i], trial.getBandLabel());
+                         assertEquals(AudioAsStimuliProvider.LABELLING[i], trial.getBandLabel());
                          assertEquals(j, trial.getTrialLength());
                          assertEquals(tc, trial.getCondition());
                      }
