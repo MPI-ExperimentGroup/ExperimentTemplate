@@ -105,7 +105,7 @@ public class TrialTupleTest {
         int allTogetherStimuli = 3 + 5 + 6 + 4 + 1+1+1+1;
         for (int count = 1; count <= allTogetherStimuli; count++) {
             assertTrue(this.instance.isNotEmpty());
-            this.instance.removeFirstAvailableStimulus();
+            this.instance.getFirstNonusedTrial().getStimuli().remove(0);
         }
         assertFalse(this.instance.isNotEmpty());
     }
@@ -148,28 +148,28 @@ public class TrialTupleTest {
         int oldSize = this.instance.getNumberOfStimuli();
         
         BookkeepingStimulus<AudioAsStimulus> expResult = this.trial1.getStimuli().get(0);
-        BookkeepingStimulus<AudioAsStimulus> result = instance.removeFirstAvailableStimulus();
+        BookkeepingStimulus<AudioAsStimulus> result = this.instance.getFirstNonusedTrial().getStimuli().remove(0);
         assertEquals(oldSize-1,this.instance.getNumberOfStimuli());
         assertEquals(expResult, result);
         
         BookkeepingStimulus<AudioAsStimulus> expResult2 = this.trial1.getStimuli().get(0);
-        BookkeepingStimulus<AudioAsStimulus> result2 = instance.removeFirstAvailableStimulus();
+        BookkeepingStimulus<AudioAsStimulus> result2 = this.instance.getFirstNonusedTrial().getStimuli().remove(0);
         assertEquals(oldSize-2,this.instance.getNumberOfStimuli());
         assertEquals(expResult2, result2);
         
         BookkeepingStimulus<AudioAsStimulus> expResult3 = this.trial1.getStimuli().get(0);
-        BookkeepingStimulus<AudioAsStimulus> result3 = instance.removeFirstAvailableStimulus();
+        BookkeepingStimulus<AudioAsStimulus> result3 = this.instance.getFirstNonusedTrial().getStimuli().remove(0);
         assertEquals(oldSize-3,this.instance.getNumberOfStimuli());
         assertEquals(expResult3, result3);
         
         BookkeepingStimulus<AudioAsStimulus> expResult4 = this.trial1.getStimuli().get(0);
-        BookkeepingStimulus<AudioAsStimulus> result4 = instance.removeFirstAvailableStimulus();
+        BookkeepingStimulus<AudioAsStimulus> result4 = this.instance.getFirstNonusedTrial().getStimuli().remove(0);
         assertEquals(oldSize-4,this.instance.getNumberOfStimuli());
         assertEquals(expResult4, result4);
         assertEquals(0, this.trial1.getStimuli().size());
         
         BookkeepingStimulus<AudioAsStimulus> expResult5 = this.trial2.getStimuli().get(0);
-        BookkeepingStimulus<AudioAsStimulus> result5 = instance.removeFirstAvailableStimulus();
+        BookkeepingStimulus<AudioAsStimulus> result5 = this.instance.getFirstNonusedTrial().getStimuli().remove(0);
         assertEquals(oldSize-5,this.instance.getNumberOfStimuli());
         assertEquals(expResult5, result5);
         

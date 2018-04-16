@@ -117,8 +117,7 @@ public class AudioAsStimuliProviderTest {
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
 
-        int n = this.instance.getCurrentTrialTuple().getNumberOfStimuli();
-        for (int i = 0; i < n; i++) {
+        while (this.instance.getCurrentTrialTuple().isNotEmpty()) {
             this.instance.hasNextStimulus(0);
             this.instance.nextStimulus(0);
             AudioAsStimulus audioStimulus = this.instance.getCurrentStimulus();
@@ -139,9 +138,8 @@ public class AudioAsStimuliProviderTest {
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
 
-        int n = this.instance.getCurrentTrialTuple().getNumberOfStimuli();
         boolean mistaken = false;
-        for (int i = 0; i < n; i++) {
+        while (this.instance.getCurrentTrialTuple().isNotEmpty()) {
             this.instance.hasNextStimulus(0);
             this.instance.nextStimulus(0);
             AudioAsStimulus audioStimulus = this.instance.getCurrentStimulus();
@@ -170,7 +168,7 @@ public class AudioAsStimuliProviderTest {
 
         int n = this.instance.getCurrentTrialTuple().getNumberOfStimuli();
         boolean mistaken = false;
-        for (int i = 0; i < n; i++) {
+        while (this.instance.getCurrentTrialTuple().isNotEmpty()) {
             this.instance.hasNextStimulus(0);
             this.instance.nextStimulus(0);
             AudioAsStimulus audioStimulus = this.instance.getCurrentStimulus();
@@ -198,7 +196,7 @@ public class AudioAsStimuliProviderTest {
        
 
         int n = this.instance.getCurrentTrialTuple().getNumberOfStimuli();
-        for (int i = 0; i < n; i++) {
+        while (this.instance.getCurrentTrialTuple().isNotEmpty()) {
             this.instance.hasNextStimulus(0);
             this.instance.nextStimulus(0);
             int lastIndex = this.instance.getResponseRecord().size() - 1;
@@ -234,7 +232,7 @@ public class AudioAsStimuliProviderTest {
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
 
         while (this.instance.getCurrentTrialTuple().isNotEmpty()) {
-            this.instance.getCurrentTrialTuple().removeFirstAvailableStimulus();
+            this.instance.getCurrentTrialTuple().getFirstNonusedTrial().getStimuli().remove(0);
         }
 
         boolean result = this.instance.initialiseNextFineTuningTuple();

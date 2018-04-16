@@ -46,15 +46,20 @@ public class TrialTuple {
         this.correctness = correctness;
     }
 
-    public BookkeepingStimulus<AudioAsStimulus> removeFirstAvailableStimulus() {
+    public Trial getFirstNonusedTrial() {
         int i = 0;
         while (this.trials.get(i).getStimuli().size() < 1) {
             i++;
         }
-        BookkeepingStimulus<AudioAsStimulus> retVal = this.trials.get(i).getStimuli().remove(0);
-        return retVal;
+        return this.trials.get(i);
     }
-
+    
+//    public BookkeepingStimulus<AudioAsStimulus> removeFirstAvailableStimulus() {
+//        int i= getFirstNonusedTrial();
+//        BookkeepingStimulus<AudioAsStimulus> retVal = this.trials.get(i).getStimuli().remove(0);
+//        return retVal;
+//    }
+    
     public ArrayList<Trial> getTrials() {
         return this.trials;
     }

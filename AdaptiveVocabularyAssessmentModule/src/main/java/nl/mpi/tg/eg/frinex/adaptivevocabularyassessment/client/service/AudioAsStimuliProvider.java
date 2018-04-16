@@ -82,7 +82,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             ArrayList<ArrayList<Integer>> trialLengtPermutations = utilSizes.generatePermutations(this.requiredLengths);
 
             this.reader = new AudioStimuliFromString();
-            this.reader.readTrialsAsCsv(this.LABELLING);
+            this.reader.readTrialsAsCsv(LABELLING);
             this.trials = Trial.prepareTrialMatrix(this.reader.getHashedTrials(), this.numberOfBands, this.maxTrialLength);
 
             this.availableCombinations = PermutationPair.initialiseAvailabilityList(this.trials, trialLengtPermutations, trialTypesPermutations, this.numberOfBands);
@@ -108,10 +108,10 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     public boolean initialiseNextFineTuningTuple() {
 
         ArrayList<PermutationPair> combinations = this.availableCombinations.get(this.currentBandIndex);
-
         this.currentTrialTuple = this.createTupleForBand(combinations);
+        
         if (this.currentTrialTuple == null) {
-            this.errorMessage = "There is no trial tuples left satisfying the specification, for the band " + this.LABELLING[this.currentBandIndex];
+            this.errorMessage = "There is no trial tuples left satisfying the specification, for the band " + LABELLING[this.currentBandIndex];
             return false;
         } else {
             // now remove permutation-pairs which have emptied list of trials 
@@ -128,7 +128,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
     @Override
     public void nextStimulus(int increment) {
-        BookkeepingStimulus<AudioAsStimulus> bStimulus = this.currentTrialTuple.removeFirstAvailableStimulus();
+        BookkeepingStimulus<AudioAsStimulus> bStimulus = this.currentTrialTuple.getFirstNonusedTrial().getStimuli().remove(0);
         this.responseRecord.add(bStimulus);
     }
 
@@ -171,7 +171,10 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         WordType stimulusType = audioStimulus.getwordType();
 
         bStimulus.setReaction(AudioAsStimulus.USER_REACTION);
-        boolean correctness = stimulusType.equals(WordType.TARGET_NON_WORD); // button shoulb be pressed only on the target nonword
+        boolean correctness = stimulusType.equals(WordType.TARGET_NON_WORD); // button should be pressed only on the target nonword
+        
+        // also on button pressed: flush rest of the trial
+        this.currentTrialTuple.getFirstNonusedTrial().getStimuli().clear();
         return correctness;
 
     }
@@ -269,7 +272,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     @Override
     protected void deserialiseSpecific(String str) throws Exception {
         
-        this.reader.readTrialsAsCsv(this.LABELLING);
+        this.reader.readTrialsAsCsv(LABELLING);
         
         this.trials = Trial.prepareTrialMatrix(reader.getHashedTrials(), this.numberOfBands, this.maxTrialLength);
         
