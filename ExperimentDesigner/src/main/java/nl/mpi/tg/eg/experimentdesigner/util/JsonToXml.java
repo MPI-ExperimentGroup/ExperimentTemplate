@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.util;
 
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.FileWriter;
@@ -58,6 +59,7 @@ public class JsonToXml {
                     System.out.println(jsonFile);
                     try {
                         ObjectMapper mapper = new ObjectMapper();
+                        mapper.configure(JsonParser.Feature.ALLOW_COMMENTS, true);
                         WizardUtilData wizardData = mapper.readValue(jsonFile, WizardUtilData.class);
                         final Experiment experiment = wizardController.getExperiment(new SentenceCompletion(wizardData).getWizardData());
                         System.out.println("experiment: " + experiment.getAppNameInternal());
