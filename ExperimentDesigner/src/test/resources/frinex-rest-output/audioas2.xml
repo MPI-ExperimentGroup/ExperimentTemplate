@@ -84,11 +84,11 @@
                                     </stimulusAudio>
                                 </conditionTrue>
                                 <conditionFalse>
-                                    <htmlText featureText="&lt;div align=&quot;left&quot; &gt;  De nieuwe serie begint. Toets SPATIE om de cue te horen &lt;/div&gt;"/>
+                                    <htmlText featureText="&lt;div align=&quot;center&quot; &gt;  De nieuwe serie begint. Toets SPATIE om de cue te horen &lt;/div&gt;"/>
                                     <actionButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight">
                                         <clearPage/>
                                         <centrePage/>
-                                        <htmlText featureText="&lt;div align=&quot;left&quot; &gt;  Je hoort nu de cue. Toets SPATIE om verder te gaan &lt;/div&gt;"/>
+                                        <htmlText featureText="&lt;div align=&quot;center&quot; &gt; Toets SPATIE om verder te gaan &lt;/div&gt;"/>
                                         <stimulusButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight">
                                             <cancelPauseTimers/>  
                                             <trigger listenerId="nextStimulusAction"/>
@@ -137,31 +137,36 @@
                         <column styleName="stimulusContainerCol">
                             <stimulusHasRatingOptions>
                                 <conditionTrue>
-                                    <stimulusAudio msToNext="0" showPlaybackIndicator="false"> 
-                                        <stimulusButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight">
-                                            <cancelPauseTimers/> 
-                                            <trigger listenerId="nextStimulusAction"/>
-                                        </stimulusButton>
-                                        <pause msToNext="900">
+                                    <htmlText featureText="&lt;div align=&quot;center&quot; &gt; &lt;img src=&quot;static/star.png&quot; /&gt;  &lt;/div&gt;"/>
+                                    <stimulusButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight">
+                                        <cancelPauseTimers/>  
+                                        <trigger listenerId="nextStimulusAction"/>
+                                    </stimulusButton>
+                                    <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                        <cancelPauseTimers/> 
+                                        <pause  msToNext="900">
                                             <cancelPauseTimers/> 
                                             <trigger listenerId="nextStimulusAction"/>
                                         </pause>
                                     </stimulusAudio>
                                 </conditionTrue>
                                 <conditionFalse>
-                                    <htmlText featureText="&lt;div align=&quot;left&quot; &gt; &lt;img src=&quot;static/star.png&quot; /&gt; New trial starts. Listen to the sample and press SPACE when ready to continue &lt;/div&gt;"/>
-                                    <pause msToNext="500">
+                                    <htmlText featureText="&lt;div align=&quot;center&quot; &gt;  De nieuwe serie begint. Toets SPATIE om de cue te horen &lt;/div&gt;"/>
+                                    <actionButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight">
+                                        <clearPage/>
+                                        <centrePage/>
+                                        <htmlText featureText="&lt;div align=&quot;center&quot; &gt;  Toets SPATIE om verder te gaan &lt;/div&gt;"/>
+                                        <stimulusButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight">
+                                            <cancelPauseTimers/>  
+                                            <trigger listenerId="nextStimulusAction"/>
+                                        </stimulusButton>
                                         <stimulusAudio msToNext="0" showPlaybackIndicator="false"> 
-                                            <actionButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight">
+                                            <pause  msToNext="600000">
                                                 <cancelPauseTimers/> 
                                                 <trigger listenerId="nextStimulusAction"/>
-                                            </actionButton>
-                                            <pause msToNext="600000">
-                                                <cancelPauseTimers/> 
-                                                <trigger listenerId="nextStimulusAction"/>
-                                            </pause>
+                                            </pause> 
                                         </stimulusAudio>
-                                    </pause>
+                                    </actionButton>
                                 </conditionFalse> 
                             </stimulusHasRatingOptions>
                         </column>
