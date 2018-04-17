@@ -203,7 +203,9 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         stringBuilder.append(startColumn).append("Timestamp").append(endColumn);
         stringBuilder.append(startColumn).append("Visiting Number").append(endColumn);
         stringBuilder.append(endRow);
+        
         ArrayList<String> spellingsCheck = new ArrayList<>();
+        
         for (int i = 0; i < this.responseRecord.size(); i++) {
             BookkeepingStimulus<AudioAsStimulus> bStimulus = this.responseRecord.get(i);
             if (bStimulus == null) { // trial tuple border
@@ -270,13 +272,14 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     @Override
     protected void deserialiseSpecific(String str) throws Exception {
 
+        
         this.reader.readTrialsAsCsv(LABELLING);
-
         this.trials = Trial.prepareTrialMatrix(reader.getHashedTrials(), this.numberOfBands, this.maxTrialLength);
-
+        
         Map<String, Object> map = UtilsJSONdialect.stringToObjectMap(str, SPECIFIC_FLDS);
 
         Object recordObj = map.get("responseRecord");
+
         this.responseRecord = new ArrayList<BookkeepingStimulus<AudioAsStimulus>>();
         BookkeepingStimulus<AudioAsStimulus> factory = new BookkeepingStimulus<AudioAsStimulus>(null);
         if (recordObj != null) {

@@ -79,6 +79,9 @@ public class AudioStimuliFromStringTest {
             AudioAsStimulus cue = trial.getStimuli().get(0).getStimulus();
             assertEquals(WordType.EXAMPLE_TARGET_NON_WORD, cue.getwordType());
             assertFalse(cue.hasRatingLabels());
+            
+            
+            // checking non-cue stimuli
             for (int j=1; j<trial.getStimuli().size(); j++ ) {
                 assertTrue(trial.getStimuli().get(j).getStimulus().hasRatingLabels());
             }
