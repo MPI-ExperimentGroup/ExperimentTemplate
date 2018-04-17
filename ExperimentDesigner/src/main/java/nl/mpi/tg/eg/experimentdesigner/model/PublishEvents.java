@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,13 +31,13 @@ import javax.persistence.Temporal;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
-public class PublishEvents {
+public class PublishEvents implements Serializable {
 
     public enum PublishState {
 
         editing,
-        testing,
-        published
+        staging,
+        production
     };
 
     @Id
@@ -44,12 +45,13 @@ public class PublishEvents {
     private long id;
 
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date compileDate;
+    private Date publishDate;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date expiryDate;
 
     private PublishState publishState;
     private boolean isWebApp;
+    private boolean isDesktop;
     private boolean isiOS;
     private boolean isAndroid;
     @ManyToOne
@@ -59,13 +61,14 @@ public class PublishEvents {
     public PublishEvents() {
     }
 
-    public PublishEvents(Experiment experiment, Date compileDate, Date expiryDate, PublishState publishState, boolean isWebApp, boolean isiOS, boolean isAndroid) {
-        this.compileDate = compileDate;
+    public PublishEvents(Experiment experiment, Date publishDate, Date expiryDate, PublishState publishState, boolean isWebApp, boolean isiOS, boolean isAndroid, boolean isDesktop) {
+        this.publishDate = publishDate;
         this.expiryDate = expiryDate;
         this.publishState = publishState;
         this.isWebApp = isWebApp;
         this.isiOS = isiOS;
         this.isAndroid = isAndroid;
+        this.isDesktop = isDesktop;
         this.experiment = experiment;
         this.buildName = experiment.getAppNameInternal();
     }
@@ -86,8 +89,8 @@ public class PublishEvents {
         return publishState;
     }
 
-    public Date getCompileDate() {
-        return compileDate;
+    public Date getPublishDate() {
+        return publishDate;
     }
 
     public Date getExpiryDate() {
@@ -104,6 +107,10 @@ public class PublishEvents {
 
     public boolean isIsAndroid() {
         return isAndroid;
+    }
+
+    public boolean isIsDesktop() {
+        return isDesktop;
     }
 
     public float getDefaultScale() {
