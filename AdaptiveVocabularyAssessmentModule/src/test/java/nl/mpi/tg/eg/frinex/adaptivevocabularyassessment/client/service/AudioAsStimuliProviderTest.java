@@ -31,7 +31,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 
 /**
  *
@@ -188,14 +187,10 @@ public class AudioAsStimuliProviderTest {
      * Test of isCorrectResponse method, of class AudioAsStimuliProvider.
      */
     @Test
-    public void testIsCorrectResponse() {
-        System.out.println("isCorrectResponse");
+    public void testIsCorrectResponse1() {
+        System.out.println("isCorrectResponse-1");
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
-        
-       
-
-        int n = this.instance.getCurrentTrialTuple().getNumberOfStimuli();
         while (this.instance.getCurrentTrialTuple().isNotEmpty()) {
             this.instance.hasNextStimulus(0);
             this.instance.nextStimulus(0);
@@ -203,18 +198,54 @@ public class AudioAsStimuliProviderTest {
             BookkeepingStimulus<AudioAsStimulus> bStimulus = this.instance.getResponseRecord().get(lastIndex);
             Stimulus stimulus = bStimulus.getStimulus(); // upcasting
             if (bStimulus.getStimulus().getwordType().equals(WordType.TARGET_NON_WORD)) {
-                assertTrue(instance.isCorrectResponse(stimulus, ""));
+                Trial trBefore = this.instance.getCurrentTrialTuple().getFirstNonusedTrial();
+                assertTrue(this.instance.isCorrectResponse(stimulus, ""));
                 assertEquals(AudioAsStimulus.USER_REACTION, bStimulus.getReaction());
-
-                assertTrue(instance.isCorrectResponse(stimulus, AudioAsStimulus.AUDIO_RATING_LABEL));
-                assertEquals(AudioAsStimulus.USER_REACTION, bStimulus.getReaction());
+                assertNotEquals(trBefore, this.instance.getCurrentTrialTuple().getFirstNonusedTrial()); // trial is wiped on pressing to go to the next trial
             } else {
-                if (!bStimulus.getStimulus().getwordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
-                    assertFalse(instance.isCorrectResponse(stimulus, ""));
+                if (bStimulus.getStimulus().getwordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
+                    Trial trBefore = this.instance.getCurrentTrialTuple().getFirstNonusedTrial();
+                    this.instance.isCorrectResponse(stimulus, "");
+                    assertEquals(trBefore, this.instance.getCurrentTrialTuple().getFirstNonusedTrial()); // trials are not cleaned after pressing button on the cue stimulus
+                } else {
+                    Trial trBefore = this.instance.getCurrentTrialTuple().getFirstNonusedTrial();
+                    assertFalse(this.instance.isCorrectResponse(stimulus, ""));
                     assertEquals(AudioAsStimulus.USER_REACTION, bStimulus.getReaction());
+                    assertNotEquals(trBefore, this.instance.getCurrentTrialTuple().getFirstNonusedTrial()); // trial is wiped on pressing to go to the next trial
+                }
+            }
+        }
+    }
 
-                    assertFalse(instance.isCorrectResponse(stimulus, AudioAsStimulus.AUDIO_RATING_LABEL));
+    /**
+     * Test of isCorrectResponse method, of class AudioAsStimuliProvider.
+     */
+    @Test
+    public void testIsCorrectResponse2() {
+        System.out.println("isCorrectResponse-2");
+        String stimuliStateSnapshot = "";
+        this.instance.initialiseStimuliState(stimuliStateSnapshot);
+        while (this.instance.getCurrentTrialTuple().isNotEmpty()) {
+            this.instance.hasNextStimulus(0);
+            this.instance.nextStimulus(0);
+            int lastIndex = this.instance.getResponseRecord().size() - 1;
+            BookkeepingStimulus<AudioAsStimulus> bStimulus = this.instance.getResponseRecord().get(lastIndex);
+            Stimulus stimulus = bStimulus.getStimulus(); // upcasting
+            if (bStimulus.getStimulus().getwordType().equals(WordType.TARGET_NON_WORD)) {
+                Trial trBefore = this.instance.getCurrentTrialTuple().getFirstNonusedTrial();
+                assertTrue(this.instance.isCorrectResponse(stimulus, AudioAsStimulus.AUDIO_RATING_LABEL));
+                assertEquals(AudioAsStimulus.USER_REACTION, bStimulus.getReaction());
+                assertNotEquals(trBefore, this.instance.getCurrentTrialTuple().getFirstNonusedTrial()); // trial is wiped on pressing to go to the next trial
+            } else {
+                if (bStimulus.getStimulus().getwordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
+                    Trial trBefore = this.instance.getCurrentTrialTuple().getFirstNonusedTrial();
+                    this.instance.isCorrectResponse(stimulus, AudioAsStimulus.AUDIO_RATING_LABEL);
+                    assertEquals(trBefore, this.instance.getCurrentTrialTuple().getFirstNonusedTrial()); // trials are not cleaned after pressing button on the cue stimulus
+                } else {
+                    Trial trBefore = this.instance.getCurrentTrialTuple().getFirstNonusedTrial();
+                    assertFalse(this.instance.isCorrectResponse(stimulus, AudioAsStimulus.AUDIO_RATING_LABEL));
                     assertEquals(AudioAsStimulus.USER_REACTION, bStimulus.getReaction());
+                    assertNotEquals(trBefore, this.instance.getCurrentTrialTuple().getFirstNonusedTrial()); // trial is wiped on pressing to go to the next trial
                 }
             }
         }
@@ -350,7 +381,7 @@ public class AudioAsStimuliProviderTest {
 
         ArrayList<BookkeepingStimulus<AudioAsStimulus>> record = this.instance.getResponseRecord();
         //this.printRecord(record);
-        
+
         System.out.println("getStringFineTuningHistory");
         String startRow = "";
         String endRow = "\n";
@@ -360,10 +391,10 @@ public class AudioAsStimuliProviderTest {
         String history = this.instance.getStringFineTuningHistory(startRow, endRow, startColumn, endColumn, format);
         assertNotNull(history);
         //System.out.println(history);
-        
+
         System.out.println(" extra-test toString()");
         String snapShot = this.instance.toString();
-        
+
         // clean 
         this.instance.initialiseStimuliState("");
         System.out.println(" extra-test reinitialise");
@@ -391,7 +422,7 @@ public class AudioAsStimuliProviderTest {
             Stimulus stimulus = audioStimulus;
             i++;
             if (disturt) {
-               // make a mistake
+                // make a mistake
                 if (!audioStimulus.getwordType().equals(WordType.TARGET_NON_WORD) && !audioStimulus.getwordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
                     String correctResponce = audioStimulus.getCorrectResponses();
                     this.instance.isCorrectResponse(stimulus, correctResponce);
@@ -417,7 +448,7 @@ public class AudioAsStimuliProviderTest {
 
         ArrayList<BookkeepingStimulus<AudioAsStimulus>> record = this.instance.getResponseRecord();
         //this.printRecord(record);
-        
+
         System.out.println(" extra-test getStringFineTuningHistory");
         String startRow = "";
         String endRow = "\n";
@@ -427,10 +458,10 @@ public class AudioAsStimuliProviderTest {
         String history = this.instance.getStringFineTuningHistory(startRow, endRow, startColumn, endColumn, format);
         assertNotNull(history);
         //System.out.println(history);
-        
+
         System.out.println(" extra-test toString()");
         String snapShot = this.instance.toString();
-        
+
         // clean 
         this.instance.initialiseStimuliState("");
         System.out.println(" extra-test reinitialise");
@@ -438,7 +469,7 @@ public class AudioAsStimuliProviderTest {
         System.out.println(" extra-test toString()-2");
         String snapShot2 = this.instance.toString();
         assertEquals(snapShot, snapShot2);
-        
+
     }
 
     /**
@@ -471,9 +502,9 @@ public class AudioAsStimuliProviderTest {
                 if (distort) { // make a mistake
                     if (!audioStimulus.getwordType().equals(WordType.TARGET_NON_WORD)) {
                         this.instance.isCorrectResponse(stimulus, AudioAsStimulus.AUDIO_RATING_LABEL);
-                    } 
+                    }
                     if (audioStimulus.getwordType().equals(WordType.TARGET_NON_WORD)) {
-                         // hit is missed !
+                        // hit is missed !
                     }
                 } else { // non-distort, call isCorrect only on target
                     if (audioStimulus.getwordType().equals(WordType.TARGET_NON_WORD)) {
@@ -490,7 +521,7 @@ public class AudioAsStimuliProviderTest {
 
         ArrayList<BookkeepingStimulus<AudioAsStimulus>> record = this.instance.getResponseRecord();
         //this.printRecord(record);
-        
+
         System.out.println("getStringFineTuningHistory");
         String startRow = "";
         String endRow = "\n";
@@ -500,10 +531,10 @@ public class AudioAsStimuliProviderTest {
         String history = this.instance.getStringFineTuningHistory(startRow, endRow, startColumn, endColumn, format);
         assertNotNull(history);
         //System.out.println(history);
-        
+
         System.out.println(" extra-test toString()");
         String snapShot = this.instance.toString();
-        
+
         // clean 
         this.instance.initialiseStimuliState("");
         System.out.println(" extra-test reinitialise");
@@ -512,9 +543,6 @@ public class AudioAsStimuliProviderTest {
         String snapShot2 = this.instance.toString();
         assertEquals(snapShot, snapShot2);
     }
-
-   
-
 
     /**
      * Test of toString method, of class AudioAsStimuliProvider.

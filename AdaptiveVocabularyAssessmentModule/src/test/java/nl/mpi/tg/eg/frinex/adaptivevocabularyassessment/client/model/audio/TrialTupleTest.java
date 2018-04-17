@@ -95,6 +95,37 @@ public class TrialTupleTest {
         this.instance.setCorrectness(false);
         assertFalse(this.instance.getCorrectness());
     }
+    
+     /**
+     * Test of isNotEmpty method, of class TrialTuple.
+     */
+    @Test
+    public void testGetFirstNonusedTrial() {
+        System.out.println("getFirstNonusedTrial");
+        
+        int limit1= this.trial1.getTrialLength()+1;  // Trial 1
+        for (int count = 1; count <= limit1; count++) {
+            assertEquals(this.trial1, this.instance.getFirstNonusedTrial());
+            this.instance.getFirstNonusedTrial().getStimuli().remove(0);
+        }
+        int limit2= this.trial2.getTrialLength()+1; // Trial 2
+        for (int count = 1; count <= limit2; count++) {
+            assertEquals(this.trial2, this.instance.getFirstNonusedTrial());
+            this.instance.getFirstNonusedTrial().getStimuli().remove(0);
+        }
+        int limit3= this.trial3.getTrialLength()+1; // Trial 3
+        for (int count = 1; count <= limit3; count++) {
+            assertEquals(this.trial3, this.instance.getFirstNonusedTrial());
+            this.instance.getFirstNonusedTrial().getStimuli().remove(0);
+        }
+        int limit4= this.trial4.getTrialLength()+1; // Trial 4
+        for (int count = 1; count <= limit4; count++) {
+            assertEquals(this.trial4, this.instance.getFirstNonusedTrial());
+            this.instance.getFirstNonusedTrial().getStimuli().remove(0);
+        }
+        assertNull(this.instance.getFirstNonusedTrial());
+        assertFalse(this.instance.isNotEmpty());
+    }
 
     /**
      * Test of isNotEmpty method, of class TrialTuple.

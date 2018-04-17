@@ -22,8 +22,6 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 
 /**
  *
@@ -48,18 +46,21 @@ public class TrialTuple {
 
     public Trial getFirstNonusedTrial() {
         int i = 0;
-        while (this.trials.get(i).getStimuli().size() < 1) {
+        while (i < this.trials.size() && this.trials.get(i).getStimuli().size() < 1) {
             i++;
         }
-        return this.trials.get(i);
+        if (i < this.trials.size()) {
+            return this.trials.get(i);
+        } else {
+            return null;
+        }
     }
-    
+
 //    public BookkeepingStimulus<AudioAsStimulus> removeFirstAvailableStimulus() {
 //        int i= getFirstNonusedTrial();
 //        BookkeepingStimulus<AudioAsStimulus> retVal = this.trials.get(i).getStimuli().remove(0);
 //        return retVal;
 //    }
-    
     public ArrayList<Trial> getTrials() {
         return this.trials;
     }
@@ -82,19 +83,10 @@ public class TrialTuple {
     }
 
     public boolean isNotEmpty() {
-        int i = 0;
-        // try to find first non-empty trial
-        while (i < this.trials.size()) {
-            if (this.trials.get(i).getStimuli().size() > 0) {
-                return true; // there are nonempty trials!
-            } else {
-                i++;
-            }
-        }
-        return false; // all trials are fired!
+        Trial tr = this.getFirstNonusedTrial();
+        boolean retVal = !(tr==null);
+        return retVal; // all trials are fired!
     }
-
-   
 
     @Override
     public String toString() {
@@ -111,7 +103,7 @@ public class TrialTuple {
             if (trialsObj == null) {
                 return null;
             } else {
-               List<Object> ls = (List<Object>) trialsObj;
+                List<Object> ls = (List<Object>) trialsObj;
                 ArrayList<Trial> trials = new ArrayList<Trial>(ls.size());
                 for (int i = 0; i < ls.size(); i++) {
                     Integer id = Integer.parseInt(ls.get(i).toString());
