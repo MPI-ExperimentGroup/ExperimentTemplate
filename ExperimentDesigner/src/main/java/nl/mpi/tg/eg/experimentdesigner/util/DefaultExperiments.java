@@ -94,7 +94,7 @@ public class DefaultExperiments {
         experimentRepository.save(new PlaybackPreferenceMeasureExperiment().getExperiment());
 
         for (Experiment experiment : experimentRepository.findAll()) {
-            eventRepository.save(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.published, true, true, true));
+            eventRepository.save(new PublishEvents(experiment, new Date(), new Date(), PublishEvents.PublishState.editing, true, false, false, false));
         }
     }
 
