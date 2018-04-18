@@ -29,6 +29,8 @@ public class WizardUtilStimuliData {
     protected String[] randomStimuliTags;
     protected String ratingLabels = null;
     protected String stimuliLabelStyle = null;
+    protected String stimuliLayout = null;
+    protected String stimuliHotKey = null;
     protected String freeTextValidationRegex = null;
     protected String freeTextValidationMessage = null;
     protected String freeTextAllowedCharCodes = null;
@@ -87,6 +89,22 @@ public class WizardUtilStimuliData {
 
     public void setStimuliLabelStyle(String stimuliLabelStyle) {
         this.stimuliLabelStyle = stimuliLabelStyle;
+    }
+
+    public String getStimuliLayout() {
+        return stimuliLayout;
+    }
+
+    public void setStimuliLayout(String stimuliLayout) {
+        this.stimuliLayout = stimuliLayout;
+    }
+
+    public String getStimuliHotKey() {
+        return stimuliHotKey;
+    }
+
+    public void setStimuliHotKey(String stimuliHotKey) {
+        this.stimuliHotKey = stimuliHotKey;
     }
 
     public String[] getStimuliArray() {
