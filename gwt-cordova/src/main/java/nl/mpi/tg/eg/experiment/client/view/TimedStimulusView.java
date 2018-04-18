@@ -244,7 +244,7 @@ public class TimedStimulusView extends ComplexView {
         final Label errorLabel = new Label(validationChallenge);
         errorLabel.setStylePrimaryName("metadataErrorMessage");
         errorLabel.setVisible(false);
-        outerPanel.add(errorLabel);
+        getActivePanel().add(errorLabel);
         final Duration duration = new Duration();
         final StringBuilder responseTimes = new StringBuilder();
         final TextArea textBox = new TextArea();
@@ -259,7 +259,7 @@ public class TimedStimulusView extends ComplexView {
             textBox.addStyleName(styleName);
         }
         textBox.setStylePrimaryName("metadataOK");
-        outerPanel.add(textBox);
+        getActivePanel().add(textBox);
         textBox.setFocus(true);
         textBox.addKeyPressHandler(new KeyPressHandler() {
             @Override
@@ -364,7 +364,7 @@ public class TimedStimulusView extends ComplexView {
         timerList.add(playbackIndicatorTimer);
         if (showPlaybackIndicator) {
             playbackIndicator.setStylePrimaryName("playbackIndicator");
-            outerPanel.add(playbackIndicator);
+            getActivePanel().add(playbackIndicator);
             playbackIndicatorTimer.schedule(500);
         }
         audioPlayer.setOnEndedListener(new AudioEventListner() {
