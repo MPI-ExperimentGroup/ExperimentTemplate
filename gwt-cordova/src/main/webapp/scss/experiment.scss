@@ -763,9 +763,22 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
 }
 
 .gwt-HTML.groupMessageLabel,
-.gwt-HTML.stimuliLabel {
+.gwt-HTML.stimuliLabel,
+.singleLineFreeTextLabel {
     font-size: 60px;
     padding: 10px;
+}
+
+textarea.singleLineFreeTextLabel {
+    text-align: left;
+    height: 150px;
+    width: 35vw;
+    left: 50%;
+}
+.gwt-HTML.singleLineFreeTextLabel {
+    text-align: right;
+    height: 150px;
+    width: 35vw;
 }
 
 /*.menuTable .gwt-HTML,*/
@@ -790,6 +803,7 @@ table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popu
 } 
 
 .gwt-HTML a, .gwt-HTML a:visited, .gwt-HTML a:hover,
+.singleLineFreeTextLabel,
 .gwt-Label, .gwt-HTML, /*.headerLabel, .headerLabelCentered,*/ .resultsTableTitle, .gwt-CheckBox, .pageLink, .contentBody {
     color:$primaryColour1; 
     line-height: 25pt;
