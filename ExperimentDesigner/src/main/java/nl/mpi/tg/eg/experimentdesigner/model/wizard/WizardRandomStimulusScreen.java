@@ -45,7 +45,8 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setStimuliCount(1);
         setStimulusMsDelay(0);
         setStimulusFreeText(false);
-        setAllowHotkeyButtons(true);
+        setHotkeyButton("SPACE");
+        setTableLayout(false);
         setShowProgress(false);
         setStimuliLabelStyle(null);
 //        this.wizardScreenData.setButtonLabelEventTag("");
@@ -67,9 +68,10 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setStimulusResponseOptions(responseOptions);
         setRandomiseStimuli(randomiseStimuli);
         this.wizardScreenData.setCentreScreen(centreScreen);
-        setAllowHotkeyButtons(true);
+        setHotkeyButton("SPACE");
         setShowProgress(false);
         setStimulusFreeText(false);
+        setTableLayout(false);
         if (spacebar == null) {
             throw new UnsupportedOperationException("button text cannot be null");
         }
@@ -78,45 +80,6 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
 //        this.wizardScreenData.setButtonLabelEventTag(spacebar);
         setStimuliSet(stimuliStringArray);
     }
-
-    final public void setRandomiseStimuli(boolean randomiseStimuli) {
-        this.wizardScreenData.setScreenBoolean(0, randomiseStimuli);
-    }
-
-    final public void setStimulusFreeText(boolean stimulusFreeText) {
-        this.wizardScreenData.setScreenBoolean(1, stimulusFreeText);
-    }
-
-    final public void setAllowHotkeyButtons(boolean allowHotkeyButtons) {
-        this.wizardScreenData.setScreenBoolean(2, allowHotkeyButtons);
-    }
-
-    final public void setShowProgress(boolean showProgress) {
-        this.wizardScreenData.setScreenBoolean(3, showProgress);
-    }
-
-    private boolean isRandomiseStimuli(WizardScreenData storedWizardScreenData) {
-        return storedWizardScreenData.getScreenBoolean(0);
-    }
-
-    private boolean isStimulusFreeText(WizardScreenData storedWizardScreenData) {
-        return storedWizardScreenData.getScreenBoolean(1);
-    }
-
-    private boolean isAllowHotkeyButtons(WizardScreenData storedWizardScreenData) {
-        return storedWizardScreenData.getScreenBoolean(2);
-    }
-
-    private boolean isShowProgress(WizardScreenData storedWizardScreenData) {
-        return storedWizardScreenData.getScreenBoolean(3);
-    }
-//    private boolean getFreeTextValidationRegex(WizardScreenData wizardScreenData) {
-//
-//    }
-//
-//    private boolean getExcludedCharCodes(WizardScreenData wizardScreenData) {
-//
-//    }
 
     public WizardRandomStimulusScreen(String screenName, String[] screenTextArray, int maxStimuli, final boolean randomiseStimuli, String responseOptions, String responseOptionsLabelLeft, String responseOptionsLabelRight) {
         super(WizardScreenEnum.WizardRandomStimulusScreen, screenName, screenName, screenName);
@@ -130,19 +93,67 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         setRandomiseStimuli(randomiseStimuli);
         this.wizardScreenData.setCentreScreen(true);
         setStimulusFreeText(false);
-        setAllowHotkeyButtons(false);
+        setHotkeyButton("SPACE");
         setShowProgress(false);
+        setTableLayout(false);
         setStimuliSet(screenTextArray);
     }
 
+    final public void setRandomiseStimuli(boolean randomiseStimuli) {
+        this.wizardScreenData.setScreenBoolean(0, randomiseStimuli);
+    }
+
+    final public void setStimulusFreeText(boolean stimulusFreeText) {
+        this.wizardScreenData.setScreenBoolean(1, stimulusFreeText);
+    }
+
+    final public void setHotkeyButton(String hotkeyButton) {
+        this.wizardScreenData.setScreenText(6, hotkeyButton);
+    }
+
+    final public void setShowProgress(boolean showProgress) {
+        this.wizardScreenData.setScreenBoolean(2, showProgress);
+    }
+
+    final public void setTableLayout(boolean isTableLayout) {
+        this.wizardScreenData.setScreenBoolean(3, isTableLayout);
+    }
+
+    private boolean isRandomiseStimuli(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenBoolean(0);
+    }
+
+    private boolean isStimulusFreeText(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenBoolean(1);
+    }
+
+    private String getHotkeyButton(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(6);
+    }
+
+    private boolean isShowProgress(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenBoolean(2);
+    }
+
+    private boolean isTableLayout(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenBoolean(3);
+    }
+//    private boolean getFreeTextValidationRegex(WizardScreenData wizardScreenData) {
+//
+//    }
+//
+//    private boolean getExcludedCharCodes(WizardScreenData wizardScreenData) {
+//
+//    }
+
     @Override
     public String getScreenBooleanInfo(int index) {
-        return new String[]{"RandomiseStimuli", "StimulusFreeText", "AllowHotkeyButtons", "ShowProgress"}[index];
+        return new String[]{"RandomiseStimuli", "StimulusFreeText", "ShowProgress", "TableLayout"}[index];
     }
 
     @Override
     public String getScreenTextInfo(int index) {
-        return new String[]{"FreeTextValidationMessage", "FreeTextValidationRegex", "RandomStimuliTagsField", "InputKeyErrorMessage", "AllowedCharCodes (case sensitive, input will be switched to an allowed case if it exists)", "Stimuli Label Style"}[index];
+        return new String[]{"FreeTextValidationMessage", "FreeTextValidationRegex", "RandomStimuliTagsField", "InputKeyErrorMessage", "AllowedCharCodes (case sensitive, input will be switched to an allowed case if it exists)", "Stimuli Label Style", "HotkeyButton"}[index];
     }
 
     @Override
@@ -305,10 +316,15 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         }
         final String stimuliLabelStyle = getStimuliLabelStyle(storedWizardScreenData);
         final PresenterFeature stimuliFeature;
+        final PresenterFeature tableFeature = (isTableLayout(storedWizardScreenData)) ? hasMoreStimulusFeature.addFeature(FeatureType.table, null, "", "false").addFeature(FeatureType.row, null) : null;
         if (stimuliLabelStyle != null) {
             final PresenterFeature labelFeature = new PresenterFeature(FeatureType.stimulusLabel, null);
             labelFeature.addFeatureAttributes(FeatureAttribute.styleName, stimuliLabelStyle);
-            hasMoreStimulusFeature.getPresenterFeatureList().add(labelFeature);
+            if (tableFeature != null) {
+                tableFeature.addFeature(FeatureType.column, null, "").getPresenterFeatureList().add(labelFeature);
+            } else {
+                hasMoreStimulusFeature.getPresenterFeatureList().add(labelFeature);
+            }
             stimuliFeature = hasMoreStimulusFeature;// image features cannot have child nodes
         } else {
             final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
@@ -316,17 +332,20 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
             imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
             imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getStimulusMsDelay(storedWizardScreenData)));
-            hasMoreStimulusFeature.getPresenterFeatureList().add(imageFeature);
+            if (tableFeature != null) {
+                tableFeature.addFeature(FeatureType.column, null, "").getPresenterFeatureList().add(imageFeature);
+            } else {
+                hasMoreStimulusFeature.getPresenterFeatureList().add(imageFeature);
+            }
             stimuliFeature = imageFeature;
         }
 
         final PresenterFeature presenterFeature;
-        final String hotKeyString = "SPACE";
         if (storedWizardScreenData.getStimulusCodeFormat() != null) {
             final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, storedWizardScreenData.getNextButton()[0]);
             nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getButtonLabelEventTag());
-            if (isAllowHotkeyButtons(storedWizardScreenData)) {
-                nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, hotKeyString);
+            if (getHotkeyButton(storedWizardScreenData) != null) {
+                nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, getHotkeyButton(storedWizardScreenData));
             }
             nextButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
             final PresenterFeature pauseFeature = new PresenterFeature(FeatureType.pause, null);
@@ -354,6 +373,9 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         if (isStimulusFreeText(storedWizardScreenData)) {
             final PresenterFeature stimulusFreeTextFeature = new PresenterFeature(FeatureType.stimulusFreeText, getFreeTextValidationMessage(storedWizardScreenData));
+            if (stimuliLabelStyle != null) {
+                stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.styleName, stimuliLabelStyle);
+            }
             stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.validationRegex, getFreeTextValidationRegex(storedWizardScreenData));
             if (getAllowedCharCodes(storedWizardScreenData) != null) {
                 stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.allowedCharCodes, getAllowedCharCodes(storedWizardScreenData));
@@ -361,10 +383,14 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             if (getInputKeyErrorMessage(storedWizardScreenData) != null) {
                 stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.inputErrorMessage, getInputKeyErrorMessage(storedWizardScreenData));
             }
-            if (isAllowHotkeyButtons(storedWizardScreenData)) {
-                stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.hotKey, "ENTER");
+            if (getHotkeyButton(storedWizardScreenData) != null) {
+                stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.hotKey, getHotkeyButton(storedWizardScreenData));
             }
-            presenterFeature.getPresenterFeatureList().add(stimulusFreeTextFeature);
+            if (tableFeature != null) {
+                tableFeature.addFeature(FeatureType.column, "", "").getPresenterFeatureList().add(stimulusFreeTextFeature);
+            } else {
+                presenterFeature.getPresenterFeatureList().add(stimulusFreeTextFeature);
+            }
         }
         if (storedWizardScreenData.getStimulusResponseOptions() != null) {
             final PresenterFeature ratingFooterButtonFeature = new PresenterFeature(FeatureType.ratingButton, null);
@@ -379,8 +405,8 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         } else {
             final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, storedWizardScreenData.getNextButton()[0]);
             nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getButtonLabelEventTag());
-            if (isAllowHotkeyButtons(storedWizardScreenData)) {
-                nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, hotKeyString);
+            if (getHotkeyButton(storedWizardScreenData) != null) {
+                nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, getHotkeyButton(storedWizardScreenData));
             }
             final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
