@@ -106,41 +106,5 @@ public class VocabularyFromFilesTest {
         System.out.println(stBuilder);
     }
 
-    /**
-     * Test of getWords method, of class VocabularyFromFiles.
-     */
-    @Test
-    public void testGetWords() {
-        System.out.println("getWords");
-        VocabularyFromFiles instance = new VocabularyFromFiles(this.numberOfBands, this.wordsPerBand, this.numberOfSeries);
-        AdVocAsStimulus[][] result = instance.getWords();
-        //assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getNonwords method, of class VocabularyFromFiles.
-     */
-    @Test
-    public void testGetNonwords() {
-        System.out.println("getNonwords");
-        VocabularyFromFiles instance = new VocabularyFromFiles(this.numberOfBands, this.wordsPerBand, this.numberOfSeries);
-        ArrayList<AdVocAsStimulus> result = instance.getNonwords();
-        //assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of initialiseVocabulary method, of class VocabularyFromFiles.
-     */
-    @Test
-    public void testInitialiseVocabulary() throws Exception {
-        System.out.println("initialiseVocabulary");
-        //instance.initialiseVocabulary("dummylocation", "dummylocation");
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
 
 }

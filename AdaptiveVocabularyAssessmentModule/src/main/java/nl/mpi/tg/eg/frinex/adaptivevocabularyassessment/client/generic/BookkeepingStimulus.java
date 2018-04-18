@@ -105,6 +105,9 @@ public class BookkeepingStimulus<A extends BandStimulus> {
                     case "stimulus":
                         String stimulusId = map.get(key).toString();
                         localStimulus = hashedStimuli.get(stimulusId);
+                        if (localStimulus == null) {
+                            throw new Exception("Cannot fine a stimulus with id "+stimulusId+ " in the hash map "+hashedStimuli);
+                        }
                         break;
                     case "correctness":
                         Object hlp = map.get(key);

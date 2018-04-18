@@ -774,7 +774,7 @@ public class AdVocAsStimuliProviderTest {
         boolean result12 = provider.hasNextStimulus(0);
         assertTrue(result12);
         assertEquals(expectedBand, provider.getCurrentBandNumber());
-        assertEquals(-1, provider.getBestFastTrackBand()); // stil on fast track, expecting the secind chance
+        assertEquals(0, provider.getBestFastTrackBand()); // stil on fast track, expecting the secind chance
 
         provider.nextStimulus(0); // give the second chance
         assertEquals(3, provider.getResponseRecord().size());
@@ -969,8 +969,9 @@ public class AdVocAsStimuliProviderTest {
         this.testPercentageBandTable("2", "1", "testPercentageBandTable_21");
 
     }
+    
+    
 
-    @Ignore
     @Test
     public void generalRandomTest1() throws Exception {
         for (int i = 1; i < 11; i++) {
@@ -980,7 +981,6 @@ public class AdVocAsStimuliProviderTest {
         }
     }
 
-    @Ignore
     @Test
     public void generalRandomTest2() throws Exception {
         for (int i = 1; i < 11; i++) {
@@ -1001,7 +1001,6 @@ public class AdVocAsStimuliProviderTest {
         }
     }
 
-    @Ignore
     @Test
     public void notEnoughStimuliTest() throws Exception {
         this.longFineTuningTest();
@@ -1529,7 +1528,6 @@ public class AdVocAsStimuliProviderTest {
     /**
      * Test of getToString method, of class AdVocAsStimuliProvider.
      */
-    @Ignore
     @Test
     public void testToStringPlusInitialise() {
         System.out.println("toString");
@@ -1566,6 +1564,7 @@ public class AdVocAsStimuliProviderTest {
         
         
         assertEquals(provider.getCurrentBandNumber(), freshProvider.getCurrentBandNumber());
+        assertEquals(provider.getBandScore(), freshProvider.getBandScore());
         assertEquals(provider.getHtmlStimuliReport(), freshProvider.getHtmlStimuliReport());
 
         ArrayList<Integer> resultNonWordIndices = freshProvider.getNonWordsIndices();

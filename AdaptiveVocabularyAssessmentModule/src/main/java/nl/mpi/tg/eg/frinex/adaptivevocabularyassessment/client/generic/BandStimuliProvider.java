@@ -37,7 +37,7 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 public abstract class BandStimuliProvider<A extends BandStimulus> extends AbstractStimuliProvider {
 
     protected final static String[] FLDS = {"type", "numberOfBands", "numberOfSeries", "startBand", "fineTuningTupleLength", "fineTuningUpperBoundForCycles", "fastTrackPresent", "fineTuningFirstWrongOut", ""
-            + "bandScore", "percentageScore", "isCorrectCurrentResponse", "currentBandIndex", "totalStimuli", ""
+            + "bandScore", "isCorrectCurrentResponse", "currentBandIndex", "totalStimuli", ""
             + "responseRecord", "tupleFT", ""
             + "bestBandFastTrack", "isFastTrackIsStillOn", "secondChanceFastTrackIsFired", "timeTickEndFastTrack", ""
             + "enoughFineTuningStimulae", "bandVisitCounter", "cycle2helper", ""
@@ -53,8 +53,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected boolean fastTrackPresent = true;
     protected boolean fineTuningFirstWrongOut = true;
 
-    protected int bandScore = -1;
-    protected long percentageScore = 0;
+    protected int bandScore = 0;
     protected Boolean isCorrectCurrentResponse;
     protected int currentBandIndex = 0;
     protected int totalStimuli=0;
@@ -64,10 +63,10 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected LinkedHashMap<Long, Integer> percentageBandTable;
 
     // fast track stuff
-    private int bestBandFastTrack = -1;
+    private int bestBandFastTrack = 0;
     protected boolean isFastTrackIsStillOn = true;
     protected boolean secondChanceFastTrackIsFired = false;
-    protected int timeTickEndFastTrack = -1;
+    protected int timeTickEndFastTrack = 0;
 
     // fine tuning stuff
     protected ArrayList<BookkeepingStimulus<A>> tupleFT = new ArrayList<>(this.fineTuningTupleLength);
@@ -187,8 +186,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     public void initialiseStimuliState(String stimuliStateSnapshot) {
 
         if (stimuliStateSnapshot.trim().isEmpty()) {
-            this.bandScore = -1;
-            this.percentageScore = 0;
+            this.bandScore = 0;
             this.isCorrectCurrentResponse = null;
             this.currentBandIndex = this.startBand - 1;
             this.bandVisitCounter = new Integer[this.numberOfBands];
@@ -279,10 +277,8 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     }
 
     public long getPercentageScore() {
-        if (this.percentageScore <= 0) { // not computed yet
-            this.percentageScore = this.bandNumberIntoPercentage(this.bandScore);
-        }
-        return this.percentageScore;
+        long percentageScore = this.bandNumberIntoPercentage(this.bandScore);
+        return percentageScore;
     }
 
     public ArrayList<BookkeepingStimulus<A>> getFTtuple() {
@@ -805,8 +801,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         map.put("fastTrackPresent", this.fastTrackPresent);
         map.put("fineTuningFirstWrongOut", this.fineTuningFirstWrongOut);
         
-        map.put("bandScore", this.type);
-        map.put("percentageScore", this.percentageScore);
+        map.put("bandScore", this.bandScore);
         map.put("isCorrectCurrentResponse", this.isCorrectCurrentResponse);
         map.put("currentBandIndex", this.currentBandIndex);
         map.put("totalStimuli", this.totalStimuli);
@@ -862,7 +857,6 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         this.fineTuningFirstWrongOut = Boolean.parseBoolean(wrongOutStr);
 
         this.bandScore = Integer.parseInt(map.get("bandScore").toString());
-        this.percentageScore = Long.parseLong(map.get("percentageScore").toString());
 
         Object correctResponse = map.get("isCorrectCurrentResponse");
 

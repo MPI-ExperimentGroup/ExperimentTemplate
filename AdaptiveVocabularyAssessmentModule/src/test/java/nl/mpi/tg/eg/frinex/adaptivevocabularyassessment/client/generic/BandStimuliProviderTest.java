@@ -247,7 +247,7 @@ public class BandStimuliProviderTest {
 //            this.looser = false;
 //            this.justVisitedLastBand = false;
 //            this.percentageBandTable = this.generatePercentageBandTable();
-        assertEquals(-1, this.instance.getBandScore());
+        assertEquals(0, this.instance.getBandScore());
         assertEquals(19, this.instance.getCurrentBandIndex());
         assertTrue(this.instance.getEnoughFinetuningStimuli());
         assertTrue(this.instance.getnumberOfBands() == this.instance.getbandVisitCounter().length);
@@ -370,7 +370,7 @@ public class BandStimuliProviderTest {
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         int result = instance.getBestFastTrackBand();
-        assertEquals(-1, result);
+        assertEquals(0, result);
     }
 
     /**
@@ -390,7 +390,7 @@ public class BandStimuliProviderTest {
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         int result = instance.getBandScore();
-        assertEquals(-1, result);
+        assertEquals(0, result);
     }
 
     /**
@@ -449,7 +449,7 @@ public class BandStimuliProviderTest {
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         int result = instance.getEndFastTrackTimeTick();
-        assertEquals(-1, result);
+        assertEquals(0, result);
     }
 
     /**
@@ -811,12 +811,12 @@ public class BandStimuliProviderTest {
         String startColumn = "";
         String endColumn = ";";
         String result = this.instance.getStringSummary(startRow, endRow, startColumn, endColumn);
-        String expResult = "Score;BestFastTrack;Cycel2oscillation;EnoughFineTuningStimuli;Champion;Looser;\n-1;-1;false;true;false;false;\n";
+        String expResult = "Score;BestFastTrack;Cycel2oscillation;EnoughFineTuningStimuli;Champion;Looser;\n0;0;false;true;false;false;\n";
         assertEquals(expResult,result);
         
         this.instance.setfastTrackPresent("false");
         String result2 = this.instance.getStringSummary(startRow, endRow, startColumn, endColumn);
-        String expResult2 = "Score;Cycel2oscillation;EnoughFineTuningStimuli;Champion;Looser;\n-1;false;true;false;false;\n";
+        String expResult2 = "Score;Cycel2oscillation;EnoughFineTuningStimuli;Champion;Looser;\n0;false;true;false;false;\n";
         assertEquals(expResult2,result2);
     }
 
@@ -836,9 +836,9 @@ public class BandStimuliProviderTest {
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         String expResult="{type=0, numberOfBands=40, numberOfSeries=2, startBand=20, fineTuningTupleLength=4, fineTuningUpperBoundForCycles=2, fastTrackPresent=true, "
-                + "fineTuningFirstWrongOut=false, bandScore=0, percentageScore=0, isCorrectCurrentResponse=null, currentBandIndex=19, totalStimuli=0, responseRecord=[], "
+                + "fineTuningFirstWrongOut=false, bandScore=0, isCorrectCurrentResponse=null, currentBandIndex=19, totalStimuli=0, responseRecord=[], "
                 + "percentageBandTable={1=0, 10=4, 20=8, 30=12, 40=16, 50=20, 60=24, 70=28, 80=32, 90=36, 99=40}, tupleFT=[], "
-                + "bestBandFastTrack=-1, isFastTrackIsStillOn=true, secondChanceFastTrackIsFired=false, timeTickEndFastTrack=-1,"
+                + "bestBandFastTrack=0, isFastTrackIsStillOn=true, secondChanceFastTrackIsFired=false, timeTickEndFastTrack=0,"
                 + " enoughFineTuningStimulae=true, "
                 + "bandVisitCounter=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "
                 + "cycle2helper=[0, 0, 0, 0, 0], "

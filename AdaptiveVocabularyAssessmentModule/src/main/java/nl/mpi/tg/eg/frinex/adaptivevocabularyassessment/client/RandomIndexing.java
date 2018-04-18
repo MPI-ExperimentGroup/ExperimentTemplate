@@ -33,7 +33,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSON
  */
 public class RandomIndexing {
 
-    private static final String[] FLDS = {"fastTrackSequenceLength","averageNonwordPosition","nonwordsPerBlock","numberOfNonwords","numberOfWords","randomIndices","frequences"};
+    private static final String[] FLDS = {"fastTrackSequenceLength", "averageNonwordPosition", "nonwordsPerBlock", "numberOfNonwords", "numberOfWords", "randomIndices", "frequences"};
 
     private int fastTrackSequenceLength; //  N
     private final int averageNonwordPosition; // n
@@ -161,7 +161,7 @@ public class RandomIndexing {
         int nonwordsCounter;
         for (int i = 0; i < this.fastTrackSequenceLength; i++) {
             nonwordsCounter = amountOfSelectedIndecesBetween(0, i);
-            retVal.add(i,((double) nonwordsCounter) / ((double) (i + 1)));
+            retVal.add(i, ((double) nonwordsCounter) / ((double) (i + 1)));
         }
         return retVal;
     }
@@ -211,8 +211,17 @@ public class RandomIndexing {
         map.put("nonwordsPerBlock", this.nonwordsPerBlock);
         map.put("numberOfNonwords", this.numberOfNonwords);
         map.put("numberOfWords", this.numberOfWords);
-        map.put("randomIndices", this.randomIndices);
-        map.put("frequences", this.frequences.toString());
+        if (this.randomIndices == null) {
+            map.put("randomIndices", null);
+        } else {
+            map.put("randomIndices", this.randomIndices);
+        
+        }
+        if (this.frequences == null) {
+            map.put("frequences", null);
+        } else {
+            map.put("frequences", this.frequences);
+        }
         return map.toString();
 
     }

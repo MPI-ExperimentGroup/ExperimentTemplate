@@ -29,7 +29,7 @@ import org.junit.runners.Suite;
  * @author olhshk
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.RandomIndexingTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.MainTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.ServiceSuite.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.GenericSuite.class})
+@Suite.SuiteClasses({nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.RandomIndexingTest.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.ServiceSuite.class, nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.GenericSuite.class})
 public class ClientSuite {
 
     @BeforeClass

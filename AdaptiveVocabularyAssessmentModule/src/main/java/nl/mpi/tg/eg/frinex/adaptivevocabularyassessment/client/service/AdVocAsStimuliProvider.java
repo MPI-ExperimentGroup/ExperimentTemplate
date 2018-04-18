@@ -45,7 +45,8 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  */
 public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus> {
 
-    private final static String[] SPECIFIC_FLDS = {"rndIndexing", "nonWordsIndexes", "wordsPerBand", "wordsPerBandInSeries", "nonWordsPerBlock", "averageNonWordPosition", "responseRecord", "tupleFT"};
+    private final static String[] SPECIFIC_FLDS = {"rndIndexing", "nonWordsIndexes", "wordsPerBand", "wordsPerBandInSeries", "nonWordsPerBlock", 
+        "averageNonWordPosition", "responseRecord", "tupleFT", "words", "nonwords"};
     private RandomIndexing rndIndexing;
     private ArrayList<Integer> nonWordsIndexes;
     private int wordsPerBand;
@@ -68,7 +69,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         super.initialiseStimuliState(stimuliStateSnapshot);
 
         // specific part
-        if (stimuliStateSnapshot.trim().isEmpty()) { 
+        if (stimuliStateSnapshot.trim().isEmpty()) {
 
             this.wordsPerBandInSeries = this.wordsPerBand / this.numberOfSeries;
             Vocabulary vocab = new Vocabulary(this.numberOfBands, this.wordsPerBandInSeries);
@@ -100,7 +101,9 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
                 this.deserialiseSpecific(stimuliStateSnapshot);
                 this.rnd = new Random();
             } catch (Exception ex) {
-                System.out.println(ex);
+                System.out.println();
+                System.out.println(Arrays.asList(ex.getStackTrace()));
+                System.out.println();
             }
         }
     }
@@ -295,7 +298,8 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         stringBuilder.append(startColumn).append("NonwordsFrequencyAtThisPoint").append(endColumn);
         stringBuilder.append(endRow);
         int nonwordCounter = 0;
-        for (int i = 0; i <= this.timeTickEndFastTrack; i++) {
+        int limit = (this.responseRecord.isEmpty())  ? -1 : this.timeTickEndFastTrack;
+        for (int i = 0; i <= limit; i++) {
             BookkeepingStimulus<AdVocAsStimulus> stimulus = this.responseRecord.get(i);
             Integer bandNumber = stimulus.getStimulus().getBandNumber();
             if (bandNumber < 0) {
@@ -580,9 +584,9 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         map.put("nonWordsPerBlock", this.nonWordsPerBlock);
         map.put("averageNonWordPosition", this.averageNonWordPosition);
         map.put("rndIndexing", this.rndIndexing);
-        map.put("nonWordsIndexes", this.nonWordsIndexes.toString());
-        map.put("words", this.words.toString());
-        map.put("nonwords", this.nonwords.toString());
+        map.put("nonWordsIndexes", this.nonWordsIndexes);
+        map.put("words", this.words);
+        map.put("nonwords", this.nonwords);
         return map.toString();
     }
 
@@ -600,26 +604,29 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         this.wordsPerBandInSeries = Integer.parseInt(map.get("wordsPerBandInSeries").toString());
         this.nonWordsPerBlock = Integer.parseInt(map.get("nonWordsPerBlock").toString());
         this.averageNonWordPosition = Integer.parseInt(map.get("averageNonWordPosition").toString());
-        
+
         // reinitialise vocabulary
-         Vocabulary vocab = new Vocabulary(this.numberOfBands, this.wordsPerBandInSeries);
-         LinkedHashMap <String, AdVocAsStimulus> hashedStimuli;
-          if (this.numberOfSeries == 2) {
-                hashedStimuli = vocab.hashStimuli(ConstantsWords2.WORDS_SERIES[type], ConstantsNonWords2.NONWORDS_SERIES[type]);
-            } else {
-                hashedStimuli = vocab.hashStimuli(ConstantsWords2.WORDS_SERIES[0], ConstantsNonWords2.NONWORDS_SERIES[0]);
-            }
-            
-        
+        Vocabulary vocab = new Vocabulary(this.numberOfBands, this.wordsPerBandInSeries);
+        LinkedHashMap<String, AdVocAsStimulus> hashedStimuli;
+        if (this.numberOfSeries == 2) {
+            hashedStimuli = vocab.hashStimuli(ConstantsWords2.WORDS_SERIES[type], ConstantsNonWords2.NONWORDS_SERIES[type]);
+        } else {
+            hashedStimuli = vocab.hashStimuli(ConstantsWords1.WORDS_SERIES[0], ConstantsNonWords1.NONWORDS_SERIES[0]);
+        }
+
         BookkeepingStimulus<AdVocAsStimulus> ghost = new BookkeepingStimulus<AdVocAsStimulus>(null);
         Object recordObj = map.get("responseRecord");
         this.responseRecord = new ArrayList<BookkeepingStimulus<AdVocAsStimulus>>();
         if (recordObj != null) {
             List<Object> objs = (List<Object>) recordObj;
             for (int i = 0; i < objs.size(); i++) {
-                Map<String, Object> currentObj = (Map<String, Object>) objs.get(i);
-                BookkeepingStimulus<AdVocAsStimulus> bStimulus = ghost.toBookkeepingStimulusObject(currentObj, hashedStimuli);
-                this.responseRecord.add(i, bStimulus);
+                if (objs.get(i) != null) {
+                    Map<String, Object> currentObj = (Map<String, Object>) objs.get(i);
+                    BookkeepingStimulus<AdVocAsStimulus> bStimulus = ghost.toBookkeepingStimulusObject(currentObj, hashedStimuli);
+                    this.responseRecord.add(i, bStimulus);
+                } else {
+                    throw new Exception("Serialised bookeeping stimuli object happen to be null :( ");
+                }
             }
         }
 
@@ -633,8 +640,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
                 this.responseRecord.add(i, bStimulus);
             }
         }
-    
-            
+
         List<Object> nonWordsObj = (List<Object>) map.get("nonwords");
         this.nonwords = new ArrayList<AdVocAsStimulus>(nonWordsObj.size());
         for (Object object : nonWordsObj) {
