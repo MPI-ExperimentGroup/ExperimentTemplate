@@ -90,6 +90,9 @@ public class SentenceCompletion {
             }
             final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen(stimuliData.getStimuliName(), false, stimuliData.getStimuliArray(),
                     stimuliData.getRandomStimuliTags(), 1000, true, null, 0, 0, null, null, null, null, "Volgende [tab + enter]");
+            if ("horizontal".equals(stimuliData.getStimuliLayout())) {
+                list1234Screen.setTableLayout(true);
+            }
             if (stimuliData.getRatingLabels() != null) {
                 list1234Screen.getWizardScreenData().setStimulusResponseOptions(stimuliData.getRatingLabels());
             } else {
@@ -104,7 +107,7 @@ public class SentenceCompletion {
             list1234Screen.getWizardScreenData().setStimulusResponseLabelRight("");
             list1234Screen.setRandomStimuliTagsField("item");
             list1234Screen.setStimuliLabelStyle(stimuliData.getStimuliLabelStyle());
-            list1234Screen.setAllowHotkeyButtons(false);
+            list1234Screen.setHotkeyButton(stimuliData.getStimuliHotKey());
             if (wizardUtilData.isShowProgress()) {
                 list1234Screen.setShowProgress(true);
             }
