@@ -26,6 +26,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimuliProvider;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
@@ -59,9 +60,11 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     private ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> trials; // shared between various permutation-pairs, reduced while it is used
 
     AudioStimuliFromString reader = new AudioStimuliFromString();
+    
     // to be serialised
     private ArrayList<ArrayList<PermutationPair>> availableCombinations; // x[i] is the list of permutations with non-empty possibilities to instantiate them using trials matrix of unused trials
     private TrialTuple currentTrialTuple;
+    
 
     public AudioAsStimuliProvider(Stimulus[] stimulusArray) {
         super(stimulusArray);
@@ -183,6 +186,10 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
     @Override
     public String getStringFineTuningHistory(String startRow, String endRow, String startColumn, String endColumn, String format) {
+        
+        LinkedHashMap<String, Integer> stimuliTrialIndex = this.reader.getStimuliTrialIndex();
+        LinkedHashMap<Integer, Trial> trialIndex = this.reader.getHashedTrials();
+        
         int bandOffset = 5;
         StringBuilder empty = new StringBuilder();
         empty.append(startColumn).append(" ").append(endColumn);
@@ -194,9 +201,12 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(startRow);
-        stringBuilder.append(startColumn).append("BandIndex").append(endColumn);
         stringBuilder.append(startColumn).append("BandLabel").append(endColumn);
-        stringBuilder.append(startColumn).append("Label").append(endColumn);
+        stringBuilder.append(startColumn).append("# trial").append(endColumn);
+        stringBuilder.append(startColumn).append("Trial ID").append(endColumn);
+        stringBuilder.append(startColumn).append("Trial type").append(endColumn);
+        stringBuilder.append(startColumn).append("Trial length").append(endColumn);
+        stringBuilder.append(startColumn).append("Stimulus Label").append(endColumn);
         stringBuilder.append(startColumn).append("StimulusType").append(endColumn);
         stringBuilder.append(startColumn).append("UserAnswer").append(endColumn);
         stringBuilder.append(startColumn).append("IsAnswerCorrect").append(endColumn);
@@ -205,7 +215,8 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         stringBuilder.append(endRow);
         
         ArrayList<String> spellingsCheck = new ArrayList<>();
-        
+        Integer previousTrialID = null;
+        int trialSequenceNumber = 0;
         for (int i = 0; i < this.responseRecord.size(); i++) {
             BookkeepingStimulus<AudioAsStimulus> bStimulus = this.responseRecord.get(i);
             if (bStimulus == null) { // trial tuple border
@@ -217,8 +228,22 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             AudioAsStimulus stimulus = bStimulus.getStimulus();
             StringBuilder row = new StringBuilder();
             String time = (new Date(bStimulus.getTimeStamp())).toString();
-            row.append(startColumn).append(stimulus.getbandIndex() - bandOffset).append(endColumn);
+            
             row.append(startColumn).append(stimulus.getbandLabel()).append(endColumn);
+            
+            Integer trialID = stimuliTrialIndex.get(stimulus.getUniqueId());
+            if (!trialID.equals(previousTrialID)) {
+                trialSequenceNumber++;
+            }
+            previousTrialID = trialID;
+            
+            Trial trial = trialIndex.get(trialID);
+            
+            row.append(startColumn).append(trialSequenceNumber).append(endColumn);
+            row.append(startColumn).append(trialID).append(endColumn);
+            row.append(startColumn).append(trial.getCondition()).append(endColumn);
+            row.append(startColumn).append(trial.getTrialLength()).append(endColumn);
+            
             row.append(startColumn).append(stimulus.getLabel()).append(endColumn);
             row.append(startColumn).append(stimulus.getwordType()).append(endColumn);
             row.append(startColumn).append(bStimulus.getReaction()).append(endColumn);
@@ -260,6 +285,9 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         TrialTuple retVal = new TrialTuple(trs);
         return retVal;
     }
+    
+   
+    
 
     @Override
     public String toString() {

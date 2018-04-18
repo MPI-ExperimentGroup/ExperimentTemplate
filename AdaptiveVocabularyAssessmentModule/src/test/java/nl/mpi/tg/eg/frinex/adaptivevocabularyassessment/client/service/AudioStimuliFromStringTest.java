@@ -17,9 +17,11 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
+import java.util.ArrayList;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopool.AudioStimuliFromString;
 import java.util.LinkedHashMap;
 import java.util.Set;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioAsStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Trial;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialCondition;
@@ -36,29 +38,26 @@ import static org.junit.Assert.*;
  * @author olhshk
  */
 public class AudioStimuliFromStringTest {
-    
-    
-    
+
     public AudioStimuliFromStringTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
-   
     /**
      * Test of readTrialsAsCsv method, of class AudioStimuliFromString.
      */
@@ -70,67 +69,64 @@ public class AudioStimuliFromStringTest {
         LinkedHashMap<Integer, Trial> trials = instance.getHashedTrials();
         Set<Integer> keys = trials.keySet();
         assertEquals(2156, trials.size());
-        for (Integer i:keys) {
-            
+        for (Integer i : keys) {
+
             Trial trial = trials.get(i);
             assertEquals(i, new Integer(trial.getId()));
-            assertEquals(trial.getTrialLength()+1, trial.getStimuli().size());
-            
+            assertEquals(trial.getTrialLength() + 1, trial.getStimuli().size());
+
             AudioAsStimulus cue = trial.getStimuli().get(0).getStimulus();
             assertEquals(WordType.EXAMPLE_TARGET_NON_WORD, cue.getwordType());
             assertFalse(cue.hasRatingLabels());
-            
-            
+
             // checking non-cue stimuli
-            for (int j=1; j<trial.getStimuli().size(); j++ ) {
+            for (int j = 1; j < trial.getStimuli().size(); j++) {
                 assertTrue(trial.getStimuli().get(j).getStimulus().hasRatingLabels());
             }
-            
-            if(trial.getPositionTarget()>0) {
-              AudioAsStimulus target = trial.getStimuli().get(trial.getPositionTarget()).getStimulus();  
-              String[] bufExp = cue.getLabel().split("_");
-              String expectedLabel = bufExp[0];
-              String[] bufLabel = target.getLabel().split("_");
-              String label = bufLabel[0];
-              assertEquals("Trial number "+(new Integer(i+1)).toString(), expectedLabel, label);
+
+            if (trial.getPositionTarget() > 0) {
+                AudioAsStimulus target = trial.getStimuli().get(trial.getPositionTarget()).getStimulus();
+                String[] bufExp = cue.getLabel().split("_");
+                String expectedLabel = bufExp[0];
+                String[] bufLabel = target.getLabel().split("_");
+                String label = bufLabel[0];
+                assertEquals("Trial number " + (new Integer(i + 1)).toString(), expectedLabel, label);
             }
-                    
+
             if (trial.getCondition() == TrialCondition.TARGET_AND_FOIL) {
-                assertTrue(trial.getPositionFoil()>0);
-                assertTrue(trial.getPositionTarget()>0);
+                assertTrue(trial.getPositionFoil() > 0);
+                assertTrue(trial.getPositionTarget() > 0);
             }
-            if (trial.getPositionFoil()>0 && trial.getPositionTarget()>0) {
-               assertEquals(TrialCondition.TARGET_AND_FOIL,trial.getCondition()); 
+            if (trial.getPositionFoil() > 0 && trial.getPositionTarget() > 0) {
+                assertEquals(TrialCondition.TARGET_AND_FOIL, trial.getCondition());
             }
-            
+
             if (trial.getCondition() == TrialCondition.NO_TARGET) {
-                assertTrue(trial.getPositionTarget()==0);
-                assertTrue(trial.getPositionFoil()==0);
+                assertTrue(trial.getPositionTarget() == 0);
+                assertTrue(trial.getPositionFoil() == 0);
             }
-            if (trial.getPositionTarget()==0) {
-               assertEquals(trial.getCondition(),TrialCondition.NO_TARGET); 
+            if (trial.getPositionTarget() == 0) {
+                assertEquals(trial.getCondition(), TrialCondition.NO_TARGET);
             }
-            
+
             if (trial.getCondition() == TrialCondition.TARGET_ONLY) {
-                assertTrue(trial.getPositionTarget()>0);
-                assertTrue(trial.getPositionFoil()==0);
+                assertTrue(trial.getPositionTarget() > 0);
+                assertTrue(trial.getPositionFoil() == 0);
             }
-            if (trial.getPositionTarget()>0 && trial.getPositionFoil()==0) {
-               assertEquals(trial.getCondition(),TrialCondition.TARGET_ONLY); 
+            if (trial.getPositionTarget() > 0 && trial.getPositionFoil() == 0) {
+                assertEquals(trial.getCondition(), TrialCondition.TARGET_ONLY);
             }
-            
-            for (int j=0; j<trial.getStimuli().size(); j++){
+
+            for (int j = 0; j < trial.getStimuli().size(); j++) {
                 AudioAsStimulus stimulus = trial.getStimuli().get(j).getStimulus();
-                assertEquals(trial.getBandIndex(),stimulus.getbandIndex());
-                assertEquals(trial.getBandLabel(),stimulus.getbandLabel());
+                assertEquals(trial.getBandIndex(), stimulus.getbandIndex());
+                assertEquals(trial.getBandLabel(), stimulus.getbandLabel());
             }
-            
-            
-            
+
         }
-        
+
         // "1;vloer;smoer_1.wav;1;Target-only;3 words;deebral.wav;smoer_2.wav;wijp.wav;;;;2;plus10db;0;";
-        Trial trial1= trials.get(1);
+        Trial trial1 = trials.get(1);
         assertEquals("vloer", trial1.getWord());
         assertEquals("smoer_1", trial1.getTargetNonWord());
         assertEquals(1, trial1.getNumberOfSyllables());
@@ -144,9 +140,9 @@ public class AudioStimuliFromStringTest {
         assertEquals("plus10db", trial1.getBandLabel());
         assertEquals(0, trial1.getBandIndex());
         assertEquals(0, trial1.getPositionFoil());
-        
+
         // "1683;hand;kem_1.wav;1;Target+Foil;5 words;guil.wav;kedlim.wav;sorbuin.wav;kem_2.wav;vep.wav;;4;min6db;2;";
-        Trial trial2= trials.get(1683);
+        Trial trial2 = trials.get(1683);
         assertEquals("hand", trial2.getWord());
         assertEquals("kem_1", trial2.getTargetNonWord());
         assertEquals(1, trial2.getNumberOfSyllables());
@@ -162,9 +158,9 @@ public class AudioStimuliFromStringTest {
         assertEquals("min6db", trial2.getBandLabel());
         assertEquals(8, trial2.getBandIndex());
         assertEquals(2, trial2.getPositionFoil());
-        
+
         // "2156;wol;pra.wav;1;NoTarget;6 words;reuwel.wav;wog.wav;consmilp.wav;leskert.wav;mels.wav;dwaat.wav;0;min10db;0;";
-        Trial trial3= trials.get(2156);
+        Trial trial3 = trials.get(2156);
         assertEquals("wol", trial3.getWord());
         assertEquals("pra", trial3.getTargetNonWord());
         assertEquals(1, trial3.getNumberOfSyllables());
@@ -182,5 +178,45 @@ public class AudioStimuliFromStringTest {
         assertEquals(10, trial3.getBandIndex());
         assertEquals(0, trial3.getPositionFoil());;
     }
-    
+
+    @Test
+    public void testGetStimuliTrialIndex() {
+
+        AudioStimuliFromString instance = new AudioStimuliFromString();
+        instance.readTrialsAsCsv(AudioAsStimuliProvider.LABELLING);
+        LinkedHashMap<Integer, Trial> trials = instance.getHashedTrials();
+        LinkedHashMap<String, Integer> stimuliTrialReference = instance.getStimuliTrialIndex();
+
+        // soundness: a given stimulus is indeed in the declared by the reference trial
+        Set<String> stimuliIDs = stimuliTrialReference.keySet();
+        for (String stimulusID : stimuliIDs) {
+            Integer trialID = stimuliTrialReference.get(stimulusID);
+            Trial trial = trials.get(trialID);
+            assertTrue(this.trialContainsStimulus(trial, stimulusID));
+        }
+
+        // completeness: for every stimulus there is a position in the reference
+        Set<Integer> trialIDs = trials.keySet();
+        for (Integer trialID : trialIDs) {
+            Trial trial = trials.get(trialID);
+            ArrayList<BookkeepingStimulus<AudioAsStimulus>> bStimuli = trial.getStimuli();
+            for (BookkeepingStimulus<AudioAsStimulus> bStimulus : bStimuli) {
+                String stimulusID = bStimulus.getStimulus().getUniqueId();
+                assertTrue(stimuliIDs.contains(stimulusID));
+            }
+        }
+
+    }
+
+    private boolean trialContainsStimulus(Trial trial, String stimulusID) {
+        ArrayList<BookkeepingStimulus<AudioAsStimulus>> bStimuli = trial.getStimuli();
+        for (BookkeepingStimulus<AudioAsStimulus> bStimulus : bStimuli) {
+            String currentStimulusID = bStimulus.getStimulus().getUniqueId();
+            if (currentStimulusID.equals(stimulusID)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

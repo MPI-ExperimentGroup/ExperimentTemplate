@@ -35,8 +35,9 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag;
  */
 public class AudioStimuliFromString {
 
-    private LinkedHashMap<String, AudioAsStimulus> hashedStimuli = new LinkedHashMap<String, AudioAsStimulus>();
+    private final LinkedHashMap<String, AudioAsStimulus> hashedStimuli = new LinkedHashMap<String, AudioAsStimulus>();
     private LinkedHashMap<Integer, Trial> trials = new LinkedHashMap<Integer, Trial>();
+    private LinkedHashMap<String, Integer> stimuliTrialIndex = new LinkedHashMap<String, Integer>();
 
     private String audiPathDir = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/audioas2/stimuli/";
 
@@ -70,6 +71,9 @@ public class AudioStimuliFromString {
             if (trialNumber == null) {
                 throw new IOException(trialNumber + "is undefined");
             }
+            
+            Integer trialID = Integer.parseInt(trialNumber);
+                
 
             String trialWord = record.get("Word").trim();
             if (trialWord == null) {
@@ -170,6 +174,8 @@ public class AudioStimuliFromString {
                 String uniqueId = wrd + "_" +wordType + suffix;
                 AudioAsStimulus stimulus =new AudioAsStimulus(uniqueId, new Tag[0], wrd, "", pauseMs, audioPath, null, null, ratingLabels, "", bandLabel, bandIndex, wordType, i);
                 this.hashedStimuli.put(uniqueId, stimulus);
+                
+                this.stimuliTrialIndex.put(uniqueId, trialID);
 
                 BookkeepingStimulus<AudioAsStimulus> bStimulus = new BookkeepingStimulus<AudioAsStimulus>(stimulus);
                 stimuli.add(bStimulus);
@@ -216,7 +222,7 @@ public class AudioStimuliFromString {
             }
 
             //public Trial(int id, String word, String cueFile, int nOfSyllables, TrialCondition condition, int length, String bandLabel, int bandIndex, ArrayList<BookkeepingStimulus<AudioAsStimulus>> stimuli) throws Exception{
-            Trial nextTrial = new Trial(Integer.parseInt(trialNumber), trialWord, removeFileNameExtensions(trialTargetNonword, fileNameExtensions), Integer.parseInt(trialSyllables), tc,
+            Trial nextTrial = new Trial(trialID, trialWord, removeFileNameExtensions(trialTargetNonword, fileNameExtensions), Integer.parseInt(trialSyllables), tc,
                     Integer.parseInt(trialLength), bandLabel, bandIndex,
                     Integer.parseInt(trialPositionTarget), Integer.parseInt(trialPositionFoil), stimuli);
             retVal.put(nextTrial.getId(), nextTrial);
@@ -260,5 +266,9 @@ public class AudioStimuliFromString {
 
     public LinkedHashMap<Integer, Trial> getHashedTrials() {
         return this.trials;
+    }
+    
+    public LinkedHashMap<String, Integer> getStimuliTrialIndex() {
+        return this.stimuliTrialIndex;
     }
 }
