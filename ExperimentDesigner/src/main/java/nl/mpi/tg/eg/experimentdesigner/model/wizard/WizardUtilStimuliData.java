@@ -25,6 +25,7 @@ public class WizardUtilStimuliData {
 
     protected String stimuliName;
     protected String instructions = null;
+    protected String[] stimuliCodes; // todo: implement the use of stimuliCodes for image screens
     protected String[] stimuliArray;
     protected String[] randomStimuliTags;
     protected String ratingLabels = null;
@@ -113,6 +114,14 @@ public class WizardUtilStimuliData {
 
     public void setStimuliArray(String[] stimuliArray) {
         this.stimuliArray = stimuliArray;
+    }
+
+    public String[] getStimuliCodes() {
+        return stimuliCodes;
+    }
+
+    public void setStimuliCodes(String[] stimuliCodes) {
+        this.stimuliCodes = stimuliCodes;
     }
 
     public String[] getRandomStimuliTags() {
