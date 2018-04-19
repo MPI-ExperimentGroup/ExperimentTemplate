@@ -29,7 +29,7 @@ import org.junit.runners.Suite;
  * @author olhshk
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({utils.AudioStimuliFromFilesTest.class, utils.UtilsIOTest.class, utils.VocabularyFromFilesTest.class})
+@Suite.SuiteClasses({utils.AudioStimuliFromFilesTest.class, utils.VocabularyFromFilesTest.class})
 public class UtilsSuite {
 
     @BeforeClass

@@ -106,5 +106,4 @@ public class VocabularyFromFilesTest {
         System.out.println(stBuilder);
     }
 
-
 }

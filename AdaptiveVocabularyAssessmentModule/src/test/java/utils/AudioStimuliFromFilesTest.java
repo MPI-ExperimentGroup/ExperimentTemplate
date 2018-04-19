@@ -23,6 +23,7 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
+import org.junit.Test;
 
 /**
  *
@@ -57,6 +58,7 @@ public class AudioStimuliFromFilesTest {
      * Test of parseInputCSVIntoStringArray method, of class AudioStimuliFromFiles.
      */
     @Ignore
+    @Test
     public void testParseInputCSVIntoStringArray() throws Exception {
         System.out.println("parseInputCSVIntoStringArray");
         AudioStimuliFromFiles instance = new AudioStimuliFromFiles();
