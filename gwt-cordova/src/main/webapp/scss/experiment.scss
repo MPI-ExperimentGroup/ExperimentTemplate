@@ -706,6 +706,14 @@ table.gridCell:hover, td.gridCell:hover {
     min-height: 300px;
     zoom: $gridCellZoom;
 }
+
+.centeredVerticalHorizontal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .gwt-HTML, .resultsTablePanel, .metadataTable, .menuTable, .gwt-CheckBox, .pageLink {
 }
 .resultsTableTitle {
