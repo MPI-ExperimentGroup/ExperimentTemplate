@@ -120,6 +120,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        debugLabel.setStyleName("debugLabel");
 //        new Timer() {
 //            public void run() {
+//                todo: verify that these are cleared correctly: domHandlerArray scaledImagesList
 //                final String debugString = "BEL:" + backEventListners.size() + "PT:" + pauseTimers.size() + "NB:" + nextButtonEventListnerList.size() + "FT:" + stimulusFreeTextList.size() + "TL:" + triggerListeners.size() + "BL:" + buttonList.size();
 //                debugLabel.setText(debugString);
 //                ((TimedStimulusView) simpleView).addWidget(debugLabel);
@@ -425,46 +426,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
         };
         labelTimer.schedule(500);
-    }
-
-    protected void table(final TimedStimulusListener timedStimulusListener) {
-        table(null, timedStimulusListener);
-    }
-
-    protected void table(final String styleName, final TimedStimulusListener timedStimulusListener) {
-        table(styleName, false, timedStimulusListener);
-    }
-
-    protected void table(final String styleName, boolean showOnBackButton, final TimedStimulusListener timedStimulusListener) {
-        final Widget tableWidget = ((TimedStimulusView) simpleView).startTable(styleName);
-        timedStimulusListener.postLoadTimerFired();
-        ((TimedStimulusView) simpleView).endTable();
-        if (showOnBackButton) {
-            tableWidget.setVisible(false);
-            // todo: backEventListners list should be emptied on screen clear etc
-            backEventListners.add(new TimedStimulusListener() {
-                @Override
-                public void postLoadTimerFired() {
-                    tableWidget.setVisible(!tableWidget.isVisible());
-                }
-            });
-        }
-    }
-
-    protected void row(final TimedStimulusListener timedStimulusListener) {
-        ((TimedStimulusView) simpleView).startRow();
-        timedStimulusListener.postLoadTimerFired();
-        ((TimedStimulusView) simpleView).endRow();
-    }
-
-    protected void column(final TimedStimulusListener timedStimulusListener) {
-        column(null, timedStimulusListener);
-    }
-
-    protected void column(final String styleName, final TimedStimulusListener timedStimulusListener) {
-        ((TimedStimulusView) simpleView).startCell(styleName);
-        timedStimulusListener.postLoadTimerFired();
-        ((TimedStimulusView) simpleView).endCell();
     }
 
     protected void pause(int postLoadMs, final TimedStimulusListener timedStimulusListener) {

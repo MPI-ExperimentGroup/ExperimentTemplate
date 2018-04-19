@@ -22,6 +22,7 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import com.google.gwt.user.client.ui.Widget;
 import java.util.ArrayList;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
@@ -164,6 +165,46 @@ public abstract class AbstractPresenter implements Presenter {
 
     public void optionButton(final PresenterEventListner presenterListerner, String styleName) {
         ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName);
+    }
+
+    protected void table(final TimedStimulusListener timedStimulusListener) {
+        table(null, timedStimulusListener);
+    }
+
+    protected void table(final String styleName, final TimedStimulusListener timedStimulusListener) {
+        table(styleName, false, timedStimulusListener);
+    }
+
+    protected void table(final String styleName, boolean showOnBackButton, final TimedStimulusListener timedStimulusListener) {
+        final Widget tableWidget = ((ComplexView) simpleView).startTable(styleName);
+        timedStimulusListener.postLoadTimerFired();
+        ((ComplexView) simpleView).endTable();
+        if (showOnBackButton) {
+            tableWidget.setVisible(false);
+            // todo: backEventListners list should be emptied on screen clear etc
+            backEventListners.add(new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+                    tableWidget.setVisible(!tableWidget.isVisible());
+                }
+            });
+        }
+    }
+
+    protected void row(final TimedStimulusListener timedStimulusListener) {
+        ((ComplexView) simpleView).startRow();
+        timedStimulusListener.postLoadTimerFired();
+        ((ComplexView) simpleView).endRow();
+    }
+
+    protected void column(final TimedStimulusListener timedStimulusListener) {
+        column(null, timedStimulusListener);
+    }
+
+    protected void column(final String styleName, final TimedStimulusListener timedStimulusListener) {
+        ((ComplexView) simpleView).startCell(styleName);
+        timedStimulusListener.postLoadTimerFired();
+        ((ComplexView) simpleView).endCell();
     }
 
     @Override
