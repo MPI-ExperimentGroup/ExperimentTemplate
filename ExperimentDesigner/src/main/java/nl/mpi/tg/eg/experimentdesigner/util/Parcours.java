@@ -497,13 +497,18 @@ public class Parcours extends WizardUtilData {
     }
 
     @Override
-    public WizardUtilEnum getWizardUtilEnum() {
+    public WizardUtilEnum getTemplateType() {
         return WizardUtilEnum.SentenceCompletion;
     }
 
     @Override
     public boolean isShowProgress() {
         return false;
+    }
+
+    @Override
+    public boolean isShowMenuBar() {
+        return true;
     }
 
     @Override
