@@ -66,7 +66,7 @@ public class VocabularyTest {
         int numberOfSeries = 1;
         int wordsPerBandInSeries = this.wordsPerBand / numberOfSeries;
         Vocabulary instance = new Vocabulary(this.wordsPerBand, wordsPerBandInSeries);
-        AdVocAsStimulus[][] wordsArray = ConstantsWords1.WORDS_SERIES[0];
+        AdVocAsStimulus[][] wordsArray = Words_NL_1round.WORDS_SERIES[0];
         ArrayList<ArrayList<AdVocAsStimulus>> words = instance.initialiseWords(wordsArray);
         assertEquals(this.numberOfBands, words.size());
         for (int i = 0; i < this.numberOfBands; i++) {
@@ -89,7 +89,7 @@ public class VocabularyTest {
         int numberOfSeries = 2;
         int wordsPerBandInSeries = this.wordsPerBand / numberOfSeries;
         Vocabulary instance = new Vocabulary(this.wordsPerBand, wordsPerBandInSeries);
-        AdVocAsStimulus[][] wordsArray = ConstantsWords2.WORDS_SERIES[0];
+        AdVocAsStimulus[][] wordsArray = Words_NL_2rounds_1.WORDS_SERIES[0];
         ArrayList<ArrayList<AdVocAsStimulus>> words = instance.initialiseWords(wordsArray);
         assertEquals(this.numberOfBands, words.size());
         for (int i = 0; i < this.numberOfBands; i++) {
@@ -113,7 +113,7 @@ public class VocabularyTest {
         int wordsPerBandInSeries = this.wordsPerBand / numberOfSeries;
         Vocabulary instance = new Vocabulary(this.wordsPerBand, wordsPerBandInSeries);
         ArrayList<AdVocAsStimulus> nonwordstmp = new ArrayList<>();
-        AdVocAsStimulus[] nonwordsArray = ConstantsNonWords1.NONWORDS_SERIES[0];
+        AdVocAsStimulus[] nonwordsArray = NonWords_NL_1round.NONWORDS_SERIES[0];
 
         nonwordstmp.addAll(Arrays.asList(nonwordsArray));
         ArrayList<AdVocAsStimulus> nonwords = instance.initialiseNonwords(nonwordstmp);
@@ -144,7 +144,7 @@ public class VocabularyTest {
         int wordsPerBandInSeries = this.wordsPerBand / numberOfSeries;
         Vocabulary instance = new Vocabulary(this.wordsPerBand, wordsPerBandInSeries);
         ArrayList<AdVocAsStimulus> nonwordstmp = new ArrayList<>();
-        AdVocAsStimulus[] nonwordsArray = ConstantsNonWords2.NONWORDS_SERIES[0];
+        AdVocAsStimulus[] nonwordsArray = NonWords_NL_2rounds_2.NONWORDS_SERIES[0];
 
         nonwordstmp.addAll(Arrays.asList(nonwordsArray));
         ArrayList<AdVocAsStimulus> nonwords = instance.initialiseNonwords(nonwordstmp);
@@ -176,11 +176,11 @@ public class VocabularyTest {
         Vocabulary instance = new Vocabulary(this.wordsPerBand, wordsPerBandInSeries);
 
         ArrayList<AdVocAsStimulus> nonwordstmp = new ArrayList<>();
-        AdVocAsStimulus[] nonwordsArray = ConstantsNonWords1.NONWORDS_SERIES[0];
+        AdVocAsStimulus[] nonwordsArray = NonWords_NL_1round.NONWORDS_SERIES[0];
         nonwordstmp.addAll(Arrays.asList(nonwordsArray));
         ArrayList<AdVocAsStimulus> nonwords = instance.initialiseNonwords(nonwordstmp);
 
-        AdVocAsStimulus[][] wordsArray = ConstantsWords1.WORDS_SERIES[0];
+        AdVocAsStimulus[][] wordsArray = Words_NL_1round.WORDS_SERIES[0];
         ArrayList<ArrayList<AdVocAsStimulus>> words = instance.initialiseWords(wordsArray);
 
         int size = this.numberOfBands * wordsArray[0].length + nonwordsArray.length;
@@ -209,9 +209,9 @@ public class VocabularyTest {
         int wordsPerBandInSeries = this.wordsPerBand / numberOfSeries;
         Vocabulary instance = new Vocabulary(this.wordsPerBand, wordsPerBandInSeries);
 
-        AdVocAsStimulus[] nonwordsArray = ConstantsNonWords1.NONWORDS_SERIES[0];
+        AdVocAsStimulus[] nonwordsArray = NonWords_NL_1round.NONWORDS_SERIES[0];
         
-        AdVocAsStimulus[][] wordsArray = ConstantsWords1.WORDS_SERIES[0];
+        AdVocAsStimulus[][] wordsArray = Words_NL_1round.WORDS_SERIES[0];
 
         int size = this.numberOfBands * wordsArray[0].length + nonwordsArray.length;
 

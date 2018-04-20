@@ -28,10 +28,6 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.
  */
 public class Vocabulary {
 
-    public static final String NONWORD = "NEE&#44; ik ken dit woord niet";
-
-    public static final String WORD = "JA&#44; ik ken dit woord";
-
     private final int numberOfBands;
     private final int wordsPerBandInSeries;
     private LinkedHashMap<String, AdVocAsStimulus> hashedStimuli;
@@ -70,19 +66,19 @@ public class Vocabulary {
 
     // the sequence of nonwords should be randomly reshuffled any time we generate it
     // side effect: also adss stimuli to the hash map
-    public ArrayList<AdVocAsStimulus> initialiseNonwords(ArrayList<AdVocAsStimulus> nonwrds) {
-        if (nonwrds == null || nonwrds.isEmpty()) {
+    public ArrayList<AdVocAsStimulus> initialiseNonwords(AdVocAsStimulus[] nonwrds) {
+        if (nonwrds == null || nonwrds.length==0) {
             System.out.println("Empty array of nonwords");
             return new ArrayList<>();
         }
 
-        ArrayList<AdVocAsStimulus> retVal = new ArrayList<>(nonwrds.size());
-        ArrayList<Integer> index = RandomIndexing.generateRandomArray(nonwrds.size());
+        ArrayList<AdVocAsStimulus> retVal = new ArrayList<>(nonwrds.length);
+        ArrayList<Integer> index = RandomIndexing.generateRandomArray(nonwrds.length);
 
         for (int i = 0; i < index.size(); i++) {
             int ind = index.get(i);
-            retVal.add(nonwrds.get(ind));
-            this.hashedStimuli.put(nonwrds.get(ind).getUniqueId(), nonwrds.get(ind));
+            retVal.add(nonwrds[ind]);
+            this.hashedStimuli.put(nonwrds[ind].getUniqueId(), nonwrds[ind]);
         }
         return retVal;
     }

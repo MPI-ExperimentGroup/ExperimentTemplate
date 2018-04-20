@@ -22,7 +22,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Vocabulary;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
@@ -36,53 +35,49 @@ public class VocabularyFromFiles {
     private final int numberOfBands;
     private final int wordsPerBand;
     private final int wordsPerBandInSeries;
-    private final AdVocAsStimulus[][] localWORDS;
-    private final ArrayList<AdVocAsStimulus> localNONWORDS = new ArrayList<>(); // unknow length, cannot allocte in advance
+    private final ArrayList<ArrayList<AdVocAsStimulus>> localWORDS;
+    private final ArrayList<AdVocAsStimulus> localNONWORDS = new ArrayList<AdVocAsStimulus>(); // unknow length, cannot allocte in advance
 
     
      public VocabularyFromFiles(int numberOfBands, int wordsPerBand, int numberOfSeries){
         this.numberOfBands = numberOfBands;
         this.wordsPerBand  = wordsPerBand;
         this.wordsPerBandInSeries = this.wordsPerBand/numberOfSeries;
-        this.localWORDS = new AdVocAsStimulus[this.numberOfBands][this.wordsPerBandInSeries];
+        this.localWORDS = new ArrayList<ArrayList<AdVocAsStimulus>>(this.numberOfBands);
     }
-    public void parseWordInputCSV(String wordFileLocation) throws IOException {
+    public void parseWordInputCSV(String wordFileLocation, String bandColumnName, String wordColumnName, String ratingLabels, String correctResponse) throws IOException {
         File inputFileWords = new File(wordFileLocation);
         final Reader reader = new InputStreamReader(inputFileWords.toURL().openStream(), "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
         Iterable<CSVRecord> records = CSVFormat.newFormat(';').withHeader().parse(reader);
-        int[] counter = new int[this.numberOfBands];
         for (int i = 0; i < this.numberOfBands; i++) {
-            counter[i] = 0;
+            this.localWORDS.add(new ArrayList<AdVocAsStimulus>(this.wordsPerBandInSeries));
         }
         for (CSVRecord record : records) {
-            int bandNumber = Integer.parseInt(record.get("Band"));
-            String spelling = record.get("spelling");
+            int bandNumber = Integer.parseInt(record.get(bandColumnName));
+            String spelling = record.get(wordColumnName);
             long millis = System.currentTimeMillis();
             String id = spelling + "_" + millis;
-            AdVocAsStimulus stimulus = new AdVocAsStimulus(id, spelling, Vocabulary.WORD, bandNumber);
-            localWORDS[bandNumber - 1][counter[bandNumber - 1]] = stimulus;
-            counter[bandNumber - 1]++;
+            AdVocAsStimulus stimulus = new AdVocAsStimulus(id, spelling, ratingLabels, correctResponse, bandNumber);
+            localWORDS.get(bandNumber - 1).add(stimulus);
         }
       }
 
-    public void parseNonwordInputCSV(String nonwordFileLocation) throws IOException {
+    public void parseNonwordInputCSV(String nonwordFileLocation, String nonwordColumnName, String ratingLabels, String correctResponse) throws IOException {
         final File inputFileNonWords = new File(nonwordFileLocation);
         final Reader reader = new InputStreamReader(inputFileNonWords.toURL().openStream(), "UTF-8"); // todo: this might need to change to "ISO-8859-1" depending on the usage
         Iterable<CSVRecord> records = CSVFormat.newFormat(';').withHeader().parse(reader);
-        System.out.println("public static AdVocAsStimulus[] NONWORDS_ARRAY = { ");
         for (CSVRecord record : records) {
-            String spelling = record.get("spelling");
+            String spelling = record.get(nonwordColumnName);
             long millis = System.currentTimeMillis();
             String id = spelling + "_" + millis;
-            System.out.println("new AdVocAsStimulus(\"" + id + "\", \"" + spelling + "\", \""+Vocabulary.NONWORD+"\" " + ",0),");
-            AdVocAsStimulus stimulus = new AdVocAsStimulus(id, spelling, Vocabulary.NONWORD, 0);
+            AdVocAsStimulus stimulus = new AdVocAsStimulus(id, spelling, ratingLabels, correctResponse, 0);
             localNONWORDS.add(stimulus);
         }
         System.out.println(" }; ");
          
     }
 
-    public AdVocAsStimulus[][] getWords() {
+    public ArrayList<ArrayList<AdVocAsStimulus>> getWords() {
         return localWORDS;
     }
 
@@ -90,9 +85,9 @@ public class VocabularyFromFiles {
         return localNONWORDS;
     }
 
-    public void initialiseVocabulary(String wordFileLocation, String nonwordFileLocation) throws IOException {
-        this.parseWordInputCSV(wordFileLocation);
-        this.parseNonwordInputCSV(nonwordFileLocation);
+    public void initialiseVocabulary(String wordFileLocation, String nonwordFileLocation, String bandColumnName, String wordColumnName, String ratingLables, String nonwordColumnName, String correctResponseWords, String correctResponseNonWords) throws IOException {
+        this.parseWordInputCSV(wordFileLocation, bandColumnName, wordColumnName, ratingLables, correctResponseWords);
+        this.parseNonwordInputCSV(nonwordFileLocation, nonwordColumnName, ratingLables, correctResponseNonWords);
     }
 
 }

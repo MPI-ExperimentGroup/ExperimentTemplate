@@ -28,9 +28,10 @@ import java.util.Set;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Vocabulary;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsNonWords1;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsNonWords2;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsWords1;
+
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.WordsSource;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.NonWordsSource;
+
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -378,7 +379,7 @@ public class AdVocAsStimuliProviderTest {
         assertTrue(label != null);
         //System.out.println("Label: " + label);
         BookkeepingStimulus<AdVocAsStimulus> bStimulus = provider.getResponseRecord().get(provider.getCurrentStimulusIndex());
-        int expectedBand = stimulus.getCorrectResponses().equals(Vocabulary.WORD) ? Integer.parseInt(this.startBand) : 0;
+        int expectedBand = stimulus.getCorrectResponses().equals(Vocabulary.WORD_NL) ? Integer.parseInt(this.startBand) : 0;
         assertEquals(expectedBand, bStimulus.getStimulus().getBandNumber());
     }
 
@@ -450,11 +451,11 @@ public class AdVocAsStimuliProviderTest {
         provider.nextStimulus(0);
         Stimulus stimulus2 = provider.getCurrentStimulus();
         // making worng response
-        String response2 = Vocabulary.NONWORD;
-        if (stimulus2.getCorrectResponses().equals(Vocabulary.NONWORD)) {
-            response2 = Vocabulary.WORD;
+        String response2 = Vocabulary.NONWORD_NL;
+        if (stimulus2.getCorrectResponses().equals(Vocabulary.NONWORD_NL)) {
+            response2 = Vocabulary.WORD_NL;
         } else {
-            if (!stimulus2.getCorrectResponses().equals(Vocabulary.WORD)) {
+            if (!stimulus2.getCorrectResponses().equals(Vocabulary.WORD_NL)) {
                 throw new Exception("The reaction is neither nonword nor word, something went terribly worng.");
             }
         }
@@ -500,7 +501,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetTotalStimuli10_1() {
-        int nonWordsLength = ConstantsNonWords1.NONWORDS_SERIES[0].length;
+        int nonWordsLength = NonWords_NL_1round.NONWORDS_SERIES[0].length;
         this.testGetTotalStimuli("1", "0", "testGetTotalStimuli10_1", nonWordsLength);
     }
 
@@ -509,7 +510,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetTotalStimuli10_2() {
-        int nonWordsLength = ConstantsNonWords1.NONWORDS_SERIES[0].length;
+        int nonWordsLength = NonWords_NL_1round.NONWORDS_SERIES[0].length;
         this.testGetTotalStimuli("1", "0", "testGetTotalStimuli10_1", nonWordsLength);
     }
 
@@ -518,7 +519,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetTotalStimuli10_3() {
-        int nonWordsLength = ConstantsNonWords1.NONWORDS_SERIES[0].length;
+        int nonWordsLength = NonWords_NL_1round.NONWORDS_SERIES[0].length;
         this.testGetTotalStimuli("1", "0", "testGetTotalStimuli10_1", nonWordsLength);
     }
 
@@ -527,7 +528,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetTotalStimuli20_1() {
-        int nonWordsLength = ConstantsNonWords2.NONWORDS_SERIES[0].length;
+        int nonWordsLength = NonWords_NL_2rounds_2.NONWORDS_SERIES[0].length;
         this.testGetTotalStimuli("2", "0", "testGetTotalStimuli20_1", nonWordsLength);
     }
 
@@ -536,7 +537,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetTotalStimuli20_2() {
-        int nonWordsLength = ConstantsNonWords2.NONWORDS_SERIES[0].length;
+        int nonWordsLength = NonWords_NL_2rounds_2.NONWORDS_SERIES[0].length;
         this.testGetTotalStimuli("2", "0", "testGetTotalStimuli20_2", nonWordsLength);
     }
 
@@ -545,7 +546,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetTotalStimuli20_3() {
-        int nonWordsLength = ConstantsNonWords2.NONWORDS_SERIES[0].length;
+        int nonWordsLength = NonWords_NL_2rounds_2.NONWORDS_SERIES[0].length;
         this.testGetTotalStimuli("2", "0", "testGetTotalStimuli20_3", nonWordsLength);
     }
 
@@ -554,7 +555,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetTotalStimuli21_1() {
-        int nonWordsLength = ConstantsNonWords2.NONWORDS_SERIES[1].length;
+        int nonWordsLength = NonWords_NL_2rounds_2.NONWORDS_SERIES[1].length;
         this.testGetTotalStimuli("2", "1", "testGetTotalStimuli21_1", nonWordsLength);
     }
 
@@ -563,7 +564,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetTotalStimuli21_2() {
-        int nonWordsLength = ConstantsNonWords2.NONWORDS_SERIES[1].length;
+        int nonWordsLength = NonWords_NL_2rounds_2.NONWORDS_SERIES[1].length;
         this.testGetTotalStimuli("2", "1", "testGetTotalStimuli21_2", nonWordsLength);
     }
 
@@ -572,7 +573,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetTotalStimuli21_3() {
-        int nonWordsLength = ConstantsNonWords2.NONWORDS_SERIES[1].length;
+        int nonWordsLength = NonWords_NL_2rounds_2.NONWORDS_SERIES[1].length;
         this.testGetTotalStimuli("2", "1", "testGetTotalStimuli21_3", nonWordsLength);
     }
 
@@ -745,7 +746,7 @@ public class AdVocAsStimuliProviderTest {
         boolean result1 = provider.hasNextStimulus(0);
         assertTrue(result1);
         int sBand = Integer.parseInt(this.startBand);
-        int expectedBand = stimulus.getCorrectResponses().equals(Vocabulary.WORD) ? (sBand + 1) : sBand;
+        int expectedBand = stimulus.getCorrectResponses().equals(Vocabulary.WORD_NL) ? (sBand + 1) : sBand;
         assertEquals(expectedBand, provider.getCurrentBandNumber());
 
         provider.nextStimulus(0);
@@ -760,11 +761,11 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimulus stimulus2 = provider.getCurrentStimulus();
         String correctResponse = stimulus2.getCorrectResponses();
         String response = null;
-        if (correctResponse.equals(Vocabulary.WORD)) {
-            response = Vocabulary.NONWORD;
+        if (correctResponse.equals(Vocabulary.WORD_NL)) {
+            response = Vocabulary.NONWORD_NL;
         }
-        if (correctResponse.equals(Vocabulary.NONWORD)) {
-            response = Vocabulary.WORD;
+        if (correctResponse.equals(Vocabulary.NONWORD_NL)) {
+            response = Vocabulary.WORD_NL;
         }
         if (response == null) {
             throw new Exception("Wrong reaction");
@@ -786,11 +787,11 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimulus stimulus3 = provider.getCurrentStimulus();
         String correctResponse3 = stimulus3.getCorrectResponses();
         String response3 = null;
-        if (correctResponse3.equals(Vocabulary.WORD)) {
-            response3 = Vocabulary.NONWORD;
+        if (correctResponse3.equals(Vocabulary.WORD_NL)) {
+            response3 = Vocabulary.NONWORD_NL;
         }
-        if (correctResponse3.equals(Vocabulary.NONWORD)) {
-            response3 = Vocabulary.WORD;
+        if (correctResponse3.equals(Vocabulary.NONWORD_NL)) {
+            response3 = Vocabulary.WORD_NL;
         }
         if (response3 == null) {
             throw new Exception("Wrong reaction");
@@ -969,8 +970,6 @@ public class AdVocAsStimuliProviderTest {
         this.testPercentageBandTable("2", "1", "testPercentageBandTable_21");
 
     }
-    
-    
 
     @Test
     public void generalRandomTest1() throws Exception {
@@ -1082,10 +1081,10 @@ public class AdVocAsStimuliProviderTest {
         Vocabulary vocab = new Vocabulary(nOfBands, wordsPerBandInSeries);
         AdVocAsStimulus[][] wordArray = null;
         if (numberOfSeries.equals("1")) {
-            wordArray = ConstantsWords1.WORDS_SERIES[0];
+            wordArray = Words_NL_1round.WORDS_SERIES[0];
         }
         if (numberOfSeries.equals("2")) {
-            wordArray = ConstantsWords1.WORDS_SERIES[Integer.parseInt(type)];
+            wordArray = Words_NL_1round.WORDS_SERIES[Integer.parseInt(type)];
         }
 
         assertEquals(nOfBands, samples.keySet().size());
@@ -1140,7 +1139,7 @@ public class AdVocAsStimuliProviderTest {
             }
 
         }
-        
+
         String stateSnapshotExpected = provider.toString();
         AdVocAsStimuliProvider provider2 = new AdVocAsStimuliProvider(null);
         provider2.initialiseStimuliState(stateSnapshotExpected);
@@ -1251,7 +1250,7 @@ public class AdVocAsStimuliProviderTest {
         String stateSnapshot = provider2.toString();
         //System.out.println(stateSnapshotExpected);
         assertEquals(stateSnapshotExpected, stateSnapshot);
-        
+
         return provider;
 
     }
@@ -1263,11 +1262,11 @@ public class AdVocAsStimuliProviderTest {
         //System.out.println(retVal);
         //System.out.println(rndDouble);
         if (rndDouble > correctnessUpperBound) { // spoil the answer
-            if (retVal.equals(Vocabulary.WORD)) {
-                retVal = Vocabulary.NONWORD;
+            if (retVal.equals(Vocabulary.WORD_NL)) {
+                retVal = Vocabulary.NONWORD_NL;
             } else {
-                if (retVal.equals(Vocabulary.NONWORD)) {
-                    retVal = Vocabulary.WORD;
+                if (retVal.equals(Vocabulary.NONWORD_NL)) {
+                    retVal = Vocabulary.WORD_NL;
                 } else {
                     throw new Exception("Wrong correct reaction in the stimulus, neither word, nor nonword: " + retVal);
                 }
@@ -1279,9 +1278,9 @@ public class AdVocAsStimuliProviderTest {
     }
 
     private String makeResponseWrong(AdVocAsStimulus stimulus) {
-        String answer = Vocabulary.NONWORD;
-        if (stimulus.getCorrectResponses().equals(Vocabulary.NONWORD)) {
-            answer = Vocabulary.WORD;
+        String answer = Vocabulary.NONWORD_NL;
+        if (stimulus.getCorrectResponses().equals(Vocabulary.NONWORD_NL)) {
+            answer = Vocabulary.WORD_NL;
         };
         return answer;
     }
@@ -1291,7 +1290,7 @@ public class AdVocAsStimuliProviderTest {
         for (BookkeepingStimulus<AdVocAsStimulus> stimulus : tuple) {
             assertEquals(null, stimulus.getReaction());
             assertEquals(null, stimulus.getCorrectness());
-            if (stimulus.getStimulus().getCorrectResponses().equals(Vocabulary.NONWORD)) {
+            if (stimulus.getStimulus().getCorrectResponses().equals(Vocabulary.NONWORD_NL)) {
                 nNonwords++;
             }
         }
@@ -1306,7 +1305,7 @@ public class AdVocAsStimuliProviderTest {
 
         for (int i = 0; i <= timeTick; i++) {
             BookkeepingStimulus<AdVocAsStimulus> stimulus = records.get(i);
-            if (stimulus.getStimulus().getCorrectResponses().equals(Vocabulary.NONWORD)) {
+            if (stimulus.getStimulus().getCorrectResponses().equals(Vocabulary.NONWORD_NL)) {
                 counterNonwords++;
             }
             frequency = ((double) counterNonwords) / ((double) (i + 1));
@@ -1549,9 +1548,9 @@ public class AdVocAsStimuliProviderTest {
         // testing only specific for AdVocAsProvider implementation part, the parent calss has been tested separately
         AdVocAsStimuliProvider freshProvider = new AdVocAsStimuliProvider(null);
         freshProvider.initialiseStimuliState(toStringOut);
-        
+
         assertEquals(toStringOut, freshProvider.toString());
-        
+
         ArrayList<ArrayList<AdVocAsStimulus>> resultWords = freshProvider.getWords();
         ArrayList<ArrayList<AdVocAsStimulus>> expectedWords = provider.getWords();
         assertEquals(resultWords.size(), expectedWords.size());
@@ -1561,8 +1560,7 @@ public class AdVocAsStimuliProviderTest {
                 assertEquals(expectedWords.get(i).get(j), resultWords.get(i).get(j)); // even pointer must be the same -- to the same static object of AdVocAsStimulus
             }
         }
-        
-        
+
         assertEquals(provider.getCurrentBandNumber(), freshProvider.getCurrentBandNumber());
         assertEquals(provider.getBandScore(), freshProvider.getBandScore());
         assertEquals(provider.getHtmlStimuliReport(), freshProvider.getHtmlStimuliReport());
@@ -1574,17 +1572,16 @@ public class AdVocAsStimuliProviderTest {
             assertEquals(expectedNonWordIndices.get(i), resultNonWordIndices.get(i));
         }
 
-      
         ArrayList<AdVocAsStimulus> resultNonwords = freshProvider.getNonwords();
         ArrayList<AdVocAsStimulus> expectedNonWrods = provider.getNonwords();
         assertEquals(expectedNonWordIndices.size(), resultNonWordIndices.size());
         for (int i = 0; i < resultNonwords.size(); i++) {
             assertEquals(expectedNonWrods.get(i), resultNonwords.get(i));
         }
-        
-        assertEquals(provider.getStringFastTrack("", "\n","", ";"),freshProvider.getStringFastTrack("", "\n","", ";"));
-        
-        assertEquals(provider.getStringFineTuningHistory("", "\n","", ";", "csv"),freshProvider.getStringFineTuningHistory("", "\n","", ";", "csv"));
-        
+
+        assertEquals(provider.getStringFastTrack("", "\n", "", ";"), freshProvider.getStringFastTrack("", "\n", "", ";"));
+
+        assertEquals(provider.getStringFineTuningHistory("", "\n", "", ";", "csv"), freshProvider.getStringFineTuningHistory("", "\n", "", ";", "csv"));
+
     }
 }

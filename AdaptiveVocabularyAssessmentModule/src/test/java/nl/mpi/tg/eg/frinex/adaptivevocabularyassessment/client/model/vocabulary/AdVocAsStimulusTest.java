@@ -19,8 +19,8 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsNonWords1;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.ConstantsWords1;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.NonWords_NL_1round;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Words_NL_1round;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Vocabulary;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -48,10 +48,10 @@ public class AdVocAsStimulusTest {
         this.wordsPerBandInSeries = this.wordsPerBand / this.numberOfSeries;
         this.vocab = new Vocabulary(this.numberOfBands, this.wordsPerBandInSeries);
 
-        this.words = vocab.initialiseWords(ConstantsWords1.WORDS_SERIES[0]);
+        this.words = vocab.initialiseWords(Words_NL_1round.WORDS_SERIES[0]);
 
         ArrayList<AdVocAsStimulus> nonwordstmp = new ArrayList<>();
-        nonwordstmp.addAll(Arrays.asList(ConstantsNonWords1.NONWORDS_SERIES[0]));
+        nonwordstmp.addAll(Arrays.asList(NonWords_NL_1round.NONWORDS_SERIES[0]));
         this.nonwords = vocab.initialiseNonwords(nonwordstmp);
     }
 

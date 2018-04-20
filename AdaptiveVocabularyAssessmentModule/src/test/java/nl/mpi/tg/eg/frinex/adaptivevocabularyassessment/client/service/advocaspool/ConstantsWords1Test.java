@@ -51,9 +51,9 @@ public class ConstantsWords1Test {
 
     @Test
     public void testAmountOfStimuli() {
-        assertEquals(54,ConstantsWords1.WORDS_SERIES[0].length);
+        assertEquals(54,Words_NL_1round.WORDS_SERIES[0].length);
         for (int i=0; i<54; i++) {
-            assertEquals(40, ConstantsWords1.WORDS_SERIES[0][i].length);
+            assertEquals(40, Words_NL_1round.WORDS_SERIES[0][i].length);
         }
     }
     

@@ -33,10 +33,11 @@ import org.junit.Test;
  */
 public class VocabularyFromFilesTest {
 
-    //final String NONWORD_FILE_LOCATION = "2.selection_words_nonwords.csv";
-    final String NONWORD_FILE_LOCATION = "nonwords_selection_2.csv";
-    final String WORD_FILE_LOCATION = "words_selection_2.csv";
-    final int numberOfBands = 54;
+    //final String NONWORD_FILE_LOCATION_NL = "2.selection_words_nonwords.csv";
+    final String NONWORD_FILE_LOCATION_NL = "nonwords_selection_2.csv";
+    final String WORD_FILE_LOCATION_NL = "words_selection_2.csv";
+    final String NONWORD_FILE_LOCATION_EN = "english_nonwords.csv";
+    final String WORD_FILE_LOCATION_EN = "english_words.csv";
     final int wordsPerBand = 40;
     final int numberOfSeries = 2;
 
@@ -62,48 +63,97 @@ public class VocabularyFromFilesTest {
     /**
      * Test of parseWordInputCSV method, of class VocabularyFromFiles.
      */
-    @Ignore
-    @Test
-    public void testParseWordInputCSV() throws Exception {
-        System.out.println("parseWordInputCSV");
+    private void testParseWordInputCSV(String fileLocation, String bandColumn, String wordColumn, String correctResponse, int numberOfBands) throws Exception {
 
         // VocabularyFromFiles(int numberOfBands, int wordsPerBand, int numberOfSeries)
-        VocabularyFromFiles instance = new VocabularyFromFiles(this.numberOfBands, this.wordsPerBand, this.numberOfSeries);
+        VocabularyFromFiles instance = new VocabularyFromFiles(numberOfBands, this.wordsPerBand, this.numberOfSeries);
 
-        instance.parseWordInputCSV(WORD_FILE_LOCATION);
-        AdVocAsStimulus[][] words = instance.getWords();
+        instance.parseWordInputCSV(fileLocation, bandColumn, wordColumn, correctResponse);
+        ArrayList<ArrayList<AdVocAsStimulus>> words= instance.getWords();
         StringBuilder stBuilder = new StringBuilder("{");
-        for (AdVocAsStimulus[] wordband : words) {
-            stBuilder.append("\n{\n");
-            for (AdVocAsStimulus word : wordband) {
-                String id = word.getUniqueId();
-                String spelling = word.getLabel();
-                int band = word.getBandNumber();
-                String serialisedDescr = "new AdVocAsStimulus(\"" + id + "\", \"" + spelling + "\", \"" + Vocabulary.WORD + "\" " + "," + band + ")";
-                stBuilder.append(serialisedDescr).append(",\n");
-            }
-            stBuilder.append("}\n,");
+        for (ArrayList<AdVocAsStimulus> wordband : words) {
+            this.printStimuli(wordband, 0, wordband.size());
         }
-        stBuilder.append("}");
+        stBuilder.append("},\n");
         System.out.println(stBuilder);
     }
 
-    /**
-     * Test of parseNonwordInputCSV method, of class VocabularyFromFiles.
-     */
+
+    private void printStimuli(ArrayList<AdVocAsStimulus> stimuli, int from, int uptoExcl) {
+        System.out.println("\n{");
+        
+        for (int i=from; i<uptoExcl; i++) {
+            AdVocAsStimulus stimulus =stimuli.get(i);
+            String id = stimulus.getUniqueId();
+            String spelling = stimulus.getLabel();
+            String correctResponse = stimulus.getCorrectResponses();
+            String bandNumber = stimulus.getbandLabel();
+            System.out.println("new AdVocAsStimulus(\"" + id + "\", \"" + spelling + "\", \"" + correctResponse + "\" " + ","+bandNumber+"),");
+        }
+        
+        System.out.println("},\n");
+    }
+
     @Ignore
     @Test
-    public void testParseNonwordInputCSV() throws Exception {
-        System.out.println("parseNonwordInputCSV");
-        VocabularyFromFiles instance = new VocabularyFromFiles(this.numberOfBands, this.wordsPerBand, this.numberOfSeries);
-        instance.parseNonwordInputCSV(NONWORD_FILE_LOCATION);
-        ArrayList<AdVocAsStimulus> nonwords = instance.getNonwords();
-        StringBuilder stBuilder = new StringBuilder("[");
-        for (AdVocAsStimulus nonword : nonwords) {
-            stBuilder.append("'").append(nonword.getLabel()).append("', ");
-        }
-        stBuilder.append("]");
-        System.out.println(stBuilder);
+    public void testParseWordInputCSV_NL() throws Exception {
+        System.out.println("parseWordInputCSV NL");
+        this.testParseWordInputCSV(WORD_FILE_LOCATION_NL, "Band", "spelling", Vocabulary.WORD_NL, 54);
     }
+
+    @Ignore
+    @Test
+    public void testParseNonWordInputCSV_NL() throws Exception {
+        System.out.println("parseNonWordInputCSV NL");
+        VocabularyFromFiles instance = new VocabularyFromFiles(54, this.wordsPerBand, this.numberOfSeries);
+        instance.parseNonwordInputCSV(NONWORD_FILE_LOCATION_NL, "spelling", Vocabulary.NONWORD_NL);
+        ArrayList<AdVocAsStimulus> nonwords = instance.getNonwords();
+        this.printStimuli(nonwords, 0, nonwords.size());
+    }
+
+   @Ignore
+    @Test
+    public void testParseWordInputCSV_EN_A() throws Exception {
+        System.out.println("parseWordInputCSV EN");
+        this.testParseWordInputCSV(WORD_FILE_LOCATION_EN, "Band", "List A", Vocabulary.WORD_EN, 62);
+    }
+
+    @Test
+    public void testParseWordInputCSV_EN_B() throws Exception {
+        System.out.println("parseWordInputCSV EN");
+        this.testParseWordInputCSV(WORD_FILE_LOCATION_EN, "Band", "List B",  Vocabulary.WORD_EN, 62);
+    }
+
+    @Ignore
+    @Test
+    public void testParseNonWordInputCSV_EN_1() throws Exception {
+        System.out.println("parseNonWordInputCSV EN");
+        VocabularyFromFiles instance = new VocabularyFromFiles(62, this.wordsPerBand, this.numberOfSeries);
+        instance.parseNonwordInputCSV(NONWORD_FILE_LOCATION_EN, "spelling",  Vocabulary.NONWORD_EN);
+        ArrayList<AdVocAsStimulus> nonwords = instance.getNonwords();
+        int limit = nonwords.size()/2;
+        System.out.println("*******************");
+        System.out.println(" Engl nonwords 1");
+        System.out.println("*******************");
+        this.printStimuli(nonwords, 0, limit);
+        
+    }
+    
+    @Ignore
+   @Test
+    public void testParseNonWordInputCSV_EN_2() throws Exception {
+        System.out.println("parseNonWordInputCSV EN");
+        VocabularyFromFiles instance = new VocabularyFromFiles(62, this.wordsPerBand, this.numberOfSeries);
+        instance.parseNonwordInputCSV(NONWORD_FILE_LOCATION_EN, "spelling",  Vocabulary.NONWORD_EN);
+        ArrayList<AdVocAsStimulus> nonwords = instance.getNonwords();
+        int limit = nonwords.size()/2;
+        System.out.println("*******************");
+        System.out.println(" Engl nonwords 2");
+        System.out.println("*******************");
+        this.printStimuli(nonwords, limit, nonwords.size());
+        
+    }
+    
+   
 
 }
