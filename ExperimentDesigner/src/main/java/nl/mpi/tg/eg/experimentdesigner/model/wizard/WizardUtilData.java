@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class WizardUtilData {
 
-    protected WizardUtilEnum wizardUtilEnum;
+    protected WizardUtilEnum templateType;
 
     protected String experimentTitle;
 
@@ -35,6 +35,10 @@ public class WizardUtilData {
     protected String instructionsText;
 
     protected String agreementText;
+
+    protected String metadataText;
+
+    protected boolean showMenuBar;
 
     protected boolean showProgress;
 
@@ -48,12 +52,12 @@ public class WizardUtilData {
 
     protected String[] metadataFields;
 
-    public WizardUtilEnum getWizardUtilEnum() {
-        return wizardUtilEnum;
+    public WizardUtilEnum getTemplateType() {
+        return templateType;
     }
 
-    public void setWizardUtilEnum(WizardUtilEnum wizardUtilEnum) {
-        this.wizardUtilEnum = wizardUtilEnum;
+    public void setTemplateType(WizardUtilEnum templateType) {
+        this.templateType = templateType;
     }
 
     public String getExperimentTitle() {
@@ -94,6 +98,22 @@ public class WizardUtilData {
 
     public void setShowProgress(boolean showProgress) {
         this.showProgress = showProgress;
+    }
+
+    public boolean isShowMenuBar() {
+        return showMenuBar;
+    }
+
+    public void setShowMenuBar(boolean showMenuBar) {
+        this.showMenuBar = showMenuBar;
+    }
+
+    public String getMetadataText() {
+        return metadataText;
+    }
+
+    public void setMetadataText(String metadataText) {
+        this.metadataText = metadataText;
     }
 
     public boolean isAllowUserRestart() {
