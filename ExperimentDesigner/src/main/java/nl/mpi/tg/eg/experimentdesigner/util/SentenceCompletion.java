@@ -46,7 +46,7 @@ public class SentenceCompletion {
     public WizardData getWizardData() {
         WizardData wizardData = new WizardData();
         wizardData.setAppName(wizardUtilData.getExperimentTitle());
-        wizardData.setShowMenuBar(true);
+        wizardData.setShowMenuBar(wizardUtilData.isShowMenuBar());
         wizardData.setTextFontSize(17);
         wizardData.setObfuscateScreenNames(false);
         WizardTextScreen wizardTextScreen = new WizardTextScreen("Informatie", wizardUtilData.getInstructionsText(),
@@ -61,6 +61,7 @@ public class SentenceCompletion {
 //        wizardData.setDisagreementScreenText("disagreementScreenText");
         //metadata
         final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
+        wizardEditUserScreen.setScreenText(wizardUtilData.getMetadataText());
         wizardEditUserScreen.setScreenTitle("Gegevens");
         wizardEditUserScreen.setMenuLabel("Terug");
         wizardEditUserScreen.setScreenTag("Gegevens");
