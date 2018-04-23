@@ -25,9 +25,11 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardRandomStimulusScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreenData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilData;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilStimuliData;
 
 /**
@@ -57,65 +59,69 @@ public class SentenceCompletion {
         //Agreement
         WizardAgreementScreen agreementScreen = new WizardAgreementScreen("Toestemming", wizardUtilData.getAgreementText(), "Akkoord");
         agreementScreen.setMenuLabel("Terug");
-//        wizardData.setAgreementText("agreementText");
-//        wizardData.setDisagreementScreenText("disagreementScreenText");
-        //metadata
-        final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
-        wizardEditUserScreen.setScreenText(wizardUtilData.getMetadataText());
-        wizardEditUserScreen.setScreenTitle("Gegevens");
-        wizardEditUserScreen.setMenuLabel("Terug");
-        wizardEditUserScreen.setScreenTag("Gegevens");
-        wizardEditUserScreen.setNextButton("Volgende");
-        wizardEditUserScreen.setSendData(true);
-        wizardEditUserScreen.setOn_Error_Text("Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.");
-//        wizardData.setAgeField(true);
-        wizardEditUserScreen.setCustomFields(wizardUtilData.getMetadataFields());
-
         wizardData.addScreen(agreementScreen);
         wizardData.addScreen(wizardTextScreen);
-        wizardData.addScreen(wizardEditUserScreen);
+        WizardScreen lastScreen = wizardTextScreen;
+//        wizardData.setAgreementText("agreementText");
+//        wizardData.setDisagreementScreenText("disagreementScreenText");
+        for (WizardUtilScreen screenData : wizardUtilData.getScreenData()) {
+            //metadata
+            final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
+            wizardEditUserScreen.setScreenText(screenData.getMetadataText());
+            wizardEditUserScreen.setScreenTitle("Gegevens");
+            wizardEditUserScreen.setMenuLabel("Terug");
+            wizardEditUserScreen.setScreenTag("Gegevens");
+            wizardEditUserScreen.setNextButton("Volgende");
+            wizardEditUserScreen.setSendData(true);
+            wizardEditUserScreen.setOn_Error_Text("Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.");
+//        wizardData.setAgeField(true);
+            wizardEditUserScreen.setCustomFields(screenData.getMetadataFields());
 
-        WizardScreenData firstStimuliScreen = wizardEditUserScreen.getWizardScreenData();
-        WizardRandomStimulusScreen lastStimuliScreen = null;
-        for (final WizardUtilStimuliData stimuliData : wizardUtilData.getStimuliData()) {
-            if (stimuliData.getInstructions() != null) {
-                WizardTextScreen stimulusInstructionsScreen = new WizardTextScreen(stimuliData.getStimuliName() + " Informatie", stimuliData.getInstructions(),
-                        "volgende [ spatiebalk ]"
-                );
-                stimulusInstructionsScreen.setMenuLabel("Terug");
-                wizardData.addScreen(stimulusInstructionsScreen);
-                stimulusInstructionsScreen.setNextWizardScreen(wizardEditUserScreen);
-                agreementScreen.setNextWizardScreen(stimulusInstructionsScreen);
-                firstStimuliScreen.setNextWizardScreenData(stimulusInstructionsScreen.getWizardScreenData());
-                firstStimuliScreen = stimulusInstructionsScreen.getWizardScreenData();
+            lastScreen.setNextWizardScreen(wizardEditUserScreen);
+            wizardEditUserScreen.setBackWizardScreen(lastScreen);
+            wizardData.addScreen(wizardEditUserScreen);
+            lastScreen = wizardEditUserScreen;
+            WizardScreenData firstStimuliScreen = wizardEditUserScreen.getWizardScreenData();
+            for (final WizardUtilStimuliData stimuliData : screenData.getStimuliData()) {
+                if (stimuliData.getInstructions() != null) {
+                    WizardTextScreen stimulusInstructionsScreen = new WizardTextScreen(stimuliData.getStimuliName() + " Informatie", stimuliData.getInstructions(),
+                            "volgende [ spatiebalk ]"
+                    );
+                    stimulusInstructionsScreen.setMenuLabel("Terug");
+                    wizardData.addScreen(stimulusInstructionsScreen);
+                    stimulusInstructionsScreen.setNextWizardScreen(wizardEditUserScreen);
+                    agreementScreen.setNextWizardScreen(stimulusInstructionsScreen);
+                    firstStimuliScreen.setNextWizardScreenData(stimulusInstructionsScreen.getWizardScreenData());
+                    firstStimuliScreen = stimulusInstructionsScreen.getWizardScreenData();
+                }
+                final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen(stimuliData.getStimuliName(), false, stimuliData.getStimuliArray(),
+                        stimuliData.getRandomStimuliTags(), 1000, true, null, 0, 0, null, null, null, null, "Volgende [tab + enter]");
+                if ("horizontal".equals(stimuliData.getStimuliLayout())) {
+                    list1234Screen.setTableLayout(true);
+                }
+                if (stimuliData.getRatingLabels() != null) {
+                    list1234Screen.getWizardScreenData().setStimulusResponseOptions(stimuliData.getRatingLabels());
+                } else {
+                    list1234Screen.setStimulusFreeText(true,
+                            (stimuliData.getFreeTextValidationRegex() == null) ? ".{2,}" : stimuliData.getFreeTextValidationRegex(),
+                            stimuliData.getFreeTextValidationMessage()
+                    );
+                    list1234Screen.setAllowedCharCodes(stimuliData.getFreeTextAllowedCharCodes());
+                    list1234Screen.setInputKeyErrorMessage("Sorry, dit teken is niet toegestaan.");
+                }
+                list1234Screen.getWizardScreenData().setStimulusResponseLabelLeft("");
+                list1234Screen.getWizardScreenData().setStimulusResponseLabelRight("");
+                list1234Screen.setRandomStimuliTagsField("item");
+                list1234Screen.setStimuliLabelStyle(stimuliData.getStimuliLabelStyle());
+                list1234Screen.setHotkeyButton(stimuliData.getStimuliHotKey());
+                if (wizardUtilData.isShowProgress()) {
+                    list1234Screen.setShowProgress(true);
+                }
+                wizardData.addScreen(list1234Screen);
+                firstStimuliScreen.setNextWizardScreenData(list1234Screen.getWizardScreenData());
+                firstStimuliScreen = list1234Screen.getWizardScreenData();
+                lastScreen = list1234Screen;
             }
-            final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen(stimuliData.getStimuliName(), false, stimuliData.getStimuliArray(),
-                    stimuliData.getRandomStimuliTags(), 1000, true, null, 0, 0, null, null, null, null, "Volgende [tab + enter]");
-            if ("horizontal".equals(stimuliData.getStimuliLayout())) {
-                list1234Screen.setTableLayout(true);
-            }
-            if (stimuliData.getRatingLabels() != null) {
-                list1234Screen.getWizardScreenData().setStimulusResponseOptions(stimuliData.getRatingLabels());
-            } else {
-                list1234Screen.setStimulusFreeText(true,
-                        (stimuliData.getFreeTextValidationRegex() == null) ? ".{2,}" : stimuliData.getFreeTextValidationRegex(),
-                        stimuliData.getFreeTextValidationMessage()
-                );
-                list1234Screen.setAllowedCharCodes(stimuliData.getFreeTextAllowedCharCodes());
-                list1234Screen.setInputKeyErrorMessage("Sorry, dit teken is niet toegestaan.");
-            }
-            list1234Screen.getWizardScreenData().setStimulusResponseLabelLeft("");
-            list1234Screen.getWizardScreenData().setStimulusResponseLabelRight("");
-            list1234Screen.setRandomStimuliTagsField("item");
-            list1234Screen.setStimuliLabelStyle(stimuliData.getStimuliLabelStyle());
-            list1234Screen.setHotkeyButton(stimuliData.getStimuliHotKey());
-            if (wizardUtilData.isShowProgress()) {
-                list1234Screen.setShowProgress(true);
-            }
-            wizardData.addScreen(list1234Screen);
-            firstStimuliScreen.setNextWizardScreenData(list1234Screen.getWizardScreenData());
-            firstStimuliScreen = list1234Screen.getWizardScreenData();
-            lastStimuliScreen = list1234Screen;
         }
         // @todo: remove the restart button
         // 
@@ -142,25 +148,19 @@ public class SentenceCompletion {
                 "feedBack::.*:."
             });
             wizardData.addScreen(wizardFeedbackScreen);
-            if (lastStimuliScreen != null) {
-                lastStimuliScreen.setNextWizardScreen(wizardFeedbackScreen);
-            }
+            lastScreen.setNextWizardScreen(wizardFeedbackScreen);
             wizardFeedbackScreen.setNextWizardScreen(completionScreen);
         } else {
-            if (lastStimuliScreen != null) {
-                lastStimuliScreen.setNextWizardScreen(completionScreen);
-            }
+            lastScreen.setNextWizardScreen(completionScreen);
         }
-        wizardTextScreen.setNextWizardScreen(wizardEditUserScreen);
         agreementScreen.setNextWizardScreen(wizardTextScreen);
         completionScreen.setNextWizardScreen(wizardTextScreen);
 
-        wizardEditUserScreen.setBackWizardScreen(wizardTextScreen);
         wizardTextScreen.setBackWizardScreen(agreementScreen);
 //        list1234Screen.setBackWizardScreen(wizardEditUserScreen);
         //completionScreen.setBackWizardScreen(list1234Screen);
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
-        wizardAboutScreen.setBackWizardScreen(wizardEditUserScreen);
+        wizardAboutScreen.setBackWizardScreen(agreementScreen);
         wizardData.addScreen(wizardAboutScreen);
 
         return wizardData;
