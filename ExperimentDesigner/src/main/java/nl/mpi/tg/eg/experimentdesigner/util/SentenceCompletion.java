@@ -24,12 +24,17 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardExistingUserCheckScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardRandomStimulusScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSelectUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilSelectParticipant;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilStimuliData;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilText;
 
 /**
  * @since Nov 16, 2017 3:25:23 PM (creation date)
@@ -50,6 +55,36 @@ public class SentenceCompletion {
         wizardData.setShowMenuBar(wizardUtilData.isShowMenuBar());
         wizardData.setTextFontSize(17);
         wizardData.setObfuscateScreenNames(false);
+        WizardMenuScreen menuScreen = null;
+        if (wizardUtilData.getMainMenuTitle() != null) {
+            menuScreen = new WizardMenuScreen(wizardUtilData.getMainMenuTitle(), wizardUtilData.getMainMenuTitle(), "Menu");
+        }
+        WizardScreen lastScreen = null;
+        final WizardUtilText introductionText = wizardUtilData.getIntroductionText();
+        if (introductionText != null) {
+            WizardTextScreen introductionScreen = new WizardTextScreen(introductionText.getTitle(), introductionText.getText(),
+                    introductionText.getButonLabel()
+            );
+            introductionScreen.setMenuLabel(introductionText.getMenuLabel());
+            introductionScreen.setNextHotKey(introductionText.getHotkey());
+            wizardData.addScreen(introductionScreen);
+            if (menuScreen != null) {
+                introductionScreen.setBackWizardScreen(menuScreen);
+            }
+            lastScreen = introductionScreen;
+        }
+        final WizardUtilSelectParticipant selectParticipantMenu = wizardUtilData.getSelectParticipantMenu();
+        if (selectParticipantMenu != null) {
+            final WizardExistingUserCheckScreen existingUserCheckScreen = new WizardExistingUserCheckScreen(
+                    selectParticipantMenu.getSelectParticipantTitle(),
+                    selectParticipantMenu.getNewParticipantButton(),
+                    selectParticipantMenu.getResumeParticipantButton(),
+                    selectParticipantMenu.getNewParticipantText(),
+                    selectParticipantMenu.getResumeParticipantText());
+            final WizardSelectUserScreen selectUserScreen = new WizardSelectUserScreen(selectParticipantMenu.getSelectParticipantTitle());
+            wizardData.addScreen(existingUserCheckScreen);
+            wizardData.addScreen(selectUserScreen);
+        }
         WizardTextScreen wizardTextScreen = new WizardTextScreen("Informatie", wizardUtilData.getInstructionsText(),
                 "volgende [ spatiebalk ]"
         );
@@ -60,7 +95,14 @@ public class SentenceCompletion {
         agreementScreen.setMenuLabel("Terug");
         wizardData.addScreen(agreementScreen);
         wizardData.addScreen(wizardTextScreen);
-        WizardScreen lastScreen = wizardTextScreen;
+        if (lastScreen != null) {
+            lastScreen.setNextWizardScreen(wizardTextScreen);
+        }
+        if (menuScreen != null) {
+            // the menu screen should not be the first screen
+            wizardData.addScreen(menuScreen);
+        }
+        lastScreen = wizardTextScreen;
 //        wizardData.setAgreementText("agreementText");
 //        wizardData.setDisagreementScreenText("disagreementScreenText");
         for (WizardUtilScreen screenData : wizardUtilData.getScreenData()) {
