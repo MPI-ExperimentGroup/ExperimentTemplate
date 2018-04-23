@@ -30,11 +30,17 @@ public class WizardUtilData {
 
     protected String experimentTitle;
 
+    protected boolean showMenuBar;
+
+    protected WizardUtilText introductionText;
+
+    protected WizardUtilSelectParticipant selectParticipantMenu;
+
+    protected String mainMenuTitle;
+
     protected String instructionsText;
 
     protected String agreementText;
-
-    protected boolean showMenuBar;
 
     protected boolean showProgress;
 
@@ -64,22 +70,6 @@ public class WizardUtilData {
         this.experimentTitle = experimentTitle;
     }
 
-    public String getInstructionsText() {
-        return instructionsText;
-    }
-
-    public void setInstructionsText(String instructionsText) {
-        this.instructionsText = instructionsText;
-    }
-
-    public String getAgreementText() {
-        return agreementText;
-    }
-
-    public void setAgreementText(String agreementText) {
-        this.agreementText = agreementText;
-    }
-
     public boolean isShowProgress() {
         return showProgress;
     }
@@ -94,6 +84,46 @@ public class WizardUtilData {
 
     public void setShowMenuBar(boolean showMenuBar) {
         this.showMenuBar = showMenuBar;
+    }
+
+    public WizardUtilText getIntroductionText() {
+        return introductionText;
+    }
+
+    public void setIntroductionText(WizardUtilText introductionText) {
+        this.introductionText = introductionText;
+    }
+
+    public WizardUtilSelectParticipant getSelectParticipantMenu() {
+        return selectParticipantMenu;
+    }
+
+    public void setSelectParticipantMenu(WizardUtilSelectParticipant selectParticipantMenu) {
+        this.selectParticipantMenu = selectParticipantMenu;
+    }
+
+    public String getMainMenuTitle() {
+        return mainMenuTitle;
+    }
+
+    public void setMainMenuTitle(String mainMenuTitle) {
+        this.mainMenuTitle = mainMenuTitle;
+    }
+
+    public String getInstructionsText() {
+        return instructionsText;
+    }
+
+    public void setInstructionsText(String instructionsText) {
+        this.instructionsText = instructionsText;
+    }
+
+    public String getAgreementText() {
+        return agreementText;
+    }
+
+    public void setAgreementText(String agreementText) {
+        this.agreementText = agreementText;
     }
 
     public boolean isAllowUserRestart() {
