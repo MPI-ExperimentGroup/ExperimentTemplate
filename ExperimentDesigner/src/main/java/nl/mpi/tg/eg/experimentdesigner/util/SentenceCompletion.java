@@ -26,7 +26,6 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardRandomStimulusScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreenData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilScreen;
@@ -65,34 +64,38 @@ public class SentenceCompletion {
 //        wizardData.setAgreementText("agreementText");
 //        wizardData.setDisagreementScreenText("disagreementScreenText");
         for (WizardUtilScreen screenData : wizardUtilData.getScreenData()) {
-            //metadata
-            final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
-            wizardEditUserScreen.setScreenText(screenData.getMetadataText());
-            wizardEditUserScreen.setScreenTitle("Gegevens");
-            wizardEditUserScreen.setMenuLabel("Terug");
-            wizardEditUserScreen.setScreenTag("Gegevens");
-            wizardEditUserScreen.setNextButton("Volgende");
-            wizardEditUserScreen.setSendData(true);
-            wizardEditUserScreen.setOn_Error_Text("Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.");
+            final String[] metadataFields = screenData.getMetadataFields();
+            if (metadataFields != null) {
+                //metadata
+                final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
+                wizardEditUserScreen.setScreenText(screenData.getMetadataText());
+                wizardEditUserScreen.setScreenTitle("Gegevens");
+                wizardEditUserScreen.setMenuLabel("Terug");
+                wizardEditUserScreen.setScreenTag("Gegevens");
+                wizardEditUserScreen.setNextButton("Volgende");
+                wizardEditUserScreen.setSendData(true);
+                wizardEditUserScreen.setOn_Error_Text("Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.");
 //        wizardData.setAgeField(true);
-            wizardEditUserScreen.setCustomFields(screenData.getMetadataFields());
+                wizardEditUserScreen.setCustomFields(metadataFields);
 
-            lastScreen.setNextWizardScreen(wizardEditUserScreen);
-            wizardEditUserScreen.setBackWizardScreen(lastScreen);
-            wizardData.addScreen(wizardEditUserScreen);
-            lastScreen = wizardEditUserScreen;
-            WizardScreenData firstStimuliScreen = wizardEditUserScreen.getWizardScreenData();
-            for (final WizardUtilStimuliData stimuliData : screenData.getStimuliData()) {
+                lastScreen.setNextWizardScreen(wizardEditUserScreen);
+                wizardEditUserScreen.setBackWizardScreen(lastScreen);
+                wizardData.addScreen(wizardEditUserScreen);
+                lastScreen = wizardEditUserScreen;
+            }
+//            WizardScreenData firstStimuliScreen = wizardEditUserScreen.getWizardScreenData();
+            final WizardUtilStimuliData stimuliData = screenData.getStimuliData();
+            if (stimuliData != null) {
                 if (stimuliData.getInstructions() != null) {
                     WizardTextScreen stimulusInstructionsScreen = new WizardTextScreen(stimuliData.getStimuliName() + " Informatie", stimuliData.getInstructions(),
                             "volgende [ spatiebalk ]"
                     );
                     stimulusInstructionsScreen.setMenuLabel("Terug");
                     wizardData.addScreen(stimulusInstructionsScreen);
-                    stimulusInstructionsScreen.setNextWizardScreen(wizardEditUserScreen);
+//                    stimulusInstructionsScreen.setNextWizardScreen(wizardEditUserScreen);
                     agreementScreen.setNextWizardScreen(stimulusInstructionsScreen);
-                    firstStimuliScreen.setNextWizardScreenData(stimulusInstructionsScreen.getWizardScreenData());
-                    firstStimuliScreen = stimulusInstructionsScreen.getWizardScreenData();
+                    lastScreen.setNextWizardScreenData(stimulusInstructionsScreen.getWizardScreenData());
+                    lastScreen = stimulusInstructionsScreen;
                 }
                 final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen(stimuliData.getStimuliName(), false, stimuliData.getStimuliArray(),
                         stimuliData.getRandomStimuliTags(), 1000, true, null, 0, 0, null, null, null, null, "Volgende [tab + enter]");
@@ -118,8 +121,7 @@ public class SentenceCompletion {
                     list1234Screen.setShowProgress(true);
                 }
                 wizardData.addScreen(list1234Screen);
-                firstStimuliScreen.setNextWizardScreenData(list1234Screen.getWizardScreenData());
-                firstStimuliScreen = list1234Screen.getWizardScreenData();
+                lastScreen.setNextWizardScreenData(list1234Screen.getWizardScreenData());
                 lastScreen = list1234Screen;
             }
         }
