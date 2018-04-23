@@ -464,8 +464,8 @@ public class Parcours extends WizardUtilData {
             }
 
             @Override
-            public WizardUtilStimuliData[] getStimuliData() {
-                return new WizardUtilStimuliData[]{new WizardUtilStimuliData() {
+            public WizardUtilStimuliData getStimuliData() {
+                return new WizardUtilStimuliData() {
                     @Override
                     public String getStimuliName() {
                         return "Zinnen afmaken";
@@ -497,8 +497,7 @@ public class Parcours extends WizardUtilData {
                     public String getFreeTextValidationRegex() {
                         return ".{2,}";
                     }
-
-                }};
+                };
             }
         }};
     }
