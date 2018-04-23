@@ -30,13 +30,9 @@ public class WizardUtilData {
 
     protected String experimentTitle;
 
-    protected String feedbackScreenText;
-
     protected String instructionsText;
 
     protected String agreementText;
-
-    protected String metadataText;
 
     protected boolean showMenuBar;
 
@@ -44,13 +40,13 @@ public class WizardUtilData {
 
     protected boolean allowUserRestart;
 
+    protected String feedbackScreenText;
+
     protected String debriefingText1;
 
     protected String debriefingText2;
 
-    protected WizardUtilStimuliData[] stimuliData;
-
-    protected String[] metadataFields;
+    protected WizardUtilScreen[] screenData;
 
     public WizardUtilEnum getTemplateType() {
         return templateType;
@@ -66,14 +62,6 @@ public class WizardUtilData {
 
     public void setExperimentTitle(String experimentTitle) {
         this.experimentTitle = experimentTitle;
-    }
-
-    public String getFeedbackScreenText() {
-        return feedbackScreenText;
-    }
-
-    public void setFeedbackScreenText(String feedbackScreenText) {
-        this.feedbackScreenText = feedbackScreenText;
     }
 
     public String getInstructionsText() {
@@ -108,20 +96,28 @@ public class WizardUtilData {
         this.showMenuBar = showMenuBar;
     }
 
-    public String getMetadataText() {
-        return metadataText;
-    }
-
-    public void setMetadataText(String metadataText) {
-        this.metadataText = metadataText;
-    }
-
     public boolean isAllowUserRestart() {
         return allowUserRestart;
     }
 
     public void setAllowUserRestart(boolean allowUserRestart) {
         this.allowUserRestart = allowUserRestart;
+    }
+
+    public WizardUtilScreen[] getScreenData() {
+        return screenData;
+    }
+
+    public void setScreenData(WizardUtilScreen[] screenData) {
+        this.screenData = screenData;
+    }
+
+    public String getFeedbackScreenText() {
+        return feedbackScreenText;
+    }
+
+    public void setFeedbackScreenText(String feedbackScreenText) {
+        this.feedbackScreenText = feedbackScreenText;
     }
 
     public String getDebriefingText1() {
@@ -140,19 +136,4 @@ public class WizardUtilData {
         this.debriefingText2 = debriefingText2;
     }
 
-    public WizardUtilStimuliData[] getStimuliData() {
-        return stimuliData;
-    }
-
-    public void setStimuliData(WizardUtilStimuliData[] stimuliData) {
-        this.stimuliData = stimuliData;
-    }
-
-    public String[] getMetadataFields() {
-        return metadataFields;
-    }
-
-    public void setMetadataFields(String[] metadataFields) {
-        this.metadataFields = metadataFields;
-    }
 }

@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilEnum;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilStimuliData;
 
 /**
@@ -444,55 +445,61 @@ public class Parcours extends WizardUtilData {
     }
 
     @Override
-    public String[] getMetadataFields() {
-        return new String[]{
-            "workerId:Proefpersoon ID:.'{'3,'}':Voer minimaal drie letters.",
-            "age:Leeftijd:[0-9]+:Voer een getal.",
-            //            "firstName:Voornaam:.'{'3,'}':Voer minimaal drie letters.",
-            //            "lastName:Achternaam:.'{'3,'}':Voer minimaal drie letters.",
-            //            "education:Opleidingsniveau:primair onderwijs (basisschool)|voortgezet onderwijs|middelbaar beroepsonderwijs (MBO)|hoger onderwijs (HBO, universiteit)|anders:.",
-            "education:Opleidingsniveau:basisonderwijs|voortgezet onderwijs|MBO|HBO|universiteit|anders:.",
-            "educationOther:Opleidingsniveau (anders, namelijk):.*:.",
-            //            "education:Opleidingsniveau:.'{'3,'}':Voer minimaal drie letters.",
-            "gender:Geslacht:|man|vrouw|anders:."
-        };
-    }
+    public WizardUtilScreen[] getScreenData() {
+        return new WizardUtilScreen[]{new WizardUtilScreen() {
 
-    @Override
-    public WizardUtilStimuliData[] getStimuliData() {
-        return new WizardUtilStimuliData[]{new WizardUtilStimuliData() {
             @Override
-            public String getStimuliName() {
-                return "Zinnen afmaken";
+            public String[] getMetadataFields() {
+                return new String[]{
+                    "workerId:Proefpersoon ID:.'{'3,'}':Voer minimaal drie letters.",
+                    "age:Leeftijd:[0-9]+:Voer een getal.",
+                    //            "firstName:Voornaam:.'{'3,'}':Voer minimaal drie letters.",
+                    //            "lastName:Achternaam:.'{'3,'}':Voer minimaal drie letters.",
+                    //            "education:Opleidingsniveau:primair onderwijs (basisschool)|voortgezet onderwijs|middelbaar beroepsonderwijs (MBO)|hoger onderwijs (HBO, universiteit)|anders:.",
+                    "education:Opleidingsniveau:basisonderwijs|voortgezet onderwijs|MBO|HBO|universiteit|anders:.",
+                    "educationOther:Opleidingsniveau (anders, namelijk):.*:.",
+                    //            "education:Opleidingsniveau:.'{'3,'}':Voer minimaal drie letters.",
+                    "gender:Geslacht:|man|vrouw|anders:."
+                };
             }
 
             @Override
-            public String[] getStimuliArray() {
-                return stimuliString;
-            }
+            public WizardUtilStimuliData[] getStimuliData() {
+                return new WizardUtilStimuliData[]{new WizardUtilStimuliData() {
+                    @Override
+                    public String getStimuliName() {
+                        return "Zinnen afmaken";
+                    }
 
-            @Override
-            public String[] getRandomStimuliTags() {
-                return new String[]{"list_a",
-                    "list_b",
-                    "list_c"};
-            }
+                    @Override
+                    public String[] getStimuliArray() {
+                        return stimuliString;
+                    }
 
-            @Override
-            public String getFreeTextAllowedCharCodes() {
-                return null;
-            }
+                    @Override
+                    public String[] getRandomStimuliTags() {
+                        return new String[]{"list_a",
+                            "list_b",
+                            "list_c"};
+                    }
 
-            @Override
-            public String getFreeTextValidationMessage() {
-                return "Vul één of enkele woorden in die volgens u het beste aan het eind van de zin passen.";
-            }
+                    @Override
+                    public String getFreeTextAllowedCharCodes() {
+                        return null;
+                    }
 
-            @Override
-            public String getFreeTextValidationRegex() {
-                return ".{2,}";
-            }
+                    @Override
+                    public String getFreeTextValidationMessage() {
+                        return "Vul één of enkele woorden in die volgens u het beste aan het eind van de zin passen.";
+                    }
 
+                    @Override
+                    public String getFreeTextValidationRegex() {
+                        return ".{2,}";
+                    }
+
+                }};
+            }
         }};
     }
 
