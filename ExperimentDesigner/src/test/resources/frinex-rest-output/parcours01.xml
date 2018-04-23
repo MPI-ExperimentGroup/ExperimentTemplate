@@ -68,7 +68,7 @@
             </onError>
         </generateCompletionCode>
     </presenter>
-    <presenter back="Gegevens" displayOrder="6" menuLabel="Over" type="debug" self="about" title="Over">
+    <presenter back="Toestemming" displayOrder="6" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
     </presenter>
     <stimuli>
