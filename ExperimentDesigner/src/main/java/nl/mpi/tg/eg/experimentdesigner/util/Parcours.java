@@ -21,6 +21,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilEnum;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilStimuliData;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilText;
 
 /**
  * @since Jan 25, 2017 16:39:41 AM (creation date)
@@ -417,19 +418,10 @@ public class Parcours extends WizardUtilData {
         "setnr_107/cond_c/list_c:Joep is in de kelder aan het rommelen.<br/>Jolijne vraagt: wat ben je daar beneden aan het doen?<br/>Joep zegt: ik ben eventjes op zoek naar de",
         "setnr_108/cond_c/list_c:Rutger werkt als restaurateur en is al een tijd bezig aan een groot project.<br/>Margriet vraagt: hoe ziet het er nu uit?<br/>Rutger zegt: je kunt momenteel nog steeds de beschadigingen op de"};
 
-    @Override
-    public String getInstructionsText() {
-        return informationScreenText;
-    }
 
     @Override
     public String getFeedbackScreenText() {
         return null;
-    }
-
-    @Override
-    public String getAgreementText() {
-        return agreementScreenText;
     }
 
     @Override
@@ -447,7 +439,57 @@ public class Parcours extends WizardUtilData {
     @Override
     public WizardUtilScreen[] getScreenData() {
         return new WizardUtilScreen[]{new WizardUtilScreen() {
+            @Override
+            public WizardUtilText getTextScreen() {
+                return new WizardUtilText() {
+                    @Override
+                    public String getText() {
+                        return informationScreenText;
+                    }
 
+                    @Override
+                    public String getButonLabel() {
+                        return "Akkoord";
+                    }
+
+                    @Override
+                    public String getTitle() {
+                        return "Toestemming";
+                    }
+
+                    @Override
+                    public String getMenuLabel() {
+                        return "Terug";
+                    }
+                };
+            }
+
+        }, new WizardUtilScreen() {
+            @Override
+            public WizardUtilText getAgreementScreen() {
+                return new WizardUtilText() {
+                    @Override
+                    public String getText() {
+                        return agreementScreenText;
+                    }
+
+                    @Override
+                    public String getButonLabel() {
+                        return "volgende [ spatiebalk ]";
+            }
+
+                    @Override
+                    public String getTitle() {
+                        return "Informatie";
+                    }
+
+            @Override
+                    public String getMenuLabel() {
+                        return "Terug";
+                    }
+                };
+            }
+        }, new WizardUtilScreen() {
             @Override
             public String[] getMetadataFields() {
                 return new String[]{
@@ -462,7 +504,7 @@ public class Parcours extends WizardUtilData {
                     "gender:Geslacht:|man|vrouw|anders:."
                 };
             }
-
+        }, new WizardUtilScreen() {
             @Override
             public WizardUtilStimuliData getStimuliData() {
                 return new WizardUtilStimuliData() {
