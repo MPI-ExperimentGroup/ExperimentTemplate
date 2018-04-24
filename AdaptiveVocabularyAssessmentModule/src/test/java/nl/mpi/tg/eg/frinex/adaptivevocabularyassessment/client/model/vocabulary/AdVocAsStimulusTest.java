@@ -36,10 +36,10 @@ public class AdVocAsStimulusTest {
 
     private final int wordsPerBand = 40;
     private final int numberOfBands = 54;
-    private String wordsSource="Words_NL_1round";
-    private String nonwordsSource="NonWords_NL_1round";
-    private String wordsResponse = "JA&#44; ik ken dit woord" ;
-    private String nonwordsResponse ="NEE&#44; ik ken dit woord niet";
+    private final String wordsSource="Words_NL_1round";
+    private final String nonwordsSource="NonWords_NL_1round";
+    private final String wordsResponse = "JA&#44; ik ken dit woord" ;
+    private final String nonwordsResponse ="NEE&#44; ik ken dit woord niet";
 
     private final Vocabulary vocab;
     private final ArrayList<AdVocAsStimulus> nonwords;

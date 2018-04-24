@@ -31,7 +31,7 @@ public class MapNameWrapperClass {
         STIMULI_FILES_INDEX.put("NonWords_EN_2rounds_1", new NonWords_EN_2rounds_1());
         STIMULI_FILES_INDEX.put("NonWords_EN_2rounds_2", new NonWords_EN_2rounds_2());
         STIMULI_FILES_INDEX.put("Words_EN_2rounds_1", new Words_EN_2rounds_1());
-        STIMULI_FILES_INDEX.put("Words_EN_2rounds_2", new NonWords_EN_2rounds_2());
+        STIMULI_FILES_INDEX.put("Words_EN_2rounds_2", new Words_EN_2rounds_2());
         STIMULI_FILES_INDEX.put("NonWords_NL_2rounds_1", new NonWords_NL_2rounds_1());
         STIMULI_FILES_INDEX.put("NonWords_NL_2rounds_2", new NonWords_NL_2rounds_2());
         STIMULI_FILES_INDEX.put("Words_NL_2rounds_1", new Words_NL_2rounds_1());

@@ -33,15 +33,15 @@ import static org.junit.Assert.*;
  */
 public class VocabularyTest {
 
-    private final int numberOfBands = 54;
-    private final String wordsSource1="Words_NL_1round";
-    private final String nonwordsSource1="NonWords_NL_1round";
-    private final String wordsSource21="Words_NL_2rounds_1";
-    private final String nonwordsSource21="NonWords_NL_2rounds_1";
-    private final String wordsSource22="Words_NL_2rounds_2";
-    private final String nonwordsSource22="NonWords_NL_2rounds_2";
-    private final String wordsResponse = "JA&#44; ik ken dit woord" ;
-    private final String nonwordsResponse ="NEE&#44; ik ken dit woord niet";
+    private final int numberOfBands_NL = 54;
+    private final int wordsPerBand_NL = 40;
+    private final String wordsResponse_NL = "JA&#44; ik ken dit woord";
+    private final String nonwordsResponse_NL = "NEE&#44; ik ken dit woord niet";
+
+    private final int numberOfBands_EN = 62;
+    private final int wordsPerBand_EN = 20;
+    private final String wordsResponse_EN = "YES&#44; I know the word.";
+    private final String nonwordsResponse_EN = "NO&#44; I do not know the word.";
 
     public VocabularyTest() {
     }
@@ -62,24 +62,24 @@ public class VocabularyTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of initialiseWords method, of class Vocabulary.
-     */
-    @Test
-    public void testInitialiseWords1() throws Exception{
-        System.out.println("initialiseWords-1");
-        Vocabulary instance = new Vocabulary(this.numberOfBands, 40);
+    private void testInitialiseWords(int numberOfBands, int wordsPerBand, String wordsSource, String wordsResponse, String nonwordsResponse) throws Exception {
+        System.out.println("initialiseWords: " + wordsSource);
+        Vocabulary instance = new Vocabulary(numberOfBands, wordsPerBand);
         AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseWordsInputCSVString(this.wordsSource1, this.numberOfBands, this.nonwordsResponse, this.wordsResponse);
+        reader.parseWordsInputCSVString(wordsSource, numberOfBands, nonwordsResponse, wordsResponse);
         ArrayList<ArrayList<AdVocAsStimulus>> rawWords = reader.getWords();
 
         ArrayList<ArrayList<AdVocAsStimulus>> words = instance.initialiseWords(rawWords);
-        assertEquals(this.numberOfBands, words.size());
-        for (int i = 0; i < this.numberOfBands; i++) {
+        assertEquals(numberOfBands, words.size());
+        for (int i = 0; i < numberOfBands; i++) {
             ArrayList<String> spellings = new ArrayList<>(words.get(i).size());
+            assertEquals(wordsPerBand, words.get(i).size());
             for (AdVocAsStimulus stimulus : words.get(i)) {
                 spellings.add(stimulus.getLabel());
                 assertEquals(i + 1, stimulus.getBandNumber());
+                assertEquals(wordsResponse, stimulus.getCorrectResponses());
+                assertEquals(nonwordsResponse + "," + wordsResponse, stimulus.getRatingLabels());
+                assertEquals(stimulus.getUniqueId(), stimulus.getLabel());
             }
             assertEquals(rawWords.get(i).size(), words.get(i).size());
             HashSet<String> set = new HashSet(spellings);
@@ -91,70 +91,64 @@ public class VocabularyTest {
      * Test of initialiseWords method, of class Vocabulary.
      */
     @Test
-    public void testInitialiseWords21() throws Exception{
-        System.out.println("initialiseWords-21");
-        Vocabulary instance = new Vocabulary(this.numberOfBands, 20);
-        AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseWordsInputCSVString(this.wordsSource21, this.numberOfBands, this.nonwordsResponse, this.wordsResponse);
-        ArrayList<ArrayList<AdVocAsStimulus>> rawWords = reader.getWords();
-
-        ArrayList<ArrayList<AdVocAsStimulus>> words = instance.initialiseWords(rawWords);
-        assertEquals(this.numberOfBands, words.size());
-        for (int i = 0; i < this.numberOfBands; i++) {
-            ArrayList<String> spellings = new ArrayList<>(words.get(i).size());
-            for (AdVocAsStimulus stimulus : words.get(i)) {
-                spellings.add(stimulus.getLabel());
-                assertEquals(i + 1, stimulus.getBandNumber());
-            }
-            assertEquals(rawWords.get(i).size(), words.get(i).size());
-            HashSet<String> set = new HashSet(spellings);
-            assertEquals(set.size(), spellings.size()); // fails if there are repititions or permutation was incorrect
-        }
+    public void testInitialiseWords1() throws Exception {
+        this.testInitialiseWords(this.numberOfBands_NL, this.wordsPerBand_NL, "Words_NL_1round", this.wordsResponse_NL, this.nonwordsResponse_NL);
     }
 
-     /**
+    /**
      * Test of initialiseWords method, of class Vocabulary.
      */
     @Test
-    public void testInitialiseWords22() throws Exception{
-        System.out.println("initialiseWords-22");
-        Vocabulary instance = new Vocabulary(this.numberOfBands, 20);
-        AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseWordsInputCSVString(this.wordsSource22, this.numberOfBands, this.nonwordsResponse, this.wordsResponse);
-        ArrayList<ArrayList<AdVocAsStimulus>> rawWords = reader.getWords();
+    public void testInitialiseWords21() throws Exception {
+        this.testInitialiseWords(this.numberOfBands_NL, this.wordsPerBand_NL / 2, "Words_NL_2rounds_1", this.wordsResponse_NL, this.nonwordsResponse_NL);
+    }
 
-        ArrayList<ArrayList<AdVocAsStimulus>> words = instance.initialiseWords(rawWords);
-        assertEquals(this.numberOfBands, words.size());
-        for (int i = 0; i < this.numberOfBands; i++) {
-            ArrayList<String> spellings = new ArrayList<>(words.get(i).size());
-            for (AdVocAsStimulus stimulus : words.get(i)) {
-                spellings.add(stimulus.getLabel());
-                assertEquals(i + 1, stimulus.getBandNumber());
-            }
-            assertEquals(rawWords.get(i).size(), words.get(i).size());
-            HashSet<String> set = new HashSet(spellings);
-            assertEquals(set.size(), spellings.size()); // fails if there are repititions or permutation was incorrect
-        }
+    /**
+     * Test of initialiseWords method, of class Vocabulary.
+     */
+    @Test
+    public void testInitialiseWords22() throws Exception {
+        this.testInitialiseWords(this.numberOfBands_NL, this.wordsPerBand_NL / 2, "Words_NL_2rounds_2", this.wordsResponse_NL, this.nonwordsResponse_NL);
+    }
+
+    /**
+     * Test of initialiseWords method, of class Vocabulary.
+     */
+    @Test
+    public void testInitialiseWords21_EN() throws Exception {
+        this.testInitialiseWords(this.numberOfBands_EN, this.wordsPerBand_EN, "Words_EN_2rounds_1", this.wordsResponse_EN, this.nonwordsResponse_EN);
+    }
+
+    /**
+     * Test of initialiseWords method, of class Vocabulary.
+     */
+    @Test
+    public void testInitialiseWords22_EN() throws Exception {
+        this.testInitialiseWords(this.numberOfBands_EN, this.wordsPerBand_EN, "Words_EN_2rounds_2", this.wordsResponse_EN, this.nonwordsResponse_EN);
     }
 
     /**
      * Test of initialiseNonwords method, of class Vocabulary.
      */
-    @Test
-    public void testInitialiseNonwords2() throws Exception{
-        System.out.println("initialiseNonwords-2");
-        Vocabulary instance = new Vocabulary(this.numberOfBands, 20);
+    private void testInitialiseNonwords(String nonwordsSource, String wordsResponse, String nonwordsResponse) throws Exception {
+        System.out.println("initialiseNonwords: " + nonwordsSource);
+        Vocabulary instance = new Vocabulary(0, 0);
         AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseNonWordsInputCSVString(this.nonwordsSource21, this.nonwordsResponse, this.wordsResponse);
+        reader.parseNonWordsInputCSVString(nonwordsSource, nonwordsResponse, wordsResponse);
         ArrayList<AdVocAsStimulus> rawNonWords = reader.getNonwords();
-        
+
         ArrayList<AdVocAsStimulus> nonwords = instance.initialiseNonwords(rawNonWords);
         ArrayList<String> spellings = new ArrayList<>(nonwords.size());
         for (AdVocAsStimulus stimulus : nonwords) {
             spellings.add(stimulus.getLabel());
+            assertEquals(0, stimulus.getBandNumber());
+            assertEquals(nonwordsResponse, stimulus.getCorrectResponses());
+            assertEquals(nonwordsResponse + "," + wordsResponse, stimulus.getRatingLabels());
+            assertEquals(stimulus.getUniqueId(), stimulus.getLabel());
+
         }
         HashSet<String> set = new HashSet(spellings);
-        assertEquals(rawNonWords.size(), set.size());
+        assertEquals(nonwords.size(), set.size());
 
         // checking if the Equality is implemented OK on Strings
         ArrayList<String> testEqualityList = new ArrayList<>(2);
@@ -163,9 +157,34 @@ public class VocabularyTest {
         assertEquals(2, testEqualityList.size());
         HashSet<String> testEqualitySet = new HashSet(testEqualityList);
         assertEquals(1, testEqualitySet.size());
-
     }
 
-   
-   
+    /**
+     * Test of initialiseWords method, of class Vocabulary.
+     */
+    @Test
+    public void testInitialiseNonWords21_NL() throws Exception {
+        this.testInitialiseNonwords("NonWords_NL_2rounds_1", this.wordsResponse_NL, this.nonwordsResponse_NL);
+    }
+
+    @Test
+    public void testInitialiseNonWords22_NL() throws Exception {
+        this.testInitialiseNonwords("NonWords_NL_2rounds_2", this.wordsResponse_NL, this.nonwordsResponse_NL);
+    }
+
+    @Test
+    public void testInitialiseNonWords1_NL() throws Exception {
+        this.testInitialiseNonwords("NonWords_NL_1round", this.wordsResponse_NL, this.nonwordsResponse_NL);
+    }
+
+    @Test
+    public void testInitialiseNonWords21_EN() throws Exception {
+        this.testInitialiseNonwords("NonWords_EN_2rounds_1", this.wordsResponse_EN, this.nonwordsResponse_EN);
+    }
+
+    @Test
+    public void testInitialiseNonWords22_EN() throws Exception {
+        this.testInitialiseNonwords("NonWords_EN_2rounds_2", this.wordsResponse_EN, this.nonwordsResponse_EN);
+    }
+
 }

@@ -83,6 +83,7 @@ public class VocabularyFromFilesTest {
         System.out.println("\n");
     }
 
+    @Ignore
     @Test
     public void testParseWordInputCSV_NL() throws Exception {
         System.out.println("parseWordInputCSV NL");
