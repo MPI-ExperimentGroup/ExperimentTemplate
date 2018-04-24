@@ -18,13 +18,12 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.NonWords_NL_1round;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Words_NL_1round;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.AdVocAsStimuliFromString;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Vocabulary;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -35,24 +34,30 @@ import org.junit.Test;
  */
 public class AdVocAsStimulusTest {
 
-    private final int wordsPerBandInSeries;
     private final int wordsPerBand = 40;
-    private final int numberOfSeries = 1;
     private final int numberOfBands = 54;
+    private String wordsSource="Words_NL_1round";
+    private String nonwordsSource="NonWords_NL_1round";
+    private String wordsResponse = "JA&#44; ik ken dit woord" ;
+    private String nonwordsResponse ="NEE&#44; ik ken dit woord niet";
 
     private final Vocabulary vocab;
     private final ArrayList<AdVocAsStimulus> nonwords;
     private final ArrayList<ArrayList<AdVocAsStimulus>> words;
 
-    public AdVocAsStimulusTest() {
-        this.wordsPerBandInSeries = this.wordsPerBand / this.numberOfSeries;
-        this.vocab = new Vocabulary(this.numberOfBands, this.wordsPerBandInSeries);
+    public AdVocAsStimulusTest() throws Exception{
+        
+        this.vocab = new Vocabulary(this.numberOfBands, this.wordsPerBand);
+        AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
+        reader.parseWordsInputCSVString(this.wordsSource, this.numberOfBands, this.nonwordsResponse, this.wordsResponse);
+        reader.parseNonWordsInputCSVString(this.nonwordsSource, this.nonwordsResponse, this.wordsResponse);
+        ArrayList<ArrayList<AdVocAsStimulus>> rawWords = reader.getWords();
+        ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
+        assertTrue(rawWords.size()>0);
+        assertTrue(rawNonwords.size()>0);
 
-        this.words = vocab.initialiseWords(Words_NL_1round.WORDS_SERIES[0]);
-
-        ArrayList<AdVocAsStimulus> nonwordstmp = new ArrayList<>();
-        nonwordstmp.addAll(Arrays.asList(NonWords_NL_1round.NONWORDS_SERIES[0]));
-        this.nonwords = vocab.initialiseNonwords(nonwordstmp);
+        this.words = vocab.initialiseWords(rawWords);
+        this.nonwords = vocab.initialiseNonwords(rawNonwords);
     }
 
     @BeforeClass

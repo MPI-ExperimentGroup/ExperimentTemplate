@@ -59,11 +59,10 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     private ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> trials; // shared between various permutation-pairs, reduced while it is used
 
     AudioStimuliFromString reader = new AudioStimuliFromString();
-    
+
     // to be serialised
     private ArrayList<ArrayList<PermutationPair>> availableCombinations; // x[i] is the list of permutations with non-empty possibilities to instantiate them using trials matrix of unused trials
     private TrialTuple currentTrialTuple;
-    
 
     public AudioAsStimuliProvider(Stimulus[] stimulusArray) {
         super(stimulusArray);
@@ -97,7 +96,11 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
                 this.deserialiseSpecific(stimuliStateSnapshot);
             } catch (Exception ex) {
                 System.out.println();
-                System.out.println(Arrays.asList(ex.getStackTrace()));
+                System.out.println(ex);
+                for (StackTraceElement message : ex.getStackTrace()) {
+                    System.out.println(message);
+
+                }
                 System.out.println();
             }
         }
@@ -185,10 +188,10 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
     @Override
     public String getStringFineTuningHistory(String startRow, String endRow, String startColumn, String endColumn, String format) {
-        
+
         LinkedHashMap<String, Integer> stimuliTrialIndex = this.reader.getStimuliTrialIndex();
         LinkedHashMap<Integer, Trial> trialIndex = this.reader.getHashedTrials();
-        
+
         int bandOffset = 5;
         StringBuilder empty = new StringBuilder();
         empty.append(startColumn).append(" ").append(endColumn);
@@ -212,7 +215,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         stringBuilder.append(startColumn).append("Timestamp").append(endColumn);
         stringBuilder.append(startColumn).append("Visiting Number").append(endColumn);
         stringBuilder.append(endRow);
-        
+
         ArrayList<String> spellingsCheck = new ArrayList<>();
         Integer previousTrialID = null;
         int trialSequenceNumber = 0;
@@ -227,22 +230,22 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             AudioAsStimulus stimulus = bStimulus.getStimulus();
             StringBuilder row = new StringBuilder();
             String time = (new Date(bStimulus.getTimeStamp())).toString();
-            
+
             row.append(startColumn).append(stimulus.getbandLabel()).append(endColumn);
-            
+
             Integer trialID = stimuliTrialIndex.get(stimulus.getUniqueId());
             if (!trialID.equals(previousTrialID)) {
                 trialSequenceNumber++;
             }
             previousTrialID = trialID;
-            
+
             Trial trial = trialIndex.get(trialID);
-            
+
             row.append(startColumn).append(trialSequenceNumber).append(endColumn);
             row.append(startColumn).append(trialID).append(endColumn);
             row.append(startColumn).append(trial.getCondition()).append(endColumn);
             row.append(startColumn).append(trial.getTrialLength()).append(endColumn);
-            
+
             row.append(startColumn).append(stimulus.getLabel()).append(endColumn);
             row.append(startColumn).append(stimulus.getwordType()).append(endColumn);
             row.append(startColumn).append(bStimulus.getReaction()).append(endColumn);
@@ -284,9 +287,6 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         TrialTuple retVal = new TrialTuple(trs);
         return retVal;
     }
-    
-   
-    
 
     @Override
     public String toString() {
@@ -299,10 +299,9 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     @Override
     protected void deserialiseSpecific(String str) throws Exception {
 
-        
         this.reader.readTrialsAsCsv(LABELLING);
         this.trials = Trial.prepareTrialMatrix(reader.getHashedTrials(), this.numberOfBands, this.maxTrialLength);
-        
+
         Map<String, Object> map = UtilsJSONdialect.stringToObjectMap(str, SPECIFIC_FLDS);
 
         Object recordObj = map.get("responseRecord");

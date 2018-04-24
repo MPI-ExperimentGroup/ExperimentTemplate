@@ -20,7 +20,6 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 // /Users/olhshk/Documents/ExperimentTemplate/FieldKitRecorder/src/android/nl/mpi/tg/eg/frinex/FieldKitRecorder.java
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimuliProvider;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -28,13 +27,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.NonWordsSource;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.WordsSource;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.RandomIndexing;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Vocabulary;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.AdVocAsStimuliFromString;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
@@ -44,7 +42,7 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus> {
 
     private final static String[] SPECIFIC_FLDS = {"rndIndexing", "nonWordsIndexes", "wordsPerBand", "nonWordsPerBlock",
-        "averageNonWordPosition", "responseRecord", "tupleFT", "words", "nonwords"};
+        "averageNonWordPosition", "responseRecord", "tupleFT", "words", "nonwords", "wordsSource", "nonwordsSource", "wordsResponse", "nonwordsResponse"};
     private RandomIndexing rndIndexing;
     private ArrayList<Integer> nonWordsIndexes;
     private int wordsPerBand;
@@ -52,11 +50,11 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
     private int averageNonWordPosition = 0;
     private String wordsSource;
     private String nonwordsSource;
+    private String wordsResponse;
+    private String nonwordsResponse;
 
     private ArrayList<ArrayList<AdVocAsStimulus>> words;
     private ArrayList<AdVocAsStimulus> nonwords;
-    NonWordsSource nonWordsSourceObj;
-    WordsSource wordsSourceObj;
 
     private Random rnd;
 
@@ -73,14 +71,15 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
             // specific part
             if (stimuliStateSnapshot.trim().isEmpty()) {
 
+                AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
+                reader.parseWordsInputCSVString(this.wordsSource, this.numberOfBands, this.nonwordsResponse, this.wordsResponse);
+                reader.parseNonWordsInputCSVString(this.nonwordsSource, this.nonwordsResponse, this.wordsResponse);
+                ArrayList<ArrayList<AdVocAsStimulus>> rawWords = reader.getWords();
+                ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
+
                 Vocabulary vocab = new Vocabulary(this.numberOfBands, this.wordsPerBand);
-                ArrayList<AdVocAsStimulus> nonwordstmp = new ArrayList<>();
-
-                this.nonWordsSourceObj = (NonWordsSource) Class.forName(this.nonwordsSource).newInstance();
-                this.wordsSourceObj = (WordsSource) Class.forName(this.wordsSource).newInstance();
-
-                this.words = vocab.initialiseWords(wordsSourceObj.getWords());
-                this.nonwords = vocab.initialiseNonwords(nonWordsSourceObj.getNonWords());
+                this.words = vocab.initialiseWords(rawWords);
+                this.nonwords = vocab.initialiseNonwords(rawNonwords);
 
                 this.totalStimuli = this.nonwords.size();
                 for (int i = 0; i < this.numberOfBands; i++) {
@@ -99,7 +98,11 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
             }
         } catch (Exception ex) {
             System.out.println();
-            System.out.println(Arrays.asList(ex.getStackTrace()));
+            System.out.println(ex);
+            for (StackTraceElement message : ex.getStackTrace()) {
+                System.out.println(message);
+
+            }
             System.out.println();
         }
 
@@ -111,6 +114,14 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
 
     public void setnonwordsSource(String nonwordsSource) {
         this.nonwordsSource = nonwordsSource;
+    }
+    
+     public void setwordsResponse(String wordsResponse) {
+        this.wordsResponse = wordsResponse;
+    }
+
+    public void setnonwordsResponse(String nonwordsResponse) {
+        this.nonwordsResponse = nonwordsResponse;
     }
 
     public void setnonwordsPerBlock(String nonWrodsPerBlock) {
@@ -174,8 +185,8 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         boolean retVal;
         String stimulusResponseProcessed = (new StringBuilder()).append(stimulusResponse).toString();
         stimulusResponseProcessed = stimulusResponseProcessed.replaceAll(",", "&#44;");
-        if (!(stimulusResponseProcessed.equals(this.wordsSourceObj.getCorrectResponse()) || 
-                (stimulusResponseProcessed.equals(this.nonWordsSourceObj.getCorrectResponse())))) {
+        if (!(stimulusResponseProcessed.equals(this.wordsResponse)
+                || (stimulusResponseProcessed.equals(this.nonwordsResponse)))) {
             System.out.println("Erroenous input: neither word nor nonword; something went terrible wrong.");
             return false;
         }
@@ -191,7 +202,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         }
         boolean retVal;
         int index = this.responseRecord.size() - 1;
-        boolean isWord = this.responseRecord.get(index).getStimulus().getCorrectResponses().equals(this.wordsSourceObj.getCorrectResponse());
+        boolean isWord = this.responseRecord.get(index).getStimulus().getCorrectResponses().equals(this.wordsResponse);
         if (this.isCorrectCurrentResponse) {
             this.secondChanceFastTrackIsFired = false;
             if (isWord) {
@@ -539,7 +550,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         LinkedHashMap<Integer, String> retVal = new LinkedHashMap<Integer, String>();
         for (BookkeepingStimulus<AdVocAsStimulus> bStimulus : records) {
             AdVocAsStimulus stimulus = bStimulus.getStimulus();
-            if (stimulus.getCorrectResponses().equals(this.wordsSourceObj.getCorrectResponse())) { // is a word
+            if (stimulus.getCorrectResponses().equals(this.wordsResponse)) { // is a word
                 Integer key = stimulus.getBandNumber();
                 if (!retVal.containsKey(key)) {
                     retVal.put(key, stimulus.getLabel());
@@ -568,10 +579,10 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         retVal.put("nonwords", new ArrayList<BookkeepingStimulus<AdVocAsStimulus>>());
 
         for (BookkeepingStimulus<AdVocAsStimulus> bStimulus : records) {
-            if (this.wordsSourceObj.getCorrectResponse().equals(bStimulus.getStimulus().getCorrectResponses())) {
+            if (this.wordsResponse.equals(bStimulus.getStimulus().getCorrectResponses())) {
                 retVal.get("words").add(bStimulus);
             }
-            if (this.nonWordsSourceObj.getCorrectResponse().equals(bStimulus.getStimulus().getCorrectResponses())) {
+            if (this.nonwordsResponse.equals(bStimulus.getStimulus().getCorrectResponses())) {
                 retVal.get("nonwords").add(bStimulus);
             }
         }
@@ -588,6 +599,10 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         map.put("nonWordsIndexes", this.nonWordsIndexes);
         map.put("words", this.words);
         map.put("nonwords", this.nonwords);
+        map.put("wordsSource", this.wordsSource);
+        map.put("nonwordsSource", this.nonwordsSource);
+        map.put("wordsResponse", this.wordsResponse);
+        map.put("nonwordsResponse", this.nonwordsResponse);
         return map.toString();
     }
 
@@ -606,12 +621,16 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         this.averageNonWordPosition = Integer.parseInt(map.get("averageNonWordPosition").toString());
 
         // reinitialise vocabulary
+        this.wordsResponse = map.get("wordsResponse").toString();
+        this.nonwordsResponse = map.get("nonwordsResponse").toString();
+
+        this.wordsSource = map.get("wordsSource").toString();
+        this.nonwordsSource = map.get("nonwordsSource").toString();
+        AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
+        reader.parseWordsInputCSVString(this.wordsSource, this.numberOfBands, this.nonwordsResponse, this.wordsResponse);
+        reader.parseNonWordsInputCSVString(this.nonwordsSource, this.nonwordsResponse, this.wordsResponse);
         
-        this.nonWordsSourceObj = (NonWordsSource) Class.forName(this.nonwordsSource).newInstance();
-        this.wordsSourceObj = (WordsSource) Class.forName(this.wordsSource).newInstance();
-        Vocabulary vocab = new Vocabulary(this.numberOfBands, this.wordsPerBand);
-        LinkedHashMap<String, AdVocAsStimulus> hashedStimuli = vocab.hashStimuli(wordsSourceObj.getWords(), nonWordsSourceObj.getNonWords());
-       
+        LinkedHashMap<String, AdVocAsStimulus> hashedStimuli = reader.getHashedStimuli();
 
         BookkeepingStimulus<AdVocAsStimulus> ghost = new BookkeepingStimulus<AdVocAsStimulus>(null);
         Object recordObj = map.get("responseRecord");

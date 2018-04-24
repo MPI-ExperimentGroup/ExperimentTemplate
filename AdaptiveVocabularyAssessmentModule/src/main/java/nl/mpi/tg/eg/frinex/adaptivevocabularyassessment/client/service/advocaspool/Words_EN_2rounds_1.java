@@ -17,1332 +17,1253 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool;
 
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
-
 /**
  *
  * @author olhshk
  */
-public class Words_EN_2rounds_1 extends WordsSource{
-    
-    public static final String WORD_EN = "YES&#44; I know this word";
+public class Words_EN_2rounds_1 extends CsvStringWrapper {
 
-    private static final AdVocAsStimulus[][] SERIES = { 
-        
-            {
-                new AdVocAsStimulus("alternative_1524229692046", "alternative", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 1),
-                new AdVocAsStimulus("calendar_1524229692047", "calendar", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 1),
-                new AdVocAsStimulus("clothing_1524229692047", "clothing", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 1),
-                new AdVocAsStimulus("concept_1524229692047", "concept", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 1),
-                new AdVocAsStimulus("conflict_1524229692047", "conflict", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 1),
-                new AdVocAsStimulus("crossing_1524229692047", "crossing", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 1),
-                new AdVocAsStimulus("demonstration_1524229692047", "demonstration", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 1),
-                new AdVocAsStimulus("height_1524229692047", "height", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 1),
-                new AdVocAsStimulus("housing_1524229692047", "housing", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 1),
-                new AdVocAsStimulus("include_1524229692047", "include", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 1),
-                new AdVocAsStimulus("leadership_1524229692047", "leadership", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 1),
-                new AdVocAsStimulus("maximum_1524229692047", "maximum", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 1),
-                new AdVocAsStimulus("physically_1524229692047", "physically", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 1),
-                new AdVocAsStimulus("rising_1524229692047", "rising", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 1),
-                new AdVocAsStimulus("scheme_1524229692047", "scheme", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 1),
-                new AdVocAsStimulus("speaker_1524229692047", "speaker", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 1),
-                new AdVocAsStimulus("symbol_1524229692048", "symbol", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 1),
-                new AdVocAsStimulus("technical_1524229692048", "technical", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 1),
-                new AdVocAsStimulus("tournament_1524229692048", "tournament", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 1),
-                new AdVocAsStimulus("tricky_1524229692048", "tricky", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 1),},
-            {
-                new AdVocAsStimulus("destruction_1524229692048", "destruction", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 2),
-                new AdVocAsStimulus("discover_1524229692048", "discover", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 2),
-                new AdVocAsStimulus("electricity_1524229692048", "electricity", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 2),
-                new AdVocAsStimulus("embarrassment_1524229692048", "embarrassment", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 2),
-                new AdVocAsStimulus("entering_1524229692048", "entering", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 2),
-                new AdVocAsStimulus("existence_1524229692048", "existence", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 2),
-                new AdVocAsStimulus("generation_1524229692048", "generation", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 2),
-                new AdVocAsStimulus("graduate_1524229692048", "graduate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 2),
-                new AdVocAsStimulus("international_1524229692048", "international", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 2),
-                new AdVocAsStimulus("parade_1524229692048", "parade", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 2),
-                new AdVocAsStimulus("producer_1524229692048", "producer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 2),
-                new AdVocAsStimulus("rocket_1524229692048", "rocket", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 2),
-                new AdVocAsStimulus("serving_1524229692048", "serving", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 2),
-                new AdVocAsStimulus("session_1524229692048", "session", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 2),
-                new AdVocAsStimulus("setback_1524229692048", "setback", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 2),
-                new AdVocAsStimulus("signature_1524229692048", "signature", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 2),
-                new AdVocAsStimulus("splendid_1524229692048", "splendid", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 2),
-                new AdVocAsStimulus("tattoo_1524229692048", "tattoo", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 2),
-                new AdVocAsStimulus("temper_1524229692048", "temper", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 2),
-                new AdVocAsStimulus("useful_1524229692048", "useful", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 2),},
-            {
-                new AdVocAsStimulus("accomplishment_1524229692048", "accomplishment", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 3),
-                new AdVocAsStimulus("behave_1524229692048", "behave", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 3),
-                new AdVocAsStimulus("board_1524229692048", "board", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 3),
-                new AdVocAsStimulus("certification_1524229692048", "certification", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 3),
-                new AdVocAsStimulus("concession_1524229692048", "concession", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 3),
-                new AdVocAsStimulus("dangerously_1524229692048", "dangerously", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 3),
-                new AdVocAsStimulus("flute_1524229692048", "flute", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 3),
-                new AdVocAsStimulus("income_1524229692048", "income", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 3),
-                new AdVocAsStimulus("overlapping_1524229692048", "overlapping", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 3),
-                new AdVocAsStimulus("packaging_1524229692048", "packaging", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 3),
-                new AdVocAsStimulus("pregnant_1524229692048", "pregnant", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 3),
-                new AdVocAsStimulus("radioactive_1524229692048", "radioactive", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 3),
-                new AdVocAsStimulus("raising_1524229692048", "raising", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 3),
-                new AdVocAsStimulus("refresh_1524229692048", "refresh", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 3),
-                new AdVocAsStimulus("resourcefulness_1524229692048", "resourcefulness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 3),
-                new AdVocAsStimulus("rooftop_1524229692048", "rooftop", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 3),
-                new AdVocAsStimulus("shopper_1524229692048", "shopper", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 3),
-                new AdVocAsStimulus("specialist_1524229692048", "specialist", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 3),
-                new AdVocAsStimulus("sword_1524229692048", "sword", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 3),
-                new AdVocAsStimulus("twister_1524229692048", "twister", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 3),},
-            {
-                new AdVocAsStimulus("advisory_1524229692048", "advisory", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 4),
-                new AdVocAsStimulus("bamboo_1524229692048", "bamboo", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 4),
-                new AdVocAsStimulus("business_1524229692048", "business", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 4),
-                new AdVocAsStimulus("character_1524229692048", "character", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 4),
-                new AdVocAsStimulus("deeply_1524229692048", "deeply", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 4),
-                new AdVocAsStimulus("dictation_1524229692048", "dictation", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 4),
-                new AdVocAsStimulus("earpiece_1524229692048", "earpiece", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 4),
-                new AdVocAsStimulus("faithful_1524229692048", "faithful", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 4),
-                new AdVocAsStimulus("frozen_1524229692048", "frozen", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 4),
-                new AdVocAsStimulus("geometrically_1524229692048", "geometrically", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 4),
-                new AdVocAsStimulus("inactivity_1524229692049", "inactivity", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 4),
-                new AdVocAsStimulus("investigation_1524229692049", "investigation", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 4),
-                new AdVocAsStimulus("manuscript_1524229692049", "manuscript", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 4),
-                new AdVocAsStimulus("missing_1524229692049", "missing", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 4),
-                new AdVocAsStimulus("overview_1524229692049", "overview", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 4),
-                new AdVocAsStimulus("qualify_1524229692049", "qualify", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 4),
-                new AdVocAsStimulus("splatter_1524229692049", "splatter", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 4),
-                new AdVocAsStimulus("swirl_1524229692049", "swirl", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 4),
-                new AdVocAsStimulus("theoretically_1524229692049", "theoretically", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 4),
-                new AdVocAsStimulus("touchable_1524229692049", "touchable", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 4),},
-            {
-                new AdVocAsStimulus("arrow_1524229692049", "arrow", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 5),
-                new AdVocAsStimulus("contagious_1524229692049", "contagious", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 5),
-                new AdVocAsStimulus("conventionally_1524229692049", "conventionally", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 5),
-                new AdVocAsStimulus("cranberry_1524229692049", "cranberry", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 5),
-                new AdVocAsStimulus("enlightenment_1524229692049", "enlightenment", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 5),
-                new AdVocAsStimulus("existing_1524229692049", "existing", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 5),
-                new AdVocAsStimulus("forgetting_1524229692049", "forgetting", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 5),
-                new AdVocAsStimulus("influential_1524229692049", "influential", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 5),
-                new AdVocAsStimulus("intensely_1524229692049", "intensely", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 5),
-                new AdVocAsStimulus("jetlag_1524229692049", "jetlag", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 5),
-                new AdVocAsStimulus("mechanic_1524229692049", "mechanic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 5),
-                new AdVocAsStimulus("milkshake_1524229692049", "milkshake", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 5),
-                new AdVocAsStimulus("partake_1524229692049", "partake", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 5),
-                new AdVocAsStimulus("rating_1524229692049", "rating", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 5),
-                new AdVocAsStimulus("reservoir_1524229692049", "reservoir", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 5),
-                new AdVocAsStimulus("restrictive_1524229692049", "restrictive", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 5),
-                new AdVocAsStimulus("scrape_1524229692049", "scrape", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 5),
-                new AdVocAsStimulus("severe_1524229692049", "severe", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 5),
-                new AdVocAsStimulus("unusually_1524229692049", "unusually", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 5),
-                new AdVocAsStimulus("voodoo_1524229692049", "voodoo", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 5),},
-            {
-                new AdVocAsStimulus("accordingly_1524229692049", "accordingly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 6),
-                new AdVocAsStimulus("aviator_1524229692049", "aviator", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 6),
-                new AdVocAsStimulus("church_1524229692049", "church", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 6),
-                new AdVocAsStimulus("circumstance_1524229692049", "circumstance", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 6),
-                new AdVocAsStimulus("clockwork_1524229692049", "clockwork", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 6),
-                new AdVocAsStimulus("flexibility_1524229692049", "flexibility", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 6),
-                new AdVocAsStimulus("island_1524229692049", "island", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 6),
-                new AdVocAsStimulus("lethal_1524229692049", "lethal", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 6),
-                new AdVocAsStimulus("lizard_1524229692049", "lizard", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 6),
-                new AdVocAsStimulus("neatness_1524229692049", "neatness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 6),
-                new AdVocAsStimulus("protective_1524229692049", "protective", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 6),
-                new AdVocAsStimulus("request_1524229692049", "request", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 6),
-                new AdVocAsStimulus("responsibility_1524229692049", "responsibility", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 6),
-                new AdVocAsStimulus("spinal_1524229692049", "spinal", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 6),
-                new AdVocAsStimulus("spoiling_1524229692049", "spoiling", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 6),
-                new AdVocAsStimulus("stagger_1524229692049", "stagger", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 6),
-                new AdVocAsStimulus("teapot_1524229692049", "teapot", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 6),
-                new AdVocAsStimulus("thumping_1524229692049", "thumping", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 6),
-                new AdVocAsStimulus("washroom_1524229692049", "washroom", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 6),
-                new AdVocAsStimulus("whirlwind_1524229692049", "whirlwind", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 6),},
-            {
-                new AdVocAsStimulus("better_1524229692049", "better", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 7),
-                new AdVocAsStimulus("blizzard_1524229692049", "blizzard", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 7),
-                new AdVocAsStimulus("cleanse_1524229692049", "cleanse", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 7),
-                new AdVocAsStimulus("commence_1524229692049", "commence", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 7),
-                new AdVocAsStimulus("curling_1524229692049", "curling", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 7),
-                new AdVocAsStimulus("defrost_1524229692049", "defrost", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 7),
-                new AdVocAsStimulus("detachable_1524229692049", "detachable", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 7),
-                new AdVocAsStimulus("discharging_1524229692049", "discharging", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 7),
-                new AdVocAsStimulus("generating_1524229692049", "generating", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 7),
-                new AdVocAsStimulus("mirage_1524229692049", "mirage", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 7),
-                new AdVocAsStimulus("partly_1524229692049", "partly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 7),
-                new AdVocAsStimulus("philosophical_1524229692049", "philosophical", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 7),
-                new AdVocAsStimulus("player_1524229692049", "player", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 7),
-                new AdVocAsStimulus("procrastination_1524229692049", "procrastination", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 7),
-                new AdVocAsStimulus("silently_1524229692049", "silently", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 7),
-                new AdVocAsStimulus("spiritually_1524229692049", "spiritually", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 7),
-                new AdVocAsStimulus("stylist_1524229692049", "stylist", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 7),
-                new AdVocAsStimulus("sweetheart_1524229692049", "sweetheart", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 7),
-                new AdVocAsStimulus("unforgettable_1524229692049", "unforgettable", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 7),
-                new AdVocAsStimulus("wristband_1524229692049", "wristband", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 7),},
-            {
-                new AdVocAsStimulus("abbreviation_1524229692049", "abbreviation", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 8),
-                new AdVocAsStimulus("accessibility_1524229692049", "accessibility", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 8),
-                new AdVocAsStimulus("antibody_1524229692049", "antibody", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 8),
-                new AdVocAsStimulus("beneath_1524229692049", "beneath", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 8),
-                new AdVocAsStimulus("cordless_1524229692049", "cordless", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 8),
-                new AdVocAsStimulus("correspondence_1524229692049", "correspondence", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 8),
-                new AdVocAsStimulus("disintegrate_1524229692049", "disintegrate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 8),
-                new AdVocAsStimulus("holding_1524229692049", "holding", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 8),
-                new AdVocAsStimulus("incompatibility_1524229692049", "incompatibility", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 8),
-                new AdVocAsStimulus("integrate_1524229692049", "integrate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 8),
-                new AdVocAsStimulus("pizza_1524229692050", "pizza", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 8),
-                new AdVocAsStimulus("precautionary_1524229692050", "precautionary", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 8),
-                new AdVocAsStimulus("remake_1524229692050", "remake", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 8),
-                new AdVocAsStimulus("sharpener_1524229692050", "sharpener", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 8),
-                new AdVocAsStimulus("similarity_1524229692050", "similarity", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 8),
-                new AdVocAsStimulus("spinner_1524229692050", "spinner", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 8),
-                new AdVocAsStimulus("tragic_1524229692050", "tragic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 8),
-                new AdVocAsStimulus("unconscious_1524229692050", "unconscious", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 8),
-                new AdVocAsStimulus("unharmed_1524229692050", "unharmed", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 8),
-                new AdVocAsStimulus("uptight_1524229692050", "uptight", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 8),},
-            {
-                new AdVocAsStimulus("admirably_1524229692050", "admirably", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 9),
-                new AdVocAsStimulus("bridesmaid_1524229692050", "bridesmaid", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 9),
-                new AdVocAsStimulus("calmly_1524229692050", "calmly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 9),
-                new AdVocAsStimulus("comic_1524229692050", "comic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 9),
-                new AdVocAsStimulus("deconstruction_1524229692050", "deconstruction", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 9),
-                new AdVocAsStimulus("dispense_1524229692050", "dispense", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 9),
-                new AdVocAsStimulus("expiration_1524229692050", "expiration", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 9),
-                new AdVocAsStimulus("giggling_1524229692050", "giggling", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 9),
-                new AdVocAsStimulus("inner_1524229692050", "inner", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 9),
-                new AdVocAsStimulus("manage_1524229692050", "manage", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 9),
-                new AdVocAsStimulus("octagon_1524229692050", "octagon", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 9),
-                new AdVocAsStimulus("order_1524229692050", "order", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 9),
-                new AdVocAsStimulus("saltwater_1524229692050", "saltwater", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 9),
-                new AdVocAsStimulus("screamer_1524229692050", "screamer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 9),
-                new AdVocAsStimulus("soften_1524229692050", "soften", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 9),
-                new AdVocAsStimulus("thermal_1524229692050", "thermal", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 9),
-                new AdVocAsStimulus("unintelligible_1524229692050", "unintelligible", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 9),
-                new AdVocAsStimulus("unscented_1524229692050", "unscented", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 9),
-                new AdVocAsStimulus("voyage_1524229692050", "voyage", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 9),
-                new AdVocAsStimulus("writing_1524229692050", "writing", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 9),},
-            {
-                new AdVocAsStimulus("castaway_1524229692050", "castaway", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 10),
-                new AdVocAsStimulus("coleslaw_1524229692050", "coleslaw", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 10),
-                new AdVocAsStimulus("consideration_1524229692050", "consideration", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 10),
-                new AdVocAsStimulus("doubting_1524229692050", "doubting", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 10),
-                new AdVocAsStimulus("drinker_1524229692050", "drinker", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 10),
-                new AdVocAsStimulus("employer_1524229692050", "employer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 10),
-                new AdVocAsStimulus("expressiveness_1524229692050", "expressiveness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 10),
-                new AdVocAsStimulus("fascination_1524229692050", "fascination", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 10),
-                new AdVocAsStimulus("habitually_1524229692050", "habitually", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 10),
-                new AdVocAsStimulus("hypocritical_1524229692050", "hypocritical", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 10),
-                new AdVocAsStimulus("inclusive_1524229692050", "inclusive", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 10),
-                new AdVocAsStimulus("lavish_1524229692050", "lavish", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 10),
-                new AdVocAsStimulus("listing_1524229692050", "listing", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 10),
-                new AdVocAsStimulus("module_1524229692050", "module", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 10),
-                new AdVocAsStimulus("parasite_1524229692050", "parasite", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 10),
-                new AdVocAsStimulus("pension_1524229692050", "pension", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 10),
-                new AdVocAsStimulus("prologue_1524229692050", "prologue", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 10),
-                new AdVocAsStimulus("showdown_1524229692050", "showdown", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 10),
-                new AdVocAsStimulus("tilting_1524229692050", "tilting", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 10),
-                new AdVocAsStimulus("transportation_1524229692050", "transportation", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 10),},
-            {
-                new AdVocAsStimulus("alpha_1524229692050", "alpha", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 11),
-                new AdVocAsStimulus("blaming_1524229692050", "blaming", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 11),
-                new AdVocAsStimulus("borderline_1524229692050", "borderline", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 11),
-                new AdVocAsStimulus("dandy_1524229692050", "dandy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 11),
-                new AdVocAsStimulus("environmental_1524229692050", "environmental", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 11),
-                new AdVocAsStimulus("fascinated_1524229692050", "fascinated", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 11),
-                new AdVocAsStimulus("fraternity_1524229692050", "fraternity", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 11),
-                new AdVocAsStimulus("goblet_1524229692050", "goblet", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 11),
-                new AdVocAsStimulus("gratify_1524229692050", "gratify", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 11),
-                new AdVocAsStimulus("impulsively_1524229692050", "impulsively", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 11),
-                new AdVocAsStimulus("model_1524229692050", "model", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 11),
-                new AdVocAsStimulus("mowing_1524229692050", "mowing", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 11),
-                new AdVocAsStimulus("notable_1524229692050", "notable", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 11),
-                new AdVocAsStimulus("occupational_1524229692050", "occupational", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 11),
-                new AdVocAsStimulus("pinstripe_1524229692050", "pinstripe", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 11),
-                new AdVocAsStimulus("planet_1524229692050", "planet", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 11),
-                new AdVocAsStimulus("poisonous_1524229692050", "poisonous", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 11),
-                new AdVocAsStimulus("sequence_1524229692050", "sequence", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 11),
-                new AdVocAsStimulus("sustain_1524229692050", "sustain", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 11),
-                new AdVocAsStimulus("together_1524229692050", "together", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 11),},
-            {
-                new AdVocAsStimulus("artistically_1524229692050", "artistically", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 12),
-                new AdVocAsStimulus("catwalk_1524229692050", "catwalk", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 12),
-                new AdVocAsStimulus("chivalry_1524229692050", "chivalry", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 12),
-                new AdVocAsStimulus("collar_1524229692050", "collar", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 12),
-                new AdVocAsStimulus("colleague_1524229692050", "colleague", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 12),
-                new AdVocAsStimulus("edging_1524229692050", "edging", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 12),
-                new AdVocAsStimulus("enlightening_1524229692050", "enlightening", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 12),
-                new AdVocAsStimulus("exploring_1524229692050", "exploring", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 12),
-                new AdVocAsStimulus("factory_1524229692050", "factory", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 12),
-                new AdVocAsStimulus("forensic_1524229692050", "forensic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 12),
-                new AdVocAsStimulus("hotline_1524229692050", "hotline", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 12),
-                new AdVocAsStimulus("ingenuity_1524229692050", "ingenuity", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 12),
-                new AdVocAsStimulus("ongoing_1524229692050", "ongoing", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 12),
-                new AdVocAsStimulus("plate_1524229692050", "plate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 12),
-                new AdVocAsStimulus("propeller_1524229692050", "propeller", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 12),
-                new AdVocAsStimulus("proudly_1524229692050", "proudly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 12),
-                new AdVocAsStimulus("prowling_1524229692050", "prowling", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 12),
-                new AdVocAsStimulus("search_1524229692050", "search", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 12),
-                new AdVocAsStimulus("sprite_1524229692050", "sprite", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 12),
-                new AdVocAsStimulus("traditionalist_1524229692050", "traditionalist", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 12),},
-            {
-                new AdVocAsStimulus("aroma_1524229692050", "aroma", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 13),
-                new AdVocAsStimulus("bearing_1524229692051", "bearing", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 13),
-                new AdVocAsStimulus("bleakness_1524229692051", "bleakness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 13),
-                new AdVocAsStimulus("brewer_1524229692051", "brewer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 13),
-                new AdVocAsStimulus("cartilage_1524229692051", "cartilage", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 13),
-                new AdVocAsStimulus("clumsy_1524229692051", "clumsy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 13),
-                new AdVocAsStimulus("duality_1524229692051", "duality", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 13),
-                new AdVocAsStimulus("espionage_1524229692051", "espionage", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 13),
-                new AdVocAsStimulus("forgery_1524229692051", "forgery", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 13),
-                new AdVocAsStimulus("huntsman_1524229692051", "huntsman", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 13),
-                new AdVocAsStimulus("misunderstood_1524229692051", "misunderstood", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 13),
-                new AdVocAsStimulus("oddity_1524229692051", "oddity", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 13),
-                new AdVocAsStimulus("referral_1524229692051", "referral", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 13),
-                new AdVocAsStimulus("regrettable_1524229692051", "regrettable", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 13),
-                new AdVocAsStimulus("sampling_1524229692051", "sampling", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 13),
-                new AdVocAsStimulus("swimwear_1524229692051", "swimwear", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 13),
-                new AdVocAsStimulus("symmetrical_1524229692051", "symmetrical", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 13),
-                new AdVocAsStimulus("thieving_1524229692051", "thieving", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 13),
-                new AdVocAsStimulus("unshaken_1524229692051", "unshaken", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 13),
-                new AdVocAsStimulus("whose_1524229692051", "whose", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 13),},
-            {
-                new AdVocAsStimulus("aesthetically_1524229692051", "aesthetically", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 14),
-                new AdVocAsStimulus("canyon_1524229692051", "canyon", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 14),
-                new AdVocAsStimulus("clubhouse_1524229692051", "clubhouse", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 14),
-                new AdVocAsStimulus("conceptual_1524229692051", "conceptual", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 14),
-                new AdVocAsStimulus("croak_1524229692051", "croak", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 14),
-                new AdVocAsStimulus("downpour_1524229692051", "downpour", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 14),
-                new AdVocAsStimulus("fixable_1524229692051", "fixable", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 14),
-                new AdVocAsStimulus("grappling_1524229692051", "grappling", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 14),
-                new AdVocAsStimulus("hypnotherapy_1524229692051", "hypnotherapy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 14),
-                new AdVocAsStimulus("impale_1524229692051", "impale", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 14),
-                new AdVocAsStimulus("interstate_1524229692051", "interstate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 14),
-                new AdVocAsStimulus("oxide_1524229692051", "oxide", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 14),
-                new AdVocAsStimulus("permissible_1524229692051", "permissible", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 14),
-                new AdVocAsStimulus("plunge_1524229692051", "plunge", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 14),
-                new AdVocAsStimulus("respectably_1524229692051", "respectably", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 14),
-                new AdVocAsStimulus("rippling_1524229692051", "rippling", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 14),
-                new AdVocAsStimulus("slayer_1524229692051", "slayer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 14),
-                new AdVocAsStimulus("stocky_1524229692051", "stocky", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 14),
-                new AdVocAsStimulus("uptown_1524229692051", "uptown", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 14),
-                new AdVocAsStimulus("vigorously_1524229692051", "vigorously", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 14),},
-            {
-                new AdVocAsStimulus("airfield_1524229692051", "airfield", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 15),
-                new AdVocAsStimulus("answerable_1524229692051", "answerable", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 15),
-                new AdVocAsStimulus("baboon_1524229692051", "baboon", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 15),
-                new AdVocAsStimulus("choreograph_1524229692051", "choreograph", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 15),
-                new AdVocAsStimulus("conductivity_1524229692051", "conductivity", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 15),
-                new AdVocAsStimulus("deviant_1524229692051", "deviant", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 15),
-                new AdVocAsStimulus("disapproval_1524229692051", "disapproval", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 15),
-                new AdVocAsStimulus("disperse_1524229692051", "disperse", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 15),
-                new AdVocAsStimulus("diverting_1524229692051", "diverting", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 15),
-                new AdVocAsStimulus("excellency_1524229692051", "excellency", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 15),
-                new AdVocAsStimulus("fraying_1524229692051", "fraying", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 15),
-                new AdVocAsStimulus("hourglass_1524229692051", "hourglass", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 15),
-                new AdVocAsStimulus("mortar_1524229692051", "mortar", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 15),
-                new AdVocAsStimulus("prudently_1524229692051", "prudently", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 15),
-                new AdVocAsStimulus("redesign_1524229692051", "redesign", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 15),
-                new AdVocAsStimulus("seashell_1524229692051", "seashell", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 15),
-                new AdVocAsStimulus("segregation_1524229692051", "segregation", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 15),
-                new AdVocAsStimulus("shack_1524229692051", "shack", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 15),
-                new AdVocAsStimulus("treasury_1524229692051", "treasury", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 15),
-                new AdVocAsStimulus("wiggly_1524229692051", "wiggly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 15),},
-            {
-                new AdVocAsStimulus("apprehend_1524229692051", "apprehend", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 16),
-                new AdVocAsStimulus("banning_1524229692051", "banning", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 16),
-                new AdVocAsStimulus("cashmere_1524229692051", "cashmere", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 16),
-                new AdVocAsStimulus("catcher_1524229692051", "catcher", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 16),
-                new AdVocAsStimulus("diligence_1524229692051", "diligence", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 16),
-                new AdVocAsStimulus("institutionally_1524229692051", "institutionally", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 16),
-                new AdVocAsStimulus("loophole_1524229692051", "loophole", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 16),
-                new AdVocAsStimulus("miscalculate_1524229692051", "miscalculate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 16),
-                new AdVocAsStimulus("mullet_1524229692051", "mullet", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 16),
-                new AdVocAsStimulus("neglectful_1524229692051", "neglectful", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 16),
-                new AdVocAsStimulus("personable_1524229692051", "personable", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 16),
-                new AdVocAsStimulus("personnel_1524229692051", "personnel", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 16),
-                new AdVocAsStimulus("polygon_1524229692051", "polygon", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 16),
-                new AdVocAsStimulus("recalculate_1524229692051", "recalculate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 16),
-                new AdVocAsStimulus("rehydration_1524229692051", "rehydration", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 16),
-                new AdVocAsStimulus("responder_1524229692051", "responder", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 16),
-                new AdVocAsStimulus("salamander_1524229692051", "salamander", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 16),
-                new AdVocAsStimulus("stork_1524229692051", "stork", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 16),
-                new AdVocAsStimulus("supremely_1524229692051", "supremely", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 16),
-                new AdVocAsStimulus("westbound_1524229692051", "westbound", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 16),},
-            {
-                new AdVocAsStimulus("aching_1524229692051", "aching", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 17),
-                new AdVocAsStimulus("artwork_1524229692051", "artwork", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 17),
-                new AdVocAsStimulus("banter_1524229692051", "banter", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 17),
-                new AdVocAsStimulus("barbecue_1524229692051", "barbecue", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 17),
-                new AdVocAsStimulus("captivate_1524229692051", "captivate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 17),
-                new AdVocAsStimulus("deduction_1524229692051", "deduction", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 17),
-                new AdVocAsStimulus("dividend_1524229692051", "dividend", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 17),
-                new AdVocAsStimulus("hardcover_1524229692051", "hardcover", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 17),
-                new AdVocAsStimulus("hospice_1524229692051", "hospice", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 17),
-                new AdVocAsStimulus("increment_1524229692051", "increment", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 17),
-                new AdVocAsStimulus("inhumane_1524229692052", "inhumane", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 17),
-                new AdVocAsStimulus("intrusiveness_1524229692052", "intrusiveness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 17),
-                new AdVocAsStimulus("mincemeat_1524229692052", "mincemeat", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 17),
-                new AdVocAsStimulus("outwardly_1524229692052", "outwardly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 17),
-                new AdVocAsStimulus("porter_1524229692052", "porter", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 17),
-                new AdVocAsStimulus("portray_1524229692052", "portray", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 17),
-                new AdVocAsStimulus("redundantly_1524229692052", "redundantly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 17),
-                new AdVocAsStimulus("skater_1524229692052", "skater", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 17),
-                new AdVocAsStimulus("smasher_1524229692052", "smasher", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 17),
-                new AdVocAsStimulus("volatile_1524229692052", "volatile", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 17),},
-            {
-                new AdVocAsStimulus("constituent_1524229692052", "constituent", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 18),
-                new AdVocAsStimulus("delicacy_1524229692052", "delicacy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 18),
-                new AdVocAsStimulus("distillery_1524229692052", "distillery", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 18),
-                new AdVocAsStimulus("distrustful_1524229692052", "distrustful", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 18),
-                new AdVocAsStimulus("gastronomy_1524229692052", "gastronomy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 18),
-                new AdVocAsStimulus("insincerity_1524229692052", "insincerity", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 18),
-                new AdVocAsStimulus("mentorship_1524229692052", "mentorship", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 18),
-                new AdVocAsStimulus("overstaffed_1524229692052", "overstaffed", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 18),
-                new AdVocAsStimulus("peddle_1524229692052", "peddle", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 18),
-                new AdVocAsStimulus("precinct_1524229692052", "precinct", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 18),
-                new AdVocAsStimulus("rancher_1524229692052", "rancher", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 18),
-                new AdVocAsStimulus("secrecy_1524229692052", "secrecy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 18),
-                new AdVocAsStimulus("shrunken_1524229692052", "shrunken", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 18),
-                new AdVocAsStimulus("stuffiness_1524229692052", "stuffiness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 18),
-                new AdVocAsStimulus("trapper_1524229692052", "trapper", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 18),
-                new AdVocAsStimulus("undecorated_1524229692052", "undecorated", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 18),
-                new AdVocAsStimulus("underpayment_1524229692052", "underpayment", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 18),
-                new AdVocAsStimulus("unstuck_1524229692052", "unstuck", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 18),
-                new AdVocAsStimulus("upheaval_1524229692052", "upheaval", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 18),
-                new AdVocAsStimulus("varnishing_1524229692052", "varnishing", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 18),},
-            {
-                new AdVocAsStimulus("ample_1524229692052", "ample", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 19),
-                new AdVocAsStimulus("backgammon_1524229692052", "backgammon", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 19),
-                new AdVocAsStimulus("bedpan_1524229692052", "bedpan", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 19),
-                new AdVocAsStimulus("bobble_1524229692052", "bobble", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 19),
-                new AdVocAsStimulus("brushstroke_1524229692052", "brushstroke", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 19),
-                new AdVocAsStimulus("demography_1524229692052", "demography", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 19),
-                new AdVocAsStimulus("directionless_1524229692052", "directionless", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 19),
-                new AdVocAsStimulus("flameproof_1524229692052", "flameproof", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 19),
-                new AdVocAsStimulus("impassively_1524229692052", "impassively", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 19),
-                new AdVocAsStimulus("indignantly_1524229692052", "indignantly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 19),
-                new AdVocAsStimulus("intricate_1524229692052", "intricate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 19),
-                new AdVocAsStimulus("minimalism_1524229692052", "minimalism", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 19),
-                new AdVocAsStimulus("perceptible_1524229692052", "perceptible", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 19),
-                new AdVocAsStimulus("porky_1524229692052", "porky", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 19),
-                new AdVocAsStimulus("ravishingly_1524229692052", "ravishingly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 19),
-                new AdVocAsStimulus("slickness_1524229692052", "slickness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 19),
-                new AdVocAsStimulus("speckle_1524229692052", "speckle", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 19),
-                new AdVocAsStimulus("supercharge_1524229692052", "supercharge", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 19),
-                new AdVocAsStimulus("territorially_1524229692052", "territorially", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 19),
-                new AdVocAsStimulus("thinly_1524229692052", "thinly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 19),},
-            {
-                new AdVocAsStimulus("ambitiously_1524229692052", "ambitiously", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 20),
-                new AdVocAsStimulus("antiseptics_1524229692052", "antiseptics", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 20),
-                new AdVocAsStimulus("battlefront_1524229692052", "battlefront", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 20),
-                new AdVocAsStimulus("biogenetic_1524229692052", "biogenetic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 20),
-                new AdVocAsStimulus("consoling_1524229692052", "consoling", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 20),
-                new AdVocAsStimulus("gibberish_1524229692052", "gibberish", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 20),
-                new AdVocAsStimulus("intergalactic_1524229692052", "intergalactic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 20),
-                new AdVocAsStimulus("legless_1524229692052", "legless", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 20),
-                new AdVocAsStimulus("loath_1524229692052", "loath", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 20),
-                new AdVocAsStimulus("pronouncement_1524229692052", "pronouncement", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 20),
-                new AdVocAsStimulus("provincial_1524229692052", "provincial", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 20),
-                new AdVocAsStimulus("refreeze_1524229692052", "refreeze", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 20),
-                new AdVocAsStimulus("reprieve_1524229692052", "reprieve", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 20),
-                new AdVocAsStimulus("scram_1524229692052", "scram", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 20),
-                new AdVocAsStimulus("siren_1524229692052", "siren", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 20),
-                new AdVocAsStimulus("sternness_1524229692052", "sternness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 20),
-                new AdVocAsStimulus("timekeeping_1524229692052", "timekeeping", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 20),
-                new AdVocAsStimulus("topically_1524229692052", "topically", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 20),
-                new AdVocAsStimulus("transfix_1524229692052", "transfix", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 20),
-                new AdVocAsStimulus("traveller_1524229692052", "traveller", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 20),},
-            {
-                new AdVocAsStimulus("anyhow_1524229692052", "anyhow", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 21),
-                new AdVocAsStimulus("assembler_1524229692052", "assembler", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 21),
-                new AdVocAsStimulus("believability_1524229692052", "believability", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 21),
-                new AdVocAsStimulus("daintiness_1524229692052", "daintiness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 21),
-                new AdVocAsStimulus("datasheet_1524229692052", "datasheet", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 21),
-                new AdVocAsStimulus("electoral_1524229692052", "electoral", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 21),
-                new AdVocAsStimulus("evasively_1524229692052", "evasively", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 21),
-                new AdVocAsStimulus("farther_1524229692052", "farther", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 21),
-                new AdVocAsStimulus("foregone_1524229692052", "foregone", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 21),
-                new AdVocAsStimulus("hospitably_1524229692052", "hospitably", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 21),
-                new AdVocAsStimulus("nonphysical_1524229692052", "nonphysical", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 21),
-                new AdVocAsStimulus("obtrusively_1524229692052", "obtrusively", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 21),
-                new AdVocAsStimulus("offense_1524229692052", "offense", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 21),
-                new AdVocAsStimulus("pharmacology_1524229692052", "pharmacology", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 21),
-                new AdVocAsStimulus("reddish_1524229692052", "reddish", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 21),
-                new AdVocAsStimulus("redheaded_1524229692052", "redheaded", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 21),
-                new AdVocAsStimulus("streaky_1524229692052", "streaky", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 21),
-                new AdVocAsStimulus("stutterer_1524229692052", "stutterer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 21),
-                new AdVocAsStimulus("twinge_1524229692052", "twinge", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 21),
-                new AdVocAsStimulus("whaler_1524229692052", "whaler", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 21),},
-            {
-                new AdVocAsStimulus("albatross_1524229692052", "albatross", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 22),
-                new AdVocAsStimulus("amble_1524229692052", "amble", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 22),
-                new AdVocAsStimulus("anchorage_1524229692052", "anchorage", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 22),
-                new AdVocAsStimulus("bankroll_1524229692052", "bankroll", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 22),
-                new AdVocAsStimulus("beeper_1524229692052", "beeper", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 22),
-                new AdVocAsStimulus("breadwinner_1524229692052", "breadwinner", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 22),
-                new AdVocAsStimulus("contented_1524229692052", "contented", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 22),
-                new AdVocAsStimulus("cosmically_1524229692052", "cosmically", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 22),
-                new AdVocAsStimulus("drowsily_1524229692052", "drowsily", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 22),
-                new AdVocAsStimulus("holdout_1524229692052", "holdout", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 22),
-                new AdVocAsStimulus("legibly_1524229692052", "legibly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 22),
-                new AdVocAsStimulus("naughtily_1524229692052", "naughtily", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 22),
-                new AdVocAsStimulus("northward_1524229692052", "northward", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 22),
-                new AdVocAsStimulus("obliqueness_1524229692052", "obliqueness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 22),
-                new AdVocAsStimulus("overtly_1524229692052", "overtly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 22),
-                new AdVocAsStimulus("plume_1524229692052", "plume", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 22),
-                new AdVocAsStimulus("retrain_1524229692052", "retrain", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 22),
-                new AdVocAsStimulus("slimy_1524229692052", "slimy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 22),
-                new AdVocAsStimulus("subdividing_1524229692052", "subdividing", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 22),
-                new AdVocAsStimulus("swaddle_1524229692052", "swaddle", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 22),},
-            {
-                new AdVocAsStimulus("auspiciousness_1524229692052", "auspiciousness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 23),
-                new AdVocAsStimulus("bongo_1524229692053", "bongo", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 23),
-                new AdVocAsStimulus("dampener_1524229692053", "dampener", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 23),
-                new AdVocAsStimulus("fishery_1524229692053", "fishery", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 23),
-                new AdVocAsStimulus("heartstring_1524229692053", "heartstring", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 23),
-                new AdVocAsStimulus("hither_1524229692053", "hither", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 23),
-                new AdVocAsStimulus("insinuation_1524229692053", "insinuation", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 23),
-                new AdVocAsStimulus("looseness_1524229692053", "looseness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 23),
-                new AdVocAsStimulus("microcomputer_1524229692053", "microcomputer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 23),
-                new AdVocAsStimulus("nomadic_1524229692053", "nomadic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 23),
-                new AdVocAsStimulus("noncertified_1524229692053", "noncertified", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 23),
-                new AdVocAsStimulus("planking_1524229692054", "planking", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 23),
-                new AdVocAsStimulus("pocketknife_1524229692054", "pocketknife", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 23),
-                new AdVocAsStimulus("quintuplet_1524229692054", "quintuplet", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 23),
-                new AdVocAsStimulus("spacer_1524229692054", "spacer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 23),
-                new AdVocAsStimulus("spiritedly_1524229692054", "spiritedly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 23),
-                new AdVocAsStimulus("talon_1524229692054", "talon", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 23),
-                new AdVocAsStimulus("transplantation_1524229692054", "transplantation", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 23),
-                new AdVocAsStimulus("turret_1524229692054", "turret", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 23),
-                new AdVocAsStimulus("uncurl_1524229692054", "uncurl", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 23),},
-            {
-                new AdVocAsStimulus("algebraic_1524229692054", "algebraic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 24),
-                new AdVocAsStimulus("audaciously_1524229692054", "audaciously", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 24),
-                new AdVocAsStimulus("bayonet_1524229692054", "bayonet", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 24),
-                new AdVocAsStimulus("bejewel_1524229692054", "bejewel", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 24),
-                new AdVocAsStimulus("broil_1524229692054", "broil", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 24),
-                new AdVocAsStimulus("caricature_1524229692054", "caricature", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 24),
-                new AdVocAsStimulus("decongestive_1524229692054", "decongestive", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 24),
-                new AdVocAsStimulus("deity_1524229692054", "deity", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 24),
-                new AdVocAsStimulus("disastrously_1524229692054", "disastrously", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 24),
-                new AdVocAsStimulus("fathom_1524229692054", "fathom", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 24),
-                new AdVocAsStimulus("feebly_1524229692054", "feebly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 24),
-                new AdVocAsStimulus("interrupter_1524229692054", "interrupter", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 24),
-                new AdVocAsStimulus("matrimonial_1524229692054", "matrimonial", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 24),
-                new AdVocAsStimulus("pantheon_1524229692054", "pantheon", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 24),
-                new AdVocAsStimulus("plaintiff_1524229692054", "plaintiff", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 24),
-                new AdVocAsStimulus("refracting_1524229692054", "refracting", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 24),
-                new AdVocAsStimulus("shuttering_1524229692054", "shuttering", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 24),
-                new AdVocAsStimulus("unbending_1524229692054", "unbending", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 24),
-                new AdVocAsStimulus("weekender_1524229692054", "weekender", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 24),
-                new AdVocAsStimulus("worrisome_1524229692054", "worrisome", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 24),},
-            {
-                new AdVocAsStimulus("affronted_1524229692054", "affronted", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 25),
-                new AdVocAsStimulus("backslapping_1524229692054", "backslapping", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 25),
-                new AdVocAsStimulus("deadwood_1524229692054", "deadwood", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 25),
-                new AdVocAsStimulus("disgustedly_1524229692054", "disgustedly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 25),
-                new AdVocAsStimulus("exhume_1524229692054", "exhume", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 25),
-                new AdVocAsStimulus("gaudy_1524229692054", "gaudy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 25),
-                new AdVocAsStimulus("ineptly_1524229692054", "ineptly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 25),
-                new AdVocAsStimulus("insolubility_1524229692054", "insolubility", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 25),
-                new AdVocAsStimulus("locale_1524229692054", "locale", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 25),
-                new AdVocAsStimulus("manger_1524229692054", "manger", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 25),
-                new AdVocAsStimulus("mercifulness_1524229692054", "mercifulness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 25),
-                new AdVocAsStimulus("nightwalker_1524229692054", "nightwalker", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 25),
-                new AdVocAsStimulus("nonlinear_1524229692054", "nonlinear", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 25),
-                new AdVocAsStimulus("projectionist_1524229692054", "projectionist", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 25),
-                new AdVocAsStimulus("reacquisition_1524229692054", "reacquisition", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 25),
-                new AdVocAsStimulus("smite_1524229692054", "smite", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 25),
-                new AdVocAsStimulus("spurt_1524229692054", "spurt", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 25),
-                new AdVocAsStimulus("ulterior_1524229692054", "ulterior", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 25),
-                new AdVocAsStimulus("warmness_1524229692055", "warmness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 25),
-                new AdVocAsStimulus("wordsmith_1524229692055", "wordsmith", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 25),},
-            {
-                new AdVocAsStimulus("affective_1524229692055", "affective", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 26),
-                new AdVocAsStimulus("befuddle_1524229692055", "befuddle", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 26),
-                new AdVocAsStimulus("buckaroo_1524229692055", "buckaroo", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 26),
-                new AdVocAsStimulus("colloquial_1524229692055", "colloquial", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 26),
-                new AdVocAsStimulus("couplet_1524229692055", "couplet", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 26),
-                new AdVocAsStimulus("defensible_1524229692055", "defensible", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 26),
-                new AdVocAsStimulus("dollop_1524229692055", "dollop", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 26),
-                new AdVocAsStimulus("domesticity_1524229692055", "domesticity", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 26),
-                new AdVocAsStimulus("eggbeater_1524229692055", "eggbeater", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 26),
-                new AdVocAsStimulus("envoy_1524229692055", "envoy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 26),
-                new AdVocAsStimulus("flagstone_1524229692055", "flagstone", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 26),
-                new AdVocAsStimulus("humdrum_1524229692055", "humdrum", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 26),
-                new AdVocAsStimulus("incontinence_1524229692055", "incontinence", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 26),
-                new AdVocAsStimulus("indefensibly_1524229692055", "indefensibly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 26),
-                new AdVocAsStimulus("matriarchal_1524229692055", "matriarchal", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 26),
-                new AdVocAsStimulus("medusa_1524229692055", "medusa", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 26),
-                new AdVocAsStimulus("outlay_1524229692055", "outlay", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 26),
-                new AdVocAsStimulus("preselect_1524229692055", "preselect", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 26),
-                new AdVocAsStimulus("thighbone_1524229692055", "thighbone", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 26),
-                new AdVocAsStimulus("tripe_1524229692055", "tripe", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 26),},
-            {
-                new AdVocAsStimulus("beastliness_1524229692055", "beastliness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 27),
-                new AdVocAsStimulus("breadth_1524229692055", "breadth", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 27),
-                new AdVocAsStimulus("caddie_1524229692055", "caddie", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 27),
-                new AdVocAsStimulus("cartographer_1524229692055", "cartographer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 27),
-                new AdVocAsStimulus("clincher_1524229692055", "clincher", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 27),
-                new AdVocAsStimulus("clinger_1524229692055", "clinger", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 27),
-                new AdVocAsStimulus("dispersion_1524229692055", "dispersion", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 27),
-                new AdVocAsStimulus("disruptor_1524229692055", "disruptor", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 27),
-                new AdVocAsStimulus("dualistic_1524229692055", "dualistic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 27),
-                new AdVocAsStimulus("negligently_1524229692055", "negligently", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 27),
-                new AdVocAsStimulus("outpour_1524229692055", "outpour", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 27),
-                new AdVocAsStimulus("preparedness_1524229692055", "preparedness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 27),
-                new AdVocAsStimulus("procurer_1524229692055", "procurer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 27),
-                new AdVocAsStimulus("purposefulness_1524229692055", "purposefulness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 27),
-                new AdVocAsStimulus("reddening_1524229692055", "reddening", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 27),
-                new AdVocAsStimulus("rheumatism_1524229692055", "rheumatism", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 27),
-                new AdVocAsStimulus("scamp_1524229692055", "scamp", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 27),
-                new AdVocAsStimulus("spottiness_1524229692055", "spottiness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 27),
-                new AdVocAsStimulus("sulkiness_1524229692055", "sulkiness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 27),
-                new AdVocAsStimulus("unembroidered_1524229692055", "unembroidered", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 27),},
-            {
-                new AdVocAsStimulus("churchgoer_1524229692055", "churchgoer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 28),
-                new AdVocAsStimulus("dishevel_1524229692055", "dishevel", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 28),
-                new AdVocAsStimulus("flagrantly_1524229692055", "flagrantly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 28),
-                new AdVocAsStimulus("flyaway_1524229692055", "flyaway", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 28),
-                new AdVocAsStimulus("harrow_1524229692055", "harrow", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 28),
-                new AdVocAsStimulus("impishly_1524229692055", "impishly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 28),
-                new AdVocAsStimulus("knickknack_1524229692055", "knickknack", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 28),
-                new AdVocAsStimulus("libel_1524229692055", "libel", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 28),
-                new AdVocAsStimulus("mooring_1524229692055", "mooring", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 28),
-                new AdVocAsStimulus("orbiter_1524229692055", "orbiter", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 28),
-                new AdVocAsStimulus("raggedly_1524229692055", "raggedly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 28),
-                new AdVocAsStimulus("rampantly_1524229692055", "rampantly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 28),
-                new AdVocAsStimulus("retentiveness_1524229692055", "retentiveness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 28),
-                new AdVocAsStimulus("slimness_1524229692055", "slimness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 28),
-                new AdVocAsStimulus("stableman_1524229692055", "stableman", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 28),
-                new AdVocAsStimulus("succinctly_1524229692055", "succinctly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 28),
-                new AdVocAsStimulus("tinge_1524229692055", "tinge", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 28),
-                new AdVocAsStimulus("underuse_1524229692055", "underuse", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 28),
-                new AdVocAsStimulus("unmagnified_1524229692055", "unmagnified", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 28),
-                new AdVocAsStimulus("unstuffed_1524229692055", "unstuffed", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 28),},
-            {
-                new AdVocAsStimulus("anthill_1524229692055", "anthill", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 29),
-                new AdVocAsStimulus("artfulness_1524229692055", "artfulness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 29),
-                new AdVocAsStimulus("attuned_1524229692055", "attuned", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 29),
-                new AdVocAsStimulus("backtalk_1524229692055", "backtalk", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 29),
-                new AdVocAsStimulus("calcify_1524229692055", "calcify", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 29),
-                new AdVocAsStimulus("chalet_1524229692055", "chalet", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 29),
-                new AdVocAsStimulus("commonality_1524229692055", "commonality", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 29),
-                new AdVocAsStimulus("congruently_1524229692055", "congruently", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 29),
-                new AdVocAsStimulus("counterview_1524229692055", "counterview", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 29),
-                new AdVocAsStimulus("courtier_1524229692055", "courtier", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 29),
-                new AdVocAsStimulus("discernibly_1524229692055", "discernibly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 29),
-                new AdVocAsStimulus("faulting_1524229692055", "faulting", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 29),
-                new AdVocAsStimulus("irradiated_1524229692055", "irradiated", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 29),
-                new AdVocAsStimulus("paraphraser_1524229692055", "paraphraser", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 29),
-                new AdVocAsStimulus("parka_1524229692055", "parka", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 29),
-                new AdVocAsStimulus("racecar_1524229692055", "racecar", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 29),
-                new AdVocAsStimulus("ragtime_1524229692055", "ragtime", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 29),
-                new AdVocAsStimulus("theologian_1524229692055", "theologian", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 29),
-                new AdVocAsStimulus("unalleviated_1524229692055", "unalleviated", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 29),
-                new AdVocAsStimulus("unpopularity_1524229692055", "unpopularity", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 29),},
-            {
-                new AdVocAsStimulus("antipathy_1524229692055", "antipathy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 30),
-                new AdVocAsStimulus("cayenne_1524229692055", "cayenne", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 30),
-                new AdVocAsStimulus("chafe_1524229692055", "chafe", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 30),
-                new AdVocAsStimulus("chaff_1524229692055", "chaff", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 30),
-                new AdVocAsStimulus("clout_1524229692055", "clout", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 30),
-                new AdVocAsStimulus("curtly_1524229692055", "curtly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 30),
-                new AdVocAsStimulus("debacle_1524229692055", "debacle", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 30),
-                new AdVocAsStimulus("delectability_1524229692055", "delectability", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 30),
-                new AdVocAsStimulus("hedonist_1524229692055", "hedonist", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 30),
-                new AdVocAsStimulus("implementer_1524229692055", "implementer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 30),
-                new AdVocAsStimulus("mulch_1524229692055", "mulch", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 30),
-                new AdVocAsStimulus("natal_1524229692055", "natal", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 30),
-                new AdVocAsStimulus("platelet_1524229692055", "platelet", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 30),
-                new AdVocAsStimulus("pluggable_1524229692055", "pluggable", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 30),
-                new AdVocAsStimulus("recommitment_1524229692055", "recommitment", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 30),
-                new AdVocAsStimulus("roundtable_1524229692055", "roundtable", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 30),
-                new AdVocAsStimulus("studiousness_1524229692055", "studiousness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 30),
-                new AdVocAsStimulus("unanimated_1524229692055", "unanimated", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 30),
-                new AdVocAsStimulus("vagrancy_1524229692055", "vagrancy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 30),
-                new AdVocAsStimulus("vivacity_1524229692055", "vivacity", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 30),},
-            {
-                new AdVocAsStimulus("abdication_1524229692055", "abdication", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 31),
-                new AdVocAsStimulus("artifice_1524229692055", "artifice", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 31),
-                new AdVocAsStimulus("calligraphic_1524229692055", "calligraphic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 31),
-                new AdVocAsStimulus("delusionary_1524229692055", "delusionary", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 31),
-                new AdVocAsStimulus("downfallen_1524229692055", "downfallen", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 31),
-                new AdVocAsStimulus("empress_1524229692055", "empress", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 31),
-                new AdVocAsStimulus("ether_1524229692055", "ether", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 31),
-                new AdVocAsStimulus("herder_1524229692055", "herder", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 31),
-                new AdVocAsStimulus("inclement_1524229692055", "inclement", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 31),
-                new AdVocAsStimulus("kidder_1524229692055", "kidder", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 31),
-                new AdVocAsStimulus("lacquering_1524229692055", "lacquering", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 31),
-                new AdVocAsStimulus("malevolency_1524229692055", "malevolency", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 31),
-                new AdVocAsStimulus("monopolist_1524229692055", "monopolist", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 31),
-                new AdVocAsStimulus("reformism_1524229692055", "reformism", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 31),
-                new AdVocAsStimulus("regale_1524229692055", "regale", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 31),
-                new AdVocAsStimulus("repressor_1524229692055", "repressor", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 31),
-                new AdVocAsStimulus("snivel_1524229692055", "snivel", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 31),
-                new AdVocAsStimulus("stoker_1524229692055", "stoker", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 31),
-                new AdVocAsStimulus("wheelbase_1524229692055", "wheelbase", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 31),
-                new AdVocAsStimulus("wineglass_1524229692055", "wineglass", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 31),},
-            {
-                new AdVocAsStimulus("attractor_1524229692055", "attractor", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 32),
-                new AdVocAsStimulus("curatorship_1524229692055", "curatorship", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 32),
-                new AdVocAsStimulus("forbear_1524229692055", "forbear", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 32),
-                new AdVocAsStimulus("guardedly_1524229692055", "guardedly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 32),
-                new AdVocAsStimulus("inlaid_1524229692055", "inlaid", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 32),
-                new AdVocAsStimulus("overhung_1524229692055", "overhung", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 32),
-                new AdVocAsStimulus("payee_1524229692055", "payee", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 32),
-                new AdVocAsStimulus("precept_1524229692055", "precept", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 32),
-                new AdVocAsStimulus("presuppose_1524229692055", "presuppose", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 32),
-                new AdVocAsStimulus("quadratics_1524229692055", "quadratics", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 32),
-                new AdVocAsStimulus("scenting_1524229692055", "scenting", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 32),
-                new AdVocAsStimulus("skulk_1524229692055", "skulk", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 32),
-                new AdVocAsStimulus("stirringly_1524229692055", "stirringly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 32),
-                new AdVocAsStimulus("stratify_1524229692055", "stratify", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 32),
-                new AdVocAsStimulus("strongpoint_1524229692055", "strongpoint", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 32),
-                new AdVocAsStimulus("swill_1524229692055", "swill", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 32),
-                new AdVocAsStimulus("tamer_1524229692055", "tamer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 32),
-                new AdVocAsStimulus("tenement_1524229692055", "tenement", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 32),
-                new AdVocAsStimulus("uncrushed_1524229692055", "uncrushed", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 32),
-                new AdVocAsStimulus("whittler_1524229692055", "whittler", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 32),},
-            {
-                new AdVocAsStimulus("amoebic_1524229692055", "amoebic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 33),
-                new AdVocAsStimulus("backswept_1524229692055", "backswept", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 33),
-                new AdVocAsStimulus("bodacious_1524229692055", "bodacious", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 33),
-                new AdVocAsStimulus("digitalism_1524229692055", "digitalism", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 33),
-                new AdVocAsStimulus("digressive_1524229692055", "digressive", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 33),
-                new AdVocAsStimulus("fairing_1524229692055", "fairing", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 33),
-                new AdVocAsStimulus("functionary_1524229692055", "functionary", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 33),
-                new AdVocAsStimulus("indulgency_1524229692055", "indulgency", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 33),
-                new AdVocAsStimulus("inline_1524229692055", "inline", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 33),
-                new AdVocAsStimulus("paperboard_1524229692055", "paperboard", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 33),
-                new AdVocAsStimulus("parlay_1524229692055", "parlay", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 33),
-                new AdVocAsStimulus("pastureland_1524229692055", "pastureland", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 33),
-                new AdVocAsStimulus("pigmy_1524229692055", "pigmy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 33),
-                new AdVocAsStimulus("prudentially_1524229692055", "prudentially", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 33),
-                new AdVocAsStimulus("retighten_1524229692056", "retighten", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 33),
-                new AdVocAsStimulus("rumpus_1524229692056", "rumpus", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 33),
-                new AdVocAsStimulus("sharable_1524229692056", "sharable", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 33),
-                new AdVocAsStimulus("unready_1524229692056", "unready", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 33),
-                new AdVocAsStimulus("vaccinator_1524229692056", "vaccinator", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 33),
-                new AdVocAsStimulus("wryly_1524229692056", "wryly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 33),},
-            {
-                new AdVocAsStimulus("beamingly_1524229692056", "beamingly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 34),
-                new AdVocAsStimulus("bumbler_1524229692056", "bumbler", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 34),
-                new AdVocAsStimulus("compliable_1524229692056", "compliable", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 34),
-                new AdVocAsStimulus("cosmonaut_1524229692056", "cosmonaut", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 34),
-                new AdVocAsStimulus("crotchety_1524229692056", "crotchety", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 34),
-                new AdVocAsStimulus("demonstrably_1524229692056", "demonstrably", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 34),
-                new AdVocAsStimulus("dinginess_1524229692056", "dinginess", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 34),
-                new AdVocAsStimulus("gauntly_1524229692056", "gauntly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 34),
-                new AdVocAsStimulus("guardedness_1524229692056", "guardedness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 34),
-                new AdVocAsStimulus("injurer_1524229692056", "injurer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 34),
-                new AdVocAsStimulus("ironworking_1524229692056", "ironworking", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 34),
-                new AdVocAsStimulus("joist_1524229692056", "joist", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 34),
-                new AdVocAsStimulus("knifeboard_1524229692056", "knifeboard", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 34),
-                new AdVocAsStimulus("lengthener_1524229692056", "lengthener", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 34),
-                new AdVocAsStimulus("mincer_1524229692056", "mincer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 34),
-                new AdVocAsStimulus("mononuclear_1524229692056", "mononuclear", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 34),
-                new AdVocAsStimulus("quark_1524229692056", "quark", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 34),
-                new AdVocAsStimulus("rebind_1524229692056", "rebind", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 34),
-                new AdVocAsStimulus("textural_1524229692056", "textural", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 34),
-                new AdVocAsStimulus("untraveled_1524229692056", "untraveled", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 34),},
-            {
-                new AdVocAsStimulus("acrimonious_1524229692056", "acrimonious", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 35),
-                new AdVocAsStimulus("backbeat_1524229692056", "backbeat", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 35),
-                new AdVocAsStimulus("cherubic_1524229692056", "cherubic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 35),
-                new AdVocAsStimulus("cornucopian_1524229692056", "cornucopian", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 35),
-                new AdVocAsStimulus("crony_1524229692056", "crony", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 35),
-                new AdVocAsStimulus("cupbearer_1524229692056", "cupbearer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 35),
-                new AdVocAsStimulus("decimator_1524229692056", "decimator", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 35),
-                new AdVocAsStimulus("dermal_1524229692056", "dermal", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 35),
-                new AdVocAsStimulus("duplicable_1524229692056", "duplicable", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 35),
-                new AdVocAsStimulus("extremeness_1524229692056", "extremeness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 35),
-                new AdVocAsStimulus("indelibly_1524229692056", "indelibly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 35),
-                new AdVocAsStimulus("inundation_1524229692056", "inundation", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 35),
-                new AdVocAsStimulus("lipread_1524229692056", "lipread", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 35),
-                new AdVocAsStimulus("nerveless_1524229692056", "nerveless", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 35),
-                new AdVocAsStimulus("overmodest_1524229692056", "overmodest", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 35),
-                new AdVocAsStimulus("philander_1524229692056", "philander", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 35),
-                new AdVocAsStimulus("secularity_1524229692056", "secularity", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 35),
-                new AdVocAsStimulus("suavely_1524229692056", "suavely", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 35),
-                new AdVocAsStimulus("tonal_1524229692056", "tonal", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 35),
-                new AdVocAsStimulus("unusualness_1524229692056", "unusualness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 35),},
-            {
-                new AdVocAsStimulus("annul_1524229692056", "annul", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 36),
-                new AdVocAsStimulus("aortic_1524229692056", "aortic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 36),
-                new AdVocAsStimulus("bilge_1524229692056", "bilge", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 36),
-                new AdVocAsStimulus("bookishness_1524229692056", "bookishness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 36),
-                new AdVocAsStimulus("condemner_1524229692056", "condemner", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 36),
-                new AdVocAsStimulus("crosspiece_1524229692056", "crosspiece", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 36),
-                new AdVocAsStimulus("determinist_1524229692056", "determinist", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 36),
-                new AdVocAsStimulus("dowel_1524229692056", "dowel", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 36),
-                new AdVocAsStimulus("entreaty_1524229692056", "entreaty", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 36),
-                new AdVocAsStimulus("exorcise_1524229692056", "exorcise", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 36),
-                new AdVocAsStimulus("immoderately_1524229692056", "immoderately", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 36),
-                new AdVocAsStimulus("inquisitorial_1524229692056", "inquisitorial", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 36),
-                new AdVocAsStimulus("mutability_1524229692056", "mutability", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 36),
-                new AdVocAsStimulus("myopia_1524229692056", "myopia", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 36),
-                new AdVocAsStimulus("purposelessly_1524229692056", "purposelessly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 36),
-                new AdVocAsStimulus("retroaction_1524229692056", "retroaction", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 36),
-                new AdVocAsStimulus("sinew_1524229692056", "sinew", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 36),
-                new AdVocAsStimulus("subsoil_1524229692056", "subsoil", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 36),
-                new AdVocAsStimulus("wintry_1524229692056", "wintry", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 36),
-                new AdVocAsStimulus("zoophobia_1524229692056", "zoophobia", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 36),},
-            {
-                new AdVocAsStimulus("alleviative_1524229692056", "alleviative", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 37),
-                new AdVocAsStimulus("altarpiece_1524229692056", "altarpiece", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 37),
-                new AdVocAsStimulus("balsawood_1524229692056", "balsawood", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 37),
-                new AdVocAsStimulus("believingly_1524229692056", "believingly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 37),
-                new AdVocAsStimulus("breezeless_1524229692056", "breezeless", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 37),
-                new AdVocAsStimulus("bridgeable_1524229692056", "bridgeable", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 37),
-                new AdVocAsStimulus("clapboard_1524229692056", "clapboard", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 37),
-                new AdVocAsStimulus("contaminable_1524229692056", "contaminable", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 37),
-                new AdVocAsStimulus("enroller_1524229692056", "enroller", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 37),
-                new AdVocAsStimulus("footmark_1524229692056", "footmark", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 37),
-                new AdVocAsStimulus("inefficacy_1524229692056", "inefficacy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 37),
-                new AdVocAsStimulus("irately_1524229692056", "irately", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 37),
-                new AdVocAsStimulus("leary_1524229692056", "leary", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 37),
-                new AdVocAsStimulus("stowage_1524229692056", "stowage", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 37),
-                new AdVocAsStimulus("tawdry_1524229692056", "tawdry", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 37),
-                new AdVocAsStimulus("tetra_1524229692056", "tetra", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 37),
-                new AdVocAsStimulus("tremulously_1524229692056", "tremulously", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 37),
-                new AdVocAsStimulus("vacuous_1524229692056", "vacuous", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 37),
-                new AdVocAsStimulus("wheelman_1524229692056", "wheelman", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 37),
-                new AdVocAsStimulus("yardmaster_1524229692056", "yardmaster", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 37),},
-            {
-                new AdVocAsStimulus("ambulant_1524229692056", "ambulant", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 38),
-                new AdVocAsStimulus("bakeshop_1524229692056", "bakeshop", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 38),
-                new AdVocAsStimulus("congealment_1524229692056", "congealment", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 38),
-                new AdVocAsStimulus("connotative_1524229692056", "connotative", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 38),
-                new AdVocAsStimulus("debauchment_1524229692056", "debauchment", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 38),
-                new AdVocAsStimulus("defoliation_1524229692056", "defoliation", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 38),
-                new AdVocAsStimulus("dialectical_1524229692056", "dialectical", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 38),
-                new AdVocAsStimulus("dimmest_1524229692056", "dimmest", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 38),
-                new AdVocAsStimulus("dingle_1524229692056", "dingle", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 38),
-                new AdVocAsStimulus("gooselike_1524229692056", "gooselike", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 38),
-                new AdVocAsStimulus("implorer_1524229692056", "implorer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 38),
-                new AdVocAsStimulus("insofar_1524229692056", "insofar", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 38),
-                new AdVocAsStimulus("nitric_1524229692056", "nitric", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 38),
-                new AdVocAsStimulus("pronuclear_1524229692056", "pronuclear", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 38),
-                new AdVocAsStimulus("proofer_1524229692056", "proofer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 38),
-                new AdVocAsStimulus("revertible_1524229692056", "revertible", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 38),
-                new AdVocAsStimulus("terseness_1524229692056", "terseness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 38),
-                new AdVocAsStimulus("trailbreaker_1524229692056", "trailbreaker", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 38),
-                new AdVocAsStimulus("upend_1524229692056", "upend", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 38),
-                new AdVocAsStimulus("vestibular_1524229692056", "vestibular", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 38),},
-            {
-                new AdVocAsStimulus("aerophobia_1524229692056", "aerophobia", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 39),
-                new AdVocAsStimulus("biddable_1524229692056", "biddable", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 39),
-                new AdVocAsStimulus("bower_1524229692056", "bower", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 39),
-                new AdVocAsStimulus("classism_1524229692056", "classism", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 39),
-                new AdVocAsStimulus("corpulent_1524229692056", "corpulent", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 39),
-                new AdVocAsStimulus("declamation_1524229692056", "declamation", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 39),
-                new AdVocAsStimulus("disfigurer_1524229692056", "disfigurer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 39),
-                new AdVocAsStimulus("electrotype_1524229692056", "electrotype", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 39),
-                new AdVocAsStimulus("groundling_1524229692056", "groundling", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 39),
-                new AdVocAsStimulus("hermetic_1524229692056", "hermetic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 39),
-                new AdVocAsStimulus("hubris_1524229692056", "hubris", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 39),
-                new AdVocAsStimulus("ionosphere_1524229692056", "ionosphere", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 39),
-                new AdVocAsStimulus("latherer_1524229692056", "latherer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 39),
-                new AdVocAsStimulus("pearlescent_1524229692056", "pearlescent", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 39),
-                new AdVocAsStimulus("preconscious_1524229692056", "preconscious", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 39),
-                new AdVocAsStimulus("redshirt_1524229692056", "redshirt", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 39),
-                new AdVocAsStimulus("reface_1524229692056", "reface", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 39),
-                new AdVocAsStimulus("seismogram_1524229692056", "seismogram", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 39),
-                new AdVocAsStimulus("setpoint_1524229692056", "setpoint", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 39),
-                new AdVocAsStimulus("tachometer_1524229692056", "tachometer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 39),},
-            {
-                new AdVocAsStimulus("autoclave_1524229692056", "autoclave", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 40),
-                new AdVocAsStimulus("brooch_1524229692056", "brooch", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 40),
-                new AdVocAsStimulus("effluence_1524229692056", "effluence", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 40),
-                new AdVocAsStimulus("eggless_1524229692056", "eggless", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 40),
-                new AdVocAsStimulus("gingham_1524229692056", "gingham", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 40),
-                new AdVocAsStimulus("kinghood_1524229692056", "kinghood", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 40),
-                new AdVocAsStimulus("literalistic_1524229692056", "literalistic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 40),
-                new AdVocAsStimulus("modifiability_1524229692056", "modifiability", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 40),
-                new AdVocAsStimulus("pectin_1524229692056", "pectin", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 40),
-                new AdVocAsStimulus("phonotype_1524229692056", "phonotype", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 40),
-                new AdVocAsStimulus("phototropic_1524229692056", "phototropic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 40),
-                new AdVocAsStimulus("polenta_1524229692056", "polenta", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 40),
-                new AdVocAsStimulus("requite_1524229692056", "requite", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 40),
-                new AdVocAsStimulus("servile_1524229692056", "servile", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 40),
-                new AdVocAsStimulus("tabulator_1524229692056", "tabulator", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 40),
-                new AdVocAsStimulus("ungenerous_1524229692056", "ungenerous", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 40),
-                new AdVocAsStimulus("whaleboat_1524229692056", "whaleboat", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 40),
-                new AdVocAsStimulus("wildish_1524229692056", "wildish", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 40),
-                new AdVocAsStimulus("woodenness_1524229692056", "woodenness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 40),
-                new AdVocAsStimulus("wrest_1524229692056", "wrest", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 40),},
-            {
-                new AdVocAsStimulus("addressbook_1524229692056", "addressbook", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 41),
-                new AdVocAsStimulus("anointer_1524229692056", "anointer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 41),
-                new AdVocAsStimulus("astigmatic_1524229692056", "astigmatic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 41),
-                new AdVocAsStimulus("atoll_1524229692056", "atoll", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 41),
-                new AdVocAsStimulus("aurally_1524229692056", "aurally", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 41),
-                new AdVocAsStimulus("baneful_1524229692056", "baneful", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 41),
-                new AdVocAsStimulus("bracer_1524229692056", "bracer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 41),
-                new AdVocAsStimulus("centigram_1524229692056", "centigram", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 41),
-                new AdVocAsStimulus("chlorate_1524229692056", "chlorate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 41),
-                new AdVocAsStimulus("coessential_1524229692056", "coessential", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 41),
-                new AdVocAsStimulus("cruciform_1524229692056", "cruciform", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 41),
-                new AdVocAsStimulus("dearness_1524229692056", "dearness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 41),
-                new AdVocAsStimulus("destructivity_1524229692056", "destructivity", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 41),
-                new AdVocAsStimulus("hoppy_1524229692056", "hoppy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 41),
-                new AdVocAsStimulus("inaugurator_1524229692056", "inaugurator", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 41),
-                new AdVocAsStimulus("numskull_1524229692056", "numskull", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 41),
-                new AdVocAsStimulus("owlishly_1524229692056", "owlishly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 41),
-                new AdVocAsStimulus("prevocational_1524229692056", "prevocational", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 41),
-                new AdVocAsStimulus("radon_1524229692056", "radon", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 41),
-                new AdVocAsStimulus("wieldy_1524229692056", "wieldy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 41),},
-            {
-                new AdVocAsStimulus("adventuress_1524229692056", "adventuress", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 42),
-                new AdVocAsStimulus("alder_1524229692056", "alder", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 42),
-                new AdVocAsStimulus("cajoler_1524229692056", "cajoler", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 42),
-                new AdVocAsStimulus("caldron_1524229692056", "caldron", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 42),
-                new AdVocAsStimulus("distillatory_1524229692056", "distillatory", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 42),
-                new AdVocAsStimulus("elicitation_1524229692056", "elicitation", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 42),
-                new AdVocAsStimulus("flaunty_1524229692056", "flaunty", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 42),
-                new AdVocAsStimulus("furtherance_1524229692056", "furtherance", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 42),
-                new AdVocAsStimulus("inebriant_1524229692056", "inebriant", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 42),
-                new AdVocAsStimulus("malachite_1524229692056", "malachite", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 42),
-                new AdVocAsStimulus("rarefied_1524229692056", "rarefied", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 42),
-                new AdVocAsStimulus("reprovingly_1524229692056", "reprovingly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 42),
-                new AdVocAsStimulus("savoir_1524229692056", "savoir", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 42),
-                new AdVocAsStimulus("shackler_1524229692056", "shackler", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 42),
-                new AdVocAsStimulus("snoot_1524229692056", "snoot", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 42),
-                new AdVocAsStimulus("starflower_1524229692056", "starflower", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 42),
-                new AdVocAsStimulus("syntactic_1524229692056", "syntactic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 42),
-                new AdVocAsStimulus("tress_1524229692056", "tress", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 42),
-                new AdVocAsStimulus("uncivilly_1524229692056", "uncivilly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 42),
-                new AdVocAsStimulus("unhistorical_1524229692056", "unhistorical", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 42),},
-            {
-                new AdVocAsStimulus("antifriction_1524229692056", "antifriction", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 43),
-                new AdVocAsStimulus("bronchiole_1524229692056", "bronchiole", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 43),
-                new AdVocAsStimulus("collectorship_1524229692056", "collectorship", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 43),
-                new AdVocAsStimulus("consternate_1524229692056", "consternate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 43),
-                new AdVocAsStimulus("dumfound_1524229692056", "dumfound", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 43),
-                new AdVocAsStimulus("engrain_1524229692056", "engrain", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 43),
-                new AdVocAsStimulus("euphonium_1524229692056", "euphonium", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 43),
-                new AdVocAsStimulus("frazzling_1524229692056", "frazzling", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 43),
-                new AdVocAsStimulus("grosser_1524229692056", "grosser", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 43),
-                new AdVocAsStimulus("impairer_1524229692056", "impairer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 43),
-                new AdVocAsStimulus("interfuse_1524229692056", "interfuse", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 43),
-                new AdVocAsStimulus("liquidly_1524229692056", "liquidly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 43),
-                new AdVocAsStimulus("mollifying_1524229692056", "mollifying", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 43),
-                new AdVocAsStimulus("moray_1524229692056", "moray", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 43),
-                new AdVocAsStimulus("proliferative_1524229692056", "proliferative", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 43),
-                new AdVocAsStimulus("serif_1524229692057", "serif", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 43),
-                new AdVocAsStimulus("supervisorial_1524229692057", "supervisorial", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 43),
-                new AdVocAsStimulus("thrombotic_1524229692057", "thrombotic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 43),
-                new AdVocAsStimulus("tyrannous_1524229692057", "tyrannous", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 43),
-                new AdVocAsStimulus("underbred_1524229692057", "underbred", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 43),},
-            {
-                new AdVocAsStimulus("amaryllis_1524229692057", "amaryllis", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 44),
-                new AdVocAsStimulus("asceticism_1524229692057", "asceticism", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 44),
-                new AdVocAsStimulus("autogenic_1524229692057", "autogenic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 44),
-                new AdVocAsStimulus("becalmed_1524229692057", "becalmed", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 44),
-                new AdVocAsStimulus("centurial_1524229692057", "centurial", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 44),
-                new AdVocAsStimulus("clarion_1524229692057", "clarion", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 44),
-                new AdVocAsStimulus("concessive_1524229692057", "concessive", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 44),
-                new AdVocAsStimulus("copperleaf_1524229692057", "copperleaf", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 44),
-                new AdVocAsStimulus("corroder_1524229692057", "corroder", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 44),
-                new AdVocAsStimulus("designative_1524229692057", "designative", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 44),
-                new AdVocAsStimulus("diffidence_1524229692057", "diffidence", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 44),
-                new AdVocAsStimulus("druidic_1524229692057", "druidic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 44),
-                new AdVocAsStimulus("horntail_1524229692057", "horntail", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 44),
-                new AdVocAsStimulus("iodide_1524229692057", "iodide", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 44),
-                new AdVocAsStimulus("polyglot_1524229692057", "polyglot", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 44),
-                new AdVocAsStimulus("prehensile_1524229692057", "prehensile", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 44),
-                new AdVocAsStimulus("serotoxin_1524229692057", "serotoxin", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 44),
-                new AdVocAsStimulus("stent_1524229692057", "stent", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 44),
-                new AdVocAsStimulus("superoxide_1524229692057", "superoxide", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 44),
-                new AdVocAsStimulus("unscriptural_1524229692057", "unscriptural", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 44),},
-            {
-                new AdVocAsStimulus("binocularly_1524229692057", "binocularly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 45),
-                new AdVocAsStimulus("crump_1524229692057", "crump", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 45),
-                new AdVocAsStimulus("dactyl_1524229692057", "dactyl", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 45),
-                new AdVocAsStimulus("dichotomous_1524229692057", "dichotomous", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 45),
-                new AdVocAsStimulus("dilutor_1524229692057", "dilutor", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 45),
-                new AdVocAsStimulus("earthlight_1524229692057", "earthlight", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 45),
-                new AdVocAsStimulus("epiglottal_1524229692057", "epiglottal", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 45),
-                new AdVocAsStimulus("filial_1524229692057", "filial", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 45),
-                new AdVocAsStimulus("grubber_1524229692057", "grubber", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 45),
-                new AdVocAsStimulus("inclinator_1524229692057", "inclinator", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 45),
-                new AdVocAsStimulus("multiplexer_1524229692057", "multiplexer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 45),
-                new AdVocAsStimulus("neologism_1524229692057", "neologism", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 45),
-                new AdVocAsStimulus("northwester_1524229692057", "northwester", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 45),
-                new AdVocAsStimulus("polychromous_1524229692057", "polychromous", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 45),
-                new AdVocAsStimulus("redub_1524229692057", "redub", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 45),
-                new AdVocAsStimulus("silicate_1524229692057", "silicate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 45),
-                new AdVocAsStimulus("subfigure_1524229692057", "subfigure", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 45),
-                new AdVocAsStimulus("tomfool_1524229692057", "tomfool", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 45),
-                new AdVocAsStimulus("unstaunched_1524229692057", "unstaunched", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 45),
-                new AdVocAsStimulus("vasculature_1524229692057", "vasculature", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 45),},
-            {
-                new AdVocAsStimulus("atonality_1524229692057", "atonality", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 46),
-                new AdVocAsStimulus("attempter_1524229692057", "attempter", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 46),
-                new AdVocAsStimulus("bloomy_1524229692057", "bloomy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 46),
-                new AdVocAsStimulus("cherishment_1524229692057", "cherishment", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 46),
-                new AdVocAsStimulus("counterparty_1524229692057", "counterparty", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 46),
-                new AdVocAsStimulus("crumby_1524229692057", "crumby", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 46),
-                new AdVocAsStimulus("delusive_1524229692057", "delusive", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 46),
-                new AdVocAsStimulus("grist_1524229692057", "grist", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 46),
-                new AdVocAsStimulus("histologist_1524229692057", "histologist", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 46),
-                new AdVocAsStimulus("inscribable_1524229692057", "inscribable", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 46),
-                new AdVocAsStimulus("internality_1524229692057", "internality", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 46),
-                new AdVocAsStimulus("manna_1524229692057", "manna", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 46),
-                new AdVocAsStimulus("moonward_1524229692057", "moonward", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 46),
-                new AdVocAsStimulus("odium_1524229692057", "odium", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 46),
-                new AdVocAsStimulus("oppositeness_1524229692057", "oppositeness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 46),
-                new AdVocAsStimulus("phonemic_1524229692057", "phonemic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 46),
-                new AdVocAsStimulus("rhomboidal_1524229692057", "rhomboidal", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 46),
-                new AdVocAsStimulus("signally_1524229692057", "signally", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 46),
-                new AdVocAsStimulus("singly_1524229692057", "singly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 46),
-                new AdVocAsStimulus("stiller_1524229692057", "stiller", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 46),},
-            {
-                new AdVocAsStimulus("amplificatory_1524229692057", "amplificatory", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 47),
-                new AdVocAsStimulus("bezel_1524229692057", "bezel", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 47),
-                new AdVocAsStimulus("bucolic_1524229692057", "bucolic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 47),
-                new AdVocAsStimulus("campstool_1524229692057", "campstool", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 47),
-                new AdVocAsStimulus("changeful_1524229692057", "changeful", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 47),
-                new AdVocAsStimulus("charthouse_1524229692057", "charthouse", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 47),
-                new AdVocAsStimulus("datum_1524229692057", "datum", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 47),
-                new AdVocAsStimulus("desiccant_1524229692057", "desiccant", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 47),
-                new AdVocAsStimulus("elegy_1524229692057", "elegy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 47),
-                new AdVocAsStimulus("enervate_1524229692057", "enervate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 47),
-                new AdVocAsStimulus("ennui_1524229692057", "ennui", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 47),
-                new AdVocAsStimulus("gramophonic_1524229692057", "gramophonic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 47),
-                new AdVocAsStimulus("hydrotropism_1524229692057", "hydrotropism", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 47),
-                new AdVocAsStimulus("lactase_1524229692057", "lactase", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 47),
-                new AdVocAsStimulus("laggard_1524229692057", "laggard", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 47),
-                new AdVocAsStimulus("microgroove_1524229692057", "microgroove", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 47),
-                new AdVocAsStimulus("monomaniacal_1524229692057", "monomaniacal", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 47),
-                new AdVocAsStimulus("occultation_1524229692057", "occultation", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 47),
-                new AdVocAsStimulus("philologist_1524229692057", "philologist", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 47),
-                new AdVocAsStimulus("tragicomedy_1524229692057", "tragicomedy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 47),},
-            {
-                new AdVocAsStimulus("cattishly_1524229692057", "cattishly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 48),
-                new AdVocAsStimulus("causer_1524229692057", "causer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 48),
-                new AdVocAsStimulus("chafer_1524229692057", "chafer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 48),
-                new AdVocAsStimulus("circumlocutory_1524229692057", "circumlocutory", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 48),
-                new AdVocAsStimulus("comprisal_1524229692057", "comprisal", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 48),
-                new AdVocAsStimulus("conclavist_1524229692057", "conclavist", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 48),
-                new AdVocAsStimulus("doughty_1524229692057", "doughty", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 48),
-                new AdVocAsStimulus("enfranchiser_1524229692057", "enfranchiser", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 48),
-                new AdVocAsStimulus("estuarial_1524229692057", "estuarial", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 48),
-                new AdVocAsStimulus("exoteric_1524229692057", "exoteric", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 48),
-                new AdVocAsStimulus("hymnologist_1524229692057", "hymnologist", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 48),
-                new AdVocAsStimulus("iliac_1524229692057", "iliac", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 48),
-                new AdVocAsStimulus("immerge_1524229692057", "immerge", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 48),
-                new AdVocAsStimulus("irradiative_1524229692057", "irradiative", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 48),
-                new AdVocAsStimulus("jarful_1524229692057", "jarful", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 48),
-                new AdVocAsStimulus("manufactory_1524229692057", "manufactory", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 48),
-                new AdVocAsStimulus("mudstone_1524229692057", "mudstone", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 48),
-                new AdVocAsStimulus("mycology_1524229692057", "mycology", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 48),
-                new AdVocAsStimulus("octal_1524229692057", "octal", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 48),
-                new AdVocAsStimulus("phototube_1524229692057", "phototube", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 48),},
-            {
-                new AdVocAsStimulus("affronter_1524229692057", "affronter", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 49),
-                new AdVocAsStimulus("alderwoman_1524229692057", "alderwoman", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 49),
-                new AdVocAsStimulus("arrestment_1524229692057", "arrestment", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 49),
-                new AdVocAsStimulus("atonic_1524229692057", "atonic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 49),
-                new AdVocAsStimulus("churl_1524229692057", "churl", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 49),
-                new AdVocAsStimulus("diaphanous_1524229692057", "diaphanous", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 49),
-                new AdVocAsStimulus("exogenously_1524229692057", "exogenously", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 49),
-                new AdVocAsStimulus("floridness_1524229692057", "floridness", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 49),
-                new AdVocAsStimulus("homonymic_1524229692057", "homonymic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 49),
-                new AdVocAsStimulus("inflexed_1524229692057", "inflexed", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 49),
-                new AdVocAsStimulus("interferon_1524229692057", "interferon", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 49),
-                new AdVocAsStimulus("liposome_1524229692057", "liposome", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 49),
-                new AdVocAsStimulus("moribund_1524229692057", "moribund", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 49),
-                new AdVocAsStimulus("nasality_1524229692057", "nasality", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 49),
-                new AdVocAsStimulus("permute_1524229692057", "permute", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 49),
-                new AdVocAsStimulus("personate_1524229692057", "personate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 49),
-                new AdVocAsStimulus("popish_1524229692057", "popish", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 49),
-                new AdVocAsStimulus("rememberable_1524229692057", "rememberable", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 49),
-                new AdVocAsStimulus("torridity_1524229692057", "torridity", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 49),
-                new AdVocAsStimulus("xylographer_1524229692057", "xylographer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 49),},
-            {
-                new AdVocAsStimulus("beleaguerer_1524229692057", "beleaguerer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 50),
-                new AdVocAsStimulus("brainsick_1524229692057", "brainsick", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 50),
-                new AdVocAsStimulus("complicacy_1524229692057", "complicacy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 50),
-                new AdVocAsStimulus("corer_1524229692057", "corer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 50),
-                new AdVocAsStimulus("culler_1524229692057", "culler", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 50),
-                new AdVocAsStimulus("dissocial_1524229692057", "dissocial", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 50),
-                new AdVocAsStimulus("effectible_1524229692057", "effectible", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 50),
-                new AdVocAsStimulus("epigenetic_1524229692057", "epigenetic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 50),
-                new AdVocAsStimulus("ester_1524229692057", "ester", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 50),
-                new AdVocAsStimulus("extensity_1524229692057", "extensity", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 50),
-                new AdVocAsStimulus("foddering_1524229692057", "foddering", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 50),
-                new AdVocAsStimulus("forecastle_1524229692057", "forecastle", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 50),
-                new AdVocAsStimulus("gabardine_1524229692057", "gabardine", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 50),
-                new AdVocAsStimulus("liger_1524229692057", "liger", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 50),
-                new AdVocAsStimulus("manyfold_1524229692057", "manyfold", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 50),
-                new AdVocAsStimulus("milksop_1524229692057", "milksop", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 50),
-                new AdVocAsStimulus("quadric_1524229692057", "quadric", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 50),
-                new AdVocAsStimulus("ridgepole_1524229692057", "ridgepole", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 50),
-                new AdVocAsStimulus("rosaceous_1524229692057", "rosaceous", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 50),
-                new AdVocAsStimulus("sophism_1524229692057", "sophism", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 50),},
-            {
-                new AdVocAsStimulus("antiskid_1524229692057", "antiskid", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 51),
-                new AdVocAsStimulus("artificer_1524229692057", "artificer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 51),
-                new AdVocAsStimulus("clime_1524229692057", "clime", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 51),
-                new AdVocAsStimulus("cockling_1524229692057", "cockling", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 51),
-                new AdVocAsStimulus("commutate_1524229692057", "commutate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 51),
-                new AdVocAsStimulus("crimination_1524229692057", "crimination", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 51),
-                new AdVocAsStimulus("crower_1524229692057", "crower", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 51),
-                new AdVocAsStimulus("fungoid_1524229692057", "fungoid", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 51),
-                new AdVocAsStimulus("grudger_1524229692057", "grudger", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 51),
-                new AdVocAsStimulus("hoodoo_1524229692057", "hoodoo", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 51),
-                new AdVocAsStimulus("impendent_1524229692057", "impendent", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 51),
-                new AdVocAsStimulus("libertinism_1524229692057", "libertinism", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 51),
-                new AdVocAsStimulus("nephrite_1524229692057", "nephrite", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 51),
-                new AdVocAsStimulus("overplenty_1524229692057", "overplenty", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 51),
-                new AdVocAsStimulus("palmy_1524229692057", "palmy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 51),
-                new AdVocAsStimulus("pathetical_1524229692057", "pathetical", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 51),
-                new AdVocAsStimulus("scleroid_1524229692057", "scleroid", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 51),
-                new AdVocAsStimulus("semidry_1524229692057", "semidry", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 51),
-                new AdVocAsStimulus("sternal_1524229692057", "sternal", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 51),
-                new AdVocAsStimulus("wildering_1524229692057", "wildering", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 51),},
-            {
-                new AdVocAsStimulus("accorder_1524229692057", "accorder", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 52),
-                new AdVocAsStimulus("ashram_1524229692057", "ashram", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 52),
-                new AdVocAsStimulus("billon_1524229692057", "billon", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 52),
-                new AdVocAsStimulus("casemate_1524229692057", "casemate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 52),
-                new AdVocAsStimulus("chloral_1524229692057", "chloral", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 52),
-                new AdVocAsStimulus("diffusivity_1524229692057", "diffusivity", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 52),
-                new AdVocAsStimulus("dissymmetric_1524229692057", "dissymmetric", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 52),
-                new AdVocAsStimulus("duodenary_1524229692057", "duodenary", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 52),
-                new AdVocAsStimulus("echinoderm_1524229692057", "echinoderm", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 52),
-                new AdVocAsStimulus("enmeshment_1524229692057", "enmeshment", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 52),
-                new AdVocAsStimulus("epiphenomenal_1524229692057", "epiphenomenal", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 52),
-                new AdVocAsStimulus("evince_1524229692057", "evince", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 52),
-                new AdVocAsStimulus("execration_1524229692057", "execration", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 52),
-                new AdVocAsStimulus("flowerage_1524229692057", "flowerage", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 52),
-                new AdVocAsStimulus("jackfruit_1524229692057", "jackfruit", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 52),
-                new AdVocAsStimulus("lacteal_1524229692057", "lacteal", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 52),
-                new AdVocAsStimulus("photolysis_1524229692057", "photolysis", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 52),
-                new AdVocAsStimulus("puissance_1524229692057", "puissance", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 52),
-                new AdVocAsStimulus("stockfish_1524229692057", "stockfish", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 52),
-                new AdVocAsStimulus("thermopile_1524229692057", "thermopile", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 52),},
-            {
-                new AdVocAsStimulus("aviculturist_1524229692057", "aviculturist", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 53),
-                new AdVocAsStimulus("batik_1524229692057", "batik", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 53),
-                new AdVocAsStimulus("bivalency_1524229692057", "bivalency", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 53),
-                new AdVocAsStimulus("complexional_1524229692057", "complexional", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 53),
-                new AdVocAsStimulus("dactylology_1524229692057", "dactylology", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 53),
-                new AdVocAsStimulus("disaccustom_1524229692057", "disaccustom", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 53),
-                new AdVocAsStimulus("grabbling_1524229692057", "grabbling", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 53),
-                new AdVocAsStimulus("hemolytic_1524229692057", "hemolytic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 53),
-                new AdVocAsStimulus("inquietude_1524229692057", "inquietude", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 53),
-                new AdVocAsStimulus("laity_1524229692057", "laity", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 53),
-                new AdVocAsStimulus("noisome_1524229692057", "noisome", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 53),
-                new AdVocAsStimulus("omicron_1524229692057", "omicron", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 53),
-                new AdVocAsStimulus("petard_1524229692057", "petard", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 53),
-                new AdVocAsStimulus("pinkly_1524229692057", "pinkly", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 53),
-                new AdVocAsStimulus("promptitude_1524229692057", "promptitude", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 53),
-                new AdVocAsStimulus("solipsism_1524229692057", "solipsism", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 53),
-                new AdVocAsStimulus("tarsus_1524229692057", "tarsus", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 53),
-                new AdVocAsStimulus("ungird_1524229692057", "ungird", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 53),
-                new AdVocAsStimulus("unregenerate_1524229692057", "unregenerate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 53),
-                new AdVocAsStimulus("winnow_1524229692057", "winnow", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 53),},
-            {
-                new AdVocAsStimulus("adnominal_1524229692057", "adnominal", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 54),
-                new AdVocAsStimulus("alternant_1524229692057", "alternant", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 54),
-                new AdVocAsStimulus("alveolar_1524229692057", "alveolar", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 54),
-                new AdVocAsStimulus("anneal_1524229692057", "anneal", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 54),
-                new AdVocAsStimulus("arbitrager_1524229692057", "arbitrager", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 54),
-                new AdVocAsStimulus("bogwood_1524229692057", "bogwood", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 54),
-                new AdVocAsStimulus("combinatorial_1524229692057", "combinatorial", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 54),
-                new AdVocAsStimulus("hereinabove_1524229692057", "hereinabove", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 54),
-                new AdVocAsStimulus("hyperborean_1524229692058", "hyperborean", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 54),
-                new AdVocAsStimulus("hypocycloid_1524229692058", "hypocycloid", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 54),
-                new AdVocAsStimulus("inerrability_1524229692058", "inerrability", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 54),
-                new AdVocAsStimulus("inerratic_1524229692058", "inerratic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 54),
-                new AdVocAsStimulus("interclub_1524229692058", "interclub", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 54),
-                new AdVocAsStimulus("lazuli_1524229692058", "lazuli", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 54),
-                new AdVocAsStimulus("lightsome_1524229692058", "lightsome", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 54),
-                new AdVocAsStimulus("perquisite_1524229692058", "perquisite", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 54),
-                new AdVocAsStimulus("proscenium_1524229692058", "proscenium", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 54),
-                new AdVocAsStimulus("sepulture_1524229692058", "sepulture", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 54),
-                new AdVocAsStimulus("shrike_1524229692058", "shrike", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 54),
-                new AdVocAsStimulus("utile_1524229692058", "utile", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 54),},
-            {
-                new AdVocAsStimulus("absolutistic_1524229692058", "absolutistic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 55),
-                new AdVocAsStimulus("acetify_1524229692058", "acetify", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 55),
-                new AdVocAsStimulus("agnate_1524229692058", "agnate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 55),
-                new AdVocAsStimulus("alginate_1524229692058", "alginate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 55),
-                new AdVocAsStimulus("bromidic_1524229692058", "bromidic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 55),
-                new AdVocAsStimulus("convictism_1524229692058", "convictism", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 55),
-                new AdVocAsStimulus("cuddy_1524229692058", "cuddy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 55),
-                new AdVocAsStimulus("cycloramic_1524229692058", "cycloramic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 55),
-                new AdVocAsStimulus("demurral_1524229692058", "demurral", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 55),
-                new AdVocAsStimulus("devisee_1524229692058", "devisee", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 55),
-                new AdVocAsStimulus("fascicular_1524229692058", "fascicular", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 55),
-                new AdVocAsStimulus("flaxy_1524229692058", "flaxy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 55),
-                new AdVocAsStimulus("groundsill_1524229692058", "groundsill", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 55),
-                new AdVocAsStimulus("headforemost_1524229692058", "headforemost", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 55),
-                new AdVocAsStimulus("irrigable_1524229692058", "irrigable", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 55),
-                new AdVocAsStimulus("pharmacokinetic_1524229692058", "pharmacokinetic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 55),
-                new AdVocAsStimulus("polypore_1524229692058", "polypore", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 55),
-                new AdVocAsStimulus("scarping_1524229692058", "scarping", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 55),
-                new AdVocAsStimulus("torus_1524229692058", "torus", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 55),
-                new AdVocAsStimulus("wabble_1524229692058", "wabble", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 55),},
-            {
-                new AdVocAsStimulus("agglutination_1524229692058", "agglutination", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 56),
-                new AdVocAsStimulus("appurtenance_1524229692058", "appurtenance", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 56),
-                new AdVocAsStimulus("autopolyploid_1524229692058", "autopolyploid", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 56),
-                new AdVocAsStimulus("bathometer_1524229692058", "bathometer", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 56),
-                new AdVocAsStimulus("brachylogy_1524229692058", "brachylogy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 56),
-                new AdVocAsStimulus("caviler_1524229692058", "caviler", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 56),
-                new AdVocAsStimulus("colophony_1524229692058", "colophony", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 56),
-                new AdVocAsStimulus("condoler_1524229692058", "condoler", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 56),
-                new AdVocAsStimulus("dispossessory_1524229692058", "dispossessory", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 56),
-                new AdVocAsStimulus("dysgenics_1524229692058", "dysgenics", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 56),
-                new AdVocAsStimulus("excerptor_1524229692058", "excerptor", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 56),
-                new AdVocAsStimulus("flocculate_1524229692058", "flocculate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 56),
-                new AdVocAsStimulus("foredoom_1524229692058", "foredoom", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 56),
-                new AdVocAsStimulus("isotheral_1524229692058", "isotheral", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 56),
-                new AdVocAsStimulus("mimesis_1524229692058", "mimesis", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 56),
-                new AdVocAsStimulus("obscurantist_1524229692058", "obscurantist", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 56),
-                new AdVocAsStimulus("periphrastic_1524229692058", "periphrastic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 56),
-                new AdVocAsStimulus("prate_1524229692058", "prate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 56),
-                new AdVocAsStimulus("radiothorium_1524229692058", "radiothorium", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 56),
-                new AdVocAsStimulus("widgeon_1524229692058", "widgeon", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 56),},
-            {
-                new AdVocAsStimulus("abnegator_1524229692058", "abnegator", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 57),
-                new AdVocAsStimulus("alewife_1524229692058", "alewife", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 57),
-                new AdVocAsStimulus("algological_1524229692058", "algological", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 57),
-                new AdVocAsStimulus("cicerone_1524229692058", "cicerone", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 57),
-                new AdVocAsStimulus("consistory_1524229692058", "consistory", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 57),
-                new AdVocAsStimulus("corporeity_1524229692058", "corporeity", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 57),
-                new AdVocAsStimulus("elastomeric_1524229692058", "elastomeric", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 57),
-                new AdVocAsStimulus("elide_1524229692058", "elide", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 57),
-                new AdVocAsStimulus("endocarp_1524229692058", "endocarp", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 57),
-                new AdVocAsStimulus("essayistic_1524229692058", "essayistic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 57),
-                new AdVocAsStimulus("falconine_1524229692058", "falconine", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 57),
-                new AdVocAsStimulus("gigot_1524229692058", "gigot", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 57),
-                new AdVocAsStimulus("ginnery_1524229692058", "ginnery", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 57),
-                new AdVocAsStimulus("groggery_1524229692058", "groggery", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 57),
-                new AdVocAsStimulus("hornstone_1524229692058", "hornstone", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 57),
-                new AdVocAsStimulus("marron_1524229692058", "marron", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 57),
-                new AdVocAsStimulus("merle_1524229692058", "merle", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 57),
-                new AdVocAsStimulus("pilaster_1524229692058", "pilaster", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 57),
-                new AdVocAsStimulus("scopolamine_1524229692058", "scopolamine", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 57),
-                new AdVocAsStimulus("tottery_1524229692058", "tottery", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 57),},
-            {
-                new AdVocAsStimulus("amanuensis_1524229692058", "amanuensis", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 58),
-                new AdVocAsStimulus("chary_1524229692058", "chary", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 58),
-                new AdVocAsStimulus("chiastic_1524229692058", "chiastic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 58),
-                new AdVocAsStimulus("chromyl_1524229692058", "chromyl", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 58),
-                new AdVocAsStimulus("clingstone_1524229692058", "clingstone", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 58),
-                new AdVocAsStimulus("cochin_1524229692058", "cochin", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 58),
-                new AdVocAsStimulus("cognoscibility_1524229692058", "cognoscibility", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 58),
-                new AdVocAsStimulus("collotype_1524229692058", "collotype", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 58),
-                new AdVocAsStimulus("cozen_1524229692058", "cozen", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 58),
-                new AdVocAsStimulus("curettage_1524229692058", "curettage", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 58),
-                new AdVocAsStimulus("dictatrix_1524229692058", "dictatrix", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 58),
-                new AdVocAsStimulus("flatling_1524229692058", "flatling", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 58),
-                new AdVocAsStimulus("iconolatry_1524229692058", "iconolatry", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 58),
-                new AdVocAsStimulus("increscent_1524229692058", "increscent", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 58),
-                new AdVocAsStimulus("orthicon_1524229692058", "orthicon", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 58),
-                new AdVocAsStimulus("precisian_1524229692058", "precisian", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 58),
-                new AdVocAsStimulus("schizopod_1524229692058", "schizopod", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 58),
-                new AdVocAsStimulus("stator_1524229692058", "stator", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 58),
-                new AdVocAsStimulus("thrombin_1524229692058", "thrombin", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 58),
-                new AdVocAsStimulus("tisane_1524229692058", "tisane", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 58),},
-            {
-                new AdVocAsStimulus("anaptotic_1524229692058", "anaptotic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 59),
-                new AdVocAsStimulus("caryopsis_1524229692058", "caryopsis", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 59),
-                new AdVocAsStimulus("chalcography_1524229692058", "chalcography", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 59),
-                new AdVocAsStimulus("compotation_1524229692058", "compotation", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 59),
-                new AdVocAsStimulus("cuspidate_1524229692058", "cuspidate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 59),
-                new AdVocAsStimulus("decretory_1524229692058", "decretory", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 59),
-                new AdVocAsStimulus("decumbence_1524229692058", "decumbence", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 59),
-                new AdVocAsStimulus("diathermancy_1524229692058", "diathermancy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 59),
-                new AdVocAsStimulus("divaricating_1524229692058", "divaricating", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 59),
-                new AdVocAsStimulus("enfilade_1524229692058", "enfilade", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 59),
-                new AdVocAsStimulus("exiguity_1524229692058", "exiguity", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 59),
-                new AdVocAsStimulus("fulguration_1524229692058", "fulguration", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 59),
-                new AdVocAsStimulus("hecatomb_1524229692058", "hecatomb", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 59),
-                new AdVocAsStimulus("hempen_1524229692058", "hempen", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 59),
-                new AdVocAsStimulus("incarnadine_1524229692058", "incarnadine", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 59),
-                new AdVocAsStimulus("labret_1524229692058", "labret", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 59),
-                new AdVocAsStimulus("odalisque_1524229692058", "odalisque", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 59),
-                new AdVocAsStimulus("plebiscitary_1524229692058", "plebiscitary", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 59),
-                new AdVocAsStimulus("pleonastic_1524229692058", "pleonastic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 59),
-                new AdVocAsStimulus("potation_1524229692058", "potation", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 59),},
-            {
-                new AdVocAsStimulus("abaca_1524229692058", "abaca", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 60),
-                new AdVocAsStimulus("adiabatically_1524229692058", "adiabatically", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 60),
-                new AdVocAsStimulus("affrication_1524229692058", "affrication", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 60),
-                new AdVocAsStimulus("burgee_1524229692058", "burgee", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 60),
-                new AdVocAsStimulus("canna_1524229692058", "canna", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 60),
-                new AdVocAsStimulus("colocynth_1524229692058", "colocynth", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 60),
-                new AdVocAsStimulus("cretonne_1524229692058", "cretonne", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 60),
-                new AdVocAsStimulus("diphosgene_1524229692058", "diphosgene", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 60),
-                new AdVocAsStimulus("endarteritis_1524229692058", "endarteritis", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 60),
-                new AdVocAsStimulus("enkindler_1524229692058", "enkindler", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 60),
-                new AdVocAsStimulus("epizootic_1524229692058", "epizootic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 60),
-                new AdVocAsStimulus("furculum_1524229692058", "furculum", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 60),
-                new AdVocAsStimulus("henotheism_1524229692058", "henotheism", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 60),
-                new AdVocAsStimulus("hessonite_1524229692058", "hessonite", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 60),
-                new AdVocAsStimulus("iceblink_1524229692058", "iceblink", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 60),
-                new AdVocAsStimulus("iguanid_1524229692058", "iguanid", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 60),
-                new AdVocAsStimulus("lamellate_1524229692058", "lamellate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 60),
-                new AdVocAsStimulus("mullein_1524229692058", "mullein", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 60),
-                new AdVocAsStimulus("spumous_1524229692058", "spumous", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 60),
-                new AdVocAsStimulus("ytterbium_1524229692058", "ytterbium", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 60),},
-            {
-                new AdVocAsStimulus("aecidium_1524229692058", "aecidium", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 61),
-                new AdVocAsStimulus("axletree_1524229692058", "axletree", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 61),
-                new AdVocAsStimulus("catachrestic_1524229692058", "catachrestic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 61),
-                new AdVocAsStimulus("chirognomy_1524229692058", "chirognomy", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 61),
-                new AdVocAsStimulus("collimate_1524229692058", "collimate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 61),
-                new AdVocAsStimulus("conenose_1524229692058", "conenose", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 61),
-                new AdVocAsStimulus("demimondaine_1524229692058", "demimondaine", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 61),
-                new AdVocAsStimulus("duralumin_1524229692058", "duralumin", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 61),
-                new AdVocAsStimulus("elapid_1524229692058", "elapid", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 61),
-                new AdVocAsStimulus("escheatment_1524229692058", "escheatment", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 61),
-                new AdVocAsStimulus("fulgurating_1524229692058", "fulgurating", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 61),
-                new AdVocAsStimulus("gummite_1524229692058", "gummite", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 61),
-                new AdVocAsStimulus("margay_1524229692058", "margay", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 61),
-                new AdVocAsStimulus("nixie_1524229692058", "nixie", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 61),
-                new AdVocAsStimulus("prink_1524229692058", "prink", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 61),
-                new AdVocAsStimulus("ratiocinator_1524229692058", "ratiocinator", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 61),
-                new AdVocAsStimulus("sheathbill_1524229692058", "sheathbill", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 61),
-                new AdVocAsStimulus("suzerainty_1524229692058", "suzerainty", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 61),
-                new AdVocAsStimulus("umbel_1524229692058", "umbel", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 61),
-                new AdVocAsStimulus("wrier_1524229692058", "wrier", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 61),},
-            {
-                new AdVocAsStimulus("anabas_1524229692058", "anabas", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 62),
-                new AdVocAsStimulus("argillaceous_1524229692058", "argillaceous", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 62),
-                new AdVocAsStimulus("calomel_1524229692058", "calomel", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 62),
-                new AdVocAsStimulus("cineole_1524229692058", "cineole", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 62),
-                new AdVocAsStimulus("conatus_1524229692058", "conatus", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 62),
-                new AdVocAsStimulus("crispate_1524229692058", "crispate", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 62),
-                new AdVocAsStimulus("diplostemonous_1524229692058", "diplostemonous", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 62),
-                new AdVocAsStimulus("dissepimental_1524229692058", "dissepimental", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 62),
-                new AdVocAsStimulus("engirt_1524229692058", "engirt", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 62),
-                new AdVocAsStimulus("felsitic_1524229692058", "felsitic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 62),
-                new AdVocAsStimulus("flabelliform_1524229692058", "flabelliform", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 62),
-                new AdVocAsStimulus("forint_1524229692058", "forint", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 62),
-                new AdVocAsStimulus("galbanum_1524229692058", "galbanum", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 62),
-                new AdVocAsStimulus("garget_1524229692058", "garget", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 62),
-                new AdVocAsStimulus("goliardic_1524229692058", "goliardic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 62),
-                new AdVocAsStimulus("gromwell_1524229692058", "gromwell", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 62),
-                new AdVocAsStimulus("jaconet_1524229692058", "jaconet", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 62),
-                new AdVocAsStimulus("nutgall_1524229692058", "nutgall", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 62),
-                new AdVocAsStimulus("parturiency_1524229692058", "parturiency", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 62),
-                new AdVocAsStimulus("scorbutic_1524229692058", "scorbutic", NonWords_EN_2rounds_1.NONWORD_EN + ","+WORD_EN,  WORD_EN, 62),},
-    };
-        
-  
-    
-    @Override 
-    public AdVocAsStimulus[][] getWords(){
-        return SERIES;
+    public Words_EN_2rounds_1() {
+        this.CSV_STRING = "BandNumber;Spelling\n"
+                + "1;alternative\n"
+                + "1;calendar\n"
+                + "1;clothing\n"
+                + "1;concept\n"
+                + "1;conflict\n"
+                + "1;crossing\n"
+                + "1;demonstration\n"
+                + "1;height\n"
+                + "1;housing\n"
+                + "1;include\n"
+                + "1;leadership\n"
+                + "1;maximum\n"
+                + "1;physically\n"
+                + "1;rising\n"
+                + "1;scheme\n"
+                + "1;speaker\n"
+                + "1;symbol\n"
+                + "1;technical\n"
+                + "1;tournament\n"
+                + "1;tricky\n"
+                + "2;destruction\n"
+                + "2;discover\n"
+                + "2;electricity\n"
+                + "2;embarrassment\n"
+                + "2;entering\n"
+                + "2;existence\n"
+                + "2;generation\n"
+                + "2;graduate\n"
+                + "2;international\n"
+                + "2;parade\n"
+                + "2;producer\n"
+                + "2;rocket\n"
+                + "2;serving\n"
+                + "2;session\n"
+                + "2;setback\n"
+                + "2;signature\n"
+                + "2;splendid\n"
+                + "2;tattoo\n"
+                + "2;temper\n"
+                + "2;useful\n"
+                + "3;accomplishment\n"
+                + "3;behave\n"
+                + "3;board\n"
+                + "3;certification\n"
+                + "3;concession\n"
+                + "3;dangerously\n"
+                + "3;flute\n"
+                + "3;income\n"
+                + "3;overlapping\n"
+                + "3;packaging\n"
+                + "3;pregnant\n"
+                + "3;radioactive\n"
+                + "3;raising\n"
+                + "3;refresh\n"
+                + "3;resourcefulness\n"
+                + "3;rooftop\n"
+                + "3;shopper\n"
+                + "3;specialist\n"
+                + "3;sword\n"
+                + "3;twister\n"
+                + "4;advisory\n"
+                + "4;bamboo\n"
+                + "4;business\n"
+                + "4;character\n"
+                + "4;deeply\n"
+                + "4;dictation\n"
+                + "4;earpiece\n"
+                + "4;faithful\n"
+                + "4;frozen\n"
+                + "4;geometrically\n"
+                + "4;inactivity\n"
+                + "4;investigation\n"
+                + "4;manuscript\n"
+                + "4;missing\n"
+                + "4;overview\n"
+                + "4;qualify\n"
+                + "4;splatter\n"
+                + "4;swirl\n"
+                + "4;theoretically\n"
+                + "4;touchable\n"
+                + "5;arrow\n"
+                + "5;contagious\n"
+                + "5;conventionally\n"
+                + "5;cranberry\n"
+                + "5;enlightenment\n"
+                + "5;existing\n"
+                + "5;forgetting\n"
+                + "5;influential\n"
+                + "5;intensely\n"
+                + "5;jetlag\n"
+                + "5;mechanic\n"
+                + "5;milkshake\n"
+                + "5;partake\n"
+                + "5;rating\n"
+                + "5;reservoir\n"
+                + "5;restrictive\n"
+                + "5;scrape\n"
+                + "5;severe\n"
+                + "5;unusually\n"
+                + "5;voodoo\n"
+                + "6;accordingly\n"
+                + "6;aviator\n"
+                + "6;church\n"
+                + "6;circumstance\n"
+                + "6;clockwork\n"
+                + "6;flexibility\n"
+                + "6;island\n"
+                + "6;lethal\n"
+                + "6;lizard\n"
+                + "6;neatness\n"
+                + "6;protective\n"
+                + "6;request\n"
+                + "6;responsibility\n"
+                + "6;spinal\n"
+                + "6;spoiling\n"
+                + "6;stagger\n"
+                + "6;teapot\n"
+                + "6;thumping\n"
+                + "6;washroom\n"
+                + "6;whirlwind\n"
+                + "7;better\n"
+                + "7;blizzard\n"
+                + "7;cleanse\n"
+                + "7;commence\n"
+                + "7;curling\n"
+                + "7;defrost\n"
+                + "7;detachable\n"
+                + "7;discharging\n"
+                + "7;generating\n"
+                + "7;mirage\n"
+                + "7;partly\n"
+                + "7;philosophical\n"
+                + "7;player\n"
+                + "7;procrastination\n"
+                + "7;silently\n"
+                + "7;spiritually\n"
+                + "7;stylist\n"
+                + "7;sweetheart\n"
+                + "7;unforgettable\n"
+                + "7;wristband\n"
+                + "8;abbreviation\n"
+                + "8;accessibility\n"
+                + "8;antibody\n"
+                + "8;beneath\n"
+                + "8;cordless\n"
+                + "8;correspondence\n"
+                + "8;disintegrate\n"
+                + "8;holding\n"
+                + "8;incompatibility\n"
+                + "8;integrate\n"
+                + "8;pizza\n"
+                + "8;precautionary\n"
+                + "8;remake\n"
+                + "8;sharpener\n"
+                + "8;similarity\n"
+                + "8;spinner\n"
+                + "8;tragic\n"
+                + "8;unconscious\n"
+                + "8;unharmed\n"
+                + "8;uptight\n"
+                + "9;admirably\n"
+                + "9;bridesmaid\n"
+                + "9;calmly\n"
+                + "9;comic\n"
+                + "9;deconstruction\n"
+                + "9;dispense\n"
+                + "9;expiration\n"
+                + "9;giggling\n"
+                + "9;inner\n"
+                + "9;manage\n"
+                + "9;octagon\n"
+                + "9;order\n"
+                + "9;saltwater\n"
+                + "9;screamer\n"
+                + "9;soften\n"
+                + "9;thermal\n"
+                + "9;unintelligible\n"
+                + "9;unscented\n"
+                + "9;voyage\n"
+                + "9;writing\n"
+                + "10;castaway\n"
+                + "10;coleslaw\n"
+                + "10;consideration\n"
+                + "10;doubting\n"
+                + "10;drinker\n"
+                + "10;employer\n"
+                + "10;expressiveness\n"
+                + "10;fascination\n"
+                + "10;habitually\n"
+                + "10;hypocritical\n"
+                + "10;inclusive\n"
+                + "10;lavish\n"
+                + "10;listing\n"
+                + "10;module\n"
+                + "10;parasite\n"
+                + "10;pension\n"
+                + "10;prologue\n"
+                + "10;showdown\n"
+                + "10;tilting\n"
+                + "10;transportation\n"
+                + "11;alpha\n"
+                + "11;blaming\n"
+                + "11;borderline\n"
+                + "11;dandy\n"
+                + "11;environmental\n"
+                + "11;fascinated\n"
+                + "11;fraternity\n"
+                + "11;goblet\n"
+                + "11;gratify\n"
+                + "11;impulsively\n"
+                + "11;model\n"
+                + "11;mowing\n"
+                + "11;notable\n"
+                + "11;occupational\n"
+                + "11;pinstripe\n"
+                + "11;planet\n"
+                + "11;poisonous\n"
+                + "11;sequence\n"
+                + "11;sustain\n"
+                + "11;together\n"
+                + "12;artistically\n"
+                + "12;catwalk\n"
+                + "12;chivalry\n"
+                + "12;collar\n"
+                + "12;colleague\n"
+                + "12;edging\n"
+                + "12;enlightening\n"
+                + "12;exploring\n"
+                + "12;factory\n"
+                + "12;forensic\n"
+                + "12;hotline\n"
+                + "12;ingenuity\n"
+                + "12;ongoing\n"
+                + "12;plate\n"
+                + "12;propeller\n"
+                + "12;proudly\n"
+                + "12;prowling\n"
+                + "12;search\n"
+                + "12;sprite\n"
+                + "12;traditionalist\n"
+                + "13;aroma\n"
+                + "13;bearing\n"
+                + "13;bleakness\n"
+                + "13;brewer\n"
+                + "13;cartilage\n"
+                + "13;clumsy\n"
+                + "13;duality\n"
+                + "13;espionage\n"
+                + "13;forgery\n"
+                + "13;huntsman\n"
+                + "13;misunderstood\n"
+                + "13;oddity\n"
+                + "13;referral\n"
+                + "13;regrettable\n"
+                + "13;sampling\n"
+                + "13;swimwear\n"
+                + "13;symmetrical\n"
+                + "13;thieving\n"
+                + "13;unshaken\n"
+                + "13;whose\n"
+                + "14;aesthetically\n"
+                + "14;canyon\n"
+                + "14;clubhouse\n"
+                + "14;conceptual\n"
+                + "14;croak\n"
+                + "14;downpour\n"
+                + "14;fixable\n"
+                + "14;grappling\n"
+                + "14;hypnotherapy\n"
+                + "14;impale\n"
+                + "14;interstate\n"
+                + "14;oxide\n"
+                + "14;permissible\n"
+                + "14;plunge\n"
+                + "14;respectably\n"
+                + "14;rippling\n"
+                + "14;slayer\n"
+                + "14;stocky\n"
+                + "14;uptown\n"
+                + "14;vigorously\n"
+                + "15;airfield\n"
+                + "15;answerable\n"
+                + "15;baboon\n"
+                + "15;choreograph\n"
+                + "15;conductivity\n"
+                + "15;deviant\n"
+                + "15;disapproval\n"
+                + "15;disperse\n"
+                + "15;diverting\n"
+                + "15;excellency\n"
+                + "15;fraying\n"
+                + "15;hourglass\n"
+                + "15;mortar\n"
+                + "15;prudently\n"
+                + "15;redesign\n"
+                + "15;seashell\n"
+                + "15;segregation\n"
+                + "15;shack\n"
+                + "15;treasury\n"
+                + "15;wiggly\n"
+                + "16;apprehend\n"
+                + "16;banning\n"
+                + "16;cashmere\n"
+                + "16;catcher\n"
+                + "16;diligence\n"
+                + "16;institutionally\n"
+                + "16;loophole\n"
+                + "16;miscalculate\n"
+                + "16;mullet\n"
+                + "16;neglectful\n"
+                + "16;personable\n"
+                + "16;personnel\n"
+                + "16;polygon\n"
+                + "16;recalculate\n"
+                + "16;rehydration\n"
+                + "16;responder\n"
+                + "16;salamander\n"
+                + "16;stork\n"
+                + "16;supremely\n"
+                + "16;westbound\n"
+                + "17;aching\n"
+                + "17;artwork\n"
+                + "17;banter\n"
+                + "17;barbecue\n"
+                + "17;captivate\n"
+                + "17;deduction\n"
+                + "17;dividend\n"
+                + "17;hardcover\n"
+                + "17;hospice\n"
+                + "17;increment\n"
+                + "17;inhumane\n"
+                + "17;intrusiveness\n"
+                + "17;mincemeat\n"
+                + "17;outwardly\n"
+                + "17;porter\n"
+                + "17;portray\n"
+                + "17;redundantly\n"
+                + "17;skater\n"
+                + "17;smasher\n"
+                + "17;volatile\n"
+                + "18;constituent\n"
+                + "18;delicacy\n"
+                + "18;distillery\n"
+                + "18;distrustful\n"
+                + "18;gastronomy\n"
+                + "18;insincerity\n"
+                + "18;mentorship\n"
+                + "18;overstaffed\n"
+                + "18;peddle\n"
+                + "18;precinct\n"
+                + "18;rancher\n"
+                + "18;secrecy\n"
+                + "18;shrunken\n"
+                + "18;stuffiness\n"
+                + "18;trapper\n"
+                + "18;undecorated\n"
+                + "18;underpayment\n"
+                + "18;unstuck\n"
+                + "18;upheaval\n"
+                + "18;varnishing\n"
+                + "19;ample\n"
+                + "19;backgammon\n"
+                + "19;bedpan\n"
+                + "19;bobble\n"
+                + "19;brushstroke\n"
+                + "19;demography\n"
+                + "19;directionless\n"
+                + "19;flameproof\n"
+                + "19;impassively\n"
+                + "19;indignantly\n"
+                + "19;intricate\n"
+                + "19;minimalism\n"
+                + "19;perceptible\n"
+                + "19;porky\n"
+                + "19;ravishingly\n"
+                + "19;slickness\n"
+                + "19;speckle\n"
+                + "19;supercharge\n"
+                + "19;territorially\n"
+                + "19;thinly\n"
+                + "20;ambitiously\n"
+                + "20;antiseptics\n"
+                + "20;battlefront\n"
+                + "20;biogenetic\n"
+                + "20;consoling\n"
+                + "20;gibberish\n"
+                + "20;intergalactic\n"
+                + "20;legless\n"
+                + "20;loath\n"
+                + "20;pronouncement\n"
+                + "20;provincial\n"
+                + "20;refreeze\n"
+                + "20;reprieve\n"
+                + "20;scram\n"
+                + "20;siren\n"
+                + "20;sternness\n"
+                + "20;timekeeping\n"
+                + "20;topically\n"
+                + "20;transfix\n"
+                + "20;traveller\n"
+                + "21;anyhow\n"
+                + "21;assembler\n"
+                + "21;believability\n"
+                + "21;daintiness\n"
+                + "21;datasheet\n"
+                + "21;electoral\n"
+                + "21;evasively\n"
+                + "21;farther\n"
+                + "21;foregone\n"
+                + "21;hospitably\n"
+                + "21;nonphysical\n"
+                + "21;obtrusively\n"
+                + "21;offense\n"
+                + "21;pharmacology\n"
+                + "21;reddish\n"
+                + "21;redheaded\n"
+                + "21;streaky\n"
+                + "21;stutterer\n"
+                + "21;twinge\n"
+                + "21;whaler\n"
+                + "22;albatross\n"
+                + "22;amble\n"
+                + "22;anchorage\n"
+                + "22;bankroll\n"
+                + "22;beeper\n"
+                + "22;breadwinner\n"
+                + "22;contented\n"
+                + "22;cosmically\n"
+                + "22;drowsily\n"
+                + "22;holdout\n"
+                + "22;legibly\n"
+                + "22;naughtily\n"
+                + "22;northward\n"
+                + "22;obliqueness\n"
+                + "22;overtly\n"
+                + "22;plume\n"
+                + "22;retrain\n"
+                + "22;slimy\n"
+                + "22;subdividing\n"
+                + "22;swaddle\n"
+                + "23;auspiciousness\n"
+                + "23;bongo\n"
+                + "23;dampener\n"
+                + "23;fishery\n"
+                + "23;heartstring\n"
+                + "23;hither\n"
+                + "23;insinuation\n"
+                + "23;looseness\n"
+                + "23;microcomputer\n"
+                + "23;nomadic\n"
+                + "23;noncertified\n"
+                + "23;planking\n"
+                + "23;pocketknife\n"
+                + "23;quintuplet\n"
+                + "23;spacer\n"
+                + "23;spiritedly\n"
+                + "23;talon\n"
+                + "23;transplantation\n"
+                + "23;turret\n"
+                + "23;uncurl\n"
+                + "24;algebraic\n"
+                + "24;audaciously\n"
+                + "24;bayonet\n"
+                + "24;bejewel\n"
+                + "24;broil\n"
+                + "24;caricature\n"
+                + "24;decongestive\n"
+                + "24;deity\n"
+                + "24;disastrously\n"
+                + "24;fathom\n"
+                + "24;feebly\n"
+                + "24;interrupter\n"
+                + "24;matrimonial\n"
+                + "24;pantheon\n"
+                + "24;plaintiff\n"
+                + "24;refracting\n"
+                + "24;shuttering\n"
+                + "24;unbending\n"
+                + "24;weekender\n"
+                + "24;worrisome\n"
+                + "25;affronted\n"
+                + "25;backslapping\n"
+                + "25;deadwood\n"
+                + "25;disgustedly\n"
+                + "25;exhume\n"
+                + "25;gaudy\n"
+                + "25;ineptly\n"
+                + "25;insolubility\n"
+                + "25;locale\n"
+                + "25;manger\n"
+                + "25;mercifulness\n"
+                + "25;nightwalker\n"
+                + "25;nonlinear\n"
+                + "25;projectionist\n"
+                + "25;reacquisition\n"
+                + "25;smite\n"
+                + "25;spurt\n"
+                + "25;ulterior\n"
+                + "25;warmness\n"
+                + "25;wordsmith\n"
+                + "26;affective\n"
+                + "26;befuddle\n"
+                + "26;buckaroo\n"
+                + "26;colloquial\n"
+                + "26;couplet\n"
+                + "26;defensible\n"
+                + "26;dollop\n"
+                + "26;domesticity\n"
+                + "26;eggbeater\n"
+                + "26;envoy\n"
+                + "26;flagstone\n"
+                + "26;humdrum\n"
+                + "26;incontinence\n"
+                + "26;indefensibly\n"
+                + "26;matriarchal\n"
+                + "26;medusa\n"
+                + "26;outlay\n"
+                + "26;preselect\n"
+                + "26;thighbone\n"
+                + "26;tripe\n"
+                + "27;beastliness\n"
+                + "27;breadth\n"
+                + "27;caddie\n"
+                + "27;cartographer\n"
+                + "27;clincher\n"
+                + "27;clinger\n"
+                + "27;dispersion\n"
+                + "27;disruptor\n"
+                + "27;dualistic\n"
+                + "27;negligently\n"
+                + "27;outpour\n"
+                + "27;preparedness\n"
+                + "27;procurer\n"
+                + "27;purposefulness\n"
+                + "27;reddening\n"
+                + "27;rheumatism\n"
+                + "27;scamp\n"
+                + "27;spottiness\n"
+                + "27;sulkiness\n"
+                + "27;unembroidered\n"
+                + "28;churchgoer\n"
+                + "28;dishevel\n"
+                + "28;flagrantly\n"
+                + "28;flyaway\n"
+                + "28;harrow\n"
+                + "28;impishly\n"
+                + "28;knickknack\n"
+                + "28;libel\n"
+                + "28;mooring\n"
+                + "28;orbiter\n"
+                + "28;raggedly\n"
+                + "28;rampantly\n"
+                + "28;retentiveness\n"
+                + "28;slimness\n"
+                + "28;stableman\n"
+                + "28;succinctly\n"
+                + "28;tinge\n"
+                + "28;underuse\n"
+                + "28;unmagnified\n"
+                + "28;unstuffed\n"
+                + "29;anthill\n"
+                + "29;artfulness\n"
+                + "29;attuned\n"
+                + "29;backtalk\n"
+                + "29;calcify\n"
+                + "29;chalet\n"
+                + "29;commonality\n"
+                + "29;congruently\n"
+                + "29;counterview\n"
+                + "29;courtier\n"
+                + "29;discernibly\n"
+                + "29;faulting\n"
+                + "29;irradiated\n"
+                + "29;paraphraser\n"
+                + "29;parka\n"
+                + "29;racecar\n"
+                + "29;ragtime\n"
+                + "29;theologian\n"
+                + "29;unalleviated\n"
+                + "29;unpopularity\n"
+                + "30;antipathy\n"
+                + "30;cayenne\n"
+                + "30;chafe\n"
+                + "30;chaff\n"
+                + "30;clout\n"
+                + "30;curtly\n"
+                + "30;debacle\n"
+                + "30;delectability\n"
+                + "30;hedonist\n"
+                + "30;implementer\n"
+                + "30;mulch\n"
+                + "30;natal\n"
+                + "30;platelet\n"
+                + "30;pluggable\n"
+                + "30;recommitment\n"
+                + "30;roundtable\n"
+                + "30;studiousness\n"
+                + "30;unanimated\n"
+                + "30;vagrancy\n"
+                + "30;vivacity\n"
+                + "31;abdication\n"
+                + "31;artifice\n"
+                + "31;calligraphic\n"
+                + "31;delusionary\n"
+                + "31;downfallen\n"
+                + "31;empress\n"
+                + "31;ether\n"
+                + "31;herder\n"
+                + "31;inclement\n"
+                + "31;kidder\n"
+                + "31;lacquering\n"
+                + "31;malevolency\n"
+                + "31;monopolist\n"
+                + "31;reformism\n"
+                + "31;regale\n"
+                + "31;repressor\n"
+                + "31;snivel\n"
+                + "31;stoker\n"
+                + "31;wheelbase\n"
+                + "31;wineglass\n"
+                + "32;attractor\n"
+                + "32;curatorship\n"
+                + "32;forbear\n"
+                + "32;guardedly\n"
+                + "32;inlaid\n"
+                + "32;overhung\n"
+                + "32;payee\n"
+                + "32;precept\n"
+                + "32;presuppose\n"
+                + "32;quadratics\n"
+                + "32;scenting\n"
+                + "32;skulk\n"
+                + "32;stirringly\n"
+                + "32;stratify\n"
+                + "32;strongpoint\n"
+                + "32;swill\n"
+                + "32;tamer\n"
+                + "32;tenement\n"
+                + "32;uncrushed\n"
+                + "32;whittler\n"
+                + "33;amoebic\n"
+                + "33;backswept\n"
+                + "33;bodacious\n"
+                + "33;digitalism\n"
+                + "33;digressive\n"
+                + "33;fairing\n"
+                + "33;functionary\n"
+                + "33;indulgency\n"
+                + "33;inline\n"
+                + "33;paperboard\n"
+                + "33;parlay\n"
+                + "33;pastureland\n"
+                + "33;pigmy\n"
+                + "33;prudentially\n"
+                + "33;retighten\n"
+                + "33;rumpus\n"
+                + "33;sharable\n"
+                + "33;unready\n"
+                + "33;vaccinator\n"
+                + "33;wryly\n"
+                + "34;beamingly\n"
+                + "34;bumbler\n"
+                + "34;compliable\n"
+                + "34;cosmonaut\n"
+                + "34;crotchety\n"
+                + "34;demonstrably\n"
+                + "34;dinginess\n"
+                + "34;gauntly\n"
+                + "34;guardedness\n"
+                + "34;injurer\n"
+                + "34;ironworking\n"
+                + "34;joist\n"
+                + "34;knifeboard\n"
+                + "34;lengthener\n"
+                + "34;mincer\n"
+                + "34;mononuclear\n"
+                + "34;quark\n"
+                + "34;rebind\n"
+                + "34;textural\n"
+                + "34;untraveled\n"
+                + "35;acrimonious\n"
+                + "35;backbeat\n"
+                + "35;cherubic\n"
+                + "35;cornucopian\n"
+                + "35;crony\n"
+                + "35;cupbearer\n"
+                + "35;decimator\n"
+                + "35;dermal\n"
+                + "35;duplicable\n"
+                + "35;extremeness\n"
+                + "35;indelibly\n"
+                + "35;inundation\n"
+                + "35;lipread\n"
+                + "35;nerveless\n"
+                + "35;overmodest\n"
+                + "35;philander\n"
+                + "35;secularity\n"
+                + "35;suavely\n"
+                + "35;tonal\n"
+                + "35;unusualness\n"
+                + "36;annul\n"
+                + "36;aortic\n"
+                + "36;bilge\n"
+                + "36;bookishness\n"
+                + "36;condemner\n"
+                + "36;crosspiece\n"
+                + "36;determinist\n"
+                + "36;dowel\n"
+                + "36;entreaty\n"
+                + "36;exorcise\n"
+                + "36;immoderately\n"
+                + "36;inquisitorial\n"
+                + "36;mutability\n"
+                + "36;myopia\n"
+                + "36;purposelessly\n"
+                + "36;retroaction\n"
+                + "36;sinew\n"
+                + "36;subsoil\n"
+                + "36;wintry\n"
+                + "36;zoophobia\n"
+                + "37;alleviative\n"
+                + "37;altarpiece\n"
+                + "37;balsawood\n"
+                + "37;believingly\n"
+                + "37;breezeless\n"
+                + "37;bridgeable\n"
+                + "37;clapboard\n"
+                + "37;contaminable\n"
+                + "37;enroller\n"
+                + "37;footmark\n"
+                + "37;inefficacy\n"
+                + "37;irately\n"
+                + "37;leary\n"
+                + "37;stowage\n"
+                + "37;tawdry\n"
+                + "37;tetra\n"
+                + "37;tremulously\n"
+                + "37;vacuous\n"
+                + "37;wheelman\n"
+                + "37;yardmaster\n"
+                + "38;ambulant\n"
+                + "38;bakeshop\n"
+                + "38;congealment\n"
+                + "38;connotative\n"
+                + "38;debauchment\n"
+                + "38;defoliation\n"
+                + "38;dialectical\n"
+                + "38;dimmest\n"
+                + "38;dingle\n"
+                + "38;gooselike\n"
+                + "38;implorer\n"
+                + "38;insofar\n"
+                + "38;nitric\n"
+                + "38;pronuclear\n"
+                + "38;proofer\n"
+                + "38;revertible\n"
+                + "38;terseness\n"
+                + "38;trailbreaker\n"
+                + "38;upend\n"
+                + "38;vestibular\n"
+                + "39;aerophobia\n"
+                + "39;biddable\n"
+                + "39;bower\n"
+                + "39;classism\n"
+                + "39;corpulent\n"
+                + "39;declamation\n"
+                + "39;disfigurer\n"
+                + "39;electrotype\n"
+                + "39;groundling\n"
+                + "39;hermetic\n"
+                + "39;hubris\n"
+                + "39;ionosphere\n"
+                + "39;latherer\n"
+                + "39;pearlescent\n"
+                + "39;preconscious\n"
+                + "39;redshirt\n"
+                + "39;reface\n"
+                + "39;seismogram\n"
+                + "39;setpoint\n"
+                + "39;tachometer\n"
+                + "40;autoclave\n"
+                + "40;brooch\n"
+                + "40;effluence\n"
+                + "40;eggless\n"
+                + "40;gingham\n"
+                + "40;kinghood\n"
+                + "40;literalistic\n"
+                + "40;modifiability\n"
+                + "40;pectin\n"
+                + "40;phonotype\n"
+                + "40;phototropic\n"
+                + "40;polenta\n"
+                + "40;requite\n"
+                + "40;servile\n"
+                + "40;tabulator\n"
+                + "40;ungenerous\n"
+                + "40;whaleboat\n"
+                + "40;wildish\n"
+                + "40;woodenness\n"
+                + "40;wrest\n"
+                + "41;addressbook\n"
+                + "41;anointer\n"
+                + "41;astigmatic\n"
+                + "41;atoll\n"
+                + "41;aurally\n"
+                + "41;baneful\n"
+                + "41;bracer\n"
+                + "41;centigram\n"
+                + "41;chlorate\n"
+                + "41;coessential\n"
+                + "41;cruciform\n"
+                + "41;dearness\n"
+                + "41;destructivity\n"
+                + "41;hoppy\n"
+                + "41;inaugurator\n"
+                + "41;numskull\n"
+                + "41;owlishly\n"
+                + "41;prevocational\n"
+                + "41;radon\n"
+                + "41;wieldy\n"
+                + "42;adventuress\n"
+                + "42;alder\n"
+                + "42;cajoler\n"
+                + "42;caldron\n"
+                + "42;distillatory\n"
+                + "42;elicitation\n"
+                + "42;flaunty\n"
+                + "42;furtherance\n"
+                + "42;inebriant\n"
+                + "42;malachite\n"
+                + "42;rarefied\n"
+                + "42;reprovingly\n"
+                + "42;savoir\n"
+                + "42;shackler\n"
+                + "42;snoot\n"
+                + "42;starflower\n"
+                + "42;syntactic\n"
+                + "42;tress\n"
+                + "42;uncivilly\n"
+                + "42;unhistorical\n"
+                + "43;antifriction\n"
+                + "43;bronchiole\n"
+                + "43;collectorship\n"
+                + "43;consternate\n"
+                + "43;dumfound\n"
+                + "43;engrain\n"
+                + "43;euphonium\n"
+                + "43;frazzling\n"
+                + "43;grosser\n"
+                + "43;impairer\n"
+                + "43;interfuse\n"
+                + "43;liquidly\n"
+                + "43;mollifying\n"
+                + "43;moray\n"
+                + "43;proliferative\n"
+                + "43;serif\n"
+                + "43;supervisorial\n"
+                + "43;thrombotic\n"
+                + "43;tyrannous\n"
+                + "43;underbred\n"
+                + "44;amaryllis\n"
+                + "44;asceticism\n"
+                + "44;autogenic\n"
+                + "44;becalmed\n"
+                + "44;centurial\n"
+                + "44;clarion\n"
+                + "44;concessive\n"
+                + "44;copperleaf\n"
+                + "44;corroder\n"
+                + "44;designative\n"
+                + "44;diffidence\n"
+                + "44;druidic\n"
+                + "44;horntail\n"
+                + "44;iodide\n"
+                + "44;polyglot\n"
+                + "44;prehensile\n"
+                + "44;serotoxin\n"
+                + "44;stent\n"
+                + "44;superoxide\n"
+                + "44;unscriptural\n"
+                + "45;binocularly\n"
+                + "45;crump\n"
+                + "45;dactyl\n"
+                + "45;dichotomous\n"
+                + "45;dilutor\n"
+                + "45;earthlight\n"
+                + "45;epiglottal\n"
+                + "45;filial\n"
+                + "45;grubber\n"
+                + "45;inclinator\n"
+                + "45;multiplexer\n"
+                + "45;neologism\n"
+                + "45;northwester\n"
+                + "45;polychromous\n"
+                + "45;redub\n"
+                + "45;silicate\n"
+                + "45;subfigure\n"
+                + "45;tomfool\n"
+                + "45;unstaunched\n"
+                + "45;vasculature\n"
+                + "46;atonality\n"
+                + "46;attempter\n"
+                + "46;bloomy\n"
+                + "46;cherishment\n"
+                + "46;counterparty\n"
+                + "46;crumby\n"
+                + "46;delusive\n"
+                + "46;grist\n"
+                + "46;histologist\n"
+                + "46;inscribable\n"
+                + "46;internality\n"
+                + "46;manna\n"
+                + "46;moonward\n"
+                + "46;odium\n"
+                + "46;oppositeness\n"
+                + "46;phonemic\n"
+                + "46;rhomboidal\n"
+                + "46;signally\n"
+                + "46;singly\n"
+                + "46;stiller\n"
+                + "47;amplificatory\n"
+                + "47;bezel\n"
+                + "47;bucolic\n"
+                + "47;campstool\n"
+                + "47;changeful\n"
+                + "47;charthouse\n"
+                + "47;datum\n"
+                + "47;desiccant\n"
+                + "47;elegy\n"
+                + "47;enervate\n"
+                + "47;ennui\n"
+                + "47;gramophonic\n"
+                + "47;hydrotropism\n"
+                + "47;lactase\n"
+                + "47;laggard\n"
+                + "47;microgroove\n"
+                + "47;monomaniacal\n"
+                + "47;occultation\n"
+                + "47;philologist\n"
+                + "47;tragicomedy\n"
+                + "48;cattishly\n"
+                + "48;causer\n"
+                + "48;chafer\n"
+                + "48;circumlocutory\n"
+                + "48;comprisal\n"
+                + "48;conclavist\n"
+                + "48;doughty\n"
+                + "48;enfranchiser\n"
+                + "48;estuarial\n"
+                + "48;exoteric\n"
+                + "48;hymnologist\n"
+                + "48;iliac\n"
+                + "48;immerge\n"
+                + "48;irradiative\n"
+                + "48;jarful\n"
+                + "48;manufactory\n"
+                + "48;mudstone\n"
+                + "48;mycology\n"
+                + "48;octal\n"
+                + "48;phototube\n"
+                + "49;affronter\n"
+                + "49;alderwoman\n"
+                + "49;arrestment\n"
+                + "49;atonic\n"
+                + "49;churl\n"
+                + "49;diaphanous\n"
+                + "49;exogenously\n"
+                + "49;floridness\n"
+                + "49;homonymic\n"
+                + "49;inflexed\n"
+                + "49;interferon\n"
+                + "49;liposome\n"
+                + "49;moribund\n"
+                + "49;nasality\n"
+                + "49;permute\n"
+                + "49;personate\n"
+                + "49;popish\n"
+                + "49;rememberable\n"
+                + "49;torridity\n"
+                + "49;xylographer\n"
+                + "50;beleaguerer\n"
+                + "50;brainsick\n"
+                + "50;complicacy\n"
+                + "50;corer\n"
+                + "50;culler\n"
+                + "50;dissocial\n"
+                + "50;effectible\n"
+                + "50;epigenetic\n"
+                + "50;ester\n"
+                + "50;extensity\n"
+                + "50;foddering\n"
+                + "50;forecastle\n"
+                + "50;gabardine\n"
+                + "50;liger\n"
+                + "50;manyfold\n"
+                + "50;milksop\n"
+                + "50;quadric\n"
+                + "50;ridgepole\n"
+                + "50;rosaceous\n"
+                + "50;sophism\n"
+                + "51;antiskid\n"
+                + "51;artificer\n"
+                + "51;clime\n"
+                + "51;cockling\n"
+                + "51;commutate\n"
+                + "51;crimination\n"
+                + "51;crower\n"
+                + "51;fungoid\n"
+                + "51;grudger\n"
+                + "51;hoodoo\n"
+                + "51;impendent\n"
+                + "51;libertinism\n"
+                + "51;nephrite\n"
+                + "51;overplenty\n"
+                + "51;palmy\n"
+                + "51;pathetical\n"
+                + "51;scleroid\n"
+                + "51;semidry\n"
+                + "51;sternal\n"
+                + "51;wildering\n"
+                + "52;accorder\n"
+                + "52;ashram\n"
+                + "52;billon\n"
+                + "52;casemate\n"
+                + "52;chloral\n"
+                + "52;diffusivity\n"
+                + "52;dissymmetric\n"
+                + "52;duodenary\n"
+                + "52;echinoderm\n"
+                + "52;enmeshment\n"
+                + "52;epiphenomenal\n"
+                + "52;evince\n"
+                + "52;execration\n"
+                + "52;flowerage\n"
+                + "52;jackfruit\n"
+                + "52;lacteal\n"
+                + "52;photolysis\n"
+                + "52;puissance\n"
+                + "52;stockfish\n"
+                + "52;thermopile\n"
+                + "53;aviculturist\n"
+                + "53;batik\n"
+                + "53;bivalency\n"
+                + "53;complexional\n"
+                + "53;dactylology\n"
+                + "53;disaccustom\n"
+                + "53;grabbling\n"
+                + "53;hemolytic\n"
+                + "53;inquietude\n"
+                + "53;laity\n"
+                + "53;noisome\n"
+                + "53;omicron\n"
+                + "53;petard\n"
+                + "53;pinkly\n"
+                + "53;promptitude\n"
+                + "53;solipsism\n"
+                + "53;tarsus\n"
+                + "53;ungird\n"
+                + "53;unregenerate\n"
+                + "53;winnow\n"
+                + "54;adnominal\n"
+                + "54;alternant\n"
+                + "54;alveolar\n"
+                + "54;anneal\n"
+                + "54;arbitrager\n"
+                + "54;bogwood\n"
+                + "54;combinatorial\n"
+                + "54;hereinabove\n"
+                + "54;hyperborean\n"
+                + "54;hypocycloid\n"
+                + "54;inerrability\n"
+                + "54;inerratic\n"
+                + "54;interclub\n"
+                + "54;lazuli\n"
+                + "54;lightsome\n"
+                + "54;perquisite\n"
+                + "54;proscenium\n"
+                + "54;sepulture\n"
+                + "54;shrike\n"
+                + "54;utile\n"
+                + "55;absolutistic\n"
+                + "55;acetify\n"
+                + "55;agnate\n"
+                + "55;alginate\n"
+                + "55;bromidic\n"
+                + "55;convictism\n"
+                + "55;cuddy\n"
+                + "55;cycloramic\n"
+                + "55;demurral\n"
+                + "55;devisee\n"
+                + "55;fascicular\n"
+                + "55;flaxy\n"
+                + "55;groundsill\n"
+                + "55;headforemost\n"
+                + "55;irrigable\n"
+                + "55;pharmacokinetic\n"
+                + "55;polypore\n"
+                + "55;scarping\n"
+                + "55;torus\n"
+                + "55;wabble\n"
+                + "56;agglutination\n"
+                + "56;appurtenance\n"
+                + "56;autopolyploid\n"
+                + "56;bathometer\n"
+                + "56;brachylogy\n"
+                + "56;caviler\n"
+                + "56;colophony\n"
+                + "56;condoler\n"
+                + "56;dispossessory\n"
+                + "56;dysgenics\n"
+                + "56;excerptor\n"
+                + "56;flocculate\n"
+                + "56;foredoom\n"
+                + "56;isotheral\n"
+                + "56;mimesis\n"
+                + "56;obscurantist\n"
+                + "56;periphrastic\n"
+                + "56;prate\n"
+                + "56;radiothorium\n"
+                + "56;widgeon\n"
+                + "57;abnegator\n"
+                + "57;alewife\n"
+                + "57;algological\n"
+                + "57;cicerone\n"
+                + "57;consistory\n"
+                + "57;corporeity\n"
+                + "57;elastomeric\n"
+                + "57;elide\n"
+                + "57;endocarp\n"
+                + "57;essayistic\n"
+                + "57;falconine\n"
+                + "57;gigot\n"
+                + "57;ginnery\n"
+                + "57;groggery\n"
+                + "57;hornstone\n"
+                + "57;marron\n"
+                + "57;merle\n"
+                + "57;pilaster\n"
+                + "57;scopolamine\n"
+                + "57;tottery\n"
+                + "58;amanuensis\n"
+                + "58;chary\n"
+                + "58;chiastic\n"
+                + "58;chromyl\n"
+                + "58;clingstone\n"
+                + "58;cochin\n"
+                + "58;cognoscibility\n"
+                + "58;collotype\n"
+                + "58;cozen\n"
+                + "58;curettage\n"
+                + "58;dictatrix\n"
+                + "58;flatling\n"
+                + "58;iconolatry\n"
+                + "58;increscent\n"
+                + "58;orthicon\n"
+                + "58;precisian\n"
+                + "58;schizopod\n"
+                + "58;stator\n"
+                + "58;thrombin\n"
+                + "58;tisane\n"
+                + "59;anaptotic\n"
+                + "59;caryopsis\n"
+                + "59;chalcography\n"
+                + "59;compotation\n"
+                + "59;cuspidate\n"
+                + "59;decretory\n"
+                + "59;decumbence\n"
+                + "59;diathermancy\n"
+                + "59;divaricating\n"
+                + "59;enfilade\n"
+                + "59;exiguity\n"
+                + "59;fulguration\n"
+                + "59;hecatomb\n"
+                + "59;hempen\n"
+                + "59;incarnadine\n"
+                + "59;labret\n"
+                + "59;odalisque\n"
+                + "59;plebiscitary\n"
+                + "59;pleonastic\n"
+                + "59;potation\n"
+                + "60;abaca\n"
+                + "60;adiabatically\n"
+                + "60;affrication\n"
+                + "60;burgee\n"
+                + "60;canna\n"
+                + "60;colocynth\n"
+                + "60;cretonne\n"
+                + "60;diphosgene\n"
+                + "60;endarteritis\n"
+                + "60;enkindler\n"
+                + "60;epizootic\n"
+                + "60;furculum\n"
+                + "60;henotheism\n"
+                + "60;hessonite\n"
+                + "60;iceblink\n"
+                + "60;iguanid\n"
+                + "60;lamellate\n"
+                + "60;mullein\n"
+                + "60;spumous\n"
+                + "60;ytterbium\n"
+                + "61;aecidium\n"
+                + "61;axletree\n"
+                + "61;catachrestic\n"
+                + "61;chirognomy\n"
+                + "61;collimate\n"
+                + "61;conenose\n"
+                + "61;demimondaine\n"
+                + "61;duralumin\n"
+                + "61;elapid\n"
+                + "61;escheatment\n"
+                + "61;fulgurating\n"
+                + "61;gummite\n"
+                + "61;margay\n"
+                + "61;nixie\n"
+                + "61;prink\n"
+                + "61;ratiocinator\n"
+                + "61;sheathbill\n"
+                + "61;suzerainty\n"
+                + "61;umbel\n"
+                + "61;wrier\n"
+                + "62;anabas\n"
+                + "62;argillaceous\n"
+                + "62;calomel\n"
+                + "62;cineole\n"
+                + "62;conatus\n"
+                + "62;crispate\n"
+                + "62;diplostemonous\n"
+                + "62;dissepimental\n"
+                + "62;engirt\n"
+                + "62;felsitic\n"
+                + "62;flabelliform\n"
+                + "62;forint\n"
+                + "62;galbanum\n"
+                + "62;garget\n"
+                + "62;goliardic\n"
+                + "62;gromwell\n"
+                + "62;jaconet\n"
+                + "62;nutgall\n"
+                + "62;parturiency\n"
+                + "62;scorbutic";
     }
-    
-    @Override 
-    public String getCorrectResponse(){
-        return WORD_EN;
-    }
-
 }

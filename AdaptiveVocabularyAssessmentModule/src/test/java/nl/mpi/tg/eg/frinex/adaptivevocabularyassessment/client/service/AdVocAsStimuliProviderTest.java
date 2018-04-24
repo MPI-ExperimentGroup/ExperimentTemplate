@@ -18,19 +18,14 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Vocabulary;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
-
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.WordsSource;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.NonWordsSource;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.AdVocAsStimuliFromString;
 
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import org.junit.After;
@@ -39,7 +34,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 
 /**
  *
@@ -48,14 +42,16 @@ import org.junit.Ignore;
 public class AdVocAsStimuliProviderTest {
 
     private final String numberOfBands = "54";
-    private final String wordsPerBand = "40";
     private final String nonwordsPerBlock = "4";
     private final String startBand = "20";
     private final String averageNonWordPoistion = "3";
     private final String fineTuningTupleLength = "4";
     private final String fineTuningUpperBoundForCycles = "2";
+    private final static String NONWORD_NL = "NEE&#44; ik ken dit woord niet";
+    private final static String WORD_NL = "JA&#44; ik ken dit woord";
 
     public AdVocAsStimuliProviderTest() {
+
     }
 
     @BeforeClass
@@ -74,18 +70,6 @@ public class AdVocAsStimuliProviderTest {
     public void tearDown() {
     }
 
-    /*
-    Attributes to set 
-    type="1" 
-    eventTag="stimuliN"
-    numberOfSeries="2"
-    numberOfBands="54"
-    wordsPerBand="40"
-    startBand="20"
-    averageNonWordPosition="3" 
-    startPercentageGraph="30"
-    fineTuningTupleLength="4"
-     */
     /**
      * Test of estinItialiseStimuliState method, of class
      * AdVocAsStimuliProvider.
@@ -95,20 +79,18 @@ public class AdVocAsStimuliProviderTest {
         System.out.println("initialiseStimuliState-1");
 
         int nOfBands = Integer.parseInt(this.numberOfBands);
-        String numberOfSeries = "1";
-        int nOfSeries = Integer.parseInt(numberOfSeries);
-        int wPerBand = Integer.parseInt(this.wordsPerBand);
-        int wordsPerBandInSeries = wPerBand / nOfSeries;
         int sBand = Integer.parseInt(this.startBand);
         int aNonWordPosition = Integer.parseInt(this.averageNonWordPoistion);
 
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
-        provider.setnumberOfSeries(numberOfSeries);
-        //provider.settype("0");
+        provider.setwordsSource("Words_NL_1round");
+        provider.setnonwordsSource("NonWords_NL_1round");
+        provider.setwordsResponse(WORD_NL);
+        provider.setnonwordsResponse(NONWORD_NL);
         provider.setnumberOfBands(this.numberOfBands);
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
-        provider.setwordsPerBand(this.wordsPerBand);
+        provider.setwordsPerBand("40");
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
@@ -118,7 +100,7 @@ public class AdVocAsStimuliProviderTest {
         ArrayList<ArrayList<AdVocAsStimulus>> words = provider.getWords();
         assertEquals(nOfBands, words.size());
         for (int i = 0; i < nOfBands; i++) {
-            assertEquals(wordsPerBandInSeries, words.get(i).size());
+            assertEquals(40, words.get(i).size());
         }
 
         ArrayList<AdVocAsStimulus> nonwords = provider.getNonwords();
@@ -126,7 +108,7 @@ public class AdVocAsStimuliProviderTest {
         int expectedNonwordsLength = 1352;
         assertEquals(expectedNonwordsLength, nonwords.size());
 
-        int expectedTotalsStimuli = nOfBands * wordsPerBandInSeries + expectedNonwordsLength;
+        int expectedTotalsStimuli = nOfBands * 40 + expectedNonwordsLength;
         assertEquals(expectedTotalsStimuli, provider.getTotalStimuli());
 
         ArrayList<Integer> nonWordIndices = provider.getNonWordsIndices();
@@ -143,23 +125,23 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testItialiseStimuliState20() {
-        System.out.println("initialiseStimuliState-20");
+        System.out.println("initialiseStimuliState-21");
 
         int nOfBands = Integer.parseInt(this.numberOfBands);
-        String numberOfSeries = "2";
-        int nOfSeries = Integer.parseInt(numberOfSeries);
-        int wPerBand = Integer.parseInt(this.wordsPerBand);
-        int wordsPerBandInSeries = wPerBand / nOfSeries;
+
+        String wordsPerBand = "20";
         int sBand = Integer.parseInt(this.startBand);
         int aNonWordPosition = Integer.parseInt(this.averageNonWordPoistion);
 
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
-        provider.setnumberOfSeries(numberOfSeries);
-        provider.settype("0");
+        provider.setwordsSource("Words_NL_2rounds_1");
+        provider.setnonwordsSource("NonWords_NL_2rounds_1");
+        provider.setwordsResponse(WORD_NL);
+        provider.setnonwordsResponse(NONWORD_NL);
         provider.setnumberOfBands(this.numberOfBands);
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
-        provider.setwordsPerBand(this.wordsPerBand);
+        provider.setwordsPerBand(wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
@@ -169,7 +151,7 @@ public class AdVocAsStimuliProviderTest {
         ArrayList<ArrayList<AdVocAsStimulus>> words = provider.getWords();
         assertEquals(nOfBands, words.size());
         for (int i = 0; i < nOfBands; i++) {
-            assertEquals(wordsPerBandInSeries, words.get(i).size());
+            assertEquals(Integer.parseInt(wordsPerBand), words.get(i).size());
         }
 
         ArrayList<AdVocAsStimulus> nonwords = provider.getNonwords();
@@ -177,7 +159,7 @@ public class AdVocAsStimuliProviderTest {
         int expectedNonwordsLength = 676;
         assertEquals(expectedNonwordsLength, nonwords.size());
 
-        int expectedTotalsStimuli = nOfBands * wordsPerBandInSeries + expectedNonwordsLength;
+        int expectedTotalsStimuli = nOfBands * Integer.parseInt(wordsPerBand) + expectedNonwordsLength;
         assertEquals(expectedTotalsStimuli, provider.getTotalStimuli());
 
         ArrayList<Integer> nonWordIndices = provider.getNonWordsIndices();
@@ -194,23 +176,23 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testItialiseStimuliState21() {
-        System.out.println("initialiseStimuliState-21");
+        System.out.println("initialiseStimuliState-22");
 
         int nOfBands = Integer.parseInt(this.numberOfBands);
-        String numberOfSeries = "2";
-        int nOfSeries = Integer.parseInt(numberOfSeries);
-        int wPerBand = Integer.parseInt(this.wordsPerBand);
-        int wordsPerBandInSeries = wPerBand / nOfSeries;
+
+        String wordsPerBand = "20";
         int sBand = Integer.parseInt(this.startBand);
         int aNonWordPosition = Integer.parseInt(this.averageNonWordPoistion);
 
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
-        provider.setnumberOfSeries(numberOfSeries);
-        provider.settype("1");
+        provider.setwordsSource("Words_NL_2rounds_2");
+        provider.setnonwordsSource("NonWords_NL_2rounds_2");
+        provider.setwordsResponse(WORD_NL);
+        provider.setnonwordsResponse(NONWORD_NL);
         provider.setnumberOfBands(this.numberOfBands);
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
-        provider.setwordsPerBand(this.wordsPerBand);
+        provider.setwordsPerBand(wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
@@ -220,7 +202,7 @@ public class AdVocAsStimuliProviderTest {
         ArrayList<ArrayList<AdVocAsStimulus>> words = provider.getWords();
         assertEquals(nOfBands, words.size());
         for (int i = 0; i < nOfBands; i++) {
-            assertEquals(wordsPerBandInSeries, words.get(i).size());
+            assertEquals(Integer.parseInt(wordsPerBand), words.get(i).size());
         }
 
         ArrayList<AdVocAsStimulus> nonwords = provider.getNonwords();
@@ -228,7 +210,7 @@ public class AdVocAsStimuliProviderTest {
         int expectedNonwordsLength = 676;
         assertEquals(expectedNonwordsLength, nonwords.size());
 
-        int expectedTotalsStimuli = nOfBands * wordsPerBandInSeries + expectedNonwordsLength;
+        int expectedTotalsStimuli = nOfBands * Integer.parseInt(wordsPerBand) + expectedNonwordsLength;
         assertEquals(expectedTotalsStimuli, provider.getTotalStimuli());
 
         ArrayList<Integer> nonWordIndices = provider.getNonWordsIndices();
@@ -247,14 +229,14 @@ public class AdVocAsStimuliProviderTest {
         System.out.println("getCurrentStimulusIndex");
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
         int nOfBands = Integer.parseInt(this.numberOfBands);
-        String numberOfSeries = "2";
-        int nOfSeries = Integer.parseInt(numberOfSeries);
-        provider.setnumberOfSeries(numberOfSeries);
-        provider.settype("1");
+        provider.setwordsSource("Words_NL_2rounds_2");
+        provider.setnonwordsSource("NonWords_NL_2rounds_2");
+        provider.setwordsResponse(WORD_NL);
+        provider.setnonwordsResponse(NONWORD_NL);
         provider.setnumberOfBands(this.numberOfBands);
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
-        provider.setwordsPerBand(this.wordsPerBand);
+        provider.setwordsPerBand("20");
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
@@ -270,7 +252,7 @@ public class AdVocAsStimuliProviderTest {
      * Test of getCurrentStimulus method, of class AdVocAsStimuliProvider.
      */
     public void testGetCurrentStimulus1_1() {
-        this.testGetCurrentStimulus("1", "0", "getCurrentStimulus10_1");
+        this.testGetCurrentStimulus("Words_NL_1round", "NonWords_NL_1round", "getCurrentStimulus10_1", "40");
 
     }
 
@@ -279,7 +261,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetCurrentStimulus1_2() {
-        this.testGetCurrentStimulus("1", "0", "getCurrentStimulus10_2");
+        this.testGetCurrentStimulus("Words_NL_1round", "NonWords_NL_1round", "getCurrentStimulus10_2", "40");
 
     }
 
@@ -288,7 +270,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetCurrentStimulus1_3() {
-        this.testGetCurrentStimulus("1", "0", "getCurrentStimulus10_3");
+        this.testGetCurrentStimulus("Words_NL_1round", "NonWords_NL_1round", "getCurrentStimulus10_3", "40");
 
     }
 
@@ -297,7 +279,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetCurrentStimulus20_1() {
-        this.testGetCurrentStimulus("2", "0", "getCurrentStimulus20_1");
+        this.testGetCurrentStimulus("Words_NL_2rounds_1", "NonWords_NL_2rounds_1", "getCurrentStimulus20_1", "20");
 
     }
 
@@ -306,7 +288,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetCurrentStimulus20_2() {
-        this.testGetCurrentStimulus("2", "0", "getCurrentStimulus20_2");
+        this.testGetCurrentStimulus("Words_NL_2rounds_1", "NonWords_NL_2rounds_1", "getCurrentStimulus20_2", "20");
 
     }
 
@@ -315,7 +297,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetCurrentStimulus20_3() {
-        this.testGetCurrentStimulus("2", "0", "getCurrentStimulus20_3");
+        this.testGetCurrentStimulus("Words_NL_2rounds_1", "NonWords_NL_2rounds_1", "getCurrentStimulus20_3", "20");
 
     }
 
@@ -324,7 +306,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetCurrentStimulus21_1() {
-        this.testGetCurrentStimulus("2", "1", "getCurrentStimulus20_1");
+        this.testGetCurrentStimulus("Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "getCurrentStimulus20_1", "20");
 
     }
 
@@ -333,7 +315,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetCurrentStimulus21_2() {
-        this.testGetCurrentStimulus("2", "1", "getCurrentStimulus20_2");
+        this.testGetCurrentStimulus("Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "getCurrentStimulus20_2", "20");
 
     }
 
@@ -342,29 +324,24 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetCurrentStimulus21_3() {
-        this.testGetCurrentStimulus("2", "1", "getCurrentStimulus20_3");
+        this.testGetCurrentStimulus("Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "getCurrentStimulus20_3", "20");
 
     }
 
-    private void testGetCurrentStimulus(String numberOfSeries, String type, String info) {
+    private void testGetCurrentStimulus(String wordsSource, String nonwordsSource, String info, String wordsPerBand) {
 
         System.out.println(info);
 
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
 
-        int nOfBands = Integer.parseInt(this.numberOfBands);
-        int nOfSeries = Integer.parseInt(numberOfSeries);
-        int wPerBand = Integer.parseInt(this.wordsPerBand);
-        int wordsPerBandInSeries = wPerBand / nOfSeries;
-        int sBand = Integer.parseInt(this.startBand);
-        int aNonWordPosition = Integer.parseInt(this.averageNonWordPoistion);
-
-        provider.setnumberOfSeries(numberOfSeries);
-        provider.settype(type);
+        provider.setwordsSource(wordsSource);
+        provider.setnonwordsSource(nonwordsSource);
+        provider.setwordsResponse(WORD_NL);
+        provider.setnonwordsResponse(NONWORD_NL);
         provider.setnumberOfBands(this.numberOfBands);
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
-        provider.setwordsPerBand(this.wordsPerBand);
+        provider.setwordsPerBand(wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
@@ -379,7 +356,7 @@ public class AdVocAsStimuliProviderTest {
         assertTrue(label != null);
         //System.out.println("Label: " + label);
         BookkeepingStimulus<AdVocAsStimulus> bStimulus = provider.getResponseRecord().get(provider.getCurrentStimulusIndex());
-        int expectedBand = stimulus.getCorrectResponses().equals(Vocabulary.WORD_NL) ? Integer.parseInt(this.startBand) : 0;
+        int expectedBand = stimulus.getCorrectResponses().equals(WORD_NL) ? Integer.parseInt(this.startBand) : 0;
         assertEquals(expectedBand, bStimulus.getStimulus().getBandNumber());
     }
 
@@ -388,7 +365,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testIsCorrectResponse_1() throws Exception {
-        this.testIsCorrectResponse("1", "0", "testIsCorrectResponse_1");
+        this.testIsCorrectResponse("Words_NL_1round", "NonWords_NL_1round", "testIsCorrectResponse_1", "40");
 
     }
 
@@ -397,7 +374,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testIsCorrectResponse_20() throws Exception {
-        this.testIsCorrectResponse("2", "0", "testIsCorrectResponse_20");
+        this.testIsCorrectResponse("Words_NL_2rounds_1", "NonWords_NL_2rounds_1", "testIsCorrectResponse_20", "20");
 
     }
 
@@ -406,27 +383,22 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testIsCorrectResponse_21() throws Exception {
-        this.testIsCorrectResponse("2", "1", "testIsCorrectResponse_21");
+        this.testIsCorrectResponse("Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "testIsCorrectResponse_21", "20");
 
     }
 
-    private void testIsCorrectResponse(String numberOfSeries, String type, String info) throws Exception {
+    private void testIsCorrectResponse(String wordsSource, String nonwordsSource, String info, String wordsPerBand) throws Exception {
         System.out.println(info);
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
 
-        int nOfBands = Integer.parseInt(this.numberOfBands);
-        int nOfSeries = Integer.parseInt(numberOfSeries);
-        int wPerBand = Integer.parseInt(this.wordsPerBand);
-        int wordsPerBandInSeries = wPerBand / nOfSeries;
-        int sBand = Integer.parseInt(this.startBand);
-        int aNonWordPosition = Integer.parseInt(this.averageNonWordPoistion);
-
-        provider.setnumberOfSeries(numberOfSeries);
-        provider.settype(type);
+        provider.setwordsSource(wordsSource);
+        provider.setnonwordsSource(nonwordsSource);
+        provider.setwordsResponse(WORD_NL);
+        provider.setnonwordsResponse(NONWORD_NL);
         provider.setnumberOfBands(this.numberOfBands);
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
-        provider.setwordsPerBand(this.wordsPerBand);
+        provider.setwordsPerBand(wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
@@ -451,11 +423,11 @@ public class AdVocAsStimuliProviderTest {
         provider.nextStimulus(0);
         Stimulus stimulus2 = provider.getCurrentStimulus();
         // making worng response
-        String response2 = Vocabulary.NONWORD_NL;
-        if (stimulus2.getCorrectResponses().equals(Vocabulary.NONWORD_NL)) {
-            response2 = Vocabulary.WORD_NL;
+        String response2 = NONWORD_NL;
+        if (stimulus2.getCorrectResponses().equals(NONWORD_NL)) {
+            response2 = WORD_NL;
         } else {
-            if (!stimulus2.getCorrectResponses().equals(Vocabulary.WORD_NL)) {
+            if (!stimulus2.getCorrectResponses().equals(WORD_NL)) {
                 throw new Exception("The reaction is neither nonword nor word, something went terribly worng.");
             }
         }
@@ -470,116 +442,141 @@ public class AdVocAsStimuliProviderTest {
 
     }
 
-    private void testGetTotalStimuli(String numberOfSeries, String type, String info, int nNonwords) {
+    private void testGetTotalStimuli(String wordsSource, String nonwordsSource, String info, int nNonwords, String wordsPerBand) {
         System.out.println(info);
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
         int nOfBands = Integer.parseInt(this.numberOfBands);
-        int nOfSeries = Integer.parseInt(numberOfSeries);
 
-        provider.setnumberOfSeries(numberOfSeries);
+        provider.setwordsSource(wordsSource);
+        provider.setnonwordsSource(nonwordsSource);
+        provider.setwordsResponse(WORD_NL);
+        provider.setnonwordsResponse(NONWORD_NL);
 
-        provider.settype(type);
         provider.setnumberOfBands(this.numberOfBands);
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
-        provider.setwordsPerBand(this.wordsPerBand);
+        provider.setwordsPerBand(wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
         provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
-        int wPerBand = Integer.parseInt(this.wordsPerBand);
-        int wordsPerBandInSeries = wPerBand / nOfSeries;
-        provider.initialiseStimuliState("");
 
         int totalStimuli = provider.getTotalStimuli();
-        assertEquals(nNonwords + nOfBands * wordsPerBandInSeries, totalStimuli);
+        assertEquals(nNonwords + nOfBands * Integer.parseInt(wordsPerBand), totalStimuli);
     }
 
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
     @Test
-    public void testGetTotalStimuli10_1() {
-        int nonWordsLength = NonWords_NL_1round.NONWORDS_SERIES[0].length;
-        this.testGetTotalStimuli("1", "0", "testGetTotalStimuli10_1", nonWordsLength);
+    public void testGetTotalStimuli10_1() throws Exception {
+        AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
+        reader.parseNonWordsInputCSVString("NonWords_NL_1round", NONWORD_NL, WORD_NL);
+        ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
+        int nonWordsLength = rawNonwords.size();
+        this.testGetTotalStimuli("Words_NL_1round", "NonWords_NL_1round", "testGetTotalStimuli10_1", nonWordsLength, "40");
     }
 
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
     @Test
-    public void testGetTotalStimuli10_2() {
-        int nonWordsLength = NonWords_NL_1round.NONWORDS_SERIES[0].length;
-        this.testGetTotalStimuli("1", "0", "testGetTotalStimuli10_1", nonWordsLength);
+    public void testGetTotalStimuli10_2() throws Exception {
+        AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
+        reader.parseNonWordsInputCSVString("NonWords_NL_1round", NONWORD_NL, WORD_NL);
+        ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
+        int nonWordsLength = rawNonwords.size();
+        this.testGetTotalStimuli("Words_NL_1round", "NonWords_NL_1round", "testGetTotalStimuli10_1", nonWordsLength, "40");
     }
 
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
     @Test
-    public void testGetTotalStimuli10_3() {
-        int nonWordsLength = NonWords_NL_1round.NONWORDS_SERIES[0].length;
-        this.testGetTotalStimuli("1", "0", "testGetTotalStimuli10_1", nonWordsLength);
+    public void testGetTotalStimuli10_3() throws Exception {
+        AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
+        reader.parseNonWordsInputCSVString("NonWords_NL_1round", NONWORD_NL, WORD_NL);
+        ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
+        int nonWordsLength = rawNonwords.size();
+        this.testGetTotalStimuli("Words_NL_1round", "NonWords_NL_1round", "testGetTotalStimuli10_1", nonWordsLength, "40");
     }
 
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
     @Test
-    public void testGetTotalStimuli20_1() {
-        int nonWordsLength = NonWords_NL_2rounds_2.NONWORDS_SERIES[0].length;
-        this.testGetTotalStimuli("2", "0", "testGetTotalStimuli20_1", nonWordsLength);
+    public void testGetTotalStimuli20_1() throws Exception {
+        AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
+        reader.parseNonWordsInputCSVString("NonWords_NL_2rounds_1", NONWORD_NL, WORD_NL);
+        ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
+        int nonWordsLength = rawNonwords.size();
+        this.testGetTotalStimuli("Words_NL_2rounds_1", "NonWords_NL_2rounds_1", "testGetTotalStimuli20_1", nonWordsLength, "20");
     }
 
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
     @Test
-    public void testGetTotalStimuli20_2() {
-        int nonWordsLength = NonWords_NL_2rounds_2.NONWORDS_SERIES[0].length;
-        this.testGetTotalStimuli("2", "0", "testGetTotalStimuli20_2", nonWordsLength);
+    public void testGetTotalStimuli20_2() throws Exception {
+        AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
+        reader.parseNonWordsInputCSVString("NonWords_NL_2rounds_1", NONWORD_NL, WORD_NL);
+        ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
+        int nonWordsLength = rawNonwords.size();
+        this.testGetTotalStimuli("Words_NL_2rounds_1", "NonWords_NL_2rounds_1", "testGetTotalStimuli20_1", nonWordsLength, "20");
     }
 
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
     @Test
-    public void testGetTotalStimuli20_3() {
-        int nonWordsLength = NonWords_NL_2rounds_2.NONWORDS_SERIES[0].length;
-        this.testGetTotalStimuli("2", "0", "testGetTotalStimuli20_3", nonWordsLength);
+    public void testGetTotalStimuli20_3() throws Exception {
+        AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
+        reader.parseNonWordsInputCSVString("NonWords_NL_2rounds_1", NONWORD_NL, WORD_NL);
+        ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
+        int nonWordsLength = rawNonwords.size();
+        this.testGetTotalStimuli("Words_NL_2rounds_1", "NonWords_NL_2rounds_1", "testGetTotalStimuli20_1", nonWordsLength, "20");
     }
 
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
     @Test
-    public void testGetTotalStimuli21_1() {
-        int nonWordsLength = NonWords_NL_2rounds_2.NONWORDS_SERIES[1].length;
-        this.testGetTotalStimuli("2", "1", "testGetTotalStimuli21_1", nonWordsLength);
+    public void testGetTotalStimuli21_1() throws Exception {
+        AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
+        reader.parseNonWordsInputCSVString("NonWords_NL_2rounds_2", NONWORD_NL, WORD_NL);
+        ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
+        int nonWordsLength = rawNonwords.size();
+        this.testGetTotalStimuli("Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "testGetTotalStimuli20_2", nonWordsLength, "20");
     }
 
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
     @Test
-    public void testGetTotalStimuli21_2() {
-        int nonWordsLength = NonWords_NL_2rounds_2.NONWORDS_SERIES[1].length;
-        this.testGetTotalStimuli("2", "1", "testGetTotalStimuli21_2", nonWordsLength);
+    public void testGetTotalStimuli21_2() throws Exception {
+        AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
+        reader.parseNonWordsInputCSVString("NonWords_NL_2rounds_2", NONWORD_NL, WORD_NL);
+        ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
+        int nonWordsLength = rawNonwords.size();
+        this.testGetTotalStimuli("Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "testGetTotalStimuli20_2", nonWordsLength, "20");
     }
 
     /**
      * Test of getTotalStimuli method, of class AdVocAsStimuliProvider.
      */
     @Test
-    public void testGetTotalStimuli21_3() {
-        int nonWordsLength = NonWords_NL_2rounds_2.NONWORDS_SERIES[1].length;
-        this.testGetTotalStimuli("2", "1", "testGetTotalStimuli21_3", nonWordsLength);
+    public void testGetTotalStimuli21_3() throws Exception {
+        AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
+        reader.parseNonWordsInputCSVString("NonWords_NL_2rounds_2", NONWORD_NL, WORD_NL);
+        ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
+        int nonWordsLength = rawNonwords.size();
+        this.testGetTotalStimuli("Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "testGetTotalStimuli20_2", nonWordsLength, "20");
     }
 
-    private void getStimuliReport(String numberOfSeries, String type, String info) throws Exception {
+    private void getStimuliReport(String wordsSource, String nonwordsSource, String info, String wordsPerBand) throws Exception {
         System.out.println("getStimuliReport");
-        AdVocAsStimuliProvider provider = this.testHasNextStimulus(numberOfSeries, type, "");
+        AdVocAsStimuliProvider provider = this.testHasNextStimulus(wordsSource, nonwordsSource, info, wordsPerBand);
 
         Map<String, String> result = provider.getStimuliReport("user_summary");
         Set<String> keys = result.keySet();
@@ -617,7 +614,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void getStimuliReport_1() throws Exception {
-        this.getStimuliReport("1", "0", "getStimuliReport_1");
+        this.getStimuliReport("Words_NL_1round", "NonWords_NL_1round", "getStimuliReport_1", "40");
     }
 
     /**
@@ -625,7 +622,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void getStimuliReport_20() throws Exception {
-        this.getStimuliReport("2", "0", "getStimuliReport_20");
+        this.getStimuliReport("Words_NL_2rounds_1", "NonWords_NL_2rounds_1", "getStimuliReport_20", "20");
     }
 
     /**
@@ -633,7 +630,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void getStimuliReport_21() throws Exception {
-        this.getStimuliReport("2", "1", "getStimuliReport_21");
+        this.getStimuliReport("Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "getStimuliReport_21", "20");
     }
 
     /**
@@ -641,7 +638,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testHasNextStimulus10_1() throws Exception {
-        this.testHasNextStimulus("1", "0", "testHasNextStimulus10_1");
+        this.testHasNextStimulus("Words_NL_1round", "NonWords_NL_1round", "testHasNextStimulus10_1", "40");
     }
 
     /**
@@ -649,7 +646,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testHasNextStimulus10_2() throws Exception {
-        this.testHasNextStimulus("1", "0", "testHasNextStimulus10_2");
+        this.testHasNextStimulus("Words_NL_1round", "NonWords_NL_1round", "testHasNextStimulus10_2", "40");
     }
 
     /**
@@ -657,7 +654,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testHasNextStimulus10_3() throws Exception {
-        this.testHasNextStimulus("1", "0", "testHasNextStimulus10_3");
+        this.testHasNextStimulus("Words_NL_1round", "NonWords_NL_1round", "testHasNextStimulus10_3", "40");
     }
 
     /**
@@ -665,7 +662,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testHasNextStimulus20_1() throws Exception {
-        this.testHasNextStimulus("2", "0", "testHasNextStimulus20_1");
+        this.testHasNextStimulus("Words_NL_2rounds_1", "NonWords_NL_2rounds_1", "testHasNextStimulus20_1", "20");
     }
 
     /**
@@ -673,7 +670,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testHasNextStimulus20_2() throws Exception {
-        this.testHasNextStimulus("2", "0", "testHasNextStimulus20_2");
+        this.testHasNextStimulus("Words_NL_2rounds_1", "NonWords_NL_2rounds_1", "testHasNextStimulus20_2", "20");
     }
 
     /**
@@ -681,7 +678,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testHasNextStimulus20_3() throws Exception {
-        this.testHasNextStimulus("2", "0", "testHasNextStimulus20_3");
+        this.testHasNextStimulus("Words_NL_2rounds_1", "NonWords_NL_2rounds_1", "testHasNextStimulus20_3", "20");
     }
 
     /**
@@ -689,7 +686,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testHasNextStimulus21_1() throws Exception {
-        this.testHasNextStimulus("2", "1", "testHasNextStimulus21_1");
+        this.testHasNextStimulus("Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "testHasNextStimulus21_1", "20");
     }
 
     /**
@@ -697,7 +694,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testHasNextStimulus21_2() throws Exception {
-        this.testHasNextStimulus("2", "1", "testHasNextStimulus21_2");
+        this.testHasNextStimulus("Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "testHasNextStimulus21_2", "20");
     }
 
     /**
@@ -705,21 +702,22 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testHasNextStimulus21_3() throws Exception {
-        this.testHasNextStimulus("2", "1", "testHasNextStimulus21_3");
+        this.testHasNextStimulus("Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "testHasNextStimulus21_3", "20");
     }
 
     // also tests nextStimulus
-    private AdVocAsStimuliProvider testHasNextStimulus(String numberOfSeries, String type, String info) throws Exception {
+    private AdVocAsStimuliProvider testHasNextStimulus(String wordsSource, String nonwordsSource, String info, String wordsPerBand) throws Exception {
         System.out.println(info);
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
-        int nOfBands = Integer.parseInt(this.numberOfBands);
-        int nOfSeries = Integer.parseInt(numberOfSeries);
-        provider.setnumberOfSeries(numberOfSeries);
-        provider.settype(type);
+
+        provider.setwordsSource(wordsSource);
+        provider.setnonwordsSource(nonwordsSource);
+        provider.setwordsResponse(WORD_NL);
+        provider.setnonwordsResponse(NONWORD_NL);
         provider.setnumberOfBands(this.numberOfBands);
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
-        provider.setwordsPerBand(this.wordsPerBand);
+        provider.setwordsPerBand(wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
@@ -746,7 +744,7 @@ public class AdVocAsStimuliProviderTest {
         boolean result1 = provider.hasNextStimulus(0);
         assertTrue(result1);
         int sBand = Integer.parseInt(this.startBand);
-        int expectedBand = stimulus.getCorrectResponses().equals(Vocabulary.WORD_NL) ? (sBand + 1) : sBand;
+        int expectedBand = stimulus.getCorrectResponses().equals(WORD_NL) ? (sBand + 1) : sBand;
         assertEquals(expectedBand, provider.getCurrentBandNumber());
 
         provider.nextStimulus(0);
@@ -761,11 +759,11 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimulus stimulus2 = provider.getCurrentStimulus();
         String correctResponse = stimulus2.getCorrectResponses();
         String response = null;
-        if (correctResponse.equals(Vocabulary.WORD_NL)) {
-            response = Vocabulary.NONWORD_NL;
+        if (correctResponse.equals(WORD_NL)) {
+            response = NONWORD_NL;
         }
-        if (correctResponse.equals(Vocabulary.NONWORD_NL)) {
-            response = Vocabulary.WORD_NL;
+        if (correctResponse.equals(NONWORD_NL)) {
+            response = WORD_NL;
         }
         if (response == null) {
             throw new Exception("Wrong reaction");
@@ -787,11 +785,11 @@ public class AdVocAsStimuliProviderTest {
         AdVocAsStimulus stimulus3 = provider.getCurrentStimulus();
         String correctResponse3 = stimulus3.getCorrectResponses();
         String response3 = null;
-        if (correctResponse3.equals(Vocabulary.WORD_NL)) {
-            response3 = Vocabulary.NONWORD_NL;
+        if (correctResponse3.equals(WORD_NL)) {
+            response3 = NONWORD_NL;
         }
-        if (correctResponse3.equals(Vocabulary.NONWORD_NL)) {
-            response3 = Vocabulary.WORD_NL;
+        if (correctResponse3.equals(NONWORD_NL)) {
+            response3 = WORD_NL;
         }
         if (response3 == null) {
             throw new Exception("Wrong reaction");
@@ -813,7 +811,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetCurrentStimulusUniqueId_1() {
-        this.testGetCurrentStimulusUniqueId("1", "0", "testGetCurrentStimulusUniqueId_1");
+        this.testGetCurrentStimulusUniqueId("Words_NL_1round", "NonWords_NL_1round", "testGetCurrentStimulusUniqueId_1", "40");
     }
 
     /**
@@ -822,7 +820,7 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetCurrentStimulusUniqueId_20() {
-        this.testGetCurrentStimulusUniqueId("2", "0", "testGetCurrentStimulusUniqueId_20");
+        this.testGetCurrentStimulusUniqueId("Words_NL_2rounds_1", "NonWords_NL_2rounds_1", "testGetCurrentStimulusUniqueId_21", "20");
     }
 
     /**
@@ -831,20 +829,21 @@ public class AdVocAsStimuliProviderTest {
      */
     @Test
     public void testGetCurrentStimulusUniqueId_21() {
-        this.testGetCurrentStimulusUniqueId("2", "1", "testGetCurrentStimulusUniqueId_21");
+        this.testGetCurrentStimulusUniqueId("Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "testGetCurrentStimulusUniqueId_22", "20");
     }
 
-    private void testGetCurrentStimulusUniqueId(String numberOfSeries, String type, String info) {
+    private void testGetCurrentStimulusUniqueId(String wordsSource, String nonwordsSource, String info, String wordsPerBand) {
         System.out.println(info);
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
-        int nOfBands = Integer.parseInt(this.numberOfBands);
-        int nOfSeries = Integer.parseInt(numberOfSeries);
-        provider.setnumberOfSeries(numberOfSeries);
-        provider.settype(type);
+
+        provider.setwordsSource(wordsSource);
+        provider.setnonwordsSource(nonwordsSource);
+        provider.setwordsResponse(WORD_NL);
+        provider.setnonwordsResponse(NONWORD_NL);
         provider.setnumberOfBands(this.numberOfBands);
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
-        provider.setwordsPerBand(this.wordsPerBand);
+        provider.setwordsPerBand(wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
@@ -914,18 +913,20 @@ public class AdVocAsStimuliProviderTest {
         return retVal;
     }
 
-    private void testPercentageBandTable(String numberOfSeries, String type, String info) {
+    private void testPercentageBandTable(String wordsSource, String nonwordsSource, String info, String wordsPerBand) {
         System.out.println(info);
 
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
         int nOfBands = Integer.parseInt(this.numberOfBands);
-        int nOfSeries = Integer.parseInt(numberOfSeries);
-        provider.setnumberOfSeries(numberOfSeries);
-        provider.settype(type);
+
+        provider.setwordsSource(wordsSource);
+        provider.setnonwordsSource(nonwordsSource);
+        provider.setwordsResponse(WORD_NL);
+        provider.setnonwordsResponse(NONWORD_NL);
         provider.setnumberOfBands(this.numberOfBands);
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
-        provider.setwordsPerBand(this.wordsPerBand);
+        provider.setwordsPerBand(wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
@@ -955,19 +956,19 @@ public class AdVocAsStimuliProviderTest {
 
     @Test
     public void testPercentageBandTable_1() {
-        this.testPercentageBandTable("1", "0", "testPercentageBandTable_1");
+        this.testPercentageBandTable("Words_NL_1round", "NonWords_NL_1round", "testPercentageBandTable_1", "40");
 
     }
 
     @Test
     public void testPercentageBandTable_20() {
-        this.testPercentageBandTable("2", "0", "testPercentageBandTable_20");
+        this.testPercentageBandTable("Words_NL_2rounds_1", "NonWords_NL_2rounds_1", "testPercentageBandTable_20", "20");
 
     }
 
     @Test
     public void testPercentageBandTable_21() {
-        this.testPercentageBandTable("2", "1", "testPercentageBandTable_21");
+        this.testPercentageBandTable("Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "testPercentageBandTable_21", "20");
 
     }
 
@@ -976,7 +977,7 @@ public class AdVocAsStimuliProviderTest {
         for (int i = 1; i < 11; i++) {
             double prob = 0.5 + i * 0.05;
             System.out.println("Probabilistic test for 1 round, prob of corret answer is " + prob);
-            this.testRound(prob, "1", "0");
+            this.testRound(prob, "Words_NL_1round", "NonWords_NL_1round", "40");
         }
     }
 
@@ -986,11 +987,11 @@ public class AdVocAsStimuliProviderTest {
             double prob = 0.5 + i * 0.05;
             System.out.println("Probabilistic test for 2 rounds, prob of corret answer is " + prob);
             System.out.println("Round 1");
-            AdVocAsStimuliProvider provider1 = this.testRound(prob, "2", "0");
+            AdVocAsStimuliProvider provider1 = this.testRound(prob, "Words_NL_2rounds_1", "NonWords_NL_2rounds_1", "20");
             int score1 = provider1.getBandScore();
             System.out.println("Band Score: " + score1);
             System.out.println("Round 2");
-            AdVocAsStimuliProvider provider2 = this.testRound(prob, "2", "0");
+            AdVocAsStimuliProvider provider2 = this.testRound(prob, "Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "20");
             int score2 = provider2.getBandScore();
             System.out.println("Band Score: " + score2);
             if (score1 != score2) {
@@ -1001,27 +1002,37 @@ public class AdVocAsStimuliProviderTest {
     }
 
     @Test
-    public void notEnoughStimuliTest() throws Exception {
-        this.longFineTuningTest();
+    public void notEnoughStimuliTest_1() throws Exception {
+        this.longFineTuningTest("40", "Words_NL_1round", "NonWords_NL_1round");
     }
 
-    public AdVocAsStimuliProvider testRound(double prob, String numberOfSeries, String type) throws Exception {
+    @Test
+    public void notEnoughStimuliTest_21() throws Exception {
+        this.longFineTuningTest("20", "Words_NL_2rounds_1", "NonWords_NL_2rounds_1");
+    }
+
+    @Test
+    public void notEnoughStimuliTest_22() throws Exception {
+        this.longFineTuningTest("20", "Words_NL_2rounds_2", "NonWords_NL_2rounds_2");
+    }
+
+    public AdVocAsStimuliProvider testRound(double prob, String wordsSource, String nonwordsSource, String wordsPerBand) throws Exception {
         Random rnd = new Random();
 
         int nOfBands = Integer.parseInt(this.numberOfBands);
-        int nOfSeries = Integer.parseInt(numberOfSeries);
-        int wPerBand = Integer.parseInt(this.wordsPerBand);
-        int wordsPerBandInSeries = wPerBand / nOfSeries;
+        int wPerBand = Integer.parseInt(wordsPerBand);
         int sBand = Integer.parseInt(this.startBand);
         int aNonWordPosition = Integer.parseInt(this.averageNonWordPoistion);
 
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
-        provider.setnumberOfSeries(numberOfSeries);
-        provider.settype(type);
+        provider.setwordsSource(wordsSource);
+        provider.setnonwordsSource(nonwordsSource);
+        provider.setwordsResponse(WORD_NL);
+        provider.setnonwordsResponse(NONWORD_NL);
         provider.setnumberOfBands(this.numberOfBands);
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
-        provider.setwordsPerBand(this.wordsPerBand);
+        provider.setwordsPerBand(wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
@@ -1078,21 +1089,16 @@ public class AdVocAsStimuliProviderTest {
         // first check if the sample set is generated ok
         LinkedHashMap<Integer, String> samples = provider.retrieveSampleWords(provider.getResponseRecord(), provider.getWords());
 
-        Vocabulary vocab = new Vocabulary(nOfBands, wordsPerBandInSeries);
-        AdVocAsStimulus[][] wordArray = null;
-        if (numberOfSeries.equals("1")) {
-            wordArray = Words_NL_1round.WORDS_SERIES[0];
-        }
-        if (numberOfSeries.equals("2")) {
-            wordArray = Words_NL_1round.WORDS_SERIES[Integer.parseInt(type)];
-        }
+        AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
+        reader.parseWordsInputCSVString(wordsSource, Integer.parseInt(this.numberOfBands), NONWORD_NL, WORD_NL);
+        ArrayList<ArrayList<AdVocAsStimulus>> rawWords = reader.getWords();
 
         assertEquals(nOfBands, samples.keySet().size());
         for (int bandNumber = 1; bandNumber <= nOfBands; bandNumber++) {
             assertTrue(samples.containsKey(bandNumber));
             String sample = samples.get(bandNumber);
             assertNotNull(sample);
-            ArrayList<String> words = this.getSpellings(wordArray[bandNumber - 1]);
+            ArrayList<String> words = this.getSpellings(rawWords.get(bandNumber - 1));
             assertTrue(words.contains(sample));
         }
 
@@ -1104,7 +1110,7 @@ public class AdVocAsStimuliProviderTest {
         Long percentScore = provider.getPercentageScore();
         assertTrue(graph.containsKey(percentScore));
         assertNotNull(graph.get(percentScore));
-        ArrayList<String> wordsBS = this.getSpellings(wordArray[bandScore - 1]);
+        ArrayList<String> wordsBS = this.getSpellings(rawWords.get(bandScore - 1));
         assertTrue(wordsBS.contains(graph.get(percentScore)));
 
         if (percentScore >= 5) {
@@ -1113,7 +1119,7 @@ public class AdVocAsStimuliProviderTest {
             assertNotNull(graph.get(one));
             // which band number correspond to 1 percent of # 54 is 100%?
             // 54/100 = 0.54 ~ 1
-            ArrayList<String> wordsOnePercent = this.getSpellings(wordArray[0]);
+            ArrayList<String> wordsOnePercent = this.getSpellings(rawWords.get(0));
             assertTrue(wordsOnePercent.contains(graph.get(one)));
         }
 
@@ -1126,7 +1132,7 @@ public class AdVocAsStimuliProviderTest {
             assertNotNull(graph.get(nn));
             // which band number correspond to 99 percent of # 54 is 100%?
             // 54*0.99 = 53.46 ~ 53
-            ArrayList<String> words99Percent = this.getSpellings(wordArray[52]);
+            ArrayList<String> words99Percent = this.getSpellings(rawWords.get(52));
             assertTrue(words99Percent.contains(graph.get(nn)));
         }
 
@@ -1150,8 +1156,7 @@ public class AdVocAsStimuliProviderTest {
         return provider;
     }
 
-    private ArrayList<String> getSpellings(AdVocAsStimulus[] stimuliAr) {
-        List<AdVocAsStimulus> stimuli = Arrays.asList(stimuliAr);
+    private ArrayList<String> getSpellings(ArrayList<AdVocAsStimulus> stimuli) {
         ArrayList<String> retVal = new ArrayList<>(stimuli.size());
         for (AdVocAsStimulus stimulus : stimuli) {
             retVal.add(stimulus.getLabel());
@@ -1159,23 +1164,22 @@ public class AdVocAsStimuliProviderTest {
         return retVal;
     }
 
-    public AdVocAsStimuliProvider longFineTuningTest() throws Exception {
+    public AdVocAsStimuliProvider longFineTuningTest(String wordsPerBand, String wordsSource, String nonWordsSource) throws Exception {
 
         int nOfBands = Integer.parseInt(this.numberOfBands);
-        String numberOfSeries = "1";
-        int nOfSeries = Integer.parseInt(numberOfSeries);
-        int wPerBand = Integer.parseInt(this.wordsPerBand);
-        int wordsPerBandInSeries = wPerBand / nOfSeries;
+        int wPerBand = Integer.parseInt(wordsPerBand);
         int sBand = Integer.parseInt(this.startBand);
         int aNonWordPosition = Integer.parseInt(this.averageNonWordPoistion);
 
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
-        provider.setnumberOfSeries(numberOfSeries);
-        provider.settype("0");
+        provider.setwordsSource(wordsSource);
+        provider.setnonwordsSource(nonWordsSource);
+        provider.setwordsResponse(WORD_NL);
+        provider.setnonwordsResponse(NONWORD_NL);
         provider.setnumberOfBands(this.numberOfBands);
         provider.setfineTuningUpperBoundForCycles(this.fineTuningUpperBoundForCycles);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
-        provider.setwordsPerBand(this.wordsPerBand);
+        provider.setwordsPerBand(wordsPerBand);
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
@@ -1262,11 +1266,11 @@ public class AdVocAsStimuliProviderTest {
         //System.out.println(retVal);
         //System.out.println(rndDouble);
         if (rndDouble > correctnessUpperBound) { // spoil the answer
-            if (retVal.equals(Vocabulary.WORD_NL)) {
-                retVal = Vocabulary.NONWORD_NL;
+            if (retVal.equals(WORD_NL)) {
+                retVal = NONWORD_NL;
             } else {
-                if (retVal.equals(Vocabulary.NONWORD_NL)) {
-                    retVal = Vocabulary.WORD_NL;
+                if (retVal.equals(NONWORD_NL)) {
+                    retVal = WORD_NL;
                 } else {
                     throw new Exception("Wrong correct reaction in the stimulus, neither word, nor nonword: " + retVal);
                 }
@@ -1278,9 +1282,9 @@ public class AdVocAsStimuliProviderTest {
     }
 
     private String makeResponseWrong(AdVocAsStimulus stimulus) {
-        String answer = Vocabulary.NONWORD_NL;
-        if (stimulus.getCorrectResponses().equals(Vocabulary.NONWORD_NL)) {
-            answer = Vocabulary.WORD_NL;
+        String answer = NONWORD_NL;
+        if (stimulus.getCorrectResponses().equals(NONWORD_NL)) {
+            answer = WORD_NL;
         };
         return answer;
     }
@@ -1290,7 +1294,7 @@ public class AdVocAsStimuliProviderTest {
         for (BookkeepingStimulus<AdVocAsStimulus> stimulus : tuple) {
             assertEquals(null, stimulus.getReaction());
             assertEquals(null, stimulus.getCorrectness());
-            if (stimulus.getStimulus().getCorrectResponses().equals(Vocabulary.NONWORD_NL)) {
+            if (stimulus.getStimulus().getCorrectResponses().equals(NONWORD_NL)) {
                 nNonwords++;
             }
         }
@@ -1305,7 +1309,7 @@ public class AdVocAsStimuliProviderTest {
 
         for (int i = 0; i <= timeTick; i++) {
             BookkeepingStimulus<AdVocAsStimulus> stimulus = records.get(i);
-            if (stimulus.getStimulus().getCorrectResponses().equals(Vocabulary.NONWORD_NL)) {
+            if (stimulus.getStimulus().getCorrectResponses().equals(NONWORD_NL)) {
                 counterNonwords++;
             }
             frequency = ((double) counterNonwords) / ((double) (i + 1));
@@ -1531,13 +1535,18 @@ public class AdVocAsStimuliProviderTest {
     public void testToStringPlusInitialise() {
         System.out.println("toString");
         AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
-        provider.setnumberOfBands("40");
-        provider.settype("0");
+
+        provider.setwordsSource("Words_NL_1round");
+        provider.setnonwordsSource("NonWords_NL_1round");
+        provider.setwordsResponse(WORD_NL);
+        provider.setnonwordsResponse(NONWORD_NL);
+
+        provider.setnumberOfBands("54");
         provider.setfastTrackPresent("true");
         provider.setfineTuningFirstWrongOut("false");
         provider.setfineTuningTupleLength("4");
         provider.setfineTuningUpperBoundForCycles("2");
-        provider.setnumberOfSeries("1");
+
         provider.setstartBand("20");
         provider.setnonwordsPerBlock("4");
         provider.setwordsPerBand("40");

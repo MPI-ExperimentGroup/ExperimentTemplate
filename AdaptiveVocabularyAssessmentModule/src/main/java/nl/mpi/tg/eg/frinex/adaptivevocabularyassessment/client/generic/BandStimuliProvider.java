@@ -36,17 +36,16 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  */
 public abstract class BandStimuliProvider<A extends BandStimulus> extends AbstractStimuliProvider {
 
-    protected final static String[] FLDS = {"type", "numberOfBands", "numberOfSeries", "startBand", "fineTuningTupleLength", "fineTuningUpperBoundForCycles", "fastTrackPresent", "fineTuningFirstWrongOut", ""
-            + "bandScore", "isCorrectCurrentResponse", "currentBandIndex", "totalStimuli", ""
-            + "responseRecord", "tupleFT", ""
-            + "bestBandFastTrack", "isFastTrackIsStillOn", "secondChanceFastTrackIsFired", "timeTickEndFastTrack", ""
-            + "enoughFineTuningStimulae", "bandVisitCounter", "cycle2helper", ""
-            + "cycle2", "champion", "looser", "justVisitedLastBand", "justVisitedFirstBand", "endOfRound", "errorMessage"};
+    protected final static String[] FLDS = {"numberOfBands", "startBand", "fineTuningTupleLength", "fineTuningUpperBoundForCycles", "fastTrackPresent", "fineTuningFirstWrongOut", 
+            "bandScore", "isCorrectCurrentResponse", "currentBandIndex", "totalStimuli", 
+             "responseRecord", "tupleFT", 
+            "bestBandFastTrack", "isFastTrackIsStillOn", "secondChanceFastTrackIsFired", "timeTickEndFastTrack", 
+            "enoughFineTuningStimulae", "bandVisitCounter", "cycle2helper", 
+            "cycle2", "champion", "looser", "justVisitedLastBand", "justVisitedFirstBand", "endOfRound", "errorMessage"};
     
     
-    protected int type = 0;
     protected int numberOfBands = 0;
-    protected int numberOfSeries = 0;
+    
     protected int startBand = 0;
     protected int fineTuningTupleLength = 0;
     protected int fineTuningUpperBoundForCycles = 0;
@@ -90,14 +89,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         super(stimulusArray);
     }
 
-    public Integer gettype() {
-        return this.type;
-    }
-
-    public void settype(String type) {
-        this.type = Integer.parseInt(type);
-    }
-
+   
     public boolean getfastTrackPresent() {
         return this.fastTrackPresent;
     }
@@ -120,14 +112,6 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
     public void setnumberOfBands(String numberOfBands) {
         this.numberOfBands = Integer.parseInt(numberOfBands);
-    }
-
-    public int getnumberOfSeries() {
-        return this.numberOfSeries;
-    }
-
-    public void setnumberOfSeries(String numberOfSeries) {
-        this.numberOfSeries = Integer.parseInt(numberOfSeries);
     }
 
     public int getstartBand() {
@@ -792,9 +776,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected Map<String, Object> toMap(){
         Map<String, Object> map = new LinkedHashMap<String, Object>();
         //map.put("fields", BandStimuliProvider.FLDS);
-        map.put("type", this.type);
         map.put("numberOfBands", this.numberOfBands);
-        map.put("numberOfSeries", this.numberOfSeries);
         map.put("startBand", this.startBand);
         map.put("fineTuningTupleLength", this.fineTuningTupleLength);
         map.put("fineTuningUpperBoundForCycles", this.fineTuningUpperBoundForCycles);
@@ -844,10 +826,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
       
         Map<String,Object> map = UtilsJSONdialect.stringToObjectMap(str,BandStimuliProvider.FLDS);
         
-        
-        this.type = Integer.parseInt(map.get("type").toString());
         this.numberOfBands = Integer.parseInt(map.get("numberOfBands").toString());
-        this.numberOfSeries = Integer.parseInt(map.get("numberOfSeries").toString());
         this.startBand = Integer.parseInt(map.get("startBand").toString());
         this.fineTuningTupleLength = Integer.parseInt(map.get("fineTuningTupleLength").toString());
         this.fineTuningUpperBoundForCycles = Integer.parseInt(map.get("fineTuningUpperBoundForCycles").toString());

@@ -62,9 +62,7 @@ public class AudioAsStimuliProviderTest {
         this.instance.setfineTuningTupleLength(Integer.toString(this.tupleSize));
         this.instance.setfineTuningUpperBoundForCycles("2");
         this.instance.setnumberOfBands(Integer.toString(this.numberOfBands));
-        this.instance.setnumberOfSeries("1");
         this.instance.setstartBand(Integer.toString(this.startBand));
-        this.instance.settype("0");
     }
 
     @After

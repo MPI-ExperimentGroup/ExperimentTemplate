@@ -1,6 +1,5 @@
-
 /*
- * Copyright (C) 2017 Max Planck Institute for Psycholinguistics, Nijmegen
+ * Copyright (C) 2018 Max Planck Institute for Psycholinguistics, Nijmegen
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -18,705 +17,689 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool;
 
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
-
-/*
 /**
  *
  * @author olhshk
  */
-public class NonWords_NL_2rounds_2 extends NonWordsSource {
-    
-    public static final String NONWORD_NL = "NEE&#44; ik ken dit woord niet";
+public class NonWords_NL_2rounds_2 extends CsvStringWrapper {
 
-    private static final AdVocAsStimulus[] SERIES = {
-        new AdVocAsStimulus("pretebentie_1513695951630", "pretebentie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("infost_1513695951631", "infost", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("nartelijk_1513695951631", "nartelijk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("himpig_1513695951631", "himpig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("mabikaal_1513695951632", "mabikaal", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("pongeloos_1513695951632", "pongeloos", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("sormies_1513695951632", "sormies", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("enturmen_1513695951632", "enturmen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("dimor_1513695951632", "dimor", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gulpontig_1513695951632", "gulpontig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("hutaar_1513695951632", "hutaar", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("horps_1513695951632", "horps", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kadelziek_1513695951632", "kadelziek", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("killamolatie_1513695951633", "killamolatie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("verisserig_1513695951633", "verisserig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("astienen_1513695951633", "astienen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("glippant_1513695951633", "glippant", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("schokeldijn_1513695951633", "schokeldijn", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gussiraal_1513695951633", "gussiraal", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("drant_1513695951633", "drant", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("manijn_1513695951633", "manijn", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("tijvinigheid_1513695951633", "tijvinigheid", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("coddactie_1513695951633", "coddactie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("trandellien_1513695951633", "trandellien", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("dymkactisch_1513695951634", "dymkactisch", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("domibel_1513695951634", "domibel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("jomisch_1513695951634", "jomisch", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ligittie_1513695951634", "ligittie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gebantie_1513695951634", "gebantie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("pinterlaarlijk_1513695951635", "pinterlaarlijk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("lulstbandig_1513695951635", "lulstbandig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bamitoseren_1513695951635", "bamitoseren", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("trarrofoon_1513695951635", "trarrofoon", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gepoping_1513695951636", "gepoping", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("blanstig_1513695951636", "blanstig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gezerpen_1513695951636", "gezerpen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("nidasteren_1513695951636", "nidasteren", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("rilomode_1513695951637", "rilomode", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("wrijmeraar_1513695951637", "wrijmeraar", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("asteraards_1513695951637", "asteraards", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("schroezer_1513695951637", "schroezer", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("pihengiaat_1513695951637", "pihengiaat", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("reddine_1513695951637", "reddine", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vaatstonzel_1513695951637", "vaatstonzel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vrunteling_1513695951637", "vrunteling", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("inonfie_1513695951637", "inonfie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("medormap_1513695951637", "medormap", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("mialaltiek_1513695951637", "mialaltiek", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("fiteek_1513695951637", "fiteek", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("rolk_1513695951637", "rolk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kavree_1513695951637", "kavree", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("contokistaal_1513695951637", "contokistaal", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kalzelen_1513695951637", "kalzelen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("schobeting_1513695951637", "schobeting", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("getwijnel_1513695951638", "getwijnel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("oranfafeet_1513695951638", "oranfafeet", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("warralist_1513695951638", "warralist", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("horicijn_1513695951638", "horicijn", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("asdanonaal_1513695951638", "asdanonaal", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("boltpomier_1513695951638", "boltpomier", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("waarbijn_1513695951638", "waarbijn", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("invoekelijk_1513695951638", "invoekelijk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("corrublindent_1513695951638", "corrublindent", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gevina_1513695951638", "gevina", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("verwolper_1513695951639", "verwolper", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("mupline_1513695951639", "mupline", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("prenilaren_1513695951639", "prenilaren", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("broeg_1513695951639", "broeg", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("desakentie_1513695951639", "desakentie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("dimestolieel_1513695951639", "dimestolieel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ekaldiek_1513695951639", "ekaldiek", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("berennelen_1513695951640", "berennelen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ompuchtbaar_1513695951640", "ompuchtbaar", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vorris_1513695951640", "vorris", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("verdaspen_1513695951640", "verdaspen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("conjentralen_1513695951640", "conjentralen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("invensiptie_1513695951641", "invensiptie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("akitet_1513695951641", "akitet", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("awanteur_1513695951641", "awanteur", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("rebrijk_1513695951641", "rebrijk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("valdrongen_1513695951641", "valdrongen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("akeer_1513695951641", "akeer", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("geloorderaad_1513695951641", "geloorderaad", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("stessig_1513695951641", "stessig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("olletude_1513695951641", "olletude", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vlum_1513695951641", "vlum", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vervarding_1513695951641", "vervarding", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("veoorlinaar_1513695951642", "veoorlinaar", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("taslon_1513695951642", "taslon", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("opongelen_1513695951642", "opongelen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("nachteraan_1513695951642", "nachteraan", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("roebiel_1513695951643", "roebiel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("krepadetie_1513695951643", "krepadetie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("trirvioen_1513695951643", "trirvioen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vezerting_1513695951643", "vezerting", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("derultor_1513695951643", "derultor", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("otlikisme_1513695951643", "otlikisme", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("mardon_1513695951643", "mardon", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("halboeglijk_1513695951643", "halboeglijk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("alapilitie_1513695951643", "alapilitie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("mipel_1513695951643", "mipel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bemokend_1513695951643", "bemokend", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("opgakerij_1513695951643", "opgakerij", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vereberend_1513695951643", "vereberend", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("glistelijk_1513695951644", "glistelijk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("flepelijk_1513695951644", "flepelijk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("stiellijs_1513695951644", "stiellijs", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gelamersine_1513695951644", "gelamersine", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("slaarmekker_1513695951644", "slaarmekker", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("inbricetie_1513695951644", "inbricetie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gersovelaar_1513695951645", "gersovelaar", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("pamend_1513695951645", "pamend", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("eggrotie_1513695951645", "eggrotie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("flonstelen_1513695951645", "flonstelen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("peject_1513695951646", "peject", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("dofikotief_1513695951646", "dofikotief", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("flepen_1513695951646", "flepen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("pokenin_1513695951646", "pokenin", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("umotoren_1513695951646", "umotoren", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vescheming_1513695951646", "vescheming", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("erkarts_1513695951646", "erkarts", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gigkruchtig_1513695951646", "gigkruchtig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("afrepent_1513695951646", "afrepent", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("tijmant_1513695951646", "tijmant", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("veteggelijk_1513695951646", "veteggelijk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("strissen_1513695951646", "strissen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("spropen_1513695951646", "spropen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("klergte_1513695951646", "klergte", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("propikkeron_1513695951646", "propikkeron", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("opprinee_1513695951647", "opprinee", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vereuben_1513695951647", "vereuben", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("olwafolisch_1513695951647", "olwafolisch", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("waspografie_1513695951647", "waspografie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("judrulant_1513695951647", "judrulant", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bodervlaad_1513695951647", "bodervlaad", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("zuimnatuatie_1513695951647", "zuimnatuatie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("rallibule_1513695951647", "rallibule", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("rakwan_1513695951647", "rakwan", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("stadderaar_1513695951647", "stadderaar", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("eiltede_1513695951647", "eiltede", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ramarij_1513695951647", "ramarij", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("glarsuis_1513695951647", "glarsuis", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("splimpen_1513695951647", "splimpen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("riodist_1513695951647", "riodist", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("navanning_1513695951647", "navanning", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gruleristisch_1513695951647", "gruleristisch", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("tinpeloos_1513695951648", "tinpeloos", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("korket_1513695951648", "korket", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("viarageren_1513695951648", "viarageren", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gavimaal_1513695951648", "gavimaal", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bijbarting_1513695951648", "bijbarting", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("lomguasief_1513695951648", "lomguasief", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("flusegen_1513695951648", "flusegen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("zetidisch_1513695951648", "zetidisch", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("smakteel_1513695951648", "smakteel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("messtaad_1513695951648", "messtaad", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("doornarstoken_1513695951648", "doornarstoken", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kienstbaal_1513695951648", "kienstbaal", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("maarmarstig_1513695951648", "maarmarstig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("lozeraal_1513695951648", "lozeraal", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("neuroek_1513695951648", "neuroek", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("revost_1513695951648", "revost", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("roefdra_1513695951648", "roefdra", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("werium_1513695951648", "werium", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("figuis_1513695951649", "figuis", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("welsilaat_1513695951649", "welsilaat", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("arachteleem_1513695951649", "arachteleem", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("koefmobberij_1513695951649", "koefmobberij", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("demaans_1513695951649", "demaans", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("halnomen_1513695951649", "halnomen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ontzuppen_1513695951650", "ontzuppen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("miakinaal_1513695951650", "miakinaal", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("corstorte_1513695951650", "corstorte", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("lioleit_1513695951650", "lioleit", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("aktheminaren_1513695951650", "aktheminaren", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("koermink_1513695951650", "koermink", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bolsode_1513695951650", "bolsode", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("brongen_1513695951650", "brongen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("inteldaag_1513695951650", "inteldaag", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kiksel_1513695951650", "kiksel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("pigiek_1513695951650", "pigiek", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("schesser_1513695951650", "schesser", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("soscaal_1513695951650", "soscaal", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("wedrokoom_1513695951651", "wedrokoom", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("puvide_1513695951651", "puvide", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vinneljaart_1513695951651", "vinneljaart", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("aanjonterlijk_1513695951651", "aanjonterlijk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("otij_1513695951651", "otij", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bastarheid_1513695951651", "bastarheid", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ellepitie_1513695951651", "ellepitie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("asdilaal_1513695951651", "asdilaal", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ouwacieten_1513695951651", "ouwacieten", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bepeudigen_1513695951651", "bepeudigen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("invisting_1513695951651", "invisting", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kardidieus_1513695951651", "kardidieus", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("inkichtig_1513695951654", "inkichtig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("mandon_1513695951654", "mandon", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("berobaren_1513695951654", "berobaren", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("detig_1513695951654", "detig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kovetie_1513695951654", "kovetie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("onlongellijk_1513695951654", "onlongellijk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gemaaf_1513695951654", "gemaaf", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vervarden_1513695951654", "vervarden", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("arfoezelen_1513695951654", "arfoezelen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("flazapeut_1513695951654", "flazapeut", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("lirultief_1513695951654", "lirultief", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("venterm_1513695951654", "venterm", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kalbelade_1513695951655", "kalbelade", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("wanmentine_1513695951655", "wanmentine", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("omvoelaan_1513695951655", "omvoelaan", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("lepenuit_1513695951655", "lepenuit", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("tidrolen_1513695951655", "tidrolen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("teramikratie_1513695951655", "teramikratie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("studiediet_1513695951655", "studiediet", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("eukereed_1513695951655", "eukereed", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bermoring_1513695951656", "bermoring", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("pulstueel_1513695951656", "pulstueel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("berknelpen_1513695951656", "berknelpen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("berkoer_1513695951656", "berkoer", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("konnelig_1513695951656", "konnelig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("topelig_1513695951656", "topelig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("uitklesting_1513695951656", "uitklesting", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("heltelijk_1513695951656", "heltelijk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("fitgeraal_1513695951656", "fitgeraal", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("muzegen_1513695951656", "muzegen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("fluwaag_1513695951656", "fluwaag", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("waanderijks_1513695951656", "waanderijks", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("berdomelen_1513695951656", "berdomelen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("adukreker_1513695951656", "adukreker", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("uitklorsel_1513695951656", "uitklorsel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("slaarpol_1513695951656", "slaarpol", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("merraguur_1513695951656", "merraguur", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("intotovitie_1513695951656", "intotovitie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("lurdig_1513695951656", "lurdig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("calalect_1513695951656", "calalect", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("degisch_1513695951656", "degisch", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("berkleiten_1513695951656", "berkleiten", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("jarloficaat_1513695951656", "jarloficaat", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("prikezie_1513695951656", "prikezie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ostemarkt_1513695951656", "ostemarkt", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("heunel_1513695951656", "heunel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vemekken_1513695951656", "vemekken", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("zuitend_1513695951656", "zuitend", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("iddimeren_1513695951656", "iddimeren", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("fabroet_1513695951656", "fabroet", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("namerijn_1513695951657", "namerijn", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("hentin_1513695951657", "hentin", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kojoluut_1513695951657", "kojoluut", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("krocuraas_1513695951657", "krocuraas", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vezaren_1513695951657", "vezaren", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("flonstelend_1513695951657", "flonstelend", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("verspreigen_1513695951657", "verspreigen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("herklefel_1513695951657", "herklefel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bedrannik_1513695951658", "bedrannik", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("feis_1513695951658", "feis", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("dochtkrij_1513695951658", "dochtkrij", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("warmunetie_1513695951658", "warmunetie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kroren_1513695951658", "kroren", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("debivet_1513695951658", "debivet", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("trewen_1513695951658", "trewen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("faliliedeen_1513695951658", "faliliedeen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("slanspalent_1513695951658", "slanspalent", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("tibbegen_1513695951658", "tibbegen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("veleet_1513695951658", "veleet", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("roetorre_1513695951659", "roetorre", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("riepoedig_1513695951659", "riepoedig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vewoeg_1513695951659", "vewoeg", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ofslijkbaar_1513695951659", "ofslijkbaar", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ematintatie_1513695951659", "ematintatie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("pribuur_1513695951659", "pribuur", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("korculien_1513695951659", "korculien", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("atendueen_1513695951659", "atendueen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ralm_1513695951659", "ralm", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("anschorp_1513695951659", "anschorp", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("aangringen_1513695951659", "aangringen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("halgepollig_1513695951659", "halgepollig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gebruursheerd_1513695951659", "gebruursheerd", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("reuperd_1513695951659", "reuperd", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vekeeuwen_1513695951659", "vekeeuwen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kotaal_1513695951659", "kotaal", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vetactisch_1513695951659", "vetactisch", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("berdemd_1513695951659", "berdemd", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("intuileinend_1513695951659", "intuileinend", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("castroek_1513695951660", "castroek", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("trekkaat_1513695951660", "trekkaat", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("okstobutie_1513695951660", "okstobutie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("angraar_1513695951660", "angraar", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("knam_1513695951660", "knam", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("marsens_1513695951660", "marsens", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("jamier_1513695951660", "jamier", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("wanositie_1513695951660", "wanositie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("voseraar_1513695951660", "voseraar", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("pideletuur_1513695951660", "pideletuur", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vebeerder_1513695951660", "vebeerder", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("klampigaal_1513695951660", "klampigaal", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("doorwijns_1513695951660", "doorwijns", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("wimming_1513695951660", "wimming", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("holalen_1513695951660", "holalen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("toteateur_1513695951660", "toteateur", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("fitken_1513695951660", "fitken", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("inwartief_1513695951660", "inwartief", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("veslammen_1513695951660", "veslammen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("pluwelaan_1513695951660", "pluwelaan", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("olbangs_1513695951660", "olbangs", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("fafial_1513695951660", "fafial", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bieuw_1513695951660", "bieuw", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bermegen_1513695951660", "bermegen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("rordoyant_1513695951661", "rordoyant", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("brelder_1513695951661", "brelder", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("callepaneel_1513695951661", "callepaneel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vrebaal_1513695951661", "vrebaal", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("comgemetie_1513695951661", "comgemetie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gestensen_1513695951661", "gestensen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("lorfararen_1513695951661", "lorfararen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("porkon_1513695951661", "porkon", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("onvoger_1513695951661", "onvoger", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("truma_1513695951662", "truma", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("mandvarrijd_1513695951662", "mandvarrijd", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gerdel_1513695951663", "gerdel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("valtewas_1513695951663", "valtewas", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("zossue_1513695951663", "zossue", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("tokedoni_1513695951663", "tokedoni", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vezeid_1513695951663", "vezeid", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("berschieking_1513695951663", "berschieking", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("versaander_1513695951663", "versaander", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("viriowaald_1513695951663", "viriowaald", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bendasta_1513695951663", "bendasta", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("dunileins_1513695951663", "dunileins", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ampetwinsbaar_1513695951663", "ampetwinsbaar", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("berkluitig_1513695951663", "berkluitig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("joddegrok_1513695951663", "joddegrok", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("blort_1513695951663", "blort", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("smoebaan_1513695951663", "smoebaan", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("protridenade_1513695951663", "protridenade", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("muikdelijk_1513695951663", "muikdelijk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("tagisor_1513695951664", "tagisor", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("snemmer_1513695951664", "snemmer", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("tups_1513695951664", "tups", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("inkouken_1513695951664", "inkouken", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("mopcurn_1513695951664", "mopcurn", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("asseldig_1513695951664", "asseldig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gerulbel_1513695951664", "gerulbel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("stroon_1513695951664", "stroon", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("inspate_1513695951664", "inspate", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("legroperiseren_1513695951664", "legroperiseren", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("roortrig_1513695951664", "roortrig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("tederieden_1513695951664", "tederieden", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("sefpor_1513695951664", "sefpor", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("deskelijk_1513695951664", "deskelijk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("onstronen_1513695951665", "onstronen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bechts_1513695951665", "bechts", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bebriepig_1513695951665", "bebriepig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("intilm_1513695951665", "intilm", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bijtole_1513695951665", "bijtole", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("naromender_1513695951665", "naromender", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("drapolen_1513695951665", "drapolen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gemoeitoedig_1513695951665", "gemoeitoedig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bervichten_1513695951665", "bervichten", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("oehamen_1513695951665", "oehamen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("berhakkening_1513695951665", "berhakkening", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("guitak_1513695951665", "guitak", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bleetbaar_1513695951665", "bleetbaar", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vehoutelt_1513695951665", "vehoutelt", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("uitwok_1513695951665", "uitwok", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("hermeerleter_1513695951665", "hermeerleter", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("schobbalen_1513695951665", "schobbalen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("tralaan_1513695951665", "tralaan", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("momelons_1513695951665", "momelons", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("scholotisch_1513695951666", "scholotisch", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("lestrundie_1513695951666", "lestrundie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("aperuild_1513695951666", "aperuild", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("paud_1513695951666", "paud", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("schossig_1513695951666", "schossig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("drorzeloos_1513695951666", "drorzeloos", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("geneetgemdel_1513695951666", "geneetgemdel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("fririlen_1513695951666", "fririlen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("virmieel_1513695951666", "virmieel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("odenwuitang_1513695951666", "odenwuitang", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("sinuragen_1513695951666", "sinuragen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("grammooien_1513695951667", "grammooien", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kigneneris_1513695951667", "kigneneris", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bloefpe_1513695951667", "bloefpe", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("verneertezen_1513695951668", "verneertezen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("pigulder_1513695951668", "pigulder", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("berzieging_1513695951668", "berzieging", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("fortorij_1513695951668", "fortorij", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("aanschagenen_1513695951668", "aanschagenen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("smapmatisch_1513695951668", "smapmatisch", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("berantweerdeteit_1513695951669", "berantweerdeteit", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("neekrag_1513695951669", "neekrag", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("mukiek_1513695951669", "mukiek", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("wutlen_1513695951669", "wutlen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("frimekel_1513695951669", "frimekel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("mentekid_1513695951669", "mentekid", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("embabron_1513695951669", "embabron", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("veschogbaar_1513695951669", "veschogbaar", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kroden_1513695951669", "kroden", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("liepenpasier_1513695951669", "liepenpasier", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("krachteteel_1513695951669", "krachteteel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("dasken_1513695951669", "dasken", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("tweelerkjus_1513695951669", "tweelerkjus", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("onrolen_1513695951669", "onrolen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("schijgste_1513695951669", "schijgste", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("frideurlet_1513695951669", "frideurlet", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("afgerstrezen_1513695951669", "afgerstrezen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vrijslerieus_1513695951669", "vrijslerieus", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("opbino_1513695951669", "opbino", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vegachtspunt_1513695951669", "vegachtspunt", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("omvarvorsen_1513695951670", "omvarvorsen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vontjat_1513695951670", "vontjat", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ramfe_1513695951670", "ramfe", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("loerna_1513695951670", "loerna", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vejaarlenhaad_1513695951670", "vejaarlenhaad", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("hetetiekorps_1513695951670", "hetetiekorps", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("spipper_1513695951670", "spipper", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("tretting_1513695951670", "tretting", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("fagawel_1513695951670", "fagawel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("nokaar_1513695951670", "nokaar", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("pondoes_1513695951670", "pondoes", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("berdeeft_1513695951670", "berdeeft", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kosenteur_1513695951670", "kosenteur", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("geweintedis_1513695951670", "geweintedis", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("poenbouber_1513695951670", "poenbouber", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("steupem_1513695951670", "steupem", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("neharber_1513695951670", "neharber", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("tronsttijn_1513695951670", "tronsttijn", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("andstopt_1513695951670", "andstopt", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("betijring_1513695951670", "betijring", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vory_1513695951670", "vory", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("poventig_1513695951670", "poventig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("traten_1513695951670", "traten", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("grink_1513695951670", "grink", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("jangerenkift_1513695951670", "jangerenkift", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("veraand_1513695951670", "veraand", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("wijpeloegen_1513695951670", "wijpeloegen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("overmifis_1513695951671", "overmifis", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vivoel_1513695951671", "vivoel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("corlesitie_1513695951671", "corlesitie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("devensbiel_1513695951671", "devensbiel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bleubel_1513695951671", "bleubel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("abkupt_1513695951671", "abkupt", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ukeef_1513695951671", "ukeef", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("akkerief_1513695951671", "akkerief", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("alortstoding_1513695951671", "alortstoding", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("verbrelen_1513695951671", "verbrelen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("osmeling_1513695951671", "osmeling", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("nenteking_1513695951671", "nenteking", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("fupieus_1513695951671", "fupieus", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("instennaren_1513695951671", "instennaren", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("lekinklijk_1513695951671", "lekinklijk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("rummij_1513695951671", "rummij", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bespreizing_1513695951671", "bespreizing", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("schesks_1513695951671", "schesks", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ontlertenen_1513695951671", "ontlertenen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ampekestigd_1513695951671", "ampekestigd", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("brog_1513695951672", "brog", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("adaandes_1513695951672", "adaandes", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("michten_1513695951672", "michten", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("menlariteit_1513695951672", "menlariteit", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("weelslaad_1513695951672", "weelslaad", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("banstelijk_1513695951672", "banstelijk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gertiesterers_1513695951672", "gertiesterers", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("haispisse_1513695951672", "haispisse", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("mazein_1513695951672", "mazein", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("traar_1513695951672", "traar", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("onnerwande_1513695951672", "onnerwande", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("konbijleut_1513695951672", "konbijleut", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("wacromeren_1513695951672", "wacromeren", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("daargemmenin_1513695951672", "daargemmenin", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("angeideling_1513695951672", "angeideling", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("darfect_1513695951672", "darfect", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("delinkpandel_1513695951672", "delinkpandel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("berstraaid_1513695951672", "berstraaid", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("lepeven_1513695951672", "lepeven", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vrijvopig_1513695951672", "vrijvopig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("maneetdoen_1513695951672", "maneetdoen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vereberen_1513695951672", "vereberen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("mamiergrem_1513695951672", "mamiergrem", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("brapla_1513695951673", "brapla", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kwetelijk_1513695951673", "kwetelijk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ijfling_1513695951673", "ijfling", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("dookels_1513695951673", "dookels", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("broorroos_1513695951673", "broorroos", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("invenstordig_1513695951673", "invenstordig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("plisterig_1513695951673", "plisterig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("indokstatetie_1513695951673", "indokstatetie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("breep_1513695951673", "breep", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("miklenatisch_1513695951673", "miklenatisch", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gerschuikele_1513695951673", "gerschuikele", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("natcoom_1513695951673", "natcoom", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("opana_1513695951673", "opana", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("schepting_1513695951673", "schepting", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kieneling_1513695951673", "kieneling", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("torgegraads_1513695951674", "torgegraads", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bermaring_1513695951674", "bermaring", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("padelstiten_1513695951674", "padelstiten", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("oppumaren_1513695951674", "oppumaren", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ramenin_1513695951674", "ramenin", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gerstordig_1513695951675", "gerstordig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vescheligd_1513695951675", "vescheligd", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bekattupeerd_1513695951675", "bekattupeerd", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("rorio_1513695951675", "rorio", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ablociltuur_1513695951675", "ablociltuur", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("braar_1513695951675", "braar", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kangegen_1513695951675", "kangegen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("krussig_1513695951675", "krussig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vemechten_1513695951675", "vemechten", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("mobbijn_1513695951675", "mobbijn", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("temifrase_1513695951675", "temifrase", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("amektel_1513695951675", "amektel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("agumotie_1513695951676", "agumotie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("adwanderen_1513695951676", "adwanderen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kienelig_1513695951676", "kienelig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("artilef_1513695951676", "artilef", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("nacef_1513695951676", "nacef", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("aterboren_1513695951676", "aterboren", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("volstutig_1513695951676", "volstutig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vrallen_1513695951677", "vrallen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("sonspering_1513695951677", "sonspering", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gerbongen_1513695951677", "gerbongen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gepromen_1513695951677", "gepromen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("agsinent_1513695951677", "agsinent", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bekeutoging_1513695951677", "bekeutoging", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kondreiten_1513695951677", "kondreiten", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("corbemitie_1513695951677", "corbemitie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("scruputoel_1513695951677", "scruputoel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("contrellaren_1513695951677", "contrellaren", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("dehomueel_1513695951677", "dehomueel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("onveschremen_1513695951677", "onveschremen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("aprennief_1513695951677", "aprennief", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("rerditie_1513695951677", "rerditie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("toeptelig_1513695951677", "toeptelig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("veschosten_1513695951677", "veschosten", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("odenhuiten_1513695951677", "odenhuiten", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("veheitend_1513695951677", "veheitend", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("intabavueel_1513695951677", "intabavueel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("berspreuking_1513695951677", "berspreuking", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("staliam_1513695951677", "staliam", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("tienenis_1513695951677", "tienenis", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("progeceteur_1513695951677", "progeceteur", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("lilikent_1513695951677", "lilikent", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("lolict_1513695951677", "lolict", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("oordiet_1513695951677", "oordiet", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kondlerstig_1513695951677", "kondlerstig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("apennatig_1513695951677", "apennatig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("prodoet_1513695951677", "prodoet", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("stakrast_1513695951677", "stakrast", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("strokon_1513695951677", "strokon", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("astemeeslijk_1513695951677", "astemeeslijk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("algeziet_1513695951677", "algeziet", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("plaricaat_1513695951677", "plaricaat", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vecindeerd_1513695951677", "vecindeerd", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("geelkebigen_1513695951677", "geelkebigen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vebierding_1513695951677", "vebierding", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("rehotoren_1513695951677", "rehotoren", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("basrikton_1513695951677", "basrikton", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("koddenhoor_1513695951677", "koddenhoor", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("pammerd_1513695951677", "pammerd", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("iklap_1513695951677", "iklap", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("jontast_1513695951677", "jontast", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("onterweven_1513695951677", "onterweven", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("beschreeg_1513695951677", "beschreeg", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("mempen_1513695951677", "mempen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("duiketing_1513695951677", "duiketing", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("enzap_1513695951677", "enzap", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("immagaal_1513695951677", "immagaal", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("dierdig_1513695951677", "dierdig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("telbioen_1513695951677", "telbioen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("brapering_1513695951677", "brapering", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("mosimaal_1513695951677", "mosimaal", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("obbeschegt_1513695951677", "obbeschegt", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("omvaan_1513695951677", "omvaan", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("contallaren_1513695951677", "contallaren", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("flibbel_1513695951677", "flibbel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ruimkreging_1513695951677", "ruimkreging", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vedalen_1513695951677", "vedalen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("hekatie_1513695951677", "hekatie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("wadeborker_1513695951677", "wadeborker", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("rolpstarrig_1513695951677", "rolpstarrig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gadatast_1513695951677", "gadatast", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("egenweist_1513695951677", "egenweist", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("attikt_1513695951677", "attikt", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("atalsmaal_1513695951677", "atalsmaal", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("adpront_1513695951677", "adpront", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("derebas_1513695951677", "derebas", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("voeping_1513695951677", "voeping", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("nekeven_1513695951677", "nekeven", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("aplordigen_1513695951677", "aplordigen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("onterziemen_1513695951677", "onterziemen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("besleek_1513695951677", "besleek", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("tecastentie_1513695951677", "tecastentie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kegemant_1513695951677", "kegemant", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vetichten_1513695951677", "vetichten", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("soorteraan_1513695951677", "soorteraan", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gesigaraseerd_1513695951677", "gesigaraseerd", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("geschiend_1513695951677", "geschiend", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("papijl_1513695951677", "papijl", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("deharstructie_1513695951677", "deharstructie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("tadeboe_1513695951677", "tadeboe", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bermurmen_1513695951677", "bermurmen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("hokelal_1513695951677", "hokelal", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("egknotisch_1513695951677", "egknotisch", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("aruindig_1513695951677", "aruindig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("mererist_1513695951677", "mererist", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("dargel_1513695951677", "dargel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("wingstondig_1513695951677", "wingstondig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bameen_1513695951677", "bameen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ospassedeur_1513695951677", "ospassedeur", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("belonzelijk_1513695951677", "belonzelijk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("spropend_1513695951677", "spropend", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("infilrie_1513695951677", "infilrie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("sietsel_1513695951677", "sietsel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("twikkig_1513695951677", "twikkig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("apmuselief_1513695951677", "apmuselief", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("doleton_1513695951677", "doleton", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("pensiet_1513695951677", "pensiet", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("amunt_1513695951677", "amunt", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("insloeding_1513695951677", "insloeding", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("aketolief_1513695951677", "aketolief", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("sches_1513695951677", "sches", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bekelijk_1513695951677", "bekelijk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gekraad_1513695951677", "gekraad", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("jagogdictie_1513695951677", "jagogdictie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("kirgedier_1513695951677", "kirgedier", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("aarberheid_1513695951677", "aarberheid", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("efject_1513695951677", "efject", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("pijtens_1513695951677", "pijtens", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("cougeise_1513695951677", "cougeise", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("atsel_1513695951677", "atsel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("berveugd_1513695951677", "berveugd", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("betrallel_1513695951677", "betrallel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("isenkatie_1513695951677", "isenkatie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("spruichen_1513695951677", "spruichen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vetadiel_1513695951677", "vetadiel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("vollundig_1513695951677", "vollundig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ballelliek_1513695951677", "ballelliek", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("fomiheer_1513695951678", "fomiheer", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("afbas_1513695951678", "afbas", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ongertief_1513695951678", "ongertief", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("berkaaien_1513695951678", "berkaaien", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bladetig_1513695951678", "bladetig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("zijketig_1513695951678", "zijketig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("oppebeuglijk_1513695951678", "oppebeuglijk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("voeriek_1513695951678", "voeriek", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("imbing_1513695951678", "imbing", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("speesing_1513695951678", "speesing", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("congildie_1513695951678", "congildie", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("groeking_1513695951678", "groeking", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gespenken_1513695951678", "gespenken", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("blankelen_1513695951678", "blankelen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("bajoktrant_1513695951678", "bajoktrant", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("begildig_1513695951678", "begildig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("filfiet_1513695951678", "filfiet", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("glappelig_1513695951678", "glappelig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gebecht_1513695951678", "gebecht", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("veschosting_1513695951678", "veschosting", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("slapioloog_1513695951678", "slapioloog", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("besprering_1513695951678", "besprering", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("lagelen_1513695951678", "lagelen", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("theoraak_1513695951678", "theoraak", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("iriel_1513695951678", "iriel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("restuinenswaardig_1513695951678", "restuinenswaardig", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("nemenraal_1513695951678", "nemenraal", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("sprans_1513695951678", "sprans", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("amusazist_1513695951678", "amusazist", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("geuist_1513695951678", "geuist", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("hepeloos_1513695951678", "hepeloos", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("moetel_1513695951678", "moetel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("gescheuste_1513695951678", "gescheuste", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("ganriteur_1513695951678", "ganriteur", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("schieluin_1513695951678", "schieluin", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("jagradieel_1513695951678", "jagradieel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("benebbel_1513695951678", "benebbel", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("fragteur_1513695951678", "fragteur", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("verroppend_1513695951678", "verroppend", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0),
-        new AdVocAsStimulus("berrillelijk_1513695951678", "berrillelijk", NONWORD_NL + ","+Words_NL_2rounds_2.WORD_NL,  NONWORD_NL, 0)
-
-    };
-
-    @Override
-    public AdVocAsStimulus[] getNonWords() {
-        return SERIES;
+    public NonWords_NL_2rounds_2() {
+        this.CSV_STRING = "Spelling\n"
+                + "pretebentie\n"
+                + "infost\n"
+                + "nartelijk\n"
+                + "himpig\n"
+                + "mabikaal\n"
+                + "pongeloos\n"
+                + "sormies\n"
+                + "enturmen\n"
+                + "dimor\n"
+                + "gulpontig\n"
+                + "hutaar\n"
+                + "horps\n"
+                + "kadelziek\n"
+                + "killamolatie\n"
+                + "verisserig\n"
+                + "astienen\n"
+                + "glippant\n"
+                + "schokeldijn\n"
+                + "gussiraal\n"
+                + "drant\n"
+                + "manijn\n"
+                + "tijvinigheid\n"
+                + "coddactie\n"
+                + "trandellien\n"
+                + "dymkactisch\n"
+                + "domibel\n"
+                + "jomisch\n"
+                + "ligittie\n"
+                + "gebantie\n"
+                + "pinterlaarlijk\n"
+                + "lulstbandig\n"
+                + "bamitoseren\n"
+                + "trarrofoon\n"
+                + "gepoping\n"
+                + "blanstig\n"
+                + "gezerpen\n"
+                + "nidasteren\n"
+                + "rilomode\n"
+                + "wrijmeraar\n"
+                + "asteraards\n"
+                + "schroezer\n"
+                + "pihengiaat\n"
+                + "reddine\n"
+                + "vaatstonzel\n"
+                + "vrunteling\n"
+                + "inonfie\n"
+                + "medormap\n"
+                + "mialaltiek\n"
+                + "fiteek\n"
+                + "rolk\n"
+                + "kavree\n"
+                + "contokistaal\n"
+                + "kalzelen\n"
+                + "schobeting\n"
+                + "getwijnel\n"
+                + "oranfafeet\n"
+                + "warralist\n"
+                + "horicijn\n"
+                + "asdanonaal\n"
+                + "boltpomier\n"
+                + "waarbijn\n"
+                + "invoekelijk\n"
+                + "corrublindent\n"
+                + "gevina\n"
+                + "verwolper\n"
+                + "mupline\n"
+                + "prenilaren\n"
+                + "broeg\n"
+                + "desakentie\n"
+                + "dimestolieel\n"
+                + "ekaldiek\n"
+                + "berennelen\n"
+                + "ompuchtbaar\n"
+                + "vorris\n"
+                + "verdaspen\n"
+                + "conjentralen\n"
+                + "invensiptie\n"
+                + "akitet\n"
+                + "awanteur\n"
+                + "rebrijk\n"
+                + "valdrongen\n"
+                + "akeer\n"
+                + "geloorderaad\n"
+                + "stessig\n"
+                + "olletude\n"
+                + "vlum\n"
+                + "vervarding\n"
+                + "veoorlinaar\n"
+                + "taslon\n"
+                + "opongelen\n"
+                + "nachteraan\n"
+                + "roebiel\n"
+                + "krepadetie\n"
+                + "trirvioen\n"
+                + "vezerting\n"
+                + "derultor\n"
+                + "otlikisme\n"
+                + "mardon\n"
+                + "halboeglijk\n"
+                + "alapilitie\n"
+                + "mipel\n"
+                + "bemokend\n"
+                + "opgakerij\n"
+                + "vereberend\n"
+                + "glistelijk\n"
+                + "flepelijk\n"
+                + "stiellijs\n"
+                + "gelamersine\n"
+                + "slaarmekker\n"
+                + "inbricetie\n"
+                + "gersovelaar\n"
+                + "pamend\n"
+                + "eggrotie\n"
+                + "flonstelen\n"
+                + "peject\n"
+                + "dofikotief\n"
+                + "flepen\n"
+                + "pokenin\n"
+                + "umotoren\n"
+                + "vescheming\n"
+                + "erkarts\n"
+                + "gigkruchtig\n"
+                + "afrepent\n"
+                + "tijmant\n"
+                + "veteggelijk\n"
+                + "strissen\n"
+                + "spropen\n"
+                + "klergte\n"
+                + "propikkeron\n"
+                + "opprinee\n"
+                + "vereuben\n"
+                + "olwafolisch\n"
+                + "waspografie\n"
+                + "judrulant\n"
+                + "bodervlaad\n"
+                + "zuimnatuatie\n"
+                + "rallibule\n"
+                + "rakwan\n"
+                + "stadderaar\n"
+                + "eiltede\n"
+                + "ramarij\n"
+                + "glarsuis\n"
+                + "splimpen\n"
+                + "riodist\n"
+                + "navanning\n"
+                + "gruleristisch\n"
+                + "tinpeloos\n"
+                + "korket\n"
+                + "viarageren\n"
+                + "gavimaal\n"
+                + "bijbarting\n"
+                + "lomguasief\n"
+                + "flusegen\n"
+                + "zetidisch\n"
+                + "smakteel\n"
+                + "messtaad\n"
+                + "doornarstoken\n"
+                + "kienstbaal\n"
+                + "maarmarstig\n"
+                + "lozeraal\n"
+                + "neuroek\n"
+                + "revost\n"
+                + "roefdra\n"
+                + "werium\n"
+                + "figuis\n"
+                + "welsilaat\n"
+                + "arachteleem\n"
+                + "koefmobberij\n"
+                + "demaans\n"
+                + "halnomen\n"
+                + "ontzuppen\n"
+                + "miakinaal\n"
+                + "corstorte\n"
+                + "lioleit\n"
+                + "aktheminaren\n"
+                + "koermink\n"
+                + "bolsode\n"
+                + "brongen\n"
+                + "inteldaag\n"
+                + "kiksel\n"
+                + "pigiek\n"
+                + "schesser\n"
+                + "soscaal\n"
+                + "wedrokoom\n"
+                + "puvide\n"
+                + "vinneljaart\n"
+                + "aanjonterlijk\n"
+                + "otij\n"
+                + "bastarheid\n"
+                + "ellepitie\n"
+                + "asdilaal\n"
+                + "ouwacieten\n"
+                + "bepeudigen\n"
+                + "invisting\n"
+                + "kardidieus\n"
+                + "inkichtig\n"
+                + "mandon\n"
+                + "berobaren\n"
+                + "detig\n"
+                + "kovetie\n"
+                + "onlongellijk\n"
+                + "gemaaf\n"
+                + "vervarden\n"
+                + "arfoezelen\n"
+                + "flazapeut\n"
+                + "lirultief\n"
+                + "venterm\n"
+                + "kalbelade\n"
+                + "wanmentine\n"
+                + "omvoelaan\n"
+                + "lepenuit\n"
+                + "tidrolen\n"
+                + "teramikratie\n"
+                + "studiediet\n"
+                + "eukereed\n"
+                + "bermoring\n"
+                + "pulstueel\n"
+                + "berknelpen\n"
+                + "berkoer\n"
+                + "konnelig\n"
+                + "topelig\n"
+                + "uitklesting\n"
+                + "heltelijk\n"
+                + "fitgeraal\n"
+                + "muzegen\n"
+                + "fluwaag\n"
+                + "waanderijks\n"
+                + "berdomelen\n"
+                + "adukreker\n"
+                + "uitklorsel\n"
+                + "slaarpol\n"
+                + "merraguur\n"
+                + "intotovitie\n"
+                + "lurdig\n"
+                + "calalect\n"
+                + "degisch\n"
+                + "berkleiten\n"
+                + "jarloficaat\n"
+                + "prikezie\n"
+                + "ostemarkt\n"
+                + "heunel\n"
+                + "vemekken\n"
+                + "zuitend\n"
+                + "iddimeren\n"
+                + "fabroet\n"
+                + "namerijn\n"
+                + "hentin\n"
+                + "kojoluut\n"
+                + "krocuraas\n"
+                + "vezaren\n"
+                + "flonstelend\n"
+                + "verspreigen\n"
+                + "herklefel\n"
+                + "bedrannik\n"
+                + "feis\n"
+                + "dochtkrij\n"
+                + "warmunetie\n"
+                + "kroren\n"
+                + "debivet\n"
+                + "trewen\n"
+                + "faliliedeen\n"
+                + "slanspalent\n"
+                + "tibbegen\n"
+                + "veleet\n"
+                + "roetorre\n"
+                + "riepoedig\n"
+                + "vewoeg\n"
+                + "ofslijkbaar\n"
+                + "ematintatie\n"
+                + "pribuur\n"
+                + "korculien\n"
+                + "atendueen\n"
+                + "ralm\n"
+                + "anschorp\n"
+                + "aangringen\n"
+                + "halgepollig\n"
+                + "gebruursheerd\n"
+                + "reuperd\n"
+                + "vekeeuwen\n"
+                + "kotaal\n"
+                + "vetactisch\n"
+                + "berdemd\n"
+                + "intuileinend\n"
+                + "castroek\n"
+                + "trekkaat\n"
+                + "okstobutie\n"
+                + "angraar\n"
+                + "knam\n"
+                + "marsens\n"
+                + "jamier\n"
+                + "wanositie\n"
+                + "voseraar\n"
+                + "pideletuur\n"
+                + "vebeerder\n"
+                + "klampigaal\n"
+                + "doorwijns\n"
+                + "wimming\n"
+                + "holalen\n"
+                + "toteateur\n"
+                + "fitken\n"
+                + "inwartief\n"
+                + "veslammen\n"
+                + "pluwelaan\n"
+                + "olbangs\n"
+                + "fafial\n"
+                + "bieuw\n"
+                + "bermegen\n"
+                + "rordoyant\n"
+                + "brelder\n"
+                + "callepaneel\n"
+                + "vrebaal\n"
+                + "comgemetie\n"
+                + "gestensen\n"
+                + "lorfararen\n"
+                + "porkon\n"
+                + "onvoger\n"
+                + "truma\n"
+                + "mandvarrijd\n"
+                + "gerdel\n"
+                + "valtewas\n"
+                + "zossue\n"
+                + "tokedoni\n"
+                + "vezeid\n"
+                + "berschieking\n"
+                + "versaander\n"
+                + "viriowaald\n"
+                + "bendasta\n"
+                + "dunileins\n"
+                + "ampetwinsbaar\n"
+                + "berkluitig\n"
+                + "joddegrok\n"
+                + "blort\n"
+                + "smoebaan\n"
+                + "protridenade\n"
+                + "muikdelijk\n"
+                + "tagisor\n"
+                + "snemmer\n"
+                + "tups\n"
+                + "inkouken\n"
+                + "mopcurn\n"
+                + "asseldig\n"
+                + "gerulbel\n"
+                + "stroon\n"
+                + "inspate\n"
+                + "legroperiseren\n"
+                + "roortrig\n"
+                + "tederieden\n"
+                + "sefpor\n"
+                + "deskelijk\n"
+                + "onstronen\n"
+                + "bechts\n"
+                + "bebriepig\n"
+                + "intilm\n"
+                + "bijtole\n"
+                + "naromender\n"
+                + "drapolen\n"
+                + "gemoeitoedig\n"
+                + "bervichten\n"
+                + "oehamen\n"
+                + "berhakkening\n"
+                + "guitak\n"
+                + "bleetbaar\n"
+                + "vehoutelt\n"
+                + "uitwok\n"
+                + "hermeerleter\n"
+                + "schobbalen\n"
+                + "tralaan\n"
+                + "momelons\n"
+                + "scholotisch\n"
+                + "lestrundie\n"
+                + "aperuild\n"
+                + "paud\n"
+                + "schossig\n"
+                + "drorzeloos\n"
+                + "geneetgemdel\n"
+                + "fririlen\n"
+                + "virmieel\n"
+                + "odenwuitang\n"
+                + "sinuragen\n"
+                + "grammooien\n"
+                + "kigneneris\n"
+                + "bloefpe\n"
+                + "verneertezen\n"
+                + "pigulder\n"
+                + "berzieging\n"
+                + "fortorij\n"
+                + "aanschagenen\n"
+                + "smapmatisch\n"
+                + "berantweerdeteit\n"
+                + "neekrag\n"
+                + "mukiek\n"
+                + "wutlen\n"
+                + "frimekel\n"
+                + "mentekid\n"
+                + "embabron\n"
+                + "veschogbaar\n"
+                + "kroden\n"
+                + "liepenpasier\n"
+                + "krachteteel\n"
+                + "dasken\n"
+                + "tweelerkjus\n"
+                + "onrolen\n"
+                + "schijgste\n"
+                + "frideurlet\n"
+                + "afgerstrezen\n"
+                + "vrijslerieus\n"
+                + "opbino\n"
+                + "vegachtspunt\n"
+                + "omvarvorsen\n"
+                + "vontjat\n"
+                + "ramfe\n"
+                + "loerna\n"
+                + "vejaarlenhaad\n"
+                + "hetetiekorps\n"
+                + "spipper\n"
+                + "tretting\n"
+                + "fagawel\n"
+                + "nokaar\n"
+                + "pondoes\n"
+                + "berdeeft\n"
+                + "kosenteur\n"
+                + "geweintedis\n"
+                + "poenbouber\n"
+                + "steupem\n"
+                + "neharber\n"
+                + "tronsttijn\n"
+                + "andstopt\n"
+                + "betijring\n"
+                + "vory\n"
+                + "poventig\n"
+                + "traten\n"
+                + "grink\n"
+                + "jangerenkift\n"
+                + "veraand\n"
+                + "wijpeloegen\n"
+                + "overmifis\n"
+                + "vivoel\n"
+                + "corlesitie\n"
+                + "devensbiel\n"
+                + "bleubel\n"
+                + "abkupt\n"
+                + "ukeef\n"
+                + "akkerief\n"
+                + "alortstoding\n"
+                + "verbrelen\n"
+                + "osmeling\n"
+                + "nenteking\n"
+                + "fupieus\n"
+                + "instennaren\n"
+                + "lekinklijk\n"
+                + "rummij\n"
+                + "bespreizing\n"
+                + "schesks\n"
+                + "ontlertenen\n"
+                + "ampekestigd\n"
+                + "brog\n"
+                + "adaandes\n"
+                + "michten\n"
+                + "menlariteit\n"
+                + "weelslaad\n"
+                + "banstelijk\n"
+                + "gertiesterers\n"
+                + "haispisse\n"
+                + "mazein\n"
+                + "traar\n"
+                + "onnerwande\n"
+                + "konbijleut\n"
+                + "wacromeren\n"
+                + "daargemmenin\n"
+                + "angeideling\n"
+                + "darfect\n"
+                + "delinkpandel\n"
+                + "berstraaid\n"
+                + "lepeven\n"
+                + "vrijvopig\n"
+                + "maneetdoen\n"
+                + "vereberen\n"
+                + "mamiergrem\n"
+                + "brapla\n"
+                + "kwetelijk\n"
+                + "ijfling\n"
+                + "dookels\n"
+                + "broorroos\n"
+                + "invenstordig\n"
+                + "plisterig\n"
+                + "indokstatetie\n"
+                + "breep\n"
+                + "miklenatisch\n"
+                + "gerschuikele\n"
+                + "natcoom\n"
+                + "opana\n"
+                + "schepting\n"
+                + "kieneling\n"
+                + "torgegraads\n"
+                + "bermaring\n"
+                + "padelstiten\n"
+                + "oppumaren\n"
+                + "ramenin\n"
+                + "gerstordig\n"
+                + "vescheligd\n"
+                + "bekattupeerd\n"
+                + "rorio\n"
+                + "ablociltuur\n"
+                + "braar\n"
+                + "kangegen\n"
+                + "krussig\n"
+                + "vemechten\n"
+                + "mobbijn\n"
+                + "temifrase\n"
+                + "amektel\n"
+                + "agumotie\n"
+                + "adwanderen\n"
+                + "kienelig\n"
+                + "artilef\n"
+                + "nacef\n"
+                + "aterboren\n"
+                + "volstutig\n"
+                + "vrallen\n"
+                + "sonspering\n"
+                + "gerbongen\n"
+                + "gepromen\n"
+                + "agsinent\n"
+                + "bekeutoging\n"
+                + "kondreiten\n"
+                + "corbemitie\n"
+                + "scruputoel\n"
+                + "contrellaren\n"
+                + "dehomueel\n"
+                + "onveschremen\n"
+                + "aprennief\n"
+                + "rerditie\n"
+                + "toeptelig\n"
+                + "veschosten\n"
+                + "odenhuiten\n"
+                + "veheitend\n"
+                + "intabavueel\n"
+                + "berspreuking\n"
+                + "staliam\n"
+                + "tienenis\n"
+                + "progeceteur\n"
+                + "lilikent\n"
+                + "lolict\n"
+                + "oordiet\n"
+                + "kondlerstig\n"
+                + "apennatig\n"
+                + "prodoet\n"
+                + "stakrast\n"
+                + "strokon\n"
+                + "astemeeslijk\n"
+                + "algeziet\n"
+                + "plaricaat\n"
+                + "vecindeerd\n"
+                + "geelkebigen\n"
+                + "vebierding\n"
+                + "rehotoren\n"
+                + "basrikton\n"
+                + "koddenhoor\n"
+                + "pammerd\n"
+                + "iklap\n"
+                + "jontast\n"
+                + "onterweven\n"
+                + "beschreeg\n"
+                + "mempen\n"
+                + "duiketing\n"
+                + "enzap\n"
+                + "immagaal\n"
+                + "dierdig\n"
+                + "telbioen\n"
+                + "brapering\n"
+                + "mosimaal\n"
+                + "obbeschegt\n"
+                + "omvaan\n"
+                + "contallaren\n"
+                + "flibbel\n"
+                + "ruimkreging\n"
+                + "vedalen\n"
+                + "hekatie\n"
+                + "wadeborker\n"
+                + "rolpstarrig\n"
+                + "gadatast\n"
+                + "egenweist\n"
+                + "attikt\n"
+                + "atalsmaal\n"
+                + "adpront\n"
+                + "derebas\n"
+                + "voeping\n"
+                + "nekeven\n"
+                + "aplordigen\n"
+                + "onterziemen\n"
+                + "besleek\n"
+                + "tecastentie\n"
+                + "kegemant\n"
+                + "vetichten\n"
+                + "soorteraan\n"
+                + "gesigaraseerd\n"
+                + "geschiend\n"
+                + "papijl\n"
+                + "deharstructie\n"
+                + "tadeboe\n"
+                + "bermurmen\n"
+                + "hokelal\n"
+                + "egknotisch\n"
+                + "aruindig\n"
+                + "mererist\n"
+                + "dargel\n"
+                + "wingstondig\n"
+                + "bameen\n"
+                + "ospassedeur\n"
+                + "belonzelijk\n"
+                + "spropend\n"
+                + "infilrie\n"
+                + "sietsel\n"
+                + "twikkig\n"
+                + "apmuselief\n"
+                + "doleton\n"
+                + "pensiet\n"
+                + "amunt\n"
+                + "insloeding\n"
+                + "aketolief\n"
+                + "sches\n"
+                + "bekelijk\n"
+                + "gekraad\n"
+                + "jagogdictie\n"
+                + "kirgedier\n"
+                + "aarberheid\n"
+                + "efject\n"
+                + "pijtens\n"
+                + "cougeise\n"
+                + "atsel\n"
+                + "berveugd\n"
+                + "betrallel\n"
+                + "isenkatie\n"
+                + "spruichen\n"
+                + "vetadiel\n"
+                + "vollundig\n"
+                + "ballelliek\n"
+                + "fomiheer\n"
+                + "afbas\n"
+                + "ongertief\n"
+                + "berkaaien\n"
+                + "bladetig\n"
+                + "zijketig\n"
+                + "oppebeuglijk\n"
+                + "voeriek\n"
+                + "imbing\n"
+                + "speesing\n"
+                + "congildie\n"
+                + "groeking\n"
+                + "gespenken\n"
+                + "blankelen\n"
+                + "bajoktrant\n"
+                + "begildig\n"
+                + "filfiet\n"
+                + "glappelig\n"
+                + "gebecht\n"
+                + "veschosting\n"
+                + "slapioloog\n"
+                + "besprering\n"
+                + "lagelen\n"
+                + "theoraak\n"
+                + "iriel\n"
+                + "restuinenswaardig\n"
+                + "nemenraal\n"
+                + "sprans\n"
+                + "amusazist\n"
+                + "geuist\n"
+                + "hepeloos\n"
+                + "moetel\n"
+                + "gescheuste\n"
+                + "ganriteur\n"
+                + "schieluin\n"
+                + "jagradieel\n"
+                + "benebbel\n"
+                + "fragteur\n"
+                + "verroppend\n"
+                + "berrillelijk";
     }
-    
-    @Override 
-    public String getCorrectResponse(){
-        return NONWORD_NL;
-    }
-
 }

@@ -17,44 +17,10 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool;
 
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
-
 /**
  *
  * @author olhshk
  */
-public class ConstantsNonWords1Test {
-    
-    public ConstantsNonWords1Test() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-    @Test
-    public void testAmountOfNonWordsInBandsFor1RoundVersion() {
-        AdVocAsStimulus[][] stimuli = NonWords_NL_2rounds_2.NONWORDS_SERIES;
-        int expVal = stimuli[0].length + stimuli[1].length;
-        assertEquals(expVal, NonWords_NL_1round.NONWORDS_SERIES[0].length);
-    }
-    
+public abstract class CsvStringWrapper {
+    public String CSV_STRING;
 }

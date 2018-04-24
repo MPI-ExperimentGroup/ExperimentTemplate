@@ -27,7 +27,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 
 /**
  *
@@ -112,17 +111,7 @@ public class BandStimuliProviderTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of settype method, of class BandStimuliProvider.
-     */
-    @Test
-    public void tesSetGettype() {
-        System.out.println("settype");
-        String type = "1";
-        assertTrue(0 == this.instance.gettype());
-        this.instance.settype(type);
-        assertTrue(1 == this.instance.gettype());
-    }
+  
 
     /**
      * Test of setfastTrackPresent method, of class BandStimuliProvider.
@@ -160,17 +149,7 @@ public class BandStimuliProviderTest {
         assertEquals(40, this.instance.getnumberOfBands());
     }
 
-    /**
-     * Test of setnumberOfSeries method, of class BandStimuliProvider.
-     */
-    @Test
-    public void testGetSetnumberOfSeries() {
-        System.out.println("setnumberOfSeries");
-        String numberOfSeries = "2";
-        assertEquals(0, this.instance.getnumberOfSeries());
-        this.instance.setnumberOfSeries(numberOfSeries);
-        assertEquals(2, this.instance.getnumberOfSeries());
-    }
+ 
 
     /**
      * Test of setstartBand method, of class BandStimuliProvider.
@@ -218,12 +197,12 @@ public class BandStimuliProviderTest {
         String stimuliStateSnapshot = "";
 
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
+        
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
+        
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
 // this.bandScore = -1;
@@ -273,12 +252,12 @@ public class BandStimuliProviderTest {
         String stimuliStateSnapshot = "";
 
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
+        
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
+        
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
 
@@ -294,12 +273,12 @@ public class BandStimuliProviderTest {
         String stimuliStateSnapshot = "";
 
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
+        
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
+        
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
 
@@ -341,12 +320,12 @@ public class BandStimuliProviderTest {
         String stimuliStateSnapshot = "";
 
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
+        
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
+        
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
         ArrayList<BookkeepingStimulus<BandStimulus>> result = instance.getResponseRecord();
@@ -361,12 +340,12 @@ public class BandStimuliProviderTest {
         System.out.println("getBestFastTrackBand");
 
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
+        
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
+        
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         int result = instance.getBestFastTrackBand();
@@ -381,12 +360,12 @@ public class BandStimuliProviderTest {
         System.out.println("getBandScore");
 
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
+        
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
+        
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         int result = instance.getBandScore();
@@ -401,12 +380,10 @@ public class BandStimuliProviderTest {
         System.out.println("getPercentageScore");
 
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
 
@@ -420,12 +397,10 @@ public class BandStimuliProviderTest {
     public void testGetFTtuple() {
         System.out.println("getFTtuple");
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
 
@@ -440,12 +415,10 @@ public class BandStimuliProviderTest {
     public void testGetEndFastTrackTimeTick() {
         System.out.println("getEndFastTrackTimeTick");
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         int result = instance.getEndFastTrackTimeTick();
@@ -459,12 +432,10 @@ public class BandStimuliProviderTest {
     public void testGetCurrentStimulus() {
         System.out.println("getCurrentStimulus");
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         try {
@@ -481,12 +452,10 @@ public class BandStimuliProviderTest {
     public void testGetCurrentStimulusIndex() {
         System.out.println("getCurrentStimulusIndex");
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         int result = instance.getCurrentStimulusIndex();
@@ -511,12 +480,10 @@ public class BandStimuliProviderTest {
         System.out.println("nextStimulus");
         int increment = 0;
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
 
@@ -530,12 +497,12 @@ public class BandStimuliProviderTest {
     public void testDeriveNextFastTrackStimulus() {
         System.out.println("deriveNextFastTrackStimulus");
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
+        
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
+        
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         BookkeepingStimulus result = instance.deriveNextFastTrackStimulus();
@@ -549,12 +516,12 @@ public class BandStimuliProviderTest {
     public void testSetCurrentStimuliIndex() {
         System.out.println("setCurrentStimuliIndex");
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
+        
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
+        
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         this.instance.setCurrentStimuliIndex(0); // the method actually does nothing and not relevant for band stimuli
@@ -570,12 +537,12 @@ public class BandStimuliProviderTest {
         System.out.println("getCurrentStimulusUniqueId");
         System.out.println("setCurrentStimuliIndex");
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
+        
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
+        
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         try {
@@ -593,12 +560,12 @@ public class BandStimuliProviderTest {
     public void testGetHtmlStimuliReport() {
         System.out.println("getHtmlStimuliReport");
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
+        
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
+        
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         String result = this.instance.getHtmlStimuliReport();
@@ -612,12 +579,12 @@ public class BandStimuliProviderTest {
     public void testGetStimuliReport() {
         System.out.println("getStimuliReport");
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
+        
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
+        
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         Map<String, String> result = instance.getStimuliReport("");
@@ -631,12 +598,12 @@ public class BandStimuliProviderTest {
     public void testIsCorrectResponse() {
         System.out.println("isCorrectResponse");
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
+        
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
+        
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         try {
@@ -653,12 +620,12 @@ public class BandStimuliProviderTest {
     public void testTupleIsNotEmpty() {
         System.out.println("tupleIsNotEmpty");
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
+        
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
+        
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         assertFalse(this.instance.tupleIsNotEmpty());
@@ -671,12 +638,12 @@ public class BandStimuliProviderTest {
     public void testAllTupleIsCorrect() {
         System.out.println("allTupleIsCorrect");
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
+        
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
+        
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         // false positibe: the tuple is empty
@@ -724,12 +691,12 @@ public class BandStimuliProviderTest {
     public void testToBeContinuedLoopChecker() {
         System.out.println("toBeContinuedLoopChecker");
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
+        
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
+        
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
 
@@ -797,12 +764,12 @@ public class BandStimuliProviderTest {
         System.out.println("getStringSummary");
         
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
+        
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
+        
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         
@@ -827,15 +794,15 @@ public class BandStimuliProviderTest {
     public void testToString() {
         System.out.println("toString");
         this.instance.setnumberOfBands("40");
-        this.instance.settype("0");
+        
         this.instance.setfastTrackPresent("true");
         this.instance.setfineTuningFirstWrongOut("false");
         this.instance.setfineTuningTupleLength("4");
         this.instance.setfineTuningUpperBoundForCycles("2");
-        this.instance.setnumberOfSeries("2");
+        
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
-        String expResult="{type=0, numberOfBands=40, numberOfSeries=2, startBand=20, fineTuningTupleLength=4, fineTuningUpperBoundForCycles=2, fastTrackPresent=true, "
+        String expResult="{numberOfBands=40, startBand=20, fineTuningTupleLength=4, fineTuningUpperBoundForCycles=2, fastTrackPresent=true, "
                 + "fineTuningFirstWrongOut=false, bandScore=0, isCorrectCurrentResponse=null, currentBandIndex=19, totalStimuli=0, responseRecord=[], "
                 + "percentageBandTable={1=0, 10=4, 20=8, 30=12, 40=16, 50=20, 60=24, 70=28, 80=32, 90=36, 99=40}, tupleFT=[], "
                 + "bestBandFastTrack=0, isFastTrackIsStillOn=true, secondChanceFastTrackIsFired=false, timeTickEndFastTrack=0,"
@@ -852,9 +819,8 @@ public class BandStimuliProviderTest {
     @Test
     public void deserialisation() {
         System.out.println("toString");
-        String input = "{type=1, "
+        String input = "{"
                 + "numberOfBands=54, "
-                + "numberOfSeries=1, "
                 + "startBand=25, "
                 + "fineTuningTupleLength=4, "
                 + "fineTuningUpperBoundForCycles=3, "
@@ -884,9 +850,7 @@ public class BandStimuliProviderTest {
         
         this.instance.initialiseStimuliState(input);
         
-        assertEquals(new Integer(1),this.instance.gettype());
         assertEquals(54,this.instance.getnumberOfBands());
-        assertEquals(1,this.instance.getnumberOfSeries());
         assertEquals(25,this.instance.getstartBand());
         
         assertEquals(4,this.instance.getfineTuningTupleLength());

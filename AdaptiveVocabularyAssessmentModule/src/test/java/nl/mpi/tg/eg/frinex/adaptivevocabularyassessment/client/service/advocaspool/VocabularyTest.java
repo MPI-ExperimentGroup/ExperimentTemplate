@@ -18,9 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -36,7 +34,14 @@ import static org.junit.Assert.*;
 public class VocabularyTest {
 
     private final int numberOfBands = 54;
-    private final int wordsPerBand = 40;
+    private final String wordsSource1="Words_NL_1round";
+    private final String nonwordsSource1="NonWords_NL_1round";
+    private final String wordsSource21="Words_NL_2rounds_1";
+    private final String nonwordsSource21="NonWords_NL_2rounds_1";
+    private final String wordsSource22="Words_NL_2rounds_2";
+    private final String nonwordsSource22="NonWords_NL_2rounds_2";
+    private final String wordsResponse = "JA&#44; ik ken dit woord" ;
+    private final String nonwordsResponse ="NEE&#44; ik ken dit woord niet";
 
     public VocabularyTest() {
     }
@@ -61,13 +66,14 @@ public class VocabularyTest {
      * Test of initialiseWords method, of class Vocabulary.
      */
     @Test
-    public void testInitialiseWords1() {
+    public void testInitialiseWords1() throws Exception{
         System.out.println("initialiseWords-1");
-        int numberOfSeries = 1;
-        int wordsPerBandInSeries = this.wordsPerBand / numberOfSeries;
-        Vocabulary instance = new Vocabulary(this.wordsPerBand, wordsPerBandInSeries);
-        AdVocAsStimulus[][] wordsArray = Words_NL_1round.WORDS_SERIES[0];
-        ArrayList<ArrayList<AdVocAsStimulus>> words = instance.initialiseWords(wordsArray);
+        Vocabulary instance = new Vocabulary(this.numberOfBands, 40);
+        AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
+        reader.parseWordsInputCSVString(this.wordsSource1, this.numberOfBands, this.nonwordsResponse, this.wordsResponse);
+        ArrayList<ArrayList<AdVocAsStimulus>> rawWords = reader.getWords();
+
+        ArrayList<ArrayList<AdVocAsStimulus>> words = instance.initialiseWords(rawWords);
         assertEquals(this.numberOfBands, words.size());
         for (int i = 0; i < this.numberOfBands; i++) {
             ArrayList<String> spellings = new ArrayList<>(words.get(i).size());
@@ -75,8 +81,9 @@ public class VocabularyTest {
                 spellings.add(stimulus.getLabel());
                 assertEquals(i + 1, stimulus.getBandNumber());
             }
+            assertEquals(rawWords.get(i).size(), words.get(i).size());
             HashSet<String> set = new HashSet(spellings);
-            assertEquals(wordsArray[i].length, set.size()); // fails if there are repititions or permutation was incorrect
+            assertEquals(set.size(), spellings.size()); // fails if there are repititions or permutation was incorrect
         }
     }
 
@@ -84,13 +91,14 @@ public class VocabularyTest {
      * Test of initialiseWords method, of class Vocabulary.
      */
     @Test
-    public void testInitialiseWords2() {
-        System.out.println("initialiseWords-2");
-        int numberOfSeries = 2;
-        int wordsPerBandInSeries = this.wordsPerBand / numberOfSeries;
-        Vocabulary instance = new Vocabulary(this.wordsPerBand, wordsPerBandInSeries);
-        AdVocAsStimulus[][] wordsArray = Words_NL_2rounds_1.WORDS_SERIES[0];
-        ArrayList<ArrayList<AdVocAsStimulus>> words = instance.initialiseWords(wordsArray);
+    public void testInitialiseWords21() throws Exception{
+        System.out.println("initialiseWords-21");
+        Vocabulary instance = new Vocabulary(this.numberOfBands, 20);
+        AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
+        reader.parseWordsInputCSVString(this.wordsSource21, this.numberOfBands, this.nonwordsResponse, this.wordsResponse);
+        ArrayList<ArrayList<AdVocAsStimulus>> rawWords = reader.getWords();
+
+        ArrayList<ArrayList<AdVocAsStimulus>> words = instance.initialiseWords(rawWords);
         assertEquals(this.numberOfBands, words.size());
         for (int i = 0; i < this.numberOfBands; i++) {
             ArrayList<String> spellings = new ArrayList<>(words.get(i).size());
@@ -98,135 +106,66 @@ public class VocabularyTest {
                 spellings.add(stimulus.getLabel());
                 assertEquals(i + 1, stimulus.getBandNumber());
             }
+            assertEquals(rawWords.get(i).size(), words.get(i).size());
             HashSet<String> set = new HashSet(spellings);
-            assertEquals(wordsArray[i].length, set.size()); // fails if there are repititions or permutation was incorrect
+            assertEquals(set.size(), spellings.size()); // fails if there are repititions or permutation was incorrect
         }
     }
 
-    /**
-     * Test of initialiseNonwords method, of class Vocabulary.
-     */
-    @Test
-    public void testInitialiseNonwords1() {
-        System.out.println("initialiseNonwords-1");
-        int numberOfSeries = 1;
-        int wordsPerBandInSeries = this.wordsPerBand / numberOfSeries;
-        Vocabulary instance = new Vocabulary(this.wordsPerBand, wordsPerBandInSeries);
-        ArrayList<AdVocAsStimulus> nonwordstmp = new ArrayList<>();
-        AdVocAsStimulus[] nonwordsArray = NonWords_NL_1round.NONWORDS_SERIES[0];
-
-        nonwordstmp.addAll(Arrays.asList(nonwordsArray));
-        ArrayList<AdVocAsStimulus> nonwords = instance.initialiseNonwords(nonwordstmp);
-        ArrayList<String> spellings = new ArrayList<>(nonwords.size());
-        for (AdVocAsStimulus stimulus : nonwords) {
-            spellings.add(stimulus.getLabel());
-        }
-        HashSet<String> set = new HashSet(spellings);
-        assertEquals(nonwordsArray.length, set.size());
-
-        // checking if the Equality is implemented OK on Strings
-        ArrayList<String> testEqualityList = new ArrayList<>(2);
-        testEqualityList.add("ok");
-        testEqualityList.add("ok");
-        assertEquals(2, testEqualityList.size());
-        HashSet<String> testEqualitySet = new HashSet(testEqualityList);
-        assertEquals(1, testEqualitySet.size());
-
-    }
-
-    /**
-     * Test of initialiseNonwords method, of class Vocabulary.
-     */
-    @Test
-    public void testInitialiseNonwords2() {
-        System.out.println("initialiseNonwords-2");
-        int numberOfSeries = 2;
-        int wordsPerBandInSeries = this.wordsPerBand / numberOfSeries;
-        Vocabulary instance = new Vocabulary(this.wordsPerBand, wordsPerBandInSeries);
-        ArrayList<AdVocAsStimulus> nonwordstmp = new ArrayList<>();
-        AdVocAsStimulus[] nonwordsArray = NonWords_NL_2rounds_2.NONWORDS_SERIES[0];
-
-        nonwordstmp.addAll(Arrays.asList(nonwordsArray));
-        ArrayList<AdVocAsStimulus> nonwords = instance.initialiseNonwords(nonwordstmp);
-        ArrayList<String> spellings = new ArrayList<>(nonwords.size());
-        for (AdVocAsStimulus stimulus : nonwords) {
-            spellings.add(stimulus.getLabel());
-        }
-        HashSet<String> set = new HashSet(spellings);
-        assertEquals(nonwordsArray.length, set.size());
-
-        // checking if the Equality is implemented OK on Strings
-        ArrayList<String> testEqualityList = new ArrayList<>(2);
-        testEqualityList.add("ok");
-        testEqualityList.add("ok");
-        assertEquals(2, testEqualityList.size());
-        HashSet<String> testEqualitySet = new HashSet(testEqualityList);
-        assertEquals(1, testEqualitySet.size());
-
-    }
-
-    /**
-     * Test of getHashedStimuli method, of class Vocabulary.
-     */
-    @Test
-    public void testGetHashedStimuli() {
-        System.out.println("getHashedStimuli");
-        int numberOfSeries = 1;
-        int wordsPerBandInSeries = this.wordsPerBand / numberOfSeries;
-        Vocabulary instance = new Vocabulary(this.wordsPerBand, wordsPerBandInSeries);
-
-        ArrayList<AdVocAsStimulus> nonwordstmp = new ArrayList<>();
-        AdVocAsStimulus[] nonwordsArray = NonWords_NL_1round.NONWORDS_SERIES[0];
-        nonwordstmp.addAll(Arrays.asList(nonwordsArray));
-        ArrayList<AdVocAsStimulus> nonwords = instance.initialiseNonwords(nonwordstmp);
-
-        AdVocAsStimulus[][] wordsArray = Words_NL_1round.WORDS_SERIES[0];
-        ArrayList<ArrayList<AdVocAsStimulus>> words = instance.initialiseWords(wordsArray);
-
-        int size = this.numberOfBands * wordsArray[0].length + nonwordsArray.length;
-
-        LinkedHashMap<String, AdVocAsStimulus> result = instance.getHashedStimuli();
-        assertEquals(size, result.size());
-
-        for (int i = 0; i < this.numberOfBands; i++) {
-            for (AdVocAsStimulus stimulus : words.get(i)) {
-                assertEquals(stimulus, result.get(stimulus.getUniqueId()));
-            }
-        }
-
-        for (AdVocAsStimulus stimulus : nonwords) {
-            assertEquals(stimulus, result.get(stimulus.getUniqueId()));
-        }
-    }
-    
      /**
-     * Test of getHashedStimuli method, of class Vocabulary.
+     * Test of initialiseWords method, of class Vocabulary.
      */
     @Test
-    public void testHashStimuli() {
-        System.out.println("hashStimuli");
-        int numberOfSeries = 1;
-        int wordsPerBandInSeries = this.wordsPerBand / numberOfSeries;
-        Vocabulary instance = new Vocabulary(this.wordsPerBand, wordsPerBandInSeries);
+    public void testInitialiseWords22() throws Exception{
+        System.out.println("initialiseWords-22");
+        Vocabulary instance = new Vocabulary(this.numberOfBands, 20);
+        AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
+        reader.parseWordsInputCSVString(this.wordsSource22, this.numberOfBands, this.nonwordsResponse, this.wordsResponse);
+        ArrayList<ArrayList<AdVocAsStimulus>> rawWords = reader.getWords();
 
-        AdVocAsStimulus[] nonwordsArray = NonWords_NL_1round.NONWORDS_SERIES[0];
-        
-        AdVocAsStimulus[][] wordsArray = Words_NL_1round.WORDS_SERIES[0];
-
-        int size = this.numberOfBands * wordsArray[0].length + nonwordsArray.length;
-
-        LinkedHashMap<String, AdVocAsStimulus> result = instance.hashStimuli(wordsArray, nonwordsArray);
-        assertEquals(size, result.size());
-
+        ArrayList<ArrayList<AdVocAsStimulus>> words = instance.initialiseWords(rawWords);
+        assertEquals(this.numberOfBands, words.size());
         for (int i = 0; i < this.numberOfBands; i++) {
-            for (int j=0; j< wordsArray[i].length; j++) {
-                AdVocAsStimulus stimulus = wordsArray[i][j];
-                assertEquals(stimulus, result.get(stimulus.getUniqueId()));
+            ArrayList<String> spellings = new ArrayList<>(words.get(i).size());
+            for (AdVocAsStimulus stimulus : words.get(i)) {
+                spellings.add(stimulus.getLabel());
+                assertEquals(i + 1, stimulus.getBandNumber());
             }
-        }
-
-        for (int i = 0; i < nonwordsArray.length; i++) {
-            assertEquals(nonwordsArray[i], result.get(nonwordsArray[i].getUniqueId()));
+            assertEquals(rawWords.get(i).size(), words.get(i).size());
+            HashSet<String> set = new HashSet(spellings);
+            assertEquals(set.size(), spellings.size()); // fails if there are repititions or permutation was incorrect
         }
     }
+
+    /**
+     * Test of initialiseNonwords method, of class Vocabulary.
+     */
+    @Test
+    public void testInitialiseNonwords2() throws Exception{
+        System.out.println("initialiseNonwords-2");
+        Vocabulary instance = new Vocabulary(this.numberOfBands, 20);
+        AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
+        reader.parseNonWordsInputCSVString(this.nonwordsSource21, this.nonwordsResponse, this.wordsResponse);
+        ArrayList<AdVocAsStimulus> rawNonWords = reader.getNonwords();
+        
+        ArrayList<AdVocAsStimulus> nonwords = instance.initialiseNonwords(rawNonWords);
+        ArrayList<String> spellings = new ArrayList<>(nonwords.size());
+        for (AdVocAsStimulus stimulus : nonwords) {
+            spellings.add(stimulus.getLabel());
+        }
+        HashSet<String> set = new HashSet(spellings);
+        assertEquals(rawNonWords.size(), set.size());
+
+        // checking if the Equality is implemented OK on Strings
+        ArrayList<String> testEqualityList = new ArrayList<>(2);
+        testEqualityList.add("ok");
+        testEqualityList.add("ok");
+        assertEquals(2, testEqualityList.size());
+        HashSet<String> testEqualitySet = new HashSet(testEqualityList);
+        assertEquals(1, testEqualitySet.size());
+
+    }
+
+   
+   
 }
