@@ -23,10 +23,40 @@ package nl.mpi.tg.eg.experimentdesigner.model.wizard;
  */
 public class WizardUtilScreen {
 
+    protected WizardUtilText textScreen;
+
+    protected WizardUtilText agreementScreen;
+
+    protected WizardUtilSelectParticipant selectParticipantMenu;
+
     protected WizardUtilStimuliData stimuliData;
 
     protected String metadataText;
     protected String[] metadataFields;
+
+    public WizardUtilText getTextScreen() {
+        return textScreen;
+    }
+
+    public void setTextScreen(WizardUtilText textScreen) {
+        this.textScreen = textScreen;
+    }
+
+    public WizardUtilText getAgreementScreen() {
+        return agreementScreen;
+    }
+
+    public void setAgreementScreen(WizardUtilText agreementScreen) {
+        this.agreementScreen = agreementScreen;
+    }
+
+    public WizardUtilSelectParticipant getSelectParticipantMenu() {
+        return selectParticipantMenu;
+    }
+
+    public void setSelectParticipantMenu(WizardUtilSelectParticipant selectParticipantMenu) {
+        this.selectParticipantMenu = selectParticipantMenu;
+    }
 
     public WizardUtilStimuliData getStimuliData() {
         return stimuliData;
