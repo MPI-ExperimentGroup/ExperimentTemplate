@@ -78,8 +78,8 @@
         <targetButton featureText="Begin experiment" target="stimuliScreenV1"/>
     </presenter>
     <presenter displayOrder="4" type="stimulus" self="stimuliScreenV1" title="Series 1">
-        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider" type="0" eventTag="stimuliN" 
-                      numberOfSeries="2" numberOfBands="11" startBand="5" 
+        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider" eventTag="stimuliN" 
+                      numberOfBands="11" startBand="5" 
                       fineTuningTupleLength="4" fineTuningUpperBoundForCycles="2"
                       fastTrackPresent="false" fineTuningFirstWrongOut="false">
             <hasMoreStimulus>
@@ -166,8 +166,8 @@
         </loadStimulus>
     </presenter>
     <presenter displayOrder="6" type="stimulus" self="stimuliScreenV2" title="Series 2">
-        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider" type="1" eventTag="stimuliN" 
-                      numberOfSeries="2" numberOfBands="11" startBand="5" 
+        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider" eventTag="stimuliN" 
+                      numberOfBands="11" startBand="5" 
                       fineTuningTupleLength="4" fineTuningUpperBoundForCycles="2"
                       fastTrackPresent="false" fineTuningFirstWrongOut="false">
             <hasMoreStimulus>
