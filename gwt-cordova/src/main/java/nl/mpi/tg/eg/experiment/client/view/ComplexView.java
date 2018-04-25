@@ -286,7 +286,7 @@ public class ComplexView extends SimpleView {
         return nextButton;
     }
 
-    public void addRatingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons) {
+    public void addRatingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName) {
         final VerticalPanel verticalPanel = new VerticalPanel();
         final HorizontalPanel labelsPanel = new HorizontalPanel();
         if (ratingLabelLeft != null) {
@@ -300,7 +300,9 @@ public class ComplexView extends SimpleView {
         final HorizontalPanel buttonsPanel = new HorizontalPanel();
         for (PresenterEventListner listener : presenterListeners) {
             StimulusButton nextButton = getOptionButton(listener);
-            if (footerButtons) {
+            if (styleName != null && !styleName.isEmpty()) {
+                nextButton.addStyleName(styleName);
+            } else if (footerButtons) {
                 nextButton.addStyleName("footerButton");
             }
             buttonsPanel.add(nextButton.getWidget());
