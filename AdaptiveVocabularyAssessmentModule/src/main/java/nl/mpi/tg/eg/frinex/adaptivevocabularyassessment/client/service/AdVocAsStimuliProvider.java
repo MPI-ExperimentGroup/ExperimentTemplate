@@ -21,6 +21,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimuliProvider;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -33,7 +34,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.Bookkeepi
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.AdVocAsStimuliFromString;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.MapNameWrapperClass;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.SourcenameIndices;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
@@ -71,9 +72,9 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
 
             // specific part
             if (stimuliStateSnapshot.trim().isEmpty()) {
-                
-                this.wordsResponse = MapNameWrapperClass.RESPONSES_INDEX.get(this.wordsSource);
-                this.nonwordsResponse = MapNameWrapperClass.RESPONSES_INDEX.get(this.nonwordsSource);
+
+                this.wordsResponse = SourcenameIndices.RESPONSES_INDEX.get(this.wordsSource);
+                this.nonwordsResponse = SourcenameIndices.RESPONSES_INDEX.get(this.nonwordsSource);
 
                 AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
                 reader.parseWordsInputCSVString(this.wordsSource, this.nonwordsSource, this.numberOfBands);
@@ -119,8 +120,6 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
     public void setnonwordsSource(String nonwordsSource) {
         this.nonwordsSource = nonwordsSource;
     }
-    
- 
 
     public void setnonwordsPerBlock(String nonWrodsPerBlock) {
         this.nonWordsPerBlock = Integer.parseInt(nonWrodsPerBlock);
@@ -313,7 +312,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         for (int i = 0; i <= limit; i++) {
             BookkeepingStimulus<AdVocAsStimulus> stimulus = this.responseRecord.get(i);
             Integer bandNumber = stimulus.getStimulus().getBandNumber();
-            if (bandNumber < 0) {
+            if (bandNumber == 0) {
                 nonwordCounter++;
             }
             double frequency = ((double) nonwordCounter) / ((double) (i + 1));
@@ -322,7 +321,9 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
             String time = (new Date(stimulus.getTimeStamp())).toString();
             row.append(startColumn).append(stimulus.getStimulus().getLabel()).append(endColumn);
             row.append(startColumn).append(stimulus.getStimulus().getBandNumber()).append(endColumn);
-            row.append(startColumn).append(stimulus.getReaction()).append(endColumn);
+            String reaction = startRow.equals("<tr>") ? stimulus.getReaction() : stimulus.getReaction().replaceAll("&#44;",",");
+            
+            row.append(startColumn).append(reaction).append(endColumn);
             row.append(startColumn).append(stimulus.getCorrectness()).append(endColumn);
             row.append(startColumn).append(time).append(endColumn);
             row.append(startColumn).append(frequency).append(endColumn);
@@ -360,7 +361,8 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
 
             row.append(startColumn).append(stimulus.getStimulus().getLabel()).append(endColumn);
             row.append(startColumn).append(stimulus.getStimulus().getBandNumber()).append(endColumn);
-            row.append(startColumn).append(stimulus.getReaction()).append(endColumn);
+            String reaction = startRow.equals("<tr>") ? stimulus.getReaction() : stimulus.getReaction().replaceAll("&#44;",",");
+            row.append(startColumn).append(reaction).append(endColumn);
             row.append(startColumn).append(stimulus.getCorrectness()).append(endColumn);
             row.append(startColumn).append(time).append(endColumn);
             row.append(startColumn).append(i).append(endColumn);
@@ -398,17 +400,19 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
 
         ArrayList<BookkeepingStimulus<AdVocAsStimulus>> woorden = wordTables.get("words");
         ArrayList<BookkeepingStimulus<AdVocAsStimulus>> nietWoorden = wordTables.get("nonwords");
-        String experimenteeWordTable = this.getHtmlExperimenteeRecords(woorden, null, "Woorden");
-        String experimenteeNonWordTable = this.getHtmlExperimenteeRecords(nietWoorden, null, "Nep-woorden");
         String experimenteePositionDiagram = this.getHtmlExperimenteePositionDiagram();
 
-        htmlStringBuilder.append("<p>Overzicht van uw resultaten:</p>");
-        htmlStringBuilder.append("<p><small>(Scroll om volledig resultaten te bekijken als dat nodig is.)</small></p>");
-        htmlStringBuilder.append("<p>U kent ongeveer <big><big><b>").append(this.getPercentageScore()).append("</b></big></big> &#37; van alle Nederlandse woorden.</p>");
-
+        String lang = SourcenameIndices.LANGUAGE_INDEX.get(this.wordsSource);
+        
+        String overview = SourcenameIndices.getOverview(this.getPercentageScore(), lang);
+        htmlStringBuilder.append(overview);
+                
+        HashMap<String, String> wordListHeaders =  SourcenameIndices.getWordListHeaders(lang);
+      
+        String experimenteeWordTable = this.getHtmlExperimenteeRecords(woorden, null, wordListHeaders.get("headerWords"));
+        String experimenteeNonWordTable = this.getHtmlExperimenteeRecords(nietWoorden, null, wordListHeaders.get("headerNonWords"));
         String twoColumnTable = this.getHtmlTwoColumnTable(experimenteeWordTable, experimenteeNonWordTable);
-        String capture = "Groen=Correct herkend, Rood=Niet correct herkend";
-        String twoColumnTableWitCapture = this.getHtmlElementWithCapture(twoColumnTable, capture);
+        String twoColumnTableWitCapture = this.getHtmlElementWithCapture(twoColumnTable, wordListHeaders.get("capture"));
 
         htmlStringBuilder.append("<table><tr style=\"vertical-align: top;\"><td>");
         htmlStringBuilder.append(twoColumnTableWitCapture).append("</td>");
@@ -465,7 +469,9 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         LinkedHashMap<Long, String> content = this.generateDiagramSequence(this.responseRecord, this.percentageBandTable);
         //htmlStringBuilder.append("<table frame=\"box\">");
         htmlStringBuilder.append("<table>");
-        htmlStringBuilder.append("<tr><td>PERCENTAGE</td><td></td><td>VOORBEELD woord</td></tr>");
+        String lang = SourcenameIndices.LANGUAGE_INDEX.get(this.wordsSource);
+        String header = SourcenameIndices.diagramHelper(lang);
+        htmlStringBuilder.append(header);
         for (Long key : content.keySet()) {
             htmlStringBuilder.append("<tr>");
             String percent = key.toString();
@@ -617,16 +623,15 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         this.averageNonWordPosition = Integer.parseInt(map.get("averageNonWordPosition").toString());
 
         // reinitialise vocabulary
-        
         this.wordsSource = map.get("wordsSource").toString();
         this.nonwordsSource = map.get("nonwordsSource").toString();
-        this.wordsResponse = MapNameWrapperClass.RESPONSES_INDEX.get(this.wordsSource);
-        this.nonwordsResponse = MapNameWrapperClass.RESPONSES_INDEX.get(this.nonwordsSource);
+        this.wordsResponse = SourcenameIndices.RESPONSES_INDEX.get(this.wordsSource);
+        this.nonwordsResponse = SourcenameIndices.RESPONSES_INDEX.get(this.nonwordsSource);
 
         AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
         reader.parseWordsInputCSVString(this.wordsSource, this.nonwordsSource, this.numberOfBands);
         reader.parseNonWordsInputCSVString(this.nonwordsSource, this.wordsSource);
-        
+
         LinkedHashMap<String, AdVocAsStimulus> hashedStimuli = reader.getHashedStimuli();
 
         BookkeepingStimulus<AdVocAsStimulus> ghost = new BookkeepingStimulus<AdVocAsStimulus>(null);

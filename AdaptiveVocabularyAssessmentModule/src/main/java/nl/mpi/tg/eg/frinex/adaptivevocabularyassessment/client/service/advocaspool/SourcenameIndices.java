@@ -23,11 +23,12 @@ import java.util.HashMap;
  *
  * @author olhshk
  */
-public class MapNameWrapperClass {
+public class SourcenameIndices {
 
     public static final HashMap<String, CsvStringWrapper> STIMULI_FILES_INDEX;
     public static final HashMap<String, String> RESPONSES_INDEX;
-    
+    public static final HashMap<String, String> LANGUAGE_INDEX;
+
     static {
         STIMULI_FILES_INDEX = new HashMap<String, CsvStringWrapper>();
         STIMULI_FILES_INDEX.put("NonWords_EN_2rounds_1", new NonWords_EN_2rounds_1());
@@ -41,8 +42,7 @@ public class MapNameWrapperClass {
         STIMULI_FILES_INDEX.put("NonWords_NL_1round", new NonWords_NL_1round());
         STIMULI_FILES_INDEX.put("Words_NL_1round", new Words_NL_1round());
     }
-   
-    
+
     static {
         RESPONSES_INDEX = new HashMap<String, String>();
         RESPONSES_INDEX.put("NonWords_EN_2rounds_1", "NO&#44; I do not know the word.");
@@ -55,6 +55,71 @@ public class MapNameWrapperClass {
         RESPONSES_INDEX.put("Words_NL_2rounds_2", "JA&#44; ik ken dit woord");
         RESPONSES_INDEX.put("NonWords_NL_1round", "NEE&#44; ik ken dit woord niet");
         RESPONSES_INDEX.put("Words_NL_1round", "JA&#44; ik ken dit woord");
+    }
+
+    static {
+        LANGUAGE_INDEX = new HashMap<String, String>();
+        LANGUAGE_INDEX.put("NonWords_EN_2rounds_1", "EN");
+        LANGUAGE_INDEX.put("NonWords_EN_2rounds_2", "EN");
+        LANGUAGE_INDEX.put("Words_EN_2rounds_1", "EN");
+        LANGUAGE_INDEX.put("Words_EN_2rounds_2", "EN");
+        LANGUAGE_INDEX.put("NonWords_NL_2rounds_1", "NL");
+        LANGUAGE_INDEX.put("NonWords_NL_2rounds_2", "NL");
+        LANGUAGE_INDEX.put("Words_NL_2rounds_1", "NL");
+        LANGUAGE_INDEX.put("Words_NL_2rounds_2", "NL");
+        LANGUAGE_INDEX.put("NonWords_NL_1round", "NL");
+        LANGUAGE_INDEX.put("Words_NL_1round", "NL");
+    }
+
+    public static String getOverview(long percentage, String lang) {
+        StringBuilder htmlStringBuilder = new StringBuilder();
+        switch (lang) {
+            case "NL": {
+                htmlStringBuilder.append("<p>Overzicht van uw resultaten:</p>");
+                htmlStringBuilder.append("<p><small>(Scroll om volledig resultaten te bekijken als dat nodig is.)</small></p>");
+                htmlStringBuilder.append("<p>U kent ongeveer <big><big><b>").append(percentage).append("</b></big></big> &#37; van alle Nederlandse woorden.</p>");
+                break;
+            }
+            default: {
+                htmlStringBuilder.append("<p>Overview of your results:</p>");
+                htmlStringBuilder.append("<p><small>(Scroll to see the full report, when necessary.)</small></p>");
+                htmlStringBuilder.append("<p>You know approximately <big><big><b>").append(percentage).append("</b></big></big> &#37; of all English words.</p>");
+                break;
+            }
+        }
+        return htmlStringBuilder.toString();
+    }
+
+    public static HashMap<String, String> getWordListHeaders(String lang) {
+        HashMap<String, String> retVal = new HashMap<String, String>();
+
+        switch (lang) {
+            case "NL": {
+                retVal.put("capture", "Groen=Correct herkend, Rood=Niet correct herkend");
+                retVal.put("headerWords", "Woorden");
+                retVal.put("headerNonWords", "Nep-woorden");
+                break;
+            }
+            default: {
+                retVal.put("capture", "Green=Correctly recognised, Read=Wrongly recognised");
+                retVal.put("headerWords", "Words");
+                retVal.put("headerNonWords", "Fake words");
+                break;
+            }
+        }
+        return retVal;
+    }
+
+    public static String diagramHelper(String lang) {
+
+        switch (lang) {
+            case "NL": {
+                return "<tr><td>PERCENTAGE</td><td></td><td>VOORBEELD woord</td></tr>";
+            }
+            default: {
+                return "<tr><td>PERCENTAGE</td><td></td><td>EXAMPLE word</td></tr>";
+            }
+        }
     }
 
 }

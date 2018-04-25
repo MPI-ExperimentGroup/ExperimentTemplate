@@ -36,10 +36,10 @@ public class AdVocAsStimuliFromString {
   
     public void parseWordsInputCSVString(String classNameWord, String classNameNonWord, int numberOfBands) throws Exception {
         
-        String answerNonWord = MapNameWrapperClass.RESPONSES_INDEX.get(classNameNonWord);
-        String answerWord = MapNameWrapperClass.RESPONSES_INDEX.get(classNameWord);
+        String answerNonWord = SourcenameIndices.RESPONSES_INDEX.get(classNameNonWord);
+        String answerWord = SourcenameIndices.RESPONSES_INDEX.get(classNameWord);
         
-        String csvString = MapNameWrapperClass.STIMULI_FILES_INDEX.get(classNameWord).CSV_STRING;
+        String csvString = SourcenameIndices.STIMULI_FILES_INDEX.get(classNameWord).CSV_STRING;
         
         this.words = new ArrayList<ArrayList<AdVocAsStimulus>>();
         for (int i=0; i<numberOfBands; i++) {
@@ -77,10 +77,10 @@ public class AdVocAsStimuliFromString {
     
     public void parseNonWordsInputCSVString(String classNameNonWord, String classNameWord) throws Exception {
         
-        String answerNonWord = MapNameWrapperClass.RESPONSES_INDEX.get(classNameNonWord);
-        String answerWord = MapNameWrapperClass.RESPONSES_INDEX.get(classNameWord);
+        String answerNonWord = SourcenameIndices.RESPONSES_INDEX.get(classNameNonWord);
+        String answerWord = SourcenameIndices.RESPONSES_INDEX.get(classNameWord);
         
-        String csvString = MapNameWrapperClass.STIMULI_FILES_INDEX.get(classNameNonWord).CSV_STRING;
+        String csvString = SourcenameIndices.STIMULI_FILES_INDEX.get(classNameNonWord).CSV_STRING;
 
         this.nonwords = new ArrayList<AdVocAsStimulus>();
       

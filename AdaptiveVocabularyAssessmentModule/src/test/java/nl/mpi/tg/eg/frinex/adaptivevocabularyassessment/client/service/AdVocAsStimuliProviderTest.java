@@ -777,7 +777,9 @@ public class AdVocAsStimuliProviderTest {
         if (response3 == null) {
             throw new Exception("Wrong reaction");
         }
-
+        provider.isCorrectResponse(stimulus3, response3);
+        
+        
         boolean result3 = provider.hasNextStimulus(0);
         assertTrue(result3);
         // now current band represents the last cirrect band on the fast track
