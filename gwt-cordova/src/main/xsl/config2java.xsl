@@ -535,6 +535,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(local-name() eq 'ratingFooterButton' or local-name() eq 'ratingButton' or local-name() eq 'stimulusRatingButton') then concat(', &quot;', @ratingLabelRight, '&quot;') else ''" />
         <xsl:value-of select="if(@eventTier) then concat(', ', @eventTier) else ''" />
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
+        <xsl:value-of select="if(local-name() eq 'ratingFooterButton' or local-name() eq 'ratingButton' or local-name() eq 'stimulusRatingButton') then concat('&quot;', @styleName, '&quot;, ') else ''" />
         <xsl:apply-templates select="stimuli" mode="stimuliTags" />
         <xsl:apply-templates select="randomGrouping" mode="stimuliTags" />
         <xsl:text>);
