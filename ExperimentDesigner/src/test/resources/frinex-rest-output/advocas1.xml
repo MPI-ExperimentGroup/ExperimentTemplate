@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="Adaptive Vocabulary Assessment 1" appNameInternal="advocas1" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
     <preventWindowClose featureText="Bij reload worden ingetypte data verwiderd"/>
-<!--<experiment appNameDisplay="Adaptive Vocabulary Assessment" appNameInternal="advocas" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="false" textFontSize="17">-->
+    <!--<experiment appNameDisplay="Adaptive Vocabulary Assessment" appNameInternal="advocas" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="false" textFontSize="17">-->
     <metadata>
         <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Wat is je proefpersoonnummer?"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuli" preventServerDuplicates="false" registrationField="stimuli"/>
@@ -27,7 +27,8 @@ Veel succes!"/>
         <targetButton featureText="Begin experiment" target="stimuliScreen"/>
     </presenter>
     <presenter back="Edit_User" displayOrder="3" menuLabel="stimuliN" next="End" type="stimulus" self="stimuliScreen" title="">
-        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider"  type="0" eventTag="stimuliN">
+        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider"  eventTag="stimuliN" wordsSource="Words_NL_1round" 
+                      nonwordsSource="NonWords_NL_1round">
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
@@ -55,7 +56,7 @@ Veel succes!"/>
             <onSuccess>
                 <htmlText featureText="Einde van de taak. Dankjewel voor je deelname!"/>-->
                 <addPadding/>
-<!--                <generateCompletionCode/>-->
+                <!--                <generateCompletionCode/>-->
                 <addPadding/>
                 <eraseUsersDataButton featureText="Opnieuw beginnen"/>
             </onSuccess>
