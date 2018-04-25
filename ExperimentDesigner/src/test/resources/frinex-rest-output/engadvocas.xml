@@ -2,7 +2,7 @@
 <experiment appNameDisplay="Adaptive Vocabulary Assessment English" appNameInternal="engadvocas" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
     <preventWindowClose featureText="Bij reload worden ingetypte data verwiderd"/>
     <metadata>
-        <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="true" registrationField="What is you user ID?"/>
+        <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="true" registrationField="What is your participant ID?"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuli" preventServerDuplicates="true" registrationField="stimuli"/>
         <field controlledMessage="Input at least 3 letters." controlledRegex="['\\'S'\\'s]'{'3,'}'" postName="feedBack" preventServerDuplicates="true" registrationField=""/>
     </metadata>
@@ -16,43 +16,51 @@
         <addPadding/>
         <addPadding/>
         <addPadding/>
-        <htmlText featureText="Welcom at this vocabuary test!"/>
-        <addPadding/>
-        <addPadding/>
-        <targetButton featureText="To the experiment" target="Edit_User" />
-        <addPadding/>
-        <addPadding/>
-        <targetButton featureText="To the administration page" target="Admin" />
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <htmlText featureText="Welcom to this vocabuary test!"/>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <htmlText featureText="&#160;"/>
+                </column>
+            </row>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="To the experiment" target="Edit_User"/>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <htmlText featureText="&#160;"/>
+                </column>
+            </row>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="To the administration page" target="Admin"/>
+                </column>
+            </row>
+        </table>
     </presenter>
     <presenter displayOrder="2" menuLabel="Edit User" next="Accord" type="metadata" self="Edit_User" title="">
         <metadataField fieldName="workerId"/>
-        <saveMetadataButton featureText="Next" sendData="true" networkErrorMessage="&amp;nbsp;">
-            <onSuccess>   
-                <autoNextPresenter/>
-            </onSuccess>
-            <onError>   
-                <autoNextPresenter/>
-            </onError>      
-        </saveMetadataButton>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <saveMetadataButton featureText="Next step" sendData="true" networkErrorMessage="&amp;nbsp;">
+                        <onSuccess>   
+                            <autoNextPresenter/>
+                        </onSuccess>
+                        <onError>   
+                            <autoNextPresenter/>
+                        </onError>      
+                    </saveMetadataButton>
+                </column>
+            </row>
+        </table>
     </presenter>
-    <!--    <presenter displayOrder="2" menuLabel="Edit User" next="Accord" type="metadata" self="Edit_User" title="">
-        <metadataField fieldName="workerId"/>
-        <saveMetadataButton featureText="Volgende" sendData="false" networkErrorMessage="&amp;nbsp;">
-            <onSuccess>   
-                <sendMetadata>
-                    <onSuccess>
-                        <autoNextPresenter/>
-                    </onSuccess>
-                    <onError>
-                        <autoNextPresenter/>
-                    </onError>
-                </sendMetadata>                
-            </onSuccess>
-            <onError>   
-                <autoNextPresenter/>
-            </onError>      
-        </saveMetadataButton>
-    </presenter>-->
     <presenter displayOrder="3" next="stimuliScreenV1" type="metadata" self="Accord" title="" >
         <centrePage/>
         <htmlText featureText="&lt;b&gt;&lt;big&gt;Instructions&lt;/big&gt; &lt;/b&gt;"/>
@@ -68,7 +76,7 @@ By clicking a mouse, show for ay word if you know it or not."/>
         <htmlText featureText="&lt;img src=&quot;static/voorbeeld-kleiner.png&quot; style=&quot;border: DarkGray;border-width: 1; border-style: solid;&quot; /&gt;"/>
         <addPadding/>
         <addPadding/>
-        <htmlText featureText="&lt;b&gt;&lt;big&gt;Veel succes!&lt;/big&gt;&lt;/b&gt;"/>
+        <htmlText featureText="&lt;b&gt;&lt;big&gt;Good luck!&lt;/big&gt;&lt;/b&gt;"/>
         <addPadding/>
         <addPadding/>
         <targetButton featureText="Start experiment" target="stimuliScreenV1"/>
@@ -85,12 +93,13 @@ By clicking a mouse, show for ay word if you know it or not."/>
                 <centrePage/>
               
                 <!--                <showStimulusProgress/>-->
+             
                 <table styleName="stimulusContainerTab">
                     <row>
                         <column styleName="stimulusContainerCol"> 
                             <stimulusLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
+                            <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="" styleName="stimulusContainerCol">
                                 <nextStimulus repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </column>
@@ -143,9 +152,9 @@ By clicking a mouse, show for ay word if you know it or not."/>
                 <sendStimuliReport type="fast_track" separator=";" headerKey="row000000"/>
                 <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
                 <showStimuliReport/>
-                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <htmlText featureText="This is the end of this task. Thank you for you participation!"/>
                 <addPadding/>
-                <targetButton featureText="Naar de administratie pagina" target="Admin"/>
+                <targetButton featureText="To the administration page" target="Admin"/>
                 <addPadding/>
             </endOfStimulus>
             <randomGrouping/>
@@ -166,7 +175,7 @@ By clicking a mouse, show for ay word if you know it or not."/>
                         <targetButton featureText="To the administration page" target="Admin" />
                         <addPadding/>
                         <addPadding/>
-                        <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
+                        <createUserButton featureText="Strat from scratch (new user)" target="Menu"/>
                     </onSuccess>
                     <onError>
                         <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
@@ -175,7 +184,7 @@ By clicking a mouse, show for ay word if you know it or not."/>
                         <targetButton featureText="Retry" target="Admin"/>
                         <addPadding/>
                         <addPadding/>
-                        <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
+                        <createUserButton featureText="Start from scratch (new user)" target="Menu"/>
                     </onError>
                 </sendAllData>
             </onSuccess>
@@ -206,7 +215,7 @@ By clicking a mouse, show for ay word if you know it or not."/>
         <localStorageData/>
     </presenter>   
     <stimuli> 
-       <stimulus audioPath="" code="" identifier="example1" pauseMs="0" ratingLabels="stopped,continue" tag="set1">
-       </stimulus>            
-   </stimuli>
+        <stimulus audioPath="" code="" identifier="example1" pauseMs="0" ratingLabels="stopped,continue" tag="set1">
+        </stimulus>            
+    </stimuli>
 </experiment>
