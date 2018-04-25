@@ -62,11 +62,11 @@ public class VocabularyTest {
     public void tearDown() {
     }
 
-    private void testInitialiseWords(int numberOfBands, int wordsPerBand, String wordsSource, String wordsResponse, String nonwordsResponse) throws Exception {
+    private void testInitialiseWords(int numberOfBands, int wordsPerBand, String wordsSource, String nonwordsSource, String wordsResponse, String nonwordsResponse) throws Exception {
         System.out.println("initialiseWords: " + wordsSource);
         Vocabulary instance = new Vocabulary(numberOfBands, wordsPerBand);
         AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseWordsInputCSVString(wordsSource, numberOfBands, nonwordsResponse, wordsResponse);
+        reader.parseWordsInputCSVString(wordsSource, nonwordsSource, numberOfBands);
         ArrayList<ArrayList<AdVocAsStimulus>> rawWords = reader.getWords();
 
         ArrayList<ArrayList<AdVocAsStimulus>> words = instance.initialiseWords(rawWords);
@@ -92,7 +92,7 @@ public class VocabularyTest {
      */
     @Test
     public void testInitialiseWords1() throws Exception {
-        this.testInitialiseWords(this.numberOfBands_NL, this.wordsPerBand_NL, "Words_NL_1round", this.wordsResponse_NL, this.nonwordsResponse_NL);
+        this.testInitialiseWords(this.numberOfBands_NL, this.wordsPerBand_NL, "Words_NL_1round", "NonWords_NL_1round", this.wordsResponse_NL, this.nonwordsResponse_NL);
     }
 
     /**
@@ -100,7 +100,7 @@ public class VocabularyTest {
      */
     @Test
     public void testInitialiseWords21() throws Exception {
-        this.testInitialiseWords(this.numberOfBands_NL, this.wordsPerBand_NL / 2, "Words_NL_2rounds_1", this.wordsResponse_NL, this.nonwordsResponse_NL);
+        this.testInitialiseWords(this.numberOfBands_NL, this.wordsPerBand_NL / 2, "Words_NL_2rounds_1", "NonWords_NL_2rounds_1", this.wordsResponse_NL, this.nonwordsResponse_NL);
     }
 
     /**
@@ -108,7 +108,7 @@ public class VocabularyTest {
      */
     @Test
     public void testInitialiseWords22() throws Exception {
-        this.testInitialiseWords(this.numberOfBands_NL, this.wordsPerBand_NL / 2, "Words_NL_2rounds_2", this.wordsResponse_NL, this.nonwordsResponse_NL);
+        this.testInitialiseWords(this.numberOfBands_NL, this.wordsPerBand_NL / 2, "Words_NL_2rounds_2", "NonWords_NL_2rounds_2", this.wordsResponse_NL, this.nonwordsResponse_NL);
     }
 
     /**
@@ -116,7 +116,7 @@ public class VocabularyTest {
      */
     @Test
     public void testInitialiseWords21_EN() throws Exception {
-        this.testInitialiseWords(this.numberOfBands_EN, this.wordsPerBand_EN, "Words_EN_2rounds_1", this.wordsResponse_EN, this.nonwordsResponse_EN);
+        this.testInitialiseWords(this.numberOfBands_EN, this.wordsPerBand_EN, "Words_EN_2rounds_1",  "NonWords_EN_2rounds_1", this.wordsResponse_EN, this.nonwordsResponse_EN);
     }
 
     /**
@@ -124,17 +124,17 @@ public class VocabularyTest {
      */
     @Test
     public void testInitialiseWords22_EN() throws Exception {
-        this.testInitialiseWords(this.numberOfBands_EN, this.wordsPerBand_EN, "Words_EN_2rounds_2", this.wordsResponse_EN, this.nonwordsResponse_EN);
+        this.testInitialiseWords(this.numberOfBands_EN, this.wordsPerBand_EN, "Words_EN_2rounds_2", "NonWords_EN_2rounds_2", this.wordsResponse_EN, this.nonwordsResponse_EN);
     }
 
     /**
      * Test of initialiseNonwords method, of class Vocabulary.
      */
-    private void testInitialiseNonwords(String nonwordsSource, String wordsResponse, String nonwordsResponse) throws Exception {
+    private void testInitialiseNonwords(String nonwordsSource, String wordsSource, String wordsResponse, String nonwordsResponse) throws Exception {
         System.out.println("initialiseNonwords: " + nonwordsSource);
         Vocabulary instance = new Vocabulary(0, 0);
         AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseNonWordsInputCSVString(nonwordsSource, nonwordsResponse, wordsResponse);
+        reader.parseNonWordsInputCSVString(nonwordsSource, wordsSource);
         ArrayList<AdVocAsStimulus> rawNonWords = reader.getNonwords();
 
         ArrayList<AdVocAsStimulus> nonwords = instance.initialiseNonwords(rawNonWords);
@@ -164,27 +164,27 @@ public class VocabularyTest {
      */
     @Test
     public void testInitialiseNonWords21_NL() throws Exception {
-        this.testInitialiseNonwords("NonWords_NL_2rounds_1", this.wordsResponse_NL, this.nonwordsResponse_NL);
+        this.testInitialiseNonwords("NonWords_NL_2rounds_1", "Words_NL_2rounds_1", this.wordsResponse_NL, this.nonwordsResponse_NL);
     }
 
     @Test
     public void testInitialiseNonWords22_NL() throws Exception {
-        this.testInitialiseNonwords("NonWords_NL_2rounds_2", this.wordsResponse_NL, this.nonwordsResponse_NL);
+        this.testInitialiseNonwords("NonWords_NL_2rounds_2", "Words_NL_2rounds_2",this.wordsResponse_NL, this.nonwordsResponse_NL);
     }
 
     @Test
     public void testInitialiseNonWords1_NL() throws Exception {
-        this.testInitialiseNonwords("NonWords_NL_1round", this.wordsResponse_NL, this.nonwordsResponse_NL);
+        this.testInitialiseNonwords("NonWords_NL_1round", "Words_NL_1round", this.wordsResponse_NL, this.nonwordsResponse_NL);
     }
 
     @Test
     public void testInitialiseNonWords21_EN() throws Exception {
-        this.testInitialiseNonwords("NonWords_EN_2rounds_1", this.wordsResponse_EN, this.nonwordsResponse_EN);
+        this.testInitialiseNonwords("NonWords_EN_2rounds_1", "Words_EN_2rounds_1", this.wordsResponse_EN, this.nonwordsResponse_EN);
     }
 
     @Test
     public void testInitialiseNonWords22_EN() throws Exception {
-        this.testInitialiseNonwords("NonWords_EN_2rounds_2", this.wordsResponse_EN, this.nonwordsResponse_EN);
+        this.testInitialiseNonwords("NonWords_EN_2rounds_2", "Words_EN_2rounds_2", this.wordsResponse_EN, this.nonwordsResponse_EN);
     }
 
 }

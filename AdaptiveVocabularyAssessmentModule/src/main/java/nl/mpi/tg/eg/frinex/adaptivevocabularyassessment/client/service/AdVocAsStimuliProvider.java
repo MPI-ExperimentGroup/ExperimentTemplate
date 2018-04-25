@@ -33,6 +33,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.Bookkeepi
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.AdVocAsStimuliFromString;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.MapNameWrapperClass;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
@@ -42,7 +43,7 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus> {
 
     private final static String[] SPECIFIC_FLDS = {"rndIndexing", "nonWordsIndexes", "wordsPerBand", "nonWordsPerBlock",
-        "averageNonWordPosition", "responseRecord", "tupleFT", "words", "nonwords", "wordsSource", "nonwordsSource", "wordsResponse", "nonwordsResponse"};
+        "averageNonWordPosition", "responseRecord", "tupleFT", "words", "nonwords", "wordsSource", "nonwordsSource"};
     private RandomIndexing rndIndexing;
     private ArrayList<Integer> nonWordsIndexes;
     private int wordsPerBand;
@@ -70,10 +71,13 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
 
             // specific part
             if (stimuliStateSnapshot.trim().isEmpty()) {
+                
+                this.wordsResponse = MapNameWrapperClass.RESPONSES_INDEX.get(this.wordsSource);
+                this.nonwordsResponse = MapNameWrapperClass.RESPONSES_INDEX.get(this.nonwordsSource);
 
                 AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-                reader.parseWordsInputCSVString(this.wordsSource, this.numberOfBands, this.nonwordsResponse, this.wordsResponse);
-                reader.parseNonWordsInputCSVString(this.nonwordsSource, this.nonwordsResponse, this.wordsResponse);
+                reader.parseWordsInputCSVString(this.wordsSource, this.nonwordsSource, this.numberOfBands);
+                reader.parseNonWordsInputCSVString(this.nonwordsSource, this.wordsSource);
                 ArrayList<ArrayList<AdVocAsStimulus>> rawWords = reader.getWords();
                 ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
 
@@ -116,13 +120,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         this.nonwordsSource = nonwordsSource;
     }
     
-     public void setwordsResponse(String wordsResponse) {
-        this.wordsResponse = wordsResponse;
-    }
-
-    public void setnonwordsResponse(String nonwordsResponse) {
-        this.nonwordsResponse = nonwordsResponse;
-    }
+ 
 
     public void setnonwordsPerBlock(String nonWrodsPerBlock) {
         this.nonWordsPerBlock = Integer.parseInt(nonWrodsPerBlock);
@@ -601,8 +599,6 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         map.put("nonwords", this.nonwords);
         map.put("wordsSource", this.wordsSource);
         map.put("nonwordsSource", this.nonwordsSource);
-        map.put("wordsResponse", this.wordsResponse);
-        map.put("nonwordsResponse", this.nonwordsResponse);
         return map.toString();
     }
 
@@ -621,14 +617,15 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         this.averageNonWordPosition = Integer.parseInt(map.get("averageNonWordPosition").toString());
 
         // reinitialise vocabulary
-        this.wordsResponse = map.get("wordsResponse").toString();
-        this.nonwordsResponse = map.get("nonwordsResponse").toString();
-
+        
         this.wordsSource = map.get("wordsSource").toString();
         this.nonwordsSource = map.get("nonwordsSource").toString();
+        this.wordsResponse = MapNameWrapperClass.RESPONSES_INDEX.get(this.wordsSource);
+        this.nonwordsResponse = MapNameWrapperClass.RESPONSES_INDEX.get(this.nonwordsSource);
+
         AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseWordsInputCSVString(this.wordsSource, this.numberOfBands, this.nonwordsResponse, this.wordsResponse);
-        reader.parseNonWordsInputCSVString(this.nonwordsSource, this.nonwordsResponse, this.wordsResponse);
+        reader.parseWordsInputCSVString(this.wordsSource, this.nonwordsSource, this.numberOfBands);
+        reader.parseNonWordsInputCSVString(this.nonwordsSource, this.wordsSource);
         
         LinkedHashMap<String, AdVocAsStimulus> hashedStimuli = reader.getHashedStimuli();
 

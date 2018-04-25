@@ -18,7 +18,6 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.RandomIndexing;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
 
@@ -39,7 +38,7 @@ public class Vocabulary {
     // the sequence of words in each band should be randomly reshuffled any time we generate it
     // side effect: also adss stimuli to the hash map
     public ArrayList<ArrayList<AdVocAsStimulus>> initialiseWords(ArrayList<ArrayList<AdVocAsStimulus>> wrds) {
-        if (wrds == null || wrds.size() == 0) {
+        if (wrds == null || wrds.isEmpty()) {
             System.out.println("Empty array of words in bands");
             return new ArrayList<>();
         }

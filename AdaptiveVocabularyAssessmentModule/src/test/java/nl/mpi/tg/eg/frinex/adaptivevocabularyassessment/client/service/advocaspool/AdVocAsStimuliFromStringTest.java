@@ -41,8 +41,8 @@ public class AdVocAsStimuliFromStringTest {
     
     private final int wordsPerBandNL = 20;
     private final int numberOfBandsNL = 54;
-    private String answerWordNL = "JA&#44; ik ken dit woord" ;
-    private String answerNonWordNL ="NEE&#44; ik ken dit woord niet";
+    private final String answerWordNL = "JA&#44; ik ken dit woord" ;
+    private final String answerNonWordNL ="NEE&#44; ik ken dit woord niet";
     private final int nNonwordsNL = 676;
     
     public AdVocAsStimuliFromStringTest() {
@@ -65,10 +65,10 @@ public class AdVocAsStimuliFromStringTest {
     }
 
    
-    private void testParseWordsInputCSVString(String className, String firstWord, String lastWord, String answerNonWord, String answerWord, int numberOfBands, int wordsPerBand) throws Exception {
-        System.out.println("parseWordsInputCSVString: "+className);
+    private void testParseWordsInputCSVString(String classNameWord, String classNameNonWord, String firstWord, String lastWord, String answerNonWord, String answerWord, int numberOfBands, int wordsPerBand) throws Exception {
+        System.out.println("parseWordsInputCSVString: "+classNameWord);
         AdVocAsStimuliFromString instance = new AdVocAsStimuliFromString();
-        instance.parseWordsInputCSVString(className, numberOfBands, answerNonWord, answerWord);
+        instance.parseWordsInputCSVString(classNameWord, classNameNonWord, numberOfBands);
         ArrayList<ArrayList<AdVocAsStimulus>> words = instance.getWords();
         ArrayList<String> uniqueIds = new  ArrayList<String>();
         for (int i=0; i<numberOfBands; i++) {
@@ -90,38 +90,38 @@ public class AdVocAsStimuliFromStringTest {
     
     @Test
     public void testParseWordsInputCSVString_EN_21() throws Exception{
-       this.testParseWordsInputCSVString("Words_EN_2rounds_1", "alternative", "scorbutic", this.answerNonWordEn, this.answerWordEn, this.numberOfBandsEn, this.wordsPerBandEn);
+       this.testParseWordsInputCSVString("Words_EN_2rounds_1", "NonWords_EN_2rounds_1", "alternative", "scorbutic", this.answerNonWordEn, this.answerWordEn, this.numberOfBandsEn, this.wordsPerBandEn);
     }
     
      @Test
     public void testParseWordsInputCSVString_EN_22() throws Exception{
-       this.testParseWordsInputCSVString("Words_EN_2rounds_2", "annoying", "whitleather", this.answerNonWordEn, this.answerWordEn, this.numberOfBandsEn, this.wordsPerBandEn);
+       this.testParseWordsInputCSVString("Words_EN_2rounds_2", "NonWords_EN_2rounds_2", "annoying", "whitleather", this.answerNonWordEn, this.answerWordEn, this.numberOfBandsEn, this.wordsPerBandEn);
     }
     
      @Test
     public void testParseWordsInputCSVString_NL_21() throws Exception{
-       this.testParseWordsInputCSVString("Words_NL_2rounds_1", "vaak", "fijfel", this.answerNonWordNL, this.answerWordNL, this.numberOfBandsNL, this.wordsPerBandNL);
+       this.testParseWordsInputCSVString("Words_NL_2rounds_1", "NonWords_NL_2rounds_1", "vaak", "fijfel", this.answerNonWordNL, this.answerWordNL, this.numberOfBandsNL, this.wordsPerBandNL);
     }
     
     @Test
     public void testParseWordsInputCSVString_NL_22() throws Exception{
-       this.testParseWordsInputCSVString("Words_NL_2rounds_2", "schuilnaam", "kebon", this.answerNonWordNL, this.answerWordNL, this.numberOfBandsNL, this.wordsPerBandNL);
+       this.testParseWordsInputCSVString("Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "schuilnaam", "kebon", this.answerNonWordNL, this.answerWordNL, this.numberOfBandsNL, this.wordsPerBandNL);
     }
     
     
     @Test
     public void testParseWordsInputCSVString_NL_1() throws Exception{
-       this.testParseWordsInputCSVString("Words_NL_1round", "vaak", "kebon", this.answerNonWordNL, this.answerWordNL, this.numberOfBandsNL, this.wordsPerBandNL*2);
+       this.testParseWordsInputCSVString("Words_NL_1round", "NonWords_NL_1round", "vaak", "kebon", this.answerNonWordNL, this.answerWordNL, this.numberOfBandsNL, this.wordsPerBandNL*2);
     }
     
 
     /**
      * Test of parseNonWordsInputCSVString method, of class AdVocAsStimuliFromString.
      */
-    private void testParseNonWordsInputCSVString(String className, String firstNonword, String lastNonword, String answerNonWord, String answerWord, int nNonwords) throws Exception {
-        System.out.println("parseNonWordsInputCSVString: "+className);
+    private void testParseNonWordsInputCSVString(String classNameNonWord, String classNameWord, String firstNonword, String lastNonword, String answerNonWord, String answerWord, int nNonwords) throws Exception {
+        System.out.println("parseNonWordsInputCSVString: "+classNameNonWord);
         AdVocAsStimuliFromString instance = new AdVocAsStimuliFromString();
-        instance.parseNonWordsInputCSVString(className, answerNonWord, answerWord);
+        instance.parseNonWordsInputCSVString(classNameNonWord, classNameWord);
         ArrayList<AdVocAsStimulus> nonwords = instance.getNonwords();
         ArrayList<String> uniqueIds = new  ArrayList<String>();
         for (int i=0; i<nNonwords; i++) {
@@ -143,26 +143,26 @@ public class AdVocAsStimuliFromStringTest {
 
    @Test
     public void testParseNonWordsInputCSVString_EN_21() throws Exception{
-       this.testParseNonWordsInputCSVString("NonWords_EN_2rounds_1", "abhothness", "ivomprofication", this.answerNonWordEn, this.answerWordEn, this.nNonwordsEN);
+       this.testParseNonWordsInputCSVString("NonWords_EN_2rounds_1", "Words_EN_2rounds_1", "abhothness", "ivomprofication", this.answerNonWordEn, this.answerWordEn, this.nNonwordsEN);
     }
     
     @Test
     public void testParseNonWordsInputCSVString_EN_22() throws Exception{
-       this.testParseNonWordsInputCSVString("NonWords_EN_2rounds_2", "jalmer", "zomel", this.answerNonWordEn, this.answerWordEn, this.nNonwordsEN);
+       this.testParseNonWordsInputCSVString("NonWords_EN_2rounds_2", "Words_EN_2rounds_2","jalmer", "zomel", this.answerNonWordEn, this.answerWordEn, this.nNonwordsEN);
     }
     
     @Test
     public void testParseNonWordsInputCSVString_NL_21() throws Exception{
-       this.testParseNonWordsInputCSVString("NonWords_NL_2rounds_1", "kruffen", "ankentement", this.answerNonWordEn, this.answerWordEn, this.nNonwordsNL);
+       this.testParseNonWordsInputCSVString("NonWords_NL_2rounds_1", "Words_NL_2rounds_1","kruffen", "ankentement", this.answerNonWordNL, this.answerWordNL, this.nNonwordsNL);
     }
     
     @Test
     public void testParseNonWordsInputCSVString_NL_22() throws Exception{
-       this.testParseNonWordsInputCSVString("NonWords_NL_2rounds_2", "pretebentie", "berrillelijk", this.answerNonWordEn, this.answerWordEn, this.nNonwordsNL);
+       this.testParseNonWordsInputCSVString("NonWords_NL_2rounds_2", "Words_NL_2rounds_2","pretebentie", "berrillelijk", this.answerNonWordNL, this.answerWordNL, this.nNonwordsNL);
     }
     
     @Test
     public void testParseNonWordsInputCSVString_NL_1() throws Exception{
-       this.testParseNonWordsInputCSVString("NonWords_NL_1round", "kruffen", "berrillelijk", this.answerNonWordEn, this.answerWordEn, this.nNonwordsNL*2);
+       this.testParseNonWordsInputCSVString("NonWords_NL_1round", "Words_NL_1round", "kruffen", "berrillelijk", this.answerNonWordNL, this.answerWordNL, this.nNonwordsNL*2);
     }
 }

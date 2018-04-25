@@ -38,8 +38,6 @@ public class AdVocAsStimulusTest {
     private final int numberOfBands = 54;
     private final String wordsSource="Words_NL_1round";
     private final String nonwordsSource="NonWords_NL_1round";
-    private final String wordsResponse = "JA&#44; ik ken dit woord" ;
-    private final String nonwordsResponse ="NEE&#44; ik ken dit woord niet";
 
     private final Vocabulary vocab;
     private final ArrayList<AdVocAsStimulus> nonwords;
@@ -49,8 +47,8 @@ public class AdVocAsStimulusTest {
         
         this.vocab = new Vocabulary(this.numberOfBands, this.wordsPerBand);
         AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseWordsInputCSVString(this.wordsSource, this.numberOfBands, this.nonwordsResponse, this.wordsResponse);
-        reader.parseNonWordsInputCSVString(this.nonwordsSource, this.nonwordsResponse, this.wordsResponse);
+        reader.parseWordsInputCSVString(this.wordsSource, this.nonwordsSource, this.numberOfBands);
+        reader.parseNonWordsInputCSVString(this.nonwordsSource, this.wordsSource);
         ArrayList<ArrayList<AdVocAsStimulus>> rawWords = reader.getWords();
         ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
         assertTrue(rawWords.size()>0);

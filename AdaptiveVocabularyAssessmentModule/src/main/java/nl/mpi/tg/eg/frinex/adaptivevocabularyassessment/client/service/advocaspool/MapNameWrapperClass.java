@@ -26,6 +26,8 @@ import java.util.HashMap;
 public class MapNameWrapperClass {
 
     public static final HashMap<String, CsvStringWrapper> STIMULI_FILES_INDEX;
+    public static final HashMap<String, String> RESPONSES_INDEX;
+    
     static {
         STIMULI_FILES_INDEX = new HashMap<String, CsvStringWrapper>();
         STIMULI_FILES_INDEX.put("NonWords_EN_2rounds_1", new NonWords_EN_2rounds_1());
@@ -39,7 +41,20 @@ public class MapNameWrapperClass {
         STIMULI_FILES_INDEX.put("NonWords_NL_1round", new NonWords_NL_1round());
         STIMULI_FILES_INDEX.put("Words_NL_1round", new Words_NL_1round());
     }
-
-  
+   
+    
+    static {
+        RESPONSES_INDEX = new HashMap<String, String>();
+        RESPONSES_INDEX.put("NonWords_EN_2rounds_1", "NO&#44; I do not know the word.");
+        RESPONSES_INDEX.put("NonWords_EN_2rounds_2", "NO&#44; I do not know the word.");
+        RESPONSES_INDEX.put("Words_EN_2rounds_1", "YES&#44; I know the word.");
+        RESPONSES_INDEX.put("Words_EN_2rounds_2", "YES&#44; I know the word.");
+        RESPONSES_INDEX.put("NonWords_NL_2rounds_1", "NEE&#44; ik ken dit woord niet");
+        RESPONSES_INDEX.put("NonWords_NL_2rounds_2", "NEE&#44; ik ken dit woord niet");
+        RESPONSES_INDEX.put("Words_NL_2rounds_1", "JA&#44; ik ken dit woord");
+        RESPONSES_INDEX.put("Words_NL_2rounds_2", "JA&#44; ik ken dit woord");
+        RESPONSES_INDEX.put("NonWords_NL_1round", "NEE&#44; ik ken dit woord niet");
+        RESPONSES_INDEX.put("Words_NL_1round", "JA&#44; ik ken dit woord");
+    }
 
 }
