@@ -33,8 +33,8 @@ import static org.junit.Assert.*;
  */
 public class AdVocAsStimuliFromStringTest {
     
-    private final String answerWordEn="YES&#44; I know the word.";
-    private final String answerNonWordEn="NO&#44; I do not know the word.";
+    private final String answerWordEn="YES&#44; I know this word";
+    private final String answerNonWordEn="NO&#44; I don’t know this word";
     private final int numberOfBandsEn = 62;
     private final int wordsPerBandEn =20;
     private final int nNonwordsEN= 1240 /2;

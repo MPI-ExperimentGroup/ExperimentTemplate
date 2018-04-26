@@ -45,10 +45,10 @@ public class SourcenameIndices {
 
     static {
         RESPONSES_INDEX = new HashMap<String, String>();
-        RESPONSES_INDEX.put("NonWords_EN_2rounds_1", "NO&#44; I do not know the word.");
-        RESPONSES_INDEX.put("NonWords_EN_2rounds_2", "NO&#44; I do not know the word.");
-        RESPONSES_INDEX.put("Words_EN_2rounds_1", "YES&#44; I know the word.");
-        RESPONSES_INDEX.put("Words_EN_2rounds_2", "YES&#44; I know the word.");
+        RESPONSES_INDEX.put("NonWords_EN_2rounds_1", "NO&#44; I don’t know this word");
+        RESPONSES_INDEX.put("NonWords_EN_2rounds_2", "NO&#44; I don’t know this word");
+        RESPONSES_INDEX.put("Words_EN_2rounds_1", "YES&#44; I know this word");
+        RESPONSES_INDEX.put("Words_EN_2rounds_2", "YES&#44; I know this word");
         RESPONSES_INDEX.put("NonWords_NL_2rounds_1", "NEE&#44; ik ken dit woord niet");
         RESPONSES_INDEX.put("NonWords_NL_2rounds_2", "NEE&#44; ik ken dit woord niet");
         RESPONSES_INDEX.put("Words_NL_2rounds_1", "JA&#44; ik ken dit woord");
@@ -81,9 +81,8 @@ public class SourcenameIndices {
                 break;
             }
             default: {
-                htmlStringBuilder.append("<p>Overview of your results:</p>");
-                htmlStringBuilder.append("<p><small>(Scroll to see the full report, when necessary.)</small></p>");
-                htmlStringBuilder.append("<p>You know approximately <big><big><b>").append(percentage).append("</b></big></big> &#37; of all English words.</p>");
+                htmlStringBuilder.append("<p>Overview of your results.</p>");
+                htmlStringBuilder.append("<p>You know about <big><big><b>").append(percentage).append("</b></big></big> &#37; of all English words</p>");
                 break;
             }
         }
@@ -103,7 +102,7 @@ public class SourcenameIndices {
             default: {
                 retVal.put("capture", "Green=Correctly recognised, Read=Wrongly recognised");
                 retVal.put("headerWords", "Words");
-                retVal.put("headerNonWords", "Fake words");
+                retVal.put("headerNonWords", "Non-words");
                 break;
             }
         }

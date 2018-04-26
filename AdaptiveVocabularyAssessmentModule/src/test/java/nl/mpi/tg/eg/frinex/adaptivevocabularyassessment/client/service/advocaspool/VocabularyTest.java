@@ -40,8 +40,8 @@ public class VocabularyTest {
 
     private final int numberOfBands_EN = 62;
     private final int wordsPerBand_EN = 20;
-    private final String wordsResponse_EN = "YES&#44; I know the word.";
-    private final String nonwordsResponse_EN = "NO&#44; I do not know the word.";
+    private final String wordsResponse_EN = "YES&#44; I know this word";
+    private final String nonwordsResponse_EN = "NO&#44; I don’t know this word";
 
     public VocabularyTest() {
     }
