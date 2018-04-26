@@ -19,7 +19,7 @@
         <table>
             <row>
                 <column styleName="stimulusContainerCol">
-                    <htmlText featureText="Welcom to this vocabuary test!"/>
+                    <htmlText featureText="Welcome to this vocabulary test!"/>
                 </column>
             </row>
             <row>
