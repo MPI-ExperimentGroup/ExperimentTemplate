@@ -2,14 +2,14 @@
 <experiment appNameDisplay="Adaptive Vocabulary Assessment English" appNameInternal="engadvocas" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
     <preventWindowClose featureText="Bij reload worden ingetypte data verwiderd"/>
     <metadata>
-        <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="true" registrationField="What is your participant ID?"/>
+        <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="true" registrationField="Please provide a (nick)name"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuli" preventServerDuplicates="true" registrationField="stimuli"/>
         <field controlledMessage="Input at least 3 letters." controlledRegex="['\\'S'\\'s]'{'3,'}'" postName="feedBack" preventServerDuplicates="true" registrationField=""/>
     </metadata>
     <presenter displayOrder="1" menuLabel="Menu" type="menu" self="Menu" title="Menu">
         <centrePage/>
         <addPadding/>
-        <htmlText featureText="&lt;div style=&quot;width:100&#37;&quot; &gt; &lt;img src=&quot;static/logo-max.png&quot; align=&quot;left&quot; /&gt; &lt;img src=&quot;static/logo-lil.png&quot; align=&quot;right&quot;/&gt; &lt;/div&gt;"/>
+        <htmlText featureText="&lt;div style=&quot;width:100&#37;&quot; &gt; &lt;img src=&quot;/static/stimuli/logo-max.png&quot; align=&quot;left&quot; /&gt; &lt;img src=&quot;/static/stimuli/logo-lil.png&quot; align=&quot;right&quot;/&gt; &lt;/div&gt;"/>
         <addPadding/>
         <addPadding/>
         <addPadding/>
@@ -19,7 +19,7 @@
         <table>
             <row>
                 <column styleName="stimulusContainerCol">
-                    <htmlText featureText="Welcome to this vocabulary test!"/>
+                    <htmlText featureText="Welcome to this vocabulary test."/>
                 </column>
             </row>
             <row>
@@ -29,17 +29,12 @@
             </row>
             <row>
                 <column styleName="stimulusContainerCol">
-                    <targetButton featureText="To the experiment" target="Edit_User"/>
+                    <targetButton featureText="Start the experiment" target="Edit_User"/>
                 </column>
             </row>
             <row>
                 <column>
                     <htmlText featureText="&#160;"/>
-                </column>
-            </row>
-            <row>
-                <column styleName="stimulusContainerCol">
-                    <targetButton featureText="To the administration page" target="Admin"/>
                 </column>
             </row>
         </table>
@@ -49,7 +44,7 @@
         <table>
             <row>
                 <column styleName="stimulusContainerCol">
-                    <saveMetadataButton featureText="Next step" sendData="true" networkErrorMessage="&amp;nbsp;">
+                    <saveMetadataButton featureText="Next" sendData="true" networkErrorMessage="&amp;nbsp;">
                         <onSuccess>   
                             <autoNextPresenter/>
                         </onSuccess>
@@ -66,26 +61,20 @@
         <htmlText featureText="&lt;b&gt;&lt;big&gt;Instructions&lt;/big&gt; &lt;/b&gt;"/>
         <addPadding/>
         <addPadding/>
-        <htmlText featureText="In this experiment you will be proposed a certain collection of words.&lt;br/&gt;
-Some of them are existing English words and some of them are fake words.&lt;br/&gt;
-By clicking a mouse, show for ay word if you know it or not."/>
+        <htmlText featureText="In this experiment you will be shown a number of words. 
+Some words are existing English words and some are made-up non-words.
+Indicate for each word with a mouse click whether it is a word you know or not."/>
         <addPadding/>
         <addPadding/>
         <htmlText featureText="&lt;b&gt;&lt;big&gt;Example:&lt;/big&gt;&lt;/b&gt;"/>
         <addPadding/>
-        <htmlText featureText="&lt;img src=&quot;static/example.png&quot; style=&quot;width: 75%; border: DarkGray;border-width: 1; border-style: solid;&quot; /&gt;"/>
+        <htmlText featureText="&lt;img src=&quot;/static/stimuli/example.png&quot; style=&quot;width: 60%; border: DarkGray;border-width: 1; border-style: solid; background-color: #f2f2f2;&quot; /&gt;"/>
         <addPadding/>
         <addPadding/>
         <htmlText featureText="&lt;b&gt;&lt;big&gt;Good luck!&lt;/big&gt;&lt;/b&gt;"/>
         <addPadding/>
         <addPadding/>
-        <table>
-            <row>
-                <column styleName="stimulusContainerCol">
-                    <targetButton featureText="Start experiment" target="stimuliScreenV1"/>
-                </column> 
-            </row>
-        </table>
+        <targetButton featureText="Start experiment" target="stimuliScreenV1"/>
     </presenter>
     <presenter displayOrder="4" type="stimulus" self="stimuliScreenV1" title="Series 1">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider" eventTag="stimuliN" 
@@ -114,14 +103,14 @@ By clicking a mouse, show for ay word if you know it or not."/>
             </hasMoreStimulus>
             <endOfStimulus>
                 <centrePage/>
-                <targetButton featureText="Well done! Now there will be the second round. Click on the button to continue. Success!" target="stimuliScreenV2"/>
+                <targetButton featureText="Well done. Now the second round will start. Click on the button to continue. Good luck!" target="stimuliScreenV2"/>
                 <addPadding/>
                 <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
                 <sendStimuliReport type="fast_track" separator=";" headerKey="row000000"/>
                 <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
                 <showStimuliReport/>
                 <addPadding/>
-                <targetButton featureText="Well done! Now there will be the second round. Click on the button to continue. Success!" target="stimuliScreenV2"/>
+                <targetButton featureText="Well done. Now the second round will start. Click on the button to continue. Good luck!" target="stimuliScreenV2"/>
                 <addPadding/>
             </endOfStimulus>
             <randomGrouping/>
@@ -152,7 +141,7 @@ By clicking a mouse, show for ay word if you know it or not."/>
             </hasMoreStimulus>
             <endOfStimulus>
                 <centrePage/>
-                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <htmlText featureText="This is the end of this task. Thank you for you participation!"/>
                 <addPadding/>
                 <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
                 <sendStimuliReport type="fast_track" separator=";" headerKey="row000000"/>
@@ -171,17 +160,14 @@ By clicking a mouse, show for ay word if you know it or not."/>
         <sendMetadata>
             <onSuccess> 
                 <sendAllData>
-                    <onSuccess>
-                        <htmlText featureText="The participant's data are uploaded to the server"/>
+                    <onSuccess><addPadding/>
                         <addPadding/>
                         <addPadding/>
-                        <eraseUsersDataButton featureText="Remove the user's data from the browser" target="ListParticipants" />
+                        <addPadding/>
+                        <createUserButton featureText="Start over" target="Menu"/>
                         <addPadding/>
                         <addPadding/>
-                        <targetButton featureText="To the administration page" target="Admin" />
-                        <addPadding/>
-                        <addPadding/>
-                        <createUserButton featureText="Strat from scratch (new user)" target="Menu"/>
+                        <targetButton featureText="Upload data (if i-net connection was broken)" target="Admin" />
                     </onSuccess>
                     <onError>
                         <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
@@ -190,7 +176,10 @@ By clicking a mouse, show for ay word if you know it or not."/>
                         <targetButton featureText="Retry" target="Admin"/>
                         <addPadding/>
                         <addPadding/>
-                        <createUserButton featureText="Start from scratch (new user)" target="Menu"/>
+                        <createUserButton featureText="Start over" target="Menu"/>
+                        <addPadding/>
+                        <addPadding/>
+                        <eraseUsersDataButton featureText="Remove the user's data from the browser" target="ListParticipants" />
                     </onError>
                 </sendAllData>
             </onSuccess>
@@ -201,7 +190,7 @@ By clicking a mouse, show for ay word if you know it or not."/>
                 <targetButton featureText="Retry" target="Admin"/>
                 <addPadding/>
                 <addPadding/>
-                <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
+                <createUserButton featureText="Start over" target="Menu"/>
             </onError>      
         </sendMetadata>
     </presenter>
