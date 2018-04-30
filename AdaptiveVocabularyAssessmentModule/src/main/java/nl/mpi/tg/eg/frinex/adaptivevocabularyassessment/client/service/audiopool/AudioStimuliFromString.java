@@ -19,7 +19,6 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopoo
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.CsvRecords;
@@ -37,10 +36,9 @@ public class AudioStimuliFromString {
 
     private final LinkedHashMap<String, AudioAsStimulus> hashedStimuli = new LinkedHashMap<String, AudioAsStimulus>();
     private LinkedHashMap<Integer, Trial> trials = new LinkedHashMap<Integer, Trial>();
-    private LinkedHashMap<String, Integer> stimuliTrialIndex = new LinkedHashMap<String, Integer>();
+    private final LinkedHashMap<String, Integer> stimuliTrialIndex = new LinkedHashMap<String, Integer>();
 
-    private String audiPathDir = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/audioas2/stimuli/";
-
+    //private String audiPathDir = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/audioas2/stimuli/";
     private String removeFileNameExtensions(String fileName, ArrayList<String> nameExtensions) {
 
         for (String nameExtension : nameExtensions) {
@@ -55,7 +53,7 @@ public class AudioStimuliFromString {
     }
 
     //Nr;Word;Target_nonword;Syllables;Condition;Length_list;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Noise_level;Position_foil;
-    private LinkedHashMap<Integer, Trial> parseTrialsInputCSVStringIntoTrialsArray(String csvString, ArrayList<String> fileNameExtensions, HashMap<String, String> bandIndexing) throws Exception {
+    private LinkedHashMap<Integer, Trial> parseTrialsInputCSVStringIntoTrialsArray(String csvString, ArrayList<String> fileNameExtensions) throws Exception {
 
         LinkedHashMap<Integer, Trial> retVal = new LinkedHashMap<Integer, Trial>();
 
@@ -71,9 +69,8 @@ public class AudioStimuliFromString {
             if (trialNumber == null) {
                 throw new IOException(trialNumber + "is undefined");
             }
-            
+
             Integer trialID = Integer.parseInt(trialNumber);
-                
 
             String trialWord = record.get("Word").trim();
             if (trialWord == null) {
@@ -136,7 +133,7 @@ public class AudioStimuliFromString {
                 throw new IOException(bandLabel + "is undefined");
             }
 
-            int bandIndex = Integer.parseInt(bandIndexing.get(bandLabel));
+            int bandIndex = Indices.BAND_LABEL_TO_INDEX.get(bandLabel);
 
             ArrayList<BookkeepingStimulus<AudioAsStimulus>> stimuli = new ArrayList<BookkeepingStimulus<AudioAsStimulus>>();
 
@@ -145,19 +142,19 @@ public class AudioStimuliFromString {
                 //AudioAsStimulus(String uniqueId, Stimulus.Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath,
                 //             String ratingLabels, String correctResponses, String bandLabel, int bandIndex, WordType wordType, int posInTrial)
                 String wrd = removeFileNameExtensions(words.get(i), fileNameExtensions);
-                String suffix = "_in_"+trialCondition;
+                String suffix = "_in_" + trialCondition;
                 int pauseMs = 900;
                 WordType wordType;
                 String ratingLabels = "";
                 String locationInDir;
                 if (i == 0) {
-                    suffix = suffix + "_clear_mono_for_"+bandLabel;
+                    suffix = suffix + "_clear_mono_for_" + bandLabel;
                     wordType = WordType.EXAMPLE_TARGET_NON_WORD;
                     ratingLabels = null;
                     locationInDir = "clear_mono/" + wrd;
                 } else {
-                    suffix = suffix + "_"+bandLabel;
-                    locationInDir =  bandLabel + "/" + wrd;
+                    suffix = suffix + "_" + bandLabel;
+                    locationInDir = Indices.BAND_LABEL_TO_DIRNAME.get(bandLabel) + "/" + wrd + "_" + Indices.BAND_LABEL_TO_INTEGER.get(bandLabel);
                     if (trialPositionTargetInt == i) {
                         wordType = WordType.TARGET_NON_WORD;
                     } else {
@@ -168,18 +165,16 @@ public class AudioStimuliFromString {
                         }
                     }
                 }
-                
-                
-                String audioPath = "static/stimuli/"+locationInDir;
-                String uniqueId = wrd + "_" +wordType + suffix;
-                AudioAsStimulus stimulus =new AudioAsStimulus(uniqueId, new Tag[0], wrd, "", pauseMs, audioPath, null, null, ratingLabels, "", bandLabel, bandIndex, wordType, i);
+
+                String audioPath = "static/stimuli/" + locationInDir;
+                String uniqueId = wrd + "_" + wordType + suffix;
+                AudioAsStimulus stimulus = new AudioAsStimulus(uniqueId, new Tag[0], wrd, "", pauseMs, audioPath, null, null, ratingLabels, "", bandLabel, bandIndex, wordType, i);
                 this.hashedStimuli.put(uniqueId, stimulus);
-                
+
                 this.stimuliTrialIndex.put(uniqueId, trialID);
 
                 BookkeepingStimulus<AudioAsStimulus> bStimulus = new BookkeepingStimulus<AudioAsStimulus>(stimulus);
                 stimuli.add(bStimulus);
-                
 
                 //sanity check if the files exist
 //                String wav = locationInDir+".wav";
@@ -231,25 +226,21 @@ public class AudioStimuliFromString {
         return retVal;
     }
 
-    public void readTrialsAsCsv(String[] labelling) {
+    public void readTrialsAsCsv() {
         this.trials = new LinkedHashMap<Integer, Trial>();
-        HashMap<String, String> bandIndexing = new HashMap<String, String>();
-        for (int i = 0; i < labelling.length; i++) {
-            bandIndexing.put(labelling[i], (new Integer(i)).toString());
-        }
         try {
             ArrayList<String> fileNameExtensions = new ArrayList<String>(1);
             fileNameExtensions.add("wav");
             System.out.println("Portion 1");
-            this.trials = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv1.CSV_CONTENT, fileNameExtensions, bandIndexing);
+            this.trials = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv1.CSV_CONTENT, fileNameExtensions);
             System.out.println("Portion 2");
-            LinkedHashMap<Integer, Trial> trials2 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv2.CSV_CONTENT, fileNameExtensions, bandIndexing);
+            LinkedHashMap<Integer, Trial> trials2 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv2.CSV_CONTENT, fileNameExtensions);
             System.out.println("Portion 3");
-            LinkedHashMap<Integer, Trial> trials3 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv3.CSV_CONTENT, fileNameExtensions, bandIndexing);
+            LinkedHashMap<Integer, Trial> trials3 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv3.CSV_CONTENT, fileNameExtensions);
             System.out.println("Portion 4");
-            LinkedHashMap<Integer, Trial> trials4 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv4.CSV_CONTENT, fileNameExtensions, bandIndexing);
+            LinkedHashMap<Integer, Trial> trials4 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv4.CSV_CONTENT, fileNameExtensions);
             System.out.println("Portion 5");
-            LinkedHashMap<Integer, Trial> trials5 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv5.CSV_CONTENT, fileNameExtensions, bandIndexing);
+            LinkedHashMap<Integer, Trial> trials5 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv5.CSV_CONTENT, fileNameExtensions);
 
             this.trials.putAll(trials2);
             this.trials.putAll(trials3);
@@ -267,8 +258,9 @@ public class AudioStimuliFromString {
     public LinkedHashMap<Integer, Trial> getHashedTrials() {
         return this.trials;
     }
-    
+
     public LinkedHashMap<String, Integer> getStimuliTrialIndex() {
         return this.stimuliTrialIndex;
     }
+
 }

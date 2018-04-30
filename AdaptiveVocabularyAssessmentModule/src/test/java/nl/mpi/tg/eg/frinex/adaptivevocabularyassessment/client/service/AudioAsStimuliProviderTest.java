@@ -41,7 +41,7 @@ public class AudioAsStimuliProviderTest {
     private AudioAsStimuliProvider instance;
     private final int startBand = 5;
     private final int tupleSize = 4;
-    private final int numberOfBands = 11;
+    private final int numberOfBands = 12;
 
     public AudioAsStimuliProviderTest() {
     }
@@ -77,7 +77,7 @@ public class AudioAsStimuliProviderTest {
         System.out.println("initialiseStimuliState");
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
-        assertEquals(11, this.instance.getnumberOfBands());
+        assertEquals(this.numberOfBands, this.instance.getnumberOfBands());
 
         TrialTuple currentTrialTuple = this.instance.getCurrentTrialTuple();
 

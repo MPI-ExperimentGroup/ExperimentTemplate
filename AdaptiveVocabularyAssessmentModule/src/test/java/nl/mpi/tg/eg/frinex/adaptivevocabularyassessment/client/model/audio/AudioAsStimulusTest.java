@@ -20,7 +20,6 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopool.AudioStimuliFromString;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -44,7 +43,7 @@ public class AudioAsStimulusTest {
     
     public AudioAsStimulusTest() {
         
-        this.reader.readTrialsAsCsv(AudioAsStimuliProvider.LABELLING);
+        this.reader.readTrialsAsCsv();
         this.trials = this.reader.getHashedTrials();
         this.stimuli = trials.get(1).getStimuli();
         this.instance1 = this.stimuli.get(0).getStimulus();

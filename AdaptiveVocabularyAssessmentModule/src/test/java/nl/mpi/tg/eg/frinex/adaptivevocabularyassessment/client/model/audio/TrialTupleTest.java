@@ -22,7 +22,6 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopool.AudioStimuliFromString;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -51,7 +50,7 @@ public class TrialTupleTest {
     private TrialTuple instance;
     
     public TrialTupleTest() {
-        this.reader.readTrialsAsCsv(AudioAsStimuliProvider.LABELLING);
+        this.reader.readTrialsAsCsv();
         this.hashedTrials = this.reader.getHashedTrials();
         this.trial1 = this.hashedTrials.get(1);
         this.trial2 = this.hashedTrials.get(107);
@@ -133,7 +132,7 @@ public class TrialTupleTest {
     @Test
     public void testIsNotEmpty() {
         System.out.println("isNotEmpty");
-        int allTogetherStimuli = 3 + 5 + 6 + 4 + 1+1+1+1;
+        int allTogetherStimuli = 3 + 4 + 6 + 4 + 1+1+1+1;
         for (int count = 1; count <= allTogetherStimuli; count++) {
             assertTrue(this.instance.isNotEmpty());
             this.instance.getFirstNonusedTrial().getStimuli().remove(0);
@@ -165,7 +164,7 @@ public class TrialTupleTest {
     public void testGetNumberOfStimuli() {
         System.out.println("getNumberOfStimuli");
         int result = this.instance.getNumberOfStimuli();
-        int allTogetherStimuli = 3 + 5 + 6 + 4 + 1+1+1+1;
+        int allTogetherStimuli = 3 + 4 + 6 + 4 + 1+1+1+1;
         assertEquals(allTogetherStimuli, result);
     }
 

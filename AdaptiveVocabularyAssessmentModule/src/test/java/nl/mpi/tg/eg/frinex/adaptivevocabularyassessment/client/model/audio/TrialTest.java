@@ -20,8 +20,8 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopool.AudioStimuliFromString;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopool.Indices;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -37,15 +37,15 @@ public class TrialTest {
 
     private final AudioStimuliFromString reader = new AudioStimuliFromString();
     private final LinkedHashMap<Integer, Trial> hashedTrials;
-     // "1;vloer;smoer_1.wav;1;Target-only;3 words;deebral.wav;smoer_2.wav;wijp.wav;;;;2;plus10db;0;";
+    // "1;vloer;smoer_1.wav;1;Target-only;3 words;deebral.wav;smoer_2.wav;wijp.wav;;;;2;plus10db;0;";
     private final Trial trial1;
     // "1683;hand;kem_1.wav;1;Target+Foil;5 words;guil.wav;kedlim.wav;sorbuin.wav;kem_2.wav;vep.wav;;4;min6db;2;";
     private final Trial trial2;
-     // "2156;wol;pra.wav;1;NoTarget;6 words;reuwel.wav;wog.wav;consmilp.wav;leskert.wav;mels.wav;dwaat.wav;0;min10db;0;";
+    // "2156;wol;pra.wav;1;NoTarget;6 words;reuwel.wav;wog.wav;consmilp.wav;leskert.wav;mels.wav;dwaat.wav;0;min10db;0;";
     private final Trial trial3;
-    
+
     public TrialTest() {
-        this.reader.readTrialsAsCsv(AudioAsStimuliProvider.LABELLING);
+        this.reader.readTrialsAsCsv();
         this.hashedTrials = this.reader.getHashedTrials();
         this.trial1 = this.hashedTrials.get(1);
         this.trial2 = this.hashedTrials.get(1683);
@@ -112,7 +112,7 @@ public class TrialTest {
     @Test
     public void testGetBandIndex() {
         System.out.println("getBandIndex");
-        assertEquals(0,this.trial1.getBandIndex());
+        assertEquals(0, this.trial1.getBandIndex());
         assertEquals(8, this.trial2.getBandIndex());
         assertEquals(10, this.trial3.getBandIndex());
     }
@@ -167,9 +167,9 @@ public class TrialTest {
         assertEquals(3, this.trial1.getTrialLength());
         assertEquals(5, this.trial2.getTrialLength());
         assertEquals(6, this.trial3.getTrialLength());
-        
-        for (int i=1; i<=this.hashedTrials.size(); i++) {
-            assertTrue(this.hashedTrials.get(i).getTrialLength()>=1);
+
+        for (int i = 1; i <= this.hashedTrials.size(); i++) {
+            assertTrue(this.hashedTrials.get(i).getTrialLength() >= 1);
         }
     }
 
@@ -181,39 +181,41 @@ public class TrialTest {
         System.out.println("getStimuli");
         // "1683;hand;kem_1.wav;1;Target+Foil;5 words;guil.wav;kedlim.wav;sorbuin.wav;kem_2.wav;vep.wav;;4;min6db;2;";
         ArrayList<BookkeepingStimulus<AudioAsStimulus>> result = this.trial2.getStimuli();
-        assertEquals(1+this.trial2.getTrialLength(), result.size());
+        assertEquals(1 + this.trial2.getTrialLength(), result.size());
         assertEquals("kem_1", result.get(0).getStimulus().getLabel());
         assertEquals("guil", result.get(1).getStimulus().getLabel());
         assertEquals("kedlim", result.get(2).getStimulus().getLabel());
         assertEquals("sorbuin", result.get(3).getStimulus().getLabel());
         assertEquals("kem_2", result.get(4).getStimulus().getLabel());
-        assertEquals("vep", result.get(5).getStimulus().getLabel()); 
-        
+        assertEquals("vep", result.get(5).getStimulus().getLabel());
+
         assertEquals("static/stimuli/clear_mono/kem_1", result.get(0).getStimulus().getAudio());
-        assertEquals("static/stimuli/"+this.trial2.getBandLabel()+"/guil", result.get(1).getStimulus().getAudio());
-        assertEquals("static/stimuli/"+this.trial2.getBandLabel()+"/kedlim", result.get(2).getStimulus().getAudio());
-        assertEquals("static/stimuli/"+this.trial2.getBandLabel()+"/sorbuin", result.get(3).getStimulus().getAudio());
-        assertEquals("static/stimuli/"+this.trial2.getBandLabel()+"/kem_2", result.get(4).getStimulus().getAudio());
-        assertEquals("static/stimuli/"+this.trial2.getBandLabel()+"/vep", result.get(5).getStimulus().getAudio()); 
-        
-        
-        
-        assertEquals(1+this.trial1.getTrialLength(), this.trial1.getStimuli().size());
+        assertEquals("static/stimuli/" + Indices.BAND_LABEL_TO_DIRNAME.get(this.trial2.getBandLabel()) + "/guil_-6", result.get(1).getStimulus().getAudio());
+        assertEquals("static/stimuli/" + Indices.BAND_LABEL_TO_DIRNAME.get(this.trial2.getBandLabel()) + "/kedlim_-6", result.get(2).getStimulus().getAudio());
+        assertEquals("static/stimuli/" + Indices.BAND_LABEL_TO_DIRNAME.get(this.trial2.getBandLabel()) + "/sorbuin_-6", result.get(3).getStimulus().getAudio());
+        assertEquals("static/stimuli/" + Indices.BAND_LABEL_TO_DIRNAME.get(this.trial2.getBandLabel()) + "/kem_2_-6", result.get(4).getStimulus().getAudio());
+        assertEquals("static/stimuli/" + Indices.BAND_LABEL_TO_DIRNAME.get(this.trial2.getBandLabel()) + "/vep_-6", result.get(5).getStimulus().getAudio());
+
+        assertEquals(1 + this.trial1.getTrialLength(), this.trial1.getStimuli().size());
         AudioAsStimulus cue = this.trial1.getStimuli().get(0).getStimulus();
-        assertEquals("static/stimuli/clear_mono/"+cue.getLabel(), cue.getAudio()); 
-        for (int i=1; i<this.trial1.getStimuli().size();i++){
-           AudioAsStimulus stimulus = this.trial1.getStimuli().get(i).getStimulus();
-           assertEquals("static/stimuli/"+this.trial1.getBandLabel()+"/"+stimulus.getLabel(), stimulus.getAudio()); 
+        assertEquals("static/stimuli/clear_mono/" + cue.getLabel(), cue.getAudio());
+        for (int i = 1; i < this.trial1.getStimuli().size(); i++) {
+            AudioAsStimulus stimulus = this.trial1.getStimuli().get(i).getStimulus();
+            String bandLabel = this.trial1.getBandLabel();
+            String filename = stimulus.getLabel() + "_" + Indices.BAND_LABEL_TO_INTEGER.get(bandLabel);
+            assertEquals("static/stimuli/" + Indices.BAND_LABEL_TO_DIRNAME.get(bandLabel) + "/" + filename, stimulus.getAudio());
         }
-        
-        assertEquals(1+this.trial3.getTrialLength(), this.trial3.getStimuli().size());
+
+        assertEquals(1 + this.trial3.getTrialLength(), this.trial3.getStimuli().size());
         AudioAsStimulus cue3 = this.trial3.getStimuli().get(0).getStimulus();
-        assertEquals("static/stimuli/clear_mono/"+cue3.getLabel(), cue3.getAudio()); 
-        for (int i=1; i<this.trial3.getStimuli().size();i++){
-           AudioAsStimulus stimulus = this.trial3.getStimuli().get(i).getStimulus();
-           assertEquals("static/stimuli/"+this.trial3.getBandLabel()+"/"+stimulus.getLabel(), stimulus.getAudio()); 
+        assertEquals("static/stimuli/clear_mono/" + cue3.getLabel(), cue3.getAudio());
+        for (int i = 1; i < this.trial3.getStimuli().size(); i++) {
+            AudioAsStimulus stimulus = this.trial3.getStimuli().get(i).getStimulus();
+            String bandLabel = this.trial3.getBandLabel();
+            String filename = stimulus.getLabel() + "_" + Indices.BAND_LABEL_TO_INTEGER.get(bandLabel);
+            assertEquals("static/stimuli/" + Indices.BAND_LABEL_TO_DIRNAME.get(bandLabel) + "/" + filename, stimulus.getAudio());
         }
-        
+
     }
 
     /**
@@ -222,12 +224,11 @@ public class TrialTest {
     @Test
     public void testGetId() {
         System.out.println("getId");
-        for (int i=1; i<=this.hashedTrials.size(); i++) {
+        for (int i = 1; i <= this.hashedTrials.size(); i++) {
             assertEquals(i, this.hashedTrials.get(i).getId());
         }
     }
 
-   
     /**
      * Test of getPositionTarget method, of class Trial.
      */
@@ -250,55 +251,51 @@ public class TrialTest {
         assertEquals(0, this.trial3.getPositionFoil());
     }
 
- 
-   
-      /**
+    /**
      * Test of prepareTrialMatrix method, of class Trial.
      */
     @Test
     public void testPrepareTrialMatrix() {
         System.out.println("prepareTrialMatrix");
-        int numberOfBands = 11;
+        int numberOfBands = 12;
         int maxTrialLength = 6;
         ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> result = Trial.prepareTrialMatrix(this.hashedTrials, numberOfBands, maxTrialLength);
-        int count =0;
-        for (int i=0; i<numberOfBands; i++) {
+        int count = 0;
+        for (int i = 0; i < numberOfBands; i++) {
             ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>> trialInBand = result.get(i);
-            
-            assertEquals(0,trialInBand.get(0).get(TrialCondition.NO_TARGET).size()); // there must be no trails of length 0
-            assertEquals(0,trialInBand.get(0).get(TrialCondition.TARGET_AND_FOIL).size());
-            assertEquals(0,trialInBand.get(0).get(TrialCondition.TARGET_ONLY).size());
-            
-            for (int j=0; j<trialInBand.size(); j++) {
+
+            assertEquals(0, trialInBand.get(0).get(TrialCondition.NO_TARGET).size()); // there must be no trails of length 0
+            assertEquals(0, trialInBand.get(0).get(TrialCondition.TARGET_AND_FOIL).size());
+            assertEquals(0, trialInBand.get(0).get(TrialCondition.TARGET_ONLY).size());
+
+            for (int j = 0; j < trialInBand.size(); j++) {
                 LinkedHashMap<TrialCondition, ArrayList<Trial>> trailInBandOfLength = trialInBand.get(j);
                 assertEquals(TrialCondition.values().length, trailInBandOfLength.size());
-                for (TrialCondition tc: TrialCondition.values()) {
-                     ArrayList<Trial> trialslOfCondition = trailInBandOfLength.get(tc);
-                     for (Trial trial: trialslOfCondition) {
-                         count++;
-                         assertEquals(i, trial.getBandIndex());
-                         assertEquals(AudioAsStimuliProvider.LABELLING[i], trial.getBandLabel());
-                         assertEquals(j, trial.getTrialLength());
-                         assertEquals(tc, trial.getCondition());
-                     }
+                for (TrialCondition tc : TrialCondition.values()) {
+                    ArrayList<Trial> trialslOfCondition = trailInBandOfLength.get(tc);
+                    for (Trial trial : trialslOfCondition) {
+                        count++;
+                        assertEquals(i, trial.getBandIndex());
+                        assertEquals(new Integer(i), Indices.BAND_LABEL_TO_INDEX.get(trial.getBandLabel()));
+                        assertEquals(j, trial.getTrialLength());
+                        assertEquals(tc, trial.getCondition());
+                    }
                 }
             }
         }
-         assertEquals(count, this.hashedTrials.size());
+        assertEquals(count, this.hashedTrials.size());
     }
-    
-     /**
+
+    /**
      * Test of toString method, of class Trial.
      */
     @Test
     public void testToString() {
         System.out.println("toString");
-        for (int i=1; i<=this.hashedTrials.size();i++){
-           Integer id = this.hashedTrials.get(i).getId();
-           assertEquals(id.toString(), this.hashedTrials.get(i).toString()); 
+        for (int i = 1; i <= this.hashedTrials.size(); i++) {
+            Integer id = this.hashedTrials.get(i).getId();
+            assertEquals(id.toString(), this.hashedTrials.get(i).toString());
         }
     }
 
-   
-   
 }

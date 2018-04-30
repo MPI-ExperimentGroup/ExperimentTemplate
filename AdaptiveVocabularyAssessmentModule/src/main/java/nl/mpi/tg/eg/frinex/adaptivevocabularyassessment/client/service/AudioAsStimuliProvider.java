@@ -47,8 +47,6 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     private final static String[] SPECIFIC_FLDS = {"availableCombinations", "currentTrialTuple", "responseRecord"};
 
     // requirements, possible moving to config
-    // do not need serialisation, as it stays the same in any state
-    public static String[] LABELLING = {"plus10db", "plus8db", "plus6db", "plus4db", "plus2db", "zerodb", "min2db", "min4db", "min6db", "min8db", "min10db"};
     private final ArrayList<Integer> requiredLengths = new ArrayList<Integer>(Arrays.asList(3, 4, 5, 6));
     private final int maxTrialLength = 6;
     private final ArrayList<TrialCondition> requiredTrialTypes = new ArrayList<TrialCondition>(Arrays.asList(TrialCondition.TARGET_ONLY, TrialCondition.TARGET_AND_FOIL, TrialCondition.NO_TARGET, TrialCondition.NO_TARGET));
@@ -81,7 +79,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             ArrayList<ArrayList<Integer>> trialLengtPermutations = utilSizes.generatePermutations(this.requiredLengths);
 
             this.reader = new AudioStimuliFromString();
-            this.reader.readTrialsAsCsv(LABELLING);
+            this.reader.readTrialsAsCsv();
             this.trials = Trial.prepareTrialMatrix(this.reader.getHashedTrials(), this.numberOfBands, this.maxTrialLength);
 
             this.availableCombinations = PermutationPair.initialiseAvailabilityList(this.trials, trialLengtPermutations, trialTypesPermutations, this.numberOfBands);
@@ -113,7 +111,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         this.currentTrialTuple = this.createTupleForBand(combinations);
 
         if (this.currentTrialTuple == null) {
-            this.errorMessage = "There is no trial tuples left satisfying the specification, for the band " + LABELLING[this.currentBandIndex];
+            this.errorMessage = "There is no trial tuples left satisfying the specification, for the band with index (see indexing file for consult) "+this.currentBandIndex;
             return false;
         } else {
             // now remove permutation-pairs which have emptied list of trials 
@@ -299,7 +297,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     @Override
     protected void deserialiseSpecific(String str) throws Exception {
 
-        this.reader.readTrialsAsCsv(LABELLING);
+        this.reader.readTrialsAsCsv();
         this.trials = Trial.prepareTrialMatrix(reader.getHashedTrials(), this.numberOfBands, this.maxTrialLength);
 
         Map<String, Object> map = UtilsJSONdialect.stringToObjectMap(str, SPECIFIC_FLDS);
