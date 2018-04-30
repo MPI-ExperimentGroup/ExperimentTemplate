@@ -79,7 +79,7 @@
     </presenter>
     <presenter displayOrder="4" type="stimulus" self="stimuliScreenV1" title="Series 1">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider" eventTag="stimuliN" 
-                      numberOfBands="11" startBand="5" 
+                      numberOfBands="12" startBand="5" 
                       fineTuningTupleLength="4" fineTuningUpperBoundForCycles="2"
                       fastTrackPresent="false" fineTuningFirstWrongOut="false">
             <hasMoreStimulus>
@@ -167,7 +167,7 @@
     </presenter>
     <presenter displayOrder="6" type="stimulus" self="stimuliScreenV2" title="Series 2">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider" eventTag="stimuliN" 
-                      numberOfBands="11" startBand="5" 
+                      numberOfBands="12" startBand="5" 
                       fineTuningTupleLength="4" fineTuningUpperBoundForCycles="2"
                       fastTrackPresent="false" fineTuningFirstWrongOut="false">
             <hasMoreStimulus>
