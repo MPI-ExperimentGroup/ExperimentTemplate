@@ -418,7 +418,6 @@ public class Parcours extends WizardUtilData {
         "setnr_107/cond_c/list_c:Joep is in de kelder aan het rommelen.<br/>Jolijne vraagt: wat ben je daar beneden aan het doen?<br/>Joep zegt: ik ben eventjes op zoek naar de",
         "setnr_108/cond_c/list_c:Rutger werkt als restaurateur en is al een tijd bezig aan een groot project.<br/>Margriet vraagt: hoe ziet het er nu uit?<br/>Rutger zegt: je kunt momenteel nog steeds de beschadigingen op de"};
 
-
     @Override
     public String getFeedbackScreenText() {
         return null;
@@ -440,11 +439,11 @@ public class Parcours extends WizardUtilData {
     public WizardUtilScreen[] getScreenData() {
         return new WizardUtilScreen[]{new WizardUtilScreen() {
             @Override
-            public WizardUtilText getTextScreen() {
+            public WizardUtilText getAgreementScreen() {
                 return new WizardUtilText() {
                     @Override
                     public String getText() {
-                        return informationScreenText;
+                        return agreementScreenText;
                     }
 
                     @Override
@@ -466,24 +465,24 @@ public class Parcours extends WizardUtilData {
 
         }, new WizardUtilScreen() {
             @Override
-            public WizardUtilText getAgreementScreen() {
+            public WizardUtilText getTextScreen() {
                 return new WizardUtilText() {
                     @Override
                     public String getText() {
-                        return agreementScreenText;
+                        return informationScreenText;
                     }
 
                     @Override
                     public String getButonLabel() {
                         return "volgende [ spatiebalk ]";
-            }
+                    }
 
                     @Override
                     public String getTitle() {
                         return "Informatie";
                     }
 
-            @Override
+                    @Override
                     public String getMenuLabel() {
                         return "Terug";
                     }
