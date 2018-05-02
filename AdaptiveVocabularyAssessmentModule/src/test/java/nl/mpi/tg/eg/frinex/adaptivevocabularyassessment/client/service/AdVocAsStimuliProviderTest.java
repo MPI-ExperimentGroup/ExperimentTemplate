@@ -728,7 +728,7 @@ public class AdVocAsStimuliProviderTest {
         assertTrue(result1);
         int sBand = Integer.parseInt(this.startBand);
         int expectedBand = stimulus.getCorrectResponses().equals(WORD_NL) ? (sBand + 1) : sBand;
-        assertEquals(expectedBand, provider.getCurrentBandNumber());
+        assertEquals(expectedBand, provider.getCurrentBandIndex() + 1);
 
         provider.nextStimulus(0);
         assertEquals(2, provider.getResponseRecord().size());
@@ -755,8 +755,8 @@ public class AdVocAsStimuliProviderTest {
         provider.isCorrectResponse(stimulus2, response);
         boolean result12 = provider.hasNextStimulus(0);
         assertTrue(result12);
-        assertEquals(expectedBand, provider.getCurrentBandNumber());
-        assertEquals(0, provider.getBestFastTrackBand()); // stil on fast track, expecting the secind chance
+        assertEquals(expectedBand, provider.getCurrentBandIndex() + 1);
+        assertEquals(0, provider.getBestFastTrackIndexBand()); // stil on fast track, expecting the secind chance
 
         provider.nextStimulus(0); // give the second chance
         assertEquals(3, provider.getResponseRecord().size());
@@ -778,13 +778,12 @@ public class AdVocAsStimuliProviderTest {
             throw new Exception("Wrong reaction");
         }
         provider.isCorrectResponse(stimulus3, response3);
-        
-        
+
         boolean result3 = provider.hasNextStimulus(0);
         assertTrue(result3);
         // now current band represents the last cirrect band on the fast track
-        assertEquals(expectedBand, provider.getCurrentBandNumber());
-        assertEquals(provider.getCurrentBandNumber(), provider.getBestFastTrackBand()); // stil on fast track, expecting the secind chance
+        assertEquals(expectedBand, provider.getCurrentBandIndex() + 1);
+        assertEquals(provider.getCurrentBandIndex(), provider.getBestFastTrackIndexBand()); // stil on fast track, expecting the sec0nd chance
 
         return provider;
 
@@ -869,25 +868,6 @@ public class AdVocAsStimuliProviderTest {
         }
     }
 
-    /**
-     * Test of shiftFIFO method, of class AdVocAsStimuliProvider.
-     */
-    @Test
-    public void testMostOftenVisitedBandNumber() {
-        System.out.println(" MostOftenVisitedBandMumber");
-        Integer[] visitCounter = {1, 3, 2, 3, 3, 3, 1};
-        // indices {1,3,4,5}
-        // ind = 1, indSym = 2
-        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
-        int currentIndex1 = 2; // at 2
-        int bandNumber1 = provider.mostOftenVisitedBandNumber(visitCounter, currentIndex1);
-        assertEquals(4, bandNumber1);
-
-        int currentIndex2 = 3; // at 3
-        int bandNumber2 = provider.mostOftenVisitedBandNumber(visitCounter, currentIndex2);
-        assertEquals(4, bandNumber2);
-    }
-
     private int getListOfListLength(ArrayList<ArrayList<AdVocAsStimulus>> ll) {
         int retVal = 0;
         for (ArrayList<AdVocAsStimulus> l : ll) {
@@ -969,11 +949,11 @@ public class AdVocAsStimuliProviderTest {
             System.out.println("Probabilistic test for 2 rounds, prob of corret answer is " + prob);
             System.out.println("Round 1");
             AdVocAsStimuliProvider provider1 = this.testRound(prob, "Words_NL_2rounds_1", "NonWords_NL_2rounds_1", "20");
-            int score1 = provider1.getBandScore();
+            int score1 = provider1.getBandIndexScore();
             System.out.println("Band Score: " + score1);
             System.out.println("Round 2");
             AdVocAsStimuliProvider provider2 = this.testRound(prob, "Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "20");
-            int score2 = provider2.getBandScore();
+            int score2 = provider2.getBandIndexScore();
             System.out.println("Band Score: " + score2);
             if (score1 != score2) {
                 System.out.println("Attention. Difference between score in consecutive rounds is detected, score 1 and 2 are " + score1 + " and " + score2 + " respectively.");
@@ -1020,10 +1000,12 @@ public class AdVocAsStimuliProviderTest {
 
         boolean hasNextStimulus = provider.hasNextStimulus(0);
         int currentExperimentCount = 0;
+        ArrayList<Integer> bandNumberRecord = new ArrayList<Integer>();
         while (hasNextStimulus) {
             ArrayList<BookkeepingStimulus<AdVocAsStimulus>> ft = provider.getFTtuple();
             if (ft.size() == 4) {
-                this.checkFreshFineTuningTuple(ft);
+                int bandNumber = this.checkFreshFineTuningTuple(ft);
+                bandNumberRecord.add(bandNumber);
             }
             provider.nextStimulus(0);
             currentExperimentCount = provider.getCurrentStimulusIndex();
@@ -1048,7 +1030,7 @@ public class AdVocAsStimuliProviderTest {
             assertFalse(lastStimulus.getCorrectness());
             assertTrue(cycle2 || looser);
             if (looser) {
-                assertEquals(1, provider.getBandScore());
+                assertEquals(0, provider.getBandIndexScore());
                 assertEquals(2, provider.getPercentageScore()); // 100/54 = 1.85... rounded to two
             } else {
                 assertTrue(provider.getPercentageScore() > 1);
@@ -1057,12 +1039,12 @@ public class AdVocAsStimuliProviderTest {
         }
 
         if (champion) {
-            assertEquals(nOfBands, provider.getBandScore());
+            assertEquals(nOfBands - 1, provider.getBandIndexScore());
             assertEquals(100, provider.getPercentageScore());
         }
 
-        this.checkFastTrack(provider.getResponseRecord(), provider.getEndFastTrackTimeTick(), provider.getBestFastTrackBand());
-        this.checkFineTuning(provider.getResponseRecord(), provider.getEndFastTrackTimeTick(), provider.getBestFastTrackBand(), cycle2, provider.getBandScore());
+        this.checkFastTrack(provider.getResponseRecord(), provider.getEndFastTrackTimeTick(), provider.getBestFastTrackIndexBand());
+        this.checkFineTuning(provider.getResponseRecord(), bandNumberRecord, provider.getEndFastTrackTimeTick(), provider.getBestFastTrackIndexBand(), cycle2, provider.getBandIndexScore());
 
         // checking generating graph
         // first check if the sample set is generated ok
@@ -1084,12 +1066,14 @@ public class AdVocAsStimuliProviderTest {
         // now check if the graph sequence for percentage is ok 
         LinkedHashMap<Long, String> graph = provider.generateDiagramSequence(provider.getResponseRecord(), provider.getPercentageBandTable());
 
-        Integer bandScore = provider.getBandScore();
+        Integer bandIndexScore = provider.getBandIndexScore();
 
         Long percentScore = provider.getPercentageScore();
         assertTrue(graph.containsKey(percentScore));
-        assertNotNull(graph.get(percentScore));
-        ArrayList<String> wordsBS = this.getSpellings(rawWords.get(bandScore - 1));
+        if (graph.get(percentScore) == null) {
+            fail("In the percentage-example table there is no value for percent " + percentScore);
+        }
+        ArrayList<String> wordsBS = this.getSpellings(rawWords.get(bandIndexScore));
         assertTrue(wordsBS.contains(graph.get(percentScore)));
 
         if (percentScore >= 5) {
@@ -1180,18 +1164,20 @@ public class AdVocAsStimuliProviderTest {
         // fine tuning correct till the band is 54 then back till the band is 20
         boolean runHigher = true;
         int tupleCounter = 0;
+        ArrayList<Integer> bandNumberSequence = new ArrayList<Integer>();
         while (hasNextStimulus) {
 
             ArrayList<BookkeepingStimulus<AdVocAsStimulus>> ft = provider.getFTtuple();
             if (ft.size() == 4) {
-                this.checkFreshFineTuningTuple(ft);
+                Integer bandNumber = this.checkFreshFineTuningTuple(ft);
+                bandNumberSequence.add(bandNumber);
                 tupleCounter++;
             }
 
-            if (runHigher && provider.getCurrentBandNumber() == 54) {
+            if (runHigher && provider.getCurrentBandIndex() == 53) {
                 runHigher = false; // start climbing backwards
             }
-            if (!runHigher && provider.getCurrentBandNumber() == 20) {
+            if (!runHigher && provider.getCurrentBandIndex() == 19) {
                 runHigher = true; // start climbing forward
             }
             provider.nextStimulus(0);
@@ -1220,10 +1206,10 @@ public class AdVocAsStimuliProviderTest {
         assertFalse(cycle2);
         assertFalse(looser);
         assertFalse(champion);
-        assertEquals(20, provider.getBestFastTrackBand());
+        assertEquals(20, provider.getBestFastTrackIndexBand() + 1);
 
-        this.checkFastTrack(provider.getResponseRecord(), provider.getEndFastTrackTimeTick(), provider.getBestFastTrackBand());
-        this.checkFineTuning(provider.getResponseRecord(), provider.getEndFastTrackTimeTick(), provider.getBestFastTrackBand(), cycle2, provider.getBandScore());
+        this.checkFastTrack(provider.getResponseRecord(), provider.getEndFastTrackTimeTick(), provider.getBestFastTrackIndexBand());
+        this.checkFineTuning(provider.getResponseRecord(), bandNumberSequence, provider.getEndFastTrackTimeTick(), provider.getBestFastTrackIndexBand(), cycle2, provider.getBandIndexScore());
 
         String stateSnapshotExpected = provider.toString();
         AdVocAsStimuliProvider provider2 = new AdVocAsStimuliProvider(null);
@@ -1266,16 +1252,26 @@ public class AdVocAsStimuliProviderTest {
         return answer;
     }
 
-    private void checkFreshFineTuningTuple(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> tuple) {
+    private int checkFreshFineTuningTuple(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> tuple) {
         int nNonwords = 0;
+        int bandNumber = 0;
         for (BookkeepingStimulus<AdVocAsStimulus> stimulus : tuple) {
             assertEquals(null, stimulus.getReaction());
             assertEquals(null, stimulus.getCorrectness());
+            if (stimulus.getStimulus().getCorrectResponses().equals(WORD_NL)) {
+                if (bandNumber > 0) {
+                    assertEquals(bandNumber, stimulus.getStimulus().getBandNumber()); // they allmust be from the same band
+                } else {
+                    bandNumber = stimulus.getStimulus().getBandNumber();
+                }
+            }
             if (stimulus.getStimulus().getCorrectResponses().equals(NONWORD_NL)) {
                 nNonwords++;
             }
         }
         assertEquals(1, nNonwords);
+        assertTrue(bandNumber > 0);
+        return bandNumber;
     }
 
     private void checkNonWordFrequenceFastTrack(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> records, int timeTick) {
@@ -1323,7 +1319,7 @@ public class AdVocAsStimuliProviderTest {
         assertEquals(sz, records.size());
     }
 
-    private void checkFastTrack(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> records, int lastTimeTickFastTrack, int bestFastTrackBand) {
+    private void checkFastTrack(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> records, int lastTimeTickFastTrack, int bestFastTrackIndexBand) {
         BookkeepingStimulus<AdVocAsStimulus> bStimulus = records.get(0);
         BookkeepingStimulus<AdVocAsStimulus> previousbStimulus;
         AdVocAsStimulus stimulus = bStimulus.getStimulus();
@@ -1372,7 +1368,6 @@ public class AdVocAsStimuliProviderTest {
         } else {
             // we stopped because there were two incorrect answers in a row
             previousbStimulus = records.get(lastTimeTickFastTrack - 1);
-            previousStimulus = previousbStimulus.getStimulus();
 
             assertFalse(previousbStimulus.getCorrectness());
             if (lastTimeTickFastTrack >= 2) {
@@ -1380,115 +1375,24 @@ public class AdVocAsStimuliProviderTest {
             }
         }
         if (stimulus.getBandNumber() > 0) {
-            assertEquals(bestFastTrackBand, stimulus.getBandNumber());
+            assertEquals(bestFastTrackIndexBand + 1, stimulus.getBandNumber());
         }
 
     }
 
-    private void checkFineTuning(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> records, int lastTimeTickFastTrack, int bestFastTrackBand, boolean cycle2, int score) {
-        int counterInTuple = 0;
-        AdVocAsStimulus stimulus;
-        ArrayList<Integer> bandSequence = new ArrayList<>();
-        ArrayList<Boolean> bandSwitchReason = new ArrayList<>();
-        int currentBandNumber = -1;
-
-        for (int i = lastTimeTickFastTrack + 1; i < records.size(); i++) {
-
-            BookkeepingStimulus<AdVocAsStimulus> bStimulus = records.get(i);
-            stimulus = bStimulus.getStimulus();
-
-            if (stimulus.getBandNumber() > 0) {
-                currentBandNumber = stimulus.getBandNumber();
-            }
-            if (bStimulus.getCorrectness()) {
-                counterInTuple++;
-                if (counterInTuple == Integer.parseInt(this.fineTuningTupleLength)) {
-                    // all  4 ccorrect answers in a row
-                    // they all must be in 1 band (except the nonword)
-                    bandSequence.add(currentBandNumber);
-                    bandSwitchReason.add(true);
-                    int nonWordCounter = 0;
-
-                    // check the tuple
-                    for (int j = 0; j < Integer.parseInt(this.fineTuningTupleLength); j++) {
-                        if (records.get(i - j).getStimulus().getBandNumber() > 0) {
-                            // all words in the tuple must be in one band
-                            assertEquals(currentBandNumber, records.get(i - j).getStimulus().getBandNumber());
-                        } else {
-                            nonWordCounter++;
-                        }
-                    }
-                    // there must be exactly one nonword per tuple
-                    assertEquals(1, nonWordCounter);
-
-                    // initialise next step
-                    currentBandNumber = -1;
-                    counterInTuple = 0;
-                }
-            } else { // wrong answer -- switch band to the lower one
-                bandSequence.add(currentBandNumber);
-                bandSwitchReason.add(false);
-                // initialise next step
-                counterInTuple = 0;
-                currentBandNumber = -1;
-            }
-        }
-
-        // correction for the cases where the first answer in the tuple was wrong
-        // and it was a non-word, so no band is detected
-        int nOfBands = Integer.parseInt(this.numberOfBands);
-        for (int i = 0; i < bandSequence.size(); i++) {
-            if (bandSequence.get(i) < 0) { // have not been defined
-                if (i > 0) {
-                    if (bandSwitchReason.get(i - 1)) { // the reason for changing for the current band from the previous one 
-                        //was all 4 atoms correct
-                        if (bandSequence.get(i - 1) < nOfBands) {
-                            bandSequence.set(i, bandSequence.get(i - 1) + 1);
-                        } else {
-                            bandSequence.set(i, nOfBands);
-                        }
-                    } else {
-                        // the reason for changing for the current band from the previous one 
-                        //was an error of the previous band
-                        if (bandSequence.get(i - 1) > 1) {
-                            bandSequence.set(i, bandSequence.get(i - 1) - 1);
-                        } else {
-                            bandSequence.set(i, 1);
-                        }
-                    }
-                } else { // we are on the first band and it is undefined
-                    bandSequence.set(0, bestFastTrackBand);
-                }
-            }
-        }
+    private void checkFineTuning(ArrayList<BookkeepingStimulus<AdVocAsStimulus>> records, ArrayList<Integer> bandNumberSequence, int lastTimeTickFastTrack, int bestFastTrackBandIndex, boolean cycle2, int indexScore) {
 
         // fine tuning starting check
-        assertEquals(bestFastTrackBand, bandSequence.get(0).intValue());
+        assertEquals(bestFastTrackBandIndex + 1, bandNumberSequence.get(0).intValue());
 
-        // if the bands where changed correctly
-        for (int i = 1; i < bandSequence.size(); i++) {
-
-            if (bandSwitchReason.get(i - 1)) { // the reason for changing for the current band from the previous one 
-                //was all 4 atoms correct
-                if (bandSequence.get(i - 1) != nOfBands) {
-                    assertEquals(bandSequence.get(i - 1) + 1, bandSequence.get(i).intValue());
-                }
-            } else {
-                // the reason for changing for the current band from the previous one 
-                //was an error of the previous band
-                if (bandSequence.get(i - 1) != 1) {
-                    assertEquals(bandSequence.get(i - 1) - 1, bandSequence.get(i).intValue());
-                }
-            }
-        }
-
+        // cycle check 
         if (cycle2) {
-            int lastIndex = bandSequence.size() - 1;
+            int lastIndex = bandNumberSequence.size() - 1;
             // ignore the last erronenous reaction
-            assertEquals(bandSequence.get(lastIndex - 1).intValue(), bandSequence.get(lastIndex - 3).intValue());
-            assertEquals(bandSequence.get(lastIndex - 1).intValue(), bandSequence.get(lastIndex - 5).intValue());
-            assertEquals(bandSequence.get(lastIndex - 2).intValue(), bandSequence.get(lastIndex - 4).intValue());
-            assertNotEquals(bandSequence.get(lastIndex - 1).intValue(), bandSequence.get(lastIndex - 2).intValue());
+            assertEquals(bandNumberSequence.get(lastIndex - 1).intValue(), bandNumberSequence.get(lastIndex - 3).intValue());
+            assertEquals(bandNumberSequence.get(lastIndex - 1).intValue(), bandNumberSequence.get(lastIndex - 5).intValue());
+            assertEquals(bandNumberSequence.get(lastIndex - 2).intValue(), bandNumberSequence.get(lastIndex - 4).intValue());
+            assertNotEquals(bandNumberSequence.get(lastIndex - 1).intValue(), bandNumberSequence.get(lastIndex - 2).intValue());
 
             //Here implemented loop-based approach , with the last element excluded from loop detection
             // x, x+1, x, x+1, x, (x+1)  (error, could have passed to x, if was not stopped) -> x
@@ -1499,8 +1403,81 @@ public class AdVocAsStimuliProviderTest {
             //Alternative-1 oscillation-based
             // x, x+1, x, x+1, x, x+1 (error) -> x+1
             // x+1, x, x+1, x, x+1, x (error) -> x
-            int expectedScore = bandSequence.get(lastIndex - 1);
-            assertEquals(expectedScore, score);
+            int expectedBandNumber = bandNumberSequence.get(lastIndex - 1);
+            assertEquals(expectedBandNumber, indexScore + 1);
+        }
+
+        int counterInTuple = 0;
+        AdVocAsStimulus stimulus;
+
+        Integer currentBandNumber;
+        int tupleCounter = 0;
+        for (int i = lastTimeTickFastTrack + 1; i < records.size(); i++) {
+
+            assertTrue(tupleCounter < bandNumberSequence.size());
+            currentBandNumber = bandNumberSequence.get(tupleCounter);
+
+            BookkeepingStimulus<AdVocAsStimulus> bStimulus = records.get(i);
+            stimulus = bStimulus.getStimulus();
+
+            if (stimulus.getBandNumber() > 0) {
+                assertTrue(currentBandNumber.equals(stimulus.getBandNumber()));
+            }
+
+            // all previous in the tuple must be answered correctly and be of the same band
+            for (int j = 0; j < counterInTuple - 1; j++) {
+                assertTrue(records.get(i - 1 - j).getCorrectness());
+                Integer bNumber = records.get(i - j).getStimulus().getBandNumber();
+                if (bNumber > 0) {
+                    // all words in the tuple must be in one band
+                    assertEquals(currentBandNumber, bNumber);
+
+                }
+            }
+
+            if (bStimulus.getCorrectness()) {
+                counterInTuple++;
+                if (counterInTuple == Integer.parseInt(this.fineTuningTupleLength)) {
+                    if (i <= records.size() - 2) { // there will be next
+                        tupleCounter++; // to next tuple because it was all correct
+                        if (currentBandNumber < Integer.valueOf(this.numberOfBands)) {
+                            assertEquals(currentBandNumber + 1, bandNumberSequence.get(tupleCounter).intValue()); // the band will be increased because all four correct
+                        } else {
+                            assertEquals(currentBandNumber.intValue(), bandNumberSequence.get(tupleCounter).intValue()); // second trial
+                        }
+                    }
+
+                    counterInTuple = 0;
+
+                    // all  4 ccorrect answers in a row
+                    // they all must be in 1 band (except the nonword)
+                    int nonWordCounter = 0;
+
+                    // check the tuple
+                    for (int j = 0; j < Integer.parseInt(this.fineTuningTupleLength); j++) {
+                        Integer bNumber = records.get(i - j).getStimulus().getBandNumber();
+                        if (bNumber == 0) {
+                            nonWordCounter++;
+                        } else {
+                            // all words in the tuple must be in one band
+                            assertEquals(currentBandNumber, bNumber);
+                        }
+                    }
+                    // there must be exactly one nonword per tuple
+                    assertEquals(1, nonWordCounter);
+                }
+            } else {
+                if (i <= records.size() - 2) { // there will be next
+                    // initialise next step
+                    tupleCounter++; // to next tuple because one was wrong
+                    if (currentBandNumber > 1) {
+                        assertEquals(currentBandNumber - 1, bandNumberSequence.get(tupleCounter).intValue()); // the band will be decreased because of a mistake
+                    } else {
+                        assertEquals(currentBandNumber.intValue(), bandNumberSequence.get(tupleCounter).intValue()); //second chance
+                    }
+                    counterInTuple = 0;
+                }
+            }
         }
 
     }
@@ -1545,8 +1522,8 @@ public class AdVocAsStimuliProviderTest {
             }
         }
 
-        assertEquals(provider.getCurrentBandNumber(), freshProvider.getCurrentBandNumber());
-        assertEquals(provider.getBandScore(), freshProvider.getBandScore());
+        assertEquals(provider.getCurrentBandIndex(), freshProvider.getCurrentBandIndex());
+        assertEquals(provider.getBandIndexScore(), freshProvider.getBandIndexScore());
         assertEquals(provider.getHtmlStimuliReport(), freshProvider.getHtmlStimuliReport());
 
         ArrayList<Integer> resultNonWordIndices = freshProvider.getNonWordsIndices();
@@ -1568,4 +1545,93 @@ public class AdVocAsStimuliProviderTest {
         assertEquals(provider.getStringFineTuningHistory("", "\n", "", ";", "csv"), freshProvider.getStringFineTuningHistory("", "\n", "", ";", "csv"));
 
     }
+
+    /**
+     * Test of getPercentageBandTable method, of class BandStimuliProvider.
+     */
+    @Test
+    public void testGetPercentageBandTable() {
+        System.out.println("getPercentageBandTable");
+
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
+
+        provider.setwordsSource("Words_NL_1round");
+        provider.setnonwordsSource("NonWords_NL_1round");
+
+        provider.setnumberOfBands("54");
+        provider.setfastTrackPresent("true");
+        provider.setfineTuningFirstWrongOut("false");
+        provider.setfineTuningTupleLength("4");
+        provider.setfineTuningUpperBoundForCycles("2");
+
+        provider.setstartBand("20");
+        provider.setnonwordsPerBlock("4");
+        provider.setwordsPerBand("40");
+        provider.setaverageNonWordPosition("3");
+        provider.initialiseStimuliState("");
+
+        LinkedHashMap<Long, Integer> table = provider.getPercentageBandTable();
+        assertEquals(11, table.size());
+
+        Long[] keys = table.keySet().toArray(new Long[0]);
+        assertTrue(1 == keys[0]);
+        assertTrue(10 == keys[1]);
+        assertTrue(20 == keys[2]);
+        assertTrue(30 == keys[3]);
+        assertTrue(40 == keys[4]);
+        assertTrue(50 == keys[5]);
+        assertTrue(60 == keys[6]);
+        assertTrue(70 == keys[7]);
+        assertTrue(80 == keys[8]);
+        assertTrue(90 == keys[9]);
+        assertTrue(99 == keys[10]);
+
+        assertEquals(1,table.get(keys[0]).intValue());
+        assertEquals(5,table.get(keys[1]).intValue());
+        assertEquals(11 ,table.get(keys[2]).intValue());
+        assertEquals(16,table.get(keys[3]).intValue());
+        assertEquals(22,table.get(keys[4]).intValue());
+        assertEquals(27,table.get(keys[5]).intValue());
+        assertEquals(32,table.get(keys[6]).intValue());
+        assertEquals(38,table.get(keys[7]).intValue());
+        assertEquals(43,table.get(keys[8]).intValue());
+        assertEquals(49,table.get(keys[9]).intValue());
+        assertEquals(53,table.get(keys[10]).intValue());
+    }
+
+    /**
+     * Test of bandNumberIntoPercentage method, of class BandStimuliProvider.
+     */
+    @Test
+    public void testBandNumberIntoPercentage() {
+        System.out.println("bandNumberIntoPercentage");
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
+        assertEquals(0L, provider.bandNumberIntoPercentage(0));
+
+        provider.setnumberOfBands("54");
+        assertEquals(100L, provider.bandNumberIntoPercentage(54));
+        assertEquals(50L, provider.bandNumberIntoPercentage(27));
+        assertEquals(33L, provider.bandNumberIntoPercentage(18));
+    }
+
+    /**
+     * Test of percentageIntoBandNumber method, of class BandStimuliProvider.
+     */
+    @Test
+    public void testPercentageIntoBandNumber() {
+        System.out.println("percentageIntoBandNumber");
+
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
+        assertEquals(0, provider.percentageIntoBandNumber(0));
+        provider.setnumberOfBands("54");
+        assertEquals(54, provider.percentageIntoBandNumber(100));
+        assertEquals(53, provider.percentageIntoBandNumber(99));
+        assertEquals(27, provider.percentageIntoBandNumber(50));
+        assertEquals(26, provider.percentageIntoBandNumber(49));
+        assertEquals(5, provider.percentageIntoBandNumber(10));
+        assertEquals(1, provider.percentageIntoBandNumber(1));
+        assertEquals(1, provider.percentageIntoBandNumber(2));
+
+    }
+
 }

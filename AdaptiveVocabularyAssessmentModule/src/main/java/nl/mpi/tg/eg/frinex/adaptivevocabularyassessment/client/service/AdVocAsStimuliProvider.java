@@ -58,6 +58,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
     private ArrayList<ArrayList<AdVocAsStimulus>> words;
     private ArrayList<AdVocAsStimulus> nonwords;
 
+    private LinkedHashMap<Long, Integer> percentageBandTable;
     private Random rnd;
 
     public AdVocAsStimuliProvider(Stimulus[] stimulusArray) {
@@ -71,6 +72,8 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
             super.initialiseStimuliState(stimuliStateSnapshot);
 
             // specific part
+            this.percentageBandTable = this.generatePercentageBandTable();
+
             if (stimuliStateSnapshot.trim().isEmpty()) {
 
                 this.wordsResponse = SourcenameIndices.RESPONSES_INDEX.get(this.wordsSource);
@@ -157,8 +160,35 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         return this.nonWordsIndexes;
     }
 
-    public int getCurrentBandNumber() {
-        return (this.currentBandIndex + 1);
+    public LinkedHashMap<Long, Integer> getPercentageBandTable() {
+        return this.percentageBandTable;
+    }
+
+    private LinkedHashMap<Long, Integer> generatePercentageBandTable() {
+        LinkedHashMap<Long, Integer> retVal = new LinkedHashMap<Long, Integer>();
+        Integer value1 = this.percentageIntoBandNumber(1);
+        retVal.put(new Long(1), value1);
+        for (int p = 1; p <= 9; p++) {
+            long percentage = p * 10;
+            Integer value = this.percentageIntoBandNumber(percentage);
+            retVal.put(percentage, value);
+
+        }
+        Integer value99 = this.percentageIntoBandNumber(99);
+        retVal.put(new Long(99), value99);
+        return retVal;
+    }
+
+    public long bandNumberIntoPercentage(int bandNumber) {
+        double tmp = ((double) bandNumber * 100.0) / this.numberOfBands;
+        long retVal = Math.round(tmp);
+        return retVal;
+    }
+
+     public int percentageIntoBandNumber(long percentage) {
+        float tmp = ((float) percentage * this.numberOfBands) / 100;
+        int retVal = Math.round(tmp);
+        return retVal;
     }
 
     // experiment-specific, must be overridden
@@ -321,8 +351,8 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
             String time = (new Date(stimulus.getTimeStamp())).toString();
             row.append(startColumn).append(stimulus.getStimulus().getLabel()).append(endColumn);
             row.append(startColumn).append(stimulus.getStimulus().getBandNumber()).append(endColumn);
-            String reaction = startRow.equals("<tr>") ? stimulus.getReaction() : stimulus.getReaction().replaceAll("&#44;",",");
-            
+            String reaction = startRow.equals("<tr>") ? stimulus.getReaction() : stimulus.getReaction().replaceAll("&#44;", ",");
+
             row.append(startColumn).append(reaction).append(endColumn);
             row.append(startColumn).append(stimulus.getCorrectness()).append(endColumn);
             row.append(startColumn).append(time).append(endColumn);
@@ -361,7 +391,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
 
             row.append(startColumn).append(stimulus.getStimulus().getLabel()).append(endColumn);
             row.append(startColumn).append(stimulus.getStimulus().getBandNumber()).append(endColumn);
-            String reaction = startRow.equals("<tr>") ? stimulus.getReaction() : stimulus.getReaction().replaceAll("&#44;",",");
+            String reaction = startRow.equals("<tr>") ? stimulus.getReaction() : stimulus.getReaction().replaceAll("&#44;", ",");
             row.append(startColumn).append(reaction).append(endColumn);
             row.append(startColumn).append(stimulus.getCorrectness()).append(endColumn);
             row.append(startColumn).append(time).append(endColumn);
@@ -394,6 +424,19 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         return htmlStringBuilder.toString();
     }
 
+    @Override
+    protected String bandIndexToLabel(int index) {
+        int bandNumber = index + 1;
+        return String.valueOf(bandNumber);
+    }
+
+    @Override
+    public long getPercentageScore() {
+        int bandNumber = this.bandIndexScore + 1;
+        long percentageScore = this.bandNumberIntoPercentage(bandNumber);
+        return percentageScore;
+    }
+
     private String getHtmlExperimenteeReport() {
         StringBuilder htmlStringBuilder = new StringBuilder();
         LinkedHashMap<String, ArrayList<BookkeepingStimulus<AdVocAsStimulus>>> wordTables = this.generateWordNonWordSequences(this.responseRecord);
@@ -403,12 +446,12 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         String experimenteePositionDiagram = this.getHtmlExperimenteePositionDiagram();
 
         String lang = SourcenameIndices.LANGUAGE_INDEX.get(this.wordsSource);
-        
+
         String overview = SourcenameIndices.getOverview(this.getPercentageScore(), lang);
         htmlStringBuilder.append(overview);
-                
-        HashMap<String, String> wordListHeaders =  SourcenameIndices.getWordListHeaders(lang);
-      
+
+        HashMap<String, String> wordListHeaders = SourcenameIndices.getWordListHeaders(lang);
+
         String experimenteeWordTable = this.getHtmlExperimenteeRecords(woorden, null, wordListHeaders.get("headerWords"));
         String experimenteeNonWordTable = this.getHtmlExperimenteeRecords(nietWoorden, null, wordListHeaders.get("headerNonWords"));
         String twoColumnTable = this.getHtmlTwoColumnTable(experimenteeWordTable, experimenteeNonWordTable);
@@ -509,7 +552,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         LinkedHashMap<Integer, String> sampleWords = this.retrieveSampleWords(records, this.words);
 
         Long perScore = this.getPercentageScore();
-        Integer bScore = this.getBandScore();
+        Integer bNumberScore = this.getBandIndexScore()+1;
 
         Set<Long> keysTmp = percentageBandTable.keySet();
         Set<Long> keys = new HashSet<Long>(keysTmp);
@@ -520,7 +563,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         keys.remove(nn);
 
         if (perScore < 5) {
-            retVal.put(perScore, sampleWords.get(bScore));
+            retVal.put(perScore, sampleWords.get(bNumberScore));
         } else {
             Integer bandNumber = percentageBandTable.get(one);
             String value = sampleWords.get(bandNumber);
@@ -530,7 +573,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         for (Long key : keys) {
             if (perScore >= key - 5 && perScore < key + 5) {
                 // put the participant score here
-                retVal.put(perScore, sampleWords.get(bScore));
+                retVal.put(perScore, sampleWords.get(bNumberScore));
             } else {
                 // put a predefined sample
                 Integer bandNumber = percentageBandTable.get(key);
@@ -540,7 +583,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         }
 
         if (perScore >= 95) {
-            retVal.put(perScore, sampleWords.get(bScore));
+            retVal.put(perScore, sampleWords.get(bNumberScore));
         } else {
             Integer bandNumber = percentageBandTable.get(nn);
             String value = sampleWords.get(bandNumber);

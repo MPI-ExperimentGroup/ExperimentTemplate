@@ -26,6 +26,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimuliProvider;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
@@ -36,6 +37,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Permu
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialCondition;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialTuple;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.WordType;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopool.Indices;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
@@ -111,7 +113,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         this.currentTrialTuple = this.createTupleForBand(combinations);
 
         if (this.currentTrialTuple == null) {
-            this.errorMessage = "There is no trial tuples left satisfying the specification, for the band with index (see indexing file for consult) "+this.currentBandIndex;
+            this.errorMessage = "There is no trial tuples left satisfying the specification, for the band with index (see indexing file for consult) " + this.currentBandIndex;
             return false;
         } else {
             // now remove permutation-pairs which have emptied list of trials 
@@ -185,12 +187,22 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     }
 
     @Override
+    protected String bandIndexToLabel(int index) {
+        Set<String> labels = Indices.BAND_LABEL_TO_INDEX.keySet();
+        for (String labelDb : labels) {
+            if (Indices.BAND_LABEL_TO_INDEX.get(labelDb).equals(index)) {
+                return labelDb;
+            }
+        }
+        return null;
+    }
+
+    @Override
     public String getStringFineTuningHistory(String startRow, String endRow, String startColumn, String endColumn, String format) {
 
         LinkedHashMap<String, Integer> stimuliTrialIndex = this.reader.getStimuliTrialIndex();
         LinkedHashMap<Integer, Trial> trialIndex = this.reader.getHashedTrials();
 
-        int bandOffset = 5;
         StringBuilder empty = new StringBuilder();
         empty.append(startColumn).append(" ").append(endColumn);
         empty.append(startColumn).append(" ").append(endColumn);
@@ -214,7 +226,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         stringBuilder.append(startColumn).append("Visiting Number").append(endColumn);
         stringBuilder.append(endRow);
 
-        ArrayList<String> spellingsCheck = new ArrayList<>();
+        ArrayList<String> uniqueIDs = new ArrayList<>();
         Integer previousTrialID = null;
         int trialSequenceNumber = 0;
         for (int i = 0; i < this.responseRecord.size(); i++) {
@@ -251,12 +263,12 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             row.append(startColumn).append(time).append(endColumn);
             row.append(startColumn).append(i).append(endColumn);
             stringBuilder.append(startRow).append(row).append(endRow);
-            spellingsCheck.add(stimulus.getUniqueId());
+            uniqueIDs.add(stimulus.getUniqueId());
         }
 
         // check if there are repititions
-        HashSet<String> set = new HashSet(spellingsCheck);
-        if (set.size() < spellingsCheck.size()) {
+        HashSet<String> set = new HashSet(uniqueIDs);
+        if (set.size() < uniqueIDs.size()) {
             stringBuilder.append(startRow).append(startColumn)
                     .append("Repetitions of stimuli detected")
                     .append(endColumn).append(endRow);
@@ -369,4 +381,8 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         return null;
     }
 
+    @Override
+    public long getPercentageScore() {
+        return -1;
+    }
 }

@@ -375,7 +375,7 @@ public class AudioAsStimuliProviderTest {
         assertTrue(this.instance.getChampion());
         assertFalse(this.instance.getCycel2());
         assertFalse(this.instance.getLooser());
-        assertEquals(this.numberOfBands, this.instance.getBandScore());
+        assertEquals(this.numberOfBands, this.instance.getBandIndexScore()+1);
 
         ArrayList<BookkeepingStimulus<AudioAsStimulus>> record = this.instance.getResponseRecord();
         //this.printRecord(record);
@@ -442,7 +442,7 @@ public class AudioAsStimuliProviderTest {
         assertFalse(this.instance.getChampion());
         assertFalse(this.instance.getCycel2());
         assertTrue(this.instance.getLooser());
-        assertEquals(1, this.instance.getBandScore());
+        assertEquals(0, this.instance.getBandIndexScore());
 
         ArrayList<BookkeepingStimulus<AudioAsStimulus>> record = this.instance.getResponseRecord();
         //this.printRecord(record);
@@ -515,7 +515,7 @@ public class AudioAsStimuliProviderTest {
         assertFalse(this.instance.getChampion());
         assertTrue(this.instance.getCycel2());
         assertFalse(this.instance.getLooser());
-        assertEquals(6, this.instance.getBandScore());
+        assertEquals(5, this.instance.getBandIndexScore());
 
         ArrayList<BookkeepingStimulus<AudioAsStimulus>> record = this.instance.getResponseRecord();
         //this.printRecord(record);
