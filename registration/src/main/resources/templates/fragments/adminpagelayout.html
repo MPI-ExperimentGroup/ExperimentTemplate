@@ -71,7 +71,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             </span>
             <!--</div>-->
             <div th:fragment="logout" align="right">
-                <!--<div>-->
+                <span th:if="${!#strings.contains(#httpServletRequest.requestURI, 'ems12')}"> 
+                    This version is for software testing only, data will not be preserved in this version. 
+                    This text will not be shown in the production version. 
+                    Once you have verified that this version suits your needs, please request deployment of the production version.
+                </span>
+                <!--<div>-->        
                 <form th:action="@{/logout}" method="post">
                     <input type="submit" value="Sign Out"/>
                 </form>
