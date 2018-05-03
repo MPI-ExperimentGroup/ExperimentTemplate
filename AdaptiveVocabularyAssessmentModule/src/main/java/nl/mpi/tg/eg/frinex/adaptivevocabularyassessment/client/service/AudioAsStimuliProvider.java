@@ -73,6 +73,8 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
         super.initialiseStimuliState(stimuliStateSnapshot);
         if (stimuliStateSnapshot.isEmpty()) {
+            
+            this.currentBandIndex = this.startBand;
 
             UtilsList<TrialCondition> utilTrials = new UtilsList<TrialCondition>();
             ArrayList<ArrayList<TrialCondition>> trialTypesPermutations = utilTrials.generatePermutations(this.requiredTrialTypes);
@@ -86,7 +88,6 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
             this.availableCombinations = PermutationPair.initialiseAvailabilityList(this.trials, trialLengtPermutations, trialTypesPermutations, this.numberOfBands);
 
-            this.currentBandIndex = this.startBand;
             boolean init = this.initialiseNextFineTuningTuple();
             if (!init) {
                 System.out.println(this.errorMessage);

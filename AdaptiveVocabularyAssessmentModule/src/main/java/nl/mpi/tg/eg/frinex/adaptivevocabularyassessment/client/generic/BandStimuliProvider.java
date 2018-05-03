@@ -171,7 +171,6 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         if (stimuliStateSnapshot.trim().isEmpty()) {
             this.bandIndexScore = 0;
             this.isCorrectCurrentResponse = null;
-            this.currentBandIndex = this.startBand - 1;
             this.bandVisitCounter = new Integer[this.numberOfBands];
 
             //this.totalStimuli: see the child class

@@ -235,7 +235,7 @@ public class BandStimuliProviderTest {
 //            this.justVisitedLastBand = false;
 //            this.percentageBandTable = this.generatePercentageBandTable();
         assertEquals(0, this.instance.getBandIndexScore());
-        assertEquals(19, this.instance.getCurrentBandIndex());
+        assertEquals(0, this.instance.getCurrentBandIndex());
         assertTrue(this.instance.getEnoughFinetuningStimuli());
         assertTrue(this.instance.getnumberOfBands() == this.instance.getbandVisitCounter().length);
         for (int i = 0; i < this.instance.getnumberOfBands(); i++) {
@@ -715,7 +715,7 @@ public class BandStimuliProviderTest {
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         String expResult="{numberOfBands=40, startBand=20, fineTuningTupleLength=4, fineTuningUpperBoundForCycles=2, fastTrackPresent=true, "
-                + "fineTuningFirstWrongOut=false, bandIndexScore=0, isCorrectCurrentResponse=null, currentBandIndex=19, totalStimuli=0, responseRecord=[], "
+                + "fineTuningFirstWrongOut=false, bandIndexScore=0, isCorrectCurrentResponse=null, currentBandIndex=0, totalStimuli=0, responseRecord=[], "
                 + "tupleFT=[], "
                 + "bestBandFastTrack=0, isFastTrackIsStillOn=true, secondChanceFastTrackIsFired=false, timeTickEndFastTrack=0,"
                 + " enoughFineTuningStimulae=true, "

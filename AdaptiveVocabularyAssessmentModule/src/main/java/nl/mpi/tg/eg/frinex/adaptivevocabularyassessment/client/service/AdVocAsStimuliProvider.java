@@ -76,6 +76,8 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
 
             if (stimuliStateSnapshot.trim().isEmpty()) {
 
+                this.currentBandIndex = this.startBand - 1;
+            
                 this.wordsResponse = SourcenameIndices.RESPONSES_INDEX.get(this.wordsSource);
                 this.nonwordsResponse = SourcenameIndices.RESPONSES_INDEX.get(this.nonwordsSource);
 

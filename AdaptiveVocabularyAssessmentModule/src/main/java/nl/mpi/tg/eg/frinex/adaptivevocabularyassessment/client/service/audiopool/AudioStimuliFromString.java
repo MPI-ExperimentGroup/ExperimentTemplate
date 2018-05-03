@@ -34,7 +34,7 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag;
  */
 public class AudioStimuliFromString {
     
-    public static final String STIMULI_DIR = "/static/stimuli/";
+    public static final String STIMULI_DIR = "static/stimuli/";
 
     private final LinkedHashMap<String, AudioAsStimulus> hashedStimuli = new LinkedHashMap<String, AudioAsStimulus>();
     private LinkedHashMap<Integer, Trial> trials = new LinkedHashMap<Integer, Trial>();

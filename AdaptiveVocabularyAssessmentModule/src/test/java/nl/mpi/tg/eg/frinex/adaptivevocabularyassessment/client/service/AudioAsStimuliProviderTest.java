@@ -77,6 +77,9 @@ public class AudioAsStimuliProviderTest {
         System.out.println("initialiseStimuliState");
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
+
+        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
+
         assertEquals(this.numberOfBands, this.instance.getnumberOfBands());
 
         TrialTuple currentTrialTuple = this.instance.getCurrentTrialTuple();
@@ -113,6 +116,7 @@ public class AudioAsStimuliProviderTest {
         System.out.println("allTupleIsCorrect");
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
+        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
 
         while (this.instance.getCurrentTrialTuple().isNotEmpty()) {
             this.instance.hasNextStimulus(0);
@@ -134,6 +138,7 @@ public class AudioAsStimuliProviderTest {
         System.out.println("allTupleIsCorrect 2");
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
+        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
 
         boolean mistaken = false;
         while (this.instance.getCurrentTrialTuple().isNotEmpty()) {
@@ -162,6 +167,7 @@ public class AudioAsStimuliProviderTest {
         System.out.println("allTupleIsCorrect 3");
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
+        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
 
         int n = this.instance.getCurrentTrialTuple().getNumberOfStimuli();
         boolean mistaken = false;
@@ -189,6 +195,8 @@ public class AudioAsStimuliProviderTest {
         System.out.println("isCorrectResponse-1");
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
+        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
+
         while (this.instance.getCurrentTrialTuple().isNotEmpty()) {
             this.instance.hasNextStimulus(0);
             this.instance.nextStimulus(0);
@@ -259,6 +267,7 @@ public class AudioAsStimuliProviderTest {
 
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
+        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
 
         while (this.instance.getCurrentTrialTuple().isNotEmpty()) {
             this.instance.getCurrentTrialTuple().getFirstNonusedTrial().getStimuli().remove(0);
@@ -308,6 +317,7 @@ public class AudioAsStimuliProviderTest {
 
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
+        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
 
         for (int i = 0; i < this.tupleSize; i++) {
             Trial trial = this.instance.getCurrentTrialTuple().getTrials().get(i);
@@ -375,7 +385,7 @@ public class AudioAsStimuliProviderTest {
         assertTrue(this.instance.getChampion());
         assertFalse(this.instance.getCycel2());
         assertFalse(this.instance.getLooser());
-        assertEquals(this.numberOfBands, this.instance.getBandIndexScore()+1);
+        assertEquals(this.numberOfBands, this.instance.getBandIndexScore() + 1);
 
         ArrayList<BookkeepingStimulus<AudioAsStimulus>> record = this.instance.getResponseRecord();
         //this.printRecord(record);
