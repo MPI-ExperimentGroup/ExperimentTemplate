@@ -33,6 +33,8 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag;
  * @author olhshk
  */
 public class AudioStimuliFromString {
+    
+    public static final String STIMULI_DIR = "/static/stimuli/";
 
     private final LinkedHashMap<String, AudioAsStimulus> hashedStimuli = new LinkedHashMap<String, AudioAsStimulus>();
     private LinkedHashMap<Integer, Trial> trials = new LinkedHashMap<Integer, Trial>();
@@ -166,7 +168,7 @@ public class AudioStimuliFromString {
                     }
                 }
 
-                String audioPath = "static/stimuli/" + locationInDir;
+                String audioPath = STIMULI_DIR + locationInDir;
                 String uniqueId = wrd + "_" + wordType + suffix;
                 AudioAsStimulus stimulus = new AudioAsStimulus(uniqueId, new Tag[0], wrd, "", pauseMs, audioPath, null, null, ratingLabels, "", bandLabel, bandIndex, wordType, i);
                 this.hashedStimuli.put(uniqueId, stimulus);

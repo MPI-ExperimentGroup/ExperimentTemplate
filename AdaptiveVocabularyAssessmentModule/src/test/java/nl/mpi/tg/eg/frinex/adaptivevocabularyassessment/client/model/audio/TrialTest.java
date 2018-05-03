@@ -189,31 +189,31 @@ public class TrialTest {
         assertEquals("kem_2", result.get(4).getStimulus().getLabel());
         assertEquals("vep", result.get(5).getStimulus().getLabel());
 
-        assertEquals("static/stimuli/clear_mono/kem_1", result.get(0).getStimulus().getAudio());
-        assertEquals("static/stimuli/" + Indices.BAND_LABEL_TO_DIRNAME.get(this.trial2.getBandLabel()) + "/guil_-6", result.get(1).getStimulus().getAudio());
-        assertEquals("static/stimuli/" + Indices.BAND_LABEL_TO_DIRNAME.get(this.trial2.getBandLabel()) + "/kedlim_-6", result.get(2).getStimulus().getAudio());
-        assertEquals("static/stimuli/" + Indices.BAND_LABEL_TO_DIRNAME.get(this.trial2.getBandLabel()) + "/sorbuin_-6", result.get(3).getStimulus().getAudio());
-        assertEquals("static/stimuli/" + Indices.BAND_LABEL_TO_DIRNAME.get(this.trial2.getBandLabel()) + "/kem_2_-6", result.get(4).getStimulus().getAudio());
-        assertEquals("static/stimuli/" + Indices.BAND_LABEL_TO_DIRNAME.get(this.trial2.getBandLabel()) + "/vep_-6", result.get(5).getStimulus().getAudio());
+        assertEquals(AudioStimuliFromString.STIMULI_DIR+"clear_mono/kem_1", result.get(0).getStimulus().getAudio());
+        assertEquals(AudioStimuliFromString.STIMULI_DIR + Indices.BAND_LABEL_TO_DIRNAME.get(this.trial2.getBandLabel()) + "/guil_-6", result.get(1).getStimulus().getAudio());
+        assertEquals(AudioStimuliFromString.STIMULI_DIR + Indices.BAND_LABEL_TO_DIRNAME.get(this.trial2.getBandLabel()) + "/kedlim_-6", result.get(2).getStimulus().getAudio());
+        assertEquals(AudioStimuliFromString.STIMULI_DIR + Indices.BAND_LABEL_TO_DIRNAME.get(this.trial2.getBandLabel()) + "/sorbuin_-6", result.get(3).getStimulus().getAudio());
+        assertEquals(AudioStimuliFromString.STIMULI_DIR + Indices.BAND_LABEL_TO_DIRNAME.get(this.trial2.getBandLabel()) + "/kem_2_-6", result.get(4).getStimulus().getAudio());
+        assertEquals(AudioStimuliFromString.STIMULI_DIR + Indices.BAND_LABEL_TO_DIRNAME.get(this.trial2.getBandLabel()) + "/vep_-6", result.get(5).getStimulus().getAudio());
 
         assertEquals(1 + this.trial1.getTrialLength(), this.trial1.getStimuli().size());
         AudioAsStimulus cue = this.trial1.getStimuli().get(0).getStimulus();
-        assertEquals("static/stimuli/clear_mono/" + cue.getLabel(), cue.getAudio());
+        assertEquals(AudioStimuliFromString.STIMULI_DIR+"clear_mono/" + cue.getLabel(), cue.getAudio());
         for (int i = 1; i < this.trial1.getStimuli().size(); i++) {
             AudioAsStimulus stimulus = this.trial1.getStimuli().get(i).getStimulus();
             String bandLabel = this.trial1.getBandLabel();
             String filename = stimulus.getLabel() + "_" + Indices.BAND_LABEL_TO_INTEGER.get(bandLabel);
-            assertEquals("static/stimuli/" + Indices.BAND_LABEL_TO_DIRNAME.get(bandLabel) + "/" + filename, stimulus.getAudio());
+            assertEquals(AudioStimuliFromString.STIMULI_DIR + Indices.BAND_LABEL_TO_DIRNAME.get(bandLabel) + "/" + filename, stimulus.getAudio());
         }
 
         assertEquals(1 + this.trial3.getTrialLength(), this.trial3.getStimuli().size());
         AudioAsStimulus cue3 = this.trial3.getStimuli().get(0).getStimulus();
-        assertEquals("static/stimuli/clear_mono/" + cue3.getLabel(), cue3.getAudio());
+        assertEquals(AudioStimuliFromString.STIMULI_DIR+"clear_mono/" + cue3.getLabel(), cue3.getAudio());
         for (int i = 1; i < this.trial3.getStimuli().size(); i++) {
             AudioAsStimulus stimulus = this.trial3.getStimuli().get(i).getStimulus();
             String bandLabel = this.trial3.getBandLabel();
             String filename = stimulus.getLabel() + "_" + Indices.BAND_LABEL_TO_INTEGER.get(bandLabel);
-            assertEquals("static/stimuli/" + Indices.BAND_LABEL_TO_DIRNAME.get(bandLabel) + "/" + filename, stimulus.getAudio());
+            assertEquals(AudioStimuliFromString.STIMULI_DIR + Indices.BAND_LABEL_TO_DIRNAME.get(bandLabel) + "/" + filename, stimulus.getAudio());
         }
 
     }
