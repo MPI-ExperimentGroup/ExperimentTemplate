@@ -36,16 +36,15 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  */
 public abstract class BandStimuliProvider<A extends BandStimulus> extends AbstractStimuliProvider {
 
-    protected final static String[] FLDS = {"numberOfBands", "startBand", "fineTuningTupleLength", "fineTuningUpperBoundForCycles", "fastTrackPresent", "fineTuningFirstWrongOut", 
-            "bandIndexScore", "isCorrectCurrentResponse", "currentBandIndex", "totalStimuli", 
-            "responseRecord", "tupleFT", 
-            "bestBandFastTrack", "isFastTrackIsStillOn", "secondChanceFastTrackIsFired", "timeTickEndFastTrack", 
-            "enoughFineTuningStimulae", "bandVisitCounter", "cycle2helper", 
-            "cycle2", "champion", "looser", "justVisitedLastBand", "justVisitedLowestBand", "endOfRound", "errorMessage"};
-    
-    
+    protected final static String[] FLDS = {"numberOfBands", "startBand", "fineTuningTupleLength", "fineTuningUpperBoundForCycles", "fastTrackPresent", "fineTuningFirstWrongOut",
+        "bandIndexScore", "isCorrectCurrentResponse", "currentBandIndex", "totalStimuli",
+        "responseRecord", "tupleFT",
+        "bestBandFastTrack", "isFastTrackIsStillOn", "secondChanceFastTrackIsFired", "timeTickEndFastTrack",
+        "enoughFineTuningStimulae", "bandVisitCounter", "cycle2helper",
+        "cycle2", "champion", "looser", "justVisitedLastBand", "justVisitedLowestBand", "endOfRound", "errorMessage"};
+
     protected int numberOfBands = 0;
-    
+
     protected int startBand = 0;
     protected int fineTuningTupleLength = 0;
     protected int fineTuningUpperBoundForCycles = 0;
@@ -55,11 +54,10 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected int bandIndexScore = 0;
     protected Boolean isCorrectCurrentResponse;
     protected int currentBandIndex = 0;
-    protected int totalStimuli=0;
+    protected int totalStimuli = 0;
 
     protected ArrayList<BookkeepingStimulus<A>> responseRecord = new ArrayList<>();
 
-   
     // fast track stuff
     private int bestIndexBandFastTrack = 0;
     protected boolean isFastTrackIsStillOn = true;
@@ -78,8 +76,8 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected boolean looser = false;
     protected boolean justVisitedLastBand = false;
     protected boolean justVisitedLowestBand = false;
-    protected String errorMessage=null;
-    
+    protected String errorMessage = null;
+
     protected boolean endOfRound = false;
 
     // add experiment specific stuff here
@@ -88,7 +86,6 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         super(stimulusArray);
     }
 
-   
     public boolean getfastTrackPresent() {
         return this.fastTrackPresent;
     }
@@ -191,15 +188,11 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
             try {
                 this.deserialiseToThis(stimuliStateSnapshot);
             } catch (Exception ex) {
-                System.out.println();
-                System.out.println(Arrays.asList(ex.getStackTrace()));
-                System.out.println();
+               this.exceptionLogging(ex);
             }
         }
 
     }
-
-    
 
     @Override
     public String generateStimuliStateSnapshot() {
@@ -209,8 +202,6 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     public int getCurrentBandIndex() {
         return this.currentBandIndex;
     }
-
-  
 
     public ArrayList<BookkeepingStimulus<A>> getResponseRecord() {
         return this.responseRecord;
@@ -241,7 +232,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     }
 
     public abstract long getPercentageScore();
-   
+
     public ArrayList<BookkeepingStimulus<A>> getFTtuple() {
         return this.tupleFT;
     }
@@ -334,7 +325,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         }
         htmlStringBuilder.append("<p>Fine tuning History</p><table border=1>").append(inhoudFineTuning).append("</table>");
         return htmlStringBuilder.toString();
-        
+
     }
 
     @Override
@@ -431,7 +422,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
     private boolean switchToFineTuning() {
         this.timeTickEndFastTrack = this.responseRecord.size() - 1; // the last time on fast track (if we start counting form zero)
-        this.bestIndexBandFastTrack = this.currentBandIndex; 
+        this.bestIndexBandFastTrack = this.currentBandIndex;
         return this.initialiseNextFineTuningTuple();
     }
 
@@ -442,7 +433,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         if (this.fineTuningFirstWrongOut) {
             contRound = this.fineTuningToBeContinuedFirstWrongOut();
         } else {
-            contRound=  this.fineTuningToBeContinuedWholeTuple();
+            contRound = this.fineTuningToBeContinuedWholeTuple();
         }
         this.endOfRound = !contRound;
         return contRound;
@@ -466,7 +457,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
                 if (this.currentBandIndex == this.numberOfBands - 1) { // the last band is hit
                     if (this.justVisitedLastBand) {
                         this.champion = true;
-                        this.bandIndexScore = this.numberOfBands-1;
+                        this.bandIndexScore = this.numberOfBands - 1;
                         retVal = false; // stop interation, the last band visied twice in a row
                     } else {
                         this.justVisitedLastBand = true; // the second trial to be sure
@@ -529,7 +520,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
                 if (this.currentBandIndex == this.numberOfBands - 1) { // the last band is hit
                     if (this.justVisitedLastBand) {
                         this.champion = true;
-                        this.bandIndexScore = this.numberOfBands-1;
+                        this.bandIndexScore = this.numberOfBands - 1;
                         retVal = false; // stop interation, the last band visied twice in a row
                     } else {
                         this.justVisitedLastBand = true; // the second attempt to be sure
@@ -581,8 +572,6 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         return allTupleCorrect;
     }
 
-  
-
     // experiment-specifice, must be overridden
     protected abstract void recycleUnusedStimuli();
 
@@ -591,9 +580,9 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         // detecting is should be stopped
         this.cycle2 = detectLoop(cycle2helper);
         if (this.cycle2) {
-            System.out.println("Detected: " + this.fineTuningUpperBoundForCycles + 
-                    " times oscillation between two neighbouring bands, "+
-                    this.cycle2helper[cycle2helper.length - 2] + " and "+this.cycle2helper[cycle2helper.length - 1]);
+            System.out.println("Detected: " + this.fineTuningUpperBoundForCycles
+                    + " times oscillation between two neighbouring bands, "
+                    + this.cycle2helper[cycle2helper.length - 2] + " and " + this.cycle2helper[cycle2helper.length - 1]);
             this.bandIndexScore = this.cycle2helper[cycle2helper.length - 1];
 
             //Here implemented loop-based approach , with the last element excluded from loop detection
@@ -673,7 +662,6 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
             }
         }
 
-      
         return retVal;
 
     }
@@ -685,7 +673,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     public abstract String getStringFineTuningHistory(String startRow, String endRow, String startColumn, String endColumn, String format);
 
     protected abstract String bandIndexToLabel(int bandIndex);
-    
+
     public String getStringSummary(String startRow, String endRow, String startColumn, String endColumn) {
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -710,7 +698,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         stringBuilder.append(startColumn).append(this.enoughFineTuningStimulae).append(endColumn);
         stringBuilder.append(startColumn).append(this.champion).append(endColumn);
         stringBuilder.append(startColumn).append(this.looser).append(endColumn);
-        
+
         stringBuilder.append(endRow);
         return stringBuilder.toString();
     }
@@ -727,8 +715,8 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         }
         return retVal;
     }
-    
-    protected Map<String, Object> toMap(){
+
+    protected Map<String, Object> toMap() {
         Map<String, Object> map = new LinkedHashMap<String, Object>();
         //map.put("fields", BandStimuliProvider.FLDS);
         map.put("numberOfBands", this.numberOfBands);
@@ -737,26 +725,26 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         map.put("fineTuningUpperBoundForCycles", this.fineTuningUpperBoundForCycles);
         map.put("fastTrackPresent", this.fastTrackPresent);
         map.put("fineTuningFirstWrongOut", this.fineTuningFirstWrongOut);
-        
+
         map.put("bandIndexScore", this.bandIndexScore);
         map.put("isCorrectCurrentResponse", this.isCorrectCurrentResponse);
         map.put("currentBandIndex", this.currentBandIndex);
         map.put("totalStimuli", this.totalStimuli);
-        
+
         map.put("responseRecord", this.responseRecord);
         map.put("tupleFT", this.tupleFT);
-        
+
         map.put("bestBandFastTrack", this.bestIndexBandFastTrack);
         map.put("isFastTrackIsStillOn", this.isFastTrackIsStillOn);
         map.put("secondChanceFastTrackIsFired", this.secondChanceFastTrackIsFired);
         map.put("timeTickEndFastTrack", this.timeTickEndFastTrack);
-        
+
         map.put("enoughFineTuningStimulae", this.enoughFineTuningStimulae);
-        
+
         map.put("bandVisitCounter", Arrays.asList(this.bandVisitCounter));
-        
+
         map.put("cycle2helper", Arrays.asList(this.cycle2helper));
-        
+
         map.put("cycle2", this.cycle2);
         map.put("champion", this.champion);
         map.put("looser", this.looser);
@@ -764,22 +752,22 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         map.put("justVisitedLowestBand", this.justVisitedLowestBand);
         map.put("endOfRound", this.endOfRound);
         map.put("errorMessage", this.errorMessage);
-        return map; 
+        return map;
     }
 
-   @Override
+    @Override
     public String toString() {
         Map<String, Object> map = this.toMap();
         return map.toString();
     }
-    
+
     protected abstract void deserialiseSpecific(String str) throws Exception;
 
     //  percentageBandTable must be created from scratch. not serialised/deserialised
-    protected void deserialiseToThis(String str) throws Exception{
-      
-        Map<String,Object> map = UtilsJSONdialect.stringToObjectMap(str,BandStimuliProvider.FLDS);
-        
+    protected void deserialiseToThis(String str) throws Exception {
+
+        Map<String, Object> map = UtilsJSONdialect.stringToObjectMap(str, BandStimuliProvider.FLDS);
+
         this.numberOfBands = Integer.parseInt(map.get("numberOfBands").toString());
         this.startBand = Integer.parseInt(map.get("startBand").toString());
         this.fineTuningTupleLength = Integer.parseInt(map.get("fineTuningTupleLength").toString());
@@ -810,22 +798,28 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         this.justVisitedLowestBand = Boolean.parseBoolean(map.get("justVisitedLowestBand").toString());
         this.justVisitedLastBand = Boolean.parseBoolean(map.get("justVisitedLastBand").toString());
 
-       
         Object bandCounterObj = map.get("bandVisitCounter");
         this.bandVisitCounter = UtilsJSONdialect.objectToArrayInteger(bandCounterObj);
-        
+
         Object cycle2Str = map.get("cycle2helper");
-        this.cycle2helper =  UtilsJSONdialect.objectToArrayInteger(cycle2Str);
+        this.cycle2helper = UtilsJSONdialect.objectToArrayInteger(cycle2Str);
 
         Object reportStatus = map.get("endOfRound");
         this.endOfRound = Boolean.parseBoolean(reportStatus.toString());
-        
+
         Object help = map.get("errorMessage");
         this.errorMessage = (help != null) ? help.toString() : null;
-        
-        
+
     }
-    
-    
+
+    protected void exceptionLogging(Exception ex) {
+        System.out.println();
+        System.out.println(ex);
+        for (StackTraceElement message : ex.getStackTrace()) {
+            System.out.println(message);
+
+        }
+        System.out.println();
+    }
 
 }

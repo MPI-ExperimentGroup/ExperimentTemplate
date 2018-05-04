@@ -19,7 +19,6 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopool.AudioStimuliFromString;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -48,10 +47,11 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
     private final static String[] SPECIFIC_FLDS = {"availableCombinations", "currentTrialTuple", "responseRecord"};
 
-    // requirements, possible moving to config
-    private final ArrayList<Integer> requiredLengths = new ArrayList<Integer>(Arrays.asList(3, 4, 5, 6));
-    private final int maxTrialLength = 6;
-    private final ArrayList<TrialCondition> requiredTrialTypes = new ArrayList<TrialCondition>(Arrays.asList(TrialCondition.TARGET_ONLY, TrialCondition.TARGET_AND_FOIL, TrialCondition.NO_TARGET, TrialCondition.NO_TARGET));
+    private String requiredLengthsStr;
+    private String requiredTrialTypesStr;
+    private ArrayList<Integer> requiredLengths;
+    private int maxTrialLength;
+    private ArrayList<TrialCondition> requiredTrialTypes;
     private final Random rnd = new Random();
 
     // do not need serialisation
@@ -68,12 +68,68 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         super(stimulusArray);
     }
 
+    public void setrequiredLengths(String lengths) {
+        this.requiredLengthsStr = lengths;
+    }
+
+    public void setrequiredTrialTypes(String types) {
+        this.requiredTrialTypesStr = types;
+    }
+
+    public ArrayList<Integer> getRequiredLength() {
+        return this.requiredLengths;
+    }
+
+    public ArrayList<TrialCondition> requiredTrialTypes() {
+        return this.requiredTrialTypes;
+    }
+
+    private void computeRequiredLength(String lengths) {
+        String[] lengthArray = lengths.split(",");
+        this.requiredLengths = new ArrayList<Integer>(lengthArray.length);
+        this.maxTrialLength = 0;
+        for (String length : lengthArray) {
+            Integer lengthInt = Integer.parseInt(length.trim());
+            this.requiredLengths.add(lengthInt);
+            if (lengthInt > this.maxTrialLength) {
+                maxTrialLength = lengthInt;
+            }
+        }
+    }
+
+    private void computeRequiredTrialTypes(String types) {
+        String[] typesArray = types.split(",");
+        this.requiredTrialTypes = new ArrayList<TrialCondition>(typesArray.length);
+        for (String trialConditionStr : typesArray) {
+            TrialCondition trialCondition = TrialCondition.valueOf(trialConditionStr.trim());
+            this.requiredTrialTypes.add(trialCondition);
+        }
+    }
+
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
 
         super.initialiseStimuliState(stimuliStateSnapshot);
+
+        try {
+            this.computeRequiredLength(this.requiredLengthsStr);
+            this.computeRequiredTrialTypes(this.requiredTrialTypesStr);
+            if (this.requiredTrialTypes.size() != this.fineTuningTupleLength) {
+                throw new Exception("Configuration error: here is a mismatch between the cmultiset of trial types whose size is " + this.requiredTrialTypes.size()
+                        + "\n and the configurated tuple size which is " + this.fineTuningTupleLength);
+            }
+
+            if (this.requiredTrialTypes.size() != this.requiredLengths.size()) {
+                throw new Exception("There is a mismatch between the confugurated trial length set size, which is " + this.requiredLengths.size() + ", \n"
+                        + "and the configurated tuple size which is " + this.fineTuningTupleLength);
+            }
+
+        } catch (Exception ex) {
+            this.exceptionLogging(ex);
+        }
+
         if (stimuliStateSnapshot.isEmpty()) {
-            
+
             this.currentBandIndex = this.startBand;
 
             UtilsList<TrialCondition> utilTrials = new UtilsList<TrialCondition>();
@@ -92,17 +148,12 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             if (!init) {
                 System.out.println(this.errorMessage);
             }
+
         } else {
             try {
                 this.deserialiseSpecific(stimuliStateSnapshot);
             } catch (Exception ex) {
-                System.out.println();
-                System.out.println(ex);
-                for (StackTraceElement message : ex.getStackTrace()) {
-                    System.out.println(message);
-
-                }
-                System.out.println();
+                this.exceptionLogging(ex);
             }
         }
     }

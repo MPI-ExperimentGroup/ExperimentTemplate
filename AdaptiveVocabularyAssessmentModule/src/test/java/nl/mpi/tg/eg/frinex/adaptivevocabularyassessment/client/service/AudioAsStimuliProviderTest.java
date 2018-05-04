@@ -63,6 +63,8 @@ public class AudioAsStimuliProviderTest {
         this.instance.setfineTuningUpperBoundForCycles("2");
         this.instance.setnumberOfBands(Integer.toString(this.numberOfBands));
         this.instance.setstartBand(Integer.toString(this.startBand));
+        this.instance.setrequiredLengths("3,4,5,6");
+        this.instance.setrequiredTrialTypes("TARGET_ONLY,NO_TARGET,TARGET_AND_FOIL,NO_TARGET");
     }
 
     @After
@@ -73,7 +75,7 @@ public class AudioAsStimuliProviderTest {
      * Test of initialiseStimuliState method, of class AudioAsStimuliProvider.
      */
     @Test
-    public void testInitialiseStimuliState() { // also check initialisation of trial tuple which is called inside initialiseStimuliState
+    public void testInitialiseStimuliStateQuadruple() { // also check initialisation of trial tuple which is called inside initialiseStimuliState
         System.out.println("initialiseStimuliState");
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
@@ -87,6 +89,20 @@ public class AudioAsStimuliProviderTest {
         this.checkTuple(currentTrialTuple);
 
         assertEquals(this.startBand, this.instance.getCurrentBandIndex());
+        
+        ArrayList<Integer> lngths = this.instance.getRequiredLength(); 
+        assertEquals(4, lngths.size());
+        assertEquals(3,lngths.get(0).intValue());
+        assertEquals(4,lngths.get(1).intValue());
+        assertEquals(5,lngths.get(2).intValue());
+        assertEquals(6,lngths.get(3).intValue());
+        
+        ArrayList<TrialCondition> types = this.instance.requiredTrialTypes(); 
+        assertEquals(4, types.size());
+        assertEquals("TARGET_ONLY", types.get(0).toString());
+        assertEquals("NO_TARGET", types.get(1).toString());
+        assertEquals("TARGET_AND_FOIL", types.get(2).toString());
+        assertEquals("NO_TARGET", types.get(3).toString());
     }
 
     /**
