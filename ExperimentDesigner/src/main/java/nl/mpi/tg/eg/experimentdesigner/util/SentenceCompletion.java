@@ -31,6 +31,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSelectUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilData;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilMetadata;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilSelectParticipant;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilStimuliData;
@@ -95,7 +96,7 @@ public class SentenceCompletion {
                     introductionScreen.setBackWizardScreen(lastScreen);
                 }
                 if (lastScreen != null) {
-                    lastScreen.setNextWizardScreen(introductionScreen);
+                    lastScreen.getWizardScreenData().setNextWizardScreenData(introductionScreen.getWizardScreenData());
                 }
                 lastScreen = introductionScreen;
                 if (firstScreen == null) {
@@ -110,7 +111,7 @@ public class SentenceCompletion {
                 agreementScreen.setMenuLabel(agreementScreenText.getMenuLabel());
                 wizardData.addScreen(agreementScreen);
                 if (lastScreen != null) {
-                    lastScreen.setNextWizardScreen(agreementScreen);
+                    lastScreen.getWizardScreenData().setNextWizardScreenData(agreementScreen.getWizardScreenData());
                 }
                 lastScreen = agreementScreen;
                 if (firstScreen == null) {
@@ -125,32 +126,39 @@ public class SentenceCompletion {
                         selectParticipantMenu.getResumeParticipantButton(),
                         selectParticipantMenu.getNewParticipantText(),
                         selectParticipantMenu.getResumeParticipantText());
-                final WizardSelectUserScreen selectUserScreen = new WizardSelectUserScreen(selectParticipantMenu.getSelectParticipantTitle());
+                existingUserCheckScreen.setGenerateSelectUserMenuScreen(true);
+//                final WizardSelectUserScreen selectUserScreen = new WizardSelectUserScreen(selectParticipantMenu.getSelectParticipantTitle());
                 wizardData.addScreen(existingUserCheckScreen);
-                wizardData.addScreen(selectUserScreen);
+//                wizardData.addScreen(selectUserScreen);
                 if (lastScreen != null) {
-                    lastScreen.setNextWizardScreen(existingUserCheckScreen);
+                    lastScreen.getWizardScreenData().setNextWizardScreenData(existingUserCheckScreen.getWizardScreenData());
+                    existingUserCheckScreen.setBackWizardScreen(lastScreen);
                 }
+                lastScreen = existingUserCheckScreen;
+//                selectUserScreen.getWizardScreenData().setBackWizardScreenData(existingUserCheckScreen.getWizardScreenData());
                 if (firstScreen == null) {
                     firstScreen = existingUserCheckScreen;
                 }
             }
-            final String[] metadataFields = screenData.getMetadataFields();
-            if (metadataFields != null) {
+            final WizardUtilMetadata metadataScreen = screenData.getMetadataScreen();
+            // todo: add the metadata screen intro text here as 
+
+            // todo: some flag needs to be added where "dateOfBirth:Geboortedatum","dateOfTest:Testdatum:" are used to display age in months. 
+            if (metadataScreen != null) {
                 //metadata
                 final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
-                wizardEditUserScreen.setScreenText(screenData.getMetadataText());
-                wizardEditUserScreen.setScreenTitle("Gegevens");
-                wizardEditUserScreen.setMenuLabel("Terug");
-                wizardEditUserScreen.setScreenTag("Gegevens");
-                wizardEditUserScreen.setNextButton("Volgende");
-                wizardEditUserScreen.setSendData(true);
-                wizardEditUserScreen.setOn_Error_Text("Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.");
+                wizardEditUserScreen.setScreenText(metadataScreen.getText());
+                wizardEditUserScreen.setScreenTitle(metadataScreen.getTitle());
+                wizardEditUserScreen.setMenuLabel(metadataScreen.getMenuLabel());
+                wizardEditUserScreen.setScreenTag(metadataScreen.getTitle());
+                wizardEditUserScreen.setNextButton(metadataScreen.getButonLabel());
+                wizardEditUserScreen.setSendData(metadataScreen.isSendData());
+                wizardEditUserScreen.setOn_Error_Text(metadataScreen.getConnectionErrorText());
 //        wizardData.setAgeField(true);
-                wizardEditUserScreen.setCustomFields(metadataFields);
+                wizardEditUserScreen.setCustomFields(metadataScreen.getMetadataFields());
 
                 if (lastScreen != null) {
-                    lastScreen.setNextWizardScreen(wizardEditUserScreen);
+                    lastScreen.getWizardScreenData().setNextWizardScreenData(wizardEditUserScreen.getWizardScreenData());
                     wizardEditUserScreen.setBackWizardScreen(lastScreen);
                 }
                 wizardData.addScreen(wizardEditUserScreen);
@@ -180,34 +188,40 @@ public class SentenceCompletion {
                         firstScreen = lastScreen;
                     }
                 }
-                final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen(stimuliData.getStimuliName(), false, stimuliData.getStimuliArray(),
-                        stimuliData.getRandomStimuliTags(), 1000, true, null, 0, 0, null, null, null, null, "Volgende [tab + enter]");
-                if ("horizontal".equals(stimuliData.getStimuliLayout())) {
-                    list1234Screen.setTableLayout(true);
-                }
-                if (stimuliData.getRatingLabels() != null) {
-                    list1234Screen.getWizardScreenData().setStimulusResponseOptions(stimuliData.getRatingLabels());
+                if (false && stimuliData.getInstructions() != null) {
                 } else {
-                    list1234Screen.setStimulusFreeText(true,
-                            (stimuliData.getFreeTextValidationRegex() == null) ? ".{2,}" : stimuliData.getFreeTextValidationRegex(),
-                            stimuliData.getFreeTextValidationMessage()
-                    );
-                    list1234Screen.setAllowedCharCodes(stimuliData.getFreeTextAllowedCharCodes());
-                    list1234Screen.setInputKeyErrorMessage("Sorry, dit teken is niet toegestaan.");
+                    final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen(stimuliData.getStimuliName(), false, stimuliData.getStimuliArray(),
+                            stimuliData.getRandomStimuliTags(), 1000, true, null, 0, 0, null, null, null, null, "Volgende [tab + enter]");
+                    if ("horizontal".equals(stimuliData.getStimuliLayout())) {
+                        list1234Screen.setTableLayout(true);
+                    }
+                    if (stimuliData.getRatingLabels() != null) {
+                        list1234Screen.getWizardScreenData().setStimulusResponseOptions(stimuliData.getRatingLabels());
+                    } else if (stimuliData.getStimuliCodes() != null) {
+                        // todo: add the images based on this getStimuliCodes
+                        list1234Screen.getWizardScreenData().setStimulusResponseOptions(stimuliData.getStimuliCodes()[0]);
+                    } else {
+                        list1234Screen.setStimulusFreeText(true,
+                                (stimuliData.getFreeTextValidationRegex() == null) ? ".{2,}" : stimuliData.getFreeTextValidationRegex(),
+                                stimuliData.getFreeTextValidationMessage()
+                        );
+                        list1234Screen.setAllowedCharCodes(stimuliData.getFreeTextAllowedCharCodes());
+                        list1234Screen.setInputKeyErrorMessage("Sorry, dit teken is niet toegestaan.");
+                    }
+                    list1234Screen.getWizardScreenData().setStimulusResponseLabelLeft("");
+                    list1234Screen.getWizardScreenData().setStimulusResponseLabelRight("");
+                    list1234Screen.setRandomStimuliTagsField("item");
+                    list1234Screen.setStimuliLabelStyle(stimuliData.getStimuliLabelStyle());
+                    list1234Screen.setHotkeyButton(stimuliData.getStimuliHotKey());
+                    if (wizardUtilData.isShowProgress()) {
+                        list1234Screen.setShowProgress(true);
+                    }
+                    wizardData.addScreen(list1234Screen);
+                    if (lastScreen != null) {
+                        lastScreen.setNextWizardScreenData(list1234Screen.getWizardScreenData());
+                    }
+                    lastScreen = list1234Screen;
                 }
-                list1234Screen.getWizardScreenData().setStimulusResponseLabelLeft("");
-                list1234Screen.getWizardScreenData().setStimulusResponseLabelRight("");
-                list1234Screen.setRandomStimuliTagsField("item");
-                list1234Screen.setStimuliLabelStyle(stimuliData.getStimuliLabelStyle());
-                list1234Screen.setHotkeyButton(stimuliData.getStimuliHotKey());
-                if (wizardUtilData.isShowProgress()) {
-                    list1234Screen.setShowProgress(true);
-                }
-                wizardData.addScreen(list1234Screen);
-                if (lastScreen != null) {
-                    lastScreen.setNextWizardScreenData(list1234Screen.getWizardScreenData());
-                }
-                lastScreen = list1234Screen;
                 if (firstScreen == null) {
                     firstScreen = lastScreen;
                 }
