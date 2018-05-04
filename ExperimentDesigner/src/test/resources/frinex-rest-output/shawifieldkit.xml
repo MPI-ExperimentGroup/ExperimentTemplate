@@ -7,7 +7,7 @@
         <menuItem featureText="Instructions" target="Instructions"/>
         <menuItem featureText="Go directly to program" target="Start"/>
     </presenter>
-    <presenter back="Welcome" displayOrder="2" menuLabel="Start" next="MetadataScreen" type="metadata" self="Start" title="Start">
+    <presenter back="Welcome" displayOrder="2" menuLabel="Start" type="metadata" self="Start" title="Start">
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="Is this a new recording?"/>

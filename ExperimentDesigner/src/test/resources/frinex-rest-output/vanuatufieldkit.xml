@@ -7,7 +7,7 @@
         <menuItem featureText="Instruksen" target="Instruksen"/>
         <menuItem featureText="Stat - Go long program nao" target="Start"/>
     </presenter>
-    <presenter back="Welkam" displayOrder="2" menuLabel="Start" next="Edit_User" type="metadata" self="Start" title="Start">
+    <presenter back="Welkam" displayOrder="2" menuLabel="Start" type="metadata" self="Start" title="Start">
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="Makem wan niufala rikoding"/>

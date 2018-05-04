@@ -65,7 +65,7 @@
             <hasMoreStimulus>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
-                <stimulusFreeText featureText="Vul minimal 1 nummer." allowedCharCodes="0123456789." validationRegex="[0-9]+[.]?[0-9]*" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
+                <stimulusFreeText featureText="Vul minimal 1 nummer." allowedCharCodes="0123456789." styleName="stimuliLabel" validationRegex="[0-9]+[.]?[0-9]*" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
                 <actionButton featureText="Volgende [tab + enter]" eventTag="Volgende [tab + enter]">
                     <nextStimulus repeatIncorrect="false"/>
                 </actionButton>
@@ -90,7 +90,7 @@
             <hasMoreStimulus>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
-                <stimulusFreeText featureText="Vul minimal 1 letter." validationRegex=".{1,}" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
+                <stimulusFreeText featureText="Vul minimal 1 letter." styleName="stimuliLabel" validationRegex=".{1,}" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
                 <actionButton featureText="Volgende [tab + enter]" eventTag="Volgende [tab + enter]">
                     <nextStimulus repeatIncorrect="false"/>
                 </actionButton>
@@ -106,7 +106,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="10" menuLabel="Einde van het experiment" next="Informatie" type="transmission" self="completion" title="Einde van het experiment">
+    <presenter displayOrder="10" menuLabel="Einde van het experiment" next="Toestemming" type="transmission" self="completion" title="Einde van het experiment">
         <generateCompletionCode>
             <onSuccess>
                 <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;Hartelijk dank voor jouw deelname! &lt;br/&gt;&lt;br/&gt;"/>
@@ -115,7 +115,7 @@
                 <addPadding/>
                 <htmlText featureText="&lt;br/&gt;Het bovenstaande nummer is het bewijs dat je het experiment heeft voltooid&lt;br/&gt;"/>
                 <addPadding/>
-                <eraseUsersDataButton featureText="Opnieuw beginnen" target="Informatie"/>
+                <eraseUsersDataButton featureText="Opnieuw beginnen" target="Toestemming"/>
             </onSuccess>
             <onError>
                 <plainText featureText="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw."/>
@@ -123,7 +123,7 @@
             </onError>
         </generateCompletionCode>
     </presenter>
-    <presenter back="Gegevens" displayOrder="11" menuLabel="Over" type="debug" self="about" title="Over">
+    <presenter back="Toestemming" displayOrder="11" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
     </presenter>
     <stimuli>
