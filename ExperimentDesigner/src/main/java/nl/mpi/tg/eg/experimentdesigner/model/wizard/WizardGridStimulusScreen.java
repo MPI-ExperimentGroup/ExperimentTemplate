@@ -156,6 +156,14 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenText(6, consumedGroupName);
     }
 
+    private String getStimuliButtonArray(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(7);
+    }
+
+    final public void setStimuliButtonArray(String stimuliButtonArray) {
+        this.wizardScreenData.setScreenText(7, stimuliButtonArray);
+    }
+
     private String getBackgroundStyle(WizardScreenData storedWizardScreenData) {
         return storedWizardScreenData.getScreenText(1);
     }
@@ -225,7 +233,8 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             "CorrectAudio",
             "RewardImage",
             "AudioAB",
-            "ConsumedTagGroup"
+            "ConsumedTagGroup",
+            "StimuliButtonArray"
         }[index];
     }
 
@@ -494,7 +503,19 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                     break;
             }
             hasMoreStimulusFeature.addFeature(FeatureType.disableStimulusButtons, null);
-            for (String[] additionString : new String[][]{{"<code>_left.jpg", "borderedVideoLeft", "Left Overlay Button", "Left", "leftOverlayButton", "leftButtonGroup"}, {"<code>_right.jpg", "borderedVideoRight", "Right Overlay Button", "Right", "rightOverlayButton", "rightButtonGroup"}}) {
+            final String[][] stimuliButtonArray;
+            if (getStimuliButtonArray(storedWizardScreenData) != null) {
+                final ArrayList<String[]> tempList = new ArrayList<>();
+                final String[] splitButtonArray = getStimuliButtonArray(storedWizardScreenData).split(",");
+                final int buttonArrayLength = splitButtonArray.length;
+                for (String buttonElement : splitButtonArray) {
+                    tempList.add(new String[]{"<code>_" + buttonElement + ".jpg", buttonElement + buttonArrayLength + "TouchButton", buttonElement, buttonElement + buttonArrayLength + "OverlayButton", buttonElement + buttonArrayLength + "OverlayButton", buttonElement + "ButtonGroup"});
+                }
+                stimuliButtonArray = tempList.toArray(new String[0][6]);
+            } else {
+                stimuliButtonArray = new String[][]{{"<code>_left.jpg", "borderedVideoLeft", "Left Overlay Button", "Left", "leftOverlayButton", "leftButtonGroup"}, {"<code>_right.jpg", "borderedVideoRight", "Right Overlay Button", "Right", "rightOverlayButton", "rightButtonGroup"}};
+            }
+            for (String[] additionString : stimuliButtonArray) {
                 final PresenterFeature stimulusImage = hasMoreStimulusFeature.addFeature(FeatureType.stimulusCodeImage, null, "250", additionString[0], additionString[1]);
                 final PresenterFeature leftOverlayButton = stimulusImage.addFeature(FeatureType.touchInputStimulusButton, additionString[2], additionString[3], "", additionString[4], additionString[5]);
                 leftOverlayButton.addFeature(FeatureType.disableStimulusButtons, null);
