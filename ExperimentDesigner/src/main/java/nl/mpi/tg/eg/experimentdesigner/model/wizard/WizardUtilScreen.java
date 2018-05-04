@@ -31,8 +31,7 @@ public class WizardUtilScreen {
 
     protected WizardUtilStimuliData stimuliData;
 
-    protected String metadataText;
-    protected String[] metadataFields;
+    protected WizardUtilMetadata metadataScreen;
 
     public WizardUtilText getTextScreen() {
         return textScreen;
@@ -66,19 +65,11 @@ public class WizardUtilScreen {
         this.stimuliData = stimuliData;
     }
 
-    public String getMetadataText() {
-        return metadataText;
+    public WizardUtilMetadata getMetadataScreen() {
+        return metadataScreen;
     }
 
-    public void setMetadataText(String metadataText) {
-        this.metadataText = metadataText;
-    }
-
-    public String[] getMetadataFields() {
-        return metadataFields;
-    }
-
-    public void setMetadataFields(String[] metadataFields) {
-        this.metadataFields = metadataFields;
+    public void setMetadataScreen(WizardUtilMetadata metadataScreen) {
+        this.metadataScreen = metadataScreen;
     }
 }
