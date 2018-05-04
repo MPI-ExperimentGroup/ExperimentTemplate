@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experimentdesigner.util;
 
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilEnum;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilMetadata;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilStimuliData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilText;
@@ -486,21 +487,66 @@ public class Parcours extends WizardUtilData {
                     public String getMenuLabel() {
                         return "Terug";
                     }
+
+                    @Override
+                    public String getHotkey() {
+                        return "SPACE";
+                    }
                 };
             }
         }, new WizardUtilScreen() {
             @Override
-            public String[] getMetadataFields() {
-                return new String[]{
-                    "workerId:Proefpersoon ID:.'{'3,'}':Voer minimaal drie letters.",
-                    "age:Leeftijd:[0-9]+:Voer een getal.",
-                    //            "firstName:Voornaam:.'{'3,'}':Voer minimaal drie letters.",
-                    //            "lastName:Achternaam:.'{'3,'}':Voer minimaal drie letters.",
-                    //            "education:Opleidingsniveau:primair onderwijs (basisschool)|voortgezet onderwijs|middelbaar beroepsonderwijs (MBO)|hoger onderwijs (HBO, universiteit)|anders:.",
-                    "education:Opleidingsniveau:basisonderwijs|voortgezet onderwijs|MBO|HBO|universiteit|anders:.",
-                    "educationOther:Opleidingsniveau (anders, namelijk):.*:.",
-                    //            "education:Opleidingsniveau:.'{'3,'}':Voer minimaal drie letters.",
-                    "gender:Geslacht:|man|vrouw|anders:."
+            public WizardUtilMetadata getMetadataScreen() {
+                return new WizardUtilMetadata() {
+                    @Override
+                    public String getHotkey() {
+                        return null;
+                    }
+
+                    @Override
+                    public String getButonLabel() {
+                        return "Volgende";
+                    }
+
+                    @Override
+                    public String getText() {
+                        return null;
+                    }
+
+                    @Override
+                    public String getTitle() {
+                        return "Gegevens";
+                    }
+
+                    @Override
+                    public String getMenuLabel() {
+                        return "Terug";
+                    }
+
+                    @Override
+                    public boolean isSendData() {
+                        return true;
+                    }
+
+                    @Override
+                    public String getConnectionErrorText() {
+                        return "Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.";
+                    }
+
+                    @Override
+                    public String[] getMetadataFields() {
+                        return new String[]{
+                            "workerId:Proefpersoon ID:.'{'3,'}':Voer minimaal drie letters.",
+                            "age:Leeftijd:[0-9]+:Voer een getal.",
+                            //            "firstName:Voornaam:.'{'3,'}':Voer minimaal drie letters.",
+                            //            "lastName:Achternaam:.'{'3,'}':Voer minimaal drie letters.",
+                            //            "education:Opleidingsniveau:primair onderwijs (basisschool)|voortgezet onderwijs|middelbaar beroepsonderwijs (MBO)|hoger onderwijs (HBO, universiteit)|anders:.",
+                            "education:Opleidingsniveau:basisonderwijs|voortgezet onderwijs|MBO|HBO|universiteit|anders:.",
+                            "educationOther:Opleidingsniveau (anders, namelijk):.*:.",
+                            //            "education:Opleidingsniveau:.'{'3,'}':Voer minimaal drie letters.",
+                            "gender:Geslacht:|man|vrouw|anders:."
+                        };
+                    }
                 };
             }
         }, new WizardUtilScreen() {
