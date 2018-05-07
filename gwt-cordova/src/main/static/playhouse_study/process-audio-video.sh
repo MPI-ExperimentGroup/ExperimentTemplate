@@ -17,15 +17,43 @@ for filePath in */*.mpeg ; do
     ffmpeg -n -i "$filePath" -c:v libx264  -b:v 500k -vf "scale=640:-1" -r 25 -profile:v baseline -level 3.0 -c:a aac -strict -2 -ar 44100 -ac 1 -b:a 64k "${filePath%.*}".mp4
 done
 
-for filePath in */*.wav *.wav ; do 
+for filePath in */*/*.wav */*.wav *.wav ; do 
     echo $filePath
-    ffmpeg -n -i "$filePath" -acodec libmp3lame "${filePath%.*}".mp3 
-    ffmpeg -n -i "$filePath" -acodec libvorbis "${filePath%.*}".ogg 
+    fileName=$(basename $filePath)
+    echo $fileName
+    ffmpeg -n -i "$filePath" -acodec libmp3lame "${fileName%.*}".mp3 
+    ffmpeg -n -i "$filePath" -acodec libvorbis "${fileName%.*}".ogg 
 done
 
-for filePath in *.jpg ; do 
+for filePath in */*/*.jpg */*/*.jpeg */*/*.jpg */*/*.png ; do 
 # by changing the suffix of the original, it will not be included in the final app, which is needed to keep the app small
         echo $filePath
+        fileName=$(basename $filePath)
+        fileName=${fileName//_dis_/_}
+        fileName=${fileName//_N_/_}
+        fileName=${fileName//_A_/_}
+        fileName=${fileName//_B_/_}
+        echo "${fileName%.*}".jpg
         mv -n $filePath $filePath-original
-        convert $filePath-original -resize 700x700\> $filePath
+        convert $filePath-original -resize 700x700\> "${fileName%.*}".jpg
+done
+
+for filePath in T_*.mp3 T_*.ogg ; do 
+        echo $filePath
+        fileName=$(basename $filePath)
+        fileName=${fileName//_dis./.}
+        fileName=${fileName//_N./.}
+        fileName=${fileName//_A./.}
+        fileName=${fileName//_B./.}
+#        echo "${fileName%.*}".jpg
+        mv -n $filePath $fileName
+#        convert $filePath-original -resize 700x700\> "${fileName%.*}".jpg
+done
+
+for filePath in *middle* ; do 
+        echo $filePath
+        fileName=$(basename $filePath)
+        fileName=${fileName//_middle/_centre}
+        echo $fileName
+        mv -n $filePath $fileName
 done
