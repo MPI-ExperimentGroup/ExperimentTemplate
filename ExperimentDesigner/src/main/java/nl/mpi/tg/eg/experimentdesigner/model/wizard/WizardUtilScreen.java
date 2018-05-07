@@ -25,6 +25,8 @@ public class WizardUtilScreen {
 
     protected WizardUtilText textScreen;
 
+    protected WizardUtilMenu menuScreen;
+
     protected WizardUtilText agreementScreen;
 
     protected WizardUtilSelectParticipant selectParticipantMenu;
@@ -39,6 +41,14 @@ public class WizardUtilScreen {
 
     public void setTextScreen(WizardUtilText textScreen) {
         this.textScreen = textScreen;
+    }
+
+    public WizardUtilMenu getMenuScreen() {
+        return menuScreen;
+    }
+
+    public void setMenuScreen(WizardUtilMenu menuScreen) {
+        this.menuScreen = menuScreen;
     }
 
     public WizardUtilText getAgreementScreen() {
