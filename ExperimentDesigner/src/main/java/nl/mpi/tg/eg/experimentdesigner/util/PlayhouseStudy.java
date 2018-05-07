@@ -55,14 +55,12 @@ public class PlayhouseStudy {
         bluetoothInstructionsScreen.setNextHotKey("ENTER");
         wizardData.addScreen(bluetoothInstructionsScreen);
 
-        final WizardExistingUserCheckScreen existingUserCheckScreen = new WizardExistingUserCheckScreen("Start", "New interview", "Resume interview", "Begin a new interview with a new participant", "Resume an interview with an existing participant");
+        final WizardExistingUserCheckScreen existingUserCheckScreen = new WizardExistingUserCheckScreen("Select Participant", "New interview", "Resume interview", "Begin a new interview with a new participant", "Resume an interview with an existing participant");
         final WizardSelectUserScreen selectUserScreen = new WizardSelectUserScreen("Select Participant");
-        wizardData.addScreen(existingUserCheckScreen);
-        wizardData.addScreen(selectUserScreen);
         final WizardEditUserScreen wizardEditUserScreen = new WizardEditUserScreen();
         wizardEditUserScreen.setScreenTitle("Gegevens");
         wizardEditUserScreen.setMenuLabel("Terug");
-        wizardEditUserScreen.setScreenTag("Edit User");
+        wizardEditUserScreen.setScreenTag("Gegevens");
         wizardEditUserScreen.setNextButton("Volgende");
         wizardEditUserScreen.setSendData(false);
         wizardEditUserScreen.setOn_Error_Text("Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.");
@@ -72,9 +70,11 @@ public class PlayhouseStudy {
             "groupCode:Group Code:[01]?[0-9]?[0-9]:Voer een nummer (000-199).",
             "experimentVersion:Experiment Version:1|2|3|4:Kies en experiment."
         });
-
+        existingUserCheckScreen.setNextWizardScreen(wizardEditUserScreen);
         final WizardMenuScreen menuScreen = new WizardMenuScreen("Menu", "Menu", "Menu");
         wizardData.addScreen(menuScreen);
+        wizardData.addScreen(existingUserCheckScreen);
+        wizardData.addScreen(selectUserScreen);
         wizardData.addScreen(wizardEditUserScreen);
         String backgroundImage = "huisje_02.jpg";
 //        WizardAudioTestScreen introductionAudio1 = new WizardAudioTestScreen("Introduction 1", "&nbsp;", "continue button", "intro_1");
@@ -97,15 +97,16 @@ public class PlayhouseStudy {
 //        introductionAudio3.setStyleName("titleBarButton");
         String[][][][] testList = new String[][][][]{
             {{{"Practice", "zoomToGarden", "Practice", "P_00.png", "AudioRepeat1", "1000", "Correct", null}, {}},
-            {{"P_01_NL", "P_01_NL.jpg"}, {"P_02_NL", "P_02_NL.jpg"}, {"P_03_Eng", "P_03_Eng.jpg"}, {"P_04_Eng", "P_04_Eng.jpg"}}},
+            {{"P_01", "P_01.jpg"}, {"P_02", "P_02.jpg"}, {"P_03", "P_03.jpg"}, {"P_04", "P_04.jpg"}}},
             {{{"Matching1", "zoomToBlock1", "Matching1", null, "AudioAB", "2000", null, "BeginMatching"}, {}},
-            {{"M_01", "M_01.jpg"}, {"M_02", "M_02.jpg"}, {"M_03", "M_03.jpg"}, {"M_04", "M_04.jpg"}, {"M_05", "M_05.jpg"}, {"M_06", "M_06.jpg"}}},
+            {{"M_01_A", "M_01_A.jpg"}, {"M_02_B", "M_02_B.jpg"}, {"M_03_N", "M_03_N.jpg"}, {"M_04_B", "M_04_B.jpg"}, {"M_05_A", "M_05_A.jpg"}, {"M_06_N", "M_06_N.jpg"}, {"M_07_B", "M_07_B.jpg"}, {"M_08_A", "M_8_A.jpg"}, {"M_09_A", "M_09_A.jpg"}}},
             {{{"Matching2", "zoomToBlock2", "Matching2", null, "AudioAB", "2000", null, "ChangeMatching"}, {}},
-            {{"M_07", "M_07.jpg"}, {"M_08", "M_08.jpg"}, {"M_09", "M_09.jpg"}, {"M_10", "M_10.jpg"}, {"M_11", "M_11.jpg"}, {"M_12", "M_12.jpg"}}},
+            {{"M_10_N", "M_10_N.jpg"}, {"M_11_N", "M_11_N.jpg"}, {"M_12_B", "M_12_B.jpg"}, {"M_13_A", "M_13_A.jpg"}, {"M_14_B", "M_14_B.jpg"}, {"M_15_N", "M_15_N.jpg"}, {"M_16_B", "M_16_B.jpg"}, {"M_17_A", "M_17_A.jpg"}, {"M_18_N", "M_18_N.jpg"}}},
             {{{"Test3", "zoomToBlock3", "Test3", null, "AudioRepeat2", "2000", null, "BeginTest"}, {}},
             {{"T_01", "T_01.jpg"}, {"T_02", "T_02.jpg"}, {"T_03", "T_03.jpg"}, {"T_04", "T_04.jpg"}, {"T_05", "T_05.jpg"}, {"T_06", "T_06.jpg"}, {"T_07", "T_07.jpg"}, {"T_08", "T_08.jpg"}, {"T_09", "T_09.jpg"}}},
             {{{"Test4", "zoomToBlock4", "Test4", null, "AudioRepeat2", "2000", null, "ChangeTest"}, {}},
             {{"T_10", "T_10.jpg"}, {"T_11", "T_11.jpg"}, {"T_12", "T_12.jpg"}, {"T_13", "T_13.jpg"}, {"T_14", "T_14.jpg"}, {"T_15", "T_15.jpg"}, {"T_16", "T_16.jpg"}, {"T_17", "T_17.jpg"}, {"T_18", "T_18.jpg"}}},};
+
         final WizardMenuScreen textMenuScreen = new WizardMenuScreen("TestMenu", "TestMenu", "TestMenu");
 //        textMenuScreen.setJumpToRandomScreen(true);
         wizardData.addScreen(textMenuScreen);
@@ -122,6 +123,7 @@ public class PlayhouseStudy {
             testStimulusScreen.setCorrectAudio(testSubList[0][0][6]);
             testStimulusScreen.setIntroAudio(testSubList[0][0][7]);
             testStimulusScreen.setIntroAudioDelay(2000);
+            testStimulusScreen.setStimuliButtonArray("left,centre,right");
             textMenuScreen.addTargetScreen(testStimulusScreen);
             wizardData.addScreen(testStimulusScreen);
             testStimulusScreen.getWizardScreenData().getMenuWizardScreenData().add(textMenuScreen.getWizardScreenData());
@@ -154,7 +156,7 @@ public class PlayhouseStudy {
         atticScreen.setNextWizardScreen(completionScreen);
         bluetoothInstructionsScreen.setBackWizardScreen(menuScreen);
         bluetoothInstructionsScreen.setNextWizardScreen(existingUserCheckScreen);
-
+        existingUserCheckScreen.setBackWizardScreen(bluetoothInstructionsScreen);
 //        existingUserCheckScreen.setNextWizardScreen(selectUserScreen);
         selectUserScreen.setBackWizardScreen(existingUserCheckScreen);
         selectUserScreen.setNextWizardScreen(wizardEditUserScreen);
@@ -180,7 +182,7 @@ public class PlayhouseStudy {
         completionScreen.setBackWizardScreen(menuScreen);
         completionScreen.setNextWizardScreen(wizardEditUserScreen);
         wizardData.addScreen(wizardAboutScreen);
-        wizardEditUserScreen.setBackWizardScreen(selectUserScreen);
+        wizardEditUserScreen.setBackWizardScreen(existingUserCheckScreen);
 
         return wizardData;
     }
