@@ -634,6 +634,14 @@ public class BandStimuliProviderTest {
         Integer[] arr3 = {43, 42, 43, 42, 43, 42, 45, 42};
         boolean result3 = BandStimuliProvider.detectLoop(arr3);
         assertEquals(false, result3);
+        
+        Integer[] arr4 = {8,6,8,6,8};
+        boolean result4 = BandStimuliProvider.detectLoop(arr4);
+        assertTrue(result4);
+        
+        Integer[] arr5 = {9,8,9,8,9};
+        boolean result5 = BandStimuliProvider.detectLoop(arr5);
+        assertTrue(result5);
     }
 
     /**

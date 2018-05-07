@@ -47,6 +47,7 @@ public class AudioAsStimuliProviderTest {
     private final int numberOfBands = 12;
     private final String requiredLength = "3,4,5,6";
     private final int maxLength = 6;
+    private final String upperBoundForcycles = "2";
 
     public AudioAsStimuliProviderTest() {
     }
@@ -65,7 +66,7 @@ public class AudioAsStimuliProviderTest {
         this.instance.setfastTrackPresent("False");
         this.instance.setfineTuningFirstWrongOut("True");
         this.instance.setfineTuningTupleLength(Integer.toString(this.tupleSize));
-        this.instance.setfineTuningUpperBoundForCycles("2");
+        this.instance.setfineTuningUpperBoundForCycles(this.upperBoundForcycles);
         this.instance.setnumberOfBands(Integer.toString(this.numberOfBands));
         this.instance.setstartBand(Integer.toString(this.startBand));
         this.instance.setrequiredLengths(requiredLength);
@@ -255,7 +256,7 @@ public class AudioAsStimuliProviderTest {
             Stimulus stimulus = bStimulus.getStimulus(); // upcasting
             WordType wt = bStimulus.getStimulus().getwordType();
             Trial trBefore = this.instance.getCurrentTrialTuple().getFirstNonusedTrial();
-                
+
             if (wt.equals(WordType.TARGET_NON_WORD) || wt.equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
                 assertTrue(this.instance.isCorrectResponse(stimulus, AudioAsStimulus.AUDIO_RATING_LABEL));
                 assertEquals(AudioAsStimulus.USER_REACTION, bStimulus.getReaction());
@@ -548,13 +549,20 @@ public class AudioAsStimuliProviderTest {
         int i = 0;
         boolean distort = false;
         int previousBandIndex = this.startBand;
+        int numberOfIterations = 2 * Integer.parseInt(this.upperBoundForcycles) + 1;
+        int bandTestCounter = 1;
         while (this.instance.hasNextStimulus(i)) {
+
             this.instance.nextStimulus(i);
             AudioAsStimulus audioStimulus = this.instance.getCurrentStimulus();
             Stimulus stimulus = audioStimulus;
             i++;
 
             if (audioStimulus.getwordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
+
+                if (this.instance.getCurrentBandIndex() != previousBandIndex) {
+                    bandTestCounter++;
+                }
                 if (this.instance.getCurrentBandIndex() > previousBandIndex) {
                     distort = true; // we jumped to the higher band, need to make a mistake to force looping
                 } else {
@@ -582,6 +590,7 @@ public class AudioAsStimuliProviderTest {
 
         assertFalse(this.instance.getChampion());
         assertTrue(this.instance.getCycel2());
+        assertEquals(6, bandTestCounter);
         assertFalse(this.instance.getLooser());
         assertEquals(5, this.instance.getBandIndexScore());
 
