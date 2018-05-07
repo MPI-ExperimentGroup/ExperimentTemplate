@@ -21,10 +21,8 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
  *
  * @author olhshk
  */
-public enum WordType {
-    WORD, EXAMPLE_TARGET_NON_WORD, TARGET_NON_WORD, FOIL, NON_WORD;
+public class TestConfigurationConstants {
     
-    public boolean equals(WordType wt) {
-        return this.toString().equals(wt.toString());
-    }
+    public static final String STIMULI_DIR = "/static/stimuli/" ; // must be the same as in the configuration file
+    
 }

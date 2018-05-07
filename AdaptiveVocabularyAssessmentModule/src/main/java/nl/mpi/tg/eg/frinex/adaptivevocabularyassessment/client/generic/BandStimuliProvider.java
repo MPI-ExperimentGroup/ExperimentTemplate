@@ -374,10 +374,10 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     @Override
     public boolean isCorrectResponse(Stimulus stimulus, String stimulusResponse) {
         int index = this.getCurrentStimulusIndex();
+        this.responseRecord.get(index).setReaction(stimulusResponse);
         this.responseRecord.get(index).setTimeStamp(System.currentTimeMillis());
         this.isCorrectCurrentResponse = this.analyseCorrectness(stimulus, stimulusResponse);
         this.responseRecord.get(index).setCorrectness(this.isCorrectCurrentResponse);
-        this.responseRecord.get(index).setReaction(stimulusResponse);
         return this.isCorrectCurrentResponse;
     }
 
@@ -439,13 +439,13 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         return contRound;
     }
 
-    private boolean fineTuningToBeContinuedFirstWrongOut() {
+    protected boolean fineTuningToBeContinuedFirstWrongOut() {
 
         boolean retVal;
         int memoizeBandIndex = this.currentBandIndex; // memoise currentBandIndex
 
         if (this.isCorrectCurrentResponse) {
-            if (this.tupleFT.size() > 0) {
+            if (this.tupleIsNotEmpty()) {
                 // we have not hit the last atom in the tuple yet
                 // continue
                 return true;
@@ -475,16 +475,8 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         } else {
             // register finishing band 
             this.bandVisitCounter[this.currentBandIndex]++;
-
-            // put back unused element of the tuple
-            // recycling
-            boolean ended = this.tupleFT.isEmpty();
-            while (!ended) {
-                this.recycleUnusedStimuli();
-                ended = this.tupleFT.isEmpty();
-            }
-
             retVal = this.toBeContinuedLoopAndLooserChecker();
+            this.recycleUnusedStimuli();    
         }
 
         if (retVal) {

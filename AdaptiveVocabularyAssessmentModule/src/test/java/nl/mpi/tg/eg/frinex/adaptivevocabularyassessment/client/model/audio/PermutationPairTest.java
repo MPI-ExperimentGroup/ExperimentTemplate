@@ -51,7 +51,7 @@ public class PermutationPairTest {
     private final int tupleSize = 4;
 
     public PermutationPairTest() {
-        this.reader.readTrialsAsCsv();
+        this.reader.readTrialsAsCsv(TestConfigurationConstants.STIMULI_DIR);
         this.hashedTrials = this.reader.getHashedTrials();
         this.trialMatrix = Trial.prepareTrialMatrix(this.hashedTrials, this.numberOfBands, this.maxtTialLength);
         UtilsList<Integer> utilInt = new UtilsList<Integer>();

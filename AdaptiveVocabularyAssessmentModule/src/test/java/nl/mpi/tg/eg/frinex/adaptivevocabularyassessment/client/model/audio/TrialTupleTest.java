@@ -50,7 +50,7 @@ public class TrialTupleTest {
     private TrialTuple instance;
     
     public TrialTupleTest() {
-        this.reader.readTrialsAsCsv();
+        this.reader.readTrialsAsCsv(TestConfigurationConstants.STIMULI_DIR);
         this.hashedTrials = this.reader.getHashedTrials();
         this.trial1 = this.hashedTrials.get(1);
         this.trial2 = this.hashedTrials.get(107);

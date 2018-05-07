@@ -23,6 +23,7 @@ import java.util.LinkedHashMap;
 import java.util.Set;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioAsStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TestConfigurationConstants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Trial;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialCondition;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.WordType;
@@ -67,7 +68,7 @@ public class AudioStimuliFromStringTest {
     public void testReadTrialsAsCsv() {
         System.out.println("readTrialsAsCsv");
         AudioStimuliFromString instance = new AudioStimuliFromString();
-        instance.readTrialsAsCsv();
+        instance.readTrialsAsCsv(TestConfigurationConstants.STIMULI_DIR);
         LinkedHashMap<Integer, Trial> trials = instance.getHashedTrials();
         Set<Integer> keys = trials.keySet();
         assertEquals(this.nTrials, trials.size());
@@ -314,7 +315,7 @@ public class AudioStimuliFromStringTest {
     public void testGetStimuliTrialIndex() {
 
         AudioStimuliFromString instance = new AudioStimuliFromString();
-        instance.readTrialsAsCsv();
+        instance.readTrialsAsCsv(TestConfigurationConstants.STIMULI_DIR);
         LinkedHashMap<Integer, Trial> trials = instance.getHashedTrials();
         LinkedHashMap<String, Integer> stimuliTrialReference = instance.getStimuliTrialIndex();
 
