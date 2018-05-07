@@ -81,8 +81,9 @@
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider" eventTag="stimuliN" 
                       numberOfBands="12" startBand="5" 
                       fineTuningTupleLength="4" fineTuningUpperBoundForCycles="2"
-                      fastTrackPresent="false" fineTuningFirstWrongOut="false"
-                      requiredLengths="3,4,5,6" requiredTrialTypes="TARGET_ONLY,NO_TARGET,TARGET_AND_FOIL,NO_TARGET">
+                      fastTrackPresent="false" fineTuningFirstWrongOut="true"
+                      requiredLengths="3,4,5,6" requiredTrialTypes="TARGET_ONLY,NO_TARGET,TARGET_AND_FOIL,NO_TARGET"
+                      stimuliDir="static/stimuli/">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
                     <nextStimulus repeatIncorrect="false"/>
@@ -170,8 +171,9 @@
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider" eventTag="stimuliN" 
                       numberOfBands="12" startBand="5" 
                       fineTuningTupleLength="4" fineTuningUpperBoundForCycles="2"
-                      fastTrackPresent="false" fineTuningFirstWrongOut="false"
-                      requiredLengths="3,4,5,6" requiredTrialTypes="TARGET_ONLY,NO_TARGET,TARGET_AND_FOIL,NO_TARGET">
+                      fastTrackPresent="false" fineTuningFirstWrongOut="true"
+                      requiredLengths="3,4,5,6" requiredTrialTypes="TARGET_ONLY,NO_TARGET,TARGET_AND_FOIL,NO_TARGET"
+                      stimuliDir="static/stimuli/">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
                     <nextStimulus repeatIncorrect="false"/>
