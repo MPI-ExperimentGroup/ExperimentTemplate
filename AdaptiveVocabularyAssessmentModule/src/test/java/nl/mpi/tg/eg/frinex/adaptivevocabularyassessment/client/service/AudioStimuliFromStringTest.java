@@ -40,8 +40,7 @@ import static org.junit.Assert.*;
  */
 public class AudioStimuliFromStringTest {
     
-    private int nTrials = 2352;
-
+    
     public AudioStimuliFromStringTest() {
     }
 
@@ -68,10 +67,10 @@ public class AudioStimuliFromStringTest {
     public void testReadTrialsAsCsv() {
         System.out.println("readTrialsAsCsv");
         AudioStimuliFromString instance = new AudioStimuliFromString();
-        instance.readTrialsAsCsv(TestConfigurationConstants.STIMULI_DIR);
+        instance.readTrialsAsCsv(TestConfigurationConstants.AUDIO_STIMULI_DIR);
         LinkedHashMap<Integer, Trial> trials = instance.getHashedTrials();
         Set<Integer> keys = trials.keySet();
-        assertEquals(this.nTrials, trials.size());
+        assertEquals(TestConfigurationConstants.N_AUDIO_TRIALS, trials.size());
         for (Integer i : keys) {
 
             Trial trial = trials.get(i);
@@ -309,13 +308,69 @@ public class AudioStimuliFromStringTest {
         assertEquals("min12db", trial52.getBandLabel());
         assertEquals(11, trial52.getBandIndex());
         assertEquals(0, trial52.getPositionFoil());
+        
+        
+        //2500;week;woek.wav;1;NoTarget;3 words;vool.wav;jal.wav;tuzi.wav;;;;0;min14db;0;
+        Trial trial53 = trials.get(2500);
+        assertEquals("week", trial53.getWord());
+        assertEquals("woek", trial53.getTargetNonWord());
+        assertEquals(1, trial53.getNumberOfSyllables());
+        assertEquals(TrialCondition.NO_TARGET, trial53.getCondition());
+        assertEquals(3, trial53.getTrialLength());
+        assertEquals("woek", trial53.getStimuli().get(0).getStimulus().getLabel());
+        assertEquals("vool", trial53.getStimuli().get(1).getStimulus().getLabel());
+        assertEquals("jal", trial53.getStimuli().get(2).getStimulus().getLabel());
+        assertEquals("tuzi", trial53.getStimuli().get(3).getStimulus().getLabel());
+        assertEquals(0, trial53.getPositionTarget());
+        assertEquals("min14db", trial53.getBandLabel());
+        assertEquals(12, trial53.getBandIndex());
+        assertEquals(0, trial53.getPositionFoil());
+        
+        
+        //3000;tank;pank_1.wav;1;Target-only;6 words;alktoord.wav;bawo.wav;pank_2.wav;gam.wav;kel.wav;loofteed.wav;3;min20db;0;
+        Trial trial61 = trials.get(3000);
+        assertEquals("tank", trial61.getWord());
+        assertEquals("pank_1", trial61.getTargetNonWord());
+        assertEquals(1, trial61.getNumberOfSyllables());
+        assertEquals(TrialCondition.TARGET_ONLY, trial61.getCondition());
+        assertEquals(6, trial61.getTrialLength());
+        assertEquals("pank_1", trial61.getStimuli().get(0).getStimulus().getLabel());
+        assertEquals("alktoord", trial61.getStimuli().get(1).getStimulus().getLabel());
+        assertEquals("bawo", trial61.getStimuli().get(2).getStimulus().getLabel());
+        assertEquals("pank_2", trial61.getStimuli().get(3).getStimulus().getLabel());
+        assertEquals("gam", trial61.getStimuli().get(4).getStimulus().getLabel());
+        assertEquals("kel", trial61.getStimuli().get(5).getStimulus().getLabel());
+        assertEquals("loofteed", trial61.getStimuli().get(6).getStimulus().getLabel());
+        assertEquals(3, trial61.getPositionTarget());
+        assertEquals("min20db", trial61.getBandLabel());
+        assertEquals(15, trial61.getBandIndex());
+        assertEquals(0, trial61.getPositionFoil());
+        
+        //3136;wol;pra.wav;1;NoTarget;6 words;reuwel.wav;wog.wav;consmilp.wav;leskert.wav;mels.wav;dwaat.wav;0;min20db;0;
+        Trial trial72 = trials.get(3136);
+        assertEquals("wol", trial72.getWord());
+        assertEquals("pra", trial72.getTargetNonWord());
+        assertEquals(1, trial53.getNumberOfSyllables());
+        assertEquals(TrialCondition.NO_TARGET, trial72.getCondition());
+        assertEquals(6, trial72.getTrialLength());
+        assertEquals("pra", trial72.getStimuli().get(0).getStimulus().getLabel());
+        assertEquals("reuwel", trial72.getStimuli().get(1).getStimulus().getLabel());
+        assertEquals("wog", trial72.getStimuli().get(2).getStimulus().getLabel());
+        assertEquals("consmilp", trial72.getStimuli().get(3).getStimulus().getLabel());
+        assertEquals("leskert", trial72.getStimuli().get(4).getStimulus().getLabel());
+        assertEquals("mels", trial72.getStimuli().get(5).getStimulus().getLabel());
+        assertEquals("dwaat", trial72.getStimuli().get(6).getStimulus().getLabel());
+        assertEquals(0, trial72.getPositionTarget());
+        assertEquals("min20db", trial72.getBandLabel());
+        assertEquals(15, trial72.getBandIndex());
+        assertEquals(0, trial72.getPositionFoil());
     }
 
     @Test
     public void testGetStimuliTrialIndex() {
 
         AudioStimuliFromString instance = new AudioStimuliFromString();
-        instance.readTrialsAsCsv(TestConfigurationConstants.STIMULI_DIR);
+        instance.readTrialsAsCsv(TestConfigurationConstants.AUDIO_STIMULI_DIR);
         LinkedHashMap<Integer, Trial> trials = instance.getHashedTrials();
         LinkedHashMap<String, Integer> stimuliTrialReference = instance.getStimuliTrialIndex();
 

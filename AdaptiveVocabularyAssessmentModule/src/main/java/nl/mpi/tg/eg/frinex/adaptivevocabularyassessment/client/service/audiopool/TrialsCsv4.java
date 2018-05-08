@@ -25,7 +25,6 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopoo
 public class TrialsCsv4 {
     
      public static String CSV_CONTENT = "Nr;Word;Target_nonword;Syllables;Condition;Length_list;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Noise_level;Position_foil;\n"+
-"1500;gans;gret_1.wav;1;Target+Foil;6 words;gremdoep.wav;snuim.wav;gret_2.wav;wuil.wav;warnis.wav;winkheek.wav;3;min4db;1;\n" +
 "1501;kuil;baust_1.wav;1;Target+Foil;6 words;baaf.wav;baundleu.wav;foestvag.wav;baust_2.wav;tan.wav;rornas.wav;4;min4db;2;\n" +
 "1502;bad;bam_1.wav;1;Target+Foil;6 words;wirums.wav;mefdel.wav;bafruip.wav;lir.wav;bam_2.wav;lank.wav;5;min4db;3;\n" +
 "1503;klas;roen_1.wav;1;Target+Foil;6 words;zeut.wav;glank.wav;roegtaus.wav;lentar.wav;roen_2.wav;rielak.wav;5;min4db;3;\n" +
@@ -524,6 +523,7 @@ public class TrialsCsv4 {
 "1996;haai;hoei_1.wav;1;Target-only;4 words;jerg.wav;cigroon.wav;hoei_2.wav;lordel.wav;;;3;min10db;0;\n" +
 "1997;peer;reer_1.wav;1;Target-only;5 words;omvost.wav;reer_2.wav;drits.wav;bilwoon.wav;pild.wav;;2;min10db;0;\n" +
 "1998;duim;tuim_1.wav;1;Target-only;5 words;drander.wav;tuim_2.wav;laber.wav;kloes.wav;zuin.wav;;2;min10db;0;\n" +
-"1999;helm;hern_1.wav;1;Target-only;5 words;delk.wav;hern_2.wav;wazon.wav;tuip.wav;veser.wav;;2;min10db;0;\n";
+"1999;helm;hern_1.wav;1;Target-only;5 words;delk.wav;hern_2.wav;wazon.wav;tuip.wav;veser.wav;;2;min10db;0;\n" +
+"2000;muis;muin_1.wav;1;Target-only;5 words;blan.wav;muin_2.wav;wemp.wav;euzer.wav;knekgel.wav;;2;min10db;0;";
             
 }

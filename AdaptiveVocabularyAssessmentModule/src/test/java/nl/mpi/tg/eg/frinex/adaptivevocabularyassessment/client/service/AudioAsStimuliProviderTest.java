@@ -42,12 +42,6 @@ import static org.junit.Assert.*;
 public class AudioAsStimuliProviderTest {
 
     private AudioAsStimuliProvider instance;
-    private final int startBand = 5;
-    private final int tupleSize = 4;
-    private final int numberOfBands = 12;
-    private final String requiredLength = "3,4,5,6";
-    private final int maxLength = 6;
-    private final String upperBoundForcycles = "2";
 
     public AudioAsStimuliProviderTest() {
     }
@@ -65,13 +59,13 @@ public class AudioAsStimuliProviderTest {
         this.instance = new AudioAsStimuliProvider(null);
         this.instance.setfastTrackPresent("False");
         this.instance.setfineTuningFirstWrongOut("True");
-        this.instance.setfineTuningTupleLength(Integer.toString(this.tupleSize));
-        this.instance.setfineTuningUpperBoundForCycles(this.upperBoundForcycles);
-        this.instance.setnumberOfBands(Integer.toString(this.numberOfBands));
-        this.instance.setstartBand(Integer.toString(this.startBand));
-        this.instance.setrequiredLengths(requiredLength);
+        this.instance.setfineTuningTupleLength(Integer.toString(TestConfigurationConstants.AUDIO_TUPLE_SIZE));
+        this.instance.setfineTuningUpperBoundForCycles(TestConfigurationConstants.AUDIO_UPPER_BOUND_FOR_CYCLES);
+        this.instance.setnumberOfBands(Integer.toString(TestConfigurationConstants.AUDIO_NUMBER_OF_BANDS));
+        this.instance.setstartBand(Integer.toString(TestConfigurationConstants.AUDIO_START_BAND));
+        this.instance.setrequiredLengths(TestConfigurationConstants.AUDIO_REQUIRED_LENGTHS);
         this.instance.setrequiredTrialTypes("TARGET_ONLY,NO_TARGET,TARGET_AND_FOIL,NO_TARGET");
-        this.instance.setstimuliDir(TestConfigurationConstants.STIMULI_DIR);
+        this.instance.setstimuliDir(TestConfigurationConstants.AUDIO_STIMULI_DIR);
     }
 
     @After
@@ -87,15 +81,15 @@ public class AudioAsStimuliProviderTest {
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
 
-        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
+        assertEquals(TestConfigurationConstants.AUDIO_START_BAND, this.instance.getCurrentBandIndex());
 
-        assertEquals(this.numberOfBands, this.instance.getnumberOfBands());
+        assertEquals(TestConfigurationConstants.AUDIO_NUMBER_OF_BANDS, this.instance.getnumberOfBands());
 
         TrialTuple currentTrialTuple = this.instance.getCurrentTrialTuple();
 
         this.checkTuple(currentTrialTuple);
 
-        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
+        assertEquals(TestConfigurationConstants.AUDIO_START_BAND, this.instance.getCurrentBandIndex());
 
         ArrayList<Integer> lngths = this.instance.getRequiredLength();
         assertEquals(4, lngths.size());
@@ -120,7 +114,7 @@ public class AudioAsStimuliProviderTest {
         System.out.println("nextStimulus");
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
-        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
+        assertEquals(TestConfigurationConstants.AUDIO_START_BAND, this.instance.getCurrentBandIndex());
         assertTrue(this.instance.hasNextStimulus(0));
 
         int memSize = this.instance.getCurrentTrialTuple().getNumberOfStimuli();
@@ -139,7 +133,7 @@ public class AudioAsStimuliProviderTest {
 //        System.out.println("allTupleIsCorrect");
 //        String stimuliStateSnapshot = "";
 //        this.instance.initialiseStimuliState(stimuliStateSnapshot);
-//        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
+//        assertEquals(this.AUDIO_START_BAND, this.instance.getCurrentBandIndex());
 //
 //        while (this.instance.getCurrentTrialTuple().isNotEmpty()) {
 //            this.instance.hasNextStimulus(0);
@@ -160,7 +154,7 @@ public class AudioAsStimuliProviderTest {
 //        System.out.println("allTupleIsCorrect 2");
 //        String stimuliStateSnapshot = "";
 //        this.instance.initialiseStimuliState(stimuliStateSnapshot);
-//        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
+//        assertEquals(this.AUDIO_START_BAND, this.instance.getCurrentBandIndex());
 //
 //        boolean mistaken = false;
 //        while (this.instance.getCurrentTrialTuple().isNotEmpty()) {
@@ -188,7 +182,7 @@ public class AudioAsStimuliProviderTest {
 //        System.out.println("allTupleIsCorrect 3");
 //        String stimuliStateSnapshot = "";
 //        this.instance.initialiseStimuliState(stimuliStateSnapshot);
-//        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
+//        assertEquals(this.AUDIO_START_BAND, this.instance.getCurrentBandIndex());
 //
 //        int n = this.instance.getCurrentTrialTuple().getNumberOfStimuli();
 //        boolean mistaken = false;
@@ -215,7 +209,7 @@ public class AudioAsStimuliProviderTest {
         System.out.println("isCorrectResponse-1");
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
-        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
+        assertEquals(TestConfigurationConstants.AUDIO_START_BAND, this.instance.getCurrentBandIndex());
 
         while (this.instance.getCurrentTrialTuple().isNotEmpty()) {
             this.instance.hasNextStimulus(0);
@@ -281,7 +275,7 @@ public class AudioAsStimuliProviderTest {
 
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
-        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
+        assertEquals(TestConfigurationConstants.AUDIO_START_BAND, this.instance.getCurrentBandIndex());
 
         while (this.instance.getCurrentTrialTuple().isNotEmpty()) {
             this.instance.getCurrentTrialTuple().getFirstNonusedTrial().getStimuli().remove(0);
@@ -303,7 +297,7 @@ public class AudioAsStimuliProviderTest {
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
 
-        for (int i = 0; i < this.tupleSize; i++) {
+        for (int i = 0; i < TestConfigurationConstants.AUDIO_TUPLE_SIZE; i++) {
             assertTrue(this.instance.getCurrentTrialTuple().getTrials().get(i).getStimuli().size() > 1);
         }
 
@@ -315,7 +309,7 @@ public class AudioAsStimuliProviderTest {
 
         assertFalse(this.instance.getCurrentTrialTuple().isNotEmpty());
 
-        for (int i = 0; i < this.tupleSize; i++) {
+        for (int i = 0; i < TestConfigurationConstants.AUDIO_TUPLE_SIZE; i++) {
             assertEquals(0, this.instance.getCurrentTrialTuple().getTrials().get(i).getStimuli().size());
         }
 
@@ -331,9 +325,9 @@ public class AudioAsStimuliProviderTest {
 
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
-        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
+        assertEquals(TestConfigurationConstants.AUDIO_START_BAND, this.instance.getCurrentBandIndex());
 
-        for (int i = 0; i < this.tupleSize; i++) {
+        for (int i = 0; i < TestConfigurationConstants.AUDIO_TUPLE_SIZE; i++) {
             Trial trial = this.instance.getCurrentTrialTuple().getTrials().get(i);
             TrialCondition cond = trial.getCondition();
             ArrayList<BookkeepingStimulus<AudioAsStimulus>> stimuli = trial.getStimuli();
@@ -382,7 +376,7 @@ public class AudioAsStimuliProviderTest {
         System.out.println("hasNextStimulus Champion");
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
-        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
+        assertEquals(TestConfigurationConstants.AUDIO_START_BAND, this.instance.getCurrentBandIndex());
 
         int i = 0;
         while (this.instance.hasNextStimulus(i)) {
@@ -399,7 +393,7 @@ public class AudioAsStimuliProviderTest {
         assertTrue(this.instance.getChampion());
         assertFalse(this.instance.getCycel2());
         assertFalse(this.instance.getLooser());
-        assertEquals(this.numberOfBands, this.instance.getBandIndexScore() + 1);
+        assertEquals(TestConfigurationConstants.AUDIO_NUMBER_OF_BANDS, this.instance.getBandIndexScore() + 1);
 
         ArrayList<BookkeepingStimulus<AudioAsStimulus>> record = this.instance.getResponseRecord();
         //this.printRecord(record);
@@ -434,15 +428,15 @@ public class AudioAsStimuliProviderTest {
         System.out.println("hasNextStimulus Looser");
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
-        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
+        assertEquals(TestConfigurationConstants.AUDIO_START_BAND, this.instance.getCurrentBandIndex());
 
         int i = 0;
         ArrayList<ArrayList<LinkedHashMap<TrialCondition, Integer>>> recycledSizes = new ArrayList<ArrayList<LinkedHashMap<TrialCondition, Integer>>>();
         while (this.instance.hasNextStimulus(i)) {
 
             if (!recycledSizes.isEmpty() && this.instance.getCurrentBandIndex() > 0) { // recycling check, except the lowest band which we hit two times in  a row and reclaime recycled trials immediately
-                for (int j = 0; j < this.numberOfBands; j++) {
-                    for (int jj = 0; jj <= this.maxLength; jj++) {
+                for (int j = 0; j < TestConfigurationConstants.AUDIO_NUMBER_OF_BANDS; j++) {
+                    for (int jj = 0; jj <= TestConfigurationConstants.AUDIO_MAX_LENGTH; jj++) {
                         LinkedHashMap<TrialCondition, Integer> sizeMap = recycledSizes.get(j).get(jj);
                         Set<TrialCondition> keys = sizeMap.keySet();
                         for (TrialCondition tc : keys) {
@@ -463,7 +457,7 @@ public class AudioAsStimuliProviderTest {
                 String correctResponce = audioStimulus.getCorrectResponses();
                 this.instance.isCorrectResponse(stimulus, correctResponce);
 
-                recycledSizes = new ArrayList<ArrayList<LinkedHashMap<TrialCondition, Integer>>>(this.numberOfBands); // initialise recycling
+                recycledSizes = new ArrayList<ArrayList<LinkedHashMap<TrialCondition, Integer>>>(TestConfigurationConstants.AUDIO_NUMBER_OF_BANDS); // initialise recycling
 
                 continue;
             }
@@ -475,10 +469,10 @@ public class AudioAsStimuliProviderTest {
 
             //  memoise trials-state to check recycling, which will be triggered by hasNextStimulus() call
             // RECYCLING CHECK preps
-            for (int j = 0; j < this.numberOfBands; j++) {
-                ArrayList<LinkedHashMap<TrialCondition, Integer>> band = new ArrayList<LinkedHashMap<TrialCondition, Integer>>(this.maxLength);
+            for (int j = 0; j < TestConfigurationConstants.AUDIO_NUMBER_OF_BANDS; j++) {
+                ArrayList<LinkedHashMap<TrialCondition, Integer>> band = new ArrayList<LinkedHashMap<TrialCondition, Integer>>(TestConfigurationConstants.AUDIO_MAX_LENGTH);
                 recycledSizes.add(band);
-                for (int jj = 0; jj <= this.maxLength; jj++) {
+                for (int jj = 0; jj <= TestConfigurationConstants.AUDIO_MAX_LENGTH; jj++) {
                     LinkedHashMap<TrialCondition, Integer> sizeMap = new LinkedHashMap<TrialCondition, Integer>();
                     band.add(sizeMap);
                 }
@@ -544,13 +538,12 @@ public class AudioAsStimuliProviderTest {
         System.out.println("hasNextStimulus Loop");
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
-        assertEquals(this.startBand, this.instance.getCurrentBandIndex());
+        assertEquals(5, this.instance.getCurrentBandIndex());
 
         int i = 0;
         boolean distort = false;
-        int previousBandIndex = this.startBand;
-        int numberOfIterations = 2 * Integer.parseInt(this.upperBoundForcycles) + 1;
-        int bandTestCounter = 1;
+        int previousBandIndex = 5;
+        int bandChangeCounter = 0;
         while (this.instance.hasNextStimulus(i)) {
 
             this.instance.nextStimulus(i);
@@ -561,7 +554,7 @@ public class AudioAsStimuliProviderTest {
             if (audioStimulus.getwordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
 
                 if (this.instance.getCurrentBandIndex() != previousBandIndex) {
-                    bandTestCounter++;
+                    bandChangeCounter++;
                 }
                 if (this.instance.getCurrentBandIndex() > previousBandIndex) {
                     distort = true; // we jumped to the higher band, need to make a mistake to force looping
@@ -590,9 +583,10 @@ public class AudioAsStimuliProviderTest {
 
         assertFalse(this.instance.getChampion());
         assertTrue(this.instance.getCycel2());
-        assertEquals(6, bandTestCounter);
-        assertFalse(this.instance.getLooser());
+        
         assertEquals(5, this.instance.getBandIndexScore());
+        assertEquals(5, bandChangeCounter);
+        assertFalse(this.instance.getLooser());
 
         ArrayList<BookkeepingStimulus<AudioAsStimulus>> record = this.instance.getResponseRecord();
         //this.printRecord(record);
@@ -633,7 +627,7 @@ public class AudioAsStimuliProviderTest {
 
     private void checkTuple(TrialTuple tuple) {
 
-        assertEquals(this.tupleSize, tuple.getTrials().size());
+        assertEquals(TestConfigurationConstants.AUDIO_TUPLE_SIZE, tuple.getTrials().size());
         int countTargetAndFoil = 0;
         int countNoTarget = 0;
         int countTargetOnly = 0;
@@ -641,10 +635,10 @@ public class AudioAsStimuliProviderTest {
         int count4 = 0;
         int count5 = 0;
         int count6 = 0;
-        for (int i = 0; i < this.tupleSize; i++) {
+        for (int i = 0; i < TestConfigurationConstants.AUDIO_TUPLE_SIZE; i++) {
 
             Trial trial = tuple.getTrials().get(i);
-            assertEquals(this.startBand, trial.getBandIndex());
+            assertEquals(TestConfigurationConstants.AUDIO_START_BAND, trial.getBandIndex());
             ArrayList<BookkeepingStimulus<AudioAsStimulus>> stimuli = trial.getStimuli();
             assertEquals(WordType.EXAMPLE_TARGET_NON_WORD, stimuli.get(0).getStimulus().getwordType()); // the first stimulus should always example
             assertEquals(trial.getTrialLength() + 1, stimuli.size());
@@ -682,7 +676,7 @@ public class AudioAsStimuliProviderTest {
         assertEquals(1, countTargetOnly);
         assertEquals(1, countTargetAndFoil);
 
-        assertEquals(this.tupleSize, count3 + count4 + count5 + count6);
+        assertEquals(TestConfigurationConstants.AUDIO_TUPLE_SIZE, count3 + count4 + count5 + count6);
         assertTrue(count3 <= 1);
         assertTrue(count4 <= 1);
         assertTrue(count5 <= 1);

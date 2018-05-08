@@ -242,11 +242,16 @@ public class AudioStimuliFromString {
             LinkedHashMap<Integer, Trial> trials4 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv4.CSV_CONTENT, fileNameExtensions, stimuliDir);
             System.out.println("Portion 5");
             LinkedHashMap<Integer, Trial> trials5 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv5.CSV_CONTENT, fileNameExtensions, stimuliDir);
-
+            System.out.println("Portion 6");
+            LinkedHashMap<Integer, Trial> trials6 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv6.CSV_CONTENT, fileNameExtensions, stimuliDir);
+            System.out.println("Portion 7");
+            LinkedHashMap<Integer, Trial> trials7 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv7.CSV_CONTENT, fileNameExtensions, stimuliDir);
             this.trials.putAll(trials2);
             this.trials.putAll(trials3);
             this.trials.putAll(trials4);
             this.trials.putAll(trials5);
+            this.trials.putAll(trials6);
+            this.trials.putAll(trials7);
         } catch (Exception exc) {
             System.out.println(exc);
         }

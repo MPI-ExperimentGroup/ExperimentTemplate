@@ -24,7 +24,6 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopoo
 public class TrialsCsv3 {
 
     public static String CSV_CONTENT = "Nr;Word;Target_nonword;Syllables;Condition;Length_list;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Noise_level;Position_foil;\n"+
-"1000;kurk;skee_1.wav;1;Target-only;4 words;pif.wav;skee_2.wav;wadees.wav;landhoeg.wav;;;2;zerodb;0;\n" +
 "1001;vlot;vrot_1.wav;1;Target-only;4 words;spomwel.wav;vrot_2.wav;akakos.wav;borts.wav;;;2;zerodb;0;\n" +
 "1002;pruik;proek_1.wav;1;Target-only;4 words;doljeen.wav;proek_2.wav;klek.wav;spomset.wav;;;2;zerodb;0;\n" +
 "1003;schaap;schuip_1.wav;1;Target-only;4 words;wamoel.wav;schuip_2.wav;balstel.wav;res.wav;;;2;zerodb;0;\n" +
@@ -523,5 +522,6 @@ public class TrialsCsv3 {
 "1496;maan;maap_1.wav;1;Target+Foil;6 words;maafnoep.wav;maap_2.wav;rargen.wav;kons.wav;wop.wav;reveer.wav;2;min4db;1;\n" +
 "1497;velg;duil_1.wav;1;Target+Foil;6 words;gangkeer.wav;duiskalp.wav;duil_2.wav;opvek.wav;jeel.wav;snaag.wav;3;min4db;2;\n" +
 "1498;streep;wuik_1.wav;1;Target+Foil;6 words;lendaar.wav;grem.wav;wuigkroer.wav;wuik_2.wav;koereek.wav;kork.wav;4;min4db;3;\n" +
-"1499;paars;breeg_1.wav;1;Target+Foil;6 words;hoortbijn.wav;zel.wav;grubond.wav;breelmeeg.wav;breeg_2.wav;scherg.wav;5;min4db;4;\n";
+"1499;paars;breeg_1.wav;1;Target+Foil;6 words;hoortbijn.wav;zel.wav;grubond.wav;breelmeeg.wav;breeg_2.wav;scherg.wav;5;min4db;4;\n" +
+"1500;gans;gret_1.wav;1;Target+Foil;6 words;gremdoep.wav;snuim.wav;gret_2.wav;wuil.wav;warnis.wav;winkheek.wav;3;min4db;1;";
 }

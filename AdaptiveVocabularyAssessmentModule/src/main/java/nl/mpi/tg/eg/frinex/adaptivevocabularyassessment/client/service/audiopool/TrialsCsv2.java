@@ -25,8 +25,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopoo
 public class TrialsCsv2 {
     
    public static String CSV_CONTENT="Nr;Word;Target_nonword;Syllables;Condition;Length_list;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Noise_level;Position_foil;\n"+
-"500;kip;kep_1.wav;1;Target+Foil;5 words;vui.wav;kekmieg.wav;kep_2.wav;peek.wav;tukliek.wav;;3;plus6db;2;\n" +
-"501;hoef;hogt_1.wav;1;Target+Foil;5 words;ontpad.wav;holmdrins.wav;hogt_2.wav;toor.wav;roog.wav;;3;plus6db;2;\n" +
+ "501;hoef;hogt_1.wav;1;Target+Foil;5 words;ontpad.wav;holmdrins.wav;hogt_2.wav;toor.wav;roog.wav;;3;plus6db;2;\n" +
 "502;stuur;hies_1.wav;1;Target+Foil;5 words;vaatlal.wav;nos.wav;hiemrief.wav;hies_2.wav;fots.wav;;4;plus6db;3;\n" +
 "503;boek;zan_1.wav;1;Target+Foil;5 words;dauk.wav;andoer.wav;zallalk.wav;zan_2.wav;slon.wav;;4;plus6db;3;\n" +
 "504;doos;duis_1.wav;1;Target+Foil;5 words;duigjooi.wav;fruik.wav;duis_2.wav;eels.wav;apder.wav;;3;plus6db;1;\n" +
@@ -524,5 +523,6 @@ public class TrialsCsv2 {
 "996;hert;hets_1.wav;1;Target-only;3 words;sperf.wav;hets_2.wav;nijmwaard.wav;;;;2;zerodb;0;\n" +
 "997;schaar;schoer_1.wav;1;Target-only;3 words;brin.wav;schoer_2.wav;kneeuwlan.wav;;;;2;zerodb;0;\n" +
 "998;kraan;blaan_1.wav;1;Target-only;3 words;stolf.wav;blaan_2.wav;caimug.wav;;;;2;zerodb;0;\n" +
-"999;kers;hers_1.wav;1;Target-only;4 words;geider.wav;hers_2.wav;atgraus.wav;hamp.wav;;;2;zerodb;0;\n";
+"999;kers;hers_1.wav;1;Target-only;4 words;geider.wav;hers_2.wav;atgraus.wav;hamp.wav;;;2;zerodb;0;\n" +
+"1000;kurk;skee_1.wav;1;Target-only;4 words;pif.wav;skee_2.wav;wadees.wav;landhoeg.wav;;;2;zerodb;0;";
 }

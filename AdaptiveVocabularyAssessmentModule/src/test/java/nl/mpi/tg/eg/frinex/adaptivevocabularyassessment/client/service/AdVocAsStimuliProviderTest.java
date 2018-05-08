@@ -1404,10 +1404,9 @@ public class AdVocAsStimuliProviderTest {
         if (cycle2) {
             int lastIndex = bandNumberSequence.size() - 1;
             // ignore the last erronenous reaction
+            assertEquals(bandNumberSequence.get(lastIndex).intValue(), bandNumberSequence.get(lastIndex - 2).intValue());
             assertEquals(bandNumberSequence.get(lastIndex - 1).intValue(), bandNumberSequence.get(lastIndex - 3).intValue());
-            assertEquals(bandNumberSequence.get(lastIndex - 1).intValue(), bandNumberSequence.get(lastIndex - 5).intValue());
             assertEquals(bandNumberSequence.get(lastIndex - 2).intValue(), bandNumberSequence.get(lastIndex - 4).intValue());
-            assertNotEquals(bandNumberSequence.get(lastIndex - 1).intValue(), bandNumberSequence.get(lastIndex - 2).intValue());
 
             //Here implemented loop-based approach , with the last element excluded from loop detection
             // x, x+1, x, x+1, x, (x+1)  (error, could have passed to x, if was not stopped) -> x
@@ -1418,8 +1417,8 @@ public class AdVocAsStimuliProviderTest {
             //Alternative-1 oscillation-based
             // x, x+1, x, x+1, x, x+1 (error) -> x+1
             // x+1, x, x+1, x, x+1, x (error) -> x
-            int expectedBandNumber = bandNumberSequence.get(lastIndex - 1);
-            assertEquals(expectedBandNumber, indexScore + 1);
+            int expectedBandNumber = bandNumberSequence.get(lastIndex)-1; // the last band was the band where we have failed, then the score is 1 level less
+            assertEquals(expectedBandNumber, indexScore+1);
         }
 
         int counterInTuple = 0;

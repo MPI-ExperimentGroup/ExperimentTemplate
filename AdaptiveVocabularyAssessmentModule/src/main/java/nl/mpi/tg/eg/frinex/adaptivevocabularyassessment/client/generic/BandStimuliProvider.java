@@ -429,6 +429,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     public abstract boolean initialiseNextFineTuningTuple();
 
     private boolean fineTuningToBeContinued() {
+        
         boolean contRound;
         if (this.fineTuningFirstWrongOut) {
             contRound = this.fineTuningToBeContinuedFirstWrongOut();
@@ -442,15 +443,15 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected boolean fineTuningToBeContinuedFirstWrongOut() {
 
         boolean retVal;
-        int memoizeBandIndex = this.currentBandIndex; // memoise currentBandIndex
-
+            
         if (this.isCorrectCurrentResponse) {
             if (this.tupleIsNotEmpty()) {
                 // we have not hit the last atom in the tuple yet
                 // continue
                 return true;
             } else {
-                // register finishing band 
+                // the tuple is empty: register the fact that the band is finished 
+                shiftFIFO(cycle2helper, this.currentBandIndex);
                 this.bandVisitCounter[this.currentBandIndex]++;
 
                 // tranistion to the higher band ?
@@ -473,14 +474,16 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
                 }
             }
         } else {
-            // register finishing band 
+            // register the fact that the band is finished 
+            shiftFIFO(cycle2helper, this.currentBandIndex);
             this.bandVisitCounter[this.currentBandIndex]++;
+            
             retVal = this.toBeContinuedLoopAndLooserChecker();
+            
             this.recycleUnusedStimuli();    
         }
 
         if (retVal) {
-            shiftFIFO(cycle2helper, memoizeBandIndex); // update the loop detector
             // check if there are enough stimuli left
             this.enoughFineTuningStimulae = this.initialiseNextFineTuningTuple();
             if (!this.enoughFineTuningStimulae) {
@@ -496,13 +499,14 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected boolean fineTuningToBeContinuedWholeTuple() {
 
         boolean retVal;
-
+        
         if (this.tupleIsNotEmpty()) {
             // we have not hit the last stimuli in the tuple yet
             // continue
             return true;
         } else {
-            // register finishing band 
+            // tuple is empty: register that the band is finished 
+            shiftFIFO(cycle2helper, this.currentBandIndex); 
             this.bandVisitCounter[this.currentBandIndex]++;
 
             // analyse correctness of the last tuple as a whole
@@ -527,13 +531,10 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
                     retVal = true;
                 }
             } else {
-                // register finishing band 
-                this.bandVisitCounter[this.currentBandIndex]++;
                 retVal = this.toBeContinuedLoopAndLooserChecker();
             }
         }
         if (retVal) {
-            shiftFIFO(cycle2helper, this.currentBandIndex); // update the loop detector
             // check if there are enough stimuli left
             this.enoughFineTuningStimulae = this.initialiseNextFineTuningTuple();
             if (!this.enoughFineTuningStimulae) {
@@ -575,17 +576,8 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
             System.out.println("Detected: " + this.fineTuningUpperBoundForCycles
                     + " times oscillation between two neighbouring bands, "
                     + this.cycle2helper[cycle2helper.length - 2] + " and " + this.cycle2helper[cycle2helper.length - 1]);
-            this.bandIndexScore = this.cycle2helper[cycle2helper.length - 1];
+            this.bandIndexScore = this.currentBandIndex-1;
 
-            //Here implemented loop-based approach , with the last element excluded from loop detection
-            // x, x+1, x, x+1, x, (x+1)  (error, could have passed to x, if was not stopped) -> x
-            // x+1, x, x+1, x, x+1, (x+2)  (error, could have passed to x+1, if was not stopped) -> x+1
-            //Alternative-2 loop-based with the last element taken into account during the loop detection
-            // x, x+1, x, x+1, x  (error) -> x
-            // x+1, x, x+1, x, x+1 (error) -> x+1
-            //Alternative-1 oscillation-based
-            // x, x+1, x, x+1, x, x+1 (error) -> x+1
-            // x+1, x, x+1, x, x+1, x (error) -> x
             retVal = false;
         } else {
             if (this.currentBandIndex == 0) {

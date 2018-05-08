@@ -31,6 +31,10 @@ public class Indices {
 
     static {
         BAND_LABEL_TO_INTEGER = new HashMap<String, String>();
+        BAND_LABEL_TO_INTEGER.put("min20db", "-20");
+        BAND_LABEL_TO_INTEGER.put("min18db", "-18");
+        BAND_LABEL_TO_INTEGER.put("min16db", "-16");
+        BAND_LABEL_TO_INTEGER.put("min14db", "-14");
         BAND_LABEL_TO_INTEGER.put("min12db", "-12");
         BAND_LABEL_TO_INTEGER.put("min10db", "-10");
         BAND_LABEL_TO_INTEGER.put("min8db", "-8");
@@ -47,6 +51,10 @@ public class Indices {
     
     static {
         BAND_LABEL_TO_DIRNAME = new HashMap<String, String>();
+        BAND_LABEL_TO_DIRNAME.put("min20db", "min20");
+        BAND_LABEL_TO_DIRNAME.put("min18db", "min18");
+        BAND_LABEL_TO_DIRNAME.put("min16db", "min16");
+        BAND_LABEL_TO_DIRNAME.put("min14db", "min14");
         BAND_LABEL_TO_DIRNAME.put("min12db", "min12");
         BAND_LABEL_TO_DIRNAME.put("min10db", "min10");
         BAND_LABEL_TO_DIRNAME.put("min8db", "min8");
@@ -63,6 +71,10 @@ public class Indices {
     
      static {
         BAND_LABEL_TO_INDEX = new HashMap<String, Integer>();
+        BAND_LABEL_TO_INDEX.put("min20db", 15);
+        BAND_LABEL_TO_INDEX.put("min18db", 14);
+        BAND_LABEL_TO_INDEX.put("min16db", 13);
+        BAND_LABEL_TO_INDEX.put("min14db", 12);
         BAND_LABEL_TO_INDEX.put("min12db", 11);
         BAND_LABEL_TO_INDEX.put("min10db", 10);
         BAND_LABEL_TO_INDEX.put("min8db", 9);

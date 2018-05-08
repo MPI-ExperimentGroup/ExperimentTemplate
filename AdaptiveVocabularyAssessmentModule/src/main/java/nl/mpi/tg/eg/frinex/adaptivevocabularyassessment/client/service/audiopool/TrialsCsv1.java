@@ -24,9 +24,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopoo
  */
 public class TrialsCsv1 {
     
-    
-    
-    public static String CSV_CONTENT="Nr;Word;Target_nonword;Syllables;Condition;Length_list;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Noise_level;Position_foil;\n" +
+   public static String CSV_CONTENT="Nr;Word;Target_nonword;Syllables;Condition;Length_list;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Noise_level;Position_foil;\n" +
 "1;vloer;smoer_1.wav;1;Target-only;3 words;deebral.wav;smoer_2.wav;wijp.wav;;;;2;plus10db;0;\n" +
 "2;pauw;paud_1.wav;1;Target-only;3 words;rolscheegt.wav;paud_2.wav;staap.wav;;;;2;plus10db;0;\n" +
 "3;kuil;baust_1.wav;1;Target+Foil;6 words;baaf.wav;baundleu.wav;foestvag.wav;baust_2.wav;tan.wav;rornas.wav;4;plus10db;2;\n" +
@@ -155,7 +153,7 @@ public class TrialsCsv1 {
 "126;velg;duil_1.wav;1;Target+Foil;6 words;gangkeer.wav;duiskalp.wav;duil_2.wav;opvek.wav;jeel.wav;snaag.wav;3;plus10db;2;\n" +
 "127;streep;wuik_1.wav;1;Target+Foil;6 words;lendaar.wav;grem.wav;wuigkroer.wav;wuik_2.wav;koereek.wav;kork.wav;4;plus10db;3;\n" +
 "128;paars;breeg_1.wav;1;Target+Foil;6 words;hoortbijn.wav;zel.wav;grubond.wav;breelmeeg.wav;breeg_2.wav;scherg.wav;5;plus10db;4;\n" +
-"129;gans;gret_1.wav;1;Target+Foil;6 words;gremdoep.wav;snuim.wav;gret_2.wav;wuil.wav;warnis.wav;winkheek.wav;3;plus10db;1\n" +
+"129;gans;gret_1.wav;1;Target+Foil;6 words;gremdoep.wav;snuim.wav;gret_2.wav;wuil.wav;warnis.wav;winkheek.wav;3;plus10db;1;\n" +
 "130;bad;bam_1.wav;1;Target+Foil;6 words;wirums.wav;mefdel.wav;bafruip.wav;lir.wav;bam_2.wav;lank.wav;5;plus10db;3;\n" +
 "131;klas;roen_1.wav;1;Target+Foil;6 words;zeut.wav;glank.wav;roegtaus.wav;lentar.wav;roen_2.wav;rielak.wav;5;plus10db;3;\n" +
 "132;grot;vlaad_1.wav;1;Target+Foil;6 words;vlaasrig.wav;kalvoon.wav;voornil.wav;vlaad_2.wav;bruip.wav;bax.wav;4;plus10db;1;\n" +
@@ -525,5 +523,6 @@ public class TrialsCsv1 {
 "496;bank;benk_1.wav;1;Target+Foil;4 words;belfnast.wav;akkum.wav;benk_2.wav;vag.wav;;;3;plus6db;1;\n" +
 "497;boot;book_1.wav;1;Target+Foil;4 words;boopdijs.wav;olburcht.wav;book_2.wav;gip.wav;;;3;plus6db;1;\n" +
 "498;zak;zik_1.wav;1;Target+Foil;4 words;zifknil.wav;rar.wav;zik_2.wav;olmeer.wav;;;3;plus6db;1;\n" +
-"499;vuur;fjon_1.wav;1;Target+Foil;5 words;fjodschelg.wav;fjon_2.wav;wisdaag.wav;tuik.wav;poks.wav;;2;plus6db;1;";
+"499;vuur;fjon_1.wav;1;Target+Foil;5 words;fjodschelg.wav;fjon_2.wav;wisdaag.wav;tuik.wav;poks.wav;;2;plus6db;1;\n" +
+"500;kip;kep_1.wav;1;Target+Foil;5 words;vui.wav;kekmieg.wav;kep_2.wav;peek.wav;tukliek.wav;;3;plus6db;2;";
 }

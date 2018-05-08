@@ -23,6 +23,14 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio;
  */
 public class TestConfigurationConstants {
     
-    public static final String STIMULI_DIR = "/static/stimuli/" ; // must be the same as in the configuration file
+    public static final String AUDIO_STIMULI_DIR = "/static/stimuli/" ; // must be the same as in the configuration file
+    public static final int N_AUDIO_TRIALS = 3136;
+    public static final int AUDIO_START_BAND = 5;
+    public static final String AUDIO_UPPER_BOUND_FOR_CYCLES = "2";
+    public static final int AUDIO_NUMBER_OF_BANDS = 16;
+    public static final int AUDIO_TUPLE_SIZE = 4;
+    public static final int AUDIO_MAX_LENGTH = 6;
+    public static final String AUDIO_REQUIRED_LENGTHS = "3,4,5,6";
+
     
 }

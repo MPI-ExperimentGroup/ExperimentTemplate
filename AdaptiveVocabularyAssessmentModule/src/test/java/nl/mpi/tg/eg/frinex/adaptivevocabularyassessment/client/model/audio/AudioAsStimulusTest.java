@@ -43,7 +43,7 @@ public class AudioAsStimulusTest {
     
     public AudioAsStimulusTest() {
         
-        this.reader.readTrialsAsCsv(TestConfigurationConstants.STIMULI_DIR);
+        this.reader.readTrialsAsCsv(TestConfigurationConstants.AUDIO_STIMULI_DIR);
         this.trials = this.reader.getHashedTrials();
         this.stimuli = trials.get(1).getStimuli();
         this.instance1 = this.stimuli.get(0).getStimulus();

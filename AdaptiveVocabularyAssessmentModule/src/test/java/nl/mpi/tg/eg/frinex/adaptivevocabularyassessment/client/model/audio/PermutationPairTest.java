@@ -41,8 +41,6 @@ public class PermutationPairTest {
 
     private final AudioStimuliFromString reader = new AudioStimuliFromString();
     private final LinkedHashMap<Integer, Trial> hashedTrials;
-    private final int numberOfBands = 12;
-    private final int maxtTialLength = 6;
     private final ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> trialMatrix;
     private final ArrayList<Integer> requiredLengths = new ArrayList<Integer>(Arrays.asList(3, 4, 5, 6));
     private final ArrayList<TrialCondition> requiredTrialTypes = new ArrayList<TrialCondition>(Arrays.asList(TrialCondition.TARGET_ONLY, TrialCondition.TARGET_AND_FOIL, TrialCondition.NO_TARGET, TrialCondition.NO_TARGET));
@@ -51,9 +49,9 @@ public class PermutationPairTest {
     private final int tupleSize = 4;
 
     public PermutationPairTest() {
-        this.reader.readTrialsAsCsv(TestConfigurationConstants.STIMULI_DIR);
+        this.reader.readTrialsAsCsv(TestConfigurationConstants.AUDIO_STIMULI_DIR);
         this.hashedTrials = this.reader.getHashedTrials();
-        this.trialMatrix = Trial.prepareTrialMatrix(this.hashedTrials, this.numberOfBands, this.maxtTialLength);
+        this.trialMatrix = Trial.prepareTrialMatrix(this.hashedTrials, TestConfigurationConstants.AUDIO_NUMBER_OF_BANDS, TestConfigurationConstants.AUDIO_MAX_LENGTH);
         UtilsList<Integer> utilInt = new UtilsList<Integer>();
         this.allLengthPermuations = utilInt.generatePermutations(this.requiredLengths);
         UtilsList<TrialCondition> utilCond = new UtilsList<TrialCondition>();
@@ -85,10 +83,10 @@ public class PermutationPairTest {
         ArrayList<ArrayList<PermutationPair>> result = PermutationPair.initialiseAvailabilityList(this.trialMatrix,
                 this.allLengthPermuations,
                 this.allConditionPermuations,
-                this.numberOfBands);
-        assertEquals(this.numberOfBands, result.size());
+                TestConfigurationConstants.AUDIO_NUMBER_OF_BANDS);
+        assertEquals(TestConfigurationConstants.AUDIO_NUMBER_OF_BANDS, result.size());
         int numberOfPairs = this.allLengthPermuations.size() * this.allConditionPermuations.size();
-        for (int i = 0; i < this.numberOfBands; i++) {
+        for (int i = 0; i < TestConfigurationConstants.AUDIO_NUMBER_OF_BANDS; i++) {
             assertNotNull(result.get(i));
             ArrayList<PermutationPair> bandList = result.get(i);
             assertEquals(numberOfPairs, bandList.size());
@@ -322,7 +320,7 @@ public class PermutationPairTest {
         ArrayList<ArrayList<PermutationPair>> list = PermutationPair.initialiseAvailabilityList(this.trialMatrix,
                 this.allLengthPermuations,
                 this.allConditionPermuations,
-                this.numberOfBands);
+                TestConfigurationConstants.AUDIO_NUMBER_OF_BANDS);
 
         ArrayList<PermutationPair> middleBand = list.get(5);
 
