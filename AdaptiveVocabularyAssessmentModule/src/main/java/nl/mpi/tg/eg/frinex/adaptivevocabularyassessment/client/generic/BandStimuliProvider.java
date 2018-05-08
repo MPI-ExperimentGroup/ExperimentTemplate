@@ -576,7 +576,8 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
             System.out.println("Detected: " + this.fineTuningUpperBoundForCycles
                     + " times oscillation between two neighbouring bands, "
                     + this.cycle2helper[cycle2helper.length - 2] + " and " + this.cycle2helper[cycle2helper.length - 1]);
-            this.bandIndexScore = this.currentBandIndex-1;
+            this.bandIndexScore = (this.cycle2helper[cycle2helper.length - 1] < this.cycle2helper[cycle2helper.length - 2]) ? 
+                    this.cycle2helper[cycle2helper.length - 1] : this.cycle2helper[cycle2helper.length - 2];
 
             retVal = false;
         } else {

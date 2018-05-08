@@ -53,15 +53,18 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     private ArrayList<Integer> requiredLengths;
     private int maxTrialLength;
     private ArrayList<TrialCondition> requiredTrialTypes;
-    private final Random rnd = new Random();
     AudioStimuliFromString reader = new AudioStimuliFromString();
+    private ArrayList<ArrayList<TrialCondition>> trialTypesPermutations;
+    private ArrayList<ArrayList<Integer>> trialLengtPermutations;
 
     // x[i][j][contdition] is the list of all trials (id-s) of the band-index i  of the length j satisfying "condition"
     private ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> trials; // shared between various permutation-pairs, reduced while it is used
+    
 
     // to be serialised
     private ArrayList<ArrayList<PermutationPair>> availableCombinations; // x[i] is the list of permutations with non-empty possibilities to instantiate them using trials matrix of unused trials
     private TrialTuple currentTrialTuple;
+    
 
     public AudioAsStimuliProvider(Stimulus[] stimulusArray) {
         super(stimulusArray);
@@ -140,10 +143,10 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             this.currentBandIndex = this.startBand;
 
             UtilsList<TrialCondition> utilTrials = new UtilsList<TrialCondition>();
-            ArrayList<ArrayList<TrialCondition>> trialTypesPermutations = utilTrials.generatePermutations(this.requiredTrialTypes);
+            this.trialTypesPermutations = utilTrials.generatePermutations(this.requiredTrialTypes);
 
             UtilsList<Integer> utilSizes = new UtilsList<Integer>();
-            ArrayList<ArrayList<Integer>> trialLengtPermutations = utilSizes.generatePermutations(this.requiredLengths);
+            this.trialLengtPermutations = utilSizes.generatePermutations(this.requiredLengths);
 
             this.reader = new AudioStimuliFromString();
             this.reader.readTrialsAsCsv(this.stimuliDir);
@@ -158,6 +161,13 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             }
 
         } else {
+            
+            UtilsList<TrialCondition> utilTrials = new UtilsList<TrialCondition>();
+            this.trialTypesPermutations = utilTrials.generatePermutations(this.requiredTrialTypes);
+
+            UtilsList<Integer> utilSizes = new UtilsList<Integer>();
+            this.trialLengtPermutations = utilSizes.generatePermutations(this.requiredLengths);
+            
             try {
                 this.deserialiseSpecific(stimuliStateSnapshot);
             } catch (Exception ex) {
@@ -322,14 +332,16 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             return null;
         }
 
-        int combinationIndex = this.rnd.nextInt(availablePermutations.size());
+        long millis =System.currentTimeMillis();
+        Random rnd = new Random(millis);
+        int combinationIndex = rnd.nextInt(availablePermutations.size());
         PermutationPair permPair = availablePermutations.get(combinationIndex);
         int tupleSize = permPair.getTrialConditions().size();
         ArrayList<Trial> trs = new ArrayList<Trial>(tupleSize);
 
         for (int i = 0; i < tupleSize; i++) {
             ArrayList<Trial> possibilities = permPair.getTrials().get(i);// shared part
-            int trialIndex = this.rnd.nextInt(possibilities.size());
+            int trialIndex = rnd.nextInt(possibilities.size());
             Trial currentTrial = possibilities.remove(trialIndex);
             trs.add(currentTrial);
         }
@@ -391,7 +403,6 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
     }
 
-    // not relevant for this experiment
     @Override
     public boolean analyseCorrectness(Stimulus stimulus, String stimulusResponse) {
         int index = this.getCurrentStimulusIndex();
@@ -416,7 +427,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         if (!this.responseRecord.isEmpty()) { // check if correcntess was set
             int index = this.getCurrentStimulusIndex();
             BookkeepingStimulus<AudioAsStimulus> bStimulus = this.responseRecord.get(index);
-            if (bStimulus.getCorrectness() == null) { // has not been anaused yet, i.e. the button was not pressed, isCorrectResponse has not been called
+            if (bStimulus.getCorrectness() == null) { // has not been analysed yet, i.e. the button was not pressed, isCorrectResponse has not been called
                 WordType wt = bStimulus.getStimulus().getwordType();
                 if (wt.equals(WordType.TARGET_NON_WORD)) { // missed target
                     bStimulus.setCorrectness(false);
@@ -453,16 +464,8 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             int tl = trial.getTrialLength();
             int band = trial.getBandIndex();
             this.trials.get(band).get(tl).get(tc).add(trial);
-
-            // recalculate available trials
-            UtilsList<TrialCondition> utilTrials = new UtilsList<TrialCondition>();
-            ArrayList<ArrayList<TrialCondition>> trialTypesPermutations = utilTrials.generatePermutations(this.requiredTrialTypes);
-
-            UtilsList<Integer> utilSizes = new UtilsList<Integer>();
-            ArrayList<ArrayList<Integer>> trialLengtPermutations = utilSizes.generatePermutations(this.requiredLengths);
-            this.availableCombinations = PermutationPair.initialiseAvailabilityList(this.trials, trialLengtPermutations, trialTypesPermutations, this.numberOfBands);
         }
-
+        this.availableCombinations = PermutationPair.initialiseAvailabilityList(this.trials, this.trialLengtPermutations, this.trialTypesPermutations, this.numberOfBands);
     }
 
     @Override

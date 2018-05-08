@@ -17,6 +17,9 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopool;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -144,7 +147,6 @@ public class AudioStimuliFromString {
                 //             String ratingLabels, String correctResponses, String bandLabel, int bandIndex, WordType wordType, int posInTrial)
                 String wrd = removeFileNameExtensions(words.get(i), fileNameExtensions);
                 String suffix = "_in_" + trialCondition;
-                int pauseMs = 900;
                 WordType wordType;
                 String ratingLabels = "";
                 String locationInDir;
@@ -169,7 +171,7 @@ public class AudioStimuliFromString {
 
                 String audioPath = stimuliDir + locationInDir;
                 String uniqueId = wrd + "_" + wordType + suffix;
-                AudioAsStimulus stimulus = new AudioAsStimulus(uniqueId, new Tag[0], wrd, "", pauseMs, audioPath, null, null, ratingLabels, "", bandLabel, bandIndex, wordType, i);
+                AudioAsStimulus stimulus = new AudioAsStimulus(uniqueId, new Tag[0], wrd, "", 0, audioPath, null, null, ratingLabels, "", bandLabel, bandIndex, wordType, i);
                 this.hashedStimuli.put(uniqueId, stimulus);
 
                 this.stimuliTrialIndex.put(uniqueId, trialID);
@@ -181,15 +183,15 @@ public class AudioStimuliFromString {
 //                String wav = locationInDir+".wav";
 //                String mp3 = locationInDir+".mp3";
 //                String ogg = locationInDir+".ogg";
-//                
+//                String audiPathDir = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/audioas2/stimuli/" ; // must be the same as in the configuration file
 //                try {
 //                    
-//                    BufferedReader br = new BufferedReader(new FileReader(this.audiPathDir + wav));
+//                    BufferedReader br = new BufferedReader(new FileReader(audiPathDir + wav));
 //                    //System.out.println(audioPath);
 //                    br.close();
-//                    BufferedReader br1 = new BufferedReader(new FileReader(this.audiPathDir + mp3));
+//                    BufferedReader br1 = new BufferedReader(new FileReader(audiPathDir + mp3));
 //                    br1.close();
-//                    BufferedReader br2 = new BufferedReader(new FileReader(this.audiPathDir + ogg));
+//                    BufferedReader br2 = new BufferedReader(new FileReader(audiPathDir + ogg));
 //                    br2.close();
 //
 //                } catch (FileNotFoundException ex) {
