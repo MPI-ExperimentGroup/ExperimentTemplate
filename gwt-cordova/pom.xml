@@ -159,7 +159,7 @@
                             <outputDirectory>${webappDirectory}/static</outputDirectory>
                             <resources>          
                                 <resource>
-                                    <directory>src/main/static/${experiment.configuration.name}</directory>
+                                    <directory>/srv/experiments/${experiment.configuration.name}</directory>
                                     <includes>
                                         <include>**/*.jpg</include>
                                         <include>**/*.png</include>
@@ -180,6 +180,39 @@
                                         <exclude>**/*.txt</exclude>
                                         <exclude>**/*.sh</exclude>
                                     </excludes>            -->
+                                </resource>
+                                <resource>
+                                    <directory>/srv/ladd/${experiment.configuration.name}</directory>
+                                    <includes>
+                                        <include>**/*.jpg</include>
+                                        <include>**/*.png</include>
+                                        <include>**/*.ogg</include>
+                                        <include>**/*.ogv</include>
+                                        <include>**/*.mp4</include>
+                                        <include>**/*.mp3</include>
+                                    </includes>
+                                </resource>
+                                <resource>
+                                    <directory>/srv/ronald/${experiment.configuration.name}</directory>
+                                    <includes>
+                                        <include>**/*.jpg</include>
+                                        <include>**/*.png</include>
+                                        <include>**/*.ogg</include>
+                                        <include>**/*.ogv</include>
+                                        <include>**/*.mp4</include>
+                                        <include>**/*.mp3</include>
+                                    </includes>
+                                </resource>
+                                <resource>
+                                    <directory>src/main/static/${experiment.configuration.name}</directory>
+                                    <includes>
+                                        <include>**/*.jpg</include>
+                                        <include>**/*.png</include>
+                                        <include>**/*.ogg</include>
+                                        <include>**/*.ogv</include>
+                                        <include>**/*.mp4</include>
+                                        <include>**/*.mp3</include>
+                                    </includes>
                                 </resource>
                             </resources>              
                         </configuration>                                                    
