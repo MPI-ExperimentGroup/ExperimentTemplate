@@ -24,11 +24,20 @@ package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 public class WizardUtilMetadata extends WizardUtilText {
 
     protected String[] metadataFields;
+    protected String metadataText;
     protected String connectionErrorText;
     protected boolean sendData;
 
     public String[] getMetadataFields() {
         return metadataFields;
+    }
+
+    public String getMetadataText() {
+        return metadataText;
+    }
+
+    public void setMetadataText(String metadataText) {
+        this.metadataText = metadataText;
     }
 
     public void setMetadataFields(String[] metadataFields) {
