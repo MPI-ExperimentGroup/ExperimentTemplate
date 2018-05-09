@@ -57,3 +57,10 @@ for filePath in *middle* ; do
         echo $fileName
         mv -n $filePath $fileName
 done
+
+for filePath in P*.jpg ; do 
+        echo $filePath
+        fileName=${filePath//.jpg/_centre.jpg}
+        echo $fileName
+        #mv -n $filePath $fileName
+done
