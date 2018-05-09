@@ -88,7 +88,7 @@ public class GuineaPigProject {
             "datOfBirth:Geboortedatum:[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]:Voer een getal.",
             "gender:Geslacht:|man|vrouw|anders:."
         });
-
+        existingUserCheckScreen.setNextWizardScreen(wizardEditUserScreen);
         final WizardMenuScreen menuScreen = new WizardMenuScreen("Menu", "Menu", "Menu");
 //        wizardData.addScreen(agreementScreen);
 //        wizardData.addScreen(wizardTextScreen);
