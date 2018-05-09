@@ -96,15 +96,25 @@ public class PlayhouseStudy {
 //        introductionAudio2.setStyleName("titleBarButton");
 //        introductionAudio3.setStyleName("titleBarButton");
         String[][][][] testList = new String[][][][]{
-            {{{"Practice", "zoomToGarden", "Practice", "P_00.png", "AudioRepeat1", "1000", "Correct", null}, {}},
+            {{{"Practice", "zoomToGarden", "Practice", "balloon.jpg", "AudioAB", "1000", "chimes_welldoneditbetekend", null}, {}},
             {{"P_01", "P_01.jpg"}, {"P_02", "P_02.jpg"}, {"P_03", "P_03.jpg"}, {"P_04", "P_04.jpg"}}},
-            {{{"Matching1", "zoomToBlock1", "Matching1", null, "AudioAB", "2000", null, "BeginMatching"}, {}},
+            
+//            {{{"PracticeA", "zoomToGarden", "PracticeA", null, "AudioAB", "1000", null, null}, {}},
+//            {{"P_01", "P_01.jpg"}, {"P_02", "P_02.jpg"}, {"P_03", "P_03.jpg"}}},
+//            {{{"PracticeB", null, "PracticeB", "balloon.jpg", null, "1000", "chimes_welldoneditbetekend", null}, {}},
+//            {}},
+//            {{{"PracticeC", null, "PracticeC", null, "AudioAB", "1000", null, null}, {}},
+//            {{"P_04", "P_04.jpg"}}},
+//            {{{"PracticeD", null, "PracticeD", "balloon.jpg", null, "1000", "chimes_welldone", null}, {}},
+//            {}},
+            
+            {{{"Matching1", "zoomToBlock1", "Matching1", "balloon.jpg", "AudioAB", "2000", "chimes_fantastisch", "BeginMatching"}, {}},
             {{"M_01_A", "M_01_A.jpg"}, {"M_02_B", "M_02_B.jpg"}, {"M_03_N", "M_03_N.jpg"}, {"M_04_B", "M_04_B.jpg"}, {"M_05_A", "M_05_A.jpg"}, {"M_06_N", "M_06_N.jpg"}, {"M_07_B", "M_07_B.jpg"}, {"M_08_A", "M_8_A.jpg"}, {"M_09_A", "M_09_A.jpg"}}},
-            {{{"Matching2", "zoomToBlock2", "Matching2", null, "AudioAB", "2000", null, "ChangeMatching"}, {}},
+            {{{"Matching2", "zoomToBlock2", "Matching2", "balloon.jpg", "AudioAB", "2000", "chimes_goedgedaan", "ChangeMatching"}, {}},
             {{"M_10_N", "M_10_N.jpg"}, {"M_11_N", "M_11_N.jpg"}, {"M_12_B", "M_12_B.jpg"}, {"M_13_A", "M_13_A.jpg"}, {"M_14_B", "M_14_B.jpg"}, {"M_15_N", "M_15_N.jpg"}, {"M_16_B", "M_16_B.jpg"}, {"M_17_A", "M_17_A.jpg"}, {"M_18_N", "M_18_N.jpg"}}},
-            {{{"Test3", "zoomToBlock3", "Test3", null, "AudioRepeat2", "2000", null, "BeginTest"}, {}},
+            {{{"Test3", "zoomToBlock3", "Test3", "balloon.jpg", "AudioRepeat2", "2000", "chimes_super", "BeginTest"}, {}},
             {{"T_01", "T_01.jpg"}, {"T_02", "T_02.jpg"}, {"T_03", "T_03.jpg"}, {"T_04", "T_04.jpg"}, {"T_05", "T_05.jpg"}, {"T_06", "T_06.jpg"}, {"T_07", "T_07.jpg"}, {"T_08", "T_08.jpg"}, {"T_09", "T_09.jpg"}}},
-            {{{"Test4", "zoomToBlock4", "Test4", null, "AudioRepeat2", "2000", null, "ChangeTest"}, {}},
+            {{{"Test4", "zoomToBlock4", "Test4", "balloon.jpg", "AudioRepeat2", "2000", "chimes_prima", "ChangeTest"}, {}},
             {{"T_10", "T_10.jpg"}, {"T_11", "T_11.jpg"}, {"T_12", "T_12.jpg"}, {"T_13", "T_13.jpg"}, {"T_14", "T_14.jpg"}, {"T_15", "T_15.jpg"}, {"T_16", "T_16.jpg"}, {"T_17", "T_17.jpg"}, {"T_18", "T_18.jpg"}}},};
 
         final WizardMenuScreen textMenuScreen = new WizardMenuScreen("TestMenu", "TestMenu", "TestMenu");
