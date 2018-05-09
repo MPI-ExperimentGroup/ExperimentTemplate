@@ -32,8 +32,6 @@ public class WizardUtilData {
 
     protected boolean showMenuBar;
 
-    protected String mainMenuTitle;
-
     protected boolean showProgress;
 
     protected boolean allowUserRestart;
@@ -76,14 +74,6 @@ public class WizardUtilData {
 
     public void setShowMenuBar(boolean showMenuBar) {
         this.showMenuBar = showMenuBar;
-    }
-
-    public String getMainMenuTitle() {
-        return mainMenuTitle;
-    }
-
-    public void setMainMenuTitle(String mainMenuTitle) {
-        this.mainMenuTitle = mainMenuTitle;
     }
 
     public boolean isAllowUserRestart() {
