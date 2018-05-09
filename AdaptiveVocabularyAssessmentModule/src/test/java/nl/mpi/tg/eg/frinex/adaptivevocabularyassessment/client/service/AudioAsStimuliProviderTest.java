@@ -66,6 +66,7 @@ public class AudioAsStimuliProviderTest {
         this.instance.setrequiredLengths(TestConfigurationConstants.AUDIO_REQUIRED_LENGTHS);
         this.instance.setrequiredTrialTypes("TARGET_ONLY,NO_TARGET,TARGET_AND_FOIL,NO_TARGET");
         this.instance.setstimuliDir(TestConfigurationConstants.AUDIO_STIMULI_DIR);
+        this.instance.setsmaxDurationMin(TestConfigurationConstants.AUDIO_MAX_DURATION_MINUTES);
     }
 
     @After
