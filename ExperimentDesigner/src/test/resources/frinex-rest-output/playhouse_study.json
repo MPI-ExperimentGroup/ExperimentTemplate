@@ -55,7 +55,7 @@
             "stimuliData": {
                 "stimuliName": "Practice",
                 "stimuliType": "touch",
-                "options": ["huisje_02.jpg", "zoomToGarden", "Practice", "P_00.png", "AudioRepeat1", "1000", "Correct", null, "left,centre,right"],
+                "options": ["huisje_02.jpg", "zoomToGarden", "Practice", "balloon.jpg", "AudioRepeat1", "1000", "Correct", null, "left,centre,right"],
                 "ratingLabels": "zin compleet,zin onvolledig",
                 "stimuliArray": [
                     "P_01_NL",
