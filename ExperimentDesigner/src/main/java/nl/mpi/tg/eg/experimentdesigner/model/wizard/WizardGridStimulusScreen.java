@@ -58,6 +58,49 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setCentreScreen(true);
     }
 
+    public WizardGridStimulusScreen(final WizardUtilStimuliData stimuliData) {
+        super(WizardScreenEnum.WizardGridStimulusScreen, stimuliData.getStimuliName(), stimuliData.getStimuliName(), stimuliData.getStimuliName());
+        //        setStimulusMsDelay(0);
+        setFullScreenGrid(false);
+        setSdCardStimuli(false);
+        setCodeAudio(false);
+        setRememberLastStimuli(true);
+        setShowCurtains(false);
+        setConsumedTagGroup(null);
+        setIntroAudioDelay(0);
+        final String[] options = stimuliData.getOptions();
+        setIntroAudioDelay(2000);
+        if (options != null) {
+            final String[] copyOfOptions = Arrays.copyOf(options, 9);
+            setBackgroundImage(copyOfOptions[0]);
+            setBackgroundStyle(copyOfOptions[1]);
+            setRewardImage(copyOfOptions[3]);
+            setAudioAB((copyOfOptions[4] != null) ? copyOfOptions[4] : "");
+            try {
+                setSelectedPause(Integer.parseInt(copyOfOptions[5]));
+            } catch (NumberFormatException exception) {
+                setSelectedPause(0);
+            }
+            setCorrectAudio(copyOfOptions[6]);
+            setIntroAudio(copyOfOptions[7]);
+            setStimuliButtonArray(copyOfOptions[8]);
+        } else {
+            setBackgroundImage(null);
+            setBackgroundStyle(null);
+            setRewardImage(null);
+            setAudioAB("");
+            setSelectedPause(0);
+            setCorrectAudio(null);
+            setIntroAudio(null);
+        }
+        this.wizardScreenData.setButtonLabelEventTag("");
+        this.wizardScreenData.setStimulusCodeFormat("");
+        this.wizardScreenData.setStimuliCount(1000);
+        setRandomiseStimuli(false);
+        this.wizardScreenData.setCentreScreen(false);
+        setStimuliSet(new String[][]{stimuliData.getStimuliArray()});
+    }
+
     public WizardGridStimulusScreen(String screenName, boolean centreScreen, String[][] stimuliStringArray, String[] randomStimuliTags, int maxStimuli, final boolean randomiseStimuli, String stimulusCodeMatch, int stimulusDelay, int codeStimulusDelay, String codeFormat, String... tagNames) {
         super(WizardScreenEnum.WizardGridStimulusScreen, screenName, screenName, screenName);
         this.setScreenTitle(screenName);
@@ -112,7 +155,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         return storedWizardScreenData.getScreenText(0);
     }
 
-    public void setBackgroundImage(String backgroundImage) {
+    final public void setBackgroundImage(String backgroundImage) {
         this.wizardScreenData.setScreenText(0, backgroundImage);
     }
 
@@ -184,7 +227,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         return storedWizardScreenData.getScreenInteger(0);
     }
 
-    public void setBackgroundStyle(String backgroundStyle) {
+    final public void setBackgroundStyle(String backgroundStyle) {
         this.wizardScreenData.setScreenText(1, backgroundStyle);
     }
 
@@ -246,6 +289,20 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
     @Override
     public String getScreenIntegerInfo(int index) {
         return new String[]{"IntroAudioDelay", "SelectedPause"}[index];
+    }
+
+    public final void setStimuliSet(final WizardUtilStimuliData stimuliData) {
+        if (this.wizardScreenData.getStimuli() == null) {
+            this.wizardScreenData.setStimuli(new ArrayList<>());
+        }
+        final List<Stimulus> stimuliList = this.wizardScreenData.getStimuli();
+        final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{this.wizardScreenData.getScreenTitle()}));
+        tagSet.add(stimuliData.getStimuliName());
+        for (String stimulusEntry : stimuliData.getStimuliArray()) {
+            // @todo: perhaps this is clearer if there is an explicit adjacency regex used on the identifyer in the GUI app or an explicit adjacency / sort field in the stimuli
+//            final String adjacencyString = stimulusEntry.replaceAll("test_[15]", "adjacency_a").replaceAll("test_[26]", "adjacency_b").replaceAll("test_[37]", "adjacency_c").replaceAll("test_[48]", "adjacency_d");
+            stimuliList.add(new Stimulus(stimulusEntry, stimulusEntry, null, stimulusEntry + ".jpg", null, stimulusEntry /*.substring(0, stimulusEntry.length() - 1)*/, 0, tagSet, null, null));
+        }
     }
 
     public final void setStimuliSet(String[][] stimuliSet, String... tagNames) {
@@ -470,7 +527,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             }
             currentAction.addFeature(FeatureType.backgroundImage, null, "0", "", "");
             currentAction.addFeature(FeatureType.disableStimulusButtons, null);
-            final PresenterFeature stimulusAudio = ("AudioAB".equals(getAudioAB(storedWizardScreenData))) ? currentAction.addFeature(FeatureType.stimulusCodeAudio, null, "500", "<code>a", Boolean.toString(false)).addFeature(FeatureType.stimulusCodeAudio, null, "0", "<code>b", Boolean.toString(false)) : currentAction.addFeature(FeatureType.stimulusAudio, null, "0", Boolean.toString(false));
+            final PresenterFeature stimulusAudio = ("AudioAB".equals(getAudioAB(storedWizardScreenData))) ? currentAction.addFeature(FeatureType.stimulusCodeAudio, null, "500", "<code>_a", Boolean.toString(false)).addFeature(FeatureType.stimulusCodeAudio, null, "0", "<code>_b", Boolean.toString(false)) : currentAction.addFeature(FeatureType.stimulusAudio, null, "0", Boolean.toString(false));
             stimulusAudio.addFeature(FeatureType.enableStimulusButtons, null);
             stimulusAudio.addFeature(FeatureType.backgroundImage, null, "0", "", "backgroundHighlight");
             final PresenterFeature pause2 = stimulusAudio.addFeature(FeatureType.pause, null, "3000");
@@ -479,11 +536,14 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                     pause2.addFeature(FeatureType.trigger, null, "loopAction");
                     break;
                 case "AudioAB":
-                    final PresenterFeature repeatAudioB = pause2.addFeature(FeatureType.stimulusCodeAudio, null, "3000", "<code>b", Boolean.toString(false));
-                    final PresenterFeature drukophetplaatje = repeatAudioB.addFeature(FeatureType.stimulusCodeAudio, null, "3000", "drukophetplaatje", Boolean.toString(false));
+                    final PresenterFeature repeatAudioB = pause2.addFeature(FeatureType.stimulusCodeAudio, null, "3000", "<code>_b", Boolean.toString(false));
+                    final PresenterFeature drukophetplaatje = repeatAudioB.addFeature(FeatureType.stimulusCodeAudio, null, "3000", "DrukOpHetPlaatje", Boolean.toString(false));
                     drukophetplaatje.addFeature(FeatureType.disableStimulusButtons, null);
                     drukophetplaatje.addFeature(FeatureType.cancelPauseTimers, null);
                     drukophetplaatje.addFeature(FeatureType.clearPage, null);
+                    if (getRewardImage(storedWizardScreenData) != null) {
+                        drukophetplaatje.addFeature(FeatureType.backgroundImage, null, "0", getRewardImage(storedWizardScreenData), "");
+                    }
                     final PresenterFeature pause3a = drukophetplaatje.addFeature(FeatureType.pause, null, "1000");
                     pause3a.addFeature(FeatureType.touchInputReportSubmit, null);
                     pause3a.addFeature(FeatureType.nextStimulus, null, "false");
