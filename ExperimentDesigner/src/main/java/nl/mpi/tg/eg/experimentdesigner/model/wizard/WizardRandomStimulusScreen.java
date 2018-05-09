@@ -53,6 +53,38 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setCentreScreen(true);
     }
 
+    public WizardRandomStimulusScreen(final WizardUtilStimuliData stimuliData) {
+        super(WizardScreenEnum.WizardRandomStimulusScreen, stimuliData.getStimuliName(), stimuliData.getStimuliName(), stimuliData.getStimuliName());
+        this.setScreenTitle(stimuliData.getStimuliName());
+        this.wizardScreenData.setStimuliRandomTags(stimuliData.getRandomStimuliTags());
+        setRandomStimuliTagsField("");
+        this.wizardScreenData.setStimulusCodeMatch(null);
+        this.wizardScreenData.setStimulusCodeMsDelay(0);
+        setStimulusMsDelay(0);
+        this.wizardScreenData.setStimulusCodeFormat(null);
+        this.wizardScreenData.setStimuliCount(1000);
+        this.wizardScreenData.setStimulusResponseLabelLeft(null);
+        this.wizardScreenData.setStimulusResponseLabelRight(null);
+        this.wizardScreenData.setStimulusResponseOptions(null);
+        setRandomiseStimuli(true);
+        this.wizardScreenData.setCentreScreen(false);
+        setHotkeyButton("SPACE");
+        setShowProgress(false);
+        setStimulusFreeText(false);
+        setTableLayout(false);
+        String spacebar = "Volgende [tab + enter]";
+        if (spacebar == null) {
+            throw new UnsupportedOperationException("button text cannot be null");
+        }
+        setButtonLabel(spacebar);
+        setStimuliLabelStyle(null);
+//        this.wizardScreenData.setButtonLabelEventTag(spacebar);
+        setStimuliSet(stimuliData.getStimuliArray());
+        if ("horizontal".equals(stimuliData.getStimuliLayout())) {
+            setTableLayout(true);
+        }
+    }
+
     public WizardRandomStimulusScreen(String screenName, boolean centreScreen, String[] stimuliStringArray, String[] randomStimuliTags, int maxStimuli, final boolean randomiseStimuli, String stimulusCodeMatch, int stimulusDelay, int codeStimulusDelay, String codeFormat, String responseOptions, String responseOptionsLabelLeft, String responseOptionsLabelRight, final String spacebar) {
         super(WizardScreenEnum.WizardRandomStimulusScreen, screenName, screenName, screenName);
         this.setScreenTitle(screenName);
