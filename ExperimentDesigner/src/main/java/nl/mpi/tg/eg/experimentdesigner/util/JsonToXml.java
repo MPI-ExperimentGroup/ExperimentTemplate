@@ -54,6 +54,12 @@ public class JsonToXml {
             } else if (!new File(outputDirectory).exists()) {
                 System.out.println("outputDirectory does not exist");
             } else {
+                try {
+                    final File schemaOutputFile = new File(outputDirectory, "frinex.xsd");
+                    new SchemaGenerator().createSchemaFile(schemaOutputFile);
+                } catch (IOException exception) {
+                    System.out.println("Failed to create schema file: " + exception.getMessage());
+                }
                 final WizardController wizardController = new WizardController();
                 for (File jsonFile : new File(inputDirectory).listFiles((File dir, String name) -> name.endsWith(".json"))) {
                     System.out.println(jsonFile);
