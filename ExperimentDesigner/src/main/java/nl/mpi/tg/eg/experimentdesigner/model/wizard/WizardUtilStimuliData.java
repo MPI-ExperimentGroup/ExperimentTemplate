@@ -23,11 +23,17 @@ package nl.mpi.tg.eg.experimentdesigner.model.wizard;
  */
 public class WizardUtilStimuliData {
 
+    public enum StimuliType {
+        text, touch
+    }
+
     protected String stimuliName;
+    protected StimuliType stimuliType;
     protected String instructions = null;
     protected String[] stimuliCodes; // todo: implement the use of stimuliCodes for image screens
     protected String[] stimuliArray;
     protected String[] randomStimuliTags;
+    protected String[] options;
     protected String ratingLabels = null;
     protected String stimuliLabelStyle = null;
     protected String stimuliLayout = null;
@@ -42,6 +48,14 @@ public class WizardUtilStimuliData {
 
     public void setStimuliName(String stimuliName) {
         this.stimuliName = stimuliName;
+    }
+
+    public StimuliType getStimuliType() {
+        return stimuliType;
+    }
+
+    public void setStimuliType(StimuliType stimuliType) {
+        this.stimuliType = stimuliType;
     }
 
     public String getInstructions() {
@@ -106,6 +120,14 @@ public class WizardUtilStimuliData {
 
     public void setStimuliHotKey(String stimuliHotKey) {
         this.stimuliHotKey = stimuliHotKey;
+    }
+
+    public String[] getOptions() {
+        return options;
+    }
+
+    public void setOptions(String[] options) {
+        this.options = options;
     }
 
     public String[] getStimuliArray() {
