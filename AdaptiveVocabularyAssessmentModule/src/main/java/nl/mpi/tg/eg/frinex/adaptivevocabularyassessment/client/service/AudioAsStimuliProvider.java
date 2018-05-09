@@ -59,7 +59,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
     // x[i][j][contdition] is the list of all trials (id-s) of the band-index i  of the length j satisfying "condition"
     private ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> trials; // shared between various permutation-pairs, reduced while it is used
-    
+    Random rnd=new Random();
 
     // to be serialised
     private ArrayList<ArrayList<PermutationPair>> availableCombinations; // x[i] is the list of permutations with non-empty possibilities to instantiate them using trials matrix of unused trials
@@ -137,7 +137,8 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         } catch (Exception ex) {
             this.exceptionLogging(ex);
         }
-
+        
+        
         if (stimuliStateSnapshot.isEmpty()) {
 
             this.currentBandIndex = this.startBand;
@@ -332,16 +333,15 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             return null;
         }
 
-        long millis =System.currentTimeMillis();
-        Random rnd = new Random(millis);
-        int combinationIndex = rnd.nextInt(availablePermutations.size());
+       
+        int combinationIndex = this.rnd.nextInt(availablePermutations.size());
         PermutationPair permPair = availablePermutations.get(combinationIndex);
         int tupleSize = permPair.getTrialConditions().size();
         ArrayList<Trial> trs = new ArrayList<Trial>(tupleSize);
 
         for (int i = 0; i < tupleSize; i++) {
             ArrayList<Trial> possibilities = permPair.getTrials().get(i);// shared part
-            int trialIndex = rnd.nextInt(possibilities.size());
+            int trialIndex = this.rnd.nextInt(possibilities.size());
             Trial currentTrial = possibilities.remove(trialIndex);
             trs.add(currentTrial);
         }
