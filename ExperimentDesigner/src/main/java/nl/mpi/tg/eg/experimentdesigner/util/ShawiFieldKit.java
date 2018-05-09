@@ -117,10 +117,10 @@ public class ShawiFieldKit {
         metadataScreen.setNextWizardScreen(experimentMenuPresenter);
         experimentMenuPresenter.addTargetScreen(picturesScreen);
         welcomeMenuPresenter.setBackWizardScreen(welcomePresenter);
-        welcomeMenuPresenter.setNextWizardScreen(metadataScreen);
+        welcomeMenuPresenter.setNextWizardScreen(editUserPresenter);
         wizardSelectUserScreen.setBackWizardScreen(welcomePresenter);
         wizardSelectUserScreen.setNextWizardScreen(metadataScreen);
-        welcomeMenuPresenter.setNextWizardScreen(metadataScreen);
+//        welcomeMenuPresenter.setNextWizardScreen(metadataScreen);
         editUserPresenter.setBackWizardScreen(welcomePresenter);
         editUserPresenter.setNextWizardScreen(metadataScreen);
         wizardAboutScreen.setBackWizardScreen(autoMenuPresenter);
