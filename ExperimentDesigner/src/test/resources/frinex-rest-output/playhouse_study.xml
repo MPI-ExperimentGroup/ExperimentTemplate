@@ -59,22 +59,26 @@
                         <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
                             <backgroundImage msToNext="0" src="" styleName=""/>
                             <disableStimulusButtons/>
-                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <enableStimulusButtons/>
-                                <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
-                                <pause msToNext="3000">
-                                    <stimulusAudio msToNext="3000" showPlaybackIndicator="false">
-                                        <disableStimulusButtons/>
-                                        <cancelPauseTimers/>
-                                        <clearPage/>
-                                        <backgroundImage msToNext="0" src="P_00.png" styleName=""/>
-                                        <pause msToNext="1000">
-                                            <touchInputReportSubmit/>
-                                            <nextStimulus repeatIncorrect="false"/>
-                                        </pause>
-                                    </stimulusAudio>
-                                </pause>
-                            </stimulusAudio>
+                            <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" showPlaybackIndicator="false">
+                                <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" showPlaybackIndicator="false">
+                                    <enableStimulusButtons/>
+                                    <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
+                                    <pause msToNext="3000">
+                                        <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" showPlaybackIndicator="false">
+                                            <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" showPlaybackIndicator="false">
+                                                <disableStimulusButtons/>
+                                                <cancelPauseTimers/>
+                                                <clearPage/>
+                                                <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                                <pause msToNext="1000">
+                                                    <touchInputReportSubmit/>
+                                                    <nextStimulus repeatIncorrect="false"/>
+                                                </pause>
+                                            </stimulusCodeAudio>
+                                        </stimulusCodeAudio>
+                                    </pause>
+                                </stimulusCodeAudio>
+                            </stimulusCodeAudio>
                         </triggerListener>
                         <disableStimulusButtons/>
                         <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton">
@@ -83,8 +87,8 @@
                                 <cancelPauseTimers/>
                                 <pause msToNext="1000">
                                     <clearPage/>
-                                    <backgroundImage msToNext="0" src="P_00.png" styleName=""/>
-                                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                                    <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" showPlaybackIndicator="false">
                                         <touchInputReportSubmit/>
                                         <nextStimulus repeatIncorrect="false"/>
                                     </stimulusCodeAudio>
@@ -99,8 +103,8 @@
                                 <cancelPauseTimers/>
                                 <pause msToNext="1000">
                                     <clearPage/>
-                                    <backgroundImage msToNext="0" src="P_00.png" styleName=""/>
-                                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                                    <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" showPlaybackIndicator="false">
                                         <touchInputReportSubmit/>
                                         <nextStimulus repeatIncorrect="false"/>
                                     </stimulusCodeAudio>
@@ -115,8 +119,8 @@
                                 <cancelPauseTimers/>
                                 <pause msToNext="1000">
                                     <clearPage/>
-                                    <backgroundImage msToNext="0" src="P_00.png" styleName=""/>
-                                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
+                                    <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" showPlaybackIndicator="false">
                                         <touchInputReportSubmit/>
                                         <nextStimulus repeatIncorrect="false"/>
                                     </stimulusCodeAudio>
@@ -177,16 +181,17 @@
                             <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
                                 <backgroundImage msToNext="0" src="" styleName=""/>
                                 <disableStimulusButtons/>
-                                <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;a" showPlaybackIndicator="false">
-                                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;b" showPlaybackIndicator="false">
+                                <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" showPlaybackIndicator="false">
+                                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" showPlaybackIndicator="false">
                                         <enableStimulusButtons/>
                                         <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
                                         <pause msToNext="3000">
-                                            <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;b" showPlaybackIndicator="false">
-                                                <stimulusCodeAudio msToNext="3000" codeFormat="drukophetplaatje" showPlaybackIndicator="false">
+                                            <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" showPlaybackIndicator="false">
                                                     <disableStimulusButtons/>
                                                     <cancelPauseTimers/>
                                                     <clearPage/>
+                                                    <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                                     <pause msToNext="1000">
                                                         <touchInputReportSubmit/>
                                                         <nextStimulus repeatIncorrect="false"/>
@@ -204,10 +209,11 @@
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
                                         <clearPage/>
-                                        <pause msToNext="1000">
+                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
                                             <nextStimulus repeatIncorrect="false"/>
-                                        </pause>
+                                        </stimulusCodeAudio>
                                     </pause>
                                 </touchInputStimulusButton>
                                 <disableStimulusButtons/>
@@ -219,10 +225,11 @@
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
                                         <clearPage/>
-                                        <pause msToNext="1000">
+                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
                                             <nextStimulus repeatIncorrect="false"/>
-                                        </pause>
+                                        </stimulusCodeAudio>
                                     </pause>
                                 </touchInputStimulusButton>
                                 <disableStimulusButtons/>
@@ -234,10 +241,11 @@
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
                                         <clearPage/>
-                                        <pause msToNext="1000">
+                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
                                             <nextStimulus repeatIncorrect="false"/>
-                                        </pause>
+                                        </stimulusCodeAudio>
                                     </pause>
                                 </touchInputStimulusButton>
                                 <disableStimulusButtons/>
@@ -296,16 +304,17 @@
                             <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
                                 <backgroundImage msToNext="0" src="" styleName=""/>
                                 <disableStimulusButtons/>
-                                <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;a" showPlaybackIndicator="false">
-                                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;b" showPlaybackIndicator="false">
+                                <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" showPlaybackIndicator="false">
+                                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" showPlaybackIndicator="false">
                                         <enableStimulusButtons/>
                                         <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
                                         <pause msToNext="3000">
-                                            <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;b" showPlaybackIndicator="false">
-                                                <stimulusCodeAudio msToNext="3000" codeFormat="drukophetplaatje" showPlaybackIndicator="false">
+                                            <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" showPlaybackIndicator="false">
                                                     <disableStimulusButtons/>
                                                     <cancelPauseTimers/>
                                                     <clearPage/>
+                                                    <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                                     <pause msToNext="1000">
                                                         <touchInputReportSubmit/>
                                                         <nextStimulus repeatIncorrect="false"/>
@@ -323,10 +332,11 @@
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
                                         <clearPage/>
-                                        <pause msToNext="1000">
+                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
                                             <nextStimulus repeatIncorrect="false"/>
-                                        </pause>
+                                        </stimulusCodeAudio>
                                     </pause>
                                 </touchInputStimulusButton>
                                 <disableStimulusButtons/>
@@ -338,10 +348,11 @@
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
                                         <clearPage/>
-                                        <pause msToNext="1000">
+                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
                                             <nextStimulus repeatIncorrect="false"/>
-                                        </pause>
+                                        </stimulusCodeAudio>
                                     </pause>
                                 </touchInputStimulusButton>
                                 <disableStimulusButtons/>
@@ -353,10 +364,11 @@
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
                                         <clearPage/>
-                                        <pause msToNext="1000">
+                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
                                             <nextStimulus repeatIncorrect="false"/>
-                                        </pause>
+                                        </stimulusCodeAudio>
                                     </pause>
                                 </touchInputStimulusButton>
                                 <disableStimulusButtons/>
@@ -423,6 +435,7 @@
                                             <disableStimulusButtons/>
                                             <cancelPauseTimers/>
                                             <clearPage/>
+                                            <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                             <pause msToNext="1000">
                                                 <touchInputReportSubmit/>
                                                 <nextStimulus repeatIncorrect="false"/>
@@ -438,10 +451,11 @@
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
                                         <clearPage/>
-                                        <pause msToNext="1000">
+                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
                                             <nextStimulus repeatIncorrect="false"/>
-                                        </pause>
+                                        </stimulusCodeAudio>
                                     </pause>
                                 </touchInputStimulusButton>
                                 <disableStimulusButtons/>
@@ -453,10 +467,11 @@
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
                                         <clearPage/>
-                                        <pause msToNext="1000">
+                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
                                             <nextStimulus repeatIncorrect="false"/>
-                                        </pause>
+                                        </stimulusCodeAudio>
                                     </pause>
                                 </touchInputStimulusButton>
                                 <disableStimulusButtons/>
@@ -468,10 +483,11 @@
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
                                         <clearPage/>
-                                        <pause msToNext="1000">
+                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
                                             <nextStimulus repeatIncorrect="false"/>
-                                        </pause>
+                                        </stimulusCodeAudio>
                                     </pause>
                                 </touchInputStimulusButton>
                                 <disableStimulusButtons/>
@@ -538,6 +554,7 @@
                                             <disableStimulusButtons/>
                                             <cancelPauseTimers/>
                                             <clearPage/>
+                                            <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                             <pause msToNext="1000">
                                                 <touchInputReportSubmit/>
                                                 <nextStimulus repeatIncorrect="false"/>
@@ -553,10 +570,11 @@
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
                                         <clearPage/>
-                                        <pause msToNext="1000">
+                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
                                             <nextStimulus repeatIncorrect="false"/>
-                                        </pause>
+                                        </stimulusCodeAudio>
                                     </pause>
                                 </touchInputStimulusButton>
                                 <disableStimulusButtons/>
@@ -568,10 +586,11 @@
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
                                         <clearPage/>
-                                        <pause msToNext="1000">
+                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
                                             <nextStimulus repeatIncorrect="false"/>
-                                        </pause>
+                                        </stimulusCodeAudio>
                                     </pause>
                                 </touchInputStimulusButton>
                                 <disableStimulusButtons/>
@@ -583,10 +602,11 @@
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
                                         <clearPage/>
-                                        <pause msToNext="1000">
+                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
                                             <nextStimulus repeatIncorrect="false"/>
-                                        </pause>
+                                        </stimulusCodeAudio>
                                     </pause>
                                 </touchInputStimulusButton>
                                 <disableStimulusButtons/>
