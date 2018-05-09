@@ -17,20 +17,22 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.util;
 
+import java.util.HashMap;
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.AbstractWizardScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardExistingUserCheckScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardGridStimulusScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardRandomStimulusScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScreen;
-import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardSelectUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilData;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilMenu;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilMetadata;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilSelectParticipant;
@@ -50,18 +52,35 @@ public class SentenceCompletion {
         this.wizardUtilData = wizardUtilData;
     }
 
+    private void updateScreenToMenuRelations(HashMap<String, WizardMenuScreen> screenToMenuMap, AbstractWizardScreen lastScreen, AbstractWizardScreen currentScreen, boolean isStimulusScreen) {
+        boolean isInMenu = false;
+        for (String menuItemString : screenToMenuMap.keySet()) {
+            if (menuItemString.equals(currentScreen.getWizardScreenData().getMenuLabel())) {
+                screenToMenuMap.get(menuItemString).addTargetScreen(currentScreen);
+//                currentScreen.setBackWizardScreen(screenToMenuMap.get(menuItemString));
+                isInMenu = true;
+            }
+        }
+        if (lastScreen != null && !isInMenu) {
+            if (!isStimulusScreen) {
+                currentScreen.setBackWizardScreen(lastScreen);
+            }
+        }
+        if (lastScreen != null) {
+            lastScreen.setNextWizardScreen(currentScreen);
+        }
+    }
+
     public WizardData getWizardData() {
+        HashMap<String, WizardMenuScreen> screenToMenuMap = new HashMap<>();
         WizardData wizardData = new WizardData();
         wizardData.setAppName(wizardUtilData.getExperimentTitle());
         wizardData.setShowMenuBar(wizardUtilData.isShowMenuBar());
         wizardData.setTextFontSize(17);
         wizardData.setObfuscateScreenNames(false);
-        WizardMenuScreen menuScreen = null;
-        if (wizardUtilData.getMainMenuTitle() != null) {
-            menuScreen = new WizardMenuScreen(wizardUtilData.getMainMenuTitle(), wizardUtilData.getMainMenuTitle(), "Menu");
-        }
-        WizardScreen firstScreen = null;
-        WizardScreen lastScreen = null;
+        WizardMenuScreen mainMenuScreen = null;
+        AbstractWizardScreen firstScreen = null;
+        AbstractWizardScreen lastScreen = null;
 
 //        WizardTextScreen wizardTextScreen = new WizardTextScreen("Informatie", wizardUtilData.getInstructionsText(),
 //                "volgende [ spatiebalk ]"
@@ -90,18 +109,47 @@ public class SentenceCompletion {
                     introductionScreen.setNextHotKey(introductionText.getHotkey());
                 }
                 wizardData.addScreen(introductionScreen);
-                if (menuScreen != null) {
-                    introductionScreen.setBackWizardScreen(menuScreen);
+                if (mainMenuScreen != null) {
+                    introductionScreen.setBackWizardScreen(mainMenuScreen);
                 } else if (lastScreen != null) {
                     introductionScreen.setBackWizardScreen(lastScreen);
                 }
                 if (lastScreen != null) {
                     lastScreen.getWizardScreenData().setNextWizardScreenData(introductionScreen.getWizardScreenData());
                 }
+                updateScreenToMenuRelations(screenToMenuMap, lastScreen, introductionScreen, false);
                 lastScreen = introductionScreen;
                 if (firstScreen == null) {
                     firstScreen = lastScreen;
                 }
+            }
+            final WizardUtilMenu menuScreenData = screenData.getMenuScreen();
+            if (menuScreenData != null) {
+                WizardMenuScreen menuScreen = new WizardMenuScreen(menuScreenData.getTitle(), menuScreenData.getTitle(), menuScreenData.getTitle());
+                if (menuScreenData.isIsMainMenu()) {
+                    mainMenuScreen = menuScreen;
+                    if (lastScreen != null) {
+                        lastScreen.getWizardScreenData().setBackWizardScreenData(mainMenuScreen.getWizardScreenData());
+                    }
+                } else if (mainMenuScreen != null) {
+                    menuScreen.getWizardScreenData().setBackWizardScreenData(mainMenuScreen.getWizardScreenData());
+                }
+                if (menuScreenData.getMenuItems() != null) {
+                    for (String menuItemString : menuScreenData.getMenuItems()) {
+                        screenToMenuMap.put(menuItemString, menuScreen);
+                    }
+                }
+//                menuScreen.setScreenText(screenData.getMenuScreen().getText());
+//                if (lastScreen != null) {
+//                    lastScreen.getWizardScreenData().setNextWizardScreenData(menuScreen.getWizardScreenData());
+//                }
+                // the menu screen should not be the first screen
+//                wizardData.getWizardScreens().add(1, menuScreen.getWizardScreenData());
+                wizardData.addScreen(menuScreen);
+//                lastScreen = menuScreen;
+//                if (firstScreen == null) {
+//                    firstScreen = lastScreen;
+//                }
             }
             final WizardUtilText agreementScreenText = screenData.getAgreementScreen();
             if (agreementScreenText != null) {
@@ -113,6 +161,7 @@ public class SentenceCompletion {
                 if (lastScreen != null) {
                     lastScreen.getWizardScreenData().setNextWizardScreenData(agreementScreen.getWizardScreenData());
                 }
+                updateScreenToMenuRelations(screenToMenuMap, lastScreen, agreementScreen, false);
                 lastScreen = agreementScreen;
                 if (firstScreen == null) {
                     firstScreen = lastScreen;
@@ -134,6 +183,7 @@ public class SentenceCompletion {
                     lastScreen.getWizardScreenData().setNextWizardScreenData(existingUserCheckScreen.getWizardScreenData());
                     existingUserCheckScreen.setBackWizardScreen(lastScreen);
                 }
+                updateScreenToMenuRelations(screenToMenuMap, lastScreen, existingUserCheckScreen, false);
                 lastScreen = existingUserCheckScreen;
 //                selectUserScreen.getWizardScreenData().setBackWizardScreenData(existingUserCheckScreen.getWizardScreenData());
                 if (firstScreen == null) {
@@ -162,6 +212,7 @@ public class SentenceCompletion {
                     wizardEditUserScreen.setBackWizardScreen(lastScreen);
                 }
                 wizardData.addScreen(wizardEditUserScreen);
+                updateScreenToMenuRelations(screenToMenuMap, lastScreen, wizardEditUserScreen, false);
                 lastScreen = wizardEditUserScreen;
                 if (firstScreen == null) {
                     firstScreen = lastScreen;
@@ -183,18 +234,26 @@ public class SentenceCompletion {
                     if (lastScreen != null) {
                         lastScreen.setNextWizardScreenData(stimulusInstructionsScreen.getWizardScreenData());
                     }
+                    updateScreenToMenuRelations(screenToMenuMap, lastScreen, stimulusInstructionsScreen, true);
                     lastScreen = stimulusInstructionsScreen;
                     if (firstScreen == null) {
                         firstScreen = lastScreen;
                     }
                 }
-                if (false && stimuliData.getInstructions() != null) {
-                } else {
-                    final WizardRandomStimulusScreen list1234Screen = new WizardRandomStimulusScreen(stimuliData.getStimuliName(), false, stimuliData.getStimuliArray(),
-                            stimuliData.getRandomStimuliTags(), 1000, true, null, 0, 0, null, null, null, null, "Volgende [tab + enter]");
-                    if ("horizontal".equals(stimuliData.getStimuliLayout())) {
-                        list1234Screen.setTableLayout(true);
-                    }
+                final AbstractWizardScreen abstractWizardScreen;
+                final WizardUtilStimuliData.StimuliType stimuliType = (stimuliData.getStimuliType() == null) ? WizardUtilStimuliData.StimuliType.text : stimuliData.getStimuliType();
+                switch (stimuliType) {
+                    case touch:
+                        abstractWizardScreen = new WizardGridStimulusScreen(stimuliData);
+                        abstractWizardScreen.getWizardScreenData().getMenuWizardScreenData().add(lastScreen.getWizardScreenData()); // todo: sort this out
+                        break;
+                    case text:
+                    default:
+                        abstractWizardScreen = new WizardRandomStimulusScreen(stimuliData);
+                        break;
+                }
+                if (abstractWizardScreen instanceof WizardRandomStimulusScreen) {
+                    final WizardRandomStimulusScreen list1234Screen = (WizardRandomStimulusScreen) abstractWizardScreen;
                     if (stimuliData.getRatingLabels() != null) {
                         list1234Screen.getWizardScreenData().setStimulusResponseOptions(stimuliData.getRatingLabels());
                     } else if (stimuliData.getStimuliCodes() != null) {
@@ -216,12 +275,11 @@ public class SentenceCompletion {
                     if (wizardUtilData.isShowProgress()) {
                         list1234Screen.setShowProgress(true);
                     }
-                    wizardData.addScreen(list1234Screen);
-                    if (lastScreen != null) {
-                        lastScreen.setNextWizardScreenData(list1234Screen.getWizardScreenData());
-                    }
-                    lastScreen = list1234Screen;
                 }
+                wizardData.addScreen(abstractWizardScreen);
+
+                updateScreenToMenuRelations(screenToMenuMap, lastScreen, abstractWizardScreen, true);
+                lastScreen = abstractWizardScreen;
                 if (firstScreen == null) {
                     firstScreen = lastScreen;
                 }
@@ -269,10 +327,6 @@ public class SentenceCompletion {
         //completionScreen.setBackWizardScreen(list1234Screen);
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
         wizardAboutScreen.setBackWizardScreen(firstScreen);
-        if (menuScreen != null) {
-            // the menu screen should not be the first screen
-            wizardData.getWizardScreens().add(1, menuScreen.getWizardScreenData());
-        }
         wizardData.addScreen(wizardAboutScreen);
 
         return wizardData;
