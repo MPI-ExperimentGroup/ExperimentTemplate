@@ -29,7 +29,6 @@ import javax.xml.validation.Validator;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 import static org.junit.Assert.*;
-import org.junit.Ignore;
 
 /**
  * @since May 9, 2018 5:56:27 PM (creation date)
@@ -43,7 +42,6 @@ public class SchemaGeneratorTest {
      * @throws java.io.IOException
      * @throws java.net.URISyntaxException
      */
-    @Ignore
     @Test
     public void testCreateSchemaFile() throws IOException, URISyntaxException {
         System.out.println("createSchemaFile");
@@ -54,15 +52,32 @@ public class SchemaGeneratorTest {
         instance.createSchemaFile(schemaFile);
 
         // todo: add more configuration files to the test
-        Source xmlFile = new StreamSource(new File(new File(outputDirectoryUri), "playhouse_study.xml"));
-        SchemaFactory schemaFactory = SchemaFactory.newInstance("http://www.w3.org/XML/XMLSchema/v1.1");
-        try {
-            Schema schema = schemaFactory.newSchema(schemaFile);
-            Validator validator = schema.newValidator();
-            validator.validate(xmlFile);
-        } catch (SAXException saxe) {
-            System.out.println(saxe.getMessage());
-            fail(saxe.getMessage());
+        String[] fileNameArray = new String[]{//"advocas1.xml", "french_audio.xml", "hrpretest02.xml", "ld_screensize.xml", "rosselfieldkit.xml",
+//            "advocas2.xml", "french_conversation.xml", "leeservaring.xml", "parcours01.xml", "sentences_rating_task.xml", "vanuatufieldkit.xml",
+//            "alloptions.xml",             "multiparticipant.xml", 
+//            "playback_preference.xml", "sentveri-exp3.xml", "wellspringssamoan.xml",
+//            "antwoordraden.xml", "generic_example.xml", "joseco01.xml", "nonwacq.xml", "shawifieldkit.xml", "zinnen_afmaken.xml",
+//            "audioas2.xml", "online_emotions.xml", 
+            "playhouse_study.xml", 
+//            "short-for-unittest-to-delete.xml", "zinnen_beoordelen.xml",
+//            "dobes_annotator.xml", "heoexp01.xml", "joseco02.xml", "onlinepretest.xml", "shortmultiparticipant01.xml",
+//            "engadvocas.xml", 
+//            "hrpretest.xml", 
+//            "kinship_example.xml", 
+//            "ppvt.xml", "synquiz2.xml"
+        };
+        for (String fileName : fileNameArray) {
+            System.out.println(fileName);
+            Source xmlFile = new StreamSource(new File(new File(outputDirectoryUri), fileName));
+            SchemaFactory schemaFactory = SchemaFactory.newInstance("http://www.w3.org/XML/XMLSchema/v1.1");
+            try {
+                Schema schema = schemaFactory.newSchema(schemaFile);
+                Validator validator = schema.newValidator();
+                validator.validate(xmlFile);
+            } catch (SAXException saxe) {
+                System.out.println(saxe.getMessage());
+                fail(saxe.getMessage());
+            }
         }
     }
 }
