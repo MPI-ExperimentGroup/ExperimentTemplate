@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 
@@ -36,7 +37,7 @@ public class SchemaGenerator {
                 + "<xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\">\n");
     }
 
-    private void addExperiment(Writer writer, final PresenterType[] presenterTypes) throws IOException {
+    private void addExperiment(Writer writer) throws IOException {
         writer.append("<xs:simpleType name=\"rgbHexValue\">");
         writer.append("<xs:restriction base=\"xs:token\">");
         writer.append("<xs:pattern value=\"#[\\dA-F]{6}\"/>");
@@ -44,44 +45,112 @@ public class SchemaGenerator {
         writer.append("</xs:simpleType>");
 
         writer.append("<xs:element name=\"experiment\">\n").append("<xs:complexType>\n").append("<xs:sequence>\n");
-        for (final PresenterType presenterType : presenterTypes) {
-            writer.append("<xs:element ref=\"").append(presenterType.name()).append("\"/>\n");
-        }
+//        for (final PresenterType presenterType : presenterTypes) {
+//            writer.append("<xs:element ref=\"").append(presenterType.name()).append("\"/>\n");
+//        }
+        writer.append("<xs:element ref=\"metadata\"/>\n");
+        writer.append("<xs:element ref=\"presenter\" maxOccurs=\"unbounded\"/>\n");
+        writer.append("<xs:element ref=\"stimuli\"/>\n");
         writer.append("</xs:sequence>\n");
         for (String attributeStrings : new String[]{"appNameDisplay", "appNameInternal"}) {
-            writer.append("<xs:attribute  name=\"").append(attributeStrings).append("\" type=\"xs:string\" use=\"required\"/>\n");
+            writer.append("<xs:attribute name=\"").append(attributeStrings).append("\" type=\"xs:string\" use=\"required\"/>\n");
         }
         for (String attributeRGBs : new String[]{"backgroundColour", "complementColour0", "complementColour1", "complementColour2", "complementColour3", "complementColour4", "primaryColour0", "primaryColour1", "primaryColour2", "primaryColour3", "primaryColour4"}) {
-            writer.append("<xs:attribute  name=\"").append(attributeRGBs).append("\" type=\"rgbHexValue\" use=\"required\"/>\n");
+            writer.append("<xs:attribute name=\"").append(attributeRGBs).append("\" type=\"rgbHexValue\" use=\"required\"/>\n");
         }
         for (String attributeBooleans : new String[]{"isScalable", "preserveLastState", "rotatable", "showMenuBar"}) {
-            writer.append("<xs:attribute  name=\"").append(attributeBooleans).append("\" type=\"xs:boolean\" use=\"required\"/>\n");
+            writer.append("<xs:attribute name=\"").append(attributeBooleans).append("\" type=\"xs:boolean\" use=\"required\"/>\n");
         }
         for (String attributeFloats : new String[]{"defaultScale"}) {
-            writer.append("<xs:attribute  name=\"").append(attributeFloats).append("\" type=\"xs:decimal\" use=\"required\"/>\n");
+            writer.append("<xs:attribute name=\"").append(attributeFloats).append("\" type=\"xs:decimal\" use=\"required\"/>\n");
         }
         for (String attributeIntegers : new String[]{"textFontSize"}) {
-            writer.append("<xs:attribute  name=\"").append(attributeIntegers).append("\" type=\"xs:integer\" use=\"required\"/>\n");
+            writer.append("<xs:attribute name=\"").append(attributeIntegers).append("\" type=\"xs:integer\" use=\"required\"/>\n");
         }
         writer.append("</xs:complexType>\n").append("</xs:element>");
     }
 
-    private void addPresenter(Writer writer, final PresenterType presenterType) throws IOException {
-        writer.append("<xs:element name=\"").append(presenterType.name()).append("\">\n").append("<xs:complexType>\n").append("<xs:sequence>\n");
-        for (final FeatureType featureType : presenterType.getFeatureTypes()) {
-            writer.append("<xs:element ref=\"").append(featureType.name()).append("\"/>\n");
+    private void addPresenter(Writer writer, final PresenterType[] presenterTypes) throws IOException {
+        writer.append("<xs:element name=\"presenter\">\n");
+        writer.append("<xs:complexType>\n").append("<xs:choice maxOccurs=\"unbounded\">\n");
+        for (final FeatureType featureRef : FeatureType.values()) {
+            writer.append("<xs:element ref=\"").append(featureRef.name()).append("\"/>\n");
         }
-        writer.append("</xs:sequence>\n").append("</xs:complexType>\n").append("</xs:element>");
+        writer.append("</xs:choice>\n");
+        writer.append("<xs:attribute name=\"back\" type=\"xs:string\"/>\n"); // todo: constrain back to always refer to an presenter that exists
+        writer.append("<xs:attribute name=\"next\" type=\"xs:string\"/>\n"); // todo: constrain back to always refer to an presenter that exists
+        writer.append("<xs:attribute name=\"self\" type=\"xs:string\"/>\n");
+        writer.append("<xs:attribute name=\"title\" type=\"xs:string\"/>\n");
+        writer.append("<xs:attribute name=\"menuLabel\" type=\"xs:string\"/>\n");
+        writer.append("<xs:attribute name=\"displayOrder\" type=\"xs:positiveInteger\"/>\n");
+        writer.append("<xs:attribute name=\"type\">\n");
+        writer.append("<xs:simpleType>\n");
+        writer.append("<xs:restriction>\n");
+        writer.append("<xs:simpleType>\n");
+        writer.append("<xs:list>\n");
+        writer.append("<xs:simpleType>\n");
+        writer.append("<xs:restriction base=\"xs:token\">\n");
+        for (final PresenterType presenterType : presenterTypes) {
+            writer.append("<xs:enumeration value=\"").append(presenterType.name()).append("\"/>\n");
+        }
+        writer.append("</xs:restriction>\n");
+        writer.append("</xs:simpleType>\n");
+        writer.append("</xs:list>\n");
+        writer.append("</xs:simpleType>\n");
+        writer.append("<xs:minLength value=\"1\"/>\n");
+        writer.append("</xs:restriction>\n");
+        writer.append("</xs:simpleType>\n");
+        writer.append("</xs:attribute>");
+//        writer.append("<xs:assert test=\"count(*/metadataField) le 0\"/>"); // todo: apply this test to enforce presenter type constraints if possible
+        writer.append("</xs:complexType>\n").append("</xs:element>");;
+    }
+
+    private void addMetadata(Writer writer) throws IOException {
+        writer.append("<xs:element name=\"metadata\">\n").append("<xs:complexType>\n").append("<xs:sequence>\n");
+        writer.append("<xs:element name=\"field\" maxOccurs=\"unbounded\">\n").append("<xs:complexType>\n");
+//        writer.append("<xs:sequence>\n").append("</xs:sequence>\n");
+        writer.append("<xs:attribute name=\"controlledMessage\" type=\"xs:string\" use=\"required\"/>\n");
+        writer.append("<xs:attribute name=\"controlledRegex\" type=\"xs:string\" use=\"required\"/>\n");
+        writer.append("<xs:attribute name=\"postName\" type=\"xs:string\" use=\"required\"/>\n");
+        writer.append("<xs:attribute name=\"preventServerDuplicates\" type=\"xs:boolean\" use=\"required\"/>\n");
+        writer.append("<xs:attribute name=\"registrationField\" type=\"xs:string\" use=\"required\"/>\n");
+        writer.append("</xs:complexType>\n").append("</xs:element>");
+        writer.append("</xs:sequence>\n");
+        writer.append("</xs:complexType>\n").append("</xs:element>");
+    }
+
+    private void addStimuli(Writer writer) throws IOException {
+        writer.append("<xs:element name=\"stimuli\">\n").append("<xs:complexType>\n").append("<xs:sequence>\n");
+        writer.append("<xs:element name=\"stimulus\" maxOccurs=\"unbounded\">\n");
+        writer.append("</xs:element>\n");
+        writer.append("</xs:sequence>\n");
+        writer.append("</xs:complexType>\n").append("</xs:element>");
     }
 
     private void addFeature(Writer writer, final FeatureType featureType) throws IOException {
-        writer.append("<xs:element name=\"").append(featureType.name()).append("\">\n").append("<xs:complexType>\n").append("<xs:sequence>\n");
+        writer.append("<xs:element name=\"").append(featureType.name()).append("\">\n").append("<xs:complexType>\n");
         if (featureType.canHaveFeatures()) {
+            writer.append("<xs:choice minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
             for (final FeatureType featureRef : FeatureType.values()) {
                 writer.append("<xs:element ref=\"").append(featureRef.name()).append("\"/>\n");
             }
+            writer.append("</xs:choice>\n");
         }
-        writer.append("</xs:sequence>\n").append("</xs:complexType>\n").append("</xs:element>");
+        if (featureType.canHaveText()) {
+            writer.append("<xs:attribute name=\"featureText\" type=\"xs:string\" use=\"required\"/>\n");
+        }
+        if (featureType.getFeatureAttributes() != null) {
+            for (final FeatureAttribute featureAttribute : featureType.getFeatureAttributes()) {
+                writer.append("<xs:attribute name=\"");
+                writer.append(featureAttribute.name());
+                writer.append("\" type=\"xs:string\"");
+                if (!featureAttribute.isOptional()) {
+                    writer.append(" use=\"required\"");
+                }
+                writer.append("/>\n");
+            }
+        }
+        writer.append("</xs:complexType>\n").append("</xs:element>");
     }
 
     private void endState(Writer writer) throws IOException {
@@ -104,14 +173,17 @@ public class SchemaGenerator {
 
     public void appendContents(Writer writer) throws IOException {
         getStart(writer);
-        addExperiment(writer, PresenterType.values());
-        for (PresenterType presenterType : PresenterType.values()) {
-            addPresenter(writer, presenterType);
+        addExperiment(writer);
+        addMetadata(writer);
+        addPresenter(writer, PresenterType.values());
+        addStimuli(writer);
+//        for (PresenterType presenterType : PresenterType.values()) {
+//            addPresenter(writer, presenterType);
 //            for (FeatureType featureType : presenterType.getFeatureTypes()) {
 //                getStateChange(writer, presenterType.name(), featureType.name());
 //            }
 //            endState(writer);
-        }
+//        }
         for (FeatureType featureType : FeatureType.values()) {
             addFeature(writer, featureType);
         }
