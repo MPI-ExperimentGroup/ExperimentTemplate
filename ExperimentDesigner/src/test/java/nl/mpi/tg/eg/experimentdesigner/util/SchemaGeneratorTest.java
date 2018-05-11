@@ -29,6 +29,7 @@ import javax.xml.validation.Validator;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  * @since May 9, 2018 5:56:27 PM (creation date)
@@ -42,6 +43,7 @@ public class SchemaGeneratorTest {
      * @throws java.io.IOException
      * @throws java.net.URISyntaxException
      */
+    @Ignore
     @Test
     public void testCreateSchemaFile() throws IOException, URISyntaxException {
         System.out.println("createSchemaFile");
