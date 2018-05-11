@@ -66,7 +66,7 @@ public class AudioAsStimuliProviderTest {
         this.instance.setrequiredLengths(TestConfigurationConstants.AUDIO_REQUIRED_LENGTHS);
         this.instance.setrequiredTrialTypes("TARGET_ONLY,NO_TARGET,TARGET_AND_FOIL,NO_TARGET");
         this.instance.setstimuliDir(TestConfigurationConstants.AUDIO_STIMULI_DIR);
-        this.instance.setsmaxDurationMin(TestConfigurationConstants.AUDIO_MAX_DURATION_MINUTES);
+        this.instance.setmaxDurationMin(TestConfigurationConstants.AUDIO_MAX_DURATION_MINUTES);
     }
 
     @After
@@ -584,7 +584,7 @@ public class AudioAsStimuliProviderTest {
 
         assertFalse(this.instance.getChampion());
         assertTrue(this.instance.getCycel2());
-        
+
         assertEquals(5, this.instance.getBandIndexScore());
         assertEquals(5, bandChangeCounter);
         assertFalse(this.instance.getLooser());
@@ -612,6 +612,88 @@ public class AudioAsStimuliProviderTest {
         System.out.println(" extra-test toString()-2");
         String snapShot2 = this.instance.toString();
         assertEquals(snapShot, snapShot2);
+    }
+
+    /**
+     * Test of hasNextStimulus method, of class AudioAsStimuliProvider.
+     */
+    @Test
+    public void testHasNextStimulusTimeOut() throws Exception {
+        System.out.println("hasNextStimulus Timeout,  1 min");
+        String stimuliStateSnapshot = "";
+        this.instance.setmaxDurationMin("1");
+        this.instance.initialiseStimuliState(stimuliStateSnapshot);
+        assertEquals(5, this.instance.getCurrentBandIndex());
+
+        int i = 0;
+        boolean distort = false;
+        int previousBandIndex = 5;
+        int steps = 0;
+        int cycelLength = 3;
+        while (this.instance.hasNextStimulus(i)) {
+
+            this.instance.nextStimulus(i);
+            AudioAsStimulus audioStimulus = this.instance.getCurrentStimulus();
+            Stimulus stimulus = audioStimulus;
+            i++;
+
+            if (audioStimulus.getwordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
+                Thread.sleep(TestConfigurationConstants.AUDIO_TEST_DELAY_CUE_MS);
+                continue;
+            }
+
+            Thread.sleep(TestConfigurationConstants.AUDIO_TEST_DELAY_MS);
+            if (distort) { // make a mistake
+                if (!audioStimulus.getwordType().equals(WordType.TARGET_NON_WORD)) {
+                    this.instance.isCorrectResponse(stimulus, AudioAsStimulus.AUDIO_RATING_LABEL);
+                }
+                if (audioStimulus.getwordType().equals(WordType.TARGET_NON_WORD)) {
+                    // hit is missed !
+                }
+            } else { // non-distort, the answers must be correct
+                // call isCorrect only on target
+                if (audioStimulus.getwordType().equals(WordType.TARGET_NON_WORD)) {
+                    this.instance.isCorrectResponse(stimulus, AudioAsStimulus.AUDIO_RATING_LABEL);
+                }
+                if (this.instance.getCurrentTrialTuple().isNotEmpty()) {
+                    //we have not finished a tuple;
+                    continue;
+                }
+
+            }
+
+            // we will exit the band tuple because of mistake or because it is finished
+            
+            if (this.instance.getCurrentBandIndex() > previousBandIndex) {
+                if (steps == cycelLength) {
+                    steps = 0;
+                    distort = true;
+                } else {
+                    steps++;
+                    distort = false;
+                }
+            } else {
+                if (this.instance.getCurrentBandIndex() < previousBandIndex) {
+                    if (steps == cycelLength) {
+                        steps = 0;
+                        distort = true;
+                    } else {
+                        steps++;
+                        distort = false;
+                    }
+                }
+            }
+
+            previousBandIndex = this.instance.getCurrentBandIndex();
+
+        }
+
+        assertFalse(this.instance.getChampion());
+        assertFalse(this.instance.getCycel2());
+        assertFalse(this.instance.getLooser());
+        assertTrue(this.instance.getTimeOutExit());
+        assertEquals(7, this.instance.getBandIndexScore());
+
     }
 
     /**

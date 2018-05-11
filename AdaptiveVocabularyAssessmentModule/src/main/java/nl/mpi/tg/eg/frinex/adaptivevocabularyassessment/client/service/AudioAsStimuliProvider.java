@@ -57,7 +57,6 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     AudioStimuliFromString reader = new AudioStimuliFromString();
     private ArrayList<ArrayList<TrialCondition>> trialTypesPermutations;
     private ArrayList<ArrayList<Integer>> trialLengtPermutations;
-    private String maxDurationMin;
     private long maxDurationMs;
 
     // x[i][j][contdition] is the list of all trials (id-s) of the band-index i  of the length j satisfying "condition"
@@ -67,8 +66,6 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     // to be serialised
     private ArrayList<ArrayList<PermutationPair>> availableCombinations; // x[i] is the list of permutations with non-empty possibilities to instantiate them using trials matrix of unused trials
     private TrialTuple currentTrialTuple;
-    private long startTimeMs = 0;
-    private boolean timeOutExit = false;
     private ArrayList<Integer> bandVisitsByTrials; // bandVisitsByTrials[i] == # times the band with the index i was visited by trials
 
     public AudioAsStimuliProvider(Stimulus[] stimulusArray) {
@@ -87,10 +84,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         this.stimuliDir = dir;
     }
 
-    public void setsmaxDurationMin(String maxDurationMin) {
-        this.maxDurationMin = maxDurationMin;
-    }
-
+   
     public ArrayList<Integer> getRequiredLength() {
         return this.requiredLengths;
     }
@@ -98,6 +92,8 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     public ArrayList<TrialCondition> requiredTrialTypes() {
         return this.requiredTrialTypes;
     }
+    
+  
 
     public ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> getTrials() {
         return this.trials;
@@ -508,6 +504,10 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     }
 
     private boolean isTimeOut() {
+        if (this.startTimeMs == 0) { // the coundown has not been set yet at all
+            // it will be set when the very first stimulus will be asked to be shown
+            return false;
+        }
         long currentTimeMs = System.currentTimeMillis();
         boolean retVal = (currentTimeMs - this.startTimeMs >= this.maxDurationMs);
         if (retVal) { // set exit values

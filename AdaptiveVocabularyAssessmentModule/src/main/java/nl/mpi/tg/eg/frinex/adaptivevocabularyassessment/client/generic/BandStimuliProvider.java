@@ -79,6 +79,13 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected String errorMessage = null;
 
     protected boolean endOfRound = false;
+    
+    //optional
+    protected String maxDurationMin=null;
+    
+    protected long startTimeMs = 0;
+    protected boolean timeOutExit = false;
+    
 
     // add experiment specific stuff here
     // ...
@@ -116,6 +123,10 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
     public void setstartBand(String startBand) {
         this.startBand = Integer.parseInt(startBand);
+    }
+
+    public void setmaxDurationMin(String maxDurationMin) {
+        this.maxDurationMin = maxDurationMin;
     }
 
     public int getfineTuningTupleLength() {
@@ -161,6 +172,11 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     public String getErrorMessage() {
         return this.errorMessage;
     }
+    
+    public boolean getTimeOutExit(){
+        return this.timeOutExit;
+    }
+
 
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
@@ -671,6 +687,10 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         stringBuilder.append(startColumn).append("EnoughFineTuningStimuli").append(endColumn);
         stringBuilder.append(startColumn).append("Champion").append(endColumn);
         stringBuilder.append(startColumn).append("Looser").append(endColumn);
+        if (this.maxDurationMin != null) {
+            stringBuilder.append(startColumn).append("Time-out exit").append(endColumn);
+            stringBuilder.append(startColumn).append("Duration millisec").append(endColumn);
+        }
         stringBuilder.append(endRow);
         stringBuilder.append(startRow);
         String bandLabelScore = this.bandIndexToLabel(this.bandIndexScore);
@@ -683,6 +703,10 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         stringBuilder.append(startColumn).append(this.enoughFineTuningStimulae).append(endColumn);
         stringBuilder.append(startColumn).append(this.champion).append(endColumn);
         stringBuilder.append(startColumn).append(this.looser).append(endColumn);
+        if (this.maxDurationMin != null) {
+            stringBuilder.append(startColumn).append("Time-out exit").append(endColumn);
+            stringBuilder.append(startColumn).append("Duration millisec").append(endColumn);
+        }
 
         stringBuilder.append(endRow);
         return stringBuilder.toString();
