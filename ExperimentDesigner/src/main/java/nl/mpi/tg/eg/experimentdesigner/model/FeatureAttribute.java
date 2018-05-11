@@ -46,8 +46,8 @@ public enum FeatureAttribute {
     maxHeight,
     maxWidth,
     align,
-    target,
-    styleName,
+    target(true), // this is probably not optional in some cases
+    styleName(true),
     showOnBackButton,
     eventTier,
     filePerStimulus, // when recording audio this boolean determins if a separate recording should be made for each stimulus or one recording for the set of stimuli
@@ -63,7 +63,7 @@ public enum FeatureAttribute {
     repeatRandomWindow,
     adjacencyThreshold,
     repeatIncorrect,
-    hotKey,
+    hotKey(true),
     @Deprecated
     mp3,
     @Deprecated
@@ -102,5 +102,18 @@ public enum FeatureAttribute {
     incrementPhase,
     //    incrementStimulus,
     phasesPerStimulus,
-    scoreValue
+    scoreValue;
+    final boolean isOptional;
+
+    private FeatureAttribute() {
+        this.isOptional = false;
+    }
+
+    private FeatureAttribute(boolean isOptional) {
+        this.isOptional = isOptional;
+    }
+
+    public boolean isOptional() {
+        return isOptional;
+    }
 }
