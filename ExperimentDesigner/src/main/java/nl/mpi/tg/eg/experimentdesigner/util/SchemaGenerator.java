@@ -74,7 +74,9 @@ public class SchemaGenerator {
         writer.append("<xs:element name=\"presenter\">\n");
         writer.append("<xs:complexType>\n").append("<xs:choice maxOccurs=\"unbounded\">\n");
         for (final FeatureType featureRef : FeatureType.values()) {
-            writer.append("<xs:element ref=\"").append(featureRef.name()).append("\"/>\n");
+            if (featureRef.getContitionals() != FeatureType.Contitionals.needsConditionalParent) {
+                writer.append("<xs:element ref=\"").append(featureRef.name()).append("\"/>\n");
+            }
         }
         writer.append("</xs:choice>\n");
         writer.append("<xs:attribute name=\"back\" type=\"xs:string\"/>\n"); // todo: constrain back to always refer to an presenter that exists
@@ -135,6 +137,61 @@ public class SchemaGenerator {
                 writer.append("<xs:element ref=\"").append(featureRef.name()).append("\"/>\n");
             }
             writer.append("</xs:choice>\n");
+        }
+        switch (featureType.getContitionals()) {
+            case hasTrueFalseCondition:
+                writer.append("<xs:sequence>\n");
+                writer.append("<xs:element ref=\"conditionTrue\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element ref=\"conditionFalse\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("</xs:sequence>\n");
+                break;
+            case hasCorrectIncorrect:
+                writer.append("<xs:sequence>\n");
+                writer.append("<xs:element ref=\"responseCorrect\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element ref=\"responseIncorrect\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("</xs:sequence>\n");
+                break;
+            case hasStimulusTag:
+                writer.append("<xs:sequence>\n");
+                writer.append("<xs:element ref=\"hasTag\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element ref=\"withoutTag\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("</xs:sequence>\n");
+                break;
+            case hasMoreStimulus:
+                writer.append("<xs:sequence>\n");
+                writer.append("<xs:element ref=\"hasMoreStimulus\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element ref=\"endOfStimulus\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element name=\"randomGrouping\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element name=\"stimuli\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("</xs:sequence>\n");
+                break;
+            case hasErrorSuccess:
+                writer.append("<xs:sequence>\n");
+                writer.append("<xs:element ref=\"onError\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element ref=\"onSuccess\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("</xs:sequence>\n");
+                break;
+            case hasUserCount:
+                writer.append("<xs:sequence>\n");
+                writer.append("<xs:element ref=\"multipleUsers\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element ref=\"singleUser\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("</xs:sequence>\n");
+                break;
+            case hasThreshold:
+                writer.append("<xs:sequence>\n");
+                writer.append("<xs:element ref=\"aboveThreshold\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element ref=\"belowThreshold\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("</xs:sequence>\n");
+                break;
+            case hasGroupActivities:
+                writer.append("<xs:sequence>\n");
+                writer.append("<xs:element ref=\"groupNetworkActivity\" minOccurs=\"0\" maxOccurs=\"unbounded\"/>\n");
+                writer.append("</xs:sequence>\n");
+                break;
+            case needsConditionalParent:
+                break;
+            default:
+                break;
         }
         if (featureType.canHaveText()) {
             writer.append("<xs:attribute name=\"featureText\" type=\"xs:string\" use=\"required\"/>\n");
