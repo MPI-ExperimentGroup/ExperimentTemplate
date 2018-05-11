@@ -44,8 +44,9 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  * @author olhshk
  */
 public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus> {
-
-    private final static String[] SPECIFIC_FLDS = {"availableCombinations", "currentTrialTuple", "responseRecord"};
+    
+    
+    private final static String[] SPECIFIC_FLDS = {"availableCombinations", "currentTrialTuple", "responseRecord", "startTimeMs", "timeOutExit"};
 
     private String stimuliDir;
     private String requiredLengthsStr;
@@ -68,7 +69,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     private TrialTuple currentTrialTuple;
     private long startTimeMs = 0;
     private boolean timeOutExit = false;
-    private ArrayList<Integer> bandVisitsByTrials; // bandVisitsByTrials[i] == # imes the band with the index i was visited by trials
+    private ArrayList<Integer> bandVisitsByTrials; // bandVisitsByTrials[i] == # times the band with the index i was visited by trials
 
     public AudioAsStimuliProvider(Stimulus[] stimulusArray) {
         super(stimulusArray);
