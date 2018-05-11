@@ -83,7 +83,7 @@
                       fineTuningTupleLength="4" fineTuningUpperBoundForCycles="2"
                       fastTrackPresent="false" fineTuningFirstWrongOut="true"
                       requiredLengths="3,4,5,6" requiredTrialTypes="TARGET_ONLY,NO_TARGET,TARGET_AND_FOIL,NO_TARGET"
-                      stimuliDir="static/stimuli/">
+                      stimuliDir="static/stimuli/" maxDurationMin="10">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
                     <nextStimulus repeatIncorrect="false"/>
@@ -130,16 +130,13 @@
                             <addPadding/>
                             <addPadding/>
                             <addPadding/>
+                            <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
                             <table>
                                 <row>
                                     <column>
-                                        <stimulusButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight">
-                                            <cancelPauseTimers/>  
-                                            <trigger listenerId="nextStimulusAction"/>
-                                        </stimulusButton>
                                         <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                            <htmlText featureText="&lt;div &gt; Toets SPATIE om verder te gaan &lt;/div&gt;"/>
-                                            <pause  msToNext="600000">
+                                            <cancelPauseTimers/> 
+                                            <pause  msToNext="900">
                                                 <cancelPauseTimers/> 
                                                 <trigger listenerId="nextStimulusAction"/>
                                             </pause> 
@@ -173,7 +170,7 @@
                       fineTuningTupleLength="4" fineTuningUpperBoundForCycles="2"
                       fastTrackPresent="false" fineTuningFirstWrongOut="true"
                       requiredLengths="3,4,5,6" requiredTrialTypes="TARGET_ONLY,NO_TARGET,TARGET_AND_FOIL,NO_TARGET"
-                      stimuliDir="static/stimuli/">
+                      stimuliDir="static/stimuli/" maxDurationMin="10">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
                     <nextStimulus repeatIncorrect="false"/>
@@ -214,13 +211,10 @@
                             <addPadding/>
                             <addPadding/>
                             <addPadding/>
-                            <stimulusButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight">
-                                <cancelPauseTimers/>  
-                                <trigger listenerId="nextStimulusAction"/>
-                            </stimulusButton>
+                            <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <htmlText featureText="&lt;div align=&quot;center&quot; &gt; Toets SPATIE om verder te gaan &lt;/div&gt;"/>
-                                <pause  msToNext="600000">
+                                <cancelPauseTimers/> 
+                                <pause  msToNext="900">
                                     <cancelPauseTimers/> 
                                     <trigger listenerId="nextStimulusAction"/>
                                 </pause> 
