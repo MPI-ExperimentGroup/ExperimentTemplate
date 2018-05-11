@@ -48,10 +48,10 @@ public enum FeatureAttribute {
     align,
     target(true), // this is probably not optional in some cases
     styleName(true),
-    showOnBackButton,
+    showOnBackButton(true),
     eventTier,
     filePerStimulus, // when recording audio this boolean determins if a separate recording should be made for each stimulus or one recording for the set of stimuli
-    eventTag,
+    eventTag(true),
     ratingLabels,
     ratingLabelLeft,
     ratingLabelRight,
@@ -61,7 +61,7 @@ public enum FeatureAttribute {
     randomise,
     repeatCount,
     repeatRandomWindow,
-    adjacencyThreshold,
+    adjacencyThreshold(true),
     repeatIncorrect,
     hotKey(true),
     @Deprecated
@@ -85,8 +85,8 @@ public enum FeatureAttribute {
     listenerId, threshold, maximum,
     msLabelFormat,
     animate, // animate currently has bounce stimuliCode or none
-    minStimuliPerTag, // for each tag there should be at least N of each represented in the final list
-    maxStimuliPerTag, // for each tag there should be no more than N of each represented in the final list
+    minStimuliPerTag(true), // for each tag there should be at least N of each represented in the final list
+    maxStimuliPerTag(true), // for each tag there should be no more than N of each represented in the final list
     maxStimuli,
     excludeRegex,
     //    alias, // alias is used to specify a tag or set of tags via GET parameters
