@@ -21,15 +21,14 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import javax.xml.XMLConstants;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.xml.sax.SAXException;
+import static org.junit.Assert.*;
 
 /**
  * @since May 9, 2018 5:56:27 PM (creation date)
@@ -42,11 +41,9 @@ public class SchemaGeneratorTest {
      *
      * @throws java.io.IOException
      * @throws java.net.URISyntaxException
-     * @throws org.xml.sax.SAXException
      */
-    @Ignore
     @Test
-    public void testCreateSchemaFile() throws IOException, URISyntaxException, SAXException {
+    public void testCreateSchemaFile() throws IOException, URISyntaxException {
         System.out.println("createSchemaFile");
         final String inputDirectory = "/frinex-rest-output/";
         URI outputDirectoryUri = this.getClass().getResource(inputDirectory).toURI();
@@ -56,9 +53,14 @@ public class SchemaGeneratorTest {
 
         // todo: add more configuration files to the test
         Source xmlFile = new StreamSource(new File(new File(outputDirectoryUri), "playhouse_study.xml"));
-        SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-        Schema schema = schemaFactory.newSchema(schemaFile);
-        Validator validator = schema.newValidator();
-        validator.validate(xmlFile);
+        SchemaFactory schemaFactory = SchemaFactory.newInstance("http://www.w3.org/XML/XMLSchema/v1.1");
+        try {
+            Schema schema = schemaFactory.newSchema(schemaFile);
+            Validator validator = schema.newValidator();
+            validator.validate(xmlFile);
+        } catch (SAXException saxe) {
+            System.out.println(saxe.getMessage());
+            fail(saxe.getMessage());
+        }
     }
 }
