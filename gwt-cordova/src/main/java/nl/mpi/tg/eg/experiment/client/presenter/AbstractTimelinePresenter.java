@@ -22,7 +22,6 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.web.bindery.autobean.shared.AutoBean;
 import com.google.web.bindery.autobean.shared.AutoBeanCodex;
 import com.google.web.bindery.autobean.shared.AutoBeanUtils;
-import java.util.List;
 import java.util.Set;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationData;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationSet;
@@ -35,7 +34,6 @@ import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
 import nl.mpi.tg.eg.experiment.client.view.AnnotationTimelinePanel;
 import nl.mpi.tg.eg.experiment.client.view.AnnotationTimelineView;
 import nl.mpi.tg.eg.experiment.client.view.VideoPanel;
-import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Oct 2, 2015 4:22:12 PM (creation date)
@@ -44,15 +42,16 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 public abstract class AbstractTimelinePresenter extends AbstractPresenter implements Presenter {
 
     DataFactory dataFactory = GWT.create(DataFactory.class);
-    private final StimulusProvider stimulusProvider = new StimulusProvider();
+    private final StimulusProvider stimulusProvider;
     private final LocalStorage localStorage;
     private final UserResults userResults;
     private String storageTag = "temp_tag";
 
-    public AbstractTimelinePresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage) {
+    public AbstractTimelinePresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage, StimulusProvider stimulusProvider) {
         super(widgetTag, new AnnotationTimelineView(audioPlayer));
         this.localStorage = localStorage;
         this.userResults = userResults;
+        this.stimulusProvider = stimulusProvider;
     }
 
     protected void setVideoPanel(int percentOfPage, int maxHeight, int maxWidth, String poster, String mp4, String ogg, String webm) {
@@ -61,14 +60,20 @@ public abstract class AbstractTimelinePresenter extends AbstractPresenter implem
         ((AnnotationTimelineView) simpleView).setVideoPanel(videoPanel);
     }
 
-    public void setAnnotationTimelinePanel(String eventTag, String poster, String mp4, String ogg, String webm, List<Stimulus.Tag> tags, int maxStimuli, int columnCount) {
+    public void setAnnotationTimelinePanel(String eventTag, String poster, String mp4, String ogg, String webm, /*StimulusSelector[] stimulusSelectorArray, int maxStimuli,*/ int columnCount) {
+        /*List<Stimulus.Tag> tags = new ArrayList<>();
+        for (StimulusSelector stimulusSelector : stimulusSelectorArray) {
+            tags.add(stimulusSelector.getTag());
+        }
+         */
         this.storageTag = eventTag;
         final VideoPanel videoPanel = new VideoPanel("50%", poster, mp4, ogg, webm);
         ((AnnotationTimelineView) simpleView).setVideoPanel(videoPanel);
-        stimulusProvider.getSubset(tags, maxStimuli, false, 1, 0, 0, "", -1);
+        //stimulusProvider.getSubset(tags, maxStimuli, false, 1, 0, 0, "", -1);
         final AnnotationSet savedAnnotations = loadAnnotations(storageTag);
         final AnnotationTimelinePanel annotationTimelinePanel = new AnnotationTimelinePanel();
         ((AnnotationTimelineView) simpleView).setAnnotationTimelinePanel(annotationTimelinePanel);
+        int maxStimuli = 10; // todo: this has to be updated so that the enclosing loadStimulus does the stimuli selection       
         ((AnnotationTimelineView) simpleView).setStimuli(dataFactory, savedAnnotations, stimulusProvider, columnCount, "30px", maxStimuli);
 //        ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
 //
