@@ -64,7 +64,7 @@ import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
  */
 public abstract class AbstractKinDiagramPresenter extends AbstractPresenter implements Presenter {
 
-    private final StimulusProvider stimulusProvider = new StimulusProvider();
+    private final StimulusProvider stimulusProvider;
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     private final DataSubmissionService submissionService;
     private final LocalStorage localStorage;
@@ -74,12 +74,13 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
     final ArrayList<ButtonBase> buttonList = new ArrayList<>();
     private static final String RHOMBUS = "rhombus";
 
-    public AbstractKinDiagramPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage) {
+    public AbstractKinDiagramPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage, StimulusProvider stimulusProvider) {
         super(widgetTag, new KinTypeView(audioPlayer));
         duration = new Duration();
         this.submissionService = submissionService;
         this.userResults = userResults;
         this.localStorage = localStorage;
+        this.stimulusProvider = stimulusProvider;
     }
 
     public void kinTypeStringDiagram(final AppEventListner appEventListner, final int postLoadMs, final TimedStimulusListener timedStimulusListener, String kinTypeString) {
