@@ -45,7 +45,7 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusCodeVideo msToNext="100" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" maxWidth="80">
+                <stimulusCodeVideo msToNext="100" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" loop="false" styleName="" autoPlay="true" showControls="false" maxWidth="80">
                     <clearPage/>
                     <centrePage/>
                     <pause msToNext="100">
@@ -68,6 +68,9 @@
                 <tag>VideoAudioOption</tag>
             </stimuli>
         </loadStimulus>
+    </presenter>
+    <presenter back="InformationScreen" displayOrder="7" menuLabel="Over" type="debug" self="about" title="Over">
+        <versionData/>
     </presenter>
     <stimuli>
         <stimulus audioPath="prevoicing9_e_440Hz_coda_k" code="AV_happy" identifier="list_1/list_2:AV_happy.mpg:prevoicing9_e_440Hz_coda_k.wav:bik,bek" pauseMs="0" ratingLabels="bik,bek" tags="VideoAudioOption list_1 list_2"/>
