@@ -4,10 +4,11 @@
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Worker ID"/>
     </metadata>
     <presenter back="about" displayOrder="1" menuLabel="Annotation Timeline Panel" type="timeline" self="Annotation_Timeline_Panel" title="Annotation Timeline Panel">
-        <AnnotationTimelinePanel mp4="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4" eventTag="Annotation_Timeline_Panel" columnCount="2" maxStimuli="10">
-            <stimuli>
+        <AnnotationTimelinePanel poster="poster.jpg" mp4="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4" webm="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.webm" ogg="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.ogg" eventTag="Annotation_Timeline_Panel" columnCount="2">
+            <!--            <stimuli> maxStimuli="10"
+// todo: this has to be updated so that an enclosing loadStimulus does the stimuli selection    
                 <tag>videotag</tag>
-            </stimuli>
+            </stimuli>-->
         </AnnotationTimelinePanel>
     </presenter>
     <presenter back="Annotation_Timeline_Panel" displayOrder="2" menuLabel="About Screen" type="debug" self="about" title="About Screen">
