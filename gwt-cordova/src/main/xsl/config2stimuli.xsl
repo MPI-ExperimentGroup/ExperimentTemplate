@@ -102,9 +102,9 @@
                     </xsl:text>
                 </xsl:if>
                 <xsl:if test="position() = last()">
-                    <xsl:text>};</xsl:text>
                 </xsl:if>
             </xsl:for-each>
+            <xsl:text>};</xsl:text>
             <xsl:text>
                 }
             </xsl:text>
