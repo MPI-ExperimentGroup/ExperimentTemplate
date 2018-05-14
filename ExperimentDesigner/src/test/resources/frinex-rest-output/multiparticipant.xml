@@ -383,7 +383,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
-                                <stimuli/>
+                                
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
@@ -503,7 +503,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
-                                <stimuli/>
+                                
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
@@ -623,7 +623,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
-                                <stimuli/>
+                                
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
@@ -743,7 +743,6 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
-                                <stimuli/>
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
@@ -863,7 +862,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
-                                <stimuli/>
+                                
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
@@ -983,7 +982,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
-                                <stimuli/>
+                                
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
@@ -1103,7 +1102,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
-                                <stimuli/>
+                                
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
@@ -1456,7 +1455,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
-                                <stimuli/>
+                                
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
@@ -1576,7 +1575,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
-                                <stimuli/>
+                                
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
@@ -1696,7 +1695,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
-                                <stimuli/>
+                                
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
@@ -1816,7 +1815,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
-                                <stimuli/>
+                                
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
@@ -1936,7 +1935,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
-                                <stimuli/>
+                                
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
@@ -2056,7 +2055,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
-                                <stimuli/>
+                                
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
@@ -2176,7 +2175,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
-                                <stimuli/>
+                                
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
@@ -2337,7 +2336,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
-                                <stimuli/>
+                                
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
@@ -2457,7 +2456,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
-                                <stimuli/>
+                                
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
@@ -2577,7 +2576,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
-                                <stimuli/>
+                                
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
@@ -2697,7 +2696,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
-                                <stimuli/>
+                                
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
@@ -2817,7 +2816,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
-                                <stimuli/>
+                                
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
@@ -2937,7 +2936,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
-                                <stimuli/>
+                                
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
@@ -3057,7 +3056,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
-                                <stimuli/>
+                                
                             </showStimulusGrid>
                             <enableStimulusButtons/>
                         </groupNetworkActivity>
