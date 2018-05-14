@@ -29,19 +29,19 @@ import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.*;
 public enum FeatureType {
 
     htmlText(false, true, new FeatureAttribute[]{styleName}),
-    htmlTokenText(false, true, null) /* string tokens will be replaced with score values eg <groupScore> <channelScore> etc. */,
+    htmlTokenText(false, true, new FeatureAttribute[]{styleName}) /* string tokens will be replaced with score values eg <groupScore> <channelScore> etc. */,
     plainText(false, true, null),
     image(true, false, new FeatureAttribute[]{src, styleName, msToNext}),
     menuItem(false, true, new FeatureAttribute[]{target, hotKey}),
     //    popupMessage(true, true, null),
     loadSubsetStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, condition0Tag, condition1Tag, condition2Tag}, true, true, false, Contitionals.none),
-    loadStimulus(false, false, new FeatureAttribute[]{eventTag, minStimuliPerTag, maxStimuliPerTag, maxStimuli, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.hasMoreStimulus),
+    loadStimulus(false, false, new FeatureAttribute[]{eventTag, minStimuliPerTag, maxStimuliPerTag, maxStimuli, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.hasMoreStimulus, true),
     withMatchingStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, randomise, repeatCount, repeatRandomWindow, matchingRegex}, false, false, false, Contitionals.hasMoreStimulus),
-    loadSdCardStimulus(false, false, new FeatureAttribute[]{eventTag, /*minStimuliPerTag, maxStimuliPerTag,*/ maxStimuli, excludeRegex, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.hasMoreStimulus),
+    loadSdCardStimulus(false, false, new FeatureAttribute[]{eventTag, minStimuliPerTag, maxStimuliPerTag, maxStimuli, excludeRegex, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.hasMoreStimulus),
     //    loadAllStimulus(false, false, new FeatureAttribute[]{eventTag, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, false, false, Contitionals.hasMoreStimulus),
     currentStimulusHasTag(false, false, new FeatureAttribute[]{msToNext}, true, false, false, Contitionals.hasStimulusTag),
     showStimuliReport(false, false, null),
-    sendStimuliReport(false, false, new FeatureAttribute[]{type}),
+    sendStimuliReport(false, false, new FeatureAttribute[]{type, headerKey, separator}),
     targetButton(false, true, new FeatureAttribute[]{hotKey, target, styleName}),
     actionButton(true, true, new FeatureAttribute[]{hotKey, eventTag, styleName}),
     stimulusButton(true, true, new FeatureAttribute[]{hotKey, styleName}),
@@ -51,13 +51,13 @@ public enum FeatureType {
     sendGroupMessageButton(false, true, new FeatureAttribute[]{hotKey, eventTag, repeatIncorrect, incrementPhase, /* incrementPhaseOnDictionaryincrementStimulus */}),
     sendGroupMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}),
     sendGroupStoredMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}),
-    sendGroupEndOfStimuli(false, false, new FeatureAttribute[]{eventTag}),
-    ratingButton(false, false, new FeatureAttribute[]{eventTier, ratingLabels, ratingLabelLeft, ratingLabelRight}),
-    stimulusFreeText(true, true, new FeatureAttribute[]{validationRegex, allowedCharCodes, hotKey, styleName}),
-    stimulusRatingButton(false, false, new FeatureAttribute[]{eventTier, ratingLabelLeft, ratingLabelRight}),
+    sendGroupEndOfStimuli(false, false, new FeatureAttribute[]{eventTag}, false, false, false, Contitionals.needsConditionalParent),
+    ratingButton(true, false, new FeatureAttribute[]{eventTier, ratingLabels, ratingLabelLeft, ratingLabelRight}),
+    stimulusFreeText(true, true, new FeatureAttribute[]{validationRegex, allowedCharCodes, hotKey, styleName, inputErrorMessage}),
+    stimulusRatingButton(true, false, new FeatureAttribute[]{eventTier, ratingLabelLeft, ratingLabelRight, styleName}),
     stimulusHasRatingOptions(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition),
     stimulusHasResponse(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition),
-    ratingFooterButton(false, true, new FeatureAttribute[]{eventTier, ratingLabels, ratingLabelLeft, ratingLabelRight}),
+    ratingFooterButton(true, false, new FeatureAttribute[]{eventTier, ratingLabels, ratingLabelLeft, ratingLabelRight}),
     targetFooterButton(false, true, new FeatureAttribute[]{target}),
     actionFooterButton(true, true, new FeatureAttribute[]{eventTag, hotKey}),
     //    endOfStimulusButton(false, true, new FeatureAttribute[]{eventTag, target}),
@@ -121,8 +121,8 @@ public enum FeatureType {
     editableKinEntitesDiagram(true, false, new FeatureAttribute[]{msToNext, diagramName}),
     conditionTrue(true, false, null, false, false, false, Contitionals.needsConditionalParent),
     conditionFalse(true, false, null, false, false, false, Contitionals.needsConditionalParent),
-    responseCorrect(true, false, new FeatureAttribute[]{}, false, false, false, Contitionals.needsConditionalParent),
-    responseIncorrect(true, false, new FeatureAttribute[]{}, false, false, false, Contitionals.needsConditionalParent),
+    responseCorrect(true, false, new FeatureAttribute[]{msToNext}, false, false, false, Contitionals.needsConditionalParent),
+    responseIncorrect(true, false, new FeatureAttribute[]{msToNext}, false, false, false, Contitionals.needsConditionalParent),
     hasMoreStimulus(true, false, null, false, false, false, Contitionals.needsConditionalParent),
     endOfStimulus(true, false, null, false, false, false, Contitionals.needsConditionalParent),
     hasTag(true, false, null, false, false, false, Contitionals.needsConditionalParent),
@@ -138,7 +138,7 @@ public enum FeatureType {
     table(true, false, new FeatureAttribute[]{styleName, showOnBackButton}),
     row(true, false, null),
     column(true, false, new FeatureAttribute[]{styleName}),
-    stimulusImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement}), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
+    stimulusImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement, showControls}), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
     stimulusCodeImage(true, false, new FeatureAttribute[]{msToNext, codeFormat, styleName}),
     stimulusCodeVideo(true, false, new FeatureAttribute[]{msToNext, maxHeight, codeFormat, percentOfPage, loop, styleName, autoPlay, showControls, maxWidth}),
     stimulusCodeAudio(true, false, new FeatureAttribute[]{msToNext, codeFormat, showPlaybackIndicator}),
@@ -182,6 +182,7 @@ public enum FeatureType {
     private final boolean canHaveStimulusTags; // todo: this could well be canHaveTagList so that it is more generic
     private final boolean canHaveRandomGrouping;
     private final boolean canHaveUndefinedAttribute;
+    private final boolean allowsCustomImplementation;
     private final FeatureAttribute[] featureAttributes;
     private final Contitionals contitionals;
 
@@ -206,6 +207,7 @@ public enum FeatureType {
         this.canHaveStimulusTags = false;
         this.canHaveRandomGrouping = false;
         this.canHaveUndefinedAttribute = false;
+        this.allowsCustomImplementation = false;
     }
 
     private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean canHaveStimulus, boolean canHaveRandomGrouping, boolean canHaveUndefinedAttribute, Contitionals contitionals) {
@@ -216,6 +218,18 @@ public enum FeatureType {
         this.canHaveRandomGrouping = canHaveRandomGrouping;
         this.contitionals = contitionals;
         this.canHaveUndefinedAttribute = canHaveUndefinedAttribute;
+        this.allowsCustomImplementation = false;
+    }
+
+    private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean canHaveStimulus, boolean canHaveRandomGrouping, boolean canHaveUndefinedAttribute, Contitionals contitionals, final boolean allowsCustomImplementation) {
+        this.canHaveFeatures = canHaveFeatures;
+        this.canHaveText = canHaveText;
+        this.featureAttributes = featureAttributes;
+        this.canHaveStimulusTags = canHaveStimulus;
+        this.canHaveRandomGrouping = canHaveRandomGrouping;
+        this.contitionals = contitionals;
+        this.canHaveUndefinedAttribute = canHaveUndefinedAttribute;
+        this.allowsCustomImplementation = allowsCustomImplementation;
     }
 
     public boolean canHaveFeatures() {
@@ -236,6 +250,10 @@ public enum FeatureType {
 
     public boolean isCanHaveUndefinedAttribute() {
         return canHaveUndefinedAttribute;
+    }
+
+    public boolean allowsCustomImplementation() {
+        return allowsCustomImplementation;
     }
 
     public FeatureAttribute[] getFeatureAttributes() {
