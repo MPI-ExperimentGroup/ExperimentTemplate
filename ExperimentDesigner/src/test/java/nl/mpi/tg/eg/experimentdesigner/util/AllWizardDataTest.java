@@ -17,6 +17,8 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.util;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.FileWriter;
@@ -104,6 +106,7 @@ public class AllWizardDataTest {
     private void testDeserialiseWizardUtil(final File serialisedFile) throws IOException, JAXBException, URISyntaxException {
         System.out.println(serialisedFile);
         ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(JsonParser.Feature.ALLOW_COMMENTS, true);
         WizardUtilData wizardData = mapper.readValue(serialisedFile, WizardUtilData.class);
         testGetWizardData(wizardController.getExperiment(new SentenceCompletion(wizardData).getWizardData()));
     }
@@ -115,6 +118,9 @@ public class AllWizardDataTest {
         System.out.println(outputDirectory);
 
         ObjectMapper mapper = new ObjectMapper();
+//        mapper.configure(JsonParser.Feature.IGNORE_UNDEFINED, true);
+//        mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        mapper.setSerializationInclusion(Include.NON_NULL);
         mapper.writerWithDefaultPrettyPrinter().writeValue(new File(new File(outputDirectoryUri), wizardUtil.getExperimentTitle().replaceAll("[^A-Za-z0-9]", "_").toLowerCase() + "-wizardutildata.json"), wizardUtil);
         testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), wizardUtil.getExperimentTitle().replaceAll("[^A-Za-z0-9]", "_").toLowerCase() + "-wizardutildata.json"));
     }
@@ -132,8 +138,8 @@ public class AllWizardDataTest {
         final DefaultTranslations defaultTranslations = new DefaultTranslations();
 //        defaultTranslations.insertTranslations();
 //        testGetWizardData(new DefaultExperiments().getAllOptionsExperiment(null, null, null));
-        testGetWizardData(new DobesAnnotator().getExperiment());
-        testGetWizardData(new JenaFieldKit().getExperiment());
+//        testGetWizardData(new DobesAnnotator().getExperiment());
+//        testGetWizardData(new JenaFieldKit().getExperiment());
 //        testGetWizardData(new TransmissionChain().getExperiment());
         testGetWizardData(new ShawiFieldKit().getShawiExperiment());
         testGetWizardData(new Sara01().getExperiment());
@@ -141,25 +147,25 @@ public class AllWizardDataTest {
 //        testGetWizardData(defaultTranslations.applyTranslations(new SynQuiz2().getExperiment()));
         testGetWizardData(new RdExperiment02().getExperiment());
         testGetWizardData(new NblExperiment01().getExperiment());
-        testGetWizardData(new HRExperiment01().getExperiment());
+//        testGetWizardData(new HRExperiment01().getExperiment());
         testGetWizardData(new HRPretest().getExperiment());
         testGetWizardData(new HRPretest02().getExperiment());
-        testGetWizardData(new HROnlinePretest().getExperiment());
-        testGetWizardData(new KinOathExample().getExperiment());
+//        testGetWizardData(new HROnlinePretest().getExperiment());
+//        testGetWizardData(new KinOathExample().getExperiment());
 //        testGetWizardData(new RosselFieldKit().getExperiment());
         testGetWizardData(new SentenceCompletion(new Parcours()).getExperiment());
-        testGetWizardData(new MultiParticipant().getExperiment());
-        testGetWizardData(new ShortMultiparticipant01().getExperiment());
+//        testGetWizardData(new MultiParticipant().getExperiment());
+//        testGetWizardData(new ShortMultiparticipant01().getExperiment());
         testGetWizardData(new ManipulatedContours().getExperiment());
         testGetWizardData(new FrenchConversation().getExperiment());
         testGetWizardData(new NonWacq().getExperiment());
         testGetWizardData(new SentencesRatingTask().getExperiment());
         testGetWizardData(new WellspringsSamoanFieldKit().getExperiment());
-        testGetWizardData(new GuineaPigProject().getExperiment());
-        testGetWizardData(new PlayhouseStudy().getExperiment());
+//        testGetWizardData(new GuineaPigProject().getExperiment());
+//        testGetWizardData(new PlayhouseStudy().getExperiment());
 //        testGetWizardData(new SentenceCompletion(new Joost01()).getExperiment());
 //        testGetWizardData(new SentenceCompletion(new Joost02()).getExperiment());
-        testGetWizardData(new PlaybackPreferenceMeasureExperiment().getExperiment());
+//        testGetWizardData(new PlaybackPreferenceMeasureExperiment().getExperiment());
     }
 
     /**
@@ -235,5 +241,10 @@ public class AllWizardDataTest {
         System.out.println(inputDirectory);
 //        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "heoexp01.json"));
         testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "parcours01.json"));
+//        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "joseco01.json"));
+//        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "joseco02.json"));
+        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "generic_example.json"));
+//        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "playhouse_study.json"));
+//        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "ppvt.json"));
     }
 }
