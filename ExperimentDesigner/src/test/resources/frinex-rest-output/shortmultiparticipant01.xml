@@ -54,7 +54,6 @@
                 </endOfStimulus>
                 <randomGrouping/>
                 <stimuli>
-                    <tag>Round_8_4</tag>
                 </stimuli>
             </loadStimulus>
         </actionButton>
@@ -71,6 +70,9 @@
                 <targetButton featureText="Réessayer" target="Fini"/>
             </onError>
         </generateCompletionCode>
+    </presenter>    
+    <presenter back="Instruction" displayOrder="7" menuLabel="Over" type="debug" self="about" title="Over">
+        <versionData/>
     </presenter>
     <stimuli/>
 </experiment>
