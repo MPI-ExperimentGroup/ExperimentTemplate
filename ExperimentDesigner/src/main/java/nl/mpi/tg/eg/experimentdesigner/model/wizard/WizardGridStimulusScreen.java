@@ -67,7 +67,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         setRememberLastStimuli(true);
         setShowCurtains(false);
         setConsumedTagGroup(null);
-        setIntroAudioDelay(0);
+//        setIntroAudioDelay(0);
         final String[] options = stimuliData.getOptions();
         setIntroAudioDelay(2000);
         if (options != null) {
