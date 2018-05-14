@@ -134,7 +134,7 @@
                         </stimulusImage>
                     </hasMoreStimulus>
                     <endOfStimulus>
-                        <nextStimulus eventTag="nextStimulusTask 1" repeatIncorrect="false"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </endOfStimulus>
                 </withMatchingStimulus>
             </hasMoreStimulus>
@@ -150,7 +150,7 @@
     </presenter>
     <presenter back="Menu" displayOrder="10" menuLabel="Task 2" next="Menu" type="stimulus" self="Task_2" title="Task 2">
         <centrePage/>
-        <loadSdCardStimulus eventTag="Task 2" randomise="true" repeatRandomWindow="0" excludeRegex=".*_question\....$" maxStimuli="1000" repeatCount="1">
+        <loadSdCardStimulus eventTag="Task 2" randomise="true" repeatRandomWindow="0" excludeRegex=".*_question\\....$" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="Task 2" wavFormat="true" filePerStimulus="false"/>
                 <clearPage/>
@@ -167,7 +167,7 @@
                             </actionButton>
                             <actionButton featureText="Next" eventTag="Next" hotKey="SPACE" styleName="hiddenBottomRight">
                                 <endAudioRecorderTag eventTier="1" eventTag="task 2 animated"/>
-                                <nextStimulus eventTag="nextStimulusTask 2" repeatIncorrect="false"/>
+                                <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </backgroundImage>
                     </responseCorrect>
@@ -183,7 +183,7 @@
                             </actionButton>
                             <actionButton featureText="Next" eventTag="Next" hotKey="SPACE" styleName="hiddenBottomRight">
                                 <endAudioRecorderTag eventTier="1" eventTag="task 2 animated"/>
-                                <nextStimulus eventTag="nextStimulusTask 2" repeatIncorrect="false"/>
+                                <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </backgroundImage>
                     </responseIncorrect>
@@ -196,7 +196,7 @@
                 <startAudioRecorderTag eventTier="4"/>
                 <actionButton featureText="Skip" eventTag="Skip" hotKey="SPACE" styleName="hiddenBottomRight">
                     <endAudioRecorderTag eventTier="1" eventTag="task 2 skipped"/>
-                    <nextStimulus eventTag="nextStimulusTask 2" repeatIncorrect="false"/>
+                    <nextStimulus repeatIncorrect="false"/>
                 </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
