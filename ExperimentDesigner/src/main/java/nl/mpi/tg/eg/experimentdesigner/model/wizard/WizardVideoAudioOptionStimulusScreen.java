@@ -306,6 +306,8 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
             final PresenterFeature codeVideoFeature = new PresenterFeature(FeatureType.stimulusCodeVideo, null);
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
+            codeVideoFeature.addFeatureAttributes(FeatureAttribute.loop, "false");
+            codeVideoFeature.addFeatureAttributes(FeatureAttribute.autoPlay, "true");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getStimulusMsDelay(storedWizardScreenData)));
