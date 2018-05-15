@@ -31,9 +31,7 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import com.google.gwt.user.client.ui.Widget;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -438,6 +436,18 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         };
         pauseTimers.add(timer);
         timer.schedule(postLoadMs);
+    }
+
+    protected void randomMsPause(int minimumMs, int maximumMs, final TimedStimulusListener timedStimulusListener) {
+        final Timer timer = new Timer() {
+            @Override
+            public void run() {
+                timedStimulusListener.postLoadTimerFired();
+                pauseTimers.remove(this);
+            }
+        };
+        pauseTimers.add(timer);
+        timer.schedule((int)(Math.random() * (maximumMs - minimumMs) + minimumMs));
     }
 
     protected void stimulusPause(final TimedStimulusListener timedStimulusListener) {
