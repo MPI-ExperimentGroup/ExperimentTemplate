@@ -106,7 +106,7 @@ public enum FeatureType {
     audioButton(true, false, new FeatureAttribute[]{eventTag, poster, autoPlay, hotKey, styleName, src}),
     preloadAllStimuli(true, false, null, true, false, false, Contitionals.none),
     showStimulus(true, false, null, false, false, false, Contitionals.none), // todo: should this be here? or should it have an increment for next back etc
-    showStimulusGrid(false, false, new FeatureAttribute[]{maxStimuli, columnCount, imageWidth, eventTag, animate}, true, false, false, Contitionals.hasCorrectIncorrect),
+    showStimulusGrid(false, false, new FeatureAttribute[]{maxStimuli, columnCount, imageWidth, eventTag, animate}, false, false, false, Contitionals.hasCorrectIncorrect),
     matchingStimulusGrid(false, false, new FeatureAttribute[]{columnCount, maxWidth, animate, matchingRegex, maxStimuli, randomise}, false, false, false, Contitionals.hasCorrectIncorrect),
     pause(true, false, new FeatureAttribute[]{msToNext}),
     randomMsPause(true, false, new FeatureAttribute[]{minimum, maximum}),
