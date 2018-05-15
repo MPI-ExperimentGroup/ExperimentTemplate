@@ -578,7 +578,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="triggerListener|image|groupResponseStimulusImage|backgroundImage|pause|countdownLabel|stimulusImage|stimulusImageCapture|stimulusCodeImage|stimulusCodeAudio|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupNetworkActivity|table|row|column">
+    <xsl:template match="triggerListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|pause|countdownLabel|stimulusImage|stimulusImageCapture|stimulusCodeImage|stimulusCodeAudio|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupNetworkActivity|table|row|column">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>
@@ -597,6 +597,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@msToNext) then concat(@msToNext, ', ') else ''" />
         <xsl:value-of select="if(@listenerId) then concat('&quot;',@listenerId, '&quot;, ') else ''" />
         <xsl:value-of select="if(@threshold) then concat(@threshold, ', ') else ''" />
+        <xsl:value-of select="if(@minimum) then concat(@minimum, ', ') else ''" />
         <xsl:value-of select="if(@maximum) then concat(@maximum, ', ') else ''" />
         <xsl:value-of select="if(@matchingRegex) then concat('&quot;', @matchingRegex, '&quot;, ') else ''" />
         <xsl:value-of select="if(@replacement) then concat('&quot;', @replacement, '&quot;, ') else ''" />
