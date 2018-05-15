@@ -53,8 +53,10 @@ public class SchemaGeneratorTest {
 
         // todo: add more configuration files to the test
         String[] fileNameArray = new String[]{
-            "advocas1.xml", "french_audio.xml", "hrpretest02.xml", "ld_screensize.xml", "rosselfieldkit.xml",
-            "advocas2.xml", "french_conversation.xml", "leeservaring.xml", "parcours01.xml", "sentences_rating_task.xml", "vanuatufieldkit.xml",
+//            "advocas1.xml",
+            "french_audio.xml", "hrpretest02.xml", "ld_screensize.xml", "rosselfieldkit.xml",
+//            "advocas2.xml",
+            "french_conversation.xml", "leeservaring.xml", "parcours01.xml", "sentences_rating_task.xml", "vanuatufieldkit.xml",
             //            "alloptions.xml", 
             "multiparticipant.xml", "playback_preference.xml",
             //            "sentveri-exp3.xml",
