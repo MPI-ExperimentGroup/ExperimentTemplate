@@ -94,17 +94,17 @@ public class WizardSubmitOfflineDataScreen extends AbstractWizardScreen {
         onSuccess2.addFeature(FeatureType.eraseUsersDataButton, storedWizardScreenData.getScreenText(2), storedWizardScreenData.getScreenTag());
         onSuccess2.addFeature(FeatureType.addPadding, null);
         onSuccess2.addFeature(FeatureType.addPadding, null);
-        onSuccess2.addFeature(FeatureType.targetButton, storedWizardScreenData.getScreenText(3), storedWizardScreenData.getScreenTag(), "");
+        onSuccess2.addFeature(FeatureType.targetButton, storedWizardScreenData.getScreenText(3), "", storedWizardScreenData.getScreenTag(), "");
         onSuccess2.addFeature(FeatureType.addPadding, null);
         onSuccess2.addFeature(FeatureType.addPadding, null);
         final PresenterFeature onError2 = sendAllData.addFeature(FeatureType.onError, null);
         onError2.addFeature(FeatureType.plainText, storedWizardScreenData.getScreenText(4));
         onError2.addFeature(FeatureType.addPadding, null);
         onError2.addFeature(FeatureType.addPadding, null);
-        onError2.addFeature(FeatureType.targetButton, storedWizardScreenData.getScreenText(5), uploadPresenterScreen.getSelfPresenterTag(), "");
+        onError2.addFeature(FeatureType.targetButton, storedWizardScreenData.getScreenText(5), "", uploadPresenterScreen.getSelfPresenterTag(), "");
         onError2.addFeature(FeatureType.addPadding, null);
         onError2.addFeature(FeatureType.addPadding, null);
-        onError2.addFeature(FeatureType.targetButton, storedWizardScreenData.getScreenText(6), storedWizardScreenData.getScreenTag(), "");
+        onError2.addFeature(FeatureType.targetButton, storedWizardScreenData.getScreenText(6), "", storedWizardScreenData.getScreenTag(), "");
         onError2.addFeature(FeatureType.addPadding, null);
         onError2.addFeature(FeatureType.addPadding, null);
 
@@ -112,10 +112,10 @@ public class WizardSubmitOfflineDataScreen extends AbstractWizardScreen {
         onError.addFeature(FeatureType.plainText, storedWizardScreenData.getScreenText(4));
         onError.addFeature(FeatureType.addPadding, null);
         onError.addFeature(FeatureType.addPadding, null);
-        onError.addFeature(FeatureType.targetButton, storedWizardScreenData.getScreenText(5), uploadPresenterScreen.getSelfPresenterTag(), "");
+        onError.addFeature(FeatureType.targetButton, storedWizardScreenData.getScreenText(5), "", uploadPresenterScreen.getSelfPresenterTag(), "");
         onError.addFeature(FeatureType.addPadding, null);
         onError.addFeature(FeatureType.addPadding, null);
-        onError.addFeature(FeatureType.targetButton, storedWizardScreenData.getScreenText(6), storedWizardScreenData.getScreenTag(), "");
+        onError.addFeature(FeatureType.targetButton, storedWizardScreenData.getScreenText(6), "", storedWizardScreenData.getScreenTag(), "");
         onError.addFeature(FeatureType.addPadding, null);
         onError.addFeature(FeatureType.addPadding, null);
         return new PresenterScreen[]{storedWizardScreenData.getPresenterScreen(), uploadPresenterScreen};
