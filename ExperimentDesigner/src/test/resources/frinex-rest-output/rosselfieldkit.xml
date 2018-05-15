@@ -16,7 +16,7 @@
         <menuItem featureText="Instructions" target="Instructions"/>
         <menuItem featureText="Begin" target="Start"/>
     </presenter>
-    <presenter back="Instructions" displayOrder="3" menuLabel="Start" next="Edit_User" type="metadata" self="Start" title="Start">
+    <presenter back="Instructions" displayOrder="3" menuLabel="Start" type="metadata" self="Start" title="Start">
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="Begin a new interview with a new participant"/>
