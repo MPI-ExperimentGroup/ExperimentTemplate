@@ -1217,7 +1217,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void logTimeStamp(String eventName, String eventTag) {
-        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), eventName, stimulusProvider.getCurrentStimulus().getUniqueId(), eventTag, duration.elapsedMillis());
+        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), eventName, stimulusProvider.getCurrentStimulusUniqueId(), eventTag, duration.elapsedMillis());
     }
 
     protected void endAudioRecorderTag(int tier, String tagString) {
