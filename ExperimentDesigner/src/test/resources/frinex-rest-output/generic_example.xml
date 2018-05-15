@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment appNameDisplay="generic_example" appNameInternal="generic_example" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17">
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" appNameDisplay="generic_example" appNameInternal="generic_example" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17">
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
         <field controlledMessage="Voer een getal." controlledRegex="[0-9]+" postName="age" preventServerDuplicates="false" registrationField="Leeftijd"/>
@@ -14,7 +14,15 @@
     </presenter>
     <presenter back="Toestemming" displayOrder="2" menuLabel="Terug" type="text" self="Informatie" title="Informatie">
         <htmlText featureText="Beste deelnemer, &lt;br/&gt;Bedankt dat je mee wilt doen aan dit onderzoek! &lt;br/&gt;&lt;br/&gt;"/>
-        <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Gegevens"/>
+        <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="randomMsPause_Screen"/>
+    </presenter>
+    <presenter displayOrder="2" menuLabel="randomMsPause Screen" next="Gegevens" type="stimulus" self="randomMsPause_Screen" title="randomMsPause Screen">
+        <countdownLabel featureText="countdownLabel is not random, but gives a handy seconds counter" msToNext="30000" msLabelFormat="ss" styleName=""/>
+        <plainText featureText="Started: randomMsPause 1000 - 10000"/>
+        <randomMsPause minimum="1000" maximum="10000">
+            <logTimeStamp eventTag="Times up: randomMsPause"/>
+            <plainText featureText="Times up: randomMsPause"/>
+        </randomMsPause>
     </presenter>
     <presenter back="Informatie" displayOrder="3" menuLabel="Terug" next="First_Stimuli_Screen_Informatie" type="metadata" self="Gegevens" title="Gegevens">
         <metadataField fieldName="workerId"/>
