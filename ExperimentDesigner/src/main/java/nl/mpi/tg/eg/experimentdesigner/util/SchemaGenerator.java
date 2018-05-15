@@ -45,6 +45,9 @@ public class SchemaGenerator {
         writer.append("</xs:simpleType>\n");
 
         writer.append("<xs:element name=\"experiment\">\n").append("<xs:complexType>\n").append("<xs:sequence minOccurs=\"1\" maxOccurs=\"1\">\n");
+        writer.append("<xs:annotation>");
+        writer.append("<xs:documentation>Root element of the experiment configuration file of which only one is permitted.</xs:documentation>");
+        writer.append("</xs:annotation>");
 //        for (final PresenterType presenterType : presenterTypes) {
 //            writer.append("<xs:element ref=\"").append(presenterType.name()).append("\"/>\n");
 //        }
