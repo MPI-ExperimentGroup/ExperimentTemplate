@@ -540,7 +540,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                     final PresenterFeature drukophetplaatje = repeatAudioB.addFeature(FeatureType.stimulusCodeAudio, null, "3000", "DrukOpHetPlaatje", Boolean.toString(false));
                     drukophetplaatje.addFeature(FeatureType.disableStimulusButtons, null);
                     drukophetplaatje.addFeature(FeatureType.cancelPauseTimers, null);
-                    drukophetplaatje.addFeature(FeatureType.clearPage, null);
+                    drukophetplaatje.addFeature(FeatureType.clearPage, null, "");
                     if (getRewardImage(storedWizardScreenData) != null) {
                         drukophetplaatje.addFeature(FeatureType.backgroundImage, null, "0", getRewardImage(storedWizardScreenData), "");
                     }
@@ -553,7 +553,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                     final PresenterFeature repeatAudio = pause2.addFeature(FeatureType.stimulusAudio, null, "3000", Boolean.toString(false));
                     repeatAudio.addFeature(FeatureType.disableStimulusButtons, null);
                     repeatAudio.addFeature(FeatureType.cancelPauseTimers, null);
-                    repeatAudio.addFeature(FeatureType.clearPage, null);
+                    repeatAudio.addFeature(FeatureType.clearPage, null, "");
                     if (getRewardImage(storedWizardScreenData) != null) {
                         repeatAudio.addFeature(FeatureType.backgroundImage, null, "0", getRewardImage(storedWizardScreenData), "");
                     }
@@ -582,7 +582,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                 leftOverlayButton.addFeature(FeatureType.cancelPauseTimers, null);
 //                leftOverlayButton.addFeature(FeatureType.trigger, null, "buttonAction");
                 final PresenterFeature pause = leftOverlayButton.addFeature(FeatureType.pause, null, Integer.toString(getSelectedPause(storedWizardScreenData)));
-                pause.addFeature(FeatureType.clearPage, null);
+                pause.addFeature(FeatureType.clearPage, null, "");
                 if (getRewardImage(storedWizardScreenData) != null) {
                     pause.addFeature(FeatureType.backgroundImage, null, "0", getRewardImage(storedWizardScreenData), "");
                 }
