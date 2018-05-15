@@ -109,6 +109,7 @@ public enum FeatureType {
     showStimulusGrid(false, false, new FeatureAttribute[]{maxStimuli, columnCount, imageWidth, eventTag, animate}, true, false, false, Contitionals.hasCorrectIncorrect),
     matchingStimulusGrid(false, false, new FeatureAttribute[]{columnCount, maxWidth, animate, matchingRegex, maxStimuli, randomise}, false, false, false, Contitionals.hasCorrectIncorrect),
     pause(true, false, new FeatureAttribute[]{msToNext}),
+    randomMsPause(true, false, new FeatureAttribute[]{minimum, maximum}),
     triggerListener(true, false, new FeatureAttribute[]{listenerId, threshold, maximum}),
     trigger(false, false, new FeatureAttribute[]{listenerId}),
     countdownLabel(true, true, new FeatureAttribute[]{msToNext, msLabelFormat, styleName}),
