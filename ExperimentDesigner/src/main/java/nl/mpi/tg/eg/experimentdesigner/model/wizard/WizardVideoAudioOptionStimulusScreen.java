@@ -308,6 +308,8 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.loop, "false");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.autoPlay, "true");
+            codeVideoFeature.addFeatureAttributes(FeatureAttribute.showControls, "false");
+            codeVideoFeature.addFeatureAttributes(FeatureAttribute.styleName, "");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getStimulusMsDelay(storedWizardScreenData)));
@@ -379,7 +381,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
             ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelRight, storedWizardScreenData.getStimulusResponseLabelRight());
             ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
-            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "NextStimulus" + storedWizardScreenData.getScreenTitle());
+//            nextStimulusFeature.addFeatureAttributes(FeatureAttribute.eventTag, "NextStimulus" + storedWizardScreenData.getScreenTitle());
             ratingFooterButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
             stimulusRatingButton.getPresenterFeatureList().add(ratingFooterButtonFeature);
         } else {
