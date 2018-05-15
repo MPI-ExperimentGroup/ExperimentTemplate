@@ -83,7 +83,7 @@ public enum FeatureAttribute {
     imageWidth,
     alternativeChoice,
     msToNext(true),
-    listenerId, threshold, maximum,
+    listenerId, threshold, maximum, minimum,
     msLabelFormat,
     animate(true), // animate currently has bounce stimuliCode or none
     minStimuliPerTag(true), // for each tag there should be at least N of each represented in the final list
