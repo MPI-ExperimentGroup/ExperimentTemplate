@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopool.AudioStimuliFromString;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -44,9 +45,8 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  * @author olhshk
  */
 public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus> {
-    
-    
-    private final static String[] SPECIFIC_FLDS = {"availableCombinations", "currentTrialTuple", "responseRecord", "startTimeMs", "timeOutExit"};
+
+    private final static String[] SPECIFIC_FLDS = {"availableCombinations", "currentTrialTuple", "responseRecord", "startTimeMs", "timeOutExit", "durationMs"};
 
     private String stimuliDir;
     private String requiredLengthsStr;
@@ -57,7 +57,6 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     AudioStimuliFromString reader = new AudioStimuliFromString();
     private ArrayList<ArrayList<TrialCondition>> trialTypesPermutations;
     private ArrayList<ArrayList<Integer>> trialLengtPermutations;
-    private long maxDurationMs;
 
     // x[i][j][contdition] is the list of all trials (id-s) of the band-index i  of the length j satisfying "condition"
     private ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> trials; // shared between various permutation-pairs, reduced while it is used
@@ -66,7 +65,6 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     // to be serialised
     private ArrayList<ArrayList<PermutationPair>> availableCombinations; // x[i] is the list of permutations with non-empty possibilities to instantiate them using trials matrix of unused trials
     private TrialTuple currentTrialTuple;
-    private ArrayList<Integer> bandVisitsByTrials; // bandVisitsByTrials[i] == # times the band with the index i was visited by trials
 
     public AudioAsStimuliProvider(Stimulus[] stimulusArray) {
         super(stimulusArray);
@@ -84,7 +82,6 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         this.stimuliDir = dir;
     }
 
-   
     public ArrayList<Integer> getRequiredLength() {
         return this.requiredLengths;
     }
@@ -92,8 +89,6 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     public ArrayList<TrialCondition> requiredTrialTypes() {
         return this.requiredTrialTypes;
     }
-    
-  
 
     public ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> getTrials() {
         return this.trials;
@@ -149,7 +144,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         UtilsList<Integer> utilSizes = new UtilsList<Integer>();
         this.trialLengtPermutations = utilSizes.generatePermutations(this.requiredLengths);
 
-        long maxDurationMinLong = Long.parseLong(this.maxDurationMin);
+        long maxDurationMinLong = Long.parseLong(this.maxDurationMinutes);
         this.maxDurationMs = maxDurationMinLong * 60 * 1000;
 
         if (stimuliStateSnapshot.isEmpty()) {
@@ -287,6 +282,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         empty.append(startColumn).append(" ").append(endColumn);
 
         StringBuilder stringBuilder = new StringBuilder();
+
         stringBuilder.append(startRow);
         stringBuilder.append(startColumn).append("BandLabel").append(endColumn);
         stringBuilder.append(startColumn).append("# trial").append(endColumn);
@@ -351,6 +347,35 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         return stringBuilder.toString();
     }
 
+    @Override
+    public String getBandFrequenceTable(String startRow, String endRow, String startColumn, String endColumn, String format) {
+        StringBuilder stringBuilder = new StringBuilder();
+        HashMap<Integer, String> indexMap = this.invertHashMap(Indices.BAND_LABEL_TO_INDEX);
+        stringBuilder.append(startRow).append(" Map Band to Frequence").append(endColumn);
+        
+        stringBuilder.append(startRow);
+        stringBuilder.append(startColumn).append("Band ").append(endColumn);
+        stringBuilder.append(startColumn).append("# of appearances").append(endColumn);
+        stringBuilder.append(endRow);
+        for (int index = 0; index < this.bandVisitsByTrials.size(); index++) {
+            String bandLabel = indexMap.get(index);
+            stringBuilder.append(startRow);
+            stringBuilder.append(startColumn).append(bandLabel).append(endColumn);
+            stringBuilder.append(startColumn).append(this.bandVisitsByTrials.get(index)).append(endColumn);
+            stringBuilder.append(endRow);
+        }
+        return stringBuilder.toString();
+    }
+
+    private HashMap<Integer, String> invertHashMap(HashMap<String, Integer> map) {
+        Set<String> keys = map.keySet();
+        HashMap<Integer, String> retVal = new HashMap<Integer, String>();
+        for (String label : keys) {
+            retVal.put(map.get(label), label);
+        }
+        return retVal;
+    }
+
     public TrialTuple createTupleForBand(ArrayList<PermutationPair> availablePermutations) {
 
         if (availablePermutations.size() < 1) {
@@ -382,6 +407,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         map.put("currentTrialTuple", this.currentTrialTuple);
         map.put("startTimeMs", this.startTimeMs);
         map.put("timeOutExit", this.timeOutExit);
+        map.put("durationMs", this.durationMs);
         return map.toString();
     }
 
@@ -397,6 +423,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
         this.startTimeMs = Long.parseLong((String) map.get("startTimeMs"));
         this.timeOutExit = Boolean.parseBoolean((String) map.get("timeOutExit"));
+        this.durationMs = Long.parseLong((String) map.get("durationMs"));
 
         this.responseRecord = new ArrayList<BookkeepingStimulus<AudioAsStimulus>>();
         BookkeepingStimulus<AudioAsStimulus> factory = new BookkeepingStimulus<AudioAsStimulus>(null);
@@ -470,6 +497,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     @Override
     protected boolean fineTuningToBeContinuedFirstWrongOut() {
 
+        // preprocessing: set the correctness
         // check if correcntess eval was set on the last shown stimulus (i.e. if the space was pressed, and analysie correctness if it was not
         if (!this.responseRecord.isEmpty()) {
             int index = this.getCurrentStimulusIndex();
@@ -486,57 +514,22 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             }
         }
 
+        return super.fineTuningToBeContinuedFirstWrongOut();
+    }
+
+    @Override
+    protected void checkTimeOut() {
         // check if the time out has happened
         // first check if the trial was finished
-        if (this.currentTrialTuple.isNotEmpty()) {
-            int actualCurrentTrialLength = this.currentTrialTuple.getFirstNonusedTrial().getStimuli().size();
-            int currentTrialLength = this.currentTrialTuple.getFirstNonusedTrial().getTrialLength();
-            if (actualCurrentTrialLength == currentTrialLength) { // we are about to start a new trial, so time out must be checked
+        Trial trial = this.currentTrialTuple.getFirstNonusedTrial();
+        if (trial != null) {
+            if (trial.getStimuli().size() == trial.getTrialLength() + 1) { // we are about to start a new trial, so time-out must be checked
+                // amount of stimuli == trialLength + 1 cue stimulus
                 this.isTimeOut();
             }
         } else { // trial is empty, check time out
             this.isTimeOut();
         }
-        if (this.timeOutExit)  {
-            return false;
-        }
-        return super.fineTuningToBeContinuedFirstWrongOut();
-    }
-
-    private boolean isTimeOut() {
-        if (this.startTimeMs == 0) { // the coundown has not been set yet at all
-            // it will be set when the very first stimulus will be asked to be shown
-            return false;
-        }
-        long currentTimeMs = System.currentTimeMillis();
-        boolean retVal = (currentTimeMs - this.startTimeMs >= this.maxDurationMs);
-        if (retVal) { // set exit values
-            this.timeOutExit = true;
-            this.bandIndexScore = getBandIndexScoreByTrialVisits(this.bandVisitsByTrials);
-        }
-        return retVal;
-    }
-    
-    private int getBandIndexScoreByTrialVisits(ArrayList<Integer> visitCounter){
-        int retVal;
-        int max =0;
-        
-        for (Integer bandVisits:visitCounter) {
-            if (bandVisits>max) {
-                max = bandVisits;
-            }
-        }
-        int sum =0;
-        int amount = 0;
-        for (int i=0; i<visitCounter.size(); i++) {
-            if (visitCounter.get(i)==max) {
-                amount++;
-                sum += i;
-            }
-        }
-        float average = (float) sum / ((float) amount) ;
-        retVal = Math.round(average);
-        return retVal;
     }
 
     @Override

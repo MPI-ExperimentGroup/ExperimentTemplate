@@ -100,7 +100,7 @@ public class SourcenameIndices {
                 break;
             }
             default: {
-                retVal.put("capture", "Green=Correctly recognised, Read=Wrongly recognised");
+                retVal.put("capture", "Green=Correctly recognised, Red=Wrongly recognised");
                 retVal.put("headerWords", "Words");
                 retVal.put("headerNonWords", "Non-words");
                 break;

@@ -322,6 +322,9 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
     }
 
     @Override
+    protected void checkTimeOut() {}
+
+    @Override
     public String getStringFastTrack(String startRow, String endRow, String startColumn, String endColumn) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(startRow);

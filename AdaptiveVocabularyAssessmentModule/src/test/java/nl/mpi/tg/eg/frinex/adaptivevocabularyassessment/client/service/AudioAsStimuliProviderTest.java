@@ -692,7 +692,11 @@ public class AudioAsStimuliProviderTest {
         assertFalse(this.instance.getCycel2());
         assertFalse(this.instance.getLooser());
         assertTrue(this.instance.getTimeOutExit());
-        assertEquals(7, this.instance.getBandIndexScore());
+        Trial trial = this.instance.getCurrentTrialTuple().getFirstNonusedTrial();
+        if (trial != null) {
+            assertEquals(trial.getTrialLength()+1, trial.getStimuli().size());
+        }
+        assertTrue(this.instance.getBandIndexScore()==7 || this.instance.getBandIndexScore()==6);
 
     }
 

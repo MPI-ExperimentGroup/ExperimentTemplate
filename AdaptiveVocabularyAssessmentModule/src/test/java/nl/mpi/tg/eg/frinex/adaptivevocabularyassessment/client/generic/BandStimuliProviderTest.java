@@ -95,6 +95,10 @@ public class BandStimuliProviderTest {
         public String getStringFineTuningHistory(String startRow, String endRow, String startColumn, String endColumn, String format){
             return "";
         }
+        
+        @Override
+        protected void checkTimeOut(){
+        }
 
     };
 

@@ -79,13 +79,14 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     protected String errorMessage = null;
 
     protected boolean endOfRound = false;
-    
+
     //optional
-    protected String maxDurationMin=null;
-    
+    protected String maxDurationMinutes = null;
+    protected long maxDurationMs = 0;
     protected long startTimeMs = 0;
     protected boolean timeOutExit = false;
-    
+    protected long durationMs = 0;
+    protected ArrayList<Integer> bandVisitsByTrials; // bandVisitsByTrials[i] == # times the band with the index i was visited by trials
 
     // add experiment specific stuff here
     // ...
@@ -126,7 +127,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     }
 
     public void setmaxDurationMin(String maxDurationMin) {
-        this.maxDurationMin = maxDurationMin;
+        this.maxDurationMinutes = maxDurationMin;
     }
 
     public int getfineTuningTupleLength() {
@@ -172,11 +173,10 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     public String getErrorMessage() {
         return this.errorMessage;
     }
-    
-    public boolean getTimeOutExit(){
+
+    public boolean getTimeOutExit() {
         return this.timeOutExit;
     }
-
 
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
@@ -204,7 +204,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
             try {
                 this.deserialiseToThis(stimuliStateSnapshot);
             } catch (Exception ex) {
-               this.exceptionLogging(ex);
+                this.exceptionLogging(ex);
             }
         }
 
@@ -333,15 +333,24 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     public String getHtmlStimuliReport() {
         String summary = this.getStringSummary("<tr>", "</tr>", "<td>", "</td>");
         String inhoudFineTuning = this.getStringFineTuningHistory("<tr>", "</tr>", "<td>", "</td>", "html");
+        String inhoudFrequenceMap = this.getBandFrequenceTable("<tr>", "</tr>", "<td>", "</td>", "html");
         StringBuilder htmlStringBuilder = new StringBuilder();
         htmlStringBuilder.append("<p>User summary</p><table border=1>").append(summary).append("</table><br><br>");
         if (this.fastTrackPresent) {
             String inhoudFastTrack = this.getStringFastTrack("<tr>", "</tr>", "<td>", "</td>");
             htmlStringBuilder.append("<p>Fast Track History</p><table border=1>").append(inhoudFastTrack).append("</table><br><b>");
         }
+        if (!inhoudFrequenceMap.isEmpty()) {
+            htmlStringBuilder.append("<p>Band visit counter</p><table border=1>").append(inhoudFrequenceMap).append("</table>");
+        }
         htmlStringBuilder.append("<p>Fine tuning History</p><table border=1>").append(inhoudFineTuning).append("</table>");
+
         return htmlStringBuilder.toString();
 
+    }
+
+    public String getBandFrequenceTable(String startRow, String endRow, String startColumn, String endColumn, String format) {
+        return "";
     }
 
     @Override
@@ -352,6 +361,11 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         switch (reportType) {
             case "user_summary": {
                 String summary = this.getStringSummary("", "\n", "", ";");
+                String inhoudFrequenceMap = this.getBandFrequenceTable("", "\n", "", ";", "csv");
+
+                if (!inhoudFrequenceMap.isEmpty()) {
+                    summary = summary + inhoudFrequenceMap;
+                }
                 LinkedHashMap<String, String> summaryMap = this.makeMapFromCsvString(summary);
                 for (String key : summaryMap.keySet()) {
                     returnMap.put(key, summaryMap.get(key));
@@ -367,6 +381,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
                 break;
             }
             case "fine_tuning": {
+
                 String inhoudFineTuning = this.getStringFineTuningHistory("", "\n", "", ";", "csv");
                 LinkedHashMap<String, String> fineTuningBriefMap = this.makeMapFromCsvString(inhoudFineTuning);
                 for (String key : fineTuningBriefMap.keySet()) {
@@ -445,7 +460,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
     public abstract boolean initialiseNextFineTuningTuple();
 
     private boolean fineTuningToBeContinued() {
-        
+
         boolean contRound;
         if (this.fineTuningFirstWrongOut) {
             contRound = this.fineTuningToBeContinuedFirstWrongOut();
@@ -456,12 +471,15 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         return contRound;
     }
 
+    protected abstract void checkTimeOut();
+
     protected boolean fineTuningToBeContinuedFirstWrongOut() {
 
         boolean retVal;
-            
+
         if (this.isCorrectCurrentResponse) {
             if (this.tupleIsNotEmpty()) {
+
                 // we have not hit the last atom in the tuple yet
                 // continue
                 return true;
@@ -493,10 +511,17 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
             // register the fact that the band is finished 
             shiftFIFO(cycle2helper, this.currentBandIndex);
             this.bandVisitCounter[this.currentBandIndex]++;
-            
+
             retVal = this.toBeContinuedLoopAndLooserChecker();
-            
-            this.recycleUnusedStimuli();    
+
+            this.recycleUnusedStimuli();
+        }
+
+        if (this.maxDurationMinutes != null) {
+            if (retVal) {
+                this.checkTimeOut();
+            }
+            retVal = retVal && (!this.timeOutExit);
         }
 
         if (retVal) {
@@ -507,22 +532,62 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
                 retVal = false;
                 this.bandIndexScore = this.mostOftenVisitedBandIndex(this.bandVisitCounter, this.currentBandIndex);
             }
-
         }
+
+        return retVal;
+    }
+
+    protected boolean isTimeOut() {
+        if (this.startTimeMs == 0) { // the coundown has not been set yet at all
+            // it will be set when the very first stimulus will be asked to be shown
+            return false;
+        }
+        
+        long currentTimeMs = System.currentTimeMillis();
+        long duration = currentTimeMs - this.startTimeMs;
+        boolean retVal = (duration >= this.maxDurationMs);
+        
+        if (retVal) { // set exit values
+            this.timeOutExit = true;
+            this.durationMs = duration;
+            this.bandIndexScore = this.getBandIndexScoreByTrialVisits(this.bandVisitsByTrials);
+        }
+        return retVal;
+    }
+
+    protected int getBandIndexScoreByTrialVisits(ArrayList<Integer> visitCounter) {
+        int retVal;
+        int max = 0;
+
+        for (Integer bandVisits : visitCounter) {
+            if (bandVisits > max) {
+                max = bandVisits;
+            }
+        }
+        int sum = 0;
+        int amount = 0;
+        for (int i = 0; i < visitCounter.size(); i++) {
+            if (visitCounter.get(i) == max) {
+                amount++;
+                sum += i;
+            }
+        }
+        float average = (float) sum / ((float) amount);
+        retVal = Math.round(average);
         return retVal;
     }
 
     protected boolean fineTuningToBeContinuedWholeTuple() {
 
         boolean retVal;
-        
+
         if (this.tupleIsNotEmpty()) {
             // we have not hit the last stimuli in the tuple yet
             // continue
             return true;
         } else {
             // tuple is empty: register that the band is finished 
-            shiftFIFO(cycle2helper, this.currentBandIndex); 
+            shiftFIFO(cycle2helper, this.currentBandIndex);
             this.bandVisitCounter[this.currentBandIndex]++;
 
             // analyse correctness of the last tuple as a whole
@@ -550,6 +615,12 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
                 retVal = this.toBeContinuedLoopAndLooserChecker();
             }
         }
+        if (this.maxDurationMinutes != null) {
+            if (retVal) {
+                this.checkTimeOut();
+            }
+            retVal = retVal && (!this.timeOutExit);
+        }
         if (retVal) {
             // check if there are enough stimuli left
             this.enoughFineTuningStimulae = this.initialiseNextFineTuningTuple();
@@ -560,6 +631,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
             }
 
         }
+        
         return retVal;
     }
 
@@ -592,8 +664,8 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
             System.out.println("Detected: " + this.fineTuningUpperBoundForCycles
                     + " times oscillation between two neighbouring bands, "
                     + this.cycle2helper[cycle2helper.length - 2] + " and " + this.cycle2helper[cycle2helper.length - 1]);
-            this.bandIndexScore = (this.cycle2helper[cycle2helper.length - 1] < this.cycle2helper[cycle2helper.length - 2]) ? 
-                    this.cycle2helper[cycle2helper.length - 1] : this.cycle2helper[cycle2helper.length - 2];
+            this.bandIndexScore = (this.cycle2helper[cycle2helper.length - 1] < this.cycle2helper[cycle2helper.length - 2])
+                    ? this.cycle2helper[cycle2helper.length - 1] : this.cycle2helper[cycle2helper.length - 2];
 
             retVal = false;
         } else {
@@ -687,7 +759,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         stringBuilder.append(startColumn).append("EnoughFineTuningStimuli").append(endColumn);
         stringBuilder.append(startColumn).append("Champion").append(endColumn);
         stringBuilder.append(startColumn).append("Looser").append(endColumn);
-        if (this.maxDurationMin != null) {
+        if (this.maxDurationMinutes != null) {
             stringBuilder.append(startColumn).append("Time-out exit").append(endColumn);
             stringBuilder.append(startColumn).append("Duration millisec").append(endColumn);
         }
@@ -703,9 +775,9 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         stringBuilder.append(startColumn).append(this.enoughFineTuningStimulae).append(endColumn);
         stringBuilder.append(startColumn).append(this.champion).append(endColumn);
         stringBuilder.append(startColumn).append(this.looser).append(endColumn);
-        if (this.maxDurationMin != null) {
-            stringBuilder.append(startColumn).append("Time-out exit").append(endColumn);
-            stringBuilder.append(startColumn).append("Duration millisec").append(endColumn);
+        if (this.maxDurationMinutes != null) {
+            stringBuilder.append(startColumn).append(this.timeOutExit).append(endColumn);
+            stringBuilder.append(startColumn).append(this.durationMs).append(endColumn);
         }
 
         stringBuilder.append(endRow);
