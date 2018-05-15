@@ -44,7 +44,7 @@ public class SchemaGenerator {
         writer.append("</xs:restriction>\n");
         writer.append("</xs:simpleType>\n");
 
-        writer.append("<xs:element name=\"experiment\">\n").append("<xs:complexType>\n").append("<xs:sequence>\n");
+        writer.append("<xs:element name=\"experiment\">\n").append("<xs:complexType>\n").append("<xs:sequence minOccurs=\"1\" maxOccurs=\"1\">\n");
 //        for (final PresenterType presenterType : presenterTypes) {
 //            writer.append("<xs:element ref=\"").append(presenterType.name()).append("\"/>\n");
 //        }
@@ -53,9 +53,9 @@ public class SchemaGenerator {
         writer.append("<xs:attribute name=\"featureText\" use=\"required\" type=\"xs:string\"/>\n");
         writer.append("</xs:complexType>\n");
         writer.append("</xs:element>\n");
-        writer.append("<xs:element ref=\"metadata\"/>\n");
-        writer.append("<xs:element ref=\"presenter\" maxOccurs=\"unbounded\"/>\n");
-        writer.append("<xs:element ref=\"stimuli\"/>\n");
+        writer.append("<xs:element name=\"metadata\" type=\"metadataType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+        writer.append("<xs:element name=\"presenter\"  minOccurs=\"1\" maxOccurs=\"unbounded\" type=\"presenterType\"/>\n");
+        writer.append("<xs:element name=\"stimuli\" type=\"stimuliType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
         writer.append("</xs:sequence>\n");
         for (String attributeStrings : new String[]{"appNameDisplay", "appNameInternal"}) {
             writer.append("<xs:attribute name=\"").append(attributeStrings).append("\" type=\"xs:string\" use=\"required\"/>\n");
@@ -76,11 +76,10 @@ public class SchemaGenerator {
     }
 
     private void addPresenter(Writer writer, final PresenterType[] presenterTypes) throws IOException {
-        writer.append("<xs:element name=\"presenter\">\n");
-        writer.append("<xs:complexType>\n").append("<xs:choice maxOccurs=\"unbounded\">\n");
+        writer.append("<xs:complexType name=\"presenterType\">\n").append("<xs:choice maxOccurs=\"unbounded\">\n");
         for (final FeatureType featureRef : FeatureType.values()) {
             if (featureRef.getContitionals() != FeatureType.Contitionals.needsConditionalParent) {
-                writer.append("<xs:element ref=\"").append(featureRef.name()).append("\"/>\n");
+                writer.append("<xs:element name=\"").append(featureRef.name()).append("\" type=\"").append(featureRef.name()).append("Type\"/>\n");
             }
         }
         writer.append("</xs:choice>\n");
@@ -109,11 +108,11 @@ public class SchemaGenerator {
         writer.append("</xs:simpleType>\n");
         writer.append("</xs:attribute>");
 //        writer.append("<xs:assert test=\"count(*/metadataField) le 0\"/>"); // todo: apply this test to enforce presenter type constraints if possible
-        writer.append("</xs:complexType>\n").append("</xs:element>");;
+        writer.append("</xs:complexType>\n");
     }
 
     private void addMetadata(Writer writer) throws IOException {
-        writer.append("<xs:element name=\"metadata\">\n").append("<xs:complexType>\n").append("<xs:sequence>\n");
+        writer.append("<xs:complexType  name=\"metadataType\">\n").append("<xs:sequence>\n");
         writer.append("<xs:element name=\"field\" maxOccurs=\"unbounded\">\n").append("<xs:complexType>\n");
 //        writer.append("<xs:sequence>\n").append("</xs:sequence>\n");
         writer.append("<xs:attribute name=\"controlledMessage\" type=\"xs:string\" use=\"required\"/>\n");
@@ -123,24 +122,24 @@ public class SchemaGenerator {
         writer.append("<xs:attribute name=\"registrationField\" type=\"xs:string\" use=\"required\"/>\n");
         writer.append("</xs:complexType>\n").append("</xs:element>");
         writer.append("</xs:sequence>\n");
-        writer.append("</xs:complexType>\n").append("</xs:element>");
+        writer.append("</xs:complexType>\n");
     }
 
     private void addStimuli(Writer writer) throws IOException {
-        writer.append("<xs:element name=\"stimuli\">\n").append("<xs:complexType>\n").append("<xs:sequence>\n");
+        writer.append("<xs:complexType name=\"stimuliType\">\n").append("<xs:sequence>\n");
         writer.append("<xs:element name=\"stimulus\" minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
         writer.append("</xs:element>\n");
         writer.append("</xs:sequence>\n");
-        writer.append("</xs:complexType>\n").append("</xs:element>");
+        writer.append("</xs:complexType>\n");
     }
 
     private void addFeature(Writer writer, final FeatureType featureType) throws IOException {
-        writer.append("<xs:element name=\"").append(featureType.name()).append("\">\n").append("<xs:complexType>\n");
+        writer.append("<xs:complexType name=\"").append(featureType.name()).append("Type\">\n");
         if (featureType.canHaveFeatures()) {
             writer.append("<xs:choice minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
             for (final FeatureType featureRef : FeatureType.values()) {
                 if (featureRef.getContitionals() != FeatureType.Contitionals.needsConditionalParent) {
-                    writer.append("<xs:element ref=\"").append(featureRef.name()).append("\"/>\n");
+                    writer.append("<xs:element name=\"").append(featureRef.name()).append("\" type=\"").append(featureRef.name()).append("Type\"/>\n");
                 }
             }
             writer.append("</xs:choice>\n");
@@ -148,52 +147,52 @@ public class SchemaGenerator {
         switch (featureType.getContitionals()) {
             case hasTrueFalseCondition:
                 writer.append("<xs:all>\n");
-                writer.append("<xs:element ref=\"conditionTrue\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                writer.append("<xs:element ref=\"conditionFalse\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element name=\"conditionTrue\" type=\"conditionTrueType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element name=\"conditionFalse\" type=\"conditionFalseType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                 writer.append("</xs:all>\n");
                 break;
             case hasCorrectIncorrect:
                 writer.append("<xs:all>\n");
-                writer.append("<xs:element ref=\"responseCorrect\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                writer.append("<xs:element ref=\"responseIncorrect\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element name=\"responseCorrect\" type=\"responseCorrectType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element name=\"responseIncorrect\" type=\"responseIncorrectType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                 writer.append("</xs:all>\n");
                 break;
             case hasStimulusTag:
                 writer.append("<xs:all>\n");
-                writer.append("<xs:element ref=\"hasTag\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                writer.append("<xs:element ref=\"withoutTag\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element name=\"hasTag\" type=\"hasTagType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element name=\"withoutTag\" type=\"withoutTagType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                 writer.append("</xs:all>\n");
                 break;
             case hasMoreStimulus:
                 writer.append("<xs:all>\n");
-                writer.append("<xs:element ref=\"hasMoreStimulus\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                writer.append("<xs:element ref=\"endOfStimulus\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element name=\"hasMoreStimulus\" type=\"hasMoreStimulusType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element name=\"endOfStimulus\" type=\"endOfStimulusType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                 writer.append("<xs:element name=\"randomGrouping\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
                 writer.append("<xs:element name=\"stimuli\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
                 writer.append("</xs:all>\n");
                 break;
             case hasErrorSuccess:
                 writer.append("<xs:all>\n");
-                writer.append("<xs:element ref=\"onError\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                writer.append("<xs:element ref=\"onSuccess\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element name=\"onError\" type=\"onErrorType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element name=\"onSuccess\" type=\"onSuccessType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                 writer.append("</xs:all>\n");
                 break;
             case hasUserCount:
                 writer.append("<xs:all>\n");
-                writer.append("<xs:element ref=\"multipleUsers\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                writer.append("<xs:element ref=\"singleUser\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element name=\"multipleUsers\" type=\"multipleUsersType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element name=\"singleUser\" type=\"singleUserType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                 writer.append("</xs:all>\n");
                 break;
             case hasThreshold:
                 writer.append("<xs:all>\n");
-                writer.append("<xs:element ref=\"aboveThreshold\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                writer.append("<xs:element ref=\"belowThreshold\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element name=\"aboveThreshold\" type=\"aboveThresholdType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element name=\"belowThreshold\" type=\"belowThresholdType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                 writer.append("</xs:all>\n");
                 break;
             case hasGroupActivities:
                 writer.append("<xs:choice>\n");
-                writer.append("<xs:element ref=\"groupNetworkActivity\" minOccurs=\"0\" maxOccurs=\"unbounded\"/>\n");
-                writer.append("<xs:element ref=\"sendGroupEndOfStimuli\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
+                writer.append("<xs:element name=\"groupNetworkActivity\" type=\"groupNetworkActivityType\" minOccurs=\"0\" maxOccurs=\"unbounded\"/>\n");
+                writer.append("<xs:element name=\"sendGroupEndOfStimuli\" type=\"sendGroupEndOfStimuliType\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
                 writer.append("</xs:choice>\n");
                 break;
             case needsConditionalParent:
@@ -228,7 +227,7 @@ public class SchemaGenerator {
             }
             writer.append(")\"/>");
         }
-        writer.append("</xs:complexType>\n").append("</xs:element>");
+        writer.append("</xs:complexType>\n");
     }
 
     private void endState(Writer writer) throws IOException {
