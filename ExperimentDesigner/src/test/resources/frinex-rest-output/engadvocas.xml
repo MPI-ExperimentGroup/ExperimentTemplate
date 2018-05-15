@@ -94,7 +94,7 @@ Indicate for each word with a mouse click whether it is a word you know or not."
                         <column styleName="stimulusContainerCol"> 
                             <stimulusLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="" styleName="padded">
+                            <stimulusRatingButton ratingLabelRight="" ratingLabelLeft="" styleName="padded">
                                 <nextStimulus repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </column>
@@ -132,7 +132,7 @@ Indicate for each word with a mouse click whether it is a word you know or not."
                         <column styleName="stimulusContainerCol"> 
                             <stimulusLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="" styleName="padded">
+                            <stimulusRatingButton ratingLabelRight="" ratingLabelLeft="" styleName="padded">
                                 <nextStimulus repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </column>

@@ -54,7 +54,7 @@ Veel succes!"/>
     <presenter back="Edit_User" displayOrder="4" menuLabel="End" type="transmission" self="End" title="End">
         <sendAllData>
             <onSuccess>
-                <htmlText featureText="Einde van de taak. Dankjewel voor je deelname!"/>-->
+                <htmlText featureText="Einde van de taak. Dankjewel voor je deelname!"/>
                 <addPadding/>
                 <!--                <generateCompletionCode/>-->
                 <addPadding/>

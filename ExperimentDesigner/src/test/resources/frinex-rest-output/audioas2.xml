@@ -64,13 +64,13 @@
         <htmlText featureText="&lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt;"/>
         <addPadding/>
         <addPadding/>
-        <htmlText featureText=" TODO "/>
+        <htmlText featureText="Welkom bij dit experiment,"/>
         <addPadding/>
+        <htmlText featureText="In dit audio-experiment krijg je steeds een niet-bestaand voorbeeldwoord te horen. Na dit voorbeeldwoord volgt een lijst met niet-bestaande woorden in ruis. Druk zo snel mogelijk op de spatiebalk, zodra je het voorbeelwoord terughoort in de lijst."/>
         <addPadding/>
-        <htmlText featureText="&lt;b&gt;&lt;big&gt;Voorbeeld:&lt;/big&gt;&lt;/b&gt;"/>
+        <htmlText featureText="Let op: luister goed naar het voorbeeldwoord en de woorden in de lijst. In sommige lijsten komt het voorbeeldwoord niet terug. Je hoeft dan niet op de spatiebalk te drukken."/>
         <addPadding/>
-        <htmlText featureText=" TODO "/>
-        <addPadding/>
+        <htmlText featureText="Om het voorbeeldwoord te horen, druk je op spatie. De lijst met woorden hoor je daarna. Om het voorbeeldwoord van de volgende lijst te horen, druk je weer op spatie. "/>
         <addPadding/>
         <htmlText featureText="&lt;b&gt;&lt;big&gt;Veel succes!&lt;/big&gt;&lt;/b&gt;"/>
         <addPadding/>
@@ -97,7 +97,7 @@
                         <addPadding/>
                         <addPadding/>
                         <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
-                        <stimulusButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight">
+                        <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <cancelPauseTimers/>  
                             <trigger listenerId="nextStimulusAction"/>
                         </stimulusButton>
@@ -123,7 +123,7 @@
                                 </column>
                             </row>
                         </table>
-                        <actionButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight">
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <clearPage/>
                             <centrePage/>
                             <addPadding/>
@@ -184,7 +184,7 @@
                         <addPadding/>
                         <addPadding/>
                         <htmlText featureText="&lt;div align=&quot;center&quot; &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
-                        <stimulusButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight">
+                        <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <cancelPauseTimers/>  
                             <trigger listenerId="nextStimulusAction"/>
                         </stimulusButton>
@@ -204,7 +204,7 @@
                         <addPadding/>
                         <addPadding/>
                         <htmlText featureText="&lt;div align=&quot;center&quot; &gt;  De nieuwe serie begint. Toets SPATIE om het cue te horen &lt;/div&gt;"/>
-                        <actionButton featureText="&#160;" eventTier="1" hotKey="SPACE" styleName="hiddenBottomRight">
+                        <actionButton featureText="&#160;" shotKey="SPACE" styleName="hiddenBottomRight">
                             <clearPage/>
                             <centrePage/>
                             <addPadding/>

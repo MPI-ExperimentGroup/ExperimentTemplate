@@ -90,7 +90,7 @@ Geef voor elk woord met een muisklik aan of jij het woord kent of niet."/>
                         <column styleName="stimulusContainerCol"> 
                             <stimulusLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
+                            <stimulusRatingButton ratingLabelRight="" ratingLabelLeft="">
                                 <nextStimulus repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </column>
@@ -128,7 +128,7 @@ Geef voor elk woord met een muisklik aan of jij het woord kent of niet."/>
                         <column styleName="stimulusContainerCol"> 
                             <stimulusLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
+                            <stimulusRatingButton ratingLabelRight="" ratingLabelLeft="">
                                 <nextStimulus repeatIncorrect="false"/>
                             </stimulusRatingButton>
                         </column>
