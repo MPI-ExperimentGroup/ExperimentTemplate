@@ -60,7 +60,6 @@
         </table>
     </presenter>
     <presenter displayOrder="3" next="stimuliScreenV1" type="metadata" self="Accord" title="" >
-        <centrePage/>
         <htmlText featureText="&lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt;"/>
         <addPadding/>
         <addPadding/>
@@ -136,7 +135,7 @@
                                     <column>
                                         <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                                             <cancelPauseTimers/> 
-                                            <pause  msToNext="900">
+                                            <pause  msToNext="1000">
                                                 <cancelPauseTimers/> 
                                                 <trigger listenerId="nextStimulusAction"/>
                                             </pause> 
@@ -204,7 +203,7 @@
                         <addPadding/>
                         <addPadding/>
                         <htmlText featureText="&lt;div align=&quot;center&quot; &gt;  De nieuwe serie begint. Toets SPATIE om het cue te horen &lt;/div&gt;"/>
-                        <actionButton featureText="&#160;" shotKey="SPACE" styleName="hiddenBottomRight">
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <clearPage/>
                             <centrePage/>
                             <addPadding/>
@@ -214,7 +213,7 @@
                             <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                                 <cancelPauseTimers/> 
-                                <pause  msToNext="900">
+                                <pause  msToNext="1000">
                                     <cancelPauseTimers/> 
                                     <trigger listenerId="nextStimulusAction"/>
                                 </pause> 
