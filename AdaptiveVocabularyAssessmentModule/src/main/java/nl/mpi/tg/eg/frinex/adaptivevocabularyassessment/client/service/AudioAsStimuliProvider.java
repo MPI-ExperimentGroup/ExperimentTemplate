@@ -65,6 +65,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     // to be serialised
     private ArrayList<ArrayList<PermutationPair>> availableCombinations; // x[i] is the list of permutations with non-empty possibilities to instantiate them using trials matrix of unused trials
     private TrialTuple currentTrialTuple;
+    private ArrayList<String> usedCues = new ArrayList<String>();
 
     public AudioAsStimuliProvider(Stimulus[] stimulusArray) {
         super(stimulusArray);
@@ -182,10 +183,18 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     @Override
     public AudioAsStimulus getCurrentStimulus() {
         AudioAsStimulus retVal = super.getCurrentStimulus();
+        
+        if (retVal.getwordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
+            usedCues.add(retVal.getLabel());
+        } 
+        
         if (this.startTimeMs > 0) {
             return retVal;
         }
-        this.startTimeMs = System.currentTimeMillis();
+        if (!retVal.getwordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) { // set timer after the first cue is played, before the first non-cue is played
+            this.startTimeMs = System.currentTimeMillis();
+        }
+        
         return retVal;
     }
 
@@ -395,6 +404,12 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         for (int i = 0; i < tupleSize; i++) {
             ArrayList<Trial> possibilities = permPair.getTrials().get(i);// shared part
             int trialIndex = rnd.nextInt(possibilities.size());
+            String label = possibilities.get(trialIndex).getStimuli().get(0).getStimulus().getLabel();
+            if (usedCues.contains(label)) { // correct index
+                if (possibilities.size()>1) {
+                    trialIndex = rnd.nextInt(possibilities.size());
+                }
+            }
             Trial currentTrial = possibilities.remove(trialIndex);
             trs.add(currentTrial);
         }
@@ -430,12 +445,16 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
         this.responseRecord = new ArrayList<BookkeepingStimulus<AudioAsStimulus>>();
         BookkeepingStimulus<AudioAsStimulus> factory = new BookkeepingStimulus<AudioAsStimulus>(null);
+        this.usedCues = new ArrayList<String>();
         if (recordObj != null) {
             List<Object> objs = (List<Object>) recordObj;
             for (int i = 0; i < objs.size(); i++) {
                 Map<String, Object> mapBStimulus = (Map<String, Object>) objs.get(i);
                 BookkeepingStimulus<AudioAsStimulus> bStimulus = factory.toBookkeepingStimulusObject(mapBStimulus, this.reader.getHashedStimuli());
                 this.responseRecord.add(i, bStimulus);
+                if (bStimulus.getStimulus().getwordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
+                    this.usedCues.add(bStimulus.getStimulus().getLabel());
+                }
             }
         }
 

@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.Set;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
@@ -697,6 +698,13 @@ public class AudioAsStimuliProviderTest {
             assertEquals(trial.getTrialLength()+1, trial.getStimuli().size());
         }
         assertTrue(this.instance.getBandIndexScore()==7 || this.instance.getBandIndexScore()==6);
+        ArrayList<BookkeepingStimulus<AudioAsStimulus>> records = this.instance.getResponseRecord();
+        ArrayList usedCues = new ArrayList<String>();
+        for (BookkeepingStimulus<AudioAsStimulus> record:records){
+            String label = record.getStimulus().getLabel();
+            assertFalse(usedCues.contains(label));
+            usedCues.add(label);
+        }
 
     }
 
