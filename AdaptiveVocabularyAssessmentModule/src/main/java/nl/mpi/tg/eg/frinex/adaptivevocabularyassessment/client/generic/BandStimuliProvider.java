@@ -533,6 +533,13 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
                 this.bandIndexScore = this.mostOftenVisitedBandIndex(this.bandVisitCounter, this.currentBandIndex);
             }
         }
+        
+        if (!retVal) {
+            long currentTimeMs = System.currentTimeMillis();
+            this.durationMs  = currentTimeMs - this.startTimeMs;
+        }
+        
+        
 
         return retVal;
     }

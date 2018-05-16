@@ -351,7 +351,10 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     public String getBandFrequenceTable(String startRow, String endRow, String startColumn, String endColumn, String format) {
         StringBuilder stringBuilder = new StringBuilder();
         HashMap<Integer, String> indexMap = this.invertHashMap(Indices.BAND_LABEL_TO_INDEX);
-        stringBuilder.append(startRow).append(" Map Band to Frequence").append(endColumn);
+        stringBuilder.append(startRow).append(endRow);
+        stringBuilder.append(startRow).append(endRow);
+        stringBuilder.append(startRow).append(endRow);
+        stringBuilder.append(startRow).append(" Map Band to Frequence").append(endRow);
         
         stringBuilder.append(startRow);
         stringBuilder.append(startColumn).append("Band ").append(endColumn);
