@@ -3,7 +3,6 @@
     "experimentTitle": "Parcours01",
     "showMenuBar": true,
     "showProgress": false,
-    "allowUserRestart": false,
     "screenData": [{
             "agreementScreen": {
                 "menuLabel": "Terug",
@@ -24,8 +23,8 @@
                 "menuLabel": "Terug",
                 "title": "Gegevens",
                 "butonLabel": "Volgende",
-                "metadataFields" : [ "workerId:Proefpersoon ID:.'{'3,'}':Voer minimaal drie letters.", "age:Leeftijd:[0-9]+:Voer een getal.", "education:Opleidingsniveau:basisonderwijs|voortgezet onderwijs|MBO|HBO|universiteit|anders:.", "educationOther:Opleidingsniveau (anders, namelijk):.*:.", "gender:Geslacht:|man|vrouw|anders:." ],
-                        "connectionErrorText" : "Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.",
+                "metadataFields": ["workerId:Proefpersoon ID:.'{'3,'}':Voer minimaal drie letters.", "age:Leeftijd:[0-9]+:Voer een getal.", "education:Opleidingsniveau:basisonderwijs|voortgezet onderwijs|MBO|HBO|universiteit|anders:.", "educationOther:Opleidingsniveau (anders, namelijk):.*:.", "gender:Geslacht:|man|vrouw|anders:."],
+                "connectionErrorText": "Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.",
                 "sendData": true
             }
         }, {
@@ -36,7 +35,13 @@
                 "freeTextValidationRegex": ".{2,}",
                 "freeTextValidationMessage": "Vul één of enkele woorden in die volgens u het beste aan het eind van de zin passen."
             }
-        }],
-    "debriefingText1": "Dit is het einde van het experiment.<br/>Hartelijk dank voor uw deelname! <br/><br/>",
-    "debriefingText2": "<br/>Het bovenstaande nummer is het bewijs dat u het experiment heeft voltooid, en is vereist voor het in orde maken van uw vergoeding. Gelieve het nummer te kopieëren en per email terug te sturen naar de onderzoeker:  <br/>marlou.rasenberg@mpi.nl"
+        }, {
+            "sendDataScreen": {
+                "menuLabel": "einde van het experiment",
+                "title": "einde van het experiment",
+                "text": "Dit is het einde van het experiment.<br/>Hartelijk dank voor uw deelname! <br/><br/>",
+                "postCompletionCodeText": "<br/>Het bovenstaande nummer is het bewijs dat u het experiment heeft voltooid, en is vereist voor het in orde maken van uw vergoeding. Gelieve het nummer te kopieëren en per email terug te sturen naar de onderzoeker:  <br/>marlou.rasenberg@mpi.nl",
+                "allowUserRestart": false
+            }
+        }]
 }
