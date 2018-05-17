@@ -34,15 +34,9 @@ public class WizardUtilData {
 
     protected boolean showProgress;
 
-    protected boolean allowUserRestart;
-
     protected WizardUtilScreen[] screenData;
 
     protected String feedbackScreenText;
-
-    protected String debriefingText1;
-
-    protected String debriefingText2;
 
     public WizardUtilEnum getTemplateType() {
         return templateType;
@@ -76,14 +70,6 @@ public class WizardUtilData {
         this.showMenuBar = showMenuBar;
     }
 
-    public boolean isAllowUserRestart() {
-        return allowUserRestart;
-    }
-
-    public void setAllowUserRestart(boolean allowUserRestart) {
-        this.allowUserRestart = allowUserRestart;
-    }
-
     public WizardUtilScreen[] getScreenData() {
         return screenData;
     }
@@ -99,21 +85,4 @@ public class WizardUtilData {
     public void setFeedbackScreenText(String feedbackScreenText) {
         this.feedbackScreenText = feedbackScreenText;
     }
-
-    public String getDebriefingText1() {
-        return debriefingText1;
-    }
-
-    public void setDebriefingText1(String debriefingText1) {
-        this.debriefingText1 = debriefingText1;
-    }
-
-    public String getDebriefingText2() {
-        return debriefingText2;
-    }
-
-    public void setDebriefingText2(String debriefingText2) {
-        this.debriefingText2 = debriefingText2;
-    }
-
 }
