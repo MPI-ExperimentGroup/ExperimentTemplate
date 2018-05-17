@@ -100,7 +100,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setCentreScreen(false);
         String[][] stimuliArray = new String[stimuliData.getStimuliArray().length][2];
         for (int index = 0; index < stimuliData.getStimuliArray().length; index++) {
-            stimuliArray[index] = stimuliData.getStimuliArray()[index].split("/");
+            stimuliArray[index] = stimuliData.getStimuliArray()[index].split(":");
         }
         setStimuliSet(stimuliArray);
     }
