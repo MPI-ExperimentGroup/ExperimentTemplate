@@ -98,7 +98,11 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setStimuliCount(1000);
         setRandomiseStimuli(false);
         this.wizardScreenData.setCentreScreen(false);
-        setStimuliSet(new String[][]{stimuliData.getStimuliArray()});
+        String[][] stimuliArray = new String[stimuliData.getStimuliArray().length][2];
+        for (int index = 0; index < stimuliData.getStimuliArray().length; index++) {
+            stimuliArray[index] = stimuliData.getStimuliArray()[index].split("/");
+        }
+        setStimuliSet(stimuliArray);
     }
 
     public WizardGridStimulusScreen(String screenName, boolean centreScreen, String[][] stimuliStringArray, String[] randomStimuliTags, int maxStimuli, final boolean randomiseStimuli, String stimulusCodeMatch, int stimulusDelay, int codeStimulusDelay, String codeFormat, String... tagNames) {
@@ -328,9 +332,11 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             tagSet.add(tagName);
         }
         for (String[] stimulusEntry : stimuliSet) {
-            // @todo: perhaps this is clearer if there is an explicit adjacency regex used on the identifyer in the GUI app or an explicit adjacency / sort field in the stimuli
+            if (stimulusEntry != null && stimulusEntry.length > 0) {
+                // @todo: perhaps this is clearer if there is an explicit adjacency regex used on the identifyer in the GUI app or an explicit adjacency / sort field in the stimuli
 //            final String adjacencyString = stimulusEntry.replaceAll("test_[15]", "adjacency_a").replaceAll("test_[26]", "adjacency_b").replaceAll("test_[37]", "adjacency_c").replaceAll("test_[48]", "adjacency_d");
-            stimuliList.add(new Stimulus(stimulusEntry[0], stimulusEntry[0], null, stimulusEntry[1], null, stimulusEntry[0] /*.substring(0, stimulusEntry.length() - 1)*/, 0, tagSet, null, null));
+                stimuliList.add(new Stimulus(stimulusEntry[0], stimulusEntry[0], null, stimulusEntry[1], null, stimulusEntry[0] /*.substring(0, stimulusEntry.length() - 1)*/, 0, tagSet, null, null));
+            }
         }
         // add screen text
         // add grid with full screen option
