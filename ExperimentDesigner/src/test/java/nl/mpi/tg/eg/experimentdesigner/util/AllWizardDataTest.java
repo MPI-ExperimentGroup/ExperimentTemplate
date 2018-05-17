@@ -41,6 +41,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilData;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  * @since Aug 2, 2016 2:24:59 PM (creation date)
@@ -233,6 +234,7 @@ public class AllWizardDataTest {
      * @throws javax.xml.bind.JAXBException
      * @throws java.net.URISyntaxException
      */
+    @Ignore
     @Test
     public void testJsonOnlyWizardUtil() throws IOException, JAXBException, URISyntaxException {
         System.out.println("testJsonOnlyWizardUtil");
@@ -240,10 +242,10 @@ public class AllWizardDataTest {
         URI outputDirectoryUri = this.getClass().getResource(inputDirectory).toURI();
         System.out.println(inputDirectory);
 //        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "heoexp01.json"));
-        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "parcours01.json"));
+//        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "parcours01.json"));
 //        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "joseco01.json"));
 //        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "joseco02.json"));
-        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "generic_example.json"));
+//        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "generic_example.json"));
 //        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "playhouse_study.json"));
 //        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "ppvt.json"));
     }
