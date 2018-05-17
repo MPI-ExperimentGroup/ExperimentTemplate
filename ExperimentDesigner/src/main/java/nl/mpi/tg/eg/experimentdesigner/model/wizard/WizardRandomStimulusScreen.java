@@ -419,7 +419,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
                 stimulusFreeTextFeature.addFeatureAttributes(FeatureAttribute.hotKey, getHotkeyButton(storedWizardScreenData));
             }
             if (tableFeature != null) {
-                tableFeature.addFeature(FeatureType.column, "", "").getPresenterFeatureList().add(stimulusFreeTextFeature);
+                tableFeature.addFeature(FeatureType.column, null, "").getPresenterFeatureList().add(stimulusFreeTextFeature);
             } else {
                 presenterFeature.getPresenterFeatureList().add(stimulusFreeTextFeature);
             }
