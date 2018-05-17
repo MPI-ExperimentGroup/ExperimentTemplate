@@ -61,6 +61,23 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenMediaPath(audioPath);
     }
 
+    public WizardAudioTestScreen(WizardUtilAudioTest utilAudioTest) {
+        super(WizardScreenEnum.WizardAudioTestScreen, utilAudioTest.getTitle(), utilAudioTest.getMenuLabel(), utilAudioTest.getTitle());
+        this.setScreenText(null);
+        this.wizardScreenData.setScreenText(1, utilAudioTest.getBackgroundImage());
+        this.wizardScreenData.setScreenText(2, utilAudioTest.getAudioHotkey());
+        this.wizardScreenData.setScreenText(3, utilAudioTest.getHotkey());
+        this.wizardScreenData.setScreenText(4, utilAudioTest.getImageStyle());
+        this.wizardScreenData.setScreenText(5, utilAudioTest.getButonStyle());
+        this.wizardScreenData.setScreenText(6, utilAudioTest.getBackgroundStyle());
+        this.wizardScreenData.setScreenText(7, utilAudioTest.getImageName());
+        this.wizardScreenData.setScreenBoolean(0, utilAudioTest.isAutoPlay());
+        this.wizardScreenData.setScreenBoolean(1, utilAudioTest.isAutoNext());
+        this.wizardScreenData.setScreenIntegers(0, utilAudioTest.getBackgroundMs());
+        this.setNextButton(utilAudioTest.getButonLabel());
+        this.wizardScreenData.setScreenMediaPath(null);
+    }
+
     @Override
     public String getScreenBooleanInfo(int index) {
         return new String[]{"Auto Play", "Auto Next"}[index];
