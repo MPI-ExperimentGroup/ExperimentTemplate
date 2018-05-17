@@ -24,6 +24,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.AbstractWizardScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAgreementScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAudioTestScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardCompletionScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardEditUserScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardExistingUserCheckScreen;
@@ -31,11 +32,13 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardGridStimulusScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardRandomStimulusScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilAudioTest;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilMenu;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilMetadata;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilSelectParticipant;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilSendData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilStimuliData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilText;
 
@@ -284,18 +287,40 @@ public class SentenceCompletion {
                     firstScreen = lastScreen;
                 }
             }
+            final WizardUtilSendData utilSendData = screenData.getSendDataScreen();
+            if (utilSendData != null) {
+                WizardCompletionScreen completionScreen = new WizardCompletionScreen(utilSendData.getText(), utilSendData.isAllowUserRestart(), utilSendData.isGenerateCompletionCode(), utilSendData.getPostCompletionCodeText(),
+                        "Opnieuw beginnen",
+                        "Einde van het experiment",
+                        "Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.",
+                        "Probeer opnieuw");
+                wizardData.addScreen(completionScreen);
+                completionScreen.setScreenTag("completion");
+                completionScreen.setNextWizardScreen(firstScreen);
+                if (lastScreen != null) {
+                    lastScreen.getWizardScreenData().setNextWizardScreenData(completionScreen.getWizardScreenData());
+                }
+//                updateScreenToMenuRelations(screenToMenuMap, lastScreen, completionScreen, false);
+                lastScreen = completionScreen;
+                if (firstScreen == null) {
+                    firstScreen = lastScreen;
+                }
+            }
+            final WizardUtilAudioTest utilAudioTest = screenData.getAudioScreen();
+            if (utilAudioTest != null) {
+                WizardAudioTestScreen atticScreen = new WizardAudioTestScreen(utilAudioTest);
+                wizardData.addScreen(atticScreen);
+                atticScreen.setNextWizardScreen(firstScreen);
+                if (lastScreen != null) {
+                    lastScreen.getWizardScreenData().setNextWizardScreenData(atticScreen.getWizardScreenData());
+                }
+                updateScreenToMenuRelations(screenToMenuMap, lastScreen, atticScreen, false);
+                lastScreen = atticScreen;
+                if (firstScreen == null) {
+                    firstScreen = lastScreen;
+                }
+            }
         }
-        // @todo: remove the restart button
-        // 
-        WizardCompletionScreen completionScreen = new WizardCompletionScreen(wizardUtilData.getDebriefingText1(), wizardUtilData.isAllowUserRestart(), true,
-                //                "Wil nog iemand op dit apparaat deelnemen aan dit onderzoek, klik dan op de onderstaande knop.",
-                wizardUtilData.getDebriefingText2(),
-                "Opnieuw beginnen",
-                "Einde van het experiment",
-                "Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.",
-                "Probeer opnieuw");
-        wizardData.addScreen(completionScreen);
-        completionScreen.setScreenTag("completion");
 
         if (wizardUtilData.getFeedbackScreenText() != null) {
             final WizardEditUserScreen wizardFeedbackScreen = new WizardEditUserScreen();
@@ -313,14 +338,8 @@ public class SentenceCompletion {
             if (lastScreen != null) {
                 lastScreen.setNextWizardScreen(wizardFeedbackScreen);
             }
-            wizardFeedbackScreen.setNextWizardScreen(completionScreen);
-        } else {
-            if (lastScreen != null) {
-                lastScreen.setNextWizardScreen(completionScreen);
-            }
         }
 //        agreementScreen.setNextWizardScreen(wizardTextScreen);
-        completionScreen.setNextWizardScreen(firstScreen);
 
 //        wizardTextScreen.setBackWizardScreen(agreementScreen);
 //        list1234Screen.setBackWizardScreen(wizardEditUserScreen);
