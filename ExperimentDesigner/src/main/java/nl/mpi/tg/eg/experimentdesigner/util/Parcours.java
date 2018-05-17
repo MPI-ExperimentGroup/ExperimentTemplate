@@ -21,6 +21,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilEnum;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilMetadata;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilSendData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilStimuliData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilText;
 
@@ -425,18 +426,6 @@ public class Parcours extends WizardUtilData {
     }
 
     @Override
-    public String getDebriefingText1() {
-        return completionScreenText1;
-    }
-
-    @Override
-    public String getDebriefingText2() {
-        return "<br/>"
-                + "Het bovenstaande nummer is het bewijs dat u het experiment heeft voltooid, en is vereist voor het in orde maken van uw vergoeding. Gelieve het nummer te kopieëren en per email terug te sturen naar de onderzoeker:  <br/>"
-                + "marlou.rasenberg@mpi.nl";
-    }
-
-    @Override
     public WizardUtilScreen[] getScreenData() {
         return new WizardUtilScreen[]{new WizardUtilScreen() {
             @Override
@@ -586,6 +575,30 @@ public class Parcours extends WizardUtilData {
                     }
                 };
             }
+        }, new WizardUtilScreen() {
+
+            @Override
+            public WizardUtilSendData getSendDataScreen() {
+
+                return new WizardUtilSendData() {
+                    @Override
+                    public String getText() {
+                        return completionScreenText1;
+                    }
+
+                    @Override
+                    public String getPostCompletionCodeText() {
+                        return "<br/>"
+                                + "Het bovenstaande nummer is het bewijs dat u het experiment heeft voltooid, en is vereist voor het in orde maken van uw vergoeding. Gelieve het nummer te kopieëren en per email terug te sturen naar de onderzoeker:  <br/>"
+                                + "marlou.rasenberg@mpi.nl";
+                    }
+
+                    @Override
+                    public boolean isAllowUserRestart() {
+                        return false;
+                    }
+                };
+            }
         }};
     }
 
@@ -602,11 +615,6 @@ public class Parcours extends WizardUtilData {
     @Override
     public boolean isShowMenuBar() {
         return true;
-    }
-
-    @Override
-    public boolean isAllowUserRestart() {
-        return false;
     }
 
     @Override
