@@ -35,6 +35,10 @@ public class WizardUtilScreen {
 
     protected WizardUtilMetadata metadataScreen;
 
+    protected WizardUtilSendData sendDataScreen;
+
+    protected WizardUtilAudioTest audioScreen;
+
     public WizardUtilText getTextScreen() {
         return textScreen;
     }
@@ -81,5 +85,21 @@ public class WizardUtilScreen {
 
     public void setMetadataScreen(WizardUtilMetadata metadataScreen) {
         this.metadataScreen = metadataScreen;
+    }
+
+    public WizardUtilSendData getSendDataScreen() {
+        return sendDataScreen;
+    }
+
+    public void setSendDataScreen(WizardUtilSendData sendDataScreen) {
+        this.sendDataScreen = sendDataScreen;
+    }
+
+    public WizardUtilAudioTest getAudioScreen() {
+        return audioScreen;
+    }
+
+    public void setAudioScreen(WizardUtilAudioTest audioScreen) {
+        this.audioScreen = audioScreen;
     }
 }
