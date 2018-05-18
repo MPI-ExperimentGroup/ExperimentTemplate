@@ -5,7 +5,7 @@
         <field controlledMessage="Please enter the device model" controlledRegex=".'{'2,'}'" postName="errordevice" preventServerDuplicates="false" registrationField="Device model"/>
         <field controlledMessage="Please enter a short description of the issue" controlledRegex=".'{'2,'}'" postName="errordescription" preventServerDuplicates="false" registrationField="Please describe the error"/>
     </metadata>
-    <presenter displayOrder="1" menuLabel="practice" type="stimulus" self="practiceScreen">
+    <presenter menuLabel="practice" type="stimulus" self="practiceScreen">
         <loadStimulus eventTag="practice" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
@@ -20,17 +20,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="practice/practice_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -42,17 +42,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="practice/practice_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -74,7 +74,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="2" menuLabel="list1_a" type="stimulus" self="list1_aScreen">
+    <presenter menuLabel="list1_a" type="stimulus" self="list1_aScreen">
         <loadStimulus eventTag="list1_a" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
@@ -89,17 +89,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list1_a/list1_a_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -111,17 +111,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list1_a/list1_a_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -143,7 +143,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="3" menuLabel="list2_a" type="stimulus" self="list2_aScreen">
+    <presenter menuLabel="list2_a" type="stimulus" self="list2_aScreen">
         <loadStimulus eventTag="list2_a" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
@@ -158,17 +158,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list2_a/list2_a_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -180,17 +180,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list2_a/list2_a_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -212,7 +212,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="4" menuLabel="list3_a" type="stimulus" self="list3_aScreen">
+    <presenter menuLabel="list3_a" type="stimulus" self="list3_aScreen">
         <loadStimulus eventTag="list3_a" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
@@ -227,17 +227,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list3_a/list3_a_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -249,17 +249,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list3_a/list3_a_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -281,7 +281,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="5" menuLabel="list4_a" type="stimulus" self="list4_aScreen">
+    <presenter menuLabel="list4_a" type="stimulus" self="list4_aScreen">
         <loadStimulus eventTag="list4_a" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
@@ -296,17 +296,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list4_a/list4_a_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -318,17 +318,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list4_a/list4_a_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -350,7 +350,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="6" menuLabel="list1_b" type="stimulus" self="list1_bScreen">
+    <presenter menuLabel="list1_b" type="stimulus" self="list1_bScreen">
         <loadStimulus eventTag="list1_b" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
@@ -365,17 +365,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list1_b/list1_b_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -387,17 +387,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list1_b/list1_b_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -419,7 +419,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="7" menuLabel="list2_b" type="stimulus" self="list2_bScreen">
+    <presenter menuLabel="list2_b" type="stimulus" self="list2_bScreen">
         <loadStimulus eventTag="list2_b" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
@@ -434,17 +434,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list2_b/list2_b_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -456,17 +456,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list2_b/list2_b_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -488,7 +488,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="8" menuLabel="list3_b" type="stimulus" self="list3_bScreen">
+    <presenter menuLabel="list3_b" type="stimulus" self="list3_bScreen">
         <loadStimulus eventTag="list3_b" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
@@ -503,17 +503,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list3_b/list3_b_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -525,17 +525,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list3_b/list3_b_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -557,7 +557,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="9" menuLabel="list4_b" type="stimulus" self="list4_bScreen">
+    <presenter menuLabel="list4_b" type="stimulus" self="list4_bScreen">
         <loadStimulus eventTag="list4_b" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
@@ -572,17 +572,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list4_b/list4_b_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -594,17 +594,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list4_b/list4_b_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -626,10 +626,10 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="10" menuLabel="Menu" type="menu" self="AutoMenu" title="Auto Menu">
+    <presenter menuLabel="Menu" type="menu" self="AutoMenu" title="Auto Menu">
         <allMenuItems/>
     </presenter>
-    <presenter displayOrder="10" menuLabel="list1_c" type="stimulus" self="list1_cScreen">
+    <presenter menuLabel="list1_c" type="stimulus" self="list1_cScreen">
         <loadStimulus eventTag="list1_c" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
@@ -644,17 +644,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list1_c/list1_c_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -666,17 +666,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list1_c/list1_c_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -698,7 +698,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="11" menuLabel="list2_c" type="stimulus" self="list2_cScreen">
+    <presenter menuLabel="list2_c" type="stimulus" self="list2_cScreen">
         <loadStimulus eventTag="list2_c" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
@@ -713,17 +713,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list2_c/list2_c_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -735,17 +735,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list2_c/list2_c_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -767,7 +767,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="12" menuLabel="list3_c" type="stimulus" self="list3_cScreen">
+    <presenter menuLabel="list3_c" type="stimulus" self="list3_cScreen">
         <loadStimulus eventTag="list3_c" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
@@ -782,17 +782,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list3_c/list3_c_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -804,17 +804,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list3_c/list3_c_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -836,7 +836,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="13" menuLabel="list4_c" type="stimulus" self="list4_cScreen">
+    <presenter menuLabel="list4_c" type="stimulus" self="list4_cScreen">
         <loadStimulus eventTag="list4_c" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
@@ -851,17 +851,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list4_c/list4_c_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
@@ -873,17 +873,17 @@
                                     <centrePage/>
                                     <stimulusCodeImage msToNext="0" maxHeight="100" codeFormat="list4_c/list4_c_Q/&lt;code&gt;.jpg" percentOfPage="100" maxWidth="100">
                                         <currentStimulusHasTag msToNext="3000">
-                                            <withoutTag>
+                                            <conditionFalse>
                                                 <nextStimulus eventTag="nonquestion" repeatIncorrect="false"/>
-                                            </withoutTag>
-                                            <hasTag>
+                                            </conditionFalse>
+                                            <conditionTrue>
                                                 <actionFooterButton featureText="z" eventTag="responseZ" hotKey="Z">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
                                                 <actionFooterButton featureText="." eventTag="responseDot" hotKey="NUM_PERIOD">
                                                     <nextStimulus eventTag="nextStimulus" repeatIncorrect="false"/>
                                                 </actionFooterButton>
-                                            </hasTag>
+                                            </conditionTrue>
                                             <stimuli>
                                                 <tag>question</tag>
                                             </stimuli>
