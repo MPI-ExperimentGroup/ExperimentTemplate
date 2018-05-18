@@ -3,7 +3,7 @@
     <metadata>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Worker ID"/>
     </metadata>
-    <presenter back="about" displayOrder="1" menuLabel="Annotation Timeline Panel" type="timeline" self="Annotation_Timeline_Panel" title="Annotation Timeline Panel">
+    <presenter back="about" menuLabel="Annotation Timeline Panel" type="timeline" self="Annotation_Timeline_Panel" title="Annotation Timeline Panel">
         <AnnotationTimelinePanel poster="poster.jpg" mp4="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4" webm="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.webm" ogg="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.ogg" eventTag="Annotation_Timeline_Panel" columnCount="2">
             <!--            <stimuli> maxStimuli="10"
 // todo: this has to be updated so that an enclosing loadStimulus does the stimuli selection    
@@ -11,7 +11,7 @@
             </stimuli>-->
         </AnnotationTimelinePanel>
     </presenter>
-    <presenter back="Annotation_Timeline_Panel" displayOrder="2" menuLabel="About Screen" type="debug" self="about" title="About Screen">
+    <presenter back="Annotation_Timeline_Panel" menuLabel="About Screen" type="debug" self="about" title="About Screen">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
