@@ -541,7 +541,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="conditionTrue|conditionFalse|onError|onSuccess|responseCorrect|responseIncorrect|hasMoreStimulus|endOfStimulus|hasTag|withoutTag|multipleUsers|singleUser|aboveThreshold|belowThreshold">
+    <xsl:template match="conditionTrue|conditionFalse|onError|onSuccess|responseCorrect|responseIncorrect|hasMoreStimulus|endOfStimulus|multipleUsers|singleUser|aboveThreshold|belowThreshold">
         <xsl:value-of select="if(@msToNext) then concat(', ', @msToNext) else ''" />
         <xsl:value-of select="if(local-name() eq 'multipleUsers') then '' else ', '" />
         <xsl:text>new TimedStimulusListener() {
@@ -727,8 +727,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         </xsl:if>-->
         <xsl:apply-templates select="hasMoreStimulus" />
         <xsl:apply-templates select="endOfStimulus" />
-        <xsl:apply-templates select="hasTag" />
-        <xsl:apply-templates select="withoutTag" />
+        <xsl:apply-templates select="conditionTrue" />
+        <xsl:apply-templates select="conditionFalse" />
         <xsl:apply-templates select="multipleUsers" />
         <xsl:apply-templates select="singleUser" />
         <xsl:if test="local-name() eq 'showColourReport' or local-name() eq 'submitTestResults'">
