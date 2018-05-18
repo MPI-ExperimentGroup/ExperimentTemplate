@@ -39,7 +39,7 @@ public enum FeatureType {
     withMatchingStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, randomise, repeatCount, repeatRandomWindow, matchingRegex}, false, false, false, Contitionals.hasMoreStimulus),
     loadSdCardStimulus(false, false, new FeatureAttribute[]{eventTag, minStimuliPerTag, maxStimuliPerTag, maxStimuli, excludeRegex, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.hasMoreStimulus),
     //    loadAllStimulus(false, false, new FeatureAttribute[]{eventTag, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, false, false, Contitionals.hasMoreStimulus),
-    currentStimulusHasTag(false, false, new FeatureAttribute[]{msToNext}, true, false, false, Contitionals.hasStimulusTag),
+    currentStimulusHasTag(false, false, new FeatureAttribute[]{msToNext}, true, false, false, Contitionals.hasTrueFalseCondition), // todo: consider updating this to take a tags attribute rather than a stimuli element
     showStimuliReport(false, false, null),
     sendStimuliReport(false, false, new FeatureAttribute[]{type, headerKey, separator}),
     targetButton(false, true, new FeatureAttribute[]{hotKey, target, styleName}),
@@ -126,8 +126,6 @@ public enum FeatureType {
     responseIncorrect(true, false, new FeatureAttribute[]{msToNext}, false, false, false, Contitionals.needsConditionalParent),
     hasMoreStimulus(true, false, null, false, false, false, Contitionals.needsConditionalParent),
     endOfStimulus(true, false, null, false, false, false, Contitionals.needsConditionalParent),
-    hasTag(true, false, null, false, false, false, Contitionals.needsConditionalParent),
-    withoutTag(true, false, null, false, false, false, Contitionals.needsConditionalParent),
     existingUserCheck(false, false, null, false, false, false, Contitionals.hasUserCount),
     multipleUsers(true, false, null, false, false, false, Contitionals.needsConditionalParent),
     // todo: this should be suppressed from normal use like the other conditional child elements
@@ -191,7 +189,6 @@ public enum FeatureType {
         hasTrueFalseCondition,
         hasCorrectIncorrect,
         hasMoreStimulus,
-        hasStimulusTag,
         hasErrorSuccess,
         hasUserCount,
         hasThreshold,
