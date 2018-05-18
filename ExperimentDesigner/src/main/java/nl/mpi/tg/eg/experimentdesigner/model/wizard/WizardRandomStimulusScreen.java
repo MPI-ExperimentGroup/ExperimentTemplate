@@ -79,7 +79,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         setButtonLabel(spacebar);
         setStimuliLabelStyle(null);
 //        this.wizardScreenData.setButtonLabelEventTag(spacebar);
-        setStimuliSet(stimuliData.getStimuliArray());
+        setStimuliSet(stimuliData);
         if ("horizontal".equals(stimuliData.getStimuliLayout())) {
             setTableLayout(true);
         }
