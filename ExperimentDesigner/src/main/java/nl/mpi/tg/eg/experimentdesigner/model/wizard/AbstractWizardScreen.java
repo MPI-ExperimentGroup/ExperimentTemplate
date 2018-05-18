@@ -17,8 +17,12 @@
  */
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
 
 /**
  * @since May 3, 2016 1:34:51 PM (creation date)
@@ -39,6 +43,36 @@ public abstract class AbstractWizardScreen implements WizardScreen {
         this.wizardScreenData.setMenuLabel(menuLabel);
         this.wizardScreenData.setScreenTag(screenTag.replaceAll("[^A-Za-z0-9]", "_"));
         this.wizardScreenData.setCentreScreen(false);
+    }
+
+    protected final void setStimuliSet(final WizardUtilStimuliData stimuliData, String... tagNames) {
+        if (this.wizardScreenData.getStimuli() == null) {
+            this.wizardScreenData.setStimuli(new ArrayList<>());
+        }
+        final List<Stimulus> stimuliList = this.wizardScreenData.getStimuli();
+        for (String stimulusEntry : stimuliData.getStimuliArray()) {
+            final HashSet<String> tagSet = new HashSet<>();
+            tagSet.add(this.wizardScreenData.getScreenTitle());
+
+            String[] stimuliParts = stimulusEntry.split(":");
+            for (String tagName : stimuliParts[0].split("/")) {
+                tagSet.add(tagName);
+            }
+            for (String tagName : tagNames) {
+                tagSet.add(tagName);
+            }
+
+            String identifier = (stimuliParts.length > 1 && !stimuliParts[1].isEmpty()) ? stimuliParts[1] : stimulusEntry;
+            String audioPath = (stimuliParts.length > 2 && !stimuliParts[2].isEmpty()) ? stimuliParts[2] : null;
+            String videoPath = (stimuliParts.length > 3 && !stimuliParts[3].isEmpty()) ? stimuliParts[3] : null;
+            String imagePath = (stimuliParts.length > 4 && !stimuliParts[4].isEmpty()) ? stimuliParts[4] : null;
+            String label = (stimuliParts.length > 5 && !stimuliParts[5].isEmpty()) ? stimuliParts[5] : null;
+            String code = (stimuliParts.length > 6 && !stimuliParts[6].isEmpty()) ? stimuliParts[6] : null;
+            int pauseMs = (stimuliParts.length > 7 && !stimuliParts[7].isEmpty()) ? Integer.parseInt(stimuliParts[7]) : 0;
+            String ratingLabels = (stimuliParts.length > 8 && !stimuliParts[8].isEmpty()) ? stimuliParts[8] : null;
+            String correctResponses = (stimuliParts.length > 9 && !stimuliParts[9].isEmpty()) ? stimuliParts[9] : null;
+            stimuliList.add(new Stimulus(identifier, audioPath, videoPath, imagePath, label, code, pauseMs, tagSet, ratingLabels, correctResponses));
+        }
     }
 
     public final void setScreenTitle(String screenTitle) {
