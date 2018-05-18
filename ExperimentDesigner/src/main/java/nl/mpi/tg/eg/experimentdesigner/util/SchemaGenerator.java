@@ -160,12 +160,6 @@ public class SchemaGenerator {
                 writer.append("<xs:element name=\"responseIncorrect\" type=\"responseIncorrectType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                 writer.append("</xs:all>\n");
                 break;
-            case hasStimulusTag:
-                writer.append("<xs:all>\n");
-                writer.append("<xs:element name=\"hasTag\" type=\"hasTagType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                writer.append("<xs:element name=\"withoutTag\" type=\"withoutTagType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                writer.append("</xs:all>\n");
-                break;
             case hasMoreStimulus:
                 writer.append("<xs:all>\n");
                 writer.append("<xs:element name=\"hasMoreStimulus\" type=\"hasMoreStimulusType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
@@ -203,6 +197,7 @@ public class SchemaGenerator {
             default:
                 break;
         }
+        // todo: canHaveStimulus check for currentStimulusHasTag etc
         if (featureType.canHaveText()) {
             writer.append("<xs:attribute name=\"featureText\" type=\"xs:string\" use=\"required\"/>\n");
         }
