@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
@@ -32,6 +33,7 @@ import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.SimpleView;
+import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 
 /**
@@ -137,6 +139,15 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected void addHtmlText(String textString, String styleName) {
         ((ComplexView) simpleView).addHtmlText(textString, styleName);
+    }
+
+    protected void image(final String imageString, final String styleName, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
+            @Override
+            public void postLoadTimerFired() {
+            }
+        };
+        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(imageString), styleName, postLoadMs, shownStimulusListener, timedStimulusListener, null);
     }
 
     protected void addPadding() {
