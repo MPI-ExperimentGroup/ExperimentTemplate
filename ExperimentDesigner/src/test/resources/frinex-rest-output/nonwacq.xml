@@ -18,7 +18,7 @@
         <field controlledMessage="" controlledRegex=".*" postName="TimesContextPlayed" preventServerDuplicates="false" registrationField="TimesContextPlayed"/>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Worker ID"/>
     </metadata>
-    <presenter back="Menu" displayOrder="1" menuLabel="Sample Stimuli" type="stimulus" self="Sample_Stimuli" title="Sample Stimuli">
+    <presenter back="Menu" menuLabel="Sample Stimuli" type="stimulus" self="Sample_Stimuli" title="Sample Stimuli">
         <loadStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
@@ -111,7 +111,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter back="Menu" displayOrder="2" menuLabel="SdCard Stimuli" type="stimulus" self="SdCard_Stimuli" title="SdCard Stimuli">
+    <presenter back="Menu" menuLabel="SdCard Stimuli" type="stimulus" self="SdCard_Stimuli" title="SdCard Stimuli">
         <loadSdCardStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <centrePage/>
@@ -204,12 +204,12 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter back="Menu" displayOrder="3" menuLabel="About" type="debug" self="about" title="About">
+    <presenter back="Menu" menuLabel="About" type="debug" self="about" title="About">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
     </presenter>
-    <presenter displayOrder="4" menuLabel="Menu" type="menu" self="Menu" title="Menu">
+    <presenter menuLabel="Menu" type="menu" self="Menu" title="Menu">
         <menuItem featureText="SdCard Stimuli" target="SdCard_Stimuli"/>
         <menuItem featureText="Sample Stimuli" target="Sample_Stimuli"/>
         <menuItem featureText="About" target="about"/>
