@@ -3,11 +3,11 @@
     <metadata>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Nem blong man/woman we i toktok"/>
     </metadata>
-    <presenter displayOrder="1" menuLabel="Welkam" type="menu" self="Welkam" title="Welkam">
+    <presenter menuLabel="Welkam" type="menu" self="Welkam" title="Welkam">
         <menuItem featureText="Instruksen" target="Instruksen"/>
         <menuItem featureText="Stat - Go long program nao" target="Start"/>
     </presenter>
-    <presenter back="Welkam" displayOrder="2" menuLabel="Start" type="metadata" self="Start" title="Start">
+    <presenter back="Welkam" menuLabel="Start" type="metadata" self="Start" title="Start">
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="Makem wan niufala rikoding"/>
@@ -21,11 +21,11 @@
             </singleUser>
         </existingUserCheck>
     </presenter>
-    <presenter back="Welkam" displayOrder="3" menuLabel="Instruksen" type="text" self="Instruksen" title="Instruksen">
+    <presenter back="Welkam" menuLabel="Instruksen" type="text" self="Instruksen" title="Instruksen">
         <htmlText featureText="Wetem aplikasen ia yu save makem rikoding blong lanwis blong yu, bambai ol pipol blong Vanuatu mo ol pipol blong evri ples long world save harem lanwis blong yu. I gat fulap foto blong difren ples long Malakula wea i stap insaed long aplikasen ia. Bai yu showem ol foto ia long wan olfala woman o wan olfala man blong vilej blong yu mo askem long hem se i tokabaot ol foto ia long lanwis blong hem. Yu save transletem wanem i talem, tu."/>
         <targetButton featureText="Go long program nao" hotKey="SPACE" target="Start"/>
     </presenter>
-    <presenter back="Welkam" displayOrder="4" menuLabel="Infomesen blong man/woman we i toktok" next="Konsen" type="metadata" self="Edit_User" title="Infomesen blong man/woman we i toktok">
+    <presenter back="Welkam" menuLabel="Infomesen blong man/woman we i toktok" next="Konsen" type="metadata" self="Edit_User" title="Infomesen blong man/woman we i toktok">
         <metadataField fieldName="workerId"/>
         <saveMetadataButton featureText="Savem infomesen" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
@@ -34,14 +34,14 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Welkam" displayOrder="5" menuLabel="Select User" next="Konsen" type="metadata" self="SelectUser" title="Select User">
+    <presenter back="Welkam" menuLabel="Select User" next="Konsen" type="metadata" self="SelectUser" title="Select User">
         <selectUserMenu/>
     </presenter>
-    <presenter back="Welkam" displayOrder="6" menuLabel="Konsen" next="MetadataScreen" type="metadata" self="Konsen" title="Konsen">
+    <presenter back="Welkam" menuLabel="Konsen" next="MetadataScreen" type="metadata" self="Konsen" title="Konsen">
         <htmlText featureText="(Blong man/woman we i makem rikoding)&lt;br&gt;&lt;br&gt;Mi undastan se wetem aplikasen ia mi makem wan rikoding; mo mi undastan se rikoding ia bai i stap long intanet bambai ol man mo ol woman long evri kantri i save harem rikoding ia wea mi stap makem nao.&lt;br&gt;&lt;br&gt;"/>
         <targetButton featureText="Prestem ples hea sapos yu agri." target="MetadataScreen"/>
     </presenter>
-    <presenter back="Welkam" displayOrder="7" menuLabel="Metadata" next="Capture" type="stimulus" self="MetadataScreen" title="Metadata">
+    <presenter back="Welkam" menuLabel="Metadata" next="Capture" type="stimulus" self="MetadataScreen" title="Metadata">
         <loadStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="Metadata" wavFormat="true" filePerStimulus="false"/>
@@ -63,7 +63,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter back="Welkam" displayOrder="8" menuLabel="Lukluk ol foto" type="stimulus" self="Stimulus" title="Lukluk ol foto">
+    <presenter back="Welkam" menuLabel="Lukluk ol foto" type="stimulus" self="Stimulus" title="Lukluk ol foto">
         <loadSdCardStimulus eventTag="Lukluk ol foto" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="Lukluk ol foto" wavFormat="true" filePerStimulus="true"/>
@@ -145,7 +145,7 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter back="Konsen" displayOrder="9" menuLabel="Mekem ol foto" next="Stimulus" type="stimulus" self="Capture" title="Mekem ol foto">
+    <presenter back="Konsen" menuLabel="Mekem ol foto" next="Stimulus" type="stimulus" self="Capture" title="Mekem ol foto">
         <loadSdCardStimulus eventTag="Mekem ol foto" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusImageCapture featureText="Take Photo" msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80"/>
@@ -161,7 +161,7 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter displayOrder="10" menuLabel="About Screen" type="debug" self="about" title="About Screen">
+    <presenter menuLabel="About Screen" type="debug" self="about" title="About Screen">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
