@@ -23,6 +23,12 @@ import java.util.List;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
+import static nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilStimuliData.StimuliFields.audio;
+import static nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilStimuliData.StimuliFields.correct;
+import static nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilStimuliData.StimuliFields.image;
+import static nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilStimuliData.StimuliFields.pause;
+import static nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilStimuliData.StimuliFields.rating;
+import static nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilStimuliData.StimuliFields.video;
 
 /**
  * @since May 3, 2016 1:34:51 PM (creation date)
@@ -54,23 +60,67 @@ public abstract class AbstractWizardScreen implements WizardScreen {
             final HashSet<String> tagSet = new HashSet<>();
             tagSet.add(this.wizardScreenData.getScreenTitle());
 
-            String[] stimuliParts = stimulusEntry.split(":");
+            String[] stimuliParts = stimulusEntry.split(":", (stimuliData.getStimuliFields() != null) ? stimuliData.getStimuliFields().length + 1 : WizardUtilStimuliData.StimuliFields.values().length + 1);
             for (String tagName : stimuliParts[0].split("/")) {
                 tagSet.add(tagName);
             }
             for (String tagName : tagNames) {
                 tagSet.add(tagName);
             }
-
-            String identifier = (stimuliParts.length > 1 && !stimuliParts[1].isEmpty()) ? stimuliParts[1] : stimulusEntry;
-            String audioPath = (stimuliParts.length > 2 && !stimuliParts[2].isEmpty()) ? stimuliParts[2] : null;
-            String videoPath = (stimuliParts.length > 3 && !stimuliParts[3].isEmpty()) ? stimuliParts[3] : null;
-            String imagePath = (stimuliParts.length > 4 && !stimuliParts[4].isEmpty()) ? stimuliParts[4] : null;
-            String label = (stimuliParts.length > 5 && !stimuliParts[5].isEmpty()) ? stimuliParts[5] : null;
-            String code = (stimuliParts.length > 6 && !stimuliParts[6].isEmpty()) ? stimuliParts[6] : null;
-            int pauseMs = (stimuliParts.length > 7 && !stimuliParts[7].isEmpty()) ? Integer.parseInt(stimuliParts[7]) : 0;
-            String ratingLabels = (stimuliParts.length > 8 && !stimuliParts[8].isEmpty()) ? stimuliParts[8] : null;
-            String correctResponses = (stimuliParts.length > 9 && !stimuliParts[9].isEmpty()) ? stimuliParts[9] : null;
+            String identifier = (stimulusEntry.length() < 55) ? stimulusEntry : stimulusEntry.substring(0, 54);;
+            String audioPath = null;
+            String videoPath = null;
+            String imagePath = null;
+            String label = null;
+            String code = null;
+            int pauseMs = 0;
+            String ratingLabels = null;
+            String correctResponses = null;
+            if (stimuliData.getStimuliFields() != null) {
+                int index = 1;
+                for (WizardUtilStimuliData.StimuliFields stimuliField : stimuliData.getStimuliFields()) {
+                    switch (stimuliField) {
+                        case identifier:
+                            identifier = (stimuliParts.length > index && !stimuliParts[index].isEmpty()) ? stimuliParts[index] : identifier;
+                            break;
+                        case audio:
+                            audioPath = (stimuliParts.length > index && !stimuliParts[index].isEmpty()) ? stimuliParts[index] : null;
+                            break;
+                        case video:
+                            videoPath = (stimuliParts.length > index && !stimuliParts[index].isEmpty()) ? stimuliParts[index] : null;
+                            break;
+                        case image:
+                            imagePath = (stimuliParts.length > index && !stimuliParts[index].isEmpty()) ? stimuliParts[index] : null;
+                            break;
+                        case label:
+                            label = (stimuliParts.length > index && !stimuliParts[index].isEmpty()) ? stimuliParts[index] : null;
+                            break;
+                        case code:
+                            code = (stimuliParts.length > index && !stimuliParts[index].isEmpty()) ? stimuliParts[index] : null;
+                            break;
+                        case pause:
+                            pauseMs = (stimuliParts.length > index && !stimuliParts[index].isEmpty()) ? Integer.parseInt(stimuliParts[index]) : 0;
+                            break;
+                        case rating:
+                            ratingLabels = (stimuliParts.length > index && !stimuliParts[index].isEmpty()) ? stimuliParts[index] : null;
+                            break;
+                        case correct:
+                            correctResponses = (stimuliParts.length > index && !stimuliParts[index].isEmpty()) ? stimuliParts[index] : null;
+                            break;
+                    }
+                    index++;
+                }
+            } else {
+                identifier = (stimuliParts.length > 1 && !stimuliParts[1].isEmpty()) ? stimuliParts[1] : stimulusEntry;
+                audioPath = (stimuliParts.length > 2 && !stimuliParts[2].isEmpty()) ? stimuliParts[2] : null;
+                videoPath = (stimuliParts.length > 3 && !stimuliParts[3].isEmpty()) ? stimuliParts[3] : null;
+                imagePath = (stimuliParts.length > 4 && !stimuliParts[4].isEmpty()) ? stimuliParts[4] : null;
+                label = (stimuliParts.length > 5 && !stimuliParts[5].isEmpty()) ? stimuliParts[5] : null;
+                code = (stimuliParts.length > 6 && !stimuliParts[6].isEmpty()) ? stimuliParts[6] : null;
+                pauseMs = (stimuliParts.length > 7 && !stimuliParts[7].isEmpty()) ? Integer.parseInt(stimuliParts[7]) : 0;
+                ratingLabels = (stimuliParts.length > 8 && !stimuliParts[8].isEmpty()) ? stimuliParts[8] : null;
+                correctResponses = (stimuliParts.length > 9 && !stimuliParts[9].isEmpty()) ? stimuliParts[9] : null;
+            }
             stimuliList.add(new Stimulus(identifier, audioPath, videoPath, imagePath, label, code, pauseMs, tagSet, ratingLabels, correctResponses));
         }
     }
