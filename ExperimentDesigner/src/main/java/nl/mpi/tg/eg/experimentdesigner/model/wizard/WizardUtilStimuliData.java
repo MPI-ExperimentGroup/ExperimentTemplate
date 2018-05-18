@@ -27,10 +27,14 @@ public class WizardUtilStimuliData {
         text, touch
     }
 
+    public enum StimuliFields {
+        identifier, audio, video, image, label, code, pause, rating, correct
+    }
     protected String stimuliName;
     protected StimuliType stimuliType;
     protected String instructions = null;
-    protected String[] stimuliCodes; // todo: implement the use of stimuliCodes for image screens
+    protected String[] stimuliCodes; // todo: implement or remove the use of stimuliCodes for image screens
+    protected StimuliFields[] stimuliFields;
     protected String[] stimuliArray;
     protected String[] randomStimuliTags;
     protected String[] options;
@@ -38,6 +42,7 @@ public class WizardUtilStimuliData {
     protected String stimuliLabelStyle = null;
     protected String stimuliLayout = null;
     protected String stimuliHotKey = null;
+    // todo: move these rating specific items into options
     protected String freeTextValidationRegex = null;
     protected String freeTextValidationMessage = null;
     protected String freeTextAllowedCharCodes = null;
@@ -136,6 +141,14 @@ public class WizardUtilStimuliData {
 
     public void setStimuliArray(String[] stimuliArray) {
         this.stimuliArray = stimuliArray;
+    }
+
+    public StimuliFields[] getStimuliFields() {
+        return stimuliFields;
+    }
+
+    public void setStimuliFields(StimuliFields[] stimuliFields) {
+        this.stimuliFields = stimuliFields;
     }
 
     public String[] getStimuliCodes() {
