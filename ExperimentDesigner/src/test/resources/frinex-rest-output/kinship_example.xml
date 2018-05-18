@@ -8,25 +8,25 @@
         <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="gender" preventServerDuplicates="false" registrationField="Geslacht"/>
         <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_VideoAudioOption" preventServerDuplicates="false" registrationField="groupAllocation_VideoAudioOption"/>
     </metadata>
-    <presenter displayOrder="1" menuLabel="InformationScreen" type="text" self="InformationScreen" title="InformationScreen">
+    <presenter menuLabel="InformationScreen" type="text" self="InformationScreen" title="InformationScreen">
         <htmlText featureText="This is an example experiment that demostrates some kinship diagram interactivity."/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="AutoMenu"/>
     </presenter>
-    <presenter back="InformationScreen" displayOrder="2" menuLabel="Menu" type="menu" self="AutoMenu" title="Auto Menu">
+    <presenter back="InformationScreen" menuLabel="Menu" type="menu" self="AutoMenu" title="Auto Menu">
         <allMenuItems/>
     </presenter>
-    <presenter back="AutoMenu" displayOrder="4" menuLabel="SavedKinDiagram" type="kindiagram" self="SavedKinDiagram" title="SavedKinDiagram">
+    <presenter back="AutoMenu" menuLabel="SavedKinDiagram" type="kindiagram" self="SavedKinDiagram" title="SavedKinDiagram">
         <htmlText featureText="This screen shows a freeform kin type string diagram that you create. Use this form to add individuals to this kin type string diagram below."/>
         <addPadding/>
         <loadKinTypeStringDiagram msToNext="0" diagramName="kinTypeDiagram"/>
         <addKinTypeGui diagramName="kinTypeDiagram"/>
     </presenter>
-    <presenter back="AutoMenu" displayOrder="5" menuLabel="EditableEntitesDiagram" type="kindiagram" self="EditableEntitesDiagram" title="EditableEntitesDiagram">
+    <presenter back="AutoMenu" menuLabel="EditableEntitesDiagram" type="kindiagram" self="EditableEntitesDiagram" title="EditableEntitesDiagram">
         <htmlText featureText="This screen shows diagram on which you can editi the entities. Use the mouse to add relations and entites."/>
         <addPadding/>
         <editableKinEntitesDiagram msToNext="0" diagramName="kinTypeDiagram"/>
     </presenter>
-    <presenter back="AutoMenu" displayOrder="6" menuLabel="Edit User" type="metadata" self="Edit_User" title="Edit User">
+    <presenter back="AutoMenu" menuLabel="Edit User" type="metadata" self="Edit_User" title="Edit User">
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="firstName"/>
         <metadataField fieldName="lastName"/>
@@ -39,7 +39,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="AutoMenu" displayOrder="7" menuLabel="VideoAudioOption" type="stimulus" self="VideoAudioOption" title="VideoAudioOption">
+    <presenter back="AutoMenu" menuLabel="VideoAudioOption" type="stimulus" self="VideoAudioOption" title="VideoAudioOption">
         <loadStimulus eventTag="VideoAudioOption" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
