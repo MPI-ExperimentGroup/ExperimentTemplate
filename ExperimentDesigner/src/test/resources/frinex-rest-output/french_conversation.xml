@@ -5,7 +5,7 @@
         <field controlledMessage="." controlledRegex=".*" postName="stimuli" preventServerDuplicates="false" registrationField="stimuli"/>
         <field controlledMessage="Entrez au moins trois lettres." controlledRegex="['\\'S'\\'s]'{'3,'}'" postName="feedBack" preventServerDuplicates="false" registrationField=""/>
     </metadata>
-    <presenter displayOrder="1" menuLabel="Edit User" next="Accord" type="metadata" self="Edit_User" title="Edit User">
+    <presenter menuLabel="Edit User" next="Accord" type="metadata" self="Edit_User" title="Edit User">
         <htmlText featureText="Entrez votre code identifiant ici:"/>
         <metadataField fieldName="workerId"/>
         <saveMetadataButton featureText="Suivant" sendData="true" networkErrorMessage="Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît.">
@@ -15,15 +15,15 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter displayOrder="2" menuLabel="Accord" next="AudioTest" type="metadata" self="Accord" title="Accord">
+    <presenter menuLabel="Accord" next="AudioTest" type="metadata" self="Accord" title="Accord">
         <htmlText featureText="Merci beaucoup pour votre intérêt pour cette expérience scientifique en ligne! Les instructions détaillées pour la tâche seront données à la page suivante.&lt;br/&gt;&lt;br/&gt;Avant de commencer, vous devez d'abord confirmer que vous êtes d'accord pour participer à cette expérience. Veuillez noter que nous enregistrerons vos réponses pour des analyses scientifiques ultérieures. Nous utiliserons les résultats uniquement pour des buts scientifiques et nous allons les décrire dans des journaux scientifiques ou peut-être dans des quotidiens ou sur notre site web. Cependant, nous NE RAPORTERONS JAMAIS les résultats d'une manière qui permettrait de vous identifier. &lt;br/&gt;&lt;br/&gt;Vous êtes libre d'interrompre l'expérience à tout moment sans aucune explication. En outre, vous pourrez supprimer vos données ultérieurement sans avoir à fournir aucune explication également.&lt;br/&gt;&lt;br/&gt;Il n'y a aucun risque connu à participer à cette expérience. &lt;br/&gt;&lt;br/&gt;Si vous êtes d'accord pour participer à cette expérience, cliquez sur 'Je suis d'accord'. Si vous décidez de ne pas participer à cette expérience, abandonnez l'expérience en allant sur un autre site web ou en quittant le site web.&lt;br/&gt;&lt;br/&gt;"/>
         <targetButton featureText="Je suis d'accord" target="AudioTest"/>
     </presenter>
-    <presenter displayOrder="3" menuLabel="AccordConfiddentialite" next="stimuliN" type="metadata" self="AccordConfiddentialite" title="AccordConfiddentialite">
+    <presenter menuLabel="AccordConfiddentialite" next="stimuliN" type="metadata" self="AccordConfiddentialite" title="AccordConfiddentialite">
         <htmlText featureText="Avant de pouvoir continuer,&lt;br/&gt;vous devez vous engager à ne pas discuter le contenu des extraits avec d'autres personnes."/>
         <targetButton featureText="J'accepte" target="stimuliN"/>
     </presenter>
-    <presenter displayOrder="4" menuLabel="AudioTest" next="Pretest_Screen" type="stimulus" self="AudioTest" title="AudioTest">
+    <presenter menuLabel="AudioTest" next="Pretest_Screen" type="stimulus" self="AudioTest" title="AudioTest">
         <htmlText featureText="Cette expérience en ligne est une expérience audio. Pour cette raison, nous vous demandons de tester les réglages sonores de votre ordinateur en cliquant sur le gros bouton ci-dessous.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Vous n'entendez aucun son?&lt;/b&gt; Dans ce cas, il y a quelque chose qui ne va pas avec les réglages sonores de votre ordinateur. Personnalisez les réglages et essayez de nouveau.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Entendez-vous un son?&lt;/b&gt; Dans ce cas, vos réglages sonores sont bons. Ajustez le volume de l'ordinateur à un niveau confortable.&lt;br/&gt;&lt;br/&gt;----------------------------------------------------------------&lt;br/&gt;ATTENTION: Faites UNIQUEMENT cette expérience si vous vous trouvez dans un environment calme sans aucun bruit de fond. C'est très important!&lt;br/&gt;----------------------------------------------------------------&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;[Cliquez sur SUIVANT si vos réglages sonores sont bons...]"/>
         <audioButton eventTag="bienvenue" src="bienvenue" hotKey="" autoPlay="false" poster="audiobutton.jpg">
             <actionButton featureText="suivant [ barre d'espacement ]">
@@ -31,11 +31,11 @@
             </actionButton>
         </audioButton>
     </presenter>
-    <presenter displayOrder="5" menuLabel="InformationScreen2" type="text" self="InformationScreen2" title="InformationScreen2">
+    <presenter menuLabel="InformationScreen2" type="text" self="InformationScreen2" title="InformationScreen2">
         <htmlText featureText="Dans cette expérience en ligne, nous vous présenterons à plusieurs reprises un extrait de conversation naturelle suivi d'un silence. Votre tâche est d'indiquer si le locuteur qui parle va continuer ou arrêter de parler après le silence.&lt;br/&gt;&lt;br/&gt;Par example:&lt;br/&gt;Après l’extrait deux boutons apparaissent sur l'écran:&lt;br/&gt;ils sont marqués “continue” et “arrête”.&lt;br/&gt;Votre tâche est alors de cliquer sur le bouton à droite ou à gauche, suivant votre décision.&lt;br/&gt;&lt;br/&gt;Il y a environ 80 extraits dans cette expérience. Une session dure environ 20 minutes. Votre progrès est indiqué en haut de chaque écran.&lt;br/&gt;&lt;br/&gt;Attention: vous NE POUVEZ PAS mettre en pause, interrompre, ou reprendre l'expérience. Faites UNIQUEMENT cette expérience si vous avez vraiment le temps de la faire en entier. Faites l'expérience entièrement et sérieusement.&lt;br/&gt;&lt;br/&gt;Si l'expérience est claire et que vous êtes prêt(e) à commencer, cliquez sur SUIVANT.&lt;br/&gt;L'expérience commencera IMMEDIATEMENT"/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="AccordConfiddentialite"/>
     </presenter>
-    <presenter displayOrder="6" menuLabel="Pretest Screen" next="ScoreThreshold" type="stimulus" self="Pretest_Screen" title="Pretest Screen">
+    <presenter menuLabel="Pretest Screen" next="ScoreThreshold" type="stimulus" self="Pretest_Screen" title="Pretest Screen">
         <loadStimulus eventTag="Pretest Screen" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
@@ -65,7 +65,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="7" menuLabel="ScoreThreshold" next="InformationScreen2" type="stimulus" self="ScoreThreshold" title="ScoreThreshold">
+    <presenter menuLabel="ScoreThreshold" next="InformationScreen2" type="stimulus" self="ScoreThreshold" title="ScoreThreshold">
         <bestScoreAboveThreshold scoreThreshold="2">
             <aboveThreshold>
                 <autoNextPresenter/>
@@ -77,7 +77,7 @@
             </belowThreshold>
         </bestScoreAboveThreshold>
     </presenter>
-    <presenter displayOrder="8" menuLabel="stimuliN" next="EditUser" type="stimulus" self="stimuliN" title="stimuliN">
+    <presenter menuLabel="stimuliN" next="EditUser" type="stimulus" self="stimuliN" title="stimuliN">
         <loadStimulus eventTag="stimuliN" randomise="false" repeatRandomWindow="20" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
@@ -112,7 +112,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="9" menuLabel="EditUser" next="Fini" type="metadata" self="EditUser" title="EditUser">
+    <presenter menuLabel="EditUser" next="Fini" type="metadata" self="EditUser" title="EditUser">
         <htmlText featureText="D'après vous, quel est le thème/but de cette expérience?"/>
         <metadataField fieldName="feedBack"/>
         <saveMetadataButton featureText="Suivant" sendData="true" networkErrorMessage="Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît.">
@@ -122,7 +122,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter displayOrder="10" menuLabel="Fini" type="transmission" self="Fini" title="Fini">
+    <presenter menuLabel="Fini" type="transmission" self="Fini" title="Fini">
         <generateCompletionCode>
             <onSuccess>
                 <htmlText featureText="L'expérience est terminée.&lt;br/&gt;&lt;br/&gt;Voici votre code d'expérience. Vos devez le mettre sur Crowdflower afin d'être payé.&lt;br/&gt;&lt;br/&gt;Merci beaucoup pour votre participation!"/>
@@ -135,7 +135,7 @@
             </onError>
         </generateCompletionCode>
     </presenter>
-    <presenter back="Edit_User" displayOrder="11" menuLabel="about" type="debug" self="about" title="about">
+    <presenter back="Edit_User" menuLabel="about" type="debug" self="about" title="about">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
