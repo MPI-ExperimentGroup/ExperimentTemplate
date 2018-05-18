@@ -8,15 +8,15 @@
         <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="gender" preventServerDuplicates="false" registrationField="Geslacht"/>
         <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_VideoAudioOption" preventServerDuplicates="false" registrationField="groupAllocation_VideoAudioOption"/>
     </metadata>
-    <presenter displayOrder="1" menuLabel="Agreement" next="InformationScreen" type="metadata" self="Agreement" title="Agreement">
+    <presenter menuLabel="Agreement" next="InformationScreen" type="metadata" self="Agreement" title="Agreement">
         <htmlText featureText="Agreement Screen Text"/>
         <targetButton featureText="Akkoord" target="InformationScreen"/>
     </presenter>
-    <presenter displayOrder="2" menuLabel="InformationScreen" type="text" self="InformationScreen" title="InformationScreen">
+    <presenter menuLabel="InformationScreen" type="text" self="InformationScreen" title="InformationScreen">
         <htmlText featureText="Information Screen Text"/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Edit_User"/>
     </presenter>
-    <presenter displayOrder="3" menuLabel="Edit User" next="VideoAudioOption" type="metadata" self="Edit_User" title="Edit User">
+    <presenter menuLabel="Edit User" next="VideoAudioOption" type="metadata" self="Edit_User" title="Edit User">
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="firstName"/>
         <metadataField fieldName="lastName"/>
@@ -29,7 +29,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter displayOrder="4" menuLabel="VideoAudioOption" next="Finished" type="stimulus" self="VideoAudioOption" title="VideoAudioOption">
+    <presenter menuLabel="VideoAudioOption" next="Finished" type="stimulus" self="VideoAudioOption" title="VideoAudioOption">
         <loadStimulus eventTag="VideoAudioOption" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
@@ -59,7 +59,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="5" menuLabel="Finished" next="InformationScreen" type="transmission" self="Finished" title="Finished">
+    <presenter menuLabel="Finished" next="InformationScreen" type="transmission" self="Finished" title="Finished">
         <generateCompletionCode>
             <onSuccess>
                 <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Bedankt voor je deelname!"/>
