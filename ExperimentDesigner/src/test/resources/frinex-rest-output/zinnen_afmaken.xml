@@ -8,15 +8,15 @@
         <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="gender" preventServerDuplicates="false" registrationField="Geslacht"/>
         <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_Zinnen_afmaken" preventServerDuplicates="false" registrationField="groupAllocation_Zinnen_afmaken"/>
     </metadata>
-    <presenter displayOrder="1" menuLabel="Terug" next="Informatie" type="metadata" self="Toestemming" title="Toestemming">
+    <presenter menuLabel="Terug" next="Informatie" type="metadata" self="Toestemming" title="Toestemming">
         <htmlText featureText="Toestemmingsverklaring voor deelname aan het onderzoek:&lt;br/&gt;&lt;br/&gt;Ik stem geheel vrijwillig in met deelname aan dit onderzoek. Ik behoud daarbij het recht deze instemming weer in te trekken zonder dat ik daarvoor een reden hoef op te geven en besef dat ik op elk moment mag stoppen met het experiment. Als mijn onderzoeksresultaten gebruikt zullen worden in wetenschappelijke publicaties, dan wel op een andere manier openbaar worden gemaakt, zal dit volledig geanonimiseerd gebeuren. Mijn persoonsgegevens zullen niet door derden worden ingezien zonder mijn uitdrukkelijke toestemming. &lt;br/&gt;&lt;br/&gt;Als U ermee instemt om door te gaan met dir experiment, klik dan op 'Akkoord' om verder te gaan.&lt;br/&gt;&lt;br/&gt;Als U besluit niet deel te nemen aan het experiment, kunt U de pagina sluiten of naar een andere website gaan."/>
         <targetButton featureText="Akkoord" target="Informatie"/>
     </presenter>
-    <presenter back="Toestemming" displayOrder="2" menuLabel="Terug" type="text" self="Informatie" title="Informatie">
+    <presenter back="Toestemming" menuLabel="Terug" type="text" self="Informatie" title="Informatie">
         <htmlText featureText="Geachte deelnemer aan het onderzoek 'Zinnen afmaken',&lt;br/&gt;&lt;br/&gt;Alvast ontzettend bedankt voor uw deelname aan het onderzoek. U gaat meedoen aan een onderzoek naar het afmaken van zinnen. Voordat u gaat beginnen is het belangrijk dat u kennis neemt van de procedure die in het onderzoek wordt gevolgd. Leest u daarom onderstaande instructies zorgvuldig door. &lt;br/&gt;&lt;br/&gt;&lt;b&gt;Doel van het onderzoek&lt;/b&gt;&lt;br/&gt;U gaat meedoen aan een onderzoek waarin de invloed van verwachtingen over het einde van een zin op het invullen van een zelfstandig naamwoord (&lt;u&gt;bijv&lt;/u&gt;.: '&lt;span style=&quot;color:green&quot;&gt;hoofd&lt;/span&gt;', '&lt;span style=&quot;color:green&quot;&gt;paard&lt;/span&gt;', '&lt;span style=&quot;color:green&quot;&gt;voeten&lt;/span&gt;', '&lt;span style=&quot;color:green&quot;&gt;muizen&lt;/span&gt;'... ; &lt;u&gt;maar niet&lt;/u&gt;: '&lt;span style=&quot;color:red&quot;&gt;lopen&lt;/span&gt;', '&lt;span style=&quot;color:red&quot;&gt;schieten&lt;/span&gt;', '&lt;span style=&quot;color:red&quot;&gt;mooi&lt;/span&gt;', '&lt;span style=&quot;color:red&quot;&gt;leuk&lt;/span&gt;', '&lt;span style=&quot;color:red&quot;&gt;hij&lt;/span&gt;'... ) wordt onderzocht. &lt;br/&gt;&lt;br/&gt;&lt;b&gt;Instructies&lt;/b&gt;&lt;br/&gt;In dit onderzoek krijgt u een aantal zinnen te lezen die één voor één op het beeldscherm verschijnen. Deze zinnen zijn niet compleet en missen het laatste woord. Het is uw taak om dit laatste woord in te vullen en zo de zin af te maken. Het is belangrijk om maar één woord in te vullen. U hoeft niet te lang over het woord na te denken; maak de voor u meest intuïtieve keuze. Een voorbeeld zou kunnen zijn:&lt;br/&gt;&lt;br/&gt;Om mijn voeten warm te houden loop ik op mijn&lt;br/&gt;&lt;br/&gt;Mogelijke vervolg-woorden: &lt;span style=&quot;color:green&quot;&gt;schoenen / handen / vloer / ...&lt;/span&gt;&lt;br/&gt;&lt;u&gt;Niet&lt;/u&gt; mogelijke vervolg-woorden: &lt;span style=&quot;color:red&quot;&gt;wandelen / goed / gepraat / hij / ...&lt;/span&gt;&lt;br/&gt;&lt;br/&gt;In totaal zal het onderzoek ongeveer 45 minuten duren. Zorg ervoor dat u tijdens het experiment in een rustige omgeving zit, zonder afleiding van bijvoorbeeld uw mobiele telefoon, TV of van andere mensen. Zorg er verder voor dat u het onderzoek in één keer afmaakt. &lt;br/&gt;&lt;br/&gt;&lt;b&gt;Zo begint u:&lt;/b&gt;&lt;br/&gt;Door te klikken op 'Volgende' gaat u naar de volgende pagina. Voer hier alsublieft uw gegevens in zoals uw voornaam, achternaam, leeftijd en geslacht. Vul voor het proefpersoon ID nummer het nummer in dat u per email van de onderzoeker heeft ontvangen. &lt;br/&gt;&lt;br/&gt;U begint het onderzoek door weer te klikken op 'Volgende'. Iedere zin die u moet afmaken wordt aan de bovenkant van het scherm weergegeven. Onder iedere zin zal een tekstbox verschijnen waar u het woord kunt invullen dat volgens u het best past op de lege plek in de zin. Door te klikken op 'Volgende' gaat u naar de volgende zin. Let op: het is niet mogelijk om naar eerdere zinnen terug te gaan!&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Proefpersonen die niet mee kunnen doen aan het onderzoek&lt;/b&gt;&lt;br/&gt;Het is niet mogelijk om deel te nemen aan dit onderzoek als Nederlands niet uw moedertaal is of wanneer u jonger bent dan 18 jaar of ouder dan 45 jaar. &lt;br/&gt;&lt;br/&gt;&lt;b&gt;Vergoeding&lt;/b&gt;&lt;br/&gt;Voor deelname aan dit experiment ontvant u &lt;b&gt;€ 8,-&lt;/b&gt;. Dit bedrag zal worden overgemaakt op uw bankrekening. &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Alvast heel erg bedankt voor uw deelname en succes!&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;René Terporten&lt;br/&gt;PhD candidaat&lt;br/&gt;Max Planck Instituut voor Psycholinguïstiek"/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Gegevens"/>
     </presenter>
-    <presenter back="Informatie" displayOrder="3" menuLabel="Terug" next="Zinnen_afmaken" type="metadata" self="Gegevens" title="Gegevens">
+    <presenter back="Informatie" menuLabel="Terug" next="Zinnen_afmaken" type="metadata" self="Gegevens" title="Gegevens">
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="firstName"/>
         <metadataField fieldName="lastName"/>
@@ -29,7 +29,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter displayOrder="4" menuLabel="Zinnen afmaken" next="completion" type="stimulus" self="Zinnen_afmaken" title="Zinnen afmaken">
+    <presenter menuLabel="Zinnen afmaken" next="completion" type="stimulus" self="Zinnen_afmaken" title="Zinnen afmaken">
         <loadStimulus eventTag="Zinnen afmaken" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
@@ -53,7 +53,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="5" menuLabel="Einde van het experiment" type="transmission" self="completion" title="Einde van het experiment">
+    <presenter menuLabel="Einde van het experiment" type="transmission" self="completion" title="Einde van het experiment">
         <generateCompletionCode>
             <onSuccess>
                 <htmlText featureText="Beste participant,&lt;br/&gt;In dit onderzoek waren we geïnteresseerd in de door u ingevulde woorden. Wellicht heeft u al opgemerkt dat sommige van de zinnen heel specifiek waren (en u dus meteen wist wat het laatste woord zou kunnen zijn), terwijl andere zinnen wat vager waren. Het idee was om van iedere zin een vage en een specifieke versie te maken. Dus mocht u op gegeven moment een vage zin hebben gezien, dan zou een andere proefpersoon daarvan de specifieke versie krijgen. Wij zijn met name geïnteresseerd in hoe de ingevulde woorden over de versies heen verschillen. Met behulp van deze resultaten zouden wij dan op een latere termijn een ander onderzoek kunnen doen.&lt;br/&gt;Hartstikke bedankt voor het meedoen!&lt;br/&gt;&lt;br/&gt;Met vriendelijke groeten,&lt;br/&gt;René Terporten&lt;br/&gt;PhD candidaat&lt;br/&gt;Max Planck Instituut voor Psycholinguïstiek"/>
@@ -68,7 +68,7 @@
             </onError>
         </generateCompletionCode>
     </presenter>
-    <presenter back="Gegevens" displayOrder="6" menuLabel="Over" type="debug" self="about" title="Over">
+    <presenter back="Gegevens" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
     </presenter>
     <stimuli>
