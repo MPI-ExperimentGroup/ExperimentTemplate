@@ -11,23 +11,23 @@
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Worker ID"/>
         <field controlledMessage="Please enter your login code." controlledRegex=".'{'3,'}'" postName="session_id" preventServerDuplicates="false" registrationField="session_id"/>
     </metadata>
-    <presenter displayOrder="1" menuLabel="Back" next="Information" type="metadata" self="Consent" title="Consent">
+    <presenter menuLabel="Back" next="Information" type="metadata" self="Consent" title="Consent">
         <htmlText featureText="Declaration of Consent for Participation in Research: &lt;br/&gt;ONION rating survey &lt;br/&gt;Before you begin this experiment, please confirm that you give consent to participate in this experiment. We will save your responses for later analysis. We will only use the results for scientific purposes; we will report on them in specialized journals or perhaps in newspapers or on our website. However, your data will ALWAYS be treated anonymously. &lt;br/&gt; &lt;br/&gt;By giving your consent, you declare that you have been sufficiently informed about this study and that you participate of your own free will. You are free to withdraw from this experiment at any point in time without an explanation. You may also have your data removed from the database at any time prior to publication, without giving a reason. &lt;br/&gt; &lt;br/&gt;There are no known risks related to your participation in this experiment. &lt;br/&gt;&lt;br/&gt;If you agree to take part in this experiment, click 'Agree' to continue. &lt;br/&gt;If you decide not to participate in the experiment, you can close the page or go to another website. &lt;br/&gt;&lt;br/&gt;"/>
         <targetButton featureText="Agree" target="Information"/>
     </presenter>
-    <presenter back="Information" displayOrder="2" menuLabel="Back" type="text" self="Instruction1" title="Instruction1">
+    <presenter back="Information" menuLabel="Back" type="text" self="Instruction1" title="Instruction1">
         <htmlText featureText="In the following you will read short action phrases consisting of a verb and an object (e.g., drive a car).&lt;br/&gt;For each phrase we would like you to answer questions along three dimensions by using a 7-point scale.&lt;br/&gt;The dimensions include object state change, action familiarity and imageability of the action. Detailed instructions about these dimensions will follow later."/>
         <targetButton featureText="next [ spacebar ]" hotKey="SPACE" target="Instruction2"/>
     </presenter>
-    <presenter back="Instruction2" displayOrder="3" menuLabel="Back" type="text" self="Instruction2" title="Instruction2">
+    <presenter back="Instruction2" menuLabel="Back" type="text" self="Instruction2" title="Instruction2">
         <htmlText featureText="For object state change, you are asked to indicate to which degree the object is changed during the action (7 = substantial change; 1 = no change). That is, whether the object itself looks differently after the action compared to the way it looked before the action.&lt;br/&gt;&lt;br/&gt;For action familiarity, please indicate how familiar you are with the action described by the phrase (7 = very familiar; 1 = not familiar at all). &lt;br/&gt; &lt;br/&gt;For imageability of the action, rate how much the action phrase brings to mind a clear mental image of the situation ( 7 = very imageable; 1 = not imageable at all)."/>
         <targetButton featureText="next [ spacebar ]" hotKey="SPACE" target="Instruction3"/>
     </presenter>
-    <presenter back="Instruction3" displayOrder="4" menuLabel="Back" type="text" self="Instruction3" title="Instruction3">
+    <presenter back="Instruction3" menuLabel="Back" type="text" self="Instruction3" title="Instruction3">
         <htmlText featureText="Note that you will rate the action phrases on these dimensions in three different parts of the survey. At the beginning of each part, the instructions for your task during that part will be repeated."/>
         <targetButton featureText="next [ spacebar ]" hotKey="SPACE" target="Instruction4"/>
     </presenter>
-    <presenter back="Consent" displayOrder="5" menuLabel="Back" next="Instruction1" type="metadata" self="Information" title="Information">
+    <presenter back="Consent" menuLabel="Back" next="Instruction1" type="metadata" self="Information" title="Information">
         <metadataField fieldName="prolific_pid"/>
         <metadataField fieldName="age"/>
         <metadataField fieldName="gender"/>
@@ -41,19 +41,19 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter displayOrder="6" menuLabel="Back" type="text" self="Instruction4" title="Instruction4">
+    <presenter menuLabel="Back" type="text" self="Instruction4" title="Instruction4">
         <htmlText featureText="In this block you will rate object state change. &lt;br/&gt; &lt;br/&gt;  Please indicate to which degree the object is changed during the action (7 = substantial change; 1 = no change). That is, whether the object itself looks differently after the action compared to the way it looked before the action."/>
         <targetButton featureText="next [ spacebar ]" hotKey="SPACE" target="To_which_degree_is_the_object_changed_visibly_"/>
     </presenter>
-    <presenter displayOrder="7" menuLabel="Back" type="text" self="Instruction5" title="Instruction5">
+    <presenter menuLabel="Back" type="text" self="Instruction5" title="Instruction5">
         <htmlText featureText="In this block you will rate action familiarity. &lt;br/&gt; &lt;br/&gt;Please indicate how familiar you are with the action described by the phrase(7 = very familiar; 1 = not familiar at all). "/>
         <targetButton featureText="next [ spacebar ]" hotKey="SPACE" target="Is_this_action_familiar_"/>
     </presenter>
-    <presenter displayOrder="8" menuLabel="Back" type="text" self="Instruction6" title="Instruction6">
+    <presenter menuLabel="Back" type="text" self="Instruction6" title="Instruction6">
         <htmlText featureText="In this block you will rate the imageability of the action. &lt;br/&gt; &lt;br/&gt;Please rate how much the action phrase brings to mind a clear mental image of the situation ( 7 = very imageable; 1 = not imageable at all)."/>
         <targetButton featureText="next [ spacebar ]" hotKey="SPACE" target="Can_you_create_a_clear_mental_image_of_the_situation_"/>
     </presenter>
-    <presenter displayOrder="9" menuLabel="To which degree is the object changed visibly?" next="Instruction5" type="stimulus" self="To_which_degree_is_the_object_changed_visibly_" title="To which degree is the object changed visibly?">
+    <presenter menuLabel="To which degree is the object changed visibly?" next="Instruction5" type="stimulus" self="To_which_degree_is_the_object_changed_visibly_" title="To which degree is the object changed visibly?">
         <centrePage/>
         <loadStimulus eventTag="To which degree is the object changed visibly?" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -76,7 +76,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="10" menuLabel="Is this action familiar?" next="Instruction6" type="stimulus" self="Is_this_action_familiar_" title="Is this action familiar?">
+    <presenter menuLabel="Is this action familiar?" next="Instruction6" type="stimulus" self="Is_this_action_familiar_" title="Is this action familiar?">
         <centrePage/>
         <loadStimulus eventTag="Is this action familiar?" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -99,7 +99,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="11" menuLabel="Can you create a clear mental image of the situation?" next="Finished" type="stimulus" self="Can_you_create_a_clear_mental_image_of_the_situation_" title="Can you create a clear mental image of the situation?">
+    <presenter menuLabel="Can you create a clear mental image of the situation?" next="Finished" type="stimulus" self="Can_you_create_a_clear_mental_image_of_the_situation_" title="Can you create a clear mental image of the situation?">
         <centrePage/>
         <loadStimulus eventTag="Can you create a clear mental image of the situation?" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -122,7 +122,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="12" menuLabel="Finished" type="transmission" self="Finished" title="Finished">
+    <presenter menuLabel="Finished" type="transmission" self="Finished" title="Finished">
         <generateCompletionCode>
             <onSuccess>
                 <htmlText featureText="This is the end of the experiment. &lt;br/&gt;&lt;br/&gt;Please keep this completion code as verification that you have done the experiment:&lt;br/&gt;"/>
@@ -137,7 +137,7 @@
             </onError>
         </generateCompletionCode>
     </presenter>
-    <presenter back="Information" displayOrder="13" menuLabel="About" type="debug" self="about" title="About">
+    <presenter back="Information" menuLabel="About" type="debug" self="about" title="About">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
