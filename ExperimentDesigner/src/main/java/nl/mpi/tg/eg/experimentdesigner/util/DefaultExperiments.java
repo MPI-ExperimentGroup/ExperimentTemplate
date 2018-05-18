@@ -230,9 +230,7 @@ public class DefaultExperiments {
 //            maxScreenAddCount--;
             final PresenterScreen presenterScreen = new PresenterScreen(presenterType.name(), presenterType.name(), backPresenter, presenterType.name() + "Screen", null, presenterType, displayOrder);
             for (FeatureType featureType : presenterType.getFeatureTypes()) {
-                if (featureType != FeatureType.hasTag
-                        && featureType != FeatureType.withoutTag
-                        && featureType != FeatureType.onError
+                if (featureType != FeatureType.onError
                         && featureType != FeatureType.onSuccess
                         && featureType != FeatureType.conditionTrue
                         && featureType != FeatureType.conditionFalse
@@ -334,13 +332,6 @@ public class DefaultExperiments {
             case hasCorrectIncorrect:
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.responseCorrect, presenterFeatureRepository));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.responseIncorrect, presenterFeatureRepository));
-                if (presenterFeatureRepository != null) {
-                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
-                }
-                break;
-            case hasStimulusTag:
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.hasTag, presenterFeatureRepository));
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.withoutTag, presenterFeatureRepository));
                 if (presenterFeatureRepository != null) {
                     presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 }
