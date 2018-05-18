@@ -548,7 +548,15 @@ public class Parcours extends WizardUtilData {
                     }
 
                     @Override
+                    public WizardUtilStimuliData.StimuliFields[] getStimuliFields() {
+                        return new StimuliFields[]{StimuliFields.label};
+                    }
+
+                    @Override
                     public String[] getStimuliArray() {
+                        for (int index = 0; index < stimuliString.length; index++) {
+                            stimuliString[index]=stimuliString[index].replace("\n", "<br/>");
+                        }
                         return stimuliString;
                     }
 
@@ -596,6 +604,11 @@ public class Parcours extends WizardUtilData {
                     @Override
                     public boolean isAllowUserRestart() {
                         return false;
+                    }
+
+                    @Override
+                    public boolean isGenerateCompletionCode() {
+                        return true;
                     }
                 };
             }
