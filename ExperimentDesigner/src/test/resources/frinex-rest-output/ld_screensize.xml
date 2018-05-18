@@ -9,11 +9,11 @@
         <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_Room_3" preventServerDuplicates="false" registrationField="groupAllocation_Room_3"/>
         <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_Room_4" preventServerDuplicates="false" registrationField="groupAllocation_Room_4"/>
     </metadata>
-    <presenter back="Menu" displayOrder="1" menuLabel="Bluetooth Instructions" type="text" self="Bluetooth_Instructions" title="Bluetooth Instructions">
+    <presenter back="Menu" menuLabel="Bluetooth Instructions" type="text" self="Bluetooth_Instructions" title="Bluetooth Instructions">
         <htmlText featureText="When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A."/>
         <targetButton featureText="Volgende" hotKey="ENTER" target="Start"/>
     </presenter>
-    <presenter displayOrder="2" menuLabel="Start" type="metadata" self="Start" title="Start">
+    <presenter menuLabel="Start" type="metadata" self="Start" title="Start">
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="Begin a new interview with a new participant"/>
@@ -27,13 +27,13 @@
             </singleUser>
         </existingUserCheck>
     </presenter>
-    <presenter back="Start" displayOrder="3" menuLabel="Select Participant" next="Edit_User" type="metadata" self="SelectUser" title="Select Participant">
+    <presenter back="Start" menuLabel="Select Participant" next="Edit_User" type="metadata" self="SelectUser" title="Select Participant">
         <selectUserMenu/>
     </presenter>
-    <presenter displayOrder="4" menuLabel="Menu" type="menu" self="Menu" title="Menu">
+    <presenter menuLabel="Menu" type="menu" self="Menu" title="Menu">
         <allMenuItems/>
     </presenter>
-    <presenter back="SelectUser" displayOrder="5" menuLabel="Terug" next="Introduction_1" type="metadata" self="Edit_User" title="Gegevens">
+    <presenter back="SelectUser" menuLabel="Terug" next="Introduction_1" type="metadata" self="Edit_User" title="Gegevens">
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="datOfBirth"/>
         <metadataField fieldName="gender"/>
@@ -46,7 +46,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Menu" displayOrder="6" menuLabel="Introduction 1" next="Introduction_2" type="stimulus" self="Introduction_1" title="Introduction 1">
+    <presenter back="Menu" menuLabel="Introduction 1" next="Introduction_2" type="stimulus" self="Introduction_1" title="Introduction 1">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
         <htmlText featureText="&amp;nbsp;"/>
         <audioButton eventTag="intro_1" src="intro_1" hotKey="ENTER" styleName="titleBarButton" autoPlay="false" poster="audiobutton.jpg">
@@ -55,7 +55,7 @@
             </pause>
         </audioButton>
     </presenter>
-    <presenter back="Menu" displayOrder="7" menuLabel="Introduction 2" next="Introduction_3" type="stimulus" self="Introduction_2" title="Introduction 2">
+    <presenter back="Menu" menuLabel="Introduction 2" next="Introduction_3" type="stimulus" self="Introduction_2" title="Introduction 2">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
         <htmlText featureText="&amp;nbsp;"/>
         <audioButton eventTag="intro_2" src="intro_2" hotKey="ENTER" styleName="titleBarButton" autoPlay="false" poster="audiobutton.jpg">
@@ -64,7 +64,7 @@
             </pause>
         </audioButton>
     </presenter>
-    <presenter back="Menu" displayOrder="8" menuLabel="Introduction 3" next="Training" type="stimulus" self="Introduction_3" title="Introduction 3">
+    <presenter back="Menu" menuLabel="Introduction 3" next="Training" type="stimulus" self="Introduction_3" title="Introduction 3">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName=""/>
         <htmlText featureText="&amp;nbsp;"/>
         <audioButton eventTag="intro_3" src="intro_3" hotKey="ENTER" styleName="titleBarButton" autoPlay="false" poster="audiobutton.jpg">
@@ -73,7 +73,7 @@
             </pause>
         </audioButton>
     </presenter>
-    <presenter displayOrder="9" menuLabel="Training" next="Room_1" type="stimulus" self="Training" title="Training">
+    <presenter menuLabel="Training" next="Room_1" type="stimulus" self="Training" title="Training">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToGarden">
             <loadStimulus eventTag="Training" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                 <hasMoreStimulus>
@@ -139,13 +139,13 @@
             </loadStimulus>
         </backgroundImage>
     </presenter>
-    <presenter back="Menu" displayOrder="10" menuLabel="TestMenu" type="menu" self="TestMenu" title="TestMenu">
+    <presenter back="Menu" menuLabel="TestMenu" type="menu" self="TestMenu" title="TestMenu">
         <menuItem featureText="Room 1" target="Room_1"/>
         <menuItem featureText="Room 2" target="Room_2"/>
         <menuItem featureText="Room 3" target="Room_3"/>
         <menuItem featureText="Room 4" target="Room_4"/>
     </presenter>
-    <presenter displayOrder="11" menuLabel="Room 1" next="Room_2" type="stimulus" self="Room_1" title="Room 1">
+    <presenter menuLabel="Room 1" next="Room_2" type="stimulus" self="Room_1" title="Room 1">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock1">
             <audioButton eventTag="room_1" src="room_1" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
@@ -220,7 +220,7 @@
             </audioButton>
         </backgroundImage>
     </presenter>
-    <presenter displayOrder="12" menuLabel="Room 2" next="Room_3" type="stimulus" self="Room_2" title="Room 2">
+    <presenter menuLabel="Room 2" next="Room_3" type="stimulus" self="Room_2" title="Room 2">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock2">
             <audioButton eventTag="room_2" src="room_2" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
@@ -295,7 +295,7 @@
             </audioButton>
         </backgroundImage>
     </presenter>
-    <presenter displayOrder="13" menuLabel="Room 3" next="Room_4" type="stimulus" self="Room_3" title="Room 3">
+    <presenter menuLabel="Room 3" next="Room_4" type="stimulus" self="Room_3" title="Room 3">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock3">
             <audioButton eventTag="room_3" src="room_3" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
@@ -370,7 +370,7 @@
             </audioButton>
         </backgroundImage>
     </presenter>
-    <presenter displayOrder="14" menuLabel="Room 4" next="Attic" type="stimulus" self="Room_4" title="Room 4">
+    <presenter menuLabel="Room 4" next="Attic" type="stimulus" self="Room_4" title="Room 4">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock4">
             <audioButton eventTag="room_4" src="room_4" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
@@ -445,7 +445,7 @@
             </audioButton>
         </backgroundImage>
     </presenter>
-    <presenter back="Menu" displayOrder="15" menuLabel="Einde van het experiment" next="Edit_User" type="transmission" self="completion" title="Einde van het experiment">
+    <presenter back="Menu" menuLabel="Einde van het experiment" next="Edit_User" type="transmission" self="completion" title="Einde van het experiment">
         <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;Hartelijk dank voor uw deelname! &lt;br/&gt;&lt;br/&gt;"/>
         <addPadding/>
         <addPadding/>
@@ -453,7 +453,7 @@
         <addPadding/>
         <createUserButton featureText="Opnieuw beginnen" target="Edit_User"/>
     </presenter>
-    <presenter displayOrder="16" menuLabel="Attic" next="completion" type="stimulus" self="Attic" title="Attic">
+    <presenter menuLabel="Attic" next="completion" type="stimulus" self="Attic" title="Attic">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName="zoomToAttic"/>
         <htmlText featureText="&amp;nbsp;"/>
         <audioButton eventTag="room_5" src="room_5" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="audiobutton.jpg">
@@ -469,11 +469,11 @@
             </table>
         </audioButton>
     </presenter>
-    <presenter back="Menu" displayOrder="17" menuLabel="Data Management" next="DataUpload" type="metadata" self="DataManagement" title="Data Management">
+    <presenter back="Menu" menuLabel="Data Management" next="DataUpload" type="metadata" self="DataManagement" title="Data Management">
         <htmlText featureText="Participants with data in the application memory:"/>
         <selectUserMenu/>
     </presenter>
-    <presenter back="DataManagement" displayOrder="18" menuLabel="Data Upload" next="DataManagement" type="transmission" self="DataUpload" title="Data Upload">
+    <presenter back="DataManagement" menuLabel="Data Upload" next="DataManagement" type="transmission" self="DataUpload" title="Data Upload">
         <htmlText featureText="Uploading matadata"/>
         <pause msToNext="100">
             <sendMetadata>
@@ -488,7 +488,7 @@
                                 <eraseUsersDataButton featureText="Remove the participants's data from this application" target="DataManagement"/>
                                 <addPadding/>
                                 <addPadding/>
-                                <targetButton featureText="Keep local copy of the participants's data" styleName="" target="DataManagement"/>
+                                <targetButton featureText="Keep local copy of the participants's data" hotKey="" styleName="" target="DataManagement"/>
                                 <addPadding/>
                                 <addPadding/>
                             </onSuccess>
@@ -496,10 +496,10 @@
                                 <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
                                 <addPadding/>
                                 <addPadding/>
-                                <targetButton featureText="Retry" styleName="" target="DataUpload"/>
+                                <targetButton featureText="Retry" hotKey="" styleName="" target="DataUpload"/>
                                 <addPadding/>
                                 <addPadding/>
-                                <targetButton featureText="Participant's Data Listing" styleName="" target="DataManagement"/>
+                                <targetButton featureText="Participant's Data Listing" hotKey="" styleName="" target="DataManagement"/>
                                 <addPadding/>
                                 <addPadding/>
                             </onError>
@@ -510,17 +510,17 @@
                     <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
                     <addPadding/>
                     <addPadding/>
-                    <targetButton featureText="Retry" styleName="" target="DataUpload"/>
+                    <targetButton featureText="Retry" hotKey="" styleName="" target="DataUpload"/>
                     <addPadding/>
                     <addPadding/>
-                    <targetButton featureText="Participant's Data Listing" styleName="" target="DataManagement"/>
+                    <targetButton featureText="Participant's Data Listing" hotKey="" styleName="" target="DataManagement"/>
                     <addPadding/>
                     <addPadding/>
                 </onError>
             </sendMetadata>
         </pause>
     </presenter>
-    <presenter back="Menu" displayOrder="19" menuLabel="Over" type="debug" self="about" title="Over">
+    <presenter back="Menu" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
     </presenter>
     <stimuli>
