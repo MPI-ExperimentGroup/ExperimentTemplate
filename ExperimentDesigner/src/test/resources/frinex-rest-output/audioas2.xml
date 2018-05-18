@@ -60,7 +60,7 @@
         </table>
     </presenter>
     <presenter displayOrder="3" next="stimuliScreenV1" type="metadata" self="Accord" title="" >
-        <htmlText featureText="&lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt;"/>
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
         <addPadding/>
         <addPadding/>
         <htmlText featureText="Welkom bij dit experiment,"/>
@@ -71,7 +71,7 @@
         <addPadding/>
         <htmlText featureText="Om het voorbeeldwoord te horen, druk je op spatie. De lijst met woorden hoor je daarna. Om het voorbeeldwoord van de volgende lijst te horen, druk je weer op spatie. "/>
         <addPadding/>
-        <htmlText featureText="&lt;b&gt;&lt;big&gt;Veel succes!&lt;/big&gt;&lt;/b&gt;"/>
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Veel succes!&lt;/big&gt;&lt;/b&gt; &lt;/center&gt;"/>
         <addPadding/>
         <addPadding/>
         <targetButton featureText="Begin experiment" target="stimuliScreenV1"/>
@@ -82,7 +82,7 @@
                       fineTuningTupleLength="4" fineTuningUpperBoundForCycles="2"
                       fastTrackPresent="false" fineTuningFirstWrongOut="true"
                       requiredLengths="3,4,5,6" requiredTrialTypes="TARGET_ONLY,NO_TARGET,TARGET_AND_FOIL,NO_TARGET"
-                      stimuliDir="static/stimuli/" maxDurationMin="10">
+                      stimuliDir="static/stimuli/" maxDurationMin="10" firstStimulusDurationMs="1500">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
                     <nextStimulus repeatIncorrect="false"/>
@@ -169,7 +169,7 @@
                       fineTuningTupleLength="4" fineTuningUpperBoundForCycles="2"
                       fastTrackPresent="false" fineTuningFirstWrongOut="true"
                       requiredLengths="3,4,5,6" requiredTrialTypes="TARGET_ONLY,NO_TARGET,TARGET_AND_FOIL,NO_TARGET"
-                      stimuliDir="static/stimuli/" maxDurationMin="10">
+                      stimuliDir="static/stimuli/" maxDurationMin="10" firstStimulusDurationMs="1500">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
                     <nextStimulus repeatIncorrect="false"/>
