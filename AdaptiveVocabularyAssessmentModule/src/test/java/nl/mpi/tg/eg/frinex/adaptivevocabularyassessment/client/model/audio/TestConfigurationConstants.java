@@ -32,7 +32,8 @@ public class TestConfigurationConstants {
     public static final int AUDIO_MAX_LENGTH = 6;
     public static final String AUDIO_REQUIRED_LENGTHS = "3,4,5,6";
     public static final String AUDIO_MAX_DURATION_MINUTES = "10";
-     public static final int AUDIO_TEST_DELAY_MS = 900;
-    public static final int AUDIO_TEST_DELAY_CUE_MS = 500;
+    public static final int AUDIO_TEST_DELAY_MS = 500;
+    public static final int AUDIO_TEST_DELAY_CUE_MS = 1000;
+    public static final String AUDIO_FIRST_STIMULUS_DURATION = "1500";
     
 }

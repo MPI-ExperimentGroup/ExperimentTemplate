@@ -51,6 +51,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     private String stimuliDir;
     private String requiredLengthsStr;
     private String requiredTrialTypesStr;
+    private String firstStimulusDurationMs;
     private ArrayList<Integer> requiredLengths;
     private int maxTrialLength;
     private ArrayList<TrialCondition> requiredTrialTypes;
@@ -81,6 +82,10 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
     public void setstimuliDir(String dir) {
         this.stimuliDir = dir;
+    }
+
+    public void setfirstStimulusDurationMs(String firstStimulusDurationMs) {
+        this.firstStimulusDurationMs = firstStimulusDurationMs;
     }
 
     public ArrayList<Integer> getRequiredLength() {
@@ -183,18 +188,19 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     @Override
     public AudioAsStimulus getCurrentStimulus() {
         AudioAsStimulus retVal = super.getCurrentStimulus();
-        
+
         if (retVal.getwordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
             usedCues.add(retVal.getLabel());
-        } 
-        
+        }
+
         if (this.startTimeMs > 0) {
             return retVal;
         }
         if (!retVal.getwordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) { // set timer after the first cue is played, before the first non-cue is played
-            this.startTimeMs = System.currentTimeMillis();
+            long firstStimulusDurationMsLong = Long.parseLong(this.firstStimulusDurationMs);
+            this.startTimeMs = System.currentTimeMillis() - firstStimulusDurationMsLong;
         }
-        
+
         return retVal;
     }
 
@@ -364,7 +370,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         stringBuilder.append(startRow).append(endRow);
         stringBuilder.append(startRow).append(endRow);
         stringBuilder.append(startRow).append(" Map Band to Frequence").append(endRow);
-        
+
         stringBuilder.append(startRow);
         stringBuilder.append(startColumn).append("Band ").append(endColumn);
         stringBuilder.append(startColumn).append("# of appearances").append(endColumn);
@@ -406,8 +412,14 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             int trialIndex = rnd.nextInt(possibilities.size());
             String label = possibilities.get(trialIndex).getStimuli().get(0).getStimulus().getLabel();
             if (usedCues.contains(label)) { // correct index
-                if (possibilities.size()>1) {
-                    trialIndex = rnd.nextInt(possibilities.size());
+                if (possibilities.size() > 1) {
+                    ArrayList<Integer> betterPossibilities = new ArrayList<Integer>(possibilities.size() - 1);
+                    for (int j = 0; j < possibilities.size(); j++) {
+                        if (j != trialIndex) {
+                            betterPossibilities.add(j);
+                        }
+                    }
+                    trialIndex = betterPossibilities.get(rnd.nextInt(betterPossibilities.size()));
                 }
             }
             Trial currentTrial = possibilities.remove(trialIndex);
