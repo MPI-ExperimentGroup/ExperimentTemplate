@@ -132,13 +132,13 @@ public class Sentveri_exp3 {
         final PresenterFeature checkTagFeature = new PresenterFeature(FeatureType.currentStimulusHasTag, null);
         checkTagFeature.addFeatureAttributes(FeatureAttribute.msToNext, "3000");
         checkTagFeature.addStimulusTag("question");
-        final PresenterFeature withoutTagFeature = new PresenterFeature(FeatureType.withoutTag, null);
+        final PresenterFeature withoutTagFeature = new PresenterFeature(FeatureType.conditionFalse, null);
         final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulus, null);
         autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nonquestion");
         autoNextFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
         withoutTagFeature.getPresenterFeatureList().add(autoNextFeature);
         checkTagFeature.getPresenterFeatureList().add(withoutTagFeature);
-        final PresenterFeature hasTagFeature = new PresenterFeature(FeatureType.hasTag, null);
+        final PresenterFeature hasTagFeature = new PresenterFeature(FeatureType.conditionTrue, null);
         checkTagFeature.getPresenterFeatureList().add(hasTagFeature);
         //5. on half of the trials (36/72), the image of the "question" in the center (self-paced - wait till a "." for yes or a "z" for no response, lock out all the other button responses) - arbitrarily defined by the variable "QorNOT"
         // todo: this should have a red border, but should it be a tag or on the image and if a tag should it take style?
