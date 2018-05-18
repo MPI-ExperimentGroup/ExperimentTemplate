@@ -3,11 +3,11 @@
     <metadata>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Speaker name *"/>
     </metadata>
-    <presenter back="AutoMenu" displayOrder="1" menuLabel="Welcome" type="menu" self="Welcome" title="Welcome">
+    <presenter back="AutoMenu" menuLabel="Welcome" type="menu" self="Welcome" title="Welcome">
         <menuItem featureText="Instructions" target="Instructions"/>
         <menuItem featureText="Go directly to program" target="Start"/>
     </presenter>
-    <presenter back="Welcome" displayOrder="2" menuLabel="Start" type="metadata" self="Start" title="Start">
+    <presenter back="Welcome" menuLabel="Start" type="metadata" self="Start" title="Start">
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="Is this a new recording?"/>
@@ -21,11 +21,11 @@
             </singleUser>
         </existingUserCheck>
     </presenter>
-    <presenter back="Welcome" displayOrder="3" menuLabel="Instructions" type="text" self="Instructions" title="Instructions">
+    <presenter back="Welcome" menuLabel="Instructions" type="text" self="Instructions" title="Instructions">
         <htmlText featureText="With this app you can make recordings of your language. Describe pictures in this app by speaking and the app records what you say."/>
         <targetButton featureText="Go directly to program" hotKey="SPACE" target="Start"/>
     </presenter>
-    <presenter back="AutoMenu" displayOrder="4" menuLabel="Metadata" next="ExperimentMenu" type="stimulus" self="MetadataScreen" title="Metadata">
+    <presenter back="AutoMenu" menuLabel="Metadata" next="ExperimentMenu" type="stimulus" self="MetadataScreen" title="Metadata">
         <loadStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="Metadata" wavFormat="true" filePerStimulus="false"/>
@@ -47,10 +47,10 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter back="Welcome" displayOrder="5" menuLabel="Select User" next="MetadataScreen" type="metadata" self="SelectUser" title="Select User">
+    <presenter back="Welcome" menuLabel="Select User" next="MetadataScreen" type="metadata" self="SelectUser" title="Select User">
         <selectUserMenu/>
     </presenter>
-    <presenter back="Welcome" displayOrder="6" menuLabel="Edit User" next="MetadataScreen" type="metadata" self="Edit_User" title="Edit User">
+    <presenter back="Welcome" menuLabel="Edit User" next="MetadataScreen" type="metadata" self="Edit_User" title="Edit User">
         <metadataField fieldName="workerId"/>
         <saveMetadataButton featureText="Save and continue" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
@@ -59,7 +59,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="ExperimentMenu" displayOrder="7" menuLabel="Grammaticality" type="stimulus" self="Grammaticality" title="Grammaticality">
+    <presenter back="ExperimentMenu" menuLabel="Grammaticality" type="stimulus" self="Grammaticality" title="Grammaticality">
         <loadSdCardStimulus eventTag="Grammaticality" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="Grammaticality" wavFormat="true" filePerStimulus="false"/>
@@ -84,7 +84,7 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter back="ExperimentMenu" displayOrder="7" menuLabel="Anti Nominal Hierrarchy" type="stimulus" self="Anti_Nominal_Hierrarchy" title="Anti Nominal Hierrarchy">
+    <presenter back="ExperimentMenu" menuLabel="Anti Nominal Hierrarchy" type="stimulus" self="Anti_Nominal_Hierrarchy" title="Anti Nominal Hierrarchy">
         <loadSdCardStimulus eventTag="Anti Nominal Hierrarchy" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="Anti Nominal Hierrarchy" wavFormat="true" filePerStimulus="false"/>
@@ -163,7 +163,7 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter back="ExperimentMenu" displayOrder="7" menuLabel="Anti Nominal Hierrarchy F" type="stimulus" self="Anti_Nominal_Hierrarchy_F" title="Anti Nominal Hierrarchy F">
+    <presenter back="ExperimentMenu" menuLabel="Anti Nominal Hierrarchy F" type="stimulus" self="Anti_Nominal_Hierrarchy_F" title="Anti Nominal Hierrarchy F">
         <loadSdCardStimulus eventTag="Anti Nominal Hierrarchy F" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="Anti Nominal Hierrarchy F" wavFormat="true" filePerStimulus="false"/>
@@ -188,7 +188,7 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter displayOrder="7" menuLabel="Menu" type="menu" self="ExperimentMenu" title="Menu">
+    <presenter menuLabel="Menu" type="menu" self="ExperimentMenu" title="Menu">
         <menuItem featureText="cutbreak" target="cutbreak"/>
         <menuItem featureText="grammar" target="grammar"/>
         <menuItem featureText="vanuatu" target="vanuatu"/>
@@ -201,7 +201,7 @@
         <menuItem featureText="Frogs" target="Frogs"/>
         <menuItem featureText="Pictures" target="Pictures"/>
     </presenter>
-    <presenter back="ExperimentMenu" displayOrder="8" menuLabel="Pictures" type="stimulus" self="Pictures" title="Pictures">
+    <presenter back="ExperimentMenu" menuLabel="Pictures" type="stimulus" self="Pictures" title="Pictures">
         <loadSdCardStimulus eventTag="Pictures" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="Pictures" wavFormat="true" filePerStimulus="false"/>
@@ -228,7 +228,7 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter back="ExperimentMenu" displayOrder="9" menuLabel="Animals" type="stimulus" self="Animals" title="Animals">
+    <presenter back="ExperimentMenu" menuLabel="Animals" type="stimulus" self="Animals" title="Animals">
         <loadSdCardStimulus eventTag="Animals" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="Animals" wavFormat="true" filePerStimulus="false"/>
@@ -255,7 +255,7 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter back="ExperimentMenu" displayOrder="10" menuLabel="Frogs" type="stimulus" self="Frogs" title="Frogs">
+    <presenter back="ExperimentMenu" menuLabel="Frogs" type="stimulus" self="Frogs" title="Frogs">
         <loadSdCardStimulus eventTag="Frogs" randomise="false" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="Frogs" wavFormat="true" filePerStimulus="false"/>
@@ -282,7 +282,7 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter back="ExperimentMenu" displayOrder="11" menuLabel="bowped" type="stimulus" self="bowped" title="bowped">
+    <presenter back="ExperimentMenu" menuLabel="bowped" type="stimulus" self="bowped" title="bowped">
         <loadSdCardStimulus eventTag="bowped" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="bowped" wavFormat="true" filePerStimulus="false"/>
@@ -307,7 +307,7 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter back="ExperimentMenu" displayOrder="12" menuLabel="bodies" type="stimulus" self="bodies" title="bodies">
+    <presenter back="ExperimentMenu" menuLabel="bodies" type="stimulus" self="bodies" title="bodies">
         <loadSdCardStimulus eventTag="bodies" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="bodies" wavFormat="true" filePerStimulus="false"/>
@@ -332,7 +332,7 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter back="ExperimentMenu" displayOrder="13" menuLabel="vanuatu" type="stimulus" self="vanuatu" title="vanuatu">
+    <presenter back="ExperimentMenu" menuLabel="vanuatu" type="stimulus" self="vanuatu" title="vanuatu">
         <loadSdCardStimulus eventTag="vanuatu" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="vanuatu" wavFormat="true" filePerStimulus="false"/>
@@ -357,7 +357,7 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter back="ExperimentMenu" displayOrder="14" menuLabel="grammar" type="stimulus" self="grammar" title="grammar">
+    <presenter back="ExperimentMenu" menuLabel="grammar" type="stimulus" self="grammar" title="grammar">
         <loadSdCardStimulus eventTag="grammar" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="grammar" wavFormat="true" filePerStimulus="false"/>
@@ -382,7 +382,7 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter back="ExperimentMenu" displayOrder="15" menuLabel="cutbreak" type="stimulus" self="cutbreak" title="cutbreak">
+    <presenter back="ExperimentMenu" menuLabel="cutbreak" type="stimulus" self="cutbreak" title="cutbreak">
         <loadSdCardStimulus eventTag="cutbreak" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="cutbreak" wavFormat="true" filePerStimulus="false"/>
@@ -407,16 +407,16 @@
             </stimuli>
         </loadSdCardStimulus>
     </presenter>
-    <presenter back="AutoMenu" displayOrder="16" menuLabel="Kinship" type="kindiagram" self="Kinship" title="Kinship">
+    <presenter back="AutoMenu" menuLabel="Kinship" type="kindiagram" self="Kinship" title="Kinship">
         <addKinTypeGui diagramName="kinDiagram"/>
         <loadKinTypeStringDiagram msToNext="0" diagramName="kinDiagram"/>
     </presenter>
-    <presenter back="AutoMenu" displayOrder="17" menuLabel="About Screen" type="debug" self="about" title="About Screen">
+    <presenter back="AutoMenu" menuLabel="About Screen" type="debug" self="about" title="About Screen">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
     </presenter>
-    <presenter displayOrder="18" menuLabel="Menu" type="menu" self="AutoMenu" title="Auto Menu">
+    <presenter menuLabel="Menu" type="menu" self="AutoMenu" title="Auto Menu">
         <allMenuItems/>
     </presenter>
     <stimuli>
