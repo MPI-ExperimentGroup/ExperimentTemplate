@@ -96,7 +96,7 @@ public class PresenterScreen {
         this.id = id;
     }
 
-    @XmlAttribute
+    @XmlTransient
     public long getDisplayOrder() {
         return displayOrder;
     }
