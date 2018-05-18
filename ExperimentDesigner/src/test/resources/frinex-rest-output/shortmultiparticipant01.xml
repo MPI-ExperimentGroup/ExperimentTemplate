@@ -3,15 +3,15 @@
     <metadata>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Worker ID"/>
     </metadata>
-    <presenter displayOrder="1" menuLabel="Instruction" type="text" self="Instruction" title="Instruction">
+    <presenter menuLabel="Instruction" type="text" self="Instruction" title="Instruction">
         <htmlText featureText="test syncing and participant use?"/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Accord"/>
     </presenter>
-    <presenter back="Instruction" displayOrder="2" menuLabel="Accord" next="screenTag" type="metadata" self="Accord" title="Accord">
+    <presenter back="Instruction" menuLabel="Accord" next="screenTag" type="metadata" self="Accord" title="Accord">
         <htmlText featureText="agreementScreenText"/>
         <targetButton featureText="Je suis d'accord" target="screenTag"/>
     </presenter>
-    <presenter back="Accord" displayOrder="3" menuLabel="screenTitle" next="Round_8___4" type="metadata" self="screenTag" title="screenTitle">
+    <presenter back="Accord" menuLabel="screenTitle" next="Round_8___4" type="metadata" self="screenTag" title="screenTitle">
         <htmlText featureText="dispalyText"/>
         <saveMetadataButton featureText="saveButtonLabel" sendData="true" networkErrorMessage="on_Error_Text">
             <onError/>
@@ -23,7 +23,7 @@
         <htmlText featureText="postText"/>
         <targetButton featureText="alternateButtonLabel" target="Instruction"/>
     </presenter>
-    <presenter back="screenTag" displayOrder="4" menuLabel="Round 8 - 4" next="Fini" type="stimulus" self="Round_8___4" title="Round 8 - 4">
+    <presenter back="screenTag" menuLabel="Round 8 - 4" next="Fini" type="stimulus" self="Round_8___4" title="Round 8 - 4">
         <clearCurrentScore/>
         <centrePage/>
         <htmlText featureText="preStimuliText"/>
@@ -54,11 +54,12 @@
                 </endOfStimulus>
                 <randomGrouping/>
                 <stimuli>
+                    <tag>Round_8_4</tag>
                 </stimuli>
             </loadStimulus>
         </actionButton>
     </presenter>
-    <presenter back="Round_8___4" displayOrder="5" menuLabel="Fini" type="transmission" self="Fini" title="Fini">
+    <presenter back="Round_8___4" menuLabel="Fini" type="transmission" self="Fini" title="Fini">
         <generateCompletionCode>
             <onSuccess>
                 <htmlText featureText="completionScreenText1"/>
@@ -70,9 +71,6 @@
                 <targetButton featureText="Réessayer" target="Fini"/>
             </onError>
         </generateCompletionCode>
-    </presenter>    
-    <presenter back="Instruction" displayOrder="7" menuLabel="Over" type="debug" self="about" title="Over">
-        <versionData/>
     </presenter>
     <stimuli/>
 </experiment>
