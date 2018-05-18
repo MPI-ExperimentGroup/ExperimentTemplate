@@ -5,11 +5,11 @@
         <field controlledMessage="Voer een getal." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="datOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
         <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="gender" preventServerDuplicates="false" registrationField="Geslacht"/>
     </metadata>
-    <presenter back="Menu" displayOrder="1" menuLabel="Bluetooth Instructions" type="text" self="Bluetooth_Instructions" title="Bluetooth Instructions">
+    <presenter back="Menu" menuLabel="Bluetooth Instructions" type="text" self="Bluetooth_Instructions" title="Bluetooth Instructions">
         <htmlText featureText="When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A."/>
         <targetButton featureText="Volgende" hotKey="ENTER" target="Edit_User"/>
     </presenter>
-    <presenter displayOrder="2" menuLabel="Start" type="metadata" self="Start" title="Start">
+    <presenter menuLabel="Start" type="metadata" self="Start" title="Start">
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="Begin a new interview with a new participant"/>
@@ -23,13 +23,13 @@
             </singleUser>
         </existingUserCheck>
     </presenter>
-    <presenter back="Start" displayOrder="3" menuLabel="Select Participant" next="Edit_User" type="metadata" self="SelectUser" title="Select Participant">
+    <presenter back="Start" menuLabel="Select Participant" next="Edit_User" type="metadata" self="SelectUser" title="Select Participant">
         <selectUserMenu/>
     </presenter>
-    <presenter displayOrder="4" menuLabel="Menu" type="menu" self="Menu" title="Menu">
+    <presenter menuLabel="Menu" type="menu" self="Menu" title="Menu">
         <allMenuItems/>
     </presenter>
-    <presenter back="Menu" displayOrder="5" menuLabel="StimuliMenu" type="menu" self="StimuliMenu" title="StimuliMenu">
+    <presenter back="Menu" menuLabel="StimuliMenu" type="menu" self="StimuliMenu" title="StimuliMenu">
         <menuItem featureText="COW" target="COW"/>
         <menuItem featureText="FATHER" target="FATHER"/>
         <menuItem featureText="GHOST_a" target="GHOST_a"/>
@@ -37,7 +37,7 @@
         <menuItem featureText="PRAY" target="PRAY"/>
         <menuItem featureText="SHY" target="SHY"/>
     </presenter>
-    <presenter back="SelectUser" displayOrder="6" menuLabel="Terug" next="StimuliMenu" type="metadata" self="Edit_User" title="Gegevens">
+    <presenter back="SelectUser" menuLabel="Terug" next="StimuliMenu" type="metadata" self="Edit_User" title="Gegevens">
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="datOfBirth"/>
         <metadataField fieldName="gender"/>
@@ -48,7 +48,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter displayOrder="7" menuLabel="COW" next="StimuliMenu" type="stimulus" self="COW" title="COW">
+    <presenter menuLabel="COW" next="StimuliMenu" type="stimulus" self="COW" title="COW">
         <loadStimulus eventTag="COW" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
@@ -116,7 +116,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="8" menuLabel="FATHER" next="StimuliMenu" type="stimulus" self="FATHER" title="FATHER">
+    <presenter menuLabel="FATHER" next="StimuliMenu" type="stimulus" self="FATHER" title="FATHER">
         <loadStimulus eventTag="FATHER" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
@@ -184,7 +184,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="9" menuLabel="GHOST_a" next="StimuliMenu" type="stimulus" self="GHOST_a" title="GHOST_a">
+    <presenter menuLabel="GHOST_a" next="StimuliMenu" type="stimulus" self="GHOST_a" title="GHOST_a">
         <loadStimulus eventTag="GHOST_a" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
@@ -252,7 +252,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="10" menuLabel="GHOST_b" next="StimuliMenu" type="stimulus" self="GHOST_b" title="GHOST_b">
+    <presenter menuLabel="GHOST_b" next="StimuliMenu" type="stimulus" self="GHOST_b" title="GHOST_b">
         <loadStimulus eventTag="GHOST_b" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
@@ -320,7 +320,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="11" menuLabel="PRAY" next="StimuliMenu" type="stimulus" self="PRAY" title="PRAY">
+    <presenter menuLabel="PRAY" next="StimuliMenu" type="stimulus" self="PRAY" title="PRAY">
         <loadStimulus eventTag="PRAY" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
@@ -388,7 +388,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="12" menuLabel="SHY" next="StimuliMenu" type="stimulus" self="SHY" title="SHY">
+    <presenter menuLabel="SHY" next="StimuliMenu" type="stimulus" self="SHY" title="SHY">
         <loadStimulus eventTag="SHY" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
@@ -456,7 +456,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter back="Menu" displayOrder="13" menuLabel="Einde van het experiment" next="Start" type="transmission" self="completion" title="Einde van het experiment">
+    <presenter back="Menu" menuLabel="Einde van het experiment" next="Start" type="transmission" self="completion" title="Einde van het experiment">
         <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;Hartelijk dank voor uw deelname! &lt;br/&gt;&lt;br/&gt;"/>
         <addPadding/>
         <addPadding/>
@@ -464,11 +464,11 @@
         <addPadding/>
         <createUserButton featureText="Opnieuw beginnen" target="Start"/>
     </presenter>
-    <presenter back="Menu" displayOrder="14" menuLabel="Data Management" next="DataUpload" type="metadata" self="DataManagement" title="Data Management">
+    <presenter back="Menu" menuLabel="Data Management" next="DataUpload" type="metadata" self="DataManagement" title="Data Management">
         <htmlText featureText="Participants with data in the application memory:"/>
         <selectUserMenu/>
     </presenter>
-    <presenter back="DataManagement" displayOrder="15" menuLabel="Data Upload" next="DataManagement" type="transmission" self="DataUpload" title="Data Upload">
+    <presenter back="DataManagement" menuLabel="Data Upload" next="DataManagement" type="transmission" self="DataUpload" title="Data Upload">
         <htmlText featureText="Uploading matadata"/>
         <pause msToNext="100">
             <sendMetadata>
@@ -515,7 +515,7 @@
             </sendMetadata>
         </pause>
     </presenter>
-    <presenter back="Menu" displayOrder="16" menuLabel="Over" type="debug" self="about" title="Over">
+    <presenter back="Menu" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
     </presenter>
     <stimuli>
