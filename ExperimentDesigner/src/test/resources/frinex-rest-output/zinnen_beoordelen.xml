@@ -8,15 +8,15 @@
         <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="gender" preventServerDuplicates="false" registrationField="Geslacht"/>
         <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_Stimulus" preventServerDuplicates="false" registrationField="groupAllocation_Stimulus"/>
     </metadata>
-    <presenter displayOrder="1" menuLabel="Terug" next="Informatie" type="metadata" self="Toestemming" title="Toestemming">
+    <presenter menuLabel="Terug" next="Informatie" type="metadata" self="Toestemming" title="Toestemming">
         <htmlText featureText=""/>
         <targetButton featureText="Akkoord" target="Informatie"/>
     </presenter>
-    <presenter back="Toestemming" displayOrder="2" menuLabel="Terug" type="text" self="Informatie" title="Informatie">
+    <presenter back="Toestemming" menuLabel="Terug" type="text" self="Informatie" title="Informatie">
         <htmlText featureText=""/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Gegevens"/>
     </presenter>
-    <presenter back="Informatie" displayOrder="3" menuLabel="Terug" next="Stimulus" type="metadata" self="Gegevens" title="Gegevens">
+    <presenter back="Informatie" menuLabel="Terug" next="Stimulus" type="metadata" self="Gegevens" title="Gegevens">
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="firstName"/>
         <metadataField fieldName="lastName"/>
@@ -29,7 +29,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Gegevens" displayOrder="4" menuLabel="Stimulus" next="Finished" type="stimulus" self="Stimulus" title="Stimulus">
+    <presenter back="Gegevens" menuLabel="Stimulus" next="Finished" type="stimulus" self="Stimulus" title="Stimulus">
         <loadStimulus eventTag="Stimulus" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
@@ -53,7 +53,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="5" menuLabel="Finished" next="Toestemming" type="transmission" self="Finished" title="Finished">
+    <presenter menuLabel="Finished" next="Toestemming" type="transmission" self="Finished" title="Finished">
         <generateCompletionCode>
             <onSuccess>
                 <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;Bedankt voor je deelname!"/>
@@ -70,7 +70,7 @@
             </onError>
         </generateCompletionCode>
     </presenter>
-    <presenter back="Gegevens" displayOrder="6" menuLabel="Over" type="debug" self="about" title="Over">
+    <presenter back="Gegevens" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
     </presenter>
     <stimuli>
