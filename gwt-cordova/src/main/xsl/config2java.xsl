@@ -362,7 +362,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>(),</xsl:text>
         <xsl:value-of select="if(@allowedCharCodes) then concat('&quot;', @allowedCharCodes, '&quot;') else 'null'" />
         <xsl:text>,</xsl:text>
-        <xsl:value-of select="if(@hotKey eq '-1' or @hotKey eq '') then ', -1' else if(@hotKey) then concat('ExtendedKeyCodes.KEY_', @hotKey) else '-1'" />
+        <xsl:value-of select="if(@hotKey eq '-1' or @hotKey eq '') then '-1' else if(@hotKey) then concat('ExtendedKeyCodes.KEY_', @hotKey) else '-1'" />
         <xsl:text>,</xsl:text>
         <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else 'null'" />
         <xsl:text>);
@@ -383,7 +383,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             @Override
             public int getHotKey() {
             return </xsl:text>
-        <xsl:value-of select="if(@hotKey eq '-1' or @hotKey eq '') then ', -1' else if(@hotKey) then concat('ExtendedKeyCodes.KEY_', @hotKey) else '-1'" />
+        <xsl:value-of select="if(@hotKey eq '-1' or @hotKey eq '') then ' -1' else if(@hotKey) then concat('ExtendedKeyCodes.KEY_', @hotKey) else '-1'" />
         <xsl:text>;
             }
             
@@ -425,7 +425,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             @Override
             public int getHotKey() {
             return </xsl:text>
-        <xsl:value-of select="if(@hotKey eq '-1' or @hotKey eq '') then ', -1' else if(@hotKey) then concat('ExtendedKeyCodes.KEY_', @hotKey) else '-1'" />
+        <xsl:value-of select="if(@hotKey eq '-1' or @hotKey eq '') then '-1' else if(@hotKey) then concat('ExtendedKeyCodes.KEY_', @hotKey) else '-1'" />
         <xsl:text>;
             }
             @Override
