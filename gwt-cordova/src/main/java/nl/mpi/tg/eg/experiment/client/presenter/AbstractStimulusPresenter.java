@@ -18,7 +18,6 @@
 package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.core.client.Duration;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.i18n.client.DateTimeFormat;
@@ -41,7 +40,6 @@ import java.util.Map;
 import java.util.Random;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
-import nl.mpi.tg.eg.experiment.client.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
@@ -85,7 +83,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     private static final String CONSUMED_TAGS_LIST = "consumedTagsList";
     private static final String SEEN_STIMULUS_INDEX = "seenStimulusIndex";
     protected final StimuliProvider stimulusProvider;
-    protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     private final LocalStorage localStorage;
     private final DataSubmissionService submissionService;
     private GroupParticipantService groupParticipantService = null;
@@ -447,7 +444,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
         };
         pauseTimers.add(timer);
-        timer.schedule((int)(Math.random() * (maximumMs - minimumMs) + minimumMs));
+        timer.schedule((int) (Math.random() * (maximumMs - minimumMs) + minimumMs));
     }
 
     protected void stimulusPause(final TimedStimulusListener timedStimulusListener) {
@@ -863,10 +860,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 return -1;
             }
         });
-    }
-
-    protected void image(final String imageSrc, String styleName, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString((imageSrc.startsWith("file")) ? imageSrc : serviceLocations.staticFilesUrl() + imageSrc), 0, 0, 0, styleName, null, postLoadMs, null, timedStimulusListener, timedStimulusListener);
     }
 
     protected void backgroundImage(final String imageSrc, String styleName, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
