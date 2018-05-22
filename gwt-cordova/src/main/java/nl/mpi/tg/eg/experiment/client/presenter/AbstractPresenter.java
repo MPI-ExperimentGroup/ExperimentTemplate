@@ -28,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.Messages;
+import nl.mpi.tg.eg.experiment.client.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
@@ -43,6 +44,7 @@ import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 public abstract class AbstractPresenter implements Presenter {
 
     protected final Messages messages = GWT.create(Messages.class);
+    protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     protected final RootLayoutPanel widgetTag;
     final protected SimpleView simpleView;
     private PresenterEventListner backEventListner = null;
@@ -151,7 +153,7 @@ public abstract class AbstractPresenter implements Presenter {
             public void postLoadTimerFired() {
             }
         };
-        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString(imageString), styleName, postLoadMs, shownStimulusListener, timedStimulusListener, null);
+        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString((imageString.startsWith("file")) ? imageString : serviceLocations.staticFilesUrl() + imageString), styleName, postLoadMs, shownStimulusListener, timedStimulusListener, null);
     }
 
     protected void addPadding() {
