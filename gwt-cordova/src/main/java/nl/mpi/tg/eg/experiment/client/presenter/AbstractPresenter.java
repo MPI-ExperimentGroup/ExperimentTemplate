@@ -141,6 +141,10 @@ public abstract class AbstractPresenter implements Presenter {
         ((ComplexView) simpleView).addHtmlText(textString, styleName);
     }
 
+    protected void image(final String imageString, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        image(imageString, null, postLoadMs, timedStimulusListener);
+    }
+
     protected void image(final String imageString, final String styleName, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
             @Override
