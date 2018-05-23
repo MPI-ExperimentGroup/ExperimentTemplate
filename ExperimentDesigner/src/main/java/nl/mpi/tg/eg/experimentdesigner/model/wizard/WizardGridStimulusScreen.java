@@ -98,11 +98,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setStimuliCount(1000);
         setRandomiseStimuli(false);
         this.wizardScreenData.setCentreScreen(false);
-        String[][] stimuliArray = new String[stimuliData.getStimuliArray().length][2];
-        for (int index = 0; index < stimuliData.getStimuliArray().length; index++) {
-            stimuliArray[index] = stimuliData.getStimuliArray()[index].split(":");
-        }
-        setStimuliSet(stimuliArray);
+        setStimuliSet(stimuliData);
     }
 
     public WizardGridStimulusScreen(String screenName, boolean centreScreen, String[][] stimuliStringArray, String[] randomStimuliTags, int maxStimuli, final boolean randomiseStimuli, String stimulusCodeMatch, int stimulusDelay, int codeStimulusDelay, String codeFormat, String... tagNames) {
@@ -295,21 +291,8 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         return new String[]{"IntroAudioDelay", "SelectedPause"}[index];
     }
 
-    public final void setStimuliSet(final WizardUtilStimuliData stimuliData) {
-        if (this.wizardScreenData.getStimuli() == null) {
-            this.wizardScreenData.setStimuli(new ArrayList<>());
-        }
-        final List<Stimulus> stimuliList = this.wizardScreenData.getStimuli();
-        final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{this.wizardScreenData.getScreenTitle()}));
-        tagSet.add(stimuliData.getStimuliName());
-        for (String stimulusEntry : stimuliData.getStimuliArray()) {
-            // @todo: perhaps this is clearer if there is an explicit adjacency regex used on the identifyer in the GUI app or an explicit adjacency / sort field in the stimuli
-//            final String adjacencyString = stimulusEntry.replaceAll("test_[15]", "adjacency_a").replaceAll("test_[26]", "adjacency_b").replaceAll("test_[37]", "adjacency_c").replaceAll("test_[48]", "adjacency_d");
-            stimuliList.add(new Stimulus(stimulusEntry, stimulusEntry, null, stimulusEntry + ".jpg", null, stimulusEntry /*.substring(0, stimulusEntry.length() - 1)*/, 0, tagSet, null, null));
-        }
-    }
-
-    public final void setStimuliSet(String[][] stimuliSet, String... tagNames) {
+    private final void setStimuliSet(String[][] stimuliSet, String... tagNames) {
+// note: new implementations should use the method setStimuliSet in AbstractWizardScreen
 //        String[] tempStimuli = {
 //            "filler_1_1", "intro_1", "test_2_2", "test_6_2", "training_2_2",
 //            "filler_1_2", "intro_2", "test_2_3", "test_6_3", "training_2_3",
