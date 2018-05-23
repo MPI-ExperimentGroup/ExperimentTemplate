@@ -141,12 +141,12 @@ public class PlayhouseStudy {
             backScreen = testStimulusScreen;
 //            testStimulusScreen.setNextWizardScreen(textMenuScreen);
         }
-        WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, false, true, true, completionScreenText2,
+        WizardCompletionScreen completionScreen = new WizardCompletionScreen(completionScreenText1, true, false, false, completionScreenText2,
                 "Opnieuw beginnen",
                 "Einde van het experiment",
                 "Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.",
                 "Probeer opnieuw");
-        completionScreen.setSendData(false);
+        completionScreen.setSendData(true);
         wizardData.addScreen(completionScreen);
         completionScreen.setScreenTag("completion");
 

@@ -6,14 +6,14 @@
         <field controlledMessage="Voer een nummer (000-199)." controlledRegex="[01]?[0-9]?[0-9]" postName="groupCode" preventServerDuplicates="false" registrationField="Group Code"/>
         <field controlledMessage="Kies en experiment." controlledRegex="1|2|3|4" postName="experimentVersion" preventServerDuplicates="false" registrationField="Experiment Version"/>
     </metadata>
-    <presenter back="Menu" displayOrder="1" menuLabel="Bluetooth Instructions" type="text" self="Bluetooth_Instructions" title="Bluetooth Instructions">
+    <presenter back="Menu" menuLabel="Bluetooth Instructions" type="text" self="Bluetooth_Instructions" title="Bluetooth Instructions">
         <htmlText featureText="When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A."/>
         <targetButton featureText="Volgende" hotKey="ENTER" target="Select_Participant"/>
     </presenter>
-    <presenter displayOrder="2" menuLabel="Menu" type="menu" self="Menu" title="Menu">
+    <presenter menuLabel="Menu" type="menu" self="Menu" title="Menu">
         <allMenuItems/>
     </presenter>
-    <presenter back="Bluetooth_Instructions" displayOrder="3" menuLabel="Select Participant" type="metadata" self="Select_Participant" title="Select Participant">
+    <presenter back="Bluetooth_Instructions" menuLabel="Select Participant" type="metadata" self="Select_Participant" title="Select Participant">
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="Begin a new interview with a new participant"/>
@@ -27,10 +27,10 @@
             </singleUser>
         </existingUserCheck>
     </presenter>
-    <presenter back="Select_Participant" displayOrder="4" menuLabel="Select Participant" next="Gegevens" type="metadata" self="SelectUser" title="Select Participant">
+    <presenter back="Select_Participant" menuLabel="Select Participant" next="Gegevens" type="metadata" self="SelectUser" title="Select Participant">
         <selectUserMenu/>
     </presenter>
-    <presenter back="Select_Participant" displayOrder="5" menuLabel="Terug" next="Practice" type="metadata" self="Gegevens" title="Gegevens">
+    <presenter back="Select_Participant" menuLabel="Terug" next="Practice" type="metadata" self="Gegevens" title="Gegevens">
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="datOfBirth"/>
         <metadataField fieldName="groupCode"/>
@@ -42,14 +42,14 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Menu" displayOrder="6" menuLabel="TestMenu" type="menu" self="TestMenu" title="TestMenu">
+    <presenter back="Menu" menuLabel="TestMenu" type="menu" self="TestMenu" title="TestMenu">
         <menuItem featureText="Practice" target="Practice"/>
         <menuItem featureText="Matching1" target="Matching1"/>
         <menuItem featureText="Matching2" target="Matching2"/>
         <menuItem featureText="Test3" target="Test3"/>
         <menuItem featureText="Test4" target="Test4"/>
     </presenter>
-    <presenter displayOrder="7" menuLabel="Practice" next="Matching1" type="stimulus" self="Practice" title="Practice">
+    <presenter menuLabel="Practice" next="Matching1" type="stimulus" self="Practice" title="Practice">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToGarden">
             <pause msToNext="2000">
                 <loadStimulus eventTag="Practice" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
@@ -68,7 +68,7 @@
                                             <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" showPlaybackIndicator="false">
                                                 <disableStimulusButtons/>
                                                 <cancelPauseTimers/>
-                                                <clearPage/>
+                                                <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                                 <pause msToNext="1000">
                                                     <touchInputReportSubmit/>
@@ -86,7 +86,7 @@
                                 <disableStimulusButtons/>
                                 <cancelPauseTimers/>
                                 <pause msToNext="1000">
-                                    <clearPage/>
+                                    <clearPage styleName=""/>
                                     <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                     <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" showPlaybackIndicator="false">
                                         <touchInputReportSubmit/>
@@ -102,7 +102,7 @@
                                 <disableStimulusButtons/>
                                 <cancelPauseTimers/>
                                 <pause msToNext="1000">
-                                    <clearPage/>
+                                    <clearPage styleName=""/>
                                     <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                     <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" showPlaybackIndicator="false">
                                         <touchInputReportSubmit/>
@@ -118,7 +118,7 @@
                                 <disableStimulusButtons/>
                                 <cancelPauseTimers/>
                                 <pause msToNext="1000">
-                                    <clearPage/>
+                                    <clearPage styleName=""/>
                                     <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                     <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" showPlaybackIndicator="false">
                                         <touchInputReportSubmit/>
@@ -170,7 +170,7 @@
             </pause>
         </backgroundImage>
     </presenter>
-    <presenter displayOrder="8" menuLabel="Matching1" next="Matching2" type="stimulus" self="Matching1" title="Matching1">
+    <presenter menuLabel="Matching1" next="Matching2" type="stimulus" self="Matching1" title="Matching1">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock1">
             <audioButton eventTag="BeginMatching" src="BeginMatching" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
@@ -190,7 +190,7 @@
                                                 <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" showPlaybackIndicator="false">
                                                     <disableStimulusButtons/>
                                                     <cancelPauseTimers/>
-                                                    <clearPage/>
+                                                    <clearPage styleName=""/>
                                                     <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                                     <pause msToNext="1000">
                                                         <touchInputReportSubmit/>
@@ -208,7 +208,7 @@
                                     <disableStimulusButtons/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
-                                        <clearPage/>
+                                        <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                         <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
@@ -224,7 +224,7 @@
                                     <disableStimulusButtons/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
-                                        <clearPage/>
+                                        <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                         <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
@@ -240,7 +240,7 @@
                                     <disableStimulusButtons/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
-                                        <clearPage/>
+                                        <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                         <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
@@ -293,7 +293,7 @@
             </audioButton>
         </backgroundImage>
     </presenter>
-    <presenter displayOrder="9" menuLabel="Matching2" next="Test3" type="stimulus" self="Matching2" title="Matching2">
+    <presenter menuLabel="Matching2" next="Test3" type="stimulus" self="Matching2" title="Matching2">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock2">
             <audioButton eventTag="ChangeMatching" src="ChangeMatching" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
@@ -313,7 +313,7 @@
                                                 <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" showPlaybackIndicator="false">
                                                     <disableStimulusButtons/>
                                                     <cancelPauseTimers/>
-                                                    <clearPage/>
+                                                    <clearPage styleName=""/>
                                                     <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                                     <pause msToNext="1000">
                                                         <touchInputReportSubmit/>
@@ -331,7 +331,7 @@
                                     <disableStimulusButtons/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
-                                        <clearPage/>
+                                        <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                         <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
@@ -347,7 +347,7 @@
                                     <disableStimulusButtons/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
-                                        <clearPage/>
+                                        <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                         <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
@@ -363,7 +363,7 @@
                                     <disableStimulusButtons/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
-                                        <clearPage/>
+                                        <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                         <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
@@ -416,7 +416,7 @@
             </audioButton>
         </backgroundImage>
     </presenter>
-    <presenter displayOrder="10" menuLabel="Test3" next="Test4" type="stimulus" self="Test3" title="Test3">
+    <presenter menuLabel="Test3" next="Test4" type="stimulus" self="Test3" title="Test3">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock3">
             <audioButton eventTag="BeginTest" src="BeginTest" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
@@ -434,7 +434,7 @@
                                         <stimulusAudio msToNext="3000" showPlaybackIndicator="false">
                                             <disableStimulusButtons/>
                                             <cancelPauseTimers/>
-                                            <clearPage/>
+                                            <clearPage styleName=""/>
                                             <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                             <pause msToNext="1000">
                                                 <touchInputReportSubmit/>
@@ -450,7 +450,7 @@
                                     <disableStimulusButtons/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
-                                        <clearPage/>
+                                        <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                         <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
@@ -466,7 +466,7 @@
                                     <disableStimulusButtons/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
-                                        <clearPage/>
+                                        <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                         <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
@@ -482,7 +482,7 @@
                                     <disableStimulusButtons/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
-                                        <clearPage/>
+                                        <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                         <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
@@ -535,7 +535,7 @@
             </audioButton>
         </backgroundImage>
     </presenter>
-    <presenter displayOrder="11" menuLabel="Test4" next="Attic" type="stimulus" self="Test4" title="Test4">
+    <presenter menuLabel="Test4" next="Attic" type="stimulus" self="Test4" title="Test4">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock4">
             <audioButton eventTag="ChangeTest" src="ChangeTest" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <pause msToNext="2000">
@@ -553,7 +553,7 @@
                                         <stimulusAudio msToNext="3000" showPlaybackIndicator="false">
                                             <disableStimulusButtons/>
                                             <cancelPauseTimers/>
-                                            <clearPage/>
+                                            <clearPage styleName=""/>
                                             <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                             <pause msToNext="1000">
                                                 <touchInputReportSubmit/>
@@ -569,7 +569,7 @@
                                     <disableStimulusButtons/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
-                                        <clearPage/>
+                                        <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                         <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
@@ -585,7 +585,7 @@
                                     <disableStimulusButtons/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
-                                        <clearPage/>
+                                        <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                         <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
@@ -601,7 +601,7 @@
                                     <disableStimulusButtons/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="2000">
-                                        <clearPage/>
+                                        <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                         <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" showPlaybackIndicator="false">
                                             <touchInputReportSubmit/>
@@ -654,15 +654,23 @@
             </audioButton>
         </backgroundImage>
     </presenter>
-    <presenter back="Menu" displayOrder="12" menuLabel="Einde van het experiment" next="Gegevens" type="transmission" self="completion" title="Einde van het experiment">
-        <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;Hartelijk dank voor uw deelname! &lt;br/&gt;&lt;br/&gt;"/>
-        <addPadding/>
-        <addPadding/>
-        <htmlText featureText="&lt;br/&gt;Het bovenstaande nummer is het bewijs dat u het experiment heeft voltooid, en is vereist voor het in orde maken van uw vergoeding."/>
-        <addPadding/>
-        <createUserButton featureText="Opnieuw beginnen" target="Gegevens"/>
+    <presenter back="Menu" menuLabel="Einde van het experiment" next="Gegevens" type="transmission" self="completion" title="Einde van het experiment">
+        <sendAllData>
+            <onSuccess>
+                <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;Hartelijk dank voor uw deelname! &lt;br/&gt;&lt;br/&gt;"/>
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="&lt;br/&gt;Het bovenstaande nummer is het bewijs dat u het experiment heeft voltooid, en is vereist voor het in orde maken van uw vergoeding."/>
+                <addPadding/>
+                <eraseUsersDataButton featureText="Opnieuw beginnen" target="Gegevens"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw."/>
+                <targetButton featureText="Probeer opnieuw" target="completion"/>
+            </onError>
+        </sendAllData>
     </presenter>
-    <presenter back="Menu" displayOrder="13" menuLabel="Attic" next="completion" type="stimulus" self="Attic" title="Attic">
+    <presenter back="Menu" menuLabel="Attic" next="completion" type="stimulus" self="Attic" title="Attic">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName="zoomToAttic">
             <htmlText featureText="&amp;nbsp;"/>
             <backgroundImage msToNext="0" src="Playroom.jpg" styleName="zoomToPlayroom">
@@ -678,7 +686,7 @@
             </backgroundImage>
         </backgroundImage>
     </presenter>
-    <presenter back="Menu" displayOrder="14" menuLabel="Over" type="debug" self="about" title="Over">
+    <presenter back="Menu" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
     </presenter>
     <stimuli>
