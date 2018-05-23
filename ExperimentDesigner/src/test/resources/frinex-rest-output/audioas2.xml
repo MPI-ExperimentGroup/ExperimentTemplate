@@ -100,8 +100,11 @@
                             <cancelPauseTimers/>  
                             <trigger listenerId="nextStimulusAction"/>
                         </stimulusButton>
+                        <disableStimulusButtons/>
+                        <pause  msToNext="200">
+                            <enableStimulusButtons/>
+                        </pause>
                         <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                            <cancelPauseTimers/> 
                             <pause  msToNext="500">
                                 <cancelPauseTimers/> 
                                 <trigger listenerId="nextStimulusAction"/>
@@ -187,13 +190,17 @@
                             <cancelPauseTimers/>  
                             <trigger listenerId="nextStimulusAction"/>
                         </stimulusButton>
+                        <disableStimulusButtons/>
+                        <pause  msToNext="200">
+                            <enableStimulusButtons/>
+                        </pause>
                         <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                            <cancelPauseTimers/> 
                             <pause  msToNext="500">
                                 <cancelPauseTimers/> 
                                 <trigger listenerId="nextStimulusAction"/>
                             </pause>
                         </stimulusAudio>
+                       
                     </conditionTrue>
                     <conditionFalse>
                         <clearPage/>
