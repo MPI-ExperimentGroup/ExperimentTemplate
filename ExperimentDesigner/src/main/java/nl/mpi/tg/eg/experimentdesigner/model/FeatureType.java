@@ -103,7 +103,7 @@ public enum FeatureType {
     activateRandomItem(false, false, new FeatureAttribute[]{}),
     autoNextPresenter(false, false, new FeatureAttribute[]{target}),
     logTimeStamp(false, false, new FeatureAttribute[]{eventTag}),
-    audioButton(true, false, new FeatureAttribute[]{eventTag, poster, autoPlay, hotKey, styleName, src}),
+    audioButton(true, false, new FeatureAttribute[]{eventTag, poster, autoPlay, hotKey, styleName, src}, false, false, false, Contitionals.hasMediaPlayback), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
     preloadAllStimuli(true, false, null, true, false, false, Contitionals.none),
     showStimulus(true, false, null, false, false, false, Contitionals.none), // todo: should this be here? or should it have an increment for next back etc
     showStimulusGrid(false, false, new FeatureAttribute[]{maxStimuli, columnCount, imageWidth, eventTag, animate}, false, false, false, Contitionals.hasCorrectIncorrect),
@@ -132,16 +132,21 @@ public enum FeatureType {
     singleUser(true, false, null, false, false, false, Contitionals.needsConditionalParent),
     aboveThreshold(true, false, null, false, false, false, Contitionals.needsConditionalParent),
     belowThreshold(true, false, null, false, false, false, Contitionals.needsConditionalParent),
+    mediaLoaded(true, false, null, false, false, false, Contitionals.needsConditionalParent),
+    mediaLoadFailed(true, false, null, false, false, false, Contitionals.needsConditionalParent),
+    mediaPlaybackComplete(true, false, null, false, false, false, Contitionals.needsConditionalParent),
     //    clearRegion(true, false, new FeatureAttribute[]{target}), // these tags would require the handling the clearing of timers and button handlers
     //    updateRegion(true, false, new FeatureAttribute[]{target}), // these tags would require the handling the clearing of timers and button handlers
     table(true, false, new FeatureAttribute[]{styleName, showOnBackButton}),
     row(true, false, null),
     column(true, false, new FeatureAttribute[]{styleName}),
-    stimulusImage(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement, showControls}), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
-    stimulusCodeImage(true, false, new FeatureAttribute[]{msToNext, codeFormat, styleName}),
-    stimulusCodeVideo(true, false, new FeatureAttribute[]{msToNext, maxHeight, codeFormat, percentOfPage, loop, styleName, autoPlay, showControls, maxWidth}),
-    stimulusCodeAudio(true, false, new FeatureAttribute[]{msToNext, codeFormat, showPlaybackIndicator}),
-    stimulusAudio(true, false, new FeatureAttribute[]{msToNext, showPlaybackIndicator}),
+    // todo: look for and update to add the show any stimuli tag and make stimulusImage only show images (true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement, showControls}, false, false, false, Contitionals.hasMediaLoading), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
+    stimulusPresent(true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement, showControls}), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
+    stimulusImage(true, false, new FeatureAttribute[]{msToNext, styleName}, false, false, false, Contitionals.hasMediaLoading), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
+    stimulusCodeImage(true, false, new FeatureAttribute[]{msToNext, codeFormat, styleName}, false, false, false, Contitionals.hasMediaLoading),
+    stimulusCodeVideo(true, false, new FeatureAttribute[]{msToNext, maxHeight, codeFormat, percentOfPage, loop, styleName, autoPlay, showControls, maxWidth}, false, false, false, Contitionals.hasMediaPlayback), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
+    stimulusCodeAudio(true, false, new FeatureAttribute[]{msToNext, codeFormat, showPlaybackIndicator}, false, false, false, Contitionals.hasMediaPlayback), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
+    stimulusAudio(true, false, new FeatureAttribute[]{msToNext, showPlaybackIndicator}, false, false, false, Contitionals.hasMediaPlayback), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
     playVideo(false, false, new FeatureAttribute[]{}),
     rewindVideo(false, false, new FeatureAttribute[]{}),
     pauseVideo(false, false, new FeatureAttribute[]{}),
@@ -193,6 +198,8 @@ public enum FeatureType {
         hasUserCount,
         hasThreshold,
         hasGroupActivities,
+        hasMediaLoading,
+        hasMediaPlayback,
         none,
         needsConditionalParent // when true, the element cannot be used alone but must be in its conditional parent element
     }
@@ -217,6 +224,7 @@ public enum FeatureType {
         this.contitionals = contitionals;
         this.canHaveUndefinedAttribute = canHaveUndefinedAttribute;
         this.allowsCustomImplementation = false;
+        //    todo: set all hasMediaPlayback and hasMediaLoading to canHaveFeatures = false
     }
 
     private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean canHaveStimulus, boolean canHaveRandomGrouping, boolean canHaveUndefinedAttribute, Contitionals contitionals, final boolean allowsCustomImplementation) {
@@ -228,6 +236,7 @@ public enum FeatureType {
         this.contitionals = contitionals;
         this.canHaveUndefinedAttribute = canHaveUndefinedAttribute;
         this.allowsCustomImplementation = allowsCustomImplementation;
+        //    todo: set all hasMediaPlayback and hasMediaLoading to canHaveFeatures = false
     }
 
     public boolean canHaveFeatures() {
