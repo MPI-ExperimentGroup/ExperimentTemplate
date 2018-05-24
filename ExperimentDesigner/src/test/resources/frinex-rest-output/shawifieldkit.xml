@@ -67,12 +67,12 @@
                 <centrePage/>
                 <stimulusLabel/>
                 <showStimulusProgress/>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                     <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
                         <clearPage/>
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end_of_stimuli"/>
@@ -92,12 +92,12 @@
                 <centrePage/>
                 <stimulusLabel/>
                 <showStimulusProgress/>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                     <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
                         <clearPage/>
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end of stimuli"/>
@@ -171,12 +171,12 @@
                 <centrePage/>
                 <stimulusLabel/>
                 <showStimulusProgress/>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                     <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
                         <clearPage/>
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end_of_stimuli"/>
@@ -209,14 +209,14 @@
                 <centrePage/>
                 <stimulusLabel/>
                 <showStimulusProgress/>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                     <plainText featureText="the informant talks/says whatever s/he wants"/>
                     <actionButton featureText="next">
                         <endAudioRecorderTag eventTier="1" eventTag="the informant talks/says whatever s/he wants"/>
                         <clearPage/>
                         <nextStimulus repeatIncorrect="false"/>
                     </actionButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end_of_stimuli"/>
@@ -236,14 +236,14 @@
                 <centrePage/>
                 <stimulusLabel/>
                 <showStimulusProgress/>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                     <plainText featureText="the informant talks/says whatever s/he wants"/>
                     <actionButton featureText="next">
                         <endAudioRecorderTag eventTier="1" eventTag="the informant talks/says whatever s/he wants"/>
                         <clearPage/>
                         <nextStimulus repeatIncorrect="false"/>
                     </actionButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end_of_stimuli"/>
@@ -263,14 +263,14 @@
                 <centrePage/>
                 <stimulusLabel/>
                 <showStimulusProgress/>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                     <plainText featureText="the informant talks/says whatever s/he wants"/>
                     <actionButton featureText="next">
                         <endAudioRecorderTag eventTier="1" eventTag="the informant talks/says whatever s/he wants"/>
                         <clearPage/>
                         <nextStimulus repeatIncorrect="false"/>
                     </actionButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end_of_stimuli"/>
@@ -290,12 +290,12 @@
                 <centrePage/>
                 <stimulusLabel/>
                 <showStimulusProgress/>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                     <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
                         <clearPage/>
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end_of_stimuli"/>
@@ -315,12 +315,12 @@
                 <centrePage/>
                 <stimulusLabel/>
                 <showStimulusProgress/>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                     <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
                         <clearPage/>
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end_of_stimuli"/>
@@ -340,12 +340,12 @@
                 <centrePage/>
                 <stimulusLabel/>
                 <showStimulusProgress/>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                     <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
                         <clearPage/>
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end_of_stimuli"/>
@@ -365,12 +365,12 @@
                 <centrePage/>
                 <stimulusLabel/>
                 <showStimulusProgress/>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                     <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
                         <clearPage/>
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end_of_stimuli"/>
@@ -390,12 +390,12 @@
                 <centrePage/>
                 <stimulusLabel/>
                 <showStimulusProgress/>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                     <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
                         <clearPage/>
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="end_of_stimuli"/>
