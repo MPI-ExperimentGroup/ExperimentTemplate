@@ -83,10 +83,10 @@
                 <table>
                     <row>
                         <column>
-                            <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" matchingRegex="(\\.[^\\.]*)$" replacement="_context$1" animate="none" maxWidth="80"/>
+                            <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" matchingRegex="(\\.[^\\.]*)$" replacement="_context$1" animate="none" maxWidth="80"/>
                         </column>
                         <column>
-                            <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" animate="none" maxWidth="80"/>
+                            <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" animate="none" maxWidth="80"/>
                         </column>
                     </row>
                 </table>
@@ -176,10 +176,10 @@
                 <table>
                     <row>
                         <column>
-                            <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" matchingRegex="(\\.[^\\.]*)$" replacement="_context$1" animate="none" maxWidth="80"/>
+                            <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" matchingRegex="(\\.[^\\.]*)$" replacement="_context$1" animate="none" maxWidth="80"/>
                         </column>
                         <column>
-                            <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" animate="none" maxWidth="80"/>
+                            <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" animate="none" maxWidth="80"/>
                         </column>
                     </row>
                 </table>
