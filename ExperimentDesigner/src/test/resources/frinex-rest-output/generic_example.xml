@@ -44,12 +44,12 @@
     <presenter menuLabel="First Stimuli Screen" next="Second_Informatie" type="stimulus" self="First_Stimuli_Screen" title="First Stimuli Screen">
         <loadStimulus eventTag="First Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
                     <ratingButton eventTier="1" ratingLabelRight="" ratingLabels="zin compleet,zin onvolledig" ratingLabelLeft="">
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <autoNextPresenter/>
