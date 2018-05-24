@@ -620,7 +620,8 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         hasMoreStimulusFeature.getPresenterFeatureList().add(tableFeature);
         final PresenterFeature rowFeature = new PresenterFeature(FeatureType.row, null);
         tableFeature.getPresenterFeatureList().add(rowFeature);
-        WizardScreenData menuScreenData = storedWizardScreenData.getMenuWizardScreenData().get(0);
+        WizardScreenData menuScreenData = storedWizardScreenData.getBackWizardScreenData();
+        storedWizardScreenData.getPresenterScreen().setBackPresenter(null); // we do not use the back menu button in this screen type so we set it do null after extracting the data
         final PresenterFeature menuStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, menuScreenData.getMenuLabel() + " (O)", "R1_MA_ENTER", "R1_MA_ENTER", "");
         menuStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null);
         menuStimulusButton.addFeature(FeatureType.autoNextPresenter, null, menuScreenData.getScreenTag());
