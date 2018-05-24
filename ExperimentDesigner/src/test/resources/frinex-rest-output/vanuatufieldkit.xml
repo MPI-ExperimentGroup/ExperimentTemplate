@@ -71,7 +71,7 @@
                 <centrePage/>
                 <stimulusLabel/>
                 <showStimulusProgress/>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                     <plainText featureText="Askem long man o woman wea i toktok se i talem nem blong wanem i stap lo foto long lanwis blong hem."/>
                     <actionButton featureText="Finis">
                         <endAudioRecorderTag eventTier="1" eventTag="Askem long man o woman wea i toktok se i talem nem blong wanem i stap lo foto long lanwis blong hem."/>
@@ -80,7 +80,7 @@
                         <centrePage/>
                         <stimulusLabel/>
                         <showStimulusProgress/>
-                        <stimulusImage msToNext="0" maxHeight="60" percentOfPage="60" maxWidth="60">
+                        <stimulusPresent msToNext="0" maxHeight="60" percentOfPage="60" maxWidth="60">
                             <plainText featureText="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
                             <actionButton featureText="Finis">
                                 <endAudioRecorderTag eventTier="1" eventTag="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
@@ -89,7 +89,7 @@
                                 <centrePage/>
                                 <stimulusLabel/>
                                 <showStimulusProgress/>
-                                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                                     <plainText featureText="Askem long man o woman we i toktok se i gat sam stori blong laef blong hem long saed blong ting ia we i stap long foto ia."/>
                                     <actionButton featureText="Finis">
                                         <endAudioRecorderTag eventTier="1" eventTag="Askem long man o woman we i toktok se i gat sam stori blong laef blong hem long saed blong ting ia we i stap long foto ia."/>
@@ -98,7 +98,7 @@
                                         <centrePage/>
                                         <stimulusLabel/>
                                         <showStimulusProgress/>
-                                        <stimulusImage msToNext="0" maxHeight="60" percentOfPage="60" maxWidth="60">
+                                        <stimulusPresent msToNext="0" maxHeight="60" percentOfPage="60" maxWidth="60">
                                             <plainText featureText="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
                                             <actionButton featureText="Finis">
                                                 <endAudioRecorderTag eventTier="1" eventTag="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
@@ -107,7 +107,7 @@
                                                 <centrePage/>
                                                 <stimulusLabel/>
                                                 <showStimulusProgress/>
-                                                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                                                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                                                     <plainText featureText="Askem long man o woman we i toktok se i save wan kastom stori abaot ting ia we i stap long foto ia."/>
                                                     <actionButton featureText="Finis">
                                                         <endAudioRecorderTag eventTier="1" eventTag="Askem long man o woman we i toktok se i save wan kastom stori abaot ting ia we i stap long foto ia."/>
@@ -116,24 +116,24 @@
                                                         <centrePage/>
                                                         <stimulusLabel/>
                                                         <showStimulusProgress/>
-                                                        <stimulusImage msToNext="0" maxHeight="60" percentOfPage="60" maxWidth="60">
+                                                        <stimulusPresent msToNext="0" maxHeight="60" percentOfPage="60" maxWidth="60">
                                                             <plainText featureText="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
                                                             <actionButton featureText="Finis">
                                                                 <endAudioRecorderTag eventTier="1" eventTag="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
                                                                 <clearPage/>
                                                                 <nextStimulus repeatIncorrect="false"/>
                                                             </actionButton>
-                                                        </stimulusImage>
+                                                        </stimulusPresent>
                                                     </actionButton>
-                                                </stimulusImage>
+                                                </stimulusPresent>
                                             </actionButton>
-                                        </stimulusImage>
+                                        </stimulusPresent>
                                     </actionButton>
-                                </stimulusImage>
+                                </stimulusPresent>
                             </actionButton>
-                        </stimulusImage>
+                        </stimulusPresent>
                     </actionButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="Finis olgeta"/>
