@@ -42,7 +42,7 @@
         <centrePage/>
         <loadStimulus eventTag="StimulusScreenP" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusImage msToNext="1000" maxHeight="80" percentOfPage="0" maxWidth="80">
+                <stimulusPresent msToNext="1000" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <actionButton featureText="volgende [ spatiebalk ]" eventTag="volgende [ spatiebalk ]" hotKey="SPACE">
                         <clearPage/>
                         <pause msToNext="500">
@@ -57,7 +57,7 @@
                             </stimulusCodeAudio>
                         </pause>
                     </actionButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <autoNextPresenter/>
@@ -75,7 +75,7 @@
         <centrePage/>
         <loadStimulus eventTag="StimulusScreenE" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusImage msToNext="1000" maxHeight="80" percentOfPage="0" maxWidth="80">
+                <stimulusPresent msToNext="1000" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <actionButton featureText="volgende [ spatiebalk ]" eventTag="volgende [ spatiebalk ]" hotKey="SPACE">
                         <clearPage/>
                         <pause msToNext="500">
@@ -90,7 +90,7 @@
                             </stimulusCodeAudio>
                         </pause>
                     </actionButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <autoNextPresenter/>
