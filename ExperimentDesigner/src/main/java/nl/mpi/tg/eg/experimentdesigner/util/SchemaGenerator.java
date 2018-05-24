@@ -146,56 +146,68 @@ public class SchemaGenerator {
                 }
             }
             writer.append("</xs:choice>\n");
-        }
-        switch (featureType.getContitionals()) {
-            case hasTrueFalseCondition:
-                writer.append("<xs:all>\n");
-                writer.append("<xs:element name=\"conditionTrue\" type=\"conditionTrueType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                writer.append("<xs:element name=\"conditionFalse\" type=\"conditionFalseType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                writer.append("</xs:all>\n");
-                break;
-            case hasCorrectIncorrect:
-                writer.append("<xs:all>\n");
-                writer.append("<xs:element name=\"responseCorrect\" type=\"responseCorrectType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                writer.append("<xs:element name=\"responseIncorrect\" type=\"responseIncorrectType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                writer.append("</xs:all>\n");
-                break;
-            case hasMoreStimulus:
-                writer.append("<xs:all>\n");
-                writer.append("<xs:element name=\"hasMoreStimulus\" type=\"hasMoreStimulusType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                writer.append("<xs:element name=\"endOfStimulus\" type=\"endOfStimulusType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                writer.append("<xs:element name=\"randomGrouping\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
-                writer.append("<xs:element name=\"stimuli\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
-                writer.append("</xs:all>\n");
-                break;
-            case hasErrorSuccess:
-                writer.append("<xs:all>\n");
-                writer.append("<xs:element name=\"onError\" type=\"onErrorType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                writer.append("<xs:element name=\"onSuccess\" type=\"onSuccessType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                writer.append("</xs:all>\n");
-                break;
-            case hasUserCount:
-                writer.append("<xs:all>\n");
-                writer.append("<xs:element name=\"multipleUsers\" type=\"multipleUsersType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                writer.append("<xs:element name=\"singleUser\" type=\"singleUserType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                writer.append("</xs:all>\n");
-                break;
-            case hasThreshold:
-                writer.append("<xs:all>\n");
-                writer.append("<xs:element name=\"aboveThreshold\" type=\"aboveThresholdType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                writer.append("<xs:element name=\"belowThreshold\" type=\"belowThresholdType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                writer.append("</xs:all>\n");
-                break;
-            case hasGroupActivities:
-                writer.append("<xs:choice>\n");
-                writer.append("<xs:element name=\"groupNetworkActivity\" type=\"groupNetworkActivityType\" minOccurs=\"0\" maxOccurs=\"unbounded\"/>\n");
-                writer.append("<xs:element name=\"sendGroupEndOfStimuli\" type=\"sendGroupEndOfStimuliType\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
-                writer.append("</xs:choice>\n");
-                break;
-            case needsConditionalParent:
-                break;
-            default:
-                break;
+        } else {
+            switch (featureType.getContitionals()) {
+                case hasTrueFalseCondition:
+                    writer.append("<xs:all>\n");
+                    writer.append("<xs:element name=\"conditionTrue\" type=\"conditionTrueType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("<xs:element name=\"conditionFalse\" type=\"conditionFalseType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("</xs:all>\n");
+                    break;
+                case hasCorrectIncorrect:
+                    writer.append("<xs:all>\n");
+                    writer.append("<xs:element name=\"responseCorrect\" type=\"responseCorrectType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("<xs:element name=\"responseIncorrect\" type=\"responseIncorrectType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("</xs:all>\n");
+                    break;
+                case hasMoreStimulus:
+                    writer.append("<xs:all>\n");
+                    writer.append("<xs:element name=\"hasMoreStimulus\" type=\"hasMoreStimulusType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("<xs:element name=\"endOfStimulus\" type=\"endOfStimulusType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("<xs:element name=\"randomGrouping\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
+                    writer.append("<xs:element name=\"stimuli\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
+                    writer.append("</xs:all>\n");
+                    break;
+                case hasErrorSuccess:
+                    writer.append("<xs:all>\n");
+                    writer.append("<xs:element name=\"onError\" type=\"onErrorType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("<xs:element name=\"onSuccess\" type=\"onSuccessType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("</xs:all>\n");
+                    break;
+                case hasUserCount:
+                    writer.append("<xs:all>\n");
+                    writer.append("<xs:element name=\"multipleUsers\" type=\"multipleUsersType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("<xs:element name=\"singleUser\" type=\"singleUserType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("</xs:all>\n");
+                    break;
+                case hasThreshold:
+                    writer.append("<xs:all>\n");
+                    writer.append("<xs:element name=\"aboveThreshold\" type=\"aboveThresholdType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("<xs:element name=\"belowThreshold\" type=\"belowThresholdType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("</xs:all>\n");
+                    break;
+                case hasGroupActivities:
+                    writer.append("<xs:choice>\n");
+                    writer.append("<xs:element name=\"groupNetworkActivity\" type=\"groupNetworkActivityType\" minOccurs=\"0\" maxOccurs=\"unbounded\"/>\n");
+                    writer.append("<xs:element name=\"sendGroupEndOfStimuli\" type=\"sendGroupEndOfStimuliType\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
+                    writer.append("</xs:choice>\n");
+                    break;
+                case hasMediaPlayback:
+                    writer.append("<xs:all>\n");
+                    writer.append("<xs:element name=\"mediaLoaded\" type=\"mediaLoadedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("<xs:element name=\"mediaLoadFailed\" type=\"mediaLoadFailedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("</xs:all>\n");
+                    break;
+                case hasMediaLoading:
+                    writer.append("<xs:all>\n");
+                    writer.append("<xs:element name=\"mediaLoaded\" type=\"mediaLoadedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("<xs:element name=\"mediaLoadFailed\" type=\"mediaLoadFailedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("<xs:element name=\"mediaPlaybackComplete\" type=\"mediaPlaybackCompleteType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("</xs:all>\n");
+                    break;
+                case needsConditionalParent:
+                    break;
+            }
         }
         // todo: canHaveStimulus check for currentStimulusHasTag etc
         if (featureType.canHaveText()) {
