@@ -287,7 +287,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         final PresenterFeature imageFeature;
 
         if (isStimuliTypeAny(storedWizardScreenData)) {
-            imageFeature = new PresenterFeature(FeatureType.stimulusImage, null); // todo: frenchconversation requires video and audio thus this must use stimulusImage (although it should be renamed) and have the required parameters   
+            imageFeature = new PresenterFeature(FeatureType.stimulusPresent, null); // todo: frenchconversation requires video and audio thus this must use stimulusImage (although it should be renamed) and have the required parameters   
             imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
             imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
             imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
