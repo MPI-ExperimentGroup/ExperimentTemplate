@@ -64,6 +64,7 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
     public WizardAudioTestScreen(WizardUtilAudioTest utilAudioTest) {
         super(WizardScreenEnum.WizardAudioTestScreen, utilAudioTest.getTitle(), utilAudioTest.getMenuLabel(), utilAudioTest.getTitle());
         this.setScreenText(null);
+        this.wizardScreenData.setScreenText(0, utilAudioTest.getText());
         this.wizardScreenData.setScreenText(1, utilAudioTest.getBackgroundImage());
         this.wizardScreenData.setScreenText(2, utilAudioTest.getAudioHotkey());
         this.wizardScreenData.setScreenText(3, utilAudioTest.getHotkey());
