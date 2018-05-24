@@ -578,7 +578,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="triggerListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|pause|countdownLabel|stimulusImage|stimulusImageCapture|stimulusCodeImage|stimulusCodeAudio|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupNetworkActivity|table|row|column">
+    <xsl:template match="triggerListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|pause|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeAudio|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupNetworkActivity|table|row|column">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>
