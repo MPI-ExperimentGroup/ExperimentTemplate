@@ -31,12 +31,12 @@
     <presenter menuLabel="Introduction" next="StoryPresentation" type="stimulus" self="Introduction" title="Leeservaring 3">
         <loadStimulus eventTag="Introduction" randomise="true" repeatRandomWindow="0" maxStimuli="1" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
                     <actionButton featureText="volgende [ spatiebalk ]" eventTag="volgende [ spatiebalk ]" hotKey="SPACE">
                         <nextStimulus repeatIncorrect="false"/>
                     </actionButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <autoNextPresenter/>
@@ -53,12 +53,12 @@
     <presenter menuLabel="StoryPresentation" next="Survey1Instructions" type="stimulus" self="StoryPresentation" title="Leeservaring 4">
         <loadStimulus eventTag="StoryPresentation" randomise="true" repeatRandomWindow="0" maxStimuli="1" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
                     <actionButton featureText="volgende [ spatiebalk ]" eventTag="volgende [ spatiebalk ]" hotKey="SPACE">
                         <nextStimulus repeatIncorrect="false"/>
                     </actionButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <autoNextPresenter/>
@@ -82,12 +82,12 @@
         <centrePage/>
         <loadStimulus eventTag="Survey1" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
                     <ratingButton eventTier="1" ratingLabelRight="helemaal van toepassing" ratingLabels="1,2,3,4,5,6,7" ratingLabelLeft="helemaal niet van toepassing">
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <autoNextPresenter/>
@@ -102,12 +102,12 @@
         <centrePage/>
         <loadStimulus eventTag="Survey2" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
                     <ratingButton eventTier="1" ratingLabelRight="helemaal van toepassing" ratingLabels="1,2,3,4,5,6,7" ratingLabelLeft="helemaal niet van toepassing">
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <autoNextPresenter/>
@@ -134,12 +134,12 @@
         <centrePage/>
         <loadStimulus eventTag="PictureTask" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
                     <ratingButton eventTier="1" ratingLabelRight="" ratingLabels="ja [ z ],nee [ . ]" ratingLabelLeft="">
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <autoNextPresenter/>
@@ -158,12 +158,12 @@
         <centrePage/>
         <loadStimulus eventTag="ReadingBehavior" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
                     <ratingButton eventTier="1" ratingLabelRight="" ratingLabels="1,2,3,4,5,6,7" ratingLabelLeft="">
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <autoNextPresenter/>
