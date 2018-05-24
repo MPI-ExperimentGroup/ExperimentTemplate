@@ -278,7 +278,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
 
     private PresenterFeature addStimulusImage(WizardScreenData storedWizardScreenData, final PresenterFeature hasMoreStimulusFeature, final int stimulusSize, final boolean animate, final boolean background, final boolean playSound) {
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
-        final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
+        final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusPresent, null);
         imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, Integer.toString(stimulusSize));
         imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, Integer.toString(stimulusSize));
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
@@ -383,7 +383,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
 
     private PresenterFeature addTask2StimulusGrid(WizardScreenData storedWizardScreenData, final PresenterFeature hasMoreStimulusFeature, final int stimulusSize, final boolean animate, final boolean background, final boolean playSound) {
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
-        final PresenterFeature matchingStimulusGrid = new PresenterFeature(FeatureType.stimulusImage, null);
+        final PresenterFeature matchingStimulusGrid = new PresenterFeature(FeatureType.stimulusPresent, null);
 //        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(1000));
 //        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.randomise, Boolean.toString(randomiseStimuli));
         matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.maxWidth, Integer.toString(stimulusSize));
