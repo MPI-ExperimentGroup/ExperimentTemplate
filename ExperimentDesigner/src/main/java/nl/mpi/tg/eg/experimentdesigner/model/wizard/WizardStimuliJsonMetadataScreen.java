@@ -156,7 +156,7 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         hasMoreStimulusFeature.getPresenterFeatureList().add(presenterFeatureTableS);
         PresenterFeature stimulusFeatureRow = new PresenterFeature(FeatureType.row, null);
         presenterFeatureTableS.getPresenterFeatureList().add(stimulusFeatureRow);
-        final PresenterFeature contextFeature = new PresenterFeature(FeatureType.stimulusImage, null);
+        final PresenterFeature contextFeature = new PresenterFeature(FeatureType.stimulusPresent, null);
         contextFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
         contextFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
         contextFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "80");
@@ -167,7 +167,7 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         final PresenterFeature contextFeatureColumn = new PresenterFeature(FeatureType.column, null);
         stimulusFeatureRow.getPresenterFeatureList().add(contextFeatureColumn);
         contextFeatureColumn.getPresenterFeatureList().add(contextFeature);
-        final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
+        final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusPresent, null);
         imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "80");
