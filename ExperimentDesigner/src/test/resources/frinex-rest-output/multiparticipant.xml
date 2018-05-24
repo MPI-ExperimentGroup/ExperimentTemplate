@@ -149,11 +149,11 @@
                                 <conditionFalse>
                                     <stimulusLabel/>
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <addPadding/>
                                         <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                         <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                    </stimulusImage>
+                                    </stimulusPresent>
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
@@ -172,11 +172,11 @@
                             <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
                                     <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
                                 </pause>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A:-:-:B:-:-:C:-:-:D:-">
                             <submitGroupEvent/>
@@ -213,11 +213,11 @@
                                 <conditionFalse>
                                     <stimulusLabel/>
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <addPadding/>
                                         <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                         <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                    </stimulusImage>
+                                    </stimulusPresent>
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
@@ -236,11 +236,11 @@
                             <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
                                     <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
                                 </pause>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A:-:-:B:-:-:C:-:-:D:-">
                             <submitGroupEvent/>
@@ -277,11 +277,11 @@
                                 <conditionFalse>
                                     <stimulusLabel/>
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <addPadding/>
                                         <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                         <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                    </stimulusImage>
+                                    </stimulusPresent>
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
@@ -300,11 +300,11 @@
                             <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
                                     <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
                                 </pause>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A:-:-:B:-:-:C:-:-:D:-">
                             <submitGroupEvent/>
@@ -336,11 +336,11 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C:-:-:A,D:-:-">
                             <clearPage/>
@@ -416,7 +416,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
@@ -455,11 +455,11 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,B:-:-:C,D:-:-">
                             <clearPage/>
@@ -535,7 +535,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
@@ -574,11 +574,11 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="C,D:-:-:B,A:-:-">
                             <clearPage/>
@@ -654,7 +654,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
@@ -693,11 +693,11 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
                             <clearPage/>
@@ -773,7 +773,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
@@ -812,11 +812,11 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
                             <clearPage/>
@@ -892,7 +892,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
@@ -931,11 +931,11 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,A:-:-:C,D:-:-">
                             <clearPage/>
@@ -1011,7 +1011,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
@@ -1050,11 +1050,11 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,C:-:-:A,D:-:-">
                             <clearPage/>
@@ -1130,7 +1130,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
@@ -1167,11 +1167,11 @@
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D">
                             <submitGroupEvent/>
@@ -1215,11 +1215,11 @@
                                 <conditionFalse>
                                     <stimulusLabel/>
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <addPadding/>
                                         <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                         <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                    </stimulusImage>
+                                    </stimulusPresent>
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
@@ -1238,11 +1238,11 @@
                             <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
                                     <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
                                 </pause>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-">
                             <submitGroupEvent/>
@@ -1279,11 +1279,11 @@
                                 <conditionFalse>
                                     <stimulusLabel/>
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <addPadding/>
                                         <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                         <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                    </stimulusImage>
+                                    </stimulusPresent>
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
@@ -1302,11 +1302,11 @@
                             <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
                                     <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
                                 </pause>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-">
                             <submitGroupEvent/>
@@ -1343,11 +1343,11 @@
                                 <conditionFalse>
                                     <stimulusLabel/>
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <addPadding/>
                                         <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                         <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                                    </stimulusImage>
+                                    </stimulusPresent>
                                 </conditionFalse>
                             </stimulusHasResponse>
                         </groupNetworkActivity>
@@ -1366,11 +1366,11 @@
                             <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <pause msToNext="7000">
                                     <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
                                 </pause>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-">
                             <submitGroupEvent/>
@@ -1402,11 +1402,11 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
                             <clearPage/>
@@ -1482,7 +1482,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
@@ -1521,11 +1521,11 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,E,C,G:-:-:H,D,F,B:-:-">
                             <clearPage/>
@@ -1601,7 +1601,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
@@ -1640,11 +1640,11 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="D,F,B,H:-:-:A,G,E,C:-:-">
                             <clearPage/>
@@ -1720,7 +1720,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
@@ -1759,11 +1759,11 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,D,G,H:-:-:C,B,E,F:-:-">
                             <clearPage/>
@@ -1839,7 +1839,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
@@ -1878,11 +1878,11 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="E,H,F,C:-:-:A,D,B,G:-:-">
                             <clearPage/>
@@ -1958,7 +1958,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
@@ -1997,11 +1997,11 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,D,B,E:-:-:F,G,C,H:-:-">
                             <clearPage/>
@@ -2077,7 +2077,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
@@ -2116,11 +2116,11 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="G,B,C,F:-:-:A,H,E,D:-:-">
                             <clearPage/>
@@ -2196,7 +2196,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
@@ -2233,11 +2233,11 @@
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H">
                             <submitGroupEvent/>
@@ -2276,11 +2276,11 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
                             <clearPage/>
@@ -2356,7 +2356,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
@@ -2395,11 +2395,11 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="H,D,F,B:-:-:A,E,C,G:-:-">
                             <clearPage/>
@@ -2475,7 +2475,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
@@ -2514,11 +2514,11 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,G,E,C:-:-:D,F,B,H:-:-">
                             <clearPage/>
@@ -2594,7 +2594,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
@@ -2633,11 +2633,11 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="C,B,E,F:-:-:A,D,G,H:-:-">
                             <clearPage/>
@@ -2713,7 +2713,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
@@ -2752,11 +2752,11 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,D,B,G:-:-:E,H,F,C:-:-">
                             <clearPage/>
@@ -2832,7 +2832,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
@@ -2871,11 +2871,11 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="F,G,C,H:-:-:A,D,B,E:-:-">
                             <clearPage/>
@@ -2951,7 +2951,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
@@ -2990,11 +2990,11 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="A,H,E,D:-:-:G,B,C,F:-:-">
                             <clearPage/>
@@ -3070,7 +3070,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0"/>
                                     <htmlText featureText="Target"/>
                                 </column>
                             </row>
@@ -3107,11 +3107,11 @@
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:A,B,C,D,E,F,G,H">
                             <submitGroupEvent/>
