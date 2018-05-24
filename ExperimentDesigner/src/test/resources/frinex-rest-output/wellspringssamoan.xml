@@ -75,14 +75,14 @@
                 <centrePage/>
                 <stimulusLabel/>
                 <showStimulusProgress/>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
                     <plainText featureText="Askem long man o woman wea i toktok se i talem nem blong wanem i stap lo foto long lanwis blong hem."/>
                     <actionButton featureText="’Uma (finished)">
                         <endAudioRecorderTag eventTier="1" eventTag="Askem long man o woman wea i toktok se i talem nem blong wanem i stap lo foto long lanwis blong hem."/>
                         <clearPage/>
                         <nextStimulus repeatIncorrect="false"/>
                     </actionButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="’Uma (finished)"/>
