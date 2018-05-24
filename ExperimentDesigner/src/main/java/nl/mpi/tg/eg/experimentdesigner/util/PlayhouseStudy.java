@@ -98,18 +98,17 @@ public class PlayhouseStudy {
         String[][][][] testList = new String[][][][]{
             {{{"Practice", "zoomToGarden", "Practice", "balloon.jpg", "AudioAB", "1000", "chimes_welldoneditbetekend", null}, {}},
             {{"P_01", "P_01.jpg"}, {"P_02", "P_02.jpg"}, {"P_03", "P_03.jpg"}, {"P_04", "P_04.jpg"}}},
-            
-//            {{{"PracticeA", "zoomToGarden", "PracticeA", null, "AudioAB", "1000", null, null}, {}},
-//            {{"P_01", "P_01.jpg"}, {"P_02", "P_02.jpg"}, {"P_03", "P_03.jpg"}}},
-//            {{{"PracticeB", null, "PracticeB", "balloon.jpg", null, "1000", "chimes_welldoneditbetekend", null}, {}},
-//            {}},
-//            {{{"PracticeC", null, "PracticeC", null, "AudioAB", "1000", null, null}, {}},
-//            {{"P_04", "P_04.jpg"}}},
-//            {{{"PracticeD", null, "PracticeD", "balloon.jpg", null, "1000", "chimes_welldone", null}, {}},
-//            {}},
-            
+            //            {{{"PracticeA", "zoomToGarden", "PracticeA", null, "AudioAB", "1000", null, null}, {}},
+            //            {{"P_01", "P_01.jpg"}, {"P_02", "P_02.jpg"}, {"P_03", "P_03.jpg"}}},
+            //            {{{"PracticeB", null, "PracticeB", "balloon.jpg", null, "1000", "chimes_welldoneditbetekend", null}, {}},
+            //            {}},
+            //            {{{"PracticeC", null, "PracticeC", null, "AudioAB", "1000", null, null}, {}},
+            //            {{"P_04", "P_04.jpg"}}},
+            //            {{{"PracticeD", null, "PracticeD", "balloon.jpg", null, "1000", "chimes_welldone", null}, {}},
+            //            {}},
+
             {{{"Matching1", "zoomToBlock1", "Matching1", "balloon.jpg", "AudioAB", "2000", "chimes_fantastisch", "BeginMatching"}, {}},
-            {{"M_01_A", "M_01_A.jpg"}, {"M_02_B", "M_02_B.jpg"}, {"M_03_N", "M_03_N.jpg"}, {"M_04_B", "M_04_B.jpg"}, {"M_05_A", "M_05_A.jpg"}, {"M_06_N", "M_06_N.jpg"}, {"M_07_B", "M_07_B.jpg"}, {"M_08_A", "M_8_A.jpg"}, {"M_09_A", "M_09_A.jpg"}}},
+            {{"M_01_A", "M_01_A.jpg"}, {"M_02_B", "M_02_B.jpg"}, {"M_03_N", "M_03_N.jpg"}, {"M_04_B", "M_04_B.jpg"}, {"M_05_A", "M_05_A.jpg"}, {"M_06_N", "M_06_N.jpg"}, {"M_07_B", "M_07_B.jpg"}, {"M_08_A", "M_08_A.jpg"}, {"M_09_A", "M_09_A.jpg"}}},
             {{{"Matching2", "zoomToBlock2", "Matching2", "balloon.jpg", "AudioAB", "2000", "chimes_goedgedaan", "ChangeMatching"}, {}},
             {{"M_10_N", "M_10_N.jpg"}, {"M_11_N", "M_11_N.jpg"}, {"M_12_B", "M_12_B.jpg"}, {"M_13_A", "M_13_A.jpg"}, {"M_14_B", "M_14_B.jpg"}, {"M_15_N", "M_15_N.jpg"}, {"M_16_B", "M_16_B.jpg"}, {"M_17_A", "M_17_A.jpg"}, {"M_18_N", "M_18_N.jpg"}}},
             {{{"Test3", "zoomToBlock3", "Test3", "balloon.jpg", "AudioRepeat2", "2000", "chimes_super", "BeginTest"}, {}},
@@ -136,7 +135,7 @@ public class PlayhouseStudy {
             testStimulusScreen.setStimuliButtonArray("left,centre,right");
             textMenuScreen.addTargetScreen(testStimulusScreen);
             wizardData.addScreen(testStimulusScreen);
-            testStimulusScreen.getWizardScreenData().getMenuWizardScreenData().add(textMenuScreen.getWizardScreenData());
+            testStimulusScreen.setBackWizardScreenData(textMenuScreen.getWizardScreenData());
             backScreen.setNextWizardScreen(testStimulusScreen);
             backScreen = testStimulusScreen;
 //            testStimulusScreen.setNextWizardScreen(textMenuScreen);
@@ -147,11 +146,12 @@ public class PlayhouseStudy {
                 "Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.",
                 "Probeer opnieuw");
         completionScreen.setSendData(true);
-        wizardData.addScreen(completionScreen);
         completionScreen.setScreenTag("completion");
 
         WizardAudioTestScreen atticScreen = new WizardAudioTestScreen("Attic", "&nbsp;", "continue button", null);
         wizardData.addScreen(atticScreen);
+        textMenuScreen.addTargetScreen(atticScreen);
+        wizardData.addScreen(completionScreen);
         atticScreen.setBackgroundImage(backgroundImage);
         atticScreen.setBackgroundStyle("zoomToAttic");
         atticScreen.setAutoPlay(true);
@@ -162,7 +162,7 @@ public class PlayhouseStudy {
         atticScreen.setNextHotKey("ENTER");
         atticScreen.setImageStyle("zoomToPlayroom");
         atticScreen.setButtonStyle("titleBarButton");
-        atticScreen.setBackWizardScreen(menuScreen);
+        atticScreen.setBackWizardScreen(textMenuScreen);
         atticScreen.setNextWizardScreen(completionScreen);
         bluetoothInstructionsScreen.setBackWizardScreen(menuScreen);
         bluetoothInstructionsScreen.setNextWizardScreen(existingUserCheckScreen);
@@ -189,8 +189,8 @@ public class PlayhouseStudy {
         backScreen.setNextWizardScreen(atticScreen);
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
         wizardAboutScreen.setBackWizardScreen(menuScreen);
-        completionScreen.setBackWizardScreen(menuScreen);
-        completionScreen.setNextWizardScreen(wizardEditUserScreen);
+//        completionScreen.setBackWizardScreen(menuScreen);
+        completionScreen.setNextWizardScreen(bluetoothInstructionsScreen);
         wizardData.addScreen(wizardAboutScreen);
         wizardEditUserScreen.setBackWizardScreen(existingUserCheckScreen);
 
