@@ -520,7 +520,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             conditionFalseProduer.getPresenterFeatureList().add(countDownFeature);
         }
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
-        final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
+        final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusPresent, null);
         imageFeature.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         conditionFalseProduer.getPresenterFeatureList().add(imageFeature);
         final PresenterFeature groupMessageLabel = new PresenterFeature(FeatureType.groupMessageLabel, null);
@@ -548,7 +548,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         allNetworkActivityRow.getPresenterFeatureList().add(allNetworkActivityColumn1);
         allNetworkActivityRow.getPresenterFeatureList().add(allNetworkActivityColumn2);
         allNetworkActivityRow.getPresenterFeatureList().add(allNetworkActivityColumn3);
-        final PresenterFeature allNetworkActivity2Image = new PresenterFeature(FeatureType.stimulusImage, null);
+        final PresenterFeature allNetworkActivity2Image = new PresenterFeature(FeatureType.stimulusPresent, null);
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.maxHeight, "0");
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.maxWidth, "0");
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
@@ -609,7 +609,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         trainingDisplayNetworkActivity3.getPresenterFeatureList().add(groupMessageLabel3);
         trainingDisplayNetworkActivity3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
 
-        final PresenterFeature stimulusImage = new PresenterFeature(FeatureType.stimulusImage, null);
+        final PresenterFeature stimulusImage = new PresenterFeature(FeatureType.stimulusPresent, null);
         stimulusImage.addFeatureAttributes(FeatureAttribute.maxHeight, "0");
         stimulusImage.addFeatureAttributes(FeatureAttribute.maxWidth, "0");
         stimulusImage.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
