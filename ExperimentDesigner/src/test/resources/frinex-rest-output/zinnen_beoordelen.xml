@@ -32,12 +32,12 @@
     <presenter back="Gegevens" menuLabel="Stimulus" next="Finished" type="stimulus" self="Stimulus" title="Stimulus">
         <loadStimulus eventTag="Stimulus" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusImage msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
                     <ratingButton eventTier="1" ratingLabelRight="heel erg plausibel" ratingLabels="1,2,3,4,5" ratingLabelLeft="helemaal niet plausibel">
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <autoNextPresenter/>
