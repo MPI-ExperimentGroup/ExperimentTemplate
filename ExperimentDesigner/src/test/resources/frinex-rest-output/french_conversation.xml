@@ -83,12 +83,12 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusImage msToNext="100" maxHeight="80" percentOfPage="0" animate="none" showControls="false" maxWidth="80">
+                <stimulusPresent msToNext="100" maxHeight="80" percentOfPage="0" animate="none" showControls="false" maxWidth="80">
                     <addPadding/>
                     <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
                         <nextStimulus repeatIncorrect="false"/>
                     </stimulusRatingButton>
-                </stimulusImage>
+                </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
                 <autoNextPresenter/>
