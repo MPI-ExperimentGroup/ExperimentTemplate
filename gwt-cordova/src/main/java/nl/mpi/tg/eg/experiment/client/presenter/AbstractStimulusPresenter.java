@@ -879,35 +879,34 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     @Deprecated
-    protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-        stimulusImage(percentOfPage, maxHeight, maxWidth, AnimateTypes.none, postLoadMs, timedStimulusListener);
+    protected void stimulusPresent(int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        stimulusPresent(percentOfPage, maxHeight, maxWidth, AnimateTypes.none, postLoadMs, timedStimulusListener);
     }
 
     @Deprecated
-    protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-        stimulusImage(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, true, null, postLoadMs, null, null, timedStimulusListener, null);
+    protected void stimulusPresent(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        stimulusPresent(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, true, null, postLoadMs, null, null, timedStimulusListener, null);
     }
 
     @Deprecated
-    protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-        stimulusImage(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, showControls, null, postLoadMs, null, null, timedStimulusListener, null);
+    protected void stimulusPresent(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        stimulusPresent(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, showControls, null, postLoadMs, null, null, timedStimulusListener, null);
     }
 
     @Deprecated
-    protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, String regex, String replacement, final TimedStimulusListener timedStimulusListener) {
-        stimulusImage(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, true, null, postLoadMs, regex, replacement, timedStimulusListener, null);
+    protected void stimulusPresent(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, String regex, String replacement, final TimedStimulusListener timedStimulusListener) {
+        stimulusPresent(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, true, null, postLoadMs, regex, replacement, timedStimulusListener, null);
     }
 
     @Deprecated
-    protected void stimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final Integer fixedPositionY, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-        stimulusImage(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, true, fixedPositionY, postLoadMs, null, null, timedStimulusListener, null);
+    protected void stimulusPresent(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final Integer fixedPositionY, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        stimulusPresent(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, true, fixedPositionY, postLoadMs, null, null, timedStimulusListener, null);
     }
 
-    @Deprecated
-    protected void stimulusImage(final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, final Integer fixedPositionY, int postLoadMs, String regex, String replacement, final TimedStimulusListener timedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
-        stimulusPresent(currentStimulus, percentOfPage, maxHeight, maxWidth, animateType, showControls, fixedPositionY, postLoadMs, regex, replacement, timedStimulusListener, clickedStimulusListener);
-    }
-
+//    @Deprecated
+//    protected void stimulusPresent(final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, final Integer fixedPositionY, int postLoadMs, String regex, String replacement, final TimedStimulusListener timedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
+//        stimulusPresent(currentStimulus, percentOfPage, maxHeight, maxWidth, animateType, showControls, fixedPositionY, postLoadMs, regex, replacement, timedStimulusListener, clickedStimulusListener);
+//    }
     protected void stimulusPresent(final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, final Integer fixedPositionY, int postLoadMs, String regex, String replacement, final TimedStimulusListener timedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
         if (currentStimulus.hasImage()) {
             final String image;
@@ -1300,14 +1299,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         while (matchingStimuliGroup.getNextStimulus(stimulusProvider)) {
             yPos += ySpacing;
             if (matchingStimuliGroup.isCorrect(stimulusProvider.getCurrentStimulus())) {
-                stimulusImage(stimulusProvider.getCurrentStimulus(), 0, maxWidth, maxWidth, animateType, false, yPos - (maxWidth / 2), postLoadCorrectMs, null, null, new TimedStimulusListener() {
+                stimulusPresent(stimulusProvider.getCurrentStimulus(), 0, maxWidth, maxWidth, animateType, false, yPos - (maxWidth / 2), postLoadCorrectMs, null, null, new TimedStimulusListener() {
                     @Override
                     public void postLoadTimerFired() {
 
                     }
                 }, correctListener);
             } else {
-                stimulusImage(stimulusProvider.getCurrentStimulus(), 0, maxWidth, maxWidth, animateType, false, yPos - (maxWidth / 2), postLoadIncorrectMs, null, null, new TimedStimulusListener() {
+                stimulusPresent(stimulusProvider.getCurrentStimulus(), 0, maxWidth, maxWidth, animateType, false, yPos - (maxWidth / 2), postLoadIncorrectMs, null, null, new TimedStimulusListener() {
                     @Override
                     public void postLoadTimerFired() {
 
@@ -1504,7 +1503,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void groupResponseStimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-        stimulusImage(stimulusProvider.getStimuliFromString(groupParticipantService.getResponseStimulusId()), percentOfPage, maxHeight, maxWidth, animateType, false, null, postLoadMs, null, null, timedStimulusListener, null);
+        stimulusPresent(stimulusProvider.getStimuliFromString(groupParticipantService.getResponseStimulusId()), percentOfPage, maxHeight, maxWidth, animateType, false, null, postLoadMs, null, null, timedStimulusListener, null);
     }
 
     protected void sendGroupEndOfStimuli(final String eventTag) {
