@@ -25,6 +25,7 @@ public class WizardUtilAudioTest {
 
     protected String menuLabel;
     protected String title;
+    protected String text;
     protected String butonLabel;
     protected String butonStyle;
     protected String audioHotkey;
@@ -51,6 +52,14 @@ public class WizardUtilAudioTest {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getButonLabel() {
