@@ -48,6 +48,7 @@
         <menuItem featureText="Matching2" target="Matching2"/>
         <menuItem featureText="Test3" target="Test3"/>
         <menuItem featureText="Test4" target="Test4"/>
+        <menuItem featureText="Attic" target="Attic"/>
     </presenter>
     <presenter menuLabel="Practice" next="Matching1" type="stimulus" self="Practice" title="Practice">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToGarden">
@@ -654,23 +655,7 @@
             </audioButton>
         </backgroundImage>
     </presenter>
-    <presenter back="Menu" menuLabel="Einde van het experiment" next="Gegevens" type="transmission" self="completion" title="Einde van het experiment">
-        <sendAllData>
-            <onSuccess>
-                <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;Hartelijk dank voor uw deelname! &lt;br/&gt;&lt;br/&gt;"/>
-                <addPadding/>
-                <addPadding/>
-                <htmlText featureText="&lt;br/&gt;Het bovenstaande nummer is het bewijs dat u het experiment heeft voltooid, en is vereist voor het in orde maken van uw vergoeding."/>
-                <addPadding/>
-                <eraseUsersDataButton featureText="Opnieuw beginnen" target="Gegevens"/>
-            </onSuccess>
-            <onError>
-                <plainText featureText="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw."/>
-                <targetButton featureText="Probeer opnieuw" target="completion"/>
-            </onError>
-        </sendAllData>
-    </presenter>
-    <presenter back="Menu" menuLabel="Attic" next="completion" type="stimulus" self="Attic" title="Attic">
+    <presenter back="TestMenu" menuLabel="Attic" next="completion" type="stimulus" self="Attic" title="Attic">
         <backgroundImage msToNext="1000" src="huisje_02.jpg" styleName="zoomToAttic">
             <htmlText featureText="&amp;nbsp;"/>
             <backgroundImage msToNext="0" src="Playroom.jpg" styleName="zoomToPlayroom">
@@ -685,6 +670,22 @@
                 </table>
             </backgroundImage>
         </backgroundImage>
+    </presenter>
+    <presenter menuLabel="Einde van het experiment" next="Bluetooth_Instructions" type="transmission" self="completion" title="Einde van het experiment">
+        <sendAllData>
+            <onSuccess>
+                <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;Hartelijk dank voor uw deelname! &lt;br/&gt;&lt;br/&gt;"/>
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="&lt;br/&gt;Het bovenstaande nummer is het bewijs dat u het experiment heeft voltooid, en is vereist voor het in orde maken van uw vergoeding."/>
+                <addPadding/>
+                <eraseUsersDataButton featureText="Opnieuw beginnen" target="Bluetooth_Instructions"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw."/>
+                <targetButton featureText="Probeer opnieuw" target="completion"/>
+            </onError>
+        </sendAllData>
     </presenter>
     <presenter back="Menu" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
@@ -701,7 +702,7 @@
         <stimulus audioPath="M_05_A" code="M_05_A" identifier="M_05_A" imagePath="M_05_A.jpg" pauseMs="0" tags="Matching1"/>
         <stimulus audioPath="M_06_N" code="M_06_N" identifier="M_06_N" imagePath="M_06_N.jpg" pauseMs="0" tags="Matching1"/>
         <stimulus audioPath="M_07_B" code="M_07_B" identifier="M_07_B" imagePath="M_07_B.jpg" pauseMs="0" tags="Matching1"/>
-        <stimulus audioPath="M_08_A" code="M_08_A" identifier="M_08_A" imagePath="M_8_A.jpg" pauseMs="0" tags="Matching1"/>
+        <stimulus audioPath="M_08_A" code="M_08_A" identifier="M_08_A" imagePath="M_08_A.jpg" pauseMs="0" tags="Matching1"/>
         <stimulus audioPath="M_09_A" code="M_09_A" identifier="M_09_A" imagePath="M_09_A.jpg" pauseMs="0" tags="Matching1"/>
         <stimulus audioPath="M_10_N" code="M_10_N" identifier="M_10_N" imagePath="M_10_N.jpg" pauseMs="0" tags="Matching2"/>
         <stimulus audioPath="M_11_N" code="M_11_N" identifier="M_11_N" imagePath="M_11_N.jpg" pauseMs="0" tags="Matching2"/>
