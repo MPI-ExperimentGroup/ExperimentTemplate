@@ -359,7 +359,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             }
             stimuliFeature = hasMoreStimulusFeature;// image features cannot have child nodes
         } else {
-            final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusImage, null);
+            final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusPresent, null);
             imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
             imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
             imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
