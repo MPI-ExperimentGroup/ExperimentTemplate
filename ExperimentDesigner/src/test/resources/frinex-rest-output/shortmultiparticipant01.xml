@@ -35,10 +35,10 @@
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>
-                            <stimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                 <addPadding/>
                                 <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
-                            </stimulusImage>
+                            </stimulusPresent>
                         </groupNetworkActivity>
                     </groupNetwork>
                 </hasMoreStimulus>
