@@ -60,7 +60,7 @@ public class SentenceCompletion {
         for (String menuItemString : screenToMenuMap.keySet()) {
             if (menuItemString.equals(currentScreen.getWizardScreenData().getMenuLabel())) {
                 screenToMenuMap.get(menuItemString).addTargetScreen(currentScreen);
-//                currentScreen.setBackWizardScreen(screenToMenuMap.get(menuItemString));
+                currentScreen.setBackWizardScreen(screenToMenuMap.get(menuItemString));
                 isInMenu = true;
             }
         }
@@ -345,7 +345,11 @@ public class SentenceCompletion {
 //        list1234Screen.setBackWizardScreen(wizardEditUserScreen);
         //completionScreen.setBackWizardScreen(list1234Screen);
         final WizardAboutScreen wizardAboutScreen = new WizardAboutScreen("Over", false);
-        wizardAboutScreen.setBackWizardScreen(firstScreen);
+        if (mainMenuScreen != null) {
+            wizardAboutScreen.setBackWizardScreen(mainMenuScreen);
+        } else {
+            wizardAboutScreen.setBackWizardScreen(firstScreen);
+        }
         wizardData.addScreen(wizardAboutScreen);
 
         return wizardData;
