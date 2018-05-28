@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Set;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
@@ -397,8 +398,7 @@ public class AudioAsStimuliProviderTest {
         assertFalse(this.instance.getLooser());
         assertEquals(TestConfigurationConstants.AUDIO_NUMBER_OF_BANDS, this.instance.getBandIndexScore() + 1);
 
-        ArrayList<BookkeepingStimulus<AudioAsStimulus>> record = this.instance.getResponseRecord();
-        //this.printRecord(record);
+        
 
         System.out.println("getStringFineTuningHistory");
         String startRow = "";
@@ -506,7 +506,15 @@ public class AudioAsStimuliProviderTest {
         assertTrue(this.instance.getLooser());
         assertEquals(0, this.instance.getBandIndexScore());
 
-        ArrayList<BookkeepingStimulus<AudioAsStimulus>> record = this.instance.getResponseRecord();
+        ArrayList<BookkeepingStimulus<AudioAsStimulus>> records = this.instance.getResponseRecord();
+        ArrayList usedCues = new ArrayList<String>();
+        for (BookkeepingStimulus<AudioAsStimulus> record : records) {
+            assertNotNull(record);
+            assertNotNull(record.getStimulus().getLabel());
+            String label = record.getStimulus().getLabel();
+            assertFalse(usedCues.contains(label));
+            usedCues.add(label);
+        }
         //this.printRecord(record);
 
         System.out.println(" extra-test getStringFineTuningHistory");
@@ -590,8 +598,15 @@ public class AudioAsStimuliProviderTest {
         assertEquals(5, bandChangeCounter);
         assertFalse(this.instance.getLooser());
 
-        ArrayList<BookkeepingStimulus<AudioAsStimulus>> record = this.instance.getResponseRecord();
-        //this.printRecord(record);
+        ArrayList<BookkeepingStimulus<AudioAsStimulus>> records = this.instance.getResponseRecord();
+        ArrayList usedCues = new ArrayList<String>();
+        for (BookkeepingStimulus<AudioAsStimulus> record : records) {
+            assertNotNull(record);
+            assertNotNull(record.getStimulus().getLabel());
+            String label = record.getStimulus().getLabel();
+            assertFalse(usedCues.contains(label));
+            usedCues.add(label);
+        }
 
         System.out.println("getStringFineTuningHistory");
         String startRow = "";
@@ -613,6 +628,7 @@ public class AudioAsStimuliProviderTest {
         System.out.println(" extra-test toString()-2");
         String snapShot2 = this.instance.toString();
         assertEquals(snapShot, snapShot2);
+
     }
 
     /**
@@ -664,7 +680,6 @@ public class AudioAsStimuliProviderTest {
             }
 
             // we will exit the band tuple because of mistake or because it is finished
-            
             if (this.instance.getCurrentBandIndex() > previousBandIndex) {
                 if (steps == cycelLength) {
                     steps = 0;
@@ -695,12 +710,14 @@ public class AudioAsStimuliProviderTest {
         assertTrue(this.instance.getTimeOutExit());
         Trial trial = this.instance.getCurrentTrialTuple().getFirstNonusedTrial();
         if (trial != null) {
-            assertEquals(trial.getTrialLength()+1, trial.getStimuli().size());
+            assertEquals(trial.getTrialLength() + 1, trial.getStimuli().size());
         }
         //assertTrue(this.instance.getBandIndexScore()==7 || this.instance.getBandIndexScore()==6);
         ArrayList<BookkeepingStimulus<AudioAsStimulus>> records = this.instance.getResponseRecord();
         ArrayList usedCues = new ArrayList<String>();
-        for (BookkeepingStimulus<AudioAsStimulus> record:records){
+        for (BookkeepingStimulus<AudioAsStimulus> record : records) {
+            assertNotNull(record);
+            assertNotNull(record.getStimulus().getLabel());
             String label = record.getStimulus().getLabel();
             assertFalse(usedCues.contains(label));
             usedCues.add(label);

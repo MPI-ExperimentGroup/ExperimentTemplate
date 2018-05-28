@@ -28,8 +28,6 @@ public class AudioAsStimulus extends BandStimulus {
     public static final String USER_REACTION = "button pressed";
     public static final String AUDIO_RATING_LABEL = "&#160;";
     public static final String EXAMPLE_TARGET_LABEL = null;
-    public static final int PAUSE_EXAMPLE = 60000;
-    public static final int PAUSE = 900;
 
     public final WordType wordType;
     public final int positionInTrial;

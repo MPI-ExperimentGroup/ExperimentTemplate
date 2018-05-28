@@ -411,14 +411,9 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             ArrayList<Trial> possibilities = permPair.getTrials().get(i);// shared part
             int trialIndex = rnd.nextInt(possibilities.size());
             String label = possibilities.get(trialIndex).getStimuli().get(0).getStimulus().getLabel();
-            if (usedCues.contains(label)) { // correct index
-                if (possibilities.size() > 1) {
-                    ArrayList<Integer> betterPossibilities = new ArrayList<Integer>(possibilities.size() - 1);
-                    for (int j = 0; j < possibilities.size(); j++) {
-                        if (j != trialIndex) {
-                            betterPossibilities.add(j);
-                        }
-                    }
+            if (this.usedCues.contains(label)) { // correct index
+                ArrayList<Integer> betterPossibilities = this.excludeRepeatedLabels(possibilities, label);
+                if (betterPossibilities.size() > 0) {
                     trialIndex = betterPossibilities.get(rnd.nextInt(betterPossibilities.size()));
                 }
             }
@@ -427,6 +422,17 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         }
 
         TrialTuple retVal = new TrialTuple(trs);
+        return retVal;
+    }
+
+    private ArrayList<Integer> excludeRepeatedLabels(ArrayList<Trial> possibilities, String vorbiddenLabel) {
+        ArrayList<Integer> retVal = new ArrayList<Integer>();
+        for (int j = 0; j < possibilities.size(); j++) {
+            String label = possibilities.get(j).getStimuli().get(0).getStimulus().getLabel();
+            if (!label.equals(vorbiddenLabel)) {
+                retVal.add(j);
+            }
+        }
         return retVal;
     }
 
