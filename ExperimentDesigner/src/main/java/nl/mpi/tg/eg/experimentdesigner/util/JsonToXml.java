@@ -26,10 +26,16 @@ import java.util.Comparator;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilData;
+import org.xml.sax.SAXException;
 
 /**
  * @since April 5, 2018 16:10 PM (creation date)
@@ -85,6 +91,27 @@ public class JsonToXml {
                         jaxbMarshaller.marshal(experiment, fileWriter);
                     } catch (IOException | JAXBException exception) {
                         System.out.println(exception.getMessage());
+                    }
+                }
+                for (File xmlFile : new File(inputDirectory).listFiles((File dir, String name) -> name.endsWith(".xml"))) {
+                    System.out.println(xmlFile);
+                    Source xmlFileStream = new StreamSource(xmlFile);
+                    SchemaFactory schemaFactory = SchemaFactory.newInstance("http://www.w3.org/XML/XMLSchema/v1.1");
+                    try {
+                        final File schemaFile = new File(outputDirectory, "frinex.xsd");
+                        Schema schema = schemaFactory.newSchema(schemaFile);
+                        Validator validator = schema.newValidator();
+                        validator.validate(xmlFileStream);
+                    } catch (SAXException | IOException saxe) {
+                        System.out.println(saxe.getMessage());
+                        // save the error into a log file
+                        final File outputFile = new File(outputDirectory, xmlFile.getName().replaceAll(".xml$", "_schemaerror.txt"));
+                        try {
+                            FileWriter fileWriter = new FileWriter(outputFile);
+                            fileWriter.write(saxe.getMessage());
+                        } catch (IOException exception) {
+                            System.out.println(exception.getMessage());
+                        }
                     }
                 }
             }
