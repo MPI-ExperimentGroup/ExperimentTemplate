@@ -110,6 +110,7 @@ public class JsonToXml {
                         try {
                             FileWriter fileWriter = new FileWriter(outputFile);
                             fileWriter.write(saxe.getMessage());
+                            fileWriter.close();
                         } catch (IOException exception) {
                             System.out.println(exception.getMessage());
                         }
