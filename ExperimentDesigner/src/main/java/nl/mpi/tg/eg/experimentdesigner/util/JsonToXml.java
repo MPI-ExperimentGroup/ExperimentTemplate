@@ -106,6 +106,7 @@ public class JsonToXml {
                         System.out.println(saxe.getMessage());
                         // save the error into a log file
                         final File outputFile = new File(outputDirectory, xmlFile.getName().replaceAll(".xml$", "_schemaerror.txt"));
+                        System.out.println(outputFile);
                         try {
                             FileWriter fileWriter = new FileWriter(outputFile);
                             fileWriter.write(saxe.getMessage());
