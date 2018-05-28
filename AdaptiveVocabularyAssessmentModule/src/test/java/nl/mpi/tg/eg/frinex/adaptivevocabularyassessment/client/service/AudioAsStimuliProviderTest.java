@@ -398,8 +398,6 @@ public class AudioAsStimuliProviderTest {
         assertFalse(this.instance.getLooser());
         assertEquals(TestConfigurationConstants.AUDIO_NUMBER_OF_BANDS, this.instance.getBandIndexScore() + 1);
 
-        
-
         System.out.println("getStringFineTuningHistory");
         String startRow = "";
         String endRow = "\n";
@@ -420,6 +418,22 @@ public class AudioAsStimuliProviderTest {
         System.out.println(" extra-test toString()-2");
         String snapShot2 = this.instance.toString();
         assertEquals(snapShot, snapShot2);
+        
+        ArrayList<BookkeepingStimulus<AudioAsStimulus>> records = this.instance.getResponseRecord();
+        ArrayList usedCues = new ArrayList<String>();
+        for (BookkeepingStimulus<AudioAsStimulus> record : records) {
+            assertNotNull(record);
+            assertNotNull(record.getStimulus().getLabel());
+            if (record.getStimulus().getwordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
+                String label = record.getStimulus().getLabel();
+                if (usedCues.contains(label)) {
+                    System.out.println(record.getStimulus().getbandIndex());
+                    System.out.println(label);
+                }
+                assertFalse(usedCues.contains(label));
+                usedCues.add(label);
+            }
+        }
     }
 
     /**
@@ -511,9 +525,11 @@ public class AudioAsStimuliProviderTest {
         for (BookkeepingStimulus<AudioAsStimulus> record : records) {
             assertNotNull(record);
             assertNotNull(record.getStimulus().getLabel());
-            String label = record.getStimulus().getLabel();
-            assertFalse(usedCues.contains(label));
-            usedCues.add(label);
+            if (record.getStimulus().getwordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
+                String label = record.getStimulus().getLabel();
+                assertFalse(usedCues.contains(label));
+                usedCues.add(label);
+            }
         }
         //this.printRecord(record);
 
@@ -603,9 +619,11 @@ public class AudioAsStimuliProviderTest {
         for (BookkeepingStimulus<AudioAsStimulus> record : records) {
             assertNotNull(record);
             assertNotNull(record.getStimulus().getLabel());
-            String label = record.getStimulus().getLabel();
-            assertFalse(usedCues.contains(label));
-            usedCues.add(label);
+            if (record.getStimulus().getwordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
+                String label = record.getStimulus().getLabel();
+                assertFalse(usedCues.contains(label));
+                usedCues.add(label);
+            }
         }
 
         System.out.println("getStringFineTuningHistory");
@@ -718,9 +736,11 @@ public class AudioAsStimuliProviderTest {
         for (BookkeepingStimulus<AudioAsStimulus> record : records) {
             assertNotNull(record);
             assertNotNull(record.getStimulus().getLabel());
-            String label = record.getStimulus().getLabel();
-            assertFalse(usedCues.contains(label));
-            usedCues.add(label);
+            if (record.getStimulus().getwordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
+                String label = record.getStimulus().getLabel();
+                assertFalse(usedCues.contains(label));
+                usedCues.add(label);
+            }
         }
 
     }
