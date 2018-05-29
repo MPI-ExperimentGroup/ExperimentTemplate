@@ -29,6 +29,7 @@ public class WizardUtilAudioTest {
     protected String butonLabel;
     protected String butonStyle;
     protected String audioHotkey;
+    protected String audioFile;
     protected String hotkey;
     protected boolean autoPlay;
     protected boolean autoNext;
@@ -148,5 +149,13 @@ public class WizardUtilAudioTest {
 
     public void setImageName(String imageName) {
         this.imageName = imageName;
+    }
+
+    public String getAudioFile() {
+        return audioFile;
+    }
+
+    public void setAudioFile(String audioFile) {
+        this.audioFile = audioFile;
     }
 }
