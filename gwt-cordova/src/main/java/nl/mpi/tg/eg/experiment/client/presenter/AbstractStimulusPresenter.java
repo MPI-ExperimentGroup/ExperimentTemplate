@@ -866,6 +866,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addBackgroundImage((imageSrc == null || imageSrc.isEmpty()) ? null : UriUtils.fromTrustedString((imageSrc.startsWith("file")) ? imageSrc : serviceLocations.staticFilesUrl() + imageSrc), styleName, postLoadMs, timedStimulusListener);
     }
 
+    protected void stimulusImage(int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        stimulusImage(null, postLoadMs, timedStimulusListener);
+    }
+
     protected void stimulusImage(final String styleName, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
         final String imageString = stimulusProvider.getCurrentStimulus().getImage();
         final String uniqueId = stimulusProvider.getCurrentStimulus().getUniqueId();
