@@ -598,7 +598,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
             this.bandVisitCounter[this.currentBandIndex]++;
 
             // analyse correctness of the last tuple as a whole
-            boolean allTupleCorrect = this.isWholeTupleCorrect();
+            boolean allTupleCorrect = this.isEnoughCorrectResponses();
 
             if (allTupleCorrect) {
                 if (this.currentBandIndex == this.numberOfBands - 1) { // the last band is hit
@@ -646,8 +646,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         return this.tupleFT.size() > 0;
     }
 
-    // must be overriden for trial tuples
-    protected Boolean isWholeTupleCorrect() {
+    protected Boolean isEnoughCorrectResponses() {
         boolean allTupleCorrect = true;
         int lastIndex = this.responseRecord.size() - 1;
         int limit = (this.fineTuningTupleLength < this.responseRecord.size()) ? this.fineTuningTupleLength : this.responseRecord.size();

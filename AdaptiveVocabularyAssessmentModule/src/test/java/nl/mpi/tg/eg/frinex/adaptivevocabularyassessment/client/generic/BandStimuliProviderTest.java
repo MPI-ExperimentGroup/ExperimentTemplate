@@ -596,7 +596,7 @@ public class BandStimuliProviderTest {
         this.instance.setstartBand("20");
         this.instance.initialiseStimuliState("");
         // false positibe: the tuple is empty
-        assertTrue(this.instance.isWholeTupleCorrect());
+        assertTrue(this.instance.isEnoughCorrectResponses());
     }
 
   

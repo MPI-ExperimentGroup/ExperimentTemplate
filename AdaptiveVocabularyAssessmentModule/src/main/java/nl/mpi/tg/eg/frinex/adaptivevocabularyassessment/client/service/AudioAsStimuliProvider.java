@@ -245,7 +245,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     }
 
     @Override
-    protected Boolean isWholeTupleCorrect() {
+    protected Boolean isEnoughCorrectResponses() {
         return null;
 //        boolean allTupleCorrect = true;
 //        int i = this.responseRecord.size() - 1;
@@ -412,7 +412,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             int trialIndex = rnd.nextInt(possibilities.size());
             String label = possibilities.get(trialIndex).getStimuli().get(0).getStimulus().getLabel();
             if (this.usedCues.contains(label)) { // correct index
-                ArrayList<Integer> betterPossibilities = this.excludeRepeatedLabels(possibilities, label);
+                ArrayList<Integer> betterPossibilities = this.excludeRepeatedLabels(possibilities, this.usedCues);
                 if (betterPossibilities.size() > 0) {
                     trialIndex = betterPossibilities.get(rnd.nextInt(betterPossibilities.size()));
                 }
@@ -425,11 +425,18 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         return retVal;
     }
 
-    private ArrayList<Integer> excludeRepeatedLabels(ArrayList<Trial> possibilities, String vorbiddenLabel) {
+    private ArrayList<Integer> excludeRepeatedLabels(ArrayList<Trial> possibilities, ArrayList<String> vorbiddenLabels) {
         ArrayList<Integer> retVal = new ArrayList<Integer>();
         for (int j = 0; j < possibilities.size(); j++) {
             String label = possibilities.get(j).getStimuli().get(0).getStimulus().getLabel();
-            if (!label.equals(vorbiddenLabel)) {
+            boolean isIn = false;
+            for (String vorbiddenLabel : vorbiddenLabels) {
+                if (label.equals(vorbiddenLabel)) {
+                    isIn = true;
+                    break;
+                }
+            }
+            if (!isIn) {
                 retVal.add(j);
             }
         }

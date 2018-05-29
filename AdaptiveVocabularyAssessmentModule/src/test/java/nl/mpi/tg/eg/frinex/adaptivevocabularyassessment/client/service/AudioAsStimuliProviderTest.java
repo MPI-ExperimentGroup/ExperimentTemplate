@@ -147,7 +147,7 @@ public class AudioAsStimuliProviderTest {
 //                instance.isCorrectResponse(stimulus, AudioAsStimulus.AUDIO_RATING_LABEL);
 //            }
 //        }
-//        assertTrue(this.instance.isWholeTupleCorrect());
+//        assertTrue(this.instance.isEnoughCorrectResponses());
 //    }
     /**
      * Test of isWholeTupleCorrect method, of class AudioAsStimuliProvider. //
@@ -175,7 +175,7 @@ public class AudioAsStimuliProviderTest {
 //                }
 //            }
 //        }
-//        assertFalse(this.instance.isWholeTupleCorrect());
+//        assertFalse(this.instance.isEnoughCorrectResponses());
 //    }
     /**
      * Test of isWholeTupleCorrect method, of class AudioAsStimuliProvider. //
@@ -202,7 +202,7 @@ public class AudioAsStimuliProviderTest {
 //                }
 //            }
 //        }
-//        assertFalse(this.instance.isWholeTupleCorrect());
+//        assertFalse(this.instance.isEnoughCorrectResponses());
 //    }
     /**
      * Test of isCorrectResponse method, of class AudioAsStimuliProvider.
@@ -429,6 +429,7 @@ public class AudioAsStimuliProviderTest {
                 if (usedCues.contains(label)) {
                     System.out.println(record.getStimulus().getbandIndex());
                     System.out.println(label);
+                    System.out.println(usedCues);
                 }
                 assertFalse(usedCues.contains(label));
                 usedCues.add(label);
