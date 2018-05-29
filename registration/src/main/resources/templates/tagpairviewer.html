@@ -69,7 +69,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //                            $(svgTagId).mouseover(function () {
                             var scaleFactor = -1;
                             var maxMs = -1;
-                            $.each(touchData.split("\n"), function (lineIndex, lineString) {
+                            $.each(touchData.split(";"), function (lineIndex, lineString) {
                                 var lineParts = lineString.split(",");
                                 if (scaleFactor === -1) {
                                     var maxWidth = parseFloat(lineParts[1]);
