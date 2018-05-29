@@ -118,7 +118,7 @@ public abstract class TouchInputCapture implements Event.NativePreviewHandler, M
             }
             recordedTouches.append(",");
         }
-        recordedTouches.append("\n");
+        recordedTouches.append(";");
     }
 
     public void addTouchZone(TouchInputZone touchZone) {
@@ -293,7 +293,7 @@ public abstract class TouchInputCapture implements Event.NativePreviewHandler, M
     }
 
     public String getTouchReport(int screenWidth, int screenHeight) {
-        recordedTouches.insert(0, "\n");
+        recordedTouches.insert(0, ";");
         recordedTouches.insert(0, screenHeight);
         recordedTouches.insert(0, ",");
         recordedTouches.insert(0, screenWidth);
