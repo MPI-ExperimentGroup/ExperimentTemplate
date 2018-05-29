@@ -41,7 +41,7 @@ public class PeabodyStimuliFromString {
             this.stimuliByBands.add(new ArrayList<PeabodyStimulus>());
         }
 
-        CsvRecords csvWrapper = new CsvRecords(null, " ", "\n");
+        CsvRecords csvWrapper = new CsvRecords(null, "\t", "\n");
         csvWrapper.readRecords(csvString);
         ArrayList<LinkedHashMap<String, String>> records = csvWrapper.getRecords();
 

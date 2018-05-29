@@ -162,7 +162,13 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
         String audioPath = lastBStimulus.getStimulus().getAudio();
         String[] bits = audioPath.split("_");
         int lastAudioIndex = Integer.parseInt(bits[0]);
-        return lastAudioIndex;
+        int errors = 0;
+        for (BookkeepingStimulus<PeabodyStimulus> bStimulus: recordi) {
+            if (!bStimulus.getCorrectness()) {
+                errors++;
+            }
+        }
+        return lastAudioIndex-errors;
     }
 
     @Override
