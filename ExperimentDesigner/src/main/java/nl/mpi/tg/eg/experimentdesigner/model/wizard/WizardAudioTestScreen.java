@@ -76,7 +76,7 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenBoolean(1, utilAudioTest.isAutoNext());
         this.wizardScreenData.setScreenIntegers(0, utilAudioTest.getBackgroundMs());
         this.setNextButton(utilAudioTest.getButonLabel());
-        this.wizardScreenData.setScreenMediaPath(null);
+        this.wizardScreenData.setScreenMediaPath(utilAudioTest.getAudioFile());
     }
 
     @Override
