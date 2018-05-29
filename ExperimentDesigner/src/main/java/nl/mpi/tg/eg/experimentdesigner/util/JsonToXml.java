@@ -26,13 +26,11 @@ import java.util.Comparator;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
-import javax.xml.xpath.XPathExpressionException;
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
@@ -113,7 +111,7 @@ public class JsonToXml {
                         Schema schema = schemaFactory.newSchema(schemaFile);
                         Validator validator = schema.newValidator();
                         validator.validate(xmlFileStream);
-                    } catch (SAXException | IOException | IllegalArgumentException | ParserConfigurationException | XPathExpressionException saxe) {
+                    } catch (SAXException | IOException saxe) {
                         System.out.println(saxe.getMessage());
                         // save the error into a log file
                         final File outputFile = new File(outputDirectory, xmlFile.getName().replaceAll(".xml$", "_validation_error.txt"));
