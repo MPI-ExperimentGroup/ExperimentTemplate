@@ -470,11 +470,6 @@ table.stimulusContainerTab {
     width: 32vw;
     height: 25vw;
 }
-.gwt-Button.optionButton.topLeftOverlayButton, .gwt-Button.optionButton.topRightOverlayButton,
-.gwt-Button.optionButton.bottomLeftOverlayButton, .gwt-Button.optionButton.bottomRightOverlayButton {
-    width: 47vw;
-    height: 36vw;
-}
 .gwt-Button.optionButton.rightOverlayButton, .gwt-Button.optionButton.leftOverlayButton {
     top: 80px;
     width: 47vw;
@@ -526,6 +521,13 @@ table.stimulusContainerTab {
 .gwt-Button.optionButton.bottomRightOverlayButton,
 .gwt-Image.bottomRightTouchButton {
     transform: translate(5%,5%);
+}
+.gwt-Button.optionButton.topLeftOverlayButton, .gwt-Button.optionButton.topRightOverlayButton,
+.gwt-Button.optionButton.bottomLeftOverlayButton, .gwt-Button.optionButton.bottomRightOverlayButton {
+    width: 47vmin;
+    height: 36vmin;
+    left: 50vw;
+    top: 50vh;
 }
 .gwt-Image.topLeftTouchButton,
 .gwt-Image.topRightTouchButton,
