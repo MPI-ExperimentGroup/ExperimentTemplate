@@ -513,30 +513,28 @@ table.stimulusContainerTab {
 
 .gwt-Button.optionButton.topLeftOverlayButton,
 .gwt-Image.topLeftTouchButton {
-    left: 1vw;
-    top: 1vw;
+    transform: translate(-105%,-105%);
 }
 .gwt-Button.optionButton.topRightOverlayButton,
 .gwt-Image.topRightTouchButton {
-    right: 1vw;
-    top: 1vw;
+    transform: translate(5%,-105%);
 }
 .gwt-Button.optionButton.bottomLeftOverlayButton,
 .gwt-Image.bottomLeftTouchButton {
-    left: 1vw;
-    top: 40vw;
+    transform: translate(-105%,5%);
 }
 .gwt-Button.optionButton.bottomRightOverlayButton,
 .gwt-Image.bottomRightTouchButton {
-    right: 1vw;
-    top: 40vw;
+    transform: translate(5%,5%);
 }
 .gwt-Image.topLeftTouchButton,
 .gwt-Image.topRightTouchButton,
 .gwt-Image.bottomLeftTouchButton,
 .gwt-Image.bottomRightTouchButton {
-    width: 45vw;
-    height: 34vw;
+    width: 45vmin;
+    height: 34vmin;
+    left: 50vw;
+    top: 50vh;
 }
 .borderedVideoLeft, .borderedVideoRight {
     width: 45vw;
