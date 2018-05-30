@@ -30,6 +30,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 import nl.mpi.tg.eg.experimentdesigner.model.RandomGrouping;
 import nl.mpi.tg.eg.experimentdesigner.model.Stimulus;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilStimuliData.StimuliFields;
 
 /**
  * @since Mar 23, 2017 3:12:33 PM (creation date)
@@ -98,6 +99,14 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setStimuliCount(1000);
         setRandomiseStimuli(false);
         this.wizardScreenData.setCentreScreen(false);
+        setRatingStimuli(false);
+        if (stimuliData.stimuliFields != null) {
+            for (StimuliFields stimuliField : stimuliData.stimuliFields) {
+                if (stimuliField == WizardUtilStimuliData.StimuliFields.rating) {
+                    setRatingStimuli(true);
+                }
+            }
+        }
         setStimuliSet(stimuliData);
     }
 
@@ -255,6 +264,14 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         return wizardScreenData.getScreenBoolean(5);
     }
 
+    final public void setRatingStimuli(boolean ratingStimuli) {
+        this.wizardScreenData.setScreenBoolean(6, ratingStimuli);
+    }
+
+    private boolean isRatingStimuli(WizardScreenData wizardScreenData) {
+        return wizardScreenData.getScreenBoolean(6);
+    }
+
     @Override
     public String getScreenBooleanInfo(int index) {
         return new String[]{
@@ -263,7 +280,8 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             "SDcard Stimuli",
             "StimulusCodeAudio",
             "RememberLastStimuli",
-            "ShowCurtains"
+            "ShowCurtains",
+            "Use Stimuli Rating"
         }[index];
     }
 
@@ -361,6 +379,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
     public PresenterScreen[] populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment,
             boolean obfuscateScreenNames, long displayOrder
     ) {
+        System.out.println("populatePresenterScreen: " + storedWizardScreenData.getScreenTag());
         experiment.appendUniqueStimuli(storedWizardScreenData.getStimuli());
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.stimulus);
@@ -557,8 +576,16 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                 final ArrayList<String[]> tempList = new ArrayList<>();
                 final String[] splitButtonArray = getStimuliButtonArray(storedWizardScreenData).split(",");
                 final int buttonArrayLength = splitButtonArray.length;
-                for (String buttonElement : splitButtonArray) {
-                    tempList.add(new String[]{"<code>_" + buttonElement + ".jpg", buttonElement + buttonArrayLength + "TouchButton", buttonElement, buttonElement + buttonArrayLength + "OverlayButton", buttonElement + buttonArrayLength + "OverlayButton", buttonElement + "ButtonGroup"});
+                if (isRatingStimuli(storedWizardScreenData)) {
+                    int index = 0;
+                    for (String buttonElement : splitButtonArray) {
+                        tempList.add(new String[]{"<code><rating_" + index + ">.jpg", buttonElement + "TouchButton", buttonElement, buttonElement + "OverlayButton", buttonElement + "OverlayButton", buttonElement + "ButtonGroup"});
+                        index++;
+                    }
+                } else {
+                    for (String buttonElement : splitButtonArray) {
+                        tempList.add(new String[]{"<code>_" + buttonElement + ".jpg", buttonElement + buttonArrayLength + "TouchButton", buttonElement, buttonElement + buttonArrayLength + "OverlayButton", buttonElement + buttonArrayLength + "OverlayButton", buttonElement + "ButtonGroup"});
+                    }
                 }
                 stimuliButtonArray = tempList.toArray(new String[0][6]);
             } else {
