@@ -649,9 +649,11 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         tableFeature.getPresenterFeatureList().add(rowFeature);
         WizardScreenData menuScreenData = storedWizardScreenData.getBackWizardScreenData();
         storedWizardScreenData.getPresenterScreen().setBackPresenter(null); // we do not use the back menu button in this screen type so we set it do null after extracting the data
-        final PresenterFeature menuStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, menuScreenData.getMenuLabel() + " (O)", "R1_MA_ENTER", "R1_MA_ENTER", "");
-        menuStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null);
-        menuStimulusButton.addFeature(FeatureType.autoNextPresenter, null, menuScreenData.getScreenTag());
+        if (menuScreenData != null) {
+            final PresenterFeature menuStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, menuScreenData.getMenuLabel() + " (O)", "R1_MA_ENTER", "R1_MA_ENTER", "");
+            menuStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null);
+            menuStimulusButton.addFeature(FeatureType.autoNextPresenter, null, menuScreenData.getScreenTag());
+        }
         final PresenterFeature previousStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Prev (left)", "R1_MA_LEFT", "R1_MA_LEFT", "");
         previousStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null);
         previousStimulusButton.addFeature(FeatureType.prevStimulus, null, "false");
