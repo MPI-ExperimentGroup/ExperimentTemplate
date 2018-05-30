@@ -986,7 +986,15 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
 //    protected void stimulusCodeImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, String codeFormat, TimedStimulusListener timedStimulusListener) {
     protected void stimulusCodeImage(final String styleName, int postLoadMs, String codeFormat, TimedStimulusListener timedStimulusListener) {
-        final String formattedCode = codeFormat.replace("<code>", stimulusProvider.getCurrentStimulus().getCode());
+        String formattedCodeTemp = codeFormat.replace("<code>", stimulusProvider.getCurrentStimulus().getCode());
+        if (stimulusProvider.getCurrentStimulus().hasRatingLabels()) {
+            int index = 0;
+            for (final String ratingLabel : stimulusProvider.getCurrentStimulus().getRatingLabels().split(",")) {
+                formattedCodeTemp = formattedCodeTemp.replace("<rating_" + index + ">", ratingLabel);
+                index++;
+            }
+        }
+        final String formattedCode = formattedCodeTemp;
         final String uniqueId = stimulusProvider.getCurrentStimulus().getUniqueId();
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeImage", formattedCode, duration.elapsedMillis());
         final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
