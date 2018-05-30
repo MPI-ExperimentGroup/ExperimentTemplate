@@ -424,6 +424,7 @@ table.stimulusContainerTab {
     width: 100vw;
     left: 0vw;
     top: 150px;
+    padding: 1vw;
 }
 .gwt-Image.leftOverlayCurtain, .gwt-Image.rightOverlayCurtain {
     width: 50%;
@@ -504,24 +505,37 @@ table.stimulusContainerTab {
     width: 30vw;
     height: 23vw;
     top: 80px;
+    padding: 1vw;
 }
 
 .gwt-Button.optionButton.topLeftOverlayButton,
+.gwt-Button.optionButton.topLeftOverlayButton.optionButtonActivated,
+.gwt-Button.optionButton.topLeftOverlayButtonIntersection,
 .gwt-Image.topLeftTouchButton {
     transform: translate(-105%,-105%);
 }
 .gwt-Button.optionButton.topRightOverlayButton,
+.gwt-Button.optionButton.topRightOverlayButton.optionButtonActivated,
+.gwt-Button.optionButton.topRightOverlayButtonIntersection,
 .gwt-Image.topRightTouchButton {
     transform: translate(5%,-105%);
 }
 .gwt-Button.optionButton.bottomLeftOverlayButton,
+.gwt-Button.optionButton.bottomLeftOverlayButton.optionButtonActivated,
+.gwt-Button.optionButton.bottomLeftOverlayButtonIntersection,
 .gwt-Image.bottomLeftTouchButton {
     transform: translate(-105%,5%);
 }
 .gwt-Button.optionButton.bottomRightOverlayButton,
+.gwt-Button.optionButton.bottomRightOverlayButton.optionButtonActivated,
+.gwt-Button.optionButton.bottomRightOverlayButtonIntersection,
 .gwt-Image.bottomRightTouchButton {
     transform: translate(5%,5%);
 }
+.gwt-Button.optionButton.topLeftOverlayButton.optionButtonActivated, .gwt-Button.optionButton.topRightOverlayButton.optionButtonActivated,
+.gwt-Button.optionButton.bottomLeftOverlayButton.optionButtonActivated, .gwt-Button.optionButton.bottomRightOverlayButton.optionButtonActivated,
+.gwt-Button.optionButton.topLeftOverlayButtonIntersection, .gwt-Button.optionButton.topRightOverlayButtonIntersection,
+.gwt-Button.optionButton.bottomLeftOverlayButtonIntersection, .gwt-Button.optionButton.bottomRightOverlayButtonIntersection,
 .gwt-Button.optionButton.topLeftOverlayButton, .gwt-Button.optionButton.topRightOverlayButton,
 .gwt-Button.optionButton.bottomLeftOverlayButton, .gwt-Button.optionButton.bottomRightOverlayButton {
     width: 47vmin;
@@ -537,11 +551,13 @@ table.stimulusContainerTab {
     height: 34vmin;
     left: 50vw;
     top: 50vh;
+    padding: 1vmin;
 }
 .borderedVideoLeft, .borderedVideoRight {
     width: 45vw;
     height: 34vw;
     top: 80px;
+    padding: 1vw;
 }
 .topLeftTouchButton,
 .topRightTouchButton,
@@ -550,7 +566,6 @@ table.stimulusContainerTab {
 .left3TouchButton, .centre3TouchButton, .right3TouchButton,
 .borderedVideoLeft, .borderedVideoRight, .borderedVideoFull {
     position: fixed;
-    padding: 1vw;
     border-color: $primaryColour2;
     border-radius: 15px;
     outline: none;
