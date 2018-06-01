@@ -49,8 +49,7 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
         if (stimuliStateSnapshot.trim().isEmpty()) {
             this.bandIndexScore = 0;
             this.isCorrectCurrentResponse = null;
-            this.bandVisitCounter = new Integer[this.numberOfBands];
-
+            
             this.enoughFineTuningStimulae = true;
             this.champion = false;
             this.looser = false;
@@ -62,6 +61,7 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
             try {
                 reader.parseWordsInputCSVString(this.numberOfBands);
                 this.stimuliPool = reader.getStimuliByBands();
+                this.initialiseNextFineTuningTuple();
             } catch (Exception exReading) {
                 this.exceptionLogging(exReading);
             }
@@ -74,6 +74,10 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
             }
         }
 
+    }
+    
+    public ArrayList<ArrayList<PeabodyStimulus>> getStimuliPool(){
+        return this.stimuliPool;
     }
 
     // in peabody experiment tupel contains 12 units (a unit/stimulus is picure + audio)
@@ -108,7 +112,7 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
                 }
             } else {
                 if (this.currentBandIndex == 0) {
-                    this.looser = false;
+                    this.looser = true;
                     this.bandIndexScore = 0;
                     retVal = false;
                 } else {
@@ -133,10 +137,14 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
                 retVal = false;
             }
         } else {
-            this.finalScore = this.getFinalScore(this.responseRecord);
+            this.finalScore = this.computeFinalScore(this.responseRecord);
         }
 
         return retVal;
+    }
+    
+    public int getFinalScore(){
+        return this.finalScore;
     }
 
     @Override
@@ -156,7 +164,7 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
 
     }
 
-    public int getFinalScore(ArrayList<BookkeepingStimulus<PeabodyStimulus>> recordi) {
+    private int computeFinalScore(ArrayList<BookkeepingStimulus<PeabodyStimulus>> recordi) {
         int lastIndex = recordi.size() - 1;
         BookkeepingStimulus<PeabodyStimulus> lastBStimulus = recordi.get(lastIndex);
         String audioPath = lastBStimulus.getStimulus().getAudio();

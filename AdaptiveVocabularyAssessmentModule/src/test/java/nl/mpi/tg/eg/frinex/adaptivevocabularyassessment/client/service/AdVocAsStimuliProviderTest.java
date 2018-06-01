@@ -92,7 +92,6 @@ public class AdVocAsStimuliProviderTest {
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
         
         assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
@@ -143,7 +142,6 @@ public class AdVocAsStimuliProviderTest {
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
         
         assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
@@ -194,7 +192,6 @@ public class AdVocAsStimuliProviderTest {
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
 
         assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
@@ -238,7 +235,6 @@ public class AdVocAsStimuliProviderTest {
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
         provider.hasNextStimulus(0);
         provider.nextStimulus(0);
@@ -342,7 +338,6 @@ public class AdVocAsStimuliProviderTest {
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
         assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
         provider.hasNextStimulus(0);
@@ -398,7 +393,6 @@ public class AdVocAsStimuliProviderTest {
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
         assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
 
@@ -453,7 +447,6 @@ public class AdVocAsStimuliProviderTest {
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
         assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
 
@@ -714,7 +707,6 @@ public class AdVocAsStimuliProviderTest {
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
         assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
         boolean result = provider.hasNextStimulus(0);// does not depend on increment
@@ -840,7 +832,6 @@ public class AdVocAsStimuliProviderTest {
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
         assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
         provider.hasNextStimulus(0);
@@ -903,7 +894,6 @@ public class AdVocAsStimuliProviderTest {
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
         assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
 
@@ -1008,7 +998,6 @@ public class AdVocAsStimuliProviderTest {
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
         assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
 
@@ -1158,7 +1147,6 @@ public class AdVocAsStimuliProviderTest {
         provider.setnonwordsPerBlock(this.nonwordsPerBlock);
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
-        provider.setfineTuningTupleLength("4");
         provider.initialiseStimuliState("");
         assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
 
