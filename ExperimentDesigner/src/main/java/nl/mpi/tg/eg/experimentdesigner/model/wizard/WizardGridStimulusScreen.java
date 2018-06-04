@@ -55,6 +55,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         setRewardImage(null);
         setIntroAudioDelay(0);
         setSelectedPause(0);
+        setRatingStimuli(false);
         this.wizardScreenData.setButtonLabelEventTag("");
         this.wizardScreenData.setCentreScreen(true);
     }
@@ -134,6 +135,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         setRandomiseStimuli(randomiseStimuli);
         this.wizardScreenData.setCentreScreen(centreScreen);
         setStimuliSet(stimuliStringArray, tagNames);
+        setRatingStimuli(false);
     }
 
     final public void setRandomiseStimuli(boolean randomiseStimuli) {
