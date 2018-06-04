@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
 import java.util.ArrayList;
 import java.util.Random;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.peabody.PeabodyStimulus;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -200,70 +201,43 @@ public class PeabodyStimuliProviderTest {
     }
 
     private PeabodyStimuliProvider roundWithErrors(PeabodyStimuliProvider provider, int lowerErrorBound, int upperErrorBound, Random rnd, int amountOfBandsToPass, int stimuliPerBand, int initIndex) {
-        ArrayList<Integer> erronenousStimuli = new ArrayList<Integer>();
+        ArrayList<Integer> erroneousStimuli = new ArrayList<Integer>();
+        int errorCounter = 0;
         for (int i = 0; i < amountOfBandsToPass * stimuliPerBand; i++) {
-            assertTrue(String.valueOf(i), provider.hasNextStimulus(0));
-//            this.peabodyStepIsCorrect(provider, erronenousStimuli, i, lowerErrorBound, upperErrorBound, rnd, stimuliPerBand, initIndex);
-            int mod = i % stimuliPerBand;
+
+            assertTrue(String.valueOf(i) + " " + String.valueOf(amountOfBandsToPass) + " " + String.valueOf(stimuliPerBand) + " " + String.valueOf(errorCounter), provider.hasNextStimulus(0));
+
+            int mod = (initIndex + i) % stimuliPerBand;
 
             if (mod == 0) {
                 // there will be the new page next
                 if (rnd != null) {
                     int limit = this.randomBetweenIncl(rnd, lowerErrorBound, upperErrorBound);
-                    erronenousStimuli = this.initialiseRandomIndexArray(limit, stimuliPerBand);
+                    erroneousStimuli = this.initialiseRandomIndexArray(limit, stimuliPerBand);
                 } else {
-                    erronenousStimuli = this.initialiseRandomIndexArray(upperErrorBound, stimuliPerBand);
+                    erroneousStimuli = this.initialiseRandomIndexArray(upperErrorBound, stimuliPerBand);
                 }
             }
-
-            provider.hasNextStimulus(0); // check if there tuple is finished and initiates a new triple if to be continued
-            provider.nextStimulus(0);  // put the first stimuli in the leftwover tuple on top of the record array
-            assertEquals(initIndex + i, provider.getCurrentStimulusIndex());
-            PeabodyStimulus stimulus = provider.getCurrentStimulus(); // picks the  top stimulus from the record array
-
-            if (erronenousStimuli.contains(mod)) {
-
-                String correctResponse = stimulus.getCorrectResponses();
-                int corrIndex = Integer.parseInt(correctResponse);
-                int distortedIndex;
-                if (corrIndex < 4) {
-                    distortedIndex = corrIndex + 1;
-                } else {
-                    distortedIndex = 1;
-                }
-                String distortedResponse = (new Integer(distortedIndex)).toString();
-                boolean worngAnswer = provider.isCorrectResponse(stimulus, distortedResponse);
-                assertFalse(worngAnswer);
-            } else {
-                boolean correctAnswer = provider.isCorrectResponse(stimulus, stimulus.getCorrectResponses());
-                assertTrue(correctAnswer);
+            
+            boolean isCorrect = this.peabodyStepIsCorrect(provider, erroneousStimuli, initIndex + i, stimuliPerBand);
+            if (!isCorrect) {
+                errorCounter++;
             }
-
         }
         return provider;
     }
 
-    private boolean peabodyStepIsCorrect(PeabodyStimuliProvider provider, ArrayList<Integer> erronenousStimuli, int stepCounter, int lowerErrorBound, int upperErrorBound, Random rnd, int stimuliPerBand, int initIndex) {
+    private boolean peabodyStepIsCorrect(PeabodyStimuliProvider provider, ArrayList<Integer> erroneousStimuli, int stimulusIndex, int stimuliPerBand) {
 
         boolean retVal = true;
-        int mod = stepCounter % stimuliPerBand;
 
-        if (mod == 0) {
-            // there will be the new page next
-            if (rnd != null) {
-                int limit = this.randomBetweenIncl(rnd, lowerErrorBound, upperErrorBound);
-                erronenousStimuli = this.initialiseRandomIndexArray(limit, stimuliPerBand);
-            } else {
-                erronenousStimuli = this.initialiseRandomIndexArray(upperErrorBound, stimuliPerBand);
-            }
-        }
-
+        int mod = stimulusIndex % stimuliPerBand;
+        
         provider.nextStimulus(0);  // put the first stimuli in the leftwover tuple on top of the record array
-        assertEquals(initIndex + stepCounter, provider.getCurrentStimulusIndex());
+        assertEquals(stimulusIndex, provider.getCurrentStimulusIndex());
         PeabodyStimulus stimulus = provider.getCurrentStimulus(); // picks the  top stimulus from the record array
 
-        if (erronenousStimuli.contains(mod)) {
-
+        if (erroneousStimuli.contains(mod)) {
             String correctResponse = stimulus.getCorrectResponses();
             int corrIndex = Integer.parseInt(correctResponse);
             int distortedIndex;
@@ -289,7 +263,7 @@ public class PeabodyStimuliProviderTest {
      */
     @Test
     public void testRoundLooser_Full() {
-        System.out.println("hasNextStimulus, nextStimulus, getCurrentStimulus, isCorrectResponse");
+        System.out.println("testRoundLooser_Full: hasNextStimulus, nextStimulus, getCurrentStimulus, isCorrectResponse");
         String stimuliStateSnapshot = "";
         int nOfBands = Integer.parseInt(this.numberOfBands);
         int sBand = Integer.parseInt(this.startBand);
@@ -315,7 +289,7 @@ public class PeabodyStimuliProviderTest {
 
     @Test
     public void testRoundLooser_Fixed() {
-        System.out.println("hasNextStimulus, nextStimulus, getCurrentStimulus, isCorrectResponse");
+        System.out.println("testRoundLooser_Fixed: hasNextStimulus, nextStimulus, getCurrentStimulus, isCorrectResponse");
         String stimuliStateSnapshot = "";
         int nOfBands = Integer.parseInt(this.numberOfBands);
         int sBand = Integer.parseInt(this.startBand);
@@ -393,18 +367,21 @@ public class PeabodyStimuliProviderTest {
 
         ArrayList<Integer> erronenousStimuli = new ArrayList<Integer>();
         int stepCounter = 0;
-        int errorCounter=0;
+        int errorCounter = 0;
         while (provider.hasNextStimulus(0)) {
             //PeabodyStep(PeabodyStimuliProvider provider, ArrayList<Integer> erronenousStimuli, int stepCounter, int lowerErrorBound, int upperErrorBound, Random rnd, int stimuliPerBand, int initIndex)
-            boolean isCorrect = this.peabodyStepIsCorrect(provider, erronenousStimuli, stepCounter, 0, 12, rnd, stimuliPerBand, 0);
+            boolean isCorrect = this.peabodyStepIsCorrect(provider, erronenousStimuli, stepCounter, stimuliPerBand);
             if (!isCorrect) {
                 errorCounter++;
             }
             stepCounter++;
-            
-        }
 
-        
+        }
+        ArrayList<BookkeepingStimulus<PeabodyStimulus>> recordi = provider.getResponseRecord();
+        String audioString = recordi.get(recordi.size()-1).getStimulus().getAudio();
+        String[] parts = audioString.split("_");
+        int index =  Integer.parseInt(parts[0]);
+        assertEquals(index-errorCounter, provider.getFinalScore());
     }
 
     int randomBetweenIncl(Random rnd, int min, int max) {
