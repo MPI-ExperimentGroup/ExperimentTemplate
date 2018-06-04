@@ -88,7 +88,7 @@ public class DobesAnnotator {
         wizardData.setObfuscateScreenNames(false);
         final WizardVideoTimelineScreen timelineScreen = new WizardVideoTimelineScreen("Annotation Timeline Panel");
         timelineScreen.getWizardScreenData().setStimuliCount(10);
-        timelineScreen.getWizardScreenData().setScreenMediaPath("http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4");
+        timelineScreen.getWizardScreenData().setScreenMediaPath("http://corpus1.mpi.nl/media-archive/Info/enctest/aspen");
         timelineScreen.getWizardScreenData().setStimuli(addDobesStimuli());
         timelineScreen.getWizardScreenData().setStimuliRandomTags(new String[]{"videotag"});
         final WizardAboutScreen aboutScreen = new WizardAboutScreen(true);
