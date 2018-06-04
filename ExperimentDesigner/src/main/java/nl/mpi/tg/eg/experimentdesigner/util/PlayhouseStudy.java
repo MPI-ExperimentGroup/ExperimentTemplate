@@ -51,7 +51,7 @@ public class PlayhouseStudy {
         wizardData.setTextFontSize(17);
         wizardData.setObfuscateScreenNames(false);
 
-        final WizardTextScreen bluetoothInstructionsScreen = new WizardTextScreen("Bluetooth Instructions", "When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A.", "Volgende");
+        final WizardTextScreen bluetoothInstructionsScreen = new WizardTextScreen("Instructions", "Some useful instructions", "Volgende");
         bluetoothInstructionsScreen.setNextHotKey("ENTER");
         wizardData.addScreen(bluetoothInstructionsScreen);
 
@@ -96,8 +96,10 @@ public class PlayhouseStudy {
 //        introductionAudio2.setStyleName("titleBarButton");
 //        introductionAudio3.setStyleName("titleBarButton");
         String[][][][] testList = new String[][][][]{
-            {{{"Practice", "zoomToGarden", "Practice", "balloon.jpg", "AudioAB", "1000", "chimes_welldoneditbetekend", null}, {}},
-            {{"P_01", "P_01.jpg"}, {"P_02", "P_02.jpg"}, {"P_03", "P_03.jpg"}, {"P_04", "P_04.jpg"}}},
+            {{{"Practice1", "zoomToGarden", "Practice", "balloon.jpg", "AudioAB", "1000", "chimes_welldoneditbetekend", null}, {}},
+            {{"P_01", "P_01.jpg"}, {"P_02", "P_02.jpg"}, {"P_03", "P_03.jpg"}}},
+            {{{"Practice2", "zoomToGarden", "Practice", "balloon.jpg", "AudioAB", "1000", "chimes_welldoneditbetekend", null}, {}},
+            {{"P_04", "P_04.jpg"}}},
             //            {{{"PracticeA", "zoomToGarden", "PracticeA", null, "AudioAB", "1000", null, null}, {}},
             //            {{"P_01", "P_01.jpg"}, {"P_02", "P_02.jpg"}, {"P_03", "P_03.jpg"}}},
             //            {{{"PracticeB", null, "PracticeB", "balloon.jpg", null, "1000", "chimes_welldoneditbetekend", null}, {}},
