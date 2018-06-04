@@ -6,14 +6,14 @@
         <field controlledMessage="Voer een nummer (000-199)." controlledRegex="[01]?[0-9]?[0-9]" postName="groupCode" preventServerDuplicates="false" registrationField="Group Code"/>
         <field controlledMessage="Kies en experiment." controlledRegex="1|2|3|4" postName="experimentVersion" preventServerDuplicates="false" registrationField="Experiment Version"/>
     </metadata>
-    <presenter back="Menu" menuLabel="Bluetooth Instructions" type="text" self="Bluetooth_Instructions" title="Bluetooth Instructions">
-        <htmlText featureText="When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A."/>
+    <presenter back="Menu" menuLabel="Instructions" type="text" self="Instructions" title="Instructions">
+        <htmlText featureText="Some useful instructions"/>
         <targetButton featureText="Volgende" hotKey="ENTER" target="Select_Participant"/>
     </presenter>
     <presenter menuLabel="Menu" type="menu" self="Menu" title="Menu">
         <allMenuItems/>
     </presenter>
-    <presenter back="Bluetooth_Instructions" menuLabel="Select Participant" type="metadata" self="Select_Participant" title="Select Participant">
+    <presenter back="Instructions" menuLabel="Select Participant" type="metadata" self="Select_Participant" title="Select Participant">
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="Begin a new interview with a new participant"/>
@@ -30,7 +30,7 @@
     <presenter back="Select_Participant" menuLabel="Select Participant" next="Gegevens" type="metadata" self="SelectUser" title="Select Participant">
         <selectUserMenu/>
     </presenter>
-    <presenter back="Select_Participant" menuLabel="Terug" next="Practice" type="metadata" self="Gegevens" title="Gegevens">
+    <presenter back="Select_Participant" menuLabel="Terug" next="Practice1" type="metadata" self="Gegevens" title="Gegevens">
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="datOfBirth"/>
         <metadataField fieldName="groupCode"/>
@@ -43,17 +43,18 @@
         </saveMetadataButton>
     </presenter>
     <presenter back="Menu" menuLabel="TestMenu" type="menu" self="TestMenu" title="TestMenu">
-        <menuItem featureText="Practice" target="Practice"/>
+        <menuItem featureText="Practice1" target="Practice1"/>
+        <menuItem featureText="Practice2" target="Practice2"/>
         <menuItem featureText="Matching1" target="Matching1"/>
         <menuItem featureText="Matching2" target="Matching2"/>
         <menuItem featureText="Test3" target="Test3"/>
         <menuItem featureText="Test4" target="Test4"/>
         <menuItem featureText="Attic" target="Attic"/>
     </presenter>
-    <presenter menuLabel="Practice" next="Matching1" type="stimulus" self="Practice" title="Practice">
+    <presenter menuLabel="Practice1" next="Practice2" type="stimulus" self="Practice1" title="Practice1">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToGarden">
             <pause msToNext="2000">
-                <loadStimulus eventTag="Practice" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+                <loadStimulus eventTag="Practice1" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                     <hasMoreStimulus>
                         <backgroundImage msToNext="0" src="" styleName=""/>
                         <clearPage styleName="fullScreenWidth"/>
@@ -165,7 +166,128 @@
                     </endOfStimulus>
                     <randomGrouping/>
                     <stimuli>
-                        <tag>Practice</tag>
+                        <tag>Practice1</tag>
+                    </stimuli>
+                </loadStimulus>
+            </pause>
+        </backgroundImage>
+    </presenter>
+    <presenter menuLabel="Practice2" next="Matching1" type="stimulus" self="Practice2" title="Practice2">
+        <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToGarden">
+            <pause msToNext="2000">
+                <loadStimulus eventTag="Practice2" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+                    <hasMoreStimulus>
+                        <backgroundImage msToNext="0" src="" styleName=""/>
+                        <clearPage styleName="fullScreenWidth"/>
+                        <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
+                            <backgroundImage msToNext="0" src="" styleName=""/>
+                            <disableStimulusButtons/>
+                            <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" showPlaybackIndicator="false">
+                                <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" showPlaybackIndicator="false">
+                                    <enableStimulusButtons/>
+                                    <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
+                                    <pause msToNext="3000">
+                                        <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" showPlaybackIndicator="false">
+                                            <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" showPlaybackIndicator="false">
+                                                <disableStimulusButtons/>
+                                                <cancelPauseTimers/>
+                                                <clearPage styleName=""/>
+                                                <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                                <pause msToNext="1000">
+                                                    <touchInputReportSubmit/>
+                                                    <nextStimulus repeatIncorrect="false"/>
+                                                </pause>
+                                            </stimulusCodeAudio>
+                                        </stimulusCodeAudio>
+                                    </pause>
+                                </stimulusCodeAudio>
+                            </stimulusCodeAudio>
+                        </triggerListener>
+                        <disableStimulusButtons/>
+                        <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton">
+                            <touchInputStimulusButton featureText="left" listenerId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton">
+                                <disableStimulusButtons/>
+                                <cancelPauseTimers/>
+                                <pause msToNext="1000">
+                                    <clearPage styleName=""/>
+                                    <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" showPlaybackIndicator="false">
+                                        <touchInputReportSubmit/>
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </stimulusCodeAudio>
+                                </pause>
+                            </touchInputStimulusButton>
+                            <disableStimulusButtons/>
+                            <trigger listenerId="imageLoadedAction"/>
+                        </stimulusCodeImage>
+                        <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton">
+                            <touchInputStimulusButton featureText="centre" listenerId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton">
+                                <disableStimulusButtons/>
+                                <cancelPauseTimers/>
+                                <pause msToNext="1000">
+                                    <clearPage styleName=""/>
+                                    <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" showPlaybackIndicator="false">
+                                        <touchInputReportSubmit/>
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </stimulusCodeAudio>
+                                </pause>
+                            </touchInputStimulusButton>
+                            <disableStimulusButtons/>
+                            <trigger listenerId="imageLoadedAction"/>
+                        </stimulusCodeImage>
+                        <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton">
+                            <touchInputStimulusButton featureText="right" listenerId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton">
+                                <disableStimulusButtons/>
+                                <cancelPauseTimers/>
+                                <pause msToNext="1000">
+                                    <clearPage styleName=""/>
+                                    <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" showPlaybackIndicator="false">
+                                        <touchInputReportSubmit/>
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </stimulusCodeAudio>
+                                </pause>
+                            </touchInputStimulusButton>
+                            <disableStimulusButtons/>
+                            <trigger listenerId="imageLoadedAction"/>
+                        </stimulusCodeImage>
+                        <touchInputCaptureStart msToNext="-1" showControls="false"/>
+                        <table showOnBackButton="true" styleName="titleBarButton">
+                            <row>
+                                <column styleName="">
+                                    <actionButton featureText="TestMenu (O)" eventTag="R1_MA_ENTER" hotKey="R1_MA_ENTER" styleName="">
+                                        <touchInputReportSubmit/>
+                                        <autoNextPresenter target="TestMenu"/>
+                                    </actionButton>
+                                </column>
+                                <column styleName="">
+                                    <actionButton featureText="Prev (left)" eventTag="R1_MA_LEFT" hotKey="R1_MA_LEFT" styleName="">
+                                        <touchInputReportSubmit/>
+                                        <prevStimulus repeatIncorrect="false"/>
+                                    </actionButton>
+                                </column>
+                                <column styleName="">
+                                    <actionButton featureText="Repeat (A)" eventTag="R1_MA_A" hotKey="R1_MA_A" styleName="">
+                                        <touchInputReportSubmit/>
+                                        <showStimulus/>
+                                    </actionButton>
+                                </column>
+                                <column styleName="">
+                                    <actionButton featureText="Next (right)" eventTag="R1_MA_RIGHT" hotKey="R1_MA_RIGHT" styleName="">
+                                        <touchInputReportSubmit/>
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </actionButton>
+                                </column>
+                            </row>
+                        </table>
+                    </hasMoreStimulus>
+                    <endOfStimulus>
+                        <autoNextPresenter/>
+                    </endOfStimulus>
+                    <randomGrouping/>
+                    <stimuli>
+                        <tag>Practice2</tag>
                     </stimuli>
                 </loadStimulus>
             </pause>
@@ -671,7 +793,7 @@
             </backgroundImage>
         </backgroundImage>
     </presenter>
-    <presenter menuLabel="Einde van het experiment" next="Bluetooth_Instructions" type="transmission" self="completion" title="Einde van het experiment">
+    <presenter menuLabel="Einde van het experiment" next="Instructions" type="transmission" self="completion" title="Einde van het experiment">
         <sendAllData>
             <onSuccess>
                 <htmlText featureText="Dit is het einde van het experiment.&lt;br/&gt;Hartelijk dank voor uw deelname! &lt;br/&gt;&lt;br/&gt;"/>
@@ -679,7 +801,7 @@
                 <addPadding/>
                 <htmlText featureText="&lt;br/&gt;Het bovenstaande nummer is het bewijs dat u het experiment heeft voltooid, en is vereist voor het in orde maken van uw vergoeding."/>
                 <addPadding/>
-                <eraseUsersDataButton featureText="Opnieuw beginnen" target="Bluetooth_Instructions"/>
+                <eraseUsersDataButton featureText="Opnieuw beginnen" target="Instructions"/>
             </onSuccess>
             <onError>
                 <plainText featureText="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw."/>
@@ -691,10 +813,10 @@
         <versionData/>
     </presenter>
     <stimuli>
-        <stimulus audioPath="P_01" code="P_01" identifier="P_01" imagePath="P_01.jpg" pauseMs="0" tags="Practice"/>
-        <stimulus audioPath="P_02" code="P_02" identifier="P_02" imagePath="P_02.jpg" pauseMs="0" tags="Practice"/>
-        <stimulus audioPath="P_03" code="P_03" identifier="P_03" imagePath="P_03.jpg" pauseMs="0" tags="Practice"/>
-        <stimulus audioPath="P_04" code="P_04" identifier="P_04" imagePath="P_04.jpg" pauseMs="0" tags="Practice"/>
+        <stimulus audioPath="P_01" code="P_01" identifier="P_01" imagePath="P_01.jpg" pauseMs="0" tags="Practice1"/>
+        <stimulus audioPath="P_02" code="P_02" identifier="P_02" imagePath="P_02.jpg" pauseMs="0" tags="Practice1"/>
+        <stimulus audioPath="P_03" code="P_03" identifier="P_03" imagePath="P_03.jpg" pauseMs="0" tags="Practice1"/>
+        <stimulus audioPath="P_04" code="P_04" identifier="P_04" imagePath="P_04.jpg" pauseMs="0" tags="Practice2"/>
         <stimulus audioPath="M_01_A" code="M_01_A" identifier="M_01_A" imagePath="M_01_A.jpg" pauseMs="0" tags="Matching1"/>
         <stimulus audioPath="M_02_B" code="M_02_B" identifier="M_02_B" imagePath="M_02_B.jpg" pauseMs="0" tags="Matching1"/>
         <stimulus audioPath="M_03_N" code="M_03_N" identifier="M_03_N" imagePath="M_03_N.jpg" pauseMs="0" tags="Matching1"/>
