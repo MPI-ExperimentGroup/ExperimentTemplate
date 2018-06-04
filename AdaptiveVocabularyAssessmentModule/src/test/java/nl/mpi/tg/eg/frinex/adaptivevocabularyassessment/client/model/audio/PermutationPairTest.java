@@ -43,19 +43,19 @@ public class PermutationPairTest {
     private final LinkedHashMap<Integer, Trial> hashedTrials;
     private final ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> trialMatrix;
     private final ArrayList<Integer> requiredLengths = new ArrayList<Integer>(Arrays.asList(3, 4, 5, 6));
-    private final ArrayList<TrialCondition> requiredTrialTypes = new ArrayList<TrialCondition>(Arrays.asList(TrialCondition.TARGET_ONLY, TrialCondition.TARGET_AND_FOIL, TrialCondition.NO_TARGET, TrialCondition.NO_TARGET));
+    private final ArrayList<TrialCondition> requiredTrialTypes = new ArrayList<TrialCondition>(Arrays.asList(TrialCondition.TARGET_ONLY, TrialCondition.TARGET_AND_FOIL, TrialCondition.NO_TARGET));
     private final ArrayList<ArrayList<Integer>> allLengthPermuations;
     private final ArrayList<ArrayList<TrialCondition>> allConditionPermuations;
-    private final int tupleSize = 4;
+    private final int tupleSize = 3;
 
     public PermutationPairTest() {
         this.reader.readTrialsAsCsv(TestConfigurationConstants.AUDIO_STIMULI_DIR);
         this.hashedTrials = this.reader.getHashedTrials();
         this.trialMatrix = Trial.prepareTrialMatrix(this.hashedTrials, TestConfigurationConstants.AUDIO_NUMBER_OF_BANDS, TestConfigurationConstants.AUDIO_MAX_LENGTH);
         UtilsList<Integer> utilInt = new UtilsList<Integer>();
-        this.allLengthPermuations = utilInt.generatePermutations(this.requiredLengths);
+        this.allLengthPermuations = utilInt.generatePermutations(this.requiredLengths, this.tupleSize);
         UtilsList<TrialCondition> utilCond = new UtilsList<TrialCondition>();
-        this.allConditionPermuations = utilCond.generatePermutations(this.requiredTrialTypes);
+        this.allConditionPermuations = utilCond.generatePermutations(this.requiredTrialTypes, this.tupleSize);
     }
 
     @BeforeClass
@@ -151,7 +151,7 @@ public class PermutationPairTest {
 
                     }
                 }
-                assertEquals(2, countNoTarget);
+                assertEquals(1, countNoTarget);
                 assertEquals(1, countTargetOnly);
                 assertEquals(1, countTargetAndFoil);
 
@@ -171,20 +171,18 @@ public class PermutationPairTest {
     @Test
     public void testToString() {
         System.out.println("toString with null trial List");
-        ArrayList<Integer> lengths = new ArrayList<Integer>(4);
-        lengths.add(4);
+        ArrayList<Integer> lengths = new ArrayList<Integer>(3);
         lengths.add(3);
         lengths.add(5);
         lengths.add(6);
 
-        ArrayList<TrialCondition> conditions = new ArrayList<TrialCondition>(4);
-        conditions.add(TrialCondition.NO_TARGET);
+        ArrayList<TrialCondition> conditions = new ArrayList<TrialCondition>(3);
         conditions.add(TrialCondition.TARGET_AND_FOIL);
         conditions.add(TrialCondition.NO_TARGET);
         conditions.add(TrialCondition.TARGET_ONLY);
 
         PermutationPair instance = new PermutationPair(conditions, lengths, null);
-        String expResult = "{fields=[trialConditions, trialLengths, trials], trialConditions=[NO_TARGET, TARGET_AND_FOIL, NO_TARGET, TARGET_ONLY], trialLengths=[4, 3, 5, 6], trials=null}";
+        String expResult = "{fields=[trialConditions, trialLengths, trials], trialConditions=[TARGET_AND_FOIL, NO_TARGET, TARGET_ONLY], trialLengths=[3, 5, 6], trials=null}";
         String result = instance.toString();
         assertEquals(expResult, result);
     }
@@ -196,14 +194,12 @@ public class PermutationPairTest {
     public void testToObject() {
         System.out.println("toObject");
 
-        ArrayList<TrialCondition> conditions = new ArrayList<TrialCondition>(4);
-        conditions.add(TrialCondition.NO_TARGET);
+        ArrayList<TrialCondition> conditions = new ArrayList<TrialCondition>(3);
         conditions.add(TrialCondition.TARGET_AND_FOIL);
         conditions.add(TrialCondition.NO_TARGET);
         conditions.add(TrialCondition.TARGET_ONLY);
 
-        ArrayList<Integer> lengths = new ArrayList<Integer>(4);
-        lengths.add(4);
+        ArrayList<Integer> lengths = new ArrayList<Integer>(3);
         lengths.add(3);
         lengths.add(5);
         lengths.add(6);
@@ -227,14 +223,12 @@ public class PermutationPairTest {
     @Test
     public void testGetTrialConditions() {
         System.out.println("getTrialConditions");
-        ArrayList<Integer> lengths = new ArrayList<Integer>(4);
-        lengths.add(4);
+        ArrayList<Integer> lengths = new ArrayList<Integer>(3);
         lengths.add(3);
         lengths.add(5);
         lengths.add(6);
 
-        ArrayList<TrialCondition> conditions = new ArrayList<TrialCondition>(4);
-        conditions.add(TrialCondition.NO_TARGET);
+        ArrayList<TrialCondition> conditions = new ArrayList<TrialCondition>(3);
         conditions.add(TrialCondition.TARGET_AND_FOIL);
         conditions.add(TrialCondition.NO_TARGET);
         conditions.add(TrialCondition.TARGET_ONLY);
@@ -252,14 +246,12 @@ public class PermutationPairTest {
     @Test
     public void testGetTrialLengths() {
         System.out.println("getTrialLengths");
-        ArrayList<Integer> lengths = new ArrayList<Integer>(4);
-        lengths.add(4);
+        ArrayList<Integer> lengths = new ArrayList<Integer>(3);
         lengths.add(3);
         lengths.add(5);
         lengths.add(6);
 
-        ArrayList<TrialCondition> conditions = new ArrayList<TrialCondition>(4);
-        conditions.add(TrialCondition.NO_TARGET);
+        ArrayList<TrialCondition> conditions = new ArrayList<TrialCondition>(3);
         conditions.add(TrialCondition.TARGET_AND_FOIL);
         conditions.add(TrialCondition.NO_TARGET);
         conditions.add(TrialCondition.TARGET_ONLY);
@@ -277,14 +269,12 @@ public class PermutationPairTest {
     @Test
     public void testGetTrials() {
         System.out.println("getTrials");
-        ArrayList<Integer> lengths = new ArrayList<Integer>(4);
-        lengths.add(4);
+        ArrayList<Integer> lengths = new ArrayList<Integer>(3);
         lengths.add(3);
         lengths.add(5);
         lengths.add(6);
 
-        ArrayList<TrialCondition> conditions = new ArrayList<TrialCondition>(4);
-        conditions.add(TrialCondition.NO_TARGET);
+        ArrayList<TrialCondition> conditions = new ArrayList<TrialCondition>(3);
         conditions.add(TrialCondition.TARGET_AND_FOIL);
         conditions.add(TrialCondition.NO_TARGET);
         conditions.add(TrialCondition.TARGET_ONLY);
@@ -302,14 +292,12 @@ public class PermutationPairTest {
     @Test
     public void testIsAvailable() {
         System.out.println("isAvailable");
-        ArrayList<Integer> lengths = new ArrayList<Integer>(4);
-        lengths.add(4);
+        ArrayList<Integer> lengths = new ArrayList<Integer>(3);
         lengths.add(3);
         lengths.add(5);
         lengths.add(6);
 
-        ArrayList<TrialCondition> conditions = new ArrayList<TrialCondition>(4);
-        conditions.add(TrialCondition.NO_TARGET);
+        ArrayList<TrialCondition> conditions = new ArrayList<TrialCondition>(3);
         conditions.add(TrialCondition.TARGET_AND_FOIL);
         conditions.add(TrialCondition.NO_TARGET);
         conditions.add(TrialCondition.TARGET_ONLY);
@@ -340,7 +328,7 @@ public class PermutationPairTest {
             assertFalse(permPair.isAvailable());
             count++;
         }
-        
+
     }
 
 }

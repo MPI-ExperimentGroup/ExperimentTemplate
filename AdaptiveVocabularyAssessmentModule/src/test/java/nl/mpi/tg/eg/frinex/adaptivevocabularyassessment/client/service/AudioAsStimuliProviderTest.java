@@ -18,7 +18,6 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Set;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
@@ -65,7 +64,7 @@ public class AudioAsStimuliProviderTest {
         this.instance.setnumberOfBands(Integer.toString(TestConfigurationConstants.AUDIO_NUMBER_OF_BANDS));
         this.instance.setstartBand(Integer.toString(TestConfigurationConstants.AUDIO_START_BAND));
         this.instance.setrequiredLengths(TestConfigurationConstants.AUDIO_REQUIRED_LENGTHS);
-        this.instance.setrequiredTrialTypes("TARGET_ONLY,NO_TARGET,TARGET_AND_FOIL,NO_TARGET");
+        this.instance.setrequiredTrialTypes(TestConfigurationConstants.AUDIO_REQUIRED_TYPES);
         this.instance.setstimuliDir(TestConfigurationConstants.AUDIO_STIMULI_DIR);
         this.instance.setmaxDurationMin(TestConfigurationConstants.AUDIO_MAX_DURATION_MINUTES);
         this.instance.setfirstStimulusDurationMs(TestConfigurationConstants.AUDIO_FIRST_STIMULUS_DURATION);
@@ -102,11 +101,10 @@ public class AudioAsStimuliProviderTest {
         assertEquals(6, lngths.get(3).intValue());
 
         ArrayList<TrialCondition> types = this.instance.requiredTrialTypes();
-        assertEquals(4, types.size());
+        assertEquals(3, types.size());
         assertEquals("TARGET_ONLY", types.get(0).toString());
         assertEquals("NO_TARGET", types.get(1).toString());
         assertEquals("TARGET_AND_FOIL", types.get(2).toString());
-        assertEquals("NO_TARGET", types.get(3).toString());
     }
 
     /**
@@ -805,7 +803,7 @@ public class AudioAsStimuliProviderTest {
             }
         }
 
-        assertEquals(2, countNoTarget);
+        assertEquals(1, countNoTarget);
         assertEquals(1, countTargetOnly);
         assertEquals(1, countTargetAndFoil);
 

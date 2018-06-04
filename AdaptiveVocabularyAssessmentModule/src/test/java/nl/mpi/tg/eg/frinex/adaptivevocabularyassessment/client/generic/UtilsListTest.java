@@ -91,8 +91,8 @@ public class UtilsListTest {
         candidate2.add(2, 4);
         candidate2.add(3, 5);
 
-        assertEquals(true, instance.listElementExists(source, candidate1));
-        assertEquals(false, instance.listElementExists(source, candidate2));
+        assertTrue(instance.listElementExists(source, candidate1));
+        assertFalse(instance.listElementExists(source, candidate2));
     }
 
     /**
@@ -143,16 +143,19 @@ public class UtilsListTest {
      * Test of generatePermutations method, of class UtilsList.
      */
     @Test
-    public void testGeneratePermutations() {
-        System.out.println("generatePermutations");
+    public void testGeneratePermutations_4() {
+        System.out.println("generatePermutations. numeric length 4");
         UtilsList<Integer> instance = new UtilsList<Integer>();
         ArrayList<Integer> generatorSet = new ArrayList<Integer>(4);
         generatorSet.add(0, 3);
         generatorSet.add(1, 4);
         generatorSet.add(2, 5);
         generatorSet.add(3, 6);
-        ArrayList<ArrayList<Integer>> result = instance.generatePermutations(generatorSet);
-        assertEquals(2 * 3 * 4, result.size());
+        ArrayList<ArrayList<Integer>> result = instance.generatePermutations(generatorSet, 4);
+        assertEquals(4*3*2*1, result.size());
+        for (ArrayList<Integer> perm:result ) {
+            assertEquals(4, perm.size());
+        }
 
         assertTrue(instance.listElementExists(result, generatorSet));
         
@@ -170,7 +173,63 @@ public class UtilsListTest {
         wrong.add(3, 3);
         assertFalse(instance.listElementExists(result, wrong));
         
-        // check that there are no publicates
+        // check that there are no dublicates
+        for (int j = 0; j < result.size(); j++) {
+            ArrayList<ArrayList<Integer>> copy = new ArrayList<ArrayList<Integer>>(result.size());
+            for (int i = 0; i < result.size(); i++) {
+                copy.add(i, result.get(i));
+            }
+            ArrayList<Integer> element = copy.remove(j);
+            assertFalse(instance.listElementExists(copy, element));
+        }
+
+    }
+    
+    /**
+     * Test of generatePermutations method, of class UtilsList.
+     */
+    @Test
+    public void testGeneratePermutations_3() {
+        System.out.println("generatePermutations, numeric length 3");
+        UtilsList<Integer> instance = new UtilsList<Integer>();
+        ArrayList<Integer> generatorSet = new ArrayList<Integer>(4);
+        generatorSet.add(0, 3);
+        generatorSet.add(1, 4);
+        generatorSet.add(2, 5);
+        generatorSet.add(3, 6);
+        ArrayList<ArrayList<Integer>> result = instance.generatePermutations(generatorSet, 3);
+        assertEquals(4*3*2, result.size());
+        for (ArrayList<Integer> perm:result ) {
+            assertEquals(3, perm.size());
+        }
+
+        assertTrue(instance.listElementExists(result, generatorSet));
+        
+        ArrayList<Integer> perm = new ArrayList<Integer>(3);
+        perm.add(0, 6);
+        perm.add(1, 5);
+        perm.add(2, 4);
+        assertTrue(instance.listElementExists(result, perm));
+        
+        ArrayList<Integer> perm2 = new ArrayList<Integer>(3);
+        perm2.add(0, 6);
+        perm2.add(1, 5);
+        perm2.add(2, 3);
+        assertTrue(instance.listElementExists(result, perm2));
+        
+        ArrayList<Integer> perm3 = new ArrayList<Integer>(3);
+        perm3.add(0, 4);
+        perm3.add(1, 5);
+        perm3.add(2, 3);
+        assertTrue(instance.listElementExists(result, perm3));
+        
+        ArrayList<Integer> wrong = new ArrayList<Integer>(3);
+        wrong.add(0, 6);
+        wrong.add(1, 5);
+        wrong.add(2, 5);
+        assertFalse(instance.listElementExists(result, wrong));
+        
+        // check that there are no dublicates
         for (int j = 0; j < result.size(); j++) {
             ArrayList<ArrayList<Integer>> copy = new ArrayList<ArrayList<Integer>>(result.size());
             for (int i = 0; i < result.size(); i++) {
@@ -186,34 +245,31 @@ public class UtilsListTest {
      * Test of generatePermutations method, of class UtilsList.
      */
     @Test
-    public void testGeneratePermutations2() {
+    public void testGeneratePermutations_tc_3() {
         System.out.println("generatePermutations");
         UtilsList<TrialCondition> instance = new UtilsList<TrialCondition>();
-        ArrayList<TrialCondition> generatorSet = new ArrayList<TrialCondition>(4);
+        ArrayList<TrialCondition> generatorSet = new ArrayList<TrialCondition>(3);
         generatorSet.add(0, TrialCondition.TARGET_ONLY);
-        generatorSet.add(1, TrialCondition.TARGET_ONLY);
-        generatorSet.add(2, TrialCondition.NO_TARGET);
-        generatorSet.add(3, TrialCondition.TARGET_AND_FOIL);
-        ArrayList<ArrayList<TrialCondition>> result = instance.generatePermutations(generatorSet);
-        assertEquals((2 * 3 * 4) / 2 , result.size());
+        generatorSet.add(1, TrialCondition.NO_TARGET);
+        generatorSet.add(2, TrialCondition.TARGET_AND_FOIL);
+        ArrayList<ArrayList<TrialCondition>> result = instance.generatePermutations(generatorSet, 3);
+        assertEquals(3*2*1 , result.size());
 
         assertTrue(instance.listElementExists(result, generatorSet));
         
-        ArrayList<TrialCondition> perm = new ArrayList<TrialCondition>(4);
+        ArrayList<TrialCondition> perm = new ArrayList<TrialCondition>(3);
         perm.add(0, TrialCondition.NO_TARGET);
         perm.add(1, TrialCondition.TARGET_ONLY);
         perm.add(2, TrialCondition.TARGET_AND_FOIL);
-        perm.add(3, TrialCondition.TARGET_ONLY);
         assertTrue(instance.listElementExists(result, perm));
         
-        ArrayList<TrialCondition> wrong = new ArrayList<TrialCondition>(4);
+        ArrayList<TrialCondition> wrong = new ArrayList<TrialCondition>(3);
         wrong.add(0, TrialCondition.NO_TARGET);
         wrong.add(1, TrialCondition.NO_TARGET);
-        wrong.add(2, TrialCondition.TARGET_AND_FOIL);
-        wrong.add(3, TrialCondition.TARGET_ONLY);
+        wrong.add(2, TrialCondition.TARGET_ONLY);
         assertFalse(instance.listElementExists(result, wrong));
         
-        // check that there are no publicates
+        // check that there are no duplicates
         for (int j = 0; j < result.size(); j++) {
             ArrayList<ArrayList<TrialCondition>> copy = new ArrayList<ArrayList<TrialCondition>>(result.size());
             for (int i = 0; i < result.size(); i++) {

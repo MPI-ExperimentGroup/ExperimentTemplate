@@ -24,8 +24,8 @@ import java.util.ArrayList;
  * @author olhshk
  */
 public class UtilsList<T> {
-    
-     public boolean listElementExists(ArrayList<ArrayList<T>> source, ArrayList<T> candidate) {
+
+    public boolean listElementExists(ArrayList<ArrayList<T>> source, ArrayList<T> candidate) {
         for (ArrayList<T> list : source) {
             boolean coinside = true;
             int i = 0;
@@ -43,43 +43,44 @@ public class UtilsList<T> {
         return false;
     }
 
-    public ArrayList<ArrayList<T>> generatePermutations(ArrayList<T> elements) {
-        
+    public ArrayList<ArrayList<T>> generatePermutations(ArrayList<T> elements, int size) {
+
         if (elements == null) {
             return null;
         }
-        
+
         if (elements.isEmpty()) {
             return new ArrayList<ArrayList<T>>();
         }
-        
-         if (elements.size()==1) {
-            ArrayList<ArrayList<T>> retVal = new ArrayList<ArrayList<T>>(1); 
-            retVal.add(0,elements);
+
+        if (size == 1) {
+            ArrayList<ArrayList<T>> retVal = new ArrayList<ArrayList<T>>(elements.size());
+            for (T element : elements) {
+                ArrayList<T> permutation = new ArrayList<T>(1);
+                retVal.add(permutation);
+                permutation.add(element);
+            }
             return retVal;
         }
-        
+
         ArrayList<ArrayList<T>> retVal = new ArrayList<ArrayList<T>>();
-        for (int i = 0; i < elements.size(); i++) {
-            ArrayList<T> copyReferences = new ArrayList<T>(elements.size());
-            for (int j = 0; j < elements.size(); j++) {
-                copyReferences.add(j, elements.get(j));
-            }
-            T element = copyReferences.remove(i);
-            ArrayList<ArrayList<T>> tailPermutations = this.generatePermutations(copyReferences);
-            for (ArrayList<T> tailPermutation : tailPermutations) {
-                ArrayList<T> permutation = new ArrayList<T>(tailPermutation.size() + 1);
-                permutation.add(element);
-                permutation.addAll(tailPermutation);
-                boolean duplication = this.listElementExists(retVal, permutation);
-                if (!duplication) {
-                    retVal.add(permutation);
+        ArrayList<ArrayList<T>> prefixPermutations = this.generatePermutations(elements, size - 1);
+
+        for (ArrayList<T> prefixPermutation : prefixPermutations) {
+            ArrayList<T> notUsedElements = new ArrayList<T>();
+            for (T element : elements) {
+                if (!prefixPermutation.contains(element)) {
+                    notUsedElements.add(element);
                 }
+            }
+            for (T notUsedElement : notUsedElements) {
+                ArrayList<T> permutation = new ArrayList<T>(size);
+                permutation.addAll(prefixPermutation);
+                permutation.add(notUsedElement);
+                retVal.add(permutation);
             }
         }
         return retVal;
     }
-    
-   
 
 }

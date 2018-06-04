@@ -130,25 +130,17 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
         try {
             this.computeRequiredLength(this.requiredLengthsStr);
             this.computeRequiredTrialTypes(this.requiredTrialTypesStr);
-            if (this.requiredTrialTypes.size() != this.fineTuningTupleLength) {
-                throw new Exception("Configuration error: here is a mismatch between the multiset of trial types whose size is " + this.requiredTrialTypes.size()
-                        + "\n and the configurated tuple size which is " + this.fineTuningTupleLength);
-            }
-
-            if (this.requiredTrialTypes.size() != this.requiredLengths.size()) {
-                throw new Exception("There is a mismatch between the confugurated trial length set size, which is " + this.requiredLengths.size() + ", \n"
-                        + "and the configurated tuple size which is " + this.fineTuningTupleLength);
-            }
+            
 
         } catch (Exception ex) {
             this.exceptionLogging(ex);
         }
 
         UtilsList<TrialCondition> utilTrials = new UtilsList<TrialCondition>();
-        this.trialTypesPermutations = utilTrials.generatePermutations(this.requiredTrialTypes);
+        this.trialTypesPermutations = utilTrials.generatePermutations(this.requiredTrialTypes, this.fineTuningTupleLength);
 
         UtilsList<Integer> utilSizes = new UtilsList<Integer>();
-        this.trialLengtPermutations = utilSizes.generatePermutations(this.requiredLengths);
+        this.trialLengtPermutations = utilSizes.generatePermutations(this.requiredLengths, this.fineTuningTupleLength);
 
         long maxDurationMinLong = Long.parseLong(this.maxDurationMinutes);
         this.maxDurationMs = maxDurationMinLong * 60 * 1000;
