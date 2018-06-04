@@ -421,11 +421,6 @@ public class Parcours extends WizardUtilData {
         "setnr_108/cond_c/list_c:Rutger werkt als restaurateur en is al een tijd bezig aan een groot project.<br/>Margriet vraagt: hoe ziet het er nu uit?<br/>Rutger zegt: je kunt momenteel nog steeds de beschadigingen op de"};
 
     @Override
-    public String getFeedbackScreenText() {
-        return null;
-    }
-
-    @Override
     public WizardUtilScreen[] getScreenData() {
         return new WizardUtilScreen[]{new WizardUtilScreen() {
             @Override
