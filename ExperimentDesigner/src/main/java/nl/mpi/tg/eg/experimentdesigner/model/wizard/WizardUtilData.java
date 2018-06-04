@@ -36,8 +36,6 @@ public class WizardUtilData {
 
     protected WizardUtilScreen[] screenData;
 
-    protected String feedbackScreenText;
-
     public WizardUtilEnum getTemplateType() {
         return templateType;
     }
@@ -76,13 +74,5 @@ public class WizardUtilData {
 
     public void setScreenData(WizardUtilScreen[] screenData) {
         this.screenData = screenData;
-    }
-
-    public String getFeedbackScreenText() {
-        return feedbackScreenText;
-    }
-
-    public void setFeedbackScreenText(String feedbackScreenText) {
-        this.feedbackScreenText = feedbackScreenText;
     }
 }
