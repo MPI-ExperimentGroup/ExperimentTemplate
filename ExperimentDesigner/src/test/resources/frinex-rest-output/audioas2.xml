@@ -79,9 +79,9 @@
     <presenter displayOrder="4" type="stimulus" self="stimuliScreenV1" title="Series 1">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider" eventTag="stimuliN" 
                       numberOfBands="16" startBand="5" 
-                      fineTuningTupleLength="4" fineTuningUpperBoundForCycles="2"
+                      fineTuningTupleLength="3" fineTuningUpperBoundForCycles="2"
                       fastTrackPresent="false" fineTuningFirstWrongOut="true"
-                      requiredLengths="3,4,5,6" requiredTrialTypes="TARGET_ONLY,NO_TARGET,TARGET_AND_FOIL,NO_TARGET"
+                      requiredLengths="3,4,5,6" requiredTrialTypes="TARGET_ONLY,NO_TARGET,TARGET_AND_FOIL"
                       stimuliDir="static/stimuli/" maxDurationMin="10" firstStimulusDurationMs="1500">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
@@ -169,9 +169,9 @@
     <presenter displayOrder="6" type="stimulus" self="stimuliScreenV2" title="Series 2">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider" eventTag="stimuliN" 
                       numberOfBands="16" startBand="5" 
-                      fineTuningTupleLength="4" fineTuningUpperBoundForCycles="2"
+                      fineTuningTupleLength="3" fineTuningUpperBoundForCycles="2"
                       fastTrackPresent="false" fineTuningFirstWrongOut="true"
-                      requiredLengths="3,4,5,6" requiredTrialTypes="TARGET_ONLY,NO_TARGET,TARGET_AND_FOIL,NO_TARGET"
+                      requiredLengths="3,4,5,6" requiredTrialTypes="TARGET_ONLY,NO_TARGET,TARGET_AND_FOIL"
                       stimuliDir="static/stimuli/" maxDurationMin="10" firstStimulusDurationMs="1500">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
