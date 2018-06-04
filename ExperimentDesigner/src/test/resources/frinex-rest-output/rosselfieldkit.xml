@@ -103,7 +103,7 @@
     </presenter>
     <presenter back="Menu" menuLabel="Task 1" next="Menu" type="stimulus" self="Task_1" title="Task 1">
         <centrePage/>
-        <loadSdCardStimulus eventTag="Task 1" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+        <loadSdCardStimulus eventTag="Task 1" randomise="true" repeatRandomWindow="0" excludeRegex=".*_question\\....$" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <startAudioRecorder eventTag="Task 1" wavFormat="true" filePerStimulus="false"/>
                 <withMatchingStimulus eventTag="" randomise="true" repeatRandomWindow="0" matchingRegex="([^_]*_)*" maxStimuli="1000" repeatCount="1">
@@ -215,16 +215,8 @@
         <localStorageData/>
     </presenter>
     <stimuli>
-        <stimulus identifier="FieldKit" imagePath="FieldKit" label="FieldKit" pauseMs="0">
-            <tag>FieldKit</tag>
-        </stimulus>
-        <stimulus audioPath="Task1" code="Task1" identifier="Task1" imagePath="Task1" pauseMs="0">
-            <tag>Task1</tag>
-            <tag>Task_1</tag>
-        </stimulus>
-        <stimulus audioPath="Task2" code="Task2" identifier="Task2" imagePath="Task2" pauseMs="0">
-            <tag>Task2</tag>
-            <tag>Task_2</tag>
-        </stimulus>
+        <stimulus identifier="FieldKit" imagePath="FieldKit" label="FieldKit" pauseMs="0" tags="FieldKit"/>
+        <stimulus audioPath="Task1" code="Task1" identifier="Task1" imagePath="Task1" pauseMs="0" tags="Task1 Task_1"/>
+        <stimulus audioPath="Task2" code="Task2" identifier="Task2" imagePath="Task2" pauseMs="0" tags="Task2 Task_2"/>
     </stimuli>
 </experiment>
