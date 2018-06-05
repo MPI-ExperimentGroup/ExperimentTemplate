@@ -113,16 +113,33 @@ public class AudioAsLearningStimuliProvider extends BandStimuliProvider<AudioAsS
     @Override
     public boolean initialiseNextFineTuningTuple() {
         ArrayList<Trial> trs = new ArrayList<Trial>(this.learningTrialsIds.size());
-        for (Integer id:this.learningTrialsIds) {
+        for (Integer id : this.learningTrialsIds) {
             Trial trial = this.learningTrials.get(id);
             trs.add(trial);
         }
         this.currentTrialTuple = new TrialTuple(trs);
         return true;
     }
-    
+
     @Override
     public boolean hasNextStimulus(int increment) {
+
+        // first evaluate correctness of the previous answer
+        if (!this.responseRecord.isEmpty()) {
+            int index = this.getCurrentStimulusIndex();
+            BookkeepingStimulus<AudioAsStimulus> bStimulus = this.responseRecord.get(index);
+            if (bStimulus.getCorrectness() == null) { // has not been analysed yet, i.e. the button was not pressed, isCorrectResponse has not been called
+                WordType wt = bStimulus.getStimulus().getwordType();
+                if (wt.equals(WordType.TARGET_NON_WORD)) { // missed target
+                    bStimulus.setCorrectness(false);
+                    this.isCorrectCurrentResponse = false;
+                } else {
+                    bStimulus.setCorrectness(true);
+                    this.isCorrectCurrentResponse = true;
+                }
+            }
+        }
+
         return this.tupleIsNotEmpty();
     }
 
@@ -159,8 +176,6 @@ public class AudioAsLearningStimuliProvider extends BandStimuliProvider<AudioAsS
 //        this.responseRecord.add(null); // marking the end of the trial tuple
 //        return allTupleCorrect;
     }
-
-   
 
     @Override
     protected String bandIndexToLabel(int index) {
@@ -285,10 +300,7 @@ public class AudioAsLearningStimuliProvider extends BandStimuliProvider<AudioAsS
         return retVal;
     }
 
-    
-
-    
-  // TODO
+    // TODO
     @Override
     public String toString() {
         Map<String, Object> map = super.toMap();
@@ -300,10 +312,8 @@ public class AudioAsLearningStimuliProvider extends BandStimuliProvider<AudioAsS
 
     @Override
     protected void deserialiseSpecific(String str) throws Exception {
-           // TODO
+        // TODO
     }
-
-   
 
     @Override
     public boolean analyseCorrectness(Stimulus stimulus, String stimulusResponse) {
@@ -326,7 +336,7 @@ public class AudioAsLearningStimuliProvider extends BandStimuliProvider<AudioAsS
 
     @Override
     protected boolean fineTuningToBeContinuedFirstWrongOut() {
-       return true;
+        return true;
     }
 
     @Override
@@ -356,7 +366,7 @@ public class AudioAsLearningStimuliProvider extends BandStimuliProvider<AudioAsS
 
     @Override
     protected void recycleUnusedStimuli() {
-       
+
     }
 
     @Override
