@@ -82,7 +82,8 @@
                       fineTuningTupleLength="3" fineTuningUpperBoundForCycles="2"
                       fastTrackPresent="false" fineTuningFirstWrongOut="true"
                       requiredLengths="3,4,5,6" requiredTrialTypes="TARGET_ONLY,NO_TARGET,TARGET_AND_FOIL"
-                      stimuliDir="static/stimuli/" maxDurationMin="10" firstStimulusDurationMs="1500">
+                      stimuliDir="static/stimuli/" maxDurationMin="10" firstStimulusDurationMs="1500"
+                      learningTrials="1000,1737,2045">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
                     <nextStimulus repeatIncorrect="false"/>
@@ -172,7 +173,8 @@
                       fineTuningTupleLength="3" fineTuningUpperBoundForCycles="2"
                       fastTrackPresent="false" fineTuningFirstWrongOut="true"
                       requiredLengths="3,4,5,6" requiredTrialTypes="TARGET_ONLY,NO_TARGET,TARGET_AND_FOIL"
-                      stimuliDir="static/stimuli/" maxDurationMin="10" firstStimulusDurationMs="1500">
+                      stimuliDir="static/stimuli/" maxDurationMin="10" firstStimulusDurationMs="1500"
+                      learningTrials="1000,1737,2045">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
                     <nextStimulus repeatIncorrect="false"/>
