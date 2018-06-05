@@ -44,11 +44,13 @@ public class MetadataFieldWidget implements StimulusFreeText {
     final private Label label;
     final private Label errorLabel;
     final private VerticalPanel labelPanel;
+    final private int dataChannel;
     final DateOfBirthField dateOfBirthField;
 
-    public MetadataFieldWidget(MetadataField metadataField, String initialValue) {
+    public MetadataFieldWidget(MetadataField metadataField, String initialValue, final int dataChannel) {
         this.metadataField = metadataField;
         this.initialValue = initialValue;
+        this.dataChannel = dataChannel;
         if (metadataField.isDate()) {
             label = new Label(metadataField.getFieldLabel());
 //            final DateTimeFormat dateFormat = DateTimeFormat.getFormat("dd/MM/yyyy");
@@ -103,6 +105,7 @@ public class MetadataFieldWidget implements StimulusFreeText {
         labelPanel.add(errorLabel);
     }
 
+    @Override
     public FocusWidget getFocusWidget() {
         return focusWidget;
     }
@@ -147,6 +150,11 @@ public class MetadataFieldWidget implements StimulusFreeText {
     @Override
     public String getResponseTimes() {
         return null;
+    }
+
+    @Override
+    public int getDataChannel() {
+        return dataChannel;
     }
 
     @Override

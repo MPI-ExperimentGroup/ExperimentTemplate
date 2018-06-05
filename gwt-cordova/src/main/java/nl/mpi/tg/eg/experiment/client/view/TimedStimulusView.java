@@ -239,7 +239,7 @@ public class TimedStimulusView extends ComplexView {
         getActivePanel().add(htmlPanel);
     }
 
-    public StimulusFreeText addStimulusFreeText(final String postName, final String validationRegex, final String keyCodeChallenge, final String validationChallenge, final String allowedCharCodes, final SingleShotEventListner enterKeyListner, final int hotKey, final String styleName, final String textValue) {
+    public StimulusFreeText addStimulusFreeText(final String postName, final String validationRegex, final String keyCodeChallenge, final String validationChallenge, final String allowedCharCodes, final SingleShotEventListner enterKeyListner, final int hotKey, final String styleName, final int dataChannel, final String textValue) {
         final int inputLengthLimit = 28; // todo: make this a parameter from the configuraiton file, remove allowedCharCodes and do a regex test on each key?
         final Label errorLabel = new Label(validationChallenge);
         errorLabel.setStylePrimaryName("metadataErrorMessage");
@@ -339,6 +339,11 @@ public class TimedStimulusView extends ComplexView {
             @Override
             public String getPostName() {
                 return postName;
+            }
+
+            @Override
+            public int getDataChannel() {
+                return dataChannel;
             }
 
             @Override

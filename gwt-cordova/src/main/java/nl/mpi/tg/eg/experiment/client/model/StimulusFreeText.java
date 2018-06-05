@@ -33,5 +33,7 @@ public interface StimulusFreeText {
 
     public boolean isValid();
 
+    public int getDataChannel();
+
     public FocusWidget getFocusWidget();
 }
