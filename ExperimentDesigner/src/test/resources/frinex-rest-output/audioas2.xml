@@ -152,7 +152,6 @@
                 <centrePage/>
                 <targetButton featureText="Heel goed gedaan. Nu komt de eerste ronde. Klik op de button om door te gaan. Veel Succes!" target="stimuliScreenV1"/>
                 <addPadding/>
-                <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
                 <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
                 <showStimuliReport/>
                 <addPadding/>
