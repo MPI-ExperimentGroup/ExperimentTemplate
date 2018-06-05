@@ -41,6 +41,7 @@ public class TagPairData {
     private Date submitDate;
     private String experimentName;
     private String screenName;
+    private Integer dataChannel;
     private String eventTag;
     private String tagValue1;
 //    @Column(length = 8192)
@@ -57,7 +58,7 @@ public class TagPairData {
     public TagPairData() {
     }
 
-    public TagPairData(String userId, String screenName, String eventTag, String tagValue1, String tagValue2, int eventMs, Date tagDate) {
+    public TagPairData(String userId, String screenName, Integer dataChannel, String eventTag, String tagValue1, String tagValue2, int eventMs, Date tagDate) {
         this.tagDate = tagDate;
         this.screenName = screenName;
         this.eventTag = eventTag;
@@ -85,6 +86,10 @@ public class TagPairData {
 
     public String getScreenName() {
         return screenName;
+    }
+
+    public int getEventTier() {
+        return dataChannel;
     }
 
     public String getEventTag() {
