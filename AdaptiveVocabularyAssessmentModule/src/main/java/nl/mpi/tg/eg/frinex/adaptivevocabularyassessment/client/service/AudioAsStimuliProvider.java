@@ -67,9 +67,19 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     private ArrayList<ArrayList<PermutationPair>> availableCombinations; // x[i] is the list of permutations with non-empty possibilities to instantiate them using trials matrix of unused trials
     private TrialTuple currentTrialTuple;
     private ArrayList<String> usedCues = new ArrayList<String>();
+    
+    private ArrayList<Integer> learninTrials;
 
     public AudioAsStimuliProvider(Stimulus[] stimulusArray) {
         super(stimulusArray);
+    }
+    
+    public void setlearningTrials(String learningTrials) {
+        String[] learningTrialsIDsString = learningTrials.split(",");
+        this.learninTrials = new ArrayList<Integer>(learningTrialsIDsString.length);
+        for (String idStr : learningTrialsIDsString) {
+            this.learninTrials.add(Integer.parseInt(idStr.trim()));
+        }
     }
 
     public void setrequiredLengths(String lengths) {
@@ -151,9 +161,15 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
 
             this.reader = new AudioStimuliFromString();
             this.reader.readTrialsAsCsv(this.stimuliDir);
-            this.trials = Trial.prepareTrialMatrix(this.reader.getHashedTrials(), this.numberOfBands, this.maxTrialLength);
-
-            this.availableCombinations = PermutationPair.initialiseAvailabilityList(this.trials, trialLengtPermutations, trialTypesPermutations, this.numberOfBands);
+            
+            LinkedHashMap<Integer, Trial> hashedTrials = this.reader.getHashedTrials();
+            for (Integer learningTrialId : this.learninTrials) {
+                hashedTrials.remove(learningTrialId);
+            }
+            
+            this.trials = Trial.prepareTrialMatrix(hashedTrials, this.numberOfBands, this.maxTrialLength);
+            
+            this.availableCombinations = PermutationPair.initialiseAvailabilityList(this.trials, this.trialLengtPermutations, trialTypesPermutations, this.numberOfBands);
 
             this.isCorrectCurrentResponse = true;
 

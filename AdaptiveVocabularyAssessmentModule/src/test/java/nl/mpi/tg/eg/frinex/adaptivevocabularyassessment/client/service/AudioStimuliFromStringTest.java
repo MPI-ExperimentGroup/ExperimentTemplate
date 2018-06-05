@@ -413,7 +413,7 @@ public class AudioStimuliFromStringTest {
         instance.readTrialsAsCsv(TestConfigurationConstants.AUDIO_STIMULI_DIR);
         String[] learningTrialsIDsString = TestConfigurationConstants.AUDIO_LEARNING_TRIALS.split(",");
         int nLearingTrials = learningTrialsIDsString.length;
-        ArrayList<Integer> learningTrialsIDs = new ArrayList<Integer>(learningTrialsIDsString.length);
+        ArrayList<Integer> learningTrialsIDs = new ArrayList<Integer>(nLearingTrials);
         for (String idStr : learningTrialsIDsString) {
             learningTrialsIDs.add(Integer.parseInt(idStr.trim()));
         }

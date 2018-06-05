@@ -106,8 +106,9 @@ public class Trial {
 
     public static ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> prepareTrialMatrix(LinkedHashMap<Integer, Trial> csvTrials, int numberOfBands, int maxTrialLength) {
         ArrayList<ArrayList<LinkedHashMap<TrialCondition, ArrayList<Trial>>>> retVal = initMatrix(numberOfBands, maxTrialLength);
-        for (int i=1; i<=csvTrials.size(); i++) {
-            Trial trial = csvTrials.get(i);
+        Set<Integer> keys = csvTrials.keySet();
+        for (Integer key:keys) {
+            Trial trial = csvTrials.get(key);
             TrialCondition condition = trial.getCondition();
             int bandIndex = trial.getBandIndex();
             int trialLength = trial.getTrialLength();

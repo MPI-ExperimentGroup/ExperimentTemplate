@@ -68,6 +68,7 @@ public class AudioAsStimuliProviderTest {
         this.instance.setstimuliDir(TestConfigurationConstants.AUDIO_STIMULI_DIR);
         this.instance.setmaxDurationMin(TestConfigurationConstants.AUDIO_MAX_DURATION_MINUTES);
         this.instance.setfirstStimulusDurationMs(TestConfigurationConstants.AUDIO_FIRST_STIMULUS_DURATION);
+        this.instance.setlearningTrials(TestConfigurationConstants.AUDIO_LEARNING_TRIALS);
     }
 
     @After
