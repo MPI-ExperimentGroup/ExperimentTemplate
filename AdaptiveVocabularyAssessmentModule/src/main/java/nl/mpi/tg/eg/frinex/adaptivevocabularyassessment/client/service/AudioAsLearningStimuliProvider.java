@@ -47,6 +47,10 @@ public class AudioAsLearningStimuliProvider extends BandStimuliProvider<AudioAsS
     private LinkedHashMap<Integer, Trial> learningTrials; // shared between various permutation-pairs, reduced while it is used
     private ArrayList<Integer> learningTrialsIds;
     private TrialTuple currentTrialTuple;
+    
+    public TrialTuple getCurrentTrialTuple(){
+        return this.currentTrialTuple;
+    }
 
     public AudioAsLearningStimuliProvider(Stimulus[] stimulusArray) {
         super(stimulusArray);

@@ -412,14 +412,13 @@ public class AudioStimuliFromStringTest {
         AudioStimuliFromString instance = new AudioStimuliFromString();
         instance.readTrialsAsCsv(TestConfigurationConstants.AUDIO_STIMULI_DIR);
         String[] learningTrialsIDsString = TestConfigurationConstants.AUDIO_LEARNING_TRIALS.split(",");
-        int nLearingTrials = learningTrialsIDsString.length;
-        ArrayList<Integer> learningTrialsIDs = new ArrayList<Integer>(nLearingTrials);
+        ArrayList<Integer> learningTrialsIDs = new ArrayList<Integer>(TestConfigurationConstants.AUDIO_N_LEARNING_TRIALS);
         for (String idStr : learningTrialsIDsString) {
             learningTrialsIDs.add(Integer.parseInt(idStr.trim()));
         }
         instance.prepareLearningTrialsAsCsv(learningTrialsIDs);
         LinkedHashMap<Integer, Trial> trials = instance.getHashedLearningTrials();
-        assertEquals(nLearingTrials, trials.size());
+        assertEquals(TestConfigurationConstants.AUDIO_N_LEARNING_TRIALS, trials.size());
         
         
        

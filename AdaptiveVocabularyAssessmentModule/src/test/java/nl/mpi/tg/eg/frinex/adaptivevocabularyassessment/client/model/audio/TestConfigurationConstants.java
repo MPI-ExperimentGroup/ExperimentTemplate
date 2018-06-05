@@ -37,4 +37,5 @@ public class TestConfigurationConstants {
     public static final int AUDIO_TEST_DELAY_CUE_MS = 1000;
     public static final String AUDIO_FIRST_STIMULUS_DURATION = "1500";
     public static final String AUDIO_LEARNING_TRIALS = "1000,1737,2045";
+    public static final int AUDIO_N_LEARNING_TRIALS = 3;
 }
