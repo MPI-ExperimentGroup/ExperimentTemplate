@@ -29,6 +29,7 @@ import com.google.gwt.user.client.Timer;
 import java.util.Date;
 import java.util.Random;
 import java.util.logging.Level;
+import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
@@ -89,6 +90,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
         stringBuilder.append("\"userId\": \"").append(userResults.getUserData().getUserId()).append("\"\n}");
         //localStorage.addStoredScreenData(userResults.getUserData().getUserId(), ServiceEndpoint.metadata.name(), stringBuilder.toString());
         submitData(ServiceEndpoint.metadata, userResults.getUserData().getUserId(), "[" + stringBuilder.toString() + "]", dataSubmissionListener);
+        writeJsonData(userResults.getUserData().getUserId().toString(), "metadata", stringBuilder.toString());
     }
 
     public void submitTagValue(final UserId userId, final String screenName, String eventTag, String tagValue, int eventMs) {
@@ -101,15 +103,19 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 + "\"eventMs\": \"" + eventMs + "\" \n}");
     }
 
-    public void submitTagPairValue(final UserId userId, final String screenName, String eventTag, String tagValue1, String tagValue2, int eventMs) {
+    public void submitTagPairValue(final UserId userId, final String screenName, final int dataChannel, String eventTag, String tagValue1, String tagValue2, int eventMs) {
         submitData(ServiceEndpoint.tagPairEvent, userId, "{\"tagDate\" : " + jsonEscape(format.format(new Date())) + ",\n"
                 + "\"experimentName\": " + jsonEscape(experimentName) + ",\n"
                 + "\"userId\": " + jsonEscape(userId.toString()) + ",\n"
                 + "\"screenName\": " + jsonEscape(screenName) + ",\n"
+                + "\"dataChannel\": " + dataChannel + ",\n"
                 + "\"eventTag\": " + jsonEscape(eventTag) + ",\n"
                 + "\"tagValue1\": " + jsonEscape(tagValue1) + ",\n"
                 + "\"tagValue2\": " + jsonEscape(tagValue2) + ",\n"
                 + "\"eventMs\": \"" + eventMs + "\" \n}");
+        if (ApplicationController.SDCARD_DATACHANNEL == dataChannel) {
+            writeCsvLine(userId.toString(), screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs);
+        }
     }
 
     private String jsonEscape(String inputString) {
@@ -297,5 +303,43 @@ public class DataSubmissionService extends AbstractSubmissionService {
 
     private static native void trackEvent(String applicationState, String label, String value) /*-{
      if($wnd.analytics) $wnd.analytics.trackEvent(applicationState, "view", label, value);
+     }-*/;
+
+    protected void sdWriteOk(String message) {
+    }
+
+    protected void sdWriteError(String message) {
+    }
+
+    protected native void writeCsvLine(final String userIdString, final String screenName, final int dataChannel, String eventTag, String tagValue1, String tagValue2, int eventMs) /*-{
+        var dataSubmissionService = this;
+        console.log("writeCsvLine: " + userIdString + " : " + tagValue1 + " : " + tagValue2);
+        if($wnd.plugins){
+            $wnd.plugins.fieldKitRecorder.writeCsvLine(function (tagvalue) {
+                console.log("writeCsvLine: " + tagvalue);
+//                dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::sdWriteOk(Ljava/lang/String;)(tagvalue);
+            }, function (tagvalue) {
+                console.log("writeCsvLine: " + tagvalue);
+                dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::sdWriteError(Ljava/lang/String;)(tagvalue);
+            },  userIdString, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs);
+        } else {
+            dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::sdWriteError(Ljava/lang/String;)(null);
+        }
+     }-*/;
+
+    protected native void writeJsonData(String userIdString, String stimulusIdString, String stimulusJsonData) /*-{
+        var dataSubmissionService = this;
+        console.log("writeStimuliData: " + userIdString + " : " + stimulusIdString + " : " + stimulusJsonData);
+        if($wnd.plugins){
+            $wnd.plugins.fieldKitRecorder.writeStimuliData(function (tagvalue) {
+                console.log("writeJsonData: " + tagvalue);
+//                dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::sdWriteOk(Ljava/lang/String;)(tagvalue);
+            }, function (tagvalue) {
+                console.log("writeJsonData: " + tagvalue);
+                dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::sdWriteError(Ljava/lang/String;)(tagvalue);
+            },  userIdString, stimulusIdString,  stimulusJsonData);
+        } else {
+            dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::sdWriteError(Ljava/lang/String;)(null);
+        }
      }-*/;
 }
