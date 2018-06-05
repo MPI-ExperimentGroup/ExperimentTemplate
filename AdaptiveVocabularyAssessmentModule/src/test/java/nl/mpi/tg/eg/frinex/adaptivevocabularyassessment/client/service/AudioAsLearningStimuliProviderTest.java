@@ -18,10 +18,14 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
 import java.util.ArrayList;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioAsStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TestConfigurationConstants;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Trial;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialCondition;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialTuple;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.WordType;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -34,20 +38,20 @@ import static org.junit.Assert.*;
  * @author admin_olha
  */
 public class AudioAsLearningStimuliProviderTest {
-    
+
     private AudioAsLearningStimuliProvider instance;
-    
+
     public AudioAsLearningStimuliProviderTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
         this.instance = new AudioAsLearningStimuliProvider(null);
@@ -57,17 +61,14 @@ public class AudioAsLearningStimuliProviderTest {
         this.instance.setfirstStimulusDurationMs(TestConfigurationConstants.AUDIO_FIRST_STIMULUS_DURATION);
         this.instance.setlearningTrials(TestConfigurationConstants.AUDIO_LEARNING_TRIALS);
     }
-    
+
     @After
     public void tearDown() {
     }
 
-  
-
-
-
     /**
-     * Test of initialiseStimuliState method, of class AudioAsLearningStimuliProvider.
+     * Test of initialiseStimuliState method, of class
+     * AudioAsLearningStimuliProvider.
      */
     @Test
     public void testInitialiseStimuliState() {
@@ -75,10 +76,10 @@ public class AudioAsLearningStimuliProviderTest {
         String stimuliStateSnapshot = "";
         this.instance.initialiseStimuliState(stimuliStateSnapshot);
         TrialTuple tt = this.instance.getCurrentTrialTuple();
-        
+
         ArrayList<Trial> trials = tt.getTrials();
         assertEquals(TestConfigurationConstants.AUDIO_N_LEARNING_TRIALS, tt.getTrials().size());
-        
+
         // "1000;kurk;skee_1.wav;1;Target-only;4 words;pif.wav;skee_2.wav;wadees.wav;landhoeg.wav;;;2;zerodb;0;";
         Trial trial1 = trials.get(0);
         assertEquals(1000, trial1.getId());
@@ -96,7 +97,7 @@ public class AudioAsLearningStimuliProviderTest {
         assertEquals("zerodb", trial1.getBandLabel());
         assertEquals(5, trial1.getBandIndex());
         assertEquals(0, trial1.getPositionFoil());
-        
+
         //"1737;vocht;gocht.wav;1;NoTarget;5 words;inbong.wav;gop.wav;dorm.wav;wiffer.wav;blem.wav;;0;min6db;0;\n"
         Trial trial2 = trials.get(1);
         assertEquals(1737, trial2.getId());
@@ -134,8 +135,74 @@ public class AudioAsLearningStimuliProviderTest {
         assertEquals(1, trial3.getPositionFoil());
     }
 
-  
+    @Test
+    public void testRoundAllCorrect() {
 
+        System.out.println("test round all correct");
+        String stimuliStateSnapshot = "";
+        this.instance.initialiseStimuliState(stimuliStateSnapshot);
+        int stimuliCounter = 0;
+        while (this.instance.hasNextStimulus(0)) {
+            this.instance.nextStimulus(0);
+            AudioAsStimulus audioStimulus = this.instance.getCurrentStimulus();
+            stimuliCounter++;
+            Stimulus stimulus = audioStimulus;
 
-   
+            if (audioStimulus.getwordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
+                String correctResponce = audioStimulus.getCorrectResponses();
+                this.instance.isCorrectResponse(stimulus, correctResponce);
+                continue;
+            }
+
+            if (audioStimulus.getwordType().equals(WordType.TARGET_NON_WORD)) { // hit the target
+                String correctResponce = audioStimulus.getCorrectResponses();
+                this.instance.isCorrectResponse(stimulus, correctResponce);
+            }
+
+        }
+        assertFalse(this.instance.getCurrentTrialTuple().isNotEmpty());
+        ArrayList<BookkeepingStimulus<AudioAsStimulus>> recordi = this.instance.getResponseRecord();
+        assertEquals(stimuliCounter, recordi.size());
+        for (BookkeepingStimulus<AudioAsStimulus> record : recordi) {
+            assertTrue(record.getCorrectness());
+        }
+
+    }
+
+    @Test
+    public void testRoundAllWrongReactions() {
+
+        System.out.println("test round all correct");
+        String stimuliStateSnapshot = "";
+        this.instance.initialiseStimuliState(stimuliStateSnapshot);
+        int stimuliCounter = 0;
+        while (this.instance.hasNextStimulus(0)) {
+            this.instance.nextStimulus(0);
+            AudioAsStimulus audioStimulus = this.instance.getCurrentStimulus();
+            stimuliCounter++;
+            Stimulus stimulus = audioStimulus;
+
+            if (audioStimulus.getwordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
+                String correctResponce = audioStimulus.getCorrectResponses();
+                this.instance.isCorrectResponse(stimulus, correctResponce);
+                continue;
+            }
+
+            if (!audioStimulus.getwordType().equals(WordType.TARGET_NON_WORD)) { // hit the non-target
+                String correctResponce = audioStimulus.getCorrectResponses();
+                this.instance.isCorrectResponse(stimulus, correctResponce);
+            }
+
+        }
+        assertFalse(this.instance.getCurrentTrialTuple().isNotEmpty());
+        ArrayList<BookkeepingStimulus<AudioAsStimulus>> recordi = this.instance.getResponseRecord();
+        assertEquals(stimuliCounter, recordi.size());
+        for (BookkeepingStimulus<AudioAsStimulus> record : recordi) {
+            if (!record.getStimulus().getwordType().equals(WordType.EXAMPLE_TARGET_NON_WORD)) {
+                assertFalse(record.getCorrectness());
+            }
+        }
+
+    }
+
 }
