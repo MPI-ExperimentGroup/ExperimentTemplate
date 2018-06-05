@@ -244,6 +244,40 @@ public class FieldKitRecorder extends CordovaPlugin {
             });
             return true;
         }
+        if (action.equals("writeCsvLine")) {
+            final String userId = args.getString(0);
+            final String screenName = args.getString(1);
+            final int dataChannel = args.getInt(2);
+            final String eventTag = args.getString(3);
+            final String tagValue1 = args.getString(4);
+            final String tagValue2 = args.getString(5);
+            final int eventMs = args.getInt(6);
+            System.out.println("userId: " + userId);
+            System.out.println("screenName: " + screenName);
+            System.out.println("dataChannel: " + dataChannel);
+            System.out.println("eventTag: " + eventTag);
+            System.out.println("tagValue1: " + tagValue1);
+            System.out.println("tagValue2: " + tagValue2);
+            System.out.println("eventMs: " + eventMs);
+            cordova.getThreadPool().execute(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        final File outputDirectory = new File(externalStoragePath, AUDIO_RECORDER_FOLDER
+                                + File.separator + userId + File.separator);
+                        final StimuliCsvWriter stimuliCsvWriter = new StimuliScvWriter(outputDirectory);
+                        if (stimuliCsvWriter.writeJsonFile(FieldKitRecorder.this.cordova.getActivity().getApplicationContext(), userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs)) {
+                            callbackContext.success();
+                        } else {
+                            callbackContext.error("stimulid data not written");
+                        }
+                    } catch (final IOException e) {
+                        System.out.println("IOException, stimulid data not written: " + e.getMessage());
+                    }
+                }
+            });
+            return true;
+        }
         return false;
     }
 
