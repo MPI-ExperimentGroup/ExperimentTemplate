@@ -36,10 +36,10 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag;
  * @author olhshk
  */
 public class AudioStimuliFromString {
-    
-    
+
     private final LinkedHashMap<String, AudioAsStimulus> hashedStimuli = new LinkedHashMap<String, AudioAsStimulus>();
     private LinkedHashMap<Integer, Trial> trials = new LinkedHashMap<Integer, Trial>();
+    private LinkedHashMap<Integer, Trial> learningTrials = new LinkedHashMap<Integer, Trial>();
     private final LinkedHashMap<String, Integer> stimuliTrialIndex = new LinkedHashMap<String, Integer>();
 
     //private String audiPathDir = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/audioas2/stimuli/";
@@ -259,12 +259,23 @@ public class AudioStimuliFromString {
         }
     }
 
+    public void prepareLearningTrialsAsCsv(ArrayList<Integer> learningTrialIDs) {
+        for (Integer id : learningTrialIDs) {
+            Trial trial = this.trials.get(id);
+            this.learningTrials.put(id, trial);
+        }
+    }
+
     public LinkedHashMap<String, AudioAsStimulus> getHashedStimuli() {
         return this.hashedStimuli;
     }
 
     public LinkedHashMap<Integer, Trial> getHashedTrials() {
         return this.trials;
+    }
+    
+    public LinkedHashMap<Integer, Trial> getHashedLearningTrials() {
+        return this.learningTrials;
     }
 
     public LinkedHashMap<String, Integer> getStimuliTrialIndex() {
