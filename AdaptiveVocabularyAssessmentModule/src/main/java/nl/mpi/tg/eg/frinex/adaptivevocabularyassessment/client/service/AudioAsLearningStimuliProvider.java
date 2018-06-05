@@ -271,38 +271,19 @@ public class AudioAsLearningStimuliProvider extends BandStimuliProvider<AudioAsS
         }
         return stringBuilder.toString();
     }
+    
+  
+    
+     @Override
+    public String getHtmlStimuliReport() {
+        String inhoudFineTuning = this.getStringFineTuningHistory("<tr>", "</tr>", "<td>", "</td>", "html");
+        StringBuilder htmlStringBuilder = new StringBuilder();
+        htmlStringBuilder.append("<p>Resultaat van je oefening</p><table border=1>").append(inhoudFineTuning).append("</table>");
+        return htmlStringBuilder.toString();
 
-    @Override
-    public String getBandFrequenceTable(String startRow, String endRow, String startColumn, String endColumn, String format) {
-        StringBuilder stringBuilder = new StringBuilder();
-        HashMap<Integer, String> indexMap = this.invertHashMap(Indices.BAND_LABEL_TO_INDEX);
-        stringBuilder.append(startRow).append(endRow);
-        stringBuilder.append(startRow).append(endRow);
-        stringBuilder.append(startRow).append(endRow);
-        stringBuilder.append(startRow).append(" Map Band to Frequence").append(endRow);
-
-        stringBuilder.append(startRow);
-        stringBuilder.append(startColumn).append("Band ").append(endColumn);
-        stringBuilder.append(startColumn).append("# of appearances").append(endColumn);
-        stringBuilder.append(endRow);
-        for (int index = 0; index < this.bandVisitsByTrials.size(); index++) {
-            String bandLabel = indexMap.get(index);
-            stringBuilder.append(startRow);
-            stringBuilder.append(startColumn).append(bandLabel).append(endColumn);
-            stringBuilder.append(startColumn).append(this.bandVisitsByTrials.get(index)).append(endColumn);
-            stringBuilder.append(endRow);
-        }
-        return stringBuilder.toString();
     }
+    
 
-    private HashMap<Integer, String> invertHashMap(HashMap<String, Integer> map) {
-        Set<String> keys = map.keySet();
-        HashMap<Integer, String> retVal = new HashMap<Integer, String>();
-        for (String label : keys) {
-            retVal.put(map.get(label), label);
-        }
-        return retVal;
-    }
 
     // TODO
     @Override
