@@ -26,6 +26,7 @@ import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.i18n.shared.DateTimeFormat;
 import com.google.gwt.user.client.Timer;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Random;
 import java.util.logging.Level;
@@ -113,7 +114,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 + "\"tagValue1\": " + jsonEscape(tagValue1) + ",\n"
                 + "\"tagValue2\": " + jsonEscape(tagValue2) + ",\n"
                 + "\"eventMs\": \"" + eventMs + "\" \n}");
-        if (ApplicationController.SDCARD_DATACHANNEL == dataChannel) {
+        if (Arrays.asList(ApplicationController.SDCARD_DATACHANNELS).contains(dataChannel)) {
             writeCsvLine(userId.toString(), screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs);
         }
     }
@@ -327,7 +328,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
         }
      }-*/;
 
-    protected native void writeJsonData(String userIdString, String stimulusIdString, String stimulusJsonData) /*-{
+    public native void writeJsonData(String userIdString, String stimulusIdString, String stimulusJsonData) /*-{
         var dataSubmissionService = this;
         console.log("writeStimuliData: " + userIdString + " : " + stimulusIdString + " : " + stimulusJsonData);
         if($wnd.plugins){
