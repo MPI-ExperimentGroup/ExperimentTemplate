@@ -66,7 +66,7 @@ public class MetadataView extends ComplexView {
             outerPanel.add(flexTable);
         }
         final int rowCount = flexTable.getRowCount();
-        final MetadataFieldWidget stimulusMetadataField = new MetadataFieldWidget(metadataField, existingValue);
+        final MetadataFieldWidget stimulusMetadataField = new MetadataFieldWidget(metadataField, existingValue, 0);
         if (otherUsersList != null) {
             ListBox listBox = new ListBox();
             int selectedIndex = 0;

@@ -153,6 +153,7 @@ public abstract class AbstractPresenter implements Presenter {
             public void postLoadTimerFired() {
             }
         };
+        // consider fromTrustedString if there are issues with fromString when sdcard stimuli are used
         ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString((imageString.startsWith("file")) ? imageString : serviceLocations.staticFilesUrl() + imageString), styleName, postLoadMs, shownStimulusListener, timedStimulusListener, null);
     }
 
@@ -338,22 +339,6 @@ public abstract class AbstractPresenter implements Presenter {
                 console.log("startAudioRecorderError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
             },  userIdString, directoryName,  stimulusIdString);
-        } else {
-            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
-        }
-     }-*/;
-
-    protected native void writeStimuliData(String userIdString, String stimulusIdString, String stimulusJsonData) /*-{
-        var abstractPresenter = this;
-        console.log("writeStimuliData: " + userIdString + " : " + stimulusIdString + " : " + stimulusJsonData);
-        if($wnd.plugins){
-            $wnd.plugins.fieldKitRecorder.writeStimuliData(function (tagvalue) {
-                console.log("writeStimuliData: " + tagvalue);
-//                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, tagvalue);
-            }, function (tagvalue) {
-                console.log("startAudioRecorderError: " + tagvalue);
-                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
-            },  userIdString, stimulusIdString,  stimulusJsonData);
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }
