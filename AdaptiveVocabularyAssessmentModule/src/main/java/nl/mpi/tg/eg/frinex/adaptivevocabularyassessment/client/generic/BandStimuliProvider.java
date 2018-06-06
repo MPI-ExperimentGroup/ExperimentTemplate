@@ -69,8 +69,8 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
 
     // fine tuning stopping
     protected boolean enoughFineTuningStimulae = true;
-    protected Integer[] bandVisitCounter;
-    protected Integer[] cycle2helper;
+    protected Integer[] bandVisitCounter =  new Integer[0];
+    protected Integer[] cycle2helper =   new Integer[0];
     protected boolean cycle2 = false;
     protected boolean champion = false;
     protected boolean looser = false;

@@ -84,7 +84,8 @@ public class PeabodyStimuliFromStringTest {
             int number = Integer.parseInt(bits1[bits1.length - 1]);
             assertEquals(counter, number);
 
-            String[] bitsImage = stimulus.getImage().split("_");
+            String image = instance.removeFileExtension(stimulus.getImage(), ".png");
+            String[] bitsImage = image.split("_");
             String[] bitsImage1 = bitsImage[0].split("/");
             String set = bitsImage1[bitsImage1.length - 1];
             int expectedSetNumber = setCounter + 1;
@@ -125,7 +126,8 @@ public class PeabodyStimuliFromStringTest {
                 int number = Integer.parseInt(bits1[bits1.length - 1]);
                 assertEquals(counter, number);
 
-                String[] bitsImage = stimulus.getImage().split("_");
+                String image = instance.removeFileExtension(stimulus.getImage(), ".png");
+                String[] bitsImage = image.split("_");
                 String[] bitsImage1 = bitsImage[0].split("/");
                 String set = bitsImage1[bitsImage1.length - 1];
                 int expectedSetNumber = setIndex + 1;

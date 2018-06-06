@@ -65,10 +65,10 @@ public class PeabodyStimuliFromString {
                 throw new IOException(correctAnswer + "is undefined");
             }
 
-            String imagePath = this.removeFileExtension(picture.trim(), ".png");
+            String imagePath = picture.trim();
             String audioPath = this.removeFileExtension(sound.trim(), ".wav");
             
-            String uniqueId = imagePath +"_"+audioPath;
+            String uniqueId = this.removeFileExtension(imagePath, ".png") +"_"+audioPath;
             String label = uniqueId;
             
             String[] helpBandLabel = imagePath.split("_");
@@ -97,7 +97,7 @@ public class PeabodyStimuliFromString {
      }
 
   
-    private String removeFileExtension(String name, String extension) {
+    public String removeFileExtension(String name, String extension) {
         if (name.endsWith(extension)) {
             String retVal = name.substring(0, name.length()-extension.length());
             return retVal;

@@ -32,11 +32,12 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  */
 public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus> {
 
-    int baseSetIndex;
-    int maxMistakesForOkBase = 4;
-    int maxMistakesForOk = 8;
-    int finalScore = 0;
-    String stimuliDir;
+    private int baseSetIndex;
+    private String stimuliDir;
+    
+    private final int maxMistakesForOkBase = 4;
+    private final int maxMistakesForOk = 8;
+    private int finalScore = 0;
 
     ArrayList<ArrayList<PeabodyStimulus>> stimuliPool;
 
