@@ -75,10 +75,10 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
         ((ComplexView) simpleView).addTextField(completionCode, true);
     }
 
-    public void generateCompletionCode(Object nullObject, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+    public void generateCompletionCode(final int dataChannel, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         // this method requires, send all data success before displaying the code
         final String completionCode = submissionService.getCompletionCode(userResults.getUserData().getUserId());
-        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "DataSubmission", "CompletionCode", completionCode, 0);
+        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "DataSubmission", "CompletionCode", completionCode, 0);
 
         submissionService.submitAllData(userResults, new DataSubmissionListener() {
             @Override

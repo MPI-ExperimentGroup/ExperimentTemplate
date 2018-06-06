@@ -137,9 +137,9 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
 //            ((ReportView) simpleView).addText(messages.reportScreenSCTaccuracy(numberFormat2.format(calculatedScores.getAccuracy())));
 //            ((ReportView) simpleView).addText(messages.reportScreenSCTmeanreactionTime(numberFormat3.format(calculatedScores.getMeanReactionTime() / 1000), numberFormat3.format(calculatedScores.getReactionTimeDeviation() / 1000)));
 //            stringBuilder.append(userResults.getUserData().getMetadataValue(MetadataFieldProvider.));
-            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "Score", stimuliGroup.getPostName(), Double.toString(calculatedScores.getScore()), 0);
-            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "MeanReactionTime", stimuliGroup.getPostName(), Double.toString(calculatedScores.getMeanReactionTime()), 0);
-            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), "ReactionTimeDeviation", stimuliGroup.getPostName(), Double.toString(calculatedScores.getReactionTimeDeviation()), 0);
+            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, "Score", stimuliGroup.getPostName(), Double.toString(calculatedScores.getScore()), 0);
+            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, "MeanReactionTime", stimuliGroup.getPostName(), Double.toString(calculatedScores.getMeanReactionTime()), 0);
+            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, "ReactionTimeDeviation", stimuliGroup.getPostName(), Double.toString(calculatedScores.getReactionTimeDeviation()), 0);
         }
 //        ((ReportView) simpleView).addText(messages.reportScreenPostSCTtext());
         if (userResults.getUserData().getBestScore() <= scoreThreshold) {

@@ -28,9 +28,9 @@
             public static final boolean SHOW_HEADER = </xsl:text>
         <xsl:value-of select="experiment/@showMenuBar" />
         <xsl:text>;
-            public static final int SDCARD_DATACHANNEL = </xsl:text>
-        <xsl:value-of select="if(experiment/logToSdCard/@dataChanel) then experiment/logToSdCard/@dataChanel else '-1'" />
-        <xsl:text>;
+            public static final int[] SDCARD_DATACHANNELS = {</xsl:text>
+        <xsl:value-of select="if(experiment/logToSdCard/@dataChanel) then experiment/logToSdCard/@dataChanel else ''" />
+        <xsl:text>};
             public enum ApplicationState {
         
             start(null),
@@ -400,7 +400,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             </xsl:when>
             <xsl:otherwise>
                 <!--// todo: should this @eventTag exist in this button type given that tags can only happen in a stimulus presenter?-->
-                <xsl:value-of select="if(@eventTag) then concat('logTimeStamp(&quot;', local-name(), '&quot;, &quot;', @eventTag, '&quot;);') else ''" />
+                <xsl:value-of select="if(@eventTag) then concat('logTimeStamp(&quot;', local-name(), '&quot;, &quot;', @eventTag, '&quot;, 0);') else ''" />
                 <xsl:apply-templates/>
             </xsl:otherwise>
         </xsl:choose>
@@ -454,7 +454,10 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@sendData) then concat(', ', @sendData eq 'true') else ''" />    
         <xsl:value-of select="if(@matchingRegex) then concat('&quot;', @matchingRegex, '&quot;') else ''" />
         <xsl:value-of select="if(@target) then concat(', ApplicationState.', @target) else ''" />
-        <xsl:value-of select="if(local-name() eq 'sendAllData' or local-name() eq 'sendMetadata' or local-name() eq 'generateCompletionCode') then 'null' else ''" />   
+        <xsl:if test="local-name() eq 'generateCompletionCode'">
+            <xsl:value-of select="if(@dataChanel) then concat(@dataChanel,', ') else '0,'" />
+        </xsl:if>
+        <xsl:value-of select="if(local-name() eq 'sendAllData' or local-name() eq 'sendMetadata') then 'null' else ''" />   
         <xsl:value-of select="if(local-name() eq 'saveMetadataButton') then concat(', messages.errorMessage', generate-id(.), '()') else ''" />
         <xsl:value-of select="if(local-name() eq 'helpDialogue') then concat(', messages.closeButtonLabel', generate-id(.), '()') else ''" />
         <xsl:apply-templates select="onError" />        
@@ -488,10 +491,14 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
         <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;') else ''" />
+        <xsl:if test="local-name() ne 'nextStimulus' and local-name() ne 'prevStimulus'">
+            <xsl:value-of select="if(@eventTag) then ',' else ''" />
+            <xsl:value-of select="if(@dataChanel) then @dataChanel else '0'" />
+        </xsl:if>
         <xsl:value-of select="if(@featureText) then concat(', messages.', generate-id(.), '()') else ''" />
         <xsl:value-of select="if(@src) then concat(', &quot;', @src, '&quot;') else ''" />
-        <!--<xsl:value-of select="if(@styleName and local-name() ne 'touchInputZone') then ', ' else ''" />-->        
-        <xsl:value-of select="if(@showControls) then @showControls eq 'true' else ''" />        
+        <xsl:value-of select="if(local-name() eq 'touchInputCaptureStart') then ', ' else ''" />        
+        <xsl:value-of select="if(@showControls) then @showControls eq ', true' else ''" />        
         <xsl:value-of select="if(@styleName) then concat(', &quot;', @styleName, '&quot;') else ''" />    
         <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />
         <xsl:value-of select="if(@autoPlay) then concat(', ', @autoPlay) else ''" />        
@@ -610,7 +617,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@groupMembers) then concat('&quot;', @groupMembers, '&quot;, ') else ''" />
         <xsl:value-of select="if(@groupCommunicationChannels) then concat('&quot;', @groupCommunicationChannels, '&quot;, ') else ''" />
         <xsl:value-of select="if(@phasesPerStimulus) then concat(@phasesPerStimulus, ', ') else ''" />
-        
+        <xsl:if test="local-name() eq 'stimulusPresent' or local-name() eq 'stimulusCodeAudio' or local-name() eq 'stimulusCodeVideo'">
+            <xsl:value-of select="if(@dataChanel) then concat(@dataChanel,', ') else '0,'" />
+        </xsl:if>
         <xsl:if test="local-name() eq 'groupNetworkActivity'">
             <xsl:text>new GroupActivityListener("</xsl:text>
             <xsl:value-of select="generate-id(.)" />
