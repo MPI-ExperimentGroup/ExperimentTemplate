@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.peabody.PeabodyStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.peabodypool.PeabodyStimuliFromStringTest;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -75,6 +76,7 @@ public class PeabodyStimuliProviderTest {
         provider.setnumberOfBands(this.numberOfBands);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setstartBand(this.startBand);
+        provider.setstimuliDir(PeabodyStimuliFromStringTest.PEABODY_STIMULI_DIR);
         provider.initialiseStimuliState(stimuliStateSnapshot);
 
         assertEquals(sBand - 1, provider.getCurrentBandIndex());
@@ -88,11 +90,12 @@ public class PeabodyStimuliProviderTest {
                 PeabodyStimulus stimulus = result.get(setIndex).get(pageIndex);
                 counter++;
 
-                String[] bits = stimulus.getAudio().split("_");
+                String audioFile = stimulus.getAudio().substring(PeabodyStimuliFromStringTest.PEABODY_STIMULI_DIR.length());
+                String[] bits = audioFile.split("_");
                 int number = Integer.parseInt(bits[0]);
                 assertEquals(counter, number);
 
-                String[] bitsImage = stimulus.getImage().split("_");
+                String[] bitsImage = stimulus.getImage().substring(PeabodyStimuliFromStringTest.PEABODY_STIMULI_DIR.length()).split("_");
                 String set = bitsImage[0];
                 int expectedSetNumber = setIndex + 1;
                 assertEquals("set" + expectedSetNumber, set);
@@ -124,6 +127,8 @@ public class PeabodyStimuliProviderTest {
         provider.setnumberOfBands(this.numberOfBands);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setstartBand(this.startBand);
+        provider.setstimuliDir(PeabodyStimuliFromStringTest.PEABODY_STIMULI_DIR);
+        
         provider.initialiseStimuliState(stimuliStateSnapshot);
 
         // 
@@ -154,6 +159,8 @@ public class PeabodyStimuliProviderTest {
         provider.setnumberOfBands(this.numberOfBands);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setstartBand(this.startBand);
+        provider.setstimuliDir(PeabodyStimuliFromStringTest.PEABODY_STIMULI_DIR);
+        
         provider.initialiseStimuliState(stimuliStateSnapshot);
 
         provider = this.roundWithErrors(provider, 4, 4, null, 1, stimuliPerBand, 0);
@@ -183,6 +190,8 @@ public class PeabodyStimuliProviderTest {
         provider.setnumberOfBands(this.numberOfBands);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setstartBand(this.startBand);
+        provider.setstimuliDir(PeabodyStimuliFromStringTest.PEABODY_STIMULI_DIR);
+        
         provider.initialiseStimuliState(stimuliStateSnapshot);
 
         Random rnd = new Random();
@@ -275,6 +284,8 @@ public class PeabodyStimuliProviderTest {
         provider.setnumberOfBands(this.numberOfBands);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setstartBand(this.startBand);
+        provider.setstimuliDir(PeabodyStimuliFromStringTest.PEABODY_STIMULI_DIR);
+        
         provider.initialiseStimuliState(stimuliStateSnapshot);
 
         // 
@@ -301,6 +312,8 @@ public class PeabodyStimuliProviderTest {
         provider.setnumberOfBands(this.numberOfBands);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setstartBand(this.startBand);
+        provider.setstimuliDir(PeabodyStimuliFromStringTest.PEABODY_STIMULI_DIR);
+        
         provider.initialiseStimuliState(stimuliStateSnapshot);
 
         // 
@@ -330,6 +343,8 @@ public class PeabodyStimuliProviderTest {
         provider.setnumberOfBands(this.numberOfBands);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setstartBand(this.startBand);
+        provider.setstimuliDir(PeabodyStimuliFromStringTest.PEABODY_STIMULI_DIR);
+        
         provider.initialiseStimuliState(stimuliStateSnapshot);
 
         // 
@@ -361,6 +376,8 @@ public class PeabodyStimuliProviderTest {
         provider.setnumberOfBands(this.numberOfBands);
         provider.setfineTuningTupleLength(this.fineTuningTupleLength);
         provider.setstartBand(this.startBand);
+        provider.setstimuliDir(PeabodyStimuliFromStringTest.PEABODY_STIMULI_DIR);
+        
         provider.initialiseStimuliState(stimuliStateSnapshot);
 
         Random rnd = new Random();
@@ -379,7 +396,8 @@ public class PeabodyStimuliProviderTest {
         }
         ArrayList<BookkeepingStimulus<PeabodyStimulus>> recordi = provider.getResponseRecord();
         String audioString = recordi.get(recordi.size()-1).getStimulus().getAudio();
-        String[] parts = audioString.split("_");
+        String audioFile = audioString.substring(PeabodyStimuliFromStringTest.PEABODY_STIMULI_DIR.length());
+        String[] parts = audioFile.split("_");
         int index =  Integer.parseInt(parts[0]);
         assertEquals(index-errorCounter, provider.getFinalScore());
     }

@@ -32,7 +32,7 @@ public class PeabodyStimuliFromString {
     private final LinkedHashMap<String, PeabodyStimulus> hashedStimuli = new LinkedHashMap<String, PeabodyStimulus>();
     private final  ArrayList<ArrayList<PeabodyStimulus>> stimuliByBands = new ArrayList<ArrayList<PeabodyStimulus>>();
   
-    public void parseWordsInputCSVString(int numberOfBands) throws Exception {
+    public void parseWordsInputCSVString(int numberOfBands, String stimuliDir) throws Exception {
         
         
         String csvString = CsvTable.CSV_STRING;
@@ -74,6 +74,9 @@ public class PeabodyStimuliFromString {
             String[] helpBandLabel = imagePath.split("_");
             String set = helpBandLabel[0];
             int bandIndex = Indices.SET_TO_BAND_INDEX.get(set);
+            
+            imagePath = stimuliDir + imagePath;
+            audioPath = stimuliDir + audioPath;
                     
             // PeabodyStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, String set, int bandIndex)
             PeabodyStimulus stimulus = new PeabodyStimulus(uniqueId,new Stimulus.Tag[0], label, "",  0, audioPath, "", imagePath, "1,2,3,4", correctAnswer.trim(), set, bandIndex);

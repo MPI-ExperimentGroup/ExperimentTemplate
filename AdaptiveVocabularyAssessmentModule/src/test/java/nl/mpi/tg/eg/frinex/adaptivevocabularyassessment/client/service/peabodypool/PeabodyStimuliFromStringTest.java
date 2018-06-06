@@ -34,9 +34,10 @@ import static org.junit.Assert.*;
  */
 public class PeabodyStimuliFromStringTest {
 
-    int amountOfStimuli = 204;
-    int stimuliPerBand = 12;
-    int numberOfBands = 17;
+    private final int amountOfStimuli = 204;
+    private final int stimuliPerBand = 12;
+    private final int numberOfBands = 17;
+    public static final String PEABODY_STIMULI_DIR = "static/stimuli/";
 
     public PeabodyStimuliFromStringTest() {
     }
@@ -65,7 +66,7 @@ public class PeabodyStimuliFromStringTest {
     public void testGetHashedStimuli() throws Exception {
         System.out.println("parseWordsInputCSVString");
         PeabodyStimuliFromString instance = new PeabodyStimuliFromString();
-        instance.parseWordsInputCSVString(this.numberOfBands);
+        instance.parseWordsInputCSVString(this.numberOfBands, PeabodyStimuliFromStringTest.PEABODY_STIMULI_DIR);
 
         LinkedHashMap<String, PeabodyStimulus> result = instance.getHashedStimuli();
         assertEquals(this.amountOfStimuli, result.size());
@@ -79,11 +80,13 @@ public class PeabodyStimuliFromStringTest {
             PeabodyStimulus stimulus = result.get(key);
 
             String[] bits = stimulus.getAudio().split("_");
-            int number = Integer.parseInt(bits[0]);
+            String[] bits1 = bits[0].split("/");
+            int number = Integer.parseInt(bits1[bits1.length - 1]);
             assertEquals(counter, number);
 
             String[] bitsImage = stimulus.getImage().split("_");
-            String set = bitsImage[0];
+            String[] bitsImage1 = bitsImage[0].split("/");
+            String set = bitsImage1[bitsImage1.length - 1];
             int expectedSetNumber = setCounter + 1;
             assertEquals("set" + expectedSetNumber, set);
 
@@ -106,7 +109,7 @@ public class PeabodyStimuliFromStringTest {
     public void testGetStimuliByBands() throws Exception {
         System.out.println("getStimuliByBands");
         PeabodyStimuliFromString instance = new PeabodyStimuliFromString();
-        instance.parseWordsInputCSVString(this.numberOfBands);
+        instance.parseWordsInputCSVString(this.numberOfBands, PeabodyStimuliFromStringTest.PEABODY_STIMULI_DIR);
 
         ArrayList<ArrayList<PeabodyStimulus>> result = instance.getStimuliByBands();
         assertEquals(this.numberOfBands, result.size());
@@ -118,16 +121,18 @@ public class PeabodyStimuliFromStringTest {
                 counter++;
 
                 String[] bits = stimulus.getAudio().split("_");
-                int number = Integer.parseInt(bits[0]);
+                String[] bits1 = bits[0].split("/");
+                int number = Integer.parseInt(bits1[bits1.length - 1]);
                 assertEquals(counter, number);
 
                 String[] bitsImage = stimulus.getImage().split("_");
-                String set = bitsImage[0];
+                String[] bitsImage1 = bitsImage[0].split("/");
+                String set = bitsImage1[bitsImage1.length - 1];
                 int expectedSetNumber = setIndex + 1;
                 assertEquals("set" + expectedSetNumber, set);
 
                 int pageNumber = Integer.parseInt(bitsImage[2]);
-                assertEquals(pageIndex+1, pageNumber);
+                assertEquals(pageIndex + 1, pageNumber);
 
             }
         }

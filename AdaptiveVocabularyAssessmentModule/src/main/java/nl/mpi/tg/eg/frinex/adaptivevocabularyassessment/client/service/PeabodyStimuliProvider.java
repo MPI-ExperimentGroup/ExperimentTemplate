@@ -36,6 +36,7 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
     int maxMistakesForOkBase = 4;
     int maxMistakesForOk = 8;
     int finalScore = 0;
+    String stimuliDir;
 
     ArrayList<ArrayList<PeabodyStimulus>> stimuliPool;
 
@@ -59,7 +60,7 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
 
             PeabodyStimuliFromString reader = new PeabodyStimuliFromString();
             try {
-                reader.parseWordsInputCSVString(this.numberOfBands);
+                reader.parseWordsInputCSVString(this.numberOfBands, this.stimuliDir);
                 this.stimuliPool = reader.getStimuliByBands();
                 this.initialiseNextFineTuningTuple();
             } catch (Exception exReading) {
@@ -78,6 +79,10 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
     
     public ArrayList<ArrayList<PeabodyStimulus>> getStimuliPool(){
         return this.stimuliPool;
+    }
+    
+    public void setstimuliDir(String dir) {
+        this.stimuliDir = dir;
     }
 
     // in peabody experiment tupel contains 12 units (a unit/stimulus is picure + audio)
@@ -168,7 +173,8 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
         int lastIndex = recordi.size() - 1;
         BookkeepingStimulus<PeabodyStimulus> lastBStimulus = recordi.get(lastIndex);
         String audioPath = lastBStimulus.getStimulus().getAudio();
-        String[] bits = audioPath.split("_");
+        String audioFile = audioPath.substring(this.stimuliDir.length());
+        String[] bits = audioFile.split("_");
         int lastAudioIndex = Integer.parseInt(bits[0]);
         int errors = 0;
         for (BookkeepingStimulus<PeabodyStimulus> bStimulus: recordi) {
