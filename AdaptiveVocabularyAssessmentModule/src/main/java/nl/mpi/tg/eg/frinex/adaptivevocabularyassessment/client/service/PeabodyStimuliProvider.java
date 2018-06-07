@@ -144,6 +144,7 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
             }
         } else {
             this.finalScore = this.computeFinalScore(this.responseRecord);
+            this.bandIndexScore = this.finalScore;
         }
 
         return retVal;
@@ -223,14 +224,20 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
         stringBuilder.append(startColumn).append("Visiting Number").append(endColumn);
         stringBuilder.append(endRow);
         int modCounter = 0;
-        ArrayList<String> spellingsCheck = new ArrayList<>();
-        for (int i = this.timeTickEndFastTrack + 1; i < this.responseRecord.size(); i++) {
+        for (int i = 0; i < this.responseRecord.size(); i++) {
             BookkeepingStimulus<PeabodyStimulus> stimulus = this.responseRecord.get(i);
             StringBuilder row = new StringBuilder();
             String time = (new Date(stimulus.getTimeStamp())).toString();
 
-            row.append(startColumn).append(stimulus.getStimulus().getImage()).append(endColumn);
-            row.append(startColumn).append(stimulus.getStimulus().getAudio()).append(endColumn);
+            String imagePath = stimulus.getStimulus().getImage();
+            String imageFile = imagePath.substring(this.stimuliDir.length());
+            row.append(startColumn).append(imageFile).append(endColumn);
+            
+            String audioPath = stimulus.getStimulus().getAudio();
+            String audioFile = audioPath.substring(this.stimuliDir.length());
+            row.append(startColumn).append(audioFile).append(endColumn);
+            
+            
             row.append(startColumn).append(stimulus.getStimulus().getSetNumber()).append(endColumn);
             String reaction = stimulus.getReaction();
             row.append(startColumn).append(reaction).append(endColumn);
@@ -239,12 +246,11 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
             row.append(startColumn).append(i).append(endColumn);
             stringBuilder.append(startRow).append(row).append(endRow);
             modCounter++;
-            if (!stimulus.getCorrectness() || modCounter == this.fineTuningTupleLength) {
+            if (modCounter == this.fineTuningTupleLength) {
                 stringBuilder.append(startRow).append(empty).append(endRow); // skip between tuples
                 stringBuilder.append(startRow).append(empty).append(endRow);
                 modCounter = 0;
             }
-            spellingsCheck.add(stimulus.getStimulus().getLabel());
         }
 
         return stringBuilder.toString();
