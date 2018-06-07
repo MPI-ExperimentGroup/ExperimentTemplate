@@ -144,7 +144,6 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
             }
         } else {
             this.finalScore = this.computeFinalScore(this.responseRecord);
-            this.bandIndexScore = this.finalScore;
         }
 
         return retVal;
@@ -201,6 +200,27 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
     @Override
     public boolean analyseCorrectness(Stimulus stimulus, String stimulusResponse) {
         return stimulusResponse.equals(stimulus.getCorrectResponses());
+    }
+    
+    @Override
+    public String getStringSummary(String startRow, String endRow, String startColumn, String endColumn) {
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(startRow);
+        stringBuilder.append(startColumn).append("Score").append(endColumn);
+       
+        stringBuilder.append(startColumn).append("Champion").append(endColumn);
+        stringBuilder.append(startColumn).append("Looser").append(endColumn);
+        
+        stringBuilder.append(endRow);
+        stringBuilder.append(startRow);
+        stringBuilder.append(startColumn).append(this.finalScore).append(endColumn);
+        
+        stringBuilder.append(startColumn).append(this.champion).append(endColumn);
+        stringBuilder.append(startColumn).append(this.looser).append(endColumn);
+        
+        stringBuilder.append(endRow);
+        return stringBuilder.toString();
     }
 
     @Override
