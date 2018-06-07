@@ -70,7 +70,8 @@
     </presenter>
     <presenter displayOrder="6" type="stimulus" self="stimuliScreen" title="Peabody Series">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider" eventTag="stimuliN" 
-                      numberOfBands="17" startBand="13" 
+                      numberOfBands="17" startBand="13"
+                      fineTuningTupleLength="12"  
                       fastTrackPresent="false" fineTuningFirstWrongOut="false"
                       stimuliDir="static/stimuli/">
             <hasMoreStimulus>
@@ -84,16 +85,16 @@
                     <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                     </stimulusAudio>
                 </actionButton>
-                <stimulusButton featureText="&#160;" hotKey="ONE" styleName="hiddenBottomRight">
+                <stimulusButton featureText="1" hotKey="ONE" styleName="hiddenBottomRight">
                     <trigger listenerId="nextStimulusAction"/>
                 </stimulusButton>
-                <stimulusButton featureText="&#160;" hotKey="TWO" styleName="hiddenBottomRight">
+                <stimulusButton featureText="2" hotKey="TWO" styleName="hiddenBottomRight">
                     <trigger listenerId="nextStimulusAction"/>
                 </stimulusButton>
-                <stimulusButton featureText="&#160;" hotKey="THREE" styleName="hiddenBottomRight">
+                <stimulusButton featureText="3" hotKey="THREE" styleName="hiddenBottomRight">
                     <trigger listenerId="nextStimulusAction"/>
                 </stimulusButton>
-                <stimulusButton featureText="&#160;" hotKey="FOUR" styleName="hiddenBottomRight">
+                <stimulusButton featureText="4" hotKey="FOUR" styleName="hiddenBottomRight">
                     <trigger listenerId="nextStimulusAction"/>
                 </stimulusButton>
             </hasMoreStimulus>
