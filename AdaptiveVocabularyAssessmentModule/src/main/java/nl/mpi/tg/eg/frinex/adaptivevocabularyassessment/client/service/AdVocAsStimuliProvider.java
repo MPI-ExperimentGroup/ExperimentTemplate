@@ -698,7 +698,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
             for (int i = 0; i < objs.size(); i++) {
                 Map<String, Object> currentObj = (Map<String, Object>) objs.get(i);
                 BookkeepingStimulus<AdVocAsStimulus> bStimulus = ghost.toBookkeepingStimulusObject(currentObj, hashedStimuli);
-                this.responseRecord.add(i, bStimulus);
+                this.tupleFT.add(i, bStimulus);
             }
         }
 

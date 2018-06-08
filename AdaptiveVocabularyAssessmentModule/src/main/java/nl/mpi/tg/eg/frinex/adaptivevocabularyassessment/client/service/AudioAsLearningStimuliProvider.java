@@ -285,19 +285,10 @@ public class AudioAsLearningStimuliProvider extends BandStimuliProvider<AudioAsS
     
 
 
-    // TODO
-    @Override
-    public String toString() {
-        Map<String, Object> map = super.toMap();
-        map.put("startTimeMs", this.startTimeMs);
-        map.put("timeOutExit", this.timeOutExit);
-        map.put("durationMs", this.durationMs);
-        return map.toString();
-    }
 
     @Override
     protected void deserialiseSpecific(String str) throws Exception {
-        // TODO
+       
     }
 
     @Override

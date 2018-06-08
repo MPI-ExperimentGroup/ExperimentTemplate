@@ -19,8 +19,11 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimuliProvider;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsJSONdialect;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.peabody.PeabodyStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.peabodypool.Indices;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.peabodypool.PeabodyStimuliFromString;
@@ -32,9 +35,11 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  */
 public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus> {
 
+    private final static String[] SPECIFIC_FLDS = {"finalScore", "responseRecord", "tupleFT"};
+
     private int baseSetIndex;
     private String stimuliDir;
-    
+
     private final int maxMistakesForOkBase = 4;
     private final int maxMistakesForOk = 8;
     private int finalScore = 0;
@@ -48,18 +53,20 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
     @Override
     public void initialiseStimuliState(String stimuliStateSnapshot) {
 
+        this.baseSetIndex = this.startBand - 1;
+
         if (stimuliStateSnapshot.trim().isEmpty()) {
             this.bandIndexScore = 0;
             this.isCorrectCurrentResponse = null;
-            
+
             this.enoughFineTuningStimulae = true;
             this.champion = false;
             this.looser = false;
 
-            this.baseSetIndex = this.startBand - 1;
             this.currentBandIndex = this.baseSetIndex;
 
             PeabodyStimuliFromString reader = new PeabodyStimuliFromString();
+
             try {
                 reader.parseWordsInputCSVString(this.numberOfBands, this.stimuliDir);
                 this.stimuliPool = reader.getStimuliByBands();
@@ -71,17 +78,18 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
         } else {
             try {
                 this.deserialiseToThis(stimuliStateSnapshot);
+                this.deserialiseSpecific(stimuliStateSnapshot);
             } catch (Exception ex) {
                 this.exceptionLogging(ex);
             }
         }
 
     }
-    
-    public ArrayList<ArrayList<PeabodyStimulus>> getStimuliPool(){
+
+    public ArrayList<ArrayList<PeabodyStimulus>> getStimuliPool() {
         return this.stimuliPool;
     }
-    
+
     public void setstimuliDir(String dir) {
         this.stimuliDir = dir;
     }
@@ -148,8 +156,8 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
 
         return retVal;
     }
-    
-    public int getFinalScore(){
+
+    public int getFinalScore() {
         return this.finalScore;
     }
 
@@ -178,12 +186,12 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
         String[] bits = audioFile.split("_");
         int lastAudioIndex = Integer.parseInt(bits[0]);
         int errors = 0;
-        for (BookkeepingStimulus<PeabodyStimulus> bStimulus: recordi) {
+        for (BookkeepingStimulus<PeabodyStimulus> bStimulus : recordi) {
             if (!bStimulus.getCorrectness()) {
                 errors++;
             }
         }
-        return lastAudioIndex-errors;
+        return lastAudioIndex - errors;
     }
 
     @Override
@@ -201,24 +209,24 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
     public boolean analyseCorrectness(Stimulus stimulus, String stimulusResponse) {
         return stimulusResponse.equals(stimulus.getCorrectResponses());
     }
-    
+
     @Override
     public String getStringSummary(String startRow, String endRow, String startColumn, String endColumn) {
 
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(startRow);
         stringBuilder.append(startColumn).append("Score").append(endColumn);
-       
+
         stringBuilder.append(startColumn).append("Champion").append(endColumn);
         stringBuilder.append(startColumn).append("Looser").append(endColumn);
-        
+
         stringBuilder.append(endRow);
         stringBuilder.append(startRow);
         stringBuilder.append(startColumn).append(this.finalScore).append(endColumn);
-        
+
         stringBuilder.append(startColumn).append(this.champion).append(endColumn);
         stringBuilder.append(startColumn).append(this.looser).append(endColumn);
-        
+
         stringBuilder.append(endRow);
         return stringBuilder.toString();
     }
@@ -252,12 +260,11 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
             String imagePath = stimulus.getStimulus().getImage();
             String imageFile = imagePath.substring(this.stimuliDir.length());
             row.append(startColumn).append(imageFile).append(endColumn);
-            
+
             String audioPath = stimulus.getStimulus().getAudio();
             String audioFile = audioPath.substring(this.stimuliDir.length());
             row.append(startColumn).append(audioFile).append(endColumn);
-            
-            
+
             row.append(startColumn).append(stimulus.getStimulus().getSetNumber()).append(endColumn);
             String reaction = stimulus.getReaction();
             row.append(startColumn).append(reaction).append(endColumn);
@@ -274,6 +281,13 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
         }
 
         return stringBuilder.toString();
+    }
+
+    @Override
+    public String toString() {
+        Map<String, Object> map = super.toMap();
+        map.put("finalScore", this.finalScore);
+        return map.toString();
     }
 
     @Override
@@ -295,7 +309,38 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
     }
 
     @Override
-    protected void deserialiseSpecific(String str) {
+    protected void deserialiseSpecific(String str) throws Exception {
+        Map<String, Object> map = UtilsJSONdialect.stringToObjectMap(str, SPECIFIC_FLDS);
+        this.finalScore = Integer.parseInt(map.get("finalScore").toString());
+
+        this.responseRecord = new ArrayList<BookkeepingStimulus<PeabodyStimulus>>();
+        BookkeepingStimulus<PeabodyStimulus> factory = new BookkeepingStimulus<PeabodyStimulus>(null);
+        Object recordObj = map.get("responseRecord");
+
+        PeabodyStimuliFromString reader = new PeabodyStimuliFromString();
+        reader.parseWordsInputCSVString(this.numberOfBands, this.stimuliDir);
+        this.stimuliPool = reader.getStimuliByBands();
+        
+        if (recordObj != null) {
+            List<Object> objs = (List<Object>) recordObj;
+            for (int i = 0; i < objs.size(); i++) {
+                Map<String, Object> mapBStimulus = (Map<String, Object>) objs.get(i);
+                BookkeepingStimulus<PeabodyStimulus> bStimulus = factory.toBookkeepingStimulusObject(mapBStimulus, reader.getHashedStimuli());
+                this.responseRecord.add(i, bStimulus);
+            }
+        }
+    
+        Object tupleFTObj = map.get("tupleFT");
+        this.tupleFT = new ArrayList<BookkeepingStimulus<PeabodyStimulus>>();
+        if (tupleFTObj != null) {
+            List<Object> objs = (List<Object>) tupleFTObj;
+            for (int i = 0; i < objs.size(); i++) {
+                Map<String, Object> currentObj = (Map<String, Object>) objs.get(i);
+                BookkeepingStimulus<PeabodyStimulus> bStimulus = factory.toBookkeepingStimulusObject(currentObj, reader.getHashedStimuli());
+                this.tupleFT.add(i, bStimulus);
+            }
+        }
+        
     }
 
     @Override
