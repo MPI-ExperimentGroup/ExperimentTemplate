@@ -79,24 +79,36 @@
                     <nextStimulus repeatIncorrect="false"/>
                 </triggerListener>
                 <clearPage/>
-                <stimulusImage msToNext="0" >
-                </stimulusImage>
                 <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                     <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                     </stimulusAudio>
                 </actionButton>
-                <stimulusButton featureText="1" hotKey="ONE" styleName="hiddenBottomRight">
-                    <trigger listenerId="nextStimulusAction"/>
-                </stimulusButton>
-                <stimulusButton featureText="2" hotKey="TWO" styleName="hiddenBottomRight">
-                    <trigger listenerId="nextStimulusAction"/>
-                </stimulusButton>
-                <stimulusButton featureText="3" hotKey="THREE" styleName="hiddenBottomRight">
-                    <trigger listenerId="nextStimulusAction"/>
-                </stimulusButton>
-                <stimulusButton featureText="4" hotKey="FOUR" styleName="hiddenBottomRight">
-                    <trigger listenerId="nextStimulusAction"/>
-                </stimulusButton>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                           <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <stimulusImage msToNext="0" >
+                </stimulusImage>
             </hasMoreStimulus>
             <endOfStimulus>
                 <centrePage/>
