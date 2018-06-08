@@ -11,9 +11,9 @@ cd $appname-electron
 
 
 npm install -g electron-forge
-npm install
+npm install --save
 #electron-forge init $appname
 #cd $appname
-#electron-forge make all
-electron-forge package --platform=win32 --arch=x64
+#electron-forge package --platform=win32 --arch=x64
+electron-forge make all
 cp out/make/*darwin*.zip $appname.zip ../@experiment.configuration.name@-darwin.zip
