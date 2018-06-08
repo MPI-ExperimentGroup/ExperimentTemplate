@@ -17,7 +17,7 @@
         <table>
             <row>
                 <column styleName="stimulusContainerCol">
-                    <htmlText featureText="Welkom bij deze audio test."/>
+                    <htmlText featureText="Welkom bij deze Peabody test."/>
                 </column>
             </row>
             <row>
