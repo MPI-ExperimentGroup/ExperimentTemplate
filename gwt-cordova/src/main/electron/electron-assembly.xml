@@ -16,10 +16,17 @@
         <fileSet>
             <directory>${basedir}/src/main/electron</directory>
             <includes>
-                <!--<include>index.js</include>-->
                 <include>package.json</include>
             </includes>  
             <outputDirectory>/</outputDirectory>
+            <filtered>true</filtered>
+        </fileSet>        
+        <fileSet>
+            <directory>${basedir}/src/main/electron</directory>
+            <includes>
+                <include>index.js</include>
+            </includes>  
+            <outputDirectory>/src/</outputDirectory>
             <filtered>true</filtered>
         </fileSet>        
         <fileSet>
