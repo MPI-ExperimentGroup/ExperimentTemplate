@@ -34,6 +34,7 @@ public enum FeatureAttribute {
     parameterName,
     linkedFieldName,
     code,
+//    tags,  // todo: consider updating some elements to take a tags attribute rather than a stimuli element
     codeFormat,
     validationRegex,
     allowedCharCodes(true),
@@ -51,6 +52,7 @@ public enum FeatureAttribute {
     styleName(true),
     showOnBackButton(true),
     eventTier,
+    dataChannel(true),
     filePerStimulus, // when recording audio this boolean determins if a separate recording should be made for each stimulus or one recording for the set of stimuli
     eventTag(true),
     ratingLabels,
@@ -64,15 +66,15 @@ public enum FeatureAttribute {
     repeatRandomWindow(true),
     adjacencyThreshold(true),
     repeatIncorrect,
-    hotKey(true),
-    @Deprecated
-    mp3,
-    @Deprecated
-    mp4,
-    @Deprecated
-    ogg,
-    @Deprecated
-    webm,
+    hotKey(true), // todo: this could provide a list for the schema to know what are valid values
+//    @Deprecated
+//    mp3,
+//    @Deprecated
+//    mp4,
+//    @Deprecated
+//    ogg,
+//    @Deprecated
+//    webm,
     wavFormat,
     poster,
     autoPlay,
@@ -94,7 +96,9 @@ public enum FeatureAttribute {
     condition0Tag,
     condition1Tag,
     condition2Tag,
-    scoreThreshold,
+    scoreThreshold(false),
+    errorThreshold(true), // interger to make active, when empty or not present is passed as null
+    potentialThreshold(true), // interger to make active, when empty or not present is passed as null
     showPlaybackIndicator,
     showControls(true),
     groupRole,
