@@ -27,7 +27,7 @@
             </row>
             <row>
                 <column styleName="stimulusContainerCol">
-                    <targetButton featureText="Naar het experiment" target="Edit_User"/>
+                    <targetButton featureText="Naar het experiment" target="AgeSelection"/>
                 </column>
             </row>
             <row>
@@ -42,7 +42,140 @@
             </row>
         </table>
     </presenter>
-    <presenter displayOrder="2" menuLabel="Edit User" next="Accord" type="metadata" self="Edit_User" title="">
+    <presenter displayOrder="5" menuLabel="Age" type="menu" self="AgeSelection" title="Age">
+        <centrePage/>
+        <addPadding/>
+        <htmlText featureText="Kiez leeftijd reeks"/>
+        <addPadding/>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="2;3-2;5 jaar" target="Edit_User1"/>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <htmlText featureText="&#160;"/>
+                </column>
+            </row>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="2;6-2;11 jaar" target="Edit_User2"/>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <htmlText featureText="&#160;"/>
+                </column>
+            </row>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="3;0-3;11 jaar" target="Edit_User3"/>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <htmlText featureText="&#160;"/>
+                </column>
+            </row>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="4;0-4;5 jaar" target="Edit_User4"/>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <htmlText featureText="&#160;"/>
+                </column>
+            </row>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="4;6-5;5" target="Edit_User5"/>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <htmlText featureText="&#160;"/>
+                </column>
+            </row>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="5;6-6;5" target="Edit_User6"/>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <htmlText featureText="&#160;"/>
+                </column>
+            </row>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="6;6-7;11" target="Edit_User7"/>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <htmlText featureText="&#160;"/>
+                </column>
+            </row>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="8;0-9;11 jaar" target="Edit_User8"/>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <htmlText featureText="&#160;"/>
+                </column>
+            </row>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="10;0-10;11 jaar" target="Edit_User9"/>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <htmlText featureText="&#160;"/>
+                </column>
+            </row>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="11;0-13;11 jaar" target="Edit_User10"/>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <htmlText featureText="&#160;"/>
+                </column>
+            </row>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="14;0-15;11 jaar" target="Edit_User11"/>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <htmlText featureText="&#160;"/>
+                </column>
+            </row>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="16;0-35;11 jaar" target="Edit_User12"/>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <htmlText featureText="&#160;"/>
+                </column>
+            </row>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="36;0-90;0 jaar" target="Edit_User13"/>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter displayOrder="10" menuLabel="Edit User 1" next="Accord1" type="metadata" self="Edit_User1" title="">
         <metadataField fieldName="workerId"/>
         <table>
             <row>
@@ -59,18 +192,330 @@
             </row>
         </table>
     </presenter>
-    <presenter displayOrder="3" next="stimuliScreen" type="metadata" self="Accord" title="" >
+    <presenter displayOrder="15" menuLabel="Edit User 2" next="Accord2" type="metadata" self="Edit_User2" title="">
+        <metadataField fieldName="workerId"/>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
+                        <onSuccess>   
+                            <autoNextPresenter/>
+                        </onSuccess>
+                        <onError>   
+                            <autoNextPresenter/>
+                        </onError>      
+                    </saveMetadataButton>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter displayOrder="20" menuLabel="Edit User 3" next="Accord3" type="metadata" self="Edit_User3" title="">
+        <metadataField fieldName="workerId"/>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
+                        <onSuccess>   
+                            <autoNextPresenter/>
+                        </onSuccess>
+                        <onError>   
+                            <autoNextPresenter/>
+                        </onError>      
+                    </saveMetadataButton>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter displayOrder="25" menuLabel="Edit User 4" next="Accord4" type="metadata" self="Edit_User4" title="">
+        <metadataField fieldName="workerId"/>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
+                        <onSuccess>   
+                            <autoNextPresenter/>
+                        </onSuccess>
+                        <onError>   
+                            <autoNextPresenter/>
+                        </onError>      
+                    </saveMetadataButton>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter displayOrder="30" menuLabel="Edit User 5" next="Accord5" type="metadata" self="Edit_User5" title="">
+        <metadataField fieldName="workerId"/>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
+                        <onSuccess>   
+                            <autoNextPresenter/>
+                        </onSuccess>
+                        <onError>   
+                            <autoNextPresenter/>
+                        </onError>      
+                    </saveMetadataButton>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter displayOrder="35" menuLabel="Edit User 6" next="Accord6" type="metadata" self="Edit_User6" title="">
+        <metadataField fieldName="workerId"/>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
+                        <onSuccess>   
+                            <autoNextPresenter/>
+                        </onSuccess>
+                        <onError>   
+                            <autoNextPresenter/>
+                        </onError>      
+                    </saveMetadataButton>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter displayOrder="40" menuLabel="Edit User 7" next="Accord7" type="metadata" self="Edit_User7" title="">
+        <metadataField fieldName="workerId"/>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
+                        <onSuccess>   
+                            <autoNextPresenter/>
+                        </onSuccess>
+                        <onError>   
+                            <autoNextPresenter/>
+                        </onError>      
+                    </saveMetadataButton>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter displayOrder="45" menuLabel="Edit User 8" next="Accord8" type="metadata" self="Edit_User8" title="">
+        <metadataField fieldName="workerId"/>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
+                        <onSuccess>   
+                            <autoNextPresenter/>
+                        </onSuccess>
+                        <onError>   
+                            <autoNextPresenter/>
+                        </onError>      
+                    </saveMetadataButton>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter displayOrder="50" menuLabel="Edit User 9" next="Accord9" type="metadata" self="Edit_User9" title="">
+        <metadataField fieldName="workerId"/>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
+                        <onSuccess>   
+                            <autoNextPresenter/>
+                        </onSuccess>
+                        <onError>   
+                            <autoNextPresenter/>
+                        </onError>      
+                    </saveMetadataButton>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter displayOrder="55" menuLabel="Edit User 10" next="Accord10" type="metadata" self="Edit_User10" title="">
+        <metadataField fieldName="workerId"/>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
+                        <onSuccess>   
+                            <autoNextPresenter/>
+                        </onSuccess>
+                        <onError>   
+                            <autoNextPresenter/>
+                        </onError>      
+                    </saveMetadataButton>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter displayOrder="60" menuLabel="Edit User 11" next="Accord11" type="metadata" self="Edit_User11" title="">
+        <metadataField fieldName="workerId"/>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
+                        <onSuccess>   
+                            <autoNextPresenter/>
+                        </onSuccess>
+                        <onError>   
+                            <autoNextPresenter/>
+                        </onError>      
+                    </saveMetadataButton>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter displayOrder="65" menuLabel="Edit User 12" next="Accord12" type="metadata" self="Edit_User12" title="">
+        <metadataField fieldName="workerId"/>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
+                        <onSuccess>   
+                            <autoNextPresenter/>
+                        </onSuccess>
+                        <onError>   
+                            <autoNextPresenter/>
+                        </onError>      
+                    </saveMetadataButton>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter displayOrder="70" menuLabel="Edit User 13" next="Accord13" type="metadata" self="Edit_User13" title="">
+        <metadataField fieldName="workerId"/>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
+                        <onSuccess>   
+                            <autoNextPresenter/>
+                        </onSuccess>
+                        <onError>   
+                            <autoNextPresenter/>
+                        </onError>      
+                    </saveMetadataButton>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter displayOrder="75" next="stimuliScreen1" type="metadata" self="Accord1" title="" >
         <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
         <addPadding/>
         <addPadding/>
         <htmlText featureText="Welkom bij dit experiment,"/>
         <addPadding/>
         <htmlText featureText="TODO"/>
-        <targetButton featureText="Begin experiment" target="stimuliScreen"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen1"/>
     </presenter>
-    <presenter displayOrder="6" type="stimulus" self="stimuliScreen" title="Peabody Series">
+    <presenter displayOrder="80" next="stimuliScreen2" type="metadata" self="Accord2" title="" >
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Welkom bij dit experiment,"/>
+        <addPadding/>
+        <htmlText featureText="TODO"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen2"/>
+    </presenter>
+    <presenter displayOrder="85" next="stimuliScreen3" type="metadata" self="Accord3" title="" >
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Welkom bij dit experiment,"/>
+        <addPadding/>
+        <htmlText featureText="TODO"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen3"/>
+    </presenter>
+    <presenter displayOrder="90" next="stimuliScreen4" type="metadata" self="Accord4" title="" >
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Welkom bij dit experiment,"/>
+        <addPadding/>
+        <htmlText featureText="TODO"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen4"/>
+    </presenter>
+    <presenter displayOrder="95" next="stimuliScreen5" type="metadata" self="Accord5" title="" >
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Welkom bij dit experiment,"/>
+        <addPadding/>
+        <htmlText featureText="TODO"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen5"/>
+    </presenter>
+    <presenter displayOrder="100" next="stimuliScreen6" type="metadata" self="Accord6" title="" >
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Welkom bij dit experiment,"/>
+        <addPadding/>
+        <htmlText featureText="TODO"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen6"/>
+    </presenter>
+    <presenter displayOrder="105" next="stimuliScreen7" type="metadata" self="Accord7" title="" >
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Welkom bij dit experiment,"/>
+        <addPadding/>
+        <htmlText featureText="TODO"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen7"/>
+    </presenter>
+    <presenter displayOrder="110" next="stimuliScreen8" type="metadata" self="Accord8" title="" >
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Welkom bij dit experiment,"/>
+        <addPadding/>
+        <htmlText featureText="TODO"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen8"/>
+    </presenter>
+    <presenter displayOrder="115" next="stimuliScreen9" type="metadata" self="Accord9" title="" >
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Welkom bij dit experiment,"/>
+        <addPadding/>
+        <htmlText featureText="TODO"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen9"/>
+    </presenter>
+    <presenter displayOrder="120" next="stimuliScreen10" type="metadata" self="Accord10" title="" >
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Welkom bij dit experiment,"/>
+        <addPadding/>
+        <htmlText featureText="TODO"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen10"/>
+    </presenter>
+    <presenter displayOrder="125" next="stimuliScreen11" type="metadata" self="Accord11" title="" >
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Welkom bij dit experiment,"/>
+        <addPadding/>
+        <htmlText featureText="TODO"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen11"/>
+    </presenter>
+    <presenter displayOrder="130" next="stimuliScreen12" type="metadata" self="Accord12" title="" >
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Welkom bij dit experiment,"/>
+        <addPadding/>
+        <htmlText featureText="TODO"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen12"/>
+    </presenter>
+    <presenter displayOrder="135" next="stimuliScreen13" type="metadata" self="Accord13" title="" >
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Welkom bij dit experiment,"/>
+        <addPadding/>
+        <htmlText featureText="TODO"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen13"/>
+    </presenter>
+    <presenter displayOrder="140" type="stimulus" self="stimuliScreen1" title="Peabody Series">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider" eventTag="stimuliN" 
-                      numberOfBands="17" startBand="13"
+                      numberOfBands="17" startBand="1"
                       fineTuningTupleLength="12"  
                       fastTrackPresent="false" fineTuningFirstWrongOut="false"
                       stimuliDir="static/stimuli/">
@@ -79,40 +524,38 @@
                     <nextStimulus repeatIncorrect="false"/>
                 </triggerListener>
                 <clearPage/>
+                <stimulusImage msToNext="0" >
+                </stimulusImage>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
                 <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                     <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                     </stimulusAudio>
-                    <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
-                        <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                        </stimulusAudio>
-                    </actionButton>
-                    <table showOnBackButton="true" styleName="titleBarButton">
-                        <row>
-                            <column styleName="">
-                                <stimulusButton featureText="1" hotKey="ONE" styleName="">
-                                    <trigger listenerId="nextStimulusAction"/>
-                                </stimulusButton>
-                            </column>
-                            <column styleName="">
-                                <stimulusButton featureText="2" hotKey="TWO" styleName="">
-                                    <trigger listenerId="nextStimulusAction"/>
-                                </stimulusButton>
-                            </column>
-                            <column styleName="">
-                                <stimulusButton featureText="3" hotKey="THREE" styleName="">
-                                    <trigger listenerId="nextStimulusAction"/>
-                                </stimulusButton>
-                            </column>
-                            <column styleName="">
-                                <stimulusButton featureText="4" hotKey="FOUR" styleName="">
-                                    <trigger listenerId="nextStimulusAction"/>
-                                </stimulusButton>
-                            </column>
-                        </row>
-                    </table>
+                    <enableStimulusButtons/>
                 </actionButton>
-                <stimulusImage msToNext="0" >
-                </stimulusImage>
             </hasMoreStimulus>
             <endOfStimulus>
                 <centrePage/>
@@ -130,7 +573,727 @@
             <stimuli/>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="7" type="transmission" self="Admin" title="Administratie" next="ListParticipants">
+    <presenter displayOrder="145" type="stimulus" self="stimuliScreen2" title="Peabody Series">
+        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider" eventTag="stimuliN" 
+                      numberOfBands="17" startBand="2"
+                      fineTuningTupleLength="12"  
+                      fastTrackPresent="false" fineTuningFirstWrongOut="false"
+                      stimuliDir="static/stimuli/">
+            <hasMoreStimulus>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <clearPage/>
+                <stimulusImage msToNext="0" >
+                </stimulusImage>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                    <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                    </stimulusAudio>
+                    <enableStimulusButtons/>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <centrePage/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
+                <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
+                <showStimuliReport/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <targetButton featureText="Naar de administratie pagina" target="Admin"/>
+                <addPadding/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli/>
+        </loadStimulus>
+    </presenter>
+    <presenter displayOrder="150" type="stimulus" self="stimuliScreen3" title="Peabody Series">
+        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider" eventTag="stimuliN" 
+                      numberOfBands="17" startBand="3"
+                      fineTuningTupleLength="12"  
+                      fastTrackPresent="false" fineTuningFirstWrongOut="false"
+                      stimuliDir="static/stimuli/">
+            <hasMoreStimulus>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <clearPage/>
+                <stimulusImage msToNext="0" >
+                </stimulusImage>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                    <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                    </stimulusAudio>
+                    <enableStimulusButtons/>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <centrePage/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
+                <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
+                <showStimuliReport/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <targetButton featureText="Naar de administratie pagina" target="Admin"/>
+                <addPadding/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli/>
+        </loadStimulus>
+    </presenter>
+    <presenter displayOrder="155" type="stimulus" self="stimuliScreen4" title="Peabody Series">
+        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider" eventTag="stimuliN" 
+                      numberOfBands="17" startBand="4"
+                      fineTuningTupleLength="12"  
+                      fastTrackPresent="false" fineTuningFirstWrongOut="false"
+                      stimuliDir="static/stimuli/">
+            <hasMoreStimulus>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <clearPage/>
+                <stimulusImage msToNext="0" >
+                </stimulusImage>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                    <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                    </stimulusAudio>
+                    <enableStimulusButtons/>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <centrePage/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
+                <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
+                <showStimuliReport/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <targetButton featureText="Naar de administratie pagina" target="Admin"/>
+                <addPadding/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli/>
+        </loadStimulus>
+    </presenter>
+    <presenter displayOrder="160" type="stimulus" self="stimuliScreen5" title="Peabody Series">
+        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider" eventTag="stimuliN" 
+                      numberOfBands="17" startBand="5"
+                      fineTuningTupleLength="12"  
+                      fastTrackPresent="false" fineTuningFirstWrongOut="false"
+                      stimuliDir="static/stimuli/">
+            <hasMoreStimulus>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <clearPage/>
+                <stimulusImage msToNext="0" >
+                </stimulusImage>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                    <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                    </stimulusAudio>
+                    <enableStimulusButtons/>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <centrePage/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
+                <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
+                <showStimuliReport/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <targetButton featureText="Naar de administratie pagina" target="Admin"/>
+                <addPadding/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli/>
+        </loadStimulus>
+    </presenter>
+    <presenter displayOrder="165" type="stimulus" self="stimuliScreen6" title="Peabody Series">
+        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider" eventTag="stimuliN" 
+                      numberOfBands="17" startBand="6"
+                      fineTuningTupleLength="12"  
+                      fastTrackPresent="false" fineTuningFirstWrongOut="false"
+                      stimuliDir="static/stimuli/">
+            <hasMoreStimulus>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <clearPage/>
+                <stimulusImage msToNext="0" >
+                </stimulusImage>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                    <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                    </stimulusAudio>
+                    <enableStimulusButtons/>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <centrePage/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
+                <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
+                <showStimuliReport/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <targetButton featureText="Naar de administratie pagina" target="Admin"/>
+                <addPadding/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli/>
+        </loadStimulus>
+    </presenter>
+    <presenter displayOrder="170" type="stimulus" self="stimuliScreen7" title="Peabody Series">
+        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider" eventTag="stimuliN" 
+                      numberOfBands="17" startBand="7"
+                      fineTuningTupleLength="12"  
+                      fastTrackPresent="false" fineTuningFirstWrongOut="false"
+                      stimuliDir="static/stimuli/">
+            <hasMoreStimulus>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <clearPage/>
+                <stimulusImage msToNext="0" >
+                </stimulusImage>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                    <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                    </stimulusAudio>
+                    <enableStimulusButtons/>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <centrePage/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
+                <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
+                <showStimuliReport/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <targetButton featureText="Naar de administratie pagina" target="Admin"/>
+                <addPadding/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli/>
+        </loadStimulus>
+    </presenter>
+    <presenter displayOrder="175" type="stimulus" self="stimuliScreen8" title="Peabody Series">
+        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider" eventTag="stimuliN" 
+                      numberOfBands="17" startBand="8"
+                      fineTuningTupleLength="12"  
+                      fastTrackPresent="false" fineTuningFirstWrongOut="false"
+                      stimuliDir="static/stimuli/">
+            <hasMoreStimulus>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <clearPage/>
+                <stimulusImage msToNext="0" >
+                </stimulusImage>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                    <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                    </stimulusAudio>
+                    <enableStimulusButtons/>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <centrePage/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
+                <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
+                <showStimuliReport/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <targetButton featureText="Naar de administratie pagina" target="Admin"/>
+                <addPadding/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli/>
+        </loadStimulus>
+    </presenter>
+    <presenter displayOrder="180" type="stimulus" self="stimuliScreen9" title="Peabody Series">
+        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider" eventTag="stimuliN" 
+                      numberOfBands="17" startBand="9"
+                      fineTuningTupleLength="12"  
+                      fastTrackPresent="false" fineTuningFirstWrongOut="false"
+                      stimuliDir="static/stimuli/">
+            <hasMoreStimulus>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <clearPage/>
+                <stimulusImage msToNext="0" >
+                </stimulusImage>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                    <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                    </stimulusAudio>
+                    <enableStimulusButtons/>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <centrePage/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
+                <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
+                <showStimuliReport/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <targetButton featureText="Naar de administratie pagina" target="Admin"/>
+                <addPadding/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli/>
+        </loadStimulus>
+    </presenter>
+    <presenter displayOrder="185" type="stimulus" self="stimuliScreen10" title="Peabody Series">
+        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider" eventTag="stimuliN" 
+                      numberOfBands="17" startBand="10"
+                      fineTuningTupleLength="12"  
+                      fastTrackPresent="false" fineTuningFirstWrongOut="false"
+                      stimuliDir="static/stimuli/">
+            <hasMoreStimulus>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <clearPage/>
+                <stimulusImage msToNext="0" >
+                </stimulusImage>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                    <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                    </stimulusAudio>
+                    <enableStimulusButtons/>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <centrePage/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
+                <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
+                <showStimuliReport/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <targetButton featureText="Naar de administratie pagina" target="Admin"/>
+                <addPadding/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli/>
+        </loadStimulus>
+    </presenter>
+    <presenter displayOrder="190" type="stimulus" self="stimuliScreen11" title="Peabody Series">
+        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider" eventTag="stimuliN" 
+                      numberOfBands="17" startBand="11"
+                      fineTuningTupleLength="12"  
+                      fastTrackPresent="false" fineTuningFirstWrongOut="false"
+                      stimuliDir="static/stimuli/">
+            <hasMoreStimulus>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <clearPage/>
+                <stimulusImage msToNext="0" >
+                </stimulusImage>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                    <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                    </stimulusAudio>
+                    <enableStimulusButtons/>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <centrePage/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
+                <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
+                <showStimuliReport/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <targetButton featureText="Naar de administratie pagina" target="Admin"/>
+                <addPadding/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli/>
+        </loadStimulus>
+    </presenter>
+    <presenter displayOrder="195" type="stimulus" self="stimuliScreen12" title="Peabody Series">
+        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider" eventTag="stimuliN" 
+                      numberOfBands="17" startBand="13"
+                      fineTuningTupleLength="12"  
+                      fastTrackPresent="false" fineTuningFirstWrongOut="false"
+                      stimuliDir="static/stimuli/">
+            <hasMoreStimulus>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <clearPage/>
+                <stimulusImage msToNext="0" >
+                </stimulusImage>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                    <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                    </stimulusAudio>
+                    <enableStimulusButtons/>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <centrePage/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
+                <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
+                <showStimuliReport/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <targetButton featureText="Naar de administratie pagina" target="Admin"/>
+                <addPadding/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli/>
+        </loadStimulus>
+    </presenter>
+    <presenter displayOrder="200" type="stimulus" self="stimuliScreen13" title="Peabody Series">
+        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider" eventTag="stimuliN" 
+                      numberOfBands="17" startBand="14"
+                      fineTuningTupleLength="12"  
+                      fastTrackPresent="false" fineTuningFirstWrongOut="false"
+                      stimuliDir="static/stimuli/">
+            <hasMoreStimulus>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <clearPage/>
+                <stimulusImage msToNext="0" >
+                </stimulusImage>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                    <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                    </stimulusAudio>
+                    <enableStimulusButtons/>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <centrePage/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
+                <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
+                <showStimuliReport/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <targetButton featureText="Naar de administratie pagina" target="Admin"/>
+                <addPadding/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli/>
+        </loadStimulus>
+    </presenter>
+    <presenter displayOrder="205" type="transmission" self="Admin" title="Administratie" next="ListParticipants">
         <sendMetadata>
             <onSuccess> 
                 <sendAllData>
@@ -168,7 +1331,7 @@
             </onError>      
         </sendMetadata>
     </presenter>
-    <presenter back="Menu" displayOrder="8" menuLabel="Deelnemer lijst" type="metadata" self="ListParticipants" title="Kiez deelnemer">
+    <presenter back="Menu" displayOrder="210" menuLabel="Deelnemer lijst" type="metadata" self="ListParticipants" title="Kiez deelnemer">
         <htmlText featureText="The participants which are still in local browser memory:"/>
         <selectUserMenu/>
         <addPadding/>
