@@ -226,7 +226,7 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         } else {
             actionFeature = new PresenterFeature(FeatureType.ratingFooterButton, null);
             actionFeature.addFeatureAttributes(FeatureAttribute.ratingLabels, String.join(",", imageFeatureValues.getButtons()));
-            actionFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
+            actionFeature.addFeatureAttributes(FeatureAttribute.dataChannel, "1");
         }
         actionFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         imageFeature.getPresenterFeatureList().add(actionFeature);
