@@ -84,6 +84,9 @@ public class Experiment implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Stimulus> stimuli = new ArrayList<>();
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<DataChannel> dataChannels = new ArrayList<>();
+
     public Experiment() {
     }
 
@@ -126,6 +129,16 @@ public class Experiment implements Serializable {
 
     public void setTextFontSize(int textFontSize) {
         this.textFontSize = textFontSize;
+    }
+
+    @XmlElementWrapper(name = "administration")
+    @XmlElement(name = "dataChannel")
+    public List<DataChannel> getDataChannels() {
+        return dataChannels;
+    }
+
+    public void setDataChannels(List<DataChannel> dataChannels) {
+        this.dataChannels = dataChannels;
     }
 
     @XmlAttribute

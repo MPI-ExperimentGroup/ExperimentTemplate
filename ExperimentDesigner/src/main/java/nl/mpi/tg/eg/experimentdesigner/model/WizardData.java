@@ -50,6 +50,9 @@ public class WizardData {
     private boolean obfuscateScreenNames = false;
 
     private int textFontSize = 17;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @XmlElement(name = "dataChannel")
+    private List<DataChannel> dataChannels = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @OrderBy("displayOrder ASC")
@@ -85,6 +88,14 @@ public class WizardData {
 
     public void setTextFontSize(int textFontSize) {
         this.textFontSize = textFontSize;
+    }
+
+    public List<DataChannel> getDataChannels() {
+        return dataChannels;
+    }
+
+    public void addDataChannel(DataChannel dataChannel) {
+        this.dataChannels.add(dataChannel);
     }
 
     public boolean isObfuscateScreenNames() {
