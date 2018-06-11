@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="Playhouse Study" appNameInternal="playhouse_study" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
+    <administration/>
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="ppcode"/>
         <field controlledMessage="Voer een getal." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="datOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
@@ -61,19 +62,19 @@
                         <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
                             <backgroundImage msToNext="0" src="" styleName=""/>
                             <disableStimulusButtons/>
-                            <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" showPlaybackIndicator="false">
-                                <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" showPlaybackIndicator="false">
+                            <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" dataChannel="0" showPlaybackIndicator="false">
+                                <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" dataChannel="0" showPlaybackIndicator="false">
                                     <enableStimulusButtons/>
                                     <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
                                     <pause msToNext="3000">
-                                        <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" showPlaybackIndicator="false">
-                                            <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" showPlaybackIndicator="false">
+                                        <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" dataChannel="0" showPlaybackIndicator="false">
+                                            <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" dataChannel="0" showPlaybackIndicator="false">
                                                 <disableStimulusButtons/>
                                                 <cancelPauseTimers/>
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                                 <pause msToNext="1000">
-                                                    <touchInputReportSubmit/>
+                                                    <touchInputReportSubmit dataChannel="3"/>
                                                     <nextStimulus repeatIncorrect="false"/>
                                                 </pause>
                                             </stimulusCodeAudio>
@@ -83,15 +84,15 @@
                             </stimulusCodeAudio>
                         </triggerListener>
                         <disableStimulusButtons/>
-                        <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton">
-                            <touchInputStimulusButton featureText="left" listenerId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton">
+                        <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
+                            <touchInputStimulusButton featureText="left" listenerId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
                                 <disableStimulusButtons/>
                                 <cancelPauseTimers/>
                                 <pause msToNext="1000">
                                     <clearPage styleName=""/>
                                     <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                    <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" showPlaybackIndicator="false">
-                                        <touchInputReportSubmit/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" showPlaybackIndicator="false">
+                                        <touchInputReportSubmit dataChannel="3"/>
                                         <nextStimulus repeatIncorrect="false"/>
                                     </stimulusCodeAudio>
                                 </pause>
@@ -99,15 +100,15 @@
                             <disableStimulusButtons/>
                             <trigger listenerId="imageLoadedAction"/>
                         </stimulusCodeImage>
-                        <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton">
-                            <touchInputStimulusButton featureText="centre" listenerId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton">
+                        <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton" dataChannel="0">
+                            <touchInputStimulusButton featureText="centre" listenerId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
                                 <disableStimulusButtons/>
                                 <cancelPauseTimers/>
                                 <pause msToNext="1000">
                                     <clearPage styleName=""/>
                                     <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                    <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" showPlaybackIndicator="false">
-                                        <touchInputReportSubmit/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" showPlaybackIndicator="false">
+                                        <touchInputReportSubmit dataChannel="3"/>
                                         <nextStimulus repeatIncorrect="false"/>
                                     </stimulusCodeAudio>
                                 </pause>
@@ -115,15 +116,15 @@
                             <disableStimulusButtons/>
                             <trigger listenerId="imageLoadedAction"/>
                         </stimulusCodeImage>
-                        <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton">
-                            <touchInputStimulusButton featureText="right" listenerId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton">
+                        <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton" dataChannel="0">
+                            <touchInputStimulusButton featureText="right" listenerId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
                                 <disableStimulusButtons/>
                                 <cancelPauseTimers/>
                                 <pause msToNext="1000">
                                     <clearPage styleName=""/>
                                     <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                    <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" showPlaybackIndicator="false">
-                                        <touchInputReportSubmit/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" showPlaybackIndicator="false">
+                                        <touchInputReportSubmit dataChannel="3"/>
                                         <nextStimulus repeatIncorrect="false"/>
                                     </stimulusCodeAudio>
                                 </pause>
@@ -136,25 +137,25 @@
                             <row>
                                 <column styleName="">
                                     <actionButton featureText="TestMenu (O)" eventTag="R1_MA_ENTER" hotKey="R1_MA_ENTER" styleName="">
-                                        <touchInputReportSubmit/>
+                                        <touchInputReportSubmit dataChannel="3"/>
                                         <autoNextPresenter target="TestMenu"/>
                                     </actionButton>
                                 </column>
                                 <column styleName="">
                                     <actionButton featureText="Prev (left)" eventTag="R1_MA_LEFT" hotKey="R1_MA_LEFT" styleName="">
-                                        <touchInputReportSubmit/>
+                                        <touchInputReportSubmit dataChannel="3"/>
                                         <prevStimulus repeatIncorrect="false"/>
                                     </actionButton>
                                 </column>
                                 <column styleName="">
                                     <actionButton featureText="Repeat (A)" eventTag="R1_MA_A" hotKey="R1_MA_A" styleName="">
-                                        <touchInputReportSubmit/>
+                                        <touchInputReportSubmit dataChannel="3"/>
                                         <showStimulus/>
                                     </actionButton>
                                 </column>
                                 <column styleName="">
                                     <actionButton featureText="Next (right)" eventTag="R1_MA_RIGHT" hotKey="R1_MA_RIGHT" styleName="">
-                                        <touchInputReportSubmit/>
+                                        <touchInputReportSubmit dataChannel="3"/>
                                         <nextStimulus repeatIncorrect="false"/>
                                     </actionButton>
                                 </column>
@@ -182,19 +183,19 @@
                         <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
                             <backgroundImage msToNext="0" src="" styleName=""/>
                             <disableStimulusButtons/>
-                            <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" showPlaybackIndicator="false">
-                                <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" showPlaybackIndicator="false">
+                            <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" dataChannel="0" showPlaybackIndicator="false">
+                                <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" dataChannel="0" showPlaybackIndicator="false">
                                     <enableStimulusButtons/>
                                     <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
                                     <pause msToNext="3000">
-                                        <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" showPlaybackIndicator="false">
-                                            <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" showPlaybackIndicator="false">
+                                        <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" dataChannel="0" showPlaybackIndicator="false">
+                                            <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" dataChannel="0" showPlaybackIndicator="false">
                                                 <disableStimulusButtons/>
                                                 <cancelPauseTimers/>
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
                                                 <pause msToNext="1000">
-                                                    <touchInputReportSubmit/>
+                                                    <touchInputReportSubmit dataChannel="3"/>
                                                     <nextStimulus repeatIncorrect="false"/>
                                                 </pause>
                                             </stimulusCodeAudio>
@@ -204,15 +205,15 @@
                             </stimulusCodeAudio>
                         </triggerListener>
                         <disableStimulusButtons/>
-                        <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton">
-                            <touchInputStimulusButton featureText="left" listenerId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton">
+                        <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
+                            <touchInputStimulusButton featureText="left" listenerId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
                                 <disableStimulusButtons/>
                                 <cancelPauseTimers/>
                                 <pause msToNext="1000">
                                     <clearPage styleName=""/>
                                     <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                    <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" showPlaybackIndicator="false">
-                                        <touchInputReportSubmit/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" showPlaybackIndicator="false">
+                                        <touchInputReportSubmit dataChannel="3"/>
                                         <nextStimulus repeatIncorrect="false"/>
                                     </stimulusCodeAudio>
                                 </pause>
@@ -220,15 +221,15 @@
                             <disableStimulusButtons/>
                             <trigger listenerId="imageLoadedAction"/>
                         </stimulusCodeImage>
-                        <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton">
-                            <touchInputStimulusButton featureText="centre" listenerId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton">
+                        <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton" dataChannel="0">
+                            <touchInputStimulusButton featureText="centre" listenerId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
                                 <disableStimulusButtons/>
                                 <cancelPauseTimers/>
                                 <pause msToNext="1000">
                                     <clearPage styleName=""/>
                                     <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                    <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" showPlaybackIndicator="false">
-                                        <touchInputReportSubmit/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" showPlaybackIndicator="false">
+                                        <touchInputReportSubmit dataChannel="3"/>
                                         <nextStimulus repeatIncorrect="false"/>
                                     </stimulusCodeAudio>
                                 </pause>
@@ -236,15 +237,15 @@
                             <disableStimulusButtons/>
                             <trigger listenerId="imageLoadedAction"/>
                         </stimulusCodeImage>
-                        <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton">
-                            <touchInputStimulusButton featureText="right" listenerId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton">
+                        <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton" dataChannel="0">
+                            <touchInputStimulusButton featureText="right" listenerId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
                                 <disableStimulusButtons/>
                                 <cancelPauseTimers/>
                                 <pause msToNext="1000">
                                     <clearPage styleName=""/>
                                     <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                    <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" showPlaybackIndicator="false">
-                                        <touchInputReportSubmit/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" showPlaybackIndicator="false">
+                                        <touchInputReportSubmit dataChannel="3"/>
                                         <nextStimulus repeatIncorrect="false"/>
                                     </stimulusCodeAudio>
                                 </pause>
@@ -257,25 +258,25 @@
                             <row>
                                 <column styleName="">
                                     <actionButton featureText="TestMenu (O)" eventTag="R1_MA_ENTER" hotKey="R1_MA_ENTER" styleName="">
-                                        <touchInputReportSubmit/>
+                                        <touchInputReportSubmit dataChannel="3"/>
                                         <autoNextPresenter target="TestMenu"/>
                                     </actionButton>
                                 </column>
                                 <column styleName="">
                                     <actionButton featureText="Prev (left)" eventTag="R1_MA_LEFT" hotKey="R1_MA_LEFT" styleName="">
-                                        <touchInputReportSubmit/>
+                                        <touchInputReportSubmit dataChannel="3"/>
                                         <prevStimulus repeatIncorrect="false"/>
                                     </actionButton>
                                 </column>
                                 <column styleName="">
                                     <actionButton featureText="Repeat (A)" eventTag="R1_MA_A" hotKey="R1_MA_A" styleName="">
-                                        <touchInputReportSubmit/>
+                                        <touchInputReportSubmit dataChannel="3"/>
                                         <showStimulus/>
                                     </actionButton>
                                 </column>
                                 <column styleName="">
                                     <actionButton featureText="Next (right)" eventTag="R1_MA_RIGHT" hotKey="R1_MA_RIGHT" styleName="">
-                                        <touchInputReportSubmit/>
+                                        <touchInputReportSubmit dataChannel="3"/>
                                         <nextStimulus repeatIncorrect="false"/>
                                     </actionButton>
                                 </column>
@@ -296,484 +297,492 @@
     <presenter menuLabel="Matching1" next="Matching2" type="stimulus" self="Matching1" title="Matching1">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock1">
             <audioButton eventTag="BeginMatching" src="BeginMatching" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
-                <pause msToNext="2000">
-                    <loadStimulus eventTag="Matching1" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
-                        <hasMoreStimulus>
-                            <backgroundImage msToNext="0" src="" styleName=""/>
-                            <clearPage styleName="fullScreenWidth"/>
-                            <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
+                <mediaLoaded>
+                    <pause msToNext="2000">
+                        <loadStimulus eventTag="Matching1" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+                            <hasMoreStimulus>
                                 <backgroundImage msToNext="0" src="" styleName=""/>
-                                <disableStimulusButtons/>
-                                <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" showPlaybackIndicator="false">
-                                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" showPlaybackIndicator="false">
-                                        <enableStimulusButtons/>
-                                        <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
-                                        <pause msToNext="3000">
-                                            <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" showPlaybackIndicator="false">
-                                                <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" showPlaybackIndicator="false">
-                                                    <disableStimulusButtons/>
-                                                    <cancelPauseTimers/>
-                                                    <clearPage styleName=""/>
-                                                    <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                    <pause msToNext="1000">
-                                                        <touchInputReportSubmit/>
-                                                        <nextStimulus repeatIncorrect="false"/>
-                                                    </pause>
+                                <clearPage styleName="fullScreenWidth"/>
+                                <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
+                                    <backgroundImage msToNext="0" src="" styleName=""/>
+                                    <disableStimulusButtons/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" dataChannel="0" showPlaybackIndicator="false">
+                                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" dataChannel="0" showPlaybackIndicator="false">
+                                            <enableStimulusButtons/>
+                                            <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
+                                            <pause msToNext="3000">
+                                                <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" dataChannel="0" showPlaybackIndicator="false">
+                                                    <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" dataChannel="0" showPlaybackIndicator="false">
+                                                        <disableStimulusButtons/>
+                                                        <cancelPauseTimers/>
+                                                        <clearPage styleName=""/>
+                                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                                        <pause msToNext="1000">
+                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <nextStimulus repeatIncorrect="false"/>
+                                                        </pause>
+                                                    </stimulusCodeAudio>
                                                 </stimulusCodeAudio>
+                                            </pause>
+                                        </stimulusCodeAudio>
+                                    </stimulusCodeAudio>
+                                </triggerListener>
+                                <disableStimulusButtons/>
+                                <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
+                                    <touchInputStimulusButton featureText="left" listenerId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
+                                        <disableStimulusButtons/>
+                                        <cancelPauseTimers/>
+                                        <pause msToNext="2000">
+                                            <clearPage styleName=""/>
+                                            <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                            <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" dataChannel="0" showPlaybackIndicator="false">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <nextStimulus repeatIncorrect="false"/>
                                             </stimulusCodeAudio>
                                         </pause>
-                                    </stimulusCodeAudio>
-                                </stimulusCodeAudio>
-                            </triggerListener>
-                            <disableStimulusButtons/>
-                            <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton">
-                                <touchInputStimulusButton featureText="left" listenerId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton">
+                                    </touchInputStimulusButton>
                                     <disableStimulusButtons/>
-                                    <cancelPauseTimers/>
-                                    <pause msToNext="2000">
-                                        <clearPage styleName=""/>
-                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" showPlaybackIndicator="false">
-                                            <touchInputReportSubmit/>
-                                            <nextStimulus repeatIncorrect="false"/>
-                                        </stimulusCodeAudio>
-                                    </pause>
-                                </touchInputStimulusButton>
-                                <disableStimulusButtons/>
-                                <trigger listenerId="imageLoadedAction"/>
-                            </stimulusCodeImage>
-                            <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton">
-                                <touchInputStimulusButton featureText="centre" listenerId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton">
+                                    <trigger listenerId="imageLoadedAction"/>
+                                </stimulusCodeImage>
+                                <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton" dataChannel="0">
+                                    <touchInputStimulusButton featureText="centre" listenerId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
+                                        <disableStimulusButtons/>
+                                        <cancelPauseTimers/>
+                                        <pause msToNext="2000">
+                                            <clearPage styleName=""/>
+                                            <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                            <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" dataChannel="0" showPlaybackIndicator="false">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <nextStimulus repeatIncorrect="false"/>
+                                            </stimulusCodeAudio>
+                                        </pause>
+                                    </touchInputStimulusButton>
                                     <disableStimulusButtons/>
-                                    <cancelPauseTimers/>
-                                    <pause msToNext="2000">
-                                        <clearPage styleName=""/>
-                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" showPlaybackIndicator="false">
-                                            <touchInputReportSubmit/>
-                                            <nextStimulus repeatIncorrect="false"/>
-                                        </stimulusCodeAudio>
-                                    </pause>
-                                </touchInputStimulusButton>
-                                <disableStimulusButtons/>
-                                <trigger listenerId="imageLoadedAction"/>
-                            </stimulusCodeImage>
-                            <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton">
-                                <touchInputStimulusButton featureText="right" listenerId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton">
+                                    <trigger listenerId="imageLoadedAction"/>
+                                </stimulusCodeImage>
+                                <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton" dataChannel="0">
+                                    <touchInputStimulusButton featureText="right" listenerId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
+                                        <disableStimulusButtons/>
+                                        <cancelPauseTimers/>
+                                        <pause msToNext="2000">
+                                            <clearPage styleName=""/>
+                                            <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                            <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" dataChannel="0" showPlaybackIndicator="false">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <nextStimulus repeatIncorrect="false"/>
+                                            </stimulusCodeAudio>
+                                        </pause>
+                                    </touchInputStimulusButton>
                                     <disableStimulusButtons/>
-                                    <cancelPauseTimers/>
-                                    <pause msToNext="2000">
-                                        <clearPage styleName=""/>
-                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" showPlaybackIndicator="false">
-                                            <touchInputReportSubmit/>
-                                            <nextStimulus repeatIncorrect="false"/>
-                                        </stimulusCodeAudio>
-                                    </pause>
-                                </touchInputStimulusButton>
-                                <disableStimulusButtons/>
-                                <trigger listenerId="imageLoadedAction"/>
-                            </stimulusCodeImage>
-                            <touchInputCaptureStart msToNext="-1" showControls="false"/>
-                            <table showOnBackButton="true" styleName="titleBarButton">
-                                <row>
-                                    <column styleName="">
-                                        <actionButton featureText="TestMenu (O)" eventTag="R1_MA_ENTER" hotKey="R1_MA_ENTER" styleName="">
-                                            <touchInputReportSubmit/>
-                                            <autoNextPresenter target="TestMenu"/>
-                                        </actionButton>
-                                    </column>
-                                    <column styleName="">
-                                        <actionButton featureText="Prev (left)" eventTag="R1_MA_LEFT" hotKey="R1_MA_LEFT" styleName="">
-                                            <touchInputReportSubmit/>
-                                            <prevStimulus repeatIncorrect="false"/>
-                                        </actionButton>
-                                    </column>
-                                    <column styleName="">
-                                        <actionButton featureText="Repeat (A)" eventTag="R1_MA_A" hotKey="R1_MA_A" styleName="">
-                                            <touchInputReportSubmit/>
-                                            <showStimulus/>
-                                        </actionButton>
-                                    </column>
-                                    <column styleName="">
-                                        <actionButton featureText="Next (right)" eventTag="R1_MA_RIGHT" hotKey="R1_MA_RIGHT" styleName="">
-                                            <touchInputReportSubmit/>
-                                            <nextStimulus repeatIncorrect="false"/>
-                                        </actionButton>
-                                    </column>
-                                </row>
-                            </table>
-                        </hasMoreStimulus>
-                        <endOfStimulus>
-                            <autoNextPresenter/>
-                        </endOfStimulus>
-                        <randomGrouping/>
-                        <stimuli>
-                            <tag>Matching1</tag>
-                        </stimuli>
-                    </loadStimulus>
-                </pause>
+                                    <trigger listenerId="imageLoadedAction"/>
+                                </stimulusCodeImage>
+                                <touchInputCaptureStart msToNext="-1" showControls="false"/>
+                                <table showOnBackButton="true" styleName="titleBarButton">
+                                    <row>
+                                        <column styleName="">
+                                            <actionButton featureText="TestMenu (O)" eventTag="R1_MA_ENTER" hotKey="R1_MA_ENTER" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <autoNextPresenter target="TestMenu"/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
+                                            <actionButton featureText="Prev (left)" eventTag="R1_MA_LEFT" hotKey="R1_MA_LEFT" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <prevStimulus repeatIncorrect="false"/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
+                                            <actionButton featureText="Repeat (A)" eventTag="R1_MA_A" hotKey="R1_MA_A" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <showStimulus/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
+                                            <actionButton featureText="Next (right)" eventTag="R1_MA_RIGHT" hotKey="R1_MA_RIGHT" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <nextStimulus repeatIncorrect="false"/>
+                                            </actionButton>
+                                        </column>
+                                    </row>
+                                </table>
+                            </hasMoreStimulus>
+                            <endOfStimulus>
+                                <autoNextPresenter/>
+                            </endOfStimulus>
+                            <randomGrouping/>
+                            <stimuli>
+                                <tag>Matching1</tag>
+                            </stimuli>
+                        </loadStimulus>
+                    </pause>
+                </mediaLoaded>
             </audioButton>
         </backgroundImage>
     </presenter>
     <presenter menuLabel="Matching2" next="Test3" type="stimulus" self="Matching2" title="Matching2">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock2">
             <audioButton eventTag="ChangeMatching" src="ChangeMatching" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
-                <pause msToNext="2000">
-                    <loadStimulus eventTag="Matching2" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
-                        <hasMoreStimulus>
-                            <backgroundImage msToNext="0" src="" styleName=""/>
-                            <clearPage styleName="fullScreenWidth"/>
-                            <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
+                <mediaLoaded>
+                    <pause msToNext="2000">
+                        <loadStimulus eventTag="Matching2" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+                            <hasMoreStimulus>
                                 <backgroundImage msToNext="0" src="" styleName=""/>
-                                <disableStimulusButtons/>
-                                <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" showPlaybackIndicator="false">
-                                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" showPlaybackIndicator="false">
-                                        <enableStimulusButtons/>
-                                        <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
-                                        <pause msToNext="3000">
-                                            <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" showPlaybackIndicator="false">
-                                                <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" showPlaybackIndicator="false">
-                                                    <disableStimulusButtons/>
-                                                    <cancelPauseTimers/>
-                                                    <clearPage styleName=""/>
-                                                    <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                    <pause msToNext="1000">
-                                                        <touchInputReportSubmit/>
-                                                        <nextStimulus repeatIncorrect="false"/>
-                                                    </pause>
+                                <clearPage styleName="fullScreenWidth"/>
+                                <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
+                                    <backgroundImage msToNext="0" src="" styleName=""/>
+                                    <disableStimulusButtons/>
+                                    <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" dataChannel="0" showPlaybackIndicator="false">
+                                        <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" dataChannel="0" showPlaybackIndicator="false">
+                                            <enableStimulusButtons/>
+                                            <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
+                                            <pause msToNext="3000">
+                                                <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" dataChannel="0" showPlaybackIndicator="false">
+                                                    <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" dataChannel="0" showPlaybackIndicator="false">
+                                                        <disableStimulusButtons/>
+                                                        <cancelPauseTimers/>
+                                                        <clearPage styleName=""/>
+                                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                                        <pause msToNext="1000">
+                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <nextStimulus repeatIncorrect="false"/>
+                                                        </pause>
+                                                    </stimulusCodeAudio>
                                                 </stimulusCodeAudio>
+                                            </pause>
+                                        </stimulusCodeAudio>
+                                    </stimulusCodeAudio>
+                                </triggerListener>
+                                <disableStimulusButtons/>
+                                <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
+                                    <touchInputStimulusButton featureText="left" listenerId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
+                                        <disableStimulusButtons/>
+                                        <cancelPauseTimers/>
+                                        <pause msToNext="2000">
+                                            <clearPage styleName=""/>
+                                            <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                            <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" dataChannel="0" showPlaybackIndicator="false">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <nextStimulus repeatIncorrect="false"/>
                                             </stimulusCodeAudio>
                                         </pause>
-                                    </stimulusCodeAudio>
-                                </stimulusCodeAudio>
-                            </triggerListener>
-                            <disableStimulusButtons/>
-                            <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton">
-                                <touchInputStimulusButton featureText="left" listenerId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton">
+                                    </touchInputStimulusButton>
                                     <disableStimulusButtons/>
-                                    <cancelPauseTimers/>
-                                    <pause msToNext="2000">
-                                        <clearPage styleName=""/>
-                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" showPlaybackIndicator="false">
-                                            <touchInputReportSubmit/>
-                                            <nextStimulus repeatIncorrect="false"/>
-                                        </stimulusCodeAudio>
-                                    </pause>
-                                </touchInputStimulusButton>
-                                <disableStimulusButtons/>
-                                <trigger listenerId="imageLoadedAction"/>
-                            </stimulusCodeImage>
-                            <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton">
-                                <touchInputStimulusButton featureText="centre" listenerId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton">
+                                    <trigger listenerId="imageLoadedAction"/>
+                                </stimulusCodeImage>
+                                <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton" dataChannel="0">
+                                    <touchInputStimulusButton featureText="centre" listenerId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
+                                        <disableStimulusButtons/>
+                                        <cancelPauseTimers/>
+                                        <pause msToNext="2000">
+                                            <clearPage styleName=""/>
+                                            <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                            <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" dataChannel="0" showPlaybackIndicator="false">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <nextStimulus repeatIncorrect="false"/>
+                                            </stimulusCodeAudio>
+                                        </pause>
+                                    </touchInputStimulusButton>
                                     <disableStimulusButtons/>
-                                    <cancelPauseTimers/>
-                                    <pause msToNext="2000">
-                                        <clearPage styleName=""/>
-                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" showPlaybackIndicator="false">
-                                            <touchInputReportSubmit/>
-                                            <nextStimulus repeatIncorrect="false"/>
-                                        </stimulusCodeAudio>
-                                    </pause>
-                                </touchInputStimulusButton>
-                                <disableStimulusButtons/>
-                                <trigger listenerId="imageLoadedAction"/>
-                            </stimulusCodeImage>
-                            <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton">
-                                <touchInputStimulusButton featureText="right" listenerId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton">
+                                    <trigger listenerId="imageLoadedAction"/>
+                                </stimulusCodeImage>
+                                <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton" dataChannel="0">
+                                    <touchInputStimulusButton featureText="right" listenerId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
+                                        <disableStimulusButtons/>
+                                        <cancelPauseTimers/>
+                                        <pause msToNext="2000">
+                                            <clearPage styleName=""/>
+                                            <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                            <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" dataChannel="0" showPlaybackIndicator="false">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <nextStimulus repeatIncorrect="false"/>
+                                            </stimulusCodeAudio>
+                                        </pause>
+                                    </touchInputStimulusButton>
                                     <disableStimulusButtons/>
-                                    <cancelPauseTimers/>
-                                    <pause msToNext="2000">
-                                        <clearPage styleName=""/>
-                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" showPlaybackIndicator="false">
-                                            <touchInputReportSubmit/>
-                                            <nextStimulus repeatIncorrect="false"/>
-                                        </stimulusCodeAudio>
-                                    </pause>
-                                </touchInputStimulusButton>
-                                <disableStimulusButtons/>
-                                <trigger listenerId="imageLoadedAction"/>
-                            </stimulusCodeImage>
-                            <touchInputCaptureStart msToNext="-1" showControls="false"/>
-                            <table showOnBackButton="true" styleName="titleBarButton">
-                                <row>
-                                    <column styleName="">
-                                        <actionButton featureText="TestMenu (O)" eventTag="R1_MA_ENTER" hotKey="R1_MA_ENTER" styleName="">
-                                            <touchInputReportSubmit/>
-                                            <autoNextPresenter target="TestMenu"/>
-                                        </actionButton>
-                                    </column>
-                                    <column styleName="">
-                                        <actionButton featureText="Prev (left)" eventTag="R1_MA_LEFT" hotKey="R1_MA_LEFT" styleName="">
-                                            <touchInputReportSubmit/>
-                                            <prevStimulus repeatIncorrect="false"/>
-                                        </actionButton>
-                                    </column>
-                                    <column styleName="">
-                                        <actionButton featureText="Repeat (A)" eventTag="R1_MA_A" hotKey="R1_MA_A" styleName="">
-                                            <touchInputReportSubmit/>
-                                            <showStimulus/>
-                                        </actionButton>
-                                    </column>
-                                    <column styleName="">
-                                        <actionButton featureText="Next (right)" eventTag="R1_MA_RIGHT" hotKey="R1_MA_RIGHT" styleName="">
-                                            <touchInputReportSubmit/>
-                                            <nextStimulus repeatIncorrect="false"/>
-                                        </actionButton>
-                                    </column>
-                                </row>
-                            </table>
-                        </hasMoreStimulus>
-                        <endOfStimulus>
-                            <autoNextPresenter/>
-                        </endOfStimulus>
-                        <randomGrouping/>
-                        <stimuli>
-                            <tag>Matching2</tag>
-                        </stimuli>
-                    </loadStimulus>
-                </pause>
+                                    <trigger listenerId="imageLoadedAction"/>
+                                </stimulusCodeImage>
+                                <touchInputCaptureStart msToNext="-1" showControls="false"/>
+                                <table showOnBackButton="true" styleName="titleBarButton">
+                                    <row>
+                                        <column styleName="">
+                                            <actionButton featureText="TestMenu (O)" eventTag="R1_MA_ENTER" hotKey="R1_MA_ENTER" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <autoNextPresenter target="TestMenu"/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
+                                            <actionButton featureText="Prev (left)" eventTag="R1_MA_LEFT" hotKey="R1_MA_LEFT" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <prevStimulus repeatIncorrect="false"/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
+                                            <actionButton featureText="Repeat (A)" eventTag="R1_MA_A" hotKey="R1_MA_A" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <showStimulus/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
+                                            <actionButton featureText="Next (right)" eventTag="R1_MA_RIGHT" hotKey="R1_MA_RIGHT" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <nextStimulus repeatIncorrect="false"/>
+                                            </actionButton>
+                                        </column>
+                                    </row>
+                                </table>
+                            </hasMoreStimulus>
+                            <endOfStimulus>
+                                <autoNextPresenter/>
+                            </endOfStimulus>
+                            <randomGrouping/>
+                            <stimuli>
+                                <tag>Matching2</tag>
+                            </stimuli>
+                        </loadStimulus>
+                    </pause>
+                </mediaLoaded>
             </audioButton>
         </backgroundImage>
     </presenter>
     <presenter menuLabel="Test3" next="Test4" type="stimulus" self="Test3" title="Test3">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock3">
             <audioButton eventTag="BeginTest" src="BeginTest" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
-                <pause msToNext="2000">
-                    <loadStimulus eventTag="Test3" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
-                        <hasMoreStimulus>
-                            <backgroundImage msToNext="0" src="" styleName=""/>
-                            <clearPage styleName="fullScreenWidth"/>
-                            <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="2">
+                <mediaLoaded>
+                    <pause msToNext="2000">
+                        <loadStimulus eventTag="Test3" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+                            <hasMoreStimulus>
                                 <backgroundImage msToNext="0" src="" styleName=""/>
+                                <clearPage styleName="fullScreenWidth"/>
+                                <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="2">
+                                    <backgroundImage msToNext="0" src="" styleName=""/>
+                                    <disableStimulusButtons/>
+                                    <stimulusAudio msToNext="0" dataChannel="0" showPlaybackIndicator="false">
+                                        <enableStimulusButtons/>
+                                        <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
+                                        <pause msToNext="3000">
+                                            <stimulusAudio msToNext="3000" dataChannel="0" showPlaybackIndicator="false">
+                                                <disableStimulusButtons/>
+                                                <cancelPauseTimers/>
+                                                <clearPage styleName=""/>
+                                                <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                                <pause msToNext="1000">
+                                                    <touchInputReportSubmit dataChannel="3"/>
+                                                    <nextStimulus repeatIncorrect="false"/>
+                                                </pause>
+                                            </stimulusAudio>
+                                        </pause>
+                                    </stimulusAudio>
+                                </triggerListener>
                                 <disableStimulusButtons/>
-                                <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                    <enableStimulusButtons/>
-                                    <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
-                                    <pause msToNext="3000">
-                                        <stimulusAudio msToNext="3000" showPlaybackIndicator="false">
-                                            <disableStimulusButtons/>
-                                            <cancelPauseTimers/>
+                                <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
+                                    <touchInputStimulusButton featureText="left" listenerId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
+                                        <disableStimulusButtons/>
+                                        <cancelPauseTimers/>
+                                        <pause msToNext="2000">
                                             <clearPage styleName=""/>
                                             <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                            <pause msToNext="1000">
-                                                <touchInputReportSubmit/>
+                                            <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" dataChannel="0" showPlaybackIndicator="false">
+                                                <touchInputReportSubmit dataChannel="3"/>
                                                 <nextStimulus repeatIncorrect="false"/>
-                                            </pause>
-                                        </stimulusAudio>
-                                    </pause>
-                                </stimulusAudio>
-                            </triggerListener>
-                            <disableStimulusButtons/>
-                            <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton">
-                                <touchInputStimulusButton featureText="left" listenerId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton">
+                                            </stimulusCodeAudio>
+                                        </pause>
+                                    </touchInputStimulusButton>
                                     <disableStimulusButtons/>
-                                    <cancelPauseTimers/>
-                                    <pause msToNext="2000">
-                                        <clearPage styleName=""/>
-                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" showPlaybackIndicator="false">
-                                            <touchInputReportSubmit/>
-                                            <nextStimulus repeatIncorrect="false"/>
-                                        </stimulusCodeAudio>
-                                    </pause>
-                                </touchInputStimulusButton>
-                                <disableStimulusButtons/>
-                                <trigger listenerId="imageLoadedAction"/>
-                            </stimulusCodeImage>
-                            <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton">
-                                <touchInputStimulusButton featureText="centre" listenerId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton">
+                                    <trigger listenerId="imageLoadedAction"/>
+                                </stimulusCodeImage>
+                                <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton" dataChannel="0">
+                                    <touchInputStimulusButton featureText="centre" listenerId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
+                                        <disableStimulusButtons/>
+                                        <cancelPauseTimers/>
+                                        <pause msToNext="2000">
+                                            <clearPage styleName=""/>
+                                            <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                            <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" dataChannel="0" showPlaybackIndicator="false">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <nextStimulus repeatIncorrect="false"/>
+                                            </stimulusCodeAudio>
+                                        </pause>
+                                    </touchInputStimulusButton>
                                     <disableStimulusButtons/>
-                                    <cancelPauseTimers/>
-                                    <pause msToNext="2000">
-                                        <clearPage styleName=""/>
-                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" showPlaybackIndicator="false">
-                                            <touchInputReportSubmit/>
-                                            <nextStimulus repeatIncorrect="false"/>
-                                        </stimulusCodeAudio>
-                                    </pause>
-                                </touchInputStimulusButton>
-                                <disableStimulusButtons/>
-                                <trigger listenerId="imageLoadedAction"/>
-                            </stimulusCodeImage>
-                            <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton">
-                                <touchInputStimulusButton featureText="right" listenerId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton">
+                                    <trigger listenerId="imageLoadedAction"/>
+                                </stimulusCodeImage>
+                                <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton" dataChannel="0">
+                                    <touchInputStimulusButton featureText="right" listenerId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
+                                        <disableStimulusButtons/>
+                                        <cancelPauseTimers/>
+                                        <pause msToNext="2000">
+                                            <clearPage styleName=""/>
+                                            <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                            <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" dataChannel="0" showPlaybackIndicator="false">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <nextStimulus repeatIncorrect="false"/>
+                                            </stimulusCodeAudio>
+                                        </pause>
+                                    </touchInputStimulusButton>
                                     <disableStimulusButtons/>
-                                    <cancelPauseTimers/>
-                                    <pause msToNext="2000">
-                                        <clearPage styleName=""/>
-                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" showPlaybackIndicator="false">
-                                            <touchInputReportSubmit/>
-                                            <nextStimulus repeatIncorrect="false"/>
-                                        </stimulusCodeAudio>
-                                    </pause>
-                                </touchInputStimulusButton>
-                                <disableStimulusButtons/>
-                                <trigger listenerId="imageLoadedAction"/>
-                            </stimulusCodeImage>
-                            <touchInputCaptureStart msToNext="-1" showControls="false"/>
-                            <table showOnBackButton="true" styleName="titleBarButton">
-                                <row>
-                                    <column styleName="">
-                                        <actionButton featureText="TestMenu (O)" eventTag="R1_MA_ENTER" hotKey="R1_MA_ENTER" styleName="">
-                                            <touchInputReportSubmit/>
-                                            <autoNextPresenter target="TestMenu"/>
-                                        </actionButton>
-                                    </column>
-                                    <column styleName="">
-                                        <actionButton featureText="Prev (left)" eventTag="R1_MA_LEFT" hotKey="R1_MA_LEFT" styleName="">
-                                            <touchInputReportSubmit/>
-                                            <prevStimulus repeatIncorrect="false"/>
-                                        </actionButton>
-                                    </column>
-                                    <column styleName="">
-                                        <actionButton featureText="Repeat (A)" eventTag="R1_MA_A" hotKey="R1_MA_A" styleName="">
-                                            <touchInputReportSubmit/>
-                                            <showStimulus/>
-                                        </actionButton>
-                                    </column>
-                                    <column styleName="">
-                                        <actionButton featureText="Next (right)" eventTag="R1_MA_RIGHT" hotKey="R1_MA_RIGHT" styleName="">
-                                            <touchInputReportSubmit/>
-                                            <nextStimulus repeatIncorrect="false"/>
-                                        </actionButton>
-                                    </column>
-                                </row>
-                            </table>
-                        </hasMoreStimulus>
-                        <endOfStimulus>
-                            <autoNextPresenter/>
-                        </endOfStimulus>
-                        <randomGrouping/>
-                        <stimuli>
-                            <tag>Test3</tag>
-                        </stimuli>
-                    </loadStimulus>
-                </pause>
+                                    <trigger listenerId="imageLoadedAction"/>
+                                </stimulusCodeImage>
+                                <touchInputCaptureStart msToNext="-1" showControls="false"/>
+                                <table showOnBackButton="true" styleName="titleBarButton">
+                                    <row>
+                                        <column styleName="">
+                                            <actionButton featureText="TestMenu (O)" eventTag="R1_MA_ENTER" hotKey="R1_MA_ENTER" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <autoNextPresenter target="TestMenu"/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
+                                            <actionButton featureText="Prev (left)" eventTag="R1_MA_LEFT" hotKey="R1_MA_LEFT" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <prevStimulus repeatIncorrect="false"/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
+                                            <actionButton featureText="Repeat (A)" eventTag="R1_MA_A" hotKey="R1_MA_A" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <showStimulus/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
+                                            <actionButton featureText="Next (right)" eventTag="R1_MA_RIGHT" hotKey="R1_MA_RIGHT" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <nextStimulus repeatIncorrect="false"/>
+                                            </actionButton>
+                                        </column>
+                                    </row>
+                                </table>
+                            </hasMoreStimulus>
+                            <endOfStimulus>
+                                <autoNextPresenter/>
+                            </endOfStimulus>
+                            <randomGrouping/>
+                            <stimuli>
+                                <tag>Test3</tag>
+                            </stimuli>
+                        </loadStimulus>
+                    </pause>
+                </mediaLoaded>
             </audioButton>
         </backgroundImage>
     </presenter>
     <presenter menuLabel="Test4" next="Attic" type="stimulus" self="Test4" title="Test4">
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToBlock4">
             <audioButton eventTag="ChangeTest" src="ChangeTest" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
-                <pause msToNext="2000">
-                    <loadStimulus eventTag="Test4" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
-                        <hasMoreStimulus>
-                            <backgroundImage msToNext="0" src="" styleName=""/>
-                            <clearPage styleName="fullScreenWidth"/>
-                            <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="2">
+                <mediaLoaded>
+                    <pause msToNext="2000">
+                        <loadStimulus eventTag="Test4" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+                            <hasMoreStimulus>
                                 <backgroundImage msToNext="0" src="" styleName=""/>
+                                <clearPage styleName="fullScreenWidth"/>
+                                <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="2">
+                                    <backgroundImage msToNext="0" src="" styleName=""/>
+                                    <disableStimulusButtons/>
+                                    <stimulusAudio msToNext="0" dataChannel="0" showPlaybackIndicator="false">
+                                        <enableStimulusButtons/>
+                                        <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
+                                        <pause msToNext="3000">
+                                            <stimulusAudio msToNext="3000" dataChannel="0" showPlaybackIndicator="false">
+                                                <disableStimulusButtons/>
+                                                <cancelPauseTimers/>
+                                                <clearPage styleName=""/>
+                                                <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                                <pause msToNext="1000">
+                                                    <touchInputReportSubmit dataChannel="3"/>
+                                                    <nextStimulus repeatIncorrect="false"/>
+                                                </pause>
+                                            </stimulusAudio>
+                                        </pause>
+                                    </stimulusAudio>
+                                </triggerListener>
                                 <disableStimulusButtons/>
-                                <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                    <enableStimulusButtons/>
-                                    <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
-                                    <pause msToNext="3000">
-                                        <stimulusAudio msToNext="3000" showPlaybackIndicator="false">
-                                            <disableStimulusButtons/>
-                                            <cancelPauseTimers/>
+                                <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
+                                    <touchInputStimulusButton featureText="left" listenerId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
+                                        <disableStimulusButtons/>
+                                        <cancelPauseTimers/>
+                                        <pause msToNext="2000">
                                             <clearPage styleName=""/>
                                             <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                            <pause msToNext="1000">
-                                                <touchInputReportSubmit/>
+                                            <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" dataChannel="0" showPlaybackIndicator="false">
+                                                <touchInputReportSubmit dataChannel="3"/>
                                                 <nextStimulus repeatIncorrect="false"/>
-                                            </pause>
-                                        </stimulusAudio>
-                                    </pause>
-                                </stimulusAudio>
-                            </triggerListener>
-                            <disableStimulusButtons/>
-                            <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton">
-                                <touchInputStimulusButton featureText="left" listenerId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton">
+                                            </stimulusCodeAudio>
+                                        </pause>
+                                    </touchInputStimulusButton>
                                     <disableStimulusButtons/>
-                                    <cancelPauseTimers/>
-                                    <pause msToNext="2000">
-                                        <clearPage styleName=""/>
-                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" showPlaybackIndicator="false">
-                                            <touchInputReportSubmit/>
-                                            <nextStimulus repeatIncorrect="false"/>
-                                        </stimulusCodeAudio>
-                                    </pause>
-                                </touchInputStimulusButton>
-                                <disableStimulusButtons/>
-                                <trigger listenerId="imageLoadedAction"/>
-                            </stimulusCodeImage>
-                            <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton">
-                                <touchInputStimulusButton featureText="centre" listenerId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton">
+                                    <trigger listenerId="imageLoadedAction"/>
+                                </stimulusCodeImage>
+                                <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton" dataChannel="0">
+                                    <touchInputStimulusButton featureText="centre" listenerId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
+                                        <disableStimulusButtons/>
+                                        <cancelPauseTimers/>
+                                        <pause msToNext="2000">
+                                            <clearPage styleName=""/>
+                                            <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                            <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" dataChannel="0" showPlaybackIndicator="false">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <nextStimulus repeatIncorrect="false"/>
+                                            </stimulusCodeAudio>
+                                        </pause>
+                                    </touchInputStimulusButton>
                                     <disableStimulusButtons/>
-                                    <cancelPauseTimers/>
-                                    <pause msToNext="2000">
-                                        <clearPage styleName=""/>
-                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" showPlaybackIndicator="false">
-                                            <touchInputReportSubmit/>
-                                            <nextStimulus repeatIncorrect="false"/>
-                                        </stimulusCodeAudio>
-                                    </pause>
-                                </touchInputStimulusButton>
-                                <disableStimulusButtons/>
-                                <trigger listenerId="imageLoadedAction"/>
-                            </stimulusCodeImage>
-                            <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton">
-                                <touchInputStimulusButton featureText="right" listenerId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton">
+                                    <trigger listenerId="imageLoadedAction"/>
+                                </stimulusCodeImage>
+                                <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton" dataChannel="0">
+                                    <touchInputStimulusButton featureText="right" listenerId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
+                                        <disableStimulusButtons/>
+                                        <cancelPauseTimers/>
+                                        <pause msToNext="2000">
+                                            <clearPage styleName=""/>
+                                            <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                            <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" dataChannel="0" showPlaybackIndicator="false">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <nextStimulus repeatIncorrect="false"/>
+                                            </stimulusCodeAudio>
+                                        </pause>
+                                    </touchInputStimulusButton>
                                     <disableStimulusButtons/>
-                                    <cancelPauseTimers/>
-                                    <pause msToNext="2000">
-                                        <clearPage styleName=""/>
-                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" showPlaybackIndicator="false">
-                                            <touchInputReportSubmit/>
-                                            <nextStimulus repeatIncorrect="false"/>
-                                        </stimulusCodeAudio>
-                                    </pause>
-                                </touchInputStimulusButton>
-                                <disableStimulusButtons/>
-                                <trigger listenerId="imageLoadedAction"/>
-                            </stimulusCodeImage>
-                            <touchInputCaptureStart msToNext="-1" showControls="false"/>
-                            <table showOnBackButton="true" styleName="titleBarButton">
-                                <row>
-                                    <column styleName="">
-                                        <actionButton featureText="TestMenu (O)" eventTag="R1_MA_ENTER" hotKey="R1_MA_ENTER" styleName="">
-                                            <touchInputReportSubmit/>
-                                            <autoNextPresenter target="TestMenu"/>
-                                        </actionButton>
-                                    </column>
-                                    <column styleName="">
-                                        <actionButton featureText="Prev (left)" eventTag="R1_MA_LEFT" hotKey="R1_MA_LEFT" styleName="">
-                                            <touchInputReportSubmit/>
-                                            <prevStimulus repeatIncorrect="false"/>
-                                        </actionButton>
-                                    </column>
-                                    <column styleName="">
-                                        <actionButton featureText="Repeat (A)" eventTag="R1_MA_A" hotKey="R1_MA_A" styleName="">
-                                            <touchInputReportSubmit/>
-                                            <showStimulus/>
-                                        </actionButton>
-                                    </column>
-                                    <column styleName="">
-                                        <actionButton featureText="Next (right)" eventTag="R1_MA_RIGHT" hotKey="R1_MA_RIGHT" styleName="">
-                                            <touchInputReportSubmit/>
-                                            <nextStimulus repeatIncorrect="false"/>
-                                        </actionButton>
-                                    </column>
-                                </row>
-                            </table>
-                        </hasMoreStimulus>
-                        <endOfStimulus>
-                            <autoNextPresenter/>
-                        </endOfStimulus>
-                        <randomGrouping/>
-                        <stimuli>
-                            <tag>Test4</tag>
-                        </stimuli>
-                    </loadStimulus>
-                </pause>
+                                    <trigger listenerId="imageLoadedAction"/>
+                                </stimulusCodeImage>
+                                <touchInputCaptureStart msToNext="-1" showControls="false"/>
+                                <table showOnBackButton="true" styleName="titleBarButton">
+                                    <row>
+                                        <column styleName="">
+                                            <actionButton featureText="TestMenu (O)" eventTag="R1_MA_ENTER" hotKey="R1_MA_ENTER" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <autoNextPresenter target="TestMenu"/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
+                                            <actionButton featureText="Prev (left)" eventTag="R1_MA_LEFT" hotKey="R1_MA_LEFT" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <prevStimulus repeatIncorrect="false"/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
+                                            <actionButton featureText="Repeat (A)" eventTag="R1_MA_A" hotKey="R1_MA_A" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <showStimulus/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
+                                            <actionButton featureText="Next (right)" eventTag="R1_MA_RIGHT" hotKey="R1_MA_RIGHT" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <nextStimulus repeatIncorrect="false"/>
+                                            </actionButton>
+                                        </column>
+                                    </row>
+                                </table>
+                            </hasMoreStimulus>
+                            <endOfStimulus>
+                                <autoNextPresenter/>
+                            </endOfStimulus>
+                            <randomGrouping/>
+                            <stimuli>
+                                <tag>Test4</tag>
+                            </stimuli>
+                        </loadStimulus>
+                    </pause>
+                </mediaLoaded>
             </audioButton>
         </backgroundImage>
     </presenter>
