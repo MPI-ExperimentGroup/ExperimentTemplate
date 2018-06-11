@@ -43,6 +43,7 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
     private final int maxMistakesForOkBase = 4;
     private final int maxMistakesForOk = 8;
     private int finalScore = 0;
+   
 
     ArrayList<ArrayList<PeabodyStimulus>> stimuliPool;
 
