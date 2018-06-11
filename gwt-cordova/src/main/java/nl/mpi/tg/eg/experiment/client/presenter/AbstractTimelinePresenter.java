@@ -54,20 +54,21 @@ public abstract class AbstractTimelinePresenter extends AbstractPresenter implem
         this.stimulusProvider = stimulusProvider;
     }
 
-    protected void setVideoPanel(int percentOfPage, int maxHeight, int maxWidth, String poster, String mp4, String ogg, String webm) {
+    protected void setVideoPanel(int percentOfPage, int maxHeight, int maxWidth, String poster, String src) {
         // todo: utilise the maxHeight and maxWidth correctly without affecting the AnnotationTimelinePanel
-        final VideoPanel videoPanel = new VideoPanel(maxWidth + "%", poster, mp4, ogg, webm);
+        final VideoPanel videoPanel = new VideoPanel(maxWidth + "%", poster, src);
         ((AnnotationTimelineView) simpleView).setVideoPanel(videoPanel);
     }
 
-    public void setAnnotationTimelinePanel(String eventTag, String poster, String mp4, String ogg, String webm, /*StimulusSelector[] stimulusSelectorArray, int maxStimuli,*/ int columnCount) {
+    public void setAnnotationTimelinePanel(String eventTag, String poster, String src, /*StimulusSelector[] stimulusSelectorArray, int maxStimuli,*/ int columnCount) {
         /*List<Stimulus.Tag> tags = new ArrayList<>();
         for (StimulusSelector stimulusSelector : stimulusSelectorArray) {
             tags.add(stimulusSelector.getTag());
         }
          */
+        // todo: this has to be updated so that an enclosing loadStimulus does the stimuli selection    
         this.storageTag = eventTag;
-        final VideoPanel videoPanel = new VideoPanel("50%", poster, mp4, ogg, webm);
+        final VideoPanel videoPanel = new VideoPanel("50%", poster, src);
         ((AnnotationTimelineView) simpleView).setVideoPanel(videoPanel);
         //stimulusProvider.getSubset(tags, maxStimuli, false, 1, 0, 0, "", -1);
         final AnnotationSet savedAnnotations = loadAnnotations(storageTag);
