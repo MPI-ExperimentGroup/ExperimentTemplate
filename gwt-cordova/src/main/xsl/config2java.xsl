@@ -710,12 +710,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@maxWidth) then concat(', ', @maxWidth) else ''" />
         <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;') else ''" />
         <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else ''" />
-        <xsl:if test="@poster|@mp4|@ogg|@webm">
-            <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ',&quot;&quot;'" />
-            <xsl:value-of select="if(@mp4) then concat(', &quot;', @mp4, '&quot;') else ',&quot;&quot;'" />
-            <xsl:value-of select="if(@ogg) then concat(', &quot;', @ogg, '&quot;') else ',&quot;&quot;'" />
-            <xsl:value-of select="if(@webm) then concat(', &quot;', @webm, '&quot;') else ',&quot;&quot;'" />
-        </xsl:if>
+        <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />
+        <xsl:value-of select="if(@src) then concat(', &quot;', @src, '&quot;') else ''" />
         <xsl:apply-templates select="stimuli" mode="stimuliTags" />
         <xsl:apply-templates select="randomGrouping" mode="stimuliTags" />
         <xsl:value-of select="if(@matchingRegex) then concat(', &quot;', @matchingRegex, '&quot;') else ''" />
@@ -725,7 +721,13 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <!--<xsl:value-of select="if(@maxStimuli) then concat(', ', @maxStimuli, '') else ''" />-->
         <!--<xsl:value-of select="if(@minStimuliPerTag) then concat(', ', @minStimuliPerTag, '') else ''" />-->
         <!--<xsl:value-of select="if(@maxStimuliPerTag) then concat(', ', @maxStimuliPerTag, '') else ''" />-->
-        <xsl:value-of select="if(@scoreThreshold) then concat('', @scoreThreshold, '') else ''" /> <!-- the trailing comma is needed for SynQuiz2, needs to be checked for other configurations. -->
+        <!--<xsl:value-of select="if(@scoreThreshold) then concat('', @scoreThreshold, '') else ''" />--> 
+        
+        <xsl:value-of select="if(@scoreThreshold eq '') then 'null' else if(@scoreThreshold) then concat('', @scoreThreshold, '') else ''" />
+        <xsl:value-of select="if(@scoreThreshold) then if(@errorThreshold) then concat(',', @errorThreshold, '') else ',null'" />
+        <xsl:value-of select="if(@scoreThreshold) then if(@potentialThreshold) then concat(',', @potentialThreshold, '') else ',null'" />
+        
+        <!-- the trailing comma after scoreThreshold is needed for SynQuiz2, needs to be checked for other configurations. -->
         <xsl:value-of select="if(@scoreThreshold and (local-name() eq 'showColourReport' or local-name() eq 'submitTestResults')) then ', ' else ''" />
         <xsl:value-of select="if(@scoreValue) then concat('', @scoreValue, '') else ''" />
         <xsl:value-of select="if(@columnCount) then concat(', ', @columnCount, '') else ''" />
