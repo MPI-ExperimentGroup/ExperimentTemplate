@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="Shawi FieldKit" appNameInternal="shawifieldkit" backgroundColour="#ffeda0" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#f03b20" primaryColour3="#96ADAD" primaryColour4="#feb24c" rotatable="true" showMenuBar="true" textFontSize="17">
+    <administration/>
     <metadata>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Speaker name *"/>
     </metadata>
@@ -68,7 +69,7 @@
                 <stimulusLabel/>
                 <showStimulusProgress/>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
-                    <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
+                    <ratingFooterButton ratingLabels="1,2,3,4,5,6,7,8,9,10" dataChannel="1">
                         <clearPage/>
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
@@ -93,7 +94,7 @@
                 <stimulusLabel/>
                 <showStimulusProgress/>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
-                    <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
+                    <ratingFooterButton ratingLabels="1,2,3,4,5,6,7,8,9,10" dataChannel="1">
                         <clearPage/>
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
@@ -172,7 +173,7 @@
                 <stimulusLabel/>
                 <showStimulusProgress/>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
-                    <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
+                    <ratingFooterButton ratingLabels="1,2,3,4,5,6,7,8,9,10" dataChannel="1">
                         <clearPage/>
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
@@ -291,7 +292,7 @@
                 <stimulusLabel/>
                 <showStimulusProgress/>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
-                    <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
+                    <ratingFooterButton ratingLabels="1,2,3,4,5,6,7,8,9,10" dataChannel="1">
                         <clearPage/>
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
@@ -316,7 +317,7 @@
                 <stimulusLabel/>
                 <showStimulusProgress/>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
-                    <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
+                    <ratingFooterButton ratingLabels="1,2,3,4,5,6,7,8,9,10" dataChannel="1">
                         <clearPage/>
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
@@ -341,7 +342,7 @@
                 <stimulusLabel/>
                 <showStimulusProgress/>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
-                    <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
+                    <ratingFooterButton ratingLabels="1,2,3,4,5,6,7,8,9,10" dataChannel="1">
                         <clearPage/>
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
@@ -366,7 +367,7 @@
                 <stimulusLabel/>
                 <showStimulusProgress/>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
-                    <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
+                    <ratingFooterButton ratingLabels="1,2,3,4,5,6,7,8,9,10" dataChannel="1">
                         <clearPage/>
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>
@@ -391,7 +392,7 @@
                 <stimulusLabel/>
                 <showStimulusProgress/>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
-                    <ratingFooterButton eventTier="1" ratingLabels="1,2,3,4,5,6,7,8,9,10">
+                    <ratingFooterButton ratingLabels="1,2,3,4,5,6,7,8,9,10" dataChannel="1">
                         <clearPage/>
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingFooterButton>

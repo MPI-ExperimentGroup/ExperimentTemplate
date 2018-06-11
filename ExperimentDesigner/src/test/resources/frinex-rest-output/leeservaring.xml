@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="Leeservaring" appNameInternal="leeservaring" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="22">
+    <administration/>
     <metadata>
         <field controlledMessage="Voer een getal." controlledRegex="[0-9]+" postName="leeftijd" preventServerDuplicates="false" registrationField="Leeftijd"/>
         <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="geslacht" preventServerDuplicates="false" registrationField="Geslacht"/>
@@ -84,7 +85,7 @@
             <hasMoreStimulus>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
-                    <ratingButton eventTier="1" ratingLabelRight="helemaal van toepassing" ratingLabels="1,2,3,4,5,6,7" ratingLabelLeft="helemaal niet van toepassing">
+                    <ratingButton ratingLabelRight="helemaal van toepassing" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="helemaal niet van toepassing">
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingButton>
                 </stimulusPresent>
@@ -104,7 +105,7 @@
             <hasMoreStimulus>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
-                    <ratingButton eventTier="1" ratingLabelRight="helemaal van toepassing" ratingLabels="1,2,3,4,5,6,7" ratingLabelLeft="helemaal niet van toepassing">
+                    <ratingButton ratingLabelRight="helemaal van toepassing" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="helemaal niet van toepassing">
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingButton>
                 </stimulusPresent>
@@ -136,7 +137,7 @@
             <hasMoreStimulus>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
-                    <ratingButton eventTier="1" ratingLabelRight="" ratingLabels="ja [ z ],nee [ . ]" ratingLabelLeft="">
+                    <ratingButton ratingLabelRight="" ratingLabels="ja [ z ],nee [ . ]" dataChannel="1" ratingLabelLeft="">
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingButton>
                 </stimulusPresent>
@@ -160,7 +161,7 @@
             <hasMoreStimulus>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
-                    <ratingButton eventTier="1" ratingLabelRight="" ratingLabels="1,2,3,4,5,6,7" ratingLabelLeft="">
+                    <ratingButton ratingLabelRight="" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="">
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingButton>
                 </stimulusPresent>
