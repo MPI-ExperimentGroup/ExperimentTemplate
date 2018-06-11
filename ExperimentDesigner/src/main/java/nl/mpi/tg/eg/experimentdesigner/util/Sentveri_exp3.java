@@ -81,9 +81,9 @@ public class Sentveri_exp3 {
 
     private PresenterFeature addStimulusImage(String screenName, String imageSet, final String msToNext) {
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusCodeImage, null);
-        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "100");
-        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "100");
-        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "100");
+//        imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "100");
+//        imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "100");
+//        imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "100");
         imageFeature.addFeatureAttributes(FeatureAttribute.codeFormat, screenName + "/" + imageSet + "/<code>.jpg");
         imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, msToNext);
         return imageFeature;
@@ -134,7 +134,7 @@ public class Sentveri_exp3 {
         checkTagFeature.addStimulusTag("question");
         final PresenterFeature withoutTagFeature = new PresenterFeature(FeatureType.conditionFalse, null);
         final PresenterFeature autoNextFeature = new PresenterFeature(FeatureType.nextStimulus, null);
-        autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nonquestion");
+//        autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nonquestion");
         autoNextFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
         withoutTagFeature.getPresenterFeatureList().add(autoNextFeature);
         checkTagFeature.getPresenterFeatureList().add(withoutTagFeature);
@@ -148,7 +148,7 @@ public class Sentveri_exp3 {
         responseZFeature.addFeatureAttributes(FeatureAttribute.hotKey, "Z");
         final PresenterFeature nextStimulusFeature1 = new PresenterFeature(FeatureType.nextStimulus, null);
         nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
-        nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus");
+//        nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus");
         responseZFeature.getPresenterFeatureList().add(nextStimulusFeature1);
         hasTagFeature.getPresenterFeatureList().add(responseZFeature);
         questionFeature.getPresenterFeatureList().add(checkTagFeature);
@@ -157,7 +157,7 @@ public class Sentveri_exp3 {
         responseDotFeature.addFeatureAttributes(FeatureAttribute.hotKey, "NUM_PERIOD");
         final PresenterFeature nextStimulusFeature2 = new PresenterFeature(FeatureType.nextStimulus, null);
         nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
-        nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus");
+//        nextStimulusFeature2.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus");
         responseDotFeature.getPresenterFeatureList().add(nextStimulusFeature2);
         hasTagFeature.getPresenterFeatureList().add(responseDotFeature);
         return questionFeature;
