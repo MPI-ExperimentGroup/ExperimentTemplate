@@ -35,7 +35,7 @@ public class VideoPanel extends VerticalPanel {
 //                                </video>
 
     // GWT video is not yet fully supported and does not allow for event listeners to be registered so for now we are using HTML5 and JS directly
-    public VideoPanel(String width, String poster, String mp4, String ogg, String webm) {
+    public VideoPanel(String width, String poster, String src) {
         video = Video.createIfSupported();
         if (video != null) {
             video.setPoster(poster);
@@ -45,10 +45,9 @@ public class VideoPanel extends VerticalPanel {
         } else {
             this.add(new Label("Video is not supported"));
         }
-
-        addSource(mp4, "video/mp4");
-        addSource(ogg, "video/ogg");
-        addSource(webm, "video/webm");
+        addSource(src + ".mp4", "video/mp4");
+        addSource(src + ".ogg", "video/ogg");
+        addSource(src + ".webm", "video/webm");
     }
 
     public final void addSource(String source, String type) {
