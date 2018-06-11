@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="Sentences Rating Task" appNameInternal="sentences_rating_task" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="22">
+    <administration/>
     <metadata>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="prolific_pid" preventServerDuplicates="false" registrationField="Prolific ID"/>
         <field controlledMessage="Enter a number." controlledRegex="[0-9]+" postName="age" preventServerDuplicates="false" registrationField="Age"/>
@@ -59,7 +60,7 @@
             <hasMoreStimulus>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
-                    <ratingButton eventTier="1" ratingLabelRight="7 = substantial change" ratingLabels="1,2,3,4,5,6,7" ratingLabelLeft="1 = no change">
+                    <ratingButton ratingLabelRight="7 = substantial change" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="1 = no change">
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingButton>
                 </stimulusPresent>
@@ -82,7 +83,7 @@
             <hasMoreStimulus>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
-                    <ratingButton eventTier="1" ratingLabelRight="7 = very familiar" ratingLabels="1,2,3,4,5,6,7" ratingLabelLeft="1 = not familiar at all">
+                    <ratingButton ratingLabelRight="7 = very familiar" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="1 = not familiar at all">
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingButton>
                 </stimulusPresent>
@@ -105,7 +106,7 @@
             <hasMoreStimulus>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <addPadding/>
-                    <ratingButton eventTier="1" ratingLabelRight="7 = very imageable" ratingLabels="1,2,3,4,5,6,7" ratingLabelLeft="1 = not imageable at all">
+                    <ratingButton ratingLabelRight="7 = very imageable" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="1 = not imageable at all">
                         <nextStimulus repeatIncorrect="false"/>
                     </ratingButton>
                 </stimulusPresent>
