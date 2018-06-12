@@ -65,7 +65,7 @@
         <addPadding/>
         <htmlText featureText="Welkom bij dit experiment,"/>
         <addPadding/>
-        <htmlText featureText="In dit audio-experiment krijg je steeds een niet-bestaand voorbeeldwoord te horen. Na dit voorbeeldwoord volgt een lijst met niet-bestaande woorden in ruis. Druk zo snel mogelijk op de spatiebalk, zodra je het voorbeelwoord terughoort in de lijst."/>
+        <htmlText featureText="In dit audio-experiment krijg je steeds een niet-bestaand voorbeeldwoord te horen. Na dit voorbeeldwoord volgt een lijst met niet-bestaande woorden in ruis. Druk zo snel mogelijk op de spatiebalk, zodra je het voorbeeldwoord terughoort in de lijst."/>
         <addPadding/>
         <htmlText featureText="Let op: luister goed naar het voorbeeldwoord en de woorden in de lijst. In sommige lijsten komt het voorbeeldwoord niet terug. Je hoeft dan niet op de spatiebalk te drukken."/>
         <addPadding/>
@@ -118,7 +118,7 @@
                         <table>
                             <row>
                                 <column>
-                                    <htmlText featureText="&lt;div &gt;  De nieuwe serie begint. Toets SPATIE om het cue te horen &lt;/div&gt;"/>
+                                    <htmlText featureText="&lt;div &gt;  De nieuwe serie begint. Toets SPATIE om het voorbeeldwoord te horen &lt;/div&gt;"/>
                                 </column>
                             </row>
                         </table>
@@ -208,7 +208,7 @@
                         <table>
                             <row>
                                 <column>
-                                    <htmlText featureText="&lt;div &gt;  De nieuwe serie begint. Toets SPATIE om het cue te horen &lt;/div&gt;"/>
+                                    <htmlText featureText="&lt;div &gt;  De nieuwe serie begint. Toets SPATIE om het voorbeeldwoord te horen &lt;/div&gt;"/>
                                 </column>
                             </row>
                         </table>
@@ -297,7 +297,7 @@
                         <addPadding/>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="&lt;div align=&quot;center&quot; &gt;  De nieuwe serie begint. Toets SPATIE om het cue te horen &lt;/div&gt;"/>
+                        <htmlText featureText="&lt;div align=&quot;center&quot; &gt;  De nieuwe serie begint. Toets SPATIE om het voorbeeldwoord te horen &lt;/div&gt;"/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <clearPage/>
                             <centrePage/>
