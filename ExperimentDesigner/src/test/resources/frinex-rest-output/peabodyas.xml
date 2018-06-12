@@ -3,7 +3,7 @@
     <preventWindowClose featureText="Bij reload worden ingetypte data verwiderd"/>
     <metadata>
         <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Wat is je gebruikersnummer?"/>
-        <field controlledMessage="Voer een getal." controlledRegex="[0-9]+" postName="age" preventServerDuplicates="false" registrationField="Leeftijd"/>
+        <field controlledMessage="Voer twee getallen, xx;yy ." controlledRegex="[0-9]+;[0-9]+" postName="age" preventServerDuplicates="false" registrationField="Leeftijd"/>
         <field controlledMessage="." controlledRegex=".*" postName="stimuli" preventServerDuplicates="false" registrationField="stimuli"/>
         <field controlledMessage="Input at least 3 letters." controlledRegex="['\\'S'\\'s]'{'3,'}'" postName="feedBack" preventServerDuplicates="false" registrationField=""/>
     </metadata>
