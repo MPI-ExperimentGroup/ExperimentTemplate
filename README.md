@@ -49,6 +49,10 @@ Other templates can be developed as needed:
    * Viewing and downloading experiment results
    * Managing participants
 
+# Automated Build Service
+( [UML diagram](https://github.com/MPI-ExperimentGroup/ExperimentTemplate/blob/master/src/main/uml/BuildServer.svg) )
+Experiments can be built using the automated build service. To use this service you either need to be given access to a relevant GIT repository where you can commit your JSON or XML configuration files. Any stimuli files also need to be committed alongside the JSON or XML in a directory of the same name.
+
 # Submodules    
 
 Submodules can exist within a template when the  technologies are compatible:
