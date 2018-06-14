@@ -98,7 +98,7 @@ public class Sentveri_exp3 {
         nextStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         nextStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
         nextStimulusFeature.getPresenterFeatureList().add(addImageFeature(screenName));
-        sentenceFeature.getPresenterFeatureList().add(nextStimulusFeature);
+        sentenceFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed)[0].getPresenterFeatureList().add(nextStimulusFeature);
         return sentenceFeature;
     }
 
@@ -108,20 +108,21 @@ public class Sentveri_exp3 {
         final PresenterFeature delayFeature = new PresenterFeature(FeatureType.stimulusPause, null);
         final PresenterFeature imageFeature = addStimulusImage(screenName, "image_" + screenName, "0");
         delayFeature.getPresenterFeatureList().add(imageFeature);
+        final PresenterFeature mediaLoaded = imageFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed)[0];
         final PresenterFeature responseZFeature = new PresenterFeature(FeatureType.actionFooterButton, "z");
 //        responseZFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
         responseZFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseZ");
         responseZFeature.addFeatureAttributes(FeatureAttribute.hotKey, "Z");
         responseZFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         responseZFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
-        imageFeature.getPresenterFeatureList().add(responseZFeature);
+        mediaLoaded.getPresenterFeatureList().add(responseZFeature);
         final PresenterFeature responseDotFeature = new PresenterFeature(FeatureType.actionFooterButton, ".");
 //        responseDotFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
         responseDotFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseDot");
         responseDotFeature.addFeatureAttributes(FeatureAttribute.hotKey, "NUM_PERIOD");
         responseDotFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         responseDotFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
-        imageFeature.getPresenterFeatureList().add(responseDotFeature);
+        mediaLoaded.getPresenterFeatureList().add(responseDotFeature);
         responseDotFeature.getPresenterFeatureList().add(addNextStimulusButtons(screenName));
         responseZFeature.getPresenterFeatureList().add(addNextStimulusButtons(screenName));
         return delayFeature;
@@ -151,7 +152,7 @@ public class Sentveri_exp3 {
 //        nextStimulusFeature1.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulus");
         responseZFeature.getPresenterFeatureList().add(nextStimulusFeature1);
         hasTagFeature.getPresenterFeatureList().add(responseZFeature);
-        questionFeature.getPresenterFeatureList().add(checkTagFeature);
+        questionFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed)[0].getPresenterFeatureList().add(checkTagFeature);
         final PresenterFeature responseDotFeature = new PresenterFeature(FeatureType.actionFooterButton, ".");
         responseDotFeature.addFeatureAttributes(FeatureAttribute.eventTag, "responseDot");
         responseDotFeature.addFeatureAttributes(FeatureAttribute.hotKey, "NUM_PERIOD");

@@ -256,6 +256,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
     }
 
     public final void setStimuliSet(String[] stimuliSet) {
+        // note: new implementations should use the method setStimuliSet in AbstractWizardScreen
         if (this.wizardScreenData.getStimuli() == null) {
             this.wizardScreenData.setStimuli(new ArrayList<>());
         }
@@ -554,6 +555,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+        allNetworkActivity2Image.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
         allNetworkActivityColumn3.getPresenterFeatureList().add(allNetworkActivity2Image);
         allNetworkActivityColumn3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "Target"));
         allNetworkActivity2.getPresenterFeatureList().add(allNetworkActivityRow);
@@ -616,7 +618,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         stimulusImage.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         stimulusImage.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         trainingDisplayNetworkActivity3.getPresenterFeatureList().add(stimulusImage);
-
+        final PresenterFeature mediaLoaded = stimulusImage.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
         if (getStimulusMsDelay(storedWizardScreenData) > 0) {
             final PresenterFeature pause = new PresenterFeature(FeatureType.pause, null);
             final PresenterFeature sendGroupMessage = new PresenterFeature(FeatureType.sendGroupMessage, null);
@@ -624,11 +626,11 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             sendGroupMessage.addFeatureAttributes(FeatureAttribute.eventTag, "autoNext");
             sendGroupMessage.addFeatureAttributes(FeatureAttribute.incrementPhase, "1");
             pause.getPresenterFeatureList().add(sendGroupMessage);
-            stimulusImage.getPresenterFeatureList().add(pause);
+            mediaLoaded.getPresenterFeatureList().add(pause);
         } else {
             final PresenterFeature nextStimulusFeature4 = addGroupMessageButton("Volgende [enter]", "nextStimulusFeature4", "ENTER");
-            stimulusImage.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-            stimulusImage.getPresenterFeatureList().add(nextStimulusFeature4);
+            mediaLoaded.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+            mediaLoaded.getPresenterFeatureList().add(nextStimulusFeature4);
         }
         hasMoreStimulusFeature.getPresenterFeatureList().add(groupNetwork);
 //        presenterFeatureList.add(groupNetwork);
@@ -689,7 +691,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         final PresenterFeature presenterFeature;
 //        final String hotKeyString = "SPACE";
-        presenterFeature = imageFeature;
+        presenterFeature = imageFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
         presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         if (isStimulusFreeText(storedWizardScreenData)) {
             final PresenterFeature stimulusFreeTextFeature = new PresenterFeature(FeatureType.stimulusFreeText, getFreeTextValidationMessage(storedWizardScreenData));
