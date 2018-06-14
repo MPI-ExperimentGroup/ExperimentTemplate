@@ -217,39 +217,44 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
         } else {
             backgoundFeature = null;
         }
-        final PresenterFeature presenterFeature;
+        final PresenterFeature presenterFeatureOuter;
+        final PresenterFeature presenterFeatureInner;
         if (storedWizardScreenData.getScreenMediaPath() != null) {
-            presenterFeature = new PresenterFeature(FeatureType.audioButton, null);
-            presenterFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenMediaPath());
-            presenterFeature.addFeatureAttributes(FeatureAttribute.src, storedWizardScreenData.getScreenMediaPath());
-            presenterFeature.addFeatureAttributes(FeatureAttribute.poster, "audiobutton.jpg");
-            presenterFeature.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(getAutoPlay(storedWizardScreenData)));
-            presenterFeature.addFeatureAttributes(FeatureAttribute.hotKey, getAudioHotKey(storedWizardScreenData));
+            PresenterFeature audioButton = new PresenterFeature(FeatureType.audioButton, null);
+            audioButton.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenMediaPath());
+            audioButton.addFeatureAttributes(FeatureAttribute.src, storedWizardScreenData.getScreenMediaPath());
+            audioButton.addFeatureAttributes(FeatureAttribute.poster, "audiobutton.jpg");
+            audioButton.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(getAutoPlay(storedWizardScreenData)));
+            audioButton.addFeatureAttributes(FeatureAttribute.hotKey, getAudioHotKey(storedWizardScreenData));
+            PresenterFeature mediaLoaded = audioButton.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
             if (getButtonStyle(storedWizardScreenData) != null) {
-                presenterFeature.addFeatureAttributes(FeatureAttribute.styleName, getButtonStyle(storedWizardScreenData));
+                audioButton.addFeatureAttributes(FeatureAttribute.styleName, getButtonStyle(storedWizardScreenData));
             }
             if (getImageName(storedWizardScreenData) != null) {
-                presenterFeature.addFeature(FeatureType.backgroundImage, null, "0", getImageName(storedWizardScreenData), getImageStyle(storedWizardScreenData));
+                mediaLoaded.addFeature(FeatureType.backgroundImage, null, "0", getImageName(storedWizardScreenData), getImageStyle(storedWizardScreenData));
             }
+            presenterFeatureInner = mediaLoaded;
+            presenterFeatureOuter = audioButton;
         } else {
-            presenterFeature = new PresenterFeature(FeatureType.backgroundImage, null);
-            presenterFeature.addFeatureAttributes(FeatureAttribute.src, getImageName(storedWizardScreenData));
-            presenterFeature.addFeatureAttributes(FeatureAttribute.styleName, getImageStyle(storedWizardScreenData));
-            presenterFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+            presenterFeatureOuter = new PresenterFeature(FeatureType.backgroundImage, null);
+            presenterFeatureOuter.addFeatureAttributes(FeatureAttribute.src, getImageName(storedWizardScreenData));
+            presenterFeatureOuter.addFeatureAttributes(FeatureAttribute.styleName, getImageStyle(storedWizardScreenData));
+            presenterFeatureOuter.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+            presenterFeatureInner = presenterFeatureOuter;
         }
         if (storedWizardScreenData.getScreenMediaPath() == null && backgoundFeature != null) {
 //            final PresenterFeature clearBackgroundImage = backgoundFeature.addFeature(FeatureType.backgroundImage, null, "0", "", "");
             backgoundFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
-            backgoundFeature.getPresenterFeatureList().add(presenterFeature);
+            backgoundFeature.getPresenterFeatureList().add(presenterFeatureOuter);
         } else {
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0)));
-            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(presenterFeature);
+            storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(presenterFeatureOuter);
         }
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
         if (getAutoNext(storedWizardScreenData)) {
             final PresenterFeature pauseFeature = new PresenterFeature(FeatureType.pause, null);
             pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getAutoNextDelay(storedWizardScreenData)));
-            presenterFeature.getPresenterFeatureList().add(pauseFeature);
+            presenterFeatureInner.getPresenterFeatureList().add(pauseFeature);
             pauseFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
         } else {
             final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, storedWizardScreenData.getNextButton()[0]);
@@ -260,9 +265,9 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
                 final PresenterFeature tableFeature = new PresenterFeature(FeatureType.table, null);
                 tableFeature.addFeatureAttributes(FeatureAttribute.styleName, getButtonStyle(storedWizardScreenData));
                 tableFeature.addFeature(FeatureType.row, null).addFeature(FeatureType.column, null, "").getPresenterFeatureList().add(actionButtonFeature);
-                presenterFeature.getPresenterFeatureList().add(tableFeature);
+                presenterFeatureInner.getPresenterFeatureList().add(tableFeature);
             } else {
-                presenterFeature.getPresenterFeatureList().add(actionButtonFeature);
+                presenterFeatureInner.getPresenterFeatureList().add(actionButtonFeature);
             }
             actionButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
         }
