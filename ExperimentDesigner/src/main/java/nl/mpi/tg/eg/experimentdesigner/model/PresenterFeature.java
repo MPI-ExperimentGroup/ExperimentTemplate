@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experimentdesigner.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -135,6 +136,16 @@ public class PresenterFeature {
         return featureType;
     }
 
+    public PresenterFeature[] addFeatures(FeatureType... featureTypes) {
+        PresenterFeature returnPresenterFeatures[] = new PresenterFeature[featureTypes.length];
+        int index = 0;
+        for (FeatureType feature : featureTypes) {
+            returnPresenterFeatures[index] = addFeature(feature, null);
+            index++;
+        }
+        return returnPresenterFeatures;
+    }
+
     public PresenterFeature addFeature(FeatureType featureType, String text, String... attributes) {
         if (featureType.canHaveText() == (text != null && !text.isEmpty())) {
             final PresenterFeature presenterFeature = new PresenterFeature(featureType, text);
@@ -172,10 +183,15 @@ public class PresenterFeature {
         return translatable.getTranslations();
     }
 
-    @XmlElementWrapper(name = "stimuli")
+    @XmlElementWrapper(name = "stimuli") // tags can be an attribute or in a stimuli element depending on the context
     @XmlElement(name = "tag")
     public List<String> getStimulusTags() {
-        return (featureType.canHaveStimulusTags()) ? stimulusTags : null;
+        return (featureType.canHaveStimulusTags() && featureType.isCanHaveRandomGrouping()) ? stimulusTags : null;
+    }
+
+    @XmlAttribute(name = "tags") // tags can be an attribute or in a stimuli element depending on the context
+    public List<String> getStimulusTagsAttribute() {
+        return (featureType.canHaveStimulusTags() && !featureType.isCanHaveRandomGrouping()) ? stimulusTags : null;
     }
 
     public void setStimulusTags(List<String> stimulusTags) {
@@ -204,7 +220,11 @@ public class PresenterFeature {
     }
 
     public void addStimulusTag(String tag) {
-        stimulusTags.add(Stimulus.cleanTagString(tag));
+        if (featureType.canHaveStimulusTags()) {
+            stimulusTags.add(Stimulus.cleanTagString(tag));
+        } else {
+            throw new UnsupportedOperationException(featureType.name() + " StimulusTags are not supported in this type");
+        }
     }
 
     @XmlAnyAttribute
@@ -228,8 +248,11 @@ public class PresenterFeature {
     }
 
     public void addFeatureAttributes(FeatureAttribute featureAttribute, String attributeValue) {
-        if (attributeValue == null) {
+        if (attributeValue == null /*&& !featureAttribute.isOptional*/) {
             throw new IllegalArgumentException("attributeValue cannot be null: " + featureAttribute.name());
+        }
+        if (!Arrays.asList(featureType.getFeatureAttributes()).contains(featureAttribute)) {
+            throw new IllegalArgumentException(featureType.name() + " cannont contain " + featureAttribute.name());
         }
         this.featureAttributes.put(featureAttribute, attributeValue);
     }
