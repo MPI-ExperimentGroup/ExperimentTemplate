@@ -84,10 +84,18 @@
                 <table>
                     <row>
                         <column>
-                            <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" matchingRegex="(\\.[^\\.]*)$" replacement="_context$1" animate="none" maxWidth="80"/>
+                            <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" matchingRegex="(\\.[^\\.]*)$" replacement="_context$1" animate="none" maxWidth="80">
+                                <mediaLoaded/>
+                                <mediaLoadFailed/>
+                                <mediaPlaybackComplete/>
+                            </stimulusPresent>
                         </column>
                         <column>
-                            <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" animate="none" maxWidth="80"/>
+                            <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" animate="none" maxWidth="80">
+                                <mediaLoaded/>
+                                <mediaLoadFailed/>
+                                <mediaPlaybackComplete/>
+                            </stimulusPresent>
                         </column>
                     </row>
                 </table>
@@ -177,10 +185,18 @@
                 <table>
                     <row>
                         <column>
-                            <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" matchingRegex="(\\.[^\\.]*)$" replacement="_context$1" animate="none" maxWidth="80"/>
+                            <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" matchingRegex="(\\.[^\\.]*)$" replacement="_context$1" animate="none" maxWidth="80">
+                                <mediaLoaded/>
+                                <mediaLoadFailed/>
+                                <mediaPlaybackComplete/>
+                            </stimulusPresent>
                         </column>
                         <column>
-                            <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" animate="none" maxWidth="80"/>
+                            <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" animate="none" maxWidth="80">
+                                <mediaLoaded/>
+                                <mediaLoadFailed/>
+                                <mediaPlaybackComplete/>
+                            </stimulusPresent>
                         </column>
                     </row>
                 </table>
