@@ -43,6 +43,14 @@ public class SchemaGenerator {
         writer.append("<xs:pattern value=\"#[\\dA-Fa-f]{6}\"/>\n");
         writer.append("</xs:restriction>\n");
         writer.append("</xs:simpleType>\n");
+        writer.append("<xs:simpleType name=\"lowercaseValue\">\n");
+        writer.append("<xs:restriction base=\"xs:string\">\n");
+        writer.append("<xs:pattern value=\"[a-z]([a-z_0-9]){6,}\"/>\n");
+        writer.append("</xs:restriction>\n");
+        writer.append("</xs:simpleType>\n");
+        writer.append("<xs:simpleType name=\"integerList\">\n");
+        writer.append("<xs:list itemType=\"xs:integer\"/>\n");
+        writer.append("</xs:simpleType>\n");
 
         writer.append("<xs:element name=\"experiment\">\n").append("<xs:complexType>\n").append("<xs:sequence minOccurs=\"1\" maxOccurs=\"1\">\n");
         writer.append("<xs:annotation>");
@@ -56,12 +64,16 @@ public class SchemaGenerator {
         writer.append("<xs:attribute name=\"featureText\" use=\"required\" type=\"xs:string\"/>\n");
         writer.append("</xs:complexType>\n");
         writer.append("</xs:element>\n");
+        writer.append("<xs:element name=\"administration\" type=\"administrationType\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
         writer.append("<xs:element name=\"metadata\" type=\"metadataType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
         writer.append("<xs:element name=\"presenter\"  minOccurs=\"1\" maxOccurs=\"unbounded\" type=\"presenterType\"/>\n");
         writer.append("<xs:element name=\"stimuli\" type=\"stimuliType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
         writer.append("</xs:sequence>\n");
-        for (String attributeStrings : new String[]{"appNameDisplay", "appNameInternal"}) {
+        for (String attributeStrings : new String[]{"appNameDisplay"}) {
             writer.append("<xs:attribute name=\"").append(attributeStrings).append("\" type=\"xs:string\" use=\"required\"/>\n");
+        }
+        for (String attributeLowercase : new String[]{"appNameInternal"}) {
+            writer.append("<xs:attribute name=\"").append(attributeLowercase).append("\" type=\"lowercaseValue\" use=\"required\"/>\n");
         }
         for (String attributeRGBs : new String[]{"backgroundColour", "complementColour0", "complementColour1", "complementColour2", "complementColour3", "complementColour4", "primaryColour0", "primaryColour1", "primaryColour2", "primaryColour3", "primaryColour4"}) {
             writer.append("<xs:attribute name=\"").append(attributeRGBs).append("\" type=\"rgbHexValue\" use=\"required\"/>\n");
@@ -74,6 +86,9 @@ public class SchemaGenerator {
         }
         for (String attributeIntegers : new String[]{"textFontSize"}) {
             writer.append("<xs:attribute name=\"").append(attributeIntegers).append("\" type=\"xs:integer\" use=\"required\"/>\n");
+        }
+        for (String attributeIntegerLists : new String[]{}) {
+            writer.append("<xs:attribute name=\"").append(attributeIntegerLists).append("\" type=\"integerList\" use=\"required\"/>\n");
         }
         writer.append("</xs:complexType>\n").append("</xs:element>");
     }
@@ -114,6 +129,18 @@ public class SchemaGenerator {
         writer.append("</xs:complexType>\n");
     }
 
+    private void addAdministration(Writer writer) throws IOException {
+        writer.append("<xs:complexType  name=\"administrationType\">\n").append("<xs:sequence>\n");
+        writer.append("<xs:element name=\"dataChannel\" minOccurs=\"0\" maxOccurs=\"unbounded\">\n").append("<xs:complexType>\n");
+//        writer.append("<xs:sequence>\n").append("</xs:sequence>\n");
+        writer.append("<xs:attribute name=\"channel\" type=\"xs:decimal\" use=\"required\"/>\n");
+        writer.append("<xs:attribute name=\"label\" type=\"xs:string\" use=\"required\"/>\n");
+        writer.append("<xs:attribute name=\"logToSdCard\" type=\"xs:boolean\" use=\"required\"/>\n");
+        writer.append("</xs:complexType>\n").append("</xs:element>");
+        writer.append("</xs:sequence>\n");
+        writer.append("</xs:complexType>\n");
+    }
+
     private void addMetadata(Writer writer) throws IOException {
         writer.append("<xs:complexType  name=\"metadataType\">\n").append("<xs:sequence>\n");
         writer.append("<xs:element name=\"field\" maxOccurs=\"unbounded\">\n").append("<xs:complexType>\n");
@@ -121,7 +148,8 @@ public class SchemaGenerator {
         writer.append("<xs:attribute name=\"controlledMessage\" type=\"xs:string\" use=\"required\"/>\n");
         writer.append("<xs:attribute name=\"controlledRegex\" type=\"xs:string\" use=\"required\"/>\n");
         writer.append("<xs:attribute name=\"postName\" type=\"xs:string\" use=\"required\"/>\n");
-        writer.append("<xs:attribute name=\"preventServerDuplicates\" type=\"xs:boolean\" use=\"required\"/>\n");
+        writer.append("<xs:attribute name=\"preventServerDuplicates\" type=\"xs:boolean\" use=\"optional\"/>\n");
+        writer.append("<xs:attribute name=\"duplicatesControlledMessage\" type=\"xs:string\" use=\"optional\"/>\n");
         writer.append("<xs:attribute name=\"registrationField\" type=\"xs:string\" use=\"required\"/>\n");
         writer.append("</xs:complexType>\n").append("</xs:element>");
         writer.append("</xs:sequence>\n");
@@ -196,13 +224,13 @@ public class SchemaGenerator {
                     writer.append("<xs:all>\n");
                     writer.append("<xs:element name=\"mediaLoaded\" type=\"mediaLoadedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                     writer.append("<xs:element name=\"mediaLoadFailed\" type=\"mediaLoadFailedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("<xs:element name=\"mediaPlaybackComplete\" type=\"mediaPlaybackCompleteType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                     writer.append("</xs:all>\n");
                     break;
                 case hasMediaLoading:
                     writer.append("<xs:all>\n");
                     writer.append("<xs:element name=\"mediaLoaded\" type=\"mediaLoadedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                     writer.append("<xs:element name=\"mediaLoadFailed\" type=\"mediaLoadFailedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                    writer.append("<xs:element name=\"mediaPlaybackComplete\" type=\"mediaPlaybackCompleteType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                     writer.append("</xs:all>\n");
                     break;
                 case needsConditionalParent:
@@ -223,6 +251,9 @@ public class SchemaGenerator {
                 }
                 writer.append("/>\n");
             }
+        }
+        if (featureType.canHaveStimulusTags() && !featureType.isCanHaveRandomGrouping()) {
+            writer.append("<xs:attribute name=\"tags\" type=\"xs:string\" use=\"required\"/>\n");
         }
         if (featureType.allowsCustomImplementation()) {
             writer.append("<xs:attribute name=\"class\" type=\"xs:string\"/>\n");
@@ -261,6 +292,7 @@ public class SchemaGenerator {
     public void appendContents(Writer writer) throws IOException {
         getStart(writer);
         addExperiment(writer);
+        addAdministration(writer);
         addMetadata(writer);
         addPresenter(writer, PresenterType.values());
         addStimuli(writer);

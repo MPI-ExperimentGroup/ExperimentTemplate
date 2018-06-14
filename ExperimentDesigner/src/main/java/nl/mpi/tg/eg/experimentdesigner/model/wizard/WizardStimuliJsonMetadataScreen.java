@@ -164,6 +164,7 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         contextFeature.addFeatureAttributes(FeatureAttribute.matchingRegex, "(\\\\.[^\\\\.]*)$");
         contextFeature.addFeatureAttributes(FeatureAttribute.replacement, "_context$1");
         contextFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+        contextFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
         final PresenterFeature contextFeatureColumn = new PresenterFeature(FeatureType.column, null);
         stimulusFeatureRow.getPresenterFeatureList().add(contextFeatureColumn);
         contextFeatureColumn.getPresenterFeatureList().add(contextFeature);
@@ -173,6 +174,7 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         imageFeature.addFeatureAttributes(FeatureAttribute.animate, "none");
+        imageFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
         final PresenterFeature imageFeatureColumn = new PresenterFeature(FeatureType.column, null);
         stimulusFeatureRow.getPresenterFeatureList().add(imageFeatureColumn);
         imageFeatureColumn.getPresenterFeatureList().add(imageFeature);
