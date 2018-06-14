@@ -38,12 +38,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import static nl.mpi.tg.eg.experimentdesigner.util.DefaultExperiments.getDefault;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
  * @since Feb 22, 2016 4:23:36 PM (creation date)
@@ -74,7 +70,7 @@ public class WizardController {
 //    WizardData getJson(@PathVariable WizardData wizardData) {
 //        return wizardData;
 //    }
-
+    
 //    @RequestMapping(value = "/experiments/wizard/create/{wizardData}")
 //    public String create(final HttpServletRequest req, @PathVariable WizardData wizardData) {
 //        final Experiment experiment = getExperiment(wizardData);
@@ -83,7 +79,7 @@ public class WizardController {
 //        experimentRepository.save(experiment);
 //        return "redirect:/experiment/" + experiment.getId();
 //    }
-
+    
     @RequestMapping(value = "/wizard/update/screenText", method = RequestMethod.POST)
     public String screenText(final HttpServletRequest req,
             final Model model,
@@ -104,6 +100,7 @@ public class WizardController {
     public Experiment getExperiment(WizardData wizardData) {
         final Experiment experiment = getExperiment(wizardData.getAppName().replaceAll("[^A-Za-z0-9]", "_"), wizardData.getAppName(), wizardData.isShowMenuBar());
         experiment.setTextFontSize(wizardData.getTextFontSize());
+        experiment.setDataChannels(wizardData.getDataChannels());
         int currentDisplaySequence = 1;
         for (WizardScreenData wizardScreen : wizardData.getWizardScreens()) {
             final WizardScreen wizardScreenType = wizardScreen.getWizardScreenType().wizardScreen;
