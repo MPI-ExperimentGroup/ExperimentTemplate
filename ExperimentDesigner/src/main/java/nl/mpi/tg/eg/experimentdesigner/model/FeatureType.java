@@ -46,6 +46,7 @@ public enum FeatureType {
     actionButton(true, true, new FeatureAttribute[]{hotKey, eventTag, styleName}),
     stimulusButton(true, true, new FeatureAttribute[]{hotKey, dataChannel, styleName}),
     touchInputStimulusButton(true, true, new FeatureAttribute[]{eventTag, dataChannel, src, styleName, listenerId}),
+// todo: touch input needs a threshold before touch is registered and another before touch is ended to allow gaps in touch being recorded as on touch
     touchInputCaptureStart(true, false, new FeatureAttribute[]{showControls, msToNext}), /* sub elements are triggered after the touch ends or after msToNext of no touch activity */
     touchInputReportSubmit(false, false, new FeatureAttribute[]{dataChannel}),
     sendGroupMessageButton(false, true, new FeatureAttribute[]{hotKey, dataChannel, eventTag, repeatIncorrect, incrementPhase, /* incrementPhaseOnDictionaryincrementStimulus */}),
@@ -140,8 +141,9 @@ public enum FeatureType {
     table(true, false, new FeatureAttribute[]{styleName, showOnBackButton}),
     row(true, false, null),
     column(true, false, new FeatureAttribute[]{styleName}),
+    withStimuli(true, false, null, false, false, false, Contitionals.none), // loop over all loaded stimuli rather than using next stimulus on user input
     // todo: look for and update to add the show any stimuli tag and make stimulusImage only show images (true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement, showControls}, false, false, false, Contitionals.hasMediaLoading), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
-    stimulusPresent(false, false, new FeatureAttribute[]{percentOfPage, dataChannel, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement, showControls}, false, false, false, Contitionals.hasMediaLoading), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
+    stimulusPresent(false, false, new FeatureAttribute[]{percentOfPage, dataChannel, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement, showControls}, false, false, false, Contitionals.hasMediaPlayback), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
     stimulusImage(false, false, new FeatureAttribute[]{msToNext, styleName, dataChannel}, false, false, false, Contitionals.hasMediaLoading), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
     stimulusCodeImage(false, false, new FeatureAttribute[]{msToNext, dataChannel, codeFormat, styleName}, false, false, false, Contitionals.hasMediaLoading), //stimulusCodeImage can take both <code> and <rating_" + index + "> tags in its string value
     stimulusCodeVideo(false, false, new FeatureAttribute[]{msToNext, dataChannel, maxHeight, codeFormat, percentOfPage, loop, styleName, autoPlay, showControls, maxWidth}, false, false, false, Contitionals.hasMediaPlayback), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
@@ -161,8 +163,7 @@ public enum FeatureType {
     helpDialogue(false, true, new FeatureAttribute[]{closeButtonLabel}),
     userInfo(false, false, null),
     versionData(false, false, null),
-    preventWindowClose(false, true, null),
-    logToSdCard(false, false, new FeatureAttribute[]{dataChannel}),
+    preventWindowClose(false, true, null), // note: preventWindowClose should only be allowed once in the experiment element
     showColourReport(false, false, new FeatureAttribute[]{scoreThreshold}, false, false, false, Contitionals.hasThreshold),
     // @todo: groupMembers could be used to determing the sequence of who goes when and therefore could be changed to groupMembersSequence
     groupNetwork(false, false, new FeatureAttribute[]{groupMembers, groupCommunicationChannels, phasesPerStimulus}, false, false, false, Contitionals.hasGroupActivities),
