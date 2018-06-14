@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="Online Emotions" appNameInternal="online_emotions" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
+    <administration/>
     <metadata>
         <field controlledMessage="." controlledRegex=".*" postName="workerId" preventServerDuplicates="false" registrationField="Arbeider id"/>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="firstName" preventServerDuplicates="false" registrationField="Voornaam"/>
@@ -36,16 +37,24 @@
                 <centrePage/>
                 <showStimulusProgress/>
                 <stimulusCodeVideo msToNext="1000" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" loop="false" styleName="" autoPlay="true" showControls="false" maxWidth="80">
-                    <clearPage/>
-                    <centrePage/>
-                    <pause msToNext="1000">
-                        <stimulusAudio msToNext="1000" showPlaybackIndicator="false">
-                            <addPadding/>
-                            <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                                <nextStimulus repeatIncorrect="false"/>
-                            </stimulusRatingButton>
-                        </stimulusAudio>
-                    </pause>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete>
+                        <clearPage/>
+                        <centrePage/>
+                        <pause msToNext="1000">
+                            <stimulusAudio msToNext="1000" showPlaybackIndicator="false">
+                                <mediaLoaded/>
+                                <mediaLoadFailed/>
+                                <mediaPlaybackComplete>
+                                    <addPadding/>
+                                    <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </stimulusRatingButton>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio>
+                        </pause>
+                    </mediaPlaybackComplete>
                 </stimulusCodeVideo>
             </hasMoreStimulus>
             <endOfStimulus>

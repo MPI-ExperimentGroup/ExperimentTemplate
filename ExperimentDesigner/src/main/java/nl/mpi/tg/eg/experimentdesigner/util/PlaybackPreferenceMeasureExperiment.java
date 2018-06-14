@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experimentdesigner.util;
 
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
+import nl.mpi.tg.eg.experimentdesigner.model.DataChannel;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardAboutScreen;
@@ -49,7 +50,7 @@ public class PlaybackPreferenceMeasureExperiment {
         wizardData.setShowMenuBar(false);
         wizardData.setTextFontSize(17);
         wizardData.setObfuscateScreenNames(false);
-
+        wizardData.addDataChannel(new DataChannel(3, "Touch Input", true));
         final WizardTextScreen bluetoothInstructionsScreen = new WizardTextScreen("Bluetooth Instructions", "When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A.", "Volgende");
         bluetoothInstructionsScreen.setNextHotKey("ENTER");
         wizardData.addScreen(bluetoothInstructionsScreen);

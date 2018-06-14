@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="Playback Preference" appNameInternal="playback_preference" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
+    <administration>
+        <dataChannel channel="3" label="Touch Input" logToSdCard="true"/>
+    </administration>
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
         <field controlledMessage="Voer een getal." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="datOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
@@ -53,54 +56,66 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" autoPlay="false" showControls="false" maxWidth="100"/>
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
+                </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="3000" showControls="false">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain">
+                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">
                         <playVideo/>
                     </pause>
-                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
-                        <enableStimulusButtons/>
+                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackComplete>
+                            <enableStimulusButtons/>
+                        </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain">
+                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain" dataChannel="2">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">
                         <playVideo/>
                     </pause>
-                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
-                        <enableStimulusButtons/>
+                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackComplete>
+                            <enableStimulusButtons/>
+                        </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
                 <table showOnBackButton="true" styleName="titleBarButton">
                     <row>
                         <column styleName="">
                             <actionButton featureText="Menu (O)" eventTag="R1_MA_ENTER" hotKey="R1_MA_ENTER" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <autoNextPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Prev (left)" eventTag="R1_MA_LEFT" hotKey="R1_MA_LEFT" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Repeat (A)" eventTag="R1_MA_A" hotKey="R1_MA_A" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Next (right)" eventTag="R1_MA_RIGHT" hotKey="R1_MA_RIGHT" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
@@ -121,54 +136,66 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" autoPlay="false" showControls="false" maxWidth="100"/>
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
+                </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="3000" showControls="false">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain">
+                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">
                         <playVideo/>
                     </pause>
-                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
-                        <enableStimulusButtons/>
+                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackComplete>
+                            <enableStimulusButtons/>
+                        </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain">
+                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain" dataChannel="2">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">
                         <playVideo/>
                     </pause>
-                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
-                        <enableStimulusButtons/>
+                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackComplete>
+                            <enableStimulusButtons/>
+                        </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
                 <table showOnBackButton="true" styleName="titleBarButton">
                     <row>
                         <column styleName="">
                             <actionButton featureText="Menu (O)" eventTag="R1_MA_ENTER" hotKey="R1_MA_ENTER" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <autoNextPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Prev (left)" eventTag="R1_MA_LEFT" hotKey="R1_MA_LEFT" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Repeat (A)" eventTag="R1_MA_A" hotKey="R1_MA_A" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Next (right)" eventTag="R1_MA_RIGHT" hotKey="R1_MA_RIGHT" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
@@ -189,54 +216,66 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" autoPlay="false" showControls="false" maxWidth="100"/>
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
+                </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="3000" showControls="false">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain">
+                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">
                         <playVideo/>
                     </pause>
-                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
-                        <enableStimulusButtons/>
+                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackComplete>
+                            <enableStimulusButtons/>
+                        </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain">
+                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain" dataChannel="2">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">
                         <playVideo/>
                     </pause>
-                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
-                        <enableStimulusButtons/>
+                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackComplete>
+                            <enableStimulusButtons/>
+                        </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
                 <table showOnBackButton="true" styleName="titleBarButton">
                     <row>
                         <column styleName="">
                             <actionButton featureText="Menu (O)" eventTag="R1_MA_ENTER" hotKey="R1_MA_ENTER" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <autoNextPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Prev (left)" eventTag="R1_MA_LEFT" hotKey="R1_MA_LEFT" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Repeat (A)" eventTag="R1_MA_A" hotKey="R1_MA_A" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Next (right)" eventTag="R1_MA_RIGHT" hotKey="R1_MA_RIGHT" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
@@ -257,54 +296,66 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" autoPlay="false" showControls="false" maxWidth="100"/>
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
+                </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="3000" showControls="false">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain">
+                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">
                         <playVideo/>
                     </pause>
-                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
-                        <enableStimulusButtons/>
+                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackComplete>
+                            <enableStimulusButtons/>
+                        </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain">
+                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain" dataChannel="2">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">
                         <playVideo/>
                     </pause>
-                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
-                        <enableStimulusButtons/>
+                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackComplete>
+                            <enableStimulusButtons/>
+                        </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
                 <table showOnBackButton="true" styleName="titleBarButton">
                     <row>
                         <column styleName="">
                             <actionButton featureText="Menu (O)" eventTag="R1_MA_ENTER" hotKey="R1_MA_ENTER" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <autoNextPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Prev (left)" eventTag="R1_MA_LEFT" hotKey="R1_MA_LEFT" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Repeat (A)" eventTag="R1_MA_A" hotKey="R1_MA_A" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Next (right)" eventTag="R1_MA_RIGHT" hotKey="R1_MA_RIGHT" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
@@ -325,54 +376,66 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" autoPlay="false" showControls="false" maxWidth="100"/>
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
+                </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="3000" showControls="false">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain">
+                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">
                         <playVideo/>
                     </pause>
-                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
-                        <enableStimulusButtons/>
+                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackComplete>
+                            <enableStimulusButtons/>
+                        </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain">
+                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain" dataChannel="2">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">
                         <playVideo/>
                     </pause>
-                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
-                        <enableStimulusButtons/>
+                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackComplete>
+                            <enableStimulusButtons/>
+                        </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
                 <table showOnBackButton="true" styleName="titleBarButton">
                     <row>
                         <column styleName="">
                             <actionButton featureText="Menu (O)" eventTag="R1_MA_ENTER" hotKey="R1_MA_ENTER" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <autoNextPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Prev (left)" eventTag="R1_MA_LEFT" hotKey="R1_MA_LEFT" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Repeat (A)" eventTag="R1_MA_A" hotKey="R1_MA_A" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Next (right)" eventTag="R1_MA_RIGHT" hotKey="R1_MA_RIGHT" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
@@ -393,54 +456,66 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" autoPlay="false" showControls="false" maxWidth="100"/>
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
+                </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="3000" showControls="false">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain">
+                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">
                         <playVideo/>
                     </pause>
-                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
-                        <enableStimulusButtons/>
+                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackComplete>
+                            <enableStimulusButtons/>
+                        </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain">
+                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain" dataChannel="2">
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">
                         <playVideo/>
                     </pause>
-                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
-                        <enableStimulusButtons/>
+                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackComplete>
+                            <enableStimulusButtons/>
+                        </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
                 <table showOnBackButton="true" styleName="titleBarButton">
                     <row>
                         <column styleName="">
                             <actionButton featureText="Menu (O)" eventTag="R1_MA_ENTER" hotKey="R1_MA_ENTER" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <autoNextPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Prev (left)" eventTag="R1_MA_LEFT" hotKey="R1_MA_LEFT" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <prevStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Repeat (A)" eventTag="R1_MA_A" hotKey="R1_MA_A" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <showStimulus/>
                             </actionButton>
                         </column>
                         <column styleName="">
                             <actionButton featureText="Next (right)" eventTag="R1_MA_RIGHT" hotKey="R1_MA_RIGHT" styleName="">
-                                <touchInputReportSubmit/>
+                                <touchInputReportSubmit dataChannel="3"/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
                         </column>
@@ -483,7 +558,7 @@
                                 <eraseUsersDataButton featureText="Remove the participants's data from this application" target="DataManagement"/>
                                 <addPadding/>
                                 <addPadding/>
-                                <targetButton featureText="Keep local copy of the participants's data" styleName="" target="DataManagement"/>
+                                <targetButton featureText="Keep local copy of the participants's data" hotKey="" styleName="" target="DataManagement"/>
                                 <addPadding/>
                                 <addPadding/>
                             </onSuccess>
@@ -491,10 +566,10 @@
                                 <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
                                 <addPadding/>
                                 <addPadding/>
-                                <targetButton featureText="Retry" styleName="" target="DataUpload"/>
+                                <targetButton featureText="Retry" hotKey="" styleName="" target="DataUpload"/>
                                 <addPadding/>
                                 <addPadding/>
-                                <targetButton featureText="Participant's Data Listing" styleName="" target="DataManagement"/>
+                                <targetButton featureText="Participant's Data Listing" hotKey="" styleName="" target="DataManagement"/>
                                 <addPadding/>
                                 <addPadding/>
                             </onError>
@@ -505,10 +580,10 @@
                     <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
                     <addPadding/>
                     <addPadding/>
-                    <targetButton featureText="Retry" styleName="" target="DataUpload"/>
+                    <targetButton featureText="Retry" hotKey="" styleName="" target="DataUpload"/>
                     <addPadding/>
                     <addPadding/>
-                    <targetButton featureText="Participant's Data Listing" styleName="" target="DataManagement"/>
+                    <targetButton featureText="Participant's Data Listing" hotKey="" styleName="" target="DataManagement"/>
                     <addPadding/>
                     <addPadding/>
                 </onError>

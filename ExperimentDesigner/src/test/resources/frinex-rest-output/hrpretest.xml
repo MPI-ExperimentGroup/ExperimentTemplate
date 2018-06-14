@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="HRPretest" appNameInternal="hrpretest" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
+    <administration/>
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="login code"/>
     </metadata>
@@ -20,9 +21,13 @@
     <presenter menuLabel="AudioTest" next="InformationScreen1" type="stimulus" self="AudioTest" title="AudioTest">
         <htmlText featureText="Dit online experiment is een luisterexperiment. Daarom vragen we je nu de geluidsinstellingen van je computersysteem te testen door op de grote ronde knop hieronder te klikken.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Hoor je geen geluid?&lt;/b&gt; Dan is er iets mis met je huidige geluidsinstellingen. Pas deze zelf aan en probeer het nogmaals.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Hoor je een geluid?&lt;/b&gt; Dan staan je geluidsinstellingen goed ingesteld. Stel zelf het volume van je computersysteem in op een comfortabel niveau.&lt;br/&gt;&lt;br/&gt;----------------------------------------------------------------&lt;br/&gt;LET OP: Doe dit experiment ALLEEN als je in een rustige omgeving zit zonder achtergrondgeluid. Dit is heel belangrijk!&lt;br/&gt;----------------------------------------------------------------&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;[Druk pas op VOLGENDE als de geluidsinstellingen goed zijn...]"/>
         <audioButton eventTag="welkom" src="welkom" hotKey="" autoPlay="false" poster="audiobutton.jpg">
-            <actionButton featureText="volgende [ spatiebalk ]">
-                <autoNextPresenter/>
-            </actionButton>
+            <mediaLoaded/>
+            <mediaLoadFailed/>
+            <mediaPlaybackComplete>
+                <actionButton featureText="volgende [ spatiebalk ]">
+                    <autoNextPresenter/>
+                </actionButton>
+            </mediaPlaybackComplete>
         </audioButton>
     </presenter>
     <presenter menuLabel="InformationScreen1" type="text" self="InformationScreen1" title="InformationScreen1">
@@ -36,10 +41,14 @@
                 <centrePage/>
                 <showStimulusProgress/>
                 <stimulusAudio msToNext="100" showPlaybackIndicator="false">
-                    <addPadding/>
-                    <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
-                        <nextStimulus repeatIncorrect="false"/>
-                    </stimulusRatingButton>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete>
+                        <addPadding/>
+                        <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
+                            <nextStimulus repeatIncorrect="false"/>
+                        </stimulusRatingButton>
+                    </mediaPlaybackComplete>
                 </stimulusAudio>
             </hasMoreStimulus>
             <endOfStimulus>

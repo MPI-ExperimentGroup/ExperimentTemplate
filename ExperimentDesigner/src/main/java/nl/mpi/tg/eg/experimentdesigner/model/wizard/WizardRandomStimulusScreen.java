@@ -369,7 +369,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             } else {
                 hasMoreStimulusFeature.getPresenterFeatureList().add(imageFeature);
             }
-            stimuliFeature = imageFeature;
+            stimuliFeature = imageFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
         }
 
         final PresenterFeature presenterFeature;
@@ -389,16 +389,17 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.msToNext, "0");
             pauseFeature.getPresenterFeatureList().add(stimulusCodeAudio);
             stimuliFeature.getPresenterFeatureList().add(nextButtonFeature);
-            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
-            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "Het antwoord is:"));
+            presenterFeature = stimulusCodeAudio.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
+            presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+            presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "Het antwoord is:"));
             final PresenterFeature logTImeStamp = new PresenterFeature(FeatureType.logTimeStamp, null);
             logTImeStamp.addFeatureAttributes(FeatureAttribute.eventTag, "hetAntwoordIs");
-            stimulusCodeAudio.getPresenterFeatureList().add(logTImeStamp);
-//            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-//            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-//            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-//            stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "<style=\"text-align: left;\">zeer waarschijnlijk negatief</style><style=\"text-align: right;\">zeer waarschijnlijk positief</style>"));
-            presenterFeature = stimulusCodeAudio;
+            presenterFeature.getPresenterFeatureList().add(logTImeStamp);
+//            presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+//            presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+//            presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+//            presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "<style=\"text-align: left;\">zeer waarschijnlijk negatief</style><style=\"text-align: right;\">zeer waarschijnlijk positief</style>"));
+
         } else {
             presenterFeature = stimuliFeature;
         }
@@ -429,7 +430,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabels, storedWizardScreenData.getStimulusResponseOptions());
             ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelLeft, storedWizardScreenData.getStimulusResponseLabelLeft());
             ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelRight, storedWizardScreenData.getStimulusResponseLabelRight());
-            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
+            ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.dataChannel, "1");
             final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
             ratingFooterButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
