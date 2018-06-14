@@ -77,9 +77,7 @@ public class WizardVideoTimelineScreen extends AbstractWizardScreen {
         presenterFeature1.addFeatureAttributes(FeatureAttribute.columnCount, "2");
         presenterFeature1.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTag());
         presenterFeature1.addFeatureAttributes(FeatureAttribute.maxStimuli, String.valueOf(storedWizardScreenData.getStimuliCount()));
-        presenterFeature1.addFeatureAttributes(FeatureAttribute.mp4, storedWizardScreenData.getScreenMediaPath() + ".mp4");
-        presenterFeature1.addFeatureAttributes(FeatureAttribute.webm, storedWizardScreenData.getScreenMediaPath() + ".webm");
-        presenterFeature1.addFeatureAttributes(FeatureAttribute.ogg, storedWizardScreenData.getScreenMediaPath() + ".ogg");
+        presenterFeature1.addFeatureAttributes(FeatureAttribute.src, storedWizardScreenData.getScreenMediaPath());
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(loadStimulus);
         loadStimulus.addFeature(FeatureType.hasMoreStimulus, null).getPresenterFeatureList().add(presenterFeature1);
         loadStimulus.addFeature(FeatureType.endOfStimulus, null);
