@@ -334,6 +334,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         for (String tagName : tagNames) {
             tagSet.add(tagName);
         }
+        // todo: add option strings and correct option
         for (String[] stimulusEntry : stimuliSet) {
             if (stimulusEntry != null && stimulusEntry.length > 0) {
                 // @todo: perhaps this is clearer if there is an explicit adjacency regex used on the identifyer in the GUI app or an explicit adjacency / sort field in the stimuli
@@ -409,7 +410,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             introAudioFeature.addFeatureAttributes(FeatureAttribute.hotKey, "R1_MA_A");
             introAudioFeature.addFeatureAttributes(FeatureAttribute.styleName, "titleBarButton");
             presenterFeatureList.add(introAudioFeature);
-            presenterFeatureList = introAudioFeature.getPresenterFeatureList();
+            presenterFeatureList = introAudioFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2].getPresenterFeatureList();
         }
         if (getIntroAudioDelay(storedWizardScreenData) > 0) {
             final PresenterFeature pauseFeature = new PresenterFeature(FeatureType.pause, null);
@@ -461,31 +462,41 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         final PresenterFeature stimulusRelatedTags;
         if (isShowCurtains(storedWizardScreenData)) {
             stimulusRelatedTags = hasMoreStimulusFeature;
-            hasMoreStimulusFeature.addFeature(FeatureType.stimulusCodeVideo, null, "0", "100", "Monkey_mp4/<code>", "0", "true", "borderedVideoFull", "false", "false", "100");
+            hasMoreStimulusFeature.addFeature(FeatureType.stimulusCodeVideo, null, "0", "1", "100", "Monkey_mp4/<code>", "0", "true", "borderedVideoFull", "false", "false", "100").addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
             final PresenterFeature touchInputCaptureStart = hasMoreStimulusFeature.addFeature(FeatureType.touchInputCaptureStart, null, "false", "3000");
             touchInputCaptureStart.addFeature(FeatureType.pauseVideo, null);
             touchInputCaptureStart.addFeature(FeatureType.enableStimulusButtons, null);
-            final PresenterFeature touchInputStimulusButton1 = hasMoreStimulusFeature.addFeature(FeatureType.touchInputStimulusButton, "Left Overlay Button", "Curtain", "curtain_left.png", "leftOverlayCurtain", "allCurtainGroup");
+            final PresenterFeature touchInputStimulusButton1 = hasMoreStimulusFeature.addFeature(FeatureType.touchInputStimulusButton, "Left Overlay Button", "Curtain", "2", "curtain_left.png", "leftOverlayCurtain", "allCurtainGroup");
             touchInputStimulusButton1.addFeature(FeatureType.disableStimulusButtons, null);
             touchInputStimulusButton1.addFeature(FeatureType.rewindVideo, null);
             touchInputStimulusButton1.addFeature(FeatureType.pause, null, "1000").addFeature(FeatureType.playVideo, null);
-            touchInputStimulusButton1.addFeature(FeatureType.stimulusCodeAudio, null, "500", "Correct", "false").addFeature(FeatureType.enableStimulusButtons, null);
-            final PresenterFeature touchInputStimulusButton2 = hasMoreStimulusFeature.addFeature(FeatureType.touchInputStimulusButton, "Right Overlay Button", "Curtain", "curtain_right.png", "rightOverlayCurtain", "allCurtainGroup");
+            final PresenterFeature stimulusCodeAudio = touchInputStimulusButton1.addFeature(FeatureType.stimulusCodeAudio, null, "500", "0", "Correct", "false");
+            stimulusCodeAudio.addFeature(FeatureType.mediaLoaded, null);
+            stimulusCodeAudio.addFeature(FeatureType.mediaLoadFailed, null);
+            stimulusCodeAudio.addFeature(FeatureType.mediaPlaybackComplete, null).addFeature(FeatureType.enableStimulusButtons, null);
+            final PresenterFeature touchInputStimulusButton2 = hasMoreStimulusFeature.addFeature(FeatureType.touchInputStimulusButton, "Right Overlay Button", "Curtain", "2", "curtain_right.png", "rightOverlayCurtain", "allCurtainGroup");
             touchInputStimulusButton2.addFeature(FeatureType.disableStimulusButtons, null);
             touchInputStimulusButton2.addFeature(FeatureType.rewindVideo, null);
             touchInputStimulusButton2.addFeature(FeatureType.pause, null, "1000").addFeature(FeatureType.playVideo, null);
-            touchInputStimulusButton2.addFeature(FeatureType.stimulusCodeAudio, null, "500", "Correct", "false").addFeature(FeatureType.enableStimulusButtons, null);
+            final PresenterFeature stimulusCodeAudio1 = touchInputStimulusButton2.addFeature(FeatureType.stimulusCodeAudio, null, "500", "0", "Correct", "false");
+            stimulusCodeAudio1.addFeature(FeatureType.mediaLoaded, null);
+            stimulusCodeAudio1.addFeature(FeatureType.mediaLoadFailed, null);
+            stimulusCodeAudio1.addFeature(FeatureType.mediaPlaybackComplete, null).addFeature(FeatureType.enableStimulusButtons, null);
         } else if (isCodeAudio(storedWizardScreenData)) {
             final PresenterFeature stimulusCodeAudio1 = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
             stimulusCodeAudio1.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
             stimulusCodeAudio1.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>_1");
+            stimulusCodeAudio1.addFeatureAttributes(FeatureAttribute.dataChannel, "0");
             stimulusCodeAudio1.addFeatureAttributes(FeatureAttribute.msToNext, "1000");
             hasMoreStimulusFeature.getPresenterFeatureList().add(stimulusCodeAudio1);
             final PresenterFeature stimulusCodeAudio2 = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
             stimulusCodeAudio2.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
             stimulusCodeAudio2.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>_2");
+            stimulusCodeAudio2.addFeatureAttributes(FeatureAttribute.dataChannel, "0");
             stimulusCodeAudio2.addFeatureAttributes(FeatureAttribute.msToNext, "0");
-            stimulusCodeAudio1.getPresenterFeatureList().add(stimulusCodeAudio2);
+            stimulusCodeAudio2.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
+            final PresenterFeature stimulusCodeAudioLoaded = stimulusCodeAudio1.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
+            stimulusCodeAudioLoaded.getPresenterFeatureList().add(stimulusCodeAudio2);
 //        stimulusCodeAudio.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
 //        final PresenterFeature tableFeature = new PresenterFeature(FeatureType.table, null);
 //        stimulusCodeAudio1.getPresenterFeatureList().add(tableFeature);
@@ -500,31 +511,32 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 //        rowFeature.getPresenterFeatureList().add(middleColumnFeature);
 //        final PresenterFeature rightColumnFeature = new PresenterFeature(FeatureType.column, null);
 //        rowFeature.getPresenterFeatureList().add(rightColumnFeature);
-            final PresenterFeature stimulusCodeVideoL = stimulusCodeAudio1.addFeature(FeatureType.stimulusCodeVideo, null, "0", "100", "<code>_L", "0", "false", "borderedVideoLeft", "true", "false", "100");
-            final PresenterFeature stimulusCodeVideoR = stimulusCodeAudio1.addFeature(FeatureType.stimulusCodeVideo, null, "0", "100", "<code>_R", "0", "false", "borderedVideoRight", "true", "false", "100");
-            final PresenterFeature stimulusCodeAudio3 = stimulusCodeVideoR.addFeature(FeatureType.stimulusCodeAudio, null, "0", "<code>_3", Boolean.toString(false));
-            stimulusRelatedTags = stimulusCodeAudio3;
+            // todo: implement "<option_0>" instead of "<code>_L" and "<option_1>" instead of "<code>_R"
+            final PresenterFeature stimulusCodeVideoL = stimulusCodeAudioLoaded.addFeature(FeatureType.stimulusCodeVideo, null, "0", "1", "100", "<code>_L", "0", "false", "borderedVideoLeft", "true", "false", "100");
+            stimulusCodeVideoL.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
+            final PresenterFeature stimulusCodeVideoR = stimulusCodeAudioLoaded.addFeature(FeatureType.stimulusCodeVideo, null, "0", "1", "100", "<code>_R", "0", "false", "borderedVideoRight", "true", "false", "100");
+            final PresenterFeature stimulusCodeAudio3 = stimulusCodeVideoR.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2].addFeature(FeatureType.stimulusCodeAudio, null, "0", "1", "<code>_3", Boolean.toString(false));
+            stimulusRelatedTags = stimulusCodeAudio3.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
             final PresenterFeature touchInputCaptureStart = hasMoreStimulusFeature.addFeature(FeatureType.touchInputCaptureStart, null, "false", "-1");
 //        final PresenterFeature nextStimulusL = new PresenterFeature(FeatureType.nextStimulus, null);
 //        nextStimulusL.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusL");
 //        nextStimulusL.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
 //        touchInputZoneL.getPresenterFeatureList().add(nextStimulusL);
-
-            final PresenterFeature leftOverlayButton = stimulusRelatedTags.addFeature(FeatureType.touchInputStimulusButton, "Left Overlay Button", "Left", "", "leftOverlayButton", "leftButtonGroup");
+            final PresenterFeature leftOverlayButton = stimulusRelatedTags.addFeature(FeatureType.touchInputStimulusButton, "Left Overlay Button", "Left", "2", "", "leftOverlayButton", "leftButtonGroup");
             leftOverlayButton.getPresenterFeatureList().add(new PresenterFeature(FeatureType.disableStimulusButtons, null));
             final PresenterFeature responseAudio1 = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
             responseAudio1.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
             responseAudio1.addFeatureAttributes(FeatureAttribute.codeFormat, "Correct");
             responseAudio1.addFeatureAttributes(FeatureAttribute.msToNext, "500");
-            responseAudio1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.enableStimulusButtons, null));
+            responseAudio1.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2].getPresenterFeatureList().add(new PresenterFeature(FeatureType.enableStimulusButtons, null));
             leftOverlayButton.getPresenterFeatureList().add(responseAudio1);
-            final PresenterFeature rightOverlayButton = stimulusRelatedTags.addFeature(FeatureType.touchInputStimulusButton, "Right Overlay Button", "Right", "", "rightOverlayButton", "rightButtonGroup");
+            final PresenterFeature rightOverlayButton = stimulusRelatedTags.addFeature(FeatureType.touchInputStimulusButton, "Right Overlay Button", "Right", "2", "", "rightOverlayButton", "rightButtonGroup");
             rightOverlayButton.getPresenterFeatureList().add(new PresenterFeature(FeatureType.disableStimulusButtons, null));
             final PresenterFeature responseAudio2 = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
             responseAudio2.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
             responseAudio2.addFeatureAttributes(FeatureAttribute.codeFormat, "Correct");
             responseAudio2.addFeatureAttributes(FeatureAttribute.msToNext, "500");
-            responseAudio2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.enableStimulusButtons, null));
+            responseAudio2.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2].getPresenterFeatureList().add(new PresenterFeature(FeatureType.enableStimulusButtons, null));
             rightOverlayButton.getPresenterFeatureList().add(responseAudio2);
         } else {
             if (!getAudioAB(storedWizardScreenData).isEmpty()) {
@@ -538,7 +550,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                 }
                 currentAction.addFeature(FeatureType.backgroundImage, null, "0", "", "");
                 currentAction.addFeature(FeatureType.disableStimulusButtons, null);
-                final PresenterFeature stimulusAudio = ("AudioAB".equals(getAudioAB(storedWizardScreenData))) ? currentAction.addFeature(FeatureType.stimulusCodeAudio, null, "500", "<code>_a", Boolean.toString(false)).addFeature(FeatureType.stimulusCodeAudio, null, "0", "<code>_b", Boolean.toString(false)) : currentAction.addFeature(FeatureType.stimulusAudio, null, "0", Boolean.toString(false));
+                final PresenterFeature stimulusAudio = ("AudioAB".equals(getAudioAB(storedWizardScreenData))) ? currentAction.addFeature(FeatureType.stimulusCodeAudio, null, "500", "0", "<code>_a", Boolean.toString(false)).addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2].addFeature(FeatureType.stimulusCodeAudio, null, "0", "0", "<code>_b", Boolean.toString(false)).addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2] : currentAction.addFeature(FeatureType.stimulusAudio, null, "0", "0", Boolean.toString(false)).addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
                 stimulusAudio.addFeature(FeatureType.enableStimulusButtons, null);
                 stimulusAudio.addFeature(FeatureType.backgroundImage, null, "0", "", "backgroundHighlight");
                 final PresenterFeature pause2 = stimulusAudio.addFeature(FeatureType.pause, null, "3000");
@@ -547,8 +559,8 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                         pause2.addFeature(FeatureType.trigger, null, "loopAction");
                         break;
                     case "AudioAB":
-                        final PresenterFeature repeatAudioB = pause2.addFeature(FeatureType.stimulusCodeAudio, null, "3000", "<code>_b", Boolean.toString(false));
-                        final PresenterFeature drukophetplaatje = repeatAudioB.addFeature(FeatureType.stimulusCodeAudio, null, "3000", "DrukOpHetPlaatje", Boolean.toString(false));
+                        final PresenterFeature repeatAudioB = pause2.addFeature(FeatureType.stimulusCodeAudio, null, "3000", "0", "<code>_b", Boolean.toString(false)).addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
+                        final PresenterFeature drukophetplaatje = repeatAudioB.addFeature(FeatureType.stimulusCodeAudio, null, "3000", "0", "DrukOpHetPlaatje", Boolean.toString(false)).addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
                         drukophetplaatje.addFeature(FeatureType.disableStimulusButtons, null);
                         drukophetplaatje.addFeature(FeatureType.cancelPauseTimers, null);
                         drukophetplaatje.addFeature(FeatureType.clearPage, null, "");
@@ -556,12 +568,12 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                             drukophetplaatje.addFeature(FeatureType.backgroundImage, null, "0", getRewardImage(storedWizardScreenData), "");
                         }
                         final PresenterFeature pause3a = drukophetplaatje.addFeature(FeatureType.pause, null, "1000");
-                        pause3a.addFeature(FeatureType.touchInputReportSubmit, null);
+                        pause3a.addFeature(FeatureType.touchInputReportSubmit, null, "3");
                         pause3a.addFeature(FeatureType.nextStimulus, null, "false");
                         break;
                     case "AudioRepeat1":
                     case "AudioRepeat2":
-                        final PresenterFeature repeatAudio = pause2.addFeature(FeatureType.stimulusAudio, null, "3000", Boolean.toString(false));
+                        final PresenterFeature repeatAudio = pause2.addFeature(FeatureType.stimulusAudio, null, "3000", "0", Boolean.toString(false)).addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
                         repeatAudio.addFeature(FeatureType.disableStimulusButtons, null);
                         repeatAudio.addFeature(FeatureType.cancelPauseTimers, null);
                         repeatAudio.addFeature(FeatureType.clearPage, null, "");
@@ -569,7 +581,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                             repeatAudio.addFeature(FeatureType.backgroundImage, null, "0", getRewardImage(storedWizardScreenData), "");
                         }
                         final PresenterFeature pause3b = repeatAudio.addFeature(FeatureType.pause, null, "1000");
-                        pause3b.addFeature(FeatureType.touchInputReportSubmit, null);
+                        pause3b.addFeature(FeatureType.touchInputReportSubmit, null, "3");
                         pause3b.addFeature(FeatureType.nextStimulus, null, "false");
                         break;
                 }
@@ -596,8 +608,8 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                 stimuliButtonArray = new String[][]{{"<code>_left.jpg", "borderedVideoLeft", "Left Overlay Button", "Left", "leftOverlayButton", "leftButtonGroup"}, {"<code>_right.jpg", "borderedVideoRight", "Right Overlay Button", "Right", "rightOverlayButton", "rightButtonGroup"}};
             }
             for (String[] additionString : stimuliButtonArray) {
-                final PresenterFeature stimulusImage = hasMoreStimulusFeature.addFeature(FeatureType.stimulusCodeImage, null, "250", additionString[0], additionString[1]);
-                final PresenterFeature leftOverlayButton = stimulusImage.addFeature(FeatureType.touchInputStimulusButton, additionString[2], additionString[3], "", additionString[4], additionString[5]);
+                final PresenterFeature stimulusImage = hasMoreStimulusFeature.addFeature(FeatureType.stimulusCodeImage, null, "250", "0", additionString[0], additionString[1]).addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed)[0];
+                final PresenterFeature leftOverlayButton = stimulusImage.addFeature(FeatureType.touchInputStimulusButton, additionString[2], additionString[3], "2", "", additionString[4], additionString[5]);
                 leftOverlayButton.addFeature(FeatureType.disableStimulusButtons, null);
                 leftOverlayButton.addFeature(FeatureType.cancelPauseTimers, null);
 //                leftOverlayButton.addFeature(FeatureType.trigger, null, "buttonAction");
@@ -606,8 +618,8 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                 if (getRewardImage(storedWizardScreenData) != null) {
                     pause.addFeature(FeatureType.backgroundImage, null, "0", getRewardImage(storedWizardScreenData), "");
                 }
-                final PresenterFeature stimulusCodeAudio = (getCorrectAudio(storedWizardScreenData) == null) ? pause.addFeature(FeatureType.pause, null, "1000") : pause.addFeature(FeatureType.stimulusCodeAudio, null, "500", getCorrectAudio(storedWizardScreenData), "false");
-                stimulusCodeAudio.addFeature(FeatureType.touchInputReportSubmit, null);
+                final PresenterFeature stimulusCodeAudio = (getCorrectAudio(storedWizardScreenData) == null) ? pause.addFeature(FeatureType.pause, null, "1000") : pause.addFeature(FeatureType.stimulusCodeAudio, null, "500", "0", getCorrectAudio(storedWizardScreenData), "false").addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
+                stimulusCodeAudio.addFeature(FeatureType.touchInputReportSubmit, null, "3");
                 stimulusCodeAudio.addFeature(FeatureType.nextStimulus, null, "false");
                 if (!getAudioAB(storedWizardScreenData).isEmpty()) {
                     stimulusImage.addFeature(FeatureType.disableStimulusButtons, null);
@@ -657,17 +669,18 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         storedWizardScreenData.getPresenterScreen().setBackPresenter(null); // we do not use the back menu button in this screen type so we set it do null after extracting the data
         if (menuScreenData != null) {
             final PresenterFeature menuStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, menuScreenData.getMenuLabel() + " (O)", "R1_MA_ENTER", "R1_MA_ENTER", "");
-            menuStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null);
+            menuStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null, "3");
+            // todo: this menu stimulus button failed to cancel audio end timers in the playhouse experiment
             menuStimulusButton.addFeature(FeatureType.autoNextPresenter, null, menuScreenData.getScreenTag());
         }
         final PresenterFeature previousStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Prev (left)", "R1_MA_LEFT", "R1_MA_LEFT", "");
-        previousStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null);
+        previousStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null, "3");
         previousStimulusButton.addFeature(FeatureType.prevStimulus, null, "false");
         final PresenterFeature repeatStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Repeat (A)", "R1_MA_A", "R1_MA_A", "");
-        repeatStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null);
+        repeatStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null, "3");
         repeatStimulusButton.addFeature(FeatureType.showStimulus, null);
         final PresenterFeature nextStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Next (right)", "R1_MA_RIGHT", "R1_MA_RIGHT", "");
-        nextStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null);
+        nextStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null, "3");
         nextStimulusButton.addFeature(FeatureType.nextStimulus, null, "false");
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
         final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
