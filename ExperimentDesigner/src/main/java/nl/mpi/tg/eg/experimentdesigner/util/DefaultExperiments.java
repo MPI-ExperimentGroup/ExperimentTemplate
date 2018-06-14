@@ -265,6 +265,8 @@ public class DefaultExperiments {
                     case repeatCount:
                     case repeatRandomWindow:
                     case scoreThreshold:
+                    case errorThreshold:
+                    case potentialThreshold:
                     case incrementPhase:
                     case scoreValue:
                     case minStimuliPerTag:
@@ -336,6 +338,13 @@ public class DefaultExperiments {
                     presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 }
                 break;
+//            case hasStimulusTag:
+//                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.hasTag, presenterFeatureRepository));
+//                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.withoutTag, presenterFeatureRepository));
+//                if (presenterFeatureRepository != null) {
+//                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+//                }
+//                break;
             case hasMoreStimulus:
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.hasMoreStimulus, presenterFeatureRepository));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.endOfStimulus, presenterFeatureRepository));
