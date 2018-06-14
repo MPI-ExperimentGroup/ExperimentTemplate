@@ -214,10 +214,11 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, imageFeatureValues.getPercentOfPage());
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, imageFeatureValues.getPercentOfPage());
         imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+        final PresenterFeature mediaLoaded = imageFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
         parentFeature.getPresenterFeatureList().add(imageFeature);
         final PresenterFeature actionFeature;
         if (imageFeatureValues.getButtons().length == 1) {
-            imageFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, imageFeatureValues.getLabel()));
+            mediaLoaded.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, imageFeatureValues.getLabel()));
             actionFeature = new PresenterFeature(FeatureType.actionButton, imageFeatureValues.getButtons()[0]);
             final PresenterFeature endAudioRecorderTagFeature = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
             endAudioRecorderTagFeature.addFeatureAttributes(FeatureAttribute.eventTier, "1");
@@ -229,7 +230,7 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
             actionFeature.addFeatureAttributes(FeatureAttribute.dataChannel, "1");
         }
         actionFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
-        imageFeature.getPresenterFeatureList().add(actionFeature);
+        mediaLoaded.getPresenterFeatureList().add(actionFeature);
         return actionFeature;
     }
 }
