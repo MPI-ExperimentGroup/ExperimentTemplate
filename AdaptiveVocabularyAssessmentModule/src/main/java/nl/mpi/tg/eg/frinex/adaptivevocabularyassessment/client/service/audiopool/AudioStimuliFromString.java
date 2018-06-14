@@ -39,7 +39,7 @@ public class AudioStimuliFromString {
 
     private final LinkedHashMap<String, AudioAsStimulus> hashedStimuli = new LinkedHashMap<String, AudioAsStimulus>();
     private LinkedHashMap<Integer, Trial> trials = new LinkedHashMap<Integer, Trial>();
-    private LinkedHashMap<Integer, Trial> learningTrials = new LinkedHashMap<Integer, Trial>();
+    private final LinkedHashMap<Integer, Trial> learningTrials = new LinkedHashMap<Integer, Trial>();
     private final LinkedHashMap<String, Integer> stimuliTrialIndex = new LinkedHashMap<String, Integer>();
 
     //private String audiPathDir = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/audioas2/stimuli/";
