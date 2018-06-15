@@ -46,7 +46,7 @@ public class RavenStimuliFromCsvToXml {
     public String parseWordsInputCSVStringToXml(String csvString, String stimuliDir) throws Exception {
         
         StringBuilder retVal = new StringBuilder();
-        String ratingLabels ="1,2,3,4,5,6,7,8";
+        String ratingLabels ="1,2,3,4,5,6,7,8"+","+CsvTables.SKIP+","+CsvTables.DONTKNOW;
        
         CsvRecords csvWrapper = new CsvRecords(null, "\t", "\n");
         csvWrapper.readRecords(csvString);

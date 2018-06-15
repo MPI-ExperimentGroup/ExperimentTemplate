@@ -22,6 +22,9 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.ravenpoo
  * @author olhshk
  */
 public class CsvTables {
+    
+    public static String SKIP ="Overslaan";
+    public static String DONTKNOW ="Ik weet het niet";
 
     public static String PRACTICE_APM_SET = "Item	Part	Picture	Correct_Answer\n"
             + "1	Practice	APM_I_01.gif	0\n"

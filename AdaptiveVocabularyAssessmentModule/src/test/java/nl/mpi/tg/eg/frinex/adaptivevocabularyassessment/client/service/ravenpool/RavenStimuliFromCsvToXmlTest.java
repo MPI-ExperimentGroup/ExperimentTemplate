@@ -55,7 +55,7 @@ public class RavenStimuliFromCsvToXmlTest {
     @Test
     public void testParseWordsInputCSVStringToXml() throws Exception {
         System.out.println("parseWordsInputCSVStringToXml");
-        String stimuliDir = "static/stimuli/";
+        String stimuliDir = "stimuli/";
         RavenStimuliFromCsvToXml instance = new RavenStimuliFromCsvToXml();
         String result = instance.parseWordsInputCSVStringToXml(CsvTables.APM_SET_2, stimuliDir);
         assertTrue(result.startsWith("<stimulus "));
