@@ -45,7 +45,7 @@ public class SchemaGenerator {
         writer.append("</xs:simpleType>\n");
         writer.append("<xs:simpleType name=\"lowercaseValue\">\n");
         writer.append("<xs:restriction base=\"xs:string\">\n");
-        writer.append("<xs:pattern value=\"[a-z]([a-z_0-9]){6,}\"/>\n");
+        writer.append("<xs:pattern value=\"[a-z]([a-z_0-9]){3,}\"/>\n");
         writer.append("</xs:restriction>\n");
         writer.append("</xs:simpleType>\n");
         writer.append("<xs:simpleType name=\"integerList\">\n");
