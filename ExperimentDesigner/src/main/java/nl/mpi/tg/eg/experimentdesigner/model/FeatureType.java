@@ -34,7 +34,6 @@ public enum FeatureType {
     image(true, false, new FeatureAttribute[]{src, styleName, msToNext}),
     menuItem(false, true, new FeatureAttribute[]{target, hotKey}),
     //    popupMessage(true, true, null),
-    loadSubsetStimulus(false, false, new FeatureAttribute[]{eventTag, dataChannel, maxStimuli, condition0Tag, condition1Tag, condition2Tag}, true, true, false, Contitionals.none),
     loadStimulus(false, false, new FeatureAttribute[]{eventTag, minStimuliPerTag, maxStimuliPerTag, maxStimuli, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.hasMoreStimulus, true),
     withMatchingStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, randomise, repeatCount, repeatRandomWindow, matchingRegex}, false, false, false, Contitionals.hasMoreStimulus),
     loadSdCardStimulus(false, false, new FeatureAttribute[]{eventTag, minStimuliPerTag, maxStimuliPerTag, maxStimuli, excludeRegex, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.hasMoreStimulus),
@@ -46,7 +45,7 @@ public enum FeatureType {
     actionButton(true, true, new FeatureAttribute[]{hotKey, eventTag, styleName}),
     stimulusButton(true, true, new FeatureAttribute[]{hotKey, dataChannel, styleName}),
     touchInputStimulusButton(true, true, new FeatureAttribute[]{eventTag, dataChannel, src, styleName, listenerId}),
-// todo: touch input needs a threshold before touch is registered and another before touch is ended to allow gaps in touch being recorded as on touch
+    // todo: touch input needs a threshold before touch is registered and another before touch is ended to allow gaps in touch being recorded as on touch
     touchInputCaptureStart(true, false, new FeatureAttribute[]{showControls, msToNext}), /* sub elements are triggered after the touch ends or after msToNext of no touch activity */
     touchInputReportSubmit(false, false, new FeatureAttribute[]{dataChannel}),
     sendGroupMessageButton(false, true, new FeatureAttribute[]{hotKey, dataChannel, eventTag, repeatIncorrect, incrementPhase, /* incrementPhaseOnDictionaryincrementStimulus */}),
