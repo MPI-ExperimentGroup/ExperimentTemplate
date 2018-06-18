@@ -130,60 +130,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         this.nextState = nextState;
     }
 
-    // todo: maxSpeakerWordCount needs to be utilised correctly
-    protected void loadSubsetStimulus(String eventTag, final int dataChannel, final List<Stimulus.Tag> selectionTags, final List<GeneratedStimulus.Tag> randomTags, final MetadataField stimulusAllocationField, final GeneratedStimulus.Tag condition0Tag, final GeneratedStimulus.Tag condition1Tag, final GeneratedStimulus.Tag condition2Tag, final int maxStimulusCount) {
-        // todo: implement randomTags
-        final String storedDataValue = userResults.getUserData().getMetadataValue(stimulusAllocationField);
-        int stimulusAllocation;
-        try {
-            stimulusAllocation = Integer.parseInt(storedDataValue);
-        } catch (NumberFormatException exception) {
-            stimulusAllocation = new Random().nextInt(5);
-            userResults.getUserData().setMetadataValue(stimulusAllocationField, Integer.toString(stimulusAllocation));
-            localStorage.storeData(userResults, metadataFieldProvider);
-        }
-        final String storedStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag());
-        int seenStimulusIndex;
-        try {
-            seenStimulusIndex = Integer.parseInt(localStorage.getStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag()));
-        } catch (NumberFormatException exception) {
-            seenStimulusIndex = 0;
-        }
-//        Participants will be exposed to 36 audio+picture combinations, 
-//        which are in fact 6 word-picture combination, 
-//        but each word repeats 6 times with a different audio files each time (see xls file).
-//        There will be two conditions.
-//        In one condition, all 36 audio recordings will come from the same speaker (sampled randomly out of 3 speakers). 
-//        In the other condition, each word will be presented twice with recordings of speaker1, 
-//        twice with recordings of speaker2 and twice with recordings of speaker3 
-//        (and the two recordings per speaker will be randomly sampled from the 6 existing recordings per speaker).
-//        The picture should always appear one second before the word is played. 
-//        It should stay on the screen for 3 seconds (including the pre-word 1 sec).
-//        final Stimulus.Tag[] selectionTags = new Stimulus.Tag[]{Stimulus.Tag.tag_ประเพณีบุญบั้งไฟ, Stimulus.Tag.tag_Rocket, Stimulus.Tag.tag_Festival, Stimulus.Tag.tag_Lao, Stimulus.Tag.tag_Thai, Stimulus.Tag.tag_ບຸນບັ້ງໄຟ};
-//        final Stimulus.Tag case0Tag = Stimulus.Tag.tag_centipedes;
-//        final Stimulus.Tag case1Tag = Stimulus.Tag.tag_scorpions;
-//        final Stimulus.Tag case2Tag = Stimulus.Tag.tag_termites;
-
-        switch (stimulusAllocation) {
-            case 0:
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, "Condition0", condition0Tag.name(), duration.elapsedMillis());
-                stimulusProvider.getSubset(condition0Tag, maxStimulusCount, selectionTags, storedStimulusList, seenStimulusIndex);
-                break;
-            case 1:
-                stimulusProvider.getSubset(condition1Tag, maxStimulusCount, selectionTags, storedStimulusList, seenStimulusIndex);
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, "Condition1", condition1Tag.name(), duration.elapsedMillis());
-                break;
-            case 2:
-                stimulusProvider.getSubset(condition2Tag, maxStimulusCount, selectionTags, storedStimulusList, seenStimulusIndex);
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, "Condition2", condition2Tag.name(), duration.elapsedMillis());
-                break;
-            default:
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, "Condition3", "", duration.elapsedMillis());
-                stimulusProvider.getSubset(maxStimulusCount, storedStimulusList, seenStimulusIndex, Arrays.asList(new Stimulus.Tag[]{condition1Tag, condition2Tag, condition0Tag}), selectionTags, 32);
-                break;
-        }
-    }
-
     protected void loadSdCardStimulus(final String eventTag,
             final StimulusSelector[] selectionTags, // only stimuli with tags in this list can be included
             final StimulusSelector[] randomTags,

@@ -93,9 +93,6 @@ public enum FeatureAttribute {
     maxStimuli(true),
     excludeRegex(true),
     //    alias, // alias is used to specify a tag or set of tags via GET parameters
-    condition0Tag,
-    condition1Tag,
-    condition2Tag,
     scoreThreshold(false),
     errorThreshold(true), // interger to make active, when empty or not present is passed as null
     potentialThreshold(true), // interger to make active, when empty or not present is passed as null

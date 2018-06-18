@@ -94,7 +94,7 @@ public class SchemaGenerator {
     }
 
     private void addPresenter(Writer writer, final PresenterType[] presenterTypes) throws IOException {
-        writer.append("<xs:complexType name=\"presenterType\">\n").append("<xs:choice maxOccurs=\"unbounded\">\n");
+        writer.append("<xs:complexType name=\"presenterType\">\n").append("<xs:choice minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
         for (final FeatureType featureRef : FeatureType.values()) {
             if (featureRef.getContitionals() != FeatureType.Contitionals.needsConditionalParent) {
                 writer.append("<xs:element name=\"").append(featureRef.name()).append("\" type=\"").append(featureRef.name()).append("Type\"/>\n");

@@ -30,9 +30,6 @@ import nl.mpi.tg.eg.experimentdesigner.dao.PresenterScreenRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.PublishEventRepository;
 import nl.mpi.tg.eg.experimentdesigner.dao.TranslationRepository;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
-import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.condition0Tag;
-import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.condition1Tag;
-import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.condition2Tag;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.maxHeight;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.maxWidth;
 import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.percentOfPage;
@@ -230,12 +227,7 @@ public class DefaultExperiments {
 //            maxScreenAddCount--;
             final PresenterScreen presenterScreen = new PresenterScreen(presenterType.name(), presenterType.name(), backPresenter, presenterType.name() + "Screen", null, presenterType, displayOrder);
             for (FeatureType featureType : presenterType.getFeatureTypes()) {
-                if (featureType != FeatureType.onError
-                        && featureType != FeatureType.onSuccess
-                        && featureType != FeatureType.conditionTrue
-                        && featureType != FeatureType.conditionFalse
-                        && featureType != FeatureType.hasMoreStimulus
-                        && featureType != FeatureType.endOfStimulus) {
+                if (featureType.getContitionals() != FeatureType.Contitionals.needsConditionalParent) {
                     if (featureType == FeatureType.clearPage) {
                         final PresenterFeature clearScreenButton = new PresenterFeature(FeatureType.actionButton, "Clear Screen");
                         clearScreenButton.getPresenterFeatureList().add(addFeature(experiment, featureType, presenterFeatureRepository));
@@ -277,15 +269,6 @@ public class DefaultExperiments {
                     case maxWidth:
                     case msToNext:
                         presenterFeature.addFeatureAttributes(attribute, "60");
-                        break;
-                    case condition0Tag:
-                        presenterFeature.addFeatureAttributes(attribute, "centipedes");
-                        break;
-                    case condition1Tag:
-                        presenterFeature.addFeatureAttributes(attribute, "scorpions");
-                        break;
-                    case condition2Tag:
-                        presenterFeature.addFeatureAttributes(attribute, "termites");
                         break;
                     case hotKey:
                         presenterFeature.addFeatureAttributes(attribute, "A");
@@ -376,6 +359,21 @@ public class DefaultExperiments {
             case hasGroupActivities:
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.groupNetworkActivity, presenterFeatureRepository));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.groupNetworkActivity, presenterFeatureRepository));
+                if (presenterFeatureRepository != null) {
+                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                }
+                break;
+            case hasMediaLoading:
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.mediaLoaded, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.mediaLoadFailed, presenterFeatureRepository));
+                if (presenterFeatureRepository != null) {
+                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                }
+                break;
+            case hasMediaPlayback:
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.mediaLoaded, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.mediaLoadFailed, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.mediaPlaybackComplete, presenterFeatureRepository));
                 if (presenterFeatureRepository != null) {
                     presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 }
