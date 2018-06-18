@@ -29,7 +29,12 @@
         <xsl:value-of select="experiment/@showMenuBar" />
         <xsl:text>;
             public static final int[] SDCARD_DATACHANNELS = {</xsl:text>
-        <xsl:value-of select="if(experiment/logToSdCard/@dataChanel) then experiment/logToSdCard/@dataChanel else ''" />
+        <xsl:for-each select="experiment/administration/dataChannel[@logToSdCard eq'true']">
+            <xsl:value-of select="@channel" />
+            <xsl:if test="position() != last()">
+                <xsl:text> </xsl:text>
+            </xsl:if>
+        </xsl:for-each>
         <xsl:text>};
             public enum ApplicationState {
         
@@ -522,7 +527,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="preloadAllStimuli|kinTypeStringDiagram|loadKinTypeStringDiagram|editableKinEntitesDiagram|ratingFooterButton|ratingButton|stimulusRatingButton">
+    <xsl:template match="withStimuli|preloadAllStimuli|kinTypeStringDiagram|loadKinTypeStringDiagram|editableKinEntitesDiagram|ratingFooterButton|ratingButton|stimulusRatingButton">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(appEventListner</xsl:text>
@@ -682,7 +687,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <xsl:value-of select="if(@consumedTagGroup) then concat(', &quot;', @consumedTagGroup, '&quot;') else ',null'" />
         </xsl:if>
     </xsl:template>
-    <xsl:template match="trigger|resetStimulus|groupMessageLabel|groupMemberCodeLabel|groupMemberLabel|groupScoreLabel|groupChannelScoreLabel|scoreLabel|clearCurrentScore|scoreIncrement|scoreAboveThreshold|bestScoreAboveThreshold|withMatchingStimulus|showColourReport|submitTestResults|VideoPanel|startAudioRecorder|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|loadStimulus|loadSdCardStimulus|loadSubsetStimulus|currentStimulusHasTag|existingUserCheck|rewindVideo|playVideo|pauseVideo">
+    <xsl:template match="trigger|resetStimulus|groupMessageLabel|groupMemberCodeLabel|groupMemberLabel|groupScoreLabel|groupChannelScoreLabel|scoreLabel|clearCurrentScore|scoreIncrement|scoreAboveThreshold|bestScoreAboveThreshold|withMatchingStimulus|showColourReport|submitTestResults|VideoPanel|startAudioRecorder|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|loadStimulus|loadSdCardStimulus|currentStimulusHasTag|existingUserCheck|rewindVideo|playVideo|pauseVideo">
         <xsl:if test="local-name() eq 'loadStimulus' or local-name() eq 'loadSdCardStimulus'">
             <!--iterate oer all undefined attributes and call them on the loadStimulusClass as setters-->
             <xsl:for-each select="@*">
@@ -713,19 +718,17 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />
         <xsl:value-of select="if(@src) then concat(', &quot;', @src, '&quot;') else ''" />
         <xsl:apply-templates select="stimuli" mode="stimuliTags" />
+        <!-- todo: currentStimulusHasTag has changed from stimuli/tag... to @tags so this needs to be updated -->
         <xsl:apply-templates select="randomGrouping" mode="stimuliTags" />
         <xsl:value-of select="if(@matchingRegex) then concat(', &quot;', @matchingRegex, '&quot;') else ''" />
-        <xsl:value-of select="if(@condition0Tag) then concat(', Tag.tag_', @condition0Tag, '') else ''" />
-        <xsl:value-of select="if(@condition1Tag) then concat(', Tag.tag_', @condition1Tag, '') else ''" />
-        <xsl:value-of select="if(@condition2Tag) then concat(', Tag.tag_', @condition2Tag, '') else ''" />
         <!--<xsl:value-of select="if(@maxStimuli) then concat(', ', @maxStimuli, '') else ''" />-->
         <!--<xsl:value-of select="if(@minStimuliPerTag) then concat(', ', @minStimuliPerTag, '') else ''" />-->
         <!--<xsl:value-of select="if(@maxStimuliPerTag) then concat(', ', @maxStimuliPerTag, '') else ''" />-->
         <!--<xsl:value-of select="if(@scoreThreshold) then concat('', @scoreThreshold, '') else ''" />--> 
-        
+        <!-- todo: check the if(@potentialThreshold) and if(@errorThreshold)-->
         <xsl:value-of select="if(@scoreThreshold eq '') then 'null' else if(@scoreThreshold) then concat('', @scoreThreshold, '') else ''" />
-        <xsl:value-of select="if(@scoreThreshold) then if(@errorThreshold) then concat(',', @errorThreshold, '') else ',null'" />
-        <xsl:value-of select="if(@scoreThreshold) then if(@potentialThreshold) then concat(',', @potentialThreshold, '') else ',null'" />
+        <xsl:value-of select="if(@scoreThreshold) then if(@errorThreshold) then concat(',', @errorThreshold, '') else ',null' else ''" />
+        <xsl:value-of select="if(@scoreThreshold) then if(@potentialThreshold) then concat(',', @potentialThreshold, '') else ',null' else ''" /> 
         
         <!-- the trailing comma after scoreThreshold is needed for SynQuiz2, needs to be checked for other configurations. -->
         <xsl:value-of select="if(@scoreThreshold and (local-name() eq 'showColourReport' or local-name() eq 'submitTestResults')) then ', ' else ''" />
