@@ -295,9 +295,9 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
  Succes!"/>
         <addPadding/>
         <addPadding/>
-        <targetButton featureText="Begin experiment" target="stimuliScreen13" next="Admin"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen13"/>
     </presenter>
-    <presenter displayOrder="175" type="stimulus" self="stimuliScreen8" title="Peabody Series">
+    <presenter displayOrder="175" type="stimulus" self="stimuliScreen8" title="Peabody Series"  next="Admin">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider" eventTag="stimuliN" 
                       numberOfBands="17" startBand="8"
                       fineTuningTupleLength="12"  
