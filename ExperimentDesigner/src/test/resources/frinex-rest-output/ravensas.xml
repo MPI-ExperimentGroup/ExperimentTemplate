@@ -120,7 +120,7 @@
                 <centrePage/>
                 <addPadding/>
                 <addPadding/>
-                <htmlText featureText="Dit is het einde van de oefening rondje"/>
+                <htmlText featureText="Dit is het einde van het practice rondje"/>
                 <addPadding/>
                 <targetButton featureText="Naar het experiment" target="stimuliScreen"/>
                 <addPadding/>
