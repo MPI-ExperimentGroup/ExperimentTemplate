@@ -13,6 +13,7 @@
         <addPadding/>
         <addPadding/>
         <addPadding/>
+        <addPadding/>
         <table>
             <row>
                 <column styleName="stimulusContainerCol">
@@ -34,17 +35,12 @@
                     <htmlText featureText="&#160;"/>
                 </column>
             </row>
-            <row>
-                <column styleName="stimulusContainerCol">
-                    <targetButton featureText="Naar de administratie pagina" target="Admin"/>
-                </column>
-            </row>
         </table>
     </presenter>
     <presenter displayOrder="5" menuLabel="Age" type="menu" self="AgeSelection" title="Age">
         <centrePage/>
         <addPadding/>
-        <htmlText featureText="Kiez leeftijd reeks"/>
+        <htmlText featureText="Kies leeftijdreeks"/>
         <addPadding/>
         <table>
             <row>
@@ -299,7 +295,7 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
  Succes!"/>
         <addPadding/>
         <addPadding/>
-        <targetButton featureText="Begin experiment" target="stimuliScreen13"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen13" next="Admin"/>
     </presenter>
     <presenter displayOrder="175" type="stimulus" self="stimuliScreen8" title="Peabody Series">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider" eventTag="stimuliN" 
@@ -353,22 +349,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                 </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
+               <clearPage/>
                 <centrePage/>
-                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
-                <addPadding/>
                 <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
                 <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
-                <showStimuliReport/>
-                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
-                <addPadding/>
-                <targetButton featureText="Naar de administratie pagina" target="Admin"/>
-                <addPadding/>
+                <autoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli/>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="180" type="stimulus" self="stimuliScreen9" title="Peabody Series">
+    <presenter displayOrder="180" type="stimulus" self="stimuliScreen9" title="Peabody Series"  next="Admin">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider" eventTag="stimuliN" 
                       numberOfBands="17" startBand="9"
                       fineTuningTupleLength="12"  
@@ -420,22 +411,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                 </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
+                <clearPage/>
                 <centrePage/>
-                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
-                <addPadding/>
                 <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
                 <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
-                <showStimuliReport/>
-                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
-                <addPadding/>
-                <targetButton featureText="Naar de administratie pagina" target="Admin"/>
-                <addPadding/>
+                <autoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli/>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="185" type="stimulus" self="stimuliScreen10" title="Peabody Series">
+    <presenter displayOrder="185" type="stimulus" self="stimuliScreen10" title="Peabody Series"  next="Admin">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider" eventTag="stimuliN" 
                       numberOfBands="17" startBand="10"
                       fineTuningTupleLength="12"  
@@ -487,22 +473,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                 </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
+                <clearPage/>
                 <centrePage/>
-                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
-                <addPadding/>
                 <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
                 <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
-                <showStimuliReport/>
-                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
-                <addPadding/>
-                <targetButton featureText="Naar de administratie pagina" target="Admin"/>
-                <addPadding/>
+                <autoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli/>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="190" type="stimulus" self="stimuliScreen11" title="Peabody Series">
+    <presenter displayOrder="190" type="stimulus" self="stimuliScreen11" title="Peabody Series"  next="Admin">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider" eventTag="stimuliN" 
                       numberOfBands="17" startBand="11"
                       fineTuningTupleLength="12"  
@@ -554,22 +535,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                 </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
+                <clearPage/>
                 <centrePage/>
-                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
-                <addPadding/>
                 <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
                 <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
-                <showStimuliReport/>
-                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
-                <addPadding/>
-                <targetButton featureText="Naar de administratie pagina" target="Admin"/>
-                <addPadding/>
+                <autoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli/>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="195" type="stimulus" self="stimuliScreen12" title="Peabody Series">
+    <presenter displayOrder="195" type="stimulus" self="stimuliScreen12" title="Peabody Series"  next="Admin">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider" eventTag="stimuliN" 
                       numberOfBands="17" startBand="13"
                       fineTuningTupleLength="12"  
@@ -621,22 +597,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                 </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
+                <clearPage/>
                 <centrePage/>
-                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
-                <addPadding/>
                 <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
                 <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
-                <showStimuliReport/>
-                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
-                <addPadding/>
-                <targetButton featureText="Naar de administratie pagina" target="Admin"/>
-                <addPadding/>
+                <autoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli/>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="200" type="stimulus" self="stimuliScreen13" title="Peabody Series">
+    <presenter displayOrder="200" type="stimulus" self="stimuliScreen13" title="Peabody Series" next="Admin">
         <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider" eventTag="stimuliN" 
                       numberOfBands="17" startBand="14"
                       fineTuningTupleLength="12"  
@@ -688,33 +659,26 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                 </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
+                <clearPage/>
                 <centrePage/>
-                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
-                <addPadding/>
                 <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
                 <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
-                <showStimuliReport/>
-                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
-                <addPadding/>
-                <targetButton featureText="Naar de administratie pagina" target="Admin"/>
-                <addPadding/>
+                <autoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli/>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="205" type="transmission" self="Admin" title="Administratie" next="ListParticipants">
+    <presenter displayOrder="205" type="transmission" self="Admin" title="Administratie">
         <sendMetadata>
             <onSuccess> 
                 <sendAllData>
                     <onSuccess>
-                        <htmlText featureText="The participant's data are uploaded to the server"/>
                         <addPadding/>
                         <addPadding/>
-                        <eraseUsersDataButton featureText="Remove the user's data from the browser" target="ListParticipants" />
                         <addPadding/>
                         <addPadding/>
-                        <targetButton featureText="To the administration page" target="Admin" />
+                        <htmlText featureText="Bedankt voor het meedoen."/>
                         <addPadding/>
                         <addPadding/>
                         <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
@@ -741,17 +705,7 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
             </onError>      
         </sendMetadata>
     </presenter>
-    <presenter back="Menu" displayOrder="210" menuLabel="Deelnemer lijst" type="metadata" self="ListParticipants" title="Kiez deelnemer">
-        <htmlText featureText="The participants which are still in local browser memory:"/>
-        <selectUserMenu/>
-        <addPadding/>
-        <addPadding/>
-        <targetButton featureText="To the landing page" target="Menu"/> 
-        <addPadding/>
-        <addPadding/>
-        <targetButton featureText="To the admin page" target="Admin"/>   
-    </presenter>   
-    <presenter back="Menu" displayOrder="20" menuLabel="about" type="debug" self="about" title="about">
+    <presenter back="Menu" displayOrder="210" menuLabel="about" type="debug" self="about" title="about">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
