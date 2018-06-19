@@ -227,7 +227,7 @@ public class DefaultExperiments {
 //            maxScreenAddCount--;
             final PresenterScreen presenterScreen = new PresenterScreen(presenterType.name(), presenterType.name(), backPresenter, presenterType.name() + "Screen", null, presenterType, displayOrder);
             for (FeatureType featureType : presenterType.getFeatureTypes()) {
-                if (featureType.getContitionals() != FeatureType.Contitionals.needsConditionalParent) {
+                if (featureType.getRequiresParentType() == FeatureType.Contitionals.none) {
                     if (featureType == FeatureType.clearPage) {
                         final PresenterFeature clearScreenButton = new PresenterFeature(FeatureType.actionButton, "Clear Screen");
                         clearScreenButton.getPresenterFeatureList().add(addFeature(experiment, featureType, presenterFeatureRepository));
@@ -263,11 +263,17 @@ public class DefaultExperiments {
                     case scoreValue:
                     case minStimuliPerTag:
                     case maxStimuliPerTag:
+                    case minimum:
                         presenterFeature.addFeatureAttributes(attribute, "3");
+                        break;
+                    case dataChannel:
+                    case adjacencyThreshold:
+                        presenterFeature.addFeatureAttributes(attribute, "2");
                         break;
                     case maxHeight:
                     case maxWidth:
                     case msToNext:
+                    case maximum:
                         presenterFeature.addFeatureAttributes(attribute, "60");
                         break;
                     case hotKey:
@@ -277,6 +283,7 @@ public class DefaultExperiments {
                         presenterFeature.addFeatureAttributes(attribute, "56");
                         break;
                     case eventTier:
+                    case threshold:
                         presenterFeature.addFeatureAttributes(attribute, "8");
                         break;
                     case fieldName:
@@ -285,6 +292,10 @@ public class DefaultExperiments {
                         break;
                     case animate:
                         presenterFeature.addFeatureAttributes(attribute, "bounce");
+                        break;
+                    case randomise:
+                    case showControls:
+                        presenterFeature.addFeatureAttributes(attribute, "true");
                         break;
                     default:
                         presenterFeature.addFeatureAttributes(attribute, attribute.name());
@@ -306,7 +317,7 @@ public class DefaultExperiments {
             presenterFeature.setRandomGrouping(randomGrouping);
             experiment.getMetadata().add(new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null));
         }
-        switch (featureType.getContitionals()) {
+        switch (featureType.getRequiresChildType()) {
             case hasTrueFalseCondition:
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.conditionTrue, presenterFeatureRepository));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.conditionFalse, presenterFeatureRepository));
@@ -378,11 +389,22 @@ public class DefaultExperiments {
                     presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 }
                 break;
+            case none:
+                break;
             default:
+                for (FeatureType featureType1 : FeatureType.values()) {
+                    if (featureType1.getRequiresParentType() == featureType.getRequiresChildType()) {
+                        presenterFeature.getPresenterFeatureList().add(addFeature(experiment, featureType1, presenterFeatureRepository));
+                    }
+                }
+                if (presenterFeatureRepository != null) {
+                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                }
                 break;
         }
         if (featureType.canHaveFeatures()) {
-            presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.plainText, presenterFeatureRepository));
+            presenterFeature.addFeature(FeatureType.plainText, "plainText in " + featureType.name());
+//            presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.plainText, presenterFeatureRepository, ));
             if (presenterFeatureRepository != null) {
                 presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
             }
