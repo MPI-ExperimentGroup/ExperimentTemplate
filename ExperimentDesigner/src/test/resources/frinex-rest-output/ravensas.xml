@@ -114,25 +114,6 @@
                 <addPadding/>
                 <stimulusImage msToNext="0" >
                 </stimulusImage>
-                <addPadding/>
-                <addPadding/>
-                <table>
-                    <row>
-                        <column styleName="">
-                            <stimulusButton featureText="Overslaan" styleName="">
-                                <nextStimulus repeatIncorrect="false"/>
-                            </stimulusButton>
-                        </column>
-                        <column>
-                            <htmlText featureText="&#160;"/> 
-                        </column>
-                        <column styleName="">
-                            <stimulusButton featureText="Ik weet het niet" styleName="">
-                                <nextStimulus repeatIncorrect="false"/>
-                            </stimulusButton>
-                        </column>
-                    </row>
-                </table>
             </hasMoreStimulus>
             <endOfStimulus>
                 <clearPage/>
