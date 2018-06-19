@@ -96,7 +96,7 @@ public class SchemaGenerator {
     private void addPresenter(Writer writer, final PresenterType[] presenterTypes) throws IOException {
         writer.append("<xs:complexType name=\"presenterType\">\n").append("<xs:choice minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
         for (final FeatureType featureRef : FeatureType.values()) {
-            if (featureRef.getContitionals() != FeatureType.Contitionals.needsConditionalParent) {
+            if (featureRef.getRequiresParentType() == FeatureType.Contitionals.none) {
                 writer.append("<xs:element name=\"").append(featureRef.name()).append("\" type=\"").append(featureRef.name()).append("Type\"/>\n");
             }
         }
@@ -169,13 +169,13 @@ public class SchemaGenerator {
         if (featureType.canHaveFeatures()) {
             writer.append("<xs:choice minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
             for (final FeatureType featureRef : FeatureType.values()) {
-                if (featureRef.getContitionals() != FeatureType.Contitionals.needsConditionalParent) {
+                if (featureRef.getRequiresParentType() == FeatureType.Contitionals.none) {
                     writer.append("<xs:element name=\"").append(featureRef.name()).append("\" type=\"").append(featureRef.name()).append("Type\"/>\n");
                 }
             }
             writer.append("</xs:choice>\n");
         } else {
-            switch (featureType.getContitionals()) {
+            switch (featureType.getRequiresChildType()) {
                 case hasTrueFalseCondition:
                     writer.append("<xs:all>\n");
                     writer.append("<xs:element name=\"conditionTrue\" type=\"conditionTrueType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
@@ -233,7 +233,16 @@ public class SchemaGenerator {
                     writer.append("<xs:element name=\"mediaLoadFailed\" type=\"mediaLoadFailedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                     writer.append("</xs:all>\n");
                     break;
-                case needsConditionalParent:
+//                case needsConditionalParent:
+//                    break;
+                case none:
+                    break;
+                default:
+                    for (FeatureType featureType1 : FeatureType.values()) {
+                        if (featureType1.getRequiresParentType() == featureType.getRequiresChildType()) {
+                            addFeature(writer, featureType1);
+                        }
+                    }
                     break;
             }
         }
