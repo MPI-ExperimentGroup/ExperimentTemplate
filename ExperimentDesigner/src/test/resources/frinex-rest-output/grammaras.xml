@@ -91,7 +91,7 @@
                 <table>
                     <row>
                         <column>
-                            <stimulusButton eventTier="1" featureText="Correct" styleName="padded">
+                            <stimulusButton featureText="Correct" styleName="padded">
                                 <disableStimulusButtons/>
                                 <pause  msToNext="500">
                                     <cancelPauseTimers/> 
@@ -103,7 +103,7 @@
                             <htmlText featureText="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" />
                         </column>
                         <column>
-                            <stimulusButton eventTier="1" featureText="Incorrect" styleName="padded">
+                            <stimulusButton featureText="Incorrect" styleName="padded">
                                 <disableStimulusButtons/>
                                 <pause  msToNext="500">
                                     <cancelPauseTimers/> 
