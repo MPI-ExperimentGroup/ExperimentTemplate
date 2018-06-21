@@ -78,9 +78,6 @@
                 <clearPage/>
                 <centrePage/>
                 <enableStimulusButtons/>
-                <stimulusAudio msToNext="0"  showPlaybackIndicator="false">
-                </stimulusAudio>
-                <addPadding/>
                 <addPadding/>
                 <addPadding/>
                 <addPadding/>
@@ -90,9 +87,16 @@
                 <addPadding/>
                 <table>
                     <row>
+                        <column></column> 
                         <column>
-                            <stimulusButton featureText="Correct" styleName="padded">
-                                <disableStimulusButtons/>
+                            <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
+                        </column> 
+                        <column></column> 
+                    </row>
+                    <row>
+                        <column>
+                            <stimulusButton featureText="Incorrect">
+                                <clearPage/>
                                 <pause  msToNext="500">
                                     <cancelPauseTimers/> 
                                     <trigger listenerId="nextStimulusAction"/>
@@ -100,11 +104,10 @@
                             </stimulusButton>
                         </column>
                         <column>
-                            <htmlText featureText="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;" />
                         </column>
                         <column>
-                            <stimulusButton featureText="Incorrect" styleName="padded">
-                                <disableStimulusButtons/>
+                            <stimulusButton featureText="Correct">
+                                <clearPage/>
                                 <pause  msToNext="500">
                                     <cancelPauseTimers/> 
                                     <trigger listenerId="nextStimulusAction"/>
@@ -113,17 +116,52 @@
                         </column>
                     </row>
                 </table>
-              
+                <stimulusAudio msToNext="0"  showPlaybackIndicator="false">
+                    <clearPage/>
+                    <centrePage/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <table>
+                        <row>
+                            <column></column> 
+                            <column>
+                                <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/placeholder.png&quot; /&gt;  &lt;/div&gt;"/>
+                            </column> 
+                            <column></column> 
+                        </row>
+                        <row>
+                            <column>
+                                <stimulusButton featureText="Incorrect">
+                                    <clearPage/>
+                                    <pause  msToNext="500">
+                                        <cancelPauseTimers/> 
+                                        <trigger listenerId="nextStimulusAction"/>
+                                    </pause>
+                                </stimulusButton>
+                            </column>
+                            <column>
+                            </column>
+                            <column>
+                                <stimulusButton featureText="Correct">
+                                    <clearPage/>
+                                    <pause  msToNext="500">
+                                        <cancelPauseTimers/> 
+                                        <trigger listenerId="nextStimulusAction"/>
+                                    </pause>
+                                </stimulusButton>
+                            </column>
+                        </row>
+                    </table>
+                </stimulusAudio>
+               
             </hasMoreStimulus>
             <endOfStimulus>
-                <clearPage/>
-                <centrePage/>
-                <addPadding/>
-                <addPadding/>
-                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
-                <addPadding/>
-                <targetButton featureText="Naar de administratie pagina" target="Admin"/>
-                <addPadding/>
+                <autoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -136,13 +174,11 @@
             <onSuccess> 
                 <sendAllData>
                     <onSuccess>
-                        <htmlText featureText="The participant's data are uploaded to the server"/>
                         <addPadding/>
                         <addPadding/>
-                        <eraseUsersDataButton featureText="Remove the user's data from the browser" target="ListParticipants" />
                         <addPadding/>
                         <addPadding/>
-                        <targetButton featureText="To the administration page" target="Admin" />
+                        <htmlText featureText="Bedankt voor het meedoen."/>
                         <addPadding/>
                         <addPadding/>
                         <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
