@@ -4,8 +4,7 @@
     <!--<experiment appNameDisplay="Adaptive Vocabulary Assessment" appNameInternal="advocas" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="false" textFontSize="17">-->
     <metadata>
         <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Wat is je proefpersoonnummer?"/>
-        <field controlledMessage="." controlledRegex=".*" postName="experimentName" preventServerDuplicates="false" registrationField="experimentName"/>
-        <field controlledMessage="Input at least 3 letters." controlledRegex="['\\'S'\\'s]'{'3,'}'" postName="feedBack" preventServerDuplicates="false" registrationField=""/>
+        <field controlledMessage="." controlledRegex=".*" postName="experimentName" preventServerDuplicates="false" registrationField="Wat is de naam van het experiment?"/>
     </metadata>
     <presenter displayOrder="1" type="menu" self="Menu" title="Menu">
         <centrePage/>
@@ -22,6 +21,7 @@
     </presenter>
     <presenter menuLabel="Grammar Judjement" displayOrder="2" next="Accord_Grammar" type="metadata" self="Edit_User_Grammar" title="">
         <metadataField fieldName="workerId"/>
+        <metadataField fieldName="experimentName"/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
             <onSuccess>
@@ -31,6 +31,7 @@
     </presenter>
     <presenter menuLabel="Flanker test" displayOrder="3" next="Accord_Flanker" type="metadata" self="Edit_User_Flanker" title="">
         <metadataField fieldName="workerId"/>
+        <metadataField fieldName="experimentName"/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
             <onSuccess>
