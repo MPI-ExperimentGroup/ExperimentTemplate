@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.grammaraspool;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.flankerpool;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.CsvRecord
  *
  * @author olhshk
  */
-public class GrammarStimuliFromCsvToXml {
+public class FlankerStimuliFromCsvToXml {
 
 //    <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW"/>
 //        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis" imagePath="COWmis" pauseMs="0" tags="COW"/>
@@ -42,18 +42,19 @@ public class GrammarStimuliFromCsvToXml {
 //        <stimulus audioPath="SHY" code="SHY" identifier="SHY" imagePath="SHY" pauseMs="0" tags="SHY"/>
 //        <stimulus audioPath="SHYmis" code="SHYmis" identifier="SHYmis" imagePath="SHYmis" pauseMs="0" tags="SHY"/>
 //   
-    public String parseWordsInputCSVStringToXml(String csvString, String stimuliDir, String appname) throws Exception {
+    public String parseWordsInputCSVStringToXml(String csvString, String appName, String roundName) throws Exception {
 
         StringBuilder retVal = new StringBuilder();
-        String ratingLabels = "Correct,Incorrect";
+        String ratingLabels = "&lt;,&gt;";
 
         CsvRecords csvWrapper = new CsvRecords(null, "\t", "\n");
         csvWrapper.readRecords(csvString);
         ArrayList<LinkedHashMap<String, String>> records = csvWrapper.getRecords();
 
-        // Block	Trial	Soundfile	Duration	Condition	Correct response
+        // Block Stimulus Condition Correct_response Expected_button
+        int i = 0;
         for (LinkedHashMap<String, String> record : records) {
-
+            i++;
             StringBuilder currentSt = new StringBuilder();
             currentSt.append("<stimulus ");
 
@@ -62,19 +63,9 @@ public class GrammarStimuliFromCsvToXml {
                 throw new IOException("Block is undefined");
             }
 
-            String uniqueId = record.get("Trial").trim();
-            if (uniqueId == null) {
-                throw new IOException("Trial is undefined");
-            }
-            uniqueId = appname+"_"+uniqueId;
-            String soundFile = record.get("Soundfile").trim();
-            if (soundFile == null) {
-                throw new IOException("Soundfile is undefined");
-            }
-
-            String duration = record.get("Duration").trim();
-            if (duration == null) {
-                throw new IOException("Duration is undefined");
+            String label = record.get("Stimulus").trim();
+            if (label == null) {
+                throw new IOException("Stimulus string is undefined");
             }
 
             String condition = record.get("Condition").trim();
@@ -82,26 +73,36 @@ public class GrammarStimuliFromCsvToXml {
                 throw new IOException("Condition is undefined");
             }
 
-            String correctResponse = record.get("Correct_response").trim();
-            if (correctResponse == null) {
-                throw new IOException(correctResponse + "is undefined");
+            String expectedButton = record.get("Expected_button").trim();
+            if (expectedButton == null) {
+                throw new IOException("Expected_button");
             }
-            if (correctResponse.equals("1")) {
-                correctResponse = "Correct";
+
+            String correctResponseString = record.get("Correct_response").trim();
+            String correctResponse = null;
+            if (correctResponseString == null) {
+                throw new IOException(correctResponseString + "is undefined");
+            }
+            if (correctResponseString.equals("left")) {
+                correctResponse = "&lt;";
             } else {
-                if (correctResponse.equals("0")) {
-                    correctResponse = "Incorrect";
+                if (correctResponseString.equals("right")) {
+                    correctResponse = "&gt;";
                 } else {
-                    throw new IOException("Illegal correct response: "+correctResponse);
+                    throw new IOException("Illegal correct response: " + correctResponseString);
                 }
             }
 
+            String uniqueId = appName + "_" + roundName + "_" + i;
+
+            label = label.replaceAll("<", "&lt;");
+            label = label.replaceAll(">", "&gt;");
+            
             currentSt.append(" identifier=\"").append(uniqueId).append("\" ");
-            currentSt.append(" audioPath=\"").append(stimuliDir).append(appname).append("/").append(soundFile).append("\" ");
-            currentSt.append(" tags=\"").append(appname).append(" ").append(block).append(" ").append(duration).append(" ").append(condition).append(" ").append("\" ");
+            currentSt.append(" label=\"").append(label).append("\" ");
+            currentSt.append(" tags=\"").append(appName).append(" ").append(roundName).append(" ").append(block).append(" ").append(condition).append(" ").append(correctResponseString).append(" ").append(expectedButton).append(" ").append("\" ");
             currentSt.append(" ratingLabels=\"").append(ratingLabels).append("\" ");
-            currentSt.append(" correctResponses=\"").append(correctResponse).append("\" ");
-            currentSt.append(" pauseMs=\"0\" ");
+            currentSt.append(" correctResponses=\"").append(correctResponse).append("\" pauseMs=\"0\"");
 
             currentSt.append(" />\n");
             retVal.append(currentSt);

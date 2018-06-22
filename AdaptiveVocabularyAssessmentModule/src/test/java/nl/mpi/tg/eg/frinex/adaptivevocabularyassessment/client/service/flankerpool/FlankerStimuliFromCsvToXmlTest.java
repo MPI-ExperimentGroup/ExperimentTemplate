@@ -15,7 +15,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.grammaraspool;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.flankerpool;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -28,9 +28,9 @@ import static org.junit.Assert.*;
  *
  * @author olhshk
  */
-public class GrammarStimuliFromCsvToXmlTest {
+public class FlankerStimuliFromCsvToXmlTest {
     
-    public GrammarStimuliFromCsvToXmlTest() {
+    public FlankerStimuliFromCsvToXmlTest() {
     }
     
     @BeforeClass
@@ -50,17 +50,16 @@ public class GrammarStimuliFromCsvToXmlTest {
     }
 
     /**
-     * Test of parseWordsInputCSVStringToXml method, of class GrammarStimuliFromCsvToXml.
+     * Test of parseWordsInputCSVStringToXml method, of class FlankerStimuliFromCsvToXml.
      */
     @Test
     public void testParseWordsInputCSVStringToXml() throws Exception {
         System.out.println("parseWordsInputCSVStringToXml");
-        String stimuliDir = "stimuli/";
-        GrammarStimuliFromCsvToXml instance = new GrammarStimuliFromCsvToXml();
-        String result = instance.parseWordsInputCSVStringToXml(CsvTableGrammar.CSV_STRING, stimuliDir, "grammar");
-        assertTrue(result.startsWith("<stimulus "));
-        assertTrue(result.endsWith(" />\n"));
-        System.out.println(result);
+        FlankerStimuliFromCsvToXml instance = new FlankerStimuliFromCsvToXml();
+        String resultPractice = instance.parseWordsInputCSVStringToXml(CsvTablesFlanker.CSV_STRING_PRACTICE, "flanker" , "Practice");
+        assertTrue(resultPractice.startsWith("<stimulus "));
+        assertTrue(resultPractice.endsWith(" />\n"));
+        System.out.println(resultPractice);
     }
     
 }
