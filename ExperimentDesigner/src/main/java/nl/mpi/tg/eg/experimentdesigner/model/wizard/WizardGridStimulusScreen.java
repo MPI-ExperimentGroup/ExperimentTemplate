@@ -73,7 +73,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         final String[] options = stimuliData.getOptions();
         setIntroAudioDelay(2000);
         if (options != null) {
-            final String[] copyOfOptions = Arrays.copyOf(options, 9);
+            final String[] copyOfOptions = Arrays.copyOf(options, 12);
             setBackgroundImage(copyOfOptions[0]);
             setBackgroundStyle(copyOfOptions[1]);
             setRewardImage(copyOfOptions[3]);
@@ -86,6 +86,9 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             setCorrectAudio(copyOfOptions[6]);
             setIntroAudio(copyOfOptions[7]);
             setStimuliButtonArray(copyOfOptions[8]);
+            setTimeoutMs(Integer.parseInt(copyOfOptions[9]));
+            setTimeoutShowMs(Integer.parseInt(copyOfOptions[10]));
+            setTimeoutImage(copyOfOptions[11]);
         } else {
             setBackgroundImage(null);
             setBackgroundStyle(null);
@@ -94,6 +97,9 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             setSelectedPause(0);
             setCorrectAudio(null);
             setIntroAudio(null);
+            setTimeoutMs(0);
+            setTimeoutShowMs(0);
+            setTimeoutImage(null);
         }
         this.wizardScreenData.setButtonLabelEventTag("");
         this.wizardScreenData.setStimulusCodeFormat("");
@@ -130,6 +136,9 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         setRewardImage(null);
         setIntroAudioDelay(0);
         setSelectedPause(0);
+        setTimeoutMs(0);
+        setTimeoutShowMs(0);
+        setTimeoutImage(null);
         this.wizardScreenData.setStimulusCodeFormat(codeFormat);
         this.wizardScreenData.setStimuliCount(maxStimuli);
         setRandomiseStimuli(randomiseStimuli);
@@ -218,6 +227,14 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenText(7, stimuliButtonArray);
     }
 
+    private String getTimeoutImage(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenText(8);
+    }
+
+    final public void setTimeoutImage(String timeoutImage) {
+        this.wizardScreenData.setScreenText(8, timeoutImage);
+    }
+
     private String getBackgroundStyle(WizardScreenData storedWizardScreenData) {
         return storedWizardScreenData.getScreenText(1);
     }
@@ -230,8 +247,24 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         return storedWizardScreenData.getScreenInteger(1);
     }
 
+    private int getTimeoutMs(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenInteger(2);
+    }
+
+    private int getTimeoutShowMs(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenInteger(3);
+    }
+
     final public void setSelectedPause(int selectedPause) {
         this.wizardScreenData.setScreenIntegers(1, selectedPause);
+    }
+
+    final public void setTimeoutMs(int timeoutMs) {
+        this.wizardScreenData.setScreenIntegers(2, timeoutMs);
+    }
+
+    final public void setTimeoutShowMs(int timeoutMs) {
+        this.wizardScreenData.setScreenIntegers(3, timeoutMs);
     }
 
     private int getIntroAudioDelay(WizardScreenData storedWizardScreenData) {
@@ -658,7 +691,13 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 //            stimulusRelatedTags.getPresenterFeatureList().add(rightOverlayButton);
 
         }
-
+        if (getTimeoutImage(storedWizardScreenData) != null) {
+            final PresenterFeature timeoutFeature = hasMoreStimulusFeature.addFeature(FeatureType.pause, null, Integer.toString(getTimeoutMs(storedWizardScreenData)));
+            timeoutFeature.addFeature(FeatureType.cancelPauseTimers, null);
+            timeoutFeature.addFeature(FeatureType.clearPage, null, "");
+            final PresenterFeature timeoutImageFeature = timeoutFeature.addFeature(FeatureType.backgroundImage, null, Integer.toString(getTimeoutShowMs(storedWizardScreenData)), getTimeoutImage(storedWizardScreenData), "");
+            timeoutImageFeature.addFeature(FeatureType.nextStimulus, null, "false");
+        }
         final PresenterFeature tableFeature = new PresenterFeature(FeatureType.table, null);
         tableFeature.addFeatureAttributes(FeatureAttribute.styleName, "titleBarButton");
         tableFeature.addFeatureAttributes(FeatureAttribute.showOnBackButton, "true");
