@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" appNameDisplay="Language in Interaction BQ4 Battery" appNameInternal="lilbq4" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
+    <preventWindowClose featureText="Bij reload worden ingetypte data verwiderd"/>
+    <!--<experiment appNameDisplay="Adaptive Vocabulary Assessment" appNameInternal="advocas" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="false" textFontSize="17">-->
+    <metadata>
+        <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Wat is je proefpersoonnummer?"/>
+        <field controlledMessage="." controlledRegex=".*" postName="stimuli" preventServerDuplicates="false" registrationField="stimuli"/>
+        <field controlledMessage="Input at least 3 letters." controlledRegex="['\\'S'\\'s]'{'3,'}'" postName="feedBack" preventServerDuplicates="false" registrationField=""/>
+    </metadata>
+    <presenter displayOrder="1" type="menu" self="Menu" title="Menu">
+        <centrePage/>
+        <addPadding/>
+        <htmlText featureText="&lt;div  &gt; &lt;img src=&quot;static/logo-max.png&quot; align=&quot;left&quot; /&gt; &lt;img src=&quot;static/logo-lil.png&quot; align=&quot;right&quot;/&gt; &lt;/div&gt;" styleName="fullScreenWidth"/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Welkom bij Language in Interaction BQ4 experimenten."/>
+        <addPadding/>
+        <allMenuItems/>
+    </presenter>
+    <presenter menuLabel="Grammar Judjement" displayOrder="2" next="Accord_Grammar" type="metadata" self="Edit_User_Grammar" title="">
+        <metadataField fieldName="workerId"/>
+        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
+            <onError/>
+            <onSuccess>
+                <autoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
+    <presenter menuLabel="Flanker test" displayOrder="3" next="Accord_Flanker" type="metadata" self="Edit_User_Flanker" title="">
+        <metadataField fieldName="workerId"/>
+        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
+            <onError/>
+            <onSuccess>
+                <autoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+    </presenter>
+    <presenter displayOrder="5" next="stimuliScreenGrammar" type="metadata" self="Accord_Grammar" title="">
+        <centrePage/>
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Welkom bij dit experiment,"/>
+        <addPadding/>
+        <htmlText featureText="Luister telkens naar de zin en beslis of het een correcte Nederlandse zin is."/>
+        <htmlText featureText="Klik op ‘Correct’ als je denkt dat de zin correct is."/>
+        <htmlText featureText="Klik op ‘Incorrect’ als je denkt dat de zin niet correct is."/>
+        <htmlText featureText="Als je het niet weet, mag je gokken."/>
+        <htmlText featureText="Je krijgt de zin slechts één keer te horen."/>
+        <htmlText featureText="Je mag al voor het einde van de zin antwoorden."/>
+        <addPadding/>
+        <addPadding/>
+        <targetButton featureText="Aan de slag" target="stimuliScreenGrammar"/>
+    </presenter>
+    <presenter displayOrder="6" next="stimuliScreenFlankerPractice" type="metadata" self="Accord_Flanker" title="">
+        <centrePage/>
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Welkom bij dit experiment,"/>
+        <addPadding/>
+        <htmlText featureText="Je gaat zo meteen telkens een symbolenreeks zien."/>
+        <htmlText featureText="Je moet elke keer aangeven of het middelste symbool in de reeks '&lt;' of '&gt;' is."/>
+        <htmlText featureText="Dit doe je door op de '&lt;'-knop te drukken voor '&lt;' en op de '&gt;'-knop te drukken voor '&gt;'."/>
+        <htmlText featureText="Probeer zo snel mogelijk te antwoorden en met zo weinig mogelijk fouten."/>
+        <htmlText featureText="Je krijgt de zin slechts één keer te horen."/>
+        <htmlText featureText="Je mag al voor het einde van de zin antwoorden."/>
+        <addPadding/>
+        <addPadding/>
+        <targetButton featureText="Aan de slag" target="stimuliScreenFlankerPractice"/>
+    </presenter>
+    <presenter displayOrder="15" next="Admin" type="stimulus" self="stimuliScreenGrammar" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="40">
+            <hasMoreStimulus>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <clearPage/>
+                <centrePage/>
+                <enableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <table>
+                    <row>
+                        <column></column> 
+                        <column>
+                            <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
+                        </column> 
+                        <column></column> 
+                    </row>
+                    <row>
+                        <column>
+                            <stimulusButton featureText="Incorrect">
+                                <clearPage/>
+                                <pause  msToNext="500">
+                                    <cancelPauseTimers/> 
+                                    <trigger listenerId="nextStimulusAction"/>
+                                </pause>
+                            </stimulusButton>
+                        </column>
+                        <column>
+                        </column>
+                        <column>
+                            <stimulusButton featureText="Correct">
+                                <clearPage/>
+                                <pause  msToNext="500">
+                                    <cancelPauseTimers/> 
+                                    <trigger listenerId="nextStimulusAction"/>
+                                </pause>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <stimulusAudio msToNext="0"  showPlaybackIndicator="false">
+                    <clearPage/>
+                    <centrePage/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <table>
+                        <row>
+                            <column></column> 
+                            <column>
+                                <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/placeholder.png&quot; /&gt;  &lt;/div&gt;"/>
+                            </column> 
+                            <column></column> 
+                        </row>
+                        <row>
+                            <column>
+                                <stimulusButton featureText="Incorrect">
+                                    <clearPage/>
+                                    <pause  msToNext="500">
+                                        <cancelPauseTimers/> 
+                                        <trigger listenerId="nextStimulusAction"/>
+                                    </pause>
+                                </stimulusButton>
+                            </column>
+                            <column>
+                            </column>
+                            <column>
+                                <stimulusButton featureText="Correct">
+                                    <clearPage/>
+                                    <pause  msToNext="500">
+                                        <cancelPauseTimers/> 
+                                        <trigger listenerId="nextStimulusAction"/>
+                                    </pause>
+                                </stimulusButton>
+                            </column>
+                        </row>
+                    </table>
+                </stimulusAudio>
+               
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <autoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>grammar</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <!-- Flanker -->
+    <presenter displayOrder="16" next="Admin" type="stimulus" self="stimuliScreenFlankerPractice" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="6">
+            <hasMoreStimulus>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <clearPage/>
+                <centrePage/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
+                <pause msToNext="250">
+                    <clearPage/>
+                    <centrePage/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/placeholder.png&quot; /&gt;  &lt;/div&gt;"/>
+                    <addPadding/>   
+                </pause> 
+                <pause msToNext="1000">
+                    <stimulusLabel styleName="groupMessageLabel"/>
+                    <table>
+                        <row>
+                            <column>
+                                <stimulusButton featureText="&lt;">
+                                    <cancelPauseTimers/> 
+                                    <trigger listenerId="nextStimulusAction"/>
+                                </stimulusButton>
+                            </column>
+                            <column>
+                                <htmlText featureText="&#160;&#160;&#160;&#160;&#160;"/>
+                            </column>
+                            <column>
+                                <stimulusButton featureText="&gt;">
+                                    <cancelPauseTimers/> 
+                                    <trigger listenerId="nextStimulusAction"/>
+                                </stimulusButton>
+                            </column>
+                        </row>
+                    </table>
+                </pause>
+                <pause msToNext="1500">
+                    <clearPage/>
+                    <centrePage/>
+                    <clearPage/>
+                    <centrePage/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/placeholder.png&quot; /&gt;  &lt;/div&gt;"/>
+                    <addPadding/>
+                    <addPadding/>  
+                    <table>
+                        <row>
+                            <column>
+                                <stimulusButton featureText="&lt;">
+                                    <cancelPauseTimers/> 
+                                    <trigger listenerId="nextStimulusAction"/>
+                                </stimulusButton>
+                            </column>
+                            <column>
+                                <htmlText featureText="&#160;&#160;&#160;&#160;&#160;"/>
+                            </column>
+                            <column>
+                                <stimulusButton featureText="&gt;">
+                                    <cancelPauseTimers/> 
+                                    <trigger listenerId="nextStimulusAction"/>
+                                </stimulusButton>
+                            </column>
+                        </row>
+                    </table>
+                </pause> 
+                <pause msToNext="1000">
+                    <cancelPauseTimers/> 
+                    <trigger listenerId="nextStimulusAction"/>
+                </pause>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <autoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>flanker</tag>
+                <tag>Practice</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter displayOrder="20" type="transmission" self="Admin" title="Administratie" next="ListParticipants">
+        <sendMetadata>
+            <onSuccess> 
+                <sendAllData>
+                    <onSuccess>
+                        <addPadding/>
+                        <addPadding/>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Bedankt voor het meedoen."/>
+                        <addPadding/>
+                        <addPadding/>
+                        <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
+                    </onSuccess>
+                    <onError>
+                        <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
+                        <addPadding/>
+                        <addPadding/>
+                        <targetButton featureText="Retry" target="Admin"/>
+                        <addPadding/>
+                        <addPadding/>
+                        <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
+                    </onError>
+                </sendAllData>
+            </onSuccess>
+            <onError>   
+                <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
+                <addPadding/>
+                <addPadding/>
+                <targetButton featureText="Retry" target="Admin"/>
+                <addPadding/>
+                <addPadding/>
+                <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
+            </onError>      
+        </sendMetadata>
+    </presenter>
+    <presenter back="Menu" displayOrder="25" menuLabel="Deelnemer lijst" type="metadata" self="ListParticipants" title="Kiez deelnemer">
+        <htmlText featureText="The participants which are still in local browser memory:"/>
+        <selectUserMenu/>
+        <addPadding/>
+        <addPadding/>
+        <targetButton featureText="To the landing page" target="Menu"/> 
+        <addPadding/>
+        <addPadding/>
+        <targetButton featureText="To the admin page" target="Admin"/>   
+    </presenter>   
+    <presenter back="Menu" displayOrder="30" menuLabel="about" type="debug" self="about" title="about">
+        <versionData/>
+        <eraseLocalStorageButton/>
+        <localStorageData/>
+    </presenter>
+    <stimuli> 
+        <!-- Grammatical judjement -->
+        <stimulus  identifier="grammar_1"  audioPath="stimuli/grammar/als3_1"  tags="grammar 1 2730 als3_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  />
+        <stimulus  identifier="grammar_2"  audioPath="stimuli/grammar/mij2_1"  tags="grammar 1 3925 mij2_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  />
+        <stimulus  identifier="grammar_3"  audioPath="stimuli/grammar/die4_1"  tags="grammar 1 2837 die4_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  />
+        <stimulus  identifier="grammar_4"  audioPath="stimuli/grammar/hun8_0"  tags="grammar 1 2280 hun8_0 "  ratingLabels="Correct,Incorrect"  correctResponses="Incorrect"  pauseMs="0"  />
+        <stimulus  identifier="grammar_5"  audioPath="stimuli/grammar/mij3_1"  tags="grammar 1 3271 mij3_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  />
+        <stimulus  identifier="grammar_6"  audioPath="stimuli/grammar/als1_1"  tags="grammar 1 2827 als1_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  />
+        <stimulus  identifier="grammar_7"  audioPath="stimuli/grammar/morf7_0"  tags="grammar 1 3792 morf7_0 "  ratingLabels="Correct,Incorrect"  correctResponses="Incorrect"  pauseMs="0"  />
+        <stimulus  identifier="grammar_8"  audioPath="stimuli/grammar/hun5_0"  tags="grammar 1 2155 hun5_0 "  ratingLabels="Correct,Incorrect"  correctResponses="Incorrect"  pauseMs="0"  />
+        <stimulus  identifier="grammar_9"  audioPath="stimuli/grammar/als4_1"  tags="grammar 1 2417 als4_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  />
+        <stimulus  identifier="grammar_10"  audioPath="stimuli/grammar/die5_0"  tags="grammar 1 3148 die5_0 "  ratingLabels="Correct,Incorrect"  correctResponses="Incorrect"  pauseMs="0"  />
+        <stimulus  identifier="grammar_11"  audioPath="stimuli/grammar/als8_0"  tags="grammar 1 2700 als8_0 "  ratingLabels="Correct,Incorrect"  correctResponses="Incorrect"  pauseMs="0"  />
+        <stimulus  identifier="grammar_12"  audioPath="stimuli/grammar/morf8_0"  tags="grammar 1 4172 morf8_0 "  ratingLabels="Correct,Incorrect"  correctResponses="Incorrect"  pauseMs="0"  />
+        <stimulus  identifier="grammar_13"  audioPath="stimuli/grammar/mij1_1"  tags="grammar 1 3340 mij1_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  />
+        <stimulus  identifier="grammar_14"  audioPath="stimuli/grammar/morf3_1"  tags="grammar 1 3985 morf3_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  />
+        <stimulus  identifier="grammar_15"  audioPath="stimuli/grammar/als5_0"  tags="grammar 1 2917 als5_0 "  ratingLabels="Correct,Incorrect"  correctResponses="Incorrect"  pauseMs="0"  />
+        <stimulus  identifier="grammar_16"  audioPath="stimuli/grammar/hun3_1"  tags="grammar 1 2697 hun3_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  />
+        <stimulus  identifier="grammar_17"  audioPath="stimuli/grammar/die1_1"  tags="grammar 1 3101 die1_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  />
+        <stimulus  identifier="grammar_18"  audioPath="stimuli/grammar/mij5_0"  tags="grammar 1 2727 mij5_0 "  ratingLabels="Correct,Incorrect"  correctResponses="Incorrect"  pauseMs="0"  />
+        <stimulus  identifier="grammar_19"  audioPath="stimuli/grammar/hun6_0"  tags="grammar 1 2136 hun6_0 "  ratingLabels="Correct,Incorrect"  correctResponses="Incorrect"  pauseMs="0"  />
+        <stimulus  identifier="grammar_20"  audioPath="stimuli/grammar/mij4_1"  tags="grammar 1 3001 mij4_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  />
+        <stimulus  identifier="grammar_21"  audioPath="stimuli/grammar/die6_0"  tags="grammar 1 3725 die6_0 "  ratingLabels="Correct,Incorrect"  correctResponses="Incorrect"  pauseMs="0"  />
+        <stimulus  identifier="grammar_22"  audioPath="stimuli/grammar/morf6_0"  tags="grammar 1 4012 morf6_0 "  ratingLabels="Correct,Incorrect"  correctResponses="Incorrect"  pauseMs="0"  />
+        <stimulus  identifier="grammar_23"  audioPath="stimuli/grammar/als6_0"  tags="grammar 1 3071 als6_0 "  ratingLabels="Correct,Incorrect"  correctResponses="Incorrect"  pauseMs="0"  />
+        <stimulus  identifier="grammar_24"  audioPath="stimuli/grammar/die3_1"  tags="grammar 1 3108 die3_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  />
+        <stimulus  identifier="grammar_25"  audioPath="stimuli/grammar/hun1_1"  tags="grammar 1 3014 hun1_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  />
+        <stimulus  identifier="grammar_26"  audioPath="stimuli/grammar/morf1_1"  tags="grammar 1 3244 morf1_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  />
+        <stimulus  identifier="grammar_27"  audioPath="stimuli/grammar/die8_0"  tags="grammar 1 3061 die8_0 "  ratingLabels="Correct,Incorrect"  correctResponses="Incorrect"  pauseMs="0"  />
+        <stimulus  identifier="grammar_28"  audioPath="stimuli/grammar/morf5_0"  tags="grammar 1 3545 morf5_0 "  ratingLabels="Correct,Incorrect"  correctResponses="Incorrect"  pauseMs="0"  />
+        <stimulus  identifier="grammar_29"  audioPath="stimuli/grammar/mij8_0"  tags="grammar 1 3168 mij8_0 "  ratingLabels="Correct,Incorrect"  correctResponses="Incorrect"  pauseMs="0"  />
+        <stimulus  identifier="grammar_30"  audioPath="stimuli/grammar/als2_1"  tags="grammar 1 2891 als2_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  />
+        <stimulus  identifier="grammar_31"  audioPath="stimuli/grammar/morf4_1"  tags="grammar 1 3264 morf4_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  />
+        <stimulus  identifier="grammar_32"  audioPath="stimuli/grammar/die7_0"  tags="grammar 1 3094 die7_0 "  ratingLabels="Correct,Incorrect"  correctResponses="Incorrect"  pauseMs="0"  />
+        <stimulus  identifier="grammar_33"  audioPath="stimuli/grammar/mij7_0"  tags="grammar 1 2987 mij7_0 "  ratingLabels="Correct,Incorrect"  correctResponses="Incorrect"  pauseMs="0"  />
+        <stimulus  identifier="grammar_34"  audioPath="stimuli/grammar/hun4_1"  tags="grammar 1 3348 hun4_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  />
+        <stimulus  identifier="grammar_35"  audioPath="stimuli/grammar/als7_0"  tags="grammar 1 2607 als7_0 "  ratingLabels="Correct,Incorrect"  correctResponses="Incorrect"  pauseMs="0"  />
+        <stimulus  identifier="grammar_36"  audioPath="stimuli/grammar/morf2_1"  tags="grammar 1 3158 morf2_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  />
+        <stimulus  identifier="grammar_37"  audioPath="stimuli/grammar/hun7_0"  tags="grammar 1 2657 hun7_0 "  ratingLabels="Correct,Incorrect"  correctResponses="Incorrect"  pauseMs="0"  />
+        <stimulus  identifier="grammar_38"  audioPath="stimuli/grammar/mij6_0"  tags="grammar 1 2710 mij6_0 "  ratingLabels="Correct,Incorrect"  correctResponses="Incorrect"  pauseMs="0"  />
+        <stimulus  identifier="grammar_39"  audioPath="stimuli/grammar/die2_1"  tags="grammar 1 2947 die2_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  />
+        <stimulus  identifier="grammar_40"  audioPath="stimuli/grammar/hun2_1"  tags="grammar 1 2617 hun2_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  /><!-- Grammatical judjement end -->
+        
+        <!-- Flanker practice -->
+        <stimulus  identifier="flanker_Practice_1"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker Practice 0 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_Practice_2"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker Practice 0 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_Practice_3"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker Practice 0 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_Practice_4"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker Practice 0 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_Practice_5"  label="--&lt;--"  tags="flanker Practice 0 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_Practice_6"  label="--&gt;--"  tags="flanker Practice 0 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <!-- Flanker practice  end-->
+    </stimuli>
+</experiment>
