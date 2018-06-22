@@ -4,7 +4,7 @@
     <!--<experiment appNameDisplay="Adaptive Vocabulary Assessment" appNameInternal="advocas" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="false" textFontSize="17">-->
     <metadata>
         <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Wat is je proefpersoonnummer?"/>
-        <field controlledMessage="." controlledRegex=".*" postName="stimuli" preventServerDuplicates="false" registrationField="stimuli"/>
+        <field controlledMessage="." controlledRegex=".*" postName="experimentName" preventServerDuplicates="false" registrationField="experimentName"/>
         <field controlledMessage="Input at least 3 letters." controlledRegex="['\\'S'\\'s]'{'3,'}'" postName="feedBack" preventServerDuplicates="false" registrationField=""/>
     </metadata>
     <presenter displayOrder="1" type="menu" self="Menu" title="Menu">
@@ -17,7 +17,8 @@
         <addPadding/>
         <htmlText featureText="Welkom bij Language in Interaction BQ4 experimenten."/>
         <addPadding/>
-        <allMenuItems/>
+        <menuItem featureText="Grammar Judgement" target="Edit_User_Grammar"></menuItem>
+        <menuItem featureText="Flanker Test" target="Edit_User_Flanker"></menuItem>
     </presenter>
     <presenter menuLabel="Grammar Judjement" displayOrder="2" next="Accord_Grammar" type="metadata" self="Edit_User_Grammar" title="">
         <metadataField fieldName="workerId"/>
@@ -65,8 +66,6 @@
         <htmlText featureText="Je moet elke keer aangeven of het middelste symbool in de reeks '&lt;' of '&gt;' is."/>
         <htmlText featureText="Dit doe je door op de '&lt;'-knop te drukken voor '&lt;' en op de '&gt;'-knop te drukken voor '&gt;'."/>
         <htmlText featureText="Probeer zo snel mogelijk te antwoorden en met zo weinig mogelijk fouten."/>
-        <htmlText featureText="Je krijgt de zin slechts één keer te horen."/>
-        <htmlText featureText="Je mag al voor het einde van de zin antwoorden."/>
         <addPadding/>
         <addPadding/>
         <targetButton featureText="Aan de slag" target="stimuliScreenFlankerPractice"/>
@@ -188,9 +187,11 @@
                 <addPadding/>
                 <addPadding/>
                 <addPadding/>
-                <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
+                <htmlText featureText="+" styleName=""/>
+                <logTimeStamp eventTag="PlusShown"/>
                 <pause msToNext="250">
                     <clearPage/>
+                    <logTimeStamp eventTag="PlusErased"/>
                     <centrePage/>
                     <addPadding/>
                     <addPadding/>
@@ -199,70 +200,74 @@
                     <addPadding/>
                     <addPadding/>
                     <addPadding/>
-                    <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/placeholder.png&quot; /&gt;  &lt;/div&gt;"/>
-                    <addPadding/>   
+                    <htmlText featureText="&#160;" styleName=""/>
+                    <pause msToNext="1000">
+                        <stimulusLabel styleName="stimuliLabel"/>
+                        <logTimeStamp eventTag="StimulusShown"/>
+                        <addPadding/>
+                        <addPadding/>
+                        <table>
+                            <row>
+                                <column>
+                                    <stimulusButton featureText="&lt;">
+                                        <cancelPauseTimers/> 
+                                        <trigger listenerId="nextStimulusAction"/>
+                                    </stimulusButton>
+                                </column>
+                                <column>
+                                    <htmlText featureText="&#160;&#160;&#160;&#160;&#160;"/>
+                                </column>
+                                <column>
+                                    <stimulusButton featureText="&gt;">
+                                        <cancelPauseTimers/> 
+                                        <trigger listenerId="nextStimulusAction"/>
+                                    </stimulusButton>
+                                </column>
+                            </row>
+                        </table>
+                        <pause msToNext="1500">
+                            <clearPage/>
+                            <logTimeStamp eventTag="StimulusErased"/>
+                            <centrePage/>
+                            <addPadding/>
+                            <addPadding/>
+                            <addPadding/>
+                            <addPadding/>
+                            <addPadding/>
+                            <addPadding/>
+                            <addPadding/>
+                            <htmlText featureText="&#160;" styleName=""/>
+                            <htmlText featureText="&#160;" styleName="stimuliLabel"/>
+                            <addPadding/>
+                            <addPadding/>
+                            <table>
+                                <row>
+                                    <column>
+                                        <stimulusButton featureText="&lt;">
+                                            <cancelPauseTimers/> 
+                                            <trigger listenerId="nextStimulusAction"/>
+                                        </stimulusButton>
+                                    </column>
+                                    <column>
+                                        <htmlText featureText="&#160;&#160;&#160;&#160;&#160;"/>
+                                    </column>
+                                    <column>
+                                        <stimulusButton featureText="&gt;">
+                                            <cancelPauseTimers/> 
+                                            <trigger listenerId="nextStimulusAction"/>
+                                        </stimulusButton>
+                                    </column>
+                                </row>
+                            </table>
+                            <pause msToNext="1000">
+                                <logTimeStamp eventTag="JumpingToNextStimulus"/>
+                                <cancelPauseTimers/> 
+                                <trigger listenerId="nextStimulusAction"/>
+                            </pause>
+                        </pause> 
+                    </pause>   
                 </pause> 
-                <pause msToNext="1000">
-                    <stimulusLabel styleName="groupMessageLabel"/>
-                    <table>
-                        <row>
-                            <column>
-                                <stimulusButton featureText="&lt;">
-                                    <cancelPauseTimers/> 
-                                    <trigger listenerId="nextStimulusAction"/>
-                                </stimulusButton>
-                            </column>
-                            <column>
-                                <htmlText featureText="&#160;&#160;&#160;&#160;&#160;"/>
-                            </column>
-                            <column>
-                                <stimulusButton featureText="&gt;">
-                                    <cancelPauseTimers/> 
-                                    <trigger listenerId="nextStimulusAction"/>
-                                </stimulusButton>
-                            </column>
-                        </row>
-                    </table>
-                </pause>
-                <pause msToNext="1500">
-                    <clearPage/>
-                    <centrePage/>
-                    <clearPage/>
-                    <centrePage/>
-                    <addPadding/>
-                    <addPadding/>
-                    <addPadding/>
-                    <addPadding/>
-                    <addPadding/>
-                    <addPadding/>
-                    <addPadding/>
-                    <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/placeholder.png&quot; /&gt;  &lt;/div&gt;"/>
-                    <addPadding/>
-                    <addPadding/>  
-                    <table>
-                        <row>
-                            <column>
-                                <stimulusButton featureText="&lt;">
-                                    <cancelPauseTimers/> 
-                                    <trigger listenerId="nextStimulusAction"/>
-                                </stimulusButton>
-                            </column>
-                            <column>
-                                <htmlText featureText="&#160;&#160;&#160;&#160;&#160;"/>
-                            </column>
-                            <column>
-                                <stimulusButton featureText="&gt;">
-                                    <cancelPauseTimers/> 
-                                    <trigger listenerId="nextStimulusAction"/>
-                                </stimulusButton>
-                            </column>
-                        </row>
-                    </table>
-                </pause> 
-                <pause msToNext="1000">
-                    <cancelPauseTimers/> 
-                    <trigger listenerId="nextStimulusAction"/>
-                </pause>
+               
             </hasMoreStimulus>
             <endOfStimulus>
                 <autoNextPresenter/>
