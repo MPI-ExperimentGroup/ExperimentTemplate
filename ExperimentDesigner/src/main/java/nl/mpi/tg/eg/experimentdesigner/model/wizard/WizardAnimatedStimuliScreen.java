@@ -248,7 +248,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
 
             final PresenterFeature skipFeature = new PresenterFeature(FeatureType.actionButton, "Skip");
             skipFeature.addFeatureAttributes(FeatureAttribute.styleName, "hiddenBottomRight");
-            skipFeature.addFeatureAttributes(FeatureAttribute.eventTag, "Skip");
+//            skipFeature.addFeatureAttributes(FeatureAttribute.eventTag, "Skip");
             skipFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
             final PresenterFeature endAudioRecorderTagFeature4 = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
             endAudioRecorderTagFeature4.addFeatureAttributes(FeatureAttribute.eventTier, "1");
@@ -275,7 +275,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
 
     private PresenterFeature getNextButtonFeature(WizardScreenData storedWizardScreenData) {
         final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, storedWizardScreenData.getNextButton()[0]);
-        nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getNextButton()[0]);
+//        nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getNextButton()[0]);
         nextButtonFeature.addFeatureAttributes(FeatureAttribute.styleName, "hiddenBottomRight");
         nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
         return nextButtonFeature;

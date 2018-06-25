@@ -375,7 +375,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         final PresenterFeature presenterFeature;
         if (storedWizardScreenData.getStimulusCodeFormat() != null) {
             final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, storedWizardScreenData.getNextButton()[0]);
-            nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getButtonLabelEventTag());
+//            nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getButtonLabelEventTag());
             if (getHotkeyButton(storedWizardScreenData) != null) {
                 nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, getHotkeyButton(storedWizardScreenData));
             }
@@ -437,7 +437,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             presenterFeature.getPresenterFeatureList().add(ratingFooterButtonFeature);
         } else {
             final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, storedWizardScreenData.getNextButton()[0]);
-            nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getButtonLabelEventTag());
+//            nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getButtonLabelEventTag());
             if (getHotkeyButton(storedWizardScreenData) != null) {
                 nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, getHotkeyButton(storedWizardScreenData));
             }
