@@ -67,9 +67,10 @@
         <htmlText featureText="Je moet elke keer aangeven of het middelste symbool in de reeks '&lt;' of '&gt;' is."/>
         <htmlText featureText="Dit doe je door op de '&lt;'-knop te drukken voor '&lt;' en op de '&gt;'-knop te drukken voor '&gt;'."/>
         <htmlText featureText="Probeer zo snel mogelijk te antwoorden en met zo weinig mogelijk fouten."/>
+        <htmlText featureText="Toets 'Enter' of de scherm-toets beneden om naar het oefening rondje te gaan."/>
         <addPadding/>
         <addPadding/>
-        <targetButton featureText="Aan de slag" target="stimuliScreenFlankerPractice"/>
+        <targetButton featureText="Aan de slag" target="stimuliScreenFlankerPractice" hotKey="ENTER"/>
     </presenter>
     <presenter displayOrder="15" next="Admin" type="stimulus" self="stimuliScreenGrammar" title="">
         <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="40">
@@ -206,59 +207,40 @@
                         <cancelPauseTimers/> 
                         <stimulusLabel styleName="stimuliLabel"/>
                         <logTimeStamp eventTag="StimulusShown"/>
-                        <addPadding/>
-                        <addPadding/>
-                        <table>
+                        <table showOnBackButton="true" styleName="titleBarButton">
                             <row>
-                                <column>
-                                    <stimulusButton featureText="&lt;" >
+                                <column styleName=""> 
+                                    <stimulusButton featureText="&lt;" hotKey="LEFT" styleName=""> <!-- left -->
                                         <cancelPauseTimers/> 
                                         <trigger listenerId="nextStimulusAction"/>
                                     </stimulusButton>
                                 </column>
-                                <column>
-                                    <htmlText featureText="&#160;&#160;"/>
-                                </column>
-                                <column>
-                                    <stimulusButton featureText="&gt;">
+                                <column  styleName="">
+                                    <stimulusButton featureText="&gt;" hotKey="RIGHT" styleName=""> <!-- right -->
                                         <cancelPauseTimers/> 
                                         <trigger listenerId="nextStimulusAction"/>
                                     </stimulusButton>
-                                </column>
+                                </column>                                
                             </row>
                         </table>
                         <pause msToNext="1500">
                             <cancelPauseTimers/> 
                             <clearPage/>
                             <logTimeStamp eventTag="StimulusErased"/>
-                            <centrePage/>
-                            <addPadding/>
-                            <addPadding/>
-                            <addPadding/>
-                            <addPadding/>
-                            <addPadding/>
-                            <addPadding/>
-                            <addPadding/>
-                            <htmlText featureText="&#160;" styleName="stimuliLabel"/>
-                            <addPadding/>
-                            <addPadding/>
-                            <table>
+                            <table showOnBackButton="true" styleName="titleBarButton">
                                 <row>
-                                    <column>
-                                        <stimulusButton featureText="&lt;" >
+                                    <column styleName=""> 
+                                        <stimulusButton featureText="&lt;" hotKey="LEFT" styleName=""> <!-- left -->
                                             <cancelPauseTimers/> 
                                             <trigger listenerId="nextStimulusAction"/>
                                         </stimulusButton>
                                     </column>
-                                    <column>
-                                        <htmlText featureText="&#160;&#160;"/>
-                                    </column>
-                                    <column>
-                                        <stimulusButton featureText="&gt;">
+                                    <column  styleName="">
+                                        <stimulusButton featureText="&gt;" hotKey="RIGHT" styleName=""> <!-- right -->
                                             <cancelPauseTimers/> 
                                             <trigger listenerId="nextStimulusAction"/>
                                         </stimulusButton>
-                                    </column>
+                                    </column>                                
                                 </row>
                             </table>
                             <pause msToNext="1000">
@@ -278,9 +260,10 @@
                 <addPadding/>
                 <addPadding/>
                 <addPadding/>
-                <htmlText featureText="Het einde van het oefening rondje"/>
+                <htmlText featureText="Het einde van het oefening rondje."/>
+                <htmlText featureText="Toets 'Enter' of de scherm-toets beneden om naar de eerste ronde te gaan."/>
                 <addPadding/>
-                <targetButton featureText="Begin het experiment" target="stimuliScreenFlankerBlock1"/>
+                <targetButton featureText="Begin het experiment" target="stimuliScreenFlankerBlock1" hotKey="ENTER"/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -291,7 +274,7 @@
     </presenter>
     
     <presenter displayOrder="17" next="stimuliScreenFlankerBlock2" type="stimulus" self="stimuliScreenFlankerBlock1" title="">
-        <loadStimulus eventTag="stimuliN" randomise="true" repeatCount="1" maxStimuli="100">
+        <loadStimulus eventTag="stimuliN" randomise="true" repeatCount="1" maxStimuli="72">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
                     <nextStimulus repeatIncorrect="false"/>
@@ -312,70 +295,51 @@
                     <clearPage/>
                     <logTimeStamp eventTag="PlusErased"/>
                     <centrePage/>
-                    <addPadding/>
-                    <addPadding/>
-                    <addPadding/>
-                    <addPadding/>
-                    <addPadding/>
-                    <addPadding/>
-                    <addPadding/>
                     <pause msToNext="1000">
-                        <cancelPauseTimers/> 
+                        <cancelPauseTimers/>
+                        <addPadding/>
+                        <addPadding/>
+                        <addPadding/>
+                        <addPadding/>
+                        <addPadding/>
+                        <addPadding/>
+                        <addPadding/> 
                         <stimulusLabel styleName="stimuliLabel"/>
                         <logTimeStamp eventTag="StimulusShown"/>
-                        <addPadding/>
-                        <addPadding/>
-                        <table>
+                        <table showOnBackButton="true" styleName="titleBarButton">
                             <row>
-                                <column>
-                                    <stimulusButton featureText="&lt;" >
+                                <column styleName=""> 
+                                    <stimulusButton featureText="&lt;" hotKey="LEFT" styleName=""> <!-- left -->
                                         <cancelPauseTimers/> 
                                         <trigger listenerId="nextStimulusAction"/>
                                     </stimulusButton>
                                 </column>
-                                <column>
-                                    <htmlText featureText="&#160;&#160;"/>
-                                </column>
-                                <column>
-                                    <stimulusButton featureText="&gt;">
+                                <column  styleName="">
+                                    <stimulusButton featureText="&gt;" hotKey="RIGHT" styleName=""> <!-- right -->
                                         <cancelPauseTimers/> 
                                         <trigger listenerId="nextStimulusAction"/>
                                     </stimulusButton>
-                                </column>
+                                </column>                                
                             </row>
                         </table>
                         <pause msToNext="1500">
                             <cancelPauseTimers/> 
                             <clearPage/>
                             <logTimeStamp eventTag="StimulusErased"/>
-                            <centrePage/>
-                            <addPadding/>
-                            <addPadding/>
-                            <addPadding/>
-                            <addPadding/>
-                            <addPadding/>
-                            <addPadding/>
-                            <addPadding/>
-                            <htmlText featureText="&#160;" styleName="stimuliLabel"/>
-                            <addPadding/>
-                            <addPadding/>
-                            <table>
+                            <table showOnBackButton="true" styleName="titleBarButton">
                                 <row>
-                                    <column>
-                                        <stimulusButton featureText="&lt;" >
+                                    <column styleName=""> 
+                                        <stimulusButton featureText="&lt;" hotKey="LEFT" styleName=""> <!-- left -->
                                             <cancelPauseTimers/> 
                                             <trigger listenerId="nextStimulusAction"/>
                                         </stimulusButton>
                                     </column>
-                                    <column>
-                                        <htmlText featureText="&#160;&#160;"/>
-                                    </column>
-                                    <column>
-                                        <stimulusButton featureText="&gt;">
+                                    <column  styleName="">
+                                        <stimulusButton featureText="&gt;" hotKey="RIGHT" styleName=""> <!-- right -->
                                             <cancelPauseTimers/> 
                                             <trigger listenerId="nextStimulusAction"/>
                                         </stimulusButton>
-                                    </column>
+                                    </column>                                
                                 </row>
                             </table>
                             <pause msToNext="1000">
@@ -395,11 +359,10 @@
                 <addPadding/>
                 <addPadding/>
                 <addPadding/>
-                <htmlText featureText="Het einde van de eerste ronde. Nu komt de tweede ronde."/>
-                <pause msToNext="3000">
-                    <cancelPauseTimers/> 
-                    <autoNextPresenter/>
-                </pause>
+                <htmlText featureText="Het einde van de  eerste ronde."/>
+                 <htmlText featureText="Toets 'Enter' of de scherm-toets beneden om naar de tweede ronde te gaan. "/>
+                <addPadding/>
+                <targetButton featureText="Naar de tweede ronde." target="stimuliScreenFlankerBlock2" hotKey="ENTER"/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -411,7 +374,7 @@
     </presenter>
     
     <presenter displayOrder="18" next="Admin" type="stimulus" self="stimuliScreenFlankerBlock2" title="">
-        <loadStimulus eventTag="stimuliN" randomise="true" repeatCount="1" maxStimuli="100">
+        <loadStimulus eventTag="stimuliN" randomise="true" repeatCount="1" maxStimuli="72">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
                     <nextStimulus repeatIncorrect="false"/>
@@ -443,59 +406,40 @@
                         <cancelPauseTimers/> 
                         <stimulusLabel styleName="stimuliLabel"/>
                         <logTimeStamp eventTag="StimulusShown"/>
-                        <addPadding/>
-                        <addPadding/>
-                        <table>
+                        <table showOnBackButton="true" styleName="titleBarButton">
                             <row>
-                                <column>
-                                    <stimulusButton featureText="&lt;" >
+                                <column styleName=""> 
+                                    <stimulusButton featureText="&lt;" hotKey="LEFT" styleName=""> <!-- left -->
                                         <cancelPauseTimers/> 
                                         <trigger listenerId="nextStimulusAction"/>
                                     </stimulusButton>
                                 </column>
-                                <column>
-                                    <htmlText featureText="&#160;&#160;"/>
-                                </column>
-                                <column>
-                                    <stimulusButton featureText="&gt;">
+                                <column  styleName="">
+                                    <stimulusButton featureText="&gt;" hotKey="RIGHT" styleName=""> <!-- right -->
                                         <cancelPauseTimers/> 
                                         <trigger listenerId="nextStimulusAction"/>
                                     </stimulusButton>
-                                </column>
+                                </column>                                
                             </row>
                         </table>
                         <pause msToNext="1500">
                             <cancelPauseTimers/> 
                             <clearPage/>
                             <logTimeStamp eventTag="StimulusErased"/>
-                            <centrePage/>
-                            <addPadding/>
-                            <addPadding/>
-                            <addPadding/>
-                            <addPadding/>
-                            <addPadding/>
-                            <addPadding/>
-                            <addPadding/>
-                            <htmlText featureText="&#160;" styleName="stimuliLabel"/>
-                            <addPadding/>
-                            <addPadding/>
-                            <table>
+                            <table showOnBackButton="true" styleName="titleBarButton">
                                 <row>
-                                    <column>
-                                        <stimulusButton featureText="&lt;" >
+                                    <column styleName=""> 
+                                        <stimulusButton featureText="&lt;" hotKey="LEFT" styleName=""> <!-- left -->
                                             <cancelPauseTimers/> 
                                             <trigger listenerId="nextStimulusAction"/>
                                         </stimulusButton>
                                     </column>
-                                    <column>
-                                        <htmlText featureText="&#160;&#160;"/>
-                                    </column>
-                                    <column>
-                                        <stimulusButton featureText="&gt;">
+                                    <column  styleName="">
+                                        <stimulusButton featureText="&gt;" hotKey="RIGHT" styleName=""> <!-- right -->
                                             <cancelPauseTimers/> 
                                             <trigger listenerId="nextStimulusAction"/>
                                         </stimulusButton>
-                                    </column>
+                                    </column>                                
                                 </row>
                             </table>
                             <pause msToNext="1000">
