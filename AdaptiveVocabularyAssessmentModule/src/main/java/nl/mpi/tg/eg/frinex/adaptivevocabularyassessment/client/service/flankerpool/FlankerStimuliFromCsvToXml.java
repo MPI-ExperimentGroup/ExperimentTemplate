@@ -61,6 +61,8 @@ public class FlankerStimuliFromCsvToXml {
             String block = record.get("Block").trim();
             if (block == null) {
                 throw new IOException("Block is undefined");
+            } else {
+                block = "block_"+block;
             }
 
             String label = record.get("Stimulus").trim();

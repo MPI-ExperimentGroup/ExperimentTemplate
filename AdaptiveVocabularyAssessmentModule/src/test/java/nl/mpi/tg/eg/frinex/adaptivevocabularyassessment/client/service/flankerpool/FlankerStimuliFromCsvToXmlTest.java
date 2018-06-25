@@ -53,10 +53,23 @@ public class FlankerStimuliFromCsvToXmlTest {
      * Test of parseWordsInputCSVStringToXml method, of class FlankerStimuliFromCsvToXml.
      */
     @Test
-    public void testParseWordsInputCSVStringToXml() throws Exception {
-        System.out.println("parseWordsInputCSVStringToXml");
+    public void testParseWordsInputCSVStringToXmlPractice() throws Exception {
+        System.out.println("parseWordsInputCSVStringToXml_Practice");
         FlankerStimuliFromCsvToXml instance = new FlankerStimuliFromCsvToXml();
         String resultPractice = instance.parseWordsInputCSVStringToXml(CsvTablesFlanker.CSV_STRING_PRACTICE, "flanker" , "Practice");
+        assertTrue(resultPractice.startsWith("<stimulus "));
+        assertTrue(resultPractice.endsWith(" />\n"));
+        System.out.println(resultPractice);
+    }
+    
+     /**
+     * Test of parseWordsInputCSVStringToXml method, of class FlankerStimuliFromCsvToXml.
+     */
+    @Test
+    public void testParseWordsInputCSVStringToXmlRealDeal_RealDelal() throws Exception {
+        System.out.println("parseWordsInputCSVStringToXml");
+        FlankerStimuliFromCsvToXml instance = new FlankerStimuliFromCsvToXml();
+        String resultPractice = instance.parseWordsInputCSVStringToXml(CsvTablesFlanker.CSV_STRING_REAL_DEAL, "flanker" , "RealDeal");
         assertTrue(resultPractice.startsWith("<stimulus "));
         assertTrue(resultPractice.endsWith(" />\n"));
         System.out.println(resultPractice);
