@@ -53,9 +53,9 @@ public class SchemaGenerator {
         writer.append("</xs:simpleType>\n");
 
         writer.append("<xs:element name=\"experiment\">\n").append("<xs:complexType>\n").append("<xs:sequence minOccurs=\"1\" maxOccurs=\"1\">\n");
-        writer.append("<xs:annotation>");
-        writer.append("<xs:documentation>Root element of the experiment configuration file of which only one is permitted.</xs:documentation>");
-        writer.append("</xs:annotation>");
+        writer.append("<xs:annotation>\n");
+        writer.append("<xs:documentation>Root element of the experiment configuration file of which only one is permitted.</xs:documentation>\n");
+        writer.append("</xs:annotation>\n");
 //        for (final PresenterType presenterType : presenterTypes) {
 //            writer.append("<xs:element ref=\"").append(presenterType.name()).append("\"/>\n");
 //        }
@@ -90,13 +90,13 @@ public class SchemaGenerator {
         for (String attributeIntegerLists : new String[]{}) {
             writer.append("<xs:attribute name=\"").append(attributeIntegerLists).append("\" type=\"integerList\" use=\"required\"/>\n");
         }
-        writer.append("</xs:complexType>\n").append("</xs:element>");
+        writer.append("</xs:complexType>\n").append("</xs:element>\n");
     }
 
     private void addPresenter(Writer writer, final PresenterType[] presenterTypes) throws IOException {
         writer.append("<xs:complexType name=\"presenterType\">\n").append("<xs:choice minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
         for (final FeatureType featureRef : FeatureType.values()) {
-            if (featureRef.getRequiresParentType() == FeatureType.Contitionals.none) {
+            if (featureRef.getIsChildType() == FeatureType.Contitionals.none) {
                 writer.append("<xs:element name=\"").append(featureRef.name()).append("\" type=\"").append(featureRef.name()).append("Type\"/>\n");
             }
         }
@@ -124,7 +124,7 @@ public class SchemaGenerator {
         writer.append("<xs:minLength value=\"1\"/>\n");
         writer.append("</xs:restriction>\n");
         writer.append("</xs:simpleType>\n");
-        writer.append("</xs:attribute>");
+        writer.append("</xs:attribute>\n");
 //        writer.append("<xs:assert test=\"count(*/metadataField) le 0\"/>"); // todo: apply this test to enforce presenter type constraints if possible
         writer.append("</xs:complexType>\n");
     }
@@ -136,7 +136,7 @@ public class SchemaGenerator {
         writer.append("<xs:attribute name=\"channel\" type=\"xs:decimal\" use=\"required\"/>\n");
         writer.append("<xs:attribute name=\"label\" type=\"xs:string\" use=\"required\"/>\n");
         writer.append("<xs:attribute name=\"logToSdCard\" type=\"xs:boolean\" use=\"required\"/>\n");
-        writer.append("</xs:complexType>\n").append("</xs:element>");
+        writer.append("</xs:complexType>\n").append("</xs:element>\n");
         writer.append("</xs:sequence>\n");
         writer.append("</xs:complexType>\n");
     }
@@ -151,7 +151,7 @@ public class SchemaGenerator {
         writer.append("<xs:attribute name=\"preventServerDuplicates\" type=\"xs:boolean\" use=\"optional\"/>\n");
         writer.append("<xs:attribute name=\"duplicatesControlledMessage\" type=\"xs:string\" use=\"optional\"/>\n");
         writer.append("<xs:attribute name=\"registrationField\" type=\"xs:string\" use=\"required\"/>\n");
-        writer.append("</xs:complexType>\n").append("</xs:element>");
+        writer.append("</xs:complexType>\n").append("</xs:element>\n");
         writer.append("</xs:sequence>\n");
         writer.append("</xs:complexType>\n");
     }
@@ -169,7 +169,9 @@ public class SchemaGenerator {
         if (featureType.canHaveFeatures()) {
             writer.append("<xs:choice minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
             for (final FeatureType featureRef : FeatureType.values()) {
-                if (featureRef.getRequiresParentType() == FeatureType.Contitionals.none) {
+                if (featureRef.getIsChildType() == FeatureType.Contitionals.none || featureRef.getIsChildType() == featureType.getRequiresChildType()
+                        || featureRef.getIsChildType() == FeatureType.Contitionals.groupNetworkAction // currently allowing all groupNetworkAction in any element
+                        ) {
                     writer.append("<xs:element name=\"").append(featureRef.name()).append("\" type=\"").append(featureRef.name()).append("Type\"/>\n");
                 }
             }
@@ -214,10 +216,10 @@ public class SchemaGenerator {
                     writer.append("<xs:element name=\"belowThreshold\" type=\"belowThresholdType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                     writer.append("</xs:all>\n");
                     break;
-                case hasGroupActivities:
-                    writer.append("<xs:choice>\n");
-                    writer.append("<xs:element name=\"groupNetworkActivity\" type=\"groupNetworkActivityType\" minOccurs=\"0\" maxOccurs=\"unbounded\"/>\n");
-                    writer.append("<xs:element name=\"sendGroupEndOfStimuli\" type=\"sendGroupEndOfStimuliType\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
+                case groupNetworkActivity:
+                    writer.append("<xs:choice minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
+                    writer.append("<xs:element name=\"groupNetworkActivity\" type=\"groupNetworkActivityType\"/>\n");
+                    writer.append("<xs:element name=\"sendGroupEndOfStimuli\" type=\"sendGroupEndOfStimuliType\"/>\n");
                     writer.append("</xs:choice>\n");
                     break;
                 case hasMediaPlayback:
@@ -238,11 +240,17 @@ public class SchemaGenerator {
                 case none:
                     break;
                 default:
+                    writer.append("<xs:all>\n");
                     for (FeatureType featureType1 : FeatureType.values()) {
-                        if (featureType1.getRequiresParentType() == featureType.getRequiresChildType()) {
-                            addFeature(writer, featureType1);
+                        if (featureType1.getIsChildType() == featureType.getRequiresChildType()) {
+                            writer.append("<xs:element name=\"").append(featureType1.name()).append("\" type=\"").append(featureType1.name()).append("Type\"/>\n");
+                            if (featureType.canHaveStimulusTags() && featureType.isCanHaveRandomGrouping()) {
+                                writer.append("<xs:element name=\"randomGrouping\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
+                                writer.append("<xs:element name=\"stimuli\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
+                            }
                         }
                     }
+                    writer.append("</xs:all>\n");
                     break;
             }
         }
@@ -266,7 +274,7 @@ public class SchemaGenerator {
         }
         if (featureType.allowsCustomImplementation()) {
             writer.append("<xs:attribute name=\"class\" type=\"xs:string\"/>\n");
-            writer.append("<xs:anyAttribute  processContents=\"lax\"/>");
+            writer.append("<xs:anyAttribute  processContents=\"lax\"/>\n");
 
             writer.append("<xs:assert test=\"(@class) or (not(@class) ");
             for (final FeatureAttribute featureAttribute : featureType.getFeatureAttributes()) {
@@ -275,7 +283,7 @@ public class SchemaGenerator {
                     writer.append(featureAttribute.name());
                 }
             }
-            writer.append(")\"/>");
+            writer.append(")\"/>\n");
         }
         writer.append("</xs:complexType>\n");
     }
@@ -295,7 +303,7 @@ public class SchemaGenerator {
     }
 
     private void getEnd(Writer writer) throws IOException {
-        writer.append("</xs:schema>");
+        writer.append("</xs:schema>\n");
     }
 
     public void appendContents(Writer writer) throws IOException {
