@@ -34,11 +34,15 @@
         <loadStimulus eventTag="Zinnen afmaken" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
-                    <addPadding/>
-                    <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." validationRegex=".{2,}" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
-                    <actionButton featureText="volgende" eventTag="volgende">
-                        <nextStimulus repeatIncorrect="false"/>
-                    </actionButton>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete>
+                        <addPadding/>
+                        <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." validationRegex=".{2,}" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
+                        <actionButton featureText="volgende">
+                            <nextStimulus repeatIncorrect="false"/>
+                        </actionButton>
+                    </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>

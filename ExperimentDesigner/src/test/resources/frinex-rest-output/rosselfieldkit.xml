@@ -57,12 +57,16 @@
                 <stimulusLabel/>
                 <showStimulusProgress/>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
-                    <plainText featureText="the informant talks about the image"/>
-                    <actionButton featureText="next">
-                        <endAudioRecorderTag eventTier="1" eventTag="the informant talks about the image"/>
-                        <clearPage/>
-                        <nextStimulus repeatIncorrect="false"/>
-                    </actionButton>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="the informant talks about the image"/>
+                        <actionButton featureText="next">
+                            <endAudioRecorderTag eventTier="1" eventTag="the informant talks about the image"/>
+                            <clearPage/>
+                            <nextStimulus repeatIncorrect="false"/>
+                        </actionButton>
+                    </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -84,12 +88,16 @@
                 <stimulusLabel/>
                 <showStimulusProgress/>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
-                    <plainText featureText="the informant talks about the image"/>
-                    <actionButton featureText="next">
-                        <endAudioRecorderTag eventTier="1" eventTag="the informant talks about the image"/>
-                        <clearPage/>
-                        <nextStimulus repeatIncorrect="false"/>
-                    </actionButton>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="the informant talks about the image"/>
+                        <actionButton featureText="next">
+                            <endAudioRecorderTag eventTier="1" eventTag="the informant talks about the image"/>
+                            <clearPage/>
+                            <nextStimulus repeatIncorrect="false"/>
+                        </actionButton>
+                    </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -111,27 +119,43 @@
                     <hasMoreStimulus>
                         <clearPage/>
                         <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" animate="none" maxWidth="80">
-                            <addPadding/>
-                            <actionButton featureText="Next" eventTag="Next" hotKey="SPACE" styleName="hiddenBottomRight">
-                                <endAudioRecorderTag eventTier="1" eventTag="image"/>
-                                <clearPage/>
-                                <backgroundImage msToNext="1" src="file:///storage/emulated/0/MPI_STIMULI/background1.png" styleName="">
-                                    <stimulusPresent msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30">
-                                        <addPadding/>
-                                        <stimulusAudio msToNext="0" showPlaybackIndicator="false"/>
-                                        <actionButton featureText="Play Sound" styleName="hiddenTopRight">
-                                            <stimulusAudio msToNext="0" showPlaybackIndicator="false"/>
-                                        </actionButton>
-                                        <actionButton featureText="Next" eventTag="Next" hotKey="SPACE" styleName="hiddenBottomRight">
-                                            <endAudioRecorderTag eventTier="2" eventTag="image bounce audio"/>
-                                            <removeStimulus/>
-                                            <nextMatchingStimulus/>
-                                        </actionButton>
-                                        <startAudioRecorderTag eventTier="2"/>
-                                    </stimulusPresent>
-                                </backgroundImage>
-                            </actionButton>
-                            <startAudioRecorderTag eventTier="1"/>
+                            <mediaLoaded/>
+                            <mediaLoadFailed/>
+                            <mediaPlaybackComplete>
+                                <addPadding/>
+                                <actionButton featureText="Next" hotKey="SPACE" styleName="hiddenBottomRight">
+                                    <endAudioRecorderTag eventTier="1" eventTag="image"/>
+                                    <clearPage/>
+                                    <backgroundImage msToNext="1" src="file:///storage/emulated/0/MPI_STIMULI/background1.png" styleName="">
+                                        <stimulusPresent msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30">
+                                            <mediaLoaded/>
+                                            <mediaLoadFailed/>
+                                            <mediaPlaybackComplete>
+                                                <addPadding/>
+                                                <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                                    <mediaLoaded/>
+                                                    <mediaLoadFailed/>
+                                                    <mediaPlaybackComplete/>
+                                                </stimulusAudio>
+                                                <actionButton featureText="Play Sound" styleName="hiddenTopRight">
+                                                    <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                                        <mediaLoaded/>
+                                                        <mediaLoadFailed/>
+                                                        <mediaPlaybackComplete/>
+                                                    </stimulusAudio>
+                                                </actionButton>
+                                                <actionButton featureText="Next" hotKey="SPACE" styleName="hiddenBottomRight">
+                                                    <endAudioRecorderTag eventTier="2" eventTag="image bounce audio"/>
+                                                    <removeStimulus/>
+                                                    <nextMatchingStimulus/>
+                                                </actionButton>
+                                                <startAudioRecorderTag eventTier="2"/>
+                                            </mediaPlaybackComplete>
+                                        </stimulusPresent>
+                                    </backgroundImage>
+                                </actionButton>
+                                <startAudioRecorderTag eventTier="1"/>
+                            </mediaPlaybackComplete>
                         </stimulusPresent>
                     </hasMoreStimulus>
                     <endOfStimulus>
@@ -160,13 +184,25 @@
                         <endAudioRecorderTag eventTier="4" eventTag="correct image clicked"/>
                         <clearPage/>
                         <backgroundImage msToNext="1" src="file:///storage/emulated/0/MPI_STIMULI/background2.png" styleName="">
-                            <stimulusPresent msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30"/>
+                            <stimulusPresent msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30">
+                                <mediaLoaded/>
+                                <mediaLoadFailed/>
+                                <mediaPlaybackComplete/>
+                            </stimulusPresent>
                             <addPadding/>
-                            <stimulusAudio msToNext="0" showPlaybackIndicator="false"/>
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded/>
+                                <mediaLoadFailed/>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
                             <actionButton featureText="Play Sound" styleName="hiddenTopRight">
-                                <stimulusAudio msToNext="0" showPlaybackIndicator="false"/>
+                                <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                    <mediaLoaded/>
+                                    <mediaLoadFailed/>
+                                    <mediaPlaybackComplete/>
+                                </stimulusAudio>
                             </actionButton>
-                            <actionButton featureText="Next" eventTag="Next" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <actionButton featureText="Next" hotKey="SPACE" styleName="hiddenBottomRight">
                                 <endAudioRecorderTag eventTier="1" eventTag="task 2 animated"/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
@@ -176,13 +212,25 @@
                         <endAudioRecorderTag eventTier="4" eventTag="incorrect image clicked"/>
                         <clearPage/>
                         <backgroundImage msToNext="1" src="file:///storage/emulated/0/MPI_STIMULI/background2.png" styleName="">
-                            <stimulusPresent msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30"/>
+                            <stimulusPresent msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" maxWidth="30">
+                                <mediaLoaded/>
+                                <mediaLoadFailed/>
+                                <mediaPlaybackComplete/>
+                            </stimulusPresent>
                             <addPadding/>
-                            <stimulusAudio msToNext="0" showPlaybackIndicator="false"/>
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded/>
+                                <mediaLoadFailed/>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
                             <actionButton featureText="Play Sound" styleName="hiddenTopRight">
-                                <stimulusAudio msToNext="0" showPlaybackIndicator="false"/>
+                                <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                    <mediaLoaded/>
+                                    <mediaLoadFailed/>
+                                    <mediaPlaybackComplete/>
+                                </stimulusAudio>
                             </actionButton>
-                            <actionButton featureText="Next" eventTag="Next" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <actionButton featureText="Next" hotKey="SPACE" styleName="hiddenBottomRight">
                                 <endAudioRecorderTag eventTier="1" eventTag="task 2 animated"/>
                                 <nextStimulus repeatIncorrect="false"/>
                             </actionButton>
@@ -191,11 +239,19 @@
                 </matchingStimulusGrid>
                 <addPadding/>
                 <actionButton featureText="Play Sound" styleName="hiddenTopRight">
-                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_question" showPlaybackIndicator="false"/>
+                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_question" showPlaybackIndicator="false">
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackComplete/>
+                    </stimulusCodeAudio>
                 </actionButton>
-                <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_question" showPlaybackIndicator="false"/>
+                <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_question" showPlaybackIndicator="false">
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
+                </stimulusCodeAudio>
                 <startAudioRecorderTag eventTier="4"/>
-                <actionButton featureText="Skip" eventTag="Skip" hotKey="SPACE" styleName="hiddenBottomRight">
+                <actionButton featureText="Skip" hotKey="SPACE" styleName="hiddenBottomRight">
                     <endAudioRecorderTag eventTier="1" eventTag="task 2 skipped"/>
                     <nextStimulus repeatIncorrect="false"/>
                 </actionButton>

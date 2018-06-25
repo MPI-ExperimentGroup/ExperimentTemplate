@@ -27,12 +27,13 @@
     <presenter menuLabel="AudioTest" next="Pretest_Screen" type="stimulus" self="AudioTest" title="AudioTest">
         <htmlText featureText="Cette expérience en ligne est une expérience audio. Pour cette raison, nous vous demandons de tester les réglages sonores de votre ordinateur en cliquant sur le gros bouton ci-dessous.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Vous n'entendez aucun son?&lt;/b&gt; Dans ce cas, il y a quelque chose qui ne va pas avec les réglages sonores de votre ordinateur. Personnalisez les réglages et essayez de nouveau.&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Entendez-vous un son?&lt;/b&gt; Dans ce cas, vos réglages sonores sont bons. Ajustez le volume de l'ordinateur à un niveau confortable.&lt;br/&gt;&lt;br/&gt;----------------------------------------------------------------&lt;br/&gt;ATTENTION: Faites UNIQUEMENT cette expérience si vous vous trouvez dans un environment calme sans aucun bruit de fond. C'est très important!&lt;br/&gt;----------------------------------------------------------------&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;[Cliquez sur SUIVANT si vos réglages sonores sont bons...]"/>
         <audioButton eventTag="bienvenue" src="bienvenue" hotKey="" autoPlay="false" poster="audiobutton.jpg">
+            <mediaLoaded/>
             <mediaLoadFailed/>
-            <mediaLoaded>
+            <mediaPlaybackComplete>
                 <actionButton featureText="suivant [ barre d'espacement ]">
                     <autoNextPresenter/>
                 </actionButton>
-            </mediaLoaded>
+            </mediaPlaybackComplete>
         </audioButton>
     </presenter>
     <presenter menuLabel="InformationScreen2" type="text" self="InformationScreen2" title="InformationScreen2">
@@ -46,8 +47,9 @@
                 <centrePage/>
                 <showStimulusProgress/>
                 <stimulusAudio msToNext="100" showPlaybackIndicator="false">
+                    <mediaLoaded/>
                     <mediaLoadFailed/>
-                    <mediaLoaded>
+                    <mediaPlaybackComplete>
                         <addPadding/>
                         <stimulusHasRatingOptions>
                             <conditionTrue>
@@ -60,7 +62,7 @@
                                 <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
                             </conditionFalse>
                         </stimulusHasRatingOptions>
-                    </mediaLoaded>
+                    </mediaPlaybackComplete>
                 </stimulusAudio>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -91,13 +93,14 @@
                 <centrePage/>
                 <showStimulusProgress/>
                 <stimulusPresent msToNext="100" maxHeight="80" percentOfPage="0" animate="none" showControls="false" maxWidth="80">
+                    <mediaLoaded/>
                     <mediaLoadFailed/>
-                    <mediaLoaded>
+                    <mediaPlaybackComplete>
                         <addPadding/>
                         <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
                             <nextStimulus repeatIncorrect="false"/>
                         </stimulusRatingButton>
-                    </mediaLoaded>
+                    </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>

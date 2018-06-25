@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment appNameDisplay="generic_example" appNameInternal="generic_example" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17">
+<experiment appNameDisplay="with_simulus_example" appNameInternal="with_simulus_example" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17">
     <administration/>
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
@@ -37,16 +37,17 @@
     <presenter menuLabel="First Stimuli Screen" next="Second_Informatie" type="stimulus" self="First_Stimuli_Screen" title="First Stimuli Screen">
         <loadStimulus eventTag="First Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <withStimuli>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete>
                         <addPadding/>
-                        <ratingButton dataChannel="1" ratingLabelRight="" ratingLabels="zin compleet,zin onvolledig" ratingLabelLeft="">
-                            <nextStimulus repeatIncorrect="false"/>
-                        </ratingButton>
+                        <ratingButton dataChannel="1" ratingLabelRight="" ratingLabels="zin compleet,zin onvolledig" ratingLabelLeft=""/>
                     </mediaPlaybackComplete>
                 </stimulusPresent>
+                </withStimuli>
+                <targetButton featureText="Next Screen" target="Second_Informatie"/>
             </hasMoreStimulus>
             <endOfStimulus>
                 <autoNextPresenter/>

@@ -33,10 +33,14 @@
         <loadStimulus eventTag="Introduction" randomise="true" repeatRandomWindow="0" maxStimuli="1" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
-                    <addPadding/>
-                    <actionButton featureText="volgende [ spatiebalk ]" eventTag="volgende [ spatiebalk ]" hotKey="SPACE">
-                        <nextStimulus repeatIncorrect="false"/>
-                    </actionButton>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete>
+                        <addPadding/>
+                        <actionButton featureText="volgende [ spatiebalk ]" hotKey="SPACE">
+                            <nextStimulus repeatIncorrect="false"/>
+                        </actionButton>
+                    </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -55,10 +59,14 @@
         <loadStimulus eventTag="StoryPresentation" randomise="true" repeatRandomWindow="0" maxStimuli="1" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
-                    <addPadding/>
-                    <actionButton featureText="volgende [ spatiebalk ]" eventTag="volgende [ spatiebalk ]" hotKey="SPACE">
-                        <nextStimulus repeatIncorrect="false"/>
-                    </actionButton>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete>
+                        <addPadding/>
+                        <actionButton featureText="volgende [ spatiebalk ]" hotKey="SPACE">
+                            <nextStimulus repeatIncorrect="false"/>
+                        </actionButton>
+                    </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -84,10 +92,14 @@
         <loadStimulus eventTag="Survey1" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
-                    <addPadding/>
-                    <ratingButton ratingLabelRight="helemaal van toepassing" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="helemaal niet van toepassing">
-                        <nextStimulus repeatIncorrect="false"/>
-                    </ratingButton>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete>
+                        <addPadding/>
+                        <ratingButton ratingLabelRight="helemaal van toepassing" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="helemaal niet van toepassing">
+                            <nextStimulus repeatIncorrect="false"/>
+                        </ratingButton>
+                    </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -104,10 +116,14 @@
         <loadStimulus eventTag="Survey2" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
-                    <addPadding/>
-                    <ratingButton ratingLabelRight="helemaal van toepassing" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="helemaal niet van toepassing">
-                        <nextStimulus repeatIncorrect="false"/>
-                    </ratingButton>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete>
+                        <addPadding/>
+                        <ratingButton ratingLabelRight="helemaal van toepassing" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="helemaal niet van toepassing">
+                            <nextStimulus repeatIncorrect="false"/>
+                        </ratingButton>
+                    </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -136,10 +152,14 @@
         <loadStimulus eventTag="PictureTask" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
-                    <addPadding/>
-                    <ratingButton ratingLabelRight="" ratingLabels="ja [ z ],nee [ . ]" dataChannel="1" ratingLabelLeft="">
-                        <nextStimulus repeatIncorrect="false"/>
-                    </ratingButton>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete>
+                        <addPadding/>
+                        <ratingButton ratingLabelRight="" ratingLabels="ja [ z ],nee [ . ]" dataChannel="1" ratingLabelLeft="">
+                            <nextStimulus repeatIncorrect="false"/>
+                        </ratingButton>
+                    </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -160,10 +180,14 @@
         <loadStimulus eventTag="ReadingBehavior" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
-                    <addPadding/>
-                    <ratingButton ratingLabelRight="" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="">
-                        <nextStimulus repeatIncorrect="false"/>
-                    </ratingButton>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete>
+                        <addPadding/>
+                        <ratingButton ratingLabelRight="" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="">
+                            <nextStimulus repeatIncorrect="false"/>
+                        </ratingButton>
+                    </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>

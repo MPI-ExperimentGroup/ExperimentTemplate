@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment appNameDisplay="Dobes Annotator" appNameInternal="dobes_annotator" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17">
+    <administration/>
     <metadata>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Worker ID"/>
     </metadata>
     <presenter back="about" menuLabel="Annotation Timeline Panel" type="timeline" self="Annotation_Timeline_Panel" title="Annotation Timeline Panel">
-        <AnnotationTimelinePanel poster="poster.jpg" mp4="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.mp4" webm="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.webm" ogg="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen.ogg" eventTag="Annotation_Timeline_Panel" columnCount="2">
-            <!--            <stimuli> maxStimuli="10"
-// todo: this has to be updated so that an enclosing loadStimulus does the stimuli selection    
+        <loadStimulus eventTag="AnnotationTimelinePanel" randomise="true" repeatRandomWindow="0" maxStimuli="20" repeatCount="1">
+            <hasMoreStimulus>
+                <AnnotationTimelinePanel eventTag="Annotation_Timeline_Panel" src="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen" columnCount="2" maxStimuli="10" poster="poster.jpg"/>
+            </hasMoreStimulus>
+            <endOfStimulus/>
+            <randomGrouping/>
+            <stimuli>
                 <tag>videotag</tag>
-            </stimuli>-->
-        </AnnotationTimelinePanel>
+            </stimuli>
+        </loadStimulus>
     </presenter>
     <presenter back="Annotation_Timeline_Panel" menuLabel="About Screen" type="debug" self="about" title="About Screen">
         <versionData/>

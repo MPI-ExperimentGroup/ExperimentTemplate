@@ -73,67 +73,91 @@
                 <stimulusLabel/>
                 <showStimulusProgress/>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
-                    <plainText featureText="Askem long man o woman wea i toktok se i talem nem blong wanem i stap lo foto long lanwis blong hem."/>
-                    <actionButton featureText="Finis">
-                        <endAudioRecorderTag eventTier="1" eventTag="Askem long man o woman wea i toktok se i talem nem blong wanem i stap lo foto long lanwis blong hem."/>
-                        <clearPage/>
-                        <startAudioRecorderTag eventTier="1"/>
-                        <centrePage/>
-                        <stimulusLabel/>
-                        <showStimulusProgress/>
-                        <stimulusPresent msToNext="0" maxHeight="60" percentOfPage="60" maxWidth="60">
-                            <plainText featureText="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
-                            <actionButton featureText="Finis">
-                                <endAudioRecorderTag eventTier="1" eventTag="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
-                                <clearPage/>
-                                <startAudioRecorderTag eventTier="1"/>
-                                <centrePage/>
-                                <stimulusLabel/>
-                                <showStimulusProgress/>
-                                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
-                                    <plainText featureText="Askem long man o woman we i toktok se i gat sam stori blong laef blong hem long saed blong ting ia we i stap long foto ia."/>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="Askem long man o woman wea i toktok se i talem nem blong wanem i stap lo foto long lanwis blong hem."/>
+                        <actionButton featureText="Finis">
+                            <endAudioRecorderTag eventTier="1" eventTag="Askem long man o woman wea i toktok se i talem nem blong wanem i stap lo foto long lanwis blong hem."/>
+                            <clearPage/>
+                            <startAudioRecorderTag eventTier="1"/>
+                            <centrePage/>
+                            <stimulusLabel/>
+                            <showStimulusProgress/>
+                            <stimulusPresent msToNext="0" maxHeight="60" percentOfPage="60" maxWidth="60">
+                                <mediaLoaded/>
+                                <mediaLoadFailed/>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
                                     <actionButton featureText="Finis">
-                                        <endAudioRecorderTag eventTier="1" eventTag="Askem long man o woman we i toktok se i gat sam stori blong laef blong hem long saed blong ting ia we i stap long foto ia."/>
+                                        <endAudioRecorderTag eventTier="1" eventTag="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
                                         <clearPage/>
                                         <startAudioRecorderTag eventTier="1"/>
                                         <centrePage/>
                                         <stimulusLabel/>
                                         <showStimulusProgress/>
-                                        <stimulusPresent msToNext="0" maxHeight="60" percentOfPage="60" maxWidth="60">
-                                            <plainText featureText="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
-                                            <actionButton featureText="Finis">
-                                                <endAudioRecorderTag eventTier="1" eventTag="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
-                                                <clearPage/>
-                                                <startAudioRecorderTag eventTier="1"/>
-                                                <centrePage/>
-                                                <stimulusLabel/>
-                                                <showStimulusProgress/>
-                                                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
-                                                    <plainText featureText="Askem long man o woman we i toktok se i save wan kastom stori abaot ting ia we i stap long foto ia."/>
-                                                    <actionButton featureText="Finis">
-                                                        <endAudioRecorderTag eventTier="1" eventTag="Askem long man o woman we i toktok se i save wan kastom stori abaot ting ia we i stap long foto ia."/>
-                                                        <clearPage/>
-                                                        <startAudioRecorderTag eventTier="1"/>
-                                                        <centrePage/>
-                                                        <stimulusLabel/>
-                                                        <showStimulusProgress/>
-                                                        <stimulusPresent msToNext="0" maxHeight="60" percentOfPage="60" maxWidth="60">
+                                        <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                                            <mediaLoaded/>
+                                            <mediaLoadFailed/>
+                                            <mediaPlaybackComplete>
+                                                <plainText featureText="Askem long man o woman we i toktok se i gat sam stori blong laef blong hem long saed blong ting ia we i stap long foto ia."/>
+                                                <actionButton featureText="Finis">
+                                                    <endAudioRecorderTag eventTier="1" eventTag="Askem long man o woman we i toktok se i gat sam stori blong laef blong hem long saed blong ting ia we i stap long foto ia."/>
+                                                    <clearPage/>
+                                                    <startAudioRecorderTag eventTier="1"/>
+                                                    <centrePage/>
+                                                    <stimulusLabel/>
+                                                    <showStimulusProgress/>
+                                                    <stimulusPresent msToNext="0" maxHeight="60" percentOfPage="60" maxWidth="60">
+                                                        <mediaLoaded/>
+                                                        <mediaLoadFailed/>
+                                                        <mediaPlaybackComplete>
                                                             <plainText featureText="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
                                                             <actionButton featureText="Finis">
                                                                 <endAudioRecorderTag eventTier="1" eventTag="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
                                                                 <clearPage/>
-                                                                <nextStimulus repeatIncorrect="false"/>
+                                                                <startAudioRecorderTag eventTier="1"/>
+                                                                <centrePage/>
+                                                                <stimulusLabel/>
+                                                                <showStimulusProgress/>
+                                                                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                                                                    <mediaLoaded/>
+                                                                    <mediaLoadFailed/>
+                                                                    <mediaPlaybackComplete>
+                                                                        <plainText featureText="Askem long man o woman we i toktok se i save wan kastom stori abaot ting ia we i stap long foto ia."/>
+                                                                        <actionButton featureText="Finis">
+                                                                            <endAudioRecorderTag eventTier="1" eventTag="Askem long man o woman we i toktok se i save wan kastom stori abaot ting ia we i stap long foto ia."/>
+                                                                            <clearPage/>
+                                                                            <startAudioRecorderTag eventTier="1"/>
+                                                                            <centrePage/>
+                                                                            <stimulusLabel/>
+                                                                            <showStimulusProgress/>
+                                                                            <stimulusPresent msToNext="0" maxHeight="60" percentOfPage="60" maxWidth="60">
+                                                                                <mediaLoaded/>
+                                                                                <mediaLoadFailed/>
+                                                                                <mediaPlaybackComplete>
+                                                                                    <plainText featureText="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
+                                                                                    <actionButton featureText="Finis">
+                                                                                        <endAudioRecorderTag eventTier="1" eventTag="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
+                                                                                        <clearPage/>
+                                                                                        <nextStimulus repeatIncorrect="false"/>
+                                                                                    </actionButton>
+                                                                                </mediaPlaybackComplete>
+                                                                            </stimulusPresent>
+                                                                        </actionButton>
+                                                                    </mediaPlaybackComplete>
+                                                                </stimulusPresent>
                                                             </actionButton>
-                                                        </stimulusPresent>
-                                                    </actionButton>
-                                                </stimulusPresent>
-                                            </actionButton>
+                                                        </mediaPlaybackComplete>
+                                                    </stimulusPresent>
+                                                </actionButton>
+                                            </mediaPlaybackComplete>
                                         </stimulusPresent>
                                     </actionButton>
-                                </stimulusPresent>
-                            </actionButton>
-                        </stimulusPresent>
-                    </actionButton>
+                                </mediaPlaybackComplete>
+                            </stimulusPresent>
+                        </actionButton>
+                    </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
