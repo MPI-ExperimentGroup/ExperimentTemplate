@@ -227,7 +227,7 @@ public class DefaultExperiments {
 //            maxScreenAddCount--;
             final PresenterScreen presenterScreen = new PresenterScreen(presenterType.name(), presenterType.name(), backPresenter, presenterType.name() + "Screen", null, presenterType, displayOrder);
             for (FeatureType featureType : presenterType.getFeatureTypes()) {
-                if (featureType.getRequiresParentType() == FeatureType.Contitionals.none) {
+                if (featureType.getIsChildType() == FeatureType.Contitionals.none) {
                     if (featureType == FeatureType.clearPage) {
                         final PresenterFeature clearScreenButton = new PresenterFeature(FeatureType.actionButton, "Clear Screen");
                         clearScreenButton.getPresenterFeatureList().add(addFeature(experiment, featureType, presenterFeatureRepository));
@@ -260,7 +260,6 @@ public class DefaultExperiments {
                     case errorThreshold:
                     case potentialThreshold:
                     case incrementPhase:
-                    case scoreValue:
                     case minStimuliPerTag:
                     case maxStimuliPerTag:
                     case minimum:
@@ -284,6 +283,7 @@ public class DefaultExperiments {
                         break;
                     case eventTier:
                     case threshold:
+                    case phasesPerStimulus:
                         presenterFeature.addFeatureAttributes(attribute, "8");
                         break;
                     case fieldName:
@@ -294,7 +294,10 @@ public class DefaultExperiments {
                         presenterFeature.addFeatureAttributes(attribute, "bounce");
                         break;
                     case randomise:
+                    case autoPlay:
+                    case loop:
                     case showControls:
+                    case scoreValue:
                         presenterFeature.addFeatureAttributes(attribute, "true");
                         break;
                     default:
@@ -367,13 +370,6 @@ public class DefaultExperiments {
                     presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 }
                 break;
-            case hasGroupActivities:
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.groupNetworkActivity, presenterFeatureRepository));
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.groupNetworkActivity, presenterFeatureRepository));
-                if (presenterFeatureRepository != null) {
-                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
-                }
-                break;
             case hasMediaLoading:
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.mediaLoaded, presenterFeatureRepository));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.mediaLoadFailed, presenterFeatureRepository));
@@ -391,9 +387,15 @@ public class DefaultExperiments {
                 break;
             case none:
                 break;
+            case groupNetworkActivity:
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.groupNetworkActivity, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, FeatureType.groupNetworkActivity, presenterFeatureRepository));
+                if (presenterFeatureRepository != null) {
+                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                }
             default:
                 for (FeatureType featureType1 : FeatureType.values()) {
-                    if (featureType1.getRequiresParentType() == featureType.getRequiresChildType()) {
+                    if (featureType1.getIsChildType() == featureType.getRequiresChildType()) {
                         presenterFeature.getPresenterFeatureList().add(addFeature(experiment, featureType1, presenterFeatureRepository));
                     }
                 }
