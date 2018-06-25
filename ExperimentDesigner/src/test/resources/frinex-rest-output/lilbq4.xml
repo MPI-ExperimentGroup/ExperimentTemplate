@@ -173,8 +173,8 @@
     </presenter>
     
     <!-- Flanker -->
-    <presenter displayOrder="16" next="Admin" type="stimulus" self="stimuliScreenFlankerPractice" title="">
-        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="6">
+    <presenter displayOrder="16" next="stimuliScreenFlankerBlock1" type="stimulus" self="stimuliScreenFlankerPractice" title="">
+        <loadStimulus eventTag="stimuliN" randomise="true" repeatCount="1" maxStimuli="6">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
                     <nextStimulus repeatIncorrect="false"/>
@@ -188,9 +188,10 @@
                 <addPadding/>
                 <addPadding/>
                 <addPadding/>
-                <htmlText featureText="+" styleName=""/>
+                <htmlText featureText="+" styleName="stimuliLabel"/>
                 <logTimeStamp eventTag="PlusShown"/>
                 <pause msToNext="250">
+                    <cancelPauseTimers/> 
                     <clearPage/>
                     <logTimeStamp eventTag="PlusErased"/>
                     <centrePage/>
@@ -201,8 +202,8 @@
                     <addPadding/>
                     <addPadding/>
                     <addPadding/>
-                    <htmlText featureText="&#160;" styleName=""/>
                     <pause msToNext="1000">
+                        <cancelPauseTimers/> 
                         <stimulusLabel styleName="stimuliLabel"/>
                         <logTimeStamp eventTag="StimulusShown"/>
                         <addPadding/>
@@ -210,13 +211,13 @@
                         <table>
                             <row>
                                 <column>
-                                    <stimulusButton featureText="&lt;">
+                                    <stimulusButton featureText="&lt;" >
                                         <cancelPauseTimers/> 
                                         <trigger listenerId="nextStimulusAction"/>
                                     </stimulusButton>
                                 </column>
                                 <column>
-                                    <htmlText featureText="&#160;&#160;&#160;&#160;&#160;"/>
+                                    <htmlText featureText="&#160;&#160;"/>
                                 </column>
                                 <column>
                                     <stimulusButton featureText="&gt;">
@@ -227,6 +228,7 @@
                             </row>
                         </table>
                         <pause msToNext="1500">
+                            <cancelPauseTimers/> 
                             <clearPage/>
                             <logTimeStamp eventTag="StimulusErased"/>
                             <centrePage/>
@@ -237,20 +239,19 @@
                             <addPadding/>
                             <addPadding/>
                             <addPadding/>
-                            <htmlText featureText="&#160;" styleName=""/>
                             <htmlText featureText="&#160;" styleName="stimuliLabel"/>
                             <addPadding/>
                             <addPadding/>
                             <table>
                                 <row>
                                     <column>
-                                        <stimulusButton featureText="&lt;">
+                                        <stimulusButton featureText="&lt;" >
                                             <cancelPauseTimers/> 
                                             <trigger listenerId="nextStimulusAction"/>
                                         </stimulusButton>
                                     </column>
                                     <column>
-                                        <htmlText featureText="&#160;&#160;&#160;&#160;&#160;"/>
+                                        <htmlText featureText="&#160;&#160;"/>
                                     </column>
                                     <column>
                                         <stimulusButton featureText="&gt;">
@@ -261,8 +262,245 @@
                                 </row>
                             </table>
                             <pause msToNext="1000">
-                                <logTimeStamp eventTag="JumpingToNextStimulus"/>
                                 <cancelPauseTimers/> 
+                                <logTimeStamp eventTag="JumpingToNextStimulus"/>
+                                <trigger listenerId="nextStimulusAction"/>
+                            </pause>
+                        </pause> 
+                    </pause>   
+                </pause> 
+               
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage/>
+                <centrePage/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="Het einde van het oefening rondje"/>
+                <addPadding/>
+                <targetButton featureText="Begin het experiment" target="stimuliScreenFlankerBlock1"/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>flanker</tag>
+                <tag>Practice</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="17" next="stimuliScreenFlankerBlock2" type="stimulus" self="stimuliScreenFlankerBlock1" title="">
+        <loadStimulus eventTag="stimuliN" randomise="true" repeatCount="1" maxStimuli="100">
+            <hasMoreStimulus>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <clearPage/>
+                <centrePage/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="+" styleName="stimuliLabel"/>
+                <logTimeStamp eventTag="PlusShown"/>
+                <pause msToNext="250">
+                    <cancelPauseTimers/> 
+                    <clearPage/>
+                    <logTimeStamp eventTag="PlusErased"/>
+                    <centrePage/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <pause msToNext="1000">
+                        <cancelPauseTimers/> 
+                        <stimulusLabel styleName="stimuliLabel"/>
+                        <logTimeStamp eventTag="StimulusShown"/>
+                        <addPadding/>
+                        <addPadding/>
+                        <table>
+                            <row>
+                                <column>
+                                    <stimulusButton featureText="&lt;" >
+                                        <cancelPauseTimers/> 
+                                        <trigger listenerId="nextStimulusAction"/>
+                                    </stimulusButton>
+                                </column>
+                                <column>
+                                    <htmlText featureText="&#160;&#160;"/>
+                                </column>
+                                <column>
+                                    <stimulusButton featureText="&gt;">
+                                        <cancelPauseTimers/> 
+                                        <trigger listenerId="nextStimulusAction"/>
+                                    </stimulusButton>
+                                </column>
+                            </row>
+                        </table>
+                        <pause msToNext="1500">
+                            <cancelPauseTimers/> 
+                            <clearPage/>
+                            <logTimeStamp eventTag="StimulusErased"/>
+                            <centrePage/>
+                            <addPadding/>
+                            <addPadding/>
+                            <addPadding/>
+                            <addPadding/>
+                            <addPadding/>
+                            <addPadding/>
+                            <addPadding/>
+                            <htmlText featureText="&#160;" styleName="stimuliLabel"/>
+                            <addPadding/>
+                            <addPadding/>
+                            <table>
+                                <row>
+                                    <column>
+                                        <stimulusButton featureText="&lt;" >
+                                            <cancelPauseTimers/> 
+                                            <trigger listenerId="nextStimulusAction"/>
+                                        </stimulusButton>
+                                    </column>
+                                    <column>
+                                        <htmlText featureText="&#160;&#160;"/>
+                                    </column>
+                                    <column>
+                                        <stimulusButton featureText="&gt;">
+                                            <cancelPauseTimers/> 
+                                            <trigger listenerId="nextStimulusAction"/>
+                                        </stimulusButton>
+                                    </column>
+                                </row>
+                            </table>
+                            <pause msToNext="1000">
+                                <cancelPauseTimers/> 
+                                <logTimeStamp eventTag="JumpingToNextStimulus"/>
+                                <trigger listenerId="nextStimulusAction"/>
+                            </pause>
+                        </pause> 
+                    </pause>   
+                </pause> 
+               
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage/>
+                <centrePage/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="Het einde van de eerste ronde. Nu komt de tweede ronde."/>
+                <pause msToNext="3000">
+                    <cancelPauseTimers/> 
+                    <autoNextPresenter/>
+                </pause>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>flanker</tag>
+                <tag>RealDeal</tag>
+                <tag>block_1</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="18" next="Admin" type="stimulus" self="stimuliScreenFlankerBlock2" title="">
+        <loadStimulus eventTag="stimuliN" randomise="true" repeatCount="1" maxStimuli="100">
+            <hasMoreStimulus>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <clearPage/>
+                <centrePage/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="+" styleName="stimuliLabel"/>
+                <logTimeStamp eventTag="PlusShown"/>
+                <pause msToNext="250">
+                    <cancelPauseTimers/> 
+                    <clearPage/>
+                    <logTimeStamp eventTag="PlusErased"/>
+                    <centrePage/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <addPadding/>
+                    <pause msToNext="1000">
+                        <cancelPauseTimers/> 
+                        <stimulusLabel styleName="stimuliLabel"/>
+                        <logTimeStamp eventTag="StimulusShown"/>
+                        <addPadding/>
+                        <addPadding/>
+                        <table>
+                            <row>
+                                <column>
+                                    <stimulusButton featureText="&lt;" >
+                                        <cancelPauseTimers/> 
+                                        <trigger listenerId="nextStimulusAction"/>
+                                    </stimulusButton>
+                                </column>
+                                <column>
+                                    <htmlText featureText="&#160;&#160;"/>
+                                </column>
+                                <column>
+                                    <stimulusButton featureText="&gt;">
+                                        <cancelPauseTimers/> 
+                                        <trigger listenerId="nextStimulusAction"/>
+                                    </stimulusButton>
+                                </column>
+                            </row>
+                        </table>
+                        <pause msToNext="1500">
+                            <cancelPauseTimers/> 
+                            <clearPage/>
+                            <logTimeStamp eventTag="StimulusErased"/>
+                            <centrePage/>
+                            <addPadding/>
+                            <addPadding/>
+                            <addPadding/>
+                            <addPadding/>
+                            <addPadding/>
+                            <addPadding/>
+                            <addPadding/>
+                            <htmlText featureText="&#160;" styleName="stimuliLabel"/>
+                            <addPadding/>
+                            <addPadding/>
+                            <table>
+                                <row>
+                                    <column>
+                                        <stimulusButton featureText="&lt;" >
+                                            <cancelPauseTimers/> 
+                                            <trigger listenerId="nextStimulusAction"/>
+                                        </stimulusButton>
+                                    </column>
+                                    <column>
+                                        <htmlText featureText="&#160;&#160;"/>
+                                    </column>
+                                    <column>
+                                        <stimulusButton featureText="&gt;">
+                                            <cancelPauseTimers/> 
+                                            <trigger listenerId="nextStimulusAction"/>
+                                        </stimulusButton>
+                                    </column>
+                                </row>
+                            </table>
+                            <pause msToNext="1000">
+                                <cancelPauseTimers/> 
+                                <logTimeStamp eventTag="JumpingToNextStimulus"/>
                                 <trigger listenerId="nextStimulusAction"/>
                             </pause>
                         </pause> 
@@ -276,10 +514,12 @@
             <randomGrouping/>
             <stimuli>
                 <tag>flanker</tag>
-                <tag>Practice</tag>
+                <tag>RealDeal</tag>
+                <tag>block_2</tag>
             </stimuli>
         </loadStimulus>
     </presenter>
+    
     <presenter displayOrder="20" type="transmission" self="Admin" title="Administratie" next="ListParticipants">
         <sendMetadata>
             <onSuccess> 
@@ -289,7 +529,7 @@
                         <addPadding/>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Bedankt voor het meedoen."/>
+                        <htmlText featureText="Dat was het! Bedankt voor het meedoen."/>
                         <addPadding/>
                         <addPadding/>
                         <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
@@ -374,13 +614,157 @@
         <stimulus  identifier="grammar_39"  audioPath="stimuli/grammar/die2_1"  tags="grammar 1 2947 die2_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  />
         <stimulus  identifier="grammar_40"  audioPath="stimuli/grammar/hun2_1"  tags="grammar 1 2617 hun2_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  /><!-- Grammatical judjement end -->
         
-        <!-- Flanker practice -->
-        <stimulus  identifier="flanker_Practice_1"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker Practice 0 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
-        <stimulus  identifier="flanker_Practice_2"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker Practice 0 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
-        <stimulus  identifier="flanker_Practice_3"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker Practice 0 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
-        <stimulus  identifier="flanker_Practice_4"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker Practice 0 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
-        <stimulus  identifier="flanker_Practice_5"  label="--&lt;--"  tags="flanker Practice 0 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
-        <stimulus  identifier="flanker_Practice_6"  label="--&gt;--"  tags="flanker Practice 0 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
-        <!-- Flanker practice  end-->
+        <stimulus  identifier="flanker_RealDeal_1"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_1 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_2"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_1 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_3"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_1 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_4"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_1 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_5"  label="--&lt;--"  tags="flanker RealDeal block_1 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_6"  label="--&gt;--"  tags="flanker RealDeal block_1 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_7"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_1 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_8"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_1 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_9"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_1 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_10"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_1 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_11"  label="--&lt;--"  tags="flanker RealDeal block_1 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_12"  label="--&gt;--"  tags="flanker RealDeal block_1 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_13"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_1 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_14"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_1 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_15"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_1 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_16"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_1 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_17"  label="--&lt;--"  tags="flanker RealDeal block_1 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_18"  label="--&gt;--"  tags="flanker RealDeal block_1 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_19"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_1 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_20"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_1 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_21"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_1 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_22"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_1 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_23"  label="--&lt;--"  tags="flanker RealDeal block_1 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_24"  label="--&gt;--"  tags="flanker RealDeal block_1 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_25"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_1 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_26"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_1 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_27"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_1 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_28"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_1 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_29"  label="--&lt;--"  tags="flanker RealDeal block_1 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_30"  label="--&gt;--"  tags="flanker RealDeal block_1 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_31"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_1 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_32"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_1 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_33"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_1 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_34"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_1 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_35"  label="--&lt;--"  tags="flanker RealDeal block_1 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_36"  label="--&gt;--"  tags="flanker RealDeal block_1 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_37"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_1 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_38"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_1 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_39"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_1 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_40"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_1 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_41"  label="--&lt;--"  tags="flanker RealDeal block_1 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_42"  label="--&gt;--"  tags="flanker RealDeal block_1 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_43"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_1 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_44"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_1 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_45"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_1 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_46"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_1 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_47"  label="--&lt;--"  tags="flanker RealDeal block_1 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_48"  label="--&gt;--"  tags="flanker RealDeal block_1 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_49"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_1 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_50"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_1 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_51"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_1 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_52"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_1 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_53"  label="--&lt;--"  tags="flanker RealDeal block_1 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_54"  label="--&gt;--"  tags="flanker RealDeal block_1 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_55"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_1 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_56"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_1 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_57"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_1 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_58"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_1 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_59"  label="--&lt;--"  tags="flanker RealDeal block_1 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_60"  label="--&gt;--"  tags="flanker RealDeal block_1 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_61"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_1 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_62"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_1 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_63"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_1 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_64"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_1 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_65"  label="--&lt;--"  tags="flanker RealDeal block_1 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_66"  label="--&gt;--"  tags="flanker RealDeal block_1 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_67"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_1 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_68"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_1 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_69"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_1 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_70"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_1 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_71"  label="--&lt;--"  tags="flanker RealDeal block_1 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_72"  label="--&gt;--"  tags="flanker RealDeal block_1 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_73"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_2 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_74"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_2 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_75"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_2 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_76"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_2 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_77"  label="--&lt;--"  tags="flanker RealDeal block_2 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_78"  label="--&gt;--"  tags="flanker RealDeal block_2 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_79"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_2 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_80"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_2 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_81"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_2 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_82"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_2 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_83"  label="--&lt;--"  tags="flanker RealDeal block_2 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_84"  label="--&gt;--"  tags="flanker RealDeal block_2 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_85"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_2 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_86"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_2 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_87"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_2 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_88"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_2 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_89"  label="--&lt;--"  tags="flanker RealDeal block_2 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_90"  label="--&gt;--"  tags="flanker RealDeal block_2 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_91"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_2 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_92"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_2 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_93"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_2 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_94"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_2 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_95"  label="--&lt;--"  tags="flanker RealDeal block_2 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_96"  label="--&gt;--"  tags="flanker RealDeal block_2 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_97"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_2 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_98"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_2 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_99"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_2 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_100"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_2 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_101"  label="--&lt;--"  tags="flanker RealDeal block_2 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_102"  label="--&gt;--"  tags="flanker RealDeal block_2 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_103"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_2 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_104"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_2 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_105"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_2 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_106"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_2 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_107"  label="--&lt;--"  tags="flanker RealDeal block_2 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_108"  label="--&gt;--"  tags="flanker RealDeal block_2 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_109"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_2 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_110"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_2 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_111"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_2 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_112"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_2 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_113"  label="--&lt;--"  tags="flanker RealDeal block_2 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_114"  label="--&gt;--"  tags="flanker RealDeal block_2 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_115"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_2 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_116"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_2 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_117"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_2 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_118"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_2 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_119"  label="--&lt;--"  tags="flanker RealDeal block_2 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_120"  label="--&gt;--"  tags="flanker RealDeal block_2 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_121"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_2 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_122"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_2 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_123"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_2 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_124"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_2 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_125"  label="--&lt;--"  tags="flanker RealDeal block_2 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_126"  label="--&gt;--"  tags="flanker RealDeal block_2 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_127"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_2 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_128"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_2 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_129"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_2 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_130"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_2 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_131"  label="--&lt;--"  tags="flanker RealDeal block_2 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_132"  label="--&gt;--"  tags="flanker RealDeal block_2 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_133"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_2 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_134"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_2 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_135"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_2 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_136"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_2 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_137"  label="--&lt;--"  tags="flanker RealDeal block_2 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_138"  label="--&gt;--"  tags="flanker RealDeal block_2 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_139"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker RealDeal block_2 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_140"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker RealDeal block_2 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_141"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker RealDeal block_2 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_142"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker RealDeal block_2 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_143"  label="--&lt;--"  tags="flanker RealDeal block_2 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_RealDeal_144"  label="--&gt;--"  tags="flanker RealDeal block_2 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+
+        <stimulus  identifier="flanker_Practice_1"  label="&lt;&lt;&lt;&lt;&lt;"  tags="flanker Practice block_0 congruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_Practice_2"  label="&gt;&gt;&gt;&gt;&gt;"  tags="flanker Practice block_0 congruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_Practice_3"  label="&gt;&gt;&lt;&gt;&gt;"  tags="flanker Practice block_0 incongruent left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_Practice_4"  label="&lt;&lt;&gt;&lt;&lt;"  tags="flanker Practice block_0 incongruent right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        <stimulus  identifier="flanker_Practice_5"  label="--&lt;--"  tags="flanker Practice block_0 neutral left 2 "  ratingLabels="&lt;,&gt;"  correctResponses="&lt;" pauseMs="0" />
+        <stimulus  identifier="flanker_Practice_6"  label="--&gt;--"  tags="flanker Practice block_0 neutral right 3 "  ratingLabels="&lt;,&gt;"  correctResponses="&gt;" pauseMs="0" />
+        
     </stimuli>
 </experiment>
