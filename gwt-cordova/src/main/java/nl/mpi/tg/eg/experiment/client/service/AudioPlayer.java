@@ -61,11 +61,20 @@ public class AudioPlayer {
      audioElement.addEventListener("canplaythrough", function(){
      audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onLoadedAction()();
      }, false);
+     audioElement.addEventListener("error", function(){
+     audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onAudioFailed()();
+     }, false);
      }-*/;
 
     public void onEndedAction() {
         if (audioEventListner != null) {
             audioEventListner.audioEnded();
+        }
+    }
+
+    public void onAudioFailed() {
+        if (audioEventListner != null) {
+            audioEventListner.audioFailed();
         }
     }
 
@@ -84,6 +93,7 @@ public class AudioPlayer {
 //        final String[] soundFiles = roundSample.getLanguageSample().getSoundFiles();
 //        playSample(soundFiles[roundSample.getSampleIndex()]);
 //    }
+    @Deprecated
     private void playSample(String sample) {
         if (audioPlayer == null) {
             try {
