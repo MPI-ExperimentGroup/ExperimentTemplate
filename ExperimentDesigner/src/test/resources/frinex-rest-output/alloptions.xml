@@ -6,6 +6,7 @@
         <field controlledMessage="Please enter the device model" controlledRegex=".'{'2,'}'" postName="errordevice" preventServerDuplicates="false" registrationField="Device model"/>
         <field controlledMessage="Please enter a short description of the issue" controlledRegex=".'{'2,'}'" postName="errordescription" preventServerDuplicates="false" registrationField="Please describe the error"/>
         <field controlledMessage="Please enter a short description of the issue" controlledRegex=".'{'2,'}'" postName="emailAddress" preventServerDuplicates="false" registrationField="Please enter an email address"/>
+        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_withStimuli" preventServerDuplicates="false" registrationField="groupAllocation_withStimuli"/>
         <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_loadStimulus" preventServerDuplicates="false" registrationField="groupAllocation_loadStimulus"/>
         <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_loadSdCardStimulus" preventServerDuplicates="false" registrationField="groupAllocation_loadSdCardStimulus"/>
     </metadata>
@@ -17,302 +18,182 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="transmission" type="transmission" self="transmissionScreen" title="transmission">
         <htmlText featureText="htmlText" styleName="styleName"/>
-        <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
-            <plainText featureText="plainText"/>
+            <mediaLoaded>
+                <plainText featureText="plainText in mediaLoaded"/>
+            </mediaLoaded>
+            <mediaLoadFailed>
+                <plainText featureText="plainText in mediaLoadFailed"/>
+            </mediaLoadFailed>
+            <plainText featureText="plainText in image"/>
         </image>
-        <showStimuliReport/>
-        <sendStimuliReport headerKey="headerKey" dataChannel="dataChannel" type="type" separator="separator"/>
         <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" eventTag="eventTag" hotKey="A" styleName="styleName">
-            <plainText featureText="plainText"/>
+        <actionButton featureText="actionButton" hotKey="A" styleName="styleName">
+            <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
-        </stimulusButton>
-        <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
-        </touchInputStimulusButton>
-        <touchInputCaptureStart msToNext="60" showControls="showControls">
-            <plainText featureText="plainText"/>
-        </touchInputCaptureStart>
-        <touchInputReportSubmit dataChannel="dataChannel"/>
-        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-        <stimulusHasResponse>
-            <conditionTrue>
-                <plainText featureText="plainText"/>
-            </conditionTrue>
-            <conditionFalse>
-                <plainText featureText="plainText"/>
-            </conditionFalse>
-        </stimulusHasResponse>
         <addPadding/>
-        <stimulusMetadataField fieldName="workerId" dataChannel="dataChannel"/>
         <eraseUsersDataButton featureText="eraseUsersDataButton" target="target"/>
-        <cancelPauseTimers/>
         <displayCompletionCode/>
         <generateCompletionCode>
             <onError>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in onError"/>
             </onError>
             <onSuccess>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </generateCompletionCode>
         <sendAllData>
             <onError>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in onError"/>
             </onError>
             <onSuccess>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </sendAllData>
         <sendMetadata>
             <onError>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in onError"/>
             </onError>
             <onSuccess>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </sendMetadata>
         <eraseLocalStorageOnWindowClosing/>
         <centrePage/>
-        <actionButton featureText="Clear Screen">
-            <clearPage styleName="styleName"/>
-        </actionButton>
-        <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" hotKey="A" repeatIncorrect="repeatIncorrect"/>
-        <prevStimulus repeatIncorrect="repeatIncorrect"/>
         <hasGetParameter parameterName="parameterName">
             <conditionTrue>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
             <conditionFalse>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
-        <activateRandomItem/>
-        <randomMsPause maximum="maximum" minimum="minimum">
-            <plainText featureText="plainText"/>
-        </randomMsPause>
-        <triggerListener listenerId="listenerId" maximum="maximum" threshold="threshold">
-            <plainText featureText="plainText"/>
-        </triggerListener>
-        <trigger listenerId="listenerId"/>
-        <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </countdownLabel>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in table"/>
         </table>
         <row>
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in row"/>
         </row>
         <column styleName="styleName">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in column"/>
         </column>
-        <withStimuli>
-            <plainText featureText="plainText"/>
-        </withStimuli>
-        <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" matchingRegex="matchingRegex" dataChannel="dataChannel" replacement="replacement" animate="bounce" showControls="showControls" maxWidth="60">
-            <mediaLoaded>
-                <plainText featureText="plainText"/>
-            </mediaLoaded>
-            <mediaLoadFailed>
-                <plainText featureText="plainText"/>
-            </mediaLoadFailed>
-            <mediaPlaybackComplete>
-                <plainText featureText="plainText"/>
-            </mediaPlaybackComplete>
-        </stimulusPresent>
-        <playVideo/>
-        <rewindVideo/>
-        <pauseVideo/>
         <stopAudioRecorder/>
         <startAudioRecorderTag eventTier="8"/>
-        <versionData/>
         <preventWindowClose featureText="preventWindowClose"/>
-        <clearCurrentScore/>
-        <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="metadata" type="metadata" self="metadataScreen" title="metadata">
         <htmlText featureText="htmlText" styleName="styleName"/>
-        <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
-            <plainText featureText="plainText"/>
+            <mediaLoaded>
+                <plainText featureText="plainText in mediaLoaded"/>
+            </mediaLoaded>
+            <mediaLoadFailed>
+                <plainText featureText="plainText in mediaLoadFailed"/>
+            </mediaLoadFailed>
+            <plainText featureText="plainText in image"/>
         </image>
-        <showStimuliReport/>
-        <sendStimuliReport headerKey="headerKey" dataChannel="dataChannel" type="type" separator="separator"/>
         <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" eventTag="eventTag" hotKey="A" styleName="styleName">
-            <plainText featureText="plainText"/>
+        <actionButton featureText="actionButton" hotKey="A" styleName="styleName">
+            <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
-        </stimulusButton>
-        <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
-        </touchInputStimulusButton>
-        <touchInputCaptureStart msToNext="60" showControls="showControls">
-            <plainText featureText="plainText"/>
-        </touchInputCaptureStart>
-        <touchInputReportSubmit dataChannel="dataChannel"/>
-        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-        <stimulusHasResponse>
-            <conditionTrue>
-                <plainText featureText="plainText"/>
-            </conditionTrue>
-            <conditionFalse>
-                <plainText featureText="plainText"/>
-            </conditionFalse>
-        </stimulusHasResponse>
         <addPadding/>
         <allMetadataFields/>
         <metadataField fieldName="workerId"/>
-        <stimulusMetadataField fieldName="workerId" dataChannel="dataChannel"/>
         <metadataFieldConnection fieldName="workerId" linkedFieldName="workerId"/>
         <saveMetadataButton featureText="saveMetadataButton" sendData="sendData" networkErrorMessage="networkErrorMessage">
             <onError>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in onError"/>
             </onError>
             <onSuccess>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </saveMetadataButton>
         <createUserButton featureText="createUserButton" target="target"/>
         <selectUserMenu/>
-        <cancelPauseTimers/>
-        <displayCompletionCode/>
-        <sendMetadata>
-            <onError>
-                <plainText featureText="plainText"/>
-            </onError>
-            <onSuccess>
-                <plainText featureText="plainText"/>
-            </onSuccess>
-        </sendMetadata>
         <centrePage/>
-        <actionButton featureText="Clear Screen">
-            <clearPage styleName="styleName"/>
-        </actionButton>
-        <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" hotKey="A" repeatIncorrect="repeatIncorrect"/>
-        <prevStimulus repeatIncorrect="repeatIncorrect"/>
         <hasGetParameter parameterName="parameterName">
             <conditionTrue>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
             <conditionFalse>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
-        <activateRandomItem/>
-        <randomMsPause maximum="maximum" minimum="minimum">
-            <plainText featureText="plainText"/>
-        </randomMsPause>
-        <triggerListener listenerId="listenerId" maximum="maximum" threshold="threshold">
-            <plainText featureText="plainText"/>
-        </triggerListener>
-        <trigger listenerId="listenerId"/>
-        <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </countdownLabel>
         <existingUserCheck>
             <multipleUsers>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in multipleUsers"/>
             </multipleUsers>
             <singleUser>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in singleUser"/>
             </singleUser>
         </existingUserCheck>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in table"/>
         </table>
         <row>
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in row"/>
         </row>
         <column styleName="styleName">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in column"/>
         </column>
-        <withStimuli>
-            <plainText featureText="plainText"/>
-        </withStimuli>
-        <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" matchingRegex="matchingRegex" dataChannel="dataChannel" replacement="replacement" animate="bounce" showControls="showControls" maxWidth="60">
-            <mediaLoaded>
-                <plainText featureText="plainText"/>
-            </mediaLoaded>
-            <mediaLoadFailed>
-                <plainText featureText="plainText"/>
-            </mediaLoadFailed>
-            <mediaPlaybackComplete>
-                <plainText featureText="plainText"/>
-            </mediaPlaybackComplete>
-        </stimulusPresent>
-        <playVideo/>
-        <rewindVideo/>
-        <pauseVideo/>
         <stopAudioRecorder/>
         <startAudioRecorderTag eventTier="8"/>
-        <versionData/>
         <preventWindowClose featureText="preventWindowClose"/>
-        <clearCurrentScore/>
-        <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="preload" type="preload" self="preloadScreen" title="preload">
         <htmlText featureText="htmlText" styleName="styleName"/>
         <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
-            <plainText featureText="plainText"/>
+            <mediaLoaded>
+                <plainText featureText="plainText in mediaLoaded"/>
+            </mediaLoaded>
+            <mediaLoadFailed>
+                <plainText featureText="plainText in mediaLoadFailed"/>
+            </mediaLoadFailed>
+            <plainText featureText="plainText in image"/>
         </image>
-        <withMatchingStimulus eventTag="eventTag" randomise="randomise" repeatRandomWindow="3" matchingRegex="matchingRegex" maxStimuli="3" repeatCount="3">
-            <hasMoreStimulus>
-                <plainText featureText="plainText"/>
-            </hasMoreStimulus>
-            <endOfStimulus>
-                <plainText featureText="plainText"/>
-            </endOfStimulus>
-        </withMatchingStimulus>
         <showStimuliReport/>
-        <sendStimuliReport headerKey="headerKey" dataChannel="dataChannel" type="type" separator="separator"/>
+        <sendStimuliReport headerKey="headerKey" dataChannel="2" type="type" separator="separator"/>
         <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" eventTag="eventTag" hotKey="A" styleName="styleName">
-            <plainText featureText="plainText"/>
+        <actionButton featureText="actionButton" hotKey="A" styleName="styleName">
+            <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
+        <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="2">
+            <plainText featureText="plainText in stimulusButton"/>
         </stimulusButton>
-        <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
+        <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src" styleName="styleName" dataChannel="2">
+            <plainText featureText="plainText in touchInputStimulusButton"/>
         </touchInputStimulusButton>
-        <touchInputCaptureStart msToNext="60" showControls="showControls">
-            <plainText featureText="plainText"/>
+        <touchInputCaptureStart msToNext="60" showControls="true">
+            <plainText featureText="plainText in touchInputCaptureStart"/>
         </touchInputCaptureStart>
-        <touchInputReportSubmit dataChannel="dataChannel"/>
-        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-        <stimulusFreeText featureText="stimulusFreeText" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="dataChannel" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage">
-            <plainText featureText="plainText"/>
+        <touchInputReportSubmit dataChannel="2"/>
+        <stimulusFreeText featureText="stimulusFreeText" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage">
+            <plainText featureText="plainText in stimulusFreeText"/>
         </stimulusFreeText>
-        <stimulusRatingButton ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="dataChannel" ratingLabelLeft="ratingLabelLeft">
-            <plainText featureText="plainText"/>
+        <stimulusRatingButton ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+            <plainText featureText="plainText in stimulusRatingButton"/>
         </stimulusRatingButton>
         <stimulusHasResponse>
             <conditionTrue>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
             <conditionFalse>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </stimulusHasResponse>
-        <ratingFooterButton ratingLabelRight="ratingLabelRight" ratingLabels="ratingLabels" dataChannel="dataChannel" ratingLabelLeft="ratingLabelLeft">
-            <plainText featureText="plainText"/>
+        <ratingFooterButton ratingLabelRight="ratingLabelRight" ratingLabels="ratingLabels" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+            <plainText featureText="plainText in ratingFooterButton"/>
         </ratingFooterButton>
         <targetFooterButton featureText="targetFooterButton" target="target"/>
         <actionFooterButton featureText="actionFooterButton" eventTag="eventTag" hotKey="A">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in actionFooterButton"/>
         </actionFooterButton>
         <addPadding/>
-        <stimulusMetadataField fieldName="workerId" dataChannel="dataChannel"/>
+        <stimulusMetadataField fieldName="workerId" dataChannel="2"/>
         <showCurrentMs/>
         <enableStimulusButtons/>
         <disableStimulusButtons/>
@@ -320,15 +201,6 @@
         <showStimulusProgress styleName="styleName"/>
         <hideStimulusButtons/>
         <showStimulusButtons/>
-        <displayCompletionCode/>
-        <sendMetadata>
-            <onError>
-                <plainText featureText="plainText"/>
-            </onError>
-            <onSuccess>
-                <plainText featureText="plainText"/>
-            </onSuccess>
-        </sendMetadata>
         <keepStimulus/>
         <removeStimulus/>
         <removeMatchingStimulus matchingRegex="matchingRegex"/>
@@ -338,7 +210,7 @@
             <clearPage styleName="styleName"/>
         </actionButton>
         <backgroundImage msToNext="60" src="src" styleName="styleName">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in backgroundImage"/>
         </backgroundImage>
         <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" hotKey="A" repeatIncorrect="repeatIncorrect"/>
         <nextStimulus repeatIncorrect="repeatIncorrect"/>
@@ -346,80 +218,75 @@
         <nextMatchingStimulus/>
         <hasGetParameter parameterName="parameterName">
             <conditionTrue>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
             <conditionFalse>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
-        <activateRandomItem/>
-        <logTimeStamp eventTag="eventTag" dataChannel="dataChannel"/>
+        <logTimeStamp eventTag="eventTag" dataChannel="2"/>
         <preloadAllStimuli tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in preloadAllStimuli"/>
         </preloadAllStimuli>
-        <randomMsPause maximum="maximum" minimum="minimum">
-            <plainText featureText="plainText"/>
+        <randomMsPause maximum="60" minimum="3">
+            <plainText featureText="plainText in randomMsPause"/>
         </randomMsPause>
-        <triggerListener listenerId="listenerId" maximum="maximum" threshold="threshold">
-            <plainText featureText="plainText"/>
+        <triggerListener listenerId="listenerId" maximum="60" threshold="8">
+            <plainText featureText="plainText in triggerListener"/>
         </triggerListener>
         <trigger listenerId="listenerId"/>
         <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat" styleName="styleName">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in countdownLabel"/>
         </countdownLabel>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in table"/>
         </table>
         <row>
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in row"/>
         </row>
         <column styleName="styleName">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in column"/>
         </column>
-        <withStimuli>
-            <plainText featureText="plainText"/>
-        </withStimuli>
-        <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" matchingRegex="matchingRegex" dataChannel="dataChannel" replacement="replacement" animate="bounce" showControls="showControls" maxWidth="60">
+        <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" matchingRegex="matchingRegex" dataChannel="2" replacement="replacement" animate="bounce" showControls="true" maxWidth="60">
             <mediaLoaded>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
             <mediaLoadFailed>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
             <mediaPlaybackComplete>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaPlaybackComplete"/>
             </mediaPlaybackComplete>
         </stimulusPresent>
-        <stimulusImage msToNext="60" styleName="styleName" dataChannel="dataChannel">
+        <stimulusImage msToNext="60" styleName="styleName" dataChannel="2">
             <mediaLoaded>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
             <mediaLoadFailed>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </stimulusImage>
-        <stimulusAudio msToNext="60" dataChannel="dataChannel" showPlaybackIndicator="showPlaybackIndicator">
+        <stimulusAudio msToNext="60" dataChannel="2" showPlaybackIndicator="showPlaybackIndicator">
             <mediaLoaded>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
             <mediaLoadFailed>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
             <mediaPlaybackComplete>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaPlaybackComplete"/>
             </mediaPlaybackComplete>
         </stimulusAudio>
         <playVideo/>
         <rewindVideo/>
         <pauseVideo/>
         <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in stimulusImageCapture"/>
         </stimulusImageCapture>
         <startAudioRecorder eventTag="eventTag" wavFormat="wavFormat" filePerStimulus="filePerStimulus"/>
         <stopAudioRecorder/>
         <startAudioRecorderTag eventTier="8"/>
         <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
-        <versionData/>
         <preventWindowClose featureText="preventWindowClose"/>
         <clearCurrentScore/>
         <resetStimulus target="target"/>
@@ -429,14 +296,41 @@
         <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
-            <plainText featureText="plainText"/>
+            <mediaLoaded>
+                <plainText featureText="plainText in mediaLoaded"/>
+            </mediaLoaded>
+            <mediaLoadFailed>
+                <plainText featureText="plainText in mediaLoadFailed"/>
+            </mediaLoadFailed>
+            <plainText featureText="plainText in image"/>
         </image>
-        <loadStimulus adjacencyThreshold="adjacencyThreshold" eventTag="eventTag" randomise="randomise" repeatRandomWindow="3" minStimuliPerTag="3" maxStimuliPerTag="3" maxStimuli="3" repeatCount="3">
+        <withStimuli adjacencyThreshold="2" eventTag="eventTag" randomise="true" repeatRandomWindow="3" minStimuliPerTag="3" maxStimuliPerTag="3" maxStimuli="3" repeatCount="3">
+            <eachStimulus>
+                <plainText featureText="plainText in eachStimulus"/>
+            </eachStimulus>
+            <randomGrouping storageField="groupAllocation_withStimuli">
+                <tag>ประเพณีบุญบั้งไฟ</tag>
+                <tag>Rocket</tag>
+                <tag>Festival</tag>
+                <tag>Lao</tag>
+                <tag>Thai</tag>
+                <tag>ບຸນບັ້ງໄຟ</tag>
+            </randomGrouping>
+            <stimuli>
+                <tag>ประเพณีบุญบั้งไฟ</tag>
+                <tag>Rocket</tag>
+                <tag>Festival</tag>
+                <tag>Lao</tag>
+                <tag>Thai</tag>
+                <tag>ບຸນບັ້ງໄຟ</tag>
+            </stimuli>
+        </withStimuli>
+        <loadStimulus adjacencyThreshold="2" eventTag="eventTag" randomise="true" repeatRandomWindow="3" minStimuliPerTag="3" maxStimuliPerTag="3" maxStimuli="3" repeatCount="3">
             <hasMoreStimulus>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in hasMoreStimulus"/>
             </hasMoreStimulus>
             <endOfStimulus>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in endOfStimulus"/>
             </endOfStimulus>
             <randomGrouping storageField="groupAllocation_loadStimulus">
                 <tag>ประเพณีบุญบั้งไฟ</tag>
@@ -455,20 +349,20 @@
                 <tag>ບຸນບັ້ງໄຟ</tag>
             </stimuli>
         </loadStimulus>
-        <withMatchingStimulus eventTag="eventTag" randomise="randomise" repeatRandomWindow="3" matchingRegex="matchingRegex" maxStimuli="3" repeatCount="3">
+        <withMatchingStimulus eventTag="eventTag" randomise="true" repeatRandomWindow="3" matchingRegex="matchingRegex" maxStimuli="3" repeatCount="3">
             <hasMoreStimulus>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in hasMoreStimulus"/>
             </hasMoreStimulus>
             <endOfStimulus>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in endOfStimulus"/>
             </endOfStimulus>
         </withMatchingStimulus>
-        <loadSdCardStimulus adjacencyThreshold="adjacencyThreshold" eventTag="eventTag" randomise="randomise" repeatRandomWindow="3" minStimuliPerTag="3" excludeRegex="excludeRegex" maxStimuliPerTag="3" maxStimuli="3" repeatCount="3">
+        <loadSdCardStimulus adjacencyThreshold="2" eventTag="eventTag" randomise="true" repeatRandomWindow="3" minStimuliPerTag="3" excludeRegex="excludeRegex" maxStimuliPerTag="3" maxStimuli="3" repeatCount="3">
             <hasMoreStimulus>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in hasMoreStimulus"/>
             </hasMoreStimulus>
             <endOfStimulus>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in endOfStimulus"/>
             </endOfStimulus>
             <randomGrouping storageField="groupAllocation_loadSdCardStimulus">
                 <tag>ประเพณีบุญบั้งไฟ</tag>
@@ -489,65 +383,62 @@
         </loadSdCardStimulus>
         <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
             <conditionTrue>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
             <conditionFalse>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </currentStimulusHasTag>
         <showStimuliReport/>
-        <sendStimuliReport headerKey="headerKey" dataChannel="dataChannel" type="type" separator="separator"/>
+        <sendStimuliReport headerKey="headerKey" dataChannel="2" type="type" separator="separator"/>
         <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" eventTag="eventTag" hotKey="A" styleName="styleName">
-            <plainText featureText="plainText"/>
+        <actionButton featureText="actionButton" hotKey="A" styleName="styleName">
+            <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
+        <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="2">
+            <plainText featureText="plainText in stimulusButton"/>
         </stimulusButton>
-        <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
+        <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src" styleName="styleName" dataChannel="2">
+            <plainText featureText="plainText in touchInputStimulusButton"/>
         </touchInputStimulusButton>
-        <touchInputCaptureStart msToNext="60" showControls="showControls">
-            <plainText featureText="plainText"/>
+        <touchInputCaptureStart msToNext="60" showControls="true">
+            <plainText featureText="plainText in touchInputCaptureStart"/>
         </touchInputCaptureStart>
-        <touchInputReportSubmit dataChannel="dataChannel"/>
-        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" dataChannel="dataChannel" repeatIncorrect="repeatIncorrect"/>
-        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-        <ratingButton ratingLabelRight="ratingLabelRight" ratingLabels="ratingLabels" dataChannel="dataChannel" ratingLabelLeft="ratingLabelLeft">
-            <plainText featureText="plainText"/>
+        <touchInputReportSubmit dataChannel="2"/>
+        <ratingButton ratingLabelRight="ratingLabelRight" ratingLabels="ratingLabels" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+            <plainText featureText="plainText in ratingButton"/>
         </ratingButton>
-        <stimulusFreeText featureText="stimulusFreeText" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="dataChannel" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage">
-            <plainText featureText="plainText"/>
+        <stimulusFreeText featureText="stimulusFreeText" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage">
+            <plainText featureText="plainText in stimulusFreeText"/>
         </stimulusFreeText>
-        <stimulusRatingButton ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="dataChannel" ratingLabelLeft="ratingLabelLeft">
-            <plainText featureText="plainText"/>
+        <stimulusRatingButton ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+            <plainText featureText="plainText in stimulusRatingButton"/>
         </stimulusRatingButton>
         <stimulusHasRatingOptions>
             <conditionTrue>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
             <conditionFalse>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </stimulusHasRatingOptions>
         <stimulusHasResponse>
             <conditionTrue>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
             <conditionFalse>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </stimulusHasResponse>
-        <ratingFooterButton ratingLabelRight="ratingLabelRight" ratingLabels="ratingLabels" dataChannel="dataChannel" ratingLabelLeft="ratingLabelLeft">
-            <plainText featureText="plainText"/>
+        <ratingFooterButton ratingLabelRight="ratingLabelRight" ratingLabels="ratingLabels" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+            <plainText featureText="plainText in ratingFooterButton"/>
         </ratingFooterButton>
         <targetFooterButton featureText="targetFooterButton" target="target"/>
         <actionFooterButton featureText="actionFooterButton" eventTag="eventTag" hotKey="A">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in actionFooterButton"/>
         </actionFooterButton>
         <addPadding/>
-        <stimulusMetadataField fieldName="workerId" dataChannel="dataChannel"/>
+        <stimulusMetadataField fieldName="workerId" dataChannel="2"/>
         <showCurrentMs/>
         <enableStimulusButtons/>
         <disableStimulusButtons/>
@@ -555,15 +446,6 @@
         <showStimulusProgress styleName="styleName"/>
         <hideStimulusButtons/>
         <showStimulusButtons/>
-        <displayCompletionCode/>
-        <sendMetadata>
-            <onError>
-                <plainText featureText="plainText"/>
-            </onError>
-            <onSuccess>
-                <plainText featureText="plainText"/>
-            </onSuccess>
-        </sendMetadata>
         <keepStimulus/>
         <removeStimulus/>
         <removeMatchingStimulus matchingRegex="matchingRegex"/>
@@ -573,7 +455,7 @@
             <clearPage styleName="styleName"/>
         </actionButton>
         <backgroundImage msToNext="60" src="src" styleName="styleName">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in backgroundImage"/>
         </backgroundImage>
         <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" hotKey="A" repeatIncorrect="repeatIncorrect"/>
         <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" hotKey="A" repeatIncorrect="repeatIncorrect"/>
@@ -582,880 +464,534 @@
         <nextMatchingStimulus/>
         <hasGetParameter parameterName="parameterName">
             <conditionTrue>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
             <conditionFalse>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
-        <activateRandomItem/>
         <autoNextPresenter target="target"/>
-        <logTimeStamp eventTag="eventTag" dataChannel="dataChannel"/>
-        <audioButton eventTag="eventTag" src="src" hotKey="A" styleName="styleName" dataChannel="dataChannel" autoPlay="autoPlay" poster="poster">
+        <logTimeStamp eventTag="eventTag" dataChannel="2"/>
+        <audioButton eventTag="eventTag" src="src" hotKey="A" styleName="styleName" dataChannel="2" autoPlay="true" poster="poster">
             <mediaLoaded>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
             <mediaLoadFailed>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
             <mediaPlaybackComplete>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaPlaybackComplete"/>
             </mediaPlaybackComplete>
         </audioButton>
         <showStimulus>
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in showStimulus"/>
         </showStimulus>
-        <showStimulusGrid imageWidth="imageWidth" eventTag="eventTag" dataChannel="dataChannel" columnCount="3" maxStimuli="3" animate="bounce">
+        <showStimulusGrid imageWidth="imageWidth" eventTag="eventTag" dataChannel="2" columnCount="3" maxStimuli="3" animate="bounce">
             <responseCorrect msToNext="60">
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in responseCorrect"/>
             </responseCorrect>
             <responseIncorrect msToNext="60">
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in responseIncorrect"/>
             </responseIncorrect>
         </showStimulusGrid>
-        <matchingStimulusGrid randomise="randomise" matchingRegex="matchingRegex" dataChannel="dataChannel" columnCount="3" maxStimuli="3" animate="bounce" maxWidth="60">
+        <matchingStimulusGrid randomise="true" matchingRegex="matchingRegex" dataChannel="2" columnCount="3" maxStimuli="3" animate="bounce" maxWidth="60">
             <responseCorrect msToNext="60">
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in responseCorrect"/>
             </responseCorrect>
             <responseIncorrect msToNext="60">
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in responseIncorrect"/>
             </responseIncorrect>
         </matchingStimulusGrid>
         <pause msToNext="60">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in pause"/>
         </pause>
-        <randomMsPause maximum="maximum" minimum="minimum">
-            <plainText featureText="plainText"/>
+        <randomMsPause maximum="60" minimum="3">
+            <plainText featureText="plainText in randomMsPause"/>
         </randomMsPause>
-        <triggerListener listenerId="listenerId" maximum="maximum" threshold="threshold">
-            <plainText featureText="plainText"/>
+        <triggerListener listenerId="listenerId" maximum="60" threshold="8">
+            <plainText featureText="plainText in triggerListener"/>
         </triggerListener>
         <trigger listenerId="listenerId"/>
         <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat" styleName="styleName">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in countdownLabel"/>
         </countdownLabel>
         <stimulusPause>
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in stimulusPause"/>
         </stimulusPause>
         <stimulusLabel styleName="styleName"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in table"/>
         </table>
         <row>
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in row"/>
         </row>
         <column styleName="styleName">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in column"/>
         </column>
-        <withStimuli>
-            <plainText featureText="plainText"/>
-        </withStimuli>
-        <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" matchingRegex="matchingRegex" dataChannel="dataChannel" replacement="replacement" animate="bounce" showControls="showControls" maxWidth="60">
+        <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" matchingRegex="matchingRegex" dataChannel="2" replacement="replacement" animate="bounce" showControls="true" maxWidth="60">
             <mediaLoaded>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
             <mediaLoadFailed>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
             <mediaPlaybackComplete>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaPlaybackComplete"/>
             </mediaPlaybackComplete>
         </stimulusPresent>
-        <stimulusImage msToNext="60" styleName="styleName" dataChannel="dataChannel">
+        <stimulusImage msToNext="60" styleName="styleName" dataChannel="2">
             <mediaLoaded>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
             <mediaLoadFailed>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </stimulusImage>
-        <stimulusCodeImage msToNext="60" codeFormat="codeFormat" styleName="styleName" dataChannel="dataChannel">
+        <stimulusCodeImage msToNext="60" codeFormat="codeFormat" styleName="styleName" dataChannel="2">
             <mediaLoaded>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
             <mediaLoadFailed>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </stimulusCodeImage>
-        <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="loop" styleName="styleName" dataChannel="dataChannel" autoPlay="autoPlay" showControls="showControls" maxWidth="60">
+        <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" showControls="true" maxWidth="60">
             <mediaLoaded>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
             <mediaLoadFailed>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
             <mediaPlaybackComplete>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaPlaybackComplete"/>
             </mediaPlaybackComplete>
         </stimulusCodeVideo>
-        <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" dataChannel="dataChannel" showPlaybackIndicator="showPlaybackIndicator">
+        <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" dataChannel="2" showPlaybackIndicator="showPlaybackIndicator">
             <mediaLoaded>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
             <mediaLoadFailed>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
             <mediaPlaybackComplete>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaPlaybackComplete"/>
             </mediaPlaybackComplete>
         </stimulusCodeAudio>
-        <stimulusAudio msToNext="60" dataChannel="dataChannel" showPlaybackIndicator="showPlaybackIndicator">
+        <stimulusAudio msToNext="60" dataChannel="2" showPlaybackIndicator="showPlaybackIndicator">
             <mediaLoaded>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
             <mediaLoadFailed>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
             <mediaPlaybackComplete>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaPlaybackComplete"/>
             </mediaPlaybackComplete>
         </stimulusAudio>
         <playVideo/>
         <rewindVideo/>
         <pauseVideo/>
         <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in stimulusImageCapture"/>
         </stimulusImageCapture>
         <startAudioRecorder eventTag="eventTag" wavFormat="wavFormat" filePerStimulus="filePerStimulus"/>
         <stopAudioRecorder/>
         <startAudioRecorderTag eventTier="8"/>
         <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
-        <versionData/>
         <preventWindowClose featureText="preventWindowClose"/>
+        <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
+            <groupNetworkActivity groupRole="groupRole">
+                <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                <groupMemberCodeLabel styleName="styleName"/>
+                <groupMemberLabel styleName="styleName"/>
+                <groupMessageLabel styleName="styleName"/>
+                <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                    <plainText featureText="plainText in groupResponseStimulusImage"/>
+                </groupResponseStimulusImage>
+                <groupResponseFeedback>
+                    <responseCorrect msToNext="60">
+                        <plainText featureText="plainText in responseCorrect"/>
+                    </responseCorrect>
+                    <responseIncorrect msToNext="60">
+                        <plainText featureText="plainText in responseIncorrect"/>
+                    </responseIncorrect>
+                </groupResponseFeedback>
+                <groupScoreLabel styleName="styleName"/>
+                <groupChannelScoreLabel styleName="styleName"/>
+                <submitGroupEvent/>
+                <plainText featureText="plainText in groupNetworkActivity"/>
+            </groupNetworkActivity>
+            <groupNetworkActivity groupRole="groupRole">
+                <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                <groupMemberCodeLabel styleName="styleName"/>
+                <groupMemberLabel styleName="styleName"/>
+                <groupMessageLabel styleName="styleName"/>
+                <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                    <plainText featureText="plainText in groupResponseStimulusImage"/>
+                </groupResponseStimulusImage>
+                <groupResponseFeedback>
+                    <responseCorrect msToNext="60">
+                        <plainText featureText="plainText in responseCorrect"/>
+                    </responseCorrect>
+                    <responseIncorrect msToNext="60">
+                        <plainText featureText="plainText in responseIncorrect"/>
+                    </responseIncorrect>
+                </groupResponseFeedback>
+                <groupScoreLabel styleName="styleName"/>
+                <groupChannelScoreLabel styleName="styleName"/>
+                <submitGroupEvent/>
+                <plainText featureText="plainText in groupNetworkActivity"/>
+            </groupNetworkActivity>
+            <sendGroupEndOfStimuli eventTag="eventTag"/>
+            <groupNetworkActivity groupRole="groupRole">
+                <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                <groupMemberCodeLabel styleName="styleName"/>
+                <groupMemberLabel styleName="styleName"/>
+                <groupMessageLabel styleName="styleName"/>
+                <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                    <plainText featureText="plainText in groupResponseStimulusImage"/>
+                </groupResponseStimulusImage>
+                <groupResponseFeedback>
+                    <responseCorrect msToNext="60">
+                        <plainText featureText="plainText in responseCorrect"/>
+                    </responseCorrect>
+                    <responseIncorrect msToNext="60">
+                        <plainText featureText="plainText in responseIncorrect"/>
+                    </responseIncorrect>
+                </groupResponseFeedback>
+                <groupScoreLabel styleName="styleName"/>
+                <groupChannelScoreLabel styleName="styleName"/>
+                <submitGroupEvent/>
+                <plainText featureText="plainText in groupNetworkActivity"/>
+            </groupNetworkActivity>
+        </groupNetwork>
+        <scoreLabel styleName="styleName"/>
         <clearCurrentScore/>
+        <scoreIncrement scoreValue="true">
+            <plainText featureText="plainText in scoreIncrement"/>
+        </scoreIncrement>
+        <bestScoreAboveThreshold scoreThreshold="3">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </bestScoreAboveThreshold>
+        <totalScoreAboveThreshold scoreThreshold="3" errorThreshold="3" potentialThreshold="3">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </totalScoreAboveThreshold>
+        <scoreAboveThreshold scoreThreshold="3" errorThreshold="3" potentialThreshold="3">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </scoreAboveThreshold>
         <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker" type="colourPicker" self="colourPickerScreen" title="colourPicker">
-        <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
-        <showStimuliReport/>
-        <sendStimuliReport headerKey="headerKey" dataChannel="dataChannel" type="type" separator="separator"/>
-        <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
-        </stimulusButton>
-        <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
-        </touchInputStimulusButton>
-        <touchInputCaptureStart msToNext="60" showControls="showControls">
-            <plainText featureText="plainText"/>
-        </touchInputCaptureStart>
-        <touchInputReportSubmit dataChannel="dataChannel"/>
-        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-        <stimulusHasResponse>
-            <conditionTrue>
-                <plainText featureText="plainText"/>
-            </conditionTrue>
-            <conditionFalse>
-                <plainText featureText="plainText"/>
-            </conditionFalse>
-        </stimulusHasResponse>
-        <stimulusMetadataField fieldName="workerId" dataChannel="dataChannel"/>
-        <cancelPauseTimers/>
-        <displayCompletionCode/>
-        <sendMetadata>
-            <onError>
-                <plainText featureText="plainText"/>
-            </onError>
-            <onSuccess>
-                <plainText featureText="plainText"/>
-            </onSuccess>
-        </sendMetadata>
-        <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" hotKey="A" repeatIncorrect="repeatIncorrect"/>
-        <prevStimulus repeatIncorrect="repeatIncorrect"/>
-        <hasGetParameter parameterName="parameterName">
-            <conditionTrue>
-                <plainText featureText="plainText"/>
-            </conditionTrue>
-            <conditionFalse>
-                <plainText featureText="plainText"/>
-            </conditionFalse>
-        </hasGetParameter>
-        <activateRandomItem/>
-        <randomMsPause maximum="maximum" minimum="minimum">
-            <plainText featureText="plainText"/>
-        </randomMsPause>
-        <triggerListener listenerId="listenerId" maximum="maximum" threshold="threshold">
-            <plainText featureText="plainText"/>
-        </triggerListener>
-        <trigger listenerId="listenerId"/>
-        <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </countdownLabel>
-        <table showOnBackButton="showOnBackButton" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </table>
-        <row>
-            <plainText featureText="plainText"/>
-        </row>
-        <column styleName="styleName">
-            <plainText featureText="plainText"/>
-        </column>
-        <withStimuli>
-            <plainText featureText="plainText"/>
-        </withStimuli>
-        <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" matchingRegex="matchingRegex" dataChannel="dataChannel" replacement="replacement" animate="bounce" showControls="showControls" maxWidth="60">
-            <mediaLoaded>
-                <plainText featureText="plainText"/>
-            </mediaLoaded>
-            <mediaLoadFailed>
-                <plainText featureText="plainText"/>
-            </mediaLoadFailed>
-            <mediaPlaybackComplete>
-                <plainText featureText="plainText"/>
-            </mediaPlaybackComplete>
-        </stimulusPresent>
-        <playVideo/>
-        <rewindVideo/>
-        <pauseVideo/>
-        <helpDialogue featureText="helpDialogue" closeButtonLabel="closeButtonLabel"/>
         <preventWindowClose featureText="preventWindowClose"/>
-        <clearCurrentScore/>
-        <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport" type="colourReport" self="colourReportScreen" title="colourReport">
         <htmlText featureText="htmlText" styleName="styleName"/>
-        <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </image>
-        <showStimuliReport/>
-        <sendStimuliReport headerKey="headerKey" dataChannel="dataChannel" type="type" separator="separator"/>
-        <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" eventTag="eventTag" hotKey="A" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </actionButton>
-        <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
-        </stimulusButton>
-        <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
-        </touchInputStimulusButton>
-        <touchInputCaptureStart msToNext="60" showControls="showControls">
-            <plainText featureText="plainText"/>
-        </touchInputCaptureStart>
-        <touchInputReportSubmit dataChannel="dataChannel"/>
-        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-        <stimulusHasResponse>
-            <conditionTrue>
-                <plainText featureText="plainText"/>
-            </conditionTrue>
-            <conditionFalse>
-                <plainText featureText="plainText"/>
-            </conditionFalse>
-        </stimulusHasResponse>
-        <addPadding/>
-        <stimulusMetadataField fieldName="workerId" dataChannel="dataChannel"/>
-        <cancelPauseTimers/>
-        <displayCompletionCode/>
-        <sendMetadata>
-            <onError>
-                <plainText featureText="plainText"/>
-            </onError>
-            <onSuccess>
-                <plainText featureText="plainText"/>
-            </onSuccess>
-        </sendMetadata>
-        <centrePage/>
-        <actionButton featureText="Clear Screen">
-            <clearPage styleName="styleName"/>
-        </actionButton>
-        <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" hotKey="A" repeatIncorrect="repeatIncorrect"/>
-        <prevStimulus repeatIncorrect="repeatIncorrect"/>
-        <hasGetParameter parameterName="parameterName">
-            <conditionTrue>
-                <plainText featureText="plainText"/>
-            </conditionTrue>
-            <conditionFalse>
-                <plainText featureText="plainText"/>
-            </conditionFalse>
-        </hasGetParameter>
-        <activateRandomItem/>
-        <randomMsPause maximum="maximum" minimum="minimum">
-            <plainText featureText="plainText"/>
-        </randomMsPause>
-        <triggerListener listenerId="listenerId" maximum="maximum" threshold="threshold">
-            <plainText featureText="plainText"/>
-        </triggerListener>
-        <trigger listenerId="listenerId"/>
-        <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </countdownLabel>
-        <table showOnBackButton="showOnBackButton" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </table>
-        <row>
-            <plainText featureText="plainText"/>
-        </row>
-        <column styleName="styleName">
-            <plainText featureText="plainText"/>
-        </column>
-        <withStimuli>
-            <plainText featureText="plainText"/>
-        </withStimuli>
-        <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" matchingRegex="matchingRegex" dataChannel="dataChannel" replacement="replacement" animate="bounce" showControls="showControls" maxWidth="60">
             <mediaLoaded>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
             <mediaLoadFailed>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
-            <mediaPlaybackComplete>
-                <plainText featureText="plainText"/>
-            </mediaPlaybackComplete>
-        </stimulusPresent>
-        <playVideo/>
-        <rewindVideo/>
-        <pauseVideo/>
+            <plainText featureText="plainText in image"/>
+        </image>
+        <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
+        <actionButton featureText="actionButton" hotKey="A" styleName="styleName">
+            <plainText featureText="plainText in actionButton"/>
+        </actionButton>
+        <addPadding/>
+        <centrePage/>
+        <hasGetParameter parameterName="parameterName">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasGetParameter>
+        <table showOnBackButton="showOnBackButton" styleName="styleName">
+            <plainText featureText="plainText in table"/>
+        </table>
+        <row>
+            <plainText featureText="plainText in row"/>
+        </row>
+        <column styleName="styleName">
+            <plainText featureText="plainText in column"/>
+        </column>
         <stopAudioRecorder/>
         <startAudioRecorderTag eventTier="8"/>
-        <versionData/>
         <preventWindowClose featureText="preventWindowClose"/>
         <showColourReport scoreThreshold="3">
             <aboveThreshold>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
             <belowThreshold>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in belowThreshold"/>
             </belowThreshold>
         </showColourReport>
-        <clearCurrentScore/>
-        <resetStimulus target="target"/>
         <submitTestResults>
             <onError>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in onError"/>
             </onError>
             <onSuccess>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </submitTestResults>
     </presenter>
     <presenter back="AutoMenu" menuLabel="kindiagram" type="kindiagram" self="kindiagramScreen" title="kindiagram">
         <htmlText featureText="htmlText" styleName="styleName"/>
-        <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
-            <plainText featureText="plainText"/>
+            <mediaLoaded>
+                <plainText featureText="plainText in mediaLoaded"/>
+            </mediaLoaded>
+            <mediaLoadFailed>
+                <plainText featureText="plainText in mediaLoadFailed"/>
+            </mediaLoadFailed>
+            <plainText featureText="plainText in image"/>
         </image>
-        <showStimuliReport/>
-        <sendStimuliReport headerKey="headerKey" dataChannel="dataChannel" type="type" separator="separator"/>
         <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" eventTag="eventTag" hotKey="A" styleName="styleName">
-            <plainText featureText="plainText"/>
+        <actionButton featureText="actionButton" hotKey="A" styleName="styleName">
+            <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
-        </stimulusButton>
-        <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
-        </touchInputStimulusButton>
-        <touchInputCaptureStart msToNext="60" showControls="showControls">
-            <plainText featureText="plainText"/>
-        </touchInputCaptureStart>
-        <touchInputReportSubmit dataChannel="dataChannel"/>
-        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-        <stimulusHasResponse>
-            <conditionTrue>
-                <plainText featureText="plainText"/>
-            </conditionTrue>
-            <conditionFalse>
-                <plainText featureText="plainText"/>
-            </conditionFalse>
-        </stimulusHasResponse>
         <addPadding/>
-        <stimulusMetadataField fieldName="workerId" dataChannel="dataChannel"/>
-        <cancelPauseTimers/>
-        <displayCompletionCode/>
-        <sendMetadata>
-            <onError>
-                <plainText featureText="plainText"/>
-            </onError>
-            <onSuccess>
-                <plainText featureText="plainText"/>
-            </onSuccess>
-        </sendMetadata>
         <centrePage/>
-        <actionButton featureText="Clear Screen">
-            <clearPage styleName="styleName"/>
-        </actionButton>
-        <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" hotKey="A" repeatIncorrect="repeatIncorrect"/>
-        <prevStimulus repeatIncorrect="repeatIncorrect"/>
         <addKinTypeGui diagramName="diagramName"/>
         <hasGetParameter parameterName="parameterName">
             <conditionTrue>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
             <conditionFalse>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
-        <activateRandomItem/>
-        <randomMsPause maximum="maximum" minimum="minimum">
-            <plainText featureText="plainText"/>
-        </randomMsPause>
-        <triggerListener listenerId="listenerId" maximum="maximum" threshold="threshold">
-            <plainText featureText="plainText"/>
-        </triggerListener>
-        <trigger listenerId="listenerId"/>
-        <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </countdownLabel>
         <kinTypeStringDiagram msToNext="60" kintypestring="kintypestring">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in kinTypeStringDiagram"/>
         </kinTypeStringDiagram>
         <loadKinTypeStringDiagram msToNext="60" diagramName="diagramName">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in loadKinTypeStringDiagram"/>
         </loadKinTypeStringDiagram>
         <editableKinEntitesDiagram msToNext="60" diagramName="diagramName">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in editableKinEntitesDiagram"/>
         </editableKinEntitesDiagram>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in table"/>
         </table>
         <row>
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in row"/>
         </row>
         <column styleName="styleName">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in column"/>
         </column>
-        <withStimuli>
-            <plainText featureText="plainText"/>
-        </withStimuli>
-        <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" matchingRegex="matchingRegex" dataChannel="dataChannel" replacement="replacement" animate="bounce" showControls="showControls" maxWidth="60">
-            <mediaLoaded>
-                <plainText featureText="plainText"/>
-            </mediaLoaded>
-            <mediaLoadFailed>
-                <plainText featureText="plainText"/>
-            </mediaLoadFailed>
-            <mediaPlaybackComplete>
-                <plainText featureText="plainText"/>
-            </mediaPlaybackComplete>
-        </stimulusPresent>
-        <playVideo/>
-        <rewindVideo/>
-        <pauseVideo/>
         <stopAudioRecorder/>
         <startAudioRecorderTag eventTier="8"/>
-        <versionData/>
         <preventWindowClose featureText="preventWindowClose"/>
-        <clearCurrentScore/>
-        <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="menu" type="menu" self="menuScreen" title="menu">
         <htmlText featureText="htmlText" styleName="styleName"/>
-        <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
-            <plainText featureText="plainText"/>
+            <mediaLoaded>
+                <plainText featureText="plainText in mediaLoaded"/>
+            </mediaLoaded>
+            <mediaLoadFailed>
+                <plainText featureText="plainText in mediaLoadFailed"/>
+            </mediaLoadFailed>
+            <plainText featureText="plainText in image"/>
         </image>
         <menuItem featureText="menuItem" hotKey="A" target="target"/>
-        <showStimuliReport/>
-        <sendStimuliReport headerKey="headerKey" dataChannel="dataChannel" type="type" separator="separator"/>
         <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" eventTag="eventTag" hotKey="A" styleName="styleName">
-            <plainText featureText="plainText"/>
+        <actionButton featureText="actionButton" hotKey="A" styleName="styleName">
+            <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
-        </stimulusButton>
-        <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
-        </touchInputStimulusButton>
-        <touchInputCaptureStart msToNext="60" showControls="showControls">
-            <plainText featureText="plainText"/>
-        </touchInputCaptureStart>
-        <touchInputReportSubmit dataChannel="dataChannel"/>
-        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-        <stimulusHasResponse>
-            <conditionTrue>
-                <plainText featureText="plainText"/>
-            </conditionTrue>
-            <conditionFalse>
-                <plainText featureText="plainText"/>
-            </conditionFalse>
-        </stimulusHasResponse>
         <addPadding/>
-        <stimulusMetadataField fieldName="workerId" dataChannel="dataChannel"/>
-        <cancelPauseTimers/>
-        <displayCompletionCode/>
-        <sendMetadata>
-            <onError>
-                <plainText featureText="plainText"/>
-            </onError>
-            <onSuccess>
-                <plainText featureText="plainText"/>
-            </onSuccess>
-        </sendMetadata>
         <centrePage/>
-        <actionButton featureText="Clear Screen">
-            <clearPage styleName="styleName"/>
-        </actionButton>
         <allMenuItems/>
-        <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" hotKey="A" repeatIncorrect="repeatIncorrect"/>
-        <prevStimulus repeatIncorrect="repeatIncorrect"/>
         <hasGetParameter parameterName="parameterName">
             <conditionTrue>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in conditionTrue"/>
             </conditionTrue>
             <conditionFalse>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
         <activateRandomItem/>
-        <randomMsPause maximum="maximum" minimum="minimum">
-            <plainText featureText="plainText"/>
-        </randomMsPause>
-        <triggerListener listenerId="listenerId" maximum="maximum" threshold="threshold">
-            <plainText featureText="plainText"/>
-        </triggerListener>
-        <trigger listenerId="listenerId"/>
-        <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </countdownLabel>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in table"/>
         </table>
         <row>
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in row"/>
         </row>
         <column styleName="styleName">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in column"/>
         </column>
-        <withStimuli>
-            <plainText featureText="plainText"/>
-        </withStimuli>
-        <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" matchingRegex="matchingRegex" dataChannel="dataChannel" replacement="replacement" animate="bounce" showControls="showControls" maxWidth="60">
-            <mediaLoaded>
-                <plainText featureText="plainText"/>
-            </mediaLoaded>
-            <mediaLoadFailed>
-                <plainText featureText="plainText"/>
-            </mediaLoadFailed>
-            <mediaPlaybackComplete>
-                <plainText featureText="plainText"/>
-            </mediaPlaybackComplete>
-        </stimulusPresent>
-        <playVideo/>
-        <rewindVideo/>
-        <pauseVideo/>
         <stopAudioRecorder/>
         <startAudioRecorderTag eventTier="8"/>
-        <versionData/>
         <preventWindowClose featureText="preventWindowClose"/>
-        <clearCurrentScore/>
-        <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="debug" type="debug" self="debugScreen" title="debug">
         <htmlText featureText="htmlText" styleName="styleName"/>
-        <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </image>
-        <showStimuliReport/>
-        <sendStimuliReport headerKey="headerKey" dataChannel="dataChannel" type="type" separator="separator"/>
-        <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" eventTag="eventTag" hotKey="A" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </actionButton>
-        <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
-        </stimulusButton>
-        <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
-        </touchInputStimulusButton>
-        <touchInputCaptureStart msToNext="60" showControls="showControls">
-            <plainText featureText="plainText"/>
-        </touchInputCaptureStart>
-        <touchInputReportSubmit dataChannel="dataChannel"/>
-        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-        <stimulusHasResponse>
-            <conditionTrue>
-                <plainText featureText="plainText"/>
-            </conditionTrue>
-            <conditionFalse>
-                <plainText featureText="plainText"/>
-            </conditionFalse>
-        </stimulusHasResponse>
-        <addPadding/>
-        <localStorageData/>
-        <stimulusMetadataField fieldName="workerId" dataChannel="dataChannel"/>
-        <eraseLocalStorageButton/>
-        <cancelPauseTimers/>
-        <displayCompletionCode/>
-        <sendMetadata>
-            <onError>
-                <plainText featureText="plainText"/>
-            </onError>
-            <onSuccess>
-                <plainText featureText="plainText"/>
-            </onSuccess>
-        </sendMetadata>
-        <centrePage/>
-        <actionButton featureText="Clear Screen">
-            <clearPage styleName="styleName"/>
-        </actionButton>
-        <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" hotKey="A" repeatIncorrect="repeatIncorrect"/>
-        <prevStimulus repeatIncorrect="repeatIncorrect"/>
-        <hasGetParameter parameterName="parameterName">
-            <conditionTrue>
-                <plainText featureText="plainText"/>
-            </conditionTrue>
-            <conditionFalse>
-                <plainText featureText="plainText"/>
-            </conditionFalse>
-        </hasGetParameter>
-        <activateRandomItem/>
-        <randomMsPause maximum="maximum" minimum="minimum">
-            <plainText featureText="plainText"/>
-        </randomMsPause>
-        <triggerListener listenerId="listenerId" maximum="maximum" threshold="threshold">
-            <plainText featureText="plainText"/>
-        </triggerListener>
-        <trigger listenerId="listenerId"/>
-        <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </countdownLabel>
-        <table showOnBackButton="showOnBackButton" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </table>
-        <row>
-            <plainText featureText="plainText"/>
-        </row>
-        <column styleName="styleName">
-            <plainText featureText="plainText"/>
-        </column>
-        <withStimuli>
-            <plainText featureText="plainText"/>
-        </withStimuli>
-        <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" matchingRegex="matchingRegex" dataChannel="dataChannel" replacement="replacement" animate="bounce" showControls="showControls" maxWidth="60">
             <mediaLoaded>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
             <mediaLoadFailed>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
-            <mediaPlaybackComplete>
-                <plainText featureText="plainText"/>
-            </mediaPlaybackComplete>
-        </stimulusPresent>
-        <playVideo/>
-        <rewindVideo/>
-        <pauseVideo/>
+            <plainText featureText="plainText in image"/>
+        </image>
+        <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
+        <actionButton featureText="actionButton" hotKey="A" styleName="styleName">
+            <plainText featureText="plainText in actionButton"/>
+        </actionButton>
+        <addPadding/>
+        <localStorageData/>
+        <eraseLocalStorageButton/>
+        <centrePage/>
+        <hasGetParameter parameterName="parameterName">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasGetParameter>
+        <table showOnBackButton="showOnBackButton" styleName="styleName">
+            <plainText featureText="plainText in table"/>
+        </table>
+        <row>
+            <plainText featureText="plainText in row"/>
+        </row>
+        <column styleName="styleName">
+            <plainText featureText="plainText in column"/>
+        </column>
         <stopAudioRecorder/>
         <startAudioRecorderTag eventTier="8"/>
-        <versionData/>
         <preventWindowClose featureText="preventWindowClose"/>
-        <clearCurrentScore/>
-        <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="text" type="text" self="textScreen" title="text">
         <htmlText featureText="htmlText" styleName="styleName"/>
-        <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </image>
-        <showStimuliReport/>
-        <sendStimuliReport headerKey="headerKey" dataChannel="dataChannel" type="type" separator="separator"/>
-        <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" eventTag="eventTag" hotKey="A" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </actionButton>
-        <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
-        </stimulusButton>
-        <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
-        </touchInputStimulusButton>
-        <touchInputCaptureStart msToNext="60" showControls="showControls">
-            <plainText featureText="plainText"/>
-        </touchInputCaptureStart>
-        <touchInputReportSubmit dataChannel="dataChannel"/>
-        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-        <stimulusHasResponse>
-            <conditionTrue>
-                <plainText featureText="plainText"/>
-            </conditionTrue>
-            <conditionFalse>
-                <plainText featureText="plainText"/>
-            </conditionFalse>
-        </stimulusHasResponse>
-        <addPadding/>
-        <stimulusMetadataField fieldName="workerId" dataChannel="dataChannel"/>
-        <cancelPauseTimers/>
-        <displayCompletionCode/>
-        <sendMetadata>
-            <onError>
-                <plainText featureText="plainText"/>
-            </onError>
-            <onSuccess>
-                <plainText featureText="plainText"/>
-            </onSuccess>
-        </sendMetadata>
-        <centrePage/>
-        <actionButton featureText="Clear Screen">
-            <clearPage styleName="styleName"/>
-        </actionButton>
-        <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" hotKey="A" repeatIncorrect="repeatIncorrect"/>
-        <prevStimulus repeatIncorrect="repeatIncorrect"/>
-        <hasGetParameter parameterName="parameterName">
-            <conditionTrue>
-                <plainText featureText="plainText"/>
-            </conditionTrue>
-            <conditionFalse>
-                <plainText featureText="plainText"/>
-            </conditionFalse>
-        </hasGetParameter>
-        <activateRandomItem/>
-        <randomMsPause maximum="maximum" minimum="minimum">
-            <plainText featureText="plainText"/>
-        </randomMsPause>
-        <triggerListener listenerId="listenerId" maximum="maximum" threshold="threshold">
-            <plainText featureText="plainText"/>
-        </triggerListener>
-        <trigger listenerId="listenerId"/>
-        <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </countdownLabel>
-        <table showOnBackButton="showOnBackButton" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </table>
-        <row>
-            <plainText featureText="plainText"/>
-        </row>
-        <column styleName="styleName">
-            <plainText featureText="plainText"/>
-        </column>
-        <withStimuli>
-            <plainText featureText="plainText"/>
-        </withStimuli>
-        <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" matchingRegex="matchingRegex" dataChannel="dataChannel" replacement="replacement" animate="bounce" showControls="showControls" maxWidth="60">
             <mediaLoaded>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
             <mediaLoadFailed>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
-            <mediaPlaybackComplete>
-                <plainText featureText="plainText"/>
-            </mediaPlaybackComplete>
-        </stimulusPresent>
-        <playVideo/>
-        <rewindVideo/>
-        <pauseVideo/>
+            <plainText featureText="plainText in image"/>
+        </image>
+        <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
+        <actionButton featureText="actionButton" hotKey="A" styleName="styleName">
+            <plainText featureText="plainText in actionButton"/>
+        </actionButton>
+        <addPadding/>
+        <centrePage/>
+        <table showOnBackButton="showOnBackButton" styleName="styleName">
+            <plainText featureText="plainText in table"/>
+        </table>
+        <row>
+            <plainText featureText="plainText in row"/>
+        </row>
+        <column styleName="styleName">
+            <plainText featureText="plainText in column"/>
+        </column>
         <stopAudioRecorder/>
         <startAudioRecorderTag eventTier="8"/>
-        <versionData/>
         <preventWindowClose featureText="preventWindowClose"/>
-        <clearCurrentScore/>
-        <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="timeline" type="timeline" self="timelineScreen" title="timeline">
         <htmlText featureText="htmlText" styleName="styleName"/>
-        <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </image>
-        <showStimuliReport/>
-        <sendStimuliReport headerKey="headerKey" dataChannel="dataChannel" type="type" separator="separator"/>
-        <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" eventTag="eventTag" hotKey="A" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </actionButton>
-        <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
-        </stimulusButton>
-        <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src" styleName="styleName" dataChannel="dataChannel">
-            <plainText featureText="plainText"/>
-        </touchInputStimulusButton>
-        <touchInputCaptureStart msToNext="60" showControls="showControls">
-            <plainText featureText="plainText"/>
-        </touchInputCaptureStart>
-        <touchInputReportSubmit dataChannel="dataChannel"/>
-        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-        <stimulusHasResponse>
-            <conditionTrue>
-                <plainText featureText="plainText"/>
-            </conditionTrue>
-            <conditionFalse>
-                <plainText featureText="plainText"/>
-            </conditionFalse>
-        </stimulusHasResponse>
-        <addPadding/>
-        <stimulusMetadataField fieldName="workerId" dataChannel="dataChannel"/>
-        <cancelPauseTimers/>
-        <displayCompletionCode/>
-        <sendMetadata>
-            <onError>
-                <plainText featureText="plainText"/>
-            </onError>
-            <onSuccess>
-                <plainText featureText="plainText"/>
-            </onSuccess>
-        </sendMetadata>
-        <centrePage/>
-        <actionButton featureText="Clear Screen">
-            <clearPage styleName="styleName"/>
-        </actionButton>
-        <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" hotKey="A" repeatIncorrect="repeatIncorrect"/>
-        <prevStimulus repeatIncorrect="repeatIncorrect"/>
-        <hasGetParameter parameterName="parameterName">
-            <conditionTrue>
-                <plainText featureText="plainText"/>
-            </conditionTrue>
-            <conditionFalse>
-                <plainText featureText="plainText"/>
-            </conditionFalse>
-        </hasGetParameter>
-        <activateRandomItem/>
-        <randomMsPause maximum="maximum" minimum="minimum">
-            <plainText featureText="plainText"/>
-        </randomMsPause>
-        <triggerListener listenerId="listenerId" maximum="maximum" threshold="threshold">
-            <plainText featureText="plainText"/>
-        </triggerListener>
-        <trigger listenerId="listenerId"/>
-        <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </countdownLabel>
-        <table showOnBackButton="showOnBackButton" styleName="styleName">
-            <plainText featureText="plainText"/>
-        </table>
-        <row>
-            <plainText featureText="plainText"/>
-        </row>
-        <column styleName="styleName">
-            <plainText featureText="plainText"/>
-        </column>
-        <withStimuli>
-            <plainText featureText="plainText"/>
-        </withStimuli>
-        <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" matchingRegex="matchingRegex" dataChannel="dataChannel" replacement="replacement" animate="bounce" showControls="showControls" maxWidth="60">
             <mediaLoaded>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
             <mediaLoadFailed>
-                <plainText featureText="plainText"/>
+                <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
-            <mediaPlaybackComplete>
-                <plainText featureText="plainText"/>
-            </mediaPlaybackComplete>
-        </stimulusPresent>
-        <playVideo/>
-        <rewindVideo/>
-        <pauseVideo/>
+            <plainText featureText="plainText in image"/>
+        </image>
+        <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
+        <actionButton featureText="actionButton" hotKey="A" styleName="styleName">
+            <plainText featureText="plainText in actionButton"/>
+        </actionButton>
+        <addPadding/>
+        <centrePage/>
+        <hasGetParameter parameterName="parameterName">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasGetParameter>
+        <table showOnBackButton="showOnBackButton" styleName="styleName">
+            <plainText featureText="plainText in table"/>
+        </table>
+        <row>
+            <plainText featureText="plainText in row"/>
+        </row>
+        <column styleName="styleName">
+            <plainText featureText="plainText in column"/>
+        </column>
         <VideoPanel src="src" maxHeight="60" percentOfPage="56" poster="poster" maxWidth="60"/>
         <AnnotationTimelinePanel eventTag="eventTag" src="src" columnCount="3" maxStimuli="3" poster="poster">
-            <plainText featureText="plainText"/>
+            <plainText featureText="plainText in AnnotationTimelinePanel"/>
         </AnnotationTimelinePanel>
         <stopAudioRecorder/>
         <startAudioRecorderTag eventTier="8"/>
-        <versionData/>
         <preventWindowClose featureText="preventWindowClose"/>
-        <clearCurrentScore/>
-        <resetStimulus target="target"/>
     </presenter>
     <presenter menuLabel="about" type="debug" self="about" title="about"/>
     <stimuli>

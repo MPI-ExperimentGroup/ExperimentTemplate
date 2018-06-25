@@ -94,8 +94,8 @@ public enum FeatureAttribute {
     excludeRegex(true),
     //    alias, // alias is used to specify a tag or set of tags via GET parameters
     scoreThreshold(false),
-    errorThreshold(true), // interger to make active, when empty or not present is passed as null
-    potentialThreshold(true), // interger to make active, when empty or not present is passed as null
+    errorThreshold(true), // interger to make active, when empty or not present is passed as 0
+    potentialThreshold(true), // interger to make active, when empty or not present is passed as 0
     showPlaybackIndicator,
     showControls(true),
     groupRole,

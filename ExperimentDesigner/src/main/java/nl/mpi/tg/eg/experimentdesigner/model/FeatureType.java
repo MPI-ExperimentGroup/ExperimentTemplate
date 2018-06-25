@@ -31,9 +31,11 @@ public enum FeatureType {
     htmlText(false, true, new FeatureAttribute[]{styleName}),
     htmlTokenText(false, true, new FeatureAttribute[]{styleName}) /* string tokens will be replaced with score values eg <groupScore> <channelScore> etc. */,
     plainText(false, true, null),
-    image(true, false, new FeatureAttribute[]{src, styleName, msToNext}),
+    image(true, false, new FeatureAttribute[]{src, styleName, msToNext}, false, false, false, Contitionals.hasMediaLoading, Contitionals.none),
     menuItem(false, true, new FeatureAttribute[]{target, hotKey}),
     //    popupMessage(true, true, null),
+    // todo: change this to be at the same level as laodStimulus and take the same parameters
+    withStimuli(false, false, new FeatureAttribute[]{eventTag, minStimuliPerTag, maxStimuliPerTag, maxStimuli, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.eachStimulus, Contitionals.none), // loop over all loaded stimuli rather than using next stimulus on user input
     loadStimulus(false, false, new FeatureAttribute[]{eventTag, minStimuliPerTag, maxStimuliPerTag, maxStimuli, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.hasMoreStimulus, Contitionals.none, true),
     withMatchingStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, randomise, repeatCount, repeatRandomWindow, matchingRegex}, false, false, false, Contitionals.hasMoreStimulus, Contitionals.none),
     loadSdCardStimulus(false, false, new FeatureAttribute[]{eventTag, minStimuliPerTag, maxStimuliPerTag, maxStimuli, excludeRegex, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.hasMoreStimulus, Contitionals.none),
@@ -48,10 +50,10 @@ public enum FeatureType {
     //// todo: touch input needs a threshold before touch is registered and another before touch is ended to allow gaps in touch being recorded as on touch
     touchInputCaptureStart(true, false, new FeatureAttribute[]{showControls, msToNext}), /* sub elements are triggered after the touch ends or after msToNext of no touch activity */
     touchInputReportSubmit(false, false, new FeatureAttribute[]{dataChannel}),
-    sendGroupMessageButton(false, true, new FeatureAttribute[]{hotKey, dataChannel, eventTag, repeatIncorrect, incrementPhase, /* incrementPhaseOnDictionaryincrementStimulus */}, false, false, false, Contitionals.none, Contitionals.hasGroupActivities),
-    sendGroupMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}, false, false, false, Contitionals.none, Contitionals.hasGroupActivities),
-    sendGroupStoredMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}, false, false, false, Contitionals.none, Contitionals.hasGroupActivities),
-    sendGroupEndOfStimuli(false, false, new FeatureAttribute[]{eventTag}, false, false, false, Contitionals.none, Contitionals.hasGroupActivities),
+    sendGroupMessageButton(false, true, new FeatureAttribute[]{hotKey, dataChannel, eventTag, repeatIncorrect, incrementPhase, /* incrementPhaseOnDictionaryincrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
+    sendGroupMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
+    sendGroupStoredMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
+    sendGroupEndOfStimuli(false, false, new FeatureAttribute[]{eventTag}, false, false, false, Contitionals.none, Contitionals.groupNetworkActivity),
     ratingButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight}),
     stimulusFreeText(true, true, new FeatureAttribute[]{validationRegex, dataChannel, allowedCharCodes, hotKey, styleName, inputErrorMessage}),
     stimulusRatingButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabelLeft, ratingLabelRight, styleName}),
@@ -103,6 +105,7 @@ public enum FeatureType {
     activateRandomItem(false, false, new FeatureAttribute[]{}),
     autoNextPresenter(false, false, new FeatureAttribute[]{target}),
     logTimeStamp(false, false, new FeatureAttribute[]{eventTag, dataChannel}),
+    // todo: document audioButton which fires the played event once and only once after the first playback finishes
     audioButton(false, false, new FeatureAttribute[]{eventTag, dataChannel, poster, autoPlay, hotKey, styleName, src}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.none), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
     preloadAllStimuli(true, false, null, true, false, false, Contitionals.none, Contitionals.none),
     showStimulus(true, false, null, false, false, false, Contitionals.none, Contitionals.none), // todo: should this be here? or should it have an increment for next back etc
@@ -126,6 +129,7 @@ public enum FeatureType {
     responseIncorrect(true, false, new FeatureAttribute[]{msToNext}, false, false, false, Contitionals.none, Contitionals.hasCorrectIncorrect),
     hasMoreStimulus(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMoreStimulus),
     endOfStimulus(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMoreStimulus),
+    eachStimulus(true, false, null, false, false, false, Contitionals.none, Contitionals.eachStimulus),
     existingUserCheck(false, false, null, false, false, false, Contitionals.hasUserCount, Contitionals.none),
     multipleUsers(true, false, null, false, false, false, Contitionals.none, Contitionals.hasUserCount),
     // todo: this should be suppressed from normal use like the other conditional child elements
@@ -140,8 +144,6 @@ public enum FeatureType {
     table(true, false, new FeatureAttribute[]{styleName, showOnBackButton}),
     row(true, false, null),
     column(true, false, new FeatureAttribute[]{styleName}),
-    // todo: change this to be at the same level as laodStimulus and take the same parameters
-    withStimuli(true, false, null, false, false, false, Contitionals.none, Contitionals.none), // loop over all loaded stimuli rather than using next stimulus on user input
     // todo: look for and update to add the show any stimuli tag and make stimulusImage only show images (true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement, showControls}, false, false, false, Contitionals.hasMediaLoading), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
     stimulusPresent(false, false, new FeatureAttribute[]{percentOfPage, dataChannel, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement, showControls}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.none), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
     stimulusImage(false, false, new FeatureAttribute[]{msToNext, styleName, dataChannel}, false, false, false, Contitionals.hasMediaLoading, Contitionals.none), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
@@ -166,20 +168,22 @@ public enum FeatureType {
     preventWindowClose(false, true, null), // note: preventWindowClose should only be allowed once in the experiment element
     showColourReport(false, false, new FeatureAttribute[]{scoreThreshold}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
     // @todo: groupMembers could be used to determing the sequence of who goes when and therefore could be changed to groupMembersSequence
-    groupNetwork(false, false, new FeatureAttribute[]{groupMembers, groupCommunicationChannels, phasesPerStimulus}, false, false, false, Contitionals.hasGroupActivities, Contitionals.none),
-    groupNetworkActivity(true, false, new FeatureAttribute[]{groupRole}, false, false, false, Contitionals.none, Contitionals.hasGroupActivities),
-    groupMemberCodeLabel(false, false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.hasGroupActivities),
-    groupMemberLabel(false, false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.hasGroupActivities),
-    groupMessageLabel(false, false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.hasGroupActivities),
-    groupResponseStimulusImage(true, false, new FeatureAttribute[]{percentOfPage, dataChannel, maxHeight, maxWidth, msToNext, animate}, false, false, false, Contitionals.none, Contitionals.hasGroupActivities),
-    groupResponseFeedback(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasCorrectIncorrect, Contitionals.hasGroupActivities),
-    groupScoreLabel(false, false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.hasGroupActivities),
-    groupChannelScoreLabel(false, false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.hasGroupActivities),
+    groupNetwork(false, false, new FeatureAttribute[]{groupMembers, groupCommunicationChannels, phasesPerStimulus}, false, false, false, Contitionals.groupNetworkActivity, Contitionals.none),
+    groupNetworkActivity(true, false, new FeatureAttribute[]{groupRole}, false, false, false, Contitionals.groupNetworkAction, Contitionals.groupNetworkActivity),
+    groupMemberCodeLabel(false, false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
+    groupMemberLabel(false, false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
+    groupMessageLabel(false, false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
+    // todo: groupResponseStimulusImage could be changed to groupResponseStimulusPresent
+    groupResponseStimulusImage(true, false, new FeatureAttribute[]{percentOfPage, dataChannel, maxHeight, maxWidth, msToNext, animate}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.groupNetworkAction),
+    groupResponseFeedback(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasCorrectIncorrect, Contitionals.groupNetworkAction),
+    groupScoreLabel(false, false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
+    groupChannelScoreLabel(false, false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     scoreLabel(false, false, new FeatureAttribute[]{styleName}),
-    submitGroupEvent(false, false, null, false, false, false, Contitionals.none, Contitionals.hasGroupActivities),
+    submitGroupEvent(false, false, null, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     clearCurrentScore(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.none, Contitionals.none),
     scoreIncrement(true, false, new FeatureAttribute[]{scoreValue}, false, false, false, Contitionals.none, Contitionals.none),
-    bestScoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
+    bestScoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
+    totalScoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
     scoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
     resetStimulus(false, false, new FeatureAttribute[]{target}, false, false, false, Contitionals.none, Contitionals.none),
     submitTestResults(false, false, null, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none);
@@ -191,16 +195,18 @@ public enum FeatureType {
     private final boolean allowsCustomImplementation;
     private final FeatureAttribute[] featureAttributes;
     private final Contitionals requiresChildType;
-    private final Contitionals requiresParentType;
+    private final Contitionals isChildType;
 
     public enum Contitionals {
         hasTrueFalseCondition,
         hasCorrectIncorrect,
         hasMoreStimulus,
+        eachStimulus,
         hasErrorSuccess,
         hasUserCount,
         hasThreshold,
-        hasGroupActivities,
+        groupNetworkActivity,
+        groupNetworkAction,
         hasMediaLoading,
         hasMediaPlayback,
         none,
@@ -212,40 +218,43 @@ public enum FeatureType {
         this.canHaveText = canHaveText;
         this.featureAttributes = featureAttributes;
         this.requiresChildType = Contitionals.none;
-        this.requiresParentType = Contitionals.none;
+        this.isChildType = Contitionals.none;
         this.canHaveStimulusTags = false;
         this.canHaveRandomGrouping = false;
         this.canHaveUndefinedAttribute = false;
         this.allowsCustomImplementation = false;
     }
 
-    private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean canHaveStimulus, boolean canHaveRandomGrouping, boolean canHaveUndefinedAttribute, Contitionals requiresChildType, Contitionals requiresParentType) {
+    private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean canHaveStimulus, boolean canHaveRandomGrouping, boolean canHaveUndefinedAttribute, Contitionals requiresChildType, Contitionals isChildType) {
         this.canHaveFeatures = canHaveFeatures;
         this.canHaveText = canHaveText;
         this.featureAttributes = featureAttributes;
         this.canHaveStimulusTags = canHaveStimulus;
         this.canHaveRandomGrouping = canHaveRandomGrouping;
         this.requiresChildType = requiresChildType;
-        this.requiresParentType = requiresParentType;
+        this.isChildType = isChildType;
         this.canHaveUndefinedAttribute = canHaveUndefinedAttribute;
         this.allowsCustomImplementation = false;
-        if (requiresChildType != Contitionals.none && requiresParentType != Contitionals.none && canHaveFeatures) {
+        if (requiresChildType != Contitionals.none && isChildType != Contitionals.none
+                && isChildType != Contitionals.groupNetworkAction
+                && isChildType != Contitionals.groupNetworkActivity
+                && canHaveFeatures) {
             throw new IllegalArgumentException("canHaveFeatures may only be used with Contitionals.none");
         }
         //    todo: set all hasMediaPlayback and hasMediaLoading to canHaveFeatures = false
     }
 
-    private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean canHaveStimulus, boolean canHaveRandomGrouping, boolean canHaveUndefinedAttribute, Contitionals requiresChildType, Contitionals requiresParentType, final boolean allowsCustomImplementation) {
+    private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean canHaveStimulus, boolean canHaveRandomGrouping, boolean canHaveUndefinedAttribute, Contitionals requiresChildType, Contitionals isChildType, final boolean allowsCustomImplementation) {
         this.canHaveFeatures = canHaveFeatures;
         this.canHaveText = canHaveText;
         this.featureAttributes = featureAttributes;
         this.canHaveStimulusTags = canHaveStimulus;
         this.canHaveRandomGrouping = canHaveRandomGrouping;
         this.requiresChildType = requiresChildType;
-        this.requiresParentType = requiresParentType;
+        this.isChildType = isChildType;
         this.canHaveUndefinedAttribute = canHaveUndefinedAttribute;
         this.allowsCustomImplementation = allowsCustomImplementation;
-        if (requiresChildType != Contitionals.none && requiresParentType != Contitionals.none && canHaveFeatures) {
+        if (requiresChildType != Contitionals.none && isChildType != Contitionals.none && canHaveFeatures) {
             throw new IllegalArgumentException("canHaveFeatures may only be used with Contitionals.none");
         }
         //    todo: set all hasMediaPlayback and hasMediaLoading to canHaveFeatures = false
@@ -283,8 +292,7 @@ public enum FeatureType {
         return requiresChildType;
     }
 
-    public Contitionals getRequiresParentType() {
-        return requiresParentType;
+    public Contitionals getIsChildType() {
+        return isChildType;
     }
-
 }
