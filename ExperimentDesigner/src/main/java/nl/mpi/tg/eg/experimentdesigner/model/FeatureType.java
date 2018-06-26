@@ -129,7 +129,9 @@ public enum FeatureType {
     responseIncorrect(true, false, new FeatureAttribute[]{msToNext}, false, false, false, Contitionals.none, Contitionals.hasCorrectIncorrect),
     hasMoreStimulus(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMoreStimulus),
     endOfStimulus(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMoreStimulus),
+    beforeStimulus(true, false, null, false, false, false, Contitionals.none, Contitionals.eachStimulus),
     eachStimulus(true, false, null, false, false, false, Contitionals.none, Contitionals.eachStimulus),
+    afterStimulus(true, false, null, false, false, false, Contitionals.none, Contitionals.eachStimulus),
     existingUserCheck(false, false, null, false, false, false, Contitionals.hasUserCount, Contitionals.none),
     multipleUsers(true, false, null, false, false, false, Contitionals.none, Contitionals.hasUserCount),
     // todo: this should be suppressed from normal use like the other conditional child elements
