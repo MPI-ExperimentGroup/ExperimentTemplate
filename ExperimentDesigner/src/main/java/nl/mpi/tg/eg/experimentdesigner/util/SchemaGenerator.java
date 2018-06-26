@@ -244,11 +244,11 @@ public class SchemaGenerator {
                     for (FeatureType featureType1 : FeatureType.values()) {
                         if (featureType1.getIsChildType() == featureType.getRequiresChildType()) {
                             writer.append("<xs:element name=\"").append(featureType1.name()).append("\" type=\"").append(featureType1.name()).append("Type\"/>\n");
-                            if (featureType.canHaveStimulusTags() && featureType.isCanHaveRandomGrouping()) {
-                                writer.append("<xs:element name=\"randomGrouping\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
-                                writer.append("<xs:element name=\"stimuli\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
-                            }
                         }
+                    }
+                    if (featureType.canHaveStimulusTags() && featureType.isCanHaveRandomGrouping()) {
+                        writer.append("<xs:element name=\"randomGrouping\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
+                        writer.append("<xs:element name=\"stimuli\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
                     }
                     writer.append("</xs:all>\n");
                     break;
