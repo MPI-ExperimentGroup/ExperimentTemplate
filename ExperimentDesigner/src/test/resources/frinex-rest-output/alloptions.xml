@@ -305,9 +305,15 @@
             <plainText featureText="plainText in image"/>
         </image>
         <withStimuli adjacencyThreshold="2" eventTag="eventTag" randomise="true" repeatRandomWindow="3" minStimuliPerTag="3" maxStimuliPerTag="3" maxStimuli="3" repeatCount="3">
+            <beforeStimulus>
+                <plainText featureText="plainText in beforeStimulus"/>
+            </beforeStimulus>
             <eachStimulus>
                 <plainText featureText="plainText in eachStimulus"/>
             </eachStimulus>
+            <afterStimulus>
+                <plainText featureText="plainText in afterStimulus"/>
+            </afterStimulus>
             <randomGrouping storageField="groupAllocation_withStimuli">
                 <tag>ประเพณีบุญบั้งไฟ</tag>
                 <tag>Rocket</tag>
