@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import java.util.Arrays;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
@@ -27,7 +28,6 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
-import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
 import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 
 /**
@@ -55,9 +55,8 @@ public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusP
         }
     }
 
-    protected void preloadAllStimuli(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final List<Stimulus.Tag> selectionTags) {
-        final StimulusProvider stimulusProvider = new StimulusProvider();
-        stimulusProvider.getSubset(selectionTags, false, 1, 0, 0, "", -1);
+    protected void preloadAllStimuli(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final Stimulus.Tag[] selectionTags) {
+        stimulusProvider.getSubset(Arrays.asList(selectionTags), "", -1);
         // todo: this should be modified to get all relevant stimuli and load as required by type
         final List<Stimulus> pictureList = stimulusProvider.getDistractorList(stimulusProvider.getTotalStimuli());
         final HorizontalPanel progressBar = ((TimedStimulusView) simpleView).addProgressBar(0, 0, pictureList.size());
