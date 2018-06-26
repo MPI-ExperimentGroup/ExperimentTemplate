@@ -143,18 +143,13 @@ public abstract class AbstractPresenter implements Presenter {
         ((ComplexView) simpleView).addHtmlText(textString, styleName);
     }
 
-    protected void image(final String imageString, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-        image(imageString, null, postLoadMs, timedStimulusListener);
+    protected void image(final String imageString, int postLoadMs, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener) {
+        image(imageString, null, postLoadMs, loadedStimulusListener, failedStimulusListener);
     }
 
-    protected void image(final String imageString, final String styleName, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-        final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
-            @Override
-            public void postLoadTimerFired() {
-            }
-        };
+    protected void image(final String imageString, final String styleName, int postLoadMs, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener) {
         // consider fromTrustedString if there are issues with fromString when sdcard stimuli are used
-        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString((imageString.startsWith("file")) ? imageString : serviceLocations.staticFilesUrl() + imageString), styleName, postLoadMs, shownStimulusListener, timedStimulusListener, null);
+        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString((imageString.startsWith("file")) ? imageString : serviceLocations.staticFilesUrl() + imageString), styleName, postLoadMs, null, loadedStimulusListener, failedStimulusListener, null);
     }
 
     protected void addPadding() {

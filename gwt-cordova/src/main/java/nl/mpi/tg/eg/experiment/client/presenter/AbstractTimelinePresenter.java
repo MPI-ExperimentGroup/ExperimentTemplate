@@ -54,7 +54,7 @@ public abstract class AbstractTimelinePresenter extends AbstractPresenter implem
         this.stimulusProvider = stimulusProvider;
     }
 
-    protected void setVideoPanel(int percentOfPage, int maxHeight, int maxWidth, String poster, String src) {
+    protected void setVideoPanel(String src, int percentOfPage, int maxHeight, int maxWidth, String poster) {
         // todo: utilise the maxHeight and maxWidth correctly without affecting the AnnotationTimelinePanel
         final VideoPanel videoPanel = new VideoPanel(maxWidth + "%", poster, src);
         ((AnnotationTimelineView) simpleView).setVideoPanel(videoPanel);

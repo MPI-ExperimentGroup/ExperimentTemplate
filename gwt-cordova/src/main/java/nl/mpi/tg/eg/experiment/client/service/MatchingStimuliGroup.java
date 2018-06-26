@@ -34,14 +34,12 @@ public class MatchingStimuliGroup {
     private int stimulusIndex;
     private final List<Stimulus> stimulusArray;
     final boolean randomise;
-    final int repeatCount;
     final TimedStimulusListener hasMoreStimulusListener;
     final TimedStimulusListener endOfStimulusListener;
 
-    public MatchingStimuliGroup(final Stimulus correctStimulus, final List<Stimulus> stimuliArray, boolean randomise, int repeatCount, TimedStimulusListener hasMoreStimulusListener, TimedStimulusListener endOfStimulusListener) {
+    public MatchingStimuliGroup(final Stimulus correctStimulus, final List<Stimulus> stimuliArray, boolean randomise, TimedStimulusListener hasMoreStimulusListener, TimedStimulusListener endOfStimulusListener) {
         this.correctStimulus = correctStimulus;
         this.randomise = randomise;
-        this.repeatCount = repeatCount;
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
         stimulusIndex = -1;
