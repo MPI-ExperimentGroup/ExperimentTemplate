@@ -24,11 +24,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 import nl.mpi.tg.eg.experiment.client.util.GeneratedStimulusProvider;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.frinex.common.AbstractStimuliProvider;
@@ -104,11 +102,14 @@ public class StimulusProvider extends AbstractStimuliProvider {
         // todo: this value is not used at this point
     }
 
+    public void setexcludeRegex(String excludeRegex) {
+        // todo: this value is not used at this point
+    }
+
 //    @Override
 //    public void getAll() {
 //        stimulusSubsetArray.addAll(stimulusArray);
 //    }
-
     private Integer getDefaultInt(Integer foundValue) {
         return (foundValue == null) ? 0 : foundValue;
     }
@@ -122,11 +123,6 @@ public class StimulusProvider extends AbstractStimuliProvider {
             }
         }
         return wordTag;
-    }
-
-    @Override
-    public void getSubset(final List<Tag> selectionTags, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final String storedStimulusList, final int currentStimuliIndex) {
-        getSubset(selectionTags, stimulusArray.size(), randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, storedStimulusList, currentStimuliIndex);
     }
 
     @Override
@@ -186,13 +182,18 @@ public class StimulusProvider extends AbstractStimuliProvider {
         }
     }
 
-    @Override
     // todo: start using the StimulusSelector which contains min and max count values
-    public void getSubset(final List<Tag> selectionTags, final String storedStimulusList, final int currentStimuliIndex) {
-        getSubset(selectionTags, attributeMaxStimulusCount, attributeRandomise, attributeRepeatCount, attributeRepeatRandomWindow, attributeAdjacencyThreshold, storedStimulusList, currentStimuliIndex);
+    public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final String storedStimulusList, final int currentStimuliIndex) {
+        attributeMaxStimulusCount = maxStimulusCount;
+        attributeRandomise = randomise;
+        attributeRepeatCount = repeatCount;
+        attributeRepeatRandomWindow = repeatRandomWindow;
+        attributeAdjacencyThreshold = adjacencyThreshold;
+        getSubset(selectionTags, storedStimulusList, currentStimuliIndex);
     }
 
-    public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final String storedStimulusList, final int currentStimuliIndex) {
+    @Override
+    public void getSubset(final List<Tag> selectionTags, final String storedStimulusList, final int currentStimuliIndex) {
         List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
         if (rememberLastStimuli) {
             this.currentStimuliIndex = currentStimuliIndex;
@@ -201,7 +202,7 @@ public class StimulusProvider extends AbstractStimuliProvider {
             // todo: also load the list for other getSubset related methods
             loadStoredStimulusList(storedStimulusList, stimulusArray);
         } else {
-            getSubset(selectionTags, maxStimulusCount, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold, storedStimulusList, stimulusListCopy);
+            getSubset(selectionTags, storedStimulusList, stimulusListCopy);
         }
     }
 
@@ -228,11 +229,11 @@ public class StimulusProvider extends AbstractStimuliProvider {
     }
 
     @Override
-    public void getSubset(final List<Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final String storedStimulusList, List<Stimulus> stimulusListCopy) {
+    public void getSubset(final List<Tag> selectionTags, final String storedStimulusList, List<Stimulus> stimulusListCopy) {
         final List<Stimulus> stimulusSubsetArrayTemp = new ArrayList<>();
         stimulusSelectionArray.clear();
-        while (!stimulusListCopy.isEmpty() && maxStimulusCount > stimulusSubsetArrayTemp.size()) {
-            final int nextIndex = (randomise) ? new Random().nextInt(stimulusListCopy.size()) : 0;
+        while (!stimulusListCopy.isEmpty() && attributeMaxStimulusCount > stimulusSubsetArrayTemp.size()) {
+            final int nextIndex = (attributeRandomise) ? new Random().nextInt(stimulusListCopy.size()) : 0;
             Stimulus stimulus = stimulusListCopy.remove(nextIndex);
             if (stimulus.getTags().containsAll(selectionTags)) {
                 stimulusSelectionArray.add(stimulus);
@@ -241,8 +242,8 @@ public class StimulusProvider extends AbstractStimuliProvider {
                 }
             }
         }
-        applyRepeatRandomWindow(stimulusSubsetArrayTemp, repeatCount, repeatRandomWindow, maxStimulusCount);
-        applyAdjacencyCheck(adjacencyThreshold);
+        applyRepeatRandomWindow(stimulusSubsetArrayTemp, attributeRepeatCount, attributeRepeatRandomWindow, attributeMaxStimulusCount);
+        applyAdjacencyCheck(attributeAdjacencyThreshold);
     }
 
     protected void applyAdjacencyCheck(final int adjacencyThreshold) {
@@ -351,97 +352,95 @@ public class StimulusProvider extends AbstractStimuliProvider {
         }
     }
 
-    @Override
-    public void getSubset(final int maxWordUse, final String storedStimulusList, final int currentStimuliIndex, final List<Tag> speakerTags, final List<Tag> wordTags, final int maxSpeakerWordCount) {
-        this.currentStimuliIndex = currentStimuliIndex;
-        // we now also handle subsetting with setCount and seenList
-        HashMap<Tag, Integer> wordCounter = new HashMap<>();
-        HashMap<String, Integer> similarityCounter = new HashMap<>();
-        // preload counters
-        for (Stimulus stimulus : new ArrayList<>(stimulusArray)) {
-            if (storedStimulusList.contains("-" + stimulus.getUniqueId() + "-")) {
-                Tag wordTag = getFirstTagMatch(wordTags, stimulus);
-                Tag speakerTag = getFirstTagMatch(speakerTags, stimulus);
-                if (wordTag != null && speakerTag != null) {
-                    final String wordAndSpeaker = wordTag.name() + speakerTag.name();
-                    Integer wordCount = getDefaultInt(wordCounter.get(wordTag));
-                    Integer speakerWordCount = getDefaultInt(similarityCounter.get(wordAndSpeaker));
-                    speakerWordCount++;
-                    wordCount++;
-                    similarityCounter.put(wordAndSpeaker, speakerWordCount);
-                    wordCounter.put(wordTag, wordCount);
-                }
-            }
-        }
-        stimulusSubsetArray.clear();
-        List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
-        while (!stimulusListCopy.isEmpty()) {
-            Stimulus stimulus = stimulusListCopy.remove(new Random().nextInt(stimulusListCopy.size()));
-            if (!storedStimulusList.contains("-" + stimulus.getUniqueId() + "-")) {
-                Tag wordTag = getFirstTagMatch(wordTags, stimulus);
-                Tag speakerTag = getFirstTagMatch(speakerTags, stimulus);
-                if (wordTag != null && speakerTag != null) {
-                    final String wordAndSpeaker = wordTag.name() + speakerTag.name();
-                    Integer wordCount = getDefaultInt(wordCounter.get(wordTag));
-                    Integer speakerWordCount = getDefaultInt(similarityCounter.get(wordAndSpeaker));
-                    if (wordCount < maxWordUse && speakerWordCount < maxSpeakerWordCount) {
-                        System.out.println("adding based on: " + wordTag + " " + wordCount + " " + wordAndSpeaker + " " + speakerWordCount);
-                        speakerWordCount++;
-                        wordCount++;
-                        similarityCounter.put(wordAndSpeaker, speakerWordCount);
-                        wordCounter.put(wordTag, wordCount);
-                        stimulusSubsetArray.add(stimulus);
-                    } else {
-                        System.out.println("rejecting based on: " + wordTag + " " + wordCount + " " + wordAndSpeaker + " " + speakerWordCount);
-                    }
-                }
-            }
-        }
-//        totalStimuli = stimulusSubsetArray.size();
-//        setCurrentTags(selectionTags); // todo: this tag list is inadequate and needs to take tow arrays in this case
-    }
-
-    @Override
-    public void getSubset(final Tag similarity, final int maxWordUse, final List<Tag> wordTags, final String storedStimulusList, final int currentStimuliIndex) {
-        this.currentStimuliIndex = currentStimuliIndex;
-        // we now also handle subsetting with setCount and seenList
-        HashMap<Tag, Integer> wordCounter = new HashMap<>();
-        // preload counters
-        for (Stimulus stimulus : new ArrayList<>(stimulusArray)) {
-            if (storedStimulusList.contains("-" + stimulus.getUniqueId() + "-")) {
-                Set<Tag> commonTags = new HashSet<>(wordTags);
-                commonTags.retainAll(stimulus.getTags());
-                for (Tag wordTag : commonTags) {
-                    Integer value = getDefaultInt(wordCounter.get(wordTag));
-                    value++;
-                    wordCounter.put(wordTag, value);
-                }
-            }
-        }
-        stimulusSubsetArray.clear();
-        List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
-        while (!stimulusListCopy.isEmpty()) {
-            Stimulus stimulus = stimulusListCopy.remove(new Random().nextInt(stimulusListCopy.size()));
-            if (stimulus.getTags().contains(similarity) && !storedStimulusList.contains("-" + stimulus.getUniqueId() + "-")) {
-                List<Tag> commonTags = new ArrayList<>(wordTags);
-                commonTags.retainAll(stimulus.getTags());
-                for (Tag wordTag : commonTags) {
-                    Integer value = getDefaultInt(wordCounter.get(wordTag));
-                    if (value < maxWordUse) {
-                        value++;
-                        wordCounter.put(wordTag, value);
-                        stimulusSubsetArray.add(stimulus);
-//                        System.out.println("adding based on: " + wordTag + " " + value);
-                        break;
-                    } else {
-//                        System.out.println("rejecting based on: " + wordTag + " " + value);
-                    }
-                }
-            }
-        }
-//        totalStimuli = stimulusSubsetArray.size();
-    }
-
+//    @Override
+//    public void getSubset(final int maxWordUse, final String storedStimulusList, final int currentStimuliIndex, final List<Tag> speakerTags, final List<Tag> wordTags, final int maxSpeakerWordCount) {
+//        this.currentStimuliIndex = currentStimuliIndex;
+//        // we now also handle subsetting with setCount and seenList
+//        HashMap<Tag, Integer> wordCounter = new HashMap<>();
+//        HashMap<String, Integer> similarityCounter = new HashMap<>();
+//        // preload counters
+//        for (Stimulus stimulus : new ArrayList<>(stimulusArray)) {
+//            if (storedStimulusList.contains("-" + stimulus.getUniqueId() + "-")) {
+//                Tag wordTag = getFirstTagMatch(wordTags, stimulus);
+//                Tag speakerTag = getFirstTagMatch(speakerTags, stimulus);
+//                if (wordTag != null && speakerTag != null) {
+//                    final String wordAndSpeaker = wordTag.name() + speakerTag.name();
+//                    Integer wordCount = getDefaultInt(wordCounter.get(wordTag));
+//                    Integer speakerWordCount = getDefaultInt(similarityCounter.get(wordAndSpeaker));
+//                    speakerWordCount++;
+//                    wordCount++;
+//                    similarityCounter.put(wordAndSpeaker, speakerWordCount);
+//                    wordCounter.put(wordTag, wordCount);
+//                }
+//            }
+//        }
+//        stimulusSubsetArray.clear();
+//        List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
+//        while (!stimulusListCopy.isEmpty()) {
+//            Stimulus stimulus = stimulusListCopy.remove(new Random().nextInt(stimulusListCopy.size()));
+//            if (!storedStimulusList.contains("-" + stimulus.getUniqueId() + "-")) {
+//                Tag wordTag = getFirstTagMatch(wordTags, stimulus);
+//                Tag speakerTag = getFirstTagMatch(speakerTags, stimulus);
+//                if (wordTag != null && speakerTag != null) {
+//                    final String wordAndSpeaker = wordTag.name() + speakerTag.name();
+//                    Integer wordCount = getDefaultInt(wordCounter.get(wordTag));
+//                    Integer speakerWordCount = getDefaultInt(similarityCounter.get(wordAndSpeaker));
+//                    if (wordCount < maxWordUse && speakerWordCount < maxSpeakerWordCount) {
+//                        System.out.println("adding based on: " + wordTag + " " + wordCount + " " + wordAndSpeaker + " " + speakerWordCount);
+//                        speakerWordCount++;
+//                        wordCount++;
+//                        similarityCounter.put(wordAndSpeaker, speakerWordCount);
+//                        wordCounter.put(wordTag, wordCount);
+//                        stimulusSubsetArray.add(stimulus);
+//                    } else {
+//                        System.out.println("rejecting based on: " + wordTag + " " + wordCount + " " + wordAndSpeaker + " " + speakerWordCount);
+//                    }
+//                }
+//            }
+//        }
+////        totalStimuli = stimulusSubsetArray.size();
+////        setCurrentTags(selectionTags); // todo: this tag list is inadequate and needs to take tow arrays in this case
+//    }
+//    @Override
+//    public void getSubset(final Tag similarity, final int maxWordUse, final List<Tag> wordTags, final String storedStimulusList, final int currentStimuliIndex) {
+//        this.currentStimuliIndex = currentStimuliIndex;
+//        // we now also handle subsetting with setCount and seenList
+//        HashMap<Tag, Integer> wordCounter = new HashMap<>();
+//        // preload counters
+//        for (Stimulus stimulus : new ArrayList<>(stimulusArray)) {
+//            if (storedStimulusList.contains("-" + stimulus.getUniqueId() + "-")) {
+//                Set<Tag> commonTags = new HashSet<>(wordTags);
+//                commonTags.retainAll(stimulus.getTags());
+//                for (Tag wordTag : commonTags) {
+//                    Integer value = getDefaultInt(wordCounter.get(wordTag));
+//                    value++;
+//                    wordCounter.put(wordTag, value);
+//                }
+//            }
+//        }
+//        stimulusSubsetArray.clear();
+//        List<Stimulus> stimulusListCopy = new ArrayList<>(stimulusArray);
+//        while (!stimulusListCopy.isEmpty()) {
+//            Stimulus stimulus = stimulusListCopy.remove(new Random().nextInt(stimulusListCopy.size()));
+//            if (stimulus.getTags().contains(similarity) && !storedStimulusList.contains("-" + stimulus.getUniqueId() + "-")) {
+//                List<Tag> commonTags = new ArrayList<>(wordTags);
+//                commonTags.retainAll(stimulus.getTags());
+//                for (Tag wordTag : commonTags) {
+//                    Integer value = getDefaultInt(wordCounter.get(wordTag));
+//                    if (value < maxWordUse) {
+//                        value++;
+//                        wordCounter.put(wordTag, value);
+//                        stimulusSubsetArray.add(stimulus);
+////                        System.out.println("adding based on: " + wordTag + " " + value);
+//                        break;
+//                    } else {
+////                        System.out.println("rejecting based on: " + wordTag + " " + value);
+//                    }
+//                }
+//            }
+//        }
+////        totalStimuli = stimulusSubsetArray.size();
+//    }
     // todo: audio and image evetns do not indicate phase learning or test
     // todo: next button could have its own timer to make reporting easier
     @Override
@@ -535,7 +534,7 @@ public class StimulusProvider extends AbstractStimuliProvider {
     }
 
     @Override
-    public List<Stimulus> getMatchingStimuli(final String matchingRegex, final int maxStimulusCount) {
+    public List<Stimulus> getMatchingStimuli(final String matchingRegex) {
         final List<Stimulus> matchingStimuli = new ArrayList<>();
         RegExp pattern = RegExp.compile(matchingRegex);
         MatchResult matcher = pattern.exec(getCurrentStimulus().getUniqueId());
