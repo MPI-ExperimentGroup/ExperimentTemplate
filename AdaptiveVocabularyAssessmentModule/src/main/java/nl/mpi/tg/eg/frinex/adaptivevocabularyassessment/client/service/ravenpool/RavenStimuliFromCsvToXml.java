@@ -59,15 +59,19 @@ public class RavenStimuliFromCsvToXml {
             StringBuilder currentSt = new StringBuilder();
             currentSt.append("<stimulus ");
 
-            String uniqueId = record.get("Item").trim();
-            if (uniqueId == null) {
-                throw new IOException(uniqueId + "is undefined");
-            }
-            
             String part = record.get("Part").trim();
             if (part == null) {
                 throw new IOException(part + "is undefined");
             }
+            
+            String uniqueId = record.get("Item").trim();
+            if (uniqueId == null) {
+                throw new IOException(uniqueId + "is undefined");
+            } else {
+                uniqueId = "raven_"+part+"_"+uniqueId;
+            }
+            
+           
             
             String picture = record.get("Picture").trim();
             if (picture== null) {
@@ -81,7 +85,7 @@ public class RavenStimuliFromCsvToXml {
 
             currentSt.append(" identifier=\"").append(uniqueId).append("\" ");
             currentSt.append(" imagePath=\"").append(stimuliDir).append(picture).append("\" ");
-            currentSt.append(" tags=\"").append(part).append("\" ");
+            currentSt.append(" tags=\"").append("raven").append(" ").append(part).append("\" ");
             currentSt.append(" ratingLabels=\"").append(ratingLabels).append("\" ");
             currentSt.append(" correctResponses=\"").append(correctAnswer).append("\" ");
             currentSt.append(" pauseMs=\"0\" ");
