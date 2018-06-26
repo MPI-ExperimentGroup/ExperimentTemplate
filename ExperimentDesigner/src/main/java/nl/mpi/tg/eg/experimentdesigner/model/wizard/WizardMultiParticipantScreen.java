@@ -576,6 +576,9 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+        groupResponseStimulusImage.addFeature(FeatureType.mediaLoaded, null);
+        groupResponseStimulusImage.addFeature(FeatureType.mediaLoadFailed, null);
+        groupResponseStimulusImage.addFeature(FeatureType.mediaPlaybackComplete, null);
         allNetworkActivityColumn1.getPresenterFeatureList().add(groupResponseStimulusImage);
         allNetworkActivityColumn1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "Gekozen"));
         allNetworkActivityColumn2.getPresenterFeatureList().add(groupResponseFeedback);
