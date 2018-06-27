@@ -99,6 +99,7 @@ public class FlankerStimuliFromCsvToXml {
 
             label = label.replaceAll("<", "&lt;");
             label = label.replaceAll(">", "&gt;");
+            label = "&lt;span id='labelId_"+i+"'&gt; "+label+"&lt;/span&gt;";
             
             currentSt.append(" identifier=\"").append(uniqueId).append("\" ");
             currentSt.append(" label=\"").append(label).append("\" ");
