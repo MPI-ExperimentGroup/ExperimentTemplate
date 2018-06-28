@@ -32,7 +32,7 @@
     </presenter>
     <presenter menuLabel="Flanker test" displayOrder="3" next="Accord_Flanker" type="metadata" self="Edit_User_Flanker" title="">
         <metadataField fieldName="workerId"/>
-        <metadataField fieldName="experimentName"/>
+        <metadataField fieldName="experimentName" value ="flanker"/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
             <onSuccess>
@@ -616,7 +616,7 @@
                         <htmlText featureText="Dat was het! Bedankt voor het meedoen."/>
                         <addPadding/>
                         <addPadding/>
-                        <eraseUsersDataButton featureText="Schoonmaak locaal geheugen en opniew beginnen" target="Menu"/>
+                        <eraseUsersDataButton featureText="Locaal geheugen schoonmaken en opniew beginnen" target="Menu"/>
                         <addPadding/>
                         <addPadding/>
                         <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
