@@ -39,6 +39,7 @@ var PropertiesReader = require('properties-reader');
         var http = require('http');
 //        var fs = require('fs');
 //var configServer = properties.get('webservice.configServer');
+        var m2Settings = properties.get('settings.m2Settings');
         var stagingServer = properties.get('staging.serverName');
         var stagingServerUrl = properties.get('staging.serverUrl');
         var stagingGroupsSocketUrl = properties.get('staging.groupsSocketUrl');
@@ -62,7 +63,8 @@ var PropertiesReader = require('properties-reader');
 
 //installDesignServer = function () {
 //    var mvngui = require('maven').create({
-//        cwd: __dirname + "/ExperimentDesigner"
+//        cwd: __dirname + "/ExperimentDesigner",
+//                settings: m2Settings
 //    });
 //    mvngui.execute(['clean', 'tomcat7:redeploy'], {
 //        'skipTests': true, '-pl': 'ExperimentDesigner',
@@ -99,7 +101,8 @@ var PropertiesReader = require('properties-reader');
 //                
                 // we create a new mvn instance for each child pom
                 var mvngui = require('maven').create({
-        cwd: __dirname + "/gwt-cordova"
+        cwd: __dirname + "/gwt-cordova",
+                settings: m2Settings
         });
                 mvngui.execute(['clean', 'tomcat7:redeploy'], {
 //                mvngui.execute(['clean', 'gwt:run'], {
@@ -120,7 +123,8 @@ var PropertiesReader = require('properties-reader');
                 buildApk();
                 console.log("buildApk finished");
                 var mvnadmin = require('maven').create({
-        cwd: __dirname + "/registration"
+        cwd: __dirname + "/registration",
+                settings: m2Settings
         });
                 mvnadmin.execute(['clean', 'tomcat7:redeploy'], {
                 'skipTests': true, '-pl': 'frinex-admin',
@@ -215,7 +219,8 @@ var PropertiesReader = require('properties-reader');
 //        console.log(currentEntry);
 //        // we create a new mvn instance for each child pom
 //        var mvngui = require('maven').create({
-//            cwd: __dirname + "/gwt-cordova"
+//            cwd: __dirname + "/gwt-cordova",
+//                settings: m2Directory
 //        });
 //        mvngui.execute(['clean', 'tomcat7:redeploy'], {
 ////                mvngui.execute(['clean', 'gwt:run'], {
