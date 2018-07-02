@@ -31,6 +31,7 @@ import nl.mpi.tg.eg.experiment.client.service.DataFactory;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
+import nl.mpi.tg.eg.experiment.client.util.GeneratedStimulusProvider;
 import nl.mpi.tg.eg.experiment.client.view.AnnotationTimelinePanel;
 import nl.mpi.tg.eg.experiment.client.view.AnnotationTimelineView;
 import nl.mpi.tg.eg.experiment.client.view.VideoPanel;
@@ -47,11 +48,11 @@ public abstract class AbstractTimelinePresenter extends AbstractPresenter implem
     private final UserResults userResults;
     private String storageTag = "temp_tag";
 
-    public AbstractTimelinePresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage, StimulusProvider stimulusProvider) {
+    public AbstractTimelinePresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage) {
         super(widgetTag, new AnnotationTimelineView(audioPlayer));
         this.localStorage = localStorage;
         this.userResults = userResults;
-        this.stimulusProvider = stimulusProvider;
+        this.stimulusProvider = new nl.mpi.tg.eg.experiment.client.service.StimulusProvider(GeneratedStimulusProvider.values);
     }
 
     protected void setVideoPanel(String src, int percentOfPage, int maxHeight, int maxWidth, String poster) {
