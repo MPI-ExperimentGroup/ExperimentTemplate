@@ -203,7 +203,9 @@ public class TimedStimulusView extends ComplexView {
         image.addErrorHandler(new ErrorHandler() {
             @Override
             public void onError(ErrorEvent event) {
-                failedStimulusListener.postLoadTimerFired();
+                if (failedStimulusListener != null) {
+                    failedStimulusListener.postLoadTimerFired();
+                }
             }
         });
         image.addLoadHandler(new LoadHandler() {

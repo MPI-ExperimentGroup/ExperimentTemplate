@@ -34,10 +34,44 @@
         <htmlText featureText="Instructies 1: &lt;br/&gt;&lt;br/&gt;Druk op [Z] als de zin kompleet is, of op [.]."/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="First_Stimuli_Screen"/>
     </presenter>
+    <presenter menuLabel="With Stimuli Screen" next="First_Stimuli_Screen" type="stimulus" self="With_Stimuli_Screen" title="With Stimuli Screen">
+        <withStimuli eventTag="With Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <beforeStimulus>       
+                <plainText featureText="plainText in beforeStimulus"/>         
+            </beforeStimulus>
+            <eachStimulus>
+                <plainText featureText="plainText in eachStimulus"/>
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                        <addPadding/>
+                        <ratingButton dataChannel="1" ratingLabelRight="" ratingLabels="zin compleet,zin onvolledig" ratingLabelLeft=""/>
+                    </mediaPlaybackComplete>
+                </stimulusPresent>
+            </eachStimulus>
+            <afterStimulus>       
+                <plainText featureText="plainText in afterStimulus"/>         
+                <targetButton featureText="Next Screen" target="Second_Informatie"/>
+            </afterStimulus>
+            <randomGrouping storageField="item">
+                <tag>cond_1</tag>
+                <tag>cond_2</tag>
+                <tag>cond_3</tag>
+            </randomGrouping>
+            <stimuli>
+                <tag>First_Stimuli_Screen</tag>
+            </stimuli>
+        </withStimuli>
+    </presenter>
     <presenter menuLabel="First Stimuli Screen" next="Second_Informatie" type="stimulus" self="First_Stimuli_Screen" title="First Stimuli Screen">
         <loadStimulus eventTag="First Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <withStimuli>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
@@ -46,7 +80,6 @@
                         <ratingButton dataChannel="1" ratingLabelRight="" ratingLabels="zin compleet,zin onvolledig" ratingLabelLeft=""/>
                     </mediaPlaybackComplete>
                 </stimulusPresent>
-                </withStimuli>
                 <targetButton featureText="Next Screen" target="Second_Informatie"/>
             </hasMoreStimulus>
             <endOfStimulus>
