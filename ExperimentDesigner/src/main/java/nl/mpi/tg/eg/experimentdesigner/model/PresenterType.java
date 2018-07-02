@@ -173,6 +173,7 @@ public enum PresenterType {
         endAudioRecorderTag, startAudioRecorder, targetFooterButton, actionFooterButton
     }),
     preload(new FeatureType[]{
+        logTimeStamp,
         versionData,
         withStimuli, eachStimulus,
         activateRandomItem,
@@ -217,6 +218,7 @@ public enum PresenterType {
         pause,
         responseCorrect, responseIncorrect, hasMoreStimulus, endOfStimulus}),
     stimulus(new FeatureType[]{
+        preloadAllStimuli,
         showColourReport,
         activateRandomItem,
         displayCompletionCode, sendMetadata,
