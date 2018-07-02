@@ -24,4 +24,14 @@
             <activatedProfile>dev</activatedProfile>
         </activatedProfiles>
     </action>
+    <action>
+            <actionName>clean</actionName>
+            <packagings>
+                <packaging>*</packaging>
+            </packagings>
+            <goals>
+                <goal>clean</goal>
+                <goal>generate-resources</goal>
+            </goals>
+        </action>
 </actions>
