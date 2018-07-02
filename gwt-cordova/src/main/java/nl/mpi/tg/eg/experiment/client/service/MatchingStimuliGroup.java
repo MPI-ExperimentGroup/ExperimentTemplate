@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experiment.client.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import nl.mpi.tg.eg.experiment.client.listener.CurrentStimulusListener;
 import nl.mpi.tg.eg.frinex.common.StimuliProvider;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -34,10 +35,10 @@ public class MatchingStimuliGroup {
     private int stimulusIndex;
     private final List<Stimulus> stimulusArray;
     final boolean randomise;
-    final TimedStimulusListener hasMoreStimulusListener;
+    final CurrentStimulusListener hasMoreStimulusListener;
     final TimedStimulusListener endOfStimulusListener;
 
-    public MatchingStimuliGroup(final Stimulus correctStimulus, final List<Stimulus> stimuliArray, boolean randomise, TimedStimulusListener hasMoreStimulusListener, TimedStimulusListener endOfStimulusListener) {
+    public MatchingStimuliGroup(final Stimulus correctStimulus, final List<Stimulus> stimuliArray, boolean randomise, CurrentStimulusListener hasMoreStimulusListener, TimedStimulusListener endOfStimulusListener) {
         this.correctStimulus = correctStimulus;
         this.randomise = randomise;
         this.hasMoreStimulusListener = hasMoreStimulusListener;
@@ -69,11 +70,11 @@ public class MatchingStimuliGroup {
         return (stimulusArray.size() > stimulusIndex);
     }
 
-    public void showNextStimulus() {
+    public void showNextStimulus(final StimuliProvider stimulusProvider) {
         if ((stimulusArray.size() <= stimulusIndex)) {
             endOfStimulusListener.postLoadTimerFired();
         } else {
-            hasMoreStimulusListener.postLoadTimerFired();
+            hasMoreStimulusListener.postLoadTimerFired(stimulusProvider, stimulusArray.get(stimulusIndex));
         }
     }
 }
