@@ -122,7 +122,11 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
         }, messages.reportDateFormat(), emailAddressMetadataField, scoreLog);
     }
 
-    public void showColourReport(final float scoreThreshold, final MetadataField emailAddressMetadataField, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold) { // todo: use scoreThreshold
+    public void showColourReport(final int scoreThreshold, final int errorThreshold, final int potentialThreshold, final MetadataField emailAddressMetadataField, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold) { // todo: use scoreThreshold
+        showColourReport((float) scoreThreshold, (float) errorThreshold, (float) potentialThreshold, emailAddressMetadataField, aboveThreshold, belowThreshold);
+    }
+
+    public void showColourReport(final float scoreThreshold, final Float errorThreshold, final Float potentialThreshold, final MetadataField emailAddressMetadataField, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold) { // todo: use scoreThreshold
         final NumberFormat numberFormat2 = NumberFormat.getFormat("0.00");
 //        final NumberFormat numberFormat3 = NumberFormat.getFormat("0.000");
         final ScoreCalculator scoreCalculator = new ScoreCalculator(userResults);

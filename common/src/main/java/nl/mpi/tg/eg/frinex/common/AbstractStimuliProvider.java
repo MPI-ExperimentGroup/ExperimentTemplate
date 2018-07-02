@@ -36,7 +36,7 @@ public abstract class AbstractStimuliProvider implements StimuliProvider {
     }
 
     @Override
-    public List<Stimulus> getMatchingStimuli(String matchingRegex, int maxStimulusCount) {
+    public List<Stimulus> getMatchingStimuli(String matchingRegex) {
         throw new UnsupportedOperationException("getMatchingStimuli");
     }
 
@@ -51,27 +51,12 @@ public abstract class AbstractStimuliProvider implements StimuliProvider {
     }
 
     @Override
-    public void getSubset(List<Stimulus.Tag> selectionTags, boolean randomise, int repeatCount, int repeatRandomWindow, int adjacencyThreshold, String stimuliStateSnapshot, int currentStimuliIndex) {
-        initialiseStimuliState(stimuliStateSnapshot);
-    }
-
-    @Override
     public void getSubset(List<Stimulus.Tag> selectionTags, String stimuliStateSnapshot, int currentStimuliIndex) {
         initialiseStimuliState(stimuliStateSnapshot);
     }
 
     @Override
-    public void getSubset(List<Stimulus.Tag> selectionTags, int maxStimulusCount, boolean randomise, int repeatCount, int repeatRandomWindow, int adjacencyThreshold, String stimuliStateSnapshot, List<Stimulus> stimulusListCopy) {
-        initialiseStimuliState(stimuliStateSnapshot);
-    }
-
-    @Override
-    public void getSubset(int maxWordUse, String stimuliStateSnapshot, int currentStimuliIndex, List<Stimulus.Tag> speakerTags, List<Stimulus.Tag> wordTags, int maxSpeakerWordCount) {
-        initialiseStimuliState(stimuliStateSnapshot);
-    }
-
-    @Override
-    public void getSubset(Stimulus.Tag similarity, int maxWordUse, List<Stimulus.Tag> wordTags, String stimuliStateSnapshot, int currentStimuliIndex) {
+    public void getSubset(List<Stimulus.Tag> selectionTags, String stimuliStateSnapshot, List<Stimulus> stimulusListCopy) {
         initialiseStimuliState(stimuliStateSnapshot);
     }
 
