@@ -30,7 +30,6 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 public interface StimuliProvider {
 
 //    void getAll();
-
     /**
      * getCurrentStimulus returns the currently selected stimulus
      *
@@ -62,21 +61,15 @@ public interface StimuliProvider {
 
     List<Stimulus> getDistractorList(int maxStimuli);
 
-    List<Stimulus> getMatchingStimuli(final String matchingRegex, final int maxStimulusCount);
+    List<Stimulus> getMatchingStimuli(final String matchingRegex);
 
     void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final String storedStimulusList, final int currentStimuliIndex);
 
     Stimulus getStimuliFromString(final String stimuliString);
 
-    void getSubset(final List<Stimulus.Tag> selectionTags, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final String storedStimulusList, final int currentStimuliIndex);
-
     void getSubset(final List<Stimulus.Tag> selectionTags, final String storedStimulusList, final int currentStimuliIndex);
 
-    void getSubset(final List<Stimulus.Tag> selectionTags, final int maxStimulusCount, final boolean randomise, final int repeatCount, final int repeatRandomWindow, final int adjacencyThreshold, final String storedStimulusList, List<Stimulus> stimulusListCopy);
-
-    void getSubset(final int maxWordUse, final String storedStimulusList, final int currentStimuliIndex, final List<Stimulus.Tag> speakerTags, final List<Stimulus.Tag> wordTags, final int maxSpeakerWordCount);
-
-    void getSubset(final Stimulus.Tag similarity, final int maxWordUse, final List<Stimulus.Tag> wordTags, final String storedStimulusList, final int currentStimuliIndex);
+    void getSubset(final List<Stimulus.Tag> selectionTags, final String storedStimulusList, List<Stimulus> stimulusListCopy);
 
     /**
      * getTotalStimuli returns the total number of stimuli
