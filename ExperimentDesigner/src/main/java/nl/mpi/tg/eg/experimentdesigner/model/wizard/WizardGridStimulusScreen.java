@@ -696,6 +696,10 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             timeoutFeature.addFeature(FeatureType.cancelPauseTimers, null);
             timeoutFeature.addFeature(FeatureType.clearPage, null, "");
             final PresenterFeature timeoutImageFeature = timeoutFeature.addFeature(FeatureType.backgroundImage, null, Integer.toString(getTimeoutShowMs(storedWizardScreenData)), getTimeoutImage(storedWizardScreenData), "");
+            final PresenterFeature timeoutCodeAudio = timeoutImageFeature.addFeature(FeatureType.stimulusCodeAudio, null, "0", "0", "timeout", "false");
+            timeoutCodeAudio.addFeature(FeatureType.mediaLoaded, null);
+            timeoutCodeAudio.addFeature(FeatureType.mediaLoadFailed, null);
+            timeoutCodeAudio.addFeature(FeatureType.mediaPlaybackComplete, null);
             timeoutImageFeature.addFeature(FeatureType.nextStimulus, null, "false");
         }
         final PresenterFeature tableFeature = new PresenterFeature(FeatureType.table, null);
