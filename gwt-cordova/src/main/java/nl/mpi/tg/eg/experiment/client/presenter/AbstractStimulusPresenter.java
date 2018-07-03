@@ -863,23 +863,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     @Deprecated
-    protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
-        stimulusPresent(stimulusProvider, currentStimulus, percentOfPage, maxHeight, maxWidth, AnimateTypes.none, postLoadMs, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener);
-    }
-
-    @Deprecated
-    protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
-        stimulusPresent(stimulusProvider, currentStimulus, percentOfPage, maxHeight, maxWidth, animateType, true, null, postLoadMs, null, null, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener, null);
+    protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final boolean showControls, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+        stimulusPresent(stimulusProvider, currentStimulus, percentOfPage, maxHeight, maxWidth, AnimateTypes.none, showControls, postLoadMs, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener);
     }
 
     @Deprecated
     protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
         stimulusPresent(stimulusProvider, currentStimulus, percentOfPage, maxHeight, maxWidth, animateType, showControls, null, postLoadMs, null, null, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener, null);
-    }
-
-    @Deprecated
-    protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, String regex, String replacement, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
-        stimulusPresent(stimulusProvider, currentStimulus, percentOfPage, maxHeight, maxWidth, animateType, true, null, postLoadMs, regex, replacement, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener, null);
     }
 
     @Deprecated
@@ -1230,6 +1220,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         super.startAudioRecorder(true, subdirectoryName, directoryName, (filePerStimulus) ? currentStimulus.getUniqueId() : "");
     }
 
+    protected void showStimulusGrid(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener, final int columnCount, final String imageWidth, final String eventTag, final int dataChannel) {
+        final int maxStimuli = -1;
+        final AnimateTypes animateType = AnimateTypes.none;
+        showStimulusGrid(appEventListner, stimulusProvider, currentStimulus, postLoadCorrectMs, correctListener, postLoadIncorrectMs, incorrectListener, maxStimuli, columnCount, imageWidth, animateType, eventTag, dataChannel);
+    }
+
     protected void showStimulusGrid(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener, final int maxStimuli, final int columnCount, final String imageWidth, final AnimateTypes animateType, final String eventTag, final int dataChannel) {
         ((TimedStimulusView) simpleView).stopAudio();
         TimedStimulusListener correctTimedListener = new TimedStimulusListener() {
@@ -1292,6 +1288,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         disableStimulusButtons();
         ((TimedStimulusView) simpleView).endGrid();
         //((TimedStimulusView) simpleView).addAudioPlayerGui();
+    }
+
+    protected void matchingStimulusGrid(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener, final String matchingRegex, final boolean randomise, final int columnCount, int maxWidth, final int dataChannel) {
+        final int maxStimulusCount = -1;
+        final AnimateTypes animateType = AnimateTypes.none;
+        matchingStimulusGrid(appEventListner, stimulusProvider, currentStimulus, postLoadCorrectMs, correctListener, postLoadIncorrectMs, incorrectListener, matchingRegex, maxStimulusCount, randomise, columnCount, maxWidth, animateType, dataChannel);
     }
 
     protected void matchingStimulusGrid(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener, final String matchingRegex, final int maxStimulusCount, final boolean randomise, final int columnCount, int maxWidth, final AnimateTypes animateType, final int dataChannel) {
@@ -1533,6 +1535,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).stopVideo();
     }
 
+    protected void groupResponseStimulusImage(final StimuliProvider stimulusProvider, int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+        final AnimateTypes animateType = AnimateTypes.none;
+        groupResponseStimulusImage(stimulusProvider, percentOfPage, maxHeight, maxWidth, animateType, postLoadMs, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener);
+    }
+
     protected void groupResponseStimulusImage(final StimuliProvider stimulusProvider, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
         stimulusPresent(stimulusProvider, stimulusProvider.getStimuliFromString(groupParticipantService.getResponseStimulusId()), percentOfPage, maxHeight, maxWidth, animateType, false, null, postLoadMs, null, null, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener, null);
     }
@@ -1633,6 +1640,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
+    protected void prevStimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final String buttonLabel, final boolean repeatIncorrect) {
+        final int hotKey = -1;
+        prevStimulusButton(stimulusProvider, currentStimulus, eventTag, buttonLabel, repeatIncorrect, hotKey);
+    }
+
     protected void prevStimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final String buttonLabel, final boolean repeatIncorrect, final int hotKey) {
         PresenterEventListner eventListner = new PresenterEventListner() {
 
@@ -1654,6 +1666,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         nextButtonEventListnerList.add(eventListner);
         final StimulusButton prevButton = ((TimedStimulusView) simpleView).addOptionButton(eventListner);
         prevButton.setEnabled(stimulusProvider.hasNextStimulus(-1));
+    }
+
+    protected void nextStimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final String buttonLabel, final boolean repeatIncorrect) {
+        final int hotKey = -1;
+        nextStimulusButton(stimulusProvider, currentStimulus, eventTag, buttonLabel, repeatIncorrect, hotKey);
     }
 
     protected void nextStimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final String buttonLabel, final boolean repeatIncorrect, final int hotKey) {

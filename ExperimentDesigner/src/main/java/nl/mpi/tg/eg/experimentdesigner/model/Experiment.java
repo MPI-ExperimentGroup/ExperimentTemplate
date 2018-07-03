@@ -323,6 +323,13 @@ public class Experiment implements Serializable {
 //    public int getMetadataCount() {
 //        return metadata.size();
 //    }
+    @Transient
+    public void addMetadataOnce(Metadata metadataField) {
+        if (!metadata.contains(metadataField)) {
+            metadata.add(metadataField);
+        }
+    }
+
     public void setMetadata(List<Metadata> metadata) {
         this.metadata = metadata;
     }

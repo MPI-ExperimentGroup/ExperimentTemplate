@@ -244,6 +244,7 @@ public enum PresenterType {
         loadKinTypeStringDiagram,
         preloadAllStimuli}),
     colourPicker(new FeatureType[]{
+        startTimer, clearTimer, logTimerValue,compareTimer,
         row, plainText, stimulusPresent,
         countdownLabel, trigger, table, triggerListener, touchInputCaptureStart, column,
         stimulusMetadataField,
@@ -322,6 +323,7 @@ public enum PresenterType {
         userInfo,
         menuItem}),
     colourReport(new FeatureType[]{
+        startTimer, clearTimer, logTimerValue,compareTimer,
         activateRandomItem,
         versionData,
         randomMsPause, triggerListener, trigger, countdownLabel, stimulusPresent, clearCurrentScore,

@@ -16,7 +16,7 @@
     <presenter menuLabel="Menu" type="menu" self="AutoMenu" title="Auto Menu">
         <allMenuItems/>
     </presenter>
-    <presenter back="AutoMenu" menuLabel="transmission" type="transmission" self="transmissionScreen" title="transmission">
+    <presenter back="AutoMenu" menuLabel="transmission_all_attributes" type="transmission" self="transmission_all_attributesScreen" title="transmission_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
@@ -68,6 +68,19 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <startTimer msToNext="60" listenerId="listenerId">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </compareTimer>
+        <clearTimer listenerId="listenerId"/>
+        <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -79,7 +92,7 @@
         </column>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
-    <presenter back="AutoMenu" menuLabel="metadata" type="metadata" self="metadataScreen" title="metadata">
+    <presenter back="AutoMenu" menuLabel="metadata_all_attributes" type="metadata" self="metadata_all_attributesScreen" title="metadata_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
@@ -117,6 +130,19 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <startTimer msToNext="60" listenerId="listenerId">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </compareTimer>
+        <clearTimer listenerId="listenerId"/>
+        <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="plainText in multipleUsers"/>
@@ -136,7 +162,7 @@
         </column>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
-    <presenter back="AutoMenu" menuLabel="preload" type="preload" self="preloadScreen" title="preload">
+    <presenter back="AutoMenu" menuLabel="preload_all_attributes" type="preload" self="preload_all_attributesScreen" title="preload_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
         <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <plainText featureText="plainText"/>
@@ -186,6 +212,19 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </preloadAllStimuli>
+        <startTimer msToNext="60" listenerId="listenerId">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </compareTimer>
+        <clearTimer listenerId="listenerId"/>
+        <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
         <randomMsPause maximum="60" minimum="3">
             <plainText featureText="plainText in randomMsPause"/>
         </randomMsPause>
@@ -212,7 +251,7 @@
         <clearCurrentScore/>
         <resetStimulus target="target"/>
     </presenter>
-    <presenter back="AutoMenu" menuLabel="stimulus" type="stimulus" self="stimulusScreen" title="stimulus">
+    <presenter back="AutoMenu" menuLabel="stimulus_all_attributes" type="stimulus" self="stimulus_all_attributesScreen" title="stimulus_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
         <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <plainText featureText="plainText"/>
@@ -320,7 +359,7 @@
                     <plainText featureText="plainText in stimulusPause"/>
                 </stimulusPause>
                 <stimulusLabel styleName="styleName"/>
-                <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" matchingRegex="matchingRegex" dataChannel="2" replacement="replacement" animate="bounce" showControls="true" maxWidth="60">
+                <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" replacement="replacement" animate="bounce" replacementRegex="replacementRegex" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -598,7 +637,7 @@
                     <plainText featureText="plainText in stimulusPause"/>
                 </stimulusPause>
                 <stimulusLabel styleName="styleName"/>
-                <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" matchingRegex="matchingRegex" dataChannel="2" replacement="replacement" animate="bounce" showControls="true" maxWidth="60">
+                <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" replacement="replacement" animate="bounce" replacementRegex="replacementRegex" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -876,7 +915,7 @@
                     <plainText featureText="plainText in stimulusPause"/>
                 </stimulusPause>
                 <stimulusLabel styleName="styleName"/>
-                <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" matchingRegex="matchingRegex" dataChannel="2" replacement="replacement" animate="bounce" showControls="true" maxWidth="60">
+                <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" replacement="replacement" animate="bounce" replacementRegex="replacementRegex" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -952,15 +991,15 @@
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
                         <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
-                    <mediaLoaded>
-                        <plainText featureText="plainText in mediaLoaded"/>
-                    </mediaLoaded>
-                    <mediaLoadFailed>
-                        <plainText featureText="plainText in mediaLoadFailed"/>
-                    </mediaLoadFailed>
-                    <mediaPlaybackComplete>
-                        <plainText featureText="plainText in mediaPlaybackComplete"/>
-                    </mediaPlaybackComplete>
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <mediaPlaybackComplete>
+                                <plainText featureText="plainText in mediaPlaybackComplete"/>
+                            </mediaPlaybackComplete>
                         </groupResponseStimulusImage>
                         <groupResponseFeedback>
                             <responseCorrect msToNext="60">
@@ -983,15 +1022,15 @@
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
                         <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
-                    <mediaLoaded>
-                        <plainText featureText="plainText in mediaLoaded"/>
-                    </mediaLoaded>
-                    <mediaLoadFailed>
-                        <plainText featureText="plainText in mediaLoadFailed"/>
-                    </mediaLoadFailed>
-                    <mediaPlaybackComplete>
-                        <plainText featureText="plainText in mediaPlaybackComplete"/>
-                    </mediaPlaybackComplete>
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <mediaPlaybackComplete>
+                                <plainText featureText="plainText in mediaPlaybackComplete"/>
+                            </mediaPlaybackComplete>
                         </groupResponseStimulusImage>
                         <groupResponseFeedback>
                             <responseCorrect msToNext="60">
@@ -1015,15 +1054,15 @@
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
                         <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
-                    <mediaLoaded>
-                        <plainText featureText="plainText in mediaLoaded"/>
-                    </mediaLoaded>
-                    <mediaLoadFailed>
-                        <plainText featureText="plainText in mediaLoadFailed"/>
-                    </mediaLoadFailed>
-                    <mediaPlaybackComplete>
-                        <plainText featureText="plainText in mediaPlaybackComplete"/>
-                    </mediaPlaybackComplete>
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <mediaPlaybackComplete>
+                                <plainText featureText="plainText in mediaPlaybackComplete"/>
+                            </mediaPlaybackComplete>
                         </groupResponseStimulusImage>
                         <groupResponseFeedback>
                             <responseCorrect msToNext="60">
@@ -1106,6 +1145,19 @@
         <pause msToNext="60">
             <plainText featureText="plainText in pause"/>
         </pause>
+        <startTimer msToNext="60" listenerId="listenerId">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </compareTimer>
+        <clearTimer listenerId="listenerId"/>
+        <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
         <randomMsPause maximum="60" minimum="3">
             <plainText featureText="plainText in randomMsPause"/>
         </randomMsPause>
@@ -1160,10 +1212,10 @@
         </scoreAboveThreshold>
         <resetStimulus target="target"/>
     </presenter>
-    <presenter back="AutoMenu" menuLabel="colourPicker" type="colourPicker" self="colourPickerScreen" title="colourPicker">
+    <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes">
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
-    <presenter back="AutoMenu" menuLabel="colourReport" type="colourReport" self="colourReportScreen" title="colourReport">
+    <presenter back="AutoMenu" menuLabel="colourReport_all_attributes" type="colourReport" self="colourReport_all_attributesScreen" title="colourReport_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
@@ -1215,7 +1267,7 @@
             </onSuccess>
         </submitTestResults>
     </presenter>
-    <presenter back="AutoMenu" menuLabel="kindiagram" type="kindiagram" self="kindiagramScreen" title="kindiagram">
+    <presenter back="AutoMenu" menuLabel="kindiagram_all_attributes" type="kindiagram" self="kindiagram_all_attributesScreen" title="kindiagram_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
@@ -1241,6 +1293,19 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <startTimer msToNext="60" listenerId="listenerId">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </compareTimer>
+        <clearTimer listenerId="listenerId"/>
+        <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
         <kinTypeStringDiagram msToNext="60" kintypestring="kintypestring">
             <plainText featureText="plainText in kinTypeStringDiagram"/>
         </kinTypeStringDiagram>
@@ -1261,7 +1326,7 @@
         </column>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
-    <presenter back="AutoMenu" menuLabel="menu" type="menu" self="menuScreen" title="menu">
+    <presenter back="AutoMenu" menuLabel="menu_all_attributes" type="menu" self="menu_all_attributesScreen" title="menu_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
@@ -1289,6 +1354,19 @@
             </conditionFalse>
         </hasGetParameter>
         <activateRandomItem/>
+        <startTimer msToNext="60" listenerId="listenerId">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </compareTimer>
+        <clearTimer listenerId="listenerId"/>
+        <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -1300,7 +1378,7 @@
         </column>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
-    <presenter back="AutoMenu" menuLabel="debug" type="debug" self="debugScreen" title="debug">
+    <presenter back="AutoMenu" menuLabel="debug_all_attributes" type="debug" self="debug_all_attributesScreen" title="debug_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
@@ -1327,6 +1405,19 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <startTimer msToNext="60" listenerId="listenerId">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </compareTimer>
+        <clearTimer listenerId="listenerId"/>
+        <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -1338,7 +1429,7 @@
         </column>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
-    <presenter back="AutoMenu" menuLabel="text" type="text" self="textScreen" title="text">
+    <presenter back="AutoMenu" menuLabel="text_all_attributes" type="text" self="text_all_attributesScreen" title="text_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
@@ -1355,6 +1446,19 @@
         </actionButton>
         <addPadding/>
         <centrePage/>
+        <startTimer msToNext="60" listenerId="listenerId">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </compareTimer>
+        <clearTimer listenerId="listenerId"/>
+        <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -1366,7 +1470,7 @@
         </column>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
-    <presenter back="AutoMenu" menuLabel="timeline" type="timeline" self="timelineScreen" title="timeline">
+    <presenter back="AutoMenu" menuLabel="timeline_all_attributes" type="timeline" self="timeline_all_attributesScreen" title="timeline_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
@@ -1391,6 +1495,19 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <startTimer msToNext="60" listenerId="listenerId">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </compareTimer>
+        <clearTimer listenerId="listenerId"/>
+        <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -1398,6 +1515,1509 @@
             <plainText featureText="plainText in row"/>
         </row>
         <column styleName="styleName">
+            <plainText featureText="plainText in column"/>
+        </column>
+        <preventWindowClose featureText="preventWindowClose"/>
+    </presenter>
+    <presenter back="AutoMenu" menuLabel="transmission_minimal_attributes" type="transmission" self="transmission_minimal_attributesScreen" title="transmission_minimal_attributes">
+        <htmlText featureText="htmlText"/>
+        <plainText featureText="plainText"/>
+        <image msToNext="60" src="src">
+            <mediaLoaded>
+                <plainText featureText="plainText in mediaLoaded"/>
+            </mediaLoaded>
+            <mediaLoadFailed>
+                <plainText featureText="plainText in mediaLoadFailed"/>
+            </mediaLoadFailed>
+        </image>
+        <targetButton featureText="targetButton" target="target"/>
+        <actionButton featureText="actionButton">
+            <plainText featureText="plainText in actionButton"/>
+        </actionButton>
+        <addPadding/>
+        <eraseUsersDataButton featureText="eraseUsersDataButton" target="target"/>
+        <displayCompletionCode/>
+        <generateCompletionCode>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </generateCompletionCode>
+        <sendAllData>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </sendAllData>
+        <sendMetadata>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </sendMetadata>
+        <eraseLocalStorageOnWindowClosing/>
+        <centrePage/>
+        <hasGetParameter parameterName="parameterName">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasGetParameter>
+        <startTimer msToNext="60" listenerId="listenerId">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </compareTimer>
+        <clearTimer listenerId="listenerId"/>
+        <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
+        <table>
+            <plainText featureText="plainText in table"/>
+        </table>
+        <row>
+            <plainText featureText="plainText in row"/>
+        </row>
+        <column>
+            <plainText featureText="plainText in column"/>
+        </column>
+        <preventWindowClose featureText="preventWindowClose"/>
+    </presenter>
+    <presenter back="AutoMenu" menuLabel="metadata_minimal_attributes" type="metadata" self="metadata_minimal_attributesScreen" title="metadata_minimal_attributes">
+        <htmlText featureText="htmlText"/>
+        <plainText featureText="plainText"/>
+        <image msToNext="60" src="src">
+            <mediaLoaded>
+                <plainText featureText="plainText in mediaLoaded"/>
+            </mediaLoaded>
+            <mediaLoadFailed>
+                <plainText featureText="plainText in mediaLoadFailed"/>
+            </mediaLoadFailed>
+        </image>
+        <targetButton featureText="targetButton" target="target"/>
+        <actionButton featureText="actionButton">
+            <plainText featureText="plainText in actionButton"/>
+        </actionButton>
+        <addPadding/>
+        <allMetadataFields/>
+        <metadataField fieldName="workerId"/>
+        <metadataFieldConnection fieldName="workerId" linkedFieldName="workerId"/>
+        <saveMetadataButton featureText="saveMetadataButton" sendData="sendData" networkErrorMessage="networkErrorMessage">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </saveMetadataButton>
+        <createUserButton featureText="createUserButton" target="target"/>
+        <selectUserMenu/>
+        <centrePage/>
+        <hasGetParameter parameterName="parameterName">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasGetParameter>
+        <startTimer msToNext="60" listenerId="listenerId">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </compareTimer>
+        <clearTimer listenerId="listenerId"/>
+        <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
+        <existingUserCheck>
+            <multipleUsers>
+                <plainText featureText="plainText in multipleUsers"/>
+            </multipleUsers>
+            <singleUser>
+                <plainText featureText="plainText in singleUser"/>
+            </singleUser>
+        </existingUserCheck>
+        <table>
+            <plainText featureText="plainText in table"/>
+        </table>
+        <row>
+            <plainText featureText="plainText in row"/>
+        </row>
+        <column>
+            <plainText featureText="plainText in column"/>
+        </column>
+        <preventWindowClose featureText="preventWindowClose"/>
+    </presenter>
+    <presenter back="AutoMenu" menuLabel="preload_minimal_attributes" type="preload" self="preload_minimal_attributesScreen" title="preload_minimal_attributes">
+        <htmlText featureText="htmlText"/>
+        <htmlTokenText featureText="htmlTokenText"/>
+        <plainText featureText="plainText"/>
+        <image msToNext="60" src="src">
+            <mediaLoaded>
+                <plainText featureText="plainText in mediaLoaded"/>
+            </mediaLoaded>
+            <mediaLoadFailed>
+                <plainText featureText="plainText in mediaLoadFailed"/>
+            </mediaLoadFailed>
+        </image>
+        <targetButton featureText="targetButton" target="target"/>
+        <actionButton featureText="actionButton">
+            <plainText featureText="plainText in actionButton"/>
+        </actionButton>
+        <targetFooterButton featureText="targetFooterButton" target="target"/>
+        <actionFooterButton featureText="actionFooterButton" eventTag="eventTag">
+            <plainText featureText="plainText in actionFooterButton"/>
+        </actionFooterButton>
+        <addPadding/>
+        <showCurrentMs/>
+        <enableStimulusButtons/>
+        <disableStimulusButtons/>
+        <cancelPauseTimers/>
+        <hideStimulusButtons/>
+        <showStimulusButtons/>
+        <centrePage/>
+        <actionButton featureText="Clear Screen">
+            <clearPage/>
+        </actionButton>
+        <backgroundImage msToNext="60" src="src">
+            <plainText featureText="plainText in backgroundImage"/>
+        </backgroundImage>
+        <hasGetParameter parameterName="parameterName">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasGetParameter>
+        <preloadAllStimuli tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </preloadAllStimuli>
+        <startTimer msToNext="60" listenerId="listenerId">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </compareTimer>
+        <clearTimer listenerId="listenerId"/>
+        <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
+        <randomMsPause maximum="60" minimum="3">
+            <plainText featureText="plainText in randomMsPause"/>
+        </randomMsPause>
+        <triggerListener listenerId="listenerId" maximum="60" threshold="8">
+            <plainText featureText="plainText in triggerListener"/>
+        </triggerListener>
+        <trigger listenerId="listenerId"/>
+        <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat">
+            <plainText featureText="plainText in countdownLabel"/>
+        </countdownLabel>
+        <table>
+            <plainText featureText="plainText in table"/>
+        </table>
+        <row>
+            <plainText featureText="plainText in row"/>
+        </row>
+        <column>
+            <plainText featureText="plainText in column"/>
+        </column>
+        <playVideo/>
+        <rewindVideo/>
+        <pauseVideo/>
+        <preventWindowClose featureText="preventWindowClose"/>
+        <clearCurrentScore/>
+        <resetStimulus target="target"/>
+    </presenter>
+    <presenter back="AutoMenu" menuLabel="stimulus_minimal_attributes" type="stimulus" self="stimulus_minimal_attributesScreen" title="stimulus_minimal_attributes">
+        <htmlText featureText="htmlText"/>
+        <htmlTokenText featureText="htmlTokenText"/>
+        <plainText featureText="plainText"/>
+        <image msToNext="60" src="src">
+            <mediaLoaded>
+                <plainText featureText="plainText in mediaLoaded"/>
+            </mediaLoaded>
+            <mediaLoadFailed>
+                <plainText featureText="plainText in mediaLoadFailed"/>
+            </mediaLoadFailed>
+        </image>
+        <withStimuli eventTag="eventTag" randomise="true">
+            <beforeStimulus>
+                <plainText featureText="plainText in beforeStimulus"/>
+            </beforeStimulus>
+            <eachStimulus>
+                <withMatchingStimulus eventTag="eventTag" randomise="true" matchingRegex="matchingRegex">
+                    <hasMoreStimulus>
+                        <plainText featureText="hasMoreStimulus in withMatchingStimulus"/>
+                    </hasMoreStimulus>
+                    <endOfStimulus>
+                        <plainText featureText="endOfStimulus in withMatchingStimulus"/>
+                    </endOfStimulus>
+                </withMatchingStimulus>
+                <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </currentStimulusHasTag>
+                <showStimuliReport/>
+                <sendStimuliReport type="type"/>
+                <stimulusButton featureText="stimulusButton">
+                    <plainText featureText="plainText in stimulusButton"/>
+                </stimulusButton>
+                <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src">
+                    <plainText featureText="plainText in touchInputStimulusButton"/>
+                </touchInputStimulusButton>
+                <touchInputCaptureStart msToNext="60" showControls="true">
+                    <plainText featureText="plainText in touchInputCaptureStart"/>
+                </touchInputCaptureStart>
+                <touchInputReportSubmit/>
+                <ratingButton ratingLabels="ratingLabels">
+                    <plainText featureText="plainText in ratingButton"/>
+                </ratingButton>
+                <stimulusFreeText featureText="stimulusFreeText" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage">
+                    <plainText featureText="plainText in stimulusFreeText"/>
+                </stimulusFreeText>
+                <stimulusRatingButton>
+                    <plainText featureText="plainText in stimulusRatingButton"/>
+                </stimulusRatingButton>
+                <stimulusHasRatingOptions>
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </stimulusHasRatingOptions>
+                <stimulusHasResponse>
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </stimulusHasResponse>
+                <ratingFooterButton ratingLabels="ratingLabels">
+                    <plainText featureText="plainText in ratingFooterButton"/>
+                </ratingFooterButton>
+                <stimulusMetadataField fieldName="workerId"/>
+                <showStimulusProgress/>
+                <keepStimulus/>
+                <removeStimulus/>
+                <removeMatchingStimulus matchingRegex="matchingRegex"/>
+                <clearStimulus/>
+                <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" repeatIncorrect="repeatIncorrect"/>
+                <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" repeatIncorrect="repeatIncorrect"/>
+                <nextStimulus repeatIncorrect="repeatIncorrect"/>
+                <prevStimulus repeatIncorrect="repeatIncorrect"/>
+                <nextMatchingStimulus/>
+                <logTimeStamp eventTag="eventTag"/>
+                <showStimulus>
+                    <plainText featureText="plainText in showStimulus"/>
+                </showStimulus>
+                <showStimulusGrid imageWidth="imageWidth" eventTag="eventTag" columnCount="3">
+                    <responseCorrect msToNext="60">
+                        <plainText featureText="plainText in responseCorrect"/>
+                    </responseCorrect>
+                    <responseIncorrect msToNext="60">
+                        <plainText featureText="plainText in responseIncorrect"/>
+                    </responseIncorrect>
+                </showStimulusGrid>
+                <matchingStimulusGrid randomise="true" matchingRegex="matchingRegex" columnCount="3" maxWidth="60">
+                    <responseCorrect msToNext="60">
+                        <plainText featureText="plainText in responseCorrect"/>
+                    </responseCorrect>
+                    <responseIncorrect msToNext="60">
+                        <plainText featureText="plainText in responseIncorrect"/>
+                    </responseIncorrect>
+                </matchingStimulusGrid>
+                <stimulusPause>
+                    <plainText featureText="plainText in stimulusPause"/>
+                </stimulusPause>
+                <stimulusLabel/>
+                <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" showControls="true" maxWidth="60">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusPresent>
+                <stimulusImage msToNext="60">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                </stimulusImage>
+                <stimulusCodeImage msToNext="60" codeFormat="codeFormat">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                </stimulusCodeImage>
+                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" autoPlay="true" showControls="true" maxWidth="60">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusCodeVideo>
+                <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" showPlaybackIndicator="showPlaybackIndicator">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusCodeAudio>
+                <stimulusAudio msToNext="60" showPlaybackIndicator="showPlaybackIndicator">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusAudio>
+                <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                    <plainText featureText="plainText in stimulusImageCapture"/>
+                </stimulusImageCapture>
+                <startAudioRecorder eventTag="eventTag" wavFormat="wavFormat" filePerStimulus="filePerStimulus"/>
+                <stopAudioRecorder/>
+                <startAudioRecorderTag eventTier="8"/>
+                <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
+                <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
+                    <groupNetworkActivity groupRole="groupRole">
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <groupMemberCodeLabel/>
+                        <groupMemberLabel/>
+                        <groupMessageLabel/>
+                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <mediaPlaybackComplete>
+                                <plainText featureText="plainText in mediaPlaybackComplete"/>
+                            </mediaPlaybackComplete>
+                        </groupResponseStimulusImage>
+                        <groupResponseFeedback>
+                            <responseCorrect msToNext="60">
+                                <plainText featureText="plainText in responseCorrect"/>
+                            </responseCorrect>
+                            <responseIncorrect msToNext="60">
+                                <plainText featureText="plainText in responseIncorrect"/>
+                            </responseIncorrect>
+                        </groupResponseFeedback>
+                        <groupScoreLabel/>
+                        <groupChannelScoreLabel/>
+                        <submitGroupEvent/>
+                        <plainText featureText="plainText in groupNetworkActivity"/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="groupRole">
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <groupMemberCodeLabel/>
+                        <groupMemberLabel/>
+                        <groupMessageLabel/>
+                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <mediaPlaybackComplete>
+                                <plainText featureText="plainText in mediaPlaybackComplete"/>
+                            </mediaPlaybackComplete>
+                        </groupResponseStimulusImage>
+                        <groupResponseFeedback>
+                            <responseCorrect msToNext="60">
+                                <plainText featureText="plainText in responseCorrect"/>
+                            </responseCorrect>
+                            <responseIncorrect msToNext="60">
+                                <plainText featureText="plainText in responseIncorrect"/>
+                            </responseIncorrect>
+                        </groupResponseFeedback>
+                        <groupScoreLabel/>
+                        <groupChannelScoreLabel/>
+                        <submitGroupEvent/>
+                        <plainText featureText="plainText in groupNetworkActivity"/>
+                    </groupNetworkActivity>
+                    <sendGroupEndOfStimuli eventTag="eventTag"/>
+                    <groupNetworkActivity groupRole="groupRole">
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <groupMemberCodeLabel/>
+                        <groupMemberLabel/>
+                        <groupMessageLabel/>
+                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <mediaPlaybackComplete>
+                                <plainText featureText="plainText in mediaPlaybackComplete"/>
+                            </mediaPlaybackComplete>
+                        </groupResponseStimulusImage>
+                        <groupResponseFeedback>
+                            <responseCorrect msToNext="60">
+                                <plainText featureText="plainText in responseCorrect"/>
+                            </responseCorrect>
+                            <responseIncorrect msToNext="60">
+                                <plainText featureText="plainText in responseIncorrect"/>
+                            </responseIncorrect>
+                        </groupResponseFeedback>
+                        <groupScoreLabel/>
+                        <groupChannelScoreLabel/>
+                        <submitGroupEvent/>
+                        <plainText featureText="plainText in groupNetworkActivity"/>
+                    </groupNetworkActivity>
+                </groupNetwork>
+                <plainText featureText="plainText in eachStimulus"/>
+            </eachStimulus>
+            <afterStimulus>
+                <plainText featureText="plainText in afterStimulus"/>
+            </afterStimulus>
+            <randomGrouping storageField="groupAllocation_withStimuli">
+                <tag>ประเพณีบุญบั้งไฟ</tag>
+                <tag>Rocket</tag>
+                <tag>Festival</tag>
+                <tag>Lao</tag>
+                <tag>Thai</tag>
+                <tag>ບຸນບັ້ງໄຟ</tag>
+            </randomGrouping>
+            <stimuli>
+                <tag>ประเพณีบุญบั้งไฟ</tag>
+                <tag>Rocket</tag>
+                <tag>Festival</tag>
+                <tag>Lao</tag>
+                <tag>Thai</tag>
+                <tag>ບຸນບັ້ງໄຟ</tag>
+            </stimuli>
+        </withStimuli>
+        <loadStimulus eventTag="eventTag" randomise="true">
+            <hasMoreStimulus>
+                <withMatchingStimulus eventTag="eventTag" randomise="true" matchingRegex="matchingRegex">
+                    <hasMoreStimulus>
+                        <plainText featureText="hasMoreStimulus in withMatchingStimulus"/>
+                    </hasMoreStimulus>
+                    <endOfStimulus>
+                        <plainText featureText="endOfStimulus in withMatchingStimulus"/>
+                    </endOfStimulus>
+                </withMatchingStimulus>
+                <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </currentStimulusHasTag>
+                <showStimuliReport/>
+                <sendStimuliReport type="type"/>
+                <stimulusButton featureText="stimulusButton">
+                    <plainText featureText="plainText in stimulusButton"/>
+                </stimulusButton>
+                <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src">
+                    <plainText featureText="plainText in touchInputStimulusButton"/>
+                </touchInputStimulusButton>
+                <touchInputCaptureStart msToNext="60" showControls="true">
+                    <plainText featureText="plainText in touchInputCaptureStart"/>
+                </touchInputCaptureStart>
+                <touchInputReportSubmit/>
+                <ratingButton ratingLabels="ratingLabels">
+                    <plainText featureText="plainText in ratingButton"/>
+                </ratingButton>
+                <stimulusFreeText featureText="stimulusFreeText" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage">
+                    <plainText featureText="plainText in stimulusFreeText"/>
+                </stimulusFreeText>
+                <stimulusRatingButton>
+                    <plainText featureText="plainText in stimulusRatingButton"/>
+                </stimulusRatingButton>
+                <stimulusHasRatingOptions>
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </stimulusHasRatingOptions>
+                <stimulusHasResponse>
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </stimulusHasResponse>
+                <ratingFooterButton ratingLabels="ratingLabels">
+                    <plainText featureText="plainText in ratingFooterButton"/>
+                </ratingFooterButton>
+                <stimulusMetadataField fieldName="workerId"/>
+                <showStimulusProgress/>
+                <keepStimulus/>
+                <removeStimulus/>
+                <removeMatchingStimulus matchingRegex="matchingRegex"/>
+                <clearStimulus/>
+                <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" repeatIncorrect="repeatIncorrect"/>
+                <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" repeatIncorrect="repeatIncorrect"/>
+                <nextStimulus repeatIncorrect="repeatIncorrect"/>
+                <prevStimulus repeatIncorrect="repeatIncorrect"/>
+                <nextMatchingStimulus/>
+                <logTimeStamp eventTag="eventTag"/>
+                <showStimulus>
+                    <plainText featureText="plainText in showStimulus"/>
+                </showStimulus>
+                <showStimulusGrid imageWidth="imageWidth" eventTag="eventTag" columnCount="3">
+                    <responseCorrect msToNext="60">
+                        <plainText featureText="plainText in responseCorrect"/>
+                    </responseCorrect>
+                    <responseIncorrect msToNext="60">
+                        <plainText featureText="plainText in responseIncorrect"/>
+                    </responseIncorrect>
+                </showStimulusGrid>
+                <matchingStimulusGrid randomise="true" matchingRegex="matchingRegex" columnCount="3" maxWidth="60">
+                    <responseCorrect msToNext="60">
+                        <plainText featureText="plainText in responseCorrect"/>
+                    </responseCorrect>
+                    <responseIncorrect msToNext="60">
+                        <plainText featureText="plainText in responseIncorrect"/>
+                    </responseIncorrect>
+                </matchingStimulusGrid>
+                <stimulusPause>
+                    <plainText featureText="plainText in stimulusPause"/>
+                </stimulusPause>
+                <stimulusLabel/>
+                <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" showControls="true" maxWidth="60">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusPresent>
+                <stimulusImage msToNext="60">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                </stimulusImage>
+                <stimulusCodeImage msToNext="60" codeFormat="codeFormat">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                </stimulusCodeImage>
+                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" autoPlay="true" showControls="true" maxWidth="60">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusCodeVideo>
+                <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" showPlaybackIndicator="showPlaybackIndicator">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusCodeAudio>
+                <stimulusAudio msToNext="60" showPlaybackIndicator="showPlaybackIndicator">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusAudio>
+                <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                    <plainText featureText="plainText in stimulusImageCapture"/>
+                </stimulusImageCapture>
+                <startAudioRecorder eventTag="eventTag" wavFormat="wavFormat" filePerStimulus="filePerStimulus"/>
+                <stopAudioRecorder/>
+                <startAudioRecorderTag eventTier="8"/>
+                <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
+                <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
+                    <groupNetworkActivity groupRole="groupRole">
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <groupMemberCodeLabel/>
+                        <groupMemberLabel/>
+                        <groupMessageLabel/>
+                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <mediaPlaybackComplete>
+                                <plainText featureText="plainText in mediaPlaybackComplete"/>
+                            </mediaPlaybackComplete>
+                        </groupResponseStimulusImage>
+                        <groupResponseFeedback>
+                            <responseCorrect msToNext="60">
+                                <plainText featureText="plainText in responseCorrect"/>
+                            </responseCorrect>
+                            <responseIncorrect msToNext="60">
+                                <plainText featureText="plainText in responseIncorrect"/>
+                            </responseIncorrect>
+                        </groupResponseFeedback>
+                        <groupScoreLabel/>
+                        <groupChannelScoreLabel/>
+                        <submitGroupEvent/>
+                        <plainText featureText="plainText in groupNetworkActivity"/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="groupRole">
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <groupMemberCodeLabel/>
+                        <groupMemberLabel/>
+                        <groupMessageLabel/>
+                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <mediaPlaybackComplete>
+                                <plainText featureText="plainText in mediaPlaybackComplete"/>
+                            </mediaPlaybackComplete>
+                        </groupResponseStimulusImage>
+                        <groupResponseFeedback>
+                            <responseCorrect msToNext="60">
+                                <plainText featureText="plainText in responseCorrect"/>
+                            </responseCorrect>
+                            <responseIncorrect msToNext="60">
+                                <plainText featureText="plainText in responseIncorrect"/>
+                            </responseIncorrect>
+                        </groupResponseFeedback>
+                        <groupScoreLabel/>
+                        <groupChannelScoreLabel/>
+                        <submitGroupEvent/>
+                        <plainText featureText="plainText in groupNetworkActivity"/>
+                    </groupNetworkActivity>
+                    <sendGroupEndOfStimuli eventTag="eventTag"/>
+                    <groupNetworkActivity groupRole="groupRole">
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <groupMemberCodeLabel/>
+                        <groupMemberLabel/>
+                        <groupMessageLabel/>
+                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <mediaPlaybackComplete>
+                                <plainText featureText="plainText in mediaPlaybackComplete"/>
+                            </mediaPlaybackComplete>
+                        </groupResponseStimulusImage>
+                        <groupResponseFeedback>
+                            <responseCorrect msToNext="60">
+                                <plainText featureText="plainText in responseCorrect"/>
+                            </responseCorrect>
+                            <responseIncorrect msToNext="60">
+                                <plainText featureText="plainText in responseIncorrect"/>
+                            </responseIncorrect>
+                        </groupResponseFeedback>
+                        <groupScoreLabel/>
+                        <groupChannelScoreLabel/>
+                        <submitGroupEvent/>
+                        <plainText featureText="plainText in groupNetworkActivity"/>
+                    </groupNetworkActivity>
+                </groupNetwork>
+                <plainText featureText="plainText in hasMoreStimulus"/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <plainText featureText="plainText in endOfStimulus"/>
+            </endOfStimulus>
+            <randomGrouping storageField="groupAllocation_loadStimulus">
+                <tag>ประเพณีบุญบั้งไฟ</tag>
+                <tag>Rocket</tag>
+                <tag>Festival</tag>
+                <tag>Lao</tag>
+                <tag>Thai</tag>
+                <tag>ບຸນບັ້ງໄຟ</tag>
+            </randomGrouping>
+            <stimuli>
+                <tag>ประเพณีบุญบั้งไฟ</tag>
+                <tag>Rocket</tag>
+                <tag>Festival</tag>
+                <tag>Lao</tag>
+                <tag>Thai</tag>
+                <tag>ບຸນບັ້ງໄຟ</tag>
+            </stimuli>
+        </loadStimulus>
+        <loadSdCardStimulus eventTag="eventTag" randomise="true">
+            <hasMoreStimulus>
+                <withMatchingStimulus eventTag="eventTag" randomise="true" matchingRegex="matchingRegex">
+                    <hasMoreStimulus>
+                        <plainText featureText="hasMoreStimulus in withMatchingStimulus"/>
+                    </hasMoreStimulus>
+                    <endOfStimulus>
+                        <plainText featureText="endOfStimulus in withMatchingStimulus"/>
+                    </endOfStimulus>
+                </withMatchingStimulus>
+                <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </currentStimulusHasTag>
+                <showStimuliReport/>
+                <sendStimuliReport type="type"/>
+                <stimulusButton featureText="stimulusButton">
+                    <plainText featureText="plainText in stimulusButton"/>
+                </stimulusButton>
+                <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src">
+                    <plainText featureText="plainText in touchInputStimulusButton"/>
+                </touchInputStimulusButton>
+                <touchInputCaptureStart msToNext="60" showControls="true">
+                    <plainText featureText="plainText in touchInputCaptureStart"/>
+                </touchInputCaptureStart>
+                <touchInputReportSubmit/>
+                <ratingButton ratingLabels="ratingLabels">
+                    <plainText featureText="plainText in ratingButton"/>
+                </ratingButton>
+                <stimulusFreeText featureText="stimulusFreeText" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage">
+                    <plainText featureText="plainText in stimulusFreeText"/>
+                </stimulusFreeText>
+                <stimulusRatingButton>
+                    <plainText featureText="plainText in stimulusRatingButton"/>
+                </stimulusRatingButton>
+                <stimulusHasRatingOptions>
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </stimulusHasRatingOptions>
+                <stimulusHasResponse>
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </stimulusHasResponse>
+                <ratingFooterButton ratingLabels="ratingLabels">
+                    <plainText featureText="plainText in ratingFooterButton"/>
+                </ratingFooterButton>
+                <stimulusMetadataField fieldName="workerId"/>
+                <showStimulusProgress/>
+                <keepStimulus/>
+                <removeStimulus/>
+                <removeMatchingStimulus matchingRegex="matchingRegex"/>
+                <clearStimulus/>
+                <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" repeatIncorrect="repeatIncorrect"/>
+                <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" repeatIncorrect="repeatIncorrect"/>
+                <nextStimulus repeatIncorrect="repeatIncorrect"/>
+                <prevStimulus repeatIncorrect="repeatIncorrect"/>
+                <nextMatchingStimulus/>
+                <logTimeStamp eventTag="eventTag"/>
+                <showStimulus>
+                    <plainText featureText="plainText in showStimulus"/>
+                </showStimulus>
+                <showStimulusGrid imageWidth="imageWidth" eventTag="eventTag" columnCount="3">
+                    <responseCorrect msToNext="60">
+                        <plainText featureText="plainText in responseCorrect"/>
+                    </responseCorrect>
+                    <responseIncorrect msToNext="60">
+                        <plainText featureText="plainText in responseIncorrect"/>
+                    </responseIncorrect>
+                </showStimulusGrid>
+                <matchingStimulusGrid randomise="true" matchingRegex="matchingRegex" columnCount="3" maxWidth="60">
+                    <responseCorrect msToNext="60">
+                        <plainText featureText="plainText in responseCorrect"/>
+                    </responseCorrect>
+                    <responseIncorrect msToNext="60">
+                        <plainText featureText="plainText in responseIncorrect"/>
+                    </responseIncorrect>
+                </matchingStimulusGrid>
+                <stimulusPause>
+                    <plainText featureText="plainText in stimulusPause"/>
+                </stimulusPause>
+                <stimulusLabel/>
+                <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" showControls="true" maxWidth="60">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusPresent>
+                <stimulusImage msToNext="60">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                </stimulusImage>
+                <stimulusCodeImage msToNext="60" codeFormat="codeFormat">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                </stimulusCodeImage>
+                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" autoPlay="true" showControls="true" maxWidth="60">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusCodeVideo>
+                <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" showPlaybackIndicator="showPlaybackIndicator">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusCodeAudio>
+                <stimulusAudio msToNext="60" showPlaybackIndicator="showPlaybackIndicator">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusAudio>
+                <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                    <plainText featureText="plainText in stimulusImageCapture"/>
+                </stimulusImageCapture>
+                <startAudioRecorder eventTag="eventTag" wavFormat="wavFormat" filePerStimulus="filePerStimulus"/>
+                <stopAudioRecorder/>
+                <startAudioRecorderTag eventTier="8"/>
+                <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
+                <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
+                    <groupNetworkActivity groupRole="groupRole">
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <groupMemberCodeLabel/>
+                        <groupMemberLabel/>
+                        <groupMessageLabel/>
+                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <mediaPlaybackComplete>
+                                <plainText featureText="plainText in mediaPlaybackComplete"/>
+                            </mediaPlaybackComplete>
+                        </groupResponseStimulusImage>
+                        <groupResponseFeedback>
+                            <responseCorrect msToNext="60">
+                                <plainText featureText="plainText in responseCorrect"/>
+                            </responseCorrect>
+                            <responseIncorrect msToNext="60">
+                                <plainText featureText="plainText in responseIncorrect"/>
+                            </responseIncorrect>
+                        </groupResponseFeedback>
+                        <groupScoreLabel/>
+                        <groupChannelScoreLabel/>
+                        <submitGroupEvent/>
+                        <plainText featureText="plainText in groupNetworkActivity"/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="groupRole">
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <groupMemberCodeLabel/>
+                        <groupMemberLabel/>
+                        <groupMessageLabel/>
+                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <mediaPlaybackComplete>
+                                <plainText featureText="plainText in mediaPlaybackComplete"/>
+                            </mediaPlaybackComplete>
+                        </groupResponseStimulusImage>
+                        <groupResponseFeedback>
+                            <responseCorrect msToNext="60">
+                                <plainText featureText="plainText in responseCorrect"/>
+                            </responseCorrect>
+                            <responseIncorrect msToNext="60">
+                                <plainText featureText="plainText in responseIncorrect"/>
+                            </responseIncorrect>
+                        </groupResponseFeedback>
+                        <groupScoreLabel/>
+                        <groupChannelScoreLabel/>
+                        <submitGroupEvent/>
+                        <plainText featureText="plainText in groupNetworkActivity"/>
+                    </groupNetworkActivity>
+                    <sendGroupEndOfStimuli eventTag="eventTag"/>
+                    <groupNetworkActivity groupRole="groupRole">
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <groupMemberCodeLabel/>
+                        <groupMemberLabel/>
+                        <groupMessageLabel/>
+                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <mediaPlaybackComplete>
+                                <plainText featureText="plainText in mediaPlaybackComplete"/>
+                            </mediaPlaybackComplete>
+                        </groupResponseStimulusImage>
+                        <groupResponseFeedback>
+                            <responseCorrect msToNext="60">
+                                <plainText featureText="plainText in responseCorrect"/>
+                            </responseCorrect>
+                            <responseIncorrect msToNext="60">
+                                <plainText featureText="plainText in responseIncorrect"/>
+                            </responseIncorrect>
+                        </groupResponseFeedback>
+                        <groupScoreLabel/>
+                        <groupChannelScoreLabel/>
+                        <submitGroupEvent/>
+                        <plainText featureText="plainText in groupNetworkActivity"/>
+                    </groupNetworkActivity>
+                </groupNetwork>
+                <plainText featureText="plainText in hasMoreStimulus"/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <plainText featureText="plainText in endOfStimulus"/>
+            </endOfStimulus>
+            <randomGrouping storageField="groupAllocation_loadSdCardStimulus">
+                <tag>ประเพณีบุญบั้งไฟ</tag>
+                <tag>Rocket</tag>
+                <tag>Festival</tag>
+                <tag>Lao</tag>
+                <tag>Thai</tag>
+                <tag>ບຸນບັ້ງໄຟ</tag>
+            </randomGrouping>
+            <stimuli>
+                <tag>ประเพณีบุญบั้งไฟ</tag>
+                <tag>Rocket</tag>
+                <tag>Festival</tag>
+                <tag>Lao</tag>
+                <tag>Thai</tag>
+                <tag>ບຸນບັ້ງໄຟ</tag>
+            </stimuli>
+        </loadSdCardStimulus>
+        <targetButton featureText="targetButton" target="target"/>
+        <actionButton featureText="actionButton">
+            <plainText featureText="plainText in actionButton"/>
+        </actionButton>
+        <targetFooterButton featureText="targetFooterButton" target="target"/>
+        <actionFooterButton featureText="actionFooterButton" eventTag="eventTag">
+            <plainText featureText="plainText in actionFooterButton"/>
+        </actionFooterButton>
+        <addPadding/>
+        <showCurrentMs/>
+        <enableStimulusButtons/>
+        <disableStimulusButtons/>
+        <cancelPauseTimers/>
+        <hideStimulusButtons/>
+        <showStimulusButtons/>
+        <centrePage/>
+        <actionButton featureText="Clear Screen">
+            <clearPage/>
+        </actionButton>
+        <backgroundImage msToNext="60" src="src">
+            <plainText featureText="plainText in backgroundImage"/>
+        </backgroundImage>
+        <hasGetParameter parameterName="parameterName">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasGetParameter>
+        <autoNextPresenter target="target"/>
+        <audioButton eventTag="eventTag" src="src" autoPlay="true" poster="poster">
+            <mediaLoaded>
+                <plainText featureText="plainText in mediaLoaded"/>
+            </mediaLoaded>
+            <mediaLoadFailed>
+                <plainText featureText="plainText in mediaLoadFailed"/>
+            </mediaLoadFailed>
+            <mediaPlaybackComplete>
+                <plainText featureText="plainText in mediaPlaybackComplete"/>
+            </mediaPlaybackComplete>
+        </audioButton>
+        <pause msToNext="60">
+            <plainText featureText="plainText in pause"/>
+        </pause>
+        <startTimer msToNext="60" listenerId="listenerId">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </compareTimer>
+        <clearTimer listenerId="listenerId"/>
+        <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
+        <randomMsPause maximum="60" minimum="3">
+            <plainText featureText="plainText in randomMsPause"/>
+        </randomMsPause>
+        <triggerListener listenerId="listenerId" maximum="60" threshold="8">
+            <plainText featureText="plainText in triggerListener"/>
+        </triggerListener>
+        <trigger listenerId="listenerId"/>
+        <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat">
+            <plainText featureText="plainText in countdownLabel"/>
+        </countdownLabel>
+        <table>
+            <plainText featureText="plainText in table"/>
+        </table>
+        <row>
+            <plainText featureText="plainText in row"/>
+        </row>
+        <column>
+            <plainText featureText="plainText in column"/>
+        </column>
+        <playVideo/>
+        <rewindVideo/>
+        <pauseVideo/>
+        <preventWindowClose featureText="preventWindowClose"/>
+        <scoreLabel/>
+        <clearCurrentScore/>
+        <scoreIncrement scoreValue="true">
+            <plainText featureText="plainText in scoreIncrement"/>
+        </scoreIncrement>
+        <bestScoreAboveThreshold scoreThreshold="3">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </bestScoreAboveThreshold>
+        <totalScoreAboveThreshold scoreThreshold="3">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </totalScoreAboveThreshold>
+        <scoreAboveThreshold scoreThreshold="3">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </scoreAboveThreshold>
+        <resetStimulus target="target"/>
+    </presenter>
+    <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes">
+        <preventWindowClose featureText="preventWindowClose"/>
+    </presenter>
+    <presenter back="AutoMenu" menuLabel="colourReport_minimal_attributes" type="colourReport" self="colourReport_minimal_attributesScreen" title="colourReport_minimal_attributes">
+        <htmlText featureText="htmlText"/>
+        <plainText featureText="plainText"/>
+        <image msToNext="60" src="src">
+            <mediaLoaded>
+                <plainText featureText="plainText in mediaLoaded"/>
+            </mediaLoaded>
+            <mediaLoadFailed>
+                <plainText featureText="plainText in mediaLoadFailed"/>
+            </mediaLoadFailed>
+        </image>
+        <targetButton featureText="targetButton" target="target"/>
+        <actionButton featureText="actionButton">
+            <plainText featureText="plainText in actionButton"/>
+        </actionButton>
+        <addPadding/>
+        <centrePage/>
+        <hasGetParameter parameterName="parameterName">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasGetParameter>
+        <table>
+            <plainText featureText="plainText in table"/>
+        </table>
+        <row>
+            <plainText featureText="plainText in row"/>
+        </row>
+        <column>
+            <plainText featureText="plainText in column"/>
+        </column>
+        <preventWindowClose featureText="preventWindowClose"/>
+        <showColourReport scoreThreshold="3">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </showColourReport>
+        <submitTestResults>
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </submitTestResults>
+    </presenter>
+    <presenter back="AutoMenu" menuLabel="kindiagram_minimal_attributes" type="kindiagram" self="kindiagram_minimal_attributesScreen" title="kindiagram_minimal_attributes">
+        <htmlText featureText="htmlText"/>
+        <plainText featureText="plainText"/>
+        <image msToNext="60" src="src">
+            <mediaLoaded>
+                <plainText featureText="plainText in mediaLoaded"/>
+            </mediaLoaded>
+            <mediaLoadFailed>
+                <plainText featureText="plainText in mediaLoadFailed"/>
+            </mediaLoadFailed>
+        </image>
+        <targetButton featureText="targetButton" target="target"/>
+        <actionButton featureText="actionButton">
+            <plainText featureText="plainText in actionButton"/>
+        </actionButton>
+        <addPadding/>
+        <centrePage/>
+        <addKinTypeGui diagramName="diagramName"/>
+        <hasGetParameter parameterName="parameterName">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasGetParameter>
+        <startTimer msToNext="60" listenerId="listenerId">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </compareTimer>
+        <clearTimer listenerId="listenerId"/>
+        <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
+        <kinTypeStringDiagram msToNext="60" kintypestring="kintypestring">
+            <plainText featureText="plainText in kinTypeStringDiagram"/>
+        </kinTypeStringDiagram>
+        <loadKinTypeStringDiagram msToNext="60" diagramName="diagramName">
+            <plainText featureText="plainText in loadKinTypeStringDiagram"/>
+        </loadKinTypeStringDiagram>
+        <editableKinEntitesDiagram msToNext="60" diagramName="diagramName">
+            <plainText featureText="plainText in editableKinEntitesDiagram"/>
+        </editableKinEntitesDiagram>
+        <table>
+            <plainText featureText="plainText in table"/>
+        </table>
+        <row>
+            <plainText featureText="plainText in row"/>
+        </row>
+        <column>
+            <plainText featureText="plainText in column"/>
+        </column>
+        <preventWindowClose featureText="preventWindowClose"/>
+    </presenter>
+    <presenter back="AutoMenu" menuLabel="menu_minimal_attributes" type="menu" self="menu_minimal_attributesScreen" title="menu_minimal_attributes">
+        <htmlText featureText="htmlText"/>
+        <plainText featureText="plainText"/>
+        <image msToNext="60" src="src">
+            <mediaLoaded>
+                <plainText featureText="plainText in mediaLoaded"/>
+            </mediaLoaded>
+            <mediaLoadFailed>
+                <plainText featureText="plainText in mediaLoadFailed"/>
+            </mediaLoadFailed>
+        </image>
+        <menuItem featureText="menuItem" target="target"/>
+        <targetButton featureText="targetButton" target="target"/>
+        <actionButton featureText="actionButton">
+            <plainText featureText="plainText in actionButton"/>
+        </actionButton>
+        <addPadding/>
+        <centrePage/>
+        <allMenuItems/>
+        <hasGetParameter parameterName="parameterName">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasGetParameter>
+        <activateRandomItem/>
+        <startTimer msToNext="60" listenerId="listenerId">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </compareTimer>
+        <clearTimer listenerId="listenerId"/>
+        <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
+        <table>
+            <plainText featureText="plainText in table"/>
+        </table>
+        <row>
+            <plainText featureText="plainText in row"/>
+        </row>
+        <column>
+            <plainText featureText="plainText in column"/>
+        </column>
+        <preventWindowClose featureText="preventWindowClose"/>
+    </presenter>
+    <presenter back="AutoMenu" menuLabel="debug_minimal_attributes" type="debug" self="debug_minimal_attributesScreen" title="debug_minimal_attributes">
+        <htmlText featureText="htmlText"/>
+        <plainText featureText="plainText"/>
+        <image msToNext="60" src="src">
+            <mediaLoaded>
+                <plainText featureText="plainText in mediaLoaded"/>
+            </mediaLoaded>
+            <mediaLoadFailed>
+                <plainText featureText="plainText in mediaLoadFailed"/>
+            </mediaLoadFailed>
+        </image>
+        <targetButton featureText="targetButton" target="target"/>
+        <actionButton featureText="actionButton">
+            <plainText featureText="plainText in actionButton"/>
+        </actionButton>
+        <addPadding/>
+        <localStorageData/>
+        <eraseLocalStorageButton/>
+        <centrePage/>
+        <hasGetParameter parameterName="parameterName">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasGetParameter>
+        <startTimer msToNext="60" listenerId="listenerId">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </compareTimer>
+        <clearTimer listenerId="listenerId"/>
+        <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
+        <table>
+            <plainText featureText="plainText in table"/>
+        </table>
+        <row>
+            <plainText featureText="plainText in row"/>
+        </row>
+        <column>
+            <plainText featureText="plainText in column"/>
+        </column>
+        <preventWindowClose featureText="preventWindowClose"/>
+    </presenter>
+    <presenter back="AutoMenu" menuLabel="text_minimal_attributes" type="text" self="text_minimal_attributesScreen" title="text_minimal_attributes">
+        <htmlText featureText="htmlText"/>
+        <plainText featureText="plainText"/>
+        <image msToNext="60" src="src">
+            <mediaLoaded>
+                <plainText featureText="plainText in mediaLoaded"/>
+            </mediaLoaded>
+            <mediaLoadFailed>
+                <plainText featureText="plainText in mediaLoadFailed"/>
+            </mediaLoadFailed>
+        </image>
+        <targetButton featureText="targetButton" target="target"/>
+        <actionButton featureText="actionButton">
+            <plainText featureText="plainText in actionButton"/>
+        </actionButton>
+        <addPadding/>
+        <centrePage/>
+        <startTimer msToNext="60" listenerId="listenerId">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </compareTimer>
+        <clearTimer listenerId="listenerId"/>
+        <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
+        <table>
+            <plainText featureText="plainText in table"/>
+        </table>
+        <row>
+            <plainText featureText="plainText in row"/>
+        </row>
+        <column>
+            <plainText featureText="plainText in column"/>
+        </column>
+        <preventWindowClose featureText="preventWindowClose"/>
+    </presenter>
+    <presenter back="AutoMenu" menuLabel="timeline_minimal_attributes" type="timeline" self="timeline_minimal_attributesScreen" title="timeline_minimal_attributes">
+        <htmlText featureText="htmlText"/>
+        <plainText featureText="plainText"/>
+        <image msToNext="60" src="src">
+            <mediaLoaded>
+                <plainText featureText="plainText in mediaLoaded"/>
+            </mediaLoaded>
+            <mediaLoadFailed>
+                <plainText featureText="plainText in mediaLoadFailed"/>
+            </mediaLoadFailed>
+        </image>
+        <targetButton featureText="targetButton" target="target"/>
+        <actionButton featureText="actionButton">
+            <plainText featureText="plainText in actionButton"/>
+        </actionButton>
+        <addPadding/>
+        <centrePage/>
+        <hasGetParameter parameterName="parameterName">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasGetParameter>
+        <startTimer msToNext="60" listenerId="listenerId">
+            <plainText featureText="plainText in startTimer"/>
+        </startTimer>
+        <compareTimer msToNext="60" listenerId="listenerId">
+            <aboveThreshold>
+                <plainText featureText="plainText in aboveThreshold"/>
+            </aboveThreshold>
+            <belowThreshold>
+                <plainText featureText="plainText in belowThreshold"/>
+            </belowThreshold>
+        </compareTimer>
+        <clearTimer listenerId="listenerId"/>
+        <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
+        <table>
+            <plainText featureText="plainText in table"/>
+        </table>
+        <row>
+            <plainText featureText="plainText in row"/>
+        </row>
+        <column>
             <plainText featureText="plainText in column"/>
         </column>
         <preventWindowClose featureText="preventWindowClose"/>

@@ -111,9 +111,9 @@ public class DefaultExperiments {
         final Metadata metadata = new Metadata("workerId", "Reporter name *", ".'{'3,'}'", "Please enter at least three letters.", true, "This test can only be done once per worker.");
         final Metadata metadata1 = new Metadata("errordevice", "Device model", ".'{'2,'}'", "Please enter the device model", false, null);
         final Metadata metadata2 = new Metadata("errordescription", "Please describe the error", ".'{'2,'}'", "Please enter a short description of the issue", false, null);
-        experiment.getMetadata().add(metadata);
-        experiment.getMetadata().add(metadata1);
-        experiment.getMetadata().add(metadata2);
+        experiment.addMetadataOnce(metadata);
+        experiment.addMetadataOnce(metadata1);
+        experiment.addMetadataOnce(metadata2);
         return experiment;
     }
 
@@ -154,10 +154,10 @@ public class DefaultExperiments {
         final Metadata metadata1 = new Metadata("errordevice", "Device model", ".'{'2,'}'", "Please enter the device model", false, null);
         final Metadata metadata2 = new Metadata("errordescription", "Please describe the error", ".'{'2,'}'", "Please enter a short description of the issue", false, null);
         final Metadata metadata3 = new Metadata("emailAddress", "Please enter an email address", ".'{'2,'}'", "Please enter a short description of the issue", false, null);
-        experiment.getMetadata().add(metadata);
-        experiment.getMetadata().add(metadata1);
-        experiment.getMetadata().add(metadata2);
-        experiment.getMetadata().add(metadata3);
+        experiment.addMetadataOnce(metadata);
+        experiment.addMetadataOnce(metadata1);
+        experiment.addMetadataOnce(metadata2);
+        experiment.addMetadataOnce(metadata3);
         if (metadataRepository != null) {
             metadataRepository.save(experiment.getMetadata());
         }
@@ -179,7 +179,8 @@ public class DefaultExperiments {
         experiment.getPresenterScreen().add(addTargetScreen(autoMenu, 0));
         experiment.getPresenterScreen().add(autoMenu);
         experiment.getPresenterScreen().add(aboutScreen);
-        addAllFeaturesAsPages(presenterFeatureRepository, experiment, autoMenu, 0);
+        addAllFeaturesAsPages(presenterFeatureRepository, experiment, autoMenu, 0, true);
+        addAllFeaturesAsPages(presenterFeatureRepository, experiment, autoMenu, 0, false);
         if (presenterFeatureRepository != null) {
             presenterScreenRepository.save(experiment.getPresenterScreen());
         }
@@ -221,19 +222,20 @@ public class DefaultExperiments {
         experiment.appendUniqueStimuli(stimuliList);
     }
 
-    private void addAllFeaturesAsPages(PresenterFeatureRepository presenterFeatureRepository, final Experiment experiment, PresenterScreen backPresenter, long displayOrder) {
+    private void addAllFeaturesAsPages(PresenterFeatureRepository presenterFeatureRepository, final Experiment experiment, PresenterScreen backPresenter, long displayOrder, boolean addOptionalAttributes) {
 //        int maxScreenAddCount = 5;
         for (PresenterType presenterType : PresenterType.values()) {
+            final String presenterName = presenterType.name() + ((addOptionalAttributes) ? "_all_attributes" : "_minimal_attributes");
 //            maxScreenAddCount--;
-            final PresenterScreen presenterScreen = new PresenterScreen(presenterType.name(), presenterType.name(), backPresenter, presenterType.name() + "Screen", null, presenterType, displayOrder);
+            final PresenterScreen presenterScreen = new PresenterScreen(presenterName, presenterName, backPresenter, presenterName + "Screen", null, presenterType, displayOrder);
             for (FeatureType featureType : presenterType.getFeatureTypes()) {
                 if (featureType.getIsChildType() == FeatureType.Contitionals.none) {
                     if (featureType == FeatureType.clearPage) {
                         final PresenterFeature clearScreenButton = new PresenterFeature(FeatureType.actionButton, "Clear Screen");
-                        clearScreenButton.getPresenterFeatureList().add(addFeature(experiment, presenterType, featureType, presenterFeatureRepository));
+                        clearScreenButton.getPresenterFeatureList().add(addFeature(experiment, presenterType, featureType, presenterFeatureRepository, addOptionalAttributes));
                         presenterScreen.getPresenterFeatureList().add(clearScreenButton);
                     } else {
-                        presenterScreen.getPresenterFeatureList().add(addFeature(experiment, presenterType, featureType, presenterFeatureRepository));
+                        presenterScreen.getPresenterFeatureList().add(addFeature(experiment, presenterType, featureType, presenterFeatureRepository, addOptionalAttributes));
                     }
                 }
             }
@@ -247,61 +249,63 @@ public class DefaultExperiments {
         }
     }
 
-    private PresenterFeature addFeature(Experiment experiment, PresenterType presenterType, FeatureType featureType, PresenterFeatureRepository presenterFeatureRepository) {
+    private PresenterFeature addFeature(Experiment experiment, PresenterType presenterType, FeatureType featureType, PresenterFeatureRepository presenterFeatureRepository, boolean addOptionalAttributes) {
         final PresenterFeature presenterFeature = new PresenterFeature(featureType, (featureType.canHaveText()) ? featureType.name() : null);
         if (featureType.getFeatureAttributes() != null) {
             for (FeatureAttribute attribute : featureType.getFeatureAttributes()) {
-                switch (attribute) {
-                    case columnCount:
-                    case maxStimuli:
-                    case repeatCount:
-                    case repeatRandomWindow:
-                    case scoreThreshold:
-                    case errorThreshold:
-                    case potentialThreshold:
-                    case incrementPhase:
-                    case minStimuliPerTag:
-                    case maxStimuliPerTag:
-                    case minimum:
-                        presenterFeature.addFeatureAttributes(attribute, "3");
-                        break;
-                    case dataChannel:
-                    case adjacencyThreshold:
-                        presenterFeature.addFeatureAttributes(attribute, "2");
-                        break;
-                    case maxHeight:
-                    case maxWidth:
-                    case msToNext:
-                    case maximum:
-                        presenterFeature.addFeatureAttributes(attribute, "60");
-                        break;
-                    case hotKey:
-                        presenterFeature.addFeatureAttributes(attribute, "A");
-                        break;
-                    case percentOfPage:
-                        presenterFeature.addFeatureAttributes(attribute, "56");
-                        break;
-                    case eventTier:
-                    case threshold:
-                    case phasesPerStimulus:
-                        presenterFeature.addFeatureAttributes(attribute, "8");
-                        break;
-                    case fieldName:
-                    case linkedFieldName:
-                        presenterFeature.addFeatureAttributes(attribute, "workerId");
-                        break;
-                    case animate:
-                        presenterFeature.addFeatureAttributes(attribute, "bounce");
-                        break;
-                    case randomise:
-                    case autoPlay:
-                    case loop:
-                    case showControls:
-                    case scoreValue:
-                        presenterFeature.addFeatureAttributes(attribute, "true");
-                        break;
-                    default:
-                        presenterFeature.addFeatureAttributes(attribute, attribute.name());
+                if (addOptionalAttributes || !attribute.isOptional()) {
+                    switch (attribute) {
+                        case columnCount:
+                        case maxStimuli:
+                        case repeatCount:
+                        case repeatRandomWindow:
+                        case scoreThreshold:
+                        case errorThreshold:
+                        case potentialThreshold:
+                        case incrementPhase:
+                        case minStimuliPerTag:
+                        case maxStimuliPerTag:
+                        case minimum:
+                            presenterFeature.addFeatureAttributes(attribute, "3");
+                            break;
+                        case dataChannel:
+                        case adjacencyThreshold:
+                            presenterFeature.addFeatureAttributes(attribute, "2");
+                            break;
+                        case maxHeight:
+                        case maxWidth:
+                        case msToNext:
+                        case maximum:
+                            presenterFeature.addFeatureAttributes(attribute, "60");
+                            break;
+                        case hotKey:
+                            presenterFeature.addFeatureAttributes(attribute, "A");
+                            break;
+                        case percentOfPage:
+                            presenterFeature.addFeatureAttributes(attribute, "56");
+                            break;
+                        case eventTier:
+                        case threshold:
+                        case phasesPerStimulus:
+                            presenterFeature.addFeatureAttributes(attribute, "8");
+                            break;
+                        case fieldName:
+                        case linkedFieldName:
+                            presenterFeature.addFeatureAttributes(attribute, "workerId");
+                            break;
+                        case animate:
+                            presenterFeature.addFeatureAttributes(attribute, "bounce");
+                            break;
+                        case randomise:
+                        case autoPlay:
+                        case loop:
+                        case showControls:
+                        case scoreValue:
+                            presenterFeature.addFeatureAttributes(attribute, "true");
+                            break;
+                        default:
+                            presenterFeature.addFeatureAttributes(attribute, attribute.name());
+                    }
                 }
             }
         }
@@ -318,19 +322,19 @@ public class DefaultExperiments {
             final String metadataFieldname = "groupAllocation_" + featureType.name();
             randomGrouping.setStorageField(metadataFieldname);
             presenterFeature.setRandomGrouping(randomGrouping);
-            experiment.getMetadata().add(new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null));
+            experiment.addMetadataOnce(new Metadata(metadataFieldname, metadataFieldname, ".*", ".", false, null));
         }
         switch (featureType.getRequiresChildType()) {
             case hasTrueFalseCondition:
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.conditionTrue, presenterFeatureRepository));
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.conditionFalse, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.conditionTrue, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.conditionFalse, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
                     presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 }
                 break;
             case hasCorrectIncorrect:
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.responseCorrect, presenterFeatureRepository));
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.responseIncorrect, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.responseCorrect, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.responseIncorrect, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
                     presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 }
@@ -347,45 +351,45 @@ public class DefaultExperiments {
                     presenterFeature.addFeature(FeatureType.hasMoreStimulus, null).addFeature(FeatureType.plainText, "hasMoreStimulus in " + featureType.name());;
                     presenterFeature.addFeature(FeatureType.endOfStimulus, null).addFeature(FeatureType.plainText, "endOfStimulus in " + featureType.name());;
                 } else {
-                    presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.hasMoreStimulus, presenterFeatureRepository));
-                    presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.endOfStimulus, presenterFeatureRepository));
+                    presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.hasMoreStimulus, presenterFeatureRepository, addOptionalAttributes));
+                    presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.endOfStimulus, presenterFeatureRepository, addOptionalAttributes));
                 }
                 if (presenterFeatureRepository != null) {
                     presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 }
                 break;
             case hasErrorSuccess:
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onError, presenterFeatureRepository));
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onSuccess, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onError, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onSuccess, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
                     presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 }
                 break;
             case hasUserCount:
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.multipleUsers, presenterFeatureRepository));
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.singleUser, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.multipleUsers, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.singleUser, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
                     presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 }
                 break;
             case hasThreshold:
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.aboveThreshold, presenterFeatureRepository));
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.belowThreshold, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.aboveThreshold, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.belowThreshold, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
                     presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 }
                 break;
             case hasMediaLoading:
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaLoaded, presenterFeatureRepository));
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaLoadFailed, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaLoaded, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaLoadFailed, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
                     presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 }
                 break;
             case hasMediaPlayback:
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaLoaded, presenterFeatureRepository));
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaLoadFailed, presenterFeatureRepository));
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaPlaybackComplete, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaLoaded, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaLoadFailed, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaPlaybackComplete, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
                     presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 }
@@ -393,8 +397,8 @@ public class DefaultExperiments {
             case none:
                 break;
             case groupNetworkActivity:
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.groupNetworkActivity, presenterFeatureRepository));
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.groupNetworkActivity, presenterFeatureRepository));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.groupNetworkActivity, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.groupNetworkActivity, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
                     presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 }
@@ -409,7 +413,7 @@ public class DefaultExperiments {
 //                        if (featureType == FeatureType.withMatchingStimulus) {
 //                            presenterFeature.addFeature(FeatureType.plainText, featureType1.name() + " in " + featureType.name());
 //                        } else {
-                        presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, featureType1, presenterFeatureRepository));
+                        presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, featureType1, presenterFeatureRepository, addOptionalAttributes));
 //                        }
                     }
                 }

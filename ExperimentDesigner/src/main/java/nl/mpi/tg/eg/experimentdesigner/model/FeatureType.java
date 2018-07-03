@@ -113,7 +113,7 @@ public enum FeatureType {
     matchingStimulusGrid(false, false, new FeatureAttribute[]{columnCount, dataChannel, maxWidth, animate, matchingRegex, maxStimuli, randomise}, false, false, false, Contitionals.hasCorrectIncorrect, Contitionals.stimulusAction),
     pause(true, false, new FeatureAttribute[]{msToNext}),
     startTimer(true, false, new FeatureAttribute[]{msToNext, listenerId}),
-    compareTimer(true, false, new FeatureAttribute[]{msToNext, listenerId}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
+    compareTimer(false, false, new FeatureAttribute[]{msToNext, listenerId}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
     clearTimer(false, false, new FeatureAttribute[]{listenerId}),
     logTimerValue(false, false, new FeatureAttribute[]{listenerId, eventTag, dataChannel}),
     randomMsPause(true, false, new FeatureAttribute[]{minimum, maximum}),
@@ -151,7 +151,7 @@ public enum FeatureType {
     row(true, false, null),
     column(true, false, new FeatureAttribute[]{styleName}),
     // todo: look for and update to add the show any stimuli tag and make stimulusImage only show images (true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement, showControls}, false, false, false, Contitionals.hasMediaLoading), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
-    stimulusPresent(false, false, new FeatureAttribute[]{percentOfPage, dataChannel, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement, showControls}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.stimulusAction), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
+    stimulusPresent(false, false, new FeatureAttribute[]{percentOfPage, dataChannel, maxHeight, maxWidth, msToNext, animate, replacementRegex, replacement, showControls}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.stimulusAction), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
     stimulusImage(false, false, new FeatureAttribute[]{msToNext, styleName, dataChannel}, false, false, false, Contitionals.hasMediaLoading, Contitionals.stimulusAction), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
     stimulusCodeImage(false, false, new FeatureAttribute[]{msToNext, dataChannel, codeFormat, styleName}, false, false, false, Contitionals.hasMediaLoading, Contitionals.stimulusAction), //stimulusCodeImage can take both <code> and <rating_" + index + "> tags in its string value
     stimulusCodeVideo(false, false, new FeatureAttribute[]{msToNext, dataChannel, maxHeight, codeFormat, percentOfPage, loop, styleName, autoPlay, showControls, maxWidth}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.stimulusAction), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
