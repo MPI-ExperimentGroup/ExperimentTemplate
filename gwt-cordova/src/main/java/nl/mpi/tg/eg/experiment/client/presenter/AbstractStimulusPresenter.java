@@ -42,6 +42,7 @@ import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.CurrentStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
@@ -52,7 +53,6 @@ import nl.mpi.tg.eg.experiment.client.listener.TouchInputZone;
 import nl.mpi.tg.eg.experiment.client.listener.TriggerListener;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
-import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.SdCardStimulus;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -82,7 +82,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     private static final String LOADED_STIMULUS_LIST = "loadedStimulusList";
     private static final String CONSUMED_TAGS_LIST = "consumedTagsList";
     private static final String SEEN_STIMULUS_INDEX = "seenStimulusIndex";
-    protected final StimuliProvider stimulusProvider;
     private final LocalStorage localStorage;
     private final DataSubmissionService submissionService;
     private GroupParticipantService groupParticipantService = null;
@@ -90,7 +89,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     private final Duration duration;
     final ArrayList<StimulusButton> buttonList = new ArrayList<>();
     private final ArrayList<Timer> pauseTimers = new ArrayList<>();
-    private TimedStimulusListener hasMoreStimulusListener;
+    private CurrentStimulusListener hasMoreStimulusListener;
     private TimedStimulusListener endOfStimulusListener;
     final private ArrayList<PresenterEventListner> nextButtonEventListnerList = new ArrayList<>();
     private final ArrayList<StimulusFreeText> stimulusFreeTextList = new ArrayList<>();
@@ -103,13 +102,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         bounce, none, stimuliCode
     }
 
-    public AbstractStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, StimuliProvider stimulusProvider) {
+    public AbstractStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage) {
         super(widgetTag, new TimedStimulusView(audioPlayer));
         duration = new Duration();
         this.submissionService = submissionService;
         this.userResults = userResults;
         this.localStorage = localStorage;
-        this.stimulusProvider = stimulusProvider;
 
 //        final Label debugLabel = new Label();
 //        debugLabel.setStyleName("debugLabel");
@@ -135,7 +133,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             final StimulusSelector[] randomTags,
             final MetadataField stimulusAllocationField,
             final String consumedTagsGroupName,
-            final TimedStimulusListener hasMoreStimulusListener,
+            final StimuliProvider stimulusProvider,
+            final CurrentStimulusListener hasMoreStimulusListener,
             final TimedStimulusListener endOfStimulusListener) {
         final String subDirectory = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag());
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
@@ -155,7 +154,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     endOfStimulusListener.postLoadTimerFired();
                 } else {
                     localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), "");
-                    loadSdCardStimulus(eventTag, selectionTags, randomTags, stimulusAllocationField, consumedTagsGroupName, hasMoreStimulusListener, endOfStimulusListener);
+                    loadSdCardStimulus(eventTag, selectionTags, randomTags, stimulusAllocationField, consumedTagsGroupName, stimulusProvider, hasMoreStimulusListener, endOfStimulusListener);
                 }
             }
         };
@@ -175,7 +174,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             public void postLoadTimerFired() {
                 clearPage();
                 if (directoryList.isEmpty()) {
-                    showStimulus(null, 0);
+                    showStimulus(stimulusProvider, null, 0);
                 } else {
                     hasSubdirectories = true;
                     for (final String[] directory : directoryList) {
@@ -190,13 +189,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                                 // show the subdirectorydirectory[0], 
                                 localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), directory[0]);
-                                loadSdCardStimulus(directory[1], selectionTags, randomTags, stimulusAllocationField, consumedTagsGroupName, hasMoreStimulusListener, new TimedStimulusListener() {
+                                loadSdCardStimulus(directory[1], selectionTags, randomTags, stimulusAllocationField, consumedTagsGroupName, stimulusProvider, hasMoreStimulusListener, new TimedStimulusListener() {
                                     @Override
                                     public void postLoadTimerFired() {
                                         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "completed-directory-" + directory[0] + "-" + getSelfTag(), Boolean.toString(true));
                                         // go back to the initial directory 
                                         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), "");
-                                        loadSdCardStimulus(eventTag, selectionTags, randomTags, stimulusAllocationField, consumedTagsGroupName, hasMoreStimulusListener, endOfStimulusListener);
+                                        loadSdCardStimulus(eventTag, selectionTags, randomTags, stimulusAllocationField, consumedTagsGroupName, stimulusProvider, hasMoreStimulusListener, endOfStimulusListener);
                                     }
                                 });
                             }
@@ -239,13 +238,15 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             final StimulusSelector[] randomTags,
             final MetadataField stimulusAllocationField,
             final String consumedTagsGroupName,
+            final StimuliProvider stimulusProvider,
             final TimedStimulusListener beforeStimuliListener,
-            final TimedStimulusListener eachStimulusListener,
+            final CurrentStimulusListener eachStimulusListener,
             final TimedStimulusListener afterStimuliListener
     ) {
-        // todo: this needs to be replaced with an actual loop over the stimulus
-//        loadStimulus(eventTag, selectionTags, randomTags, stimulusAllocationField, consumedTagsGroupName, hasMoreStimulusListener, endOfStimulusListener);
-        throw new UnsupportedOperationException("todo: removeMatchingStimulus");
+        loadStimulus(stimulusProvider, eventTag, selectionTags, randomTags, stimulusAllocationField, consumedTagsGroupName);
+        this.hasMoreStimulusListener = null;
+        this.endOfStimulusListener = null;
+        throw new UnsupportedOperationException("todo: trigger beforeStimuliListener, eachStimulusListener, afterStimuliListener");
     }
 
     protected void loadStimulus(String eventTag,
@@ -253,8 +254,23 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             final StimulusSelector[] randomTags,
             final MetadataField stimulusAllocationField,
             final String consumedTagsGroupName,
-            final TimedStimulusListener hasMoreStimulusListener,
+            final StimuliProvider stimulusProvider,
+            final CurrentStimulusListener hasMoreStimulusListener,
             final TimedStimulusListener endOfStimulusListener
+    ) {
+        loadStimulus(stimulusProvider, eventTag, selectionTags, randomTags, stimulusAllocationField, consumedTagsGroupName);
+        this.hasMoreStimulusListener = hasMoreStimulusListener;
+        this.endOfStimulusListener = endOfStimulusListener;
+        showStimulus(stimulusProvider, null, 0);
+    }
+
+    private void loadStimulus(
+            final StimuliProvider stimulusProvider,
+            String eventTag,
+            final StimulusSelector[] selectionTags, // only stimuli with tags in this list can be included
+            final StimulusSelector[] randomTags,
+            final MetadataField stimulusAllocationField,
+            final String consumedTagsGroupName
     ) {
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final String storedStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag());
@@ -306,26 +322,23 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
         // @todo: add the limits for maxStimulusCount and maxStimulusPerTag -
         stimulusProvider.getSubset(allocatedTags, storedStimulusList, seenStimulusIndex);
-        this.hasMoreStimulusListener = hasMoreStimulusListener;
-        this.endOfStimulusListener = endOfStimulusListener;
-        showStimulus(null, 0);
     }
 
-    protected void sendStimuliReport(String reportType, final int dataChannel) {
+    protected void sendStimuliReport(final StimuliProvider stimulusProvider, String reportType, final int dataChannel) {
         final Map<String, String> stimuliReport = stimulusProvider.getStimuliReport(reportType);
         for (String keyString : stimuliReport.keySet()) {
             submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, reportType, keyString, stimuliReport.get(keyString), duration.elapsedMillis());
         }
     }
 
-    protected void showStimuliReport() {
+    protected void showStimuliReport(final StimuliProvider stimulusProvider) {
         ((TimedStimulusView) simpleView).addHtmlText(stimulusProvider.getHtmlStimuliReport(), null);
     }
 
-    protected void withMatchingStimulus(String eventTag, final String matchingRegex, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void withMatchingStimulus(String eventTag, final String matchingRegex, final StimuliProvider stimulusProvider, final CurrentStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
         matchingStimuliGroup = new MatchingStimuliGroup(stimulusProvider.getCurrentStimulus(), stimulusProvider.getMatchingStimuli(matchingRegex), true, hasMoreStimulusListener, endOfStimulusListener);
         matchingStimuliGroup.getNextStimulus(stimulusProvider);
-        matchingStimuliGroup.showNextStimulus();
+        matchingStimuliGroup.showNextStimulus(stimulusProvider);
     }
 
     public void htmlTokenText(final String textString, final String styleName) {
@@ -407,38 +420,38 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         timer.schedule((int) (Math.random() * (maximumMs - minimumMs) + minimumMs));
     }
 
-    protected void stimulusPause(final TimedStimulusListener timedStimulusListener) {
-        pause(stimulusProvider.getCurrentStimulus().getPauseMs(), timedStimulusListener);
+    protected void stimulusPause(final Stimulus currentStimulus, final TimedStimulusListener timedStimulusListener) {
+        pause(currentStimulus.getPauseMs(), timedStimulusListener);
     }
 
-    protected void currentStimulusHasTag(int postLoadMs, final Stimulus.Tag[] tagList, final TimedStimulusListener hasTagListener, final TimedStimulusListener hasntTagListener) {
+    protected void currentStimulusHasTag(int postLoadMs, final Stimulus.Tag[] tagList, final Stimulus currentStimulus, final TimedStimulusListener hasTagListener, final TimedStimulusListener hasntTagListener) {
 // todo: implement randomTags
 //        List<Stimulus.Tag> editableList = new LinkedList<Stimulus.Tag>(tagList);
 //        editableList.retainAll();
 //        if (editableList.isEmpty()) {
-        if (stimulusProvider.getCurrentStimulus().getTags().containsAll(Arrays.asList(tagList))) {
+        if (currentStimulus.getTags().containsAll(Arrays.asList(tagList))) {
             pause(postLoadMs, hasTagListener);
         } else {
             pause(postLoadMs, hasntTagListener);
         }
     }
 
-    public void stimulusLabel() {
-        stimulusLabel(null);
+    public void stimulusLabel(final Stimulus currentStimulus) {
+        stimulusLabel(currentStimulus, null);
     }
 
-    public void stimulusLabel(String styleName) {
-        final String label = stimulusProvider.getCurrentStimulus().getLabel();
+    public void stimulusLabel(final Stimulus currentStimulus, String styleName) {
+        final String label = currentStimulus.getLabel();
         if (label != null) {
             ((TimedStimulusView) simpleView).addHtmlText(label, styleName);
         }
     }
 
-    protected void showStimulus() {
-        showStimulus(null, 0);
+    protected void showStimulus(final StimuliProvider stimulusProvider) {
+        showStimulus(stimulusProvider, null, 0);
     }
 
-    protected void showStimulus(GroupActivityListener groupActivityListener, final int increment) {
+    protected void showStimulus(final StimuliProvider stimulusProvider, GroupActivityListener groupActivityListener, final int increment) {
         final int currentStimulusIndex = stimulusProvider.getCurrentStimulusIndex();
         final String subDirectory = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag());
         localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag() + ((subDirectory != null) ? subDirectory : ""), Integer.toString(currentStimulusIndex));
@@ -448,7 +461,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             stimulusProvider.nextStimulus(increment);
 //            submissionService.submitTagValue(userResults.getUserData().getUserId(), "NextStimulus", stimulusProvider.getCurrentStimulus().getUniqueId(), duration.elapsedMillis());
 //            super.startAudioRecorderTag(STIMULUS_TIER);
-            hasMoreStimulusListener.postLoadTimerFired();
+            hasMoreStimulusListener.postLoadTimerFired(stimulusProvider, stimulusProvider.getCurrentStimulus());
 //        } else if (!hasSubdirectories) {
         } else {
             localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "completed-screen-" + getSelfTag(), Boolean.toString(true));
@@ -461,25 +474,25 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //    private static final int STIMULUS_TIER = 2;
 
     @Deprecated // @todo: is this really used anymore? -
-    protected void removeStimulus() {
+    protected void removeStimulus(final StimuliProvider stimulusProvider, final Stimulus currentStimulus) {
         stimulusProvider.nextStimulus(1);
         //localStorage.setStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_INDEX + getSelfTag(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()));
     }
 
-    protected void nextMatchingStimulus() {
+    protected void nextMatchingStimulus(final StimuliProvider stimulusProvider) {
         matchingStimuliGroup.getNextStimulus(stimulusProvider);
-        matchingStimuliGroup.showNextStimulus();
+        matchingStimuliGroup.showNextStimulus(stimulusProvider);
     }
 
     protected void removeMatchingStimulus(final String matchingRegex) {
         throw new UnsupportedOperationException("todo: removeMatchingStimulus");
     }
 
-    protected void keepStimulus() {
+    protected void keepStimulus(final StimuliProvider stimulusProvider, final Stimulus currentStimulus) {
         stimulusProvider.pushCurrentStimulusToEnd();
     }
 
-    protected void groupNetwork(final AppEventListner appEventListner, final ApplicationState selfApplicationState, final String groupMembers, final String groupCommunicationChannels, final int phasesPerStimulus, final TimedStimulusListener timedStimulusListener) {
+    protected void groupNetwork(final AppEventListner appEventListner, final ApplicationState selfApplicationState, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String groupMembers, final String groupCommunicationChannels, final int phasesPerStimulus, final TimedStimulusListener timedStimulusListener) {
         if (groupParticipantService == null) {
             final Timer groupKickTimer = new Timer() {
                 @Override
@@ -536,14 +549,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                         if (groupParticipantService.getStimulusIndex() != stimulusProvider.getCurrentStimulusIndex()) {
                             groupParticipantService.setResponseStimulusId(null);
                             groupParticipantService.setResponseStimulusOptions(null);
-                        } else {
-                            if (groupParticipantService.getMessageString() != null && !groupParticipantService.getMessageString().isEmpty()) {
-                                JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus());
-                                storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
-                                storedStimulusJSONObject.put("groupMessage", new JSONString(groupParticipantService.getMessageString()));
-                                localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus(), storedStimulusJSONObject);
-                                // submissionService.writeJsonData would be called on next stimulus anyway: submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), stimulusProvider.getCurrentStimulus().getUniqueId(), storedStimulusJSONObject.toString());
-                            }
+                        } else if (groupParticipantService.getMessageString() != null && !groupParticipantService.getMessageString().isEmpty()) {
+                            JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
+                            storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
+                            storedStimulusJSONObject.put("groupMessage", new JSONString(groupParticipantService.getMessageString()));
+                            localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, storedStimulusJSONObject);
+                            // submissionService.writeJsonData would be called on next stimulus anyway: submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), currentStimulus.getUniqueId(), storedStimulusJSONObject.toString());
                         }
                         // when a valid message has been received the current stimuli needs to be synchronised with the group
                         stimulusProvider.setCurrentStimuliIndex(groupParticipantService.getStimulusIndex());
@@ -608,8 +619,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             groupParticipantService.joinGroupNetwork(serviceLocations.groupServerUrl());
         } else {
             timedStimulusListener.postLoadTimerFired();
-//            groupParticipantService.messageGroup(0, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, null);
-//              groupParticipantService.messageGroup(0, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), messageString, groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId());
+//            groupParticipantService.messageGroup(0, currentStimulus.getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, null);
+//              groupParticipantService.messageGroup(0, currentStimulus.getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), messageString, groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId());
         }
     }
 
@@ -751,16 +762,16 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     }
 
-    public void stimulusHasResponse(final AppEventListner appEventListner, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener) {
-        if (localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus()) != null) {
+    public void stimulusHasResponse(final AppEventListner appEventListner, final Stimulus currentStimulus, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener) {
+        if (localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus) != null) {
             correctListener.postLoadTimerFired();
         } else {
             incorrectListener.postLoadTimerFired();
         }
     }
 
-    protected void stimulusMetadataField(MetadataField metadataField, final int dataChannel) {
-        final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus());
+    protected void stimulusMetadataField(final Stimulus currentStimulus, MetadataField metadataField, final int dataChannel) {
+        final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
         final String fieldValue;
         if (storedStimulusJSONObject != null) {
             fieldValue = storedStimulusJSONObject.containsKey(metadataField.getPostName()) ? storedStimulusJSONObject.get(metadataField.getPostName()).isString().stringValue() : "";
@@ -773,8 +784,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         stimulusFreeTextList.add(metadataFieldWidget);
     }
 
-    protected void stimulusFreeText(String validationRegex, String keyCodeChallenge, String validationChallenge, final String allowedCharCodes, final int hotKey, String styleName, final int dataChannel) {
-        final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus());
+    protected void stimulusFreeText(final Stimulus currentStimulus, String validationRegex, String keyCodeChallenge, String validationChallenge, final String allowedCharCodes, final int hotKey, String styleName, final int dataChannel) {
+        final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
         final String postName = "freeText";
         final JSONValue freeTextValue = (storedStimulusJSONObject == null) ? null : storedStimulusJSONObject.get(postName);
         StimulusFreeText stimulusFreeText = ((TimedStimulusView) simpleView).addStimulusFreeText(postName, validationRegex, keyCodeChallenge, validationChallenge, allowedCharCodes, new SingleShotEventListner() {
@@ -794,14 +805,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         stimulusFreeTextList.add(stimulusFreeText);
     }
 
-    protected void stimulusImageCapture(final String captureLabel, int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
-        final SdCardStimulus currentStimulus = (SdCardStimulus) stimulusProvider.getCurrentStimulus();
+    protected void stimulusImageCapture(final StimuliProvider stimulusProvider, final Stimulus currentStimulusO, final String captureLabel, int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
+        final SdCardStimulus currentStimulus = (SdCardStimulus) currentStimulusO;
         final SdCardImageCapture sdCardImageCapture = new SdCardImageCapture(new TimedStimulusListener() {
             @Override
             public void postLoadTimerFired() {
                 clearPage();
                 // cause the taken image to be shown
-                hasMoreStimulusListener.postLoadTimerFired();
+                hasMoreStimulusListener.postLoadTimerFired(stimulusProvider, currentStimulusO);
             }
         }, currentStimulus, userResults.getUserData().getUserId(), localStorage);
         if (sdCardImageCapture.hasBeenCaptured()) {
@@ -835,13 +846,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addBackgroundImage((imageSrc == null || imageSrc.isEmpty()) ? null : UriUtils.fromTrustedString((imageSrc.startsWith("file")) ? imageSrc : serviceLocations.staticFilesUrl() + imageSrc), styleName, postLoadMs, timedStimulusListener);
     }
 
-    protected void stimulusImage(int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener) {
-        stimulusImage(null, postLoadMs, dataChannel, loadedStimulusListener, failedStimulusListener);
+    protected void stimulusImage(final Stimulus currentStimulus, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener) {
+        stimulusImage(currentStimulus, null, postLoadMs, dataChannel, loadedStimulusListener, failedStimulusListener);
     }
 
-    protected void stimulusImage(final String styleName, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener) {
-        final String imageString = stimulusProvider.getCurrentStimulus().getImage();
-        final String uniqueId = stimulusProvider.getCurrentStimulus().getUniqueId();
+    protected void stimulusImage(final Stimulus currentStimulus, final String styleName, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener) {
+        final String imageString = currentStimulus.getImage();
+        final String uniqueId = currentStimulus.getUniqueId();
         final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
             @Override
             public void postLoadTimerFired() {
@@ -852,40 +863,40 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     @Deprecated
-    protected void stimulusPresent(int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
-        stimulusPresent(percentOfPage, maxHeight, maxWidth, AnimateTypes.none, postLoadMs, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener);
+    protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+        stimulusPresent(stimulusProvider, currentStimulus, percentOfPage, maxHeight, maxWidth, AnimateTypes.none, postLoadMs, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener);
     }
 
     @Deprecated
-    protected void stimulusPresent(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
-        stimulusPresent(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, true, null, postLoadMs, null, null, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener, null);
+    protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+        stimulusPresent(stimulusProvider, currentStimulus, percentOfPage, maxHeight, maxWidth, animateType, true, null, postLoadMs, null, null, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener, null);
     }
 
     @Deprecated
-    protected void stimulusPresent(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
-        stimulusPresent(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, showControls, null, postLoadMs, null, null, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener, null);
+    protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+        stimulusPresent(stimulusProvider, currentStimulus, percentOfPage, maxHeight, maxWidth, animateType, showControls, null, postLoadMs, null, null, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener, null);
     }
 
     @Deprecated
-    protected void stimulusPresent(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, String regex, String replacement, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
-        stimulusPresent(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, true, null, postLoadMs, regex, replacement, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener, null);
+    protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, String regex, String replacement, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+        stimulusPresent(stimulusProvider, currentStimulus, percentOfPage, maxHeight, maxWidth, animateType, true, null, postLoadMs, regex, replacement, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener, null);
     }
 
     @Deprecated
-    protected void stimulusPresent(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, int postLoadMs, String regex, String replacement, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
-        stimulusPresent(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, showControls, null, postLoadMs, regex, replacement, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener, null);
+    protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, int postLoadMs, String regex, String replacement, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+        stimulusPresent(stimulusProvider, currentStimulus, percentOfPage, maxHeight, maxWidth, animateType, showControls, null, postLoadMs, regex, replacement, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener, null);
     }
 
     @Deprecated
-    protected void stimulusPresent(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final Integer fixedPositionY, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
-        stimulusPresent(stimulusProvider.getCurrentStimulus(), percentOfPage, maxHeight, maxWidth, animateType, true, fixedPositionY, postLoadMs, null, null, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener, null);
+    protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final Integer fixedPositionY, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+        stimulusPresent(stimulusProvider, currentStimulus, percentOfPage, maxHeight, maxWidth, animateType, true, fixedPositionY, postLoadMs, null, null, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener, null);
     }
 
 //    @Deprecated
 //    protected void stimulusPresent(final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, final Integer fixedPositionY, int postLoadMs, String regex, String replacement, final TimedStimulusListener timedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
 //        stimulusPresent(currentStimulus, percentOfPage, maxHeight, maxWidth, animateType, showControls, fixedPositionY, postLoadMs, regex, replacement, timedStimulusListener, clickedStimulusListener);
 //    }
-    protected void stimulusPresent(final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, final Integer fixedPositionY, int postLoadMs, String regex, String replacement, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
+    protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, final Integer fixedPositionY, int postLoadMs, String regex, String replacement, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
         if (currentStimulus.hasImage()) {
             final String image;
             if (regex != null && replacement != null) {
@@ -956,22 +967,22 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             loadedStimulusListener.postLoadTimerFired();
         } else {
             final String incorrect_stimulus_format = "incorrect stimulus format";
-            nextStimulusButton(incorrect_stimulus_format, incorrect_stimulus_format + " " + currentStimulus.getLabel(), true, -1);
+            nextStimulusButton(stimulusProvider, currentStimulus, incorrect_stimulus_format, incorrect_stimulus_format + " " + currentStimulus.getLabel(), true, -1);
         }
     }
 
 //    protected void stimulusCodeImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, String codeFormat, TimedStimulusListener timedStimulusListener) {
-    protected void stimulusCodeImage(final String styleName, int postLoadMs, String codeFormat, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener) {
-        String formattedCodeTemp = codeFormat.replace("<code>", stimulusProvider.getCurrentStimulus().getCode());
-        if (stimulusProvider.getCurrentStimulus().hasRatingLabels()) {
+    protected void stimulusCodeImage(final Stimulus currentStimulus, final String styleName, int postLoadMs, String codeFormat, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener) {
+        String formattedCodeTemp = codeFormat.replace("<code>", currentStimulus.getCode());
+        if (currentStimulus.hasRatingLabels()) {
             int index = 0;
-            for (final String ratingLabel : stimulusProvider.getCurrentStimulus().getRatingLabels().split(",")) {
+            for (final String ratingLabel : currentStimulus.getRatingLabels().split(",")) {
                 formattedCodeTemp = formattedCodeTemp.replace("<rating_" + index + ">", ratingLabel);
                 index++;
             }
         }
         final String formattedCode = formattedCodeTemp;
-        final String uniqueId = stimulusProvider.getCurrentStimulus().getUniqueId();
+        final String uniqueId = currentStimulus.getUniqueId();
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeImage", formattedCode, duration.elapsedMillis());
         final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
             @Override
@@ -983,9 +994,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
     }
 
-    protected void stimulusCodeAudio(int postLoadMs, String codeFormat, boolean showPlaybackIndicator, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
-        final String formattedCode = codeFormat.replace("<code>", stimulusProvider.getCurrentStimulus().getCode());
-        final String uniqueId = stimulusProvider.getCurrentStimulus().getUniqueId();
+    protected void stimulusCodeAudio(final Stimulus currentStimulus, int postLoadMs, String codeFormat, boolean showPlaybackIndicator, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+        final String formattedCode = codeFormat.replace("<code>", currentStimulus.getCode());
+        final String uniqueId = currentStimulus.getUniqueId();
+
         String mp3 = formattedCode + ".mp3";
         String ogg = formattedCode + ".ogg";
         final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString((ogg.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + ogg);
@@ -1002,9 +1014,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addTimedAudio(oggTrustedString, mp3TrustedString, postLoadMs, showPlaybackIndicator, shownStimulusListener, failedStimulusListener, playedStimulusListener);
     }
 
-    protected void stimulusCodeVideo(int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, int postLoadMs, String codeFormat, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
-        final String formattedCode = codeFormat.replace("<code>", stimulusProvider.getCurrentStimulus().getCode());
-        final String uniqueId = stimulusProvider.getCurrentStimulus().getUniqueId();
+    protected void stimulusCodeVideo(final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, int postLoadMs, String codeFormat, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+        final String formattedCode = codeFormat.replace("<code>", currentStimulus.getCode());
+        final String uniqueId = currentStimulus.getUniqueId();
         String mp4 = formattedCode + ".mp4";
         String ogg = formattedCode + ".ogg";
         final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(serviceLocations.staticFilesUrl() + ogg);
@@ -1021,9 +1033,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, styleName, autoPlay, loop, showControls, postLoadMs, shownStimulusListener, failedStimulusListener, playedStimulusListener);
     }
 
-    protected void stimulusAudio(int postLoadMs, boolean showPlaybackIndicator, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
-        final String audio = stimulusProvider.getCurrentStimulus().getAudio();
-        final String uniqueId = stimulusProvider.getCurrentStimulus().getUniqueId();
+    protected void stimulusAudio(final Stimulus currentStimulus, int postLoadMs, boolean showPlaybackIndicator, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+        final String audio = currentStimulus.getAudio();
+        final String uniqueId = currentStimulus.getUniqueId();
         String ogg = audio + ".ogg";
         String mp3 = audio + ".mp3";
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", ogg, duration.elapsedMillis());
@@ -1038,8 +1050,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        ((TimedStimulusView) simpleView).addText("playStimulusAudio: " + duration.elapsedMillis() + "ms");
     }
 
-    public void stimulusHasRatingOptions(final AppEventListner appEventListner, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener) {
-        if (stimulusProvider.getCurrentStimulus().hasRatingLabels()) {
+    public void stimulusHasRatingOptions(final AppEventListner appEventListner, final Stimulus currentStimulus, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener) {
+        if (currentStimulus.hasRatingLabels()) {
             correctListener.postLoadTimerFired();
         } else {
             incorrectListener.postLoadTimerFired();
@@ -1093,7 +1105,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         });
     }
 
-    public void stimulusButton(final PresenterEventListner presenterListerner, String styleName, final int dataChannel) {
+    public void stimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final PresenterEventListner presenterListerner, String styleName, final int dataChannel) {
         final StimulusButton buttonItem = ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
             @Override
             public String getLabel() {
@@ -1102,10 +1114,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusButton", stimulusProvider.getCurrentStimulus().getUniqueId(), presenterListerner.getLabel(), duration.elapsedMillis());
-                if (stimulusProvider.getCurrentStimulus().hasCorrectResponses()) {
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusButton", currentStimulus.getUniqueId(), presenterListerner.getLabel(), duration.elapsedMillis());
+                if (currentStimulus.hasCorrectResponses()) {
                     // if there are correct responses to this stimulus then increment the score
-                    userResults.getUserData().addPotentialScore(stimulusProvider.isCorrectResponse(stimulusProvider.getCurrentStimulus(), presenterListerner.getLabel()));
+                    userResults.getUserData().addPotentialScore(stimulusProvider.isCorrectResponse(currentStimulus, presenterListerner.getLabel()));
                 }
                 presenterListerner.eventFired(button, shotEventListner);
             }
@@ -1118,19 +1130,19 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         buttonList.add(buttonItem);
     }
 
-    public void stimulusRatingButton(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel) {
-        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, timedStimulusListener, stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusProvider.getCurrentStimulus().getRatingLabels(), dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName);
+    public void stimulusRatingButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener timedStimulusListener, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel) {
+        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName);
     }
 
-    public void ratingButton(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel) {
-        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, timedStimulusListener, stimulusProvider.getCurrentStimulus().getUniqueId(), ratingLabels, dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName);
+    public void ratingButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel) {
+        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName);
     }
 
-    public void ratingFooterButton(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel) {
-        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, timedStimulusListener, stimulusProvider.getCurrentStimulus().getUniqueId(), ratingLabels, dataChannel), ratingLabelLeft, ratingLabelRight, true, styleName);
+    public void ratingFooterButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel) {
+        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, dataChannel), ratingLabelLeft, ratingLabelRight, true, styleName);
     }
 
-    public List<PresenterEventListner> getRatingEventListners(final AppEventListner appEventListner, final TimedStimulusListener timedStimulusListener, final String stimulusString, final String ratingLabels, final int dataChannel) {
+    public List<PresenterEventListner> getRatingEventListners(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener timedStimulusListener, final String stimulusString, final String ratingLabels, final int dataChannel) {
         ArrayList<PresenterEventListner> eventListners = new ArrayList<>();
         final String[] splitRatingLabels = ratingLabels.split(",");
         for (final String ratingItem : splitRatingLabels) {
@@ -1173,11 +1185,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
                 @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
-                    endAudioRecorderTag(dataChannel, ratingItem);
+                    endAudioRecorderTag(dataChannel, ratingItem, currentStimulus);
                     submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "RatingButton", stimulusString, ratingItem, duration.elapsedMillis());
-                    if (stimulusProvider.getCurrentStimulus().hasCorrectResponses()) {
+                    if (currentStimulus.hasCorrectResponses()) {
                         // if there are correct responses to this stimulus then increment the score
-                        userResults.getUserData().addPotentialScore(stimulusProvider.isCorrectResponse(stimulusProvider.getCurrentStimulus(), ratingItem));
+                        userResults.getUserData().addPotentialScore(stimulusProvider.isCorrectResponse(currentStimulus, ratingItem));
                     }
                     timedStimulusListener.postLoadTimerFired();
                 }
@@ -1195,16 +1207,16 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        ((TimedStimulusView) simpleView).addText(duration.elapsedMillis() + "ms");
     }
 
-    protected void logTimeStamp(String eventTag, final int dataChannel) {
-        logTimeStamp("logTimeStamp", eventTag, dataChannel);
+    protected void logTimeStamp(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, String eventTag, final int dataChannel) {
+        logTimeStamp(stimulusProvider, currentStimulus, "logTimeStamp", eventTag, dataChannel);
     }
 
-    protected void logTimeStamp(String eventName, String eventTag, final int dataChannel) {
+    protected void logTimeStamp(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, String eventName, String eventTag, final int dataChannel) {
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, stimulusProvider.getCurrentStimulusUniqueId(), eventName, duration.elapsedMillis());
     }
 
-    protected void endAudioRecorderTag(int tier, String tagString) {
-        super.endAudioRecorderTag(tier, stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusProvider.getCurrentStimulus().getUniqueId(), tagString);
+    protected void endAudioRecorderTag(int tier, String tagString, final Stimulus currentStimulus) {
+        super.endAudioRecorderTag(tier, currentStimulus.getUniqueId(), currentStimulus.getUniqueId(), tagString);
     }
 
     @Override
@@ -1212,13 +1224,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         super.startAudioRecorderTag(tier); //((tier < 1) ? 1 : tier) + 2); //  tier 1 and 2 are reserved for stimulus set loading and stimulus display events
     }
 
-    protected void startAudioRecorder(boolean wavFormat, boolean filePerStimulus, String directoryName) {
+    protected void startAudioRecorder(boolean wavFormat, boolean filePerStimulus, String directoryName, final Stimulus currentStimulus) {
 //        final String subdirectoryName = userResults.getUserData().getUserId().toString();
         final String subdirectoryName = userResults.getUserData().getMetadataValue(new MetadataFieldProvider().workerIdMetadataField);
-        super.startAudioRecorder(true, subdirectoryName, directoryName, (filePerStimulus) ? stimulusProvider.getCurrentStimulus().getUniqueId() : "");
+        super.startAudioRecorder(true, subdirectoryName, directoryName, (filePerStimulus) ? currentStimulus.getUniqueId() : "");
     }
 
-    protected void showStimulusGrid(final AppEventListner appEventListner, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener, final int maxStimuli, final int columnCount, final String imageWidth, final AnimateTypes animateType, final String eventTag, final int dataChannel) {
+    protected void showStimulusGrid(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener, final int maxStimuli, final int columnCount, final String imageWidth, final AnimateTypes animateType, final String eventTag, final int dataChannel) {
         ((TimedStimulusView) simpleView).stopAudio();
         TimedStimulusListener correctTimedListener = new TimedStimulusListener() {
 
@@ -1248,11 +1260,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         };
         final String gridStyle = "stimulusGrid";
         // todo: the appendStoredDataValue should occur in the correct or incorrect response within stimulusListener
-        //localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST, stimulusProvider.getCurrentStimulus().getAudioTag());
+        //localStorage.appendStoredDataValue(userResults.getUserData().getUserId(), SEEN_STIMULUS_LIST, currentStimulus.getAudioTag());
         ((TimedStimulusView) simpleView).startGrid(gridStyle);
         int imageCounter = 0;
 //        if (alternativeChoice != null) {
-//            buttonList.add(((TimedStimulusView) simpleView).addStringItem(getEventListener(buttonList, eventTag, stimulusProvider.getCurrentStimulus(), alternativeChoice, correctTimedListener, incorrectTimedListener), alternativeChoice, 0, 0, imageWidth));
+//            buttonList.add(((TimedStimulusView) simpleView).addStringItem(getEventListener(buttonList, eventTag, currentStimulus, alternativeChoice, correctTimedListener, incorrectTimedListener), alternativeChoice, 0, 0, imageWidth));
 //        }
         String groupResponseOptions = null;
         for (final Stimulus nextJpgStimulus : stimulusProvider.getDistractorList(maxStimuli)) {
@@ -1271,7 +1283,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 groupResponseOptions += ",";
             }
             groupResponseOptions += nextJpgStimulus.getUniqueId();
-            final StimulusButton imageItem = ((TimedStimulusView) simpleView).addImageItem(getEventListener(buttonList, eventTag, dataChannel, stimulusProvider.getCurrentStimulus(), nextJpgStimulus, correctTimedListener, incorrectTimedListener), UriUtils.fromString(nextJpgStimulus.getImage()), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth, styleName, imageCounter);
+            final StimulusButton imageItem = ((TimedStimulusView) simpleView).addImageItem(getEventListener(currentStimulus, buttonList, eventTag, dataChannel, currentStimulus, nextJpgStimulus, correctTimedListener, incorrectTimedListener), UriUtils.fromString(nextJpgStimulus.getImage()), imageCounter / columnCount, 1 + imageCounter++ % columnCount, imageWidth, styleName, imageCounter);
             buttonList.add(imageItem);
         }
         if (groupParticipantService != null) {
@@ -1282,15 +1294,15 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         //((TimedStimulusView) simpleView).addAudioPlayerGui();
     }
 
-    protected void matchingStimulusGrid(final AppEventListner appEventListner, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener, final String matchingRegex, final int maxStimulusCount, final boolean randomise, final int columnCount, int maxWidth, final AnimateTypes animateType, final int dataChannel) {
-        matchingStimuliGroup = new MatchingStimuliGroup(stimulusProvider.getCurrentStimulus(), stimulusProvider.getMatchingStimuli(matchingRegex), true, hasMoreStimulusListener, endOfStimulusListener);
+    protected void matchingStimulusGrid(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener, final String matchingRegex, final int maxStimulusCount, final boolean randomise, final int columnCount, int maxWidth, final AnimateTypes animateType, final int dataChannel) {
+        matchingStimuliGroup = new MatchingStimuliGroup(currentStimulus, stimulusProvider.getMatchingStimuli(matchingRegex), true, hasMoreStimulusListener, endOfStimulusListener);
         ((TimedStimulusView) simpleView).startHorizontalPanel();
         int ySpacing = (int) (100.0 / (matchingStimuliGroup.getStimulusCount() + 1));
         int yPos = 0;
         while (matchingStimuliGroup.getNextStimulus(stimulusProvider)) {
             yPos += ySpacing;
-            if (matchingStimuliGroup.isCorrect(stimulusProvider.getCurrentStimulus())) {
-                stimulusPresent(stimulusProvider.getCurrentStimulus(), 0, maxWidth, maxWidth, animateType, false, yPos - (maxWidth / 2), postLoadCorrectMs, null, null, dataChannel,
+            if (matchingStimuliGroup.isCorrect(currentStimulus)) {
+                stimulusPresent(stimulusProvider, currentStimulus, 0, maxWidth, maxWidth, animateType, false, yPos - (maxWidth / 2), postLoadCorrectMs, null, null, dataChannel,
                         new TimedStimulusListener() {
                     @Override
                     public void postLoadTimerFired() {
@@ -1311,7 +1323,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 },
                         correctListener);
             } else {
-                stimulusPresent(stimulusProvider.getCurrentStimulus(), 0, maxWidth, maxWidth, animateType, false, yPos - (maxWidth / 2), postLoadIncorrectMs, null, null, dataChannel,
+                stimulusPresent(stimulusProvider, currentStimulus, 0, maxWidth, maxWidth, animateType, false, yPos - (maxWidth / 2), postLoadIncorrectMs, null, null, dataChannel,
                         new TimedStimulusListener() {
                     @Override
                     public void postLoadTimerFired() {
@@ -1336,7 +1348,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).endHorizontalPanel();
     }
 
-    private PresenterEventListner getEventListener(final ArrayList<StimulusButton> buttonList, final String eventTag, final int dataChannel, final Stimulus correctStimulusItem, final Stimulus currentStimulusItem, final TimedStimulusListener correctTimedListener, final TimedStimulusListener incorrectTimedListener) {
+    private PresenterEventListner getEventListener(final Stimulus currentStimulus, final ArrayList<StimulusButton> buttonList, final String eventTag, final int dataChannel, final Stimulus correctStimulusItem, final Stimulus currentStimulusItem, final TimedStimulusListener correctTimedListener, final TimedStimulusListener incorrectTimedListener) {
         final String tagValue1 = correctStimulusItem.getImage();
         final String tagValue2 = currentStimulusItem.getImage();
         return new PresenterEventListner() {
@@ -1358,12 +1370,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 }
                 if (groupParticipantService != null) {
                     groupParticipantService.setResponseStimulusId(currentStimulusItem.getUniqueId());
-//                    groupParticipantService.messageGroup(0, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, currentStimulusItem.getUniqueId());
+//                    groupParticipantService.messageGroup(0, currentStimulus.getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), null, null, currentStimulusItem.getUniqueId());
                 }
                 button.addStyleName("stimulusButtonHighlight");
                 // eventTag is set by the user and is different for each state (correct/incorrect).
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, tagValue1, tagValue2, duration.elapsedMillis());
-                if (stimulusProvider.getCurrentStimulus().getImage().equals(tagValue2)) {
+                if (currentStimulus.getImage().equals(tagValue2)) {
                     correctTimedListener.postLoadTimerFired();
                 } else {
                     incorrectTimedListener.postLoadTimerFired();
@@ -1419,11 +1431,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        ((TimedStimulusView) simpleView).addText("enableStimulusButtons: " + duration.elapsedMillis() + "ms");
     }
 
-    public void showStimulusProgress() {
-        showStimulusProgress(null);
+    public void showStimulusProgress(final StimuliProvider stimulusProvider) {
+        showStimulusProgress(stimulusProvider, null);
     }
 
-    public void showStimulusProgress(String styleName) {
+    public void showStimulusProgress(final StimuliProvider stimulusProvider, String styleName) {
         ((TimedStimulusView) simpleView).addHtmlText((stimulusProvider.getCurrentStimulusIndex() + 1) + " / " + stimulusProvider.getTotalStimuli(), styleName);
 //        ((TimedStimulusView) simpleView).addText("showStimulusProgress: " + duration.elapsedMillis() + "ms");
     }
@@ -1447,15 +1459,15 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         buttonList.clear();
     }
 
-    protected void prevStimulus(final boolean repeatIncorrect) {
-        nextStimulus(repeatIncorrect, -1);
+    protected void prevStimulus(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final boolean repeatIncorrect) {
+        nextStimulus(stimulusProvider, currentStimulus, repeatIncorrect, -1);
     }
 
-    protected void nextStimulus(final boolean repeatIncorrect) {
-        nextStimulus(repeatIncorrect, 1);
+    protected void nextStimulus(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final boolean repeatIncorrect) {
+        nextStimulus(stimulusProvider, currentStimulus, repeatIncorrect, 1);
     }
 
-    private void nextStimulus(final boolean repeatIncorrect, final int increment) {
+    private void nextStimulus(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final boolean repeatIncorrect, final int increment) {
         if (groupParticipantService != null) {
             ((ComplexView) simpleView).addText("showStimulus should not be used with the groupParticipantService");
             throw new UnsupportedOperationException("showStimulus should not be used with the groupParticipantService");
@@ -1491,7 +1503,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
         userResults.getUserData().clearCurrentResponse();
         clearPage();
-        showStimulus(null, increment);
+        showStimulus(stimulusProvider, null, increment);
     }
 
     protected void clearPage() {
@@ -1521,25 +1533,25 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).stopVideo();
     }
 
-    protected void groupResponseStimulusImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
-        stimulusPresent(stimulusProvider.getStimuliFromString(groupParticipantService.getResponseStimulusId()), percentOfPage, maxHeight, maxWidth, animateType, false, null, postLoadMs, null, null, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener, null);
+    protected void groupResponseStimulusImage(final StimuliProvider stimulusProvider, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+        stimulusPresent(stimulusProvider, stimulusProvider.getStimuliFromString(groupParticipantService.getResponseStimulusId()), percentOfPage, maxHeight, maxWidth, animateType, false, null, postLoadMs, null, null, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener, null);
     }
 
-    protected void sendGroupEndOfStimuli(final String eventTag) {
+    protected void sendGroupEndOfStimuli(final StimuliProvider stimulusProvider, final String eventTag) {
         groupParticipantService.messageGroup(groupParticipantService.getRequestedPhase(), 1, null, Integer.toString(stimulusProvider.getCurrentStimulusIndex() + 1), groupParticipantService.getMessageString(), groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId(), (int) userResults.getUserData().getCurrentScore(), "");
 //        showStimulusProgress();
     }
 
-    protected void sendGroupStoredMessage(final String eventTag, final int originPhase, final int incrementPhase, String expectedRespondents) {
-        final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus());
+    protected void sendGroupStoredMessage(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final int originPhase, final int incrementPhase, String expectedRespondents) {
+        final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
         final JSONValue freeTextValue = (storedStimulusJSONObject == null) ? null : storedStimulusJSONObject.get("groupMessage");
         String messageString = ((freeTextValue != null) ? freeTextValue.isString().stringValue() : null);
-        groupParticipantService.messageGroup(originPhase, incrementPhase, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), messageString, groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId(), (int) userResults.getUserData().getCurrentScore(), expectedRespondents);
+        groupParticipantService.messageGroup(originPhase, incrementPhase, currentStimulus.getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), messageString, groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId(), (int) userResults.getUserData().getCurrentScore(), expectedRespondents);
     }
 
-    protected void sendGroupMessage(final String eventTag, final int originPhase, final int incrementPhase, String expectedRespondents) {
+    protected void sendGroupMessage(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final int originPhase, final int incrementPhase, String expectedRespondents) {
         submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), eventTag, (groupParticipantService != null) ? groupParticipantService.getMessageString() : null, duration.elapsedMillis());
-        final String uniqueId = (stimulusProvider.getCurrentStimulusIndex() < stimulusProvider.getTotalStimuli()) ? stimulusProvider.getCurrentStimulus().getUniqueId() : null;
+        final String uniqueId = (stimulusProvider.getCurrentStimulusIndex() < stimulusProvider.getTotalStimuli()) ? currentStimulus.getUniqueId() : null;
         if (groupParticipantService != null) {
             groupParticipantService.messageGroup(originPhase, incrementPhase, uniqueId, Integer.toString(stimulusProvider.getCurrentStimulusIndex()), groupParticipantService.getMessageString(), groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId(), (int) userResults.getUserData().getCurrentScore(), expectedRespondents);
         }
@@ -1548,7 +1560,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     // @todo: tag pair data and tag data tables could show the number of stimuli show events and the unique stimuli (grouped by tag strings) show events per screen
-    protected void sendGroupMessageButton(final String eventTag, final int dataChannel, final String buttonLabel, final boolean norepeat, final int hotKey, final int originPhase, final int incrementPhase, final String expectedRespondents) {
+    protected void sendGroupMessageButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final int dataChannel, final String buttonLabel, final boolean norepeat, final int hotKey, final int originPhase, final int incrementPhase, final String expectedRespondents) {
         PresenterEventListner eventListner = new PresenterEventListner() {
 
             @Override
@@ -1572,8 +1584,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
                     messageString += stimulusFreeText.getValue();
                 }
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, (stimulusProvider.getCurrentStimulusIndex() < stimulusProvider.getTotalStimuli()) ? stimulusProvider.getCurrentStimulus().getUniqueId() : null, messageString, duration.elapsedMillis());
-                groupParticipantService.messageGroup(originPhase, incrementPhase, stimulusProvider.getCurrentStimulus().getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), messageString, groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId(), (int) userResults.getUserData().getCurrentScore(), expectedRespondents);
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, (stimulusProvider.getCurrentStimulusIndex() < stimulusProvider.getTotalStimuli()) ? currentStimulus.getUniqueId() : null, messageString, duration.elapsedMillis());
+                groupParticipantService.messageGroup(originPhase, incrementPhase, currentStimulus.getUniqueId(), Integer.toString(stimulusProvider.getCurrentStimulusIndex()), messageString, groupParticipantService.getResponseStimulusOptions(), groupParticipantService.getResponseStimulusId(), (int) userResults.getUserData().getCurrentScore(), expectedRespondents);
                 clearPage();
             }
         };
@@ -1581,20 +1593,20 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addOptionButton(eventListner);
     }
 
-    protected void touchInputReportSubmit(final int dataChannel) {
+    protected void touchInputReportSubmit(final Stimulus currentStimulus, final int dataChannel) {
         if (touchInputCapture != null) {
             final String touchReport = touchInputCapture.getTouchReport(Window.getClientWidth(), Window.getClientHeight());
-            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "touchInputReport", stimulusProvider.getCurrentStimulus().getUniqueId(), touchReport, duration.elapsedMillis());
+            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "touchInputReport", currentStimulus.getUniqueId(), touchReport, duration.elapsedMillis());
 //            // todo: perhaps this is a bit heavy on local storage but at least only one touch event would be stored
-//            JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus());
+//            JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
 //            storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
 //            storedStimulusJSONObject.put("touchInputReport", new JSONString(touchReport));
-//            localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus(), storedStimulusJSONObject);
+//            localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, storedStimulusJSONObject);
         }
         touchInputCapture = null;
     }
 
-    protected void touchInputCaptureStart(final int dataChannel, final boolean showDebug, final int msAfterEndOfTouchToNext, final TimedStimulusListener endOfTouchEventListner) {
+    protected void touchInputCaptureStart(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final int dataChannel, final boolean showDebug, final int msAfterEndOfTouchToNext, final TimedStimulusListener endOfTouchEventListner) {
         if (touchInputCapture == null) {
             final HTML debugHtmlLabel;
             if (showDebug) {
@@ -1613,7 +1625,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
                 @Override
                 public void endOfTouchEvent(String groupName) {
-                    logTimeStamp("endOfTouchEvent", groupName, dataChannel);
+                    logTimeStamp(stimulusProvider, currentStimulus, "endOfTouchEvent", groupName, dataChannel);
                 }
 
             };
@@ -1621,7 +1633,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void prevStimulusButton(final String eventTag, final String buttonLabel, final boolean repeatIncorrect, final int hotKey) {
+    protected void prevStimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final String buttonLabel, final boolean repeatIncorrect, final int hotKey) {
         PresenterEventListner eventListner = new PresenterEventListner() {
 
             @Override
@@ -1636,7 +1648,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                nextStimulus(repeatIncorrect, -1);
+                nextStimulus(stimulusProvider, currentStimulus, repeatIncorrect, -1);
             }
         };
         nextButtonEventListnerList.add(eventListner);
@@ -1644,7 +1656,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         prevButton.setEnabled(stimulusProvider.hasNextStimulus(-1));
     }
 
-    protected void nextStimulusButton(final String eventTag, final String buttonLabel, final boolean repeatIncorrect, final int hotKey) {
+    protected void nextStimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final String buttonLabel, final boolean repeatIncorrect, final int hotKey) {
 //        if (stimulusProvider.hasNextStimulus()) {
         PresenterEventListner eventListner = new PresenterEventListner() {
 
@@ -1660,7 +1672,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                nextStimulus(repeatIncorrect, 1);
+                nextStimulus(stimulusProvider, currentStimulus, repeatIncorrect, 1);
             }
         };
         nextButtonEventListnerList.add(eventListner);
@@ -1669,7 +1681,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        nextButton.setEnabled(stimulusProvider.hasNextStimulus(1));
     }
 
-    protected void endOfStimulusButton(final PresenterEventListner appEventListner, final String eventTag) {
+    protected void endOfStimulusButton(final StimuliProvider stimulusProvider, final PresenterEventListner appEventListner, final String eventTag) {
         //logTimeStamp(eventTag);
         if (!stimulusProvider.hasNextStimulus(1)) {
             ((TimedStimulusView) simpleView).addOptionButton(appEventListner);
