@@ -38,7 +38,8 @@ public enum FeatureAttribute {
     codeFormat,
     validationRegex,
     allowedCharCodes(true),
-    matchingRegex(true),
+    matchingRegex(false),
+    replacementRegex(true),
     replacement(true),
     src,
     link,
@@ -48,13 +49,13 @@ public enum FeatureAttribute {
     maxHeight,
     maxWidth,
     align,
-    target(true), // this is probably not optional in some cases
+    target(false), // this is probably not optional in some cases
     styleName(true),
     showOnBackButton(true),
     eventTier,
     dataChannel(true),
     filePerStimulus, // when recording audio this boolean determins if a separate recording should be made for each stimulus or one recording for the set of stimuli
-    eventTag(true),
+    eventTag(false),
     ratingLabels,
     ratingLabelLeft(true),
     ratingLabelRight(true),
@@ -84,7 +85,7 @@ public enum FeatureAttribute {
     diagramName,
     imageWidth,
     alternativeChoice,
-    msToNext(true),
+    msToNext(false),
     listenerId, threshold, maximum, minimum,
     msLabelFormat,
     animate(true), // animate currently has bounce stimuliCode or none
@@ -97,7 +98,7 @@ public enum FeatureAttribute {
     errorThreshold(true), // interger to make active, when empty or not present is passed as 0
     potentialThreshold(true), // interger to make active, when empty or not present is passed as 0
     showPlaybackIndicator,
-    showControls(true),
+    showControls(false),
     groupRole,
     groupMembers,
     groupCommunicationChannels,
