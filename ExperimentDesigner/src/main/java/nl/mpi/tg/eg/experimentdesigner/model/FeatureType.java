@@ -37,29 +37,29 @@ public enum FeatureType {
     // todo: change this to be at the same level as laodStimulus and take the same parameters
     withStimuli(false, false, new FeatureAttribute[]{eventTag, minStimuliPerTag, maxStimuliPerTag, maxStimuli, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.eachStimulus, Contitionals.none), // loop over all loaded stimuli rather than using next stimulus on user input
     loadStimulus(false, false, new FeatureAttribute[]{eventTag, minStimuliPerTag, maxStimuliPerTag, maxStimuli, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.hasMoreStimulus, Contitionals.none, true),
-    withMatchingStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, randomise, repeatCount, repeatRandomWindow, matchingRegex}, false, false, false, Contitionals.hasMoreStimulus, Contitionals.none),
+    withMatchingStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, randomise, repeatCount, repeatRandomWindow, matchingRegex}, false, false, false, Contitionals.hasMoreStimulus, Contitionals.stimulusAction),
     loadSdCardStimulus(false, false, new FeatureAttribute[]{eventTag, minStimuliPerTag, maxStimuliPerTag, maxStimuli, excludeRegex, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.hasMoreStimulus, Contitionals.none),
     //    loadAllStimulus(false, false, new FeatureAttribute[]{eventTag, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, false, false, Contitionals.hasMoreStimulus),
-    currentStimulusHasTag(false, false, new FeatureAttribute[]{msToNext}, true, false, false, Contitionals.hasTrueFalseCondition, Contitionals.none), // todo: consider updating this to take a tags attribute rather than a stimuli element
-    showStimuliReport(false, false, null),
-    sendStimuliReport(false, false, new FeatureAttribute[]{type, dataChannel, headerKey, separator}),
+    currentStimulusHasTag(false, false, new FeatureAttribute[]{msToNext}, true, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction), // todo: consider updating this to take a tags attribute rather than a stimuli element
+    showStimuliReport(false, false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    sendStimuliReport(false, false, new FeatureAttribute[]{type, dataChannel, headerKey, separator}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     targetButton(false, true, new FeatureAttribute[]{hotKey, target, styleName}),
     actionButton(true, true, new FeatureAttribute[]{hotKey, styleName}),
-    stimulusButton(true, true, new FeatureAttribute[]{hotKey, dataChannel, styleName}),
-    touchInputStimulusButton(true, true, new FeatureAttribute[]{eventTag, dataChannel, src, styleName, listenerId}),
+    stimulusButton(true, true, new FeatureAttribute[]{hotKey, dataChannel, styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    touchInputStimulusButton(true, true, new FeatureAttribute[]{eventTag, dataChannel, src, styleName, listenerId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     //// todo: touch input needs a threshold before touch is registered and another before touch is ended to allow gaps in touch being recorded as on touch
-    touchInputCaptureStart(true, false, new FeatureAttribute[]{showControls, msToNext}), /* sub elements are triggered after the touch ends or after msToNext of no touch activity */
-    touchInputReportSubmit(false, false, new FeatureAttribute[]{dataChannel}),
+    touchInputCaptureStart(true, false, new FeatureAttribute[]{showControls, msToNext}, false, false, false, Contitionals.none, Contitionals.stimulusAction), /* sub elements are triggered after the touch ends or after msToNext of no touch activity */
+    touchInputReportSubmit(false, false, new FeatureAttribute[]{dataChannel}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     sendGroupMessageButton(false, true, new FeatureAttribute[]{hotKey, dataChannel, eventTag, repeatIncorrect, incrementPhase, /* incrementPhaseOnDictionaryincrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     sendGroupMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     sendGroupStoredMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     sendGroupEndOfStimuli(false, false, new FeatureAttribute[]{eventTag}, false, false, false, Contitionals.none, Contitionals.groupNetworkActivity),
-    ratingButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight}),
-    stimulusFreeText(true, true, new FeatureAttribute[]{validationRegex, dataChannel, allowedCharCodes, hotKey, styleName, inputErrorMessage}),
-    stimulusRatingButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabelLeft, ratingLabelRight, styleName}),
-    stimulusHasRatingOptions(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.none),
-    stimulusHasResponse(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.none),
-    ratingFooterButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight}),
+    ratingButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    stimulusFreeText(true, true, new FeatureAttribute[]{validationRegex, dataChannel, allowedCharCodes, hotKey, styleName, inputErrorMessage}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    stimulusRatingButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabelLeft, ratingLabelRight, styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    stimulusHasRatingOptions(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
+    stimulusHasResponse(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
+    ratingFooterButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     targetFooterButton(false, true, new FeatureAttribute[]{target}),
     actionFooterButton(true, true, new FeatureAttribute[]{eventTag, hotKey}),
     //    endOfStimulusButton(false, true, new FeatureAttribute[]{eventTag, target}),
@@ -67,7 +67,7 @@ public enum FeatureType {
     localStorageData(false, false, null),
     allMetadataFields(false, false, null),
     metadataField(false, false, new FeatureAttribute[]{fieldName}),
-    stimulusMetadataField(false, false, new FeatureAttribute[]{fieldName, dataChannel}),
+    stimulusMetadataField(false, false, new FeatureAttribute[]{fieldName, dataChannel}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     metadataFieldConnection(false, false, new FeatureAttribute[]{fieldName, linkedFieldName}),
     saveMetadataButton(false, true, new FeatureAttribute[]{sendData, networkErrorMessage}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
     createUserButton(false, true, new FeatureAttribute[]{target}),
@@ -78,7 +78,7 @@ public enum FeatureType {
     enableStimulusButtons(false, false, null),
     disableStimulusButtons(false, false, null),
     cancelPauseTimers(false, false, null),
-    showStimulusProgress(false, false, new FeatureAttribute[]{styleName}),
+    showStimulusProgress(false, false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     hideStimulusButtons(false, false, null),
     showStimulusButtons(false, false, null),
     displayCompletionCode(false, false, null),
@@ -87,37 +87,41 @@ public enum FeatureType {
     sendMetadata(false, false, null, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
     eraseLocalStorageOnWindowClosing(false, false, null),
     //    nextStimulus(false, false, null),
-    keepStimulus(false, false, null),
-    removeStimulus(false, false, null),
-    removeMatchingStimulus(false, false, new FeatureAttribute[]{matchingRegex}),
-    clearStimulus(false, false, null),
+    keepStimulus(false, false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    removeStimulus(false, false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    removeMatchingStimulus(false, false, new FeatureAttribute[]{matchingRegex}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    clearStimulus(false, false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     centrePage(false, false, null),
     clearPage(false, false, new FeatureAttribute[]{styleName}),
     backgroundImage(true, false, new FeatureAttribute[]{msToNext, src, styleName}),
     allMenuItems(false, false, null),
-    prevStimulusButton(false, true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey}),
-    nextStimulusButton(false, true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey}),
-    nextStimulus(false, false, new FeatureAttribute[]{/*eventTag,*/repeatIncorrect}),
-    prevStimulus(false, false, new FeatureAttribute[]{/*eventTag,*/repeatIncorrect}),
-    nextMatchingStimulus(false, false, null),
+    prevStimulusButton(false, true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    nextStimulusButton(false, true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    nextStimulus(false, false, new FeatureAttribute[]{/*eventTag,*/repeatIncorrect}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    prevStimulus(false, false, new FeatureAttribute[]{/*eventTag,*/repeatIncorrect}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    nextMatchingStimulus(false, false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     addKinTypeGui(false, false, new FeatureAttribute[]{diagramName}),
     hasGetParameter(false, false, new FeatureAttribute[]{parameterName}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.none),
     activateRandomItem(false, false, new FeatureAttribute[]{}),
     autoNextPresenter(false, false, new FeatureAttribute[]{target}),
-    logTimeStamp(false, false, new FeatureAttribute[]{eventTag, dataChannel}),
+    logTimeStamp(false, false, new FeatureAttribute[]{eventTag, dataChannel}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     // todo: document audioButton which fires the played event once and only once after the first playback finishes
     audioButton(false, false, new FeatureAttribute[]{eventTag, dataChannel, poster, autoPlay, hotKey, styleName, src}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.none), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
-    preloadAllStimuli(true, false, null, true, false, false, Contitionals.none, Contitionals.none),
-    showStimulus(true, false, null, false, false, false, Contitionals.none, Contitionals.none), // todo: should this be here? or should it have an increment for next back etc
-    showStimulusGrid(false, false, new FeatureAttribute[]{maxStimuli, dataChannel, columnCount, imageWidth, eventTag, animate}, false, false, false, Contitionals.hasCorrectIncorrect, Contitionals.none),
-    matchingStimulusGrid(false, false, new FeatureAttribute[]{columnCount, dataChannel, maxWidth, animate, matchingRegex, maxStimuli, randomise}, false, false, false, Contitionals.hasCorrectIncorrect, Contitionals.none),
+    preloadAllStimuli(false, false, null, true, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
+    showStimulus(true, false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction), // todo: should this be here? or should it have an increment for next back etc
+    showStimulusGrid(false, false, new FeatureAttribute[]{maxStimuli, dataChannel, columnCount, imageWidth, eventTag, animate}, false, false, false, Contitionals.hasCorrectIncorrect, Contitionals.stimulusAction),
+    matchingStimulusGrid(false, false, new FeatureAttribute[]{columnCount, dataChannel, maxWidth, animate, matchingRegex, maxStimuli, randomise}, false, false, false, Contitionals.hasCorrectIncorrect, Contitionals.stimulusAction),
     pause(true, false, new FeatureAttribute[]{msToNext}),
+    startTimer(true, false, new FeatureAttribute[]{msToNext, listenerId}),
+    compareTimer(true, false, new FeatureAttribute[]{msToNext, listenerId}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
+    clearTimer(false, false, new FeatureAttribute[]{listenerId}),
+    logTimerValue(false, false, new FeatureAttribute[]{listenerId, eventTag, dataChannel}),
     randomMsPause(true, false, new FeatureAttribute[]{minimum, maximum}),
     triggerListener(true, false, new FeatureAttribute[]{listenerId, threshold, maximum}),
     trigger(false, false, new FeatureAttribute[]{listenerId}),
     countdownLabel(true, true, new FeatureAttribute[]{msToNext, msLabelFormat, styleName}),
-    stimulusPause(true, false, null),
-    stimulusLabel(false, false, new FeatureAttribute[]{styleName}),
+    stimulusPause(true, false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    stimulusLabel(false, false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     onError(true, false, null, false, false, false, Contitionals.none, Contitionals.hasErrorSuccess),
     onSuccess(true, false, null, false, false, false, Contitionals.none, Contitionals.hasErrorSuccess),
     kinTypeStringDiagram(true, false, new FeatureAttribute[]{msToNext, kintypestring}),
@@ -127,10 +131,10 @@ public enum FeatureType {
     conditionFalse(true, false, null, false, false, false, Contitionals.none, Contitionals.hasTrueFalseCondition),
     responseCorrect(true, false, new FeatureAttribute[]{msToNext}, false, false, false, Contitionals.none, Contitionals.hasCorrectIncorrect),
     responseIncorrect(true, false, new FeatureAttribute[]{msToNext}, false, false, false, Contitionals.none, Contitionals.hasCorrectIncorrect),
-    hasMoreStimulus(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMoreStimulus),
+    hasMoreStimulus(true, false, null, false, false, false, Contitionals.stimulusAction, Contitionals.hasMoreStimulus),
     endOfStimulus(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMoreStimulus),
     beforeStimulus(true, false, null, false, false, false, Contitionals.none, Contitionals.eachStimulus),
-    eachStimulus(true, false, null, false, false, false, Contitionals.none, Contitionals.eachStimulus),
+    eachStimulus(true, false, null, false, false, false, Contitionals.stimulusAction, Contitionals.eachStimulus),
     afterStimulus(true, false, null, false, false, false, Contitionals.none, Contitionals.eachStimulus),
     existingUserCheck(false, false, null, false, false, false, Contitionals.hasUserCount, Contitionals.none),
     multipleUsers(true, false, null, false, false, false, Contitionals.none, Contitionals.hasUserCount),
@@ -147,30 +151,30 @@ public enum FeatureType {
     row(true, false, null),
     column(true, false, new FeatureAttribute[]{styleName}),
     // todo: look for and update to add the show any stimuli tag and make stimulusImage only show images (true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement, showControls}, false, false, false, Contitionals.hasMediaLoading), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
-    stimulusPresent(false, false, new FeatureAttribute[]{percentOfPage, dataChannel, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement, showControls}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.none), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
-    stimulusImage(false, false, new FeatureAttribute[]{msToNext, styleName, dataChannel}, false, false, false, Contitionals.hasMediaLoading, Contitionals.none), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
-    stimulusCodeImage(false, false, new FeatureAttribute[]{msToNext, dataChannel, codeFormat, styleName}, false, false, false, Contitionals.hasMediaLoading, Contitionals.none), //stimulusCodeImage can take both <code> and <rating_" + index + "> tags in its string value
-    stimulusCodeVideo(false, false, new FeatureAttribute[]{msToNext, dataChannel, maxHeight, codeFormat, percentOfPage, loop, styleName, autoPlay, showControls, maxWidth}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.none), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
-    stimulusCodeAudio(false, false, new FeatureAttribute[]{msToNext, dataChannel, codeFormat, showPlaybackIndicator}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.none), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
-    stimulusAudio(false, false, new FeatureAttribute[]{msToNext, dataChannel, showPlaybackIndicator}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.none), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
+    stimulusPresent(false, false, new FeatureAttribute[]{percentOfPage, dataChannel, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement, showControls}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.stimulusAction), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
+    stimulusImage(false, false, new FeatureAttribute[]{msToNext, styleName, dataChannel}, false, false, false, Contitionals.hasMediaLoading, Contitionals.stimulusAction), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
+    stimulusCodeImage(false, false, new FeatureAttribute[]{msToNext, dataChannel, codeFormat, styleName}, false, false, false, Contitionals.hasMediaLoading, Contitionals.stimulusAction), //stimulusCodeImage can take both <code> and <rating_" + index + "> tags in its string value
+    stimulusCodeVideo(false, false, new FeatureAttribute[]{msToNext, dataChannel, maxHeight, codeFormat, percentOfPage, loop, styleName, autoPlay, showControls, maxWidth}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.stimulusAction), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
+    stimulusCodeAudio(false, false, new FeatureAttribute[]{msToNext, dataChannel, codeFormat, showPlaybackIndicator}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.stimulusAction), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
+    stimulusAudio(false, false, new FeatureAttribute[]{msToNext, dataChannel, showPlaybackIndicator}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.stimulusAction), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
     playVideo(false, false, new FeatureAttribute[]{}),
     rewindVideo(false, false, new FeatureAttribute[]{}),
     pauseVideo(false, false, new FeatureAttribute[]{}),
-    stimulusImageCapture(true, true, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext}),
+    stimulusImageCapture(true, true, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     //    captureStimulusImage(true, true, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth}),
-    VideoPanel(false, false, new FeatureAttribute[]{src, percentOfPage, maxHeight, maxWidth, poster}),
-    AnnotationTimelinePanel(true, false, new FeatureAttribute[]{src, poster, eventTag, columnCount, maxStimuli}, false, false, false, Contitionals.none, Contitionals.none),
-    startAudioRecorder(false, false, new FeatureAttribute[]{wavFormat, filePerStimulus, eventTag}),
-    stopAudioRecorder(false, false, new FeatureAttribute[]{}),
-    startAudioRecorderTag(false, false, new FeatureAttribute[]{eventTier}),
-    endAudioRecorderTag(false, false, new FeatureAttribute[]{eventTier, eventTag}),
+    VideoPanel(false, false, new FeatureAttribute[]{src, percentOfPage, maxHeight, maxWidth, poster}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    AnnotationTimelinePanel(true, false, new FeatureAttribute[]{src, poster, eventTag, columnCount, maxStimuli}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    startAudioRecorder(false, false, new FeatureAttribute[]{wavFormat, filePerStimulus, eventTag}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    stopAudioRecorder(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    startAudioRecorderTag(false, false, new FeatureAttribute[]{eventTier}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    endAudioRecorderTag(false, false, new FeatureAttribute[]{eventTier, eventTag}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     helpDialogue(false, true, new FeatureAttribute[]{closeButtonLabel}),
     userInfo(false, false, null),
     versionData(false, false, null),
     preventWindowClose(false, true, null), // note: preventWindowClose should only be allowed once in the experiment element
     showColourReport(false, false, new FeatureAttribute[]{scoreThreshold}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
     // @todo: groupMembers could be used to determing the sequence of who goes when and therefore could be changed to groupMembersSequence
-    groupNetwork(false, false, new FeatureAttribute[]{groupMembers, groupCommunicationChannels, phasesPerStimulus}, false, false, false, Contitionals.groupNetworkActivity, Contitionals.none),
+    groupNetwork(false, false, new FeatureAttribute[]{groupMembers, groupCommunicationChannels, phasesPerStimulus}, false, false, false, Contitionals.groupNetworkActivity, Contitionals.stimulusAction),
     groupNetworkActivity(true, false, new FeatureAttribute[]{groupRole}, false, false, false, Contitionals.groupNetworkAction, Contitionals.groupNetworkActivity),
     groupMemberCodeLabel(false, false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     groupMemberLabel(false, false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
@@ -204,6 +208,7 @@ public enum FeatureType {
         hasCorrectIncorrect,
         hasMoreStimulus,
         eachStimulus,
+        stimulusAction,
         hasErrorSuccess,
         hasUserCount,
         hasThreshold,
@@ -240,6 +245,7 @@ public enum FeatureType {
         if (requiresChildType != Contitionals.none && isChildType != Contitionals.none
                 && isChildType != Contitionals.groupNetworkAction
                 && isChildType != Contitionals.groupNetworkActivity
+                && requiresChildType != Contitionals.stimulusAction
                 && canHaveFeatures) {
             throw new IllegalArgumentException("canHaveFeatures may only be used with Contitionals.none");
         }
