@@ -739,7 +739,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
 
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
-        final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
+        final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.gotoNextPresenter, null);
 
         final String postStimuliText = getPostStimuliText(storedWizardScreenData);
         if (postStimuliText != null && !postStimuliText.isEmpty()) {

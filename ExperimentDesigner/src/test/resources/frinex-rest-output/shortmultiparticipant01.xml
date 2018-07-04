@@ -17,7 +17,7 @@
         <saveMetadataButton featureText="saveButtonLabel" sendData="true" networkErrorMessage="on_Error_Text">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
         <addPadding/>
@@ -54,7 +54,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="postStimuliText"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping/>

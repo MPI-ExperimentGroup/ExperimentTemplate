@@ -72,7 +72,7 @@ public class WizardSubmitDataScreen extends AbstractWizardScreen {
 
         final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
         sendAllDataFeature.getPresenterFeatureList().add(onSuccessFeature);
-        onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
+        onSuccessFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.gotoNextPresenter, null));
 
         final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
         sendAllDataFeature.getPresenterFeatureList().add(onErrorFeature);

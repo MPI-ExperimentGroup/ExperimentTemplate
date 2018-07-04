@@ -161,7 +161,7 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         contextFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
         contextFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "80");
         contextFeature.addFeatureAttributes(FeatureAttribute.animate, "none");
-        contextFeature.addFeatureAttributes(FeatureAttribute.matchingRegex, "(\\\\.[^\\\\.]*)$");
+        contextFeature.addFeatureAttributes(FeatureAttribute.replacementRegex, "(\\\\.[^\\\\.]*)$");
         contextFeature.addFeatureAttributes(FeatureAttribute.replacement, "_context$1");
         contextFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         contextFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);

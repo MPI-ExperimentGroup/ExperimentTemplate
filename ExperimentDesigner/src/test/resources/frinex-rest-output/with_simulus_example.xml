@@ -26,7 +26,7 @@
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>
@@ -83,7 +83,7 @@
                 <targetButton featureText="Next Screen" target="Second_Informatie"/>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping storageField="item">
                 <tag>cond_1</tag>
@@ -110,7 +110,7 @@
                 </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping storageField="item">
                 <tag>second</tag>
@@ -135,7 +135,7 @@
                 </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping storageField="item">
                 <tag>thirdexample</tag>

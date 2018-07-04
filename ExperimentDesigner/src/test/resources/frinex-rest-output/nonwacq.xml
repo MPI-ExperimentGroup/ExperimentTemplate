@@ -84,7 +84,7 @@
                 <table>
                     <row>
                         <column>
-                            <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" replacementRegex="(\\.[^\\.]*)$" replacement="_context$1" animate="none" maxWidth="80">
+                            <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" replacement="_context$1" animate="none" replacementRegex="(\\.[^\\.]*)$" maxWidth="80">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete/>
@@ -185,7 +185,7 @@
                 <table>
                     <row>
                         <column>
-                            <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" replacementRegex="(\\.[^\\.]*)$" replacement="_context$1" animate="none" maxWidth="80">
+                            <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" replacement="_context$1" animate="none" replacementRegex="(\\.[^\\.]*)$" maxWidth="80">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete/>

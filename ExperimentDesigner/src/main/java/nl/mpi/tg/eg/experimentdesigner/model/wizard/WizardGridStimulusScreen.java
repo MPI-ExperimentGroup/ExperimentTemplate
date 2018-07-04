@@ -714,7 +714,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             final PresenterFeature menuStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, menuScreenData.getMenuLabel() + " (O)", "R1_MA_ENTER", "");
             menuStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null, "3");
             // todo: this menu stimulus button failed to cancel audio end timers in the playhouse experiment
-            menuStimulusButton.addFeature(FeatureType.autoNextPresenter, null, menuScreenData.getScreenTag());
+            menuStimulusButton.addFeature(FeatureType.gotoPresenter, null, menuScreenData.getScreenTag());
         }
         final PresenterFeature previousStimulusButton = rowFeature.addFeature(FeatureType.column, null, "").addFeature(FeatureType.actionButton, "Prev (left)", "R1_MA_LEFT", "");
         previousStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null, "3");
@@ -726,7 +726,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         nextStimulusButton.addFeature(FeatureType.touchInputReportSubmit, null, "3");
         nextStimulusButton.addFeature(FeatureType.nextStimulus, null, "false");
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
-        final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
+        final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.gotoNextPresenter, null);
         endOfStimulusFeature.getPresenterFeatureList().add(autoNextPresenter);
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);

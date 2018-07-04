@@ -12,7 +12,7 @@
         <saveMetadataButton featureText="Suivant" sendData="true" networkErrorMessage="Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>
@@ -31,7 +31,7 @@
             <mediaLoadFailed/>
             <mediaPlaybackComplete>
                 <actionButton featureText="suivant [ barre d'espacement ]">
-                    <autoNextPresenter/>
+                    <gotoNextPresenter/>
                 </actionButton>
             </mediaPlaybackComplete>
         </audioButton>
@@ -66,7 +66,7 @@
                 </stimulusAudio>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -77,7 +77,7 @@
     <presenter menuLabel="ScoreThreshold" next="InformationScreen2" type="stimulus" self="ScoreThreshold" title="ScoreThreshold">
         <bestScoreAboveThreshold scoreThreshold="2">
             <aboveThreshold>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </aboveThreshold>
             <belowThreshold>
                 <htmlText featureText="Si votre réponse n'est pas correcte, vous ne pourrez pas poursuivre l'expérience"/>
@@ -104,7 +104,7 @@
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping storageField="stimuli">
                 <tag>out1ver1Screen</tag>
@@ -131,7 +131,7 @@
         <saveMetadataButton featureText="Suivant" sendData="true" networkErrorMessage="Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>

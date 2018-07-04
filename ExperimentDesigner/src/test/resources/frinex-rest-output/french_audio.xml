@@ -12,7 +12,7 @@
         <saveMetadataButton featureText="Suivant" sendData="true" networkErrorMessage="Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>
@@ -27,7 +27,7 @@
             <mediaLoadFailed/>
             <mediaPlaybackComplete>
                 <actionButton featureText="suivant [ barre d'espacement ]">
-                    <autoNextPresenter/>
+                    <gotoNextPresenter/>
                 </actionButton>
             </mediaPlaybackComplete>
         </audioButton>
@@ -40,13 +40,13 @@
         <htmlText featureText="A choice must be provided out of the following:&lt;br/&gt;"/>
         <hasGetParameter parameterName="stimuliC">
             <conditionTrue>
-                <autoNextPresenter target="stimuliC"/>
+                <gotoPresenter target="stimuliC"/>
             </conditionTrue>
             <conditionFalse/>
         </hasGetParameter>
         <hasGetParameter parameterName="stimuliN">
             <conditionTrue>
-                <autoNextPresenter target="stimuliN"/>
+                <gotoPresenter target="stimuliN"/>
             </conditionTrue>
             <conditionFalse/>
         </hasGetParameter>
@@ -78,7 +78,7 @@
                 </stimulusAudio>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -89,7 +89,7 @@
     <presenter menuLabel="ScoreThreshold" next="InformationScreen2" type="stimulus" self="ScoreThreshold" title="ScoreThreshold">
         <bestScoreAboveThreshold scoreThreshold="2">
             <aboveThreshold>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </aboveThreshold>
             <belowThreshold>
                 <htmlText featureText="Si votre réponse n'est pas correcte, vous ne pourrez pas poursuivre l'expérience"/>
@@ -126,7 +126,7 @@
                 </stimulusCodeAudio>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping storageField="stimuli">
                 <tag>out1ver1Screen</tag>
@@ -165,7 +165,7 @@
                 </stimulusAudio>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping storageField="stimuli">
                 <tag>out1ver1Screen</tag>
@@ -192,7 +192,7 @@
         <saveMetadataButton featureText="Suivant" sendData="true" networkErrorMessage="Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>

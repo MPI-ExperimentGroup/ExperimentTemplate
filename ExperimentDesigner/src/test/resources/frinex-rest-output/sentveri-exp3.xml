@@ -984,6 +984,9 @@
             </stimuli>
         </loadStimulus>
     </presenter>
+    <presenter back="practiceScreen" menuLabel="about" type="debug" self="about">
+        <versionData/>
+    </presenter>
     <stimuli>
         <stimulus code="1" identifier="prac_1_q" label="prac_1_q" pauseMs="0" tags="practice question"/>
         <stimulus code="2" identifier="prac_2" label="prac_2" pauseMs="0" tags="practice"/>

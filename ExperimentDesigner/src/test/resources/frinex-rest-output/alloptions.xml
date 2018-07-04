@@ -68,6 +68,8 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <startTimer msToNext="60" listenerId="listenerId">
             <plainText featureText="plainText in startTimer"/>
         </startTimer>
@@ -130,6 +132,8 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <startTimer msToNext="60" listenerId="listenerId">
             <plainText featureText="plainText in startTimer"/>
         </startTimer>
@@ -204,6 +208,8 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <preloadAllStimuli tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ">
             <onError>
                 <plainText featureText="plainText in onError"/>
@@ -1130,7 +1136,8 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
-        <autoNextPresenter target="target"/>
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <audioButton eventTag="eventTag" src="src" hotKey="A" styleName="styleName" dataChannel="2" autoPlay="true" poster="poster">
             <mediaLoaded>
                 <plainText featureText="plainText in mediaLoaded"/>
@@ -1213,6 +1220,8 @@
         <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes">
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_all_attributes" type="colourReport" self="colourReport_all_attributesScreen" title="colourReport_all_attributes">
@@ -1240,6 +1249,8 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -1293,6 +1304,8 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <startTimer msToNext="60" listenerId="listenerId">
             <plainText featureText="plainText in startTimer"/>
         </startTimer>
@@ -1354,6 +1367,8 @@
             </conditionFalse>
         </hasGetParameter>
         <activateRandomItem/>
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <startTimer msToNext="60" listenerId="listenerId">
             <plainText featureText="plainText in startTimer"/>
         </startTimer>
@@ -1405,6 +1420,8 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <startTimer msToNext="60" listenerId="listenerId">
             <plainText featureText="plainText in startTimer"/>
         </startTimer>
@@ -1446,6 +1463,8 @@
         </actionButton>
         <addPadding/>
         <centrePage/>
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <startTimer msToNext="60" listenerId="listenerId">
             <plainText featureText="plainText in startTimer"/>
         </startTimer>
@@ -1495,6 +1514,8 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <startTimer msToNext="60" listenerId="listenerId">
             <plainText featureText="plainText in startTimer"/>
         </startTimer>
@@ -1571,6 +1592,8 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <startTimer msToNext="60" listenerId="listenerId">
             <plainText featureText="plainText in startTimer"/>
         </startTimer>
@@ -1633,6 +1656,8 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <startTimer msToNext="60" listenerId="listenerId">
             <plainText featureText="plainText in startTimer"/>
         </startTimer>
@@ -1707,6 +1732,8 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <preloadAllStimuli tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ">
             <onError>
                 <plainText featureText="plainText in onError"/>
@@ -2633,7 +2660,8 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
-        <autoNextPresenter target="target"/>
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <audioButton eventTag="eventTag" src="src" autoPlay="true" poster="poster">
             <mediaLoaded>
                 <plainText featureText="plainText in mediaLoaded"/>
@@ -2716,6 +2744,8 @@
         <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes">
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_minimal_attributes" type="colourReport" self="colourReport_minimal_attributesScreen" title="colourReport_minimal_attributes">
@@ -2743,6 +2773,8 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
@@ -2796,6 +2828,8 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <startTimer msToNext="60" listenerId="listenerId">
             <plainText featureText="plainText in startTimer"/>
         </startTimer>
@@ -2857,6 +2891,8 @@
             </conditionFalse>
         </hasGetParameter>
         <activateRandomItem/>
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <startTimer msToNext="60" listenerId="listenerId">
             <plainText featureText="plainText in startTimer"/>
         </startTimer>
@@ -2908,6 +2944,8 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <startTimer msToNext="60" listenerId="listenerId">
             <plainText featureText="plainText in startTimer"/>
         </startTimer>
@@ -2949,6 +2987,8 @@
         </actionButton>
         <addPadding/>
         <centrePage/>
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <startTimer msToNext="60" listenerId="listenerId">
             <plainText featureText="plainText in startTimer"/>
         </startTimer>
@@ -2998,6 +3038,8 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <gotoPresenter target="target"/>
+        <gotoNextPresenter/>
         <startTimer msToNext="60" listenerId="listenerId">
             <plainText featureText="plainText in startTimer"/>
         </startTimer>

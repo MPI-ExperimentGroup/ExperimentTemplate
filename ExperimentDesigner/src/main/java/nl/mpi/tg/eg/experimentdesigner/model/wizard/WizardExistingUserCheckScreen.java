@@ -76,7 +76,7 @@ public class WizardExistingUserCheckScreen extends AbstractWizardScreen {
         final PresenterFeature multipleUsersFeature = new PresenterFeature(FeatureType.multipleUsers, null);
         userCheckFeature.getPresenterFeatureList().add(multipleUsersFeature);
         final PresenterFeature singleUserFeature = new PresenterFeature(FeatureType.singleUser, null);
-        final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
+        final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.gotoPresenter, null);
         autoNextPresenter.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getNextWizardScreenData().getScreenTag());
         singleUserFeature.getPresenterFeatureList().add(autoNextPresenter);
         userCheckFeature.getPresenterFeatureList().add(singleUserFeature);

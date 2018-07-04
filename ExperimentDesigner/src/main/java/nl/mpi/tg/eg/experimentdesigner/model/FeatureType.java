@@ -103,7 +103,8 @@ public enum FeatureType {
     addKinTypeGui(false, false, new FeatureAttribute[]{diagramName}),
     hasGetParameter(false, false, new FeatureAttribute[]{parameterName}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.none),
     activateRandomItem(false, false, new FeatureAttribute[]{}),
-    autoNextPresenter(false, false, new FeatureAttribute[]{target}),
+    gotoPresenter(false, false, new FeatureAttribute[]{target}),
+    gotoNextPresenter(false, false, new FeatureAttribute[]{}),
     logTimeStamp(false, false, new FeatureAttribute[]{eventTag, dataChannel}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     // todo: document audioButton which fires the played event once and only once after the first playback finishes
     audioButton(false, false, new FeatureAttribute[]{eventTag, dataChannel, poster, autoPlay, hotKey, styleName, src}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.none), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia

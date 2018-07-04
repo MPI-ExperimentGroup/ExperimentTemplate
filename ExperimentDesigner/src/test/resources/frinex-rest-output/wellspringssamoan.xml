@@ -20,7 +20,7 @@
                 <targetButton featureText="Toe fo'i ma fa'auma le pu'eina (go back and finish recording" target="SelectUser"/>
             </multipleUsers>
             <singleUser>
-                <autoNextPresenter target="Edit_User"/>
+                <gotoPresenter target="Edit_User"/>
             </singleUser>
         </existingUserCheck>
     </presenter>
@@ -35,7 +35,7 @@
         <saveMetadataButton featureText="Save information" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>
@@ -60,7 +60,7 @@
             </hasMoreStimulus>
             <endOfStimulus>
                 <stopAudioRecorder/>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>

@@ -96,7 +96,7 @@ public class WizardMenuScreen extends AbstractWizardScreen {
                 final PresenterFeature hasGetParameter = new PresenterFeature(FeatureType.hasGetParameter, null);
                 hasGetParameter.addFeatureAttributes(FeatureAttribute.parameterName, targetScreen.getScreenTag());
                 final PresenterFeature conditionTrue = new PresenterFeature(FeatureType.conditionTrue, null);
-                final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
+                final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.gotoPresenter, null);
                 autoNextPresenter.addFeatureAttributes(FeatureAttribute.target, targetScreen.getScreenTag());
                 conditionTrue.getPresenterFeatureList().add(autoNextPresenter);
                 hasGetParameter.getPresenterFeatureList().add(conditionTrue);

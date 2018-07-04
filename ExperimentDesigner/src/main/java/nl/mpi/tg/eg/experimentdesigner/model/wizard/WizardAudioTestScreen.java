@@ -255,7 +255,7 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
             final PresenterFeature pauseFeature = new PresenterFeature(FeatureType.pause, null);
             pauseFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getAutoNextDelay(storedWizardScreenData)));
             presenterFeatureInner.getPresenterFeatureList().add(pauseFeature);
-            pauseFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
+            pauseFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.gotoNextPresenter, null));
         } else {
             final PresenterFeature actionButtonFeature = new PresenterFeature(FeatureType.actionButton, storedWizardScreenData.getNextButton()[0]);
             if (getNextHotKey(storedWizardScreenData) != null) {
@@ -269,7 +269,7 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
             } else {
                 presenterFeatureInner.getPresenterFeatureList().add(actionButtonFeature);
             }
-            actionButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
+            actionButtonFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.gotoNextPresenter, null));
         }
         return new PresenterScreen[]{storedWizardScreenData.getPresenterScreen()};
     }

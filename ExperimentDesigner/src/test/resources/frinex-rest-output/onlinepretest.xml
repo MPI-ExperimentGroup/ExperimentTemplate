@@ -10,7 +10,7 @@
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>
@@ -25,7 +25,7 @@
             <mediaLoadFailed/>
             <mediaPlaybackComplete>
                 <actionButton featureText="volgende [ spatiebalk ]">
-                    <autoNextPresenter/>
+                    <gotoNextPresenter/>
                 </actionButton>
             </mediaPlaybackComplete>
         </audioButton>
@@ -54,7 +54,7 @@
                 </stimulusAudio>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>

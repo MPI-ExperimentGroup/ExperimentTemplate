@@ -38,7 +38,7 @@
         <saveMetadataButton featureText="Next" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>
@@ -70,7 +70,7 @@
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping storageField="set">
                 <tag>List1</tag>
@@ -97,7 +97,7 @@
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping storageField="set">
                 <tag>List1</tag>
@@ -124,7 +124,7 @@
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping storageField="set">
                 <tag>List1</tag>

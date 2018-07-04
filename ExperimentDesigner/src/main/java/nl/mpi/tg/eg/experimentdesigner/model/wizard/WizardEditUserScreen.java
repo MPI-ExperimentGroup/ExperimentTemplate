@@ -161,11 +161,11 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
         saveMetadataButton.addFeatureAttributes(FeatureAttribute.networkErrorMessage, storedWizardScreenData.getOn_Error_Text());
         final PresenterFeature onErrorFeature = new PresenterFeature(FeatureType.onError, null);
         if (storedWizardScreenData.getScreenBoolean(1)) {
-            onErrorFeature.addFeature(FeatureType.autoNextPresenter, null, storedWizardScreenData.getNextWizardScreenData().getScreenTag());
+            onErrorFeature.addFeature(FeatureType.gotoPresenter, null, storedWizardScreenData.getNextWizardScreenData().getScreenTag());
         }
         saveMetadataButton.getPresenterFeatureList().add(onErrorFeature);
         final PresenterFeature onSuccessFeature = new PresenterFeature(FeatureType.onSuccess, null);
-        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.autoNextPresenter, null);
+        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.gotoNextPresenter, null);
         onSuccessFeature.getPresenterFeatureList().add(menuButtonFeature);
         saveMetadataButton.getPresenterFeatureList().add(onSuccessFeature);
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(saveMetadataButton);
@@ -185,6 +185,7 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
     }
 
     final public void insertMetadataByString(String fieldString) {
+// note: new implementations should use the method setStimuliSet in AbstractWizardScreen
         final String[] splitFieldString = fieldString.split(":");
         wizardScreenData.getMetadataFields().add(new Metadata(splitFieldString[0], splitFieldString[1], splitFieldString[2], splitFieldString[3], false, null));
     }

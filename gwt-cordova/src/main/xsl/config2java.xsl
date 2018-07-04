@@ -507,7 +507,7 @@ or local-name() eq 'stimulusLabel'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="activateRandomItem|createUserButton|selectUserMenu|allMenuItems|addKinTypeGui|autoNextPresenter">    
+    <xsl:template match="activateRandomItem|createUserButton|selectUserMenu|allMenuItems|addKinTypeGui|gotoPresenter|gotoNextPresenter">    
         <xsl:text>    </xsl:text>
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(appEventListner</xsl:text>

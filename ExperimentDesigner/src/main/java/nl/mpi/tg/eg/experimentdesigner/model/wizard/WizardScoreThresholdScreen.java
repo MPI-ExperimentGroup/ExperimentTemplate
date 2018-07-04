@@ -77,11 +77,13 @@ public class WizardScoreThresholdScreen extends AbstractWizardScreen {
 
         final PresenterFeature bestScoreAboveThreshold = new PresenterFeature(FeatureType.bestScoreAboveThreshold, null);
         bestScoreAboveThreshold.addFeatureAttributes(FeatureAttribute.scoreThreshold, Integer.toString(getScoreThreshold(storedWizardScreenData)));
+//        bestScoreAboveThreshold.addFeatureAttributes(FeatureAttribute.potentialThreshold, Integer.toString(getScoreThreshold(storedWizardScreenData)));
 
         final PresenterFeature aboveThreshold = new PresenterFeature(FeatureType.aboveThreshold, null);
         final PresenterFeature belowThreshold = new PresenterFeature(FeatureType.belowThreshold, null);
 
-        final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.autoNextPresenter, null);
+        final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.gotoNextPresenter, null);
+//        autoNextPresenter.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getNextWizardScreenData().getScreenTag());
         aboveThreshold.getPresenterFeatureList().add(autoNextPresenter);
 
         final PresenterFeature htmlText = new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0));

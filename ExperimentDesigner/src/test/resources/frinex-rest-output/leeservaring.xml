@@ -25,7 +25,7 @@
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="De server is niet bereikbaar. Controleer de internetverbinding en probeer opnieuw.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>
@@ -44,7 +44,7 @@
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping storageField="groupAllocation_Introduction">
                 <tag>IntroductionAFact</tag>
@@ -70,7 +70,7 @@
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping storageField="groupAllocation_StoryPresentation">
                 <tag>Emotioneel_hij</tag>
@@ -103,7 +103,7 @@
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -127,7 +127,7 @@
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -163,7 +163,7 @@
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -191,7 +191,7 @@
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -202,7 +202,7 @@
     <presenter menuLabel="SubmitData" next="Bedankt" type="transmission" self="SubmitData" title="Leeservaring 13">
         <sendAllData>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
             <onError>
                 <plainText featureText="De server is niet bereikbaar. Controleer de internetverbinding en probeer opnieuw."/>
@@ -216,7 +216,7 @@
         <saveMetadataButton featureText="Registreren" sendData="true" networkErrorMessage="De server is niet bereikbaar. Controleer de internetverbinding en probeer opnieuw.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
         <addPadding/>

@@ -111,7 +111,7 @@
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>
@@ -119,13 +119,13 @@
         <htmlText featureText="A choice must be provided out of the following:&lt;br/&gt;"/>
         <hasGetParameter parameterName="R0_4">
             <conditionTrue>
-                <autoNextPresenter target="R0_4"/>
+                <gotoPresenter target="R0_4"/>
             </conditionTrue>
             <conditionFalse/>
         </hasGetParameter>
         <hasGetParameter parameterName="R0_8">
             <conditionTrue>
-                <autoNextPresenter target="R0_8"/>
+                <gotoPresenter target="R0_8"/>
             </conditionTrue>
             <conditionFalse/>
         </hasGetParameter>
@@ -194,7 +194,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <autoNextPresenter/>
+                    <gotoNextPresenter/>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
                     <tag alias="v1">version1zero</tag>
@@ -266,7 +266,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <autoNextPresenter/>
+                    <gotoNextPresenter/>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
                     <tag alias="v1">version1zero</tag>
@@ -338,7 +338,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <autoNextPresenter/>
+                    <gotoNextPresenter/>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
                     <tag alias="v1">version1zero</tag>
@@ -468,7 +468,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -599,7 +599,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -730,7 +730,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -861,7 +861,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -992,7 +992,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -1123,7 +1123,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -1254,7 +1254,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -1299,7 +1299,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="Geweldig! Jullie groep heeft een totaal van &lt;groupScore&gt; punten verdiend in dit spel!&lt;br/&gt;&lt;br/&gt;Hartelijk dank voor het meespelen!"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -1372,7 +1372,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <autoNextPresenter/>
+                    <gotoNextPresenter/>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
                     <tag alias="v1">version1zero</tag>
@@ -1444,7 +1444,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <autoNextPresenter/>
+                    <gotoNextPresenter/>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
                     <tag alias="v1">version1zero</tag>
@@ -1516,7 +1516,7 @@
                     </groupNetwork>
                 </hasMoreStimulus>
                 <endOfStimulus>
-                    <autoNextPresenter/>
+                    <gotoNextPresenter/>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
                     <tag alias="v1">version1zero</tag>
@@ -1646,7 +1646,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -1777,7 +1777,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -1908,7 +1908,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -2039,7 +2039,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -2170,7 +2170,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -2301,7 +2301,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -2432,7 +2432,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -2477,7 +2477,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -2608,7 +2608,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -2739,7 +2739,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -2870,7 +2870,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -3001,7 +3001,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -3132,7 +3132,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -3263,7 +3263,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -3394,7 +3394,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="De huidige ronde is klaar! Goed gedaan!&lt;br/&gt;&lt;br/&gt;Jij en je partner hebben &lt;channelScore&gt; punten verdiend voor jullie groep!&lt;br/&gt;&lt;br/&gt;Jullie groep heeft nu een totaal van &lt;groupScore&gt; punten. &lt;br/&gt;&lt;br/&gt;Dit zijn de scores van deze ronde:&lt;br/&gt;&lt;br/&gt;&lt;channelLoop&gt;Duo &lt;channelLabel&gt; heeft &lt;channelScore&gt; punten.&lt;br/&gt;&lt;br/&gt;&lt;/channelLoop&gt;"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">
@@ -3439,7 +3439,7 @@
                     <clearPage/>
                     <htmlTokenText featureText="Geweldig! Jullie groep heeft een totaal van &lt;groupScore&gt; punten verdiend in dit spel!&lt;br/&gt;&lt;br/&gt;Hartelijk dank voor het meespelen!"/>
                     <actionButton featureText="Volgende [enter]" hotKey="ENTER">
-                        <autoNextPresenter/>
+                        <gotoNextPresenter/>
                     </actionButton>
                 </endOfStimulus>
                 <randomGrouping storageField="stimuli">

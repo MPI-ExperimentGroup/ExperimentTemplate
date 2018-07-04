@@ -263,7 +263,7 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected abstract void setContent(final AppEventListner appEventListner);
 
-    protected void autoNextPresenter(final AppEventListner appEventListner) {
+    protected void gotoNextPresenter(final AppEventListner appEventListner) {
         Timer timer = new Timer() {
             public void run() {
                 appEventListner.requestApplicationState(nextState);
@@ -272,7 +272,7 @@ public abstract class AbstractPresenter implements Presenter {
         timer.schedule(100);
     }
 
-    protected void autoNextPresenter(final AppEventListner appEventListner, final ApplicationState targetState) {
+    protected void gotoPresenter(final AppEventListner appEventListner, final ApplicationState targetState) {
         Timer timer = new Timer() {
             public void run() {
                 appEventListner.requestApplicationState(targetState);
@@ -315,6 +315,18 @@ public abstract class AbstractPresenter implements Presenter {
 //            ((ComplexView) simpleView).addText("Could not start the audio recorder");
             bumpAudioTicker();
         }
+    }
+
+    protected void startTimer(final int msToNext, final String listenerId, final TimedStimulusListener timeoutListener) {
+    }
+
+    protected void compareTimer(final int msToNext, final String listenerId, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold) {
+    }
+
+    protected void clearTimer(final String listenerId) {
+    }
+
+    protected void logTimerValue(final String listenerId, final String eventTag, final int dataChannel) {
     }
 
 //    protected void startAudioRecorderFailed(String message) {

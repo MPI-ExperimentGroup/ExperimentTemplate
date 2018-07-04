@@ -80,7 +80,7 @@ public class WizardSynQuizSumbitScreen extends AbstractWizardScreen {
 //        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, "Menu");
 //        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, "AutoMenu");
 //        endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
-        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
+        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.gotoNextPresenter, null));
         showColourReport.getPresenterFeatureList().add(belowThreshold);
         presenterScreen.getPresenterFeatureList().add(showColourReport);
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());

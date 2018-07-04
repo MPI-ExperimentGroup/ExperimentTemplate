@@ -27,7 +27,7 @@
         <saveMetadataButton featureText="Save Details" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>
@@ -38,7 +38,7 @@
             <mediaLoadFailed/>
             <mediaPlaybackComplete>
                 <actionButton featureText="Het geluid is OK">
-                    <autoNextPresenter/>
+                    <gotoNextPresenter/>
                 </actionButton>
             </mediaPlaybackComplete>
         </audioButton>
@@ -73,7 +73,7 @@
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping storageField="groupAllocation_StimulusScreenP">
                 <tag>groupA</tag>
@@ -114,7 +114,7 @@
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping storageField="groupAllocation_StimulusScreenE">
                 <tag>groupA</tag>

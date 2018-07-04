@@ -48,6 +48,11 @@ public class Sentveri_exp3 {
                 presenterScreenList.add(stimuliSetScreen);
             }
         }
+        final PresenterScreen aboutScreen = new PresenterScreen(null, "about", practiceScreen, "about", null, PresenterType.debug, displayOrder);
+        List<PresenterFeature> presenterFeatureList = aboutScreen.getPresenterFeatureList();
+        final PresenterFeature versionData = new PresenterFeature(FeatureType.versionData, null);
+        presenterFeatureList.add(versionData);
+        presenterScreenList.add(aboutScreen);
     }
 
     private PresenterScreen createStimulusScreen(String screenName, long displayOrder) {

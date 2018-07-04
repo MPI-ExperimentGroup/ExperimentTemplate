@@ -171,7 +171,7 @@
             <!--<networkErrorMessage locale="ru">Could not contact the server, please check your internet connection and try again.</networkErrorMessage>-->    
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
             <!--<translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
@@ -192,7 +192,7 @@
         <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
 <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
@@ -208,7 +208,7 @@
         <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
 <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
@@ -242,7 +242,7 @@
         <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
 <!--            <translation featureText="Ga door" locale="nl"/>-->
 <!--            <translation featureText="" locale="de"/>-->
@@ -276,7 +276,7 @@
         <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
 <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
@@ -310,7 +310,7 @@
         <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
 <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
@@ -344,7 +344,7 @@
         <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
 <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
@@ -374,7 +374,7 @@
         <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
 <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
@@ -408,7 +408,7 @@
         <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
 <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
@@ -420,7 +420,7 @@
         <saveMetadataButton featureText="Continue" sendData="true" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
 <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
@@ -511,7 +511,7 @@
 <!--                </plainText>-->
             </onError>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </submitTestResults>
     </presenter>

@@ -22,7 +22,7 @@
                 <targetButton featureText="Resume interview" target="SelectUser"/>
             </multipleUsers>
             <singleUser>
-                <autoNextPresenter target="Edit_User"/>
+                <gotoPresenter target="Edit_User"/>
             </singleUser>
         </existingUserCheck>
     </presenter>
@@ -47,7 +47,7 @@
         <saveMetadataButton featureText="Volgende" sendData="false" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>
@@ -98,7 +98,7 @@
                         <column styleName="">
                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
                                 <touchInputReportSubmit dataChannel="3"/>
-                                <autoNextPresenter target="Menu"/>
+                                <gotoPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
@@ -123,7 +123,7 @@
                 </table>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -178,7 +178,7 @@
                         <column styleName="">
                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
                                 <touchInputReportSubmit dataChannel="3"/>
-                                <autoNextPresenter target="Menu"/>
+                                <gotoPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
@@ -203,7 +203,7 @@
                 </table>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -258,7 +258,7 @@
                         <column styleName="">
                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
                                 <touchInputReportSubmit dataChannel="3"/>
-                                <autoNextPresenter target="Menu"/>
+                                <gotoPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
@@ -283,7 +283,7 @@
                 </table>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -338,7 +338,7 @@
                         <column styleName="">
                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
                                 <touchInputReportSubmit dataChannel="3"/>
-                                <autoNextPresenter target="Menu"/>
+                                <gotoPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
@@ -363,7 +363,7 @@
                 </table>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -418,7 +418,7 @@
                         <column styleName="">
                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
                                 <touchInputReportSubmit dataChannel="3"/>
-                                <autoNextPresenter target="Menu"/>
+                                <gotoPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
@@ -443,7 +443,7 @@
                 </table>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -498,7 +498,7 @@
                         <column styleName="">
                             <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
                                 <touchInputReportSubmit dataChannel="3"/>
-                                <autoNextPresenter target="Menu"/>
+                                <gotoPresenter target="Menu"/>
                             </actionButton>
                         </column>
                         <column styleName="">
@@ -523,7 +523,7 @@
                 </table>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>

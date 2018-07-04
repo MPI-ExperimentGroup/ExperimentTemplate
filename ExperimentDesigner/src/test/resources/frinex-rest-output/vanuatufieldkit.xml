@@ -18,7 +18,7 @@
                 <targetButton featureText="Gobak long wan olfala rikoding" target="SelectUser"/>
             </multipleUsers>
             <singleUser>
-                <autoNextPresenter target="Edit_User"/>
+                <gotoPresenter target="Edit_User"/>
             </singleUser>
         </existingUserCheck>
     </presenter>
@@ -31,7 +31,7 @@
         <saveMetadataButton featureText="Savem infomesen" sendData="false" networkErrorMessage="Could not contact the server, please check your internet connection and try again.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>
@@ -56,7 +56,7 @@
             </hasMoreStimulus>
             <endOfStimulus>
                 <stopAudioRecorder/>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
