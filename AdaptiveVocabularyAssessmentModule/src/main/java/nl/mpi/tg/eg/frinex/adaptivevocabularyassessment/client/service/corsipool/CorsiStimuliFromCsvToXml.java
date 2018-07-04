@@ -64,11 +64,15 @@ public class CorsiStimuliFromCsvToXml {
             String blankStimulus = record.get("Blank_stimulis").trim();
             if (blankStimulus == null) {
                 throw new IOException("Blank_stimulis string is undefined");
+            } else {
+                blankStimulus = blankStimulus + ".jpg";
             }
 
             String letterStimulus = record.get("Letter_stimulus").trim();
             if (letterStimulus == null) {
                 throw new IOException("Letter_stimulus is undefined");
+            } else {
+                letterStimulus = letterStimulus + ".jpg";
             }
 
             String correctSequence = record.get("Correct_sequence");
@@ -94,7 +98,7 @@ public class CorsiStimuliFromCsvToXml {
                     break;
                 }
                 j++;
-                nonBlankStimuli.add(currentStrimulus);
+                nonBlankStimuli.add(currentStrimulus + ".jpg");
 
             }
 
@@ -109,29 +113,39 @@ public class CorsiStimuliFromCsvToXml {
             // voice stimulus which starts the trial 
             i++;
             String uniqueId = appName + "_" + i;
-            String currentStimulus = makeStimulusString(appName, uniqueId, label, null, 1500, trialId, null, voiceAnnouncement, dirName, false);
+            String tags = appName + " " + trialId + " greeting active";
+            //String uniqueId,
+            //String label,
+            //String correctResponse,
+            //String imagePath, 
+            //String audioPath, 
+            //String dirName,
+            //String tags
+            String currentStimulus = makeStimulusString(uniqueId, label, null, null, voiceAnnouncement, dirName, tags);
             retVal.append(currentStimulus);
 
             for (int k = 0; k < nonBlankStimuli.size() - 1; k++) {
                 i++; // global stimuli counter
                 uniqueId = appName + "_" + i;
-                currentStimulus = makeStimulusString(appName, uniqueId, label, null, 1000, trialId, nonBlankStimuli.get(k), null, dirName, false);
+                tags = appName + " " + trialId + " active";
+                currentStimulus = makeStimulusString(uniqueId, label, null, nonBlankStimuli.get(k), null, dirName, tags);
                 retVal.append(currentStimulus);
                 i++; // global stimuli counter
                 uniqueId = appName + "_" + i;
-                currentStimulus = makeStimulusString(appName, uniqueId, label, null, 1500, trialId, blankStimulus, null, dirName, false);
+                tags = appName + " " + trialId + " blank active";
+                currentStimulus = makeStimulusString(uniqueId, label, null, blankStimulus, null, dirName, tags);
                 retVal.append(currentStimulus);
             }
 
             i++; // last non blnk stimulus
             uniqueId = appName + "_" + i;
-            currentStimulus = makeStimulusString(appName, uniqueId, label, null, 1000,
-                    trialId, nonBlankStimuli.get(nonBlankStimuli.size() - 1), null, dirName, false);
+            tags = appName + " " + trialId + " active";
+            currentStimulus = makeStimulusString(uniqueId, label, null, nonBlankStimuli.get(nonBlankStimuli.size() - 1), null, dirName, tags);
             retVal.append(currentStimulus);
             i++; // last non blnk stimulus
             uniqueId = appName + "_" + i;
-            currentStimulus = makeStimulusString(appName, uniqueId, label, correctSequence, 0, trialId, letterStimulus, null,
-                    dirName, true);
+            tags = appName + " " + trialId + " letters active";
+            currentStimulus = makeStimulusString(uniqueId, label, correctSequence, letterStimulus, null, dirName, tags);
             retVal.append(currentStimulus);
 
         }
@@ -139,10 +153,13 @@ public class CorsiStimuliFromCsvToXml {
         return retVal.toString();
     }
 
-    private String makeStimulusString(String appName, String uniqueId, String label,
-            String correctResponse, int pauseMs, String trialId,
-            String imagePath, String audioPath, String dirName,
-            boolean isLastStimulus) {
+    private String makeStimulusString(String uniqueId,
+            String label,
+            String correctResponse,
+            String imagePath, 
+            String audioPath, 
+            String dirName,
+            String tags) {
 
         StringBuilder retVal = new StringBuilder();
         retVal.append("<stimulus ");
@@ -151,19 +168,12 @@ public class CorsiStimuliFromCsvToXml {
         if (correctResponse != null) {
             retVal.append(" correctResponses=\"").append(correctResponse.trim()).append("\" ");
         }
-        retVal.append(" pauseMs=\"").append(pauseMs).append("\" ");
+        retVal.append(" pauseMs=\"0\" ");
         if (imagePath != null) {
             retVal.append(" imagePath=\"").append(dirName).append(imagePath).append("\" ");
         }
         if (audioPath != null) {
             retVal.append(" audioPath=\"").append(dirName).append(audioPath).append("\" ");
-        }
-
-        String tags = appName + " " + trialId;
-        if (isLastStimulus) {
-            tags = tags + " letters" + " active ";
-        } else {
-            tags = tags + " active ";
         }
 
         retVal.append(" tags=\"").append(tags).append(" \" ");
