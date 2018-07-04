@@ -715,10 +715,13 @@ or local-name() eq 'stimulusAudio'
 or local-name() eq 'stimulusCodeImage'
 or local-name() eq 'stimulusPause'
 or local-name() eq 'stimulusImageCapture'
-or local-name() eq 'groupNetwork'
 ">
             <!--<xsl:value-of select="if(@codeFormat) then ',' else ''" />-->
             <xsl:text>currentStimulus, </xsl:text>
+        </xsl:if>
+        <xsl:if test="local-name() eq 'groupNetwork'">
+            <!--some multiparticipant features require the current stimulus, except the case of an end of stimulus event, in this case the group still needs to be informed-->
+            <xsl:value-of select="if(local-name(..) ne 'endOfStimulus') then 'currentStimulus, ' else 'null, '" />
         </xsl:if>
         <xsl:value-of select="if(local-name() eq 'stimulusImageCapture' or local-name() eq 'countdownLabel') then concat('messages.', generate-id(.), '(), ') else ''" />
         <xsl:value-of select="if(@percentOfPage) then concat(@percentOfPage, ', ') else ''" />
