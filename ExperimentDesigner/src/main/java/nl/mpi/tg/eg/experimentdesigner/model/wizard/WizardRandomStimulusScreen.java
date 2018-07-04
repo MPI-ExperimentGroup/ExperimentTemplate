@@ -363,6 +363,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
             imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
             imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
+            imageFeature.addFeatureAttributes(FeatureAttribute.showControls, "false");
             imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getStimulusMsDelay(storedWizardScreenData)));
             if (tableFeature != null) {
                 tableFeature.addFeature(FeatureType.column, null, "").getPresenterFeatureList().add(imageFeature);

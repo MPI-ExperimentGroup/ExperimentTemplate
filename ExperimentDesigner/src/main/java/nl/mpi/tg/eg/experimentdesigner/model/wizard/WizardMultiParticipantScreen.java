@@ -475,9 +475,11 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         final PresenterFeature groupResponseFeedback2 = new PresenterFeature(FeatureType.groupResponseFeedback, null);
         final PresenterFeature responseCorrect2 = new PresenterFeature(FeatureType.responseCorrect, null);
+        responseCorrect2.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         responseCorrect2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, mutualFeedbackPhaseCorrectText));
         groupResponseFeedback2.getPresenterFeatureList().add(responseCorrect2);
         final PresenterFeature responseIncorrect2 = new PresenterFeature(FeatureType.responseIncorrect, null);
+        responseIncorrect2.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         responseIncorrect2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, mutualFeedbackPhaseIncorrectText));
         groupResponseFeedback2.getPresenterFeatureList().add(responseIncorrect2);
         allNetworkActivity2.getPresenterFeatureList().add(groupResponseFeedback2);
@@ -523,6 +525,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
         final PresenterFeature imageFeature = new PresenterFeature(FeatureType.stimulusPresent, null);
         imageFeature.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
+        imageFeature.addFeatureAttributes(FeatureAttribute.showControls, "false");
         conditionFalseProduer.getPresenterFeatureList().add(imageFeature);
         final PresenterFeature groupMessageLabel = new PresenterFeature(FeatureType.groupMessageLabel, null);
         groupMessageLabel.addFeatureAttributes(FeatureAttribute.styleName, "groupMessageLabel");
@@ -555,6 +558,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+        allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.showControls, "false");
         allNetworkActivity2Image.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
         allNetworkActivityColumn3.getPresenterFeatureList().add(allNetworkActivity2Image);
         allNetworkActivityColumn3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "Target"));
@@ -562,8 +566,10 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         final PresenterFeature groupResponseFeedback = new PresenterFeature(FeatureType.groupResponseFeedback, null);
         final PresenterFeature responseCorrect = new PresenterFeature(FeatureType.responseCorrect, null);
+        responseCorrect.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         groupResponseFeedback.getPresenterFeatureList().add(responseCorrect);
         final PresenterFeature responseIncorrect = new PresenterFeature(FeatureType.responseIncorrect, null);
+        responseIncorrect.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         groupResponseFeedback.getPresenterFeatureList().add(responseIncorrect);
 
         responseCorrect.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "<h1 style=\"color:green;\">&#10004;</h1>"));
@@ -620,6 +626,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         stimulusImage.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         stimulusImage.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         stimulusImage.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+        stimulusImage.addFeatureAttributes(FeatureAttribute.showControls, "false");
         trainingDisplayNetworkActivity3.getPresenterFeatureList().add(stimulusImage);
         final PresenterFeature mediaLoaded = stimulusImage.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
         if (getStimulusMsDelay(storedWizardScreenData) > 0) {

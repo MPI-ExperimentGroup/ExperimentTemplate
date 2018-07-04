@@ -150,7 +150,7 @@
                                 <conditionFalse>
                                     <stimulusLabel/>
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete>
@@ -177,7 +177,7 @@
                             <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -222,7 +222,7 @@
                                 <conditionFalse>
                                     <stimulusLabel/>
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete>
@@ -249,7 +249,7 @@
                             <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -294,7 +294,7 @@
                                 <conditionFalse>
                                     <stimulusLabel/>
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete>
@@ -321,7 +321,7 @@
                             <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -361,7 +361,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -419,10 +419,10 @@
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect>
+                                <responseCorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect>
+                                <responseIncorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -440,16 +440,16 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect>
+                                        <responseCorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect>
+                                        <responseIncorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete/>
@@ -492,7 +492,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -550,10 +550,10 @@
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect>
+                                <responseCorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect>
+                                <responseIncorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -571,16 +571,16 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect>
+                                        <responseCorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect>
+                                        <responseIncorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete/>
@@ -623,7 +623,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -681,10 +681,10 @@
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect>
+                                <responseCorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect>
+                                <responseIncorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -702,16 +702,16 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect>
+                                        <responseCorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect>
+                                        <responseIncorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete/>
@@ -754,7 +754,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -812,10 +812,10 @@
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect>
+                                <responseCorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect>
+                                <responseIncorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -833,16 +833,16 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect>
+                                        <responseCorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect>
+                                        <responseIncorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete/>
@@ -885,7 +885,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -943,10 +943,10 @@
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect>
+                                <responseCorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect>
+                                <responseIncorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -964,16 +964,16 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect>
+                                        <responseCorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect>
+                                        <responseIncorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete/>
@@ -1016,7 +1016,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -1074,10 +1074,10 @@
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect>
+                                <responseCorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect>
+                                <responseIncorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -1095,16 +1095,16 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect>
+                                        <responseCorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect>
+                                        <responseIncorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete/>
@@ -1147,7 +1147,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -1205,10 +1205,10 @@
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect>
+                                <responseCorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect>
+                                <responseIncorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -1226,16 +1226,16 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect>
+                                        <responseCorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect>
+                                        <responseIncorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete/>
@@ -1276,7 +1276,7 @@
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -1328,7 +1328,7 @@
                                 <conditionFalse>
                                     <stimulusLabel/>
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete>
@@ -1355,7 +1355,7 @@
                             <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -1400,7 +1400,7 @@
                                 <conditionFalse>
                                     <stimulusLabel/>
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete>
@@ -1427,7 +1427,7 @@
                             <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -1472,7 +1472,7 @@
                                 <conditionFalse>
                                     <stimulusLabel/>
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete>
@@ -1499,7 +1499,7 @@
                             <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -1539,7 +1539,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -1597,10 +1597,10 @@
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect>
+                                <responseCorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect>
+                                <responseIncorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -1618,16 +1618,16 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect>
+                                        <responseCorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect>
+                                        <responseIncorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete/>
@@ -1670,7 +1670,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -1728,10 +1728,10 @@
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect>
+                                <responseCorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect>
+                                <responseIncorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -1749,16 +1749,16 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect>
+                                        <responseCorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect>
+                                        <responseIncorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete/>
@@ -1801,7 +1801,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -1859,10 +1859,10 @@
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect>
+                                <responseCorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect>
+                                <responseIncorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -1880,16 +1880,16 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect>
+                                        <responseCorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect>
+                                        <responseIncorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete/>
@@ -1932,7 +1932,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -1990,10 +1990,10 @@
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect>
+                                <responseCorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect>
+                                <responseIncorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -2011,16 +2011,16 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect>
+                                        <responseCorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect>
+                                        <responseIncorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete/>
@@ -2063,7 +2063,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -2121,10 +2121,10 @@
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect>
+                                <responseCorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect>
+                                <responseIncorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -2142,16 +2142,16 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect>
+                                        <responseCorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect>
+                                        <responseIncorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete/>
@@ -2194,7 +2194,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -2252,10 +2252,10 @@
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect>
+                                <responseCorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect>
+                                <responseIncorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -2273,16 +2273,16 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect>
+                                        <responseCorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect>
+                                        <responseIncorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete/>
@@ -2325,7 +2325,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -2383,10 +2383,10 @@
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect>
+                                <responseCorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect>
+                                <responseIncorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -2404,16 +2404,16 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect>
+                                        <responseCorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect>
+                                        <responseIncorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete/>
@@ -2454,7 +2454,7 @@
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -2501,7 +2501,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -2559,10 +2559,10 @@
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect>
+                                <responseCorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect>
+                                <responseIncorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -2580,16 +2580,16 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect>
+                                        <responseCorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect>
+                                        <responseIncorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete/>
@@ -2632,7 +2632,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -2690,10 +2690,10 @@
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect>
+                                <responseCorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect>
+                                <responseIncorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -2711,16 +2711,16 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect>
+                                        <responseCorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect>
+                                        <responseIncorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete/>
@@ -2763,7 +2763,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -2821,10 +2821,10 @@
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect>
+                                <responseCorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect>
+                                <responseIncorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -2842,16 +2842,16 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect>
+                                        <responseCorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect>
+                                        <responseIncorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete/>
@@ -2894,7 +2894,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -2952,10 +2952,10 @@
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect>
+                                <responseCorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect>
+                                <responseIncorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -2973,16 +2973,16 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect>
+                                        <responseCorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect>
+                                        <responseIncorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete/>
@@ -3025,7 +3025,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -3083,10 +3083,10 @@
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect>
+                                <responseCorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect>
+                                <responseIncorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -3104,16 +3104,16 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect>
+                                        <responseCorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect>
+                                        <responseIncorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete/>
@@ -3156,7 +3156,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -3214,10 +3214,10 @@
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect>
+                                <responseCorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect>
+                                <responseIncorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -3235,16 +3235,16 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect>
+                                        <responseCorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect>
+                                        <responseIncorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete/>
@@ -3287,7 +3287,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -3345,10 +3345,10 @@
                             <clearPage/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect>
+                                <responseCorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect>
+                                <responseIncorrect msToNext="0">
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -3366,16 +3366,16 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect>
+                                        <responseCorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect>
+                                        <responseIncorrect msToNext="0">
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete/>
@@ -3416,7 +3416,7 @@
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>

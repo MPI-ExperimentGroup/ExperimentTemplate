@@ -72,7 +72,7 @@
                 <centrePage/>
                 <stimulusLabel/>
                 <showStimulusProgress/>
-                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete>
@@ -84,7 +84,7 @@
                             <centrePage/>
                             <stimulusLabel/>
                             <showStimulusProgress/>
-                            <stimulusPresent msToNext="0" maxHeight="60" percentOfPage="60" maxWidth="60">
+                            <stimulusPresent msToNext="0" maxHeight="60" percentOfPage="60" showControls="false" maxWidth="60">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -96,7 +96,7 @@
                                         <centrePage/>
                                         <stimulusLabel/>
                                         <showStimulusProgress/>
-                                        <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                                        <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackComplete>
@@ -108,7 +108,7 @@
                                                     <centrePage/>
                                                     <stimulusLabel/>
                                                     <showStimulusProgress/>
-                                                    <stimulusPresent msToNext="0" maxHeight="60" percentOfPage="60" maxWidth="60">
+                                                    <stimulusPresent msToNext="0" maxHeight="60" percentOfPage="60" showControls="false" maxWidth="60">
                                                         <mediaLoaded/>
                                                         <mediaLoadFailed/>
                                                         <mediaPlaybackComplete>
@@ -120,7 +120,7 @@
                                                                 <centrePage/>
                                                                 <stimulusLabel/>
                                                                 <showStimulusProgress/>
-                                                                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80">
+                                                                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                                                                     <mediaLoaded/>
                                                                     <mediaLoadFailed/>
                                                                     <mediaPlaybackComplete>
@@ -132,7 +132,7 @@
                                                                             <centrePage/>
                                                                             <stimulusLabel/>
                                                                             <showStimulusProgress/>
-                                                                            <stimulusPresent msToNext="0" maxHeight="60" percentOfPage="60" maxWidth="60">
+                                                                            <stimulusPresent msToNext="0" maxHeight="60" percentOfPage="60" showControls="false" maxWidth="60">
                                                                                 <mediaLoaded/>
                                                                                 <mediaLoadFailed/>
                                                                                 <mediaPlaybackComplete>
@@ -174,7 +174,7 @@
         <loadSdCardStimulus eventTag="Mekem ol foto" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusImageCapture featureText="Take Photo" msToNext="0" maxHeight="80" percentOfPage="80" maxWidth="80"/>
-                <nextStimulusButton featureText="Next" hotKey="SPACE" repeatIncorrect="false"/>
+                <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="SPACE" repeatIncorrect="false"/>
             </hasMoreStimulus>
             <endOfStimulus>
                 <plainText featureText="Finis olgeta"/>

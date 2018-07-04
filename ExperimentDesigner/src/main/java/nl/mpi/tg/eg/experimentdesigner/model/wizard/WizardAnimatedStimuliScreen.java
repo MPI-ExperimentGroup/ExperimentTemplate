@@ -289,6 +289,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
         imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(0));
         imageFeature.addFeatureAttributes(FeatureAttribute.animate, (animate) ? "bounce" : "none");
+        imageFeature.addFeatureAttributes(FeatureAttribute.showControls, "false");
         final PresenterFeature mediaLoaded = imageFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
         if (background) {
             final PresenterFeature backgroundImageFeature = new PresenterFeature(FeatureType.backgroundImage, null);
@@ -403,6 +404,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
 //        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.matchingRegex, MATCHING_REGEX);
         matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.maxHeight, Integer.toString(stimulusSize));
         matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
+        matchingStimulusGrid.addFeatureAttributes(FeatureAttribute.showControls, "false");
         final PresenterFeature mediaLoaded = matchingStimulusGrid.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
         final PresenterFeature returnFeature;
         if (background) {

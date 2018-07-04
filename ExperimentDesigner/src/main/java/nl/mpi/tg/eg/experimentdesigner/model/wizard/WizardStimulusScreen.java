@@ -185,6 +185,7 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
 //            autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextImage");
             autoNextFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
             autoNextFeature.addFeatureAttributes(FeatureAttribute.hotKey, "SPACE");
+            autoNextFeature.addFeatureAttributes(FeatureAttribute.eventTag, "nextStimulusButton");
             previousPresenterFeature.getPresenterFeatureList().add(autoNextFeature);
         }
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
@@ -214,6 +215,7 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, imageFeatureValues.getPercentOfPage());
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, imageFeatureValues.getPercentOfPage());
         imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+        imageFeature.addFeatureAttributes(FeatureAttribute.showControls, "false");
         final PresenterFeature mediaLoaded = imageFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
         parentFeature.getPresenterFeatureList().add(imageFeature);
         final PresenterFeature actionFeature;
