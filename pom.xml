@@ -51,6 +51,7 @@
         <!--<experiment.destinationServerUrl></experiment.destinationServerUrl>-->      
         <!--<experiment.destinationServer></experiment.destinationServer>-->
         <!--<experiment.configuration.name>parcours01</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>kinship_example</experiment.configuration.name>-->
         <!--<experiment.configuration.name>multiparticipant</experiment.configuration.name>-->
         <!--<experiment.configuration.name>sentences_rating_task</experiment.configuration.name>-->
         <!--<experiment.configuration.name>french_audio</experiment.configuration.name>-->
@@ -59,7 +60,10 @@
         <!--<experiment.configuration.name>antwoordraden</experiment.configuration.name>-->
         <!--<experiment.configuration.name>leeservaring</experiment.configuration.name>-->
         <!--<experiment.configuration.name>online_emotions</experiment.configuration.name>-->
-        <!--<experiment.configuration.name>alloptions</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>onlinepretest</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>shortmultiparticipant01</experiment.configuration.name>-->
+        <experiment.configuration.name>alloptions</experiment.configuration.name>
+        <!--<experiment.configuration.name>lilbq4</experiment.configuration.name>-->
         <!--<experiment.configuration.name>three_lists</experiment.configuration.name>-->
         <!--<experiment.configuration.name>hrpretest</experiment.configuration.name>-->
         <!--<experiment.configuration.name>shawifieldkit</experiment.configuration.name>-->
@@ -67,10 +71,11 @@
         <!--<experiment.configuration.displayName>Shawi FieldKit</experiment.configuration.displayName>-->
         <!--<experiment.configuration.name>vanuatufieldkit</experiment.configuration.name>-->
         <!--<experiment.configuration.displayName>Vanuatu FieldKit</experiment.configuration.displayName>-->
-        <!--        <experiment.configuration.name>sentveri_exp3</experiment.configuration.name>
-        <experiment.configuration.displayName>sentveri_exp3</experiment.configuration.displayName>-->
+                <!--<experiment.configuration.name>sentveri-exp3</experiment.configuration.name>-->
+        <!--<experiment.configuration.displayName>sentveri_exp3</experiment.configuration.displayName>-->
         <!--<experiment.configuration.displayName>SynQuiz2</experiment.configuration.displayName>-->
         <!--<experiment.configuration.name>zinnen_beoordelen</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>exampleronald</experiment.configuration.name>-->
         <!--<experiment.configuration.name>synquiz2</experiment.configuration.name>-->
         <!--<experiment.configuration.name>zinnen_afmaken</experiment.configuration.name>-->
         <!--<experiment.configuration.name>rosselfieldkit</experiment.configuration.name>-->
@@ -79,13 +84,22 @@
         <!--<experiment.configuration.name>wellspringssamoan</experiment.configuration.name>-->
         <!--<experiment.configuration.name>nonwacq</experiment.configuration.name>-->
         <!--<experiment.configuration.displayName>ld_screensize</experiment.configuration.displayName>-->
-        <experiment.configuration.name>ld_screensize</experiment.configuration.name>
-        <!--<experiment.configuration.name>advocas</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>ld_screensize</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>generic_example</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>advocas1</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>audioas2</experiment.configuration.name>-->
         <!--<experiment.configuration.name>joseco02</experiment.configuration.name>-->
         <!--<experiment.configuration.name>guineapigproject01</experiment.configuration.name>-->
+        <!--<experiment.configuration.displayName>advocas2</experiment.configuration.displayName>-->
+        <!--<experiment.configuration.displayName>advocas1</experiment.configuration.displayName>-->
         <!--<experiment.configuration.displayName>playback_preference</experiment.configuration.displayName>-->
         <!--<experiment.configuration.name>playback_preference</experiment.configuration.name>-->
         <!--<experiment.configuration.name>playhouse_study</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>heoexp01</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>ppvt</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>audioas2</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>engadvocas</experiment.configuration.name>-->
+        <!--<experiment.configuration.name>with_simulus_example</experiment.configuration.name>-->
         <experiment.configuration.admin.password></experiment.configuration.admin.password>
         <experiment.configuration.db.password></experiment.configuration.db.password>        
         
