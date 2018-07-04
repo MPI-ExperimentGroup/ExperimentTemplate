@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" appNameDisplay="Ravens Progress Matrix" appNameInternal="ravensas" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/Users/olhshk/Documents/ExperimentTemplate/ExperimentDesigner/target/test-classes/frinex-rest-output/frinex.xsd" appNameDisplay="Ravens Progress Matrix" appNameInternal="ravensas" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
     <preventWindowClose featureText="Bij reload worden ingetypte data verwiderd"/>
     <!--<experiment appNameDisplay="Adaptive Vocabulary Assessment" appNameInternal="advocas" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="false" textFontSize="17">-->
     <metadata>
@@ -48,7 +48,7 @@
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>
@@ -113,6 +113,10 @@
                 </table>
                 <addPadding/>
                 <stimulusImage msToNext="0" >
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded/>
                 </stimulusImage>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -136,72 +140,77 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
-                <table showOnBackButton="true" styleName="titleBarButton">
-                    <row>
-                        <column styleName="">
-                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
-                                <nextStimulus repeatIncorrect="false"/>
-                            </stimulusButton>
-                        </column>
-                        <column styleName="">
-                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
-                                <nextStimulus repeatIncorrect="false"/>
-                            </stimulusButton>
-                        </column>
-                        <column styleName="">
-                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
-                                <nextStimulus repeatIncorrect="false"/>
-                            </stimulusButton>
-                        </column>
-                        <column styleName="">
-                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
-                                <nextStimulus repeatIncorrect="false"/>
-                            </stimulusButton>
-                        </column>
-                        <column styleName="">
-                            <stimulusButton featureText="5" hotKey="FIVE" styleName="">
-                                <nextStimulus repeatIncorrect="false"/>
-                            </stimulusButton>
-                        </column>
-                        <column styleName="">
-                            <stimulusButton featureText="6" hotKey="SIX" styleName="">
-                                <nextStimulus repeatIncorrect="false"/>
-                            </stimulusButton>
-                        </column>
-                        <column styleName="">
-                            <stimulusButton featureText="7" hotKey="SEVEN" styleName="">
-                                <nextStimulus repeatIncorrect="false"/>
-                            </stimulusButton>
-                        </column>
-                        <column styleName="">
-                            <stimulusButton featureText="8" hotKey="EIGHT" styleName="">
-                                <nextStimulus repeatIncorrect="false"/>
-                            </stimulusButton>
-                        </column>
-                    </row>
-                </table>
-                <addPadding/>
                 <stimulusImage msToNext="0" >
+                    <mediaLoadFailed>
+                        <htmlText featureText="Failed to load image file"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <table showOnBackButton="true" styleName="titleBarButton">
+                            <row>
+                                <column styleName="">
+                                    <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </stimulusButton>
+                                </column>
+                                <column styleName="">
+                                    <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </stimulusButton>
+                                </column>
+                                <column styleName="">
+                                    <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </stimulusButton>
+                                </column>
+                                <column styleName="">
+                                    <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </stimulusButton>
+                                </column>
+                                <column styleName="">
+                                    <stimulusButton featureText="5" hotKey="FIVE" styleName="">
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </stimulusButton>
+                                </column>
+                                <column styleName="">
+                                    <stimulusButton featureText="6" hotKey="SIX" styleName="">
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </stimulusButton>
+                                </column>
+                                <column styleName="">
+                                    <stimulusButton featureText="7" hotKey="SEVEN" styleName="">
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </stimulusButton>
+                                </column>
+                                <column styleName="">
+                                    <stimulusButton featureText="8" hotKey="EIGHT" styleName="">
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </stimulusButton>
+                                </column>
+                            </row>
+                        </table>
+                        <addPadding/>
+                        <addPadding/>
+                        <addPadding/>
+                        <table>
+                            <row>
+                                <column styleName="">
+                                    <stimulusButton featureText="Overslaan" styleName="">
+                                        <nextStimulus repeatIncorrect="true"/>
+                                    </stimulusButton>
+                                </column>
+                                <column>
+                                    <htmlText featureText="&#160;"/> 
+                                </column>
+                                <column styleName="">
+                                    <stimulusButton featureText="Ik weet het niet" styleName="">
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </stimulusButton>
+                                </column>
+                            </row>
+                        </table>
+                    </mediaLoaded>
                 </stimulusImage>
-                <addPadding/>
-                <addPadding/>
-                <table>
-                    <row>
-                        <column styleName="">
-                            <stimulusButton featureText="Overslaan" styleName="">
-                                <nextStimulus repeatIncorrect="true"/>
-                            </stimulusButton>
-                        </column>
-                        <column>
-                            <htmlText featureText="&#160;"/> 
-                        </column>
-                        <column styleName="">
-                            <stimulusButton featureText="Ik weet het niet" styleName="">
-                                <nextStimulus repeatIncorrect="false"/>
-                            </stimulusButton>
-                        </column>
-                    </row>
-                </table>
             </hasMoreStimulus>
             <endOfStimulus>
                 <clearPage/>

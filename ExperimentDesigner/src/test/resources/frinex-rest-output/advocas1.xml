@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" appNameDisplay="Adaptive Vocabulary Assessment 1" appNameInternal="advocas1" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/Users/olhshk/Documents/ExperimentTemplate/ExperimentDesigner/target/test-classes/frinex-rest-output/frinex.xsd" appNameDisplay="Adaptive Vocabulary Assessment 1" appNameInternal="advocas1" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
+<!--<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" appNameDisplay="Adaptive Vocabulary Assessment 1" appNameInternal="advocas1" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">-->
     <preventWindowClose featureText="Bij reload worden ingetypte data verwiderd"/>
     <!--<experiment appNameDisplay="Adaptive Vocabulary Assessment" appNameInternal="advocas" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="false" textFontSize="17">-->
     <metadata>
@@ -12,7 +13,7 @@
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>
@@ -35,7 +36,7 @@ Veel succes!"/>
                 <!--                <showStimulusProgress/>-->
                 <stimulusLabel styleName="groupMessageLabel"/>
                 <addPadding/>
-                <stimulusRatingButton eventTier="1" ratingLabelRight="" ratingLabelLeft="">
+                <stimulusRatingButton ratingLabelRight="" ratingLabelLeft="">
                     <nextStimulus repeatIncorrect="false"/>
                 </stimulusRatingButton>
             </hasMoreStimulus>
@@ -45,7 +46,7 @@ Veel succes!"/>
                 <sendStimuliReport type="fine_tuning" />
                 <showStimuliReport/>
                 <targetButton featureText="Volgende" target="End"/>
-                <!--                <autoNextPresenter/>-->
+                <!--                <gotoNextPresenter/>-->
             </endOfStimulus>
             <randomGrouping/>
             <stimuli/>
@@ -58,7 +59,7 @@ Veel succes!"/>
                 <addPadding/>
                 <!--                <generateCompletionCode/>-->
                 <addPadding/>
-                <eraseUsersDataButton featureText="Opnieuw beginnen"/>
+                <eraseUsersDataButton featureText="Opnieuw beginnen" target="Edit_User"/>
             </onSuccess>
             <onError>
                 <plainText featureText="Cannot connect to the server, please check your internet connection."/>

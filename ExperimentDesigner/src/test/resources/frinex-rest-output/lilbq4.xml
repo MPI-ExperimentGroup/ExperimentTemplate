@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" appNameDisplay="Language in Interaction BQ4 Battery" appNameInternal="lilbq4" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/Users/olhshk/Documents/ExperimentTemplate/ExperimentDesigner/target/test-classes/frinex-rest-output/frinex.xsd" appNameDisplay="Language in Interaction BQ4 Battery" appNameInternal="lilbq4" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
     <preventWindowClose featureText="Bij reload worden ingetypte data verwiderd"/>
+    <administration>
+        <dataChannel channel="1" label="Grammar" logToSdCard="false"/>
+        <dataChannel channel="2" label="Ravens" logToSdCard="false"/>
+        <dataChannel channel="3" label="Flanker" logToSdCard="false"/>
+        <dataChannel channel="4" label="Corsi" logToSdCard="false"/>
+    </administration>
     <!--<experiment appNameDisplay="Adaptive Vocabulary Assessment" appNameInternal="advocas" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="false" textFontSize="17">-->
     <metadata>
         <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Wat is je proefpersoonnummer?"/>
@@ -27,7 +33,7 @@
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>
@@ -37,7 +43,7 @@
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>
@@ -47,7 +53,7 @@
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>
@@ -142,51 +148,56 @@
                     </row>
                 </table>
                 <stimulusAudio msToNext="0"  showPlaybackIndicator="false">
-                    <clearPage/>
-                    <centrePage/>
-                    <addPadding/>
-                    <addPadding/>
-                    <addPadding/>
-                    <addPadding/>
-                    <addPadding/>
-                    <addPadding/>
-                    <addPadding/>
-                    <table>
-                        <row>
-                            <column></column> 
-                            <column>
-                                <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/placeholder.png&quot; /&gt;  &lt;/div&gt;"/>
-                            </column> 
-                            <column></column> 
-                        </row>
-                        <row>
-                            <column>
-                                <stimulusButton featureText="Incorrect">
-                                    <clearPage/>
-                                    <pause  msToNext="500">
-                                        <cancelPauseTimers/> 
-                                        <trigger listenerId="nextStimulusAction"/>
-                                    </pause>
-                                </stimulusButton>
-                            </column>
-                            <column>
-                            </column>
-                            <column>
-                                <stimulusButton featureText="Correct">
-                                    <clearPage/>
-                                    <pause  msToNext="500">
-                                        <cancelPauseTimers/> 
-                                        <trigger listenerId="nextStimulusAction"/>
-                                    </pause>
-                                </stimulusButton>
-                            </column>
-                        </row>
-                    </table>
+                    <mediaLoaded>
+                        <clearPage/>
+                        <centrePage/>
+                        <addPadding/>
+                        <addPadding/>
+                        <addPadding/>
+                        <addPadding/>
+                        <addPadding/>
+                        <addPadding/>
+                        <addPadding/>
+                        <table>
+                            <row>
+                                <column></column> 
+                                <column>
+                                    <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/placeholder.png&quot; /&gt;  &lt;/div&gt;"/>
+                                </column> 
+                                <column></column> 
+                            </row>
+                            <row>
+                                <column>
+                                    <stimulusButton featureText="Incorrect">
+                                        <clearPage/>
+                                        <pause  msToNext="500">
+                                            <cancelPauseTimers/> 
+                                            <trigger listenerId="nextStimulusAction"/>
+                                        </pause>
+                                    </stimulusButton>
+                                </column>
+                                <column>
+                                </column>
+                                <column>
+                                    <stimulusButton featureText="Correct">
+                                        <clearPage/>
+                                        <pause  msToNext="500">
+                                            <cancelPauseTimers/> 
+                                            <trigger listenerId="nextStimulusAction"/>
+                                        </pause>
+                                    </stimulusButton>
+                                </column>
+                            </row>
+                        </table>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <htmlText featureText="Failed to load the image"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete/>
                 </stimulusAudio>
-               
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -442,7 +453,7 @@
                
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -504,6 +515,10 @@
                 </table>
                 <addPadding/>
                 <stimulusImage msToNext="0" >
+                    <mediaLoaded/>
+                    <mediaLoadFailed>
+                        <htmlText featureText="Failed to load the image"/>
+                    </mediaLoadFailed>
                 </stimulusImage>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -574,29 +589,34 @@
                 </table>
                 <addPadding/>
                 <stimulusImage msToNext="0" >
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <table>
+                            <row>
+                                <column styleName="">
+                                    <stimulusButton featureText="Overslaan" styleName="">
+                                        <nextStimulus repeatIncorrect="true"/>
+                                    </stimulusButton>
+                                </column>
+                                <column>
+                                    <htmlText featureText="&#160;"/> 
+                                </column>
+                                <column styleName="">
+                                    <stimulusButton featureText="Ik weet het niet" styleName="">
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </stimulusButton>
+                                </column>
+                            </row>
+                        </table>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <htmlText featureText="Failed to load the image"/>
+                    </mediaLoadFailed>
                 </stimulusImage>
-                <addPadding/>
-                <addPadding/>
-                <table>
-                    <row>
-                        <column styleName="">
-                            <stimulusButton featureText="Overslaan" styleName="">
-                                <nextStimulus repeatIncorrect="true"/>
-                            </stimulusButton>
-                        </column>
-                        <column>
-                            <htmlText featureText="&#160;"/> 
-                        </column>
-                        <column styleName="">
-                            <stimulusButton featureText="Ik weet het niet" styleName="">
-                                <nextStimulus repeatIncorrect="false"/>
-                            </stimulusButton>
-                        </column>
-                    </row>
-                </table>
             </hasMoreStimulus>
             <endOfStimulus>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -612,7 +632,7 @@
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
             <onSuccess>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
     </presenter>
@@ -633,46 +653,54 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
-<!--                <currentStimulusHasTag  msToNext="0">
+                <currentStimulusHasTag  msToNext="0" tags="greeting">
                     <conditionTrue>
                         <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                        </stimulusAudio>
-                        <stimulusLabel pauseMs="1500">
-                            <nextStimulus repeatIncorrect="false"/>
-                        </stimulusLabel>
+                            <mediaLoadFailed>
+                                <htmlText featureText="Failed to load audio file (announcement)"/>
+                            </mediaLoadFailed>
+                            <mediaLoaded>
+                                <stimulusLabel/>
+                            </mediaLoaded>
+                            <mediaPlaybackComplete>
+                                <pause msToNext="1500">
+                                    <nextStimulus repeatIncorrect="false"/>
+                                </pause>
+                            </mediaPlaybackComplete>
+                        </stimulusAudio>                   
                     </conditionTrue>
                     <conditionFalse>
-                        <stimulusImage msToNext="0">                    
-                            <currentStimulusHasTag msToNext="0">
-                                <conditionTrue>
-                                    <addPadding/>
-                                    <stimulusFreeText featureText="Type de letteren, ENTER als je klaar bent" validationRegex=".*" inputErrorMessage=" "/>
-                                    <nextStimulusButton featureText="Next [ENTER]" eventTag="Next [ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
-                                </conditionTrue>
-                                <conditionFalse>
-                                    <currentStimulusHasTag  msToNext="0" tags="blank">
-                                        <conditionTrue>
-                                            <pause msToNext="500">
-                                                <nextStimulus repeatIncorrect="false"/>
-                                            </pause>
-                                        </conditionTrue>  
-                                        <conditionFalse>
-                                            <pause msToNext="1000">
-                                                <nextStimulus repeatIncorrect="false"/>
-                                            </pause>
-                                        </conditionFalse>
-                                    </currentStimulusHasTag>
-                                </conditionFalse>
-                                <stimuli>
-                                    <tag>letters</tag>
-                                </stimuli>
-                            </currentStimulusHasTag>
+                        <stimulusImage msToNext="0"> 
+                            <mediaLoadFailed>
+                                <htmlText featureText="Failed to load image file"/>
+                            </mediaLoadFailed>
+                            <mediaLoaded> 
+                                <currentStimulusHasTag msToNext="0" tags="letters">
+                                    <conditionTrue>
+                                        <addPadding/>
+                                        <stimulusFreeText featureText="Type de letteren, ENTER als je klaar bent" validationRegex=".*" inputErrorMessage=" "/>
+                                        <nextStimulusButton featureText="Next [ENTER]" eventTag="Next [ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
+                                    </conditionTrue>
+                                    <conditionFalse>
+                                        <currentStimulusHasTag  msToNext="0" tags="blank">
+                                            <conditionTrue>
+                                                <pause msToNext="500">
+                                                    <nextStimulus repeatIncorrect="false"/>
+                                                </pause>
+                                            </conditionTrue>  
+                                            <conditionFalse>
+                                                <pause msToNext="1000">
+                                                    <nextStimulus repeatIncorrect="false"/>
+                                                </pause>
+                                            </conditionFalse>
+                                        </currentStimulusHasTag>
+                                    </conditionFalse>
+                                </currentStimulusHasTag>
+                            </mediaLoaded>
                         </stimulusImage>
                     </conditionFalse>
-                    <stimuli>
-                        <tag>greeting</tag>
-                    </stimuli>
-                </currentStimulusHasTag>-->
+                   
+                </currentStimulusHasTag>
                
             </hasMoreStimulus>
             <endOfStimulus>

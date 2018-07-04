@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" appNameDisplay="Peabody Assessment" appNameInternal="peabodyas" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/Users/olhshk/Documents/ExperimentTemplate/ExperimentDesigner/target/test-classes/frinex-rest-output/frinex.xsd" appNameDisplay="Peabody Assessment" appNameInternal="peabodyas" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
     <preventWindowClose featureText="Bij reload worden ingetypte data verwiderd"/>
     <metadata>
         <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Wat is je gebruikersnummer?"/>
@@ -108,10 +108,10 @@
                 <column styleName="stimulusContainerCol">
                     <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
                         <onSuccess>   
-                            <autoNextPresenter/>
+                            <gotoNextPresenter/>
                         </onSuccess>
                         <onError>   
-                            <autoNextPresenter/>
+                            <gotoNextPresenter/>
                         </onError>      
                     </saveMetadataButton>
                 </column>
@@ -126,10 +126,10 @@
                 <column styleName="stimulusContainerCol">
                     <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
                         <onSuccess>   
-                            <autoNextPresenter/>
+                            <gotoNextPresenter/>
                         </onSuccess>
                         <onError>   
-                            <autoNextPresenter/>
+                            <gotoNextPresenter/>
                         </onError>      
                     </saveMetadataButton>
                 </column>
@@ -144,10 +144,10 @@
                 <column styleName="stimulusContainerCol">
                     <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
                         <onSuccess>   
-                            <autoNextPresenter/>
+                            <gotoNextPresenter/>
                         </onSuccess>
                         <onError>   
-                            <autoNextPresenter/>
+                            <gotoNextPresenter/>
                         </onError>      
                     </saveMetadataButton>
                 </column>
@@ -162,10 +162,10 @@
                 <column styleName="stimulusContainerCol">
                     <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
                         <onSuccess>   
-                            <autoNextPresenter/>
+                            <gotoNextPresenter/>
                         </onSuccess>
                         <onError>   
-                            <autoNextPresenter/>
+                            <gotoNextPresenter/>
                         </onError>      
                     </saveMetadataButton>
                 </column>
@@ -180,10 +180,10 @@
                 <column styleName="stimulusContainerCol">
                     <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
                         <onSuccess>   
-                            <autoNextPresenter/>
+                            <gotoNextPresenter/>
                         </onSuccess>
                         <onError>   
-                            <autoNextPresenter/>
+                            <gotoNextPresenter/>
                         </onError>      
                     </saveMetadataButton>
                 </column>
@@ -198,10 +198,10 @@
                 <column styleName="stimulusContainerCol">
                     <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
                         <onSuccess>   
-                            <autoNextPresenter/>
+                            <gotoNextPresenter/>
                         </onSuccess>
                         <onError>   
-                            <autoNextPresenter/>
+                            <gotoNextPresenter/>
                         </onError>      
                     </saveMetadataButton>
                 </column>
@@ -338,22 +338,34 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                 <addPadding/>
                 <addPadding/>
                 <stimulusImage msToNext="0" >
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
                 </stimulusImage>
-                <addPadding/>
-                <addPadding/>
-                <htmlText featureText="Druk op spatie om het woord te horen"/>
-                <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
-                    <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                    </stimulusAudio>
-                    <enableStimulusButtons/>
-                </actionButton>
+               
             </hasMoreStimulus>
             <endOfStimulus>
                <clearPage/>
                 <centrePage/>
                 <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
                 <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli/>
@@ -400,22 +412,33 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                 <addPadding/>
                 <addPadding/>
                 <stimulusImage msToNext="0" >
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
                 </stimulusImage>
-                <addPadding/>
-                <addPadding/>
-                <htmlText featureText="Druk op spatie om het woord te horen"/>
-                <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
-                    <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                    </stimulusAudio>
-                    <enableStimulusButtons/>
-                </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
                 <clearPage/>
                 <centrePage/>
                 <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
                 <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli/>
@@ -462,22 +485,33 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                 <addPadding/>
                 <addPadding/>
                 <stimulusImage msToNext="0" >
-                </stimulusImage>
-                <addPadding/>
-                <addPadding/>
-                <htmlText featureText="Druk op spatie om het woord te horen"/>
-                <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
-                    <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                    </stimulusAudio>
-                    <enableStimulusButtons/>
-                </actionButton>
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
             </hasMoreStimulus>
             <endOfStimulus>
                 <clearPage/>
                 <centrePage/>
                 <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
                 <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli/>
@@ -524,22 +558,33 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                 <addPadding/>
                 <addPadding/>
                 <stimulusImage msToNext="0" >
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
                 </stimulusImage>
-                <addPadding/>
-                <addPadding/>
-                <htmlText featureText="Druk op spatie om het woord te horen"/>
-                <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
-                    <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                    </stimulusAudio>
-                    <enableStimulusButtons/>
-                </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
                 <clearPage/>
                 <centrePage/>
                 <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
                 <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli/>
@@ -586,22 +631,33 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                 <addPadding/>
                 <addPadding/>
                 <stimulusImage msToNext="0" >
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
                 </stimulusImage>
-                <addPadding/>
-                <addPadding/>
-                <htmlText featureText="Druk op spatie om het woord te horen"/>
-                <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
-                    <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                    </stimulusAudio>
-                    <enableStimulusButtons/>
-                </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
                 <clearPage/>
                 <centrePage/>
                 <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
                 <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli/>
@@ -648,22 +704,34 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                 <addPadding/>
                 <addPadding/>
                 <stimulusImage msToNext="0" >
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
                 </stimulusImage>
                 <addPadding/>
-                <addPadding/>
-                <htmlText featureText="Druk op spatie om het woord te horen"/>
-                <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
-                    <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                    </stimulusAudio>
-                    <enableStimulusButtons/>
-                </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
                 <clearPage/>
                 <centrePage/>
                 <sendStimuliReport type="user_summary" separator=";" headerKey="row000000"/>
                 <sendStimuliReport type="fine_tuning" separator=";" headerKey="row000000"/>
-                <autoNextPresenter/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli/>
