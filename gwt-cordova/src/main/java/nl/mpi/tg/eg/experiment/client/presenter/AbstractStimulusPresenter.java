@@ -910,7 +910,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             } else {
                 animateStyle = null;
             }
-            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(image), percentOfPage, maxHeight, maxWidth, animateStyle, fixedPositionY, postLoadMs, shownStimulusListener, loadedStimulusListener, failedStimulusListener, clickedStimulusListener);
+            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(image), percentOfPage, maxHeight, maxWidth, animateStyle, fixedPositionY, postLoadMs, shownStimulusListener, new TimedStimulusListener() {
+                @Override
+                public void postLoadTimerFired() {
+                    loadedStimulusListener.postLoadTimerFired();
+                    playedStimulusListener.postLoadTimerFired();
+                }
+            }, failedStimulusListener, clickedStimulusListener);
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
         } else if (currentStimulus.hasAudio()) {
             String mp3 = currentStimulus.getAudio() + ".mp3";
@@ -955,6 +961,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             // send label shown tag
             submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusLabelShown", currentStimulus.getUniqueId(), currentStimulus.getLabel(), duration.elapsedMillis());
             loadedStimulusListener.postLoadTimerFired();
+            playedStimulusListener.postLoadTimerFired();
         } else {
             final String incorrect_stimulus_format = "incorrect stimulus format";
             nextStimulusButton(stimulusProvider, currentStimulus, incorrect_stimulus_format, incorrect_stimulus_format + " " + currentStimulus.getLabel(), true, -1);
