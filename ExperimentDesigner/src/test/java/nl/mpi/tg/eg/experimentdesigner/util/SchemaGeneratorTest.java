@@ -71,7 +71,7 @@ public class SchemaGeneratorTest {
             "dobes_annotator.xml",
 //            "heoexp01.xml", "joseco02.xml",
             "onlinepretest.xml", "shortmultiparticipant01.xml",
-                        "engadvocas.xml", 
+//                        "engadvocas.xml", 
             "hrpretest.xml", "kinship_example.xml",
 //            "ppvt.xml",
 //            "synquiz2.xml"
