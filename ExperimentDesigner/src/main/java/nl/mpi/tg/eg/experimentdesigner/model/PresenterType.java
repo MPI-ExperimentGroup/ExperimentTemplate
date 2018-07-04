@@ -241,6 +241,8 @@ public enum PresenterType {
         loadKinTypeStringDiagram,
         preloadAllStimuli}),
     colourPicker(new FeatureType[]{
+        gotoPresenter,
+        gotoNextPresenter,
         startTimer, clearTimer, logTimerValue,compareTimer,
         row, plainText, stimulusPresent,
         countdownLabel, trigger, table, triggerListener, touchInputCaptureStart, column,

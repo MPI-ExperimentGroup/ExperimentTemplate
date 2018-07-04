@@ -1220,8 +1220,6 @@
         <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes">
-        <gotoPresenter target="target"/>
-        <gotoNextPresenter/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_all_attributes" type="colourReport" self="colourReport_all_attributesScreen" title="colourReport_all_attributes">
@@ -2744,8 +2742,6 @@
         <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes">
-        <gotoPresenter target="target"/>
-        <gotoNextPresenter/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_minimal_attributes" type="colourReport" self="colourReport_minimal_attributesScreen" title="colourReport_minimal_attributes">
