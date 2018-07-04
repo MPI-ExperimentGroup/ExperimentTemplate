@@ -28,6 +28,7 @@ public class WizardUtilText {
     protected String text;
     protected String butonLabel;
     protected String hotkey;
+    protected boolean showBackButton = true;
 
     public String getMenuLabel() {
         return menuLabel;
@@ -67,5 +68,13 @@ public class WizardUtilText {
 
     public void setHotkey(String hotkey) {
         this.hotkey = hotkey;
+    }
+
+    public boolean isShowBackButton() {
+        return showBackButton;
+    }
+
+    public void setShowBackButton(boolean showBackButton) {
+        this.showBackButton = showBackButton;
     }
 }
