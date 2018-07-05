@@ -36,7 +36,6 @@ public class AudioPlayer {
 
     public AudioPlayer(AudioExceptionListner audioExceptionListner) throws AudioException {
         this.audioExceptionListner = audioExceptionListner;
-        createPlayer();
     }
 
     public Audio getAudioPlayer() {
