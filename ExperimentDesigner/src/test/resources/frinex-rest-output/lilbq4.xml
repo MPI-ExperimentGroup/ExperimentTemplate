@@ -10,7 +10,6 @@
     <!--<experiment appNameDisplay="Adaptive Vocabulary Assessment" appNameInternal="advocas" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="false" textFontSize="17">-->
     <metadata>
         <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Wat is je proefpersoonnummer?"/>
-        <field controlledMessage="." controlledRegex=".*" postName="experimentName" preventServerDuplicates="false" registrationField="Wat is de naam van het experiment?"/>
     </metadata>
     <presenter displayOrder="1" type="menu" self="Menu" title="Menu">
         <centrePage/>
@@ -29,7 +28,6 @@
     </presenter>
     <presenter menuLabel="Grammar Judjement" displayOrder="2" next="Accord_Grammar" type="metadata" self="Edit_User_Grammar" title="">
         <metadataField fieldName="workerId"/>
-        <metadataField fieldName="experimentName"/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
             <onSuccess>
@@ -39,7 +37,6 @@
     </presenter>
     <presenter menuLabel="Flanker test" displayOrder="3" next="Accord_Flanker" type="metadata" self="Edit_User_Flanker" title="">
         <metadataField fieldName="workerId"/>
-        <metadataField fieldName="experimentName"/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
             <onSuccess>
@@ -49,7 +46,6 @@
     </presenter>
     <presenter menuLabel="Ravens Progressive Matrix" displayOrder="4" next="Accord_Raven" type="metadata" self="Edit_User_Raven" title="">
         <metadataField fieldName="workerId"/>
-        <metadataField fieldName="experimentName"/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
             <onSuccess>
@@ -106,48 +102,7 @@
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
                     <nextStimulus repeatIncorrect="false"/>
                 </triggerListener>
-                <clearPage/>
-                <centrePage/>
-                <enableStimulusButtons/>
-                <addPadding/>
-                <addPadding/>
-                <addPadding/>
-                <addPadding/>
-                <addPadding/>
-                <addPadding/>
-                <addPadding/>
-                <table>
-                    <row>
-                        <column></column> 
-                        <column>
-                            <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
-                        </column> 
-                        <column></column> 
-                    </row>
-                    <row>
-                        <column>
-                            <stimulusButton featureText="Incorrect">
-                                <clearPage/>
-                                <pause  msToNext="500">
-                                    <cancelPauseTimers/> 
-                                    <trigger listenerId="nextStimulusAction"/>
-                                </pause>
-                            </stimulusButton>
-                        </column>
-                        <column>
-                        </column>
-                        <column>
-                            <stimulusButton featureText="Correct">
-                                <clearPage/>
-                                <pause  msToNext="500">
-                                    <cancelPauseTimers/> 
-                                    <trigger listenerId="nextStimulusAction"/>
-                                </pause>
-                            </stimulusButton>
-                        </column>
-                    </row>
-                </table>
-                <stimulusAudio msToNext="0"  showPlaybackIndicator="false">
+                <stimulusAudio msToNext="0"  showPlaybackIndicator="false" dataChannel="1">
                     <mediaLoaded>
                         <clearPage/>
                         <centrePage/>
@@ -168,7 +123,7 @@
                             </row>
                             <row>
                                 <column>
-                                    <stimulusButton featureText="Incorrect">
+                                    <stimulusButton featureText="Incorrect" dataChannel="1">
                                         <clearPage/>
                                         <pause  msToNext="500">
                                             <cancelPauseTimers/> 
@@ -179,7 +134,7 @@
                                 <column>
                                 </column>
                                 <column>
-                                    <stimulusButton featureText="Correct">
+                                    <stimulusButton featureText="Correct" dataChannel="1">
                                         <clearPage/>
                                         <pause  msToNext="500">
                                             <cancelPauseTimers/> 
@@ -189,9 +144,10 @@
                                 </column>
                             </row>
                         </table>
+                        <enableStimulusButtons/>
                     </mediaLoaded>
                     <mediaLoadFailed>
-                        <htmlText featureText="Failed to load the image"/>
+                        <htmlText featureText="Failed to load audio file"/>
                     </mediaLoadFailed>
                     <mediaPlaybackComplete/>
                 </stimulusAudio>
@@ -223,11 +179,11 @@
                 <addPadding/>
                 <addPadding/>
                 <htmlText featureText="+" styleName="stimuliLabel"/>
-                <logTimeStamp eventTag="PlusShown"/>
+                <logTimeStamp eventTag="PlusShown" dataChannel="3"/>
                 <pause msToNext="250">
                     <cancelPauseTimers/> 
                     <clearPage/>
-                    <logTimeStamp eventTag="PlusErased"/>
+                    <logTimeStamp eventTag="PlusErased" dataChannel="3"/>
                     <centrePage/>
                     <addPadding/>
                     <addPadding/>
@@ -239,11 +195,11 @@
                     <pause msToNext="1000">
                         <cancelPauseTimers/> 
                         <stimulusLabel styleName="stimuliLabel"/>
-                        <logTimeStamp eventTag="StimulusShown"/>
+                        <logTimeStamp eventTag="StimulusShown" dataChannel="3"/>
                         <table showOnBackButton="true" styleName="titleBarButton">
                             <row>
                                 <column styleName=""> 
-                                    <stimulusButton featureText="&lt;" hotKey="LEFT" styleName=""> <!-- left -->
+                                    <stimulusButton featureText="&lt;" hotKey="LEFT" styleName="" dataChannel="3"> <!-- left -->
                                         <clearPage/>
                                         <pause  msToNext="1000">
                                             <cancelPauseTimers/> 
@@ -252,7 +208,7 @@
                                     </stimulusButton>
                                 </column>
                                 <column  styleName="">
-                                    <stimulusButton featureText="&gt;" hotKey="RIGHT" styleName=""> <!-- right -->
+                                    <stimulusButton featureText="&gt;" hotKey="RIGHT" styleName="" dataChannel="3"> <!-- right -->
                                         <clearPage/>
                                         <pause  msToNext="1000">
                                             <cancelPauseTimers/> 
@@ -328,11 +284,11 @@
                 <addPadding/>
                 <addPadding/>
                 <htmlText featureText="+" styleName="stimuliLabel"/>
-                <logTimeStamp eventTag="PlusShown"/>
+                <logTimeStamp eventTag="PlusShown"  dataChannel="3"/>
                 <pause msToNext="250">
                     <cancelPauseTimers/> 
                     <clearPage/>
-                    <logTimeStamp eventTag="PlusErased"/>
+                    <logTimeStamp eventTag="PlusErased" dataChannel="3"/>
                     <centrePage/>
                     <pause msToNext="1000">
                         <cancelPauseTimers/>
@@ -344,11 +300,11 @@
                         <addPadding/>
                         <addPadding/> 
                         <stimulusLabel styleName="stimuliLabel"/>
-                        <logTimeStamp eventTag="StimulusShown"/>
+                        <logTimeStamp eventTag="StimulusShown" dataChannel="3"/>
                         <table showOnBackButton="true" styleName="titleBarButton">
                             <row>
                                 <column styleName=""> 
-                                    <stimulusButton featureText="&lt;" hotKey="LEFT" styleName=""> <!-- left -->
+                                    <stimulusButton featureText="&lt;" hotKey="LEFT" styleName="" dataChannel="3"> <!-- left -->
                                         <clearPage/>
                                         <pause  msToNext="1000">
                                             <cancelPauseTimers/> 
@@ -357,7 +313,7 @@
                                     </stimulusButton>
                                 </column>
                                 <column  styleName="">
-                                    <stimulusButton featureText="&gt;" hotKey="RIGHT" styleName=""> <!-- right -->
+                                    <stimulusButton featureText="&gt;" hotKey="RIGHT" styleName="" dataChannel="3"> <!-- right -->
                                         <clearPage/>
                                         <pause  msToNext="1000">
                                             <cancelPauseTimers/> 
@@ -408,11 +364,11 @@
                 <addPadding/>
                 <addPadding/>
                 <htmlText featureText="+" styleName="stimuliLabel"/>
-                <logTimeStamp eventTag="PlusShown"/>
+                <logTimeStamp eventTag="PlusShown" dataChannel="3"/>
                 <pause msToNext="250">
                     <cancelPauseTimers/> 
                     <clearPage/>
-                    <logTimeStamp eventTag="PlusErased"/>
+                    <logTimeStamp eventTag="PlusErased" dataChannel="3"/>
                     <centrePage/>
                     <addPadding/>
                     <addPadding/>
@@ -424,11 +380,11 @@
                     <pause msToNext="1000">
                         <cancelPauseTimers/> 
                         <stimulusLabel styleName="stimuliLabel"/>
-                        <logTimeStamp eventTag="StimulusShown"/>
+                        <logTimeStamp eventTag="StimulusShown" dataChannel="3"/>
                         <table showOnBackButton="true" styleName="titleBarButton">
                             <row>
                                 <column styleName=""> 
-                                    <stimulusButton featureText="&lt;" hotKey="LEFT" styleName=""> <!-- left -->
+                                    <stimulusButton featureText="&lt;" hotKey="LEFT" styleName="" dataChannel="3"> <!-- left -->
                                         <clearPage/>
                                         <pause  msToNext="1000">
                                             <cancelPauseTimers/> 
@@ -437,7 +393,7 @@
                                     </stimulusButton>
                                 </column>
                                 <column  styleName="">
-                                    <stimulusButton featureText="&gt;" hotKey="RIGHT" styleName=""> <!-- right -->
+                                    <stimulusButton featureText="&gt;" hotKey="RIGHT" styleName="" dataChannel="3"> <!-- right -->
                                         <clearPage/>
                                         <pause  msToNext="1000">
                                             <cancelPauseTimers/> 
@@ -472,49 +428,49 @@
                 <table showOnBackButton="true" styleName="titleBarButton">
                     <row>
                         <column styleName="">
-                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="" dataChannel="2">
                                 <nextStimulus repeatIncorrect="false"/>
                             </stimulusButton>
                         </column>
                         <column styleName="">
-                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="" dataChannel="2">
                                 <nextStimulus repeatIncorrect="false"/>
                             </stimulusButton>
                         </column>
                         <column styleName="">
-                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="" dataChannel="2">
                                 <nextStimulus repeatIncorrect="false"/>
                             </stimulusButton>
                         </column>
                         <column styleName="">
-                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="" dataChannel="2">
                                 <nextStimulus repeatIncorrect="false"/>
                             </stimulusButton>
                         </column>
                         <column styleName="">
-                            <stimulusButton featureText="5" hotKey="FIVE" styleName="">
+                            <stimulusButton featureText="5" hotKey="FIVE" styleName="" dataChannel="2">
                                 <nextStimulus repeatIncorrect="false"/>
                             </stimulusButton>
                         </column>
                         <column styleName="">
-                            <stimulusButton featureText="6" hotKey="SIX" styleName="">
+                            <stimulusButton featureText="6" hotKey="SIX" styleName="" dataChannel="2">
                                 <nextStimulus repeatIncorrect="false"/>
                             </stimulusButton>
                         </column>
                         <column styleName="">
-                            <stimulusButton featureText="7" hotKey="SEVEN" styleName="">
+                            <stimulusButton featureText="7" hotKey="SEVEN" styleName="" dataChannel="2">
                                 <nextStimulus repeatIncorrect="false"/>
                             </stimulusButton>
                         </column>
                         <column styleName="">
-                            <stimulusButton featureText="8" hotKey="EIGHT" styleName="">
+                            <stimulusButton featureText="8" hotKey="EIGHT" styleName="" dataChannel="2">
                                 <nextStimulus repeatIncorrect="false"/>
                             </stimulusButton>
                         </column>
                     </row>
                 </table>
                 <addPadding/>
-                <stimulusImage msToNext="0" >
+                <stimulusImage msToNext="0" dataChannel="2">
                     <mediaLoaded/>
                     <mediaLoadFailed>
                         <htmlText featureText="Failed to load the image"/>
@@ -546,56 +502,56 @@
                 <table showOnBackButton="true" styleName="titleBarButton">
                     <row>
                         <column styleName="">
-                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="" dataChannel="2">
                                 <nextStimulus repeatIncorrect="false"/>
                             </stimulusButton>
                         </column>
                         <column styleName="">
-                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="" dataChannel="2">
                                 <nextStimulus repeatIncorrect="false"/>
                             </stimulusButton>
                         </column>
                         <column styleName="">
-                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="" dataChannel="2">
                                 <nextStimulus repeatIncorrect="false"/>
                             </stimulusButton>
                         </column>
                         <column styleName="">
-                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="" dataChannel="2">
                                 <nextStimulus repeatIncorrect="false"/>
                             </stimulusButton>
                         </column>
                         <column styleName="">
-                            <stimulusButton featureText="5" hotKey="FIVE" styleName="">
+                            <stimulusButton featureText="5" hotKey="FIVE" styleName="" dataChannel="2">
                                 <nextStimulus repeatIncorrect="false"/>
                             </stimulusButton>
                         </column>
                         <column styleName="">
-                            <stimulusButton featureText="6" hotKey="SIX" styleName="">
+                            <stimulusButton featureText="6" hotKey="SIX" styleName="" dataChannel="2">
                                 <nextStimulus repeatIncorrect="false"/>
                             </stimulusButton>
                         </column>
                         <column styleName="">
-                            <stimulusButton featureText="7" hotKey="SEVEN" styleName="">
+                            <stimulusButton featureText="7" hotKey="SEVEN" styleName="" dataChannel="2">
                                 <nextStimulus repeatIncorrect="false"/>
                             </stimulusButton>
                         </column>
                         <column styleName="">
-                            <stimulusButton featureText="8" hotKey="EIGHT" styleName="">
+                            <stimulusButton featureText="8" hotKey="EIGHT" styleName="" dataChannel="2">
                                 <nextStimulus repeatIncorrect="false"/>
                             </stimulusButton>
                         </column>
                     </row>
                 </table>
                 <addPadding/>
-                <stimulusImage msToNext="0" >
+                <stimulusImage msToNext="0" dataChannel="2">
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
                         <table>
                             <row>
                                 <column styleName="">
-                                    <stimulusButton featureText="Overslaan" styleName="">
+                                    <stimulusButton featureText="Overslaan" styleName="" dataChannel="2">
                                         <nextStimulus repeatIncorrect="true"/>
                                     </stimulusButton>
                                 </column>
@@ -603,7 +559,7 @@
                                     <htmlText featureText="&#160;"/> 
                                 </column>
                                 <column styleName="">
-                                    <stimulusButton featureText="Ik weet het niet" styleName="">
+                                    <stimulusButton featureText="Ik weet het niet" styleName="" dataChannel="2">
                                         <nextStimulus repeatIncorrect="false"/>
                                     </stimulusButton>
                                 </column>
@@ -628,7 +584,6 @@
     
     <presenter menuLabel="Corsi" displayOrder="40" next="Accord_Corsi" type="metadata" self="Edit_User_Corsi" title="">
         <metadataField fieldName="workerId"/>
-        <metadataField fieldName="experimentName"/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
             <onSuccess>
@@ -655,7 +610,7 @@
                 <centrePage/>
                 <currentStimulusHasTag  msToNext="0" tags="greeting">
                     <conditionTrue>
-                        <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                        <stimulusAudio msToNext="0" showPlaybackIndicator="false" dataChannel="4">
                             <mediaLoadFailed>
                                 <htmlText featureText="Failed to load audio file (announcement)"/>
                             </mediaLoadFailed>
@@ -670,7 +625,7 @@
                         </stimulusAudio>                   
                     </conditionTrue>
                     <conditionFalse>
-                        <stimulusImage msToNext="0"> 
+                        <stimulusImage msToNext="0" dataChannel="4"> 
                             <mediaLoadFailed>
                                 <htmlText featureText="Failed to load image file"/>
                             </mediaLoadFailed>
@@ -678,7 +633,7 @@
                                 <currentStimulusHasTag msToNext="0" tags="letters">
                                     <conditionTrue>
                                         <addPadding/>
-                                        <stimulusFreeText featureText="Type de letteren, ENTER als je klaar bent" validationRegex=".*" inputErrorMessage=" "/>
+                                        <stimulusFreeText featureText="Type de letteren, ENTER als je klaar bent" validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
                                         <nextStimulusButton featureText="Next [ENTER]" eventTag="Next [ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
                                     </conditionTrue>
                                     <conditionFalse>
