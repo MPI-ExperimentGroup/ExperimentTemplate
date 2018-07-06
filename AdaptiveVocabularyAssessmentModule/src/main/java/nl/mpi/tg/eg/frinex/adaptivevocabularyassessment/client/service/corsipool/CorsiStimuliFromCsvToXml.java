@@ -82,9 +82,11 @@ public class CorsiStimuliFromCsvToXml {
                 throw new IOException("voiceAnnouncement is missing");
             }
 
-            String label = record.get("Capture").trim();
-            if (label == null) {
+            String capture = record.get("Capture").trim();
+            if (capture == null) {
                 throw new IOException("Capture is missing");
+            } else {
+                
             }
 
             int j = 1;
@@ -114,6 +116,7 @@ public class CorsiStimuliFromCsvToXml {
             i++;
             String uniqueId = appName + "_" + i;
             String tags = appName + " " + trialId + " greeting active";
+            String label = "&lt;span id='labelId_"+i+"'&gt; "+capture+"&lt;/span&gt;";
             //String uniqueId,
             //String label,
             //String correctResponse,
@@ -127,11 +130,14 @@ public class CorsiStimuliFromCsvToXml {
             for (int k = 0; k < nonBlankStimuli.size() - 1; k++) {
                 i++; // global stimuli counter
                 uniqueId = appName + "_" + i;
+                label = "&lt;span id='labelId_"+i+"'&gt; "+capture+"&lt;/span&gt;";
                 tags = appName + " " + trialId + " active";
                 currentStimulus = makeStimulusString(uniqueId, label, null, nonBlankStimuli.get(k), null, dirName, tags);
                 retVal.append(currentStimulus);
+                
                 i++; // global stimuli counter
                 uniqueId = appName + "_" + i;
+                label = "&lt;span id='labelId_"+i+"'&gt; "+capture+"&lt;/span&gt;";
                 tags = appName + " " + trialId + " blank active";
                 currentStimulus = makeStimulusString(uniqueId, label, null, blankStimulus, null, dirName, tags);
                 retVal.append(currentStimulus);
@@ -139,11 +145,13 @@ public class CorsiStimuliFromCsvToXml {
 
             i++; // last non blnk stimulus
             uniqueId = appName + "_" + i;
+            label = "&lt;span id='labelId_"+i+"'&gt; "+capture+"&lt;/span&gt;";
             tags = appName + " " + trialId + " active";
             currentStimulus = makeStimulusString(uniqueId, label, null, nonBlankStimuli.get(nonBlankStimuli.size() - 1), null, dirName, tags);
             retVal.append(currentStimulus);
             i++; // last non blnk stimulus
             uniqueId = appName + "_" + i;
+            label = "&lt;span id='labelId_"+i+"'&gt; "+capture+"&lt;/span&gt;";
             tags = appName + " " + trialId + " letters active";
             currentStimulus = makeStimulusString(uniqueId, label, correctSequence, letterStimulus, null, dirName, tags);
             retVal.append(currentStimulus);
@@ -176,7 +184,7 @@ public class CorsiStimuliFromCsvToXml {
             retVal.append(" audioPath=\"").append(dirName).append(audioPath).append("\" ");
         }
 
-        retVal.append(" tags=\"").append(tags).append(" \" ");
+        retVal.append(" tags=\"").append(tags).append("\" ");
 
         retVal.append(" />\n");
         return retVal.toString();
