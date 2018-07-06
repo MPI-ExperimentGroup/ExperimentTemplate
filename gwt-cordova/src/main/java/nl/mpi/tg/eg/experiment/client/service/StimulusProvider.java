@@ -163,7 +163,9 @@ public class StimulusProvider extends AbstractStimuliProvider {
                         });
                     }
                     applyRepeatRandomWindow(stimulusSubsetArrayTemp, attributeRepeatCount, attributeRepeatRandomWindow, attributeMaxStimulusCount);
-                    applyAdjacencyCheck(attributeAdjacencyThreshold);
+                    if (attributeRandomise) {
+                        applyAdjacencyCheck(attributeAdjacencyThreshold);
+                    }
                 }
 //                totalStimuli = stimulusSubsetArray.size();
                 simulusLoadedListener.postLoadTimerFired();
@@ -243,7 +245,9 @@ public class StimulusProvider extends AbstractStimuliProvider {
             }
         }
         applyRepeatRandomWindow(stimulusSubsetArrayTemp, attributeRepeatCount, attributeRepeatRandomWindow, attributeMaxStimulusCount);
-        applyAdjacencyCheck(attributeAdjacencyThreshold);
+        if (attributeRandomise) {
+            applyAdjacencyCheck(attributeAdjacencyThreshold);
+        }
     }
 
     protected void applyAdjacencyCheck(final int adjacencyThreshold) {

@@ -64,7 +64,7 @@ public enum FeatureAttribute {
     inputErrorMessage,
     randomise,
     repeatCount(true),
-    repeatRandomWindow(true),
+    repeatRandomWindow(true), // todo: document how this works, which currently is to compare in sequence, image, audio, video and label and use the first found one as the comparitor. This could be made more explicit by adding a comparitor attribute that would be default be set to "image audio video label" for example
     adjacencyThreshold(true),
     repeatIncorrect,
     hotKey(true), // todo: this could provide a list for the schema to know what are valid values
