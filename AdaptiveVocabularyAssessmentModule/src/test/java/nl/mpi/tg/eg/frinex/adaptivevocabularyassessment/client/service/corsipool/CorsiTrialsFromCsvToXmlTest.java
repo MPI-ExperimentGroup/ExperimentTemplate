@@ -28,11 +28,9 @@ import static org.junit.Assert.*;
  *
  * @author olhshk
  */
-public class CorsiStimuliFromCsvToXmlTest {
+public class CorsiTrialsFromCsvToXmlTest {
     
-     public static final String STIMULI_DIR = "stimuli/corsi/";
-    
-    public CorsiStimuliFromCsvToXmlTest() {
+    public CorsiTrialsFromCsvToXmlTest() {
     }
     
     @BeforeClass
@@ -52,17 +50,19 @@ public class CorsiStimuliFromCsvToXmlTest {
     }
 
     /**
-     * Test of parseWordsInputCSVStringToXml method, of class CorsiStimuliFromCsvToXml.
+     * Test of generateCSVStringToXml method, of class CorsiTrialsFromCsvToXml.
      */
-    @Test
-    public void testParseWordsInputCSVStringToXml() throws Exception {
-        System.out.println("parseWordsInputCSVStringToXml");
-        CorsiStimuliFromCsvToXml instance = new CorsiStimuliFromCsvToXml();
-        String resultPractice = instance.parseWordsInputCSVStringToXml(CsvTableCorsi.CSV_STRING, "corsi" , STIMULI_DIR);
-        assertTrue(resultPractice.startsWith("<stimulus "));
-        assertTrue(resultPractice.endsWith(" />\n"));
-        System.out.println(resultPractice);
+   
+    
+     @Test
+    public void testGenerateCSVStringToXml() throws Exception{
+        System.out.println("generateCSVStringToXml");
+        CorsiTrialsFromCsvToXml instance = new CorsiTrialsFromCsvToXml();
+        String result= instance.generateCSVStringToXml(CsvTableCorsi.CSV_STRING);
+        assertTrue(result.startsWith("<stimulus "));
+        assertTrue(result.endsWith(" />\n"));
+        System.out.println(result);
     }
-  
+    
     
 }

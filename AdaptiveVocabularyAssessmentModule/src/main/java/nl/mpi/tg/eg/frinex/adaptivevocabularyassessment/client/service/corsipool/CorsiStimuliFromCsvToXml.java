@@ -50,7 +50,6 @@ public class CorsiStimuliFromCsvToXml {
         csvWrapper.readRecords(csvString);
         ArrayList<LinkedHashMap<String, String>> records = csvWrapper.getRecords();
 
-        // Trial_id;Blank_stimulis;Letter_stimulus;Stimulus_1;Stimulus_2;Stimulus_3;Stimulus_4;Stimulus_5;Stimulus_6;Stimulus_7;Stimulus_8;Correct_sequence;Voice_announcement;Capture
         int i = 0; // global stimuli counter
         int prefixSize = "Block_".length();
 
@@ -85,9 +84,7 @@ public class CorsiStimuliFromCsvToXml {
             String capture = record.get("Capture").trim();
             if (capture == null) {
                 throw new IOException("Capture is missing");
-            } else {
-                
-            }
+            } 
 
             int j = 1;
             ArrayList<String> nonBlankStimuli = new ArrayList<String>();
