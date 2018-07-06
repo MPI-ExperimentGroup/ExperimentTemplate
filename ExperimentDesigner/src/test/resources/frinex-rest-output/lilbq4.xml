@@ -652,11 +652,11 @@
                 <clearPage/>
                 <centrePage/>
                 <addPadding/>
-                 <stimulusLabel styleName="stimuliLabel"/>
-                   <pause msToNext="1500">
-                        <nextStimulus repeatIncorrect="false"/>
-                   </pause>
-<!--                <currentStimulusHasTag  msToNext="1000" tags="greeting">
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/> 
+                <currentStimulusHasTag  msToNext="0" tags="greeting">
                     <conditionTrue>
                         <stimulusAudio msToNext="0" showPlaybackIndicator="false" dataChannel="4">
                             <mediaLoadFailed>
@@ -664,52 +664,50 @@
                                 <targetButton featureText="Try this page again" target="stimuliScreenCorsi"/>
                             </mediaLoadFailed>
                             <mediaLoaded>
-                                <htmlText featureText="Loaded audio"/>
-                                <stimulusLabel styleName="stimuliLabel"/>
+                                <stimulusLabel/>
                             </mediaLoaded>
                             <mediaPlaybackComplete>
-                                <htmlText featureText="Finished playing audio"/>
                                 <pause msToNext="1500">
                                     <nextStimulus repeatIncorrect="false"/>
                                 </pause>
                             </mediaPlaybackComplete>
                         </stimulusAudio>                   
                     </conditionTrue>
-                    <stimulusImage msToNext="0" dataChannel="4"> 
-                        <mediaLoadFailed>
-                            <htmlText featureText="Failed to load image file"/>
-                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi"/>
-                        </mediaLoadFailed>
-                        <mediaLoaded> 
-                            <htmlText featureText="Loaded picture"/>
-                            <stimulusLabel styleName="stimuliLabel"/>
-                            <currentStimulusHasTag msToNext="0" tags="letters">
-                                <conditionTrue>
-                                    <addPadding/>
-                                    <stimulusFreeText featureText="Type de letteren, ENTER als je klaar bent" validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
-                                    <nextStimulusButton featureText="Next [ENTER]" eventTag="Next [ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
-                                </conditionTrue>
-                                <conditionFalse>
-                                    <currentStimulusHasTag  msToNext="0" tags="blank">
-                                        <conditionTrue>
-                                            <pause msToNext="500">
-                                                <nextStimulus repeatIncorrect="false"/>
-                                            </pause>
-                                        </conditionTrue>  
-                                        <conditionFalse>
-                                            <pause msToNext="1000">
-                                                <nextStimulus repeatIncorrect="false"/>
-                                            </pause>
-                                        </conditionFalse>
-                                    </currentStimulusHasTag>
-                                </conditionFalse>
-                            </currentStimulusHasTag>
-                        </mediaLoaded>
-                    </stimulusImage>
+                    <conditionFalse>
+                        <stimulusImage msToNext="0" dataChannel="4"> 
+                            <mediaLoadFailed>
+                                <htmlText featureText="Failed to load image file"/>
+                                <targetButton featureText="Try this page again" target="stimuliScreenCorsi"/>
+                            </mediaLoadFailed>
+                            <mediaLoaded>
+                                <stimulusLabel/>
+                                <currentStimulusHasTag msToNext="0" tags="letters">
+                                    <conditionTrue>
+                                        <addPadding/>
+                                        <stimulusFreeText featureText="Type de letteren, ENTER als je klaar bent" validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
+                                        <nextStimulusButton featureText="Next [ENTER]" eventTag="Next [ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
+                                    </conditionTrue>
+                                    <conditionFalse>
+                                        <currentStimulusHasTag  msToNext="0" tags="blank">
+                                            <conditionTrue>
+                                                <pause msToNext="500">
+                                                    <nextStimulus repeatIncorrect="false"/>
+                                                </pause>
+                                            </conditionTrue>  
+                                            <conditionFalse>
+                                                <pause msToNext="1000">
+                                                    <nextStimulus repeatIncorrect="false"/>
+                                                </pause>
+                                            </conditionFalse>
+                                        </currentStimulusHasTag>
+                                    </conditionFalse>
+                                </currentStimulusHasTag>
+                            </mediaLoaded>
+                        </stimulusImage>
                     </conditionFalse>
                    
-                 </currentStimulusHasTag>
-                -->
+                </currentStimulusHasTag>
+             
             </hasMoreStimulus>
             <endOfStimulus>
                 <clearPage/>
@@ -1026,37 +1024,37 @@
         <stimulus  identifier="corsi_12"  label="&lt;span id='labelId_12'&gt; practice 02&lt;/span&gt;"  correctResponses=""  pauseMs="0"  imagePath="stimuli/corsi/practice2aw.jpg"  tags="corsi Practice_2 letters active"  />
         <stimulus  identifier="corsi_13"  label="&lt;span id='labelId_13'&gt; trial 01&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_01"  tags="corsi Block_3_1 greeting active"  />
         <stimulus  identifier="corsi_14"  label="&lt;span id='labelId_14'&gt; trial 01&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFa1.jpg"  tags="corsi Block_3_1 active"  />
-        <stimulus  identifier="corsi_15"  label="&lt;span id='labelId_15'&gt; trial 01&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF1.jpg"  tags="corsi Block_3_1 blank active"  />
+        <stimulus  identifier="corsi_15"  label="&lt;span id='labelId_15'&gt; trial 01&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF.jpg"  tags="corsi Block_3_1 blank active"  />
         <stimulus  identifier="corsi_16"  label="&lt;span id='labelId_16'&gt; trial 01&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFa2.jpg"  tags="corsi Block_3_1 active"  />
-        <stimulus  identifier="corsi_17"  label="&lt;span id='labelId_17'&gt; trial 01&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF1.jpg"  tags="corsi Block_3_1 blank active"  />
+        <stimulus  identifier="corsi_17"  label="&lt;span id='labelId_17'&gt; trial 01&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF.jpg"  tags="corsi Block_3_1 blank active"  />
         <stimulus  identifier="corsi_18"  label="&lt;span id='labelId_18'&gt; trial 01&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFa3.jpg"  tags="corsi Block_3_1 active"  />
         <stimulus  identifier="corsi_19"  label="&lt;span id='labelId_19'&gt; trial 01&lt;/span&gt;"  correctResponses="MDB"  pauseMs="0"  imagePath="stimuli/corsi/SFW1.jpg"  tags="corsi Block_3_1 letters active"  />
         <stimulus  identifier="corsi_20"  label="&lt;span id='labelId_20'&gt; trial 02&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_02"  tags="corsi Block_3_2 greeting active"  />
         <stimulus  identifier="corsi_21"  label="&lt;span id='labelId_21'&gt; trial 02&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFb1.jpg"  tags="corsi Block_3_2 active"  />
-        <stimulus  identifier="corsi_22"  label="&lt;span id='labelId_22'&gt; trial 02&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF1.jpg"  tags="corsi Block_3_2 blank active"  />
+        <stimulus  identifier="corsi_22"  label="&lt;span id='labelId_22'&gt; trial 02&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF.jpg"  tags="corsi Block_3_2 blank active"  />
         <stimulus  identifier="corsi_23"  label="&lt;span id='labelId_23'&gt; trial 02&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFb2.jpg"  tags="corsi Block_3_2 active"  />
-        <stimulus  identifier="corsi_24"  label="&lt;span id='labelId_24'&gt; trial 02&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF1.jpg"  tags="corsi Block_3_2 blank active"  />
+        <stimulus  identifier="corsi_24"  label="&lt;span id='labelId_24'&gt; trial 02&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF.jpg"  tags="corsi Block_3_2 blank active"  />
         <stimulus  identifier="corsi_25"  label="&lt;span id='labelId_25'&gt; trial 02&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFb3.jpg"  tags="corsi Block_3_2 active"  />
         <stimulus  identifier="corsi_26"  label="&lt;span id='labelId_26'&gt; trial 02&lt;/span&gt;"  correctResponses="NCY"  pauseMs="0"  imagePath="stimuli/corsi/SFW2.jpg"  tags="corsi Block_3_2 letters active"  />
         <stimulus  identifier="corsi_27"  label="&lt;span id='labelId_27'&gt; trial 03&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_03"  tags="corsi Block_3_3 greeting active"  />
         <stimulus  identifier="corsi_28"  label="&lt;span id='labelId_28'&gt; trial 03&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFc1.jpg"  tags="corsi Block_3_3 active"  />
-        <stimulus  identifier="corsi_29"  label="&lt;span id='labelId_29'&gt; trial 03&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF1.jpg"  tags="corsi Block_3_3 blank active"  />
+        <stimulus  identifier="corsi_29"  label="&lt;span id='labelId_29'&gt; trial 03&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF.jpg"  tags="corsi Block_3_3 blank active"  />
         <stimulus  identifier="corsi_30"  label="&lt;span id='labelId_30'&gt; trial 03&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFc2.jpg"  tags="corsi Block_3_3 active"  />
-        <stimulus  identifier="corsi_31"  label="&lt;span id='labelId_31'&gt; trial 03&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF1.jpg"  tags="corsi Block_3_3 blank active"  />
+        <stimulus  identifier="corsi_31"  label="&lt;span id='labelId_31'&gt; trial 03&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF.jpg"  tags="corsi Block_3_3 blank active"  />
         <stimulus  identifier="corsi_32"  label="&lt;span id='labelId_32'&gt; trial 03&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFc3.jpg"  tags="corsi Block_3_3 active"  />
         <stimulus  identifier="corsi_33"  label="&lt;span id='labelId_33'&gt; trial 03&lt;/span&gt;"  correctResponses="FQK"  pauseMs="0"  imagePath="stimuli/corsi/SFW3.jpg"  tags="corsi Block_3_3 letters active"  />
         <stimulus  identifier="corsi_34"  label="&lt;span id='labelId_34'&gt; trial 04&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_04"  tags="corsi Block_3_4 greeting active"  />
         <stimulus  identifier="corsi_35"  label="&lt;span id='labelId_35'&gt; trial 04&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFd1.jpg"  tags="corsi Block_3_4 active"  />
-        <stimulus  identifier="corsi_36"  label="&lt;span id='labelId_36'&gt; trial 04&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF2.jpg"  tags="corsi Block_3_4 blank active"  />
+        <stimulus  identifier="corsi_36"  label="&lt;span id='labelId_36'&gt; trial 04&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF.jpg"  tags="corsi Block_3_4 blank active"  />
         <stimulus  identifier="corsi_37"  label="&lt;span id='labelId_37'&gt; trial 04&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFd2.jpg"  tags="corsi Block_3_4 active"  />
-        <stimulus  identifier="corsi_38"  label="&lt;span id='labelId_38'&gt; trial 04&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF2.jpg"  tags="corsi Block_3_4 blank active"  />
+        <stimulus  identifier="corsi_38"  label="&lt;span id='labelId_38'&gt; trial 04&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF.jpg"  tags="corsi Block_3_4 blank active"  />
         <stimulus  identifier="corsi_39"  label="&lt;span id='labelId_39'&gt; trial 04&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFd3.jpg"  tags="corsi Block_3_4 active"  />
         <stimulus  identifier="corsi_40"  label="&lt;span id='labelId_40'&gt; trial 04&lt;/span&gt;"  correctResponses="CQJ"  pauseMs="0"  imagePath="stimuli/corsi/SFW4.jpg"  tags="corsi Block_3_4 letters active"  />
         <stimulus  identifier="corsi_41"  label="&lt;span id='labelId_41'&gt; trial 05&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_05"  tags="corsi Block_3_5 greeting active"  />
         <stimulus  identifier="corsi_42"  label="&lt;span id='labelId_42'&gt; trial 05&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFe1.jpg"  tags="corsi Block_3_5 active"  />
-        <stimulus  identifier="corsi_43"  label="&lt;span id='labelId_43'&gt; trial 05&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF2.jpg"  tags="corsi Block_3_5 blank active"  />
+        <stimulus  identifier="corsi_43"  label="&lt;span id='labelId_43'&gt; trial 05&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF.jpg"  tags="corsi Block_3_5 blank active"  />
         <stimulus  identifier="corsi_44"  label="&lt;span id='labelId_44'&gt; trial 05&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFe2.jpg"  tags="corsi Block_3_5 active"  />
-        <stimulus  identifier="corsi_45"  label="&lt;span id='labelId_45'&gt; trial 05&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF2.jpg"  tags="corsi Block_3_5 blank active"  />
+        <stimulus  identifier="corsi_45"  label="&lt;span id='labelId_45'&gt; trial 05&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF.jpg"  tags="corsi Block_3_5 blank active"  />
         <stimulus  identifier="corsi_46"  label="&lt;span id='labelId_46'&gt; trial 05&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFe3.jpg"  tags="corsi Block_3_5 active"  />
         <stimulus  identifier="corsi_47"  label="&lt;span id='labelId_47'&gt; trial 05&lt;/span&gt;"  correctResponses="TLS"  pauseMs="0"  imagePath="stimuli/corsi/SFW5.jpg"  tags="corsi Block_3_5 letters active"  />
         <stimulus  identifier="corsi_48"  label="&lt;span id='labelId_48'&gt; trial 06&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_06"  tags="corsi Block_4_1 greeting active"  />
