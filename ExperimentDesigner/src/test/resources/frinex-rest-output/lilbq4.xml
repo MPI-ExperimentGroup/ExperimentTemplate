@@ -99,11 +99,54 @@
     <presenter displayOrder="15" next="Admin" type="stimulus" self="stimuliScreenGrammar" title="">
         <loadStimulus eventTag="stimuliGrammarN" randomise="false" repeatCount="1" maxStimuli="40">
             <hasMoreStimulus>
+                <clearPage/>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
                     <nextStimulus repeatIncorrect="false"/>
                 </triggerListener>
                 <stimulusAudio msToNext="0"  showPlaybackIndicator="false" dataChannel="1">
                     <mediaLoaded>
+                        <centrePage/>
+                        <addPadding/>
+                        <addPadding/>
+                        <addPadding/>
+                        <addPadding/>
+                        <addPadding/>
+                        <addPadding/>
+                        <addPadding/>
+                        <table>
+                            <row>
+                                <column></column> 
+                                <column>
+                                    <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
+                                </column> 
+                                <column></column> 
+                            </row>
+                            <row>
+                                <column>
+                                    <stimulusButton featureText="Incorrect" dataChannel="1">
+                                        <clearPage/>
+                                        <pause  msToNext="500">
+                                            <cancelPauseTimers/> 
+                                            <trigger listenerId="nextStimulusAction"/>
+                                        </pause>
+                                    </stimulusButton>
+                                </column>
+                                <column>
+                                </column>
+                                <column>
+                                    <stimulusButton featureText="Correct" dataChannel="1">
+                                        <clearPage/>
+                                        <pause  msToNext="500">
+                                            <cancelPauseTimers/> 
+                                            <trigger listenerId="nextStimulusAction"/>
+                                        </pause>
+                                    </stimulusButton>
+                                </column>
+                            </row>
+                        </table>
+                        <enableStimulusButtons/>
+                    </mediaLoaded>
+                    <mediaPlaybackComplete>
                         <clearPage/>
                         <centrePage/>
                         <addPadding/>
@@ -145,11 +188,11 @@
                             </row>
                         </table>
                         <enableStimulusButtons/>
-                    </mediaLoaded>
+                    </mediaPlaybackComplete>
                     <mediaLoadFailed>
                         <htmlText featureText="Failed to load audio file"/>
+                        <targetButton featureText="Try this page again" target="stimuliScreenGrammar"/>
                     </mediaLoadFailed>
-                    <mediaPlaybackComplete/>
                 </stimulusAudio>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -608,55 +651,65 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
-                <currentStimulusHasTag  msToNext="0" tags="greeting">
+                <addPadding/>
+                 <stimulusLabel styleName="stimuliLabel"/>
+                   <pause msToNext="1500">
+                        <nextStimulus repeatIncorrect="false"/>
+                   </pause>
+<!--                <currentStimulusHasTag  msToNext="1000" tags="greeting">
                     <conditionTrue>
                         <stimulusAudio msToNext="0" showPlaybackIndicator="false" dataChannel="4">
                             <mediaLoadFailed>
-                                <htmlText featureText="Failed to load audio file (announcement)"/>
+                                <htmlText featureText="Failed to load audio file"/>
+                                <targetButton featureText="Try this page again" target="stimuliScreenCorsi"/>
                             </mediaLoadFailed>
                             <mediaLoaded>
-                                <stimulusLabel/>
+                                <htmlText featureText="Loaded audio"/>
+                                <stimulusLabel styleName="stimuliLabel"/>
                             </mediaLoaded>
                             <mediaPlaybackComplete>
+                                <htmlText featureText="Finished playing audio"/>
                                 <pause msToNext="1500">
                                     <nextStimulus repeatIncorrect="false"/>
                                 </pause>
                             </mediaPlaybackComplete>
                         </stimulusAudio>                   
                     </conditionTrue>
-                    <conditionFalse>
-                        <stimulusImage msToNext="0" dataChannel="4"> 
-                            <mediaLoadFailed>
-                                <htmlText featureText="Failed to load image file"/>
-                            </mediaLoadFailed>
-                            <mediaLoaded> 
-                                <currentStimulusHasTag msToNext="0" tags="letters">
-                                    <conditionTrue>
-                                        <addPadding/>
-                                        <stimulusFreeText featureText="Type de letteren, ENTER als je klaar bent" validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
-                                        <nextStimulusButton featureText="Next [ENTER]" eventTag="Next [ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
-                                    </conditionTrue>
-                                    <conditionFalse>
-                                        <currentStimulusHasTag  msToNext="0" tags="blank">
-                                            <conditionTrue>
-                                                <pause msToNext="500">
-                                                    <nextStimulus repeatIncorrect="false"/>
-                                                </pause>
-                                            </conditionTrue>  
-                                            <conditionFalse>
-                                                <pause msToNext="1000">
-                                                    <nextStimulus repeatIncorrect="false"/>
-                                                </pause>
-                                            </conditionFalse>
-                                        </currentStimulusHasTag>
-                                    </conditionFalse>
-                                </currentStimulusHasTag>
-                            </mediaLoaded>
-                        </stimulusImage>
+                    <stimulusImage msToNext="0" dataChannel="4"> 
+                        <mediaLoadFailed>
+                            <htmlText featureText="Failed to load image file"/>
+                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi"/>
+                        </mediaLoadFailed>
+                        <mediaLoaded> 
+                            <htmlText featureText="Loaded picture"/>
+                            <stimulusLabel styleName="stimuliLabel"/>
+                            <currentStimulusHasTag msToNext="0" tags="letters">
+                                <conditionTrue>
+                                    <addPadding/>
+                                    <stimulusFreeText featureText="Type de letteren, ENTER als je klaar bent" validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
+                                    <nextStimulusButton featureText="Next [ENTER]" eventTag="Next [ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <currentStimulusHasTag  msToNext="0" tags="blank">
+                                        <conditionTrue>
+                                            <pause msToNext="500">
+                                                <nextStimulus repeatIncorrect="false"/>
+                                            </pause>
+                                        </conditionTrue>  
+                                        <conditionFalse>
+                                            <pause msToNext="1000">
+                                                <nextStimulus repeatIncorrect="false"/>
+                                            </pause>
+                                        </conditionFalse>
+                                    </currentStimulusHasTag>
+                                </conditionFalse>
+                            </currentStimulusHasTag>
+                        </mediaLoaded>
+                    </stimulusImage>
                     </conditionFalse>
                    
-                </currentStimulusHasTag>
-               
+                 </currentStimulusHasTag>
+                -->
             </hasMoreStimulus>
             <endOfStimulus>
                 <clearPage/>
@@ -959,378 +1012,378 @@
         <stimulus  identifier="raven_Practice_5"  imagePath="stimuli/raven/APM_I_05.png"  tags="raven Practice"  ratingLabels="1,2,3,4,5,6,7,8,Overslaan,Ik weet het niet"  correctResponses="0"  pauseMs="0"  />
         <stimulus  identifier="raven_Practice_6"  imagePath="stimuli/raven/APM_I_06.png"  tags="raven Practice"  ratingLabels="1,2,3,4,5,6,7,8,Overslaan,Ik weet het niet"  correctResponses="0"  pauseMs="0"  />
          
-        <stimulus  identifier="corsi_1"  label="practice 01"  pauseMs="0"  audioPath="stimuli/corsi/p01"  tags="corsi Practice_1 greeting active "  />
-        <stimulus  identifier="corsi_2"  label="practice 01"  pauseMs="0"  imagePath="stimuli/corsi/practice1a1.jpg"  tags="corsi Practice_1 active "  />
-        <stimulus  identifier="corsi_3"  label="practice 01"  pauseMs="0"  imagePath="stimuli/corsi/practice1a.jpg"  tags="corsi Practice_1 blank active "  />
-        <stimulus  identifier="corsi_4"  label="practice 01"  pauseMs="0"  imagePath="stimuli/corsi/practice1a2.jpg"  tags="corsi Practice_1 active "  />
-        <stimulus  identifier="corsi_5"  label="practice 01"  correctResponses=""  pauseMs="0"  imagePath="stimuli/corsi/practice1aw.jpg"  tags="corsi Practice_1 letters active "  />
-        <stimulus  identifier="corsi_6"  label="practice 02"  pauseMs="0"  audioPath="stimuli/corsi/p02"  tags="corsi Practice_2 greeting active "  />
-        <stimulus  identifier="corsi_7"  label="practice 02"  pauseMs="0"  imagePath="stimuli/corsi/practice2a1.jpg"  tags="corsi Practice_2 active "  />
-        <stimulus  identifier="corsi_8"  label="practice 02"  pauseMs="0"  imagePath="stimuli/corsi/practice2a.jpg"  tags="corsi Practice_2 blank active "  />
-        <stimulus  identifier="corsi_9"  label="practice 02"  pauseMs="0"  imagePath="stimuli/corsi/practice2a2.jpg"  tags="corsi Practice_2 active "  />
-        <stimulus  identifier="corsi_10"  label="practice 02"  pauseMs="0"  imagePath="stimuli/corsi/practice2a.jpg"  tags="corsi Practice_2 blank active "  />
-        <stimulus  identifier="corsi_11"  label="practice 02"  pauseMs="0"  imagePath="stimuli/corsi/practice2a3.jpg"  tags="corsi Practice_2 active "  />
-        <stimulus  identifier="corsi_12"  label="practice 02"  correctResponses=""  pauseMs="0"  imagePath="stimuli/corsi/practice2aw.jpg"  tags="corsi Practice_2 letters active "  />
-        <stimulus  identifier="corsi_13"  label="trial 01"  pauseMs="0"  audioPath="stimuli/corsi/trial_01"  tags="corsi Block_3_1 greeting active "  />
-        <stimulus  identifier="corsi_14"  label="trial 01"  pauseMs="0"  imagePath="stimuli/corsi/SFa1.jpg"  tags="corsi Block_3_1 active "  />
-        <stimulus  identifier="corsi_15"  label="trial 01"  pauseMs="0"  imagePath="stimuli/corsi/SF1.jpg"  tags="corsi Block_3_1 blank active "  />
-        <stimulus  identifier="corsi_16"  label="trial 01"  pauseMs="0"  imagePath="stimuli/corsi/SFa2.jpg"  tags="corsi Block_3_1 active "  />
-        <stimulus  identifier="corsi_17"  label="trial 01"  pauseMs="0"  imagePath="stimuli/corsi/SF1.jpg"  tags="corsi Block_3_1 blank active "  />
-        <stimulus  identifier="corsi_18"  label="trial 01"  pauseMs="0"  imagePath="stimuli/corsi/SFa3.jpg"  tags="corsi Block_3_1 active "  />
-        <stimulus  identifier="corsi_19"  label="trial 01"  correctResponses="MDB"  pauseMs="0"  imagePath="stimuli/corsi/SFW1.jpg"  tags="corsi Block_3_1 letters active "  />
-        <stimulus  identifier="corsi_20"  label="trial 02"  pauseMs="0"  audioPath="stimuli/corsi/trial_02"  tags="corsi Block_3_2 greeting active "  />
-        <stimulus  identifier="corsi_21"  label="trial 02"  pauseMs="0"  imagePath="stimuli/corsi/SFb1.jpg"  tags="corsi Block_3_2 active "  />
-        <stimulus  identifier="corsi_22"  label="trial 02"  pauseMs="0"  imagePath="stimuli/corsi/SF1.jpg"  tags="corsi Block_3_2 blank active "  />
-        <stimulus  identifier="corsi_23"  label="trial 02"  pauseMs="0"  imagePath="stimuli/corsi/SFb2.jpg"  tags="corsi Block_3_2 active "  />
-        <stimulus  identifier="corsi_24"  label="trial 02"  pauseMs="0"  imagePath="stimuli/corsi/SF1.jpg"  tags="corsi Block_3_2 blank active "  />
-        <stimulus  identifier="corsi_25"  label="trial 02"  pauseMs="0"  imagePath="stimuli/corsi/SFb3.jpg"  tags="corsi Block_3_2 active "  />
-        <stimulus  identifier="corsi_26"  label="trial 02"  correctResponses="NCY"  pauseMs="0"  imagePath="stimuli/corsi/SFW2.jpg"  tags="corsi Block_3_2 letters active "  />
-        <stimulus  identifier="corsi_27"  label="trial 03"  pauseMs="0"  audioPath="stimuli/corsi/trial_03"  tags="corsi Block_3_3 greeting active "  />
-        <stimulus  identifier="corsi_28"  label="trial 03"  pauseMs="0"  imagePath="stimuli/corsi/SFc1.jpg"  tags="corsi Block_3_3 active "  />
-        <stimulus  identifier="corsi_29"  label="trial 03"  pauseMs="0"  imagePath="stimuli/corsi/SF1.jpg"  tags="corsi Block_3_3 blank active "  />
-        <stimulus  identifier="corsi_30"  label="trial 03"  pauseMs="0"  imagePath="stimuli/corsi/SFc2.jpg"  tags="corsi Block_3_3 active "  />
-        <stimulus  identifier="corsi_31"  label="trial 03"  pauseMs="0"  imagePath="stimuli/corsi/SF1.jpg"  tags="corsi Block_3_3 blank active "  />
-        <stimulus  identifier="corsi_32"  label="trial 03"  pauseMs="0"  imagePath="stimuli/corsi/SFc3.jpg"  tags="corsi Block_3_3 active "  />
-        <stimulus  identifier="corsi_33"  label="trial 03"  correctResponses="FQK"  pauseMs="0"  imagePath="stimuli/corsi/SFW3.jpg"  tags="corsi Block_3_3 letters active "  />
-        <stimulus  identifier="corsi_34"  label="trial 04"  pauseMs="0"  audioPath="stimuli/corsi/trial_04"  tags="corsi Block_3_4 greeting active "  />
-        <stimulus  identifier="corsi_35"  label="trial 04"  pauseMs="0"  imagePath="stimuli/corsi/SFd1.jpg"  tags="corsi Block_3_4 active "  />
-        <stimulus  identifier="corsi_36"  label="trial 04"  pauseMs="0"  imagePath="stimuli/corsi/SF2.jpg"  tags="corsi Block_3_4 blank active "  />
-        <stimulus  identifier="corsi_37"  label="trial 04"  pauseMs="0"  imagePath="stimuli/corsi/SFd2.jpg"  tags="corsi Block_3_4 active "  />
-        <stimulus  identifier="corsi_38"  label="trial 04"  pauseMs="0"  imagePath="stimuli/corsi/SF2.jpg"  tags="corsi Block_3_4 blank active "  />
-        <stimulus  identifier="corsi_39"  label="trial 04"  pauseMs="0"  imagePath="stimuli/corsi/SFd3.jpg"  tags="corsi Block_3_4 active "  />
-        <stimulus  identifier="corsi_40"  label="trial 04"  correctResponses="CQJ"  pauseMs="0"  imagePath="stimuli/corsi/SFW4.jpg"  tags="corsi Block_3_4 letters active "  />
-        <stimulus  identifier="corsi_41"  label="trial 05"  pauseMs="0"  audioPath="stimuli/corsi/trial_05"  tags="corsi Block_3_5 greeting active "  />
-        <stimulus  identifier="corsi_42"  label="trial 05"  pauseMs="0"  imagePath="stimuli/corsi/SFe1.jpg"  tags="corsi Block_3_5 active "  />
-        <stimulus  identifier="corsi_43"  label="trial 05"  pauseMs="0"  imagePath="stimuli/corsi/SF2.jpg"  tags="corsi Block_3_5 blank active "  />
-        <stimulus  identifier="corsi_44"  label="trial 05"  pauseMs="0"  imagePath="stimuli/corsi/SFe2.jpg"  tags="corsi Block_3_5 active "  />
-        <stimulus  identifier="corsi_45"  label="trial 05"  pauseMs="0"  imagePath="stimuli/corsi/SF2.jpg"  tags="corsi Block_3_5 blank active "  />
-        <stimulus  identifier="corsi_46"  label="trial 05"  pauseMs="0"  imagePath="stimuli/corsi/SFe3.jpg"  tags="corsi Block_3_5 active "  />
-        <stimulus  identifier="corsi_47"  label="trial 05"  correctResponses="TLS"  pauseMs="0"  imagePath="stimuli/corsi/SFW5.jpg"  tags="corsi Block_3_5 letters active "  />
-        <stimulus  identifier="corsi_48"  label="trial 06"  pauseMs="0"  audioPath="stimuli/corsi/trial_06"  tags="corsi Block_4_1 greeting active "  />
-        <stimulus  identifier="corsi_49"  label="trial 06"  pauseMs="0"  imagePath="stimuli/corsi/SEa1.jpg"  tags="corsi Block_4_1 active "  />
-        <stimulus  identifier="corsi_50"  label="trial 06"  pauseMs="0"  imagePath="stimuli/corsi/SE1.jpg"  tags="corsi Block_4_1 blank active "  />
-        <stimulus  identifier="corsi_51"  label="trial 06"  pauseMs="0"  imagePath="stimuli/corsi/SEa2.jpg"  tags="corsi Block_4_1 active "  />
-        <stimulus  identifier="corsi_52"  label="trial 06"  pauseMs="0"  imagePath="stimuli/corsi/SE1.jpg"  tags="corsi Block_4_1 blank active "  />
-        <stimulus  identifier="corsi_53"  label="trial 06"  pauseMs="0"  imagePath="stimuli/corsi/SEa3.jpg"  tags="corsi Block_4_1 active "  />
-        <stimulus  identifier="corsi_54"  label="trial 06"  pauseMs="0"  imagePath="stimuli/corsi/SE1.jpg"  tags="corsi Block_4_1 blank active "  />
-        <stimulus  identifier="corsi_55"  label="trial 06"  pauseMs="0"  imagePath="stimuli/corsi/SEa4.jpg"  tags="corsi Block_4_1 active "  />
-        <stimulus  identifier="corsi_56"  label="trial 06"  correctResponses="YTNK"  pauseMs="0"  imagePath="stimuli/corsi/SEW1.jpg"  tags="corsi Block_4_1 letters active "  />
-        <stimulus  identifier="corsi_57"  label="trial 07"  pauseMs="0"  audioPath="stimuli/corsi/trial_07"  tags="corsi Block_4_2 greeting active "  />
-        <stimulus  identifier="corsi_58"  label="trial 07"  pauseMs="0"  imagePath="stimuli/corsi/SEb1.jpg"  tags="corsi Block_4_2 active "  />
-        <stimulus  identifier="corsi_59"  label="trial 07"  pauseMs="0"  imagePath="stimuli/corsi/SE1.jpg"  tags="corsi Block_4_2 blank active "  />
-        <stimulus  identifier="corsi_60"  label="trial 07"  pauseMs="0"  imagePath="stimuli/corsi/SEb2.jpg"  tags="corsi Block_4_2 active "  />
-        <stimulus  identifier="corsi_61"  label="trial 07"  pauseMs="0"  imagePath="stimuli/corsi/SE1.jpg"  tags="corsi Block_4_2 blank active "  />
-        <stimulus  identifier="corsi_62"  label="trial 07"  pauseMs="0"  imagePath="stimuli/corsi/SEb3.jpg"  tags="corsi Block_4_2 active "  />
-        <stimulus  identifier="corsi_63"  label="trial 07"  pauseMs="0"  imagePath="stimuli/corsi/SE1.jpg"  tags="corsi Block_4_2 blank active "  />
-        <stimulus  identifier="corsi_64"  label="trial 07"  pauseMs="0"  imagePath="stimuli/corsi/SEb4.jpg"  tags="corsi Block_4_2 active "  />
-        <stimulus  identifier="corsi_65"  label="trial 07"  correctResponses="YRTB"  pauseMs="0"  imagePath="stimuli/corsi/SEW2.jpg"  tags="corsi Block_4_2 letters active "  />
-        <stimulus  identifier="corsi_66"  label="trial 08"  pauseMs="0"  audioPath="stimuli/corsi/trial_08"  tags="corsi Block_4_3 greeting active "  />
-        <stimulus  identifier="corsi_67"  label="trial 08"  pauseMs="0"  imagePath="stimuli/corsi/SEc1.jpg"  tags="corsi Block_4_3 active "  />
-        <stimulus  identifier="corsi_68"  label="trial 08"  pauseMs="0"  imagePath="stimuli/corsi/SE1.jpg"  tags="corsi Block_4_3 blank active "  />
-        <stimulus  identifier="corsi_69"  label="trial 08"  pauseMs="0"  imagePath="stimuli/corsi/SEc2.jpg"  tags="corsi Block_4_3 active "  />
-        <stimulus  identifier="corsi_70"  label="trial 08"  pauseMs="0"  imagePath="stimuli/corsi/SE1.jpg"  tags="corsi Block_4_3 blank active "  />
-        <stimulus  identifier="corsi_71"  label="trial 08"  pauseMs="0"  imagePath="stimuli/corsi/SEc3.jpg"  tags="corsi Block_4_3 active "  />
-        <stimulus  identifier="corsi_72"  label="trial 08"  pauseMs="0"  imagePath="stimuli/corsi/SE1.jpg"  tags="corsi Block_4_3 blank active "  />
-        <stimulus  identifier="corsi_73"  label="trial 08"  pauseMs="0"  imagePath="stimuli/corsi/SEc4.jpg"  tags="corsi Block_4_3 active "  />
-        <stimulus  identifier="corsi_74"  label="trial 08"  correctResponses="RNTK"  pauseMs="0"  imagePath="stimuli/corsi/SEW3.jpg"  tags="corsi Block_4_3 letters active "  />
-        <stimulus  identifier="corsi_75"  label="trial 09"  pauseMs="0"  audioPath="stimuli/corsi/trial_09"  tags="corsi Block_4_4 greeting active "  />
-        <stimulus  identifier="corsi_76"  label="trial 09"  pauseMs="0"  imagePath="stimuli/corsi/SEd1.jpg"  tags="corsi Block_4_4 active "  />
-        <stimulus  identifier="corsi_77"  label="trial 09"  pauseMs="0"  imagePath="stimuli/corsi/SE2.jpg"  tags="corsi Block_4_4 blank active "  />
-        <stimulus  identifier="corsi_78"  label="trial 09"  pauseMs="0"  imagePath="stimuli/corsi/SEd2.jpg"  tags="corsi Block_4_4 active "  />
-        <stimulus  identifier="corsi_79"  label="trial 09"  pauseMs="0"  imagePath="stimuli/corsi/SE2.jpg"  tags="corsi Block_4_4 blank active "  />
-        <stimulus  identifier="corsi_80"  label="trial 09"  pauseMs="0"  imagePath="stimuli/corsi/SEd3.jpg"  tags="corsi Block_4_4 active "  />
-        <stimulus  identifier="corsi_81"  label="trial 09"  pauseMs="0"  imagePath="stimuli/corsi/SE2.jpg"  tags="corsi Block_4_4 blank active "  />
-        <stimulus  identifier="corsi_82"  label="trial 09"  pauseMs="0"  imagePath="stimuli/corsi/SEd4.jpg"  tags="corsi Block_4_4 active "  />
-        <stimulus  identifier="corsi_83"  label="trial 09"  correctResponses="YKXR"  pauseMs="0"  imagePath="stimuli/corsi/SEW4.jpg"  tags="corsi Block_4_4 letters active "  />
-        <stimulus  identifier="corsi_84"  label="trial 10"  pauseMs="0"  audioPath="stimuli/corsi/trial_10"  tags="corsi Block_4_5 greeting active "  />
-        <stimulus  identifier="corsi_85"  label="trial 10"  pauseMs="0"  imagePath="stimuli/corsi/SEe1.jpg"  tags="corsi Block_4_5 active "  />
-        <stimulus  identifier="corsi_86"  label="trial 10"  pauseMs="0"  imagePath="stimuli/corsi/SE2.jpg"  tags="corsi Block_4_5 blank active "  />
-        <stimulus  identifier="corsi_87"  label="trial 10"  pauseMs="0"  imagePath="stimuli/corsi/SEe2.jpg"  tags="corsi Block_4_5 active "  />
-        <stimulus  identifier="corsi_88"  label="trial 10"  pauseMs="0"  imagePath="stimuli/corsi/SE2.jpg"  tags="corsi Block_4_5 blank active "  />
-        <stimulus  identifier="corsi_89"  label="trial 10"  pauseMs="0"  imagePath="stimuli/corsi/SEe3.jpg"  tags="corsi Block_4_5 active "  />
-        <stimulus  identifier="corsi_90"  label="trial 10"  pauseMs="0"  imagePath="stimuli/corsi/SE2.jpg"  tags="corsi Block_4_5 blank active "  />
-        <stimulus  identifier="corsi_91"  label="trial 10"  pauseMs="0"  imagePath="stimuli/corsi/SEe4.jpg"  tags="corsi Block_4_5 active "  />
-        <stimulus  identifier="corsi_92"  label="trial 10"  correctResponses="YFQB"  pauseMs="0"  imagePath="stimuli/corsi/SEW5.jpg"  tags="corsi Block_4_5 letters active "  />
-        <stimulus  identifier="corsi_93"  label="trial 11"  pauseMs="0"  audioPath="stimuli/corsi/trial_11"  tags="corsi Block_5_1 greeting active "  />
-        <stimulus  identifier="corsi_94"  label="trial 11"  pauseMs="0"  imagePath="stimuli/corsi/SDa1.jpg"  tags="corsi Block_5_1 active "  />
-        <stimulus  identifier="corsi_95"  label="trial 11"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_1 blank active "  />
-        <stimulus  identifier="corsi_96"  label="trial 11"  pauseMs="0"  imagePath="stimuli/corsi/SDa2.jpg"  tags="corsi Block_5_1 active "  />
-        <stimulus  identifier="corsi_97"  label="trial 11"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_1 blank active "  />
-        <stimulus  identifier="corsi_98"  label="trial 11"  pauseMs="0"  imagePath="stimuli/corsi/SDa3.jpg"  tags="corsi Block_5_1 active "  />
-        <stimulus  identifier="corsi_99"  label="trial 11"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_1 blank active "  />
-        <stimulus  identifier="corsi_100"  label="trial 11"  pauseMs="0"  imagePath="stimuli/corsi/SDa4.jpg"  tags="corsi Block_5_1 active "  />
-        <stimulus  identifier="corsi_101"  label="trial 11"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_1 blank active "  />
-        <stimulus  identifier="corsi_102"  label="trial 11"  pauseMs="0"  imagePath="stimuli/corsi/SDa5.jpg"  tags="corsi Block_5_1 active "  />
-        <stimulus  identifier="corsi_103"  label="trial 11"  correctResponses="FJYQR"  pauseMs="0"  imagePath="stimuli/corsi/SDW1.jpg"  tags="corsi Block_5_1 letters active "  />
-        <stimulus  identifier="corsi_104"  label="trial 12"  pauseMs="0"  audioPath="stimuli/corsi/trial_12"  tags="corsi Block_5_2 greeting active "  />
-        <stimulus  identifier="corsi_105"  label="trial 12"  pauseMs="0"  imagePath="stimuli/corsi/SDb1.jpg"  tags="corsi Block_5_2 active "  />
-        <stimulus  identifier="corsi_106"  label="trial 12"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_2 blank active "  />
-        <stimulus  identifier="corsi_107"  label="trial 12"  pauseMs="0"  imagePath="stimuli/corsi/SDb2.jpg"  tags="corsi Block_5_2 active "  />
-        <stimulus  identifier="corsi_108"  label="trial 12"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_2 blank active "  />
-        <stimulus  identifier="corsi_109"  label="trial 12"  pauseMs="0"  imagePath="stimuli/corsi/SDb3.jpg"  tags="corsi Block_5_2 active "  />
-        <stimulus  identifier="corsi_110"  label="trial 12"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_2 blank active "  />
-        <stimulus  identifier="corsi_111"  label="trial 12"  pauseMs="0"  imagePath="stimuli/corsi/SDb4.jpg"  tags="corsi Block_5_2 active "  />
-        <stimulus  identifier="corsi_112"  label="trial 12"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_2 blank active "  />
-        <stimulus  identifier="corsi_113"  label="trial 12"  pauseMs="0"  imagePath="stimuli/corsi/SDb5.jpg"  tags="corsi Block_5_2 active "  />
-        <stimulus  identifier="corsi_114"  label="trial 12"  correctResponses="BRJZL"  pauseMs="0"  imagePath="stimuli/corsi/SDW2.jpg"  tags="corsi Block_5_2 letters active "  />
-        <stimulus  identifier="corsi_115"  label="trial 13"  pauseMs="0"  audioPath="stimuli/corsi/trial_13"  tags="corsi Block_5_3 greeting active "  />
-        <stimulus  identifier="corsi_116"  label="trial 13"  pauseMs="0"  imagePath="stimuli/corsi/SDc1.jpg"  tags="corsi Block_5_3 active "  />
-        <stimulus  identifier="corsi_117"  label="trial 13"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_3 blank active "  />
-        <stimulus  identifier="corsi_118"  label="trial 13"  pauseMs="0"  imagePath="stimuli/corsi/SDc2.jpg"  tags="corsi Block_5_3 active "  />
-        <stimulus  identifier="corsi_119"  label="trial 13"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_3 blank active "  />
-        <stimulus  identifier="corsi_120"  label="trial 13"  pauseMs="0"  imagePath="stimuli/corsi/SDc3.jpg"  tags="corsi Block_5_3 active "  />
-        <stimulus  identifier="corsi_121"  label="trial 13"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_3 blank active "  />
-        <stimulus  identifier="corsi_122"  label="trial 13"  pauseMs="0"  imagePath="stimuli/corsi/SDc4.jpg"  tags="corsi Block_5_3 active "  />
-        <stimulus  identifier="corsi_123"  label="trial 13"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_3 blank active "  />
-        <stimulus  identifier="corsi_124"  label="trial 13"  pauseMs="0"  imagePath="stimuli/corsi/SDc5.jpg"  tags="corsi Block_5_3 active "  />
-        <stimulus  identifier="corsi_125"  label="trial 13"  correctResponses="FYLBH"  pauseMs="0"  imagePath="stimuli/corsi/SDW3.jpg"  tags="corsi Block_5_3 letters active "  />
-        <stimulus  identifier="corsi_126"  label="trial 14"  pauseMs="0"  audioPath="stimuli/corsi/trial_14"  tags="corsi Block_5_4 greeting active "  />
-        <stimulus  identifier="corsi_127"  label="trial 14"  pauseMs="0"  imagePath="stimuli/corsi/SDd1.jpg"  tags="corsi Block_5_4 active "  />
-        <stimulus  identifier="corsi_128"  label="trial 14"  pauseMs="0"  imagePath="stimuli/corsi/SD2.jpg"  tags="corsi Block_5_4 blank active "  />
-        <stimulus  identifier="corsi_129"  label="trial 14"  pauseMs="0"  imagePath="stimuli/corsi/SDd2.jpg"  tags="corsi Block_5_4 active "  />
-        <stimulus  identifier="corsi_130"  label="trial 14"  pauseMs="0"  imagePath="stimuli/corsi/SD2.jpg"  tags="corsi Block_5_4 blank active "  />
-        <stimulus  identifier="corsi_131"  label="trial 14"  pauseMs="0"  imagePath="stimuli/corsi/SDd3.jpg"  tags="corsi Block_5_4 active "  />
-        <stimulus  identifier="corsi_132"  label="trial 14"  pauseMs="0"  imagePath="stimuli/corsi/SD2.jpg"  tags="corsi Block_5_4 blank active "  />
-        <stimulus  identifier="corsi_133"  label="trial 14"  pauseMs="0"  imagePath="stimuli/corsi/SDd4.jpg"  tags="corsi Block_5_4 active "  />
-        <stimulus  identifier="corsi_134"  label="trial 14"  pauseMs="0"  imagePath="stimuli/corsi/SD2.jpg"  tags="corsi Block_5_4 blank active "  />
-        <stimulus  identifier="corsi_135"  label="trial 14"  pauseMs="0"  imagePath="stimuli/corsi/SDd5.jpg"  tags="corsi Block_5_4 active "  />
-        <stimulus  identifier="corsi_136"  label="trial 14"  correctResponses="FYQZH"  pauseMs="0"  imagePath="stimuli/corsi/SDW4.jpg"  tags="corsi Block_5_4 letters active "  />
-        <stimulus  identifier="corsi_137"  label="trial 15"  pauseMs="0"  audioPath="stimuli/corsi/trial_15"  tags="corsi Block_5_5 greeting active "  />
-        <stimulus  identifier="corsi_138"  label="trial 15"  pauseMs="0"  imagePath="stimuli/corsi/SDe1.jpg"  tags="corsi Block_5_5 active "  />
-        <stimulus  identifier="corsi_139"  label="trial 15"  pauseMs="0"  imagePath="stimuli/corsi/SD2.jpg"  tags="corsi Block_5_5 blank active "  />
-        <stimulus  identifier="corsi_140"  label="trial 15"  pauseMs="0"  imagePath="stimuli/corsi/SDe2.jpg"  tags="corsi Block_5_5 active "  />
-        <stimulus  identifier="corsi_141"  label="trial 15"  pauseMs="0"  imagePath="stimuli/corsi/SD2.jpg"  tags="corsi Block_5_5 blank active "  />
-        <stimulus  identifier="corsi_142"  label="trial 15"  pauseMs="0"  imagePath="stimuli/corsi/SDe3.jpg"  tags="corsi Block_5_5 active "  />
-        <stimulus  identifier="corsi_143"  label="trial 15"  pauseMs="0"  imagePath="stimuli/corsi/SD2.jpg"  tags="corsi Block_5_5 blank active "  />
-        <stimulus  identifier="corsi_144"  label="trial 15"  pauseMs="0"  imagePath="stimuli/corsi/SDe4.jpg"  tags="corsi Block_5_5 active "  />
-        <stimulus  identifier="corsi_145"  label="trial 15"  pauseMs="0"  imagePath="stimuli/corsi/SD2.jpg"  tags="corsi Block_5_5 blank active "  />
-        <stimulus  identifier="corsi_146"  label="trial 15"  pauseMs="0"  imagePath="stimuli/corsi/SDe5.jpg"  tags="corsi Block_5_5 active "  />
-        <stimulus  identifier="corsi_147"  label="trial 15"  correctResponses="ZRQYH"  pauseMs="0"  imagePath="stimuli/corsi/SDW5.jpg"  tags="corsi Block_5_5 letters active "  />
-        <stimulus  identifier="corsi_148"  label="trial 16"  pauseMs="0"  audioPath="stimuli/corsi/trial_16"  tags="corsi Block_6_1 greeting active "  />
-        <stimulus  identifier="corsi_149"  label="trial 16"  pauseMs="0"  imagePath="stimuli/corsi/SCa1.jpg"  tags="corsi Block_6_1 active "  />
-        <stimulus  identifier="corsi_150"  label="trial 16"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_1 blank active "  />
-        <stimulus  identifier="corsi_151"  label="trial 16"  pauseMs="0"  imagePath="stimuli/corsi/SCa2.jpg"  tags="corsi Block_6_1 active "  />
-        <stimulus  identifier="corsi_152"  label="trial 16"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_1 blank active "  />
-        <stimulus  identifier="corsi_153"  label="trial 16"  pauseMs="0"  imagePath="stimuli/corsi/SCa3.jpg"  tags="corsi Block_6_1 active "  />
-        <stimulus  identifier="corsi_154"  label="trial 16"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_1 blank active "  />
-        <stimulus  identifier="corsi_155"  label="trial 16"  pauseMs="0"  imagePath="stimuli/corsi/SCa4.jpg"  tags="corsi Block_6_1 active "  />
-        <stimulus  identifier="corsi_156"  label="trial 16"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_1 blank active "  />
-        <stimulus  identifier="corsi_157"  label="trial 16"  pauseMs="0"  imagePath="stimuli/corsi/SCa5.jpg"  tags="corsi Block_6_1 active "  />
-        <stimulus  identifier="corsi_158"  label="trial 16"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_1 blank active "  />
-        <stimulus  identifier="corsi_159"  label="trial 16"  pauseMs="0"  imagePath="stimuli/corsi/SCa6.jpg"  tags="corsi Block_6_1 active "  />
-        <stimulus  identifier="corsi_160"  label="trial 16"  correctResponses="DWNKYC"  pauseMs="0"  imagePath="stimuli/corsi/SCW1.jpg"  tags="corsi Block_6_1 letters active "  />
-        <stimulus  identifier="corsi_161"  label="trial 17"  pauseMs="0"  audioPath="stimuli/corsi/trial_17"  tags="corsi Block_6_2 greeting active "  />
-        <stimulus  identifier="corsi_162"  label="trial 17"  pauseMs="0"  imagePath="stimuli/corsi/SCb1.jpg"  tags="corsi Block_6_2 active "  />
-        <stimulus  identifier="corsi_163"  label="trial 17"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_2 blank active "  />
-        <stimulus  identifier="corsi_164"  label="trial 17"  pauseMs="0"  imagePath="stimuli/corsi/SCb2.jpg"  tags="corsi Block_6_2 active "  />
-        <stimulus  identifier="corsi_165"  label="trial 17"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_2 blank active "  />
-        <stimulus  identifier="corsi_166"  label="trial 17"  pauseMs="0"  imagePath="stimuli/corsi/SCb3.jpg"  tags="corsi Block_6_2 active "  />
-        <stimulus  identifier="corsi_167"  label="trial 17"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_2 blank active "  />
-        <stimulus  identifier="corsi_168"  label="trial 17"  pauseMs="0"  imagePath="stimuli/corsi/SCb4.jpg"  tags="corsi Block_6_2 active "  />
-        <stimulus  identifier="corsi_169"  label="trial 17"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_2 blank active "  />
-        <stimulus  identifier="corsi_170"  label="trial 17"  pauseMs="0"  imagePath="stimuli/corsi/SCb5.jpg"  tags="corsi Block_6_2 active "  />
-        <stimulus  identifier="corsi_171"  label="trial 17"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_2 blank active "  />
-        <stimulus  identifier="corsi_172"  label="trial 17"  pauseMs="0"  imagePath="stimuli/corsi/SCb6.jpg"  tags="corsi Block_6_2 active "  />
-        <stimulus  identifier="corsi_173"  label="trial 17"  correctResponses="NHYWKD"  pauseMs="0"  imagePath="stimuli/corsi/SCW2.jpg"  tags="corsi Block_6_2 letters active "  />
-        <stimulus  identifier="corsi_174"  label="trial 18"  pauseMs="0"  audioPath="stimuli/corsi/trial_18"  tags="corsi Block_6_3 greeting active "  />
-        <stimulus  identifier="corsi_175"  label="trial 18"  pauseMs="0"  imagePath="stimuli/corsi/SCc1.jpg"  tags="corsi Block_6_3 active "  />
-        <stimulus  identifier="corsi_176"  label="trial 18"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_3 blank active "  />
-        <stimulus  identifier="corsi_177"  label="trial 18"  pauseMs="0"  imagePath="stimuli/corsi/SCc2.jpg"  tags="corsi Block_6_3 active "  />
-        <stimulus  identifier="corsi_178"  label="trial 18"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_3 blank active "  />
-        <stimulus  identifier="corsi_179"  label="trial 18"  pauseMs="0"  imagePath="stimuli/corsi/SCc3.jpg"  tags="corsi Block_6_3 active "  />
-        <stimulus  identifier="corsi_180"  label="trial 18"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_3 blank active "  />
-        <stimulus  identifier="corsi_181"  label="trial 18"  pauseMs="0"  imagePath="stimuli/corsi/SCc4.jpg"  tags="corsi Block_6_3 active "  />
-        <stimulus  identifier="corsi_182"  label="trial 18"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_3 blank active "  />
-        <stimulus  identifier="corsi_183"  label="trial 18"  pauseMs="0"  imagePath="stimuli/corsi/SCc5.jpg"  tags="corsi Block_6_3 active "  />
-        <stimulus  identifier="corsi_184"  label="trial 18"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_3 blank active "  />
-        <stimulus  identifier="corsi_185"  label="trial 18"  pauseMs="0"  imagePath="stimuli/corsi/SCc6.jpg"  tags="corsi Block_6_3 active "  />
-        <stimulus  identifier="corsi_186"  label="trial 18"  correctResponses="WJQDHY"  pauseMs="0"  imagePath="stimuli/corsi/SCW3.jpg"  tags="corsi Block_6_3 letters active "  />
-        <stimulus  identifier="corsi_187"  label="trial 19"  pauseMs="0"  audioPath="stimuli/corsi/trial_19"  tags="corsi Block_6_4 greeting active "  />
-        <stimulus  identifier="corsi_188"  label="trial 19"  pauseMs="0"  imagePath="stimuli/corsi/SCd1.jpg"  tags="corsi Block_6_4 active "  />
-        <stimulus  identifier="corsi_189"  label="trial 19"  pauseMs="0"  imagePath="stimuli/corsi/SC2.jpg"  tags="corsi Block_6_4 blank active "  />
-        <stimulus  identifier="corsi_190"  label="trial 19"  pauseMs="0"  imagePath="stimuli/corsi/SCd2.jpg"  tags="corsi Block_6_4 active "  />
-        <stimulus  identifier="corsi_191"  label="trial 19"  pauseMs="0"  imagePath="stimuli/corsi/SC2.jpg"  tags="corsi Block_6_4 blank active "  />
-        <stimulus  identifier="corsi_192"  label="trial 19"  pauseMs="0"  imagePath="stimuli/corsi/SCd3.jpg"  tags="corsi Block_6_4 active "  />
-        <stimulus  identifier="corsi_193"  label="trial 19"  pauseMs="0"  imagePath="stimuli/corsi/SC2.jpg"  tags="corsi Block_6_4 blank active "  />
-        <stimulus  identifier="corsi_194"  label="trial 19"  pauseMs="0"  imagePath="stimuli/corsi/SCd4.jpg"  tags="corsi Block_6_4 active "  />
-        <stimulus  identifier="corsi_195"  label="trial 19"  pauseMs="0"  imagePath="stimuli/corsi/SC2.jpg"  tags="corsi Block_6_4 blank active "  />
-        <stimulus  identifier="corsi_196"  label="trial 19"  pauseMs="0"  imagePath="stimuli/corsi/SCd5.jpg"  tags="corsi Block_6_4 active "  />
-        <stimulus  identifier="corsi_197"  label="trial 19"  pauseMs="0"  imagePath="stimuli/corsi/SC2.jpg"  tags="corsi Block_6_4 blank active "  />
-        <stimulus  identifier="corsi_198"  label="trial 19"  pauseMs="0"  imagePath="stimuli/corsi/SCd6.jpg"  tags="corsi Block_6_4 active "  />
-        <stimulus  identifier="corsi_199"  label="trial 19"  correctResponses="NKWCQJ"  pauseMs="0"  imagePath="stimuli/corsi/SCW4.jpg"  tags="corsi Block_6_4 letters active "  />
-        <stimulus  identifier="corsi_200"  label="trial 20"  pauseMs="0"  audioPath="stimuli/corsi/trial_20"  tags="corsi Block_6_5 greeting active "  />
-        <stimulus  identifier="corsi_201"  label="trial 20"  pauseMs="0"  imagePath="stimuli/corsi/SCe1.jpg"  tags="corsi Block_6_5 active "  />
-        <stimulus  identifier="corsi_202"  label="trial 20"  pauseMs="0"  imagePath="stimuli/corsi/SC2.jpg"  tags="corsi Block_6_5 blank active "  />
-        <stimulus  identifier="corsi_203"  label="trial 20"  pauseMs="0"  imagePath="stimuli/corsi/SCe2.jpg"  tags="corsi Block_6_5 active "  />
-        <stimulus  identifier="corsi_204"  label="trial 20"  pauseMs="0"  imagePath="stimuli/corsi/SC2.jpg"  tags="corsi Block_6_5 blank active "  />
-        <stimulus  identifier="corsi_205"  label="trial 20"  pauseMs="0"  imagePath="stimuli/corsi/SCe3.jpg"  tags="corsi Block_6_5 active "  />
-        <stimulus  identifier="corsi_206"  label="trial 20"  pauseMs="0"  imagePath="stimuli/corsi/SC2.jpg"  tags="corsi Block_6_5 blank active "  />
-        <stimulus  identifier="corsi_207"  label="trial 20"  pauseMs="0"  imagePath="stimuli/corsi/SCe4.jpg"  tags="corsi Block_6_5 active "  />
-        <stimulus  identifier="corsi_208"  label="trial 20"  pauseMs="0"  imagePath="stimuli/corsi/SC2.jpg"  tags="corsi Block_6_5 blank active "  />
-        <stimulus  identifier="corsi_209"  label="trial 20"  pauseMs="0"  imagePath="stimuli/corsi/SCe5.jpg"  tags="corsi Block_6_5 active "  />
-        <stimulus  identifier="corsi_210"  label="trial 20"  pauseMs="0"  imagePath="stimuli/corsi/SC2.jpg"  tags="corsi Block_6_5 blank active "  />
-        <stimulus  identifier="corsi_211"  label="trial 20"  pauseMs="0"  imagePath="stimuli/corsi/SCe6.jpg"  tags="corsi Block_6_5 active "  />
-        <stimulus  identifier="corsi_212"  label="trial 20"  correctResponses="JWNHDK"  pauseMs="0"  imagePath="stimuli/corsi/SCW5.jpg"  tags="corsi Block_6_5 letters active "  />
-        <stimulus  identifier="corsi_213"  label="trial 21"  pauseMs="0"  audioPath="stimuli/corsi/trial_21"  tags="corsi Block_7_1 greeting active "  />
-        <stimulus  identifier="corsi_214"  label="trial 21"  pauseMs="0"  imagePath="stimuli/corsi/SBa1.jpg"  tags="corsi Block_7_1 active "  />
-        <stimulus  identifier="corsi_215"  label="trial 21"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_1 blank active "  />
-        <stimulus  identifier="corsi_216"  label="trial 21"  pauseMs="0"  imagePath="stimuli/corsi/SBa2.jpg"  tags="corsi Block_7_1 active "  />
-        <stimulus  identifier="corsi_217"  label="trial 21"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_1 blank active "  />
-        <stimulus  identifier="corsi_218"  label="trial 21"  pauseMs="0"  imagePath="stimuli/corsi/SBa3.jpg"  tags="corsi Block_7_1 active "  />
-        <stimulus  identifier="corsi_219"  label="trial 21"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_1 blank active "  />
-        <stimulus  identifier="corsi_220"  label="trial 21"  pauseMs="0"  imagePath="stimuli/corsi/SBa4.jpg"  tags="corsi Block_7_1 active "  />
-        <stimulus  identifier="corsi_221"  label="trial 21"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_1 blank active "  />
-        <stimulus  identifier="corsi_222"  label="trial 21"  pauseMs="0"  imagePath="stimuli/corsi/SBa5.jpg"  tags="corsi Block_7_1 active "  />
-        <stimulus  identifier="corsi_223"  label="trial 21"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_1 blank active "  />
-        <stimulus  identifier="corsi_224"  label="trial 21"  pauseMs="0"  imagePath="stimuli/corsi/SBa6.jpg"  tags="corsi Block_7_1 active "  />
-        <stimulus  identifier="corsi_225"  label="trial 21"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_1 blank active "  />
-        <stimulus  identifier="corsi_226"  label="trial 21"  pauseMs="0"  imagePath="stimuli/corsi/SBa7.jpg"  tags="corsi Block_7_1 active "  />
-        <stimulus  identifier="corsi_227"  label="trial 21"  correctResponses="XJYKRZV"  pauseMs="0"  imagePath="stimuli/corsi/SBW1.jpg"  tags="corsi Block_7_1 letters active "  />
-        <stimulus  identifier="corsi_228"  label="trial 22"  pauseMs="0"  audioPath="stimuli/corsi/trial_22"  tags="corsi Block_7_2 greeting active "  />
-        <stimulus  identifier="corsi_229"  label="trial 22"  pauseMs="0"  imagePath="stimuli/corsi/SBb1.jpg"  tags="corsi Block_7_2 active "  />
-        <stimulus  identifier="corsi_230"  label="trial 22"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_2 blank active "  />
-        <stimulus  identifier="corsi_231"  label="trial 22"  pauseMs="0"  imagePath="stimuli/corsi/SBb2.jpg"  tags="corsi Block_7_2 active "  />
-        <stimulus  identifier="corsi_232"  label="trial 22"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_2 blank active "  />
-        <stimulus  identifier="corsi_233"  label="trial 22"  pauseMs="0"  imagePath="stimuli/corsi/SBb3.jpg"  tags="corsi Block_7_2 active "  />
-        <stimulus  identifier="corsi_234"  label="trial 22"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_2 blank active "  />
-        <stimulus  identifier="corsi_235"  label="trial 22"  pauseMs="0"  imagePath="stimuli/corsi/SBb4.jpg"  tags="corsi Block_7_2 active "  />
-        <stimulus  identifier="corsi_236"  label="trial 22"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_2 blank active "  />
-        <stimulus  identifier="corsi_237"  label="trial 22"  pauseMs="0"  imagePath="stimuli/corsi/SBb5.jpg"  tags="corsi Block_7_2 active "  />
-        <stimulus  identifier="corsi_238"  label="trial 22"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_2 blank active "  />
-        <stimulus  identifier="corsi_239"  label="trial 22"  pauseMs="0"  imagePath="stimuli/corsi/SBb6.jpg"  tags="corsi Block_7_2 active "  />
-        <stimulus  identifier="corsi_240"  label="trial 22"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_2 blank active "  />
-        <stimulus  identifier="corsi_241"  label="trial 22"  pauseMs="0"  imagePath="stimuli/corsi/SBb7.jpg"  tags="corsi Block_7_2 active "  />
-        <stimulus  identifier="corsi_242"  label="trial 22"  correctResponses="KDXZYVJ"  pauseMs="0"  imagePath="stimuli/corsi/SBW2.jpg"  tags="corsi Block_7_2 letters active "  />
-        <stimulus  identifier="corsi_243"  label="trial 23"  pauseMs="0"  audioPath="stimuli/corsi/trial_23"  tags="corsi Block_7_3 greeting active "  />
-        <stimulus  identifier="corsi_244"  label="trial 23"  pauseMs="0"  imagePath="stimuli/corsi/SBc1.jpg"  tags="corsi Block_7_3 active "  />
-        <stimulus  identifier="corsi_245"  label="trial 23"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_3 blank active "  />
-        <stimulus  identifier="corsi_246"  label="trial 23"  pauseMs="0"  imagePath="stimuli/corsi/SBc2.jpg"  tags="corsi Block_7_3 active "  />
-        <stimulus  identifier="corsi_247"  label="trial 23"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_3 blank active "  />
-        <stimulus  identifier="corsi_248"  label="trial 23"  pauseMs="0"  imagePath="stimuli/corsi/SBc3.jpg"  tags="corsi Block_7_3 active "  />
-        <stimulus  identifier="corsi_249"  label="trial 23"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_3 blank active "  />
-        <stimulus  identifier="corsi_250"  label="trial 23"  pauseMs="0"  imagePath="stimuli/corsi/SBc4.jpg"  tags="corsi Block_7_3 active "  />
-        <stimulus  identifier="corsi_251"  label="trial 23"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_3 blank active "  />
-        <stimulus  identifier="corsi_252"  label="trial 23"  pauseMs="0"  imagePath="stimuli/corsi/SBc5.jpg"  tags="corsi Block_7_3 active "  />
-        <stimulus  identifier="corsi_253"  label="trial 23"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_3 blank active "  />
-        <stimulus  identifier="corsi_254"  label="trial 23"  pauseMs="0"  imagePath="stimuli/corsi/SBc6.jpg"  tags="corsi Block_7_3 active "  />
-        <stimulus  identifier="corsi_255"  label="trial 23"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_3 blank active "  />
-        <stimulus  identifier="corsi_256"  label="trial 23"  pauseMs="0"  imagePath="stimuli/corsi/SBc7.jpg"  tags="corsi Block_7_3 active "  />
-        <stimulus  identifier="corsi_257"  label="trial 23"  correctResponses="VDKRZJY"  pauseMs="0"  imagePath="stimuli/corsi/SBW3.jpg"  tags="corsi Block_7_3 letters active "  />
-        <stimulus  identifier="corsi_258"  label="trial 24"  pauseMs="0"  audioPath="stimuli/corsi/trial_24"  tags="corsi Block_7_4 greeting active "  />
-        <stimulus  identifier="corsi_259"  label="trial 24"  pauseMs="0"  imagePath="stimuli/corsi/SBd1.jpg"  tags="corsi Block_7_4 active "  />
-        <stimulus  identifier="corsi_260"  label="trial 24"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_4 blank active "  />
-        <stimulus  identifier="corsi_261"  label="trial 24"  pauseMs="0"  imagePath="stimuli/corsi/SBd2.jpg"  tags="corsi Block_7_4 active "  />
-        <stimulus  identifier="corsi_262"  label="trial 24"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_4 blank active "  />
-        <stimulus  identifier="corsi_263"  label="trial 24"  pauseMs="0"  imagePath="stimuli/corsi/SBd3.jpg"  tags="corsi Block_7_4 active "  />
-        <stimulus  identifier="corsi_264"  label="trial 24"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_4 blank active "  />
-        <stimulus  identifier="corsi_265"  label="trial 24"  pauseMs="0"  imagePath="stimuli/corsi/SBd4.jpg"  tags="corsi Block_7_4 active "  />
-        <stimulus  identifier="corsi_266"  label="trial 24"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_4 blank active "  />
-        <stimulus  identifier="corsi_267"  label="trial 24"  pauseMs="0"  imagePath="stimuli/corsi/SBd5.jpg"  tags="corsi Block_7_4 active "  />
-        <stimulus  identifier="corsi_268"  label="trial 24"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_4 blank active "  />
-        <stimulus  identifier="corsi_269"  label="trial 24"  pauseMs="0"  imagePath="stimuli/corsi/SBd6.jpg"  tags="corsi Block_7_4 active "  />
-        <stimulus  identifier="corsi_270"  label="trial 24"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_4 blank active "  />
-        <stimulus  identifier="corsi_271"  label="trial 24"  pauseMs="0"  imagePath="stimuli/corsi/SBd7.jpg"  tags="corsi Block_7_4 active "  />
-        <stimulus  identifier="corsi_272"  label="trial 24"  correctResponses="RXKHYJV"  pauseMs="0"  imagePath="stimuli/corsi/SBW4.jpg"  tags="corsi Block_7_4 letters active "  />
-        <stimulus  identifier="corsi_273"  label="trial 25"  pauseMs="0"  audioPath="stimuli/corsi/trial_25"  tags="corsi Block_7_5 greeting active "  />
-        <stimulus  identifier="corsi_274"  label="trial 25"  pauseMs="0"  imagePath="stimuli/corsi/SBe1.jpg"  tags="corsi Block_7_5 active "  />
-        <stimulus  identifier="corsi_275"  label="trial 25"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_5 blank active "  />
-        <stimulus  identifier="corsi_276"  label="trial 25"  pauseMs="0"  imagePath="stimuli/corsi/SBe2.jpg"  tags="corsi Block_7_5 active "  />
-        <stimulus  identifier="corsi_277"  label="trial 25"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_5 blank active "  />
-        <stimulus  identifier="corsi_278"  label="trial 25"  pauseMs="0"  imagePath="stimuli/corsi/SBe3.jpg"  tags="corsi Block_7_5 active "  />
-        <stimulus  identifier="corsi_279"  label="trial 25"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_5 blank active "  />
-        <stimulus  identifier="corsi_280"  label="trial 25"  pauseMs="0"  imagePath="stimuli/corsi/SBe4.jpg"  tags="corsi Block_7_5 active "  />
-        <stimulus  identifier="corsi_281"  label="trial 25"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_5 blank active "  />
-        <stimulus  identifier="corsi_282"  label="trial 25"  pauseMs="0"  imagePath="stimuli/corsi/SBe5.jpg"  tags="corsi Block_7_5 active "  />
-        <stimulus  identifier="corsi_283"  label="trial 25"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_5 blank active "  />
-        <stimulus  identifier="corsi_284"  label="trial 25"  pauseMs="0"  imagePath="stimuli/corsi/SBe6.jpg"  tags="corsi Block_7_5 active "  />
-        <stimulus  identifier="corsi_285"  label="trial 25"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_5 blank active "  />
-        <stimulus  identifier="corsi_286"  label="trial 25"  pauseMs="0"  imagePath="stimuli/corsi/SBe7.jpg"  tags="corsi Block_7_5 active "  />
-        <stimulus  identifier="corsi_287"  label="trial 25"  correctResponses="KJVHRXY"  pauseMs="0"  imagePath="stimuli/corsi/SBW5.jpg"  tags="corsi Block_7_5 letters active "  />
-        <stimulus  identifier="corsi_288"  label="trial 26"  pauseMs="0"  audioPath="stimuli/corsi/trial_26"  tags="corsi Block_8_1 greeting active "  />
-        <stimulus  identifier="corsi_289"  label="trial 26"  pauseMs="0"  imagePath="stimuli/corsi/SAa1.jpg"  tags="corsi Block_8_1 active "  />
-        <stimulus  identifier="corsi_290"  label="trial 26"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_1 blank active "  />
-        <stimulus  identifier="corsi_291"  label="trial 26"  pauseMs="0"  imagePath="stimuli/corsi/SAa2.jpg"  tags="corsi Block_8_1 active "  />
-        <stimulus  identifier="corsi_292"  label="trial 26"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_1 blank active "  />
-        <stimulus  identifier="corsi_293"  label="trial 26"  pauseMs="0"  imagePath="stimuli/corsi/SAa3.jpg"  tags="corsi Block_8_1 active "  />
-        <stimulus  identifier="corsi_294"  label="trial 26"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_1 blank active "  />
-        <stimulus  identifier="corsi_295"  label="trial 26"  pauseMs="0"  imagePath="stimuli/corsi/SAa4.jpg"  tags="corsi Block_8_1 active "  />
-        <stimulus  identifier="corsi_296"  label="trial 26"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_1 blank active "  />
-        <stimulus  identifier="corsi_297"  label="trial 26"  pauseMs="0"  imagePath="stimuli/corsi/SAa5.jpg"  tags="corsi Block_8_1 active "  />
-        <stimulus  identifier="corsi_298"  label="trial 26"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_1 blank active "  />
-        <stimulus  identifier="corsi_299"  label="trial 26"  pauseMs="0"  imagePath="stimuli/corsi/SAa6.jpg"  tags="corsi Block_8_1 active "  />
-        <stimulus  identifier="corsi_300"  label="trial 26"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_1 blank active "  />
-        <stimulus  identifier="corsi_301"  label="trial 26"  pauseMs="0"  imagePath="stimuli/corsi/SAa7.jpg"  tags="corsi Block_8_1 active "  />
-        <stimulus  identifier="corsi_302"  label="trial 26"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_1 blank active "  />
-        <stimulus  identifier="corsi_303"  label="trial 26"  pauseMs="0"  imagePath="stimuli/corsi/SAa8.jpg"  tags="corsi Block_8_1 active "  />
-        <stimulus  identifier="corsi_304"  label="trial 26"  correctResponses="ZWRHNQBX"  pauseMs="0"  imagePath="stimuli/corsi/SAW1.jpg"  tags="corsi Block_8_1 letters active "  />
-        <stimulus  identifier="corsi_305"  label="trial 27"  pauseMs="0"  audioPath="stimuli/corsi/trial_27"  tags="corsi Block_8_2 greeting active "  />
-        <stimulus  identifier="corsi_306"  label="trial 27"  pauseMs="0"  imagePath="stimuli/corsi/SAb1.jpg"  tags="corsi Block_8_2 active "  />
-        <stimulus  identifier="corsi_307"  label="trial 27"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_2 blank active "  />
-        <stimulus  identifier="corsi_308"  label="trial 27"  pauseMs="0"  imagePath="stimuli/corsi/SAb2.jpg"  tags="corsi Block_8_2 active "  />
-        <stimulus  identifier="corsi_309"  label="trial 27"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_2 blank active "  />
-        <stimulus  identifier="corsi_310"  label="trial 27"  pauseMs="0"  imagePath="stimuli/corsi/SAb3.jpg"  tags="corsi Block_8_2 active "  />
-        <stimulus  identifier="corsi_311"  label="trial 27"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_2 blank active "  />
-        <stimulus  identifier="corsi_312"  label="trial 27"  pauseMs="0"  imagePath="stimuli/corsi/SAb4.jpg"  tags="corsi Block_8_2 active "  />
-        <stimulus  identifier="corsi_313"  label="trial 27"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_2 blank active "  />
-        <stimulus  identifier="corsi_314"  label="trial 27"  pauseMs="0"  imagePath="stimuli/corsi/SAb5.jpg"  tags="corsi Block_8_2 active "  />
-        <stimulus  identifier="corsi_315"  label="trial 27"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_2 blank active "  />
-        <stimulus  identifier="corsi_316"  label="trial 27"  pauseMs="0"  imagePath="stimuli/corsi/SAb6.jpg"  tags="corsi Block_8_2 active "  />
-        <stimulus  identifier="corsi_317"  label="trial 27"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_2 blank active "  />
-        <stimulus  identifier="corsi_318"  label="trial 27"  pauseMs="0"  imagePath="stimuli/corsi/SAb7.jpg"  tags="corsi Block_8_2 active "  />
-        <stimulus  identifier="corsi_319"  label="trial 27"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_2 blank active "  />
-        <stimulus  identifier="corsi_320"  label="trial 27"  pauseMs="0"  imagePath="stimuli/corsi/SAb8.jpg"  tags="corsi Block_8_2 active "  />
-        <stimulus  identifier="corsi_321"  label="trial 27"  correctResponses="WNYBQRZX"  pauseMs="0"  imagePath="stimuli/corsi/SAW2.jpg"  tags="corsi Block_8_2 letters active "  />
-        <stimulus  identifier="corsi_322"  label="trial 28"  pauseMs="0"  audioPath="stimuli/corsi/trial_28"  tags="corsi Block_8_3 greeting active "  />
-        <stimulus  identifier="corsi_323"  label="trial 28"  pauseMs="0"  imagePath="stimuli/corsi/SAc1.jpg"  tags="corsi Block_8_3 active "  />
-        <stimulus  identifier="corsi_324"  label="trial 28"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_3 blank active "  />
-        <stimulus  identifier="corsi_325"  label="trial 28"  pauseMs="0"  imagePath="stimuli/corsi/SAc2.jpg"  tags="corsi Block_8_3 active "  />
-        <stimulus  identifier="corsi_326"  label="trial 28"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_3 blank active "  />
-        <stimulus  identifier="corsi_327"  label="trial 28"  pauseMs="0"  imagePath="stimuli/corsi/SAc3.jpg"  tags="corsi Block_8_3 active "  />
-        <stimulus  identifier="corsi_328"  label="trial 28"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_3 blank active "  />
-        <stimulus  identifier="corsi_329"  label="trial 28"  pauseMs="0"  imagePath="stimuli/corsi/SAc4.jpg"  tags="corsi Block_8_3 active "  />
-        <stimulus  identifier="corsi_330"  label="trial 28"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_3 blank active "  />
-        <stimulus  identifier="corsi_331"  label="trial 28"  pauseMs="0"  imagePath="stimuli/corsi/SAc5.jpg"  tags="corsi Block_8_3 active "  />
-        <stimulus  identifier="corsi_332"  label="trial 28"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_3 blank active "  />
-        <stimulus  identifier="corsi_333"  label="trial 28"  pauseMs="0"  imagePath="stimuli/corsi/SAc6.jpg"  tags="corsi Block_8_3 active "  />
-        <stimulus  identifier="corsi_334"  label="trial 28"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_3 blank active "  />
-        <stimulus  identifier="corsi_335"  label="trial 28"  pauseMs="0"  imagePath="stimuli/corsi/SAc7.jpg"  tags="corsi Block_8_3 active "  />
-        <stimulus  identifier="corsi_336"  label="trial 28"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_3 blank active "  />
-        <stimulus  identifier="corsi_337"  label="trial 28"  pauseMs="0"  imagePath="stimuli/corsi/SAc8.jpg"  tags="corsi Block_8_3 active "  />
-        <stimulus  identifier="corsi_338"  label="trial 28"  correctResponses="ZHQXNBRW"  pauseMs="0"  imagePath="stimuli/corsi/SAW3.jpg"  tags="corsi Block_8_3 letters active "  />
-        <stimulus  identifier="corsi_339"  label="trial 29"  pauseMs="0"  audioPath="stimuli/corsi/trial_29"  tags="corsi Block_8_4 greeting active "  />
-        <stimulus  identifier="corsi_340"  label="trial 29"  pauseMs="0"  imagePath="stimuli/corsi/SAd1.jpg"  tags="corsi Block_8_4 active "  />
-        <stimulus  identifier="corsi_341"  label="trial 29"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_4 blank active "  />
-        <stimulus  identifier="corsi_342"  label="trial 29"  pauseMs="0"  imagePath="stimuli/corsi/SAd2.jpg"  tags="corsi Block_8_4 active "  />
-        <stimulus  identifier="corsi_343"  label="trial 29"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_4 blank active "  />
-        <stimulus  identifier="corsi_344"  label="trial 29"  pauseMs="0"  imagePath="stimuli/corsi/SAd3.jpg"  tags="corsi Block_8_4 active "  />
-        <stimulus  identifier="corsi_345"  label="trial 29"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_4 blank active "  />
-        <stimulus  identifier="corsi_346"  label="trial 29"  pauseMs="0"  imagePath="stimuli/corsi/SAd4.jpg"  tags="corsi Block_8_4 active "  />
-        <stimulus  identifier="corsi_347"  label="trial 29"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_4 blank active "  />
-        <stimulus  identifier="corsi_348"  label="trial 29"  pauseMs="0"  imagePath="stimuli/corsi/SAd5.jpg"  tags="corsi Block_8_4 active "  />
-        <stimulus  identifier="corsi_349"  label="trial 29"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_4 blank active "  />
-        <stimulus  identifier="corsi_350"  label="trial 29"  pauseMs="0"  imagePath="stimuli/corsi/SAd6.jpg"  tags="corsi Block_8_4 active "  />
-        <stimulus  identifier="corsi_351"  label="trial 29"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_4 blank active "  />
-        <stimulus  identifier="corsi_352"  label="trial 29"  pauseMs="0"  imagePath="stimuli/corsi/SAd7.jpg"  tags="corsi Block_8_4 active "  />
-        <stimulus  identifier="corsi_353"  label="trial 29"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_4 blank active "  />
-        <stimulus  identifier="corsi_354"  label="trial 29"  pauseMs="0"  imagePath="stimuli/corsi/SAd8.jpg"  tags="corsi Block_8_4 active "  />
-        <stimulus  identifier="corsi_355"  label="trial 29"  correctResponses="NXZBQYHR"  pauseMs="0"  imagePath="stimuli/corsi/SAW4.jpg"  tags="corsi Block_8_4 letters active "  />
-        <stimulus  identifier="corsi_356"  label="trial 30"  pauseMs="0"  audioPath="stimuli/corsi/trial_30"  tags="corsi Block_8_5 greeting active "  />
-        <stimulus  identifier="corsi_357"  label="trial 30"  pauseMs="0"  imagePath="stimuli/corsi/SAe1.jpg"  tags="corsi Block_8_5 active "  />
-        <stimulus  identifier="corsi_358"  label="trial 30"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_5 blank active "  />
-        <stimulus  identifier="corsi_359"  label="trial 30"  pauseMs="0"  imagePath="stimuli/corsi/SAe2.jpg"  tags="corsi Block_8_5 active "  />
-        <stimulus  identifier="corsi_360"  label="trial 30"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_5 blank active "  />
-        <stimulus  identifier="corsi_361"  label="trial 30"  pauseMs="0"  imagePath="stimuli/corsi/SAe3.jpg"  tags="corsi Block_8_5 active "  />
-        <stimulus  identifier="corsi_362"  label="trial 30"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_5 blank active "  />
-        <stimulus  identifier="corsi_363"  label="trial 30"  pauseMs="0"  imagePath="stimuli/corsi/SAe4.jpg"  tags="corsi Block_8_5 active "  />
-        <stimulus  identifier="corsi_364"  label="trial 30"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_5 blank active "  />
-        <stimulus  identifier="corsi_365"  label="trial 30"  pauseMs="0"  imagePath="stimuli/corsi/SAe5.jpg"  tags="corsi Block_8_5 active "  />
-        <stimulus  identifier="corsi_366"  label="trial 30"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_5 blank active "  />
-        <stimulus  identifier="corsi_367"  label="trial 30"  pauseMs="0"  imagePath="stimuli/corsi/SAe6.jpg"  tags="corsi Block_8_5 active "  />
-        <stimulus  identifier="corsi_368"  label="trial 30"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_5 blank active "  />
-        <stimulus  identifier="corsi_369"  label="trial 30"  pauseMs="0"  imagePath="stimuli/corsi/SAe7.jpg"  tags="corsi Block_8_5 active "  />
-        <stimulus  identifier="corsi_370"  label="trial 30"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_5 blank active "  />
-        <stimulus  identifier="corsi_371"  label="trial 30"  pauseMs="0"  imagePath="stimuli/corsi/SAe8.jpg"  tags="corsi Block_8_5 active "  />
-        <stimulus  identifier="corsi_372"  label="trial 30"  correctResponses="BWYZXNHQ"  pauseMs="0"  imagePath="stimuli/corsi/SAW5.jpg"  tags="corsi Block_8_5 letters active "  />  
+        <stimulus  identifier="corsi_1"  label="&lt;span id='labelId_1'&gt; practice 01&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/p01"  tags="corsi Practice_1 greeting active"  />
+        <stimulus  identifier="corsi_2"  label="&lt;span id='labelId_2'&gt; practice 01&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/practice1a1.jpg"  tags="corsi Practice_1 active"  />
+        <stimulus  identifier="corsi_3"  label="&lt;span id='labelId_3'&gt; practice 01&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/practice1a.jpg"  tags="corsi Practice_1 blank active"  />
+        <stimulus  identifier="corsi_4"  label="&lt;span id='labelId_4'&gt; practice 01&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/practice1a2.jpg"  tags="corsi Practice_1 active"  />
+        <stimulus  identifier="corsi_5"  label="&lt;span id='labelId_5'&gt; practice 01&lt;/span&gt;"  correctResponses=""  pauseMs="0"  imagePath="stimuli/corsi/practice1aw.jpg"  tags="corsi Practice_1 letters active"  />
+        <stimulus  identifier="corsi_6"  label="&lt;span id='labelId_6'&gt; practice 02&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/p02"  tags="corsi Practice_2 greeting active"  />
+        <stimulus  identifier="corsi_7"  label="&lt;span id='labelId_7'&gt; practice 02&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/practice2a1.jpg"  tags="corsi Practice_2 active"  />
+        <stimulus  identifier="corsi_8"  label="&lt;span id='labelId_8'&gt; practice 02&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/practice2a.jpg"  tags="corsi Practice_2 blank active"  />
+        <stimulus  identifier="corsi_9"  label="&lt;span id='labelId_9'&gt; practice 02&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/practice2a2.jpg"  tags="corsi Practice_2 active"  />
+        <stimulus  identifier="corsi_10"  label="&lt;span id='labelId_10'&gt; practice 02&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/practice2a.jpg"  tags="corsi Practice_2 blank active"  />
+        <stimulus  identifier="corsi_11"  label="&lt;span id='labelId_11'&gt; practice 02&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/practice2a3.jpg"  tags="corsi Practice_2 active"  />
+        <stimulus  identifier="corsi_12"  label="&lt;span id='labelId_12'&gt; practice 02&lt;/span&gt;"  correctResponses=""  pauseMs="0"  imagePath="stimuli/corsi/practice2aw.jpg"  tags="corsi Practice_2 letters active"  />
+        <stimulus  identifier="corsi_13"  label="&lt;span id='labelId_13'&gt; trial 01&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_01"  tags="corsi Block_3_1 greeting active"  />
+        <stimulus  identifier="corsi_14"  label="&lt;span id='labelId_14'&gt; trial 01&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFa1.jpg"  tags="corsi Block_3_1 active"  />
+        <stimulus  identifier="corsi_15"  label="&lt;span id='labelId_15'&gt; trial 01&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF1.jpg"  tags="corsi Block_3_1 blank active"  />
+        <stimulus  identifier="corsi_16"  label="&lt;span id='labelId_16'&gt; trial 01&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFa2.jpg"  tags="corsi Block_3_1 active"  />
+        <stimulus  identifier="corsi_17"  label="&lt;span id='labelId_17'&gt; trial 01&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF1.jpg"  tags="corsi Block_3_1 blank active"  />
+        <stimulus  identifier="corsi_18"  label="&lt;span id='labelId_18'&gt; trial 01&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFa3.jpg"  tags="corsi Block_3_1 active"  />
+        <stimulus  identifier="corsi_19"  label="&lt;span id='labelId_19'&gt; trial 01&lt;/span&gt;"  correctResponses="MDB"  pauseMs="0"  imagePath="stimuli/corsi/SFW1.jpg"  tags="corsi Block_3_1 letters active"  />
+        <stimulus  identifier="corsi_20"  label="&lt;span id='labelId_20'&gt; trial 02&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_02"  tags="corsi Block_3_2 greeting active"  />
+        <stimulus  identifier="corsi_21"  label="&lt;span id='labelId_21'&gt; trial 02&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFb1.jpg"  tags="corsi Block_3_2 active"  />
+        <stimulus  identifier="corsi_22"  label="&lt;span id='labelId_22'&gt; trial 02&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF1.jpg"  tags="corsi Block_3_2 blank active"  />
+        <stimulus  identifier="corsi_23"  label="&lt;span id='labelId_23'&gt; trial 02&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFb2.jpg"  tags="corsi Block_3_2 active"  />
+        <stimulus  identifier="corsi_24"  label="&lt;span id='labelId_24'&gt; trial 02&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF1.jpg"  tags="corsi Block_3_2 blank active"  />
+        <stimulus  identifier="corsi_25"  label="&lt;span id='labelId_25'&gt; trial 02&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFb3.jpg"  tags="corsi Block_3_2 active"  />
+        <stimulus  identifier="corsi_26"  label="&lt;span id='labelId_26'&gt; trial 02&lt;/span&gt;"  correctResponses="NCY"  pauseMs="0"  imagePath="stimuli/corsi/SFW2.jpg"  tags="corsi Block_3_2 letters active"  />
+        <stimulus  identifier="corsi_27"  label="&lt;span id='labelId_27'&gt; trial 03&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_03"  tags="corsi Block_3_3 greeting active"  />
+        <stimulus  identifier="corsi_28"  label="&lt;span id='labelId_28'&gt; trial 03&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFc1.jpg"  tags="corsi Block_3_3 active"  />
+        <stimulus  identifier="corsi_29"  label="&lt;span id='labelId_29'&gt; trial 03&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF1.jpg"  tags="corsi Block_3_3 blank active"  />
+        <stimulus  identifier="corsi_30"  label="&lt;span id='labelId_30'&gt; trial 03&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFc2.jpg"  tags="corsi Block_3_3 active"  />
+        <stimulus  identifier="corsi_31"  label="&lt;span id='labelId_31'&gt; trial 03&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF1.jpg"  tags="corsi Block_3_3 blank active"  />
+        <stimulus  identifier="corsi_32"  label="&lt;span id='labelId_32'&gt; trial 03&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFc3.jpg"  tags="corsi Block_3_3 active"  />
+        <stimulus  identifier="corsi_33"  label="&lt;span id='labelId_33'&gt; trial 03&lt;/span&gt;"  correctResponses="FQK"  pauseMs="0"  imagePath="stimuli/corsi/SFW3.jpg"  tags="corsi Block_3_3 letters active"  />
+        <stimulus  identifier="corsi_34"  label="&lt;span id='labelId_34'&gt; trial 04&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_04"  tags="corsi Block_3_4 greeting active"  />
+        <stimulus  identifier="corsi_35"  label="&lt;span id='labelId_35'&gt; trial 04&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFd1.jpg"  tags="corsi Block_3_4 active"  />
+        <stimulus  identifier="corsi_36"  label="&lt;span id='labelId_36'&gt; trial 04&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF2.jpg"  tags="corsi Block_3_4 blank active"  />
+        <stimulus  identifier="corsi_37"  label="&lt;span id='labelId_37'&gt; trial 04&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFd2.jpg"  tags="corsi Block_3_4 active"  />
+        <stimulus  identifier="corsi_38"  label="&lt;span id='labelId_38'&gt; trial 04&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF2.jpg"  tags="corsi Block_3_4 blank active"  />
+        <stimulus  identifier="corsi_39"  label="&lt;span id='labelId_39'&gt; trial 04&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFd3.jpg"  tags="corsi Block_3_4 active"  />
+        <stimulus  identifier="corsi_40"  label="&lt;span id='labelId_40'&gt; trial 04&lt;/span&gt;"  correctResponses="CQJ"  pauseMs="0"  imagePath="stimuli/corsi/SFW4.jpg"  tags="corsi Block_3_4 letters active"  />
+        <stimulus  identifier="corsi_41"  label="&lt;span id='labelId_41'&gt; trial 05&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_05"  tags="corsi Block_3_5 greeting active"  />
+        <stimulus  identifier="corsi_42"  label="&lt;span id='labelId_42'&gt; trial 05&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFe1.jpg"  tags="corsi Block_3_5 active"  />
+        <stimulus  identifier="corsi_43"  label="&lt;span id='labelId_43'&gt; trial 05&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF2.jpg"  tags="corsi Block_3_5 blank active"  />
+        <stimulus  identifier="corsi_44"  label="&lt;span id='labelId_44'&gt; trial 05&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFe2.jpg"  tags="corsi Block_3_5 active"  />
+        <stimulus  identifier="corsi_45"  label="&lt;span id='labelId_45'&gt; trial 05&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SF2.jpg"  tags="corsi Block_3_5 blank active"  />
+        <stimulus  identifier="corsi_46"  label="&lt;span id='labelId_46'&gt; trial 05&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SFe3.jpg"  tags="corsi Block_3_5 active"  />
+        <stimulus  identifier="corsi_47"  label="&lt;span id='labelId_47'&gt; trial 05&lt;/span&gt;"  correctResponses="TLS"  pauseMs="0"  imagePath="stimuli/corsi/SFW5.jpg"  tags="corsi Block_3_5 letters active"  />
+        <stimulus  identifier="corsi_48"  label="&lt;span id='labelId_48'&gt; trial 06&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_06"  tags="corsi Block_4_1 greeting active"  />
+        <stimulus  identifier="corsi_49"  label="&lt;span id='labelId_49'&gt; trial 06&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SEa1.jpg"  tags="corsi Block_4_1 active"  />
+        <stimulus  identifier="corsi_50"  label="&lt;span id='labelId_50'&gt; trial 06&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SE1.jpg"  tags="corsi Block_4_1 blank active"  />
+        <stimulus  identifier="corsi_51"  label="&lt;span id='labelId_51'&gt; trial 06&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SEa2.jpg"  tags="corsi Block_4_1 active"  />
+        <stimulus  identifier="corsi_52"  label="&lt;span id='labelId_52'&gt; trial 06&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SE1.jpg"  tags="corsi Block_4_1 blank active"  />
+        <stimulus  identifier="corsi_53"  label="&lt;span id='labelId_53'&gt; trial 06&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SEa3.jpg"  tags="corsi Block_4_1 active"  />
+        <stimulus  identifier="corsi_54"  label="&lt;span id='labelId_54'&gt; trial 06&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SE1.jpg"  tags="corsi Block_4_1 blank active"  />
+        <stimulus  identifier="corsi_55"  label="&lt;span id='labelId_55'&gt; trial 06&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SEa4.jpg"  tags="corsi Block_4_1 active"  />
+        <stimulus  identifier="corsi_56"  label="&lt;span id='labelId_56'&gt; trial 06&lt;/span&gt;"  correctResponses="YTNK"  pauseMs="0"  imagePath="stimuli/corsi/SEW1.jpg"  tags="corsi Block_4_1 letters active"  />
+        <stimulus  identifier="corsi_57"  label="&lt;span id='labelId_57'&gt; trial 07&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_07"  tags="corsi Block_4_2 greeting active"  />
+        <stimulus  identifier="corsi_58"  label="&lt;span id='labelId_58'&gt; trial 07&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SEb1.jpg"  tags="corsi Block_4_2 active"  />
+        <stimulus  identifier="corsi_59"  label="&lt;span id='labelId_59'&gt; trial 07&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SE1.jpg"  tags="corsi Block_4_2 blank active"  />
+        <stimulus  identifier="corsi_60"  label="&lt;span id='labelId_60'&gt; trial 07&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SEb2.jpg"  tags="corsi Block_4_2 active"  />
+        <stimulus  identifier="corsi_61"  label="&lt;span id='labelId_61'&gt; trial 07&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SE1.jpg"  tags="corsi Block_4_2 blank active"  />
+        <stimulus  identifier="corsi_62"  label="&lt;span id='labelId_62'&gt; trial 07&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SEb3.jpg"  tags="corsi Block_4_2 active"  />
+        <stimulus  identifier="corsi_63"  label="&lt;span id='labelId_63'&gt; trial 07&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SE1.jpg"  tags="corsi Block_4_2 blank active"  />
+        <stimulus  identifier="corsi_64"  label="&lt;span id='labelId_64'&gt; trial 07&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SEb4.jpg"  tags="corsi Block_4_2 active"  />
+        <stimulus  identifier="corsi_65"  label="&lt;span id='labelId_65'&gt; trial 07&lt;/span&gt;"  correctResponses="YRTB"  pauseMs="0"  imagePath="stimuli/corsi/SEW2.jpg"  tags="corsi Block_4_2 letters active"  />
+        <stimulus  identifier="corsi_66"  label="&lt;span id='labelId_66'&gt; trial 08&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_08"  tags="corsi Block_4_3 greeting active"  />
+        <stimulus  identifier="corsi_67"  label="&lt;span id='labelId_67'&gt; trial 08&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SEc1.jpg"  tags="corsi Block_4_3 active"  />
+        <stimulus  identifier="corsi_68"  label="&lt;span id='labelId_68'&gt; trial 08&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SE1.jpg"  tags="corsi Block_4_3 blank active"  />
+        <stimulus  identifier="corsi_69"  label="&lt;span id='labelId_69'&gt; trial 08&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SEc2.jpg"  tags="corsi Block_4_3 active"  />
+        <stimulus  identifier="corsi_70"  label="&lt;span id='labelId_70'&gt; trial 08&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SE1.jpg"  tags="corsi Block_4_3 blank active"  />
+        <stimulus  identifier="corsi_71"  label="&lt;span id='labelId_71'&gt; trial 08&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SEc3.jpg"  tags="corsi Block_4_3 active"  />
+        <stimulus  identifier="corsi_72"  label="&lt;span id='labelId_72'&gt; trial 08&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SE1.jpg"  tags="corsi Block_4_3 blank active"  />
+        <stimulus  identifier="corsi_73"  label="&lt;span id='labelId_73'&gt; trial 08&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SEc4.jpg"  tags="corsi Block_4_3 active"  />
+        <stimulus  identifier="corsi_74"  label="&lt;span id='labelId_74'&gt; trial 08&lt;/span&gt;"  correctResponses="RNTK"  pauseMs="0"  imagePath="stimuli/corsi/SEW3.jpg"  tags="corsi Block_4_3 letters active"  />
+        <stimulus  identifier="corsi_75"  label="&lt;span id='labelId_75'&gt; trial 09&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_09"  tags="corsi Block_4_4 greeting active"  />
+        <stimulus  identifier="corsi_76"  label="&lt;span id='labelId_76'&gt; trial 09&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SEd1.jpg"  tags="corsi Block_4_4 active"  />
+        <stimulus  identifier="corsi_77"  label="&lt;span id='labelId_77'&gt; trial 09&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SE2.jpg"  tags="corsi Block_4_4 blank active"  />
+        <stimulus  identifier="corsi_78"  label="&lt;span id='labelId_78'&gt; trial 09&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SEd2.jpg"  tags="corsi Block_4_4 active"  />
+        <stimulus  identifier="corsi_79"  label="&lt;span id='labelId_79'&gt; trial 09&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SE2.jpg"  tags="corsi Block_4_4 blank active"  />
+        <stimulus  identifier="corsi_80"  label="&lt;span id='labelId_80'&gt; trial 09&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SEd3.jpg"  tags="corsi Block_4_4 active"  />
+        <stimulus  identifier="corsi_81"  label="&lt;span id='labelId_81'&gt; trial 09&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SE2.jpg"  tags="corsi Block_4_4 blank active"  />
+        <stimulus  identifier="corsi_82"  label="&lt;span id='labelId_82'&gt; trial 09&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SEd4.jpg"  tags="corsi Block_4_4 active"  />
+        <stimulus  identifier="corsi_83"  label="&lt;span id='labelId_83'&gt; trial 09&lt;/span&gt;"  correctResponses="YKXR"  pauseMs="0"  imagePath="stimuli/corsi/SEW4.jpg"  tags="corsi Block_4_4 letters active"  />
+        <stimulus  identifier="corsi_84"  label="&lt;span id='labelId_84'&gt; trial 10&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_10"  tags="corsi Block_4_5 greeting active"  />
+        <stimulus  identifier="corsi_85"  label="&lt;span id='labelId_85'&gt; trial 10&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SEe1.jpg"  tags="corsi Block_4_5 active"  />
+        <stimulus  identifier="corsi_86"  label="&lt;span id='labelId_86'&gt; trial 10&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SE2.jpg"  tags="corsi Block_4_5 blank active"  />
+        <stimulus  identifier="corsi_87"  label="&lt;span id='labelId_87'&gt; trial 10&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SEe2.jpg"  tags="corsi Block_4_5 active"  />
+        <stimulus  identifier="corsi_88"  label="&lt;span id='labelId_88'&gt; trial 10&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SE2.jpg"  tags="corsi Block_4_5 blank active"  />
+        <stimulus  identifier="corsi_89"  label="&lt;span id='labelId_89'&gt; trial 10&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SEe3.jpg"  tags="corsi Block_4_5 active"  />
+        <stimulus  identifier="corsi_90"  label="&lt;span id='labelId_90'&gt; trial 10&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SE2.jpg"  tags="corsi Block_4_5 blank active"  />
+        <stimulus  identifier="corsi_91"  label="&lt;span id='labelId_91'&gt; trial 10&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SEe4.jpg"  tags="corsi Block_4_5 active"  />
+        <stimulus  identifier="corsi_92"  label="&lt;span id='labelId_92'&gt; trial 10&lt;/span&gt;"  correctResponses="YFQB"  pauseMs="0"  imagePath="stimuli/corsi/SEW5.jpg"  tags="corsi Block_4_5 letters active"  />
+        <stimulus  identifier="corsi_93"  label="&lt;span id='labelId_93'&gt; trial 11&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_11"  tags="corsi Block_5_1 greeting active"  />
+        <stimulus  identifier="corsi_94"  label="&lt;span id='labelId_94'&gt; trial 11&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDa1.jpg"  tags="corsi Block_5_1 active"  />
+        <stimulus  identifier="corsi_95"  label="&lt;span id='labelId_95'&gt; trial 11&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_1 blank active"  />
+        <stimulus  identifier="corsi_96"  label="&lt;span id='labelId_96'&gt; trial 11&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDa2.jpg"  tags="corsi Block_5_1 active"  />
+        <stimulus  identifier="corsi_97"  label="&lt;span id='labelId_97'&gt; trial 11&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_1 blank active"  />
+        <stimulus  identifier="corsi_98"  label="&lt;span id='labelId_98'&gt; trial 11&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDa3.jpg"  tags="corsi Block_5_1 active"  />
+        <stimulus  identifier="corsi_99"  label="&lt;span id='labelId_99'&gt; trial 11&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_1 blank active"  />
+        <stimulus  identifier="corsi_100"  label="&lt;span id='labelId_100'&gt; trial 11&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDa4.jpg"  tags="corsi Block_5_1 active"  />
+        <stimulus  identifier="corsi_101"  label="&lt;span id='labelId_101'&gt; trial 11&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_1 blank active"  />
+        <stimulus  identifier="corsi_102"  label="&lt;span id='labelId_102'&gt; trial 11&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDa5.jpg"  tags="corsi Block_5_1 active"  />
+        <stimulus  identifier="corsi_103"  label="&lt;span id='labelId_103'&gt; trial 11&lt;/span&gt;"  correctResponses="FJYQR"  pauseMs="0"  imagePath="stimuli/corsi/SDW1.jpg"  tags="corsi Block_5_1 letters active"  />
+        <stimulus  identifier="corsi_104"  label="&lt;span id='labelId_104'&gt; trial 12&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_12"  tags="corsi Block_5_2 greeting active"  />
+        <stimulus  identifier="corsi_105"  label="&lt;span id='labelId_105'&gt; trial 12&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDb1.jpg"  tags="corsi Block_5_2 active"  />
+        <stimulus  identifier="corsi_106"  label="&lt;span id='labelId_106'&gt; trial 12&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_2 blank active"  />
+        <stimulus  identifier="corsi_107"  label="&lt;span id='labelId_107'&gt; trial 12&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDb2.jpg"  tags="corsi Block_5_2 active"  />
+        <stimulus  identifier="corsi_108"  label="&lt;span id='labelId_108'&gt; trial 12&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_2 blank active"  />
+        <stimulus  identifier="corsi_109"  label="&lt;span id='labelId_109'&gt; trial 12&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDb3.jpg"  tags="corsi Block_5_2 active"  />
+        <stimulus  identifier="corsi_110"  label="&lt;span id='labelId_110'&gt; trial 12&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_2 blank active"  />
+        <stimulus  identifier="corsi_111"  label="&lt;span id='labelId_111'&gt; trial 12&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDb4.jpg"  tags="corsi Block_5_2 active"  />
+        <stimulus  identifier="corsi_112"  label="&lt;span id='labelId_112'&gt; trial 12&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_2 blank active"  />
+        <stimulus  identifier="corsi_113"  label="&lt;span id='labelId_113'&gt; trial 12&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDb5.jpg"  tags="corsi Block_5_2 active"  />
+        <stimulus  identifier="corsi_114"  label="&lt;span id='labelId_114'&gt; trial 12&lt;/span&gt;"  correctResponses="BRJZL"  pauseMs="0"  imagePath="stimuli/corsi/SDW2.jpg"  tags="corsi Block_5_2 letters active"  />
+        <stimulus  identifier="corsi_115"  label="&lt;span id='labelId_115'&gt; trial 13&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_13"  tags="corsi Block_5_3 greeting active"  />
+        <stimulus  identifier="corsi_116"  label="&lt;span id='labelId_116'&gt; trial 13&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDc1.jpg"  tags="corsi Block_5_3 active"  />
+        <stimulus  identifier="corsi_117"  label="&lt;span id='labelId_117'&gt; trial 13&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_3 blank active"  />
+        <stimulus  identifier="corsi_118"  label="&lt;span id='labelId_118'&gt; trial 13&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDc2.jpg"  tags="corsi Block_5_3 active"  />
+        <stimulus  identifier="corsi_119"  label="&lt;span id='labelId_119'&gt; trial 13&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_3 blank active"  />
+        <stimulus  identifier="corsi_120"  label="&lt;span id='labelId_120'&gt; trial 13&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDc3.jpg"  tags="corsi Block_5_3 active"  />
+        <stimulus  identifier="corsi_121"  label="&lt;span id='labelId_121'&gt; trial 13&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_3 blank active"  />
+        <stimulus  identifier="corsi_122"  label="&lt;span id='labelId_122'&gt; trial 13&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDc4.jpg"  tags="corsi Block_5_3 active"  />
+        <stimulus  identifier="corsi_123"  label="&lt;span id='labelId_123'&gt; trial 13&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SD1.jpg"  tags="corsi Block_5_3 blank active"  />
+        <stimulus  identifier="corsi_124"  label="&lt;span id='labelId_124'&gt; trial 13&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDc5.jpg"  tags="corsi Block_5_3 active"  />
+        <stimulus  identifier="corsi_125"  label="&lt;span id='labelId_125'&gt; trial 13&lt;/span&gt;"  correctResponses="FYLBH"  pauseMs="0"  imagePath="stimuli/corsi/SDW3.jpg"  tags="corsi Block_5_3 letters active"  />
+        <stimulus  identifier="corsi_126"  label="&lt;span id='labelId_126'&gt; trial 14&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_14"  tags="corsi Block_5_4 greeting active"  />
+        <stimulus  identifier="corsi_127"  label="&lt;span id='labelId_127'&gt; trial 14&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDd1.jpg"  tags="corsi Block_5_4 active"  />
+        <stimulus  identifier="corsi_128"  label="&lt;span id='labelId_128'&gt; trial 14&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SD2.jpg"  tags="corsi Block_5_4 blank active"  />
+        <stimulus  identifier="corsi_129"  label="&lt;span id='labelId_129'&gt; trial 14&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDd2.jpg"  tags="corsi Block_5_4 active"  />
+        <stimulus  identifier="corsi_130"  label="&lt;span id='labelId_130'&gt; trial 14&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SD2.jpg"  tags="corsi Block_5_4 blank active"  />
+        <stimulus  identifier="corsi_131"  label="&lt;span id='labelId_131'&gt; trial 14&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDd3.jpg"  tags="corsi Block_5_4 active"  />
+        <stimulus  identifier="corsi_132"  label="&lt;span id='labelId_132'&gt; trial 14&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SD2.jpg"  tags="corsi Block_5_4 blank active"  />
+        <stimulus  identifier="corsi_133"  label="&lt;span id='labelId_133'&gt; trial 14&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDd4.jpg"  tags="corsi Block_5_4 active"  />
+        <stimulus  identifier="corsi_134"  label="&lt;span id='labelId_134'&gt; trial 14&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SD2.jpg"  tags="corsi Block_5_4 blank active"  />
+        <stimulus  identifier="corsi_135"  label="&lt;span id='labelId_135'&gt; trial 14&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDd5.jpg"  tags="corsi Block_5_4 active"  />
+        <stimulus  identifier="corsi_136"  label="&lt;span id='labelId_136'&gt; trial 14&lt;/span&gt;"  correctResponses="FYQZH"  pauseMs="0"  imagePath="stimuli/corsi/SDW4.jpg"  tags="corsi Block_5_4 letters active"  />
+        <stimulus  identifier="corsi_137"  label="&lt;span id='labelId_137'&gt; trial 15&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_15"  tags="corsi Block_5_5 greeting active"  />
+        <stimulus  identifier="corsi_138"  label="&lt;span id='labelId_138'&gt; trial 15&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDe1.jpg"  tags="corsi Block_5_5 active"  />
+        <stimulus  identifier="corsi_139"  label="&lt;span id='labelId_139'&gt; trial 15&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SD2.jpg"  tags="corsi Block_5_5 blank active"  />
+        <stimulus  identifier="corsi_140"  label="&lt;span id='labelId_140'&gt; trial 15&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDe2.jpg"  tags="corsi Block_5_5 active"  />
+        <stimulus  identifier="corsi_141"  label="&lt;span id='labelId_141'&gt; trial 15&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SD2.jpg"  tags="corsi Block_5_5 blank active"  />
+        <stimulus  identifier="corsi_142"  label="&lt;span id='labelId_142'&gt; trial 15&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDe3.jpg"  tags="corsi Block_5_5 active"  />
+        <stimulus  identifier="corsi_143"  label="&lt;span id='labelId_143'&gt; trial 15&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SD2.jpg"  tags="corsi Block_5_5 blank active"  />
+        <stimulus  identifier="corsi_144"  label="&lt;span id='labelId_144'&gt; trial 15&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDe4.jpg"  tags="corsi Block_5_5 active"  />
+        <stimulus  identifier="corsi_145"  label="&lt;span id='labelId_145'&gt; trial 15&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SD2.jpg"  tags="corsi Block_5_5 blank active"  />
+        <stimulus  identifier="corsi_146"  label="&lt;span id='labelId_146'&gt; trial 15&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SDe5.jpg"  tags="corsi Block_5_5 active"  />
+        <stimulus  identifier="corsi_147"  label="&lt;span id='labelId_147'&gt; trial 15&lt;/span&gt;"  correctResponses="ZRQYH"  pauseMs="0"  imagePath="stimuli/corsi/SDW5.jpg"  tags="corsi Block_5_5 letters active"  />
+        <stimulus  identifier="corsi_148"  label="&lt;span id='labelId_148'&gt; trial 16&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_16"  tags="corsi Block_6_1 greeting active"  />
+        <stimulus  identifier="corsi_149"  label="&lt;span id='labelId_149'&gt; trial 16&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCa1.jpg"  tags="corsi Block_6_1 active"  />
+        <stimulus  identifier="corsi_150"  label="&lt;span id='labelId_150'&gt; trial 16&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_1 blank active"  />
+        <stimulus  identifier="corsi_151"  label="&lt;span id='labelId_151'&gt; trial 16&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCa2.jpg"  tags="corsi Block_6_1 active"  />
+        <stimulus  identifier="corsi_152"  label="&lt;span id='labelId_152'&gt; trial 16&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_1 blank active"  />
+        <stimulus  identifier="corsi_153"  label="&lt;span id='labelId_153'&gt; trial 16&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCa3.jpg"  tags="corsi Block_6_1 active"  />
+        <stimulus  identifier="corsi_154"  label="&lt;span id='labelId_154'&gt; trial 16&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_1 blank active"  />
+        <stimulus  identifier="corsi_155"  label="&lt;span id='labelId_155'&gt; trial 16&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCa4.jpg"  tags="corsi Block_6_1 active"  />
+        <stimulus  identifier="corsi_156"  label="&lt;span id='labelId_156'&gt; trial 16&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_1 blank active"  />
+        <stimulus  identifier="corsi_157"  label="&lt;span id='labelId_157'&gt; trial 16&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCa5.jpg"  tags="corsi Block_6_1 active"  />
+        <stimulus  identifier="corsi_158"  label="&lt;span id='labelId_158'&gt; trial 16&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_1 blank active"  />
+        <stimulus  identifier="corsi_159"  label="&lt;span id='labelId_159'&gt; trial 16&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCa6.jpg"  tags="corsi Block_6_1 active"  />
+        <stimulus  identifier="corsi_160"  label="&lt;span id='labelId_160'&gt; trial 16&lt;/span&gt;"  correctResponses="DWNKYC"  pauseMs="0"  imagePath="stimuli/corsi/SCW1.jpg"  tags="corsi Block_6_1 letters active"  />
+        <stimulus  identifier="corsi_161"  label="&lt;span id='labelId_161'&gt; trial 17&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_17"  tags="corsi Block_6_2 greeting active"  />
+        <stimulus  identifier="corsi_162"  label="&lt;span id='labelId_162'&gt; trial 17&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCb1.jpg"  tags="corsi Block_6_2 active"  />
+        <stimulus  identifier="corsi_163"  label="&lt;span id='labelId_163'&gt; trial 17&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_2 blank active"  />
+        <stimulus  identifier="corsi_164"  label="&lt;span id='labelId_164'&gt; trial 17&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCb2.jpg"  tags="corsi Block_6_2 active"  />
+        <stimulus  identifier="corsi_165"  label="&lt;span id='labelId_165'&gt; trial 17&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_2 blank active"  />
+        <stimulus  identifier="corsi_166"  label="&lt;span id='labelId_166'&gt; trial 17&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCb3.jpg"  tags="corsi Block_6_2 active"  />
+        <stimulus  identifier="corsi_167"  label="&lt;span id='labelId_167'&gt; trial 17&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_2 blank active"  />
+        <stimulus  identifier="corsi_168"  label="&lt;span id='labelId_168'&gt; trial 17&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCb4.jpg"  tags="corsi Block_6_2 active"  />
+        <stimulus  identifier="corsi_169"  label="&lt;span id='labelId_169'&gt; trial 17&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_2 blank active"  />
+        <stimulus  identifier="corsi_170"  label="&lt;span id='labelId_170'&gt; trial 17&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCb5.jpg"  tags="corsi Block_6_2 active"  />
+        <stimulus  identifier="corsi_171"  label="&lt;span id='labelId_171'&gt; trial 17&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_2 blank active"  />
+        <stimulus  identifier="corsi_172"  label="&lt;span id='labelId_172'&gt; trial 17&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCb6.jpg"  tags="corsi Block_6_2 active"  />
+        <stimulus  identifier="corsi_173"  label="&lt;span id='labelId_173'&gt; trial 17&lt;/span&gt;"  correctResponses="NHYWKD"  pauseMs="0"  imagePath="stimuli/corsi/SCW2.jpg"  tags="corsi Block_6_2 letters active"  />
+        <stimulus  identifier="corsi_174"  label="&lt;span id='labelId_174'&gt; trial 18&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_18"  tags="corsi Block_6_3 greeting active"  />
+        <stimulus  identifier="corsi_175"  label="&lt;span id='labelId_175'&gt; trial 18&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCc1.jpg"  tags="corsi Block_6_3 active"  />
+        <stimulus  identifier="corsi_176"  label="&lt;span id='labelId_176'&gt; trial 18&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_3 blank active"  />
+        <stimulus  identifier="corsi_177"  label="&lt;span id='labelId_177'&gt; trial 18&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCc2.jpg"  tags="corsi Block_6_3 active"  />
+        <stimulus  identifier="corsi_178"  label="&lt;span id='labelId_178'&gt; trial 18&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_3 blank active"  />
+        <stimulus  identifier="corsi_179"  label="&lt;span id='labelId_179'&gt; trial 18&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCc3.jpg"  tags="corsi Block_6_3 active"  />
+        <stimulus  identifier="corsi_180"  label="&lt;span id='labelId_180'&gt; trial 18&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_3 blank active"  />
+        <stimulus  identifier="corsi_181"  label="&lt;span id='labelId_181'&gt; trial 18&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCc4.jpg"  tags="corsi Block_6_3 active"  />
+        <stimulus  identifier="corsi_182"  label="&lt;span id='labelId_182'&gt; trial 18&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_3 blank active"  />
+        <stimulus  identifier="corsi_183"  label="&lt;span id='labelId_183'&gt; trial 18&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCc5.jpg"  tags="corsi Block_6_3 active"  />
+        <stimulus  identifier="corsi_184"  label="&lt;span id='labelId_184'&gt; trial 18&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC1.jpg"  tags="corsi Block_6_3 blank active"  />
+        <stimulus  identifier="corsi_185"  label="&lt;span id='labelId_185'&gt; trial 18&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCc6.jpg"  tags="corsi Block_6_3 active"  />
+        <stimulus  identifier="corsi_186"  label="&lt;span id='labelId_186'&gt; trial 18&lt;/span&gt;"  correctResponses="WJQDHY"  pauseMs="0"  imagePath="stimuli/corsi/SCW3.jpg"  tags="corsi Block_6_3 letters active"  />
+        <stimulus  identifier="corsi_187"  label="&lt;span id='labelId_187'&gt; trial 19&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_19"  tags="corsi Block_6_4 greeting active"  />
+        <stimulus  identifier="corsi_188"  label="&lt;span id='labelId_188'&gt; trial 19&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCd1.jpg"  tags="corsi Block_6_4 active"  />
+        <stimulus  identifier="corsi_189"  label="&lt;span id='labelId_189'&gt; trial 19&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC2.jpg"  tags="corsi Block_6_4 blank active"  />
+        <stimulus  identifier="corsi_190"  label="&lt;span id='labelId_190'&gt; trial 19&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCd2.jpg"  tags="corsi Block_6_4 active"  />
+        <stimulus  identifier="corsi_191"  label="&lt;span id='labelId_191'&gt; trial 19&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC2.jpg"  tags="corsi Block_6_4 blank active"  />
+        <stimulus  identifier="corsi_192"  label="&lt;span id='labelId_192'&gt; trial 19&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCd3.jpg"  tags="corsi Block_6_4 active"  />
+        <stimulus  identifier="corsi_193"  label="&lt;span id='labelId_193'&gt; trial 19&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC2.jpg"  tags="corsi Block_6_4 blank active"  />
+        <stimulus  identifier="corsi_194"  label="&lt;span id='labelId_194'&gt; trial 19&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCd4.jpg"  tags="corsi Block_6_4 active"  />
+        <stimulus  identifier="corsi_195"  label="&lt;span id='labelId_195'&gt; trial 19&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC2.jpg"  tags="corsi Block_6_4 blank active"  />
+        <stimulus  identifier="corsi_196"  label="&lt;span id='labelId_196'&gt; trial 19&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCd5.jpg"  tags="corsi Block_6_4 active"  />
+        <stimulus  identifier="corsi_197"  label="&lt;span id='labelId_197'&gt; trial 19&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC2.jpg"  tags="corsi Block_6_4 blank active"  />
+        <stimulus  identifier="corsi_198"  label="&lt;span id='labelId_198'&gt; trial 19&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCd6.jpg"  tags="corsi Block_6_4 active"  />
+        <stimulus  identifier="corsi_199"  label="&lt;span id='labelId_199'&gt; trial 19&lt;/span&gt;"  correctResponses="NKWCQJ"  pauseMs="0"  imagePath="stimuli/corsi/SCW4.jpg"  tags="corsi Block_6_4 letters active"  />
+        <stimulus  identifier="corsi_200"  label="&lt;span id='labelId_200'&gt; trial 20&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_20"  tags="corsi Block_6_5 greeting active"  />
+        <stimulus  identifier="corsi_201"  label="&lt;span id='labelId_201'&gt; trial 20&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCe1.jpg"  tags="corsi Block_6_5 active"  />
+        <stimulus  identifier="corsi_202"  label="&lt;span id='labelId_202'&gt; trial 20&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC2.jpg"  tags="corsi Block_6_5 blank active"  />
+        <stimulus  identifier="corsi_203"  label="&lt;span id='labelId_203'&gt; trial 20&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCe2.jpg"  tags="corsi Block_6_5 active"  />
+        <stimulus  identifier="corsi_204"  label="&lt;span id='labelId_204'&gt; trial 20&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC2.jpg"  tags="corsi Block_6_5 blank active"  />
+        <stimulus  identifier="corsi_205"  label="&lt;span id='labelId_205'&gt; trial 20&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCe3.jpg"  tags="corsi Block_6_5 active"  />
+        <stimulus  identifier="corsi_206"  label="&lt;span id='labelId_206'&gt; trial 20&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC2.jpg"  tags="corsi Block_6_5 blank active"  />
+        <stimulus  identifier="corsi_207"  label="&lt;span id='labelId_207'&gt; trial 20&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCe4.jpg"  tags="corsi Block_6_5 active"  />
+        <stimulus  identifier="corsi_208"  label="&lt;span id='labelId_208'&gt; trial 20&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC2.jpg"  tags="corsi Block_6_5 blank active"  />
+        <stimulus  identifier="corsi_209"  label="&lt;span id='labelId_209'&gt; trial 20&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCe5.jpg"  tags="corsi Block_6_5 active"  />
+        <stimulus  identifier="corsi_210"  label="&lt;span id='labelId_210'&gt; trial 20&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SC2.jpg"  tags="corsi Block_6_5 blank active"  />
+        <stimulus  identifier="corsi_211"  label="&lt;span id='labelId_211'&gt; trial 20&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SCe6.jpg"  tags="corsi Block_6_5 active"  />
+        <stimulus  identifier="corsi_212"  label="&lt;span id='labelId_212'&gt; trial 20&lt;/span&gt;"  correctResponses="JWNHDK"  pauseMs="0"  imagePath="stimuli/corsi/SCW5.jpg"  tags="corsi Block_6_5 letters active"  />
+        <stimulus  identifier="corsi_213"  label="&lt;span id='labelId_213'&gt; trial 21&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_21"  tags="corsi Block_7_1 greeting active"  />
+        <stimulus  identifier="corsi_214"  label="&lt;span id='labelId_214'&gt; trial 21&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBa1.jpg"  tags="corsi Block_7_1 active"  />
+        <stimulus  identifier="corsi_215"  label="&lt;span id='labelId_215'&gt; trial 21&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_1 blank active"  />
+        <stimulus  identifier="corsi_216"  label="&lt;span id='labelId_216'&gt; trial 21&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBa2.jpg"  tags="corsi Block_7_1 active"  />
+        <stimulus  identifier="corsi_217"  label="&lt;span id='labelId_217'&gt; trial 21&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_1 blank active"  />
+        <stimulus  identifier="corsi_218"  label="&lt;span id='labelId_218'&gt; trial 21&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBa3.jpg"  tags="corsi Block_7_1 active"  />
+        <stimulus  identifier="corsi_219"  label="&lt;span id='labelId_219'&gt; trial 21&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_1 blank active"  />
+        <stimulus  identifier="corsi_220"  label="&lt;span id='labelId_220'&gt; trial 21&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBa4.jpg"  tags="corsi Block_7_1 active"  />
+        <stimulus  identifier="corsi_221"  label="&lt;span id='labelId_221'&gt; trial 21&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_1 blank active"  />
+        <stimulus  identifier="corsi_222"  label="&lt;span id='labelId_222'&gt; trial 21&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBa5.jpg"  tags="corsi Block_7_1 active"  />
+        <stimulus  identifier="corsi_223"  label="&lt;span id='labelId_223'&gt; trial 21&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_1 blank active"  />
+        <stimulus  identifier="corsi_224"  label="&lt;span id='labelId_224'&gt; trial 21&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBa6.jpg"  tags="corsi Block_7_1 active"  />
+        <stimulus  identifier="corsi_225"  label="&lt;span id='labelId_225'&gt; trial 21&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_1 blank active"  />
+        <stimulus  identifier="corsi_226"  label="&lt;span id='labelId_226'&gt; trial 21&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBa7.jpg"  tags="corsi Block_7_1 active"  />
+        <stimulus  identifier="corsi_227"  label="&lt;span id='labelId_227'&gt; trial 21&lt;/span&gt;"  correctResponses="XJYKRZV"  pauseMs="0"  imagePath="stimuli/corsi/SBW1.jpg"  tags="corsi Block_7_1 letters active"  />
+        <stimulus  identifier="corsi_228"  label="&lt;span id='labelId_228'&gt; trial 22&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_22"  tags="corsi Block_7_2 greeting active"  />
+        <stimulus  identifier="corsi_229"  label="&lt;span id='labelId_229'&gt; trial 22&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBb1.jpg"  tags="corsi Block_7_2 active"  />
+        <stimulus  identifier="corsi_230"  label="&lt;span id='labelId_230'&gt; trial 22&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_2 blank active"  />
+        <stimulus  identifier="corsi_231"  label="&lt;span id='labelId_231'&gt; trial 22&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBb2.jpg"  tags="corsi Block_7_2 active"  />
+        <stimulus  identifier="corsi_232"  label="&lt;span id='labelId_232'&gt; trial 22&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_2 blank active"  />
+        <stimulus  identifier="corsi_233"  label="&lt;span id='labelId_233'&gt; trial 22&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBb3.jpg"  tags="corsi Block_7_2 active"  />
+        <stimulus  identifier="corsi_234"  label="&lt;span id='labelId_234'&gt; trial 22&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_2 blank active"  />
+        <stimulus  identifier="corsi_235"  label="&lt;span id='labelId_235'&gt; trial 22&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBb4.jpg"  tags="corsi Block_7_2 active"  />
+        <stimulus  identifier="corsi_236"  label="&lt;span id='labelId_236'&gt; trial 22&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_2 blank active"  />
+        <stimulus  identifier="corsi_237"  label="&lt;span id='labelId_237'&gt; trial 22&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBb5.jpg"  tags="corsi Block_7_2 active"  />
+        <stimulus  identifier="corsi_238"  label="&lt;span id='labelId_238'&gt; trial 22&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_2 blank active"  />
+        <stimulus  identifier="corsi_239"  label="&lt;span id='labelId_239'&gt; trial 22&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBb6.jpg"  tags="corsi Block_7_2 active"  />
+        <stimulus  identifier="corsi_240"  label="&lt;span id='labelId_240'&gt; trial 22&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_2 blank active"  />
+        <stimulus  identifier="corsi_241"  label="&lt;span id='labelId_241'&gt; trial 22&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBb7.jpg"  tags="corsi Block_7_2 active"  />
+        <stimulus  identifier="corsi_242"  label="&lt;span id='labelId_242'&gt; trial 22&lt;/span&gt;"  correctResponses="KDXZYVJ"  pauseMs="0"  imagePath="stimuli/corsi/SBW2.jpg"  tags="corsi Block_7_2 letters active"  />
+        <stimulus  identifier="corsi_243"  label="&lt;span id='labelId_243'&gt; trial 23&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_23"  tags="corsi Block_7_3 greeting active"  />
+        <stimulus  identifier="corsi_244"  label="&lt;span id='labelId_244'&gt; trial 23&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBc1.jpg"  tags="corsi Block_7_3 active"  />
+        <stimulus  identifier="corsi_245"  label="&lt;span id='labelId_245'&gt; trial 23&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_3 blank active"  />
+        <stimulus  identifier="corsi_246"  label="&lt;span id='labelId_246'&gt; trial 23&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBc2.jpg"  tags="corsi Block_7_3 active"  />
+        <stimulus  identifier="corsi_247"  label="&lt;span id='labelId_247'&gt; trial 23&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_3 blank active"  />
+        <stimulus  identifier="corsi_248"  label="&lt;span id='labelId_248'&gt; trial 23&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBc3.jpg"  tags="corsi Block_7_3 active"  />
+        <stimulus  identifier="corsi_249"  label="&lt;span id='labelId_249'&gt; trial 23&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_3 blank active"  />
+        <stimulus  identifier="corsi_250"  label="&lt;span id='labelId_250'&gt; trial 23&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBc4.jpg"  tags="corsi Block_7_3 active"  />
+        <stimulus  identifier="corsi_251"  label="&lt;span id='labelId_251'&gt; trial 23&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_3 blank active"  />
+        <stimulus  identifier="corsi_252"  label="&lt;span id='labelId_252'&gt; trial 23&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBc5.jpg"  tags="corsi Block_7_3 active"  />
+        <stimulus  identifier="corsi_253"  label="&lt;span id='labelId_253'&gt; trial 23&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_3 blank active"  />
+        <stimulus  identifier="corsi_254"  label="&lt;span id='labelId_254'&gt; trial 23&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBc6.jpg"  tags="corsi Block_7_3 active"  />
+        <stimulus  identifier="corsi_255"  label="&lt;span id='labelId_255'&gt; trial 23&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB1.jpg"  tags="corsi Block_7_3 blank active"  />
+        <stimulus  identifier="corsi_256"  label="&lt;span id='labelId_256'&gt; trial 23&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBc7.jpg"  tags="corsi Block_7_3 active"  />
+        <stimulus  identifier="corsi_257"  label="&lt;span id='labelId_257'&gt; trial 23&lt;/span&gt;"  correctResponses="VDKRZJY"  pauseMs="0"  imagePath="stimuli/corsi/SBW3.jpg"  tags="corsi Block_7_3 letters active"  />
+        <stimulus  identifier="corsi_258"  label="&lt;span id='labelId_258'&gt; trial 24&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_24"  tags="corsi Block_7_4 greeting active"  />
+        <stimulus  identifier="corsi_259"  label="&lt;span id='labelId_259'&gt; trial 24&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBd1.jpg"  tags="corsi Block_7_4 active"  />
+        <stimulus  identifier="corsi_260"  label="&lt;span id='labelId_260'&gt; trial 24&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_4 blank active"  />
+        <stimulus  identifier="corsi_261"  label="&lt;span id='labelId_261'&gt; trial 24&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBd2.jpg"  tags="corsi Block_7_4 active"  />
+        <stimulus  identifier="corsi_262"  label="&lt;span id='labelId_262'&gt; trial 24&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_4 blank active"  />
+        <stimulus  identifier="corsi_263"  label="&lt;span id='labelId_263'&gt; trial 24&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBd3.jpg"  tags="corsi Block_7_4 active"  />
+        <stimulus  identifier="corsi_264"  label="&lt;span id='labelId_264'&gt; trial 24&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_4 blank active"  />
+        <stimulus  identifier="corsi_265"  label="&lt;span id='labelId_265'&gt; trial 24&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBd4.jpg"  tags="corsi Block_7_4 active"  />
+        <stimulus  identifier="corsi_266"  label="&lt;span id='labelId_266'&gt; trial 24&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_4 blank active"  />
+        <stimulus  identifier="corsi_267"  label="&lt;span id='labelId_267'&gt; trial 24&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBd5.jpg"  tags="corsi Block_7_4 active"  />
+        <stimulus  identifier="corsi_268"  label="&lt;span id='labelId_268'&gt; trial 24&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_4 blank active"  />
+        <stimulus  identifier="corsi_269"  label="&lt;span id='labelId_269'&gt; trial 24&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBd6.jpg"  tags="corsi Block_7_4 active"  />
+        <stimulus  identifier="corsi_270"  label="&lt;span id='labelId_270'&gt; trial 24&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_4 blank active"  />
+        <stimulus  identifier="corsi_271"  label="&lt;span id='labelId_271'&gt; trial 24&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBd7.jpg"  tags="corsi Block_7_4 active"  />
+        <stimulus  identifier="corsi_272"  label="&lt;span id='labelId_272'&gt; trial 24&lt;/span&gt;"  correctResponses="RXKHYJV"  pauseMs="0"  imagePath="stimuli/corsi/SBW4.jpg"  tags="corsi Block_7_4 letters active"  />
+        <stimulus  identifier="corsi_273"  label="&lt;span id='labelId_273'&gt; trial 25&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_25"  tags="corsi Block_7_5 greeting active"  />
+        <stimulus  identifier="corsi_274"  label="&lt;span id='labelId_274'&gt; trial 25&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBe1.jpg"  tags="corsi Block_7_5 active"  />
+        <stimulus  identifier="corsi_275"  label="&lt;span id='labelId_275'&gt; trial 25&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_5 blank active"  />
+        <stimulus  identifier="corsi_276"  label="&lt;span id='labelId_276'&gt; trial 25&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBe2.jpg"  tags="corsi Block_7_5 active"  />
+        <stimulus  identifier="corsi_277"  label="&lt;span id='labelId_277'&gt; trial 25&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_5 blank active"  />
+        <stimulus  identifier="corsi_278"  label="&lt;span id='labelId_278'&gt; trial 25&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBe3.jpg"  tags="corsi Block_7_5 active"  />
+        <stimulus  identifier="corsi_279"  label="&lt;span id='labelId_279'&gt; trial 25&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_5 blank active"  />
+        <stimulus  identifier="corsi_280"  label="&lt;span id='labelId_280'&gt; trial 25&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBe4.jpg"  tags="corsi Block_7_5 active"  />
+        <stimulus  identifier="corsi_281"  label="&lt;span id='labelId_281'&gt; trial 25&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_5 blank active"  />
+        <stimulus  identifier="corsi_282"  label="&lt;span id='labelId_282'&gt; trial 25&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBe5.jpg"  tags="corsi Block_7_5 active"  />
+        <stimulus  identifier="corsi_283"  label="&lt;span id='labelId_283'&gt; trial 25&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_5 blank active"  />
+        <stimulus  identifier="corsi_284"  label="&lt;span id='labelId_284'&gt; trial 25&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBe6.jpg"  tags="corsi Block_7_5 active"  />
+        <stimulus  identifier="corsi_285"  label="&lt;span id='labelId_285'&gt; trial 25&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SB2.jpg"  tags="corsi Block_7_5 blank active"  />
+        <stimulus  identifier="corsi_286"  label="&lt;span id='labelId_286'&gt; trial 25&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SBe7.jpg"  tags="corsi Block_7_5 active"  />
+        <stimulus  identifier="corsi_287"  label="&lt;span id='labelId_287'&gt; trial 25&lt;/span&gt;"  correctResponses="KJVHRXY"  pauseMs="0"  imagePath="stimuli/corsi/SBW5.jpg"  tags="corsi Block_7_5 letters active"  />
+        <stimulus  identifier="corsi_288"  label="&lt;span id='labelId_288'&gt; trial 26&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_26"  tags="corsi Block_8_1 greeting active"  />
+        <stimulus  identifier="corsi_289"  label="&lt;span id='labelId_289'&gt; trial 26&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAa1.jpg"  tags="corsi Block_8_1 active"  />
+        <stimulus  identifier="corsi_290"  label="&lt;span id='labelId_290'&gt; trial 26&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_1 blank active"  />
+        <stimulus  identifier="corsi_291"  label="&lt;span id='labelId_291'&gt; trial 26&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAa2.jpg"  tags="corsi Block_8_1 active"  />
+        <stimulus  identifier="corsi_292"  label="&lt;span id='labelId_292'&gt; trial 26&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_1 blank active"  />
+        <stimulus  identifier="corsi_293"  label="&lt;span id='labelId_293'&gt; trial 26&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAa3.jpg"  tags="corsi Block_8_1 active"  />
+        <stimulus  identifier="corsi_294"  label="&lt;span id='labelId_294'&gt; trial 26&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_1 blank active"  />
+        <stimulus  identifier="corsi_295"  label="&lt;span id='labelId_295'&gt; trial 26&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAa4.jpg"  tags="corsi Block_8_1 active"  />
+        <stimulus  identifier="corsi_296"  label="&lt;span id='labelId_296'&gt; trial 26&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_1 blank active"  />
+        <stimulus  identifier="corsi_297"  label="&lt;span id='labelId_297'&gt; trial 26&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAa5.jpg"  tags="corsi Block_8_1 active"  />
+        <stimulus  identifier="corsi_298"  label="&lt;span id='labelId_298'&gt; trial 26&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_1 blank active"  />
+        <stimulus  identifier="corsi_299"  label="&lt;span id='labelId_299'&gt; trial 26&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAa6.jpg"  tags="corsi Block_8_1 active"  />
+        <stimulus  identifier="corsi_300"  label="&lt;span id='labelId_300'&gt; trial 26&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_1 blank active"  />
+        <stimulus  identifier="corsi_301"  label="&lt;span id='labelId_301'&gt; trial 26&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAa7.jpg"  tags="corsi Block_8_1 active"  />
+        <stimulus  identifier="corsi_302"  label="&lt;span id='labelId_302'&gt; trial 26&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_1 blank active"  />
+        <stimulus  identifier="corsi_303"  label="&lt;span id='labelId_303'&gt; trial 26&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAa8.jpg"  tags="corsi Block_8_1 active"  />
+        <stimulus  identifier="corsi_304"  label="&lt;span id='labelId_304'&gt; trial 26&lt;/span&gt;"  correctResponses="ZWRHNQBX"  pauseMs="0"  imagePath="stimuli/corsi/SAW1.jpg"  tags="corsi Block_8_1 letters active"  />
+        <stimulus  identifier="corsi_305"  label="&lt;span id='labelId_305'&gt; trial 27&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_27"  tags="corsi Block_8_2 greeting active"  />
+        <stimulus  identifier="corsi_306"  label="&lt;span id='labelId_306'&gt; trial 27&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAb1.jpg"  tags="corsi Block_8_2 active"  />
+        <stimulus  identifier="corsi_307"  label="&lt;span id='labelId_307'&gt; trial 27&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_2 blank active"  />
+        <stimulus  identifier="corsi_308"  label="&lt;span id='labelId_308'&gt; trial 27&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAb2.jpg"  tags="corsi Block_8_2 active"  />
+        <stimulus  identifier="corsi_309"  label="&lt;span id='labelId_309'&gt; trial 27&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_2 blank active"  />
+        <stimulus  identifier="corsi_310"  label="&lt;span id='labelId_310'&gt; trial 27&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAb3.jpg"  tags="corsi Block_8_2 active"  />
+        <stimulus  identifier="corsi_311"  label="&lt;span id='labelId_311'&gt; trial 27&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_2 blank active"  />
+        <stimulus  identifier="corsi_312"  label="&lt;span id='labelId_312'&gt; trial 27&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAb4.jpg"  tags="corsi Block_8_2 active"  />
+        <stimulus  identifier="corsi_313"  label="&lt;span id='labelId_313'&gt; trial 27&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_2 blank active"  />
+        <stimulus  identifier="corsi_314"  label="&lt;span id='labelId_314'&gt; trial 27&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAb5.jpg"  tags="corsi Block_8_2 active"  />
+        <stimulus  identifier="corsi_315"  label="&lt;span id='labelId_315'&gt; trial 27&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_2 blank active"  />
+        <stimulus  identifier="corsi_316"  label="&lt;span id='labelId_316'&gt; trial 27&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAb6.jpg"  tags="corsi Block_8_2 active"  />
+        <stimulus  identifier="corsi_317"  label="&lt;span id='labelId_317'&gt; trial 27&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_2 blank active"  />
+        <stimulus  identifier="corsi_318"  label="&lt;span id='labelId_318'&gt; trial 27&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAb7.jpg"  tags="corsi Block_8_2 active"  />
+        <stimulus  identifier="corsi_319"  label="&lt;span id='labelId_319'&gt; trial 27&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_2 blank active"  />
+        <stimulus  identifier="corsi_320"  label="&lt;span id='labelId_320'&gt; trial 27&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAb8.jpg"  tags="corsi Block_8_2 active"  />
+        <stimulus  identifier="corsi_321"  label="&lt;span id='labelId_321'&gt; trial 27&lt;/span&gt;"  correctResponses="WNYBQRZX"  pauseMs="0"  imagePath="stimuli/corsi/SAW2.jpg"  tags="corsi Block_8_2 letters active"  />
+        <stimulus  identifier="corsi_322"  label="&lt;span id='labelId_322'&gt; trial 28&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_28"  tags="corsi Block_8_3 greeting active"  />
+        <stimulus  identifier="corsi_323"  label="&lt;span id='labelId_323'&gt; trial 28&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAc1.jpg"  tags="corsi Block_8_3 active"  />
+        <stimulus  identifier="corsi_324"  label="&lt;span id='labelId_324'&gt; trial 28&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_3 blank active"  />
+        <stimulus  identifier="corsi_325"  label="&lt;span id='labelId_325'&gt; trial 28&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAc2.jpg"  tags="corsi Block_8_3 active"  />
+        <stimulus  identifier="corsi_326"  label="&lt;span id='labelId_326'&gt; trial 28&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_3 blank active"  />
+        <stimulus  identifier="corsi_327"  label="&lt;span id='labelId_327'&gt; trial 28&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAc3.jpg"  tags="corsi Block_8_3 active"  />
+        <stimulus  identifier="corsi_328"  label="&lt;span id='labelId_328'&gt; trial 28&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_3 blank active"  />
+        <stimulus  identifier="corsi_329"  label="&lt;span id='labelId_329'&gt; trial 28&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAc4.jpg"  tags="corsi Block_8_3 active"  />
+        <stimulus  identifier="corsi_330"  label="&lt;span id='labelId_330'&gt; trial 28&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_3 blank active"  />
+        <stimulus  identifier="corsi_331"  label="&lt;span id='labelId_331'&gt; trial 28&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAc5.jpg"  tags="corsi Block_8_3 active"  />
+        <stimulus  identifier="corsi_332"  label="&lt;span id='labelId_332'&gt; trial 28&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_3 blank active"  />
+        <stimulus  identifier="corsi_333"  label="&lt;span id='labelId_333'&gt; trial 28&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAc6.jpg"  tags="corsi Block_8_3 active"  />
+        <stimulus  identifier="corsi_334"  label="&lt;span id='labelId_334'&gt; trial 28&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_3 blank active"  />
+        <stimulus  identifier="corsi_335"  label="&lt;span id='labelId_335'&gt; trial 28&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAc7.jpg"  tags="corsi Block_8_3 active"  />
+        <stimulus  identifier="corsi_336"  label="&lt;span id='labelId_336'&gt; trial 28&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA1.jpg"  tags="corsi Block_8_3 blank active"  />
+        <stimulus  identifier="corsi_337"  label="&lt;span id='labelId_337'&gt; trial 28&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAc8.jpg"  tags="corsi Block_8_3 active"  />
+        <stimulus  identifier="corsi_338"  label="&lt;span id='labelId_338'&gt; trial 28&lt;/span&gt;"  correctResponses="ZHQXNBRW"  pauseMs="0"  imagePath="stimuli/corsi/SAW3.jpg"  tags="corsi Block_8_3 letters active"  />
+        <stimulus  identifier="corsi_339"  label="&lt;span id='labelId_339'&gt; trial 29&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_29"  tags="corsi Block_8_4 greeting active"  />
+        <stimulus  identifier="corsi_340"  label="&lt;span id='labelId_340'&gt; trial 29&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAd1.jpg"  tags="corsi Block_8_4 active"  />
+        <stimulus  identifier="corsi_341"  label="&lt;span id='labelId_341'&gt; trial 29&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_4 blank active"  />
+        <stimulus  identifier="corsi_342"  label="&lt;span id='labelId_342'&gt; trial 29&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAd2.jpg"  tags="corsi Block_8_4 active"  />
+        <stimulus  identifier="corsi_343"  label="&lt;span id='labelId_343'&gt; trial 29&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_4 blank active"  />
+        <stimulus  identifier="corsi_344"  label="&lt;span id='labelId_344'&gt; trial 29&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAd3.jpg"  tags="corsi Block_8_4 active"  />
+        <stimulus  identifier="corsi_345"  label="&lt;span id='labelId_345'&gt; trial 29&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_4 blank active"  />
+        <stimulus  identifier="corsi_346"  label="&lt;span id='labelId_346'&gt; trial 29&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAd4.jpg"  tags="corsi Block_8_4 active"  />
+        <stimulus  identifier="corsi_347"  label="&lt;span id='labelId_347'&gt; trial 29&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_4 blank active"  />
+        <stimulus  identifier="corsi_348"  label="&lt;span id='labelId_348'&gt; trial 29&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAd5.jpg"  tags="corsi Block_8_4 active"  />
+        <stimulus  identifier="corsi_349"  label="&lt;span id='labelId_349'&gt; trial 29&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_4 blank active"  />
+        <stimulus  identifier="corsi_350"  label="&lt;span id='labelId_350'&gt; trial 29&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAd6.jpg"  tags="corsi Block_8_4 active"  />
+        <stimulus  identifier="corsi_351"  label="&lt;span id='labelId_351'&gt; trial 29&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_4 blank active"  />
+        <stimulus  identifier="corsi_352"  label="&lt;span id='labelId_352'&gt; trial 29&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAd7.jpg"  tags="corsi Block_8_4 active"  />
+        <stimulus  identifier="corsi_353"  label="&lt;span id='labelId_353'&gt; trial 29&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_4 blank active"  />
+        <stimulus  identifier="corsi_354"  label="&lt;span id='labelId_354'&gt; trial 29&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAd8.jpg"  tags="corsi Block_8_4 active"  />
+        <stimulus  identifier="corsi_355"  label="&lt;span id='labelId_355'&gt; trial 29&lt;/span&gt;"  correctResponses="NXZBQYHR"  pauseMs="0"  imagePath="stimuli/corsi/SAW4.jpg"  tags="corsi Block_8_4 letters active"  />
+        <stimulus  identifier="corsi_356"  label="&lt;span id='labelId_356'&gt; trial 30&lt;/span&gt;"  pauseMs="0"  audioPath="stimuli/corsi/trial_30"  tags="corsi Block_8_5 greeting active"  />
+        <stimulus  identifier="corsi_357"  label="&lt;span id='labelId_357'&gt; trial 30&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAe1.jpg"  tags="corsi Block_8_5 active"  />
+        <stimulus  identifier="corsi_358"  label="&lt;span id='labelId_358'&gt; trial 30&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_5 blank active"  />
+        <stimulus  identifier="corsi_359"  label="&lt;span id='labelId_359'&gt; trial 30&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAe2.jpg"  tags="corsi Block_8_5 active"  />
+        <stimulus  identifier="corsi_360"  label="&lt;span id='labelId_360'&gt; trial 30&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_5 blank active"  />
+        <stimulus  identifier="corsi_361"  label="&lt;span id='labelId_361'&gt; trial 30&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAe3.jpg"  tags="corsi Block_8_5 active"  />
+        <stimulus  identifier="corsi_362"  label="&lt;span id='labelId_362'&gt; trial 30&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_5 blank active"  />
+        <stimulus  identifier="corsi_363"  label="&lt;span id='labelId_363'&gt; trial 30&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAe4.jpg"  tags="corsi Block_8_5 active"  />
+        <stimulus  identifier="corsi_364"  label="&lt;span id='labelId_364'&gt; trial 30&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_5 blank active"  />
+        <stimulus  identifier="corsi_365"  label="&lt;span id='labelId_365'&gt; trial 30&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAe5.jpg"  tags="corsi Block_8_5 active"  />
+        <stimulus  identifier="corsi_366"  label="&lt;span id='labelId_366'&gt; trial 30&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_5 blank active"  />
+        <stimulus  identifier="corsi_367"  label="&lt;span id='labelId_367'&gt; trial 30&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAe6.jpg"  tags="corsi Block_8_5 active"  />
+        <stimulus  identifier="corsi_368"  label="&lt;span id='labelId_368'&gt; trial 30&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_5 blank active"  />
+        <stimulus  identifier="corsi_369"  label="&lt;span id='labelId_369'&gt; trial 30&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAe7.jpg"  tags="corsi Block_8_5 active"  />
+        <stimulus  identifier="corsi_370"  label="&lt;span id='labelId_370'&gt; trial 30&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SA2.jpg"  tags="corsi Block_8_5 blank active"  />
+        <stimulus  identifier="corsi_371"  label="&lt;span id='labelId_371'&gt; trial 30&lt;/span&gt;"  pauseMs="0"  imagePath="stimuli/corsi/SAe8.jpg"  tags="corsi Block_8_5 active"  />
+        <stimulus  identifier="corsi_372"  label="&lt;span id='labelId_372'&gt; trial 30&lt;/span&gt;"  correctResponses="BWYZXNHQ"  pauseMs="0"  imagePath="stimuli/corsi/SAW5.jpg"  tags="corsi Block_8_5 letters active"  /> 
     </stimuli>
 
 </experiment>
