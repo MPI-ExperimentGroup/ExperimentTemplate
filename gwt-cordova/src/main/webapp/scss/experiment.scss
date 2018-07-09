@@ -1112,7 +1112,9 @@ table#screenExample td {
     bottom: 0px;
     right: 0px;
 }
-
+.hiddenRegion {
+    display: none;
+}
 /*@-webkit-keyframes topLeft2BottomRightKeyFrames {
     from {padding-left: 0px; padding-top: 0px; padding-bottom: 50px; padding-right: 50px;}
     to {padding-left: 50px; padding-top: 50px; padding-bottom: 0px; padding-right: 0px;}
