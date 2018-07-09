@@ -46,6 +46,7 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
@@ -62,6 +63,8 @@ public class ComplexView extends SimpleView {
     private Label recordingLabel = null;
     private HorizontalPanel horizontalPanel = null;
     private VerticalPanel cellPanel = null;
+    private VerticalPanel regionPanel = null;
+    private final HashMap<String, VerticalPanel> regionPanels = new HashMap<>();
     private FlexTable gridPanel = null;
 
     private class ImageEntry {
@@ -95,6 +98,36 @@ public class ComplexView extends SimpleView {
 //        ;
 //        });
         setContent(outerPanel);
+    }
+
+    public void startRegion(final String regionId, final String styleName) {
+        VerticalPanel regionTemp = regionPanels.get(regionId);
+        if (regionTemp == null) {
+            regionTemp = new VerticalPanel();
+            regionPanels.put(regionId, regionTemp);
+        }
+        if (regionTemp.getParent() == null) {
+            getActivePanel().add(regionTemp);
+        }
+        regionPanel = regionTemp;
+    }
+
+    public void endRegion() {
+        regionPanel = null;
+    }
+
+    public void setRegionStyle(final String regionId, final String styleName) {
+        VerticalPanel regionTemp = regionPanels.get(regionId);
+        if (regionTemp != null) {
+            regionTemp.setStyleName(styleName);
+        }
+    }
+
+    public void clearRegion(final String regionId) {
+        VerticalPanel regionTemp = regionPanels.get(regionId);
+        if (regionTemp != null) {
+            regionTemp.clear();
+        }
     }
 
     public void startCell(String styleName) {
@@ -153,7 +186,7 @@ public class ComplexView extends SimpleView {
     }
 
     protected InsertPanel.ForIsWidget getActivePanel() {
-        return (cellPanel != null) ? cellPanel : (horizontalPanel != null) ? horizontalPanel : outerPanel;
+        return (regionPanel != null) ? regionPanel : (cellPanel != null) ? cellPanel : (horizontalPanel != null) ? horizontalPanel : outerPanel;
     }
 
     public void clearPageAndTimers(String styleName) {

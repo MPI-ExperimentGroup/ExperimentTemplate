@@ -92,6 +92,14 @@
         <column styleName="styleName">
             <plainText featureText="plainText in column"/>
         </column>
+        <region regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId" styleName="styleName"/>
+        <regionReplace regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="metadata_all_attributes" type="metadata" self="metadata_all_attributesScreen" title="metadata_all_attributes">
@@ -164,6 +172,14 @@
         <column styleName="styleName">
             <plainText featureText="plainText in column"/>
         </column>
+        <region regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId" styleName="styleName"/>
+        <regionReplace regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="preload_all_attributes" type="preload" self="preload_all_attributesScreen" title="preload_all_attributes">
@@ -250,6 +266,14 @@
         <column styleName="styleName">
             <plainText featureText="plainText in column"/>
         </column>
+        <region regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId" styleName="styleName"/>
+        <regionReplace regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <playVideo/>
         <rewindVideo/>
         <pauseVideo/>
@@ -1184,6 +1208,14 @@
         <column styleName="styleName">
             <plainText featureText="plainText in column"/>
         </column>
+        <region regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId" styleName="styleName"/>
+        <regionReplace regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <playVideo/>
         <rewindVideo/>
         <pauseVideo/>
@@ -1220,6 +1252,14 @@
         <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes">
+        <region regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId" styleName="styleName"/>
+        <regionReplace regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_all_attributes" type="colourReport" self="colourReport_all_attributesScreen" title="colourReport_all_attributes">
@@ -1258,6 +1298,14 @@
         <column styleName="styleName">
             <plainText featureText="plainText in column"/>
         </column>
+        <region regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId" styleName="styleName"/>
+        <regionReplace regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
         <showColourReport scoreThreshold="3">
             <aboveThreshold>
@@ -1335,6 +1383,14 @@
         <column styleName="styleName">
             <plainText featureText="plainText in column"/>
         </column>
+        <region regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId" styleName="styleName"/>
+        <regionReplace regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="menu_all_attributes" type="menu" self="menu_all_attributesScreen" title="menu_all_attributes">
@@ -1389,6 +1445,14 @@
         <column styleName="styleName">
             <plainText featureText="plainText in column"/>
         </column>
+        <region regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId" styleName="styleName"/>
+        <regionReplace regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="debug_all_attributes" type="debug" self="debug_all_attributesScreen" title="debug_all_attributes">
@@ -1442,6 +1506,14 @@
         <column styleName="styleName">
             <plainText featureText="plainText in column"/>
         </column>
+        <region regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId" styleName="styleName"/>
+        <regionReplace regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="text_all_attributes" type="text" self="text_all_attributesScreen" title="text_all_attributes">
@@ -1485,6 +1557,14 @@
         <column styleName="styleName">
             <plainText featureText="plainText in column"/>
         </column>
+        <region regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId" styleName="styleName"/>
+        <regionReplace regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="timeline_all_attributes" type="timeline" self="timeline_all_attributesScreen" title="timeline_all_attributes">
@@ -1536,6 +1616,14 @@
         <column styleName="styleName">
             <plainText featureText="plainText in column"/>
         </column>
+        <region regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId" styleName="styleName"/>
+        <regionReplace regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="transmission_minimal_attributes" type="transmission" self="transmission_minimal_attributesScreen" title="transmission_minimal_attributes">
@@ -1614,6 +1702,14 @@
         <column>
             <plainText featureText="plainText in column"/>
         </column>
+        <region regionId="regionId">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId"/>
+        <regionReplace regionId="regionId">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="metadata_minimal_attributes" type="metadata" self="metadata_minimal_attributesScreen" title="metadata_minimal_attributes">
@@ -1686,6 +1782,14 @@
         <column>
             <plainText featureText="plainText in column"/>
         </column>
+        <region regionId="regionId">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId"/>
+        <regionReplace regionId="regionId">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="preload_minimal_attributes" type="preload" self="preload_minimal_attributesScreen" title="preload_minimal_attributes">
@@ -1772,6 +1876,14 @@
         <column>
             <plainText featureText="plainText in column"/>
         </column>
+        <region regionId="regionId">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId"/>
+        <regionReplace regionId="regionId">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <playVideo/>
         <rewindVideo/>
         <pauseVideo/>
@@ -2706,6 +2818,14 @@
         <column>
             <plainText featureText="plainText in column"/>
         </column>
+        <region regionId="regionId">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId"/>
+        <regionReplace regionId="regionId">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <playVideo/>
         <rewindVideo/>
         <pauseVideo/>
@@ -2742,6 +2862,14 @@
         <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes">
+        <region regionId="regionId">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId"/>
+        <regionReplace regionId="regionId">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_minimal_attributes" type="colourReport" self="colourReport_minimal_attributesScreen" title="colourReport_minimal_attributes">
@@ -2780,6 +2908,14 @@
         <column>
             <plainText featureText="plainText in column"/>
         </column>
+        <region regionId="regionId">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId"/>
+        <regionReplace regionId="regionId">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
         <showColourReport scoreThreshold="3">
             <aboveThreshold>
@@ -2857,6 +2993,14 @@
         <column>
             <plainText featureText="plainText in column"/>
         </column>
+        <region regionId="regionId">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId"/>
+        <regionReplace regionId="regionId">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="menu_minimal_attributes" type="menu" self="menu_minimal_attributesScreen" title="menu_minimal_attributes">
@@ -2911,6 +3055,14 @@
         <column>
             <plainText featureText="plainText in column"/>
         </column>
+        <region regionId="regionId">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId"/>
+        <regionReplace regionId="regionId">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="debug_minimal_attributes" type="debug" self="debug_minimal_attributesScreen" title="debug_minimal_attributes">
@@ -2964,6 +3116,14 @@
         <column>
             <plainText featureText="plainText in column"/>
         </column>
+        <region regionId="regionId">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId"/>
+        <regionReplace regionId="regionId">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="text_minimal_attributes" type="text" self="text_minimal_attributesScreen" title="text_minimal_attributes">
@@ -3007,6 +3167,14 @@
         <column>
             <plainText featureText="plainText in column"/>
         </column>
+        <region regionId="regionId">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId"/>
+        <regionReplace regionId="regionId">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="timeline_minimal_attributes" type="timeline" self="timeline_minimal_attributesScreen" title="timeline_minimal_attributes">
@@ -3058,6 +3226,14 @@
         <column>
             <plainText featureText="plainText in column"/>
         </column>
+        <region regionId="regionId">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <regionStyle regionId="regionId"/>
+        <regionReplace regionId="regionId">
+            <plainText featureText="plainText in regionReplace"/>
+        </regionReplace>
+        <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter menuLabel="about" type="debug" self="about" title="about"/>

@@ -220,6 +220,27 @@ public abstract class AbstractPresenter implements Presenter {
         ((ComplexView) simpleView).endCell();
     }
 
+    protected void region(final String regionId, final String styleName, final TimedStimulusListener timedStimulusListener) {
+        ((ComplexView) simpleView).startRegion(regionId, styleName);
+        timedStimulusListener.postLoadTimerFired();
+        ((ComplexView) simpleView).endRegion();
+    }
+
+    protected void regionStyle(final String regionId, final String styleName) {
+        ((ComplexView) simpleView).setRegionStyle(regionId, styleName);
+    }
+
+    protected void regionReplace(final String regionId, final String styleName, final TimedStimulusListener timedStimulusListener) {
+        ((ComplexView) simpleView).clearRegion(regionId);
+        ((ComplexView) simpleView).startRegion(regionId, styleName);
+        timedStimulusListener.postLoadTimerFired();
+        ((ComplexView) simpleView).endRegion();
+    }
+
+    protected void regionClear(final String regionId) {
+        ((ComplexView) simpleView).clearRegion(regionId);
+    }
+
     @Override
     public void fireBackEvent() {
         if (backEventListner != null) {
