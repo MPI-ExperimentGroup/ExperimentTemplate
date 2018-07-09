@@ -37,9 +37,9 @@
         <htmlText featureText="...."/>
         <addPadding/>
         <addPadding/>
-        <targetButton featureText="Aan de slag" target="stimuliScreenCorsiPractice"/>
+        <targetButton featureText="Aan de slag" target="stimuliScreenCorsi"/>
     </presenter>
-    <presenter displayOrder="50" next="Admin" type="stimulus" self="stimuliScreenCorsi3" title="">
+    <presenter displayOrder="50" next="Admin" type="stimulus" self="stimuliScreenCorsi" title="">
         <loadStimulus eventTag="stimuliCorsiN" randomise="false" repeatCount="1" maxStimuli="372">
             <hasMoreStimulus>
                 <clearPage/>
@@ -49,56 +49,83 @@
                 <addPadding/>
                 <addPadding/>
                 <addPadding/> 
-                <stimulusCodeAudio msToNext="0" showPlaybackIndicator="false" dataChannel="4" codeFormat="stimuli/corsi/&lt;code&gt;_greeting.jpg">
+                <stimulusCodeAudio msToNext="0" showPlaybackIndicator="false" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_greeting">
                     <mediaLoadFailed>
                         <htmlText featureText="Failed to load audio file"/>
-                        <targetButton featureText="Try this page again" target="stimuliScreenCorsi"/>
+                        <targetButton featureText="Try this page again" target="stimuliScreenCorsi" />
                     </mediaLoadFailed>
                     <mediaLoaded>
                         <stimulusLabel/>
+                        <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg" styleName="hiddenBottomRight"> 
+                            <mediaLoadFailed>
+                                <htmlText featureText="Failed to load image file"/>
+                                <targetButton featureText="Try this page again" target="stimuliScreenCorsi"/>
+                            </mediaLoadFailed>
+                            <mediaLoaded/>
+                        </stimulusCodeImage>
                     </mediaLoaded>
                     <mediaPlaybackComplete>
                         <pause msToNext="1500">
-                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/corsi/&lt;code&gt;_1.jpg"> 
-                                <mediaLoadFailed>
-                                    <htmlText featureText="Failed to load image file"/>
-                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi3"/>
-                                </mediaLoadFailed>
+                            <clearPage/>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg"> 
+                                <mediaLoadFailed/>
                                 <mediaLoaded>
+                                    <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg" styleName="hiddenBottomRight"> 
+                                        <mediaLoadFailed>
+                                            <htmlText featureText="Failed to load image file"/>
+                                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi"/>
+                                        </mediaLoadFailed>
+                                        <mediaLoaded/>
+                                    </stimulusCodeImage>
                                     <pause msToNext="1000">
-                                        <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/corsi/&lt;code&gt;_blank.jpg"> 
-                                            <mediaLoadFailed>
-                                                <htmlText featureText="Failed to load image file"/>
-                                                <targetButton featureText="Try this page again" target="stimuliScreenCorsi3"/>
-                                            </mediaLoadFailed>
+                                        <clearPage/>
+                                        <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg"> 
+                                            <mediaLoadFailed/>
                                             <mediaLoaded>
+                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg" styleName="hiddenBottomRight"> 
+                                                    <mediaLoadFailed>
+                                                        <htmlText featureText="Failed to load image file"/>
+                                                        <targetButton featureText="Try this page again" target="stimuliScreenCorsi"/>
+                                                    </mediaLoadFailed>
+                                                    <mediaLoaded/>
+                                                </stimulusCodeImage>
                                                 <pause msToNext="500">
-                                                    <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/corsi/&lt;code&gt;_2.jpg"> 
-                                                        <mediaLoadFailed>
-                                                            <htmlText featureText="Failed to load image file"/>
-                                                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi3"/>
-                                                        </mediaLoadFailed>
+                                                    <clearPage/>
+                                                    <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg"> 
+                                                        <mediaLoadFailed/>
                                                         <mediaLoaded>
+                                                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg" styleName="hiddenBottomRight"> 
+                                                                <mediaLoadFailed/>
+                                                                <mediaLoaded/>
+                                                            </stimulusCodeImage>
                                                             <pause msToNext="1000">
-                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/corsi/&lt;code&gt;_blank.jpg"> 
-                                                                    <mediaLoadFailed>
-                                                                        <htmlText featureText="Failed to load image file"/>
-                                                                        <targetButton featureText="Try this page again" target="stimuliScreenCorsi3"/>
-                                                                    </mediaLoadFailed>
+                                                                <clearPage/>
+                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg"> 
+                                                                    <mediaLoadFailed/>
                                                                     <mediaLoaded>
+                                                                        <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_3.jpg" styleName="hiddenBottomRight"> 
+                                                                            <mediaLoadFailed>
+                                                                                <htmlText featureText="Failed to load image file"/>
+                                                                                <targetButton featureText="Try this page again" target="stimuliScreenCorsi"/>
+                                                                            </mediaLoadFailed>
+                                                                            <mediaLoaded/>
+                                                                        </stimulusCodeImage>   
                                                                         <pause msToNext="500">
-                                                                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/corsi/&lt;code&gt;_3.jpg"> 
-                                                                                <mediaLoadFailed>
-                                                                                    <htmlText featureText="Failed to load image file"/>
-                                                                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi3"/>
-                                                                                </mediaLoadFailed>
+                                                                            <clearPage/>
+                                                                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_3.jpg"> 
+                                                                                <mediaLoadFailed/>
                                                                                 <mediaLoaded>
+                                                                                    <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg" styleName="hiddenBottomRight"> 
+                                                                                        <mediaLoadFailed>
+                                                                                            <htmlText featureText="Failed to load image file"/>
+                                                                                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi"/>
+                                                                                        </mediaLoadFailed>
+                                                                                        <mediaLoaded/>
+                                                                                    </stimulusCodeImage>
                                                                                     <pause msToNext="1000">
-                                                                                        <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/corsi/&lt;code&gt;_letters.jpg"> 
-                                                                                            <mediaLoadFailed>
-                                                                                                <htmlText featureText="Failed to load image file"/>
-                                                                                                <targetButton featureText="Try this page again" target="stimuliScreenCorsi3"/>
-                                                                                            </mediaLoadFailed>
+                                                                                        <clearPage/>
+                                                                                        <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg"> 
+                                                                                            <mediaLoadFailed/>
                                                                                             <mediaLoaded>
                                                                                                 <stimulusFreeText featureText="Type de letteren, ENTER als je klaar bent" validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
                                                                                                 <nextStimulusButton featureText="Next [ENTER]" eventTag="Next [ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
@@ -114,7 +141,7 @@
                                                         </mediaLoaded>  
                                                     </stimulusCodeImage>     
                                                 </pause>
-                                            </mediaLoaded>  
+                                            </mediaLoaded>
                                         </stimulusCodeImage>           
                                     </pause>
                                 </mediaLoaded>
@@ -124,14 +151,7 @@
                 </stimulusCodeAudio>  
             </hasMoreStimulus>
             <endOfStimulus>
-                <clearPage/>
-                <centrePage/>
-                <addPadding/>
-                <addPadding/>
-                <htmlText featureText="Dit is het einde van het practice rondje"/>
-                <addPadding/>
-                <targetButton featureText="Naar het experiment" target="stimuliScreenRavenTest"/>
-                <addPadding/>
+                <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -186,38 +206,38 @@
         <localStorageData/>
     </presenter>
     <stimuli> 
-        <stimulus  identifier="Practice_1"  label="practice 01"  correctResponses=""  code="Practice_1"  tags="corsi active"  />
-        <stimulus  identifier="Practice_2"  label="practice 02"  correctResponses=""  code="Practice_2"  tags="corsi active"  />
-        <stimulus  identifier="Block_3_1"  label="trial 01"  correctResponses="MDB"  code="Block_3_1"  tags="corsi active"  />
-        <stimulus  identifier="Block_3_2"  label="trial 02"  correctResponses="NCY"  code="Block_3_2"  tags="corsi active"  />
-        <stimulus  identifier="Block_3_3"  label="trial 03"  correctResponses="FQK"  code="Block_3_3"  tags="corsi active"  />
-        <stimulus  identifier="Block_3_4"  label="trial 04"  correctResponses="CQJ"  code="Block_3_4"  tags="corsi active"  />
-        <stimulus  identifier="Block_3_5"  label="trial 05"  correctResponses="TLS"  code="Block_3_5"  tags="corsi active"  />
-        <stimulus  identifier="Block_4_1"  label="trial 06"  correctResponses="YTNK"  code="Block_4_1"  tags="corsi active"  />
-        <stimulus  identifier="Block_4_2"  label="trial 07"  correctResponses="YRTB"  code="Block_4_2"  tags="corsi active"  />
-        <stimulus  identifier="Block_4_3"  label="trial 08"  correctResponses="RNTK"  code="Block_4_3"  tags="corsi active"  />
-        <stimulus  identifier="Block_4_4"  label="trial 09"  correctResponses="YKXR"  code="Block_4_4"  tags="corsi active"  />
-        <stimulus  identifier="Block_4_5"  label="trial 10"  correctResponses="YFQB"  code="Block_4_5"  tags="corsi active"  />
-        <stimulus  identifier="Block_5_1"  label="trial 11"  correctResponses="FJYQR"  code="Block_5_1"  tags="corsi active"  />
-        <stimulus  identifier="Block_5_2"  label="trial 12"  correctResponses="BRJZL"  code="Block_5_2"  tags="corsi active"  />
-        <stimulus  identifier="Block_5_3"  label="trial 13"  correctResponses="FYLBH"  code="Block_5_3"  tags="corsi active"  />
-        <stimulus  identifier="Block_5_4"  label="trial 14"  correctResponses="FYQZH"  code="Block_5_4"  tags="corsi active"  />
-        <stimulus  identifier="Block_5_5"  label="trial 15"  correctResponses="ZRQYH"  code="Block_5_5"  tags="corsi active"  />
-        <stimulus  identifier="Block_6_1"  label="trial 16"  correctResponses="DWNKYC"  code="Block_6_1"  tags="corsi active"  />
-        <stimulus  identifier="Block_6_2"  label="trial 17"  correctResponses="NHYWKD"  code="Block_6_2"  tags="corsi active"  />
-        <stimulus  identifier="Block_6_3"  label="trial 18"  correctResponses="WJQDHY"  code="Block_6_3"  tags="corsi active"  />
-        <stimulus  identifier="Block_6_4"  label="trial 19"  correctResponses="NKWCQJ"  code="Block_6_4"  tags="corsi active"  />
-        <stimulus  identifier="Block_6_5"  label="trial 20"  correctResponses="JWNHDK"  code="Block_6_5"  tags="corsi active"  />
-        <stimulus  identifier="Block_7_1"  label="trial 21"  correctResponses="XJYKRZV"  code="Block_7_1"  tags="corsi active"  />
-        <stimulus  identifier="Block_7_2"  label="trial 22"  correctResponses="KDXZYVJ"  code="Block_7_2"  tags="corsi active"  />
-        <stimulus  identifier="Block_7_3"  label="trial 23"  correctResponses="VDKRZJY"  code="Block_7_3"  tags="corsi active"  />
-        <stimulus  identifier="Block_7_4"  label="trial 24"  correctResponses="RXKHYJV"  code="Block_7_4"  tags="corsi active"  />
-        <stimulus  identifier="Block_7_5"  label="trial 25"  correctResponses="KJVHRXY"  code="Block_7_5"  tags="corsi active"  />
-        <stimulus  identifier="Block_8_1"  label="trial 26"  correctResponses="ZWRHNQBX"  code="Block_8_1"  tags="corsi active"  />
-        <stimulus  identifier="Block_8_2"  label="trial 27"  correctResponses="WNYBQRZX"  code="Block_8_2"  tags="corsi active"  />
-        <stimulus  identifier="Block_8_3"  label="trial 28"  correctResponses="ZHQXNBRW"  code="Block_8_3"  tags="corsi active"  />
-        <stimulus  identifier="Block_8_4"  label="trial 29"  correctResponses="NXZBQYHR"  code="Block_8_4"  tags="corsi active"  />
-        <stimulus  identifier="Block_8_5"  label="trial 30"  correctResponses="BWYZXNHQ"  code="Block_8_5"  tags="corsi active"  />
+        <stimulus  identifier="Practice_1"  label="practice 01"  correctResponses=""  code="Practice_1"  pauseMs="0" tags="corsi"  />
+        <stimulus  identifier="Practice_2"  label="practice 02"  correctResponses=""  code="Practice_2"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_3_1"  label="trial 01"  correctResponses="MDB"  code="Block_3_1"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_3_2"  label="trial 02"  correctResponses="NCY"  code="Block_3_2"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_3_3"  label="trial 03"  correctResponses="FQK"  code="Block_3_3"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_3_4"  label="trial 04"  correctResponses="CQJ"  code="Block_3_4"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_3_5"  label="trial 05"  correctResponses="TLS"  code="Block_3_5"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_4_1"  label="trial 06"  correctResponses="YTNK"  code="Block_4_1"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_4_2"  label="trial 07"  correctResponses="YRTB"  code="Block_4_2"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_4_3"  label="trial 08"  correctResponses="RNTK"  code="Block_4_3"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_4_4"  label="trial 09"  correctResponses="YKXR"  code="Block_4_4"  pauseMs="0" tags="corsi active "  />
+        <stimulus  identifier="Block_4_5"  label="trial 10"  correctResponses="YFQB"  code="Block_4_5"  pauseMs="0" tags="corsi active "  />
+        <stimulus  identifier="Block_5_1"  label="trial 11"  correctResponses="FJYQR"  code="Block_5_1"  pauseMs="0" tags="corsi active "  />
+        <stimulus  identifier="Block_5_2"  label="trial 12"  correctResponses="BRJZL"  code="Block_5_2"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_5_3"  label="trial 13"  correctResponses="FYLBH"  code="Block_5_3"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_5_4"  label="trial 14"  correctResponses="FYQZH"  code="Block_5_4"  pauseMs="0" tags="corsi active "  />
+        <stimulus  identifier="Block_5_5"  label="trial 15"  correctResponses="ZRQYH"  code="Block_5_5"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_6_1"  label="trial 16"  correctResponses="DWNKYC"  code="Block_6_1"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_6_2"  label="trial 17"  correctResponses="NHYWKD"  code="Block_6_2"  pauseMs="0" tags="corsi active "  />
+        <stimulus  identifier="Block_6_3"  label="trial 18"  correctResponses="WJQDHY"  code="Block_6_3"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_6_4"  label="trial 19"  correctResponses="NKWCQJ"  code="Block_6_4"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_6_5"  label="trial 20"  correctResponses="JWNHDK"  code="Block_6_5"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_7_1"  label="trial 21"  correctResponses="XJYKRZV"  code="Block_7_1"  pauseMs="0" tags="corsi active "  />
+        <stimulus  identifier="Block_7_2"  label="trial 22"  correctResponses="KDXZYVJ"  code="Block_7_2"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_7_3"  label="trial 23"  correctResponses="VDKRZJY"  code="Block_7_3"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_7_4"  label="trial 24"  correctResponses="RXKHYJV"  code="Block_7_4"  pauseMs="0" tags="corsi active "  />
+        <stimulus  identifier="Block_7_5"  label="trial 25"  correctResponses="KJVHRXY"  code="Block_7_5"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_8_1"  label="trial 26"  correctResponses="ZWRHNQBX"  code="Block_8_1"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_8_2"  label="trial 27"  correctResponses="WNYBQRZX"  code="Block_8_2"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_8_3"  label="trial 28"  correctResponses="ZHQXNBRW"  code="Block_8_3"  pauseMs="0" tags="corsi active "  />
+        <stimulus  identifier="Block_8_4"  label="trial 29"  correctResponses="NXZBQYHR"  code="Block_8_4"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Block_8_5"  label="trial 30"  correctResponses="BWYZXNHQ"  code="Block_8_5"  pauseMs="0" tags="corsi active"  />
     </stimuli>
 
 </experiment>
