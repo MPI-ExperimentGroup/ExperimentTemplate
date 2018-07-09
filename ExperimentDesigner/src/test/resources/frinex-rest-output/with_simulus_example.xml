@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment appNameDisplay="with_simulus_example" appNameInternal="with_simulus_example" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17">
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="frinex.xsd" appNameDisplay="with_simulus_example" appNameInternal="with_simulus_example" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17">
     <administration/>
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
@@ -38,8 +38,11 @@
         <region regionId="regionId" styleName="styleName">
             <plainText featureText="plainText in region"/>
         </region>
-        <actionButton featureText="regionStyle">
-            <regionStyle regionId="regionId" styleName="stimuliLabel"/>
+        <actionButton featureText="regionStyleNone">
+            <regionStyle regionId="regionId" styleName=""/>
+        </actionButton>
+        <actionButton featureText="hiddenRegionStyle">
+            <regionStyle regionId="regionId" styleName="hiddenRegion"/>
         </actionButton>
         <actionButton featureText="regionReplace">
             <regionReplace regionId="regionId" styleName="styleName">
@@ -48,6 +51,39 @@
         </actionButton>
         <actionButton featureText="regionClear">
             <regionClear regionId="regionId"/>
+        </actionButton>
+        <actionButton featureText="startTimerA">
+            <startTimer msToNext="300000" listenerId="timerA">
+                <region regionId="regionTimerA">
+                    <plainText featureText="TimerA Completed"/>
+                </region>
+            </startTimer>
+        </actionButton>
+        <actionButton featureText="compareTimerA">
+            <compareTimer msToNext="30000" listenerId="timerA">
+                <aboveThreshold>
+                    <region regionId="regionTimerA">
+                        <plainText featureText="TimerA aboveThreshold"/>
+                    </region>
+                </aboveThreshold>
+                <belowThreshold>
+                    <region regionId="regionTimerA">
+                        <plainText featureText="TimerA belowThreshold"/>
+                    </region>
+                </belowThreshold>
+            </compareTimer>
+        </actionButton>
+        <actionButton featureText="clearTimerA">
+            <clearTimer listenerId="timerA"/>
+            <region regionId="regionTimerA">
+                <plainText featureText="TimerA clearTimer"/>
+            </region>
+        </actionButton>
+        <actionButton featureText="logTimerValueA">
+            <logTimerValue listenerId="timerA" eventTag="timerAeventTag" dataChannel="3"/>
+            <region regionId="regionTimerA">
+                <plainText featureText="TimerA logTimerValue"/>
+            </region>
         </actionButton>
         <withStimuli eventTag="With Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <beforeStimulus>       
