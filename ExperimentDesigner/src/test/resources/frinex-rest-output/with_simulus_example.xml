@@ -17,7 +17,7 @@
         <htmlText featureText="Beste deelnemer, &lt;br/&gt;Bedankt dat je mee wilt doen aan dit onderzoek! &lt;br/&gt;&lt;br/&gt;"/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Gegevens"/>
     </presenter>
-    <presenter back="Informatie" menuLabel="Terug" next="First_Stimuli_Screen_Informatie" type="metadata" self="Gegevens" title="Gegevens">
+    <presenter back="Informatie" menuLabel="Terug" next="With_Stimuli_Screen" type="metadata" self="Gegevens" title="Gegevens">
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="age"/>
         <metadataField fieldName="gender"/>
@@ -34,7 +34,21 @@
         <htmlText featureText="Instructies 1: &lt;br/&gt;&lt;br/&gt;Druk op [Z] als de zin kompleet is, of op [.]."/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="First_Stimuli_Screen"/>
     </presenter>
-    <presenter menuLabel="With Stimuli Screen" next="First_Stimuli_Screen" type="stimulus" self="With_Stimuli_Screen" title="With Stimuli Screen">
+    <presenter menuLabel="With Stimuli Screen" next="First_Stimuli_Screen_Informatie" type="stimulus" self="With_Stimuli_Screen" title="With Stimuli Screen">
+        <region regionId="regionId" styleName="styleName">
+            <plainText featureText="plainText in region"/>
+        </region>
+        <actionButton featureText="regionStyle">
+            <regionStyle regionId="regionId" styleName="stimuliLabel"/>
+        </actionButton>
+        <actionButton featureText="regionReplace">
+            <regionReplace regionId="regionId" styleName="styleName">
+                <plainText featureText="plainText in regionReplace"/>
+            </regionReplace>
+        </actionButton>
+        <actionButton featureText="regionClear">
+            <regionClear regionId="regionId"/>
+        </actionButton>
         <withStimuli eventTag="With Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <beforeStimulus>       
                 <plainText featureText="plainText in beforeStimulus"/>         
@@ -57,7 +71,7 @@
             </eachStimulus>
             <afterStimulus>       
                 <plainText featureText="plainText in afterStimulus"/>         
-                <targetButton featureText="Next Screen" target="Second_Informatie"/>
+                <targetButton featureText="Next Screen" target="First_Stimuli_Screen_Informatie"/>
             </afterStimulus>
             <randomGrouping storageField="item">
                 <tag>cond_1</tag>

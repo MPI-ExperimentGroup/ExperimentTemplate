@@ -695,7 +695,7 @@ or local-name() eq 'matchingStimulusGrid'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="logTimerValue|startTimer|triggerListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|pause|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeAudio|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupNetworkActivity|table|row|column">
+    <xsl:template match="region|regionStyle|regionReplace|regionClear|logTimerValue|startTimer|triggerListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|pause|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeAudio|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupNetworkActivity|table|row|column">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>
@@ -729,11 +729,17 @@ or local-name() eq 'stimulusImageCapture'
         <xsl:value-of select="if(@maxWidth) then concat(@maxWidth, ', ') else ''" />
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;, ') else ''" />
         <xsl:value-of select="if(@animate) then concat('AnimateTypes.', @animate, ', ') else ''" />
+        <xsl:value-of select="if(@regionId) then concat('&quot;', @regionId, '&quot;') else ''" />
+        <xsl:value-of select="if(@regionId and local-name() ne 'regionClear') then ', ' else ''" />
         <xsl:if test="local-name() eq 'stimulusCodeImage'
 or local-name() eq 'table'
 or local-name() eq 'stimulusCodeVideo'
+or local-name() eq 'region'
+or local-name() eq 'regionStyle'
+or local-name() eq 'regionReplace'
 or local-name() eq 'backgroundImage'">
-            <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;, ') else 'null, '" />    
+            <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else 'null'" />    
+            <xsl:value-of select="if(local-name() ne 'regionStyle') then ', ' else ''" />
         </xsl:if>
         <xsl:value-of select="if(@showOnBackButton) then concat(@showOnBackButton eq 'true', ', ') else ''" />
         <xsl:value-of select="if(@autoPlay) then concat(@autoPlay, ', ') else ''" />
@@ -790,6 +796,8 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
  or local-name() eq 'groupNetwork'
  or local-name() eq 'backgroundImage'
  or local-name() eq 'startTimer'
+ or local-name() eq 'region'
+ or local-name() eq 'regionReplace'
 ">
             <xsl:value-of select="if(local-name() eq 'stimulusImageCapture') then ',' else ''" />
             <xsl:text>&#xa;new TimedStimulusListener() {

@@ -51,6 +51,7 @@ public enum FeatureAttribute {
     align,
     target(false), // this is probably not optional in some cases
     styleName(true),
+    regionId,
     showOnBackButton(true),
     eventTier,
     dataChannel(true),
