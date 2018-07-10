@@ -127,7 +127,7 @@
 if(@type = 'transmission' or @type = 'metadata'  or @type = 'colourReport') then ', submissionService, userResults, localStorage' else
 if(@type = 'preload') then ', new AudioPlayer(this), submissionService, userResults' else
 if(@type = 'menu') then ', userResults, localStorage' else
-if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', new AudioPlayer(this), submissionService, userResults, localStorage' else ''" />
+if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', new AudioPlayer(this), submissionService, userResults, localStorage, timerService' else ''" />
             <xsl:text>);
                 presenter.setState(this, </xsl:text>
             <xsl:choose>
@@ -207,10 +207,12 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import nl.mpi.tg.eg.experiment.client.view.MenuView;     
                 import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
                 import nl.mpi.tg.eg.experiment.client.listener.CurrentStimulusListener;
+                import nl.mpi.tg.eg.experiment.client.listener.TimerListner;
                 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;  
                 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus.Tag;  
                 import nl.mpi.tg.eg.experiment.client.model.UserId;    
                 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
+                import nl.mpi.tg.eg.experiment.client.service.TimerService;
                 import nl.mpi.tg.eg.experiment.client.model.UserResults;    
                 import nl.mpi.tg.eg.experiment.client.view.MetadataView; 
                 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService; 
@@ -243,7 +245,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
 if(@type = 'transmission' or @type = 'metadata' or @type = 'colourReport') then ', DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage' else 
 if(@type = 'preload') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults' else 
 if(@type = 'menu') then ', UserResults userResults, LocalStorage localStorage' else
-if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage' else ''" />
+if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage, final TimerService timerService' else ''" />
             <xsl:value-of select="if(@type = 'colourPicker') then ') throws CanvasError {' else ') {'"/>
             <xsl:choose>
                 <xsl:when test="@type = 'menu'">
@@ -268,7 +270,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 </xsl:when>
                 <xsl:when test="@type = 'kindiagram' or @type = 'stimulus' or @type = 'timeline' or @type = 'colourPicker'">
                     <xsl:text>
-                        super(widgetTag, audioPlayer, submissionService, userResults, localStorage);
+                        super(widgetTag, audioPlayer, submissionService, userResults, localStorage, timerService);
                     </xsl:text>                    
                 </xsl:when>
                 <xsl:when test="@type = 'metadata' or @type = 'transmission' or @type = 'colourReport'">

@@ -65,6 +65,7 @@ import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.MatchingStimuliGroup;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture;
+import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.frinex.common.StimuliProvider;
 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
@@ -94,6 +95,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     final private ArrayList<PresenterEventListner> nextButtonEventListnerList = new ArrayList<>();
     private final ArrayList<StimulusFreeText> stimulusFreeTextList = new ArrayList<>();
     private final HashMap<String, TriggerListener> triggerListeners = new HashMap<>();
+    private final TimerService timerService;
     MatchingStimuliGroup matchingStimuliGroup = null;
     private boolean hasSubdirectories = false;
     private TouchInputCapture touchInputCapture = null;
@@ -102,10 +104,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         bounce, none, stimuliCode
     }
 
-    public AbstractStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage) {
+    public AbstractStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
         super(widgetTag, new TimedStimulusView(audioPlayer));
         duration = new Duration();
         this.submissionService = submissionService;
+        this.timerService = timerService;
         this.userResults = userResults;
         this.localStorage = localStorage;
 
@@ -347,24 +350,26 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     public void htmlTokenText(final String textString, final String styleName) {
-        ((TimedStimulusView) simpleView).addHtmlText(new HtmlTokenFormatter(groupParticipantService, userResults.getUserData()).formatString(textString), styleName);
+        ((TimedStimulusView) simpleView).addHtmlText(new HtmlTokenFormatter(groupParticipantService, userResults.getUserData(), timerService).formatString(textString), styleName);
         // todo: this should be not be so group experiment specific 
-        submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "htmlTokenText", new HtmlTokenFormatter(groupParticipantService, userResults.getUserData()).formatString(
-                "Group:'<groupId>';"
-                + "Members:'<groupAllMemberCodes>';"
-                + "Score:<groupScore>;"
-                + "Channels:'<groupCommunicationChannels>';"
-                + "Scores:'<channelLoop><channelLabel>-<channelScore> </channelLoop>';"
-                //                + "Member:<groupMemberCode>,"
-                //                + "groupUserLabel:<groupUserLabel>,"
-                + "<groupMemberCode>-best:<playerBestScore>;"
-                + "<groupMemberCode>-current:<playerScore>;"
-                + "GroupOther:'<groupOtherMemberCodes>';"
-                //                + "groupActiveChannel:,"
-                + "ChannelOther:'<channelOtherMemberCodes>';"
-                + "<groupActiveChannel>:<channelScore>;"
-                + "Message:'<groupMessageString>';"
-        ), duration.elapsedMillis());
+        if (groupParticipantService != null) {
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "htmlTokenText", new HtmlTokenFormatter(groupParticipantService, userResults.getUserData(), timerService).formatString(
+                    "Group:'<groupId>';"
+                    + "Members:'<groupAllMemberCodes>';"
+                    + "Score:<groupScore>;"
+                    + "Channels:'<groupCommunicationChannels>';"
+                    + "Scores:'<channelLoop><channelLabel>-<channelScore> </channelLoop>';"
+                    //                + "Member:<groupMemberCode>,"
+                    //                + "groupUserLabel:<groupUserLabel>,"
+                    + "<groupMemberCode>-best:<playerBestScore>;"
+                    + "<groupMemberCode>-current:<playerScore>;"
+                    + "GroupOther:'<groupOtherMemberCodes>';"
+                    //                + "groupActiveChannel:,"
+                    + "ChannelOther:'<channelOtherMemberCodes>';"
+                    + "<groupActiveChannel>:<channelScore>;"
+                    + "Message:'<groupMessageString>';"
+            ), duration.elapsedMillis());
+        }
     }
 
     public void htmlTokenText(String textString) {
@@ -1404,6 +1409,26 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     public void trigger(final String listenerId) {
         triggerListeners.get(listenerId).trigger();
+    }
+
+    protected void startTimer(final int msToNext, final String listenerId, final TimedStimulusListener timeoutListener) {
+        timerService.startTimer(msToNext, listenerId, timeoutListener);
+    }
+
+    protected void compareTimer(final int msToNext, final String listenerId, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold) {
+        if (timerService.getTimerValue(listenerId) > msToNext) {
+            aboveThreshold.postLoadTimerFired();
+        } else {
+            belowThreshold.postLoadTimerFired();
+        }
+    }
+
+    protected void clearTimer(final String listenerId) {
+        timerService.clearTimer(listenerId);
+    }
+
+    protected void logTimerValue(final String listenerId, final String eventTag, final int dataChannel) {
+        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, listenerId, Integer.toString(timerService.getTimerValue(listenerId)), duration.elapsedMillis());
     }
 
     public void cancelPauseTimers() {

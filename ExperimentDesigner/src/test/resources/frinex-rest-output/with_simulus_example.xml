@@ -52,15 +52,21 @@
         <actionButton featureText="regionClear">
             <regionClear regionId="regionId"/>
         </actionButton>
+        <region regionId="regionTimerA">
+            <plainText featureText="TimerA region"/>
+        </region>
         <actionButton featureText="startTimerA">
-            <startTimer msToNext="300000" listenerId="timerA">
+            <region regionId="regionTimerA">
+                <plainText featureText="TimerA startTimer"/>
+            </region>
+            <startTimer msToNext="30000" listenerId="timerA">
                 <region regionId="regionTimerA">
                     <plainText featureText="TimerA Completed"/>
                 </region>
             </startTimer>
         </actionButton>
         <actionButton featureText="compareTimerA">
-            <compareTimer msToNext="30000" listenerId="timerA">
+            <compareTimer msToNext="10000" listenerId="timerA">
                 <aboveThreshold>
                     <region regionId="regionTimerA">
                         <plainText featureText="TimerA aboveThreshold"/>
@@ -77,6 +83,11 @@
             <clearTimer listenerId="timerA"/>
             <region regionId="regionTimerA">
                 <plainText featureText="TimerA clearTimer"/>
+            </region>
+        </actionButton>
+        <actionButton featureText="htmlTokenText TimerA">
+            <region regionId="regionTimerA">
+                <htmlTokenText featureText="TimerA &lt;timerA&gt;ms"/>
             </region>
         </actionButton>
         <actionButton featureText="logTimerValueA">
@@ -109,11 +120,7 @@
                 <plainText featureText="plainText in afterStimulus"/>         
                 <targetButton featureText="Next Screen" target="First_Stimuli_Screen_Informatie"/>
             </afterStimulus>
-            <randomGrouping storageField="item">
-                <tag>cond_1</tag>
-                <tag>cond_2</tag>
-                <tag>cond_3</tag>
-            </randomGrouping>
+            <randomGrouping/>
             <stimuli>
                 <tag>First_Stimuli_Screen</tag>
             </stimuli>

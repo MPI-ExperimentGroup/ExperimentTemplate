@@ -43,6 +43,7 @@ import nl.mpi.tg.eg.experiment.client.presenter.TestingVersionPresenter;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
+import nl.mpi.tg.eg.experiment.client.service.TimerService;
 
 /**
  * @since Oct 7, 2014 11:07:35 AM (creation date)
@@ -55,6 +56,7 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
     protected final Messages messages = GWT.create(Messages.class);
     final LocalStorage localStorage = new LocalStorage(messages.appNameInternal());
     final DataSubmissionService submissionService = new DataSubmissionService(localStorage);
+    final TimerService timerService = new TimerService();
     protected final RootLayoutPanel widgetTag;
     protected Presenter presenter;
     protected final UserResults userResults;

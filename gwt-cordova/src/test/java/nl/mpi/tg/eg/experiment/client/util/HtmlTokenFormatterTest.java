@@ -22,6 +22,7 @@ import java.util.HashSet;
 import java.util.Set;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.service.GroupScoreService;
+import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -106,7 +107,7 @@ public class HtmlTokenFormatterTest {
                 return "GroupId";
             }
 
-        }, new UserData());
+        }, new UserData(), new TimerService());
         final String formattedString = instance.formatString(inputString);
         System.out.println("expectedString:" + expectedString);
         System.out.println("formattedString: " + formattedString);

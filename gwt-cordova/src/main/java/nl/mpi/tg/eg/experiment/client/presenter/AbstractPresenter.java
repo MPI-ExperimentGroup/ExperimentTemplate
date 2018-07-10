@@ -338,18 +338,6 @@ public abstract class AbstractPresenter implements Presenter {
         }
     }
 
-    protected void startTimer(final int msToNext, final String listenerId, final TimedStimulusListener timeoutListener) {
-    }
-
-    protected void compareTimer(final int msToNext, final String listenerId, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold) {
-    }
-
-    protected void clearTimer(final String listenerId) {
-    }
-
-    protected void logTimerValue(final String listenerId, final String eventTag, final int dataChannel) {
-    }
-
 //    protected void startAudioRecorderFailed(String message) {
 //        backEventListner.eventFired(null, null);
 //        ((ComplexView) simpleView).clearPage();
