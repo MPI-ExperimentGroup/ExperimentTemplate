@@ -27,7 +27,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter displayOrder="45" next="stimuliScreenCorsi" type="metadata" self="Accord_Corsi" title="">
+    <presenter displayOrder="10" next="stimuliScreenCorsiPractice2" type="metadata" self="Accord_Corsi" title="">
         <centrePage/>
         <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
         <addPadding/>
@@ -37,9 +37,11 @@
         <htmlText featureText="...."/>
         <addPadding/>
         <addPadding/>
-        <targetButton featureText="Aan de slag" target="stimuliScreenCorsi"/>
+        <targetButton featureText="Aan de slag" target="stimuliScreenCorsiPractice2"/>
     </presenter>
-    <presenter displayOrder="50" next="Admin" type="stimulus" self="stimuliScreenCorsi" title="">
+    
+    <!-- first practice trial -->
+    <presenter displayOrder="20" next="stimuliScreenCorsiPractice3" type="stimulus" self="stimuliScreenCorsiPractice2" title="">
         <loadStimulus eventTag="stimuliCorsiN" randomise="false" repeatCount="1" maxStimuli="372">
             <hasMoreStimulus>
                 <clearPage/>
@@ -47,105 +49,359 @@
                 <addPadding/>
                 <addPadding/>
                 <addPadding/>
-                <addPadding/>
-                <addPadding/> 
+                <region regionId="stimulusRegion"/>
+                <region regionId="hiddenRegion"/>
                 <stimulusCodeAudio msToNext="0" showPlaybackIndicator="false" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_greeting">
                     <mediaLoadFailed>
-                        <htmlText featureText="Failed to load audio file"/>
-                        <targetButton featureText="Try this page again" target="stimuliScreenCorsi" />
+                        <regionReplace regionId="stimulusRegion">
+                            <htmlText featureText="Failed to load audio file"/>
+                            <targetButton featureText="Try this page again" target="stimuliScreenCorsiPractice2" />
+                        </regionReplace>
                     </mediaLoadFailed>
                     <mediaLoaded>
-                        <stimulusLabel/>
-                        <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg" styleName="hiddenBottomRight"> 
-                            <mediaLoadFailed>
-                                <htmlText featureText="Failed to load image file"/>
-                                <targetButton featureText="Try this page again" target="stimuliScreenCorsi"/>
-                            </mediaLoadFailed>
-                            <mediaLoaded/>
-                        </stimulusCodeImage>
+                        <regionReplace regionId="stimulusRegion">
+                            <stimulusLabel/>
+                        </regionReplace>
+                        <regionReplace regionId="hiddenRegion">
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg"   styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsiPractice2"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg"   styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsiPractice2"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage> 
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg"   styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsiPractice2"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg"   styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsiPractice2"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage>
+                        </regionReplace>
                     </mediaLoaded>
                     <mediaPlaybackComplete>
                         <pause msToNext="1500">
-                            <clearPage/>
-                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg"> 
-                                <mediaLoadFailed/>
-                                <mediaLoaded>
-                                    <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg" styleName="hiddenBottomRight"> 
-                                        <mediaLoadFailed>
-                                            <htmlText featureText="Failed to load image file"/>
-                                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi"/>
-                                        </mediaLoadFailed>
-                                        <mediaLoaded/>
-                                    </stimulusCodeImage>
-                                    <pause msToNext="1000">
-                                        <clearPage/>
-                                        <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg"> 
-                                            <mediaLoadFailed/>
-                                            <mediaLoaded>
-                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg" styleName="hiddenBottomRight"> 
-                                                    <mediaLoadFailed>
-                                                        <htmlText featureText="Failed to load image file"/>
-                                                        <targetButton featureText="Try this page again" target="stimuliScreenCorsi"/>
-                                                    </mediaLoadFailed>
-                                                    <mediaLoaded/>
-                                                </stimulusCodeImage>
-                                                <pause msToNext="500">
-                                                    <clearPage/>
-                                                    <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg"> 
-                                                        <mediaLoadFailed/>
-                                                        <mediaLoaded>
-                                                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg" styleName="hiddenBottomRight"> 
-                                                                <mediaLoadFailed/>
-                                                                <mediaLoaded/>
-                                                            </stimulusCodeImage>
-                                                            <pause msToNext="1000">
-                                                                <clearPage/>
-                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg"> 
+                            <regionReplace regionId="stimulusRegion" >
+                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg">
+                                    <mediaLoadFailed/>
+                                    <mediaLoaded>
+                                        <pause msToNext="1000">
+                                            <regionReplace regionId="stimulusRegion" >
+                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg" >
+                                                    <mediaLoadFailed/>
+                                                    <mediaLoaded>
+                                                        <pause msToNext="500">
+                                                            <regionReplace regionId="stimulusRegion" >
+                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg">
                                                                     <mediaLoadFailed/>
                                                                     <mediaLoaded>
-                                                                        <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_3.jpg" styleName="hiddenBottomRight"> 
-                                                                            <mediaLoadFailed>
-                                                                                <htmlText featureText="Failed to load image file"/>
-                                                                                <targetButton featureText="Try this page again" target="stimuliScreenCorsi"/>
-                                                                            </mediaLoadFailed>
-                                                                            <mediaLoaded/>
-                                                                        </stimulusCodeImage>   
-                                                                        <pause msToNext="500">
-                                                                            <clearPage/>
-                                                                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_3.jpg"> 
-                                                                                <mediaLoadFailed/>
-                                                                                <mediaLoaded>
-                                                                                    <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg" styleName="hiddenBottomRight"> 
-                                                                                        <mediaLoadFailed>
-                                                                                            <htmlText featureText="Failed to load image file"/>
-                                                                                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi"/>
-                                                                                        </mediaLoadFailed>
-                                                                                        <mediaLoaded/>
-                                                                                    </stimulusCodeImage>
-                                                                                    <pause msToNext="1000">
-                                                                                        <clearPage/>
-                                                                                        <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg"> 
-                                                                                            <mediaLoadFailed/>
-                                                                                            <mediaLoaded>
-                                                                                                <stimulusFreeText featureText="Type de letteren, ENTER als je klaar bent" validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
-                                                                                                <nextStimulusButton featureText="Next [ENTER]" eventTag="Next [ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
-                                                                                            </mediaLoaded>  
-                                                                                        </stimulusCodeImage> 
-                                                                                    </pause>
-                                                                                </mediaLoaded>  
-                                                                            </stimulusCodeImage> 
+                                                                        <pause msToNext="1000">
+                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg" >
+                                                                                    <mediaLoadFailed/>
+                                                                                    <mediaLoaded>
+                                                                                        <stimulusFreeText  featureText="Type de letteren " validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
+                                                                                        <nextStimulusButton featureText="Next" eventTag="Next" repeatIncorrect="false"/>
+                                                                                    </mediaLoaded>
+                                                                                </stimulusCodeImage>                                                                                          
+                                                                            </regionReplace>
                                                                         </pause>
-                                                                    </mediaLoaded>  
-                                                                </stimulusCodeImage> 
-                                                            </pause>
-                                                        </mediaLoaded>  
-                                                    </stimulusCodeImage>     
-                                                </pause>
-                                            </mediaLoaded>
-                                        </stimulusCodeImage>           
-                                    </pause>
-                                </mediaLoaded>
+                                                                    </mediaLoaded>
+                                                                </stimulusCodeImage>  
+                                                            </regionReplace>
+                                                        </pause>
+                                                    </mediaLoaded>
+                                                </stimulusCodeImage>  
+                                            </regionReplace>
+                                        </pause>
+                                    </mediaLoaded>
+                                </stimulusCodeImage> 
+                            </regionReplace>
+                        </pause>
+                    </mediaPlaybackComplete>
+                </stimulusCodeAudio>  
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <gotoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>corsi</tag>
+                <tag>practice</tag>
+                <tag>2</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    
+    <!-- second practice trial -->
+    <presenter displayOrder="30" next="stimuliScreenCorsi3" type="stimulus" self="stimuliScreenCorsiPractice3" title="">
+        <loadStimulus eventTag="stimuliCorsiN" randomise="false" repeatCount="1" maxStimuli="372">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <region regionId="stimulusRegion"/>
+                <region regionId="hiddenRegion"/>
+                <stimulusCodeAudio msToNext="0" showPlaybackIndicator="false" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_greeting">
+                    <mediaLoadFailed>
+                        <regionReplace regionId="stimulusRegion">
+                            <htmlText featureText="Failed to load audio file"/>
+                            <targetButton featureText="Try this page again" target="stimuliScreenCorsiPractice3" />
+                        </regionReplace>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <regionReplace regionId="stimulusRegion">
+                            <stimulusLabel/>
+                        </regionReplace>
+                        <regionReplace regionId="hiddenRegion">
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg"  styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsiPractice3"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
                             </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsiPractice3"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage> 
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsiPractice3"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_3.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsiPractice3"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsiPractice3"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage>
+                        </regionReplace>
+                    </mediaLoaded>
+                    <mediaPlaybackComplete>
+                        <pause msToNext="1500">
+                            <regionReplace regionId="stimulusRegion" >
+                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg">
+                                    <mediaLoadFailed/>
+                                    <mediaLoaded>
+                                        <pause msToNext="1000">
+                                            <regionReplace regionId="stimulusRegion">
+                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg" >
+                                                    <mediaLoadFailed/>
+                                                    <mediaLoaded>
+                                                        <pause msToNext="500">
+                                                            <regionReplace regionId="stimulusRegion" >
+                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg" >
+                                                                    <mediaLoadFailed/>
+                                                                    <mediaLoaded>
+                                                                        <pause msToNext="1000">
+                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                    <mediaLoadFailed/>
+                                                                                    <mediaLoaded>
+                                                                                        <pause msToNext="500">
+                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_3.jpg">
+                                                                                                    <mediaLoadFailed/>
+                                                                                                    <mediaLoaded>
+                                                                                                        <pause msToNext="1000">
+                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg" >
+                                                                                                                    <mediaLoadFailed/>
+                                                                                                                    <mediaLoaded>
+                                                                                                                        <stimulusFreeText  featureText="Type de letteren " validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
+                                                                                                                        <nextStimulusButton featureText="Next" eventTag="Next" repeatIncorrect="false"/>
+                                                                                                                    </mediaLoaded>
+                                                                                                                </stimulusCodeImage>                                                                                          
+                                                                                                            </regionReplace>
+                                                                                                        </pause>
+                                                                                                    </mediaLoaded>
+                                                                                                </stimulusCodeImage>  
+                                                                                            </regionReplace>
+                                                                                        </pause>
+                                                                                    </mediaLoaded>
+                                                                                </stimulusCodeImage>  
+                                                                            </regionReplace>
+                                                                        </pause>
+                                                                    </mediaLoaded>
+                                                                </stimulusCodeImage>  
+                                                            </regionReplace>
+                                                        </pause>
+                                                    </mediaLoaded>
+                                                </stimulusCodeImage>  
+                                            </regionReplace>
+                                        </pause>
+                                    </mediaLoaded>
+                                </stimulusCodeImage> 
+                            </regionReplace>
+                        </pause>
+                    </mediaPlaybackComplete>
+                </stimulusCodeAudio>  
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage/>
+                <centrePage/>
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="Het einde van het practice rondje. "/>
+                <addPadding/>
+                <targetButton featureText="Naar het experiment." target="stimuliScreenCorsi3"/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>corsi</tag>
+                <tag>practice</tag>
+                <tag>3</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <!-- Trials for length 3 -->
+    <presenter displayOrder="40" next="stimuliScreenCorsi4" type="stimulus" self="stimuliScreenCorsi3" title="">
+        <loadStimulus eventTag="stimuliCorsiN" randomise="false" repeatCount="1" maxStimuli="372">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <region regionId="stimulusRegion"/>
+                <region regionId="hiddenRegion"/>
+                <stimulusCodeAudio msToNext="0" showPlaybackIndicator="false" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_greeting">
+                    <mediaLoadFailed>
+                        <regionReplace regionId="stimulusRegion">
+                            <htmlText featureText="Failed to load audio file"/>
+                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi3" />
+                        </regionReplace>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <regionReplace regionId="stimulusRegion">
+                            <stimulusLabel/>
+                        </regionReplace>
+                        <regionReplace regionId="hiddenRegion">
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg"  styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi3"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi3"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage> 
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi3"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_3.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi3"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi3"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage>
+                        </regionReplace>
+                    </mediaLoaded>
+                    <mediaPlaybackComplete>
+                        <pause msToNext="1500">
+                            <regionReplace regionId="stimulusRegion" >
+                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg">
+                                    <mediaLoadFailed/>
+                                    <mediaLoaded>
+                                        <pause msToNext="1000">
+                                            <regionReplace regionId="stimulusRegion" >
+                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                    <mediaLoadFailed/>
+                                                    <mediaLoaded>
+                                                        <pause msToNext="500">
+                                                            <regionReplace regionId="stimulusRegion" >
+                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg">
+                                                                    <mediaLoadFailed/>
+                                                                    <mediaLoaded>
+                                                                        <pause msToNext="1000">
+                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                    <mediaLoadFailed/>
+                                                                                    <mediaLoaded>
+                                                                                        <pause msToNext="500">
+                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_3.jpg">
+                                                                                                    <mediaLoadFailed/>
+                                                                                                    <mediaLoaded>
+                                                                                                        <pause msToNext="1000">
+                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg" >
+                                                                                                                    <mediaLoadFailed/>
+                                                                                                                    <mediaLoaded>
+                                                                                                                        <stimulusFreeText  featureText="Type de letteren " validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
+                                                                                                                        <nextStimulusButton featureText="Next" eventTag="Next" repeatIncorrect="false"/>
+                                                                                                                    </mediaLoaded>
+                                                                                                                </stimulusCodeImage>                                                                                          
+                                                                                                            </regionReplace>
+                                                                                                        </pause>
+                                                                                                    </mediaLoaded>
+                                                                                                </stimulusCodeImage>  
+                                                                                            </regionReplace>
+                                                                                        </pause>
+                                                                                    </mediaLoaded>
+                                                                                </stimulusCodeImage>  
+                                                                            </regionReplace>
+                                                                        </pause>
+                                                                    </mediaLoaded>
+                                                                </stimulusCodeImage>  
+                                                            </regionReplace>
+                                                        </pause>
+                                                    </mediaLoaded>
+                                                </stimulusCodeImage>  
+                                            </regionReplace>
+                                        </pause>
+                                    </mediaLoaded>
+                                </stimulusCodeImage> 
+                            </regionReplace>
                         </pause>
                     </mediaPlaybackComplete>
                 </stimulusCodeAudio>  
@@ -157,6 +413,1047 @@
             <stimuli>
                 <tag>corsi</tag>
                 <tag>active</tag>
+                <tag>3</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <!-- Trials for length 4 -->
+    <presenter displayOrder="50" next="stimuliScreenCorsi5" type="stimulus" self="stimuliScreenCorsi4" title="">
+        <loadStimulus eventTag="stimuliCorsiN" randomise="false" repeatCount="1" maxStimuli="372">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <region regionId="stimulusRegion"/>
+                <region regionId="hiddenRegion"/>
+                <stimulusCodeAudio msToNext="0" showPlaybackIndicator="false" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_greeting">
+                    <mediaLoadFailed>
+                        <regionReplace regionId="stimulusRegion">
+                            <htmlText featureText="Failed to load audio file"/>
+                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi4" />
+                        </regionReplace>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <regionReplace regionId="stimulusRegion">
+                            <stimulusLabel/>
+                        </regionReplace>
+                        <regionReplace regionId="hiddenRegion">
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg"  styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi4"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi4"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage> 
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi4"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_3.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi4"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_4.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi4"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi4"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage>
+                        </regionReplace>
+                    </mediaLoaded>
+                    <mediaPlaybackComplete>
+                        <pause msToNext="1500">
+                            <regionReplace regionId="stimulusRegion" >
+                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg">
+                                    <mediaLoadFailed/>
+                                    <mediaLoaded>
+                                        <pause msToNext="1000">
+                                            <regionReplace regionId="stimulusRegion" >
+                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                    <mediaLoadFailed/>
+                                                    <mediaLoaded>
+                                                        <pause msToNext="500">
+                                                            <regionReplace regionId="stimulusRegion" >
+                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg">
+                                                                    <mediaLoadFailed/>
+                                                                    <mediaLoaded>
+                                                                        <pause msToNext="1000">
+                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                    <mediaLoadFailed/>
+                                                                                    <mediaLoaded>
+                                                                                        <pause msToNext="500">
+                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_3.jpg">
+                                                                                                    <mediaLoadFailed/>
+                                                                                                    <mediaLoaded>
+                                                                                                        <pause msToNext="1000">
+                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                                                    <mediaLoadFailed/>
+                                                                                                                    <mediaLoaded>
+                                                                                                                        <pause msToNext="500">
+                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_4.jpg">
+                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                    <mediaLoaded>
+                                                                                                                                        <pause msToNext="1000">
+                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg" >
+                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                        <stimulusFreeText  featureText="Type de letteren " validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
+                                                                                                                                                        <nextStimulusButton featureText="Next" eventTag="Next" repeatIncorrect="false"/>
+                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                </stimulusCodeImage>                                                                                          
+                                                                                                                                            </regionReplace>
+                                                                                                                                        </pause>
+                                                                                                                                    </mediaLoaded>
+                                                                                                                                </stimulusCodeImage>  
+                                                                                                                            </regionReplace>
+                                                                                                                        </pause>
+                                                                                                                    </mediaLoaded>
+                                                                                                                </stimulusCodeImage>  
+                                                                                                            </regionReplace>
+                                                                                                        </pause>
+                                                                                                    </mediaLoaded>
+                                                                                                </stimulusCodeImage>  
+                                                                                            </regionReplace>
+                                                                                        </pause>
+                                                                                    </mediaLoaded>
+                                                                                </stimulusCodeImage>  
+                                                                            </regionReplace>
+                                                                        </pause>
+                                                                    </mediaLoaded>
+                                                                </stimulusCodeImage>  
+                                                            </regionReplace>
+                                                        </pause>
+                                                    </mediaLoaded>
+                                                </stimulusCodeImage>  
+                                            </regionReplace>
+                                        </pause>
+                                    </mediaLoaded>
+                                </stimulusCodeImage> 
+                            </regionReplace>
+                        </pause>
+                    </mediaPlaybackComplete>
+                </stimulusCodeAudio>  
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <gotoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>corsi</tag>
+                <tag>active</tag>
+                <tag>4</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <!-- Trials for length 5 -->
+    <presenter displayOrder="60" next="stimuliScreenCorsi6" type="stimulus" self="stimuliScreenCorsi5" title="">
+        <loadStimulus eventTag="stimuliCorsiN" randomise="false" repeatCount="1" maxStimuli="372">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <region regionId="stimulusRegion"/>
+                <region regionId="hiddenRegion"/>
+                <stimulusCodeAudio msToNext="0" showPlaybackIndicator="false" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_greeting">
+                    <mediaLoadFailed>
+                        <regionReplace regionId="stimulusRegion">
+                            <htmlText featureText="Failed to load audio file"/>
+                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi5" />
+                        </regionReplace>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <regionReplace regionId="stimulusRegion">
+                            <stimulusLabel/>
+                        </regionReplace>
+                        <regionReplace regionId="hiddenRegion">
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg"  styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi5"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi5"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage> 
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi5"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_3.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi5"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_4.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi5"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_5.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi5"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi5"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage>
+                        </regionReplace>
+                    </mediaLoaded>
+                    <mediaPlaybackComplete>
+                        <pause msToNext="1500">
+                            <regionReplace regionId="stimulusRegion" >
+                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg">
+                                    <mediaLoadFailed/>
+                                    <mediaLoaded>
+                                        <pause msToNext="1000">
+                                            <regionReplace regionId="stimulusRegion" >
+                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                    <mediaLoadFailed/>
+                                                    <mediaLoaded>
+                                                        <pause msToNext="500">
+                                                            <regionReplace regionId="stimulusRegion" >
+                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg">
+                                                                    <mediaLoadFailed/>
+                                                                    <mediaLoaded>
+                                                                        <pause msToNext="1000">
+                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                    <mediaLoadFailed/>
+                                                                                    <mediaLoaded>
+                                                                                        <pause msToNext="500">
+                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_3.jpg">
+                                                                                                    <mediaLoadFailed/>
+                                                                                                    <mediaLoaded>
+                                                                                                        <pause msToNext="1000">
+                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                                                    <mediaLoadFailed/>
+                                                                                                                    <mediaLoaded>
+                                                                                                                        <pause msToNext="500">
+                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_4.jpg">
+                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                    <mediaLoaded>
+                                                                                                                                        <pause msToNext="1000">
+                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                        <pause msToNext="500">
+                                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_5.jpg">
+                                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                                        <pause msToNext="1000">
+                                                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg" >
+                                                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                                                        <stimulusFreeText  featureText="Type de letteren " validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
+                                                                                                                                                                                        <nextStimulusButton featureText="Next" eventTag="Next" repeatIncorrect="false"/>
+                                                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                                                </stimulusCodeImage>                                                                                          
+                                                                                                                                                                            </regionReplace>
+                                                                                                                                                                        </pause>
+                                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                                </stimulusCodeImage>  
+                                                                                                                                                            </regionReplace>
+                                                                                                                                                        </pause>
+                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                </stimulusCodeImage>  
+                                                                                                                                            </regionReplace>
+                                                                                                                                        </pause>
+                                                                                                                                    </mediaLoaded>
+                                                                                                                                </stimulusCodeImage>  
+                                                                                                                            </regionReplace>
+                                                                                                                        </pause>
+                                                                                                                    </mediaLoaded>
+                                                                                                                </stimulusCodeImage>  
+                                                                                                            </regionReplace>
+                                                                                                        </pause>
+                                                                                                    </mediaLoaded>
+                                                                                                    
+                                                                                                </stimulusCodeImage>  
+                                                                                            </regionReplace>
+                                                                                        </pause>
+                                                                                    </mediaLoaded>
+                                                                                </stimulusCodeImage>  
+                                                                            </regionReplace>
+                                                                        </pause>
+                                                                    </mediaLoaded>
+                                                                </stimulusCodeImage>  
+                                                            </regionReplace>
+                                                        </pause>
+                                                    </mediaLoaded>
+                                                </stimulusCodeImage>  
+                                            </regionReplace>
+                                        </pause>
+                                    </mediaLoaded>
+                                </stimulusCodeImage> 
+                            </regionReplace>
+                        </pause>
+                    </mediaPlaybackComplete>
+                </stimulusCodeAudio>  
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <gotoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>corsi</tag>
+                <tag>active</tag>
+                <tag>5</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    
+    <!-- Trials for length 6 -->
+    <presenter displayOrder="70" next="stimuliScreenCorsi7" type="stimulus" self="stimuliScreenCorsi6" title="">
+        <loadStimulus eventTag="stimuliCorsiN" randomise="false" repeatCount="1" maxStimuli="372">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <region regionId="stimulusRegion"/>
+                <region regionId="hiddenRegion"/>
+                <stimulusCodeAudio msToNext="0" showPlaybackIndicator="false" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_greeting">
+                    <mediaLoadFailed>
+                        <regionReplace regionId="stimulusRegion">
+                            <htmlText featureText="Failed to load audio file"/>
+                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi6" />
+                        </regionReplace>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <regionReplace regionId="stimulusRegion">
+                            <stimulusLabel/>
+                        </regionReplace>
+                        <regionReplace regionId="hiddenRegion">
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg"  styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi6"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi6"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage> 
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi6"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_3.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi6"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_4.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi6"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_5.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi6"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_6.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi6"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi6"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage>
+                        </regionReplace>
+                    </mediaLoaded>
+                    <mediaPlaybackComplete>
+                        <pause msToNext="1500">
+                            <regionReplace regionId="stimulusRegion" >
+                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg">
+                                    <mediaLoadFailed/>
+                                    <mediaLoaded>
+                                        <pause msToNext="1000">
+                                            <regionReplace regionId="stimulusRegion" >
+                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                    <mediaLoadFailed/>
+                                                    <mediaLoaded>
+                                                        <pause msToNext="500">
+                                                            <regionReplace regionId="stimulusRegion" >
+                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg">
+                                                                    <mediaLoadFailed/>
+                                                                    <mediaLoaded>
+                                                                        <pause msToNext="1000">
+                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                    <mediaLoadFailed/>
+                                                                                    <mediaLoaded>
+                                                                                        <pause msToNext="500">
+                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_3.jpg">
+                                                                                                    <mediaLoadFailed/>
+                                                                                                    <mediaLoaded>
+                                                                                                        <pause msToNext="1000">
+                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                                                    <mediaLoadFailed/>
+                                                                                                                    <mediaLoaded>
+                                                                                                                        <pause msToNext="500">
+                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_4.jpg">
+                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                    <mediaLoaded>
+                                                                                                                                        <pause msToNext="1000">
+                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                        <pause msToNext="500">
+                                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_5.jpg">
+                                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                                        <pause msToNext="1000">
+                                                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                                                        <pause msToNext="500">
+                                                                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_6.jpg">
+                                                                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                                                                        <pause msToNext="1000">
+                                                                                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg" >
+                                                                                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                                                                                        <stimulusFreeText  featureText="Type de letteren " validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
+                                                                                                                                                                                                                        <nextStimulusButton featureText="Next" eventTag="Next" repeatIncorrect="false"/>
+                                                                                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                                                                                </stimulusCodeImage>                                                                                          
+                                                                                                                                                                                                            </regionReplace>
+                                                                                                                                                                                                        </pause>
+                                                                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                                                                </stimulusCodeImage>  
+                                                                                                                                                                                            </regionReplace>
+                                                                                                                                                                                        </pause>
+                                                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                                                </stimulusCodeImage>  
+                                                                                                                                                                            </regionReplace>
+                                                                                                                                                                        </pause>
+                                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                                </stimulusCodeImage>  
+                                                                                                                                                            </regionReplace>
+                                                                                                                                                        </pause>
+                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                </stimulusCodeImage>  
+                                                                                                                                            </regionReplace>
+                                                                                                                                        </pause>
+                                                                                                                                    </mediaLoaded>
+                                                                                                                                </stimulusCodeImage>  
+                                                                                                                            </regionReplace>
+                                                                                                                        </pause>
+                                                                                                                    </mediaLoaded>
+                                                                                                                </stimulusCodeImage>  
+                                                                                                            </regionReplace>
+                                                                                                        </pause>
+                                                                                                    </mediaLoaded>
+                                                                                                    
+                                                                                                </stimulusCodeImage>  
+                                                                                            </regionReplace>
+                                                                                        </pause>
+                                                                                    </mediaLoaded>
+                                                                                </stimulusCodeImage>  
+                                                                            </regionReplace>
+                                                                        </pause>
+                                                                    </mediaLoaded>
+                                                                </stimulusCodeImage>  
+                                                            </regionReplace>
+                                                        </pause>
+                                                    </mediaLoaded>
+                                                </stimulusCodeImage>  
+                                            </regionReplace>
+                                        </pause>
+                                    </mediaLoaded>
+                                </stimulusCodeImage> 
+                            </regionReplace>
+                        </pause>
+                    </mediaPlaybackComplete>
+                </stimulusCodeAudio>  
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <gotoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>corsi</tag>
+                <tag>active</tag>
+                <tag>6</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <!-- Trials for length 7 -->
+    <presenter displayOrder="80" next="stimuliScreenCorsi8" type="stimulus" self="stimuliScreenCorsi7" title="">
+        <loadStimulus eventTag="stimuliCorsiN" randomise="false" repeatCount="1" maxStimuli="372">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <region regionId="stimulusRegion"/>
+                <region regionId="hiddenRegion"/>
+                <stimulusCodeAudio msToNext="0" showPlaybackIndicator="false" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_greeting">
+                    <mediaLoadFailed>
+                        <regionReplace regionId="stimulusRegion">
+                            <htmlText featureText="Failed to load audio file"/>
+                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi7" />
+                        </regionReplace>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <regionReplace regionId="stimulusRegion">
+                            <stimulusLabel/>
+                        </regionReplace>
+                        <regionReplace regionId="hiddenRegion">
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg"  styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi7"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi7"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage> 
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi7"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_3.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi7"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_4.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi7"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_5.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi7"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_6.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi7"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_7.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi7"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi7"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage>
+                        </regionReplace>
+                    </mediaLoaded>
+                    <mediaPlaybackComplete>
+                        <pause msToNext="1500">
+                            <regionReplace regionId="stimulusRegion" >
+                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg">
+                                    <mediaLoadFailed/>
+                                    <mediaLoaded>
+                                        <pause msToNext="1000">
+                                            <regionReplace regionId="stimulusRegion" >
+                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                    <mediaLoadFailed/>
+                                                    <mediaLoaded>
+                                                        <pause msToNext="500">
+                                                            <regionReplace regionId="stimulusRegion" >
+                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg">
+                                                                    <mediaLoadFailed/>
+                                                                    <mediaLoaded>
+                                                                        <pause msToNext="1000">
+                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                    <mediaLoadFailed/>
+                                                                                    <mediaLoaded>
+                                                                                        <pause msToNext="500">
+                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_3.jpg">
+                                                                                                    <mediaLoadFailed/>
+                                                                                                    <mediaLoaded>
+                                                                                                        <pause msToNext="1000">
+                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                                                    <mediaLoadFailed/>
+                                                                                                                    <mediaLoaded>
+                                                                                                                        <pause msToNext="500">
+                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_4.jpg">
+                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                    <mediaLoaded>
+                                                                                                                                        <pause msToNext="1000">
+                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                        <pause msToNext="500">
+                                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_5.jpg">
+                                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                                        <pause msToNext="1000">
+                                                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                                                        <pause msToNext="500">
+                                                                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_6.jpg">
+                                                                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                                                                        <pause msToNext="1000">
+                                                                                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                                                                                        <pause msToNext="500">
+                                                                                                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_7.jpg">
+                                                                                                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                                                                                                        <pause msToNext="1000">
+                                                                                                                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg" >
+                                                                                                                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                                                                                                                        <stimulusFreeText  featureText="Type de letteren " validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
+                                                                                                                                                                                                                                                        <nextStimulusButton featureText="Next" eventTag="Next" repeatIncorrect="false"/>
+                                                                                                                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                                                                                                                </stimulusCodeImage>                                                                                          
+                                                                                                                                                                                                                                            </regionReplace>
+                                                                                                                                                                                                                                        </pause>
+                                                                                                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                                                                                                </stimulusCodeImage>  
+                                                                                                                                                                                                                            </regionReplace>
+                                                                                                                                                                                                                        </pause>
+                                                                                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                                                                                </stimulusCodeImage>  
+                                                                                                                                                                                                            </regionReplace>
+                                                                                                                                                                                                        </pause>
+                                                                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                                                                </stimulusCodeImage>  
+                                                                                                                                                                                            </regionReplace>
+                                                                                                                                                                                        </pause>
+                                                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                                                </stimulusCodeImage>  
+                                                                                                                                                                            </regionReplace>
+                                                                                                                                                                        </pause>
+                                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                                </stimulusCodeImage>  
+                                                                                                                                                            </regionReplace>
+                                                                                                                                                        </pause>
+                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                </stimulusCodeImage>  
+                                                                                                                                            </regionReplace>
+                                                                                                                                        </pause>
+                                                                                                                                    </mediaLoaded>
+                                                                                                                                </stimulusCodeImage>  
+                                                                                                                            </regionReplace>
+                                                                                                                        </pause>
+                                                                                                                    </mediaLoaded>
+                                                                                                                </stimulusCodeImage>  
+                                                                                                            </regionReplace>
+                                                                                                        </pause>
+                                                                                                    </mediaLoaded>
+                                                                                                    
+                                                                                                </stimulusCodeImage>  
+                                                                                            </regionReplace>
+                                                                                        </pause>
+                                                                                    </mediaLoaded>
+                                                                                </stimulusCodeImage>  
+                                                                            </regionReplace>
+                                                                        </pause>
+                                                                    </mediaLoaded>
+                                                                </stimulusCodeImage>  
+                                                            </regionReplace>
+                                                        </pause>
+                                                    </mediaLoaded>
+                                                </stimulusCodeImage>  
+                                            </regionReplace>
+                                        </pause>
+                                    </mediaLoaded>
+                                </stimulusCodeImage> 
+                            </regionReplace>
+                        </pause>
+                    </mediaPlaybackComplete>
+                </stimulusCodeAudio>  
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <gotoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>corsi</tag>
+                <tag>active</tag>
+                <tag>7</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <!-- Trials for length 8 -->
+    <presenter displayOrder="90" next="Admin" type="stimulus" self="stimuliScreenCorsi8" title="">
+        <loadStimulus eventTag="stimuliCorsiN" randomise="false" repeatCount="1" maxStimuli="372">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <region regionId="stimulusRegion"/>
+                <region regionId="hiddenRegion"/>
+                <stimulusCodeAudio msToNext="0" showPlaybackIndicator="false" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_greeting">
+                    <mediaLoadFailed>
+                        <regionReplace regionId="stimulusRegion">
+                            <htmlText featureText="Failed to load audio file"/>
+                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi8" />
+                        </regionReplace>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <regionReplace regionId="stimulusRegion">
+                            <stimulusLabel/>
+                        </regionReplace>
+                        <regionReplace regionId="hiddenRegion">
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg"  styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage> 
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_3.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_4.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_5.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_6.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_7.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_8.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg" styleName="hiddenImage"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage>
+                        </regionReplace>
+                    </mediaLoaded>
+                    <mediaPlaybackComplete>
+                        <pause msToNext="1500">
+                            <regionReplace regionId="stimulusRegion" >
+                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg">
+                                    <mediaLoadFailed/>
+                                    <mediaLoaded>
+                                        <pause msToNext="1000">
+                                            <regionReplace regionId="stimulusRegion" >
+                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                    <mediaLoadFailed/>
+                                                    <mediaLoaded>
+                                                        <pause msToNext="500">
+                                                            <regionReplace regionId="stimulusRegion" >
+                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg">
+                                                                    <mediaLoadFailed/>
+                                                                    <mediaLoaded>
+                                                                        <pause msToNext="1000">
+                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                    <mediaLoadFailed/>
+                                                                                    <mediaLoaded>
+                                                                                        <pause msToNext="500">
+                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_3.jpg">
+                                                                                                    <mediaLoadFailed/>
+                                                                                                    <mediaLoaded>
+                                                                                                        <pause msToNext="1000">
+                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                                                    <mediaLoadFailed/>
+                                                                                                                    <mediaLoaded>
+                                                                                                                        <pause msToNext="500">
+                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_4.jpg">
+                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                    <mediaLoaded>
+                                                                                                                                        <pause msToNext="1000">
+                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                        <pause msToNext="500">
+                                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_5.jpg">
+                                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                                        <pause msToNext="1000">
+                                                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                                                        <pause msToNext="500">
+                                                                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_6.jpg">
+                                                                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                                                                        <pause msToNext="1000">
+                                                                                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                                                                                        <pause msToNext="500">
+                                                                                                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_7.jpg">
+                                                                                                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                                                                                                        <pause msToNext="1000">
+                                                                                                                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg">
+                                                                                                                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                                                                                                                        <pause msToNext="500">
+                                                                                                                                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_8.jpg">
+                                                                                                                                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                                                                                                                                        <pause msToNext="1000">
+                                                                                                                                                                                                                                                                            <regionReplace regionId="stimulusRegion" >
+                                                                                                                                                                                                                                                                                <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg" >
+                                                                                                                                                                                                                                                                                    <mediaLoadFailed/>
+                                                                                                                                                                                                                                                                                    <mediaLoaded>
+                                                                                                                                                                                                                                                                                        <stimulusFreeText  featureText="Type de letteren " validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
+                                                                                                                                                                                                                                                                                        <nextStimulusButton featureText="Next" eventTag="Next" repeatIncorrect="false"/>
+                                                                                                                                                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                                                                                                                                                </stimulusCodeImage>                                                                                          
+                                                                                                                                                                                                                                                                            </regionReplace>
+                                                                                                                                                                                                                                                                        </pause>
+                                                                                                                                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                                                                                                                                </stimulusCodeImage>  
+                                                                                                                                                                                                                                                            </regionReplace>
+                                                                                                                                                                                                                                                        </pause>
+                                                                                                                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                                                                                                                </stimulusCodeImage>  
+                                                                                                                                                                                                                                            </regionReplace>
+                                                                                                                                                                                                                                        </pause>
+                                                                                                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                                                                                                </stimulusCodeImage>  
+                                                                                                                                                                                                                            </regionReplace>
+                                                                                                                                                                                                                        </pause>
+                                                                                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                                                                                </stimulusCodeImage>  
+                                                                                                                                                                                                            </regionReplace>
+                                                                                                                                                                                                        </pause>
+                                                                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                                                                </stimulusCodeImage>  
+                                                                                                                                                                                            </regionReplace>
+                                                                                                                                                                                        </pause>
+                                                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                                                </stimulusCodeImage>  
+                                                                                                                                                                            </regionReplace>
+                                                                                                                                                                        </pause>
+                                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                                </stimulusCodeImage>  
+                                                                                                                                                            </regionReplace>
+                                                                                                                                                        </pause>
+                                                                                                                                                    </mediaLoaded>
+                                                                                                                                                </stimulusCodeImage>  
+                                                                                                                                            </regionReplace>
+                                                                                                                                        </pause>
+                                                                                                                                    </mediaLoaded>
+                                                                                                                                </stimulusCodeImage>  
+                                                                                                                            </regionReplace>
+                                                                                                                        </pause>
+                                                                                                                    </mediaLoaded>
+                                                                                                                </stimulusCodeImage>  
+                                                                                                            </regionReplace>
+                                                                                                        </pause>
+                                                                                                    </mediaLoaded>
+                                                                                                    
+                                                                                                </stimulusCodeImage>  
+                                                                                            </regionReplace>
+                                                                                        </pause>
+                                                                                    </mediaLoaded>
+                                                                                </stimulusCodeImage>  
+                                                                            </regionReplace>
+                                                                        </pause>
+                                                                    </mediaLoaded>
+                                                                </stimulusCodeImage>  
+                                                            </regionReplace>
+                                                        </pause>
+                                                    </mediaLoaded>
+                                                </stimulusCodeImage>  
+                                            </regionReplace>
+                                        </pause>
+                                    </mediaLoaded>
+                                </stimulusCodeImage> 
+                            </regionReplace>
+                        </pause>
+                    </mediaPlaybackComplete>
+                </stimulusCodeAudio>  
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <gotoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>corsi</tag>
+                <tag>active</tag>
+                <tag>7</tag>
             </stimuli>
         </loadStimulus>
     </presenter>
@@ -206,38 +1503,38 @@
         <localStorageData/>
     </presenter>
     <stimuli> 
-        <stimulus  identifier="Practice_1"  label="practice 01"  correctResponses=""  code="Practice_1"  pauseMs="0" tags="corsi"  />
-        <stimulus  identifier="Practice_2"  label="practice 02"  correctResponses=""  code="Practice_2"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_3_1"  label="trial 01"  correctResponses="MDB"  code="Block_3_1"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_3_2"  label="trial 02"  correctResponses="NCY"  code="Block_3_2"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_3_3"  label="trial 03"  correctResponses="FQK"  code="Block_3_3"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_3_4"  label="trial 04"  correctResponses="CQJ"  code="Block_3_4"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_3_5"  label="trial 05"  correctResponses="TLS"  code="Block_3_5"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_4_1"  label="trial 06"  correctResponses="YTNK"  code="Block_4_1"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_4_2"  label="trial 07"  correctResponses="YRTB"  code="Block_4_2"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_4_3"  label="trial 08"  correctResponses="RNTK"  code="Block_4_3"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_4_4"  label="trial 09"  correctResponses="YKXR"  code="Block_4_4"  pauseMs="0" tags="corsi active "  />
-        <stimulus  identifier="Block_4_5"  label="trial 10"  correctResponses="YFQB"  code="Block_4_5"  pauseMs="0" tags="corsi active "  />
-        <stimulus  identifier="Block_5_1"  label="trial 11"  correctResponses="FJYQR"  code="Block_5_1"  pauseMs="0" tags="corsi active "  />
-        <stimulus  identifier="Block_5_2"  label="trial 12"  correctResponses="BRJZL"  code="Block_5_2"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_5_3"  label="trial 13"  correctResponses="FYLBH"  code="Block_5_3"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_5_4"  label="trial 14"  correctResponses="FYQZH"  code="Block_5_4"  pauseMs="0" tags="corsi active "  />
-        <stimulus  identifier="Block_5_5"  label="trial 15"  correctResponses="ZRQYH"  code="Block_5_5"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_6_1"  label="trial 16"  correctResponses="DWNKYC"  code="Block_6_1"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_6_2"  label="trial 17"  correctResponses="NHYWKD"  code="Block_6_2"  pauseMs="0" tags="corsi active "  />
-        <stimulus  identifier="Block_6_3"  label="trial 18"  correctResponses="WJQDHY"  code="Block_6_3"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_6_4"  label="trial 19"  correctResponses="NKWCQJ"  code="Block_6_4"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_6_5"  label="trial 20"  correctResponses="JWNHDK"  code="Block_6_5"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_7_1"  label="trial 21"  correctResponses="XJYKRZV"  code="Block_7_1"  pauseMs="0" tags="corsi active "  />
-        <stimulus  identifier="Block_7_2"  label="trial 22"  correctResponses="KDXZYVJ"  code="Block_7_2"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_7_3"  label="trial 23"  correctResponses="VDKRZJY"  code="Block_7_3"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_7_4"  label="trial 24"  correctResponses="RXKHYJV"  code="Block_7_4"  pauseMs="0" tags="corsi active "  />
-        <stimulus  identifier="Block_7_5"  label="trial 25"  correctResponses="KJVHRXY"  code="Block_7_5"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_8_1"  label="trial 26"  correctResponses="ZWRHNQBX"  code="Block_8_1"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_8_2"  label="trial 27"  correctResponses="WNYBQRZX"  code="Block_8_2"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_8_3"  label="trial 28"  correctResponses="ZHQXNBRW"  code="Block_8_3"  pauseMs="0" tags="corsi active "  />
-        <stimulus  identifier="Block_8_4"  label="trial 29"  correctResponses="NXZBQYHR"  code="Block_8_4"  pauseMs="0" tags="corsi active"  />
-        <stimulus  identifier="Block_8_5"  label="trial 30"  correctResponses="BWYZXNHQ"  code="Block_8_5"  pauseMs="0" tags="corsi active"  />
+        <stimulus  identifier="Practice_1"  label="practice 01"  correctResponses=""  code="Practice_1"  pauseMs="0" tags="corsi practice 2"  />
+        <stimulus  identifier="Practice_2"  label="practice 02"  correctResponses=""  code="Practice_2"  pauseMs="0" tags="corsi practice 3"  />
+        <stimulus  identifier="Block_3_1"  label="trial 01"  correctResponses="MDB"  code="Block_3_1"  pauseMs="0" tags="corsi active 3"  />
+        <stimulus  identifier="Block_3_2"  label="trial 02"  correctResponses="NCY"  code="Block_3_2"  pauseMs="0" tags="corsi active 3"  />
+        <stimulus  identifier="Block_3_3"  label="trial 03"  correctResponses="FQK"  code="Block_3_3"  pauseMs="0" tags="corsi active 3"  />
+        <stimulus  identifier="Block_3_4"  label="trial 04"  correctResponses="CQJ"  code="Block_3_4"  pauseMs="0" tags="corsi active 3"  />
+        <stimulus  identifier="Block_3_5"  label="trial 05"  correctResponses="TLS"  code="Block_3_5"  pauseMs="0" tags="corsi active 3"  />
+        <stimulus  identifier="Block_4_1"  label="trial 06"  correctResponses="YTNK"  code="Block_4_1"  pauseMs="0" tags="corsi active 4"  />
+        <stimulus  identifier="Block_4_2"  label="trial 07"  correctResponses="YRTB"  code="Block_4_2"  pauseMs="0" tags="corsi active 4"  />
+        <stimulus  identifier="Block_4_3"  label="trial 08"  correctResponses="RNTK"  code="Block_4_3"  pauseMs="0" tags="corsi active 4"  />
+        <stimulus  identifier="Block_4_4"  label="trial 09"  correctResponses="YKXR"  code="Block_4_4"  pauseMs="0" tags="corsi active 4"  />
+        <stimulus  identifier="Block_4_5"  label="trial 10"  correctResponses="YFQB"  code="Block_4_5"  pauseMs="0" tags="corsi active 4"  />
+        <stimulus  identifier="Block_5_1"  label="trial 11"  correctResponses="FJYQR"  code="Block_5_1"  pauseMs="0" tags="corsi active 5"  />
+        <stimulus  identifier="Block_5_2"  label="trial 12"  correctResponses="BRJZL"  code="Block_5_2"  pauseMs="0" tags="corsi active  5"  />
+        <stimulus  identifier="Block_5_3"  label="trial 13"  correctResponses="FYLBH"  code="Block_5_3"  pauseMs="0" tags="corsi active 5"  />
+        <stimulus  identifier="Block_5_4"  label="trial 14"  correctResponses="FYQZH"  code="Block_5_4"  pauseMs="0" tags="corsi active 5"  />
+        <stimulus  identifier="Block_5_5"  label="trial 15"  correctResponses="ZRQYH"  code="Block_5_5"  pauseMs="0" tags="corsi active 5"  />
+        <stimulus  identifier="Block_6_1"  label="trial 16"  correctResponses="DWNKYC"  code="Block_6_1"  pauseMs="0" tags="corsi active 6"  />
+        <stimulus  identifier="Block_6_2"  label="trial 17"  correctResponses="NHYWKD"  code="Block_6_2"  pauseMs="0" tags="corsi active 6"  />
+        <stimulus  identifier="Block_6_3"  label="trial 18"  correctResponses="WJQDHY"  code="Block_6_3"  pauseMs="0" tags="corsi active 6"  />
+        <stimulus  identifier="Block_6_4"  label="trial 19"  correctResponses="NKWCQJ"  code="Block_6_4"  pauseMs="0" tags="corsi active 6"  />
+        <stimulus  identifier="Block_6_5"  label="trial 20"  correctResponses="JWNHDK"  code="Block_6_5"  pauseMs="0" tags="corsi active 6"  />
+        <stimulus  identifier="Block_7_1"  label="trial 21"  correctResponses="XJYKRZV"  code="Block_7_1"  pauseMs="0" tags="corsi active 6"  />
+        <stimulus  identifier="Block_7_2"  label="trial 22"  correctResponses="KDXZYVJ"  code="Block_7_2"  pauseMs="0" tags="corsi active 7"  />
+        <stimulus  identifier="Block_7_3"  label="trial 23"  correctResponses="VDKRZJY"  code="Block_7_3"  pauseMs="0" tags="corsi active 7"  />
+        <stimulus  identifier="Block_7_4"  label="trial 24"  correctResponses="RXKHYJV"  code="Block_7_4"  pauseMs="0" tags="corsi active 7"  />
+        <stimulus  identifier="Block_7_5"  label="trial 25"  correctResponses="KJVHRXY"  code="Block_7_5"  pauseMs="0" tags="corsi active 7"  />
+        <stimulus  identifier="Block_8_1"  label="trial 26"  correctResponses="ZWRHNQBX"  code="Block_8_1"  pauseMs="0" tags="corsi active 7"  />
+        <stimulus  identifier="Block_8_2"  label="trial 27"  correctResponses="WNYBQRZX"  code="Block_8_2"  pauseMs="0" tags="corsi active 7"  />
+        <stimulus  identifier="Block_8_3"  label="trial 28"  correctResponses="ZHQXNBRW"  code="Block_8_3"  pauseMs="0" tags="corsi active 7"  />
+        <stimulus  identifier="Block_8_4"  label="trial 29"  correctResponses="NXZBQYHR"  code="Block_8_4"  pauseMs="0" tags="corsi active 7"  />
+        <stimulus  identifier="Block_8_5"  label="trial 30"  correctResponses="BWYZXNHQ"  code="Block_8_5"  pauseMs="0" tags="corsi active 7"  />
     </stimuli>
 
 </experiment>
