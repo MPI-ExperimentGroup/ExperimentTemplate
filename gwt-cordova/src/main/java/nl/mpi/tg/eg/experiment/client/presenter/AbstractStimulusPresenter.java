@@ -246,7 +246,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         loadStimulus(stimulusProvider, eventTag, selectionTags, randomTags, stimulusAllocationField, consumedTagsGroupName);
         this.hasMoreStimulusListener = null;
         this.endOfStimulusListener = null;
-        throw new UnsupportedOperationException("todo: trigger beforeStimuliListener, eachStimulusListener, afterStimuliListener");
+        beforeStimuliListener.postLoadTimerFired();
+        while (stimulusProvider.hasNextStimulus(0)) {
+            eachStimulusListener.postLoadTimerFired(stimulusProvider, stimulusProvider.getCurrentStimulus());
+            stimulusProvider.nextStimulus(1);
+        }
+        afterStimuliListener.postLoadTimerFired();
     }
 
     protected void loadStimulus(String eventTag,
