@@ -1252,14 +1252,6 @@
         <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes">
-        <region regionId="regionId" styleName="styleName">
-            <plainText featureText="plainText in region"/>
-        </region>
-        <regionStyle regionId="regionId" styleName="styleName"/>
-        <regionReplace regionId="regionId" styleName="styleName">
-            <plainText featureText="plainText in regionReplace"/>
-        </regionReplace>
-        <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_all_attributes" type="colourReport" self="colourReport_all_attributesScreen" title="colourReport_all_attributes">
@@ -2862,14 +2854,6 @@
         <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes">
-        <region regionId="regionId">
-            <plainText featureText="plainText in region"/>
-        </region>
-        <regionStyle regionId="regionId"/>
-        <regionReplace regionId="regionId">
-            <plainText featureText="plainText in regionReplace"/>
-        </regionReplace>
-        <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_minimal_attributes" type="colourReport" self="colourReport_minimal_attributesScreen" title="colourReport_minimal_attributes">
