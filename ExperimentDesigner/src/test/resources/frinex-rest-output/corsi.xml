@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/Users/olhshk/Documents/ExperimentTemplate/ExperimentDesigner/target/test-classes/frinex-rest-output/frinex.xsd" appNameDisplay="Language in Interaction BQ4 Battery" appNameInternal="lilbq4" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/Users/olhshk/Documents/ExperimentTemplate/ExperimentDesigner/target/test-classes/frinex-rest-output/frinex.xsd" appNameDisplay="Corsi block task" appNameInternal="corsi" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
     <preventWindowClose featureText="Bij reload worden ingetypte data verwiderd"/>
     <administration/>
     <!--<experiment appNameDisplay="Adaptive Vocabulary Assessment" appNameInternal="advocas" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="false" textFontSize="17">-->
@@ -1115,37 +1115,37 @@
         <localStorageData/>
     </presenter>
     <stimuli> 
-        <stimulus  identifier="Practice_1"  label="practice 01"  correctResponses=""  code="Practice_1"  pauseMs="0" tags="corsi practice 2"  />
-        <stimulus  identifier="Practice_2"  label="practice 02"  correctResponses=""  code="Practice_2"  pauseMs="0" tags="corsi practice 2"  />
+        <stimulus  identifier="Practice_1" label="practice 01"  correctResponses=""  code="Practice_1"  pauseMs="0" tags="corsi practice 2"  />
+        <stimulus  identifier="Practice_2" label="practice 02"  correctResponses=""  code="Practice_2"  pauseMs="0" tags="corsi practice 2"  />
         <stimulus  identifier="Block_3_1"  label="trial 01"  correctResponses="MDB"  code="Block_3_1"  pauseMs="0" tags="corsi active 3"  />
-        <stimulus  identifier="Block_3_2"  label="trial 02"  correctResponses="NCY"  code="Block_3_2"  pauseMs="0" tags="corsi active 3"  />
+        <stimulus  identifier="Block_3_2"  label="trial 02"  correctResponses="NCY"  code="Block_3_2"  pauseMs="0" tags="corsi 3"  />
         <stimulus  identifier="Block_3_3"  label="trial 03"  correctResponses="FQK"  code="Block_3_3"  pauseMs="0" tags="corsi 3"  />
-        <stimulus  identifier="Block_3_4"  label="trial 04"  correctResponses="CQJ"  code="Block_3_4"  pauseMs="0" tags="corsi 3"  />
+        <stimulus  identifier="Block_3_4"  label="trial 04"  correctResponses="CQJ"  code="Block_3_4"  pauseMs="0" tags="corsi active 3"  />
         <stimulus  identifier="Block_3_5"  label="trial 05"  correctResponses="TLS"  code="Block_3_5"  pauseMs="0" tags="corsi 3"  />
         <stimulus  identifier="Block_4_1"  label="trial 06"  correctResponses="YTNK"  code="Block_4_1"  pauseMs="0" tags="corsi active 4"  />
-        <stimulus  identifier="Block_4_2"  label="trial 07"  correctResponses="YRTB"  code="Block_4_2"  pauseMs="0" tags="corsi active 4"  />
+        <stimulus  identifier="Block_4_2"  label="trial 07"  correctResponses="YRTB"  code="Block_4_2"  pauseMs="0" tags="corsi 4"  />
         <stimulus  identifier="Block_4_3"  label="trial 08"  correctResponses="RNTK"  code="Block_4_3"  pauseMs="0" tags="corsi 4"  />
-        <stimulus  identifier="Block_4_4"  label="trial 09"  correctResponses="YKXR"  code="Block_4_4"  pauseMs="0" tags="corsi 4"  />
+        <stimulus  identifier="Block_4_4"  label="trial 09"  correctResponses="YKXR"  code="Block_4_4"  pauseMs="0" tags="corsi active 4"  />
         <stimulus  identifier="Block_4_5"  label="trial 10"  correctResponses="YFQB"  code="Block_4_5"  pauseMs="0" tags="corsi 4"  />
         <stimulus  identifier="Block_5_1"  label="trial 11"  correctResponses="FJYQR"  code="Block_5_1"  pauseMs="0" tags="corsi active 5"  />
-        <stimulus  identifier="Block_5_2"  label="trial 12"  correctResponses="BRJZL"  code="Block_5_2"  pauseMs="0" tags="corsi active  5"  />
+        <stimulus  identifier="Block_5_2"  label="trial 12"  correctResponses="BRJZL"  code="Block_5_2"  pauseMs="0" tags="corsi 5"  />
         <stimulus  identifier="Block_5_3"  label="trial 13"  correctResponses="FYLBH"  code="Block_5_3"  pauseMs="0" tags="corsi 5"  />
-        <stimulus  identifier="Block_5_4"  label="trial 14"  correctResponses="FYQZH"  code="Block_5_4"  pauseMs="0" tags="corsi 5"  />
+        <stimulus  identifier="Block_5_4"  label="trial 14"  correctResponses="FYQZH"  code="Block_5_4"  pauseMs="0" tags="corsi active 5"  />
         <stimulus  identifier="Block_5_5"  label="trial 15"  correctResponses="ZRQYH"  code="Block_5_5"  pauseMs="0" tags="corsi 5"  />
         <stimulus  identifier="Block_6_1"  label="trial 16"  correctResponses="DWNKYC"  code="Block_6_1"  pauseMs="0" tags="corsi active 6"  />
-        <stimulus  identifier="Block_6_2"  label="trial 17"  correctResponses="NHYWKD"  code="Block_6_2"  pauseMs="0" tags="corsi active 6"  />
+        <stimulus  identifier="Block_6_2"  label="trial 17"  correctResponses="NHYWKD"  code="Block_6_2"  pauseMs="0" tags="corsi 6"  />
         <stimulus  identifier="Block_6_3"  label="trial 18"  correctResponses="WJQDHY"  code="Block_6_3"  pauseMs="0" tags="corsi 6"  />
-        <stimulus  identifier="Block_6_4"  label="trial 19"  correctResponses="NKWCQJ"  code="Block_6_4"  pauseMs="0" tags="corsi 6"  />
+        <stimulus  identifier="Block_6_4"  label="trial 19"  correctResponses="NKWCQJ"  code="Block_6_4"  pauseMs="0" tags="corsi active 6"  />
         <stimulus  identifier="Block_6_5"  label="trial 20"  correctResponses="JWNHDK"  code="Block_6_5"  pauseMs="0" tags="corsi 6"  />
         <stimulus  identifier="Block_7_1"  label="trial 21"  correctResponses="XJYKRZV"  code="Block_7_1"  pauseMs="0" tags="corsi active 7"  />
-        <stimulus  identifier="Block_7_2"  label="trial 22"  correctResponses="KDXZYVJ"  code="Block_7_2"  pauseMs="0" tags="corsi active 7"  />
+        <stimulus  identifier="Block_7_2"  label="trial 22"  correctResponses="KDXZYVJ"  code="Block_7_2"  pauseMs="0" tags="corsi 7"  />
         <stimulus  identifier="Block_7_3"  label="trial 23"  correctResponses="VDKRZJY"  code="Block_7_3"  pauseMs="0" tags="corsi 7"  />
-        <stimulus  identifier="Block_7_4"  label="trial 24"  correctResponses="RXKHYJV"  code="Block_7_4"  pauseMs="0" tags="corsi 7"  />
+        <stimulus  identifier="Block_7_4"  label="trial 24"  correctResponses="RXKHYJV"  code="Block_7_4"  pauseMs="0" tags="corsi active 7"  />
         <stimulus  identifier="Block_7_5"  label="trial 25"  correctResponses="KJVHRXY"  code="Block_7_5"  pauseMs="0" tags="corsi 7"  />
         <stimulus  identifier="Block_8_1"  label="trial 26"  correctResponses="ZWRHNQBX"  code="Block_8_1"  pauseMs="0" tags="corsi active 8"  />
-        <stimulus  identifier="Block_8_2"  label="trial 27"  correctResponses="WNYBQRZX"  code="Block_8_2"  pauseMs="0" tags="corsi active 8"  />
+        <stimulus  identifier="Block_8_2"  label="trial 27"  correctResponses="WNYBQRZX"  code="Block_8_2"  pauseMs="0" tags="corsi 8"  />
         <stimulus  identifier="Block_8_3"  label="trial 28"  correctResponses="ZHQXNBRW"  code="Block_8_3"  pauseMs="0" tags="corsi 8"  />
-        <stimulus  identifier="Block_8_4"  label="trial 29"  correctResponses="NXZBQYHR"  code="Block_8_4"  pauseMs="0" tags="corsi 8"  />
+        <stimulus  identifier="Block_8_4"  label="trial 29"  correctResponses="NXZBQYHR"  code="Block_8_4"  pauseMs="0" tags="corsi active 8"  />
         <stimulus  identifier="Block_8_5"  label="trial 30"  correctResponses="BWYZXNHQ"  code="Block_8_5"  pauseMs="0" tags="corsi 8"  />
     </stimuli>
 
