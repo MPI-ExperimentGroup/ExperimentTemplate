@@ -658,33 +658,33 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 duration.elapsedMillis());
     }
 
-    protected void scoreAboveThreshold(final int scoreThreshold, final int errorThreshold, final int potentialThreshold, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold) {
+    protected void scoreAboveThreshold(final int scoreThreshold, final int errorThreshold, final int potentialThreshold, final int correctStreak, final int errorStreak, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
         if (userResults.getUserData().getCurrentScore() >= scoreThreshold
                 && userResults.getUserData().getPotentialScore() - userResults.getUserData().getCurrentScore() >= errorThreshold
                 && userResults.getUserData().getPotentialScore() >= potentialThreshold) {
             aboveThreshold.postLoadTimerFired();
         } else {
-            belowThreshold.postLoadTimerFired();
+            withinThreshold.postLoadTimerFired();
         }
     }
 
-    protected void bestScoreAboveThreshold(final int scoreThreshold, final int errorThreshold, final int potentialThreshold, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold) {
+    protected void bestScoreAboveThreshold(final int scoreThreshold, final int errorThreshold, final int potentialThreshold, final int correctStreak, final int errorStreak, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
         if (userResults.getUserData().getBestScore() >= scoreThreshold
                 && userResults.getUserData().getBestScore() >= errorThreshold
                 && userResults.getUserData().getTotalPotentialScore() >= potentialThreshold) {
             aboveThreshold.postLoadTimerFired();
         } else {
-            belowThreshold.postLoadTimerFired();
+            withinThreshold.postLoadTimerFired();
         }
     }
 
-    protected void totalScoreAboveThreshold(final int scoreThreshold, final int errorThreshold, final int potentialThreshold, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold) {
+    protected void totalScoreAboveThreshold(final int scoreThreshold, final int errorThreshold, final int potentialThreshold, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
         if (userResults.getUserData().getTotalScore() >= scoreThreshold
                 && userResults.getUserData().getTotalPotentialScore() - userResults.getUserData().getTotalScore() >= errorThreshold
                 && userResults.getUserData().getTotalPotentialScore() >= potentialThreshold) {
             aboveThreshold.postLoadTimerFired();
         } else {
-            belowThreshold.postLoadTimerFired();
+            withinThreshold.postLoadTimerFired();
         }
     }
 
@@ -788,7 +788,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         } else {
             fieldValue = "";
         }
-        final MetadataFieldWidget metadataFieldWidget = new MetadataFieldWidget(metadataField, fieldValue, dataChannel);
+        final MetadataFieldWidget metadataFieldWidget = new MetadataFieldWidget(metadataField, currentStimulus, fieldValue, dataChannel);
         ((TimedStimulusView) simpleView).addWidget(metadataFieldWidget.getLabel());
         ((TimedStimulusView) simpleView).addWidget(metadataFieldWidget.getWidget());
         stimulusFreeTextList.add(metadataFieldWidget);
@@ -798,7 +798,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
         final String postName = "freeText";
         final JSONValue freeTextValue = (storedStimulusJSONObject == null) ? null : storedStimulusJSONObject.get(postName);
-        StimulusFreeText stimulusFreeText = ((TimedStimulusView) simpleView).addStimulusFreeText(postName, validationRegex, keyCodeChallenge, validationChallenge, allowedCharCodes, new SingleShotEventListner() {
+        StimulusFreeText stimulusFreeText = ((TimedStimulusView) simpleView).addStimulusFreeText(currentStimulus, postName, validationRegex, keyCodeChallenge, validationChallenge, allowedCharCodes, new SingleShotEventListner() {
             @Override
             protected void singleShotFired() {
                 for (PresenterEventListner nextButtonEventListner : nextButtonEventListnerList) {
@@ -1415,11 +1415,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         timerService.startTimer(msToNext, listenerId, timeoutListener);
     }
 
-    protected void compareTimer(final int msToNext, final String listenerId, final TimedStimulusListener aboveThreshold, final TimedStimulusListener belowThreshold) {
+    protected void compareTimer(final int msToNext, final String listenerId, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
         if (timerService.getTimerValue(listenerId) > msToNext) {
             aboveThreshold.postLoadTimerFired();
         } else {
-            belowThreshold.postLoadTimerFired();
+            withinThreshold.postLoadTimerFired();
         }
     }
 
@@ -1498,6 +1498,45 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         buttonList.clear();
     }
 
+    private boolean validateStimuliResponses(final StimuliProvider stimulusProvider/* this must use the stimuli for each StimulusFreeText and not from the stimulusProvider */) {
+        HashMap<Stimulus, JSONObject> jsonStimulusMap = new HashMap<>();
+        for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
+            if (!jsonStimulusMap.containsKey(stimulusFreeText.getStimulus())) {
+                JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), stimulusFreeText.getStimulus());
+                storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
+                jsonStimulusMap.put(stimulusFreeText.getStimulus(), storedStimulusJSONObject);
+            }
+
+            jsonStimulusMap.get(stimulusFreeText.getStimulus()).put(stimulusFreeText.getPostName(), new JSONString(stimulusFreeText.getValue()));
+        }
+        for (Stimulus stimulus : jsonStimulusMap.keySet()) {
+            localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), stimulus, jsonStimulusMap.get(stimulus));
+        }
+        for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
+            if (!stimulusFreeText.isValid()) {
+                stimulusFreeText.getFocusWidget().setFocus(true);
+                return false;
+            }
+        }
+        // @todo: probably good to check if the data has changed before writing to disk
+        for (Stimulus stimulus : jsonStimulusMap.keySet()) {
+            submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), stimulus.getUniqueId(), jsonStimulusMap.get(stimulus).toString());
+        }
+        for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
+            // @todo: checking the free text boxes is also done in the group stimulus sync code, therefore this should be shared in a single function
+            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), stimulusFreeText.getDataChannel(), stimulusFreeText.getPostName(), stimulusFreeText.getStimulus().getUniqueId(), stimulusFreeText.getValue(), duration.elapsedMillis());
+            final String responseTimes = stimulusFreeText.getResponseTimes();
+            if (responseTimes != null) {
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), stimulusFreeText.getDataChannel(), stimulusFreeText.getPostName() + "_ms", stimulusFreeText.getStimulus().getUniqueId(), responseTimes, duration.elapsedMillis());
+            }
+            if (stimulusFreeText.getStimulus().hasCorrectResponses()) {
+                // if there are correct responses to this stimulus then increment the score
+                userResults.getUserData().addPotentialScore(stimulusProvider.isCorrectResponse(stimulusFreeText.getStimulus(), stimulusFreeText.getValue()));
+            }
+        }
+        return true;
+    }
+
     protected void prevStimulus(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final boolean repeatIncorrect) {
         nextStimulus(stimulusProvider, currentStimulus, repeatIncorrect, -1);
     }
@@ -1511,31 +1550,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             ((ComplexView) simpleView).addText("showStimulus should not be used with the groupParticipantService");
             throw new UnsupportedOperationException("showStimulus should not be used with the groupParticipantService");
         }
-        JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus());
-        storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
-        for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
-            storedStimulusJSONObject.put(stimulusFreeText.getPostName(), new JSONString(stimulusFreeText.getValue()));
-        }
-        localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), stimulusProvider.getCurrentStimulus(), storedStimulusJSONObject);
-        for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
-            if (!stimulusFreeText.isValid()) {
-                stimulusFreeText.getFocusWidget().setFocus(true);
-                return;
-            }
-        }
-        // @todo: probably good to check if the data has changed before writing to disk
-        submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), stimulusProvider.getCurrentStimulus().getUniqueId(), storedStimulusJSONObject.toString());
-        for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
-            // @todo: checking the free text boxes is also done in the group stimulus sync code, therefore this should be shared in a single function
-            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), stimulusFreeText.getDataChannel(), stimulusFreeText.getPostName(), stimulusProvider.getCurrentStimulus().getUniqueId(), stimulusFreeText.getValue(), duration.elapsedMillis());
-            final String responseTimes = stimulusFreeText.getResponseTimes();
-            if (responseTimes != null) {
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), stimulusFreeText.getDataChannel(), stimulusFreeText.getPostName() + "_ms", stimulusProvider.getCurrentStimulus().getUniqueId(), responseTimes, duration.elapsedMillis());
-            }
-            if (stimulusProvider.getCurrentStimulus().hasCorrectResponses()) {
-                // if there are correct responses to this stimulus then increment the score
-                userResults.getUserData().addPotentialScore(stimulusProvider.isCorrectResponse(stimulusProvider.getCurrentStimulus(), stimulusFreeText.getValue()));
-            }
+        if (!validateStimuliResponses(stimulusProvider)) {
+            return;
         }
         if (repeatIncorrect && userResults.getUserData().isCurrentIncorrect()) {
             stimulusProvider.pushCurrentStimulusToEnd();
