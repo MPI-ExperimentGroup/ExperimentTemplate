@@ -30,6 +30,7 @@ public enum FeatureType {
 
     htmlText(false, true, new FeatureAttribute[]{styleName}),
     htmlTokenText(false, true, new FeatureAttribute[]{styleName}) /* string tokens will be replaced with score values eg <groupScore> <channelScore> etc. */,
+    logTokenText(false, true, new FeatureAttribute[]{eventTag, dataChannel, dataLogFormat}) /* string tokens will be replaced with score values eg <groupScore> <channelScore> etc. */,
     plainText(false, true, null),
     image(false, false, new FeatureAttribute[]{src, styleName, msToNext}, false, false, false, Contitionals.hasMediaLoading, Contitionals.none),
     menuItem(false, true, new FeatureAttribute[]{target, hotKey}),
@@ -40,6 +41,7 @@ public enum FeatureType {
     loadSdCardStimulus(false, false, new FeatureAttribute[]{eventTag, minStimuliPerTag, maxStimuliPerTag, maxStimuli, excludeRegex, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.hasMoreStimulus, Contitionals.none),
     //    loadAllStimulus(false, false, new FeatureAttribute[]{eventTag, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, false, false, Contitionals.hasMoreStimulus),
     currentStimulusHasTag(false, false, new FeatureAttribute[]{msToNext}, true, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction), // todo: consider updating this to take a tags attribute rather than a stimuli element
+    validateStimuliResponses(false, false, new FeatureAttribute[]{}, true, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     showStimuliReport(false, false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     sendStimuliReport(false, false, new FeatureAttribute[]{type, dataChannel, headerKey, separator}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     targetButton(false, true, new FeatureAttribute[]{hotKey, target, styleName}),
@@ -112,6 +114,7 @@ public enum FeatureType {
     showStimulusGrid(false, false, new FeatureAttribute[]{maxStimuli, dataChannel, columnCount, imageWidth, eventTag, animate}, false, false, false, Contitionals.hasCorrectIncorrect, Contitionals.stimulusAction),
     matchingStimulusGrid(false, false, new FeatureAttribute[]{columnCount, dataChannel, maxWidth, animate, matchingRegex, maxStimuli, randomise}, false, false, false, Contitionals.hasCorrectIncorrect, Contitionals.stimulusAction),
     pause(true, false, new FeatureAttribute[]{msToNext}),
+    // todo: consider renaming so that timer is the first part: timerStart, timerCompare, timerClear, timerLog
     startTimer(true, false, new FeatureAttribute[]{msToNext, listenerId}),
     compareTimer(false, false, new FeatureAttribute[]{msToNext, listenerId}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
     clearTimer(false, false, new FeatureAttribute[]{listenerId}),
@@ -141,7 +144,7 @@ public enum FeatureType {
     // todo: this should be suppressed from normal use like the other conditional child elements
     singleUser(true, false, null, false, false, false, Contitionals.none, Contitionals.hasUserCount),
     aboveThreshold(true, false, null, false, false, false, Contitionals.none, Contitionals.hasThreshold),
-    belowThreshold(true, false, null, false, false, false, Contitionals.none, Contitionals.hasThreshold),
+    withinThreshold(true, false, null, false, false, false, Contitionals.none, Contitionals.hasThreshold),
     mediaLoaded(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMediaLoading),
     mediaLoadFailed(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMediaLoading),
     mediaPlaybackComplete(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMediaPlayback),
@@ -192,9 +195,9 @@ public enum FeatureType {
     submitGroupEvent(false, false, null, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     clearCurrentScore(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.none, Contitionals.none),
     scoreIncrement(true, false, new FeatureAttribute[]{scoreValue}, false, false, false, Contitionals.none, Contitionals.none),
-    bestScoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
+    bestScoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold, correctStreak, errorStreak}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
     totalScoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
-    scoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
+    scoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold, correctStreak, errorStreak}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
     resetStimulus(false, false, new FeatureAttribute[]{target}, false, false, false, Contitionals.none, Contitionals.none),
     submitTestResults(false, false, null, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none);
     private final boolean canHaveFeatures;
