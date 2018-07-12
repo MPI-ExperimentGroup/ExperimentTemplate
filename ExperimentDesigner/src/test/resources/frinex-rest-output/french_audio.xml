@@ -91,11 +91,11 @@
             <aboveThreshold>
                 <gotoNextPresenter/>
             </aboveThreshold>
-            <belowThreshold>
+            <withinThreshold>
                 <htmlText featureText="Si votre réponse n'est pas correcte, vous ne pourrez pas poursuivre l'expérience"/>
                 <resetStimulus target="Pretest_Screen"/>
                 <targetButton featureText="Retry" target="Pretest_Screen"/>
-            </belowThreshold>
+            </withinThreshold>
         </bestScoreAboveThreshold>
     </presenter>
     <presenter menuLabel="stimuliC" next="EditUser" type="stimulus" self="stimuliC" title="stimuliC">
