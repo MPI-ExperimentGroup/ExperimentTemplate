@@ -48,6 +48,8 @@ public interface Stimulus extends Comparable<Stimulus> {
 
     boolean hasCorrectResponses();
 
+    boolean isCorrect(String value);
+
     String getAudio();
 
     String getImage();

@@ -43,6 +43,11 @@ public class ResultsSerialiserTest {
     private Stimulus getStimulus(final String label) {
         return new Stimulus() {
             @Override
+            public boolean isCorrect(String value) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
             public String getCode() {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }

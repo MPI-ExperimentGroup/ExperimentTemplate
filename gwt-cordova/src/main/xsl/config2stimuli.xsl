@@ -153,7 +153,12 @@
             /*public GeneratedStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String ratingLabels, String correctResponses) {
             super(uniqueId, tags, label, code, pauseMs, ratingLabels, correctResponses);
             }*/
-
+            
+            @Override
+            public boolean isCorrect(String value) {
+            return (value != null) ? value.matches(getCorrectResponses()) : false;
+            }
+            
             @Override
             public String getAudio() {
             return serviceLocations.staticFilesUrl() + super.getAudio();
