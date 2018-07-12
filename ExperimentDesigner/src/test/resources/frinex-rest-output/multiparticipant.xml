@@ -394,9 +394,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
@@ -406,9 +406,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
@@ -525,9 +525,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
@@ -537,9 +537,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
@@ -656,9 +656,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
@@ -668,9 +668,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
@@ -787,9 +787,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
@@ -799,9 +799,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
@@ -918,9 +918,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
@@ -930,9 +930,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
@@ -1049,9 +1049,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
@@ -1061,9 +1061,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
@@ -1180,9 +1180,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
@@ -1192,9 +1192,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
@@ -1572,9 +1572,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
@@ -1584,9 +1584,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
@@ -1703,9 +1703,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
@@ -1715,9 +1715,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
@@ -1834,9 +1834,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
@@ -1846,9 +1846,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
@@ -1965,9 +1965,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
@@ -1977,9 +1977,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
@@ -2096,9 +2096,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
@@ -2108,9 +2108,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
@@ -2227,9 +2227,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
@@ -2239,9 +2239,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
@@ -2358,9 +2358,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
@@ -2370,9 +2370,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
@@ -2534,9 +2534,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
@@ -2546,9 +2546,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
@@ -2665,9 +2665,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
@@ -2677,9 +2677,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
@@ -2796,9 +2796,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
@@ -2808,9 +2808,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
@@ -2927,9 +2927,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
@@ -2939,9 +2939,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
@@ -3058,9 +3058,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
@@ -3070,9 +3070,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
@@ -3189,9 +3189,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
@@ -3201,9 +3201,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
@@ -3320,9 +3320,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
@@ -3332,9 +3332,9 @@
                                         <aboveThreshold>
                                             <sendGroupMessage eventTag="aboveFeature" incrementPhase="1"/>
                                         </aboveThreshold>
-                                        <belowThreshold>
+                                        <withinThreshold>
                                             <sendGroupMessage eventTag="belowFeature" incrementPhase="1"/>
-                                        </belowThreshold>
+                                        </withinThreshold>
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseIncorrect>
