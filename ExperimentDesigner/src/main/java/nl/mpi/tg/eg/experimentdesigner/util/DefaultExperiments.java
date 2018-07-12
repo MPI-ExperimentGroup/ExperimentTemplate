@@ -374,7 +374,7 @@ public class DefaultExperiments {
                 break;
             case hasThreshold:
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.aboveThreshold, presenterFeatureRepository, addOptionalAttributes));
-                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.belowThreshold, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.withinThreshold, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
                     presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 }
