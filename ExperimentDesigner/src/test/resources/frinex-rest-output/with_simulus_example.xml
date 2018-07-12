@@ -33,6 +33,32 @@
     <presenter menuLabel="Terug" type="text" self="First_Stimuli_Screen_Informatie" title="First Stimuli Screen Informatie">
         <htmlText featureText="Instructies 1: &lt;br/&gt;&lt;br/&gt;Druk op [Z] als de zin kompleet is, of op [.]."/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="First_Stimuli_Screen"/>
+        <table>
+            <row>
+                <column>
+                    <plainText featureText="column 1"/>
+                </column>
+                <column>
+                    <plainText featureText="column 2"/>
+                    <table>
+                        <row>
+                            <column>
+                                <plainText featureText="column 1 in table 1"/>
+                            </column>
+                            <column>
+                                <plainText featureText="column 2 in table 1"/>
+                            </column>
+                            <column>
+                                <plainText featureText="column3 in table 1"/>
+                            </column>
+                        </row>
+                    </table>
+                </column>
+                <column>
+                    <plainText featureText="column3"/>
+                </column>
+            </row>
+        </table>
     </presenter>
     <presenter menuLabel="With Stimuli Screen" next="First_Stimuli_Screen_Informatie" type="stimulus" self="With_Stimuli_Screen" title="With Stimuli Screen">
         <region regionId="regionId" styleName="styleName">
@@ -118,18 +144,20 @@
             </eachStimulus>
             <afterStimulus>  
                 <region regionId="validateStimuliResponses"/>
-                <validateStimuliResponses>
-                    <conditionFalse>
-                        <region regionId="validateStimuliResponses">
-                            <plainText featureText="plainText in conditionFalse"/>
-                        </region>  
-                    </conditionFalse>
-                    <conditionTrue>
-                        <region regionId="validateStimuliResponses">
-                            <plainText featureText="plainText in conditionTrue"/>
-                        </region>
-                    </conditionTrue>
-                </validateStimuliResponses>
+                <actionButton featureText="validateStimuliResponses">
+                    <validateStimuliResponses>
+                        <conditionFalse>
+                            <region regionId="validateStimuliResponses">
+                                <plainText featureText="plainText in conditionFalse"/>
+                            </region>  
+                        </conditionFalse>
+                        <conditionTrue>
+                            <region regionId="validateStimuliResponses">
+                                <plainText featureText="plainText in conditionTrue"/>
+                            </region>
+                        </conditionTrue>
+                    </validateStimuliResponses>
+                </actionButton>
                 <plainText featureText="plainText in afterStimulus"/>         
                 <targetButton featureText="Next Screen" target="First_Stimuli_Screen_Informatie"/>
             </afterStimulus>
@@ -142,6 +170,7 @@
     <presenter menuLabel="First Stimuli Screen" next="Second_Informatie" type="stimulus" self="First_Stimuli_Screen" title="First Stimuli Screen">
         <loadStimulus eventTag="First Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <!--todo: flesh out this score thrshold example/test-->
                 <bestScoreAboveThreshold scoreThreshold="3" errorThreshold="3" correctStreak="2" errorStreak="1" potentialThreshold="3">
                     <aboveThreshold>
                         <plainText featureText="plainText in aboveThreshold"/>
