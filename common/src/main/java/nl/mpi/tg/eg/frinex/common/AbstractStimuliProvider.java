@@ -69,9 +69,4 @@ public abstract class AbstractStimuliProvider implements StimuliProvider {
     public List<Stimulus> getDistractorList(int maxStimuli) {
         throw new UnsupportedOperationException("getDistractorList");
     }
-
-    @Override
-    public boolean isCorrectResponse(Stimulus stimulus, String stimulusResponse) {
-        return (stimulusResponse != null) ? stimulusResponse.matches(stimulus.getCorrectResponses()) : false;
-    }
 }
