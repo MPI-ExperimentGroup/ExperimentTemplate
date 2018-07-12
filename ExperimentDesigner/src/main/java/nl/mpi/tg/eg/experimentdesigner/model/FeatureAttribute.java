@@ -34,7 +34,7 @@ public enum FeatureAttribute {
     parameterName,
     linkedFieldName,
     code,
-//    tags,  // todo: consider updating some elements to take a tags attribute rather than a stimuli element
+    //    tags,  // todo: consider updating some elements to take a tags attribute rather than a stimuli element
     codeFormat,
     validationRegex,
     allowedCharCodes(true),
@@ -55,6 +55,7 @@ public enum FeatureAttribute {
     showOnBackButton(true),
     eventTier,
     dataChannel(true),
+    dataLogFormat(false),
     filePerStimulus, // when recording audio this boolean determins if a separate recording should be made for each stimulus or one recording for the set of stimuli
     eventTag(false),
     ratingLabels,
@@ -69,14 +70,14 @@ public enum FeatureAttribute {
     adjacencyThreshold(true),
     repeatIncorrect,
     hotKey(true), // todo: this could provide a list for the schema to know what are valid values
-//    @Deprecated
-//    mp3,
-//    @Deprecated
-//    mp4,
-//    @Deprecated
-//    ogg,
-//    @Deprecated
-//    webm,
+    //    @Deprecated
+    //    mp3,
+    //    @Deprecated
+    //    mp4,
+    //    @Deprecated
+    //    ogg,
+    //    @Deprecated
+    //    webm,
     wavFormat,
     poster,
     autoPlay,
@@ -95,9 +96,11 @@ public enum FeatureAttribute {
     maxStimuli(true),
     excludeRegex(true),
     //    alias, // alias is used to specify a tag or set of tags via GET parameters
-    scoreThreshold(false),
-    errorThreshold(true), // interger to make active, when empty or not present is passed as 0
-    potentialThreshold(true), // interger to make active, when empty or not present is passed as 0
+    scoreThreshold(true), // interger to make active, when empty or not present is passed as null
+    errorThreshold(true), // interger to make active, when empty or not present is passed as null
+    potentialThreshold(true), // interger to make active, when empty or not present is passed as null
+    correctStreak(true), // interger to make active, when empty or not present is passed as null
+    errorStreak(true), // interger to make active, when empty or not present is passed as null
     showPlaybackIndicator,
     showControls(false),
     groupRole,
