@@ -728,6 +728,11 @@ public class GeneratedStimulus implements Stimulus {
     }
 
     @Override
+    public boolean isCorrect(String value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
     public String getAudio() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

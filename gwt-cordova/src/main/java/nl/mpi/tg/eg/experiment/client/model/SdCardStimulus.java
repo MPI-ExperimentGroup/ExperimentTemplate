@@ -61,6 +61,11 @@ public class SdCardStimulus implements Stimulus {
     }
 
     @Override
+    public boolean isCorrect(String value) {
+        return false;
+    }
+
+    @Override
     public String getUniqueId() {
         return uniqueId;
     }
