@@ -30,6 +30,7 @@ import com.google.gwt.user.client.ui.Widget;
 import nl.mpi.tg.eg.experiment.client.exception.MetadataFieldException;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Aug 2, 2017 3:41:23 PM (creation date)
@@ -38,6 +39,7 @@ import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
 public class MetadataFieldWidget implements StimulusFreeText {
 
     final private MetadataField metadataField;
+    final private Stimulus stimulus;
     final private String initialValue;
     final private FocusWidget focusWidget;
     final private Widget widget;
@@ -47,8 +49,9 @@ public class MetadataFieldWidget implements StimulusFreeText {
     final private int dataChannel;
     final DateOfBirthField dateOfBirthField;
 
-    public MetadataFieldWidget(MetadataField metadataField, String initialValue, final int dataChannel) {
+    public MetadataFieldWidget(MetadataField metadataField, Stimulus stimulus, String initialValue, final int dataChannel) {
         this.metadataField = metadataField;
+        this.stimulus = stimulus;
         this.initialValue = initialValue;
         this.dataChannel = dataChannel;
         if (metadataField.isDate()) {
@@ -103,6 +106,11 @@ public class MetadataFieldWidget implements StimulusFreeText {
         labelPanel = new VerticalPanel();
         labelPanel.add(label);
         labelPanel.add(errorLabel);
+    }
+
+    @Override
+    public Stimulus getStimulus() {
+        return stimulus;
     }
 
     @Override
