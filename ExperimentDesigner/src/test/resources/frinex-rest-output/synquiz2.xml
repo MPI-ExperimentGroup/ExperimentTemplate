@@ -518,7 +518,7 @@
     <presenter back="Menu" menuLabel="Report" next="Menu" type="colourReport" self="Report" title="Report">
         <showColourReport scoreThreshold="1">
             <aboveThreshold/>
-            <belowThreshold/>
+            <withinThreshold/>
         </showColourReport>
         <submitTestResults>
             <onSuccess/>
