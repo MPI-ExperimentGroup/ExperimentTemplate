@@ -214,7 +214,7 @@ public class SchemaGenerator {
                 case hasThreshold:
                     writer.append("<xs:all>\n");
                     writer.append("<xs:element name=\"aboveThreshold\" type=\"aboveThresholdType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                    writer.append("<xs:element name=\"belowThreshold\" type=\"belowThresholdType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("<xs:element name=\"withinThreshold\" type=\"withinThresholdType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                     writer.append("</xs:all>\n");
                     break;
                 case groupNetworkActivity:
