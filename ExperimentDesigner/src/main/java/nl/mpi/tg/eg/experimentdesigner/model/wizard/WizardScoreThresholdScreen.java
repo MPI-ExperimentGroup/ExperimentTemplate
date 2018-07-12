@@ -80,26 +80,26 @@ public class WizardScoreThresholdScreen extends AbstractWizardScreen {
 //        bestScoreAboveThreshold.addFeatureAttributes(FeatureAttribute.potentialThreshold, Integer.toString(getScoreThreshold(storedWizardScreenData)));
 
         final PresenterFeature aboveThreshold = new PresenterFeature(FeatureType.aboveThreshold, null);
-        final PresenterFeature belowThreshold = new PresenterFeature(FeatureType.belowThreshold, null);
+        final PresenterFeature withinThreshold = new PresenterFeature(FeatureType.withinThreshold, null);
 
         final PresenterFeature autoNextPresenter = new PresenterFeature(FeatureType.gotoNextPresenter, null);
 //        autoNextPresenter.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getNextWizardScreenData().getScreenTag());
         aboveThreshold.getPresenterFeatureList().add(autoNextPresenter);
 
         final PresenterFeature htmlText = new PresenterFeature(FeatureType.htmlText, storedWizardScreenData.getScreenText(0));
-        belowThreshold.getPresenterFeatureList().add(htmlText);
+        withinThreshold.getPresenterFeatureList().add(htmlText);
 
         final PresenterFeature resetStimulus = new PresenterFeature(FeatureType.resetStimulus, null);
         resetStimulus.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getMenuWizardScreenData().get(0).getScreenTag());
-        belowThreshold.getPresenterFeatureList().add(resetStimulus);
+        withinThreshold.getPresenterFeatureList().add(resetStimulus);
 
         final PresenterFeature targetButton = new PresenterFeature(FeatureType.targetButton, storedWizardScreenData.getNextButton()[0]);
         targetButton.addFeatureAttributes(FeatureAttribute.target, storedWizardScreenData.getMenuWizardScreenData().get(0).getScreenTag());
 
-        belowThreshold.getPresenterFeatureList().add(targetButton);
+        withinThreshold.getPresenterFeatureList().add(targetButton);
 
         bestScoreAboveThreshold.getPresenterFeatureList().add(aboveThreshold);
-        bestScoreAboveThreshold.getPresenterFeatureList().add(belowThreshold);
+        bestScoreAboveThreshold.getPresenterFeatureList().add(withinThreshold);
 
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(bestScoreAboveThreshold);
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
