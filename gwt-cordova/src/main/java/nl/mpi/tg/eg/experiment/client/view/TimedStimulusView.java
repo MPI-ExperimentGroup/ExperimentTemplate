@@ -48,6 +48,7 @@ import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Jun 26, 2015 10:24:34 AM (creation date)
@@ -251,7 +252,7 @@ public class TimedStimulusView extends ComplexView {
         getActivePanel().add(htmlPanel);
     }
 
-    public StimulusFreeText addStimulusFreeText(final String postName, final String validationRegex, final String keyCodeChallenge, final String validationChallenge, final String allowedCharCodes, final SingleShotEventListner enterKeyListner, final int hotKey, final String styleName, final int dataChannel, final String textValue) {
+    public StimulusFreeText addStimulusFreeText(final Stimulus stimulus, final String postName, final String validationRegex, final String keyCodeChallenge, final String validationChallenge, final String allowedCharCodes, final SingleShotEventListner enterKeyListner, final int hotKey, final String styleName, final int dataChannel, final String textValue) {
         final int inputLengthLimit = 28; // todo: make this a parameter from the configuraiton file, remove allowedCharCodes and do a regex test on each key?
         final Label errorLabel = new Label(validationChallenge);
         errorLabel.setStylePrimaryName("metadataErrorMessage");
@@ -322,6 +323,10 @@ public class TimedStimulusView extends ComplexView {
             }
         });
         final StimulusFreeText stimulusFreeText = new StimulusFreeText() {
+            @Override
+            public Stimulus getStimulus() {
+                return stimulus;
+            }
 
             @Override
             public String getValue() {
