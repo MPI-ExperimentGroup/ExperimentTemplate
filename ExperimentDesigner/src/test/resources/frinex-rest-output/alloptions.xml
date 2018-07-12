@@ -77,9 +77,9 @@
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </compareTimer>
         <clearTimer listenerId="listenerId"/>
         <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
@@ -149,9 +149,9 @@
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </compareTimer>
         <clearTimer listenerId="listenerId"/>
         <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
@@ -184,7 +184,7 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="preload_all_attributes" type="preload" self="preload_all_attributesScreen" title="preload_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
-        <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
+        <htmlTokenText featureText="htmlTokenText" styleName="styleName" dataLogFormat="dataLogFormat"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
             <mediaLoaded>
@@ -241,9 +241,9 @@
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </compareTimer>
         <clearTimer listenerId="listenerId"/>
         <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
@@ -1183,9 +1183,9 @@
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </compareTimer>
         <clearTimer listenerId="listenerId"/>
         <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
@@ -1225,29 +1225,29 @@
         <scoreIncrement scoreValue="true">
             <plainText featureText="plainText in scoreIncrement"/>
         </scoreIncrement>
-        <bestScoreAboveThreshold scoreThreshold="3">
+        <bestScoreAboveThreshold scoreThreshold="3" errorThreshold="3" correctStreak="correctStreak" errorStreak="errorStreak" potentialThreshold="3">
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </bestScoreAboveThreshold>
         <totalScoreAboveThreshold scoreThreshold="3" errorThreshold="3" potentialThreshold="3">
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </totalScoreAboveThreshold>
-        <scoreAboveThreshold scoreThreshold="3" errorThreshold="3" potentialThreshold="3">
+        <scoreAboveThreshold scoreThreshold="3" errorThreshold="3" correctStreak="correctStreak" errorStreak="errorStreak" potentialThreshold="3">
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </scoreAboveThreshold>
         <resetStimulus target="target"/>
     </presenter>
@@ -1303,9 +1303,9 @@
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </showColourReport>
         <submitTestResults>
             <onError>
@@ -1351,9 +1351,9 @@
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </compareTimer>
         <clearTimer listenerId="listenerId"/>
         <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
@@ -1422,9 +1422,9 @@
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </compareTimer>
         <clearTimer listenerId="listenerId"/>
         <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
@@ -1483,9 +1483,9 @@
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </compareTimer>
         <clearTimer listenerId="listenerId"/>
         <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
@@ -1534,9 +1534,9 @@
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </compareTimer>
         <clearTimer listenerId="listenerId"/>
         <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
@@ -1593,9 +1593,9 @@
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </compareTimer>
         <clearTimer listenerId="listenerId"/>
         <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
@@ -1679,9 +1679,9 @@
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </compareTimer>
         <clearTimer listenerId="listenerId"/>
         <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
@@ -1751,9 +1751,9 @@
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </compareTimer>
         <clearTimer listenerId="listenerId"/>
         <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
@@ -1843,9 +1843,9 @@
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </compareTimer>
         <clearTimer listenerId="listenerId"/>
         <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
@@ -2785,9 +2785,9 @@
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </compareTimer>
         <clearTimer listenerId="listenerId"/>
         <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
@@ -2827,29 +2827,29 @@
         <scoreIncrement scoreValue="true">
             <plainText featureText="plainText in scoreIncrement"/>
         </scoreIncrement>
-        <bestScoreAboveThreshold scoreThreshold="3">
+        <bestScoreAboveThreshold>
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </bestScoreAboveThreshold>
-        <totalScoreAboveThreshold scoreThreshold="3">
+        <totalScoreAboveThreshold>
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </totalScoreAboveThreshold>
-        <scoreAboveThreshold scoreThreshold="3">
+        <scoreAboveThreshold>
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </scoreAboveThreshold>
         <resetStimulus target="target"/>
     </presenter>
@@ -2901,13 +2901,13 @@
         </regionReplace>
         <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
-        <showColourReport scoreThreshold="3">
+        <showColourReport>
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </showColourReport>
         <submitTestResults>
             <onError>
@@ -2953,9 +2953,9 @@
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </compareTimer>
         <clearTimer listenerId="listenerId"/>
         <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
@@ -3024,9 +3024,9 @@
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </compareTimer>
         <clearTimer listenerId="listenerId"/>
         <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
@@ -3085,9 +3085,9 @@
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </compareTimer>
         <clearTimer listenerId="listenerId"/>
         <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
@@ -3136,9 +3136,9 @@
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </compareTimer>
         <clearTimer listenerId="listenerId"/>
         <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
@@ -3195,9 +3195,9 @@
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
-            <belowThreshold>
-                <plainText featureText="plainText in belowThreshold"/>
-            </belowThreshold>
+            <withinThreshold>
+                <plainText featureText="plainText in withinThreshold"/>
+            </withinThreshold>
         </compareTimer>
         <clearTimer listenerId="listenerId"/>
         <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
