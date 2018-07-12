@@ -18,12 +18,15 @@
 package nl.mpi.tg.eg.experiment.client.model;
 
 import com.google.gwt.user.client.ui.FocusWidget;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Jun 29, 2016 3:52:50 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public interface StimulusFreeText {
+
+    public Stimulus getStimulus();
 
     public String getPostName();
 
