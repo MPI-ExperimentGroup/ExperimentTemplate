@@ -300,9 +300,9 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         final PresenterFeature aboveThreshold = new PresenterFeature(FeatureType.aboveThreshold, null);
 //        aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "above threshold"));
         scoreAboveThreshold.getPresenterFeatureList().add(aboveThreshold);
-        final PresenterFeature belowThreshold = new PresenterFeature(FeatureType.belowThreshold, null);
-//        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "below threshold"));
-        scoreAboveThreshold.getPresenterFeatureList().add(belowThreshold);
+        final PresenterFeature withinThreshold = new PresenterFeature(FeatureType.withinThreshold, null);
+//        withinThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "below threshold"));
+        scoreAboveThreshold.getPresenterFeatureList().add(withinThreshold);
 //        scoreButtonFeature.getPresenterFeatureList().add(scoreIncrement);
 //        aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
 //        aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
@@ -312,13 +312,13 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //        aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupScoreLabel, null));
 //        aboveThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
 
-//        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-//        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
-//        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-//        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupChannelScoreLabel, null));
-//        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
-//        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupScoreLabel, null));
-//        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+//        withinThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+//        withinThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.scoreLabel, null));
+//        withinThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+//        withinThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupChannelScoreLabel, null));
+//        withinThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
+//        withinThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.groupScoreLabel, null));
+//        withinThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
 //        final PresenterFeature aboveFeature = addGroupMessageButton("correctNetworkActivityAboveThreshold", "Z");
 //        final PresenterFeature belowFeature = addGroupMessageButton("correctNetworkActivityBelowThreshold", "Z");
         final PresenterFeature aboveFeature = new PresenterFeature(FeatureType.sendGroupMessage, null);
@@ -329,7 +329,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         belowFeature.addFeatureAttributes(FeatureAttribute.incrementPhase, "1");
 
         aboveThreshold.getPresenterFeatureList().add(aboveFeature);
-        belowThreshold.getPresenterFeatureList().add(belowFeature);
+        withinThreshold.getPresenterFeatureList().add(belowFeature);
         return Arrays.asList(new PresenterFeature[]{scoreIncrement, scoreAboveThreshold, new PresenterFeature(FeatureType.submitGroupEvent, null)});
     }
 

@@ -76,13 +76,13 @@ public class WizardSynQuizReportScreen extends AbstractWizardScreen {
 //        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.stimulusLabel, null));
 //        hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
         showColourReport.getPresenterFeatureList().add(aboveThreshold);
-        final PresenterFeature belowThreshold = new PresenterFeature(FeatureType.belowThreshold, null);
-//        belowThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "below threshold"));
+        final PresenterFeature withinThreshold = new PresenterFeature(FeatureType.withinThreshold, null);
+//        withinThreshold.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "below threshold"));
 //        final PresenterFeature menuButtonFeature = new PresenterFeature(FeatureType.targetButton, "Menu");
 //        menuButtonFeature.addFeatureAttributes(FeatureAttribute.target, "AutoMenu");
 //        endOfStimulusFeature.getPresenterFeatureList().add(menuButtonFeature);
 //        endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.autoNextPresenter, null));
-        showColourReport.getPresenterFeatureList().add(belowThreshold);
+        showColourReport.getPresenterFeatureList().add(withinThreshold);
         presenterScreen.getPresenterFeatureList().add(showColourReport);
         final PresenterFeature submitTestResults = new PresenterFeature(FeatureType.submitTestResults, null);
         submitTestResults.getPresenterFeatureList().add(new PresenterFeature(FeatureType.onSuccess, null));
