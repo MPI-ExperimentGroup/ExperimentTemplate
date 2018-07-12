@@ -1124,7 +1124,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusButton", currentStimulus.getUniqueId(), presenterListerner.getLabel(), duration.elapsedMillis());
                 if (currentStimulus.hasCorrectResponses()) {
                     // if there are correct responses to this stimulus then increment the score
-                    userResults.getUserData().addPotentialScore(stimulusProvider.isCorrectResponse(currentStimulus, presenterListerner.getLabel()));
+                    userResults.getUserData().addPotentialScore(currentStimulus.isCorrect(presenterListerner.getLabel()));
                 }
                 presenterListerner.eventFired(button, shotEventListner);
             }
@@ -1196,7 +1196,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "RatingButton", stimulusString, ratingItem, duration.elapsedMillis());
                     if (currentStimulus.hasCorrectResponses()) {
                         // if there are correct responses to this stimulus then increment the score
-                        userResults.getUserData().addPotentialScore(stimulusProvider.isCorrectResponse(currentStimulus, ratingItem));
+                        userResults.getUserData().addPotentialScore(currentStimulus.isCorrect(ratingItem));
                     }
                     timedStimulusListener.postLoadTimerFired();
                 }
@@ -1539,7 +1539,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
             if (stimulusFreeText.getStimulus().hasCorrectResponses()) {
                 // if there are correct responses to this stimulus then increment the score
-                userResults.getUserData().addPotentialScore(stimulusProvider.isCorrectResponse(stimulusFreeText.getStimulus(), stimulusFreeText.getValue()));
+                userResults.getUserData().addPotentialScore(stimulusFreeText.getStimulus().isCorrect(stimulusFreeText.getValue()));
             }
         }
         return true;

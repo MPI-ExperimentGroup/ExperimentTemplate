@@ -112,14 +112,4 @@ public interface StimuliProvider {
      * @param stimuliIndex
      */
     void setCurrentStimuliIndex(int stimuliIndex);
-
-    /**
-     * isCorrectResponse tests if the provided stimulusResponse is correct when
-     * checked against the stimulus
-     *
-     * @param stimulus
-     * @param stimulusResponse
-     * @return true if the response is correct
-     */
-    boolean isCorrectResponse(Stimulus stimulus, String stimulusResponse);
 }
