@@ -65,7 +65,7 @@ public class ComplexView extends SimpleView {
     private VerticalPanel cellPanel = null;
     private VerticalPanel regionPanel = null;
     private final HashMap<String, VerticalPanel> regionPanels = new HashMap<>();
-    private FlexTable gridPanel = null;
+    private final ArrayList<FlexTable> gridPanelList = new ArrayList<>();
 
     private class ImageEntry {
 
@@ -130,15 +130,20 @@ public class ComplexView extends SimpleView {
         }
     }
 
+    public FlexTable gridPanel() {
+        final int index = gridPanelList.size() - 1;
+        return (index >= 0) ? gridPanelList.get(index) : null;
+    }
+
     public void startCell(String styleName) {
         cellPanel = new VerticalPanel();
         if (styleName != null && !styleName.isEmpty()) {
             cellPanel.addStyleName(styleName);
         }
         cellPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
-        if (gridPanel != null) {
-            gridPanel.addCell(gridPanel.getRowCount() - 1);
-            gridPanel.setWidget(gridPanel.getRowCount() - 1, gridPanel.getCellCount(gridPanel.getRowCount() - 1) - 1, cellPanel);
+        if (gridPanel() != null) {
+            gridPanel().addCell(gridPanel().getRowCount() - 1);
+            gridPanel().setWidget(gridPanel().getRowCount() - 1, gridPanel().getCellCount(gridPanel().getRowCount() - 1) - 1, cellPanel);
         } else {
             horizontalPanel.add(cellPanel);
         }
@@ -149,30 +154,31 @@ public class ComplexView extends SimpleView {
     }
 
     public void startRow() {
-        if (gridPanel != null) {
-            gridPanel.insertRow(gridPanel.getRowCount());
+        if (gridPanel() != null) {
+            gridPanel().insertRow(gridPanel().getRowCount());
         } else {
             startHorizontalPanel();
         }
     }
 
     public void endRow() {
-        if (gridPanel == null) {
+        if (gridPanel() == null) {
             endHorizontalPanel();
         }
     }
 
     public Widget startTable(final String styleName) {
-        gridPanel = new FlexTable();
+        FlexTable gridPanel = new FlexTable();
         if (styleName != null && !styleName.isEmpty()) {
             gridPanel.addStyleName(styleName);
         }
         outerPanel.add(gridPanel);
-        return gridPanel;
+        gridPanelList.add(gridPanel);
+        return gridPanel();
     }
 
     public void endTable() {
-        gridPanel = null;
+        gridPanelList.remove(gridPanelList.size() - 1);
     }
 
     public void startHorizontalPanel() {
