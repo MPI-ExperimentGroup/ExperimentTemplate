@@ -456,7 +456,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="showStimuliReport|sendStimuliReport|htmlTokenText|submitGroupEvent|helpDialogue|eraseUsersDataButton|saveMetadataButton|localStorageData|stimulusMetadataField|allMetadataFields|metadataField|metadataFieldConnection|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|cancelPauseTimers|disableStimulusButtons|showStimulus|showStimulusProgress|hideStimulusButtons|showStimulusButtons|displayCompletionCode|generateCompletionCode|sendAllData|sendMetadata|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|removeMatchingStimulus|stimulusLabel">
+    <xsl:template match="showStimuliReport|sendStimuliReport|logTokenText|htmlTokenText|submitGroupEvent|helpDialogue|eraseUsersDataButton|saveMetadataButton|localStorageData|stimulusMetadataField|allMetadataFields|metadataField|metadataFieldConnection|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|cancelPauseTimers|disableStimulusButtons|showStimulus|showStimulusProgress|hideStimulusButtons|showStimulusButtons|displayCompletionCode|generateCompletionCode|sendAllData|sendMetadata|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|removeMatchingStimulus|stimulusLabel">
         <xsl:text>    </xsl:text>    
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
@@ -490,6 +490,9 @@ or local-name() eq 'stimulusLabel'
         <xsl:value-of select="if(@matchingRegex) then concat('&quot;', @matchingRegex, '&quot;') else ''" />
         <xsl:value-of select="if(@target) then concat(', ApplicationState.', @target) else ''" />
         <xsl:value-of select="if(local-name() eq 'stimulusMetadataField') then ',' else ''" />
+        <!--<xsl:if test="local-name() eq 'htmlTokenText'">-->
+            <xsl:value-of select="if(@dataLogFormat) then concat('&quot;', @dataLogFormat, '&quot;, ') else ''" />
+        <!--</xsl:if>-->
         <xsl:if test="local-name() eq 'generateCompletionCode' or local-name() eq 'sendStimuliReport' or local-name() eq 'stimulusMetadataField'">
             <xsl:value-of select="if(@dataChannel) then @dataChannel else '0'" />
         </xsl:if>
@@ -641,7 +644,7 @@ or local-name() eq 'ratingFooterButton'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="mediaLoaded|mediaLoadFailed|mediaPlaybackComplete|conditionTrue|conditionFalse|onError|onSuccess|responseCorrect|responseIncorrect|beforeStimulus|eachStimulus|afterStimulus|hasMoreStimulus|endOfStimulus|multipleUsers|singleUser|aboveThreshold|belowThreshold">
+    <xsl:template match="mediaLoaded|mediaLoadFailed|mediaPlaybackComplete|conditionTrue|conditionFalse|onError|onSuccess|responseCorrect|responseIncorrect|beforeStimulus|eachStimulus|afterStimulus|hasMoreStimulus|endOfStimulus|multipleUsers|singleUser|aboveThreshold|withinThreshold">
         <xsl:value-of select="if(@msToNext) then concat(', ', @msToNext) else ''" />
         <xsl:value-of select="if(local-name() eq 'multipleUsers') then '' else ', '" />
         <xsl:text>&#xa;new </xsl:text>
@@ -854,7 +857,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
             <xsl:value-of select="if(@consumedTagGroup) then concat(', &quot;', @consumedTagGroup, '&quot;') else ',null'" />
         </xsl:if>
     </xsl:template>
-    <xsl:template match="compareTimer|preloadAllStimuli|trigger|resetStimulus|groupMessageLabel|groupMemberCodeLabel|groupMemberLabel|groupScoreLabel|groupChannelScoreLabel|scoreLabel|clearCurrentScore|scoreIncrement|scoreAboveThreshold|bestScoreAboveThreshold|totalScoreAboveThreshold|withMatchingStimulus|showColourReport|submitTestResults|VideoPanel|startAudioRecorder|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|withStimuli|loadStimulus|loadSdCardStimulus|currentStimulusHasTag|existingUserCheck|rewindVideo|playVideo|pauseVideo">
+    <xsl:template match="compareTimer|preloadAllStimuli|trigger|resetStimulus|groupMessageLabel|groupMemberCodeLabel|groupMemberLabel|groupScoreLabel|groupChannelScoreLabel|scoreLabel|clearCurrentScore|scoreIncrement|scoreAboveThreshold|bestScoreAboveThreshold|totalScoreAboveThreshold|withMatchingStimulus|showColourReport|submitTestResults|VideoPanel|startAudioRecorder|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|withStimuli|loadStimulus|loadSdCardStimulus|validateStimuliResponses|currentStimulusHasTag|existingUserCheck|rewindVideo|playVideo|pauseVideo">
         <xsl:if test="local-name() eq 'preloadAllStimuli' or local-name() eq 'withStimuli' or local-name() eq 'loadStimulus' or local-name() eq 'loadSdCardStimulus'">
             <xsl:text>{</xsl:text>
             <xsl:text>final StimuliProvider stimulusProvider = </xsl:text>
@@ -913,14 +916,18 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <!--<xsl:value-of select="if(@maxStimuli) then concat(', ', @maxStimuli, '') else ''" />-->
         <!--<xsl:value-of select="if(@minStimuliPerTag) then concat(', ', @minStimuliPerTag, '') else ''" />-->
         <!--<xsl:value-of select="if(@maxStimuliPerTag) then concat(', ', @maxStimuliPerTag, '') else ''" />-->
-        <!--<xsl:value-of select="if(@scoreThreshold) then concat('', @scoreThreshold, '') else ''" />--> 
-        <!-- // todo: check the if(@potentialThreshold) and if(@errorThreshold)-->
-        <xsl:value-of select="if(@scoreThreshold eq '') then 'null' else if(@scoreThreshold) then concat('', @scoreThreshold, '') else ''" />
-        <xsl:value-of select="if(@scoreThreshold) then if(@errorThreshold) then concat(',', @errorThreshold, '') else ',0' else ''" />
-        <xsl:value-of select="if(@scoreThreshold) then if(@potentialThreshold) then concat(',', @potentialThreshold, '') else ',0' else ''" /> 
-        
+        <xsl:if test="local-name() eq 'bestScoreAboveThreshold' or local-name() eq 'totalScoreAboveThreshold' or local-name() eq 'scoreAboveThreshold'">
+            <xsl:value-of select="if(@scoreThreshold eq '') then 'null' else if(@scoreThreshold) then concat('', @scoreThreshold, '') else 'null'" />
+            <xsl:value-of select="if(@errorThreshold eq '') then ', null' else if(@errorThreshold) then concat(', ', @errorThreshold, '') else ', null'" />
+            <xsl:value-of select="if(@potentialThreshold eq '') then ', null' else if(@potentialThreshold) then concat(', ', @potentialThreshold, '') else ', null'" />
+        </xsl:if>
+        <xsl:if test="local-name() eq 'bestScoreAboveThreshold' or local-name() eq 'scoreAboveThreshold'">
+            <xsl:value-of select="if(@correctStreak eq '') then ', null' else if(@correctStreak) then concat(', ', @correctStreak, '') else ', null'" />
+            <xsl:value-of select="if(@errorStreak eq '') then ', null' else if(@errorStreak) then concat(', ', @errorStreak, '') else ', null'" />
+        </xsl:if>
         <!-- the trailing comma after scoreThreshold is needed for SynQuiz2, needs to be checked for other configurations. -->
-        <xsl:value-of select="if(@scoreThreshold and (local-name() eq 'showColourReport' or local-name() eq 'submitTestResults')) then ', ' else ''" />
+        <xsl:value-of select="if(local-name() eq 'submitTestResults') then ', ' else ''" />
+        <xsl:value-of select="if(local-name() eq 'showColourReport') then if(@scoreThreshold eq '') then '0, ' else if(@scoreThreshold) then concat('', @scoreThreshold, ', ') else '0, ' else ''" />
         <xsl:value-of select="if(@scoreValue) then concat('', @scoreValue, '') else ''" />
         <xsl:value-of select="if(@columnCount) then concat(', ', @columnCount, '') else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
@@ -963,7 +970,7 @@ or local-name() eq 'preloadAllStimuli'
             <xsl:text>new MetadataFieldProvider().emailAddressMetadataField</xsl:text>
         </xsl:if>
         <xsl:apply-templates select="aboveThreshold" />
-        <xsl:apply-templates select="belowThreshold" />
+        <xsl:apply-templates select="withinThreshold" />
         <xsl:apply-templates select="onError" />
         <xsl:apply-templates select="onSuccess" />
         <xsl:text>);
