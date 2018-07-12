@@ -72,11 +72,11 @@
                         <plainText featureText="TimerA aboveThreshold"/>
                     </region>
                 </aboveThreshold>
-                <belowThreshold>
+                <withinThreshold>
                     <region regionId="regionTimerA">
-                        <plainText featureText="TimerA belowThreshold"/>
+                        <plainText featureText="TimerA withinThreshold"/>
                     </region>
-                </belowThreshold>
+                </withinThreshold>
             </compareTimer>
         </actionButton>
         <actionButton featureText="clearTimerA">
@@ -116,7 +116,20 @@
                     </mediaPlaybackComplete>
                 </stimulusPresent>
             </eachStimulus>
-            <afterStimulus>       
+            <afterStimulus>  
+                <region regionId="validateStimuliResponses"/>
+                <validateStimuliResponses>
+                    <conditionFalse>
+                        <region regionId="validateStimuliResponses">
+                            <plainText featureText="plainText in conditionFalse"/>
+                        </region>  
+                    </conditionFalse>
+                    <conditionTrue>
+                        <region regionId="validateStimuliResponses">
+                            <plainText featureText="plainText in conditionTrue"/>
+                        </region>
+                    </conditionTrue>
+                </validateStimuliResponses>
                 <plainText featureText="plainText in afterStimulus"/>         
                 <targetButton featureText="Next Screen" target="First_Stimuli_Screen_Informatie"/>
             </afterStimulus>
@@ -129,6 +142,30 @@
     <presenter menuLabel="First Stimuli Screen" next="Second_Informatie" type="stimulus" self="First_Stimuli_Screen" title="First Stimuli Screen">
         <loadStimulus eventTag="First Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <bestScoreAboveThreshold scoreThreshold="3" errorThreshold="3" correctStreak="2" errorStreak="1" potentialThreshold="3">
+                    <aboveThreshold>
+                        <plainText featureText="plainText in aboveThreshold"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <plainText featureText="plainText in withinThreshold"/>
+                    </withinThreshold>
+                </bestScoreAboveThreshold>
+                <totalScoreAboveThreshold scoreThreshold="3" errorThreshold="3" potentialThreshold="3">
+                    <aboveThreshold>
+                        <plainText featureText="plainText in aboveThreshold"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <plainText featureText="plainText in withinThreshold"/>
+                    </withinThreshold>
+                </totalScoreAboveThreshold>
+                <scoreAboveThreshold scoreThreshold="3" errorThreshold="3" correctStreak="2" errorStreak="1" potentialThreshold="3">
+                    <aboveThreshold>
+                        <plainText featureText="plainText in aboveThreshold"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <plainText featureText="plainText in withinThreshold"/>
+                    </withinThreshold>
+                </scoreAboveThreshold>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>

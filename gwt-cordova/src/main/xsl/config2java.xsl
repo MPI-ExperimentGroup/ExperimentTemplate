@@ -491,7 +491,7 @@ or local-name() eq 'stimulusLabel'
         <xsl:value-of select="if(@target) then concat(', ApplicationState.', @target) else ''" />
         <xsl:value-of select="if(local-name() eq 'stimulusMetadataField') then ',' else ''" />
         <!--<xsl:if test="local-name() eq 'htmlTokenText'">-->
-            <xsl:value-of select="if(@dataLogFormat) then concat('&quot;', @dataLogFormat, '&quot;, ') else ''" />
+        <xsl:value-of select="if(@dataLogFormat) then concat('&quot;', @dataLogFormat, '&quot;, ') else ''" />
         <!--</xsl:if>-->
         <xsl:if test="local-name() eq 'generateCompletionCode' or local-name() eq 'sendStimuliReport' or local-name() eq 'stimulusMetadataField'">
             <xsl:value-of select="if(@dataChannel) then @dataChannel else '0'" />
@@ -946,6 +946,12 @@ or local-name() eq 'preloadAllStimuli'
 ">
             <xsl:text>
                 ,stimulusProvider
+            </xsl:text>
+        </xsl:if>                                
+        <xsl:if test="local-name() eq 'validateStimuliResponses'
+">
+            <xsl:text>
+                stimulusProvider
             </xsl:text>
         </xsl:if>                                
         <xsl:if test="local-name() eq 'currentStimulusHasTag'

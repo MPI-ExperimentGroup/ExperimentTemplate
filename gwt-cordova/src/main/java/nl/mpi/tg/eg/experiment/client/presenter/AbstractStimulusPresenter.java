@@ -1498,6 +1498,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         buttonList.clear();
     }
 
+    public void validateStimuliResponses(final StimuliProvider stimulusProvider, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse) {
+        if (validateStimuliResponses(stimulusProvider)) {
+            conditionTrue.postLoadTimerFired();
+        } else {
+            conditionFalse.postLoadTimerFired();
+        }
+    }
+
     private boolean validateStimuliResponses(final StimuliProvider stimulusProvider/* this must use the stimuli for each StimulusFreeText and not from the stimulusProvider */) {
         HashMap<Stimulus, JSONObject> jsonStimulusMap = new HashMap<>();
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
