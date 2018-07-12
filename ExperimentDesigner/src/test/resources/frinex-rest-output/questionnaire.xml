@@ -8,7 +8,7 @@
     <!--<experiment appNameDisplay="Adaptive Vocabulary Assessment" appNameInternal="advocas" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" showMenuBar="false" textFontSize="17">-->
     <metadata>
         <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Wat is je proefpersoonnummer?"/>
-        <field controlledMessage="S.v.p type x" controlledRegex="x|" postName="isAuteur" preventServerDuplicates="false" registrationField=""/>
+        <field controlledMessage="S.v.p type x" controlledRegex="true|false" postName="isAuteur" preventServerDuplicates="false" registrationField=""/>
     </metadata>
     <presenter displayOrder="1" type="menu" self="Menu" title="Menu">
         <centrePage/>
@@ -41,14 +41,17 @@
         <addPadding/>
         <htmlText featureText="Welkom bij dit experiment,"/>
         <addPadding/>
-        <htmlText featureText="Hieronder zie je een lijst met namen. Een deel van de namen is auteurs en een deel is niet. Zet een x-je achter de namen waarvan jij denkt dat ze auteuren zijn. Veel succes!"/>
+        <htmlText featureText="Je zal een lijst met namen zien. Een deel van de namen is auteurs en een deel is niet. Zet een vinkje achter de namen waarvan jij denkt dat ze auteuren zijn. Veel succes!"/>
         <addPadding/>
         <addPadding/>
         <targetButton featureText="Aan de slag" target="stimuliScreenAuthorCheck"/>
     </presenter>
    
     <presenter displayOrder="30" next="Admin" type="stimulus" self="stimuliScreenAuthorCheck" title="">
-        <htmlText featureText="Zet een kruisje achter de namen waarvan jij denkt dat ze auteuren zijn"/>
+        <addPadding/>
+        <htmlText featureText="Zet een vinkje achter de namen waarvan jij denkt dat ze auteuren zijn"/>
+        <addPadding/>
+        <addPadding/>
         <table>
             <row>
                 <column>
@@ -56,8 +59,16 @@
                         <beforeStimulus>  
                         </beforeStimulus>
                         <eachStimulus>
-                            <stimulusLabel styleName=""/> 
-                            <stimulusMetadataField fieldName="isAuteur"/>
+                            <table>
+                                <row>
+                                    <column>
+                                        <stimulusLabel styleName=""/> 
+                                    </column>
+                                    <column>
+                                        <stimulusMetadataField fieldName="isAuteur"/>
+                                    </column>
+                                </row>
+                            </table>
                         </eachStimulus>
                         <afterStimulus>    
                         </afterStimulus>
@@ -73,8 +84,16 @@
                         <beforeStimulus>  
                         </beforeStimulus>
                         <eachStimulus>
-                            <stimulusLabel styleName=""/> 
-                            <stimulusMetadataField fieldName="isAuteur"/> 
+                            <table> 
+                                <row>
+                                    <column>
+                                        <stimulusLabel styleName=""/> 
+                                    </column>
+                                    <column>
+                                        <stimulusMetadataField fieldName="isAuteur"/>
+                                    </column>
+                                </row>
+                            </table>
                         </eachStimulus>
                         <afterStimulus>    
                         </afterStimulus>
@@ -90,8 +109,16 @@
                         <beforeStimulus>  
                         </beforeStimulus>
                         <eachStimulus>
-                            <stimulusLabel styleName=""/> 
-                            <stimulusMetadataField fieldName="isAuteur"/> 
+                            <table> 
+                                <row>
+                                    <column>
+                                        <stimulusLabel styleName=""/> 
+                                    </column>
+                                    <column>
+                                        <stimulusMetadataField fieldName="isAuteur"/>
+                                    </column>
+                                </row>
+                            </table>
                         </eachStimulus>
                         <afterStimulus>    
                         </afterStimulus>
@@ -126,32 +153,99 @@
         <addPadding/>
         <htmlText featureText="Welkom bij dit experiment,"/>
         <addPadding/>
-        <htmlText featureText="...."/>
+        <htmlText featureText="Instructie: Hieronder zie je een lijst met woorden. Een deel van de woorden is goed gespeld en een deel is fout gespeld. Zet een vinkje achter de woorden waarvan jij denkt dat ze foutgespeld zijn. Veel succes!"/>
         <addPadding/>
         <addPadding/>
         <targetButton featureText="Aan de slag" target="stimuliScreenSpellingCheck"/>
     </presenter>
    
     <presenter displayOrder="60" next="Admin" type="stimulus" self="stimuliScreenSpellingCheck" title="">
-        <withStimuli eventTag="With Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
-            <beforeStimulus>       
-                      
-            </beforeStimulus>
-            <eachStimulus>
-                <plainText featureText="plainText in eachStimulus"/>
-               
-            </eachStimulus>
-            <afterStimulus>       
-                <plainText featureText="plainText in afterStimulus"/>         
-                <targetButton featureText="Submit" target="Admin"/>
-            </afterStimulus>
-            <randomGrouping/>
-            <stimuli>
-                <tag>spelling</tag>
-                <tag>col1</tag>
-            </stimuli>
-        </withStimuli>
-       
+       <addPadding/>
+        <htmlText featureText="Zet een vinkje achter de woorden waarvan jij denkt dat ze foutgespeld zijn"/>
+        <addPadding/>
+        <addPadding/>
+        <table>
+            <row>
+                <column>
+                    <withStimuli randomise="false" eventTag="column1" maxStimuli="1000" repeatCount="1">
+                        <beforeStimulus>  
+                        </beforeStimulus>
+                        <eachStimulus>
+                            <table>
+                                <row>
+                                    <column>
+                                        <stimulusLabel styleName=""/> 
+                                    </column>
+                                    <column>
+                                        <stimulusMetadataField fieldName="isAuteur"/>
+                                    </column>
+                                </row>
+                            </table>
+                        </eachStimulus>
+                        <afterStimulus>    
+                        </afterStimulus>
+                        <randomGrouping/>
+                        <stimuli>
+                            <tag>spelling</tag>
+                            <tag>col1</tag>
+                        </stimuli>
+                    </withStimuli>
+                </column>
+                <column>
+                    <withStimuli randomise="false" eventTag="column2" maxStimuli="1000" repeatCount="1">
+                        <beforeStimulus>  
+                        </beforeStimulus>
+                        <eachStimulus>
+                            <table> 
+                                <row>
+                                    <column>
+                                        <stimulusLabel styleName=""/> 
+                                    </column>
+                                    <column>
+                                        <stimulusMetadataField fieldName="isAuteur"/>
+                                    </column>
+                                </row>
+                            </table>
+                        </eachStimulus>
+                        <afterStimulus>    
+                        </afterStimulus>
+                        <randomGrouping/>
+                        <stimuli>
+                            <tag>spelling</tag>
+                            <tag>col2</tag>
+                        </stimuli>
+                    </withStimuli>
+                </column>
+                <column>
+                    <withStimuli randomise="false" eventTag="column3" maxStimuli="1000" repeatCount="1">
+                        <beforeStimulus>  
+                        </beforeStimulus>
+                        <eachStimulus>
+                            <table> 
+                                <row>
+                                    <column>
+                                        <stimulusLabel styleName=""/> 
+                                    </column>
+                                    <column>
+                                        <stimulusMetadataField fieldName="isAuteur"/>
+                                    </column>
+                                </row>
+                            </table>
+                        </eachStimulus>
+                        <afterStimulus>    
+                        </afterStimulus>
+                        <randomGrouping/>
+                        <stimuli>
+                            <tag>spelling</tag>
+                            <tag>col3</tag>
+                        </stimuli>
+                    </withStimuli>
+                </column>
+            </row>
+        </table>
+        
+        <targetButton featureText="Submit" target="Admin"/>
+      
     </presenter>
     
  
