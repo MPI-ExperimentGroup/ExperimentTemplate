@@ -120,7 +120,18 @@
                                 </row>
                             </table>
                         </eachStimulus>
-                        <afterStimulus>    
+                        <afterStimulus> 
+                            <actionButton featureText="submit">
+                                <validateStimuliResponses>
+                                    <conditionFalse>
+                                        <plainText featureText="Fout input"/>
+                                    </conditionFalse>
+                                    <conditionTrue>
+                                       <gotoNextPresenter/>
+                                    </conditionTrue>
+                                </validateStimuliResponses>
+                            </actionButton>
+          
                         </afterStimulus>
                         <randomGrouping/>
                         <stimuli>
@@ -132,7 +143,6 @@
             </row>
         </table>
         
-        <targetButton featureText="Submit" target="Admin"/>
       
     </presenter>
     
@@ -160,7 +170,7 @@
     </presenter>
    
     <presenter displayOrder="60" next="Admin" type="stimulus" self="stimuliScreenSpellingCheck" title="">
-       <addPadding/>
+        <addPadding/>
         <htmlText featureText="Zet een vinkje achter de woorden waarvan jij denkt dat ze foutgespeld zijn"/>
         <addPadding/>
         <addPadding/>
