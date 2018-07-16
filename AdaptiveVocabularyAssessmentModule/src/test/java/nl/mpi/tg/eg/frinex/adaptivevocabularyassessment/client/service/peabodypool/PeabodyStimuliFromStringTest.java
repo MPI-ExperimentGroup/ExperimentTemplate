@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Set;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.peabody.PeabodyStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -66,7 +67,8 @@ public class PeabodyStimuliFromStringTest {
     public void testGetHashedStimuli() throws Exception {
         System.out.println("parseWordsInputCSVString");
         PeabodyStimuliFromString instance = new PeabodyStimuliFromString();
-        instance.parseWordsInputCSVString(this.numberOfBands, PeabodyStimuliFromStringTest.PEABODY_STIMULI_DIR);
+        PeabodyStimuliProvider provider = new PeabodyStimuliProvider(null);
+        instance.parseWordsInputCSVString(provider, this.numberOfBands, PeabodyStimuliFromStringTest.PEABODY_STIMULI_DIR);
 
         LinkedHashMap<String, PeabodyStimulus> result = instance.getHashedStimuli();
         assertEquals(this.amountOfStimuli, result.size());
@@ -110,7 +112,8 @@ public class PeabodyStimuliFromStringTest {
     public void testGetStimuliByBands() throws Exception {
         System.out.println("getStimuliByBands");
         PeabodyStimuliFromString instance = new PeabodyStimuliFromString();
-        instance.parseWordsInputCSVString(this.numberOfBands, PeabodyStimuliFromStringTest.PEABODY_STIMULI_DIR);
+        PeabodyStimuliProvider provider = new PeabodyStimuliProvider(null);
+        instance.parseWordsInputCSVString(provider, this.numberOfBands, PeabodyStimuliFromStringTest.PEABODY_STIMULI_DIR);
 
         ArrayList<ArrayList<PeabodyStimulus>> result = instance.getStimuliByBands();
         assertEquals(this.numberOfBands, result.size());

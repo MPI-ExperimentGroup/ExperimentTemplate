@@ -84,7 +84,7 @@ public class AudioAsLearningStimuliProvider extends BandStimuliProvider<AudioAsS
 
             this.currentBandIndex = this.startBand;
             this.reader = new AudioStimuliFromString();
-            this.reader.readTrialsAsCsv(this.stimuliDir);
+            this.reader.readTrialsAsCsv(this, this.stimuliDir);
             this.reader.prepareLearningTrialsAsCsv(this.learningTrialsIds);
             this.learningTrials = this.reader.getHashedLearningTrials();
             this.isCorrectCurrentResponse = true;

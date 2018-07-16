@@ -67,7 +67,8 @@ public class AudioStimuliFromStringTest {
     public void testReadTrialsAsCsv() {
         System.out.println("readTrialsAsCsv");
         AudioStimuliFromString instance = new AudioStimuliFromString();
-        instance.readTrialsAsCsv(TestConfigurationConstants.AUDIO_STIMULI_DIR);
+        AudioAsStimuliProvider provider = new AudioAsStimuliProvider(null);
+        instance.readTrialsAsCsv(provider, TestConfigurationConstants.AUDIO_STIMULI_DIR);
         LinkedHashMap<Integer, Trial> trials = instance.getHashedTrials();
         Set<Integer> keys = trials.keySet();
         assertEquals(TestConfigurationConstants.N_AUDIO_TRIALS, trials.size());
@@ -370,7 +371,8 @@ public class AudioStimuliFromStringTest {
     public void testGetStimuliTrialIndex() {
 
         AudioStimuliFromString instance = new AudioStimuliFromString();
-        instance.readTrialsAsCsv(TestConfigurationConstants.AUDIO_STIMULI_DIR);
+        AudioAsStimuliProvider provider = new AudioAsStimuliProvider(null);
+        instance.readTrialsAsCsv(provider, TestConfigurationConstants.AUDIO_STIMULI_DIR);
         LinkedHashMap<Integer, Trial> trials = instance.getHashedTrials();
         LinkedHashMap<String, Integer> stimuliTrialReference = instance.getStimuliTrialIndex();
 
@@ -410,7 +412,8 @@ public class AudioStimuliFromStringTest {
     public void testReadTrialsLearningAsCsv() {
         System.out.println("readTrialsLearningAsCsv");
         AudioStimuliFromString instance = new AudioStimuliFromString();
-        instance.readTrialsAsCsv(TestConfigurationConstants.AUDIO_STIMULI_DIR);
+         AudioAsStimuliProvider provider = new AudioAsStimuliProvider(null);
+        instance.readTrialsAsCsv(provider, TestConfigurationConstants.AUDIO_STIMULI_DIR);
         String[] learningTrialsIDsString = TestConfigurationConstants.AUDIO_LEARNING_TRIALS.split(",");
         ArrayList<Integer> learningTrialsIDs = new ArrayList<Integer>(TestConfigurationConstants.AUDIO_N_LEARNING_TRIALS);
         for (String idStr : learningTrialsIDsString) {

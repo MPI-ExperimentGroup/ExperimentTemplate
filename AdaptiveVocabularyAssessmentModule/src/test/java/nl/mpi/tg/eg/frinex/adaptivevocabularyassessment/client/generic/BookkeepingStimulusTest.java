@@ -41,7 +41,16 @@ public class BookkeepingStimulusTest {
         String label = "smoer";
 
         this.stimulus = new BandStimulus(uniqueId, new Stimulus.Tag[0], label, "", 900, "aud", "vid", "img",
-                "a,b,c", "b,c", "plus10db", 10);
+                "a,b,c", "b,c", "plus10db", 10) {
+            @Override
+            public boolean isCorrect(String value) {
+                if (value == null) {
+                    return false;
+                }
+                return value.trim().equals("b") || value.trim().equals("c");
+            }
+        };
+
         this.instance = new BookkeepingStimulus<BandStimulus>(stimulus);
 
     }
@@ -122,7 +131,7 @@ public class BookkeepingStimulusTest {
         String expResult = "{fields=[stimulus, userReaction, correctness, timeStamp], stimulus=smoer_plus10db, userReaction=null, correctness=null, timeStamp=0}";
         String result = this.instance.toString();
         assertEquals(expResult, result);
-        
+
         long now = System.currentTimeMillis();
         this.instance.setTimeStamp(now);
         this.instance.setReaction("yes");
@@ -139,24 +148,22 @@ public class BookkeepingStimulusTest {
     public void testToBookkeepingStimulusObject() throws Exception {
         System.out.println("toObject");
         long now = System.currentTimeMillis();
-        LinkedHashMap<String, Object> inputMap =  new LinkedHashMap<String,Object>();
+        LinkedHashMap<String, Object> inputMap = new LinkedHashMap<String, Object>();
         String[] flds = {"stimulus", "userReaction", "correctness", "timeStamp"};
         inputMap.put("fields", Arrays.asList(flds));
         inputMap.put("stimulus", "smoer");
         inputMap.put("userReaction", "yes");
         inputMap.put("correctness", false);
         inputMap.put("timeStamp", now);
-        
-        
+
         LinkedHashMap<String, BandStimulus> map = new LinkedHashMap<String, BandStimulus>();
         map.put("smoer", this.stimulus);
-        
+
         BookkeepingStimulus<BandStimulus> result = this.instance.toBookkeepingStimulusObject(inputMap, map);
         assertEquals("yes", result.getReaction());
         assertFalse(result.getCorrectness());
         assertEquals(now, result.getTimeStamp());
         assertEquals(this.stimulus, result.getStimulus());
     }
-
 
 }

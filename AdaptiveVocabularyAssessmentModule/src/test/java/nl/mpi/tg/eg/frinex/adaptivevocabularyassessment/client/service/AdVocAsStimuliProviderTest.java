@@ -460,7 +460,8 @@ public class AdVocAsStimuliProviderTest {
     @Test
     public void testGetTotalStimuli10_1() throws Exception {
         AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseNonWordsInputCSVString("NonWords_NL_1round", "Words_NL_1round");
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
+        reader.parseNonWordsInputCSVString(provider, "NonWords_NL_1round", "Words_NL_1round");
         ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
         int nonWordsLength = rawNonwords.size();
         this.testGetTotalStimuli("Words_NL_1round", "NonWords_NL_1round", "testGetTotalStimuli10_1", nonWordsLength, "40");
@@ -472,7 +473,8 @@ public class AdVocAsStimuliProviderTest {
     @Test
     public void testGetTotalStimuli10_2() throws Exception {
         AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseNonWordsInputCSVString("NonWords_NL_1round", "Words_NL_1round");
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
+        reader.parseNonWordsInputCSVString(provider, "NonWords_NL_1round", "Words_NL_1round");
         ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
         int nonWordsLength = rawNonwords.size();
         this.testGetTotalStimuli("Words_NL_1round", "NonWords_NL_1round", "testGetTotalStimuli10_1", nonWordsLength, "40");
@@ -484,7 +486,8 @@ public class AdVocAsStimuliProviderTest {
     @Test
     public void testGetTotalStimuli10_3() throws Exception {
         AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseNonWordsInputCSVString("NonWords_NL_1round", "Words_NL_1round");
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
+        reader.parseNonWordsInputCSVString(provider, "NonWords_NL_1round", "Words_NL_1round");
         ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
         int nonWordsLength = rawNonwords.size();
         this.testGetTotalStimuli("Words_NL_1round", "NonWords_NL_1round", "testGetTotalStimuli10_1", nonWordsLength, "40");
@@ -496,7 +499,8 @@ public class AdVocAsStimuliProviderTest {
     @Test
     public void testGetTotalStimuli20_1() throws Exception {
         AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseNonWordsInputCSVString("NonWords_NL_2rounds_1", "Words_NL_1round");
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
+        reader.parseNonWordsInputCSVString(provider, "NonWords_NL_2rounds_1", "Words_NL_1round");
         ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
         int nonWordsLength = rawNonwords.size();
         this.testGetTotalStimuli("Words_NL_2rounds_1", "NonWords_NL_2rounds_1", "testGetTotalStimuli20_1", nonWordsLength, "20");
@@ -508,7 +512,8 @@ public class AdVocAsStimuliProviderTest {
     @Test
     public void testGetTotalStimuli20_2() throws Exception {
         AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseNonWordsInputCSVString("NonWords_NL_2rounds_1", "Words_NL_2rounds_1");
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
+        reader.parseNonWordsInputCSVString(provider, "NonWords_NL_2rounds_1", "Words_NL_2rounds_1");
         ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
         int nonWordsLength = rawNonwords.size();
         this.testGetTotalStimuli("Words_NL_2rounds_1", "NonWords_NL_2rounds_1", "testGetTotalStimuli20_1", nonWordsLength, "20");
@@ -520,7 +525,8 @@ public class AdVocAsStimuliProviderTest {
     @Test
     public void testGetTotalStimuli20_3() throws Exception {
         AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseNonWordsInputCSVString("NonWords_NL_2rounds_1", "Words_NL_2rounds_1");
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
+        reader.parseNonWordsInputCSVString(provider, "NonWords_NL_2rounds_1", "Words_NL_2rounds_1");
         ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
         int nonWordsLength = rawNonwords.size();
         this.testGetTotalStimuli("Words_NL_2rounds_1", "NonWords_NL_2rounds_1", "testGetTotalStimuli20_1", nonWordsLength, "20");
@@ -532,7 +538,8 @@ public class AdVocAsStimuliProviderTest {
     @Test
     public void testGetTotalStimuli21_1() throws Exception {
         AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseNonWordsInputCSVString("NonWords_NL_2rounds_2", "Words_NL_2rounds_2");
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
+        reader.parseNonWordsInputCSVString(provider, "NonWords_NL_2rounds_2", "Words_NL_2rounds_2");
         ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
         int nonWordsLength = rawNonwords.size();
         this.testGetTotalStimuli("Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "testGetTotalStimuli20_2", nonWordsLength, "20");
@@ -544,7 +551,8 @@ public class AdVocAsStimuliProviderTest {
     @Test
     public void testGetTotalStimuli21_2() throws Exception {
         AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseNonWordsInputCSVString("NonWords_NL_2rounds_2", "Words_NL_2rounds_2");
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
+        reader.parseNonWordsInputCSVString(provider, "NonWords_NL_2rounds_2", "Words_NL_2rounds_2");
         ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
         int nonWordsLength = rawNonwords.size();
         this.testGetTotalStimuli("Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "testGetTotalStimuli20_2", nonWordsLength, "20");
@@ -556,7 +564,8 @@ public class AdVocAsStimuliProviderTest {
     @Test
     public void testGetTotalStimuli21_3() throws Exception {
         AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseNonWordsInputCSVString("NonWords_NL_2rounds_2", "Words_NL_2rounds_2");
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
+        reader.parseNonWordsInputCSVString(provider, "NonWords_NL_2rounds_2", "Words_NL_2rounds_2");
         ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
         int nonWordsLength = rawNonwords.size();
         this.testGetTotalStimuli("Words_NL_2rounds_2", "NonWords_NL_2rounds_2", "testGetTotalStimuli20_2", nonWordsLength, "20");
@@ -1054,7 +1063,7 @@ public class AdVocAsStimuliProviderTest {
         LinkedHashMap<Integer, String> samples = provider.retrieveSampleWords(provider.getResponseRecord(), provider.getWords());
 
         AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseWordsInputCSVString(wordsSource, nonwordsSource, Integer.parseInt(this.numberOfBands));
+        reader.parseWordsInputCSVString(provider, wordsSource, nonwordsSource, Integer.parseInt(this.numberOfBands));
         ArrayList<ArrayList<AdVocAsStimulus>> rawWords = reader.getWords();
 
         assertEquals(nOfBands, samples.keySet().size());

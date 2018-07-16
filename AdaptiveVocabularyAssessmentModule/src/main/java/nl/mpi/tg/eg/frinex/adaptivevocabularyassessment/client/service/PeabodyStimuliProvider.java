@@ -69,7 +69,7 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
             PeabodyStimuliFromString reader = new PeabodyStimuliFromString();
 
             try {
-                reader.parseWordsInputCSVString(this.numberOfBands, this.stimuliDir);
+                reader.parseWordsInputCSVString(this, this.numberOfBands, this.stimuliDir);
                 this.stimuliPool = reader.getStimuliByBands();
                 this.initialiseNextFineTuningTuple();
             } catch (Exception exReading) {
@@ -319,7 +319,7 @@ public class PeabodyStimuliProvider extends BandStimuliProvider<PeabodyStimulus>
         Object recordObj = map.get("responseRecord");
 
         PeabodyStimuliFromString reader = new PeabodyStimuliFromString();
-        reader.parseWordsInputCSVString(this.numberOfBands, this.stimuliDir);
+        reader.parseWordsInputCSVString(this, this.numberOfBands, this.stimuliDir);
         this.stimuliPool = reader.getStimuliByBands();
         
         if (recordObj != null) {

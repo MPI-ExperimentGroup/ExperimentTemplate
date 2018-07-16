@@ -160,7 +160,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
             this.currentBandIndex = this.startBand;
 
             this.reader = new AudioStimuliFromString();
-            this.reader.readTrialsAsCsv(this.stimuliDir);
+            this.reader.readTrialsAsCsv(this, this.stimuliDir);
             
             LinkedHashMap<Integer, Trial> hashedTrials = this.reader.getHashedTrials();
             for (Integer learningTrialId : this.learninTrials) {
@@ -465,7 +465,7 @@ public class AudioAsStimuliProvider extends BandStimuliProvider<AudioAsStimulus>
     @Override
     protected void deserialiseSpecific(String str) throws Exception {
 
-        this.reader.readTrialsAsCsv(this.stimuliDir);
+        this.reader.readTrialsAsCsv(this, this.stimuliDir);
         this.trials = Trial.prepareTrialMatrix(reader.getHashedTrials(), this.numberOfBands, this.maxTrialLength);
 
         Map<String, Object> map = UtilsJSONdialect.stringToObjectMap(str, SPECIFIC_FLDS);

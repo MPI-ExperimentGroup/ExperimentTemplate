@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary;
 
 import java.util.ArrayList;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.AdVocAsStimuliFromString;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocaspool.Vocabulary;
 import org.junit.After;
@@ -47,8 +48,9 @@ public class AdVocAsStimulusTest {
         
         this.vocab = new Vocabulary(this.numberOfBands, this.wordsPerBand);
         AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseWordsInputCSVString(this.wordsSource, this.nonwordsSource, this.numberOfBands);
-        reader.parseNonWordsInputCSVString(this.nonwordsSource, this.wordsSource);
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
+        reader.parseWordsInputCSVString(provider,this.wordsSource, this.nonwordsSource, this.numberOfBands);
+        reader.parseNonWordsInputCSVString(provider,this.nonwordsSource, this.wordsSource);
         ArrayList<ArrayList<AdVocAsStimulus>> rawWords = reader.getWords();
         ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
         assertTrue(rawWords.size()>0);

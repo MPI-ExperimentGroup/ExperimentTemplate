@@ -23,7 +23,7 @@ import nl.mpi.tg.eg.frinex.common.model.AbstractStimulus;
  * @since Oct 27, 2017 2:13:03 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class BandStimulus extends AbstractStimulus {
+public abstract class BandStimulus extends AbstractStimulus {
 
     public final String bandLabel;
     public final int bandIndex;
@@ -48,5 +48,6 @@ public class BandStimulus extends AbstractStimulus {
     public String toString() {
         return this.getUniqueId();
     }
+   
 
 }

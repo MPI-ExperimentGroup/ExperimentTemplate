@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.CsvRecords;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.peabody.PeabodyStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
@@ -32,7 +33,7 @@ public class PeabodyStimuliFromString {
     private final LinkedHashMap<String, PeabodyStimulus> hashedStimuli = new LinkedHashMap<String, PeabodyStimulus>();
     private final  ArrayList<ArrayList<PeabodyStimulus>> stimuliByBands = new ArrayList<ArrayList<PeabodyStimulus>>();
   
-    public void parseWordsInputCSVString(int numberOfBands, String stimuliDir) throws Exception {
+    public void parseWordsInputCSVString(PeabodyStimuliProvider provider, int numberOfBands, String stimuliDir) throws Exception {
         
         
         String csvString = CsvTable.CSV_STRING;
@@ -79,7 +80,12 @@ public class PeabodyStimuliFromString {
             audioPath = stimuliDir + audioPath;
                     
             // PeabodyStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, String set, int bandIndex)
-            PeabodyStimulus stimulus = new PeabodyStimulus(uniqueId,new Stimulus.Tag[0], label, "",  0, audioPath, "", imagePath, "1,2,3,4", correctAnswer.trim(), set, bandIndex);
+            PeabodyStimulus stimulus = new PeabodyStimulus(uniqueId,new Stimulus.Tag[0], label, "",  0, audioPath, "", imagePath, "1,2,3,4", correctAnswer.trim(), set, bandIndex){
+                    @Override
+                    public boolean isCorrect(String value) {
+                        return provider.isCorrectResponse(this, value);
+                    }
+                };
             this.stimuliByBands.get(bandIndex).add(stimulus);
             this.hashedStimuli.put(uniqueId, stimulus);
         }

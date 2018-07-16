@@ -23,7 +23,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimu
  *
  * @author olhshk
  */
-public class AudioAsStimulus extends BandStimulus {
+public abstract class AudioAsStimulus extends BandStimulus {
 
     public static final String USER_REACTION = "button pressed";
     public static final String AUDIO_RATING_LABEL = "&#160;";

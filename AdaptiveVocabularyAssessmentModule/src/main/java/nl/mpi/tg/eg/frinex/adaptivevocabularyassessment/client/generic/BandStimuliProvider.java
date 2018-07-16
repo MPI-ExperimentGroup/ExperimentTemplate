@@ -402,7 +402,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         return returnMap;
     }
 
-    @Override
+    
     public boolean isCorrectResponse(Stimulus stimulus, String stimulusResponse) {
         int index = this.getCurrentStimulusIndex();
         this.responseRecord.get(index).setReaction(stimulusResponse);

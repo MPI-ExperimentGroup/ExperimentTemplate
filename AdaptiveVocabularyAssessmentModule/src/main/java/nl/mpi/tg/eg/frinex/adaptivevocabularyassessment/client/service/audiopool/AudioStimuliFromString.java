@@ -17,18 +17,17 @@
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopool;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimuliProvider;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BookkeepingStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.CsvRecords;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.AudioAsStimulus;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.Trial;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.TrialCondition;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.audio.WordType;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus.Tag;
 
 /**
@@ -57,7 +56,7 @@ public class AudioStimuliFromString {
     }
 
     //Nr;Word;Target_nonword;Syllables;Condition;Length_list;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Noise_level;Position_foil;
-    private LinkedHashMap<Integer, Trial> parseTrialsInputCSVStringIntoTrialsArray(String csvString, ArrayList<String> fileNameExtensions, String stimuliDir) throws Exception {
+    private LinkedHashMap<Integer, Trial> parseTrialsInputCSVStringIntoTrialsArray(final BandStimuliProvider provider, String csvString, ArrayList<String> fileNameExtensions, String stimuliDir) throws Exception {
 
         LinkedHashMap<Integer, Trial> retVal = new LinkedHashMap<Integer, Trial>();
 
@@ -171,7 +170,12 @@ public class AudioStimuliFromString {
 
                 String audioPath = stimuliDir + locationInDir;
                 String uniqueId = wrd + "_" + wordType + suffix;
-                AudioAsStimulus stimulus = new AudioAsStimulus(uniqueId, new Tag[0], wrd, "", 0, audioPath, null, null, ratingLabels, "", bandLabel, bandIndex, wordType, i);
+                AudioAsStimulus stimulus = new AudioAsStimulus(uniqueId, new Tag[0], wrd, "", 0, audioPath, null, null, ratingLabels, "", bandLabel, bandIndex, wordType, i) {
+                    @Override
+                    public boolean isCorrect(String value) {
+                        return provider.isCorrectResponse(this, value);
+                    }
+                };
                 this.hashedStimuli.put(uniqueId, stimulus);
 
                 this.stimuliTrialIndex.put(uniqueId, trialID);
@@ -229,25 +233,25 @@ public class AudioStimuliFromString {
         return retVal;
     }
 
-    public void readTrialsAsCsv(String stimuliDir) {
+    public void readTrialsAsCsv(final BandStimuliProvider provider, String stimuliDir) {
         this.trials = new LinkedHashMap<Integer, Trial>();
         try {
             ArrayList<String> fileNameExtensions = new ArrayList<String>(1);
             fileNameExtensions.add("wav");
             System.out.println("Portion 1");
-            this.trials = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv1.CSV_CONTENT, fileNameExtensions, stimuliDir);
+            this.trials = this.parseTrialsInputCSVStringIntoTrialsArray(provider, TrialsCsv1.CSV_CONTENT, fileNameExtensions, stimuliDir);
             System.out.println("Portion 2");
-            LinkedHashMap<Integer, Trial> trials2 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv2.CSV_CONTENT, fileNameExtensions, stimuliDir);
+            LinkedHashMap<Integer, Trial> trials2 = this.parseTrialsInputCSVStringIntoTrialsArray(provider, TrialsCsv2.CSV_CONTENT, fileNameExtensions, stimuliDir);
             System.out.println("Portion 3");
-            LinkedHashMap<Integer, Trial> trials3 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv3.CSV_CONTENT, fileNameExtensions, stimuliDir);
+            LinkedHashMap<Integer, Trial> trials3 = this.parseTrialsInputCSVStringIntoTrialsArray(provider, TrialsCsv3.CSV_CONTENT, fileNameExtensions, stimuliDir);
             System.out.println("Portion 4");
-            LinkedHashMap<Integer, Trial> trials4 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv4.CSV_CONTENT, fileNameExtensions, stimuliDir);
+            LinkedHashMap<Integer, Trial> trials4 = this.parseTrialsInputCSVStringIntoTrialsArray(provider, TrialsCsv4.CSV_CONTENT, fileNameExtensions, stimuliDir);
             System.out.println("Portion 5");
-            LinkedHashMap<Integer, Trial> trials5 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv5.CSV_CONTENT, fileNameExtensions, stimuliDir);
+            LinkedHashMap<Integer, Trial> trials5 = this.parseTrialsInputCSVStringIntoTrialsArray(provider, TrialsCsv5.CSV_CONTENT, fileNameExtensions, stimuliDir);
             System.out.println("Portion 6");
-            LinkedHashMap<Integer, Trial> trials6 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv6.CSV_CONTENT, fileNameExtensions, stimuliDir);
+            LinkedHashMap<Integer, Trial> trials6 = this.parseTrialsInputCSVStringIntoTrialsArray(provider, TrialsCsv6.CSV_CONTENT, fileNameExtensions, stimuliDir);
             System.out.println("Portion 7");
-            LinkedHashMap<Integer, Trial> trials7 = this.parseTrialsInputCSVStringIntoTrialsArray(TrialsCsv7.CSV_CONTENT, fileNameExtensions, stimuliDir);
+            LinkedHashMap<Integer, Trial> trials7 = this.parseTrialsInputCSVStringIntoTrialsArray(provider, TrialsCsv7.CSV_CONTENT, fileNameExtensions, stimuliDir);
             this.trials.putAll(trials2);
             this.trials.putAll(trials3);
             this.trials.putAll(trials4);
@@ -273,7 +277,7 @@ public class AudioStimuliFromString {
     public LinkedHashMap<Integer, Trial> getHashedTrials() {
         return this.trials;
     }
-    
+
     public LinkedHashMap<Integer, Trial> getHashedLearningTrials() {
         return this.learningTrials;
     }

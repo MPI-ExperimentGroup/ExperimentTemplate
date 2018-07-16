@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocasp
 import java.util.ArrayList;
 import java.util.HashMap;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -68,7 +69,8 @@ public class AdVocAsStimuliFromStringTest {
     private void testParseWordsInputCSVString(String classNameWord, String classNameNonWord, String firstWord, String lastWord, String answerNonWord, String answerWord, int numberOfBands, int wordsPerBand) throws Exception {
         System.out.println("parseWordsInputCSVString: "+classNameWord);
         AdVocAsStimuliFromString instance = new AdVocAsStimuliFromString();
-        instance.parseWordsInputCSVString(classNameWord, classNameNonWord, numberOfBands);
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
+        instance.parseWordsInputCSVString(provider, classNameWord, classNameNonWord, numberOfBands);
         ArrayList<ArrayList<AdVocAsStimulus>> words = instance.getWords();
         ArrayList<String> uniqueIds = new  ArrayList<String>();
         for (int i=0; i<numberOfBands; i++) {
@@ -121,7 +123,8 @@ public class AdVocAsStimuliFromStringTest {
     private void testParseNonWordsInputCSVString(String classNameNonWord, String classNameWord, String firstNonword, String lastNonword, String answerNonWord, String answerWord, int nNonwords) throws Exception {
         System.out.println("parseNonWordsInputCSVString: "+classNameNonWord);
         AdVocAsStimuliFromString instance = new AdVocAsStimuliFromString();
-        instance.parseNonWordsInputCSVString(classNameNonWord, classNameWord);
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
+        instance.parseNonWordsInputCSVString(provider, classNameNonWord, classNameWord);
         ArrayList<AdVocAsStimulus> nonwords = instance.getNonwords();
         ArrayList<String> uniqueIds = new  ArrayList<String>();
         for (int i=0; i<nNonwords; i++) {

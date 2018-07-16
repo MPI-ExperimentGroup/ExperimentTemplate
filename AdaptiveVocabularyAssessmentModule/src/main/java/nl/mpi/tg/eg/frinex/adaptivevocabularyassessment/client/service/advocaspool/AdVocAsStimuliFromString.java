@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.CsvRecords;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 
 /**
  *
@@ -34,7 +35,7 @@ public class AdVocAsStimuliFromString {
     private ArrayList<AdVocAsStimulus> nonwords;
     
   
-    public void parseWordsInputCSVString(String classNameWord, String classNameNonWord, int numberOfBands) throws Exception {
+    public void parseWordsInputCSVString(final AdVocAsStimuliProvider provider, String classNameWord, String classNameNonWord, int numberOfBands) throws Exception {
         
         String answerNonWord = SourcenameIndices.RESPONSES_INDEX.get(classNameNonWord);
         String answerWord = SourcenameIndices.RESPONSES_INDEX.get(classNameWord);
@@ -68,14 +69,19 @@ public class AdVocAsStimuliFromString {
             //long time = System.currentTimeMillis();
             //String uniqueId = label+"_"+time;
             String uniqueId = label;
-            AdVocAsStimulus stimulus = new AdVocAsStimulus(uniqueId,label, answerNonWord + ","+answerWord,  answerWord, bNumber);
+            AdVocAsStimulus stimulus = new AdVocAsStimulus(uniqueId,label, answerNonWord + ","+answerWord,  answerWord, bNumber){
+                @Override 
+                public boolean isCorrect(String value) {
+                    return provider.isCorrectResponse(this, value);
+                }
+            };
             this.words.get(bNumber-1).add(stimulus);
             this.hashedStimuli.put(uniqueId, stimulus);
         }
     }
 
     
-    public void parseNonWordsInputCSVString(String classNameNonWord, String classNameWord) throws Exception {
+    public void parseNonWordsInputCSVString(final AdVocAsStimuliProvider provider, String classNameNonWord, String classNameWord) throws Exception {
         
         String answerNonWord = SourcenameIndices.RESPONSES_INDEX.get(classNameNonWord);
         String answerWord = SourcenameIndices.RESPONSES_INDEX.get(classNameWord);
@@ -100,7 +106,12 @@ public class AdVocAsStimuliFromString {
             //long time = System.currentTimeMillis();
             //String uniqueId = label+"_"+time;
             String uniqueId = label;
-            AdVocAsStimulus stimulus = new AdVocAsStimulus(uniqueId,label, answerNonWord + ","+answerWord,  answerNonWord, 0);
+            AdVocAsStimulus stimulus = new AdVocAsStimulus(uniqueId,label, answerNonWord + ","+answerWord,  answerNonWord, 0){
+                @Override 
+                public boolean isCorrect(String value) {
+                    return provider.isCorrectResponse(this, value);
+                }
+            };
             this.nonwords.add(stimulus);
             this.hashedStimuli.put(uniqueId, stimulus);
         }

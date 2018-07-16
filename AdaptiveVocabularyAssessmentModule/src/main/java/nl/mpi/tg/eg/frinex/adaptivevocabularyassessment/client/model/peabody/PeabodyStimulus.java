@@ -23,7 +23,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimu
  *
  * @author olhshk
  */
-public class PeabodyStimulus extends BandStimulus{
+public abstract class PeabodyStimulus extends BandStimulus{
     
     // here bandLabel is the setNumber
     

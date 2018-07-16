@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.UtilsList;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AudioAsStimuliProvider;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopool.AudioStimuliFromString;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -47,9 +48,10 @@ public class PermutationPairTest {
     private final ArrayList<ArrayList<Integer>> allLengthPermuations;
     private final ArrayList<ArrayList<TrialCondition>> allConditionPermuations;
     private final int tupleSize = 3;
+    private final AudioAsStimuliProvider provider = new AudioAsStimuliProvider(null);
 
     public PermutationPairTest() {
-        this.reader.readTrialsAsCsv(TestConfigurationConstants.AUDIO_STIMULI_DIR);
+        this.reader.readTrialsAsCsv(this.provider, TestConfigurationConstants.AUDIO_STIMULI_DIR);
         this.hashedTrials = this.reader.getHashedTrials();
         this.trialMatrix = Trial.prepareTrialMatrix(this.hashedTrials, TestConfigurationConstants.AUDIO_NUMBER_OF_BANDS, TestConfigurationConstants.AUDIO_MAX_LENGTH);
         UtilsList<Integer> utilInt = new UtilsList<Integer>();

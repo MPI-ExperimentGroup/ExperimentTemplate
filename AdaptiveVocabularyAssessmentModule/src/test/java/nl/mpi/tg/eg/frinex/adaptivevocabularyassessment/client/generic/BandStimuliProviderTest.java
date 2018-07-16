@@ -34,7 +34,15 @@ import static org.junit.Assert.*;
 public class BandStimuliProviderTest {
 
     public final BandStimulus stimulus = new BandStimulus("smoer_xx", new Stimulus.Tag[0], "smoer", "", 900, "aud", "vid", "img",
-            "a,b,c", "b,c", "plus10db", 10);
+            "a,b,c", "b,c", "plus10db", 10) {
+                @Override
+                public boolean isCorrect(String value){
+                    if (value== null) {
+                        return false;
+                    }
+                    return value.trim().equals("b") || value.trim().equals("c");
+                }
+            };
 
     private class BandStimuliProviderImp extends BandStimuliProvider<BandStimulus> {
 

@@ -82,8 +82,8 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
                 this.nonwordsResponse = SourcenameIndices.RESPONSES_INDEX.get(this.nonwordsSource);
 
                 AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-                reader.parseWordsInputCSVString(this.wordsSource, this.nonwordsSource, this.numberOfBands);
-                reader.parseNonWordsInputCSVString(this.nonwordsSource, this.wordsSource);
+                reader.parseWordsInputCSVString(this, this.wordsSource, this.nonwordsSource, this.numberOfBands);
+                reader.parseNonWordsInputCSVString(this, this.nonwordsSource, this.wordsSource);
                 ArrayList<ArrayList<AdVocAsStimulus>> rawWords = reader.getWords();
                 ArrayList<AdVocAsStimulus> rawNonwords = reader.getNonwords();
 
@@ -670,8 +670,8 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         this.nonwordsResponse = SourcenameIndices.RESPONSES_INDEX.get(this.nonwordsSource);
 
         AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseWordsInputCSVString(this.wordsSource, this.nonwordsSource, this.numberOfBands);
-        reader.parseNonWordsInputCSVString(this.nonwordsSource, this.wordsSource);
+        reader.parseWordsInputCSVString(this, this.wordsSource, this.nonwordsSource, this.numberOfBands);
+        reader.parseNonWordsInputCSVString(this, this.nonwordsSource, this.wordsSource);
 
         LinkedHashMap<String, AdVocAsStimulus> hashedStimuli = reader.getHashedStimuli();
 

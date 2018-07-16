@@ -30,30 +30,39 @@ import static org.junit.Assert.*;
  * @author olhshk
  */
 public class BandStimulusTest {
-    
+
     public final BandStimulus instance;
-    
+
     public BandStimulusTest() {
-        
-        String uniqueId="smoer";
+
+        String uniqueId = "smoer";
         String label = "smoer";
-        
-        this.instance = new BandStimulus(uniqueId,new Tag[0], label, "", 900, "aud", "vid", "img", 
-            "a,b,c", "b,c", "plus10db", 10);
+
+        this.instance = new BandStimulus(uniqueId, new Tag[0], label, "", 900, "aud", "vid", "img",
+                "a,b,c", "b,c", "plus10db", 10) {
+            @Override
+            public boolean isCorrect(String value) {
+                if (value == null) {
+                    return false;
+                }
+                return value.trim().equals("b") || value.trim().equals("c");
+            }
+        };
+
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -80,7 +89,6 @@ public class BandStimulusTest {
         assertEquals(expResult, result);
     }
 
-  
     /**
      * Test of toString method, of class BandStimulus.
      */
@@ -92,6 +100,4 @@ public class BandStimulusTest {
         assertEquals(expResult, result);
     }
 
-  
-    
 }

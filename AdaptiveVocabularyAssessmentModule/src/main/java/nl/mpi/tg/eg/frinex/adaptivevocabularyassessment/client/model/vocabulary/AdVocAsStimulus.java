@@ -23,7 +23,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.BandStimu
  * @since Oct 27, 2017 2:13:03 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class AdVocAsStimulus extends BandStimulus {
+public abstract class AdVocAsStimulus extends BandStimulus {
 
     public AdVocAsStimulus(String uniqueId, String label, String ratingLabels, String correctResponses,  int bandNumber) {
         super(uniqueId, new Tag[0], label, "", 0, "", "", "", ratingLabels, correctResponses, (new Integer(bandNumber)).toString(), bandNumber-1);

@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.advocasp
 import java.util.ArrayList;
 import java.util.HashSet;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.vocabulary.AdVocAsStimulus;
+import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -66,7 +67,8 @@ public class VocabularyTest {
         System.out.println("initialiseWords: " + wordsSource);
         Vocabulary instance = new Vocabulary(numberOfBands, wordsPerBand);
         AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseWordsInputCSVString(wordsSource, nonwordsSource, numberOfBands);
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
+        reader.parseWordsInputCSVString(provider, wordsSource, nonwordsSource, numberOfBands);
         ArrayList<ArrayList<AdVocAsStimulus>> rawWords = reader.getWords();
 
         ArrayList<ArrayList<AdVocAsStimulus>> words = instance.initialiseWords(rawWords);
@@ -134,7 +136,8 @@ public class VocabularyTest {
         System.out.println("initialiseNonwords: " + nonwordsSource);
         Vocabulary instance = new Vocabulary(0, 0);
         AdVocAsStimuliFromString reader = new AdVocAsStimuliFromString();
-        reader.parseNonWordsInputCSVString(nonwordsSource, wordsSource);
+        AdVocAsStimuliProvider provider = new AdVocAsStimuliProvider(null);
+        reader.parseNonWordsInputCSVString(provider, nonwordsSource, wordsSource);
         ArrayList<AdVocAsStimulus> rawNonWords = reader.getNonwords();
 
         ArrayList<AdVocAsStimulus> nonwords = instance.initialiseNonwords(rawNonWords);
