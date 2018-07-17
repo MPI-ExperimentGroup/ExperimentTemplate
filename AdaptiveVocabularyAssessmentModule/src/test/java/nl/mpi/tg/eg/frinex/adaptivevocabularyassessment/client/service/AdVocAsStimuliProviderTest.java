@@ -734,7 +734,8 @@ public class AdVocAsStimuliProviderTest {
         assertEquals(0, ind1);
         AdVocAsStimulus stimulus = provider.getCurrentStimulus();
 
-        provider.isCorrectResponse(stimulus, stimulus.getCorrectResponses());
+        //provider.isCorrectResponse(stimulus, stimulus.getCorrectResponses());
+        stimulus.isCorrect(stimulus.getCorrectResponses());
 
         boolean result1 = provider.hasNextStimulus(0);
         assertTrue(result1);
@@ -764,7 +765,7 @@ public class AdVocAsStimuliProviderTest {
             throw new Exception("Wrong reaction");
         }
 
-        provider.isCorrectResponse(stimulus2, response);
+        stimulus2.isCorrect(response);
         boolean result12 = provider.hasNextStimulus(0);
         assertTrue(result12);
         assertEquals(expectedBand, provider.getCurrentBandIndex() + 1);
@@ -789,7 +790,9 @@ public class AdVocAsStimuliProviderTest {
         if (response3 == null) {
             throw new Exception("Wrong reaction");
         }
-        provider.isCorrectResponse(stimulus3, response3);
+        
+        //provider.isCorrectResponse(stimulus3, response3);
+         stimulus3.isCorrect(response3);
 
         boolean result3 = provider.hasNextStimulus(0);
         assertTrue(result3);
@@ -1024,7 +1027,8 @@ public class AdVocAsStimuliProviderTest {
             //System.out.println(currentExperimentCount);
             AdVocAsStimulus stimulus = provider.getCurrentStimulus();
             String answer = this.probabilisticAnswerer(stimulus, prob, rnd);
-            boolean isCorrect = provider.isCorrectResponse(stimulus, answer);
+            //boolean isCorrect = provider.isCorrectResponse(stimulus, answer);
+            boolean isCorrect = stimulus.isCorrect(answer);
             hasNextStimulus = provider.hasNextStimulus(0);
         }
 
@@ -1164,13 +1168,15 @@ public class AdVocAsStimuliProviderTest {
         provider.nextStimulus(0);
         AdVocAsStimulus stimulus = provider.getCurrentStimulus();
         String answer = this.makeResponseWrong(stimulus);
-        boolean isCorrect = provider.isCorrectResponse(stimulus, answer);
+        //boolean isCorrect = provider.isCorrectResponse(stimulus, answer);
+        boolean isCorrect = stimulus.isCorrect(answer);
 
         provider.hasNextStimulus(0);
         provider.nextStimulus(0);
         stimulus = provider.getCurrentStimulus();
         answer = this.makeResponseWrong(stimulus);
-        isCorrect = provider.isCorrectResponse(stimulus, answer);
+        //isCorrect = provider.isCorrectResponse(stimulus, answer);
+        isCorrect = stimulus.isCorrect(answer);
 
         boolean hasNextStimulus = provider.hasNextStimulus(0);
         // fine tuning correct till the band is 54 then back till the band is 20
@@ -1199,7 +1205,8 @@ public class AdVocAsStimuliProviderTest {
             } else {
                 answer = this.makeResponseWrong(stimulus);
             }
-            isCorrect = provider.isCorrectResponse(stimulus, answer);
+            //isCorrect = provider.isCorrectResponse(stimulus, answer);
+            isCorrect = stimulus.isCorrect(answer);
             hasNextStimulus = provider.hasNextStimulus(0);
 
         }
