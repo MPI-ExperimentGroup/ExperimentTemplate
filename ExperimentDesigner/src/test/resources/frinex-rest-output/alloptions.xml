@@ -70,19 +70,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <startTimer msToNext="60" listenerId="listenerId">
-            <plainText featureText="plainText in startTimer"/>
-        </startTimer>
-        <compareTimer msToNext="60" listenerId="listenerId">
-            <aboveThreshold>
-                <plainText featureText="plainText in aboveThreshold"/>
-            </aboveThreshold>
-            <withinThreshold>
-                <plainText featureText="plainText in withinThreshold"/>
-            </withinThreshold>
-        </compareTimer>
-        <clearTimer listenerId="listenerId"/>
-        <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -142,19 +129,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <startTimer msToNext="60" listenerId="listenerId">
-            <plainText featureText="plainText in startTimer"/>
-        </startTimer>
-        <compareTimer msToNext="60" listenerId="listenerId">
-            <aboveThreshold>
-                <plainText featureText="plainText in aboveThreshold"/>
-            </aboveThreshold>
-            <withinThreshold>
-                <plainText featureText="plainText in withinThreshold"/>
-            </withinThreshold>
-        </compareTimer>
-        <clearTimer listenerId="listenerId"/>
-        <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="plainText in multipleUsers"/>
@@ -184,7 +158,7 @@
     </presenter>
     <presenter back="AutoMenu" menuLabel="preload_all_attributes" type="preload" self="preload_all_attributesScreen" title="preload_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
-        <htmlTokenText featureText="htmlTokenText" styleName="styleName" dataLogFormat="dataLogFormat"/>
+        <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
             <mediaLoaded>
@@ -284,6 +258,7 @@
     <presenter back="AutoMenu" menuLabel="stimulus_all_attributes" type="stimulus" self="stimulus_all_attributesScreen" title="stimulus_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
         <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
+        <logTokenText eventTag="eventTag" dataChannel="2" dataLogFormat="dataLogFormat"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
             <mediaLoaded>
@@ -314,6 +289,14 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </currentStimulusHasTag>
+                <validateStimuliResponses>
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </validateStimuliResponses>
                 <showStimuliReport/>
                 <sendStimuliReport headerKey="headerKey" dataChannel="2" type="type" separator="separator"/>
                 <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="2">
@@ -360,8 +343,8 @@
                 <removeStimulus/>
                 <removeMatchingStimulus matchingRegex="matchingRegex"/>
                 <clearStimulus/>
-                <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" hotKey="A" repeatIncorrect="repeatIncorrect"/>
-                <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" hotKey="A" repeatIncorrect="repeatIncorrect"/>
+                <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
+                <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
                 <nextStimulus repeatIncorrect="repeatIncorrect"/>
                 <prevStimulus repeatIncorrect="repeatIncorrect"/>
                 <nextMatchingStimulus/>
@@ -458,7 +441,7 @@
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
@@ -489,7 +472,7 @@
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
@@ -521,7 +504,7 @@
                     </groupNetworkActivity>
                     <sendGroupEndOfStimuli eventTag="eventTag"/>
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
@@ -592,6 +575,14 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </currentStimulusHasTag>
+                <validateStimuliResponses>
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </validateStimuliResponses>
                 <showStimuliReport/>
                 <sendStimuliReport headerKey="headerKey" dataChannel="2" type="type" separator="separator"/>
                 <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="2">
@@ -638,8 +629,8 @@
                 <removeStimulus/>
                 <removeMatchingStimulus matchingRegex="matchingRegex"/>
                 <clearStimulus/>
-                <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" hotKey="A" repeatIncorrect="repeatIncorrect"/>
-                <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" hotKey="A" repeatIncorrect="repeatIncorrect"/>
+                <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
+                <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
                 <nextStimulus repeatIncorrect="repeatIncorrect"/>
                 <prevStimulus repeatIncorrect="repeatIncorrect"/>
                 <nextMatchingStimulus/>
@@ -736,7 +727,7 @@
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
@@ -767,7 +758,7 @@
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
@@ -799,7 +790,7 @@
                     </groupNetworkActivity>
                     <sendGroupEndOfStimuli eventTag="eventTag"/>
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
@@ -870,6 +861,14 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </currentStimulusHasTag>
+                <validateStimuliResponses>
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </validateStimuliResponses>
                 <showStimuliReport/>
                 <sendStimuliReport headerKey="headerKey" dataChannel="2" type="type" separator="separator"/>
                 <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="2">
@@ -916,8 +915,8 @@
                 <removeStimulus/>
                 <removeMatchingStimulus matchingRegex="matchingRegex"/>
                 <clearStimulus/>
-                <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" hotKey="A" repeatIncorrect="repeatIncorrect"/>
-                <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" hotKey="A" repeatIncorrect="repeatIncorrect"/>
+                <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
+                <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
                 <nextStimulus repeatIncorrect="repeatIncorrect"/>
                 <prevStimulus repeatIncorrect="repeatIncorrect"/>
                 <nextMatchingStimulus/>
@@ -1014,7 +1013,7 @@
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
@@ -1045,7 +1044,7 @@
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
@@ -1077,7 +1076,7 @@
                     </groupNetworkActivity>
                     <sendGroupEndOfStimuli eventTag="eventTag"/>
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
@@ -1225,7 +1224,7 @@
         <scoreIncrement scoreValue="true">
             <plainText featureText="plainText in scoreIncrement"/>
         </scoreIncrement>
-        <bestScoreAboveThreshold scoreThreshold="3" errorThreshold="3" correctStreak="correctStreak" errorStreak="errorStreak" potentialThreshold="3">
+        <bestScoreAboveThreshold scoreThreshold="3" errorThreshold="3" correctStreak="3" errorStreak="3" potentialThreshold="3">
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
@@ -1241,7 +1240,7 @@
                 <plainText featureText="plainText in withinThreshold"/>
             </withinThreshold>
         </totalScoreAboveThreshold>
-        <scoreAboveThreshold scoreThreshold="3" errorThreshold="3" correctStreak="correctStreak" errorStreak="errorStreak" potentialThreshold="3">
+        <scoreAboveThreshold scoreThreshold="3" errorThreshold="3" correctStreak="3" errorStreak="3" potentialThreshold="3">
             <aboveThreshold>
                 <plainText featureText="plainText in aboveThreshold"/>
             </aboveThreshold>
@@ -1344,19 +1343,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <startTimer msToNext="60" listenerId="listenerId">
-            <plainText featureText="plainText in startTimer"/>
-        </startTimer>
-        <compareTimer msToNext="60" listenerId="listenerId">
-            <aboveThreshold>
-                <plainText featureText="plainText in aboveThreshold"/>
-            </aboveThreshold>
-            <withinThreshold>
-                <plainText featureText="plainText in withinThreshold"/>
-            </withinThreshold>
-        </compareTimer>
-        <clearTimer listenerId="listenerId"/>
-        <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
         <kinTypeStringDiagram msToNext="60" kintypestring="kintypestring">
             <plainText featureText="plainText in kinTypeStringDiagram"/>
         </kinTypeStringDiagram>
@@ -1415,19 +1401,6 @@
         <activateRandomItem/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <startTimer msToNext="60" listenerId="listenerId">
-            <plainText featureText="plainText in startTimer"/>
-        </startTimer>
-        <compareTimer msToNext="60" listenerId="listenerId">
-            <aboveThreshold>
-                <plainText featureText="plainText in aboveThreshold"/>
-            </aboveThreshold>
-            <withinThreshold>
-                <plainText featureText="plainText in withinThreshold"/>
-            </withinThreshold>
-        </compareTimer>
-        <clearTimer listenerId="listenerId"/>
-        <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -1476,19 +1449,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <startTimer msToNext="60" listenerId="listenerId">
-            <plainText featureText="plainText in startTimer"/>
-        </startTimer>
-        <compareTimer msToNext="60" listenerId="listenerId">
-            <aboveThreshold>
-                <plainText featureText="plainText in aboveThreshold"/>
-            </aboveThreshold>
-            <withinThreshold>
-                <plainText featureText="plainText in withinThreshold"/>
-            </withinThreshold>
-        </compareTimer>
-        <clearTimer listenerId="listenerId"/>
-        <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -1527,19 +1487,6 @@
         <centrePage/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <startTimer msToNext="60" listenerId="listenerId">
-            <plainText featureText="plainText in startTimer"/>
-        </startTimer>
-        <compareTimer msToNext="60" listenerId="listenerId">
-            <aboveThreshold>
-                <plainText featureText="plainText in aboveThreshold"/>
-            </aboveThreshold>
-            <withinThreshold>
-                <plainText featureText="plainText in withinThreshold"/>
-            </withinThreshold>
-        </compareTimer>
-        <clearTimer listenerId="listenerId"/>
-        <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -1586,19 +1533,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <startTimer msToNext="60" listenerId="listenerId">
-            <plainText featureText="plainText in startTimer"/>
-        </startTimer>
-        <compareTimer msToNext="60" listenerId="listenerId">
-            <aboveThreshold>
-                <plainText featureText="plainText in aboveThreshold"/>
-            </aboveThreshold>
-            <withinThreshold>
-                <plainText featureText="plainText in withinThreshold"/>
-            </withinThreshold>
-        </compareTimer>
-        <clearTimer listenerId="listenerId"/>
-        <logTimerValue listenerId="listenerId" eventTag="eventTag" dataChannel="2"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -1672,19 +1606,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <startTimer msToNext="60" listenerId="listenerId">
-            <plainText featureText="plainText in startTimer"/>
-        </startTimer>
-        <compareTimer msToNext="60" listenerId="listenerId">
-            <aboveThreshold>
-                <plainText featureText="plainText in aboveThreshold"/>
-            </aboveThreshold>
-            <withinThreshold>
-                <plainText featureText="plainText in withinThreshold"/>
-            </withinThreshold>
-        </compareTimer>
-        <clearTimer listenerId="listenerId"/>
-        <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
@@ -1744,19 +1665,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <startTimer msToNext="60" listenerId="listenerId">
-            <plainText featureText="plainText in startTimer"/>
-        </startTimer>
-        <compareTimer msToNext="60" listenerId="listenerId">
-            <aboveThreshold>
-                <plainText featureText="plainText in aboveThreshold"/>
-            </aboveThreshold>
-            <withinThreshold>
-                <plainText featureText="plainText in withinThreshold"/>
-            </withinThreshold>
-        </compareTimer>
-        <clearTimer listenerId="listenerId"/>
-        <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="plainText in multipleUsers"/>
@@ -1886,6 +1794,7 @@
     <presenter back="AutoMenu" menuLabel="stimulus_minimal_attributes" type="stimulus" self="stimulus_minimal_attributesScreen" title="stimulus_minimal_attributes">
         <htmlText featureText="htmlText"/>
         <htmlTokenText featureText="htmlTokenText"/>
+        <logTokenText eventTag="eventTag" dataLogFormat="dataLogFormat"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src">
             <mediaLoaded>
@@ -1916,6 +1825,14 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </currentStimulusHasTag>
+                <validateStimuliResponses>
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </validateStimuliResponses>
                 <showStimuliReport/>
                 <sendStimuliReport type="type"/>
                 <stimulusButton featureText="stimulusButton">
@@ -2194,6 +2111,14 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </currentStimulusHasTag>
+                <validateStimuliResponses>
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </validateStimuliResponses>
                 <showStimuliReport/>
                 <sendStimuliReport type="type"/>
                 <stimulusButton featureText="stimulusButton">
@@ -2472,6 +2397,14 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </currentStimulusHasTag>
+                <validateStimuliResponses>
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </validateStimuliResponses>
                 <showStimuliReport/>
                 <sendStimuliReport type="type"/>
                 <stimulusButton featureText="stimulusButton">
@@ -2946,19 +2879,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <startTimer msToNext="60" listenerId="listenerId">
-            <plainText featureText="plainText in startTimer"/>
-        </startTimer>
-        <compareTimer msToNext="60" listenerId="listenerId">
-            <aboveThreshold>
-                <plainText featureText="plainText in aboveThreshold"/>
-            </aboveThreshold>
-            <withinThreshold>
-                <plainText featureText="plainText in withinThreshold"/>
-            </withinThreshold>
-        </compareTimer>
-        <clearTimer listenerId="listenerId"/>
-        <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
         <kinTypeStringDiagram msToNext="60" kintypestring="kintypestring">
             <plainText featureText="plainText in kinTypeStringDiagram"/>
         </kinTypeStringDiagram>
@@ -3017,19 +2937,6 @@
         <activateRandomItem/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <startTimer msToNext="60" listenerId="listenerId">
-            <plainText featureText="plainText in startTimer"/>
-        </startTimer>
-        <compareTimer msToNext="60" listenerId="listenerId">
-            <aboveThreshold>
-                <plainText featureText="plainText in aboveThreshold"/>
-            </aboveThreshold>
-            <withinThreshold>
-                <plainText featureText="plainText in withinThreshold"/>
-            </withinThreshold>
-        </compareTimer>
-        <clearTimer listenerId="listenerId"/>
-        <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
@@ -3078,19 +2985,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <startTimer msToNext="60" listenerId="listenerId">
-            <plainText featureText="plainText in startTimer"/>
-        </startTimer>
-        <compareTimer msToNext="60" listenerId="listenerId">
-            <aboveThreshold>
-                <plainText featureText="plainText in aboveThreshold"/>
-            </aboveThreshold>
-            <withinThreshold>
-                <plainText featureText="plainText in withinThreshold"/>
-            </withinThreshold>
-        </compareTimer>
-        <clearTimer listenerId="listenerId"/>
-        <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
@@ -3129,19 +3023,6 @@
         <centrePage/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <startTimer msToNext="60" listenerId="listenerId">
-            <plainText featureText="plainText in startTimer"/>
-        </startTimer>
-        <compareTimer msToNext="60" listenerId="listenerId">
-            <aboveThreshold>
-                <plainText featureText="plainText in aboveThreshold"/>
-            </aboveThreshold>
-            <withinThreshold>
-                <plainText featureText="plainText in withinThreshold"/>
-            </withinThreshold>
-        </compareTimer>
-        <clearTimer listenerId="listenerId"/>
-        <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
@@ -3188,19 +3069,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <startTimer msToNext="60" listenerId="listenerId">
-            <plainText featureText="plainText in startTimer"/>
-        </startTimer>
-        <compareTimer msToNext="60" listenerId="listenerId">
-            <aboveThreshold>
-                <plainText featureText="plainText in aboveThreshold"/>
-            </aboveThreshold>
-            <withinThreshold>
-                <plainText featureText="plainText in withinThreshold"/>
-            </withinThreshold>
-        </compareTimer>
-        <clearTimer listenerId="listenerId"/>
-        <logTimerValue listenerId="listenerId" eventTag="eventTag"/>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
