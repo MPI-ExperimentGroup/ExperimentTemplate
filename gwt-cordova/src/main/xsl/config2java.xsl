@@ -127,7 +127,8 @@
 if(@type = 'transmission' or @type = 'metadata'  or @type = 'colourReport') then ', submissionService, userResults, localStorage' else
 if(@type = 'preload') then ', new AudioPlayer(this), submissionService, userResults' else
 if(@type = 'menu') then ', userResults, localStorage' else
-if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', new AudioPlayer(this), submissionService, userResults, localStorage, timerService' else ''" />
+if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', new AudioPlayer(this), submissionService, userResults, localStorage' else ''" />
+            <xsl:value-of select="if(@type = 'stimulus') then ', timerService' else ''" />
             <xsl:text>);
                 presenter.setState(this, </xsl:text>
             <xsl:choose>
@@ -245,7 +246,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
 if(@type = 'transmission' or @type = 'metadata' or @type = 'colourReport') then ', DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage' else 
 if(@type = 'preload') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults' else 
 if(@type = 'menu') then ', UserResults userResults, LocalStorage localStorage' else
-if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage, final TimerService timerService' else ''" />
+if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage' else ''" />
+            <xsl:value-of select="if(@type = 'stimulus') then ', final TimerService timerService' else ''"/>
             <xsl:value-of select="if(@type = 'colourPicker') then ') throws CanvasError {' else ') {'"/>
             <xsl:choose>
                 <xsl:when test="@type = 'menu'">
@@ -268,7 +270,12 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                         super(widgetTag, audioPlayer, submissionService, userResults);
                     </xsl:text>                    
                 </xsl:when>
-                <xsl:when test="@type = 'kindiagram' or @type = 'stimulus' or @type = 'timeline' or @type = 'colourPicker'">
+                <xsl:when test="@type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker'">
+                    <xsl:text>
+                        super(widgetTag, audioPlayer, submissionService, userResults, localStorage);
+                    </xsl:text>                    
+                </xsl:when>
+                <xsl:when test="@type = 'stimulus'">
                     <xsl:text>
                         super(widgetTag, audioPlayer, submissionService, userResults, localStorage, timerService);
                     </xsl:text>                    
@@ -469,6 +476,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         ">
             <xsl:text>stimulusProvider</xsl:text>
         </xsl:if>
+        <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;, ') else ''" />
         <xsl:value-of select="if(local-name() eq 'showStimulusProgress' and @styleName
 ) then ', ' else ''" />
         <xsl:value-of select="if(local-name() eq 'keepStimulus'
@@ -493,7 +501,11 @@ or local-name() eq 'stimulusLabel'
         <!--<xsl:if test="local-name() eq 'htmlTokenText'">-->
         <xsl:value-of select="if(@dataLogFormat) then concat('&quot;', @dataLogFormat, '&quot;, ') else ''" />
         <!--</xsl:if>-->
-        <xsl:if test="local-name() eq 'generateCompletionCode' or local-name() eq 'sendStimuliReport' or local-name() eq 'stimulusMetadataField'">
+        <xsl:if test="local-name() eq 'generateCompletionCode'
+ or local-name() eq 'sendStimuliReport'
+ or local-name() eq 'stimulusMetadataField'
+ or local-name() eq 'logTokenText'
+">
             <xsl:value-of select="if(@dataChannel) then @dataChannel else '0'" />
         </xsl:if>
         <xsl:value-of select="if(local-name() eq 'sendAllData' or local-name() eq 'sendMetadata') then 'null' else ''" />   
@@ -560,7 +572,11 @@ or local-name() eq 'sendGroupEndOfStimuli'
         <xsl:value-of select="if(@src) then concat(', &quot;', @src, '&quot;') else ''" />
         <xsl:value-of select="if(local-name() eq 'touchInputCaptureStart') then ', ' else ''" />        
         <xsl:value-of select="if(@showControls) then @showControls eq ', true' else ''" />  
-        <xsl:if test="local-name() eq 'asdasd'">
+        <xsl:if test="local-name() eq 'audioButton'
+or local-name() eq 'prevStimulusButton'
+or local-name() eq 'nextStimulusButton'
+or local-name() eq 'sendGroupMessageButton'
+">
             <xsl:value-of select="if(@styleName) then concat(', &quot;', @styleName, '&quot;') else ', null'" />    
         </xsl:if>    
         <xsl:value-of select="if(@poster) then concat(', &quot;', @poster, '&quot;') else ''" />
@@ -861,7 +877,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <xsl:if test="local-name() eq 'preloadAllStimuli' or local-name() eq 'withStimuli' or local-name() eq 'loadStimulus' or local-name() eq 'loadSdCardStimulus'">
             <xsl:text>{</xsl:text>
             <xsl:text>final StimuliProvider stimulusProvider = </xsl:text>
-            <xsl:value-of select="if(descendant::loadStimulus/@class) then concat('new ', descendant::loadStimulus/@class, '(') else 'new nl.mpi.tg.eg.experiment.client.service.StimulusProvider('" />
+            <xsl:value-of select="if(../@class) then concat('new ', ../@class, '(') else 'new nl.mpi.tg.eg.experiment.client.service.StimulusProvider('" />
             <xsl:text>
                 GeneratedStimulusProvider.values);
             </xsl:text>                    
@@ -926,7 +942,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
             <xsl:value-of select="if(@errorStreak eq '') then ', null' else if(@errorStreak) then concat(', ', @errorStreak, '') else ', null'" />
         </xsl:if>
         <!-- the trailing comma after scoreThreshold is needed for SynQuiz2, needs to be checked for other configurations. -->
-        <xsl:value-of select="if(local-name() eq 'submitTestResults') then ', ' else ''" />
+        <!--<xsl:value-of select="if(local-name() eq 'submitTestResults') then ', ' else ''" />-->
         <xsl:value-of select="if(local-name() eq 'showColourReport') then if(@scoreThreshold eq '') then '0, ' else if(@scoreThreshold) then concat('', @scoreThreshold, ', ') else '0, ' else ''" />
         <xsl:value-of select="if(@scoreValue) then concat('', @scoreValue, '') else ''" />
         <xsl:value-of select="if(@columnCount) then concat(', ', @columnCount, '') else ''" />
