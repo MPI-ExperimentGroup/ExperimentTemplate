@@ -536,10 +536,31 @@
         </loadStimulus>
     </presenter>
     <presenter displayOrder="20" next="Admin" type="stimulus" self="stimuliScreenRavenTest" title="">
+        
+        <startTimer msToNext="1200000" listenerId="timer"/>
+        <compareTimer msToNext="1200000" listenerId="timer">
+            <aboveThreshold>
+                <gotoPresenter target="timeOutScreen"/>
+            </aboveThreshold>
+            <withinThreshold/>
+        </compareTimer>
+       
         <loadStimulus eventTag="stimuliRavenN" randomise="false" repeatCount="1" maxStimuli="36">
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
+                <region regionId="regionClock"/>
+               
+                <compareTimer msToNext="1200000" listenerId="timer">
+                    <aboveThreshold>
+                        <gotoPresenter target="timeOutScreen"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <regionReplace regionId="regionClock">
+                            <htmlTokenText featureText="Tijd vanaf het begin van je werk &lt;timer&gt;ms"/>
+                        </regionReplace>
+                    </withinThreshold>
+                </compareTimer>
                 <table showOnBackButton="true" styleName="titleBarButton">
                     <row>
                         <column styleName="">
@@ -627,7 +648,16 @@
     <presenter displayOrder="100" type="transmission" self="Admin" title="Administratie" next="Menu">
         <sendMetadata>
             <onSuccess> 
-                <sendAllData>
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="Dit is het einde van deze taak. De tijd is op. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <addPadding/>
+                <eraseUsersDataButton featureText="Locaal geheugen schoonmaken  en opniew beginnen" target="Menu"/>
+                <addPadding/>
+                <addPadding/>
+                <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
+                <!--                <sendAllData>
                     <onSuccess>
                         <addPadding/>
                         <addPadding/>
@@ -650,7 +680,7 @@
                         <addPadding/>
                         <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
                     </onError>
-                </sendAllData>
+                </sendAllData>-->
             </onSuccess>
             <onError>   
                 <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
@@ -663,11 +693,39 @@
             </onError>      
         </sendMetadata>
     </presenter>
-    <presenter back="Menu" displayOrder="110"  menuLabel="about" type="debug" self="about" title="about">
+    
+    <presenter displayOrder="110" type="transmission" self="timeOutScreen" title="" next="Menu">
+        <sendMetadata>
+            <onSuccess> 
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="Dit is het einde van deze taak. De tijd is op. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <addPadding/>
+                <eraseUsersDataButton featureText="Locaal geheugen schoonmaken  en opniew beginnen" target="Menu"/>
+                <addPadding/>
+                <addPadding/>
+                <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
+            </onSuccess>
+            <onError>   
+                <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
+                <addPadding/>
+                <addPadding/>
+                <targetButton featureText="Retry" target="Admin"/>
+                <addPadding/>
+                <addPadding/>
+                <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
+            </onError>      
+        </sendMetadata>
+    </presenter>
+    
+    <presenter back="Menu" displayOrder="120"  menuLabel="about" type="debug" self="about" title="about">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
     </presenter>
+    
+    
     <stimuli> 
         <!-- Grammatical judjement -->
         <stimulus  identifier="grammar_1"  audioPath="stimuli/grammar/als3_1"  tags="grammar 1 2730 als3_1 "  ratingLabels="Correct,Incorrect"  correctResponses="Correct"  pauseMs="0"  />
