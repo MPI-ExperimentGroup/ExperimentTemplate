@@ -28,25 +28,29 @@ Veel succes!"/>
         <targetButton featureText="Begin experiment" target="stimuliScreen"/>
     </presenter>
     <presenter back="Edit_User" displayOrder="3" menuLabel="stimuliN" next="End" type="stimulus" self="stimuliScreen" title="">
-        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider"  eventTag="stimuliN" wordsSource="Words_NL_1round" 
+        <loadStimulus class="nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.AdVocAsStimuliProvider"  eventTag="stimuliN" 
+                      numberOfBands="54" wordsPerBand="20" startBand="20" averageNonWordPosition="3" 
+                      fineTuningTupleLength="4" nonwordsPerBlock="4" fineTuningUpperBoundForCycles="2"
+                      fastTrackPresent="true" fineTuningFirstWrongOut="true"
+                      wordsSource="Words_NL_1round" 
                       nonwordsSource="NonWords_NL_1round">
             <hasMoreStimulus>
-                <clearPage/>
+               
+<!--                <clearPage/>
                 <centrePage/>
-                <!--                <showStimulusProgress/>-->
+                                <showStimulusProgress/>
                 <stimulusLabel styleName="groupMessageLabel"/>
                 <addPadding/>
                 <stimulusRatingButton ratingLabelRight="" ratingLabelLeft="">
                     <nextStimulus repeatIncorrect="false"/>
-                </stimulusRatingButton>
+                </stimulusRatingButton>-->
             </hasMoreStimulus>
             <endOfStimulus>
-                <sendStimuliReport type="user_summary" />
+<!--                <sendStimuliReport type="user_summary" />
                 <sendStimuliReport type="fast_track" />
                 <sendStimuliReport type="fine_tuning" />
                 <showStimuliReport/>
-                <targetButton featureText="Volgende" target="End"/>
-                <!--                <gotoNextPresenter/>-->
+                <targetButton featureText="Volgende" target="End"/>-->
             </endOfStimulus>
             <randomGrouping/>
             <stimuli/>

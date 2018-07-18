@@ -254,32 +254,19 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="20" type="transmission" self="Admin" title="Administratie" next="ListParticipants">
+    
+    <presenter displayOrder="20" type="transmission" self="Admin" title="Administratie" next="Menu">
         <sendMetadata>
             <onSuccess> 
-                <sendAllData>
-                    <onSuccess>
-                        <htmlText featureText="The participant's data are uploaded to the server"/>
-                        <addPadding/>
-                        <addPadding/>
-                        <eraseUsersDataButton featureText="Remove the user's data from the browser" target="ListParticipants" />
-                        <addPadding/>
-                        <addPadding/>
-                        <targetButton featureText="To the administration page" target="Admin" />
-                        <addPadding/>
-                        <addPadding/>
-                        <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
-                    </onSuccess>
-                    <onError>
-                        <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
-                        <addPadding/>
-                        <addPadding/>
-                        <targetButton featureText="Retry" target="Admin"/>
-                        <addPadding/>
-                        <addPadding/>
-                        <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
-                    </onError>
-                </sendAllData>
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="Dit is het einde van deze taak. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <addPadding/>
+                <eraseUsersDataButton featureText="Locaal geheugen schoonmaken  en opniew beginnen" target="Menu"/>
+                <addPadding/>
+                <addPadding/>
+                <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
             </onSuccess>
             <onError>   
                 <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
@@ -292,14 +279,34 @@
             </onError>      
         </sendMetadata>
     </presenter>
-    <presenter back="Menu" displayOrder="24" menuLabel="" type="metadata" self="timeOutScreen" title="">
-        <addPadding/>
-        <addPadding/>
-        <htmlText featureText="Dit is het einde van deze taak. De tijd is op. Dankjewel voor je deelname!"/>
-        <addPadding/>
-        <addPadding/>
-        <targetButton featureText="Naar de administratie pagina" target="Admin"/>   
-    </presenter>   
+    
+    
+    <presenter displayOrder="24" type="transmission" self="timeOutScreen" title="" next="Menu">
+        <sendMetadata>
+            <onSuccess> 
+                <addPadding/>
+                <addPadding/>
+                <htmlText featureText="Dit is het einde van deze taak. De tijd is op. Dankjewel voor je deelname!"/>
+                <addPadding/>
+                <addPadding/>
+                <eraseUsersDataButton featureText="Locaal geheugen schoonmaken  en opniew beginnen" target="Menu"/>
+                <addPadding/>
+                <addPadding/>
+                <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
+            </onSuccess>
+            <onError>   
+                <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
+                <addPadding/>
+                <addPadding/>
+                <targetButton featureText="Retry" target="Admin"/>
+                <addPadding/>
+                <addPadding/>
+                <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
+            </onError>      
+        </sendMetadata>
+    </presenter>
+    
+          
     <presenter back="Menu" displayOrder="25" menuLabel="Deelnemer lijst" type="metadata" self="ListParticipants" title="Kiez deelnemer">
         <htmlText featureText="The participants which are still in local browser memory:"/>
         <selectUserMenu/>

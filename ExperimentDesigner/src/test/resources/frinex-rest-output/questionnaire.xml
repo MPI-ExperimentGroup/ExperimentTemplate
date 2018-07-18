@@ -122,6 +122,18 @@
                         </eachStimulus>
                         <afterStimulus>
                           
+    
+                            <actionButton featureText="submit">
+                                <validateStimuliResponses>
+                                    <conditionFalse>
+                                        <plainText featureText="Fout input"/>
+                                    </conditionFalse>
+                                    <conditionTrue>
+                                        <gotoNextPresenter/>
+                                    </conditionTrue>
+                                </validateStimuliResponses>
+                            </actionButton> 
+          
                         </afterStimulus>
                         <randomGrouping/>
                         <stimuli>
@@ -135,18 +147,6 @@
         </table>
         
     
-    
-        <actionButton featureText="submit">
-            <validateStimuliResponses>
-                <conditionFalse>
-                    <plainText featureText="Fout input"/>
-                </conditionFalse>
-                <conditionTrue>
-                    <gotoNextPresenter/>
-                </conditionTrue>
-            </validateStimuliResponses>
-        </actionButton> 
-          
     </presenter>
     
     <presenter menuLabel="Spelling Check" displayOrder="40" next="Accord_Spelling" type="metadata" self="Edit_User_Spelling_Check" title="">
