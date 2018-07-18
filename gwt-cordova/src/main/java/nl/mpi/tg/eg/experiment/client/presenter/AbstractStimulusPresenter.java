@@ -658,7 +658,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 duration.elapsedMillis());
     }
 
-    protected void scoreAboveThreshold(final int scoreThreshold, final int errorThreshold, final int potentialThreshold, final int correctStreak, final int errorStreak, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
+    protected void scoreAboveThreshold(final Integer scoreThreshold, final Integer errorThreshold, final Integer potentialThreshold, final Integer correctStreak, final Integer errorStreak, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
+///       todo: handle correctStreak and errorStreak and null attributes
         if (userResults.getUserData().getCurrentScore() >= scoreThreshold
                 && userResults.getUserData().getPotentialScore() - userResults.getUserData().getCurrentScore() >= errorThreshold
                 && userResults.getUserData().getPotentialScore() >= potentialThreshold) {
@@ -668,7 +669,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void bestScoreAboveThreshold(final int scoreThreshold, final int errorThreshold, final int potentialThreshold, final int correctStreak, final int errorStreak, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
+    protected void bestScoreAboveThreshold(final Integer scoreThreshold, final Integer errorThreshold, final Integer potentialThreshold, final Integer correctStreak, final Integer errorStreak, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
+///        todo: handle correctStreak and errorStreak and null attributes
         if (userResults.getUserData().getBestScore() >= scoreThreshold
                 && userResults.getUserData().getBestScore() >= errorThreshold
                 && userResults.getUserData().getTotalPotentialScore() >= potentialThreshold) {
@@ -678,8 +680,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void totalScoreAboveThreshold(final int scoreThreshold, final int errorThreshold, final int potentialThreshold, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
-        if (userResults.getUserData().getTotalScore() >= scoreThreshold
+    protected void totalScoreAboveThreshold(final Integer scoreThreshold, final Integer errorThreshold, final Integer potentialThreshold, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
+///        todo: handle optional as null attributes
+if (userResults.getUserData().getTotalScore() >= scoreThreshold
                 && userResults.getUserData().getTotalPotentialScore() - userResults.getUserData().getTotalScore() >= errorThreshold
                 && userResults.getUserData().getTotalPotentialScore() >= potentialThreshold) {
             aboveThreshold.postLoadTimerFired();
@@ -974,7 +977,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             playedStimulusListener.postLoadTimerFired();
         } else {
             final String incorrect_stimulus_format = "incorrect stimulus format";
-            nextStimulusButton(stimulusProvider, currentStimulus, incorrect_stimulus_format, incorrect_stimulus_format + " " + currentStimulus.getLabel(), true, -1);
+            nextStimulusButton(stimulusProvider, currentStimulus, incorrect_stimulus_format, incorrect_stimulus_format + " " + currentStimulus.getLabel(), null, true, -1);
         }
     }
 
@@ -1628,7 +1631,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     // @todo: tag pair data and tag data tables could show the number of stimuli show events and the unique stimuli (grouped by tag strings) show events per screen
-    protected void sendGroupMessageButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final int dataChannel, final String buttonLabel, final boolean norepeat, final int hotKey, final int originPhase, final int incrementPhase, final String expectedRespondents) {
+    protected void sendGroupMessageButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final int dataChannel, final String buttonLabel, final String styleName, final boolean norepeat, final int hotKey, final int originPhase, final int incrementPhase, final String expectedRespondents) {
         PresenterEventListner eventListner = new PresenterEventListner() {
 
             @Override
@@ -1658,7 +1661,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
         };
         nextButtonEventListnerList.add(eventListner);
-        ((TimedStimulusView) simpleView).addOptionButton(eventListner);
+        ((TimedStimulusView) simpleView).addOptionButton(eventListner, styleName);
     }
 
     protected void touchInputReportSubmit(final Stimulus currentStimulus, final int dataChannel) {
@@ -1701,12 +1704,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void prevStimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final String buttonLabel, final boolean repeatIncorrect) {
+    protected void prevStimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final String buttonLabel, final String styleName, final boolean repeatIncorrect) {
         final int hotKey = -1;
-        prevStimulusButton(stimulusProvider, currentStimulus, eventTag, buttonLabel, repeatIncorrect, hotKey);
+        prevStimulusButton(stimulusProvider, currentStimulus, eventTag, buttonLabel, styleName, repeatIncorrect, hotKey);
     }
 
-    protected void prevStimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final String buttonLabel, final boolean repeatIncorrect, final int hotKey) {
+    protected void prevStimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final String buttonLabel, final String styleName, final boolean repeatIncorrect, final int hotKey) {
         PresenterEventListner eventListner = new PresenterEventListner() {
 
             @Override
@@ -1725,16 +1728,16 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
         };
         nextButtonEventListnerList.add(eventListner);
-        final StimulusButton prevButton = ((TimedStimulusView) simpleView).addOptionButton(eventListner);
+        final StimulusButton prevButton = ((TimedStimulusView) simpleView).addOptionButton(eventListner, styleName);
         prevButton.setEnabled(stimulusProvider.hasNextStimulus(-1));
     }
 
-    protected void nextStimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final String buttonLabel, final boolean repeatIncorrect) {
+    protected void nextStimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final String buttonLabel, final String styleName, final boolean repeatIncorrect) {
         final int hotKey = -1;
-        nextStimulusButton(stimulusProvider, currentStimulus, eventTag, buttonLabel, repeatIncorrect, hotKey);
+        nextStimulusButton(stimulusProvider, currentStimulus, eventTag, buttonLabel, styleName, repeatIncorrect, hotKey);
     }
 
-    protected void nextStimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final String buttonLabel, final boolean repeatIncorrect, final int hotKey) {
+    protected void nextStimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final String eventTag, final String buttonLabel, final String styleName, final boolean repeatIncorrect, final int hotKey) {
 //        if (stimulusProvider.hasNextStimulus()) {
         PresenterEventListner eventListner = new PresenterEventListner() {
 
@@ -1754,7 +1757,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
         };
         nextButtonEventListnerList.add(eventListner);
-        final StimulusButton nextButton = ((TimedStimulusView) simpleView).addOptionButton(eventListner);
+        final StimulusButton nextButton = ((TimedStimulusView) simpleView).addOptionButton(eventListner, styleName);
 //        final boolean disableAtEnd = false;
 //        nextButton.setEnabled(stimulusProvider.hasNextStimulus(1));
     }
