@@ -261,6 +261,8 @@ public class DefaultExperiments {
                         case repeatRandomWindow:
                         case scoreThreshold:
                         case errorThreshold:
+                        case correctStreak:
+                        case errorStreak:
                         case potentialThreshold:
                         case incrementPhase:
                         case minStimuliPerTag:
