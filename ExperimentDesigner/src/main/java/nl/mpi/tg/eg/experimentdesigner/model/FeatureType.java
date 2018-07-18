@@ -30,7 +30,7 @@ public enum FeatureType {
 
     htmlText(false, true, new FeatureAttribute[]{styleName}),
     htmlTokenText(false, true, new FeatureAttribute[]{styleName}) /* string tokens will be replaced with score values eg <groupScore> <channelScore> etc. */,
-    logTokenText(false, true, new FeatureAttribute[]{eventTag, dataChannel, dataLogFormat}) /* string tokens will be replaced with score values eg <groupScore> <channelScore> etc. */,
+    logTokenText(false, false, new FeatureAttribute[]{eventTag, dataChannel, dataLogFormat}) /* string tokens will be replaced with score values eg <groupScore> <channelScore> etc. */,
     plainText(false, true, null),
     image(false, false, new FeatureAttribute[]{src, styleName, msToNext}, false, false, false, Contitionals.hasMediaLoading, Contitionals.none),
     menuItem(false, true, new FeatureAttribute[]{target, hotKey}),
@@ -41,7 +41,7 @@ public enum FeatureType {
     loadSdCardStimulus(false, false, new FeatureAttribute[]{eventTag, minStimuliPerTag, maxStimuliPerTag, maxStimuli, excludeRegex, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.hasMoreStimulus, Contitionals.none),
     //    loadAllStimulus(false, false, new FeatureAttribute[]{eventTag, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, false, false, Contitionals.hasMoreStimulus),
     currentStimulusHasTag(false, false, new FeatureAttribute[]{msToNext}, true, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction), // todo: consider updating this to take a tags attribute rather than a stimuli element
-    validateStimuliResponses(false, false, new FeatureAttribute[]{}, true, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
+    validateStimuliResponses(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     showStimuliReport(false, false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     sendStimuliReport(false, false, new FeatureAttribute[]{type, dataChannel, headerKey, separator}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     targetButton(false, true, new FeatureAttribute[]{hotKey, target, styleName}),
@@ -51,7 +51,7 @@ public enum FeatureType {
     //// todo: touch input needs a threshold before touch is registered and another before touch is ended to allow gaps in touch being recorded as on touch
     touchInputCaptureStart(true, false, new FeatureAttribute[]{showControls, msToNext}, false, false, false, Contitionals.none, Contitionals.stimulusAction), /* sub elements are triggered after the touch ends or after msToNext of no touch activity */
     touchInputReportSubmit(false, false, new FeatureAttribute[]{dataChannel}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    sendGroupMessageButton(false, true, new FeatureAttribute[]{hotKey, dataChannel, eventTag, repeatIncorrect, incrementPhase, /* incrementPhaseOnDictionaryincrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
+    sendGroupMessageButton(false, true, new FeatureAttribute[]{hotKey, dataChannel, eventTag, repeatIncorrect, incrementPhase, styleName/* incrementPhaseOnDictionaryincrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     sendGroupMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     sendGroupStoredMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     sendGroupEndOfStimuli(false, false, new FeatureAttribute[]{eventTag}, false, false, false, Contitionals.none, Contitionals.groupNetworkActivity),
@@ -96,8 +96,8 @@ public enum FeatureType {
     clearPage(false, false, new FeatureAttribute[]{styleName}),
     backgroundImage(true, false, new FeatureAttribute[]{msToNext, src, styleName}),
     allMenuItems(false, false, null),
-    prevStimulusButton(false, true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    nextStimulusButton(false, true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    prevStimulusButton(false, true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey, styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    nextStimulusButton(false, true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey, styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     nextStimulus(false, false, new FeatureAttribute[]{/*eventTag,*/repeatIncorrect}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     prevStimulus(false, false, new FeatureAttribute[]{/*eventTag,*/repeatIncorrect}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     nextMatchingStimulus(false, false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
