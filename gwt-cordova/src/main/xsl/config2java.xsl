@@ -877,7 +877,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <xsl:if test="local-name() eq 'preloadAllStimuli' or local-name() eq 'withStimuli' or local-name() eq 'loadStimulus' or local-name() eq 'loadSdCardStimulus'">
             <xsl:text>{</xsl:text>
             <xsl:text>final StimuliProvider stimulusProvider = </xsl:text>
-            <xsl:value-of select="if(../@class) then concat('new ', ../@class, '(') else 'new nl.mpi.tg.eg.experiment.client.service.StimulusProvider('" />
+            <xsl:value-of select="if(@class) then concat('new ', @class, '(') else 'new nl.mpi.tg.eg.experiment.client.service.StimulusProvider('" />
             <xsl:text>
                 GeneratedStimulusProvider.values);
             </xsl:text>                    
