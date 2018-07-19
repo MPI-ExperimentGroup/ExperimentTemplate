@@ -136,7 +136,7 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
             ((ReportView) simpleView).showResults(stimuliGroup, calculatedScores);
             ((ReportView) simpleView).addText(messages.reportScreenScore(numberFormat2.format(calculatedScores.getScore())));
             ((ReportView) simpleView).addText(messages.userfeedbackscreentext());
-            userResults.getUserData().updateBestScore(calculatedScores.getScore());
+            userResults.getUserData().updateMaxScore(calculatedScores.getScore(), 0, 0, 0, 0);
 //            ((ReportView) simpleView).addText(messages.reportScreenSCT());
 //            ((ReportView) simpleView).addText(messages.reportScreenSCTaccuracy(numberFormat2.format(calculatedScores.getAccuracy())));
 //            ((ReportView) simpleView).addText(messages.reportScreenSCTmeanreactionTime(numberFormat3.format(calculatedScores.getMeanReactionTime() / 1000), numberFormat3.format(calculatedScores.getReactionTimeDeviation() / 1000)));
@@ -146,7 +146,7 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
             submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, "ReactionTimeDeviation", stimuliGroup.getPostName(), Double.toString(calculatedScores.getReactionTimeDeviation()), 0);
         }
 //        ((ReportView) simpleView).addText(messages.reportScreenPostSCTtext());
-        if (userResults.getUserData().getBestScore() <= scoreThreshold) {
+        if (userResults.getUserData().getMaxScore() <= scoreThreshold) {
             belowThreshold.postLoadTimerFired();
 //            ((ReportView) simpleView).addHighlightedText(messages.positiveresultscreentext1());
 //            ((ReportView) simpleView).addHighlightedText(messages.positiveresultscreentext2());
