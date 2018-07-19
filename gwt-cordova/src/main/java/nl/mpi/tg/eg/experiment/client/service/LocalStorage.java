@@ -45,7 +45,13 @@ public class LocalStorage {
     protected final String CURRENT_POTENTIAL = "currentPotential";
     protected final String TOTAL_POTENTIAL = "totalPotential";
     protected final String CURRENT_SCORE = "currentScore";
+    protected final String CURRENT_CORRECT_STREAK = "correctStreak";
+    protected final String CURRENT_ERROR_STREAK = "errorStreak";
     protected final String TOTAL_SCORE = "totalScore";
+    protected final String MAX_ERRORS = "maxErrors";
+    protected final String MAX_POTENTIAL = "maxPotential";
+    protected final String MAX_CORRECT_STREAK = "maxCorrectStreak";
+    protected final String MAX_ERROR_STREAK = "maxErrorStreak";
 
     public LocalStorage(String appNameInternal) {
         this.appNameInternal = appNameInternal;
@@ -246,9 +252,15 @@ public class LocalStorage {
                 }
             }
         }
-        userData.updateBestScore(getCleanStoredDouble(getUSER_RESULTS(userData.getUserId(), MAX_SCORE)));
+        userData.updateMaxScore(getCleanStoredDouble(getUSER_RESULTS(userData.getUserId(), MAX_SCORE)),
+                getCleanStoredInt(getUSER_RESULTS(userData.getUserId(), MAX_ERRORS)),
+                getCleanStoredInt(getUSER_RESULTS(userData.getUserId(), MAX_POTENTIAL)),
+                getCleanStoredInt(getUSER_RESULTS(userData.getUserId(), MAX_CORRECT_STREAK)),
+                getCleanStoredInt(getUSER_RESULTS(userData.getUserId(), MAX_ERROR_STREAK)));
         userData.setGamesPlayed(getCleanStoredInt(getUSER_RESULTS(userData.getUserId(), GAMES_PLAYED)));
         userData.setCurrentScore(getCleanStoredInt(getUSER_RESULTS(userData.getUserId(), CURRENT_SCORE)));
+        userData.setCorrectStreak(getCleanStoredInt(getUSER_RESULTS(userData.getUserId(), CURRENT_CORRECT_STREAK)));
+        userData.setErrorStreak(getCleanStoredInt(getUSER_RESULTS(userData.getUserId(), CURRENT_ERROR_STREAK)));
         userData.setTotalScore(getCleanStoredInt(getUSER_RESULTS(userData.getUserId(), TOTAL_SCORE)));
         userData.setPotentialScore(getCleanStoredInt(getUSER_RESULTS(userData.getUserId(), CURRENT_POTENTIAL)));
         userData.setTotalPotentialScore(getCleanStoredInt(getUSER_RESULTS(userData.getUserId(), TOTAL_POTENTIAL)));
@@ -287,9 +299,15 @@ public class LocalStorage {
 
     public void storeUserScore(UserResults userResults) {
         loadStorage();
-        dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), MAX_SCORE), Double.toString(userResults.getUserData().getBestScore()));
+        dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), MAX_SCORE), Double.toString(userResults.getUserData().getMaxScore()));
+        dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), MAX_ERRORS), Integer.toString(userResults.getUserData().getMaxErrors()));
+        dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), MAX_POTENTIAL), Integer.toString(userResults.getUserData().getMaxPotentialScore()));
+        dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), MAX_CORRECT_STREAK), Integer.toString(userResults.getUserData().getMaxCorrectStreak()));
+        dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), MAX_ERROR_STREAK), Integer.toString(userResults.getUserData().getMaxErrorStreak()));
         dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), GAMES_PLAYED), Integer.toString(userResults.getUserData().getGamesPlayed()));
         dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), CURRENT_SCORE), Integer.toString(userResults.getUserData().getCurrentScore()));
+        dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), CURRENT_CORRECT_STREAK), Integer.toString(userResults.getUserData().getCorrectStreak()));
+        dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), CURRENT_ERROR_STREAK), Integer.toString(userResults.getUserData().getErrorStreak()));
         dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), TOTAL_SCORE), Integer.toString(userResults.getUserData().getTotalScore()));
         dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), CURRENT_POTENTIAL), Integer.toString(userResults.getUserData().getPotentialScore()));
         dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), TOTAL_POTENTIAL), Integer.toString(userResults.getUserData().getTotalPotentialScore()));
