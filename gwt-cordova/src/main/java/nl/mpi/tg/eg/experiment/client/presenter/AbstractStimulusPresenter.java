@@ -659,35 +659,94 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void scoreAboveThreshold(final Integer scoreThreshold, final Integer errorThreshold, final Integer potentialThreshold, final Integer correctStreak, final Integer errorStreak, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
-///       todo: handle correctStreak and errorStreak and null attributes
-        if (userResults.getUserData().getCurrentScore() >= scoreThreshold
-                && userResults.getUserData().getPotentialScore() - userResults.getUserData().getCurrentScore() >= errorThreshold
-                && userResults.getUserData().getPotentialScore() >= potentialThreshold) {
-            aboveThreshold.postLoadTimerFired();
-        } else {
+        boolean isWithin = true;
+        if (scoreThreshold != null) {
+            if (userResults.getUserData().getCurrentScore() > scoreThreshold) {
+                isWithin = false;
+            }
+        }
+        if (errorThreshold != null) {
+            if (userResults.getUserData().getPotentialScore() - userResults.getUserData().getCurrentScore() > errorThreshold) {
+                isWithin = false;
+            }
+        }
+        if (potentialThreshold != null) {
+            if (userResults.getUserData().getPotentialScore() > potentialThreshold) {
+                isWithin = false;
+            }
+        }
+        if (correctStreak != null) {
+            if (userResults.getUserData().getCorrectStreak() > correctStreak) {
+                isWithin = false;
+            }
+        }
+        if (errorStreak != null) {
+            if (userResults.getUserData().getErrorStreak() > errorStreak) {
+                isWithin = false;
+            }
+        }
+        if (isWithin) {
             withinThreshold.postLoadTimerFired();
+        } else {
+            aboveThreshold.postLoadTimerFired();
         }
     }
 
     protected void bestScoreAboveThreshold(final Integer scoreThreshold, final Integer errorThreshold, final Integer potentialThreshold, final Integer correctStreak, final Integer errorStreak, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
-///        todo: handle correctStreak and errorStreak and null attributes
-        if (userResults.getUserData().getBestScore() >= scoreThreshold
-                && userResults.getUserData().getBestScore() >= errorThreshold
-                && userResults.getUserData().getTotalPotentialScore() >= potentialThreshold) {
-            aboveThreshold.postLoadTimerFired();
-        } else {
+        boolean isWithin = true;
+        if (scoreThreshold != null) {
+            if (userResults.getUserData().getMaxScore() > scoreThreshold) {
+                isWithin = false;
+            }
+        }
+        if (errorThreshold != null) {
+            if (userResults.getUserData().getMaxErrors() > errorThreshold) {
+                isWithin = false;
+            }
+        }
+        if (potentialThreshold != null) {
+            if (userResults.getUserData().getMaxPotentialScore() > potentialThreshold) {
+                isWithin = false;
+            }
+        }
+        if (correctStreak != null) {
+            if (userResults.getUserData().getMaxCorrectStreak() > correctStreak) {
+                isWithin = false;
+            }
+        }
+        if (errorStreak != null) {
+            if (userResults.getUserData().getMaxErrorStreak() > errorStreak) {
+                isWithin = false;
+            }
+        }
+        if (isWithin) {
             withinThreshold.postLoadTimerFired();
+        } else {
+            aboveThreshold.postLoadTimerFired();
         }
     }
 
     protected void totalScoreAboveThreshold(final Integer scoreThreshold, final Integer errorThreshold, final Integer potentialThreshold, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
-///        todo: handle optional as null attributes
-if (userResults.getUserData().getTotalScore() >= scoreThreshold
-                && userResults.getUserData().getTotalPotentialScore() - userResults.getUserData().getTotalScore() >= errorThreshold
-                && userResults.getUserData().getTotalPotentialScore() >= potentialThreshold) {
-            aboveThreshold.postLoadTimerFired();
-        } else {
+        boolean isWithin = true;
+        if (scoreThreshold != null) {
+            if (userResults.getUserData().getTotalScore() > scoreThreshold) {
+                isWithin = false;
+            }
+        }
+        if (errorThreshold != null) {
+            if (userResults.getUserData().getTotalPotentialScore() - userResults.getUserData().getTotalScore() > errorThreshold) {
+                isWithin = false;
+            }
+        }
+        if (potentialThreshold != null) {
+            if (userResults.getUserData().getTotalPotentialScore() > potentialThreshold) {
+                isWithin = false;
+            }
+        }
+        if (isWithin) {
             withinThreshold.postLoadTimerFired();
+        } else {
+            aboveThreshold.postLoadTimerFired();
         }
     }
 
@@ -699,7 +758,9 @@ if (userResults.getUserData().getTotalScore() >= scoreThreshold
     }
 
     protected void clearCurrentScore() {
+        userResults.getUserData().addGamePlayed();
         userResults.getUserData().clearCurrentScore();
+        localStorage.storeUserScore(userResults);
     }
 
     protected void scoreIncrement(final boolean isCorrect) {
@@ -713,7 +774,7 @@ if (userResults.getUserData().getTotalScore() >= scoreThreshold
 
     protected void scoreLabel(String styleName) {
         ((TimedStimulusView) simpleView).addHtmlText("Current Score: " + userResults.getUserData().getCurrentScore() + "/" + userResults.getUserData().getPotentialScore(), styleName);
-        ((TimedStimulusView) simpleView).addHtmlText("Best Score: " + userResults.getUserData().getBestScore(), styleName);
+        ((TimedStimulusView) simpleView).addHtmlText("Best Score: " + userResults.getUserData().getMaxScore(), styleName);
     }
 
     protected void groupChannelScoreLabel() {
