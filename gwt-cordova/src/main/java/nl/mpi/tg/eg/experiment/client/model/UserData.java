@@ -31,13 +31,19 @@ public class UserData {
     private final HashMap<MetadataField, String> metadataValues = new HashMap<>();
     private final HashMap<MetadataField, UserId> metadataConnections = new HashMap<>();
     private final UserId userId;
-    private double bestScore = 0;
     private int gamesPlayed = 0;
     private int totalScore = 0;
     private int totalPotentialScore = 0;
     private int currentScore = 0;
+    private int correctStreak = 0;
+    private int errorStreak = 0;
     private int potentialScore = 0;
-    private Boolean currentIsCorrect = null;
+    private double maxScore = 0;
+    private int maxErrors = 0;
+    private int maxCorrectStreak = 0;
+    private int maxErrorStreak = 0;
+    private int maxPotentialScore = 0;
+    private Boolean currentIsCorrect = null; // todo: this may be problematic for withStimuli
 
     public UserData() {
         this.userId = new UserId();
@@ -114,9 +120,27 @@ public class UserData {
         return totalScore;
     }
 
+    public int getCorrectStreak() {
+        return correctStreak;
+    }
+
+    public void setCorrectStreak(int correctStreak) {
+        this.correctStreak = correctStreak;
+    }
+
+    public int getErrorStreak() {
+        return errorStreak;
+    }
+
+    public void setErrorStreak(int errorStreak) {
+        this.errorStreak = errorStreak;
+    }
+
     public void clearCurrentScore() {
         this.currentScore = 0;
         this.potentialScore = 0;
+        this.correctStreak = 0;
+        this.errorStreak = 0;
     }
 
     public void clearCurrentResponse() {
@@ -141,8 +165,14 @@ public class UserData {
         this.currentIsCorrect = currentIsCorrect;
         if (currentIsCorrect) {
             this.currentScore++;
-            updateBestScore(this.currentScore);
+            this.totalScore++;
+            this.correctStreak++;
+            this.errorStreak = 0;
+        } else {
+            this.errorStreak++;
+            this.correctStreak = 0;
         }
+        updateMaxScore(this.currentScore, this.potentialScore - this.currentScore, this.potentialScore, this.correctStreak, this.errorStreak);
     }
 
     public boolean isCurrentCorrect() {
@@ -153,16 +183,52 @@ public class UserData {
         return (currentIsCorrect != null) ? currentIsCorrect == false : false;
     }
 
-    public double getBestScore() {
-        return bestScore;
+    public double getMaxScore() {
+        return maxScore;
     }
 
-    public void setBestScore(double bestScore) {
-        this.bestScore = bestScore;
+    public void setMaxScore(double maxScore) {
+        this.maxScore = maxScore;
     }
 
-    public void updateBestScore(double bestScore) {
-        setBestScore((getBestScore() < bestScore) ? bestScore : getBestScore());
+    public int getMaxCorrectStreak() {
+        return maxCorrectStreak;
+    }
+
+    public void setMaxCorrectStreak(int maxCorrectStreak) {
+        this.maxCorrectStreak = maxCorrectStreak;
+    }
+
+    public int getMaxErrors() {
+        return maxErrors;
+    }
+
+    public void setMaxErrors(int maxErrors) {
+        this.maxErrors = maxErrors;
+    }
+
+    public int getMaxErrorStreak() {
+        return maxErrorStreak;
+    }
+
+    public void setMaxErrorStreak(int maxErrorStreak) {
+        this.maxErrorStreak = maxErrorStreak;
+    }
+
+    public int getMaxPotentialScore() {
+        return maxPotentialScore;
+    }
+
+    public void setMaxPotentialScore(int maxPotentialScore) {
+        this.maxPotentialScore = maxPotentialScore;
+    }
+
+    public void updateMaxScore(double currentScore, int currentErrors, int potentialScore, int correctStreak, int errorStreak) {
+        setMaxScore((getMaxScore() < currentScore) ? currentScore : getMaxScore());
+        setMaxErrors((getMaxErrors() < currentErrors) ? currentErrors : getMaxErrors());
+        setMaxPotentialScore((getMaxPotentialScore() < potentialScore) ? potentialScore : getMaxPotentialScore());
+        setMaxCorrectStreak((getMaxCorrectStreak() < correctStreak) ? correctStreak : getMaxCorrectStreak());
+        setMaxErrorStreak((getMaxErrorStreak() < errorStreak) ? errorStreak : getMaxErrorStreak());
     }
 
 //    public void validateNameField() throws MetadataFieldException {
