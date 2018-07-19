@@ -33,7 +33,7 @@ public class PeabodyStimuliFromString {
     private final LinkedHashMap<String, PeabodyStimulus> hashedStimuli = new LinkedHashMap<String, PeabodyStimulus>();
     private final  ArrayList<ArrayList<PeabodyStimulus>> stimuliByBands = new ArrayList<ArrayList<PeabodyStimulus>>();
   
-    public void parseWordsInputCSVString(PeabodyStimuliProvider provider, int numberOfBands, String stimuliDir) throws Exception {
+    public void parseWordsInputCSVString(final PeabodyStimuliProvider provider, int numberOfBands, String stimuliDir) throws Exception {
         
         
         String csvString = CsvTable.CSV_STRING;
