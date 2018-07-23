@@ -488,7 +488,8 @@ or local-name() eq 'stimulusLabel'
 ) then 'currentStimulus' else ''" />
         <xsl:value-of select="if(local-name() eq 'stimulusMetadataField' or (local-name() eq 'stimulusLabel' and @styleName)
 ) then ', ' else ''" />
-        <xsl:value-of select="if(@type) then concat(', &quot;', @type, '&quot;, ') else ''" />   
+        <xsl:value-of select="if(@type) then concat('&quot;', @type, '&quot;, ') else ''" />   
+        <xsl:value-of select="if(@headerKey) then concat('&quot;', @headerKey, '&quot;, ') else ''" />
         <xsl:value-of select="if(@featureText) then concat('messages.', generate-id(.), '()') else ''" />    
         <xsl:value-of select="if(@fieldName) then concat('metadataFieldProvider.', @fieldName, 'MetadataField') else ''" />
         <xsl:value-of select="if(@linkedFieldName) then concat(', metadataFieldProvider.', @linkedFieldName, 'MetadataField') else ''" />
@@ -499,7 +500,6 @@ or local-name() eq 'stimulusLabel'
         <xsl:value-of select="if(@target) then concat(', ApplicationState.', @target) else ''" />
         <xsl:value-of select="if(local-name() eq 'stimulusMetadataField') then ',' else ''" />
         <!--<xsl:if test="local-name() eq 'htmlTokenText'">-->
-        <xsl:value-of select="if(@dataLogFormat) then concat('&quot;', @dataLogFormat, '&quot;, ') else ''" />
         <!--</xsl:if>-->
         <xsl:if test="local-name() eq 'generateCompletionCode'
  or local-name() eq 'sendStimuliReport'
@@ -508,6 +508,7 @@ or local-name() eq 'stimulusLabel'
 ">
             <xsl:value-of select="if(@dataChannel) then @dataChannel else '0'" />
         </xsl:if>
+        <xsl:value-of select="if(@dataLogFormat) then concat(',&quot;', @dataLogFormat, '&quot;') else ''" />
         <xsl:value-of select="if(local-name() eq 'sendAllData' or local-name() eq 'sendMetadata') then 'null' else ''" />   
         <xsl:value-of select="if(local-name() eq 'saveMetadataButton') then concat(', messages.errorMessage', generate-id(.), '()') else ''" />
         <xsl:value-of select="if(local-name() eq 'helpDialogue') then concat(', messages.closeButtonLabel', generate-id(.), '()') else ''" />
