@@ -111,14 +111,18 @@
                             <pause msToNext="1000">
                                 <regionClear regionId="stimulusRegion2"/>
                                 <regionStyle regionId="stimulusRegionLetters" styleName=""/>
-                                <stimulusFreeText  featureText="Type de letteren " validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
-                                <nextStimulusButton featureText="Next" eventTag="Next" repeatIncorrect="false"/>
+                                <addPadding/>
+                                <addPadding/>
+                                <htmlText featureText="Type de letteren, dan Enter of Next om verder te gaan."/>
+                                <stimulusFreeText  featureText=" " hotKey="ENTER" validationRegex=".*" inputErrorMessage="Only letters are allowed." dataChannel="4" styleName="minimalWidth"/>
+                                <nextStimulusButton featureText="Next" eventTag="Next" hotKey="ENTER" repeatIncorrect="false"/>
                             </pause>
                         </pause>
                     </pause>
                 </pause> 
             </hasMoreStimulus>
             <endOfStimulus>
+                <clearCurrentScore/>
                 <clearPage/>
                 <centrePage/>
                 <addPadding/>
@@ -224,18 +228,28 @@
                                     <pause msToNext="1000">
                                         <regionClear regionId="stimulusRegion3"/>
                                         <regionStyle regionId="stimulusRegionLetters" styleName=""/>
-                                        <stimulusFreeText  featureText="Type de letteren " validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
-                                        <nextStimulusButton featureText="Next" eventTag="Next" repeatIncorrect="false"/>
+                                        <addPadding/>
+                                        <addPadding/>
+                                        <htmlText featureText="Type de letteren, dan Enter of Next om verder te gaan."/>
+                                        <stimulusFreeText  featureText=" " hotKey="ENTER" validationRegex=".*" inputErrorMessage="Only letters are allowed." dataChannel="4"/>
+                                        <nextStimulusButton featureText="Next" hotKey="ENTER" eventTag="Next" repeatIncorrect="false"/>
                                     </pause>
                                 </pause>
                             </pause>
                         </pause>
                     </pause>
                 </pause>
-
             </hasMoreStimulus>
             <endOfStimulus>
-                <gotoNextPresenter/>
+                <scoreAboveThreshold errorStreak="1">
+                    <aboveThreshold>
+                        <gotoPresenter target="Admin"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -250,6 +264,7 @@
     <presenter displayOrder="50" next="stimuliScreenCorsi5" type="stimulus" self="stimuliScreenCorsi4" title="">
         <loadStimulus eventTag="stimuliCorsiN" randomise="false" repeatCount="1" maxStimuli="372">
             <hasMoreStimulus>
+                <htmlText featureText="within"/>
                 <clearPage/>
                 <centrePage/>
                 <addPadding/>
@@ -349,8 +364,11 @@
                                             <pause msToNext="1000">
                                                 <regionClear regionId="stimulusRegion4"/>
                                                 <regionStyle regionId="stimulusRegionLetters" styleName=""/>
-                                                <stimulusFreeText  featureText="Type de letteren " validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
-                                                <nextStimulusButton featureText="Next" eventTag="Next" repeatIncorrect="false"/>
+                                                <addPadding/>
+                                                <addPadding/>
+                                                <htmlText featureText="Type de letteren, dan Enter of Next om verder te gaan."/>
+                                                <stimulusFreeText  featureText=" " hotKey="ENTER" validationRegex=".*" inputErrorMessage="Only letters are allowed." dataChannel="4"/>
+                                                <nextStimulusButton featureText="Next" hotKey="ENTER" eventTag="Next" repeatIncorrect="false"/>
                                             </pause>
                                         </pause>
                                     </pause>
@@ -359,11 +377,19 @@
                         </pause>
                     </pause>
                 </pause>
-
             </hasMoreStimulus>
             <endOfStimulus>
-                <gotoNextPresenter/>
+                <scoreAboveThreshold errorStreak="1">
+                    <aboveThreshold>
+                        <gotoPresenter target="Admin"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
             </endOfStimulus>
+            
             <randomGrouping/>
             <stimuli>
                 <tag>corsi</tag>
@@ -377,6 +403,7 @@
     <presenter displayOrder="60" next="stimuliScreenCorsi6" type="stimulus" self="stimuliScreenCorsi5" title="">
         <loadStimulus eventTag="stimuliCorsiN" randomise="false" repeatCount="1" maxStimuli="372">
             <hasMoreStimulus>
+              
                 <clearPage/>
                 <centrePage/>
                 <addPadding/>
@@ -488,13 +515,16 @@
                                                 <regionClear regionId="stimulusRegion4"/>
                                                 <regionStyle regionId="stimulusRegionBlank" styleName=""/>
                                                 <pause msToNext="500">
-                                                  <regionClear regionId="stimulusRegionBlank"/>
+                                                    <regionClear regionId="stimulusRegionBlank"/>
                                                     <regionStyle regionId="stimulusRegion5" styleName=""/>
                                                     <pause msToNext="1000">
                                                         <regionClear regionId="stimulusRegion5"/>
                                                         <regionStyle regionId="stimulusRegionLetters" styleName=""/>
-                                                        <stimulusFreeText  featureText="Type de letteren " validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
-                                                        <nextStimulusButton featureText="Next" eventTag="Next" repeatIncorrect="false"/>
+                                                        <addPadding/>
+                                                        <addPadding/>
+                                                        <htmlText featureText="Type de letteren, dan Enter of Next om verder te gaan."/>
+                                                        <stimulusFreeText  featureText=" " hotKey="ENTER" validationRegex=".*" inputErrorMessage="Only letters are allowed." dataChannel="4"/>
+                                                        <nextStimulusButton featureText="Next" hotKey="ENTER" eventTag="Next" repeatIncorrect="false"/>
                                                     </pause>
                                                 </pause>
                                             </pause>
@@ -505,10 +535,17 @@
                         </pause>
                     </pause>
                 </pause>
-
             </hasMoreStimulus>
             <endOfStimulus>
-                <gotoNextPresenter/>
+                <scoreAboveThreshold errorStreak="1">
+                    <aboveThreshold>
+                        <gotoPresenter target="Admin"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -524,6 +561,7 @@
     <presenter displayOrder="70" next="stimuliScreenCorsi7" type="stimulus" self="stimuliScreenCorsi6" title="">
         <loadStimulus eventTag="stimuliCorsiN" randomise="false" repeatCount="1" maxStimuli="372">
             <hasMoreStimulus>
+               
                 <clearPage/>
                 <centrePage/>
                 <addPadding/>
@@ -657,8 +695,11 @@
                                                             <pause msToNext="1000">
                                                                 <regionClear regionId="stimulusRegion6"/>
                                                                 <regionStyle regionId="stimulusRegionLetters" styleName=""/>
-                                                                <stimulusFreeText  featureText="Type de letteren " validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
-                                                                <nextStimulusButton featureText="Next" eventTag="Next" repeatIncorrect="false"/>
+                                                                <addPadding/>
+                                                                <addPadding/>
+                                                                <htmlText featureText="Type de letteren, dan Enter of Next om verder te gaan."/>
+                                                                <stimulusFreeText  featureText=" " hotKey="ENTER" validationRegex=".*" inputErrorMessage="Only letters are allowed." dataChannel="4"/>
+                                                                <nextStimulusButton featureText="Next" hotKey="ENTER" eventTag="Next" repeatIncorrect="false"/>
                                                             </pause>
                                                         </pause>
                                                     </pause>
@@ -671,10 +712,17 @@
                         </pause>
                     </pause>
                 </pause>
-
             </hasMoreStimulus>
             <endOfStimulus>
-                <gotoNextPresenter/>
+                <scoreAboveThreshold errorStreak="1">
+                    <aboveThreshold>
+                        <gotoPresenter target="Admin"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -839,8 +887,11 @@
                                                                     <pause msToNext="1000">
                                                                         <regionClear regionId="stimulusRegion7"/>
                                                                         <regionStyle regionId="stimulusRegionLetters" styleName=""/>
-                                                                        <stimulusFreeText  featureText="Type de letteren " validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
-                                                                        <nextStimulusButton featureText="Next" eventTag="Next" repeatIncorrect="false"/>
+                                                                        <addPadding/>
+                                                                        <addPadding/>
+                                                                        <htmlText featureText="Type de letteren, dan Enter of Next om verder te gaan."/>
+                                                                        <stimulusFreeText  featureText=" " hotKey="ENTER" validationRegex=".*" inputErrorMessage="Only letters are allowed." dataChannel="4"/>
+                                                                        <nextStimulusButton featureText="Next" hotKey="ENTER" eventTag="Next" repeatIncorrect="false"/>
                                                                     </pause>
                                                                 </pause>
                                                             </pause>
@@ -855,10 +906,17 @@
                         </pause>
                     </pause>
                 </pause>
-
             </hasMoreStimulus>
             <endOfStimulus>
-                <gotoNextPresenter/>
+                <scoreAboveThreshold errorStreak="1">
+                    <aboveThreshold>
+                        <gotoPresenter target="Admin"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -873,175 +931,185 @@
     <presenter displayOrder="90" next="Admin" type="stimulus" self="stimuliScreenCorsi8" title="">
         <loadStimulus eventTag="stimuliCorsiN" randomise="false" repeatCount="1" maxStimuli="372">
             <hasMoreStimulus> 
-                <clearPage/>
-                <centrePage/>
-                <addPadding/>
-                <addPadding/>
-                <addPadding/>
-                <region regionId="labelRegion"/>
-                <region regionId="stimulusRegion1" />
-                <region regionId="stimulusRegion2"/>
-                <region regionId="stimulusRegion3"/>
-                <region regionId="stimulusRegion4"/>
-                <region regionId="stimulusRegion5"/>
-                <region regionId="stimulusRegion6"/>
-                <region regionId="stimulusRegion7"/>
-                <region regionId="stimulusRegion8"/>
-                <region regionId="stimulusRegionBlank"/>
-                <region regionId="stimulusRegionLetters"/>
-                <regionReplace regionId="labelRegion">
-                    <stimulusLabel/>
-                </regionReplace>
-                <regionStyle regionId="stimulusRegion1" styleName="hiddenRegion"/>
-                <regionStyle regionId="stimulusRegion2" styleName="hiddenRegion"/>
-                <regionStyle regionId="stimulusRegion3" styleName="hiddenRegion"/>
-                <regionStyle regionId="stimulusRegion4" styleName="hiddenRegion"/>
-                <regionStyle regionId="stimulusRegion5" styleName="hiddenRegion"/>
-                <regionStyle regionId="stimulusRegion6" styleName="hiddenRegion"/>
-                <regionStyle regionId="stimulusRegion7" styleName="hiddenRegion"/>
-                <regionStyle regionId="stimulusRegion8" styleName="hiddenRegion"/>
-                <regionStyle regionId="stimulusRegionBlank" styleName="hiddenRegion"/>
-                <regionStyle regionId="stimulusRegionLetters" styleName="hiddenRegion"/>
-                <regionReplace regionId="stimulusRegion1">
-                    <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg"  > 
-                        <mediaLoadFailed>
-                            <htmlText featureText="Failed to load image file"/>
-                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
-                        </mediaLoadFailed>
-                        <mediaLoaded/>
-                    </stimulusCodeImage>
-                </regionReplace>
-                <regionReplace regionId="stimulusRegionBlank">
-                    <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg" > 
-                        <mediaLoadFailed>
-                            <htmlText featureText="Failed to load image file"/>
-                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
-                        </mediaLoadFailed>
-                        <mediaLoaded/>
-                    </stimulusCodeImage> 
-                </regionReplace>
-                <regionReplace regionId="stimulusRegion2">
-                    <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg"> 
-                        <mediaLoadFailed>
-                            <htmlText featureText="Failed to load image file"/>
-                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
-                        </mediaLoadFailed>
-                        <mediaLoaded/> 
-                    </stimulusCodeImage>
-                </regionReplace>
-                <regionReplace regionId="stimulusRegion3">
-                    <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_3.jpg"> 
-                        <mediaLoadFailed>
-                            <htmlText featureText="Failed to load image file"/>
-                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
-                        </mediaLoadFailed>
-                        <mediaLoaded/> 
-                    </stimulusCodeImage>
-                </regionReplace>
-                <regionReplace regionId="stimulusRegion4">
-                    <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_4.jpg"> 
-                        <mediaLoadFailed>
-                            <htmlText featureText="Failed to load image file"/>
-                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
-                        </mediaLoadFailed>
-                        <mediaLoaded/> 
-                    </stimulusCodeImage>
-                </regionReplace>
-                <regionReplace regionId="stimulusRegion5">
-                    <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_5.jpg"> 
-                        <mediaLoadFailed>
-                            <htmlText featureText="Failed to load image file"/>
-                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
-                        </mediaLoadFailed>
-                        <mediaLoaded/> 
-                    </stimulusCodeImage>
-                </regionReplace>
-                <regionReplace regionId="stimulusRegion6">
-                    <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_6.jpg"> 
-                        <mediaLoadFailed>
-                            <htmlText featureText="Failed to load image file"/>
-                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
-                        </mediaLoadFailed>
-                        <mediaLoaded/> 
-                    </stimulusCodeImage>
-                </regionReplace>
-                <regionReplace regionId="stimulusRegion7">
-                    <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_7.jpg"> 
-                        <mediaLoadFailed>
-                            <htmlText featureText="Failed to load image file"/>
-                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
-                        </mediaLoadFailed>
-                        <mediaLoaded/> 
-                    </stimulusCodeImage>
-                </regionReplace>
-                <regionReplace regionId="stimulusRegion8">
-                    <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_8.jpg"> 
-                        <mediaLoadFailed>
-                            <htmlText featureText="Failed to load image file"/>
-                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
-                        </mediaLoadFailed>
-                        <mediaLoaded/> 
-                    </stimulusCodeImage>
-                </regionReplace>
-                <regionReplace regionId="stimulusRegionLetters">
-                    <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg"> 
-                        <mediaLoadFailed>
-                            <htmlText featureText="Failed to load image file"/>
-                            <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
-                        </mediaLoadFailed>
-                        <mediaLoaded/>
-                    </stimulusCodeImage> 
-                </regionReplace>
-                <pause msToNext="1500">
-                    <regionClear regionId="labelRegion"/>
-                    <regionStyle regionId="stimulusRegion1" styleName=""/>
-                    <pause msToNext="1000">
-                        <regionClear regionId="stimulusRegion1"/>
-                        <regionStyle regionId="stimulusRegionBlank" styleName=""/>
-                        <pause msToNext="500">
-                            <regionStyle regionId="stimulusRegionBlank" styleName="hiddenRegion"/>
-                            <regionStyle regionId="stimulusRegion2" styleName=""/>
+                <scoreAboveThreshold errorStreak="1">
+                    <aboveThreshold>
+                        <gotoPresenter target="Admin"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearPage/>
+                        <centrePage/>
+                        <addPadding/>
+                        <addPadding/>
+                        <addPadding/>
+                        <region regionId="labelRegion"/>
+                        <region regionId="stimulusRegion1" />
+                        <region regionId="stimulusRegion2"/>
+                        <region regionId="stimulusRegion3"/>
+                        <region regionId="stimulusRegion4"/>
+                        <region regionId="stimulusRegion5"/>
+                        <region regionId="stimulusRegion6"/>
+                        <region regionId="stimulusRegion7"/>
+                        <region regionId="stimulusRegion8"/>
+                        <region regionId="stimulusRegionBlank"/>
+                        <region regionId="stimulusRegionLetters"/>
+                        <regionReplace regionId="labelRegion">
+                            <stimulusLabel/>
+                        </regionReplace>
+                        <regionStyle regionId="stimulusRegion1" styleName="hiddenRegion"/>
+                        <regionStyle regionId="stimulusRegion2" styleName="hiddenRegion"/>
+                        <regionStyle regionId="stimulusRegion3" styleName="hiddenRegion"/>
+                        <regionStyle regionId="stimulusRegion4" styleName="hiddenRegion"/>
+                        <regionStyle regionId="stimulusRegion5" styleName="hiddenRegion"/>
+                        <regionStyle regionId="stimulusRegion6" styleName="hiddenRegion"/>
+                        <regionStyle regionId="stimulusRegion7" styleName="hiddenRegion"/>
+                        <regionStyle regionId="stimulusRegion8" styleName="hiddenRegion"/>
+                        <regionStyle regionId="stimulusRegionBlank" styleName="hiddenRegion"/>
+                        <regionStyle regionId="stimulusRegionLetters" styleName="hiddenRegion"/>
+                        <regionReplace regionId="stimulusRegion1">
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_1.jpg"  > 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage>
+                        </regionReplace>
+                        <regionReplace regionId="stimulusRegionBlank">
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_blank.jpg" > 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage> 
+                        </regionReplace>
+                        <regionReplace regionId="stimulusRegion2">
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_2.jpg"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                        </regionReplace>
+                        <regionReplace regionId="stimulusRegion3">
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_3.jpg"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                        </regionReplace>
+                        <regionReplace regionId="stimulusRegion4">
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_4.jpg"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                        </regionReplace>
+                        <regionReplace regionId="stimulusRegion5">
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_5.jpg"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                        </regionReplace>
+                        <regionReplace regionId="stimulusRegion6">
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_6.jpg"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                        </regionReplace>
+                        <regionReplace regionId="stimulusRegion7">
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_7.jpg"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                        </regionReplace>
+                        <regionReplace regionId="stimulusRegion8">
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_8.jpg"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/> 
+                            </stimulusCodeImage>
+                        </regionReplace>
+                        <regionReplace regionId="stimulusRegionLetters">
+                            <stimulusCodeImage msToNext="0" dataChannel="4" codeFormat="stimuli/&lt;code&gt;_letters.jpg"> 
+                                <mediaLoadFailed>
+                                    <htmlText featureText="Failed to load image file"/>
+                                    <targetButton featureText="Try this page again" target="stimuliScreenCorsi8"/>
+                                </mediaLoadFailed>
+                                <mediaLoaded/>
+                            </stimulusCodeImage> 
+                        </regionReplace>
+                        <pause msToNext="1500">
+                            <regionClear regionId="labelRegion"/>
+                            <regionStyle regionId="stimulusRegion1" styleName=""/>
                             <pause msToNext="1000">
-                                <regionClear regionId="stimulusRegion2"/>
+                                <regionClear regionId="stimulusRegion1"/>
                                 <regionStyle regionId="stimulusRegionBlank" styleName=""/>
                                 <pause msToNext="500">
                                     <regionStyle regionId="stimulusRegionBlank" styleName="hiddenRegion"/>
-                                    <regionStyle regionId="stimulusRegion3" styleName=""/>
+                                    <regionStyle regionId="stimulusRegion2" styleName=""/>
                                     <pause msToNext="1000">
-                                        <regionClear regionId="stimulusRegion3"/>
+                                        <regionClear regionId="stimulusRegion2"/>
                                         <regionStyle regionId="stimulusRegionBlank" styleName=""/>
                                         <pause msToNext="500">
                                             <regionStyle regionId="stimulusRegionBlank" styleName="hiddenRegion"/>
-                                            <regionStyle regionId="stimulusRegion4" styleName=""/>
+                                            <regionStyle regionId="stimulusRegion3" styleName=""/>
                                             <pause msToNext="1000">
-                                                <regionClear regionId="stimulusRegion4"/>
+                                                <regionClear regionId="stimulusRegion3"/>
                                                 <regionStyle regionId="stimulusRegionBlank" styleName=""/>
                                                 <pause msToNext="500">
                                                     <regionStyle regionId="stimulusRegionBlank" styleName="hiddenRegion"/>
-                                                    <regionStyle regionId="stimulusRegion5" styleName=""/>
+                                                    <regionStyle regionId="stimulusRegion4" styleName=""/>
                                                     <pause msToNext="1000">
-                                                        <regionClear regionId="stimulusRegion5"/>
+                                                        <regionClear regionId="stimulusRegion4"/>
                                                         <regionStyle regionId="stimulusRegionBlank" styleName=""/>
                                                         <pause msToNext="500">
                                                             <regionStyle regionId="stimulusRegionBlank" styleName="hiddenRegion"/>
-                                                            <regionStyle regionId="stimulusRegion6" styleName=""/>
+                                                            <regionStyle regionId="stimulusRegion5" styleName=""/>
                                                             <pause msToNext="1000">
-                                                                <regionClear regionId="stimulusRegion6"/>
+                                                                <regionClear regionId="stimulusRegion5"/>
                                                                 <regionStyle regionId="stimulusRegionBlank" styleName=""/>
                                                                 <pause msToNext="500">
                                                                     <regionStyle regionId="stimulusRegionBlank" styleName="hiddenRegion"/>
-                                                                    <regionStyle regionId="stimulusRegion7" styleName=""/>
+                                                                    <regionStyle regionId="stimulusRegion6" styleName=""/>
                                                                     <pause msToNext="1000">
-                                                                        <regionClear regionId="stimulusRegion7"/>
+                                                                        <regionClear regionId="stimulusRegion6"/>
                                                                         <regionStyle regionId="stimulusRegionBlank" styleName=""/>
                                                                         <pause msToNext="500">
-                                                                            <regionClear regionId="stimulusRegionBlank"/>
-                                                                            <regionStyle regionId="stimulusRegion8" styleName=""/>
+                                                                            <regionStyle regionId="stimulusRegionBlank" styleName="hiddenRegion"/>
+                                                                            <regionStyle regionId="stimulusRegion7" styleName=""/>
                                                                             <pause msToNext="1000">
-                                                                                <regionClear regionId="stimulusRegion8"/>
-                                                                                <regionStyle regionId="stimulusRegionLetters" styleName=""/>
-                                                                                <stimulusFreeText  featureText="Type de letteren " validationRegex=".*" inputErrorMessage=" " dataChannel="4"/>
-                                                                                <nextStimulusButton featureText="Next" eventTag="Next" repeatIncorrect="false"/>
+                                                                                <regionClear regionId="stimulusRegion7"/>
+                                                                                <regionStyle regionId="stimulusRegionBlank" styleName=""/>
+                                                                                <pause msToNext="500">
+                                                                                    <regionClear regionId="stimulusRegionBlank"/>
+                                                                                    <regionStyle regionId="stimulusRegion8" styleName=""/>
+                                                                                    <pause msToNext="1000">
+                                                                                        <regionClear regionId="stimulusRegion8"/>
+                                                                                        <regionStyle regionId="stimulusRegionLetters" styleName=""/>
+                                                                                        <addPadding/>
+                                                                                        <addPadding/>
+                                                                                        <htmlText featureText="Type de letteren, dan Enter of Next om verder te gaan."/>
+                                                                                        <stimulusFreeText  featureText=" " hotKey="ENTER" validationRegex=".*" inputErrorMessage="Only letters are allowed." dataChannel="4"/>
+                                                                                        <nextStimulusButton featureText="Next" hotKey="ENTER" eventTag="Next" repeatIncorrect="false"/>
+                                                                                    </pause>
+                                                                                </pause>
                                                                             </pause>
                                                                         </pause>
                                                                     </pause>
@@ -1056,11 +1124,11 @@
                                 </pause>
                             </pause>
                         </pause>
-                    </pause>
-                </pause>
-
+                    </withinThreshold>
+                </scoreAboveThreshold>
             </hasMoreStimulus>
             <endOfStimulus>
+                <clearCurrentScore/>
                 <gotoNextPresenter/>
             </endOfStimulus>
             <randomGrouping/>
@@ -1119,36 +1187,36 @@
     <stimuli> 
         <stimulus  identifier="Practice_1" label="practice 01"  correctResponses=""  code="Practice_1"  pauseMs="0" tags="corsi practice 2"  />
         <stimulus  identifier="Practice_2" label="practice 02"  correctResponses=""  code="Practice_2"  pauseMs="0" tags="corsi practice 2"  />
-        <stimulus  identifier="Block_3_1"  label="trial 01"  correctResponses="MDB"  code="Block_3_1"  pauseMs="0" tags="corsi active 3"  />
-        <stimulus  identifier="Block_3_2"  label="trial 02"  correctResponses="NCY"  code="Block_3_2"  pauseMs="0" tags="corsi 3"  />
-        <stimulus  identifier="Block_3_3"  label="trial 03"  correctResponses="FQK"  code="Block_3_3"  pauseMs="0" tags="corsi 3"  />
-        <stimulus  identifier="Block_3_4"  label="trial 04"  correctResponses="CQJ"  code="Block_3_4"  pauseMs="0" tags="corsi active 3"  />
-        <stimulus  identifier="Block_3_5"  label="trial 05"  correctResponses="TLS"  code="Block_3_5"  pauseMs="0" tags="corsi 3"  />
-        <stimulus  identifier="Block_4_1"  label="trial 06"  correctResponses="YTNK"  code="Block_4_1"  pauseMs="0" tags="corsi active 4"  />
-        <stimulus  identifier="Block_4_2"  label="trial 07"  correctResponses="YRTB"  code="Block_4_2"  pauseMs="0" tags="corsi 4"  />
-        <stimulus  identifier="Block_4_3"  label="trial 08"  correctResponses="RNTK"  code="Block_4_3"  pauseMs="0" tags="corsi 4"  />
-        <stimulus  identifier="Block_4_4"  label="trial 09"  correctResponses="YKXR"  code="Block_4_4"  pauseMs="0" tags="corsi active 4"  />
-        <stimulus  identifier="Block_4_5"  label="trial 10"  correctResponses="YFQB"  code="Block_4_5"  pauseMs="0" tags="corsi 4"  />
-        <stimulus  identifier="Block_5_1"  label="trial 11"  correctResponses="FJYQR"  code="Block_5_1"  pauseMs="0" tags="corsi active 5"  />
-        <stimulus  identifier="Block_5_2"  label="trial 12"  correctResponses="BRJZL"  code="Block_5_2"  pauseMs="0" tags="corsi 5"  />
-        <stimulus  identifier="Block_5_3"  label="trial 13"  correctResponses="FYLBH"  code="Block_5_3"  pauseMs="0" tags="corsi 5"  />
-        <stimulus  identifier="Block_5_4"  label="trial 14"  correctResponses="FYQZH"  code="Block_5_4"  pauseMs="0" tags="corsi active 5"  />
-        <stimulus  identifier="Block_5_5"  label="trial 15"  correctResponses="ZRQYH"  code="Block_5_5"  pauseMs="0" tags="corsi 5"  />
-        <stimulus  identifier="Block_6_1"  label="trial 16"  correctResponses="DWNKYC"  code="Block_6_1"  pauseMs="0" tags="corsi active 6"  />
-        <stimulus  identifier="Block_6_2"  label="trial 17"  correctResponses="NHYWKD"  code="Block_6_2"  pauseMs="0" tags="corsi 6"  />
-        <stimulus  identifier="Block_6_3"  label="trial 18"  correctResponses="WJQDHY"  code="Block_6_3"  pauseMs="0" tags="corsi 6"  />
-        <stimulus  identifier="Block_6_4"  label="trial 19"  correctResponses="NKWCQJ"  code="Block_6_4"  pauseMs="0" tags="corsi active 6"  />
-        <stimulus  identifier="Block_6_5"  label="trial 20"  correctResponses="JWNHDK"  code="Block_6_5"  pauseMs="0" tags="corsi 6"  />
-        <stimulus  identifier="Block_7_1"  label="trial 21"  correctResponses="XJYKRZV"  code="Block_7_1"  pauseMs="0" tags="corsi active 7"  />
-        <stimulus  identifier="Block_7_2"  label="trial 22"  correctResponses="KDXZYVJ"  code="Block_7_2"  pauseMs="0" tags="corsi 7"  />
-        <stimulus  identifier="Block_7_3"  label="trial 23"  correctResponses="VDKRZJY"  code="Block_7_3"  pauseMs="0" tags="corsi 7"  />
-        <stimulus  identifier="Block_7_4"  label="trial 24"  correctResponses="RXKHYJV"  code="Block_7_4"  pauseMs="0" tags="corsi active 7"  />
-        <stimulus  identifier="Block_7_5"  label="trial 25"  correctResponses="KJVHRXY"  code="Block_7_5"  pauseMs="0" tags="corsi 7"  />
-        <stimulus  identifier="Block_8_1"  label="trial 26"  correctResponses="ZWRHNQBX"  code="Block_8_1"  pauseMs="0" tags="corsi active 8"  />
-        <stimulus  identifier="Block_8_2"  label="trial 27"  correctResponses="WNYBQRZX"  code="Block_8_2"  pauseMs="0" tags="corsi 8"  />
-        <stimulus  identifier="Block_8_3"  label="trial 28"  correctResponses="ZHQXNBRW"  code="Block_8_3"  pauseMs="0" tags="corsi 8"  />
-        <stimulus  identifier="Block_8_4"  label="trial 29"  correctResponses="NXZBQYHR"  code="Block_8_4"  pauseMs="0" tags="corsi active 8"  />
-        <stimulus  identifier="Block_8_5"  label="trial 30"  correctResponses="BWYZXNHQ"  code="Block_8_5"  pauseMs="0" tags="corsi 8"  />
+        <stimulus  identifier="Block_3_1"  label="trial 01"  correctResponses="[mM][dD][bB]"  code="Block_3_1"  pauseMs="0" tags="corsi active 3"  />
+        <stimulus  identifier="Block_3_2"  label="trial 02"  correctResponses="[nN][cC[yY]"  code="Block_3_2"  pauseMs="0" tags="corsi 3"  />
+        <stimulus  identifier="Block_3_3"  label="trial 03"  correctResponses="[fF[qQ][kK]"  code="Block_3_3"  pauseMs="0" tags="corsi 3"  />
+        <stimulus  identifier="Block_3_4"  label="trial 04"  correctResponses="[xX][mM][bB]"  code="Block_3_4"  pauseMs="0" tags="corsi active 3"  />
+        <stimulus  identifier="Block_3_5"  label="trial 05"  correctResponses="[tT][lL][sS]"  code="Block_3_5"  pauseMs="0" tags="corsi 3"  />
+        <stimulus  identifier="Block_4_1"  label="trial 06"  correctResponses="[yY][tT][nN][kK]"  code="Block_4_1"  pauseMs="0" tags="corsi active 4"  />
+        <stimulus  identifier="Block_4_2"  label="trial 07"  correctResponses="[yY][rR][tT][bB]"  code="Block_4_2"  pauseMs="0" tags="corsi 4"  />
+        <stimulus  identifier="Block_4_3"  label="trial 08"  correctResponses="[rR][nN][tT][kK]"  code="Block_4_3"  pauseMs="0" tags="corsi 4"  />
+        <stimulus  identifier="Block_4_4"  label="trial 09"  correctResponses="[yY][kK][xX][rR]"  code="Block_4_4"  pauseMs="0" tags="corsi active 4"  />
+        <stimulus  identifier="Block_4_5"  label="trial 10"  correctResponses="[yY][fF][qQ][bB]"  code="Block_4_5"  pauseMs="0" tags="corsi 4"  />
+        <stimulus  identifier="Block_5_1"  label="trial 11"  correctResponses="[fF][jJ][yY][qQ][rR]"  code="Block_5_1"  pauseMs="0" tags="corsi active 5"  />
+        <stimulus  identifier="Block_5_2"  label="trial 12"  correctResponses="[bB][rR][jJ][zZ][lL]"  code="Block_5_2"  pauseMs="0" tags="corsi 5"  />
+        <stimulus  identifier="Block_5_3"  label="trial 13"  correctResponses="[fF][yY][lL][bB][hH]"  code="Block_5_3"  pauseMs="0" tags="corsi 5"  />
+        <stimulus  identifier="Block_5_4"  label="trial 14"  correctResponses="[fF][yY][qQ][zZ][hH]"  code="Block_5_4"  pauseMs="0" tags="corsi active 5"  />
+        <stimulus  identifier="Block_5_5"  label="trial 15"  correctResponses="[zZ][rR][qQ][yY][hH]"  code="Block_5_5"  pauseMs="0" tags="corsi 5"  />
+        <stimulus  identifier="Block_6_1"  label="trial 16"  correctResponses="[dD][wW][nN][kK][yY][cC]"  code="Block_6_1"  pauseMs="0" tags="corsi active 6"  />
+        <stimulus  identifier="Block_6_2"  label="trial 17"  correctResponses="[nN][hH][yY][wW][kK][dD]"  code="Block_6_2"  pauseMs="0" tags="corsi 6"  />
+        <stimulus  identifier="Block_6_3"  label="trial 18"  correctResponses="[wW][jJ][qQ][dD][hH][yY]"  code="Block_6_3"  pauseMs="0" tags="corsi 6"  />
+        <stimulus  identifier="Block_6_4"  label="trial 19"  correctResponses="[nN][kK][wW][cC][qQ][jJ]"  code="Block_6_4"  pauseMs="0" tags="corsi active 6"  />
+        <stimulus  identifier="Block_6_5"  label="trial 20"  correctResponses="[jJ][wW][nN][hH][dD][kK]"  code="Block_6_5"  pauseMs="0" tags="corsi 6"  />
+        <stimulus  identifier="Block_7_1"  label="trial 21"  correctResponses="[xX][jJ][yY][kK][rR][zZ][vV]"  code="Block_7_1"  pauseMs="0" tags="corsi active 7"  />
+        <stimulus  identifier="Block_7_2"  label="trial 22"  correctResponses="[kK][dD][xX][zZ][yY][vV][jJ]"  code="Block_7_2"  pauseMs="0" tags="corsi 7"  />
+        <stimulus  identifier="Block_7_3"  label="trial 23"  correctResponses="[vV][dD][kK][rR][zZ][jJ][yY]"  code="Block_7_3"  pauseMs="0" tags="corsi 7"  />
+        <stimulus  identifier="Block_7_4"  label="trial 24"  correctResponses="[rR][xX][kK][hH][yY][jJ][vV]"  code="Block_7_4"  pauseMs="0" tags="corsi active 7"  />
+        <stimulus  identifier="Block_7_5"  label="trial 25"  correctResponses="[kK][jJ][vV][hH][rR][xX][yY]"  code="Block_7_5"  pauseMs="0" tags="corsi 7"  />
+        <stimulus  identifier="Block_8_1"  label="trial 26"  correctResponses="[zZ][wW][rR][hH][nN][qQ][bB][xX]"  code="Block_8_1"  pauseMs="0" tags="corsi active 8"  />
+        <stimulus  identifier="Block_8_2"  label="trial 27"  correctResponses="[wW][nN][yY][bB][qQ][rR][zZ][xX]"  code="Block_8_2"  pauseMs="0" tags="corsi 8"  />
+        <stimulus  identifier="Block_8_3"  label="trial 28"  correctResponses="[zZ][hH][qQ][xX][nN][bB][rR][wW]"  code="Block_8_3"  pauseMs="0" tags="corsi 8"  />
+        <stimulus  identifier="Block_8_4"  label="trial 29"  correctResponses="[nN][xX][zZ][bB][qQ][yY][hH][rR]"  code="Block_8_4"  pauseMs="0" tags="corsi active 8"  />
+        <stimulus  identifier="Block_8_5"  label="trial 30"  correctResponses="[bB][wW][yY][zZ][xX][nN][hH][qQ]"  code="Block_8_5"  pauseMs="0" tags="corsi 8"  />
     </stimuli>
 
 </experiment>
