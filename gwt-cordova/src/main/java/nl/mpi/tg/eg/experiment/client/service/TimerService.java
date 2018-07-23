@@ -30,12 +30,25 @@ public class TimerService {
 
     final HashMap<String, TimerListner> timerListeners = new HashMap<>();
 
-    public void startTimer(final int msToNext, final String listenerId, final TimedStimulusListener timeoutListener) {
+    public void clearAllTimers() {
+        for (TimerListner listner : timerListeners.values()) {
+            listner.clearTimer();
+        }
+    }
+
+    public void startTimer(final long initialTimerStartMs, final int msToNext, final String listenerId, final TimedStimulusListener timeoutListener) {
+        // this must first check for a saved timer start value and reload it, for cases where a user has refreshed the browser
         final TimerListner timerListner = new TimerListner() {
             @Override
             public void timerTriggered() {
                 timeoutListener.postLoadTimerFired();
             }
+
+            @Override
+            public long getInitialTimerStartMs() {
+                return initialTimerStartMs;
+            }
+
         };
         timerListeners.put(listenerId, timerListner);
         timerListner.startTimer(msToNext);
@@ -46,7 +59,7 @@ public class TimerService {
         if (timerEntry == null) {
             return -1;
         } else {
-            return timerEntry.getTimerValue();
+            return (int) timerEntry.getTimerValue();
         }
     }
 
