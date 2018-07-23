@@ -349,27 +349,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         matchingStimuliGroup.showNextStimulus(stimulusProvider);
     }
 
+    public void logTokenText(final String reportType, final String headerKey, final int dataChannel, final String dataLogFormat) {
+        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, reportType, headerKey, new HtmlTokenFormatter(groupParticipantService, userResults.getUserData(), timerService).formatString(dataLogFormat), duration.elapsedMillis());
+    }
+
     public void htmlTokenText(final String textString, final String styleName) {
         ((TimedStimulusView) simpleView).addHtmlText(new HtmlTokenFormatter(groupParticipantService, userResults.getUserData(), timerService).formatString(textString), styleName);
-        // todo: this should be not be so group experiment specific 
-        if (groupParticipantService != null) {
-            submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "htmlTokenText", new HtmlTokenFormatter(groupParticipantService, userResults.getUserData(), timerService).formatString(
-                    "Group:'<groupId>';"
-                    + "Members:'<groupAllMemberCodes>';"
-                    + "Score:<groupScore>;"
-                    + "Channels:'<groupCommunicationChannels>';"
-                    + "Scores:'<channelLoop><channelLabel>-<channelScore> </channelLoop>';"
-                    //                + "Member:<groupMemberCode>,"
-                    //                + "groupUserLabel:<groupUserLabel>,"
-                    + "<groupMemberCode>-best:<playerBestScore>;"
-                    + "<groupMemberCode>-current:<playerScore>;"
-                    + "GroupOther:'<groupOtherMemberCodes>';"
-                    //                + "groupActiveChannel:,"
-                    + "ChannelOther:'<channelOtherMemberCodes>';"
-                    + "<groupActiveChannel>:<channelScore>;"
-                    + "Message:'<groupMessageString>';"
-            ), duration.elapsedMillis());
-        }
+        // the submitTagValue previously used here by the multiparticipant configuration has been migrated to logTokenText which should function the sames for the multiparticipant experiment except that it now uses submitTagPairValue
     }
 
     public void htmlTokenText(String textString) {
@@ -1476,7 +1462,15 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void startTimer(final int msToNext, final String listenerId, final TimedStimulusListener timeoutListener) {
-        timerService.startTimer(msToNext, listenerId, timeoutListener);
+        final String storedDataValue = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "timer_" + listenerId);
+        final long initialTimerStartMs;
+        if (storedDataValue == null || storedDataValue.isEmpty()) {
+            initialTimerStartMs = new Date().getTime();
+            localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "timer_" + listenerId, Long.toString(initialTimerStartMs));
+        } else {
+            initialTimerStartMs = Long.parseLong(storedDataValue);
+        }
+        timerService.startTimer(initialTimerStartMs, msToNext, listenerId, timeoutListener);
     }
 
     protected void compareTimer(final int msToNext, final String listenerId, final TimedStimulusListener aboveThreshold, final TimedStimulusListener withinThreshold) {
@@ -1488,6 +1482,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void clearTimer(final String listenerId) {
+        localStorage.deleteStoredDataValue(userResults.getUserData().getUserId(), "timer_" + listenerId);
         timerService.clearTimer(listenerId);
     }
 
@@ -1885,5 +1880,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).clearDomHandlers();
         super.savePresenterState();
         stopAudioRecorder();
+        timerService.clearAllTimers(); // clear all callbacks in timerService before exiting the presenter
     }
 }
