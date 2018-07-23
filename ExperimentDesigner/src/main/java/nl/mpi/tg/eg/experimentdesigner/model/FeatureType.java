@@ -30,7 +30,7 @@ public enum FeatureType {
 
     htmlText(false, true, new FeatureAttribute[]{styleName}),
     htmlTokenText(false, true, new FeatureAttribute[]{styleName}) /* string tokens will be replaced with score values eg <groupScore> <channelScore> etc. */,
-    logTokenText(false, false, new FeatureAttribute[]{eventTag, dataChannel, dataLogFormat}) /* string tokens will be replaced with score values eg <groupScore> <channelScore> etc. */,
+    logTokenText(false, false, new FeatureAttribute[]{dataChannel, type, headerKey, dataLogFormat}) /* string tokens will be replaced with score values eg <groupScore> <channelScore> etc. */,
     plainText(false, true, null),
     image(false, false, new FeatureAttribute[]{src, styleName, msToNext}, false, false, false, Contitionals.hasMediaLoading, Contitionals.none),
     menuItem(false, true, new FeatureAttribute[]{target, hotKey}),
@@ -56,7 +56,7 @@ public enum FeatureType {
     sendGroupStoredMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     sendGroupEndOfStimuli(false, false, new FeatureAttribute[]{eventTag}, false, false, false, Contitionals.none, Contitionals.groupNetworkActivity),
     ratingButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    stimulusFreeText(true, true, new FeatureAttribute[]{validationRegex, dataChannel, allowedCharCodes, hotKey, styleName, inputErrorMessage}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    stimulusFreeText(false, true, new FeatureAttribute[]{validationRegex, dataChannel, allowedCharCodes, hotKey, styleName, inputErrorMessage}, false, false, false, Contitionals.none, Contitionals.stimulusAction), // the hotKey in stimulusFreeText will trigger any button with the same hotkey. // todo: The current use of the featureText attribute could be changed to allowedCharErrorMessage and inputErrorMessage could be changed to validationErrorMessage
     stimulusRatingButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabelLeft, ratingLabelRight, styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     stimulusHasRatingOptions(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     stimulusHasResponse(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
@@ -115,7 +115,7 @@ public enum FeatureType {
     matchingStimulusGrid(false, false, new FeatureAttribute[]{columnCount, dataChannel, maxWidth, animate, matchingRegex, maxStimuli, randomise}, false, false, false, Contitionals.hasCorrectIncorrect, Contitionals.stimulusAction),
     pause(true, false, new FeatureAttribute[]{msToNext}),
     // todo: consider renaming so that timer is the first part: timerStart, timerCompare, timerClear, timerLog
-    startTimer(true, false, new FeatureAttribute[]{msToNext, listenerId}),
+    startTimer(true, false, new FeatureAttribute[]{msToNext, listenerId}), // the start time of the first instance of startTimer is persistent over page loads and navigation, but the content of the startTimer element is scoped to the presenter and will not fire outside of the presenter
     compareTimer(false, false, new FeatureAttribute[]{msToNext, listenerId}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
     clearTimer(false, false, new FeatureAttribute[]{listenerId}),
     logTimerValue(false, false, new FeatureAttribute[]{listenerId, eventTag, dataChannel}),
