@@ -258,7 +258,7 @@
     <presenter back="AutoMenu" menuLabel="stimulus_all_attributes" type="stimulus" self="stimulus_all_attributesScreen" title="stimulus_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
         <htmlTokenText featureText="htmlTokenText" styleName="styleName"/>
-        <logTokenText eventTag="eventTag" dataChannel="2" dataLogFormat="dataLogFormat"/>
+        <logTokenText headerKey="headerKey" dataChannel="2" type="type" dataLogFormat="dataLogFormat"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src" styleName="styleName">
             <mediaLoaded>
@@ -312,9 +312,7 @@
                 <ratingButton ratingLabelRight="ratingLabelRight" ratingLabels="ratingLabels" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
-                <stimulusFreeText featureText="stimulusFreeText" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage">
-                    <plainText featureText="plainText in stimulusFreeText"/>
-                </stimulusFreeText>
+                <stimulusFreeText featureText="stimulusFreeText" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
                 <stimulusRatingButton ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
@@ -598,9 +596,7 @@
                 <ratingButton ratingLabelRight="ratingLabelRight" ratingLabels="ratingLabels" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
-                <stimulusFreeText featureText="stimulusFreeText" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage">
-                    <plainText featureText="plainText in stimulusFreeText"/>
-                </stimulusFreeText>
+                <stimulusFreeText featureText="stimulusFreeText" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
                 <stimulusRatingButton ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
@@ -884,9 +880,7 @@
                 <ratingButton ratingLabelRight="ratingLabelRight" ratingLabels="ratingLabels" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
-                <stimulusFreeText featureText="stimulusFreeText" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage">
-                    <plainText featureText="plainText in stimulusFreeText"/>
-                </stimulusFreeText>
+                <stimulusFreeText featureText="stimulusFreeText" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
                 <stimulusRatingButton ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
@@ -1794,7 +1788,7 @@
     <presenter back="AutoMenu" menuLabel="stimulus_minimal_attributes" type="stimulus" self="stimulus_minimal_attributesScreen" title="stimulus_minimal_attributes">
         <htmlText featureText="htmlText"/>
         <htmlTokenText featureText="htmlTokenText"/>
-        <logTokenText eventTag="eventTag" dataLogFormat="dataLogFormat"/>
+        <logTokenText type="type" dataLogFormat="dataLogFormat"/>
         <plainText featureText="plainText"/>
         <image msToNext="60" src="src">
             <mediaLoaded>
@@ -1848,9 +1842,7 @@
                 <ratingButton ratingLabels="ratingLabels">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
-                <stimulusFreeText featureText="stimulusFreeText" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage">
-                    <plainText featureText="plainText in stimulusFreeText"/>
-                </stimulusFreeText>
+                <stimulusFreeText featureText="stimulusFreeText" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
                 <stimulusRatingButton>
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
@@ -2134,9 +2126,7 @@
                 <ratingButton ratingLabels="ratingLabels">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
-                <stimulusFreeText featureText="stimulusFreeText" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage">
-                    <plainText featureText="plainText in stimulusFreeText"/>
-                </stimulusFreeText>
+                <stimulusFreeText featureText="stimulusFreeText" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
                 <stimulusRatingButton>
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
@@ -2420,9 +2410,7 @@
                 <ratingButton ratingLabels="ratingLabels">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
-                <stimulusFreeText featureText="stimulusFreeText" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage">
-                    <plainText featureText="plainText in stimulusFreeText"/>
-                </stimulusFreeText>
+                <stimulusFreeText featureText="stimulusFreeText" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
                 <stimulusRatingButton>
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
