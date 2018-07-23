@@ -17,8 +17,8 @@
  */
 package nl.mpi.tg.eg.experiment.client.listener;
 
-import com.google.gwt.core.client.Duration;
 import com.google.gwt.user.client.Timer;
+import java.util.Date;
 
 /**
  * @since Jul 10, 2018 12:10:57 PM (creation date)
@@ -26,7 +26,6 @@ import com.google.gwt.user.client.Timer;
  */
 public abstract class TimerListner {
 
-    private Duration duration = new Duration();
     private Timer timer = null;
 
     public void clearTimer() {
@@ -46,13 +45,15 @@ public abstract class TimerListner {
                 timerTriggered();
             }
         };
-        duration = new Duration();
-        timer.schedule(msToEvent);
+        final long remainingMs = msToEvent - getTimerValue();
+        timer.schedule((remainingMs > 0) ? (int) remainingMs : 1); // make sure the timer fires after this call but never gets a negative value
     }
 
-    public int getTimerValue() {
-        return duration.elapsedMillis();
+    public long getTimerValue() {
+        return new Date().getTime() - getInitialTimerStartMs();
     }
 
     abstract public void timerTriggered();
+
+    abstract public long getInitialTimerStartMs();
 }
