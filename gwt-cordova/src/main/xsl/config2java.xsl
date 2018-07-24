@@ -969,13 +969,8 @@ or local-name() eq 'preloadAllStimuli'
             <xsl:text>
                 ,stimulusProvider
             </xsl:text>
-        </xsl:if>                                
-        <xsl:if test="local-name() eq 'validateStimuliResponses'
-">
-            <xsl:text>
-                stimulusProvider
-            </xsl:text>
-        </xsl:if>                                
+        </xsl:if>       
+        <xsl:value-of select="if(local-name() eq 'validateStimuliResponses') then 'false' else ''" />
         <xsl:if test="local-name() eq 'currentStimulusHasTag'
         or local-name() eq 'startAudioRecorder'
         or local-name() eq 'endAudioRecorderTag'
