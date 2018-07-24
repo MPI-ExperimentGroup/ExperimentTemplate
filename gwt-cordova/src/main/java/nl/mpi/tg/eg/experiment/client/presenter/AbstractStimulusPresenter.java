@@ -1557,15 +1557,15 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         buttonList.clear();
     }
 
-    public void validateStimuliResponses(final StimuliProvider stimulusProvider, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse) {
-        if (validateStimuliResponses(stimulusProvider)) {
+    public void validateStimuliResponses(final boolean unusedValue, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse) {
+        if (validateStimuliResponses()) {
             conditionTrue.postLoadTimerFired();
         } else {
             conditionFalse.postLoadTimerFired();
         }
     }
 
-    private boolean validateStimuliResponses(final StimuliProvider stimulusProvider/* this must use the stimuli for each StimulusFreeText and not from the stimulusProvider */) {
+    private boolean validateStimuliResponses(/* this must use the stimuli for each StimulusFreeText and not from the stimulusProvider */) {
         HashMap<Stimulus, JSONObject> jsonStimulusMap = new HashMap<>();
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
             if (!jsonStimulusMap.containsKey(stimulusFreeText.getStimulus())) {
@@ -1617,7 +1617,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             ((ComplexView) simpleView).addText("showStimulus should not be used with the groupParticipantService");
             throw new UnsupportedOperationException("showStimulus should not be used with the groupParticipantService");
         }
-        if (!validateStimuliResponses(stimulusProvider)) {
+        if (!validateStimuliResponses()) {
             return;
         }
         if (repeatIncorrect && userResults.getUserData().isCurrentIncorrect()) {
