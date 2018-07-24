@@ -30,32 +30,58 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Menu" menuLabel="Terug" type="text" self="First_Stimuli_Screen_Informatie" title="First Stimuli Screen Informatie">
+    <presenter back="Menu" menuLabel="Nested Table Test" type="text" self="First_Stimuli_Screen_Informatie" title="Nested Table Test">
         <htmlText featureText="Instructies 1: &lt;br/&gt;&lt;br/&gt;Druk op [Z] als de zin kompleet is, of op [.]."/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="First_Stimuli_Screen"/>
-        <table>
+        <table styleName="menuTable">
             <row>
-                <column>
-                    <plainText featureText="column 1"/>
+                <column styleName="menuTable">
+                    <plainText featureText="outer column 1"/>
                 </column>
-                <column>
-                    <plainText featureText="column 2"/>
-                    <table>
+                <column styleName="menuTable">
+                    <plainText featureText="outer column 2"/>
+                    <table styleName="menuTable">
                         <row>
-                            <column>
+                            <column styleName="menuTable">
                                 <plainText featureText="column 1 in table 1"/>
-                            </column>
-                            <column>
+                            </column >
+                            <column styleName="menuTable">
                                 <plainText featureText="column 2 in table 1"/>
+                                <table styleName="menuTable">
+                                    <row>
+                                        <column styleName="menuTable">
+                                            <plainText featureText="column 1 in table 2"/>
+                                        </column >
+                                        <column styleName="menuTable">
+                                            <plainText featureText="column 2 in table 2"/>
+                                        </column>
+                                        <column styleName="menuTable">
+                                            <plainText featureText="column3 in table 2"/>
+                                        </column>
+                                    </row>
+                                </table>
                             </column>
-                            <column>
+                            <column styleName="menuTable">
                                 <plainText featureText="column3 in table 1"/>
+                                <table styleName="menuTable">
+                                    <row>
+                                        <column styleName="menuTable">
+                                            <plainText featureText="column 1 in table 3"/>
+                                        </column >
+                                        <column styleName="menuTable">
+                                            <plainText featureText="column 2 in table 3"/>
+                                        </column>
+                                        <column styleName="menuTable">
+                                            <plainText featureText="column3 in table 3"/>
+                                        </column>
+                                    </row>
+                                </table>
                             </column>
                         </row>
                     </table>
                 </column>
-                <column>
-                    <plainText featureText="column3"/>
+                <column styleName="menuTable">
+                    <plainText featureText="outer column3"/>
                 </column>
             </row>
         </table>
