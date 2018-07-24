@@ -1189,7 +1189,7 @@
         <stimulus  identifier="Practice_2" label="practice 02"  correctResponses=""  code="Practice_2"  pauseMs="0" tags="corsi practice 2"  />
         <stimulus  identifier="Block_3_1"  label="trial 01"  correctResponses="[mM][dD][bB]"  code="Block_3_1"  pauseMs="0" tags="corsi active 3"  />
         <stimulus  identifier="Block_3_2"  label="trial 02"  correctResponses="[nN][cC[yY]"  code="Block_3_2"  pauseMs="0" tags="corsi 3"  />
-        <stimulus  identifier="Block_3_3"  label="trial 03"  correctResponses="[fF[qQ][kK]"  code="Block_3_3"  pauseMs="0" tags="corsi 3"  />
+        <stimulus  identifier="Block_3_3"  label="trial 03"  correctResponses="[fF][qQ][kK]"  code="Block_3_3"  pauseMs="0" tags="corsi 3"  />
         <stimulus  identifier="Block_3_4"  label="trial 04"  correctResponses="[xX][mM][bB]"  code="Block_3_4"  pauseMs="0" tags="corsi active 3"  />
         <stimulus  identifier="Block_3_5"  label="trial 05"  correctResponses="[tT][lL][sS]"  code="Block_3_5"  pauseMs="0" tags="corsi 3"  />
         <stimulus  identifier="Block_4_1"  label="trial 06"  correctResponses="[yY][tT][nN][kK]"  code="Block_4_1"  pauseMs="0" tags="corsi active 4"  />
