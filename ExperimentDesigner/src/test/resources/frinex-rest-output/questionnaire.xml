@@ -52,9 +52,9 @@
         <htmlText featureText="Zet een vinkje achter de namen waarvan jij denkt dat ze auteuren zijn"/>
         <addPadding/>
         <addPadding/>
-        <table>
+        <table styleName="menuTable">
             <row>
-                <column>
+                <column styleName="menuTable">
                     <withStimuli randomise="false" eventTag="column1" maxStimuli="1000" repeatCount="1">
                         <beforeStimulus>  
                         </beforeStimulus>
@@ -79,8 +79,45 @@
                         </stimuli>
                     </withStimuli>
                 </column>
-                <column>
+                <column styleName="menuTable">
                     <withStimuli randomise="false" eventTag="column2" maxStimuli="1000" repeatCount="1">
+                        <beforeStimulus>  
+                        </beforeStimulus>
+                        <eachStimulus>
+                            <table> 
+                                <row>
+                                    <column>
+                                        <stimulusLabel styleName=""/> 
+                                    </column>
+                                    <column>
+                                        <stimulusMetadataField fieldName="isAuteur"/>
+                                    </column>
+                                </row>
+                            </table>
+                        </eachStimulus>
+                        <afterStimulus> 
+                                 
+                            <actionButton featureText="submit">
+                                <validateStimuliResponses>
+                                    <conditionFalse>
+                                        <plainText featureText="Fout input"/>
+                                    </conditionFalse>
+                                    <conditionTrue>
+                                        <gotoNextPresenter/>
+                                    </conditionTrue>
+                                </validateStimuliResponses>
+                            </actionButton>
+            
+                        </afterStimulus>
+                        <randomGrouping/>
+                        <stimuli>
+                            <tag>auth</tag>
+                            <tag>col2</tag>
+                        </stimuli>
+                    </withStimuli>
+                </column>
+                <column styleName="menuTable">
+                    <withStimuli randomise="false" eventTag="column3" maxStimuli="1000" repeatCount="1">
                         <beforeStimulus>  
                         </beforeStimulus>
                         <eachStimulus>
@@ -100,53 +137,13 @@
                         <randomGrouping/>
                         <stimuli>
                             <tag>auth</tag>
-                            <tag>col2</tag>
-                        </stimuli>
-                    </withStimuli>
-                </column>
-                <column>
-                    <withStimuli randomise="false" eventTag="column3" maxStimuli="1000" repeatCount="1">
-                        <beforeStimulus>  
-                        </beforeStimulus>
-                        <eachStimulus>
-                            <table> 
-                                <row>
-                                    <column>
-                                        <stimulusLabel styleName=""/> 
-                                    </column>
-                                    <column>
-                                        <stimulusMetadataField fieldName="isAuteur"/>
-                                    </column>
-                                </row>
-                            </table>
-                        </eachStimulus>
-                        <afterStimulus>
-                          
-    
-                            <actionButton featureText="submit">
-                                <validateStimuliResponses>
-                                    <conditionFalse>
-                                        <plainText featureText="Fout input"/>
-                                    </conditionFalse>
-                                    <conditionTrue>
-                                        <gotoNextPresenter/>
-                                    </conditionTrue>
-                                </validateStimuliResponses>
-                            </actionButton> 
-          
-                        </afterStimulus>
-                        <randomGrouping/>
-                        <stimuli>
-                            <tag>auth</tag>
                             <tag>col3</tag>
                         </stimuli>
                     </withStimuli>
                 </column>
             </row>
-           
         </table>
-        
-    
+   
     </presenter>
     
     <presenter menuLabel="Spelling Check" displayOrder="40" next="Accord_Spelling" type="metadata" self="Edit_User_Spelling_Check" title="">
@@ -177,9 +174,9 @@
         <htmlText featureText="Zet een vinkje achter de woorden waarvan jij denkt dat ze foutgespeld zijn"/>
         <addPadding/>
         <addPadding/>
-        <table>
+        <table styleName="menuTable">
             <row>
-                <column>
+                <column styleName="menuTable">
                     <withStimuli randomise="false" eventTag="column1" maxStimuli="1000" repeatCount="1">
                         <beforeStimulus>  
                         </beforeStimulus>
@@ -204,7 +201,7 @@
                         </stimuli>
                     </withStimuli>
                 </column>
-                <column>
+                <column styleName="menuTable">
                     <withStimuli randomise="false" eventTag="column2" maxStimuli="1000" repeatCount="1">
                         <beforeStimulus>  
                         </beforeStimulus>
@@ -220,7 +217,19 @@
                                 </row>
                             </table>
                         </eachStimulus>
-                        <afterStimulus>    
+                        <afterStimulus> 
+                                 
+                            <actionButton featureText="submit">
+                                <validateStimuliResponses>
+                                    <conditionFalse>
+                                        <plainText featureText="Fout input"/>
+                                    </conditionFalse>
+                                    <conditionTrue>
+                                        <gotoNextPresenter/>
+                                    </conditionTrue>
+                                </validateStimuliResponses>
+                            </actionButton>
+            
                         </afterStimulus>
                         <randomGrouping/>
                         <stimuli>
@@ -229,7 +238,7 @@
                         </stimuli>
                     </withStimuli>
                 </column>
-                <column>
+                <column styleName="menuTable">
                     <withStimuli randomise="false" eventTag="column3" maxStimuli="1000" repeatCount="1">
                         <beforeStimulus>  
                         </beforeStimulus>
@@ -245,20 +254,7 @@
                                 </row>
                             </table>
                         </eachStimulus>
-                        <afterStimulus> 
-                               
-                            <actionButton featureText="submit">
-                                <validateStimuliResponses>
-                                    <conditionFalse>
-                                        <plainText featureText="Fout input"/>
-                                    </conditionFalse>
-                                    <conditionTrue>
-                                        <gotoNextPresenter/>
-                                    </conditionTrue>
-                                </validateStimuliResponses>
-                            </actionButton>
-         
-                        </afterStimulus>
+                        <afterStimulus/> 
                         <randomGrouping/>
                         <stimuli>
                             <tag>spelling</tag>
@@ -268,7 +264,7 @@
                 </column>
             </row>
         </table>
-     
+        
     </presenter>
     
  
