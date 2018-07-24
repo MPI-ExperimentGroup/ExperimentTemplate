@@ -759,6 +759,7 @@ or local-name() eq 'stimulusImageCapture'
         <xsl:value-of select="if(@regionId and local-name() ne 'regionClear') then ', ' else ''" />
         <xsl:if test="local-name() eq 'stimulusCodeImage'
 or local-name() eq 'table'
+or local-name() eq 'column'
 or local-name() eq 'stimulusCodeVideo'
 or local-name() eq 'region'
 or local-name() eq 'regionStyle'
