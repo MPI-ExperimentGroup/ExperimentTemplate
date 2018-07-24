@@ -537,30 +537,26 @@
     </presenter>
     <presenter displayOrder="20" next="Admin" type="stimulus" self="stimuliScreenRavenTest" title="">
         
-        <startTimer msToNext="1200000" listenerId="timer"/>
-        <compareTimer msToNext="1200000" listenerId="timer">
-            <aboveThreshold>
-                <gotoPresenter target="timeOutScreen"/>
-            </aboveThreshold>
-            <withinThreshold/>
-        </compareTimer>
+        <startTimer msToNext="30000" listenerId="timer">
+            <gotoPresenter target="timeOutScreen"/>
+        </startTimer>
+       
        
         <loadStimulus eventTag="stimuliRavenN" randomise="false" repeatCount="1" maxStimuli="36">
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
                 <region regionId="regionClock"/>
-               
-                <compareTimer msToNext="1200000" listenerId="timer">
-                    <aboveThreshold>
-                        <gotoPresenter target="timeOutScreen"/>
-                    </aboveThreshold>
-                    <withinThreshold>
-                        <regionReplace regionId="regionClock">
-                            <htmlTokenText featureText="Tijd vanaf het begin van je werk &lt;timer&gt;ms"/>
-                        </regionReplace>
-                    </withinThreshold>
-                </compareTimer>
+                <regionReplace regionId="regionClock">
+                        <htmlTokenText featureText="De clock is aan.."/>
+                    </regionReplace>
+                <addPadding/>
+                <actionButton featureText="Druk om de tijd te updaten.">
+                    <regionReplace regionId="regionClock">
+                        <htmlTokenText featureText="Je werkt al &lt;timer&gt; ms"/>
+                    </regionReplace>
+                </actionButton> 
+                <addPadding/>   
                 <table showOnBackButton="true" styleName="titleBarButton">
                     <row>
                         <column styleName="">
