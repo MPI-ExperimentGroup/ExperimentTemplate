@@ -241,7 +241,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         final Pattern stimulusCodePattern = (wizardScreenData.getStimulusCodeMatch() != null) ? Pattern.compile(wizardScreenData.getStimulusCodeMatch()) : null;
         if (stimuliSet != null) {
             for (String stimulusLine : stimuliSet) {
-                final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{this.wizardScreenData.getScreenTitle()}));
+                final HashSet<String> tagSet = new HashSet<>(Arrays.asList(new String[]{this.wizardScreenData.getScreenTag()}));
                 final Stimulus stimulus;
                 if (stimulusCodePattern != null) {
 //                    System.out.println("stimulusCodeMatch:" + wizardScreenData.getStimulusCodeMatch());
@@ -320,7 +320,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             presenterFeatureList.add(new PresenterFeature(FeatureType.centrePage, null));
         }
         final PresenterFeature loadStimuliFeature = new PresenterFeature(FeatureType.loadStimulus, null);
-        loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTitle());
+        loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTag());
         final RandomGrouping randomGrouping = new RandomGrouping();
         if (storedWizardScreenData.getStimuliRandomTags() != null) {
             for (String randomTag : storedWizardScreenData.getStimuliRandomTags()) {
