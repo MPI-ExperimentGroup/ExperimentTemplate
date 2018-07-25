@@ -56,15 +56,21 @@
                 import static nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus.Tag.*;
                 import static nl.mpi.tg.eg.experiment.client.model.GeneratedStimulusStrings.*;
                 public class GeneratedStimulusProvider {
-                public static final GeneratedStimulus[] values = new GeneratedStimulus[]{
-            </xsl:text>
+                private static GeneratedStimulus G(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, String... parameters) {
+                return new GeneratedStimulus(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses);
+                }
+                private static Tag[] T(Tag... tagArray ){
+                return tagArray;
+                }
+                static final private String N = null;
+                public static final GeneratedStimulus[] values = new GeneratedStimulus[]{</xsl:text>
             <xsl:for-each select="experiment/stimuli/stimulus">
-                <xsl:text>new GeneratedStimulus(</xsl:text>
+                <xsl:text>G(</xsl:text>
                 <!--<xsl:value-of select="generate-id(.)" />
                 generate-id(.) caused issues with the node ID changing and pointing to the wrong file. It might be better at some point to use an explicit identifier value but for now we are using the 'code'.
                 -->
                 <xsl:value-of select="if(@identifier) then concat('&quot;', @identifier, '&quot;, ') else concat('&quot;', generate-id(.), '&quot;, ')" />
-                <xsl:text>new Tag[]{</xsl:text>
+                <xsl:text>T(</xsl:text>
                 <xsl:for-each select="distinct-values(tokenize(@tags, ' '))">
                     <xsl:text>tag_</xsl:text>
                     <xsl:value-of select="." />
@@ -72,7 +78,7 @@
                         <xsl:text>, </xsl:text>
                     </xsl:if>
                 </xsl:for-each>
-                <xsl:text>}, label_</xsl:text>
+                <xsl:text>), label_</xsl:text>
                 <xsl:value-of select="generate-id(.)" />
                 <!--<xsl:value-of select="@label" />-->
                 <xsl:text>, code_</xsl:text>
@@ -81,25 +87,24 @@
                 <xsl:value-of select="@pauseMs" />
                 <!--<xsl:if test="@audioPath or @videoPath or @ogg or @imagePath">-->
                 <xsl:text>, </xsl:text>
-                <xsl:value-of select="if(@audioPath) then concat('&quot;', @audioPath, '&quot;') else 'null'" />
+                <xsl:value-of select="if(@audioPath) then concat('&quot;', @audioPath, '&quot;') else 'N'" />
                 <xsl:text>, </xsl:text>
-                <xsl:value-of select="if(@videoPath) then concat('&quot;', @videoPath, '&quot;') else 'null'" />
+                <xsl:value-of select="if(@videoPath) then concat('&quot;', @videoPath, '&quot;') else 'N'" />
                 <xsl:text>, </xsl:text>
-                <xsl:value-of select="if(@imagePath) then concat('&quot;', @imagePath, '&quot;') else 'null'" />
+                <xsl:value-of select="if(@imagePath) then concat('&quot;', @imagePath, '&quot;') else 'N'" />
                 <!--</xsl:if>-->
-                <xsl:value-of select="if(@ratingLabels) then concat(',&quot;', @ratingLabels, '&quot;') else ',null'" />
-                <xsl:value-of select="if(@correctResponses) then concat(',&quot;', @correctResponses, '&quot;') else ',null'" />
+                <xsl:value-of select="if(@ratingLabels) then concat(',&quot;', @ratingLabels, '&quot;') else ',N'" />
+                <xsl:value-of select="if(@correctResponses) then concat(',&quot;', @correctResponses, '&quot;') else ',N'" />
                 <xsl:variable name="stimuliElement" select="."/>
                 <xsl:for-each select="$parameter">
                     <xsl:variable name="parameterName" select="."/>
                     <xsl:variable name="parameterValue" select="$stimuliElement/@*[name() = $parameterName]"/>
                     <xsl:text>,</xsl:text>
-                    <xsl:value-of select="if($parameterValue) then concat('&quot;', $parameterValue, '&quot;') else 'null'" />
+                    <xsl:value-of select="if($parameterValue) then concat('&quot;', $parameterValue, '&quot;') else 'N'" />
                 </xsl:for-each>
                 <xsl:text>)</xsl:text>
                 <xsl:if test="position() != last()">
-                    <xsl:text>,
-                    </xsl:text>
+                    <xsl:text>,&#10;</xsl:text>
                 </xsl:if>
                 <xsl:if test="position() = last()">
                 </xsl:if>
