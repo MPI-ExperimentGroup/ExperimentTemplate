@@ -58,7 +58,7 @@ public abstract class AbstractWizardScreen implements WizardScreen {
         final List<Stimulus> stimuliList = this.wizardScreenData.getStimuli();
         for (String stimulusEntry : stimuliData.getStimuliArray()) {
             final HashSet<String> tagSet = new HashSet<>();
-            tagSet.add(this.wizardScreenData.getScreenTitle());
+            tagSet.add(this.wizardScreenData.getScreenTag());
 
             String[] stimuliParts = stimulusEntry.split(":", (stimuliData.getStimuliFields() != null) ? stimuliData.getStimuliFields().length + 1 : WizardUtilStimuliData.StimuliFields.values().length + 1);
             for (String tagName : stimuliParts[0].split("/")) {
