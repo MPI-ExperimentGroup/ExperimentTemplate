@@ -15,8 +15,9 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
-package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.corsipool;
+package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopool;
 
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -28,11 +29,11 @@ import static org.junit.Assert.*;
  *
  * @author olhshk
  */
-public class CorsiStimuliFromCsvToXmlTest {
+public class AudioNonWordMonitoringStimuliFromStringTest {
     
-    public static final String STIMULI_DIR = "stimuli/corsi/";
+    public static final String STIMULI_DIR = "stimuli/audiononwordmonitoring/";
     
-    public CorsiStimuliFromCsvToXmlTest() {
+    public AudioNonWordMonitoringStimuliFromStringTest() {
     }
     
     @BeforeClass
@@ -51,18 +52,23 @@ public class CorsiStimuliFromCsvToXmlTest {
     public void tearDown() {
     }
 
+ 
+
     /**
-     * Test of parseWordsInputCSVStringToXml method, of class CorsiStimuliFromCsvToXml.
+     * Test of parseTrialsInputCSVStringIntoTrialsArray method, of class AudioNonWordMonitoringStimuliFromString.
      */
     @Test
-    public void testParseWordsInputCSVStringToXml() throws Exception {
-        System.out.println("parseWordsInputCSVStringToXml");
-        CorsiStimuliFromCsvToXml instance = new CorsiStimuliFromCsvToXml();
-        String resultPractice = instance.parseWordsInputCSVStringToXml(CsvTableCorsi.CSV_STRING, "corsi" , STIMULI_DIR);
+    public void testParseTrialsInputCSVStringIntoXml() throws Exception {
+        System.out.println("parseTrialsInputCSVStringIntoXml");
+        ArrayList<String> fileNameExtensions = new ArrayList<String>();
+        fileNameExtensions.add("wav");
+        fileNameExtensions.add("ogg");
+        fileNameExtensions.add("mp3");
+        AudioNonWordMonitoringStimuliFromString instance = new AudioNonWordMonitoringStimuliFromString();
+         String resultPractice = instance.parseTrialsInputCSVStringIntoXml(AudioNonwordMonitoringCsv.CSV_CONTENT, fileNameExtensions , STIMULI_DIR);
         assertTrue(resultPractice.startsWith("<stimulus "));
         assertTrue(resultPractice.endsWith(" />\n"));
         System.out.println(resultPractice);
     }
-  
     
 }
