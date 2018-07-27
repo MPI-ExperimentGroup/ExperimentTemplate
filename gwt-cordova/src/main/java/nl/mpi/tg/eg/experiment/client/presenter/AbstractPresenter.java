@@ -30,6 +30,7 @@ import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
@@ -143,11 +144,11 @@ public abstract class AbstractPresenter implements Presenter {
         ((ComplexView) simpleView).addHtmlText(textString, styleName);
     }
 
-    protected void image(final String imageString, int postLoadMs, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener) {
+    protected void image(final String imageString, int postLoadMs, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener) {
         image(imageString, null, postLoadMs, loadedStimulusListener, failedStimulusListener);
     }
 
-    protected void image(final String imageString, final String styleName, int postLoadMs, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener) {
+    protected void image(final String imageString, final String styleName, int postLoadMs, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener) {
         // consider fromTrustedString if there are issues with fromString when sdcard stimuli are used
         ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString((imageString.startsWith("file")) ? imageString : serviceLocations.staticFilesUrl() + imageString), styleName, postLoadMs, null, loadedStimulusListener, failedStimulusListener, null);
     }
