@@ -42,6 +42,7 @@ import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.CurrentStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
@@ -876,13 +877,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
         }, currentStimulus, userResults.getUserData().getUserId(), localStorage);
         if (sdCardImageCapture.hasBeenCaptured()) {
-            final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
+            final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
                 @Override
-                public void postLoadTimerFired() {
+                protected void trigggerCancelableEvent() {
                     timedStimulusListener.postLoadTimerFired();
                 }
             };
-            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(sdCardImageCapture.getCapturedPath()), percentOfPage, maxHeight, maxWidth, null, null, postLoadMs, shownStimulusListener, timedStimulusListener, null, null);
+            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(sdCardImageCapture.getCapturedPath()), percentOfPage, maxHeight, maxWidth, null, null, postLoadMs, shownStimulusListener, shownStimulusListener, null, null);
         }
         ((TimedStimulusView) simpleView).addOptionButton(new PresenterEventListner() {
             @Override
@@ -906,16 +907,16 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addBackgroundImage((imageSrc == null || imageSrc.isEmpty()) ? null : UriUtils.fromTrustedString((imageSrc.startsWith("file")) ? imageSrc : serviceLocations.staticFilesUrl() + imageSrc), styleName, postLoadMs, timedStimulusListener);
     }
 
-    protected void stimulusImage(final Stimulus currentStimulus, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener) {
+    protected void stimulusImage(final Stimulus currentStimulus, int postLoadMs, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener) {
         stimulusImage(currentStimulus, null, postLoadMs, dataChannel, loadedStimulusListener, failedStimulusListener);
     }
 
-    protected void stimulusImage(final Stimulus currentStimulus, final String styleName, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener) {
+    protected void stimulusImage(final Stimulus currentStimulus, final String styleName, int postLoadMs, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener) {
         final String imageString = currentStimulus.getImage();
         final String uniqueId = currentStimulus.getUniqueId();
-        final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
+        final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
             @Override
-            public void postLoadTimerFired() {
+            protected void trigggerCancelableEvent() {
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusImageShown", uniqueId, imageString, duration.elapsedMillis());
             }
         };
@@ -923,22 +924,22 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     @Deprecated
-    protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final boolean showControls, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+    protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final boolean showControls, int postLoadMs, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         stimulusPresent(stimulusProvider, currentStimulus, percentOfPage, maxHeight, maxWidth, AnimateTypes.none, showControls, postLoadMs, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener);
     }
 
     @Deprecated
-    protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+    protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, int postLoadMs, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         stimulusPresent(stimulusProvider, currentStimulus, percentOfPage, maxHeight, maxWidth, animateType, showControls, null, postLoadMs, null, null, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener, null);
     }
 
     @Deprecated
-    protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, int postLoadMs, String regex, String replacement, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+    protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, int postLoadMs, String regex, String replacement, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         stimulusPresent(stimulusProvider, currentStimulus, percentOfPage, maxHeight, maxWidth, animateType, showControls, null, postLoadMs, regex, replacement, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener, null);
     }
 
     @Deprecated
-    protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final Integer fixedPositionY, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+    protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final Integer fixedPositionY, int postLoadMs, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         stimulusPresent(stimulusProvider, currentStimulus, percentOfPage, maxHeight, maxWidth, animateType, true, fixedPositionY, postLoadMs, null, null, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener, null);
     }
 
@@ -946,7 +947,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //    protected void stimulusPresent(final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, final Integer fixedPositionY, int postLoadMs, String regex, String replacement, final TimedStimulusListener timedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
 //        stimulusPresent(currentStimulus, percentOfPage, maxHeight, maxWidth, animateType, showControls, fixedPositionY, postLoadMs, regex, replacement, timedStimulusListener, clickedStimulusListener);
 //    }
-    protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, final Integer fixedPositionY, int postLoadMs, String regex, String replacement, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
+    protected void stimulusPresent(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final boolean showControls, final Integer fixedPositionY, int postLoadMs, String regex, String replacement, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener, final CancelableStimulusListener clickedStimulusListener) {
         if (currentStimulus.hasImage()) {
             final String image;
             if (regex != null && replacement != null) {
@@ -954,9 +955,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             } else {
                 image = currentStimulus.getImage();
             }
-            final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
+            final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
                 @Override
-                public void postLoadTimerFired() {
+                protected void trigggerCancelableEvent() {
                     // send image shown tag
                     submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusImageShown", currentStimulus.getUniqueId(), image, duration.elapsedMillis());
                 }
@@ -970,9 +971,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             } else {
                 animateStyle = null;
             }
-            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(image), percentOfPage, maxHeight, maxWidth, animateStyle, fixedPositionY, postLoadMs, shownStimulusListener, new TimedStimulusListener() {
+            ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromTrustedString(image), percentOfPage, maxHeight, maxWidth, animateStyle, fixedPositionY, postLoadMs, shownStimulusListener, new CancelableStimulusListener() {
                 @Override
-                public void postLoadTimerFired() {
+                protected void trigggerCancelableEvent() {
                     loadedStimulusListener.postLoadTimerFired();
                     playedStimulusListener.postLoadTimerFired();
                 }
@@ -987,9 +988,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
             final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(ogg);
             final SafeUri mp3TrustedString = (mp3 == null) ? null : UriUtils.fromTrustedString(mp3);
-            final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
+            final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
                 @Override
-                public void postLoadTimerFired() {
+                protected void trigggerCancelableEvent() {
                     // send audio shown tag
                     submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusAudioShown", currentStimulus.getUniqueId(), currentStimulus.getAudio(), duration.elapsedMillis());
                     loadedStimulusListener.postLoadTimerFired();
@@ -1007,9 +1008,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //            submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusVideo", currentStimulus.getVideo(), duration.elapsedMillis());
             final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(ogg);
             final SafeUri mp4TrustedString = (mp4 == null) ? null : UriUtils.fromTrustedString(mp4);
-            final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
+            final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
                 @Override
-                public void postLoadTimerFired() {
+                protected void trigggerCancelableEvent() {
                     // send video shown tag
                     submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusVideoShown", currentStimulus.getUniqueId(), currentStimulus.getVideo(), duration.elapsedMillis());
                     loadedStimulusListener.postLoadTimerFired();
@@ -1029,7 +1030,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
 //    protected void stimulusCodeImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, String codeFormat, TimedStimulusListener timedStimulusListener) {
-    protected void stimulusCodeImage(final Stimulus currentStimulus, final String styleName, int postLoadMs, String codeFormat, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener) {
+    protected void stimulusCodeImage(final Stimulus currentStimulus, final String styleName, int postLoadMs, String codeFormat, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener) {
         String formattedCodeTemp = codeFormat.replace("<code>", currentStimulus.getCode());
         if (currentStimulus.hasRatingLabels()) {
             int index = 0;
@@ -1041,9 +1042,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         final String formattedCode = formattedCodeTemp;
         final String uniqueId = currentStimulus.getUniqueId();
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeImage", formattedCode, duration.elapsedMillis());
-        final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
+        final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
             @Override
-            public void postLoadTimerFired() {
+            protected void trigggerCancelableEvent() {
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusCodeImageShown", uniqueId, formattedCode, duration.elapsedMillis());
             }
         };
@@ -1051,7 +1052,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 //        ((TimedStimulusView) simpleView).addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
     }
 
-    protected void stimulusCodeAudio(final Stimulus currentStimulus, int postLoadMs, String codeFormat, boolean showPlaybackIndicator, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+    protected void stimulusCodeAudio(final Stimulus currentStimulus, int postLoadMs, String codeFormat, boolean showPlaybackIndicator, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         final String formattedCode = codeFormat.replace("<code>", currentStimulus.getCode());
         final String uniqueId = currentStimulus.getUniqueId();
 
@@ -1061,9 +1062,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         final SafeUri mp3TrustedString = (mp3 == null) ? null : UriUtils.fromTrustedString((mp3.startsWith("file") ? "" : serviceLocations.staticFilesUrl()) + mp3);
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeAudio", formattedCode, duration.elapsedMillis());
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", formattedCode, duration.elapsedMillis());
-        final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
+        final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
             @Override
-            public void postLoadTimerFired() {
+            protected void trigggerCancelableEvent() {
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusCodeAudioShown", uniqueId, formattedCode, duration.elapsedMillis());
                 loadedStimulusListener.postLoadTimerFired();
             }
@@ -1071,7 +1072,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addTimedAudio(oggTrustedString, mp3TrustedString, postLoadMs, showPlaybackIndicator, shownStimulusListener, failedStimulusListener, playedStimulusListener);
     }
 
-    protected void stimulusCodeVideo(final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, int postLoadMs, String codeFormat, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+    protected void stimulusCodeVideo(final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, int postLoadMs, String codeFormat, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         final String formattedCode = codeFormat.replace("<code>", currentStimulus.getCode());
         final String uniqueId = currentStimulus.getUniqueId();
         String mp4 = formattedCode + ".mp4";
@@ -1079,9 +1080,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(serviceLocations.staticFilesUrl() + ogg);
         final SafeUri mp4TrustedString = (mp4 == null) ? null : UriUtils.fromTrustedString(serviceLocations.staticFilesUrl() + mp4);
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeVideo", formattedCode, duration.elapsedMillis());
-        final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
+        final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
             @Override
-            public void postLoadTimerFired() {
+            protected void trigggerCancelableEvent() {
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusCodeVideoShown", uniqueId, formattedCode, duration.elapsedMillis());
                 loadedStimulusListener.postLoadTimerFired();
             }
@@ -1090,15 +1091,15 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, styleName, autoPlay, loop, showControls, postLoadMs, shownStimulusListener, failedStimulusListener, playedStimulusListener);
     }
 
-    protected void stimulusAudio(final Stimulus currentStimulus, int postLoadMs, boolean showPlaybackIndicator, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+    protected void stimulusAudio(final Stimulus currentStimulus, int postLoadMs, boolean showPlaybackIndicator, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         final String audio = currentStimulus.getAudio();
         final String uniqueId = currentStimulus.getUniqueId();
         String ogg = audio + ".ogg";
         String mp3 = audio + ".mp3";
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", ogg, duration.elapsedMillis());
-        final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
+        final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
             @Override
-            public void postLoadTimerFired() {
+            protected void trigggerCancelableEvent() {
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusAudioShown", uniqueId, audio, duration.elapsedMillis());
                 loadedStimulusListener.postLoadTimerFired();
             }
@@ -1372,46 +1373,56 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             yPos += ySpacing;
             if (matchingStimuliGroup.isCorrect(currentStimulus)) {
                 stimulusPresent(stimulusProvider, currentStimulus, 0, maxWidth, maxWidth, animateType, false, yPos - (maxWidth / 2), postLoadCorrectMs, null, null, dataChannel,
-                        new TimedStimulusListener() {
+                        new CancelableStimulusListener() {
                     @Override
-                    public void postLoadTimerFired() {
+                    protected void trigggerCancelableEvent() {
 
                     }
                 },
-                        new TimedStimulusListener() {
+                        new CancelableStimulusListener() {
                     @Override
-                    public void postLoadTimerFired() {
+                    protected void trigggerCancelableEvent() {
 
                     }
                 },
-                        new TimedStimulusListener() {
+                        new CancelableStimulusListener() {
                     @Override
-                    public void postLoadTimerFired() {
+                    protected void trigggerCancelableEvent() {
 
                     }
                 },
-                        correctListener);
+                        new CancelableStimulusListener() {
+                    @Override
+                    protected void trigggerCancelableEvent() {
+                        correctListener.postLoadTimerFired();
+                    }
+                });
             } else {
                 stimulusPresent(stimulusProvider, currentStimulus, 0, maxWidth, maxWidth, animateType, false, yPos - (maxWidth / 2), postLoadIncorrectMs, null, null, dataChannel,
-                        new TimedStimulusListener() {
+                        new CancelableStimulusListener() {
                     @Override
-                    public void postLoadTimerFired() {
+                    protected void trigggerCancelableEvent() {
 
                     }
                 },
-                        new TimedStimulusListener() {
+                        new CancelableStimulusListener() {
                     @Override
-                    public void postLoadTimerFired() {
+                    protected void trigggerCancelableEvent() {
 
                     }
                 },
-                        new TimedStimulusListener() {
+                        new CancelableStimulusListener() {
                     @Override
-                    public void postLoadTimerFired() {
+                    protected void trigggerCancelableEvent() {
 
                     }
                 },
-                        incorrectListener);
+                        new CancelableStimulusListener() {
+                    @Override
+                    protected void trigggerCancelableEvent() {
+                        incorrectListener.postLoadTimerFired();
+                    }
+                });
             }
         }
         ((TimedStimulusView) simpleView).endHorizontalPanel();
@@ -1655,12 +1666,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).stopVideo();
     }
 
-    protected void groupResponseStimulusImage(final StimuliProvider stimulusProvider, int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+    protected void groupResponseStimulusImage(final StimuliProvider stimulusProvider, int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         final AnimateTypes animateType = AnimateTypes.none;
         groupResponseStimulusImage(stimulusProvider, percentOfPage, maxHeight, maxWidth, animateType, postLoadMs, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener);
     }
 
-    protected void groupResponseStimulusImage(final StimuliProvider stimulusProvider, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final int dataChannel, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+    protected void groupResponseStimulusImage(final StimuliProvider stimulusProvider, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         stimulusPresent(stimulusProvider, stimulusProvider.getStimuliFromString(groupParticipantService.getResponseStimulusId()), percentOfPage, maxHeight, maxWidth, animateType, false, null, postLoadMs, null, null, dataChannel, loadedStimulusListener, failedStimulusListener, playedStimulusListener, null);
     }
 
@@ -1825,11 +1836,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void audioButton(final String eventTag, final int dataChannel, final String srcString, final String imagePath, final boolean autoPlay, final int hotKey, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+    protected void audioButton(final String eventTag, final int dataChannel, final String srcString, final String imagePath, final boolean autoPlay, final int hotKey, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         audioButton(eventTag, dataChannel, srcString, null, imagePath, autoPlay, hotKey, loadedStimulusListener, failedStimulusListener, playedStimulusListener);
     }
 
-    protected void audioButton(final String eventTag, final int dataChannel, final String srcString, final String styleName, final String imagePath, final boolean autoPlay, final int hotKey, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+    protected void audioButton(final String eventTag, final int dataChannel, final String srcString, final String styleName, final String imagePath, final boolean autoPlay, final int hotKey, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         final String mp3Path = srcString + ".mp3";
         final String oggPath = srcString + ".ogg";
         final PresenterEventListner presenterEventListner = new PresenterEventListner() {
@@ -1847,17 +1858,17 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
-                final TimedStimulusListener shownStimulusListener = new TimedStimulusListener() {
+                final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
                     @Override
-                    public void postLoadTimerFired() {
+                    protected void trigggerCancelableEvent() {
                         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, "PlayAudio", mp3Path, duration.elapsedMillis());
                         loadedStimulusListener.postLoadTimerFired();
                     }
                 };
-                ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(serviceLocations.staticFilesUrl() + oggPath), UriUtils.fromString(serviceLocations.staticFilesUrl() + mp3Path), 0, false, shownStimulusListener, failedStimulusListener, new TimedStimulusListener() {
+                ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(serviceLocations.staticFilesUrl() + oggPath), UriUtils.fromString(serviceLocations.staticFilesUrl() + mp3Path), 0, false, shownStimulusListener, failedStimulusListener, new CancelableStimulusListener() {
 
                     @Override
-                    public void postLoadTimerFired() {
+                    protected void trigggerCancelableEvent() {
                         if (!hasPlayed) {
                             playedStimulusListener.postLoadTimerFired();
                         }
