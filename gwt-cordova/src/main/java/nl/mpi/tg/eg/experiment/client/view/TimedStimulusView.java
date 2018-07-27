@@ -42,6 +42,7 @@ import com.google.gwt.user.client.ui.TextArea;
 import java.util.ArrayList;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.listener.AudioEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
@@ -60,6 +61,7 @@ public class TimedStimulusView extends ComplexView {
     private StimulusGrid stimulusGrid = null;
     private final List<Video> videoList = new ArrayList<>();
     private final List<Timer> timerList = new ArrayList<>();
+    private final List<CancelableStimulusListener> cancelableListnerList = new ArrayList<>();
 
     public TimedStimulusView(AudioPlayer audioPlayer) {
         super();
@@ -136,6 +138,7 @@ public class TimedStimulusView extends ComplexView {
 
     @Override
     public void clearPageAndTimers(String styleName) {
+        stopListeners();
         stopTimers();
         stopAudio();
         stopVideo();
@@ -144,7 +147,11 @@ public class TimedStimulusView extends ComplexView {
         videoList.clear();
     }
 
-    public void addTimedImage(SafeUri imagePath, final String styleName, final int postLoadMs, final TimedStimulusListener shownStimulusListener, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
+    public void addTimedImage(SafeUri imagePath, final String styleName, final int postLoadMs, final CancelableStimulusListener shownStimulusListener, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener clickedStimulusListener) {
+        cancelableListnerList.add(shownStimulusListener);
+        cancelableListnerList.add(loadedStimulusListener);
+        cancelableListnerList.add(failedStimulusListener);
+        cancelableListnerList.add(clickedStimulusListener);
         final Image image = new Image(imagePath);
         if (styleName != null) {
             image.addStyleName(styleName);
@@ -192,7 +199,11 @@ public class TimedStimulusView extends ComplexView {
     }
 
     @Deprecated
-    public void addTimedImage(SafeUri imagePath, int percentOfPage, int maxHeight, int maxWidth, final String animateStyle, final Integer fixedPositionY, final int postLoadMs, final TimedStimulusListener shownStimulusListener, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener clickedStimulusListener) {
+    public void addTimedImage(SafeUri imagePath, int percentOfPage, int maxHeight, int maxWidth, final String animateStyle, final Integer fixedPositionY, final int postLoadMs, final CancelableStimulusListener shownStimulusListener, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener clickedStimulusListener) {
+        cancelableListnerList.add(shownStimulusListener);
+        cancelableListnerList.add(loadedStimulusListener);
+        cancelableListnerList.add(failedStimulusListener);
+        cancelableListnerList.add(clickedStimulusListener);
         final Image image = new Image(imagePath);
         if (animateStyle != null && !animateStyle.isEmpty()) {
             image.addStyleName(animateStyle);
@@ -373,7 +384,10 @@ public class TimedStimulusView extends ComplexView {
         return stimulusFreeText;
     }
 
-    public void addTimedAudio(SafeUri oggPath, SafeUri mp3Path, final int postLoadMs, boolean showPlaybackIndicator, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+    public void addTimedAudio(SafeUri oggPath, SafeUri mp3Path, final int postLoadMs, boolean showPlaybackIndicator, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
+        cancelableListnerList.add(loadedStimulusListener);
+        cancelableListnerList.add(failedStimulusListener);
+        cancelableListnerList.add(playedStimulusListener);
         audioPlayer.stopAll();
         final Label playbackIndicator = new Label();
         final Timer playbackIndicatorTimer = new Timer() {
@@ -417,7 +431,9 @@ public class TimedStimulusView extends ComplexView {
         audioPlayer.playSample(oggPath, mp3Path);
     }
 
-    public void addTimedVideo(SafeUri oggPath, SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, final int postLoadMs, final TimedStimulusListener loadedStimulusListener, final TimedStimulusListener failedStimulusListener, final TimedStimulusListener playedStimulusListener) {
+    public void addTimedVideo(SafeUri oggPath, SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, final int postLoadMs, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
+        cancelableListnerList.add(loadedStimulusListener);
+        cancelableListnerList.add(failedStimulusListener);
         final Video video = Video.createIfSupported();
         if (video != null) {
             video.setAutoplay(autoPlay);
@@ -515,6 +531,15 @@ public class TimedStimulusView extends ComplexView {
         for (Timer timer : timerList) {
             if (timer != null) {
                 timer.cancel();
+            }
+        }
+        timerList.clear();
+    }
+
+    public void stopListeners() {
+        for (CancelableStimulusListener listener : cancelableListnerList) {
+            if (listener != null) {
+                listener.cancel();
             }
         }
         timerList.clear();
