@@ -200,6 +200,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
                 import nl.mpi.tg.eg.experiment.client.exception.CanvasError;
                 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+                import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
                 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
                 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
                 import nl.mpi.tg.eg.experiment.client.view.VideoPanel;
@@ -669,11 +670,13 @@ or local-name() eq 'ratingFooterButton'
         <xsl:value-of select="if(@msToNext) then concat(', ', @msToNext) else ''" />
         <xsl:value-of select="if(local-name() eq 'multipleUsers') then '' else ', '" />
         <xsl:text>&#xa;new </xsl:text>
-        <xsl:value-of select="if(local-name() eq 'eachStimulus' or local-name() eq 'hasMoreStimulus') then 'CurrentStimulusListener' else 'TimedStimulusListener'" />
+        <xsl:value-of select="if(local-name() eq 'eachStimulus' or local-name() eq 'hasMoreStimulus') then 'CurrentStimulusListener' else if(local-name() eq 'mediaLoaded' or local-name() eq 'mediaLoadFailed' or local-name() eq 'mediaPlaybackComplete') then 'CancelableStimulusListener' else 'TimedStimulusListener'" />
         <xsl:text>() {
 
             @Override
-            public void postLoadTimerFired(</xsl:text>
+            public void </xsl:text>
+        <xsl:value-of select="if(local-name() eq 'mediaLoaded' or local-name() eq 'mediaLoadFailed' or local-name() eq 'mediaPlaybackComplete') then 'trigggerCancelableEvent' else 'postLoadTimerFired'" />
+        <xsl:text>(</xsl:text>
         <xsl:value-of select="if(local-name() eq 'eachStimulus' or local-name() eq 'hasMoreStimulus') then 'final StimuliProvider stimulusProvider, final Stimulus currentStimulus' else ''" />
         <xsl:text>) {
         </xsl:text>
