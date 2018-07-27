@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/Users/olhshk/Documents/ExperimentTemplate/ExperimentDesigner/target/test-classes/frinex-rest-output/frinex.xsd" appNameDisplay="Peabody Assessment" appNameInternal="peabodynl" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
+    <preventWindowClose featureText="Bij reload worden ingetypte data verwiderd"/>
+    <metadata>
+        <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Wat is je gebruikersnummer?"/>
+        <field controlledMessage="Voer je geboortedatum, dd-maand-jjjj." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="dateOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
+    </metadata>
+    <presenter displayOrder="1" menuLabel="Menu" type="menu" self="Menu" title="Menu">
+        <centrePage/>
+        <addPadding/>
+        <htmlText featureText="&lt;div  &gt; &lt;img src=&quot;static/logo-max.png&quot; align=&quot;left&quot; /&gt; &lt;img src=&quot;static/logo-lil.png&quot; align=&quot;right&quot;/&gt; &lt;/div&gt;" styleName="fullScreenWidth"/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <htmlText featureText="Welkom bij deze Peabody test."/>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <htmlText featureText="&#160;"/>
+                </column>
+            </row>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="Naar het experiment" target="AgeSelection"/>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <htmlText featureText="&#160;"/>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter displayOrder="5" menuLabel="Age" type="menu" self="AgeSelection" title="Age">
+        <centrePage/>
+        <addPadding/>
+        <htmlText featureText="Kies leeftijdreeks"/>
+        <addPadding/>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="8;0-9;11 jaar" target="Edit_User8"/>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <htmlText featureText="&#160;"/>
+                </column>
+            </row>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="10;0-10;11 jaar" target="Edit_User9"/>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <htmlText featureText="&#160;"/>
+                </column>
+            </row>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="11;0-13;11 jaar" target="Edit_User10"/>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <htmlText featureText="&#160;"/>
+                </column>
+            </row>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="14;0-15;11 jaar" target="Edit_User11"/>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <htmlText featureText="&#160;"/>
+                </column>
+            </row>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="16;0-35;11 jaar" target="Edit_User12"/>
+                </column>
+            </row>
+            <row>
+                <column>
+                    <htmlText featureText="&#160;"/>
+                </column>
+            </row>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <targetButton featureText="36;0-90;0 jaar" target="Edit_User13"/>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter displayOrder="45" menuLabel="Edit User 8" next="Accord8" type="metadata" self="Edit_User8" title="">
+        <metadataField fieldName="workerId"/>
+        <metadataField fieldName="dateOfBirth"/>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
+                        <onSuccess>   
+                            <gotoNextPresenter/>
+                        </onSuccess>
+                        <onError>   
+                            <gotoNextPresenter/>
+                        </onError>      
+                    </saveMetadataButton>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter displayOrder="50" menuLabel="Edit User 9" next="Accord9" type="metadata" self="Edit_User9" title="">
+        <metadataField fieldName="workerId"/>
+        <metadataField fieldName="dateOfBirth"/>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
+                        <onSuccess>   
+                            <gotoNextPresenter/>
+                        </onSuccess>
+                        <onError>   
+                            <gotoNextPresenter/>
+                        </onError>      
+                    </saveMetadataButton>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter displayOrder="55" menuLabel="Edit User 10" next="Accord10" type="metadata" self="Edit_User10" title="">
+        <metadataField fieldName="workerId"/>
+        <metadataField fieldName="dateOfBirth"/>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
+                        <onSuccess>   
+                            <gotoNextPresenter/>
+                        </onSuccess>
+                        <onError>   
+                            <gotoNextPresenter/>
+                        </onError>      
+                    </saveMetadataButton>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter displayOrder="60" menuLabel="Edit User 11" next="Accord11" type="metadata" self="Edit_User11" title="">
+        <metadataField fieldName="workerId"/>
+        <metadataField fieldName="dateOfBirth"/>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
+                        <onSuccess>   
+                            <gotoNextPresenter/>
+                        </onSuccess>
+                        <onError>   
+                            <gotoNextPresenter/>
+                        </onError>      
+                    </saveMetadataButton>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter displayOrder="65" menuLabel="Edit User 12" next="Accord12" type="metadata" self="Edit_User12" title="">
+        <metadataField fieldName="workerId"/>
+        <metadataField fieldName="dateOfBirth"/>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
+                        <onSuccess>   
+                            <gotoNextPresenter/>
+                        </onSuccess>
+                        <onError>   
+                            <gotoNextPresenter/>
+                        </onError>      
+                    </saveMetadataButton>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter displayOrder="70" menuLabel="Edit User 13" next="Accord13" type="metadata" self="Edit_User13" title="">
+        <metadataField fieldName="workerId"/>
+        <metadataField fieldName="dateOfBirth"/>
+        <table>
+            <row>
+                <column styleName="stimulusContainerCol">
+                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
+                        <onSuccess>   
+                            <gotoNextPresenter/>
+                        </onSuccess>
+                        <onError>   
+                            <gotoNextPresenter/>
+                        </onError>      
+                    </saveMetadataButton>
+                </column>
+            </row>
+        </table>
+    </presenter>
+    <presenter displayOrder="110" next="stimuliScreen8" type="metadata" self="Accord8" title="" >
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        
+        <addPadding/>
+        <htmlText featureText="Welkom bij dit experiment.&lt;br/&gt;&lt;br/&gt;
+ Bij dit experiment hoort u telkens een woord. Er staan steeds vier plaatjes op het scherm, met nummers erbij. 
+Druk op SPATIE om naar het woord te luisteren. 
+Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoort. &lt;br/&gt;&lt;br/&gt;
+ Snelheid is niet belangrijk.&lt;br/&gt;&lt;br/&gt;
+ Succes!"/>
+        <addPadding/>
+        <addPadding/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen8"/>
+    </presenter>
+    <presenter displayOrder="115" next="stimuliScreen9" type="metadata" self="Accord9" title="" >
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Welkom bij dit experiment.&lt;br/&gt;&lt;br/&gt;
+ Bij dit experiment hoort u telkens een woord. Er staan steeds vier plaatjes op het scherm, met nummers erbij. 
+Druk op SPATIE om naar het woord te luisteren. 
+Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoort. &lt;br/&gt;&lt;br/&gt;
+ Snelheid is niet belangrijk.&lt;br/&gt;&lt;br/&gt;
+ Succes!"/>
+        <addPadding/>
+        <addPadding/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen9"/>
+    </presenter>
+    <presenter displayOrder="120" next="stimuliScreen10" type="metadata" self="Accord10" title="" >
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Welkom bij dit experiment.&lt;br/&gt;&lt;br/&gt;
+ Bij dit experiment hoort u telkens een woord. Er staan steeds vier plaatjes op het scherm, met nummers erbij. 
+Druk op SPATIE om naar het woord te luisteren. 
+Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoort. &lt;br/&gt;&lt;br/&gt;
+ Snelheid is niet belangrijk.&lt;br/&gt;&lt;br/&gt;
+ Succes!"/>
+        <addPadding/>
+        <addPadding/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen10"/>
+    </presenter>
+    <presenter displayOrder="125" next="stimuliScreen11" type="metadata" self="Accord11" title="" >
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Welkom bij dit experiment.&lt;br/&gt;&lt;br/&gt;
+ Bij dit experiment hoort u telkens een woord. Er staan steeds vier plaatjes op het scherm, met nummers erbij. 
+Druk op SPATIE om naar het woord te luisteren. 
+Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoort. &lt;br/&gt;&lt;br/&gt;
+ Snelheid is niet belangrijk.&lt;br/&gt;&lt;br/&gt;
+ Succes!"/>
+        <addPadding/>
+        <addPadding/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen11"/>
+    </presenter>
+    <presenter displayOrder="130" next="stimuliScreen12" type="metadata" self="Accord12" title="" >
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Welkom bij dit experiment.&lt;br/&gt;&lt;br/&gt;
+ Bij dit experiment hoort u telkens een woord. Er staan steeds vier plaatjes op het scherm, met nummers erbij. 
+Druk op SPATIE om naar het woord te luisteren. 
+Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoort. &lt;br/&gt;&lt;br/&gt;
+ Snelheid is niet belangrijk.&lt;br/&gt;&lt;br/&gt;
+ Succes!"/>
+        <addPadding/>
+        <addPadding/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen12"/>
+    </presenter>
+    <presenter displayOrder="135" next="stimuliScreen13" type="metadata" self="Accord13" title="" >
+        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Welkom bij dit experiment.&lt;br/&gt;&lt;br/&gt;
+ Bij dit experiment hoort u telkens een woord. Er staan steeds vier plaatjes op het scherm, met nummers erbij. 
+Druk op SPATIE om naar het woord te luisteren. 
+Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoort. &lt;br/&gt;&lt;br/&gt;
+ Snelheid is niet belangrijk.&lt;br/&gt;&lt;br/&gt;
+ Succes!"/>
+        <addPadding/>
+        <addPadding/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen13"/>
+    </presenter>
+    
+    <presenter displayOrder="200" self="stimuliScreen8"  next="stimuliScreen9" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <clearCurrentScore/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="8">
+                    <aboveThreshold>
+                        <gotoPresenter target="Admin"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set8</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    
+    <presenter displayOrder="205" type="transmission" self="Admin" title="Administratie">
+        <sendMetadata>
+            <onSuccess> 
+                <sendAllData>
+                    <onSuccess>
+                        <addPadding/>
+                        <addPadding/>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Bedankt voor het meedoen."/>
+                        <addPadding/>
+                        <addPadding/>
+                        <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
+                    </onSuccess>
+                    <onError>
+                        <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
+                        <addPadding/>
+                        <addPadding/>
+                        <targetButton featureText="Retry" target="Admin"/>
+                        <addPadding/>
+                        <addPadding/>
+                        <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
+                    </onError>
+                </sendAllData>
+            </onSuccess>
+            <onError>   
+                <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
+                <addPadding/>
+                <addPadding/>
+                <targetButton featureText="Retry" target="Admin"/>
+                <addPadding/>
+                <addPadding/>
+                <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
+            </onError>      
+        </sendMetadata>
+    </presenter>
+    <presenter back="Menu" displayOrder="210" menuLabel="about" type="debug" self="about" title="about">
+        <versionData/>
+        <eraseLocalStorageButton/>
+        <localStorageData/>
+    </presenter>
+    <stimuli> 
+        <stimulus  identifier="set1_Page_01_tn_1_poes"  label="set1_Page_01_tn_1_poes"  correctResponses="1"  imagePath="stimuli/set1_Page_01_tn.png"  audioPath="stimuli/1_poes"  tags="set1"  />
+        <stimulus  identifier="set1_Page_02_tn_2_hand"  label="set1_Page_02_tn_2_hand"  correctResponses="2"  imagePath="stimuli/set1_Page_02_tn.png"  audioPath="stimuli/2_hand"  tags="set1"  />
+        <stimulus  identifier="set1_Page_03_tn_3_schaar"  label="set1_Page_03_tn_3_schaar"  correctResponses="4"  imagePath="stimuli/set1_Page_03_tn.png"  audioPath="stimuli/3_schaar"  tags="set1"  />
+        <stimulus  identifier="set1_Page_04_tn_4_oog"  label="set1_Page_04_tn_4_oog"  correctResponses="2"  imagePath="stimuli/set1_Page_04_tn.png"  audioPath="stimuli/4_oog"  tags="set1"  />
+        <stimulus  identifier="set1_Page_05_tn_5_baby"  label="set1_Page_05_tn_5_baby"  correctResponses="3"  imagePath="stimuli/set1_Page_05_tn.png"  audioPath="stimuli/5_baby"  tags="set1"  />
+        <stimulus  identifier="set1_Page_06_tn_6_broek"  label="set1_Page_06_tn_6_broek"  correctResponses="2"  imagePath="stimuli/set1_Page_06_tn.png"  audioPath="stimuli/6_broek"  tags="set1"  />
+        <stimulus  identifier="set1_Page_07_tn_7_drinken"  label="set1_Page_07_tn_7_drinken"  correctResponses="3"  imagePath="stimuli/set1_Page_07_tn.png"  audioPath="stimuli/7_drinken"  tags="set1"  />
+        <stimulus  identifier="set1_Page_08_tn_8_vliegtuig"  label="set1_Page_08_tn_8_vliegtuig"  correctResponses="1"  imagePath="stimuli/set1_Page_08_tn.png"  audioPath="stimuli/8_vliegtuig"  tags="set1"  />
+        <stimulus  identifier="set1_Page_09_tn_9_lopen"  label="set1_Page_09_tn_9_lopen"  correctResponses="2"  imagePath="stimuli/set1_Page_09_tn.png"  audioPath="stimuli/9_lopen"  tags="set1"  />
+        <stimulus  identifier="set1_Page_10_tn_10_schildpad"  label="set1_Page_10_tn_10_schildpad"  correctResponses="1"  imagePath="stimuli/set1_Page_10_tn.png"  audioPath="stimuli/10_schildpad"  tags="set1"  />
+        <stimulus  identifier="set1_Page_11_tn_11_schommelen"  label="set1_Page_11_tn_11_schommelen"  correctResponses="4"  imagePath="stimuli/set1_Page_11_tn.png"  audioPath="stimuli/11_schommelen"  tags="set1"  />
+        <stimulus  identifier="set1_Page_12_tn_12_schep"  label="set1_Page_12_tn_12_schep"  correctResponses="4"  imagePath="stimuli/set1_Page_12_tn.png"  audioPath="stimuli/12_schep"  tags="set1"  />
+        <stimulus  identifier="set2_Page_01_tn_13_cadeautje"  label="set2_Page_01_tn_13_cadeautje"  correctResponses="2"  imagePath="stimuli/set2_Page_01_tn.png"  audioPath="stimuli/13_cadeautje"  tags="set2"  />
+        <stimulus  identifier="set2_Page_02_tn_14_springen"  label="set2_Page_02_tn_14_springen"  correctResponses="3"  imagePath="stimuli/set2_Page_02_tn.png"  audioPath="stimuli/14_springen"  tags="set2"  />
+        <stimulus  identifier="set2_Page_03_tn_15_vlieg"  label="set2_Page_03_tn_15_vlieg"  correctResponses="1"  imagePath="stimuli/set2_Page_03_tn.png"  audioPath="stimuli/15_vlieg"  tags="set2"  />
+        <stimulus  identifier="set2_Page_04_tn_16_hek"  label="set2_Page_04_tn_16_hek"  correctResponses="3"  imagePath="stimuli/set2_Page_04_tn.png"  audioPath="stimuli/16_hek"  tags="set2"  />
+        <stimulus  identifier="set2_Page_05_tn_17_naar_boven"  label="set2_Page_05_tn_17_naar_boven"  correctResponses="1"  imagePath="stimuli/set2_Page_05_tn.png"  audioPath="stimuli/17_naar_boven"  tags="set2"  />
+        <stimulus  identifier="set2_Page_06_tn_18_bank"  label="set2_Page_06_tn_18_bank"  correctResponses="1"  imagePath="stimuli/set2_Page_06_tn.png"  audioPath="stimuli/18_bank"  tags="set2"  />
+        <stimulus  identifier="set2_Page_07_tn_19_timmeren"  label="set2_Page_07_tn_19_timmeren"  correctResponses="3"  imagePath="stimuli/set2_Page_07_tn.png"  audioPath="stimuli/19_timmeren"  tags="set2"  />
+        <stimulus  identifier="set2_Page_08_tn_20_computer"  label="set2_Page_08_tn_20_computer"  correctResponses="4"  imagePath="stimuli/set2_Page_08_tn.png"  audioPath="stimuli/20_computer"  tags="set2"  />
+        <stimulus  identifier="set2_Page_09_tn_21_plant"  label="set2_Page_09_tn_21_plant"  correctResponses="2"  imagePath="stimuli/set2_Page_09_tn.png"  audioPath="stimuli/21_plant"  tags="set2"  />
+        <stimulus  identifier="set2_Page_10_tn_22_trekken"  label="set2_Page_10_tn_22_trekken"  correctResponses="3"  imagePath="stimuli/set2_Page_10_tn.png"  audioPath="stimuli/22_trekken"  tags="set2"  />
+        <stimulus  identifier="set2_Page_11_tn_23_emmer"  label="set2_Page_11_tn_23_emmer"  correctResponses="4"  imagePath="stimuli/set2_Page_11_tn.png"  audioPath="stimuli/23_emmer"  tags="set2"  />
+        <stimulus  identifier="set2_Page_12_tn_24_koe"  label="set2_Page_12_tn_24_koe"  correctResponses="1"  imagePath="stimuli/set2_Page_12_tn.png"  audioPath="stimuli/24_koe"  tags="set2"  />
+        <stimulus  identifier="set3_Page_01_tn_25_trommel"  label="set3_Page_01_tn_25_trommel"  correctResponses="3"  imagePath="stimuli/set3_Page_01_tn.png"  audioPath="stimuli/25_trommel"  tags="set3"  />
+        <stimulus  identifier="set3_Page_02_tn_26_kruk"  label="set3_Page_02_tn_26_kruk"  correctResponses="1"  imagePath="stimuli/set3_Page_02_tn.png"  audioPath="stimuli/26_kruk"  tags="set3"  />
+        <stimulus  identifier="set3_Page_03_tn_27_pijl"  label="set3_Page_03_tn_27_pijl"  correctResponses="4"  imagePath="stimuli/set3_Page_03_tn.png"  audioPath="stimuli/27_pijl"  tags="set3"  />
+        <stimulus  identifier="set3_Page_04_tn_28_ziek"  label="set3_Page_04_tn_28_ziek"  correctResponses="4"  imagePath="stimuli/set3_Page_04_tn.png"  audioPath="stimuli/28_ziek"  tags="set3"  />
+        <stimulus  identifier="set3_Page_05_tn_29_blikje"  label="set3_Page_05_tn_29_blikje"  correctResponses="3"  imagePath="stimuli/set3_Page_05_tn.png"  audioPath="stimuli/29_blikje"  tags="set3"  />
+        <stimulus  identifier="set3_Page_06_tn_30_varen"  label="set3_Page_06_tn_30_varen"  correctResponses="1"  imagePath="stimuli/set3_Page_06_tn.png"  audioPath="stimuli/30_varen"  tags="set3"  />
+        <stimulus  identifier="set3_Page_07_tn_31_geld"  label="set3_Page_07_tn_31_geld"  correctResponses="2"  imagePath="stimuli/set3_Page_07_tn.png"  audioPath="stimuli/31_geld"  tags="set3"  />
+        <stimulus  identifier="set3_Page_08_tn_32_inschenken"  label="set3_Page_08_tn_32_inschenken"  correctResponses="3"  imagePath="stimuli/set3_Page_08_tn.png"  audioPath="stimuli/32_inschenken"  tags="set3"  />
+        <stimulus  identifier="set3_Page_09_tn_33_post"  label="set3_Page_09_tn_33_post"  correctResponses="1"  imagePath="stimuli/set3_Page_09_tn.png"  audioPath="stimuli/33_post"  tags="set3"  />
+        <stimulus  identifier="set3_Page_10_tn_34_slopen"  label="set3_Page_10_tn_34_slopen"  correctResponses="3"  imagePath="stimuli/set3_Page_10_tn.png"  audioPath="stimuli/34_slopen"  tags="set3"  />
+        <stimulus  identifier="set3_Page_11_tn_35_kangaroe"  label="set3_Page_11_tn_35_kangaroe"  correctResponses="4"  imagePath="stimuli/set3_Page_11_tn.png"  audioPath="stimuli/35_kangaroe"  tags="set3"  />
+        <stimulus  identifier="set3_Page_12_tn_36_kist"  label="set3_Page_12_tn_36_kist"  correctResponses="1"  imagePath="stimuli/set3_Page_12_tn.png"  audioPath="stimuli/36_kist"  tags="set3"  />
+        <stimulus  identifier="set4_Page_01_tn_37_fruit"  label="set4_Page_01_tn_37_fruit"  correctResponses="1"  imagePath="stimuli/set4_Page_01_tn.png"  audioPath="stimuli/37_fruit"  tags="set4"  />
+        <stimulus  identifier="set4_Page_02_tn_38_vaas"  label="set4_Page_02_tn_38_vaas"  correctResponses="2"  imagePath="stimuli/set4_Page_02_tn.png"  audioPath="stimuli/38_vaas"  tags="set4"  />
+        <stimulus  identifier="set4_Page_03_tn_39_handschoen"  label="set4_Page_03_tn_39_handschoen"  correctResponses="2"  imagePath="stimuli/set4_Page_03_tn.png"  audioPath="stimuli/39_handschoen"  tags="set4"  />
+        <stimulus  identifier="set4_Page_04_tn_40_blij"  label="set4_Page_04_tn_40_blij"  correctResponses="4"  imagePath="stimuli/set4_Page_04_tn.png"  audioPath="stimuli/40_blij"  tags="set4"  />
+        <stimulus  identifier="set4_Page_05_tn_41_verrekijker"  label="set4_Page_05_tn_41_verrekijker"  correctResponses="2"  imagePath="stimuli/set4_Page_05_tn.png"  audioPath="stimuli/41_verrekijker"  tags="set4"  />
+        <stimulus  identifier="set4_Page_06_tn_42_vuilnis"  label="set4_Page_06_tn_42_vuilnis"  correctResponses="3"  imagePath="stimuli/set4_Page_06_tn.png"  audioPath="stimuli/42_vuilnis"  tags="set4"  />
+        <stimulus  identifier="set4_Page_07_tn_43_onder_de_tafel"  label="set4_Page_07_tn_43_onder_de_tafel"  correctResponses="1"  imagePath="stimuli/set4_Page_07_tn.png"  audioPath="stimuli/43_onder_de_tafel"  tags="set4"  />
+        <stimulus  identifier="set4_Page_08_tn_44_cactus"  label="set4_Page_08_tn_44_cactus"  correctResponses="1"  imagePath="stimuli/set4_Page_08_tn.png"  audioPath="stimuli/44_cactus"  tags="set4"  />
+        <stimulus  identifier="set4_Page_09_tn_45_trompet"  label="set4_Page_09_tn_45_trompet"  correctResponses="4"  imagePath="stimuli/set4_Page_09_tn.png"  audioPath="stimuli/45_trompet"  tags="set4"  />
+        <stimulus  identifier="set4_Page_10_tn_46_haai"  label="set4_Page_10_tn_46_haai"  correctResponses="3"  imagePath="stimuli/set4_Page_10_tn.png"  audioPath="stimuli/46_haai"  tags="set4"  />
+        <stimulus  identifier="set4_Page_11_tn_47_boren"  label="set4_Page_11_tn_47_boren"  correctResponses="2"  imagePath="stimuli/set4_Page_11_tn.png"  audioPath="stimuli/47_boren"  tags="set4"  />
+        <stimulus  identifier="set4_Page_12_tn_48_kin"  label="set4_Page_12_tn_48_kin"  correctResponses="2"  imagePath="stimuli/set4_Page_12_tn.png"  audioPath="stimuli/48_kin"  tags="set4"  />
+        <stimulus  identifier="set5_Page_01_tn_49_vitamine"  label="set5_Page_01_tn_49_vitamine"  correctResponses="3"  imagePath="stimuli/set5_Page_01_tn.png"  audioPath="stimuli/49_vitamine"  tags="set5"  />
+        <stimulus  identifier="set5_Page_02_tn_50_stopcontact"  label="set5_Page_02_tn_50_stopcontact"  correctResponses="2"  imagePath="stimuli/set5_Page_02_tn.png"  audioPath="stimuli/50_stopcontact"  tags="set5"  />
+        <stimulus  identifier="set5_Page_03_tn_51_trainen"  label="set5_Page_03_tn_51_trainen"  correctResponses="1"  imagePath="stimuli/set5_Page_03_tn.png"  audioPath="stimuli/51_trainen"  tags="set5"  />
+        <stimulus  identifier="set5_Page_04_tn_52_drieling"  label="set5_Page_04_tn_52_drieling"  correctResponses="4"  imagePath="stimuli/set5_Page_04_tn.png"  audioPath="stimuli/52_drieling"  tags="set5"  />
+        <stimulus  identifier="set5_Page_05_tn_53_groepje"  label="set5_Page_05_tn_53_groepje"  correctResponses="3"  imagePath="stimuli/set5_Page_05_tn.png"  audioPath="stimuli/53_groepje"  tags="set5"  />
+        <stimulus  identifier="set5_Page_06_tn_54_bouwvakker"  label="set5_Page_06_tn_54_bouwvakker"  correctResponses="3"  imagePath="stimuli/set5_Page_06_tn.png"  audioPath="stimuli/54_bouwvakker"  tags="set5"  />
+        <stimulus  identifier="set5_Page_07_tn_55_knagen"  label="set5_Page_07_tn_55_knagen"  correctResponses="3"  imagePath="stimuli/set5_Page_07_tn.png"  audioPath="stimuli/55_knagen"  tags="set5"  />
+        <stimulus  identifier="set5_Page_08_tn_56_vlot"  label="set5_Page_08_tn_56_vlot"  correctResponses="2"  imagePath="stimuli/set5_Page_08_tn.png"  audioPath="stimuli/56_vlot"  tags="set5"  />
+        <stimulus  identifier="set5_Page_09_tn_57_mikken"  label="set5_Page_09_tn_57_mikken"  correctResponses="1"  imagePath="stimuli/set5_Page_09_tn.png"  audioPath="stimuli/57_mikken"  tags="set5"  />
+        <stimulus  identifier="set5_Page_10_tn_58_ambulance"  label="set5_Page_10_tn_58_ambulance"  correctResponses="1"  imagePath="stimuli/set5_Page_10_tn.png"  audioPath="stimuli/58_ambulance"  tags="set5"  />
+        <stimulus  identifier="set5_Page_11_tn_59_vierkant"  label="set5_Page_11_tn_59_vierkant"  correctResponses="2"  imagePath="stimuli/set5_Page_11_tn.png"  audioPath="stimuli/59_vierkant"  tags="set5"  />
+        <stimulus  identifier="set5_Page_12_tn_60_tot_ziens"  label="set5_Page_12_tn_60_tot_ziens"  correctResponses="4"  imagePath="stimuli/set5_Page_12_tn.png"  audioPath="stimuli/60_tot_ziens"  tags="set5"  />
+        <stimulus  identifier="set6_Page_01_tn_61_ventilator"  label="set6_Page_01_tn_61_ventilator"  correctResponses="4"  imagePath="stimuli/set6_Page_01_tn.png"  audioPath="stimuli/61_ventilator"  tags="set6"  />
+        <stimulus  identifier="set6_Page_02_tn_62_hurken"  label="set6_Page_02_tn_62_hurken"  correctResponses="3"  imagePath="stimuli/set6_Page_02_tn.png"  audioPath="stimuli/62_hurken"  tags="set6"  />
+        <stimulus  identifier="set6_Page_03_tn_63_sieraad"  label="set6_Page_03_tn_63_sieraad"  correctResponses="2"  imagePath="stimuli/set6_Page_03_tn.png"  audioPath="stimuli/63_sieraad"  tags="set6"  />
+        <stimulus  identifier="set6_Page_04_tn_64_schoffelen"  label="set6_Page_04_tn_64_schoffelen"  correctResponses="1"  imagePath="stimuli/set6_Page_04_tn.png"  audioPath="stimuli/64_schoffelen"  tags="set6"  />
+        <stimulus  identifier="set6_Page_05_tn_65_rimpels"  label="set6_Page_05_tn_65_rimpels"  correctResponses="3"  imagePath="stimuli/set6_Page_05_tn.png"  audioPath="stimuli/65_rimpels"  tags="set6"  />
+        <stimulus  identifier="set6_Page_06_tn_66_welkom"  label="set6_Page_06_tn_66_welkom"  correctResponses="1"  imagePath="stimuli/set6_Page_06_tn.png"  audioPath="stimuli/66_welkom"  tags="set6"  />
+        <stimulus  identifier="set6_Page_07_tn_67_wortels"  label="set6_Page_07_tn_67_wortels"  correctResponses="1"  imagePath="stimuli/set6_Page_07_tn.png"  audioPath="stimuli/67_wortels"  tags="set6"  />
+        <stimulus  identifier="set6_Page_08_tn_68_afleveren"  label="set6_Page_08_tn_68_afleveren"  correctResponses="4"  imagePath="stimuli/set6_Page_08_tn.png"  audioPath="stimuli/68_afleveren"  tags="set6"  />
+        <stimulus  identifier="set6_Page_09_tn_69_graan"  label="set6_Page_09_tn_69_graan"  correctResponses="4"  imagePath="stimuli/set6_Page_09_tn.png"  audioPath="stimuli/69_graan"  tags="set6"  />
+        <stimulus  identifier="set6_Page_10_tn_70_voetgangers"  label="set6_Page_10_tn_70_voetgangers"  correctResponses="2"  imagePath="stimuli/set6_Page_10_tn.png"  audioPath="stimuli/70_voetgangers"  tags="set6"  />
+        <stimulus  identifier="set6_Page_11_tn_71_repareren"  label="set6_Page_11_tn_71_repareren"  correctResponses="4"  imagePath="stimuli/set6_Page_11_tn.png"  audioPath="stimuli/71_repareren"  tags="set6"  />
+        <stimulus  identifier="set6_Page_12_tn_72_eiland"  label="set6_Page_12_tn_72_eiland"  correctResponses="2"  imagePath="stimuli/set6_Page_12_tn.png"  audioPath="stimuli/72_eiland"  tags="set6"  />
+        <stimulus  identifier="set7_Page_01_tn_73_hoef"  label="set7_Page_01_tn_73_hoef"  correctResponses="1"  imagePath="stimuli/set7_Page_01_tn.png"  audioPath="stimuli/73_hoef"  tags="set7"  />
+        <stimulus  identifier="set7_Page_02_tn_74_schuin"  label="set7_Page_02_tn_74_schuin"  correctResponses="4"  imagePath="stimuli/set7_Page_02_tn.png"  audioPath="stimuli/74_schuin"  tags="set7"  />
+        <stimulus  identifier="set7_Page_03_tn_75_strompelen"  label="set7_Page_03_tn_75_strompelen"  correctResponses="3"  imagePath="stimuli/set7_Page_03_tn.png"  audioPath="stimuli/75_strompelen"  tags="set7"  />
+        <stimulus  identifier="set7_Page_04_tn_76_groente"  label="set7_Page_04_tn_76_groente"  correctResponses="3"  imagePath="stimuli/set7_Page_04_tn.png"  audioPath="stimuli/76_groente"  tags="set7"  />
+        <stimulus  identifier="set7_Page_05_tn_77_finish"  label="set7_Page_05_tn_77_finish"  correctResponses="2"  imagePath="stimuli/set7_Page_05_tn.png"  audioPath="stimuli/77_finish"  tags="set7"  />
+        <stimulus  identifier="set7_Page_06_tn_78_ovaal"  label="set7_Page_06_tn_78_ovaal"  correctResponses="2"  imagePath="stimuli/set7_Page_06_tn.png"  audioPath="stimuli/78_ovaal"  tags="set7"  />
+        <stimulus  identifier="set7_Page_07_tn_79_huwen"  label="set7_Page_07_tn_79_huwen"  correctResponses="4"  imagePath="stimuli/set7_Page_07_tn.png"  audioPath="stimuli/79_huwen"  tags="set7"  />
+        <stimulus  identifier="set7_Page_08_tn_80_sip"  label="set7_Page_08_tn_80_sip"  correctResponses="2"  imagePath="stimuli/set7_Page_08_tn.png"  audioPath="stimuli/80_sip"  tags="set7"  />
+        <stimulus  identifier="set7_Page_09_tn_81_sorteren"  label="set7_Page_09_tn_81_sorteren"  correctResponses="1"  imagePath="stimuli/set7_Page_09_tn.png"  audioPath="stimuli/81_sorteren"  tags="set7"  />
+        <stimulus  identifier="set7_Page_10_tn_82_prehistorisch"  label="set7_Page_10_tn_82_prehistorisch"  correctResponses="4"  imagePath="stimuli/set7_Page_10_tn.png"  audioPath="stimuli/82_prehistorisch"  tags="set7"  />
+        <stimulus  identifier="set7_Page_11_tn_83_halfvol"  label="set7_Page_11_tn_83_halfvol"  correctResponses="1"  imagePath="stimuli/set7_Page_11_tn.png"  audioPath="stimuli/83_halfvol"  tags="set7"  />
+        <stimulus  identifier="set7_Page_12_tn_84_kluis"  label="set7_Page_12_tn_84_kluis"  correctResponses="1"  imagePath="stimuli/set7_Page_12_tn.png"  audioPath="stimuli/84_kluis"  tags="set7"  />
+        <stimulus  identifier="set8_Page_01_tn_85_venster"  label="set8_Page_01_tn_85_venster"  correctResponses="4"  imagePath="stimuli/set8_Page_01_tn.png"  audioPath="stimuli/85_venster"  tags="set8"  />
+        <stimulus  identifier="set8_Page_02_tn_86_ploegen"  label="set8_Page_02_tn_86_ploegen"  correctResponses="3"  imagePath="stimuli/set8_Page_02_tn.png"  audioPath="stimuli/86_ploegen"  tags="set8"  />
+        <stimulus  identifier="set8_Page_03_tn_87_van_leer"  label="set8_Page_03_tn_87_van_leer"  correctResponses="4"  imagePath="stimuli/set8_Page_03_tn.png"  audioPath="stimuli/87_van_leer"  tags="set8"  />
+        <stimulus  identifier="set8_Page_04_tn_88_dam"  label="set8_Page_04_tn_88_dam"  correctResponses="2"  imagePath="stimuli/set8_Page_04_tn.png"  audioPath="stimuli/88_dam"  tags="set8"  />
+        <stimulus  identifier="set8_Page_05_tn_89_omhelzen"  label="set8_Page_05_tn_89_omhelzen"  correctResponses="3"  imagePath="stimuli/set8_Page_05_tn.png"  audioPath="stimuli/89_omhelzen"  tags="set8"  />
+        <stimulus  identifier="set8_Page_06_tn_90_vitrine"  label="set8_Page_06_tn_90_vitrine"  correctResponses="1"  imagePath="stimuli/set8_Page_06_tn.png"  audioPath="stimuli/90_vitrine"  tags="set8"  />
+        <stimulus  identifier="set8_Page_07_tn_91_woud"  label="set8_Page_07_tn_91_woud"  correctResponses="2"  imagePath="stimuli/set8_Page_07_tn.png"  audioPath="stimuli/91_woud"  tags="set8"  />
+        <stimulus  identifier="set8_Page_08_tn_92_geketend"  label="set8_Page_08_tn_92_geketend"  correctResponses="3"  imagePath="stimuli/set8_Page_08_tn.png"  audioPath="stimuli/92_geketend"  tags="set8"  />
+        <stimulus  identifier="set8_Page_09_tn_93_autoriteit"  label="set8_Page_09_tn_93_autoriteit"  correctResponses="2"  imagePath="stimuli/set8_Page_09_tn.png"  audioPath="stimuli/93_autoriteit"  tags="set8"  />
+        <stimulus  identifier="set8_Page_10_tn_94_haspel"  label="set8_Page_10_tn_94_haspel"  correctResponses="4"  imagePath="stimuli/set8_Page_10_tn.png"  audioPath="stimuli/94_haspel"  tags="set8"  />
+        <stimulus  identifier="set8_Page_11_tn_95_schuren"  label="set8_Page_11_tn_95_schuren"  correctResponses="1"  imagePath="stimuli/set8_Page_11_tn.png"  audioPath="stimuli/95_schuren"  tags="set8"  />
+        <stimulus  identifier="set8_Page_12_tn_96_prooi"  label="set8_Page_12_tn_96_prooi"  correctResponses="3"  imagePath="stimuli/set8_Page_12_tn.png"  audioPath="stimuli/96_prooi"  tags="set8"  />
+        <stimulus  identifier="set9_Page_01_tn_97_voertuig"  label="set9_Page_01_tn_97_voertuig"  correctResponses="2"  imagePath="stimuli/set9_Page_01_tn.png"  audioPath="stimuli/97_voertuig"  tags="set9"  />
+        <stimulus  identifier="set9_Page_02_tn_98_onverwacht"  label="set9_Page_02_tn_98_onverwacht"  correctResponses="3"  imagePath="stimuli/set9_Page_02_tn.png"  audioPath="stimuli/98_onverwacht"  tags="set9"  />
+        <stimulus  identifier="set9_Page_03_tn_99_burcht"  label="set9_Page_03_tn_99_burcht"  correctResponses="2"  imagePath="stimuli/set9_Page_03_tn.png"  audioPath="stimuli/99_burcht"  tags="set9"  />
+        <stimulus  identifier="set9_Page_04_tn_100_vergiet"  label="set9_Page_04_tn_100_vergiet"  correctResponses="4"  imagePath="stimuli/set9_Page_04_tn.png"  audioPath="stimuli/100_vergiet"  tags="set9"  />
+        <stimulus  identifier="set9_Page_05_tn_101_dakkapel"  label="set9_Page_05_tn_101_dakkapel"  correctResponses="4"  imagePath="stimuli/set9_Page_05_tn.png"  audioPath="stimuli/101_dakkapel"  tags="set9"  />
+        <stimulus  identifier="set9_Page_06_tn_102_vergezellen"  label="set9_Page_06_tn_102_vergezellen"  correctResponses="3"  imagePath="stimuli/set9_Page_06_tn.png"  audioPath="stimuli/102_vergezellen"  tags="set9"  />
+        <stimulus  identifier="set9_Page_07_tn_103_verstelbaar"  label="set9_Page_07_tn_103_verstelbaar"  correctResponses="2"  imagePath="stimuli/set9_Page_07_tn.png"  audioPath="stimuli/103_verstelbaar"  tags="set9"  />
+        <stimulus  identifier="set9_Page_08_tn_104_pelikaan"  label="set9_Page_08_tn_104_pelikaan"  correctResponses="1"  imagePath="stimuli/set9_Page_08_tn.png"  audioPath="stimuli/104_pelikaan"  tags="set9"  />
+        <stimulus  identifier="set9_Page_09_tn_105_klarinet"  label="set9_Page_09_tn_105_klarinet"  correctResponses="4"  imagePath="stimuli/set9_Page_09_tn.png"  audioPath="stimuli/105_klarinet"  tags="set9"  />
+        <stimulus  identifier="set9_Page_10_tn_106_pedaal"  label="set9_Page_10_tn_106_pedaal"  correctResponses="2"  imagePath="stimuli/set9_Page_10_tn.png"  audioPath="stimuli/106_pedaal"  tags="set9"  />
+        <stimulus  identifier="set9_Page_11_tn_107_bankbiljet"  label="set9_Page_11_tn_107_bankbiljet"  correctResponses="3"  imagePath="stimuli/set9_Page_11_tn.png"  audioPath="stimuli/107_bankbiljet"  tags="set9"  />
+        <stimulus  identifier="set9_Page_12_tn_108_hiel"  label="set9_Page_12_tn_108_hiel"  correctResponses="1"  imagePath="stimuli/set9_Page_12_tn.png"  audioPath="stimuli/108_hiel"  tags="set9"  />
+        <stimulus  identifier="set10_Page_01_tn_109_kandelaar"  label="set10_Page_01_tn_109_kandelaar"  correctResponses="1"  imagePath="stimuli/set10_Page_01_tn.png"  audioPath="stimuli/109_kandelaar"  tags="set10"  />
+        <stimulus  identifier="set10_Page_02_tn_110_naar_het_oosten"  label="set10_Page_02_tn_110_naar_het_oosten"  correctResponses="3"  imagePath="stimuli/set10_Page_02_tn.png"  audioPath="stimuli/110_naar_het_oosten"  tags="set10"  />
+        <stimulus  identifier="set10_Page_03_tn_111_balken"  label="set10_Page_03_tn_111_balken"  correctResponses="2"  imagePath="stimuli/set10_Page_03_tn.png"  audioPath="stimuli/111_balken"  tags="set10"  />
+        <stimulus  identifier="set10_Page_04_tn_112_parallel"  label="set10_Page_04_tn_112_parallel"  correctResponses="3"  imagePath="stimuli/set10_Page_04_tn.png"  audioPath="stimuli/112_parallel"  tags="set10"  />
+        <stimulus  identifier="set10_Page_05_tn_113_openbaar_vervoer"  label="set10_Page_05_tn_113_openbaar_vervoer"  correctResponses="2"  imagePath="stimuli/set10_Page_05_tn.png"  audioPath="stimuli/113_openbaar_vervoer"  tags="set10"  />
+        <stimulus  identifier="set10_Page_06_tn_114_vloeibaar"  label="set10_Page_06_tn_114_vloeibaar"  correctResponses="1"  imagePath="stimuli/set10_Page_06_tn.png"  audioPath="stimuli/114_vloeibaar"  tags="set10"  />
+        <stimulus  identifier="set10_Page_07_tn_115_competitief"  label="set10_Page_07_tn_115_competitief"  correctResponses="4"  imagePath="stimuli/set10_Page_07_tn.png"  audioPath="stimuli/115_competitief"  tags="set10"  />
+        <stimulus  identifier="set10_Page_08_tn_116_signaal"  label="set10_Page_08_tn_116_signaal"  correctResponses="1"  imagePath="stimuli/set10_Page_08_tn.png"  audioPath="stimuli/116_signaal"  tags="set10"  />
+        <stimulus  identifier="set10_Page_09_tn_117_lozen"  label="set10_Page_09_tn_117_lozen"  correctResponses="3"  imagePath="stimuli/set10_Page_09_tn.png"  audioPath="stimuli/117_lozen"  tags="set10"  />
+        <stimulus  identifier="set10_Page_10_tn_118_garde"  label="set10_Page_10_tn_118_garde"  correctResponses="1"  imagePath="stimuli/set10_Page_10_tn.png"  audioPath="stimuli/118_garde"  tags="set10"  />
+        <stimulus  identifier="set10_Page_11_tn_119_sanitair"  label="set10_Page_11_tn_119_sanitair"  correctResponses="4"  imagePath="stimuli/set10_Page_11_tn.png"  audioPath="stimuli/119_sanitair"  tags="set10"  />
+        <stimulus  identifier="set10_Page_12_tn_120_gefrankeerd"  label="set10_Page_12_tn_120_gefrankeerd"  correctResponses="4"  imagePath="stimuli/set10_Page_12_tn.png"  audioPath="stimuli/120_gefrankeerd"  tags="set10"  />
+        <stimulus  identifier="set11_Page_01_tn_121_peulvrucht"  label="set11_Page_01_tn_121_peulvrucht"  correctResponses="3"  imagePath="stimuli/set11_Page_01_tn.png"  audioPath="stimuli/121_peulvrucht"  tags="set11"  />
+        <stimulus  identifier="set11_Page_02_tn_122_rund"  label="set11_Page_02_tn_122_rund"  correctResponses="2"  imagePath="stimuli/set11_Page_02_tn.png"  audioPath="stimuli/122_rund"  tags="set11"  />
+        <stimulus  identifier="set11_Page_03_tn_123_valuta"  label="set11_Page_03_tn_123_valuta"  correctResponses="3"  imagePath="stimuli/set11_Page_03_tn.png"  audioPath="stimuli/123_valuta"  tags="set11"  />
+        <stimulus  identifier="set11_Page_04_tn_124_agrarisch"  label="set11_Page_04_tn_124_agrarisch"  correctResponses="4"  imagePath="stimuli/set11_Page_04_tn.png"  audioPath="stimuli/124_agrarisch"  tags="set11"  />
+        <stimulus  identifier="set11_Page_05_tn_125_identiek"  label="set11_Page_05_tn_125_identiek"  correctResponses="2"  imagePath="stimuli/set11_Page_05_tn.png"  audioPath="stimuli/125_identiek"  tags="set11"  />
+        <stimulus  identifier="set11_Page_06_tn_126_oase"  label="set11_Page_06_tn_126_oase"  correctResponses="1"  imagePath="stimuli/set11_Page_06_tn.png"  audioPath="stimuli/126_oase"  tags="set11"  />
+        <stimulus  identifier="set11_Page_07_tn_127_porselein"  label="set11_Page_07_tn_127_porselein"  correctResponses="1"  imagePath="stimuli/set11_Page_07_tn.png"  audioPath="stimuli/127_porselein"  tags="set11"  />
+        <stimulus  identifier="set11_Page_08_tn_128_doceren"  label="set11_Page_08_tn_128_doceren"  correctResponses="4"  imagePath="stimuli/set11_Page_08_tn.png"  audioPath="stimuli/128_doceren"  tags="set11"  />
+        <stimulus  identifier="set11_Page_09_tn_129_karaf"  label="set11_Page_09_tn_129_karaf"  correctResponses="4"  imagePath="stimuli/set11_Page_09_tn.png"  audioPath="stimuli/129_karaf"  tags="set11"  />
+        <stimulus  identifier="set11_Page_10_tn_130_silhouet"  label="set11_Page_10_tn_130_silhouet"  correctResponses="1"  imagePath="stimuli/set11_Page_10_tn.png"  audioPath="stimuli/130_silhouet"  tags="set11"  />
+        <stimulus  identifier="set11_Page_11_tn_131_duet"  label="set11_Page_11_tn_131_duet"  correctResponses="3"  imagePath="stimuli/set11_Page_11_tn.png"  audioPath="stimuli/131_duet"  tags="set11"  />
+        <stimulus  identifier="set11_Page_12_tn_132_transparant"  label="set11_Page_12_tn_132_transparant"  correctResponses="3"  imagePath="stimuli/set11_Page_12_tn.png"  audioPath="stimuli/132_transparant"  tags="set11"  />
+        <stimulus  identifier="set12_Page_01_tn_133_verorberen"  label="set12_Page_01_tn_133_verorberen"  correctResponses="2"  imagePath="stimuli/set12_Page_01_tn.png"  audioPath="stimuli/133_verorberen"  tags="set12"  />
+        <stimulus  identifier="set12_Page_02_tn_134_twijg"  label="set12_Page_02_tn_134_twijg"  correctResponses="2"  imagePath="stimuli/set12_Page_02_tn.png"  audioPath="stimuli/134_twijg"  tags="set12"  />
+        <stimulus  identifier="set12_Page_03_tn_135_bronchieen"  label="set12_Page_03_tn_135_bronchieen"  correctResponses="4"  imagePath="stimuli/set12_Page_03_tn.png"  audioPath="stimuli/135_bronchieen"  tags="set12"  />
+        <stimulus  identifier="set12_Page_04_tn_136_cooperatief"  label="set12_Page_04_tn_136_cooperatief"  correctResponses="1"  imagePath="stimuli/set12_Page_04_tn.png"  audioPath="stimuli/136_cooperatief"  tags="set12"  />
+        <stimulus  identifier="set12_Page_05_tn_137_symbool"  label="set12_Page_05_tn_137_symbool"  correctResponses="3"  imagePath="stimuli/set12_Page_05_tn.png"  audioPath="stimuli/137_symbool"  tags="set12"  />
+        <stimulus  identifier="set12_Page_06_tn_138_conflict"  label="set12_Page_06_tn_138_conflict"  correctResponses="1"  imagePath="stimuli/set12_Page_06_tn.png"  audioPath="stimuli/138_conflict"  tags="set12"  />
+        <stimulus  identifier="set12_Page_07_tn_139_globe"  label="set12_Page_07_tn_139_globe"  correctResponses="2"  imagePath="stimuli/set12_Page_07_tn.png"  audioPath="stimuli/139_globe"  tags="set12"  />
+        <stimulus  identifier="set12_Page_08_tn_140_berispen"  label="set12_Page_08_tn_140_berispen"  correctResponses="4"  imagePath="stimuli/set12_Page_08_tn.png"  audioPath="stimuli/140_berispen"  tags="set12"  />
+        <stimulus  identifier="set12_Page_09_tn_141_silo"  label="set12_Page_09_tn_141_silo"  correctResponses="2"  imagePath="stimuli/set12_Page_09_tn.png"  audioPath="stimuli/141_silo"  tags="set12"  />
+        <stimulus  identifier="set12_Page_10_tn_142_coupe"  label="set12_Page_10_tn_142_coupe"  correctResponses="1"  imagePath="stimuli/set12_Page_10_tn.png"  audioPath="stimuli/142_coupe"  tags="set12"  />
+        <stimulus  identifier="set12_Page_11_tn_143_projectiel"  label="set12_Page_11_tn_143_projectiel"  correctResponses="4"  imagePath="stimuli/set12_Page_11_tn.png"  audioPath="stimuli/143_projectiel"  tags="set12"  />
+        <stimulus  identifier="set12_Page_12_tn_144_culinair"  label="set12_Page_12_tn_144_culinair"  correctResponses="3"  imagePath="stimuli/set12_Page_12_tn.png"  audioPath="stimuli/144_culinair"  tags="set12"  />
+        <stimulus  identifier="set13_Page_01_tn_145_meeldraad"  label="set13_Page_01_tn_145_meeldraad"  correctResponses="3"  imagePath="stimuli/set13_Page_01_tn.png"  audioPath="stimuli/145_meeldraad"  tags="set13"  />
+        <stimulus  identifier="set13_Page_02_tn_146_sectie"  label="set13_Page_02_tn_146_sectie"  correctResponses="1"  imagePath="stimuli/set13_Page_02_tn.png"  audioPath="stimuli/146_sectie"  tags="set13"  />
+        <stimulus  identifier="set13_Page_03_tn_147_consumenten"  label="set13_Page_03_tn_147_consumenten"  correctResponses="4"  imagePath="stimuli/set13_Page_03_tn.png"  audioPath="stimuli/147_consumenten"  tags="set13"  />
+        <stimulus  identifier="set13_Page_04_tn_148_primaat"  label="set13_Page_04_tn_148_primaat"  correctResponses="2"  imagePath="stimuli/set13_Page_04_tn.png"  audioPath="stimuli/148_primaat"  tags="set13"  />
+        <stimulus  identifier="set13_Page_05_tn_149_schakels"  label="set13_Page_05_tn_149_schakels"  correctResponses="4"  imagePath="stimuli/set13_Page_05_tn.png"  audioPath="stimuli/149_schakels"  tags="set13"  />
+        <stimulus  identifier="set13_Page_06_tn_150_waden"  label="set13_Page_06_tn_150_waden"  correctResponses="3"  imagePath="stimuli/set13_Page_06_tn.png"  audioPath="stimuli/150_waden"  tags="set13"  />
+        <stimulus  identifier="set13_Page_07_tn_151_pagode"  label="set13_Page_07_tn_151_pagode"  correctResponses="1"  imagePath="stimuli/set13_Page_07_tn.png"  audioPath="stimuli/151_pagode"  tags="set13"  />
+        <stimulus  identifier="set13_Page_08_tn_152_oraal"  label="set13_Page_08_tn_152_oraal"  correctResponses="1"  imagePath="stimuli/set13_Page_08_tn.png"  audioPath="stimuli/152_oraal"  tags="set13"  />
+        <stimulus  identifier="set13_Page_09_tn_153_zuil"  label="set13_Page_09_tn_153_zuil"  correctResponses="2"  imagePath="stimuli/set13_Page_09_tn.png"  audioPath="stimuli/153_zuil"  tags="set13"  />
+        <stimulus  identifier="set13_Page_10_tn_154_onroerend_goed"  label="set13_Page_10_tn_154_onroerend_goed"  correctResponses="4"  imagePath="stimuli/set13_Page_10_tn.png"  audioPath="stimuli/154_onroerend_goed"  tags="set13"  />
+        <stimulus  identifier="set13_Page_11_tn_155_wingerd"  label="set13_Page_11_tn_155_wingerd"  correctResponses="1"  imagePath="stimuli/set13_Page_11_tn.png"  audioPath="stimuli/155_wingerd"  tags="set13"  />
+        <stimulus  identifier="set13_Page_12_tn_156_amazone"  label="set13_Page_12_tn_156_amazone"  correctResponses="3"  imagePath="stimuli/set13_Page_12_tn.png"  audioPath="stimuli/156_amazone"  tags="set13"  />
+        <stimulus  identifier="set14_Page_01_tn_157_geemancipeerd"  label="set14_Page_01_tn_157_geemancipeerd"  correctResponses="3"  imagePath="stimuli/set14_Page_01_tn.png"  audioPath="stimuli/157_geemancipeerd"  tags="set14"  />
+        <stimulus  identifier="set14_Page_02_tn_158_trapezium"  label="set14_Page_02_tn_158_trapezium"  correctResponses="1"  imagePath="stimuli/set14_Page_02_tn.png"  audioPath="stimuli/158_trapezium"  tags="set14"  />
+        <stimulus  identifier="set14_Page_03_tn_159_tiranniek"  label="set14_Page_03_tn_159_tiranniek"  correctResponses="4"  imagePath="stimuli/set14_Page_03_tn.png"  audioPath="stimuli/159_tiranniek"  tags="set14"  />
+        <stimulus  identifier="set14_Page_04_tn_160_amerikaanse_eik"  label="set14_Page_04_tn_160_amerikaanse_eik"  correctResponses="2"  imagePath="stimuli/set14_Page_04_tn.png"  audioPath="stimuli/160_amerikaanse_eik"  tags="set14"  />
+        <stimulus  identifier="set14_Page_05_tn_161_hevelen"  label="set14_Page_05_tn_161_hevelen"  correctResponses="3"  imagePath="stimuli/set14_Page_05_tn.png"  audioPath="stimuli/161_hevelen"  tags="set14"  />
+        <stimulus  identifier="set14_Page_06_tn_162_timpaan"  label="set14_Page_06_tn_162_timpaan"  correctResponses="3"  imagePath="stimuli/set14_Page_06_tn.png"  audioPath="stimuli/162_timpaan"  tags="set14"  />
+        <stimulus  identifier="set14_Page_07_tn_163_kuieren"  label="set14_Page_07_tn_163_kuieren"  correctResponses="2"  imagePath="stimuli/set14_Page_07_tn.png"  audioPath="stimuli/163_kuieren"  tags="set14"  />
+        <stimulus  identifier="set14_Page_08_tn_164_revers"  label="set14_Page_08_tn_164_revers"  correctResponses="2"  imagePath="stimuli/set14_Page_08_tn.png"  audioPath="stimuli/164_revers"  tags="set14"  />
+        <stimulus  identifier="set14_Page_09_tn_165_assemblage"  label="set14_Page_09_tn_165_assemblage"  correctResponses="2"  imagePath="stimuli/set14_Page_09_tn.png"  audioPath="stimuli/165_assemblage"  tags="set14"  />
+        <stimulus  identifier="set14_Page_10_tn_166_hoornvlies"  label="set14_Page_10_tn_166_hoornvlies"  correctResponses="4"  imagePath="stimuli/set14_Page_10_tn.png"  audioPath="stimuli/166_hoornvlies"  tags="set14"  />
+        <stimulus  identifier="set14_Page_11_tn_167_schiereiland"  label="set14_Page_11_tn_167_schiereiland"  correctResponses="4"  imagePath="stimuli/set14_Page_11_tn.png"  audioPath="stimuli/167_schiereiland"  tags="set14"  />
+        <stimulus  identifier="set14_Page_12_tn_168_corpulent"  label="set14_Page_12_tn_168_corpulent"  correctResponses="1"  imagePath="stimuli/set14_Page_12_tn.png"  audioPath="stimuli/168_corpulent"  tags="set14"  />
+        <stimulus  identifier="set15_Page_01_tn_169_pontonbrug"  label="set15_Page_01_tn_169_pontonbrug"  correctResponses="4"  imagePath="stimuli/set15_Page_01_tn.png"  audioPath="stimuli/169_pontonbrug"  tags="set15"  />
+        <stimulus  identifier="set15_Page_02_tn_170_kelkvormig"  label="set15_Page_02_tn_170_kelkvormig"  correctResponses="4"  imagePath="stimuli/set15_Page_02_tn.png"  audioPath="stimuli/170_kelkvormig"  tags="set15"  />
+        <stimulus  identifier="set15_Page_03_tn_171_epaulet"  label="set15_Page_03_tn_171_epaulet"  correctResponses="2"  imagePath="stimuli/set15_Page_03_tn.png"  audioPath="stimuli/171_epaulet"  tags="set15"  />
+        <stimulus  identifier="set15_Page_04_tn_172_melancholiek"  label="set15_Page_04_tn_172_melancholiek"  correctResponses="3"  imagePath="stimuli/set15_Page_04_tn.png"  audioPath="stimuli/172_melancholiek"  tags="set15"  />
+        <stimulus  identifier="set15_Page_05_tn_173_sonnet"  label="set15_Page_05_tn_173_sonnet"  correctResponses="3"  imagePath="stimuli/set15_Page_05_tn.png"  audioPath="stimuli/173_sonnet"  tags="set15"  />
+        <stimulus  identifier="set15_Page_06_tn_174_conisch"  label="set15_Page_06_tn_174_conisch"  correctResponses="1"  imagePath="stimuli/set15_Page_06_tn.png"  audioPath="stimuli/174_conisch"  tags="set15"  />
+        <stimulus  identifier="set15_Page_07_tn_175_oreren"  label="set15_Page_07_tn_175_oreren"  correctResponses="1"  imagePath="stimuli/set15_Page_07_tn.png"  audioPath="stimuli/175_oreren"  tags="set15"  />
+        <stimulus  identifier="set15_Page_08_tn_176_hydrant"  label="set15_Page_08_tn_176_hydrant"  correctResponses="2"  imagePath="stimuli/set15_Page_08_tn.png"  audioPath="stimuli/176_hydrant"  tags="set15"  />
+        <stimulus  identifier="set15_Page_09_tn_177_stradivarius"  label="set15_Page_09_tn_177_stradivarius"  correctResponses="3"  imagePath="stimuli/set15_Page_09_tn.png"  audioPath="stimuli/177_stradivarius"  tags="set15"  />
+        <stimulus  identifier="set15_Page_10_tn_178_cascade"  label="set15_Page_10_tn_178_cascade"  correctResponses="2"  imagePath="stimuli/set15_Page_10_tn.png"  audioPath="stimuli/178_cascade"  tags="set15"  />
+        <stimulus  identifier="set15_Page_11_tn_179_aviatisch"  label="set15_Page_11_tn_179_aviatisch"  correctResponses="4"  imagePath="stimuli/set15_Page_11_tn.png"  audioPath="stimuli/179_aviatisch"  tags="set15"  />
+        <stimulus  identifier="set15_Page_12_tn_180_oplaaien"  label="set15_Page_12_tn_180_oplaaien"  correctResponses="3"  imagePath="stimuli/set15_Page_12_tn.png"  audioPath="stimuli/180_oplaaien"  tags="set15"  />
+        <stimulus  identifier="set16_Page_01_tn_181_alt"  label="set16_Page_01_tn_181_alt"  correctResponses="2"  imagePath="stimuli/set16_Page_01_tn.png"  audioPath="stimuli/181_alt"  tags="set16"  />
+        <stimulus  identifier="set16_Page_02_tn_182_kalligraferen"  label="set16_Page_02_tn_182_kalligraferen"  correctResponses="1"  imagePath="stimuli/set16_Page_02_tn.png"  audioPath="stimuli/182_kalligraferen"  tags="set16"  />
+        <stimulus  identifier="set16_Page_03_tn_183_wigvormig"  label="set16_Page_03_tn_183_wigvormig"  correctResponses="3"  imagePath="stimuli/set16_Page_03_tn.png"  audioPath="stimuli/183_wigvormig"  tags="set16"  />
+        <stimulus  identifier="set16_Page_04_tn_184_beschoeiing"  label="set16_Page_04_tn_184_beschoeiing"  correctResponses="4"  imagePath="stimuli/set16_Page_04_tn.png"  audioPath="stimuli/184_beschoeiing"  tags="set16"  />
+        <stimulus  identifier="set16_Page_05_tn_185_divergeren"  label="set16_Page_05_tn_185_divergeren"  correctResponses="2"  imagePath="stimuli/set16_Page_05_tn.png"  audioPath="stimuli/185_divergeren"  tags="set16"  />
+        <stimulus  identifier="set16_Page_06_tn_186_heterogeen"  label="set16_Page_06_tn_186_heterogeen"  correctResponses="1"  imagePath="stimuli/set16_Page_06_tn.png"  audioPath="stimuli/186_heterogeen"  tags="set16"  />
+        <stimulus  identifier="set16_Page_07_tn_187_nautisch"  label="set16_Page_07_tn_187_nautisch"  correctResponses="4"  imagePath="stimuli/set16_Page_07_tn.png"  audioPath="stimuli/187_nautisch"  tags="set16"  />
+        <stimulus  identifier="set16_Page_08_tn_188_en_profil"  label="set16_Page_08_tn_188_en_profil"  correctResponses="2"  imagePath="stimuli/set16_Page_08_tn.png"  audioPath="stimuli/188_en_profil"  tags="set16"  />
+        <stimulus  identifier="set16_Page_09_tn_189_entomoloog"  label="set16_Page_09_tn_189_entomoloog"  correctResponses="1"  imagePath="stimuli/set16_Page_09_tn.png"  audioPath="stimuli/189_entomoloog"  tags="set16"  />
+        <stimulus  identifier="set16_Page_10_tn_190_numismatiek"  label="set16_Page_10_tn_190_numismatiek"  correctResponses="4"  imagePath="stimuli/set16_Page_10_tn.png"  audioPath="stimuli/190_numismatiek"  tags="set16"  />
+        <stimulus  identifier="set16_Page_11_tn_191_gournand"  label="set16_Page_11_tn_191_gournand"  correctResponses="3"  imagePath="stimuli/set16_Page_11_tn.png"  audioPath="stimuli/191_gournand"  tags="set16"  />
+        <stimulus  identifier="set16_Page_12_tn_192_velours"  label="set16_Page_12_tn_192_velours"  correctResponses="4"  imagePath="stimuli/set16_Page_12_tn.png"  audioPath="stimuli/192_velours"  tags="set16"  />
+        <stimulus  identifier="set17_Page_01_tn_193_dorsaal"  label="set17_Page_01_tn_193_dorsaal"  correctResponses="1"  imagePath="stimuli/set17_Page_01_tn.png"  audioPath="stimuli/193_dorsaal"  tags="set17"  />
+        <stimulus  identifier="set17_Page_02_tn_194_dukdalf"  label="set17_Page_02_tn_194_dukdalf"  correctResponses="2"  imagePath="stimuli/set17_Page_02_tn.png"  audioPath="stimuli/194_dukdalf"  tags="set17"  />
+        <stimulus  identifier="set17_Page_03_tn_195_ijlen"  label="set17_Page_03_tn_195_ijlen"  correctResponses="3"  imagePath="stimuli/set17_Page_03_tn.png"  audioPath="stimuli/195_ijlen"  tags="set17"  />
+        <stimulus  identifier="set17_Page_04_tn_196_zadeldak"  label="set17_Page_04_tn_196_zadeldak"  correctResponses="4"  imagePath="stimuli/set17_Page_04_tn.png"  audioPath="stimuli/196_zadeldak"  tags="set17"  />
+        <stimulus  identifier="set17_Page_05_tn_197_succulent"  label="set17_Page_05_tn_197_succulent"  correctResponses="2"  imagePath="stimuli/set17_Page_05_tn.png"  audioPath="stimuli/197_succulent"  tags="set17"  />
+        <stimulus  identifier="set17_Page_06_tn_198_gecapitonneerd"  label="set17_Page_06_tn_198_gecapitonneerd"  correctResponses="1"  imagePath="stimuli/set17_Page_06_tn.png"  audioPath="stimuli/198_gecapitonneerd"  tags="set17"  />
+        <stimulus  identifier="set17_Page_07_tn_199_tweeslachtig"  label="set17_Page_07_tn_199_tweeslachtig"  correctResponses="3"  imagePath="stimuli/set17_Page_07_tn.png"  audioPath="stimuli/199_tweeslachtig"  tags="set17"  />
+        <stimulus  identifier="set17_Page_08_tn_200_bovenkruier"  label="set17_Page_08_tn_200_bovenkruier"  correctResponses="3"  imagePath="stimuli/set17_Page_08_tn.png"  audioPath="stimuli/200_bovenkruier"  tags="set17"  />
+        <stimulus  identifier="set17_Page_09_tn_201_lamenteren"  label="set17_Page_09_tn_201_lamenteren"  correctResponses="1"  imagePath="stimuli/set17_Page_09_tn.png"  audioPath="stimuli/201_lamenteren"  tags="set17"  />
+        <stimulus  identifier="set17_Page_10_tn_202_convex"  label="set17_Page_10_tn_202_convex"  correctResponses="3"  imagePath="stimuli/set17_Page_10_tn.png"  audioPath="stimuli/202_convex"  tags="set17"  />
+        <stimulus  identifier="set17_Page_11_tn_203_nonnetje"  label="set17_Page_11_tn_203_nonnetje"  correctResponses="4"  imagePath="stimuli/set17_Page_11_tn.png"  audioPath="stimuli/203_nonnetje"  tags="set17"  />
+        <stimulus  identifier="set17_Page_12_tn_204_wetten"  label="set17_Page_12_tn_204_wetten"  correctResponses="1"  imagePath="stimuli/set17_Page_12_tn.png"  audioPath="stimuli/204_wetten"  tags="set17"  />           
+    </stimuli>
+</experiment>   
