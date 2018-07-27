@@ -20,28 +20,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.CsvRecords;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.model.peabody.PeabodyStimulus;
-import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.PeabodyStimuliProvider;
-import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  *
  * @author olhshk
  */
-public class PeabodyStimuliFromString {
+public class PeabodyStimuliToXml {
 
-    private final LinkedHashMap<String, PeabodyStimulus> hashedStimuli = new LinkedHashMap<String, PeabodyStimulus>();
-    private final  ArrayList<ArrayList<PeabodyStimulus>> stimuliByBands = new ArrayList<ArrayList<PeabodyStimulus>>();
-  
-    public void parseWordsInputCSVString(final PeabodyStimuliProvider provider, int numberOfBands, String stimuliDir) throws Exception {
+    
+    public String parseWordsInputCSVString(String stimuliDir, String csvString) throws Exception {
+        
+        StringBuilder retVal= new StringBuilder();
         
         
-        String csvString = CsvTable.CSV_STRING_NL;
-        
-        for (int i=0; i<numberOfBands; i++) {
-            this.stimuliByBands.add(new ArrayList<PeabodyStimulus>());
-        }
-
         CsvRecords csvWrapper = new CsvRecords(null, "\t", "\n");
         csvWrapper.readRecords(csvString);
         ArrayList<LinkedHashMap<String, String>> records = csvWrapper.getRecords();
@@ -51,19 +42,19 @@ public class PeabodyStimuliFromString {
 
             String picture = record.get("Picture").trim();
             if (picture == null) {
-                throw new IOException(picture + "is undefined");
+                throw new IOException("Image is undefined");
             }
             
             
             
             String sound = record.get("Sound").trim();
             if (sound == null) {
-                throw new IOException(sound + "is undefined");
+                throw new IOException("Sound is undefined");
             }
             
             String correctAnswer = record.get("CorrectAnswer").trim();
             if (correctAnswer == null) {
-                throw new IOException(correctAnswer + "is undefined");
+                throw new IOException("Correct is undefined");
             }
 
             String imagePath = picture.trim();
@@ -72,36 +63,41 @@ public class PeabodyStimuliFromString {
             String uniqueId = this.removeFileExtension(imagePath, ".png") +"_"+audioPath;
             String label = uniqueId;
             
-            String[] helpBandLabel = imagePath.split("_");
-            String set = helpBandLabel[0];
-            int bandIndex = Indices.SET_TO_BAND_INDEX.get(set);
-            
+            String[] help = imagePath.split("_");
+            String set = help[0];
             imagePath = stimuliDir + imagePath;
             audioPath = stimuliDir + audioPath;
                     
-            // PeabodyStimulus(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, String set, int bandIndex)
-            PeabodyStimulus stimulus = new PeabodyStimulus(uniqueId,new Stimulus.Tag[0], label, "",  0, audioPath, "", imagePath, "1,2,3,4", correctAnswer.trim(), set, bandIndex){
-                    @Override
-                    public boolean isCorrect(String value) {
-                        return provider.isCorrectResponse(this, value);
-                    }
-                };
-            this.stimuliByBands.get(bandIndex).add(stimulus);
-            this.hashedStimuli.put(uniqueId, stimulus);
+            String stimulusXml = this.makeStimulusString(uniqueId, label, correctAnswer, imagePath, audioPath, set);
+            
+            retVal.append(stimulusXml);
         }
+         return retVal.toString();
+        
     }
 
     
   
+  private String makeStimulusString(String uniqueId,
+            String label,
+            String correctResponse,
+            String imagePath,
+            String audioPath,
+            String tags) {
 
-    public LinkedHashMap<String, PeabodyStimulus> getHashedStimuli() {
-        return this.hashedStimuli;
+        StringBuilder retVal = new StringBuilder();
+        retVal.append("<stimulus ");
+        retVal.append(" identifier=\"").append(uniqueId).append("\" ");
+        retVal.append(" label=\"").append(label).append("\" ");
+        retVal.append(" correctResponses=\"").append(correctResponse).append("\" ");
+        retVal.append(" imagePath=\"").append(imagePath).append("\" ");
+        retVal.append(" audioPath=\"").append(audioPath).append("\" ");
+        retVal.append(" tags=\"").append(tags).append("\" ");
+
+        retVal.append(" />\n");
+        return retVal.toString();
+
     }
-    
-     public  ArrayList<ArrayList<PeabodyStimulus>> getStimuliByBands(){
-         return this.stimuliByBands;
-     }
-
   
     public String removeFileExtension(String name, String extension) {
         if (name.endsWith(extension)) {
