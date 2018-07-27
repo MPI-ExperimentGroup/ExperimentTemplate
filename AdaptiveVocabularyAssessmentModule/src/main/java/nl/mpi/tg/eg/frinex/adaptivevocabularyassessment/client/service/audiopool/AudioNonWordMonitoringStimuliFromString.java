@@ -77,6 +77,12 @@ public class AudioNonWordMonitoringStimuliFromString {
             if (trialCondition == null) {
                 throw new IOException("Condition is undefined");
             }
+            if (trialCondition.equals("Target-only") || trialCondition.equals("Target-Only")) {
+                trialCondition = "TargetOnly";
+            }
+            if (trialCondition.equals("Target+Foil") || trialCondition.equals("Target+foil")) {
+                trialCondition = "TargetAndFoil";
+            }
 
             String trialLength = record.get("Length_list").trim().substring(0, 1);
             if (trialLength == null) {
@@ -95,11 +101,11 @@ public class AudioNonWordMonitoringStimuliFromString {
             }
 
             ArrayList<String> words = new ArrayList<String>(trialLengthInt + 1);
-            for (int i = 0; i < trialLengthInt + 1; i++) {
-                words.add("");
-            }
 
-            words.set(0, trialTargetNonword + "_1");
+            if (!trialCondition.equals("NoTarget")) {
+                trialTargetNonword += "_1";
+            }
+            words.add(trialTargetNonword);
 
             String trialPositionTarget = record.get("Position_target").trim();
             if (trialPositionTarget == null) {
@@ -113,10 +119,11 @@ public class AudioNonWordMonitoringStimuliFromString {
                 if (currentWord == null) {
                     throw new IOException(fieldName + " is undefined");
                 }
+
                 if (i == trialPositionTargetInt) {
-                       currentWord = currentWord + "_2";
+                    currentWord = currentWord + "_2";
                 }
-                words.set(i, currentWord);
+                words.add(currentWord);
             }
 
             String trialPositionFoil = record.get("Position_foil").trim();
@@ -128,23 +135,15 @@ public class AudioNonWordMonitoringStimuliFromString {
             for (int i = 0; i < words.size(); i++) {
 
                 String wrd = this.removeFileNameExtensions(words.get(i), fileNameExtensions);
-                String suffix = "_in_" + trialCondition;
-                String ratingLabels = "JA,NEE";
-                String correctResponse = "NEE";
-                String locationInDir;
+                String pathEnd;
                 String tags = "trial_" + trialNumber + " round_" + round + " condition_" + trialCondition + " length_" + trialCondition + " word_" + trialWord;
                 if (i == 0) {
-                    suffix = suffix + "_clear_mono_for_" + snr;
-                    ratingLabels = null;
-                    correctResponse = null;
-                    locationInDir = "clear_mono/" + wrd;
+                    pathEnd  = "clear_mono/" + wrd;
                     tags = tags + " type_cue";
                 } else {
-                    suffix = suffix + "_" + snr;
-                    locationInDir = Indices.SNR_TO_DIRNAME.get(snr) + "/" + wrd + "_" + snr;
+                    pathEnd =  Indices.SNR_TO_DIRNAME.get(snr) + "/" + wrd + "_" + snr;
                     if (trialPositionTargetInt == i) {
                         tags = tags + " type_target_nonword";
-                        correctResponse = "YES";
                     } else {
                         if (trialPositionFoilInt == i) {
                             tags = tags + " type_foil";
@@ -153,37 +152,39 @@ public class AudioNonWordMonitoringStimuliFromString {
                         }
                     }
                 }
+                
+                
+                String audioPath = stimuliDir +pathEnd;
 
-                String audioPath = stimuliDir + locationInDir;
-                String uniqueId = wrd + "_" + suffix;
+                String uniqueId = pathEnd;
                 String label = wrd;
 
-                String currentSt = this.makeStimulusString(uniqueId, label, ratingLabels, correctResponse, audioPath, locationInDir, tags);
+                String currentSt = this.makeStimulusString(uniqueId, label, audioPath, tags);
                 builder.append(currentSt);
 
-                //sanity check if the files exist
-                String wav = locationInDir + ".wav";
-                String mp3 = locationInDir + ".mp3";
-                String ogg = locationInDir + ".ogg";
-                String audiPathDir = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/audiononwordmonitoring/stimuli/"; // must be the same as in the configuration file
-                try {
-
-                    BufferedReader br = new BufferedReader(new FileReader(audiPathDir + wav));
-                    //System.out.println(audioPath);
-                    br.close();
-                    BufferedReader br1 = new BufferedReader(new FileReader(audiPathDir + mp3));
-                    br1.close();
-                    BufferedReader br2 = new BufferedReader(new FileReader(audiPathDir + ogg));
-                    br2.close();
-
-                } catch (FileNotFoundException ex) {
-                    countNonFoundStimuli++;
-                    System.out.println();
-                    System.out.println("Not found file number " + countNonFoundStimuli);
-                    System.out.println("Trial " + trialNumber);
-                    System.out.println(ex);
-
-                }
+//                //sanity check if the files exist
+//                String wav = pathEnd + ".wav";
+//                String mp3 = pathEnd + ".mp3";
+//                String ogg = pathEnd + ".ogg";
+//                String path = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/audiononwordmonitoring/stimuli/"; // must be the same as in the configuration file
+//                try {
+//
+//                    BufferedReader br = new BufferedReader(new FileReader(path + wav));
+//                    //System.out.println(audioPath);
+//                    br.close();
+//                    BufferedReader br1 = new BufferedReader(new FileReader(path + mp3));
+//                    br1.close();
+//                    BufferedReader br2 = new BufferedReader(new FileReader(path + ogg));
+//                    br2.close();
+//
+//                } catch (FileNotFoundException ex) {
+//                    countNonFoundStimuli++;
+//                    System.out.println();
+//                    System.out.println("Not found file number " + countNonFoundStimuli);
+//                    System.out.println("Trial " + trialNumber);
+//                    System.out.println(ex);
+//
+//                }
             }
 
         }
@@ -192,24 +193,16 @@ public class AudioNonWordMonitoringStimuliFromString {
 
     private String makeStimulusString(String uniqueId,
             String label,
-            String ratingLabels,
-            String correctResponse,
             String audioPath,
-            String dirName,
             String tags) {
 
         StringBuilder retVal = new StringBuilder();
         retVal.append("<stimulus ");
         retVal.append(" identifier=\"").append(uniqueId).append("\" ");
         retVal.append(" label=\"").append(label).append("\" ");
-        if (ratingLabels != null) {
-            retVal.append(" raingLabels=\"").append(ratingLabels.trim()).append("\" ");
-        }
-        if (correctResponse != null) {
-            retVal.append(" correctResponses=\"").append(correctResponse.trim()).append("\" ");
-        }
+        
         retVal.append(" pauseMs=\"0\" ");
-        retVal.append(" audioPath=\"").append(dirName).append(audioPath).append("\" ");
+        retVal.append(" audioPath=\"").append(audioPath).append("\" ");
 
         retVal.append(" tags=\"").append(tags).append("\" ");
 

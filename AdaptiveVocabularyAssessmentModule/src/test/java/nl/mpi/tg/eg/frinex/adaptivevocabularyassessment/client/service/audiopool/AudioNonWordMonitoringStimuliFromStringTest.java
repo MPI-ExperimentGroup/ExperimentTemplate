@@ -31,7 +31,7 @@ import static org.junit.Assert.*;
  */
 public class AudioNonWordMonitoringStimuliFromStringTest {
     
-    public static final String STIMULI_DIR = "stimuli/audiononwordmonitoring/";
+    public static final String STIMULI_DIR = "stimuli/";
     
     public AudioNonWordMonitoringStimuliFromStringTest() {
     }
