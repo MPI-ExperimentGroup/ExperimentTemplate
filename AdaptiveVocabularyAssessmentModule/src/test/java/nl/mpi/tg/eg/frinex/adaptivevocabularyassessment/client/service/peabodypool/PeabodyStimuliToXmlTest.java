@@ -55,15 +55,17 @@ public class PeabodyStimuliToXmlTest {
     /**
      * Test of parseWordsInputCSVString method, of class PeabodyStimuliToXml.
      */
-    @Ignore
+    
     @Test
-    public void testParseWordsInputCSVStringEngl() throws Exception {
+    public void testParseWordsInputCSVStringEngl() throws Exception{
         System.out.println("parseWordsInputCSVString");
         PeabodyStimuliToXml instance = new PeabodyStimuliToXml();
         String result = instance.parseWordsInputCSVString(STIMULI_DIR_EN, CsvTable.CSV_STRING_ENG);
+        
         System.out.println(result);
     }
 
+    @Ignore
     @Test
     public void testParseWordsInputCSVStringNl() throws Exception {
         System.out.println("parseWordsInputCSVString");

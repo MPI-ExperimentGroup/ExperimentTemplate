@@ -16,6 +16,9 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.peabodypool;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -71,6 +74,29 @@ public class PeabodyStimuliToXml {
             String stimulusXml = this.makeStimulusString(uniqueId, label, correctAnswer, imagePath, audioPath, set);
             
             retVal.append(stimulusXml);
+            
+                            //sanity check if the files exist
+                String wav = audioPath+".wav";
+                String mp3 = audioPath+".mp3";
+                String ogg = audioPath+".ogg";
+                String pathDir = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/bq4english/" ; // must be the same as in the configuration file
+                try {
+                    
+                    BufferedReader br = new BufferedReader(new FileReader(pathDir + wav));
+                    //System.out.println(audioPath);
+                    br.close();
+                    BufferedReader br1 = new BufferedReader(new FileReader(pathDir + mp3));
+                    br1.close();
+                    BufferedReader br2 = new BufferedReader(new FileReader(pathDir + ogg));
+                    br2.close();
+                    BufferedReader brImage = new BufferedReader(new FileReader(pathDir+imagePath));
+                    brImage.close();
+
+                } catch (FileNotFoundException ex) {
+                    System.out.println();
+                    System.out.println(ex);
+
+                }
         }
          return retVal.toString();
         
@@ -92,6 +118,7 @@ public class PeabodyStimuliToXml {
         retVal.append(" correctResponses=\"").append(correctResponse).append("\" ");
         retVal.append(" imagePath=\"").append(imagePath).append("\" ");
         retVal.append(" audioPath=\"").append(audioPath).append("\" ");
+        retVal.append(" pauseMs=\"0\" ");
         retVal.append(" tags=\"").append(tags).append("\" ");
 
         retVal.append(" />\n");
