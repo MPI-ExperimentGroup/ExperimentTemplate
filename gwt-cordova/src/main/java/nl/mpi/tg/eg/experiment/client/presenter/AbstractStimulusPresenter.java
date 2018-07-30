@@ -1884,7 +1884,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     @Override
-    public void savePresenterState() {
+    public void savePresenterState() {        
+        ((TimedStimulusView) simpleView).stopListeners();
         ((TimedStimulusView) simpleView).stopTimers();
         ((TimedStimulusView) simpleView).stopAudio();
         ((TimedStimulusView) simpleView).stopVideo();
