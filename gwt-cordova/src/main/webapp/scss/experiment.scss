@@ -799,6 +799,13 @@ table.gridCell:hover, td.gridCell:hover {
     zoom: $gridCellZoom;
 }
 
+.twoThirdsMax {
+    max-width:60vmin;
+    max-height:60vmin;
+    width: auto;
+    height: auto;
+}
+
 .centeredVerticalHorizontal {
     position: absolute;
     top: 50%;
