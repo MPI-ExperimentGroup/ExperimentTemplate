@@ -76,6 +76,7 @@ public abstract class AbstractPresenter implements Presenter {
                 @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                     if (allowBackAction(appEventListner)) {
+                        savePresenterState();
                         appEventListner.requestApplicationState(prevState);
                     }
                 }
@@ -112,6 +113,7 @@ public abstract class AbstractPresenter implements Presenter {
 
                 @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
+                    savePresenterState();
                     appEventListner.requestApplicationState(nextState);
                 }
 
@@ -286,6 +288,7 @@ public abstract class AbstractPresenter implements Presenter {
     protected abstract void setContent(final AppEventListner appEventListner);
 
     protected void gotoNextPresenter(final AppEventListner appEventListner) {
+        savePresenterState();
         Timer timer = new Timer() {
             public void run() {
                 appEventListner.requestApplicationState(nextState);
@@ -295,6 +298,7 @@ public abstract class AbstractPresenter implements Presenter {
     }
 
     protected void gotoPresenter(final AppEventListner appEventListner, final ApplicationState targetState) {
+        savePresenterState();
         Timer timer = new Timer() {
             public void run() {
                 appEventListner.requestApplicationState(targetState);
