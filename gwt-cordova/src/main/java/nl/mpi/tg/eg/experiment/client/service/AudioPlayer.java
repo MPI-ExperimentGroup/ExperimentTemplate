@@ -131,9 +131,9 @@ public class AudioPlayer {
     }
 
     public void stopAll() {
-//        audioPlayer.pause();
         if (audioPlayer != null) {
-            audioPlayer.setSrc("");
+            audioPlayer.pause();
+//            audioPlayer.setSrc("");
             audioPlayer.removeFromParent();
             audioPlayer = null;
         }
