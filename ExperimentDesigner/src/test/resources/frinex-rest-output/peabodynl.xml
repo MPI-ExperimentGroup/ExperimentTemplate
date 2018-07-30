@@ -208,7 +208,7 @@
             </row>
         </table>
     </presenter>
-    <presenter displayOrder="110" next="stimuliScreen8" type="metadata" self="Accord8" title="" >
+    <presenter displayOrder="110" next="stimuliScreenBase8_8" type="metadata" self="Accord8" title="" >
         <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
         
         <addPadding/>
@@ -220,9 +220,10 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
  Succes!"/>
         <addPadding/>
         <addPadding/>
-        <targetButton featureText="Begin experiment" target="stimuliScreen8"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen8_8"/>
     </presenter>
-    <presenter displayOrder="115" next="stimuliScreen9" type="metadata" self="Accord9" title="" >
+    
+    <presenter displayOrder="115" next="stimuliScreenBase9_9" type="metadata" self="Accord9" title="" >
         <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
         <addPadding/>
         <addPadding/>
@@ -235,9 +236,10 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
  Succes!"/>
         <addPadding/>
         <addPadding/>
-        <targetButton featureText="Begin experiment" target="stimuliScreen9"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen9_9"/>
     </presenter>
-    <presenter displayOrder="120" next="stimuliScreen10" type="metadata" self="Accord10" title="" >
+    
+    <presenter displayOrder="120" next="stimuliScreenBase10_10" type="metadata" self="Accord10" title="" >
         <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
         <addPadding/>
         <addPadding/>
@@ -250,9 +252,10 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
  Succes!"/>
         <addPadding/>
         <addPadding/>
-        <targetButton featureText="Begin experiment" target="stimuliScreen10"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen10_10"/>
     </presenter>
-    <presenter displayOrder="125" next="stimuliScreen11" type="metadata" self="Accord11" title="" >
+    
+    <presenter displayOrder="125" next="stimuliScreenBase11_11" type="metadata" self="Accord11" title="" >
         <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
         <addPadding/>
         <addPadding/>
@@ -265,9 +268,10 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
  Succes!"/>
         <addPadding/>
         <addPadding/>
-        <targetButton featureText="Begin experiment" target="stimuliScreen11"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen11_11"/>
     </presenter>
-    <presenter displayOrder="130" next="stimuliScreen12" type="metadata" self="Accord12" title="" >
+    
+    <presenter displayOrder="130" next="stimuliScreenBase12_12" type="metadata" self="Accord12" title="" >
         <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
         <addPadding/>
         <addPadding/>
@@ -280,9 +284,10 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
  Succes!"/>
         <addPadding/>
         <addPadding/>
-        <targetButton featureText="Begin experiment" target="stimuliScreen12"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreen12_12"/>
     </presenter>
-    <presenter displayOrder="135" next="stimuliScreen13" type="metadata" self="Accord13" title="" >
+    
+    <presenter displayOrder="135" next="stimuliScreenBase13_13" type="metadata" self="Accord13" title="" >
         <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
         <addPadding/>
         <addPadding/>
@@ -295,15 +300,2083 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
  Succes!"/>
         <addPadding/>
         <addPadding/>
-        <targetButton featureText="Begin experiment" target="stimuliScreen13"/>
+        <targetButton featureText="Begin experiment" target="stimuliScreenBase13_13"/>
     </presenter>
+    
+    
+    <!-- BASE 8 -->
+    
+    <presenter displayOrder="100" self="stimuliScreenBase8_1"  next="stimuliScreen9" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="Admin"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set1</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase8_2"  next="stimuliScreen9" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase8_1"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set2</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase8_3"  next="stimuliScreen9" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase8_2"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set3</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase8_4"  next="stimuliScreen9" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase8_3"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set4</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase8_5"  next="stimuliScreen9" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase8_4"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set5</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase8_6"  next="stimuliScreen9" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase8_5"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set6</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase8_7"  next="stimuliScreen9" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase8_6"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set7</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase8_8"  next="stimuliScreen9" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase8_7"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set8</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <!-- END BASE 8 -->
+    
+    <!-- BASE 9 -->
+    
+    <presenter displayOrder="100" self="stimuliScreenBase9_1"  next="stimuliScreen10" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="Admin"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set1</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase9_2"  next="stimuliScreen10" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase9_1"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set2</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase9_3"  next="stimuliScreen10" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase9_2"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set3</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase9_4"  next="stimuliScreen10" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase9_3"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set4</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase9_5"  next="stimuliScreen10" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase9_4"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set5</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase9_6"  next="stimuliScreen10" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase9_5"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set6</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase9_7"  next="stimuliScreen10" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase9_6"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set7</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase9_8"  next="stimuliScreen10" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase9_7"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set8</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase9_9"  next="stimuliScreen10" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase9_8"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set9</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <!-- END BASE 9 -->
+    
+     <!-- BASE 9 -->
+    
+    <presenter displayOrder="100" self="stimuliScreenBase10_1"  next="stimuliScreen11" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="Admin"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set1</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase10_2"  next="stimuliScreen11" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase10_1"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set2</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase10_3"  next="stimuliScreen11" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase10_2"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set3</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase10_4"  next="stimuliScreen11" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase10_3"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set4</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase10_5"  next="stimuliScreen11" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase10_4"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set5</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase10_6"  next="stimuliScreen11" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase10_5"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set6</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase10_7"  next="stimuliScreen11" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase10_6"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set7</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase10_8"  next="stimuliScreen11" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase10_7"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set8</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="100" self="stimuliScreenBase10_9"  next="stimuliScreen11" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase10_8"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set9</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    
+     <presenter displayOrder="100" self="stimuliScreenBase10_10"  next="stimuliScreen11" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="4">
+                    <aboveThreshold>
+                        <gotoPresenter target="stimuliScreenBase10_9"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set10</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <!-- END BASE 10 -->
+    
+    <!-- MAIN ROUND -->
+    
     
     <presenter displayOrder="200" self="stimuliScreen8"  next="stimuliScreen9" type="stimulus" title="">
         <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
             <hasMoreStimulus>
                 <clearPage/>
                 <centrePage/>
-                <clearCurrentScore/>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
                     <nextStimulus repeatIncorrect="false"/>
                 </triggerListener>
@@ -375,8 +2448,696 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
         </loadStimulus>
     </presenter>
     
+    <presenter displayOrder="210" self="stimuliScreen9"  next="stimuliScreen10" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="8">
+                    <aboveThreshold>
+                        <gotoPresenter target="Admin"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set9</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
     
-    <presenter displayOrder="205" type="transmission" self="Admin" title="Administratie">
+    <presenter displayOrder="220" self="stimuliScreen10"  next="stimuliScreen11" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="8">
+                    <aboveThreshold>
+                        <gotoPresenter target="Admin"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set10</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="230" self="stimuliScreen11"  next="stimuliScreen12" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="8">
+                    <aboveThreshold>
+                        <gotoPresenter target="Admin"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set11</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="240" self="stimuliScreen12"  next="stimuliScreen13" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="8">
+                    <aboveThreshold>
+                        <gotoPresenter target="Admin"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set12</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    
+    <presenter displayOrder="250" self="stimuliScreen13"  next="stimuliScreen14" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="8">
+                    <aboveThreshold>
+                        <gotoPresenter target="Admin"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set13</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    
+    <presenter displayOrder="260" self="stimuliScreen14"  next="stimuliScreen15" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="8">
+                    <aboveThreshold>
+                        <gotoPresenter target="Admin"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set14</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="270" self="stimuliScreen15"  next="stimuliScreen16" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="8">
+                    <aboveThreshold>
+                        <gotoPresenter target="Admin"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set15</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="280" self="stimuliScreen16"  next="stimuliScreen17" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="8">
+                    <aboveThreshold>
+                        <gotoPresenter target="Admin"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set16</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    <presenter displayOrder="290" self="stimuliScreen17"  next="Admin" type="stimulus" title="">
+        <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="12">
+            <hasMoreStimulus>
+                <clearPage/>
+                <centrePage/>
+                <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
+                    <nextStimulus repeatIncorrect="false"/>
+                </triggerListener>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <stimulusButton featureText="1" hotKey="ONE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="2" hotKey="TWO" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="3" hotKey="THREE" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                        <column styleName="">
+                            <stimulusButton featureText="4" hotKey="FOUR" styleName="">
+                                <trigger listenerId="nextStimulusAction"/>
+                            </stimulusButton>
+                        </column>
+                    </row>
+                </table>
+                <disableStimulusButtons/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusImage msToNext="0"> 
+                    <mediaLoadFailed>
+                        <htmlText featureText="image load failed"/>
+                    </mediaLoadFailed>
+                    <mediaLoaded>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Press SPACE to hear the word"/>
+                        <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <mediaLoaded>
+                                    <enableStimulusButtons/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <htmlText featureText="audio load failed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete/>
+                            </stimulusAudio>
+                        </actionButton>
+                    </mediaLoaded>
+                </stimulusImage>            
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <scoreAboveThreshold errorThreshold="8">
+                    <aboveThreshold>
+                        <gotoPresenter target="Admin"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <clearCurrentScore/>
+                        <gotoNextPresenter/> 
+                    </withinThreshold>
+                </scoreAboveThreshold>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>set17</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    
+    
+
+    
+    <presenter displayOrder="1000" type="transmission" self="Admin" title="Administratie">
         <sendMetadata>
             <onSuccess> 
                 <sendAllData>

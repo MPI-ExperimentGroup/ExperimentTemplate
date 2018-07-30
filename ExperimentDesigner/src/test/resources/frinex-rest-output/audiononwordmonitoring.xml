@@ -97,14 +97,19 @@
                         <addPadding/>
                         <addPadding/>
                         <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
-                        <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
-                            <gotoNextPresenter/>
-                        </stimulusButton>
                         <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                             <mediaLoadFailed>
                                 <htmlText featureText="Failed to load audio file"/>
                             </mediaLoadFailed>
-                            <mediaLoaded/>
+                            <mediaLoaded>
+                                <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                                    <gotoNextPresenter/>
+                                </stimulusButton>
+                                <disableStimulusButtons/>
+                                <pause  msToNext="200">
+                                    <enableStimulusButtons/>
+                                </pause>
+                            </mediaLoaded>
                             <mediaPlaybackComplete>
                                 <logTimeStamp eventTag="wordPlayed"/>
                                 <pause  msToNext="500">
@@ -126,7 +131,7 @@
         </loadStimulus>
     </presenter>
     
-    <presenter displayOrder="25" next="stimuliScreenTrial3" type="stimulus" self="stimuliScreenTrial2" title="">
+    <presenter displayOrder="25"  self="stimuliScreenTrial2" next="stimuliScreenTrial3" type="stimulus" title="">
         <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="100">
             <hasMoreStimulus>
                 
@@ -178,14 +183,20 @@
                         <addPadding/>
                         <addPadding/>
                         <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
-                        <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
-                            <gotoNextPresenter/>
-                        </stimulusButton>
+                        
                         <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                             <mediaLoadFailed>
                                 <htmlText featureText="Failed to load audio file"/>
                             </mediaLoadFailed>
-                            <mediaLoaded/>
+                            <mediaLoaded>
+                                <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                                    <gotoNextPresenter/>
+                                </stimulusButton>
+                                <disableStimulusButtons/>
+                                <pause  msToNext="200">
+                                    <enableStimulusButtons/>
+                                </pause>
+                            </mediaLoaded>
                             <mediaPlaybackComplete>
                                 <logTimeStamp eventTag="wordPlayed"/>
                                 <pause  msToNext="500">
@@ -207,7 +218,7 @@
         </loadStimulus>
     </presenter>
     
-    <presenter displayOrder="30" next="stimuliScreenTrial4" type="stimulus" self="stimuliScreenTrial3" title="">
+    <presenter displayOrder="30" self="stimuliScreenTrial3" next="stimuliScreenTrial4" type="stimulus" title="">
         <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="100">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
@@ -259,18 +270,20 @@
                         <addPadding/>
                         <addPadding/>
                         <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
-                        <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
-                            <gotoNextPresenter/>
-                        </stimulusButton>
-                        <disableStimulusButtons/>
-                        <pause  msToNext="200">
-                            <enableStimulusButtons/>
-                        </pause>
+                       
                         <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                             <mediaLoadFailed>
                                 <htmlText featureText="Failed to load audio file"/>
                             </mediaLoadFailed>
-                            <mediaLoaded/>
+                            <mediaLoaded>
+                                <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                                    <gotoNextPresenter/>
+                                </stimulusButton>
+                                <disableStimulusButtons/>
+                                <pause  msToNext="200">
+                                    <enableStimulusButtons/>
+                                </pause>
+                            </mediaLoaded>
                             <mediaPlaybackComplete>
                                 <logTimeStamp eventTag="wordPlayed"/>
                                 <pause  msToNext="500">
@@ -292,7 +305,7 @@
         </loadStimulus>
     </presenter>
     
-    <presenter displayOrder="35" next="stimuliScreenTrial5" type="stimulus" self="stimuliScreenTrial4" title="">
+    <presenter displayOrder="35" type="stimulus" self="stimuliScreenTrial4" next="stimuliScreenTrial5" title="">
         <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="100">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
@@ -344,18 +357,19 @@
                         <addPadding/>
                         <addPadding/>
                         <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
-                        <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
-                            <gotoNextPresenter/>
-                        </stimulusButton>
-                        <disableStimulusButtons/>
-                        <pause  msToNext="200">
-                            <enableStimulusButtons/>
-                        </pause>
                         <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                             <mediaLoadFailed>
                                 <htmlText featureText="Failed to load audio file"/>
                             </mediaLoadFailed>
-                            <mediaLoaded/>
+                            <mediaLoaded>
+                                <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                                    <gotoNextPresenter/>
+                                </stimulusButton>
+                                <disableStimulusButtons/>
+                                <pause  msToNext="200">
+                                    <enableStimulusButtons/>
+                                </pause>
+                            </mediaLoaded>
                             <mediaPlaybackComplete>
                                 <logTimeStamp eventTag="wordPlayed"/>
                                 <pause  msToNext="500">
@@ -377,7 +391,7 @@
         </loadStimulus>
     </presenter>
     
-    <presenter displayOrder="40" next="stimuliScreenTrial6" type="stimulus" self="stimuliScreenTrial5" title="">
+    <presenter displayOrder="40" self="stimuliScreenTrial5" next="stimuliScreenTrial6" type="stimulus" title="">
         <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="100">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
@@ -429,18 +443,20 @@
                         <addPadding/>
                         <addPadding/>
                         <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
-                        <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
-                            <gotoNextPresenter/>
-                        </stimulusButton>
-                        <disableStimulusButtons/>
-                        <pause  msToNext="200">
-                            <enableStimulusButtons/>
-                        </pause>
+                       
                         <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                             <mediaLoadFailed>
                                 <htmlText featureText="Failed to load audio file"/>
                             </mediaLoadFailed>
-                            <mediaLoaded/>
+                            <mediaLoaded>
+                                <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                                    <gotoNextPresenter/>
+                                </stimulusButton>
+                                <disableStimulusButtons/>
+                                <pause  msToNext="200">
+                                    <enableStimulusButtons/>
+                                </pause>
+                            </mediaLoaded>
                             <mediaPlaybackComplete>
                                 <logTimeStamp eventTag="wordPlayed"/>
                                 <pause  msToNext="500">
@@ -462,7 +478,7 @@
         </loadStimulus>
     </presenter>
     
-    <presenter displayOrder="45" next="stimuliScreenTrial7" type="stimulus" self="stimuliScreenTrial6" title="">
+    <presenter displayOrder="45" self="stimuliScreenTrial6" next="stimuliScreenTrial7" type="stimulus" title="">
         <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="100">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
@@ -514,18 +530,20 @@
                         <addPadding/>
                         <addPadding/>
                         <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
-                        <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
-                            <gotoNextPresenter/>
-                        </stimulusButton>
-                        <disableStimulusButtons/>
-                        <pause  msToNext="200">
-                            <enableStimulusButtons/>
-                        </pause>
+                       
                         <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                             <mediaLoadFailed>
                                 <htmlText featureText="Failed to load audio file"/>
                             </mediaLoadFailed>
-                            <mediaLoaded/>
+                            <mediaLoaded>
+                                <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                                    <gotoNextPresenter/>
+                                </stimulusButton>
+                                <disableStimulusButtons/>
+                                <pause  msToNext="200">
+                                    <enableStimulusButtons/>
+                                </pause>
+                            </mediaLoaded>
                             <mediaPlaybackComplete>
                                 <logTimeStamp eventTag="wordPlayed"/>
                                 <pause  msToNext="500">
@@ -547,7 +565,7 @@
         </loadStimulus>
     </presenter>
     
-    <presenter displayOrder="50" next="stimuliScreenTrial8" type="stimulus" self="stimuliScreenTrial7" title="">
+    <presenter displayOrder="50" self="stimuliScreenTrial7" next="stimuliScreenTrial8" type="stimulus" title="">
         <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="100">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
@@ -599,18 +617,20 @@
                         <addPadding/>
                         <addPadding/>
                         <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
-                        <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
-                            <gotoNextPresenter/>
-                        </stimulusButton>
-                        <disableStimulusButtons/>
-                        <pause  msToNext="200">
-                            <enableStimulusButtons/>
-                        </pause>
+                       
                         <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                             <mediaLoadFailed>
                                 <htmlText featureText="Failed to load audio file"/>
                             </mediaLoadFailed>
-                            <mediaLoaded/>
+                            <mediaLoaded>
+                                <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                                    <gotoNextPresenter/>
+                                </stimulusButton>
+                                <disableStimulusButtons/>
+                                <pause  msToNext="200">
+                                    <enableStimulusButtons/>
+                                </pause>
+                            </mediaLoaded>
                             <mediaPlaybackComplete>
                                 <logTimeStamp eventTag="wordPlayed"/>
                                 <pause  msToNext="500">
@@ -632,7 +652,7 @@
         </loadStimulus>
     </presenter>
     
-    <presenter displayOrder="55" next="stimuliScreenTrial9" type="stimulus" self="stimuliScreenTrial8" title="">
+    <presenter displayOrder="55" self="stimuliScreenTrial8"  next="stimuliScreenTrial9" type="stimulus" title="">
         <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="100">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
@@ -684,18 +704,20 @@
                         <addPadding/>
                         <addPadding/>
                         <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
-                        <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
-                            <gotoNextPresenter/>
-                        </stimulusButton>
-                        <disableStimulusButtons/>
-                        <pause  msToNext="200">
-                            <enableStimulusButtons/>
-                        </pause>
+                       
                         <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                             <mediaLoadFailed>
                                 <htmlText featureText="Failed to load audio file"/>
                             </mediaLoadFailed>
-                            <mediaLoaded/>
+                            <mediaLoaded>
+                                <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                                    <gotoNextPresenter/>
+                                </stimulusButton>
+                                <disableStimulusButtons/>
+                                <pause  msToNext="200">
+                                    <enableStimulusButtons/>
+                                </pause>
+                            </mediaLoaded>
                             <mediaPlaybackComplete>
                                 <logTimeStamp eventTag="wordPlayed"/>
                                 <pause  msToNext="500">
@@ -717,7 +739,7 @@
         </loadStimulus>
     </presenter>
     
-    <presenter displayOrder="60" next="stimuliScreenTrial10" type="stimulus" self="stimuliScreenTrial9" title="">
+    <presenter displayOrder="60" self="stimuliScreenTrial9" next="stimuliScreenTrial10" type="stimulus" title="">
         <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="100">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
@@ -769,18 +791,20 @@
                         <addPadding/>
                         <addPadding/>
                         <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
-                        <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
-                            <gotoNextPresenter/>
-                        </stimulusButton>
-                        <disableStimulusButtons/>
-                        <pause  msToNext="200">
-                            <enableStimulusButtons/>
-                        </pause>
+                      
                         <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                             <mediaLoadFailed>
                                 <htmlText featureText="Failed to load audio file"/>
                             </mediaLoadFailed>
-                            <mediaLoaded/>
+                            <mediaLoaded>
+                                <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                                    <gotoNextPresenter/>
+                                </stimulusButton>
+                                <disableStimulusButtons/>
+                                <pause  msToNext="200">
+                                    <enableStimulusButtons/>
+                                </pause>
+                            </mediaLoaded>
                             <mediaPlaybackComplete>
                                 <logTimeStamp eventTag="wordPlayed"/>
                                 <pause  msToNext="500">
@@ -802,7 +826,7 @@
         </loadStimulus>
     </presenter>
     
-    <presenter displayOrder="65" next="stimuliScreenTrial11" type="stimulus" self="stimuliScreenTrial10" title="">
+    <presenter displayOrder="65"  self="stimuliScreenTrial10" next="stimuliScreenTrial11" type="stimulus" title="">
         <loadStimulus eventTag="stimuliN" randomise="false" repeatCount="1" maxStimuli="100">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
@@ -854,18 +878,19 @@
                         <addPadding/>
                         <addPadding/>
                         <htmlText featureText="&lt;div &gt; &lt;img src=&quot;static/star-icon-grey.png&quot; /&gt;  &lt;/div&gt;"/>
-                        <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
-                            <gotoNextPresenter/>
-                        </stimulusButton>
-                        <disableStimulusButtons/>
-                        <pause  msToNext="200">
-                            <enableStimulusButtons/>
-                        </pause>
                         <stimulusAudio msToNext="0" showPlaybackIndicator="false">
                             <mediaLoadFailed>
                                 <htmlText featureText="Failed to load audio file"/>
                             </mediaLoadFailed>
-                            <mediaLoaded/>
+                            <mediaLoaded>
+                                <stimulusButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
+                                    <gotoNextPresenter/>
+                                </stimulusButton>
+                                <disableStimulusButtons/>
+                                <pause  msToNext="200">
+                                    <enableStimulusButtons/>
+                                </pause>
+                            </mediaLoaded>
                             <mediaPlaybackComplete>
                                 <logTimeStamp eventTag="wordPlayed"/>
                                 <pause  msToNext="500">
