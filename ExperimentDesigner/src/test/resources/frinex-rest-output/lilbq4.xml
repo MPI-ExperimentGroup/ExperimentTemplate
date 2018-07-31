@@ -537,7 +537,7 @@
     </presenter>
     <presenter displayOrder="20" next="Admin" type="stimulus" self="stimuliScreenRavenTest" title="">
         
-        <startTimer msToNext="30000" listenerId="timer">
+        <startTimer msToNext="1200000" listenerId="timer">
             <gotoPresenter target="timeOutScreen"/>
         </startTimer>
        
