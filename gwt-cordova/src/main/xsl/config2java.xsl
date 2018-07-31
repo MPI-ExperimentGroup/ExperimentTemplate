@@ -73,7 +73,7 @@
             matchlanguage(null),
             autotyp_regions(null),
             startscreen(null),
-            version(null);
+            version("Version");
         
             final public String label;
 
@@ -154,6 +154,12 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 break;                                                                                                                                                  
             </xsl:text>
         </xsl:for-each>
+        <xsl:text>
+            case version:
+            this.presenter = new VersionPresenter(widgetTag);
+            presenter.setState(this, ApplicationState.start, null);
+            break;
+        </xsl:text>
         <xsl:text>
             case end:
             exitApplication();
@@ -762,6 +768,7 @@ or local-name() eq 'stimulusImageCapture'
         <xsl:value-of select="if(@regionId and local-name() ne 'regionClear') then ', ' else ''" />
         <xsl:if test="local-name() eq 'stimulusCodeImage'
 or local-name() eq 'table'
+or local-name() eq 'image'
 or local-name() eq 'column'
 or local-name() eq 'stimulusCodeVideo'
 or local-name() eq 'region'
