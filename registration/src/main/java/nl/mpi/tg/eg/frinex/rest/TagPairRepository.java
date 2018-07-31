@@ -28,7 +28,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
  * @since Jul 21, 2015 4:42:51 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-@RepositoryRestResource(collectionResourceRel = "tagevents", path = "tagevents")
+@RepositoryRestResource(collectionResourceRel = "tagpairevents", path = "tagpairevents")
 public interface TagPairRepository extends PagingAndSortingRepository<TagPairData, Long> {
 
     @Query("select distinct new TagPairData(userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData order by tagDate asc")
