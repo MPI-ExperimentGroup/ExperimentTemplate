@@ -106,7 +106,6 @@ public class SchemaGenerator {
         writer.append("<xs:attribute name=\"self\" type=\"xs:string\"/>\n");
         writer.append("<xs:attribute name=\"title\" type=\"xs:string\"/>\n");
         writer.append("<xs:attribute name=\"menuLabel\" type=\"xs:string\"/>\n");
-        writer.append("<xs:attribute name=\"displayOrder\" type=\"xs:positiveInteger\"/>\n");
         writer.append("<xs:attribute name=\"type\">\n");
         writer.append("<xs:simpleType>\n");
         writer.append("<xs:restriction>\n");
