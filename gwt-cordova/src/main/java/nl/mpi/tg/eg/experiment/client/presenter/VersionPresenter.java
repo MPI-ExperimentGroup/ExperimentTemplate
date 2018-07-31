@@ -17,7 +17,9 @@
  */
 package nl.mpi.tg.eg.experiment.client.presenter;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import nl.mpi.tg.eg.experiment.client.Version;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 
@@ -26,6 +28,8 @@ import nl.mpi.tg.eg.experiment.client.view.ComplexView;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public class VersionPresenter extends AbstractPresenter {
+
+    private final Version version = GWT.create(Version.class);
 
     public VersionPresenter(RootLayoutPanel widgetTag) {
         super(widgetTag, new ComplexView());
@@ -43,7 +47,11 @@ public class VersionPresenter extends AbstractPresenter {
 
     @Override
     protected void setContent(AppEventListner appEventListner) {
-
+        ((ComplexView) simpleView).addText("Framework For Interactive Experiments\n" + "Version: " + version.majorVersion() + "."
+                + version.minorVersion() + "."
+                + version.buildVersion() + "-"
+                + version.projectVersion() + "\n"
+                + "Compile Date: " + version.compileDate() + "\n"
+                + "Last Commit Date: " + version.lastCommitDate());
     }
-
 }
