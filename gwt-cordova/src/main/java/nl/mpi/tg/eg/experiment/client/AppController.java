@@ -86,9 +86,16 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
         }
         String debugValue = Window.Location.getParameter("debug");
         if (debugValue != null) {
-            localStorage.saveAppState(userResults.getUserData().getUserId(), ApplicationState.about);
+            try {
+                localStorage.saveAppState(userResults.getUserData().getUserId(), ApplicationState.valueOf("about"));
+            } catch (IllegalArgumentException iae) {
+                // there is not "about" presenter so we have nothing to do here but show the version
+                localStorage.saveAppState(userResults.getUserData().getUserId(), ApplicationState.version);
+            }
         }
-
+        if (Window.Location.getParameter("version") != null) {
+            localStorage.saveAppState(userResults.getUserData().getUserId(), ApplicationState.version);
+        }
 //        detectWindowDefocus(widgetTag);
     }
 
