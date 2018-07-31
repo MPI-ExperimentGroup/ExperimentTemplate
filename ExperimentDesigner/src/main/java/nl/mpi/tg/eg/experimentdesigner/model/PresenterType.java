@@ -549,7 +549,6 @@ public enum PresenterType {
         stimulusAudio}),
     debug(new FeatureType[]{
         activateRandomItem,
-        versionData,
         randomMsPause, triggerListener, trigger, countdownLabel, stimulusPresent, clearCurrentScore,
         prevStimulusButton,
         prevStimulus, startTimer, compareTimer, clearTimer, logTimerValue, logTokenText,
