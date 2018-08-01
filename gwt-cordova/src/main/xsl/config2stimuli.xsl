@@ -53,8 +53,7 @@
                 package nl.mpi.tg.eg.experiment.client.util;
                 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
                 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus.Tag;
-                import static nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus.Tag.*;
-                import static nl.mpi.tg.eg.experiment.client.model.GeneratedStimulusStrings.*;
+                import nl.mpi.tg.eg.experiment.client.util.GeneratedStimulus.*;
                 public class GeneratedStimulusProvider {
                 private static GeneratedStimulus G(String uniqueId, Tag[] tags, String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels, String correctResponses, String... parameters) {
                 return new GeneratedStimulus(uniqueId, tags, label, code, pauseMs, audioPath, videoPath, imagePath, ratingLabels, correctResponses);
@@ -65,10 +64,66 @@
                 static final private String N = null;
                 public static final GeneratedStimulus[] values = new GeneratedStimulus[]{</xsl:text>
             <xsl:for-each select="experiment/stimuli/stimulus">
-                <xsl:text>G(</xsl:text>
+                <xsl:result-document href="{$targetClientDirectory}/util/GeneratedStimulus/S_{generate-id(.)}.java" method="text">
+                 <xsl:text>package nl.mpi.tg.eg.experiment.client.util.GeneratedStimulus;
+                import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
+                import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus.Tag;
+                import static nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus.Tag.*;
+                import static nl.mpi.tg.eg.experiment.client.model.GeneratedStimulusStrings.*;
+    public class S_</xsl:text>
+                <xsl:value-of select="generate-id(.)" />
+                <xsl:text> extends GeneratedStimulus {
+                    public S_</xsl:text>
+                <xsl:value-of select="generate-id(.)" />
+                <xsl:text>(){
+                super(</xsl:text>
                 <!--<xsl:value-of select="generate-id(.)" />
                 generate-id(.) caused issues with the node ID changing and pointing to the wrong file. It might be better at some point to use an explicit identifier value but for now we are using the 'code'.
                 -->
+                <xsl:value-of select="if(@identifier) then concat('&quot;', @identifier, '&quot;, ') else concat('&quot;', generate-id(.), '&quot;, ')" />
+                <xsl:text>new Tag[]{</xsl:text>
+                <xsl:for-each select="distinct-values(tokenize(@tags, ' '))">
+                    <xsl:text>tag_</xsl:text>
+                    <xsl:value-of select="." />
+                    <xsl:if test="position() != last()">
+                        <xsl:text>, </xsl:text>
+                    </xsl:if>
+                </xsl:for-each>
+                <xsl:text>}, label_</xsl:text>
+                <xsl:value-of select="generate-id(.)" />
+                <!--<xsl:value-of select="@label" />-->
+                <xsl:text>, code_</xsl:text>
+                <xsl:value-of select="generate-id(.)" />
+                <xsl:text>, </xsl:text>
+                <xsl:value-of select="@pauseMs" />
+                <!--<xsl:if test="@audioPath or @videoPath or @ogg or @imagePath">-->
+                <xsl:text>, </xsl:text>
+                <xsl:value-of select="if(@audioPath) then concat('&quot;', @audioPath, '&quot;') else 'null'" />
+                <xsl:text>, </xsl:text>
+                <xsl:value-of select="if(@videoPath) then concat('&quot;', @videoPath, '&quot;') else 'null'" />
+                <xsl:text>, </xsl:text>
+                <xsl:value-of select="if(@imagePath) then concat('&quot;', @imagePath, '&quot;') else 'null'" />
+                <!--</xsl:if>-->
+                <xsl:value-of select="if(@ratingLabels) then concat(',&quot;', @ratingLabels, '&quot;') else ',null'" />
+                <xsl:value-of select="if(@correctResponses) then concat(',&quot;', @correctResponses, '&quot;') else ',null'" />
+                <xsl:variable name="stimuliElement" select="."/>
+                <xsl:for-each select="$parameter">
+                    <xsl:variable name="parameterName" select="."/>
+                    <xsl:variable name="parameterValue" select="$stimuliElement/@*[name() = $parameterName]"/>
+                    <xsl:text>,</xsl:text>
+                    <xsl:value-of select="if($parameterValue) then concat('&quot;', $parameterValue, '&quot;') else 'null'" />
+                </xsl:for-each>
+                <xsl:text>);
+                    }
+                }</xsl:text>
+                </xsl:result-document>
+                <xsl:text>new S_</xsl:text>
+                <xsl:value-of select="generate-id(.)" />
+                <xsl:text>()</xsl:text>
+<!--                <xsl:text>G(</xsl:text>
+                <xsl:value-of select="generate-id(.)" />
+                generate-id(.) caused issues with the node ID changing and pointing to the wrong file. It might be better at some point to use an explicit identifier value but for now we are using the 'code'.
+                
                 <xsl:value-of select="if(@identifier) then concat('&quot;', @identifier, '&quot;, ') else concat('&quot;', generate-id(.), '&quot;, ')" />
                 <xsl:text>T(</xsl:text>
                 <xsl:for-each select="distinct-values(tokenize(@tags, ' '))">
@@ -80,19 +135,19 @@
                 </xsl:for-each>
                 <xsl:text>), label_</xsl:text>
                 <xsl:value-of select="generate-id(.)" />
-                <!--<xsl:value-of select="@label" />-->
+                <xsl:value-of select="@label" />
                 <xsl:text>, code_</xsl:text>
                 <xsl:value-of select="generate-id(.)" />
                 <xsl:text>, </xsl:text>
                 <xsl:value-of select="@pauseMs" />
-                <!--<xsl:if test="@audioPath or @videoPath or @ogg or @imagePath">-->
+                <xsl:if test="@audioPath or @videoPath or @ogg or @imagePath">
                 <xsl:text>, </xsl:text>
                 <xsl:value-of select="if(@audioPath) then concat('&quot;', @audioPath, '&quot;') else 'N'" />
                 <xsl:text>, </xsl:text>
                 <xsl:value-of select="if(@videoPath) then concat('&quot;', @videoPath, '&quot;') else 'N'" />
                 <xsl:text>, </xsl:text>
                 <xsl:value-of select="if(@imagePath) then concat('&quot;', @imagePath, '&quot;') else 'N'" />
-                <!--</xsl:if>-->
+                </xsl:if>
                 <xsl:value-of select="if(@ratingLabels) then concat(',&quot;', @ratingLabels, '&quot;') else ',N'" />
                 <xsl:value-of select="if(@correctResponses) then concat(',&quot;', @correctResponses, '&quot;') else ',N'" />
                 <xsl:variable name="stimuliElement" select="."/>
@@ -102,9 +157,12 @@
                     <xsl:text>,</xsl:text>
                     <xsl:value-of select="if($parameterValue) then concat('&quot;', $parameterValue, '&quot;') else 'N'" />
                 </xsl:for-each>
-                <xsl:text>)</xsl:text>
+                <xsl:text>)</xsl:text>-->
                 <xsl:if test="position() != last()">
                     <xsl:text>,&#10;</xsl:text>
+                    <!--                    <xsl:if test="(position() mod 100) = 99">
+                        <xsl:text>},{</xsl:text>
+                    </xsl:if>-->
                 </xsl:if>
                 <xsl:if test="position() = last()">
                 </xsl:if>
