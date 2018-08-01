@@ -1174,8 +1174,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusButton", currentStimulus.getUniqueId(), presenterListerner.getLabel(), duration.elapsedMillis());
                 if (currentStimulus.hasCorrectResponses()) {
+                    final boolean correctness = currentStimulus.isCorrect(presenterListerner.getLabel());
+                    submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, presenterListerner.getLabel(), currentStimulus.getUniqueId(), (correctness) ? "correct" : "incorrect", duration.elapsedMillis());
                     // if there are correct responses to this stimulus then increment the score
-                    userResults.getUserData().addPotentialScore(currentStimulus.isCorrect(presenterListerner.getLabel()));
+                    userResults.getUserData().addPotentialScore(correctness);
                 }
                 presenterListerner.eventFired(button, shotEventListner);
             }
@@ -1246,8 +1248,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     endAudioRecorderTag(dataChannel, ratingItem, currentStimulus);
                     submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "RatingButton", stimulusString, ratingItem, duration.elapsedMillis());
                     if (currentStimulus.hasCorrectResponses()) {
+                        final boolean correctness = currentStimulus.isCorrect(ratingItem);
+                        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, ratingItem, stimulusString, (correctness) ? "correct" : "incorrect", duration.elapsedMillis());
                         // if there are correct responses to this stimulus then increment the score
-                        userResults.getUserData().addPotentialScore(currentStimulus.isCorrect(ratingItem));
+                        userResults.getUserData().addPotentialScore(correctness);
                     }
                     timedStimulusListener.postLoadTimerFired();
                 }
@@ -1608,8 +1612,10 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), stimulusFreeText.getDataChannel(), stimulusFreeText.getPostName() + "_ms", stimulusFreeText.getStimulus().getUniqueId(), responseTimes, duration.elapsedMillis());
             }
             if (stimulusFreeText.getStimulus().hasCorrectResponses()) {
+                final boolean correctness = stimulusFreeText.getStimulus().isCorrect(stimulusFreeText.getValue());
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), stimulusFreeText.getDataChannel(), stimulusFreeText.getPostName(), stimulusFreeText.getStimulus().getUniqueId(), (correctness) ? "correct" : "incorrect", duration.elapsedMillis());
                 // if there are correct responses to this stimulus then increment the score
-                userResults.getUserData().addPotentialScore(stimulusFreeText.getStimulus().isCorrect(stimulusFreeText.getValue()));
+                userResults.getUserData().addPotentialScore(correctness);
             }
         }
         return true;
@@ -1884,7 +1890,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     @Override
-    public void savePresenterState() {        
+    public void savePresenterState() {
         ((TimedStimulusView) simpleView).stopListeners();
         ((TimedStimulusView) simpleView).stopTimers();
         ((TimedStimulusView) simpleView).stopAudio();
@@ -1893,5 +1899,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         super.savePresenterState();
         stopAudioRecorder();
         timerService.clearAllTimers(); // clear all callbacks in timerService before exiting the presenter
+        triggerListeners.clear();
     }
 }
