@@ -53,30 +53,31 @@ public class SchemaGeneratorTest {
 
         // todo: add more configuration files to the test
         String[] fileNameArray = new String[]{
-            "advocas1.xml",
+//            "advocas1.xml",
             "french_audio.xml", "hrpretest02.xml", "ld_screensize.xml", "rosselfieldkit.xml",
-            "advocas2.xml",
+//            "advocas2.xml",
             "french_conversation.xml", "leeservaring.xml", "parcours01.xml", "sentences_rating_task.xml", "vanuatufieldkit.xml",
-                                    "alloptions.xml", 
+            "alloptions.xml",
             "multiparticipant.xml", "playback_preference.xml",
             "sentveri-exp3.xml",
             "wellspringssamoan.xml",
             "antwoordraden.xml", "generic_example.xml",
-//            "joseco01.xml",
+            "joseco01.xml",
             "nonwacq.xml", "shawifieldkit.xml", "zinnen_afmaken.xml",
-            "audioas2.xml",
+//            "audioas2.xml",
             "online_emotions.xml", "playhouse_study.xml",
             //            "short-for-unittest-to-delete.xml",
             "zinnen_beoordelen.xml",
             "dobes_annotator.xml",
-//            "heoexp01.xml", "joseco02.xml",
+            "heoexp01.xml", "joseco02.xml",
             "onlinepretest.xml", "shortmultiparticipant01.xml",
-            "engadvocas.xml", 
-            "ravensas.xml", "peabodyas.xml", "peabodyas.xml",
-            "lilbq4.xml",
+//            "engadvocas.xml", 
+//            "ravensas.xml", "peabodyas.xml", "peabodyas.xml",
+//            "lilbq4.xml",
             "hrpretest.xml", "kinship_example.xml",
 //            "ppvt.xml",
-//            "synquiz2.xml"
+            "with_simulus_example.xml",
+            //            "synquiz2.xml"
         };
         for (String fileName : fileNameArray) {
             System.out.println(fileName);
