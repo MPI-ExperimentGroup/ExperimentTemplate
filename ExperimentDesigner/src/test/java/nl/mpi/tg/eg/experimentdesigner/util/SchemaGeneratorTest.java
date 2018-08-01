@@ -62,7 +62,7 @@ public class SchemaGeneratorTest {
             "sentveri-exp3.xml",
             "wellspringssamoan.xml",
             "antwoordraden.xml", "generic_example.xml",
-            "joseco01.xml",
+//            "joseco01.xml",
             "nonwacq.xml", "shawifieldkit.xml", "zinnen_afmaken.xml",
 //            "audioas2.xml",
             "online_emotions.xml", "playhouse_study.xml",
