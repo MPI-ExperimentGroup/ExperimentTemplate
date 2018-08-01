@@ -69,7 +69,7 @@ public class SchemaGeneratorTest {
             //            "short-for-unittest-to-delete.xml",
             "zinnen_beoordelen.xml",
             "dobes_annotator.xml",
-            "heoexp01.xml", "joseco02.xml",
+//            "heoexp01.xml", "joseco02.xml",
             "onlinepretest.xml", "shortmultiparticipant01.xml",
 //            "engadvocas.xml", 
 //            "ravensas.xml", "peabodyas.xml", "peabodyas.xml",
