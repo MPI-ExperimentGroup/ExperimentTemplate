@@ -55,15 +55,21 @@ public class XpathExperimentValidatorTest {
     @Test
     public void testValidateInternalName() throws IOException, ParserConfigurationException, SAXException, XPathExpressionException {
         System.out.println("validateInternalName");
-        String fileOkName = "generic_example";
-        String fileFailName = "geNeric_example";
+        String fileOkName1 = "generic_example.xml";
+        String fileFailName1 = "geNeric_example.xml";
+        String fileFailName2 = "geNeric_example.xml";
+        String fileOkName2 = "generic_example";
         Document xmlOkDocument = getDocument("<experiment appNameDisplay=\"generic_example\" appNameInternal=\"generic_example\"/>\n");
         Document xmlFailDocument = getDocument("<experiment appNameDisplay=\"generic_example\" appNameInternal=\"generic_exaMple\"/>\n");
         XpathExperimentValidator instance = new XpathExperimentValidator();
-        assertEquals("", instance.validateInternalName(fileOkName, xmlOkDocument));
-        assertNotEquals("", instance.validateInternalName(fileFailName, xmlOkDocument));
-        assertNotEquals("", instance.validateInternalName(fileOkName, xmlFailDocument));
-        assertNotEquals("", instance.validateInternalName(fileFailName, xmlFailDocument));
+        assertEquals("", instance.validateInternalName(fileOkName1, xmlOkDocument));
+        assertEquals("", instance.validateInternalName(fileOkName2, xmlOkDocument));
+        assertNotEquals("", instance.validateInternalName(fileFailName1, xmlOkDocument));
+        assertNotEquals("", instance.validateInternalName(fileFailName2, xmlOkDocument));
+        assertNotEquals("", instance.validateInternalName(fileOkName1, xmlFailDocument));
+        assertNotEquals("", instance.validateInternalName(fileOkName2, xmlFailDocument));
+        assertNotEquals("", instance.validateInternalName(fileFailName1, xmlFailDocument));
+        assertNotEquals("", instance.validateInternalName(fileFailName2, xmlFailDocument));
     }
 
     /**
