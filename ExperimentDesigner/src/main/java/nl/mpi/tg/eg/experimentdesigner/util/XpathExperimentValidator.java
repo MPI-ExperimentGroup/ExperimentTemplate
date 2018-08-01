@@ -57,10 +57,13 @@ public class XpathExperimentValidator {
         // check that the name is lower case and validate that the file name matches the internal name of the experiment
         XPath validationXPath = XPathFactory.newInstance().newXPath();
         String appNameInternal = (String) validationXPath.compile("/experiment/@appNameInternal").evaluate(xmlDocument, XPathConstants.STRING);
+        if (!fileName.equals(fileName.toLowerCase())) {
+            return "The experiment file name must be lowercase: '" + fileName + "'.\n";
+        }
         if (!appNameInternal.equals(appNameInternal.toLowerCase())) {
             return "The experiment appNameInternal must be lowercase: '" + appNameInternal + "'.\n";
         }
-        if (!appNameInternal.equals(fileName)) {
+        if (!appNameInternal.equals(fileName.replaceFirst("\\.xml$", ""))) {
             return "The experiment appNameInternal must match the XML file name: '" + appNameInternal + "'.\n";
         }
         return "";
