@@ -20,12 +20,15 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopoo
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.CsvRecords;
@@ -112,20 +115,20 @@ public class AudioNonWordMonitoringStimuliCodeImage {
             }
 
             // creating patternly-named copies 
-            File sourceOgg = new File(tmpDir + trialTargetNonword + ".ogg");
-            File sourceMp3 = new File(tmpDir + trialTargetNonword + ".mp3");
-            File destOgg = new File(tmpDir + "Trial_" + trialNumber + "_cue.ogg");
-            File destMp3 = new File(tmpDir + "Trial_" + trialNumber + "_cue.mp3");
-            //Files.copy(src, dst, StandardCopyOption.REPLACE_EXISTING);
-            this.copyFileUsingStream(sourceOgg, destOgg);
-            this.copyFileUsingStream(sourceMp3, destMp3);
+            
+            Path sourceOgg = Paths.get(tmpDir + "clear_mono/"+trialTargetNonword + ".ogg");
+            Path sourceMp3 = Paths.get(tmpDir + "clear_mono/"+trialTargetNonword + ".mp3");
+            Path destOgg = Paths.get(tmpDir + "Trial_" + trialNumber + "_cue.ogg");
+            Path destMp3 = Paths.get(tmpDir + "Trial_" + trialNumber + "_cue.mp3");
+            Files.copy(sourceOgg, destOgg, StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(sourceMp3, destMp3, StandardCopyOption.REPLACE_EXISTING);
             // end creating copies
-             // sanity check
-                BufferedReader br1 = new BufferedReader(new FileReader(tmpDir + "Trial_" + trialNumber + "_cue.ogg"));
-                br1.close();
-                BufferedReader br2 = new BufferedReader(new FileReader(tmpDir + "Trial_" + trialNumber + "_cue.mp3"));
-                br2.close();
-                // end sanity check 
+            // sanity check
+            BufferedReader br1 = new BufferedReader(new FileReader(tmpDir + "Trial_" + trialNumber + "_cue.ogg"));
+            br1.close();
+            BufferedReader br2 = new BufferedReader(new FileReader(tmpDir + "Trial_" + trialNumber + "_cue.mp3"));
+            br2.close();
+            // end sanity check 
 
             String trialPositionTarget = record.get("Position_target").trim();
             if (trialPositionTarget == null) {
@@ -134,6 +137,8 @@ public class AudioNonWordMonitoringStimuliCodeImage {
             int trialPositionTargetInt = Integer.parseInt(trialPositionTarget);
 
             String words = "";
+            String subDir = Indices.SNR_TO_DIRNAME.get(snr);
+            Integer snrInt = Integer.parseInt(snr);
             for (int i = 1; i <= trialLengthInt; i++) {
                 String fieldName = "Word" + i;
                 String currentWord = record.get(fieldName).trim();
@@ -146,13 +151,13 @@ public class AudioNonWordMonitoringStimuliCodeImage {
                 }
                 words += (" " + currentWord);
 
-                // creating patternly-named copies 
-                sourceOgg = new File(tmpDir + currentWord + ".ogg");
-                sourceMp3 = new File(tmpDir + currentWord + ".mp3");
-                destOgg = new File(tmpDir + "Trial_" + trialNumber + "word_" + i + ".ogg");
-                destMp3 = new File(tmpDir + "Trial_" + trialNumber + "word_" + i + ".mp3");
-                this.copyFileUsingStream(sourceOgg, destOgg);
-                this.copyFileUsingStream(sourceMp3, destMp3);
+                
+                sourceOgg =Paths.get(tmpDir + subDir +"/"+currentWord + "_"+snrInt +".ogg");
+                sourceMp3 = Paths.get(tmpDir + subDir +"/"+currentWord + "_"+snrInt +".mp3");
+                destOgg = Paths.get(tmpDir + "Trial_" + trialNumber + "word_" + i + ".ogg");
+                destMp3 = Paths.get(tmpDir + "Trial_" + trialNumber + "word_" + i + ".mp3");
+                Files.copy(sourceOgg, destOgg, StandardCopyOption.REPLACE_EXISTING);
+                Files.copy(sourceMp3, destMp3, StandardCopyOption.REPLACE_EXISTING);
                 // end creating copies
                 // sanity check
                 br1 = new BufferedReader(new FileReader(tmpDir + "Trial_" + trialNumber + "word_" + i + ".ogg"));
@@ -166,15 +171,13 @@ public class AudioNonWordMonitoringStimuliCodeImage {
             if (trialPositionFoil == null) {
                 throw new IOException("Position foil is undefined");
             }
-          
-            String tags = " length_" + trialLength + " word_" + trialWord + " sequence_" + words+" "+"foilPosition_"+trialPositionFoil;
+
+            String tags = " length_" + trialLength + " word_" + trialWord + " sequence_" + words + " " + "foilPosition_" + trialPositionFoil;
 
             String uniqueId = "Trial_" + trialNumber;
-            String label = "Trial_" + trialNumber + "_snr_" + snr+"_condition_"+ trialCondition ;
+            String label = "Trial_" + trialNumber + "_snr_" + snr + "_condition_" + trialCondition;
             String currentSt = this.makeStimulusString(uniqueId, label, uniqueId, tags);
             builder.append(currentSt);
-
-          
 
         }
         return builder.toString();
