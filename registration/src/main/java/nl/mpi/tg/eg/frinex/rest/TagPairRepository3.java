@@ -34,7 +34,7 @@ public interface TagPairRepository3 extends PagingAndSortingRepository<TagPairDa
 
     List<TagPairData> findByEventTag(@Param("eventTag") String eventTag);
 
-    List<TagPairData> findAllDistinctRecords();
+//    List<TagPairData> findAllDistinctRecords();
 
     List<TagPairData> findByUserIdOrderByTagDateAsc(@Param("userId") String userId);
 
