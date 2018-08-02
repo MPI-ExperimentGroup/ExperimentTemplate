@@ -67,6 +67,7 @@ public class TagPairData {
         this.tagValue2 = tagValue2;
         this.userId = userId;
         this.eventMs = eventMs;
+        this.dataChannel = dataChannel;
     }
 
     public long getId() {
@@ -89,7 +90,7 @@ public class TagPairData {
         return screenName;
     }
 
-    public int getEventTier() {
+    public Integer getDataChannel() {
         return dataChannel;
     }
 
