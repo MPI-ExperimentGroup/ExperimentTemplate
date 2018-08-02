@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.model;
 
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -114,5 +115,62 @@ public class TagPairData {
 
     public void setSubmitDate(Date submitDate) {
         this.submitDate = submitDate;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + Objects.hashCode(this.tagDate);
+        hash = 17 * hash + Objects.hashCode(this.experimentName);
+        hash = 17 * hash + Objects.hashCode(this.screenName);
+        hash = 17 * hash + Objects.hashCode(this.dataChannel);
+        hash = 17 * hash + Objects.hashCode(this.eventTag);
+        hash = 17 * hash + Objects.hashCode(this.tagValue1);
+        hash = 17 * hash + Objects.hashCode(this.tagValue2);
+        hash = 17 * hash + Objects.hashCode(this.userId);
+        hash = 17 * hash + this.eventMs;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final TagPairData other = (TagPairData) obj;
+        if (this.eventMs != other.eventMs) {
+            return false;
+        }
+        if (!Objects.equals(this.experimentName, other.experimentName)) {
+            return false;
+        }
+        if (!Objects.equals(this.screenName, other.screenName)) {
+            return false;
+        }
+        if (!Objects.equals(this.eventTag, other.eventTag)) {
+            return false;
+        }
+        if (!Objects.equals(this.tagValue1, other.tagValue1)) {
+            return false;
+        }
+        if (!Objects.equals(this.tagValue2, other.tagValue2)) {
+            return false;
+        }
+        if (!Objects.equals(this.userId, other.userId)) {
+            return false;
+        }
+        if (!Objects.equals(this.tagDate, other.tagDate)) {
+            return false;
+        }
+        if (!Objects.equals(this.dataChannel, other.dataChannel)) {
+            return false;
+        }
+        return true;
     }
 }
