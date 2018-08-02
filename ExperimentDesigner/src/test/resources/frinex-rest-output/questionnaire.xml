@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/Users/olhshk/Documents/ExperimentTemplate/ExperimentDesigner/target/test-classes/frinex-rest-output/frinex.xsd" appNameDisplay="Language in Interaction BQ4 Questionnaire" appNameInternal="questionnaire" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" appNameDisplay="Language in Interaction BQ4 Questionnaire" appNameInternal="questionnaire" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
     <preventWindowClose featureText="Bij reload worden ingetypte data verwiderd"/>
     <administration>
         <dataChannel channel="1" label="Authors" logToSdCard="false"/>
@@ -9,8 +9,9 @@
     <metadata>
         <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Wat is je proefpersoonnummer?"/>
         <field controlledMessage="S.v.p type x" controlledRegex="true|false" postName="isAuteur" preventServerDuplicates="false" registrationField=""/>
+        <field controlledMessage="S.v.p type x" controlledRegex="true|false" postName="isCorrect" preventServerDuplicates="false" registrationField=""/>
     </metadata>
-    <presenter displayOrder="1" type="menu" self="Menu" title="Menu">
+    <presenter type="menu" self="Menu" title="Menu">
         <centrePage/>
         <addPadding/>
         <htmlText featureText="&lt;div  &gt; &lt;img src=&quot;static/logo-max.png&quot; align=&quot;left&quot; /&gt; &lt;img src=&quot;static/logo-lil.png&quot; align=&quot;right&quot;/&gt; &lt;/div&gt;" styleName="fullScreenWidth"/>
@@ -24,7 +25,7 @@
         <menuItem featureText="Spelling Check" target="Edit_User_Spelling_Check"></menuItem>
     </presenter>
     
-    <presenter menuLabel="Author Check" displayOrder="10" next="Accord_Author" type="metadata" self="Edit_User_Author_Check" title="">
+    <presenter menuLabel="Author Check" next="Accord_Author" type="metadata" self="Edit_User_Author_Check" title="">
         <metadataField fieldName="workerId"/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
@@ -34,7 +35,7 @@
         </saveMetadataButton>
     </presenter>
     
-    <presenter displayOrder="20" next="stimuliScreenAuthorCheck" type="metadata" self="Accord_Author" title="">
+    <presenter next="stimuliScreenAuthorCheck" type="metadata" self="Accord_Author" title="">
         <centrePage/>
         <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
         <addPadding/>
@@ -47,7 +48,7 @@
         <targetButton featureText="Aan de slag" target="stimuliScreenAuthorCheck"/>
     </presenter>
    
-    <presenter displayOrder="30" next="Admin" type="stimulus" self="stimuliScreenAuthorCheck" title="">
+    <presenter next="Admin" type="stimulus" self="stimuliScreenAuthorCheck" title="">
         <addPadding/>
         <htmlText featureText="Zet een vinkje achter de namen waarvan jij denkt dat ze auteuren zijn"/>
         <addPadding/>
@@ -147,7 +148,7 @@
             
     </presenter>
     
-    <presenter menuLabel="Spelling Check" displayOrder="40" next="Accord_Spelling" type="metadata" self="Edit_User_Spelling_Check" title="">
+    <presenter menuLabel="Spelling Check" next="Accord_Spelling" type="metadata" self="Edit_User_Spelling_Check" title="">
         <metadataField fieldName="workerId"/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
@@ -157,7 +158,7 @@
         </saveMetadataButton>
     </presenter>
     
-    <presenter displayOrder="50" next="stimuliScreenSpellingCheck" type="metadata" self="Accord_Spelling" title="">
+    <presenter next="stimuliScreenSpellingCheck" type="metadata" self="Accord_Spelling" title="">
         <centrePage/>
         <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
         <addPadding/>
@@ -170,7 +171,7 @@
         <targetButton featureText="Aan de slag" target="stimuliScreenSpellingCheck"/>
     </presenter>
    
-    <presenter displayOrder="60" next="Admin" type="stimulus" self="stimuliScreenSpellingCheck" title="">
+    <presenter next="Admin" type="stimulus" self="stimuliScreenSpellingCheck" title="">
         <addPadding/>
         <htmlText featureText="Zet een vinkje achter de woorden waarvan jij denkt dat ze foutgespeld zijn"/>
         <addPadding/>
@@ -188,7 +189,7 @@
                                         <stimulusLabel styleName=""/> 
                                     </column>
                                     <column>
-                                        <stimulusMetadataField fieldName="isAuteur"/>
+                                        <stimulusMetadataField fieldName="isCorrect"/>
                                     </column>
                                 </row>
                             </table>
@@ -213,7 +214,7 @@
                                         <stimulusLabel styleName=""/> 
                                     </column>
                                     <column>
-                                        <stimulusMetadataField fieldName="isAuteur"/>
+                                        <stimulusMetadataField fieldName="isCorrect"/>
                                     </column>
                                 </row>
                             </table>
@@ -239,7 +240,7 @@
                                         <stimulusLabel styleName=""/> 
                                     </column>
                                     <column>
-                                        <stimulusMetadataField fieldName="isAuteur"/>
+                                        <stimulusMetadataField fieldName="isCorrect"/>
                                     </column>
                                 </row>
                             </table>
@@ -270,7 +271,7 @@
     </presenter>
     
  
-    <presenter displayOrder="100" type="transmission" self="Admin" title="Administratie" next="Menu">
+    <presenter type="transmission" self="Admin" title="Administratie" next="Menu">
         <sendMetadata>
             <onSuccess> 
                 <sendAllData>
@@ -309,7 +310,7 @@
             </onError>      
         </sendMetadata>
     </presenter>
-    <presenter back="Menu" displayOrder="110"  menuLabel="about" type="debug" self="about" title="about">
+    <presenter back="Menu" menuLabel="about" type="debug" self="about" title="about">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>

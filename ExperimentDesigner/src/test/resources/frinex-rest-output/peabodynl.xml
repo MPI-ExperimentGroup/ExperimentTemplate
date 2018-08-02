@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/Users/olhshk/Documents/ExperimentTemplate/ExperimentDesigner/target/test-classes/frinex-rest-output/frinex.xsd" appNameDisplay="Peabody Assessment" appNameInternal="peabodynl" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" appNameDisplay="Peabody Assessment" appNameInternal="peabodynl" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
     <preventWindowClose featureText="Bij reload worden ingetypte data verwiderd"/>
     <metadata>
         <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Wat is je gebruikersnummer?"/>
         <field controlledMessage="Voer je geboortedatum, dd-maand-jjjj." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="dateOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
     </metadata>
-    <presenter displayOrder="1" menuLabel="Menu" type="menu" self="Menu" title="Menu">
+    <presenter menuLabel="Menu" type="menu" self="Menu" title="Menu">
         <centrePage/>
         <addPadding/>
         <htmlText featureText="&lt;div  &gt; &lt;img src=&quot;static/logo-max.png&quot; align=&quot;left&quot; /&gt; &lt;img src=&quot;static/logo-lil.png&quot; align=&quot;right&quot;/&gt; &lt;/div&gt;" styleName="fullScreenWidth"/>
@@ -5415,6 +5415,8 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
             <endOfStimulus>
                 <scoreAboveThreshold errorThreshold="8">
                     <aboveThreshold>
+                        <logTokenText type="summary" dataLogFormat="totalScore: &lt;playerTotalScore&gt;"/>
+                        <logTokenText type="summary" dataLogFormat="totalErrors: &lt;playerTotalErrors&gt;"/>
                         <clearCurrentScore/>
                         <gotoPresenter target="Admin"/>
                     </aboveThreshold>
@@ -5492,6 +5494,8 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
             <endOfStimulus>
                 <scoreAboveThreshold errorThreshold="8">
                     <aboveThreshold>
+                        <logTokenText type="summary" dataLogFormat="totalScore: &lt;playerTotalScore&gt;"/>
+                        <logTokenText type="summary" dataLogFormat="totalErrors: &lt;playerTotalErrors&gt;"/>
                         <clearCurrentScore/>
                         <gotoPresenter target="Admin"/>
                     </aboveThreshold>
@@ -5569,6 +5573,8 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
             <endOfStimulus>
                 <scoreAboveThreshold errorThreshold="8">
                     <aboveThreshold>
+                        <logTokenText type="summary" dataLogFormat="totalScore: &lt;playerTotalScore&gt;"/>
+                        <logTokenText type="summary" dataLogFormat="totalErrors: &lt;playerTotalErrors&gt;"/>
                         <clearCurrentScore/>
                         <gotoPresenter target="Admin"/>
                     </aboveThreshold>
@@ -5646,6 +5652,8 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
             <endOfStimulus>
                 <scoreAboveThreshold errorThreshold="8">
                     <aboveThreshold>
+                        <logTokenText type="summary" dataLogFormat="totalScore: &lt;playerTotalScore&gt;"/>
+                        <logTokenText type="summary" dataLogFormat="totalErrors: &lt;playerTotalErrors&gt;"/>
                         <clearCurrentScore/>
                         <gotoPresenter target="Admin"/>
                     </aboveThreshold>
@@ -5723,6 +5731,8 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
             <endOfStimulus>
                 <scoreAboveThreshold errorThreshold="8">
                     <aboveThreshold>
+                        <logTokenText type="summary" dataLogFormat="totalScore: &lt;playerTotalScore&gt;"/>
+                        <logTokenText type="summary" dataLogFormat="totalErrors: &lt;playerTotalErrors&gt;"/>
                         <clearCurrentScore/>
                         <gotoPresenter target="Admin"/>
                     </aboveThreshold>
@@ -5801,6 +5811,8 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
             <endOfStimulus>
                 <scoreAboveThreshold errorThreshold="8">
                     <aboveThreshold>
+                        <logTokenText type="summary" dataLogFormat="totalScore: &lt;playerTotalScore&gt;"/>
+                        <logTokenText type="summary" dataLogFormat="totalErrors: &lt;playerTotalErrors&gt;"/>
                         <clearCurrentScore/>
                         <gotoPresenter target="Admin"/>
                     </aboveThreshold>
@@ -5879,6 +5891,8 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
             <endOfStimulus>
                 <scoreAboveThreshold errorThreshold="8">
                     <aboveThreshold>
+                        <logTokenText type="summary" dataLogFormat="totalScore: &lt;playerTotalScore&gt;"/>
+                        <logTokenText type="summary" dataLogFormat="totalErrors: &lt;playerTotalErrors&gt;"/>
                         <clearCurrentScore/>
                         <gotoPresenter target="Admin"/>
                     </aboveThreshold>
@@ -5956,6 +5970,8 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
             <endOfStimulus>
                 <scoreAboveThreshold errorThreshold="8">
                     <aboveThreshold>
+                        <logTokenText type="summary" dataLogFormat="totalScore: &lt;playerTotalScore&gt;"/>
+                        <logTokenText type="summary" dataLogFormat="totalErrors: &lt;playerTotalErrors&gt;"/>
                         <clearCurrentScore/>
                         <gotoPresenter target="Admin"/>
                     </aboveThreshold>
@@ -6033,6 +6049,8 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
             <endOfStimulus>
                 <scoreAboveThreshold errorThreshold="8">
                     <aboveThreshold>
+                        <logTokenText type="summary" dataLogFormat="totalScore: &lt;playerTotalScore&gt;"/>
+                        <logTokenText type="summary" dataLogFormat="totalErrors: &lt;playerTotalErrors&gt;"/>
                         <clearCurrentScore/>
                         <gotoPresenter target="Admin"/>
                     </aboveThreshold>
@@ -6110,6 +6128,8 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
             <endOfStimulus>
                 <scoreAboveThreshold errorThreshold="8">
                     <aboveThreshold>
+                        <logTokenText type="summary" dataLogFormat="totalScore: &lt;playerTotalScore&gt;"/>
+                        <logTokenText type="summary" dataLogFormat="totalErrors: &lt;playerTotalErrors&gt;"/>
                         <clearCurrentScore/>
                         <gotoPresenter target="Admin"/>
                     </aboveThreshold>
@@ -6165,7 +6185,7 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
             </onError>      
         </sendMetadata>
     </presenter>
-    <presenter back="Menu" displayOrder="210" menuLabel="about" type="debug" self="about" title="about">
+    <presenter back="Menu" menuLabel="about" type="debug" self="about" title="about">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
@@ -6372,7 +6392,7 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
         <stimulus  identifier="set17_Page_07_tn_199_tweeslachtig"  label="set17_Page_07_tn_199_tweeslachtig"   pauseMs="0" correctResponses="3"  imagePath="stimuli/set17_Page_07_tn.png"  audioPath="stimuli/199_tweeslachtig"  tags="set17"  />
         <stimulus  identifier="set17_Page_08_tn_200_bovenkruier"  label="set17_Page_08_tn_200_bovenkruier"   pauseMs="0" correctResponses="3"  imagePath="stimuli/set17_Page_08_tn.png"  audioPath="stimuli/200_bovenkruier"  tags="set17"  />
         <stimulus  identifier="set17_Page_09_tn_201_lamenteren"  label="set17_Page_09_tn_201_lamenteren"   pauseMs="0" correctResponses="1"  imagePath="stimuli/set17_Page_09_tn.png"  audioPath="stimuli/201_lamenteren"  tags="set17"  />
-        <stimulus  identifier="set17_Page_10_tn_202_convex"  label="set17_Page_10_tn_202_convex"   pauseMs="0" correctResponses="3"  imagePath="stimuli/set17_Page_10_tn.png"  audioPath="stimuli/202_convex"  tags="set17"  />
+        <stimulus  identifier="set17_Page_10_tn_¯202_convex"  label="set17_Page_10_tn_202_convex"   pauseMs="0" correctResponses="3"  imagePath="stimuli/set17_Page_10_tn.png"  audioPath="stimuli/202_convex"  tags="set17"  />
         <stimulus  identifier="set17_Page_11_tn_203_nonnetje"  label="set17_Page_11_tn_203_nonnetje"   pauseMs="0" correctResponses="4"  imagePath="stimuli/set17_Page_11_tn.png"  audioPath="stimuli/203_nonnetje"  tags="set17"  />
         <stimulus  identifier="set17_Page_12_tn_204_wetten"  label="set17_Page_12_tn_204_wetten"   pauseMs="0" correctResponses="1"  imagePath="stimuli/set17_Page_12_tn.png"  audioPath="stimuli/204_wetten"  tags="set17"  />           
     </stimuli>

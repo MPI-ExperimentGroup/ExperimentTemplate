@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/Users/olhshk/Documents/ExperimentTemplate/ExperimentDesigner/target/test-classes/frinex-rest-output/frinex.xsd" appNameDisplay="Language in Interaction BQ4 Battery" appNameInternal="lilbq4" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" appNameDisplay="Language in Interaction BQ4 Battery" appNameInternal="lilbq4" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
     <preventWindowClose featureText="Bij reload worden ingetypte data verwiderd"/>
     <administration>
         <dataChannel channel="1" label="Grammar" logToSdCard="false"/>
@@ -10,7 +10,7 @@
     <metadata>
         <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Wat is je proefpersoonnummer?"/>
     </metadata>
-    <presenter displayOrder="1" type="menu" self="Menu" title="Menu">
+    <presenter type="menu" self="Menu" title="Menu">
         <centrePage/>
         <addPadding/>
         <htmlText featureText="&lt;div  &gt; &lt;img src=&quot;static/logo-max.png&quot; align=&quot;left&quot; /&gt; &lt;img src=&quot;static/logo-lil.png&quot; align=&quot;right&quot;/&gt; &lt;/div&gt;" styleName="fullScreenWidth"/>
@@ -24,7 +24,7 @@
         <menuItem featureText="Flanker Test" target="Edit_User_Flanker"></menuItem>
         <menuItem featureText="Ravens Progressive Matrix" target="Edit_User_Raven"></menuItem>
     </presenter>
-    <presenter menuLabel="Grammar Judjement" displayOrder="2" next="Accord_Grammar" type="metadata" self="Edit_User_Grammar" title="">
+    <presenter menuLabel="Grammar Judjement" next="Accord_Grammar" type="metadata" self="Edit_User_Grammar" title="">
         <metadataField fieldName="workerId"/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
@@ -33,7 +33,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter menuLabel="Flanker test" displayOrder="3" next="Accord_Flanker" type="metadata" self="Edit_User_Flanker" title="">
+    <presenter menuLabel="Flanker test" next="Accord_Flanker" type="metadata" self="Edit_User_Flanker" title="">
         <metadataField fieldName="workerId"/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
@@ -42,7 +42,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter menuLabel="Ravens Progressive Matrix" displayOrder="4" next="Accord_Raven" type="metadata" self="Edit_User_Raven" title="">
+    <presenter menuLabel="Ravens Progressive Matrix" next="Accord_Raven" type="metadata" self="Edit_User_Raven" title="">
         <metadataField fieldName="workerId"/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Cannot connect to the server, please check your internet connection.">
             <onError/>
@@ -51,7 +51,7 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter displayOrder="5" next="stimuliScreenGrammar" type="metadata" self="Accord_Grammar" title="">
+    <presenter next="stimuliScreenGrammar" type="metadata" self="Accord_Grammar" title="">
         <centrePage/>
         <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
         <addPadding/>
@@ -68,7 +68,7 @@
         <addPadding/>
         <targetButton featureText="Aan de slag" target="stimuliScreenGrammar"/>
     </presenter>
-    <presenter displayOrder="6" next="stimuliScreenFlankerPractice" type="metadata" self="Accord_Flanker" title="">
+    <presenter next="stimuliScreenFlankerPractice" type="metadata" self="Accord_Flanker" title="">
         <centrePage/>
         <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
         <addPadding/>
@@ -84,7 +84,7 @@
         <addPadding/>
         <targetButton featureText="Aan de slag" target="stimuliScreenFlankerPractice" hotKey="ENTER"/>
     </presenter>
-    <presenter displayOrder="7" next="stimuliScreenRavenPractice" type="metadata" self="Accord_Raven" title="">
+    <presenter next="stimuliScreenRavenPractice" type="metadata" self="Accord_Raven" title="">
         <centrePage/>
         <addPadding/>
         <addPadding/>
@@ -94,7 +94,7 @@
         <addPadding/>
         <targetButton featureText="Naar 't practice rondje" target="stimuliScreenRavenPractice"/>
     </presenter>
-    <presenter displayOrder="15" next="Admin" type="stimulus" self="stimuliScreenGrammar" title="">
+    <presenter next="Admin" type="stimulus" self="stimuliScreenGrammar" title="">
         <loadStimulus eventTag="stimuliGrammarN" randomise="false" repeatCount="1" maxStimuli="40">
             <hasMoreStimulus>
                 <clearPage/>
@@ -204,7 +204,7 @@
     </presenter>
     
     <!-- Flanker -->
-    <presenter displayOrder="16" next="stimuliScreenFlankerBlock1" type="stimulus" self="stimuliScreenFlankerPractice" title="">
+    <presenter next="stimuliScreenFlankerBlock1" type="stimulus" self="stimuliScreenFlankerPractice" title="">
         <loadStimulus eventTag="stimuliFlnakerPracticeN" randomise="true" repeatRandomWindow="3"  repeatCount="1" maxStimuli="72">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
@@ -309,7 +309,7 @@
         </loadStimulus>
     </presenter>
     
-    <presenter displayOrder="17" next="stimuliScreenFlankerBlock2" type="stimulus" self="stimuliScreenFlankerBlock1" title="">
+    <presenter next="stimuliScreenFlankerBlock2" type="stimulus" self="stimuliScreenFlankerBlock1" title="">
         <loadStimulus eventTag="stimuliFlankerN" randomise="true" repeatRandomWindow="3" maxStimuli="72" repeatCount="1">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
@@ -389,7 +389,7 @@
         </loadStimulus>
     </presenter>
     
-    <presenter displayOrder="18" next="Admin" type="stimulus" self="stimuliScreenFlankerBlock2" title="">
+    <presenter next="Admin" type="stimulus" self="stimuliScreenFlankerBlock2" title="">
         <loadStimulus eventTag="stimuliFlankerN" randomise="true" repeatRandomWindow="3" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <triggerListener listenerId="nextStimulusAction" maximum="1" threshold="1">
@@ -461,7 +461,7 @@
         </loadStimulus>
     </presenter>
     
-    <presenter displayOrder="19" next="stimuliScreenRavenTest" type="stimulus" self="stimuliScreenRavenPractice" title="">
+    <presenter next="stimuliScreenRavenTest" type="stimulus" self="stimuliScreenRavenPractice" title="">
         <loadStimulus eventTag="stimuliRavenPracticeN" randomise="false" repeatCount="1" maxStimuli="6">
             <hasMoreStimulus>
                 <clearPage/>
@@ -535,7 +535,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter displayOrder="20" next="Admin" type="stimulus" self="stimuliScreenRavenTest" title="">
+    <presenter next="Admin" type="stimulus" self="stimuliScreenRavenTest" title="">
         
         <startTimer msToNext="1200000" listenerId="timer">
             <gotoPresenter target="timeOutScreen"/>
@@ -548,8 +548,8 @@
                 <centrePage/>
                 <region regionId="regionClock"/>
                 <regionReplace regionId="regionClock">
-                        <htmlTokenText featureText="De clock is aan.."/>
-                    </regionReplace>
+                    <htmlTokenText featureText="De clock is aan.."/>
+                </regionReplace>
                 <addPadding/>
                 <actionButton featureText="Druk om de tijd te updaten.">
                     <regionReplace regionId="regionClock">
@@ -641,7 +641,7 @@
     </presenter>
     
  
-    <presenter displayOrder="100" type="transmission" self="Admin" title="Administratie" next="Menu">
+    <presenter type="transmission" self="Admin" title="Administratie" next="Menu">
         <sendMetadata>
             <onSuccess> 
                 <addPadding/>
@@ -690,7 +690,7 @@
         </sendMetadata>
     </presenter>
     
-    <presenter displayOrder="110" type="transmission" self="timeOutScreen" title="" next="Menu">
+    <presenter type="transmission" self="timeOutScreen" title="" next="Menu">
         <sendMetadata>
             <onSuccess> 
                 <addPadding/>
@@ -715,7 +715,7 @@
         </sendMetadata>
     </presenter>
     
-    <presenter back="Menu" displayOrder="120"  menuLabel="about" type="debug" self="about" title="about">
+    <presenter back="Menu" menuLabel="about" type="debug" self="about" title="about">
         <versionData/>
         <eraseLocalStorageButton/>
         <localStorageData/>
