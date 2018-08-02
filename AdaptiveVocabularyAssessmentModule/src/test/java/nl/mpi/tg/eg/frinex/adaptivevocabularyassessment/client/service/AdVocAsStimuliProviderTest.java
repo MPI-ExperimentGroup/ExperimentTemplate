@@ -93,8 +93,8 @@ public class AdVocAsStimuliProviderTest {
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
         provider.initialiseStimuliState("");
-        
-        assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
+
+        assertEquals(Integer.parseInt(this.startBand) - 1, provider.getCurrentBandIndex());
 
         ArrayList<ArrayList<AdVocAsStimulus>> words = provider.getWords();
         assertEquals(nOfBands, words.size());
@@ -143,8 +143,8 @@ public class AdVocAsStimuliProviderTest {
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
         provider.initialiseStimuliState("");
-        
-        assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
+
+        assertEquals(Integer.parseInt(this.startBand) - 1, provider.getCurrentBandIndex());
 
         ArrayList<ArrayList<AdVocAsStimulus>> words = provider.getWords();
         assertEquals(nOfBands, words.size());
@@ -194,8 +194,8 @@ public class AdVocAsStimuliProviderTest {
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
         provider.initialiseStimuliState("");
 
-        assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
-        
+        assertEquals(Integer.parseInt(this.startBand) - 1, provider.getCurrentBandIndex());
+
         ArrayList<ArrayList<AdVocAsStimulus>> words = provider.getWords();
         assertEquals(nOfBands, words.size());
         for (int i = 0; i < nOfBands; i++) {
@@ -240,7 +240,7 @@ public class AdVocAsStimuliProviderTest {
         provider.nextStimulus(0);
         int result = provider.getCurrentStimulusIndex();
         assertEquals(0, result);
-        assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
+        assertEquals(Integer.parseInt(this.startBand) - 1, provider.getCurrentBandIndex());
     }
 
     /**
@@ -339,7 +339,7 @@ public class AdVocAsStimuliProviderTest {
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
         provider.initialiseStimuliState("");
-        assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
+        assertEquals(Integer.parseInt(this.startBand) - 1, provider.getCurrentBandIndex());
         provider.hasNextStimulus(0);
         provider.nextStimulus(0);
         assertEquals(1, provider.getResponseRecord().size());
@@ -394,7 +394,7 @@ public class AdVocAsStimuliProviderTest {
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
         provider.initialiseStimuliState("");
-        assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
+        assertEquals(Integer.parseInt(this.startBand) - 1, provider.getCurrentBandIndex());
 
         //stimulus 1
         provider.hasNextStimulus(0);
@@ -448,7 +448,7 @@ public class AdVocAsStimuliProviderTest {
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
         provider.initialiseStimuliState("");
-        assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
+        assertEquals(Integer.parseInt(this.startBand) - 1, provider.getCurrentBandIndex());
 
         int totalStimuli = provider.getTotalStimuli();
         assertEquals(nNonwords + nOfBands * Integer.parseInt(wordsPerBand), totalStimuli);
@@ -717,7 +717,7 @@ public class AdVocAsStimuliProviderTest {
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
         provider.initialiseStimuliState("");
-        assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
+        assertEquals(Integer.parseInt(this.startBand) - 1, provider.getCurrentBandIndex());
         boolean result = provider.hasNextStimulus(0);// does not depend on increment
         int invariant = provider.getResponseRecord().size() + provider.getNonwords().size() + this.getListOfListLength(provider.getWords());
 
@@ -769,7 +769,7 @@ public class AdVocAsStimuliProviderTest {
         boolean result12 = provider.hasNextStimulus(0);
         assertTrue(result12);
         assertEquals(expectedBand, provider.getCurrentBandIndex() + 1);
-        assertEquals(0, provider.getBestFastTrackIndexBand()); // stil on fast track, expecting the secind chance
+        assertEquals(0, provider.getBestFastTrackIndexBand()); // stil on fast track, expecting the second chance
 
         provider.nextStimulus(0); // give the second chance
         assertEquals(3, provider.getResponseRecord().size());
@@ -790,13 +790,15 @@ public class AdVocAsStimuliProviderTest {
         if (response3 == null) {
             throw new Exception("Wrong reaction");
         }
-        
+
         //provider.isCorrectResponse(stimulus3, response3);
-         stimulus3.isCorrect(response3);
+        stimulus3.isCorrect(response3);
 
         boolean result3 = provider.hasNextStimulus(0);
         assertTrue(result3);
-        // now current band represents the last cirrect band on the fast track
+        // now current band represents the last correct band on the fast track
+        // expected band drops one because of two errors in a row
+        expectedBand--;
         assertEquals(expectedBand, provider.getCurrentBandIndex() + 1);
         assertEquals(provider.getCurrentBandIndex(), provider.getBestFastTrackIndexBand()); // stil on fast track, expecting the sec0nd chance
 
@@ -845,7 +847,7 @@ public class AdVocAsStimuliProviderTest {
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
         provider.initialiseStimuliState("");
-        assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
+        assertEquals(Integer.parseInt(this.startBand) - 1, provider.getCurrentBandIndex());
         provider.hasNextStimulus(0);
         provider.nextStimulus(0);
         String result = provider.getCurrentStimulusUniqueId();
@@ -907,7 +909,7 @@ public class AdVocAsStimuliProviderTest {
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
         provider.initialiseStimuliState("");
-        assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
+        assertEquals(Integer.parseInt(this.startBand) - 1, provider.getCurrentBandIndex());
 
         LinkedHashMap<Long, Integer> percentageTable = provider.getPercentageBandTable();
 
@@ -1011,7 +1013,7 @@ public class AdVocAsStimuliProviderTest {
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
         provider.initialiseStimuliState("");
-        assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
+        assertEquals(Integer.parseInt(this.startBand) - 1, provider.getCurrentBandIndex());
 
         boolean hasNextStimulus = provider.hasNextStimulus(0);
         int currentExperimentCount = 0;
@@ -1161,7 +1163,7 @@ public class AdVocAsStimuliProviderTest {
         provider.setstartBand(this.startBand);
         provider.setaverageNonWordPosition(this.averageNonWordPoistion);
         provider.initialiseStimuliState("");
-        assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
+        assertEquals(Integer.parseInt(this.startBand) - 1, provider.getCurrentBandIndex());
 
         // make to wrong answers to start fine tuning immediately
         provider.hasNextStimulus(0);
@@ -1225,7 +1227,7 @@ public class AdVocAsStimuliProviderTest {
         assertFalse(cycle2);
         assertFalse(looser);
         assertFalse(champion);
-        assertEquals(20, provider.getBestFastTrackIndexBand() + 1);
+        assertEquals(19, provider.getBestFastTrackIndexBand() + 1);
 
         this.checkFastTrack(provider.getResponseRecord(), provider.getEndFastTrackTimeTick(), provider.getBestFastTrackIndexBand());
         this.checkFineTuning(provider.getResponseRecord(), bandNumberSequence, provider.getEndFastTrackTimeTick(), provider.getBestFastTrackIndexBand(), cycle2, provider.getBandIndexScore());
@@ -1394,7 +1396,14 @@ public class AdVocAsStimuliProviderTest {
             }
         }
         if (stimulus.getBandNumber() > 0) {
-            assertEquals(bestFastTrackIndexBand + 1, stimulus.getBandNumber());
+            // two erros in a row on fast track: go back 1 band
+            if (bestFastTrackIndexBand + 1 == 54) {
+                // we have finished fast track because there was no more bands
+                assertEquals(bestFastTrackIndexBand + 1, stimulus.getBandNumber());
+            } else {
+                // we have finished fast track because we have made 2 error in a row
+                assertEquals(bestFastTrackIndexBand + 1, stimulus.getBandNumber() - 1);
+            }
         }
 
     }
@@ -1421,8 +1430,8 @@ public class AdVocAsStimuliProviderTest {
             //Alternative-1 oscillation-based
             // x, x+1, x, x+1, x, x+1 (error) -> x+1
             // x+1, x, x+1, x, x+1, x (error) -> x
-            int expectedBandNumber = Math.min(bandNumberSequence.get(lastIndex), bandNumberSequence.get(lastIndex-1)); 
-            assertEquals(expectedBandNumber, indexScore+1);
+            int expectedBandNumber = Math.min(bandNumberSequence.get(lastIndex), bandNumberSequence.get(lastIndex - 1));
+            assertEquals(expectedBandNumber, indexScore + 1);
         }
 
         int counterInTuple = 0;
@@ -1522,7 +1531,7 @@ public class AdVocAsStimuliProviderTest {
         provider.setwordsPerBand("40");
         provider.setaverageNonWordPosition("3");
         provider.initialiseStimuliState("");
-        assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
+        assertEquals(Integer.parseInt(this.startBand) - 1, provider.getCurrentBandIndex());
         String toStringOut = provider.toString(); // the line is too long (due to word lists) to make a classical unit test on it, so I combine serialisiation and deserialisation
 
         // testing only specific for AdVocAsProvider implementation part, the parent calss has been tested separately
@@ -1588,7 +1597,7 @@ public class AdVocAsStimuliProviderTest {
         provider.setwordsPerBand("40");
         provider.setaverageNonWordPosition("3");
         provider.initialiseStimuliState("");
-        assertEquals(Integer.parseInt(this.startBand)-1, provider.getCurrentBandIndex());
+        assertEquals(Integer.parseInt(this.startBand) - 1, provider.getCurrentBandIndex());
 
         LinkedHashMap<Long, Integer> table = provider.getPercentageBandTable();
         assertEquals(11, table.size());
@@ -1606,17 +1615,17 @@ public class AdVocAsStimuliProviderTest {
         assertTrue(90 == keys[9]);
         assertTrue(99 == keys[10]);
 
-        assertEquals(1,table.get(keys[0]).intValue());
-        assertEquals(5,table.get(keys[1]).intValue());
-        assertEquals(11 ,table.get(keys[2]).intValue());
-        assertEquals(16,table.get(keys[3]).intValue());
-        assertEquals(22,table.get(keys[4]).intValue());
-        assertEquals(27,table.get(keys[5]).intValue());
-        assertEquals(32,table.get(keys[6]).intValue());
-        assertEquals(38,table.get(keys[7]).intValue());
-        assertEquals(43,table.get(keys[8]).intValue());
-        assertEquals(49,table.get(keys[9]).intValue());
-        assertEquals(53,table.get(keys[10]).intValue());
+        assertEquals(1, table.get(keys[0]).intValue());
+        assertEquals(5, table.get(keys[1]).intValue());
+        assertEquals(11, table.get(keys[2]).intValue());
+        assertEquals(16, table.get(keys[3]).intValue());
+        assertEquals(22, table.get(keys[4]).intValue());
+        assertEquals(27, table.get(keys[5]).intValue());
+        assertEquals(32, table.get(keys[6]).intValue());
+        assertEquals(38, table.get(keys[7]).intValue());
+        assertEquals(43, table.get(keys[8]).intValue());
+        assertEquals(49, table.get(keys[9]).intValue());
+        assertEquals(53, table.get(keys[10]).intValue());
     }
 
     /**

@@ -241,6 +241,9 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
             // hit incorrect? 
             if (this.secondChanceFastTrackIsFired) {
                 retVal = false;
+                if (this.currentBandIndex >0 ) {
+                    this.currentBandIndex--;
+                }
             } else {
                 // giving the second chanse
                 this.secondChanceFastTrackIsFired = true;
