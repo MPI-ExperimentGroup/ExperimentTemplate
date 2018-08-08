@@ -70,6 +70,7 @@ public class AllWizardDataTest {
         JAXBContext jaxbContext = JAXBContext.newInstance(Experiment.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        jaxbMarshaller.setProperty(Marshaller.JAXB_NO_NAMESPACE_SCHEMA_LOCATION, "http://frinexbuild.mpi.nl/frinex.xsd");
         StringWriter stringWriter = new StringWriter();
         final String testOutputName = experiment.getAppNameInternal() + "-testoutput.xml";
 //        jaxbMarshaller.marshal(result, System.out);
@@ -94,6 +95,7 @@ public class AllWizardDataTest {
         JAXBContext jaxbContext = JAXBContext.newInstance(WizardData.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        jaxbMarshaller.setProperty(Marshaller.JAXB_NO_NAMESPACE_SCHEMA_LOCATION, "http://frinexbuild.mpi.nl/frinex.xsd");
 //        StringWriter stringWriter = new StringWriter();
 //        jaxbMarshaller.marshal(wizardData, stringWriter);
         FileWriter fileWriter = new FileWriter(new File(new File(outputDirectoryUri), wizardData.getAppName().replaceAll("[^A-Za-z0-9]", "_").toLowerCase() + "-wizarddata.xml"));
