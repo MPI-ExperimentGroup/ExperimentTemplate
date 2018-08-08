@@ -336,6 +336,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
     private void addClearPageAndTitle(final WizardScreenData storedWizardScreenData, final PresenterFeature presenterFeature) {
         presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
         if (!getGroupTitle(storedWizardScreenData).isEmpty()) {
+            presenterFeature.addFeature(FeatureType.logTokenText, null, "3", "groupNetworkActivity", "logTokenText", "Group:'<groupId>';Members:'<groupAllMemberCodes>';Score:<groupScore>;Channels:'<groupCommunicationChannels>';Scores:'<channelLoop><channelLabel>-<channelScore> </channelLoop>';<groupMemberCode>-best:<playerBestScore>;<groupMemberCode>-current:<playerScore>;GroupOther:'<groupOtherMemberCodes>';ChannelOther:'<channelOtherMemberCodes>';<groupActiveChannel>:<channelScore>;Message:'<groupMessageString>';");
             final PresenterFeature htmlTokenText = new PresenterFeature(FeatureType.htmlTokenText, getGroupTitle(storedWizardScreenData));
             presenterFeature.getPresenterFeatureList().add(htmlTokenText);
             htmlTokenText.addFeatureAttributes(FeatureAttribute.styleName, "headerLabelCentered");
@@ -761,6 +762,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             endOfStimulusGroupMessage.addFeatureAttributes(FeatureAttribute.eventTag, "endOfStimulusGroupMessage");
 //            endOfStimulusGroupMessage.addFeatureAttributes(FeatureAttribute.incrementPhase, "1");
             endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
+            endOfStimulusFeature.addFeature(FeatureType.logTokenText, null, "3", "groupNetworkActivity", "logTokenText", "Group:'<groupId>';Members:'<groupAllMemberCodes>';Score:<groupScore>;Channels:'<groupCommunicationChannels>';Scores:'<channelLoop><channelLabel>-<channelScore> </channelLoop>';<groupMemberCode>-best:<playerBestScore>;<groupMemberCode>-current:<playerScore>;GroupOther:'<groupOtherMemberCodes>';ChannelOther:'<channelOtherMemberCodes>';<groupActiveChannel>:<channelScore>;Message:'<groupMessageString>';");
             endOfStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlTokenText, postStimuliText));
 //            final PresenterFeature groupChannelScoreLabel1 = new PresenterFeature(FeatureType.groupChannelScoreLabel, null);
 //            groupChannelScoreLabel1.addFeatureAttributes(FeatureAttribute.styleName, "");
