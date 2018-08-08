@@ -24,7 +24,6 @@
           "zip"
         ],
         "linux": [
-          "deb",
           "zip"
         ]
       },
@@ -32,7 +31,7 @@
         "packageManager": "npm"
       },
       "electronWinstallerConfig": {
-        "name": "playback_preference_frinex_gui_0.1_testing_snapshot"
+        "name": "@experiment.configuration.name@"
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
@@ -47,10 +46,13 @@
     }
   },
   "dependencies": {
-    "electron-compile": "^6.4.2"
+    "electron-compile": "^6.4.3"
+    "electron-squirrel-startup": "^1.0.0",
+    "require-rebuild": "^1.2.8"
   },
   "devDependencies": {
     "electron-forge": "^5.2.2",
-    "electron-prebuilt-compile": "2.0.2"
+    "electron-prebuilt-compile": "2.0.6"
+    "node-pre-gyp": "^0.6.39"
     }
 }
