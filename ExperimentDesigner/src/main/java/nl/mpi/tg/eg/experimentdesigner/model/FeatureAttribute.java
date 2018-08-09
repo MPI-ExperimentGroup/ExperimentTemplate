@@ -78,7 +78,7 @@ public enum FeatureAttribute {
     //    ogg,
     //    @Deprecated
     //    webm,
-    wavFormat,
+    recordingFormat,
     poster,
     autoPlay,
     loop,
