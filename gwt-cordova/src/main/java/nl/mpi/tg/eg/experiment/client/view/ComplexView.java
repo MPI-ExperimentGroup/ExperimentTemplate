@@ -425,6 +425,9 @@ public class ComplexView extends SimpleView {
                 if (nextButton.isEnabled()) {
                     nextButton.addStyleName("optionButtonActivated");
                     presenterListerner.eventFired(nextButton, this);
+                    if (nextButton instanceof RadioButton) {
+                        ((RadioButton) nextButton).setValue(Boolean.TRUE);
+                    }
                 }
                 resetSingleShot();
             }
