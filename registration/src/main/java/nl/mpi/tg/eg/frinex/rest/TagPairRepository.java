@@ -23,6 +23,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.rest.core.annotation.RestResource;
 
 /**
  * @since Jul 21, 2015 4:42:51 PM (creation date)
@@ -31,6 +32,8 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "tagpairevents", path = "tagpairevents")
 public interface TagPairRepository extends PagingAndSortingRepository<TagPairData, Long> {
 
+//    List<TagPairData> findByUserId(@Param("userId") String userId);
+//    List<TagPairData> findByEventTag(@Param("eventTag") String eventTag);
     @Query("select distinct new TagPairData(userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData order by tagDate asc")
     List<TagPairData> findAllDistinctRecords();
 
@@ -39,4 +42,28 @@ public interface TagPairRepository extends PagingAndSortingRepository<TagPairDat
 
     @Query("select distinct new TagPairData(userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData where userId = :userId and eventTag = :eventTag order by tagDate asc")
     List<TagPairData> findByUserIdAndEventTagOrderByTagDateAsc(@Param("userId") String userId, @Param("eventTag") String eventTag);
+
+    @Override
+    @RestResource(exported = false)
+    public abstract <S extends TagPairData> S save(S entity);
+
+    @Override
+    @RestResource(exported = false)
+    public abstract <S extends TagPairData> Iterable<S> save(Iterable<S> entities);
+
+    @Override
+    @RestResource(exported = false)
+    public abstract void delete(Long id);
+
+    @Override
+    @RestResource(exported = false)
+    public abstract void delete(TagPairData entity);
+
+    @Override
+    @RestResource(exported = false)
+    public abstract void delete(Iterable<? extends TagPairData> entities);
+
+    @Override
+    @RestResource(exported = false)
+    public abstract void deleteAll();
 }
