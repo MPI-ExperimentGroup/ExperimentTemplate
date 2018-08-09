@@ -58,6 +58,7 @@ public enum FeatureType {
     ratingButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     stimulusFreeText(false, true, new FeatureAttribute[]{validationRegex, dataChannel, allowedCharCodes, hotKey, styleName, inputErrorMessage}, false, false, false, Contitionals.none, Contitionals.stimulusAction), // the hotKey in stimulusFreeText will trigger any button with the same hotkey. // todo: The current use of the featureText attribute could be changed to allowedCharErrorMessage and inputErrorMessage could be changed to validationErrorMessage
     stimulusRatingButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabelLeft, ratingLabelRight, styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    stimulusRatingRadio(false, false, new FeatureAttribute[]{dataChannel, ratingLabelLeft, ratingLabelRight, styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     stimulusHasRatingOptions(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     stimulusHasResponse(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     ratingFooterButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
@@ -171,7 +172,7 @@ public enum FeatureType {
     //    captureStimulusImage(true, true, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth}),
     VideoPanel(false, false, new FeatureAttribute[]{src, percentOfPage, maxHeight, maxWidth, poster}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     AnnotationTimelinePanel(true, false, new FeatureAttribute[]{src, poster, eventTag, columnCount, maxStimuli}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    startAudioRecorder(false, false, new FeatureAttribute[]{wavFormat, filePerStimulus, eventTag}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    startAudioRecorder(false, false, new FeatureAttribute[]{recordingFormat, filePerStimulus, eventTag}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     stopAudioRecorder(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     startAudioRecorderTag(false, false, new FeatureAttribute[]{eventTier}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     endAudioRecorderTag(false, false, new FeatureAttribute[]{eventTier, eventTag}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
@@ -196,7 +197,7 @@ public enum FeatureType {
     clearCurrentScore(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.none, Contitionals.none),
     scoreIncrement(true, false, new FeatureAttribute[]{scoreValue}, false, false, false, Contitionals.none, Contitionals.none),
     bestScoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold, correctStreak, errorStreak}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
-    totalScoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
+    totalScoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold}, false, false, false, Contitionals.hasThreshold, Contitionals.none), // todo: add games played 
     scoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold, correctStreak, errorStreak}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
     resetStimulus(false, false, new FeatureAttribute[]{target}, false, false, false, Contitionals.none, Contitionals.none),
     submitTestResults(false, false, null, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none);
