@@ -31,6 +31,7 @@ import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
@@ -41,6 +42,7 @@ import com.google.gwt.user.client.ui.InsertPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PopupPanel;
+import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -335,7 +337,7 @@ public class ComplexView extends SimpleView {
         return nextButton;
     }
 
-    public void addRatingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName) {
+    public void addRatingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String buttonGroupName, final String savedValue) {
         final VerticalPanel verticalPanel = new VerticalPanel();
         final HorizontalPanel labelsPanel = new HorizontalPanel();
         if (ratingLabelLeft != null) {
@@ -348,7 +350,8 @@ public class ComplexView extends SimpleView {
         }
         final HorizontalPanel buttonsPanel = new HorizontalPanel();
         for (PresenterEventListner listener : presenterListeners) {
-            StimulusButton nextButton = getOptionButton(listener);
+            // stimulusRatingRadio needs stimulusFreeText objects to validate them
+            StimulusButton nextButton = (buttonGroupName != null) ? getRadioButton(listener, buttonGroupName, savedValue) : getOptionButton(listener);
             if (styleName != null && !styleName.isEmpty()) {
                 nextButton.addStyleName(styleName);
             } else if (footerButtons) {
@@ -403,6 +406,16 @@ public class ComplexView extends SimpleView {
 
     public StimulusButton getOptionButton(final PresenterEventListner presenterListerner) {
         final Button nextButton = new Button(presenterListerner.getLabel());
+        return configureButton(nextButton, presenterListerner);
+    }
+
+    public StimulusButton getRadioButton(final PresenterEventListner presenterListerner, final String buttonGroupName, final String savedValue) {
+        final RadioButton nextButton = new RadioButton(buttonGroupName, presenterListerner.getLabel());
+        nextButton.setValue(presenterListerner.getLabel().equals(savedValue));
+        return configureButton(nextButton, presenterListerner);
+    }
+
+    private StimulusButton configureButton(final ButtonBase nextButton, final PresenterEventListner presenterListerner) {
         nextButton.addStyleName("optionButton");
         nextButton.setEnabled(true);
         final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
