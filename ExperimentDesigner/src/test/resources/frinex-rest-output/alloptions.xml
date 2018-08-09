@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment appNameDisplay="All Options" appNameInternal="alloptions" backgroundColour="#FFFFFF" complementColour0="#777151" complementColour1="#999891" complementColour2="#85816F" complementColour3="#7B6F34" complementColour4="#8B770E" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#413B52" primaryColour1="#656469" primaryColour2="#514E5C" primaryColour3="#342954" primaryColour4="#271460" rotatable="true" showMenuBar="true" textFontSize="17">
+<experiment appNameDisplay="All Options" appNameInternal="alloptions" backgroundColour="#FFFFFF" complementColour0="#777151" complementColour1="#999891" complementColour2="#85816F" complementColour3="#7B6F34" complementColour4="#8B770E" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#413B52" primaryColour1="#656469" primaryColour2="#514E5C" primaryColour3="#342954" primaryColour4="#271460" rotatable="true" showMenuBar="true" textFontSize="17" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <administration/>
     <metadata>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" duplicatesControlledMessage="This test can only be done once per worker." postName="workerId" preventServerDuplicates="true" registrationField="Reporter name *"/>
@@ -316,6 +316,7 @@
                 <stimulusRatingButton ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
+                <stimulusRatingRadio ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
                 <stimulusHasRatingOptions>
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
@@ -433,7 +434,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder eventTag="eventTag" wavFormat="wavFormat" filePerStimulus="filePerStimulus"/>
+                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" filePerStimulus="filePerStimulus"/>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
@@ -600,6 +601,7 @@
                 <stimulusRatingButton ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
+                <stimulusRatingRadio ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
                 <stimulusHasRatingOptions>
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
@@ -717,7 +719,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder eventTag="eventTag" wavFormat="wavFormat" filePerStimulus="filePerStimulus"/>
+                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" filePerStimulus="filePerStimulus"/>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
@@ -884,6 +886,7 @@
                 <stimulusRatingButton ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
+                <stimulusRatingRadio ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
                 <stimulusHasRatingOptions>
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
@@ -1001,7 +1004,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder eventTag="eventTag" wavFormat="wavFormat" filePerStimulus="filePerStimulus"/>
+                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" filePerStimulus="filePerStimulus"/>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
@@ -1460,6 +1463,7 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <versionData/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="text_all_attributes" type="text" self="text_all_attributesScreen" title="text_all_attributes">
@@ -1846,6 +1850,7 @@
                 <stimulusRatingButton>
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
+                <stimulusRatingRadio/>
                 <stimulusHasRatingOptions>
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
@@ -1963,7 +1968,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder eventTag="eventTag" wavFormat="wavFormat" filePerStimulus="filePerStimulus"/>
+                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" filePerStimulus="filePerStimulus"/>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
@@ -2130,6 +2135,7 @@
                 <stimulusRatingButton>
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
+                <stimulusRatingRadio/>
                 <stimulusHasRatingOptions>
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
@@ -2247,7 +2253,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder eventTag="eventTag" wavFormat="wavFormat" filePerStimulus="filePerStimulus"/>
+                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" filePerStimulus="filePerStimulus"/>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
@@ -2414,6 +2420,7 @@
                 <stimulusRatingButton>
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
+                <stimulusRatingRadio/>
                 <stimulusHasRatingOptions>
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
@@ -2531,7 +2538,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder eventTag="eventTag" wavFormat="wavFormat" filePerStimulus="filePerStimulus"/>
+                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" filePerStimulus="filePerStimulus"/>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
@@ -2990,6 +2997,7 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <versionData/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="text_minimal_attributes" type="text" self="text_minimal_attributesScreen" title="text_minimal_attributes">
