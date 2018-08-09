@@ -29,6 +29,7 @@ import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
+import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.ArrayList;
@@ -1191,19 +1192,86 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     public void stimulusRatingButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener timedStimulusListener, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel) {
-        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName);
+        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName, null, null);
     }
 
-    public void stimulusRatingRadio(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener timedStimulusListener, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel) {
-        ((ComplexView) simpleView).addRadioButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName);
+    public void stimulusRatingRadio(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener timedStimulusListener, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel, final String buttonGroupName) {
+        final List<PresenterEventListner> ratingEventListners = new ArrayList<>();//getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), currentStimulus.getRatingLabels(), dataChannel);
+        final String[] splitRatingLabels = currentStimulus.getRatingLabels().split(",");
+        for (final String ratingItem : splitRatingLabels) {
+            ratingEventListners.add(new PresenterEventListner() {
+                @Override
+                public String getLabel() {
+                    return ratingItem;
+                }
+
+                @Override
+                public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                    JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
+                    storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
+                    storedStimulusJSONObject.put("stimulusRatingRadio", new JSONString(ratingItem));
+                    localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, storedStimulusJSONObject);
+                }
+
+                @Override
+                public int getHotKey() {
+                    return -1;
+                }
+            });
+        }
+        final StimulusFreeText stimulusFreeText = new StimulusFreeText() {
+            @Override
+            public Stimulus getStimulus() {
+                return currentStimulus;
+            }
+
+            @Override
+            public String getPostName() {
+                return "stimulusRatingRadio";
+            }
+
+            @Override
+            public String getResponseTimes() {
+                return null;
+            }
+
+            @Override
+            public String getValue() {
+                final JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
+                final String fieldValue;
+                if (storedStimulusJSONObject != null) {
+                    fieldValue = storedStimulusJSONObject.containsKey("stimulusRatingRadio") ? storedStimulusJSONObject.get("stimulusRatingRadio").isString().stringValue() : "";
+                } else {
+                    fieldValue = "";
+                }
+                return fieldValue;
+            }
+
+            @Override
+            public boolean isValid() {
+                return !getValue().isEmpty();
+            }
+
+            @Override
+            public int getDataChannel() {
+                return dataChannel;
+            }
+
+            @Override
+            public FocusWidget getFocusWidget() {
+                return null;
+            }
+        };
+        ((ComplexView) simpleView).addRatingButtons(ratingEventListners, ratingLabelLeft, ratingLabelRight, false, styleName, buttonGroupName, stimulusFreeText.getValue());
+        stimulusFreeTextList.add(stimulusFreeText);
     }
 
     public void ratingButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel) {
-        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName);
+        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, dataChannel), ratingLabelLeft, ratingLabelRight, false, styleName, null, null);
     }
 
     public void ratingFooterButton(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener timedStimulusListener, final String ratingLabels, final String ratingLabelLeft, final String ratingLabelRight, final String styleName, final int dataChannel) {
-        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, dataChannel), ratingLabelLeft, ratingLabelRight, true, styleName);
+        ((ComplexView) simpleView).addRatingButtons(getRatingEventListners(appEventListner, stimulusProvider, currentStimulus, timedStimulusListener, currentStimulus.getUniqueId(), ratingLabels, dataChannel), ratingLabelLeft, ratingLabelRight, true, styleName, null, null);
     }
 
     public List<PresenterEventListner> getRatingEventListners(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener timedStimulusListener, final String stimulusString, final String ratingLabels, final int dataChannel) {
@@ -1600,7 +1668,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
             if (!stimulusFreeText.isValid()) {
-                stimulusFreeText.getFocusWidget().setFocus(true);
+                if (stimulusFreeText.getFocusWidget() != null) {
+                    stimulusFreeText.getFocusWidget().setFocus(true);
+                }
                 return false;
             }
         }
