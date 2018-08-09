@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experimentdesigner.util;
 
 import nl.mpi.tg.eg.experimentdesigner.controller.WizardController;
+import nl.mpi.tg.eg.experimentdesigner.model.DataChannel;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.WizardData;
@@ -488,6 +489,7 @@ public class MultiParticipant {
 
     public Experiment getExperiment() {
         final Experiment experiment = wizardController.getExperiment(getWizardData());
+        experiment.getDataChannels().add(new DataChannel(3, "groupNetworkActivity", false));
         experiment.setIsScalable(false);
         experiment.setDefaultScale(1.1f);
         return experiment;
