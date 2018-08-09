@@ -201,7 +201,7 @@
             </stimuli>
         </withStimuli>
     </presenter>
-    <presenter back="Menu" menuLabel="First Stimuli Screen" next="Second_Informatie" type="stimulus" self="First_Stimuli_Screen" title="First Stimuli Screen">
+    <presenter back="Menu" menuLabel="First Stimuli Screen" next="stimulusRatingRadio" type="stimulus" self="First_Stimuli_Screen" title="First Stimuli Screen">
         <loadStimulus eventTag="First Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
@@ -408,8 +408,113 @@
             </stimuli>
         </loadStimulus>
     </presenter>
+    <presenter back="Menu" menuLabel="StimulusRatingRadio" next="Second_Informatie" type="stimulus" self="stimulusRatingRadio" title="StimulusRatingRadio">
+        <loadStimulus eventTag="First Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <showStimulusProgress/>
+                <addPadding/>
+                <htmlTokenText featureText="playerScore:
+                &lt;playerScore&gt;&lt;br/&gt;
+                playerErrors:
+                &lt;playerErrors&gt;&lt;br/&gt;
+                playerPotentialScore:
+                &lt;playerPotentialScore&gt;&lt;br/&gt;
+                playerErrorStreak:
+                &lt;playerErrorStreak&gt;&lt;br/&gt;
+                playerCorrectStreak:
+                &lt;playerCorrectStreak&gt;&lt;br/&gt;
+                playerMaxScore:
+                &lt;playerMaxScore&gt;&lt;br/&gt;
+                playerMaxErrors:
+                &lt;playerMaxErrors&gt;&lt;br/&gt;
+                playerMaxPotentialScore:
+                &lt;playerMaxPotentialScore&gt;&lt;br/&gt;
+                playerMaxErrorStreak:
+                &lt;playerMaxErrorStreak&gt;&lt;br/&gt;
+                playerMaxCorrectStreak:
+                &lt;playerMaxCorrectStreak&gt;&lt;br/&gt;
+                playerTotalScore:
+                &lt;playerTotalScore&gt;&lt;br/&gt;
+                playerTotalErrors:
+                &lt;playerTotalErrors&gt;&lt;br/&gt;
+                playerTotalPotentialScore:
+                &lt;playerTotalPotentialScore&gt;&lt;br/&gt;
+                playerGamesPlayed:
+                &lt;playerGamesPlayed&gt; 
+                "/>
+                <addPadding/>
+                <addPadding/>
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete>
+                        <stimulusHasRatingOptions>
+                            <conditionTrue>
+                                <stimulusRatingRadio ratingLabelRight="" dataChannel="1" ratingLabelLeft=""/>
+                                <nextStimulusButton featureText="stimulusRatingRadio Next" eventTag="stimulusRatingRadio Next" repeatIncorrect="false"/>
+                            </conditionTrue>
+                            <conditionFalse>
+                                <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex=".{1,}" inputErrorMessage=" "/>
+                                <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
+                            </conditionFalse>
+                        </stimulusHasRatingOptions>
+                    </mediaPlaybackComplete>
+                </stimulusPresent>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <htmlTokenText featureText="playerScore:
+                &lt;playerScore&gt;&lt;br/&gt;
+                playerErrors:
+                &lt;playerErrors&gt;&lt;br/&gt;
+                playerPotentialScore:
+                &lt;playerPotentialScore&gt;&lt;br/&gt;
+                playerErrorStreak:
+                &lt;playerErrorStreak&gt;&lt;br/&gt;
+                playerCorrectStreak:
+                &lt;playerCorrectStreak&gt;&lt;br/&gt;
+                playerMaxScore:
+                &lt;playerMaxScore&gt;&lt;br/&gt;
+                playerMaxErrors:
+                &lt;playerMaxErrors&gt;&lt;br/&gt;
+                playerMaxPotentialScore:
+                &lt;playerMaxPotentialScore&gt;&lt;br/&gt;
+                playerMaxErrorStreak:
+                &lt;playerMaxErrorStreak&gt;&lt;br/&gt;
+                playerMaxCorrectStreak:
+                &lt;playerMaxCorrectStreak&gt;&lt;br/&gt;
+                playerTotalScore:
+                &lt;playerTotalScore&gt;&lt;br/&gt;
+                playerTotalErrors:
+                &lt;playerTotalErrors&gt;&lt;br/&gt;
+                playerTotalPotentialScore:
+                &lt;playerTotalPotentialScore&gt;&lt;br/&gt;
+                playerGamesPlayed:
+                &lt;playerGamesPlayed&gt; 
+                "/>
+                <addPadding/>
+                <actionButton featureText="clearCurrentScore">
+                    <clearCurrentScore/>
+                    <gotoPresenter target="First_Stimuli_Screen"/>
+                </actionButton>
+                <addPadding/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="First_Stimuli_Screen"/>
+                    <gotoPresenter target="First_Stimuli_Screen"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Pretest_Screen</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
     <presenter back="Menu" menuLabel="Terug" type="text" self="Second_Informatie" title="Second Informatie">
         <htmlText featureText="Instructies Deel 2: &lt;br/&gt;&lt;br/&gt;Type het juiste antwoord in de textbox."/>
+        <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Second"/>
+    </presenter>
+    <presenter back="Menu" menuLabel="Terug" type="text" self="café_test" title="café encoding test">
+        <htmlText featureText="Please make sure that the accent is correctly displayed on this screen: café"/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Second"/>
     </presenter>
     <presenter back="Menu" menuLabel="Second" next="Third_Informatie" type="stimulus" self="Second" title="Second">
@@ -420,6 +525,47 @@
                 <stimulusFreeText featureText="Vul minimal 1 nummer." allowedCharCodes="0123456789." styleName="stimuliLabel" validationRegex="[0-9]+[.]?[0-9]*" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
                 <actionButton featureText="Volgende [tab + enter]">
                     <nextStimulus repeatIncorrect="false"/>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <gotoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping storageField="item">
+                <tag>second</tag>
+            </randomGrouping>
+            <stimuli>
+                <tag>Second</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Menu" menuLabel="Recorder" next="Menu" type="stimulus" self="Recorder" title="Recorder">
+        <actionButton featureText="stopAudioRecorder">
+            <stopAudioRecorder/>
+            <!--<htmlText featureText="stopAudioRecorder"/>-->
+            <!--</stopAudioRecorder>-->
+        </actionButton>
+        <actionButton featureText="startAudioRecorderTag">
+            <startAudioRecorderTag eventTier="3"/>
+            <!--<htmlText featureText="startAudioRecorderTag"/>-->
+            <!--</startAudioRecorderTag>-->
+        </actionButton>
+        <loadStimulus eventTag="Second" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <stimulusLabel styleName="stimuliLabel"/>
+                <addPadding/>
+                <stimulusFreeText featureText="Vul minimal 1 nummer." allowedCharCodes="0123456789." styleName="stimuliLabel" validationRegex="[0-9]+[.]?[0-9]*" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
+                <actionButton featureText="Volgende [tab + enter]">
+                    <nextStimulus repeatIncorrect="false"/>
+                </actionButton>
+                <actionButton featureText="startAudioRecorder">
+                    <startAudioRecorder recordingFormat="wav" filePerStimulus="true" eventTag="startAudioRecorder"/>
+                    <!--                <htmlText featureText="startAudioRecorder"/>
+                    </startAudioRecorder>-->
+                </actionButton>
+                <actionButton featureText="endAudioRecorderTag">
+                    <endAudioRecorderTag eventTier="3" eventTag="endAudioRecorderTag"/>
+                    <!--<htmlText featureText="endAudioRecorderTag"/>-->
+                    <!--</endAudioRecorderTag>-->
                 </actionButton>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -491,7 +637,7 @@
         <stimulus identifier="cond_2:Label6 for stimuli in condition two" label="Label6 for stimuli in condition two" pauseMs="0" tags="First_Stimuli_Screen cond_2"/>
         <stimulus identifier="cond_2:Label7 for stimuli in condition two" label="Label7 for stimuli in condition two" pauseMs="0" tags="First_Stimuli_Screen cond_2"/>
         <stimulus identifier="cond_2:Label8 for stimuli in condition two" label="Label8 for stimuli in condition two" pauseMs="0" tags="First_Stimuli_Screen cond_2"/>
-        <stimulus identifier="cond_3:Lable for stimuli in condition three" label="Lable for stimuli in condition three" pauseMs="0" tags="First_Stimuli_Screen cond_3"/>
+        <stimulus identifier="cond_3:Label for stimuli in condition three" label="Label for stimuli in condition three" pauseMs="0" tags="First_Stimuli_Screen cond_3"/>
         <stimulus identifier="second:14a" label="14a" pauseMs="0" tags="Second second"/>
         <stimulus identifier="second:14b" label="14b" pauseMs="0" tags="Second second"/>
         <stimulus identifier="second:14s" label="14s" pauseMs="0" tags="Second second"/>
