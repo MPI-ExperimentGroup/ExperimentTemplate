@@ -42,7 +42,7 @@
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete>
                         <addPadding/>
-                        <ratingButton dataChannel="1" ratingLabelRight="" ratingLabels="zin compleet,zin onvolledig" ratingLabelLeft="">
+                        <ratingButton ratingLabelRight="" ratingLabels="zin compleet,zin onvolledig" dataChannel="1" ratingLabelLeft="">
                             <nextStimulus repeatIncorrect="false"/>
                         </ratingButton>
                     </mediaPlaybackComplete>
