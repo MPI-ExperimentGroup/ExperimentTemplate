@@ -89,6 +89,7 @@ public class JsonToXml {
                         JAXBContext jaxbContext = JAXBContext.newInstance(Experiment.class);
                         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
                         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+                        jaxbMarshaller.setProperty(Marshaller.JAXB_NO_NAMESPACE_SCHEMA_LOCATION, "http://frinexbuild.mpi.nl/frinex.xsd");
                         FileWriter fileWriter = new FileWriter(outputFile);
                         jaxbMarshaller.marshal(experiment, fileWriter);
                     } catch (IOException | JAXBException exception) {
