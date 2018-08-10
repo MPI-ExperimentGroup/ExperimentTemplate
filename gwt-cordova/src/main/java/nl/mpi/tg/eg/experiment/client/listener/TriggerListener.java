@@ -28,7 +28,7 @@ public class TriggerListener {
     final private String listenerId;
     final private int threshold;
     final private int maximum;
-    final private TimedStimulusListener triggerListener;
+    final protected TimedStimulusListener triggerListener;
     private int maximumCounter = 0;
     private int thresholdCounter = 0;
 
@@ -41,6 +41,9 @@ public class TriggerListener {
 
     public String getListenerId() {
         return listenerId;
+    }
+
+    public void reset() {
     }
 
     public void trigger() {
