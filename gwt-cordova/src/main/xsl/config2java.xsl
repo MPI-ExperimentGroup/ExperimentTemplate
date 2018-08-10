@@ -658,6 +658,7 @@ or local-name() eq 'ratingFooterButton'
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
         <xsl:value-of select="if(local-name() eq 'ratingFooterButton' or local-name() eq 'ratingButton' or local-name() eq 'stimulusRatingButton' or local-name() eq 'stimulusRatingRadio') then concat(', &quot;', @styleName, '&quot;') else ''" />
         <xsl:value-of select="if(local-name() eq 'ratingFooterButton' or local-name() eq 'ratingButton' or local-name() eq 'stimulusRatingButton' or local-name() eq 'stimulusRatingRadio') then if(@dataChannel) then concat(', ', @dataChannel) else ', 0' else ''" />
+        <xsl:value-of select="if(local-name() eq 'stimulusRatingRadio') then concat(', &quot;', generate-id(.), '&quot;') else ''" />
         <xsl:if test="@tags">
             <xsl:text>, new Tag[]{</xsl:text>
             <xsl:for-each select="tokenize(@tags,' ')">
@@ -732,7 +733,7 @@ or local-name() eq 'matchingStimulusGrid'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="region|regionStyle|regionReplace|regionClear|logTimerValue|startTimer|triggerListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|pause|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeAudio|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupNetworkActivity|table|row|column">
+    <xsl:template match="region|regionStyle|regionReplace|regionClear|logTimerValue|startTimer|triggerListener|habituationParadigmListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|pause|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeAudio|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupNetworkActivity|table|row|column">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>
@@ -830,6 +831,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
  or local-name() eq 'stimulusPause'
  or local-name() eq 'randomMsPause'
  or local-name() eq 'triggerListener'
+ or local-name() eq 'habituationParadigmListener'
  or local-name() eq 'countdownLabel'
  or local-name() eq 'stimulusImageCapture'
  or local-name() eq 'groupNetwork'
@@ -891,7 +893,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
             <xsl:value-of select="if(@consumedTagGroup) then concat(', &quot;', @consumedTagGroup, '&quot;') else ',null'" />
         </xsl:if>
     </xsl:template>
-    <xsl:template match="compareTimer|preloadAllStimuli|trigger|resetStimulus|groupMessageLabel|groupMemberCodeLabel|groupMemberLabel|groupScoreLabel|groupChannelScoreLabel|scoreLabel|clearCurrentScore|scoreIncrement|scoreAboveThreshold|bestScoreAboveThreshold|totalScoreAboveThreshold|withMatchingStimulus|showColourReport|submitTestResults|VideoPanel|startAudioRecorder|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|withStimuli|loadStimulus|loadSdCardStimulus|validateStimuliResponses|currentStimulusHasTag|existingUserCheck|rewindVideo|playVideo|pauseVideo">
+    <xsl:template match="compareTimer|preloadAllStimuli|trigger|resetTrigger|resetStimulus|groupMessageLabel|groupMemberCodeLabel|groupMemberLabel|groupScoreLabel|groupChannelScoreLabel|scoreLabel|clearCurrentScore|scoreIncrement|scoreAboveThreshold|bestScoreAboveThreshold|totalScoreAboveThreshold|withMatchingStimulus|showColourReport|submitTestResults|VideoPanel|startAudioRecorder|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|withStimuli|loadStimulus|loadSdCardStimulus|validateStimuliResponses|currentStimulusHasTag|existingUserCheck|rewindVideo|playVideo|pauseVideo">
         <xsl:if test="local-name() eq 'preloadAllStimuli' or local-name() eq 'withStimuli' or local-name() eq 'loadStimulus' or local-name() eq 'loadSdCardStimulus'">
             <xsl:text>{</xsl:text>
             <xsl:text>final StimuliProvider stimulusProvider = </xsl:text>
