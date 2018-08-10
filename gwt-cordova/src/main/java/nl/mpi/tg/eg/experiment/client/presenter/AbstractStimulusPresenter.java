@@ -47,6 +47,7 @@ import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.CurrentStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
+import nl.mpi.tg.eg.experiment.client.listener.HabituationParadigmListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
@@ -1544,8 +1545,16 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         triggerListeners.put(listenerId, new TriggerListener(listenerId, threshold, maximum, triggerListener));
     }
 
+    public void habituationParadigm(final String listenerId, final int threshold, final int maximum, final TimedStimulusListener triggerListener) {
+        triggerListeners.put(listenerId, new HabituationParadigmListener(listenerId, threshold, maximum, triggerListener, triggerListeners.containsKey(listenerId)));
+    }
+
     public void trigger(final String listenerId) {
         triggerListeners.get(listenerId).trigger();
+    }
+
+    public void resetTrigger(final String listenerId) {
+        triggerListeners.get(listenerId).reset();
     }
 
     protected void startTimer(final int msToNext, final String listenerId, final TimedStimulusListener timeoutListener) {
