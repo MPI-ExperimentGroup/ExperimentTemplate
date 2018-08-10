@@ -61,11 +61,16 @@
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
                 </stimulusCodeVideo>
+                <habituationParadigmListener threshold="2000" maximum="10" listenerId="habituationAction">
+                    <nextStimulus repeatIncorrect="false"/>
+                </habituationParadigmListener>
                 <touchInputCaptureStart msToNext="3000" showControls="false">
+                    <resetTrigger listenerId="habituationAction"/>
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
                 <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                    <trigger listenerId="habituationAction"/>
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">
@@ -80,6 +85,7 @@
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
                 <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain" dataChannel="2">
+                    <trigger listenerId="habituationAction"/>
                     <disableStimulusButtons/>
                     <rewindVideo/>
                     <pause msToNext="1000">
