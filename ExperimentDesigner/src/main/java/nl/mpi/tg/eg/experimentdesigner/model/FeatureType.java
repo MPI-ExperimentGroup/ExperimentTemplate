@@ -122,7 +122,9 @@ public enum FeatureType {
     logTimerValue(false, false, new FeatureAttribute[]{listenerId, eventTag, dataChannel}),
     randomMsPause(true, false, new FeatureAttribute[]{minimum, maximum}),
     triggerListener(true, false, new FeatureAttribute[]{listenerId, threshold, maximum}),
+    habituationParadigmListener(true, false, new FeatureAttribute[]{listenerId, threshold, maximum}), //  threshold is in ms eg 2000 is the minimum length of an event to be considered, maximum is the max shows eg 10.
     trigger(false, false, new FeatureAttribute[]{listenerId}),
+    resetTrigger(false, false, new FeatureAttribute[]{listenerId}),
     countdownLabel(true, true, new FeatureAttribute[]{msToNext, msLabelFormat, styleName}),
     stimulusPause(true, false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     stimulusLabel(false, false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
