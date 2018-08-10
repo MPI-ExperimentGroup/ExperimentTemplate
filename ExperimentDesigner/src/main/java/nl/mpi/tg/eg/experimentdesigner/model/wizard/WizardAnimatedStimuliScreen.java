@@ -141,7 +141,7 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
         // start the audio recorder
         final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.startAudioRecorder, null);
-        startRecorderFeature.addFeatureAttributes(FeatureAttribute.wavFormat, "true");
+        startRecorderFeature.addFeatureAttributes(FeatureAttribute.recordingFormat, "wav");
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.filePerStimulus, "false");
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
         hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
