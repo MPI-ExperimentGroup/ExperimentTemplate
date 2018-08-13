@@ -436,6 +436,10 @@ public abstract class AbstractPresenter implements Presenter {
 //                console.log("isAudioRecording: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
             });
+        } else if($wnd.Recorder.isRecordingSupported() && $wnd.recorder) {
+            if ($wnd.recorder) {
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, "recording");
+            }
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }
@@ -455,6 +459,7 @@ public abstract class AbstractPresenter implements Presenter {
         } else if($wnd.Recorder.isRecordingSupported()) {
             if ($wnd.recorder) {
                 $wnd.recorder.stop();
+                $wnd.recorder = null;
             }
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
