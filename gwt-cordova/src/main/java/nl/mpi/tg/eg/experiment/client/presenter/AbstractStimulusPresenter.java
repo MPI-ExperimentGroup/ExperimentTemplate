@@ -1362,7 +1362,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     protected void startAudioRecorder(final String recordingFormat, boolean filePerStimulus, String directoryName, final Stimulus currentStimulus) {
 //        final String subdirectoryName = userResults.getUserData().getUserId().toString();
         final String subdirectoryName = userResults.getUserData().getMetadataValue(new MetadataFieldProvider().workerIdMetadataField);
-        super.startAudioRecorder("wav".equals(recordingFormat), subdirectoryName, directoryName, (filePerStimulus) ? currentStimulus.getUniqueId() : "");
+        super.startAudioRecorder(submissionService, "wav".equals(recordingFormat), subdirectoryName, directoryName, (filePerStimulus) ? currentStimulus.getUniqueId() : "");
     }
 
     protected void showStimulusGrid(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener, final int columnCount, final String imageWidth, final String eventTag, final int dataChannel) {
