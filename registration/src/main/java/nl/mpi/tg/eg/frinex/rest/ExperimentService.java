@@ -17,8 +17,10 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import nl.mpi.tg.eg.frinex.model.AudioData;
 import nl.mpi.tg.eg.frinex.model.DataSubmissionResult;
 import nl.mpi.tg.eg.frinex.model.GroupData;
 import nl.mpi.tg.eg.frinex.model.TagData;
@@ -34,8 +36,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * @since Jun 30, 2015 11:46:06 AM (creation date)
@@ -56,6 +60,8 @@ public class ExperimentService {
     TagPairRepository tagPairRepository;
     @Autowired
     GroupDataRepository groupDataRepository;
+    @Autowired
+    AudioDataRepository audioDataRepository;
 
 //    @RequestMapping(value = "/registerUser", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 //    @ResponseBody
@@ -91,6 +97,22 @@ public class ExperimentService {
 //        }
 //        return new ResponseEntity<>(screenDataRepository.findAll(), HttpStatus.OK);
 //    }
+    @RequestMapping(value = "/audioBlob", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @ResponseBody
+    public ResponseEntity<String> registerAudioData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam("screenName") String screenName) throws IOException {
+        AudioData audioData = new AudioData(new java.util.Date(), null, screenName, userId, stimulusId, dataBlob.getBytes());
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(dataBlob.getSize());
+        stringBuilder.append(":");
+        stringBuilder.append(userId);
+        stringBuilder.append(":");
+        stringBuilder.append(stimulusId);
+        stringBuilder.append(":");
+        stringBuilder.append(screenName);
+        audioDataRepository.save(audioData);
+        return new ResponseEntity(stringBuilder.toString(), HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/screenChange", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<DataSubmissionResult> registerScreenData(@RequestBody List<ScreenData> screenDataList) {
