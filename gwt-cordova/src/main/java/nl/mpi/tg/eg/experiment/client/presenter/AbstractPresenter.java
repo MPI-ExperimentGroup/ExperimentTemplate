@@ -33,6 +33,7 @@ import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.SimpleView;
 import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
@@ -349,7 +350,7 @@ public abstract class AbstractPresenter implements Presenter {
 //        ((ComplexView) simpleView).addText("Could not start the audio recorder");
 //        ((ComplexView) simpleView).addText(message);
 //    }
-    protected native void startAudioRecorder(final boolean wavFormat, String userIdString, String directoryName, String stimulusIdString) /*-{
+    protected native void startAudioRecorder(final DataSubmissionService dataSubmissionService, final boolean wavFormat, String userIdString, String directoryName, String stimulusIdString) /*-{
         var abstractPresenter = this;
         console.log("startAudioRecorder: " + wavFormat + " : " + userIdString + " : " + directoryName + " : " + stimulusIdString);
         if($wnd.plugins){
@@ -360,6 +361,19 @@ public abstract class AbstractPresenter implements Presenter {
                 console.log("startAudioRecorderError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
             },  userIdString, directoryName,  stimulusIdString);
+        } else if($wnd.Recorder.isRecordingSupported()) {
+            console.log("isRecordingSupported");
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, "isRecordingSupported");
+            $wnd.recorder = new $wnd.Recorder({numberOfChannels: 1, encoderPath: "dist/encoderWorker.min.js", monitorGain: 0, recordingGain: 1, encoderSampleRate: 48000});
+            $wnd.recorder.ondataavailable = function( typedArray ){
+                dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitAudioData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;)(userIdString, directoryName, stimulusIdString, typedArray);
+            };
+            try {
+                $wnd.recorder.start(); 
+            } catch(e) {
+                console.log(e.message);
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(e.message);
+            };
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }
@@ -438,6 +452,10 @@ public abstract class AbstractPresenter implements Presenter {
                 console.log("stopAudioRecorderError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
             });
+        } else if($wnd.Recorder.isRecordingSupported()) {
+            if ($wnd.recorder) {
+                $wnd.recorder.stop();
+            }
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }
