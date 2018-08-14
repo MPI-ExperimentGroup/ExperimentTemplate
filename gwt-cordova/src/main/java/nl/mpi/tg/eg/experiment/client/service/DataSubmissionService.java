@@ -89,14 +89,18 @@ public class DataSubmissionService extends AbstractSubmissionService {
 
     protected native void submitAudioData(final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataArray, final MediaSubmissionListener mediaSubmissionListener) /*-{
         var dataBlob = new Blob( [dataArray], { type: 'audio/ogg' } );
-        var xhr=new XMLHttpRequest();
-        xhr.onload = function(responseData) {
-            if(this.readyState === 4) {
-                mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionComplete(Ljava/lang/String;)(responseData.target.responseText);
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+            if(xhr.readyState === 4) {
+                if(xhr.status === 200) {
+                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionComplete(Ljava/lang/String;)(xhr.responseText);
+                } else {
+                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionFailed(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;)(xhr.status + ' ' + xhr.statusText, userIdString, screenName, stimulusIdString, dataArray);
+                }
             }
         };
-        xhr.onerror = function(responseData) {
-            mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionFailed(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;)(responseData.target.responseText, userIdString, screenName, stimulusIdString, dataArray);
+        xhr.onerror = function() {
+            mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionFailed(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;)(xhr.status + ' ' + xhr.statusText, userIdString, screenName, stimulusIdString, dataArray);
         }
         var formData = new FormData();
         formData.append("userId", userIdString);
