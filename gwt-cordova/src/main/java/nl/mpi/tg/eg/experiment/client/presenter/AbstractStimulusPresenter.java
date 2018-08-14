@@ -1361,14 +1361,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         super.startAudioRecorderTag(tier); //((tier < 1) ? 1 : tier) + 2); //  tier 1 and 2 are reserved for stimulus set loading and stimulus display events
     }
 
-    protected void startAudioRecorder(final String recordingFormat, boolean filePerStimulus, String directoryName, final Stimulus currentStimulus) {
+    protected void startAudioRecorder(final String recordingFormat, final String deviceRegex, boolean filePerStimulus, String directoryName, final Stimulus currentStimulus) {
 //        final String subdirectoryName = userResults.getUserData().getUserId().toString();
         final String subdirectoryName = userResults.getUserData().getMetadataValue(new MetadataFieldProvider().workerIdMetadataField);
         final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener() {
             @Override
             public void submissionFailed(String message, String userIdString, String screenName, String stimulusIdString, Uint8Array dataArray) {
                 // todo: consider storing unsent data for retries, but keep in mind that the local storage will overfill very quickly
-                ((TimedStimulusView) simpleView).addText("(debug) Media Submission Failed: " + message);
+                ((TimedStimulusView) simpleView).addText("(debug) Media Submission Failed (retry not implemented): " + message);
             }
 
             @Override
@@ -1376,7 +1376,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 ((TimedStimulusView) simpleView).addText("(debug) Media Submission OK: " + message);
             }
         };
-        super.startAudioRecorder(submissionService, "wav".equals(recordingFormat), subdirectoryName, directoryName, (filePerStimulus) ? currentStimulus.getUniqueId() : "", userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener);
+        super.startAudioRecorder(submissionService, "wav".equals(recordingFormat), deviceRegex, subdirectoryName, directoryName, (filePerStimulus) ? currentStimulus.getUniqueId() : "", userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener);
     }
 
     protected void showStimulusGrid(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener, final int columnCount, final String imageWidth, final String eventTag, final int dataChannel) {
