@@ -351,7 +351,7 @@ public abstract class AbstractPresenter implements Presenter {
 //        ((ComplexView) simpleView).addText("Could not start the audio recorder");
 //        ((ComplexView) simpleView).addText(message);
 //    }
-    protected native void startAudioRecorder(final DataSubmissionService dataSubmissionService, final boolean wavFormat, final String subDirectoryName, final String directoryName, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener) /*-{
+    protected native void startAudioRecorder(final DataSubmissionService dataSubmissionService, final boolean wavFormat, final String deviceRegex, final String subDirectoryName, final String directoryName, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener) /*-{
         var abstractPresenter = this;
         console.log("startAudioRecorder: " + wavFormat + " : " + subDirectoryName + " : " + directoryName + " : " + stimulusIdString + " : " + userIdString);
         if($wnd.plugins){
@@ -364,8 +364,25 @@ public abstract class AbstractPresenter implements Presenter {
             },  subDirectoryName, directoryName,  stimulusIdString);
         } else if($wnd.Recorder.isRecordingSupported()) {
             console.log("isRecordingSupported");
+            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) enumerateDevices");
+            navigator.mediaDevices.enumerateDevices().then(function (deviceInfos) {
+                for (var index = 0; index < deviceInfos.length; index++) {
+                    var deviceInfo = deviceInfos[index];
+                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) " + deviceInfo.label.search(deviceRegex));    
+                    if(deviceInfo.kind === 'audioinput' && deviceInfo.label.search(deviceRegex) >= 0){
+                        abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) " + deviceInfo.kind);            
+                        abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) " + deviceInfo.label);                    
+                        abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) " + deviceInfo.deviceId);                    
+                    }
+                }
+            });
+            //.catch(function (error) {
+             //   abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) " + error.message);
+            //});
+            //deviceId: "Logitech USB Headset (046d:0a45)"groupId: "a7214c3e9d2d1568020e35a6adea7e75e8246bc9db67abc72fdab7a0036617a1"
+            
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, "isRecordingSupported");
-            $wnd.recorder = new $wnd.Recorder({numberOfChannels: 1, encoderPath: "dist/encoderWorker.min.js", monitorGain: 0, recordingGain: 1, encoderSampleRate: 48000});
+            $wnd.recorder = new $wnd.Recorder({numberOfChannels: 1, encoderPath: "opus-recorder/encoderWorker.min.js", monitorGain: 0, recordingGain: 1, encoderSampleRate: 48000, mediaTrackConstraints: {deviceId: '855f1790680be68988e9147de97e07ef89ad753b69907100b5198f752d134ffb'}});
             $wnd.recorder.ondataavailable = function( typedArray ){
                 dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitAudioData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;)(userIdString, screenName, stimulusIdString, typedArray, mediaSubmissionListener);
             };
