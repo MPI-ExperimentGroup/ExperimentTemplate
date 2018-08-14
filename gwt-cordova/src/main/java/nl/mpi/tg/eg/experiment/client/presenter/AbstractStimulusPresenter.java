@@ -26,6 +26,7 @@ import com.google.gwt.json.client.JSONString;
 import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.safehtml.shared.UriUtils;
+import com.google.gwt.typedarrays.shared.Uint8Array;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
@@ -48,6 +49,7 @@ import nl.mpi.tg.eg.experiment.client.listener.CurrentStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
 import nl.mpi.tg.eg.experiment.client.listener.HabituationParadigmListener;
+import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
@@ -1362,7 +1364,19 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     protected void startAudioRecorder(final String recordingFormat, boolean filePerStimulus, String directoryName, final Stimulus currentStimulus) {
 //        final String subdirectoryName = userResults.getUserData().getUserId().toString();
         final String subdirectoryName = userResults.getUserData().getMetadataValue(new MetadataFieldProvider().workerIdMetadataField);
-        super.startAudioRecorder(submissionService, "wav".equals(recordingFormat), subdirectoryName, directoryName, (filePerStimulus) ? currentStimulus.getUniqueId() : "", userResults.getUserData().getUserId().toString(), getSelfTag());
+        final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener() {
+            @Override
+            public void submissionFailed(String message, String userIdString, String screenName, String stimulusIdString, Uint8Array dataArray) {
+                // todo: consider storing unsent data for retries, but keep in mind that the local storage will overfill very quickly
+                ((TimedStimulusView) simpleView).addText("(debug) Media Submission Failed: " + message);
+            }
+
+            @Override
+            public void submissionComplete(String message) {
+                ((TimedStimulusView) simpleView).addText("(debug) Media Submission OK: " + message);
+            }
+        };
+        super.startAudioRecorder(submissionService, "wav".equals(recordingFormat), subdirectoryName, directoryName, (filePerStimulus) ? currentStimulus.getUniqueId() : "", userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener);
     }
 
     protected void showStimulusGrid(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener, final int columnCount, final String imageWidth, final String eventTag, final int dataChannel) {
