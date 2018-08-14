@@ -34,6 +34,7 @@ import java.util.logging.Level;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
+import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
@@ -86,14 +87,17 @@ public class DataSubmissionService extends AbstractSubmissionService {
         return serviceLocations.dataSubmitUrl() + "audioBlob";
     }
 
-    protected native void submitAudioData(final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataArray) /*-{
+    protected native void submitAudioData(final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataArray, final MediaSubmissionListener mediaSubmissionListener) /*-{
         var dataBlob = new Blob( [dataArray], { type: 'audio/ogg' } );
         var xhr=new XMLHttpRequest();
-        xhr.onload=function(errorData) {
+        xhr.onload = function(responseData) {
             if(this.readyState === 4) {
-                console.log(errorData.target.responseText);
+                mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionComplete(Ljava/lang/String;)(responseData.target.responseText);
             }
         };
+        xhr.onerror = function(responseData) {
+            mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionFailed(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;)(responseData.target.responseText, userIdString, screenName, stimulusIdString, dataArray);
+        }
         var formData = new FormData();
         formData.append("userId", userIdString);
         formData.append("screenName", screenName);
