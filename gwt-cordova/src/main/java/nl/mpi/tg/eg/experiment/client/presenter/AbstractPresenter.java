@@ -31,6 +31,7 @@ import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
+import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
@@ -350,7 +351,7 @@ public abstract class AbstractPresenter implements Presenter {
 //        ((ComplexView) simpleView).addText("Could not start the audio recorder");
 //        ((ComplexView) simpleView).addText(message);
 //    }
-    protected native void startAudioRecorder(final DataSubmissionService dataSubmissionService, final boolean wavFormat, String subDirectoryName, String directoryName, String stimulusIdString, String userIdString, String screenName) /*-{
+    protected native void startAudioRecorder(final DataSubmissionService dataSubmissionService, final boolean wavFormat, final String subDirectoryName, final String directoryName, final String stimulusIdString, final String userIdString, final String screenName, final MediaSubmissionListener mediaSubmissionListener) /*-{
         var abstractPresenter = this;
         console.log("startAudioRecorder: " + wavFormat + " : " + subDirectoryName + " : " + directoryName + " : " + stimulusIdString + " : " + userIdString);
         if($wnd.plugins){
@@ -366,7 +367,7 @@ public abstract class AbstractPresenter implements Presenter {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, "isRecordingSupported");
             $wnd.recorder = new $wnd.Recorder({numberOfChannels: 1, encoderPath: "dist/encoderWorker.min.js", monitorGain: 0, recordingGain: 1, encoderSampleRate: 48000});
             $wnd.recorder.ondataavailable = function( typedArray ){
-                dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitAudioData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;)(userIdString, screenName, stimulusIdString, typedArray);
+                dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitAudioData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;)(userIdString, screenName, stimulusIdString, typedArray, mediaSubmissionListener);
             };
             try {
                 $wnd.recorder.start(); 
