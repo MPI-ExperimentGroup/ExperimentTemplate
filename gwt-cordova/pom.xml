@@ -152,6 +152,20 @@
                 </includes>
                 <filtering>true</filtering>
             </resource>
+            <resource>
+                <!--the webjars for recorderjs are all very out of date, so we reply on a checked out copy of https://github.com/chris-rudmin/opus-recorder.git-->
+                <directory>${basedir}/../../opus-recorder/dist</directory>
+                <targetPath>${webappDirectory}/opus-recorder/</targetPath>
+                <includes>
+                    <include>decoderWorker.min.js</include>        
+                    <include>decoderWorker.min.wasm</include>        
+                    <include>encoderWorker.min.js</include>        
+                    <include>encoderWorker.min.wasm</include>        
+                    <include>recorder.min.js</include>        
+                    <include>waveWorker.min.js</include>
+                </includes>
+                <filtering>false</filtering>
+            </resource>
         </resources>
         <plugins>
             <plugin>
