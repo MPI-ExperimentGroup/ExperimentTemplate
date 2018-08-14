@@ -174,7 +174,7 @@ public enum FeatureType {
     //    captureStimulusImage(true, true, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth}),
     VideoPanel(false, false, new FeatureAttribute[]{src, percentOfPage, maxHeight, maxWidth, poster}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     AnnotationTimelinePanel(true, false, new FeatureAttribute[]{src, poster, eventTag, columnCount, maxStimuli}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    startAudioRecorder(false, false, new FeatureAttribute[]{recordingFormat, filePerStimulus, eventTag}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    startAudioRecorder(false, false, new FeatureAttribute[]{recordingFormat, filePerStimulus, eventTag, deviceRegex}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     stopAudioRecorder(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     startAudioRecorderTag(false, false, new FeatureAttribute[]{eventTier}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     endAudioRecorderTag(false, false, new FeatureAttribute[]{eventTier, eventTag}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
