@@ -558,7 +558,7 @@
                     <nextStimulus repeatIncorrect="false"/>
                 </actionButton>
                 <actionButton featureText="startAudioRecorder">
-                    <startAudioRecorder recordingFormat="wav" filePerStimulus="true" eventTag="startAudioRecorder"/>
+                    <startAudioRecorder recordingFormat="wav" filePerStimulus="true" eventTag="startAudioRecorder" deviceRegex="(046d:0a45)"/>
                     <!--                <htmlText featureText="startAudioRecorder"/>
                     </startAudioRecorder>-->
                 </actionButton>
