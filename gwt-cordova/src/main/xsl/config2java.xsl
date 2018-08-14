@@ -920,7 +920,8 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <xsl:value-of select="if(@listenerId) then concat('&quot;',@listenerId, '&quot;') else ''" />
         <xsl:value-of select="if(@target) then concat('ApplicationState.', @target, '.name()') else ''" />
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />        
-        <xsl:value-of select="if(@recordingFormat) then concat('&quot;', '@recordingFormat', '&quot;, ') else ''" />
+        <xsl:value-of select="if(@recordingFormat) then concat('&quot;', @recordingFormat, '&quot;, ') else ''" />
+        <xsl:value-of select="if(@deviceRegex) then concat('&quot;', @deviceRegex, '&quot;, ') else ''" />
         <xsl:value-of select="if(@filePerStimulus) then concat(@filePerStimulus eq 'true', ', ') else ''" />
         <xsl:value-of select="if(@eventTier) then concat(@eventTier, if (@eventTag) then ', ' else '') else ''" />
         <xsl:value-of select="if(@src and @eventTag) then ', ' else ''" />
