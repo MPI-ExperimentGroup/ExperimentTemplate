@@ -19,6 +19,14 @@
                 "hotkey": "SPACE"
             }
         }, {
+            "textScreen": {
+                "menuLabel": "Accent test screen",
+                "title": "Accent test screen",
+                "text": "Please make sure that the accent is correctly displayed on this screen: café<br/><br/>",
+                "butonLabel": "volgende [ spatiebalk ]",
+                "hotkey": "SPACE"
+            }
+        }, {
             "metadataScreen": {
                 "menuLabel": "Terug",
                 "title": "Gegevens",
@@ -43,17 +51,17 @@
                     "cond_1:Label for the stimuli",
 
                     "cond_2:Label1 for stimuli in condition two",
-                    "cond_2:Label2 for stimuli in condition two",
-                    "cond_2:Label3 for stimuli in condition two",
+                    "cond_2/cond_4:Label2 for stimuli in condition two and four",
+                    "cond_2/cond_6:Label3 for stimuli in condition two and six",
                     "cond_2:Label4 for stimuli in condition two",
-                    "cond_2:Label5 for stimuli in condition two",
-                    "cond_2:Label6 for stimuli in condition two",
-                    "cond_2:Label7 for stimuli in condition two",
-                    "cond_2:Label8 for stimuli in condition two",
+                    "id123/cond_2:Label5 for stimuli in condition two",
+                    "cond_3:Label6 for stimuli in condition two",
+                    "cond_4:Label7 for stimuli in condition two",
+                    "cond_5:Label8 for stimuli in condition two",
 
                     "cond_3:Lable for stimuli in condition three"
                 ],
-                "randomStimuliTags": ["cond_1", "cond_2", "cond_3"]
+                "randomStimuliTags": ["cond_1", "cond_2", "cond_3", "cond_4", "cond_5", "cond_6"]
             }
         }, {
             "stimuliData": {
