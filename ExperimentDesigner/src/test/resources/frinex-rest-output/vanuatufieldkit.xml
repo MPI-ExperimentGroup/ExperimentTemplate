@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment appNameDisplay="Vanuatu FieldKit" appNameInternal="vanuatufieldkit" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17">
+<experiment appNameDisplay="Vanuatu FieldKit" appNameInternal="vanuatufieldkit" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <administration/>
     <metadata>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Nem blong man/woman we i toktok"/>
@@ -45,7 +45,7 @@
     <presenter back="Welkam" menuLabel="Metadata" next="Capture" type="stimulus" self="MetadataScreen" title="Metadata">
         <loadStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder eventTag="Metadata" wavFormat="true" filePerStimulus="false"/>
+                <startAudioRecorder recordingFormat="wav" eventTag="Metadata" filePerStimulus="false"/>
                 <startAudioRecorderTag eventTier="1"/>
                 <showStimulusProgress/>
                 <stimulusLabel/>
@@ -67,7 +67,7 @@
     <presenter back="Welkam" menuLabel="Lukluk ol foto" type="stimulus" self="Stimulus" title="Lukluk ol foto">
         <loadSdCardStimulus eventTag="Lukluk ol foto" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder eventTag="Lukluk ol foto" wavFormat="true" filePerStimulus="true"/>
+                <startAudioRecorder recordingFormat="wav" eventTag="Lukluk ol foto" filePerStimulus="true"/>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
                 <stimulusLabel/>
