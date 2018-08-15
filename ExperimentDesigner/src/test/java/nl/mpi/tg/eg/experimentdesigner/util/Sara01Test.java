@@ -31,6 +31,7 @@ import javax.xml.bind.Marshaller;
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  * @since May 3, 2016 11:27:16 AM (creation date)
@@ -45,6 +46,7 @@ public class Sara01Test {
      * @throws java.io.IOException
      * @throws java.net.URISyntaxException
      */
+    @Ignore
     @Test
     public void testGetExperiment() throws JAXBException, IOException, URISyntaxException {
         System.out.println("getExperiment");
