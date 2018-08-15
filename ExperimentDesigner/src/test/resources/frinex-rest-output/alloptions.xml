@@ -70,9 +70,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in habituationParadigmListener"/>
-        </habituationParadigmListener>
         <resetTrigger listenerId="listenerId"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
@@ -133,9 +130,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in habituationParadigmListener"/>
-        </habituationParadigmListener>
         <resetTrigger listenerId="listenerId"/>
         <existingUserCheck>
             <multipleUsers>
@@ -235,9 +229,6 @@
         <triggerListener listenerId="listenerId" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerListener"/>
         </triggerListener>
-        <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in habituationParadigmListener"/>
-        </habituationParadigmListener>
         <trigger listenerId="listenerId"/>
         <resetTrigger listenerId="listenerId"/>
         <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat" styleName="styleName">
@@ -1264,9 +1255,6 @@
         <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes">
-        <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in habituationParadigmListener"/>
-        </habituationParadigmListener>
         <resetTrigger listenerId="listenerId"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
@@ -1297,9 +1285,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in habituationParadigmListener"/>
-        </habituationParadigmListener>
         <resetTrigger listenerId="listenerId"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
@@ -1364,9 +1349,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in habituationParadigmListener"/>
-        </habituationParadigmListener>
         <resetTrigger listenerId="listenerId"/>
         <kinTypeStringDiagram msToNext="60" kintypestring="kintypestring">
             <plainText featureText="plainText in kinTypeStringDiagram"/>
@@ -1426,9 +1408,6 @@
         <activateRandomItem/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in habituationParadigmListener"/>
-        </habituationParadigmListener>
         <resetTrigger listenerId="listenerId"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
@@ -1478,9 +1457,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in habituationParadigmListener"/>
-        </habituationParadigmListener>
         <resetTrigger listenerId="listenerId"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
@@ -1521,9 +1497,6 @@
         <centrePage/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in habituationParadigmListener"/>
-        </habituationParadigmListener>
         <resetTrigger listenerId="listenerId"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
@@ -1571,9 +1544,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in habituationParadigmListener"/>
-        </habituationParadigmListener>
         <resetTrigger listenerId="listenerId"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
@@ -1648,9 +1618,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in habituationParadigmListener"/>
-        </habituationParadigmListener>
         <resetTrigger listenerId="listenerId"/>
         <table>
             <plainText featureText="plainText in table"/>
@@ -1711,9 +1678,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in habituationParadigmListener"/>
-        </habituationParadigmListener>
         <resetTrigger listenerId="listenerId"/>
         <existingUserCheck>
             <multipleUsers>
@@ -1813,9 +1777,6 @@
         <triggerListener listenerId="listenerId" maximum="60" threshold="8">
             <plainText featureText="plainText in triggerListener"/>
         </triggerListener>
-        <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in habituationParadigmListener"/>
-        </habituationParadigmListener>
         <trigger listenerId="listenerId"/>
         <resetTrigger listenerId="listenerId"/>
         <countdownLabel featureText="countdownLabel" msToNext="60" msLabelFormat="msLabelFormat">
@@ -2842,9 +2803,6 @@
         <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes">
-        <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in habituationParadigmListener"/>
-        </habituationParadigmListener>
         <resetTrigger listenerId="listenerId"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
@@ -2875,9 +2833,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in habituationParadigmListener"/>
-        </habituationParadigmListener>
         <resetTrigger listenerId="listenerId"/>
         <table>
             <plainText featureText="plainText in table"/>
@@ -2942,9 +2897,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in habituationParadigmListener"/>
-        </habituationParadigmListener>
         <resetTrigger listenerId="listenerId"/>
         <kinTypeStringDiagram msToNext="60" kintypestring="kintypestring">
             <plainText featureText="plainText in kinTypeStringDiagram"/>
@@ -3004,9 +2956,6 @@
         <activateRandomItem/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in habituationParadigmListener"/>
-        </habituationParadigmListener>
         <resetTrigger listenerId="listenerId"/>
         <table>
             <plainText featureText="plainText in table"/>
@@ -3056,9 +3005,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in habituationParadigmListener"/>
-        </habituationParadigmListener>
         <resetTrigger listenerId="listenerId"/>
         <table>
             <plainText featureText="plainText in table"/>
@@ -3099,9 +3045,6 @@
         <centrePage/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in habituationParadigmListener"/>
-        </habituationParadigmListener>
         <resetTrigger listenerId="listenerId"/>
         <table>
             <plainText featureText="plainText in table"/>
@@ -3149,9 +3092,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <habituationParadigmListener listenerId="listenerId" maximum="60" threshold="8">
-            <plainText featureText="plainText in habituationParadigmListener"/>
-        </habituationParadigmListener>
         <resetTrigger listenerId="listenerId"/>
         <table>
             <plainText featureText="plainText in table"/>
