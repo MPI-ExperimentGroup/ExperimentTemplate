@@ -79,7 +79,7 @@ public enum FeatureAttribute {
     //    @Deprecated
     //    webm,
     recordingFormat,
-    deviceRegex,
+    deviceRegex(true),
     poster,
     autoPlay,
     loop,
