@@ -1559,7 +1559,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         triggerListeners.put(listenerId, new TriggerListener(listenerId, threshold, maximum, triggerListener));
     }
 
-    public void habituationParadigm(final String listenerId, final int threshold, final int maximum, final TimedStimulusListener triggerListener) {
+    public void habituationParadigmListener(final String listenerId, final int threshold, final int maximum, final TimedStimulusListener triggerListener) {
         triggerListeners.put(listenerId, new HabituationParadigmListener(listenerId, threshold, maximum, triggerListener, triggerListeners.containsKey(listenerId)));
     }
 
