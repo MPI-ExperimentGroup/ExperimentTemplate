@@ -102,17 +102,27 @@
                 <table>
                     <row>
                         <column>
-                            <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="-1" repeatIncorrect="false"/>
+                            <stimulusExists offset="-1">
+                                <conditionTrue>
+                                    <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="-1" repeatIncorrect="false"/>
+                                </conditionTrue>
+                                <conditionFalse></conditionFalse>
+                            </stimulusExists>
                         </column>
                         <column>
-                            <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="-1" repeatIncorrect="false"/>
+                            <stimulusExists offset="+1">
+                                <conditionTrue>
+                                    <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="-1" repeatIncorrect="false"/>
+                                </conditionTrue>
+                                <conditionFalse></conditionFalse>
+                            </stimulusExists> 
                         </column>
                     </row>
                 </table>
             </hasMoreStimulus>
             <endOfStimulus>
                 <htmlText featureText="End of stimuli"/>
-                <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="-1" repeatIncorrect="false"/>
+                <!--<prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="-1" repeatIncorrect="false"/>-->
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -203,17 +213,27 @@
                 <table>
                     <row>
                         <column>
-                            <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="-1" repeatIncorrect="false"/>
+                            <stimulusExists offset="-1">
+                                <conditionTrue>
+                                    <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="-1" repeatIncorrect="false"/>
+                                </conditionTrue>
+                                <conditionFalse></conditionFalse>
+                            </stimulusExists>
                         </column>
                         <column>
-                            <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="-1" repeatIncorrect="false"/>
+                            <stimulusExists offset="+1">
+                                <conditionTrue>
+                                    <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="-1" repeatIncorrect="false"/>
+                                </conditionTrue>
+                                <conditionFalse></conditionFalse>
+                            </stimulusExists> 
                         </column>
                     </row>
                 </table>
             </hasMoreStimulus>
             <endOfStimulus>
                 <htmlText featureText="End of stimuli"/>
-                <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="-1" repeatIncorrect="false"/>
+                <!--<prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="-1" repeatIncorrect="false"/>-->
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
