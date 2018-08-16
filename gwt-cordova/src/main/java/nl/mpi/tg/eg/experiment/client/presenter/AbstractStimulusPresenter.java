@@ -1667,8 +1667,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         buttonList.clear();
     }
 
-    public void stimulusExists(final int offset, final StimuliProvider stimulusProvider, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse) {
-        if (stimulusProvider.hasNextStimulus(offset)) {
+    public void stimulusExists(final int offsetInteger, final StimuliProvider stimulusProvider, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse) {
+        if (stimulusProvider.hasNextStimulus(offsetInteger)) {
             conditionTrue.postLoadTimerFired();
         } else {
             conditionFalse.postLoadTimerFired();
