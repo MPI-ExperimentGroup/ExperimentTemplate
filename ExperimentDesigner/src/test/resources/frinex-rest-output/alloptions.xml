@@ -297,6 +297,14 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </validateStimuliResponses>
+                <stimulusExists offset="offset">
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </stimulusExists>
                 <showStimuliReport/>
                 <sendStimuliReport headerKey="headerKey" dataChannel="2" type="type" separator="separator"/>
                 <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="2">
@@ -582,6 +590,14 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </validateStimuliResponses>
+                <stimulusExists offset="offset">
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </stimulusExists>
                 <showStimuliReport/>
                 <sendStimuliReport headerKey="headerKey" dataChannel="2" type="type" separator="separator"/>
                 <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="2">
@@ -867,6 +883,14 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </validateStimuliResponses>
+                <stimulusExists offset="offset">
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </stimulusExists>
                 <showStimuliReport/>
                 <sendStimuliReport headerKey="headerKey" dataChannel="2" type="type" separator="separator"/>
                 <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="2">
@@ -1835,6 +1859,14 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </validateStimuliResponses>
+                <stimulusExists offset="offset">
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </stimulusExists>
                 <showStimuliReport/>
                 <sendStimuliReport type="type"/>
                 <stimulusButton featureText="stimulusButton">
@@ -2120,6 +2152,14 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </validateStimuliResponses>
+                <stimulusExists offset="offset">
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </stimulusExists>
                 <showStimuliReport/>
                 <sendStimuliReport type="type"/>
                 <stimulusButton featureText="stimulusButton">
@@ -2405,6 +2445,14 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </validateStimuliResponses>
+                <stimulusExists offset="offset">
+                    <conditionTrue>
+                        <plainText featureText="plainText in conditionTrue"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <plainText featureText="plainText in conditionFalse"/>
+                    </conditionFalse>
+                </stimulusExists>
                 <showStimuliReport/>
                 <sendStimuliReport type="type"/>
                 <stimulusButton featureText="stimulusButton">
