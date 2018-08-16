@@ -88,6 +88,7 @@ public enum FeatureAttribute {
     diagramName,
     imageWidth,
     alternativeChoice,
+    offset,
     msToNext(false),
     listenerId, threshold, maximum, minimum,
     msLabelFormat,
