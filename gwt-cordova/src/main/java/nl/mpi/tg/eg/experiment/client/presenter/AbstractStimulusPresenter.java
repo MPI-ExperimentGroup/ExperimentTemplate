@@ -1667,6 +1667,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         buttonList.clear();
     }
 
+    public void stimulusExists(final int offset, final StimuliProvider stimulusProvider, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse) {
+        if (stimulusProvider.hasNextStimulus(offset)) {
+            conditionTrue.postLoadTimerFired();
+        } else {
+            conditionFalse.postLoadTimerFired();
+        }
+    }
+
     public void validateStimuliResponses(final boolean unusedValue, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse) {
         if (validateStimuliResponses()) {
             conditionTrue.postLoadTimerFired();
