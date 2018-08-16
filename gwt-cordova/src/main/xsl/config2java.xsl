@@ -893,7 +893,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
             <xsl:value-of select="if(@consumedTagGroup) then concat(', &quot;', @consumedTagGroup, '&quot;') else ',null'" />
         </xsl:if>
     </xsl:template>
-    <xsl:template match="compareTimer|preloadAllStimuli|trigger|resetTrigger|resetStimulus|groupMessageLabel|groupMemberCodeLabel|groupMemberLabel|groupScoreLabel|groupChannelScoreLabel|scoreLabel|clearCurrentScore|scoreIncrement|scoreAboveThreshold|bestScoreAboveThreshold|totalScoreAboveThreshold|withMatchingStimulus|showColourReport|submitTestResults|VideoPanel|startAudioRecorder|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|withStimuli|loadStimulus|loadSdCardStimulus|validateStimuliResponses|currentStimulusHasTag|existingUserCheck|rewindVideo|playVideo|pauseVideo">
+    <xsl:template match="compareTimer|preloadAllStimuli|trigger|resetTrigger|resetStimulus|groupMessageLabel|groupMemberCodeLabel|groupMemberLabel|groupScoreLabel|groupChannelScoreLabel|scoreLabel|clearCurrentScore|scoreIncrement|scoreAboveThreshold|bestScoreAboveThreshold|totalScoreAboveThreshold|withMatchingStimulus|showColourReport|submitTestResults|VideoPanel|startAudioRecorder|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|withStimuli|loadStimulus|loadSdCardStimulus|validateStimuliResponses|currentStimulusHasTag|existingUserCheck|rewindVideo|playVideo|pauseVideo|stimulusExists">
         <xsl:if test="local-name() eq 'preloadAllStimuli' or local-name() eq 'withStimuli' or local-name() eq 'loadStimulus' or local-name() eq 'loadSdCardStimulus'">
             <xsl:text>{</xsl:text>
             <xsl:text>final StimuliProvider stimulusProvider = </xsl:text>
@@ -968,6 +968,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <xsl:value-of select="if(@scoreValue) then concat('', @scoreValue, '') else ''" />
         <xsl:value-of select="if(@columnCount) then concat(', ', @columnCount, '') else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
+        <xsl:value-of select="if(@offset) then @offset else ''" />
         <!--<xsl:value-of select="if(local-name() eq 'loadSdCardStimulus') then if(@excludeRegex) then concat(', &quot;', @excludeRegex, '&quot;') else ', null' else ''" />-->
         <!--<xsl:value-of select="if(@randomise) then concat(', ', @randomise eq 'true') else ''" />-->
         <!--<xsl:value-of select="if(@repeatCount) then concat(', ', @repeatCount) else ''" />-->
@@ -980,6 +981,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
 or local-name() eq 'withMatchingStimulus'
 or local-name() eq 'loadSdCardStimulus'
 or local-name() eq 'preloadAllStimuli'
+or local-name() eq 'stimulusExists'
 ">
             <xsl:text>
                 ,stimulusProvider
