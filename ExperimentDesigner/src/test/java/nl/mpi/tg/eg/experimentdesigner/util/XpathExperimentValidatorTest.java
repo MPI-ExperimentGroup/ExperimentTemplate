@@ -18,7 +18,10 @@
 package nl.mpi.tg.eg.experimentdesigner.util;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -131,5 +134,77 @@ public class XpathExperimentValidatorTest {
         assertEquals("", instance.validateStimuliTags(xmlOkTagsDocument));
         assertNotEquals("", instance.validateStimuliTags(xmlFailTagsDocument));
         assertNotEquals("", instance.validateStimuliTags(xmlFailTagSpaceDocument));
+    }
+
+    /**
+     * Test of validateDocument method, of class XpathExperimentValidator.
+     *
+     * @throws java.io.IOException
+     * @throws javax.xml.parsers.ParserConfigurationException
+     * @throws org.xml.sax.SAXException
+     * @throws javax.xml.xpath.XPathExpressionException
+     * @throws nl.mpi.tg.eg.experimentdesigner.util.XpathExperimentException
+     * @throws java.net.URISyntaxException
+     */
+    @Test
+    public void testValidateDocument() throws IOException, IllegalArgumentException, ParserConfigurationException, SAXException, XPathExpressionException, XpathExperimentException, URISyntaxException {
+        System.out.println("validateDocument");
+        final String inputDirectory = "/frinex-rest-output/";
+        URI outputDirectoryUri = this.getClass().getResource(inputDirectory).toURI();
+        System.out.println(inputDirectory);
+        XpathExperimentValidator instance = new XpathExperimentValidator();
+        instance.validateDocument(new File(new File(outputDirectoryUri), "advocas1.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "corsi.xml"));
+//        instance.validateDocument(new File(new File(outputDirectoryUri), "heoexp01.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "multiparticipant.xml"));
+//        instance.validateDocument(new File(new File(outputDirectoryUri), "playhouse_studyJ.xml"));
+//        instance.validateDocument(new File(new File(outputDirectoryUri), "short-for-unittest-to-delete.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "advocas2.xml"));
+//        instance.validateDocument(new File(new File(outputDirectoryUri), "digitspanbackward.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "hrpretest.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "nonwacq.xml"));
+//        instance.validateDocument(new File(new File(outputDirectoryUri), "ppvt.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "shortmultiparticipant01.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "alloptions.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "dobes_annotator.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "hrpretest02.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "online_emotions.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "questionnaire.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "synquiz2.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "antwoordraden.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "engadvocas.xml"));
+//        instance.validateDocument(new File(new File(outputDirectoryUri), "joseco01.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "onlinepretest.xml"));
+//        instance.validateDocument(new File(new File(outputDirectoryUri), "ravenas.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "vanuatufieldkit.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "audioas2.xml"));
+//        instance.validateDocument(new File(new File(outputDirectoryUri), "exampleronald.xml"));
+//        instance.validateDocument(new File(new File(outputDirectoryUri), "joseco02.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "parcours01.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "ravensas.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "wellspringssamoan.xml"));
+//        instance.validateDocument(new File(new File(outputDirectoryUri), "audiononwordmonitoring.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "french_audio.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "kinship_example.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "peabodyas.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "rosselfieldkit.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "with_simulus_example.xml"));
+//        instance.validateDocument(new File(new File(outputDirectoryUri), "audiononwordmonitoring_old.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "french_conversation.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "ld_screensize.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "peabodynl.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "sentences_rating_task.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "zinnen_afmaken.xml"));
+//        instance.validateDocument(new File(new File(outputDirectoryUri), "autoprediction.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "generic_example.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "leeservaring.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "playback_preference.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "sentveri-exp3.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "zinnen_beoordelen.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "bq4english.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "grammaras.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "lilbq4.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "playhouse_study.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "shawifieldkit.xml"));
     }
 }
