@@ -297,7 +297,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </validateStimuliResponses>
-                <stimulusExists offset="offset">
+                <stimulusExists offset="2">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
                     </conditionTrue>
@@ -590,7 +590,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </validateStimuliResponses>
-                <stimulusExists offset="offset">
+                <stimulusExists offset="2">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
                     </conditionTrue>
@@ -883,7 +883,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </validateStimuliResponses>
-                <stimulusExists offset="offset">
+                <stimulusExists offset="2">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
                     </conditionTrue>
@@ -1859,7 +1859,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </validateStimuliResponses>
-                <stimulusExists offset="offset">
+                <stimulusExists offset="2">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
                     </conditionTrue>
@@ -2152,7 +2152,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </validateStimuliResponses>
-                <stimulusExists offset="offset">
+                <stimulusExists offset="2">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
                     </conditionTrue>
@@ -2445,7 +2445,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </validateStimuliResponses>
-                <stimulusExists offset="offset">
+                <stimulusExists offset="2">
                     <conditionTrue>
                         <plainText featureText="plainText in conditionTrue"/>
                     </conditionTrue>
