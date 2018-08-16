@@ -70,23 +70,24 @@ public class XpathExperimentValidator {
     }
 
     protected String validatePresenterNames(Document xmlDocument) throws XPathExpressionException {
+        String returnMessage = "";
         final ArrayList<String> presenterNames = new ArrayList<>();
         XPath validationXPath = XPathFactory.newInstance().newXPath();
         NodeList nodeList = (NodeList) validationXPath.compile("/experiment/presenter/@self").evaluate(xmlDocument, XPathConstants.NODESET);
         for (int index = 0; index < nodeList.getLength(); index++) {
             final String presenterName = nodeList.item(index).getTextContent();
             if (presenterNames.contains(presenterName)) {
-                String returnMessage = "Each presenter name must be unique, but '" + presenterName + "' is used on another presenter.\n";
+                returnMessage += "Each presenter name must be unique, but '" + presenterName + "' is used on another presenter.\n";
                 System.out.println(returnMessage);
-                return returnMessage;
             } else {
                 presenterNames.add(presenterName);
             }
         }
-        return "";
+        return returnMessage;
     }
 
     protected String validatePresenterLinks(Document xmlDocument) throws XPathExpressionException {
+        String returnMessage = "";
         final ArrayList<String> presenterNames = new ArrayList<>();
         XPath validationXPath = XPathFactory.newInstance().newXPath();
         NodeList nodeList1 = (NodeList) validationXPath.compile("/experiment/presenter/@self").evaluate(xmlDocument, XPathConstants.NODESET);
@@ -101,12 +102,44 @@ public class XpathExperimentValidator {
                 final String targetName = nodeList2.item(index).getTextContent();
                 System.out.println("targetName: " + targetName);
                 if (!presenterNames.contains(targetName)) {
-                    String returnMessage = "Each '" + testType + "' attribute must reference a valid presenter, but '" + targetName + "' is not the self name of any presenter.\n";
+                    returnMessage += "Each '" + testType + "' attribute must reference a valid presenter, but '" + targetName + "' is not the self name of any presenter.\n";
                     System.out.println(returnMessage);
-                    return returnMessage;
                 }
             }
         }
-        return "";
+        return returnMessage;
+    }
+
+    protected String validateStimuliTags(Document xmlDocument) throws XPathExpressionException {
+        String returnMessage = "";
+        final ArrayList<String> tagNames = new ArrayList<>();
+        XPath validationXPath = XPathFactory.newInstance().newXPath();
+        NodeList nodeList1 = (NodeList) validationXPath.compile("/experiment/stimuli/stimulus/@tags").evaluate(xmlDocument, XPathConstants.NODESET);
+        for (int index = 0; index < nodeList1.getLength(); index++) {
+            final String tagsString = nodeList1.item(index).getTextContent();
+            for (String tagString : tagsString.split(" ")) {
+                if (!tagNames.contains(tagString)) {
+                    tagNames.add(tagString);
+                    System.out.println("tag: " + tagString);
+                }
+            }
+        }
+        for (String testType : new String[]{"tag", "@tags"}) {
+            NodeList nodeList2 = (NodeList) validationXPath.compile("/experiment/presenter//" + testType).evaluate(xmlDocument, XPathConstants.NODESET);
+            for (int index = 0; index < nodeList2.getLength(); index++) {
+                final String targetName = nodeList2.item(index).getTextContent();
+                if (targetName.contains(" ") && !testType.endsWith("s")) {
+                    returnMessage += "The attribute '" + testType + "' cannot contain more than one tag, but '" + targetName + "' was found.\n";
+                }
+                for (String targetTag : targetName.split(" ")) {
+                    System.out.println("targetTag: " + targetTag);
+                    if (!tagNames.contains(targetTag)) {
+                        returnMessage += "Each '" + testType + "' attribute must reference a valid stimuli tag, but '" + targetTag + "' is not specified any stimuli.\n";
+                        System.out.println(returnMessage);
+                    }
+                }
+            }
+        }
+        return returnMessage;
     }
 }
