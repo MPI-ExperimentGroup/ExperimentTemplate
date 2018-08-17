@@ -120,7 +120,7 @@ public class XpathExperimentValidator {
             for (String tagString : tagsString.split(" ")) {
                 if (!tagNames.contains(tagString)) {
                     tagNames.add(tagString);
-                    System.out.println("tag: " + tagString);
+//                    System.out.println("tag: " + tagString);
                 }
             }
         }
