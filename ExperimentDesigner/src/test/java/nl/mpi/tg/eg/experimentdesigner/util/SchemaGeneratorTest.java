@@ -59,7 +59,7 @@ public class SchemaGeneratorTest {
             "french_conversation.xml", "leeservaring.xml", "parcours01.xml", "sentences_rating_task.xml", "vanuatufieldkit.xml",
             "alloptions.xml",
             "multiparticipant.xml", "playback_preference.xml",
-            "sentveri-exp3.xml",
+            "sentveri_exp3.xml",
             "wellspringssamoan.xml",
             "antwoordraden.xml", "generic_example.xml",
 //            "joseco01.xml",
