@@ -6,12 +6,13 @@ appname=@experiment.configuration.name@-@project.artifactId@-@project.version@
 rm -rf $appname-electron
 unzip $appname-electron.zip -d $appname-electron
 cd $appname-electron
+pwd
+ls
 
-
-npm config set prefix '/srv/ExperimentTemplate/.npm-global'
+/usr/bin/npm config set prefix '/srv/ExperimentTemplate/.npm-global'
 PATH=/srv/ExperimentTemplate/.npm-global/bin:$PATH
-npm install -g electron-forge
-npm install --save
+/usr/bin/npm install -g electron-forge
+/usr/bin/npm install --save
 #electron-forge init $appname
 #cd $appname
 #electron-forge package --platform=win32 --arch=x64
