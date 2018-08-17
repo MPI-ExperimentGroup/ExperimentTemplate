@@ -94,13 +94,13 @@ public class XpathExperimentValidator {
         for (int index = 0; index < nodeList1.getLength(); index++) {
             final String presenterName = nodeList1.item(index).getTextContent();
             presenterNames.add(presenterName);
-            System.out.println("presenterName: " + presenterName);
+//            System.out.println("presenterName: " + presenterName);
         }
         for (String testType : new String[]{"target", "back", "next"}) {
             NodeList nodeList2 = (NodeList) validationXPath.compile("//@" + testType).evaluate(xmlDocument, XPathConstants.NODESET);
             for (int index = 0; index < nodeList2.getLength(); index++) {
                 final String targetName = nodeList2.item(index).getTextContent();
-                System.out.println("targetName: " + targetName);
+//                System.out.println("targetName: " + targetName);
                 if (!presenterNames.contains(targetName)) {
                     returnMessage += "Each '" + testType + "' attribute must reference a valid presenter, but '" + targetName + "' is not the self name of any presenter.\n";
                     System.out.println(returnMessage);
@@ -132,7 +132,7 @@ public class XpathExperimentValidator {
                     returnMessage += "The attribute '" + testType + "' cannot contain more than one tag, but '" + targetName + "' was found.\n";
                 }
                 for (String targetTag : targetName.split(" ")) {
-                    System.out.println("targetTag: " + targetTag);
+//                    System.out.println("targetTag: " + targetTag);
                     if (!tagNames.contains(targetTag)) {
                         returnMessage += "Each '" + testType + "' attribute must reference a valid stimuli tag, but '" + targetTag + "' is not specified any stimuli.\n";
                         System.out.println(returnMessage);
