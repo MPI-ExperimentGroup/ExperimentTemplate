@@ -115,7 +115,7 @@
                                     <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="-1" styleName="" repeatIncorrect="false"/>
                                 </conditionTrue>
                                 <conditionFalse/>
-                            </stimulusExists> 
+                            </stimulusExists>
                         </column>
                     </row>
                 </table>
@@ -225,7 +225,7 @@
                                     <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="-1" styleName="" repeatIncorrect="false"/>
                                 </conditionTrue>
                                 <conditionFalse/>
-                            </stimulusExists> 
+                            </stimulusExists>
                         </column>
                     </row>
                 </table>
