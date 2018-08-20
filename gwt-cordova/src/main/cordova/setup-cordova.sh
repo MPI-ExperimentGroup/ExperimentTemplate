@@ -13,6 +13,7 @@ bash ../generate-icons.sh
 /usr/bin/npm config set prefix '/srv/ExperimentTemplate/.npm-global'
 PATH=/srv/ExperimentTemplate/.npm-global/bin:$PATH
 /usr/bin/npm install -g cordova
+cordova requirements
 
 #cordova platform add ios
 #cordova platform add windows
