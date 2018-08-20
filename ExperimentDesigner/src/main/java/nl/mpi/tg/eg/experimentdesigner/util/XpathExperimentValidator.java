@@ -48,6 +48,7 @@ public class XpathExperimentValidator {
         result += validateInternalName(fileName, xmlDocument);
         result += validatePresenterNames(xmlDocument);
         result += validatePresenterLinks(xmlDocument);
+        result += validateStimuliTags(xmlDocument);
         if (!result.isEmpty()) {
             throw new XpathExperimentException(result);
         }
