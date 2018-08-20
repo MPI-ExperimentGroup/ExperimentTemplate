@@ -9,7 +9,13 @@ rm -rf $appname-cordova
 unzip $appname-cordova.zip -d $appname-cordova
 cd $appname-cordova
 bash ../generate-icons.sh
+
+/usr/bin/npm config set prefix '/srv/ExperimentTemplate/.npm-global'
+PATH=/srv/ExperimentTemplate/.npm-global/bin:$PATH
+/usr/bin/npm install -g cordova
+
 #cordova platform add ios
+#cordova platform add windows
 cordova platform add android
 #cordova plugin add https://github.com/danwilson/google-analytics-plugin.git
 #cordova plugin add org.apache.cordova.device
