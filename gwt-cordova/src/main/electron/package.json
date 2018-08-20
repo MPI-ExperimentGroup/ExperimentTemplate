@@ -46,13 +46,13 @@
     }
   },
   "dependencies": {
-    "electron-compile": "^6.4.3"
+    "electron-compile": "^6.4.3",
     "electron-squirrel-startup": "^1.0.0",
     "require-rebuild": "^1.2.8"
   },
   "devDependencies": {
     "electron-forge": "^5.2.2",
-    "electron-prebuilt-compile": "2.0.6"
+    "electron-prebuilt-compile": "2.0.6",
     "node-pre-gyp": "^0.6.39"
     }
 }
