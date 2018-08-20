@@ -362,7 +362,7 @@ public abstract class AbstractPresenter implements Presenter {
                 console.log("startAudioRecorderError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
             },  subDirectoryName, directoryName,  stimulusIdString);
-        } else if($wnd.Recorder.isRecordingSupported()) {
+        } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             console.log("isRecordingSupported");
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) enumerateDevices");
             navigator.mediaDevices.enumerateDevices().then(function (deviceInfos) {
@@ -454,7 +454,7 @@ public abstract class AbstractPresenter implements Presenter {
 //                console.log("isAudioRecording: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::FALSE, null);
             });
-        } else if($wnd.Recorder.isRecordingSupported() && $wnd.recorder) {
+        } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported() && $wnd.recorder) {
             if ($wnd.recorder) {
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, "recording");
             }
@@ -474,7 +474,7 @@ public abstract class AbstractPresenter implements Presenter {
                 console.log("stopAudioRecorderError: " + tagvalue);
                 abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(tagvalue);
             });
-        } else if($wnd.Recorder.isRecordingSupported()) {
+        } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             if ($wnd.recorder) {
                 $wnd.recorder.stop();
                 $wnd.recorder = null;
