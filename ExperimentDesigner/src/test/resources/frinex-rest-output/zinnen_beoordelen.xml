@@ -81,6 +81,6 @@
     <stimuli>
         <stimulus identifier="no_181/set_1/condition_1/list_1/list_2:stimulus text 1" label="stimulus text 1" pauseMs="0" tags="Stimulus condition_1 list_1 list_2 no_181 set_1"/>
         <stimulus identifier="no_185/set_5/condition_1/list_1/list_2:stimulus text 2" label="stimulus text 2" pauseMs="0" tags="Stimulus condition_1 list_1 list_2 no_185 set_5"/>
-        <stimulus identifier="no_67/set_7/condition_1/list_1/list_2:stimulus text 3" label="stimulus text 3" pauseMs="0" tags="Stimulus condition_1 list_1 list_2 no_67 set_7"/>
+        <stimulus identifier="no_67/set_7/condition_1/list_1/list_2/list_3/list_4:st" label="stimulus text 3" pauseMs="0" tags="Stimulus condition_1 list_1 list_2 list_3 list_4 no_67 set_7"/>
     </stimuli>
 </experiment>
