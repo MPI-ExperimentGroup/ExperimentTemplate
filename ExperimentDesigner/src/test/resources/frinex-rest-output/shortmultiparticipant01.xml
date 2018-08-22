@@ -78,5 +78,7 @@
             </onError>
         </generateCompletionCode>
     </presenter>
-    <stimuli/>
+    <stimuli>
+        <stimulus code="moveRotated30" identifier="5.png:shape1:Round_8_4:quadrant1:moveRotated30" imagePath="5.png" pauseMs="0" tags="5 Round_8_4 moveRotated30 quadrant1 shape1"/>
+    </stimuli>
 </experiment>
