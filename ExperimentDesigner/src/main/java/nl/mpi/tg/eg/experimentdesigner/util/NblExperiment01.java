@@ -43,7 +43,7 @@ public class NblExperiment01 {
     private final String[] stimuliString = {
         "no_181/set_1/condition_1/list_1/list_2:stimulus text 1",
         "no_185/set_5/condition_1/list_1/list_2:stimulus text 2",
-        "no_67/set_7/condition_1/list_1/list_2:stimulus text 3"};
+        "no_67/set_7/condition_1/list_1/list_2/list_3/list_4:stimulus text 3"};
 
     public WizardData getWizardData() {
         WizardData wizardData = new WizardData();
