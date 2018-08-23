@@ -32,8 +32,6 @@ public class WizardUtilData {
 
     protected boolean showMenuBar;
 
-    protected boolean showProgress;
-
     protected WizardUtilScreen[] screenData;
 
     public WizardUtilEnum getTemplateType() {
@@ -50,14 +48,6 @@ public class WizardUtilData {
 
     public void setExperimentTitle(String experimentTitle) {
         this.experimentTitle = experimentTitle;
-    }
-
-    public boolean isShowProgress() {
-        return showProgress;
-    }
-
-    public void setShowProgress(boolean showProgress) {
-        this.showProgress = showProgress;
     }
 
     public boolean isShowMenuBar() {
