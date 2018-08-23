@@ -86,8 +86,16 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             setCorrectAudio(copyOfOptions[6]);
             setIntroAudio(copyOfOptions[7]);
             setStimuliButtonArray(copyOfOptions[8]);
-            setTimeoutMs(Integer.parseInt(copyOfOptions[9]));
-            setTimeoutShowMs(Integer.parseInt(copyOfOptions[10]));
+            try {
+                setTimeoutMs(Integer.parseInt(copyOfOptions[9]));
+            } catch (NumberFormatException exception) {
+                setTimeoutMs(0);
+            }
+            try {
+                setTimeoutShowMs(Integer.parseInt(copyOfOptions[10]));
+            } catch (NumberFormatException exception) {
+                setTimeoutShowMs(0);
+            }
             setTimeoutImage(copyOfOptions[11]);
         } else {
             setBackgroundImage(null);
