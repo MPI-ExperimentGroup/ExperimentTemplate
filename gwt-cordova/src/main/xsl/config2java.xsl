@@ -490,11 +490,11 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
 or local-name() eq 'removeStimulus'
 ) then ', currentStimulus' else ''" />
         <xsl:value-of select="if(
-local-name() eq 'stimulusMetadataField'
-or local-name() eq 'stimulusLabel'
-) then 'currentStimulus' else ''" />
-        <xsl:value-of select="if(local-name() eq 'stimulusMetadataField' or (local-name() eq 'stimulusLabel' and @styleName)
-) then ', ' else ''" />
+        local-name() eq 'stimulusMetadataField'
+        or local-name() eq 'stimulusLabel'
+        ) then 'currentStimulus' else ''" />
+                <xsl:value-of select="if(local-name() eq 'stimulusMetadataField' or (local-name() eq 'stimulusLabel' and @styleName)
+        ) then ', ' else ''" />
         <xsl:value-of select="if(local-name() eq 'sendStimuliReport') then ', ' else ''" />
         <xsl:value-of select="if(@type) then concat('&quot;', @type, '&quot;, ') else ''" />   
         <xsl:if test="local-name() eq 'logTokenText'">
@@ -641,15 +641,19 @@ or local-name() eq 'ratingFooterButton'
             <xsl:text>, currentStimulus</xsl:text>
         </xsl:if>
         <xsl:value-of select="if(@msToNext) then concat(', ', @msToNext) else ''" />
-        <xsl:text>, new TimedStimulusListener() {
+        <xsl:if test="local-name() ne 'stimulusRatingRadio'
+and local-name() ne 'ratingRadioButton'
+">
+            <xsl:text>, new TimedStimulusListener() {
 
-            @Override
-            public void postLoadTimerFired() {
-        </xsl:text>
-        <xsl:apply-templates/>
-        <xsl:text>
-            }
-            }</xsl:text>
+                @Override
+                public void postLoadTimerFired() {
+            </xsl:text>
+            <xsl:apply-templates/>
+            <xsl:text>
+                }
+                }</xsl:text>
+        </xsl:if>
         <xsl:value-of select="if(@kintypestring) then concat(', &quot;', @kintypestring, '&quot;') else ''" />
         <xsl:value-of select="if(@diagramName) then concat(', &quot;', @diagramName, '&quot;') else ''" />
         <xsl:value-of select="if(@imageWidth) then concat(', &quot;', @imageWidth, '&quot;') else ''" />
@@ -660,7 +664,7 @@ or local-name() eq 'ratingFooterButton'
         <xsl:value-of select="if(@eventTag) then concat(', &quot;', @eventTag, '&quot;') else ''" />
         <xsl:value-of select="if(local-name() eq 'ratingFooterButton' or local-name() eq 'ratingButton' or local-name() eq 'ratingRadioButton' or local-name() eq 'stimulusRatingButton' or local-name() eq 'stimulusRatingRadio') then concat(', &quot;', @styleName, '&quot;') else ''" />
         <xsl:value-of select="if(local-name() eq 'ratingFooterButton' or local-name() eq 'ratingButton' or local-name() eq 'ratingRadioButton' or local-name() eq 'stimulusRatingButton' or local-name() eq 'stimulusRatingRadio') then if(@dataChannel) then concat(', ', @dataChannel) else ', 0' else ''" />
-        <xsl:value-of select="if(local-name() eq 'stimulusRatingRadio') then concat(', &quot;', generate-id(.), '&quot;') else ''" />
+        <xsl:value-of select="if(local-name() eq 'stimulusRatingRadio' or local-name() eq 'ratingRadioButton') then concat(', &quot;', generate-id(.), '&quot;') else ''" />
         <xsl:if test="@tags">
             <xsl:text>, new Tag[]{</xsl:text>
             <xsl:for-each select="tokenize(@tags,' ')">
