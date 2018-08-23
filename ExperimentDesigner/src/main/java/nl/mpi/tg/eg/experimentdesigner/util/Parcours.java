@@ -548,9 +548,14 @@ public class Parcours extends WizardUtilData {
                     }
 
                     @Override
+                    public boolean isShowProgress() {
+                        return false;
+                    }
+
+                    @Override
                     public String[] getStimuliArray() {
                         for (int index = 0; index < stimuliString.length; index++) {
-                            stimuliString[index]=stimuliString[index].replace("\n", "<br/>");
+                            stimuliString[index] = stimuliString[index].replace("\n", "<br/>");
                         }
                         return stimuliString;
                     }
@@ -613,11 +618,6 @@ public class Parcours extends WizardUtilData {
     @Override
     public WizardUtilEnum getTemplateType() {
         return WizardUtilEnum.SentenceCompletion;
-    }
-
-    @Override
-    public boolean isShowProgress() {
-        return false;
     }
 
     @Override
