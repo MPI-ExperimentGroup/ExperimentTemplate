@@ -36,6 +36,8 @@ public class WizardUtilStimuliData {
     protected String[] stimuliCodes; // todo: implement or remove the use of stimuliCodes for image screens
     protected StimuliFields[] stimuliFields;
     protected String[] stimuliArray;
+    protected boolean showProgress;
+    protected boolean ratingRadioButtons;
     protected String[] randomStimuliTags;
     protected String[] options;
     protected String ratingLabels = null;
@@ -61,6 +63,22 @@ public class WizardUtilStimuliData {
 
     public void setStimuliType(StimuliType stimuliType) {
         this.stimuliType = stimuliType;
+    }
+
+    public boolean isShowProgress() {
+        return showProgress;
+    }
+
+    public void setShowProgress(boolean showProgress) {
+        this.showProgress = showProgress;
+    }
+
+    public boolean isRatingRadioButtons() {
+        return ratingRadioButtons;
+    }
+
+    public void setRatingRadioButtons(boolean ratingRadioButtons) {
+        this.ratingRadioButtons = ratingRadioButtons;
     }
 
     public String getInstructions() {
