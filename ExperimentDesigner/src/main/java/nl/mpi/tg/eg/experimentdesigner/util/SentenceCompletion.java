@@ -253,7 +253,9 @@ public class SentenceCompletion {
                 switch (stimuliType) {
                     case touch:
                         abstractWizardScreen = new WizardGridStimulusScreen(stimuliData);
-                        abstractWizardScreen.getWizardScreenData().getMenuWizardScreenData().add(lastScreen.getWizardScreenData()); // todo: sort this out
+                        if (lastScreen != null) {
+                            abstractWizardScreen.getWizardScreenData().getMenuWizardScreenData().add(lastScreen.getWizardScreenData());
+                        }
                         enableBackButton = true;
                         break;
                     case text:
@@ -261,30 +263,6 @@ public class SentenceCompletion {
                         abstractWizardScreen = new WizardRandomStimulusScreen(stimuliData);
                         enableBackButton = false;
                         break;
-                }
-                if (abstractWizardScreen instanceof WizardRandomStimulusScreen) {
-                    final WizardRandomStimulusScreen list1234Screen = (WizardRandomStimulusScreen) abstractWizardScreen;
-                    if (stimuliData.getRatingLabels() != null) {
-                        list1234Screen.getWizardScreenData().setStimulusResponseOptions(stimuliData.getRatingLabels());
-                    } else if (stimuliData.getStimuliCodes() != null) {
-                        // todo: add the images based on this getStimuliCodes
-                        list1234Screen.getWizardScreenData().setStimulusResponseOptions(stimuliData.getStimuliCodes()[0]);
-                    } else {
-                        list1234Screen.setStimulusFreeText(true,
-                                (stimuliData.getFreeTextValidationRegex() == null) ? ".{2,}" : stimuliData.getFreeTextValidationRegex(),
-                                stimuliData.getFreeTextValidationMessage()
-                        );
-                        list1234Screen.setAllowedCharCodes(stimuliData.getFreeTextAllowedCharCodes());
-                        list1234Screen.setInputKeyErrorMessage("Sorry, dit teken is niet toegestaan.");
-                    }
-                    list1234Screen.getWizardScreenData().setStimulusResponseLabelLeft("");
-                    list1234Screen.getWizardScreenData().setStimulusResponseLabelRight("");
-                    list1234Screen.setRandomStimuliTagsField("item");
-                    list1234Screen.setStimuliLabelStyle(stimuliData.getStimuliLabelStyle());
-                    list1234Screen.setHotkeyButton(stimuliData.getStimuliHotKey());
-                    if (wizardUtilData.isShowProgress()) {
-                        list1234Screen.setShowProgress(true);
-                    }
                 }
                 wizardData.addScreen(abstractWizardScreen);
 
@@ -362,6 +340,8 @@ public class SentenceCompletion {
     }
 
     public Experiment getExperiment() {
-        return wizardController.getExperiment(getWizardData());
+        final Experiment experiment = wizardController.getExperiment(getWizardData());
+//        experiment.getDataChannels().add(new DataChannel(3, "Example DataChannel", false));
+        return experiment;
     }
 }
