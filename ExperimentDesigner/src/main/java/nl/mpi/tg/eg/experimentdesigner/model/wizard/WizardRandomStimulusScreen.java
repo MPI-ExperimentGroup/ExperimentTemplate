@@ -48,6 +48,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         setHotkeyButton("SPACE");
         setTableLayout(false);
         setShowProgress(false);
+        setRatingRadioButtons(false);
         setStimuliLabelStyle(null);
 //        this.wizardScreenData.setButtonLabelEventTag("");
         this.wizardScreenData.setCentreScreen(true);
@@ -70,6 +71,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setCentreScreen(false);
         setHotkeyButton("SPACE");
         setShowProgress(false);
+        setRatingRadioButtons(false);
         setStimulusFreeText(false);
         setTableLayout(false);
         String spacebar = "Volgende [tab + enter]";
@@ -82,6 +84,30 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         setStimuliSet(stimuliData);
         if ("horizontal".equals(stimuliData.getStimuliLayout())) {
             setTableLayout(true);
+        }
+        if (stimuliData.getRatingLabels() != null) {
+            this.wizardScreenData.setStimulusResponseOptions(stimuliData.getRatingLabels());
+        } else if (stimuliData.getStimuliCodes() != null) {
+            // todo: add the images based on this getStimuliCodes
+            this.wizardScreenData.setStimulusResponseOptions(stimuliData.getStimuliCodes()[0]);
+        } else {
+            this.setStimulusFreeText(true,
+                    (stimuliData.getFreeTextValidationRegex() == null) ? ".{2,}" : stimuliData.getFreeTextValidationRegex(),
+                    stimuliData.getFreeTextValidationMessage()
+            );
+            this.setAllowedCharCodes(stimuliData.getFreeTextAllowedCharCodes());
+            this.setInputKeyErrorMessage("Sorry, dit teken is niet toegestaan.");
+        }
+        this.wizardScreenData.setStimulusResponseLabelLeft("");
+        this.wizardScreenData.setStimulusResponseLabelRight("");
+        this.setRandomStimuliTagsField("item");
+        this.setStimuliLabelStyle(stimuliData.getStimuliLabelStyle());
+        this.setHotkeyButton(stimuliData.getStimuliHotKey());
+        if (stimuliData.isShowProgress()) {
+            this.setShowProgress(true);
+        }
+        if (stimuliData.isRatingRadioButtons()) {
+            this.setRatingRadioButtons(true);
         }
     }
 
@@ -102,6 +128,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setCentreScreen(centreScreen);
         setHotkeyButton("SPACE");
         setShowProgress(false);
+        setRatingRadioButtons(false);
         setStimulusFreeText(false);
         setTableLayout(false);
         if (spacebar == null) {
@@ -127,6 +154,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         setStimulusFreeText(false);
         setHotkeyButton("SPACE");
         setShowProgress(false);
+        setRatingRadioButtons(false);
         setTableLayout(false);
         setStimuliSet(screenTextArray);
     }
@@ -151,6 +179,10 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         this.wizardScreenData.setScreenBoolean(3, isTableLayout);
     }
 
+    final public void setRatingRadioButtons(boolean radioButtons) {
+        this.wizardScreenData.setScreenBoolean(4, radioButtons);
+    }
+
     private boolean isRandomiseStimuli(WizardScreenData storedWizardScreenData) {
         return storedWizardScreenData.getScreenBoolean(0);
     }
@@ -170,6 +202,10 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
     private boolean isTableLayout(WizardScreenData storedWizardScreenData) {
         return storedWizardScreenData.getScreenBoolean(3);
     }
+
+    private boolean isRatingRadioButtons(WizardScreenData storedWizardScreenData) {
+        return storedWizardScreenData.getScreenBoolean(4);
+    }
 //    private boolean getFreeTextValidationRegex(WizardScreenData wizardScreenData) {
 //
 //    }
@@ -180,7 +216,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
 
     @Override
     public String getScreenBooleanInfo(int index) {
-        return new String[]{"RandomiseStimuli", "StimulusFreeText", "ShowProgress", "TableLayout"}[index];
+        return new String[]{"RandomiseStimuli", "StimulusFreeText", "ShowProgress", "TableLayout", "RatingRadioButtons"}[index];
     }
 
     @Override
@@ -296,7 +332,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         return storedWizardScreenData.getScreenText(2);
     }
 
-    public void setStimulusFreeText(boolean stimulusFreeText, String freeTextValidationRegex, String freeTextValidationMessage) {
+    final public void setStimulusFreeText(boolean stimulusFreeText, String freeTextValidationRegex, String freeTextValidationMessage) {
         setStimulusFreeText(stimulusFreeText);
         setFreeTextValidationRegex(freeTextValidationRegex);
         setFreeTextValidationMessage(freeTextValidationMessage);
@@ -427,15 +463,24 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             }
         }
         if (storedWizardScreenData.getStimulusResponseOptions() != null) {
-            final PresenterFeature ratingFooterButtonFeature = new PresenterFeature(FeatureType.ratingButton, null);
+            final PresenterFeature ratingFooterButtonFeature = new PresenterFeature(isRatingRadioButtons(storedWizardScreenData) ? FeatureType.ratingRadioButton : FeatureType.ratingButton, null);
             ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabels, storedWizardScreenData.getStimulusResponseOptions());
             ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelLeft, storedWizardScreenData.getStimulusResponseLabelLeft());
             ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.ratingLabelRight, storedWizardScreenData.getStimulusResponseLabelRight());
             ratingFooterButtonFeature.addFeatureAttributes(FeatureAttribute.dataChannel, "1");
             final PresenterFeature nextStimulusFeature = new PresenterFeature(FeatureType.nextStimulus, null);
             nextStimulusFeature.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
-            ratingFooterButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
             presenterFeature.getPresenterFeatureList().add(ratingFooterButtonFeature);
+            if (isRatingRadioButtons(storedWizardScreenData)) {
+                final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, storedWizardScreenData.getNextButton()[0]);
+                if (getHotkeyButton(storedWizardScreenData) != null) {
+                    nextButtonFeature.addFeatureAttributes(FeatureAttribute.hotKey, getHotkeyButton(storedWizardScreenData));
+                }
+                nextButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
+                presenterFeature.getPresenterFeatureList().add(nextButtonFeature);
+            } else {
+                ratingFooterButtonFeature.getPresenterFeatureList().add(nextStimulusFeature);
+            }
         } else {
             final PresenterFeature nextButtonFeature = new PresenterFeature(FeatureType.actionButton, storedWizardScreenData.getNextButton()[0]);
 //            nextButtonFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getButtonLabelEventTag());
