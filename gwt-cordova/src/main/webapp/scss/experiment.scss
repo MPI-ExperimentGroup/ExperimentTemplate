@@ -714,7 +714,7 @@ table.stimulusContainerTab {
     margin-top: 12px;
 }
 
-.menuOuter, .stimulusGrid {
+.menuOuter, .stimulusGrid, .centeredVerticalHorizontal80 {
     width: 80%;
 }
 .bargraphInner {
@@ -806,7 +806,7 @@ table.gridCell:hover, td.gridCell:hover {
     height: auto;
 }
 
-.centeredVerticalHorizontal {
+.centeredVerticalHorizontal, .centeredVerticalHorizontal80 {
     position: fixed;
     top: 50vh;
     left: 50vw;
