@@ -49,7 +49,7 @@ import javax.xml.namespace.QName;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
-public class PresenterFeature {
+public class PresenterFeature extends CanHaveFeatures {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -106,6 +106,7 @@ public class PresenterFeature {
 //        return presenterFeatures;
 //    }
 //    @XmlTransient
+    @Override
     public List<PresenterFeature> getPresenterFeatureList() {
         return presenterFeatures;
     }
@@ -134,31 +135,6 @@ public class PresenterFeature {
     @XmlTransient
     public FeatureType getFeatureType() {
         return featureType;
-    }
-
-    public PresenterFeature[] addFeatures(FeatureType... featureTypes) {
-        PresenterFeature returnPresenterFeatures[] = new PresenterFeature[featureTypes.length];
-        int index = 0;
-        for (FeatureType feature : featureTypes) {
-            returnPresenterFeatures[index] = addFeature(feature, null);
-            index++;
-        }
-        return returnPresenterFeatures;
-    }
-
-    public PresenterFeature addFeature(FeatureType featureType, String text, String... attributes) {
-        if (featureType.canHaveText() == (text != null && !text.isEmpty())) {
-            final PresenterFeature presenterFeature = new PresenterFeature(featureType, text);
-            getPresenterFeatureList().add(presenterFeature);
-            if (featureType.getFeatureAttributes() != null) {
-                for (int index = 0; index < featureType.getFeatureAttributes().length; index++) {
-                    presenterFeature.addFeatureAttributes(featureType.getFeatureAttributes()[index], attributes[index]);
-                }
-            }
-            return presenterFeature;
-        } else {
-            throw new UnsupportedOperationException(featureType.name() + ((featureType.canHaveText()) ? " requires feature text." : " cannot have text"));
-        }
     }
 
     public void setFeatureType(FeatureType featureType) {
