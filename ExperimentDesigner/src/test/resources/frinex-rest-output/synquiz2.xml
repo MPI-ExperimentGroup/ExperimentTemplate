@@ -129,30 +129,30 @@
     </metadata>
     <presenter menuLabel="Introduction" type="text" self="Introduction" title="Decoding the Genetics of Synaesthesia">
         <plainText featureText="We are studying the genetic basis of synaesthesia, a neurological phenomenon described as a &quot;mixing of the senses&quot;. To find out how our genes shape how we see the world, we are looking for people who connect letters, numbers, days of the week, or months with specific colours. This is called &quot;grapheme-colour&quot; synaesthesia. "/>
-<!--            <translation featureText="Wij onderzoeken de genetische basis van synesthesie, een neurologisch fenomeen dat beschreven wordt als 'het mixen van zintuigen'. Om uit te vinden hoe onze genen vorm geven aan de manier waarop wij de wereld zien, zoeken we mensen die letters, cijfers, dagen van de week of maanden verbinden met bepaalde kleuren. Dit wordt ook wel 'grafeem-kleur' synesthesie genoemd." locale="nl"/>
-            <translation featureText="" locale="de"/>
-            <translation featureText="Мы изучаем генетические основы синестезии, неврологический феномен, часто определяемый как &quot;смешение чувств&quot;. Для того чтобы узнать, как наши гены формируют то, как мы видим мир, мы ищем людей, у которых буквы, цифры, дни недели или месяцы связаны с конкретными цветами. Эта разновидность называется &quot;графемно-цветовая&quot; синестезия. " locale="ru"/>-->
+        <!--            <translation featureText="Wij onderzoeken de genetische basis van synesthesie, een neurologisch fenomeen dat beschreven wordt als 'het mixen van zintuigen'. Om uit te vinden hoe onze genen vorm geven aan de manier waarop wij de wereld zien, zoeken we mensen die letters, cijfers, dagen van de week of maanden verbinden met bepaalde kleuren. Dit wordt ook wel 'grafeem-kleur' synesthesie genoemd." locale="nl"/>
+        <translation featureText="" locale="de"/>
+        <translation featureText="Мы изучаем генетические основы синестезии, неврологический феномен, часто определяемый как &quot;смешение чувств&quot;. Для того чтобы узнать, как наши гены формируют то, как мы видим мир, мы ищем людей, у которых буквы, цифры, дни недели или месяцы связаны с конкретными цветами. Эта разновидность называется &quot;графемно-цветовая&quot; синестезия. " locale="ru"/>-->
         <!--</plainText>-->
         <addPadding/>
         <plainText featureText="How our study works:"/>
-<!--            <translation featureText="Hoe ons onderzoek werkt:" locale="nl"/>
-            <translation featureText="" locale="de"/>
-            <translation featureText="Как работает наше исследование: " locale="ru"/>-->
+        <!--            <translation featureText="Hoe ons onderzoek werkt:" locale="nl"/>
+        <translation featureText="" locale="de"/>
+        <translation featureText="Как работает наше исследование: " locale="ru"/>-->
         <!--</plainText>-->
         <addPadding/>
         <!--<image src="static/study_diagram.svg" maxHeight="80" percentOfPage="80" link="" maxWidth="80"/>-->
         <htmlText featureText="&lt;img src=&quot;static/study_diagram.svg&quot; /&gt;"/>
         <addPadding/>
         <plainText featureText="The synaesthesia tests take about 20 minutes to complete, and you can choose the ones that apply to you. Depending on your scores, we may send you an email inviting you to participate in the genetics part of the study. There is no cost to participate, and you can do everything from home."/>
-<!--            <translation featureText="The synaesthesietesten duren ongeveer 20 minuten en je kunt de testen kiezen die op jou betrekking hebben. Afhankelijk van jouw scores sturen we je een e-mail om je uit te nodigen om aan het genetische deel van ons onderzoek deel te nemen. Er zijn geen kosten verbonden aan deelname en je kunt alles thuis doen." locale="nl"/>
-            <translation featureText="" locale="de"/>
-            <translation featureText="Тесты по синестезии занимают около 20 минут, и вы можете выбрать те, которые подходят именно вам. В зависимости от результатов, мы отправляем вам электронное письмо с приглашением к участию в генетическом этапе исследования. Участие не предполагает каких-либо расходов,  так как вы проходите его, не выходя из дома. " locale="ru"/>-->
+        <!--            <translation featureText="The synaesthesietesten duren ongeveer 20 minuten en je kunt de testen kiezen die op jou betrekking hebben. Afhankelijk van jouw scores sturen we je een e-mail om je uit te nodigen om aan het genetische deel van ons onderzoek deel te nemen. Er zijn geen kosten verbonden aan deelname en je kunt alles thuis doen." locale="nl"/>
+        <translation featureText="" locale="de"/>
+        <translation featureText="Тесты по синестезии занимают около 20 минут, и вы можете выбрать те, которые подходят именно вам. В зависимости от результатов, мы отправляем вам электронное письмо с приглашением к участию в генетическом этапе исследования. Участие не предполагает каких-либо расходов,  так как вы проходите его, не выходя из дома. " locale="ru"/>-->
         <!--</plainText>-->
         <addPadding/>
         <targetButton featureText="Participate!" target="Participant"/>
-<!--            <translation featureText="Doe mee!" locale="nl"/>
-            <translation featureText="" locale="de"/>
-            <translation featureText="Участвуйте! " locale="ru"/>-->
+        <!--            <translation featureText="Doe mee!" locale="nl"/>
+        <translation featureText="" locale="de"/>
+        <translation featureText="Участвуйте! " locale="ru"/>-->
         <!--</targetButton>-->
         <addPadding/>
         <htmlText featureText="For more information about synaesthesia, please see our 'About synaesthesia' page. If you are not sure if you have synaesthesia, and want to find out, try our SynQuiz app or take a quick test at synesthete.org."/>
@@ -194,14 +194,14 @@
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-<!--            <translation featureText="Ga door" locale="nl"/>-->
+            <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
         </saveMetadataButton>
     </presenter>
     <presenter back="Details" menuLabel="Study" next="Colour" type="metadata" self="Study" title="Tell us about your synaesthesia: Study(1/8)">
         <htmlText featureText="Our study at the Max Planck Institute focuses on synaesthesia where numbers, letters, weekdays, or months cause people to have a colour experience. To someone with synaesthesia, the letter A might &quot;mean&quot; red to them, or the number &quot;5&quot; might make them experience the colour green. Please let us know if you experience any other types of synaesthesia by checking the boxes in the following screens. We may contact you in the future about studies related to these other types.">
-<!--            <translation featureText="Ons onderzoek op het Max Planck Institute houdt zich bezig met synesthesie die mensen een kleur laat ervaren door cijfers, letters, dagen van de week of maanden. Voor iemand die synesthesie heeft, kan de letter A rood 'betekenen', of  nummer '5' kan een ervaring van groen veroorzaken. Laat ons weten of je andere vormen van synesthesie ervaart door de hokjes aan te vinken op de volgende pagina's. Het kan zijn dat we in de toekomst contact met je opnemen over studies die met deze andere types van synesthesie te maken hebben." locale="nl"/>-->
+            <!--            <translation featureText="Ons onderzoek op het Max Planck Institute houdt zich bezig met synesthesie die mensen een kleur laat ervaren door cijfers, letters, dagen van de week of maanden. Voor iemand die synesthesie heeft, kan de letter A rood 'betekenen', of  nummer '5' kan een ervaring van groen veroorzaken. Laat ons weten of je andere vormen van synesthesie ervaart door de hokjes aan te vinken op de volgende pagina's. Het kan zijn dat we in de toekomst contact met je opnemen over studies die met deze andere types van synesthesie te maken hebben." locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Наше исследование в Институте Макса Планка фокусируется на синестезии, при которой цифры, буквы, дни недели, месяцы связаны у людей с ощущением цвета. Например, у кого-то буква &quot;А&quot; может &quot;означать&quot; красный или число &quot;5&quot; может восприниматься окрашенной в зеленый цвет. Пожалуйста, сообщите нам, есть ли у вас ещё какие-либо другие типы синестезии, отметив поля на последующих страницах. Мы свяжемся с Вами в будущем по вопросам исследований, связанных с этими типами. " locale="ru"/>-->
         </htmlText>
@@ -210,14 +210,14 @@
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-<!--            <translation featureText="Ga door" locale="nl"/>-->
+            <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
         </saveMetadataButton>
     </presenter>
     <presenter back="Study" menuLabel="Colour" next="Smell" type="metadata" self="Colour" title="Tell us about your synaesthesia: Colour(2/8)">
         <htmlText featureText="Do any of the items below cause you to have a color experience?&lt;br/&gt;&lt;br/&gt;Examples: Does the letter M &quot;mean&quot; orange to you? Or does hearing a piano being played make you perceive red?&lt;br/&gt;&lt;br/&gt;">
-<!--            <translation featureText="Veroorzaken een of meer onderstaande items ervaring van kleur bij jou? &lt;br/&gt;&lt;br/&gt;Voorbeeld: 'Betekent' de letter M oranje voor jou? Of ervaar je de kleur rood, als je iemand op een piano hoort spelen?&lt;br/&gt;&lt;br/&gt;" locale="nl"/>-->
+            <!--            <translation featureText="Veroorzaken een of meer onderstaande items ervaring van kleur bij jou? &lt;br/&gt;&lt;br/&gt;Voorbeeld: 'Betekent' de letter M oranje voor jou? Of ervaar je de kleur rood, als je iemand op een piano hoort spelen?&lt;br/&gt;&lt;br/&gt;" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Вызывает ли у вас что-то из перечисленного ниже ощущение цвета? Например: означает (имеет) ли для вас буква М оранжевый цвет? Воспринимаются звуки  ортепиано как окрашенные в красный? " locale="ru"/>-->
         </htmlText>
@@ -244,14 +244,14 @@
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-<!--            <translation featureText="Ga door" locale="nl"/>-->
-<!--            <translation featureText="" locale="de"/>-->
-<!--            <translation featureText="Продолжать" locale="ru"/>-->
+            <!--            <translation featureText="Ga door" locale="nl"/>-->
+            <!--            <translation featureText="" locale="de"/>-->
+            <!--            <translation featureText="Продолжать" locale="ru"/>-->
         </saveMetadataButton>
     </presenter>
     <presenter back="Colour" menuLabel="Smell" next="Sound" type="metadata" self="Smell" title="Tell us about your synaesthesia: Smell(3/8)">
         <htmlText featureText="Do any of the items below cause you to experience smells?&lt;br/&gt;&lt;br/&gt;Example: Does Tuesday smell like bananas?&lt;br/&gt;&lt;br/&gt;">
-<!--            <translation featureText="Veroorzaken een of meer onderstaande items geur bij jou? &lt;br/&gt;&lt;br/&gt; Voorbeeld: Ruikt dinsdag naar bananen? &lt;br/&gt;&lt;br/&gt;" locale="nl"/>-->
+            <!--            <translation featureText="Veroorzaken een of meer onderstaande items geur bij jou? &lt;br/&gt;&lt;br/&gt; Voorbeeld: Ruikt dinsdag naar bananen? &lt;br/&gt;&lt;br/&gt;" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Вызывает ли у вас какой то из этих предметов (названий, пунктов) ощущение запаха? Например, пахнет ли вторник бананами? " locale="ru"/>-->
         </htmlText>
@@ -278,14 +278,14 @@
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-<!--            <translation featureText="Ga door" locale="nl"/>-->
+            <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
         </saveMetadataButton>
     </presenter>
     <presenter back="Smell" menuLabel="Sound" next="Spatial" type="metadata" self="Sound" title="Tell us about your synaesthesia: Sound(4/8)">
         <htmlText featureText="Do any of the items below cause you to experience sound?&lt;br/&gt;&lt;br/&gt;Example: Do you hear a particular sound when you experience cold temperatures?&lt;br/&gt;&lt;br/&gt;">
-<!--            <translation featureText="Veroorzaken een of meer onderstaande items een ervaring van geluid bij jou? &lt;br/&gt;&lt;br/&gt; Voorbeeld: Hoor je een bepaald geluid als je koude temperaturen ervaart? &lt;br/&gt;&lt;br/&gt;" locale="nl"/>-->
+            <!--            <translation featureText="Veroorzaken een of meer onderstaande items een ervaring van geluid bij jou? &lt;br/&gt;&lt;br/&gt; Voorbeeld: Hoor je een bepaald geluid als je koude temperaturen ervaart? &lt;br/&gt;&lt;br/&gt;" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Вызывает ли у вас какой то из этих предметов ощущение звука? Например, слышите ли вы определенный звук, когда испытываете холод? " locale="ru"/>-->
         </htmlText>
@@ -312,14 +312,14 @@
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-<!--            <translation featureText="Ga door" locale="nl"/>-->
+            <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
         </saveMetadataButton>
     </presenter>
     <presenter back="Sound" menuLabel="Spatial" next="Taste" type="metadata" self="Spatial" title="Tell us about your synaesthesia: Spatial(5/8)">
         <htmlText featureText="Do you experience any of the items below in a particular spatial location?&lt;br/&gt;&lt;br/&gt;Example: Do you &quot;see&quot; sequences like the days of the month or numbers in physical space?&lt;br/&gt;&lt;br/&gt;">
-<!--            <translation featureText="Ervaar je een of meer onderstaande items in een bepaalde ruimtelijke locatie? &lt;br/&gt;&lt;br/&gt; Voorbeeld: 'Zie' je opeenvolgingen als dagen in een maand of cijfers in een fysieke ruimte? &lt;br/&gt;&lt;br/&gt;" locale="nl"/>-->
+            <!--            <translation featureText="Ervaar je een of meer onderstaande items in een bepaalde ruimtelijke locatie? &lt;br/&gt;&lt;br/&gt; Voorbeeld: 'Zie' je opeenvolgingen als dagen in een maand of cijfers in een fysieke ruimte? &lt;br/&gt;&lt;br/&gt;" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Возникает ли у вас ощущение, что перечисленные предметы имеют определенное положение в пространстве? Например, &quot;видите&quot; ли вы последовательность дней месяца и чисел в физическом пространстве? " locale="ru"/>-->
         </htmlText>
@@ -346,7 +346,7 @@
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-<!--            <translation featureText="Ga door" locale="nl"/>-->
+            <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
         </saveMetadataButton>
@@ -376,14 +376,14 @@
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-<!--            <translation featureText="Ga door" locale="nl"/>-->
+            <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
         </saveMetadataButton>
     </presenter>
     <presenter back="Taste" menuLabel="Touch" next="Other" type="metadata" self="Touch" title="Tell us about your synaesthesia: Touch(7/8)">
         <htmlText featureText="Do any of the items below cause you to experience a sense of touch?&lt;br/&gt;&lt;br/&gt;Example: You feel a touch on your arm when you see someone else being touched on their arm.&lt;br/&gt;&lt;br/&gt;">
-<!--            <translation featureText="Veroorzaken een of meer onderstaande items ervaring van aanraking bij jou? &lt;br/&gt;&lt;br/&gt; Voorbeeld: Je voelt een aanraking op je arm als je ziet dat iemand anders aangeraakt wordt op zijn/haar arm. &lt;br/&gt;&lt;br/&gt;" locale="nl"/>-->
+            <!--            <translation featureText="Veroorzaken een of meer onderstaande items ervaring van aanraking bij jou? &lt;br/&gt;&lt;br/&gt; Voorbeeld: Je voelt een aanraking op je arm als je ziet dat iemand anders aangeraakt wordt op zijn/haar arm. &lt;br/&gt;&lt;br/&gt;" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Испытываете ли вы чувство прикосновения? Например: ощущаете ли вы прикосновение к руке, когда вы видите, как кто-то прикасается к чьей-то руке. " locale="ru"/>-->
         </htmlText>
@@ -410,7 +410,7 @@
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-<!--            <translation featureText="Ga door" locale="nl"/>-->
+            <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
         </saveMetadataButton>
@@ -422,19 +422,19 @@
             <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
-<!--            <translation featureText="Ga door" locale="nl"/>-->
+            <!--            <translation featureText="Ga door" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="Продолжать" locale="ru"/>-->
         </saveMetadataButton>
     </presenter>
     <presenter back="Other" menuLabel="Menu" next="Register" type="menu" self="Menu" title="Menu">
         <menuItem featureText="Weekdays" target="Weekdays">
-<!--            <translation featureText="Dagen van de week" locale="nl"/>-->
+            <!--            <translation featureText="Dagen van de week" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="дни недели" locale="ru"/>-->
         </menuItem>
         <menuItem featureText="Letters and Numbers" target="LettersNumbers">
-<!--            <translation featureText="Letters en cijfers" locale="nl"/>-->
+            <!--            <translation featureText="Letters en cijfers" locale="nl"/>-->
             <!--<translation featureText="" locale="de"/>-->
             <!--<translation featureText="буквы и цифры" locale="ru"/>-->
         </menuItem>
@@ -451,7 +451,7 @@
     </presenter>
     <presenter back="Menu" menuLabel="Weekdays" next="Report" type="colourPicker" self="Weekdays" title="Weekdays">
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
-        <loadStimulus eventTag="Weekdays" randomise="true" repeatRandomWindow="0" repeatCount="3">
+        <loadStimulus eventTag="Weekdays" randomise="true" repeatRandomWindow="0" repeatCount="3" maxStimuli="1000">
             <hasMoreStimulus/>
             <endOfStimulus/>
             <stimuli>
@@ -461,7 +461,7 @@
     </presenter>
     <presenter back="Menu" menuLabel="Letters and Numbers" next="Report" type="colourPicker" self="LettersNumbers" title="LettersNumbers">
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
-        <loadStimulus eventTag="LettersNumbers" randomise="true" repeatRandomWindow="0" repeatCount="3">
+        <loadStimulus eventTag="LettersNumbers" randomise="true" repeatRandomWindow="0" repeatCount="3" maxStimuli="1000">
             <hasMoreStimulus/>
             <endOfStimulus/>
             <stimuli>
@@ -479,21 +479,21 @@
             </onSuccess>
             <onError>
                 <plainText featureText="Could not contact the server, please check your internet connection and try again."/>
-<!--                    <translation featureText="Geen verbinding met de server, controleer of er internetverbinding is en probeer het dan nog een keer." locale="nl"/>
-                    <translation featureText="" locale="de"/>
-                    <translation featureText="Нет подключения к серверу, проверьте, что есть подключение к Интернету и повторите попытку." locale="ru"/>-->
+                <!--                    <translation featureText="Geen verbinding met de server, controleer of er internetverbinding is en probeer het dan nog een keer." locale="nl"/>
+                <translation featureText="" locale="de"/>
+                <translation featureText="Нет подключения к серверу, проверьте, что есть подключение к Интернету и повторите попытку." locale="ru"/>-->
                 <!--</plainText>-->
                 <targetButton featureText="Retry" target="Completion"/>
-<!--                    <translation featureText="Probeer nog een keer" locale="nl"/>
-                    <translation featureText="" locale="de"/>
-                    <translation featureText="Попробуйте еще раз" locale="ru"/>-->
-<!--                </targetButton>-->
+                <!--                    <translation featureText="Probeer nog een keer" locale="nl"/>
+                <translation featureText="" locale="de"/>
+                <translation featureText="Попробуйте еще раз" locale="ru"/>-->
+                <!--                </targetButton>-->
             </onError>
         </sendAllData>
     </presenter>
     <presenter back="Menu" menuLabel="Months" next="Report" type="colourPicker" self="Months" title="Months">
         <helpDialogue featureText="&lt;b&gt;Instructions&lt;/b&gt;\n&lt;p&gt;Select the colour that you associate with the presented character or word \n&lt;ol&gt;\n&lt;li&gt;Select the hue by tapping on the colour bar on the right &lt;/li&gt;&lt;li&gt;Select the shade by tapping on the square on the left &lt;/li&gt;\n&lt;li&gt;When the colour of the preview rectangle matches your association, tap &quot;Submit&quot;&lt;/li&gt;\n&lt;li&gt;If you have no colour association tap &quot;No colour&quot;&lt;/li&gt;\n&lt;/ol&gt;\n&lt;/p&gt;" closeButtonLabel="OK, go to test!"/>
-        <loadStimulus eventTag="Months" randomise="true" repeatRandomWindow="0" repeatCount="3">
+        <loadStimulus eventTag="Months" randomise="true" repeatRandomWindow="0" repeatCount="3" maxStimuli="1000">
             <hasMoreStimulus/>
             <endOfStimulus/>
             <stimuli>
@@ -505,10 +505,10 @@
         <submitTestResults>
             <onError>
                 <plainText featureText="Error submitting data."/>
-<!--                    <translation featureText="Error met invoeren van data." locale="nl"/>
-                    <translation featureText="" locale="de"/>
-                    <translation featureText="Ошибка отправки данных." locale="ru"/>-->
-<!--                </plainText>-->
+                <!--                    <translation featureText="Error met invoeren van data." locale="nl"/>
+                <translation featureText="" locale="de"/>
+                <translation featureText="Ошибка отправки данных." locale="ru"/>-->
+                <!--                </plainText>-->
             </onError>
             <onSuccess>
                 <gotoNextPresenter/>
