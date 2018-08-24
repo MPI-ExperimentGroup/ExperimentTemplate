@@ -42,7 +42,7 @@ import javax.xml.namespace.QName;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 @Entity
-public class PresenterScreen {
+public class PresenterScreen extends CanHaveFeatures {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -165,6 +165,7 @@ public class PresenterScreen {
         return presenterType;
     }
 
+    @Override
     public List<PresenterFeature> getPresenterFeatureList() {
         return presenterFeatures;
     }
