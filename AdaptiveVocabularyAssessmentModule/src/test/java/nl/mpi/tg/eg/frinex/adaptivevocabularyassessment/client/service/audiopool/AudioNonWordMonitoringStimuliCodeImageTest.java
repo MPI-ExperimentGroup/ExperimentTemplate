@@ -55,6 +55,7 @@ public class AudioNonWordMonitoringStimuliCodeImageTest {
     /**
      * Test of parseTrialsInputCSVStringIntoXml method, of class AudioNonWordMonitoringStimuliCodeImage.
      */
+    @Ignore
     @Test
     public void testParseTrialsInputCSVStringIntoXml() throws Exception {
         System.out.println("parseTrialsInputCSVStringIntoXml");

@@ -23,46 +23,49 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
  * @author olhshk
  */
 public class QuestionnaireStimuliFromCsvToXmlTest {
-    
+
     public QuestionnaireStimuliFromCsvToXmlTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
     /**
-     * Test of parseWordsInputCSVStringToXml method, of class QuestionnaireStimuliFromCsvToXml.
+     * Test of parseWordsInputCSVStringToXml method, of class
+     * QuestionnaireStimuliFromCsvToXml.
      */
+    @Ignore
     @Test
     public void testParseWordsInputCSVStringToXml() throws Exception {
         System.out.println("parseWordsInputCSVStringToXml");
-       
+
         QuestionnaireStimuliFromCsvToXml instance = new QuestionnaireStimuliFromCsvToXml();
         String resultAut = instance.parseWordsInputCSVStringToXml(CsvTables.AUTORS_DUTCH, "auth", "AUT", "Naam", "Auteur");
         System.out.println(resultAut);
         System.out.println("<!----------->");
         String resultSpelling = instance.parseWordsInputCSVStringToXml(CsvTables.SPELLING_DUTCH, "spelling", "CORR,INCOR", "Woord", "Antwoord");
         System.out.println(resultSpelling);
-        
+
     }
-    
+
 }

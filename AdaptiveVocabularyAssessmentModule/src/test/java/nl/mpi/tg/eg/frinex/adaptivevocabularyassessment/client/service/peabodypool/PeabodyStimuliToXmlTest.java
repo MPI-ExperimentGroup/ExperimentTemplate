@@ -56,6 +56,7 @@ public class PeabodyStimuliToXmlTest {
      * Test of parseWordsInputCSVString method, of class PeabodyStimuliToXml.
      */
     
+    @Ignore
     @Test
     public void testParseWordsInputCSVStringEngl() throws Exception{
         System.out.println("parseWordsInputCSVString");

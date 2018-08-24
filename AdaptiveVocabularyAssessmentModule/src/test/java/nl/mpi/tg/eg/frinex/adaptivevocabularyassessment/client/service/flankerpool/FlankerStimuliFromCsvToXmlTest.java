@@ -23,56 +23,61 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
  * @author olhshk
  */
 public class FlankerStimuliFromCsvToXmlTest {
-    
+
     public FlankerStimuliFromCsvToXmlTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
     /**
-     * Test of parseWordsInputCSVStringToXml method, of class FlankerStimuliFromCsvToXml.
+     * Test of parseWordsInputCSVStringToXml method, of class
+     * FlankerStimuliFromCsvToXml.
      */
+    @Ignore
     @Test
     public void testParseWordsInputCSVStringToXmlPractice() throws Exception {
         System.out.println("parseWordsInputCSVStringToXml_Practice");
         FlankerStimuliFromCsvToXml instance = new FlankerStimuliFromCsvToXml();
-        String resultPractice = instance.parseWordsInputCSVStringToXml(CsvTablesFlanker.CSV_STRING_PRACTICE, "flanker" , "Practice");
+        String resultPractice = instance.parseWordsInputCSVStringToXml(CsvTablesFlanker.CSV_STRING_PRACTICE, "flanker", "Practice");
         assertTrue(resultPractice.startsWith("<stimulus "));
         assertTrue(resultPractice.endsWith(" />\n"));
         System.out.println(resultPractice);
     }
-    
-     /**
-     * Test of parseWordsInputCSVStringToXml method, of class FlankerStimuliFromCsvToXml.
+
+    /**
+     * Test of parseWordsInputCSVStringToXml method, of class
+     * FlankerStimuliFromCsvToXml.
      */
+    @Ignore
     @Test
     public void testParseWordsInputCSVStringToXmlRealDeal_RealDelal() throws Exception {
         System.out.println("parseWordsInputCSVStringToXml");
         FlankerStimuliFromCsvToXml instance = new FlankerStimuliFromCsvToXml();
-        String resultPractice = instance.parseWordsInputCSVStringToXml(CsvTablesFlanker.CSV_STRING_REAL_DEAL, "flanker" , "RealDeal");
+        String resultPractice = instance.parseWordsInputCSVStringToXml(CsvTablesFlanker.CSV_STRING_REAL_DEAL, "flanker", "RealDeal");
         assertTrue(resultPractice.startsWith("<stimulus "));
         assertTrue(resultPractice.endsWith(" />\n"));
         System.out.println(resultPractice);
     }
-    
+
 }

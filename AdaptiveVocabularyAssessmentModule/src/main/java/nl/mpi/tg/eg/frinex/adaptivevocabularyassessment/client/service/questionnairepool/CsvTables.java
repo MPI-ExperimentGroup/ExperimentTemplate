@@ -25,7 +25,7 @@ public class CsvTables {
     
     
     
-    public static String AUTORS_DUTCH ="Naam1;Auteur1;x1;Naam2;Auteur2;x2;Naam3;Auteur3\n" +
+    public static String AUTORS_DUTCH_OLD ="Naam1;Auteur1;x1;Naam2;Auteur2;x2;Naam3;Auteur3\n" +
 "Bertolt Brecht;AUT;;Elizabeth George;AUT;;Kyra Appels;NEE\n" +
 "Roberto Bolaño;AUT;;Tomas Arensman;;;Khaled Hosseini;AUT\n" +
 "James Patterson;AUT;;Marion Pauw;AUT;;Joris van Casteren;AUT\n" +
@@ -56,6 +56,52 @@ public class CsvTables {
 "Saskia De Coster;AUT;;Dante Alighieri;AUT;;Vladimir Nabokov;AUT\n" +
 "Guy de Maupassant;AUT;;John Punnett;;;Georges Roudaut;NEE\n" +
 "Raymond Chandler;AUT;;Kader Abdolah;AUT;;Miguel de Cervantes;AUT";
+    
+ public static String AUTORS_DUTCH ="Naam1;Auteur1;x1;Naam2;Auteur2;x2;Naam3;Auteur3\n" +
+"E. Buxton;NON;;Susan Smit;AUT;;Yasushi Sugawara;NON\n" +
+"Kim Wassing;NON;;Donna Tartt;AUT;;Patricia Cornwell;AUT\n" +
+"Marc De Bel;AUT;;Roberto Borsani;NON;;Cees Nooteboom;AUT\n" +
+"Arnon Grunberg;AUT;;Mark Twain;AUT;;Georges Simenon;AUT\n" +
+"Simone van der Vlugt;AUT;;Judith L. Schecter;NON;;George Eliot;AUT\n" +
+"Umberto Eco;AUT;;David Baldacci;AUT;;John Grisham;AUT\n" +
+"Jorge Eudoro  Remache;NON;;Stieg Larsson;AUT;;Carlos Ruiz Zafón;AUT\n" +
+"Jean M. Auel;AUT;;Hubert Lampo;AUT;;Kyra Appels;NON\n" +
+"Jane Austen;AUT;;J.M. Coetzee;AUT;;Bertolt Brecht;AUT\n" +
+"Tom Lanoye;AUT;;Melanie Marrero Morales;NON;;E.L. Wilford;NON\n" +
+"J.R.R. Tolkien;AUT;;Stefan Zweig;AUT;;Emily Brontë;AUT\n" +
+"Willem Frederik Hermans;AUT;;Dante Alighieri;AUT;;Tom Clancy;AUT\n" +
+"Robert Teesdale;NON;;Marcus Fernandes;NON;;Helen Fitzgerald;AUT\n" +
+"Agatha Christie;AUT;;Uwe Tellkamp;AUT;;Kristien Hemmerechts;AUT\n" +
+"Kathryn Lightner;NON;;Ruth Rendell;AUT;;Sara Lakin;NON\n" +
+"Toni Morrison;AUT;;Andrée Oudin;NON;;Emmanuelle Duvernay;NON\n" +
+"Thea Beckman;AUT;;Ray Bradbury;AUT;;Harper Lee;AUT\n" +
+"J.J. Voskuil;AUT;;Elizabeth George;AUT;;Chiara Ricci;NON\n" +
+"Bart Moeyaert;AUT;;Marion Pauw;AUT;;Saskia De Coster;AUT\n" +
+"Virginia Woolf;AUT;;Eric Ferey;NON;;Isabel Allende;AUT\n" +
+"Tomas Arensman;NON;;Mahmoud Abdellah;NON;;Roald Dahl;AUT\n" +
+"Harry Mulisch;AUT;;Kettil Christoffersen;NON;;Kelly Weaver;NON\n" +
+"J.D. Salinger;AUT;;A.F.Th. van der Heijden;AUT;;Stephen King;AUT\n" +
+"Annie M.G. Schmidt;NON;;Anne Provoost;AUT;;Dan Brown;AUT\n" +
+"Karin Slaughter;AUT;;Michael Connelly;AUT;;Henning Mankell;AUT\n" +
+"Sue Grafton;AUT;;Mario Vargas Llosa;AUT;;Roberto Bolaño;AUT\n" +
+"Georges Roudaut;AUT;;Roy Leeman;NON;;Herman Koch;AUT\n" +
+"James Patterson;AUT;;John Le Carré;AUT;;J.K. Rowling;AUT\n" +
+"Gabriel Garcia Márquez;AUT;;P.F. Thomése;AUT;;Pablo Daniel Gonzalez;NON\n" +
+"Mathijs L. van Bueren;NON;;Fay Weldon;AUT;;T.C. Boyle;AUT\n" +
+"Raymond Chandler;AUT;;Margaret Atwood;AUT;;Martijn van der Worp;NON\n" +
+"Vladimir Nabokov;AUT;;Miguel de Cervantes;AUT;;Hendrik van Weenen;NON\n" +
+"Tim Krabbé;AUT;;Konstantin  Ryschkov;NON;;Guy de Maupassant;AUT\n" +
+"H.M. van der Grinten;NON;;Joris van Casteren;AUT;;David Grossman;AUT\n" +
+"Hermann Hesse;AUT;;Lulu Wang;AUT;;Astrid Lindgren;AUT\n" +
+"Jane Jessup;NON;;Manon Uphoff;AUT;;Kader Abdolah;AUT\n" +
+"Ludwig Lorenz;NON;;Khaled Hosseini;AUT;;Milan Kundera;AUT\n" +
+"Herman Brusselmans;AUT;;Emily Oldani;NON;;John Punnett;NON\n" +
+"Elizabeth Wigelsworth;NON;;Hans Ulfsson;NON;;Charles Baudelaire;AUT\n" +
+"Richard Grigley;NON;;Zofia Kwiatkowski;NON;;Dimitri Verhulst;AUT\n" +
+"Marianne Fredriksson;AUT;;Per Olov Enquist;AUT;;Pim Duijster;NON\n" +
+"Tim Singler;NON;;Pieter Aspe;AUT;;Mark Robin;NON\n" +
+"John Kestley;NON;;Theresa Ziegler;NON;;Annet de Jong;AUT\n" +
+"Connie Palmen;AUT;;Daniel Mason;AUT;;Nicci French;AUT\n";   
     
     public static String SPELLING_DUTCH ="Nr1;Woord1;Antwoord1;Nr2;Woord2;Antwoord2;Nr3;Woord3;Antwoord3\n" +
 "1;geliefkoosd;CORR;21;sollisiteren;INCOR;41;muzeum;INCOR\n" +

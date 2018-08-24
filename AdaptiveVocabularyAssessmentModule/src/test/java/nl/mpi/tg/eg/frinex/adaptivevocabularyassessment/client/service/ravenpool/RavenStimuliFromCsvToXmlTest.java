@@ -23,35 +23,38 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
  * @author olhshk
  */
 public class RavenStimuliFromCsvToXmlTest {
-    
+
     public RavenStimuliFromCsvToXmlTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
     /**
-     * Test of parseWordsInputCSVStringToXml method, of class RavenStimuliFromCsvToXml.
+     * Test of parseWordsInputCSVStringToXml method, of class
+     * RavenStimuliFromCsvToXml.
      */
+    @Ignore
     @Test
     public void testParseWordsInputCSVStringToXml() throws Exception {
         System.out.println("parseWordsInputCSVStringToXml");
@@ -66,5 +69,5 @@ public class RavenStimuliFromCsvToXmlTest {
         assertTrue(resultPractice.endsWith(" />\n"));
         System.out.println(resultPractice);
     }
-    
+
 }

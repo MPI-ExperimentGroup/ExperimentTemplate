@@ -23,6 +23,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -54,6 +55,7 @@ public class CorsiStimuliFromCsvToXmlTest {
     /**
      * Test of parseWordsInputCSVStringToXml method, of class CorsiStimuliFromCsvToXml.
      */
+    @Ignore
     @Test
     public void testParseWordsInputCSVStringToXml() throws Exception {
         System.out.println("parseWordsInputCSVStringToXml");
