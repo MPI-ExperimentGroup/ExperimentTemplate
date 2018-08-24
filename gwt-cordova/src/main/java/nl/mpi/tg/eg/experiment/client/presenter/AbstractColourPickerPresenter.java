@@ -33,13 +33,14 @@ import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
-import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
+import nl.mpi.tg.eg.frinex.common.StimuliProvider;
 import nl.mpi.tg.eg.experiment.client.view.ColourPickerCanvasView;
 import nl.mpi.tg.eg.experiment.client.exception.CanvasError;
+import nl.mpi.tg.eg.experiment.client.listener.CurrentStimulusListener;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponse;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponseGroup;
-import nl.mpi.tg.eg.experiment.client.util.GeneratedStimulusProvider;
+//import nl.mpi.tg.eg.experiment.client.util.GeneratedStimulusProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import nl.mpi.tg.eg.frinex.common.model.StimulusSelector;
 
@@ -56,7 +57,7 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
 //    private final int maxStimuli;
     private final UserResults userResults;
     private final ColourPickerCanvasView colourPickerCanvasView;
-    protected final StimulusProvider stimulusProvider;
+    protected StimuliProvider stimulusProviderInternal;
 //    private Stimulus currentStimulus = null;
 //    final List<GeneratedStimulus.Tag> selectionTags;
     private final Duration duration;
@@ -64,7 +65,7 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
 //    private final int repeatCount;
     private int shownSetCount;
     private int shownCount = 0;
-    private TimedStimulusListener hasMoreStimulusListener;
+    private CurrentStimulusListener hasMoreStimulusListener;
     private TimedStimulusListener endOfStimulusListener;
     private final LocalStorage localStorage;
     private AppEventListner appEventListner;
@@ -73,7 +74,7 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
 
     public AbstractColourPickerPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage) throws CanvasError {
         this.widgetTag = widgetTag;
-        stimulusProvider = new nl.mpi.tg.eg.experiment.client.service.StimulusProvider(GeneratedStimulusProvider.values);
+//        stimulusProvider = new nl.mpi.tg.eg.experiment.client.service.StimulusProvider(GeneratedStimulusProvider.values);
 //        this.stimuliGroup = userResults.getPendingStimuliGroup();
 //        userResults.setPendingStimuliGroup(null);
 //        this.stimuli = new ArrayList<>(stimuliGroup.getStimuli());
@@ -114,25 +115,25 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
     }
 
     private void triggerEvent() {
-        if (!stimulusProvider.hasNextStimulus(1)) {
+        if (!stimulusProviderInternal.hasNextStimulus(1)) {
             shownSetCount++;
 //            if (repeatCount > shownSetCount) {
-//                stimulusProvider.getSubset(selectionTags, false, "");
+//                stimulusProviderInternal.getSubset(selectionTags, false, "");
 //            }
 //            submitFrinexResults();
             appEventListner.requestApplicationState(nextState);
         }
-        if (!stimulusProvider.hasNextStimulus(1)) {
+        if (!stimulusProviderInternal.hasNextStimulus(1)) {
             endOfStimulusListener.postLoadTimerFired();
         } else {
             colourPickerCanvasView.setRandomColour();
-            stimulusProvider.nextStimulus(1);
+            stimulusProviderInternal.nextStimulus(1);
             startMs = System.currentTimeMillis();
             shownCount++;
             int repeatCount = 1;
-            colourPickerCanvasView.setStimulus(stimulusProvider.getCurrentStimulus(),
-                    //                    messages.stimulusscreenprogresstext(Integer.toString(shownCount), Integer.toString(stimulusProvider.getTotalStimuli() * repeatCount))
-                    Integer.toString((int) (((double) (shownCount - 1) / (stimulusProvider.getTotalStimuli() * repeatCount)) * 100)) + "%"
+            colourPickerCanvasView.setStimulus(stimulusProviderInternal.getCurrentStimulus(),
+                    //                    messages.stimulusscreenprogresstext(Integer.toString(shownCount), Integer.toString(stimulusProviderInternal.getTotalStimuli() * repeatCount))
+                    Integer.toString((int) (((double) (shownCount - 1) / (stimulusProviderInternal.getTotalStimuli() * repeatCount)) * 100)) + "%"
             );
         }
     }
@@ -153,8 +154,8 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                 final long durationMs = System.currentTimeMillis() - startMs;
-                stimulusResponseGroup.addResponse(stimulusProvider.getCurrentStimulus(), new StimulusResponse(colourPickerCanvasView.getColour(), new Date(), durationMs));
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, stimulusResponseGroup.getPostName(), stimulusProvider.getCurrentStimulus().getUniqueId(), colourPickerCanvasView.getColour().getHexValue(), (int) (durationMs));
+                stimulusResponseGroup.addResponse(stimulusProviderInternal.getCurrentStimulus(), new StimulusResponse(colourPickerCanvasView.getColour(), new Date(), durationMs));
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, stimulusResponseGroup.getPostName(), stimulusProviderInternal.getCurrentStimulus().getUniqueId(), colourPickerCanvasView.getColour().getHexValue(), (int) (durationMs));
                 triggerEvent();
             }
 
@@ -173,8 +174,8 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                 final long durationMs = System.currentTimeMillis() - startMs;
-                stimulusResponseGroup.addResponse(stimulusProvider.getCurrentStimulus(), new StimulusResponse(null, new Date(), durationMs));
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, stimulusResponseGroup.getPostName(), stimulusProvider.getCurrentStimulus().getUniqueId(), "", (int) (durationMs));
+                stimulusResponseGroup.addResponse(stimulusProviderInternal.getCurrentStimulus(), new StimulusResponse(null, new Date(), durationMs));
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), 0, stimulusResponseGroup.getPostName(), stimulusProviderInternal.getCurrentStimulus().getUniqueId(), "", (int) (durationMs));
                 triggerEvent();
             }
 
@@ -217,13 +218,16 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
         colourPickerCanvasView.setInstructions(helpText, messages.helpButtonChar(), closeButtonLabel);
     }
 
-    protected void loadStimulus(String eventTag, final StimulusSelector[] stimulusSelectors, final TimedStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener) {
+    protected void loadStimulus(String eventTag, final StimulusSelector[] stimulusSelectors, final StimuliProvider stimulusProvider,
+            final CurrentStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener
+    ) {
+        this.stimulusProviderInternal = stimulusProvider;
         submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final List<Stimulus.Tag> selectionTags = new ArrayList<>();
         for (StimulusSelector selector : stimulusSelectors) {
             selectionTags.add(selector.getTag());
         }
-        stimulusProvider.getSubset(selectionTags, "", -1);
+        stimulusProviderInternal.getSubset(selectionTags, "", -1);
         this.hasMoreStimulusListener = hasMoreStimulusListener;
         this.endOfStimulusListener = endOfStimulusListener;
         stimulusResponseGroup = new StimulusResponseGroup(eventTag, eventTag.replaceAll("[^A-Za-z0-9]", "_"));
