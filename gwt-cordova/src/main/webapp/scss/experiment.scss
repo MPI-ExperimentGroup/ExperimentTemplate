@@ -807,10 +807,11 @@ table.gridCell:hover, td.gridCell:hover {
 }
 
 .centeredVerticalHorizontal {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: fixed;
+    top: 50vh;
+    left: 50vw;
+    margin: 0px;
+    transform: translate(-50%,-50%);
 }
 
 .gwt-HTML, .resultsTablePanel, .metadataTable, .menuTable, .gwt-CheckBox, .pageLink {
