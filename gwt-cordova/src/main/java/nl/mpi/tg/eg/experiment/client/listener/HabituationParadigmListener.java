@@ -28,6 +28,7 @@ import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
  */
 public class HabituationParadigmListener extends TriggerListener {
 
+    boolean isActive = true;
     private final boolean isSingleShow;
     private final int thresholdMs;
     private final int maximumShows;
@@ -62,13 +63,14 @@ public class HabituationParadigmListener extends TriggerListener {
         }
     }
 
-    private void evaluateReset(final int elapsedMillis) {
-        if (elapsedMillis > thresholdMs) {
+    protected void evaluateReset(final int elapsedMillis) {
+        if (isActive && elapsedMillis > thresholdMs) {
             // baseline = sampling first three
             // when current falls below 60% of the baseline then trigger
             // any viewing with a duration less that the threshold will be discarded from the average
             if (isSingleShow || showCounter > maximumShows) {
                 triggerListener.postLoadTimerFired();
+                isActive = false;
             } else {
                 baselineSamples.add(elapsedMillis);
                 if (baselineSamples.size() > baselineWindowSize) {
@@ -86,6 +88,7 @@ public class HabituationParadigmListener extends TriggerListener {
                     int currentAverage = currentTotal / baselineWindowSize;
                     if ((baselineAverage / 100 * habituationThreshold) > currentAverage) {
                         triggerListener.postLoadTimerFired();
+                        isActive = false;
                     }
                 }
             }
@@ -93,10 +96,12 @@ public class HabituationParadigmListener extends TriggerListener {
 
     }
 
-    private String generateJsonResults() {
+    public String generateJsonResults() {
         StringBuilder builder = new StringBuilder();
         builder.append("{");
-        builder.append("thresholdMs:");
+        builder.append("listenerId:'");
+        builder.append(this.getListenerId());
+        builder.append("',thresholdMs:");
         builder.append(thresholdMs);
         builder.append(",maximumShows:");
         builder.append(maximumShows);
@@ -105,6 +110,7 @@ public class HabituationParadigmListener extends TriggerListener {
         builder.append(",habituationThreshold:");
         builder.append(habituationThreshold);
         builder.append(",baselineAverage:");
+        builder.append(baselineAverage);
         builder.append(",baselineSamples: {");
         boolean first = true;
         for (int value : baselineSamples) {
