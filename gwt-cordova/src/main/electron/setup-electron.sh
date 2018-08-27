@@ -11,7 +11,8 @@ ls
 
 /usr/bin/npm config set prefix '/srv/ExperimentTemplate/.npm-global'
 PATH=/srv/ExperimentTemplate/.npm-global/bin:$PATH
-/usr/bin/npm install -g electron-forge
+/usr/bin/npm install -g electron-forge 
+/usr/bin/npm install -g electron-compile
 /usr/bin/npm install --save
 #electron-forge init $appname
 #cd $appname
