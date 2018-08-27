@@ -45,36 +45,48 @@ public class HabituationParadigmListenerTest {
                 System.out.println("maximumShows triggered");
             }
         }, false);
+        System.out.print("input: {");
         for (int value : maximumShowsData) {
             maximumShowsInstance.evaluateReset(value);
+            System.out.print(value + ", ");
         }
+        System.out.println("}");
         HabituationParadigmListener habituationThresholdInstance = new HabituationParadigmListener("habituationThresholdInstance", 1000, 10, new CancelableStimulusListener() {
             @Override
             protected void trigggerCancelableEvent() {
                 System.out.println("habituationThreshold triggered");
             }
         }, false);
+        System.out.print("input: {");
         for (int value : habituationThresholdData) {
             habituationThresholdInstance.evaluateReset(value);
+            System.out.print(value + ", ");
         }
+        System.out.println("}");
         HabituationParadigmListener thresholdMsInstance = new HabituationParadigmListener("thresholdMsInstance", 1000, 10, new CancelableStimulusListener() {
             @Override
             protected void trigggerCancelableEvent() {
                 System.out.println("thresholdMs triggered");
             }
         }, false);
+        System.out.print("input: {");
         for (int value : thresholdMsData) {
             thresholdMsInstance.evaluateReset(value);
+            System.out.print(value + ", ");
         }
+        System.out.println("}");
         HabituationParadigmListener isSingleShowInstance = new HabituationParadigmListener("isSingleShowInstance", 1000, 10, new CancelableStimulusListener() {
             @Override
             protected void trigggerCancelableEvent() {
                 System.out.println("isSingleShow triggered");
             }
         }, true);
+        System.out.print("input: {");
         for (int value : isSingleShowData) {
             isSingleShowInstance.evaluateReset(value);
+            System.out.print(value + ", ");
         }
+        System.out.println("}");
         System.out.println(maximumShowsInstance.generateJsonResults());
         System.out.println(habituationThresholdInstance.generateJsonResults());
         System.out.println(thresholdMsInstance.generateJsonResults());
