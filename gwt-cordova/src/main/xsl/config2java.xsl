@@ -740,7 +740,7 @@ or local-name() eq 'matchingStimulusGrid'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="region|regionStyle|regionReplace|regionClear|logTimerValue|startTimer|triggerListener|habituationParadigmListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|pause|timerLabel|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeAudio|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupNetworkActivity|table|row|column">
+    <xsl:template match="region|regionStyle|regionReplace|regionClear|logTimerValue|startTimer|clearTimer|triggerListener|habituationParadigmListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|pause|timerLabel|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeAudio|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupNetworkActivity|table|row|column">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>
@@ -768,7 +768,7 @@ or local-name() eq 'stimulusImageCapture'
             <!--some multiparticipant features require the current stimulus, except the case of an end of stimulus event, in this case the group still needs to be informed-->
             <xsl:value-of select="if(local-name(..) ne 'endOfStimulus') then 'currentStimulus, ' else 'null, '" />
         </xsl:if>
-        <xsl:value-of select="if(local-name() eq 'stimulusImageCapture' or local-name() eq 'countdownLabel' or local-name() eq 'timerLabel') then concat('messages.', generate-id(.), '(), ') else ''" />
+        <xsl:value-of select="if(local-name() eq 'stimulusImageCapture' or local-name() eq 'countdownLabel') then concat('messages.', generate-id(.), '(), ') else ''" />
         <xsl:value-of select="if(@percentOfPage) then concat(@percentOfPage, ', ') else ''" />
         <xsl:value-of select="if(@maxHeight) then concat(@maxHeight, ', ') else ''" />
         <xsl:value-of select="if(@maxWidth) then concat(@maxWidth, ', ') else ''" />
@@ -797,14 +797,16 @@ or local-name() eq 'backgroundImage'">
  and local-name() ne 'image'
  and local-name() ne 'stimulusImageCapture'
 ) then ', ' else ''" />
-        <xsl:value-of select="if(@listenerId) then concat('&quot;',@listenerId, '&quot;, ') else ''" />
+        <xsl:value-of select="if(@listenerId) then concat('&quot;',@listenerId, '&quot; ') else ''" />
+        <xsl:value-of select="if(@listenerId and local-name() ne 'clearTimer') then ',' else ''" />
         <xsl:value-of select="if(@threshold) then concat(@threshold, ', ') else ''" />
         <xsl:value-of select="if(@minimum) then concat(@minimum, ', ') else ''" />
         <xsl:value-of select="if(@maximum) then concat(@maximum, ', ') else ''" />
         <xsl:value-of select="if(@matchingRegex) then concat('&quot;', @matchingRegex, '&quot;, ') else ''" />
         <xsl:value-of select="if(@replacementRegex) then concat('&quot;', @replacementRegex, '&quot;, ') else ''" />
         <xsl:value-of select="if(@replacement) then concat('&quot;', @replacement, '&quot;, ') else ''" />
-        <xsl:value-of select="if(@msLabelFormat) then concat('&quot;', @msLabelFormat, '&quot;, ') else ''" />
+        <xsl:value-of select="if(@msLabelFormat) then concat('&quot;', @msLabelFormat, '&quot;') else ''" />
+        <xsl:value-of select="if(local-name() eq 'countdownLabel') then ', ' else ''" />
         <xsl:value-of select="if(@codeFormat) then concat('&quot;', @codeFormat, '&quot;,') else ''" />
         <xsl:value-of select="if(@showPlaybackIndicator) then concat(@showPlaybackIndicator eq 'true', ', ') else ''" />
         <xsl:value-of select="if(@groupMembers) then concat('&quot;', @groupMembers, '&quot;, ') else ''" />
@@ -840,7 +842,6 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
  or local-name() eq 'triggerListener'
  or local-name() eq 'habituationParadigmListener'
  or local-name() eq 'countdownLabel'
- or local-name() eq 'timerLabel'
  or local-name() eq 'stimulusImageCapture'
  or local-name() eq 'groupNetwork'
  or local-name() eq 'backgroundImage'
