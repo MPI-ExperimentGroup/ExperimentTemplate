@@ -149,7 +149,10 @@ public class AudioNonWordMonitoringStimuliCodeImage {
                 if (i == trialPositionTargetInt) {
                     currentWord = currentWord + "_2";
                 }
-                words += (" " + currentWord);
+                words += currentWord;
+                if (i<trialLengthInt) {
+                    words += ", ";
+                }
 
                 
                 sourceOgg =Paths.get(tmpDir + subDir +"/"+currentWord + "_"+snrInt +".ogg");
@@ -172,10 +175,20 @@ public class AudioNonWordMonitoringStimuliCodeImage {
                 throw new IOException("Position foil is undefined");
             }
 
-            String tags = " length_" + trialLength + " word_" + trialWord + " sequence_" + words + " " + "foilPosition_" + trialPositionFoil;
+            String tags = "";
+            int lgth = Integer.parseInt(trialLength);
+            if (lgth>=4) {
+              tags += (" length_at_least_4") ;
+            }
+            if (lgth>=5) {
+              tags += (" length_at_least_5") ;
+            }
+             if (lgth>=6) {
+              tags += (" length_at_least_6") ;
+            }
 
             String uniqueId = "Trial_" + trialNumber;
-            String label = "Trial_" + trialNumber + "_snr_" + snr + "_condition_" + trialCondition;
+            String label = "trialNumber: "+trialNumber+", snr:" + snr + "; "+trialCondition+"; length:"+trialLength+"; target:"+trialTargetNonword+"; positionTarget:"+trialPositionTarget+"; positionFoil:"+trialPositionFoil+ "; words: "+words;
             String currentSt = this.makeStimulusString(uniqueId, label, uniqueId, tags);
             builder.append(currentSt);
 
@@ -194,7 +207,7 @@ public class AudioNonWordMonitoringStimuliCodeImage {
         retVal.append(" label=\"").append(label).append("\" ");
 
         retVal.append(" pauseMs=\"0\" ");
-        retVal.append(" codeAudio=\"").append(codeAudio).append("\" ");
+        retVal.append(" code=\"").append(codeAudio).append("\" ");
 
         retVal.append(" tags=\"").append(tags).append("\" ");
 
