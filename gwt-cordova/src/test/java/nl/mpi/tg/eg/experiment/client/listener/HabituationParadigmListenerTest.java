@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.listener;
 
+import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -39,10 +40,10 @@ public class HabituationParadigmListenerTest {
         int habituationThresholdData[] = {10000, 10000, 10000, 10000, 10000, 10000, 1000, 1000, 1000, 10000, 10000, 10000, 10000, 10000, 100, 100, 100, 10000, 10000, 10000, 10000, 10000, 10000, 10, 10, 10, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000,};
         int thresholdMsData[] = {10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 1000, 10000, 10000, 10000, 10000, 100, 10000, 10000, 10000, 10, 10000, 10000, 10000, 10000, 10, 10000, 10000, 10, 100, 1000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000,};
         int isSingleShowData[] = {10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000, 10000,};
-        HabituationParadigmListener maximumShowsInstance = new HabituationParadigmListener("maximumShowsInstance", 1000, 10, new CancelableStimulusListener() {
+        HabituationParadigmListener maximumShowsInstance = new HabituationParadigmListener("maximumShowsInstance", 1000, 10, new TimedStimulusListener() {
             @Override
-            protected void trigggerCancelableEvent() {
-                System.out.println("maximumShows triggered");
+            public void postLoadTimerFired() {
+                System.out.print("<triggered>");
             }
         }, false);
         System.out.print("input: {");
@@ -51,10 +52,11 @@ public class HabituationParadigmListenerTest {
             System.out.print(value + ", ");
         }
         System.out.println("}");
-        HabituationParadigmListener habituationThresholdInstance = new HabituationParadigmListener("habituationThresholdInstance", 1000, 10, new CancelableStimulusListener() {
+        System.out.println(maximumShowsInstance.generateJsonResults());
+        HabituationParadigmListener habituationThresholdInstance = new HabituationParadigmListener("habituationThresholdInstance", 1000, 10, new TimedStimulusListener() {
             @Override
-            protected void trigggerCancelableEvent() {
-                System.out.println("habituationThreshold triggered");
+            public void postLoadTimerFired() {
+                System.out.print("<triggered>");
             }
         }, false);
         System.out.print("input: {");
@@ -63,10 +65,11 @@ public class HabituationParadigmListenerTest {
             System.out.print(value + ", ");
         }
         System.out.println("}");
-        HabituationParadigmListener thresholdMsInstance = new HabituationParadigmListener("thresholdMsInstance", 1000, 10, new CancelableStimulusListener() {
+        System.out.println(habituationThresholdInstance.generateJsonResults());
+        HabituationParadigmListener thresholdMsInstance = new HabituationParadigmListener("thresholdMsInstance", 1000, 10, new TimedStimulusListener() {
             @Override
-            protected void trigggerCancelableEvent() {
-                System.out.println("thresholdMs triggered");
+            public void postLoadTimerFired() {
+                System.out.print("<triggered>");
             }
         }, false);
         System.out.print("input: {");
@@ -75,10 +78,11 @@ public class HabituationParadigmListenerTest {
             System.out.print(value + ", ");
         }
         System.out.println("}");
-        HabituationParadigmListener isSingleShowInstance = new HabituationParadigmListener("isSingleShowInstance", 1000, 10, new CancelableStimulusListener() {
+        System.out.println(thresholdMsInstance.generateJsonResults());
+        HabituationParadigmListener isSingleShowInstance = new HabituationParadigmListener("isSingleShowInstance", 1000, 10, new TimedStimulusListener() {
             @Override
-            protected void trigggerCancelableEvent() {
-                System.out.println("isSingleShow triggered");
+            public void postLoadTimerFired() {
+                System.out.print("<triggered>");
             }
         }, true);
         System.out.print("input: {");
@@ -87,9 +91,6 @@ public class HabituationParadigmListenerTest {
             System.out.print(value + ", ");
         }
         System.out.println("}");
-        System.out.println(maximumShowsInstance.generateJsonResults());
-        System.out.println(habituationThresholdInstance.generateJsonResults());
-        System.out.println(thresholdMsInstance.generateJsonResults());
         System.out.println(isSingleShowInstance.generateJsonResults());
 
         assertEquals("{listenerId:'maximumShowsInstance',thresholdMs:1000,maximumShows:10,baselineWindowSize:3,habituationThreshold:60,baselineAverage:10000,baselineSamples: {10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000,10000}",
