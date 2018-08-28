@@ -495,7 +495,7 @@ or local-name() eq 'removeStimulus'
         ) then 'currentStimulus' else ''" />
         <xsl:value-of select="if(local-name() eq 'stimulusMetadataField' or (local-name() eq 'stimulusLabel' and @styleName)
         ) then ', ' else ''" />
-        <xsl:value-of select="if (local-name() eq 'logTokenText' or local-name() eq 'htmlTokenText') then if (contains(@featureText, '&lt;stimulus')) then 'currentStimulus, ' else 'null, ' else ''" />
+        <xsl:value-of select="if (local-name() eq 'logTokenText' or local-name() eq 'htmlTokenText') then if (contains(@featureText, '&lt;stimulus') or contains(@dataLogFormat, '&lt;stimulus')) then 'currentStimulus, ' else 'null, ' else ''" />
         <xsl:value-of select="if(local-name() eq 'sendStimuliReport') then ', ' else ''" />
         <xsl:value-of select="if(@type) then concat('&quot;', @type, '&quot;, ') else ''" />   
         <xsl:if test="local-name() eq 'logTokenText'">
