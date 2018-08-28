@@ -666,7 +666,7 @@ public class GeneratedStimulus implements Stimulus {
         this.mp4 = mp4;
         this.ogg = ogg;
         this.image = image;
-        this.imageString = null;
+        this.imageString = "Image";
     }
 
     public GeneratedStimulus(String uniqueId, Tag tags[], String label, String code, int pauseMs, String audioPath, String videoPath, String imagePath, String ratingLabels) {
@@ -734,7 +734,7 @@ public class GeneratedStimulus implements Stimulus {
 
     @Override
     public String getAudio() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Audio";
     }
 
     @Override
@@ -744,12 +744,12 @@ public class GeneratedStimulus implements Stimulus {
 
     @Override
     public String getVideo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Video";
     }
 
     @Override
     public String getRatingLabels() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Rating,Labels";
     }
 
     @Override
@@ -759,7 +759,7 @@ public class GeneratedStimulus implements Stimulus {
 
     @Override
     public String getCorrectResponses() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "Correct|Responses";
     }
 
     @Override
