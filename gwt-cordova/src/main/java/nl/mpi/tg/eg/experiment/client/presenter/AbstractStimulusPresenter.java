@@ -371,30 +371,34 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addHtmlText(textString, styleName);
     }
 
-    protected void timerLabel(final String timesUpLabel, final int postLoadMs, final String listenerId, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
-        timerLabel(timesUpLabel, null, postLoadMs, listenerId, msLabelFormat, timedStimulusListener);
+    protected void timerLabel(final int postLoadMs, final String listenerId, final String msLabelFormat) {
+        timerLabel(null, postLoadMs, listenerId, msLabelFormat);
     }
 
-    protected void timerLabel(final String timesUpLabel, final String styleName, final int postLoadMs, final String listenerId, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
+    protected void timerLabel(final String styleName, final int postLoadMs, final String listenerId, final String msLabelFormat) {
         final DateTimeFormat formatter = DateTimeFormat.getFormat(msLabelFormat);
-        final HTML html = ((TimedStimulusView) simpleView).addHtmlText(formatter.format(new Date((long) postLoadMs)), styleName);
+        final HTML html = ((TimedStimulusView) simpleView).addHtmlText("", styleName);
         Timer labelTimer = new Timer() {
             @Override
             public void run() {
                 final int timerValue = timerService.getTimerValue(listenerId);
-                final long remainingMs = (long) postLoadMs - timerValue;
-                if (remainingMs > 0) {
-                    Date msBasedDate = new Date(remainingMs);
-                    String labelText = formatter.format(msBasedDate);
-                    html.setHTML(labelText);
-                    schedule(500);
+                final long remainingMs;
+                if (postLoadMs > 0) {
+                    if (postLoadMs > timerValue) {
+                        remainingMs = (long) postLoadMs - timerValue;
+                    } else {
+                        remainingMs = 0;
+                    }
                 } else {
-                    html.setHTML(timesUpLabel);
-                    timedStimulusListener.postLoadTimerFired();
+                    remainingMs = (long) timerValue;
                 }
+                Date msBasedDate = new Date(remainingMs);
+                String labelText = formatter.format(msBasedDate);
+                html.setHTML(labelText);
+                schedule(500);
             }
         };
-        labelTimer.schedule(500);
+        labelTimer.schedule(5);
     }
 
     protected void countdownLabel(final String timesUpLabel, final int postLoadMs, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
