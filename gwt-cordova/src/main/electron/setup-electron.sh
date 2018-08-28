@@ -12,8 +12,10 @@ ls
 /usr/bin/npm config set prefix '/srv/ExperimentTemplate/.npm-global'
 PATH=/srv/ExperimentTemplate/.npm-global/bin:$PATH
 /usr/bin/npm install -g electron-forge 
-/usr/bin/npm install -g electron-compile
+/usr/bin/npm install electron-compile
 /usr/bin/npm install --save
+pwd
+ls /srv/ExperimentTemplate/gwt-cordova/target/with_simulus_example-frinex-gui-1.1-stable-SNAPSHOT-electron/node_modules/
 #electron-forge init $appname
 #cd $appname
 #electron-forge package --platform=win32 --arch=x64
