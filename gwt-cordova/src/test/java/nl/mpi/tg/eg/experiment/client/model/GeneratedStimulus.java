@@ -719,7 +719,7 @@ public class GeneratedStimulus implements Stimulus {
 
     @Override
     public boolean hasRatingLabels() {
-        return false;
+        return true;
     }
 
     @Override
@@ -754,7 +754,7 @@ public class GeneratedStimulus implements Stimulus {
 
     @Override
     public boolean hasCorrectResponses() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return true;
     }
 
     @Override
