@@ -123,7 +123,7 @@ public enum FeatureType {
     compareTimer(false, false, new FeatureAttribute[]{msToNext, listenerId}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
     clearTimer(false, false, new FeatureAttribute[]{listenerId}),
     logTimerValue(false, false, new FeatureAttribute[]{listenerId, eventTag, dataChannel}),
-    timerLabel(true, true, new FeatureAttribute[]{listenerId, msToNext, msLabelFormat, styleName}), // this is a label like countdownLabel but shows the time value of listenerId minus msToNext and formats the result with msLabelFormat
+    timerLabel(false, false, new FeatureAttribute[]{listenerId, msToNext, msLabelFormat, styleName}), // this is a label like countdownLabel but shows the time value of listenerId minus msToNext and formats the result with msLabelFormat
     randomMsPause(true, false, new FeatureAttribute[]{minimum, maximum}),
     triggerListener(true, false, new FeatureAttribute[]{listenerId, threshold, maximum}),
     habituationParadigmListener(true, false, new FeatureAttribute[]{listenerId, threshold, maximum}), //  threshold is in ms eg 2000 is the minimum length of an event to be considered, maximum is the max shows eg 10.
