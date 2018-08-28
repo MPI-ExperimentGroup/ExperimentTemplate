@@ -98,11 +98,21 @@ public class HtmlTokenFormatter {
             replacedTokensString = replacedTokensString.replaceAll("<stimulusId>", currentStimulus.getUniqueId());
             replacedTokensString = replacedTokensString.replaceAll("<stimulusLabel>", currentStimulus.getLabel());
             replacedTokensString = replacedTokensString.replaceAll("<stimulusCode>", currentStimulus.getCode());
-            replacedTokensString = replacedTokensString.replaceAll("<stimulusCorrectResponses>", currentStimulus.getCorrectResponses());
-            replacedTokensString = replacedTokensString.replaceAll("<stimulusRatingLabels>", currentStimulus.getRatingLabels());
-            replacedTokensString = replacedTokensString.replaceAll("<stimulusAudio>", currentStimulus.getAudio());
-            replacedTokensString = replacedTokensString.replaceAll("<stimulusVideo>", currentStimulus.getVideo());
-            replacedTokensString = replacedTokensString.replaceAll("<stimulusImage>", currentStimulus.getImage());
+            if (currentStimulus.hasCorrectResponses()) {
+                replacedTokensString = replacedTokensString.replaceAll("<stimulusCorrectResponses>", currentStimulus.getCorrectResponses());
+            }
+            if (currentStimulus.hasRatingLabels()) {
+                replacedTokensString = replacedTokensString.replaceAll("<stimulusRatingLabels>", currentStimulus.getRatingLabels());
+            }
+            if (currentStimulus.hasAudio()) {
+                replacedTokensString = replacedTokensString.replaceAll("<stimulusAudio>", currentStimulus.getAudio());
+            }
+            if (currentStimulus.hasVideo()) {
+                replacedTokensString = replacedTokensString.replaceAll("<stimulusVideo>", currentStimulus.getVideo());
+            }
+            if (currentStimulus.hasImage()) {
+                replacedTokensString = replacedTokensString.replaceAll("<stimulusImage>", currentStimulus.getImage());
+            }
             replacedTokensString = replacedTokensString.replaceAll("<stimulusTags>", serialiseTags(currentStimulus.getTags()));
             replacedTokensString = replacedTokensString.replaceAll("<stimulusPauseMs>", Integer.toString(currentStimulus.getPauseMs()));
         }
