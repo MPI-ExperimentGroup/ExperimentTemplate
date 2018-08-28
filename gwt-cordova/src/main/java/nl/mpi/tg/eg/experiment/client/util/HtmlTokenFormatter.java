@@ -17,9 +17,11 @@
  */
 package nl.mpi.tg.eg.experiment.client.util;
 
+import java.util.List;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.service.GroupScoreService;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Jul 19, 2017 3:34:18 PM (creation date)
@@ -30,15 +32,18 @@ public class HtmlTokenFormatter {
     final GroupScoreService groupParticipantService;
     final UserData userData;
     final TimerService timerService;
+    final Stimulus currentStimulus;
 
-    public HtmlTokenFormatter(GroupScoreService groupParticipantService, UserData userData, TimerService timerService) {
+    public HtmlTokenFormatter(final Stimulus currentStimulus, GroupScoreService groupParticipantService, UserData userData, TimerService timerService) {
         this.groupParticipantService = groupParticipantService;
         this.userData = userData;
         this.timerService = timerService;
+        this.currentStimulus = currentStimulus;
     }
 
     public String formatString(String inputString) {
         String replacedTokensString = inputString;
+        // todo: add a stimuli loop tag
         if (groupParticipantService != null) {
             while (replacedTokensString.contains("</channelLoop>")) {
                 final int channelLoopStart = replacedTokensString.indexOf("<channelLoop>");
@@ -89,6 +94,29 @@ public class HtmlTokenFormatter {
         for (String timerId : timerService.getTimerIds()) {
             replacedTokensString = replacedTokensString.replaceAll("<" + timerId + ">", Integer.toString(timerService.getTimerValue(timerId)));
         }
+        if (currentStimulus != null) {
+            replacedTokensString = replacedTokensString.replaceAll("<stimulusId>", currentStimulus.getUniqueId());
+            replacedTokensString = replacedTokensString.replaceAll("<stimulusLabel>", currentStimulus.getLabel());
+            replacedTokensString = replacedTokensString.replaceAll("<stimulusCode>", currentStimulus.getCode());
+            replacedTokensString = replacedTokensString.replaceAll("<stimulusCorrectResponses>", currentStimulus.getCorrectResponses());
+            replacedTokensString = replacedTokensString.replaceAll("<stimulusRatingLabels>", currentStimulus.getRatingLabels());
+            replacedTokensString = replacedTokensString.replaceAll("<stimulusAudio>", currentStimulus.getAudio());
+            replacedTokensString = replacedTokensString.replaceAll("<stimulusVideo>", currentStimulus.getVideo());
+            replacedTokensString = replacedTokensString.replaceAll("<stimulusImage>", currentStimulus.getImage());
+            replacedTokensString = replacedTokensString.replaceAll("<stimulusTags>", serialiseTags(currentStimulus.getTags()));
+            replacedTokensString = replacedTokensString.replaceAll("<stimulusPauseMs>", Integer.toString(currentStimulus.getPauseMs()));
+        }
         return replacedTokensString;
+    }
+
+    private String serialiseTags(List<?> tags) {
+        String result = "";
+        for (Object tag : tags) {
+            if (!result.isEmpty()) {
+                result += ",";
+            }
+            result += tag.toString();
+        }
+        return result;
     }
 }
