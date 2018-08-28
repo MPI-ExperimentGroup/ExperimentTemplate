@@ -18,8 +18,8 @@
 package nl.mpi.tg.eg.experiment.client.util;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Set;
+import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.service.GroupScoreService;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
@@ -44,13 +44,23 @@ public class HtmlTokenFormatterTest {
 
         String inputString = "Q<groupScore>W<channelScore>E"
                 + "R<channelLoop>Duo <channelLabel> heeft <channelScore> punten.<br/><br/></channelLoop>Y"
-                + "C<groupOtherMemberCodes>D";
+                + "C<groupOtherMemberCodes>D"
+                + "E<stimulusId>F"
+                + "G<stimulusCode>H"
+                + "I<stimulusLabel>J"
+                + "I<stimulusRatingLabels>J"
+                + "I<stimulusPauseMs>J"
+                + "I<stimulusAudio>J"
+                + "I<stimulusVideo>J"
+                + "I<stimulusImage>J"
+                + "I<stimulusTags>J"
+                + "I<stimulusCorrectResponses>J";
         // todo: implement the channelLoop
-        final String expectedString = "QGroupScoreWChannelScoreERDuo A-B heeft 6 punten.<br/><br/>Duo C-D heeft 2 punten.<br/><br/>YCA,B,C,D,E,FD";
+        final String expectedString = "QGroupScoreWChannelScoreERDuo A-B heeft 6 punten.<br/><br/>Duo C-D heeft 2 punten.<br/><br/>YCA,B,C,D,E,FDEd1e286FGcodeHIOneJIRating,LabelsJI0JIAudioJIVideoJIImageJItag_number,tag_interestingJICorrect|ResponsesJ";
         final HashMap<String, String> channelScores = new HashMap<>();
         channelScores.put("A-B", "6");
         channelScores.put("C-D", "2");
-        HtmlTokenFormatter instance = new HtmlTokenFormatter(new GroupScoreService() {
+        HtmlTokenFormatter instance = new HtmlTokenFormatter(GeneratedStimulus.values[0], new GroupScoreService() {
 
             @Override
             public String getActiveChannel() {
