@@ -768,7 +768,7 @@ or local-name() eq 'stimulusImageCapture'
             <!--some multiparticipant features require the current stimulus, except the case of an end of stimulus event, in this case the group still needs to be informed-->
             <xsl:value-of select="if(local-name(..) ne 'endOfStimulus') then 'currentStimulus, ' else 'null, '" />
         </xsl:if>
-        <xsl:value-of select="if(local-name() eq 'stimulusImageCapture' or local-name() eq 'countdownLabel') then concat('messages.', generate-id(.), '(), ') else ''" />
+        <xsl:value-of select="if(local-name() eq 'stimulusImageCapture' or local-name() eq 'countdownLabel' or local-name() eq 'timerLabel') then concat('messages.', generate-id(.), '(), ') else ''" />
         <xsl:value-of select="if(@percentOfPage) then concat(@percentOfPage, ', ') else ''" />
         <xsl:value-of select="if(@maxHeight) then concat(@maxHeight, ', ') else ''" />
         <xsl:value-of select="if(@maxWidth) then concat(@maxWidth, ', ') else ''" />
@@ -840,6 +840,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
  or local-name() eq 'triggerListener'
  or local-name() eq 'habituationParadigmListener'
  or local-name() eq 'countdownLabel'
+ or local-name() eq 'timerLabel'
  or local-name() eq 'stimulusImageCapture'
  or local-name() eq 'groupNetwork'
  or local-name() eq 'backgroundImage'
