@@ -371,11 +371,11 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addHtmlText(textString, styleName);
     }
 
-    protected void timerLabel(final String timesUpLabel, final String listenerId, final int postLoadMs, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
-        timerLabel(timesUpLabel, listenerId, null, postLoadMs, msLabelFormat, timedStimulusListener);
+    protected void timerLabel(final String timesUpLabel, final int postLoadMs, final String listenerId, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
+        timerLabel(timesUpLabel, null, postLoadMs, listenerId, msLabelFormat, timedStimulusListener);
     }
 
-    protected void timerLabel(final String timesUpLabel, final String listenerId, final String styleName, final int postLoadMs, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
+    protected void timerLabel(final String timesUpLabel, final String styleName, final int postLoadMs, final String listenerId, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
         final DateTimeFormat formatter = DateTimeFormat.getFormat(msLabelFormat);
         final HTML html = ((TimedStimulusView) simpleView).addHtmlText(formatter.format(new Date((long) postLoadMs)), styleName);
         Timer labelTimer = new Timer() {
