@@ -354,17 +354,17 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         matchingStimuliGroup.showNextStimulus(stimulusProvider);
     }
 
-    public void logTokenText(final String reportType, final String headerKey, final int dataChannel, final String dataLogFormat) {
-        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, reportType, headerKey, new HtmlTokenFormatter(groupParticipantService, userResults.getUserData(), timerService).formatString(dataLogFormat), duration.elapsedMillis());
+    public void logTokenText(final Stimulus currentStimulus, final String reportType, final String headerKey, final int dataChannel, final String dataLogFormat) {
+        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, reportType, headerKey, new HtmlTokenFormatter(currentStimulus, groupParticipantService, userResults.getUserData(), timerService).formatString(dataLogFormat), duration.elapsedMillis());
     }
 
-    public void htmlTokenText(final String textString, final String styleName) {
-        ((TimedStimulusView) simpleView).addHtmlText(new HtmlTokenFormatter(groupParticipantService, userResults.getUserData(), timerService).formatString(textString), styleName);
+    public void htmlTokenText(final Stimulus currentStimulus, final String textString, final String styleName) {
+        ((TimedStimulusView) simpleView).addHtmlText(new HtmlTokenFormatter(currentStimulus, groupParticipantService, userResults.getUserData(), timerService).formatString(textString), styleName);
         // the submitTagValue previously used here by the multiparticipant configuration has been migrated to logTokenText which should function the sames for the multiparticipant experiment except that it now uses submitTagPairValue
     }
 
-    public void htmlTokenText(String textString) {
-        htmlTokenText(textString, null);
+    public void htmlTokenText(final Stimulus currentStimulus, String textString) {
+        htmlTokenText(currentStimulus, textString, null);
     }
 
     public void htmlText(String textString, final String styleName) {
