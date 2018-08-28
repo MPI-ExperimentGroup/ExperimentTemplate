@@ -371,11 +371,37 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addHtmlText(textString, styleName);
     }
 
+    protected void timerLabel(final String timesUpLabel, final String listenerId, final int postLoadMs, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
+        timerLabel(timesUpLabel, listenerId, null, postLoadMs, msLabelFormat, timedStimulusListener);
+    }
+
+    protected void timerLabel(final String timesUpLabel, final String listenerId, final String styleName, final int postLoadMs, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
+        final DateTimeFormat formatter = DateTimeFormat.getFormat(msLabelFormat);
+        final HTML html = ((TimedStimulusView) simpleView).addHtmlText(formatter.format(new Date((long) postLoadMs)), styleName);
+        Timer labelTimer = new Timer() {
+            @Override
+            public void run() {
+                final int timerValue = timerService.getTimerValue(listenerId);
+                final long remainingMs = (long) postLoadMs - timerValue;
+                if (remainingMs > 0) {
+                    Date msBasedDate = new Date(remainingMs);
+                    String labelText = formatter.format(msBasedDate);
+                    html.setHTML(labelText);
+                    schedule(500);
+                } else {
+                    html.setHTML(timesUpLabel);
+                    timedStimulusListener.postLoadTimerFired();
+                }
+            }
+        };
+        labelTimer.schedule(500);
+    }
+
     protected void countdownLabel(final String timesUpLabel, final int postLoadMs, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
         countdownLabel(timesUpLabel, null, postLoadMs, msLabelFormat, timedStimulusListener);
     }
 
-    protected void countdownLabel(final String timesUpLabel, String styleName, final int postLoadMs, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
+    protected void countdownLabel(final String timesUpLabel, final String styleName, final int postLoadMs, final String msLabelFormat, final TimedStimulusListener timedStimulusListener) {
         final Duration labelDuration = new Duration();
         final DateTimeFormat formatter = DateTimeFormat.getFormat(msLabelFormat);
         final HTML html = ((TimedStimulusView) simpleView).addHtmlText(formatter.format(new Date((long) postLoadMs)), styleName);
