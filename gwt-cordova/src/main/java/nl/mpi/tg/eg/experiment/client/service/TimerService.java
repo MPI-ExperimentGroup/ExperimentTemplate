@@ -64,7 +64,10 @@ public class TimerService {
     }
 
     public void clearTimer(final String listenerId) {
-        timerListeners.get(listenerId).clearTimer();
+        final TimerListner timerEntry = timerListeners.get(listenerId);
+        if (timerEntry != null) {
+            timerEntry.clearTimer();
+        }
     }
 
     public Set<String> getTimerIds() {
