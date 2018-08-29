@@ -847,7 +847,7 @@ table.gridCell:hover, td.gridCell:hover {
 .svgPopupPanel .gwt-Button,
 table#screenExample td, .stimulusHelpPanel .gwt-Button, .stimulusHelpText, .popupTextBox,
 .gwt-Label, .gwt-HTML, .gwt-CheckBox, .pageLink, .contentBody, .metadataError, .metadataOK, .metadataErrorMessage,
-.gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-PushButton.stimulusButton, .gwt-Button.stimulusButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.stimulusButton, .gwt-Button.optionButton, .gwt-Label.headerButton {  
+.gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-PushButton.stimulusButton, .gwt-Button.stimulusButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.stimulusButton, .gwt-Button.optionButton, .gwt-Label.headerButton, .gwt-RadioButton.optionButton {  
     font-size: $textFontSize;
     /*    
     font-family: Georgia, Times, "Times New Roman", serif;
@@ -977,7 +977,7 @@ textarea.singleLineFreeTextLabel {
 .stimulusHelpText, .popupTextBox,
 table#screenExample td, .stimulusHelpPanel .gwt-Button,
 .gwt-Label, .gwt-HTML, .headerLabel, .headerLabelCentered, .resultsTableTitle, .gwt-CheckBox, .pageLink, .contentBody, .metadataErrorMessage,
-.gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-PushButton.stimulusButton,.gwt-Button.stimulusButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.stimulusButton, .gwt-Button.optionButton, .gwt-Label.headerButton 
+.gwt-Button.nextButton, .gwt-Button.menuButton,.gwt-PushButton.stimulusButton,.gwt-Button.stimulusButton,.gwt-Button.stimulusHelpButton, .gwt-Button.stimulusQuitButton, .gwt-Button.stimulusButton, .gwt-Button.optionButton, .gwt-Label.headerButton, .gwt-RadioButton.optionButton 
 {
     font-family: Calibri, "Open Sans", "Droid Sans", Arial, Candara, Segoe, "Segoe UI", Optima, sans-serif;
 }
