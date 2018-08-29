@@ -1614,6 +1614,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         } else {
             initialTimerStartMs = Long.parseLong(storedDataValue);
         }
+        timerService.clearTimer(listenerId);
         timerService.startTimer(initialTimerStartMs, msToNext, listenerId, timeoutListener);
     }
 
