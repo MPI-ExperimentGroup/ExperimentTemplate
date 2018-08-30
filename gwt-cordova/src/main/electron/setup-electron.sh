@@ -20,7 +20,11 @@ ls -l /srv/ExperimentTemplate/gwt-cordova/target/with_simulus_example-frinex-gui
 #electron-forge init $appname
 #cd $appname
 #electron-forge package --platform=win32 --arch=x64
-electron-forge make all
+
+electron-forge make --platform=linux --arch=x64
+electron-forge make --platform=linux --arch=ia32
+electron-forge make --platform=darwin
+electron-forge make --platform=win32
 
 #mkdir /srv/target/electron
 #cp out/make/*linux*.zip ../@experiment.configuration.name@-linux.zip
