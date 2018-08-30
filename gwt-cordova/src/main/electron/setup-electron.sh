@@ -10,10 +10,11 @@ pwd
 ls
 
 /usr/bin/npm config set prefix '/srv/ExperimentTemplate/.npm-global'
+NPM_CONFIG_PREFIX=/srv/ExperimentTemplate/.npm-global
 PATH=/srv/ExperimentTemplate/.npm-global/bin:$PATH
 /usr/bin/npm install -g electron-forge 
 /usr/bin/npm install electron-compile
-/usr/bin/npm install --save
+/usr/bin/npm install
 pwd
 ls /srv/ExperimentTemplate/gwt-cordova/target/with_simulus_example-frinex-gui-1.1-stable-SNAPSHOT-electron/node_modules/
 ls -l /srv/ExperimentTemplate/gwt-cordova/target/with_simulus_example-frinex-gui-1.1-stable-SNAPSHOT-electron/node_modules/electron-compile/lib/
