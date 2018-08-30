@@ -24,6 +24,7 @@ ls -l /srv/ExperimentTemplate/gwt-cordova/target/with_simulus_example-frinex-gui
 electron-forge make --platform=linux --arch=x64
 electron-forge make --platform=linux --arch=ia32
 electron-forge make --platform=darwin
+# the win32 target requires wine mono-devel to be available on the build server
 electron-forge make --platform=win32
 
 #mkdir /srv/target/electron
