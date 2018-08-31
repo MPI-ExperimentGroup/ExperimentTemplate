@@ -33,6 +33,8 @@ public class WizardUtilScreen {
 
     protected WizardUtilStimuliData stimuliData;
 
+    protected String[] scoreBranching; // eg [4, "Set 1 Instapset 2;3-2;5 jaar", 9, "einde van het experiment"]
+
     protected WizardUtilMetadata metadataScreen;
 
     protected WizardUtilSendData sendDataScreen;
@@ -101,5 +103,13 @@ public class WizardUtilScreen {
 
     public void setAudioScreen(WizardUtilAudioTest audioScreen) {
         this.audioScreen = audioScreen;
+    }
+
+    public String[] getScoreBranching() {
+        return scoreBranching;
+    }
+
+    public void setScoreBranching(String[] scoreBranching) {
+        this.scoreBranching = scoreBranching;
     }
 }
