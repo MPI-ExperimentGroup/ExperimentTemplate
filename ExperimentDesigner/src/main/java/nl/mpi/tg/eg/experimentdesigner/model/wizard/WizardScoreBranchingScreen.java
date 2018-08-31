@@ -18,6 +18,8 @@
 package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
+import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
+import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
 
@@ -26,6 +28,10 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public class WizardScoreBranchingScreen extends AbstractWizardScreen {
+
+    public WizardScoreBranchingScreen() {
+        super(WizardScreenEnum.WizardScoreBranchingScreen);
+    }
 
     public WizardScoreBranchingScreen(String screenTitle, String menuLabel, String screenTag) {
         super(WizardScreenEnum.WizardScoreBranchingScreen, screenTitle, menuLabel, screenTag);
@@ -51,9 +57,14 @@ public class WizardScoreBranchingScreen extends AbstractWizardScreen {
         return new String[]{}[index];
     }
 
-    final public void setBranchOnScore(int branchOnGetParam, String targetScreen) {
+    final public void setBranchOnScoreBelow(int branchOnGetParam, String targetScreen) {
         this.wizardScreenData.setScreenText(0, targetScreen);
         this.wizardScreenData.setScreenIntegers(0, branchOnGetParam);
+    }
+
+    final public void setBranchOnScoreAbove(int branchOnGetParam, String targetScreen) {
+        this.wizardScreenData.setScreenText(1, targetScreen);
+        this.wizardScreenData.setScreenIntegers(1, branchOnGetParam);
     }
 
     public void addTargetScreen(final AbstractWizardScreen targetScreen) {
@@ -64,6 +75,16 @@ public class WizardScoreBranchingScreen extends AbstractWizardScreen {
     public PresenterScreen[] populatePresenterScreen(WizardScreenData storedWizardScreenData, Experiment experiment, boolean obfuscateScreenNames, long displayOrder) {
         super.populatePresenterScreen(storedWizardScreenData, experiment, obfuscateScreenNames, displayOrder);
         storedWizardScreenData.getPresenterScreen().setPresenterType(PresenterType.stimulus);
+        if (storedWizardScreenData.getScreenText(0) != null) {
+            final PresenterFeature scoreAboveThreshold = storedWizardScreenData.getPresenterScreen().addFeature(FeatureType.scoreAboveThreshold, null, null, Integer.toString(storedWizardScreenData.getScreenInteger(0)), null, null, null);
+            scoreAboveThreshold.addFeature(FeatureType.aboveThreshold, null).addFeature(FeatureType.gotoPresenter, null, cleanScreenTag(storedWizardScreenData.getScreenText(0)));
+            scoreAboveThreshold.addFeature(FeatureType.withinThreshold, null);
+        }
+        if (storedWizardScreenData.getScreenText(1) != null) {
+            final PresenterFeature scoreAboveThreshold = storedWizardScreenData.getPresenterScreen().addFeature(FeatureType.scoreAboveThreshold, null, null, Integer.toString(storedWizardScreenData.getScreenInteger(1)), null, null, null);
+            scoreAboveThreshold.addFeature(FeatureType.aboveThreshold, null).addFeature(FeatureType.gotoPresenter, null, cleanScreenTag(storedWizardScreenData.getScreenText(1)));
+            scoreAboveThreshold.addFeature(FeatureType.withinThreshold, null);
+        }
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
         return new PresenterScreen[]{storedWizardScreenData.getPresenterScreen()};
     }
