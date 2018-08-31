@@ -224,13 +224,15 @@ public class PresenterFeature extends CanHaveFeatures {
     }
 
     public void addFeatureAttributes(FeatureAttribute featureAttribute, String attributeValue) {
-        if (attributeValue == null /*&& !featureAttribute.isOptional*/) {
+        if (attributeValue == null && !featureAttribute.isOptional) {
             throw new IllegalArgumentException("attributeValue cannot be null: " + featureAttribute.name());
         }
         if (!Arrays.asList(featureType.getFeatureAttributes()).contains(featureAttribute)) {
             throw new IllegalArgumentException(featureType.name() + " cannont contain " + featureAttribute.name());
         }
-        this.featureAttributes.put(featureAttribute, attributeValue);
+        if (attributeValue != null) {
+            this.featureAttributes.put(featureAttribute, attributeValue);
+        }
     }
 
     public void addUndefinedAttribute(String undefinedAttribute, String attributeValue) {
