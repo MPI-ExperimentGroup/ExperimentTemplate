@@ -47,8 +47,12 @@ public abstract class AbstractWizardScreen implements WizardScreen {
         this.wizardScreenData = new WizardScreenData(wizardScreenEnum);
         this.wizardScreenData.setScreenTitle(screenTitle);
         this.wizardScreenData.setMenuLabel(menuLabel);
-        this.wizardScreenData.setScreenTag(screenTag.replaceAll("[^A-Za-z0-9]", "_"));
+        this.wizardScreenData.setScreenTag(cleanScreenTag(screenTag));
         this.wizardScreenData.setCentreScreen(false);
+    }
+
+    protected static String cleanScreenTag(String screenTag) {
+        return screenTag.replaceAll("[^A-Za-z0-9]", "_");
     }
 
     protected final void setStimuliSet(final WizardUtilStimuliData stimuliData, String... tagNames) {
@@ -135,7 +139,7 @@ public abstract class AbstractWizardScreen implements WizardScreen {
 
     @Override
     public final void setScreenTag(String screenTag) {
-        this.wizardScreenData.setScreenTag(screenTag.replaceAll("[^A-Za-z0-9]", "_"));
+        this.wizardScreenData.setScreenTag(cleanScreenTag(screenTag));
     }
 
     @Override
@@ -192,7 +196,7 @@ public abstract class AbstractWizardScreen implements WizardScreen {
         storedWizardScreenData.getPresenterScreen().setTitle((obfuscateScreenNames) ? experiment.getAppNameDisplay() + " " + displayOrder : storedWizardScreenData.getScreenTitle());
         storedWizardScreenData.getPresenterScreen().setMenuLabel((storedWizardScreenData.getMenuLabel() != null) ? storedWizardScreenData.getMenuLabel() : storedWizardScreenData.getScreenTitle());
         final String currentTagString = (storedWizardScreenData.getScreenTag() != null) ? storedWizardScreenData.getScreenTag() : storedWizardScreenData.getScreenTitle();
-        storedWizardScreenData.getPresenterScreen().setSelfPresenterTag(currentTagString.replaceAll("[^A-Za-z0-9]", "_"));
+        storedWizardScreenData.getPresenterScreen().setSelfPresenterTag(cleanScreenTag(currentTagString));
         if (storedWizardScreenData.getBackWizardScreenData() != null) {
             storedWizardScreenData.getPresenterScreen().setBackPresenter(storedWizardScreenData.getBackWizardScreenData().getPresenterScreen());
         }
