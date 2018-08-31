@@ -31,6 +31,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardExistingUserCheckScree
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardGridStimulusScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardMenuScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardRandomStimulusScreen;
+import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardScoreBranchingScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardTextScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilAudioTest;
 import nl.mpi.tg.eg.experimentdesigner.model.wizard.WizardUtilData;
@@ -270,6 +271,24 @@ public class SentenceCompletion {
                 lastScreen = abstractWizardScreen;
                 if (firstScreen == null) {
                     firstScreen = lastScreen;
+                }
+            }
+            if (screenData.getScoreBranching() != null) {
+                String branchingScreenName = "";
+                for (String value : screenData.getScoreBranching()) {
+                    branchingScreenName += value;
+                }
+                WizardScoreBranchingScreen branchingScreen = new WizardScoreBranchingScreen(branchingScreenName, branchingScreenName, branchingScreenName);
+
+                if (screenData.getScoreBranching().length > 1) {
+                    branchingScreen.setBranchOnScoreBelow(Integer.parseInt(screenData.getScoreBranching()[0]), screenData.getScoreBranching()[1]);
+                }
+                if (screenData.getScoreBranching().length > 3) {
+                    branchingScreen.setBranchOnScoreAbove(Integer.parseInt(screenData.getScoreBranching()[2]), screenData.getScoreBranching()[3]);
+                }
+                wizardData.addScreen(branchingScreen);
+                if (lastScreen != null) {
+                    lastScreen.getWizardScreenData().setNextWizardScreenData(branchingScreen.getWizardScreenData());
                 }
             }
             final WizardUtilSendData utilSendData = screenData.getSendDataScreen();
