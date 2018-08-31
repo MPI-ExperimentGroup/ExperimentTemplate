@@ -46,7 +46,7 @@ public enum WizardScreenEnum {
     WizardEditableEntitesDiagram(new WizardKinDiagramScreen(EditableEntitesDiagram)),
     WizardKinshipScreen(new WizardKinshipScreen()),
     WizardMenuScreen(new WizardMenuScreen()),
-    WizardScoreBranchingScreen(new WizardMenuScreen()),
+    WizardScoreBranchingScreen(new WizardScoreBranchingScreen()),
     WizardRandomStimulusScreen(new WizardRandomStimulusScreen()),
     WizardSelectUserScreen(new WizardSelectUserScreen()),
     WizardStimulusScreen(new WizardStimulusScreen()),
