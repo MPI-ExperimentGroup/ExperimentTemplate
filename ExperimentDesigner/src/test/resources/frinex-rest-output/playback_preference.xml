@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment appNameDisplay="Playback Preference" appNameInternal="playback_preference" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
+<experiment appNameDisplay="Playback Preference" appNameInternal="playback_preference" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <administration>
         <dataChannel channel="3" label="Touch Input" logToSdCard="true"/>
     </administration>
@@ -7,6 +7,7 @@
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
         <field controlledMessage="Voer een getal." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="datOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
         <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="gender" preventServerDuplicates="false" registrationField="Geslacht"/>
+        <field controlledMessage="." controlledRegex=".*" postName="cow" preventServerDuplicates="false" registrationField="cow"/>
     </metadata>
     <presenter back="Menu" menuLabel="Bluetooth Instructions" type="text" self="Bluetooth_Instructions" title="Bluetooth Instructions">
         <htmlText featureText="When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A."/>
@@ -50,6 +51,12 @@
                 <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
+    </presenter>
+    <presenter back="Menu" menuLabel="GameTest" type="stimulus" self="GameTest" title="GameTest">
+        <image msToNext="0" src="filler_games/balloon_blue.jpg" styleName="verticalPanAnimation">
+            <mediaLoaded/>
+            <mediaLoadFailed/>
+        </image>
     </presenter>
     <presenter menuLabel="COW" next="StimuliMenu" type="stimulus" self="COW" title="COW">
         <loadStimulus eventTag="COW" randomise="false" rememberLastStimuli="false">
@@ -131,10 +138,13 @@
             <endOfStimulus>
                 <gotoNextPresenter/>
             </endOfStimulus>
-            <randomGrouping/>
-            <stimuli>
-                <tag>COW</tag>
-            </stimuli>
+            <randomGrouping storageField="cow">
+                <tag>COW1</tag>
+                <tag>COW2</tag>
+                <tag>COW3</tag>
+                <tag>COW4</tag>
+            </randomGrouping>
+            <stimuli/>
         </loadStimulus>
     </presenter>
     <presenter menuLabel="FATHER" next="StimuliMenu" type="stimulus" self="FATHER" title="FATHER">
@@ -378,7 +388,7 @@
         </loadStimulus>
     </presenter>
     <presenter menuLabel="PRAY" next="StimuliMenu" type="stimulus" self="PRAY" title="PRAY">
-        <loadStimulus eventTag="PRAY" randomise="false" rememberLastStimuli="false">
+        <loadStimulus eventTag="PRAY" randomise="true" rememberLastStimuli="false" repeatCount="8">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
@@ -600,9 +610,24 @@
         <versionData/>
     </presenter>
     <stimuli>
-        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW"/>
-        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis" imagePath="COWmis" pauseMs="0" tags="COW"/>
-        <stimulus audioPath="COWmis-5" code="COWmis-5" identifier="COWmis-5" imagePath="COWmis-5" pauseMs="0" tags="COW"/>
+        
+        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW1"/>
+        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis" imagePath="COWmis" pauseMs="0" tags="COW1"/>
+        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW1"/>
+        
+        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW2"/>
+        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW2"/>
+        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis" imagePath="COWmis" pauseMs="0" tags="COW2"/>
+        
+        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW3"/>
+        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis" imagePath="COWmis" pauseMs="0" tags="COW3"/>
+        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW3"/>
+        
+        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW4"/>
+        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW4"/>
+        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis" imagePath="COWmis" pauseMs="0" tags="COW4"/>
+        
+        <!--<stimulus audioPath="COWmis-5" code="COWmis-5" identifier="COWmis-5" imagePath="COWmis-5" pauseMs="0" tags="COW3"/>-->
         <stimulus audioPath="FATHER" code="FATHER" identifier="FATHER" imagePath="FATHER" pauseMs="0" tags="FATHER"/>
         <stimulus audioPath="FATHERmis" code="FATHERmis" identifier="FATHERmis" imagePath="FATHERmis" pauseMs="0" tags="FATHER"/>
         <stimulus audioPath="GHOST-a" code="GHOST-a" identifier="GHOST-a" imagePath="GHOST-a" pauseMs="0" tags="GHOST_a"/>
