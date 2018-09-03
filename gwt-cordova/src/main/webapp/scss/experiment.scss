@@ -167,6 +167,18 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
     }
 }
 
+.verticalPanAnimation {
+    background-size: contain;
+    animation-name: verticalPanKeyFrames;
+    animation-duration: 30s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+    will-change: transform top;
+}
+
 .zoomToGarden {
     background-size: contain;
     animation-name: zoomToGardenKeyFrames;
@@ -249,6 +261,16 @@ $angleArray: 10 15 30 45 60 75 90 105 120 135 150 165 180 195 200 210 225 240 25
     animation-direction: normal;
     animation-fill-mode: forwards;
     will-change: transform;
+}
+
+@keyframes verticalPanKeyFrames {
+    from {
+        top: 100vh;
+        transform: translate(0%,100%);
+    } to {
+        top: 0vh;
+        transform: translate(0%,-100%);
+    }
 }
 
 @keyframes zoomToGardenKeyFrames {
