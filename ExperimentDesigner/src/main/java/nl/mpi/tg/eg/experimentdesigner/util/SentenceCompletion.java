@@ -299,7 +299,7 @@ public class SentenceCompletion {
                         "Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.",
                         "Probeer opnieuw");
                 wizardData.addScreen(completionScreen);
-                completionScreen.setScreenTag("completion");
+                completionScreen.setScreenTag((utilSendData.getTitle() != null) ? utilSendData.getTitle() : "completion");
                 completionScreen.setNextWizardScreen(firstScreen);
                 if (lastScreen != null) {
                     lastScreen.getWizardScreenData().setNextWizardScreenData(completionScreen.getWizardScreenData());
