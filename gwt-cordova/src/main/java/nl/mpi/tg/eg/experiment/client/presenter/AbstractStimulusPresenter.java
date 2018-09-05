@@ -73,6 +73,7 @@ import nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.frinex.common.StimuliProvider;
 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
+import nl.mpi.tg.eg.experiment.client.util.StimuliCodeFormatter;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.MetadataFieldWidget;
 import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
@@ -1065,15 +1066,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
 //    protected void stimulusCodeImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, String codeFormat, TimedStimulusListener timedStimulusListener) {
     protected void stimulusCodeImage(final Stimulus currentStimulus, final String styleName, int postLoadMs, String codeFormat, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener) {
-        String formattedCodeTemp = codeFormat.replace("<code>", currentStimulus.getCode());
-        if (currentStimulus.hasRatingLabels()) {
-            int index = 0;
-            for (final String ratingLabel : currentStimulus.getRatingLabels().split(",")) {
-                formattedCodeTemp = formattedCodeTemp.replace("<rating_" + index + ">", ratingLabel);
-                index++;
-            }
-        }
-        final String formattedCode = formattedCodeTemp;
+        final String formattedCode = StimuliCodeFormatter.getFormattedStimulusCode(currentStimulus, codeFormat);
         final String uniqueId = currentStimulus.getUniqueId();
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeImage", formattedCode, duration.elapsedMillis());
         final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
@@ -1087,7 +1080,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void stimulusCodeAudio(final Stimulus currentStimulus, int postLoadMs, String codeFormat, boolean showPlaybackIndicator, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
-        final String formattedCode = codeFormat.replace("<code>", currentStimulus.getCode());
+        final String formattedCode = StimuliCodeFormatter.getFormattedStimulusCode(currentStimulus, codeFormat);
         final String uniqueId = currentStimulus.getUniqueId();
 
         String mp3 = formattedCode + ".mp3";
@@ -1107,7 +1100,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void stimulusCodeVideo(final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, int postLoadMs, String codeFormat, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
-        final String formattedCode = codeFormat.replace("<code>", currentStimulus.getCode());
+        final String formattedCode = StimuliCodeFormatter.getFormattedStimulusCode(currentStimulus, codeFormat);
         final String uniqueId = currentStimulus.getUniqueId();
         String mp4 = formattedCode + ".mp4";
         String ogg = formattedCode + ".ogg";
@@ -1875,6 +1868,31 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         };
         nextButtonEventListnerList.add(eventListner);
         ((TimedStimulusView) simpleView).addOptionButton(eventListner, styleName);
+    }
+
+    protected void setStimulusCodeResponse(
+            final Stimulus currentStimulus,
+            final String codeFormat,
+            final int dataChannel
+    ) {
+        final String formattedCode = StimuliCodeFormatter.getFormattedStimulusCode(currentStimulus, codeFormat);
+        HashMap<Stimulus, JSONObject> jsonStimulusMap = new HashMap<>();
+        if (!jsonStimulusMap.containsKey(currentStimulus)) {
+            JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
+            storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
+            jsonStimulusMap.put(currentStimulus, storedStimulusJSONObject);
+        }
+        jsonStimulusMap.get(currentStimulus).put("CodeResponse", new JSONString(formattedCode));
+        localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, jsonStimulusMap.get(currentStimulus));
+        // @todo: probably good to check if the data has changed before writing to disk
+        submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), currentStimulus.getUniqueId(), jsonStimulusMap.get(currentStimulus).toString());
+        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "CodeResponse", currentStimulus.getUniqueId(), formattedCode, duration.elapsedMillis());
+        if (currentStimulus.hasCorrectResponses()) {
+            final boolean correctness = currentStimulus.isCorrect(formattedCode);
+            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "CodeResponse", currentStimulus.getUniqueId(), (correctness) ? "correct" : "incorrect", duration.elapsedMillis());
+            // if there are correct responses to this stimulus then increment the score
+            userResults.getUserData().addPotentialScore(correctness);
+        }
     }
 
     protected void touchInputReportSubmit(final Stimulus currentStimulus, final int dataChannel) {
