@@ -648,6 +648,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             } else {
                 stimuliButtonArray = new String[][]{{"<code>_left.jpg", "borderedVideoLeft", "Left Overlay Button", "Left", "leftOverlayButton", "leftButtonGroup"}, {"<code>_right.jpg", "borderedVideoRight", "Right Overlay Button", "Right", "rightOverlayButton", "rightButtonGroup"}};
             }
+            int index = 0;
             for (String[] additionString : stimuliButtonArray) {
                 final PresenterFeature stimulusImage = hasMoreStimulusFeature.addFeature(FeatureType.stimulusCodeImage, null, "250", "0", additionString[0], additionString[1]).addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed)[0];
                 final PresenterFeature leftOverlayButton = stimulusImage.addFeature(FeatureType.touchInputStimulusButton, additionString[2], additionString[3], "2", "", additionString[4], additionString[5]);
@@ -660,6 +661,10 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                     pause.addFeature(FeatureType.backgroundImage, null, "0", getRewardImage(storedWizardScreenData), "");
                 }
                 final PresenterFeature stimulusCodeAudio = (getCorrectAudio(storedWizardScreenData) == null) ? pause.addFeature(FeatureType.pause, null, "1000") : pause.addFeature(FeatureType.stimulusCodeAudio, null, "500", "0", getCorrectAudio(storedWizardScreenData), "false").addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
+                if (isRatingStimuli(storedWizardScreenData)) {
+                    stimulusCodeAudio.addFeature(FeatureType.setStimulusCodeResponse, null, "<rating_" + index + ">", "3");
+                    index++;
+                }
                 stimulusCodeAudio.addFeature(FeatureType.touchInputReportSubmit, null, "3");
                 stimulusCodeAudio.addFeature(FeatureType.nextStimulus, null, "false");
                 if (!getAudioAB(storedWizardScreenData).isEmpty()) {
