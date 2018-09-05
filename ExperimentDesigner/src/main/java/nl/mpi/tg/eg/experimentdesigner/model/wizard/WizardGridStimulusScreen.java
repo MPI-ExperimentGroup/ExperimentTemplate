@@ -465,7 +465,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
             randomGrouping.setConsumedTagGroup(getConsumedTagGroup(storedWizardScreenData));
             loadStimuliFeature.addStimulusTag(getConsumedTagGroup(storedWizardScreenData));
         } else {
-            loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTitle());
+            loadStimuliFeature.addStimulusTag(storedWizardScreenData.getScreenTag());
         }
         if (storedWizardScreenData.getStimuliRandomTags() != null) {
             for (String randomTag : storedWizardScreenData.getStimuliRandomTags()) {
