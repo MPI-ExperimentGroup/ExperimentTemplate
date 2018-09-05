@@ -289,6 +289,7 @@ public class SentenceCompletion {
                 if (lastScreen != null) {
                     lastScreen.getWizardScreenData().setNextWizardScreenData(branchingScreen.getWizardScreenData());
                 }
+                lastScreen = branchingScreen;
             }
             final WizardUtilSendData utilSendData = screenData.getSendDataScreen();
             if (utilSendData != null) {
