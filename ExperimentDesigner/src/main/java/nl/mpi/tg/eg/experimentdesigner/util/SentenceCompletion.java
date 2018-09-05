@@ -274,12 +274,11 @@ public class SentenceCompletion {
                 }
             }
             if (screenData.getScoreBranching() != null) {
-                String branchingScreenName = "";
-                for (String value : screenData.getScoreBranching()) {
-                    branchingScreenName += value;
-                }
+                String branchingScreenName = "ScoreBranching" + wizardData.getWizardScreens().size();
+//                for (String value : screenData.getScoreBranching()) {
+//                    branchingScreenName += value;
+//                }
                 WizardScoreBranchingScreen branchingScreen = new WizardScoreBranchingScreen(branchingScreenName, branchingScreenName, branchingScreenName);
-
                 if (screenData.getScoreBranching().length > 1) {
                     branchingScreen.setBranchOnScoreBelow(Integer.parseInt(screenData.getScoreBranching()[0]), screenData.getScoreBranching()[1]);
                 }
