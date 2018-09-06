@@ -106,11 +106,13 @@ public class WizardScoreBranchingScreen extends AbstractWizardScreen {
         );
         PresenterFeature withinThreshold = null;
         if (storedWizardScreenData.getScreenText(1) != null) {
-            final PresenterFeature scoreAboveThreshold = storedWizardScreenData.getPresenterScreen().addFeature(FeatureType.scoreAboveThreshold, null, null, Integer.toString(storedWizardScreenData.getScreenInteger(1)), null, null, null);
+            final PresenterFeature maxScoreAboveThreshold = storedWizardScreenData.getPresenterScreen().addFeature(FeatureType.bestScoreAboveThreshold, null, Integer.toString(storedWizardScreenData.getScreenInteger(1)), null, null, null, null);
+            final PresenterFeature scoreAboveThreshold = maxScoreAboveThreshold.addFeature(FeatureType.aboveThreshold, null).addFeature(FeatureType.scoreAboveThreshold, null, null, Integer.toString(storedWizardScreenData.getScreenInteger(1)), null, null, null);
             final PresenterFeature aboveThreshold = scoreAboveThreshold.addFeature(FeatureType.aboveThreshold, null);
             aboveThreshold.addFeature(FeatureType.clearCurrentScore, null);
             aboveThreshold.addFeature(FeatureType.gotoPresenter, null, cleanScreenTag(storedWizardScreenData.getScreenText(1)));
-            withinThreshold = scoreAboveThreshold.addFeature(FeatureType.withinThreshold, null);
+            scoreAboveThreshold.addFeature(FeatureType.withinThreshold, null).addFeatures(FeatureType.clearCurrentScore, FeatureType.gotoNextPresenter);
+            withinThreshold = maxScoreAboveThreshold.addFeature(FeatureType.withinThreshold, null);
         }
         if (storedWizardScreenData.getScreenText(0) != null) {
             final PresenterFeature scoreAboveThreshold = ((withinThreshold == null) ? storedWizardScreenData.getPresenterScreen() : withinThreshold).addFeature(FeatureType.scoreAboveThreshold, null, null, Integer.toString(storedWizardScreenData.getScreenInteger(0)), null, null, null);
