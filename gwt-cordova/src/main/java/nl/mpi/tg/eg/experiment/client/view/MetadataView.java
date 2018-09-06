@@ -93,21 +93,21 @@ public class MetadataView extends ComplexView {
 //                removeKeyboardPadding();
 //            }
 //        });
-        stimulusMetadataField.getFocusWidget().addFocusHandler(new FocusHandler() {
-
-            @Override
-            public void onFocus(FocusEvent event) {
-                addKeyboardPadding();
-                Timer timer = new Timer() {
-                    @Override
-                    public void run() {
-                        scrollToPosition(stimulusMetadataField.getFocusWidget().getAbsoluteTop());
-//                        stimulusMetadataField.getFocusWidget().getElement().scrollIntoView();
-                    }
-                };
-                timer.schedule(100);
-            }
-        });
+//        stimulusMetadataField.getFocusWidget().addFocusHandler(new FocusHandler() {
+//
+//            @Override
+//            public void onFocus(FocusEvent event) {
+//                addKeyboardPadding();
+//                Timer timer = new Timer() {
+//                    @Override
+//                    public void run() {
+//                        scrollToPosition(stimulusMetadataField.getFocusWidget().getAbsoluteTop());
+////                        stimulusMetadataField.getFocusWidget().getElement().scrollIntoView();
+//                    }
+//                };
+//                timer.schedule(100);
+//            }
+//        });
         fieldBoxes.put(metadataField, stimulusMetadataField);
         orderedFields.add(metadataField);
         if (firstTextBox == null) {
