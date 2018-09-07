@@ -7,6 +7,10 @@
         <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="gender" preventServerDuplicates="false" registrationField="Geslacht"/>
         <field controlledMessage="." controlledRegex="basisonderwijs|voortgezet onderwijs|MBO|HBO|universiteit|anders" postName="education" preventServerDuplicates="false" registrationField="Opleidingsniveau"/>
         <field controlledMessage="." controlledRegex=".*" postName="educationOther" preventServerDuplicates="false" registrationField="Opleidingsniveau (anders, namelijk)"/>
+        <field controlledMessage="." controlledRegex=".*" postName="connection" preventServerDuplicates="false" registrationField="Connection"/>
+        <field controlledMessage="." controlledRegex=".*" postName="connections" preventServerDuplicates="false" registrationField="Connections"/>
+        <field controlledMessage="Voer een getal in." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="dateOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
+        <field controlledMessage="." controlledRegex="|Set 1 Instapset 2;3-2;5 jaar|Set 2 Instapset 2;6-2;11 jaar|Set 3 Instapset 3;0-3;11 jaar|Set 4 Instapset 4;0-4;5 jaar|Set 5 Instapset 4;6-5;5 jaar|Set 6 Instapset 5;6-6;5 jaar|Set 7 Instapset 6;6-7;11 jaar|Set 8 Instapset 8;0-9;11 jaar|Set 9 Instapset 10;0-10;11 jaar|Set 10 Instapset 11;0 - 13;11 jaar|Set 11 Instapset 14;0 - 15;11 jaar|Set 13 Instapset 16;0 - 35;11 jaar|Set 14 Instapset 36;0 - 90;0 jaar" postName="ageGroup" preventServerDuplicates="false" registrationField="Instapset"/>
         <field controlledMessage="." controlledRegex=".*" postName="item" preventServerDuplicates="false" registrationField="item"/>
     </metadata>
     <presenter back="Menu" menuLabel="Terug" next="Informatie" type="metadata" self="Toestemming" title="Toestemming">
@@ -21,8 +25,12 @@
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="age"/>
         <metadataField fieldName="gender"/>
+        <metadataField fieldName="Geboortedatum"/>
         <metadataField fieldName="education"/>
-        <metadataField fieldName="educationOther"/>
+        <metadataFieldVisibilityDependant fieldName="educationOther" linkedFieldName="education" matchingRegex="anders"/>
+        <metadataFieldConnection fieldName="connection" linkedFieldName="postName" oneToMany="false"/>
+        <metadataFieldConnection fieldName="connections" linkedFieldName="postName" oneToMany="true"/>
+        <metadataFieldDateTriggered fieldName="ageGroup" linkedFieldName="dateOfBirth" daysThresholds="50 100 200 400 500 600 800 1000"/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
             <onError/>
             <onSuccess>
@@ -86,6 +94,28 @@
             </row>
         </table>
     </presenter>
+    <presenter back="Menu" menuLabel="Timer Label Screen" type="stimulus" self="Timer_Label_Screen" title="Timer Label Screen">
+        <startTimer msToNext="150000" listenerId="timerA">
+            <region regionId="regionTimerC">
+                <plainText featureText="TimerC Completed"/>
+            </region>
+        </startTimer>
+        <region regionId="regionTimerA">
+            <plainText featureText="TimerA region"/>
+        </region>        
+        <plainText featureText="msToNext=30000 will count down 30000ms"/>
+        <timerLabel listenerId="timerA" msLabelFormat="mm:ss" msToNext="30000" styleName="countDownLabel"/>
+        <plainText featureText="TimerC msToNext=0 will just count up"/>
+        <timerLabel listenerId="timerA" msLabelFormat="mm:ss" msToNext="0" styleName="countDownLabel"/>
+        <actionButton featureText="Restart TimerA">
+            <clearTimer listenerId="timerA"/>
+            <startTimer msToNext="15000" listenerId="timerA">
+                <region regionId="regionTimerA">
+                    <plainText featureText="TimerA Restart Completed"/>
+                </region>
+            </startTimer>
+        </actionButton>
+    </presenter>
     <presenter back="Menu" menuLabel="With Stimuli Screen" next="First_Stimuli_Screen_Informatie" type="stimulus" self="With_Stimuli_Screen" title="With Stimuli Screen">
         <region regionId="regionTimerC">
             <plainText featureText="TimerC startTimer"/>
@@ -95,6 +125,7 @@
                 <plainText featureText="TimerC Completed"/>
             </region>
         </startTimer>
+        <timerLabel listenerId="timerA" msLabelFormat="ss" msToNext="30000" styleName="countDownLabel"/>
         <region regionId="regionId" styleName="styleName">
             <plainText featureText="plainText in region"/>
         </region>
@@ -201,13 +232,34 @@
             </stimuli>
         </withStimuli>
     </presenter>
-    <presenter back="Menu" menuLabel="First Stimuli Screen" next="stimulusRatingRadio" type="stimulus" self="First_Stimuli_Screen" title="First Stimuli Screen">
+    <presenter back="Menu" menuLabel="logTokenText Stimuli Screen" next="stimulusRatingRadio" type="stimulus" self="First_Stimuli_Screen" title="First Stimuli Screen">
         <loadStimulus eventTag="First Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
                 <showStimulusProgress/>
                 <addPadding/>
-                <htmlTokenText featureText="playerScore:
+                <htmlTokenText featureText="
+                stimulusId:
+                &lt;stimulusId&gt;&lt;br/&gt;
+                stimulusLabel:
+                &lt;stimulusLabel&gt;&lt;br/&gt;
+                stimulusCode:
+                &lt;stimulusCode&gt;&lt;br/&gt;
+                stimulusCorrectResponses:
+                &lt;stimulusCorrectResponses&gt;&lt;br/&gt;
+                stimulusRatingLabels:
+                &lt;stimulusRatingLabels&gt;&lt;br/&gt;
+                stimulusPauseMs:
+                &lt;stimulusPauseMs&gt;&lt;br/&gt;
+                stimulusAudio:
+                &lt;stimulusAudio&gt;&lt;br/&gt;
+                stimulusVideo:
+                &lt;stimulusVideo&gt;&lt;br/&gt;
+                stimulusImage:
+                &lt;stimulusImage&gt;&lt;br/&gt;
+                stimulusTags:
+                &lt;stimulusTags&gt;&lt;br/&gt;
+                playerScore:
                 &lt;playerScore&gt;&lt;br/&gt;
                 playerErrors:
                 &lt;playerErrors&gt;&lt;br/&gt;
@@ -235,6 +287,56 @@
                 &lt;playerTotalPotentialScore&gt;&lt;br/&gt;
                 playerGamesPlayed:
                 &lt;playerGamesPlayed&gt; 
+                "/>
+                <logTokenText dataChannel="3" type="logTokenTextType" headerKey="logTokenTextKey" dataLogFormat="
+                stimulusId:
+                &lt;stimulusId&gt;&lt;br/&gt;
+                stimulusLabel:
+                &lt;stimulusLabel&gt;&lt;br/&gt;
+                stimulusCode:
+                &lt;stimulusCode&gt;&lt;br/&gt;
+                stimulusCorrectResponses:
+                &lt;stimulusCorrectResponses&gt;&lt;br/&gt;
+                stimulusRatingLabels:
+                &lt;stimulusRatingLabels&gt;&lt;br/&gt;
+                stimulusPauseMs:
+                &lt;stimulusPauseMs&gt;&lt;br/&gt;
+                stimulusAudio:
+                &lt;stimulusAudio&gt;&lt;br/&gt;
+                stimulusVideo:
+                &lt;stimulusVideo&gt;&lt;br/&gt;
+                stimulusImage:
+                &lt;stimulusImage&gt;&lt;br/&gt;
+                stimulusTags:
+                &lt;stimulusTags&gt;&lt;br/&gt;
+                playerScore:
+                &lt;playerScore&gt;&lt;br/&gt;
+                playerErrors:
+                &lt;playerErrors&gt;&lt;br/&gt;
+                playerPotentialScore:
+                &lt;playerPotentialScore&gt;&lt;br/&gt;
+                playerErrorStreak:
+                &lt;playerErrorStreak&gt;&lt;br/&gt;
+                playerCorrectStreak:
+                &lt;playerCorrectStreak&gt;&lt;br/&gt;
+                playerMaxScore:
+                &lt;playerMaxScore&gt;&lt;br/&gt;
+                playerMaxErrors:
+                &lt;playerMaxErrors&gt;&lt;br/&gt;
+                playerMaxPotentialScore:
+                &lt;playerMaxPotentialScore&gt;&lt;br/&gt;
+                playerMaxErrorStreak:
+                &lt;playerMaxErrorStreak&gt;&lt;br/&gt;
+                playerMaxCorrectStreak:
+                &lt;playerMaxCorrectStreak&gt;&lt;br/&gt;
+                playerTotalScore:
+                &lt;playerTotalScore&gt;&lt;br/&gt;
+                playerTotalErrors:
+                &lt;playerTotalErrors&gt;&lt;br/&gt;
+                playerTotalPotentialScore:
+                &lt;playerTotalPotentialScore&gt;&lt;br/&gt;
+                playerGamesPlayed:
+                &lt;playerGamesPlayed&gt;
                 "/>
                 <addPadding/>
                 <!--todo: flesh out this score thrshold example/test-->
@@ -391,6 +493,35 @@
                 playerGamesPlayed:
                 &lt;playerGamesPlayed&gt; 
                 "/>
+                <logTokenText dataChannel="3" type="logTokenTextType" headerKey="logTokenTextKey" dataLogFormat="playerScore:
+                &lt;playerScore&gt;&lt;br/&gt;
+                playerErrors:
+                &lt;playerErrors&gt;&lt;br/&gt;
+                playerPotentialScore:
+                &lt;playerPotentialScore&gt;&lt;br/&gt;
+                playerErrorStreak:
+                &lt;playerErrorStreak&gt;&lt;br/&gt;
+                playerCorrectStreak:
+                &lt;playerCorrectStreak&gt;&lt;br/&gt;
+                playerMaxScore:
+                &lt;playerMaxScore&gt;&lt;br/&gt;
+                playerMaxErrors:
+                &lt;playerMaxErrors&gt;&lt;br/&gt;
+                playerMaxPotentialScore:
+                &lt;playerMaxPotentialScore&gt;&lt;br/&gt;
+                playerMaxErrorStreak:
+                &lt;playerMaxErrorStreak&gt;&lt;br/&gt;
+                playerMaxCorrectStreak:
+                &lt;playerMaxCorrectStreak&gt;&lt;br/&gt;
+                playerTotalScore:
+                &lt;playerTotalScore&gt;&lt;br/&gt;
+                playerTotalErrors:
+                &lt;playerTotalErrors&gt;&lt;br/&gt;
+                playerTotalPotentialScore:
+                &lt;playerTotalPotentialScore&gt;&lt;br/&gt;
+                playerGamesPlayed:
+                &lt;playerGamesPlayed&gt;
+                "/>
                 <addPadding/>
                 <actionButton featureText="clearCurrentScore">
                     <clearCurrentScore/>
@@ -513,7 +644,7 @@
         <htmlText featureText="Instructies Deel 2: &lt;br/&gt;&lt;br/&gt;Type het juiste antwoord in de textbox."/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Second"/>
     </presenter>
-    <presenter back="Menu" menuLabel="Terug" type="text" self="café_test" title="café encoding test">
+    <presenter back="Menu" menuLabel="Terug" type="text" self="cafe_test" title="café encoding test">
         <htmlText featureText="Please make sure that the accent is correctly displayed on this screen: café"/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Second"/>
     </presenter>
@@ -544,7 +675,7 @@
             <!--<htmlText featureText="stopAudioRecorder"/>-->
             <!--</stopAudioRecorder>-->
         </actionButton>
-        <actionButton featureText="startAudioRecorderTag">
+        <actionButton featureText="startAudioRecorderTag (not supported in HTML5 the version)">
             <startAudioRecorderTag eventTier="3"/>
             <!--<htmlText featureText="startAudioRecorderTag"/>-->
             <!--</startAudioRecorderTag>-->
@@ -558,11 +689,11 @@
                     <nextStimulus repeatIncorrect="false"/>
                 </actionButton>
                 <actionButton featureText="startAudioRecorder">
-                    <startAudioRecorder recordingFormat="wav" filePerStimulus="true" eventTag="startAudioRecorder" deviceRegex="(046d:0a45)"/>
+                    <startAudioRecorder recordingFormat="ogg" filePerStimulus="true" eventTag="startAudioRecorder" deviceRegex="(046d:0a45)"/>
                     <!--                <htmlText featureText="startAudioRecorder"/>
                     </startAudioRecorder>-->
                 </actionButton>
-                <actionButton featureText="endAudioRecorderTag">
+                <actionButton featureText="endAudioRecorderTag (not supported in HTML5 the version)">
                     <endAudioRecorderTag eventTier="3" eventTag="endAudioRecorderTag"/>
                     <!--<htmlText featureText="endAudioRecorderTag"/>-->
                     <!--</endAudioRecorderTag>-->
