@@ -1628,7 +1628,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, listenerId, Integer.toString(timerService.getTimerValue(listenerId)), duration.elapsedMillis());
     }
 
-    public void cancelAllTimers() {
+    public void cancelPauseAll() {
         cancelPauseTimers();
         ((TimedStimulusView) simpleView).stopListeners();
         ((TimedStimulusView) simpleView).stopTimers();
