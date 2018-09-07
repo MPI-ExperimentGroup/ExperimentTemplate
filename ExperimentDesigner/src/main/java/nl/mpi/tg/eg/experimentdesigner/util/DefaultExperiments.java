@@ -304,7 +304,11 @@ public class DefaultExperiments {
                         case loop:
                         case showControls:
                         case scoreValue:
+                        case oneToMany:
                             presenterFeature.addFeatureAttributes(attribute, "true");
+                            break;
+                        case daysThresholds:
+                            presenterFeature.addFeatureAttributes(attribute, "10 100 1000");
                             break;
                         default:
                             presenterFeature.addFeatureAttributes(attribute, attribute.name());
