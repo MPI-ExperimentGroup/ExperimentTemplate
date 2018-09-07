@@ -48,8 +48,9 @@ public class HabituationParadigmListenerTest {
         }, false);
         System.out.print("input: {");
         for (int value : maximumShowsData) {
+            System.out.print(value);
             maximumShowsInstance.evaluateReset(value);
-            System.out.print(value + ", ");
+            System.out.print(", ");
         }
         System.out.println("}");
         System.out.println(maximumShowsInstance.generateJsonResults());
@@ -61,8 +62,9 @@ public class HabituationParadigmListenerTest {
         }, false);
         System.out.print("input: {");
         for (int value : habituationThresholdData) {
+            System.out.print(value);
             habituationThresholdInstance.evaluateReset(value);
-            System.out.print(value + ", ");
+            System.out.print(", ");
         }
         System.out.println("}");
         System.out.println(habituationThresholdInstance.generateJsonResults());
@@ -74,8 +76,9 @@ public class HabituationParadigmListenerTest {
         }, false);
         System.out.print("input: {");
         for (int value : thresholdMsData) {
+            System.out.print(value);
             thresholdMsInstance.evaluateReset(value);
-            System.out.print(value + ", ");
+            System.out.print(", ");
         }
         System.out.println("}");
         System.out.println(thresholdMsInstance.generateJsonResults());
@@ -87,8 +90,9 @@ public class HabituationParadigmListenerTest {
         }, true);
         System.out.print("input: {");
         for (int value : isSingleShowData) {
+            System.out.print(value);
             isSingleShowInstance.evaluateReset(value);
-            System.out.print(value + ", ");
+            System.out.print(", ");
         }
         System.out.println("}");
         System.out.println(isSingleShowInstance.generateJsonResults());
