@@ -107,9 +107,9 @@
         <addPadding/>
         <allMetadataFields/>
         <metadataField fieldName="workerId"/>
-        <metadataFieldConnection fieldName="workerId" linkedFieldName="workerId" oneToMany="oneToMany"/>
+        <metadataFieldConnection fieldName="workerId" linkedFieldName="workerId" oneToMany="true"/>
         <metadataFieldVisibilityDependant fieldName="workerId" linkedFieldName="workerId" matchingRegex="matchingRegex"/>
-        <metadataFieldDateTriggered fieldName="workerId" linkedFieldName="workerId" daysThresholds="daysThresholds"/>
+        <metadataFieldDateTriggered fieldName="workerId" linkedFieldName="workerId" daysThresholds="10 100 1000"/>
         <saveMetadataButton featureText="saveMetadataButton" sendData="sendData" networkErrorMessage="networkErrorMessage">
             <onError>
                 <plainText featureText="plainText in onError"/>
@@ -1680,9 +1680,9 @@
         <addPadding/>
         <allMetadataFields/>
         <metadataField fieldName="workerId"/>
-        <metadataFieldConnection fieldName="workerId" linkedFieldName="workerId" oneToMany="oneToMany"/>
+        <metadataFieldConnection fieldName="workerId" linkedFieldName="workerId" oneToMany="true"/>
         <metadataFieldVisibilityDependant fieldName="workerId" linkedFieldName="workerId" matchingRegex="matchingRegex"/>
-        <metadataFieldDateTriggered fieldName="workerId" linkedFieldName="workerId" daysThresholds="daysThresholds"/>
+        <metadataFieldDateTriggered fieldName="workerId" linkedFieldName="workerId" daysThresholds="10 100 1000"/>
         <saveMetadataButton featureText="saveMetadataButton" sendData="sendData" networkErrorMessage="networkErrorMessage">
             <onError>
                 <plainText featureText="plainText in onError"/>
