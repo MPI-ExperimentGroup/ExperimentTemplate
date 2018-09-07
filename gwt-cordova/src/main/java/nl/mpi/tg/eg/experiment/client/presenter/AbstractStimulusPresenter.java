@@ -1628,6 +1628,17 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, eventTag, listenerId, Integer.toString(timerService.getTimerValue(listenerId)), duration.elapsedMillis());
     }
 
+    public void cancelAllTimers() {
+        cancelPauseTimers();
+        ((TimedStimulusView) simpleView).stopListeners();
+        ((TimedStimulusView) simpleView).stopTimers();
+        ((TimedStimulusView) simpleView).stopAudio();
+        ((TimedStimulusView) simpleView).stopVideo();
+        ((TimedStimulusView) simpleView).clearDomHandlers();
+        stopAudioRecorder();
+        timerService.clearAllTimers(); // clear all callbacks in timerService before exiting the presenter
+    }
+
     public void cancelPauseTimers() {
 //        ((TimedStimulusView) simpleView).stopTimers();
         for (Timer currentTimer : pauseTimers) {
@@ -1783,9 +1794,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void clearPage(String styleName) {
+        cancelPauseTimers();
+        ((TimedStimulusView) simpleView).stopListeners();
         ((TimedStimulusView) simpleView).stopTimers();
         ((TimedStimulusView) simpleView).stopAudio();
         ((TimedStimulusView) simpleView).stopVideo();
+//        ((TimedStimulusView) simpleView).clearDomHandlers();
         ((TimedStimulusView) simpleView).clearPageAndTimers(styleName);
         nextButtonEventListnerList.clear(); // clear this now to prevent refires of the event
         stimulusFreeTextList.clear();
@@ -2049,6 +2063,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     @Override
     public void savePresenterState() {
+        cancelPauseTimers();
         ((TimedStimulusView) simpleView).stopListeners();
         ((TimedStimulusView) simpleView).stopTimers();
         ((TimedStimulusView) simpleView).stopAudio();
