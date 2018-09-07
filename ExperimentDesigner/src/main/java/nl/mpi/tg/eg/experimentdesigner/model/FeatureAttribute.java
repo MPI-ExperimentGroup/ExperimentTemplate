@@ -33,6 +33,8 @@ public enum FeatureAttribute {
     fieldName,
     parameterName,
     linkedFieldName,
+    oneToMany,
+    daysThresholds,
     code,
     //    tags,  // todo: consider updating some elements to take a tags attribute rather than a stimuli element
     codeFormat,
