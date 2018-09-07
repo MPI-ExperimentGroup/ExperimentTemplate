@@ -70,7 +70,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat" styleName="styleName"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -132,7 +131,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat" styleName="styleName"/>
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="plainText in multipleUsers"/>
@@ -1318,7 +1316,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat" styleName="styleName"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -1382,7 +1379,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat" styleName="styleName"/>
         <kinTypeStringDiagram msToNext="60" kintypestring="kintypestring">
             <plainText featureText="plainText in kinTypeStringDiagram"/>
         </kinTypeStringDiagram>
@@ -1441,7 +1437,6 @@
         <activateRandomItem/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat" styleName="styleName"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -1490,7 +1485,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat" styleName="styleName"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -1530,7 +1524,6 @@
         <centrePage/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat" styleName="styleName"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -1577,7 +1570,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat" styleName="styleName"/>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -1651,7 +1643,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat"/>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
@@ -1713,7 +1704,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat"/>
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="plainText in multipleUsers"/>
@@ -2899,7 +2889,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat"/>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
@@ -2963,7 +2952,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat"/>
         <kinTypeStringDiagram msToNext="60" kintypestring="kintypestring">
             <plainText featureText="plainText in kinTypeStringDiagram"/>
         </kinTypeStringDiagram>
@@ -3022,7 +3010,6 @@
         <activateRandomItem/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat"/>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
@@ -3071,7 +3058,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat"/>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
@@ -3111,7 +3097,6 @@
         <centrePage/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat"/>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
@@ -3158,7 +3143,6 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <timerLabel msToNext="60" listenerId="listenerId" msLabelFormat="msLabelFormat"/>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
