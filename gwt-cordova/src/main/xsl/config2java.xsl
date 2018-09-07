@@ -509,6 +509,7 @@ or local-name() eq 'removeStimulus'
         <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else ''" />
         <xsl:value-of select="if(@oneToMany) then concat(', ', @oneToMany eq 'true') else ''" />    
         <xsl:value-of select="if(@sendData) then concat(', ', @sendData eq 'true') else ''" />    
+        <xsl:value-of select="if(@matchingRegex and @linkedFieldName) then ', ' else ''" />
         <xsl:value-of select="if(@matchingRegex) then concat('&quot;', @matchingRegex, '&quot;') else ''" />
         <xsl:if test="@daysThresholds">
             <xsl:text>, new int[]{</xsl:text>
