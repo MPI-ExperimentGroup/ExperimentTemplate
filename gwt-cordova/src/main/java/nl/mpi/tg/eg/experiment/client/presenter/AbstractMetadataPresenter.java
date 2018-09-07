@@ -206,7 +206,18 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void metadataFieldConnection(final MetadataField metadataField, final MetadataField metadataFieldOther) {
+    protected void metadataFieldConnection(final MetadataField metadataField, final MetadataField metadataFieldOther, final boolean oneToMany) {
+        // todo: oneToMany determines cardinality so that when the field is populated another will be offered so that lists of data can be entered for a given field
+        ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel(), localStorage.getUserIdList(metadataFieldOther), userResults.getUserData().getUserId());
+    }
+
+    protected void metadataFieldVisibilityDependant(final MetadataField metadataField, final MetadataField metadataFieldOther, final String matchingRegex) {
+        // todo: metadataFieldDependant fields are only shown when the linkedFieldName matches the matchingRegex
+        ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel(), localStorage.getUserIdList(metadataFieldOther), userResults.getUserData().getUserId());
+    }
+
+    protected void metadataFieldDateTriggered(final MetadataField metadataField, final MetadataField metadataFieldOther, final int[] daysThresholds) {
+        // todo: daysThresholds indicates the index that should be selected based on the day age from metadataFieldOther
         ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel(), localStorage.getUserIdList(metadataFieldOther), userResults.getUserData().getUserId());
     }
 
