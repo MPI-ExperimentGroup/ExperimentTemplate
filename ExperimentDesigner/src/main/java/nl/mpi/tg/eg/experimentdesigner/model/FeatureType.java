@@ -71,10 +71,24 @@ public enum FeatureType {
     //    endOfStimulusButton(false, true, new FeatureAttribute[]{eventTag, target}),
     addPadding(false, false, null),
     localStorageData(false, false, null),
+    // metadataField fields:
+    //    displays all or one metadata field for data entry
     allMetadataFields(false, false, null),
     metadataField(false, false, new FeatureAttribute[]{fieldName}),
+    // metadataField stimulus fields:
+    //    a metadata field is available for each stimulus
     stimulusMetadataField(false, false, new FeatureAttribute[]{fieldName, dataChannel}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    metadataFieldConnection(false, false, new FeatureAttribute[]{fieldName, linkedFieldName}),
+    // metadataField linking fields:
+    //    which make a connection between entities
+    //    which allow data entry to describe the connection between entities
+    //    linkedFieldName is perhaps ambugious since suggests it is the link, but it is the label field for the linked entity
+    metadataFieldConnection(false, false, new FeatureAttribute[]{fieldName, linkedFieldName, oneToMany}), // oneToMany determines cardinality so that when the field is populated another will be offered so that lists of data can be entered for a given field
+    // metadataField linked fields:
+    //    when one value determines the default value of the other
+    //    when one value determines the pressence of the other
+    metadataFieldVisibilityDependant(false, false, new FeatureAttribute[]{fieldName, linkedFieldName, matchingRegex}), // metadataFieldDependant fields are only shown when the linkedFieldName matches the matchingRegex
+    metadataFieldDateTriggered(false, false, new FeatureAttribute[]{fieldName, linkedFieldName, daysThresholds}), // the daysThresholds is a list of values trigger the selection of the item index of this metadataField based on the calculated age in days from linkedFieldName
+
     saveMetadataButton(false, true, new FeatureAttribute[]{sendData, networkErrorMessage}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
     createUserButton(false, true, new FeatureAttribute[]{target}),
     selectUserMenu(false, false, null),
@@ -84,6 +98,7 @@ public enum FeatureType {
     enableStimulusButtons(false, false, null),
     disableStimulusButtons(false, false, null),
     cancelPauseTimers(false, false, null),
+    cancelPauseAll(false, false, null), // pause all playing media, cancel all timers and cancel all current on media load events
     showStimulusProgress(false, false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     hideStimulusButtons(false, false, null),
     showStimulusButtons(false, false, null),
