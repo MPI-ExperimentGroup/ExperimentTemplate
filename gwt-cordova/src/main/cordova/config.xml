@@ -49,13 +49,20 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    <!--<preference name="windows-target-version" value="10.0" />-->
     <preference name="Fullscreen" value="true" />
+    <!--<preference name="Orientation" value="landscape" />-->
+    <!--<preference name="KeepRunning" value="true"/>-->
     <preference name="DisallowOverscroll" value="true" />
     <preference name="BackupWebStorage" value="none"/>
     <allow-navigation href="http://ems12.mpi.nl/*"/>
     <allow-navigation href="http://ems13.mpi.nl/*"/>
+    <allow-navigation href="https://frinexstaging.mpi.nl/*"/>
+    <allow-navigation href="https://frinexproduction.mpi.nl/*"/>
     <allow-navigation href="http://corpus1.mpi.nl/*"/>
     <access origin="http://ems12.mpi.nl"/>
     <access origin="http://ems13.mpi.nl"/>
+    <access origin="https://frinexstaging.mpi.nl"/>
+    <access origin="https://frinexproduction.mpi.nl"/>
     <access origin="http://corpus1.mpi.nl"/>
 </widget>
