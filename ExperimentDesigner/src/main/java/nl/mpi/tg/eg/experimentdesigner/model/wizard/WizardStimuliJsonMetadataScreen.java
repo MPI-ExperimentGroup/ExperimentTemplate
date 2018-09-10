@@ -143,6 +143,7 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
             final PresenterFeature metadataField = new PresenterFeature((metadata.getPostName().startsWith("connection")) ? FeatureType.metadataFieldConnection : FeatureType.stimulusMetadataField, null);
             if (metadata.getPostName().startsWith("connection")) {
                 metadataField.addFeatureAttributes(FeatureAttribute.linkedFieldName, "workerId");
+                metadataField.addFeatureAttributes(FeatureAttribute.oneToMany, "true");
             }
             metadataField.addFeatureAttributes(FeatureAttribute.fieldName, metadata.getPostName());
             final PresenterFeature presenterFeatureColumn = new PresenterFeature(FeatureType.column, null);
