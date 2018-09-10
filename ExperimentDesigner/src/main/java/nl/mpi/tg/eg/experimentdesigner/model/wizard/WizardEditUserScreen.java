@@ -149,6 +149,7 @@ public class WizardEditUserScreen extends AbstractWizardScreen {
             final PresenterFeature metadataField = new PresenterFeature((metadata.getPostName().startsWith("connection")) ? FeatureType.metadataFieldConnection : FeatureType.metadataField, null);
             if (metadata.getPostName().startsWith("connection")) {
                 metadataField.addFeatureAttributes(FeatureAttribute.linkedFieldName, "workerId");
+                metadataField.addFeatureAttributes(FeatureAttribute.oneToMany, "true");
             }
             metadataField.addFeatureAttributes(FeatureAttribute.fieldName, metadata.getPostName());
             storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(metadataField);
