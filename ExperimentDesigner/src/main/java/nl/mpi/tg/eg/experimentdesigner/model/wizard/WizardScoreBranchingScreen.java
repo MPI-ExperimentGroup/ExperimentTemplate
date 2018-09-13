@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experimentdesigner.model.wizard;
 
 import nl.mpi.tg.eg.experimentdesigner.model.Experiment;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
+import nl.mpi.tg.eg.experimentdesigner.model.Metadata;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterFeature;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterScreen;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
@@ -57,14 +58,20 @@ public class WizardScoreBranchingScreen extends AbstractWizardScreen {
         return new String[]{}[index];
     }
 
-    final public void setBranchOnScoreBelow(int branchOnGetParam, String targetScreen) {
+    final public void setStartingSet(int scoreThreshold, String targetScreen, String fieldName) {
         this.wizardScreenData.setScreenText(0, targetScreen);
-        this.wizardScreenData.setScreenIntegers(0, branchOnGetParam);
+        this.wizardScreenData.setScreenText(1, fieldName);
+        this.wizardScreenData.setScreenIntegers(0, scoreThreshold);
     }
 
-    final public void setBranchOnScoreAbove(int branchOnGetParam, String targetScreen) {
-        this.wizardScreenData.setScreenText(1, targetScreen);
-        this.wizardScreenData.setScreenIntegers(1, branchOnGetParam);
+    final public void setExitSet(int scoreThreshold, String targetScreen, String fieldName) {
+        this.wizardScreenData.setScreenText(2, targetScreen);
+        this.wizardScreenData.setScreenText(3, fieldName);
+        this.wizardScreenData.setScreenIntegers(1, scoreThreshold);
+    }
+
+    final public void setStimuliLabel(String setStimuliLabel) {
+        this.wizardScreenData.setScreenText(4, setStimuliLabel);
     }
 
     public void addTargetScreen(final AbstractWizardScreen targetScreen) {
@@ -104,26 +111,32 @@ public class WizardScoreBranchingScreen extends AbstractWizardScreen {
                 + "playerGamesPlayed:"
                 + "<playerGamesPlayed>"
         );
-        PresenterFeature withinThreshold = null;
-        if (storedWizardScreenData.getScreenText(1) != null) {
-            final PresenterFeature maxScoreAboveThreshold = storedWizardScreenData.getPresenterScreen().addFeature(FeatureType.bestScoreAboveThreshold, null, Integer.toString(storedWizardScreenData.getScreenInteger(1)), null, null, null, null);
-            final PresenterFeature scoreAboveThreshold = maxScoreAboveThreshold.addFeature(FeatureType.aboveThreshold, null).addFeature(FeatureType.scoreAboveThreshold, null, null, Integer.toString(storedWizardScreenData.getScreenInteger(1)), null, null, null);
-            final PresenterFeature aboveThreshold = scoreAboveThreshold.addFeature(FeatureType.aboveThreshold, null);
-            aboveThreshold.addFeature(FeatureType.clearCurrentScore, null);
-            aboveThreshold.addFeature(FeatureType.gotoPresenter, null, cleanScreenTag(storedWizardScreenData.getScreenText(1)));
-            scoreAboveThreshold.addFeature(FeatureType.withinThreshold, null).addFeatures(FeatureType.clearCurrentScore, FeatureType.gotoNextPresenter);
-            withinThreshold = maxScoreAboveThreshold.addFeature(FeatureType.withinThreshold, null);
-        }
+        String loggedValue = (storedWizardScreenData.getScreenText(4) != null) ? storedWizardScreenData.getScreenText(4) : storedWizardScreenData.getScreenTitle();
         if (storedWizardScreenData.getScreenText(0) != null) {
-            final PresenterFeature scoreAboveThreshold = ((withinThreshold == null) ? storedWizardScreenData.getPresenterScreen() : withinThreshold).addFeature(FeatureType.scoreAboveThreshold, null, null, Integer.toString(storedWizardScreenData.getScreenInteger(0)), null, null, null);
-            final PresenterFeature aboveThreshold = scoreAboveThreshold.addFeature(FeatureType.aboveThreshold, null);
-            aboveThreshold.addFeature(FeatureType.clearCurrentScore, null);
-            aboveThreshold.addFeature(FeatureType.gotoPresenter, null, cleanScreenTag(storedWizardScreenData.getScreenText(0)));
-            withinThreshold = scoreAboveThreshold.addFeature(FeatureType.withinThreshold, null);
-        }
-        if (withinThreshold != null) {
-            withinThreshold.addFeature(FeatureType.clearCurrentScore, null);
-            withinThreshold.addFeature(FeatureType.gotoNextPresenter, null);
+            final String postNameStart = cleanScreenTag(storedWizardScreenData.getScreenText(1));
+            wizardScreenData.getMetadataFields().add(new Metadata(postNameStart, postNameStart, null, null, false, null));
+
+            final PresenterFeature hasMetadataValue = storedWizardScreenData.getPresenterScreen().addFeature(FeatureType.hasMetadataValue, null, postNameStart, ".*");
+            final PresenterFeature hasMetadataValueTrue = hasMetadataValue.addFeature(FeatureType.conditionTrue, null);
+            final PresenterFeature hasMetadataValueFalse = hasMetadataValue.addFeature(FeatureType.conditionFalse, null);
+
+            final PresenterFeature minimumScoreThreshold = hasMetadataValueFalse.addFeature(FeatureType.scoreAboveThreshold, null, Integer.toString(storedWizardScreenData.getScreenInteger(0)), null, null, null, null);
+            final PresenterFeature minimumScoreAboveThreshold = minimumScoreThreshold.addFeature(FeatureType.aboveThreshold, null);
+            minimumScoreAboveThreshold.addFeature(FeatureType.setMetadataValue, null, postNameStart, loggedValue);
+            final PresenterFeature minimumWithinThreshold = minimumScoreThreshold.addFeature(FeatureType.withinThreshold, null);
+            minimumWithinThreshold.addFeature(FeatureType.clearCurrentScore, null);
+            minimumWithinThreshold.addFeature(FeatureType.gotoPresenter, null, cleanScreenTag(storedWizardScreenData.getScreenText(0)));
+            if (storedWizardScreenData.getScreenText(3) != null) {
+                final String postNameExit = cleanScreenTag(storedWizardScreenData.getScreenText(3));
+                wizardScreenData.getMetadataFields().add(new Metadata(postNameExit, postNameExit, null, null, false, null));
+                
+                final PresenterFeature maximumErrorThreshold = hasMetadataValueTrue.addFeature(FeatureType.scoreAboveThreshold, null, null, Integer.toString(storedWizardScreenData.getScreenInteger(1)), null, null, null);
+                maximumErrorThreshold.addFeature(FeatureType.withinThreshold, null).addFeatures(FeatureType.clearCurrentScore, FeatureType.gotoNextPresenter);
+                final PresenterFeature maximumErrorAboveThreshold = maximumErrorThreshold.addFeature(FeatureType.aboveThreshold, null);
+                maximumErrorAboveThreshold.addFeature(FeatureType.setMetadataValue, null, postNameExit, loggedValue);
+                maximumErrorAboveThreshold.addFeature(FeatureType.clearCurrentScore, null);
+                maximumErrorAboveThreshold.addFeature(FeatureType.gotoPresenter, null, cleanScreenTag(storedWizardScreenData.getScreenText(2)));
+            }
         }
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
         return new PresenterScreen[]{storedWizardScreenData.getPresenterScreen()};
