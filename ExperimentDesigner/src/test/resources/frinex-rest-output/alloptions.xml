@@ -200,6 +200,15 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <hasMetadataValue fieldName="workerId" matchingRegex="matchingRegex">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasMetadataValue>
+        <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat"/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
         <preloadAllStimuli tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ">
@@ -1190,6 +1199,15 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <hasMetadataValue fieldName="workerId" matchingRegex="matchingRegex">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasMetadataValue>
+        <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat"/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
         <audioButton eventTag="eventTag" src="src" hotKey="A" styleName="styleName" dataChannel="2" autoPlay="true" poster="poster">
@@ -1773,6 +1791,15 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <hasMetadataValue fieldName="workerId" matchingRegex="matchingRegex">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasMetadataValue>
+        <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat"/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
         <preloadAllStimuli tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ">
@@ -2763,6 +2790,15 @@
                 <plainText featureText="plainText in conditionFalse"/>
             </conditionFalse>
         </hasGetParameter>
+        <hasMetadataValue fieldName="workerId" matchingRegex="matchingRegex">
+            <conditionTrue>
+                <plainText featureText="plainText in conditionTrue"/>
+            </conditionTrue>
+            <conditionFalse>
+                <plainText featureText="plainText in conditionFalse"/>
+            </conditionFalse>
+        </hasMetadataValue>
+        <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat"/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
         <audioButton eventTag="eventTag" src="src" autoPlay="true" poster="poster">
