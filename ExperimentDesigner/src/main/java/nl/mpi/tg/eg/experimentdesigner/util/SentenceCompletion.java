@@ -279,11 +279,14 @@ public class SentenceCompletion {
 //                    branchingScreenName += value;
 //                }
                 WizardScoreBranchingScreen branchingScreen = new WizardScoreBranchingScreen(branchingScreenName, branchingScreenName, branchingScreenName);
-                if (screenData.getScoreBranching().length > 1) {
-                    branchingScreen.setBranchOnScoreBelow(Integer.parseInt(screenData.getScoreBranching()[0]), screenData.getScoreBranching()[1]);
+                if (stimuliData != null) {
+                branchingScreen.setStimuliLabel(stimuliData.getStimuliName());
                 }
-                if (screenData.getScoreBranching().length > 3) {
-                    branchingScreen.setBranchOnScoreAbove(Integer.parseInt(screenData.getScoreBranching()[2]), screenData.getScoreBranching()[3]);
+                if (screenData.getScoreBranching().length > 2) {
+                    branchingScreen.setStartingSet(Integer.parseInt(screenData.getScoreBranching()[0]), screenData.getScoreBranching()[1], screenData.getScoreBranching()[2]);
+                }
+                if (screenData.getScoreBranching().length > 5) {
+                    branchingScreen.setExitSet(Integer.parseInt(screenData.getScoreBranching()[3]), screenData.getScoreBranching()[4], screenData.getScoreBranching()[5]);
                 }
                 wizardData.addScreen(branchingScreen);
                 if (lastScreen != null) {
