@@ -123,6 +123,8 @@ public enum FeatureType {
     nextMatchingStimulus(false, false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     addKinTypeGui(false, false, new FeatureAttribute[]{diagramName}),
     hasGetParameter(false, false, new FeatureAttribute[]{parameterName}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.none),
+    hasMetadataValue(false, false, new FeatureAttribute[]{fieldName, matchingRegex}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.none),
+    setMetadataValue(false, false, new FeatureAttribute[]{fieldName, dataLogFormat}, false, false, false, Contitionals.none, Contitionals.none),
     activateRandomItem(false, false, new FeatureAttribute[]{}),
     gotoPresenter(false, false, new FeatureAttribute[]{target}),
     gotoNextPresenter(false, false, new FeatureAttribute[]{}),
