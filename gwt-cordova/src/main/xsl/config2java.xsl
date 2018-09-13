@@ -470,7 +470,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="showStimuliReport|sendStimuliReport|logTokenText|htmlTokenText|submitGroupEvent|helpDialogue|eraseUsersDataButton|saveMetadataButton|localStorageData|stimulusMetadataField|allMetadataFields|metadataField|metadataFieldConnection|metadataFieldVisibilityDependant|metadataFieldDateTriggered|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|cancelPauseAll|cancelPauseTimers|disableStimulusButtons|showStimulus|showStimulusProgress|hideStimulusButtons|showStimulusButtons|displayCompletionCode|generateCompletionCode|sendAllData|sendMetadata|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|removeMatchingStimulus|stimulusLabel">
+    <xsl:template match="setMetadataValue|hasMetadataValue|showStimuliReport|sendStimuliReport|logTokenText|htmlTokenText|submitGroupEvent|helpDialogue|eraseUsersDataButton|saveMetadataButton|localStorageData|stimulusMetadataField|allMetadataFields|metadataField|metadataFieldConnection|metadataFieldVisibilityDependant|metadataFieldDateTriggered|eraseLocalStorageButton|showCurrentMs|enableStimulusButtons|cancelPauseAll|cancelPauseTimers|disableStimulusButtons|showStimulus|showStimulusProgress|hideStimulusButtons|showStimulusButtons|displayCompletionCode|generateCompletionCode|sendAllData|sendMetadata|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|removeMatchingStimulus|stimulusLabel">
         <xsl:text>    </xsl:text>     
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
@@ -509,7 +509,7 @@ or local-name() eq 'removeStimulus'
         <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else ''" />
         <xsl:value-of select="if(@oneToMany) then concat(', ', @oneToMany eq 'true') else ''" />    
         <xsl:value-of select="if(@sendData) then concat(', ', @sendData eq 'true') else ''" />    
-        <xsl:value-of select="if(@matchingRegex and @linkedFieldName) then ', ' else ''" />
+        <xsl:value-of select="if(@matchingRegex and (@linkedFieldName or @fieldName)) then ', ' else ''" />
         <xsl:value-of select="if(@matchingRegex) then concat('&quot;', @matchingRegex, '&quot;') else ''" />
         <xsl:if test="@daysThresholds">
             <xsl:text>, new int[]{</xsl:text>
@@ -536,6 +536,8 @@ or local-name() eq 'removeStimulus'
         <xsl:value-of select="if(local-name() eq 'sendAllData' or local-name() eq 'sendMetadata') then 'null' else ''" />   
         <xsl:value-of select="if(local-name() eq 'saveMetadataButton') then concat(', messages.errorMessage', generate-id(.), '()') else ''" />
         <xsl:value-of select="if(local-name() eq 'helpDialogue') then concat(', messages.closeButtonLabel', generate-id(.), '()') else ''" />
+        <xsl:apply-templates select="conditionTrue" />
+        <xsl:apply-templates select="conditionFalse" />
         <xsl:apply-templates select="onError" />        
         <xsl:apply-templates select="onSuccess" />
         <xsl:text>);
