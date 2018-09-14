@@ -123,6 +123,8 @@ public class WizardScoreBranchingScreen extends AbstractWizardScreen {
             final PresenterFeature minimumScoreThreshold = hasMetadataValueFalse.addFeature(FeatureType.scoreAboveThreshold, null, Integer.toString(storedWizardScreenData.getScreenInteger(0)), null, null, null, null);
             final PresenterFeature minimumScoreAboveThreshold = minimumScoreThreshold.addFeature(FeatureType.aboveThreshold, null);
             minimumScoreAboveThreshold.addFeature(FeatureType.setMetadataValue, null, postNameStart, loggedValue);
+            minimumScoreAboveThreshold.addFeature(FeatureType.clearCurrentScore, null);
+            minimumScoreAboveThreshold.addFeature(FeatureType.gotoNextPresenter, null);
             final PresenterFeature minimumWithinThreshold = minimumScoreThreshold.addFeature(FeatureType.withinThreshold, null);
             minimumWithinThreshold.addFeature(FeatureType.clearCurrentScore, null);
             minimumWithinThreshold.addFeature(FeatureType.gotoPresenter, null, cleanScreenTag(storedWizardScreenData.getScreenText(0)));
