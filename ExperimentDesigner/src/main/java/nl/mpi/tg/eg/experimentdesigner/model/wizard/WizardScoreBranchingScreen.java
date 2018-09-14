@@ -129,13 +129,18 @@ public class WizardScoreBranchingScreen extends AbstractWizardScreen {
             if (storedWizardScreenData.getScreenText(3) != null) {
                 final String postNameExit = cleanScreenTag(storedWizardScreenData.getScreenText(3));
                 wizardScreenData.getMetadataFields().add(new Metadata(postNameExit, postNameExit, null, null, false, null));
-                
+
                 final PresenterFeature maximumErrorThreshold = hasMetadataValueTrue.addFeature(FeatureType.scoreAboveThreshold, null, null, Integer.toString(storedWizardScreenData.getScreenInteger(1)), null, null, null);
                 maximumErrorThreshold.addFeature(FeatureType.withinThreshold, null).addFeatures(FeatureType.clearCurrentScore, FeatureType.gotoNextPresenter);
                 final PresenterFeature maximumErrorAboveThreshold = maximumErrorThreshold.addFeature(FeatureType.aboveThreshold, null);
                 maximumErrorAboveThreshold.addFeature(FeatureType.setMetadataValue, null, postNameExit, loggedValue);
                 maximumErrorAboveThreshold.addFeature(FeatureType.clearCurrentScore, null);
                 maximumErrorAboveThreshold.addFeature(FeatureType.gotoPresenter, null, cleanScreenTag(storedWizardScreenData.getScreenText(2)));
+            }
+        }
+        for (Metadata metadataField : wizardScreenData.getMetadataFields()) {
+            if (!experiment.getMetadata().contains(metadataField)) {
+                experiment.getMetadata().add(metadataField);
             }
         }
         experiment.getPresenterScreen().add(storedWizardScreenData.getPresenterScreen());
