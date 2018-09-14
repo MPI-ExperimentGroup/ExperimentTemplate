@@ -355,6 +355,24 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         matchingStimuliGroup.showNextStimulus(stimulusProvider);
     }
 
+    public void hasMetadataValue(MetadataField metadataField, final String matchingRegex, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse) {
+        final String valueString = userResults.getUserData().getMetadataValue(metadataField);
+        if (valueString.matches(matchingRegex)) {
+            conditionTrue.postLoadTimerFired();
+        } else {
+            conditionFalse.postLoadTimerFired();
+        }
+    }
+
+    public void setMetadataValue(MetadataField metadataField, final String dataLogFormat) {
+        setMetadataValue(null, metadataField, dataLogFormat);
+    }
+
+    public void setMetadataValue(final Stimulus currentStimulus, MetadataField metadataField, final String dataLogFormat) {
+        userResults.getUserData().setMetadataValue(metadataField, new HtmlTokenFormatter(currentStimulus, groupParticipantService, userResults.getUserData(), timerService).formatString(dataLogFormat));
+        localStorage.storeData(userResults, metadataFieldProvider);
+    }
+
     public void logTokenText(final Stimulus currentStimulus, final String reportType, final String headerKey, final int dataChannel, final String dataLogFormat) {
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, reportType, headerKey, new HtmlTokenFormatter(currentStimulus, groupParticipantService, userResults.getUserData(), timerService).formatString(dataLogFormat), duration.elapsedMillis());
     }
