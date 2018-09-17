@@ -136,10 +136,10 @@ public class GuineaPigProject {
             //@todo: blank screen with audio 1
             //@todo: videos and audio 2
             //@todo: still of video and audio 3 with touch input can be collected during audio 1 2 and 3, touch input does not cause any action, only the remote can move to the next stimulus
-            {{{"Room 1", "zoomToBlock1", "room_1", "Set_1"}, {}}, {{"test_1", "adjacency_a"}, {"test_8", "adjacency_b"}, {"filler_1", "filler_1"}}},
-            {{{"Room 2", "zoomToBlock2", "room_2", "Set_2"}, {}}, {{"test_3", "adjacency_c"}, {"test_2", "adjacency_d"}, {"filler_3", "filler_3"}}},
-            {{{"Room 3", "zoomToBlock3", "room_3", "Set_3"}, {}}, {{"test_4", "adjacency_a"}, {"test_5", "adjacency_b"}, {"filler_2", "filler_2"}}},
-            {{{"Room 4", "zoomToBlock4", "room_4", "Set_4"}, {}}, {{"test_6", "adjacency_c"}, {"test_7", "adjacency_d"}, {"filler_4", "filler_4"}}},};
+            {{{"Room 1", "zoomToBlock1", "room_1", "Set_1"}, {}}, {{"test_1", "adjacency_a", "test_1_L"}, {"test_8", "adjacency_b", "test_8_L"}, {"filler_1", "filler_1"}}},
+            {{{"Room 2", "zoomToBlock2", "room_2", "Set_2"}, {}}, {{"test_3", "adjacency_c", "test_3_L"}, {"test_2", "adjacency_d", "test_2_L"}, {"filler_3", "filler_3"}}},
+            {{{"Room 3", "zoomToBlock3", "room_3", "Set_3"}, {}}, {{"test_4", "adjacency_a", "test_4_L"}, {"test_5", "adjacency_b", "test_5_L"}, {"filler_2", "filler_2"}}},
+            {{{"Room 4", "zoomToBlock4", "room_4", "Set_4"}, {}}, {{"test_6", "adjacency_c", "test_6_L"}, {"test_7", "adjacency_d", "test_7_L"}, {"filler_4", "filler_4"}}},};
         String[][] trainingList = new String[][]{
             {"training_1", "training_1"}, {"training_2", "training_2"}, {"training_3", "training_3"}, {"training_4", "training_4"}
         };
@@ -176,6 +176,7 @@ public class GuineaPigProject {
             final WizardGridStimulusScreen testStimulusScreen = new WizardGridStimulusScreen(testSubList[0][0][0], false, testSubList[1],
                     null, 1000, false, null, 0, 0, null, "allRooms", testSubList[0][0][3]);
             testStimulusScreen.setCodeAudio(true);
+            testStimulusScreen.setCorrectAudio("Correct");
             testStimulusScreen.setBackgroundImage(backgroundImage);
             testStimulusScreen.setBackgroundStyle(testSubList[0][0][1]);
             testStimulusScreen.setIntroAudio(testSubList[0][0][2]);
