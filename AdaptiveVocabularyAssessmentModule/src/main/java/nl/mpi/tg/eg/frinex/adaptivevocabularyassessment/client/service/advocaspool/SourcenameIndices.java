@@ -75,9 +75,8 @@ public class SourcenameIndices {
         StringBuilder htmlStringBuilder = new StringBuilder();
         switch (lang) {
             case "NL": {
-                htmlStringBuilder.append("<p>Overzicht van uw resultaten:</p>");
                 //htmlStringBuilder.append("<p><small>(Scroll om volledig resultaten te bekijken als dat nodig is.)</small></p>");
-                htmlStringBuilder.append("<p>U kent ongeveer <big><big><b>").append(percentage).append("</b></big></big> &#37; van alle Nederlandse woorden.</p>");
+                htmlStringBuilder.append("<p>Overzicht van uw resultaten: U kent ongeveer <big><big><b>").append(percentage).append("</b></big></big> &#37; van alle Nederlandse woorden.</p>");
                 break;
             }
             default: {
