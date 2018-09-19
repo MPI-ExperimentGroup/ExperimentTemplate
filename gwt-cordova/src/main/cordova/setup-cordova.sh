@@ -32,6 +32,18 @@ cordova platform add android
 #cordova plugin install org.apache.cordova.labs.keyboard
 #cordova plugin add https://github.com/GetJobber/cordova-plugin-keyboard.git
 
+#export PATH=${PATH}:/Users/petwit/Library/Android/sdk/platform-tools:/Users/petwit/Library/Android/sdk/tools
+#export ANDROID_HOME=/Users/petwit/Library/Android/sdk
+
+
+#export PATH=$PATH:/usr/local/bin
+#export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+#launchctl setenv STUDIO_JDK /library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk
+#export ANDROID_HOME="/Users/petwit/Library/Android/sdk"
+#export ANDROID_TOOLS="/Users/petwit/Library/Android/sdk/tools"
+#export ANDROID_PLATFORM_TOOLS="/Users/petwit/Library/Android/sdk/platform-tools"
+#PATH=$PATH:$ANDROID_HOME:$ANDROID_TOOLS:$ANDROID_PLATFORM_TOOLS
+
 
 cordova plugin add ../../../FieldKitRecorder/
 cordova plugin add cordova-plugin-file
@@ -127,11 +139,12 @@ cordova build android --buildConfig ~/android-keys/frinex-build.json --release
 #xcodebuild -scheme YOURSCHEMENAME -project MyApp.xcodeproj -alltargets -sdk iphoneos7.0 PROVISIONING_PROFILE="PROFILE_UUID.mobileprovision" -configuration Release
 
 pwd
-cp platforms/android/build/outputs/apk/android-release.apk ~/Desktop/FrinexAPKs/$appname.apk
-cp -r platforms/android ~/Desktop/FrinexAPKs/$appname-android
+#cp platforms/android/build/outputs/apk/android-release.apk ~/Desktop/FrinexAPKs/$appname.apk
+cp platforms/android/build/outputs/apk/android-release.apk android-release.apk
+#cp -r platforms/android ~/Desktop/FrinexAPKs/$appname-android
 
 #echo "installing on Android"
-adb install -r platforms/android/build/outputs/apk/android-release.apk
+#adb install -r platforms/android/build/outputs/apk/android-release.apk
 
 #echo "launching xcode"
 #open platforms/ios/LingQuest.xcodeproj&
@@ -165,3 +178,6 @@ find .. -iname *.apk
 # list the IPA files that have been built
 find .. -iname *.ipa
 
+
+# allow other users (outside the docker image) to modify the resulting files in target, eg mvn clean 
+chmod -R a+rwx "$(dirname "$0")"
