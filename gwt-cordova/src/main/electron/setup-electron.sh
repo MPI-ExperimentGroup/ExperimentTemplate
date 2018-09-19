@@ -32,3 +32,6 @@ electron-forge make --platform=win32
 #cp out/make/*linux*.zip ../@experiment.configuration.name@-linux.zip
 #cp out/make/*win32*.zip ../@experiment.configuration.name@-win32.zip
 #cp out/make/*darwin*.zip ../@experiment.configuration.name@-darwin.zip
+
+# allow other users (outside the docker image) to modify the resulting files in target, eg mvn clean 
+chmod -R a+rwx "$(dirname "$0")"
