@@ -8,7 +8,15 @@ appname=@experiment.configuration.name@-@project.artifactId@-@project.version@
 rm -rf $appname-cordova
 unzip $appname-cordova.zip -d $appname-cordova
 cd $appname-cordova
-bash ../generate-icons.sh
+#bash ../generate-icons.sh
+
+if [ -f src/static/icon.png ];
+then
+    cp src/static/icon.png ./icon.png
+else
+    echo "icon.png not found";
+    exit 1
+fi
 
 /usr/bin/npm config set prefix '/srv/ExperimentTemplate/.npm-global'
 PATH=/srv/ExperimentTemplate/.npm-global/bin:$PATH
@@ -45,7 +53,7 @@ cordova platform add android
 #PATH=$PATH:$ANDROID_HOME:$ANDROID_TOOLS:$ANDROID_PLATFORM_TOOLS
 
 
-cordova plugin add ../../../FieldKitRecorder/
+cordova plugin add /FieldKitRecorder/
 cordova plugin add cordova-plugin-file
 #cordova plugin add cordova-plugin-statusbar
 cordova plugin add cordova-plugin-fullscreen 
