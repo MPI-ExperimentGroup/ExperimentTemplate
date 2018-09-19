@@ -24,8 +24,8 @@ pwd
 
 cp -r /init-setup-project/node_modules /target/$appname-electron/
 
-electron-forge make --platform=linux --arch=x64
-electron-forge make --platform=linux --arch=ia32
+#electron-forge make --platform=linux --arch=x64
+#electron-forge make --platform=linux --arch=ia32
 electron-forge make --platform=darwin
 # the win32 target requires wine mono-devel to be available on the build server
 electron-forge make --platform=win32
