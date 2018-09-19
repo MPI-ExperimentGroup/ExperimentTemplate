@@ -22,6 +22,8 @@ pwd
 #cd $appname
 #electron-forge package --platform=win32 --arch=x64
 
+cp -r /init-setup-project/node_modules /target/$appname-electron/
+
 electron-forge make --platform=linux --arch=x64
 electron-forge make --platform=linux --arch=ia32
 electron-forge make --platform=darwin
