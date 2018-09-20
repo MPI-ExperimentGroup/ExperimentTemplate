@@ -14,6 +14,7 @@ ls
 #PATH=/srv/ExperimentTemplate/.npm-global/bin:$PATH
 #npm install -g electron-forge 
 #npm install electron-compile
+npm install express
 #npm install
 pwd
 #ls /srv/ExperimentTemplate/gwt-cordova/target/with_simulus_example-frinex-gui-1.1-stable-SNAPSHOT-electron/node_modules/
