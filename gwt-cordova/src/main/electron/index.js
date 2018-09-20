@@ -9,7 +9,8 @@ const createWindow = () => {
         height: 600,
     });
 
-    app.use('/', express.static(__dirname))
+    app.use('/', express.static(__dirname));
+    app.listen(5000);
     mainWindow.loadURL(`http://localhost:5000/index.html`);
 
     mainWindow.webContents.openDevTools();
