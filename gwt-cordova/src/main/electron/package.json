@@ -1,7 +1,7 @@
 {
   "name": "@experiment.configuration.name@",
   "productName": "@experiment.configuration.name@-@project.artifactId@",
-  "version": "@project.version@",
+  "version": "@application.majorVersion@.@application.minorVersion@.@application.buildVersion@",
   "description": "@experiment.configuration.name@",
   "main": "src/index.js",
   "scripts": {
@@ -35,10 +35,6 @@
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
-      "github_repository": {
-        "owner": "",
-        "name": ""
-      },
       "windowsStoreConfig": {
         "packageName": "@experiment.configuration.name@",
         "name": "@experiment.configuration.name@"
@@ -46,7 +42,9 @@
     }
   },
   "dependencies": {
-    "express": "^4.16.3"
+    "electron-compile": "^6.4.3",
+    "express": "^4.16.3",
+    "require-rebuild": "^1.2.8"
   },
   "devDependencies": {
     "electron-forge": "^5.2.2",
