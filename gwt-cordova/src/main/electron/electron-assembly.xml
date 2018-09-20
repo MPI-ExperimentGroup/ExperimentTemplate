@@ -36,6 +36,7 @@
                 <include>/css/**</include>
                 <include>/scss/**</include>
                 <include>/static/**</include>
+                <include>/opus-recorder/**</include>
                 <include>/${experiment.configuration.name}.xml</include>
             </includes>  
             <outputDirectory>src</outputDirectory>
