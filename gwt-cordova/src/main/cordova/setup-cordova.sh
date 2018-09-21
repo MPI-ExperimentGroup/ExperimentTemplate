@@ -10,9 +10,9 @@ unzip $appname-cordova.zip -d $appname-cordova
 cd $appname-cordova
 #bash ../generate-icons.sh
 
-if [ -f src/static/icon.png ];
+if [ -f www/static/icon.png ];
 then
-    cp src/static/icon.png ./icon.png
+    cp www/static/icon.png ./icon.png
 else
     echo "icon.png not found";
     exit 1
