@@ -13,7 +13,7 @@ const createWindow = () => {
     app.listen(5000);
     mainWindow.loadURL(`http://localhost:5000/index.html`);
 
-    mainWindow.webContents.openDevTools();
+//    mainWindow.webContents.openDevTools();
 
     mainWindow.on('closed', () => {
         mainWindow = null;
