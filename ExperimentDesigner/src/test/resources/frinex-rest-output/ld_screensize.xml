@@ -699,17 +699,17 @@
         <stimulus audioPath="training_2" code="training_2" identifier="training_2" imagePath="training_2" pauseMs="0" tags="Training"/>
         <stimulus audioPath="training_3" code="training_3" identifier="training_3" imagePath="training_3" pauseMs="0" tags="Training"/>
         <stimulus audioPath="training_4" code="training_4" identifier="training_4" imagePath="training_4" pauseMs="0" tags="Training"/>
-        <stimulus audioPath="test_1" code="test_1" correctResponses="test_1_L" identifier="test_1" imagePath="adjacency_a" pauseMs="0" tags="Room_1 Set_1 allRooms"/>
+        <stimulus audioPath="test_1" code="test_1" correctResponses="test_1_R" identifier="test_1" imagePath="adjacency_a" pauseMs="0" tags="Room_1 Set_1 allRooms"/>
         <stimulus audioPath="test_8" code="test_8" correctResponses="test_8_L" identifier="test_8" imagePath="adjacency_b" pauseMs="0" tags="Room_1 Set_1 allRooms"/>
-        <stimulus audioPath="filler_1" code="filler_1" identifier="filler_1" imagePath="filler_1" pauseMs="0" tags="Room_1 Set_1 allRooms"/>
-        <stimulus audioPath="test_3" code="test_3" correctResponses="test_3_L" identifier="test_3" imagePath="adjacency_c" pauseMs="0" tags="Room_2 Set_2 allRooms"/>
+        <stimulus audioPath="filler_1" code="filler_1" correctResponses="filler_1_L" identifier="filler_1" imagePath="filler_1" pauseMs="0" tags="Room_1 Set_1 allRooms"/>
+        <stimulus audioPath="test_3" code="test_3" correctResponses="test_3_R" identifier="test_3" imagePath="adjacency_c" pauseMs="0" tags="Room_2 Set_2 allRooms"/>
         <stimulus audioPath="test_2" code="test_2" correctResponses="test_2_L" identifier="test_2" imagePath="adjacency_d" pauseMs="0" tags="Room_2 Set_2 allRooms"/>
-        <stimulus audioPath="filler_3" code="filler_3" identifier="filler_3" imagePath="filler_3" pauseMs="0" tags="Room_2 Set_2 allRooms"/>
+        <stimulus audioPath="filler_3" code="filler_3" correctResponses="filler_3_R" identifier="filler_3" imagePath="filler_3" pauseMs="0" tags="Room_2 Set_2 allRooms"/>
         <stimulus audioPath="test_4" code="test_4" correctResponses="test_4_L" identifier="test_4" imagePath="adjacency_a" pauseMs="0" tags="Room_3 Set_3 allRooms"/>
-        <stimulus audioPath="test_5" code="test_5" correctResponses="test_5_L" identifier="test_5" imagePath="adjacency_b" pauseMs="0" tags="Room_3 Set_3 allRooms"/>
-        <stimulus audioPath="filler_2" code="filler_2" identifier="filler_2" imagePath="filler_2" pauseMs="0" tags="Room_3 Set_3 allRooms"/>
+        <stimulus audioPath="test_5" code="test_5" correctResponses="test_5_R" identifier="test_5" imagePath="adjacency_b" pauseMs="0" tags="Room_3 Set_3 allRooms"/>
+        <stimulus audioPath="filler_2" code="filler_2" correctResponses="filler_2_L" identifier="filler_2" imagePath="filler_2" pauseMs="0" tags="Room_3 Set_3 allRooms"/>
         <stimulus audioPath="test_6" code="test_6" correctResponses="test_6_L" identifier="test_6" imagePath="adjacency_c" pauseMs="0" tags="Room_4 Set_4 allRooms"/>
-        <stimulus audioPath="test_7" code="test_7" correctResponses="test_7_L" identifier="test_7" imagePath="adjacency_d" pauseMs="0" tags="Room_4 Set_4 allRooms"/>
-        <stimulus audioPath="filler_4" code="filler_4" identifier="filler_4" imagePath="filler_4" pauseMs="0" tags="Room_4 Set_4 allRooms"/>
+        <stimulus audioPath="test_7" code="test_7" correctResponses="test_7_R" identifier="test_7" imagePath="adjacency_d" pauseMs="0" tags="Room_4 Set_4 allRooms"/>
+        <stimulus audioPath="filler_4" code="filler_4" correctResponses="filler_4_R" identifier="filler_4" imagePath="filler_4" pauseMs="0" tags="Room_4 Set_4 allRooms"/>
     </stimuli>
 </experiment>
