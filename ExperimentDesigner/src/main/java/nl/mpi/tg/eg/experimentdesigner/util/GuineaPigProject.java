@@ -136,10 +136,10 @@ public class GuineaPigProject {
             //@todo: blank screen with audio 1
             //@todo: videos and audio 2
             //@todo: still of video and audio 3 with touch input can be collected during audio 1 2 and 3, touch input does not cause any action, only the remote can move to the next stimulus
-            {{{"Room 1", "zoomToBlock1", "room_1", "Set_1"}, {}}, {{"test_1", "adjacency_a", "test_1_R"}, {"test_8", "adjacency_b", "test_8_L"}, {"filler_1", "filler_1"}}},
-            {{{"Room 2", "zoomToBlock2", "room_2", "Set_2"}, {}}, {{"test_3", "adjacency_c", "test_3_R"}, {"test_2", "adjacency_d", "test_2_L"}, {"filler_3", "filler_3"}}},
-            {{{"Room 3", "zoomToBlock3", "room_3", "Set_3"}, {}}, {{"test_4", "adjacency_a", "test_4_L"}, {"test_5", "adjacency_b", "test_5_R"}, {"filler_2", "filler_2"}}},
-            {{{"Room 4", "zoomToBlock4", "room_4", "Set_4"}, {}}, {{"test_6", "adjacency_c", "test_6_L"}, {"test_7", "adjacency_d", "test_7_R"}, {"filler_4", "filler_4"}}},};
+            {{{"Room 1", "zoomToBlock1", "room_1", "Set_1"}, {}}, {{"test_1", "adjacency_a", "test_1_R"}, {"test_8", "adjacency_b", "test_8_L"}, {"filler_1", "filler_1", "filler_1_L"}}},
+            {{{"Room 2", "zoomToBlock2", "room_2", "Set_2"}, {}}, {{"test_3", "adjacency_c", "test_3_R"}, {"test_2", "adjacency_d", "test_2_L"}, {"filler_3", "filler_3", "filler_3_R"}}},
+            {{{"Room 3", "zoomToBlock3", "room_3", "Set_3"}, {}}, {{"test_4", "adjacency_a", "test_4_L"}, {"test_5", "adjacency_b", "test_5_R"}, {"filler_2", "filler_2", "filler_2_L"}}},
+            {{{"Room 4", "zoomToBlock4", "room_4", "Set_4"}, {}}, {{"test_6", "adjacency_c", "test_6_L"}, {"test_7", "adjacency_d", "test_7_R"}, {"filler_4", "filler_4", "filler_4_R"}}},};
         String[][] trainingList = new String[][]{
             {"training_1", "training_1"}, {"training_2", "training_2"}, {"training_3", "training_3"}, {"training_4", "training_4"}
         };
