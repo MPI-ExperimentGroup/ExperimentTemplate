@@ -9,6 +9,7 @@ cd $appname-electron
 pwd
 ls
 
+cp -r /init-setup-project/node_modules /target/$appname-electron/
 #/usr/bin/npm config set prefix '/srv/ExperimentTemplate/.npm-global'
 #NPM_CONFIG_PREFIX=/srv/ExperimentTemplate/.npm-global
 #PATH=/srv/ExperimentTemplate/.npm-global/bin:$PATH
@@ -22,8 +23,6 @@ pwd
 #electron-forge init $appname
 #cd $appname
 #electron-forge package --platform=win32 --arch=x64
-
-cp -r /init-setup-project/node_modules /target/$appname-electron/
 
 #electron-forge make --platform=linux --arch=x64
 #electron-forge make --platform=linux --arch=ia32
