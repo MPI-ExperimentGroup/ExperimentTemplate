@@ -12,7 +12,8 @@ cd $appname-cordova
 
 if [ -f www/static/icon.png ];
 then
-    cp www/static/icon.png ./icon.png
+    #cp www/static/icon.png ./icon.png
+    convert -resize 512x512^ -gravity center -extent 512x512 -quality 100 www/static/icon.png ./icon.png
 else
     echo "icon.png not found";
     exit 1
