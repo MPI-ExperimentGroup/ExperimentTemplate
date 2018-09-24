@@ -503,26 +503,26 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         final PresenterFeature stimulusRelatedTags;
         if (isShowCurtains(storedWizardScreenData)) {
             stimulusRelatedTags = hasMoreStimulusFeature;
-            hasMoreStimulusFeature.addFeature(FeatureType.stimulusCodeVideo, null, "0", "1", "100", "Monkey_mp4/<code>", "0", "true", "borderedVideoFull", "false", "false", "100").addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
-            final PresenterFeature touchInputCaptureStart = hasMoreStimulusFeature.addFeature(FeatureType.touchInputCaptureStart, null, "false", "3000");
+            hasMoreStimulusFeature.addFeature(FeatureType.stimulusCodeVideo, null, "0", "1", "100", "<code>", "0", "true", "borderedVideoFull", "false", "false", "100").addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
+            final PresenterFeature touchInputCaptureStart = hasMoreStimulusFeature.addFeature(FeatureType.touchInputCaptureStart, null, "false", "20000");
             touchInputCaptureStart.addFeature(FeatureType.pauseVideo, null);
             touchInputCaptureStart.addFeature(FeatureType.enableStimulusButtons, null);
-            final PresenterFeature touchInputStimulusButton1 = hasMoreStimulusFeature.addFeature(FeatureType.touchInputStimulusButton, "Left Overlay Button", "Curtain", "2", "curtain_left.png", "leftOverlayCurtain", "allCurtainGroup");
+            final PresenterFeature touchInputStimulusButton1 = hasMoreStimulusFeature.addFeature(FeatureType.touchInputStimulusButton, "Overlay Button", "Curtain", "2", "screen/attentiongetter1.jpg", "centeredOverlayCurtain", "allCurtainGroup");
             touchInputStimulusButton1.addFeature(FeatureType.disableStimulusButtons, null);
             touchInputStimulusButton1.addFeature(FeatureType.rewindVideo, null);
-            touchInputStimulusButton1.addFeature(FeatureType.pause, null, "1000").addFeature(FeatureType.playVideo, null);
+            touchInputStimulusButton1.addFeature(FeatureType.pause, null, "100").addFeature(FeatureType.playVideo, null);
             final PresenterFeature stimulusCodeAudio = touchInputStimulusButton1.addFeature(FeatureType.stimulusCodeAudio, null, "500", "0", "Correct", "false");
             stimulusCodeAudio.addFeature(FeatureType.mediaLoaded, null);
             stimulusCodeAudio.addFeature(FeatureType.mediaLoadFailed, null);
             stimulusCodeAudio.addFeature(FeatureType.mediaPlaybackComplete, null).addFeature(FeatureType.enableStimulusButtons, null);
-            final PresenterFeature touchInputStimulusButton2 = hasMoreStimulusFeature.addFeature(FeatureType.touchInputStimulusButton, "Right Overlay Button", "Curtain", "2", "curtain_right.png", "rightOverlayCurtain", "allCurtainGroup");
-            touchInputStimulusButton2.addFeature(FeatureType.disableStimulusButtons, null);
-            touchInputStimulusButton2.addFeature(FeatureType.rewindVideo, null);
-            touchInputStimulusButton2.addFeature(FeatureType.pause, null, "1000").addFeature(FeatureType.playVideo, null);
-            final PresenterFeature stimulusCodeAudio1 = touchInputStimulusButton2.addFeature(FeatureType.stimulusCodeAudio, null, "500", "0", "Correct", "false");
-            stimulusCodeAudio1.addFeature(FeatureType.mediaLoaded, null);
-            stimulusCodeAudio1.addFeature(FeatureType.mediaLoadFailed, null);
-            stimulusCodeAudio1.addFeature(FeatureType.mediaPlaybackComplete, null).addFeature(FeatureType.enableStimulusButtons, null);
+//            final PresenterFeature touchInputStimulusButton2 = hasMoreStimulusFeature.addFeature(FeatureType.touchInputStimulusButton, "Right Overlay Button", "Curtain", "2", "curtain_right.png", "rightOverlayCurtain", "allCurtainGroup");
+//            touchInputStimulusButton2.addFeature(FeatureType.disableStimulusButtons, null);
+//            touchInputStimulusButton2.addFeature(FeatureType.rewindVideo, null);
+//            touchInputStimulusButton2.addFeature(FeatureType.pause, null, "1000").addFeature(FeatureType.playVideo, null);
+//            final PresenterFeature stimulusCodeAudio1 = touchInputStimulusButton2.addFeature(FeatureType.stimulusCodeAudio, null, "500", "0", "Correct", "false");
+//            stimulusCodeAudio1.addFeature(FeatureType.mediaLoaded, null);
+//            stimulusCodeAudio1.addFeature(FeatureType.mediaLoadFailed, null);
+//            stimulusCodeAudio1.addFeature(FeatureType.mediaPlaybackComplete, null).addFeature(FeatureType.enableStimulusButtons, null);
         } else if (isCodeAudio(storedWizardScreenData)) {
             final PresenterFeature stimulusCodeAudio1 = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
             stimulusCodeAudio1.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
