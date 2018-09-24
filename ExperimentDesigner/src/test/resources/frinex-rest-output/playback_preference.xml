@@ -7,7 +7,6 @@
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
         <field controlledMessage="Voer een getal." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="datOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
         <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="gender" preventServerDuplicates="false" registrationField="Geslacht"/>
-        <field controlledMessage="." controlledRegex=".*" postName="cow" preventServerDuplicates="false" registrationField="cow"/>
     </metadata>
     <presenter back="Menu" menuLabel="Bluetooth Instructions" type="text" self="Bluetooth_Instructions" title="Bluetooth Instructions">
         <htmlText featureText="When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A."/>
@@ -36,10 +35,16 @@
     <presenter back="Menu" menuLabel="StimuliMenu" type="menu" self="StimuliMenu" title="StimuliMenu">
         <menuItem featureText="COW" target="COW"/>
         <menuItem featureText="FATHER" target="FATHER"/>
-        <menuItem featureText="GHOST_a" target="GHOST_a"/>
-        <menuItem featureText="GHOST_b" target="GHOST_b"/>
+        <menuItem featureText="MOTHER" target="MOTHER"/>
+        <menuItem featureText="GRANDPARENT" target="GRANDPARENT"/>
         <menuItem featureText="PRAY" target="PRAY"/>
+        <menuItem featureText="STAY" target="STAY"/>
+        <menuItem featureText="THIRSTY" target="THIRSTY"/>
         <menuItem featureText="SHY" target="SHY"/>
+        <menuItem featureText="BATHE" target="BATHE"/>
+        <menuItem featureText="DOG" target="DOG"/>
+        <menuItem featureText="CRY" target="CRY"/>
+        <menuItem featureText="RAIN" target="RAIN"/>
     </presenter>
     <presenter back="SelectUser" menuLabel="Terug" next="StimuliMenu" type="metadata" self="Edit_User" title="Gegevens">
         <metadataField fieldName="workerId"/>
@@ -52,50 +57,24 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
-    <presenter back="Menu" menuLabel="GameTest" type="stimulus" self="GameTest" title="GameTest">
-        <image msToNext="0" src="filler_games/balloon_blue.jpg" styleName="verticalPanAnimation">
-            <mediaLoaded/>
-            <mediaLoadFailed/>
-        </image>
-    </presenter>
     <presenter menuLabel="COW" next="StimuliMenu" type="stimulus" self="COW" title="COW">
         <loadStimulus eventTag="COW" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
                 </stimulusCodeVideo>
-                <habituationParadigmListener threshold="2000" maximum="10" listenerId="habituationAction">
-                    <nextStimulus repeatIncorrect="false"/>
-                </habituationParadigmListener>
-                <touchInputCaptureStart msToNext="3000" showControls="false">
-                    <resetTrigger listenerId="habituationAction"/>
+                <touchInputCaptureStart msToNext="20000" showControls="false">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
-                    <trigger listenerId="habituationAction"/>
+                <touchInputStimulusButton featureText="Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
                     <disableStimulusButtons/>
                     <rewindVideo/>
-                    <pause msToNext="1000">
-                        <playVideo/>
-                    </pause>
-                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
-                        <mediaLoaded/>
-                        <mediaLoadFailed/>
-                        <mediaPlaybackComplete>
-                            <enableStimulusButtons/>
-                        </mediaPlaybackComplete>
-                    </stimulusCodeAudio>
-                </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain" dataChannel="2">
-                    <trigger listenerId="habituationAction"/>
-                    <disableStimulusButtons/>
-                    <rewindVideo/>
-                    <pause msToNext="1000">
+                    <pause msToNext="100">
                         <playVideo/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
@@ -138,13 +117,10 @@
             <endOfStimulus>
                 <gotoNextPresenter/>
             </endOfStimulus>
-            <randomGrouping storageField="cow">
-                <tag>COW1</tag>
-                <tag>COW2</tag>
-                <tag>COW3</tag>
-                <tag>COW4</tag>
-            </randomGrouping>
-            <stimuli/>
+            <randomGrouping/>
+            <stimuli>
+                <tag>COW</tag>
+            </stimuli>
         </loadStimulus>
     </presenter>
     <presenter menuLabel="FATHER" next="StimuliMenu" type="stimulus" self="FATHER" title="FATHER">
@@ -152,33 +128,19 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
                 </stimulusCodeVideo>
-                <touchInputCaptureStart msToNext="3000" showControls="false">
+                <touchInputCaptureStart msToNext="20000" showControls="false">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                <touchInputStimulusButton featureText="Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
                     <disableStimulusButtons/>
                     <rewindVideo/>
-                    <pause msToNext="1000">
-                        <playVideo/>
-                    </pause>
-                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
-                        <mediaLoaded/>
-                        <mediaLoadFailed/>
-                        <mediaPlaybackComplete>
-                            <enableStimulusButtons/>
-                        </mediaPlaybackComplete>
-                    </stimulusCodeAudio>
-                </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain" dataChannel="2">
-                    <disableStimulusButtons/>
-                    <rewindVideo/>
-                    <pause msToNext="1000">
+                    <pause msToNext="100">
                         <playVideo/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
@@ -227,38 +189,24 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter menuLabel="GHOST_a" next="StimuliMenu" type="stimulus" self="GHOST_a" title="GHOST_a">
-        <loadStimulus eventTag="GHOST_a" randomise="false" rememberLastStimuli="false">
+    <presenter menuLabel="MOTHER" next="StimuliMenu" type="stimulus" self="MOTHER" title="MOTHER">
+        <loadStimulus eventTag="MOTHER" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
                 </stimulusCodeVideo>
-                <touchInputCaptureStart msToNext="3000" showControls="false">
+                <touchInputCaptureStart msToNext="20000" showControls="false">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                <touchInputStimulusButton featureText="Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
                     <disableStimulusButtons/>
                     <rewindVideo/>
-                    <pause msToNext="1000">
-                        <playVideo/>
-                    </pause>
-                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
-                        <mediaLoaded/>
-                        <mediaLoadFailed/>
-                        <mediaPlaybackComplete>
-                            <enableStimulusButtons/>
-                        </mediaPlaybackComplete>
-                    </stimulusCodeAudio>
-                </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain" dataChannel="2">
-                    <disableStimulusButtons/>
-                    <rewindVideo/>
-                    <pause msToNext="1000">
+                    <pause msToNext="100">
                         <playVideo/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
@@ -303,42 +251,28 @@
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
-                <tag>GHOST_a</tag>
+                <tag>MOTHER</tag>
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter menuLabel="GHOST_b" next="StimuliMenu" type="stimulus" self="GHOST_b" title="GHOST_b">
-        <loadStimulus eventTag="GHOST_b" randomise="false" rememberLastStimuli="false">
+    <presenter menuLabel="GRANDPARENT" next="StimuliMenu" type="stimulus" self="GRANDPARENT" title="GRANDPARENT">
+        <loadStimulus eventTag="GRANDPARENT" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
                 </stimulusCodeVideo>
-                <touchInputCaptureStart msToNext="3000" showControls="false">
+                <touchInputCaptureStart msToNext="20000" showControls="false">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                <touchInputStimulusButton featureText="Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
                     <disableStimulusButtons/>
                     <rewindVideo/>
-                    <pause msToNext="1000">
-                        <playVideo/>
-                    </pause>
-                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
-                        <mediaLoaded/>
-                        <mediaLoadFailed/>
-                        <mediaPlaybackComplete>
-                            <enableStimulusButtons/>
-                        </mediaPlaybackComplete>
-                    </stimulusCodeAudio>
-                </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain" dataChannel="2">
-                    <disableStimulusButtons/>
-                    <rewindVideo/>
-                    <pause msToNext="1000">
+                    <pause msToNext="100">
                         <playVideo/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
@@ -383,42 +317,28 @@
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
-                <tag>GHOST_b</tag>
+                <tag>GRANDPARENT</tag>
             </stimuli>
         </loadStimulus>
     </presenter>
     <presenter menuLabel="PRAY" next="StimuliMenu" type="stimulus" self="PRAY" title="PRAY">
-        <loadStimulus eventTag="PRAY" randomise="true" rememberLastStimuli="false" repeatCount="8">
+        <loadStimulus eventTag="PRAY" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
                 </stimulusCodeVideo>
-                <touchInputCaptureStart msToNext="3000" showControls="false">
+                <touchInputCaptureStart msToNext="20000" showControls="false">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                <touchInputStimulusButton featureText="Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
                     <disableStimulusButtons/>
                     <rewindVideo/>
-                    <pause msToNext="1000">
-                        <playVideo/>
-                    </pause>
-                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
-                        <mediaLoaded/>
-                        <mediaLoadFailed/>
-                        <mediaPlaybackComplete>
-                            <enableStimulusButtons/>
-                        </mediaPlaybackComplete>
-                    </stimulusCodeAudio>
-                </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain" dataChannel="2">
-                    <disableStimulusButtons/>
-                    <rewindVideo/>
-                    <pause msToNext="1000">
+                    <pause msToNext="100">
                         <playVideo/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
@@ -467,24 +387,24 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter menuLabel="SHY" next="StimuliMenu" type="stimulus" self="SHY" title="SHY">
-        <loadStimulus eventTag="SHY" randomise="false" rememberLastStimuli="false">
+    <presenter menuLabel="STAY" next="StimuliMenu" type="stimulus" self="STAY" title="STAY">
+        <loadStimulus eventTag="STAY" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="Monkey_mp4/&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
                 </stimulusCodeVideo>
-                <touchInputCaptureStart msToNext="3000" showControls="false">
+                <touchInputCaptureStart msToNext="20000" showControls="false">
                     <pauseVideo/>
                     <enableStimulusButtons/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                <touchInputStimulusButton featureText="Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
                     <disableStimulusButtons/>
                     <rewindVideo/>
-                    <pause msToNext="1000">
+                    <pause msToNext="100">
                         <playVideo/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
@@ -495,10 +415,128 @@
                         </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
-                <touchInputStimulusButton featureText="Right Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="curtain_right.png" styleName="rightOverlayCurtain" dataChannel="2">
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <gotoPresenter target="Menu"/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <prevStimulus repeatIncorrect="false"/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <showStimulus/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <nextStimulus repeatIncorrect="false"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                </table>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <gotoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>STAY</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter menuLabel="THIRSTY" next="StimuliMenu" type="stimulus" self="THIRSTY" title="THIRSTY">
+        <loadStimulus eventTag="THIRSTY" randomise="false" rememberLastStimuli="false">
+            <hasMoreStimulus>
+                <backgroundImage msToNext="0" src="" styleName=""/>
+                <clearPage styleName="fullScreenWidth"/>
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
+                </stimulusCodeVideo>
+                <touchInputCaptureStart msToNext="20000" showControls="false">
+                    <pauseVideo/>
+                    <enableStimulusButtons/>
+                </touchInputCaptureStart>
+                <touchInputStimulusButton featureText="Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
                     <disableStimulusButtons/>
                     <rewindVideo/>
-                    <pause msToNext="1000">
+                    <pause msToNext="100">
+                        <playVideo/>
+                    </pause>
+                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackComplete>
+                            <enableStimulusButtons/>
+                        </mediaPlaybackComplete>
+                    </stimulusCodeAudio>
+                </touchInputStimulusButton>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <gotoPresenter target="Menu"/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <prevStimulus repeatIncorrect="false"/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <showStimulus/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <nextStimulus repeatIncorrect="false"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                </table>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <gotoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>THIRSTY</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter menuLabel="SHY" next="StimuliMenu" type="stimulus" self="SHY" title="SHY">
+        <loadStimulus eventTag="SHY" randomise="false" rememberLastStimuli="false">
+            <hasMoreStimulus>
+                <backgroundImage msToNext="0" src="" styleName=""/>
+                <clearPage styleName="fullScreenWidth"/>
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
+                </stimulusCodeVideo>
+                <touchInputCaptureStart msToNext="20000" showControls="false">
+                    <pauseVideo/>
+                    <enableStimulusButtons/>
+                </touchInputCaptureStart>
+                <touchInputStimulusButton featureText="Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
+                    <disableStimulusButtons/>
+                    <rewindVideo/>
+                    <pause msToNext="100">
                         <playVideo/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
@@ -544,6 +582,270 @@
             <randomGrouping/>
             <stimuli>
                 <tag>SHY</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter menuLabel="BATHE" next="StimuliMenu" type="stimulus" self="BATHE" title="BATHE">
+        <loadStimulus eventTag="BATHE" randomise="false" rememberLastStimuli="false">
+            <hasMoreStimulus>
+                <backgroundImage msToNext="0" src="" styleName=""/>
+                <clearPage styleName="fullScreenWidth"/>
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
+                </stimulusCodeVideo>
+                <touchInputCaptureStart msToNext="20000" showControls="false">
+                    <pauseVideo/>
+                    <enableStimulusButtons/>
+                </touchInputCaptureStart>
+                <touchInputStimulusButton featureText="Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
+                    <disableStimulusButtons/>
+                    <rewindVideo/>
+                    <pause msToNext="100">
+                        <playVideo/>
+                    </pause>
+                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackComplete>
+                            <enableStimulusButtons/>
+                        </mediaPlaybackComplete>
+                    </stimulusCodeAudio>
+                </touchInputStimulusButton>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <gotoPresenter target="Menu"/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <prevStimulus repeatIncorrect="false"/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <showStimulus/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <nextStimulus repeatIncorrect="false"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                </table>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <gotoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>BATHE</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter menuLabel="DOG" next="StimuliMenu" type="stimulus" self="DOG" title="DOG">
+        <loadStimulus eventTag="DOG" randomise="false" rememberLastStimuli="false">
+            <hasMoreStimulus>
+                <backgroundImage msToNext="0" src="" styleName=""/>
+                <clearPage styleName="fullScreenWidth"/>
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
+                </stimulusCodeVideo>
+                <touchInputCaptureStart msToNext="20000" showControls="false">
+                    <pauseVideo/>
+                    <enableStimulusButtons/>
+                </touchInputCaptureStart>
+                <touchInputStimulusButton featureText="Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
+                    <disableStimulusButtons/>
+                    <rewindVideo/>
+                    <pause msToNext="100">
+                        <playVideo/>
+                    </pause>
+                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackComplete>
+                            <enableStimulusButtons/>
+                        </mediaPlaybackComplete>
+                    </stimulusCodeAudio>
+                </touchInputStimulusButton>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <gotoPresenter target="Menu"/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <prevStimulus repeatIncorrect="false"/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <showStimulus/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <nextStimulus repeatIncorrect="false"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                </table>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <gotoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>DOG</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter menuLabel="CRY" next="StimuliMenu" type="stimulus" self="CRY" title="CRY">
+        <loadStimulus eventTag="CRY" randomise="false" rememberLastStimuli="false">
+            <hasMoreStimulus>
+                <backgroundImage msToNext="0" src="" styleName=""/>
+                <clearPage styleName="fullScreenWidth"/>
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
+                </stimulusCodeVideo>
+                <touchInputCaptureStart msToNext="20000" showControls="false">
+                    <pauseVideo/>
+                    <enableStimulusButtons/>
+                </touchInputCaptureStart>
+                <touchInputStimulusButton featureText="Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
+                    <disableStimulusButtons/>
+                    <rewindVideo/>
+                    <pause msToNext="100">
+                        <playVideo/>
+                    </pause>
+                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackComplete>
+                            <enableStimulusButtons/>
+                        </mediaPlaybackComplete>
+                    </stimulusCodeAudio>
+                </touchInputStimulusButton>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <gotoPresenter target="Menu"/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <prevStimulus repeatIncorrect="false"/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <showStimulus/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <nextStimulus repeatIncorrect="false"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                </table>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <gotoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>CRY</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter menuLabel="RAIN" next="StimuliMenu" type="stimulus" self="RAIN" title="RAIN">
+        <loadStimulus eventTag="RAIN" randomise="false" rememberLastStimuli="false">
+            <hasMoreStimulus>
+                <backgroundImage msToNext="0" src="" styleName=""/>
+                <clearPage styleName="fullScreenWidth"/>
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
+                </stimulusCodeVideo>
+                <touchInputCaptureStart msToNext="20000" showControls="false">
+                    <pauseVideo/>
+                    <enableStimulusButtons/>
+                </touchInputCaptureStart>
+                <touchInputStimulusButton featureText="Overlay Button" listenerId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
+                    <disableStimulusButtons/>
+                    <rewindVideo/>
+                    <pause msToNext="100">
+                        <playVideo/>
+                    </pause>
+                    <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
+                        <mediaLoaded/>
+                        <mediaLoadFailed/>
+                        <mediaPlaybackComplete>
+                            <enableStimulusButtons/>
+                        </mediaPlaybackComplete>
+                    </stimulusCodeAudio>
+                </touchInputStimulusButton>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <actionButton featureText="Menu (O)" hotKey="R1_MA_ENTER" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <gotoPresenter target="Menu"/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Prev (left)" hotKey="R1_MA_LEFT" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <prevStimulus repeatIncorrect="false"/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <showStimulus/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <nextStimulus repeatIncorrect="false"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                </table>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <gotoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>RAIN</tag>
             </stimuli>
         </loadStimulus>
     </presenter>
@@ -610,33 +912,29 @@
         <versionData/>
     </presenter>
     <stimuli>
-        
-        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW1"/>
-        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis" imagePath="COWmis" pauseMs="0" tags="COW1"/>
-        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW1"/>
-        
-        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW2"/>
-        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW2"/>
-        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis" imagePath="COWmis" pauseMs="0" tags="COW2"/>
-        
-        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW3"/>
-        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis" imagePath="COWmis" pauseMs="0" tags="COW3"/>
-        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW3"/>
-        
-        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW4"/>
-        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW4"/>
-        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis" imagePath="COWmis" pauseMs="0" tags="COW4"/>
-        
-        <!--<stimulus audioPath="COWmis-5" code="COWmis-5" identifier="COWmis-5" imagePath="COWmis-5" pauseMs="0" tags="COW3"/>-->
-        <stimulus audioPath="FATHER" code="FATHER" identifier="FATHER" imagePath="FATHER" pauseMs="0" tags="FATHER"/>
-        <stimulus audioPath="FATHERmis" code="FATHERmis" identifier="FATHERmis" imagePath="FATHERmis" pauseMs="0" tags="FATHER"/>
-        <stimulus audioPath="GHOST-a" code="GHOST-a" identifier="GHOST-a" imagePath="GHOST-a" pauseMs="0" tags="GHOST_a"/>
-        <stimulus audioPath="GHOST-amis" code="GHOST-amis" identifier="GHOST-amis" imagePath="GHOST-amis" pauseMs="0" tags="GHOST_a"/>
-        <stimulus audioPath="GHOST-b" code="GHOST-b" identifier="GHOST-b" imagePath="GHOST-b" pauseMs="0" tags="GHOST_b"/>
-        <stimulus audioPath="GHOST-bmis" code="GHOST-bmis" identifier="GHOST-bmis" imagePath="GHOST-bmis" pauseMs="0" tags="GHOST_b"/>
-        <stimulus audioPath="PRAY" code="PRAY" identifier="PRAY" imagePath="PRAY" pauseMs="0" tags="PRAY"/>
-        <stimulus audioPath="PRAYmis" code="PRAYmis" identifier="PRAYmis" imagePath="PRAYmis" pauseMs="0" tags="PRAY"/>
-        <stimulus audioPath="SHY" code="SHY" identifier="SHY" imagePath="SHY" pauseMs="0" tags="SHY"/>
-        <stimulus audioPath="SHYmis" code="SHYmis" identifier="SHYmis" imagePath="SHYmis" pauseMs="0" tags="SHY"/>
+        <stimulus audioPath="easy/COW" code="easy/COW" identifier="easy/COW" imagePath="COW" pauseMs="0" tags="COW"/>
+        <stimulus audioPath="easy/COWmis" code="easy/COWmis" identifier="easy/COWmis" imagePath="COWmis" pauseMs="0" tags="COW"/>
+        <stimulus audioPath="easy/FATHER" code="easy/FATHER" identifier="easy/FATHER" imagePath="FATHER" pauseMs="0" tags="FATHER"/>
+        <stimulus audioPath="easy/FATHERmis" code="easy/FATHERmis" identifier="easy/FATHERmis" imagePath="FATHERmis" pauseMs="0" tags="FATHER"/>
+        <stimulus audioPath="easy/MOTHER" code="easy/MOTHER" identifier="easy/MOTHER" imagePath="MOTHER" pauseMs="0" tags="MOTHER"/>
+        <stimulus audioPath="easy/MOTHERmis" code="easy/MOTHERmis" identifier="easy/MOTHERmis" imagePath="MOTHERmis" pauseMs="0" tags="MOTHER"/>
+        <stimulus audioPath="easy/GRANDPARENT" code="easy/GRANDPARENT" identifier="easy/GRANDPARENT" imagePath="GRANDPARENT" pauseMs="0" tags="GRANDPARENT"/>
+        <stimulus audioPath="easy/GRANDPARENTmis" code="easy/GRANDPARENTmis" identifier="easy/GRANDPARENTmis" imagePath="GRANDPARENTmis" pauseMs="0" tags="GRANDPARENT"/>
+        <stimulus audioPath="easy/PRAY" code="easy/PRAY" identifier="easy/PRAY" imagePath="PRAY" pauseMs="0" tags="PRAY"/>
+        <stimulus audioPath="easy/PRAYmis" code="easy/PRAYmis" identifier="easy/PRAYmis" imagePath="PRAYmis" pauseMs="0" tags="PRAY"/>
+        <stimulus audioPath="easy/STAY" code="easy/STAY" identifier="easy/STAY" imagePath="STAY" pauseMs="0" tags="STAY"/>
+        <stimulus audioPath="easy/STAYmis" code="easy/STAYmis" identifier="easy/STAYmis" imagePath="STAYmis" pauseMs="0" tags="STAY"/>
+        <stimulus audioPath="easy/THIRSTY" code="easy/THIRSTY" identifier="easy/THIRSTY" imagePath="THIRSTY" pauseMs="0" tags="THIRSTY"/>
+        <stimulus audioPath="easy/THIRSTYmis" code="easy/THIRSTYmis" identifier="easy/THIRSTYmis" imagePath="THIRSTYmis" pauseMs="0" tags="THIRSTY"/>
+        <stimulus audioPath="hard/SHY" code="hard/SHY" identifier="hard/SHY" imagePath="SHY" pauseMs="0" tags="SHY"/>
+        <stimulus audioPath="hard/SHYmis" code="hard/SHYmis" identifier="hard/SHYmis" imagePath="SHYmis" pauseMs="0" tags="SHY"/>
+        <stimulus audioPath="hard/BATHE" code="hard/BATHE" identifier="hard/BATHE" imagePath="BATHE" pauseMs="0" tags="BATHE"/>
+        <stimulus audioPath="hard/BATHEmis" code="hard/BATHEmis" identifier="hard/BATHEmis" imagePath="BATHEmis" pauseMs="0" tags="BATHE"/>
+        <stimulus audioPath="hard/DOG" code="hard/DOG" identifier="hard/DOG" imagePath="SHY" pauseMs="0" tags="DOG"/>
+        <stimulus audioPath="hard/DOGmis" code="hard/DOGmis" identifier="hard/DOGmis" imagePath="DOGmis" pauseMs="0" tags="DOG"/>
+        <stimulus audioPath="hard/CRY" code="hard/CRY" identifier="hard/CRY" imagePath="CRY" pauseMs="0" tags="CRY"/>
+        <stimulus audioPath="hard/CRYmis" code="hard/CRYmis" identifier="hard/CRYmis" imagePath="CRYmis" pauseMs="0" tags="CRY"/>
+        <stimulus audioPath="hard/RAIN" code="hard/RAIN" identifier="hard/RAIN" imagePath="RAIN" pauseMs="0" tags="RAIN"/>
+        <stimulus audioPath="hard/RAINmis" code="hard/RAINmis" identifier="hard/RAINmis" imagePath="RAINmis" pauseMs="0" tags="RAIN"/>
     </stimuli>
 </experiment>
