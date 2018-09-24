@@ -414,6 +414,17 @@ table.stimulusContainerTab {
 .left3TouchButton, .left3OverlayButton {
     left: 1vw;
 }
+.gwt-Image.centeredOverlayCurtain, .gwt-Button.centeredOverlayCurtain, .gwt-Button.optionButton.centeredOverlayCurtain {
+    top: 0px;
+    position: fixed;
+    height: 100%;    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 .gwt-Image.leftOverlayCurtain, .gwt-Image.rightOverlayCurtain,
 .gwt-Button.leftOverlayCurtain, .gwt-Button.rightOverlayCurtain,
 .gwt-Button.optionButton.leftOverlayCurtain, .gwt-Button.optionButton.rightOverlayCurtain {
@@ -443,20 +454,28 @@ table.stimulusContainerTab {
     user-select: none;
 }
 .borderedVideoFull {
-    width: 100vw;
-    left: 0vw;
-    top: 150px;
+    width: 98vw;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%,-50%);
     padding: 1vw;
+}
+.gwt-Image.centeredOverlayCurtain {
+    width: 100%;
 }
 .gwt-Image.leftOverlayCurtain, .gwt-Image.rightOverlayCurtain {
     width: 50%;
 }
+.gwt-Button.centeredOverlayCurtain:hover, .gwt-Button.centeredOverlayCurtain[disabled]:hover, .gwt-Button.centeredOverlayCurtain,
 .gwt-Button.leftOverlayCurtain:hover, .gwt-Button.rightOverlayCurtain:hover,
 .gwt-Button.leftOverlayCurtain[disabled]:hover, .gwt-Button.rightOverlayCurtain[disabled]:hover,
 .gwt-Button.leftOverlayCurtain, .gwt-Button.rightOverlayCurtain {
     width: 100%;    
     background: none;
     border: none;
+}
+.gwt-Image.centeredOverlayCurtainIntersection {
+    display: none;
 }
 .gwt-Image.leftOverlayCurtainIntersection, .gwt-Image.rightOverlayCurtainIntersection {
     width: 1vw;
@@ -465,6 +484,8 @@ table.stimulusContainerTab {
 .gwt-Button.optionButton.rightOverlayCurtain {
     right: 0vw;
 }
+.gwt-Image.centeredOverlayCurtain, 
+.gwt-Button.optionButton.centeredOverlayCurtain,
 .gwt-Image.leftOverlayCurtain,
 .gwt-Button.optionButton.leftOverlayCurtain {
     left: 0vw;
