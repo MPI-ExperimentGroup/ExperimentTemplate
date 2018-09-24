@@ -148,7 +148,7 @@ cordova build android --buildConfig /android-keys/frinex-build.json --release
 
 pwd
 #cp platforms/android/build/outputs/apk/android-release.apk ~/Desktop/FrinexAPKs/$appname.apk
-cp platforms/android/build/outputs/apk/*.apk ../
+cp platforms/android/build/outputs/apk/release/*.apk ../
 #cp -r platforms/android ~/Desktop/FrinexAPKs/$appname-android
 
 #echo "installing on Android"
