@@ -121,6 +121,7 @@ cordova build android --buildConfig /android-keys/frinex-build.json --release
 #cordova emulate ios --target="iPhone"
 #cordova emulate android 
 
+rm platforms/android/release-signing.properties
 #echo "make the iOS icons"
 #convert -resize 180x180 -quality 100 $iconImage $iconResourcesDir/icon-60@3x.png
 #convert -resize 60x60 -quality 100 $iconImage $iconResourcesDir/icon-60.png
