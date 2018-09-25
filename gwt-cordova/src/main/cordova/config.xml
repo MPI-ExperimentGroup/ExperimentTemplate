@@ -49,6 +49,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <!--<preference name="windows-target-version" value="10.0" />-->
     <preference name="Fullscreen" value="true" />
     <!--<preference name="Orientation" value="landscape" />-->
