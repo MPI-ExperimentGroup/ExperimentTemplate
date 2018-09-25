@@ -39,5 +39,6 @@ $textFontSize: </xsl:text>
 $gridCellZoom: </xsl:text>
         <xsl:value-of select="experiment/@defaultScale" /><xsl:text>;
 </xsl:text>
+    <xsl:value-of select="experiment/scss" />
     </xsl:template>
 </xsl:stylesheet>
