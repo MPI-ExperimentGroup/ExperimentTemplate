@@ -65,6 +65,7 @@ public class SchemaGenerator {
         writer.append("</xs:complexType>\n");
         writer.append("</xs:element>\n");
         writer.append("<xs:element name=\"administration\" type=\"administrationType\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
+        writer.append("<xs:element name=\"scss\" type=\"xs:string\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
         writer.append("<xs:element name=\"metadata\" type=\"metadataType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
         writer.append("<xs:element name=\"presenter\"  minOccurs=\"1\" maxOccurs=\"unbounded\" type=\"presenterType\"/>\n");
         writer.append("<xs:element name=\"stimuli\" type=\"stimuliType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
