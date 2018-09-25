@@ -857,6 +857,19 @@ table.gridCell:hover, td.gridCell:hover {
     transform: translate(-50%,-50%);
 }
 
+.footerCenteredHorizontal {
+    bottom: 0vh;
+} 
+.footerCenteredHorizontal80 {
+    width: 80%;
+    bottom: 20vh;
+}
+.footerCenteredHorizontal, .footerCenteredHorizontal80 {
+    position: fixed;
+    left: 50vw;
+    margin: 0px;
+    transform: translate(-50%,-100%);
+}
 .gwt-HTML, .resultsTablePanel, .metadataTable, .menuTable, .gwt-CheckBox, .pageLink {
 }
 .resultsTableTitle {
