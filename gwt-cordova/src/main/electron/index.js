@@ -7,6 +7,7 @@ const createWindow = () => {
     mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
+        fullscreen: true
     });
 
     app.use('/', express.static(__dirname));
@@ -14,7 +15,7 @@ const createWindow = () => {
     mainWindow.loadURL(`http://localhost:5000/index.html`);
 
 //    mainWindow.webContents.openDevTools();
-
+//mainWindow.setFullScreen(true);
     mainWindow.on('closed', () => {
         mainWindow = null;
     });
