@@ -156,7 +156,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
         }
     }
 
-    public void submitStimulusResponse(final UserData userData, final String screenName, final int dataChannel, Stimulus stimulus, String response, String correctness, int eventMs) {
+    public void submitStimulusResponse(final UserData userData, final String screenName, final int dataChannel, Stimulus stimulus, String response, Boolean isCorrect, int eventMs) {
         submitData(ServiceEndpoint.stimulusResponse, userData.getUserId(), "{\"tagDate\" : " + jsonEscape(format.format(new Date())) + ",\n"
                 + "\"experimentName\": " + jsonEscape(experimentName) + ",\n"
                 + "\"userId\": " + jsonEscape(userData.getUserId().toString()) + ",\n"
@@ -164,7 +164,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 + "\"dataChannel\": " + dataChannel + ",\n"
                 + "\"stimulusId\": " + jsonEscape(stimulus.getUniqueId()) + ",\n"
                 + "\"response\": " + jsonEscape(response) + ",\n"
-                + "\"correctness\": " + jsonEscape(correctness) + ",\n"
+                + "\"correctness\": " + ((isCorrect != null) ? isCorrect.toString() : "null") + ",\n"
                 + "\"gamesPlayed\": " + jsonEscape(Integer.toString(userData.getGamesPlayed())) + ",\n"
                 + "\"totalScore\": " + jsonEscape(Integer.toString(userData.getTotalScore())) + ",\n"
                 + "\"totalPotentialScore\": " + jsonEscape(Integer.toString(userData.getTotalPotentialScore())) + ",\n"
