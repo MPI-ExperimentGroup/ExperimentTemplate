@@ -44,7 +44,7 @@ public class StimulusResponse {
     private Integer dataChannel;
     private String stimulusId;
     private String response;
-    private String correctness;
+    private Boolean isCorrect;
     private String userId;
     private int eventMs;
 
@@ -93,8 +93,8 @@ public class StimulusResponse {
         return response;
     }
 
-    public String getCorrectness() {
-        return correctness;
+    public Boolean getIsCorrect() {
+        return isCorrect;
     }
 
     public String getUserId() {
@@ -166,7 +166,7 @@ public class StimulusResponse {
         hash = 47 * hash + Objects.hashCode(this.dataChannel);
         hash = 47 * hash + Objects.hashCode(this.stimulusId);
         hash = 47 * hash + Objects.hashCode(this.response);
-        hash = 47 * hash + Objects.hashCode(this.correctness);
+        hash = 47 * hash + Objects.hashCode(this.isCorrect);
         hash = 47 * hash + Objects.hashCode(this.userId);
         hash = 47 * hash + this.eventMs;
         hash = 47 * hash + this.gamesPlayed;
@@ -247,7 +247,7 @@ public class StimulusResponse {
         if (!Objects.equals(this.response, other.response)) {
             return false;
         }
-        if (!Objects.equals(this.correctness, other.correctness)) {
+        if (!Objects.equals(this.isCorrect, other.isCorrect)) {
             return false;
         }
         if (!Objects.equals(this.userId, other.userId)) {
