@@ -26,12 +26,24 @@ cp -r /init-setup-project/node_modules /target/$appname-electron/
 
 asar pack /target/$appname-electron/ ../$appname.asar
 
+unzip /electron/win32-x64.zip -d $appname-win32-x64
+unzip /electron/darwin-x64.zip -d $appname-darwin-x64
+
+rm $appname-darwin-x64/Electron.app/Contents/Resources/default_app.asar
+rm $appname-win32-x64/resources/default_app.asar
+
+cp ../$appname.asar $appname-darwin-x64/Electron.app/Contents/Resources/default_app.asar
+cp ../$appname.asar $appname-win32-x64/resources/default_app.asar
+
+zip -r ../$appname-win32-x64.zip $appname-win32-x64/
+zip -r ../$appname-darwin-x64.zip $appname-darwin-x64/
+
 #electron-forge make --platform=linux --arch=x64
 #electron-forge make --platform=linux --arch=ia32
-electron-forge make --platform=darwin
+#electron-forge make --platform=darwin
 # the win32 target requires wine mono-devel to be available on the build server
-electron-forge make --platform=win32 --arch=x64
-electron-forge make --platform=win32 --arch=ia32
+#electron-forge make --platform=win32 --arch=x64
+#electron-forge make --platform=win32 --arch=ia32
 
 find . -iname '*.zip'
 
