@@ -24,6 +24,8 @@ pwd
 
 cp -r /init-setup-project/node_modules /target/$appname-electron/
 
+asar pack /target/$appname-electron/ ../$appname.asar
+
 #electron-forge make --platform=linux --arch=x64
 #electron-forge make --platform=linux --arch=ia32
 electron-forge make --platform=darwin
