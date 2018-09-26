@@ -27,7 +27,6 @@ import com.google.gwt.http.client.Response;
 import com.google.gwt.i18n.shared.DateTimeFormat;
 import com.google.gwt.typedarrays.shared.Uint8Array;
 import com.google.gwt.user.client.Timer;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.Random;
 import java.util.logging.Level;
@@ -38,7 +37,9 @@ import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
+import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Jul 2, 2015 5:17:27 PM (creation date)
@@ -48,7 +49,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
 
     private enum ServiceEndpoint {
 
-        timeStamp, screenChange, tagEvent, tagPairEvent, metadata, stowedData, groupEvent
+        timeStamp, screenChange, tagEvent, tagPairEvent, metadata, stowedData, groupEvent, stimulusResponse
     }
     private final LocalStorage localStorage;
     private final String experimentName;
@@ -144,9 +145,48 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 + "\"tagValue1\": " + jsonEscape(tagValue1) + ",\n"
                 + "\"tagValue2\": " + jsonEscape(tagValue2) + ",\n"
                 + "\"eventMs\": \"" + eventMs + "\" \n}");
-        if (Arrays.asList(ApplicationController.SDCARD_DATACHANNELS).contains(dataChannel)) {
+        boolean containsChannel = false;
+        for (int channel : ApplicationController.SDCARD_DATACHANNELS) {
+            if (dataChannel == channel) {
+                containsChannel = true;
+            }
+        }
+        if (containsChannel) {
             writeCsvLine(userId.toString(), screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs);
         }
+    }
+
+    public void submitStimulusResponse(final UserData userData, final String screenName, final int dataChannel, Stimulus stimulus, String response, String correctness, int eventMs) {
+        submitData(ServiceEndpoint.stimulusResponse, userData.getUserId(), "{\"tagDate\" : " + jsonEscape(format.format(new Date())) + ",\n"
+                + "\"experimentName\": " + jsonEscape(experimentName) + ",\n"
+                + "\"userId\": " + jsonEscape(userData.getUserId().toString()) + ",\n"
+                + "\"screenName\": " + jsonEscape(screenName) + ",\n"
+                + "\"dataChannel\": " + dataChannel + ",\n"
+                + "\"stimulusId\": " + jsonEscape(stimulus.getUniqueId()) + ",\n"
+                + "\"response\": " + jsonEscape(response) + ",\n"
+                + "\"correctness\": " + jsonEscape(correctness) + ",\n"
+                + "\"gamesPlayed\": " + jsonEscape(Integer.toString(userData.getGamesPlayed())) + ",\n"
+                + "\"totalScore\": " + jsonEscape(Integer.toString(userData.getTotalScore())) + ",\n"
+                + "\"totalPotentialScore\": " + jsonEscape(Integer.toString(userData.getTotalPotentialScore())) + ",\n"
+                + "\"currentScore\": " + jsonEscape(Integer.toString(userData.getCurrentScore())) + ",\n"
+                + "\"correctStreak\": " + jsonEscape(Integer.toString(userData.getCorrectStreak())) + ",\n"
+                + "\"errorStreak\": " + jsonEscape(Integer.toString(userData.getErrorStreak())) + ",\n"
+                + "\"potentialScore\": " + jsonEscape(Integer.toString(userData.getPotentialScore())) + ",\n"
+                + "\"maxScore\": " + jsonEscape(Double.toString(userData.getMaxScore())) + ",\n"
+                + "\"maxErrors\": " + jsonEscape(Integer.toString(userData.getMaxErrors())) + ",\n"
+                + "\"maxCorrectStreak\": " + jsonEscape(Integer.toString(userData.getMaxCorrectStreak())) + ",\n"
+                + "\"maxErrorStreak\": " + jsonEscape(Integer.toString(userData.getMaxErrorStreak())) + ",\n"
+                + "\"maxPotentialScore\": " + jsonEscape(Integer.toString(userData.getMaxPotentialScore())) + ",\n"
+                + "\"eventMs\": \"" + eventMs + "\" \n}");
+//        boolean containsChannel = false;
+//        for (int channel : ApplicationController.SDCARD_DATACHANNELS) {
+//            if (dataChannel == channel) {
+//                containsChannel = true;
+//            }
+//        }
+//        if (containsChannel) {
+//            writeCsvLine(userData.getUserId().toString(), screenName, dataChannel, stimulus.getUniqueId(), response, correctness, eventMs);
+//        }
     }
 
     private String jsonEscape(String inputString) {
