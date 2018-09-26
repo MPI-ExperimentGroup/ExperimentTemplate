@@ -35,8 +35,8 @@ rm $appname-win32-x64/resources/default_app.asar
 cp ../$appname.asar $appname-darwin-x64/Electron.app/Contents/Resources/default_app.asar
 cp ../$appname.asar $appname-win32-x64/resources/default_app.asar
 
-mv $appname-darwin-x64/Electron.app $appname-darwin-x64/$appname.app
-mv $appname-win32-x64/electron.exe $appname-win32-x64/$appname.exe
+mv $appname-darwin-x64/Electron.app $appname-darwin-x64/@experiment.configuration.name@.app
+mv $appname-win32-x64/electron.exe $appname-win32-x64/@experiment.configuration.name@.exe
 
 zip -r ../$appname-win32-x64.zip $appname-win32-x64/
 zip -r ../$appname-darwin-x64.zip $appname-darwin-x64/
