@@ -26,6 +26,7 @@ import nl.mpi.tg.eg.frinex.model.GroupData;
 import nl.mpi.tg.eg.frinex.model.TagData;
 import nl.mpi.tg.eg.frinex.model.Participant;
 import nl.mpi.tg.eg.frinex.model.ScreenData;
+import nl.mpi.tg.eg.frinex.model.StimulusResponse;
 import nl.mpi.tg.eg.frinex.model.TagPairData;
 import nl.mpi.tg.eg.frinex.model.TimeStamp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,8 @@ public class ExperimentService {
     TagRepository tagRepository;
     @Autowired
     TagPairRepository tagPairRepository;
+    @Autowired
+    StimulusResponseRepository stimulusResponseRepository;
     @Autowired
     GroupDataRepository groupDataRepository;
     @Autowired
@@ -230,6 +233,21 @@ public class ExperimentService {
                 tagPairRepository.save(experimentData);
             }
             responseEntity = new ResponseEntity<>(new DataSubmissionResult(experimentDataList.get(0).getUserId(), "", true), HttpStatus.OK);
+        }
+        return responseEntity;
+    }
+
+    @RequestMapping(value = "/stimulusResponse", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<DataSubmissionResult> registerStimulusResponse(@RequestBody List<StimulusResponse> stimulusResponseList) {
+        final ResponseEntity responseEntity;
+        if (stimulusResponseList.isEmpty()) {
+            responseEntity = new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        } else {
+            for (StimulusResponse experimentData : stimulusResponseList) {
+                experimentData.setSubmitDate(new java.util.Date());
+                stimulusResponseRepository.save(experimentData);
+            }
+            responseEntity = new ResponseEntity<>(new DataSubmissionResult(stimulusResponseList.get(0).getUserId(), "", true), HttpStatus.OK);
         }
         return responseEntity;
     }
