@@ -390,10 +390,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addHtmlText(textString, styleName);
     }
 
-    protected void timerLabel(final int postLoadMs, final String listenerId, final String msLabelFormat) {
-        timerLabel(null, postLoadMs, listenerId, msLabelFormat);
-    }
-
     protected void timerLabel(final String styleName, final int postLoadMs, final String listenerId, final String msLabelFormat) {
         final DateTimeFormat formatter = DateTimeFormat.getFormat(msLabelFormat);
         final HTML html = ((TimedStimulusView) simpleView).addHtmlText("", styleName);
@@ -1214,12 +1210,15 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusButton", currentStimulus.getUniqueId(), presenterListerner.getLabel(), duration.elapsedMillis());
+                Boolean isCorrect = null;
                 if (currentStimulus.hasCorrectResponses()) {
                     final boolean correctness = currentStimulus.isCorrect(presenterListerner.getLabel());
                     submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, presenterListerner.getLabel(), currentStimulus.getUniqueId(), (correctness) ? "correct" : "incorrect", duration.elapsedMillis());
                     // if there are correct responses to this stimulus then increment the score
                     userResults.getUserData().addPotentialScore(correctness);
+                    isCorrect = correctness;
                 }
+                submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, currentStimulus, presenterListerner.getLabel(), isCorrect, duration.elapsedMillis());
                 presenterListerner.eventFired(button, shotEventListner);
             }
 
@@ -1363,12 +1362,15 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                     endAudioRecorderTag(dataChannel, ratingItem, currentStimulus);
                     submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "RatingButton", stimulusString, ratingItem, duration.elapsedMillis());
+                    Boolean isCorrect = null;
                     if (currentStimulus.hasCorrectResponses()) {
                         final boolean correctness = currentStimulus.isCorrect(ratingItem);
                         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, ratingItem, stimulusString, (correctness) ? "correct" : "incorrect", duration.elapsedMillis());
                         // if there are correct responses to this stimulus then increment the score
                         userResults.getUserData().addPotentialScore(correctness);
+                        isCorrect = correctness;
                     }
+                    submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, currentStimulus, ratingItem, isCorrect, duration.elapsedMillis());
                     timedStimulusListener.postLoadTimerFired();
                 }
 
@@ -1769,12 +1771,15 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             if (responseTimes != null) {
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), stimulusFreeText.getDataChannel(), stimulusFreeText.getPostName() + "_ms", stimulusFreeText.getStimulus().getUniqueId(), responseTimes, duration.elapsedMillis());
             }
+            Boolean isCorrect = null;
             if (stimulusFreeText.getStimulus().hasCorrectResponses()) {
                 final boolean correctness = stimulusFreeText.getStimulus().isCorrect(stimulusFreeText.getValue());
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), stimulusFreeText.getDataChannel(), stimulusFreeText.getPostName(), stimulusFreeText.getStimulus().getUniqueId(), (correctness) ? "correct" : "incorrect", duration.elapsedMillis());
                 // if there are correct responses to this stimulus then increment the score
                 userResults.getUserData().addPotentialScore(correctness);
+                isCorrect = correctness;
             }
+            submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), stimulusFreeText.getDataChannel(), stimulusFreeText.getStimulus(), stimulusFreeText.getValue(), isCorrect, duration.elapsedMillis());
         }
         return true;
     }
@@ -1915,12 +1920,15 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         // @todo: probably good to check if the data has changed before writing to disk
         submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), currentStimulus.getUniqueId(), jsonStimulusMap.get(currentStimulus).toString());
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "CodeResponse", currentStimulus.getUniqueId(), formattedCode, duration.elapsedMillis());
+        Boolean isCorrect = null;
         if (currentStimulus.hasCorrectResponses()) {
             final boolean correctness = currentStimulus.isCorrect(formattedCode);
             submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "CodeResponse", currentStimulus.getUniqueId(), (correctness) ? "correct" : "incorrect", duration.elapsedMillis());
             // if there are correct responses to this stimulus then increment the score
             userResults.getUserData().addPotentialScore(correctness);
+            isCorrect = correctness;
         }
+        submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, currentStimulus, formattedCode, isCorrect, duration.elapsedMillis());
     }
 
     protected void touchInputReportSubmit(final Stimulus currentStimulus, final int dataChannel) {
