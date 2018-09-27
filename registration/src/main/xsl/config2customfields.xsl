@@ -194,6 +194,36 @@
             </xsl:for-each>
             <xsl:text>
                 }
+                public enum DataChannels {
+            </xsl:text>
+            <!--Convert the administration datachannels segment of the configuration file into a data structure consumable by the administration web interface.-->
+            <xsl:for-each select="experiment/administration/dataChannel">
+                <xsl:value-of select="generate-id(.)" />
+                <xsl:text>(</xsl:text>
+                <xsl:value-of select="@channel" />
+                <xsl:text>,"</xsl:text>
+                <xsl:value-of select="@label" />
+                <xsl:text>",</xsl:text>
+                <xsl:value-of select="if(@logToSdCard) then @logToSdCard else 'false'" />
+                <xsl:text>)</xsl:text>
+                <xsl:if test="position() != last()">
+                    <xsl:text>,
+                    </xsl:text> 
+                </xsl:if>
+                <xsl:if test="position() = last()">
+                    <xsl:text>;
+                    </xsl:text> 
+                </xsl:if>
+            </xsl:for-each>
+            <xsl:text>
+                final int channel; final String label; final boolean logToSdCard;
+                DataChannels(int channel, String label, boolean logToSdCard){
+                    this.channel=channel;
+                    this.label = label;
+                    this.logToSdCard = logToSdCard;
+                }
+
+                }
                 }
             </xsl:text>
         </xsl:result-document>
