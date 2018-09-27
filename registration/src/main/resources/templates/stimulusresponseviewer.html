@@ -46,18 +46,42 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
                     <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=response'">response</a></th>
                     <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=isCorrect'">isCorrect</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=gamesPlayed'">gamesPlayed</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=totalScore'">totalScore</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=totalPotentialScore'">totalPotentialScore</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=currentScore'">currentScore</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=correctStreak'">correctStreak</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=errorStreak'">errorStreak</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=potentialScore'">potentialScore</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=maxScore'">maxScore</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=maxErrors'">maxErrors</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=maxCorrectStreak'">maxCorrectStreak</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=maxErrorStreak'">maxErrorStreak</a></th>
-                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=maxPotentialScore'">maxPotentialScore</a></th>
+                    <th>
+                        <span class="balloontext">Games Played</span>
+                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=gamesPlayed'">GP</a></th>
+                    <th>
+                        <span class="balloontext">Total Score</span>
+                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=totalScore'">TS</a></th>
+                    <th>
+                        <span class="balloontext">Total Potential Score</span>
+                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=totalPotentialScore'">TPS</a></th>
+                    <th>
+                        <span class="balloontext">Current Score</span>
+                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=currentScore'">CS</a></th>
+                    <th>
+                        <span class="balloontext">Correct Streak</span>
+                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=correctStreak'">CS</a></th>
+                    <th>
+                        <span class="balloontext">Error Streak</span>
+                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=errorStreak'">ES</a></th>
+                    <th>
+                        <span class="balloontext">Potential Score</span>
+                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=potentialScore'">PS</a></th>
+                    <th>
+                        <span class="balloontext">Maximum Score</span>
+                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=maxScore'">MS</a></th>
+                    <th>
+                        <span class="balloontext">Maximum Errors</span>
+                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=maxErrors'">ME</a></th>
+                    <th>
+                        <span class="balloontext">Maximum Correct Streak</span>
+                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=maxCorrectStreak'">MCS</a></th>
+                    <th>
+                        <span class="balloontext">Maximum Error Streak</span>
+                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=maxErrorStreak'">MES</a></th>
+                    <th>
+                        <span class="balloontext">Maximum Potential Score</span>
+                        <a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=maxPotentialScore'">MPS</a></th>
                     <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=eventMs'">EventMs</a></th>
                     <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=tagDate'">TagDate</a></th>
                 </tr>
