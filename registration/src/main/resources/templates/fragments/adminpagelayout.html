@@ -71,9 +71,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             </span>
             <!--</div>-->
             <div th:fragment="logout" align="right">
-                <span th:if="${!#strings.contains(#httpServletRequest.requestURI, 'ems12')}"> 
+                <span style="color: red; border-bottom: solid 1px; display: flex;" th:if="${!#strings.contains(#httpServletRequest.requestURI, 'ems12')}"> 
                     This version is for software testing only, data will not be preserved in this version. 
-                    This text will not be shown in the production version. 
+                    This text will also not be shown in the production version. 
                     Once you have verified that this version suits your needs, please request deployment of the production version.
                 </span>
                 <!--<div>-->        
