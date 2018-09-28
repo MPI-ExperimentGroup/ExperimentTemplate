@@ -32,6 +32,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <a th:href="'participantlisting?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Participant Listing</a><br/>
         <a th:if="${param.detailed}" th:href="'tagviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Experiment Data Viewer</a><br/>
         <a th:href="'tagpairviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Experiment Data Pair Viewer</a><br/>
+        <a th:each="dataChannel : ${T(nl.mpi.tg.eg.frinex.model.ReportTypes.DataChannels).values()}" th:href="'tagpairviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;dataChannel=' + ${dataChannel.channel}" th:text="${dataChannel.label}">dataChannel</a><br/>
+        <a th:href="'stimulusresponseviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Stimulus Response Viewer</a><br/>
         <a th:href="'groupdataviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Group Data Viewer</a>&nbsp;<a th:href="'groupdatacsv?' + ${(param.detailed != null)? 'detailed' : 'simple'}">CSV</a><br/>
         <a th:if="${param.detailed}" th:href="'timestampviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Time Stamp Viewer</a><br/>
         <a th:if="${param.detailed}" th:href="'audiolisting?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Audio Listing</a><br/>
