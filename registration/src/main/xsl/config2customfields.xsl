@@ -216,11 +216,11 @@
                 </xsl:if>
             </xsl:for-each>
             <xsl:text>;
-                final int channel; final String label; final boolean logToSdCard;
+                public final int channel; public final String label; public final boolean logToSdCard;
                 DataChannels(int channel, String label, boolean logToSdCard){
-                    this.channel=channel;
-                    this.label = label;
-                    this.logToSdCard = logToSdCard;
+                this.channel=channel;
+                this.label = label;
+                this.logToSdCard = logToSdCard;
                 }
 
                 }
