@@ -19,6 +19,8 @@ package nl.mpi.tg.eg.frinex.rest;
 
 import java.util.List;
 import nl.mpi.tg.eg.frinex.model.TagPairData;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
@@ -42,6 +44,8 @@ public interface TagPairRepository extends PagingAndSortingRepository<TagPairDat
 
     @Query("select distinct new TagPairData(userId, screenName, dataChannel, eventTag, tagValue1, tagValue2, eventMs, tagDate) from TagPairData where userId = :userId and eventTag = :eventTag order by tagDate asc")
     List<TagPairData> findByUserIdAndEventTagOrderByTagDateAsc(@Param("userId") String userId, @Param("eventTag") String eventTag);
+
+    Page<TagPairData> findBydataChannel(Pageable pageable, Integer dataChannel);
 
     @Override
     @RestResource(exported = false)
