@@ -43,10 +43,13 @@ public class TagPairController {
     public String tagPairViewer(Model model, @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
             @RequestParam(value = "sort", required = false, defaultValue = "tagDate") String sortColumn,
             @RequestParam(value = "size", defaultValue = "2000", required = false) Integer size,
+            @RequestParam(value = "dataChannel", required = false) Integer dataChannel,
             @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection) {//, Pageable pageable
         final long count = this.tagPairRepository.count();
         model.addAttribute("count", count);
-        final Page<TagPairData> pageData = this.tagPairRepository.findAll(new PageRequest(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
+        final Page<TagPairData> pageData = (dataChannel == null)
+                ? this.tagPairRepository.findAll(new PageRequest(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn))
+                : this.tagPairRepository.findBydataChannel(new PageRequest(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn), dataChannel);
         final List<TagPairData> content = pageData.getContent();
         final List<TagPairData> contentDistinct = new ArrayList<>();
         for (TagPairData tagData : content) {
