@@ -211,11 +211,11 @@
                     </xsl:text> 
                 </xsl:if>
                 <xsl:if test="position() = last()">
-                    <xsl:text>;
+                    <xsl:text>
                     </xsl:text> 
                 </xsl:if>
             </xsl:for-each>
-            <xsl:text>
+            <xsl:text>;
                 final int channel; final String label; final boolean logToSdCard;
                 DataChannels(int channel, String label, boolean logToSdCard){
                     this.channel=channel;
