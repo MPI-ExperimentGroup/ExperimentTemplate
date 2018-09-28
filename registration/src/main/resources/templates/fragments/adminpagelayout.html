@@ -67,19 +67,19 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <div th:fragment="header" id="headerDiv">
             <!--<div th:fragment="navigation">-->
             <span>
-                <a class="headerButton" th:onclick="'javascript:window.location=\'' + @{/} + '?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '\';'"> Menu</a>
+                <a class="headerButton" style="position: absolute;" th:onclick="'javascript:window.location=\'' + @{/} + '?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '\';'"> Menu</a>
             </span>
             <!--</div>-->
             <div th:fragment="logout" align="right">
-                <span style="color: red; border-bottom: solid 1px; display: flex;" th:if="${!#strings.contains(#httpServletRequest.requestURI, 'ems12') and !#strings.contains(#httpServletRequest.requestURI, 'frinexproduction')}"> 
-                    This is the staging version which is for software testing only, data will not be preserved in this version. 
-                    This text will also not be shown in the production version. 
-                    Once you have verified that this version suits your needs, please request deployment of the production version.
-                </span>
                 <!--<div>-->        
                 <form th:action="@{/logout}" method="post">
                     <input type="submit" value="Sign Out"/>
                 </form>
+                <span style="color: red; border-bottom: solid 1px; padding: 10px; display: flex;" th:if="${!#strings.contains(#httpServletRequest.requestURI, 'ems12') and !#strings.contains(#httpServletRequest.requestURI, 'frinexproduction')}"> 
+                    This is the staging version which is for software testing only, data will not be preserved in this version. 
+                    This text will also not be shown in the production version. 
+                    Once you have verified that this version suits your needs, please request deployment of the production version.
+                </span>
                 <div th:inline="text">Logged in as: [[${#httpServletRequest.remoteUser}]]</div>
                 <div th:if="!${param.detailed}"><a th:href="${#httpServletRequest.requestURI} + '?detailed' + ${(param.id != null)? '&amp;id='+param.id : ''}">This view is simplified. Click to show all available information.</a></div>
                 <div th:if="${param.detailed}"><a th:href="${#httpServletRequest.requestURI} + '?simple' + ${(param.id != null)? '&amp;id='+param.id : ''}">Click to simplify the information shown in this table.</a></div>
