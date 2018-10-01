@@ -6,6 +6,1593 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+<h3>Experiment</h3><table border=1>
+<tr><td>
+&lt;experiment&gt;<br/>
+</td><td>
+appNameDisplay<br/>
+appNameInternal (lowercaseValue)
+<br/>
+backgroundColour (rgbHexValue)
+<br/>
+complementColour0 (rgbHexValue)
+<br/>
+complementColour1 (rgbHexValue)
+<br/>
+complementColour2 (rgbHexValue)
+<br/>
+complementColour3 (rgbHexValue)
+<br/>
+complementColour4 (rgbHexValue)
+<br/>
+primaryColour0 (rgbHexValue)
+<br/>
+primaryColour1 (rgbHexValue)
+<br/>
+primaryColour2 (rgbHexValue)
+<br/>
+primaryColour3 (rgbHexValue)
+<br/>
+primaryColour4 (rgbHexValue)
+<br/>
+isScalable (boolean)
+<br/>
+preserveLastState (boolean)
+<br/>
+rotatable (boolean)
+<br/>
+showMenuBar (boolean)
+<br/>
+defaultScale (decimal)
+<br/>
+textFontSize (integer)
+<br/>
+</td><td>
+&lt;preventWindowClose&gt;<br/>
+&lt;administration&gt;<br/>
+&lt;scss&gt;<br/>
+&lt;metadata&gt;<br/>
+&lt;presenter&gt;<br/>
+&lt;stimuli&gt;<br/>
+</td>
+</tr>
+</table>
+<h3>Administration</h3><table border=1>
+<tr><td>
+&lt;administration&gt;<br/>
+</td><td>
+&lt;dataChannel&gt;<br/>
+</td><td>
+channel (decimal)<br/>
+label<br/>
+logToSdCard (boolean)<br/>
+</td>
+</tr>
+</table>
+<h3>Metadata</h3><table border=1>
+<tr><td>
+&lt;metadata&gt;<br/>
+</td><td>
+controlledMessage<br/>
+controlledRegex<br/>
+postName<br/>
+preventServerDuplicates (boolean)<br/>
+duplicatesControlledMessage<br/>
+registrationField<br/>
+</td>
+</tr>
+</table>
+<h3>Presenter</h3><table border=1>
+<tr><td>
+&lt;presenter&gt;<br/>
+</td><td>
+back<br/>
+next<br/>
+self<br/>
+title<br/>
+menuLabel<br/>
+type (transmission, 
+metadata, 
+preload, 
+stimulus, 
+colourPicker, 
+colourReport, 
+kindiagram, 
+menu, 
+debug, 
+text, 
+timeline, 
+)<br/>
+</td>
+</tr>
+</table>
+<h3>Stimuli</h3><table border=1>
+<tr><td>
+&lt;stimuli&gt;<br/>
+</td><td>
+&lt;stimulus&gt;<br/>
+</td><td>
+</td>
+</tr>
+</table>
+<h3>Features</h3><table border=1>
+<tr><td>
+<div class="complexType">&lt;htmlText&gt;<br/>
+</td><td>
+featureText<br/>
+styleName<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;htmlTokenText&gt;<br/>
+</td><td>
+featureText<br/>
+styleName<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;logTokenText&gt;<br/>
+</td><td>
+dataChannel<br/>
+*type<br/>
+headerKey<br/>
+*dataLogFormat<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;plainText&gt;<br/>
+</td><td>
+featureText<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;image&gt;<br/>
+</td><td>
+*src<br/>
+styleName<br/>
+*msToNext<br/>
+</td><td>
+&lt;mediaLoaded&gt;<br/>
+&lt;mediaLoadFailed&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;menuItem&gt;<br/>
+</td><td>
+featureText<br/>
+*target<br/>
+hotKey<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;withStimuli&gt;<br/>
+</td><td>
+*eventTag<br/>
+minStimuliPerTag<br/>
+maxStimuliPerTag<br/>
+maxStimuli<br/>
+*randomise<br/>
+repeatCount<br/>
+repeatRandomWindow<br/>
+adjacencyThreshold<br/>
+</td><td>
+&lt;beforeStimulus&gt;<br/>
+&lt;eachStimulus&gt;<br/>
+&lt;afterStimulus&gt;<br/>
+&lt;randomGrouping&gt;<br/>
+&lt;stimuli&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;loadStimulus&gt;<br/>
+</td><td>
+eventTag<br/>
+minStimuliPerTag<br/>
+maxStimuliPerTag<br/>
+maxStimuli<br/>
+randomise<br/>
+repeatCount<br/>
+repeatRandomWindow<br/>
+adjacencyThreshold<br/>
+class<br/>
+</td><td>
+&lt;hasMoreStimulus&gt;<br/>
+&lt;endOfStimulus&gt;<br/>
+&lt;randomGrouping&gt;<br/>
+&lt;stimuli&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;withMatchingStimulus&gt;<br/>
+</td><td>
+*eventTag<br/>
+maxStimuli<br/>
+*randomise<br/>
+repeatCount<br/>
+repeatRandomWindow<br/>
+*matchingRegex<br/>
+</td><td>
+&lt;hasMoreStimulus&gt;<br/>
+&lt;endOfStimulus&gt;<br/>
+&lt;randomGrouping&gt;<br/>
+&lt;stimuli&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;loadSdCardStimulus&gt;<br/>
+</td><td>
+*eventTag<br/>
+minStimuliPerTag<br/>
+maxStimuliPerTag<br/>
+maxStimuli<br/>
+excludeRegex<br/>
+*randomise<br/>
+repeatCount<br/>
+repeatRandomWindow<br/>
+adjacencyThreshold<br/>
+</td><td>
+&lt;hasMoreStimulus&gt;<br/>
+&lt;endOfStimulus&gt;<br/>
+&lt;randomGrouping&gt;<br/>
+&lt;stimuli&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;currentStimulusHasTag&gt;<br/>
+</td><td>
+*msToNext<br/>
+tags<br/>
+</td><td>
+&lt;conditionTrue&gt;<br/>
+&lt;conditionFalse&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;validateStimuliResponses&gt;<br/>
+</td><td>
+</td><td>
+&lt;conditionTrue&gt;<br/>
+&lt;conditionFalse&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;stimulusExists&gt;<br/>
+</td><td>
+*offset<br/>
+</td><td>
+&lt;conditionTrue&gt;<br/>
+&lt;conditionFalse&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;showStimuliReport&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;sendStimuliReport&gt;<br/>
+</td><td>
+*type<br/>
+dataChannel<br/>
+headerKey<br/>
+separator<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;targetButton&gt;<br/>
+</td><td>
+featureText<br/>
+hotKey<br/>
+*target<br/>
+styleName<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;actionButton&gt;<br/>
+</td><td>
+featureText<br/>
+hotKey<br/>
+styleName<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;stimulusButton&gt;<br/>
+</td><td>
+featureText<br/>
+hotKey<br/>
+dataChannel<br/>
+styleName<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;touchInputStimulusButton&gt;<br/>
+</td><td>
+featureText<br/>
+*eventTag<br/>
+dataChannel<br/>
+*src<br/>
+styleName<br/>
+*listenerId<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;touchInputCaptureStart&gt;<br/>
+</td><td>
+*showControls<br/>
+*msToNext<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;touchInputReportSubmit&gt;<br/>
+</td><td>
+dataChannel<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;sendGroupMessageButton&gt;<br/>
+</td><td>
+featureText<br/>
+hotKey<br/>
+dataChannel<br/>
+*eventTag<br/>
+*repeatIncorrect<br/>
+*incrementPhase<br/>
+styleName<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;sendGroupMessage&gt;<br/>
+</td><td>
+*eventTag<br/>
+*incrementPhase<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;sendGroupStoredMessage&gt;<br/>
+</td><td>
+*eventTag<br/>
+*incrementPhase<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;sendGroupEndOfStimuli&gt;<br/>
+</td><td>
+*eventTag<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;ratingButton&gt;<br/>
+</td><td>
+dataChannel<br/>
+*ratingLabels<br/>
+ratingLabelLeft<br/>
+ratingLabelRight<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;ratingRadioButton&gt;<br/>
+</td><td>
+dataChannel<br/>
+*ratingLabels<br/>
+ratingLabelLeft<br/>
+ratingLabelRight<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;stimulusFreeText&gt;<br/>
+</td><td>
+featureText<br/>
+*validationRegex<br/>
+dataChannel<br/>
+allowedCharCodes<br/>
+hotKey<br/>
+styleName<br/>
+*inputErrorMessage<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;stimulusRatingButton&gt;<br/>
+</td><td>
+dataChannel<br/>
+ratingLabelLeft<br/>
+ratingLabelRight<br/>
+styleName<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;stimulusRatingRadio&gt;<br/>
+</td><td>
+dataChannel<br/>
+ratingLabelLeft<br/>
+ratingLabelRight<br/>
+styleName<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;stimulusHasRatingOptions&gt;<br/>
+</td><td>
+</td><td>
+&lt;conditionTrue&gt;<br/>
+&lt;conditionFalse&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;stimulusHasResponse&gt;<br/>
+</td><td>
+</td><td>
+&lt;conditionTrue&gt;<br/>
+&lt;conditionFalse&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;setStimulusCodeResponse&gt;<br/>
+</td><td>
+*codeFormat<br/>
+dataChannel<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;ratingFooterButton&gt;<br/>
+</td><td>
+dataChannel<br/>
+*ratingLabels<br/>
+ratingLabelLeft<br/>
+ratingLabelRight<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;targetFooterButton&gt;<br/>
+</td><td>
+featureText<br/>
+*target<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;actionFooterButton&gt;<br/>
+</td><td>
+featureText<br/>
+*eventTag<br/>
+hotKey<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;addPadding&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;localStorageData&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;allMetadataFields&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;metadataField&gt;<br/>
+</td><td>
+*fieldName<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;stimulusMetadataField&gt;<br/>
+</td><td>
+*fieldName<br/>
+dataChannel<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;metadataFieldConnection&gt;<br/>
+</td><td>
+*fieldName<br/>
+*linkedFieldName<br/>
+*oneToMany<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;metadataFieldVisibilityDependant&gt;<br/>
+</td><td>
+*fieldName<br/>
+*linkedFieldName<br/>
+*matchingRegex<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;metadataFieldDateTriggered&gt;<br/>
+</td><td>
+*fieldName<br/>
+*linkedFieldName<br/>
+*daysThresholds<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;saveMetadataButton&gt;<br/>
+</td><td>
+featureText<br/>
+*sendData<br/>
+*networkErrorMessage<br/>
+</td><td>
+&lt;onError&gt;<br/>
+&lt;onSuccess&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;createUserButton&gt;<br/>
+</td><td>
+featureText<br/>
+*target<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;selectUserMenu&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;eraseLocalStorageButton&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;eraseUsersDataButton&gt;<br/>
+</td><td>
+featureText<br/>
+*target<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;showCurrentMs&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;enableStimulusButtons&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;disableStimulusButtons&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;cancelPauseTimers&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;cancelPauseAll&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;showStimulusProgress&gt;<br/>
+</td><td>
+styleName<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;hideStimulusButtons&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;showStimulusButtons&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;displayCompletionCode&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;generateCompletionCode&gt;<br/>
+</td><td>
+</td><td>
+&lt;onError&gt;<br/>
+&lt;onSuccess&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;sendAllData&gt;<br/>
+</td><td>
+</td><td>
+&lt;onError&gt;<br/>
+&lt;onSuccess&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;sendMetadata&gt;<br/>
+</td><td>
+</td><td>
+&lt;onError&gt;<br/>
+&lt;onSuccess&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;eraseLocalStorageOnWindowClosing&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;keepStimulus&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;removeStimulus&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;removeMatchingStimulus&gt;<br/>
+</td><td>
+*matchingRegex<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;clearStimulus&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;centrePage&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;clearPage&gt;<br/>
+</td><td>
+styleName<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;backgroundImage&gt;<br/>
+</td><td>
+*msToNext<br/>
+*src<br/>
+styleName<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;allMenuItems&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;prevStimulusButton&gt;<br/>
+</td><td>
+featureText<br/>
+*eventTag<br/>
+*repeatIncorrect<br/>
+hotKey<br/>
+styleName<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;nextStimulusButton&gt;<br/>
+</td><td>
+featureText<br/>
+*eventTag<br/>
+*repeatIncorrect<br/>
+hotKey<br/>
+styleName<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;nextStimulus&gt;<br/>
+</td><td>
+*repeatIncorrect<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;prevStimulus&gt;<br/>
+</td><td>
+*repeatIncorrect<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;nextMatchingStimulus&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;addKinTypeGui&gt;<br/>
+</td><td>
+*diagramName<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;hasGetParameter&gt;<br/>
+</td><td>
+*parameterName<br/>
+</td><td>
+&lt;conditionTrue&gt;<br/>
+&lt;conditionFalse&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;hasMetadataValue&gt;<br/>
+</td><td>
+*fieldName<br/>
+*matchingRegex<br/>
+</td><td>
+&lt;conditionTrue&gt;<br/>
+&lt;conditionFalse&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;setMetadataValue&gt;<br/>
+</td><td>
+*fieldName<br/>
+*dataLogFormat<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;activateRandomItem&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;gotoPresenter&gt;<br/>
+</td><td>
+*target<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;gotoNextPresenter&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;logTimeStamp&gt;<br/>
+</td><td>
+*eventTag<br/>
+dataChannel<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;audioButton&gt;<br/>
+</td><td>
+*eventTag<br/>
+dataChannel<br/>
+*poster<br/>
+*autoPlay<br/>
+hotKey<br/>
+styleName<br/>
+*src<br/>
+</td><td>
+&lt;mediaLoaded&gt;<br/>
+&lt;mediaLoadFailed&gt;<br/>
+&lt;mediaPlaybackComplete&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;preloadAllStimuli&gt;<br/>
+</td><td>
+tags<br/>
+</td><td>
+&lt;onError&gt;<br/>
+&lt;onSuccess&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;showStimulus&gt;<br/>
+</td><td>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;showStimulusGrid&gt;<br/>
+</td><td>
+maxStimuli<br/>
+dataChannel<br/>
+*columnCount<br/>
+*imageWidth<br/>
+*eventTag<br/>
+animate<br/>
+</td><td>
+&lt;responseCorrect&gt;<br/>
+&lt;responseIncorrect&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;matchingStimulusGrid&gt;<br/>
+</td><td>
+*columnCount<br/>
+dataChannel<br/>
+*maxWidth<br/>
+animate<br/>
+*matchingRegex<br/>
+maxStimuli<br/>
+*randomise<br/>
+</td><td>
+&lt;responseCorrect&gt;<br/>
+&lt;responseIncorrect&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;pause&gt;<br/>
+</td><td>
+*msToNext<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;startTimer&gt;<br/>
+</td><td>
+*msToNext<br/>
+*listenerId<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;compareTimer&gt;<br/>
+</td><td>
+*msToNext<br/>
+*listenerId<br/>
+</td><td>
+&lt;aboveThreshold&gt;<br/>
+&lt;withinThreshold&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;clearTimer&gt;<br/>
+</td><td>
+*listenerId<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;logTimerValue&gt;<br/>
+</td><td>
+*listenerId<br/>
+*eventTag<br/>
+dataChannel<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;timerLabel&gt;<br/>
+</td><td>
+*listenerId<br/>
+*msToNext<br/>
+*msLabelFormat<br/>
+styleName<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;randomMsPause&gt;<br/>
+</td><td>
+*minimum<br/>
+*maximum<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;triggerListener&gt;<br/>
+</td><td>
+*listenerId<br/>
+*threshold<br/>
+*maximum<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;habituationParadigmListener&gt;<br/>
+</td><td>
+*listenerId<br/>
+*threshold<br/>
+*maximum<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;trigger&gt;<br/>
+</td><td>
+*listenerId<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;resetTrigger&gt;<br/>
+</td><td>
+*listenerId<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;countdownLabel&gt;<br/>
+</td><td>
+featureText<br/>
+*msToNext<br/>
+*msLabelFormat<br/>
+styleName<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;stimulusPause&gt;<br/>
+</td><td>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;stimulusLabel&gt;<br/>
+</td><td>
+styleName<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;onError&gt;<br/>
+</td><td>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;onSuccess&gt;<br/>
+</td><td>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;kinTypeStringDiagram&gt;<br/>
+</td><td>
+*msToNext<br/>
+*kintypestring<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;loadKinTypeStringDiagram&gt;<br/>
+</td><td>
+*msToNext<br/>
+*diagramName<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;editableKinEntitesDiagram&gt;<br/>
+</td><td>
+*msToNext<br/>
+*diagramName<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;conditionTrue&gt;<br/>
+</td><td>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;conditionFalse&gt;<br/>
+</td><td>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;responseCorrect&gt;<br/>
+</td><td>
+*msToNext<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;responseIncorrect&gt;<br/>
+</td><td>
+*msToNext<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;hasMoreStimulus&gt;<br/>
+</td><td>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;endOfStimulus&gt;<br/>
+</td><td>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;beforeStimulus&gt;<br/>
+</td><td>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;eachStimulus&gt;<br/>
+</td><td>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;afterStimulus&gt;<br/>
+</td><td>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;existingUserCheck&gt;<br/>
+</td><td>
+</td><td>
+&lt;multipleUsers&gt;<br/>
+&lt;singleUser&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;multipleUsers&gt;<br/>
+</td><td>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;singleUser&gt;<br/>
+</td><td>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;aboveThreshold&gt;<br/>
+</td><td>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;withinThreshold&gt;<br/>
+</td><td>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;mediaLoaded&gt;<br/>
+</td><td>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;mediaLoadFailed&gt;<br/>
+</td><td>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;mediaPlaybackComplete&gt;<br/>
+</td><td>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;table&gt;<br/>
+</td><td>
+styleName<br/>
+showOnBackButton<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;row&gt;<br/>
+</td><td>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;column&gt;<br/>
+</td><td>
+styleName<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;region&gt;<br/>
+</td><td>
+*regionId<br/>
+styleName<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;regionStyle&gt;<br/>
+</td><td>
+*regionId<br/>
+styleName<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;regionReplace&gt;<br/>
+</td><td>
+*regionId<br/>
+styleName<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;regionClear&gt;<br/>
+</td><td>
+*regionId<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;stimulusPresent&gt;<br/>
+</td><td>
+*percentOfPage<br/>
+dataChannel<br/>
+*maxHeight<br/>
+*maxWidth<br/>
+*msToNext<br/>
+animate<br/>
+replacementRegex<br/>
+replacement<br/>
+*showControls<br/>
+</td><td>
+&lt;mediaLoaded&gt;<br/>
+&lt;mediaLoadFailed&gt;<br/>
+&lt;mediaPlaybackComplete&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;stimulusImage&gt;<br/>
+</td><td>
+*msToNext<br/>
+styleName<br/>
+dataChannel<br/>
+</td><td>
+&lt;mediaLoaded&gt;<br/>
+&lt;mediaLoadFailed&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;stimulusCodeImage&gt;<br/>
+</td><td>
+*msToNext<br/>
+dataChannel<br/>
+*codeFormat<br/>
+styleName<br/>
+</td><td>
+&lt;mediaLoaded&gt;<br/>
+&lt;mediaLoadFailed&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;stimulusCodeVideo&gt;<br/>
+</td><td>
+*msToNext<br/>
+dataChannel<br/>
+*maxHeight<br/>
+*codeFormat<br/>
+*percentOfPage<br/>
+*loop<br/>
+styleName<br/>
+*autoPlay<br/>
+*showControls<br/>
+*maxWidth<br/>
+</td><td>
+&lt;mediaLoaded&gt;<br/>
+&lt;mediaLoadFailed&gt;<br/>
+&lt;mediaPlaybackComplete&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;stimulusCodeAudio&gt;<br/>
+</td><td>
+*msToNext<br/>
+dataChannel<br/>
+*codeFormat<br/>
+*showPlaybackIndicator<br/>
+</td><td>
+&lt;mediaLoaded&gt;<br/>
+&lt;mediaLoadFailed&gt;<br/>
+&lt;mediaPlaybackComplete&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;stimulusAudio&gt;<br/>
+</td><td>
+*msToNext<br/>
+dataChannel<br/>
+*showPlaybackIndicator<br/>
+</td><td>
+&lt;mediaLoaded&gt;<br/>
+&lt;mediaLoadFailed&gt;<br/>
+&lt;mediaPlaybackComplete&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;playVideo&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;rewindVideo&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;pauseVideo&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;stimulusImageCapture&gt;<br/>
+</td><td>
+featureText<br/>
+*percentOfPage<br/>
+*maxHeight<br/>
+*maxWidth<br/>
+*msToNext<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;VideoPanel&gt;<br/>
+</td><td>
+*src<br/>
+*percentOfPage<br/>
+*maxHeight<br/>
+*maxWidth<br/>
+*poster<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;AnnotationTimelinePanel&gt;<br/>
+</td><td>
+*src<br/>
+*poster<br/>
+*eventTag<br/>
+*columnCount<br/>
+maxStimuli<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;startAudioRecorder&gt;<br/>
+</td><td>
+*recordingFormat<br/>
+*filePerStimulus<br/>
+*eventTag<br/>
+deviceRegex<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;stopAudioRecorder&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;startAudioRecorderTag&gt;<br/>
+</td><td>
+*eventTier<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;endAudioRecorderTag&gt;<br/>
+</td><td>
+*eventTier<br/>
+*eventTag<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;helpDialogue&gt;<br/>
+</td><td>
+featureText<br/>
+*closeButtonLabel<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;userInfo&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;versionData&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;preventWindowClose&gt;<br/>
+</td><td>
+featureText<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;showColourReport&gt;<br/>
+</td><td>
+scoreThreshold<br/>
+</td><td>
+&lt;aboveThreshold&gt;<br/>
+&lt;withinThreshold&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;groupNetwork&gt;<br/>
+</td><td>
+*groupMembers<br/>
+*groupCommunicationChannels<br/>
+*phasesPerStimulus<br/>
+</td><td>
+&lt;groupNetworkActivity&gt;<br/>
+&lt;sendGroupEndOfStimuli&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;groupNetworkActivity&gt;<br/>
+</td><td>
+*groupRole<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;groupMemberCodeLabel&gt;<br/>
+</td><td>
+styleName<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;groupMemberLabel&gt;<br/>
+</td><td>
+styleName<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;groupMessageLabel&gt;<br/>
+</td><td>
+styleName<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;groupResponseStimulusImage&gt;<br/>
+</td><td>
+*percentOfPage<br/>
+dataChannel<br/>
+*maxHeight<br/>
+*maxWidth<br/>
+*msToNext<br/>
+animate<br/>
+</td><td>
+&lt;mediaLoaded&gt;<br/>
+&lt;mediaLoadFailed&gt;<br/>
+&lt;mediaPlaybackComplete&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;groupResponseFeedback&gt;<br/>
+</td><td>
+</td><td>
+&lt;responseCorrect&gt;<br/>
+&lt;responseIncorrect&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;groupScoreLabel&gt;<br/>
+</td><td>
+styleName<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;groupChannelScoreLabel&gt;<br/>
+</td><td>
+styleName<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;scoreLabel&gt;<br/>
+</td><td>
+styleName<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;submitGroupEvent&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;clearCurrentScore&gt;<br/>
+</td><td>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;scoreIncrement&gt;<br/>
+</td><td>
+*scoreValue<br/>
+</td><td>
+can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;bestScoreAboveThreshold&gt;<br/>
+</td><td>
+scoreThreshold<br/>
+errorThreshold<br/>
+potentialThreshold<br/>
+correctStreak<br/>
+errorStreak<br/>
+</td><td>
+&lt;aboveThreshold&gt;<br/>
+&lt;withinThreshold&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;totalScoreAboveThreshold&gt;<br/>
+</td><td>
+scoreThreshold<br/>
+errorThreshold<br/>
+potentialThreshold<br/>
+</td><td>
+&lt;aboveThreshold&gt;<br/>
+&lt;withinThreshold&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;scoreAboveThreshold&gt;<br/>
+</td><td>
+scoreThreshold<br/>
+errorThreshold<br/>
+potentialThreshold<br/>
+correctStreak<br/>
+errorStreak<br/>
+</td><td>
+&lt;aboveThreshold&gt;<br/>
+&lt;withinThreshold&gt;<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;resetStimulus&gt;<br/>
+</td><td>
+*target<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;submitTestResults&gt;<br/>
+</td><td>
+</td><td>
+&lt;onError&gt;<br/>
+&lt;onSuccess&gt;<br/>
+</td>
+</tr>
+</table>
     </body>
 </html>
