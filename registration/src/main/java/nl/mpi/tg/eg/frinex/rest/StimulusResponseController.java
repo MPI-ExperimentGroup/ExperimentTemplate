@@ -43,10 +43,13 @@ public class StimulusResponseController {
     public String tagPairViewer(Model model, @RequestParam(value = "page", defaultValue = "0", required = false) Integer page,
             @RequestParam(value = "sort", required = false, defaultValue = "tagDate") String sortColumn,
             @RequestParam(value = "size", defaultValue = "2000", required = false) Integer size,
+            @RequestParam(value = "dataChannel", required = false) Integer dataChannel,
             @RequestParam(value = "dir", required = false, defaultValue = "a") String sortDirection) {//, Pageable pageable
         final long count = this.stimulusResponseRepository.count();
         model.addAttribute("count", count);
-        final Page<StimulusResponse> pageData = this.stimulusResponseRepository.findAll(new PageRequest(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn));
+        final Page<StimulusResponse> pageData = (dataChannel == null)
+                ? this.stimulusResponseRepository.findAll(new PageRequest(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn))
+                : this.stimulusResponseRepository.findBydataChannel(new PageRequest(page, size, ("a".equals(sortDirection)) ? Sort.Direction.ASC : Sort.Direction.DESC, sortColumn), dataChannel);
         final List<StimulusResponse> content = pageData.getContent();
         final List<StimulusResponse> contentDistinct = new ArrayList<>();
         for (StimulusResponse stimulusResponse : content) {
