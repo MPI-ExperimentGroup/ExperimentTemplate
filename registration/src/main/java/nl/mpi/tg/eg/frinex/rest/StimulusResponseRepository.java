@@ -18,6 +18,8 @@
 package nl.mpi.tg.eg.frinex.rest;
 
 import nl.mpi.tg.eg.frinex.model.StimulusResponse;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
@@ -28,6 +30,8 @@ import org.springframework.data.rest.core.annotation.RestResource;
  */
 @RepositoryRestResource(collectionResourceRel = "stimulusresponses", path = "stimulusresponses")
 public interface StimulusResponseRepository extends PagingAndSortingRepository<StimulusResponse, Long> {
+
+    Page<StimulusResponse> findBydataChannel(Pageable pageable, Integer dataChannel);
 
     @Override
     @RestResource(exported = false)
