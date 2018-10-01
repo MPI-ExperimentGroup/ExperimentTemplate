@@ -68,6 +68,12 @@ public class JsonToXml {
                 } catch (IOException exception) {
                     System.out.println("Failed to create schema file: " + exception.getMessage());
                 }
+                try {
+                    final File htmlOutputFile = new File(outputDirectory, "frinex.html");
+                    new SchemaDocumentationGenerator().createHtmlFile(htmlOutputFile);
+                } catch (IOException exception) {
+                    System.out.println("Failed to create documentation file: " + exception.getMessage());
+                }
                 final WizardController wizardController = new WizardController();
                 for (File jsonFile : new File(inputDirectory).listFiles((File dir, String name) -> name.endsWith(".json"))) {
                     System.out.println(jsonFile);
