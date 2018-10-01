@@ -44,255 +44,225 @@ public class SchemaDocumentationGenerator {
     }
 
     private void addExperiment(Writer writer) throws IOException {
-        writer.append("<xs:simpleType name=\"rgbHexValue\">\n");
-        writer.append("<xs:restriction base=\"xs:token\">\n");
-        writer.append("<xs:pattern value=\"#[\\dA-Fa-f]{6}\"/>\n");
-        writer.append("</xs:restriction>\n");
-        writer.append("</xs:simpleType>\n");
-        writer.append("<xs:simpleType name=\"lowercaseValue\">\n");
-        writer.append("<xs:restriction base=\"xs:string\">\n");
-        writer.append("<xs:pattern value=\"[a-z]([a-z_0-9]){3,}\"/>\n");
-        writer.append("</xs:restriction>\n");
-        writer.append("</xs:simpleType>\n");
-        writer.append("<xs:simpleType name=\"integerList\">\n");
-        writer.append("<xs:list itemType=\"xs:integer\"/>\n");
-        writer.append("</xs:simpleType>\n");
-
-        writer.append("<xs:element name=\"experiment\">\n").append("<xs:complexType>\n").append("<xs:sequence minOccurs=\"1\" maxOccurs=\"1\">\n");
-        writer.append("<xs:annotation>\n");
-        writer.append("<xs:documentation>Root element of the experiment configuration file of which only one is permitted.</xs:documentation>\n");
-        writer.append("</xs:annotation>\n");
-//        for (final PresenterType presenterType : presenterTypes) {
-//            writer.append("<xs:element ref=\"").append(presenterType.name()).append("\"/>\n");
-//        }
-        writer.append("<xs:element name=\"preventWindowClose\" minOccurs=\"0\" maxOccurs=\"1\">\n");
-        writer.append("<xs:complexType>\n");
-        writer.append("<xs:attribute name=\"featureText\" use=\"required\" type=\"xs:string\"/>\n");
-        writer.append("</xs:complexType>\n");
-        writer.append("</xs:element>\n");
-        writer.append("<xs:element name=\"administration\" type=\"administrationType\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
-        writer.append("<xs:element name=\"scss\" type=\"xs:string\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
-        writer.append("<xs:element name=\"metadata\" type=\"metadataType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-        writer.append("<xs:element name=\"presenter\"  minOccurs=\"1\" maxOccurs=\"unbounded\" type=\"presenterType\"/>\n");
-        writer.append("<xs:element name=\"stimuli\" type=\"stimuliType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-        writer.append("</xs:sequence>\n");
+        writer.append("<tr><td>\n");
+//
+//        writer.append("<xs:simpleType name=\"rgbHexValue\">\n");
+//        writer.append("<xs:restriction base=\"xs:token\">\n");
+//        writer.append("<xs:pattern value=\"#[\\dA-Fa-f]{6}\"/>\n");
+//        writer.append("</xs:restriction>\n");
+//        writer.append("</xs:simpleType>\n");
+//        writer.append("<xs:simpleType name=\"lowercaseValue\">\n");
+//        writer.append("<xs:restriction base=\"xs:string\">\n");
+//        writer.append("<xs:pattern value=\"[a-z]([a-z_0-9]){3,}\"/>\n");
+//        writer.append("</xs:restriction>\n");
+//        writer.append("</xs:simpleType>\n");
+//        writer.append("<xs:simpleType name=\"integerList\">\n");
+//        writer.append("<xs:list itemType=\"xs:integer\"/>\n");
+//        writer.append("</xs:simpleType>\n");
+        writer.append("&lt;experiment&gt;<br/>\n");
+//        writer.append("Root element of the experiment configuration file of which only one is permitted.\n");
+        writer.append("</td><td>\n");
         for (String attributeStrings : new String[]{"appNameDisplay"}) {
-            writer.append("<xs:attribute name=\"").append(attributeStrings).append("\" type=\"xs:string\" use=\"required\"/>\n");
+            writer.append(attributeStrings);
+            writer.append("<br/>\n");
         }
         for (String attributeLowercase : new String[]{"appNameInternal"}) {
-            writer.append("<xs:attribute name=\"").append(attributeLowercase).append("\" type=\"lowercaseValue\" use=\"required\"/>\n");
+            writer.append(attributeLowercase).append(" (lowercaseValue)\n");
+            writer.append("<br/>\n");
         }
         for (String attributeRGBs : new String[]{"backgroundColour", "complementColour0", "complementColour1", "complementColour2", "complementColour3", "complementColour4", "primaryColour0", "primaryColour1", "primaryColour2", "primaryColour3", "primaryColour4"}) {
-            writer.append("<xs:attribute name=\"").append(attributeRGBs).append("\" type=\"rgbHexValue\" use=\"required\"/>\n");
+            writer.append(attributeRGBs).append(" (rgbHexValue)\n");
+            writer.append("<br/>\n");
         }
         for (String attributeBooleans : new String[]{"isScalable", "preserveLastState", "rotatable", "showMenuBar"}) {
-            writer.append("<xs:attribute name=\"").append(attributeBooleans).append("\" type=\"xs:boolean\" use=\"required\"/>\n");
+            writer.append(attributeBooleans).append(" (boolean)\n");
+            writer.append("<br/>\n");
         }
         for (String attributeFloats : new String[]{"defaultScale"}) {
-            writer.append("<xs:attribute name=\"").append(attributeFloats).append("\" type=\"xs:decimal\" use=\"required\"/>\n");
+            writer.append(attributeFloats).append(" (decimal)\n");
+            writer.append("<br/>\n");
         }
         for (String attributeIntegers : new String[]{"textFontSize"}) {
-            writer.append("<xs:attribute name=\"").append(attributeIntegers).append("\" type=\"xs:integer\" use=\"required\"/>\n");
+            writer.append(attributeIntegers).append(" (integer)\n");;
+            writer.append("<br/>\n");
         }
         for (String attributeIntegerLists : new String[]{}) {
-            writer.append("<xs:attribute name=\"").append(attributeIntegerLists).append("\" type=\"integerList\" use=\"required\"/>\n");
+            writer.append(attributeIntegerLists);
+            writer.append("<br/>\n");
         }
-        writer.append("</xs:complexType>\n").append("</xs:element>\n");
+        writer.append("</td><td>\n");
+        writer.append("&lt;preventWindowClose&gt;<br/>\n"); //featureText
+        writer.append("&lt;administration&gt;<br/>\n");
+        writer.append("&lt;scss&gt;<br/>\n");
+        writer.append("&lt;metadata&gt;<br/>\n");
+        writer.append("&lt;presenter&gt;<br/>\n");
+        writer.append("&lt;stimuli&gt;<br/>\n");
+        writer.append("</td>\n");
+        writer.append("</tr>\n");
     }
 
     private void addPresenter(Writer writer, final PresenterType[] presenterTypes) throws IOException {
-        writer.append("<xs:complexType name=\"presenterType\">\n").append("<xs:choice minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
-        for (final FeatureType featureRef : FeatureType.values()) {
-            if (featureRef.getIsChildType() == FeatureType.Contitionals.none) {
-                writer.append("<xs:element name=\"").append(featureRef.name()).append("\" type=\"").append(featureRef.name()).append("Type\"/>\n");
-            }
-        }
-        writer.append("</xs:choice>\n");
-        writer.append("<xs:attribute name=\"back\" type=\"xs:string\"/>\n"); // todo: constrain back to always refer to an presenter that exists
-        writer.append("<xs:attribute name=\"next\" type=\"xs:string\"/>\n"); // todo: constrain back to always refer to an presenter that exists
-        writer.append("<xs:attribute name=\"self\" type=\"xs:string\"/>\n");
-        writer.append("<xs:attribute name=\"title\" type=\"xs:string\"/>\n");
-        writer.append("<xs:attribute name=\"menuLabel\" type=\"xs:string\"/>\n");
-        writer.append("<xs:attribute name=\"type\">\n");
-        writer.append("<xs:simpleType>\n");
-        writer.append("<xs:restriction>\n");
-        writer.append("<xs:simpleType>\n");
-        writer.append("<xs:list>\n");
-        writer.append("<xs:simpleType>\n");
-        writer.append("<xs:restriction base=\"xs:token\">\n");
+        writer.append("<tr><td>\n");
+        writer.append("&lt;presenter&gt;<br/>\n");
+        writer.append("</td><td>\n");
+
+        writer.append("back<br/>\n"); // todo: constrain back to always refer to an presenter that exists
+        writer.append("next<br/>\n"); // todo: constrain back to always refer to an presenter that exists
+        writer.append("self<br/>\n");
+        writer.append("title<br/>\n");
+        writer.append("menuLabel<br/>\n");
+        writer.append("type (");
+
         for (final PresenterType presenterType : presenterTypes) {
-            writer.append("<xs:enumeration value=\"").append(presenterType.name()).append("\"/>\n");
+            writer.append(presenterType.name()).append(", \n");
         }
-        writer.append("</xs:restriction>\n");
-        writer.append("</xs:simpleType>\n");
-        writer.append("</xs:list>\n");
-        writer.append("</xs:simpleType>\n");
-        writer.append("<xs:minLength value=\"1\"/>\n");
-        writer.append("</xs:restriction>\n");
-        writer.append("</xs:simpleType>\n");
-        writer.append("</xs:attribute>\n");
-//        writer.append("<xs:assert test=\"count(*/metadataField) le 0\"/>"); // todo: apply this test to enforce presenter type constraints if possible
-        writer.append("</xs:complexType>\n");
+        writer.append(")<br/>\n");
+//        writer.append("</td><td>\n");
+//        writer.append("type (\n");
+//        for (final FeatureType featureRef : FeatureType.values()) {
+//            if (featureRef.getIsChildType() == FeatureType.Contitionals.none) {
+//                writer.append(featureRef.name());
+//                writer.append(", ");
+//            }
+//        }
+//        writer.append(")<br/>\n");
+
+        writer.append("</td>\n");
+        writer.append("</tr>\n");
     }
 
     private void addAdministration(Writer writer) throws IOException {
-        writer.append("<xs:complexType  name=\"administrationType\">\n").append("<xs:sequence>\n");
-        writer.append("<xs:element name=\"dataChannel\" minOccurs=\"0\" maxOccurs=\"unbounded\">\n").append("<xs:complexType>\n");
-//        writer.append("<xs:sequence>\n").append("</xs:sequence>\n");
-        writer.append("<xs:attribute name=\"channel\" type=\"xs:decimal\" use=\"required\"/>\n");
-        writer.append("<xs:attribute name=\"label\" type=\"xs:string\" use=\"required\"/>\n");
-        writer.append("<xs:attribute name=\"logToSdCard\" type=\"xs:boolean\" use=\"required\"/>\n");
-        writer.append("</xs:complexType>\n").append("</xs:element>\n");
-        writer.append("</xs:sequence>\n");
-        writer.append("</xs:complexType>\n");
+        writer.append("<tr><td>\n");
+        writer.append("&lt;administration&gt;<br/>\n");
+        writer.append("</td><td>\n");
+        writer.append("&lt;dataChannel&gt;<br/>\n");
+        writer.append("</td><td>\n");
+        writer.append("channel (decimal)<br/>\n");
+        writer.append("label<br/>\n");
+        writer.append("logToSdCard (boolean)<br/>\n");
+        writer.append("</td>\n");
+        writer.append("</tr>\n");
     }
 
     private void addMetadata(Writer writer) throws IOException {
-        writer.append("<xs:complexType  name=\"metadataType\">\n").append("<xs:sequence>\n");
-        writer.append("<xs:element name=\"field\" maxOccurs=\"unbounded\">\n").append("<xs:complexType>\n");
-//        writer.append("<xs:sequence>\n").append("</xs:sequence>\n");
-        writer.append("<xs:attribute name=\"controlledMessage\" type=\"xs:string\" use=\"required\"/>\n");
-        writer.append("<xs:attribute name=\"controlledRegex\" type=\"xs:string\" use=\"required\"/>\n");
-        writer.append("<xs:attribute name=\"postName\" type=\"xs:string\" use=\"required\"/>\n");
-        writer.append("<xs:attribute name=\"preventServerDuplicates\" type=\"xs:boolean\" use=\"optional\"/>\n");
-        writer.append("<xs:attribute name=\"duplicatesControlledMessage\" type=\"xs:string\" use=\"optional\"/>\n");
-        writer.append("<xs:attribute name=\"registrationField\" type=\"xs:string\" use=\"required\"/>\n");
-        writer.append("</xs:complexType>\n").append("</xs:element>\n");
-        writer.append("</xs:sequence>\n");
-        writer.append("</xs:complexType>\n");
+        writer.append("<tr><td>\n");
+        writer.append("&lt;metadata&gt;<br/>\n");
+        writer.append("</td><td>\n");
+        writer.append("controlledMessage<br/>\n");
+        writer.append("controlledRegex<br/>\n");
+        writer.append("postName<br/>\n");
+        writer.append("preventServerDuplicates (boolean)<br/>\n");
+        writer.append("duplicatesControlledMessage<br/>\n");
+        writer.append("registrationField<br/>\n");
+        writer.append("</td>\n");
+        writer.append("</tr>\n");
     }
 
     private void addStimuli(Writer writer) throws IOException {
-        writer.append("<xs:complexType name=\"stimuliType\">\n").append("<xs:sequence>\n");
-        writer.append("<xs:element name=\"stimulus\" minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
-        writer.append("</xs:element>\n");
-        writer.append("</xs:sequence>\n");
-        writer.append("</xs:complexType>\n");
+        writer.append("<tr><td>\n");
+        writer.append("&lt;stimuli&gt;<br/>\n");
+        writer.append("</td><td>\n");
+        writer.append("&lt;stimulus&gt;<br/>\n");
+        writer.append("</td><td>\n");
+        writer.append("</td>\n");
+        writer.append("</tr>\n");
     }
 
     private void addFeature(Writer writer, final FeatureType featureType) throws IOException {
-        writer.append("<xs:complexType name=\"").append(featureType.name()).append("Type\">\n");
-        if (featureType.canHaveFeatures()) {
-            writer.append("<xs:choice minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
-            for (final FeatureType featureRef : FeatureType.values()) {
-                if (featureRef.getIsChildType() == FeatureType.Contitionals.none || featureRef.getIsChildType() == featureType.getRequiresChildType()
-                        || featureRef.getIsChildType() == FeatureType.Contitionals.groupNetworkAction // currently allowing all groupNetworkAction in any element
-                        || featureRef.getIsChildType() == FeatureType.Contitionals.stimulusAction // currently allowing all stimulusAction in any element
-                        ) {
-                    writer.append("<xs:element name=\"").append(featureRef.name()).append("\" type=\"").append(featureRef.name()).append("Type\"/>\n");
+        writer.append("<tr><td>\n");
+        writer.append("<div class=\"complexType\">&lt;").append(featureType.name()).append("&gt;<br/>\n");
+        writer.append("</td><td>\n");
+        if (featureType.canHaveText()) {
+            writer.append("featureText<br/>\n");
+        }
+        if (featureType.getFeatureAttributes() != null) {
+            for (final FeatureAttribute featureAttribute : featureType.getFeatureAttributes()) {
+                if (!featureAttribute.isOptional() && !featureType.allowsCustomImplementation()) {
+                    writer.append("*");
                 }
+                writer.append(featureAttribute.name());
+                writer.append("<br/>\n");
             }
-            writer.append("</xs:choice>\n");
+        }
+        if (featureType.canHaveStimulusTags() && !featureType.isCanHaveRandomGrouping()) {
+            writer.append("tags<br/>\n");
+        }
+        if (featureType.allowsCustomImplementation()) {
+            writer.append("class<br/>\n");
+        }
+        writer.append("</td><td>\n");
+//        writer.append("&gt;<br/>\n");
+        if (featureType.canHaveFeatures()) {
+            writer.append("can have features<br/>\n");
+//            for (final FeatureType featureRef : FeatureType.values()) {
+//                if (featureRef.getIsChildType() == FeatureType.Contitionals.none || featureRef.getIsChildType() == featureType.getRequiresChildType()
+//                        || featureRef.getIsChildType() == FeatureType.Contitionals.groupNetworkAction // currently allowing all groupNetworkAction in any element
+//                        || featureRef.getIsChildType() == FeatureType.Contitionals.stimulusAction // currently allowing all stimulusAction in any element
+//                        ) {
+//                    writer.append("<div class=\"element\">\"").append(featureRef.name()).append(featureRef.name()).append("\"\n");
+//                }
+//            }
+//            writer.append("</div>\n");
         } else {
             switch (featureType.getRequiresChildType()) {
                 case hasTrueFalseCondition:
-                    writer.append("<xs:all>\n");
-                    writer.append("<xs:element name=\"conditionTrue\" type=\"conditionTrueType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                    writer.append("<xs:element name=\"conditionFalse\" type=\"conditionFalseType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                    writer.append("</xs:all>\n");
+                    writer.append("&lt;conditionTrue&gt;<br/>\n");
+                    writer.append("&lt;conditionFalse&gt;<br/>\n");
                     break;
                 case hasCorrectIncorrect:
-                    writer.append("<xs:all>\n");
-                    writer.append("<xs:element name=\"responseCorrect\" type=\"responseCorrectType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                    writer.append("<xs:element name=\"responseIncorrect\" type=\"responseIncorrectType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                    writer.append("</xs:all>\n");
+                    writer.append("&lt;responseCorrect&gt;<br/>\n");
+                    writer.append("&lt;responseIncorrect&gt;<br/>\n");
                     break;
                 case hasMoreStimulus:
-                    writer.append("<xs:all>\n");
-                    writer.append("<xs:element name=\"hasMoreStimulus\" type=\"hasMoreStimulusType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                    writer.append("<xs:element name=\"endOfStimulus\" type=\"endOfStimulusType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                    writer.append("<xs:element name=\"randomGrouping\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
-                    writer.append("<xs:element name=\"stimuli\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
-                    writer.append("</xs:all>\n");
+                    writer.append("&lt;hasMoreStimulus&gt;<br/>\n");
+                    writer.append("&lt;endOfStimulus&gt;<br/>\n");
+                    writer.append("&lt;randomGrouping&gt;<br/>\n");
+                    writer.append("&lt;stimuli&gt;<br/>\n");
                     break;
                 case hasErrorSuccess:
-                    writer.append("<xs:all>\n");
-                    writer.append("<xs:element name=\"onError\" type=\"onErrorType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                    writer.append("<xs:element name=\"onSuccess\" type=\"onSuccessType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                    writer.append("</xs:all>\n");
+                    writer.append("&lt;onError&gt;<br/>\n");
+                    writer.append("&lt;onSuccess&gt;<br/>\n");
                     break;
                 case hasUserCount:
-                    writer.append("<xs:all>\n");
-                    writer.append("<xs:element name=\"multipleUsers\" type=\"multipleUsersType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                    writer.append("<xs:element name=\"singleUser\" type=\"singleUserType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                    writer.append("</xs:all>\n");
+                    writer.append("&lt;multipleUsers&gt;<br/>\n");
+                    writer.append("&lt;singleUser&gt;<br/>\n");
                     break;
                 case hasThreshold:
-                    writer.append("<xs:all>\n");
-                    writer.append("<xs:element name=\"aboveThreshold\" type=\"aboveThresholdType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                    writer.append("<xs:element name=\"withinThreshold\" type=\"withinThresholdType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                    writer.append("</xs:all>\n");
+                    writer.append("&lt;aboveThreshold&gt;<br/>\n");
+                    writer.append("&lt;withinThreshold&gt;<br/>\n");
                     break;
                 case groupNetworkActivity:
-                    writer.append("<xs:choice minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
-                    writer.append("<xs:element name=\"groupNetworkActivity\" type=\"groupNetworkActivityType\"/>\n");
-                    writer.append("<xs:element name=\"sendGroupEndOfStimuli\" type=\"sendGroupEndOfStimuliType\"/>\n");
-                    writer.append("</xs:choice>\n");
+                    writer.append("&lt;groupNetworkActivity&gt;<br/>\n");
+                    writer.append("&lt;sendGroupEndOfStimuli&gt;<br/>\n");
                     break;
                 case hasMediaPlayback:
-                    writer.append("<xs:all>\n");
-                    writer.append("<xs:element name=\"mediaLoaded\" type=\"mediaLoadedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                    writer.append("<xs:element name=\"mediaLoadFailed\" type=\"mediaLoadFailedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                    writer.append("<xs:element name=\"mediaPlaybackComplete\" type=\"mediaPlaybackCompleteType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                    writer.append("</xs:all>\n");
+                    writer.append("&lt;mediaLoaded&gt;<br/>\n");
+                    writer.append("&lt;mediaLoadFailed&gt;<br/>\n");
+                    writer.append("&lt;mediaPlaybackComplete&gt;<br/>\n");
                     break;
                 case hasMediaLoading:
-                    writer.append("<xs:all>\n");
-                    writer.append("<xs:element name=\"mediaLoaded\" type=\"mediaLoadedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                    writer.append("<xs:element name=\"mediaLoadFailed\" type=\"mediaLoadFailedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-                    writer.append("</xs:all>\n");
+                    writer.append("&lt;mediaLoaded&gt;<br/>\n");
+                    writer.append("&lt;mediaLoadFailed&gt;<br/>\n");
                     break;
 //                case needsConditionalParent:
 //                    break;
                 case none:
                     break;
                 default:
-                    writer.append("<xs:all>\n");
                     for (FeatureType featureType1 : FeatureType.values()) {
                         if (featureType1.getIsChildType() == featureType.getRequiresChildType()) {
-                            writer.append("<xs:element name=\"").append(featureType1.name()).append("\" type=\"").append(featureType1.name()).append("Type\"/>\n");
+                            writer.append("&lt;").append(featureType1.name()).append("&gt;<br/>\n");
                         }
                     }
                     if (featureType.canHaveStimulusTags() && featureType.isCanHaveRandomGrouping()) {
-                        writer.append("<xs:element name=\"randomGrouping\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
-                        writer.append("<xs:element name=\"stimuli\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
+                        writer.append("&lt;randomGrouping&gt;<br/>\n");
+                        writer.append("&lt;stimuli&gt;<br/>\n");
                     }
-                    writer.append("</xs:all>\n");
                     break;
             }
         }
-        // todo: canHaveStimulus check for currentStimulusHasTag etc
-        if (featureType.canHaveText()) {
-            writer.append("<xs:attribute name=\"featureText\" type=\"xs:string\" use=\"required\"/>\n");
-        }
-        if (featureType.getFeatureAttributes() != null) {
-            for (final FeatureAttribute featureAttribute : featureType.getFeatureAttributes()) {
-                writer.append("<xs:attribute name=\"");
-                writer.append(featureAttribute.name());
-                writer.append("\" type=\"xs:string\"");
-                if (!featureAttribute.isOptional() && !featureType.allowsCustomImplementation()) {
-                    writer.append(" use=\"required\"");
-                }
-                writer.append("/>\n");
-            }
-        }
-        if (featureType.canHaveStimulusTags() && !featureType.isCanHaveRandomGrouping()) {
-            writer.append("<xs:attribute name=\"tags\" type=\"xs:string\" use=\"required\"/>\n");
-        }
-        if (featureType.allowsCustomImplementation()) {
-            writer.append("<xs:attribute name=\"class\" type=\"xs:string\"/>\n");
-            writer.append("<xs:anyAttribute  processContents=\"lax\"/>\n");
-
-            writer.append("<xs:assert test=\"(@class) or (not(@class) ");
-            for (final FeatureAttribute featureAttribute : featureType.getFeatureAttributes()) {
-                if (!featureAttribute.isOptional()) {
-                    writer.append(" and @");
-                    writer.append(featureAttribute.name());
-                }
-            }
-            writer.append(")\"/>\n");
-        }
-        writer.append("</xs:complexType>\n");
+        writer.append("</td>\n");
+        writer.append("</tr>\n");
     }
 
     private void endState(Writer writer) throws IOException {
@@ -300,13 +270,13 @@ public class SchemaDocumentationGenerator {
     }
 
     private void getStateChange(Writer writer, final String state1, final String state2, final String... attributes) throws IOException {
-        writer.append("<xs:element name=\"").append(state1).append("\">\n")
-                .append("<xs:complexType>\n")
-                .append("<xs:sequence>\n");
+        writer.append("<div class=\"element\">\"").append(state1).append("\">\n")
+                .append("<div class=\"complexType\">\n")
+                .append("<div class=\"sequence>\n");
         for (final String value : attributes) {
-            writer.append("<xs:element ref=\"").append(value).append("\"/>\n");
+            writer.append("<div class=\"element ref=\"").append(value).append("\"/>\n");
         }
-        writer.append("</xs:sequence>\n").append("</xs:complexType>\n").append("</xs:element>\n");
+        writer.append("</div>\n").append("</div>\n").append("</div>\n");
     }
 
     private void getEnd(Writer writer) throws IOException {
@@ -316,11 +286,21 @@ public class SchemaDocumentationGenerator {
 
     public void appendContents(Writer writer) throws IOException {
         getStart(writer);
+        writer.append("<h3>Experiment</h3><table border=1>\n");
         addExperiment(writer);
+        writer.append("</table>\n");
+        writer.append("<h3>Administration</h3><table border=1>\n");
         addAdministration(writer);
+        writer.append("</table>\n");
+        writer.append("<h3>Metadata</h3><table border=1>\n");
         addMetadata(writer);
+        writer.append("</table>\n");
+        writer.append("<h3>Presenter</h3><table border=1>\n");
         addPresenter(writer, PresenterType.values());
+        writer.append("</table>\n");
+        writer.append("<h3>Stimuli</h3><table border=1>\n");
         addStimuli(writer);
+        writer.append("</table>\n");
 //        for (PresenterType presenterType : PresenterType.values()) {
 //            addPresenter(writer, presenterType);
 //            for (FeatureType featureType : presenterType.getFeatureTypes()) {
@@ -328,9 +308,11 @@ public class SchemaDocumentationGenerator {
 //            }
 //            endState(writer);
 //        }
+        writer.append("<h3>Features</h3><table border=1>\n");
         for (FeatureType featureType : FeatureType.values()) {
             addFeature(writer, featureType);
         }
+        writer.append("</table>\n");
         getEnd(writer);
         System.out.println(writer);
 //        assertEquals(expResult, stringBuilder.toString());
