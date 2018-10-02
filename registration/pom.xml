@@ -30,9 +30,10 @@
                 </includes>
             </resource>
             <resource>
-                <directory>${project.build.sourceDirectory}/../../../../gwt-cordova/target/</directory>
+                <directory>${project.build.sourceDirectory}/../../../../../gwt-cordova/target/</directory>
                 <filtering>true</filtering>                
                 <includes>
+                    <include>applisting.json</include>
                     <include>*.apk</include>
                     <include>*.asar</include>
                     <include>*win32*.zip</include>
