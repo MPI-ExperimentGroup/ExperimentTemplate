@@ -33,7 +33,7 @@
                 <directory>${project.build.sourceDirectory}/../../../../gwt-cordova/target/</directory>
                 <filtering>false</filtering>                
                 <includes>
-                    <include>applisting.json</include>
+                    <include>artifacts.json</include>
                     <include>*.apk</include>
                     <include>*.asar</include>
                     <include>*win32*.zip</include>
