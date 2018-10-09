@@ -9,9 +9,9 @@
     <modules>
         <module>common</module>
         <module>ExperimentDesigner</module>
-        <module>registration</module>
         <module>AdaptiveVocabularyAssessmentModule</module>
         <module>gwt-cordova</module>
+        <module>registration</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
