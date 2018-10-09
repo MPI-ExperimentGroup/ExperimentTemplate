@@ -29,18 +29,6 @@
                     <include>**/application.properties</include>
                 </includes>
             </resource>
-            <resource>
-                <directory>${project.build.sourceDirectory}/../../../../gwt-cordova/target/</directory>
-                <filtering>false</filtering>                
-                <includes>
-                    <include>artifacts.json</include>
-                    <include>*.apk</include>
-                    <include>*.asar</include>
-                    <include>*win32*.zip</include>
-                    <include>*darwin*.zip</include>
-                    <include>*linux*.zip</include>
-                </includes>
-            </resource>
         </resources>   
         <plugins>
             <plugin>
@@ -135,6 +123,18 @@
                             <filtering>true</filtering>                
                             <includes>
                                 <include>**/context.xml</include>
+                            </includes>
+                        </resource>
+                        <resource>
+                            <directory>${project.build.sourceDirectory}/../../../../gwt-cordova/target/</directory>
+                            <filtering>false</filtering>                
+                            <includes>
+                                <include>artifacts.json</include>
+                                <include>*.apk</include>
+                                <include>*.asar</include>
+                                <include>*win32*.zip</include>
+                                <include>*darwin*.zip</include>
+                                <include>*linux*.zip</include>
                             </includes>
                         </resource>
                     </webResources>
