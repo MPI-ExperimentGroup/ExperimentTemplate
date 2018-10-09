@@ -25,34 +25,63 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
     <head>
         <title>FRINEX Administration Menu</title>
         <link type="text/css" rel="stylesheet" href="adminpages.css"/>
+        <script src="webjars/jquery/jquery.min.js"></script>
     </head>
     <body>
         <div th:replace="fragments/adminpagelayout :: logout"></div>
-        <a th:if="${param.detailed}" th:href="'dataviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Screen Events Viewer</a><br/>
+        <h3>View Data</h3>
+        <a th:if="${param.detailed}" th:href="'dataviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Screen Events Viewer</a><br th:if="${param.detailed}"/>
         <a th:href="'participantlisting?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Participant Listing</a><br/>
-        <a th:if="${param.detailed}" th:href="'tagviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Experiment Data Viewer</a><br/>
+        <a th:if="${param.detailed}" th:href="'tagviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Experiment Data Viewer</a><br th:if="${param.detailed}"/>
         <a th:href="'tagpairviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Experiment Data Pair Viewer</a> [
         <a th:each="dataChannel : ${T(nl.mpi.tg.eg.frinex.model.ReportTypes.DataChannels).values()}" th:href="'tagpairviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;dataChannel=' + ${dataChannel.channel}" th:text="${dataChannel.label}">dataChannel</a>
         ]<br/>
         <a th:href="'stimulusresponseviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Stimulus Response Viewer</a> [
         <a th:each="dataChannel : ${T(nl.mpi.tg.eg.frinex.model.ReportTypes.DataChannels).values()}" th:href="'stimulusresponseviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;dataChannel=' + ${dataChannel.channel}" th:text="${dataChannel.label}">dataChannel</a>
         ]<br/>
-        <a th:href="'groupdataviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Group Data Viewer</a>&nbsp;<a th:href="'groupdatacsv?' + ${(param.detailed != null)? 'detailed' : 'simple'}">CSV</a><br/>
-        <a th:if="${param.detailed}" th:href="'timestampviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Time Stamp Viewer</a><br/>
-        <a th:if="${param.detailed}" th:href="'audiolisting?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Audio Listing</a><br/>
+        <a th:href="'groupdataviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Group Data Viewer</a><br/>
+        <a th:if="${param.detailed}" th:href="'timestampviewer?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Time Stamp Viewer</a><br th:if="${param.detailed}"/>
+        <a th:if="${param.detailed}" th:href="'audiolisting?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Audio Listing</a><br th:if="${param.detailed}"/>
+        <h3>Download Data</h3>
+        <a th:href="'groupdatacsv?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Group Data CSV</a><br/>
         <a href="aggregate">Download Single CSV</a><br/>
         <a href="zip">Download Zipped Data</a><br/>
 
-        <!--         <div>
-                    <br/>
-                    <a href="/testpage">test page</a><br/>            
-                    <br/>
-                    When logged out you have access to:<br/>
-                    <a href="/screenChange">screenChange</a><br/>
-                    <a href="/timeStamp">timeStamp</a><br/>
-                    <a href="/metadata">metadata</a><br/>
-                    <a href="/tagEvent">tagEvent</a><br/>
-                    <a href="/tagPairEvent">tagPairEvent</a><br/>
-                </div>-->
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            var detailedView = /*[[${param.detailed != null}]]*/ 'false';
+            $.getJSON("artifacts.json", function (data) {
+                var items = [];
+                $.each(data.artifacts, function (key, val) {
+                    var listLabel = key;
+                    var showItem = detailedView;
+                    if (key === "win64") {
+                        listLabel = "Windows 64";
+                        showItem = true;
+                    }
+                    if (key === "mac") {
+                        listLabel = "macOS";
+                        showItem = true;
+                    }
+                    if (key === "apk") {
+                        listLabel = "Android";
+                        showItem = true;
+                    }
+                    if (showItem) {
+                        items.push("<li id=&quot;" + key + "&quot;>" + listLabel + "<br/><a href=&quot;" + val + "&quot;>" + val + "</a></li><br/>");
+                    }
+                });
+                if (items.length > 0) {
+                    var section = $("<section/>");
+                    $("<h3>Application Download</h3>").appendTo(section);
+                    $("<ul/>", {
+                        "class": "downloads",
+                        html: items.join("")
+                    }).appendTo(section);
+                    section.appendTo("body");
+                }
+            });
+            /*]]>*/
+        </script>
     </body>
 </html>
