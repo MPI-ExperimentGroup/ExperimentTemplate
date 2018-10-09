@@ -437,6 +437,7 @@
                 &lt;td th:if="${param.detailed}"&gt;&lt;/td&gt;
                 &lt;td th:if="${param.detailed}"&gt;&lt;/td&gt;
                 &lt;td th:if="${param.detailed}"&gt;&lt;/td&gt;
+                &lt;td th:if="${param.detailed}"&gt;&lt;/td&gt;
             </xsl:text>
             <xsl:for-each select="experiment/metadata/field">
                 <xsl:text>&lt;td&gt;&lt;input id="</xsl:text>
