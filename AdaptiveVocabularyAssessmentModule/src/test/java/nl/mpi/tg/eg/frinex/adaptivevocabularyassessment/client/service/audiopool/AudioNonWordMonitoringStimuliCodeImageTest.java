@@ -61,10 +61,27 @@ public class AudioNonWordMonitoringStimuliCodeImageTest {
         System.out.println("parseTrialsInputCSVStringIntoXml");
         ArrayList<String> fileNameExtensions = null;
         AudioNonWordMonitoringStimuliCodeImage instance = new AudioNonWordMonitoringStimuliCodeImage();
-        String result = instance.parseTrialsInputCSVStringIntoXml(AudioNonwordMonitoringCsv.CSV_CONTENT, STIMULI_DIR);
+        String result = instance.parseTrialsInputCSVStringIntoXml(AudioNonwordMonitoringCsv.CSV_CONTENT, STIMULI_DIR, "");
         assertTrue(result.startsWith("<stimulus "));
         assertTrue(result.endsWith(" />\n"));
         System.out.println(result);
     }
     
+    @Test
+    public void testParseNonwordWordformCSVStringIntoXml() throws Exception {
+        System.out.println("parseTrialsInputCSVStringIntoXml");
+        ArrayList<String> fileNameExtensions = null;
+        AudioNonWordMonitoringStimuliCodeImage instance = new AudioNonWordMonitoringStimuliCodeImage();
+        /* String resultNonword = instance.parseTrialsInputCSVStringIntoXml(NonwordWordformCsv.NONWORD, STIMULI_DIR, "nonword");
+        assertTrue(resultNonword.startsWith("<stimulus "));
+        assertTrue(resultNonword.endsWith(" />\n"));
+        System.out.println(resultNonword);*/
+        
+        String resultWordform = instance.parseTrialsInputCSVStringIntoXml(NonwordWordformCsv.WORDFORM, STIMULI_DIR, "wordform");
+        assertTrue(resultWordform.startsWith("<stimulus "));
+        assertTrue(resultWordform.endsWith(" />\n"));
+        System.out.println(resultWordform);
+        
+    }
+       
 }

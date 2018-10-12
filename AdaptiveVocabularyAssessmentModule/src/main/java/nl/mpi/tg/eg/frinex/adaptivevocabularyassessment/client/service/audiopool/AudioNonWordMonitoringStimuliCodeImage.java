@@ -39,7 +39,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.CsvRecord
  */
 public class AudioNonWordMonitoringStimuliCodeImage {
 
-    private String tmpDir = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/audiononwordmonitoring/stimuli/";
+    private String tmpDir = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/nonwordwordform/stimuli/";
 
     //private String audiPathDir = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/audiononwordmonitoring/stimuli/";
     private String removeFileNameExtensions(String fileName, ArrayList<String> nameExtensions) {
@@ -56,7 +56,7 @@ public class AudioNonWordMonitoringStimuliCodeImage {
     }
 
     //Order;Round;SNR;Condition;Length_list;Word;Target_nonword;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Position_foil;\n
-    public String parseTrialsInputCSVStringIntoXml(String csvString, String stimuliDir) throws Exception {
+    public String parseTrialsInputCSVStringIntoXml(String csvString, String stimuliDir, String trialPrefix) throws Exception {
 
         StringBuilder builder = new StringBuilder();
 
@@ -111,30 +111,56 @@ public class AudioNonWordMonitoringStimuliCodeImage {
             }
 
             if (!trialCondition.equals("NoTarget")) {
-                trialTargetNonword += "_1";
+                if (!trialTargetNonword.endsWith("_1")) {
+                    trialTargetNonword += "_1";
+                }
             }
 
-            // creating patternly-named copies 
-            
-            Path sourceOgg = Paths.get(tmpDir + "clear_mono/"+trialTargetNonword + ".ogg");
-            Path sourceMp3 = Paths.get(tmpDir + "clear_mono/"+trialTargetNonword + ".mp3");
-            Path destOgg = Paths.get(tmpDir + "Trial_" + trialNumber + "_cue.ogg");
-            Path destMp3 = Paths.get(tmpDir + "Trial_" + trialNumber + "_cue.mp3");
-            Files.copy(sourceOgg, destOgg, StandardCopyOption.REPLACE_EXISTING);
-            Files.copy(sourceMp3, destMp3, StandardCopyOption.REPLACE_EXISTING);
-            // end creating copies
-            // sanity check
-            BufferedReader br1 = new BufferedReader(new FileReader(tmpDir + "Trial_" + trialNumber + "_cue.ogg"));
-            br1.close();
-            BufferedReader br2 = new BufferedReader(new FileReader(tmpDir + "Trial_" + trialNumber + "_cue.mp3"));
-            br2.close();
-            // end sanity check 
+            String uniqueId = trialPrefix + "_Trial_" + trialNumber + "_round_" + round;
 
-            String trialPositionTarget = record.get("Position_target").trim();
+            // creating patternly-named copies 
+            Path sourceOgg = Paths.get(tmpDir + "clear_mono/" + trialTargetNonword + ".ogg");
+            Path sourceMp3 = Paths.get(tmpDir + "clear_mono/" + trialTargetNonword + ".mp3");
+            Path destOgg = Paths.get(tmpDir + uniqueId + "_cue.ogg");
+            Path destMp3 = Paths.get(tmpDir + uniqueId + "_cue.mp3");
+            try {
+                Files.copy(sourceOgg, destOgg, StandardCopyOption.REPLACE_EXISTING);
+                Files.copy(sourceMp3, destMp3, StandardCopyOption.REPLACE_EXISTING);
+                // end creating copies
+                // sanity check
+                BufferedReader br1 = new BufferedReader(new FileReader(tmpDir + uniqueId + "_cue.ogg"));
+                br1.close();
+                BufferedReader br2 = new BufferedReader(new FileReader(tmpDir + uniqueId + "_cue.mp3"));
+                br2.close();
+                // end sanity check 
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+
+            String trialPositionTarget = record.get("Position_target");
             if (trialPositionTarget == null) {
                 throw new IOException("Position target is undefined");
             }
+            trialPositionTarget = trialPositionTarget.trim();
             int trialPositionTargetInt = Integer.parseInt(trialPositionTarget);
+
+            if (trialCondition.equals("TargetOnly")) {
+                if (trialPositionTargetInt < 1) {
+                    throw new IOException("Inconsistent input data, TargetOnly with no position target.Trial number: " + trialNumber);
+                }
+            }
+
+            if (trialCondition.equals("TargetAndFoil")) {
+                if (trialPositionTargetInt < 1) {
+                    throw new IOException("Inconsistent input data, TargetAndFoil with no position target.Trial number: " + trialNumber);
+                }
+            }
+
+            if (trialCondition.equals("NoTarget")) {
+                if (trialPositionTargetInt > 0) {
+                    throw new IOException("Inconsistent input data, NoTarget with positioned target.Trial number: " + trialNumber);
+                }
+            }
 
             String words = "";
             String subDir = Indices.SNR_TO_DIRNAME.get(snr);
@@ -147,27 +173,33 @@ public class AudioNonWordMonitoringStimuliCodeImage {
                 }
 
                 if (i == trialPositionTargetInt) {
-                    currentWord = currentWord + "_2";
+                    if (!currentWord.endsWith("_2")) {
+                        currentWord = currentWord + "_2";
+                    }
+
                 }
                 words += currentWord;
-                if (i<trialLengthInt) {
+                if (i < trialLengthInt) {
                     words += ", ";
                 }
 
-                
-                sourceOgg =Paths.get(tmpDir + subDir +"/"+currentWord + "_"+snrInt +".ogg");
-                sourceMp3 = Paths.get(tmpDir + subDir +"/"+currentWord + "_"+snrInt +".mp3");
-                destOgg = Paths.get(tmpDir + "Trial_" + trialNumber + "word_" + i + ".ogg");
-                destMp3 = Paths.get(tmpDir + "Trial_" + trialNumber + "word_" + i + ".mp3");
-                Files.copy(sourceOgg, destOgg, StandardCopyOption.REPLACE_EXISTING);
-                Files.copy(sourceMp3, destMp3, StandardCopyOption.REPLACE_EXISTING);
-                // end creating copies
-                // sanity check
-                br1 = new BufferedReader(new FileReader(tmpDir + "Trial_" + trialNumber + "word_" + i + ".ogg"));
-                br1.close();
-                br2 = new BufferedReader(new FileReader(tmpDir + "Trial_" + trialNumber + "word_" + i + ".mp3"));
-                br2.close();
-                // end sanity check 
+                try {
+                    sourceOgg = Paths.get(tmpDir + subDir + "/" + currentWord + "_" + snrInt + ".ogg");
+                    sourceMp3 = Paths.get(tmpDir + subDir + "/" + currentWord + "_" + snrInt + ".mp3");
+                    destOgg = Paths.get(tmpDir + uniqueId + "_word_" + i + ".ogg");
+                    destMp3 = Paths.get(tmpDir + uniqueId + "_word_" + i + ".mp3");
+                    Files.copy(sourceOgg, destOgg, StandardCopyOption.REPLACE_EXISTING);
+                    Files.copy(sourceMp3, destMp3, StandardCopyOption.REPLACE_EXISTING);
+                    // end creating copies
+                    // sanity check
+                    BufferedReader br1 = new BufferedReader(new FileReader(tmpDir + uniqueId + "_word_" + i + ".ogg"));
+                    br1.close();
+                    BufferedReader br2 = new BufferedReader(new FileReader(tmpDir + uniqueId + "_word_" + i + ".mp3"));
+                    br2.close();
+                    // end sanity check 
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             }
 
             String trialPositionFoil = record.get("Position_foil").trim();
@@ -175,20 +207,40 @@ public class AudioNonWordMonitoringStimuliCodeImage {
                 throw new IOException("Position foil is undefined");
             }
 
-            String tags = "";
-            int lgth = Integer.parseInt(trialLength);
-            if (lgth>=4) {
-              tags += (" length_at_least_4") ;
-            }
-            if (lgth>=5) {
-              tags += (" length_at_least_5") ;
-            }
-             if (lgth>=6) {
-              tags += (" length_at_least_6") ;
+            int trialPositionFoilInt = Integer.parseInt(trialPositionFoil);
+
+            if (trialCondition.equals("TargetOnly")) {
+                if (trialPositionFoilInt > 0) {
+                    throw new IOException("Inconsistent input data, TargetOnly with positioned foil. Trial number: " + trialNumber);
+                }
             }
 
-            String uniqueId = "Trial_" + trialNumber;
-            String label = "trialNumber: "+trialNumber+", snr:" + snr + "; "+trialCondition+"; length:"+trialLength+"; target:"+trialTargetNonword+"; positionTarget:"+trialPositionTarget+"; positionFoil:"+trialPositionFoil+ "; words: "+words;
+            if (trialCondition.equals("TargetAndFoil")) {
+                if (trialPositionFoilInt < 1) {
+                    throw new IOException("Inconsistent input data, TargetAndFoil with no position foil. Trial number: " + trialNumber);
+                }
+            }
+
+            if (trialCondition.equals("NoTarget")) {
+                if (trialPositionFoilInt > 0) {
+                    throw new IOException("Inconsistent input data, NoTarget with positioned foil. Trial number: " + trialNumber);
+                }
+            }
+
+            String roundStr = (round.trim().equals("0")) ? "0" : "1_2_3";
+            String tags = trialPrefix + " round_" + roundStr;
+            int lgth = Integer.parseInt(trialLength);
+            if (lgth >= 4) {
+                tags += (" length_at_least_4");
+            }
+            if (lgth >= 5) {
+                tags += (" length_at_least_5");
+            }
+            if (lgth >= 6) {
+                tags += (" length_at_least_6");
+            }
+
+            String label = trialPrefix + "_trialNumber: " + trialNumber + ", round: " + round + ", snr:" + snr + "; " + trialCondition + "; length:" + trialLength + "; target:" + trialTargetNonword + "; positionTarget:" + trialPositionTarget + "; positionFoil:" + trialPositionFoil + "; words: " + words;
             String currentSt = this.makeStimulusString(uniqueId, label, uniqueId, tags);
             builder.append(currentSt);
 
