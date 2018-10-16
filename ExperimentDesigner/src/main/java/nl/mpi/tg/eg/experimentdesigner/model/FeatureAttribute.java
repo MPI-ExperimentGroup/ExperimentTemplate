@@ -92,6 +92,7 @@ public enum FeatureAttribute {
     alternativeChoice,
     offset,
     msToNext(false),
+    groupId(true),
     listenerId, threshold, maximum, minimum,
     msLabelFormat,
     animate(true), // animate currently has bounce stimuliCode or none
