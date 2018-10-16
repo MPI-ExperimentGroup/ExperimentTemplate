@@ -46,10 +46,14 @@ public enum FeatureType {
     stimulusExists(false, false, new FeatureAttribute[]{offset}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     showStimuliReport(false, false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     sendStimuliReport(false, false, new FeatureAttribute[]{type, dataChannel, headerKey, separator}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    targetButton(false, true, new FeatureAttribute[]{hotKey, target, styleName}),
-    actionButton(true, true, new FeatureAttribute[]{hotKey, styleName}),
-    stimulusButton(true, true, new FeatureAttribute[]{hotKey, dataChannel, styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    touchInputStimulusButton(true, true, new FeatureAttribute[]{eventTag, dataChannel, src, styleName, listenerId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    targetButton(false, true, new FeatureAttribute[]{hotKey, target, styleName, groupId}),
+    actionButton(true, true, new FeatureAttribute[]{hotKey, styleName, groupId}),
+    disableButtonGroup(false, false, new FeatureAttribute[]{groupId}),
+    enableButtonGroup(false, false, new FeatureAttribute[]{groupId}),
+    hideButtonGroup(false, false, new FeatureAttribute[]{groupId}),
+    showButtonGroup(false, false, new FeatureAttribute[]{groupId}),
+    stimulusButton(true, true, new FeatureAttribute[]{hotKey, dataChannel, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    touchInputStimulusButton(true, true, new FeatureAttribute[]{eventTag, dataChannel, src, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     //// todo: touch input needs a threshold before touch is registered and another before touch is ended to allow gaps in touch being recorded as on touch
     touchInputCaptureStart(true, false, new FeatureAttribute[]{showControls, msToNext}, false, false, false, Contitionals.none, Contitionals.stimulusAction), /* sub elements are triggered after the touch ends or after msToNext of no touch activity */
     touchInputReportSubmit(false, false, new FeatureAttribute[]{dataChannel}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
@@ -57,17 +61,17 @@ public enum FeatureType {
     sendGroupMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     sendGroupStoredMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     sendGroupEndOfStimuli(false, false, new FeatureAttribute[]{eventTag}, false, false, false, Contitionals.none, Contitionals.groupNetworkActivity),
-    ratingButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    ratingRadioButton(false, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    ratingButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    ratingRadioButton(false, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     stimulusFreeText(false, true, new FeatureAttribute[]{validationRegex, dataChannel, allowedCharCodes, hotKey, styleName, inputErrorMessage}, false, false, false, Contitionals.none, Contitionals.stimulusAction), // the hotKey in stimulusFreeText will trigger any button with the same hotkey. // todo: The current use of the featureText attribute could be changed to allowedCharErrorMessage and inputErrorMessage could be changed to validationErrorMessage
-    stimulusRatingButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabelLeft, ratingLabelRight, styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    stimulusRatingButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabelLeft, ratingLabelRight, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     stimulusRatingRadio(false, false, new FeatureAttribute[]{dataChannel, ratingLabelLeft, ratingLabelRight, styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     stimulusHasRatingOptions(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     stimulusHasResponse(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     setStimulusCodeResponse(false, false, new FeatureAttribute[]{codeFormat, dataChannel}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    ratingFooterButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    targetFooterButton(false, true, new FeatureAttribute[]{target}),
-    actionFooterButton(true, true, new FeatureAttribute[]{eventTag, hotKey}),
+    ratingFooterButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    targetFooterButton(false, true, new FeatureAttribute[]{target, styleName, groupId}),
+    actionFooterButton(true, true, new FeatureAttribute[]{eventTag, hotKey, styleName, groupId}),
     //    endOfStimulusButton(false, true, new FeatureAttribute[]{eventTag, target}),
     addPadding(false, false, null),
     localStorageData(false, false, null),
@@ -89,19 +93,23 @@ public enum FeatureType {
     metadataFieldVisibilityDependant(false, false, new FeatureAttribute[]{fieldName, linkedFieldName, matchingRegex}), // metadataFieldDependant fields are only shown when the linkedFieldName matches the matchingRegex
     metadataFieldDateTriggered(false, false, new FeatureAttribute[]{fieldName, linkedFieldName, daysThresholds}), // the daysThresholds is a list of values trigger the selection of the item index of this metadataField based on the calculated age in days from linkedFieldName
 
-    saveMetadataButton(false, true, new FeatureAttribute[]{sendData, networkErrorMessage}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
-    createUserButton(false, true, new FeatureAttribute[]{target}),
-    selectUserMenu(false, false, null),
-    eraseLocalStorageButton(false, false, null),
-    eraseUsersDataButton(false, true, new FeatureAttribute[]{target}), // if users still exist in the system target will be used, otherwise the application will start at the begining.
+    saveMetadataButton(false, true, new FeatureAttribute[]{sendData, networkErrorMessage, styleName, groupId}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
+    createUserButton(false, true, new FeatureAttribute[]{target, styleName, groupId}),
+    selectUserMenu(false, false, new FeatureAttribute[]{styleName, groupId}),
+    eraseLocalStorageButton(false, false, new FeatureAttribute[]{styleName, groupId}),
+    eraseUsersDataButton(false, true, new FeatureAttribute[]{target, styleName, groupId}), // if users still exist in the system target will be used, otherwise the application will start at the begining.
     showCurrentMs(false, false, null),
-    enableStimulusButtons(false, false, null),
-    disableStimulusButtons(false, false, null),
+    //    @Deprecated //???
+    //    enableStimulusButtons(false, false, null),
+    //    @Deprecated // ???
+    //    disableStimulusButtons(false, false, null),
     cancelPauseTimers(false, false, null),
     cancelPauseAll(false, false, null), // pause all playing media, cancel all timers and cancel all current on media load events
     showStimulusProgress(false, false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    hideStimulusButtons(false, false, null),
-    showStimulusButtons(false, false, null),
+    //    @Deprecated // ???
+    //    hideStimulusButtons(false, false, null),
+    //    @Deprecated // ???
+    //    showStimulusButtons(false, false, null),
     displayCompletionCode(false, false, null),
     generateCompletionCode(false, false, null, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
     sendAllData(false, false, null, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
@@ -116,8 +124,8 @@ public enum FeatureType {
     clearPage(false, false, new FeatureAttribute[]{styleName}),
     backgroundImage(true, false, new FeatureAttribute[]{msToNext, src, styleName}),
     allMenuItems(false, false, null),
-    prevStimulusButton(false, true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey, styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    nextStimulusButton(false, true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey, styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    prevStimulusButton(false, true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    nextStimulusButton(false, true, new FeatureAttribute[]{eventTag, repeatIncorrect, hotKey, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     nextStimulus(false, false, new FeatureAttribute[]{/*eventTag,*/repeatIncorrect}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     prevStimulus(false, false, new FeatureAttribute[]{/*eventTag,*/repeatIncorrect}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     nextMatchingStimulus(false, false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
@@ -130,7 +138,7 @@ public enum FeatureType {
     gotoNextPresenter(false, false, new FeatureAttribute[]{}),
     logTimeStamp(false, false, new FeatureAttribute[]{eventTag, dataChannel}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     // todo: document audioButton which fires the played event once and only once after the first playback finishes
-    audioButton(false, false, new FeatureAttribute[]{eventTag, dataChannel, poster, autoPlay, hotKey, styleName, src}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.none), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
+    audioButton(false, false, new FeatureAttribute[]{eventTag, dataChannel, poster, autoPlay, hotKey, styleName, src, groupId}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.none), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
     preloadAllStimuli(false, false, null, true, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
     showStimulus(true, false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction), // todo: should this be here? or should it have an increment for next back etc
     showStimulusGrid(false, false, new FeatureAttribute[]{maxStimuli, dataChannel, columnCount, imageWidth, eventTag, animate}, false, false, false, Contitionals.hasCorrectIncorrect, Contitionals.stimulusAction),
@@ -196,7 +204,7 @@ public enum FeatureType {
     //    captureStimulusImage(true, true, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth}),
     VideoPanel(false, false, new FeatureAttribute[]{src, percentOfPage, maxHeight, maxWidth, poster}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     AnnotationTimelinePanel(true, false, new FeatureAttribute[]{src, poster, eventTag, columnCount, maxStimuli}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    startAudioRecorder(false, false, new FeatureAttribute[]{recordingFormat, filePerStimulus, eventTag, deviceRegex}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    startAudioRecorder(false, false, new FeatureAttribute[]{recordingFormat, filePerStimulus, eventTag, deviceRegex}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.stimulusAction),
     stopAudioRecorder(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     startAudioRecorderTag(false, false, new FeatureAttribute[]{eventTier}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     endAudioRecorderTag(false, false, new FeatureAttribute[]{eventTier, eventTag}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
