@@ -88,7 +88,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
         return serviceLocations.dataSubmitUrl() + "audioBlob";
     }
 
-    protected native void submitAudioData(final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataArray, final MediaSubmissionListener mediaSubmissionListener) /*-{
+    public native void submitAudioData(final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataArray, final MediaSubmissionListener mediaSubmissionListener) /*-{
         var dataBlob = new Blob( [dataArray], { type: 'audio/ogg' } );
         var xhr = new XMLHttpRequest();
         xhr.onload = function() {
