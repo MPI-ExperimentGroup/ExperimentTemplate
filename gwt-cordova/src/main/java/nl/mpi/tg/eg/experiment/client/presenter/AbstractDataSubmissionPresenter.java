@@ -125,8 +125,8 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
         });
     }
 
-    protected void createUserButton(final AppEventListner appEventListner, final String label, final ApplicationController.ApplicationState targetApplicationState) {
-        ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
+    protected void createUserButton(final AppEventListner appEventListner, final String label, final String styleName, final ApplicationController.ApplicationState targetApplicationState, final String buttonGroup) {
+        optionButton(new PresenterEventListner() {
 
             @Override
             public String getLabel() {
@@ -144,11 +144,11 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
                 localStorage.storeData(userResults, metadataFieldProvider);
                 appEventListner.requestApplicationState(targetApplicationState);
             }
-        });
+        }, styleName, buttonGroup);
     }
 
-    protected void eraseUsersDataButton(final String buttonLabel, final ApplicationController.ApplicationState nextState) {
-        ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
+    protected void eraseUsersDataButton(final String buttonLabel, final String styleName, final ApplicationController.ApplicationState nextState, final String buttonGroup) {
+        optionButton(new PresenterEventListner() {
 
             @Override
             public String getLabel() {
@@ -172,7 +172,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
                 }
                 Window.Location.replace(Window.Location.getPath());
             }
-        });
+        }, styleName, buttonGroup);
     }
 
     protected void pause(int postLoadMs, final TimedStimulusListener timedStimulusListener) {
