@@ -59,9 +59,9 @@ public class TestingVersionPresenter extends LocalStoragePresenter implements Pr
         ((ComplexView) simpleView).addPadding();
         ((ComplexView) simpleView).addPadding();
         ((ComplexView) simpleView).addText("Framework For Interactive Experiments\n" + "Version: "
-//                + version.majorVersion() + "."
-//                + version.minorVersion() + "."
-//                + version.buildVersion() + "-"
+                //                + version.majorVersion() + "."
+                //                + version.minorVersion() + "."
+                //                + version.buildVersion() + "-"
                 + version.projectVersion() + "\n");
         ((ComplexView) simpleView).addPadding();
         ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
@@ -82,6 +82,6 @@ public class TestingVersionPresenter extends LocalStoragePresenter implements Pr
             public String getLabel() {
                 return "Begin Software Testing";
             }
-        });
+        }, null);
     }
 }
