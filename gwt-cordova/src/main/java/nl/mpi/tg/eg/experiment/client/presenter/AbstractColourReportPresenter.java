@@ -112,7 +112,7 @@ public abstract class AbstractColourReportPresenter extends AbstractPresenter im
                     public int getHotKey() {
                         return -1;
                     }
-                });
+                }, null);
             }
 
             @Override
