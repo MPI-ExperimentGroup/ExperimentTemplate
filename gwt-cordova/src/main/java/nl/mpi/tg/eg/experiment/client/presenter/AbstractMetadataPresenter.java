@@ -66,7 +66,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
         this.nextState = nextState;
     }
 
-    protected void saveMetadataButton(final String buttonLabel, final boolean sendData, final String networkErrorMessage, final TimedStimulusListener errorEventListner, final TimedStimulusListener successEventListner) {
+    protected void saveMetadataButton(final String buttonLabel, final String styleName, final boolean sendData, final String buttonGroup, final String networkErrorMessage, final TimedStimulusListener errorEventListner, final TimedStimulusListener successEventListner) {
         PresenterEventListner saveEventListner = new PresenterEventListner() {
 
             @Override
@@ -114,8 +114,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
                 return buttonLabel;
             }
         };
-
-        ((MetadataView) simpleView).addOptionButton(saveEventListner);
+        optionButton(saveEventListner, styleName, buttonGroup);
     }
 
     protected void validateFields() throws MetadataFieldException {
@@ -163,15 +162,15 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
                         // this should not occur since the field value should have originated from a UserId instance
                     }
                 }
-            });
+            }, null);
             if (labelData.getUserId().equals(userResults.getUserData().getUserId())) {
                 optionButton.addStyleName("optionButtonHighlight");
             }
         }
     }
 
-    protected void createUserButton(final AppEventListner appEventListner, final String label, final ApplicationState targetApplicationState) {
-        ((MetadataView) simpleView).addOptionButton(new PresenterEventListner() {
+    protected void createUserButton(final AppEventListner appEventListner, final String label, final String styleName, final ApplicationState targetApplicationState, final String buttonGroup) {
+        optionButton(new PresenterEventListner() {
 
             @Override
             public String getLabel() {
@@ -189,7 +188,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
                 localStorage.storeData(userResults, metadataFieldProvider);
                 appEventListner.requestApplicationState(targetApplicationState);
             }
-        });
+        }, styleName, buttonGroup);
     }
 
     protected void existingUserCheck(TimedStimulusListener multipleUsers, TimedStimulusListener singleUser) {
