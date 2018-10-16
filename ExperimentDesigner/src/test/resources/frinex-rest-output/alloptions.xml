@@ -27,10 +27,14 @@
                 <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </image>
-        <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" hotKey="A" styleName="styleName">
+        <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
+        <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
+        <disableButtonGroup groupId="groupId"/>
+        <enableButtonGroup groupId="groupId"/>
+        <hideButtonGroup groupId="groupId"/>
+        <showButtonGroup groupId="groupId"/>
         <addPadding/>
         <eraseUsersDataButton featureText="eraseUsersDataButton" target="target"/>
         <displayCompletionCode/>
@@ -100,10 +104,14 @@
                 <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </image>
-        <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" hotKey="A" styleName="styleName">
+        <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
+        <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
+        <disableButtonGroup groupId="groupId"/>
+        <enableButtonGroup groupId="groupId"/>
+        <hideButtonGroup groupId="groupId"/>
+        <showButtonGroup groupId="groupId"/>
         <addPadding/>
         <allMetadataFields/>
         <metadataField fieldName="workerId"/>
@@ -170,21 +178,21 @@
                 <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </image>
-        <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" hotKey="A" styleName="styleName">
+        <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
+        <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <targetFooterButton featureText="targetFooterButton" target="target"/>
-        <actionFooterButton featureText="actionFooterButton" eventTag="eventTag" hotKey="A">
+        <disableButtonGroup groupId="groupId"/>
+        <enableButtonGroup groupId="groupId"/>
+        <hideButtonGroup groupId="groupId"/>
+        <showButtonGroup groupId="groupId"/>
+        <targetFooterButton featureText="targetFooterButton" groupId="groupId" styleName="styleName" target="target"/>
+        <actionFooterButton featureText="actionFooterButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionFooterButton"/>
         </actionFooterButton>
         <addPadding/>
         <showCurrentMs/>
-        <enableStimulusButtons/>
-        <disableStimulusButtons/>
         <cancelPauseTimers/>
-        <hideStimulusButtons/>
-        <showStimulusButtons/>
         <centrePage/>
         <actionButton featureText="Clear Screen">
             <clearPage styleName="styleName"/>
@@ -322,7 +330,7 @@
                 <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="2">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
-                <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src" styleName="styleName" dataChannel="2">
+                <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
                     <plainText featureText="plainText in touchInputStimulusButton"/>
                 </touchInputStimulusButton>
                 <touchInputCaptureStart msToNext="60" showControls="true">
@@ -355,7 +363,7 @@
                     </conditionFalse>
                 </stimulusHasResponse>
                 <setStimulusCodeResponse codeFormat="codeFormat" dataChannel="2"/>
-                <ratingFooterButton ratingLabelRight="ratingLabelRight" ratingLabels="ratingLabels" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <ratingFooterButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
                 <stimulusMetadataField fieldName="workerId" dataChannel="2"/>
@@ -364,8 +372,8 @@
                 <removeStimulus/>
                 <removeMatchingStimulus matchingRegex="matchingRegex"/>
                 <clearStimulus/>
-                <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
-                <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
+                <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
+                <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
                 <nextStimulus repeatIncorrect="repeatIncorrect"/>
                 <prevStimulus repeatIncorrect="repeatIncorrect"/>
                 <nextMatchingStimulus/>
@@ -456,7 +464,14 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="deviceRegex" filePerStimulus="filePerStimulus"/>
+                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="deviceRegex" filePerStimulus="filePerStimulus">
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
+                    <onSuccess>
+                        <plainText featureText="plainText in onSuccess"/>
+                    </onSuccess>
+                </startAudioRecorder>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
@@ -617,7 +632,7 @@
                 <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="2">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
-                <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src" styleName="styleName" dataChannel="2">
+                <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
                     <plainText featureText="plainText in touchInputStimulusButton"/>
                 </touchInputStimulusButton>
                 <touchInputCaptureStart msToNext="60" showControls="true">
@@ -650,7 +665,7 @@
                     </conditionFalse>
                 </stimulusHasResponse>
                 <setStimulusCodeResponse codeFormat="codeFormat" dataChannel="2"/>
-                <ratingFooterButton ratingLabelRight="ratingLabelRight" ratingLabels="ratingLabels" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <ratingFooterButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
                 <stimulusMetadataField fieldName="workerId" dataChannel="2"/>
@@ -659,8 +674,8 @@
                 <removeStimulus/>
                 <removeMatchingStimulus matchingRegex="matchingRegex"/>
                 <clearStimulus/>
-                <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
-                <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
+                <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
+                <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
                 <nextStimulus repeatIncorrect="repeatIncorrect"/>
                 <prevStimulus repeatIncorrect="repeatIncorrect"/>
                 <nextMatchingStimulus/>
@@ -751,7 +766,14 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="deviceRegex" filePerStimulus="filePerStimulus"/>
+                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="deviceRegex" filePerStimulus="filePerStimulus">
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
+                    <onSuccess>
+                        <plainText featureText="plainText in onSuccess"/>
+                    </onSuccess>
+                </startAudioRecorder>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
@@ -912,7 +934,7 @@
                 <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="2">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
-                <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src" styleName="styleName" dataChannel="2">
+                <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
                     <plainText featureText="plainText in touchInputStimulusButton"/>
                 </touchInputStimulusButton>
                 <touchInputCaptureStart msToNext="60" showControls="true">
@@ -945,7 +967,7 @@
                     </conditionFalse>
                 </stimulusHasResponse>
                 <setStimulusCodeResponse codeFormat="codeFormat" dataChannel="2"/>
-                <ratingFooterButton ratingLabelRight="ratingLabelRight" ratingLabels="ratingLabels" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <ratingFooterButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
                 <stimulusMetadataField fieldName="workerId" dataChannel="2"/>
@@ -954,8 +976,8 @@
                 <removeStimulus/>
                 <removeMatchingStimulus matchingRegex="matchingRegex"/>
                 <clearStimulus/>
-                <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
-                <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
+                <prevStimulusButton featureText="prevStimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
+                <nextStimulusButton featureText="nextStimulusButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName" repeatIncorrect="repeatIncorrect"/>
                 <nextStimulus repeatIncorrect="repeatIncorrect"/>
                 <prevStimulus repeatIncorrect="repeatIncorrect"/>
                 <nextMatchingStimulus/>
@@ -1046,7 +1068,14 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="deviceRegex" filePerStimulus="filePerStimulus"/>
+                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="deviceRegex" filePerStimulus="filePerStimulus">
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
+                    <onSuccess>
+                        <plainText featureText="plainText in onSuccess"/>
+                    </onSuccess>
+                </startAudioRecorder>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
@@ -1168,22 +1197,22 @@
                 <tag>ບຸນບັ້ງໄຟ</tag>
             </stimuli>
         </loadSdCardStimulus>
-        <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" hotKey="A" styleName="styleName">
+        <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
+        <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <targetFooterButton featureText="targetFooterButton" target="target"/>
-        <actionFooterButton featureText="actionFooterButton" eventTag="eventTag" hotKey="A">
+        <disableButtonGroup groupId="groupId"/>
+        <enableButtonGroup groupId="groupId"/>
+        <hideButtonGroup groupId="groupId"/>
+        <showButtonGroup groupId="groupId"/>
+        <targetFooterButton featureText="targetFooterButton" groupId="groupId" styleName="styleName" target="target"/>
+        <actionFooterButton featureText="actionFooterButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionFooterButton"/>
         </actionFooterButton>
         <addPadding/>
         <showCurrentMs/>
-        <enableStimulusButtons/>
-        <disableStimulusButtons/>
         <cancelPauseTimers/>
         <cancelPauseAll/>
-        <hideStimulusButtons/>
-        <showStimulusButtons/>
         <centrePage/>
         <actionButton featureText="Clear Screen">
             <clearPage styleName="styleName"/>
@@ -1210,7 +1239,7 @@
         <setMetadataValue fieldName="workerId" dataLogFormat="dataLogFormat"/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
-        <audioButton eventTag="eventTag" src="src" hotKey="A" styleName="styleName" dataChannel="2" autoPlay="true" poster="poster">
+        <audioButton eventTag="eventTag" src="src" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" autoPlay="true" poster="poster">
             <mediaLoaded>
                 <plainText featureText="plainText in mediaLoaded"/>
             </mediaLoaded>
@@ -1318,10 +1347,14 @@
                 <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </image>
-        <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" hotKey="A" styleName="styleName">
+        <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
+        <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
+        <disableButtonGroup groupId="groupId"/>
+        <enableButtonGroup groupId="groupId"/>
+        <hideButtonGroup groupId="groupId"/>
+        <showButtonGroup groupId="groupId"/>
         <addPadding/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
@@ -1380,10 +1413,14 @@
                 <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </image>
-        <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" hotKey="A" styleName="styleName">
+        <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
+        <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
+        <disableButtonGroup groupId="groupId"/>
+        <enableButtonGroup groupId="groupId"/>
+        <hideButtonGroup groupId="groupId"/>
+        <showButtonGroup groupId="groupId"/>
         <addPadding/>
         <centrePage/>
         <addKinTypeGui diagramName="diagramName"/>
@@ -1437,10 +1474,14 @@
             </mediaLoadFailed>
         </image>
         <menuItem featureText="menuItem" hotKey="A" target="target"/>
-        <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" hotKey="A" styleName="styleName">
+        <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
+        <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
+        <disableButtonGroup groupId="groupId"/>
+        <enableButtonGroup groupId="groupId"/>
+        <hideButtonGroup groupId="groupId"/>
+        <showButtonGroup groupId="groupId"/>
         <addPadding/>
         <centrePage/>
         <allMenuItems/>
@@ -1485,10 +1526,14 @@
                 <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </image>
-        <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" hotKey="A" styleName="styleName">
+        <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
+        <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
+        <disableButtonGroup groupId="groupId"/>
+        <enableButtonGroup groupId="groupId"/>
+        <hideButtonGroup groupId="groupId"/>
+        <showButtonGroup groupId="groupId"/>
         <addPadding/>
         <localStorageData/>
         <eraseLocalStorageButton/>
@@ -1534,10 +1579,14 @@
                 <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </image>
-        <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" hotKey="A" styleName="styleName">
+        <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
+        <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
+        <disableButtonGroup groupId="groupId"/>
+        <enableButtonGroup groupId="groupId"/>
+        <hideButtonGroup groupId="groupId"/>
+        <showButtonGroup groupId="groupId"/>
         <addPadding/>
         <centrePage/>
         <gotoPresenter target="target"/>
@@ -1572,10 +1621,14 @@
                 <plainText featureText="plainText in mediaLoadFailed"/>
             </mediaLoadFailed>
         </image>
-        <targetButton featureText="targetButton" hotKey="A" styleName="styleName" target="target"/>
-        <actionButton featureText="actionButton" hotKey="A" styleName="styleName">
+        <targetButton featureText="targetButton" groupId="groupId" hotKey="A" styleName="styleName" target="target"/>
+        <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
+        <disableButtonGroup groupId="groupId"/>
+        <enableButtonGroup groupId="groupId"/>
+        <hideButtonGroup groupId="groupId"/>
+        <showButtonGroup groupId="groupId"/>
         <addPadding/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
@@ -1622,6 +1675,10 @@
         <actionButton featureText="actionButton">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
+        <disableButtonGroup/>
+        <enableButtonGroup/>
+        <hideButtonGroup/>
+        <showButtonGroup/>
         <addPadding/>
         <eraseUsersDataButton featureText="eraseUsersDataButton" target="target"/>
         <displayCompletionCode/>
@@ -1695,6 +1752,10 @@
         <actionButton featureText="actionButton">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
+        <disableButtonGroup/>
+        <enableButtonGroup/>
+        <hideButtonGroup/>
+        <showButtonGroup/>
         <addPadding/>
         <allMetadataFields/>
         <metadataField fieldName="workerId"/>
@@ -1765,17 +1826,17 @@
         <actionButton featureText="actionButton">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
+        <disableButtonGroup/>
+        <enableButtonGroup/>
+        <hideButtonGroup/>
+        <showButtonGroup/>
         <targetFooterButton featureText="targetFooterButton" target="target"/>
         <actionFooterButton featureText="actionFooterButton" eventTag="eventTag">
             <plainText featureText="plainText in actionFooterButton"/>
         </actionFooterButton>
         <addPadding/>
         <showCurrentMs/>
-        <enableStimulusButtons/>
-        <disableStimulusButtons/>
         <cancelPauseTimers/>
-        <hideStimulusButtons/>
-        <showStimulusButtons/>
         <centrePage/>
         <actionButton featureText="Clear Screen">
             <clearPage/>
@@ -1913,7 +1974,7 @@
                 <stimulusButton featureText="stimulusButton">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
-                <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src">
+                <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src">
                     <plainText featureText="plainText in touchInputStimulusButton"/>
                 </touchInputStimulusButton>
                 <touchInputCaptureStart msToNext="60" showControls="true">
@@ -2047,7 +2108,14 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" filePerStimulus="filePerStimulus"/>
+                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" filePerStimulus="filePerStimulus">
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
+                    <onSuccess>
+                        <plainText featureText="plainText in onSuccess"/>
+                    </onSuccess>
+                </startAudioRecorder>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
@@ -2208,7 +2276,7 @@
                 <stimulusButton featureText="stimulusButton">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
-                <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src">
+                <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src">
                     <plainText featureText="plainText in touchInputStimulusButton"/>
                 </touchInputStimulusButton>
                 <touchInputCaptureStart msToNext="60" showControls="true">
@@ -2342,7 +2410,14 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" filePerStimulus="filePerStimulus"/>
+                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" filePerStimulus="filePerStimulus">
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
+                    <onSuccess>
+                        <plainText featureText="plainText in onSuccess"/>
+                    </onSuccess>
+                </startAudioRecorder>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
@@ -2503,7 +2578,7 @@
                 <stimulusButton featureText="stimulusButton">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
-                <touchInputStimulusButton featureText="touchInputStimulusButton" listenerId="listenerId" eventTag="eventTag" src="src">
+                <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src">
                     <plainText featureText="plainText in touchInputStimulusButton"/>
                 </touchInputStimulusButton>
                 <touchInputCaptureStart msToNext="60" showControls="true">
@@ -2637,7 +2712,14 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" filePerStimulus="filePerStimulus"/>
+                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" filePerStimulus="filePerStimulus">
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
+                    <onSuccess>
+                        <plainText featureText="plainText in onSuccess"/>
+                    </onSuccess>
+                </startAudioRecorder>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
@@ -2763,18 +2845,18 @@
         <actionButton featureText="actionButton">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
+        <disableButtonGroup/>
+        <enableButtonGroup/>
+        <hideButtonGroup/>
+        <showButtonGroup/>
         <targetFooterButton featureText="targetFooterButton" target="target"/>
         <actionFooterButton featureText="actionFooterButton" eventTag="eventTag">
             <plainText featureText="plainText in actionFooterButton"/>
         </actionFooterButton>
         <addPadding/>
         <showCurrentMs/>
-        <enableStimulusButtons/>
-        <disableStimulusButtons/>
         <cancelPauseTimers/>
         <cancelPauseAll/>
-        <hideStimulusButtons/>
-        <showStimulusButtons/>
         <centrePage/>
         <actionButton featureText="Clear Screen">
             <clearPage/>
@@ -2913,6 +2995,10 @@
         <actionButton featureText="actionButton">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
+        <disableButtonGroup/>
+        <enableButtonGroup/>
+        <hideButtonGroup/>
+        <showButtonGroup/>
         <addPadding/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
@@ -2975,6 +3061,10 @@
         <actionButton featureText="actionButton">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
+        <disableButtonGroup/>
+        <enableButtonGroup/>
+        <hideButtonGroup/>
+        <showButtonGroup/>
         <addPadding/>
         <centrePage/>
         <addKinTypeGui diagramName="diagramName"/>
@@ -3032,6 +3122,10 @@
         <actionButton featureText="actionButton">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
+        <disableButtonGroup/>
+        <enableButtonGroup/>
+        <hideButtonGroup/>
+        <showButtonGroup/>
         <addPadding/>
         <centrePage/>
         <allMenuItems/>
@@ -3080,6 +3174,10 @@
         <actionButton featureText="actionButton">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
+        <disableButtonGroup/>
+        <enableButtonGroup/>
+        <hideButtonGroup/>
+        <showButtonGroup/>
         <addPadding/>
         <localStorageData/>
         <eraseLocalStorageButton/>
@@ -3129,6 +3227,10 @@
         <actionButton featureText="actionButton">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
+        <disableButtonGroup/>
+        <enableButtonGroup/>
+        <hideButtonGroup/>
+        <showButtonGroup/>
         <addPadding/>
         <centrePage/>
         <gotoPresenter target="target"/>
@@ -3167,6 +3269,10 @@
         <actionButton featureText="actionButton">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
+        <disableButtonGroup/>
+        <enableButtonGroup/>
+        <hideButtonGroup/>
+        <showButtonGroup/>
         <addPadding/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
