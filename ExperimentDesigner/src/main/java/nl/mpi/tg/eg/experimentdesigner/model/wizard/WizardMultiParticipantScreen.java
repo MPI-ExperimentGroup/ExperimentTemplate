@@ -597,7 +597,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 //        guesserNetworkActivity1.getPresenterFeatureList().add(correctButton);
 //        guesserNetworkActivity1.getPresenterFeatureList().add(incorrectButton);
         // @todo: is this inserted into the correct location
-        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.enableStimulusButtons, null));
+        guesserNetworkActivity1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.enableButtonGroup, null));
 //        incorrectButton.getPresenterFeatureList().add(new PresenterFeature(FeatureType.submitGroupEvent, null));
 
 //        allNetworkActivity2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
