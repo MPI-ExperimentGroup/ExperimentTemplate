@@ -175,7 +175,7 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
                 setContent(appEventListner);
                 submissionService.submitTimeStamp(userResults.getUserData().getUserId(), "AddToDiagram", duration.elapsedMillis());
             }
-        });
+        }, null);
         ((KinTypeView) simpleView).addOptionButton(new PresenterEventListner() {
 
             @Override
@@ -192,7 +192,7 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "SaveDiagram", loadKinTypeString(diagramName), duration.elapsedMillis());
             }
-        });
+        }, null);
         ((KinTypeView) simpleView).addOptionButton(new PresenterEventListner() {
 
             @Override
@@ -212,7 +212,7 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
                 setContent(appEventListner);
                 submissionService.submitTimeStamp(userResults.getUserData().getUserId(), "ClearDiagram", duration.elapsedMillis());
             }
-        });
+        }, null);
     }
 
     public void clearKinTypeString(String diagramName) {
