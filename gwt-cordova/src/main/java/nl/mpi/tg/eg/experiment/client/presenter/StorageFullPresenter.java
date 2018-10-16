@@ -59,7 +59,7 @@ public class StorageFullPresenter extends LocalStoragePresenter implements Prese
                 + "Compile Date: " + version.compileDate() + "\n"
                 + "Last Commit Date: " + version.lastCommitDate());
         ((ComplexView) simpleView).addPadding();
-        eraseLocalStorageButton();
+        eraseLocalStorageButton(null, "eraseLocalStorageButton");
         ((ComplexView) simpleView).addPadding();
         localStorageData();
     }
