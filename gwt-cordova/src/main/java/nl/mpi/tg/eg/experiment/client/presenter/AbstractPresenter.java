@@ -170,7 +170,7 @@ public abstract class AbstractPresenter implements Presenter {
     }
 
     public void ratingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String buttonGroupName, final String savedValue, final String buttonGroup) {
-        addButtonToGroup(buttonGroup, ((ComplexView) simpleView).addRatingButtons(presenterListeners, ratingLabelLeft, ratingLabelRight, true, styleName, null, null));
+        addButtonToGroup(buttonGroup, ((ComplexView) simpleView).addRatingButtons(presenterListeners, ratingLabelLeft, ratingLabelRight, footerButtons, styleName, null, null));
     }
 
     public StimulusButton imageButton(final PresenterEventListner presenterListerner, final SafeUri imagePath, final String styleName, final boolean isTouchZone, final String buttonGroup) {
