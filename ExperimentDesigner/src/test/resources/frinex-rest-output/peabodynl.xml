@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" appNameDisplay="Peabody Assessment" appNameInternal="peabodynl" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17">
-    <preventWindowClose featureText="Bij reload worden ingetypte data verwiderd"/>
     <metadata>
-        <field controlledMessage="Input at least 3 letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Wat is je gebruikersnummer?"/>
-        <field controlledMessage="Voer je geboortedatum, dd-maand-jjjj." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="dateOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
+        <field controlledMessage="Invoer minimaal 3 tekens." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Wat is je gebruikersnummer?"/>
+        <field controlledMessage="Voer je geboortedatum in (dag-maand-jaartal)." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="dateOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
     </metadata>
     <presenter menuLabel="Menu" type="menu" self="Menu" title="Menu">
         <centrePage/>
@@ -14,39 +13,21 @@
         <addPadding/>
         <addPadding/>
         <addPadding/>
-        <table>
-            <row>
-                <column styleName="stimulusContainerCol">
-                    <htmlText featureText="Welkom bij deze Peabody test."/>
-                </column>
-            </row>
-            <row>
-                <column>
-                    <htmlText featureText="&#160;"/>
-                </column>
-            </row>
-            <row>
-                <column styleName="stimulusContainerCol">
-                    <targetButton featureText="Naar het experiment" target="AgeSelection"/>
-                </column>
-            </row>
-            <row>
-                <column>
-                    <htmlText featureText="&#160;"/>
-                </column>
-            </row>
-        </table>
+        <addPadding/>
+        <addPadding/>
+        <menuItem featureText="Peabody Woordenschattest" target="AgeSelection"/>
     </presenter>
     
     <presenter menuLabel="Age" type="menu" self="AgeSelection" title="Age">
         <centrePage/>
         <addPadding/>
-        <htmlText featureText="Kies leeftijdreeks"/>
+        <htmlText featureText="Geef aan binnen welke leeftijdscategorie u valt."/>
+        <htmlText featureText="Als u bijvoorbeeld 18 jaar en 2 maanden oud bent, dan klikt u op de categorie &quot;16 jaar en 0 maanden t/m 35 jaar en 11 maanden&quot;."/>
         <addPadding/>
         <table>
             <row>
                 <column styleName="stimulusContainerCol">
-                    <targetButton featureText="8;0-9;11 jaar" target="Edit_User8"/>
+                    <targetButton featureText="8 jaar en 0 maanden t/m 9 jaar en 11 maanden" target="Edit_User8"/>
                 </column>
             </row>
             <row>
@@ -56,7 +37,7 @@
             </row>
             <row>
                 <column styleName="stimulusContainerCol">
-                    <targetButton featureText="10;0-10;11 jaar" target="Edit_User9"/>
+                    <targetButton featureText="10 jaar en 0 maanden t/m 10 jaar en 11 maanden" target="Edit_User9"/>
                 </column>
             </row>
             <row>
@@ -66,7 +47,7 @@
             </row>
             <row>
                 <column styleName="stimulusContainerCol">
-                    <targetButton featureText="11;0-13;11 jaar" target="Edit_User10"/>
+                    <targetButton featureText="11 jaar en 0 maanden t/m 13 jaar en 11 maanden" target="Edit_User10"/>
                 </column>
             </row>
             <row>
@@ -76,7 +57,7 @@
             </row>
             <row>
                 <column styleName="stimulusContainerCol">
-                    <targetButton featureText="14;0-15;11 jaar" target="Edit_User11"/>
+                    <targetButton featureText="14 jaar en 0 maanden t/m 15 jaar en 11 maanden" target="Edit_User11"/>
                 </column>
             </row>
             <row>
@@ -86,7 +67,7 @@
             </row>
             <row>
                 <column styleName="stimulusContainerCol">
-                    <targetButton featureText="16;0-35;11 jaar" target="Edit_User13"/>
+                    <targetButton featureText="16 jaar en 0 maanden t/m 35 jaar een 11 maanden" target="Edit_User13"/>
                 </column>
             </row>
             <row>
@@ -96,7 +77,7 @@
             </row>
             <row>
                 <column styleName="stimulusContainerCol">
-                    <targetButton featureText="36;0-90;0 jaar" target="Edit_User14"/>
+                    <targetButton featureText="36 jaar en 0 maanden t/m 90 jaar en 11 maanden" target="Edit_User14"/>
                 </column>
             </row>
         </table>
@@ -105,210 +86,211 @@
     <presenter menuLabel="Edit User 8" self="Edit_User8" next="Accord8" type="metadata" title="">
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="dateOfBirth"/>
-        <table>
-            <row>
-                <column styleName="stimulusContainerCol">
-                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
-                        <onSuccess>   
-                            <gotoNextPresenter/>
-                        </onSuccess>
-                        <onError>   
-                            <gotoNextPresenter/>
-                        </onError>      
-                    </saveMetadataButton>
-                </column>
-            </row>
-        </table>
+        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="&amp;nbsp;">
+            <onSuccess>   
+                <gotoNextPresenter/>
+            </onSuccess>
+            <onError>   
+                <gotoNextPresenter/>
+            </onError>      
+        </saveMetadataButton>
     </presenter>
     
     <presenter menuLabel="Edit User 9" self="Edit_User9" next="Accord9" type="metadata" title="">
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="dateOfBirth"/>
-        <table>
-            <row>
-                <column styleName="stimulusContainerCol">
-                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
-                        <onSuccess>   
-                            <gotoNextPresenter/>
-                        </onSuccess>
-                        <onError>   
-                            <gotoNextPresenter/>
-                        </onError>      
-                    </saveMetadataButton>
-                </column>
-            </row>
-        </table>
+        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="&amp;nbsp;">
+            <onSuccess>   
+                <gotoNextPresenter/>
+            </onSuccess>
+            <onError>   
+                <gotoNextPresenter/>
+            </onError>      
+        </saveMetadataButton>
     </presenter>
     
     <presenter menuLabel="Edit User 10" self="Edit_User10" next="Accord10" type="metadata" title="">
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="dateOfBirth"/>
-        <table>
-            <row>
-                <column styleName="stimulusContainerCol">
-                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
-                        <onSuccess>   
-                            <gotoNextPresenter/>
-                        </onSuccess>
-                        <onError>   
-                            <gotoNextPresenter/>
-                        </onError>      
-                    </saveMetadataButton>
-                </column>
-            </row>
-        </table>
+        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="&amp;nbsp;">
+            <onSuccess>   
+                <gotoNextPresenter/>
+            </onSuccess>
+            <onError>   
+                <gotoNextPresenter/>
+            </onError>      
+        </saveMetadataButton>
     </presenter>
     <presenter menuLabel="Edit User 11"  self="Edit_User11" next="Accord11" type="metadata" title="">
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="dateOfBirth"/>
-        <table>
-            <row>
-                <column styleName="stimulusContainerCol">
-                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
-                        <onSuccess>   
-                            <gotoNextPresenter/>
-                        </onSuccess>
-                        <onError>   
-                            <gotoNextPresenter/>
-                        </onError>      
-                    </saveMetadataButton>
-                </column>
-            </row>
-        </table>
+        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="&amp;nbsp;">
+            <onSuccess>   
+                <gotoNextPresenter/>
+            </onSuccess>
+            <onError>   
+                <gotoNextPresenter/>
+            </onError>      
+        </saveMetadataButton>
     </presenter>
     
     <presenter menuLabel="Edit User 13" self="Edit_User13"   next="Accord13" type="metadata" title="">
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="dateOfBirth"/>
-        <table>
-            <row>
-                <column styleName="stimulusContainerCol">
-                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
-                        <onSuccess>   
-                            <gotoNextPresenter/>
-                        </onSuccess>
-                        <onError>   
-                            <gotoNextPresenter/>
-                        </onError>      
-                    </saveMetadataButton>
-                </column>
-            </row>
-        </table>
+        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="&amp;nbsp;">
+            <onSuccess>   
+                <gotoNextPresenter/>
+            </onSuccess>
+            <onError>   
+                <gotoNextPresenter/>
+            </onError>      
+        </saveMetadataButton>
     </presenter>
     
     <presenter menuLabel="Edit User 14" self="Edit_User14" next="Accord14" type="metadata" title="">
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="dateOfBirth"/>
-        <table>
-            <row>
-                <column styleName="stimulusContainerCol">
-                    <saveMetadataButton featureText="Volgende stap" sendData="true" networkErrorMessage="&amp;nbsp;">
-                        <onSuccess>   
-                            <gotoNextPresenter/>
-                        </onSuccess>
-                        <onError>   
-                            <gotoNextPresenter/>
-                        </onError>      
-                    </saveMetadataButton>
-                </column>
-            </row>
-        </table>
+        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="&amp;nbsp;">
+            <onSuccess>   
+                <gotoNextPresenter/>
+            </onSuccess>
+            <onError>   
+                <gotoNextPresenter/>
+            </onError>      
+        </saveMetadataButton>
     </presenter>
     
     
     <presenter self="Accord8" next="stimuliScreenBase8_8" type="metadata" title="" >
-        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
-        
-        <addPadding/>
-        <htmlText featureText="Welkom bij dit experiment.&lt;br/&gt;&lt;br/&gt;
- Bij dit experiment hoort u telkens een woord. Er staan steeds vier plaatjes op het scherm, met nummers erbij. 
-Druk op SPATIE om naar het woord te luisteren. 
-Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoort. &lt;br/&gt;&lt;br/&gt;
- Snelheid is niet belangrijk.&lt;br/&gt;&lt;br/&gt;
- Succes!"/>
+        <centrePage/>
+        <htmlText featureText="&lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt;"/>
         <addPadding/>
         <addPadding/>
-        <targetButton featureText="Begin experiment" target="stimuliScreenBase8_8"/>
+        <htmlText featureText="Bij deze test hoort u telkens een woord."/> 
+        <htmlText featureText="Er staan steeds vier plaatjes op het scherm, met nummers erbij."/> 
+        <htmlText featureText="Druk op &lt;b&gt;SPATIE&lt;/b&gt; om naar het woord te luisteren. U kunt het woord zo vaak beluisteren als u wilt."/>
+        <htmlText featureText="Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoort."/>
+        <htmlText featureText="Snelheid is niet belangrijk."/>
+        <addPadding/>
+        <htmlText featureText="&lt;b&gt;Veel succes!&lt;/b&gt;"/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="&lt;img src=&quot;static/BQ4_headphones.jpg&quot; width=&quot;180&quot;/&gt;"/>
+        <addPadding/>
+        <htmlText featureText="&lt;b&gt;Gebruik de koptelefoon.&lt;/b&gt;"/>
+        <addPadding/>
+        <targetButton featureText="Klik als u klaar bent om te beginnen met de test." target="stimuliScreenBase8_8"/>
+        <addPadding/>
     </presenter>
     
     <presenter  self="Accord9" next="stimuliScreenBase9_9" type="metadata" title="" >
-        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <centrePage/>
+        <htmlText featureText="&lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt;"/>
         <addPadding/>
         <addPadding/>
+        <htmlText featureText="Bij deze test hoort u telkens een woord."/> 
+        <htmlText featureText="Er staan steeds vier plaatjes op het scherm, met nummers erbij."/> 
+        <htmlText featureText="Druk op &lt;b&gt;SPATIE&lt;/b&gt;  om naar het woord te luisteren. U kunt het woord zo vaak beluisteren als u wilt."/>
+        <htmlText featureText="Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoort."/>
+        <htmlText featureText="Snelheid is niet belangrijk."/>
         <addPadding/>
-        <htmlText featureText="Welkom bij dit experiment.&lt;br/&gt;&lt;br/&gt;
- Bij dit experiment hoort u telkens een woord. Er staan steeds vier plaatjes op het scherm, met nummers erbij. 
-Druk op SPATIE om naar het woord te luisteren. 
-Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoort. &lt;br/&gt;&lt;br/&gt;
- Snelheid is niet belangrijk.&lt;br/&gt;&lt;br/&gt;
- Succes!"/>
+        <htmlText featureText="&lt;b&gt;Veel succes!&lt;/b&gt;"/>
         <addPadding/>
         <addPadding/>
-        <targetButton featureText="Begin experiment" target="stimuliScreenBase9_9"/>
+        <htmlText featureText="&lt;img src=&quot;static/BQ4_headphones.jpg&quot; width=&quot;180&quot;/&gt;"/>
+        <addPadding/>
+        <htmlText featureText="&lt;b&gt;Gebruik de koptelefoon.&lt;/b&gt;"/>
+        <addPadding/>
+        <targetButton featureText="Klik als u klaar bent om te beginnen met de test." target="stimuliScreenBase9_9"/>
+        <addPadding/>
     </presenter>
     
     <presenter self="Accord10" next="stimuliScreenBase10_10" type="metadata" title="" >
-        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <centrePage/>
+        <htmlText featureText="&lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt;"/>
         <addPadding/>
         <addPadding/>
+        <htmlText featureText="Bij deze test hoort u telkens een woord."/> 
+        <htmlText featureText="Er staan steeds vier plaatjes op het scherm, met nummers erbij."/> 
+        <htmlText featureText="Druk op &lt;b&gt;SPATIE&lt;/b&gt;  om naar het woord te luisteren. U kunt het woord zo vaak beluisteren als u wilt."/>
+        <htmlText featureText="Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoort."/>
+        <htmlText featureText="Snelheid is niet belangrijk."/>
         <addPadding/>
-        <htmlText featureText="Welkom bij dit experiment.&lt;br/&gt;&lt;br/&gt;
- Bij dit experiment hoort u telkens een woord. Er staan steeds vier plaatjes op het scherm, met nummers erbij. 
-Druk op SPATIE om naar het woord te luisteren. 
-Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoort. &lt;br/&gt;&lt;br/&gt;
- Snelheid is niet belangrijk.&lt;br/&gt;&lt;br/&gt;
- Succes!"/>
+        <htmlText featureText="&lt;b&gt;Veel succes!&lt;/b&gt;"/>
         <addPadding/>
         <addPadding/>
-        <targetButton featureText="Begin experiment" target="stimuliScreenBase10_10"/>
+        <htmlText featureText="&lt;img src=&quot;static/BQ4_headphones.jpg&quot; width=&quot;180&quot;/&gt;"/>
+        <addPadding/>
+        <htmlText featureText="&lt;b&gt;Gebruik de koptelefoon.&lt;/b&gt;"/>
+        <addPadding/>
+        <targetButton featureText="Klik als u klaar bent om te beginnen met de test." target="stimuliScreenBase10_10"/>
+        <addPadding/>
     </presenter>
     
     <presenter self="Accord11" next="stimuliScreenBase11_11" type="metadata" title="" >
-        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <centrePage/>
+        <htmlText featureText="&lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt;"/>
         <addPadding/>
         <addPadding/>
+        <htmlText featureText="Bij deze test hoort u telkens een woord."/> 
+        <htmlText featureText="Er staan steeds vier plaatjes op het scherm, met nummers erbij."/> 
+        <htmlText featureText="Druk op &lt;b&gt;SPATIE&lt;/b&gt;  om naar het woord te luisteren. U kunt het woord zo vaak beluisteren als u wilt."/>
+        <htmlText featureText="Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoort."/>
+        <htmlText featureText="Snelheid is niet belangrijk."/>
         <addPadding/>
-        <htmlText featureText="Welkom bij dit experiment.&lt;br/&gt;&lt;br/&gt;
- Bij dit experiment hoort u telkens een woord. Er staan steeds vier plaatjes op het scherm, met nummers erbij. 
-Druk op SPATIE om naar het woord te luisteren. 
-Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoort. &lt;br/&gt;&lt;br/&gt;
- Snelheid is niet belangrijk.&lt;br/&gt;&lt;br/&gt;
- Succes!"/>
+        <htmlText featureText="&lt;b&gt;Veel succes!&lt;/b&gt;"/>
         <addPadding/>
         <addPadding/>
-        <targetButton featureText="Begin experiment" target="stimuliScreenBase11_11"/>
+        <htmlText featureText="&lt;img src=&quot;static/BQ4_headphones.jpg&quot; width=&quot;180&quot;/&gt;"/>
+        <addPadding/>
+        <htmlText featureText="&lt;b&gt;Gebruik de koptelefoon.&lt;/b&gt;"/>
+        <addPadding/>
+        <targetButton featureText="Klik als u klaar bent om te beginnen met de test." target="stimuliScreenBase11_11"/>
+        <addPadding/>
     </presenter>
     
     <presenter self="Accord13" next="stimuliScreenBase13_13" type="metadata" title="" >
-        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <centrePage/>
+        <htmlText featureText="&lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt;"/>
         <addPadding/>
         <addPadding/>
+        <htmlText featureText="Bij deze test hoort u telkens een woord."/> 
+        <htmlText featureText="Er staan steeds vier plaatjes op het scherm, met nummers erbij."/> 
+        <htmlText featureText="Druk op &lt;b&gt;SPATIE&lt;/b&gt;  om naar het woord te luisteren. U kunt het woord zo vaak beluisteren als u wilt."/>
+        <htmlText featureText="Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoort."/>
+        <htmlText featureText="Snelheid is niet belangrijk."/>
         <addPadding/>
-        <htmlText featureText="Welkom bij dit experiment.&lt;br/&gt;&lt;br/&gt;
- Bij dit experiment hoort u telkens een woord. Er staan steeds vier plaatjes op het scherm, met nummers erbij. 
-Druk op SPATIE om naar het woord te luisteren. 
-Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoort. &lt;br/&gt;&lt;br/&gt;
- Snelheid is niet belangrijk.&lt;br/&gt;&lt;br/&gt;
- Succes!"/>
+        <htmlText featureText="&lt;b&gt;Veel succes!&lt;/b&gt;"/>
         <addPadding/>
         <addPadding/>
-        <targetButton featureText="Begin experiment" target="stimuliScreenBase13_13"/>
+        <htmlText featureText="&lt;img src=&quot;static/BQ4_headphones.jpg&quot; width=&quot;180&quot;/&gt;"/>
+        <addPadding/>
+        <htmlText featureText="&lt;b&gt;Gebruik de koptelefoon.&lt;/b&gt;"/>
+        <addPadding/>
+        <targetButton featureText="Klik als u klaar bent om te beginnen met de test." target="stimuliScreenBase13_13"/>
+        <addPadding/>
     </presenter>
     
     <presenter  self="Accord14" next="stimuliScreenBase14_14" type="metadata" title="" >
-        <htmlText featureText="&lt;center&gt; &lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt; &lt;/center&gt;"/>
+        <centrePage/>
+        <htmlText featureText="&lt;b&gt;&lt;big&gt;Instructies &lt;/big&gt; &lt;/b&gt;"/>
         <addPadding/>
         <addPadding/>
+        <htmlText featureText="Bij deze test hoort u telkens een woord."/> 
+        <htmlText featureText="Er staan steeds vier plaatjes op het scherm, met nummers erbij."/> 
+        <htmlText featureText="Druk op &lt;b&gt;SPATIE&lt;/b&gt;  om naar het woord te luisteren. U kunt het woord zo vaak beluisteren als u wilt."/>
+        <htmlText featureText="Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoort."/>
+        <htmlText featureText="Snelheid is niet belangrijk."/>
         <addPadding/>
-        <htmlText featureText="Welkom bij dit experiment.&lt;br/&gt;&lt;br/&gt;
- Bij dit experiment hoort u telkens een woord. Er staan steeds vier plaatjes op het scherm, met nummers erbij. 
-Druk op SPATIE om naar het woord te luisteren. 
-Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoort. &lt;br/&gt;&lt;br/&gt;
- Snelheid is niet belangrijk.&lt;br/&gt;&lt;br/&gt;
- Succes!"/>
+        <htmlText featureText="&lt;b&gt;Veel succes!&lt;/b&gt;"/>
         <addPadding/>
         <addPadding/>
-        <targetButton featureText="Begin experiment" target="stimuliScreenBase13_13"/>
+        <htmlText featureText="&lt;img src=&quot;static/BQ4_headphones.jpg&quot; width=&quot;180&quot;/&gt;"/>
+        <addPadding/>
+        <htmlText featureText="&lt;b&gt;Gebruik de koptelefoon.&lt;/b&gt;"/>
+        <addPadding/>
+        <targetButton featureText="Klik als u klaar bent om te beginnen met de test." target="stimuliScreenBase14_14"/>
+        <addPadding/>
     </presenter>
     
     
@@ -357,17 +339,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -434,17 +416,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -511,17 +493,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -588,17 +570,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -665,17 +647,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -742,17 +724,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -819,17 +801,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -896,17 +878,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -977,17 +959,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -1054,17 +1036,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -1131,17 +1113,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -1208,17 +1190,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -1285,17 +1267,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -1362,17 +1344,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -1439,17 +1421,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -1516,17 +1498,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -1593,17 +1575,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -1674,17 +1656,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -1751,17 +1733,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -1828,17 +1810,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -1905,17 +1887,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -1982,17 +1964,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -2059,17 +2041,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -2136,17 +2118,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -2213,17 +2195,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -2290,17 +2272,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -2368,17 +2350,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -2449,17 +2431,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -2526,17 +2508,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -2603,17 +2585,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -2680,17 +2662,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -2757,17 +2739,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -2834,17 +2816,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -2911,17 +2893,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -2988,17 +2970,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -3065,17 +3047,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -3143,17 +3125,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -3221,17 +3203,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -3303,17 +3285,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -3380,17 +3362,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -3457,17 +3439,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -3534,17 +3516,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -3611,17 +3593,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -3688,17 +3670,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -3765,17 +3747,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -3842,17 +3824,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -3919,17 +3901,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -3997,17 +3979,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -4075,17 +4057,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -4152,17 +4134,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -4229,17 +4211,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -4310,17 +4292,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -4387,17 +4369,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -4464,17 +4446,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -4541,17 +4523,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -4618,17 +4600,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -4695,17 +4677,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -4772,17 +4754,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -4849,17 +4831,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -4926,17 +4908,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -5004,17 +4986,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -5082,17 +5064,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -5160,17 +5142,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -5237,17 +5219,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -5314,17 +5296,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -5397,17 +5379,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -5476,17 +5458,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -5555,17 +5537,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -5634,17 +5616,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -5713,17 +5695,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -5793,17 +5775,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -5873,17 +5855,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -5952,17 +5934,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -6031,17 +6013,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio> 
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -6110,17 +6092,17 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                     <mediaLoaded>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Druk op spatie om het woord te horen"/>
+                        <htmlText featureText="Druk op spatie om het woord te horen. Toets het nummer in van het plaatje dat bij het woord hoort."/>
                         <actionButton featureText="&#160;" hotKey="SPACE" styleName="hiddenBottomRight">
                             <stimulusAudio msToNext="0" showPlaybackIndicator="false">
-                                <mediaLoaded>
-                                    <enableStimulusButtons/>
-                                </mediaLoaded>
+                                <mediaLoaded/>
                                 <mediaLoadFailed>
                                     <htmlText featureText="audio load failed"/>
                                 </mediaLoadFailed>
-                                <mediaPlaybackComplete/>
-                            </stimulusAudio>
+                                <mediaPlaybackComplete>
+                                    <enableStimulusButtons/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio>                            
                         </actionButton>
                     </mediaLoaded>
                 </stimulusImage>            
@@ -6134,6 +6116,8 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
                         <gotoPresenter target="Admin"/>
                     </aboveThreshold>
                     <withinThreshold>
+                        <logTokenText type="summary" dataLogFormat="totalScore: &lt;playerTotalScore&gt;"/>
+                        <logTokenText type="summary" dataLogFormat="totalErrors: &lt;playerTotalErrors&gt;"/>
                         <clearCurrentScore/>
                         <gotoNextPresenter/> 
                     </withinThreshold>
@@ -6150,18 +6134,19 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
 
     
     <presenter type="transmission" self="Admin" title="Administratie">
+        <centrePage/>
         <sendMetadata>
             <onSuccess> 
                 <sendAllData>
                     <onSuccess>
                         <addPadding/>
                         <addPadding/>
+                        <htmlText featureText="Einde van deze test."/>
+                        <addPadding/>
+                        <htmlText featureText="Bedankt voor uw deelname."/>
                         <addPadding/>
                         <addPadding/>
-                        <htmlText featureText="Bedankt voor het meedoen."/>
-                        <addPadding/>
-                        <addPadding/>
-                        <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
+                        <createUserButton featureText="Resultaten opsturen." target="Menu"/>
                     </onSuccess>
                     <onError>
                         <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
@@ -6392,7 +6377,7 @@ Druk dan op het toetsenbord het nummer in van het plaatje dat bij het woord hoor
         <stimulus  identifier="set17_Page_07_tn_199_tweeslachtig"  label="set17_Page_07_tn_199_tweeslachtig"   pauseMs="0" correctResponses="3"  imagePath="stimuli/set17_Page_07_tn.png"  audioPath="stimuli/199_tweeslachtig"  tags="set17"  />
         <stimulus  identifier="set17_Page_08_tn_200_bovenkruier"  label="set17_Page_08_tn_200_bovenkruier"   pauseMs="0" correctResponses="3"  imagePath="stimuli/set17_Page_08_tn.png"  audioPath="stimuli/200_bovenkruier"  tags="set17"  />
         <stimulus  identifier="set17_Page_09_tn_201_lamenteren"  label="set17_Page_09_tn_201_lamenteren"   pauseMs="0" correctResponses="1"  imagePath="stimuli/set17_Page_09_tn.png"  audioPath="stimuli/201_lamenteren"  tags="set17"  />
-        <stimulus  identifier="set17_Page_10_tn_¯202_convex"  label="set17_Page_10_tn_202_convex"   pauseMs="0" correctResponses="3"  imagePath="stimuli/set17_Page_10_tn.png"  audioPath="stimuli/202_convex"  tags="set17"  />
+        <stimulus  identifier="set17_Page_10_tn_202_convex"  label="set17_Page_10_tn_202_convex"   pauseMs="0" correctResponses="3"  imagePath="stimuli/set17_Page_10_tn.png"  audioPath="stimuli/202_convex"  tags="set17"  />
         <stimulus  identifier="set17_Page_11_tn_203_nonnetje"  label="set17_Page_11_tn_203_nonnetje"   pauseMs="0" correctResponses="4"  imagePath="stimuli/set17_Page_11_tn.png"  audioPath="stimuli/203_nonnetje"  tags="set17"  />
         <stimulus  identifier="set17_Page_12_tn_204_wetten"  label="set17_Page_12_tn_204_wetten"   pauseMs="0" correctResponses="1"  imagePath="stimuli/set17_Page_12_tn.png"  audioPath="stimuli/204_wetten"  tags="set17"  />           
     </stimuli>
