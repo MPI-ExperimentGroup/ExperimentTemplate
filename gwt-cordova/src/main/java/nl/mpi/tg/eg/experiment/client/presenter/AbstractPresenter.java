@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
@@ -25,6 +26,7 @@ import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.Messages;
@@ -34,6 +36,7 @@ import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.SimpleView;
@@ -52,6 +55,7 @@ public abstract class AbstractPresenter implements Presenter {
     final protected SimpleView simpleView;
     private PresenterEventListner backEventListner = null;
     protected final List<TimedStimulusListener> backEventListners = new ArrayList<>();
+    final HashMap<String, ArrayList<StimulusButton>> buttonGroupsList = new HashMap<>();
     private PresenterEventListner nextEventListner = null;
     private PresenterEventListner windowClosingEventListner = null;
     private final Timer audioTickerTimer;
@@ -165,24 +169,34 @@ public abstract class AbstractPresenter implements Presenter {
         ((ComplexView) simpleView).centrePage();
     }
 
-    public void actionFooterButton(final PresenterEventListner presenterListerner) {
-        ((ComplexView) simpleView).addFooterButton(presenterListerner);
+    public void ratingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String buttonGroupName, final String savedValue, final String buttonGroup) {
+        addButtonToGroup(buttonGroup, ((ComplexView) simpleView).addRatingButtons(presenterListeners, ratingLabelLeft, ratingLabelRight, true, styleName, null, null));
     }
 
-    public void targetFooterButton(final PresenterEventListner presenterListerner) {
-        ((ComplexView) simpleView).addFooterButton(presenterListerner);
+    public StimulusButton imageButton(final PresenterEventListner presenterListerner, final SafeUri imagePath, final String styleName, final boolean isTouchZone, final String buttonGroup) {
+        return addButtonToGroup(buttonGroup, ((ComplexView) simpleView).addImageButton(presenterListerner, imagePath, styleName, isTouchZone));
     }
 
-    public void actionButton(final PresenterEventListner presenterListerner, String styleName) {
-        ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName);
+    public void actionFooterButton(final PresenterEventListner presenterListerner, final String styleName, final String buttonGroup) {
+        addButtonToGroup(buttonGroup, ((ComplexView) simpleView).addFooterButton(presenterListerner, styleName));
     }
 
-    public void targetButton(final PresenterEventListner presenterListerner, String styleName) {
-        ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName);
+    public void targetFooterButton(final PresenterEventListner presenterListerner, final String styleName, final String buttonGroup) {
+        addButtonToGroup(buttonGroup, ((ComplexView) simpleView).addFooterButton(presenterListerner, styleName));
     }
 
-    public void optionButton(final PresenterEventListner presenterListerner, String styleName) {
-        ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName);
+    public void actionButton(final PresenterEventListner presenterListerner, final String styleName, final String buttonGroup) {
+        addButtonToGroup(buttonGroup, ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName));
+    }
+
+    public void targetButton(final PresenterEventListner presenterListerner, final String styleName, final String buttonGroup) {
+        addButtonToGroup(buttonGroup, ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName));
+    }
+
+    public StimulusButton optionButton(final PresenterEventListner presenterListerner, final String styleName, final String buttonGroup) {
+        final StimulusButton optionButton = ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName);
+        addButtonToGroup(buttonGroup, optionButton);
+        return optionButton;
     }
 
     protected void table(final TimedStimulusListener timedStimulusListener) {
@@ -244,6 +258,55 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected void regionClear(final String regionId) {
         ((ComplexView) simpleView).clearRegion(regionId);
+    }
+
+    protected void clearButtonList() {
+        buttonGroupsList.clear();
+    }
+
+    protected void addButtonToGroup(final String buttonGroup, final List<StimulusButton> stimulusButtonList) {
+        for (StimulusButton stimulusButton : stimulusButtonList) {
+            addButtonToGroup(buttonGroup, stimulusButton);
+        }
+    }
+
+    protected StimulusButton addButtonToGroup(final String buttonGroup, final StimulusButton stimulusButton) {
+        ArrayList<StimulusButton> buttonList = buttonGroupsList.get(buttonGroup);
+        if (buttonList == null) {
+            buttonList = new ArrayList<>();
+            buttonGroupsList.put(buttonGroup, buttonList);
+        }
+        buttonList.add(stimulusButton);
+        return stimulusButton;
+    }
+
+    protected void disableButtonGroup(final String buttonGroup) {
+        for (StimulusButton currentButton : buttonGroupsList.get(buttonGroup)) {
+            currentButton.setEnabled(false);
+        }
+//        ((TimedStimulusView) simpleView).addText("disableButtonGroup: " + duration.elapsedMillis() + "ms");
+    }
+
+    protected void hideButtonGroup(final String buttonGroup) {
+        for (StimulusButton currentButton : buttonGroupsList.get(buttonGroup)) {
+            currentButton.setVisible(false);
+        }
+//        ((TimedStimulusView) simpleView).addText("hideButtonGroup: " + duration.elapsedMillis() + "ms");
+    }
+
+    protected void showButtonGroup(final String buttonGroup) {
+        for (StimulusButton currentButton : buttonGroupsList.get(buttonGroup)) {
+            currentButton.setVisible(true);
+        }
+//        ((TimedStimulusView) simpleView).addText("showButtonGroup: " + duration.elapsedMillis() + "ms");
+    }
+
+    protected void enableButtonGroup(final String buttonGroup) {
+        for (StimulusButton currentButton : buttonGroupsList.get(buttonGroup)) {
+            currentButton.setEnabled(true);
+            currentButton.removeStyleName("optionButtonActivated");
+        }
+//        ((TimedStimulusView) simpleView).addText("enableButtonGroup: " + duration.elapsedMillis() + "ms");
     }
 
     @Override
@@ -364,11 +427,13 @@ public abstract class AbstractPresenter implements Presenter {
             },  subDirectoryName, directoryName,  stimulusIdString);
         } else if($wnd.Recorder && $wnd.Recorder.isRecordingSupported()) {
             console.log("isRecordingSupported");
-            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) enumerateDevices");
+//            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) enumerateDevices");
+            console.log("enumerateDevices: ");
             navigator.mediaDevices.enumerateDevices().then(function (deviceInfos) {
                 for (var index = 0; index < deviceInfos.length; index++) {
                     var deviceInfo = deviceInfos[index];
-                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) " + deviceInfo.label.search(deviceRegex));    
+//                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) " + deviceInfo.label.search(deviceRegex));    
+            console.log("deviceInfo: " + deviceInfo + " match: " + deviceInfo.label.search(deviceRegex));
                     if(deviceInfo.kind === 'audioinput' && deviceInfo.label.search(deviceRegex) >= 0){
                         abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) " + deviceInfo.kind);            
                         abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) " + deviceInfo.label);                    
