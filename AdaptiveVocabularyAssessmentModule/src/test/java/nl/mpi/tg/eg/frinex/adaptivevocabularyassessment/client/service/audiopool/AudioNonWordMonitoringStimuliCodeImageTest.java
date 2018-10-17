@@ -67,15 +67,17 @@ public class AudioNonWordMonitoringStimuliCodeImageTest {
         System.out.println(result);
     }
     
+    @Ignore
     @Test
     public void testParseNonwordWordformCSVStringIntoXml() throws Exception {
         System.out.println("parseTrialsInputCSVStringIntoXml");
         ArrayList<String> fileNameExtensions = null;
         AudioNonWordMonitoringStimuliCodeImage instance = new AudioNonWordMonitoringStimuliCodeImage();
-        /* String resultNonword = instance.parseTrialsInputCSVStringIntoXml(NonwordWordformCsv.NONWORD, STIMULI_DIR, "nonword");
+        
+        String resultNonword = instance.parseTrialsInputCSVStringIntoXml(NonwordWordformCsv.NONWORD, STIMULI_DIR, "nonword");
         assertTrue(resultNonword.startsWith("<stimulus "));
         assertTrue(resultNonword.endsWith(" />\n"));
-        System.out.println(resultNonword);*/
+        System.out.println(resultNonword);
         
         String resultWordform = instance.parseTrialsInputCSVStringIntoXml(NonwordWordformCsv.WORDFORM, STIMULI_DIR, "wordform");
         assertTrue(resultWordform.startsWith("<stimulus "));

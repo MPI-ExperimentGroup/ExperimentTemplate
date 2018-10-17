@@ -24,7 +24,7 @@ package nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.service.audiopoo
 public class NonwordWordformCsv {
 
     public static String NONWORD = "Order;Round;SNR;Condition;Length_list;Word;Target_nonword;Word1;Word2;Word3;Word4;Word5;Word6;Position_target;Position_foil\n" +
- "1;0;0;Target-only;4 words;schaap;schuip_1;wamoel;schuip_2;balstel;res;;;2;0;\n" +
+"1;0;0;Target-only;4 words;schaap;schuip_1;wamoel;schuip_2;balstel;res;;;2;0;\n" +
 "2;0;-6;NoTarget;3 words;tong;tonk;zandog;dijg;vets;;;;0;0;\n" +
 "3;0;-10;Target+Foil;5 words;zalf;zarp_1;vleek;zanskolm;kelf;zarp_2;bolpes;;4;2;\n" +
 "1;1;0;Target-only;6 words;touw;tomp_1;oormoel;karp;retnin;alveid;tomp_2;penk;5;0;\n" +
@@ -78,18 +78,18 @@ public class NonwordWordformCsv {
 "14;2;-6;NoTarget;4 words;lop;pop;voorserm;muiland;fraal;kijn;;;0;0\n" +
 "15;2;-8;Target-only;5 words;slas;slak_1;laanzan;halg;jirsel;slak_2;goe;;4;0\n" +
 "16;2;-10;Target-only;3 words;mang;tang_1;lartmat;tang_2;bleeuw;;;;2;0\n" +
-"17;2;-12;Target+Foil;4 words;koed;hoed_1;hoegpaat;momp;hoed_2;noger;;;2;1\n" +
-"18;2;-14;Target-only;4 words;oend;eend_1;fonguin;laaps;eend_2;spunel;;;2;0\n" +
+"17;2;-12;Target+Foil;4 words;koed;hoed_1;hoegpaat;momp;hoed_2;noger;;;3;1\n" +
+"18;2;-14;Target-only;4 words;oend;eend_1;fonguin;laaps;eend_2;spunel;;;3;0\n" +
 "19;2;-16;NoTarget;6 words;zwoed;bloed;liem;watse;kieg;firp;bioel;gebog;0;0\n" +
 "20;2;-18;Target+Foil;3 words;bops;bord_1;bolgwap;bord_2;ziep;;;;2;1\n" +
 "21;3;0;NoTarget;3 words;luip;loep;kleis;heerting;zwins;;;;0;0\n" +
-"22;3;-2;Target+Foil;6 words;baust;beest_1;baaf;beendleu;foestvag;beest_2;tan;rornas;2;2\n" +
+"22;3;-2;Target+Foil;6 words;baust;beest_1;baaf;beendleu;foestvag;beest_2;tan;rornas;4;2\n" +
 "23;3;-4;NoTarget;4 words;deek;doek;eerkuid;jor;vas;wijtoeg;;;0;0\n" +
 "24;3;-6;Target-only;5 words;muin;muis_1;blan;muis_2;wemp;euzer;knekgel;;2;0\n" +
-"25;3;-8;Target+Foil;5 words;hogt;hond_1;ontpad;holmdrins;hond_2;toor;roog;;2;2\n" +
+"25;3;-8;Target+Foil;5 words;hogt;hond_1;ontpad;holmdrins;hond_2;toor;roog;;3;2\n" +
 "26;3;-10;NoTarget;5 words;troer;broer;voortegt;brof;blook;spaag;afbuip;;0;0\n" +
 "27;3;-12;NoTarget;5 words;draas;blaas;aanbag;smap;tetjel;gog;pag;;0;0\n" +
-"28;3;-14;Target+Foil;4 words;bried;brood_1;snes;broopkimp;brood_2;jutleen;;;2;2\n" +
+"28;3;-14;Target+Foil;4 words;bried;brood_1;snes;broopkimp;brood_2;jutleen;;;3;2\n" +
 "29;3;-16;Target-only;4 words;klin;spin_1;schuik;spin_2;trauster;pozaat;;;2;0\n" +
 "30;3;-18;NoTarget;6 words;sor;sop;raber;hieg;brots;wref;ledoer;meusel;0;0";
 }

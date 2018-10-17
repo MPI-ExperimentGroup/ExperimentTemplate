@@ -171,7 +171,7 @@ public class AudioNonWordMonitoringStimuliCodeImage {
                 if (currentWord == null) {
                     throw new IOException(fieldName + " is undefined");
                 }
-
+                
                 if (i == trialPositionTargetInt) {
                     if (!currentWord.endsWith("_2")) {
                         currentWord = currentWord + "_2";
