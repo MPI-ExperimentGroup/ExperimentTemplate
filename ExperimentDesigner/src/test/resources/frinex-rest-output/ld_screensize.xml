@@ -114,15 +114,15 @@
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete>
-                                            <touchInputStimulusButton featureText="Left Overlay Button" listenerId="leftButtonGroup" eventTag="Left" src="" styleName="leftOverlayButton" dataChannel="2">
-                                                <disableStimulusButtons/>
+                                            <touchInputStimulusButton featureText="Left Overlay Button" groupId="leftButtonGroup" eventTag="Left" src="" styleName="leftOverlayButton" dataChannel="2">
+                                                <disableButtonGroup groupId="leftButtonGroup"/><disableButtonGroup groupId="rightButtonGroup"/>
                                                 <setStimulusCodeResponse codeFormat="&lt;code&gt;_L" dataChannel="3"/>
-                                                <enableStimulusButtons/>
+                                                <enableButtonGroup groupId="leftButtonGroup"/><enableButtonGroup groupId="rightButtonGroup"/>
                                             </touchInputStimulusButton>
-                                            <touchInputStimulusButton featureText="Right Overlay Button" listenerId="rightButtonGroup" eventTag="Right" src="" styleName="rightOverlayButton" dataChannel="2">
-                                                <disableStimulusButtons/>
+                                            <touchInputStimulusButton featureText="Right Overlay Button" groupId="rightButtonGroup" eventTag="Right" src="" styleName="rightOverlayButton" dataChannel="2">
+                                                <disableButtonGroup groupId="leftButtonGroup"/><disableButtonGroup groupId="rightButtonGroup"/>
                                                 <setStimulusCodeResponse codeFormat="&lt;code&gt;_R" dataChannel="3"/>
-                                                <enableStimulusButtons/>
+                                                <enableButtonGroup groupId="leftButtonGroup"/><enableButtonGroup groupId="rightButtonGroup"/>
                                             </touchInputStimulusButton>
                                         </mediaPlaybackComplete>
                                     </stimulusCodeAudio>
@@ -209,25 +209,25 @@
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackComplete>
-                                                        <touchInputStimulusButton featureText="Left Overlay Button" listenerId="leftButtonGroup" eventTag="Left" src="" styleName="leftOverlayButton" dataChannel="2">
-                                                            <disableStimulusButtons/>
+                                                        <touchInputStimulusButton featureText="Left Overlay Button" groupId="leftButtonGroup" eventTag="Left" src="" styleName="leftOverlayButton" dataChannel="2">
+                                                            <disableButtonGroup groupId="leftButtonGroup"/><disableButtonGroup groupId="rightButtonGroup"/>
                                                             <setStimulusCodeResponse codeFormat="&lt;code&gt;_L" dataChannel="3"/>
                                                             <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                                                                 <mediaLoaded/>
                                                                 <mediaLoadFailed/>
                                                                 <mediaPlaybackComplete>
-                                                                    <enableStimulusButtons/>
+                                                                    <enableButtonGroup groupId="leftButtonGroup"/><enableButtonGroup groupId="rightButtonGroup"/>
                                                                 </mediaPlaybackComplete>
                                                             </stimulusCodeAudio>
                                                         </touchInputStimulusButton>
-                                                        <touchInputStimulusButton featureText="Right Overlay Button" listenerId="rightButtonGroup" eventTag="Right" src="" styleName="rightOverlayButton" dataChannel="2">
-                                                            <disableStimulusButtons/>
+                                                        <touchInputStimulusButton featureText="Right Overlay Button" groupId="rightButtonGroup" eventTag="Right" src="" styleName="rightOverlayButton" dataChannel="2">
+                                                            <disableButtonGroup groupId="leftButtonGroup"/><disableButtonGroup groupId="rightButtonGroup"/>
                                                             <setStimulusCodeResponse codeFormat="&lt;code&gt;_R" dataChannel="3"/>
                                                             <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                                                                 <mediaLoaded/>
                                                                 <mediaLoadFailed/>
                                                                 <mediaPlaybackComplete>
-                                                                    <enableStimulusButtons/>
+                                                                    <enableButtonGroup groupId="leftButtonGroup"/><enableButtonGroup groupId="rightButtonGroup"/>
                                                                 </mediaPlaybackComplete>
                                                             </stimulusCodeAudio>
                                                         </touchInputStimulusButton>
@@ -318,25 +318,25 @@
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackComplete>
-                                                        <touchInputStimulusButton featureText="Left Overlay Button" listenerId="leftButtonGroup" eventTag="Left" src="" styleName="leftOverlayButton" dataChannel="2">
-                                                            <disableStimulusButtons/>
+                                                        <touchInputStimulusButton featureText="Left Overlay Button" groupId="leftButtonGroup" eventTag="Left" src="" styleName="leftOverlayButton" dataChannel="2">
+                                                            <disableButtonGroup groupId="leftButtonGroup"/><disableButtonGroup groupId="rightButtonGroup"/>
                                                             <setStimulusCodeResponse codeFormat="&lt;code&gt;_L" dataChannel="3"/>
                                                             <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                                                                 <mediaLoaded/>
                                                                 <mediaLoadFailed/>
                                                                 <mediaPlaybackComplete>
-                                                                    <enableStimulusButtons/>
+                                                                    <enableButtonGroup groupId="leftButtonGroup"/><enableButtonGroup groupId="rightButtonGroup"/>
                                                                 </mediaPlaybackComplete>
                                                             </stimulusCodeAudio>
                                                         </touchInputStimulusButton>
-                                                        <touchInputStimulusButton featureText="Right Overlay Button" listenerId="rightButtonGroup" eventTag="Right" src="" styleName="rightOverlayButton" dataChannel="2">
-                                                            <disableStimulusButtons/>
+                                                        <touchInputStimulusButton featureText="Right Overlay Button" groupId="rightButtonGroup" eventTag="Right" src="" styleName="rightOverlayButton" dataChannel="2">
+                                                            <disableButtonGroup groupId="leftButtonGroup"/><disableButtonGroup groupId="rightButtonGroup"/>
                                                             <setStimulusCodeResponse codeFormat="&lt;code&gt;_R" dataChannel="3"/>
                                                             <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                                                                 <mediaLoaded/>
                                                                 <mediaLoadFailed/>
                                                                 <mediaPlaybackComplete>
-                                                                    <enableStimulusButtons/>
+                                                                    <enableButtonGroup groupId="leftButtonGroup"/><enableButtonGroup groupId="rightButtonGroup"/>
                                                                 </mediaPlaybackComplete>
                                                             </stimulusCodeAudio>
                                                         </touchInputStimulusButton>
@@ -427,25 +427,25 @@
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackComplete>
-                                                        <touchInputStimulusButton featureText="Left Overlay Button" listenerId="leftButtonGroup" eventTag="Left" src="" styleName="leftOverlayButton" dataChannel="2">
-                                                            <disableStimulusButtons/>
+                                                        <touchInputStimulusButton featureText="Left Overlay Button" groupId="leftButtonGroup" eventTag="Left" src="" styleName="leftOverlayButton" dataChannel="2">
+                                                            <disableButtonGroup groupId="leftButtonGroup"/><disableButtonGroup groupId="rightButtonGroup"/>
                                                             <setStimulusCodeResponse codeFormat="&lt;code&gt;_L" dataChannel="3"/>
                                                             <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                                                                 <mediaLoaded/>
                                                                 <mediaLoadFailed/>
                                                                 <mediaPlaybackComplete>
-                                                                    <enableStimulusButtons/>
+                                                                    <enableButtonGroup groupId="leftButtonGroup"/><enableButtonGroup groupId="rightButtonGroup"/>
                                                                 </mediaPlaybackComplete>
                                                             </stimulusCodeAudio>
                                                         </touchInputStimulusButton>
-                                                        <touchInputStimulusButton featureText="Right Overlay Button" listenerId="rightButtonGroup" eventTag="Right" src="" styleName="rightOverlayButton" dataChannel="2">
-                                                            <disableStimulusButtons/>
+                                                        <touchInputStimulusButton featureText="Right Overlay Button" groupId="rightButtonGroup" eventTag="Right" src="" styleName="rightOverlayButton" dataChannel="2">
+                                                            <disableButtonGroup groupId="leftButtonGroup"/><disableButtonGroup groupId="rightButtonGroup"/>
                                                             <setStimulusCodeResponse codeFormat="&lt;code&gt;_R" dataChannel="3"/>
                                                             <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                                                                 <mediaLoaded/>
                                                                 <mediaLoadFailed/>
                                                                 <mediaPlaybackComplete>
-                                                                    <enableStimulusButtons/>
+                                                                    <enableButtonGroup groupId="leftButtonGroup"/><enableButtonGroup groupId="rightButtonGroup"/>
                                                                 </mediaPlaybackComplete>
                                                             </stimulusCodeAudio>
                                                         </touchInputStimulusButton>
@@ -536,25 +536,25 @@
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackComplete>
-                                                        <touchInputStimulusButton featureText="Left Overlay Button" listenerId="leftButtonGroup" eventTag="Left" src="" styleName="leftOverlayButton" dataChannel="2">
-                                                            <disableStimulusButtons/>
+                                                        <touchInputStimulusButton featureText="Left Overlay Button" groupId="leftButtonGroup" eventTag="Left" src="" styleName="leftOverlayButton" dataChannel="2">
+                                                            <disableButtonGroup groupId="leftButtonGroup"/><disableButtonGroup groupId="rightButtonGroup"/>
                                                             <setStimulusCodeResponse codeFormat="&lt;code&gt;_L" dataChannel="3"/>
                                                             <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                                                                 <mediaLoaded/>
                                                                 <mediaLoadFailed/>
                                                                 <mediaPlaybackComplete>
-                                                                    <enableStimulusButtons/>
+                                                                    <enableButtonGroup groupId="leftButtonGroup"/><enableButtonGroup groupId="rightButtonGroup"/>
                                                                 </mediaPlaybackComplete>
                                                             </stimulusCodeAudio>
                                                         </touchInputStimulusButton>
-                                                        <touchInputStimulusButton featureText="Right Overlay Button" listenerId="rightButtonGroup" eventTag="Right" src="" styleName="rightOverlayButton" dataChannel="2">
-                                                            <disableStimulusButtons/>
+                                                        <touchInputStimulusButton featureText="Right Overlay Button" groupId="rightButtonGroup" eventTag="Right" src="" styleName="rightOverlayButton" dataChannel="2">
+                                                            <disableButtonGroup groupId="leftButtonGroup"/><disableButtonGroup groupId="rightButtonGroup"/>
                                                             <setStimulusCodeResponse codeFormat="&lt;code&gt;_R" dataChannel="3"/>
                                                             <stimulusCodeAudio msToNext="500" codeFormat="Correct" showPlaybackIndicator="false">
                                                                 <mediaLoaded/>
                                                                 <mediaLoadFailed/>
                                                                 <mediaPlaybackComplete>
-                                                                    <enableStimulusButtons/>
+                                                                    <enableButtonGroup groupId="leftButtonGroup"/><enableButtonGroup groupId="rightButtonGroup"/>
                                                                 </mediaPlaybackComplete>
                                                             </stimulusCodeAudio>
                                                         </touchInputStimulusButton>
