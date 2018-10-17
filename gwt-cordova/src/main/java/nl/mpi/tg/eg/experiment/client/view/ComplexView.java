@@ -317,10 +317,6 @@ public class ComplexView extends SimpleView {
         anchor.addStyleName("pageLink");
     }
 
-    public StimulusButton addOptionButton(final PresenterEventListner presenterListerner) {
-        return addOptionButton(presenterListerner, null);
-    }
-
     public StimulusButton addOptionButton(final PresenterEventListner presenterListerner, String styleName) {
         StimulusButton nextButton = getOptionButton(presenterListerner);
         if (styleName != null && !styleName.isEmpty()) {
@@ -330,14 +326,19 @@ public class ComplexView extends SimpleView {
         return nextButton;
     }
 
-    public StimulusButton addFooterButton(final PresenterEventListner presenterListener) {
+    public StimulusButton addFooterButton(final PresenterEventListner presenterListener, String styleName) {
         StimulusButton nextButton = getOptionButton(presenterListener);
-        nextButton.addStyleName("footerButton");
+        if (styleName != null && !styleName.isEmpty()) {
+            nextButton.addStyleName(styleName);
+        } else {
+            nextButton.addStyleName("footerButton");
+        }
         addToFooter(nextButton.getWidget());
         return nextButton;
     }
 
-    public void addRatingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String buttonGroupName, final String savedValue) {
+    public List<StimulusButton> addRatingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String buttonGroupName, final String savedValue) {
+        final ArrayList<StimulusButton> stimulusButtonList = new ArrayList<>();
         final VerticalPanel verticalPanel = new VerticalPanel();
         final HorizontalPanel labelsPanel = new HorizontalPanel();
         if (ratingLabelLeft != null) {
@@ -359,6 +360,7 @@ public class ComplexView extends SimpleView {
             }
             buttonsPanel.add(nextButton.getWidget());
             buttonsPanel.setCellWidth(nextButton.getWidget(), (100 / presenterListeners.size()) + "%");
+            stimulusButtonList.add(nextButton);
         }
         verticalPanel.setWidth("100%");
         labelsPanel.setWidth("100%");
@@ -370,6 +372,7 @@ public class ComplexView extends SimpleView {
         } else {
             addWidget(verticalPanel);
         }
+        return stimulusButtonList;
     }
 
     public void addTouchInputCapture(TouchInputCapture touchInputCapture) {
