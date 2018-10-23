@@ -25,6 +25,8 @@ import com.google.gwt.typedarrays.shared.Uint8Array;
  */
 public interface MediaSubmissionListener {
 
+    void recorderFailed(final String message);
+
     void submissionFailed(final String message, final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataArray);
 
     void submissionComplete(String message);
