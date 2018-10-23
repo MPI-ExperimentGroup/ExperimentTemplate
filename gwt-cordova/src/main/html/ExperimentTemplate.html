@@ -37,6 +37,14 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <script src="webjars/sockjs-client/sockjs.min.js"></script>
         <script src="webjars/stomp-websocket/stomp.min.js"></script>
         <script src="opus-recorder/recorder.min.js"></script>
+        <script>
+            function startRecorder(errorHandler) {
+                recorder.start().catch(function (e) {
+                    console.log("startRecorder: " + e.message);
+                    errorHandler(e.message);
+                });
+            }
+        </script>
     </head>
     <body>        
         <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position:absolute;width:0;height:0;border:0"></iframe>
