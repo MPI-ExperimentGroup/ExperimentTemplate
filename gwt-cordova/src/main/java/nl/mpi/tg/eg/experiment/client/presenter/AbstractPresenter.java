@@ -429,39 +429,41 @@ public abstract class AbstractPresenter implements Presenter {
             console.log("isRecordingSupported");
 //            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) enumerateDevices");
             console.log("enumerateDevices: ");
+            var targetDeviceId = -1;
             navigator.mediaDevices.enumerateDevices().then(function (deviceInfos) {
                 for (var index = 0; index < deviceInfos.length; index++) {
                     var deviceInfo = deviceInfos[index];
 //                    abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) " + deviceInfo.label.search(deviceRegex));    
                     console.log("deviceInfo: " + deviceInfo.label + " : " + deviceInfo.kind + " match: " + deviceInfo.label.search(deviceRegex));
                     if(deviceInfo.kind === 'audioinput' && deviceInfo.label.search(deviceRegex) >= 0){
-                        abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) " + deviceInfo.kind);            
-                        abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) " + deviceInfo.label);                    
-                        abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) " + deviceInfo.deviceId);                    
+                        console.log(deviceInfo.kind);            
+                        console.log(deviceInfo.label);                    
+                        console.log(deviceInfo.deviceId);  
+                        targetDeviceId = deviceInfo.deviceId;
                     }
                 }
+                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, "isRecordingSupported");
+                if ($wnd.recorder) {
+                    $wnd.recorder.stop();
+                }
+                if(targetDeviceId === -1) {
+                    console.log("Device not found: " + deviceRegex);
+                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)("Device not found: " + deviceRegex)
+                } else {
+                    $wnd.recorder = new $wnd.Recorder({numberOfChannels: 1, encoderPath: "opus-recorder/waveWorker.min.js", monitorGain: 0, recordingGain: 1, encoderSampleRate: 48000, mediaTrackConstraints: {deviceId: targetDeviceId}});
+                    $wnd.recorder.ondataavailable = function( typedArray ){
+                        dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitAudioData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;)(userIdString, screenName, stimulusIdString, typedArray, mediaSubmissionListener);
+                    };
+                    try {
+                        $wnd.startRecorder(function(errorMessage){mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(errorMessage)});
+                        abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, $wnd.recorder.state);
+                        //$wnd.recorder.start();
+                    } catch(e) {
+                        console.log(e.message);
+                        abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(e.message);
+                    };
+                }
             });
-            //.catch(function (error) {
-             //   abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::addText(Ljava/lang/String;)("(debug) " + error.message);
-            //});
-            //deviceId: "Logitech USB Headset (046d:0a45)"groupId: "a7214c3e9d2d1568020e35a6adea7e75e8246bc9db67abc72fdab7a0036617a1"
-            
-            abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, "isRecordingSupported");
-            if ($wnd.recorder) {
-                $wnd.recorder.stop();
-            }
-            $wnd.recorder = new $wnd.Recorder({numberOfChannels: 1, encoderPath: "opus-recorder/waveWorker.min.js", monitorGain: 0, recordingGain: 1, encoderSampleRate: 48000, mediaTrackConstraints: {deviceId: '855f1790680be68988e9147de97e07ef89ad753b69907100b5198f752d134ffb'}});
-            $wnd.recorder.ondataavailable = function( typedArray ){
-                dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitAudioData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;)(userIdString, screenName, stimulusIdString, typedArray, mediaSubmissionListener);
-            };
-            try {
-                $wnd.startRecorder(function(errorMessage){mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(errorMessage)});
-                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, $wnd.recorder.state);
-                //$wnd.recorder.start();
-            } catch(e) {
-                console.log(e.message);
-                abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(e.message);
-            };
         } else {
             abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioError(Ljava/lang/String;)(null);
         }
