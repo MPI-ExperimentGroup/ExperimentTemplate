@@ -1433,6 +1433,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
 
             @Override
+            public void recorderFailed(final String message) {
+                onError.postLoadTimerFired();
+                submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "AudioRecorder", message, duration.elapsedMillis());
+            }
+
+            @Override
             public void submissionComplete(String message) {
 //                ((TimedStimulusView) simpleView).addText("(debug) Media Submission OK: " + message);
                 onSuccess.postLoadTimerFired();
