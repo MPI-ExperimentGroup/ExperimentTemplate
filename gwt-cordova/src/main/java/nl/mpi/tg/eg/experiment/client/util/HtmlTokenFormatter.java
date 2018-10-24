@@ -103,6 +103,11 @@ public class HtmlTokenFormatter {
             }
             if (currentStimulus.hasRatingLabels()) {
                 replacedTokensString = replacedTokensString.replaceAll("<stimulusRatingLabels>", currentStimulus.getRatingLabels());
+                int index = 0;
+                for (final String ratingLabel : currentStimulus.getRatingLabels().split(",")) {
+                    replacedTokensString = replacedTokensString.replace("<stimulusRatingLabel_" + index + ">", ratingLabel);
+                    index++;
+                }
             }
             if (currentStimulus.hasAudio()) {
                 replacedTokensString = replacedTokensString.replaceAll("<stimulusAudio>", currentStimulus.getAudio());
