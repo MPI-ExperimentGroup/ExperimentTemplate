@@ -298,7 +298,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
 
     private void submitData(final ServiceEndpoint endpoint, final UserId userId, final String jsonData) {
         localStorage.addStoredScreenData(userId, endpoint.name(), jsonData);
-        dataSubmitTimerList.add(new Timer() {
+        final Timer timer = new Timer() {
             @Override
             public void run() {
                 final Timer selfTimer = this;
@@ -330,9 +330,10 @@ public class DataSubmissionService extends AbstractSubmissionService {
                     dataSubmitTimerList.get(0).schedule(1000);
                 }
             }
-        });
+        };
+        dataSubmitTimerList.add(timer);
         if (dataSubmitTimerList.size() == 1) {
-            dataSubmitTimerList.get(0).schedule(1000);
+            timer.schedule(1000);
         }
     }
 
