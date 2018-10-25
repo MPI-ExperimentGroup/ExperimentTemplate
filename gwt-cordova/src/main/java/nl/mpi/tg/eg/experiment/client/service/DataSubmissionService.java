@@ -27,7 +27,9 @@ import com.google.gwt.http.client.Response;
 import com.google.gwt.i18n.shared.DateTimeFormat;
 import com.google.gwt.typedarrays.shared.Uint8Array;
 import com.google.gwt.user.client.Timer;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
@@ -292,34 +294,45 @@ public class DataSubmissionService extends AbstractSubmissionService {
             }
         }
     }
-    private final Timer[] dataSubmitTimer = new Timer[ServiceEndpoint.values().length];
+    private final List<Timer> dataSubmitTimerList = new ArrayList<>();
 
     private void submitData(final ServiceEndpoint endpoint, final UserId userId, final String jsonData) {
         localStorage.addStoredScreenData(userId, endpoint.name(), jsonData);
-        if (dataSubmitTimer[endpoint.ordinal()] == null) {
-            dataSubmitTimer[endpoint.ordinal()] = new Timer() {
-                @Override
-                public void run() {
-                    final String storedScreenData = localStorage.getStoredScreenData(userId, endpoint.name());
-                    if (!storedScreenData.isEmpty()) {
-                        submitData(endpoint, userId, "[" + storedScreenData + "]", new DataSubmissionListener() {
+        dataSubmitTimerList.add(new Timer() {
+            @Override
+            public void run() {
+                final Timer selfTimer = this;
+                final String storedScreenData = localStorage.getStoredScreenData(userId, endpoint.name());
+                if (!storedScreenData.isEmpty()) {
+                    submitData(endpoint, userId, "[" + storedScreenData + "]", new DataSubmissionListener() {
 
-                            @Override
-                            public void scoreSubmissionFailed(DataSubmissionException exception) {
-                                dataSubmitTimer[endpoint.ordinal()] = null;
+                        @Override
+                        public void scoreSubmissionFailed(DataSubmissionException exception) {
+                            dataSubmitTimerList.remove(selfTimer);
+                            if (!dataSubmitTimerList.isEmpty()) {
+                                dataSubmitTimerList.get(0).schedule(1000);
                             }
+                        }
 
-                            @Override
-                            public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
-                                localStorage.deleteStoredScreenData(userId, endpoint.name(), storedScreenData);
-                                dataSubmitTimer[endpoint.ordinal()] = null;
+                        @Override
+                        public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                            localStorage.deleteStoredScreenData(userId, endpoint.name(), storedScreenData);
+                            dataSubmitTimerList.remove(selfTimer);
+                            if (!dataSubmitTimerList.isEmpty()) {
+                                dataSubmitTimerList.get(0).schedule(1000);
                             }
-                        });
-                    }
+                        }
+                    });
+                } else {
+                    dataSubmitTimerList.remove(selfTimer);
                 }
-            };
-            // clear previous schedule and set the timer to run 5 seconds.
-            dataSubmitTimer[endpoint.ordinal()].schedule(1000);
+                if (!dataSubmitTimerList.isEmpty()) {
+                    dataSubmitTimerList.get(0).schedule(1000);
+                }
+            }
+        });
+        if (dataSubmitTimerList.size() == 1) {
+            dataSubmitTimerList.get(0).schedule(1000);
         }
     }
 
