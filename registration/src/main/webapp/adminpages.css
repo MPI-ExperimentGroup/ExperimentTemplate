@@ -87,19 +87,19 @@ th .balloontext {
     border-radius: 5px;
     position: absolute;
     z-index: 1;
-    bottom: 150%;
+    top: 150%;
     margin-left: -20px;
 }
 
 th .balloontext::after {
     position: absolute;
     content: "";
-    top: 100%;
+    bottom: 100%;
     left: 50%;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #1C6C5C transparent transparent transparent;
+    border-color: transparent transparent #1C6C5C transparent;
 }
 
 #clickablerow:hover {
