@@ -472,14 +472,7 @@
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
                 </startAudioRecorder>
-                <stopAudioRecorder average="average" maximum="60" minimum="3">
-                    <aboveThreshold>
-                        <plainText featureText="plainText in aboveThreshold"/>
-                    </aboveThreshold>
-                    <withinThreshold>
-                        <plainText featureText="plainText in withinThreshold"/>
-                    </withinThreshold>
-                </stopAudioRecorder>
+                <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
@@ -781,14 +774,7 @@
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
                 </startAudioRecorder>
-                <stopAudioRecorder average="average" maximum="60" minimum="3">
-                    <aboveThreshold>
-                        <plainText featureText="plainText in aboveThreshold"/>
-                    </aboveThreshold>
-                    <withinThreshold>
-                        <plainText featureText="plainText in withinThreshold"/>
-                    </withinThreshold>
-                </stopAudioRecorder>
+                <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
@@ -1090,14 +1076,7 @@
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
                 </startAudioRecorder>
-                <stopAudioRecorder average="average" maximum="60" minimum="3">
-                    <aboveThreshold>
-                        <plainText featureText="plainText in aboveThreshold"/>
-                    </aboveThreshold>
-                    <withinThreshold>
-                        <plainText featureText="plainText in withinThreshold"/>
-                    </withinThreshold>
-                </stopAudioRecorder>
+                <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
@@ -2137,14 +2116,7 @@
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
                 </startAudioRecorder>
-                <stopAudioRecorder average="average" maximum="60" minimum="3">
-                    <aboveThreshold>
-                        <plainText featureText="plainText in aboveThreshold"/>
-                    </aboveThreshold>
-                    <withinThreshold>
-                        <plainText featureText="plainText in withinThreshold"/>
-                    </withinThreshold>
-                </stopAudioRecorder>
+                <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
@@ -2446,14 +2418,7 @@
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
                 </startAudioRecorder>
-                <stopAudioRecorder average="average" maximum="60" minimum="3">
-                    <aboveThreshold>
-                        <plainText featureText="plainText in aboveThreshold"/>
-                    </aboveThreshold>
-                    <withinThreshold>
-                        <plainText featureText="plainText in withinThreshold"/>
-                    </withinThreshold>
-                </stopAudioRecorder>
+                <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
@@ -2755,14 +2720,7 @@
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
                 </startAudioRecorder>
-                <stopAudioRecorder average="average" maximum="60" minimum="3">
-                    <aboveThreshold>
-                        <plainText featureText="plainText in aboveThreshold"/>
-                    </aboveThreshold>
-                    <withinThreshold>
-                        <plainText featureText="plainText in withinThreshold"/>
-                    </withinThreshold>
-                </stopAudioRecorder>
+                <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
