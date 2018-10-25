@@ -36,7 +36,7 @@
         <hideButtonGroup groupId="groupId"/>
         <showButtonGroup groupId="groupId"/>
         <addPadding/>
-        <eraseUsersDataButton featureText="eraseUsersDataButton" target="target"/>
+        <eraseUsersDataButton featureText="eraseUsersDataButton" groupId="groupId" styleName="styleName" target="target"/>
         <displayCompletionCode/>
         <generateCompletionCode>
             <onError>
@@ -118,7 +118,7 @@
         <metadataFieldConnection fieldName="workerId" linkedFieldName="workerId" oneToMany="true"/>
         <metadataFieldVisibilityDependant fieldName="workerId" linkedFieldName="workerId" matchingRegex="matchingRegex"/>
         <metadataFieldDateTriggered fieldName="workerId" linkedFieldName="workerId" daysThresholds="10 100 1000"/>
-        <saveMetadataButton featureText="saveMetadataButton" sendData="sendData" networkErrorMessage="networkErrorMessage">
+        <saveMetadataButton featureText="saveMetadataButton" sendData="sendData" networkErrorMessage="networkErrorMessage" groupId="groupId" styleName="styleName">
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
@@ -126,8 +126,8 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </saveMetadataButton>
-        <createUserButton featureText="createUserButton" target="target"/>
-        <selectUserMenu/>
+        <createUserButton featureText="createUserButton" groupId="groupId" styleName="styleName" target="target"/>
+        <selectUserMenu styleName="styleName"/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
             <conditionTrue>
@@ -327,7 +327,7 @@
                 </stimulusExists>
                 <showStimuliReport/>
                 <sendStimuliReport headerKey="headerKey" dataChannel="2" type="type" separator="separator"/>
-                <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="2">
+                <stimulusButton featureText="stimulusButton" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
                 <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
@@ -337,12 +337,12 @@
                     <plainText featureText="plainText in touchInputCaptureStart"/>
                 </touchInputCaptureStart>
                 <touchInputReportSubmit dataChannel="2"/>
-                <ratingButton ratingLabelRight="ratingLabelRight" ratingLabels="ratingLabels" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <ratingButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
-                <ratingRadioButton ratingLabelRight="ratingLabelRight" ratingLabels="ratingLabels" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
+                <ratingRadioButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
                 <stimulusFreeText featureText="stimulusFreeText" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
-                <stimulusRatingButton ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <stimulusRatingButton ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
                 <stimulusRatingRadio ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
@@ -472,12 +472,19 @@
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
                 </startAudioRecorder>
-                <stopAudioRecorder/>
+                <stopAudioRecorder average="average" maximum="60" minimum="3">
+                    <aboveThreshold>
+                        <plainText featureText="plainText in aboveThreshold"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <plainText featureText="plainText in withinThreshold"/>
+                    </withinThreshold>
+                </stopAudioRecorder>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
@@ -508,7 +515,7 @@
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
@@ -540,7 +547,7 @@
                     </groupNetworkActivity>
                     <sendGroupEndOfStimuli eventTag="eventTag"/>
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
@@ -629,7 +636,7 @@
                 </stimulusExists>
                 <showStimuliReport/>
                 <sendStimuliReport headerKey="headerKey" dataChannel="2" type="type" separator="separator"/>
-                <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="2">
+                <stimulusButton featureText="stimulusButton" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
                 <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
@@ -639,12 +646,12 @@
                     <plainText featureText="plainText in touchInputCaptureStart"/>
                 </touchInputCaptureStart>
                 <touchInputReportSubmit dataChannel="2"/>
-                <ratingButton ratingLabelRight="ratingLabelRight" ratingLabels="ratingLabels" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <ratingButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
-                <ratingRadioButton ratingLabelRight="ratingLabelRight" ratingLabels="ratingLabels" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
+                <ratingRadioButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
                 <stimulusFreeText featureText="stimulusFreeText" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
-                <stimulusRatingButton ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <stimulusRatingButton ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
                 <stimulusRatingRadio ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
@@ -774,12 +781,19 @@
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
                 </startAudioRecorder>
-                <stopAudioRecorder/>
+                <stopAudioRecorder average="average" maximum="60" minimum="3">
+                    <aboveThreshold>
+                        <plainText featureText="plainText in aboveThreshold"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <plainText featureText="plainText in withinThreshold"/>
+                    </withinThreshold>
+                </stopAudioRecorder>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
@@ -810,7 +824,7 @@
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
@@ -842,7 +856,7 @@
                     </groupNetworkActivity>
                     <sendGroupEndOfStimuli eventTag="eventTag"/>
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
@@ -931,7 +945,7 @@
                 </stimulusExists>
                 <showStimuliReport/>
                 <sendStimuliReport headerKey="headerKey" dataChannel="2" type="type" separator="separator"/>
-                <stimulusButton featureText="stimulusButton" hotKey="A" styleName="styleName" dataChannel="2">
+                <stimulusButton featureText="stimulusButton" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2">
                     <plainText featureText="plainText in stimulusButton"/>
                 </stimulusButton>
                 <touchInputStimulusButton featureText="touchInputStimulusButton" eventTag="eventTag" src="src" groupId="groupId" styleName="styleName" dataChannel="2">
@@ -941,12 +955,12 @@
                     <plainText featureText="plainText in touchInputCaptureStart"/>
                 </touchInputCaptureStart>
                 <touchInputReportSubmit dataChannel="2"/>
-                <ratingButton ratingLabelRight="ratingLabelRight" ratingLabels="ratingLabels" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <ratingButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingButton"/>
                 </ratingButton>
-                <ratingRadioButton ratingLabelRight="ratingLabelRight" ratingLabels="ratingLabels" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
+                <ratingRadioButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
                 <stimulusFreeText featureText="stimulusFreeText" hotKey="A" allowedCharCodes="allowedCharCodes" styleName="styleName" dataChannel="2" validationRegex="validationRegex" inputErrorMessage="inputErrorMessage"/>
-                <stimulusRatingButton ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
+                <stimulusRatingButton ratingLabelRight="ratingLabelRight" groupId="groupId" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in stimulusRatingButton"/>
                 </stimulusRatingButton>
                 <stimulusRatingRadio ratingLabelRight="ratingLabelRight" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft"/>
@@ -1076,12 +1090,19 @@
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
                 </startAudioRecorder>
-                <stopAudioRecorder/>
+                <stopAudioRecorder average="average" maximum="60" minimum="3">
+                    <aboveThreshold>
+                        <plainText featureText="plainText in aboveThreshold"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <plainText featureText="plainText in withinThreshold"/>
+                    </withinThreshold>
+                </stopAudioRecorder>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
@@ -1112,7 +1133,7 @@
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
@@ -1144,7 +1165,7 @@
                     </groupNetworkActivity>
                     <sendGroupEndOfStimuli eventTag="eventTag"/>
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
                         <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
                         <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
@@ -1536,7 +1557,7 @@
         <showButtonGroup groupId="groupId"/>
         <addPadding/>
         <localStorageData/>
-        <eraseLocalStorageButton/>
+        <eraseLocalStorageButton groupId="groupId" styleName="styleName"/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
             <conditionTrue>
@@ -2116,7 +2137,14 @@
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
                 </startAudioRecorder>
-                <stopAudioRecorder/>
+                <stopAudioRecorder average="average" maximum="60" minimum="3">
+                    <aboveThreshold>
+                        <plainText featureText="plainText in aboveThreshold"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <plainText featureText="plainText in withinThreshold"/>
+                    </withinThreshold>
+                </stopAudioRecorder>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
@@ -2418,7 +2446,14 @@
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
                 </startAudioRecorder>
-                <stopAudioRecorder/>
+                <stopAudioRecorder average="average" maximum="60" minimum="3">
+                    <aboveThreshold>
+                        <plainText featureText="plainText in aboveThreshold"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <plainText featureText="plainText in withinThreshold"/>
+                    </withinThreshold>
+                </stopAudioRecorder>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
@@ -2720,7 +2755,14 @@
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
                 </startAudioRecorder>
-                <stopAudioRecorder/>
+                <stopAudioRecorder average="average" maximum="60" minimum="3">
+                    <aboveThreshold>
+                        <plainText featureText="plainText in aboveThreshold"/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <plainText featureText="plainText in withinThreshold"/>
+                    </withinThreshold>
+                </stopAudioRecorder>
                 <startAudioRecorderTag eventTier="8"/>
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
