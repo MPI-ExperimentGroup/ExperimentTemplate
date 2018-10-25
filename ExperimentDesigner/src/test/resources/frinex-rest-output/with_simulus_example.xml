@@ -31,11 +31,11 @@
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="age"/>
         <metadataField fieldName="gender"/>
-        <metadataField fieldName="Geboortedatum"/>
+        <metadataField fieldName="dateOfBirth"/>
         <metadataField fieldName="education"/>
         <metadataFieldVisibilityDependant fieldName="educationOther" linkedFieldName="education" matchingRegex="anders"/>
-        <metadataFieldConnection fieldName="connection" linkedFieldName="postName" oneToMany="false"/>
-        <metadataFieldConnection fieldName="connections" linkedFieldName="postName" oneToMany="true"/>
+        <metadataFieldConnection fieldName="connection" linkedFieldName="dateOfBirth" oneToMany="false"/>
+        <metadataFieldConnection fieldName="connections" linkedFieldName="dateOfBirth" oneToMany="true"/>
         <metadataFieldDateTriggered fieldName="ageGroup" linkedFieldName="dateOfBirth" daysThresholds="50 100 200 400 500 600 800 1000"/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
             <onError/>
@@ -255,6 +255,10 @@
                 &lt;stimulusCorrectResponses&gt;&lt;br/&gt;
                 stimulusRatingLabels:
                 &lt;stimulusRatingLabels&gt;&lt;br/&gt;
+                stimulusRatingLabel0:
+                &lt;stimulusRatingLabel_0&gt;&lt;br/&gt;
+                stimulusRatingLabel_1:
+                &lt;stimulusRatingLabel_1&gt;&lt;br/&gt;
                 stimulusPauseMs:
                 &lt;stimulusPauseMs&gt;&lt;br/&gt;
                 stimulusAudio:
@@ -305,6 +309,10 @@
                 &lt;stimulusCorrectResponses&gt;&lt;br/&gt;
                 stimulusRatingLabels:
                 &lt;stimulusRatingLabels&gt;&lt;br/&gt;
+                stimulusRatingLabel0:
+                &lt;stimulusRatingLabel_0&gt;&lt;br/&gt;
+                stimulusRatingLabel1:
+                &lt;stimulusRatingLabel_1&gt;&lt;br/&gt;
                 stimulusPauseMs:
                 &lt;stimulusPauseMs&gt;&lt;br/&gt;
                 stimulusAudio:
@@ -681,11 +689,11 @@
             <!--<htmlText featureText="stopAudioRecorder"/>-->
             <!--</stopAudioRecorder>-->
         </actionButton>
-        <actionButton featureText="startAudioRecorderTag (not supported in HTML5 the version)">
+        <!--                <actionButton featureText="startAudioRecorderTag (not supported in the HTML5 version)">
             <startAudioRecorderTag eventTier="3"/>
-            <!--<htmlText featureText="startAudioRecorderTag"/>-->
-            <!--</startAudioRecorderTag>-->
-        </actionButton>
+            <htmlText featureText="startAudioRecorderTag"/>
+            </startAudioRecorderTag>
+        </actionButton>-->
         <loadStimulus eventTag="Second" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusLabel styleName="stimuliLabel"/>
@@ -695,15 +703,20 @@
                     <nextStimulus repeatIncorrect="false"/>
                 </actionButton>
                 <actionButton featureText="startAudioRecorder">
-                    <startAudioRecorder recordingFormat="ogg" filePerStimulus="true" eventTag="startAudioRecorder" deviceRegex="(046d:0a45)"/>
-                    <!--                <htmlText featureText="startAudioRecorder"/>
-                    </startAudioRecorder>-->
+                    <startAudioRecorder recordingFormat="ogg" filePerStimulus="true" eventTag="startAudioRecorder" deviceRegex="(046d:0a45)">
+                        <onError>  
+                            <htmlText featureText="startAudioRecorder onError, please plug in device with the USB id: (046d:0a45)"/>
+                        </onError>
+                        <onSuccess>
+                            <htmlText featureText="startAudioRecorder onSuccess"/>
+                        </onSuccess>
+                    </startAudioRecorder>
                 </actionButton>
-                <actionButton featureText="endAudioRecorderTag (not supported in HTML5 the version)">
-                    <endAudioRecorderTag eventTier="3" eventTag="endAudioRecorderTag"/>
-                    <!--<htmlText featureText="endAudioRecorderTag"/>-->
-                    <!--</endAudioRecorderTag>-->
-                </actionButton>
+                <!--<actionButton featureText="endAudioRecorderTag (not supported in the HTML5 version)">-->
+                <!--<endAudioRecorderTag eventTier="3" eventTag="endAudioRecorderTag"/>-->
+                <!--<htmlText featureText="endAudioRecorderTag"/>-->
+                <!--</endAudioRecorderTag>-->
+                <!--</actionButton>-->
             </hasMoreStimulus>
             <endOfStimulus>
                 <gotoNextPresenter/>
@@ -713,6 +726,33 @@
             </randomGrouping>
             <stimuli>
                 <tag>Second</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>    
+    <presenter back="Menu" menuLabel="RecorderPauseTest" next="Menu" type="stimulus" self="RecorderPauseTest" title="RecorderPauseTest">
+        <loadStimulus eventTag="RecorderPauseTest" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <stimulusLabel styleName="stimuliLabel"/>
+                <addPadding/>
+                <startAudioRecorder recordingFormat="ogg" filePerStimulus="true" eventTag="startAudioRecorder" deviceRegex="(046d:0a45)">
+                    <onError>  
+                        <htmlText featureText="startAudioRecorder onError, please plug in device with the USB id: (046d:0a45)"/>
+                    </onError>
+                    <onSuccess>
+                        <htmlText featureText="startAudioRecorder onSuccess"/>
+                        <nextStimulus repeatIncorrect="false"/>
+                    </onSuccess>
+                </startAudioRecorder>
+                <stimulusPause>
+                    <stopAudioRecorder/>
+                </stimulusPause>        
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <gotoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>RecorderPauseTest</tag>
             </stimuli>
         </loadStimulus>
     </presenter>
@@ -782,6 +822,16 @@
         <stimulus identifier="thirdexample:aaa" label="aaa" pauseMs="0" tags="Third thirdexample"/>
         <stimulus identifier="thirdexample:ccc" label="ccc" pauseMs="0" tags="Third thirdexample"/>
         <stimulus identifier="thirdexample:ssss" label="ssss" pauseMs="0" tags="Third thirdexample"/>
+        <stimulus identifier="RecorderPauseTest1000" label="1000" pauseMs="1000" tags="RecorderPauseTest"/>
+        <stimulus identifier="RecorderPauseTest2000" label="2000" pauseMs="2000" tags="RecorderPauseTest"/>
+        <stimulus identifier="RecorderPauseTest3000" label="3000" pauseMs="3000" tags="RecorderPauseTest"/>
+        <stimulus identifier="RecorderPauseTest4000" label="4000" pauseMs="4000" tags="RecorderPauseTest"/>
+        <stimulus identifier="RecorderPauseTest5000" label="5000" pauseMs="5000" tags="RecorderPauseTest"/>
+        <stimulus identifier="RecorderPauseTest6000" label="6000" pauseMs="6000" tags="RecorderPauseTest"/>
+        <stimulus identifier="RecorderPauseTest7000" label="7000" pauseMs="7000" tags="RecorderPauseTest"/>
+        <stimulus identifier="RecorderPauseTest8000" label="8000" pauseMs="8000" tags="RecorderPauseTest"/>
+        <stimulus identifier="RecorderPauseTest9000" label="9000" pauseMs="9000" tags="RecorderPauseTest"/>
+        <stimulus identifier="RecorderPauseTest10000" label="10000" pauseMs="10000" tags="RecorderPauseTest"/>
         
         <stimulus identifier="Q1" label="The correct answer is 'continue'" correctResponses="continue"  ratingLabels="continue,arrête" pauseMs="0" tags="Pretest_Screen"/>        
         <stimulus identifier="Q2" label="The correct answer is 2" correctResponses="2" ratingLabels="1,2" pauseMs="0" tags="Pretest_Screen"/>        
