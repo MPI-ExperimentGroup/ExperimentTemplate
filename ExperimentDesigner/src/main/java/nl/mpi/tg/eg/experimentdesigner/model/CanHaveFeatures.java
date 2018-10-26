@@ -40,7 +40,7 @@ public abstract class CanHaveFeatures {
             final PresenterFeature presenterFeature = new PresenterFeature(featureType, text);
             getPresenterFeatureList().add(presenterFeature);
             if (featureType.getFeatureAttributes() != null) {
-                for (int index = 0; index < featureType.getFeatureAttributes().length; index++) {
+                for (int index = 0; index < featureType.getFeatureAttributes().length && index < attributes.length; index++) {
                     presenterFeature.addFeatureAttributes(featureType.getFeatureAttributes()[index], attributes[index]);
                 }
             }
