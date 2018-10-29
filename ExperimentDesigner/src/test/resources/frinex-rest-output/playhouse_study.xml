@@ -102,7 +102,7 @@
                         <disableButtonGroup/>
                         <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
                             <mediaLoaded>
-                                <touchInputStimulusButton featureText="left" listenerId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
+                                <touchInputStimulusButton featureText="left" groupId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
                                     <disableButtonGroup/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="1000">
@@ -125,7 +125,7 @@
                         </stimulusCodeImage>
                         <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton" dataChannel="0">
                             <mediaLoaded>
-                                <touchInputStimulusButton featureText="centre" listenerId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
+                                <touchInputStimulusButton featureText="centre" groupId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
                                     <disableButtonGroup/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="1000">
@@ -148,7 +148,7 @@
                         </stimulusCodeImage>
                         <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton" dataChannel="0">
                             <mediaLoaded>
-                                <touchInputStimulusButton featureText="right" listenerId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
+                                <touchInputStimulusButton featureText="right" groupId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
                                     <disableButtonGroup/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="1000">
@@ -260,7 +260,7 @@
                         <disableButtonGroup/>
                         <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
                             <mediaLoaded>
-                                <touchInputStimulusButton featureText="left" listenerId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
+                                <touchInputStimulusButton featureText="left" groupId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
                                     <disableButtonGroup/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="1000">
@@ -283,7 +283,7 @@
                         </stimulusCodeImage>
                         <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton" dataChannel="0">
                             <mediaLoaded>
-                                <touchInputStimulusButton featureText="centre" listenerId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
+                                <touchInputStimulusButton featureText="centre" groupId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
                                     <disableButtonGroup/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="1000">
@@ -306,7 +306,7 @@
                         </stimulusCodeImage>
                         <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton" dataChannel="0">
                             <mediaLoaded>
-                                <touchInputStimulusButton featureText="right" listenerId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
+                                <touchInputStimulusButton featureText="right" groupId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
                                     <disableButtonGroup/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="1000">
@@ -422,7 +422,7 @@
                                 <disableButtonGroup/>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="left" listenerId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="left" groupId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
                                             <disableButtonGroup/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
@@ -445,7 +445,7 @@
                                 </stimulusCodeImage>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="centre" listenerId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="centre" groupId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
                                             <disableButtonGroup/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
@@ -468,7 +468,7 @@
                                 </stimulusCodeImage>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="right" listenerId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="right" groupId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
                                             <disableButtonGroup/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
@@ -586,7 +586,7 @@
                                 <disableButtonGroup/>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="left" listenerId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="left" groupId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
                                             <disableButtonGroup/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
@@ -609,7 +609,7 @@
                                 </stimulusCodeImage>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="centre" listenerId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="centre" groupId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
                                             <disableButtonGroup/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
@@ -632,7 +632,7 @@
                                 </stimulusCodeImage>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="right" listenerId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="right" groupId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
                                             <disableButtonGroup/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
@@ -738,7 +738,7 @@
                                 <disableButtonGroup/>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="left" listenerId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="left" groupId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
                                             <disableButtonGroup/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
@@ -761,7 +761,7 @@
                                 </stimulusCodeImage>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="centre" listenerId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="centre" groupId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
                                             <disableButtonGroup/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
@@ -784,7 +784,7 @@
                                 </stimulusCodeImage>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="right" listenerId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="right" groupId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
                                             <disableButtonGroup/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
@@ -890,7 +890,7 @@
                                 <disableButtonGroup/>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="left" listenerId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="left" groupId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
                                             <disableButtonGroup/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
@@ -913,7 +913,7 @@
                                 </stimulusCodeImage>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="centre" listenerId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="centre" groupId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
                                             <disableButtonGroup/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
@@ -936,7 +936,7 @@
                                 </stimulusCodeImage>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="right" listenerId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="right" groupId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
                                             <disableButtonGroup/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
