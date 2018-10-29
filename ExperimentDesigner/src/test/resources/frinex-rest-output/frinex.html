@@ -292,6 +292,7 @@ featureText<br/>
 hotKey<br/>
 *target<br/>
 styleName<br/>
+groupId<br/>
 </td><td>
 </td>
 </tr>
@@ -301,8 +302,37 @@ styleName<br/>
 featureText<br/>
 hotKey<br/>
 styleName<br/>
+groupId<br/>
 </td><td>
 can have features<br/>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;disableButtonGroup&gt;<br/>
+</td><td>
+groupId<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;enableButtonGroup&gt;<br/>
+</td><td>
+groupId<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;hideButtonGroup&gt;<br/>
+</td><td>
+groupId<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;showButtonGroup&gt;<br/>
+</td><td>
+groupId<br/>
+</td><td>
 </td>
 </tr>
 <tr><td>
@@ -312,6 +342,7 @@ featureText<br/>
 hotKey<br/>
 dataChannel<br/>
 styleName<br/>
+groupId<br/>
 </td><td>
 can have features<br/>
 </td>
@@ -324,7 +355,7 @@ featureText<br/>
 dataChannel<br/>
 *src<br/>
 styleName<br/>
-*listenerId<br/>
+groupId<br/>
 </td><td>
 can have features<br/>
 </td>
@@ -355,6 +386,7 @@ dataChannel<br/>
 *repeatIncorrect<br/>
 *incrementPhase<br/>
 styleName<br/>
+groupId<br/>
 </td><td>
 </td>
 </tr>
@@ -388,6 +420,8 @@ dataChannel<br/>
 *ratingLabels<br/>
 ratingLabelLeft<br/>
 ratingLabelRight<br/>
+styleName<br/>
+groupId<br/>
 </td><td>
 can have features<br/>
 </td>
@@ -399,6 +433,8 @@ dataChannel<br/>
 *ratingLabels<br/>
 ratingLabelLeft<br/>
 ratingLabelRight<br/>
+styleName<br/>
+groupId<br/>
 </td><td>
 </td>
 </tr>
@@ -422,6 +458,7 @@ dataChannel<br/>
 ratingLabelLeft<br/>
 ratingLabelRight<br/>
 styleName<br/>
+groupId<br/>
 </td><td>
 can have features<br/>
 </td>
@@ -467,6 +504,8 @@ dataChannel<br/>
 *ratingLabels<br/>
 ratingLabelLeft<br/>
 ratingLabelRight<br/>
+styleName<br/>
+groupId<br/>
 </td><td>
 can have features<br/>
 </td>
@@ -476,6 +515,8 @@ can have features<br/>
 </td><td>
 featureText<br/>
 *target<br/>
+styleName<br/>
+groupId<br/>
 </td><td>
 </td>
 </tr>
@@ -485,6 +526,8 @@ featureText<br/>
 featureText<br/>
 *eventTag<br/>
 hotKey<br/>
+styleName<br/>
+groupId<br/>
 </td><td>
 can have features<br/>
 </td>
@@ -555,6 +598,8 @@ dataChannel<br/>
 featureText<br/>
 *sendData<br/>
 *networkErrorMessage<br/>
+styleName<br/>
+groupId<br/>
 </td><td>
 &lt;onError&gt;<br/>
 &lt;onSuccess&gt;<br/>
@@ -565,18 +610,23 @@ featureText<br/>
 </td><td>
 featureText<br/>
 *target<br/>
+styleName<br/>
+groupId<br/>
 </td><td>
 </td>
 </tr>
 <tr><td>
 <div class="complexType">&lt;selectUserMenu&gt;<br/>
 </td><td>
+styleName<br/>
 </td><td>
 </td>
 </tr>
 <tr><td>
 <div class="complexType">&lt;eraseLocalStorageButton&gt;<br/>
 </td><td>
+styleName<br/>
+groupId<br/>
 </td><td>
 </td>
 </tr>
@@ -585,23 +635,13 @@ featureText<br/>
 </td><td>
 featureText<br/>
 *target<br/>
+styleName<br/>
+groupId<br/>
 </td><td>
 </td>
 </tr>
 <tr><td>
 <div class="complexType">&lt;showCurrentMs&gt;<br/>
-</td><td>
-</td><td>
-</td>
-</tr>
-<tr><td>
-<div class="complexType">&lt;enableStimulusButtons&gt;<br/>
-</td><td>
-</td><td>
-</td>
-</tr>
-<tr><td>
-<div class="complexType">&lt;disableStimulusButtons&gt;<br/>
 </td><td>
 </td><td>
 </td>
@@ -622,18 +662,6 @@ featureText<br/>
 <div class="complexType">&lt;showStimulusProgress&gt;<br/>
 </td><td>
 styleName<br/>
-</td><td>
-</td>
-</tr>
-<tr><td>
-<div class="complexType">&lt;hideStimulusButtons&gt;<br/>
-</td><td>
-</td><td>
-</td>
-</tr>
-<tr><td>
-<div class="complexType">&lt;showStimulusButtons&gt;<br/>
-</td><td>
 </td><td>
 </td>
 </tr>
@@ -735,6 +763,7 @@ featureText<br/>
 *repeatIncorrect<br/>
 hotKey<br/>
 styleName<br/>
+groupId<br/>
 </td><td>
 </td>
 </tr>
@@ -746,6 +775,7 @@ featureText<br/>
 *repeatIncorrect<br/>
 hotKey<br/>
 styleName<br/>
+groupId<br/>
 </td><td>
 </td>
 </tr>
@@ -840,6 +870,7 @@ dataChannel<br/>
 hotKey<br/>
 styleName<br/>
 *src<br/>
+groupId<br/>
 </td><td>
 &lt;mediaLoaded&gt;<br/>
 &lt;mediaLoadFailed&gt;<br/>
@@ -1378,6 +1409,8 @@ can have features<br/>
 *eventTag<br/>
 deviceRegex<br/>
 </td><td>
+&lt;onError&gt;<br/>
+&lt;onSuccess&gt;<br/>
 </td>
 </tr>
 <tr><td>
