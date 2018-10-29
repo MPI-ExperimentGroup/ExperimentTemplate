@@ -421,7 +421,7 @@
                                     <submitGroupEvent/>
                                 </responseIncorrect>
                             </showStimulusGrid>
-                            <enableStimulusButtons/>
+                            <enableButtonGroup/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,D,B,C:-:-:A,D,B,C">
                             <clearPage/>
@@ -558,7 +558,7 @@
                                     <submitGroupEvent/>
                                 </responseIncorrect>
                             </showStimulusGrid>
-                            <enableStimulusButtons/>
+                            <enableButtonGroup/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:C,D,A,B:-:-:C,D,A,B">
                             <clearPage/>
@@ -695,7 +695,7 @@
                                     <submitGroupEvent/>
                                 </responseIncorrect>
                             </showStimulusGrid>
-                            <enableStimulusButtons/>
+                            <enableButtonGroup/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:B,A,C,D:-:-:B,A,C,D">
                             <clearPage/>
@@ -832,7 +832,7 @@
                                     <submitGroupEvent/>
                                 </responseIncorrect>
                             </showStimulusGrid>
-                            <enableStimulusButtons/>
+                            <enableButtonGroup/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:B,C,A,D:-:-:B,C,A,D">
                             <clearPage/>
@@ -969,7 +969,7 @@
                                     <submitGroupEvent/>
                                 </responseIncorrect>
                             </showStimulusGrid>
-                            <enableStimulusButtons/>
+                            <enableButtonGroup/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,B,C,D:-:-:A,B,C,D">
                             <clearPage/>
@@ -1106,7 +1106,7 @@
                                     <submitGroupEvent/>
                                 </responseIncorrect>
                             </showStimulusGrid>
-                            <enableStimulusButtons/>
+                            <enableButtonGroup/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:C,D,B,A:-:-:C,D,B,A">
                             <clearPage/>
@@ -1243,7 +1243,7 @@
                                     <submitGroupEvent/>
                                 </responseIncorrect>
                             </showStimulusGrid>
-                            <enableStimulusButtons/>
+                            <enableButtonGroup/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,D,B,C:-:-:A,D,B,C">
                             <clearPage/>
@@ -1642,7 +1642,7 @@
                                     <submitGroupEvent/>
                                 </responseIncorrect>
                             </showStimulusGrid>
-                            <enableStimulusButtons/>
+                            <enableButtonGroup/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,C,E,G,B,D,F,H:-:-:A,C,E,G,B,D,F,H">
                             <clearPage/>
@@ -1779,7 +1779,7 @@
                                     <submitGroupEvent/>
                                 </responseIncorrect>
                             </showStimulusGrid>
-                            <enableStimulusButtons/>
+                            <enableButtonGroup/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:H,D,F,B,A,E,C,G:-:-:H,D,F,B,A,E,C,G">
                             <clearPage/>
@@ -1916,7 +1916,7 @@
                                     <submitGroupEvent/>
                                 </responseIncorrect>
                             </showStimulusGrid>
-                            <enableStimulusButtons/>
+                            <enableButtonGroup/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,G,E,C,D,F,B,H:-:-:A,G,E,C,D,F,B,H">
                             <clearPage/>
@@ -2053,7 +2053,7 @@
                                     <submitGroupEvent/>
                                 </responseIncorrect>
                             </showStimulusGrid>
-                            <enableStimulusButtons/>
+                            <enableButtonGroup/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:C,B,E,F,A,D,G,H:-:-:C,B,E,F,A,D,G,H">
                             <clearPage/>
@@ -2190,7 +2190,7 @@
                                     <submitGroupEvent/>
                                 </responseIncorrect>
                             </showStimulusGrid>
-                            <enableStimulusButtons/>
+                            <enableButtonGroup/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,D,B,G,E,H,F,C:-:-:A,D,B,G,E,H,F,C">
                             <clearPage/>
@@ -2327,7 +2327,7 @@
                                     <submitGroupEvent/>
                                 </responseIncorrect>
                             </showStimulusGrid>
-                            <enableStimulusButtons/>
+                            <enableButtonGroup/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:F,G,C,H,A,D,B,E:-:-:F,G,C,H,A,D,B,E">
                             <clearPage/>
@@ -2464,7 +2464,7 @@
                                     <submitGroupEvent/>
                                 </responseIncorrect>
                             </showStimulusGrid>
-                            <enableStimulusButtons/>
+                            <enableButtonGroup/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,H,E,D,G,B,C,F:-:-:A,H,E,D,G,B,C,F">
                             <clearPage/>
@@ -2647,7 +2647,7 @@
                                     <submitGroupEvent/>
                                 </responseIncorrect>
                             </showStimulusGrid>
-                            <enableStimulusButtons/>
+                            <enableButtonGroup/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:B,D,F,H,A,C,E,G:-:-:B,D,F,H,A,C,E,G">
                             <clearPage/>
@@ -2784,7 +2784,7 @@
                                     <submitGroupEvent/>
                                 </responseIncorrect>
                             </showStimulusGrid>
-                            <enableStimulusButtons/>
+                            <enableButtonGroup/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,E,C,G,H,D,F,B:-:-:A,E,C,G,H,D,F,B">
                             <clearPage/>
@@ -2921,7 +2921,7 @@
                                     <submitGroupEvent/>
                                 </responseIncorrect>
                             </showStimulusGrid>
-                            <enableStimulusButtons/>
+                            <enableButtonGroup/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:D,F,B,H,A,G,E,C:-:-:D,F,B,H,A,G,E,C">
                             <clearPage/>
@@ -3058,7 +3058,7 @@
                                     <submitGroupEvent/>
                                 </responseIncorrect>
                             </showStimulusGrid>
-                            <enableStimulusButtons/>
+                            <enableButtonGroup/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,D,G,H,C,B,E,F:-:-:A,D,G,H,C,B,E,F">
                             <clearPage/>
@@ -3195,7 +3195,7 @@
                                     <submitGroupEvent/>
                                 </responseIncorrect>
                             </showStimulusGrid>
-                            <enableStimulusButtons/>
+                            <enableButtonGroup/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:E,H,F,C,A,D,B,G:-:-:E,H,F,C,A,D,B,G">
                             <clearPage/>
@@ -3332,7 +3332,7 @@
                                     <submitGroupEvent/>
                                 </responseIncorrect>
                             </showStimulusGrid>
-                            <enableStimulusButtons/>
+                            <enableButtonGroup/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:A,D,B,E,F,G,C,H:-:-:A,D,B,E,F,G,C,H">
                             <clearPage/>
@@ -3469,7 +3469,7 @@
                                     <submitGroupEvent/>
                                 </responseIncorrect>
                             </showStimulusGrid>
-                            <enableStimulusButtons/>
+                            <enableButtonGroup/>
                         </groupNetworkActivity>
                         <groupNetworkActivity groupRole="-:-:G,B,C,F,A,H,E,D:-:-:G,B,C,F,A,H,E,D">
                             <clearPage/>
