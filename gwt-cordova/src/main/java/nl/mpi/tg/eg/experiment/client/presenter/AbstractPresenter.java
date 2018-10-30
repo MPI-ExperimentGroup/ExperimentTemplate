@@ -280,31 +280,47 @@ public abstract class AbstractPresenter implements Presenter {
         return stimulusButton;
     }
 
-    protected void disableButtonGroup(final String buttonGroup) {
-        for (StimulusButton currentButton : buttonGroupsList.get(buttonGroup)) {
-            currentButton.setEnabled(false);
+    protected void disableButtonGroup(final String machingRegex) {
+        for (String keyString : buttonGroupsList.keySet()) {
+            if (keyString.matches(machingRegex)) {
+                for (StimulusButton currentButton : buttonGroupsList.get(keyString)) {
+                    currentButton.setEnabled(false);
+                }
+            }
         }
 //        ((TimedStimulusView) simpleView).addText("disableButtonGroup: " + duration.elapsedMillis() + "ms");
     }
 
-    protected void hideButtonGroup(final String buttonGroup) {
-        for (StimulusButton currentButton : buttonGroupsList.get(buttonGroup)) {
-            currentButton.setVisible(false);
+    protected void hideButtonGroup(final String machingRegex) {
+        for (String keyString : buttonGroupsList.keySet()) {
+            if (keyString.matches(machingRegex)) {
+                for (StimulusButton currentButton : buttonGroupsList.get(keyString)) {
+                    currentButton.setVisible(false);
+                }
+            }
         }
 //        ((TimedStimulusView) simpleView).addText("hideButtonGroup: " + duration.elapsedMillis() + "ms");
     }
 
-    protected void showButtonGroup(final String buttonGroup) {
-        for (StimulusButton currentButton : buttonGroupsList.get(buttonGroup)) {
-            currentButton.setVisible(true);
+    protected void showButtonGroup(final String machingRegex) {
+        for (String keyString : buttonGroupsList.keySet()) {
+            if (keyString.matches(machingRegex)) {
+                for (StimulusButton currentButton : buttonGroupsList.get(keyString)) {
+                    currentButton.setVisible(true);
+                }
+            }
         }
 //        ((TimedStimulusView) simpleView).addText("showButtonGroup: " + duration.elapsedMillis() + "ms");
     }
 
-    protected void enableButtonGroup(final String buttonGroup) {
-        for (StimulusButton currentButton : buttonGroupsList.get(buttonGroup)) {
-            currentButton.setEnabled(true);
-            currentButton.removeStyleName("optionButtonActivated");
+    protected void enableButtonGroup(final String machingRegex) {
+        for (String keyString : buttonGroupsList.keySet()) {
+            if (keyString.matches(machingRegex)) {
+                for (StimulusButton currentButton : buttonGroupsList.get(keyString)) {
+                    currentButton.setEnabled(true);
+                    currentButton.removeStyleName("optionButtonActivated");
+                }
+            }
         }
 //        ((TimedStimulusView) simpleView).addText("enableButtonGroup: " + duration.elapsedMillis() + "ms");
     }
