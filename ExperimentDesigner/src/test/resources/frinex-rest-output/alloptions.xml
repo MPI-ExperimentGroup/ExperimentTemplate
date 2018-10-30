@@ -31,10 +31,10 @@
         <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup groupId="groupId"/>
-        <enableButtonGroup groupId="groupId"/>
-        <hideButtonGroup groupId="groupId"/>
-        <showButtonGroup groupId="groupId"/>
+        <disableButtonGroup matchingRegex="matchingRegex"/>
+        <enableButtonGroup matchingRegex="matchingRegex"/>
+        <hideButtonGroup matchingRegex="matchingRegex"/>
+        <showButtonGroup matchingRegex="matchingRegex"/>
         <addPadding/>
         <eraseUsersDataButton featureText="eraseUsersDataButton" groupId="groupId" styleName="styleName" target="target"/>
         <displayCompletionCode/>
@@ -108,10 +108,10 @@
         <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup groupId="groupId"/>
-        <enableButtonGroup groupId="groupId"/>
-        <hideButtonGroup groupId="groupId"/>
-        <showButtonGroup groupId="groupId"/>
+        <disableButtonGroup matchingRegex="matchingRegex"/>
+        <enableButtonGroup matchingRegex="matchingRegex"/>
+        <hideButtonGroup matchingRegex="matchingRegex"/>
+        <showButtonGroup matchingRegex="matchingRegex"/>
         <addPadding/>
         <allMetadataFields/>
         <metadataField fieldName="workerId"/>
@@ -182,10 +182,10 @@
         <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup groupId="groupId"/>
-        <enableButtonGroup groupId="groupId"/>
-        <hideButtonGroup groupId="groupId"/>
-        <showButtonGroup groupId="groupId"/>
+        <disableButtonGroup matchingRegex="matchingRegex"/>
+        <enableButtonGroup matchingRegex="matchingRegex"/>
+        <hideButtonGroup matchingRegex="matchingRegex"/>
+        <showButtonGroup matchingRegex="matchingRegex"/>
         <targetFooterButton featureText="targetFooterButton" groupId="groupId" styleName="styleName" target="target"/>
         <actionFooterButton featureText="actionFooterButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionFooterButton"/>
@@ -1201,10 +1201,10 @@
         <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup groupId="groupId"/>
-        <enableButtonGroup groupId="groupId"/>
-        <hideButtonGroup groupId="groupId"/>
-        <showButtonGroup groupId="groupId"/>
+        <disableButtonGroup matchingRegex="matchingRegex"/>
+        <enableButtonGroup matchingRegex="matchingRegex"/>
+        <hideButtonGroup matchingRegex="matchingRegex"/>
+        <showButtonGroup matchingRegex="matchingRegex"/>
         <targetFooterButton featureText="targetFooterButton" groupId="groupId" styleName="styleName" target="target"/>
         <actionFooterButton featureText="actionFooterButton" eventTag="eventTag" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionFooterButton"/>
@@ -1351,10 +1351,10 @@
         <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup groupId="groupId"/>
-        <enableButtonGroup groupId="groupId"/>
-        <hideButtonGroup groupId="groupId"/>
-        <showButtonGroup groupId="groupId"/>
+        <disableButtonGroup matchingRegex="matchingRegex"/>
+        <enableButtonGroup matchingRegex="matchingRegex"/>
+        <hideButtonGroup matchingRegex="matchingRegex"/>
+        <showButtonGroup matchingRegex="matchingRegex"/>
         <addPadding/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
@@ -1417,10 +1417,10 @@
         <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup groupId="groupId"/>
-        <enableButtonGroup groupId="groupId"/>
-        <hideButtonGroup groupId="groupId"/>
-        <showButtonGroup groupId="groupId"/>
+        <disableButtonGroup matchingRegex="matchingRegex"/>
+        <enableButtonGroup matchingRegex="matchingRegex"/>
+        <hideButtonGroup matchingRegex="matchingRegex"/>
+        <showButtonGroup matchingRegex="matchingRegex"/>
         <addPadding/>
         <centrePage/>
         <addKinTypeGui diagramName="diagramName"/>
@@ -1478,10 +1478,10 @@
         <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup groupId="groupId"/>
-        <enableButtonGroup groupId="groupId"/>
-        <hideButtonGroup groupId="groupId"/>
-        <showButtonGroup groupId="groupId"/>
+        <disableButtonGroup matchingRegex="matchingRegex"/>
+        <enableButtonGroup matchingRegex="matchingRegex"/>
+        <hideButtonGroup matchingRegex="matchingRegex"/>
+        <showButtonGroup matchingRegex="matchingRegex"/>
         <addPadding/>
         <centrePage/>
         <allMenuItems/>
@@ -1530,10 +1530,10 @@
         <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup groupId="groupId"/>
-        <enableButtonGroup groupId="groupId"/>
-        <hideButtonGroup groupId="groupId"/>
-        <showButtonGroup groupId="groupId"/>
+        <disableButtonGroup matchingRegex="matchingRegex"/>
+        <enableButtonGroup matchingRegex="matchingRegex"/>
+        <hideButtonGroup matchingRegex="matchingRegex"/>
+        <showButtonGroup matchingRegex="matchingRegex"/>
         <addPadding/>
         <localStorageData/>
         <eraseLocalStorageButton groupId="groupId" styleName="styleName"/>
@@ -1583,10 +1583,10 @@
         <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup groupId="groupId"/>
-        <enableButtonGroup groupId="groupId"/>
-        <hideButtonGroup groupId="groupId"/>
-        <showButtonGroup groupId="groupId"/>
+        <disableButtonGroup matchingRegex="matchingRegex"/>
+        <enableButtonGroup matchingRegex="matchingRegex"/>
+        <hideButtonGroup matchingRegex="matchingRegex"/>
+        <showButtonGroup matchingRegex="matchingRegex"/>
         <addPadding/>
         <centrePage/>
         <gotoPresenter target="target"/>
@@ -1625,10 +1625,10 @@
         <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup groupId="groupId"/>
-        <enableButtonGroup groupId="groupId"/>
-        <hideButtonGroup groupId="groupId"/>
-        <showButtonGroup groupId="groupId"/>
+        <disableButtonGroup matchingRegex="matchingRegex"/>
+        <enableButtonGroup matchingRegex="matchingRegex"/>
+        <hideButtonGroup matchingRegex="matchingRegex"/>
+        <showButtonGroup matchingRegex="matchingRegex"/>
         <addPadding/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
@@ -1675,10 +1675,10 @@
         <actionButton featureText="actionButton">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup/>
-        <enableButtonGroup/>
-        <hideButtonGroup/>
-        <showButtonGroup/>
+        <disableButtonGroup matchingRegex="matchingRegex"/>
+        <enableButtonGroup matchingRegex="matchingRegex"/>
+        <hideButtonGroup matchingRegex="matchingRegex"/>
+        <showButtonGroup matchingRegex="matchingRegex"/>
         <addPadding/>
         <eraseUsersDataButton featureText="eraseUsersDataButton" target="target"/>
         <displayCompletionCode/>
@@ -1752,10 +1752,10 @@
         <actionButton featureText="actionButton">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup/>
-        <enableButtonGroup/>
-        <hideButtonGroup/>
-        <showButtonGroup/>
+        <disableButtonGroup matchingRegex="matchingRegex"/>
+        <enableButtonGroup matchingRegex="matchingRegex"/>
+        <hideButtonGroup matchingRegex="matchingRegex"/>
+        <showButtonGroup matchingRegex="matchingRegex"/>
         <addPadding/>
         <allMetadataFields/>
         <metadataField fieldName="workerId"/>
@@ -1826,10 +1826,10 @@
         <actionButton featureText="actionButton">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup/>
-        <enableButtonGroup/>
-        <hideButtonGroup/>
-        <showButtonGroup/>
+        <disableButtonGroup matchingRegex="matchingRegex"/>
+        <enableButtonGroup matchingRegex="matchingRegex"/>
+        <hideButtonGroup matchingRegex="matchingRegex"/>
+        <showButtonGroup matchingRegex="matchingRegex"/>
         <targetFooterButton featureText="targetFooterButton" target="target"/>
         <actionFooterButton featureText="actionFooterButton" eventTag="eventTag">
             <plainText featureText="plainText in actionFooterButton"/>
@@ -2845,10 +2845,10 @@
         <actionButton featureText="actionButton">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup/>
-        <enableButtonGroup/>
-        <hideButtonGroup/>
-        <showButtonGroup/>
+        <disableButtonGroup matchingRegex="matchingRegex"/>
+        <enableButtonGroup matchingRegex="matchingRegex"/>
+        <hideButtonGroup matchingRegex="matchingRegex"/>
+        <showButtonGroup matchingRegex="matchingRegex"/>
         <targetFooterButton featureText="targetFooterButton" target="target"/>
         <actionFooterButton featureText="actionFooterButton" eventTag="eventTag">
             <plainText featureText="plainText in actionFooterButton"/>
@@ -2995,10 +2995,10 @@
         <actionButton featureText="actionButton">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup/>
-        <enableButtonGroup/>
-        <hideButtonGroup/>
-        <showButtonGroup/>
+        <disableButtonGroup matchingRegex="matchingRegex"/>
+        <enableButtonGroup matchingRegex="matchingRegex"/>
+        <hideButtonGroup matchingRegex="matchingRegex"/>
+        <showButtonGroup matchingRegex="matchingRegex"/>
         <addPadding/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
@@ -3061,10 +3061,10 @@
         <actionButton featureText="actionButton">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup/>
-        <enableButtonGroup/>
-        <hideButtonGroup/>
-        <showButtonGroup/>
+        <disableButtonGroup matchingRegex="matchingRegex"/>
+        <enableButtonGroup matchingRegex="matchingRegex"/>
+        <hideButtonGroup matchingRegex="matchingRegex"/>
+        <showButtonGroup matchingRegex="matchingRegex"/>
         <addPadding/>
         <centrePage/>
         <addKinTypeGui diagramName="diagramName"/>
@@ -3122,10 +3122,10 @@
         <actionButton featureText="actionButton">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup/>
-        <enableButtonGroup/>
-        <hideButtonGroup/>
-        <showButtonGroup/>
+        <disableButtonGroup matchingRegex="matchingRegex"/>
+        <enableButtonGroup matchingRegex="matchingRegex"/>
+        <hideButtonGroup matchingRegex="matchingRegex"/>
+        <showButtonGroup matchingRegex="matchingRegex"/>
         <addPadding/>
         <centrePage/>
         <allMenuItems/>
@@ -3174,10 +3174,10 @@
         <actionButton featureText="actionButton">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup/>
-        <enableButtonGroup/>
-        <hideButtonGroup/>
-        <showButtonGroup/>
+        <disableButtonGroup matchingRegex="matchingRegex"/>
+        <enableButtonGroup matchingRegex="matchingRegex"/>
+        <hideButtonGroup matchingRegex="matchingRegex"/>
+        <showButtonGroup matchingRegex="matchingRegex"/>
         <addPadding/>
         <localStorageData/>
         <eraseLocalStorageButton/>
@@ -3227,10 +3227,10 @@
         <actionButton featureText="actionButton">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup/>
-        <enableButtonGroup/>
-        <hideButtonGroup/>
-        <showButtonGroup/>
+        <disableButtonGroup matchingRegex="matchingRegex"/>
+        <enableButtonGroup matchingRegex="matchingRegex"/>
+        <hideButtonGroup matchingRegex="matchingRegex"/>
+        <showButtonGroup matchingRegex="matchingRegex"/>
         <addPadding/>
         <centrePage/>
         <gotoPresenter target="target"/>
@@ -3269,10 +3269,10 @@
         <actionButton featureText="actionButton">
             <plainText featureText="plainText in actionButton"/>
         </actionButton>
-        <disableButtonGroup/>
-        <enableButtonGroup/>
-        <hideButtonGroup/>
-        <showButtonGroup/>
+        <disableButtonGroup matchingRegex="matchingRegex"/>
+        <enableButtonGroup matchingRegex="matchingRegex"/>
+        <hideButtonGroup matchingRegex="matchingRegex"/>
+        <showButtonGroup matchingRegex="matchingRegex"/>
         <addPadding/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
