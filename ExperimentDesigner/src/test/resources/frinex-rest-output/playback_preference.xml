@@ -69,10 +69,10 @@
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
                     <pauseVideo/>
-                    <enableButtonGroup/>
+                    <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
-                    <disableButtonGroup/>
+                <touchInputStimulusButton featureText="Left Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                    <disableButtonGroup matchingRegex="allCurtainGroup"/>
                     <rewindVideo/>
                     <pause msToNext="100">
                         <playVideo/>
@@ -81,7 +81,7 @@
                         <mediaLoaded/>
                         <mediaLoadFailed/>
                         <mediaPlaybackComplete>
-                            <enableButtonGroup/>
+                            <enableButtonGroup matchingRegex="allCurtainGroup"/>
                         </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
@@ -135,10 +135,10 @@
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
                     <pauseVideo/>
-                    <enableButtonGroup/>
+                    <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
-                    <disableButtonGroup/>
+                <touchInputStimulusButton featureText="Left Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                    <disableButtonGroup matchingRegex="allCurtainGroup"/>
                     <rewindVideo/>
                     <pause msToNext="100">
                         <playVideo/>
@@ -147,7 +147,7 @@
                         <mediaLoaded/>
                         <mediaLoadFailed/>
                         <mediaPlaybackComplete>
-                            <enableButtonGroup/>
+                            <enableButtonGroup matchingRegex="allCurtainGroup"/>
                         </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
@@ -201,10 +201,10 @@
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
                     <pauseVideo/>
-                    <enableButtonGroup/>
+                    <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
-                    <disableButtonGroup/>
+                <touchInputStimulusButton featureText="Left Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                    <disableButtonGroup matchingRegex="allCurtainGroup"/>
                     <rewindVideo/>
                     <pause msToNext="100">
                         <playVideo/>
@@ -213,7 +213,7 @@
                         <mediaLoaded/>
                         <mediaLoadFailed/>
                         <mediaPlaybackComplete>
-                            <enableButtonGroup/>
+                            <enableButtonGroup matchingRegex="allCurtainGroup"/>
                         </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
@@ -267,10 +267,10 @@
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
                     <pauseVideo/>
-                    <enableButtonGroup/>
+                    <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
-                    <disableButtonGroup/>
+                <touchInputStimulusButton featureText="Left Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                    <disableButtonGroup matchingRegex="allCurtainGroup"/>
                     <rewindVideo/>
                     <pause msToNext="100">
                         <playVideo/>
@@ -279,7 +279,7 @@
                         <mediaLoaded/>
                         <mediaLoadFailed/>
                         <mediaPlaybackComplete>
-                            <enableButtonGroup/>
+                            <enableButtonGroup matchingRegex="allCurtainGroup"/>
                         </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
@@ -333,10 +333,10 @@
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
                     <pauseVideo/>
-                    <enableButtonGroup/>
+                    <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
-                    <disableButtonGroup/>
+                <touchInputStimulusButton featureText="Left Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                    <disableButtonGroup matchingRegex="allCurtainGroup"/>
                     <rewindVideo/>
                     <pause msToNext="100">
                         <playVideo/>
@@ -345,7 +345,7 @@
                         <mediaLoaded/>
                         <mediaLoadFailed/>
                         <mediaPlaybackComplete>
-                            <enableButtonGroup/>
+                            <enableButtonGroup matchingRegex="allCurtainGroup"/>
                         </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
@@ -399,10 +399,10 @@
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
                     <pauseVideo/>
-                    <enableButtonGroup/>
+                    <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
-                    <disableButtonGroup/>
+                <touchInputStimulusButton featureText="Left Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                    <disableButtonGroup matchingRegex="allCurtainGroup"/>
                     <rewindVideo/>
                     <pause msToNext="100">
                         <playVideo/>
@@ -411,7 +411,7 @@
                         <mediaLoaded/>
                         <mediaLoadFailed/>
                         <mediaPlaybackComplete>
-                            <enableButtonGroup/>
+                            <enableButtonGroup matchingRegex="allCurtainGroup"/>
                         </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
@@ -465,10 +465,10 @@
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
                     <pauseVideo/>
-                    <enableButtonGroup/>
+                    <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
-                    <disableButtonGroup/>
+                <touchInputStimulusButton featureText="Left Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                    <disableButtonGroup matchingRegex="allCurtainGroup"/>
                     <rewindVideo/>
                     <pause msToNext="100">
                         <playVideo/>
@@ -477,7 +477,7 @@
                         <mediaLoaded/>
                         <mediaLoadFailed/>
                         <mediaPlaybackComplete>
-                            <enableButtonGroup/>
+                            <enableButtonGroup matchingRegex="allCurtainGroup"/>
                         </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
@@ -531,10 +531,10 @@
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
                     <pauseVideo/>
-                    <enableButtonGroup/>
+                    <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
-                    <disableButtonGroup/>
+                <touchInputStimulusButton featureText="Left Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                    <disableButtonGroup matchingRegex="allCurtainGroup"/>
                     <rewindVideo/>
                     <pause msToNext="100">
                         <playVideo/>
@@ -543,7 +543,7 @@
                         <mediaLoaded/>
                         <mediaLoadFailed/>
                         <mediaPlaybackComplete>
-                            <enableButtonGroup/>
+                            <enableButtonGroup matchingRegex="allCurtainGroup"/>
                         </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
@@ -597,10 +597,10 @@
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
                     <pauseVideo/>
-                    <enableButtonGroup/>
+                    <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
-                    <disableButtonGroup/>
+                <touchInputStimulusButton featureText="Left Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                    <disableButtonGroup matchingRegex="allCurtainGroup"/>
                     <rewindVideo/>
                     <pause msToNext="100">
                         <playVideo/>
@@ -609,7 +609,7 @@
                         <mediaLoaded/>
                         <mediaLoadFailed/>
                         <mediaPlaybackComplete>
-                            <enableButtonGroup/>
+                            <enableButtonGroup matchingRegex="allCurtainGroup"/>
                         </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
@@ -663,10 +663,10 @@
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
                     <pauseVideo/>
-                    <enableButtonGroup/>
+                    <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
-                    <disableButtonGroup/>
+                <touchInputStimulusButton featureText="Left Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                    <disableButtonGroup matchingRegex="allCurtainGroup"/>
                     <rewindVideo/>
                     <pause msToNext="100">
                         <playVideo/>
@@ -675,7 +675,7 @@
                         <mediaLoaded/>
                         <mediaLoadFailed/>
                         <mediaPlaybackComplete>
-                            <enableButtonGroup/>
+                            <enableButtonGroup matchingRegex="allCurtainGroup"/>
                         </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
@@ -729,10 +729,10 @@
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
                     <pauseVideo/>
-                    <enableButtonGroup/>
+                    <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
                 <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
-                    <disableButtonGroup/>
+                    <disableButtonGroup matchingRegex="allCurtainGroup"/>
                     <rewindVideo/>
                     <pause msToNext="100">
                         <playVideo/>
@@ -741,7 +741,7 @@
                         <mediaLoaded/>
                         <mediaLoadFailed/>
                         <mediaPlaybackComplete>
-                            <enableButtonGroup/>
+                            <enableButtonGroup matchingRegex="allCurtainGroup"/>
                         </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
@@ -795,10 +795,10 @@
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
                     <pauseVideo/>
-                    <enableButtonGroup/>
+                    <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
                 <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
-                    <disableButtonGroup/>
+                    <disableButtonGroup matchingRegex="allCurtainGroup"/>
                     <rewindVideo/>
                     <pause msToNext="100">
                         <playVideo/>
@@ -807,7 +807,7 @@
                         <mediaLoaded/>
                         <mediaLoadFailed/>
                         <mediaPlaybackComplete>
-                            <enableButtonGroup/>
+                            <enableButtonGroup matchingRegex="allCurtainGroup"/>
                         </mediaPlaybackComplete>
                     </stimulusCodeAudio>
                 </touchInputStimulusButton>
