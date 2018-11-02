@@ -564,7 +564,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 //        nextStimulusL.addFeatureAttributes(FeatureAttribute.repeatIncorrect, "false");
 //        touchInputZoneL.getPresenterFeatureList().add(nextStimulusL);
             final PresenterFeature leftOverlayButton = stimulusRelatedTags.addFeature(FeatureType.touchInputStimulusButton, "Left Overlay Button", "Left", "2", "", "leftOverlayButton", "leftButtonGroup");
-            leftOverlayButton.getPresenterFeatureList().add(new PresenterFeature(FeatureType.disableButtonGroup, null));
+            leftOverlayButton.addFeature(FeatureType.disableButtonGroup, null, "leftButtonGroup|rightButtonGroup");
             leftOverlayButton.addFeature(FeatureType.setStimulusCodeResponse, null, "<code>_L", "3");
 //            leftOverlayButton.addFeature(FeatureType.touchInputReportSubmit, null, "3");
             if (getCorrectAudio(storedWizardScreenData) != null) {
@@ -572,13 +572,13 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                 responseAudio1.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
                 responseAudio1.addFeatureAttributes(FeatureAttribute.codeFormat, getCorrectAudio(storedWizardScreenData));
                 responseAudio1.addFeatureAttributes(FeatureAttribute.msToNext, "500");
-                responseAudio1.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2].getPresenterFeatureList().add(new PresenterFeature(FeatureType.enableButtonGroup, null));
+                responseAudio1.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2].addFeature(FeatureType.enableButtonGroup, null, "leftButtonGroup|rightButtonGroup");
                 leftOverlayButton.getPresenterFeatureList().add(responseAudio1);
             } else {
-                leftOverlayButton.addFeature(FeatureType.enableButtonGroup, null);
+                leftOverlayButton.addFeature(FeatureType.enableButtonGroup, null, "leftButtonGroup|rightButtonGroup");
             }
             final PresenterFeature rightOverlayButton = stimulusRelatedTags.addFeature(FeatureType.touchInputStimulusButton, "Right Overlay Button", "Right", "2", "", "rightOverlayButton", "rightButtonGroup");
-            rightOverlayButton.getPresenterFeatureList().add(new PresenterFeature(FeatureType.disableButtonGroup, null));
+            rightOverlayButton.addFeature(FeatureType.disableButtonGroup, null, "leftButtonGroup|rightButtonGroup");
             rightOverlayButton.addFeature(FeatureType.setStimulusCodeResponse, null, "<code>_R", "3");
 //            rightOverlayButton.addFeature(FeatureType.touchInputReportSubmit, null, "3");
             if (getCorrectAudio(storedWizardScreenData) != null) {
@@ -586,10 +586,10 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                 responseAudio2.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
                 responseAudio2.addFeatureAttributes(FeatureAttribute.codeFormat, getCorrectAudio(storedWizardScreenData));
                 responseAudio2.addFeatureAttributes(FeatureAttribute.msToNext, "500");
-                responseAudio2.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2].getPresenterFeatureList().add(new PresenterFeature(FeatureType.enableButtonGroup, null));
+                responseAudio2.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2].addFeature(FeatureType.enableButtonGroup, null, "leftButtonGroup|rightButtonGroup");
                 rightOverlayButton.getPresenterFeatureList().add(responseAudio2);
             } else {
-                rightOverlayButton.addFeature(FeatureType.enableButtonGroup, null);
+                rightOverlayButton.addFeature(FeatureType.enableButtonGroup, null, "leftButtonGroup|rightButtonGroup");
             }
         } else {
             if (!getAudioAB(storedWizardScreenData).isEmpty()) {
