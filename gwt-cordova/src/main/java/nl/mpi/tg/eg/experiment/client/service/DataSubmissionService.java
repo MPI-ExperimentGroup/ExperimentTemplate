@@ -64,8 +64,8 @@ public class DataSubmissionService extends AbstractSubmissionService {
 
     @Override
     public boolean isProductionVersion() {
-        boolean dataSubmitUrlOk = serviceLocations.dataSubmitUrl().contains("ems12");
-        boolean groupServerUrlOk = serviceLocations.groupServerUrl().contains("ems12");
+        boolean dataSubmitUrlOk = serviceLocations.dataSubmitUrl().contains("ems12") || serviceLocations.dataSubmitUrl().contains("frinexproduction");
+        boolean groupServerUrlOk = serviceLocations.groupServerUrl().contains("ems12") || serviceLocations.groupServerUrl().contains("frinexproduction");
 //        boolean registrationUrlOk = serviceLocations.registrationUrl().contains("www.mpi.nl");
 //        boolean staticFilesUrlOk = serviceLocations.staticFilesUrl().contains("ems12");
         return dataSubmitUrlOk && groupServerUrlOk; // && staticFilesUrlOk;
