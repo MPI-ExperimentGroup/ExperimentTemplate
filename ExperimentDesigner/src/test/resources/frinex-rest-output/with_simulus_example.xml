@@ -839,5 +839,6 @@
         <stimulus identifier="Q8" label="The correct answer is 5" correctResponses="5" ratingLabels="1,2,3,4,5,6,7" pauseMs="0" tags="Pretest_Screen"/>        
         <stimulus label="Q6 type H or h" correctResponses="[hH]" identifier="Q6:Q6.wav::[hH]" pauseMs="0" tags="Pretest_Screen Q6"/>
         <stimulus label="Q7 type 'crayon' in any combination of case" correctResponses=".*[Cc][Rr][Aa][Yy][Oo][Nn]" identifier="Q7:Q7.wav::.*[Cc][Rr][Aa][Yy][Oo][Nn]" pauseMs="0" tags="Pretest_Screen Q7"/>
+        <stimulus identifier="Picture_01" imagePath="1_1.jpg"   code="1" ratingLabels="1,2,3,4,5,6,7" label="&lt;span style=&quot;text-align: left;&quot; &gt;label text 1a&lt;/span&gt;&lt;span style=&quot;text-align: right;&quot;&gt;label text 1b&lt;/span&gt;" pauseMs="0" tags="Practice"/>
     </stimuli>
 </experiment>
