@@ -78,8 +78,8 @@ public class ParticipantDetailController {
             model.addAttribute("participantData", this.participantRepository.findByStaleCopyAndUserId(false, id));
         }
         model.addAttribute("participantScreenData", this.screenDataRepository.findByUserIdOrderByViewDateAsc(id));
-        model.addAttribute("countOfBrowserWindowClosed", this.screenDataRepository.findDistinctViewDateByUserIdAndScreenName(id, BROWSER_WINDOW_CLOSED).size());
-        model.addAttribute("countOfApplicationStarted", this.screenDataRepository.findDistinctViewDateByUserIdAndScreenName(id, APPLICATION_STARTED).size());
+        model.addAttribute("countOfBrowserWindowClosed", this.screenDataRepository.findByUserIdAndScreenName(id, BROWSER_WINDOW_CLOSED).size());
+        model.addAttribute("countOfApplicationStarted", this.screenDataRepository.findByUserIdAndScreenName(id, APPLICATION_STARTED).size());
         model.addAttribute("userSummary", this.userSummary);
         model.addAttribute("fastTrack", this.fastTrack);
         model.addAttribute("fineTuning", this.fineTuning);
