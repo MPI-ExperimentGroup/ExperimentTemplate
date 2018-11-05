@@ -36,7 +36,7 @@
                     public static final String label_</xsl:text>
                 <xsl:value-of select="generate-id(.)" />
                 <xsl:text> = "</xsl:text>
-                <xsl:value-of select="@label" />
+                <xsl:value-of select="replace(@label,'&quot;','\\&quot;')" />
                 <xsl:text>";
                     public static final String code_</xsl:text>
                 <xsl:value-of select="generate-id(.)" />
