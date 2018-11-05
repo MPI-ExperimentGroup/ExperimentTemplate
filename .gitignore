@@ -50,3 +50,8 @@
 /ExperimentDesigner/src/test/resources/frinex-rest-output/spellingtest.xml
 /ExperimentDesigner/src/test/resources/frinex-rest-output/visualchoicereactiontime.xml
 /ExperimentDesigner/src/test/resources/frinex-rest-output/visualsimplereactiontime.xml
+/ExperimentDesigner/src/test/resources/frinex-rest-output/maximalspeechrate.xml
+/ExperimentDesigner/src/test/resources/frinex-rest-output/picturenaming.xml
+/ExperimentDesigner/src/test/resources/frinex-rest-output/antonyms.xml
+/ExperimentDesigner/src/test/resources/frinex-rest-output/digitspanforward.xml
+/ExperimentDesigner/src/test/resources/frinex-rest-output/flanker.xml
