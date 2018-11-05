@@ -49,6 +49,8 @@ public class ParticipantDetailController {
     private TagRepository tagRepository;
     @Autowired
     private TimeStampRepository timeStampRepository;
+    @Autowired
+    private StimulusResponseRepository stimulusResponseRepository;
 
     // the first ibdex is the label report, e.g. screen1 or screen2
     // the first index is the row number
@@ -76,7 +78,8 @@ public class ParticipantDetailController {
             model.addAttribute("participantData", this.participantRepository.findByStaleCopyAndUserId(false, id));
         }
         model.addAttribute("participantScreenData", this.screenDataRepository.findByUserIdOrderByViewDateAsc(id));
-        model.addAttribute("countOfBrowserWindowClosed", this.screenDataRepository.countDistinctViewDateByUserIdAndScreenName(id, BROWSER_WINDOW_CLOSED));
+        model.addAttribute("countOfBrowserWindowClosed", this.screenDataRepository.findDistinctViewDateByUserIdAndScreenName(id, BROWSER_WINDOW_CLOSED).size());
+        model.addAttribute("countOfApplicationStarted", this.screenDataRepository.findDistinctViewDateByUserIdAndScreenName(id, APPLICATION_STARTED).size());
         model.addAttribute("userSummary", this.userSummary);
         model.addAttribute("fastTrack", this.fastTrack);
         model.addAttribute("fineTuning", this.fineTuning);
@@ -85,13 +88,16 @@ public class ParticipantDetailController {
         model.addAttribute("fineTuningSortedKeys", this.fineTuningSortedKeys);
         model.addAttribute("participantTagPairData", this.tagPairRepository.findByUserIdOrderByTagDateAsc(id));
         model.addAttribute("participantSubsetStimulus", this.tagPairRepository.findByUserIdAndEventTagOrderByTagDateAsc(id, SUBSET_STIMULUS));
-        model.addAttribute("participantCompletionCode", this.tagRepository.findByUserIdAndEventTagOrderByTagDateAsc(id, COMPLETION_CODE));
-        model.addAttribute("participantAudioTestCount", this.tagRepository.countDistinctTagDateByUserIdAndTagValue(id, CARLY_BLUE_CHAIROGG));
+        model.addAttribute("participantCompletionCode", this.tagPairRepository.findByUserIdAndEventTagAndTagValue1OrderByTagDateAsc(id, DATA_SUBMISSION, COMPLETION_CODE));
+        model.addAttribute("participantAudioTestCount", this.tagRepository.countDistinctTagDateByUserIdAndTagValue(id, CARLY_BLUE_CHAIROGG)); // todo: this can go or be updated
         model.addAttribute("participantNextButtonMsData", this.timeStampRepository.findByUserIdAndEventTagOrderByTagDateAsc(id, STIMULUS1_NEXT));
         model.addAttribute("participantTagData", this.tagRepository.findDistinctUserIdEventTagTagValueEventMsTageDateByUserIdOrderByTagDateAsc(id));
         model.addAttribute("participantTimeStampData", this.timeStampRepository.findByUserIdOrderByTagDateAsc(id));
+        model.addAttribute("participantResponseData", this.stimulusResponseRepository.findByUserIdOrderByTagDateAsc(id));
         return "participantdetail";
     }
+    private static final String DATA_SUBMISSION = "DataSubmission";
+    private static final String APPLICATION_STARTED = "ApplicationStarted";
     private static final String CARLY_BLUE_CHAIROGG = "carly_blue_chair.ogg";
     private static final String COMPLETION_CODE = "CompletionCode";
     private static final String BROWSER_WINDOW_CLOSED = "BrowserWindowClosed";
