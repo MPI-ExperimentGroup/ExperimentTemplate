@@ -38,8 +38,8 @@ public interface ScreenDataRepository extends PagingAndSortingRepository<ScreenD
     @Query("select distinct new ScreenData(userId, screenName, viewDate) from ScreenData where userId = :userId order by viewDate asc")
     List<ScreenData> findByUserIdOrderByViewDateAsc(@Param("userId") String userId);
 
-//    @Query("select count distinct new ScreenData(userId, screenName, viewDate) from ScreenData where userId = :userId and screenName = :screenName")
-    int countDistinctViewDateByUserIdAndScreenName(@Param("userId") String userId, @Param("screenName") String screenName);
+    @Query("select distinct new ScreenData(userId, screenName, viewDate) from ScreenData where userId = :userId and screenName = :screenName order by viewDate asc")
+    List<ScreenData> findByUserIdAndScreenName(@Param("userId") String userId, @Param("screenName") String screenName);
 
     @Override
     @RestResource(exported = false)
