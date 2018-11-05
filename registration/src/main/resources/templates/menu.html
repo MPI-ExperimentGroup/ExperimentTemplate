@@ -60,8 +60,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <h3>R Example</h3>
             <div style="border: 1px solid black; background-color: lightgrey; padding: 10px; margin: 10px;">
                 library(jsonlite)<br/>
-                participants &lt;- fromJSON("http://localhost:8080/with_simulus_example-admin/participants")<br/>
-                paste(format(participants$_embedded$participants$userId, ":", participants$_embedded$participants$userAgent)<br/>
+                participants &lt;- fromJSON("<span th:text="@{__${#httpServletRequest.requestURL}__}"></span>participants")<br/>
+                paste(participants$_embedded$participants$userId, ":", participants$_embedded$participants$userAgent)<br/>
             </div>
         </section>
         <script th:inline="javascript">
