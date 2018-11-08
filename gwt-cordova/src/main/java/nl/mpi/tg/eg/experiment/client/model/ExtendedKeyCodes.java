@@ -152,4 +152,15 @@ public class ExtendedKeyCodes {
     public static final int KEY_R1_MD_DOWN = -1; // mouse
     public static final int KEY_R1_MD_LEFT = -1; // mouse
     public static final int KEY_R1_MD_RIGHT = -1; // mouse
+    
+    // USB LP310 laser pointer remote
+    public static final int KEY_LP310_UP = 38;
+    public static final int KEY_LP310_UP_LONG_A = 116;
+    public static final int KEY_LP310_UP_LONG_B = 27;
+    public static final int KEY_LP310_DOWN = 40;
+    public static final int KEY_LP310_DOWN_LONG = 66;
+    public static final int KEY_LP310_MIDDLE = 9;
+    public static final int KEY_LP310_MIDDLE_LONG = 18;
+    public static final int KEY_LP310_MIDDLE_DOUBLE = 13;
+    
 }
