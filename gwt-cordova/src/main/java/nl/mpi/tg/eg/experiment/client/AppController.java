@@ -152,8 +152,20 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
         History.addValueChangeHandler(new ValueChangeHandler<String>() {
             @Override
             public void onValueChange(ValueChangeEvent<String> event) {
-                // this causes both back and forward history actions to trigger the back action, however no forward navigation will available unless the back action is to hide/show the stimuli menu, in which case it is ok
-                backAction();
+                if (preserveLastState()) {
+                    // when the navigation is blocked a new item is added over the last back event 
+                    // this prevents both back and forward history actions triggering the back action, however no forward navigation will available unless the back action is to hide/show the stimuli menu, in which case it is ok
+                    History.newItem(localStorage.getAppState(userResults.getUserData().getUserId()), false);
+                    backAction();
+                } else if (event != null) {
+                    presenter.savePresenterState();
+                    try {
+                        // this allows the browser navigation buttons to control the screen shown
+                        ApplicationState lastAppState = ApplicationState.valueOf(event.getValue());
+                        requestApplicationState(lastAppState);
+                    } catch (IllegalArgumentException argumentException) {
+                    }
+                }
             }
         });
         try {
@@ -176,8 +188,20 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
             ApplicationState lastAppState = ApplicationState.start;
             try {
                 final String appState = localStorage.getAppState(userResults.getUserData().getUserId());
-                lastAppState = (preserveLastState() && appState != null) ? ApplicationState.valueOf(appState) : ApplicationState.start;
+                // if the app state is preserved, then only the last saved state is used
+                lastAppState = (appState != null) ? ApplicationState.valueOf(appState) : lastAppState;
             } catch (IllegalArgumentException argumentException) {
+            }
+            if (!preserveLastState()) {
+                // if the history token is valid then that is used otherwise the last saved or the start states are used
+                final String token = History.getToken();
+                if (token != null) {
+                    try {
+                        // this allows the URL to control the screen shown
+                        lastAppState = ApplicationState.valueOf(token);
+                    } catch (IllegalArgumentException argumentException) {
+                    }
+                }
             }
             if (!submissionService.isProductionVersion()) {
                 this.presenter = new TestingVersionPresenter(widgetTag, lastAppState);
