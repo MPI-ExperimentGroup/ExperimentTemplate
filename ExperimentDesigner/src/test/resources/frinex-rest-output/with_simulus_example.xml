@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="frinex.xsd" appNameDisplay="with_simulus_example" appNameInternal="with_simulus_example" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17">
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="frinex.xsd" appNameDisplay="with_simulus_example" appNameInternal="with_simulus_example" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="false" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17">
     <administration>
         <dataChannel channel="0" label="Example" logToSdCard="false"/>
         <dataChannel channel="1" label="Data" logToSdCard="false"/>
@@ -728,7 +728,7 @@
                 <tag>Second</tag>
             </stimuli>
         </loadStimulus>
-    </presenter>    
+    </presenter>
     <presenter back="Menu" menuLabel="RecorderPauseTest" next="Menu" type="stimulus" self="RecorderPauseTest" title="RecorderPauseTest">
         <loadStimulus eventTag="RecorderPauseTest" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -778,6 +778,132 @@
             </randomGrouping>
             <stimuli>
                 <tag>Third</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Menu" menuLabel="USB LP310" type="stimulus" self="USB_LP310" title="USB LP310 laser pointer remote">
+        <htmlText featureText="USB LP310 laser pointer remote test page&lt;br/&gt;"/>
+        <actionButton featureText="LP310_UP" hotKey="LP310_UP">
+            <htmlText featureText="LP310_UP&lt;br/&gt;"/>
+        </actionButton>
+        <actionButton featureText="LP310_UP_LONG_A" hotKey="LP310_UP_LONG_A">
+            <htmlText featureText="LP310_UP_LONG_A&lt;br/&gt;"/>
+        </actionButton>
+        <actionButton featureText="LP310_UP_LONG_B" hotKey="LP310_UP_LONG_B">
+            <htmlText featureText="LP310_UP_LONG_B&lt;br/&gt;"/>
+        </actionButton>
+        <actionButton featureText="LP310_DOWN" hotKey="LP310_DOWN">
+            <htmlText featureText="LP310_DOWN&lt;br/&gt;"/>
+        </actionButton>
+        <actionButton featureText="LP310_DOWN_LONG" hotKey="LP310_DOWN_LONG">
+            <htmlText featureText="LP310_DOWN_LONG&lt;br/&gt;"/>
+        </actionButton>
+        <actionButton featureText="LP310_MIDDLE" hotKey="LP310_MIDDLE">
+            <htmlText featureText="LP310_MIDDLE&lt;br/&gt;"/>
+        </actionButton>
+        <actionButton featureText="LP310_MIDDLE_LONG" hotKey="LP310_MIDDLE_LONG">
+            <htmlText featureText="LP310_MIDDLE_LONG&lt;br/&gt;"/>
+        </actionButton>
+        <actionButton featureText="LP310_MIDDLE_DOUBLE" hotKey="LP310_MIDDLE_DOUBLE">
+            <htmlText featureText="LP310_MIDDLE_DOUBLE&lt;br/&gt;"/>
+        </actionButton>
+    </presenter>
+    <presenter back="Menu" menuLabel="Bluetooth R1" type="stimulus" self="Bluetooth_R1" title="Bluetooth remote R1">
+        <htmlText featureText="Bluetooth remote R1 test page&lt;br/&gt;"/>
+        <!-- the region is used here only to provide a nice border around the button groups with the menuTable style --> 
+        <region regionId="regionIdMA" styleName="menuTable">
+            <htmlText featureText="Bluetooth remote R1 with mode M+A&lt;br/&gt;"/>
+            <actionButton featureText="R1_MA_A" hotKey="R1_MA_A">
+                <htmlText featureText="R1_MA_A&lt;br/&gt;"/>
+            </actionButton>
+            <actionButton featureText="R1_MA_ENTER" hotKey="R1_MA_ENTER">
+                <htmlText featureText="R1_MA_ENTER&lt;br/&gt;"/>
+            </actionButton>
+            <actionButton featureText="R1_MA_LEFT" hotKey="R1_MA_LEFT">
+                <htmlText featureText="R1_MA_LEFT&lt;br/&gt;"/>
+            </actionButton>
+            <actionButton featureText="R1_MA_RIGHT" hotKey="R1_MA_RIGHT">
+                <htmlText featureText="R1_MA_RIGHT&lt;br/&gt;"/>
+            </actionButton>
+        </region>
+        <region regionId="regionIdMB" styleName="menuTable">        
+            <htmlText featureText="Bluetooth remote R1 with mode M+B&lt;br/&gt;"/>
+            <actionButton featureText="R1_MB_A" hotKey="R1_MB_A">
+                <htmlText featureText="R1_MB_A&lt;br/&gt;"/>
+            </actionButton>
+            <actionButton featureText="R1_MB_B" hotKey="R1_MB_B">
+                <htmlText featureText="R1_MB_B&lt;br/&gt;"/>
+            </actionButton>
+            <actionButton featureText="R1_MB_C" hotKey="R1_MB_C">
+                <htmlText featureText="R1_MB_C&lt;br/&gt;"/>
+            </actionButton>
+        </region>
+        <region regionId="regionIdMC" styleName="menuTable">
+            <htmlText featureText="Bluetooth remote R1 with mode M+C&lt;br/&gt;"/>
+            <actionButton featureText="R1_MC_B" hotKey="R1_MC_B">
+                <htmlText featureText="R1_MC_B&lt;br/&gt;"/>
+            </actionButton>
+            <actionButton featureText="R1_MC_C" hotKey="R1_MC_C">
+                <htmlText featureText="R1_MC_C&lt;br/&gt;"/>
+            </actionButton>
+            <actionButton featureText="R1_MC_D" hotKey="R1_MC_D">
+                <htmlText featureText="R1_MC_D&lt;br/&gt;"/>
+            </actionButton>
+        </region>
+        <region regionId="regionIdMD" styleName="menuTable">
+            <htmlText featureText="Bluetooth remote R1 with mode M+D&lt;br/&gt;"/>
+            <actionButton featureText="R1_MD_A" hotKey="R1_MD_A">
+                <htmlText featureText="R1_MD_A&lt;br/&gt;"/>
+            </actionButton>
+        </region>
+    </presenter>
+    <presenter menuLabel="showOnBackButton" type="stimulus" self="showOnBackButton" title="showOnBackButton">
+        <loadStimulus eventTag="RecorderPauseTest" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <htmlText featureText="This demonstration screen requires the preserveLastState=false in the Experiment element.&lt;br/&gt;"/> 
+                <htmlText featureText="Keys to navigate the stimuli are p, r, n and m.&lt;br/&gt;"/> 
+                <stimulusLabel styleName="stimuliLabel"/>
+                <table showOnBackButton="true" styleName="titleBarButton">
+                    <row>
+                        <column styleName="">
+                            <actionButton featureText="TestMenu (m)" hotKey="M" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <gotoPresenter target="Menu"/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Prev (p)" hotKey="P" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <prevStimulus repeatIncorrect="false"/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Repeat (r)" hotKey="R" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <showStimulus/>
+                            </actionButton>
+                        </column>
+                        <column styleName="">
+                            <actionButton featureText="Next (n)" hotKey="N" styleName="">
+                                <touchInputReportSubmit dataChannel="3"/>
+                                <nextStimulus repeatIncorrect="false"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                </table>   
+                <targetButton featureText="Menu" target="Menu"/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="showOnBackButton"/>
+                    <gotoPresenter target="showOnBackButton"/>
+                </actionButton>
+                <targetButton featureText="Menu" target="Menu"/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>RecorderPauseTest</tag>
             </stimuli>
         </loadStimulus>
     </presenter>
