@@ -553,6 +553,71 @@
             </stimuli>
         </loadStimulus>
     </presenter>
+    <presenter back="Menu" menuLabel="stimulusResponse_logTokenText" type="stimulus" self="stimulusResponse_logTokenText" title="stimulusResponse_logTokenText">
+        <loadStimulus eventTag="stimulusResponse_logTokenText" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <showStimulusProgress/>
+                <addPadding/>
+                <htmlTokenText featureText="
+                stimulusId:
+                &lt;stimulusId&gt;&lt;br/&gt;
+                stimulusLabel:
+                &lt;stimulusLabel&gt;&lt;br/&gt;
+                stimulusResponse:
+                &lt;stimulusResponse&gt;&lt;br/&gt;"/>
+                <addPadding/>
+                <htmlTokenText featureText="
+                stimulusResponse_Q1:
+                &lt;stimulusResponse_Q1&gt;&lt;br/&gt;
+                stimulusResponse_Q2:
+                &lt;stimulusResponse_Q2&gt;&lt;br/&gt;
+                stimulusResponse_Q3:
+                &lt;stimulusResponse_Q3&gt;&lt;br/&gt;
+                stimulusResponse_Q6:
+                &lt;stimulusResponse_Q6&gt;&lt;br/&gt;
+                stimulusResponse_Q7:
+                &lt;stimulusResponse_Q7&gt;&lt;br/&gt;
+                stimulusResponse_Q8:
+                &lt;stimulusResponse_Q8&gt;&lt;br/&gt;
+                "/>
+                <addPadding/>
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete>
+                        <stimulusHasRatingOptions>
+                            <conditionTrue>
+                                <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
+                                    <nextStimulus repeatIncorrect="false"/>
+                                </stimulusRatingButton>
+                            </conditionTrue>
+                            <conditionFalse>
+                                <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex=".{1,}" inputErrorMessage=" "/>
+                                <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
+                            </conditionFalse>
+                        </stimulusHasRatingOptions>
+                    </mediaPlaybackComplete>
+                </stimulusPresent>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <addPadding/>
+                <actionButton featureText="clearCurrentScore">
+                    <clearCurrentScore/>
+                    <gotoPresenter target="stimulusResponse_logTokenText"/>
+                </actionButton>
+                <addPadding/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="stimulusResponse_logTokenText"/>
+                    <gotoPresenter target="stimulusResponse_logTokenText"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Pretest_Screen</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
     <presenter back="Menu" menuLabel="StimulusRatingRadio" next="Second_Informatie" type="stimulus" self="stimulusRatingRadio" title="StimulusRatingRadio">
         <loadStimulus eventTag="First Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -963,8 +1028,8 @@
         <stimulus identifier="Q2" label="The correct answer is 2" correctResponses="2" ratingLabels="1,2" pauseMs="0" tags="Pretest_Screen"/>        
         <stimulus identifier="Q3" label="The correct answer is 3" correctResponses="3" ratingLabels="1,2,3" pauseMs="0" tags="Pretest_Screen"/>        
         <stimulus identifier="Q8" label="The correct answer is 5" correctResponses="5" ratingLabels="1,2,3,4,5,6,7" pauseMs="0" tags="Pretest_Screen"/>        
-        <stimulus label="Q6 type H or h" correctResponses="[hH]" identifier="Q6:Q6.wav::[hH]" pauseMs="0" tags="Pretest_Screen Q6"/>
-        <stimulus label="Q7 type 'crayon' in any combination of case" correctResponses=".*[Cc][Rr][Aa][Yy][Oo][Nn]" identifier="Q7:Q7.wav::.*[Cc][Rr][Aa][Yy][Oo][Nn]" pauseMs="0" tags="Pretest_Screen Q7"/>
+        <stimulus label="Q6 type H or h" correctResponses="[hH]" identifier="Q6" pauseMs="0" tags="Pretest_Screen Q6"/>
+        <stimulus label="Q7 type 'crayon' in any combination of case" correctResponses=".*[Cc][Rr][Aa][Yy][Oo][Nn]" identifier="Q7" pauseMs="0" tags="Pretest_Screen Q7"/>
         <stimulus identifier="Picture_01" imagePath="1_1.jpg"   code="1" ratingLabels="1,2,3,4,5,6,7" label="&lt;span style=&quot;text-align: left;&quot; &gt;label text 1a&lt;/span&gt;&lt;span style=&quot;text-align: right;&quot;&gt;label text 1b&lt;/span&gt;" pauseMs="0" tags="Practice"/>
     </stimuli>
 </experiment>
