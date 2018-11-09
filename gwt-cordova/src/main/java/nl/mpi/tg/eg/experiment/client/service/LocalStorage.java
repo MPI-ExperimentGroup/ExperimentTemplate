@@ -95,6 +95,10 @@ public class LocalStorage {
         return appNameInternal + "." + userId.toString() + ".StimuliData." + stimulus.getUniqueId();
     }
 
+    private String getSTIMULI_DATA(UserId userId, String stimulusId) {
+        return appNameInternal + "." + userId.toString() + ".StimuliData." + stimulusId;
+    }
+
     private String getSCREEN_DATA(String endPoint, UserId userId) {
         return appNameInternal + "." + userId.toString() + ".ScreenData." + endPoint; // this is an exception in the order of the key parts, is this avoidable?
 //        STOWED_DATA = appNameInternal + ".SentData.";
@@ -196,6 +200,16 @@ public class LocalStorage {
     public JSONObject getStoredJSONObject(UserId userId, Stimulus stimulus) {
         loadStorage();
         final String cleanStoredData = getCleanStoredData(getSTIMULI_DATA(userId, stimulus));
+        if (cleanStoredData.isEmpty()) {
+            return null;
+        }
+        JSONObject jsonObject = (JSONObject) JSONParser.parseStrict(cleanStoredData);
+        return jsonObject;
+    }
+
+    public JSONObject getStoredJSONObject(UserId userId, String stimulusId) {
+        loadStorage();
+        final String cleanStoredData = getCleanStoredData(getSTIMULI_DATA(userId, stimulusId));
         if (cleanStoredData.isEmpty()) {
             return null;
         }
