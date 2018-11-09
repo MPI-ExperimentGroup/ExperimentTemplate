@@ -54,7 +54,8 @@ public class StorageFullPresenter extends LocalStoragePresenter implements Prese
         ((ComplexView) simpleView).addPadding();
         ((ComplexView) simpleView).addText("Framework For Interactive Experiments\n" + "Version: " + version.majorVersion() + "."
                 + version.minorVersion() + "."
-                + version.buildVersion() + "-"
+                + version.buildVersion() + "\n"
+                + "Project Version: "
                 + version.projectVersion() + "\n"
                 + "Compile Date: " + version.compileDate() + "\n"
                 + "Last Commit Date: " + version.lastCommitDate());
