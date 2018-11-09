@@ -17,9 +17,11 @@
  */
 package nl.mpi.tg.eg.experiment.client.util;
 
+import com.google.gwt.json.client.JSONObject;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.service.GroupScoreService;
+import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
@@ -30,11 +32,13 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 public class HtmlTokenFormatter {
 
     final GroupScoreService groupParticipantService;
+    final LocalStorage localStorage;
     final UserData userData;
     final TimerService timerService;
     final Stimulus currentStimulus;
 
-    public HtmlTokenFormatter(final Stimulus currentStimulus, GroupScoreService groupParticipantService, UserData userData, TimerService timerService) {
+    public HtmlTokenFormatter(final Stimulus currentStimulus, final LocalStorage localStorage, final GroupScoreService groupParticipantService, final UserData userData, final TimerService timerService) {
+        this.localStorage = localStorage;
         this.groupParticipantService = groupParticipantService;
         this.userData = userData;
         this.timerService = timerService;
@@ -93,6 +97,33 @@ public class HtmlTokenFormatter {
         replacedTokensString = replacedTokensString.replaceAll("<playerGamesPlayed>", Integer.toString(userData.getGamesPlayed()));
         for (String timerId : timerService.getTimerIds()) {
             replacedTokensString = replacedTokensString.replaceAll("<" + timerId + ">", Integer.toString(timerService.getTimerValue(timerId)));
+        }
+        if (localStorage != null) {
+            final String[] splitOnTokens = replacedTokensString.split("<stimulusResponse");
+            if (splitOnTokens.length > 1) {
+                String resultString = null;
+                for (String splitPart : splitOnTokens) {
+                    if (resultString == null) {
+                        resultString = splitPart;
+                    } else {
+                        final String[] subPart = splitPart.split(">", 2);
+                        final String uniqueId;
+                        if (subPart[0].length() == 0) {
+                            uniqueId = currentStimulus.getUniqueId(); // show the current stimulus response
+                        } else {
+                            uniqueId = subPart[0].substring(1); // extracted XXX from "<stimulusResponse_XXX"
+                        }
+                        final JSONObject storedJSONObject = localStorage.getStoredJSONObject(userData.getUserId(), uniqueId);
+                        if (storedJSONObject != null) {
+                            for (String key : storedJSONObject.keySet()) {
+                                resultString += storedJSONObject.get(key);
+                            }
+                        }
+                        resultString += subPart[1];
+                    }
+                }
+                replacedTokensString = (resultString != null) ? resultString : replacedTokensString;
+            }
         }
         if (currentStimulus != null) {
             replacedTokensString = replacedTokensString.replaceAll("<stimulusId>", currentStimulus.getUniqueId());
