@@ -60,7 +60,7 @@ public class HtmlTokenFormatterTest {
         final HashMap<String, String> channelScores = new HashMap<>();
         channelScores.put("A-B", "6");
         channelScores.put("C-D", "2");
-        HtmlTokenFormatter instance = new HtmlTokenFormatter(GeneratedStimulus.values[0], new GroupScoreService() {
+        HtmlTokenFormatter instance = new HtmlTokenFormatter(GeneratedStimulus.values[0], null, new GroupScoreService() {
 
             @Override
             public String getActiveChannel() {
