@@ -49,7 +49,8 @@ public class VersionPresenter extends AbstractPresenter {
     protected void setContent(AppEventListner appEventListner) {
         ((ComplexView) simpleView).addText("Framework For Interactive Experiments\n" + "Version: " + version.majorVersion() + "."
                 + version.minorVersion() + "."
-                + version.buildVersion() + "-"
+                + version.buildVersion() + "\n"
+                + "Project Version: "
                 + version.projectVersion() + "\n"
                 + "Compile Date: " + version.compileDate() + "\n"
                 + "Last Commit Date: " + version.lastCommitDate());
