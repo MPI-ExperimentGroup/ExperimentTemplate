@@ -54,6 +54,7 @@ public class SentenceComprehensionPicturesStimuliFromStringTest {
      * Test of parseTrialsPicturesStringIntoXml method, of class
      * SentenceComprehensionPicturesStimuliFromString.
      */
+    @Ignore    
     @Test
     public void testParseTrialsPicturesStringIntoXml() throws Exception {
         System.out.println("parseTrialsPicturesStringIntoXml");
@@ -71,6 +72,7 @@ public class SentenceComprehensionPicturesStimuliFromStringTest {
      * Test of parseTrialsAudioPicturesStringIntoXml method, of class
      * SentenceComprehensionPicturesStimuliFromString.
      */
+    @Ignore 
     @Test
     public void testParseTrialsAudioPicturesStringIntoXml() throws Exception {
         System.out.println("parseTrialsAudioPicturesStringIntoXml");
