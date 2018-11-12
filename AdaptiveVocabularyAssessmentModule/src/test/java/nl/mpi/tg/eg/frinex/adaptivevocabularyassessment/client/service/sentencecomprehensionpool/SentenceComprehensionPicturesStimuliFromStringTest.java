@@ -50,42 +50,43 @@ public class SentenceComprehensionPicturesStimuliFromStringTest {
     public void tearDown() {
     }
 
-   
+    /**
+     * Test of parseTrialsPicturesStringIntoXml method, of class
+     * SentenceComprehensionPicturesStimuliFromString.
+     */
+    @Test
+    public void testParseTrialsPicturesStringIntoXml() throws Exception {
+        System.out.println("parseTrialsPicturesStringIntoXml");
+        String baseDir = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/sentencecomprehension/";
+
+        String pictureStimuliDir = "stimuli/pictures/";
+        SentenceComprehensionPicturesStimuliFromString instance = new SentenceComprehensionPicturesStimuliFromString();
+        String result = instance.parseTrialsPicturesStringIntoXml(SentenceComprehensionCsv.CSV_PICTURES, baseDir, pictureStimuliDir);
+        assertTrue(result.startsWith("<stimulus "));
+        assertTrue(result.endsWith(" />\n"));
+        System.out.println(result);
+    }
 
     /**
      * Test of parseTrialsAudioPicturesStringIntoXml method, of class
      * SentenceComprehensionPicturesStimuliFromString.
      */
-    @Ignore
     @Test
     public void testParseTrialsAudioPicturesStringIntoXml() throws Exception {
         System.out.println("parseTrialsAudioPicturesStringIntoXml");
-        String rootDir = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/sentencecomprehension/stimuli/";
-
-        String originalDir = rootDir+"originallynamedstimuli/";
-        String stimuliDir = rootDir;
+        String baseDir = "/Users/olhshk/Documents/ExperimentTemplate/gwt-cordova/src/main/static/sentencecomprehension/";
+        String audioStimuliDir = "stimuli/audiofiles/";
+        String pictureStimuliDir = "stimuli/pictures/";
+        String codeStimuliDir = "stimuli/codes/";
+        
         SentenceComprehensionPicturesStimuliFromString instance = new SentenceComprehensionPicturesStimuliFromString();
 
-        String result2 = instance.parseTrialsAudioPicturesStringIntoXml(SentenceComprehensionCsv.CSV_PICTURES_AUDIO, originalDir, stimuliDir);
+        String result2 = instance.parseTrialsAudioPicturesStringIntoXml(SentenceComprehensionCsv.CSV_PICTURES_AUDIO, pictureStimuliDir, audioStimuliDir, codeStimuliDir, baseDir);
+
+        System.out.println(result2);
         assertTrue(result2.startsWith("<stimulus "));
         assertTrue(result2.endsWith(" />\n"));
-        System.out.println(result2);
 
-    }
-
-    /**
-     * Test of parseTrialsPicturesStringIntoXml method, of class SentenceComprehensionPicturesStimuliFromString.
-     */
-    @Ignore
-    @Test
-    public void testParseTrialsPicturesStringIntoXml() throws Exception {
-        System.out.println("parseTrialsPicturesStringIntoXml");
-        String stimuliDir = "stimuli/originallynamedstimuli/prictures/";
-        SentenceComprehensionPicturesStimuliFromString instance = new SentenceComprehensionPicturesStimuliFromString();
-        String result = instance.parseTrialsPicturesStringIntoXml(SentenceComprehensionCsv.CSV_PICTURES, stimuliDir);
-        assertTrue(result.startsWith("<stimulus "));
-        assertTrue(result.endsWith(" />\n"));
-        System.out.println(result);
     }
 
 }
