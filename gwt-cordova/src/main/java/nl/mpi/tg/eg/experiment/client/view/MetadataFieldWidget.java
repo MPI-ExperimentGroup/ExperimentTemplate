@@ -152,6 +152,10 @@ public class MetadataFieldWidget implements StimulusFreeText {
         }
     }
 
+    public void addMetadataFieldListener(MetadataFieldListener metadataFieldListener) {
+        this.metadataFieldListeners.add(metadataFieldListener);
+    }
+
     @Override
     public Stimulus getStimulus() {
         return stimulus;
