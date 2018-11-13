@@ -96,10 +96,10 @@ public class MetadataView extends ComplexView {
                         fieldBox.setValue(metadataField.getListValues()[currentIndex]);
                     }
                 }
-                addText(existingValue);
-                if (daysSince != null) {
-                    addText(Long.toString(daysSince));
-                }
+//                addText(existingValue);
+//                if (daysSince != null) {
+//                    addText(Long.toString(daysSince));
+//                }
             }
 
             @Override
