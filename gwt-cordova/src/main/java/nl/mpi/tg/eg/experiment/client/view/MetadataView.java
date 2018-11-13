@@ -17,12 +17,10 @@
  */
 package nl.mpi.tg.eg.experiment.client.view;
 
-import com.google.gwt.event.dom.client.FocusEvent;
-import com.google.gwt.event.dom.client.FocusHandler;
-import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.FocusWidget;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -31,6 +29,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
+import nl.mpi.tg.eg.experiment.client.listener.MetadataFieldListener;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
@@ -60,13 +59,8 @@ public class MetadataView extends ComplexView {
     }
 
     public void addField(final MetadataField metadataField, final String existingValue, String labelString, List<UserLabelData> otherUsersList, UserId selectedUser) {
-        if (flexTable == null) {
-            flexTable = new FlexTable();
-            flexTable.setStylePrimaryName("metadataTable");
-            outerPanel.add(flexTable);
-        }
+        addField(metadataField, existingValue, labelString);
         final int rowCount = flexTable.getRowCount();
-        final MetadataFieldWidget stimulusMetadataField = new MetadataFieldWidget(metadataField, null, existingValue, 0);
         if (otherUsersList != null) {
             ListBox listBox = new ListBox();
             int selectedIndex = 0;
@@ -80,9 +74,89 @@ public class MetadataView extends ComplexView {
                 }
             }
             listBox.setSelectedIndex(selectedIndex);
-            flexTable.setWidget(rowCount + 1, 1, listBox);
+            flexTable.setWidget(rowCount - 1, 1, listBox);
             fieldConnections.put(metadataField, listBox);
         }
+    }
+
+    public void addField(final MetadataField metadataField, final String existingValue, String labelString, final MetadataField metadataFieldOther, final int[] daysThresholds) {
+        addField(metadataField, existingValue, labelString);
+        MetadataFieldListener fieldListener = new MetadataFieldListener() {
+            @Override
+            public void matadataFieldValueChanged(Long daysSince, String valuex) {
+                if (daysSince != null) {
+                    final MetadataFieldWidget fieldBox = fieldBoxes.get(metadataField);
+                    if (fieldBox != null) {
+                        int currentIndex = 0;
+                        for (int currentDays : daysThresholds) {
+                            if (currentDays < daysSince) {
+                                currentIndex++;
+                            }
+                        }
+                        fieldBox.setValue(metadataField.getListValues()[currentIndex]);
+                    }
+                }
+                addText(existingValue);
+                if (daysSince != null) {
+                    addText(Long.toString(daysSince));
+                }
+            }
+
+            @Override
+            public MetadataField getMetadataField() {
+                return metadataField;
+            }
+
+            @Override
+            public MetadataField getMetadataFieldOther() {
+                return metadataFieldOther;
+            }
+        };
+        fieldBoxes.get(fieldListener.getMetadataFieldOther()).addMetadataFieldListener(fieldListener);
+    }
+
+    public void addField(final MetadataField metadataField, final String existingValue, String labelString, final MetadataField metadataFieldOther, final String matchingRegex) {
+        addField(metadataField, existingValue, labelString);
+        MetadataFieldListener fieldListener = new MetadataFieldListener() {
+            @Override
+            public void matadataFieldValueChanged(Long daysSince, String value) {
+                if (value != null) {
+                    final MetadataFieldWidget fieldBox = fieldBoxes.get(metadataField);
+                    if (fieldBox != null) {
+                        final IsWidget labelWidget = fieldBox.getLabel();
+                        final Widget valueWidget = fieldBox.getWidget();
+                        labelWidget.asWidget().setVisible(value.matches(matchingRegex));
+                        valueWidget.setVisible(value.matches(matchingRegex));
+                    }
+                }
+                addText(existingValue);
+                if (daysSince != null) {
+                    addText(Long.toString(daysSince));
+                }
+            }
+
+            @Override
+            public MetadataField getMetadataField() {
+                return metadataField;
+            }
+
+            @Override
+            public MetadataField getMetadataFieldOther() {
+                return metadataFieldOther;
+            }
+        };
+        fieldBoxes.get(fieldListener.getMetadataFieldOther()).addMetadataFieldListener(fieldListener);
+    }
+
+    public void addField(final MetadataField metadataField, final String existingValue, String labelString) {
+        if (flexTable == null) {
+            flexTable = new FlexTable();
+            flexTable.setStylePrimaryName("metadataTable");
+            outerPanel.add(flexTable);
+        }
+        final int rowCount = flexTable.getRowCount();
+        final MetadataFieldWidget stimulusMetadataField = new MetadataFieldWidget(metadataField, null, existingValue, 0);
+
         flexTable.setWidget(rowCount, 0, stimulusMetadataField.getLabel());
         flexTable.setWidget(rowCount + 1, 0, stimulusMetadataField.getWidget());
 
