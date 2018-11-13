@@ -201,7 +201,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
 
     protected void allMetadataFields() {
         for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
-            ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel(), null, null);
+            ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel());
         }
     }
 
@@ -211,17 +211,17 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
     }
 
     protected void metadataFieldVisibilityDependant(final MetadataField metadataField, final MetadataField metadataFieldOther, final String matchingRegex) {
-        // todo: metadataFieldDependant fields are only shown when the linkedFieldName matches the matchingRegex
-        ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel(), localStorage.getUserIdList(metadataFieldOther), userResults.getUserData().getUserId());
+        // metadataFieldDependant fields are only shown when the linkedFieldName matches the matchingRegex
+        ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel(), metadataFieldOther, matchingRegex);
     }
 
     protected void metadataFieldDateTriggered(final MetadataField metadataField, final MetadataField metadataFieldOther, final int[] daysThresholds) {
-        // todo: daysThresholds indicates the index that should be selected based on the day age from metadataFieldOther
-        ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel(), localStorage.getUserIdList(metadataFieldOther), userResults.getUserData().getUserId());
+        // daysThresholds indicates the index that should be selected based on the day age from metadataFieldOther
+        ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel(), metadataFieldOther, daysThresholds);
     }
 
     protected void metadataField(MetadataField metadataField) {
-        ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel(), null, null);
+        ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel());
     }
 
     public void focusFirstTextBox() {
