@@ -17,6 +17,10 @@
  */
 package nl.mpi.tg.eg.experiment.client.view;
 
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -27,7 +31,10 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.TextBoxBase;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.user.client.ui.Widget;
+import java.util.ArrayList;
+import java.util.List;
 import nl.mpi.tg.eg.experiment.client.exception.MetadataFieldException;
+import nl.mpi.tg.eg.experiment.client.listener.MetadataFieldListener;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -48,6 +55,7 @@ public class MetadataFieldWidget implements StimulusFreeText {
     final private VerticalPanel labelPanel;
     final private int dataChannel;
     final DateOfBirthField dateOfBirthField;
+    final private List< MetadataFieldListener> metadataFieldListeners = new ArrayList<>();
 
     public MetadataFieldWidget(MetadataField metadataField, Stimulus stimulus, String initialValue, final int dataChannel) {
         this.metadataField = metadataField;
@@ -60,7 +68,12 @@ public class MetadataFieldWidget implements StimulusFreeText {
 //            final DateBox dateBox = new DateBox();
 //            dateBox.getDatePicker().setYearAndMonthDropdownVisible(true);
 //            dateBox.setFormat(new DateBox.DefaultFormat(dateFormat)); 
-            dateOfBirthField = new DateOfBirthField();
+            dateOfBirthField = new DateOfBirthField() {
+                @Override
+                void valueChanged() {
+                    triggerFieldListeners();
+                }
+            };
             focusWidget = dateOfBirthField.getTextBox();
             if (initialValue != null) {
                 dateOfBirthField.setDate(initialValue);
@@ -71,6 +84,12 @@ public class MetadataFieldWidget implements StimulusFreeText {
             label = new Label();
             focusWidget = new CheckBox(metadataField.getFieldLabel());
             ((CheckBox) focusWidget).setValue((initialValue == null) ? false : Boolean.parseBoolean(initialValue));
+            ((CheckBox) focusWidget).addValueChangeHandler(new ValueChangeHandler<Boolean>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<Boolean> event) {
+                    triggerFieldListeners();
+                }
+            });
             widget = focusWidget;
         } else if (metadataField.isListBox()) {
             dateOfBirthField = null;
@@ -89,6 +108,12 @@ public class MetadataFieldWidget implements StimulusFreeText {
                 }
             }
             ((ListBox) focusWidget).setSelectedIndex(selectedIndex);
+            ((ListBox) focusWidget).addChangeHandler(new ChangeHandler() {
+                @Override
+                public void onChange(ChangeEvent event) {
+                    triggerFieldListeners();
+                }
+            });
             widget = focusWidget;
         } else {
             dateOfBirthField = null;
@@ -99,6 +124,12 @@ public class MetadataFieldWidget implements StimulusFreeText {
                 focusWidget = new TextBox();
             }
             ((TextBoxBase) focusWidget).setText((initialValue == null) ? "" : initialValue);
+            ((TextBoxBase) focusWidget).addValueChangeHandler(new ValueChangeHandler<String>() {
+                @Override
+                public void onValueChange(ValueChangeEvent<String> event) {
+                    triggerFieldListeners();
+                }
+            });
             widget = focusWidget;
         }
         widget.setStylePrimaryName("metadataOK");
@@ -106,6 +137,19 @@ public class MetadataFieldWidget implements StimulusFreeText {
         labelPanel = new VerticalPanel();
         labelPanel.add(label);
         labelPanel.add(errorLabel);
+    }
+
+    private void triggerFieldListeners() {
+        if (!metadataFieldListeners.isEmpty()) {
+            String value = getValue();
+            Long daysSince = null;
+            if (dateOfBirthField != null) {
+                daysSince = dateOfBirthField.getDaysSince();
+            }
+            for (MetadataFieldListener metadataFieldListener : metadataFieldListeners) {
+                metadataFieldListener.matadataFieldValueChanged(daysSince, value);
+            }
+        }
     }
 
     @Override
