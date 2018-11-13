@@ -17,17 +17,25 @@
  */
 package nl.mpi.tg.eg.experiment.client.view;
 
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.event.dom.client.KeyPressEvent;
+import com.google.gwt.event.dom.client.KeyPressHandler;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.IntegerBox;
+import com.google.gwt.user.client.ui.TextBox;
+import java.util.Date;
 
 /**
  * @since Aug 23, 2016 5:02:34 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class DateOfBirthField extends HorizontalPanel {
+public abstract class DateOfBirthField extends HorizontalPanel {
 
     final DateTimeFormat dateFormat = DateTimeFormat.getFormat("dd/MM/yyyy");
     private final IntegerBox dayBox = new IntegerBox() { // todo: make this numerical only
@@ -41,7 +49,7 @@ public class DateOfBirthField extends HorizontalPanel {
 
     };
     private final ListBox monthSelect = new ListBox();
-    private final IntegerBox yearBox = new IntegerBox(); // todo: make this numerical only
+    private final TextBox yearBox = new TextBox();
 
     public DateOfBirthField() {
         int index = 0;
@@ -60,6 +68,33 @@ public class DateOfBirthField extends HorizontalPanel {
         this.add(dayBox);
         this.add(monthSelect);
         this.add(yearBox);
+        dayBox.addValueChangeHandler(new ValueChangeHandler<Integer>() {
+            @Override
+            public void onValueChange(ValueChangeEvent<Integer> event) {
+                valueChanged();
+            }
+        });
+        monthSelect.addChangeHandler(new ChangeHandler() {
+            @Override
+            public void onChange(ChangeEvent event) {
+                valueChanged();
+            }
+        });
+        yearBox.addValueChangeHandler(new ValueChangeHandler<String>() {
+            @Override
+            public void onValueChange(ValueChangeEvent<String> event) {
+                valueChanged();
+            }
+        });
+        yearBox.addKeyPressHandler(new KeyPressHandler() {
+            @Override
+            public void onKeyPress(KeyPressEvent event) {
+                final char charCode = event.getCharCode();
+                if (0 > "0123456789".indexOf(charCode)) {
+                    event.getNativeEvent().preventDefault();
+                }
+            }
+        });
         return dayBox;
     }
 
@@ -69,7 +104,7 @@ public class DateOfBirthField extends HorizontalPanel {
             if (splitString.length == 3) {
                 monthSelect.setSelectedIndex(Integer.parseInt(splitString[1]));
                 dayBox.setValue(Integer.parseInt(splitString[0]));
-                yearBox.setValue(Integer.parseInt(splitString[2]));
+                yearBox.setValue(splitString[2]);
             }
         }
     }
@@ -89,11 +124,18 @@ public class DateOfBirthField extends HorizontalPanel {
                     + "/"
                     + yearBox.getValue(); // do not pad the year so that the date validator can check it
 //                DateOfBirthField.this.add(new Label(formattedDate));
-            dateFormat.parseStrict(formattedDate);
             return formattedDate;
         } catch (IllegalArgumentException exception) {
 //                DateOfBirthField.this.add(new Label(exception.getMessage()));
             return "";
         }
     }
+
+    public long getDaysSince() {
+        final Date parseStrict = dateFormat.parseStrict(getValue());
+        long diffMs = new Date().getTime() - parseStrict.getTime();
+        return (diffMs / (1000 * 60 * 60 * 24));
+    }
+
+    abstract void valueChanged();
 }
