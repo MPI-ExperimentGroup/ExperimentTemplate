@@ -58,6 +58,13 @@ public class SentenceComprehensionPicturesStimuliFromString {
             } else {
                 item = item.trim();
             }
+            
+            String gender = record.get("Gender");
+            if (gender == null) {
+                throw new IOException("Gender is undefined");
+            } else {
+                gender = gender.trim();
+            }
 
             String logFrequency = record.get("Log_frequency");
             if (logFrequency == null) {
@@ -75,14 +82,15 @@ public class SentenceComprehensionPicturesStimuliFromString {
             }
 
             String correctResponse = record.get("Correct_response");
+            String correctResponseButton;
             if (correctResponse == null) {
                 throw new IOException("Correct_response is undefined");
             }
             if (correctResponse.trim().equals("left")) {
-                correctResponse = "Z";
+                correctResponseButton = "Z";
             } else {
                 if (correctResponse.trim().equals("right")) {
-                    correctResponse = "M";
+                    correctResponseButton = "M";
                 } else {
                     throw new IOException("Correct_response is defined incorrectly");
                 }
@@ -106,8 +114,8 @@ public class SentenceComprehensionPicturesStimuliFromString {
             String imagePath = pictureStimuliDir + picture;
             String uniqueId = "part1_" + trialNumber + "_" + item;
             String label = item;
-            String tags = "part1  target_frequency_" + logFrequency + " syllables_" + syllables;
-            String currentSt = this.makePictureStimulusString(uniqueId, label, correctResponse, imagePath, tags);
+            String tags = "part1 Item_"+item+" Gender_"+gender+" Target_frequency_" + logFrequency + " Syllables_" + syllables+" CorectResponses_" + correctResponse;
+            String currentSt = this.makePictureStimulusString(uniqueId, label, correctResponseButton, imagePath, tags);
             builder.append(currentSt);
 
         }
@@ -233,14 +241,15 @@ public class SentenceComprehensionPicturesStimuliFromString {
             }
 
             String correctResponse = record.get("Correct_response");
+            String correctResponseButton;
             if (correctResponse == null) {
                 throw new IOException("Correct_response is undefined");
             }
             if (correctResponse.trim().equals("left")) {
-                correctResponse = "Z";
+                correctResponseButton = "Z";
             } else {
                 if (correctResponse.trim().equals("right")) {
-                    correctResponse = "M";
+                    correctResponseButton = "M";
                 } else {
                     throw new IOException("Correct_response is defined incorrectly");
                 }
@@ -307,19 +316,23 @@ public class SentenceComprehensionPicturesStimuliFromString {
             String label = item;
 
             //Gender,Log_frequency_target,Log_frequency_distractor,Syllables_target,Syllables_distractor,Position_target,determiner_onset,target_onset,Timer
-            String tags = "part2 " + positionTarget + 
-                    " condition_" +condition +
-                    " gender_" + gender + "  Log_frequency_target_" + logFrequencyTarget
-                    + "  Log_frequency_distractor_" + logFrequencyDistractor
+            String tags = "part2 " + positionTarget
+                    + " Condition_" +condition 
+                    + " Item_" +item 
+                    + " Gender_" + gender + " Log_frequency_target_" + logFrequencyTarget
+                    + " Log_frequency_distractor_" + logFrequencyDistractor
                     + " Syllables_target_" + syllablesTarget
                     + " Syllables_distractor_" + syllablesDistractor
+                    + " Picture_target_" + pictureTarget.substring(0, pictureTarget.length()-4)
+                    + " Picture_distractor_" + pictureDistractor.substring(0, pictureDistractor.length()-4)
                     + " Position_target_" + positionTarget
                     + " determiner_onset_" + determinerOnset
                     + " target_onset_" + targetOnset
-                    + " timer_" + timer;
+                    + " Timer_" + timer
+                    + " CorrectResponse_" + correctResponse.trim();
 
             String audioPath = audioStimuliDir + audio;
-            String currentSt = this.makeAudioPictureStimulusString(uniqueId, label, correctResponse, audioPath, uniqueId, tags);
+            String currentSt = this.makeAudioPictureStimulusString(uniqueId, label, correctResponseButton, audioPath, uniqueId, tags);
             builder.append(currentSt);
 
         }
