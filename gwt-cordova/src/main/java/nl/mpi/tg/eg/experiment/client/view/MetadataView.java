@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experiment.client.view;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.FocusWidget;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
@@ -58,23 +59,27 @@ public class MetadataView extends ComplexView {
         errorText.setStylePrimaryName("metadataErrorMessage");
     }
 
-    public void addField(final MetadataField metadataField, final String existingValue, String labelString, List<UserLabelData> otherUsersList, UserId selectedUser) {
-        addField(metadataField, existingValue, labelString);
+    public void addField(final MetadataField metadataField, final String existingValue, final String labelString, final List<UserLabelData> allUsersList, final List<UserId> selectedUsers, final boolean oneToMany) {
+        MetadataFieldWidget stimulusMetadataField = addField(metadataField, existingValue, labelString);
         final int rowCount = flexTable.getRowCount();
-        if (otherUsersList != null) {
+        if (allUsersList != null) {
             ListBox listBox = new ListBox();
-            int selectedIndex = 0;
-            int itemCounter = 0;
-            ((ListBox) listBox).addItem(""); // make sure there is an empty item at the top of the list
-            for (UserLabelData userLabelData : otherUsersList) {
+            listBox.setMultipleSelect(oneToMany);
+            if (!oneToMany) {
+                ((ListBox) listBox).addItem(""); // make sure there is an empty item at the top of the list
+            }
+            for (UserLabelData userLabelData : allUsersList) {
                 listBox.addItem(userLabelData.getUserName(), userLabelData.getUserId().toString());
-                itemCounter++;
-                if (selectedUser != null && selectedUser.equals(userLabelData.getUserId())) {
-                    selectedIndex = itemCounter;
+                if (selectedUsers.contains(userLabelData.getUserId())) {
+                    final int index = listBox.getItemCount() - 1;
+                    // allowing multiple selections here 
+                    listBox.setItemSelected(index, true);
                 }
             }
-            listBox.setSelectedIndex(selectedIndex);
-            flexTable.setWidget(rowCount - 1, 1, listBox);
+            HorizontalPanel fieldPanel = new HorizontalPanel();
+            fieldPanel.add(stimulusMetadataField.getWidget());
+            fieldPanel.add(listBox);
+            flexTable.setWidget(rowCount - 1, 0, fieldPanel);
             fieldConnections.put(metadataField, listBox);
         }
     }
@@ -148,7 +153,7 @@ public class MetadataView extends ComplexView {
         fieldBoxes.get(fieldListener.getMetadataFieldOther()).addMetadataFieldListener(fieldListener);
     }
 
-    public void addField(final MetadataField metadataField, final String existingValue, String labelString) {
+    public MetadataFieldWidget addField(final MetadataField metadataField, final String existingValue, String labelString) {
         if (flexTable == null) {
             flexTable = new FlexTable();
             flexTable.setStylePrimaryName("metadataTable");
@@ -187,6 +192,7 @@ public class MetadataView extends ComplexView {
         if (firstTextBox == null) {
             firstTextBox = stimulusMetadataField.getFocusWidget();
         }
+        return stimulusMetadataField;
     }
 
     public void focusFirstTextBox() {
@@ -207,9 +213,17 @@ public class MetadataView extends ComplexView {
         return fieldBoxes.get(metadataField).getValue();
     }
 
-    public UserId getFieldConnection(MetadataField metadataField) throws UserIdException {
+    public List<UserId> getFieldConnection(MetadataField metadataField) throws UserIdException {
+        List<UserId> selectedUserIds = new ArrayList<>();
         final ListBox listBox = fieldConnections.get(metadataField);
-        return (listBox != null) ? new UserId(listBox.getSelectedValue()) : null;
+        if (listBox != null) {
+            for (int index = 0; index < listBox.getItemCount(); index++) {
+                if (listBox.isItemSelected(index)) {
+                    selectedUserIds.add(new UserId(listBox.getValue(index)));
+                }
+            }
+        }
+        return selectedUserIds;
     }
 
     public void showFieldError(MetadataField metadataField) {
