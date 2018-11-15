@@ -162,8 +162,8 @@ public class MetadataFieldWidget implements StimulusFreeText {
     }
 
     @Override
-    public FocusWidget getFocusWidget() {
-        return focusWidget;
+    public void setFocus(boolean wantsFocus) {
+        focusWidget.setFocus(wantsFocus);
     }
 
     public Widget getWidget() {
