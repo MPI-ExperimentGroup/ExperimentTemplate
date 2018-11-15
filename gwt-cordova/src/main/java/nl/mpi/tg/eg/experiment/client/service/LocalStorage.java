@@ -260,9 +260,13 @@ public class LocalStorage {
         if (dataStore != null) {
             for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
                 userData.setMetadataValue(metadataField, getCleanStoredData(getUSER_RESULTS(userData.getUserId(), metadataField.getPostName())));
-                final String cleanedUserId = getCleanStoredData(getUSER_RESULTS_CONNECTION(userData.getUserId(), metadataField.getPostName()));
-                if (cleanedUserId != null && !cleanedUserId.isEmpty()) {
-                    userData.setMetadataConnection(metadataField, new UserId(cleanedUserId));
+                final String cleanedUserIds = getCleanStoredData(getUSER_RESULTS_CONNECTION(userData.getUserId(), metadataField.getPostName()));
+                if (cleanedUserIds != null && !cleanedUserIds.isEmpty()) {
+                    List<UserId> userIdList = new ArrayList<>();
+                    for (String cleanedUserId : cleanedUserIds.split(",")) {
+                        userIdList.add(new UserId(cleanedUserId));
+                    }
+                    userData.setMetadataConnection(metadataField, userIdList);
                 }
             }
         }
@@ -332,9 +336,16 @@ public class LocalStorage {
         if (dataStore != null) {
             for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
                 dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), metadataField.getPostName()), userResults.getUserData().getMetadataValue(metadataField));
-                final UserId metadataConnection = userResults.getUserData().getMetadataConnection(metadataField);
-                if (metadataConnection != null && !metadataConnection.toString().isEmpty()) {
-                    dataStore.setItem(getUSER_RESULTS_CONNECTION(userResults.getUserData().getUserId(), metadataField.getPostName()), metadataConnection.toString());
+                final List<UserId> metadataConnections = userResults.getUserData().getMetadataConnection(metadataField);
+                if (metadataConnections != null && !metadataConnections.isEmpty()) {
+                    String metadataConnectionString = "";
+                    for (UserId userId : metadataConnections) {
+                        if (metadataConnectionString.length() > 0) {
+                            metadataConnectionString += ",";
+                        }
+                        metadataConnectionString += userId.toString();
+                    }
+                    dataStore.setItem(getUSER_RESULTS_CONNECTION(userResults.getUserData().getUserId(), metadataField.getPostName()), metadataConnectionString);
                 } else {
                     dataStore.removeItem(getUSER_RESULTS_CONNECTION(userResults.getUserData().getUserId(), metadataField.getPostName()));
                 }
