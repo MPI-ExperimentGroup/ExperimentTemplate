@@ -47,6 +47,19 @@ public abstract class DateOfBirthField extends HorizontalPanel {
             yearBox.setStylePrimaryName(style);
         }
 
+        @Override
+        public void setFocus(boolean focused) {
+            if (yearBox.getValue().length() != 4) {
+                yearBox.setFocus(focused);
+                return;
+            }
+            final int monthInteger = Integer.parseInt(monthSelect.getSelectedValue());
+            if (monthInteger < 1 || monthInteger > 12) {
+                monthSelect.setFocus(focused);
+                return;
+            }
+            super.setFocus(focused);
+        }
     };
     private final ListBox monthSelect = new ListBox();
     private final TextBox yearBox = new TextBox();
@@ -115,6 +128,9 @@ public abstract class DateOfBirthField extends HorizontalPanel {
             final Integer dayInteger = dayBox.getValue();
             final int monthInteger = Integer.parseInt(monthSelect.getSelectedValue());
             if (dayInteger == null) {
+                return "";
+            }
+            if (dayInteger < 1 || dayInteger > 31 || monthInteger < 1 || monthInteger > 12) {
                 return "";
             }
             final String formattedDate
