@@ -17,10 +17,10 @@
  */
 package nl.mpi.tg.eg.experiment.client.model;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
-import nl.mpi.tg.eg.experiment.client.exception.MetadataFieldException;
-import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 
 /**
  * @since Mar 10, 2015 11:11:43 AM (creation date)
@@ -29,7 +29,7 @@ import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 public class UserData {
 
     private final HashMap<MetadataField, String> metadataValues = new HashMap<>();
-    private final HashMap<MetadataField, UserId> metadataConnections = new HashMap<>();
+    private final HashMap<MetadataField, List<UserId>> metadataConnections = new HashMap<>();
     private final UserId userId;
     private int gamesPlayed = 0;
     private int totalScore = 0;
@@ -68,7 +68,7 @@ public class UserData {
         metadataValues.put(metadataField, value);
     }
 
-    public void setMetadataConnection(MetadataField metadataField, UserId value) {
+    public void setMetadataConnection(MetadataField metadataField, List<UserId> value) {
         if (value != null && !value.toString().isEmpty()) {
             metadataConnections.put(metadataField, value);
         }
@@ -79,9 +79,9 @@ public class UserData {
         return (returnString == null) ? "" : returnString;
     }
 
-    public UserId getMetadataConnection(MetadataField metadataField) {
-        final UserId returnString = metadataConnections.get(metadataField);
-        return (returnString == null) ? null : returnString;
+    public List<UserId> getMetadataConnection(MetadataField metadataField) {
+        final List<UserId> returnList = metadataConnections.get(metadataField);
+        return (returnList == null) ? Collections.EMPTY_LIST : returnList;
     }
 
     public Set<MetadataField> getMetadataFields() {
