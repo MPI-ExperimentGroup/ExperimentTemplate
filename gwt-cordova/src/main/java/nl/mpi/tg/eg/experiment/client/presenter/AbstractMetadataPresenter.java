@@ -18,9 +18,9 @@
 package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.core.client.JsArray;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import java.util.List;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.view.MetadataView;
@@ -129,7 +129,7 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
             String fieldString = ((MetadataView) simpleView).getFieldValue(fieldName);
             userResults.getUserData().setMetadataValue(fieldName, fieldString);
             try {
-                UserId fieldConnection = ((MetadataView) simpleView).getFieldConnection(fieldName);
+                List<UserId> fieldConnection = ((MetadataView) simpleView).getFieldConnection(fieldName);
                 userResults.getUserData().setMetadataConnection(fieldName, fieldConnection);
             } catch (UserIdException exception) {
                 // this should not occur since the field value should have originated from a UserId instance
@@ -205,9 +205,9 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
         }
     }
 
-    protected void metadataFieldConnection(final MetadataField metadataField, final MetadataField metadataFieldOther, final boolean oneToMany) {
-        // todo: oneToMany determines cardinality so that when the field is populated another will be offered so that lists of data can be entered for a given field
-        ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel(), localStorage.getUserIdList(metadataFieldOther), userResults.getUserData().getUserId());
+    protected void metadataFieldConnection(final MetadataField metadataField, final MetadataField metadataFieldLabel, final boolean oneToMany) {
+        // oneToMany determines cardinality so that multiple other userId can be entered for a given field
+        ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel(), localStorage.getUserIdList(metadataFieldLabel), userResults.getUserData().getMetadataConnection(metadataField), oneToMany);
     }
 
     protected void metadataFieldVisibilityDependant(final MetadataField metadataField, final MetadataField metadataFieldOther, final String matchingRegex) {
