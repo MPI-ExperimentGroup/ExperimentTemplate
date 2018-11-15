@@ -31,12 +31,18 @@
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="age"/>
         <metadataField fieldName="gender"/>
-        <metadataField fieldName="dateOfBirth"/>
         <metadataField fieldName="education"/>
         <metadataFieldVisibilityDependant fieldName="educationOther" linkedFieldName="education" matchingRegex="anders"/>
-        <metadataFieldConnection fieldName="connection" linkedFieldName="dateOfBirth" oneToMany="false"/>
-        <metadataFieldConnection fieldName="connections" linkedFieldName="dateOfBirth" oneToMany="true"/>
+        <metadataFieldConnection fieldName="connection" linkedFieldName="workerId" oneToMany="false"/>
+        <metadataFieldConnection fieldName="connections" linkedFieldName="workerId" oneToMany="true"/>
+        <metadataField fieldName="dateOfBirth"/>
         <metadataFieldDateTriggered fieldName="ageGroup" linkedFieldName="dateOfBirth" daysThresholds="50 100 200 400 500 600 800 1000"/>
+        <addPadding/>
+        <htmlText featureText="When a dateOfBirth is entered the Instapset dropdown will jump to the age group specified in the daysThresholds attribute. This dropdown can then be editied as required."/>        
+        <htmlText featureText="The restulting value of Instapset can then be used in a menu presenter to jump to the relevant section of the experiment."/>
+        <addPadding/>
+        <htmlText featureText="When Opleidingsniveau is equal to anders the extra field educationOther will be shown."/>        
+        <addPadding/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
             <onError/>
             <onSuccess>
@@ -965,6 +971,28 @@
                     <gotoPresenter target="showOnBackButton"/>
                 </actionButton>
                 <targetButton featureText="Menu" target="Menu"/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>RecorderPauseTest</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Menu" menuLabel="enter in the text box" type="stimulus" self="enter_in_the_text_box" title="enter in the text box">
+        <loadStimulus eventTag="enter_in_the_text_box" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <htmlText featureText="This demonstration screen allows the user to press enter in the text box to go to the next stimulus.&lt;br/&gt;"/> 
+                <htmlText featureText="In this example at least two letters and only the wetuiopasfghknm letters can be typed.&lt;br/&gt;"/> 
+                <stimulusLabel styleName="stimuliLabel"/>
+                <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
+                <nextStimulusButton featureText="Next [ENTER]" eventTag="Next" hotKey="ENTER" repeatIncorrect="false"/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="showOnBackButton"/>
+                    <gotoPresenter target="showOnBackButton"/>
+                </actionButton>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
