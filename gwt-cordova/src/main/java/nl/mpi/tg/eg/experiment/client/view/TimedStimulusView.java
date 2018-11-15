@@ -375,8 +375,8 @@ public class TimedStimulusView extends ComplexView {
             }
 
             @Override
-            public FocusWidget getFocusWidget() {
-                return textBox;
+            public void setFocus(boolean wantsFocus) {
+                textBox.setFocus(wantsFocus);
             }
 
         };
