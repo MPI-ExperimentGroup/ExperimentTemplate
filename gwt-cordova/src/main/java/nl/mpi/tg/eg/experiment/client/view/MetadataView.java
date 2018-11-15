@@ -45,7 +45,7 @@ public class MetadataView extends ComplexView {
     final private HashMap<MetadataField, MetadataFieldWidget> fieldBoxes;
     final private HashMap<MetadataField, ListBox> fieldConnections;
     final private ArrayList<MetadataField> orderedFields;
-    private FocusWidget firstTextBox = null;
+    private MetadataFieldWidget firstTextBox = null;
     private final Label errorText;
     private final VerticalPanel keyboardPadding;
 
@@ -190,7 +190,7 @@ public class MetadataView extends ComplexView {
         fieldBoxes.put(metadataField, stimulusMetadataField);
         orderedFields.add(metadataField);
         if (firstTextBox == null) {
-            firstTextBox = stimulusMetadataField.getFocusWidget();
+            firstTextBox = stimulusMetadataField;
         }
         return stimulusMetadataField;
     }
@@ -237,7 +237,7 @@ public class MetadataView extends ComplexView {
                 break;
             }
         }
-        fieldBoxes.get(metadataField).getFocusWidget().setFocus(true);
+        fieldBoxes.get(metadataField).setFocus(true);
     }
 
     public void setButtonError(boolean isError, ButtonBase button, String errorMessage) {
