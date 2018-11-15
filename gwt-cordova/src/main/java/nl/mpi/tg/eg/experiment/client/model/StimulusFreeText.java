@@ -17,7 +17,6 @@
  */
 package nl.mpi.tg.eg.experiment.client.model;
 
-import com.google.gwt.user.client.ui.FocusWidget;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
@@ -38,5 +37,5 @@ public interface StimulusFreeText {
 
     public int getDataChannel();
 
-    public FocusWidget getFocusWidget();
+    public void setFocus(boolean wantsFocus);
 }
