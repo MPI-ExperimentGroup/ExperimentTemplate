@@ -1301,8 +1301,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
 
             @Override
-            public FocusWidget getFocusWidget() {
-                return null;
+            public void setFocus(boolean wantsFocus) {
             }
         };
         ratingButtons(ratingEventListners, ratingLabelLeft, ratingLabelRight, false, styleName, buttonGroupName, stimulusFreeText.getValue(), buttonGroup);
@@ -1757,9 +1756,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
             if (!stimulusFreeText.isValid()) {
-                if (stimulusFreeText.getFocusWidget() != null) {
-                    stimulusFreeText.getFocusWidget().setFocus(true);
-                }
+                stimulusFreeText.setFocus(true);
                 return false;
             }
         }
