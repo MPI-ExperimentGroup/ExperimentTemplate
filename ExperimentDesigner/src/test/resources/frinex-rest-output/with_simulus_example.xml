@@ -16,7 +16,7 @@
         <field controlledMessage="." controlledRegex=".*" postName="connection" preventServerDuplicates="false" registrationField="Connection"/>
         <field controlledMessage="." controlledRegex=".*" postName="connections" preventServerDuplicates="false" registrationField="Connections"/>
         <field controlledMessage="Voer een getal in." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="dateOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
-        <field controlledMessage="." controlledRegex="|Set 1 Instapset 2;3-2;5 jaar|Set 2 Instapset 2;6-2;11 jaar|Set 3 Instapset 3;0-3;11 jaar|Set 4 Instapset 4;0-4;5 jaar|Set 5 Instapset 4;6-5;5 jaar|Set 6 Instapset 5;6-6;5 jaar|Set 7 Instapset 6;6-7;11 jaar|Set 8 Instapset 8;0-9;11 jaar|Set 9 Instapset 10;0-10;11 jaar|Set 10 Instapset 11;0 - 13;11 jaar|Set 11 Instapset 14;0 - 15;11 jaar|Set 13 Instapset 16;0 - 35;11 jaar|Set 14 Instapset 36;0 - 90;0 jaar" postName="ageGroup" preventServerDuplicates="false" registrationField="Instapset"/>
+        <field controlledMessage="." controlledRegex="|Set 1 Instapset 2;3-2;5 jaar|Set 2 Instapset 2;6-2;11 jaar|Set 3 Instapset 3;0-3;11 jaar|Set 4 Instapset 4;0-4;5 jaar|Set 5 Instapset 4;6-5;5 jaar|Set 6 Instapset 5;6-6;5 jaar|Set 7 Instapset 6;6-7;11 jaar|Set 8 Instapset 8;0-9;11 jaar|Set 9 Instapset 10;0-10;11 jaar|Set 10 Instapset 11;0 - 13;11 jaar" postName="ageGroup" preventServerDuplicates="false" registrationField="Instapset"/>
         <field controlledMessage="." controlledRegex=".*" postName="item" preventServerDuplicates="false" registrationField="item"/>
     </metadata>
     <presenter back="Menu" menuLabel="Terug" next="Informatie" type="metadata" self="Toestemming" title="Toestemming">
@@ -27,7 +27,7 @@
         <htmlText featureText="Beste deelnemer, &lt;br/&gt;Bedankt dat je mee wilt doen aan dit onderzoek! &lt;br/&gt;&lt;br/&gt;"/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Gegevens"/>
     </presenter>
-    <presenter back="Informatie" menuLabel="Terug" next="With_Stimuli_Screen" type="metadata" self="Gegevens" title="Gegevens">
+    <presenter back="Informatie" menuLabel="Gegevens" next="Metadata_Jump_Test" type="metadata" self="Gegevens" title="Gegevens">
         <metadataField fieldName="workerId"/>
         <metadataField fieldName="age"/>
         <metadataField fieldName="gender"/>
@@ -39,16 +39,119 @@
         <metadataFieldDateTriggered fieldName="ageGroup" linkedFieldName="dateOfBirth" daysThresholds="50 100 200 400 500 600 800 1000"/>
         <addPadding/>
         <htmlText featureText="When a dateOfBirth is entered the Instapset dropdown will jump to the age group specified in the daysThresholds attribute. This dropdown can then be editied as required."/>        
-        <htmlText featureText="The restulting value of Instapset can then be used in a menu presenter to jump to the relevant section of the experiment."/>
+        <htmlText featureText="The restulting value of Instapset can then be used in the following presenter to jump to the relevant section of the experiment."/>
         <addPadding/>
         <htmlText featureText="When Opleidingsniveau is equal to anders the extra field educationOther will be shown."/>        
         <addPadding/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
             <onError/>
-            <onSuccess>
+            <onSuccess> 
                 <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
+    </presenter>
+    <presenter back="Gegevens" menuLabel="Metadata Jump Test" type="stimulus" self="Metadata_Jump_Test" title="Metadata Jump Test">
+        <htmlText featureText="When a ageGroup contains a value in the menu below the associated presenter will be shown and this menu skipped."/>
+        <hasMetadataValue fieldName="ageGroup" matchingRegex="Set 1 Instapset 2;3-2;5 jaar">
+            <conditionTrue>
+                <gotoPresenter target="Metadata_Jump_Test_Target_1"/>
+            </conditionTrue>
+            <conditionFalse>
+            </conditionFalse>
+        </hasMetadataValue>
+        <hasMetadataValue fieldName="ageGroup" matchingRegex="Set 2 Instapset 2;6-2;11 jaar">
+            <conditionTrue>
+                <gotoPresenter target="Metadata_Jump_Test_Target_2"/>
+            </conditionTrue>
+            <conditionFalse>
+            </conditionFalse>
+        </hasMetadataValue>
+        <hasMetadataValue fieldName="ageGroup" matchingRegex="Set 3 Instapset 3;0-3;11 jaar">
+            <conditionTrue>
+                <gotoPresenter target="Metadata_Jump_Test_Target_3"/>
+            </conditionTrue>
+            <conditionFalse>
+            </conditionFalse>
+        </hasMetadataValue>
+        <hasMetadataValue fieldName="ageGroup" matchingRegex="Set 4 Instapset 4;0-4;5 jaar">
+            <conditionTrue>
+                <gotoPresenter target="Metadata_Jump_Test_Target_4"/>
+            </conditionTrue>
+            <conditionFalse>
+            </conditionFalse>
+        </hasMetadataValue>
+        <hasMetadataValue fieldName="ageGroup" matchingRegex="Set 5 Instapset 4;6-5;5 jaar">
+            <conditionTrue>
+                <gotoPresenter target="Metadata_Jump_Test_Target_5"/>
+            </conditionTrue>
+            <conditionFalse>
+            </conditionFalse>
+        </hasMetadataValue>
+        <hasMetadataValue fieldName="ageGroup" matchingRegex="Set 6 Instapset 5;6-6;5 jaar">
+            <conditionTrue>
+                <gotoPresenter target="Metadata_Jump_Test_Target_6"/>
+            </conditionTrue>
+            <conditionFalse>
+            </conditionFalse>
+        </hasMetadataValue>
+        <hasMetadataValue fieldName="ageGroup" matchingRegex="Set 7 Instapset 6;6-7;11 jaar">
+            <conditionTrue>
+                <gotoPresenter target="Metadata_Jump_Test_Target_7"/>
+            </conditionTrue>
+            <conditionFalse>
+            </conditionFalse>
+        </hasMetadataValue>
+        <hasMetadataValue fieldName="ageGroup" matchingRegex="Set 8 Instapset 8;0-9;11 jaar">
+            <conditionTrue>
+                <gotoPresenter target="Metadata_Jump_Test_Target_8"/>
+            </conditionTrue>
+            <conditionFalse>
+            </conditionFalse>
+        </hasMetadataValue>
+        <hasMetadataValue fieldName="ageGroup" matchingRegex="Set 9 Instapset 10;0-10;11 jaar">
+            <conditionTrue>
+                <gotoPresenter target="Metadata_Jump_Test_Target_9"/>
+            </conditionTrue>
+            <conditionFalse>
+            </conditionFalse>
+        </hasMetadataValue>
+        <hasMetadataValue fieldName="ageGroup" matchingRegex="Set 10 Instapset 11;0 - 13;11 jaar">
+            <conditionTrue>
+                <gotoPresenter target="Metadata_Jump_Test_Target_10"/>
+            </conditionTrue>
+            <conditionFalse>
+            </conditionFalse>
+        </hasMetadataValue>      
+    </presenter>
+    <presenter back="Gegevens" menuLabel="Metadata Jump Test Target 1" type="menu" self="Metadata_Jump_Test_Target_1" title="Metadata Jump Test Target 1">
+        <htmlText featureText="Metadata Jump Test Target 1."/>
+    </presenter>
+    <presenter back="Gegevens" menuLabel="Metadata Jump Test Target 2" type="menu" self="Metadata_Jump_Test_Target_2" title="Metadata Jump Test Target 2">
+        <htmlText featureText="Metadata Jump Test Target 2."/>
+    </presenter>
+    <presenter back="Gegevens" menuLabel="Metadata Jump Test Target 3" type="menu" self="Metadata_Jump_Test_Target_3" title="Metadata Jump Test Target 3">
+        <htmlText featureText="Metadata Jump Test Target 3."/>
+    </presenter>
+    <presenter back="Gegevens" menuLabel="Metadata Jump Test Target 4" type="menu" self="Metadata_Jump_Test_Target_4" title="Metadata Jump Test Target 4">
+        <htmlText featureText="Metadata Jump Test Target 4."/>
+    </presenter>
+    <presenter back="Gegevens" menuLabel="Metadata Jump Test Target 5" type="menu" self="Metadata_Jump_Test_Target_5" title="Metadata Jump Test Target 5">
+        <htmlText featureText="Metadata Jump Test Target 5."/>
+    </presenter>
+    <presenter back="Gegevens" menuLabel="Metadata Jump Test Target 6" type="menu" self="Metadata_Jump_Test_Target_6" title="Metadata Jump Test Target 6">
+        <htmlText featureText="Metadata Jump Test Target 6."/>
+    </presenter>
+    <presenter back="Gegevens" menuLabel="Metadata Jump Test Target 7" type="menu" self="Metadata_Jump_Test_Target_7" title="Metadata Jump Test Target 7">
+        <htmlText featureText="Metadata Jump Test Target 7."/>
+    </presenter>
+    <presenter back="Gegevens" menuLabel="Metadata Jump Test Target 8" type="menu" self="Metadata_Jump_Test_Target_8" title="Metadata Jump Test Target 8">
+        <htmlText featureText="Metadata Jump Test Target 8."/>
+    </presenter>
+    <presenter back="Gegevens" menuLabel="Metadata Jump Test Target 9" type="menu" self="Metadata_Jump_Test_Target_9" title="Metadata Jump Test Target 9">
+        <htmlText featureText="Metadata Jump Test Target 9."/>
+    </presenter>
+    <presenter back="Gegevens" menuLabel="Metadata Jump Test Target 10" type="menu" self="Metadata_Jump_Test_Target_10" title="Metadata Jump Test Target 10">
+        <htmlText featureText="Metadata Jump Test Target 10."/>
     </presenter>
     <presenter back="Menu" menuLabel="Nested Table Test" type="text" self="First_Stimuli_Screen_Informatie" title="Nested Table Test">
         <htmlText featureText="Instructies 1: &lt;br/&gt;&lt;br/&gt;Druk op [Z] als de zin kompleet is, of op [.]."/>
