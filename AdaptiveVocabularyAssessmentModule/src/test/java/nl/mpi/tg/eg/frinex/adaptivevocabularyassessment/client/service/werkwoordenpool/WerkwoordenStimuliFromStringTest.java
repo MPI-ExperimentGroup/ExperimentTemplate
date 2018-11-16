@@ -23,6 +23,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -52,6 +53,7 @@ public class WerkwoordenStimuliFromStringTest {
     /**
      * Test of parseTrialsAudioPicturesStringIntoXml method, of class WerkwoordenStimuliFromString.
      */
+    @Ignore
     @Test
     public void testParseTrialsAudioPicturesStringIntoXml() throws Exception {
         System.out.println("parseTrialsAudioPicturesStringIntoXml");
