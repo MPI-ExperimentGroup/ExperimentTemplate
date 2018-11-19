@@ -141,13 +141,13 @@
                                             <mediaLoadFailed/>
                                             <mediaPlaybackComplete>
                                                 <addPadding/>
-                                                <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                                <stimulusAudio msToNext="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackComplete/>
                                                 </stimulusAudio>
                                                 <actionButton featureText="Play Sound" styleName="hiddenTopRight">
-                                                    <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                                    <stimulusAudio msToNext="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                         <mediaLoaded/>
                                                         <mediaLoadFailed/>
                                                         <mediaPlaybackComplete/>
@@ -202,13 +202,13 @@
                                 <mediaPlaybackComplete/>
                             </stimulusPresent>
                             <addPadding/>
-                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                            <stimulusAudio msToNext="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete/>
                             </stimulusAudio>
                             <actionButton featureText="Play Sound" styleName="hiddenTopRight">
-                                <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <stimulusAudio msToNext="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                     <mediaLoaded/>
                                     <mediaLoadFailed/>
                                     <mediaPlaybackComplete/>
@@ -230,13 +230,13 @@
                                 <mediaPlaybackComplete/>
                             </stimulusPresent>
                             <addPadding/>
-                            <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                            <stimulusAudio msToNext="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete/>
                             </stimulusAudio>
                             <actionButton featureText="Play Sound" styleName="hiddenTopRight">
-                                <stimulusAudio msToNext="0" showPlaybackIndicator="false">
+                                <stimulusAudio msToNext="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                     <mediaLoaded/>
                                     <mediaLoadFailed/>
                                     <mediaPlaybackComplete/>
@@ -251,13 +251,13 @@
                 </matchingStimulusGrid>
                 <addPadding/>
                 <actionButton featureText="Play Sound" styleName="hiddenTopRight">
-                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_question" showPlaybackIndicator="false">
+                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_question" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                         <mediaLoaded/>
                         <mediaLoadFailed/>
                         <mediaPlaybackComplete/>
                     </stimulusCodeAudio>
                 </actionButton>
-                <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_question" showPlaybackIndicator="false">
+                <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_question" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
