@@ -58,7 +58,7 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusAudio msToNext="100" showPlaybackIndicator="false">
+                <stimulusAudio msToNext="100" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete>
@@ -104,14 +104,14 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusCodeAudio msToNext="100" codeFormat="&lt;code&gt;" showPlaybackIndicator="false">
+                <stimulusCodeAudio msToNext="100" codeFormat="&lt;code&gt;" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete>
                         <clearPage/>
                         <centrePage/>
                         <pause msToNext="100">
-                            <stimulusAudio msToNext="100" showPlaybackIndicator="false">
+                            <stimulusAudio msToNext="100" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -153,7 +153,7 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusAudio msToNext="100" showPlaybackIndicator="false">
+                <stimulusAudio msToNext="100" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete>
