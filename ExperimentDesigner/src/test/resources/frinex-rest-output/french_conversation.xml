@@ -46,7 +46,7 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusAudio msToNext="100" showPlaybackIndicator="false">
+                <stimulusAudio msToNext="100" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete>
