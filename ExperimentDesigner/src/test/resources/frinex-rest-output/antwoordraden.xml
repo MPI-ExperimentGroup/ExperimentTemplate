@@ -54,7 +54,7 @@
                         <actionButton featureText="volgende [ spatiebalk ]" hotKey="SPACE">
                             <clearPage/>
                             <pause msToNext="500">
-                                <stimulusCodeAudio msToNext="0" codeFormat="static/practice/wav/&lt;code&gt;" showPlaybackIndicator="false">
+                                <stimulusCodeAudio msToNext="0" codeFormat="static/practice/wav/&lt;code&gt;" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                     <mediaLoaded/>
                                     <mediaLoadFailed/>
                                     <mediaPlaybackComplete>
@@ -95,7 +95,7 @@
                         <actionButton featureText="volgende [ spatiebalk ]" hotKey="SPACE">
                             <clearPage/>
                             <pause msToNext="500">
-                                <stimulusCodeAudio msToNext="0" codeFormat="static/experiment/wav/&lt;code&gt;" showPlaybackIndicator="false">
+                                <stimulusCodeAudio msToNext="0" codeFormat="static/experiment/wav/&lt;code&gt;" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                     <mediaLoaded/>
                                     <mediaLoadFailed/>
                                     <mediaPlaybackComplete>
