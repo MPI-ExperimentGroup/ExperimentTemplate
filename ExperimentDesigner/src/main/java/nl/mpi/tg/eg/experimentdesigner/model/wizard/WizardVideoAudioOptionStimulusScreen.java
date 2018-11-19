@@ -296,6 +296,8 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
         } else {
             imageFeature = new PresenterFeature(FeatureType.stimulusAudio, null);
             imageFeature.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(isShowHurryIndicator(storedWizardScreenData)));
+            imageFeature.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(true));
+            imageFeature.addFeatureAttributes(FeatureAttribute.mediaId, "media");
         }
         imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getStimulusMsDelay(storedWizardScreenData)));
 
@@ -329,6 +331,8 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
             codeAudioFeature.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
             codeAudioFeature.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>");
             codeAudioFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getStimulusMsDelay(storedWizardScreenData)));
+            codeAudioFeature.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(true));
+            codeAudioFeature.addFeatureAttributes(FeatureAttribute.mediaId, "media");
             hasMoreStimulusFeature.getPresenterFeatureList().add(codeAudioFeature);
             mediaLoaded.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
             mediaLoaded.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
