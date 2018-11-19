@@ -424,6 +424,8 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, "false");
             stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.codeFormat, storedWizardScreenData.getStimulusCodeFormat());
             stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+            stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(true));
+            stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.mediaId, "media");
             pauseFeature.getPresenterFeatureList().add(stimulusCodeAudio);
             stimuliFeature.getPresenterFeatureList().add(nextButtonFeature);
             presenterFeature = stimulusCodeAudio.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
