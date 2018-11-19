@@ -43,7 +43,7 @@
                         <clearPage/>
                         <centrePage/>
                         <pause msToNext="1000">
-                            <stimulusAudio msToNext="1000" showPlaybackIndicator="false">
+                            <stimulusAudio msToNext="1000" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
