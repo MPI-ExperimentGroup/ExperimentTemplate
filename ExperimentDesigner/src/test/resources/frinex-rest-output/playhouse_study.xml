@@ -62,22 +62,22 @@
                         <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
                             <backgroundImage msToNext="0" src="" styleName=""/>
                             <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                            <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" dataChannel="0" showPlaybackIndicator="false">
+                            <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
-                                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" dataChannel="0" showPlaybackIndicator="false">
+                                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete>
                                             <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
                                             <pause msToNext="3000">
-                                                <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" dataChannel="0" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackComplete>
-                                                        <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" dataChannel="0" showPlaybackIndicator="false">
+                                                        <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                             <mediaLoaded/>
                                                             <mediaLoadFailed/>
                                                             <mediaPlaybackComplete>
@@ -102,13 +102,13 @@
                         <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                         <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
                             <mediaLoaded>
-                                <touchInputStimulusButton featureText="left" groupId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
+                                <touchInputStimulusButton featureText="left" eventTag="left3OverlayButton" src="" groupId="leftButtonGroup" styleName="left3OverlayButton" dataChannel="2">
                                     <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="1000">
                                         <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" showPlaybackIndicator="false">
+                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackComplete>
@@ -125,13 +125,13 @@
                         </stimulusCodeImage>
                         <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton" dataChannel="0">
                             <mediaLoaded>
-                                <touchInputStimulusButton featureText="centre" groupId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
+                                <touchInputStimulusButton featureText="centre" eventTag="centre3OverlayButton" src="" groupId="centreButtonGroup" styleName="centre3OverlayButton" dataChannel="2">
                                     <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="1000">
                                         <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" showPlaybackIndicator="false">
+                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackComplete>
@@ -148,13 +148,13 @@
                         </stimulusCodeImage>
                         <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton" dataChannel="0">
                             <mediaLoaded>
-                                <touchInputStimulusButton featureText="right" groupId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
+                                <touchInputStimulusButton featureText="right" eventTag="right3OverlayButton" src="" groupId="rightButtonGroup" styleName="right3OverlayButton" dataChannel="2">
                                     <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="1000">
                                         <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" showPlaybackIndicator="false">
+                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackComplete>
@@ -188,6 +188,12 @@
                                     <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
                                         <touchInputReportSubmit dataChannel="3"/>
                                         <showStimulus/>
+                                    </actionButton>
+                                </column>
+                                <column styleName="">
+                                    <actionButton featureText="Pause" hotKey="" styleName="">
+                                        <touchInputReportSubmit dataChannel="3"/>
+                                        <cancelPauseAll/>
                                     </actionButton>
                                 </column>
                                 <column styleName="">
@@ -220,22 +226,22 @@
                         <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
                             <backgroundImage msToNext="0" src="" styleName=""/>
                             <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                            <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" dataChannel="0" showPlaybackIndicator="false">
+                            <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
-                                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" dataChannel="0" showPlaybackIndicator="false">
+                                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete>
                                             <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
                                             <pause msToNext="3000">
-                                                <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" dataChannel="0" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackComplete>
-                                                        <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" dataChannel="0" showPlaybackIndicator="false">
+                                                        <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                             <mediaLoaded/>
                                                             <mediaLoadFailed/>
                                                             <mediaPlaybackComplete>
@@ -260,13 +266,13 @@
                         <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                         <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
                             <mediaLoaded>
-                                <touchInputStimulusButton featureText="left" groupId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
+                                <touchInputStimulusButton featureText="left" eventTag="left3OverlayButton" src="" groupId="leftButtonGroup" styleName="left3OverlayButton" dataChannel="2">
                                     <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="1000">
                                         <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" showPlaybackIndicator="false">
+                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackComplete>
@@ -283,13 +289,13 @@
                         </stimulusCodeImage>
                         <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton" dataChannel="0">
                             <mediaLoaded>
-                                <touchInputStimulusButton featureText="centre" groupId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
+                                <touchInputStimulusButton featureText="centre" eventTag="centre3OverlayButton" src="" groupId="centreButtonGroup" styleName="centre3OverlayButton" dataChannel="2">
                                     <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="1000">
                                         <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" showPlaybackIndicator="false">
+                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackComplete>
@@ -306,13 +312,13 @@
                         </stimulusCodeImage>
                         <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton" dataChannel="0">
                             <mediaLoaded>
-                                <touchInputStimulusButton featureText="right" groupId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
+                                <touchInputStimulusButton featureText="right" eventTag="right3OverlayButton" src="" groupId="rightButtonGroup" styleName="right3OverlayButton" dataChannel="2">
                                     <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                     <cancelPauseTimers/>
                                     <pause msToNext="1000">
                                         <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" showPlaybackIndicator="false">
+                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackComplete>
@@ -346,6 +352,12 @@
                                     <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
                                         <touchInputReportSubmit dataChannel="3"/>
                                         <showStimulus/>
+                                    </actionButton>
+                                </column>
+                                <column styleName="">
+                                    <actionButton featureText="Pause" hotKey="" styleName="">
+                                        <touchInputReportSubmit dataChannel="3"/>
+                                        <cancelPauseAll/>
                                     </actionButton>
                                 </column>
                                 <column styleName="">
@@ -382,22 +394,22 @@
                                 <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
                                     <backgroundImage msToNext="0" src="" styleName=""/>
                                     <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                    <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" dataChannel="0" showPlaybackIndicator="false">
+                                    <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete>
-                                            <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" dataChannel="0" showPlaybackIndicator="false">
+                                            <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                 <mediaLoaded/>
                                                 <mediaLoadFailed/>
                                                 <mediaPlaybackComplete>
                                                     <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                                     <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
                                                     <pause msToNext="3000">
-                                                        <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" dataChannel="0" showPlaybackIndicator="false">
+                                                        <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                             <mediaLoaded/>
                                                             <mediaLoadFailed/>
                                                             <mediaPlaybackComplete>
-                                                                <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" dataChannel="0" showPlaybackIndicator="false">
+                                                                <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                                     <mediaLoaded/>
                                                                     <mediaLoadFailed/>
                                                                     <mediaPlaybackComplete>
@@ -422,13 +434,13 @@
                                 <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="left" groupId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="left" eventTag="left3OverlayButton" src="" groupId="leftButtonGroup" styleName="left3OverlayButton" dataChannel="2">
                                             <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" dataChannel="0" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackComplete>
@@ -445,13 +457,13 @@
                                 </stimulusCodeImage>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="centre" groupId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="centre" eventTag="centre3OverlayButton" src="" groupId="centreButtonGroup" styleName="centre3OverlayButton" dataChannel="2">
                                             <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" dataChannel="0" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackComplete>
@@ -468,13 +480,13 @@
                                 </stimulusCodeImage>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="right" groupId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="right" eventTag="right3OverlayButton" src="" groupId="rightButtonGroup" styleName="right3OverlayButton" dataChannel="2">
                                             <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" dataChannel="0" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackComplete>
@@ -508,6 +520,12 @@
                                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
                                                 <touchInputReportSubmit dataChannel="3"/>
                                                 <showStimulus/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
+                                            <actionButton featureText="Pause" hotKey="" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <cancelPauseAll/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
@@ -546,22 +564,22 @@
                                 <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
                                     <backgroundImage msToNext="0" src="" styleName=""/>
                                     <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                    <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" dataChannel="0" showPlaybackIndicator="false">
+                                    <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete>
-                                            <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" dataChannel="0" showPlaybackIndicator="false">
+                                            <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                 <mediaLoaded/>
                                                 <mediaLoadFailed/>
                                                 <mediaPlaybackComplete>
                                                     <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                                     <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
                                                     <pause msToNext="3000">
-                                                        <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" dataChannel="0" showPlaybackIndicator="false">
+                                                        <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                             <mediaLoaded/>
                                                             <mediaLoadFailed/>
                                                             <mediaPlaybackComplete>
-                                                                <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" dataChannel="0" showPlaybackIndicator="false">
+                                                                <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                                     <mediaLoaded/>
                                                                     <mediaLoadFailed/>
                                                                     <mediaPlaybackComplete>
@@ -586,13 +604,13 @@
                                 <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="left" groupId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="left" eventTag="left3OverlayButton" src="" groupId="leftButtonGroup" styleName="left3OverlayButton" dataChannel="2">
                                             <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" dataChannel="0" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackComplete>
@@ -609,13 +627,13 @@
                                 </stimulusCodeImage>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="centre" groupId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="centre" eventTag="centre3OverlayButton" src="" groupId="centreButtonGroup" styleName="centre3OverlayButton" dataChannel="2">
                                             <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" dataChannel="0" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackComplete>
@@ -632,13 +650,13 @@
                                 </stimulusCodeImage>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="right" groupId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="right" eventTag="right3OverlayButton" src="" groupId="rightButtonGroup" styleName="right3OverlayButton" dataChannel="2">
                                             <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" dataChannel="0" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackComplete>
@@ -672,6 +690,12 @@
                                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
                                                 <touchInputReportSubmit dataChannel="3"/>
                                                 <showStimulus/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
+                                            <actionButton featureText="Pause" hotKey="" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <cancelPauseAll/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
@@ -738,13 +762,13 @@
                                 <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="left" groupId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="left" eventTag="left3OverlayButton" src="" groupId="leftButtonGroup" styleName="left3OverlayButton" dataChannel="2">
                                             <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" dataChannel="0" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackComplete>
@@ -761,13 +785,13 @@
                                 </stimulusCodeImage>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="centre" groupId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="centre" eventTag="centre3OverlayButton" src="" groupId="centreButtonGroup" styleName="centre3OverlayButton" dataChannel="2">
                                             <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" dataChannel="0" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackComplete>
@@ -784,13 +808,13 @@
                                 </stimulusCodeImage>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="right" groupId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="right" eventTag="right3OverlayButton" src="" groupId="rightButtonGroup" styleName="right3OverlayButton" dataChannel="2">
                                             <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" dataChannel="0" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackComplete>
@@ -824,6 +848,12 @@
                                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
                                                 <touchInputReportSubmit dataChannel="3"/>
                                                 <showStimulus/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
+                                            <actionButton featureText="Pause" hotKey="" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <cancelPauseAll/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
@@ -890,13 +920,13 @@
                                 <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_left.jpg" styleName="left3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="left" groupId="leftButtonGroup" eventTag="left3OverlayButton" src="" styleName="left3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="left" eventTag="left3OverlayButton" src="" groupId="leftButtonGroup" styleName="left3OverlayButton" dataChannel="2">
                                             <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" dataChannel="0" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackComplete>
@@ -913,13 +943,13 @@
                                 </stimulusCodeImage>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_centre.jpg" styleName="centre3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="centre" groupId="centreButtonGroup" eventTag="centre3OverlayButton" src="" styleName="centre3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="centre" eventTag="centre3OverlayButton" src="" groupId="centreButtonGroup" styleName="centre3OverlayButton" dataChannel="2">
                                             <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" dataChannel="0" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackComplete>
@@ -936,13 +966,13 @@
                                 </stimulusCodeImage>
                                 <stimulusCodeImage msToNext="250" codeFormat="&lt;code&gt;_right.jpg" styleName="right3TouchButton" dataChannel="0">
                                     <mediaLoaded>
-                                        <touchInputStimulusButton featureText="right" groupId="rightButtonGroup" eventTag="right3OverlayButton" src="" styleName="right3OverlayButton" dataChannel="2">
+                                        <touchInputStimulusButton featureText="right" eventTag="right3OverlayButton" src="" groupId="rightButtonGroup" styleName="right3OverlayButton" dataChannel="2">
                                             <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <cancelPauseTimers/>
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" dataChannel="0" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackComplete>
@@ -976,6 +1006,12 @@
                                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
                                                 <touchInputReportSubmit dataChannel="3"/>
                                                 <showStimulus/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
+                                            <actionButton featureText="Pause" hotKey="" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <cancelPauseAll/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
