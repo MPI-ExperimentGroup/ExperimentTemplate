@@ -58,7 +58,8 @@ public class SchemaGeneratorTest {
 //            "advocas2.xml",
             "french_conversation.xml", "leeservaring.xml", "parcours01.xml", "sentences_rating_task.xml", "vanuatufieldkit.xml",
             "alloptions.xml",
-            "multiparticipant.xml", "playback_preference.xml",
+            "multiparticipant.xml",
+//            "playback_preference.xml",
             "sentveri_exp3.xml",
             "wellspringssamoan.xml",
             "antwoordraden.xml", "generic_example.xml",
@@ -77,6 +78,7 @@ public class SchemaGeneratorTest {
             "hrpretest.xml", "kinship_example.xml",
 //            "ppvt.xml",
             "with_simulus_example.xml",
+//            "sentenceplausibility.xml",
             //            "synquiz2.xml"
         };
         for (String fileName : fileNameArray) {
