@@ -734,14 +734,14 @@
                                 <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="2">
                                     <backgroundImage msToNext="0" src="" styleName=""/>
                                     <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                    <stimulusAudio msToNext="0" dataChannel="0" showPlaybackIndicator="false">
+                                    <stimulusAudio msToNext="0" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete>
                                             <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
                                             <pause msToNext="3000">
-                                                <stimulusAudio msToNext="3000" dataChannel="0" showPlaybackIndicator="false">
+                                                <stimulusAudio msToNext="3000" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackComplete>
@@ -892,14 +892,14 @@
                                 <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="2">
                                     <backgroundImage msToNext="0" src="" styleName=""/>
                                     <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                    <stimulusAudio msToNext="0" dataChannel="0" showPlaybackIndicator="false">
+                                    <stimulusAudio msToNext="0" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete>
                                             <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
                                             <pause msToNext="3000">
-                                                <stimulusAudio msToNext="3000" dataChannel="0" showPlaybackIndicator="false">
+                                                <stimulusAudio msToNext="3000" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackComplete>
