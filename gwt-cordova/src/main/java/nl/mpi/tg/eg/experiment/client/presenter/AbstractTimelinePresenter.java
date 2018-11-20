@@ -26,7 +26,6 @@ import java.util.Set;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationData;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationSet;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
-import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.DataFactory;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
@@ -48,8 +47,8 @@ public abstract class AbstractTimelinePresenter extends AbstractPresenter implem
     private final UserResults userResults;
     private String storageTag = "temp_tag";
 
-    public AbstractTimelinePresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage) {
-        super(widgetTag, new AnnotationTimelineView(audioPlayer));
+    public AbstractTimelinePresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage) {
+        super(widgetTag, new AnnotationTimelineView());
         this.localStorage = localStorage;
         this.userResults = userResults;
         this.stimulusProvider = new nl.mpi.tg.eg.experiment.client.service.StimulusProvider(GeneratedStimulusProvider.values);
