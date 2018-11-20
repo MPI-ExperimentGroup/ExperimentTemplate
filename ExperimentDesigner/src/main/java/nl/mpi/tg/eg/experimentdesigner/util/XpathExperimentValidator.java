@@ -143,4 +143,11 @@ public class XpathExperimentValidator {
         }
         return returnMessage;
     }
+    // todo: validate that the storageField stimulusSetAllocation exists in the metadata list <randomGrouping consumedTagGroup="allRooms" storageField="stimulusSetAllocation">
+    // todo: an empty line at the start of the file gives an unhelpful message "The processing instruction target matching "[xX][mM][lL]" is not allowed."
+    // todo: validate tha the storageField is in the metadata fields <randomGrouping storageField="set">
+    // todo: validate that stimulusButton etc at in a load stimulus tag
+    // todo: validate token text such that formating with <stimulus.. is always in a loadStim or withStim element
+    // todo: htmlTokenText in the endOfStimulus element cannot have <stimulus in the token text
+    // todo: validate that stimulus label does not include unescaped &quot;
 }
