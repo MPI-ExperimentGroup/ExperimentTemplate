@@ -34,7 +34,6 @@ import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationData;
 import nl.mpi.tg.eg.experiment.client.model.AnnotationSet;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
-import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.DataFactory;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
 
@@ -49,8 +48,8 @@ public class AnnotationTimelineView extends TimedStimulusView {
     private VideoPanel videoPanel;
     final FlexTable flexTable = new FlexTable();
 
-    public AnnotationTimelineView(AudioPlayer audioPlayer) {
-        super(audioPlayer);
+    public AnnotationTimelineView() {
+        super();
         flexTable.setStylePrimaryName("annotationTimelinePanel");
         outerPanel.add(flexTable);
     }
