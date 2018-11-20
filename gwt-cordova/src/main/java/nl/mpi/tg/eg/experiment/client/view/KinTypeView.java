@@ -22,7 +22,6 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
 import java.util.Random;
-import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 
 /**
  * @since Aug 6, 2015 5:17:24 PM (creation date)
@@ -38,8 +37,8 @@ public class KinTypeView extends TimedStimulusView {
     private final TextBox dayOfBirthBox = new TextBox();
     private ListBox relationType;
 
-    public KinTypeView(AudioPlayer audioPlayer) {
-        super(audioPlayer);
+    public KinTypeView() {
+        super();
     }
 
     public void addKinTypeGui() {
