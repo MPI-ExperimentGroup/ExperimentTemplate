@@ -125,9 +125,9 @@
             <xsl:text>Presenter(widgetTag</xsl:text>
             <xsl:value-of select="
 if(@type = 'transmission' or @type = 'metadata'  or @type = 'colourReport') then ', submissionService, userResults, localStorage' else
-if(@type = 'preload') then ', new AudioPlayer(this), submissionService, userResults' else
+if(@type = 'preload') then ', submissionService, userResults' else
 if(@type = 'menu') then ', userResults, localStorage' else
-if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', new AudioPlayer(this), submissionService, userResults, localStorage' else ''" />
+if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', submissionService, userResults, localStorage' else ''" />
             <xsl:value-of select="if(@type = 'stimulus') then ', timerService' else ''" />
             <xsl:text>);
                 presenter.setState(this, </xsl:text>
@@ -177,8 +177,8 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         </xsl:text>
         <xsl:if test="experiment/presenter/@type = 'colourPicker' or experiment/presenter/@type = 'preload' or experiment/presenter/@type = 'stimulus' or experiment/presenter/@type = 'kindiagram' or experiment/presenter/@type = 'timeline'">
             <xsl:text>
-                } catch (AudioException</xsl:text>
-            <xsl:value-of select="if(experiment/presenter/@type = 'colourPicker') then '|CanvasError' else ''" />
+                } catch (</xsl:text>
+            <xsl:value-of select="if(experiment/presenter/@type = 'colourPicker') then 'CanvasError' else ''" />
             <xsl:text> error) {
                 logger.warning(error.getMessage());
                 this.presenter = new ErrorPresenter(widgetTag, error.getMessage());
@@ -251,9 +251,9 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <xsl:text>Presenter(RootLayoutPanel widgetTag</xsl:text>
             <xsl:value-of select="
 if(@type = 'transmission' or @type = 'metadata' or @type = 'colourReport') then ', DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage' else 
-if(@type = 'preload') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults' else 
+if(@type = 'preload') then ', DataSubmissionService submissionService, UserResults userResults' else 
 if(@type = 'menu') then ', UserResults userResults, LocalStorage localStorage' else
-if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage' else ''" />
+if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage' else ''" />
             <xsl:value-of select="if(@type = 'stimulus') then ', final TimerService timerService' else ''"/>
             <xsl:value-of select="if(@type = 'colourPicker') then ') throws CanvasError {' else ') {'"/>
             <xsl:choose>
@@ -274,17 +274,17 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 </xsl:when>
                 <xsl:when test="@type = 'preload'">
                     <xsl:text>
-                        super(widgetTag, audioPlayer, submissionService, userResults);
+                        super(widgetTag, submissionService, userResults);
                     </xsl:text>                    
                 </xsl:when>
                 <xsl:when test="@type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker'">
                     <xsl:text>
-                        super(widgetTag, audioPlayer, submissionService, userResults, localStorage);
+                        super(widgetTag, submissionService, userResults, localStorage);
                     </xsl:text>                    
                 </xsl:when>
                 <xsl:when test="@type = 'stimulus'">
                     <xsl:text>
-                        super(widgetTag, audioPlayer, submissionService, userResults, localStorage, timerService);
+                        super(widgetTag, submissionService, userResults, localStorage, timerService);
                     </xsl:text>                    
                 </xsl:when>
                 <xsl:when test="@type = 'metadata' or @type = 'transmission' or @type = 'colourReport'">
@@ -822,6 +822,7 @@ or local-name() eq 'backgroundImage'">
         </xsl:if>
         <xsl:value-of select="if(@showOnBackButton) then concat(@showOnBackButton eq 'true', ', ') else ''" />
         <xsl:value-of select="if(@autoPlay) then concat(@autoPlay, ', ') else ''" />
+        <xsl:value-of select="if(@mediaId) then concat('&quot;',@mediaId, '&quot;, ') else ''" />
         <xsl:value-of select="if(@loop) then concat(@loop, ', ') else ''" />
         <xsl:value-of select="if(@showControls) then concat(@showControls, ', ') else ''" />
         <xsl:value-of select="if(@msToNext) then @msToNext else ''" />
@@ -936,7 +937,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
             <xsl:value-of select="if(@consumedTagGroup) then concat(', &quot;', @consumedTagGroup, '&quot;') else ',null'" />
         </xsl:if>
     </xsl:template>
-    <xsl:template match="compareTimer|preloadAllStimuli|trigger|resetTrigger|resetStimulus|groupMessageLabel|groupMemberCodeLabel|groupMemberLabel|groupScoreLabel|groupChannelScoreLabel|scoreLabel|clearCurrentScore|scoreIncrement|scoreAboveThreshold|bestScoreAboveThreshold|totalScoreAboveThreshold|withMatchingStimulus|showColourReport|submitTestResults|VideoPanel|startAudioRecorder|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|withStimuli|loadStimulus|loadSdCardStimulus|validateStimuliResponses|currentStimulusHasTag|existingUserCheck|rewindVideo|playVideo|pauseVideo|stimulusExists">
+    <xsl:template match="compareTimer|preloadAllStimuli|trigger|resetTrigger|resetStimulus|groupMessageLabel|groupMemberCodeLabel|groupMemberLabel|groupScoreLabel|groupChannelScoreLabel|scoreLabel|clearCurrentScore|scoreIncrement|scoreAboveThreshold|bestScoreAboveThreshold|totalScoreAboveThreshold|withMatchingStimulus|showColourReport|submitTestResults|VideoPanel|startAudioRecorder|stopAudioRecorder|startAudioRecorderTag|endAudioRecorderTag|AnnotationTimelinePanel|withStimuli|loadStimulus|loadSdCardStimulus|validateStimuliResponses|currentStimulusHasTag|existingUserCheck|rewindMedia|playMedia|pauseMedia|stimulusExists">
         <xsl:if test="local-name() eq 'preloadAllStimuli' or local-name() eq 'withStimuli' or local-name() eq 'loadStimulus' or local-name() eq 'loadSdCardStimulus'">
             <xsl:text>{</xsl:text>
             <xsl:text>final StimuliProvider stimulusProvider = </xsl:text>
@@ -961,6 +962,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <xsl:value-of select="if(@msToNext) then @msToNext else ''" />
         <xsl:value-of select="if(@msToNext and @listenerId) then ', ' else ''" />
         <xsl:value-of select="if(@listenerId) then concat('&quot;',@listenerId, '&quot;') else ''" />
+        <xsl:value-of select="if(@mediaId) then concat('&quot;',@mediaId, '&quot;') else ''" />
         <xsl:value-of select="if(@target) then concat('ApplicationState.', @target, '.name()') else ''" />
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />        
         <xsl:value-of select="if(@recordingFormat) then concat('&quot;', @recordingFormat, '&quot;, ') else ''" />
