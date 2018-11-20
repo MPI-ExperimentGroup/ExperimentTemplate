@@ -152,6 +152,12 @@
                                 </actionButton>
                             </column>
                             <column styleName="">
+                                <actionButton featureText="Pause" hotKey="" styleName="">
+                                    <touchInputReportSubmit dataChannel="3"/>
+                                    <cancelPauseAll/>
+                                </actionButton>
+                            </column>
+                            <column styleName="">
                                 <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
                                     <touchInputReportSubmit dataChannel="3"/>
                                     <nextStimulus repeatIncorrect="false"/>
@@ -256,6 +262,12 @@
                                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
                                                 <touchInputReportSubmit dataChannel="3"/>
                                                 <showStimulus/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
+                                            <actionButton featureText="Pause" hotKey="" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <cancelPauseAll/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
@@ -368,6 +380,12 @@
                                             </actionButton>
                                         </column>
                                         <column styleName="">
+                                            <actionButton featureText="Pause" hotKey="" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <cancelPauseAll/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
                                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
                                                 <touchInputReportSubmit dataChannel="3"/>
                                                 <nextStimulus repeatIncorrect="false"/>
@@ -477,6 +495,12 @@
                                             </actionButton>
                                         </column>
                                         <column styleName="">
+                                            <actionButton featureText="Pause" hotKey="" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <cancelPauseAll/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
                                             <actionButton featureText="Next (right)" hotKey="R1_MA_RIGHT" styleName="">
                                                 <touchInputReportSubmit dataChannel="3"/>
                                                 <nextStimulus repeatIncorrect="false"/>
@@ -583,6 +607,12 @@
                                             <actionButton featureText="Repeat (A)" hotKey="R1_MA_A" styleName="">
                                                 <touchInputReportSubmit dataChannel="3"/>
                                                 <showStimulus/>
+                                            </actionButton>
+                                        </column>
+                                        <column styleName="">
+                                            <actionButton featureText="Pause" hotKey="" styleName="">
+                                                <touchInputReportSubmit dataChannel="3"/>
+                                                <cancelPauseAll/>
                                             </actionButton>
                                         </column>
                                         <column styleName="">
