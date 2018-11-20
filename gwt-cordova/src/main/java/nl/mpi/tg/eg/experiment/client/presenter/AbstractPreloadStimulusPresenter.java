@@ -36,8 +36,8 @@ import nl.mpi.tg.eg.frinex.common.StimuliProvider;
  */
 public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusPresenter implements Presenter {
 
-    public AbstractPreloadStimulusPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults) {
-        super(widgetTag, audioPlayer, submissionService, userResults, null, null);
+    public AbstractPreloadStimulusPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults) {
+        super(widgetTag, submissionService, userResults, null, null);
     }
 
     private void preloadAllStimuli(final HorizontalPanel progressBar, final TimedStimulusListener timedStimulusListener, final List<Stimulus> pictureList, final int totalImages) {
@@ -58,7 +58,7 @@ public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusP
     protected void preloadAllStimuli(final Stimulus.Tag[] selectionTags, final StimuliProvider stimulusProvider, final TimedStimulusListener onErrorListener, final TimedStimulusListener onSuccessListener) {
         stimulusProvider.getSubset(Arrays.asList(selectionTags), "", -1);
         // todo: this should be modified to get all relevant stimuli and load as required by type
-        // todo: add on error handling 
+        // todo: add on error handling
         final List<Stimulus> pictureList = stimulusProvider.getDistractorList(stimulusProvider.getTotalStimuli());
         final HorizontalPanel progressBar = ((TimedStimulusView) simpleView).addProgressBar(0, 0, pictureList.size());
         preloadAllStimuli(progressBar, onSuccessListener, pictureList, pictureList.size());
