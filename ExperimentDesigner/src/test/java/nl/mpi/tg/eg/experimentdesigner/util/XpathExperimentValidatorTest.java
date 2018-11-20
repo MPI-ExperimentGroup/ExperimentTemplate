@@ -88,9 +88,13 @@ public class XpathExperimentValidatorTest {
         System.out.println("validatePresenterNames");
         Document xmlOkDocument = getDocument("<experiment><presenter self=\"Toestemming\"></presenter><presenter self=\"Informatie\"></presenter></experiment>\n");
         Document xmlFailDocument = getDocument("<experiment><presenter self=\"Informatie\"></presenter><presenter self=\"Informatie\"></presenter></experiment>\n");
+        Document xmlOkAccentDocument = getDocument("<experiment><presenter self=\"Informatie\"></presenter><presenter self=\"Informatie\"></presenter><presenter back=\"Menu\" menuLabel=\"Terug\" type=\"text\" self=\"cafe_test\" title=\"café encoding test\"><htmlText featureText=\"Please make sure that the accent is correctly displayed on this screen: café\"/><targetButton featureText=\"volgende [ spatiebalk ]\" hotKey=\"SPACE\" target=\"Second\"/></presenter></experiment>\n");
+        Document xmlFailAccentDocument = getDocument("<experiment><presenter self=\"Informatie\"></presenter><presenter self=\"Informatie\"></presenter><presenter back=\"Menu\" menuLabel=\"Terug\" type=\"text\" self=\"café_test\" title=\"café encoding test\"><htmlText featureText=\"Please make sure that the accent is correctly displayed on this screen: café\"/><targetButton featureText=\"volgende [ spatiebalk ]\" hotKey=\"SPACE\" target=\"Second\"/></presenter></experiment>\n");
         XpathExperimentValidator instance = new XpathExperimentValidator();
         assertEquals("", instance.validatePresenterNames(xmlOkDocument));
+        assertEquals("", instance.validatePresenterNames(xmlOkAccentDocument));
         assertNotEquals("", instance.validatePresenterNames(xmlFailDocument));
+        assertNotEquals("", instance.validatePresenterNames(xmlFailAccentDocument));
     }
 
     /**
@@ -177,7 +181,7 @@ public class XpathExperimentValidatorTest {
         instance.validateDocument(new File(new File(outputDirectoryUri), "onlinepretest.xml"));
 //        instance.validateDocument(new File(new File(outputDirectoryUri), "ravenas.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "vanuatufieldkit.xml"));
-        instance.validateDocument(new File(new File(outputDirectoryUri), "audioas2.xml"));
+//        instance.validateDocument(new File(new File(outputDirectoryUri), "audioas2.xml"));
 //        instance.validateDocument(new File(new File(outputDirectoryUri), "exampleronald.xml"));
 //        instance.validateDocument(new File(new File(outputDirectoryUri), "joseco02.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "parcours01.xml"));
@@ -186,13 +190,13 @@ public class XpathExperimentValidatorTest {
 //        instance.validateDocument(new File(new File(outputDirectoryUri), "audiononwordmonitoring.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "french_audio.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "kinship_example.xml"));
-        instance.validateDocument(new File(new File(outputDirectoryUri), "peabodyas.xml"));
+//        instance.validateDocument(new File(new File(outputDirectoryUri), "peabodyas.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "rosselfieldkit.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "with_simulus_example.xml"));
 //        instance.validateDocument(new File(new File(outputDirectoryUri), "audiononwordmonitoring_old.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "french_conversation.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "ld_screensize.xml"));
-        instance.validateDocument(new File(new File(outputDirectoryUri), "peabodynl.xml"));
+//        instance.validateDocument(new File(new File(outputDirectoryUri), "peabodynl.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "sentences_rating_task.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "zinnen_afmaken.xml"));
 //        instance.validateDocument(new File(new File(outputDirectoryUri), "autoprediction.xml"));
@@ -201,10 +205,11 @@ public class XpathExperimentValidatorTest {
         instance.validateDocument(new File(new File(outputDirectoryUri), "playback_preference.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "sentveri_exp3.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "zinnen_beoordelen.xml"));
-        instance.validateDocument(new File(new File(outputDirectoryUri), "bq4english.xml"));
-        instance.validateDocument(new File(new File(outputDirectoryUri), "grammaras.xml"));
-        instance.validateDocument(new File(new File(outputDirectoryUri), "lilbq4.xml"));
+//        instance.validateDocument(new File(new File(outputDirectoryUri), "bq4english.xml"));
+//        instance.validateDocument(new File(new File(outputDirectoryUri), "grammaras.xml"));
+//        instance.validateDocument(new File(new File(outputDirectoryUri), "lilbq4.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "playhouse_study.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "shawifieldkit.xml"));
+//        instance.validateDocument(new File(new File(outputDirectoryUri), "sentenceplausibility.xml"));
     }
 }
