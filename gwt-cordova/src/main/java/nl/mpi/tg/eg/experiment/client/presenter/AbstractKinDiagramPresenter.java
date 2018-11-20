@@ -51,7 +51,6 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.presenter.kin.DiagramSettingsGwt;
 import nl.mpi.tg.eg.experiment.client.presenter.kin.KinDocumentGwt;
-import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.view.KinTypeView;
@@ -72,8 +71,8 @@ public abstract class AbstractKinDiagramPresenter extends AbstractPresenter impl
     final ArrayList<ButtonBase> buttonList = new ArrayList<>();
     private static final String RHOMBUS = "rhombus";
 
-    public AbstractKinDiagramPresenter(RootLayoutPanel widgetTag, AudioPlayer audioPlayer, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage) {
-        super(widgetTag, new KinTypeView(audioPlayer));
+    public AbstractKinDiagramPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage) {
+        super(widgetTag, new KinTypeView());
         duration = new Duration();
         this.submissionService = submissionService;
         this.userResults = userResults;
