@@ -614,7 +614,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                 }
                 currentAction.addFeature(FeatureType.backgroundImage, null, "0", "", "");
                 currentAction.addFeature(FeatureType.disableButtonGroup, null, buttonGroupsSelect);
-                final PresenterFeature stimulusAudio = ("AudioAB".equals(getAudioAB(storedWizardScreenData))) ? currentAction.addFeature(FeatureType.stimulusCodeAudio, null, "500", "0", "<code>_a", Boolean.toString(false), Boolean.toString(true), "media").addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2].addFeature(FeatureType.stimulusCodeAudio, null, "0", "0", "<code>_b", Boolean.toString(false), Boolean.toString(true), "media").addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2] : currentAction.addFeature(FeatureType.stimulusAudio, null, "0", "0", Boolean.toString(false)).addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
+                final PresenterFeature stimulusAudio = ("AudioAB".equals(getAudioAB(storedWizardScreenData))) ? currentAction.addFeature(FeatureType.stimulusCodeAudio, null, "500", "0", "<code>_a", Boolean.toString(false), Boolean.toString(true), "media").addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2].addFeature(FeatureType.stimulusCodeAudio, null, "0", "0", "<code>_b", Boolean.toString(false), Boolean.toString(true), "media").addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2] : currentAction.addFeature(FeatureType.stimulusAudio, null, "0", "0", Boolean.toString(false), Boolean.toString(true), "media").addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
                 stimulusAudio.addFeature(FeatureType.enableButtonGroup, null, buttonGroupsSelect);
                 stimulusAudio.addFeature(FeatureType.backgroundImage, null, "0", "", "backgroundHighlight");
                 final PresenterFeature pause2 = stimulusAudio.addFeature(FeatureType.pause, null, "3000");
@@ -637,7 +637,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
                         break;
                     case "AudioRepeat1":
                     case "AudioRepeat2":
-                        final PresenterFeature repeatAudio = pause2.addFeature(FeatureType.stimulusAudio, null, "3000", "0", Boolean.toString(false)).addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
+                        final PresenterFeature repeatAudio = pause2.addFeature(FeatureType.stimulusAudio, null, "3000", "0", Boolean.toString(false), Boolean.toString(true), "media").addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
                         repeatAudio.addFeature(FeatureType.disableButtonGroup, null, buttonGroupsSelect);
                         repeatAudio.addFeature(FeatureType.cancelPauseTimers, null);
                         repeatAudio.addFeature(FeatureType.clearPage, null, "");
