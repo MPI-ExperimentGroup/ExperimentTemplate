@@ -49,7 +49,7 @@ import nl.mpi.tg.eg.experiment.client.service.TimerService;
  * @since Oct 7, 2014 11:07:35 AM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public abstract class AppController implements AppEventListner, AudioExceptionListner {
+public abstract class AppController implements AppEventListner/*, AudioExceptionListner*/ {
 
     protected static final Logger logger = Logger.getLogger(AppController.class.getName());
     private final Version version = GWT.create(Version.class);
@@ -138,12 +138,12 @@ public abstract class AppController implements AppEventListner, AudioExceptionLi
 //            }
 //        }, FocusEvent.getType());
 //    }
-    @Override
-    public void audioExceptionFired(AudioException audioException) {
-        logger.warning(audioException.getMessage());
-        this.presenter = new ErrorPresenter(widgetTag, audioException.getMessage());
-        presenter.setState(this, ApplicationState.start, null);
-    }
+//    @Override
+//    public void audioExceptionFired(AudioException audioException) {
+//        logger.warning(audioException.getMessage());
+//        this.presenter = new ErrorPresenter(widgetTag, audioException.getMessage());
+//        presenter.setState(this, ApplicationState.start, null);
+//    }
 
     abstract boolean preserveLastState();
 
