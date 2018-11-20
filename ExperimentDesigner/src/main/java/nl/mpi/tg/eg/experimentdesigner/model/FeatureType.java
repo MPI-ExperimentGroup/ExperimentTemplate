@@ -195,11 +195,11 @@ public enum FeatureType {
     stimulusImage(false, false, new FeatureAttribute[]{msToNext, styleName, dataChannel}, false, false, false, Contitionals.hasMediaLoading, Contitionals.stimulusAction), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
     stimulusCodeImage(false, false, new FeatureAttribute[]{msToNext, dataChannel, codeFormat, styleName}, false, false, false, Contitionals.hasMediaLoading, Contitionals.stimulusAction), //stimulusCodeImage can take both <code> and <rating_" + index + "> tags in its string value
     stimulusCodeVideo(false, false, new FeatureAttribute[]{msToNext, dataChannel, maxHeight, codeFormat, percentOfPage, loop, styleName, autoPlay, showControls, maxWidth}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.stimulusAction), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
-    stimulusCodeAudio(false, false, new FeatureAttribute[]{msToNext, dataChannel, codeFormat, showPlaybackIndicator}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.stimulusAction), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
-    stimulusAudio(false, false, new FeatureAttribute[]{msToNext, dataChannel, showPlaybackIndicator}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.stimulusAction), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
-    playVideo(false, false, new FeatureAttribute[]{}),
-    rewindVideo(false, false, new FeatureAttribute[]{}),
-    pauseVideo(false, false, new FeatureAttribute[]{}),
+    stimulusCodeAudio(false, false, new FeatureAttribute[]{msToNext, dataChannel, codeFormat, showPlaybackIndicator, autoPlay, mediaId}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.stimulusAction), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
+    stimulusAudio(false, false, new FeatureAttribute[]{msToNext, dataChannel, showPlaybackIndicator, autoPlay, mediaId}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.stimulusAction), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
+    playMedia(false, false, new FeatureAttribute[]{mediaId}),
+    rewindMedia(false, false, new FeatureAttribute[]{mediaId}),
+    pauseMedia(false, false, new FeatureAttribute[]{mediaId}),
     stimulusImageCapture(true, true, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     //    captureStimulusImage(true, true, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth}),
     VideoPanel(false, false, new FeatureAttribute[]{src, percentOfPage, maxHeight, maxWidth, poster}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
