@@ -229,9 +229,9 @@
                     <plainText featureText="TimerA Restart Completed"/>
                 </region>
             </startTimer>
-        </actionButton>
-    </presenter>
-    <presenter back="Menu" menuLabel="With Stimuli Screen" next="First_Stimuli_Screen_Informatie" type="stimulus" self="With_Stimuli_Screen" title="With Stimuli Screen">
+        </actionButton>  
+    </presenter>  
+    <presenter back="Menu" menuLabel="Region Timer Screen" next="With_Stimuli_Screen" type="stimulus" self="Region_Timer_Screen" title="With Stimuli Screen">
         <region regionId="regionTimerC">
             <plainText featureText="TimerC startTimer"/>
         </region>
@@ -302,6 +302,8 @@
                 <plainText featureText="TimerA logTimerValue"/>
             </region>
         </actionButton>
+   </presenter>
+    <presenter back="Menu" menuLabel="With Stimuli Screen" next="First_Stimuli_Screen_Informatie" type="stimulus" self="With_Stimuli_Screen" title="With Stimuli Screen">
         <withStimuli eventTag="With Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <beforeStimulus>       
                 <plainText featureText="plainText in beforeStimulus"/>         
@@ -666,6 +668,9 @@
         <loadStimulus eventTag="stimulusResponse_logTokenText" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
+                <plainText featureText="Stored stimuli responses can be displayed in the htmlTokenText. Not all response types are stored currently. Rating buttons do not store the response, but free text does. This can be changed later if needed."/>
+                <plainText featureText="The current stimulus: &lt;stimulusResponse&gt;"/>
+                <plainText featureText="Specific stimulus by id: &lt;stimulusResponse_Q7&gt;"/>
                 <showStimulusProgress/>
                 <addPadding/>
                 <htmlTokenText featureText="
