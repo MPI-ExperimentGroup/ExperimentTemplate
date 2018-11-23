@@ -268,9 +268,9 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
-        <playVideo/>
-        <rewindVideo/>
-        <pauseVideo/>
+        <playMedia mediaId="mediaId"/>
+        <rewindMedia mediaId="mediaId"/>
+        <pauseMedia mediaId="mediaId"/>
         <preventWindowClose featureText="preventWindowClose"/>
         <clearCurrentScore/>
         <resetStimulus target="target"/>
@@ -428,7 +428,7 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusCodeImage>
-                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" showControls="true" maxWidth="60">
+                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -439,7 +439,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
-                <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" dataChannel="2" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -450,7 +450,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeAudio>
-                <stimulusAudio msToNext="60" dataChannel="2" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusAudio msToNext="60" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -730,7 +730,7 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusCodeImage>
-                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" showControls="true" maxWidth="60">
+                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -741,7 +741,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
-                <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" dataChannel="2" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -752,7 +752,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeAudio>
-                <stimulusAudio msToNext="60" dataChannel="2" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusAudio msToNext="60" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1032,7 +1032,7 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusCodeImage>
-                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" showControls="true" maxWidth="60">
+                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1043,7 +1043,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
-                <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" dataChannel="2" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1054,7 +1054,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeAudio>
-                <stimulusAudio msToNext="60" dataChannel="2" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusAudio msToNext="60" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1298,9 +1298,9 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
-        <playVideo/>
-        <rewindVideo/>
-        <pauseVideo/>
+        <playMedia mediaId="mediaId"/>
+        <rewindMedia mediaId="mediaId"/>
+        <pauseMedia mediaId="mediaId"/>
         <preventWindowClose featureText="preventWindowClose"/>
         <scoreLabel styleName="styleName"/>
         <clearCurrentScore/>
@@ -1912,9 +1912,9 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
-        <playVideo/>
-        <rewindVideo/>
-        <pauseVideo/>
+        <playMedia mediaId="mediaId"/>
+        <rewindMedia mediaId="mediaId"/>
+        <pauseMedia mediaId="mediaId"/>
         <preventWindowClose featureText="preventWindowClose"/>
         <clearCurrentScore/>
         <resetStimulus target="target"/>
@@ -2072,7 +2072,7 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusCodeImage>
-                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" autoPlay="true" showControls="true" maxWidth="60">
+                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2083,7 +2083,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
-                <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2094,7 +2094,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeAudio>
-                <stimulusAudio msToNext="60" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusAudio msToNext="60" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2374,7 +2374,7 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusCodeImage>
-                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" autoPlay="true" showControls="true" maxWidth="60">
+                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2385,7 +2385,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
-                <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2396,7 +2396,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeAudio>
-                <stimulusAudio msToNext="60" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusAudio msToNext="60" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2676,7 +2676,7 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusCodeImage>
-                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" autoPlay="true" showControls="true" maxWidth="60">
+                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2687,7 +2687,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
-                <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2698,7 +2698,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeAudio>
-                <stimulusAudio msToNext="60" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusAudio msToNext="60" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2942,9 +2942,9 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
-        <playVideo/>
-        <rewindVideo/>
-        <pauseVideo/>
+        <playMedia mediaId="mediaId"/>
+        <rewindMedia mediaId="mediaId"/>
+        <pauseMedia mediaId="mediaId"/>
         <preventWindowClose featureText="preventWindowClose"/>
         <scoreLabel/>
         <clearCurrentScore/>
