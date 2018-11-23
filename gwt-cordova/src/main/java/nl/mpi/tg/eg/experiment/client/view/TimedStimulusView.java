@@ -34,14 +34,17 @@ import com.google.gwt.event.dom.client.LoadHandler;
 import com.google.gwt.media.client.Video;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.user.client.Timer;
-import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextArea;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import nl.mpi.tg.eg.experiment.client.exception.AudioException;
 import nl.mpi.tg.eg.experiment.client.listener.AudioEventListner;
+import nl.mpi.tg.eg.experiment.client.listener.AudioExceptionListner;
 import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
@@ -57,15 +60,14 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  */
 public class TimedStimulusView extends ComplexView {
 
-    private final AudioPlayer audioPlayer;
+    private final Map<String, AudioPlayer> audioList = new HashMap<>();
     private StimulusGrid stimulusGrid = null;
-    private final List<Video> videoList = new ArrayList<>();
+    private final Map<String, Video> videoList = new HashMap<>();
     private final List<Timer> timerList = new ArrayList<>();
     private final List<CancelableStimulusListener> cancelableListnerList = new ArrayList<>();
 
-    public TimedStimulusView(AudioPlayer audioPlayer) {
+    public TimedStimulusView() {
         super();
-        this.audioPlayer = audioPlayer;
     }
 
     public void startGrid(final String menuOuter) {
@@ -140,11 +142,12 @@ public class TimedStimulusView extends ComplexView {
     public void clearPageAndTimers(String styleName) {
         stopListeners();
         stopTimers();
-        stopAudio();
-        stopVideo();
+        stopAudio(); // note that stop audio here is probably redundant 
+        stopAllMedia();
         this.getElement().getStyle().setBackgroundImage(null);
         super.clearPageAndTimers(styleName);
         videoList.clear();
+        audioList.clear();
     }
 
     public void addTimedImage(SafeUri imagePath, final String styleName, final int postLoadMs, final CancelableStimulusListener shownStimulusListener, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener clickedStimulusListener) {
@@ -384,60 +387,75 @@ public class TimedStimulusView extends ComplexView {
         return stimulusFreeText;
     }
 
-    public void addTimedAudio(SafeUri oggPath, SafeUri mp3Path, final int postLoadMs, boolean showPlaybackIndicator, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
+    public void addTimedAudio(SafeUri oggPath, SafeUri mp3Path, final int postLoadMs, boolean showPlaybackIndicator, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener, final boolean autoPlay, final String mediaId) {
         cancelableListnerList.add(loadedStimulusListener);
         cancelableListnerList.add(failedStimulusListener);
         cancelableListnerList.add(playedStimulusListener);
-        audioPlayer.stopAll();
-        final Label playbackIndicator = new Label();
-        final Timer playbackIndicatorTimer = new Timer() {
-            public void run() {
-                playbackIndicator.setText("CurrentTime: " + audioPlayer.getCurrentTime());
+        try {
+            final AudioPlayer audioPlayer = new AudioPlayer(new AudioExceptionListner() {
+                @Override
+                public void audioExceptionFired(AudioException audioException) {
+                    failedStimulusListener.postLoadTimerFired();
+                }
+            });
+            audioList.put(mediaId, audioPlayer);
+//        audioPlayer.stopAll(); // Note that this stop all change will be a change in default behaviour, however there shouldn't be any instances where this is depended on, but that should be checked
+            final Label playbackIndicator = new Label();
+            final Timer playbackIndicatorTimer = new Timer() {
+                public void run() {
+                    playbackIndicator.setText("CurrentTime: " + audioPlayer.getCurrentTime());
 //                    playbackIndicator.setWidth();
-                this.schedule(100);
+                    this.schedule(100);
+                }
+            };
+            timerList.add(playbackIndicatorTimer);
+            if (showPlaybackIndicator) {
+                playbackIndicator.setStylePrimaryName("playbackIndicator");
+                getActivePanel().add(playbackIndicator);
+                playbackIndicatorTimer.schedule(500);
             }
-        };
-        timerList.add(playbackIndicatorTimer);
-        if (showPlaybackIndicator) {
-            playbackIndicator.setStylePrimaryName("playbackIndicator");
-            getActivePanel().add(playbackIndicator);
-            playbackIndicatorTimer.schedule(500);
+            audioPlayer.setOnEndedListener(new AudioEventListner() {
+                @Override
+                public void audioLoaded() {
+                    loadedStimulusListener.postLoadTimerFired();
+                }
+
+                @Override
+                public void audioFailed() {
+                    failedStimulusListener.postLoadTimerFired();
+                }
+
+                @Override
+                public void audioEnded() {
+                    playbackIndicatorTimer.cancel();
+                    playbackIndicator.removeFromParent();
+                    audioPlayer.setOnEndedListener(null); // prevent multiple triggering
+                    Timer timer = new Timer() {
+                        public void run() {
+                            playedStimulusListener.postLoadTimerFired();
+                        }
+                    };
+                    timerList.add(timer);
+                    timer.schedule(postLoadMs);
+                }
+            });
+            if (autoPlay) {
+                audioPlayer.playSample(oggPath, mp3Path);
+            }
+        } catch (AudioException audioException) {
+            failedStimulusListener.postLoadTimerFired();
         }
-        audioPlayer.setOnEndedListener(new AudioEventListner() {
-            @Override
-            public void audioLoaded() {
-                loadedStimulusListener.postLoadTimerFired();
-            }
-
-            @Override
-            public void audioFailed() {
-                failedStimulusListener.postLoadTimerFired();
-            }
-
-            @Override
-            public void audioEnded() {
-                playbackIndicatorTimer.cancel();
-                playbackIndicator.removeFromParent();
-                audioPlayer.setOnEndedListener(null); // prevent multiple triggering
-                Timer timer = new Timer() {
-                    public void run() {
-                        playedStimulusListener.postLoadTimerFired();
-                    }
-                };
-                timerList.add(timer);
-                timer.schedule(postLoadMs);
-            }
-        });
-        audioPlayer.playSample(oggPath, mp3Path);
     }
 
-    public void addTimedVideo(SafeUri oggPath, SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, final int postLoadMs, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
+    public void addTimedVideo(SafeUri oggPath, SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, final int postLoadMs, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener, final String mediaId) {
         cancelableListnerList.add(loadedStimulusListener);
         cancelableListnerList.add(failedStimulusListener);
         final Video video = Video.createIfSupported();
-        if (video != null) {
+        if (video == null) {
+            failedStimulusListener.postLoadTimerFired();
+        } else {
             video.setAutoplay(autoPlay);
-            videoList.add(video);
+            videoList.put(mediaId, video);
 //            video.setPoster(poster);
             video.setControls(showControls);
             video.setPreload(MediaElement.PRELOAD_AUTO);
@@ -495,34 +513,85 @@ public class TimedStimulusView extends ComplexView {
         }
     }
 
-    public void addAudioPlayerGui() {
-        getActivePanel().add(audioPlayer.getAudioPlayer());
+    public void addAudioPlayerGui(final String mediaId) {
+        getActivePanel().add(audioList.get(mediaId).getAudioPlayer());
     }
 
+    // should this be deprecated/removed?
     public void stopAudio() {
-        audioPlayer.stopAll();
+        for (AudioPlayer audioPlayer : audioList.values()) {
+            if (audioPlayer != null) {
+                audioPlayer.stopAll();
+            }
+        }
     }
 
-    public void stopVideo() {
-        for (Video video : videoList) {
+    public void stopAllMedia() {
+        for (Video video : videoList.values()) {
             if (video != null) {
                 video.pause();
             }
         }
-    }
-
-    public void startVideo() {
-        for (Video video : videoList) {
-            if (video != null) {
-                video.play();
+        for (AudioPlayer audioPlayer : audioList.values()) {
+            if (audioPlayer != null) {
+                audioPlayer.stopAll();
             }
         }
     }
 
-    public void rewindVideo() {
-        for (Video video : videoList) {
-            if (video != null) {
-                video.setCurrentTime(0);
+    public void stopMedia(final String mediaId) {
+        for (String key : videoList.keySet()) {
+            if (key.matches(mediaId)) {
+                Video video = videoList.get(key);
+                if (video != null) {
+                    video.pause();
+                }
+            }
+        }
+        for (String key : audioList.keySet()) {
+            if (key.matches(mediaId)) {
+                AudioPlayer audioPlayer = audioList.get(key);
+                if (audioPlayer != null) {
+                    audioPlayer.stopAll();
+                }
+            }
+        }
+    }
+
+    public void startMedia(final String mediaId) {
+        for (String key : videoList.keySet()) {
+            if (key.matches(mediaId)) {
+                Video video = videoList.get(key);
+                if (video != null) {
+                    video.play();
+                }
+            }
+        }
+        for (String key : audioList.keySet()) {
+            if (key.matches(mediaId)) {
+                AudioPlayer audioPlayer = audioList.get(key);
+                if (audioPlayer != null) {
+                    audioPlayer.play();
+                }
+            }
+        }
+    }
+
+    public void rewindMedia(final String mediaId) {
+        for (String key : videoList.keySet()) {
+            if (key.matches(mediaId)) {
+                Video video = videoList.get(key);
+                if (video != null) {
+                    video.setCurrentTime(0);
+                }
+            }
+        }
+        for (String key : audioList.keySet()) {
+            if (key.matches(mediaId)) {
+                AudioPlayer audioPlayer = audioList.get(key);
+                if (audioPlayer != null) {
+                    audioPlayer.rewind();
+                }
             }
         }
     }
