@@ -132,9 +132,11 @@
                                 <include>artifacts.json</include>
                                 <include>*.apk</include>
                                 <include>*.asar</include>
-                                <include>*win32*.zip</include>
-                                <include>*darwin*.zip</include>
-                                <include>*linux*.zip</include>
+                                <include>*win32.zip</include>
+                                <include>*win64.zip</include>
+                                <include>*darwin.zip</include>
+                                <include>*mac.zip</include>
+                                <include>*linux.zip</include>
                             </includes>
                         </resource>
                     </webResources>
