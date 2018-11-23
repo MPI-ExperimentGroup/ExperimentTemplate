@@ -102,7 +102,7 @@
             presenter.savePresenterState();
             }
         </xsl:text>
-        <xsl:if test="experiment/presenter/@type = 'colourPicker' or experiment/presenter/@type = 'preload' or experiment/presenter/@type = 'stimulus' or experiment/presenter/@type = 'kindiagram' or experiment/presenter/@type = 'timeline'">
+        <xsl:if test="experiment/presenter/@type = 'colourPicker'">
             <xsl:text>try {</xsl:text>
         </xsl:if>
         <xsl:text>
@@ -175,7 +175,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             break;
             }
         </xsl:text>
-        <xsl:if test="experiment/presenter/@type = 'colourPicker' or experiment/presenter/@type = 'preload' or experiment/presenter/@type = 'stimulus' or experiment/presenter/@type = 'kindiagram' or experiment/presenter/@type = 'timeline'">
+        <xsl:if test="experiment/presenter/@type = 'colourPicker'">
             <xsl:text>
                 } catch (</xsl:text>
             <xsl:value-of select="if(experiment/presenter/@type = 'colourPicker') then 'CanvasError' else ''" />
