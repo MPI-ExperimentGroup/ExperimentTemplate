@@ -130,6 +130,18 @@ public class AudioPlayer {
         return audioPlayer.getCurrentTime();
     }
 
+    public void play() {
+        if (audioPlayer != null) {
+            audioPlayer.play();
+        };
+    }
+
+    public void rewind() {
+        if (audioPlayer != null) {
+            audioPlayer.setCurrentTime(0);
+        };
+    }
+
     public void stopAll() {
         if (audioPlayer != null) {
             audioPlayer.pause();
