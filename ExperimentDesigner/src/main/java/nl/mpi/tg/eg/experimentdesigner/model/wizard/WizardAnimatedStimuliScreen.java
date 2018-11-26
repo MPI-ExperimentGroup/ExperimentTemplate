@@ -144,6 +144,8 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.recordingFormat, "wav");
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.filePerStimulus, "false");
         startRecorderFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
+        startRecorderFeature.addFeature(FeatureType.onError, null);
+        startRecorderFeature.addFeature(FeatureType.onSuccess, null);
         hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
 
         if (storedWizardScreenData.getTaskIndex() == 1) {
@@ -217,11 +219,15 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             stimulusCodeAudio1.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>_question");
             stimulusCodeAudio1.addFeatureAttributes(FeatureAttribute.msToNext, "0");
             stimulusCodeAudio1.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, "false");
+            stimulusCodeAudio1.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(true));
+            stimulusCodeAudio1.addFeatureAttributes(FeatureAttribute.mediaId, "media");
             stimulusCodeAudio1.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
             final PresenterFeature stimulusCodeAudio2 = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
             stimulusCodeAudio2.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>_question");
             stimulusCodeAudio2.addFeatureAttributes(FeatureAttribute.msToNext, "0");
             stimulusCodeAudio2.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, "false");
+            stimulusCodeAudio2.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(true));
+            stimulusCodeAudio2.addFeatureAttributes(FeatureAttribute.mediaId, "media");
             stimulusCodeAudio2.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
             final PresenterFeature presenterFeature = new PresenterFeature(FeatureType.actionButton, "Play Sound");
             presenterFeature.addFeatureAttributes(FeatureAttribute.styleName, "hiddenTopRight");
@@ -308,11 +314,15 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.stimulusAudio, null);
             presenterFeature1.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
             presenterFeature1.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+            presenterFeature1.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(true));
+            presenterFeature1.addFeatureAttributes(FeatureAttribute.mediaId, "media");
             presenterFeature.getPresenterFeatureList().add(presenterFeature1);
             presenterFeature1.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
             final PresenterFeature presenterFeature2 = new PresenterFeature(FeatureType.stimulusAudio, null);
             presenterFeature2.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
             presenterFeature2.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+            presenterFeature2.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(true));
+            presenterFeature2.addFeatureAttributes(FeatureAttribute.mediaId, "media");
             presenterFeature2.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
             mediaLoaded.getPresenterFeatureList().add(presenterFeature2);
             mediaLoaded.getPresenterFeatureList().add(presenterFeature);
@@ -350,11 +360,15 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.stimulusAudio, null);
             presenterFeature1.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
             presenterFeature1.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+            presenterFeature1.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(true));
+            presenterFeature1.addFeatureAttributes(FeatureAttribute.mediaId, "media");
             presenterFeature1.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
             presenterFeature.getPresenterFeatureList().add(presenterFeature1);
             final PresenterFeature presenterFeature2 = new PresenterFeature(FeatureType.stimulusAudio, null);
             presenterFeature2.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
             presenterFeature2.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+            presenterFeature2.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(true));
+            presenterFeature2.addFeatureAttributes(FeatureAttribute.mediaId, "media");
             presenterFeature2.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
             returnFeature.getPresenterFeatureList().add(presenterFeature2);
             returnFeature.getPresenterFeatureList().add(presenterFeature);
@@ -426,11 +440,15 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             final PresenterFeature presenterFeature1 = new PresenterFeature(FeatureType.stimulusAudio, null);
             presenterFeature1.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
             presenterFeature1.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+            presenterFeature1.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(true));
+            presenterFeature1.addFeatureAttributes(FeatureAttribute.mediaId, "media");
             presenterFeature1.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
             presenterFeature.getPresenterFeatureList().add(presenterFeature1);
             final PresenterFeature presenterFeature2 = new PresenterFeature(FeatureType.stimulusAudio, null);
             presenterFeature2.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
             presenterFeature2.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+            presenterFeature2.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(true));
+            presenterFeature2.addFeatureAttributes(FeatureAttribute.mediaId, "media");
             presenterFeature2.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
             returnFeature.getPresenterFeatureList().add(presenterFeature2);
             returnFeature.getPresenterFeatureList().add(presenterFeature);
