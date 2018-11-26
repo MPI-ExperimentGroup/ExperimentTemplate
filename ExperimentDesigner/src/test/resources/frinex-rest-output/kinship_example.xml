@@ -46,14 +46,14 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusCodeVideo msToNext="100" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" loop="false" styleName="" autoPlay="true" showControls="false" maxWidth="80">
+                <stimulusCodeVideo msToNext="100" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" loop="false" styleName="" autoPlay="true" mediaId="mediaId" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete>
                         <clearPage/>
                         <centrePage/>
                         <pause msToNext="100">
-                            <stimulusAudio msToNext="100" showPlaybackIndicator="false">
+                            <stimulusAudio msToNext="100" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
