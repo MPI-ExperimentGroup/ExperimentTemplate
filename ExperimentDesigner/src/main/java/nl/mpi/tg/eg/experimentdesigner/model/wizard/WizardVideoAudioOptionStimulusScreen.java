@@ -310,6 +310,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.loop, "false");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.autoPlay, "true");
+            codeVideoFeature.addFeatureAttributes(FeatureAttribute.mediaId, "media");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.showControls, "false");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.styleName, "");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
