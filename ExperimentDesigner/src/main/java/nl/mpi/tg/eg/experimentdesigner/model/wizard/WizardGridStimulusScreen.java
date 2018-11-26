@@ -503,7 +503,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         final PresenterFeature stimulusRelatedTags;
         if (isShowCurtains(storedWizardScreenData)) {
             stimulusRelatedTags = hasMoreStimulusFeature;
-            hasMoreStimulusFeature.addFeature(FeatureType.stimulusCodeVideo, null, "0", "1", "100", "<code>", "0", "true", "borderedVideoFull", "false", "false", "100").addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
+            hasMoreStimulusFeature.addFeature(FeatureType.stimulusCodeVideo, null, "0", "1", "100", "<code>", "0", "true", "borderedVideoFull", "false", "false", "100", "media").addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
             final PresenterFeature touchInputCaptureStart = hasMoreStimulusFeature.addFeature(FeatureType.touchInputCaptureStart, null, "false", "20000");
             touchInputCaptureStart.addFeature(FeatureType.pauseMedia, null);
             touchInputCaptureStart.addFeature(FeatureType.enableButtonGroup, null);
@@ -557,10 +557,10 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
 //        final PresenterFeature rightColumnFeature = new PresenterFeature(FeatureType.column, null);
 //        rowFeature.getPresenterFeatureList().add(rightColumnFeature);
             // todo: implement "<option_0>" instead of "<code>_L" and "<option_1>" instead of "<code>_R"
-            final PresenterFeature stimulusCodeVideoL = stimulusCodeAudioLoaded.addFeature(FeatureType.stimulusCodeVideo, null, "0", "1", "100", "<code>_L", "0", "false", "borderedVideoLeft", "true", "false", "100");
+            final PresenterFeature stimulusCodeVideoL = stimulusCodeAudioLoaded.addFeature(FeatureType.stimulusCodeVideo, null, "0", "1", "100", "<code>_L", "0", "false", "borderedVideoLeft", "true", "false", "100", "media");
             stimulusCodeVideoL.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
-            final PresenterFeature stimulusCodeVideoR = stimulusCodeAudioLoaded.addFeature(FeatureType.stimulusCodeVideo, null, "0", "1", "100", "<code>_R", "0", "false", "borderedVideoRight", "true", "false", "100");
-            final PresenterFeature stimulusCodeAudio3 = stimulusCodeVideoR.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2].addFeature(FeatureType.stimulusCodeAudio, null, "0", "1", "<code>_3", Boolean.toString(false));
+            final PresenterFeature stimulusCodeVideoR = stimulusCodeAudioLoaded.addFeature(FeatureType.stimulusCodeVideo, null, "0", "1", "100", "<code>_R", "0", "false", "borderedVideoRight", "true", "false", "100", "media");
+            final PresenterFeature stimulusCodeAudio3 = stimulusCodeVideoR.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2].addFeature(FeatureType.stimulusCodeAudio, null, "0", "1", "<code>_3", Boolean.toString(false), "media");
             stimulusRelatedTags = stimulusCodeAudio3.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
             stimulusCodeAudio3.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(true));
             stimulusCodeAudio3.addFeatureAttributes(FeatureAttribute.mediaId, "media");
