@@ -302,7 +302,7 @@
                 <plainText featureText="TimerA logTimerValue"/>
             </region>
         </actionButton>
-   </presenter>
+    </presenter>
     <presenter back="Menu" menuLabel="With Stimuli Screen" next="First_Stimuli_Screen_Informatie" type="stimulus" self="With_Stimuli_Screen" title="With Stimuli Screen">
         <withStimuli eventTag="With Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <beforeStimulus>       
@@ -960,6 +960,114 @@
             </stimuli>
         </loadStimulus>
     </presenter>
+    <presenter back="Menu" menuLabel="Media Playback Demo" type="stimulus" self="Media_Playback_Demo" title="Media Playback Demo">
+        <loadStimulus eventTag="Third" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <stimulusLabel styleName="stimuliLabel"/>
+                
+                <addPadding/>
+                <stimulusFreeText featureText="Vul minimal 1 letter." styleName="stimuliLabel" validationRegex=".{1,}" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
+                <stimulusImage msToNext="60" styleName="styleName" dataChannel="2">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                </stimulusImage>
+                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="&lt;code&gt;" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="false" mediaId="mediaId1" showControls="true" maxWidth="60">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusCodeVideo>
+                <stimulusCodeAudio msToNext="60" codeFormat="&lt;code&gt;" dataChannel="2" autoPlay="false" mediaId="mediaId2" showPlaybackIndicator="showPlaybackIndicator">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusCodeAudio>
+                <stimulusAudio msToNext="60" dataChannel="2" autoPlay="false" mediaId="mediaId3" showPlaybackIndicator="showPlaybackIndicator">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusAudio>
+                <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                    <plainText featureText="plainText in stimulusImageCapture"/>
+                </stimulusImageCapture>
+                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="deviceRegex" filePerStimulus="filePerStimulus">
+                    <onError>
+                        <plainText featureText="plainText in onError"/>
+                    </onError>
+                    <onSuccess>
+                        <plainText featureText="plainText in onSuccess"/>
+                    </onSuccess>
+                </startAudioRecorder>
+                <stopAudioRecorder/>
+                <startAudioRecorderTag eventTier="8"/>
+                <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
+                
+                
+        
+        
+                <actionButton featureText="playMedia">
+                    <playMedia mediaId="mediaId1"/>
+                </actionButton>
+                <actionButton featureText="rewindMedia">
+                    <rewindMedia mediaId="mediaId1"/>
+                </actionButton>
+                <actionButton featureText="pauseMedia">
+                    <pauseMedia mediaId="mediaId1"/>
+                </actionButton>
+        
+                <actionButton featureText="playMedia">
+                    <playMedia mediaId="mediaId2"/>
+                </actionButton>
+                <actionButton featureText="rewindMedia">
+                    <rewindMedia mediaId="mediaId2"/>
+                </actionButton>
+                <actionButton featureText="pauseMedia">
+                    <pauseMedia mediaId="mediaId2"/>
+                </actionButton>
+        
+                <actionButton featureText="playMedia">
+                    <playMedia mediaId="mediaId3"/>
+                </actionButton>
+                <actionButton featureText="rewindMedia">
+                    <rewindMedia mediaId="mediaId3"/>
+                </actionButton>
+                <actionButton featureText="pauseMedia">
+                    <pauseMedia mediaId="mediaId3"/>
+                </actionButton>
+                <actionButton featureText="Volgende [tab + enter]">
+                    <nextStimulus repeatIncorrect="false"/>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <gotoNextPresenter/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>media</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
     <presenter back="Menu" menuLabel="USB LP310" type="stimulus" self="USB_LP310" title="USB LP310 laser pointer remote">
         <htmlText featureText="USB LP310 laser pointer remote test page&lt;br/&gt;"/>
         <actionButton featureText="LP310_UP" hotKey="LP310_UP">
@@ -1108,6 +1216,45 @@
             </stimuli>
         </loadStimulus>
     </presenter>
+    <presenter back="Menu" menuLabel="if stimulus exists" type="stimulus" self="if_stimulus_exists" title="if stimulus exists">
+        <loadStimulus eventTag="if_stimulus_exists" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <htmlText featureText="This demonstration screen shows buttons depending on a given stimulus existing at an offset.&lt;br/&gt;"/> 
+                <stimulusLabel styleName="stimuliLabel"/>
+                <table>
+                    <row>
+                        <column>
+                            <stimulusExists offset="-1">
+                                <conditionTrue>
+                                    <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="-1" styleName="" repeatIncorrect="false"/>
+                                </conditionTrue>
+                                <conditionFalse/>
+                            </stimulusExists>
+                        </column>
+                        <column>
+                            <stimulusExists offset="+1">
+                                <conditionTrue>
+                                    <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="-1" styleName="" repeatIncorrect="false"/>
+                                </conditionTrue>
+                                <conditionFalse/>
+                            </stimulusExists>
+                        </column>
+                    </row>
+                </table>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="if_stimulus_exists"/>
+                    <gotoPresenter target="if_stimulus_exists"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>RecorderPauseTest</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
     <presenter back="Menu" menuLabel="Einde van het experiment" next="Toestemming" type="transmission" self="completion" title="Einde van het experiment">
         <generateCompletionCode>
             <onSuccess>
@@ -1158,8 +1305,30 @@
         <stimulus identifier="RecorderPauseTest7000" label="7000" pauseMs="7000" tags="RecorderPauseTest"/>
         <stimulus identifier="RecorderPauseTest8000" label="8000" pauseMs="8000" tags="RecorderPauseTest"/>
         <stimulus identifier="RecorderPauseTest9000" label="9000" pauseMs="9000" tags="RecorderPauseTest"/>
-        <stimulus identifier="RecorderPauseTest10000" label="10000" pauseMs="10000" tags="RecorderPauseTest"/>
-        
+        <stimulus identifier="RecorderPauseTest10000" label="10000" pauseMs="10000" tags="RecorderPauseTest"/>        
+        <stimulus audioPath="d1e269" code="d1e269" identifier="d1e269" imagePath="d1e269.jpg" label="d1e269" pauseMs="0" tags="media" videoPath="d1e269"/>
+        <stimulus audioPath="d1e235" code="d1e235" identifier="d1e235" imagePath="d1e235.jpg" label="d1e235" pauseMs="0" tags="media" videoPath="d1e235"/>
+        <stimulus audioPath="d1e241" code="d1e241" identifier="d1e241" imagePath="d1e241.jpg" label="d1e241" pauseMs="0" tags="media" videoPath="d1e241"/>
+        <stimulus audioPath="d1e247" code="d1e247" identifier="d1e247" imagePath="d1e247.jpg" label="d1e247" pauseMs="0" tags="media" videoPath="d1e247"/>
+        <stimulus audioPath="d1e253" code="d1e253" identifier="d1e253" imagePath="d1e253.jpg" label="d1e253" pauseMs="0" tags="media" videoPath="d1e253"/>
+        <stimulus audioPath="d1e259" code="d1e259" identifier="d1e259" imagePath="d1e259.jpg" label="d1e259" pauseMs="0" tags="media" videoPath="d1e259"/>
+        <stimulus audioPath="d1e266" code="d1e266" identifier="d1e266" imagePath="d1e266.jpg" label="d1e266" pauseMs="0" tags="media" videoPath="d1e266"/>
+        <stimulus audioPath="d1e272" code="d1e272" identifier="d1e272" imagePath="d1e272.jpg" label="d1e272" pauseMs="0" tags="media" videoPath="d1e272"/>
+        <stimulus audioPath="d1e278" code="d1e278" identifier="d1e278" imagePath="d1e278.jpg" label="d1e278" pauseMs="0" tags="media" videoPath="d1e278"/>
+        <stimulus audioPath="d1e284" code="d1e284" identifier="d1e284" imagePath="d1e284.jpg" label="d1e284" pauseMs="0" tags="media" videoPath="d1e284"/>
+        <stimulus audioPath="d1e290" code="d1e290" identifier="d1e290" imagePath="d1e290.jpg" label="d1e290" pauseMs="0" tags="media" videoPath="d1e290"/>
+        <stimulus audioPath="d1e228" code="d1e228" identifier="d1e228" imagePath="d1e228.jpg" label="d1e228" pauseMs="0" tags="media" videoPath="d1e228"/>
+        <stimulus audioPath="d1e238" code="d1e238" identifier="d1e238" imagePath="d1e238.jpg" label="d1e238" pauseMs="0" tags="media" videoPath="d1e238"/>
+        <stimulus audioPath="d1e244" code="d1e244" identifier="d1e244" imagePath="d1e244.jpg" label="d1e244" pauseMs="0" tags="media" videoPath="d1e244"/>
+        <stimulus audioPath="d1e250" code="d1e250" identifier="d1e250" imagePath="d1e250.jpg" label="d1e250" pauseMs="0" tags="media" videoPath="d1e250"/>
+        <stimulus audioPath="d1e256" code="d1e256" identifier="d1e256" imagePath="d1e256.jpg" label="d1e256" pauseMs="0" tags="media" videoPath="d1e256"/>
+        <stimulus audioPath="d1e263" code="d1e263" identifier="d1e263" imagePath="d1e263.jpg" label="d1e263" pauseMs="0" tags="media" videoPath="d1e263"/>
+        <stimulus audioPath="d1e275" code="d1e275" identifier="d1e275" imagePath="d1e275.jpg" label="d1e275" pauseMs="0" tags="media" videoPath="d1e275"/>
+        <stimulus audioPath="d1e281" code="d1e281" identifier="d1e281" imagePath="d1e281.jpg" label="d1e281" pauseMs="0" tags="media" videoPath="d1e281"/>
+        <stimulus audioPath="d1e287" code="d1e287" identifier="d1e287" imagePath="d1e287.jpg" label="d1e287" pauseMs="0" tags="media" videoPath="d1e287"/>
+        <stimulus audioPath="d1e293" code="d1e293" identifier="d1e293" imagePath="d1e293.jpg" label="d1e293" pauseMs="0" tags="media" videoPath="d1e293"/>
+        <stimulus audioPath="d1e223" code="d1e223" identifier="d1e223" imagePath="d1e223.jpg" label="d1e223" pauseMs="0" tags="media" videoPath="d1e223"/>
+        <stimulus audioPath="missing" code="missing" identifier="missing" imagePath="missing.jpg" label="this stimuli is missing and should be handled nicely" pauseMs="0" tags="media" videoPath="missing"/>
         <stimulus identifier="Q1" label="The correct answer is 'continue'" correctResponses="continue"  ratingLabels="continue,arrête" pauseMs="0" tags="Pretest_Screen"/>        
         <stimulus identifier="Q2" label="The correct answer is 2" correctResponses="2" ratingLabels="1,2" pauseMs="0" tags="Pretest_Screen"/>        
         <stimulus identifier="Q3" label="The correct answer is 3" correctResponses="3" ratingLabels="1,2,3" pauseMs="0" tags="Pretest_Screen"/>        
