@@ -1330,6 +1330,8 @@ styleName<br/>
 dataChannel<br/>
 *codeFormat<br/>
 *showPlaybackIndicator<br/>
+*autoPlay<br/>
+*mediaId<br/>
 </td><td>
 &lt;mediaLoaded&gt;<br/>
 &lt;mediaLoadFailed&gt;<br/>
@@ -1342,6 +1344,8 @@ dataChannel<br/>
 *msToNext<br/>
 dataChannel<br/>
 *showPlaybackIndicator<br/>
+*autoPlay<br/>
+*mediaId<br/>
 </td><td>
 &lt;mediaLoaded&gt;<br/>
 &lt;mediaLoadFailed&gt;<br/>
@@ -1349,20 +1353,23 @@ dataChannel<br/>
 </td>
 </tr>
 <tr><td>
-<div class="complexType">&lt;playVideo&gt;<br/>
+<div class="complexType">&lt;playMedia&gt;<br/>
 </td><td>
-</td><td>
-</td>
-</tr>
-<tr><td>
-<div class="complexType">&lt;rewindVideo&gt;<br/>
-</td><td>
+*mediaId<br/>
 </td><td>
 </td>
 </tr>
 <tr><td>
-<div class="complexType">&lt;pauseVideo&gt;<br/>
+<div class="complexType">&lt;rewindMedia&gt;<br/>
 </td><td>
+*mediaId<br/>
+</td><td>
+</td>
+</tr>
+<tr><td>
+<div class="complexType">&lt;pauseMedia&gt;<br/>
+</td><td>
+*mediaId<br/>
 </td><td>
 </td>
 </tr>
