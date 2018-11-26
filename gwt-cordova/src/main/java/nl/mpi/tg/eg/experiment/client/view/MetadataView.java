@@ -19,7 +19,6 @@ package nl.mpi.tg.eg.experiment.client.view;
 
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.FlexTable;
-import com.google.gwt.user.client.ui.FocusWidget;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
@@ -117,7 +116,8 @@ public class MetadataView extends ComplexView {
                 return metadataFieldOther;
             }
         };
-        fieldBoxes.get(fieldListener.getMetadataFieldOther()).addMetadataFieldListener(fieldListener);
+        // in this case if the other field has a value, then this field also has a value, so we do not trigger the initial state
+        fieldBoxes.get(fieldListener.getMetadataFieldOther()).addMetadataFieldListener(fieldListener, false);
     }
 
     public void addField(final MetadataField metadataField, final String existingValue, String labelString, final MetadataField metadataFieldOther, final String matchingRegex) {
@@ -150,7 +150,8 @@ public class MetadataView extends ComplexView {
                 return metadataFieldOther;
             }
         };
-        fieldBoxes.get(fieldListener.getMetadataFieldOther()).addMetadataFieldListener(fieldListener);
+        // in this case this field should always be shown or hidden according to the other fields value, so we must trigger the initial state
+        fieldBoxes.get(fieldListener.getMetadataFieldOther()).addMetadataFieldListener(fieldListener, true);
     }
 
     public MetadataFieldWidget addField(final MetadataField metadataField, final String existingValue, String labelString) {
