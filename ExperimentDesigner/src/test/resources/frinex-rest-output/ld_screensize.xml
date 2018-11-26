@@ -101,12 +101,12 @@
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete/>
                             </stimulusCodeAudio>
-                            <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" loop="false" styleName="borderedVideoLeft" dataChannel="1" autoPlay="true" showControls="false" maxWidth="100">
+                            <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" loop="false" styleName="borderedVideoLeft" dataChannel="1" autoPlay="true" mediaId="mediaId" showControls="false" maxWidth="100">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete/>
                             </stimulusCodeVideo>
-                            <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" loop="false" styleName="borderedVideoRight" dataChannel="1" autoPlay="true" showControls="false" maxWidth="100">
+                            <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" loop="false" styleName="borderedVideoRight" dataChannel="1" autoPlay="true" mediaId="mediaId" showControls="false" maxWidth="100">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -202,12 +202,12 @@
                                             <mediaLoadFailed/>
                                             <mediaPlaybackComplete/>
                                         </stimulusCodeAudio>
-                                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" loop="false" styleName="borderedVideoLeft" dataChannel="1" autoPlay="true" showControls="false" maxWidth="100">
+                                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" loop="false" styleName="borderedVideoLeft" dataChannel="1" autoPlay="true" mediaId="mediaId" showControls="false" maxWidth="100">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackComplete/>
                                         </stimulusCodeVideo>
-                                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" loop="false" styleName="borderedVideoRight" dataChannel="1" autoPlay="true" showControls="false" maxWidth="100">
+                                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" loop="false" styleName="borderedVideoRight" dataChannel="1" autoPlay="true" mediaId="mediaId" showControls="false" maxWidth="100">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackComplete>
@@ -317,12 +317,12 @@
                                             <mediaLoadFailed/>
                                             <mediaPlaybackComplete/>
                                         </stimulusCodeAudio>
-                                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" loop="false" styleName="borderedVideoLeft" dataChannel="1" autoPlay="true" showControls="false" maxWidth="100">
+                                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" loop="false" styleName="borderedVideoLeft" dataChannel="1" autoPlay="true" mediaId="mediaId" showControls="false" maxWidth="100">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackComplete/>
                                         </stimulusCodeVideo>
-                                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" loop="false" styleName="borderedVideoRight" dataChannel="1" autoPlay="true" showControls="false" maxWidth="100">
+                                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" loop="false" styleName="borderedVideoRight" dataChannel="1" autoPlay="true" mediaId="mediaId" showControls="false" maxWidth="100">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackComplete>
@@ -432,12 +432,12 @@
                                             <mediaLoadFailed/>
                                             <mediaPlaybackComplete/>
                                         </stimulusCodeAudio>
-                                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" loop="false" styleName="borderedVideoLeft" dataChannel="1" autoPlay="true" showControls="false" maxWidth="100">
+                                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" loop="false" styleName="borderedVideoLeft" dataChannel="1" autoPlay="true" mediaId="mediaId" showControls="false" maxWidth="100">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackComplete/>
                                         </stimulusCodeVideo>
-                                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" loop="false" styleName="borderedVideoRight" dataChannel="1" autoPlay="true" showControls="false" maxWidth="100">
+                                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" loop="false" styleName="borderedVideoRight" dataChannel="1" autoPlay="true" mediaId="mediaId" showControls="false" maxWidth="100">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackComplete>
@@ -547,12 +547,12 @@
                                             <mediaLoadFailed/>
                                             <mediaPlaybackComplete/>
                                         </stimulusCodeAudio>
-                                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" loop="false" styleName="borderedVideoLeft" dataChannel="1" autoPlay="true" showControls="false" maxWidth="100">
+                                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" loop="false" styleName="borderedVideoLeft" dataChannel="1" autoPlay="true" mediaId="mediaId" showControls="false" maxWidth="100">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackComplete/>
                                         </stimulusCodeVideo>
-                                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" loop="false" styleName="borderedVideoRight" dataChannel="1" autoPlay="true" showControls="false" maxWidth="100">
+                                        <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" loop="false" styleName="borderedVideoRight" dataChannel="1" autoPlay="true" mediaId="mediaId" showControls="false" maxWidth="100">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackComplete>
