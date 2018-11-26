@@ -152,8 +152,13 @@ public class MetadataFieldWidget implements StimulusFreeText {
         }
     }
 
-    public void addMetadataFieldListener(MetadataFieldListener metadataFieldListener) {
+    public void addMetadataFieldListener(MetadataFieldListener metadataFieldListener, boolean triggerInitialState) {
         this.metadataFieldListeners.add(metadataFieldListener);
+        // trigger the field listeners of existing fields at this point to get the initital state correct
+        // For age dependant field where the user can change the selection, we do not trigger the initial state. For visibility dependant fields the field should always be shown or hidden according to the other fields value, so we do trigger the initial state.
+        if (triggerInitialState) {
+            triggerFieldListeners();
+        }
     }
 
     @Override
