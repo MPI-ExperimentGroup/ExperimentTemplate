@@ -210,14 +210,14 @@ public abstract class AbstractMetadataPresenter extends AbstractPresenter implem
         ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel(), localStorage.getUserIdList(metadataFieldLabel), userResults.getUserData().getMetadataConnection(metadataField), oneToMany);
     }
 
-    protected void metadataFieldVisibilityDependant(final MetadataField metadataField, final MetadataField metadataFieldOther, final String matchingRegex) {
+    protected void metadataFieldVisibilityDependant(final MetadataField metadataField, final MetadataField metadataFieldOther, final String visibleRegex, final String enabledRegex) {
         // metadataFieldDependant fields are only shown when the linkedFieldName matches the matchingRegex
-        ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel(), metadataFieldOther, matchingRegex);
+        ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel(), metadataFieldOther, visibleRegex, enabledRegex);
     }
 
-    protected void metadataFieldDateTriggered(final MetadataField metadataField, final MetadataField metadataFieldOther, final int[] daysThresholds) {
+    protected void metadataFieldDateTriggered(final MetadataField metadataField, final MetadataField metadataFieldOther, final String visibleRegex, final String enabledRegex, final int[] daysThresholds) {
         // daysThresholds indicates the index that should be selected based on the day age from metadataFieldOther
-        ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel(), metadataFieldOther, daysThresholds);
+        ((MetadataView) simpleView).addField(metadataField, userResults.getUserData().getMetadataValue(metadataField), metadataField.getFieldLabel(), metadataFieldOther, daysThresholds, visibleRegex, enabledRegex);
     }
 
     protected void metadataField(MetadataField metadataField) {
