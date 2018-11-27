@@ -517,6 +517,8 @@ or local-name() eq 'removeStimulus'
         <xsl:value-of select="if(@sendData) then concat(', ', @sendData eq 'true') else ''" />    
         <xsl:value-of select="if(@matchingRegex and (@linkedFieldName or @fieldName)) then ', ' else ''" />
         <xsl:value-of select="if(@matchingRegex) then concat('&quot;', @matchingRegex, '&quot;') else ''" />
+        <xsl:value-of select="if(@visibleRegex) then concat(',&quot;', @visibleRegex, '&quot;') else ''" />
+        <xsl:value-of select="if(@enabledRegex) then concat(',&quot;', @enabledRegex, '&quot;') else ''" />
         <xsl:if test="@daysThresholds">
             <xsl:text>, new int[]{</xsl:text>
             <xsl:for-each select="tokenize(@daysThresholds,' ')">
@@ -962,11 +964,11 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         <xsl:value-of select="if(@msToNext) then @msToNext else ''" />
         <xsl:value-of select="if(@msToNext and @listenerId) then ', ' else ''" />
         <xsl:value-of select="if(@listenerId) then concat('&quot;',@listenerId, '&quot;') else ''" />
+        <xsl:value-of select="if(@recordingFormat) then concat('&quot;', @recordingFormat, '&quot;, ') else ''" />
         <xsl:value-of select="if(@mediaId) then concat('&quot;',@mediaId, '&quot;') else ''" />
         <xsl:value-of select="if(@target) then concat('ApplicationState.', @target, '.name()') else ''" />
         <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />        
-        <xsl:value-of select="if(@recordingFormat) then concat('&quot;', @recordingFormat, '&quot;, ') else ''" />
-        <xsl:value-of select="if(local-name() eq 'startAudioRecorder') then if(@deviceRegex) then concat('&quot;', @deviceRegex, '&quot;, ') else 'null,' else ''" />
+        <xsl:value-of select="if(local-name() eq 'startAudioRecorder') then if(@deviceRegex) then concat(',&quot;', @deviceRegex, '&quot;, ') else 'null,' else ''" />
         <xsl:value-of select="if(@filePerStimulus) then concat(@filePerStimulus eq 'true', ', ') else ''" />
         <xsl:value-of select="if(@eventTier) then concat(@eventTier, if (@eventTag) then ', ' else '') else ''" />
         <xsl:value-of select="if(@src and @eventTag) then ', ' else ''" />
