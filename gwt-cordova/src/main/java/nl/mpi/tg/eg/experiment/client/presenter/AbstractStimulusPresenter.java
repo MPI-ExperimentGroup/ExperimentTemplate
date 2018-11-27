@@ -1045,6 +1045,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             ((TimedStimulusView) simpleView).addTimedAudio(oggTrustedString, mp3TrustedString, postLoadMs, false, shownStimulusListener, failedStimulusListener, playedStimulusListener, true, "autoStimulus");
         } else if (currentStimulus.hasVideo()) {
             String ogg = currentStimulus.getVideo() + ".ogg";
+            String ogv = currentStimulus.getVideo() + ".ogv";
             String mp4 = currentStimulus.getVideo() + ".mp4";
             if (regex != null && replacement != null) {
                 mp4 = mp4.replaceAll(regex, replacement);
@@ -1052,6 +1053,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
 //            submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusVideo", currentStimulus.getVideo(), duration.elapsedMillis());
             final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(ogg);
+            final SafeUri ogvTrustedString = (ogv == null) ? null : UriUtils.fromTrustedString(ogv);
             final SafeUri mp4TrustedString = (mp4 == null) ? null : UriUtils.fromTrustedString(mp4);
             final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
                 @Override
@@ -1061,7 +1063,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                     loadedStimulusListener.postLoadTimerFired();
                 }
             };
-            ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, null, false, false, showControls, postLoadMs, shownStimulusListener, failedStimulusListener, playedStimulusListener, "stimulusPresent");
+            ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, ogvTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, null, false, false, showControls, postLoadMs, shownStimulusListener, failedStimulusListener, playedStimulusListener, "stimulusPresent");
         } else if (currentStimulus.getLabel() != null) {
             ((TimedStimulusView) simpleView).addHtmlText(currentStimulus.getLabel(), null);
             // send label shown tag
@@ -1109,12 +1111,35 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).addTimedAudio(oggTrustedString, mp3TrustedString, postLoadMs, showPlaybackIndicator, shownStimulusListener, failedStimulusListener, playedStimulusListener, autoPlay, mediaId);
     }
 
+    protected void stimulusVideo(final Stimulus currentStimulus, final String styleName, final boolean autoPlay, final String mediaId, final boolean loop, final boolean showControls, int postLoadMs, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
+        final String videoName = currentStimulus.getVideo();
+        final String uniqueId = currentStimulus.getUniqueId();
+        String mp4 = videoName + ".mp4";
+        String ogg = videoName + ".ogg";
+        String ogv = videoName + ".ogv";
+        final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(ogg);
+        final SafeUri ogvTrustedString = (ogv == null) ? null : UriUtils.fromTrustedString(ogv);
+        final SafeUri mp4TrustedString = (mp4 == null) ? null : UriUtils.fromTrustedString(mp4);
+//        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeVideo", formattedCode, duration.elapsedMillis());
+        final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
+            @Override
+            protected void trigggerCancelableEvent() {
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusVideoShown", uniqueId, videoName, duration.elapsedMillis());
+                loadedStimulusListener.postLoadTimerFired();
+            }
+        };
+//        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", formattedCode, duration.elapsedMillis());
+        ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, ogvTrustedString, mp4TrustedString, 0, 0, 0, styleName, autoPlay, loop, showControls, postLoadMs, shownStimulusListener, failedStimulusListener, playedStimulusListener, mediaId);
+    }
+
     protected void stimulusCodeVideo(final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final String mediaId, final boolean loop, final boolean showControls, int postLoadMs, String codeFormat, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         final String formattedCode = StimuliCodeFormatter.getFormattedStimulusCode(currentStimulus, codeFormat);
         final String uniqueId = currentStimulus.getUniqueId();
         String mp4 = formattedCode + ".mp4";
         String ogg = formattedCode + ".ogg";
+        String ogv = formattedCode + ".ogv";
         final SafeUri oggTrustedString = (ogg == null) ? null : UriUtils.fromTrustedString(serviceLocations.staticFilesUrl() + ogg);
+        final SafeUri ogvTrustedString = (ogv == null) ? null : UriUtils.fromTrustedString(serviceLocations.staticFilesUrl() + ogv);
         final SafeUri mp4TrustedString = (mp4 == null) ? null : UriUtils.fromTrustedString(serviceLocations.staticFilesUrl() + mp4);
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeVideo", formattedCode, duration.elapsedMillis());
         final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
@@ -1125,7 +1150,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
         };
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", formattedCode, duration.elapsedMillis());
-        ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, styleName, autoPlay, loop, showControls, postLoadMs, shownStimulusListener, failedStimulusListener, playedStimulusListener, mediaId);
+        ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, ogvTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, styleName, autoPlay, loop, showControls, postLoadMs, shownStimulusListener, failedStimulusListener, playedStimulusListener, mediaId);
     }
 
     protected void stimulusAudio(final Stimulus currentStimulus, final boolean autoPlay, final String mediaId, int postLoadMs, boolean showPlaybackIndicator, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
@@ -1403,7 +1428,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         super.startAudioRecorderTag(tier); //((tier < 1) ? 1 : tier) + 2); //  tier 1 and 2 are reserved for stimulus set loading and stimulus display events
     }
 
-    protected void startAudioRecorder(final String recordingFormat, final String deviceRegex, boolean filePerStimulus, String directoryName, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+    protected void startAudioRecorder(final String recordingFormat, final String deviceRegex, final String mediaId, boolean filePerStimulus, String directoryName, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
 //        final String subdirectoryName = userResults.getUserData().getUserId().toString();
         final String subdirectoryName = userResults.getUserData().getMetadataValue(new MetadataFieldProvider().workerIdMetadataField);
         final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener() {
