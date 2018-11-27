@@ -71,7 +71,7 @@ public class MetadataFieldWidget implements StimulusFreeText {
             dateOfBirthField = new DateOfBirthField() {
                 @Override
                 void valueChanged() {
-                    triggerFieldListeners();
+                    triggerFieldListeners(true);
                 }
             };
             focusWidget = dateOfBirthField.getTextBox();
@@ -87,7 +87,7 @@ public class MetadataFieldWidget implements StimulusFreeText {
             ((CheckBox) focusWidget).addValueChangeHandler(new ValueChangeHandler<Boolean>() {
                 @Override
                 public void onValueChange(ValueChangeEvent<Boolean> event) {
-                    triggerFieldListeners();
+                    triggerFieldListeners(true);
                 }
             });
             widget = focusWidget;
@@ -111,7 +111,7 @@ public class MetadataFieldWidget implements StimulusFreeText {
             ((ListBox) focusWidget).addChangeHandler(new ChangeHandler() {
                 @Override
                 public void onChange(ChangeEvent event) {
-                    triggerFieldListeners();
+                    triggerFieldListeners(true);
                 }
             });
             widget = focusWidget;
@@ -127,7 +127,7 @@ public class MetadataFieldWidget implements StimulusFreeText {
             ((TextBoxBase) focusWidget).addValueChangeHandler(new ValueChangeHandler<String>() {
                 @Override
                 public void onValueChange(ValueChangeEvent<String> event) {
-                    triggerFieldListeners();
+                    triggerFieldListeners(true);
                 }
             });
             widget = focusWidget;
@@ -139,12 +139,14 @@ public class MetadataFieldWidget implements StimulusFreeText {
         labelPanel.add(errorLabel);
     }
 
-    private void triggerFieldListeners() {
+    private void triggerFieldListeners(boolean allowSelectionChange) {
         if (!metadataFieldListeners.isEmpty()) {
             String value = getValue();
             Long daysSince = null;
-            if (dateOfBirthField != null) {
-                daysSince = dateOfBirthField.getDaysSince();
+            if (allowSelectionChange) {
+                if (dateOfBirthField != null) {
+                    daysSince = dateOfBirthField.getDaysSince();
+                }
             }
             for (MetadataFieldListener metadataFieldListener : metadataFieldListeners) {
                 metadataFieldListener.matadataFieldValueChanged(daysSince, value);
@@ -152,13 +154,11 @@ public class MetadataFieldWidget implements StimulusFreeText {
         }
     }
 
-    public void addMetadataFieldListener(MetadataFieldListener metadataFieldListener, boolean triggerInitialState) {
+    public void addMetadataFieldListener(MetadataFieldListener metadataFieldListener, boolean allowSelectionChange) {
         this.metadataFieldListeners.add(metadataFieldListener);
         // trigger the field listeners of existing fields at this point to get the initital state correct
         // For age dependant field where the user can change the selection, we do not trigger the initial state. For visibility dependant fields the field should always be shown or hidden according to the other fields value, so we do trigger the initial state.
-        if (triggerInitialState) {
-            triggerFieldListeners();
-        }
+        triggerFieldListeners(allowSelectionChange);
     }
 
     @Override
@@ -173,6 +173,35 @@ public class MetadataFieldWidget implements StimulusFreeText {
 
     public Widget getWidget() {
         return widget;
+    }
+
+    public void setVisible(boolean visible) {
+        labelPanel.setVisible(visible);
+        if (dateOfBirthField != null) {
+            dateOfBirthField.setVisible(visible);
+        } else if (focusWidget instanceof CheckBox) {
+            ((CheckBox) focusWidget).setVisible(visible);
+        } else if (focusWidget instanceof ListBox) {
+            ((ListBox) focusWidget).setVisible(visible);
+        } else if (focusWidget instanceof TextBoxBase) {
+            ((TextBoxBase) focusWidget).setVisible(visible);
+        } else {
+            throw new UnsupportedOperationException("Unexpected type for: " + focusWidget.getClass());
+        }
+    }
+
+    public void setEnabled(boolean enabled) {
+        if (dateOfBirthField != null) {
+            dateOfBirthField.setEnabled(enabled);
+        } else if (focusWidget instanceof CheckBox) {
+            ((CheckBox) focusWidget).setEnabled(enabled);
+        } else if (focusWidget instanceof ListBox) {
+            ((ListBox) focusWidget).setEnabled(enabled);
+        } else if (focusWidget instanceof TextBoxBase) {
+            ((TextBoxBase) focusWidget).setEnabled(enabled);
+        } else {
+            throw new UnsupportedOperationException("Unexpected type for: " + focusWidget.getClass());
+        }
     }
 
     public IsWidget getLabel() {
