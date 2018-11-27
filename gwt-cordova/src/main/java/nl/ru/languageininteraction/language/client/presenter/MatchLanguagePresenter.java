@@ -120,23 +120,23 @@ public class MatchLanguagePresenter implements Presenter {
             };
         }
         matchLanguageView.setupScreen(backEventListner, nextEventListner);
-        audioPlayer.setOnEndedListener(new AudioEventListner() {
-
-            @Override
-            public void audioEnded() {
-                matchLanguageView.showAudioEnded();
-            }
-
-            @Override
-            public void audioLoaded() {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void audioFailed() {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-        });
+//        audioPlayer.setOnEndedListener(new AudioEventListner() {
+//
+//            @Override
+//            public void audioEnded() {
+//                matchLanguageView.showAudioEnded();
+//            }
+//
+//            @Override
+//            public void audioLoaded() {
+//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//            }
+//
+//            @Override
+//            public void audioFailed() {
+//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//            }
+//        });
         widgetTag.add(matchLanguageView);
     }
 
