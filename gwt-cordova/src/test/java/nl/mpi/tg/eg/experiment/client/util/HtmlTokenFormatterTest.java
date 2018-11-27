@@ -117,7 +117,7 @@ public class HtmlTokenFormatterTest {
                 return "GroupId";
             }
 
-        }, new UserData(), new TimerService());
+        }, new UserData(), new TimerService(), null);
         final String formattedString = instance.formatString(inputString);
         System.out.println("expectedString:" + expectedString);
         System.out.println("formattedString: " + formattedString);
