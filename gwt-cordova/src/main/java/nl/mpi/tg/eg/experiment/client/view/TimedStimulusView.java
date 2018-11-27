@@ -397,7 +397,7 @@ public class TimedStimulusView extends ComplexView {
                 public void audioExceptionFired(AudioException audioException) {
                     failedStimulusListener.postLoadTimerFired();
                 }
-            });
+            }, oggPath, mp3Path, autoPlay);
             audioList.put(mediaId, audioPlayer);
 //        audioPlayer.stopAll(); // Note that this stop all change will be a change in default behaviour, however there shouldn't be any instances where this is depended on, but that should be checked
             final Label playbackIndicator = new Label();
@@ -414,7 +414,7 @@ public class TimedStimulusView extends ComplexView {
                 getActivePanel().add(playbackIndicator);
                 playbackIndicatorTimer.schedule(500);
             }
-            audioPlayer.setOnEndedListener(new AudioEventListner() {
+            audioPlayer.setEventListner(new AudioEventListner() {
                 @Override
                 public void audioLoaded() {
                     loadedStimulusListener.postLoadTimerFired();
@@ -427,9 +427,9 @@ public class TimedStimulusView extends ComplexView {
 
                 @Override
                 public void audioEnded() {
-                    playbackIndicatorTimer.cancel();
-                    playbackIndicator.removeFromParent();
-                    audioPlayer.setOnEndedListener(null); // prevent multiple triggering
+//                    playbackIndicatorTimer.cancel();
+//                    playbackIndicator.removeFromParent();
+//                    audioPlayer.setEventListner(null); // prevent multiple triggering
                     Timer timer = new Timer() {
                         public void run() {
                             playedStimulusListener.postLoadTimerFired();
@@ -439,15 +439,12 @@ public class TimedStimulusView extends ComplexView {
                     timer.schedule(postLoadMs);
                 }
             });
-            if (autoPlay) {
-                audioPlayer.playSample(oggPath, mp3Path);
-            }
         } catch (AudioException audioException) {
             failedStimulusListener.postLoadTimerFired();
         }
     }
 
-    public void addTimedVideo(SafeUri oggPath, SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, final int postLoadMs, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener, final String mediaId) {
+    public void addTimedVideo(SafeUri oggPath, SafeUri ogvPath, SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, final int postLoadMs, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener, final String mediaId) {
         cancelableListnerList.add(loadedStimulusListener);
         cancelableListnerList.add(failedStimulusListener);
         final Video video = Video.createIfSupported();
@@ -467,6 +464,9 @@ public class TimedStimulusView extends ComplexView {
             getActivePanel().add(video);
             if (oggPath != null) {
                 video.addSource(oggPath.asString(), "video/ogg");
+            }
+            if (ogvPath != null) {
+                video.addSource(ogvPath.asString(), "video/ogg");
             }
             if (mp4Path != null) {
                 video.addSource(mp4Path.asString(), "video/mp4");
@@ -552,7 +552,7 @@ public class TimedStimulusView extends ComplexView {
             if (key.matches(mediaId)) {
                 AudioPlayer audioPlayer = audioList.get(key);
                 if (audioPlayer != null) {
-                    audioPlayer.stopAll();
+                    audioPlayer.stop();
                 }
             }
         }
