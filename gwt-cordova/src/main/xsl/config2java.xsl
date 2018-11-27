@@ -771,7 +771,7 @@ or local-name() eq 'matchingStimulusGrid'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="setStimulusCodeResponse|region|regionStyle|regionReplace|regionClear|logTimerValue|startTimer|clearTimer|triggerListener|habituationParadigmListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|pause|timerLabel|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeAudio|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupNetworkActivity|table|row|column">
+    <xsl:template match="setStimulusCodeResponse|region|regionStyle|regionReplace|regionClear|logTimerValue|startTimer|clearTimer|triggerListener|habituationParadigmListener|image|groupResponseStimulusImage|backgroundImage|randomMsPause|pause|timerLabel|countdownLabel|stimulusImage|stimulusPresent|stimulusImageCapture|stimulusCodeImage|stimulusCodeAudio|stimulusVideo|stimulusCodeVideo|stimulusAudio|stimulusPause|groupNetwork|groupNetworkActivity|table|row|column">
         <xsl:text>    </xsl:text>
         <xsl:value-of select="local-name()" />
         <xsl:text>(</xsl:text>
@@ -786,6 +786,7 @@ or local-name() eq 'stimulusImageCapture'
         <xsl:if test="local-name() eq 'stimulusPresent'
  or local-name() eq 'stimulusCodeAudio' 
 or local-name() eq 'stimulusCodeVideo' 
+or local-name() eq 'stimulusVideo' 
 or local-name() eq 'stimulusImage' 
 or local-name() eq 'stimulusAudio' 
 or local-name() eq 'stimulusCodeImage'
@@ -813,6 +814,7 @@ or local-name() eq 'table'
 or local-name() eq 'image'
 or local-name() eq 'column'
 or local-name() eq 'stimulusCodeVideo'
+or local-name() eq 'stimulusVideo'
 or local-name() eq 'stimulusImage'
 or local-name() eq 'timerLabel'
 or local-name() eq 'region'
@@ -850,7 +852,7 @@ or local-name() eq 'backgroundImage'">
         <xsl:value-of select="if(@eventTag) then concat('&quot;', @eventTag, '&quot;,') else ''" />
         <xsl:if test="
         local-name() eq 'setStimulusCodeResponse' or
-local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' or local-name() eq 'stimulusPresent' or local-name() eq 'stimulusCodeAudio' or local-name() eq 'stimulusCodeVideo' or local-name() eq 'stimulusImage' or local-name() eq 'stimulusAudio' or local-name() eq 'stimulusCodeImage'">
+local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' or local-name() eq 'stimulusPresent' or local-name() eq 'stimulusCodeAudio' or local-name() eq 'stimulusCodeVideo' or local-name() eq 'stimulusVideo' or local-name() eq 'stimulusImage' or local-name() eq 'stimulusAudio' or local-name() eq 'stimulusCodeImage'">
             <!--<xsl:value-of select="if(@codeFormat) then ',' else ''" />-->
             <xsl:value-of select="if(@dataChannel) then concat(@dataChannel,'') else '0'" />
         </xsl:if>
