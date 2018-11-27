@@ -83,11 +83,11 @@ public class MetadataView extends ComplexView {
         }
     }
 
-    public void addField(final MetadataField metadataField, final String existingValue, String labelString, final MetadataField metadataFieldOther, final int[] daysThresholds) {
+    public void addField(final MetadataField metadataField, final String existingValue, String labelString, final MetadataField metadataFieldOther, final int[] daysThresholds, final String visibleRegex, final String enabledRegex) {
         addField(metadataField, existingValue, labelString);
         MetadataFieldListener fieldListener = new MetadataFieldListener() {
             @Override
-            public void matadataFieldValueChanged(Long daysSince, String valuex) {
+            public void matadataFieldValueChanged(Long daysSince, String value) {
                 if (daysSince != null) {
                     final MetadataFieldWidget fieldBox = fieldBoxes.get(metadataField);
                     if (fieldBox != null) {
@@ -98,6 +98,13 @@ public class MetadataView extends ComplexView {
                             }
                         }
                         fieldBox.setValue(metadataField.getListValues()[currentIndex]);
+                    }
+                }
+                if (value != null) {
+                    final MetadataFieldWidget fieldBox = fieldBoxes.get(metadataField);
+                    if (fieldBox != null) {
+                        fieldBox.setVisible(value.matches(visibleRegex));
+                        fieldBox.setEnabled(value.matches(enabledRegex));
                     }
                 }
 //                addText(existingValue);
@@ -116,11 +123,11 @@ public class MetadataView extends ComplexView {
                 return metadataFieldOther;
             }
         };
-        // in this case if the other field has a value, then this field also has a value, so we do not trigger the initial state
+        // in this case if the other field has a value, then this field also has a value, so we do not trigger the initial state, but do trigger the initial hidden/visible states
         fieldBoxes.get(fieldListener.getMetadataFieldOther()).addMetadataFieldListener(fieldListener, false);
     }
 
-    public void addField(final MetadataField metadataField, final String existingValue, String labelString, final MetadataField metadataFieldOther, final String matchingRegex) {
+    public void addField(final MetadataField metadataField, final String existingValue, String labelString, final MetadataField metadataFieldOther, final String visibleRegex, final String enabledRegex) {
         addField(metadataField, existingValue, labelString);
         MetadataFieldListener fieldListener = new MetadataFieldListener() {
             @Override
@@ -128,10 +135,8 @@ public class MetadataView extends ComplexView {
                 if (value != null) {
                     final MetadataFieldWidget fieldBox = fieldBoxes.get(metadataField);
                     if (fieldBox != null) {
-                        final IsWidget labelWidget = fieldBox.getLabel();
-                        final Widget valueWidget = fieldBox.getWidget();
-                        labelWidget.asWidget().setVisible(value.matches(matchingRegex));
-                        valueWidget.setVisible(value.matches(matchingRegex));
+                        fieldBox.setVisible(value.matches(visibleRegex));
+                        fieldBox.setEnabled(value.matches(enabledRegex));
                     }
                 }
                 addText(existingValue);
