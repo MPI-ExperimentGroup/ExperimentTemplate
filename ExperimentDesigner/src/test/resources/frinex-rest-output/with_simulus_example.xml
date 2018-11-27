@@ -7,9 +7,21 @@
         <dataChannel channel="3" label="Titles" logToSdCard="false"/>
         <dataChannel channel="4" label="Configuration" logToSdCard="false"/>
     </administration>
+    <scss>
+        .exampleBorderedBackground{
+        border: black 1px solid;
+        border-radius: 15px;
+        padding: 7px;
+        background: lightgrey;
+        }
+        .smallVideo {
+        width: 100px;
+        }
+    </scss>
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
         <field controlledMessage="Voer een getal." controlledRegex="[0-9]+" postName="age" preventServerDuplicates="false" registrationField="Leeftijd"/>
+        <field controlledMessage="." controlledRegex="hidden|visible enabled|visible disabled" postName="enabledVisibleOptions" preventServerDuplicates="false" registrationField="enabledVisibleOptions"/>
         <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="gender" preventServerDuplicates="false" registrationField="Geslacht"/>
         <field controlledMessage="." controlledRegex="basisonderwijs|voortgezet onderwijs|MBO|HBO|universiteit|anders" postName="education" preventServerDuplicates="false" registrationField="Opleidingsniveau"/>
         <field controlledMessage="." controlledRegex=".*" postName="educationOther" preventServerDuplicates="false" registrationField="Opleidingsniveau (anders, namelijk)"/>
@@ -32,11 +44,11 @@
         <metadataField fieldName="age"/>
         <metadataField fieldName="gender"/>
         <metadataField fieldName="education"/>
-        <metadataFieldVisibilityDependant fieldName="educationOther" linkedFieldName="education" matchingRegex="anders"/>
+        <metadataFieldVisibilityDependant fieldName="educationOther" linkedFieldName="education" visibleRegex="anders" enabledRegex=".*"/>
         <metadataFieldConnection fieldName="connection" linkedFieldName="workerId" oneToMany="false"/>
         <metadataFieldConnection fieldName="connections" linkedFieldName="workerId" oneToMany="true"/>
         <metadataField fieldName="dateOfBirth"/>
-        <metadataFieldDateTriggered fieldName="ageGroup" linkedFieldName="dateOfBirth" daysThresholds="50 100 200 400 500 600 800 1000"/>
+        <metadataFieldDateTriggered fieldName="ageGroup" linkedFieldName="dateOfBirth" daysThresholds="50 100 200 400 500 600 800 1000" visibleRegex=".*" enabledRegex=".*"/>
         <addPadding/>
         <htmlText featureText="When a dateOfBirth is entered the Instapset dropdown will jump to the age group specified in the daysThresholds attribute. This dropdown can then be editied as required."/>        
         <htmlText featureText="The restulting value of Instapset can then be used in the following presenter to jump to the relevant section of the experiment."/>
@@ -302,6 +314,42 @@
                 <plainText featureText="TimerA logTimerValue"/>
             </region>
         </actionButton>
+    </presenter>
+    <presenter back="Menu" menuLabel="Region Toggle Example" type="stimulus" self="Region_Toggle_Example" title="Region Toggle Example">
+        <region regionId="regionA">
+            <actionButton featureText="show B">
+                <regionStyle regionId="regionA" styleName=""/>
+                <regionStyle regionId="regionB" styleName="exampleBorderedBackground"/>
+            </actionButton>
+        </region>
+        <region regionId="regionB">
+            <actionButton featureText="exampleBorderedBackground to A and show B">
+                <regionStyle regionId="regionA" styleName="exampleBorderedBackground"/>
+                <regionStyle regionId="regionB" styleName=""/>
+                <regionStyle regionId="regionC" styleName=""/>
+            </actionButton>
+        </region>
+        <regionStyle regionId="regionB" styleName="hiddenRegion"/>
+        <region regionId="regionC">
+            <actionButton featureText="Hide region C and B">
+                <regionStyle regionId="regionB" styleName="hiddenRegion"/>
+                <regionStyle regionId="regionC" styleName="hiddenRegion"/>
+            </actionButton>
+        </region>
+    </presenter>
+    <presenter back="Menu" menuLabel="Metadata (Enable) (Visible)" type="metadata" self="Metadata_Enable_Visible" title="Metadata (Enable) (Visible)">
+        <plainText featureText="In this example two metadata fields are hidden/shown and enabled/disabled according to the value of another field."/>       
+        <metadataField fieldName="enabledVisibleOptions"/>
+        <metadataFieldVisibilityDependant fieldName="educationOther" linkedFieldName="enabledVisibleOptions" visibleRegex=".*visible.*" enabledRegex=".*enabled.*"/>
+        <metadataField fieldName="dateOfBirth"/>
+        <metadataFieldDateTriggered fieldName="ageGroup" linkedFieldName="dateOfBirth" daysThresholds="50 100 200 400 500 600 800 1000" visibleRegex=".*" enabledRegex="nevermatches"/>
+        <addPadding/>
+        <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
+            <onError/>
+            <onSuccess>
+                <gotoPresenter target="Metadata_Enable_Visible"/>
+            </onSuccess>
+        </saveMetadataButton>
     </presenter>
     <presenter back="Menu" menuLabel="With Stimuli Screen" next="First_Stimuli_Screen_Informatie" type="stimulus" self="With_Stimuli_Screen" title="With Stimuli Screen">
         <withStimuli eventTag="With Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
@@ -833,9 +881,53 @@
             </stimuli>
         </loadStimulus>
     </presenter>
+    <presenter back="Menu" menuLabel="Metadata HtmlTokenText" type="stimulus" self="Metadata_HtmlTokenText" title="Metadata HtmlTokenText">        
+        <htmlTokenText featureText="
+                workerId:
+                &lt;metadataField_workerId&gt;&lt;br/&gt;
+                age:
+                &lt;metadataField_age&gt;&lt;br/&gt;
+                enabledVisibleOptions:
+                &lt;metadataField_enabledVisibleOptions&gt;&lt;br/&gt;
+                gender:
+                &lt;metadataField_gender&gt;&lt;br/&gt;
+                education:
+                &lt;metadataField_education&gt;&lt;br/&gt;
+                educationOther:
+                &lt;metadataField_educationOther&gt;&lt;br/&gt;
+                dateOfBirth:
+                &lt;metadataField_dateOfBirth&gt;&lt;br/&gt;
+                item:
+                &lt;metadataField_item&gt;&lt;br/&gt;
+                ageGroup:
+                &lt;metadataField_ageGroup&gt;&lt;br/&gt;
+                "/>
+    </presenter>
     <presenter back="Menu" menuLabel="Terug" type="text" self="Second_Informatie" title="Second Informatie">
         <htmlText featureText="Instructies Deel 2: &lt;br/&gt;&lt;br/&gt;Type het juiste antwoord in de textbox."/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Second"/>
+    </presenter>
+    <presenter back="Menu"  menuLabel="hasGetParameter" type="menu" self="hasGetParameter" title="hasGetParameter">
+        <htmlText featureText="A get parameter must be provided on the URL, eg:"/>
+        <htmlText featureText="https://frinexstaging.mpi.nl/with_simulus_example?stimuliC"/>
+        <htmlText featureText="https://frinexstaging.mpi.nl/with_simulus_example?stimuliN"/>
+        <htmlText featureText="https://frinexstaging.mpi.nl/with_simulus_example?stimuliC&amp;stimuliN"/>
+        <hasGetParameter parameterName="stimuliC">
+            <conditionTrue>
+                <htmlText featureText="stimuliC provided"/>
+            </conditionTrue>
+            <conditionFalse>
+                <htmlText featureText="stimuliC not provided"/>
+            </conditionFalse>
+        </hasGetParameter>
+        <hasGetParameter parameterName="stimuliN">
+            <conditionTrue>
+                <htmlText featureText="stimuliN provided"/>
+            </conditionTrue>
+            <conditionFalse>
+                <htmlText featureText="stimuliN not provided"/>
+            </conditionFalse>
+        </hasGetParameter>
     </presenter>
     <presenter back="Menu" menuLabel="Terug" type="text" self="cafe_test" title="café encoding test">
         <htmlText featureText="Please make sure that the accent is correctly displayed on this screen: café"/>
@@ -882,7 +974,7 @@
                     <nextStimulus repeatIncorrect="false"/>
                 </actionButton>
                 <actionButton featureText="startAudioRecorder">
-                    <startAudioRecorder recordingFormat="ogg" filePerStimulus="true" eventTag="startAudioRecorder" deviceRegex="(046d:0a45)">
+                    <startAudioRecorder recordingFormat="ogg" filePerStimulus="true" eventTag="startAudioRecorder" deviceRegex="(046d:0a45)" mediaId="recordedMedia">
                         <onError>  
                             <htmlText featureText="startAudioRecorder onError, please plug in device with the USB id: (046d:0a45)"/>
                         </onError>
@@ -913,7 +1005,7 @@
             <hasMoreStimulus>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
-                <startAudioRecorder recordingFormat="ogg" filePerStimulus="true" eventTag="startAudioRecorder" deviceRegex="(046d:0a45)">
+                <startAudioRecorder recordingFormat="ogg" filePerStimulus="true" eventTag="startAudioRecorder" deviceRegex="(046d:0a45)" mediaId="recordedMedia">
                     <onError>  
                         <htmlText featureText="startAudioRecorder onError, please plug in device with the USB id: (046d:0a45)"/>
                     </onError>
@@ -969,92 +1061,169 @@
                 <stimulusFreeText featureText="Vul minimal 1 letter." styleName="stimuliLabel" validationRegex=".{1,}" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
                 <stimulusImage msToNext="60" styleName="styleName" dataChannel="2">
                     <mediaLoaded>
-                        <plainText featureText="plainText in mediaLoaded"/>
+                        <plainText featureText="stimulusImageLoaded"/>
                     </mediaLoaded>
                     <mediaLoadFailed>
-                        <plainText featureText="plainText in mediaLoadFailed"/>
+                        <plainText featureText="stimulusImageFailed"/>
                     </mediaLoadFailed>
                 </stimulusImage>
-                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="&lt;code&gt;" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="false" mediaId="mediaId1" showControls="true" maxWidth="60">
-                    <mediaLoaded>
-                        <plainText featureText="plainText in mediaLoaded"/>
-                    </mediaLoaded>
-                    <mediaLoadFailed>
-                        <plainText featureText="plainText in mediaLoadFailed"/>
-                    </mediaLoadFailed>
-                    <mediaPlaybackComplete>
-                        <plainText featureText="plainText in mediaPlaybackComplete"/>
-                    </mediaPlaybackComplete>
-                </stimulusCodeVideo>
-                <stimulusCodeAudio msToNext="60" codeFormat="&lt;code&gt;" dataChannel="2" autoPlay="false" mediaId="mediaId2" showPlaybackIndicator="showPlaybackIndicator">
-                    <mediaLoaded>
-                        <plainText featureText="plainText in mediaLoaded"/>
-                    </mediaLoaded>
-                    <mediaLoadFailed>
-                        <plainText featureText="plainText in mediaLoadFailed"/>
-                    </mediaLoadFailed>
-                    <mediaPlaybackComplete>
-                        <plainText featureText="plainText in mediaPlaybackComplete"/>
-                    </mediaPlaybackComplete>
-                </stimulusCodeAudio>
-                <stimulusAudio msToNext="60" dataChannel="2" autoPlay="false" mediaId="mediaId3" showPlaybackIndicator="showPlaybackIndicator">
-                    <mediaLoaded>
-                        <plainText featureText="plainText in mediaLoaded"/>
-                    </mediaLoaded>
-                    <mediaLoadFailed>
-                        <plainText featureText="plainText in mediaLoadFailed"/>
-                    </mediaLoadFailed>
-                    <mediaPlaybackComplete>
-                        <plainText featureText="plainText in mediaPlaybackComplete"/>
-                    </mediaPlaybackComplete>
-                </stimulusAudio>
-                <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                <!--                <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
-                </stimulusImageCapture>
-                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="deviceRegex" filePerStimulus="filePerStimulus">
-                    <onError>
-                        <plainText featureText="plainText in onError"/>
-                    </onError>
-                    <onSuccess>
-                        <plainText featureText="plainText in onSuccess"/>
-                    </onSuccess>
-                </startAudioRecorder>
-                <stopAudioRecorder/>
-                <startAudioRecorderTag eventTier="8"/>
-                <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
-                
-                
-        
-        
-                <actionButton featureText="playMedia">
-                    <playMedia mediaId="mediaId1"/>
-                </actionButton>
-                <actionButton featureText="rewindMedia">
-                    <rewindMedia mediaId="mediaId1"/>
-                </actionButton>
-                <actionButton featureText="pauseMedia">
-                    <pauseMedia mediaId="mediaId1"/>
-                </actionButton>
-        
-                <actionButton featureText="playMedia">
-                    <playMedia mediaId="mediaId2"/>
-                </actionButton>
-                <actionButton featureText="rewindMedia">
-                    <rewindMedia mediaId="mediaId2"/>
-                </actionButton>
-                <actionButton featureText="pauseMedia">
-                    <pauseMedia mediaId="mediaId2"/>
-                </actionButton>
-        
-                <actionButton featureText="playMedia">
-                    <playMedia mediaId="mediaId3"/>
-                </actionButton>
-                <actionButton featureText="rewindMedia">
-                    <rewindMedia mediaId="mediaId3"/>
-                </actionButton>
-                <actionButton featureText="pauseMedia">
-                    <pauseMedia mediaId="mediaId3"/>
-                </actionButton>
+                </stimulusImageCapture>-->
+                <table>
+                    <row>
+                        <column>
+                            <actionButton featureText="startAudioRecorder">
+                                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="deviceRegex" filePerStimulus="filePerStimulus" mediaId="recordedMedia">
+                                    <onError>
+                                        <plainText featureText="startAudioRecorder onError"/>
+                                    </onError>
+                                    <onSuccess>
+                                        <plainText featureText="startAudioRecorder onSuccess"/>
+                                    </onSuccess>
+                                </startAudioRecorder>
+                            </actionButton>  
+                            <actionButton featureText="stopAudioRecorder">
+                                <stopAudioRecorder/>
+                            </actionButton>   
+                        </column> 
+                        <column>
+                            <actionButton featureText="playRecorded">
+                                <playMedia mediaId="recordedMedia"/>
+                            </actionButton>
+                        </column> 
+                        <column>
+                            <actionButton featureText="rewindRecorded">
+                                <rewindMedia mediaId="recordedMedia"/>
+                            </actionButton>
+                        </column> 
+                        <column>
+                            <actionButton featureText="pauseRecorded">
+                                <pauseMedia mediaId="recordedMedia"/>
+                            </actionButton>
+                        </column> 
+                    </row>
+                    <row>
+                        <column>
+                            <stimulusVideo msToNext="60" loop="false" styleName="smallVideo" dataChannel="2" autoPlay="false" mediaId="mediaId1" showControls="true">
+                                <mediaLoaded>
+                                    <plainText featureText="mediaId1 stimulusVideoLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="mediaId1 stimulusVideoFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="mediaId1 stimulusVideoComplete"/>
+                                </mediaPlaybackComplete>
+                            </stimulusVideo>
+                        </column> 
+                        <column>
+                            <actionButton featureText="playMedia 1">
+                                <playMedia mediaId="mediaId1"/>
+                            </actionButton>
+                        </column> 
+                        <column>
+                            <actionButton featureText="rewindMedia 1">
+                                <rewindMedia mediaId="mediaId1"/>
+                            </actionButton>
+                        </column> 
+                        <column>
+                            <actionButton featureText="pauseMedia 1">
+                                <pauseMedia mediaId="mediaId1"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="&lt;code&gt;" percentOfPage="56" loop="false" styleName="smallVideo" dataChannel="2" autoPlay="false" mediaId="mediaId2" showControls="true" maxWidth="60">
+                                <mediaLoaded>
+                                    <plainText featureText="mediaId2 stimulusCodeVideoLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="mediaId2 stimulusCodeVideoFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="mediaId2 stimulusCodeVideoComplete"/>
+                                </mediaPlaybackComplete>
+                            </stimulusCodeVideo>
+                        </column> 
+                        <column>
+                            <actionButton featureText="playMedia 2">
+                                <playMedia mediaId="mediaId2"/>
+                            </actionButton>
+                        </column> 
+                        <column>
+                            <actionButton featureText="rewindMedia 2">
+                                <rewindMedia mediaId="mediaId2"/>
+                            </actionButton>
+                        </column> 
+                        <column>
+                            <actionButton featureText="pauseMedia 2">
+                                <pauseMedia mediaId="mediaId2"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <stimulusCodeAudio msToNext="60" codeFormat="&lt;code&gt;" dataChannel="2" autoPlay="false" mediaId="mediaId3" showPlaybackIndicator="true">
+                                <mediaLoaded>
+                                    <plainText featureText="mediaId3 stimulusCodeAudioLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="mediaId3 stimulusCodeAudioFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="mediaId3 stimulusCodeAudioComplete"/>
+                                </mediaPlaybackComplete>
+                            </stimulusCodeAudio>
+                        </column> 
+                        <column>
+                            <actionButton featureText="playMedia 3">
+                                <playMedia mediaId="mediaId3"/>
+                            </actionButton>
+                        </column> 
+                        <column>
+                            <actionButton featureText="rewindMedia 3">
+                                <rewindMedia mediaId="mediaId3"/>
+                            </actionButton>
+                        </column> 
+                        <column>
+                            <actionButton featureText="pauseMedia 3">
+                                <pauseMedia mediaId="mediaId3"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                    <row>
+                        <column> 
+                            <stimulusAudio msToNext="60" dataChannel="2" autoPlay="false" mediaId="mediaId4" showPlaybackIndicator="true">
+                                <mediaLoaded>
+                                    <plainText featureText="mediaId4 stimulusAudioLoaded"/>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="mediaId4 stimulusAudioFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackComplete>
+                                    <plainText featureText="mediaId4 stimulusAudioComplete"/>
+                                </mediaPlaybackComplete>
+                            </stimulusAudio>
+                        </column> 
+                        <column>
+                            <actionButton featureText="playMedia 4">
+                                <playMedia mediaId="mediaId4"/>
+                            </actionButton>
+                        </column> 
+                        <column>
+                            <actionButton featureText="rewindMedia 4">
+                                <rewindMedia mediaId="mediaId4"/>
+                            </actionButton>
+                        </column> 
+                        <column>
+                            <actionButton featureText="pauseMedia 4">
+                                <pauseMedia mediaId="mediaId4"/>
+                            </actionButton>
+                        </column>
+                    </row>
+                </table>
                 <actionButton featureText="Volgende [tab + enter]">
                     <nextStimulus repeatIncorrect="false"/>
                 </actionButton>
