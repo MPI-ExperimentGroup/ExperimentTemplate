@@ -369,16 +369,16 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     public void setMetadataValue(final Stimulus currentStimulus, MetadataField metadataField, final String dataLogFormat) {
-        userResults.getUserData().setMetadataValue(metadataField, new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService).formatString(dataLogFormat));
+        userResults.getUserData().setMetadataValue(metadataField, new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(dataLogFormat));
         localStorage.storeData(userResults, metadataFieldProvider);
     }
 
     public void logTokenText(final Stimulus currentStimulus, final String reportType, final String headerKey, final int dataChannel, final String dataLogFormat) {
-        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, reportType, headerKey, new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService).formatString(dataLogFormat), duration.elapsedMillis());
+        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, reportType, headerKey, new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(dataLogFormat), duration.elapsedMillis());
     }
 
     public void htmlTokenText(final Stimulus currentStimulus, final String textString, final String styleName) {
-        ((TimedStimulusView) simpleView).addHtmlText(new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService).formatString(textString), styleName);
+        ((TimedStimulusView) simpleView).addHtmlText(new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(textString), styleName);
         // the submitTagValue previously used here by the multiparticipant configuration has been migrated to logTokenText which should function the sames for the multiparticipant experiment except that it now uses submitTagPairValue
     }
 
