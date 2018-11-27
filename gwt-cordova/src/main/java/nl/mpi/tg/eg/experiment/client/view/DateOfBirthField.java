@@ -122,6 +122,12 @@ public abstract class DateOfBirthField extends HorizontalPanel {
         }
     }
 
+    public void setEnabled(boolean enabled) {
+        monthSelect.setEnabled(enabled);
+        dayBox.setEnabled(enabled);
+        yearBox.setEnabled(enabled);
+    }
+
     public String getValue() {
         try {
             // format the date without localisation and without timezones
