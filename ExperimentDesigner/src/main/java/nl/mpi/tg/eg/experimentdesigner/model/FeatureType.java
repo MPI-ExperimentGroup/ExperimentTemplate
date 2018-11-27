@@ -90,8 +90,8 @@ public enum FeatureType {
     // metadataField linked fields:
     //    when one value determines the default value of the other
     //    when one value determines the pressence of the other
-    metadataFieldVisibilityDependant(false, false, new FeatureAttribute[]{fieldName, linkedFieldName, matchingRegex}), // metadataFieldDependant fields are only shown when the linkedFieldName matches the matchingRegex
-    metadataFieldDateTriggered(false, false, new FeatureAttribute[]{fieldName, linkedFieldName, daysThresholds}), // the daysThresholds is a list of values trigger the selection of the item index of this metadataField based on the calculated age in days from linkedFieldName
+    metadataFieldVisibilityDependant(false, false, new FeatureAttribute[]{fieldName, linkedFieldName, visibleRegex, enabledRegex}), // metadataFieldDependant fields are only shown when the linkedFieldName matches the visibleRegex, whereas the enabledRegex determins if it is enabled
+    metadataFieldDateTriggered(false, false, new FeatureAttribute[]{fieldName, linkedFieldName, daysThresholds, visibleRegex, enabledRegex}), // the daysThresholds is a list of values trigger the selection of the item index of this metadataField based on the calculated age in days from linkedFieldName
 
     saveMetadataButton(false, true, new FeatureAttribute[]{sendData, networkErrorMessage, styleName, groupId}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
     createUserButton(false, true, new FeatureAttribute[]{target, styleName, groupId}),
@@ -204,7 +204,7 @@ public enum FeatureType {
     //    captureStimulusImage(true, true, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth}),
     VideoPanel(false, false, new FeatureAttribute[]{src, percentOfPage, maxHeight, maxWidth, poster}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     AnnotationTimelinePanel(true, false, new FeatureAttribute[]{src, poster, eventTag, columnCount, maxStimuli}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    startAudioRecorder(false, false, new FeatureAttribute[]{recordingFormat, filePerStimulus, eventTag, deviceRegex}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.stimulusAction),
+    startAudioRecorder(false, false, new FeatureAttribute[]{recordingFormat, filePerStimulus, eventTag, deviceRegex, mediaId}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.stimulusAction),
     stopAudioRecorder(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     //    stopAudioRecorder(false, false, new FeatureAttribute[]{minimum, maximum, average}, false, false, false, Contitionals.hasThreshold, Contitionals.stimulusAction),
     startAudioRecorderTag(false, false, new FeatureAttribute[]{eventTier}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
