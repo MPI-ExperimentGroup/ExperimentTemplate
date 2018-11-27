@@ -31,11 +31,27 @@ import nl.mpi.tg.eg.experiment.client.listener.AudioExceptionListner;
 public class AudioPlayer {
 
     private Audio audioPlayer;
-    private AudioEventListner audioEventListner = null;
+    private AudioEventListner audioEventListner;
     final private AudioExceptionListner audioExceptionListner;
+    final private boolean autoPlay;
 
-    public AudioPlayer(AudioExceptionListner audioExceptionListner) throws AudioException {
+    public AudioPlayer(AudioExceptionListner audioExceptionListner, SafeUri ogg, SafeUri mp3, boolean autoPlay) throws AudioException {
         this.audioExceptionListner = audioExceptionListner;
+        this.autoPlay = autoPlay;
+        try {
+            createPlayer();
+            if (ogg != null) {
+                audioPlayer.addSource(ogg.asString(), AudioElement.TYPE_OGG);
+            }
+            if (mp3 != null) {
+                audioPlayer.addSource(mp3.asString(), AudioElement.TYPE_MP3);
+            }
+            //audioPlayer.setCurrentTime(0); // on android the if the ready state is not correct then this will fail and audio will not play
+            audioPlayer.load();
+//            audioPlayer.pause();
+        } catch (AudioException audioException) {
+            audioExceptionListner.audioExceptionFired(audioException);
+        }
     }
 
     public Audio getAudioPlayer() {
@@ -80,11 +96,13 @@ public class AudioPlayer {
     public void onLoadedAction() {
         if (audioEventListner != null) {
             audioEventListner.audioLoaded();
-            audioPlayer.play();
+            if (autoPlay) {
+                audioPlayer.play();
+            }
         }
     }
 
-    public void setOnEndedListener(AudioEventListner audioEventListner) {
+    public void setEventListner(AudioEventListner audioEventListner) {
         this.audioEventListner = audioEventListner;
     }
 
@@ -92,41 +110,22 @@ public class AudioPlayer {
 //        final String[] soundFiles = roundSample.getLanguageSample().getSoundFiles();
 //        playSample(soundFiles[roundSample.getSampleIndex()]);
 //    }
-    @Deprecated
-    private void playSample(String sample) {
-        if (audioPlayer == null) {
-            try {
-                createPlayer();
-            } catch (AudioException audioException) {
-                audioExceptionListner.audioExceptionFired(audioException);
-                return;
-            }
-        }
-        audioPlayer.setSrc(sample);
-        //audioPlayer.setCurrentTime(0); // on android the if the ready state is not correct then this will fail and audio will not play
-        audioPlayer.play();
-    }
-
-    public void playSample(SafeUri ogg, SafeUri mp3) {
-        if (audioPlayer == null) {
-            try {
-                createPlayer();
-            } catch (AudioException audioException) {
-                audioExceptionListner.audioExceptionFired(audioException);
-                return;
-            }
-        }
-        if (ogg != null) {
-            audioPlayer.addSource(ogg.asString(), AudioElement.TYPE_OGG);
-        }
-        if (mp3 != null) {
-            audioPlayer.addSource(mp3.asString(), AudioElement.TYPE_MP3);
-        }
-        //audioPlayer.setCurrentTime(0); // on android the if the ready state is not correct then this will fail and audio will not play
-        audioPlayer.load();
-    }
-
+//    @Deprecated
+//    private void playSample(String sample) {
+//        if (audioPlayer == null) {
+//            try {
+//                createPlayer();
+//            } catch (AudioException audioException) {
+//                audioExceptionListner.audioExceptionFired(audioException);
+//                return;
+//            }
+//        }
+//        audioPlayer.setSrc(sample);
+//        //audioPlayer.setCurrentTime(0); // on android the if the ready state is not correct then this will fail and audio will not play
+//        audioPlayer.play();
+//    }
     public double getCurrentTime() {
+//        return (audioPlayer != null) ? audioPlayer.getCurrentTime() : -1;
         return audioPlayer.getCurrentTime();
     }
 
@@ -151,5 +150,12 @@ public class AudioPlayer {
         }
         //onEndedAction();
         audioEventListner = null;
+    }
+
+    public void stop() {
+        if (audioPlayer != null) {
+            audioPlayer.pause();
+        }
+        //onEndedAction();
     }
 }
