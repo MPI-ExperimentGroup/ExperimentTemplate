@@ -475,7 +475,9 @@ public class TimedStimulusView extends ComplexView {
                 @Override
                 public void onCanPlayThrough(CanPlayThroughEvent event) {
                     loadedStimulusListener.postLoadTimerFired();
-                    video.play();
+                    if (autoPlay) {
+                        video.play();
+                    }
                     if (video.getError() != null) {
                         // todo: check that this method is functioning correctly and if not then use the method in audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onAudioFailed()();
                         failedStimulusListener.postLoadTimerFired();
