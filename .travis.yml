@@ -20,9 +20,9 @@ script:
   - pwd
   - cd gwt-cordova
   - mvn clean package -DskipTests=true -Dmaven.javadoc.skip=true -B -V -Dexperiment.configuration.name=with_simulus_example
-  - cp -r target/with_simulus_example-*-SNAPSHOT/* ../../static/
-  # generate the documentation and schema files 
-  - mvn exec:exec -classpath %classpath nl.mpi.tg.eg.experimentdesigner.util.JsonToXml ../static ../static
+  - mv target/with_simulus_example-*-SNAPSHOT ../../static
+  # generate the documentation and schema files (css is used as the input directory because we dont want any json files to be present)
+  - mvn exec:exec -classpath %classpath nl.mpi.tg.eg.experimentdesigner.util.JsonToXml ../static/css ../static
   - ls ../static
   
 deploy:
