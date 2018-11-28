@@ -116,8 +116,8 @@
         <allMetadataFields/>
         <metadataField fieldName="workerId"/>
         <metadataFieldConnection fieldName="workerId" linkedFieldName="workerId" oneToMany="true"/>
-        <metadataFieldVisibilityDependant fieldName="workerId" linkedFieldName="workerId" matchingRegex="matchingRegex"/>
-        <metadataFieldDateTriggered fieldName="workerId" linkedFieldName="workerId" daysThresholds="10 100 1000"/>
+        <metadataFieldVisibilityDependant fieldName="workerId" linkedFieldName="workerId" visibleRegex="visibleRegex" enabledRegex="enabledRegex"/>
+        <metadataFieldDateTriggered fieldName="workerId" linkedFieldName="workerId" daysThresholds="10 100 1000" visibleRegex="visibleRegex" enabledRegex="enabledRegex"/>
         <saveMetadataButton featureText="saveMetadataButton" sendData="sendData" networkErrorMessage="networkErrorMessage" groupId="groupId" styleName="styleName">
             <onError>
                 <plainText featureText="plainText in onError"/>
@@ -439,6 +439,17 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
+                <stimulusVideo msToNext="60" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusVideo>
                 <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -464,7 +475,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="deviceRegex" filePerStimulus="filePerStimulus">
+                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="deviceRegex" mediaId="mediaId" filePerStimulus="filePerStimulus">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -741,6 +752,17 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
+                <stimulusVideo msToNext="60" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusVideo>
                 <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -766,7 +788,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="deviceRegex" filePerStimulus="filePerStimulus">
+                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="deviceRegex" mediaId="mediaId" filePerStimulus="filePerStimulus">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -1043,6 +1065,17 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
+                <stimulusVideo msToNext="60" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusVideo>
                 <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -1068,7 +1101,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="deviceRegex" filePerStimulus="filePerStimulus">
+                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="deviceRegex" mediaId="mediaId" filePerStimulus="filePerStimulus">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -1760,8 +1793,8 @@
         <allMetadataFields/>
         <metadataField fieldName="workerId"/>
         <metadataFieldConnection fieldName="workerId" linkedFieldName="workerId" oneToMany="true"/>
-        <metadataFieldVisibilityDependant fieldName="workerId" linkedFieldName="workerId" matchingRegex="matchingRegex"/>
-        <metadataFieldDateTriggered fieldName="workerId" linkedFieldName="workerId" daysThresholds="10 100 1000"/>
+        <metadataFieldVisibilityDependant fieldName="workerId" linkedFieldName="workerId" visibleRegex="visibleRegex" enabledRegex="enabledRegex"/>
+        <metadataFieldDateTriggered fieldName="workerId" linkedFieldName="workerId" daysThresholds="10 100 1000" visibleRegex="visibleRegex" enabledRegex="enabledRegex"/>
         <saveMetadataButton featureText="saveMetadataButton" sendData="sendData" networkErrorMessage="networkErrorMessage">
             <onError>
                 <plainText featureText="plainText in onError"/>
@@ -2083,6 +2116,17 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
+                <stimulusVideo msToNext="60" loop="true" autoPlay="true" mediaId="mediaId" showControls="true">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusVideo>
                 <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -2108,7 +2152,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" filePerStimulus="filePerStimulus">
+                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" mediaId="mediaId" filePerStimulus="filePerStimulus">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -2385,6 +2429,17 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
+                <stimulusVideo msToNext="60" loop="true" autoPlay="true" mediaId="mediaId" showControls="true">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusVideo>
                 <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -2410,7 +2465,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" filePerStimulus="filePerStimulus">
+                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" mediaId="mediaId" filePerStimulus="filePerStimulus">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
@@ -2687,6 +2742,17 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
+                <stimulusVideo msToNext="60" loop="true" autoPlay="true" mediaId="mediaId" showControls="true">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
+                </stimulusVideo>
                 <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -2712,7 +2778,7 @@
                 <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>
-                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" filePerStimulus="filePerStimulus">
+                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" mediaId="mediaId" filePerStimulus="filePerStimulus">
                     <onError>
                         <plainText featureText="plainText in onError"/>
                     </onError>
