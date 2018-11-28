@@ -17,7 +17,10 @@ script:
   - mvn clean install -Dgwt.validateOnly -DskipTests=true -Dmaven.javadoc.skip=true -B -V -Dexperiment.configuration.name=antwoordraden
   - mvn clean install -Dgwt.validateOnly -DskipTests=true -Dmaven.javadoc.skip=true -B -V -Dexperiment.configuration.name=synquiz2
   - mvn clean install -Dgwt.validateOnly -DskipTests=true -Dmaven.javadoc.skip=true -B -V -Dexperiment.configuration.name=alloptions
-  
+  - pwd
+  - cd gwt-cordova
+  - mvn clean package -DskipTests=true -Dmaven.javadoc.skip=true -B -V -Dexperiment.configuration.name=with_simulus_example
+  - cp -r target/with_simulus_example-*-SNAPSHOT/* ../../static/
   # generate the documentation and schema files 
   - mvn exec:exec -classpath %classpath nl.mpi.tg.eg.experimentdesigner.util.JsonToXml ../static ../static
   - ls ../static
