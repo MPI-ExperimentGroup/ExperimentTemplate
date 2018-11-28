@@ -579,7 +579,8 @@ dataChannel<br/>
 </td><td>
 *fieldName<br/>
 *linkedFieldName<br/>
-*matchingRegex<br/>
+*visibleRegex<br/>
+*enabledRegex<br/>
 </td><td>
 </td>
 </tr>
@@ -589,6 +590,8 @@ dataChannel<br/>
 *fieldName<br/>
 *linkedFieldName<br/>
 *daysThresholds<br/>
+*visibleRegex<br/>
+*enabledRegex<br/>
 </td><td>
 </td>
 </tr>
@@ -1325,6 +1328,22 @@ styleName<br/>
 </td>
 </tr>
 <tr><td>
+<div class="complexType">&lt;stimulusVideo&gt;<br/>
+</td><td>
+*msToNext<br/>
+dataChannel<br/>
+*loop<br/>
+styleName<br/>
+*autoPlay<br/>
+*showControls<br/>
+*mediaId<br/>
+</td><td>
+&lt;mediaLoaded&gt;<br/>
+&lt;mediaLoadFailed&gt;<br/>
+&lt;mediaPlaybackComplete&gt;<br/>
+</td>
+</tr>
+<tr><td>
 <div class="complexType">&lt;stimulusCodeAudio&gt;<br/>
 </td><td>
 *msToNext<br/>
@@ -1416,6 +1435,7 @@ can have features<br/>
 *filePerStimulus<br/>
 *eventTag<br/>
 deviceRegex<br/>
+*mediaId<br/>
 </td><td>
 &lt;onError&gt;<br/>
 &lt;onSuccess&gt;<br/>
