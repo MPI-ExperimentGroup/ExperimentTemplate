@@ -16,4 +16,17 @@ script:
   - mvn clean install -Dgwt.validateOnly -DskipTests=true -Dmaven.javadoc.skip=true -B -V -Dexperiment.configuration.name=zinnen_afmaken
   - mvn clean install -Dgwt.validateOnly -DskipTests=true -Dmaven.javadoc.skip=true -B -V -Dexperiment.configuration.name=antwoordraden
   - mvn clean install -Dgwt.validateOnly -DskipTests=true -Dmaven.javadoc.skip=true -B -V -Dexperiment.configuration.name=synquiz2
+  - mvn clean install -Dgwt.validateOnly -DskipTests=true -Dmaven.javadoc.skip=true -B -V -Dexperiment.configuration.name=alloptions
   
+  # generate the documentation and schema files 
+  - mvn exec:exec -classpath %classpath nl.mpi.tg.eg.experimentdesigner.util.JsonToXml ../static ../static
+  - ls ../static
+  
+deploy:
+  # deploy the documentation and schema files 
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  local_dir: ../static
+  on:
+    branch: master
