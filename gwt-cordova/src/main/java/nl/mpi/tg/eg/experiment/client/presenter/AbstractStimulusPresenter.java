@@ -1428,7 +1428,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         super.startAudioRecorderTag(tier); //((tier < 1) ? 1 : tier) + 2); //  tier 1 and 2 are reserved for stimulus set loading and stimulus display events
     }
 
-    protected void startAudioRecorder(final String recordingFormat, final String deviceRegex, final String mediaId, boolean filePerStimulus, String directoryName, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+    protected void startAudioRecorder(final String recordingFormat, final String mediaId, final String deviceRegex, boolean filePerStimulus, String directoryName, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
 //        final String subdirectoryName = userResults.getUserData().getUserId().toString();
         final String subdirectoryName = userResults.getUserData().getMetadataValue(new MetadataFieldProvider().workerIdMetadataField);
         final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener() {
@@ -1463,8 +1463,24 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
 
             @Override
-            public void submissionComplete(String message) {
+            public void submissionComplete(String message, String urlAudioData) {
 //                ((TimedStimulusView) simpleView).addText("(debug) Media Submission OK: " + message);
+                ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromTrustedString(urlAudioData), null, 0, true, new CancelableStimulusListener() {
+                    @Override
+                    protected void trigggerCancelableEvent() {
+                        ((TimedStimulusView) simpleView).addText("(debug) Media Display OK");
+                    }
+                }, new CancelableStimulusListener() {
+                    @Override
+                    protected void trigggerCancelableEvent() {
+                        ((TimedStimulusView) simpleView).addText("(debug) Media Display Failed");
+                    }
+                }, new CancelableStimulusListener() {
+                    @Override
+                    protected void trigggerCancelableEvent() {
+                        ((TimedStimulusView) simpleView).addText("(debug) Media Played");
+                    }
+                }, false, mediaId);
                 onSuccess.postLoadTimerFired();
             }
         };
