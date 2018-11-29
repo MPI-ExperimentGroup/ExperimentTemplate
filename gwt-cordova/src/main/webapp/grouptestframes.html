@@ -42,7 +42,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     var iframeTimer = setTimeout(function (frameIndex) {
                         iframes[frameIndex].style.width = '1920px';
                         iframes[frameIndex].style.height = '1080px';
-                        iframes[frameIndex].src = "/multiparticipant?" + sizeSelectValue + "&testuser=" + Math.floor((Math.random() * 1000000000) + 1) + "&group=" + document.getElementById('groupName').value + "&member=" + memberCodes[frameIndex];
+                        iframes[frameIndex].src = "?" + sizeSelectValue + "&testuser=" + Math.floor((Math.random() * 1000000000) + 1) + "&group=" + document.getElementById('groupName').value + "&member=" + memberCodes[frameIndex];
                     }, 1000 * frameIndex, frameIndex);
                 }
                 findAndClick();
@@ -61,7 +61,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 var iframe = document.createElement('iframe');
                 iframe.setAttribute('width', '100%');
                 iframe.setAttribute('height', '100%');
-                iframe.src = "/multiparticipant?" + sizeSelectValue + "&testuser=" + Math.floor((Math.random() * 1000000000) + 1) + "&group=" + document.getElementById('groupName').value + "&member=" + memberCode;
+                iframe.src = "?" + sizeSelectValue + "&testuser=" + Math.floor((Math.random() * 1000000000) + 1) + "&group=" + document.getElementById('groupName').value + "&member=" + memberCode;
                 document.getElementsByTagName("body")[0].append(iframe);
                 var robotMessagesDiv = document.getElementById("robot_messages");
                 robotMessagesDiv.innerHTML = "robot started " + memberCode;
