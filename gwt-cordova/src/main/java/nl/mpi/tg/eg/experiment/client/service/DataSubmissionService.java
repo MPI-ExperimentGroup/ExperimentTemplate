@@ -91,12 +91,13 @@ public class DataSubmissionService extends AbstractSubmissionService {
     }
 
     public native void submitAudioData(final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataArray, final MediaSubmissionListener mediaSubmissionListener) /*-{
-        var dataBlob = new Blob( [dataArray], { type: 'audio/ogg' } );
+        var dataBlob = new Blob([dataArray], {type: 'audio/ogg'});
         var xhr = new XMLHttpRequest();
         xhr.onload = function() {
             if(xhr.readyState === 4) {
                 if(xhr.status === 200) {
-                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionComplete(Ljava/lang/String;)(xhr.responseText);
+                    var urlAudioData = URL.createObjectURL(dataBlob);
+                    mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionComplete(Ljava/lang/String;Ljava/lang/String;)(xhr.responseText,urlAudioData);
                 } else {
                     mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionFailed(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;)(xhr.status + ' ' + xhr.statusText, userIdString, screenName, stimulusIdString, dataArray);
                 }
