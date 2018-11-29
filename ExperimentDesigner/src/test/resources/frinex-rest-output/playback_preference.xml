@@ -7,6 +7,8 @@
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
         <field controlledMessage="Voer een getal." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="datOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
         <field controlledMessage="." controlledRegex="|man|vrouw|anders" postName="gender" preventServerDuplicates="false" registrationField="Geslacht"/>
+        <!-- this field "cow" is for the random grouping simlar to ld_screensize and there is a new list of stimuli from Hannah for this -->
+        <field controlledMessage="." controlledRegex=".*" postName="cow" preventServerDuplicates="false" registrationField="cow"/>
     </metadata>
     <presenter back="Menu" menuLabel="Bluetooth Instructions" type="text" self="Bluetooth_Instructions" title="Bluetooth Instructions">
         <htmlText featureText="When the bluetooth controller is connected the virtual keyboard will not show, to enter participant metadata please turn off the bluetooth controller so that the virtual keyboard can be shown. To start the bluetooth controller turn it on and press the button combination M+A."/>
@@ -57,25 +59,38 @@
             </onSuccess>
         </saveMetadataButton>
     </presenter>
+    <!-- GameTest is not n its final location and is just for demonstration -->
+    <presenter back="Menu" menuLabel="GameTest" type="stimulus" self="GameTest" title="GameTest">
+        <image msToNext="0" src="filler_games/balloon_blue.jpg" styleName="verticalPanAnimation">
+            <mediaLoaded/>
+            <mediaLoadFailed/>
+        </image>
+    </presenter>
     <presenter menuLabel="COW" next="StimuliMenu" type="stimulus" self="COW" title="COW">
         <loadStimulus eventTag="COW" randomise="false" rememberLastStimuli="false">
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
                 </stimulusCodeVideo>
-                <touchInputCaptureStart msToNext="20000" showControls="false">
-                    <pauseVideo/>
+                <!-- habituationParadigmListener is not yet compleded and will probably not correctly work -->
+                <habituationParadigmListener threshold="2000" maximum="10" listenerId="habituationAction">
+                    <nextStimulus repeatIncorrect="false"/>
+                </habituationParadigmListener>
+                <touchInputCaptureStart msToNext="3000" showControls="false">
+                    <resetTrigger listenerId="habituationAction"/>
+                    <pauseMedia mediaId="media"/>
                     <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
-                    <disableButtonGroup matchingRegex="allCurtainGroup"/>
-                    <rewindVideo/>
+                <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
+                    <trigger listenerId="habituationAction"/>
+                    <disableStimulusButtons/>
+                    <rewindMedia mediaId="media"/>
                     <pause msToNext="100">
-                        <playVideo/>
+                        <playMedia mediaId="media"/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
                         <mediaLoaded/>
@@ -117,10 +132,14 @@
             <endOfStimulus>
                 <gotoNextPresenter/>
             </endOfStimulus>
-            <randomGrouping/>
-            <stimuli>
-                <tag>COW</tag>
-            </stimuli>
+            <!-- this random grouping is simlar to ld_screensize and there is a new list of stimuli from Hannah for this -->
+            <randomGrouping storageField="cow">
+                <tag>COW1</tag>
+                <tag>COW2</tag>
+                <tag>COW3</tag>
+                <tag>COW4</tag>
+            </randomGrouping>
+            <stimuli/>
         </loadStimulus>
     </presenter>
     <presenter menuLabel="FATHER" next="StimuliMenu" type="stimulus" self="FATHER" title="FATHER">
@@ -128,20 +147,20 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
-                    <pauseVideo/>
+                    <pauseMedia mediaId="media"/>
                     <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
                     <disableButtonGroup matchingRegex="allCurtainGroup"/>
-                    <rewindVideo/>
+                    <rewindMedia mediaId="media"/>
                     <pause msToNext="100">
-                        <playVideo/>
+                        <playMedia mediaId="media"/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
                         <mediaLoaded/>
@@ -194,20 +213,20 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
-                    <pauseVideo/>
+                    <pauseMedia mediaId="media"/>
                     <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
                     <disableButtonGroup matchingRegex="allCurtainGroup"/>
-                    <rewindVideo/>
+                    <rewindMedia mediaId="media"/>
                     <pause msToNext="100">
-                        <playVideo/>
+                        <playMedia mediaId="media"/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
                         <mediaLoaded/>
@@ -260,20 +279,20 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
-                    <pauseVideo/>
+                    <pauseMedia mediaId="media"/>
                     <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
                     <disableButtonGroup matchingRegex="allCurtainGroup"/>
-                    <rewindVideo/>
+                    <rewindMedia mediaId="media"/>
                     <pause msToNext="100">
-                        <playVideo/>
+                        <playMedia mediaId="media"/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
                         <mediaLoaded/>
@@ -322,24 +341,25 @@
         </loadStimulus>
     </presenter>
     <presenter menuLabel="PRAY" next="StimuliMenu" type="stimulus" self="PRAY" title="PRAY">
-        <loadStimulus eventTag="PRAY" randomise="false" rememberLastStimuli="false">
+        <loadStimulus eventTag="PRAY" randomise="true" rememberLastStimuli="false" repeatCount="8">
+            <!--load two stimuli but randomise and repeat these 8 times for each stimuli-->
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
-                    <pauseVideo/>
+                    <pauseMedia mediaId="media"/>
                     <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
                     <disableButtonGroup matchingRegex="allCurtainGroup"/>
-                    <rewindVideo/>
+                    <rewindMedia mediaId="media"/>
                     <pause msToNext="100">
-                        <playVideo/>
+                        <playMedia mediaId="media"/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
                         <mediaLoaded/>
@@ -392,20 +412,20 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
-                    <pauseVideo/>
+                    <pauseMedia mediaId="media"/>
                     <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
                     <disableButtonGroup matchingRegex="allCurtainGroup"/>
-                    <rewindVideo/>
+                    <rewindMedia mediaId="media"/>
                     <pause msToNext="100">
-                        <playVideo/>
+                        <playMedia mediaId="media"/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
                         <mediaLoaded/>
@@ -458,20 +478,20 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
-                    <pauseVideo/>
+                    <pauseMedia mediaId="media"/>
                     <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
                     <disableButtonGroup matchingRegex="allCurtainGroup"/>
-                    <rewindVideo/>
+                    <rewindMedia mediaId="media"/>
                     <pause msToNext="100">
-                        <playVideo/>
+                        <playMedia mediaId="media"/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
                         <mediaLoaded/>
@@ -524,20 +544,20 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
-                    <pauseVideo/>
+                    <pauseMedia mediaId="media"/>
                     <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
                     <disableButtonGroup matchingRegex="allCurtainGroup"/>
-                    <rewindVideo/>
+                    <rewindMedia mediaId="media"/>
                     <pause msToNext="100">
-                        <playVideo/>
+                        <playMedia mediaId="media"/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
                         <mediaLoaded/>
@@ -590,20 +610,20 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
-                    <pauseVideo/>
+                    <pauseMedia mediaId="media"/>
                     <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
                     <disableButtonGroup matchingRegex="allCurtainGroup"/>
-                    <rewindVideo/>
+                    <rewindMedia mediaId="media"/>
                     <pause msToNext="100">
-                        <playVideo/>
+                        <playMedia mediaId="media"/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
                         <mediaLoaded/>
@@ -656,20 +676,20 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
-                    <pauseVideo/>
+                    <pauseMedia mediaId="media"/>
                     <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
-                <touchInputStimulusButton featureText="Left Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="curtain_left.png" styleName="leftOverlayCurtain" dataChannel="2">
+                <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
                     <disableButtonGroup matchingRegex="allCurtainGroup"/>
-                    <rewindVideo/>
+                    <rewindMedia mediaId="media"/>
                     <pause msToNext="100">
-                        <playVideo/>
+                        <playMedia mediaId="media"/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
                         <mediaLoaded/>
@@ -722,20 +742,20 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
-                    <pauseVideo/>
+                    <pauseMedia mediaId="media"/>
                     <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
                 <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
                     <disableButtonGroup matchingRegex="allCurtainGroup"/>
-                    <rewindVideo/>
+                    <rewindMedia mediaId="media"/>
                     <pause msToNext="100">
-                        <playVideo/>
+                        <playMedia mediaId="media"/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
                         <mediaLoaded/>
@@ -788,20 +808,20 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" showControls="false" maxWidth="100">
+                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
                 </stimulusCodeVideo>
                 <touchInputCaptureStart msToNext="20000" showControls="false">
-                    <pauseVideo/>
+                    <pauseMedia mediaId="media"/>
                     <enableButtonGroup matchingRegex="allCurtainGroup"/>
                 </touchInputCaptureStart>
                 <touchInputStimulusButton featureText="Overlay Button" groupId="allCurtainGroup" eventTag="Curtain" src="screen/attentiongetter1.jpg" styleName="centeredOverlayCurtain" dataChannel="2">
                     <disableButtonGroup matchingRegex="allCurtainGroup"/>
-                    <rewindVideo/>
+                    <rewindMedia mediaId="media"/>
                     <pause msToNext="100">
-                        <playVideo/>
+                        <playMedia mediaId="media"/>
                     </pause>
                     <stimulusCodeAudio msToNext="500" codeFormat="Correct" dataChannel="0" showPlaybackIndicator="false">
                         <mediaLoaded/>
@@ -912,6 +932,25 @@
         <versionData/>
     </presenter>
     <stimuli>
+        <!-- these stimuli for "cow" is for the random grouping simlar to ld_screensize and there is a new list of stimuli from Hannah for this -->
+        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW1"/>
+        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis" imagePath="COWmis" pauseMs="0" tags="COW1"/>
+        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW1"/>
+        
+        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW2"/>
+        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW2"/>
+        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis" imagePath="COWmis" pauseMs="0" tags="COW2"/>
+        
+        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW3"/>
+        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis" imagePath="COWmis" pauseMs="0" tags="COW3"/>
+        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW3"/>
+        
+        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW4"/>
+        <stimulus audioPath="COW" code="COW" identifier="COW" imagePath="COW" pauseMs="0" tags="COW4"/>
+        <stimulus audioPath="COWmis" code="COWmis" identifier="COWmis" imagePath="COWmis" pauseMs="0" tags="COW4"/>
+        <!-- end of: these stimuli for "cow" is for the random grouping simlar to ld_screensize and there is a new list of stimuli from Hannah for this -->
+        
+        <!--<stimulus audioPath="COWmis-5" code="COWmis-5" identifier="COWmis-5" imagePath="COWmis-5" pauseMs="0" tags="COW3"/>-->
         <stimulus audioPath="easy/COW" code="easy/COW" identifier="easy/COW" imagePath="COW" pauseMs="0" tags="COW"/>
         <stimulus audioPath="easy/COWmis" code="easy/COWmis" identifier="easy/COWmis" imagePath="COWmis" pauseMs="0" tags="COW"/>
         <stimulus audioPath="easy/FATHER" code="easy/FATHER" identifier="easy/FATHER" imagePath="FATHER" pauseMs="0" tags="FATHER"/>
@@ -938,3 +977,50 @@
         <stimulus audioPath="hard/RAINmis" code="hard/RAINmis" identifier="hard/RAINmis" imagePath="RAINmis" pauseMs="0" tags="RAIN"/>
     </stimuli>
 </experiment>
+<!--Hi Peter, 
+
+this email is to follow up our spontaneous meeting on friday. I am sorry this email reaches you just now, but I figured you would be busy anyway. 
+
+I am listing the main changes again, for both, you and me. 
+
+Screen: 
+1) We would like to remove the curtains because it triggers children to swipe the screen. Instead, We ideally have a black screen with a banana on it (attentiongetter1). I created such a screen as image. Find the JPEG or the PDF in the attachement here. 
+
+2) We would like to have to set the value in the autoclose (when no motion is detected) that is at 3sec now to 30sec. 
+
+3) You asked me to check if the app should technically be able to show more videos at the same time. It is not necessary for this paradigm to have more videos on the screen. 
+
+
+Stimuli: 
+1) We would like to show the stims in a randomized order so that not all kids get to see A1-A2 (PRAY, PRAY_mis), then B1-B2 (COW, COW_mis), then C1-C2 (SHY, SHY_mis) and so forth.
+
+2) We would also like to randomise to which stim of the pair a child is habituated, so some children start with A1 (PRAY) and some with A2 (PRAY_mis). 
+ 
+3) A short note on a session with a new participant: We might not do the entire set of stims in one go, e.g because the kid gets tired. In that case, we would like to go back to the same session as many times as necessary for the child to complete the full session e.g. play pairs A-G. The app would have to select only the stims that have not been shown before, i.e. when I close the session because the child got tired the app needs to remember that it showed lets say pair A1-A2, C2-C1 and F1-F2 and that these cannot be done again in the same session. 
+
+
+Automated initiation of switch: 
+Stimuli are organised in pairs, so every trial will have a video 1 and a video 2 (e.g. A1 and A2) in the trial A. The experiment is designed to have a habituation phase and a test phase. During the habituation phase, one of the two videos is shown repeatedly. Children can habituate on either A1 or A2. Let’s assume A1 is equivalent with PRAY and A2 is equivalent with PRAY_mis  Once the child hits a specific criterion (to be explained here below), we proceed to the test phase. The test phase consists of two showings: each A1 and A2 is shown a single time. The order of the two depends on the habituation phase; the test phase begins with the video that has not been shown during the habituation phase and is followed by the one that had been shown in the habituation phase. So you can think of it as the order ‘other - same’. The possible scenarios are these (with A1 being PRAY and A2 being PRAY_mis)
+ 
+A1-A1-A1-A1-A1-A1-A1-A1-A1  —  A2-A1
+habituation phase test phase
+
+A2-A2-A2-A2-A2-A2-A2-A2-A2  —  A1-A2
+habituation phase test phase
+
+1) The first three showings of every pair of stims are fixed to establish the baseline. That means every child sees either A1-A1-A1 or A2-A2-A2. Then we work with a sliding window of three shows, counting backwards. Whenever this is 60% or less of the first three showings (baseline), we proceed to the test phase. The “other” stim (i.e. the stim that was not shown in the habituation phase) is shown only once. Then the “old” stim (i.e. shown in the habituation phase) is shown once again and the trial A is over. We proceed to a filler game. Then we start over with the next trial e.g. trial D.
+2) We also set a maximum amount of showings to 10. In other words, if the children have not fallen under 60% touching time by the 10th showing, we proceed to the test phase anyway (the 11th showing is the other stim, then the same again, then the trial is over).  
+
+
+Still to be solved:
+- minimum duration of touch, i.e. minimum duration of touch must equal the length of the longest video so that only touches that reach this point are registered as touch.
+- touches shorter than 2sec should be joint to a single touch
+- filler games: simple games based on earlier scripts using the graphics attached here. Object appears, moves up, touch makes it disappear
+- saving data on the server and on SD card?
+- if one user ID is not completed in one go, fine?
+- 
+
+
+Please find attached again the graphics I created for the new screen as well as the filler games.
+
+I hope this email is clear, but please let me know if you have further questions. I am looking forward to discuss more next Monday or Tuesday! -->
