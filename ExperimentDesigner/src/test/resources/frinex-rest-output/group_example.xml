@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<experiment appNameDisplay="group_example" appNameInternal="group_example" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="true" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="false" textFontSize="17" xsi:noNamespaceSchemaLocation="http://frinexbuild.mpi.nl/frinex.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <administration/>
+    <metadata>
+        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Worker ID"/>
+    </metadata>
+    <presenter menuLabel="Instruction" type="text" self="Instruction" title="Instruction">
+        <htmlText featureText="test syncing and participant use?"/>
+        <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Accord"/>
+    </presenter>
+    <presenter back="Instruction" menuLabel="Accord" next="screenTag" type="metadata" self="Accord" title="Accord">
+        <htmlText featureText="agreementScreenText"/>
+        <targetButton featureText="Je suis d'accord" target="screenTag"/>
+    </presenter>
+    <presenter back="Accord" menuLabel="screenTitle" next="GroupOf4" type="metadata" self="screenTag" title="screenTitle">
+        <htmlText featureText="dispalyText"/>
+        <saveMetadataButton featureText="saveButtonLabel" sendData="true" networkErrorMessage="on_Error_Text">
+            <onError/>
+            <onSuccess>
+                <gotoNextPresenter/>
+            </onSuccess>
+        </saveMetadataButton>
+        <addPadding/>
+        <htmlText featureText="postText"/>
+        <targetButton featureText="alternateButtonLabel" target="Instruction"/>
+    </presenter>
+    <presenter back="screenTag" menuLabel="Group of Four" next="Fini" type="stimulus" self="GroupOf4" title="Group of Four">
+        <clearCurrentScore/>
+        <centrePage/>
+        <htmlText featureText="preStimuliText"/>
+        <actionButton featureText="Volgende [enter]" hotKey="ENTER">
+            <loadStimulus eventTag="Group of Four" randomise="true" repeatRandomWindow="0" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
+                <hasMoreStimulus>
+                    <groupNetwork groupMembers="groupMembers4" phasesPerStimulus="1" groupCommunicationChannels="A|B|C|D">
+                        <groupNetworkActivity groupRole="A,B,C,D">
+                            <clearPage/>
+                            <stimulusLabel/>
+                            <htmlText featureText="All participants see this screen"/>
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                <mediaLoaded/>
+                                <mediaLoadFailed/>
+                                <mediaPlaybackComplete>
+                                    <addPadding/>
+                                    <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                                </mediaPlaybackComplete>
+                            </stimulusPresent>
+                        </groupNetworkActivity>
+                    </groupNetwork>
+                </hasMoreStimulus>
+                <endOfStimulus>
+                    <groupNetwork groupMembers="groupMembers4" phasesPerStimulus="1" groupCommunicationChannels="A|B|C|D">
+                        <sendGroupEndOfStimuli eventTag="endOfStimulusGroupMessage"/>
+                    </groupNetwork>
+                    <clearPage/>
+                    <htmlTokenText featureText="postStimuliText"/>
+                    <actionButton featureText="Volgende [enter]" hotKey="ENTER">
+                        <gotoNextPresenter/>
+                    </actionButton>
+                </endOfStimulus>
+                <randomGrouping/>
+                <stimuli>
+                    <tag>BalloonGroup</tag>
+                </stimuli>
+            </loadStimulus>
+        </actionButton>
+    </presenter>
+    <presenter menuLabel="GroupOf6" next="Fini" type="stimulus" self="GroupOf6" title="GroupOf6">
+        <clearCurrentScore/>
+        <centrePage/>
+        <htmlText featureText="GroupOf6"/>
+        <actionButton featureText="Volgende [enter]" hotKey="ENTER">
+            <loadStimulus eventTag="GroupOf6" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
+                <hasMoreStimulus>
+                    <groupNetwork groupMembers="A,B,C,D,E,F" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F">
+                        <groupNetworkActivity groupRole="A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:">
+                            <clearPage/>
+                            <stimulusHasResponse>
+                                <conditionTrue>
+                                    <pause msToNext="2000">
+                                        <sendGroupStoredMessage eventTag="sendGroupStoredMessage" incrementPhase="2"/>
+                                    </pause>
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <stimulusLabel/>
+                                    <htmlText featureText="Phase1"/>
+                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                        <mediaLoaded/>
+                                        <mediaLoadFailed/>
+                                        <mediaPlaybackComplete>
+                                            <addPadding/>
+                                            <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
+                                        </mediaPlaybackComplete>
+                                    </stimulusPresent>
+                                </conditionFalse>
+                            </stimulusHasResponse>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:A:">
+                            <clearPage/>
+                            <stimulusHasResponse>
+                                <conditionTrue/>
+                                <conditionFalse>
+                                    <htmlText featureText="Phase2"/>
+                                </conditionFalse>
+                            </stimulusHasResponse>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:A:-:">
+                            <clearPage/>
+                            <htmlText featureText="Phase3"/>
+                            <addPadding/>
+                            <groupMessageLabel styleName="groupMessageLabel"/>
+                            <addPadding/>
+                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                <mediaLoaded/>
+                                <mediaLoadFailed/>
+                                <mediaPlaybackComplete>
+                                    <pause msToNext="7000">
+                                        <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
+                                    </pause>
+                                </mediaPlaybackComplete>
+                            </stimulusPresent>
+                        </groupNetworkActivity>
+                        <groupNetworkActivity groupRole="-:A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-">
+                            <submitGroupEvent/>
+                            <sendGroupMessage eventTag="group record submitted" incrementPhase="1"/>
+                        </groupNetworkActivity>
+                    </groupNetwork>
+                </hasMoreStimulus>
+                <endOfStimulus>
+                    <gotoNextPresenter/>
+                </endOfStimulus>
+                <randomGrouping/>
+                <stimuli>
+                    <tag>BalloonGroup</tag>
+                </stimuli>
+            </loadStimulus>
+        </actionButton>
+    </presenter>
+    <presenter back="GroupOf4" menuLabel="Fini" type="transmission" self="Fini" title="Fini">
+        <generateCompletionCode>
+            <onSuccess>
+                <htmlText featureText="completionScreenText1"/>
+                <addPadding/>
+                <displayCompletionCode/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="Impossible de contacter le serveur, vérifiez votre connexion Internet s'il vous plaît."/>
+                <targetButton featureText="Réessayer" target="Fini"/>
+            </onError>
+        </generateCompletionCode>
+    </presenter>
+    <stimuli>
+        <stimulus code="balloonCssStyle" identifier="stimulus1" imagePath="balloon.png" pauseMs="0" tags="BalloonGroup"/>
+    </stimuli>
+</experiment>
