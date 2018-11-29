@@ -51,7 +51,7 @@
     <presenter back="Menu" menuLabel="FieldKit Sequential" type="stimulus" self="FieldKitSequential" title="FieldKit Sequential">
         <loadSdCardStimulus eventTag="FieldKit Sequential" randomise="false" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder recordingFormat="wav" eventTag="FieldKit Sequential" filePerStimulus="false">
+                <startAudioRecorder recordingFormat="wav" eventTag="FieldKit Sequential" filePerStimulus="false" mediaId="mediaId">
                     <onError/>
                     <onSuccess/>
                 </startAudioRecorder>
@@ -85,7 +85,7 @@
     <presenter back="Menu" menuLabel="FieldKit Random" type="stimulus" self="FieldKitRandom" title="FieldKit Random">
         <loadSdCardStimulus eventTag="FieldKit Random" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder recordingFormat="wav" eventTag="FieldKit Random" filePerStimulus="false">
+                <startAudioRecorder recordingFormat="wav" eventTag="FieldKit Random" filePerStimulus="false" mediaId="mediaId">
                     <onError/>
                     <onSuccess/>
                 </startAudioRecorder>
@@ -120,7 +120,7 @@
         <centrePage/>
         <loadSdCardStimulus eventTag="Task 1" randomise="true" repeatRandomWindow="0" excludeRegex=".*_question\\....$" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder recordingFormat="wav" eventTag="Task 1" filePerStimulus="false">
+                <startAudioRecorder recordingFormat="wav" eventTag="Task 1" filePerStimulus="false" mediaId="mediaId">
                     <onError/>
                     <onSuccess/>
                 </startAudioRecorder>
@@ -186,7 +186,7 @@
         <centrePage/>
         <loadSdCardStimulus eventTag="Task 2" randomise="true" repeatRandomWindow="0" excludeRegex=".*_question\\....$" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder recordingFormat="wav" eventTag="Task 2" filePerStimulus="false">
+                <startAudioRecorder recordingFormat="wav" eventTag="Task 2" filePerStimulus="false" mediaId="mediaId">
                     <onError/>
                     <onSuccess/>
                 </startAudioRecorder>
