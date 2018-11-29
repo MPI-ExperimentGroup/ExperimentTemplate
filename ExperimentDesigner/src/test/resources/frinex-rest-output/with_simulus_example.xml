@@ -1074,7 +1074,7 @@
                     <row>
                         <column>
                             <actionButton featureText="startAudioRecorder">
-                                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="deviceRegex" filePerStimulus="filePerStimulus" mediaId="recordedMedia">
+                                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="(046d:0a45)" filePerStimulus="filePerStimulus" mediaId="recordedMedia">
                                     <onError>
                                         <plainText featureText="startAudioRecorder onError"/>
                                     </onError>
