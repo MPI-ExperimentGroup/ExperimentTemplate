@@ -45,7 +45,7 @@
     <presenter back="Welkam" menuLabel="Metadata" next="Capture" type="stimulus" self="MetadataScreen" title="Metadata">
         <loadStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder recordingFormat="wav" eventTag="Metadata" filePerStimulus="false">
+                <startAudioRecorder recordingFormat="wav" eventTag="Metadata" filePerStimulus="false" mediaId="mediaId">
                     <onError/>
                     <onSuccess/>
                 </startAudioRecorder>
@@ -70,7 +70,7 @@
     <presenter back="Welkam" menuLabel="Lukluk ol foto" type="stimulus" self="Stimulus" title="Lukluk ol foto">
         <loadSdCardStimulus eventTag="Lukluk ol foto" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder recordingFormat="wav" eventTag="Lukluk ol foto" filePerStimulus="true">
+                <startAudioRecorder recordingFormat="wav" eventTag="Lukluk ol foto" filePerStimulus="true" mediaId="mediaId">
                     <onError/>
                     <onSuccess/>
                 </startAudioRecorder>
