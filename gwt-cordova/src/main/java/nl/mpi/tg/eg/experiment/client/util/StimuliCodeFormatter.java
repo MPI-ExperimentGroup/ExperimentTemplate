@@ -23,6 +23,8 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
  * @since Sep 5, 2018 4:01:01 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
+@Deprecated
+// the use of StimuliCodeFormatter has been replaced with HtmlTokenFormatter
 public class StimuliCodeFormatter {
 
     static final public String getFormattedStimulusCode(final Stimulus currentStimulus, final String codeFormat) {
