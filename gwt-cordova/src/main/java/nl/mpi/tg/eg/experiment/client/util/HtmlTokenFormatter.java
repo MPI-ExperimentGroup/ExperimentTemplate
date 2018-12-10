@@ -120,7 +120,7 @@ public class HtmlTokenFormatter {
                         final JSONObject storedJSONObject = localStorage.getStoredJSONObject(userData.getUserId(), uniqueId);
                         if (storedJSONObject != null) {
                             for (String key : storedJSONObject.keySet()) {
-                                resultString += storedJSONObject.get(key);
+                                resultString += storedJSONObject.get(key).toString().replaceAll("(^\")|(\"$)", "");
                             }
                         }
                         resultString += subPart[1];
@@ -157,6 +157,7 @@ public class HtmlTokenFormatter {
             replacedTokensString = replacedTokensString.replaceAll("<stimulusId>", currentStimulus.getUniqueId());
             replacedTokensString = replacedTokensString.replaceAll("<stimulusLabel>", currentStimulus.getLabel());
             replacedTokensString = replacedTokensString.replaceAll("<stimulusCode>", currentStimulus.getCode());
+            replacedTokensString = replacedTokensString.replaceAll("<code>", currentStimulus.getCode()); // migrated <code> from StimuliCodeFormatter and <code> should be deprecated
             if (currentStimulus.hasCorrectResponses()) {
                 replacedTokensString = replacedTokensString.replaceAll("<stimulusCorrectResponses>", currentStimulus.getCorrectResponses());
             }
@@ -164,6 +165,7 @@ public class HtmlTokenFormatter {
                 replacedTokensString = replacedTokensString.replaceAll("<stimulusRatingLabels>", currentStimulus.getRatingLabels());
                 int index = 0;
                 for (final String ratingLabel : currentStimulus.getRatingLabels().split(",")) {
+                    replacedTokensString = replacedTokensString.replace("<rating_" + index + ">", ratingLabel); // migrated <rating_XXX> from StimuliCodeFormatter <rating_XXX> and should be deprecated
                     replacedTokensString = replacedTokensString.replace("<stimulusRatingLabel_" + index + ">", ratingLabel);
                     index++;
                 }
