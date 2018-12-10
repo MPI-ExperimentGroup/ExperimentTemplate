@@ -17,6 +17,36 @@
         .smallVideo {
         width: 100px;
         }
+        $boxPositions: (
+        ("10X15_30X60_45X60_75X90",10,15,30,60,45,60,75,90),
+        ("45X10_15X60_75X30_60X90",45,10,15,60,75,30,60,90),
+        ("45X90_10X10_15X75_30X60",45,90,10,10,15,75,30,60)
+        );
+        @each $boxPos in $boxPositions {
+        @each $boxIndex in 1 2 3 4 {
+        @each $boxState in black white {
+        .box_#{nth($boxPos,1)}_#{$boxIndex}_#{$boxState}
+        {
+        left: #{nth($boxPos,($boxIndex*2))}vmin;
+        top: #{nth($boxPos,1+($boxIndex*2))}vmin;
+        background: #{$boxState};
+        position: fixed;
+        width: 10vmin;
+        height: 10vmin;
+        border-color: black;
+        border-width: 2px;
+        border-style: solid;
+        }
+        }
+        }
+        }
+        .gwt-Button.optionButton.buttonStyle {
+        margin: 0px;
+        width: 100%;
+        height: 100%;
+        background: none;
+        color: none;
+        }
     </scss>
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
@@ -1363,6 +1393,98 @@
             </stimuli>
         </loadStimulus>
     </presenter>
+    <presenter back="Menu" menuLabel="AppendStimulusResponse" type="stimulus" self="AppendStimulusResponse" title="AppendStimulusResponse">
+        <loadStimulus eventTag="RecorderPauseTest" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <htmlText featureText=".&lt;br/&gt;"/> 
+                <htmlText featureText=".&lt;br/&gt;"/>
+                <htmlTokenText featureText="playerScore:
+                &lt;playerScore&gt;&lt;br/&gt;
+                playerErrors:
+                &lt;playerErrors&gt;&lt;br/&gt;
+                playerPotentialScore:
+                &lt;playerPotentialScore&gt;&lt;br/&gt;
+                playerErrorStreak:
+                &lt;playerErrorStreak&gt;&lt;br/&gt;
+                playerCorrectStreak:
+                &lt;playerCorrectStreak&gt;&lt;br/&gt;
+                "/>
+                <stimulusLabel styleName="stimuliLabel"/>
+                <region regionId="square1">
+                    <htmlText featureText=".&lt;br/&gt;"/>
+                </region>
+                <region regionId="square2">
+                    <htmlText featureText=".&lt;br/&gt;"/>
+                </region>
+                <region regionId="square3">
+                    <htmlText featureText=".&lt;br/&gt;"/>
+                </region>
+                <region regionId="square4">
+                    <htmlText featureText=".&lt;br/&gt;"/>
+                </region>
+                <setStimulusCodeResponse codeFormat="" dataChannel="8"/>
+                <regionCodeStyle regionId="square1" styleName="box_&lt;code&gt;_1_white"/>
+                <regionCodeStyle regionId="square2" styleName="box_&lt;code&gt;_2_white"/>
+                <regionCodeStyle regionId="square3" styleName="box_&lt;code&gt;_3_white"/>
+                <regionCodeStyle regionId="square4" styleName="box_&lt;code&gt;_4_white"/>
+                <pause msToNext="1000">
+                    <regionCodeStyle regionId="square1" styleName="box_&lt;code&gt;_1_black"/>
+                    <pause msToNext="1000">
+                        <regionCodeStyle regionId="square1" styleName="box_&lt;code&gt;_1_white"/>
+                        <regionCodeStyle regionId="square2" styleName="box_&lt;code&gt;_2_black"/>
+                        <pause msToNext="1000">
+                            <regionCodeStyle regionId="square2" styleName="box_&lt;code&gt;_2_white"/>
+                            <regionCodeStyle regionId="square3" styleName="box_&lt;code&gt;_3_black"/>
+                            <pause msToNext="1000">
+                                <regionCodeStyle regionId="square3" styleName="box_&lt;code&gt;_3_white"/>
+                                <regionCodeStyle regionId="square4" styleName="box_&lt;code&gt;_4_black"/>
+                                <pause msToNext="1000">
+                                    <regionCodeStyle regionId="square3" styleName="box_&lt;code&gt;_4_white"/>
+                                    <regionReplace regionId="square1">
+                                        <stimulusButton featureText="1" styleName="buttonStyle">
+                                            <setStimulusCodeResponse codeFormat="&lt;stimulusResponse&gt;1" dataChannel="8"/>
+                                        </stimulusButton>
+                                    </regionReplace>
+                                    <regionReplace regionId="square2">
+                                        <stimulusButton featureText="2" styleName="buttonStyle">
+                                            <setStimulusCodeResponse codeFormat="&lt;stimulusResponse&gt;2" dataChannel="8"/>
+                                        </stimulusButton>
+                                    </regionReplace>
+                                    <regionReplace regionId="square3">
+                                        <stimulusButton featureText="3" styleName="buttonStyle">
+                                            <setStimulusCodeResponse codeFormat="&lt;stimulusResponse&gt;3" dataChannel="8"/>
+                                        </stimulusButton>
+                                    </regionReplace>
+                                    <regionReplace regionId="square4">
+                                        <stimulusButton featureText="4" styleName="buttonStyle">
+                                            <setStimulusCodeResponse codeFormat="&lt;stimulusResponse&gt;4" dataChannel="8"/>
+                                        </stimulusButton>
+                                    </regionReplace>
+                                    <regionCodeStyle regionId="square1" styleName="box_&lt;code&gt;_1_white"/>
+                                    <regionCodeStyle regionId="square2" styleName="box_&lt;code&gt;_2_white"/>
+                                    <regionCodeStyle regionId="square3" styleName="box_&lt;code&gt;_3_white"/>
+                                    <regionCodeStyle regionId="square4" styleName="box_&lt;code&gt;_4_white"/>
+                                    <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
+                                </pause>
+                            </pause>
+                        </pause>
+                    </pause>
+                </pause>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="AppendStimulusResponse"/>
+                    <gotoPresenter target="AppendStimulusResponse"/>
+                </actionButton>
+                <targetButton featureText="Menu" target="Menu"/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>boxes</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
     <presenter back="Menu" menuLabel="enter in the text box" type="stimulus" self="enter_in_the_text_box" title="enter in the text box">
         <loadStimulus eventTag="enter_in_the_text_box" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -1505,5 +1627,8 @@
         <stimulus label="Q6 type H or h" correctResponses="[hH]" identifier="Q6" pauseMs="0" tags="Pretest_Screen Q6"/>
         <stimulus label="Q7 type 'crayon' in any combination of case" correctResponses=".*[Cc][Rr][Aa][Yy][Oo][Nn]" identifier="Q7" pauseMs="0" tags="Pretest_Screen Q7"/>
         <stimulus identifier="Picture_01" imagePath="1_1.jpg"   code="1" ratingLabels="1,2,3,4,5,6,7" label="&lt;span style=&quot;text-align: left;&quot; &gt;label text 1a&lt;/span&gt;&lt;span style=&quot;text-align: right;&quot;&gt;label text 1b&lt;/span&gt;" pauseMs="0" tags="Practice"/>
+        <stimulus code="10X15_30X60_45X60_75X90" correctResponses="1234" identifier="10X15_30X60_45X60_75X90" label="10X15_30X60_45X60_75X90" pauseMs="1000" tags="boxes"/>
+        <stimulus code="45X10_15X60_75X30_60X90" correctResponses="1234" identifier="45X10_15X60_75X30_60X90" label="45X10_15X60_75X30_60X90" pauseMs="1000" tags="boxes"/>
+        <stimulus code="45X90_10X10_15X75_30X60" correctResponses="1234" identifier="45X90_10X10_15X75_30X60" label="45X90_10X10_15X75_30X60" pauseMs="1000" tags="boxes"/>
     </stimuli>
 </experiment>
