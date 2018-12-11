@@ -1091,30 +1091,70 @@
                 <stimulusFreeText featureText="Vul minimal 1 letter." styleName="stimuliLabel" validationRegex=".{1,}" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
                 <stimulusImage msToNext="60" styleName="styleName" dataChannel="2">
                     <mediaLoaded>
-                        <plainText featureText="stimulusImageLoaded"/>
+                        <regionReplace regionId="stimulusImage1">
+                            <plainText featureText="stimulusImageLoaded"/>
+                        </regionReplace>
                     </mediaLoaded>
-                    <mediaLoadFailed>
-                        <plainText featureText="stimulusImageFailed"/>
+                    <mediaLoadFailed> 
+                        <regionReplace regionId="stimulusImage1">
+                            <plainText featureText="stimulusImageFailed"/>
+                        </regionReplace>
                     </mediaLoadFailed>
                 </stimulusImage>
+                <region regionId="stimulusImage1"></region>
                 <!--                <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
                     <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>-->
                 <table>
                     <row>
                         <column>
-                            <actionButton featureText="startAudioRecorder">
-                                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="(046d:0a45)" filePerStimulus="filePerStimulus" mediaId="recordedMedia">
+                            <actionButton featureText="StartRecorderA (USB)">
+                                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="(046d:0a45)" filePerStimulus="filePerStimulus" mediaId="recordedMediaA">
                                     <onError>
-                                        <plainText featureText="startAudioRecorder onError"/>
+                                        <regionReplace regionId="recordedMediaResult">
+                                            <plainText featureText="Error"/>
+                                        </regionReplace>
                                     </onError>
                                     <onSuccess>
-                                        <plainText featureText="startAudioRecorder onSuccess"/>
+                                        <regionReplace regionId="recordedMediaResult">
+                                            <plainText featureText="Success"/>
+                                        </regionReplace>
                                     </onSuccess>
                                 </startAudioRecorder>
                             </actionButton>  
+                            <actionButton featureText="StartRecorderB (any)">
+                                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="" filePerStimulus="filePerStimulus" mediaId="recordedMediaB">
+                                    <onError>
+                                        <regionReplace regionId="recordedMediaResult">
+                                            <plainText featureText="Error"/>
+                                        </regionReplace>
+                                    </onError>
+                                    <onSuccess>
+                                        <regionReplace regionId="recordedMediaResult">
+                                            <plainText featureText="Success"/>
+                                        </regionReplace>
+                                    </onSuccess>
+                                </startAudioRecorder>
+                            </actionButton>  
+                            <actionButton featureText="StartRecorderC (any)">
+                                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="" filePerStimulus="filePerStimulus" mediaId="recordedMediaC">
+                                    <onError>
+                                        <regionReplace regionId="recordedMediaResult">
+                                            <plainText featureText="Error"/>
+                                        </regionReplace>
+                                    </onError>
+                                    <onSuccess>
+                                        <regionReplace regionId="recordedMediaResult">
+                                            <plainText featureText="Success"/>
+                                        </regionReplace>
+                                    </onSuccess>
+                                </startAudioRecorder>
+                            </actionButton>  
+                            <region regionId="StopRecorder"></region>
                             <actionButton featureText="stopAudioRecorder">
-                                <stopAudioRecorder/>
+                                <regionReplace regionId="stopAudioRecorder">
+                                    <stopAudioRecorder/>
+                                </regionReplace>
                             </actionButton>   
                         </column> 
                         <column>
@@ -1132,18 +1172,27 @@
                                 <pauseMedia mediaId="recordedMedia"/>
                             </actionButton>
                         </column> 
+                        <column>
+                            <region regionId="recordedMediaResult"></region>
+                        </column> 
                     </row>
                     <row>
                         <column>
                             <stimulusVideo msToNext="60" loop="false" styleName="smallVideo" dataChannel="2" autoPlay="false" mediaId="mediaId1" showControls="true">
                                 <mediaLoaded>
-                                    <plainText featureText="mediaId1 stimulusVideoLoaded"/>
+                                    <regionReplace regionId="mediaRegion1">
+                                        <plainText featureText="mediaId1 stimulusVideoLoaded"/>
+                                    </regionReplace>
                                 </mediaLoaded>
                                 <mediaLoadFailed>
-                                    <plainText featureText="mediaId1 stimulusVideoFailed"/>
+                                    <regionReplace regionId="mediaRegion1">
+                                        <plainText featureText="mediaId1 stimulusVideoFailed"/>
+                                    </regionReplace>
                                 </mediaLoadFailed>
                                 <mediaPlaybackComplete>
-                                    <plainText featureText="mediaId1 stimulusVideoComplete"/>
+                                    <regionReplace regionId="mediaRegion1">
+                                        <plainText featureText="mediaId1 stimulusVideoComplete"/>
+                                    </regionReplace>
                                 </mediaPlaybackComplete>
                             </stimulusVideo>
                         </column> 
@@ -1162,18 +1211,27 @@
                                 <pauseMedia mediaId="mediaId1"/>
                             </actionButton>
                         </column>
+                        <column>
+                            <region regionId="mediaRegion1"></region>
+                        </column> 
                     </row>
                     <row>
                         <column>
                             <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="&lt;code&gt;" percentOfPage="56" loop="false" styleName="smallVideo" dataChannel="2" autoPlay="false" mediaId="mediaId2" showControls="true" maxWidth="60">
                                 <mediaLoaded>
-                                    <plainText featureText="mediaId2 stimulusCodeVideoLoaded"/>
+                                    <regionReplace regionId="mediaRegion2">
+                                        <plainText featureText="mediaId2 stimulusCodeVideoLoaded"/>
+                                    </regionReplace>
                                 </mediaLoaded>
                                 <mediaLoadFailed>
-                                    <plainText featureText="mediaId2 stimulusCodeVideoFailed"/>
+                                    <regionReplace regionId="mediaRegion2">
+                                        <plainText featureText="mediaId2 stimulusCodeVideoFailed"/>
+                                    </regionReplace>
                                 </mediaLoadFailed>
                                 <mediaPlaybackComplete>
-                                    <plainText featureText="mediaId2 stimulusCodeVideoComplete"/>
+                                    <regionReplace regionId="mediaRegion2">
+                                        <plainText featureText="mediaId2 stimulusCodeVideoComplete"/>
+                                    </regionReplace>
                                 </mediaPlaybackComplete>
                             </stimulusCodeVideo>
                         </column> 
@@ -1192,18 +1250,27 @@
                                 <pauseMedia mediaId="mediaId2"/>
                             </actionButton>
                         </column>
+                        <column>
+                            <region regionId="mediaRegion2"></region>
+                        </column> 
                     </row>
                     <row>
                         <column>
                             <stimulusCodeAudio msToNext="60" codeFormat="&lt;code&gt;" dataChannel="2" autoPlay="false" mediaId="mediaId3" showPlaybackIndicator="true">
                                 <mediaLoaded>
-                                    <plainText featureText="mediaId3 stimulusCodeAudioLoaded"/>
+                                    <regionReplace regionId="mediaRegion3">
+                                        <plainText featureText="mediaId3 stimulusCodeAudioLoaded"/>
+                                    </regionReplace>
                                 </mediaLoaded>
                                 <mediaLoadFailed>
-                                    <plainText featureText="mediaId3 stimulusCodeAudioFailed"/>
+                                    <regionReplace regionId="mediaRegion3">
+                                        <plainText featureText="mediaId3 stimulusCodeAudioFailed"/>
+                                    </regionReplace>
                                 </mediaLoadFailed>
                                 <mediaPlaybackComplete>
-                                    <plainText featureText="mediaId3 stimulusCodeAudioComplete"/>
+                                    <regionReplace regionId="mediaRegion3">
+                                        <plainText featureText="mediaId3 stimulusCodeAudioComplete"/>
+                                    </regionReplace>
                                 </mediaPlaybackComplete>
                             </stimulusCodeAudio>
                         </column> 
@@ -1222,18 +1289,27 @@
                                 <pauseMedia mediaId="mediaId3"/>
                             </actionButton>
                         </column>
+                        <column>
+                            <region regionId="mediaRegion3"></region>
+                        </column> 
                     </row>
                     <row>
                         <column> 
                             <stimulusAudio msToNext="60" dataChannel="2" autoPlay="false" mediaId="mediaId4" showPlaybackIndicator="true">
                                 <mediaLoaded>
-                                    <plainText featureText="mediaId4 stimulusAudioLoaded"/>
+                                    <regionReplace regionId="mediaRegion4">
+                                        <plainText featureText="mediaId4 stimulusAudioLoaded"/>
+                                    </regionReplace>
                                 </mediaLoaded>
                                 <mediaLoadFailed>
-                                    <plainText featureText="mediaId4 stimulusAudioFailed"/>
+                                    <regionReplace regionId="mediaRegion4">
+                                        <plainText featureText="mediaId4 stimulusAudioFailed"/>
+                                    </regionReplace>
                                 </mediaLoadFailed>
                                 <mediaPlaybackComplete>
-                                    <plainText featureText="mediaId4 stimulusAudioComplete"/>
+                                    <regionReplace regionId="mediaRegion4">
+                                        <plainText featureText="mediaId4 stimulusAudioComplete"/>
+                                    </regionReplace>
                                 </mediaPlaybackComplete>
                             </stimulusAudio>
                         </column> 
@@ -1252,6 +1328,9 @@
                                 <pauseMedia mediaId="mediaId4"/>
                             </actionButton>
                         </column>
+                        <column>
+                            <region regionId="mediaRegion4"></region>
+                        </column> 
                     </row>
                 </table>
                 <actionButton featureText="Volgende [tab + enter]">
