@@ -366,6 +366,117 @@
                 <regionStyle regionId="regionC" styleName="hiddenRegion"/>
             </actionButton>
         </region>
+        <loadStimulus eventTag="First Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <showStimulusProgress/>
+                <addPadding/>
+                <htmlTokenText featureText="
+                playerScore:
+                &lt;playerScore&gt;&lt;br/&gt;
+                playerErrors:
+                &lt;playerErrors&gt;&lt;br/&gt;
+                playerPotentialScore:
+                &lt;playerPotentialScore&gt;&lt;br/&gt;
+                "/>
+                <addPadding/>
+                <stimulusLabel styleName="stimuliLabel"/>
+                
+                <addPadding/>
+                <table>
+                    <row>
+                        <column>
+                            <plainText featureText="left label"/>
+                        </column>
+                        <column></column>
+                        <column></column>
+                        <column></column>
+                        <column>
+                            <plainText featureText="right label"/>
+                        </column>
+                    </row>
+                    <row>
+                        <column>
+                            <region regionId="region1">
+                                <actionButton featureText="1">
+                                    <setStimulusCodeResponse codeFormat="1" dataChannel="8"/>
+                                    <regionStyle regionId="region1" styleName="exampleBorderedBackground"/>
+                                    <regionStyle regionId="region2" styleName=""/>
+                                    <regionStyle regionId="region3" styleName=""/>
+                                    <regionStyle regionId="region4" styleName=""/>
+                                    <regionStyle regionId="region5" styleName=""/>
+                                </actionButton>
+                            </region>
+                        </column>
+                        <column>
+                            <region regionId="region2">
+                                <actionButton featureText="2">
+                                    <setStimulusCodeResponse codeFormat="2" dataChannel="8"/>
+                                    <regionStyle regionId="region1" styleName=""/>
+                                    <regionStyle regionId="region2" styleName="exampleBorderedBackground"/>
+                                    <regionStyle regionId="region3" styleName=""/>
+                                    <regionStyle regionId="region4" styleName=""/>
+                                    <regionStyle regionId="region5" styleName=""/>
+                                </actionButton>
+                            </region>
+                        </column>
+                        <column>
+                            <region regionId="region3">
+                                <actionButton featureText="3">
+                                    <setStimulusCodeResponse codeFormat="3" dataChannel="8"/>
+                                    <regionStyle regionId="region1" styleName=""/>
+                                    <regionStyle regionId="region2" styleName=""/>
+                                    <regionStyle regionId="region3" styleName="exampleBorderedBackground"/>
+                                    <regionStyle regionId="region4" styleName=""/>
+                                    <regionStyle regionId="region5" styleName=""/>
+                                </actionButton>
+                            </region>
+                        </column>
+                        <column>
+                            <region regionId="region4">
+                                <actionButton featureText="4">
+                                    <setStimulusCodeResponse codeFormat="4" dataChannel="8"/>
+                                    <regionStyle regionId="region1" styleName=""/>
+                                    <regionStyle regionId="region2" styleName=""/>
+                                    <regionStyle regionId="region3" styleName=""/>
+                                    <regionStyle regionId="region4" styleName="exampleBorderedBackground"/>
+                                    <regionStyle regionId="region5" styleName=""/>
+                                </actionButton>
+                            </region>
+                        </column>
+                        <column>
+                            <region regionId="region5">
+                                <actionButton featureText="5">
+                                    <setStimulusCodeResponse codeFormat="5" dataChannel="8"/>
+                                    <regionStyle regionId="region1" styleName=""/>
+                                    <regionStyle regionId="region2" styleName=""/>
+                                    <regionStyle regionId="region3" styleName=""/>
+                                    <regionStyle regionId="region4" styleName=""/>
+                                    <regionStyle regionId="region5" styleName="exampleBorderedBackground"/>
+                                </actionButton>
+                            </region>
+                        </column>
+                    </row>
+                </table>
+                <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <addPadding/>
+                <actionButton featureText="clearCurrentScore">
+                    <clearCurrentScore/>
+                    <gotoPresenter target="Region_Toggle_Example"/>
+                </actionButton>
+                <addPadding/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="Region_Toggle_Example"/>
+                    <gotoPresenter target="Region_Toggle_Example"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>RatingToggle</tag>
+            </stimuli>
+        </loadStimulus>
     </presenter>
     <presenter back="Menu" menuLabel="Metadata (Enable) (Visible)" type="metadata" self="Metadata_Enable_Visible" title="Metadata (Enable) (Visible)">
         <plainText featureText="In this example two metadata fields are hidden/shown and enabled/disabled according to the value of another field."/>       
@@ -1709,5 +1820,8 @@
         <stimulus code="10X15_30X60_45X60_75X90" correctResponses="1234" identifier="10X15_30X60_45X60_75X90" label="10X15_30X60_45X60_75X90" pauseMs="1000" tags="boxes"/>
         <stimulus code="45X10_15X60_75X30_60X90" correctResponses="1234" identifier="45X10_15X60_75X30_60X90" label="45X10_15X60_75X30_60X90" pauseMs="1000" tags="boxes"/>
         <stimulus code="45X90_10X10_15X75_30X60" correctResponses="1234" identifier="45X90_10X10_15X75_30X60" label="45X90_10X10_15X75_30X60" pauseMs="1000" tags="boxes"/>
+        <stimulus code="NC" identifier="7" correctResponses="2" ratingLabels="1,2,3,4,5" label="In tegenstelling tot andere feestgangers. 2" pauseMs="0" tags="RatingToggle"/>
+        <stimulus code="NN" identifier="68" correctResponses="5" ratingLabels="1,2,3,4,5" label="De meeste vrienden. 5" pauseMs="0" tags="RatingToggle"/>
+        <stimulus code="NC" identifier="32" correctResponses="1" ratingLabels="1,2,3,4,5" label="Bij de auditie waren. 1" pauseMs="0" tags="RatingToggle"/>
     </stimuli>
 </experiment>
