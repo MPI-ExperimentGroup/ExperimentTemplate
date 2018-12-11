@@ -401,6 +401,7 @@
                     <plainText featureText="plainText in stimulusPause"/>
                 </stimulusPause>
                 <stimulusLabel styleName="styleName"/>
+                <regionCodeStyle regionId="regionId" styleName="styleName"/>
                 <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" replacement="replacement" animate="bounce" replacementRegex="replacementRegex" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -714,6 +715,7 @@
                     <plainText featureText="plainText in stimulusPause"/>
                 </stimulusPause>
                 <stimulusLabel styleName="styleName"/>
+                <regionCodeStyle regionId="regionId" styleName="styleName"/>
                 <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" replacement="replacement" animate="bounce" replacementRegex="replacementRegex" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -1027,6 +1029,7 @@
                     <plainText featureText="plainText in stimulusPause"/>
                 </stimulusPause>
                 <stimulusLabel styleName="styleName"/>
+                <regionCodeStyle regionId="regionId" styleName="styleName"/>
                 <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" replacement="replacement" animate="bounce" replacementRegex="replacementRegex" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -1327,7 +1330,6 @@
             <plainText featureText="plainText in region"/>
         </region>
         <regionStyle regionId="regionId" styleName="styleName"/>
-        <regionCodeStyle regionId="regionId" styleName="styleName"/>
         <regionReplace regionId="regionId" styleName="styleName">
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
@@ -2079,6 +2081,7 @@
                     <plainText featureText="plainText in stimulusPause"/>
                 </stimulusPause>
                 <stimulusLabel/>
+                <regionCodeStyle regionId="regionId"/>
                 <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -2392,6 +2395,7 @@
                     <plainText featureText="plainText in stimulusPause"/>
                 </stimulusPause>
                 <stimulusLabel/>
+                <regionCodeStyle regionId="regionId"/>
                 <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -2705,6 +2709,7 @@
                     <plainText featureText="plainText in stimulusPause"/>
                 </stimulusPause>
                 <stimulusLabel/>
+                <regionCodeStyle regionId="regionId"/>
                 <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -3005,7 +3010,6 @@
             <plainText featureText="plainText in region"/>
         </region>
         <regionStyle regionId="regionId"/>
-        <regionCodeStyle regionId="regionId"/>
         <regionReplace regionId="regionId">
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
