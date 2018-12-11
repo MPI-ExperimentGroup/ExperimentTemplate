@@ -1327,6 +1327,7 @@
             <plainText featureText="plainText in region"/>
         </region>
         <regionStyle regionId="regionId" styleName="styleName"/>
+        <regionCodeStyle regionId="regionId" styleName="styleName"/>
         <regionReplace regionId="regionId" styleName="styleName">
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
@@ -3004,6 +3005,7 @@
             <plainText featureText="plainText in region"/>
         </region>
         <regionStyle regionId="regionId"/>
+        <regionCodeStyle regionId="regionId"/>
         <regionReplace regionId="regionId">
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
