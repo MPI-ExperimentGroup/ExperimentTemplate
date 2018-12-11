@@ -188,7 +188,7 @@ public enum FeatureType {
     column(true, false, new FeatureAttribute[]{styleName}),
     region(true, false, new FeatureAttribute[]{regionId, styleName}),
     regionStyle(false, false, new FeatureAttribute[]{regionId, styleName}),
-    regionCodeStyle(false, false, new FeatureAttribute[]{regionId, styleName}),
+    regionCodeStyle(false, false, new FeatureAttribute[]{regionId, styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     regionReplace(true, false, new FeatureAttribute[]{regionId, styleName}),
     regionClear(false, false, new FeatureAttribute[]{regionId}),
     // todo: look for and update to add the show any stimuli tag and make stimulusImage only show images (true, false, new FeatureAttribute[]{percentOfPage, maxHeight, maxWidth, msToNext, animate, matchingRegex, replacement, showControls}, false, false, false, Contitionals.hasMediaLoading), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
