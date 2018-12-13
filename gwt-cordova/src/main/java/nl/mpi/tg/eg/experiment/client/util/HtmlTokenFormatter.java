@@ -128,6 +128,8 @@ public class HtmlTokenFormatter {
                 }
                 replacedTokensString = (resultString != null) ? resultString : replacedTokensString;
             }
+            final String completionCode = localStorage.getCompletionCode(userData.getUserId());
+            replacedTokensString = replacedTokensString.replaceAll("<completionCode>", (completionCode != null) ? completionCode : "");
         }
         // insert MetadataField tags
         if (metadataFieldProvider != null) {
