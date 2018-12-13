@@ -30,6 +30,17 @@ script:
   - wget $serverUrl/with_simulus_example/opus-recorder/encoderWorker.min.wasm
   - wget $serverUrl/with_simulus_example/opus-recorder/encoderWorker.min.js
   - ls ../../static/opus-recorder
+  - mkdir ../../static/webjars
+  - mkdir ../../static/webjars/jquery
+  - mkdir ../../static/webjars/sockjs-client
+  - mkdir ../../static/webjars/stomp-websocket
+  - cd ../../static/webjars/jquery
+  - wget $serverUrl/with_simulus_example/webjars/jquery/jquery.min.js
+  - cd ../sockjs-client
+  - wget $serverUrl/with_simulus_example/webjars/sockjs-client/sockjs.min.js
+  - cd ../stomp-websocket
+  - wget $serverUrl/with_simulus_example/webjars/stomp-websocket/stomp.min.js
+  - cd ..
   - ls ../../static
   - ls ../../static/*
   
