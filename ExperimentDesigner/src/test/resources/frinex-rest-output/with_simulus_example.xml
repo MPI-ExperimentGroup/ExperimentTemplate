@@ -8,11 +8,38 @@
         <dataChannel channel="4" label="Configuration" logToSdCard="false"/>
     </administration>
     <scss>
-        .exampleBorderedBackground{
-        border: black 1px solid;
+        .gwt-Button.optionButton.toggleBox {
+        background: none;
+        }
+        .toggleBoxOn, .toggleBoxOff
+        {
+        position: absolute;
         border-radius: 15px;
-        padding: 7px;
         background: lightgrey;
+        width: 15vw;
+        }
+        .toggleBoxOn
+        {
+        border: #4A7777 solid 3px;
+        }
+        .toggleBoxOff
+        {
+        border: #D5D8D8 solid 3px;
+        }
+        .toggleBox1 {
+        left: 10vw;
+        }
+        .toggleBox2 {
+        left: 27vw;
+        }
+        .toggleBox3 {
+        left: 43vw;
+        }
+        .toggleBox4 {
+        left: 59vw;
+        }
+        .toggleBox5 {
+        left: 75vw;
         }
         .smallVideo {
         width: 100px;
@@ -24,7 +51,7 @@
         );
         @each $boxPos in $boxPositions {
         @each $boxIndex in 1 2 3 4 {
-        @each $boxState in black white {
+        @each $boxState in "black" "white" {
         .box_#{nth($boxPos,1)}_#{$boxIndex}_#{$boxState}
         {
         left: #{nth($boxPos,($boxIndex*2))}vmin;
@@ -60,6 +87,7 @@
         <field controlledMessage="Voer een getal in." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="dateOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
         <field controlledMessage="." controlledRegex="|Set 1 Instapset 2;3-2;5 jaar|Set 2 Instapset 2;6-2;11 jaar|Set 3 Instapset 3;0-3;11 jaar|Set 4 Instapset 4;0-4;5 jaar|Set 5 Instapset 4;6-5;5 jaar|Set 6 Instapset 5;6-6;5 jaar|Set 7 Instapset 6;6-7;11 jaar|Set 8 Instapset 8;0-9;11 jaar|Set 9 Instapset 10;0-10;11 jaar|Set 10 Instapset 11;0 - 13;11 jaar" postName="ageGroup" preventServerDuplicates="false" registrationField="Instapset"/>
         <field controlledMessage="." controlledRegex=".*" postName="item" preventServerDuplicates="false" registrationField="item"/>
+        <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="invitation_code" preventServerDuplicates="false" registrationField="Invitation Code"/>
     </metadata>
     <presenter back="Menu" menuLabel="Terug" next="Informatie" type="metadata" self="Toestemming" title="Toestemming">
         <htmlText featureText="Toestemmingsverklaring voor deelname aan het onderzoek:&lt;br/&gt;&lt;br/&gt;Ik stem geheel vrijwillig in met deelname aan dit onderzoek."/>
@@ -366,12 +394,20 @@
                 <regionStyle regionId="regionC" styleName="hiddenRegion"/>
             </actionButton>
         </region>
+    </presenter>
+    <presenter back="Menu" menuLabel="Rating Toggle Example" type="stimulus" self="Rating_Toggle_Example" title="Rating Toggle Example">
         <loadStimulus eventTag="First Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
+                <regionClear regionId="region1"/>
+                <regionClear regionId="region2"/>
+                <regionClear regionId="region3"/>
+                <regionClear regionId="region4"/>
+                <regionClear regionId="region5"/>
                 <showStimulusProgress/>
                 <addPadding/>
                 <htmlTokenText featureText="
+                Each click is an attempt and therefore accrues a score.&lt;br/&gt;
                 playerScore:
                 &lt;playerScore&gt;&lt;br/&gt;
                 playerErrors:
@@ -380,96 +416,83 @@
                 &lt;playerPotentialScore&gt;&lt;br/&gt;
                 "/>
                 <addPadding/>
-                <stimulusLabel styleName="stimuliLabel"/>
-                
+                <stimulusLabel styleName="stimuliLabel"/>                
                 <addPadding/>
-                <table>
-                    <row>
-                        <column>
-                            <plainText featureText="left label"/>
-                        </column>
-                        <column></column>
-                        <column></column>
-                        <column></column>
-                        <column>
-                            <plainText featureText="right label"/>
-                        </column>
-                    </row>
-                    <row>
-                        <column>
-                            <region regionId="region1">
-                                <actionButton featureText="1">
-                                    <setStimulusCodeResponse codeFormat="1" dataChannel="8"/>
-                                    <regionStyle regionId="region1" styleName="exampleBorderedBackground"/>
-                                    <regionStyle regionId="region2" styleName=""/>
-                                    <regionStyle regionId="region3" styleName=""/>
-                                    <regionStyle regionId="region4" styleName=""/>
-                                    <regionStyle regionId="region5" styleName=""/>
-                                </actionButton>
-                            </region>
-                        </column>
-                        <column>
-                            <region regionId="region2">
-                                <actionButton featureText="2">
-                                    <setStimulusCodeResponse codeFormat="2" dataChannel="8"/>
-                                    <regionStyle regionId="region1" styleName=""/>
-                                    <regionStyle regionId="region2" styleName="exampleBorderedBackground"/>
-                                    <regionStyle regionId="region3" styleName=""/>
-                                    <regionStyle regionId="region4" styleName=""/>
-                                    <regionStyle regionId="region5" styleName=""/>
-                                </actionButton>
-                            </region>
-                        </column>
-                        <column>
-                            <region regionId="region3">
-                                <actionButton featureText="3">
-                                    <setStimulusCodeResponse codeFormat="3" dataChannel="8"/>
-                                    <regionStyle regionId="region1" styleName=""/>
-                                    <regionStyle regionId="region2" styleName=""/>
-                                    <regionStyle regionId="region3" styleName="exampleBorderedBackground"/>
-                                    <regionStyle regionId="region4" styleName=""/>
-                                    <regionStyle regionId="region5" styleName=""/>
-                                </actionButton>
-                            </region>
-                        </column>
-                        <column>
-                            <region regionId="region4">
-                                <actionButton featureText="4">
-                                    <setStimulusCodeResponse codeFormat="4" dataChannel="8"/>
-                                    <regionStyle regionId="region1" styleName=""/>
-                                    <regionStyle regionId="region2" styleName=""/>
-                                    <regionStyle regionId="region3" styleName=""/>
-                                    <regionStyle regionId="region4" styleName="exampleBorderedBackground"/>
-                                    <regionStyle regionId="region5" styleName=""/>
-                                </actionButton>
-                            </region>
-                        </column>
-                        <column>
-                            <region regionId="region5">
-                                <actionButton featureText="5">
-                                    <setStimulusCodeResponse codeFormat="5" dataChannel="8"/>
-                                    <regionStyle regionId="region1" styleName=""/>
-                                    <regionStyle regionId="region2" styleName=""/>
-                                    <regionStyle regionId="region3" styleName=""/>
-                                    <regionStyle regionId="region4" styleName=""/>
-                                    <regionStyle regionId="region5" styleName="exampleBorderedBackground"/>
-                                </actionButton>
-                            </region>
-                        </column>
-                    </row>
-                </table>
+                <plainText featureText="left label"/>
+                <plainText featureText="right label"/>
+                <region regionId="region1">
+                    <actionButton featureText="1" styleName="toggleBox">
+                        <setStimulusCodeResponse codeFormat="1" dataChannel="8"/>
+                        <regionStyle regionId="region1" styleName="toggleBox1 toggleBoxOn"/>
+                        <regionStyle regionId="region2" styleName="toggleBox2 toggleBoxOff"/>
+                        <regionStyle regionId="region3" styleName="toggleBox3 toggleBoxOff"/>
+                        <regionStyle regionId="region4" styleName="toggleBox4 toggleBoxOff"/>
+                        <regionStyle regionId="region5" styleName="toggleBox5 toggleBoxOff"/>
+                    </actionButton>
+                </region>
+                <region regionId="region2">
+                    <actionButton featureText="2" styleName="toggleBox">
+                        <setStimulusCodeResponse codeFormat="2" dataChannel="8"/>
+                        <regionStyle regionId="region1" styleName="toggleBox1 toggleBoxOff"/>
+                        <regionStyle regionId="region2" styleName="toggleBox2 toggleBoxOn"/>
+                        <regionStyle regionId="region3" styleName="toggleBox3 toggleBoxOff"/>
+                        <regionStyle regionId="region4" styleName="toggleBox4 toggleBoxOff"/>
+                        <regionStyle regionId="region5" styleName="toggleBox5 toggleBoxOff"/>
+                    </actionButton>
+                </region>
+                <region regionId="region3">
+                    <actionButton featureText="3" styleName="toggleBox">
+                        <setStimulusCodeResponse codeFormat="3" dataChannel="8"/>
+                        <regionStyle regionId="region1" styleName="toggleBox1 toggleBoxOff"/>
+                        <regionStyle regionId="region2" styleName="toggleBox2 toggleBoxOff"/>
+                        <regionStyle regionId="region3" styleName="toggleBox3 toggleBoxOn"/>
+                        <regionStyle regionId="region4" styleName="toggleBox4 toggleBoxOff"/>
+                        <regionStyle regionId="region5" styleName="toggleBox5 toggleBoxOff"/>
+                    </actionButton>
+                </region>
+                <region regionId="region4">
+                    <actionButton featureText="4" styleName="toggleBox">
+                        <setStimulusCodeResponse codeFormat="4" dataChannel="8"/>
+                        <regionStyle regionId="region1" styleName="toggleBox1 toggleBoxOff"/>
+                        <regionStyle regionId="region2" styleName="toggleBox2 toggleBoxOff"/>
+                        <regionStyle regionId="region3" styleName="toggleBox3 toggleBoxOff"/>
+                        <regionStyle regionId="region4" styleName="toggleBox4 toggleBoxOn"/>
+                        <regionStyle regionId="region5" styleName="toggleBox5 toggleBoxOff"/>
+                    </actionButton>
+                </region>
+                <region regionId="region5">
+                    <actionButton featureText="5" styleName="toggleBox">
+                        <setStimulusCodeResponse codeFormat="5" dataChannel="8"/>
+                        <regionStyle regionId="region1" styleName="toggleBox1 toggleBoxOff"/>
+                        <regionStyle regionId="region2" styleName="toggleBox2 toggleBoxOff"/>
+                        <regionStyle regionId="region3" styleName="toggleBox3 toggleBoxOff"/>
+                        <regionStyle regionId="region4" styleName="toggleBox4 toggleBoxOff"/>
+                        <regionStyle regionId="region5" styleName="toggleBox5 toggleBoxOn"/>
+                    </actionButton>
+                </region>   
+                <regionStyle regionId="region1" styleName="toggleBox1 toggleBoxOff"/>
+                <regionStyle regionId="region2" styleName="toggleBox2 toggleBoxOff"/>
+                <regionStyle regionId="region3" styleName="toggleBox3 toggleBoxOff"/>
+                <regionStyle regionId="region4" styleName="toggleBox4 toggleBoxOff"/>
+                <regionStyle regionId="region5" styleName="toggleBox5 toggleBoxOff"/>                         
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
                 <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
             </hasMoreStimulus>
             <endOfStimulus>
                 <addPadding/>
                 <actionButton featureText="clearCurrentScore">
                     <clearCurrentScore/>
-                    <gotoPresenter target="Region_Toggle_Example"/>
+                    <gotoPresenter target="Rating_Toggle_Example"/>
                 </actionButton>
                 <addPadding/>
                 <actionButton featureText="resetStimulus">
-                    <resetStimulus target="Region_Toggle_Example"/>
-                    <gotoPresenter target="Region_Toggle_Example"/>
+                    <resetStimulus target="Rating_Toggle_Example"/>
+                    <gotoPresenter target="Rating_Toggle_Example"/>
                 </actionButton>
             </endOfStimulus>
             <randomGrouping/>
@@ -1008,12 +1031,12 @@
                 <addPadding/>
                 <actionButton featureText="clearCurrentScore">
                     <clearCurrentScore/>
-                    <gotoPresenter target="First_Stimuli_Screen"/>
+                    <gotoPresenter target="stimulusRatingRadio"/>
                 </actionButton>
                 <addPadding/>
                 <actionButton featureText="resetStimulus">
-                    <resetStimulus target="First_Stimuli_Screen"/>
-                    <gotoPresenter target="First_Stimuli_Screen"/>
+                    <resetStimulus target="stimulusRatingRadio"/>
+                    <gotoPresenter target="stimulusRatingRadio"/>
                 </actionButton>
             </endOfStimulus>
             <randomGrouping/>
@@ -1750,6 +1773,62 @@
             <onError>
                 <plainText featureText="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw."/>
                 <targetButton featureText="Probeer opnieuw" target="completion"/>
+            </onError>
+        </generateCompletionCode>
+    </presenter>
+    <presenter back="Menu" menuLabel="InvitationCodeExample" type="stimulus" self="InvitationCodeExample" title="Invitation Code Example">        
+        <hasMetadataValue fieldName="invitation_code" matchingRegex="...*">
+            <conditionTrue>
+                <htmlTokenText featureText="
+                Your invitation code has been received and is:
+                &lt;metadataField_invitation_code&gt;&lt;br/&gt;
+                "/>
+                <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleCompletion"/>
+            </conditionTrue>
+            <conditionFalse>
+                <htmlText featureText="Your invitation code has not been found or is less that three characters long.&lt;br/&gt;
+                Please provide this code as a URL GET parameter (&lt;a href=&quot;?invitation_code=yourcode&quot;&gt;?invitation_code=[yourcode]&lt;/a&gt;) and reload this page."/>
+            </conditionFalse>
+        </hasMetadataValue>        
+    </presenter>
+    <presenter menuLabel="InvitationCodeExampleCompletion" type="transmission" self="InvitationCodeExampleCompletion" title="Invitation Code Example Completion">
+        <generateCompletionCode>
+            <onSuccess>
+                <!--                <htmlText featureText="This is the end of the experiment. &lt;br/&gt;&lt;br/&gt;Please keep this completion code as verification that you have done the experiment:&lt;br/&gt;"/>
+                <addPadding/>
+                <displayCompletionCode/>
+                <addPadding/>
+                <htmlText featureText="&lt;br/&gt;Thank you for your participation!&lt;br/&gt;Please use this link to return to the MPI website and register your efforts: &lt;a href=&quot;https://example.com/submissions/complete?cc=&lt;completionCode&gt;&amp;ts=&lt;playerTotalScore&gt;&amp;invitation_code=&lt;metadataField_invitation_code&gt;&quot;&gt;register your efforts&lt;/a&gt;."/>
+                <htmlText featureText="Please note that the GET values in the above link will not be populated in this version.&lt;br/&gt;"/>
+                <htmlText featureText="It is worth noting that both Prolific and Mechanical Turk do not use return values from the experiment software. Instead they take a single experiment code which is the same for all users and require the user to log in to their website by following that link.&lt;br/&gt;"/>
+                <eraseUsersDataButton featureText="Opnieuw beginnen" target="Menu"/>-->
+                <gotoPresenter target="InvitationCodeExampleFinished"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="Could not contact the server, please check your internet connection and try again."/>
+                <targetButton featureText="Retry" target="InvitationCodeExampleCompletion"/>
+            </onError>
+        </generateCompletionCode>
+    </presenter>
+    <presenter back="InvitationCodeExampleRestart" menuLabel="InvitationCodeExampleFinished" type="stimulus" self="InvitationCodeExampleFinished" title="Invitation Code Example Finished">        
+        <htmlText featureText="This is the end of the experiment. &lt;br/&gt;&lt;br/&gt;"/>
+        <addPadding/>
+        <!--<displayCompletionCode/>-->
+        <htmlTokenText featureText="&lt;br/&gt;Thank you for your participation!&lt;br/&gt;Please use this link to return to the MPI website and register your efforts: &lt;a href=&quot;https://example.com/submissions/complete?cc=&lt;completionCode&gt;&amp;ts=&lt;playerTotalScore&gt;&amp;invitation_code=&lt;metadataField_invitation_code&gt;&quot;&gt;register your efforts&lt;/a&gt;."/>
+        <addPadding/>
+        <addPadding/>
+        <addPadding/>
+        <htmlText featureText="Please note that the completionCode GET value in the above link will not be populated in this version.&lt;br/&gt;"/>
+        <htmlText featureText="It is worth noting that both Prolific and Mechanical Turk do not use return values from the experiment software. Instead they take a single experiment code which is the same for all users and require the user to log in to their website by following that link.&lt;br/&gt;"/>
+    </presenter>
+    <presenter menuLabel="InvitationCodeExampleRestart" type="transmission" self="InvitationCodeExampleRestart" title="Invitation Code Example Restart">
+        <generateCompletionCode>
+            <onSuccess>
+                <eraseUsersDataButton featureText="Opnieuw beginnen" target="InvitationCodeExample"/>
+            </onSuccess>
+            <onError>
+                <plainText featureText="Could not contact the server, please check your internet connection and try again."/>
+                <targetButton featureText="Retry" target="InvitationCodeExampleRestart"/>
             </onError>
         </generateCompletionCode>
     </presenter>
