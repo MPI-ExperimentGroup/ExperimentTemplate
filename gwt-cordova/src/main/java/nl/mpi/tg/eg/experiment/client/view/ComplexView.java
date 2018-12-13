@@ -337,7 +337,7 @@ public class ComplexView extends SimpleView {
         return nextButton;
     }
 
-    public List<StimulusButton> addRatingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String buttonGroupName, final String savedValue) {
+    public List<StimulusButton> addRatingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String buttonGroupName, final String savedValue, final HorizontalPanel buttonsStylePanel) {
         final ArrayList<StimulusButton> stimulusButtonList = new ArrayList<>();
         final VerticalPanel verticalPanel = new VerticalPanel();
         final HorizontalPanel labelsPanel = new HorizontalPanel();
@@ -349,7 +349,7 @@ public class ComplexView extends SimpleView {
             labelsPanel.add(label);
             label.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
         }
-        final HorizontalPanel buttonsPanel = new HorizontalPanel();
+        final HorizontalPanel buttonsPanel = (buttonsStylePanel != null) ? buttonsStylePanel : new HorizontalPanel();
         for (PresenterEventListner listener : presenterListeners) {
             // stimulusRatingRadio needs stimulusFreeText objects to validate them
             StimulusButton nextButton = (buttonGroupName != null) ? getRadioButton(listener, buttonGroupName, savedValue) : getOptionButton(listener);
