@@ -23,6 +23,7 @@ import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import java.util.ArrayList;
@@ -169,8 +170,10 @@ public abstract class AbstractPresenter implements Presenter {
         ((ComplexView) simpleView).centrePage();
     }
 
-    public void ratingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String buttonGroupName, final String savedValue, final String buttonGroup) {
-        addButtonToGroup(buttonGroup, ((ComplexView) simpleView).addRatingButtons(presenterListeners, ratingLabelLeft, ratingLabelRight, footerButtons, styleName, null, null));
+    public void ratingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String buttonGroupName, final String savedValue, final String buttonGroup, final HorizontalPanel buttonsPanel) {
+        final List<StimulusButton> ratingButtons = ((ComplexView) simpleView).addRatingButtons(presenterListeners, ratingLabelLeft, ratingLabelRight, footerButtons, styleName, buttonGroupName, savedValue, buttonsPanel);
+        addButtonToGroup(buttonGroup, ratingButtons);
+//        addButtonToGroup(buttonGroupName, ratingButtons);
     }
 
     public StimulusButton imageButton(final PresenterEventListner presenterListerner, final SafeUri imagePath, final String styleName, final boolean isTouchZone, final String buttonGroup) {
