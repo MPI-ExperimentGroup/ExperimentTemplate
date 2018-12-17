@@ -305,6 +305,7 @@ public class DefaultExperiments {
                         case showControls:
                         case scoreValue:
                         case oneToMany:
+                        case applyScore:
                             presenterFeature.addFeatureAttributes(attribute, "true");
                             break;
                         case daysThresholds:
