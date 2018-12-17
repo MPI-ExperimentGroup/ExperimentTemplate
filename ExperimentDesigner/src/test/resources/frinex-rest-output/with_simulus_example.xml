@@ -422,7 +422,7 @@
                 <plainText featureText="right label"/>
                 <region regionId="region1">
                     <actionButton featureText="1" styleName="toggleBox">
-                        <setStimulusCodeResponse codeFormat="1" dataChannel="8"/>
+                        <setStimulusCodeResponse codeFormat="1" dataChannel="8" applyScore="true"/>
                         <regionStyle regionId="region1" styleName="toggleBox1 toggleBoxOn"/>
                         <regionStyle regionId="region2" styleName="toggleBox2 toggleBoxOff"/>
                         <regionStyle regionId="region3" styleName="toggleBox3 toggleBoxOff"/>
@@ -432,7 +432,7 @@
                 </region>
                 <region regionId="region2">
                     <actionButton featureText="2" styleName="toggleBox">
-                        <setStimulusCodeResponse codeFormat="2" dataChannel="8"/>
+                        <setStimulusCodeResponse codeFormat="2" dataChannel="8" applyScore="true"/>
                         <regionStyle regionId="region1" styleName="toggleBox1 toggleBoxOff"/>
                         <regionStyle regionId="region2" styleName="toggleBox2 toggleBoxOn"/>
                         <regionStyle regionId="region3" styleName="toggleBox3 toggleBoxOff"/>
@@ -442,7 +442,7 @@
                 </region>
                 <region regionId="region3">
                     <actionButton featureText="3" styleName="toggleBox">
-                        <setStimulusCodeResponse codeFormat="3" dataChannel="8"/>
+                        <setStimulusCodeResponse codeFormat="3" dataChannel="8" applyScore="true"/>
                         <regionStyle regionId="region1" styleName="toggleBox1 toggleBoxOff"/>
                         <regionStyle regionId="region2" styleName="toggleBox2 toggleBoxOff"/>
                         <regionStyle regionId="region3" styleName="toggleBox3 toggleBoxOn"/>
@@ -452,7 +452,7 @@
                 </region>
                 <region regionId="region4">
                     <actionButton featureText="4" styleName="toggleBox">
-                        <setStimulusCodeResponse codeFormat="4" dataChannel="8"/>
+                        <setStimulusCodeResponse codeFormat="4" dataChannel="8" applyScore="true"/>
                         <regionStyle regionId="region1" styleName="toggleBox1 toggleBoxOff"/>
                         <regionStyle regionId="region2" styleName="toggleBox2 toggleBoxOff"/>
                         <regionStyle regionId="region3" styleName="toggleBox3 toggleBoxOff"/>
@@ -462,7 +462,7 @@
                 </region>
                 <region regionId="region5">
                     <actionButton featureText="5" styleName="toggleBox">
-                        <setStimulusCodeResponse codeFormat="5" dataChannel="8"/>
+                        <setStimulusCodeResponse codeFormat="5" dataChannel="8" applyScore="true"/>
                         <regionStyle regionId="region1" styleName="toggleBox1 toggleBoxOff"/>
                         <regionStyle regionId="region2" styleName="toggleBox2 toggleBoxOff"/>
                         <regionStyle regionId="region3" styleName="toggleBox3 toggleBoxOff"/>
@@ -1636,7 +1636,7 @@
                 <region regionId="square4">
                     <htmlText featureText=".&lt;br/&gt;"/>
                 </region>
-                <setStimulusCodeResponse codeFormat="" dataChannel="8"/>
+                <setStimulusCodeResponse codeFormat="" dataChannel="8" applyScore="false"/>
                 <regionCodeStyle regionId="square1" styleName="box_&lt;code&gt;_1_white"/>
                 <regionCodeStyle regionId="square2" styleName="box_&lt;code&gt;_2_white"/>
                 <regionCodeStyle regionId="square3" styleName="box_&lt;code&gt;_3_white"/>
@@ -1656,29 +1656,32 @@
                                     <regionCodeStyle regionId="square3" styleName="box_&lt;code&gt;_4_white"/>
                                     <regionReplace regionId="square1">
                                         <stimulusButton featureText="1" styleName="buttonStyle">
-                                            <setStimulusCodeResponse codeFormat="&lt;stimulusResponse&gt;1" dataChannel="8"/>
+                                            <setStimulusCodeResponse codeFormat="&lt;stimulusResponse&gt;1" dataChannel="8" applyScore="false"/>
                                         </stimulusButton>
                                     </regionReplace>
                                     <regionReplace regionId="square2">
                                         <stimulusButton featureText="2" styleName="buttonStyle">
-                                            <setStimulusCodeResponse codeFormat="&lt;stimulusResponse&gt;2" dataChannel="8"/>
+                                            <setStimulusCodeResponse codeFormat="&lt;stimulusResponse&gt;2" dataChannel="8" applyScore="false"/>
                                         </stimulusButton>
                                     </regionReplace>
                                     <regionReplace regionId="square3">
                                         <stimulusButton featureText="3" styleName="buttonStyle">
-                                            <setStimulusCodeResponse codeFormat="&lt;stimulusResponse&gt;3" dataChannel="8"/>
+                                            <setStimulusCodeResponse codeFormat="&lt;stimulusResponse&gt;3" dataChannel="8" applyScore="false"/>
                                         </stimulusButton>
                                     </regionReplace>
                                     <regionReplace regionId="square4">
                                         <stimulusButton featureText="4" styleName="buttonStyle">
-                                            <setStimulusCodeResponse codeFormat="&lt;stimulusResponse&gt;4" dataChannel="8"/>
+                                            <setStimulusCodeResponse codeFormat="&lt;stimulusResponse&gt;4" dataChannel="8" applyScore="false"/>
                                         </stimulusButton>
                                     </regionReplace>
                                     <regionCodeStyle regionId="square1" styleName="box_&lt;code&gt;_1_white"/>
                                     <regionCodeStyle regionId="square2" styleName="box_&lt;code&gt;_2_white"/>
                                     <regionCodeStyle regionId="square3" styleName="box_&lt;code&gt;_3_white"/>
                                     <regionCodeStyle regionId="square4" styleName="box_&lt;code&gt;_4_white"/>
-                                    <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
+                                    <actionButton featureText="Next [TAB + ENTER]" hotKey="ENTER">
+                                        <setStimulusCodeResponse codeFormat="&lt;stimulusResponse&gt;" dataChannel="8" applyScore="true"/>
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </actionButton>
                                 </pause>
                             </pause>
                         </pause>
@@ -1783,13 +1786,94 @@
                 Your invitation code has been received and is:
                 &lt;metadataField_invitation_code&gt;&lt;br/&gt;
                 "/>
-                <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleCompletion"/>
+                <startTimer msToNext="150000" listenerId="invitationTimer"/>
+                <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleStimuliScreen"/>
             </conditionTrue>
             <conditionFalse>
                 <htmlText featureText="Your invitation code has not been found or is less that three characters long.&lt;br/&gt;
                 Please provide this code as a URL GET parameter (&lt;a href=&quot;?invitation_code=yourcode&quot;&gt;?invitation_code=[yourcode]&lt;/a&gt;) and reload this page."/>
             </conditionFalse>
         </hasMetadataValue>        
+    </presenter>
+    <presenter back="Menu" menuLabel="InvitationCodeExampleStimuliScreen" next="InvitationCodeExampleCompletion" type="stimulus" self="InvitationCodeExampleStimuliScreen" title="InvitationCodeExampleStimuliScreen">
+        <loadStimulus eventTag="First Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <showStimulusProgress/>
+                <addPadding/>
+                <htmlTokenText featureText="
+                playerScore:
+                &lt;playerScore&gt;&lt;br/&gt;
+                playerErrors:
+                &lt;playerErrors&gt;&lt;br/&gt;
+                playerPotentialScore:
+                &lt;playerPotentialScore&gt;&lt;br/&gt;
+                playerTotalScore:
+                &lt;playerTotalScore&gt;&lt;br/&gt;
+                playerTotalErrors:
+                &lt;playerTotalErrors&gt;&lt;br/&gt;
+                playerTotalPotentialScore:
+                &lt;playerTotalPotentialScore&gt;&lt;br/&gt;
+                playerGamesPlayed:
+                &lt;playerGamesPlayed&gt; 
+                Time so far: &lt;invitationTimer&gt;ms"/>
+                <addPadding/>
+                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete>
+                        <stimulusHasRatingOptions>
+                            <conditionTrue>
+                                <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
+                                    <nextStimulus repeatIncorrect="false"/>
+                                </stimulusRatingButton>
+                            </conditionTrue>
+                            <conditionFalse>
+                                <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex=".{1,}" inputErrorMessage=" "/>
+                                <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
+                            </conditionFalse>
+                        </stimulusHasRatingOptions>
+                    </mediaPlaybackComplete>
+                </stimulusPresent>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <transmitResults dataLogFormat="
+                playerScore:
+                &lt;playerScore&gt;&lt;br/&gt;
+                playerErrors:
+                &lt;playerErrors&gt;&lt;br/&gt;
+                playerPotentialScore:
+                &lt;playerPotentialScore&gt;&lt;br/&gt;
+                playerTotalScore:
+                &lt;playerTotalScore&gt;&lt;br/&gt;
+                playerTotalErrors:
+                &lt;playerTotalErrors&gt;&lt;br/&gt;
+                playerTotalPotentialScore:
+                &lt;playerTotalPotentialScore&gt;&lt;br/&gt;
+                playerGamesPlayed:
+                &lt;playerGamesPlayed&gt; 
+                Time so far: &lt;invitationTimer&gt;ms">
+                <onError/><onSuccess/>
+                </transmitResults>
+                <addPadding/>
+                <actionButton featureText="clearCurrentScore">
+                    <clearCurrentScore/>
+                    <gotoPresenter target="InvitationCodeExampleStimuliScreen"/>
+                </actionButton>
+                <addPadding/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="InvitationCodeExampleStimuliScreen"/>
+                    <gotoPresenter target="InvitationCodeExampleStimuliScreen"/>
+                </actionButton>
+                <addPadding/>
+                <addPadding/>
+                <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleCompletion"/>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>Pretest_Screen</tag>
+            </stimuli>
+        </loadStimulus>
     </presenter>
     <presenter menuLabel="InvitationCodeExampleCompletion" type="transmission" self="InvitationCodeExampleCompletion" title="Invitation Code Example Completion">
         <generateCompletionCode>
