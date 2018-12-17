@@ -362,7 +362,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasResponse>
-                <setStimulusCodeResponse codeFormat="codeFormat" dataChannel="2"/>
+                <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true" dataChannel="2"/>
                 <ratingFooterButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
@@ -676,7 +676,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasResponse>
-                <setStimulusCodeResponse codeFormat="codeFormat" dataChannel="2"/>
+                <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true" dataChannel="2"/>
                 <ratingFooterButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
@@ -990,7 +990,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasResponse>
-                <setStimulusCodeResponse codeFormat="codeFormat" dataChannel="2"/>
+                <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true" dataChannel="2"/>
                 <ratingFooterButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
@@ -1368,6 +1368,14 @@
             </withinThreshold>
         </scoreAboveThreshold>
         <resetStimulus target="target"/>
+        <transmitResults dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </transmitResults>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes">
         <preventWindowClose featureText="preventWindowClose"/>
@@ -2042,7 +2050,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasResponse>
-                <setStimulusCodeResponse codeFormat="codeFormat"/>
+                <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true"/>
                 <ratingFooterButton ratingLabels="ratingLabels">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
@@ -2356,7 +2364,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasResponse>
-                <setStimulusCodeResponse codeFormat="codeFormat"/>
+                <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true"/>
                 <ratingFooterButton ratingLabels="ratingLabels">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
@@ -2670,7 +2678,7 @@
                         <plainText featureText="plainText in conditionFalse"/>
                     </conditionFalse>
                 </stimulusHasResponse>
-                <setStimulusCodeResponse codeFormat="codeFormat"/>
+                <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true"/>
                 <ratingFooterButton ratingLabels="ratingLabels">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
@@ -3048,6 +3056,14 @@
             </withinThreshold>
         </scoreAboveThreshold>
         <resetStimulus target="target"/>
+        <transmitResults dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </transmitResults>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes">
         <preventWindowClose featureText="preventWindowClose"/>
