@@ -115,6 +115,7 @@ public enum FeatureAttribute {
     incrementPhase,
     //    incrementStimulus,
     phasesPerStimulus,
+    applyScore,
     scoreValue;
     final boolean isOptional;
 
