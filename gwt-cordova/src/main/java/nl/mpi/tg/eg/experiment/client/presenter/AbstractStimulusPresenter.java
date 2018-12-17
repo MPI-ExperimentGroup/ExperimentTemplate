@@ -70,6 +70,9 @@ import nl.mpi.tg.eg.experiment.client.service.MatchingStimuliGroup;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
+import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.RegistrationException;
+import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.RegistrationListener;
+import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.RegistrationService;
 import nl.mpi.tg.eg.frinex.common.StimuliProvider;
 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
@@ -1957,9 +1960,25 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         optionButton(eventListner, styleName, buttonGroup);
     }
 
+    public void transmitResults(final Stimulus currentStimulus, final String dataLogFormat, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+        final String dataLogFormatted = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(dataLogFormat);
+        new RegistrationService().submitRegistration(userResults, dataLogFormatted, new RegistrationListener() {
+            @Override
+            public void registrationFailed(RegistrationException exception) {
+                onError.postLoadTimerFired();
+            }
+
+            @Override
+            public void registrationComplete() {
+                onSuccess.postLoadTimerFired();
+            }
+        });
+    }
+
     protected void setStimulusCodeResponse(
             final Stimulus currentStimulus,
             final String codeFormat,
+            final boolean applyScore,
             final int dataChannel
     ) {
         final String formattedCode = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(codeFormat);
@@ -1975,12 +1994,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         submissionService.writeJsonData(userResults.getUserData().getUserId().toString(), currentStimulus.getUniqueId(), jsonStimulusMap.get(currentStimulus).toString());
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "CodeResponse", currentStimulus.getUniqueId(), formattedCode, duration.elapsedMillis());
         Boolean isCorrect = null;
-        if (currentStimulus.hasCorrectResponses()) {
-            final boolean correctness = currentStimulus.isCorrect(formattedCode);
-            submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "CodeResponse", currentStimulus.getUniqueId(), (correctness) ? "correct" : "incorrect", duration.elapsedMillis());
-            // if there are correct responses to this stimulus then increment the score
-            userResults.getUserData().addPotentialScore(correctness);
-            isCorrect = correctness;
+        if (applyScore) {
+            if (currentStimulus.hasCorrectResponses()) {
+                final boolean correctness = currentStimulus.isCorrect(formattedCode);
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "CodeResponse", currentStimulus.getUniqueId(), (correctness) ? "correct" : "incorrect", duration.elapsedMillis());
+                // if there are correct responses to this stimulus then increment the score
+                userResults.getUserData().addPotentialScore(correctness);
+                isCorrect = correctness;
+            }
         }
         submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, currentStimulus, formattedCode, isCorrect, duration.elapsedMillis());
     }
