@@ -45,6 +45,32 @@ public class RegistrationService {
     private final MetadataFields mateadataFields = GWT.create(MetadataFields.class);
     private final Version version = GWT.create(Version.class);
 
+    public void submitRegistration(final UserResults userResults, final String dataLogFormated, RegistrationListener registrationListener) {
+        final String registratinoUrl = serviceLocations.registrationUrl();
+        final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, registratinoUrl);
+        builder.setHeader("Content-type", "application/x-www-form-urlencoded");
+        StringBuilder stringBuilder = new StringBuilder();
+        for (MetadataField key : userResults.getUserData().getMetadataFields()) {
+            String value = URL.encodeQueryString(userResults.getUserData().getMetadataValue(key));
+            if (stringBuilder.length() > 0) {
+                stringBuilder.append("&");
+            }
+            stringBuilder.append(key.getPostName()).append("=").append(value);
+        }
+        if (stringBuilder.length() > 0) {
+            stringBuilder.append("&");
+        }
+        stringBuilder.append("applicationversion").append("=").append(version.projectVersion()).append("&");
+        String dataLogEncoded = URL.encodeQueryString(dataLogFormated);
+        stringBuilder.append("datalog").append("=").append(dataLogEncoded).append("&");
+        try {
+            builder.sendRequest(stringBuilder.toString(), geRequestBuilder(builder, registrationListener, registratinoUrl));
+        } catch (RequestException exception) {
+            registrationListener.registrationFailed(new RegistrationException(RegistrationException.ErrorType.buildererror, exception));
+            logger.log(Level.SEVERE, "SubmitRegistration", exception);
+        }
+    }
+
     public void submitRegistration(UserResults userResults, RegistrationListener registrationListener, final String reportDateFormat, final MetadataField emailAddressMetadataField, final String scoreLog) {
         final String registratinoUrl = serviceLocations.registrationUrl();
         final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, registratinoUrl);
