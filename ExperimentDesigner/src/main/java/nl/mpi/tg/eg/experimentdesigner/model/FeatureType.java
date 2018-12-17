@@ -68,7 +68,7 @@ public enum FeatureType {
     stimulusRatingRadio(false, false, new FeatureAttribute[]{dataChannel, ratingLabelLeft, ratingLabelRight, styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     stimulusHasRatingOptions(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     stimulusHasResponse(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
-    setStimulusCodeResponse(false, false, new FeatureAttribute[]{codeFormat, dataChannel}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    setStimulusCodeResponse(false, false, new FeatureAttribute[]{codeFormat, dataChannel, applyScore}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     ratingFooterButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     targetFooterButton(false, true, new FeatureAttribute[]{target, styleName, groupId}),
     actionFooterButton(true, true, new FeatureAttribute[]{eventTag, hotKey, styleName, groupId}),
@@ -235,7 +235,8 @@ public enum FeatureType {
     totalScoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold}, false, false, false, Contitionals.hasThreshold, Contitionals.none), // todo: add games played 
     scoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold, correctStreak, errorStreak}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
     resetStimulus(false, false, new FeatureAttribute[]{target}, false, false, false, Contitionals.none, Contitionals.none),
-    submitTestResults(false, false, null, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none);
+    submitTestResults(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
+    transmitResults(false, false, new FeatureAttribute[]{dataLogFormat}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none);
     private final boolean canHaveFeatures;
     private final boolean canHaveText;
     private final boolean canHaveStimulusTags; // todo: this could well be canHaveTagList so that it is more generic
