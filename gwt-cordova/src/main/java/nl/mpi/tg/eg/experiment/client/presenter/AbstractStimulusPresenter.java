@@ -1960,9 +1960,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         optionButton(eventListner, styleName, buttonGroup);
     }
 
-    public void transmitResults(final Stimulus currentStimulus, final String dataLogFormat, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+    public void transmitResults(final Stimulus currentStimulus, final String matchingRegex, final String dataLogFormat, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
         final String dataLogFormatted = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(dataLogFormat);
-        new RegistrationService().submitRegistration(userResults, dataLogFormatted, new RegistrationListener() {
+        new RegistrationService().submitRegistration(userResults, matchingRegex, dataLogFormatted, new RegistrationListener() {
             @Override
             public void registrationFailed(RegistrationException exception) {
                 onError.postLoadTimerFired();
