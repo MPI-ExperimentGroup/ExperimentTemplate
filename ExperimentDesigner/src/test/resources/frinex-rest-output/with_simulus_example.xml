@@ -88,6 +88,11 @@
         <field controlledMessage="." controlledRegex="|Set 1 Instapset 2;3-2;5 jaar|Set 2 Instapset 2;6-2;11 jaar|Set 3 Instapset 3;0-3;11 jaar|Set 4 Instapset 4;0-4;5 jaar|Set 5 Instapset 4;6-5;5 jaar|Set 6 Instapset 5;6-6;5 jaar|Set 7 Instapset 6;6-7;11 jaar|Set 8 Instapset 8;0-9;11 jaar|Set 9 Instapset 10;0-10;11 jaar|Set 10 Instapset 11;0 - 13;11 jaar" postName="ageGroup" preventServerDuplicates="false" registrationField="Instapset"/>
         <field controlledMessage="." controlledRegex=".*" postName="item" preventServerDuplicates="false" registrationField="item"/>
         <field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="invitation_code" preventServerDuplicates="false" registrationField="Invitation Code"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="invitation_code" preventServerDuplicates="false" registrationField="Invitation Code"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="currentScore" preventServerDuplicates="false" registrationField="Current Score"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="currentPotential" preventServerDuplicates="false" registrationField="Current Potential"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="totalScore" preventServerDuplicates="false" registrationField="Total Score"/> 
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="totalPotential" preventServerDuplicates="false" registrationField="Total Potential"/>
     </metadata>
     <presenter back="Menu" menuLabel="Terug" next="Informatie" type="metadata" self="Toestemming" title="Toestemming">
         <htmlText featureText="Toestemmingsverklaring voor deelname aan het onderzoek:&lt;br/&gt;&lt;br/&gt;Ik stem geheel vrijwillig in met deelname aan dit onderzoek."/>
@@ -1837,7 +1842,7 @@
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
-                <transmitResults dataLogFormat="
+                <transmitResults matchingRegex="invitation_code|currentScore|currentPotential|totalScore|totalPotential" dataLogFormat="
                 playerScore:
                 &lt;playerScore&gt;&lt;br/&gt;
                 playerErrors:
@@ -1853,7 +1858,8 @@
                 playerGamesPlayed:
                 &lt;playerGamesPlayed&gt; 
                 Time so far: &lt;invitationTimer&gt;ms">
-                <onError/><onSuccess/>
+                    <onError/>
+                    <onSuccess/>
                 </transmitResults>
                 <addPadding/>
                 <actionButton featureText="clearCurrentScore">
