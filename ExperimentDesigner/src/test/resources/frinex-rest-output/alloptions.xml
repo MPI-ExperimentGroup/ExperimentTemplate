@@ -1368,7 +1368,7 @@
             </withinThreshold>
         </scoreAboveThreshold>
         <resetStimulus target="target"/>
-        <transmitResults dataLogFormat="dataLogFormat">
+        <transmitResults matchingRegex="matchingRegex" dataLogFormat="dataLogFormat">
             <onError>
                 <plainText featureText="plainText in onError"/>
             </onError>
