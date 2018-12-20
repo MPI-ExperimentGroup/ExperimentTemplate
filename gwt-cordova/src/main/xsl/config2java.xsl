@@ -542,7 +542,7 @@ or local-name() eq 'removeStimulus'
         </xsl:if>
         <xsl:value-of select="if(contains(local-name(), 'Button')) then if (contains(local-name(), 'ButtonGroup')) then '' else ', ' else ''" />
         <xsl:value-of select="if(contains(local-name(), 'Button') or contains(local-name(), 'Radio') or contains(local-name(), 'Checkbox')) then if (contains(local-name(), 'ButtonGroup')) then '' else if (@groupId) then concat('&quot;',@groupId, '&quot;') else if(contains(local-name(), 'Stimulus')) then '&quot;defaultStimulusGroup&quot;' else '&quot;defaultGroup&quot;' else ''" />
-        <!--<xsl:value-of select="if(@dataLogFormat and local-name() ne 'transmitResults') then ', ' else ''" />-->
+        <xsl:value-of select="if(not(@matchingRegex) and local-name() eq 'transmitResults') then 'null' else ''" />
         <xsl:value-of select="if(@dataLogFormat) then concat(', &quot;', @dataLogFormat, '&quot;') else ''" />
         <xsl:value-of select="if(local-name() eq 'sendAllData' or local-name() eq 'sendMetadata') then 'null' else ''" />   
         <xsl:value-of select="if(local-name() eq 'saveMetadataButton') then concat(', messages.errorMessage', generate-id(.), '()') else ''" />
