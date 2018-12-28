@@ -50,6 +50,9 @@ public class HtmlTokenFormatter {
     }
 
     public String formatString(String inputString) {
+        if (inputString == null) {
+            return null;
+        }
         String replacedTokensString = inputString;
         // todo: add a stimuli loop tag
         if (groupParticipantService != null) {
