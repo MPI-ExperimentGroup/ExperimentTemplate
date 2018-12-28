@@ -138,7 +138,7 @@ public class GroupParticipantService implements GroupScoreService {
             String stimulusId, String stimulusIndex, String stimuliListGroup, String originPhase, String requestedPhase,
             String messageString, Boolean groupReady, String responseStimulusId, String groupScore, String channelScore, String groupUUID) {
         final boolean originPhaseMatches = true; //this.requestedPhase.equals(Integer.parseInt(originPhase));
-        System.out.println("originPhaseMatches: " + originPhaseMatches + " requestedPhase: '" + this.requestedPhase + "' originPhase: '" + originPhase + "'");
+//        System.out.println("originPhaseMatches: " + originPhaseMatches + " requestedPhase: '" + this.requestedPhase + "' originPhase: '" + originPhase + "'");
         final boolean userIdMatches = this.userId.equals(userId);
         final boolean screenIdMatches = this.screenId.equals(screenId);
         final boolean groupIdMatches = (this.groupId != null) ? this.groupId.equals(groupId) : true; // if a group id was provided then ignore anyother groups
