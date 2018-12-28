@@ -49,16 +49,7 @@ public class MonitoringStimuliCodeImage {
         csvWrapper.readRecords(csvString);
         ArrayList<LinkedHashMap<String, String>> records = csvWrapper.getRecords();
 
-        int countNonFoundStimuli = 0;
-
         for (LinkedHashMap<String, String> record : records) {
-
-            String list = record.get("List");
-            if (list == null) {
-                throw new IOException("List is undefined");
-            } else {
-                list = list.trim();
-            }
 
             String trialNumber = record.get("Order");
             if (trialNumber == null) {
@@ -67,23 +58,30 @@ public class MonitoringStimuliCodeImage {
                 trialNumber = trialNumber.trim();
             }
 
+            String list = record.get("List");
+            if (list == null) {
+                throw new IOException("List is undefined in trial " + trialNumber);
+            } else {
+                list = list.trim();
+            }
+
             String round = record.get("Round");
             if (round == null) {
-                throw new IOException("Round is undefined");
+                throw new IOException("Round is undefined in trial " + trialNumber);
             } else {
                 round = round.trim();
             }
 
             String snr = record.get("SNR");
             if (snr == null) {
-                throw new IOException("Snr is undefined");
+                throw new IOException("Snr is undefined in trial " + trialNumber);
             } else {
                 snr = snr.trim();
             }
 
             String trialCondition = record.get("Condition");
             if (trialCondition == null) {
-                throw new IOException("Condition is undefined");
+                throw new IOException("Condition is undefined in trial " + trialNumber);
             } else {
                 trialCondition = trialCondition.trim();
             }
@@ -97,7 +95,7 @@ public class MonitoringStimuliCodeImage {
 
             String trialLength = record.get("Length_list");
             if (trialLength == null) {
-                throw new IOException("Length is undefined");
+                throw new IOException("Length is undefined in trial " + trialNumber);
             } else {
                 trialLength = trialLength.trim().substring(0, 1);
             }
@@ -113,14 +111,14 @@ public class MonitoringStimuliCodeImage {
 
                 String word = record.get("Word");
                 if (word == null) {
-                    throw new IOException("Word is undefined");
+                    throw new IOException("Word is undefined in trial " + trialNumber);
                 } else {
                     word = word.trim();
                 }
 
                 String cueNonWord = record.get("Cue_nonword");
                 if (cueNonWord == null) {
-                    throw new IOException("Cue_nonword nonword is undefined");
+                    throw new IOException("Cue_nonword nonword is undefined in trial " + trialNumber);
                 } else {
                     cueNonWord = cueNonWord.trim();
                 }
@@ -136,14 +134,14 @@ public class MonitoringStimuliCodeImage {
 
                 String nonword = record.get("Non_word");
                 if (nonword == null) {
-                    throw new IOException("Non_word is undefined");
+                    throw new IOException("Non_word is undefined in trial " + trialNumber);
                 } else {
                     nonword = nonword.trim();
                 }
 
                 String cueWord = record.get("Cue_word");
                 if (cueWord == null) {
-                    throw new IOException("Cue_word nonword is undefined");
+                    throw new IOException("Cue_word nonword is undefined in trial " + trialNumber);
                 } else {
                     cueWord = cueWord.trim();
                 }
@@ -158,7 +156,7 @@ public class MonitoringStimuliCodeImage {
 
                 String cueWord = record.get("Cue_word");
                 if (cueWord == null) {
-                    throw new IOException("Cue_word nonword is undefined");
+                    throw new IOException("Cue_word nonword is undefined in trial " + trialNumber);
                 } else {
                     cueWord = cueWord.trim();
                 }
@@ -167,21 +165,21 @@ public class MonitoringStimuliCodeImage {
 
                 String targetSemantic = record.get("Target_semantisch");
                 if (targetSemantic == null) {
-                    throw new IOException("Target_semantisch is undefined");
+                    throw new IOException("Target_semantisch is undefined in trial " + trialNumber);
                 } else {
                     targetSemantic = targetSemantic.trim();
                 }
 
                 String fasF = record.get("fas_f");
                 if (fasF == null) {
-                    throw new IOException("fas_f is undefined");
+                    throw new IOException("fas_f is undefined in trial " + trialNumber);
                 } else {
                     fasF = fasF.trim();
                 }
 
                 String fasA = record.get("fas_a");
                 if (fasA == null) {
-                    throw new IOException("fas_a is undefined");
+                    throw new IOException("fas_a is undefined in trial " + trialNumber);
                 } else {
                     fasA = fasA.trim();
                 }
@@ -211,7 +209,7 @@ public class MonitoringStimuliCodeImage {
 
             String trialPositionTarget = record.get("Position_target");
             if (trialPositionTarget == null) {
-                throw new IOException("Position target is undefined");
+                throw new IOException("Position target is undefined in trial " + trialNumber);
             }
             trialPositionTarget = trialPositionTarget.trim();
             int trialPositionTargetInt = Integer.parseInt(trialPositionTarget);
@@ -227,6 +225,7 @@ public class MonitoringStimuliCodeImage {
                     if (trialPositionTargetInt < 1) {
                         throw new IOException("Inconsistent input data, TargetAndFoil with no position target.Trial number: " + trialNumber);
                     }
+
                 }
             }
 
@@ -244,7 +243,7 @@ public class MonitoringStimuliCodeImage {
                 String fieldName = "Word" + i;
                 String currentWord = record.get(fieldName);
                 if (currentWord == null) {
-                    throw new IOException(fieldName + " is undefined");
+                    throw new IOException(fieldName + " is undefined in trial " + trialNumber);
                 } else {
                     currentWord = currentWord.trim();
                 }
@@ -276,19 +275,18 @@ public class MonitoringStimuliCodeImage {
                     System.out.println(e.getMessage());
                 }
             }
-            
-            
+
             String foilFragment = "";
 
             if (roundNr.equals("1") || roundNr.equals("2")) {
 
                 String trialPositionFoil = record.get("Position_foil");
                 if (trialPositionFoil == null) {
-                    throw new IOException("Position foil is undefined");
-                }  else {
+                    throw new IOException("Position foil is undefined in trial " + trialNumber);
+                } else {
                     trialPositionFoil = trialPositionFoil.trim();
                 }
-                
+
                 foilFragment = "; positionFoil:" + trialPositionFoil;
 
                 int trialPositionFoilInt = Integer.parseInt(trialPositionFoil);
@@ -302,6 +300,9 @@ public class MonitoringStimuliCodeImage {
                 if (trialCondition.equals("TargetAndFoil")) {
                     if (trialPositionFoilInt < 1) {
                         throw new IOException("Inconsistent input data, TargetAndFoil with no position foil. Trial number: " + trialNumber);
+                    }
+                    if (trialPositionTargetInt <= trialPositionFoilInt) {
+                        throw new IOException("Inconsistent input data, Foil position is the same or bigger than the target position.Trial number: " + trialNumber);
                     }
                 }
 
@@ -328,8 +329,6 @@ public class MonitoringStimuliCodeImage {
             }
 
             // end tags
-            
-            
             String label = specificLabelFragment + "; snr:" + snr + "; " + trialCondition + "; length:" + trialLength + "; positionTarget:" + trialPositionTarget + foilFragment + "; words: " + words;
 
             String currentSt = this.makeStimulusString(uniqueId, label, uniqueId, tags);
