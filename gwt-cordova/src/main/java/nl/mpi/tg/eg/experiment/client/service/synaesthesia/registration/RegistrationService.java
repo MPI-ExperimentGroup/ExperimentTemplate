@@ -51,12 +51,13 @@ public class RegistrationService {
         builder.setHeader("Content-type", "application/x-www-form-urlencoded");
         StringBuilder stringBuilder = new StringBuilder();
         for (MetadataField key : userResults.getUserData().getMetadataFields()) {
-            if (matchingRegex == null || matchingRegex.matches(key.getPostName())) {
+            final String postName = key.getPostName().substring("postName_".length());
+            if (matchingRegex == null || matchingRegex.matches(postName)) {
                 String value = URL.encodeQueryString(userResults.getUserData().getMetadataValue(key));
                 if (stringBuilder.length() > 0) {
                     stringBuilder.append("&");
                 }
-                stringBuilder.append(key.getPostName()).append("=").append(value);
+                stringBuilder.append(postName).append("=").append(value);
             }
         }
         if (stringBuilder.length() > 0) {
