@@ -287,7 +287,7 @@ public class StimulusProvider extends AbstractStimuliProvider {
                     }
                 }
                 if (needsMoving) {
-                    System.out.println("needs moving: " + currentImage);
+//                    System.out.println("needs moving: " + currentImage);
                     for (int destinationindex = 0; destinationindex < stimulusSubsetArray.size(); destinationindex++) {
                         boolean isSuitable = true;
                         for (int adjacencyIndex = -adjacencyThreshold - 1; adjacencyIndex < adjacencyThreshold + 1; adjacencyIndex++) {
@@ -315,7 +315,7 @@ public class StimulusProvider extends AbstractStimuliProvider {
                             }
                         }
                         if (isSuitable) {
-                            System.out.println("moving: " + currentImage + " from " + index + " to " + destinationindex);
+//                            System.out.println("moving: " + currentImage + " from " + index + " to " + destinationindex);
                             if (destinationindex > index) {
                                 stimulusSubsetArray.add(destinationindex - 1, stimulusSubsetArray.remove(index));
                             } else {
