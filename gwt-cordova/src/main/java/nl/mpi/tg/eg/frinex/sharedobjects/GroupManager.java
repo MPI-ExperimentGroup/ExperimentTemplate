@@ -107,27 +107,27 @@ public class GroupManager {
         boolean resendingOldMessage = false;
         // keep the member id and the channel data before updating the message to the most recent seen by the server, if found
         final String groupCommunicationChannels = incomingMessage.getGroupCommunicationChannels();
-        System.out.println("groupCommunicationChannels: " + groupCommunicationChannels);
-        System.out.println("memberCode: " + incomingMessage.getMemberCode());
+//        System.out.println("groupCommunicationChannels: " + groupCommunicationChannels);
+//        System.out.println("memberCode: " + incomingMessage.getMemberCode());
         for (String channel : groupCommunicationChannels.split("\\|")) // check if the communication channel applies to this group member
         {
-            System.out.println("channel: " + channel);
+//            System.out.println("channel: " + channel);
             if (incomingMessage.getMemberCode().memberOfChannel(channel)) {
-                System.out.println("is channel member");
+//                System.out.println("is channel member");
                 if (recentChannelMessages.containsKey(incomingMessage)) {
                     final GroupMessage channelLastMessage = recentChannelMessages.get(incomingMessage).get(channel);
                     if (channelLastMessage != null) {
-                        System.out.println("currentMemberCode: " + channelLastMessage.getMemberCode());
-                        System.out.println("is common member");
-                        System.out.println("mostRecentChannelMessage.getRequestedPhase():" + mostRecentChannelMessage.getRequestedPhase());
-                        System.out.println("membersLastMessage.getRequestedPhase():" + channelLastMessage.getRequestedPhase());
+//                        System.out.println("currentMemberCode: " + channelLastMessage.getMemberCode());
+//                        System.out.println("is common member");
+//                        System.out.println("mostRecentChannelMessage.getRequestedPhase():" + mostRecentChannelMessage.getRequestedPhase());
+//                        System.out.println("membersLastMessage.getRequestedPhase():" + channelLastMessage.getRequestedPhase());
                         if (mostRecentChannelMessage.getRequestedPhase() < channelLastMessage.getRequestedPhase()) {
-                            System.out.println("other is more advanced than sent");
+//                            System.out.println("other is more advanced than sent");
                             // select only the most recent message for any user in this channel
-                            System.out.println("membersLastMessage.getExpectedRespondents(): " + channelLastMessage.getExpectedRespondents());
-                            System.out.println("membersLastMessage.getActualRespondents(): " + channelLastMessage.getActualRespondents());
+//                            System.out.println("membersLastMessage.getExpectedRespondents(): " + channelLastMessage.getExpectedRespondents());
+//                            System.out.println("membersLastMessage.getActualRespondents(): " + channelLastMessage.getActualRespondents());
                             // expected respondants list should have out of channel respondents omitted for this comparison
-                            System.out.println("all ExpectedRespondents replied");
+//                            System.out.println("all ExpectedRespondents replied");
                             // only resend a message if all expected respondants have replied                                        
                             mostRecentChannelMessage = channelLastMessage;
                             resendingOldMessage = true;
@@ -137,7 +137,7 @@ public class GroupManager {
             }
         }
         if (resendingOldMessage) {
-            System.out.println("resendingOldMessage");
+//            System.out.println("resendingOldMessage");
             GroupMessage resendMessage = new GroupMessage();
             // preserve the user id and member code of the requesting participant, even if the message is a resend from a different participant
             resendMessage.setActualRespondents(mostRecentChannelMessage.getActualRespondents());
@@ -192,20 +192,20 @@ public class GroupManager {
             groupsMembers.get(groupMessage.getGroupId()).add(groupMessage.getUserId());
             memberAdded = true;
         }
-        System.out.println("groupMessage: ");
-        System.out.println(groupMessage.getAllMemberCodes());
-        System.out.println(groupMessage.getGroupCommunicationChannels());
-        System.out.println(groupMessage.getGroupId());
-        System.out.println(groupMessage.getGroupUUID());
-        System.out.println(groupMessage.getMemberCode());
-        System.out.println(groupMessage.getOriginMemberCode());
-        System.out.println(groupMessage.getRequestedPhase());
-        System.out.println(groupMessage.getExpectedRespondents());
-        System.out.println(groupMessage.getStimuliList());
-        System.out.println(groupMessage.getStimulusId());
-        System.out.println(groupMessage.getStimulusIndex());
-        System.out.println(groupMessage.getUserId());
-        System.out.println(groupMessage.getScreenId());
+//        System.out.println("groupMessage: ");
+//        System.out.println(groupMessage.getAllMemberCodes());
+//        System.out.println(groupMessage.getGroupCommunicationChannels());
+//        System.out.println(groupMessage.getGroupId());
+//        System.out.println(groupMessage.getGroupUUID());
+//        System.out.println(groupMessage.getMemberCode());
+//        System.out.println(groupMessage.getOriginMemberCode());
+//        System.out.println(groupMessage.getRequestedPhase());
+//        System.out.println(groupMessage.getExpectedRespondents());
+//        System.out.println(groupMessage.getStimuliList());
+//        System.out.println(groupMessage.getStimulusId());
+//        System.out.println(groupMessage.getStimulusIndex());
+//        System.out.println(groupMessage.getUserId());
+//        System.out.println(groupMessage.getScreenId());
         return memberAdded;
     }
 
@@ -251,15 +251,15 @@ public class GroupManager {
         if (storedMessage.getGroupUUID() != null) /* check that the message is from a group member */ {
             for (String channel : storedMessage.getGroupCommunicationChannels().split("\\|")) // check if the communication channel applies to this group member
             {
-                System.out.println("channel: " + channel);
-                System.out.println("MemberCode: " + storedMessage.getMemberCode());
-                System.out.println("RequestedPhase: " + storedMessage.getRequestedPhase());
-                System.out.println("ActualRespondents: " + storedMessage.getActualRespondents());
-                System.out.println("ExpectedRespondents: " + storedMessage.getExpectedRespondents());
+//                System.out.println("channel: " + channel);
+//                System.out.println("MemberCode: " + storedMessage.getMemberCode());
+//                System.out.println("RequestedPhase: " + storedMessage.getRequestedPhase());
+//                System.out.println("ActualRespondents: " + storedMessage.getActualRespondents());
+//                System.out.println("ExpectedRespondents: " + storedMessage.getExpectedRespondents());
                 if (storedMessage.getMemberCode().memberOfChannel(channel)) {
-                    System.out.println("memberOfChannel");
+//                    System.out.println("memberOfChannel");
                     if (storedMessage.haveAllRespondended(channel)) {
-                        System.out.println("AllRespondended");
+//                        System.out.println("AllRespondended");
                         HashMap<String, GroupMessage> groupCompleteMessages = recentChannelMessages.get(storedMessage);
                         if (groupCompleteMessages == null) {
                             groupCompleteMessages = new HashMap<>();
