@@ -1903,10 +1903,10 @@
                 <transmitResults matchingRegex="invitation_code|session_6" dataLogFormat="playerScore,playerErrors,playerPotentialScore,playerTotalScore,playerTotalErrors,playerTotalPotentialScore,playerGamesPlayed,invitationTimer\n
                 &lt;playerScore&gt;,&lt;playerErrors&gt;,&lt;playerPotentialScore&gt;,&lt;playerTotalScore&gt;,&lt;playerTotalErrors&gt;,&lt;playerTotalPotentialScore&gt;,&lt;playerGamesPlayed&gt;,&lt;invitationTimer&gt;">
                     <onError>
-                        <htmlText featureText="Results transmitted ok."/>
+                        <htmlText featureText="Results transmition failed."/>
                     </onError>
                     <onSuccess>
-                        <htmlText featureText="Results transmition failed."/>
+                        <htmlText featureText="Results transmitted ok."/>
                     </onSuccess>
                 </transmitResults>
                 <addPadding/>
