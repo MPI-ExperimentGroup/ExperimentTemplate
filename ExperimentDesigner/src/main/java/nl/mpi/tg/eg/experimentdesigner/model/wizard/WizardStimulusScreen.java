@@ -171,6 +171,9 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
             startRecorderFeature.addFeatureAttributes(FeatureAttribute.mediaId, "mediaId");
             startRecorderFeature.addFeature(FeatureType.onError, null);
             startRecorderFeature.addFeature(FeatureType.onSuccess, null);
+            startRecorderFeature.addFeature(FeatureType.mediaLoaded, null);
+            startRecorderFeature.addFeature(FeatureType.mediaLoadFailed, null);
+            startRecorderFeature.addFeature(FeatureType.mediaPlaybackComplete, null);
             hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
         }
         PresenterFeature previousPresenterFeature = hasMoreStimulusFeature;
