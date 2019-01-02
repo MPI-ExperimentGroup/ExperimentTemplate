@@ -48,6 +48,9 @@
                 <startAudioRecorder recordingFormat="wav" eventTag="Metadata" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
                 <showStimulusProgress/>
@@ -73,6 +76,9 @@
                 <startAudioRecorder recordingFormat="wav" eventTag="Lukluk ol foto" mediaId="mediaId" filePerStimulus="true">
                     <onError/>
                     <onSuccess/>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
