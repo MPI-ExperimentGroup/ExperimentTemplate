@@ -32,6 +32,9 @@
                 <startAudioRecorder recordingFormat="wav" eventTag="Metadata" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
                 <showStimulusProgress/>
@@ -69,6 +72,9 @@
                 <startAudioRecorder recordingFormat="wav" eventTag="Grammaticality" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -101,6 +107,9 @@
                 <startAudioRecorder recordingFormat="wav" eventTag="Anti Nominal Hierrarchy" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -187,6 +196,9 @@
                 <startAudioRecorder recordingFormat="wav" eventTag="Anti Nominal Hierrarchy F" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -232,6 +244,9 @@
                 <startAudioRecorder recordingFormat="wav" eventTag="Pictures" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -266,6 +281,9 @@
                 <startAudioRecorder recordingFormat="wav" eventTag="Animals" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -300,6 +318,9 @@
                 <startAudioRecorder recordingFormat="wav" eventTag="Frogs" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -334,6 +355,9 @@
                 <startAudioRecorder recordingFormat="wav" eventTag="bowped" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -366,6 +390,9 @@
                 <startAudioRecorder recordingFormat="wav" eventTag="bodies" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -398,6 +425,9 @@
                 <startAudioRecorder recordingFormat="wav" eventTag="vanuatu" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -430,6 +460,9 @@
                 <startAudioRecorder recordingFormat="wav" eventTag="grammar" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -462,6 +495,9 @@
                 <startAudioRecorder recordingFormat="wav" eventTag="cutbreak" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
