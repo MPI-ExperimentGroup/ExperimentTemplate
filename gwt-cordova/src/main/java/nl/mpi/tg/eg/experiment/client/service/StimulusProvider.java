@@ -126,17 +126,17 @@ public class StimulusProvider extends AbstractStimuliProvider {
     }
 
     @Override
-    public void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final String storedStimulusList, final int currentStimuliIndex) {
+    public void getSdCardSubset(final ArrayList<String> directoryTagArray, final List<String[]> directoryList, final TimedStimulusListener stimulusLoadedListener, final TimedStimulusListener stimulusErrorListener, final String storedStimulusList, final int currentStimuliIndex) {
         final List<Stimulus> stimulusListCopy = new ArrayList<>();
         stimulusSelectionArray.clear();
-        appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, simulusLoadedListener, simulusErrorListener, storedStimulusList, currentStimuliIndex);
+        appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, stimulusLoadedListener, stimulusErrorListener, storedStimulusList, currentStimuliIndex);
     }
 
-    private void appendSdCardSubset(final ArrayList<String> directoryTagArray, final List<Stimulus> stimulusListCopy, final List<String[]> directoryList, final TimedStimulusListener simulusLoadedListener, final TimedStimulusListener simulusErrorListener, final String storedStimulusList, final int currentStimuliIndex) {
+    private void appendSdCardSubset(final ArrayList<String> directoryTagArray, final List<Stimulus> stimulusListCopy, final List<String[]> directoryList, final TimedStimulusListener stimulusLoadedListener, final TimedStimulusListener stimulusErrorListener, final String storedStimulusList, final int currentStimuliIndex) {
         if (directoryTagArray.isEmpty()) {
             final List<Stimulus> stimulusSubsetArrayTemp = new ArrayList<>();
             if (!directoryList.isEmpty()) {
-                simulusLoadedListener.postLoadTimerFired();
+                stimulusLoadedListener.postLoadTimerFired();
             } else {
                 this.currentStimuliIndex = currentStimuliIndex;
                 if (!storedStimulusList.isEmpty()) {
@@ -168,7 +168,7 @@ public class StimulusProvider extends AbstractStimuliProvider {
                     }
                 }
 //                totalStimuli = stimulusSubsetArray.size();
-                simulusLoadedListener.postLoadTimerFired();
+                stimulusLoadedListener.postLoadTimerFired();
             }
         } else {
             final String directoryTag = directoryTagArray.remove(0);
@@ -177,9 +177,9 @@ public class StimulusProvider extends AbstractStimuliProvider {
                 public void postLoadTimerFired() {
                     // todo: should this not take a single directory?
                     // todo: can this take a file limit per directory?
-                    appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, simulusLoadedListener, simulusErrorListener, storedStimulusList, currentStimuliIndex);
+                    appendSdCardSubset(directoryTagArray, stimulusListCopy, directoryList, stimulusLoadedListener, stimulusErrorListener, storedStimulusList, currentStimuliIndex);
                 }
-            }, simulusErrorListener);
+            }, stimulusErrorListener);
             sdCardStimuli.fillStimulusList(directoryTag);
         }
     }
