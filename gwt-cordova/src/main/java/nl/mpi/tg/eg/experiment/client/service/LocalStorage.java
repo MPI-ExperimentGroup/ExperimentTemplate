@@ -69,12 +69,16 @@ public class LocalStorage {
         return appNameInternal + "." + userId.toString() + ".UserResults." + valueName;
     }
 
+    private String getUSER_METADATA(UserId userId, String valueName) {
+        return appNameInternal + "." + userId.toString() + ".UserMetadata." + valueName;
+    }
+
     private boolean isUSER_RESULTS(String keyName, String postName) {
         return keyName.startsWith(appNameInternal) && keyName.endsWith(".UserResults." + postName);
     }
 
-    private String getUSER_RESULTS_CONNECTION(UserId userId, String valueName) {
-        return appNameInternal + "." + userId.toString() + ".UserResults." + valueName + ".connectedUserId";
+    private String getUSER_METADATA_CONNECTION(UserId userId, String valueName) {
+        return appNameInternal + "." + userId.toString() + ".UserMetadata." + valueName + ".connectedUserId";
     }
 
     private String getLAST_USER_ID() {
@@ -259,8 +263,8 @@ public class LocalStorage {
         loadStorage();
         if (dataStore != null) {
             for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
-                userData.setMetadataValue(metadataField, getCleanStoredData(getUSER_RESULTS(userData.getUserId(), metadataField.getPostName())));
-                final String cleanedUserIds = getCleanStoredData(getUSER_RESULTS_CONNECTION(userData.getUserId(), metadataField.getPostName()));
+                userData.setMetadataValue(metadataField, getCleanStoredData(getUSER_METADATA(userData.getUserId(), metadataField.getPostName())));
+                final String cleanedUserIds = getCleanStoredData(getUSER_METADATA_CONNECTION(userData.getUserId(), metadataField.getPostName()));
                 if (cleanedUserIds != null && !cleanedUserIds.isEmpty()) {
                     List<UserId> userIdList = new ArrayList<>();
                     for (String cleanedUserId : cleanedUserIds.split(",")) {
@@ -335,7 +339,7 @@ public class LocalStorage {
         loadStorage();
         if (dataStore != null) {
             for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
-                dataStore.setItem(getUSER_RESULTS(userResults.getUserData().getUserId(), metadataField.getPostName()), userResults.getUserData().getMetadataValue(metadataField));
+                dataStore.setItem(getUSER_METADATA(userResults.getUserData().getUserId(), metadataField.getPostName()), userResults.getUserData().getMetadataValue(metadataField));
                 final List<UserId> metadataConnections = userResults.getUserData().getMetadataConnection(metadataField);
                 if (metadataConnections != null && !metadataConnections.isEmpty()) {
                     String metadataConnectionString = "";
@@ -345,9 +349,9 @@ public class LocalStorage {
                         }
                         metadataConnectionString += userId.toString();
                     }
-                    dataStore.setItem(getUSER_RESULTS_CONNECTION(userResults.getUserData().getUserId(), metadataField.getPostName()), metadataConnectionString);
+                    dataStore.setItem(getUSER_METADATA_CONNECTION(userResults.getUserData().getUserId(), metadataField.getPostName()), metadataConnectionString);
                 } else {
-                    dataStore.removeItem(getUSER_RESULTS_CONNECTION(userResults.getUserData().getUserId(), metadataField.getPostName()));
+                    dataStore.removeItem(getUSER_METADATA_CONNECTION(userResults.getUserData().getUserId(), metadataField.getPostName()));
                 }
             }
         }
