@@ -1147,6 +1147,15 @@
                         <onSuccess>
                             <htmlText featureText="startAudioRecorder onSuccess"/>
                         </onSuccess>
+                        <mediaLoaded>
+                            <plainText featureText="AudioRecordingLoaded"/>
+                        </mediaLoaded>
+                        <mediaLoadFailed>
+                            <plainText featureText="AudioRecordingLoadFailed"/>
+                        </mediaLoadFailed>
+                        <mediaPlaybackComplete>
+                            <plainText featureText="AudioRecordingPlaybackComplete"/>
+                        </mediaPlaybackComplete>
                     </startAudioRecorder>
                 </actionButton>
                 <!--<actionButton featureText="endAudioRecorderTag (not supported in the HTML5 version)">-->
@@ -1179,6 +1188,15 @@
                         <htmlText featureText="startAudioRecorder onSuccess"/>
                         <nextStimulus repeatIncorrect="false"/>
                     </onSuccess>
+                    <mediaLoaded>
+                        <plainText featureText="AudioRecordingLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="AudioRecordingLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="AudioRecordingPlaybackComplete"/>
+                    </mediaPlaybackComplete>
                 </startAudioRecorder>
                 <stimulusPause>
                     <stopAudioRecorder/>
@@ -1256,6 +1274,21 @@
                                             <plainText featureText="Success"/>
                                         </regionReplace>
                                     </onSuccess>
+                                    <mediaLoaded>
+                                        <regionReplace regionId="recordedMediaResultA">
+                                            <plainText featureText="AudioRecordingLoaded"/>
+                                        </regionReplace>
+                                    </mediaLoaded>
+                                    <mediaLoadFailed>
+                                        <regionReplace regionId="recordedMediaResultA">
+                                            <plainText featureText="AudioRecordingLoadFailed"/>
+                                        </regionReplace>
+                                    </mediaLoadFailed>
+                                    <mediaPlaybackComplete>
+                                        <regionReplace regionId="recordedMediaResultA">
+                                            <plainText featureText="AudioRecordingPlaybackComplete"/>
+                                        </regionReplace>
+                                    </mediaPlaybackComplete>
                                 </startAudioRecorder>
                             </actionButton>  
                         </column>   
@@ -1291,7 +1324,22 @@
                                         <regionReplace regionId="recordedMediaResultB">
                                             <plainText featureText="Success"/>
                                         </regionReplace>
-                                    </onSuccess>
+                                    </onSuccess>                                    
+                                    <mediaLoaded>
+                                        <regionReplace regionId="recordedMediaResultB">
+                                            <plainText featureText="AudioRecordingLoaded"/>
+                                        </regionReplace>
+                                    </mediaLoaded>
+                                    <mediaLoadFailed>
+                                        <regionReplace regionId="recordedMediaResultB">
+                                            <plainText featureText="AudioRecordingLoadFailed"/>
+                                        </regionReplace>
+                                    </mediaLoadFailed>
+                                    <mediaPlaybackComplete>
+                                        <regionReplace regionId="recordedMediaResultB">
+                                            <plainText featureText="AudioRecordingPlaybackComplete"/>
+                                        </regionReplace>
+                                    </mediaPlaybackComplete>
                                 </startAudioRecorder>
                             </actionButton>  
                         </column>   
@@ -1328,6 +1376,21 @@
                                             <plainText featureText="Success"/>
                                         </regionReplace>
                                     </onSuccess>
+                                    <mediaLoaded>
+                                        <regionReplace regionId="recordedMediaResultC">
+                                            <plainText featureText="AudioRecordingLoaded"/>
+                                        </regionReplace>
+                                    </mediaLoaded>
+                                    <mediaLoadFailed>
+                                        <regionReplace regionId="recordedMediaResultC">
+                                            <plainText featureText="AudioRecordingLoadFailed"/>
+                                        </regionReplace>
+                                    </mediaLoadFailed>
+                                    <mediaPlaybackComplete>
+                                        <regionReplace regionId="recordedMediaResultC">
+                                            <plainText featureText="AudioRecordingPlaybackComplete"/>
+                                        </regionReplace>
+                                    </mediaPlaybackComplete>
                                 </startAudioRecorder>
                             </actionButton>   
                         </column> 
