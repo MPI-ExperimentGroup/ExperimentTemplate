@@ -73,12 +73,12 @@ public class LocalStorage {
         return appNameInternal + "." + userId.toString() + ".UserMetadata." + valueName;
     }
 
-    private boolean isUSER_RESULTS(String keyName, String postName) {
-        return keyName.startsWith(appNameInternal) && keyName.endsWith(".UserResults." + postName);
+    private boolean isUSER_METADATA(String keyName, String postName) {
+        return keyName.startsWith(appNameInternal) && keyName.endsWith(".UserMetadata." + postName);
     }
 
     private String getUSER_METADATA_CONNECTION(UserId userId, String valueName) {
-        return appNameInternal + "." + userId.toString() + ".UserMetadata." + valueName + ".connectedUserId";
+        return appNameInternal + "." + userId.toString() + ".UserMetadataConnection." + valueName;
     }
 
     private String getLAST_USER_ID() {
@@ -420,7 +420,7 @@ public class LocalStorage {
         if (dataStore != null) {
             for (int itemIndex = 0; itemIndex < dataStore.getLength(); itemIndex++) {
                 final String key = dataStore.key(itemIndex);
-                if (isUSER_RESULTS(key, postName)) {
+                if (isUSER_METADATA(key, postName)) {
                     final String userIdString = key.split("\\.")[1];
                     final String cleanStoredData = getCleanStoredData(key);
 //                    if (!cleanStoredData.isEmpty()) {
