@@ -16,8 +16,8 @@ ls
 #npm install electron-compile
 #npm install
 pwd
-#ls /srv/ExperimentTemplate/gwt-cordova/target/with_simulus_example-frinex-gui-1.1-stable-SNAPSHOT-electron/node_modules/
-#ls -l /srv/ExperimentTemplate/gwt-cordova/target/with_simulus_example-frinex-gui-1.1-stable-SNAPSHOT-electron/node_modules/electron-compile/lib/
+#ls /srv/ExperimentTemplate/gwt-cordova/target/with_stimulus_example-frinex-gui-1.1-stable-SNAPSHOT-electron/node_modules/
+#ls -l /srv/ExperimentTemplate/gwt-cordova/target/with_stimulus_example-frinex-gui-1.1-stable-SNAPSHOT-electron/node_modules/electron-compile/lib/
 #electron-forge init $appname
 #cd $appname
 #electron-forge package --platform=win32 --arch=x64
