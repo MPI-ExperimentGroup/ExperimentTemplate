@@ -240,6 +240,13 @@ public class SchemaDocumentationGenerator {
                     writer.append("&lt;mediaLoadFailed&gt;<br/>\n");
                     writer.append("&lt;mediaPlaybackComplete&gt;<br/>\n");
                     break;
+                case hasMediaRecorderPlayback:
+                    writer.append("&lt;onError&gt;<br/>\n");
+                    writer.append("&lt;onSuccess&gt;<br/>\n");
+                    writer.append("&lt;mediaLoaded&gt;<br/>\n");
+                    writer.append("&lt;mediaLoadFailed&gt;<br/>\n");
+                    writer.append("&lt;mediaPlaybackComplete&gt;<br/>\n");
+                    break;
                 case hasMediaLoading:
                     writer.append("&lt;mediaLoaded&gt;<br/>\n");
                     writer.append("&lt;mediaLoadFailed&gt;<br/>\n");
