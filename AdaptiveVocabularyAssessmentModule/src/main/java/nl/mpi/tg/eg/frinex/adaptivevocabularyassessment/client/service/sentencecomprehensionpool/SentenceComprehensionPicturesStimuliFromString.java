@@ -284,13 +284,13 @@ public class SentenceComprehensionPicturesStimuliFromString {
 
             targetOnset = targetOnset.replaceAll("\\,", "_comma_");
 
-            String timer = record.get("Timer");
+            String timer = record.get("Timer_round");
             if (timer == null) {
-                throw new IOException("Timer is undefined");
+                throw new IOException("Timer-round is undefined");
             } else {
                 timer = timer.trim();
             }
-            timer = timer.replaceAll("\\,", "_comma_");
+            
 
             String uniqueId = "part2_" + trialNumber + "_" + item;
             // creating patternly-named copies of images 
@@ -332,7 +332,7 @@ public class SentenceComprehensionPicturesStimuliFromString {
                     + " CorrectResponse_" + correctResponse.trim();
 
             String audioPath = audioStimuliDir + audio;
-            String currentSt = this.makeAudioPictureStimulusString(uniqueId, label, correctResponseButton, audioPath, uniqueId, tags);
+            String currentSt = this.makeAudioPictureStimulusString(uniqueId, label, correctResponseButton, audioPath, uniqueId, timer, tags);
             builder.append(currentSt);
 
         }
@@ -345,6 +345,7 @@ public class SentenceComprehensionPicturesStimuliFromString {
             String correctResponse,
             String audioPath,
             String code,
+            String timer,
             String tags) {
 
         StringBuilder retVal = new StringBuilder();
@@ -352,7 +353,7 @@ public class SentenceComprehensionPicturesStimuliFromString {
         retVal.append(" identifier=\"").append(uniqueId).append("\" ");
         retVal.append(" label=\"").append(label).append("\" ");
 
-        retVal.append(" pauseMs=\"0\" ");
+        retVal.append(" pauseMs=\"").append(timer).append("\" ");
 
         retVal.append(" audioPath=\"").append(audioPath).append("\" ");
         retVal.append(" code=\"").append(code).append("\" ");
