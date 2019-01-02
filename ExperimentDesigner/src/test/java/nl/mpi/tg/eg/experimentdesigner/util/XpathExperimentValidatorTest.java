@@ -192,7 +192,7 @@ public class XpathExperimentValidatorTest {
         instance.validateDocument(new File(new File(outputDirectoryUri), "kinship_example.xml"));
 //        instance.validateDocument(new File(new File(outputDirectoryUri), "peabodyas.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "rosselfieldkit.xml"));
-        instance.validateDocument(new File(new File(outputDirectoryUri), "with_simulus_example.xml"));
+        instance.validateDocument(new File(new File(outputDirectoryUri), "with_stimulus_example.xml"));
 //        instance.validateDocument(new File(new File(outputDirectoryUri), "audiononwordmonitoring_old.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "french_conversation.xml"));
         instance.validateDocument(new File(new File(outputDirectoryUri), "ld_screensize.xml"));
