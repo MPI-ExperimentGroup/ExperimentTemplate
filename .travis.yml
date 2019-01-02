@@ -19,8 +19,8 @@ script:
   - mvn clean install -Dgwt.validateOnly -DskipTests=true -Dmaven.javadoc.skip=true -B -V -Dexperiment.configuration.name=alloptions
   - pwd
   - cd gwt-cordova
-  - mvn clean package -DskipTests=true -Dmaven.javadoc.skip=true -B -V -Dexperiment.configuration.name=with_simulus_example -Dexperiment.destinationServer=$serverName -Dexperiment.destinationServerUrl=$serverUrl -Dexperiment.groupsSocketUrl=$groupsSocketUrl -Dexperiment.staticFilesUrl=$staticFilesUrl -Dexperiment.registrationUrl=$serverUrl/registrationUrl/demo_submit.pl
-  - mv target/with_simulus_example-*-SNAPSHOT ../../static
+  - mvn clean package -DskipTests=true -Dmaven.javadoc.skip=true -B -V -Dexperiment.configuration.name=with_stimulus_example -Dexperiment.destinationServer=$serverName -Dexperiment.destinationServerUrl=$serverUrl -Dexperiment.groupsSocketUrl=$groupsSocketUrl -Dexperiment.staticFilesUrl=$staticFilesUrl -Dexperiment.registrationUrl=$serverUrl/registrationUrl/demo_submit.pl
+  - mv target/with_stimulus_example-*-SNAPSHOT ../../static
   - cd ../ExperimentDesigner
   # generate the documentation and schema files (css is used as the input directory because we dont want any json files to be present)
   - mvn exec:exec -Dexec.args="-classpath %classpath nl.mpi.tg.eg.experimentdesigner.util.JsonToXml ../../static/css ../../static" -Dexec.classpathScope=runtime -Dexec.executable=java -DversionCheck.allowSnapshots=true -DversionCheck.buildType=testing -DskipTests=true
