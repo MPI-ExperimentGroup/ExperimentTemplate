@@ -34,14 +34,14 @@ public class SdCardStimuli {
     private final List<Stimulus> stimulusArray;
     private final HashMap<String, SdCardStimulus> stimulusHashMap = new HashMap<>();
     private final List<String[]> directoryList;
-    private final TimedStimulusListener simulusLoadedListener;
-    private final TimedStimulusListener simulusErrorListener;
+    private final TimedStimulusListener stimulusLoadedListener;
+    private final TimedStimulusListener stimulusErrorListener;
     private final String excludeRegex;
 
-    public SdCardStimuli(List<Stimulus> stimulusArray, final List<String[]> directoryList, final String excludeRegex, TimedStimulusListener simulusLoadedListener, TimedStimulusListener simulusErrorListener) {
+    public SdCardStimuli(List<Stimulus> stimulusArray, final List<String[]> directoryList, final String excludeRegex, TimedStimulusListener stimulusLoadedListener, TimedStimulusListener stimulusErrorListener) {
         this.stimulusArray = stimulusArray;
-        this.simulusLoadedListener = simulusLoadedListener;
-        this.simulusErrorListener = simulusErrorListener;
+        this.stimulusLoadedListener = stimulusLoadedListener;
+        this.stimulusErrorListener = stimulusErrorListener;
         this.directoryList = directoryList;
         this.excludeRegex = excludeRegex;
     }
@@ -113,11 +113,11 @@ public class SdCardStimuli {
 
     public void errorAction(String errorCode, String errorMessage) {
         // GWT.log("errorAction: " + errorCode + " " + errorMessage);
-        simulusErrorListener.postLoadTimerFired();
+        stimulusErrorListener.postLoadTimerFired();
     }
 
     public void loadingCompleteAction() {
-        simulusLoadedListener.postLoadTimerFired();
+        stimulusLoadedListener.postLoadTimerFired();
     }
 
     private void nonScan(final String directoryTag) {
