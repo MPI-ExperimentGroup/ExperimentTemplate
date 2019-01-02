@@ -54,6 +54,9 @@
                 <startAudioRecorder recordingFormat="wav" eventTag="FieldKit Sequential" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -88,6 +91,9 @@
                 <startAudioRecorder recordingFormat="wav" eventTag="FieldKit Random" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
                 <centrePage/>
@@ -123,6 +129,9 @@
                 <startAudioRecorder recordingFormat="wav" eventTag="Task 1" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <withMatchingStimulus eventTag="" randomise="true" repeatRandomWindow="0" matchingRegex="([^_]*_)*" maxStimuli="1000" repeatCount="1">
                     <hasMoreStimulus>
@@ -189,6 +198,9 @@
                 <startAudioRecorder recordingFormat="wav" eventTag="Task 2" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
+                    <mediaLoaded/>
+                    <mediaLoadFailed/>
+                    <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <clearPage/>
                 <matchingStimulusGrid randomise="true" matchingRegex="([^_]*_)*" columnCount="10" maxStimuli="1000" animate="none" maxWidth="100">
