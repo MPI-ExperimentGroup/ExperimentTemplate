@@ -77,7 +77,7 @@ public class SchemaGeneratorTest {
 //            "lilbq4.xml",
             "hrpretest.xml", "kinship_example.xml",
 //            "ppvt.xml",
-            "with_simulus_example.xml",
+            "with_stimulus_example.xml",
 //            "sentenceplausibility.xml",
             //            "synquiz2.xml"
         };
