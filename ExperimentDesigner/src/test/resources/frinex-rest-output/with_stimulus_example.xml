@@ -1244,72 +1244,122 @@
                 <table>
                     <row>
                         <column>
-                            <actionButton featureText="StartRecorderA (USB)">
+                            <actionButton featureText="StartRecorderA(USB)">
                                 <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="(046d:0a45)" filePerStimulus="filePerStimulus" mediaId="recordedMediaA">
                                     <onError>
-                                        <regionReplace regionId="recordedMediaResult">
+                                        <regionReplace regionId="recordedMediaResultA">
                                             <plainText featureText="Error"/>
                                         </regionReplace>
                                     </onError>
                                     <onSuccess>
-                                        <regionReplace regionId="recordedMediaResult">
+                                        <regionReplace regionId="recordedMediaResultA">
                                             <plainText featureText="Success"/>
                                         </regionReplace>
                                     </onSuccess>
                                 </startAudioRecorder>
                             </actionButton>  
-                            <actionButton featureText="StartRecorderB (any)">
+                        </column>   
+                        <column>
+                            <actionButton featureText="playRecordedA">
+                                <playMedia mediaId="recordedMediaA"/>
+                            </actionButton>
+                        </column> 
+                        <column>
+                            <actionButton featureText="rewindRecordedA">
+                                <rewindMedia mediaId="recordedMediaA"/>
+                            </actionButton>
+                        </column> 
+                        <column>
+                            <actionButton featureText="pauseRecordedA">
+                                <pauseMedia mediaId="recordedMediaA"/>
+                            </actionButton>
+                        </column> 
+                        <column>
+                            <region regionId="recordedMediaResultA"></region>
+                        </column> 
+                    </row>
+                    <row>
+                        <column>
+                            <actionButton featureText="StartRecorderB(any)">
                                 <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="" filePerStimulus="filePerStimulus" mediaId="recordedMediaB">
                                     <onError>
-                                        <regionReplace regionId="recordedMediaResult">
+                                        <regionReplace regionId="recordedMediaResultB">
                                             <plainText featureText="Error"/>
                                         </regionReplace>
                                     </onError>
                                     <onSuccess>
-                                        <regionReplace regionId="recordedMediaResult">
+                                        <regionReplace regionId="recordedMediaResultB">
                                             <plainText featureText="Success"/>
                                         </regionReplace>
                                     </onSuccess>
                                 </startAudioRecorder>
                             </actionButton>  
-                            <actionButton featureText="StartRecorderC (any)">
+                        </column>   
+                        <column>
+                            <actionButton featureText="playRecordedB">
+                                <playMedia mediaId="recordedMediaB"/>
+                            </actionButton>
+                        </column> 
+                        <column>
+                            <actionButton featureText="rewindRecordedB">
+                                <rewindMedia mediaId="recordedMediaB"/>
+                            </actionButton>
+                        </column> 
+                        <column>
+                            <actionButton featureText="pauseRecordedB">
+                                <pauseMedia mediaId="recordedMediaB"/>
+                            </actionButton>
+                        </column> 
+                        <column>
+                            <region regionId="recordedMediaResultB"></region>
+                        </column> 
+                    </row>
+                    <row>
+                        <column>
+                            <actionButton featureText="StartRecorderC(any)">
                                 <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="" filePerStimulus="filePerStimulus" mediaId="recordedMediaC">
                                     <onError>
-                                        <regionReplace regionId="recordedMediaResult">
+                                        <regionReplace regionId="recordedMediaResultC">
                                             <plainText featureText="Error"/>
                                         </regionReplace>
                                     </onError>
                                     <onSuccess>
-                                        <regionReplace regionId="recordedMediaResult">
+                                        <regionReplace regionId="recordedMediaResultC">
                                             <plainText featureText="Success"/>
                                         </regionReplace>
                                     </onSuccess>
                                 </startAudioRecorder>
-                            </actionButton>  
-                            <region regionId="StopRecorder"></region>
+                            </actionButton>   
+                        </column> 
+                        <column>
+                            <actionButton featureText="playRecordedC">
+                                <playMedia mediaId="recordedMediaC"/>
+                            </actionButton>
+                        </column> 
+                        <column>
+                            <actionButton featureText="rewindRecordedC">
+                                <rewindMedia mediaId="recordedMediaC"/>
+                            </actionButton>
+                        </column> 
+                        <column>
+                            <actionButton featureText="pauseRecordedC">
+                                <pauseMedia mediaId="recordedMediaC"/>
+                            </actionButton>
+                        </column> 
+                        <column>
+                            <region regionId="recordedMediaResultC"></region>
+                        </column> 
+                    </row>
+                    <row>
+                        <column>
                             <actionButton featureText="stopAudioRecorder">
                                 <regionReplace regionId="stopAudioRecorder">
                                     <stopAudioRecorder/>
                                 </regionReplace>
-                            </actionButton>   
+                            </actionButton>  
                         </column> 
                         <column>
-                            <actionButton featureText="playRecorded">
-                                <playMedia mediaId="recordedMedia"/>
-                            </actionButton>
-                        </column> 
-                        <column>
-                            <actionButton featureText="rewindRecorded">
-                                <rewindMedia mediaId="recordedMedia"/>
-                            </actionButton>
-                        </column> 
-                        <column>
-                            <actionButton featureText="pauseRecorded">
-                                <pauseMedia mediaId="recordedMedia"/>
-                            </actionButton>
-                        </column> 
-                        <column>
-                            <region regionId="recordedMediaResult"></region>
+                            <region regionId="StopRecorder"></region>
                         </column> 
                     </row>
                     <row>
@@ -1907,7 +1957,7 @@
         <addPadding/>
         <addPadding/>
         <htmlText featureText="It is worth noting that both Prolific and Mechanical Turk do not use return values from the experiment software. Instead they take a single experiment code which is the same for all users and require the user to log in to their website by following that link.&lt;br/&gt;"/>
-        <eraseUsersDataButton featureText="Opnieuw beginnen" target="InvitationCodeExample"/>
+        <targetButton featureText="Continue" target="InvitationCodeExampleRestart"/>
     </presenter>
     <presenter menuLabel="InvitationCodeExampleRestart" type="transmission" self="InvitationCodeExampleRestart" title="Invitation Code Example Restart">
         <generateCompletionCode>
