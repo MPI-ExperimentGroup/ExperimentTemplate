@@ -1066,6 +1066,9 @@ or local-name() eq 'stimulusExists'
         <xsl:apply-templates select="withinThreshold" />
         <xsl:apply-templates select="onError" />
         <xsl:apply-templates select="onSuccess" />
+        <xsl:apply-templates select="mediaLoaded" />
+        <xsl:apply-templates select="mediaLoadFailed" />
+        <xsl:apply-templates select="mediaPlaybackComplete" />
         <xsl:text>);
         </xsl:text> 
         <xsl:if test="local-name() eq 'preloadAllStimuli' or local-name() eq 'withStimuli' or local-name() eq 'loadStimulus' or local-name() eq 'loadSdCardStimulus'">
