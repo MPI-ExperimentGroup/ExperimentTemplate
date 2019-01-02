@@ -51,8 +51,8 @@ public class RegistrationService {
         builder.setHeader("Content-type", "application/x-www-form-urlencoded");
         StringBuilder stringBuilder = new StringBuilder();
         for (MetadataField key : userResults.getUserData().getMetadataFields()) {
-            final String postName = key.getPostName().substring("postName_".length());
-            if (matchingRegex == null || matchingRegex.matches(postName)) {
+            final String postName = key.getPostName();
+            if (matchingRegex == null || postName.matches(matchingRegex)) {
                 String value = URL.encodeQueryString(userResults.getUserData().getMetadataValue(key));
                 if (stringBuilder.length() > 0) {
                     stringBuilder.append("&");
