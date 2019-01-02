@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="frinex.xsd" appNameDisplay="with_simulus_example" appNameInternal="with_simulus_example" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="false" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17">
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="frinex.xsd" appNameDisplay="with_stimulus_example" appNameInternal="with_stimulus_example" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="false" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17">
     <administration>
         <dataChannel channel="0" label="Example" logToSdCard="false"/>
         <dataChannel channel="1" label="Data" logToSdCard="false"/>
@@ -1078,9 +1078,9 @@
     </presenter>
     <presenter back="Menu"  menuLabel="hasGetParameter" type="menu" self="hasGetParameter" title="hasGetParameter">
         <htmlText featureText="A get parameter must be provided on the URL, eg:"/>
-        <htmlText featureText="https://frinexstaging.mpi.nl/with_simulus_example?stimuliC"/>
-        <htmlText featureText="https://frinexstaging.mpi.nl/with_simulus_example?stimuliN"/>
-        <htmlText featureText="https://frinexstaging.mpi.nl/with_simulus_example?stimuliC&amp;stimuliN"/>
+        <htmlText featureText="https://frinexstaging.mpi.nl/with_stimulus_example?stimuliC"/>
+        <htmlText featureText="https://frinexstaging.mpi.nl/with_stimulus_example?stimuliN"/>
+        <htmlText featureText="https://frinexstaging.mpi.nl/with_stimulus_example?stimuliC&amp;stimuliN"/>
         <hasGetParameter parameterName="stimuliC">
             <conditionTrue>
                 <htmlText featureText="stimuliC provided"/>
