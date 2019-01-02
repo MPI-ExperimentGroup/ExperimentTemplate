@@ -483,6 +483,15 @@
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
                 </startAudioRecorder>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
@@ -797,6 +806,15 @@
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
                 </startAudioRecorder>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
@@ -1111,6 +1129,15 @@
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
                 </startAudioRecorder>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
@@ -2171,6 +2198,15 @@
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
                 </startAudioRecorder>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
@@ -2485,6 +2521,15 @@
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
                 </startAudioRecorder>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
@@ -2799,6 +2844,15 @@
                     <onSuccess>
                         <plainText featureText="plainText in onSuccess"/>
                     </onSuccess>
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <mediaPlaybackComplete>
+                        <plainText featureText="plainText in mediaPlaybackComplete"/>
+                    </mediaPlaybackComplete>
                 </startAudioRecorder>
                 <stopAudioRecorder/>
                 <startAudioRecorderTag eventTier="8"/>
