@@ -41,7 +41,7 @@ public abstract class AbstractStimuliProvider implements StimuliProvider {
     }
 
     @Override
-    public void getSdCardSubset(ArrayList<String> directoryTagArray, List<String[]> directoryList, TimedStimulusListener simulusLoadedListener, TimedStimulusListener simulusErrorListener, String storedStimulusList, int currentStimuliIndex) {
+    public void getSdCardSubset(ArrayList<String> directoryTagArray, List<String[]> directoryList, TimedStimulusListener stimulusLoadedListener, TimedStimulusListener stimulusErrorListener, String storedStimulusList, int currentStimuliIndex) {
         throw new UnsupportedOperationException("getSdCardSubset");
     }
 
