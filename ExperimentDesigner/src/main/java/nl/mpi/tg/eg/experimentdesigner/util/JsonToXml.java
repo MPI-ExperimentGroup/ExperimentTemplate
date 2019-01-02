@@ -75,7 +75,7 @@ public class JsonToXml {
                     System.out.println("Failed to create documentation file: " + exception.getMessage());
                 }
                 final WizardController wizardController = new WizardController();
-                for (File jsonFile : new File(inputDirectory).listFiles((File dir, String name) -> name.endsWith(".json"))) {
+                for (File jsonFile : new File(inputDirectory).listFiles((File dir, String name) -> name.endsWith(".json") && !name.endsWith("listing.json"))) {
                     System.out.println(jsonFile);
                     try {
                         ObjectMapper mapper = new ObjectMapper();
