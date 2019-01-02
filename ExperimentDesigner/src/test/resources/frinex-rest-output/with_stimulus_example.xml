@@ -89,10 +89,7 @@
         <field controlledMessage="." controlledRegex=".*" postName="item" preventServerDuplicates="false" registrationField="item"/>
         <!--<field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="invitation_code" preventServerDuplicates="false" registrationField="Invitation Code"/>-->
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="invitation_code" preventServerDuplicates="false" registrationField="Invitation Code"/>
-        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="currentScore" preventServerDuplicates="false" registrationField="Current Score"/>
-        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="currentPotential" preventServerDuplicates="false" registrationField="Current Potential"/>
-        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="totalScore" preventServerDuplicates="false" registrationField="Total Score"/> 
-        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="totalPotential" preventServerDuplicates="false" registrationField="Total Potential"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_6" preventServerDuplicates="false" registrationField="status session 6"/>
     </metadata>
     <presenter back="Menu" menuLabel="Terug" next="Informatie" type="metadata" self="Toestemming" title="Toestemming">
         <htmlText featureText="Toestemmingsverklaring voor deelname aan het onderzoek:&lt;br/&gt;&lt;br/&gt;Ik stem geheel vrijwillig in met deelname aan dit onderzoek."/>
@@ -1842,24 +1839,25 @@
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
-                <transmitResults matchingRegex="invitation_code|currentScore|currentPotential|totalScore|totalPotential" dataLogFormat="
-                playerScore:
-                &lt;playerScore&gt;&lt;br/&gt;
-                playerErrors:
-                &lt;playerErrors&gt;&lt;br/&gt;
-                playerPotentialScore:
-                &lt;playerPotentialScore&gt;&lt;br/&gt;
-                playerTotalScore:
-                &lt;playerTotalScore&gt;&lt;br/&gt;
-                playerTotalErrors:
-                &lt;playerTotalErrors&gt;&lt;br/&gt;
-                playerTotalPotentialScore:
-                &lt;playerTotalPotentialScore&gt;&lt;br/&gt;
-                playerGamesPlayed:
-                &lt;playerGamesPlayed&gt; 
-                Time so far: &lt;invitationTimer&gt;ms">
-                    <onError/>
-                    <onSuccess/>
+                <scoreAboveThreshold scoreThreshold="5">
+                    <aboveThreshold>
+                        <setMetadataValue fieldName="session_6" dataLogFormat="adequate"/>
+                        <htmlText featureText="Your efforts have proved adequate."/>
+                    </aboveThreshold>
+                    <withinThreshold>
+                        <htmlText featureText="Your efforts have proved inadequate."/>
+                        <setMetadataValue fieldName="session_6" dataLogFormat="inadequate"/>
+                    </withinThreshold>
+                </scoreAboveThreshold>
+                <htmlText featureText="The endpoint for this data transmition is set in the listing.json file section for this experiment with the values registrationUrlStaging and registrationUrlProduction."/>
+                <transmitResults matchingRegex="invitation_code|session_6" dataLogFormat="playerScore,playerErrors,playerPotentialScore,playerTotalScore,playerTotalErrors,playerTotalPotentialScore,playerGamesPlayed,invitationTimer\n
+                &lt;playerScore&gt;,&lt;playerErrors&gt;,&lt;playerPotentialScore&gt;,&lt;playerTotalScore&gt;,&lt;playerTotalErrors&gt;,&lt;playerTotalPotentialScore&gt;,&lt;playerGamesPlayed&gt;,&lt;invitationTimer&gt;">
+                    <onError>
+                        <htmlText featureText="Results transmitted ok."/>
+                    </onError>
+                    <onSuccess>
+                        <htmlText featureText="Results transmition failed."/>
+                    </onSuccess>
                 </transmitResults>
                 <addPadding/>
                 <actionButton featureText="clearCurrentScore">
@@ -1908,8 +1906,8 @@
         <addPadding/>
         <addPadding/>
         <addPadding/>
-        <htmlText featureText="Please note that the completionCode GET value in the above link will not be populated in this version.&lt;br/&gt;"/>
         <htmlText featureText="It is worth noting that both Prolific and Mechanical Turk do not use return values from the experiment software. Instead they take a single experiment code which is the same for all users and require the user to log in to their website by following that link.&lt;br/&gt;"/>
+        <eraseUsersDataButton featureText="Opnieuw beginnen" target="InvitationCodeExample"/>
     </presenter>
     <presenter menuLabel="InvitationCodeExampleRestart" type="transmission" self="InvitationCodeExampleRestart" title="Invitation Code Example Restart">
         <generateCompletionCode>
