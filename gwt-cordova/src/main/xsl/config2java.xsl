@@ -1048,7 +1048,8 @@ or local-name() eq 'stimulusExists'
             <xsl:text>
                 ,currentStimulus
             </xsl:text>
-        </xsl:if>                                
+        </xsl:if>
+        <xsl:value-of select="if(local-name() eq 'playMedia' or local-name() eq 'pauseMedia' or local-name() eq 'rewindMedia') then if (contains(@mediaId, '&lt;stimulus')) then ', currentStimulus' else ', null' else ''" />
         <xsl:apply-templates select="hasMoreStimulus" />
         <xsl:apply-templates select="endOfStimulus" />
         <xsl:apply-templates select="beforeStimulus" />
