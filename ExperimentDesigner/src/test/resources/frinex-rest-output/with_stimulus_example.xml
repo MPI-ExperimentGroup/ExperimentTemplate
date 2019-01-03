@@ -110,14 +110,14 @@
         <metadataField fieldName="dateOfBirth"/>
         <metadataFieldDateTriggered fieldName="ageGroup" linkedFieldName="dateOfBirth" daysThresholds="50 100 200 400 500 600 800 1000" visibleRegex=".*" enabledRegex=".*"/>
         <addPadding/>
-        <htmlText featureText="When a dateOfBirth is entered the Instapset dropdown will jump to the age group specified in the daysThresholds attribute. This dropdown can then be editied as required."/>        
+        <htmlText featureText="When a dateOfBirth is entered the Instapset dropdown will jump to the age group specified in the daysThresholds attribute. This dropdown can then be editied as required."/>
         <htmlText featureText="The restulting value of Instapset can then be used in the following presenter to jump to the relevant section of the experiment."/>
         <addPadding/>
-        <htmlText featureText="When Opleidingsniveau is equal to anders the extra field educationOther will be shown."/>        
+        <htmlText featureText="When Opleidingsniveau is equal to anders the extra field educationOther will be shown."/>
         <addPadding/>
         <saveMetadataButton featureText="Volgende" sendData="true" networkErrorMessage="Geen verbinding met de server. Controleer alstublieft uw internetverbinding en probeer het opnieuw.">
             <onError/>
-            <onSuccess> 
+            <onSuccess>
                 <gotoNextPresenter/>
             </onSuccess>
         </saveMetadataButton>
@@ -193,7 +193,7 @@
             </conditionTrue>
             <conditionFalse>
             </conditionFalse>
-        </hasMetadataValue>      
+        </hasMetadataValue>
     </presenter>
     <presenter back="Gegevens" menuLabel="Metadata Jump Test Target 1" type="menu" self="Metadata_Jump_Test_Target_1" title="Metadata Jump Test Target 1">
         <htmlText featureText="Metadata Jump Test Target 1."/>
@@ -289,7 +289,7 @@
         </startTimer>
         <region regionId="regionTimerA">
             <plainText featureText="TimerA region"/>
-        </region>        
+        </region>
         <plainText featureText="msToNext=30000 will count down 30000ms"/>
         <timerLabel listenerId="timerA" msLabelFormat="mm:ss" msToNext="30000" styleName="countDownLabel"/>
         <plainText featureText="TimerC msToNext=0 will just count up"/>
@@ -301,8 +301,8 @@
                     <plainText featureText="TimerA Restart Completed"/>
                 </region>
             </startTimer>
-        </actionButton>  
-    </presenter>  
+        </actionButton>
+    </presenter>
     <presenter back="Menu" menuLabel="Region Timer Screen" next="With_Stimuli_Screen" type="stimulus" self="Region_Timer_Screen" title="With Stimuli Screen">
         <region regionId="regionTimerC">
             <plainText featureText="TimerC startTimer"/>
@@ -418,7 +418,7 @@
                 &lt;playerPotentialScore&gt;&lt;br/&gt;
                 "/>
                 <addPadding/>
-                <stimulusLabel styleName="stimuliLabel"/>                
+                <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
                 <plainText featureText="left label"/>
                 <plainText featureText="right label"/>
@@ -471,12 +471,12 @@
                         <regionStyle regionId="region4" styleName="toggleBox4 toggleBoxOff"/>
                         <regionStyle regionId="region5" styleName="toggleBox5 toggleBoxOn"/>
                     </actionButton>
-                </region>   
+                </region>
                 <regionStyle regionId="region1" styleName="toggleBox1 toggleBoxOff"/>
                 <regionStyle regionId="region2" styleName="toggleBox2 toggleBoxOff"/>
                 <regionStyle regionId="region3" styleName="toggleBox3 toggleBoxOff"/>
                 <regionStyle regionId="region4" styleName="toggleBox4 toggleBoxOff"/>
-                <regionStyle regionId="region5" styleName="toggleBox5 toggleBoxOff"/>                         
+                <regionStyle regionId="region5" styleName="toggleBox5 toggleBoxOff"/>
                 <addPadding/>
                 <addPadding/>
                 <addPadding/>
@@ -504,7 +504,7 @@
         </loadStimulus>
     </presenter>
     <presenter back="Menu" menuLabel="Metadata (Enable) (Visible)" type="metadata" self="Metadata_Enable_Visible" title="Metadata (Enable) (Visible)">
-        <plainText featureText="In this example two metadata fields are hidden/shown and enabled/disabled according to the value of another field."/>       
+        <plainText featureText="In this example two metadata fields are hidden/shown and enabled/disabled according to the value of another field."/>
         <metadataField fieldName="enabledVisibleOptions"/>
         <metadataFieldVisibilityDependant fieldName="educationOther" linkedFieldName="enabledVisibleOptions" visibleRegex=".*visible.*" enabledRegex=".*enabled.*"/>
         <metadataField fieldName="dateOfBirth"/>
@@ -519,8 +519,8 @@
     </presenter>
     <presenter back="Menu" menuLabel="With Stimuli Screen" next="First_Stimuli_Screen_Informatie" type="stimulus" self="With_Stimuli_Screen" title="With Stimuli Screen">
         <withStimuli eventTag="With Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
-            <beforeStimulus>       
-                <plainText featureText="plainText in beforeStimulus"/>         
+            <beforeStimulus>
+                <plainText featureText="plainText in beforeStimulus"/>
             </beforeStimulus>
             <eachStimulus>
                 <plainText featureText="plainText in eachStimulus"/>
@@ -538,14 +538,14 @@
                     </mediaPlaybackComplete>
                 </stimulusPresent>
             </eachStimulus>
-            <afterStimulus>  
+            <afterStimulus>
                 <region regionId="validateStimuliResponses"/>
                 <actionButton featureText="validateStimuliResponses">
                     <validateStimuliResponses>
                         <conditionFalse>
                             <region regionId="validateStimuliResponses">
                                 <plainText featureText="plainText in conditionFalse"/>
-                            </region>  
+                            </region>
                         </conditionFalse>
                         <conditionTrue>
                             <region regionId="validateStimuliResponses">
@@ -554,7 +554,7 @@
                         </conditionTrue>
                     </validateStimuliResponses>
                 </actionButton>
-                <plainText featureText="plainText in afterStimulus"/>         
+                <plainText featureText="plainText in afterStimulus"/>
                 <targetButton featureText="Next Screen" target="First_Stimuli_Screen_Informatie"/>
             </afterStimulus>
             <randomGrouping/>
@@ -1047,7 +1047,7 @@
             </stimuli>
         </loadStimulus>
     </presenter>
-    <presenter back="Menu" menuLabel="Metadata HtmlTokenText" type="stimulus" self="Metadata_HtmlTokenText" title="Metadata HtmlTokenText">        
+    <presenter back="Menu" menuLabel="Metadata HtmlTokenText" type="stimulus" self="Metadata_HtmlTokenText" title="Metadata HtmlTokenText">
         <htmlTokenText featureText="
                 workerId:
                 &lt;metadataField_workerId&gt;&lt;br/&gt;
@@ -1073,7 +1073,7 @@
         <htmlText featureText="Instructies Deel 2: &lt;br/&gt;&lt;br/&gt;Type het juiste antwoord in de textbox."/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Second"/>
     </presenter>
-    <presenter back="Menu"  menuLabel="hasGetParameter" type="menu" self="hasGetParameter" title="hasGetParameter">
+    <presenter back="Menu" menuLabel="hasGetParameter" type="menu" self="hasGetParameter" title="hasGetParameter">
         <htmlText featureText="A get parameter must be provided on the URL, eg:"/>
         <htmlText featureText="https://frinexstaging.mpi.nl/with_stimulus_example?stimuliC"/>
         <htmlText featureText="https://frinexstaging.mpi.nl/with_stimulus_example?stimuliN"/>
@@ -1126,10 +1126,10 @@
             <!--<htmlText featureText="stopAudioRecorder"/>-->
             <!--</stopAudioRecorder>-->
         </actionButton>
-        <!--                <actionButton featureText="startAudioRecorderTag (not supported in the HTML5 version)">
-            <startAudioRecorderTag eventTier="3"/>
-            <htmlText featureText="startAudioRecorderTag"/>
-            </startAudioRecorderTag>
+        <!-- <actionButton featureText="startAudioRecorderTag (not supported in the HTML5 version)">
+        <startAudioRecorderTag eventTier="3"/>
+        <htmlText featureText="startAudioRecorderTag"/>
+        </startAudioRecorderTag>
         </actionButton>-->
         <loadStimulus eventTag="Second" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -1141,7 +1141,7 @@
                 </actionButton>
                 <actionButton featureText="startAudioRecorder">
                     <startAudioRecorder recordingFormat="ogg" filePerStimulus="true" eventTag="startAudioRecorder" deviceRegex="(046d:0a45)" mediaId="recordedMedia">
-                        <onError>  
+                        <onError>
                             <htmlText featureText="startAudioRecorder onError, please plug in device with the USB id: (046d:0a45)"/>
                         </onError>
                         <onSuccess>
@@ -1181,7 +1181,7 @@
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
                 <startAudioRecorder recordingFormat="ogg" filePerStimulus="true" eventTag="startAudioRecorder" deviceRegex="(046d:0a45)" mediaId="recordedMedia">
-                    <onError>  
+                    <onError>
                         <htmlText featureText="startAudioRecorder onError, please plug in device with the USB id: (046d:0a45)"/>
                     </onError>
                     <onSuccess>
@@ -1200,7 +1200,7 @@
                 </startAudioRecorder>
                 <stimulusPause>
                     <stopAudioRecorder/>
-                </stimulusPause>        
+                </stimulusPause>
             </hasMoreStimulus>
             <endOfStimulus>
                 <gotoNextPresenter/>
@@ -1240,7 +1240,7 @@
         <loadStimulus eventTag="Third" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusLabel styleName="stimuliLabel"/>
-                
+ 
                 <addPadding/>
                 <stimulusFreeText featureText="Vul minimal 1 letter." styleName="stimuliLabel" validationRegex=".{1,}" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
                 <stimulusImage msToNext="60" styleName="styleName" dataChannel="2">
@@ -1249,15 +1249,15 @@
                             <plainText featureText="stimulusImageLoaded"/>
                         </regionReplace>
                     </mediaLoaded>
-                    <mediaLoadFailed> 
+                    <mediaLoadFailed>
                         <regionReplace regionId="stimulusImage1">
                             <plainText featureText="stimulusImageFailed"/>
                         </regionReplace>
                     </mediaLoadFailed>
                 </stimulusImage>
                 <region regionId="stimulusImage1"></region>
-                <!--                <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
-                    <plainText featureText="plainText in stimulusImageCapture"/>
+                <!-- <stimulusImageCapture featureText="stimulusImageCapture" msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                 <plainText featureText="plainText in stimulusImageCapture"/>
                 </stimulusImageCapture>-->
                 <table>
                     <row>
@@ -1290,26 +1290,26 @@
                                         </regionReplace>
                                     </mediaPlaybackComplete>
                                 </startAudioRecorder>
-                            </actionButton>  
-                        </column>   
+                            </actionButton>
+                        </column>
                         <column>
                             <actionButton featureText="playRecordedA">
                                 <playMedia mediaId="recordedMediaA"/>
                             </actionButton>
-                        </column> 
+                        </column>
                         <column>
                             <actionButton featureText="rewindRecordedA">
                                 <rewindMedia mediaId="recordedMediaA"/>
                             </actionButton>
-                        </column> 
+                        </column>
                         <column>
                             <actionButton featureText="pauseRecordedA">
                                 <pauseMedia mediaId="recordedMediaA"/>
                             </actionButton>
-                        </column> 
+                        </column>
                         <column>
                             <region regionId="recordedMediaResultA"></region>
-                        </column> 
+                        </column>
                     </row>
                     <row>
                         <column>
@@ -1324,7 +1324,7 @@
                                         <regionReplace regionId="recordedMediaResultB">
                                             <plainText featureText="Success"/>
                                         </regionReplace>
-                                    </onSuccess>                                    
+                                    </onSuccess>
                                     <mediaLoaded>
                                         <regionReplace regionId="recordedMediaResultB">
                                             <plainText featureText="AudioRecordingLoaded"/>
@@ -1341,26 +1341,26 @@
                                         </regionReplace>
                                     </mediaPlaybackComplete>
                                 </startAudioRecorder>
-                            </actionButton>  
-                        </column>   
+                            </actionButton>
+                        </column>
                         <column>
                             <actionButton featureText="playRecordedB">
                                 <playMedia mediaId="recordedMediaB"/>
                             </actionButton>
-                        </column> 
+                        </column>
                         <column>
                             <actionButton featureText="rewindRecordedB">
                                 <rewindMedia mediaId="recordedMediaB"/>
                             </actionButton>
-                        </column> 
+                        </column>
                         <column>
                             <actionButton featureText="pauseRecordedB">
                                 <pauseMedia mediaId="recordedMediaB"/>
                             </actionButton>
-                        </column> 
+                        </column>
                         <column>
                             <region regionId="recordedMediaResultB"></region>
-                        </column> 
+                        </column>
                     </row>
                     <row>
                         <column>
@@ -1392,26 +1392,26 @@
                                         </regionReplace>
                                     </mediaPlaybackComplete>
                                 </startAudioRecorder>
-                            </actionButton>   
-                        </column> 
+                            </actionButton>
+                        </column>
                         <column>
                             <actionButton featureText="playRecordedC">
                                 <playMedia mediaId="recordedMediaC"/>
                             </actionButton>
-                        </column> 
+                        </column>
                         <column>
                             <actionButton featureText="rewindRecordedC">
                                 <rewindMedia mediaId="recordedMediaC"/>
                             </actionButton>
-                        </column> 
+                        </column>
                         <column>
                             <actionButton featureText="pauseRecordedC">
                                 <pauseMedia mediaId="recordedMediaC"/>
                             </actionButton>
-                        </column> 
+                        </column>
                         <column>
                             <region regionId="recordedMediaResultC"></region>
-                        </column> 
+                        </column>
                     </row>
                     <row>
                         <column>
@@ -1419,11 +1419,11 @@
                                 <regionReplace regionId="stopAudioRecorder">
                                     <stopAudioRecorder/>
                                 </regionReplace>
-                            </actionButton>  
-                        </column> 
+                            </actionButton>
+                        </column>
                         <column>
                             <region regionId="StopRecorder"></region>
-                        </column> 
+                        </column>
                     </row>
                     <row>
                         <column>
@@ -1444,17 +1444,17 @@
                                     </regionReplace>
                                 </mediaPlaybackComplete>
                             </stimulusVideo>
-                        </column> 
+                        </column>
                         <column>
                             <actionButton featureText="playMedia 1">
                                 <playMedia mediaId="mediaId1"/>
                             </actionButton>
-                        </column> 
+                        </column>
                         <column>
                             <actionButton featureText="rewindMedia 1">
                                 <rewindMedia mediaId="mediaId1"/>
                             </actionButton>
-                        </column> 
+                        </column>
                         <column>
                             <actionButton featureText="pauseMedia 1">
                                 <pauseMedia mediaId="mediaId1"/>
@@ -1462,7 +1462,7 @@
                         </column>
                         <column>
                             <region regionId="mediaRegion1"></region>
-                        </column> 
+                        </column>
                     </row>
                     <row>
                         <column>
@@ -1483,17 +1483,17 @@
                                     </regionReplace>
                                 </mediaPlaybackComplete>
                             </stimulusCodeVideo>
-                        </column> 
+                        </column>
                         <column>
                             <actionButton featureText="playMedia 2">
                                 <playMedia mediaId="mediaId2"/>
                             </actionButton>
-                        </column> 
+                        </column>
                         <column>
                             <actionButton featureText="rewindMedia 2">
                                 <rewindMedia mediaId="mediaId2"/>
                             </actionButton>
-                        </column> 
+                        </column>
                         <column>
                             <actionButton featureText="pauseMedia 2">
                                 <pauseMedia mediaId="mediaId2"/>
@@ -1501,7 +1501,7 @@
                         </column>
                         <column>
                             <region regionId="mediaRegion2"></region>
-                        </column> 
+                        </column>
                     </row>
                     <row>
                         <column>
@@ -1522,17 +1522,17 @@
                                     </regionReplace>
                                 </mediaPlaybackComplete>
                             </stimulusCodeAudio>
-                        </column> 
+                        </column>
                         <column>
                             <actionButton featureText="playMedia 3">
                                 <playMedia mediaId="mediaId3"/>
                             </actionButton>
-                        </column> 
+                        </column>
                         <column>
                             <actionButton featureText="rewindMedia 3">
                                 <rewindMedia mediaId="mediaId3"/>
                             </actionButton>
-                        </column> 
+                        </column>
                         <column>
                             <actionButton featureText="pauseMedia 3">
                                 <pauseMedia mediaId="mediaId3"/>
@@ -1540,10 +1540,10 @@
                         </column>
                         <column>
                             <region regionId="mediaRegion3"></region>
-                        </column> 
+                        </column>
                     </row>
                     <row>
-                        <column> 
+                        <column>
                             <stimulusAudio msToNext="60" dataChannel="2" autoPlay="false" mediaId="mediaId4" showPlaybackIndicator="true">
                                 <mediaLoaded>
                                     <regionReplace regionId="mediaRegion4">
@@ -1561,17 +1561,17 @@
                                     </regionReplace>
                                 </mediaPlaybackComplete>
                             </stimulusAudio>
-                        </column> 
+                        </column>
                         <column>
                             <actionButton featureText="playMedia 4">
                                 <playMedia mediaId="mediaId4"/>
                             </actionButton>
-                        </column> 
+                        </column>
                         <column>
                             <actionButton featureText="rewindMedia 4">
                                 <rewindMedia mediaId="mediaId4"/>
                             </actionButton>
-                        </column> 
+                        </column>
                         <column>
                             <actionButton featureText="pauseMedia 4">
                                 <pauseMedia mediaId="mediaId4"/>
@@ -1579,7 +1579,7 @@
                         </column>
                         <column>
                             <region regionId="mediaRegion4"></region>
-                        </column> 
+                        </column>
                     </row>
                 </table>
                 <actionButton featureText="Volgende [tab + enter]">
@@ -1624,7 +1624,7 @@
     </presenter>
     <presenter back="Menu" menuLabel="Bluetooth R1" type="stimulus" self="Bluetooth_R1" title="Bluetooth remote R1">
         <htmlText featureText="Bluetooth remote R1 test page&lt;br/&gt;"/>
-        <!-- the region is used here only to provide a nice border around the button groups with the menuTable style --> 
+        <!-- the region is used here only to provide a nice border around the button groups with the menuTable style -->
         <region regionId="regionIdMA" styleName="menuTable">
             <htmlText featureText="Bluetooth remote R1 with mode M+A&lt;br/&gt;"/>
             <actionButton featureText="R1_MA_A" hotKey="R1_MA_A">
@@ -1640,7 +1640,7 @@
                 <htmlText featureText="R1_MA_RIGHT&lt;br/&gt;"/>
             </actionButton>
         </region>
-        <region regionId="regionIdMB" styleName="menuTable">        
+        <region regionId="regionIdMB" styleName="menuTable">
             <htmlText featureText="Bluetooth remote R1 with mode M+B&lt;br/&gt;"/>
             <actionButton featureText="R1_MB_A" hotKey="R1_MB_A">
                 <htmlText featureText="R1_MB_A&lt;br/&gt;"/>
@@ -1675,8 +1675,8 @@
         <loadStimulus eventTag="RecorderPauseTest" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <htmlText featureText="This demonstration screen requires the preserveLastState=false in the Experiment element.&lt;br/&gt;"/> 
-                <htmlText featureText="Keys to navigate the stimuli are p, r, n and m.&lt;br/&gt;"/> 
+                <htmlText featureText="This demonstration screen requires the preserveLastState=false in the Experiment element.&lt;br/&gt;"/>
+                <htmlText featureText="Keys to navigate the stimuli are p, r, n and m.&lt;br/&gt;"/>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <table showOnBackButton="true" styleName="titleBarButton">
                     <row>
@@ -1705,7 +1705,7 @@
                             </actionButton>
                         </column>
                     </row>
-                </table>   
+                </table>
                 <targetButton featureText="Menu" target="Menu"/>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -1725,7 +1725,7 @@
         <loadStimulus eventTag="RecorderPauseTest" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <htmlText featureText=".&lt;br/&gt;"/> 
+                <htmlText featureText=".&lt;br/&gt;"/>
                 <htmlText featureText=".&lt;br/&gt;"/>
                 <htmlTokenText featureText="playerScore:
                 &lt;playerScore&gt;&lt;br/&gt;
@@ -1820,8 +1820,8 @@
         <loadStimulus eventTag="enter_in_the_text_box" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <htmlText featureText="This demonstration screen allows the user to press enter in the text box to go to the next stimulus.&lt;br/&gt;"/> 
-                <htmlText featureText="In this example at least two letters and only the wetuiopasfghknm letters can be typed.&lt;br/&gt;"/> 
+                <htmlText featureText="This demonstration screen allows the user to press enter in the text box to go to the next stimulus.&lt;br/&gt;"/>
+                <htmlText featureText="In this example at least two letters and only the wetuiopasfghknm letters can be typed.&lt;br/&gt;"/>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
                 <nextStimulusButton featureText="Next [ENTER]" eventTag="Next" hotKey="ENTER" repeatIncorrect="false"/>
@@ -1842,7 +1842,7 @@
         <loadStimulus eventTag="if_stimulus_exists" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
-                <htmlText featureText="This demonstration screen shows buttons depending on a given stimulus existing at an offset.&lt;br/&gt;"/> 
+                <htmlText featureText="This demonstration screen shows buttons depending on a given stimulus existing at an offset.&lt;br/&gt;"/>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <table>
                     <row>
@@ -1894,7 +1894,7 @@
             </onError>
         </generateCompletionCode>
     </presenter>
-    <presenter back="Menu" menuLabel="InvitationCodeExample" type="stimulus" self="InvitationCodeExample" title="Invitation Code Example">        
+    <presenter back="Menu" menuLabel="InvitationCodeExample" type="stimulus" self="InvitationCodeExample" title="Invitation Code Example">
         <hasMetadataValue fieldName="invitation_code" matchingRegex="...*">
             <conditionTrue>
                 <htmlTokenText featureText="
@@ -1908,7 +1908,7 @@
                 <htmlText featureText="Your invitation code has not been found or is less that three characters long.&lt;br/&gt;
                 Please provide this code as a URL GET parameter (&lt;a href=&quot;?invitation_code=yourcode&quot;&gt;?invitation_code=[yourcode]&lt;/a&gt;) and reload this page."/>
             </conditionFalse>
-        </hasMetadataValue>        
+        </hasMetadataValue>
     </presenter>
     <presenter back="Menu" menuLabel="InvitationCodeExampleStimuliScreen" next="InvitationCodeExampleCompletion" type="stimulus" self="InvitationCodeExampleStimuliScreen" title="InvitationCodeExampleStimuliScreen">
         <loadStimulus eventTag="First Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
@@ -1995,7 +1995,7 @@
     <presenter menuLabel="InvitationCodeExampleCompletion" type="transmission" self="InvitationCodeExampleCompletion" title="Invitation Code Example Completion">
         <generateCompletionCode>
             <onSuccess>
-                <!--                <htmlText featureText="This is the end of the experiment. &lt;br/&gt;&lt;br/&gt;Please keep this completion code as verification that you have done the experiment:&lt;br/&gt;"/>
+                <!-- <htmlText featureText="This is the end of the experiment. &lt;br/&gt;&lt;br/&gt;Please keep this completion code as verification that you have done the experiment:&lt;br/&gt;"/>
                 <addPadding/>
                 <displayCompletionCode/>
                 <addPadding/>
@@ -2011,7 +2011,7 @@
             </onError>
         </generateCompletionCode>
     </presenter>
-    <presenter back="InvitationCodeExampleRestart" menuLabel="InvitationCodeExampleFinished" type="stimulus" self="InvitationCodeExampleFinished" title="Invitation Code Example Finished">        
+    <presenter back="InvitationCodeExampleRestart" menuLabel="InvitationCodeExampleFinished" type="stimulus" self="InvitationCodeExampleFinished" title="Invitation Code Example Finished">
         <htmlText featureText="This is the end of the experiment. &lt;br/&gt;&lt;br/&gt;"/>
         <addPadding/>
         <!--<displayCompletionCode/>-->
@@ -2032,6 +2032,111 @@
                 <targetButton featureText="Retry" target="InvitationCodeExampleRestart"/>
             </onError>
         </generateCompletionCode>
+    </presenter>
+    <presenter back="Menu" menuLabel="RecordingQualityTest" type="stimulus" self="RecordingQualityTest" title="RecordingQualityTest">
+        <resetStimulus target="RecordingQualityTest"/>
+        <region regionId="recordedMediaResult"></region>
+        <region regionId="stimulusProgress"></region>
+        <region regionId="stimulusLabel"></region>
+        <region regionId="stimulusButtons"></region>
+        <loadStimulus eventTag="RecordingQualityTest" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <regionReplace regionId="stimulusLabel">
+                    <stimulusLabel/>
+                </regionReplace>
+                <regionReplace regionId="recordedMediaResult">
+                    <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="(046d:0a45)" filePerStimulus="filePerStimulus" mediaId="recordedMedia_&lt;stimulusId&gt;">
+                        <onError>
+                            <regionReplace regionId="recordedMediaResult">
+                                <plainText featureText="Recording Error"/>
+                            </regionReplace>
+                        </onError>
+                        <onSuccess>
+<!--                            <regionReplace regionId="recordedMediaResult"> 
+                                <plainText featureText="Recording Success"/>
+                            </regionReplace>-->
+                        </onSuccess>
+                        <mediaLoaded>
+                            <!-- <regionReplace regionId="recordedMediaResult"> 
+                                <plainText featureText="AudioRecordingLoaded"/>
+                            </regionReplace>-->
+                        </mediaLoaded>
+                        <mediaLoadFailed>
+                            <regionReplace regionId="recordedMediaResult"> 
+                                <plainText featureText="AudioRecordingLoadFailed"/>
+                            </regionReplace>
+                        </mediaLoadFailed>
+                        <mediaPlaybackComplete>
+                            <!-- <regionReplace regionId="recordedMediaResult">
+                                <plainText featureText="AudioRecordingPlaybackComplete"/>
+                            </regionReplace>-->
+                        </mediaPlaybackComplete>
+                    </startAudioRecorder>
+                </regionReplace>
+                <regionReplace regionId="stimulusButtons">
+                    <actionButton featureText="Continue">
+                        <pause msToNext="1000">
+                            <stopAudioRecorder/>
+                            <nextStimulus repeatIncorrect="false"/>
+                        </pause>
+                    </actionButton>
+                </regionReplace>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <resetStimulus target="RecordingQualityTest"/>
+                <loadStimulus eventTag="RecordingQualityTest" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+                    <hasMoreStimulus>
+                        <regionReplace regionId="stimulusProgress">
+                            <showStimulusProgress/>
+                            <addPadding/>
+                        </regionReplace>
+                        <regionReplace regionId="stimulusLabel">
+                            <htmlText featureText="Listen to the recorded audio and click the button that corresponds to the recording."/>
+                            <addPadding/>
+                        </regionReplace>
+                        <regionReplace regionId="stimulusButtons">
+                            <playMedia mediaId="recordedMedia_&lt;stimulusId&gt;"/>
+                            <actionButton featureText="replay">
+                                <playMedia mediaId="recordedMedia_&lt;stimulusId&gt;"/>
+                            </actionButton>
+                            <addPadding/>
+                            <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
+                                <nextStimulus repeatIncorrect="false"/>
+                            </stimulusRatingButton>
+                        </regionReplace>
+                    </hasMoreStimulus>
+                    <endOfStimulus>
+                        <clearPage/>
+                        <scoreAboveThreshold correctStreak="4">
+                            <aboveThreshold>
+                                <htmlText featureText="Your efforts have proved adequate."/>
+                            </aboveThreshold>
+                            <withinThreshold>
+                                <htmlText featureText="Your efforts have proved inadequate."/>
+                            </withinThreshold>
+                        </scoreAboveThreshold>
+                        <addPadding/>
+                        <actionButton featureText="clearCurrentScore">
+                            <clearCurrentScore/>
+                            <gotoPresenter target="RecordingQualityTest"/>
+                        </actionButton>
+                        <addPadding/>
+                        <actionButton featureText="resetStimulus">
+                            <resetStimulus target="RecordingQualityTest"/>
+                            <gotoPresenter target="RecordingQualityTest"/>
+                        </actionButton>
+                    </endOfStimulus>
+                    <randomGrouping/>
+                    <stimuli>
+                        <tag>RecordingQualityTest</tag>
+                    </stimuli>
+                </loadStimulus>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>RecordingQualityTest</tag>
+            </stimuli>
+        </loadStimulus>
     </presenter>
     <presenter menuLabel="Menu" type="menu" self="Menu" title="Menu">
         <allMenuItems/>
@@ -2066,7 +2171,7 @@
         <stimulus identifier="RecorderPauseTest7000" label="7000" pauseMs="7000" tags="RecorderPauseTest"/>
         <stimulus identifier="RecorderPauseTest8000" label="8000" pauseMs="8000" tags="RecorderPauseTest"/>
         <stimulus identifier="RecorderPauseTest9000" label="9000" pauseMs="9000" tags="RecorderPauseTest"/>
-        <stimulus identifier="RecorderPauseTest10000" label="10000" pauseMs="10000" tags="RecorderPauseTest"/>        
+        <stimulus identifier="RecorderPauseTest10000" label="10000" pauseMs="10000" tags="RecorderPauseTest"/>
         <stimulus audioPath="d1e269" code="d1e269" identifier="d1e269" imagePath="d1e269.jpg" label="d1e269" pauseMs="0" tags="media" videoPath="d1e269"/>
         <stimulus audioPath="d1e235" code="d1e235" identifier="d1e235" imagePath="d1e235.jpg" label="d1e235" pauseMs="0" tags="media" videoPath="d1e235"/>
         <stimulus audioPath="d1e241" code="d1e241" identifier="d1e241" imagePath="d1e241.jpg" label="d1e241" pauseMs="0" tags="media" videoPath="d1e241"/>
@@ -2090,13 +2195,17 @@
         <stimulus audioPath="d1e293" code="d1e293" identifier="d1e293" imagePath="d1e293.jpg" label="d1e293" pauseMs="0" tags="media" videoPath="d1e293"/>
         <stimulus audioPath="d1e223" code="d1e223" identifier="d1e223" imagePath="d1e223.jpg" label="d1e223" pauseMs="0" tags="media" videoPath="d1e223"/>
         <stimulus audioPath="missing" code="missing" identifier="missing" imagePath="missing.jpg" label="this stimuli is missing and should be handled nicely" pauseMs="0" tags="media" videoPath="missing"/>
-        <stimulus identifier="Q1" label="The correct answer is 'continue'" correctResponses="continue"  ratingLabels="continue,arrête" pauseMs="0" tags="Pretest_Screen"/>        
-        <stimulus identifier="Q2" label="The correct answer is 2" correctResponses="2" ratingLabels="1,2" pauseMs="0" tags="Pretest_Screen"/>        
-        <stimulus identifier="Q3" label="The correct answer is 3" correctResponses="3" ratingLabels="1,2,3" pauseMs="0" tags="Pretest_Screen"/>        
-        <stimulus identifier="Q8" label="The correct answer is 5" correctResponses="5" ratingLabels="1,2,3,4,5,6,7" pauseMs="0" tags="Pretest_Screen"/>        
+        <stimulus identifier="R1" label="Speak the word &lt;b&gt;'continue'&lt;/b&gt; into the microphone, then after speaking press 'continue'" correctResponses="continue" ratingLabels="continue,arrête,thème,récurrent" pauseMs="0" tags="RecordingQualityTest"/>
+        <stimulus identifier="R2" label="Speak the word &lt;b&gt;'arrête'&lt;/b&gt; into the microphone, then after speaking press 'continue'" correctResponses="arrête" ratingLabels="continue,arrête,thème,récurrent" pauseMs="0" tags="RecordingQualityTest"/>
+        <stimulus identifier="R3" label="Speak the word &lt;b&gt;'thème'&lt;/b&gt; into the microphone, then after speaking press 'continue'" correctResponses="thème" ratingLabels="continue,arrête,thème,récurrent" pauseMs="0" tags="RecordingQualityTest"/>
+        <stimulus identifier="R4" label="Speak the word &lt;b&gt;'récurrent'&lt;/b&gt; into the microphone, then after speaking press 'continue'" correctResponses="récurrent" ratingLabels="continue,arrête,thème,récurrent" pauseMs="0" tags="RecordingQualityTest"/>
+        <stimulus identifier="Q1" label="The correct answer is 'continue'" correctResponses="continue" ratingLabels="continue,arrête" pauseMs="0" tags="Pretest_Screen"/>
+        <stimulus identifier="Q2" label="The correct answer is 2" correctResponses="2" ratingLabels="1,2" pauseMs="0" tags="Pretest_Screen"/>
+        <stimulus identifier="Q3" label="The correct answer is 3" correctResponses="3" ratingLabels="1,2,3" pauseMs="0" tags="Pretest_Screen"/>
+        <stimulus identifier="Q8" label="The correct answer is 5" correctResponses="5" ratingLabels="1,2,3,4,5,6,7" pauseMs="0" tags="Pretest_Screen"/>
         <stimulus label="Q6 type H or h" correctResponses="[hH]" identifier="Q6" pauseMs="0" tags="Pretest_Screen Q6"/>
         <stimulus label="Q7 type 'crayon' in any combination of case" correctResponses=".*[Cc][Rr][Aa][Yy][Oo][Nn]" identifier="Q7" pauseMs="0" tags="Pretest_Screen Q7"/>
-        <stimulus identifier="Picture_01" imagePath="1_1.jpg"   code="1" ratingLabels="1,2,3,4,5,6,7" label="&lt;span style=&quot;text-align: left;&quot; &gt;label text 1a&lt;/span&gt;&lt;span style=&quot;text-align: right;&quot;&gt;label text 1b&lt;/span&gt;" pauseMs="0" tags="Practice"/>
+        <stimulus identifier="Picture_01" imagePath="1_1.jpg" code="1" ratingLabels="1,2,3,4,5,6,7" label="&lt;span style=&quot;text-align: left;&quot; &gt;label text 1a&lt;/span&gt;&lt;span style=&quot;text-align: right;&quot;&gt;label text 1b&lt;/span&gt;" pauseMs="0" tags="Practice"/>
         <stimulus code="10X15_30X60_45X60_75X90" correctResponses="1234" identifier="10X15_30X60_45X60_75X90" label="10X15_30X60_45X60_75X90" pauseMs="1000" tags="boxes"/>
         <stimulus code="45X10_15X60_75X30_60X90" correctResponses="1234" identifier="45X10_15X60_75X30_60X90" label="45X10_15X60_75X30_60X90" pauseMs="1000" tags="boxes"/>
         <stimulus code="45X90_10X10_15X75_30X60" correctResponses="1234" identifier="45X90_10X10_15X75_30X60" label="45X90_10X10_15X75_30X60" pauseMs="1000" tags="boxes"/>
