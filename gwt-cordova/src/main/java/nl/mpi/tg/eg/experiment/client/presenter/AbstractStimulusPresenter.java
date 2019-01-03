@@ -1100,6 +1100,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
     protected void stimulusCodeAudio(final Stimulus currentStimulus, final boolean autoPlay, final String mediaId, int postLoadMs, String codeFormat, boolean showPlaybackIndicator, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         final String formattedCode = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(codeFormat);
+        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(mediaId);
         final String uniqueId = currentStimulus.getUniqueId();
 
         String mp3 = formattedCode + ".mp3";
@@ -1115,12 +1116,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 loadedStimulusListener.postLoadTimerFired();
             }
         };
-        ((TimedStimulusView) simpleView).addTimedAudio(oggTrustedString, mp3TrustedString, postLoadMs, showPlaybackIndicator, shownStimulusListener, failedStimulusListener, playedStimulusListener, autoPlay, mediaId);
+        ((TimedStimulusView) simpleView).addTimedAudio(oggTrustedString, mp3TrustedString, postLoadMs, showPlaybackIndicator, shownStimulusListener, failedStimulusListener, playedStimulusListener, autoPlay, formattedMediaId);
     }
 
     protected void stimulusVideo(final Stimulus currentStimulus, final String styleName, final boolean autoPlay, final String mediaId, final boolean loop, final boolean showControls, int postLoadMs, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         final String videoName = currentStimulus.getVideo();
         final String uniqueId = currentStimulus.getUniqueId();
+        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(mediaId);
         String mp4 = videoName + ".mp4";
         String ogg = videoName + ".ogg";
         String ogv = videoName + ".ogv";
@@ -1136,12 +1138,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
         };
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", formattedCode, duration.elapsedMillis());
-        ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, ogvTrustedString, mp4TrustedString, 0, 0, 0, styleName, autoPlay, loop, showControls, postLoadMs, shownStimulusListener, failedStimulusListener, playedStimulusListener, mediaId);
+        ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, ogvTrustedString, mp4TrustedString, 0, 0, 0, styleName, autoPlay, loop, showControls, postLoadMs, shownStimulusListener, failedStimulusListener, playedStimulusListener, formattedMediaId);
     }
 
     protected void stimulusCodeVideo(final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final String codeStyleName, final boolean autoPlay, final String mediaId, final boolean loop, final boolean showControls, int postLoadMs, String codeFormat, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         final String formattedCode = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(codeFormat);
         final String styleName = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(codeStyleName);
+        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(mediaId);
         final String uniqueId = currentStimulus.getUniqueId();
         String mp4 = formattedCode + ".mp4";
         String ogg = formattedCode + ".ogg";
@@ -1158,12 +1161,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             }
         };
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", formattedCode, duration.elapsedMillis());
-        ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, ogvTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, styleName, autoPlay, loop, showControls, postLoadMs, shownStimulusListener, failedStimulusListener, playedStimulusListener, mediaId);
+        ((TimedStimulusView) simpleView).addTimedVideo(oggTrustedString, ogvTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, styleName, autoPlay, loop, showControls, postLoadMs, shownStimulusListener, failedStimulusListener, playedStimulusListener, formattedMediaId);
     }
 
     protected void stimulusAudio(final Stimulus currentStimulus, final boolean autoPlay, final String mediaId, int postLoadMs, boolean showPlaybackIndicator, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         final String audio = currentStimulus.getAudio();
         final String uniqueId = currentStimulus.getUniqueId();
+        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(mediaId);
         String ogg = audio + ".ogg";
         String mp3 = audio + ".mp3";
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", ogg, duration.elapsedMillis());
@@ -1174,7 +1178,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 loadedStimulusListener.postLoadTimerFired();
             }
         };
-        ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromTrustedString(ogg), UriUtils.fromTrustedString(mp3), postLoadMs, showPlaybackIndicator, shownStimulusListener, failedStimulusListener, playedStimulusListener, autoPlay, mediaId);
+        ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromTrustedString(ogg), UriUtils.fromTrustedString(mp3), postLoadMs, showPlaybackIndicator, shownStimulusListener, failedStimulusListener, playedStimulusListener, autoPlay, formattedMediaId);
 //        ((TimedStimulusView) simpleView).addText("playStimulusAudio: " + duration.elapsedMillis() + "ms");
     }
 
@@ -1446,6 +1450,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     protected void startAudioRecorder(final String recordingFormat, final String mediaId, final String deviceRegex, boolean filePerStimulus, String directoryName, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
 //        final String subdirectoryName = userResults.getUserData().getUserId().toString();
         final String subdirectoryName = userResults.getUserData().getMetadataValue(new MetadataFieldProvider().workerIdMetadataField);
+        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(mediaId);
         final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener() {
             @Override
             public void submissionFailed(final String message, final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataArray) {
@@ -1480,7 +1485,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             @Override
             public void submissionComplete(String message, String urlAudioData) {
 //                ((TimedStimulusView) simpleView).addText("(debug) Media Submission OK: " + message);
-                ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromTrustedString(urlAudioData), null, 0, true, loadedStimulusListener, failedStimulusListener, playedStimulusListener, false, mediaId);
+                ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromTrustedString(urlAudioData), null, 0, true, loadedStimulusListener, failedStimulusListener, playedStimulusListener, false, formattedMediaId);
                 onSuccess.postLoadTimerFired();
             }
         };
@@ -1845,7 +1850,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             stimulusProvider.pushCurrentStimulusToEnd();
         }
         userResults.getUserData().clearCurrentResponse();
-        clearPage();
+//        clearPage();
         showStimulus(stimulusProvider, null, increment);
     }
 
@@ -1868,16 +1873,19 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         backEventListners.clear();
     }
 
-    protected void playMedia(final String mediaId) {
-        ((TimedStimulusView) simpleView).startMedia(mediaId);
+    protected void playMedia(final String mediaId, final Stimulus currentStimulus) {
+        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(mediaId);
+        ((TimedStimulusView) simpleView).startMedia(formattedMediaId);
     }
 
-    protected void rewindMedia(final String mediaId) {
-        ((TimedStimulusView) simpleView).rewindMedia(mediaId);
+    protected void rewindMedia(final String mediaId, final Stimulus currentStimulus) {
+        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(mediaId);
+        ((TimedStimulusView) simpleView).rewindMedia(formattedMediaId);
     }
 
-    protected void pauseMedia(final String mediaId) {
-        ((TimedStimulusView) simpleView).stopMedia(mediaId);
+    protected void pauseMedia(final String mediaId, final Stimulus currentStimulus) {
+        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(mediaId);
+        ((TimedStimulusView) simpleView).stopMedia(formattedMediaId);
     }
 
     protected void groupResponseStimulusImage(final StimuliProvider stimulusProvider, int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
