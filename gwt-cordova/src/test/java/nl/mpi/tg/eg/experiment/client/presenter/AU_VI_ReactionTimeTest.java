@@ -52,7 +52,7 @@ public class AU_VI_ReactionTimeTest {
         ((nl.mpi.tg.eg.experiment.client.service.StimulusProvider) stimulusProvider).setrepeatCount("1");
         ((nl.mpi.tg.eg.experiment.client.service.StimulusProvider) stimulusProvider).setadjacencyThreshold("-1");
 
-        AbstractStimulusPresenter instance = new AbstractStimulusPresenterImpl();
+        AbstractStimulusPresenter instance = new AU_VI_ReactionTime();
         instance.loadStimulus("loadTargetPicture",
                 new StimulusSelector[]{new StimulusSelector("PracticeChoice", ViAuStimulus.Tag.tag_PracticeChoice)},
                 new StimulusSelector[]{}, null, null,
@@ -73,9 +73,9 @@ public class AU_VI_ReactionTimeTest {
         fail("The test case is a prototype.");
     }
 
-    public class AbstractStimulusPresenterImpl extends AbstractStimulusPresenter {
+    public class AU_VI_ReactionTime extends AbstractStimulusPresenter {
 
-        public AbstractStimulusPresenterImpl() {
+        public AU_VI_ReactionTime() {
             super(null, null, null, null, null);
         }
 
