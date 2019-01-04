@@ -17,8 +17,10 @@
  */
 package nl.mpi.tg.eg.experiment.client.presenter;
 
-import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import java.util.ArrayList;
+import java.util.List;
 import nl.mpi.tg.eg.experiment.client.listener.CurrentStimulusListener;
+import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.presenter.TestViAuStimulus.ViAuStimulus;
 import nl.mpi.tg.eg.experiment.client.presenter.TestViAuStimulus.ViAuStimulusProvider;
 import nl.mpi.tg.eg.frinex.common.StimuliProvider;
@@ -52,7 +54,7 @@ public class AU_VI_ReactionTimeTest {
         ((nl.mpi.tg.eg.experiment.client.service.StimulusProvider) stimulusProvider).setrepeatCount("1");
         ((nl.mpi.tg.eg.experiment.client.service.StimulusProvider) stimulusProvider).setadjacencyThreshold("-1");
 
-        AbstractStimulusPresenter instance = new AU_VI_ReactionTime();
+        AU_VI_ReactionTime instance = new AU_VI_ReactionTime();
         instance.loadStimulus("loadTargetPicture",
                 new StimulusSelector[]{new StimulusSelector("PracticeChoice", ViAuStimulus.Tag.tag_PracticeChoice)},
                 new StimulusSelector[]{}, null, null,
@@ -73,25 +75,37 @@ public class AU_VI_ReactionTimeTest {
         fail("The test case is a prototype.");
     }
 
-    public class AU_VI_ReactionTime extends AbstractStimulusPresenter {
+//    public class AU_VI_ReactionTime extends AbstractStimulusPresenter {
+//
+//        public AU_VI_ReactionTime() {
+//            super(null, null, null, null, null);
+//        }
+//
+//        @Override
+//        protected String getTitle() {
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }
+//
+//        @Override
+//        protected String getSelfTag() {
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }
+//
+//        @Override
+//        protected void setContent(AppEventListner appEventListner) {
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }
+//    }
+    public class AU_VI_ReactionTime {
 
-        public AU_VI_ReactionTime() {
-            super(null, null, null, null, null);
-        }
-
-        @Override
-        protected String getTitle() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        protected String getSelfTag() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-
-        @Override
-        protected void setContent(AppEventListner appEventListner) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        protected void loadStimulus(String eventTag, StimulusSelector[] selectionTags, StimulusSelector[] randomTags, MetadataField stimulusAllocationField, String consumedTagsGroupName, StimuliProvider stimulusProvider, CurrentStimulusListener hasMoreStimulusListener, TimedStimulusListener endOfStimulusListener) {
+            final String storedStimulusList = "";
+            int seenStimulusIndex = 0;
+            final List<Stimulus.Tag> allocatedTags = new ArrayList<>();
+            for (StimulusSelector selector : selectionTags) {
+                allocatedTags.add(selector.getTag());
+            }
+            stimulusProvider.getSubset(allocatedTags, storedStimulusList, seenStimulusIndex);
         }
     }
 }
