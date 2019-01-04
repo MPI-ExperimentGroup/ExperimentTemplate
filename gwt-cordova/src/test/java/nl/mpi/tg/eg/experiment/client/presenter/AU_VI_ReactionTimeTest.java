@@ -33,9 +33,9 @@ import org.junit.Test;
  * @since January 4, 2019 8:24 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class AU_VI_ReactionTime {
+public class AU_VI_ReactionTimeTest {
 
-    public AU_VI_ReactionTime() {
+    public AU_VI_ReactionTimeTest() {
     }
 
     /**
