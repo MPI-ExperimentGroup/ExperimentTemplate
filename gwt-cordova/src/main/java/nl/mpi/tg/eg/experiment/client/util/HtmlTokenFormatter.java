@@ -18,9 +18,9 @@
 package nl.mpi.tg.eg.experiment.client.util;
 
 import com.google.gwt.json.client.JSONObject;
+import com.google.gwt.regexp.shared.MatchResult;
+import com.google.gwt.regexp.shared.RegExp;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.service.GroupScoreService;
@@ -56,12 +56,11 @@ public class HtmlTokenFormatter {
         System.out.println(replacementRegexString);
         System.out.println(dataLogString);
         String resultString = "";
-//        resultString = dataLogString.replaceAll(dataLogString, "$0");
-        Pattern pattern = Pattern.compile(replacementRegexString);
-        Matcher matcher = pattern.matcher(dataLogString);
-        while (matcher.find()) {
-            for (int groupIndex = 1; groupIndex <= matcher.groupCount(); groupIndex++) {
-                resultString += matcher.group(groupIndex);
+        RegExp regExp = RegExp.compile(replacementRegexString);
+        MatchResult matcher = regExp.exec(dataLogString);
+        if (matcher != null) {
+            for (int groupIndex = 1; groupIndex < matcher.getGroupCount(); groupIndex++) {
+                resultString += matcher.getGroup(groupIndex);
             }
         }
         System.out.println(resultString);
