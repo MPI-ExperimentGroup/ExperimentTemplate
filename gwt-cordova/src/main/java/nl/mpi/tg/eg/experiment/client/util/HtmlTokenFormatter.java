@@ -19,11 +19,12 @@ package nl.mpi.tg.eg.experiment.client.util;
 
 import com.google.gwt.json.client.JSONObject;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.service.GroupScoreService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
-import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
@@ -36,17 +37,35 @@ public class HtmlTokenFormatter {
     final GroupScoreService groupParticipantService;
     final LocalStorage localStorage;
     final UserData userData;
-    final MetadataFieldProvider metadataFieldProvider;
+    final MetadataField[] metadataFieldArray;
     final TimerService timerService;
     final Stimulus currentStimulus;
 
-    public HtmlTokenFormatter(final Stimulus currentStimulus, final LocalStorage localStorage, final GroupScoreService groupParticipantService, final UserData userData, final TimerService timerService, final MetadataFieldProvider metadataFieldProvider) {
+    public HtmlTokenFormatter(final Stimulus currentStimulus, final LocalStorage localStorage, final GroupScoreService groupParticipantService, final UserData userData, final TimerService timerService, final MetadataField[] metadataFieldArray) {
         this.localStorage = localStorage;
         this.groupParticipantService = groupParticipantService;
         this.userData = userData;
         this.timerService = timerService;
         this.currentStimulus = currentStimulus;
-        this.metadataFieldProvider = metadataFieldProvider;
+        this.metadataFieldArray = metadataFieldArray;
+    }
+
+    public String formatReplaceString(final String dataLogFormat, final String replacementRegex) {
+        final String dataLogString = formatString(dataLogFormat);
+        final String replacementRegexString = formatString(replacementRegex);
+        System.out.println(replacementRegexString);
+        System.out.println(dataLogString);
+        String resultString = "";
+//        resultString = dataLogString.replaceAll(dataLogString, "$0");
+        Pattern pattern = Pattern.compile(replacementRegexString);
+        Matcher matcher = pattern.matcher(dataLogString);
+        while (matcher.find()) {
+            for (int groupIndex = 1; groupIndex <= matcher.groupCount(); groupIndex++) {
+                resultString += matcher.group(groupIndex);
+            }
+        }
+        System.out.println(resultString);
+        return resultString;
     }
 
     public String formatString(String inputString) {
@@ -135,7 +154,7 @@ public class HtmlTokenFormatter {
             replacedTokensString = replacedTokensString.replaceAll("<completionCode>", (completionCode != null) ? completionCode : "");
         }
         // insert MetadataField tags
-        if (metadataFieldProvider != null) {
+        if (metadataFieldArray != null) {
             final String[] splitOnTokens = replacedTokensString.split("<metadataField");
             if (splitOnTokens.length > 1) {
                 String resultString = null;
@@ -146,7 +165,7 @@ public class HtmlTokenFormatter {
                         final String[] subPart = splitPart.split(">", 2);
                         if (subPart[0].length() != 0) {
                             final String postName = subPart[0].substring(1); // extracted XXX from "<metadataField_XXX"
-                            for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
+                            for (MetadataField metadataField : metadataFieldArray) {
                                 if (metadataField.getPostName().equals(postName)) {
                                     resultString += userData.getMetadataValue(metadataField);
                                 }
