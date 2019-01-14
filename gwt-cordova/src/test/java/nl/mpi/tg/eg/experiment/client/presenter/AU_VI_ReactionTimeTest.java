@@ -29,6 +29,7 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import nl.mpi.tg.eg.frinex.common.model.StimulusSelector;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -44,6 +45,7 @@ public class AU_VI_ReactionTimeTest {
      * Test of loadStimulus method, of class AbstractStimulusPresenter.
      */
     @Test
+    @Ignore
     public void testLoadStimulus() {
         System.out.println("loadStimulus");
         final StimuliProvider stimulusProvider = new nl.mpi.tg.eg.experiment.client.service.StimulusProvider(
