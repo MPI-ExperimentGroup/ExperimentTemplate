@@ -20,6 +20,7 @@ package nl.mpi.tg.eg.experiment.client.util;
 import java.util.HashMap;
 import java.util.Set;
 import nl.mpi.tg.eg.experiment.client.model.GeneratedStimulus;
+import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.service.GroupScoreService;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
@@ -57,9 +58,39 @@ public class HtmlTokenFormatterTest {
                 + "I<stimulusCorrectResponses>J";
         // todo: implement the channelLoop
         final String expectedString = "QGroupScoreWChannelScoreERDuo A-B heeft 6 punten.<br/><br/>Duo C-D heeft 2 punten.<br/><br/>YCA,B,C,D,E,FDEd1e286FGcodeHIOneJIRating,LabelsJI0JIAudioJIVideoJIImageJItag_number,tag_interestingJICorrect|ResponsesJ";
+        HtmlTokenFormatter instance = getInstance();
+        final String formattedString = instance.formatString(inputString);
+        System.out.println("expectedString:" + expectedString);
+        System.out.println("formattedString: " + formattedString);
+        assertEquals(expectedString, formattedString);
+    }
+
+    /**
+     * Test of formatString method to ExtractNextFromList, of class
+     * HtmlTokenFormatter.
+     */
+    @Test
+    public void testExtractNextFromList() {
+        System.out.println("testExtractNextFromList");
+        final String testRegex = "lilbq4_([^_]*)[_$]";
+        String inputString = "<metadataField_session_steps>";
+        final String expectedString = "audioas2";
+        HtmlTokenFormatter instance = getInstance();
+        final String formattedString = instance.formatReplaceString(inputString, testRegex);
+        System.out.println("inputString:" + inputString);
+        System.out.println("expectedString:" + expectedString);
+        System.out.println("formattedString: " + formattedString);
+        assertEquals(expectedString, formattedString);
+    }
+
+    private HtmlTokenFormatter getInstance() {
         final HashMap<String, String> channelScores = new HashMap<>();
         channelScores.put("A-B", "6");
         channelScores.put("C-D", "2");
+        final UserData userData = new UserData();
+        final MetadataField session_steps = new MetadataField("session_steps", "session_steps", "session_steps", "session_steps", "session_steps");
+        final MetadataField session_step = new MetadataField("session_step", "session_step", "session_step", "session_step", "session_step");
+        userData.setMetadataValue(session_steps, "audiosimplereactiontime_lilbq4_audioas2_peabodyas_audiononwordmonitoring_grammaras_visualsimplereactiontime");
         HtmlTokenFormatter instance = new HtmlTokenFormatter(GeneratedStimulus.values[0], null, new GroupScoreService() {
 
             @Override
@@ -117,10 +148,8 @@ public class HtmlTokenFormatterTest {
                 return "GroupId";
             }
 
-        }, new UserData(), new TimerService(), null);
-        final String formattedString = instance.formatString(inputString);
-        System.out.println("expectedString:" + expectedString);
-        System.out.println("formattedString: " + formattedString);
-        assertEquals(expectedString, formattedString);
+        }, userData, new TimerService(), new MetadataField[]{
+            session_steps, session_step});
+        return instance;
     }
 }
