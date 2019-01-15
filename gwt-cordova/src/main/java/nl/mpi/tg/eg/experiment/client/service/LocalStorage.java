@@ -398,12 +398,15 @@ public class LocalStorage {
         return null;
     }
 
-    public UserId getLastUserId() throws UserIdException {
+    public UserId getLastUserId(String userIdGetParam) throws UserIdException {
         loadStorage();
+        // todo: enable this field name "prolific_pid" being set in the configuration 
         if (Window.Location.getParameter("testuser") != null) {
             return new UserId("testuser-" + Window.Location.getParameter("testuser")); // 
         } else if (Window.Location.getParameter("prolific_pid") != null) {
             return new UserId("prolific_pid-" + Window.Location.getParameter("prolific_pid")); // 
+        } else if (userIdGetParam != null && !userIdGetParam.isEmpty() && Window.Location.getParameter(userIdGetParam) != null) {
+            return new UserId(userIdGetParam + "-" + Window.Location.getParameter(userIdGetParam)); // 
         } else if (dataStore != null) {
             final String storedUserId = getCleanStoredData(getLAST_USER_ID());
             if (!storedUserId.isEmpty()) {
