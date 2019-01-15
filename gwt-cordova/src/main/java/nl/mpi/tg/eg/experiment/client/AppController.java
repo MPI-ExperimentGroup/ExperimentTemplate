@@ -62,9 +62,9 @@ public abstract class AppController implements AppEventListner/*, AudioException
     protected final UserResults userResults;
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
 
-    public AppController(RootLayoutPanel widgetTag) throws UserIdException {
+    public AppController(RootLayoutPanel widgetTag, String userIdGetParam) throws UserIdException {
         this.widgetTag = widgetTag;
-        final UserId lastUserId = localStorage.getLastUserId();
+        final UserId lastUserId = localStorage.getLastUserId(userIdGetParam);
         if (lastUserId == null) {
             userResults = new UserResults(new UserData());
             // we save the results here so that the newly created user id is preserved even if the user refreshes
@@ -144,7 +144,6 @@ public abstract class AppController implements AppEventListner/*, AudioException
 //        this.presenter = new ErrorPresenter(widgetTag, audioException.getMessage());
 //        presenter.setState(this, ApplicationState.start, null);
 //    }
-
     abstract boolean preserveLastState();
 
     public void start() {
