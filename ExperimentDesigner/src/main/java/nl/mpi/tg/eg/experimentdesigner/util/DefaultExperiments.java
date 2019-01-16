@@ -311,6 +311,9 @@ public class DefaultExperiments {
                         case daysThresholds:
                             presenterFeature.addFeatureAttributes(attribute, "10 100 1000");
                             break;
+                        case ranges:
+                            presenterFeature.addFeatureAttributes(attribute, "10..100,1000");
+                            break;
                         default:
                             presenterFeature.addFeatureAttributes(attribute, attribute.name());
                     }
