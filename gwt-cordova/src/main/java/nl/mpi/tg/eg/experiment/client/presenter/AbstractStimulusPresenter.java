@@ -474,7 +474,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         timer.schedule(postLoadMs);
     }
 
-    protected void randomMsPause(int minimumMs, int maximumMs, final TimedStimulusListener timedStimulusListener) {
+    protected void randomMsPause(int minimumMs, int maximumMs, final String ranges, final TimedStimulusListener timedStimulusListener) {
+        // todo: handle ranges
         final Timer timer = new Timer() {
             @Override
             public void run() {
