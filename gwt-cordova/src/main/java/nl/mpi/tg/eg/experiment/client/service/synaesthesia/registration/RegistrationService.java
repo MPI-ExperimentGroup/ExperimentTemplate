@@ -25,6 +25,8 @@ import com.google.gwt.http.client.RequestException;
 import com.google.gwt.http.client.Response;
 import com.google.gwt.http.client.URL;
 import com.google.gwt.i18n.shared.DateTimeFormat;
+import com.google.gwt.json.client.JSONObject;
+import com.google.gwt.json.client.JSONParser;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -45,14 +47,14 @@ public class RegistrationService {
     private final MetadataFields mateadataFields = GWT.create(MetadataFields.class);
     private final Version version = GWT.create(Version.class);
 
-    public void submitRegistration(final UserResults userResults, final String matchingRegex, final String dataLogFormated, RegistrationListener registrationListener) {
+    public void submitRegistration(final UserResults userResults, final String sendingRegex, final String receivingRegex, final String dataLogFormated, RegistrationListener registrationListener) {
         final String registratinoUrl = serviceLocations.registrationUrl();
         final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, registratinoUrl);
         builder.setHeader("Content-type", "application/x-www-form-urlencoded");
         StringBuilder stringBuilder = new StringBuilder();
         for (MetadataField key : userResults.getUserData().getMetadataFields()) {
             final String postName = key.getPostName();
-            if (matchingRegex == null || postName.matches(matchingRegex)) {
+            if (sendingRegex == null || postName.matches(sendingRegex)) {
                 String value = URL.encodeQueryString(userResults.getUserData().getMetadataValue(key));
                 if (stringBuilder.length() > 0) {
                     stringBuilder.append("&");
@@ -67,7 +69,7 @@ public class RegistrationService {
         String dataLogEncoded = URL.encodeQueryString(dataLogFormated);
         stringBuilder.append("datalog").append("=").append(dataLogEncoded).append("&");
         try {
-            builder.sendRequest(stringBuilder.toString(), geRequestBuilder(builder, registrationListener, registratinoUrl));
+            builder.sendRequest(stringBuilder.toString(), geRequestBuilder(userResults, builder, registrationListener, registratinoUrl, receivingRegex));
         } catch (RequestException exception) {
             registrationListener.registrationFailed(new RegistrationException(RegistrationException.ErrorType.buildererror, exception));
             logger.log(Level.SEVERE, "SubmitRegistration", exception);
@@ -112,14 +114,14 @@ public class RegistrationService {
         }.serialise(userResults, emailAddressMetadataField));
         stringBuilder.append("quiz_results=").append(restultsData);
         try {
-            builder.sendRequest(stringBuilder.toString(), geRequestBuilder(builder, registrationListener, registratinoUrl));
+            builder.sendRequest(stringBuilder.toString(), geRequestBuilder(userResults, builder, registrationListener, registratinoUrl, null));
         } catch (RequestException exception) {
             registrationListener.registrationFailed(new RegistrationException(RegistrationException.ErrorType.buildererror, exception));
             logger.log(Level.SEVERE, "SubmitRegistration", exception);
         }
     }
 
-    private RequestCallback geRequestBuilder(final RequestBuilder builder, final RegistrationListener registrationListener, final String targetUri) {
+    private RequestCallback geRequestBuilder(final UserResults userResults, final RequestBuilder builder, final RegistrationListener registrationListener, final String targetUri, final String receivingRegex) {
         return new RequestCallback() {
             @Override
             public void onError(Request request, Throwable exception) {
@@ -133,6 +135,17 @@ public class RegistrationService {
                 if (200 == response.getStatusCode()) {
                     final String text = response.getText();
                     logger.info(text);
+                    if (receivingRegex != null) {
+                        JSONObject jsonObject = (JSONObject) JSONParser.parseStrict(text);
+                        for (MetadataField key : userResults.getUserData().getMetadataFields()) {
+                            final String postName = key.getPostName();
+                            if (postName.matches(receivingRegex)) {
+                                if (jsonObject.containsKey(postName)) {
+                                    userResults.getUserData().setMetadataValue(key, jsonObject.get(postName).toString().replaceFirst("^\"", "").replaceFirst("\"$", ""));
+                                }
+                            }
+                        }
+                    }
                     registrationListener.registrationComplete();
                 } else {
                     registrationListener.registrationFailed(new RegistrationException(RegistrationException.ErrorType.non202response, "An error occured on the server: " + response.getStatusText()));
