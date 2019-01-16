@@ -356,7 +356,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         matchingStimuliGroup.showNextStimulus(stimulusProvider);
     }
 
-    public void hasMetadataValue(MetadataField metadataField, final String matchingRegex, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse) {
+    public void hasMetadataValue(final Stimulus currentStimulus, MetadataField metadataField, final String inputRegex, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse) {
+        final String matchingRegex = new HtmlTokenFormatter(null, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(inputRegex);
         final String valueString = userResults.getUserData().getMetadataValue(metadataField);
         if (valueString.matches(matchingRegex)) {
             conditionTrue.postLoadTimerFired();
@@ -365,21 +366,39 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         }
     }
 
-    public void setMetadataValue(MetadataField metadataField, final String dataLogFormat) {
-        setMetadataValue(null, metadataField, dataLogFormat);
-    }
-
-    public void setMetadataValue(final Stimulus currentStimulus, MetadataField metadataField, final String dataLogFormat) {
-        userResults.getUserData().setMetadataValue(metadataField, new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(dataLogFormat));
+    public void setMetadataValue(final Stimulus currentStimulus, MetadataField metadataField, final String dataLogFormat, final String replacementRegex) {
+        final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray);
+        final String dataLogString = (replacementRegex == null) ? htmlTokenFormatter.formatString(dataLogFormat) : htmlTokenFormatter.formatReplaceString(dataLogFormat, replacementRegex);
+        userResults.getUserData().setMetadataValue(metadataField, dataLogString);
         localStorage.storeData(userResults, metadataFieldProvider);
     }
 
     public void logTokenText(final Stimulus currentStimulus, final String reportType, final String headerKey, final int dataChannel, final String dataLogFormat) {
-        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, reportType, headerKey, new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(dataLogFormat), duration.elapsedMillis());
+        submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, reportType, headerKey, new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(dataLogFormat), duration.elapsedMillis());
+    }
+
+    public void actionTokenButton(final Stimulus currentStimulus, final PresenterEventListner presenterListerner, final String styleName, final String buttonGroup) {
+        final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray);
+        addButtonToGroup(buttonGroup, ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
+            @Override
+            public String getLabel() {
+                return htmlTokenFormatter.formatString(presenterListerner.getLabel());
+            }
+
+            @Override
+            public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                presenterListerner.eventFired(button, shotEventListner);
+            }
+
+            @Override
+            public int getHotKey() {
+                return presenterListerner.getHotKey();
+            }
+        }, styleName));
     }
 
     public void htmlTokenText(final Stimulus currentStimulus, final String textString, final String styleName) {
-        ((TimedStimulusView) simpleView).addHtmlText(new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(textString), styleName);
+        ((TimedStimulusView) simpleView).addHtmlText(new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(textString), styleName);
         // the submitTagValue previously used here by the multiparticipant configuration has been migrated to logTokenText which should function the sames for the multiparticipant experiment except that it now uses submitTagPairValue
     }
 
@@ -1078,14 +1097,14 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void regionCodeStyle(final Stimulus currentStimulus, final String regionId, final String codeStyleName) {
-        final String styleName = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(codeStyleName);
+        final String styleName = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(codeStyleName);
         ((ComplexView) simpleView).setRegionStyle(regionId, styleName);
     }
 //    protected void stimulusCodeImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, String codeFormat, TimedStimulusListener timedStimulusListener) {
 
     protected void stimulusCodeImage(final Stimulus currentStimulus, final String codeStyleName, int postLoadMs, String codeFormat, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener) {
-        final String formattedCode = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(codeFormat);
-        final String styleName = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(codeStyleName);
+        final String formattedCode = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(codeFormat);
+        final String styleName = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(codeStyleName);
         final String uniqueId = currentStimulus.getUniqueId();
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusCodeImage", formattedCode, duration.elapsedMillis());
         final CancelableStimulusListener shownStimulusListener = new CancelableStimulusListener() {
@@ -1099,8 +1118,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void stimulusCodeAudio(final Stimulus currentStimulus, final boolean autoPlay, final String mediaId, int postLoadMs, String codeFormat, boolean showPlaybackIndicator, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
-        final String formattedCode = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(codeFormat);
-        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(mediaId);
+        final String formattedCode = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(codeFormat);
+        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(mediaId);
         final String uniqueId = currentStimulus.getUniqueId();
 
         String mp3 = formattedCode + ".mp3";
@@ -1122,7 +1141,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     protected void stimulusVideo(final Stimulus currentStimulus, final String styleName, final boolean autoPlay, final String mediaId, final boolean loop, final boolean showControls, int postLoadMs, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         final String videoName = currentStimulus.getVideo();
         final String uniqueId = currentStimulus.getUniqueId();
-        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(mediaId);
+        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(mediaId);
         String mp4 = videoName + ".mp4";
         String ogg = videoName + ".ogg";
         String ogv = videoName + ".ogv";
@@ -1142,9 +1161,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void stimulusCodeVideo(final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final String codeStyleName, final boolean autoPlay, final String mediaId, final boolean loop, final boolean showControls, int postLoadMs, String codeFormat, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
-        final String formattedCode = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(codeFormat);
-        final String styleName = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(codeStyleName);
-        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(mediaId);
+        final String formattedCode = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(codeFormat);
+        final String styleName = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(codeStyleName);
+        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(mediaId);
         final String uniqueId = currentStimulus.getUniqueId();
         String mp4 = formattedCode + ".mp4";
         String ogg = formattedCode + ".ogg";
@@ -1167,7 +1186,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     protected void stimulusAudio(final Stimulus currentStimulus, final boolean autoPlay, final String mediaId, int postLoadMs, boolean showPlaybackIndicator, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         final String audio = currentStimulus.getAudio();
         final String uniqueId = currentStimulus.getUniqueId();
-        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(mediaId);
+        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(mediaId);
         String ogg = audio + ".ogg";
         String mp3 = audio + ".mp3";
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", ogg, duration.elapsedMillis());
@@ -1450,7 +1469,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     protected void startAudioRecorder(final String recordingFormat, final String mediaId, final String deviceRegex, boolean filePerStimulus, String directoryName, final Stimulus currentStimulus, final TimedStimulusListener onError, final TimedStimulusListener onSuccess, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
 //        final String subdirectoryName = userResults.getUserData().getUserId().toString();
         final String subdirectoryName = userResults.getUserData().getMetadataValue(new MetadataFieldProvider().workerIdMetadataField);
-        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(mediaId);
+        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(mediaId);
         final MediaSubmissionListener mediaSubmissionListener = new MediaSubmissionListener() {
             @Override
             public void submissionFailed(final String message, final String userIdString, final String screenName, final String stimulusIdString, final Uint8Array dataArray) {
@@ -1874,17 +1893,17 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     protected void playMedia(final String mediaId, final Stimulus currentStimulus) {
-        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(mediaId);
+        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(mediaId);
         ((TimedStimulusView) simpleView).startMedia(formattedMediaId);
     }
 
     protected void rewindMedia(final String mediaId, final Stimulus currentStimulus) {
-        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(mediaId);
+        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(mediaId);
         ((TimedStimulusView) simpleView).rewindMedia(formattedMediaId);
     }
 
     protected void pauseMedia(final String mediaId, final Stimulus currentStimulus) {
-        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(mediaId);
+        final String formattedMediaId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(mediaId);
         ((TimedStimulusView) simpleView).stopMedia(formattedMediaId);
     }
 
@@ -1953,9 +1972,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         optionButton(eventListner, styleName, buttonGroup);
     }
 
-    public void transmitResults(final Stimulus currentStimulus, final String matchingRegex, final String dataLogFormat, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
-        final String dataLogFormatted = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(dataLogFormat);
-        new RegistrationService().submitRegistration(userResults, matchingRegex, dataLogFormatted, new RegistrationListener() {
+    public void transmitResults(final Stimulus currentStimulus, final String sendingRegex, final String receivingRegex, final String dataLogFormat, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+        final String dataLogFormatted = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(dataLogFormat);
+        new RegistrationService().submitRegistration(userResults, sendingRegex, receivingRegex, dataLogFormatted, new RegistrationListener() {
             @Override
             public void registrationFailed(RegistrationException exception) {
                 onError.postLoadTimerFired();
@@ -1963,6 +1982,8 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
 
             @Override
             public void registrationComplete() {
+                // because the received data can be used to set metadata fields, we store that data here
+                localStorage.storeData(userResults, metadataFieldProvider);
                 onSuccess.postLoadTimerFired();
             }
         });
@@ -1974,7 +1995,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             final boolean applyScore,
             final int dataChannel
     ) {
-        final String formattedCode = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider).formatString(codeFormat);
+        final String formattedCode = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(codeFormat);
         HashMap<Stimulus, JSONObject> jsonStimulusMap = new HashMap<>();
         if (!jsonStimulusMap.containsKey(currentStimulus)) {
             JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus);
