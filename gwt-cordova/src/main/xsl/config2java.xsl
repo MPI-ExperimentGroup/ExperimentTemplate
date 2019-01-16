@@ -847,6 +847,8 @@ or local-name() eq 'backgroundImage'">
         <xsl:value-of select="if(@threshold) then concat(@threshold, ', ') else ''" />
         <xsl:value-of select="if(@minimum) then concat(@minimum, ', ') else ''" />
         <xsl:value-of select="if(@maximum) then concat(@maximum, ', ') else ''" />
+        <xsl:value-of select="if(@ranges) then concat('&quot;', @ranges, '&quot;, ') else ''" />        
+        <xsl:value-of select="if(local-name() eq 'randomMsPause' and not(@ranges)) then 'null, ' else ''" />
         <xsl:value-of select="if(@matchingRegex) then concat('&quot;', @matchingRegex, '&quot;, ') else ''" />
         <xsl:value-of select="if(@replacementRegex) then concat('&quot;', @replacementRegex, '&quot;, ') else ''" />
         <xsl:value-of select="if(@replacement) then concat('&quot;', @replacement, '&quot;, ') else ''" />
