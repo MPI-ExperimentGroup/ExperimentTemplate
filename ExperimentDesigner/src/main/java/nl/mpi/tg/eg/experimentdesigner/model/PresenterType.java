@@ -163,7 +163,7 @@ public enum PresenterType {
         endAudioRecorderTag, startAudioRecorder, targetFooterButton, actionFooterButton
     }),
     preload(new FeatureType[]{
-        logTimeStamp, logTokenText, habituationParadigmListener, resetTrigger,
+        logTimeStamp, logTokenText, actionTokenButton, habituationParadigmListener, resetTrigger,
         versionData,
         withStimuli, eachStimulus,
         activateRandomItem,
@@ -239,7 +239,7 @@ public enum PresenterType {
         regionStyle,
         gotoPresenter,
         gotoNextPresenter,
-        timerLabel, startTimer, clearTimer, logTimerValue, logTokenText, compareTimer, habituationParadigmListener, resetTrigger,
+        timerLabel, startTimer, clearTimer, logTimerValue, logTokenText, actionTokenButton, compareTimer, habituationParadigmListener, resetTrigger,
         row, plainText, stimulusPresent,
         countdownLabel, trigger, table, triggerListener, touchInputCaptureStart, column,
         stimulusMetadataField,
@@ -266,7 +266,7 @@ public enum PresenterType {
         transmitResults, withinThreshold, withStimuli, eachStimulus,
         submitTestResults,
         image, timerLabel, htmlText, plainText,
-        actionFooterButton, actionButton, actionTokenButton, targetButton, targetFooterButton, addPadding, centrePage, clearPage,
+        actionFooterButton, actionButton, targetButton, targetFooterButton, addPadding, centrePage, clearPage,
         startAudioRecorder, stopAudioRecorder, startAudioRecorderTag, endAudioRecorderTag,
         loadKinTypeStringDiagram, localStorageData,
         loadStimulus, loadSdCardStimulus,
@@ -317,7 +317,7 @@ public enum PresenterType {
         userInfo,
         menuItem}),
     colourReport(new FeatureType[]{
-        timerLabel, startTimer, clearTimer, logTimerValue, logTokenText, compareTimer, habituationParadigmListener, resetTrigger,
+        timerLabel, startTimer, clearTimer, logTimerValue, logTokenText, actionTokenButton, compareTimer, habituationParadigmListener, resetTrigger,
         activateRandomItem,
         versionData,
         randomMsPause, triggerListener, trigger, countdownLabel, stimulusPresent, clearCurrentScore,
