@@ -266,7 +266,7 @@ public enum PresenterType {
         transmitResults, withinThreshold, withStimuli, eachStimulus,
         submitTestResults,
         image, timerLabel, htmlText, plainText,
-        actionFooterButton, actionButton, targetButton, targetFooterButton, addPadding, centrePage, clearPage,
+        actionFooterButton, actionButton, actionTokenButton, targetButton, targetFooterButton, addPadding, centrePage, clearPage,
         startAudioRecorder, stopAudioRecorder, startAudioRecorderTag, endAudioRecorderTag,
         loadKinTypeStringDiagram, localStorageData,
         loadStimulus, loadSdCardStimulus,
