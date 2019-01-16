@@ -45,7 +45,7 @@ public class SchemaGenerator {
         writer.append("</xs:simpleType>\n");
         writer.append("<xs:simpleType name=\"rangesValue\">\n");
         writer.append("<xs:restriction base=\"xs:token\">\n");
-        writer.append("<xs:pattern value=\"[0-9]*((..|,)[0-9])+\"/>\n");
+        writer.append("<xs:pattern value=\"[0-9]*((..|,)[0-9]+)*\"/>\n");
         writer.append("</xs:restriction>\n");
         writer.append("</xs:simpleType>\n");
         writer.append("<xs:simpleType name=\"lowercaseValue\">\n");
