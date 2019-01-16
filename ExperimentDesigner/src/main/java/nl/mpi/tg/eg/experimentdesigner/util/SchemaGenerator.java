@@ -43,6 +43,11 @@ public class SchemaGenerator {
         writer.append("<xs:pattern value=\"#[\\dA-Fa-f]{6}\"/>\n");
         writer.append("</xs:restriction>\n");
         writer.append("</xs:simpleType>\n");
+        writer.append("<xs:simpleType name=\"rangesValue\">\n");
+        writer.append("<xs:restriction base=\"xs:token\">\n");
+        writer.append("<xs:pattern value=\"[0-9]*((..|,)[0-9])+\"/>\n");
+        writer.append("</xs:restriction>\n");
+        writer.append("</xs:simpleType>\n");
         writer.append("<xs:simpleType name=\"lowercaseValue\">\n");
         writer.append("<xs:restriction base=\"xs:string\">\n");
         writer.append("<xs:pattern value=\"[a-z]([a-z_0-9]){3,}\"/>\n");
@@ -73,6 +78,7 @@ public class SchemaGenerator {
         for (String attributeStrings : new String[]{"appNameDisplay"}) {
             writer.append("<xs:attribute name=\"").append(attributeStrings).append("\" type=\"xs:string\" use=\"required\"/>\n");
         }
+        writer.append("<xs:attribute name=\"userIdGetParam\" type=\"xs:string\" use=\"optional\"/>\n");
         for (String attributeLowercase : new String[]{"appNameInternal"}) {
             writer.append("<xs:attribute name=\"").append(attributeLowercase).append("\" type=\"lowercaseValue\" use=\"required\"/>\n");
         }
@@ -272,7 +278,11 @@ public class SchemaGenerator {
             for (final FeatureAttribute featureAttribute : featureType.getFeatureAttributes()) {
                 writer.append("<xs:attribute name=\"");
                 writer.append(featureAttribute.name());
-                writer.append("\" type=\"xs:string\"");
+                if (featureAttribute.name().equals("ranges")) {
+                    writer.append("\" type=\"rangesValue\"");
+                } else {
+                    writer.append("\" type=\"xs:string\"");
+                }
                 if (!featureAttribute.isOptional() && !featureType.allowsCustomImplementation()) {
                     writer.append(" use=\"required\"");
                 }
