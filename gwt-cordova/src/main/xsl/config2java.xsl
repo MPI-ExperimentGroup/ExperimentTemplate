@@ -88,7 +88,9 @@
         <xsl:text>;
             }
             public ApplicationController(RootLayoutPanel widgetTag) throws UserIdException {
-            super(widgetTag);
+            super(widgetTag, </xsl:text>
+        <xsl:value-of select="if(experiment/@userIdGetParam) then concat('&quot;', experiment/@userIdGetParam, '&quot;') else 'null'" />
+        <xsl:text>);
         </xsl:text>
         <!--todo: does this even work?-->
         <xsl:value-of select="if(experiment/preventWindowClose) then concat('preventWindowClose(messages.', generate-id(experiment/preventWindowClose), '());') else ''" />
@@ -392,13 +394,14 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         </xsl:text>
     </xsl:template>
     <!--it should be possible to merge the two following templates into one-->
-    <xsl:template match="touchInputStimulusButton|stimulusButton|targetButton|actionButton|targetFooterButton|actionFooterButton"> 
+    <xsl:template match="touchInputStimulusButton|stimulusButton|targetButton|actionButton|actionTokenButton|targetFooterButton|actionFooterButton"> 
         <xsl:value-of select="local-name()"/>
         <xsl:text>(</xsl:text>
         <xsl:if test="local-name() eq 'stimulusButton'">
             <xsl:text>stimulusProvider, </xsl:text>
             <xsl:text>currentStimulus,</xsl:text>
         </xsl:if>
+        <xsl:value-of select="if(local-name() eq 'actionTokenButton') then if (contains(@featureText, '&lt;stimulus')) then 'currentStimulus, ' else 'null, ' else ''" />
         <xsl:text>new PresenterEventListner() {
 
             @Override
@@ -500,7 +503,7 @@ or local-name() eq 'removeStimulus'
         ) then 'currentStimulus' else ''" />
         <xsl:value-of select="if(local-name() eq 'stimulusMetadataField' or (local-name() eq 'stimulusLabel' and @styleName)
         ) then ', ' else ''" />
-        <xsl:value-of select="if (local-name() eq 'logTokenText' or local-name() eq 'htmlTokenText' or @dataLogFormat) then if (contains(@featureText, '&lt;stimulus') or contains(@dataLogFormat, '&lt;stimulus')) then 'currentStimulus, ' else 'null, ' else ''" />
+        <xsl:value-of select="if (local-name() eq 'logTokenText' or local-name() eq 'htmlTokenText' or @dataLogFormat or local-name() eq 'setMetadataValue' or local-name() eq 'hasMetadataValue') then if (contains(@featureText, '&lt;stimulus') or contains(@dataLogFormat, '&lt;stimulus')) then 'currentStimulus, ' else 'null, ' else ''" />
         <xsl:value-of select="if(local-name() eq 'sendStimuliReport') then ', ' else ''" />
         <xsl:value-of select="if(@type) then concat('&quot;', @type, '&quot;, ') else ''" />   
         <xsl:if test="local-name() eq 'logTokenText'">
@@ -544,6 +547,8 @@ or local-name() eq 'removeStimulus'
         <xsl:value-of select="if(contains(local-name(), 'Button') or contains(local-name(), 'Radio') or contains(local-name(), 'Checkbox')) then if (contains(local-name(), 'ButtonGroup')) then '' else if (@groupId) then concat('&quot;',@groupId, '&quot;') else if(contains(local-name(), 'Stimulus')) then '&quot;defaultStimulusGroup&quot;' else '&quot;defaultGroup&quot;' else ''" />
         <xsl:value-of select="if(not(@matchingRegex) and local-name() eq 'transmitResults') then 'null' else ''" />
         <xsl:value-of select="if(@dataLogFormat) then concat(', &quot;', @dataLogFormat, '&quot;') else ''" />
+        <xsl:value-of select="if(@replacementRegex) then concat(', &quot;', @replacementRegex, '&quot;') else ''" />
+        <xsl:value-of select="if(not(@replacementRegex) and local-name() eq 'setMetadataValue') then ', null' else ''" />
         <xsl:value-of select="if(local-name() eq 'sendAllData' or local-name() eq 'sendMetadata') then 'null' else ''" />   
         <xsl:value-of select="if(local-name() eq 'saveMetadataButton') then concat(', messages.errorMessage', generate-id(.), '()') else ''" />
         <xsl:value-of select="if(local-name() eq 'helpDialogue') then concat(', messages.closeButtonLabel', generate-id(.), '()') else ''" />
