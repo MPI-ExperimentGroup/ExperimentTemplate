@@ -94,7 +94,7 @@ public enum FeatureAttribute {
     offset,
     msToNext(false),
     groupId(true),
-    mediaId, listenerId, threshold, maximum, minimum,
+    mediaId(/*true*/), listenerId, threshold, maximum, minimum, average, ranges,
     msLabelFormat,
     animate(true), // animate currently has bounce stimuliCode or none
     minStimuliPerTag(true), // for each tag there should be at least N of each represented in the final list
