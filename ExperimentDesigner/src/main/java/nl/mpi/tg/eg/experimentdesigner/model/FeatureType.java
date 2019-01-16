@@ -48,6 +48,7 @@ public enum FeatureType {
     sendStimuliReport(false, false, new FeatureAttribute[]{type, dataChannel, headerKey, separator}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     targetButton(false, true, new FeatureAttribute[]{hotKey, target, styleName, groupId}),
     actionButton(true, true, new FeatureAttribute[]{hotKey, styleName, groupId}),
+    actionTokenButton(true, true, new FeatureAttribute[]{hotKey, styleName, groupId}),
     disableButtonGroup(false, false, new FeatureAttribute[]{matchingRegex}),
     enableButtonGroup(false, false, new FeatureAttribute[]{matchingRegex}),
     hideButtonGroup(false, false, new FeatureAttribute[]{matchingRegex}),
@@ -132,7 +133,7 @@ public enum FeatureType {
     addKinTypeGui(false, false, new FeatureAttribute[]{diagramName}),
     hasGetParameter(false, false, new FeatureAttribute[]{parameterName}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.none),
     hasMetadataValue(false, false, new FeatureAttribute[]{fieldName, matchingRegex}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.none),
-    setMetadataValue(false, false, new FeatureAttribute[]{fieldName, dataLogFormat}, false, false, false, Contitionals.none, Contitionals.none),
+    setMetadataValue(false, false, new FeatureAttribute[]{fieldName, dataLogFormat, replacementRegex}, false, false, false, Contitionals.none, Contitionals.none),
     activateRandomItem(false, false, new FeatureAttribute[]{}),
     gotoPresenter(false, false, new FeatureAttribute[]{target}),
     gotoNextPresenter(false, false, new FeatureAttribute[]{}),
@@ -150,7 +151,7 @@ public enum FeatureType {
     clearTimer(false, false, new FeatureAttribute[]{listenerId}),
     logTimerValue(false, false, new FeatureAttribute[]{listenerId, eventTag, dataChannel}),
     timerLabel(false, false, new FeatureAttribute[]{listenerId, msToNext, msLabelFormat, styleName}), // this is a label like countdownLabel but shows the time value of listenerId minus msToNext and formats the result with msLabelFormat
-    randomMsPause(true, false, new FeatureAttribute[]{minimum, maximum}),
+    randomMsPause(true, false, new FeatureAttribute[]{minimum, maximum, ranges}),//"1..100", "1,100" ,"1..3,10,20,30..35,60"
     triggerListener(true, false, new FeatureAttribute[]{listenerId, threshold, maximum}),
     habituationParadigmListener(true, false, new FeatureAttribute[]{listenerId, threshold, maximum}), //  threshold is in ms eg 2000 is the minimum length of an event to be considered, maximum is the max shows eg 10.
     trigger(false, false, new FeatureAttribute[]{listenerId}),
