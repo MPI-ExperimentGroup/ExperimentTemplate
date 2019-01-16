@@ -237,7 +237,7 @@ public enum FeatureType {
     scoreAboveThreshold(false, false, new FeatureAttribute[]{scoreThreshold, errorThreshold, potentialThreshold, correctStreak, errorStreak}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
     resetStimulus(false, false, new FeatureAttribute[]{target}, false, false, false, Contitionals.none, Contitionals.none),
     submitTestResults(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
-    transmitResults(false, false, new FeatureAttribute[]{matchingRegex, dataLogFormat}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none);
+    transmitResults(false, false, new FeatureAttribute[]{matchingRegex, enabledRegex, dataLogFormat}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none);
     private final boolean canHaveFeatures;
     private final boolean canHaveText;
     private final boolean canHaveStimulusTags; // todo: this could well be canHaveTagList so that it is more generic
