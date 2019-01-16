@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="frinex.xsd" appNameDisplay="with_stimulus_example" appNameInternal="with_stimulus_example" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="false" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17">
+<experiment xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="frinex.xsd" userIdGetParam="uuid" appNameDisplay="with_stimulus_example" appNameInternal="with_stimulus_example" backgroundColour="#FFFFFF" complementColour0="#EAC3A3" complementColour1="#9D7B5E" complementColour2="#C69E7C" complementColour3="#FFEDDE" complementColour4="#FFFDFB" defaultScale="1.0" isScalable="true" preserveLastState="false" primaryColour0="#628D8D" primaryColour1="#385E5E" primaryColour2="#4A7777" primaryColour3="#96ADAD" primaryColour4="#D5D8D8" rotatable="true" showMenuBar="true" textFontSize="17">
     <administration>
         <dataChannel channel="0" label="Example" logToSdCard="false"/>
         <dataChannel channel="1" label="Data" logToSdCard="false"/>
@@ -87,9 +87,18 @@
         <field controlledMessage="Voer een getal in." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="dateOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
         <field controlledMessage="." controlledRegex="|Set 1 Instapset 2;3-2;5 jaar|Set 2 Instapset 2;6-2;11 jaar|Set 3 Instapset 3;0-3;11 jaar|Set 4 Instapset 4;0-4;5 jaar|Set 5 Instapset 4;6-5;5 jaar|Set 6 Instapset 5;6-6;5 jaar|Set 7 Instapset 6;6-7;11 jaar|Set 8 Instapset 8;0-9;11 jaar|Set 9 Instapset 10;0-10;11 jaar|Set 10 Instapset 11;0 - 13;11 jaar" postName="ageGroup" preventServerDuplicates="false" registrationField="Instapset"/>
         <field controlledMessage="." controlledRegex=".*" postName="item" preventServerDuplicates="false" registrationField="item"/>
-        <!--<field controlledMessage="Please enter at least three letters." controlledRegex=".'{'3,'}'" postName="invitation_code" preventServerDuplicates="false" registrationField="Invitation Code"/>-->
-        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="invitation_code" preventServerDuplicates="false" registrationField="Invitation Code"/>
-        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_6" preventServerDuplicates="false" registrationField="status session 6"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="uuid" preventServerDuplicates="false" registrationField="Invitation UUID"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="validated_uuid" preventServerDuplicates="false" registrationField="Validated UUID"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_id" preventServerDuplicates="false" registrationField="session id"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_done" preventServerDuplicates="false" registrationField="session done"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_steps" preventServerDuplicates="false" registrationField="session steps"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_step" preventServerDuplicates="false" registrationField="session step"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_next_step" preventServerDuplicates="false" registrationField="session_next_step"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="invitation_code" preventServerDuplicates="false" registrationField="invitation code"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="currentScore" preventServerDuplicates="false" registrationField="Current Score"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="currentPotential" preventServerDuplicates="false" registrationField="Current Potential"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="totalScore" preventServerDuplicates="false" registrationField="Total Score"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="totalPotential" preventServerDuplicates="false" registrationField="Total Potential"/>
     </metadata>
     <presenter back="Menu" menuLabel="Terug" next="Informatie" type="metadata" self="Toestemming" title="Toestemming">
         <htmlText featureText="Toestemmingsverklaring voor deelname aan het onderzoek:&lt;br/&gt;&lt;br/&gt;Ik stem geheel vrijwillig in met deelname aan dit onderzoek."/>
@@ -486,6 +495,7 @@
                 <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
             </hasMoreStimulus>
             <endOfStimulus>
+                <clearPage/>
                 <addPadding/>
                 <actionButton featureText="clearCurrentScore">
                     <clearCurrentScore/>
@@ -621,7 +631,7 @@
                 playerTotalPotentialScore:
                 &lt;playerTotalPotentialScore&gt;&lt;br/&gt;
                 playerGamesPlayed:
-                &lt;playerGamesPlayed&gt; 
+                &lt;playerGamesPlayed&gt;
                 "/>
                 <logTokenText dataChannel="3" type="logTokenTextType" headerKey="logTokenTextKey" dataLogFormat="
                 stimulusId:
@@ -803,6 +813,7 @@
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
+                <clearPage/>
                 <htmlTokenText featureText="playerScore:
                 &lt;playerScore&gt;&lt;br/&gt;
                 playerErrors:
@@ -830,7 +841,7 @@
                 playerTotalPotentialScore:
                 &lt;playerTotalPotentialScore&gt;&lt;br/&gt;
                 playerGamesPlayed:
-                &lt;playerGamesPlayed&gt; 
+                &lt;playerGamesPlayed&gt;
                 "/>
                 <logTokenText dataChannel="3" type="logTokenTextType" headerKey="logTokenTextKey" dataLogFormat="playerScore:
                 &lt;playerScore&gt;&lt;br/&gt;
@@ -929,6 +940,7 @@
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
+                <clearPage/>
                 <addPadding/>
                 <actionButton featureText="clearCurrentScore">
                     <clearCurrentScore/>
@@ -979,7 +991,7 @@
                 playerTotalPotentialScore:
                 &lt;playerTotalPotentialScore&gt;&lt;br/&gt;
                 playerGamesPlayed:
-                &lt;playerGamesPlayed&gt; 
+                &lt;playerGamesPlayed&gt;
                 "/>
                 <addPadding/>
                 <addPadding/>
@@ -1001,6 +1013,7 @@
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
+                <clearPage/>
                 <htmlTokenText featureText="playerScore:
                 &lt;playerScore&gt;&lt;br/&gt;
                 playerErrors:
@@ -1028,7 +1041,7 @@
                 playerTotalPotentialScore:
                 &lt;playerTotalPotentialScore&gt;&lt;br/&gt;
                 playerGamesPlayed:
-                &lt;playerGamesPlayed&gt; 
+                &lt;playerGamesPlayed&gt;
                 "/>
                 <addPadding/>
                 <actionButton featureText="clearCurrentScore">
@@ -1068,6 +1081,8 @@
                 ageGroup:
                 &lt;metadataField_ageGroup&gt;&lt;br/&gt;
                 "/>
+        <actionTokenButton featureText="&lt;metadataField_workerId&gt;">
+        </actionTokenButton>
     </presenter>
     <presenter back="Menu" menuLabel="Terug" type="text" self="Second_Informatie" title="Second Informatie">
         <htmlText featureText="Instructies Deel 2: &lt;br/&gt;&lt;br/&gt;Type het juiste antwoord in de textbox."/>
@@ -1240,7 +1255,6 @@
         <loadStimulus eventTag="Third" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <stimulusLabel styleName="stimuliLabel"/>
- 
                 <addPadding/>
                 <stimulusFreeText featureText="Vul minimal 1 letter." styleName="stimuliLabel" validationRegex=".{1,}" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
                 <stimulusImage msToNext="60" styleName="styleName" dataChannel="2">
@@ -1709,6 +1723,7 @@
                 <targetButton featureText="Menu" target="Menu"/>
             </hasMoreStimulus>
             <endOfStimulus>
+                <clearPage/>
                 <actionButton featureText="resetStimulus">
                     <resetStimulus target="showOnBackButton"/>
                     <gotoPresenter target="showOnBackButton"/>
@@ -1804,6 +1819,7 @@
                 </pause>
             </hasMoreStimulus>
             <endOfStimulus>
+                <clearPage/>
                 <actionButton featureText="resetStimulus">
                     <resetStimulus target="AppendStimulusResponse"/>
                     <gotoPresenter target="AppendStimulusResponse"/>
@@ -1827,6 +1843,7 @@
                 <nextStimulusButton featureText="Next [ENTER]" eventTag="Next" hotKey="ENTER" repeatIncorrect="false"/>
             </hasMoreStimulus>
             <endOfStimulus>
+                <clearPage/>
                 <actionButton featureText="resetStimulus">
                     <resetStimulus target="showOnBackButton"/>
                     <gotoPresenter target="showOnBackButton"/>
@@ -1866,6 +1883,7 @@
                 </table>
             </hasMoreStimulus>
             <endOfStimulus>
+                <clearPage/>
                 <actionButton featureText="resetStimulus">
                     <resetStimulus target="if_stimulus_exists"/>
                     <gotoPresenter target="if_stimulus_exists"/>
@@ -1910,6 +1928,100 @@
             </conditionFalse>
         </hasMetadataValue>
     </presenter>
+    <presenter back="Menu" menuLabel="InvitationSessionStepsExample" type="stimulus" self="InvitationSessionStepsExample" title="Invitation Session Steps Example">
+        <hasMetadataValue fieldName="validated_uuid" matchingRegex="...*">
+            <conditionTrue>
+                <htmlText featureText="A &quot;validated_uuid&quot; has been found and it must match the provided &quot;uuid&quot;."/>
+                <hasMetadataValue fieldName="uuid" matchingRegex="&lt;metadataField_validated_uuid&gt;">
+                    <conditionTrue>
+                        <htmlText featureText="The &quot;validated_uuid&quot; does match &quot;uuid&quot; and you can continue."/>
+                        <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleStimuliScreen"/>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <htmlText featureText="The &quot;validated_uuid&quot; does NOT match &quot;uuid&quot;."/>
+                        <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleInvalid"/>
+                        <!--<eraseUsersDataButton featureText="Erase old data" target="InvitationSessionStepsExample"/>-->
+                    </conditionFalse>
+                </hasMetadataValue>
+            </conditionTrue>
+            <conditionFalse>
+                <hasGetParameter parameterName="uuid">
+                    <conditionTrue>
+                        <htmlText featureText="get parameter uuid ok"/>
+                        <hasGetParameter parameterName="session_id">
+                            <conditionTrue>
+                                <htmlText featureText="get parameter session_id ok"/>                        
+                                <hasGetParameter parameterName="session_steps">
+                                    <conditionTrue>
+                                        <htmlText featureText="get parameter session_steps ok"/>
+                                        <hasMetadataValue fieldName="uuid" matchingRegex="...*">
+                                            <conditionTrue>
+                                                <hasMetadataValue fieldName="session_id" matchingRegex="[0-6]">
+                                                    <conditionTrue>
+                                                        <hasMetadataValue fieldName="session_steps" matchingRegex="audiosimplereactiontime_lilbq4_audioas2_peabodyas_audiononwordmonitoring_grammaras_visualsimplereactiontime">
+                                                            <conditionTrue>
+                                                                <htmlText featureText="This example takes the list &quot;session_steps&quot; and extracts the next item after &quot;audioas2&quot; from that list which will be &quot;peabodyas&quot;. That value is then placed into the &quot;session_next_step&quot; metadata field."/>
+                                                                <!--<htmlText featureText="Assuming the list contains audioas2 we act as if the name of this experiment is audioas2 and using setMetadataValue get the next item which is peabodyas."/>-->
+                                                                <htmlText featureText="The resulting value in &quot;session_next_step&quot; will later be used to redirect the user to that next experiment after this one is complete."/>
+                                                                <htmlText featureText="We also put the hypothetical name of this experiment &quot;audioas2&quot; into &quot;session_step&quot; for convenience."/>
+                                                                <setMetadataValue fieldName="session_next_step" replacementRegex="audioas2_([^_]*)[_$]" dataLogFormat="&lt;metadataField_session_steps&gt;"/>
+                                                                <setMetadataValue fieldName="session_step" dataLogFormat="audioas2"/>
+                                                                <!--// if the response uuid does not exist then transmit-->
+                                                                <transmitResults matchingRegex="uuid|session_id|session_steps|session_step|session_next_step" enabledRegex="validated_uuid" dataLogFormat="Is this UUID for this session step valid? Please respond with a 200 if it is. Otherwise a non 200 / error code will probably do.">
+                                                                    <onError>
+                                                                        <htmlText featureText="Transmitting the data for this session step failed."/>
+                                                                    </onError>
+                                                                    <onSuccess>
+                                                                        <htmlText featureText="Transmitting the data for this session step ok"/>
+                                                                        <hasMetadataValue fieldName="uuid" matchingRegex="&lt;metadataField_validated_uuid&gt;">
+                                                                            <conditionTrue>
+                                                                                <startTimer msToNext="150000" listenerId="invitationTimer"/>
+                                                                                <htmlText featureText="The the return value validated_uuid from transmitResults matches the provided uuid."/>
+                                                                                <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleStimuliScreen"/>
+                                                                            </conditionTrue>
+                                                                            <conditionFalse>
+                                                                                <htmlText featureText="The the return value validated_uuid from transmitResults does NOT match the provided uuid."/>
+                                                                            </conditionFalse>
+                                                                        </hasMetadataValue>
+                                                                    </onSuccess>
+                                                                </transmitResults>
+                                                            </conditionTrue>
+                                                            <conditionFalse>
+                                                                <htmlText featureText="The session_steps value is incorrect, please provide it exactly as described below and reload this page."/>
+                                                                <htmlText featureText="The get parameter session_steps is a _ separated list and should contain the value &quot;audiosimplereactiontime_lilbq4_audioas2_peabodyas_audiononwordmonitoring_grammaras_visualsimplereactiontime&quot;."/>
+                                                            </conditionFalse>
+                                                        </hasMetadataValue>
+                                                    </conditionTrue>
+                                                    <conditionFalse>
+                                                        <htmlText featureText="session_id must be between 0 - 6.&lt;br/&gt;
+                Please provide this as a URL GET parameter and reload this page."/>
+                                                    </conditionFalse>
+                                                </hasMetadataValue>
+                                            </conditionTrue>
+                                            <conditionFalse>
+                                                <htmlText featureText="uuid has not been found.&lt;br/&gt;
+                Please provide this as a URL GET parameter and reload this page."/>
+                                            </conditionFalse>
+                                        </hasMetadataValue>
+                                    </conditionTrue>
+                                    <conditionFalse>
+                                        <htmlText featureText="get parameter session_steps NOT provided"/>
+                                    </conditionFalse>
+                                </hasGetParameter>
+                            </conditionTrue>
+                            <conditionFalse>
+                                <htmlText featureText="get parameter session_id NOT provided"/>
+                            </conditionFalse>
+                        </hasGetParameter>
+                    </conditionTrue>
+                    <conditionFalse>
+                        <htmlText featureText="get parameter uuid NOT provided"/>
+                    </conditionFalse>
+                </hasGetParameter>
+            </conditionFalse>
+        </hasMetadataValue>
+        <!--<htmlText featureText="Valid get parameters for this screen for example: &quot;?uuid=98dfc59e-f4bf-46c1-8b62-48f12ebe7c29&amp;session_id=6&amp;session_steps=audiosimplereactiontime_lilbq4_audioas2_peabodyas_audiononwordmonitoring_grammaras_visualsimplereactiontime#InvitationSessionStepsExample&quot;.&lt;br/&gt;You can append these GET parameters to the URL and reload this page."/>-->
+    </presenter>
     <presenter back="Menu" menuLabel="InvitationCodeExampleStimuliScreen" next="InvitationCodeExampleCompletion" type="stimulus" self="InvitationCodeExampleStimuliScreen" title="InvitationCodeExampleStimuliScreen">
         <loadStimulus eventTag="First Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -1930,7 +2042,7 @@
                 playerTotalPotentialScore:
                 &lt;playerTotalPotentialScore&gt;&lt;br/&gt;
                 playerGamesPlayed:
-                &lt;playerGamesPlayed&gt; 
+                &lt;playerGamesPlayed&gt;
                 Time so far: &lt;invitationTimer&gt;ms"/>
                 <addPadding/>
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
@@ -1952,18 +2064,19 @@
                 </stimulusPresent>
             </hasMoreStimulus>
             <endOfStimulus>
+                <clearPage/>
                 <scoreAboveThreshold scoreThreshold="5">
                     <aboveThreshold>
-                        <setMetadataValue fieldName="session_6" dataLogFormat="adequate"/>
+                        <setMetadataValue fieldName="session_done" dataLogFormat="Y"/>
                         <htmlText featureText="Your efforts have proved adequate."/>
                     </aboveThreshold>
                     <withinThreshold>
                         <htmlText featureText="Your efforts have proved inadequate."/>
-                        <setMetadataValue fieldName="session_6" dataLogFormat="inadequate"/>
+                        <setMetadataValue fieldName="session_done" dataLogFormat="N"/>
                     </withinThreshold>
                 </scoreAboveThreshold>
                 <htmlText featureText="The endpoint for this data transmition is set in the listing.json file section for this experiment with the values registrationUrlStaging and registrationUrlProduction."/>
-                <transmitResults matchingRegex="invitation_code|session_6" dataLogFormat="playerScore,playerErrors,playerPotentialScore,playerTotalScore,playerTotalErrors,playerTotalPotentialScore,playerGamesPlayed,invitationTimer\n
+                <transmitResults matchingRegex="uuid|session_id|session_done|session_steps|session_step" enabledRegex="validated_uuid" dataLogFormat="playerScore,playerErrors,playerPotentialScore,playerTotalScore,playerTotalErrors,playerTotalPotentialScore,playerGamesPlayed,invitationTimer\n
                 &lt;playerScore&gt;,&lt;playerErrors&gt;,&lt;playerPotentialScore&gt;,&lt;playerTotalScore&gt;,&lt;playerTotalErrors&gt;,&lt;playerTotalPotentialScore&gt;,&lt;playerGamesPlayed&gt;,&lt;invitationTimer&gt;">
                     <onError>
                         <htmlText featureText="Results transmition failed."/>
@@ -2033,6 +2146,10 @@
             </onError>
         </generateCompletionCode>
     </presenter>
+    <presenter menuLabel="InvitationCodeExampleInvalid" type="transmission" self="InvitationCodeExampleInvalid" title="Invitation Code Example Invalid">
+        <plainText featureText="You must delete the local data to proceed."/>
+        <eraseUsersDataButton featureText="Opnieuw beginnen" target="InvitationSessionStepsExample"/>
+    </presenter>
     <presenter back="Menu" menuLabel="RecordingQualityTest" type="stimulus" self="RecordingQualityTest" title="RecordingQualityTest">
         <resetStimulus target="RecordingQualityTest"/>
         <region regionId="recordedMediaResult"></region>
@@ -2052,17 +2169,17 @@
                             </regionReplace>
                         </onError>
                         <onSuccess>
-<!--                            <regionReplace regionId="recordedMediaResult"> 
+                            <!-- <regionReplace regionId="recordedMediaResult">
                                 <plainText featureText="Recording Success"/>
                             </regionReplace>-->
                         </onSuccess>
                         <mediaLoaded>
-                            <!-- <regionReplace regionId="recordedMediaResult"> 
+                            <!-- <regionReplace regionId="recordedMediaResult">
                                 <plainText featureText="AudioRecordingLoaded"/>
                             </regionReplace>-->
                         </mediaLoaded>
                         <mediaLoadFailed>
-                            <regionReplace regionId="recordedMediaResult"> 
+                            <regionReplace regionId="recordedMediaResult">
                                 <plainText featureText="AudioRecordingLoadFailed"/>
                             </regionReplace>
                         </mediaLoadFailed>
@@ -2083,6 +2200,7 @@
                 </regionReplace>
             </hasMoreStimulus>
             <endOfStimulus>
+                <clearPage/>
                 <resetStimulus target="RecordingQualityTest"/>
                 <loadStimulus eventTag="RecordingQualityTest" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                     <hasMoreStimulus>
@@ -2141,6 +2259,116 @@
     <presenter menuLabel="Menu" type="menu" self="Menu" title="Menu">
         <allMenuItems/>
     </presenter>
+    <presenter menuLabel="activateRandomItem" type="menu" next="Menu" self="activateRandomItem" title="activateRandomItem">
+        <menuItem featureText="Timer_Label_Screen" target="Timer_Label_Screen"/>
+        <menuItem featureText="Region_Timer_Screen" target="Region_Timer_Screen"/>
+        <menuItem featureText="Region_Toggle_Example" target="Region_Toggle_Example"/>
+        <menuItem featureText="Rating_Toggle_Example" target="Rating_Toggle_Example"/>
+        <menuItem featureText="With_Stimuli_Screen" target="With_Stimuli_Screen"/>
+        <htmlText featureText="The tag activateRandomItem will take the list of menu items on this screen and randomly select one that has not been completed and send the user to that screen. If all have been completed then the user will be sent to this screen's next presenter."/>
+        <actionButton featureText="activateRandomItem">
+            <activateRandomItem/>
+        </actionButton>
+    </presenter>
+    <presenter back="Menu" menuLabel="Deelnemer lijst" type="metadata" self="ListParticipants" title="Kiez deelnemer">
+        <htmlText featureText="The participants which are still in local browser memory:"/>
+        <selectUserMenu/>
+        <addPadding/>
+        <addPadding/>
+        <targetButton featureText="To the landing page" target="Menu"/> 
+        <addPadding/>
+        <addPadding/>
+        <targetButton featureText="To the admin page" target="Admin"/>   
+    </presenter>   
+    <presenter type="transmission" self="Admin" title="" next="Menu">
+        <centrePage/>
+        <sendMetadata>
+            <onSuccess>
+                <sendAllData>
+                    <onSuccess>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlText featureText="Einde van deze test."/>
+                        <addPadding/>
+                        <htmlText featureText="Bedankt voor uw deelname."/>
+                        <addPadding/>
+                        <addPadding/>
+                        <createUserButton featureText="Resultaten opsturen." target="Menu"/>
+                    </onSuccess>
+                    <onError>
+                        <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
+                        <addPadding/>
+                        <addPadding/>
+                        <targetButton featureText="Retry" target="Admin"/>
+                        <addPadding/>
+                        <addPadding/>
+                        <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
+                    </onError>
+                </sendAllData>
+            </onSuccess>
+            <onError>
+                <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
+                <addPadding/>
+                <addPadding/>
+                <targetButton featureText="Retry" target="Admin"/>
+                <addPadding/>
+                <addPadding/>
+                <createUserButton featureText="Opnieuw beginnen" target="Menu"/>
+            </onError>
+        </sendMetadata>
+    </presenter>
+    <presenter back="Menu" menuLabel="Data Management" next="DataUpload" type="metadata" self="DataManagement" title="Data Management">
+        <htmlText featureText="Participants with data in the application memory:"/>
+        <selectUserMenu/>
+    </presenter>
+    <presenter back="DataManagement" menuLabel="Data Upload" next="DataManagement" type="transmission" self="DataUpload" title="Data Upload">
+        <htmlText featureText="Uploading matadata"/>
+        <pause msToNext="100">
+            <sendMetadata>
+                <onSuccess>
+                    <htmlText featureText="Uploading data" styleName=""/>
+                    <pause msToNext="100">
+                        <sendAllData>
+                            <onSuccess>
+                                <htmlText featureText="The participant's data has been uploaded to the server" styleName=""/>
+                                <addPadding/>
+                                <addPadding/>
+                                <eraseUsersDataButton featureText="Remove the participants's data from this application" target="DataManagement"/>
+                                <addPadding/>
+                                <addPadding/>
+                                <targetButton featureText="Keep local copy of the participants's data" hotKey="" styleName="" target="DataManagement"/>
+                                <addPadding/>
+                                <addPadding/>
+                            </onSuccess>
+                            <onError>
+                                <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
+                                <addPadding/>
+                                <addPadding/>
+                                <targetButton featureText="Retry" hotKey="" styleName="" target="DataUpload"/>
+                                <addPadding/>
+                                <addPadding/>
+                                <targetButton featureText="Participant's Data Listing" hotKey="" styleName="" target="DataManagement"/>
+                                <addPadding/>
+                                <addPadding/>
+                            </onError>
+                        </sendAllData>
+                    </pause>
+                </onSuccess>
+                <onError>
+                    <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
+                    <addPadding/>
+                    <addPadding/>
+                    <targetButton featureText="Retry" hotKey="" styleName="" target="DataUpload"/>
+                    <addPadding/>
+                    <addPadding/>
+                    <targetButton featureText="Participant's Data Listing" hotKey="" styleName="" target="DataManagement"/>
+                    <addPadding/>
+                    <addPadding/>
+                </onError>
+            </sendMetadata>
+        </pause>
+    </presenter>
+    <!--todo: add an example of random pause with min max and also with ranges-->
     <presenter back="Menu" menuLabel="Over" type="debug" self="about" title="Over">
         <versionData/>
     </presenter>
