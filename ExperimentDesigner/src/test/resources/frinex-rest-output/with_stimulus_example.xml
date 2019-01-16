@@ -89,8 +89,9 @@
         <field controlledMessage="." controlledRegex=".*" postName="item" preventServerDuplicates="false" registrationField="item"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="uuid" preventServerDuplicates="false" registrationField="Invitation UUID"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="validated_uuid" preventServerDuplicates="false" registrationField="Validated UUID"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="validation_error" preventServerDuplicates="false" registrationField="Validation Error"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_id" preventServerDuplicates="false" registrationField="session id"/>
-        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_done" preventServerDuplicates="false" registrationField="session done"/>
+        <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="step_done" preventServerDuplicates="false" registrationField="session done"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_steps" preventServerDuplicates="false" registrationField="session steps"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_step" preventServerDuplicates="false" registrationField="session step"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_next_step" preventServerDuplicates="false" registrationField="session_next_step"/>
@@ -1964,23 +1965,31 @@
                                                                 <!--<htmlText featureText="Assuming the list contains audioas2 we act as if the name of this experiment is audioas2 and using setMetadataValue get the next item which is peabodyas."/>-->
                                                                 <htmlText featureText="The resulting value in &quot;session_next_step&quot; will later be used to redirect the user to that next experiment after this one is complete."/>
                                                                 <htmlText featureText="We also put the hypothetical name of this experiment &quot;audioas2&quot; into &quot;session_step&quot; for convenience."/>
-                                                                <setMetadataValue fieldName="session_next_step" replacementRegex="audioas2_([^_]*)[_$]" dataLogFormat="&lt;metadataField_session_steps&gt;"/>
+                                                                <setMetadataValue fieldName="session_next_step" replacementRegex="visualsimplereactiontime_([^_]*)[_$]" dataLogFormat="&lt;metadataField_session_steps&gt;"/>
                                                                 <setMetadataValue fieldName="session_step" dataLogFormat="audioas2"/>
                                                                 <!--// if the response uuid does not exist then transmit-->
-                                                                <transmitResults matchingRegex="uuid|session_id|session_steps|session_step|session_next_step" enabledRegex="validated_uuid" dataLogFormat="Is this UUID for this session step valid? Please respond with a 200 if it is. Otherwise a non 200 / error code will probably do.">
+                                                                <transmitResults matchingRegex="uuid|session_id|session_steps|session_step|session_next_step|validation_error" enabledRegex="validated_uuid" dataLogFormat="Is this UUID for this session step valid? Please respond with a 200 if it is and provide either validated_uuid or a variable validation_error if you want a human readable message to be shown. Otherwise a non 200 / error code will just prevent the user proceding.">
                                                                     <onError>
                                                                         <htmlText featureText="Transmitting the data for this session step failed."/>
                                                                     </onError>
                                                                     <onSuccess>
                                                                         <htmlText featureText="Transmitting the data for this session step ok"/>
-                                                                        <hasMetadataValue fieldName="uuid" matchingRegex="&lt;metadataField_validated_uuid&gt;">
+                                                                        <hasMetadataValue fieldName="validation_error" matchingRegex=".*">
                                                                             <conditionTrue>
-                                                                                <startTimer msToNext="150000" listenerId="invitationTimer"/>
-                                                                                <htmlText featureText="The the return value validated_uuid from transmitResults matches the provided uuid."/>
-                                                                                <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleStimuliScreen"/>
+                                                                                <addPadding/>
+                                                                                <htmlTokenText styleName="stimuliLabel" featureText="&lt;metadataField_validation_error&gt;"/>                                                                                
                                                                             </conditionTrue>
                                                                             <conditionFalse>
-                                                                                <htmlText featureText="The the return value validated_uuid from transmitResults does NOT match the provided uuid."/>
+                                                                                <hasMetadataValue fieldName="uuid" matchingRegex="&lt;metadataField_validated_uuid&gt;">
+                                                                                    <conditionTrue>
+                                                                                        <startTimer msToNext="150000" listenerId="invitationTimer"/>
+                                                                                        <htmlText featureText="The the return value validated_uuid from transmitResults matches the provided uuid."/>
+                                                                                        <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleStimuliScreen"/>
+                                                                                    </conditionTrue>
+                                                                                    <conditionFalse>
+                                                                                        <htmlText featureText="The the return value validated_uuid from transmitResults does NOT match the provided uuid."/>
+                                                                                    </conditionFalse>
+                                                                                </hasMetadataValue>
                                                                             </conditionFalse>
                                                                         </hasMetadataValue>
                                                                     </onSuccess>
@@ -2067,16 +2076,16 @@
                 <clearPage/>
                 <scoreAboveThreshold scoreThreshold="5">
                     <aboveThreshold>
-                        <setMetadataValue fieldName="session_done" dataLogFormat="Y"/>
+                        <setMetadataValue fieldName="step_done" dataLogFormat="Y"/>
                         <htmlText featureText="Your efforts have proved adequate."/>
                     </aboveThreshold>
                     <withinThreshold>
                         <htmlText featureText="Your efforts have proved inadequate."/>
-                        <setMetadataValue fieldName="session_done" dataLogFormat="N"/>
+                        <setMetadataValue fieldName="step_done" dataLogFormat="N"/>
                     </withinThreshold>
                 </scoreAboveThreshold>
                 <htmlText featureText="The endpoint for this data transmition is set in the listing.json file section for this experiment with the values registrationUrlStaging and registrationUrlProduction."/>
-                <transmitResults matchingRegex="uuid|session_id|session_done|session_steps|session_step" enabledRegex="validated_uuid" dataLogFormat="playerScore,playerErrors,playerPotentialScore,playerTotalScore,playerTotalErrors,playerTotalPotentialScore,playerGamesPlayed,invitationTimer\n
+                <transmitResults matchingRegex="uuid|session_id|step_done|session_steps|session_step" enabledRegex="validated_uuid" dataLogFormat="playerScore,playerErrors,playerPotentialScore,playerTotalScore,playerTotalErrors,playerTotalPotentialScore,playerGamesPlayed,invitationTimer\n
                 &lt;playerScore&gt;,&lt;playerErrors&gt;,&lt;playerPotentialScore&gt;,&lt;playerTotalScore&gt;,&lt;playerTotalErrors&gt;,&lt;playerTotalPotentialScore&gt;,&lt;playerGamesPlayed&gt;,&lt;invitationTimer&gt;">
                     <onError>
                         <htmlText featureText="Results transmition failed."/>
