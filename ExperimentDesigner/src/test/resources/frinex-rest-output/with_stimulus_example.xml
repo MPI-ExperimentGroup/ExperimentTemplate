@@ -1965,19 +1965,20 @@
                                                                 <!--<htmlText featureText="Assuming the list contains audioas2 we act as if the name of this experiment is audioas2 and using setMetadataValue get the next item which is peabodyas."/>-->
                                                                 <htmlText featureText="The resulting value in &quot;session_next_step&quot; will later be used to redirect the user to that next experiment after this one is complete."/>
                                                                 <htmlText featureText="We also put the hypothetical name of this experiment &quot;audioas2&quot; into &quot;session_step&quot; for convenience."/>
-                                                                <setMetadataValue fieldName="session_next_step" replacementRegex="visualsimplereactiontime_([^_]*)[_$]" dataLogFormat="&lt;metadataField_session_steps&gt;"/>
-                                                                <setMetadataValue fieldName="session_step" dataLogFormat="audioas2"/>
+                                                                <setMetadataValue fieldName="session_step" dataLogFormat="audioas2"/>                                                               
+                                                                <setMetadataValue fieldName="session_next_step" replacementRegex="&lt;metadataField_session_step&gt;_([^_]*)[_$]" dataLogFormat="&lt;metadataField_session_steps&gt;"/>
                                                                 <!--// if the response uuid does not exist then transmit-->
-                                                                <transmitResults matchingRegex="uuid|session_id|session_steps|session_step|session_next_step|validation_error" enabledRegex="validated_uuid" dataLogFormat="Is this UUID for this session step valid? Please respond with a 200 if it is and provide either validated_uuid or a variable validation_error if you want a human readable message to be shown. Otherwise a non 200 / error code will just prevent the user proceding.">
+                                                                <transmitResults matchingRegex="uuid|session_id|session_steps|session_step|session_next_step|validation_error" enabledRegex="validated_uuid|validation_error" dataLogFormat="Is this UUID for this session step valid? Please respond with a 200 if it is and provide either validated_uuid or a variable validation_error if you want a human readable message to be shown. Otherwise a non 200 / error code will just prevent the user proceding.">
                                                                     <onError>
                                                                         <htmlText featureText="Transmitting the data for this session step failed."/>
                                                                     </onError>
                                                                     <onSuccess>
                                                                         <htmlText featureText="Transmitting the data for this session step ok"/>
-                                                                        <hasMetadataValue fieldName="validation_error" matchingRegex=".*">
+                                                                        <hasMetadataValue fieldName="validation_error" matchingRegex=".+">
                                                                             <conditionTrue>
                                                                                 <addPadding/>
-                                                                                <htmlTokenText styleName="stimuliLabel" featureText="&lt;metadataField_validation_error&gt;"/>                                                                                
+                                                                                <addPadding/>
+                                                                                <htmlTokenText featureText="&lt;metadataField_validation_error&gt;"/>                                                                                
                                                                             </conditionTrue>
                                                                             <conditionFalse>
                                                                                 <hasMetadataValue fieldName="uuid" matchingRegex="&lt;metadataField_validated_uuid&gt;">
