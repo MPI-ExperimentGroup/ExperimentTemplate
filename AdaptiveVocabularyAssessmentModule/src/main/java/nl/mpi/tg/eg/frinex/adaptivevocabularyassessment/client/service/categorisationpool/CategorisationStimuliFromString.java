@@ -31,6 +31,7 @@ import nl.mpi.tg.eg.frinex.adaptivevocabularyassessment.client.generic.CsvRecord
 public class CategorisationStimuliFromString {
 
     //Nr;Category;Word;Syllables;Letters;SubtlexWF;Prev;PTAN;PTAF;Filename;Target_length
+    //Trial_Nr;Category;Target_Word;Syllables;Letters;SubtlexWF;Prev;PTAN;PTAF;Filename;Target_length\n"
     public String parseTrialsStringIntoXml(String csvString, String sourceStimuliDir, String baseDir, String rightCategory, String wrongCategory) throws Exception {
 
         StringBuilder builder = new StringBuilder();
@@ -41,9 +42,9 @@ public class CategorisationStimuliFromString {
 
         for (LinkedHashMap<String, String> record : records) {
 
-            String trialNumber = record.get("Nr");
+            String trialNumber = record.get("Trial_Nr");
             if (trialNumber == null) {
-                throw new IOException("Nr is undefined");
+                throw new IOException("Trial_Nr is undefined");
             } else {
                 trialNumber = trialNumber.trim();
             }
@@ -55,9 +56,9 @@ public class CategorisationStimuliFromString {
                 category = category.trim();
             }
 
-            String word = record.get("Word");
+            String word = record.get("Target_Word");
             if (word == null) {
-                throw new IOException("Word is undefined");
+                throw new IOException("Target_Word is undefined");
             } else {
                 word = word.trim();
             }
