@@ -39,7 +39,7 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 public class LocalStorage {
 
     protected final String appNameInternal;
-    private Storage dataStore = null;
+    private ObfuscatedStorage dataStore = null;
     protected final String MAX_SCORE = "maxScore";
     protected final String GAMES_PLAYED = "gamesPlayed";
     protected final String CURRENT_POTENTIAL = "currentPotential";
@@ -109,9 +109,9 @@ public class LocalStorage {
 //        FAILED_DATA = appNameInternal + ".FailedData.";
     }
 
-    private Storage loadStorage() {
+    private ObfuscatedStorage loadStorage() {
         if (dataStore == null) {
-            dataStore = Storage.getLocalStorageIfSupported();
+            dataStore = new ObfuscatedStorage().loadStorage();
         }
         return dataStore;
     }
