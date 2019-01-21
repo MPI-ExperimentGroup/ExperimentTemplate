@@ -39,6 +39,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <sendGroupMessageButton featureText="Volgende [enter]" eventTag="TextEntered" incrementPhase="1" hotKey="ENTER" repeatIncorrect="false"/>
