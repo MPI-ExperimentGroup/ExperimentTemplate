@@ -34,6 +34,7 @@
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
@@ -74,6 +75,7 @@
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
@@ -83,6 +85,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <ratingFooterButton ratingLabels="1,2,3,4,5,6,7,8,9,10" dataChannel="1">
                             <clearPage/>
@@ -109,6 +112,7 @@
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
@@ -118,6 +122,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <ratingFooterButton ratingLabels="1,2,3,4,5,6,7,8,9,10" dataChannel="1">
                             <clearPage/>
@@ -198,6 +203,7 @@
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
@@ -207,6 +213,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <ratingFooterButton ratingLabels="1,2,3,4,5,6,7,8,9,10" dataChannel="1">
                             <clearPage/>
@@ -246,6 +253,7 @@
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
@@ -255,6 +263,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <plainText featureText="the informant talks/says whatever s/he wants"/>
                         <actionButton featureText="next">
@@ -283,6 +292,7 @@
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
@@ -292,6 +302,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <plainText featureText="the informant talks/says whatever s/he wants"/>
                         <actionButton featureText="next">
@@ -320,6 +331,7 @@
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
@@ -329,6 +341,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <plainText featureText="the informant talks/says whatever s/he wants"/>
                         <actionButton featureText="next">
@@ -357,6 +370,7 @@
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
@@ -366,6 +380,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <ratingFooterButton ratingLabels="1,2,3,4,5,6,7,8,9,10" dataChannel="1">
                             <clearPage/>
@@ -392,6 +407,7 @@
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
@@ -401,6 +417,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <ratingFooterButton ratingLabels="1,2,3,4,5,6,7,8,9,10" dataChannel="1">
                             <clearPage/>
@@ -427,6 +444,7 @@
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
@@ -436,6 +454,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <ratingFooterButton ratingLabels="1,2,3,4,5,6,7,8,9,10" dataChannel="1">
                             <clearPage/>
@@ -462,6 +481,7 @@
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
@@ -471,6 +491,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <ratingFooterButton ratingLabels="1,2,3,4,5,6,7,8,9,10" dataChannel="1">
                             <clearPage/>
@@ -497,6 +518,7 @@
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
@@ -506,6 +528,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <ratingFooterButton ratingLabels="1,2,3,4,5,6,7,8,9,10" dataChannel="1">
                             <clearPage/>
