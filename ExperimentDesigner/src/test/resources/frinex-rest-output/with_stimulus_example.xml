@@ -1929,7 +1929,7 @@
             </conditionFalse>
         </hasMetadataValue>
     </presenter>
-    <presenter back="Menu" menuLabel="InvitationSessionStepsExample" type="stimulus" self="InvitationSessionStepsExample" title="Invitation Session Steps Example">
+    <presenter back="Menu" menuLabel="InvitationSessionStepsExample" type="transmission" self="InvitationSessionStepsExample" title="Invitation Session Steps Example">
         <hasMetadataValue fieldName="validated_uuid" matchingRegex="...*">
             <conditionTrue>
                 <htmlText featureText="A &quot;validated_uuid&quot; has been found and it must match the provided &quot;uuid&quot;."/>
@@ -1983,7 +1983,6 @@
                                                                             <conditionFalse>
                                                                                 <hasMetadataValue fieldName="uuid" matchingRegex="&lt;metadataField_validated_uuid&gt;">
                                                                                     <conditionTrue>
-                                                                                        <startTimer msToNext="150000" listenerId="invitationTimer"/>
                                                                                         <htmlText featureText="The the return value validated_uuid from transmitResults matches the provided uuid."/>
                                                                                         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleStimuliScreen"/>
                                                                                     </conditionTrue>
@@ -2033,6 +2032,7 @@
         <!--<htmlText featureText="Valid get parameters for this screen for example: &quot;?uuid=98dfc59e-f4bf-46c1-8b62-48f12ebe7c29&amp;session_id=6&amp;session_steps=audiosimplereactiontime_lilbq4_audioas2_peabodyas_audiononwordmonitoring_grammaras_visualsimplereactiontime#InvitationSessionStepsExample&quot;.&lt;br/&gt;You can append these GET parameters to the URL and reload this page."/>-->
     </presenter>
     <presenter back="Menu" menuLabel="InvitationCodeExampleStimuliScreen" next="InvitationCodeExampleCompletion" type="stimulus" self="InvitationCodeExampleStimuliScreen" title="InvitationCodeExampleStimuliScreen">
+        <startTimer msToNext="150000" listenerId="invitationTimer"/>
         <loadStimulus eventTag="First Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
                 <clearPage/>
@@ -2085,16 +2085,6 @@
                         <setMetadataValue fieldName="step_done" dataLogFormat="N"/>
                     </withinThreshold>
                 </scoreAboveThreshold>
-                <htmlText featureText="The endpoint for this data transmition is set in the listing.json file section for this experiment with the values registrationUrlStaging and registrationUrlProduction."/>
-                <transmitResults matchingRegex="uuid|session_id|step_done|session_steps|session_step" enabledRegex="validated_uuid" dataLogFormat="playerScore,playerErrors,playerPotentialScore,playerTotalScore,playerTotalErrors,playerTotalPotentialScore,playerGamesPlayed,invitationTimer\n
-                &lt;playerScore&gt;,&lt;playerErrors&gt;,&lt;playerPotentialScore&gt;,&lt;playerTotalScore&gt;,&lt;playerTotalErrors&gt;,&lt;playerTotalPotentialScore&gt;,&lt;playerGamesPlayed&gt;,&lt;invitationTimer&gt;">
-                    <onError>
-                        <htmlText featureText="Results transmition failed."/>
-                    </onError>
-                    <onSuccess>
-                        <htmlText featureText="Results transmitted ok."/>
-                    </onSuccess>
-                </transmitResults>
                 <addPadding/>
                 <actionButton featureText="clearCurrentScore">
                     <clearCurrentScore/>
@@ -2107,7 +2097,7 @@
                 </actionButton>
                 <addPadding/>
                 <addPadding/>
-                <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleCompletion"/>
+                <targetButton featureText="transmitResults" target="InvitationCodeExampleCompletion"/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -2118,6 +2108,34 @@
     <presenter menuLabel="InvitationCodeExampleCompletion" type="transmission" self="InvitationCodeExampleCompletion" title="Invitation Code Example Completion">
         <generateCompletionCode>
             <onSuccess>
+                <htmlText featureText="The endpoint for this data transmition is set in the listing.json file section for this experiment with the values registrationUrlStaging and registrationUrlProduction."/>
+                <transmitResults matchingRegex="uuid|session_id|step_done|session_steps|session_step" enabledRegex="validated_uuid" dataLogFormat="playerScore,playerErrors,playerPotentialScore,playerTotalScore,playerTotalErrors,playerTotalPotentialScore,playerGamesPlayed,invitationTimer\n
+                &lt;playerScore&gt;,&lt;playerErrors&gt;,&lt;playerPotentialScore&gt;,&lt;playerTotalScore&gt;,&lt;playerTotalErrors&gt;,&lt;playerTotalPotentialScore&gt;,&lt;playerGamesPlayed&gt;,&lt;invitationTimer&gt;">
+                    <onError>
+                        <htmlText featureText="Results transmition failed."/>
+                    </onError>
+                    <onSuccess>
+                        <htmlText featureText="Results transmitted ok."/>
+                        <!--generateCompletionCode should have already send all metadata and data so we can skip these steps here-->
+                        <!-- <sendMetadata>
+                <onSuccess>
+                    <sendAllData>
+                        <onSuccess>-->
+                        <actionButton featureText="redirectToUrl">
+                            <redirectToUrl src="/&lt;metadataField_session_next_step&gt;?uuid=&lt;metadataField_validated_uuid&gt;&amp;session_steps=&lt;metadataField_session_steps&gt;"/>
+                        </actionButton>                    
+                        <!-- </onSuccess>
+                                    <onError>
+                                        <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
+                                    </onError>
+                                </sendAllData>
+                            </onSuccess>
+                            <onError>
+                                <plainText featureText="Cannot connect to the server, please check your internet connection and/or upload data later. Do not clean the browser's cache."/>
+                            </onError>
+                        </sendMetadata>-->
+                    </onSuccess>
+                </transmitResults>
                 <!-- <htmlText featureText="This is the end of the experiment. &lt;br/&gt;&lt;br/&gt;Please keep this completion code as verification that you have done the experiment:&lt;br/&gt;"/>
                 <addPadding/>
                 <displayCompletionCode/>
