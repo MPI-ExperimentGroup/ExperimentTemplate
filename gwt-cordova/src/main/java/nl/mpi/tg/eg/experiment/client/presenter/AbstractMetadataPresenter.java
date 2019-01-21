@@ -29,7 +29,6 @@ import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
-import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.exception.MetadataFieldException;
 import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
@@ -41,6 +40,7 @@ import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
+import nl.mpi.tg.eg.experiment.client.service.TimerService;
 
 /**
  * @since Oct 21, 2014 11:50:56 AM (creation date)
@@ -48,15 +48,10 @@ import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
  */
 public abstract class AbstractMetadataPresenter extends AbstractPresenter implements Presenter {
 
-    final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
-    protected final UserResults userResults;
     private final DataSubmissionService submissionService;
-    final LocalStorage localStorage;
 
-    public AbstractMetadataPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage) {
-        super(widgetTag, new MetadataView());
-        this.localStorage = localStorage;
-        this.userResults = userResults;
+    public AbstractMetadataPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
+        super(widgetTag, new MetadataView(), userResults, localStorage, timerService);
         this.submissionService = submissionService;
     }
 
