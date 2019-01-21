@@ -48,7 +48,7 @@ import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 public abstract class LocalStoragePresenter extends AbstractPresenter {
 
     public LocalStoragePresenter(RootLayoutPanel widgetTag) {
-        super(widgetTag, new ComplexView());
+        super(widgetTag, new ComplexView(), null, null, null);
     }
 
     @Override
