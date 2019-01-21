@@ -18,7 +18,6 @@
 package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.core.client.Duration;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
@@ -42,7 +41,6 @@ import nl.mpi.kinnate.svg.SvgUpdateHandler;
 import nl.mpi.kinnate.ui.KinTypeStringProvider;
 import nl.mpi.kinnate.uniqueidentifiers.UniqueIdentifier;
 import nl.mpi.kinoath.graph.DefaultSorter;
-import nl.mpi.tg.eg.experiment.client.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
@@ -53,6 +51,7 @@ import nl.mpi.tg.eg.experiment.client.presenter.kin.DiagramSettingsGwt;
 import nl.mpi.tg.eg.experiment.client.presenter.kin.KinDocumentGwt;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
+import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.experiment.client.view.KinTypeView;
 import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 
@@ -62,21 +61,16 @@ import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
  */
 public abstract class AbstractKinDiagramPresenter extends AbstractPresenter implements Presenter {
 
-    protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     private final DataSubmissionService submissionService;
-    private final LocalStorage localStorage;
-    final UserResults userResults;
     Stimulus currentStimulus = null;
     private final Duration duration;
     final ArrayList<ButtonBase> buttonList = new ArrayList<>();
     private static final String RHOMBUS = "rhombus";
 
-    public AbstractKinDiagramPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage) {
-        super(widgetTag, new KinTypeView());
+    public AbstractKinDiagramPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
+        super(widgetTag, new KinTypeView(), userResults, localStorage, timerService);
         duration = new Duration();
         this.submissionService = submissionService;
-        this.userResults = userResults;
-        this.localStorage = localStorage;
     }
 
     public void kinTypeStringDiagram(final AppEventListner appEventListner, final int postLoadMs, final TimedStimulusListener timedStimulusListener, String kinTypeString) {
