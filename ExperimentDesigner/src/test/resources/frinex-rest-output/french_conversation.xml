@@ -29,6 +29,7 @@
         <audioButton eventTag="bienvenue" src="bienvenue" hotKey="" autoPlay="false" poster="audiobutton.jpg">
             <mediaLoaded/>
             <mediaLoadFailed/>
+            <mediaPlaybackStarted/>
             <mediaPlaybackComplete>
                 <actionButton featureText="suivant [ barre d'espacement ]">
                     <gotoNextPresenter/>
@@ -49,6 +50,7 @@
                 <stimulusAudio msToNext="100" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <addPadding/>
                         <stimulusHasRatingOptions>
@@ -95,6 +97,7 @@
                 <stimulusPresent msToNext="100" maxHeight="80" percentOfPage="0" animate="none" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <addPadding/>
                         <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
