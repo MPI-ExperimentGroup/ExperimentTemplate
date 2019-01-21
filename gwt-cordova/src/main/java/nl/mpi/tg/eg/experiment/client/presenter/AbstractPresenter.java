@@ -38,11 +38,19 @@ import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
+import nl.mpi.tg.eg.experiment.client.model.MetadataField;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
+import nl.mpi.tg.eg.experiment.client.service.GroupParticipantService;
+import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
+import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
+import nl.mpi.tg.eg.experiment.client.service.TimerService;
+import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.SimpleView;
 import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Oct 28, 2014 3:32:10 PM (creation date)
@@ -51,6 +59,7 @@ import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 public abstract class AbstractPresenter implements Presenter {
 
     protected final Messages messages = GWT.create(Messages.class);
+    protected final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     protected final RootLayoutPanel widgetTag;
     final protected SimpleView simpleView;
@@ -61,10 +70,17 @@ public abstract class AbstractPresenter implements Presenter {
     private PresenterEventListner windowClosingEventListner = null;
     private final Timer audioTickerTimer;
     protected ApplicationState nextState;
+    protected final UserResults userResults;
+    protected final LocalStorage localStorage;
+    protected final TimerService timerService;
+    protected GroupParticipantService groupParticipantService = null;
 
-    public AbstractPresenter(RootLayoutPanel widgetTag, SimpleView simpleView) {
+    public AbstractPresenter(RootLayoutPanel widgetTag, SimpleView simpleView, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
         this.widgetTag = widgetTag;
         this.simpleView = simpleView;
+        this.userResults = userResults;
+        this.timerService = timerService;
+        this.localStorage = localStorage;
         audioTickerTimer = new Timer() {
             public void run() {
 //                isAudioRecording();
@@ -151,6 +167,19 @@ public abstract class AbstractPresenter implements Presenter {
 
     protected void addHtmlText(String textString, String styleName) {
         ((ComplexView) simpleView).addHtmlText(textString, styleName);
+    }
+
+    public void htmlTokenText(final Stimulus currentStimulus, final String textString, final String styleName) {
+        ((TimedStimulusView) simpleView).addHtmlText(new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(textString), styleName);
+        // the submitTagValue previously used here by the multiparticipant configuration has been migrated to logTokenText which should function the sames for the multiparticipant experiment except that it now uses submitTagPairValue
+    }
+
+    public void htmlTokenText(final Stimulus currentStimulus, String textString) {
+        htmlTokenText(currentStimulus, textString, null);
+    }
+
+    public void htmlText(String textString, final String styleName) {
+        ((TimedStimulusView) simpleView).addHtmlText(textString, styleName);
     }
 
     protected void image(final String imageString, int postLoadMs, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener) {
@@ -326,6 +355,23 @@ public abstract class AbstractPresenter implements Presenter {
             }
         }
 //        ((TimedStimulusView) simpleView).addText("enableButtonGroup: " + duration.elapsedMillis() + "ms");
+    }
+
+    public void hasMetadataValue(final Stimulus currentStimulus, MetadataField metadataField, final String inputRegex, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse) {
+        final String matchingRegex = new HtmlTokenFormatter(null, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(inputRegex);
+        final String valueString = userResults.getUserData().getMetadataValue(metadataField);
+        if (valueString.matches(matchingRegex)) {
+            conditionTrue.postLoadTimerFired();
+        } else {
+            conditionFalse.postLoadTimerFired();
+        }
+    }
+
+    public void setMetadataValue(final Stimulus currentStimulus, MetadataField metadataField, final String dataLogFormat, final String replacementRegex) {
+        final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray);
+        final String dataLogString = (replacementRegex == null) ? htmlTokenFormatter.formatString(dataLogFormat) : htmlTokenFormatter.formatReplaceString(dataLogFormat, replacementRegex);
+        userResults.getUserData().setMetadataValue(metadataField, dataLogString);
+        localStorage.storeData(userResults, metadataFieldProvider);
     }
 
     @Override
