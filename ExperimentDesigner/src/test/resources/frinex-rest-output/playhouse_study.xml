@@ -65,10 +65,12 @@
                             <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete>
                                             <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
@@ -76,10 +78,12 @@
                                                 <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                             <mediaLoaded/>
                                                             <mediaLoadFailed/>
+                                                            <mediaPlaybackStarted/>
                                                             <mediaPlaybackComplete>
                                                                 <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                                                 <cancelPauseTimers/>
@@ -111,6 +115,7 @@
                                         <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
                                                 <touchInputReportSubmit dataChannel="3"/>
                                                 <nextStimulus repeatIncorrect="false"/>
@@ -134,6 +139,7 @@
                                         <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
                                                 <touchInputReportSubmit dataChannel="3"/>
                                                 <nextStimulus repeatIncorrect="false"/>
@@ -157,6 +163,7 @@
                                         <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
                                                 <touchInputReportSubmit dataChannel="3"/>
                                                 <nextStimulus repeatIncorrect="false"/>
@@ -229,10 +236,12 @@
                             <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete>
                                             <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
@@ -240,10 +249,12 @@
                                                 <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                             <mediaLoaded/>
                                                             <mediaLoadFailed/>
+                                                            <mediaPlaybackStarted/>
                                                             <mediaPlaybackComplete>
                                                                 <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                                                 <cancelPauseTimers/>
@@ -275,6 +286,7 @@
                                         <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
                                                 <touchInputReportSubmit dataChannel="3"/>
                                                 <nextStimulus repeatIncorrect="false"/>
@@ -298,6 +310,7 @@
                                         <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
                                                 <touchInputReportSubmit dataChannel="3"/>
                                                 <nextStimulus repeatIncorrect="false"/>
@@ -321,6 +334,7 @@
                                         <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
                                                 <touchInputReportSubmit dataChannel="3"/>
                                                 <nextStimulus repeatIncorrect="false"/>
@@ -385,6 +399,7 @@
             <audioButton eventTag="BeginMatching" src="BeginMatching" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <mediaLoaded/>
                 <mediaLoadFailed/>
+                <mediaPlaybackStarted/>
                 <mediaPlaybackComplete>
                     <pause msToNext="2000">
                         <loadStimulus eventTag="Matching1" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
@@ -397,10 +412,12 @@
                                     <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete>
                                             <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                 <mediaLoaded/>
                                                 <mediaLoadFailed/>
+                                                <mediaPlaybackStarted/>
                                                 <mediaPlaybackComplete>
                                                     <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                                     <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
@@ -408,10 +425,12 @@
                                                         <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                             <mediaLoaded/>
                                                             <mediaLoadFailed/>
+                                                            <mediaPlaybackStarted/>
                                                             <mediaPlaybackComplete>
                                                                 <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                                     <mediaLoaded/>
                                                                     <mediaLoadFailed/>
+                                                                    <mediaPlaybackStarted/>
                                                                     <mediaPlaybackComplete>
                                                                         <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                                                         <cancelPauseTimers/>
@@ -443,6 +462,7 @@
                                                 <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <touchInputReportSubmit dataChannel="3"/>
                                                         <nextStimulus repeatIncorrect="false"/>
@@ -466,6 +486,7 @@
                                                 <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <touchInputReportSubmit dataChannel="3"/>
                                                         <nextStimulus repeatIncorrect="false"/>
@@ -489,6 +510,7 @@
                                                 <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <touchInputReportSubmit dataChannel="3"/>
                                                         <nextStimulus repeatIncorrect="false"/>
@@ -555,6 +577,7 @@
             <audioButton eventTag="ChangeMatching" src="ChangeMatching" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <mediaLoaded/>
                 <mediaLoadFailed/>
+                <mediaPlaybackStarted/>
                 <mediaPlaybackComplete>
                     <pause msToNext="2000">
                         <loadStimulus eventTag="Matching2" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
@@ -567,10 +590,12 @@
                                     <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete>
                                             <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                 <mediaLoaded/>
                                                 <mediaLoadFailed/>
+                                                <mediaPlaybackStarted/>
                                                 <mediaPlaybackComplete>
                                                     <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                                     <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
@@ -578,10 +603,12 @@
                                                         <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                             <mediaLoaded/>
                                                             <mediaLoadFailed/>
+                                                            <mediaPlaybackStarted/>
                                                             <mediaPlaybackComplete>
                                                                 <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                                     <mediaLoaded/>
                                                                     <mediaLoadFailed/>
+                                                                    <mediaPlaybackStarted/>
                                                                     <mediaPlaybackComplete>
                                                                         <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                                                         <cancelPauseTimers/>
@@ -613,6 +640,7 @@
                                                 <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <touchInputReportSubmit dataChannel="3"/>
                                                         <nextStimulus repeatIncorrect="false"/>
@@ -636,6 +664,7 @@
                                                 <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <touchInputReportSubmit dataChannel="3"/>
                                                         <nextStimulus repeatIncorrect="false"/>
@@ -659,6 +688,7 @@
                                                 <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <touchInputReportSubmit dataChannel="3"/>
                                                         <nextStimulus repeatIncorrect="false"/>
@@ -725,6 +755,7 @@
             <audioButton eventTag="BeginTest" src="BeginTest" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <mediaLoaded/>
                 <mediaLoadFailed/>
+                <mediaPlaybackStarted/>
                 <mediaPlaybackComplete>
                     <pause msToNext="2000">
                         <loadStimulus eventTag="Test3" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
@@ -737,6 +768,7 @@
                                     <stimulusAudio msToNext="0" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete>
                                             <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
@@ -744,6 +776,7 @@
                                                 <stimulusAudio msToNext="3000" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                                         <cancelPauseTimers/>
@@ -771,6 +804,7 @@
                                                 <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <touchInputReportSubmit dataChannel="3"/>
                                                         <nextStimulus repeatIncorrect="false"/>
@@ -794,6 +828,7 @@
                                                 <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <touchInputReportSubmit dataChannel="3"/>
                                                         <nextStimulus repeatIncorrect="false"/>
@@ -817,6 +852,7 @@
                                                 <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <touchInputReportSubmit dataChannel="3"/>
                                                         <nextStimulus repeatIncorrect="false"/>
@@ -883,6 +919,7 @@
             <audioButton eventTag="ChangeTest" src="ChangeTest" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <mediaLoaded/>
                 <mediaLoadFailed/>
+                <mediaPlaybackStarted/>
                 <mediaPlaybackComplete>
                     <pause msToNext="2000">
                         <loadStimulus eventTag="Test4" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
@@ -895,6 +932,7 @@
                                     <stimulusAudio msToNext="0" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete>
                                             <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
@@ -902,6 +940,7 @@
                                                 <stimulusAudio msToNext="3000" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                                         <cancelPauseTimers/>
@@ -929,6 +968,7 @@
                                                 <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <touchInputReportSubmit dataChannel="3"/>
                                                         <nextStimulus repeatIncorrect="false"/>
@@ -952,6 +992,7 @@
                                                 <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <touchInputReportSubmit dataChannel="3"/>
                                                         <nextStimulus repeatIncorrect="false"/>
@@ -975,6 +1016,7 @@
                                                 <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <touchInputReportSubmit dataChannel="3"/>
                                                         <nextStimulus repeatIncorrect="false"/>
