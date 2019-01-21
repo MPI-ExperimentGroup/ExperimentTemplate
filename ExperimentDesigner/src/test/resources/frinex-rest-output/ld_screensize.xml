@@ -53,6 +53,7 @@
         <audioButton eventTag="intro_1" src="intro_1" hotKey="ENTER" styleName="titleBarButton" autoPlay="false" poster="audiobutton.jpg">
             <mediaLoaded/>
             <mediaLoadFailed/>
+            <mediaPlaybackStarted/>
             <mediaPlaybackComplete>
                 <pause msToNext="0">
                     <gotoNextPresenter/>
@@ -66,6 +67,7 @@
         <audioButton eventTag="intro_2" src="intro_2" hotKey="ENTER" styleName="titleBarButton" autoPlay="false" poster="audiobutton.jpg">
             <mediaLoaded/>
             <mediaLoadFailed/>
+            <mediaPlaybackStarted/>
             <mediaPlaybackComplete>
                 <pause msToNext="0">
                     <gotoNextPresenter/>
@@ -79,6 +81,7 @@
         <audioButton eventTag="intro_3" src="intro_3" hotKey="ENTER" styleName="titleBarButton" autoPlay="false" poster="audiobutton.jpg">
             <mediaLoaded/>
             <mediaLoadFailed/>
+            <mediaPlaybackStarted/>
             <mediaPlaybackComplete>
                 <pause msToNext="0">
                     <gotoNextPresenter/>
@@ -95,24 +98,29 @@
                     <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                         <mediaLoaded/>
                         <mediaLoadFailed/>
+                        <mediaPlaybackStarted/>
                         <mediaPlaybackComplete>
                             <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete/>
                             </stimulusCodeAudio>
                             <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" loop="false" styleName="borderedVideoLeft" dataChannel="1" autoPlay="true" mediaId="media" showControls="false" maxWidth="100">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete/>
                             </stimulusCodeVideo>
                             <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" loop="false" styleName="borderedVideoRight" dataChannel="1" autoPlay="true" mediaId="media" showControls="false" maxWidth="100">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" dataChannel="1" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete>
                                             <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="" groupId="leftButtonGroup" styleName="leftOverlayButton" dataChannel="2">
                                                 <disableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
@@ -187,6 +195,7 @@
             <audioButton eventTag="room_1" src="room_1" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <mediaLoaded/>
                 <mediaLoadFailed/>
+                <mediaPlaybackStarted/>
                 <mediaPlaybackComplete>
                     <pause msToNext="2000">
                         <loadStimulus eventTag="Room 1" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
@@ -196,24 +205,29 @@
                                 <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                     <mediaLoaded/>
                                     <mediaLoadFailed/>
+                                    <mediaPlaybackStarted/>
                                     <mediaPlaybackComplete>
                                         <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete/>
                                         </stimulusCodeAudio>
                                         <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" loop="false" styleName="borderedVideoLeft" dataChannel="1" autoPlay="true" mediaId="media" showControls="false" maxWidth="100">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete/>
                                         </stimulusCodeVideo>
                                         <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" loop="false" styleName="borderedVideoRight" dataChannel="1" autoPlay="true" mediaId="media" showControls="false" maxWidth="100">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
                                                 <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" dataChannel="1" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="" groupId="leftButtonGroup" styleName="leftOverlayButton" dataChannel="2">
                                                             <disableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
@@ -221,6 +235,7 @@
                                                             <stimulusCodeAudio msToNext="500" codeFormat="Correct" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                                 <mediaLoaded/>
                                                                 <mediaLoadFailed/>
+                                                                <mediaPlaybackStarted/>
                                                                 <mediaPlaybackComplete>
                                                                     <enableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
                                                                 </mediaPlaybackComplete>
@@ -232,6 +247,7 @@
                                                             <stimulusCodeAudio msToNext="500" codeFormat="Correct" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                                 <mediaLoaded/>
                                                                 <mediaLoadFailed/>
+                                                                <mediaPlaybackStarted/>
                                                                 <mediaPlaybackComplete>
                                                                     <enableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
                                                                 </mediaPlaybackComplete>
@@ -302,6 +318,7 @@
             <audioButton eventTag="room_2" src="room_2" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <mediaLoaded/>
                 <mediaLoadFailed/>
+                <mediaPlaybackStarted/>
                 <mediaPlaybackComplete>
                     <pause msToNext="2000">
                         <loadStimulus eventTag="Room 2" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
@@ -311,24 +328,29 @@
                                 <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                     <mediaLoaded/>
                                     <mediaLoadFailed/>
+                                    <mediaPlaybackStarted/>
                                     <mediaPlaybackComplete>
                                         <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete/>
                                         </stimulusCodeAudio>
                                         <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" loop="false" styleName="borderedVideoLeft" dataChannel="1" autoPlay="true" mediaId="media" showControls="false" maxWidth="100">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete/>
                                         </stimulusCodeVideo>
                                         <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" loop="false" styleName="borderedVideoRight" dataChannel="1" autoPlay="true" mediaId="media" showControls="false" maxWidth="100">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
                                                 <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" dataChannel="1" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="" groupId="leftButtonGroup" styleName="leftOverlayButton" dataChannel="2">
                                                             <disableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
@@ -336,6 +358,7 @@
                                                             <stimulusCodeAudio msToNext="500" codeFormat="Correct" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                                 <mediaLoaded/>
                                                                 <mediaLoadFailed/>
+                                                                <mediaPlaybackStarted/>
                                                                 <mediaPlaybackComplete>
                                                                     <enableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
                                                                 </mediaPlaybackComplete>
@@ -347,6 +370,7 @@
                                                             <stimulusCodeAudio msToNext="500" codeFormat="Correct" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                                 <mediaLoaded/>
                                                                 <mediaLoadFailed/>
+                                                                <mediaPlaybackStarted/>
                                                                 <mediaPlaybackComplete>
                                                                     <enableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
                                                                 </mediaPlaybackComplete>
@@ -417,6 +441,7 @@
             <audioButton eventTag="room_3" src="room_3" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <mediaLoaded/>
                 <mediaLoadFailed/>
+                <mediaPlaybackStarted/>
                 <mediaPlaybackComplete>
                     <pause msToNext="2000">
                         <loadStimulus eventTag="Room 3" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
@@ -426,24 +451,29 @@
                                 <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                     <mediaLoaded/>
                                     <mediaLoadFailed/>
+                                    <mediaPlaybackStarted/>
                                     <mediaPlaybackComplete>
                                         <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete/>
                                         </stimulusCodeAudio>
                                         <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" loop="false" styleName="borderedVideoLeft" dataChannel="1" autoPlay="true" mediaId="media" showControls="false" maxWidth="100">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete/>
                                         </stimulusCodeVideo>
                                         <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" loop="false" styleName="borderedVideoRight" dataChannel="1" autoPlay="true" mediaId="media" showControls="false" maxWidth="100">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
                                                 <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" dataChannel="1" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="" groupId="leftButtonGroup" styleName="leftOverlayButton" dataChannel="2">
                                                             <disableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
@@ -451,6 +481,7 @@
                                                             <stimulusCodeAudio msToNext="500" codeFormat="Correct" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                                 <mediaLoaded/>
                                                                 <mediaLoadFailed/>
+                                                                <mediaPlaybackStarted/>
                                                                 <mediaPlaybackComplete>
                                                                     <enableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
                                                                 </mediaPlaybackComplete>
@@ -462,6 +493,7 @@
                                                             <stimulusCodeAudio msToNext="500" codeFormat="Correct" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                                 <mediaLoaded/>
                                                                 <mediaLoadFailed/>
+                                                                <mediaPlaybackStarted/>
                                                                 <mediaPlaybackComplete>
                                                                     <enableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
                                                                 </mediaPlaybackComplete>
@@ -532,6 +564,7 @@
             <audioButton eventTag="room_4" src="room_4" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="intro_1.jpg">
                 <mediaLoaded/>
                 <mediaLoadFailed/>
+                <mediaPlaybackStarted/>
                 <mediaPlaybackComplete>
                     <pause msToNext="2000">
                         <loadStimulus eventTag="Room 4" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
@@ -541,24 +574,29 @@
                                 <stimulusCodeAudio msToNext="1000" codeFormat="&lt;code&gt;_1" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                     <mediaLoaded/>
                                     <mediaLoadFailed/>
+                                    <mediaPlaybackStarted/>
                                     <mediaPlaybackComplete>
                                         <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_2" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete/>
                                         </stimulusCodeAudio>
                                         <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_L" percentOfPage="0" loop="false" styleName="borderedVideoLeft" dataChannel="1" autoPlay="true" mediaId="media" showControls="false" maxWidth="100">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete/>
                                         </stimulusCodeVideo>
                                         <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;_R" percentOfPage="0" loop="false" styleName="borderedVideoRight" dataChannel="1" autoPlay="true" mediaId="media" showControls="false" maxWidth="100">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
                                                 <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_3" dataChannel="1" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
                                                         <touchInputStimulusButton featureText="Left Overlay Button" eventTag="Left" src="" groupId="leftButtonGroup" styleName="leftOverlayButton" dataChannel="2">
                                                             <disableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
@@ -566,6 +604,7 @@
                                                             <stimulusCodeAudio msToNext="500" codeFormat="Correct" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                                 <mediaLoaded/>
                                                                 <mediaLoadFailed/>
+                                                                <mediaPlaybackStarted/>
                                                                 <mediaPlaybackComplete>
                                                                     <enableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
                                                                 </mediaPlaybackComplete>
@@ -577,6 +616,7 @@
                                                             <stimulusCodeAudio msToNext="500" codeFormat="Correct" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                                 <mediaLoaded/>
                                                                 <mediaLoadFailed/>
+                                                                <mediaPlaybackStarted/>
                                                                 <mediaPlaybackComplete>
                                                                     <enableButtonGroup matchingRegex="leftButtonGroup|rightButtonGroup"/>
                                                                 </mediaPlaybackComplete>
@@ -656,6 +696,7 @@
         <audioButton eventTag="room_5" src="room_5" hotKey="R1_MA_A" styleName="titleBarButton" autoPlay="true" poster="audiobutton.jpg">
             <mediaLoaded/>
             <mediaLoadFailed/>
+            <mediaPlaybackStarted/>
             <mediaPlaybackComplete>
                 <backgroundImage msToNext="0" src="Playroom.jpg" styleName="zoomToPlayroom"/>
                 <table styleName="titleBarButton">
