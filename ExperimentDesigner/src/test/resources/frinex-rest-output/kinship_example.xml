@@ -49,6 +49,7 @@
                 <stimulusCodeVideo msToNext="100" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" loop="false" styleName="" autoPlay="true" mediaId="media" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <clearPage/>
                         <centrePage/>
@@ -56,6 +57,7 @@
                             <stimulusAudio msToNext="100" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
