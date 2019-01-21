@@ -44,6 +44,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <addPadding/>
                         <ratingButton ratingLabelRight="" ratingLabels="zin compleet,zin onvolledig" dataChannel="1" ratingLabelLeft="">
