@@ -18,7 +18,6 @@
 package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.core.client.Duration;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
@@ -26,7 +25,6 @@ import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.List;
 import nl.mpi.tg.eg.experiment.client.ApplicationController;
-import nl.mpi.tg.eg.experiment.client.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
@@ -41,7 +39,12 @@ import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
-import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
+import nl.mpi.tg.eg.experiment.client.service.TimerService;
+import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.RegistrationException;
+import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.RegistrationListener;
+import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.RegistrationService;
+import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
+import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Jul 16, 2015 11:05:26 AM (creation date)
@@ -49,25 +52,34 @@ import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
  */
 public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter implements Presenter {
 
-    protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
-    final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
     private final DataSubmissionService submissionService;
-    final UserResults userResults;
     private final Duration duration;
-    final LocalStorage localStorage;
 
-    public AbstractDataSubmissionPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage) {
-        super(widgetTag, new ComplexView());
+    public AbstractDataSubmissionPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
+        super(widgetTag, new ComplexView(), userResults, localStorage, timerService);
         duration = new Duration();
-        this.localStorage = localStorage;
         this.submissionService = submissionService;
-        this.userResults = userResults;
     }
 
     @Override
     public void setState(final AppEventListner appEventListner, ApplicationController.ApplicationState prevState, final ApplicationController.ApplicationState nextState) {
         super.setState(appEventListner, prevState, null);
         this.nextState = nextState;
+    }
+
+    public void redirectToUrl(final String targetUrl/*, final boolean submitDataFirst*/) {
+        submissionService.submitAllData(userResults, new DataSubmissionListener() {
+            @Override
+            public void scoreSubmissionFailed(DataSubmissionException exception) {
+//                onError.postLoadTimerFired();
+                Window.Location.replace(targetUrl);
+            }
+
+            @Override
+            public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                Window.Location.replace(targetUrl);
+            }
+        });
     }
 
     public void displayCompletionCode() {
@@ -120,6 +132,23 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter 
 
             @Override
             public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                onSuccess.postLoadTimerFired();
+            }
+        });
+    }
+
+    public void transmitResults(final Stimulus currentStimulus, final String sendingRegex, final String receivingRegex, final String dataLogFormat, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
+        final String dataLogFormatted = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(dataLogFormat);
+        new RegistrationService().submitRegistration(userResults, sendingRegex, receivingRegex, dataLogFormatted, new RegistrationListener() {
+            @Override
+            public void registrationFailed(RegistrationException exception) {
+                onError.postLoadTimerFired();
+            }
+
+            @Override
+            public void registrationComplete() {
+                // because the received data can be used to set metadata fields, we store that data here
+                localStorage.storeData(userResults, metadataFieldProvider);
                 onSuccess.postLoadTimerFired();
             }
         });
