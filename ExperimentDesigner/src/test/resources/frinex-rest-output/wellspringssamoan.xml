@@ -54,6 +54,7 @@
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
@@ -82,6 +83,7 @@
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
@@ -91,6 +93,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <plainText featureText="Askem long man o woman wea i toktok se i talem nem blong wanem i stap lo foto long lanwis blong hem."/>
                         <actionButton featureText="’Uma (finished)">
