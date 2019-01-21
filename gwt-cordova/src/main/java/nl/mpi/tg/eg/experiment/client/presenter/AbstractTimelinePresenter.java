@@ -30,6 +30,7 @@ import nl.mpi.tg.eg.experiment.client.service.DataFactory;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.StimulusProvider;
+import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.experiment.client.util.GeneratedStimulusProvider;
 import nl.mpi.tg.eg.experiment.client.view.AnnotationTimelinePanel;
 import nl.mpi.tg.eg.experiment.client.view.AnnotationTimelineView;
@@ -43,14 +44,10 @@ public abstract class AbstractTimelinePresenter extends AbstractPresenter implem
 
     DataFactory dataFactory = GWT.create(DataFactory.class);
     private final StimulusProvider stimulusProvider;
-    private final LocalStorage localStorage;
-    private final UserResults userResults;
     private String storageTag = "temp_tag";
 
-    public AbstractTimelinePresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage) {
-        super(widgetTag, new AnnotationTimelineView());
-        this.localStorage = localStorage;
-        this.userResults = userResults;
+    public AbstractTimelinePresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
+        super(widgetTag, new AnnotationTimelineView(), userResults, localStorage, timerService);
         this.stimulusProvider = new nl.mpi.tg.eg.experiment.client.service.StimulusProvider(GeneratedStimulusProvider.values);
     }
 
