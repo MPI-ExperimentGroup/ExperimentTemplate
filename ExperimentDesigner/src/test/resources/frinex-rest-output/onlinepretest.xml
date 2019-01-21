@@ -23,6 +23,7 @@
         <audioButton eventTag="welkom" src="welkom" hotKey="" autoPlay="false" poster="audiobutton.jpg">
             <mediaLoaded/>
             <mediaLoadFailed/>
+            <mediaPlaybackStarted/>
             <mediaPlaybackComplete>
                 <actionButton featureText="volgende [ spatiebalk ]">
                     <gotoNextPresenter/>
@@ -43,6 +44,7 @@
                 <stimulusAudio msToNext="100" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <addPadding/>
                         <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
