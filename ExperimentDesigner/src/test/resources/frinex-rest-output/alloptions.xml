@@ -62,6 +62,7 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </sendMetadata>
+        <redirectToUrl src="src"/>
         <eraseLocalStorageOnWindowClosing/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
@@ -1780,6 +1781,7 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </sendMetadata>
+        <redirectToUrl src="src"/>
         <eraseLocalStorageOnWindowClosing/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
