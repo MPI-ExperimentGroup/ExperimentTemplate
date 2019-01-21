@@ -50,6 +50,7 @@
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
@@ -78,6 +79,7 @@
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
@@ -87,6 +89,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <plainText featureText="Askem long man o woman wea i toktok se i talem nem blong wanem i stap lo foto long lanwis blong hem."/>
                         <actionButton featureText="Finis">
@@ -99,6 +102,7 @@
                             <stimulusPresent msToNext="0" maxHeight="60" percentOfPage="60" showControls="false" maxWidth="60">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <plainText featureText="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
                                     <actionButton featureText="Finis">
@@ -111,6 +115,7 @@
                                         <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
                                                 <plainText featureText="Askem long man o woman we i toktok se i gat sam stori blong laef blong hem long saed blong ting ia we i stap long foto ia."/>
                                                 <actionButton featureText="Finis">
@@ -123,6 +128,7 @@
                                                     <stimulusPresent msToNext="0" maxHeight="60" percentOfPage="60" showControls="false" maxWidth="60">
                                                         <mediaLoaded/>
                                                         <mediaLoadFailed/>
+                                                        <mediaPlaybackStarted/>
                                                         <mediaPlaybackComplete>
                                                             <plainText featureText="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
                                                             <actionButton featureText="Finis">
@@ -135,6 +141,7 @@
                                                                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                                                                     <mediaLoaded/>
                                                                     <mediaLoadFailed/>
+                                                                    <mediaPlaybackStarted/>
                                                                     <mediaPlaybackComplete>
                                                                         <plainText featureText="Askem long man o woman we i toktok se i save wan kastom stori abaot ting ia we i stap long foto ia."/>
                                                                         <actionButton featureText="Finis">
@@ -147,6 +154,7 @@
                                                                             <stimulusPresent msToNext="0" maxHeight="60" percentOfPage="60" showControls="false" maxWidth="60">
                                                                                 <mediaLoaded/>
                                                                                 <mediaLoadFailed/>
+                                                                                <mediaPlaybackStarted/>
                                                                                 <mediaPlaybackComplete>
                                                                                     <plainText featureText="Noaia yu toktok. I talem wanem? Givim wan translesen long Bislama o Inglis o Franis."/>
                                                                                     <actionButton featureText="Finis">
