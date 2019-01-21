@@ -35,6 +35,7 @@ import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.view.ReportView;
 import nl.mpi.tg.eg.experiment.client.model.colour.GroupScoreData;
+import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.RegistrationException;
 import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.RegistrationListener;
 import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.RegistrationService;
@@ -47,13 +48,9 @@ import nl.mpi.tg.eg.experiment.client.util.ScoreCalculator;
 public abstract class AbstractColourReportPresenter extends AbstractPresenter implements Presenter {
 
     private final DataSubmissionService submissionService;
-    protected final UserResults userResults;
-    final LocalStorage localStorage;
 
-    public AbstractColourReportPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage) {
-        super(widgetTag, new ReportView());
-        this.localStorage = localStorage;
-        this.userResults = userResults;
+    public AbstractColourReportPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
+        super(widgetTag, new ReportView(), userResults, localStorage, timerService);
         this.submissionService = submissionService;
     }
 
