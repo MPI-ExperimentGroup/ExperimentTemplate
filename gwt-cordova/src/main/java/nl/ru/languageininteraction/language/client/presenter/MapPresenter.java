@@ -21,6 +21,9 @@ import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
 import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
+import nl.mpi.tg.eg.experiment.client.service.TimerService;
 //import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.ru.languageininteraction.language.client.view.MapView;
 
@@ -30,8 +33,8 @@ import nl.ru.languageininteraction.language.client.view.MapView;
  */
 public class MapPresenter extends AbstractPresenter implements Presenter {
 
-    public MapPresenter(RootLayoutPanel widgetTag) {
-        super(widgetTag, new MapView());
+    public MapPresenter(RootLayoutPanel widgetTag, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
+        super(widgetTag, new MapView(),userResults, localStorage, timerService);
     }
 
     @Override
