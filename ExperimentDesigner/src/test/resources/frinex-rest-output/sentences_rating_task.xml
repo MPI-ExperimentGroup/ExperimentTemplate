@@ -61,6 +61,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <addPadding/>
                         <ratingButton ratingLabelRight="7 = substantial change" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="1 = no change">
@@ -88,6 +89,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <addPadding/>
                         <ratingButton ratingLabelRight="7 = very familiar" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="1 = not familiar at all">
@@ -115,6 +117,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <addPadding/>
                         <ratingButton ratingLabelRight="7 = very imageable" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="1 = not imageable at all">
