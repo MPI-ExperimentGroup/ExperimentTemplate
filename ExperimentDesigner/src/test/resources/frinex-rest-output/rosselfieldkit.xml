@@ -56,6 +56,7 @@
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
@@ -65,6 +66,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <plainText featureText="the informant talks about the image"/>
                         <actionButton featureText="next">
@@ -93,6 +95,7 @@
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <startAudioRecorderTag eventTier="1"/>
@@ -102,6 +105,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <plainText featureText="the informant talks about the image"/>
                         <actionButton featureText="next">
@@ -131,6 +135,7 @@
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <withMatchingStimulus eventTag="" randomise="true" repeatRandomWindow="0" matchingRegex="([^_]*_)*" maxStimuli="1000" repeatCount="1">
@@ -139,6 +144,7 @@
                         <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" animate="none" showControls="false" maxWidth="80">
                             <mediaLoaded/>
                             <mediaLoadFailed/>
+                            <mediaPlaybackStarted/>
                             <mediaPlaybackComplete>
                                 <addPadding/>
                                 <actionButton featureText="Next" hotKey="SPACE" styleName="hiddenBottomRight">
@@ -148,17 +154,20 @@
                                         <stimulusPresent msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" showControls="false" maxWidth="30">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
                                                 <addPadding/>
                                                 <stimulusAudio msToNext="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete/>
                                                 </stimulusAudio>
                                                 <actionButton featureText="Play Sound" styleName="hiddenTopRight">
                                                     <stimulusAudio msToNext="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                         <mediaLoaded/>
                                                         <mediaLoadFailed/>
+                                                        <mediaPlaybackStarted/>
                                                         <mediaPlaybackComplete/>
                                                     </stimulusAudio>
                                                 </actionButton>
@@ -200,6 +209,7 @@
                     <onSuccess/>
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
                 </startAudioRecorder>
                 <clearPage/>
@@ -211,18 +221,21 @@
                             <stimulusPresent msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" showControls="false" maxWidth="30">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete/>
                             </stimulusPresent>
                             <addPadding/>
                             <stimulusAudio msToNext="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete/>
                             </stimulusAudio>
                             <actionButton featureText="Play Sound" styleName="hiddenTopRight">
                                 <stimulusAudio msToNext="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                     <mediaLoaded/>
                                     <mediaLoadFailed/>
+                                    <mediaPlaybackStarted/>
                                     <mediaPlaybackComplete/>
                                 </stimulusAudio>
                             </actionButton>
@@ -239,18 +252,21 @@
                             <stimulusPresent msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" showControls="false" maxWidth="30">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete/>
                             </stimulusPresent>
                             <addPadding/>
                             <stimulusAudio msToNext="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete/>
                             </stimulusAudio>
                             <actionButton featureText="Play Sound" styleName="hiddenTopRight">
                                 <stimulusAudio msToNext="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                     <mediaLoaded/>
                                     <mediaLoadFailed/>
+                                    <mediaPlaybackStarted/>
                                     <mediaPlaybackComplete/>
                                 </stimulusAudio>
                             </actionButton>
@@ -266,12 +282,14 @@
                     <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_question" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                         <mediaLoaded/>
                         <mediaLoadFailed/>
+                        <mediaPlaybackStarted/>
                         <mediaPlaybackComplete/>
                     </stimulusCodeAudio>
                 </actionButton>
                 <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_question" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete/>
                 </stimulusCodeAudio>
                 <startAudioRecorderTag eventTier="4"/>
