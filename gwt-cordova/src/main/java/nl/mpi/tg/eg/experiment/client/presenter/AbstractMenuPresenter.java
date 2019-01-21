@@ -18,7 +18,6 @@
 package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.user.client.Timer;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import java.util.ArrayList;
@@ -30,6 +29,7 @@ import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
+import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.experiment.client.view.MenuView;
 import nl.mpi.tg.eg.experiment.client.view.SimpleView;
 
@@ -39,14 +39,10 @@ import nl.mpi.tg.eg.experiment.client.view.SimpleView;
  */
 public abstract class AbstractMenuPresenter extends AbstractPresenter implements Presenter {
 
-    protected final LocalStorage localStorage;
-    protected final UserResults userResults;
     private final List<ApplicationController.ApplicationState> nonCompletedScreens = new ArrayList<>();
 
-    public AbstractMenuPresenter(RootLayoutPanel widgetTag, SimpleView simpleView, UserResults userResults, LocalStorage localStorage) {
-        super(widgetTag, simpleView);
-        this.userResults = userResults;
-        this.localStorage = localStorage;
+    public AbstractMenuPresenter(RootLayoutPanel widgetTag, SimpleView simpleView, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
+        super(widgetTag, simpleView, userResults, localStorage, timerService);
     }
 
     public void allMenuItems(final AppEventListner appEventListner, final ApplicationController.ApplicationState selfApplicationState) {
