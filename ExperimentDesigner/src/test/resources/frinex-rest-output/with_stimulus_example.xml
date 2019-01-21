@@ -542,6 +542,7 @@
                     <mediaLoadFailed>
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                         <addPadding/>
@@ -798,6 +799,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <stimulusHasRatingOptions>
                             <conditionTrue>
@@ -925,6 +927,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <stimulusHasRatingOptions>
                             <conditionTrue>
@@ -999,6 +1002,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <stimulusHasRatingOptions>
                             <conditionTrue>
@@ -1169,6 +1173,7 @@
                         <mediaLoadFailed>
                             <plainText featureText="AudioRecordingLoadFailed"/>
                         </mediaLoadFailed>
+                        <mediaPlaybackStarted/>
                         <mediaPlaybackComplete>
                             <plainText featureText="AudioRecordingPlaybackComplete"/>
                         </mediaPlaybackComplete>
@@ -1210,6 +1215,7 @@
                     <mediaLoadFailed>
                         <plainText featureText="AudioRecordingLoadFailed"/>
                     </mediaLoadFailed>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <plainText featureText="AudioRecordingPlaybackComplete"/>
                     </mediaPlaybackComplete>
@@ -1299,6 +1305,7 @@
                                             <plainText featureText="AudioRecordingLoadFailed"/>
                                         </regionReplace>
                                     </mediaLoadFailed>
+                                    <mediaPlaybackStarted/>
                                     <mediaPlaybackComplete>
                                         <regionReplace regionId="recordedMediaResultA">
                                             <plainText featureText="AudioRecordingPlaybackComplete"/>
@@ -1350,6 +1357,7 @@
                                             <plainText featureText="AudioRecordingLoadFailed"/>
                                         </regionReplace>
                                     </mediaLoadFailed>
+                                    <mediaPlaybackStarted/>
                                     <mediaPlaybackComplete>
                                         <regionReplace regionId="recordedMediaResultB">
                                             <plainText featureText="AudioRecordingPlaybackComplete"/>
@@ -1401,6 +1409,7 @@
                                             <plainText featureText="AudioRecordingLoadFailed"/>
                                         </regionReplace>
                                     </mediaLoadFailed>
+                                    <mediaPlaybackStarted/>
                                     <mediaPlaybackComplete>
                                         <regionReplace regionId="recordedMediaResultC">
                                             <plainText featureText="AudioRecordingPlaybackComplete"/>
@@ -1453,6 +1462,7 @@
                                         <plainText featureText="mediaId1 stimulusVideoFailed"/>
                                     </regionReplace>
                                 </mediaLoadFailed>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <regionReplace regionId="mediaRegion1">
                                         <plainText featureText="mediaId1 stimulusVideoComplete"/>
@@ -1492,6 +1502,7 @@
                                         <plainText featureText="mediaId2 stimulusCodeVideoFailed"/>
                                     </regionReplace>
                                 </mediaLoadFailed>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <regionReplace regionId="mediaRegion2">
                                         <plainText featureText="mediaId2 stimulusCodeVideoComplete"/>
@@ -1531,6 +1542,7 @@
                                         <plainText featureText="mediaId3 stimulusCodeAudioFailed"/>
                                     </regionReplace>
                                 </mediaLoadFailed>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <regionReplace regionId="mediaRegion3">
                                         <plainText featureText="mediaId3 stimulusCodeAudioComplete"/>
@@ -1570,6 +1582,7 @@
                                         <plainText featureText="mediaId4 stimulusAudioFailed"/>
                                     </regionReplace>
                                 </mediaLoadFailed>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <regionReplace regionId="mediaRegion4">
                                         <plainText featureText="mediaId4 stimulusAudioComplete"/>
@@ -2058,6 +2071,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <stimulusHasRatingOptions>
                             <conditionTrue>
@@ -2211,6 +2225,7 @@
                                 <plainText featureText="AudioRecordingLoadFailed"/>
                             </regionReplace>
                         </mediaLoadFailed>
+                        <mediaPlaybackStarted/>
                         <mediaPlaybackComplete>
                             <!-- <regionReplace regionId="recordedMediaResult">
                                 <plainText featureText="AudioRecordingPlaybackComplete"/>
