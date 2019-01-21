@@ -21,6 +21,9 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.Version;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
+import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 
 /**
@@ -31,8 +34,8 @@ public class VersionPresenter extends AbstractPresenter {
 
     private final Version version = GWT.create(Version.class);
 
-    public VersionPresenter(RootLayoutPanel widgetTag) {
-        super(widgetTag, new ComplexView());
+    public VersionPresenter(RootLayoutPanel widgetTag, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
+        super(widgetTag, new ComplexView(), userResults, localStorage, timerService);
     }
 
     @Override
