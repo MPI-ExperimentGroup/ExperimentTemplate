@@ -233,6 +233,7 @@ public class SchemaGenerator {
                     writer.append("<xs:all>\n");
                     writer.append("<xs:element name=\"mediaLoaded\" type=\"mediaLoadedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                     writer.append("<xs:element name=\"mediaLoadFailed\" type=\"mediaLoadFailedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("<xs:element name=\"mediaPlaybackStarted\" type=\"mediaPlaybackStartedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                     writer.append("<xs:element name=\"mediaPlaybackComplete\" type=\"mediaPlaybackCompleteType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                     writer.append("</xs:all>\n");
                     break;
@@ -242,6 +243,7 @@ public class SchemaGenerator {
                     writer.append("<xs:element name=\"onSuccess\" type=\"onSuccessType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                     writer.append("<xs:element name=\"mediaLoaded\" type=\"mediaLoadedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                     writer.append("<xs:element name=\"mediaLoadFailed\" type=\"mediaLoadFailedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("<xs:element name=\"mediaPlaybackStarted\" type=\"mediaPlaybackStartedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                     writer.append("<xs:element name=\"mediaPlaybackComplete\" type=\"mediaPlaybackCompleteType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                     writer.append("</xs:all>\n");
                     break;
