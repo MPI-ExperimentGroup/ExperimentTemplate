@@ -17,8 +17,6 @@
  */
 package nl.mpi.tg.eg.experiment.client.presenter;
 
-import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
-import nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter;
 import com.google.gwt.i18n.client.LocaleInfo;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
@@ -26,6 +24,9 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
+import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.experiment.client.view.MenuView;
 
 /**
@@ -34,8 +35,8 @@ import nl.mpi.tg.eg.experiment.client.view.MenuView;
  */
 public class LocalePresenter extends AbstractPresenter implements Presenter {
 
-    public LocalePresenter(RootLayoutPanel widgetTag) {
-        super(widgetTag, new MenuView());
+    public LocalePresenter(RootLayoutPanel widgetTag, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
+        super(widgetTag, new MenuView(), userResults, localStorage, timerService);
     }
 
     @Override
