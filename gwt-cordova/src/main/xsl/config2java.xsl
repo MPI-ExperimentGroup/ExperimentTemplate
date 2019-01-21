@@ -126,12 +126,11 @@
             <xsl:value-of select="@self" />
             <xsl:text>Presenter(widgetTag</xsl:text>
             <xsl:value-of select="
-if(@type = 'transmission' or @type = 'metadata'  or @type = 'colourReport') then ', submissionService, userResults, localStorage' else
+if(@type = 'transmission' or @type = 'metadata'  or @type = 'colourReport') then ', submissionService' else
 if(@type = 'preload') then ', submissionService, userResults' else
-if(@type = 'menu') then ', userResults, localStorage' else
-if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', submissionService, userResults, localStorage' else ''" />
-            <xsl:value-of select="if(@type = 'stimulus') then ', timerService' else ''" />
-            <xsl:text>);
+if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', submissionService' else ''" />
+            <!--<xsl:value-of select="if(@type = 'stimulus') then ', timerService' else ''" />-->
+            <xsl:text>, userResults, localStorage, timerService);
                 presenter.setState(this, </xsl:text>
             <xsl:choose>
                 <xsl:when test="@back">
@@ -158,7 +157,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         </xsl:for-each>
         <xsl:text>
             case version:
-            this.presenter = new VersionPresenter(widgetTag);
+            this.presenter = new VersionPresenter(widgetTag, userResults, localStorage, timerService);
             presenter.setState(this, ApplicationState.start, null);
             break;
         </xsl:text>
@@ -172,7 +171,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             case highscoresfailednon202:
             break;
             default:
-            this.presenter = new ErrorPresenter(widgetTag, "No state for: " + applicationState);
+            this.presenter = new ErrorPresenter(widgetTag, "No state for: " + applicationState, userResults, localStorage, timerService);
             presenter.setState(this, ApplicationState.start, applicationState);
             break;
             }
@@ -252,21 +251,20 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <xsl:value-of select="@self" />
             <xsl:text>Presenter(RootLayoutPanel widgetTag</xsl:text>
             <xsl:value-of select="
-if(@type = 'transmission' or @type = 'metadata' or @type = 'colourReport') then ', DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage' else 
-if(@type = 'preload') then ', DataSubmissionService submissionService, UserResults userResults' else 
-if(@type = 'menu') then ', UserResults userResults, LocalStorage localStorage' else
-if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage' else ''" />
-            <xsl:value-of select="if(@type = 'stimulus') then ', final TimerService timerService' else ''"/>
+if(@type = 'transmission' or @type = 'metadata' or @type = 'colourReport') then ', DataSubmissionService submissionService' else 
+if(@type = 'preload') then ', DataSubmissionService submissionService' else 
+if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', DataSubmissionService submissionService' else ''" />
+            <xsl:text>, UserResults userResults, LocalStorage localStorage, final TimerService timerService</xsl:text>
             <xsl:value-of select="if(@type = 'colourPicker') then ') throws CanvasError {' else ') {'"/>
             <xsl:choose>
                 <xsl:when test="@type = 'menu'">
                     <xsl:text>
-                        super(widgetTag, new MenuView(), userResults, localStorage);
+                        super(widgetTag, new MenuView(), userResults, localStorage, timerService);
                     </xsl:text>
                 </xsl:when>
                 <xsl:when test="@type = 'text'">
                     <xsl:text>
-                        super(widgetTag, new ComplexView());
+                        super(widgetTag, new ComplexView(), userResults, localStorage, timerService);
                     </xsl:text>
                 </xsl:when>
                 <xsl:when test="@type = 'debug'">
@@ -276,12 +274,12 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 </xsl:when>
                 <xsl:when test="@type = 'preload'">
                     <xsl:text>
-                        super(widgetTag, submissionService, userResults);
+                        super(widgetTag, submissionService, userResults, localStorage, timerService);
                     </xsl:text>                    
                 </xsl:when>
                 <xsl:when test="@type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker'">
                     <xsl:text>
-                        super(widgetTag, submissionService, userResults, localStorage);
+                        super(widgetTag, submissionService, userResults, localStorage, timerService);
                     </xsl:text>                    
                 </xsl:when>
                 <xsl:when test="@type = 'stimulus'">
@@ -291,7 +289,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 </xsl:when>
                 <xsl:when test="@type = 'metadata' or @type = 'transmission' or @type = 'colourReport'">
                     <xsl:text>
-                        super(widgetTag, submissionService, userResults, localStorage);
+                        super(widgetTag, submissionService, userResults, localStorage, timerService);
                     </xsl:text>
                 </xsl:when>
                 <xsl:otherwise>
@@ -478,7 +476,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="setMetadataValue|hasMetadataValue|showStimuliReport|sendStimuliReport|logTokenText|htmlTokenText|transmitResults|submitGroupEvent|helpDialogue|eraseUsersDataButton|saveMetadataButton|localStorageData|stimulusMetadataField|allMetadataFields|metadataField|metadataFieldConnection|metadataFieldVisibilityDependant|metadataFieldDateTriggered|eraseLocalStorageButton|showCurrentMs|enableButtonGroup|cancelPauseAll|cancelPauseTimers|disableButtonGroup|showStimulus|showStimulusProgress|hideButtonGroup|showButtonGroup|displayCompletionCode|generateCompletionCode|sendAllData|sendMetadata|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|removeMatchingStimulus|stimulusLabel">
+    <xsl:template match="redirectToUrl|setMetadataValue|hasMetadataValue|showStimuliReport|sendStimuliReport|logTokenText|htmlTokenText|transmitResults|submitGroupEvent|helpDialogue|eraseUsersDataButton|saveMetadataButton|localStorageData|stimulusMetadataField|allMetadataFields|metadataField|metadataFieldConnection|metadataFieldVisibilityDependant|metadataFieldDateTriggered|eraseLocalStorageButton|showCurrentMs|enableButtonGroup|cancelPauseAll|cancelPauseTimers|disableButtonGroup|showStimulus|showStimulusProgress|hideButtonGroup|showButtonGroup|displayCompletionCode|generateCompletionCode|sendAllData|sendMetadata|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|removeMatchingStimulus|stimulusLabel">
         <xsl:text>    </xsl:text>     
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
@@ -522,6 +520,7 @@ or local-name() eq 'removeStimulus'
         <xsl:value-of select="if(@matchingRegex) then concat('&quot;', @matchingRegex, '&quot;') else ''" />
         <xsl:value-of select="if(@visibleRegex) then concat(',&quot;', @visibleRegex, '&quot;') else ''" />
         <xsl:value-of select="if(@enabledRegex) then concat(',&quot;', @enabledRegex, '&quot;') else ''" />
+        <xsl:value-of select="if(@src) then concat('&quot;', @src, '&quot;') else ''" />
         <xsl:if test="@daysThresholds">
             <xsl:text>, new int[]{</xsl:text>
             <xsl:for-each select="tokenize(@daysThresholds,' ')">
