@@ -36,6 +36,7 @@
                 <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <addPadding/>
                         <ratingButton ratingLabelRight="heel erg plausibel" ratingLabels="1,2,3,4,5" dataChannel="1" ratingLabelLeft="helemaal niet plausibel">
