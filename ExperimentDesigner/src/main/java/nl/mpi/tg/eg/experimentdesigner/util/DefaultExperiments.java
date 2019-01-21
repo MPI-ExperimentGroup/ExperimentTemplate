@@ -400,6 +400,7 @@ public class DefaultExperiments {
             case hasMediaPlayback:
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaLoaded, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaLoadFailed, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaPlaybackStarted, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaPlaybackComplete, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
                     presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
@@ -410,6 +411,7 @@ public class DefaultExperiments {
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onSuccess, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaLoaded, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaLoadFailed, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaPlaybackStarted, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaPlaybackComplete, presenterFeatureRepository, addOptionalAttributes));
                 if (presenterFeatureRepository != null) {
                     presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
