@@ -70,9 +70,6 @@ import nl.mpi.tg.eg.experiment.client.service.MatchingStimuliGroup;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
-import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.RegistrationException;
-import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.RegistrationListener;
-import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.RegistrationService;
 import nl.mpi.tg.eg.frinex.common.StimuliProvider;
 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
@@ -86,14 +83,10 @@ import nl.mpi.tg.eg.frinex.common.model.StimulusSelector;
  */
 public abstract class AbstractStimulusPresenter extends AbstractPresenter implements Presenter {
 
-    final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
     private static final String LOADED_STIMULUS_LIST = "loadedStimulusList";
     private static final String CONSUMED_TAGS_LIST = "consumedTagsList";
     private static final String SEEN_STIMULUS_INDEX = "seenStimulusIndex";
-    private final LocalStorage localStorage;
     private final DataSubmissionService submissionService;
-    private GroupParticipantService groupParticipantService = null;
-    final UserResults userResults;
     private final Duration duration;
     final ArrayList<StimulusButton> stimulusButtonList = new ArrayList<>();
     private final ArrayList<Timer> pauseTimers = new ArrayList<>();
@@ -102,7 +95,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     final private ArrayList<PresenterEventListner> nextButtonEventListnerList = new ArrayList<>();
     private final ArrayList<StimulusFreeText> stimulusFreeTextList = new ArrayList<>();
     private final HashMap<String, TriggerListener> triggerListeners = new HashMap<>();
-    private final TimerService timerService;
     MatchingStimuliGroup matchingStimuliGroup = null;
     private boolean hasSubdirectories = false;
     private TouchInputCapture touchInputCapture = null;
@@ -112,12 +104,9 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     public AbstractStimulusPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
-        super(widgetTag, new TimedStimulusView());
+        super(widgetTag, new TimedStimulusView(),userResults, localStorage, timerService);
         duration = new Duration();
         this.submissionService = submissionService;
-        this.timerService = timerService;
-        this.userResults = userResults;
-        this.localStorage = localStorage;
 
 //        final Label debugLabel = new Label();
 //        debugLabel.setStyleName("debugLabel");
@@ -356,23 +345,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         matchingStimuliGroup.showNextStimulus(stimulusProvider);
     }
 
-    public void hasMetadataValue(final Stimulus currentStimulus, MetadataField metadataField, final String inputRegex, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse) {
-        final String matchingRegex = new HtmlTokenFormatter(null, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(inputRegex);
-        final String valueString = userResults.getUserData().getMetadataValue(metadataField);
-        if (valueString.matches(matchingRegex)) {
-            conditionTrue.postLoadTimerFired();
-        } else {
-            conditionFalse.postLoadTimerFired();
-        }
-    }
-
-    public void setMetadataValue(final Stimulus currentStimulus, MetadataField metadataField, final String dataLogFormat, final String replacementRegex) {
-        final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray);
-        final String dataLogString = (replacementRegex == null) ? htmlTokenFormatter.formatString(dataLogFormat) : htmlTokenFormatter.formatReplaceString(dataLogFormat, replacementRegex);
-        userResults.getUserData().setMetadataValue(metadataField, dataLogString);
-        localStorage.storeData(userResults, metadataFieldProvider);
-    }
-
     public void logTokenText(final Stimulus currentStimulus, final String reportType, final String headerKey, final int dataChannel, final String dataLogFormat) {
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, reportType, headerKey, new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(dataLogFormat), duration.elapsedMillis());
     }
@@ -395,19 +367,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                 return presenterListerner.getHotKey();
             }
         }, styleName));
-    }
-
-    public void htmlTokenText(final Stimulus currentStimulus, final String textString, final String styleName) {
-        ((TimedStimulusView) simpleView).addHtmlText(new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(textString), styleName);
-        // the submitTagValue previously used here by the multiparticipant configuration has been migrated to logTokenText which should function the sames for the multiparticipant experiment except that it now uses submitTagPairValue
-    }
-
-    public void htmlTokenText(final Stimulus currentStimulus, String textString) {
-        htmlTokenText(currentStimulus, textString, null);
-    }
-
-    public void htmlText(String textString, final String styleName) {
-        ((TimedStimulusView) simpleView).addHtmlText(textString, styleName);
     }
 
     protected void timerLabel(final String styleName, final int postLoadMs, final String listenerId, final String msLabelFormat) {
@@ -1971,23 +1930,6 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         };
         nextButtonEventListnerList.add(eventListner);
         optionButton(eventListner, styleName, buttonGroup);
-    }
-
-    public void transmitResults(final Stimulus currentStimulus, final String sendingRegex, final String receivingRegex, final String dataLogFormat, final TimedStimulusListener onError, final TimedStimulusListener onSuccess) {
-        final String dataLogFormatted = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(dataLogFormat);
-        new RegistrationService().submitRegistration(userResults, sendingRegex, receivingRegex, dataLogFormatted, new RegistrationListener() {
-            @Override
-            public void registrationFailed(RegistrationException exception) {
-                onError.postLoadTimerFired();
-            }
-
-            @Override
-            public void registrationComplete() {
-                // because the received data can be used to set metadata fields, we store that data here
-                localStorage.storeData(userResults, metadataFieldProvider);
-                onSuccess.postLoadTimerFired();
-            }
-        });
     }
 
     protected void setStimulusCodeResponse(
