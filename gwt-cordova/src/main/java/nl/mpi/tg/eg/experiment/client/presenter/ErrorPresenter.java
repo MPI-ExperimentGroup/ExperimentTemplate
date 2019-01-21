@@ -19,6 +19,9 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
+import nl.mpi.tg.eg.experiment.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
+import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.experiment.client.view.SimpleView;
 
 /**
@@ -29,8 +32,8 @@ public class ErrorPresenter extends AbstractPresenter implements Presenter {
 
     private final String errorMessage;
 
-    public ErrorPresenter(RootLayoutPanel widgetTag, String errorMessage) {
-        super(widgetTag, new SimpleView());
+    public ErrorPresenter(RootLayoutPanel widgetTag, String errorMessage, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
+        super(widgetTag, new SimpleView(), userResults, localStorage, timerService);
         this.errorMessage = errorMessage;
     }
 
