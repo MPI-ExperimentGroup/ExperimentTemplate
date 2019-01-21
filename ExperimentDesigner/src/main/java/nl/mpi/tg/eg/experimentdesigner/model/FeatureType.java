@@ -115,6 +115,7 @@ public enum FeatureType {
     generateCompletionCode(false, false, null, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
     sendAllData(false, false, null, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
     sendMetadata(false, false, null, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
+    redirectToUrl(false, false, new FeatureAttribute[]{src}),
     eraseLocalStorageOnWindowClosing(false, false, null),
     //    nextStimulus(false, false, null),
     keepStimulus(false, false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
@@ -181,6 +182,7 @@ public enum FeatureType {
     withinThreshold(true, false, null, false, false, false, Contitionals.none, Contitionals.hasThreshold),
     mediaLoaded(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMediaLoading),
     mediaLoadFailed(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMediaLoading),
+    mediaPlaybackStarted(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMediaPlayback),
     mediaPlaybackComplete(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMediaPlayback),
     //    clearRegion(true, false, new FeatureAttribute[]{target}), // these tags would require the handling the clearing of timers and button handlers
     //    updateRegion(true, false, new FeatureAttribute[]{target}), // these tags would require the handling the clearing of timers and button handlers
