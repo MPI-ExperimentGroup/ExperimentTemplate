@@ -651,6 +651,7 @@ or local-name() eq 'sendGroupMessageButton'
         </xsl:if>        
         <xsl:apply-templates select="mediaLoaded" />
         <xsl:apply-templates select="mediaLoadFailed" />
+        <xsl:apply-templates select="mediaPlaybackStarted" />
         <xsl:apply-templates select="mediaPlaybackComplete" />
         <xsl:text>);
         </xsl:text>
@@ -718,16 +719,16 @@ and local-name() ne 'ratingRadioButton'
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="mediaLoaded|mediaLoadFailed|mediaPlaybackComplete|conditionTrue|conditionFalse|onError|onSuccess|responseCorrect|responseIncorrect|beforeStimulus|eachStimulus|afterStimulus|hasMoreStimulus|endOfStimulus|multipleUsers|singleUser|aboveThreshold|withinThreshold">
+    <xsl:template match="mediaLoaded|mediaLoadFailed|mediaPlaybackStarted|mediaPlaybackComplete|conditionTrue|conditionFalse|onError|onSuccess|responseCorrect|responseIncorrect|beforeStimulus|eachStimulus|afterStimulus|hasMoreStimulus|endOfStimulus|multipleUsers|singleUser|aboveThreshold|withinThreshold">
         <xsl:value-of select="if(@msToNext) then concat(', ', @msToNext) else ''" />
         <xsl:value-of select="if(local-name() eq 'multipleUsers') then '' else ', '" />
         <xsl:text>&#xa;new </xsl:text>
-        <xsl:value-of select="if(local-name() eq 'eachStimulus' or local-name() eq 'hasMoreStimulus') then 'CurrentStimulusListener' else if(local-name() eq 'mediaLoaded' or local-name() eq 'mediaLoadFailed' or local-name() eq 'mediaPlaybackComplete') then 'CancelableStimulusListener' else 'TimedStimulusListener'" />
+        <xsl:value-of select="if(local-name() eq 'eachStimulus' or local-name() eq 'hasMoreStimulus') then 'CurrentStimulusListener' else if(local-name() eq 'mediaLoaded' or local-name() eq 'mediaLoadFailed' or local-name() eq 'mediaPlaybackStarted' or local-name() eq 'mediaPlaybackComplete') then 'CancelableStimulusListener' else 'TimedStimulusListener'" />
         <xsl:text>() {
 
             @Override
             public void </xsl:text>
-        <xsl:value-of select="if(local-name() eq 'mediaLoaded' or local-name() eq 'mediaLoadFailed' or local-name() eq 'mediaPlaybackComplete') then 'trigggerCancelableEvent' else 'postLoadTimerFired'" />
+        <xsl:value-of select="if(local-name() eq 'mediaLoaded' or local-name() eq 'mediaLoadFailed' or local-name() eq 'mediaPlaybackStarted' or local-name() eq 'mediaPlaybackComplete') then 'trigggerCancelableEvent' else 'postLoadTimerFired'" />
         <xsl:text>(</xsl:text>
         <xsl:value-of select="if(local-name() eq 'eachStimulus' or local-name() eq 'hasMoreStimulus') then 'final StimuliProvider stimulusProvider, final Stimulus currentStimulus' else ''" />
         <xsl:text>) {
@@ -910,6 +911,7 @@ local-name() eq 'logTimerValue' or local-name() eq 'groupResponseStimulusImage' 
         </xsl:if>
         <xsl:apply-templates select="mediaLoaded" />
         <xsl:apply-templates select="mediaLoadFailed" />
+        <xsl:apply-templates select="mediaPlaybackStarted" />
         <xsl:apply-templates select="mediaPlaybackComplete" />
         <xsl:text>
             );
@@ -1075,6 +1077,7 @@ or local-name() eq 'stimulusExists'
         <xsl:apply-templates select="onSuccess" />
         <xsl:apply-templates select="mediaLoaded" />
         <xsl:apply-templates select="mediaLoadFailed" />
+        <xsl:apply-templates select="mediaPlaybackStarted" />
         <xsl:apply-templates select="mediaPlaybackComplete" />
         <xsl:text>);
         </xsl:text> 
