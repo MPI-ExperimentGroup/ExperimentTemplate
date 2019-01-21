@@ -36,6 +36,7 @@
         <audioButton eventTag="static/testwav/test_wav" src="static/testwav/test_wav" hotKey="" autoPlay="false" poster="audiobutton.jpg">
             <mediaLoaded/>
             <mediaLoadFailed/>
+            <mediaPlaybackStarted/>
             <mediaPlaybackComplete>
                 <actionButton featureText="Het geluid is OK">
                     <gotoNextPresenter/>
@@ -50,6 +51,7 @@
                 <stimulusPresent msToNext="1000" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <actionButton featureText="volgende [ spatiebalk ]" hotKey="SPACE">
                             <clearPage/>
@@ -57,6 +59,7 @@
                                 <stimulusCodeAudio msToNext="0" codeFormat="static/practice/wav/&lt;code&gt;" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                     <mediaLoaded/>
                                     <mediaLoadFailed/>
+                                    <mediaPlaybackStarted/>
                                     <mediaPlaybackComplete>
                                         <clearPage/>
                                         <plainText featureText="Het antwoord is:"/>
@@ -91,6 +94,7 @@
                 <stimulusPresent msToNext="1000" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
+                    <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
                         <actionButton featureText="volgende [ spatiebalk ]" hotKey="SPACE">
                             <clearPage/>
@@ -98,6 +102,7 @@
                                 <stimulusCodeAudio msToNext="0" codeFormat="static/experiment/wav/&lt;code&gt;" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                     <mediaLoaded/>
                                     <mediaLoadFailed/>
+                                    <mediaPlaybackStarted/>
                                     <mediaPlaybackComplete>
                                         <clearPage/>
                                         <plainText featureText="Het antwoord is:"/>
