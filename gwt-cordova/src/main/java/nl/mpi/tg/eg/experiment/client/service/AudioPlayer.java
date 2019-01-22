@@ -70,6 +70,9 @@ public class AudioPlayer {
 
     private native void onEndedSetup(final AudioElement audioElement) /*-{
      var audioPlayer = this;
+     audioElement.addEventListener("play", function(){
+     audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onStartedAction()();
+     }, false);
      audioElement.addEventListener("ended", function(){
      audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onEndedAction()();
      }, false);
@@ -81,6 +84,11 @@ public class AudioPlayer {
      }, false);
      }-*/;
 
+    public void onStartedAction() {
+        if (audioEventListner != null) {
+            audioEventListner.audioStarted();
+        }
+    }
     public void onEndedAction() {
         if (audioEventListner != null) {
             audioEventListner.audioEnded();
