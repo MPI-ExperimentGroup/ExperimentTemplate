@@ -52,6 +52,7 @@ import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
+import nl.mpi.tg.eg.experiment.client.service.VideoPlayer;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
@@ -387,9 +388,10 @@ public class TimedStimulusView extends ComplexView {
         return stimulusFreeText;
     }
 
-    public void addTimedAudio(SafeUri oggPath, SafeUri mp3Path, final int postLoadMs, boolean showPlaybackIndicator, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartededStimulusListener, final CancelableStimulusListener playedStimulusListener, final boolean autoPlay, final String mediaId) {
+    public void addTimedAudio(SafeUri oggPath, SafeUri mp3Path, final int postLoadMs, boolean showPlaybackIndicator, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final boolean autoPlay, final String mediaId) {
         cancelableListnerList.add(loadedStimulusListener);
         cancelableListnerList.add(failedStimulusListener);
+        cancelableListnerList.add(playbackStartedStimulusListener);
         cancelableListnerList.add(playedStimulusListener);
         try {
             final AudioPlayer audioPlayer = new AudioPlayer(new AudioExceptionListner() {
@@ -421,6 +423,11 @@ public class TimedStimulusView extends ComplexView {
                 }
 
                 @Override
+                public void audioStarted() {
+                    playbackStartedStimulusListener.postLoadTimerFired();
+                }
+
+                @Override
                 public void audioFailed() {
                     failedStimulusListener.postLoadTimerFired();
                 }
@@ -444,9 +451,11 @@ public class TimedStimulusView extends ComplexView {
         }
     }
 
-    public void addTimedVideo(SafeUri oggPath, SafeUri ogvPath, SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, final int postLoadMs, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartededStimulusListener, final CancelableStimulusListener playedStimulusListener, final String mediaId) {
+    public void addTimedVideo(SafeUri oggPath, SafeUri ogvPath, SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, final int postLoadMs, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final String mediaId) {
         cancelableListnerList.add(loadedStimulusListener);
         cancelableListnerList.add(failedStimulusListener);
+        cancelableListnerList.add(playbackStartedStimulusListener);
+        cancelableListnerList.add(playedStimulusListener);
         final Video video = Video.createIfSupported();
         if (video == null) {
             failedStimulusListener.postLoadTimerFired();
@@ -484,6 +493,8 @@ public class TimedStimulusView extends ComplexView {
                     }
                 }
             });
+            new VideoPlayer().addNativeCallbacks(video.getVideoElement(), playbackStartedStimulusListener);
+//            todo: move the video handling code from here into the VideoPlayer class, in such a way is it can be used like the AudioPlayer class of the same package
             video.addEndedHandler(new EndedHandler() {
                 private boolean triggered = false;
 
