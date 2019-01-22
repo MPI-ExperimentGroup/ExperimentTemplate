@@ -25,6 +25,8 @@ public interface AudioEventListner {
 
     public void audioLoaded();
 
+    public void audioStarted();
+
     public void audioEnded();
 
     public void audioFailed();
