@@ -93,6 +93,14 @@
         </regionReplace>
         <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
+        <transmitResults matchingRegex="matchingRegex" enabledRegex="enabledRegex" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </transmitResults>
     </presenter>
     <presenter back="AutoMenu" menuLabel="metadata_all_attributes" type="metadata" self="metadata_all_attributesScreen" title="metadata_all_attributes">
         <htmlText featureText="htmlText" styleName="styleName"/>
@@ -1483,14 +1491,6 @@
             </withinThreshold>
         </scoreAboveThreshold>
         <resetStimulus target="target"/>
-        <transmitResults matchingRegex="matchingRegex" enabledRegex="enabledRegex" dataLogFormat="dataLogFormat">
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-        </transmitResults>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes">
         <preventWindowClose featureText="preventWindowClose"/>
@@ -1896,6 +1896,14 @@
         </regionReplace>
         <regionClear regionId="regionId"/>
         <preventWindowClose featureText="preventWindowClose"/>
+        <transmitResults matchingRegex="matchingRegex" enabledRegex="enabledRegex" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </transmitResults>
     </presenter>
     <presenter back="AutoMenu" menuLabel="metadata_minimal_attributes" type="metadata" self="metadata_minimal_attributesScreen" title="metadata_minimal_attributes">
         <htmlText featureText="htmlText"/>
@@ -3286,14 +3294,6 @@
             </withinThreshold>
         </scoreAboveThreshold>
         <resetStimulus target="target"/>
-        <transmitResults matchingRegex="matchingRegex" enabledRegex="enabledRegex" dataLogFormat="dataLogFormat">
-            <onError>
-                <plainText featureText="plainText in onError"/>
-            </onError>
-            <onSuccess>
-                <plainText featureText="plainText in onSuccess"/>
-            </onSuccess>
-        </transmitResults>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes">
         <preventWindowClose featureText="preventWindowClose"/>
