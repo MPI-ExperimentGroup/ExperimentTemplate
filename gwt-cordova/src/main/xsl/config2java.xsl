@@ -127,7 +127,7 @@
             <xsl:text>Presenter(widgetTag</xsl:text>
             <xsl:value-of select="
 if(@type = 'transmission' or @type = 'metadata'  or @type = 'colourReport') then ', submissionService' else
-if(@type = 'preload') then ', submissionService, userResults' else
+if(@type = 'preload') then ', submissionService' else
 if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', submissionService' else ''" />
             <!--<xsl:value-of select="if(@type = 'stimulus') then ', timerService' else ''" />-->
             <xsl:text>, userResults, localStorage, timerService);
