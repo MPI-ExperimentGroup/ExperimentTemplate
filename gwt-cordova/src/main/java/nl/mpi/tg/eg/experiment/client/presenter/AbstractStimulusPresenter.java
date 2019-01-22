@@ -104,7 +104,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
     }
 
     public AbstractStimulusPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
-        super(widgetTag, new TimedStimulusView(),userResults, localStorage, timerService);
+        super(widgetTag, new TimedStimulusView(), userResults, localStorage, timerService);
         duration = new Duration();
         this.submissionService = submissionService;
 
@@ -1577,11 +1577,23 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                         new CancelableStimulusListener() {
                     @Override
                     protected void trigggerCancelableEvent() {
+
+                    }
+                },
+                        new CancelableStimulusListener() {
+                    @Override
+                    protected void trigggerCancelableEvent() {
                         correctListener.postLoadTimerFired();
                     }
                 });
             } else {
                 stimulusPresent(stimulusProvider, currentStimulus, 0, maxWidth, maxWidth, animateType, false, yPos - (maxWidth / 2), postLoadIncorrectMs, null, null, dataChannel,
+                        new CancelableStimulusListener() {
+                    @Override
+                    protected void trigggerCancelableEvent() {
+
+                    }
+                },
                         new CancelableStimulusListener() {
                     @Override
                     protected void trigggerCancelableEvent() {
@@ -2084,7 +2096,13 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
                         loadedStimulusListener.postLoadTimerFired();
                     }
                 };
-                ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(serviceLocations.staticFilesUrl() + oggPath), UriUtils.fromString(serviceLocations.staticFilesUrl() + mp3Path), 0, false, shownStimulusListener, failedStimulusListener, new CancelableStimulusListener() {
+                ((TimedStimulusView) simpleView).addTimedAudio(UriUtils.fromString(serviceLocations.staticFilesUrl() + oggPath), UriUtils.fromString(serviceLocations.staticFilesUrl() + mp3Path), 0, false, shownStimulusListener, failedStimulusListener,
+                        new CancelableStimulusListener() {
+                    @Override
+                    protected void trigggerCancelableEvent() {
+
+                    }
+                }, new CancelableStimulusListener() {
 
                     @Override
                     protected void trigggerCancelableEvent() {
