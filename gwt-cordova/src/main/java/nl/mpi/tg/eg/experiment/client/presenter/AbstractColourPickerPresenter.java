@@ -39,6 +39,7 @@ import nl.mpi.tg.eg.experiment.client.exception.CanvasError;
 import nl.mpi.tg.eg.experiment.client.listener.CurrentStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponse;
 import nl.mpi.tg.eg.experiment.client.model.colour.StimulusResponseGroup;
+import nl.mpi.tg.eg.experiment.client.service.TimerService;
 //import nl.mpi.tg.eg.experiment.client.util.GeneratedStimulusProvider;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import nl.mpi.tg.eg.frinex.common.model.StimulusSelector;
@@ -71,7 +72,7 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
     private ApplicationController.ApplicationState nextState;
     private StimulusResponseGroup stimulusResponseGroup = null;
 
-    public AbstractColourPickerPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage) throws CanvasError {
+    public AbstractColourPickerPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) throws CanvasError {
         this.widgetTag = widgetTag;
 //        stimulusProvider = new nl.mpi.tg.eg.experiment.client.service.StimulusProvider(GeneratedStimulusProvider.values);
 //        this.stimuliGroup = userResults.getPendingStimuliGroup();
