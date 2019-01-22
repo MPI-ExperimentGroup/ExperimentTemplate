@@ -182,7 +182,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <xsl:value-of select="if(experiment/presenter/@type = 'colourPicker') then 'CanvasError' else ''" />
             <xsl:text> error) {
                 logger.warning(error.getMessage());
-                this.presenter = new ErrorPresenter(widgetTag, error.getMessage());
+                this.presenter = new ErrorPresenter(widgetTag, error.getMessage(), userResults, localStorage, timerService);
                 presenter.setState(this, ApplicationState.start, applicationState);
                 }</xsl:text>
         </xsl:if>
