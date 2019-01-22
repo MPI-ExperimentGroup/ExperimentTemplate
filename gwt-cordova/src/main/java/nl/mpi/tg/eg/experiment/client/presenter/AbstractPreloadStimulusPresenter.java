@@ -36,8 +36,8 @@ import nl.mpi.tg.eg.frinex.common.StimuliProvider;
  */
 public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusPresenter implements Presenter {
 
-    public AbstractPreloadStimulusPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults) {
-        super(widgetTag, submissionService, userResults, null, null);
+    public AbstractPreloadStimulusPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
+        super(widgetTag, submissionService, userResults, localStorage, timerService);
     }
 
     private void preloadAllStimuli(final HorizontalPanel progressBar, final TimedStimulusListener timedStimulusListener, final List<Stimulus> pictureList, final int totalImages) {
