@@ -173,6 +173,7 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
             startRecorderFeature.addFeature(FeatureType.onSuccess, null);
             startRecorderFeature.addFeature(FeatureType.mediaLoaded, null);
             startRecorderFeature.addFeature(FeatureType.mediaLoadFailed, null);
+            startRecorderFeature.addFeature(FeatureType.mediaPlaybackStarted, null);
             startRecorderFeature.addFeature(FeatureType.mediaPlaybackComplete, null);
             hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
         }
@@ -222,7 +223,7 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, imageFeatureValues.getPercentOfPage());
         imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         imageFeature.addFeatureAttributes(FeatureAttribute.showControls, "false");
-        final PresenterFeature mediaLoaded = imageFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
+        final PresenterFeature mediaLoaded = imageFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackStarted, FeatureType.mediaPlaybackComplete)[3];
         parentFeature.getPresenterFeatureList().add(imageFeature);
         final PresenterFeature actionFeature;
         if (imageFeatureValues.getButtons().length == 1) {
