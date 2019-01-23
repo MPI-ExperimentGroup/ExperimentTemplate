@@ -226,7 +226,7 @@ public class WizardAudioTestScreen extends AbstractWizardScreen {
             audioButton.addFeatureAttributes(FeatureAttribute.poster, "audiobutton.jpg");
             audioButton.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(getAutoPlay(storedWizardScreenData)));
             audioButton.addFeatureAttributes(FeatureAttribute.hotKey, getAudioHotKey(storedWizardScreenData));
-            PresenterFeature mediaLoaded = audioButton.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
+            PresenterFeature mediaLoaded = audioButton.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackStarted, FeatureType.mediaPlaybackComplete)[3];
             if (getButtonStyle(storedWizardScreenData) != null) {
                 audioButton.addFeatureAttributes(FeatureAttribute.styleName, getButtonStyle(storedWizardScreenData));
             }
