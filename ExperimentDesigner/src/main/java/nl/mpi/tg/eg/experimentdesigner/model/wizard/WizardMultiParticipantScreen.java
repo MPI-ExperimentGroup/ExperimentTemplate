@@ -560,7 +560,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.animate, "stimuliCode");
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         allNetworkActivity2Image.addFeatureAttributes(FeatureAttribute.showControls, "false");
-        allNetworkActivity2Image.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
+        allNetworkActivity2Image.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackStarted, FeatureType.mediaPlaybackComplete);
         allNetworkActivityColumn3.getPresenterFeatureList().add(allNetworkActivity2Image);
         allNetworkActivityColumn3.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "Target"));
         allNetworkActivity2.getPresenterFeatureList().add(allNetworkActivityRow);
@@ -585,6 +585,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         groupResponseStimulusImage.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         groupResponseStimulusImage.addFeature(FeatureType.mediaLoaded, null);
         groupResponseStimulusImage.addFeature(FeatureType.mediaLoadFailed, null);
+        groupResponseStimulusImage.addFeature(FeatureType.mediaPlaybackStarted, null);
         groupResponseStimulusImage.addFeature(FeatureType.mediaPlaybackComplete, null);
         allNetworkActivityColumn1.getPresenterFeatureList().add(groupResponseStimulusImage);
         allNetworkActivityColumn1.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "Gekozen"));
@@ -629,7 +630,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         stimulusImage.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         stimulusImage.addFeatureAttributes(FeatureAttribute.showControls, "false");
         trainingDisplayNetworkActivity3.getPresenterFeatureList().add(stimulusImage);
-        final PresenterFeature mediaLoaded = stimulusImage.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
+        final PresenterFeature mediaLoaded = stimulusImage.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackStarted, FeatureType.mediaPlaybackComplete)[3];
         if (getStimulusMsDelay(storedWizardScreenData) > 0) {
             final PresenterFeature pause = new PresenterFeature(FeatureType.pause, null);
             final PresenterFeature sendGroupMessage = new PresenterFeature(FeatureType.sendGroupMessage, null);
@@ -702,7 +703,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         final PresenterFeature presenterFeature;
 //        final String hotKeyString = "SPACE";
-        presenterFeature = imageFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
+        presenterFeature = imageFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackStarted, FeatureType.mediaPlaybackComplete)[3];
         presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         if (isStimulusFreeText(storedWizardScreenData)) {
             final PresenterFeature stimulusFreeTextFeature = new PresenterFeature(FeatureType.stimulusFreeText, getFreeTextValidationMessage(storedWizardScreenData));
