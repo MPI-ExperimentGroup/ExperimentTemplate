@@ -406,7 +406,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             } else {
                 hasMoreStimulusFeature.getPresenterFeatureList().add(imageFeature);
             }
-            stimuliFeature = imageFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
+            stimuliFeature = imageFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackStarted, FeatureType.mediaPlaybackComplete)[3];
         }
 
         final PresenterFeature presenterFeature;
@@ -428,7 +428,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.mediaId, "media");
             pauseFeature.getPresenterFeatureList().add(stimulusCodeAudio);
             stimuliFeature.getPresenterFeatureList().add(nextButtonFeature);
-            presenterFeature = stimulusCodeAudio.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
+            presenterFeature = stimulusCodeAudio.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackStarted, FeatureType.mediaPlaybackComplete)[3];
             presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
             presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.plainText, "Het antwoord is:"));
             final PresenterFeature logTImeStamp = new PresenterFeature(FeatureType.logTimeStamp, null);
