@@ -317,7 +317,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>");
             codeVideoFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getStimulusMsDelay(storedWizardScreenData)));
             hasMoreStimulusFeature.getPresenterFeatureList().add(codeVideoFeature);
-            final PresenterFeature mediaPlaybackComplete = codeVideoFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete)[2];
+            final PresenterFeature mediaPlaybackComplete = codeVideoFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackStarted, FeatureType.mediaPlaybackComplete)[3];
             mediaPlaybackComplete.getPresenterFeatureList().add(new PresenterFeature(FeatureType.clearPage, null));
             mediaPlaybackComplete.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
             final PresenterFeature pauseFeature = new PresenterFeature(FeatureType.pause, null);
@@ -328,6 +328,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
             final PresenterFeature codeAudioFeature = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
             codeAudioFeature.addFeature(FeatureType.mediaLoaded, null);
             codeAudioFeature.addFeature(FeatureType.mediaLoadFailed, null);
+            codeAudioFeature.addFeature(FeatureType.mediaPlaybackStarted, null);
             final PresenterFeature mediaLoaded = codeAudioFeature.addFeature(FeatureType.mediaPlaybackComplete, null);
             codeAudioFeature.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, Boolean.toString(false));
             codeAudioFeature.addFeatureAttributes(FeatureAttribute.codeFormat, "<code>");
@@ -371,6 +372,7 @@ public class WizardVideoAudioOptionStimulusScreen extends AbstractWizardScreen {
 //        } else {
         imageFeature.addFeature(FeatureType.mediaLoaded, null);;
         imageFeature.addFeature(FeatureType.mediaLoadFailed, null);
+        imageFeature.addFeature(FeatureType.mediaPlaybackStarted, null);
         presenterFeature = imageFeature.addFeature(FeatureType.mediaPlaybackComplete, null);
 //        }
         presenterFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
