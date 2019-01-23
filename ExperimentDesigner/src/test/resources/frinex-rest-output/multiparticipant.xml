@@ -157,6 +157,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete>
                                             <addPadding/>
                                             <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -184,6 +185,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <pause msToNext="7000">
                                         <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
@@ -229,6 +231,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete>
                                             <addPadding/>
                                             <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -256,6 +259,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <pause msToNext="7000">
                                         <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
@@ -301,6 +305,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete>
                                             <addPadding/>
                                             <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -328,6 +333,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <pause msToNext="7000">
                                         <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
@@ -369,6 +375,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -443,6 +450,7 @@
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </groupResponseStimulusImage>
                                     <htmlText featureText="Gekozen"/>
@@ -461,6 +469,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </stimulusPresent>
                                     <htmlText featureText="Target"/>
@@ -506,6 +515,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -580,6 +590,7 @@
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </groupResponseStimulusImage>
                                     <htmlText featureText="Gekozen"/>
@@ -598,6 +609,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </stimulusPresent>
                                     <htmlText featureText="Target"/>
@@ -643,6 +655,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -717,6 +730,7 @@
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </groupResponseStimulusImage>
                                     <htmlText featureText="Gekozen"/>
@@ -735,6 +749,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </stimulusPresent>
                                     <htmlText featureText="Target"/>
@@ -780,6 +795,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -854,6 +870,7 @@
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </groupResponseStimulusImage>
                                     <htmlText featureText="Gekozen"/>
@@ -872,6 +889,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </stimulusPresent>
                                     <htmlText featureText="Target"/>
@@ -917,6 +935,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -991,6 +1010,7 @@
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </groupResponseStimulusImage>
                                     <htmlText featureText="Gekozen"/>
@@ -1009,6 +1029,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </stimulusPresent>
                                     <htmlText featureText="Target"/>
@@ -1054,6 +1075,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -1128,6 +1150,7 @@
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </groupResponseStimulusImage>
                                     <htmlText featureText="Gekozen"/>
@@ -1146,6 +1169,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </stimulusPresent>
                                     <htmlText featureText="Target"/>
@@ -1191,6 +1215,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -1265,6 +1290,7 @@
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </groupResponseStimulusImage>
                                     <htmlText featureText="Gekozen"/>
@@ -1283,6 +1309,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </stimulusPresent>
                                     <htmlText featureText="Target"/>
@@ -1325,6 +1352,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -1378,6 +1406,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete>
                                             <addPadding/>
                                             <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -1405,6 +1434,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <pause msToNext="7000">
                                         <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
@@ -1450,6 +1480,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete>
                                             <addPadding/>
                                             <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -1477,6 +1508,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <pause msToNext="7000">
                                         <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
@@ -1522,6 +1554,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete>
                                             <addPadding/>
                                             <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -1549,6 +1582,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <pause msToNext="7000">
                                         <sendGroupMessage eventTag="autoNext" incrementPhase="1"/>
@@ -1590,6 +1624,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -1664,6 +1699,7 @@
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </groupResponseStimulusImage>
                                     <htmlText featureText="Gekozen"/>
@@ -1682,6 +1718,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </stimulusPresent>
                                     <htmlText featureText="Target"/>
@@ -1727,6 +1764,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -1801,6 +1839,7 @@
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </groupResponseStimulusImage>
                                     <htmlText featureText="Gekozen"/>
@@ -1819,6 +1858,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </stimulusPresent>
                                     <htmlText featureText="Target"/>
@@ -1864,6 +1904,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -1938,6 +1979,7 @@
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </groupResponseStimulusImage>
                                     <htmlText featureText="Gekozen"/>
@@ -1956,6 +1998,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </stimulusPresent>
                                     <htmlText featureText="Target"/>
@@ -2001,6 +2044,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -2075,6 +2119,7 @@
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </groupResponseStimulusImage>
                                     <htmlText featureText="Gekozen"/>
@@ -2093,6 +2138,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </stimulusPresent>
                                     <htmlText featureText="Target"/>
@@ -2138,6 +2184,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -2212,6 +2259,7 @@
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </groupResponseStimulusImage>
                                     <htmlText featureText="Gekozen"/>
@@ -2230,6 +2278,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </stimulusPresent>
                                     <htmlText featureText="Target"/>
@@ -2275,6 +2324,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -2349,6 +2399,7 @@
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </groupResponseStimulusImage>
                                     <htmlText featureText="Gekozen"/>
@@ -2367,6 +2418,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </stimulusPresent>
                                     <htmlText featureText="Target"/>
@@ -2412,6 +2464,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -2486,6 +2539,7 @@
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </groupResponseStimulusImage>
                                     <htmlText featureText="Gekozen"/>
@@ -2504,6 +2558,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </stimulusPresent>
                                     <htmlText featureText="Target"/>
@@ -2546,6 +2601,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -2595,6 +2651,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -2669,6 +2726,7 @@
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </groupResponseStimulusImage>
                                     <htmlText featureText="Gekozen"/>
@@ -2687,6 +2745,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </stimulusPresent>
                                     <htmlText featureText="Target"/>
@@ -2732,6 +2791,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -2806,6 +2866,7 @@
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </groupResponseStimulusImage>
                                     <htmlText featureText="Gekozen"/>
@@ -2824,6 +2885,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </stimulusPresent>
                                     <htmlText featureText="Target"/>
@@ -2869,6 +2931,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -2943,6 +3006,7 @@
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </groupResponseStimulusImage>
                                     <htmlText featureText="Gekozen"/>
@@ -2961,6 +3025,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </stimulusPresent>
                                     <htmlText featureText="Target"/>
@@ -3006,6 +3071,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -3080,6 +3146,7 @@
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </groupResponseStimulusImage>
                                     <htmlText featureText="Gekozen"/>
@@ -3098,6 +3165,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </stimulusPresent>
                                     <htmlText featureText="Target"/>
@@ -3143,6 +3211,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -3217,6 +3286,7 @@
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </groupResponseStimulusImage>
                                     <htmlText featureText="Gekozen"/>
@@ -3235,6 +3305,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </stimulusPresent>
                                     <htmlText featureText="Target"/>
@@ -3280,6 +3351,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -3354,6 +3426,7 @@
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </groupResponseStimulusImage>
                                     <htmlText featureText="Gekozen"/>
@@ -3372,6 +3445,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </stimulusPresent>
                                     <htmlText featureText="Target"/>
@@ -3417,6 +3491,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
@@ -3491,6 +3566,7 @@
                                     <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </groupResponseStimulusImage>
                                     <htmlText featureText="Gekozen"/>
@@ -3509,6 +3585,7 @@
                                     <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete/>
                                     </stimulusPresent>
                                     <htmlText featureText="Target"/>
@@ -3551,6 +3628,7 @@
                             <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
+                                <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
                                     <addPadding/>
                                     <stimulusFreeText featureText="Sorry, dit teken is niet toegestaan in de Fantasietaal." hotKey="ENTER" allowedCharCodes="wetuiopasfghknm " styleName="minimalWidth" validationRegex="[wetuiopasfghknm ]{2,}" inputErrorMessage=" "/>
