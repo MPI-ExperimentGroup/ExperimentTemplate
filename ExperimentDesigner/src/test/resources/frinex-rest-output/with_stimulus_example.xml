@@ -1305,11 +1305,15 @@
                                             <plainText featureText="AudioRecordingLoadFailed"/>
                                         </regionReplace>
                                     </mediaLoadFailed>
-                                    <mediaPlaybackStarted/>
+                                    <mediaPlaybackStarted>
+                                        <clearTimer listenerId="timerMediaRegionA"/>
+                                        <startTimer msToNext="0" listenerId="timerMediaRegionA"/>
+                                    </mediaPlaybackStarted>
                                     <mediaPlaybackComplete>
                                         <regionReplace regionId="recordedMediaResultA">
                                             <plainText featureText="AudioRecordingPlaybackComplete"/>
                                         </regionReplace>
+                                        <htmlTokenText featureText="timerMediaRegionA &lt;timerMediaRegionA&gt;ms"/>
                                     </mediaPlaybackComplete>
                                 </startAudioRecorder>
                             </actionButton>
@@ -1357,11 +1361,15 @@
                                             <plainText featureText="AudioRecordingLoadFailed"/>
                                         </regionReplace>
                                     </mediaLoadFailed>
-                                    <mediaPlaybackStarted/>
+                                    <mediaPlaybackStarted>
+                                        <clearTimer listenerId="timerMediaRegionB"/>
+                                        <startTimer msToNext="0" listenerId="timerMediaRegionB"/>
+                                    </mediaPlaybackStarted>
                                     <mediaPlaybackComplete>
                                         <regionReplace regionId="recordedMediaResultB">
                                             <plainText featureText="AudioRecordingPlaybackComplete"/>
                                         </regionReplace>
+                                        <htmlTokenText featureText="timerMediaRegionB &lt;timerMediaRegionB&gt;ms"/>
                                     </mediaPlaybackComplete>
                                 </startAudioRecorder>
                             </actionButton>
@@ -1409,11 +1417,15 @@
                                             <plainText featureText="AudioRecordingLoadFailed"/>
                                         </regionReplace>
                                     </mediaLoadFailed>
-                                    <mediaPlaybackStarted/>
+                                    <mediaPlaybackStarted>
+                                        <clearTimer listenerId="timerMediaRegionC"/>
+                                        <startTimer msToNext="0" listenerId="timerMediaRegionC"/>
+                                    </mediaPlaybackStarted>
                                     <mediaPlaybackComplete>
                                         <regionReplace regionId="recordedMediaResultC">
                                             <plainText featureText="AudioRecordingPlaybackComplete"/>
                                         </regionReplace>
+                                        <htmlTokenText featureText="timerMediaRegionC &lt;timerMediaRegionC&gt;ms"/>
                                     </mediaPlaybackComplete>
                                 </startAudioRecorder>
                             </actionButton>
@@ -1462,11 +1474,15 @@
                                         <plainText featureText="mediaId1 stimulusVideoFailed"/>
                                     </regionReplace>
                                 </mediaLoadFailed>
-                                <mediaPlaybackStarted/>
+                                <mediaPlaybackStarted>
+                                    <clearTimer listenerId="timerMediaRegion1"/>
+                                    <startTimer msToNext="0" listenerId="timerMediaRegion1"/>
+                                </mediaPlaybackStarted>
                                 <mediaPlaybackComplete>
                                     <regionReplace regionId="mediaRegion1">
                                         <plainText featureText="mediaId1 stimulusVideoComplete"/>
                                     </regionReplace>
+                                    <htmlTokenText featureText="timerMediaRegion1 &lt;timerMediaRegion1&gt;ms"/>
                                 </mediaPlaybackComplete>
                             </stimulusVideo>
                         </column>
@@ -1502,11 +1518,15 @@
                                         <plainText featureText="mediaId2 stimulusCodeVideoFailed"/>
                                     </regionReplace>
                                 </mediaLoadFailed>
-                                <mediaPlaybackStarted/>
+                                <mediaPlaybackStarted>
+                                    <clearTimer listenerId="timerMediaRegion2"/>
+                                    <startTimer msToNext="0" listenerId="timerMediaRegion2"/>
+                                </mediaPlaybackStarted>
                                 <mediaPlaybackComplete>
                                     <regionReplace regionId="mediaRegion2">
                                         <plainText featureText="mediaId2 stimulusCodeVideoComplete"/>
                                     </regionReplace>
+                                    <htmlTokenText featureText="timerMediaRegion2 &lt;timerMediaRegion2&gt;ms"/>
                                 </mediaPlaybackComplete>
                             </stimulusCodeVideo>
                         </column>
@@ -1542,11 +1562,15 @@
                                         <plainText featureText="mediaId3 stimulusCodeAudioFailed"/>
                                     </regionReplace>
                                 </mediaLoadFailed>
-                                <mediaPlaybackStarted/>
+                                <mediaPlaybackStarted>
+                                    <clearTimer listenerId="timerMediaRegion3"/>
+                                    <startTimer msToNext="0" listenerId="timerMediaRegion3"/>
+                                </mediaPlaybackStarted>
                                 <mediaPlaybackComplete>
                                     <regionReplace regionId="mediaRegion3">
                                         <plainText featureText="mediaId3 stimulusCodeAudioComplete"/>
                                     </regionReplace>
+                                    <htmlTokenText featureText="timerMediaRegion3 &lt;timerMediaRegion3&gt;ms"/>
                                 </mediaPlaybackComplete>
                             </stimulusCodeAudio>
                         </column>
@@ -1582,11 +1606,15 @@
                                         <plainText featureText="mediaId4 stimulusAudioFailed"/>
                                     </regionReplace>
                                 </mediaLoadFailed>
-                                <mediaPlaybackStarted/>
+                                <mediaPlaybackStarted>
+                                    <clearTimer listenerId="timerMediaRegion4"/>
+                                    <startTimer msToNext="0" listenerId="timerMediaRegion4"/>
+                                </mediaPlaybackStarted>
                                 <mediaPlaybackComplete>
                                     <regionReplace regionId="mediaRegion4">
                                         <plainText featureText="mediaId4 stimulusAudioComplete"/>
                                     </regionReplace>
+                                    <htmlTokenText featureText="timerMediaRegion4 &lt;timerMediaRegion4&gt;ms"/>
                                 </mediaPlaybackComplete>
                             </stimulusAudio>
                         </column>
