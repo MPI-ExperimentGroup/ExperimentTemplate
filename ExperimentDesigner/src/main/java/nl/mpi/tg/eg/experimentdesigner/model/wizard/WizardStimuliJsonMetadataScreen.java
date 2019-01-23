@@ -166,7 +166,7 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         contextFeature.addFeatureAttributes(FeatureAttribute.replacement, "_context$1");
         contextFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         contextFeature.addFeatureAttributes(FeatureAttribute.showControls, "false");
-        contextFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
+        contextFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackStarted, FeatureType.mediaPlaybackComplete);
         final PresenterFeature contextFeatureColumn = new PresenterFeature(FeatureType.column, null);
         stimulusFeatureRow.getPresenterFeatureList().add(contextFeatureColumn);
         contextFeatureColumn.getPresenterFeatureList().add(contextFeature);
@@ -177,7 +177,7 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         imageFeature.addFeatureAttributes(FeatureAttribute.animate, "none");
         imageFeature.addFeatureAttributes(FeatureAttribute.showControls, "false");
-        imageFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackComplete);
+        imageFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackStarted, FeatureType.mediaPlaybackComplete);
         final PresenterFeature imageFeatureColumn = new PresenterFeature(FeatureType.column, null);
         stimulusFeatureRow.getPresenterFeatureList().add(imageFeatureColumn);
         imageFeatureColumn.getPresenterFeatureList().add(imageFeature);
