@@ -36,6 +36,22 @@ public class ObfuscatedStorage {
         this.enableObfuscation = enableObfuscation;
     }
 
+    private String obfuscateString(String storageKey, String input) {
+        while (input.length() < 50) {
+            input += " ";
+        }
+        byte[] outputBytes = input.getBytes();
+        byte[] storageKeyBytes = storageKey.getBytes();
+        for (int index = 0; index < input.length(); index++) {
+            outputBytes[index] ^= storageKeyBytes[storageKeyBytes.length - ((index * 3) % storageKeyBytes.length)];
+        }
+        return new String(outputBytes);
+    }
+
+    private String revealString(String storageKey, String input) {
+        return obfuscateString(storageKey, input).trim();
+    }
+
     public ObfuscatedStorage loadStorage() {
         if (dataStore == null) {
             dataStore = Storage.getLocalStorageIfSupported();
@@ -43,54 +59,58 @@ public class ObfuscatedStorage {
         return (dataStore != null) ? this : null;
     }
 
+    private String obfuscateStorageKey(UserId userId, String storageVariable) {
+        return userId.toString() + obfuscateString(userId.toString(), storageVariable);
+    }
+
     protected String getAPP_STATE(UserId userId) {
-        return appNameInternal + "." + userId.toString() + ".AppState";
+        return appNameInternal + "." + obfuscateStorageKey(userId, ".AppState");
     }
 
     protected String getCOMPLETION_CODE(UserId userId) {
-        return appNameInternal + "." + userId.toString() + ".completionCode";
+        return appNameInternal + "." + obfuscateStorageKey(userId, ".completionCode");
     }
 
     protected String getUSER_RESULTS(UserId userId, String valueName) {
-        return appNameInternal + "." + userId.toString() + ".UserResults." + valueName;
+        return appNameInternal + "." + obfuscateStorageKey(userId, ".UserResults." + valueName);
     }
 
     protected String getUSER_METADATA(UserId userId, String valueName) {
-        return appNameInternal + "." + userId.toString() + ".UserMetadata." + valueName;
+        return appNameInternal + "." + userId.toString() + obfuscateString(appNameInternal, ".UserMetadata." + valueName);
     }
 
     protected boolean isUSER_METADATA(String keyName, String postName) {
-        return keyName.startsWith(appNameInternal) && keyName.endsWith(".UserMetadata." + postName);
+        return keyName.startsWith(appNameInternal) && keyName.endsWith(obfuscateString(appNameInternal, ".UserMetadata." + postName));
     }
 
     protected String getUSER_METADATA_CONNECTION(UserId userId, String valueName) {
-        return appNameInternal + "." + userId.toString() + ".UserMetadataConnection." + valueName;
+        return appNameInternal + "." + obfuscateStorageKey(userId, ".UserMetadataConnection." + valueName);
     }
 
     protected String getLAST_USER_ID() {
-        return appNameInternal + ".LastUserId";
+        return appNameInternal + obfuscateString(appNameInternal, ".LastUserId");
     }
 
     protected String getGAME_DATA(UserId userId) {
         // todo: perhaps merge game and screen data concepts
-        return appNameInternal + "." + userId.toString() + ".GameData";
+        return appNameInternal + "." + obfuscateStorageKey(userId, ".GameData");
     }
 
     protected String getGAME_DATA(String label, UserId userId) {
         // todo: perhaps merge game and screen data concepts
-        return appNameInternal + "." + userId.toString() + ".GameData." + label;
+        return appNameInternal + "." + obfuscateStorageKey(userId, ".GameData." + label);
     }
 
     protected String getSTIMULI_DATA(UserId userId, Stimulus stimulus) {
-        return appNameInternal + "." + userId.toString() + ".StimuliData." + stimulus.getUniqueId();
+        return appNameInternal + "." + obfuscateStorageKey(userId, ".StimuliData." + stimulus.getUniqueId());
     }
 
     protected String getSTIMULI_DATA(UserId userId, String stimulusId) {
-        return appNameInternal + "." + userId.toString() + ".StimuliData." + stimulusId;
+        return appNameInternal + "." + obfuscateStorageKey(userId, ".StimuliData." + stimulusId);
     }
 
     protected String getSCREEN_DATA(String endPoint, UserId userId) {
-        return appNameInternal + "." + userId.toString() + ".ScreenData." + endPoint; // this is an exception in the order of the key parts, is this avoidable?
+        return appNameInternal + "." + obfuscateStorageKey(userId, ".ScreenData." + endPoint); // this is an exception in the order of the key parts, is this avoidable?
 //        STOWED_DATA = appNameInternal + ".SentData.";
 //        FAILED_DATA = appNameInternal + ".FailedData.";
     }
@@ -104,11 +124,12 @@ public class ObfuscatedStorage {
     }
 
     public String getItem(String key) {
-        return dataStore.getItem(key);
+        final String item = dataStore.getItem(key);
+        return (item != null) ? revealString(key, item) : null;
     }
 
     public void setItem(String key, String data) {
-        dataStore.setItem(key, data);
+        dataStore.setItem(key, obfuscateString(key, data));
     }
 
     public void removeItem(String key) {
