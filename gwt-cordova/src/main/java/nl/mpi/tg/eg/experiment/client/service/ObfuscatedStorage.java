@@ -32,7 +32,7 @@ public class ObfuscatedStorage {
     private Storage dataStore = null;
 
     public ObfuscatedStorage(String appNameInternal, boolean enableObfuscation) {
-        this.appNameInternal = appNameInternal;
+        this.appNameInternal = obfuscateString(appNameInternal, appNameInternal);
         this.enableObfuscation = enableObfuscation;
     }
 
@@ -60,7 +60,7 @@ public class ObfuscatedStorage {
     }
 
     private String obfuscateStorageKey(UserId userId, String storageVariable) {
-        return userId.toString() + obfuscateString(userId.toString(), storageVariable);
+        return obfuscateString(userId.toString(), userId.toString() + storageVariable);
     }
 
     protected String getAPP_STATE(UserId userId) {
