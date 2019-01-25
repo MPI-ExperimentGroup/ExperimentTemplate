@@ -96,7 +96,7 @@ public class DataSubmissionService extends AbstractSubmissionService {
         xhr.onload = function() {
             if(xhr.readyState === 4) {
                 if(xhr.status === 200) {
-                    var urlAudioData = URL.createObjectURL(new Blob([dataArray.slice()], {type: 'audio/ogg'}));
+                    var urlAudioData = URL.createObjectURL(new Blob([dataArray], {type: 'audio/ogg'}));
                     mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionComplete(Ljava/lang/String;Ljava/lang/String;)(xhr.responseText,urlAudioData);
                 } else {
                     mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::submissionFailed(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;)(xhr.status + ' ' + xhr.statusText, userIdString, screenName, stimulusIdString, dataArray);
