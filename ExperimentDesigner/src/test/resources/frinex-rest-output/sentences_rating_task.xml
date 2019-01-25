@@ -58,15 +58,17 @@
         <centrePage/>
         <loadStimulus eventTag="To which degree is the object changed visibly?" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                        <addPadding/>
-                        <ratingButton ratingLabelRight="7 = substantial change" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="1 = no change">
-                            <nextStimulus repeatIncorrect="false"/>
-                        </ratingButton>
+                        <pause msToNext="0">
+                            <addPadding/>
+                            <ratingButton ratingLabelRight="7 = substantial change" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="1 = no change">
+                                <nextStimulus repeatIncorrect="false"/>
+                            </ratingButton>
+                        </pause>
                     </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
@@ -86,15 +88,17 @@
         <centrePage/>
         <loadStimulus eventTag="Is this action familiar?" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                        <addPadding/>
-                        <ratingButton ratingLabelRight="7 = very familiar" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="1 = not familiar at all">
-                            <nextStimulus repeatIncorrect="false"/>
-                        </ratingButton>
+                        <pause msToNext="0">
+                            <addPadding/>
+                            <ratingButton ratingLabelRight="7 = very familiar" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="1 = not familiar at all">
+                                <nextStimulus repeatIncorrect="false"/>
+                            </ratingButton>
+                        </pause>
                     </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
@@ -114,15 +118,17 @@
         <centrePage/>
         <loadStimulus eventTag="Can you create a clear mental image of the situation?" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                        <addPadding/>
-                        <ratingButton ratingLabelRight="7 = very imageable" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="1 = not imageable at all">
-                            <nextStimulus repeatIncorrect="false"/>
-                        </ratingButton>
+                        <pause msToNext="0">
+                            <addPadding/>
+                            <ratingButton ratingLabelRight="7 = very imageable" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="1 = not imageable at all">
+                                <nextStimulus repeatIncorrect="false"/>
+                            </ratingButton>
+                        </pause>
                     </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
