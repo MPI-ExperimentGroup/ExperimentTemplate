@@ -41,17 +41,19 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusAudio msToNext="100" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                <stimulusAudio autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                        <addPadding/>
-                        <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
-                            <ratingButton ratingLabelRight="" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="">
-                                <nextStimulus repeatIncorrect="false"/>
-                            </ratingButton>
-                        </stimulusRatingButton>
+                        <pause msToNext="100">
+                            <addPadding/>
+                            <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
+                                <ratingButton ratingLabelRight="" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="">
+                                    <nextStimulus repeatIncorrect="false"/>
+                                </ratingButton>
+                            </stimulusRatingButton>
+                        </pause>
                     </mediaPlaybackComplete>
                 </stimulusAudio>
             </hasMoreStimulus>
