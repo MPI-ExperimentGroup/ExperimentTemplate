@@ -33,15 +33,17 @@
     <presenter back="Gegevens" menuLabel="Stimulus" next="Finished" type="stimulus" self="Stimulus" title="Stimulus">
         <loadStimulus eventTag="Stimulus" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                        <addPadding/>
-                        <ratingButton ratingLabelRight="heel erg plausibel" ratingLabels="1,2,3,4,5" dataChannel="1" ratingLabelLeft="helemaal niet plausibel">
-                            <nextStimulus repeatIncorrect="false"/>
-                        </ratingButton>
+                        <pause msToNext="0">
+                            <addPadding/>
+                            <ratingButton ratingLabelRight="heel erg plausibel" ratingLabels="1,2,3,4,5" dataChannel="1" ratingLabelLeft="helemaal niet plausibel">
+                                <nextStimulus repeatIncorrect="false"/>
+                            </ratingButton>
+                        </pause>
                     </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
