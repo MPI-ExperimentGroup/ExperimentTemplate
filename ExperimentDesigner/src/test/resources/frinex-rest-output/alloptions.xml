@@ -411,7 +411,7 @@
                 </stimulusPause>
                 <stimulusLabel styleName="styleName"/>
                 <regionCodeStyle regionId="regionId" styleName="styleName"/>
-                <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" replacement="replacement" animate="bounce" replacementRegex="replacementRegex" showControls="true" maxWidth="60">
+                <stimulusPresent maxHeight="60" percentOfPage="56" dataChannel="2" replacement="replacement" animate="bounce" replacementRegex="replacementRegex" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -441,7 +441,7 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusCodeImage>
-                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
+                <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -455,7 +455,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
-                <stimulusVideo msToNext="60" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true">
+                <stimulusVideo loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -469,7 +469,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusVideo>
-                <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusCodeAudio codeFormat="codeFormat" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -483,7 +483,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeAudio>
-                <stimulusAudio msToNext="60" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusAudio dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -531,7 +531,7 @@
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
-                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -565,7 +565,7 @@
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
-                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -600,7 +600,7 @@
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
-                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -761,7 +761,7 @@
                 </stimulusPause>
                 <stimulusLabel styleName="styleName"/>
                 <regionCodeStyle regionId="regionId" styleName="styleName"/>
-                <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" replacement="replacement" animate="bounce" replacementRegex="replacementRegex" showControls="true" maxWidth="60">
+                <stimulusPresent maxHeight="60" percentOfPage="56" dataChannel="2" replacement="replacement" animate="bounce" replacementRegex="replacementRegex" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -791,7 +791,7 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusCodeImage>
-                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
+                <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -805,7 +805,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
-                <stimulusVideo msToNext="60" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true">
+                <stimulusVideo loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -819,7 +819,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusVideo>
-                <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusCodeAudio codeFormat="codeFormat" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -833,7 +833,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeAudio>
-                <stimulusAudio msToNext="60" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusAudio dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -881,7 +881,7 @@
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
-                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -915,7 +915,7 @@
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
-                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -950,7 +950,7 @@
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
-                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -1111,7 +1111,7 @@
                 </stimulusPause>
                 <stimulusLabel styleName="styleName"/>
                 <regionCodeStyle regionId="regionId" styleName="styleName"/>
-                <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" replacement="replacement" animate="bounce" replacementRegex="replacementRegex" showControls="true" maxWidth="60">
+                <stimulusPresent maxHeight="60" percentOfPage="56" dataChannel="2" replacement="replacement" animate="bounce" replacementRegex="replacementRegex" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1141,7 +1141,7 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusCodeImage>
-                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
+                <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1155,7 +1155,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
-                <stimulusVideo msToNext="60" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true">
+                <stimulusVideo loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1169,7 +1169,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusVideo>
-                <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusCodeAudio codeFormat="codeFormat" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1183,7 +1183,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeAudio>
-                <stimulusAudio msToNext="60" dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusAudio dataChannel="2" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -1231,7 +1231,7 @@
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
-                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -1265,7 +1265,7 @@
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
-                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -1300,7 +1300,7 @@
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
-                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -2214,7 +2214,7 @@
                 </stimulusPause>
                 <stimulusLabel/>
                 <regionCodeStyle regionId="regionId"/>
-                <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" showControls="true" maxWidth="60">
+                <stimulusPresent maxHeight="60" percentOfPage="56" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2244,7 +2244,7 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusCodeImage>
-                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
+                <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2258,7 +2258,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
-                <stimulusVideo msToNext="60" loop="true" autoPlay="true" mediaId="mediaId" showControls="true">
+                <stimulusVideo loop="true" autoPlay="true" mediaId="mediaId" showControls="true">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2272,7 +2272,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusVideo>
-                <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusCodeAudio codeFormat="codeFormat" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2286,7 +2286,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeAudio>
-                <stimulusAudio msToNext="60" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusAudio autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2334,7 +2334,7 @@
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
-                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -2368,7 +2368,7 @@
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
-                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -2403,7 +2403,7 @@
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
-                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -2564,7 +2564,7 @@
                 </stimulusPause>
                 <stimulusLabel/>
                 <regionCodeStyle regionId="regionId"/>
-                <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" showControls="true" maxWidth="60">
+                <stimulusPresent maxHeight="60" percentOfPage="56" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2594,7 +2594,7 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusCodeImage>
-                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
+                <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2608,7 +2608,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
-                <stimulusVideo msToNext="60" loop="true" autoPlay="true" mediaId="mediaId" showControls="true">
+                <stimulusVideo loop="true" autoPlay="true" mediaId="mediaId" showControls="true">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2622,7 +2622,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusVideo>
-                <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusCodeAudio codeFormat="codeFormat" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2636,7 +2636,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeAudio>
-                <stimulusAudio msToNext="60" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusAudio autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2684,7 +2684,7 @@
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
-                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -2718,7 +2718,7 @@
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
-                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -2753,7 +2753,7 @@
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
-                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -2914,7 +2914,7 @@
                 </stimulusPause>
                 <stimulusLabel/>
                 <regionCodeStyle regionId="regionId"/>
-                <stimulusPresent msToNext="60" maxHeight="60" percentOfPage="56" showControls="true" maxWidth="60">
+                <stimulusPresent maxHeight="60" percentOfPage="56" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2944,7 +2944,7 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusCodeImage>
-                <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
+                <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2958,7 +2958,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
-                <stimulusVideo msToNext="60" loop="true" autoPlay="true" mediaId="mediaId" showControls="true">
+                <stimulusVideo loop="true" autoPlay="true" mediaId="mediaId" showControls="true">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2972,7 +2972,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusVideo>
-                <stimulusCodeAudio msToNext="60" codeFormat="codeFormat" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusCodeAudio codeFormat="codeFormat" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -2986,7 +2986,7 @@
                         <plainText featureText="plainText in mediaPlaybackComplete"/>
                     </mediaPlaybackComplete>
                 </stimulusCodeAudio>
-                <stimulusAudio msToNext="60" autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
+                <stimulusAudio autoPlay="true" mediaId="mediaId" showPlaybackIndicator="showPlaybackIndicator">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -3034,7 +3034,7 @@
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
-                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -3068,7 +3068,7 @@
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
-                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
@@ -3103,7 +3103,7 @@
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
-                        <groupResponseStimulusImage msToNext="60" maxHeight="60" percentOfPage="56" maxWidth="60">
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
                             <mediaLoaded>
                                 <plainText featureText="plainText in mediaLoaded"/>
                             </mediaLoaded>
