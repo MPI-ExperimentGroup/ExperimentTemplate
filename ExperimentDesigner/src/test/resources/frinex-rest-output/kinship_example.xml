@@ -46,25 +46,29 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusCodeVideo msToNext="100" maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" loop="false" styleName="" autoPlay="true" mediaId="media" showControls="false" maxWidth="80">
+                <stimulusCodeVideo maxHeight="80" codeFormat="&lt;code&gt;" percentOfPage="0" loop="false" styleName="" autoPlay="true" mediaId="media" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                        <clearPage/>
-                        <centrePage/>
                         <pause msToNext="100">
-                            <stimulusAudio msToNext="100" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
-                                <mediaLoaded/>
-                                <mediaLoadFailed/>
-                                <mediaPlaybackStarted/>
-                                <mediaPlaybackComplete>
-                                    <addPadding/>
-                                    <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
-                                        <nextStimulus repeatIncorrect="false"/>
-                                    </stimulusRatingButton>
-                                </mediaPlaybackComplete>
-                            </stimulusAudio>
+                            <clearPage/>
+                            <centrePage/>
+                            <pause msToNext="100">
+                                <stimulusAudio autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                    <mediaLoaded/>
+                                    <mediaLoadFailed/>
+                                    <mediaPlaybackStarted/>
+                                    <mediaPlaybackComplete>
+                                        <pause msToNext="100">
+                                            <addPadding/>
+                                            <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
+                                                <nextStimulus repeatIncorrect="false"/>
+                                            </stimulusRatingButton>
+                                        </pause>
+                                    </mediaPlaybackComplete>
+                                </stimulusAudio>
+                            </pause>
                         </pause>
                     </mediaPlaybackComplete>
                 </stimulusCodeVideo>
