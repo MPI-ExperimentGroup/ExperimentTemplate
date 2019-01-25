@@ -59,23 +59,25 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusAudio msToNext="100" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                <stimulusAudio autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                        <addPadding/>
-                        <stimulusHasRatingOptions>
-                            <conditionTrue>
-                                <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
-                                    <nextStimulus repeatIncorrect="false"/>
-                                </stimulusRatingButton>
-                            </conditionTrue>
-                            <conditionFalse>
-                                <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex=".{1,}" inputErrorMessage=" "/>
-                                <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
-                            </conditionFalse>
-                        </stimulusHasRatingOptions>
+                        <pause msToNext="100">
+                            <addPadding/>
+                            <stimulusHasRatingOptions>
+                                <conditionTrue>
+                                    <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </stimulusRatingButton>
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex=".{1,}" inputErrorMessage=" "/>
+                                    <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
+                                </conditionFalse>
+                            </stimulusHasRatingOptions>
+                        </pause>
                     </mediaPlaybackComplete>
                 </stimulusAudio>
             </hasMoreStimulus>
@@ -106,25 +108,29 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusCodeAudio msToNext="100" codeFormat="&lt;code&gt;" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                <stimulusCodeAudio codeFormat="&lt;code&gt;" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                        <clearPage/>
-                        <centrePage/>
                         <pause msToNext="100">
-                            <stimulusAudio msToNext="100" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
-                                <mediaLoaded/>
-                                <mediaLoadFailed/>
-                                <mediaPlaybackStarted/>
-                                <mediaPlaybackComplete>
-                                    <addPadding/>
-                                    <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
-                                        <nextStimulus repeatIncorrect="false"/>
-                                    </stimulusRatingButton>
-                                </mediaPlaybackComplete>
-                            </stimulusAudio>
+                            <clearPage/>
+                            <centrePage/>
+                            <pause msToNext="100">
+                                <stimulusAudio autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                    <mediaLoaded/>
+                                    <mediaLoadFailed/>
+                                    <mediaPlaybackStarted/>
+                                    <mediaPlaybackComplete>
+                                        <pause msToNext="100">
+                                            <addPadding/>
+                                            <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
+                                                <nextStimulus repeatIncorrect="false"/>
+                                            </stimulusRatingButton>
+                                        </pause>
+                                    </mediaPlaybackComplete>
+                                </stimulusAudio>
+                            </pause>
                         </pause>
                     </mediaPlaybackComplete>
                 </stimulusCodeAudio>
@@ -157,15 +163,17 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusAudio msToNext="100" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                <stimulusAudio autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                        <addPadding/>
-                        <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
-                            <nextStimulus repeatIncorrect="false"/>
-                        </stimulusRatingButton>
+                        <pause msToNext="100">
+                            <addPadding/>
+                            <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
+                                <nextStimulus repeatIncorrect="false"/>
+                            </stimulusRatingButton>
+                        </pause>
                     </mediaPlaybackComplete>
                 </stimulusAudio>
             </hasMoreStimulus>
