@@ -535,7 +535,7 @@
             </beforeStimulus>
             <eachStimulus>
                 <plainText featureText="plainText in eachStimulus"/>
-                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
                     </mediaLoaded>
@@ -796,7 +796,7 @@
                     </withinThreshold>
                 </scoreAboveThreshold>
                 <addPadding/>
-                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
@@ -924,7 +924,7 @@
                 &lt;stimulusResponse_Q8&gt;&lt;br/&gt;
                 "/>
                 <addPadding/>
-                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
@@ -999,7 +999,7 @@
                 "/>
                 <addPadding/>
                 <addPadding/>
-                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
@@ -1463,7 +1463,7 @@
                     </row>
                     <row>
                         <column>
-                            <stimulusVideo msToNext="60" loop="false" styleName="smallVideo" dataChannel="2" autoPlay="false" mediaId="mediaId1" showControls="true">
+                            <stimulusVideo loop="false" styleName="smallVideo" dataChannel="2" autoPlay="false" mediaId="mediaId1" showControls="true">
                                 <mediaLoaded>
                                     <regionReplace regionId="mediaRegion1">
                                         <plainText featureText="mediaId1 stimulusVideoLoaded"/>
@@ -1507,7 +1507,7 @@
                     </row>
                     <row>
                         <column>
-                            <stimulusCodeVideo msToNext="60" maxHeight="60" codeFormat="&lt;code&gt;" percentOfPage="56" loop="false" styleName="smallVideo" dataChannel="2" autoPlay="false" mediaId="mediaId2" showControls="true" maxWidth="60">
+                            <stimulusCodeVideo maxHeight="60" codeFormat="&lt;code&gt;" percentOfPage="56" loop="false" styleName="smallVideo" dataChannel="2" autoPlay="false" mediaId="mediaId2" showControls="true" maxWidth="60">
                                 <mediaLoaded>
                                     <regionReplace regionId="mediaRegion2">
                                         <plainText featureText="mediaId2 stimulusCodeVideoLoaded"/>
@@ -1551,7 +1551,7 @@
                     </row>
                     <row>
                         <column>
-                            <stimulusCodeAudio msToNext="60" codeFormat="&lt;code&gt;" dataChannel="2" autoPlay="false" mediaId="mediaId3" showPlaybackIndicator="true">
+                            <stimulusCodeAudio codeFormat="&lt;code&gt;" dataChannel="2" autoPlay="false" mediaId="mediaId3" showPlaybackIndicator="true">
                                 <mediaLoaded>
                                     <regionReplace regionId="mediaRegion3">
                                         <plainText featureText="mediaId3 stimulusCodeAudioLoaded"/>
@@ -1595,7 +1595,7 @@
                     </row>
                     <row>
                         <column>
-                            <stimulusAudio msToNext="60" dataChannel="2" autoPlay="false" mediaId="mediaId4" showPlaybackIndicator="true">
+                            <stimulusAudio dataChannel="2" autoPlay="false" mediaId="mediaId4" showPlaybackIndicator="true">
                                 <mediaLoaded>
                                     <regionReplace regionId="mediaRegion4">
                                         <plainText featureText="mediaId4 stimulusAudioLoaded"/>
@@ -2096,7 +2096,7 @@
                 &lt;playerGamesPlayed&gt;
                 Time so far: &lt;invitationTimer&gt;ms"/>
                 <addPadding/>
-                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
