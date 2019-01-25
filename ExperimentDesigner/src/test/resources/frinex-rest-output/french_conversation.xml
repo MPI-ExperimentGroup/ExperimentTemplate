@@ -47,23 +47,25 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusAudio msToNext="100" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                <stimulusAudio autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                        <addPadding/>
-                        <stimulusHasRatingOptions>
-                            <conditionTrue>
-                                <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
-                                    <nextStimulus repeatIncorrect="false"/>
-                                </stimulusRatingButton>
-                            </conditionTrue>
-                            <conditionFalse>
-                                <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex=".{1,}" inputErrorMessage=" "/>
-                                <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
-                            </conditionFalse>
-                        </stimulusHasRatingOptions>
+                        <pause msToNext="100">
+                            <addPadding/>
+                            <stimulusHasRatingOptions>
+                                <conditionTrue>
+                                    <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </stimulusRatingButton>
+                                </conditionTrue>
+                                <conditionFalse>
+                                    <stimulusFreeText featureText="Entrez au moins trois lettres." validationRegex=".{1,}" inputErrorMessage=" "/>
+                                    <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
+                                </conditionFalse>
+                            </stimulusHasRatingOptions>
+                        </pause>
                     </mediaPlaybackComplete>
                 </stimulusAudio>
             </hasMoreStimulus>
@@ -94,15 +96,17 @@
                 <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
-                <stimulusPresent msToNext="100" maxHeight="80" percentOfPage="0" animate="none" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="0" animate="none" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                        <addPadding/>
-                        <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
-                            <nextStimulus repeatIncorrect="false"/>
-                        </stimulusRatingButton>
+                        <pause msToNext="100">
+                            <addPadding/>
+                            <stimulusRatingButton ratingLabelRight="" dataChannel="1" ratingLabelLeft="">
+                                <nextStimulus repeatIncorrect="false"/>
+                            </stimulusRatingButton>
+                        </pause>
                     </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
