@@ -154,7 +154,7 @@
                                 <conditionFalse>
                                     <stimulusLabel/>
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -182,7 +182,7 @@
                             <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -228,7 +228,7 @@
                                 <conditionFalse>
                                     <stimulusLabel/>
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -256,7 +256,7 @@
                             <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -302,7 +302,7 @@
                                 <conditionFalse>
                                     <stimulusLabel/>
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -330,7 +330,7 @@
                             <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -372,7 +372,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -447,7 +447,7 @@
                             <addPadding/>
                             <row>
                                 <column>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <groupResponseStimulusImage maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -466,7 +466,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -512,7 +512,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -587,7 +587,7 @@
                             <addPadding/>
                             <row>
                                 <column>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <groupResponseStimulusImage maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -606,7 +606,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -652,7 +652,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -727,7 +727,7 @@
                             <addPadding/>
                             <row>
                                 <column>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <groupResponseStimulusImage maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -746,7 +746,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -792,7 +792,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -867,7 +867,7 @@
                             <addPadding/>
                             <row>
                                 <column>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <groupResponseStimulusImage maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -886,7 +886,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -932,7 +932,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -1007,7 +1007,7 @@
                             <addPadding/>
                             <row>
                                 <column>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <groupResponseStimulusImage maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -1026,7 +1026,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -1072,7 +1072,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -1147,7 +1147,7 @@
                             <addPadding/>
                             <row>
                                 <column>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <groupResponseStimulusImage maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -1166,7 +1166,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -1212,7 +1212,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -1287,7 +1287,7 @@
                             <addPadding/>
                             <row>
                                 <column>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <groupResponseStimulusImage maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -1306,7 +1306,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -1349,7 +1349,7 @@
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -1403,7 +1403,7 @@
                                 <conditionFalse>
                                     <stimulusLabel/>
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -1431,7 +1431,7 @@
                             <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -1477,7 +1477,7 @@
                                 <conditionFalse>
                                     <stimulusLabel/>
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -1505,7 +1505,7 @@
                             <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -1551,7 +1551,7 @@
                                 <conditionFalse>
                                     <stimulusLabel/>
                                     <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -1579,7 +1579,7 @@
                             <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -1621,7 +1621,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -1696,7 +1696,7 @@
                             <addPadding/>
                             <row>
                                 <column>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <groupResponseStimulusImage maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -1715,7 +1715,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -1761,7 +1761,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -1836,7 +1836,7 @@
                             <addPadding/>
                             <row>
                                 <column>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <groupResponseStimulusImage maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -1855,7 +1855,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -1901,7 +1901,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -1976,7 +1976,7 @@
                             <addPadding/>
                             <row>
                                 <column>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <groupResponseStimulusImage maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -1995,7 +1995,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -2041,7 +2041,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -2116,7 +2116,7 @@
                             <addPadding/>
                             <row>
                                 <column>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <groupResponseStimulusImage maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -2135,7 +2135,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -2181,7 +2181,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -2256,7 +2256,7 @@
                             <addPadding/>
                             <row>
                                 <column>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <groupResponseStimulusImage maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -2275,7 +2275,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -2321,7 +2321,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -2396,7 +2396,7 @@
                             <addPadding/>
                             <row>
                                 <column>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <groupResponseStimulusImage maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -2415,7 +2415,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -2461,7 +2461,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -2536,7 +2536,7 @@
                             <addPadding/>
                             <row>
                                 <column>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <groupResponseStimulusImage maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -2555,7 +2555,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -2598,7 +2598,7 @@
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -2648,7 +2648,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -2723,7 +2723,7 @@
                             <addPadding/>
                             <row>
                                 <column>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <groupResponseStimulusImage maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -2742,7 +2742,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -2788,7 +2788,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -2863,7 +2863,7 @@
                             <addPadding/>
                             <row>
                                 <column>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <groupResponseStimulusImage maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -2882,7 +2882,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -2928,7 +2928,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -3003,7 +3003,7 @@
                             <addPadding/>
                             <row>
                                 <column>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <groupResponseStimulusImage maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -3022,7 +3022,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -3068,7 +3068,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -3143,7 +3143,7 @@
                             <addPadding/>
                             <row>
                                 <column>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <groupResponseStimulusImage maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -3162,7 +3162,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -3208,7 +3208,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -3283,7 +3283,7 @@
                             <addPadding/>
                             <row>
                                 <column>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <groupResponseStimulusImage maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -3302,7 +3302,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -3348,7 +3348,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -3423,7 +3423,7 @@
                             <addPadding/>
                             <row>
                                 <column>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <groupResponseStimulusImage maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -3442,7 +3442,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -3488,7 +3488,7 @@
                             <stimulusLabel/>
                             <htmlText featureText="Typ je beschrijving voor de scène: &lt;br/&gt;&lt;br/&gt;"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="30000" msLabelFormat="ss" styleName="countDownLabel"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -3563,7 +3563,7 @@
                             <addPadding/>
                             <row>
                                 <column>
-                                    <groupResponseStimulusImage msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
+                                    <groupResponseStimulusImage maxHeight="0" percentOfPage="0" animate="stimuliCode" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -3582,7 +3582,7 @@
                                     </groupResponseFeedback>
                                 </column>
                                 <column>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -3625,7 +3625,7 @@
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="&amp;nbsp;"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
