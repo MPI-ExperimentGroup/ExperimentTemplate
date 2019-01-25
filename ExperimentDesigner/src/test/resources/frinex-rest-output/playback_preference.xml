@@ -71,7 +71,7 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
+                <stimulusCodeVideo maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
@@ -147,7 +147,7 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
+                <stimulusCodeVideo maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
@@ -213,7 +213,7 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
+                <stimulusCodeVideo maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
@@ -279,7 +279,7 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
+                <stimulusCodeVideo maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
@@ -346,7 +346,7 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
+                <stimulusCodeVideo maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
@@ -412,7 +412,7 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
+                <stimulusCodeVideo maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
@@ -478,7 +478,7 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
+                <stimulusCodeVideo maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
@@ -544,7 +544,7 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
+                <stimulusCodeVideo maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
@@ -610,7 +610,7 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
+                <stimulusCodeVideo maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
@@ -676,7 +676,7 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
+                <stimulusCodeVideo maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
@@ -742,7 +742,7 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
+                <stimulusCodeVideo maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
@@ -808,7 +808,7 @@
             <hasMoreStimulus>
                 <backgroundImage msToNext="0" src="" styleName=""/>
                 <clearPage styleName="fullScreenWidth"/>
-                <stimulusCodeVideo msToNext="0" maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
+                <stimulusCodeVideo maxHeight="100" codeFormat="&lt;code&gt;" percentOfPage="0" loop="true" styleName="borderedVideoFull" dataChannel="1" autoPlay="false" mediaId="mediaId" showControls="false" maxWidth="100">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackComplete/>
