@@ -214,7 +214,7 @@
                 </startAudioRecorder>
                 <clearPage/>
                 <matchingStimulusGrid randomise="true" matchingRegex="([^_]*_)*" columnCount="10" maxStimuli="1000" animate="none" maxWidth="100">
-                    <responseCorrect msToNext="0">
+                    <responseCorrect>
                         <endAudioRecorderTag eventTier="4" eventTag="correct image clicked"/>
                         <clearPage/>
                         <backgroundImage msToNext="1" src="file:///storage/emulated/0/MPI_STIMULI/background2.png" styleName="">
@@ -245,7 +245,7 @@
                             </actionButton>
                         </backgroundImage>
                     </responseCorrect>
-                    <responseIncorrect msToNext="0">
+                    <responseIncorrect>
                         <endAudioRecorderTag eventTier="4" eventTag="incorrect image clicked"/>
                         <clearPage/>
                         <backgroundImage msToNext="1" src="file:///storage/emulated/0/MPI_STIMULI/background2.png" styleName="">
