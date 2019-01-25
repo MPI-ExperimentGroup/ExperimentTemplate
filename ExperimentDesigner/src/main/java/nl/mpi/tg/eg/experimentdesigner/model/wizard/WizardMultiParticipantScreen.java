@@ -476,11 +476,11 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         final PresenterFeature groupResponseFeedback2 = new PresenterFeature(FeatureType.groupResponseFeedback, null);
         final PresenterFeature responseCorrect2 = new PresenterFeature(FeatureType.responseCorrect, null);
-        responseCorrect2.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+//        responseCorrect2.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         responseCorrect2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, mutualFeedbackPhaseCorrectText));
         groupResponseFeedback2.getPresenterFeatureList().add(responseCorrect2);
         final PresenterFeature responseIncorrect2 = new PresenterFeature(FeatureType.responseIncorrect, null);
-        responseIncorrect2.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+//        responseIncorrect2.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         responseIncorrect2.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, mutualFeedbackPhaseIncorrectText));
         groupResponseFeedback2.getPresenterFeatureList().add(responseIncorrect2);
         allNetworkActivity2.getPresenterFeatureList().add(groupResponseFeedback2);
@@ -567,10 +567,10 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
 
         final PresenterFeature groupResponseFeedback = new PresenterFeature(FeatureType.groupResponseFeedback, null);
         final PresenterFeature responseCorrect = new PresenterFeature(FeatureType.responseCorrect, null);
-        responseCorrect.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+//        responseCorrect.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         groupResponseFeedback.getPresenterFeatureList().add(responseCorrect);
         final PresenterFeature responseIncorrect = new PresenterFeature(FeatureType.responseIncorrect, null);
-        responseIncorrect.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+//        responseIncorrect.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         groupResponseFeedback.getPresenterFeatureList().add(responseIncorrect);
 
         responseCorrect.getPresenterFeatureList().add(new PresenterFeature(FeatureType.htmlText, "<h1 style=\"color:green;\">&#10004;</h1>"));
@@ -809,10 +809,10 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
         resultsGrid.addFeatureAttributes(FeatureAttribute.eventTag, eventTagString);
         final PresenterFeature responseCorrect = new PresenterFeature(FeatureType.responseCorrect, null);
         responseCorrect.getPresenterFeatureList().addAll(responseCorrectFeatures);
-        responseCorrect.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+//        responseCorrect.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         resultsGrid.getPresenterFeatureList().add(responseCorrect);
         final PresenterFeature resultsIncorrect = new PresenterFeature(FeatureType.responseIncorrect, null);
-        resultsIncorrect.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+//        resultsIncorrect.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         resultsIncorrect.getPresenterFeatureList().addAll(responseIncorrectFeatures);
         resultsGrid.getPresenterFeatureList().add(resultsIncorrect);
         return resultsGrid;
