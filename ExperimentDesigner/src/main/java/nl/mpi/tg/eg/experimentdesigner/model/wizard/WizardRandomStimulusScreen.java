@@ -400,13 +400,13 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
             imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "0");
             imageFeature.addFeatureAttributes(FeatureAttribute.showControls, "false");
-            imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, Integer.toString(getStimulusMsDelay(storedWizardScreenData)));
+//            imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, );
             if (tableFeature != null) {
                 tableFeature.addFeature(FeatureType.column, null, "").getPresenterFeatureList().add(imageFeature);
             } else {
                 hasMoreStimulusFeature.getPresenterFeatureList().add(imageFeature);
             }
-            stimuliFeature = imageFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackStarted, FeatureType.mediaPlaybackComplete)[3];
+            stimuliFeature = imageFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackStarted, FeatureType.mediaPlaybackComplete)[3].addFeature(FeatureType.pause, null, Integer.toString(getStimulusMsDelay(storedWizardScreenData)));
         }
 
         final PresenterFeature presenterFeature;
@@ -423,7 +423,7 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
             final PresenterFeature stimulusCodeAudio = new PresenterFeature(FeatureType.stimulusCodeAudio, null);
             stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.showPlaybackIndicator, "false");
             stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.codeFormat, storedWizardScreenData.getStimulusCodeFormat());
-            stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+//            stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.msToNext, "0");
             stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.autoPlay, Boolean.toString(true));
             stimulusCodeAudio.addFeatureAttributes(FeatureAttribute.mediaId, "media");
             pauseFeature.getPresenterFeatureList().add(stimulusCodeAudio);
