@@ -48,30 +48,32 @@
         <centrePage/>
         <loadStimulus eventTag="StimulusScreenP" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusPresent msToNext="1000" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                        <actionButton featureText="volgende [ spatiebalk ]" hotKey="SPACE">
-                            <clearPage/>
-                            <pause msToNext="500">
-                                <stimulusCodeAudio msToNext="0" codeFormat="static/practice/wav/&lt;code&gt;" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
-                                    <mediaLoaded/>
-                                    <mediaLoadFailed/>
-                                    <mediaPlaybackStarted/>
-                                    <mediaPlaybackComplete>
-                                        <clearPage/>
-                                        <plainText featureText="Het antwoord is:"/>
-                                        <logTimeStamp eventTag="hetAntwoordIs"/>
-                                        <addPadding/>
-                                        <ratingButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief">
-                                            <nextStimulus repeatIncorrect="false"/>
-                                        </ratingButton>
-                                    </mediaPlaybackComplete>
-                                </stimulusCodeAudio>
-                            </pause>
-                        </actionButton>
+                        <pause msToNext="1000">
+                            <actionButton featureText="volgende [ spatiebalk ]" hotKey="SPACE">
+                                <clearPage/>
+                                <pause msToNext="500">
+                                    <stimulusCodeAudio codeFormat="static/practice/wav/&lt;code&gt;" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                        <mediaLoaded/>
+                                        <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
+                                        <mediaPlaybackComplete>
+                                            <clearPage/>
+                                            <plainText featureText="Het antwoord is:"/>
+                                            <logTimeStamp eventTag="hetAntwoordIs"/>
+                                            <addPadding/>
+                                            <ratingButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief">
+                                                <nextStimulus repeatIncorrect="false"/>
+                                            </ratingButton>
+                                        </mediaPlaybackComplete>
+                                    </stimulusCodeAudio>
+                                </pause>
+                            </actionButton>
+                        </pause>
                     </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
@@ -91,30 +93,32 @@
         <centrePage/>
         <loadStimulus eventTag="StimulusScreenE" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusPresent msToNext="1000" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                        <actionButton featureText="volgende [ spatiebalk ]" hotKey="SPACE">
-                            <clearPage/>
-                            <pause msToNext="500">
-                                <stimulusCodeAudio msToNext="0" codeFormat="static/experiment/wav/&lt;code&gt;" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
-                                    <mediaLoaded/>
-                                    <mediaLoadFailed/>
-                                    <mediaPlaybackStarted/>
-                                    <mediaPlaybackComplete>
-                                        <clearPage/>
-                                        <plainText featureText="Het antwoord is:"/>
-                                        <logTimeStamp eventTag="hetAntwoordIs"/>
-                                        <addPadding/>
-                                        <ratingButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief">
-                                            <nextStimulus repeatIncorrect="false"/>
-                                        </ratingButton>
-                                    </mediaPlaybackComplete>
-                                </stimulusCodeAudio>
-                            </pause>
-                        </actionButton>
+                        <pause msToNext="1000">
+                            <actionButton featureText="volgende [ spatiebalk ]" hotKey="SPACE">
+                                <clearPage/>
+                                <pause msToNext="500">
+                                    <stimulusCodeAudio codeFormat="static/experiment/wav/&lt;code&gt;" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                        <mediaLoaded/>
+                                        <mediaLoadFailed/>
+                                        <mediaPlaybackStarted/>
+                                        <mediaPlaybackComplete>
+                                            <clearPage/>
+                                            <plainText featureText="Het antwoord is:"/>
+                                            <logTimeStamp eventTag="hetAntwoordIs"/>
+                                            <addPadding/>
+                                            <ratingButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief">
+                                                <nextStimulus repeatIncorrect="false"/>
+                                            </ratingButton>
+                                        </mediaPlaybackComplete>
+                                    </stimulusCodeAudio>
+                                </pause>
+                            </actionButton>
+                        </pause>
                     </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
