@@ -391,18 +391,18 @@
                     <plainText featureText="plainText in showStimulus"/>
                 </showStimulus>
                 <showStimulusGrid imageWidth="imageWidth" eventTag="eventTag" dataChannel="2" columnCount="3" maxStimuli="3" animate="bounce">
-                    <responseCorrect msToNext="60">
+                    <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
-                    <responseIncorrect msToNext="60">
+                    <responseIncorrect>
                         <plainText featureText="plainText in responseIncorrect"/>
                     </responseIncorrect>
                 </showStimulusGrid>
                 <matchingStimulusGrid randomise="true" matchingRegex="matchingRegex" dataChannel="2" columnCount="3" maxStimuli="3" animate="bounce" maxWidth="60">
-                    <responseCorrect msToNext="60">
+                    <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
-                    <responseIncorrect msToNext="60">
+                    <responseIncorrect>
                         <plainText featureText="plainText in responseIncorrect"/>
                     </responseIncorrect>
                 </matchingStimulusGrid>
@@ -546,10 +546,10 @@
                             </mediaPlaybackComplete>
                         </groupResponseStimulusImage>
                         <groupResponseFeedback>
-                            <responseCorrect msToNext="60">
+                            <responseCorrect>
                                 <plainText featureText="plainText in responseCorrect"/>
                             </responseCorrect>
-                            <responseIncorrect msToNext="60">
+                            <responseIncorrect>
                                 <plainText featureText="plainText in responseIncorrect"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
@@ -580,10 +580,10 @@
                             </mediaPlaybackComplete>
                         </groupResponseStimulusImage>
                         <groupResponseFeedback>
-                            <responseCorrect msToNext="60">
+                            <responseCorrect>
                                 <plainText featureText="plainText in responseCorrect"/>
                             </responseCorrect>
-                            <responseIncorrect msToNext="60">
+                            <responseIncorrect>
                                 <plainText featureText="plainText in responseIncorrect"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
@@ -615,10 +615,10 @@
                             </mediaPlaybackComplete>
                         </groupResponseStimulusImage>
                         <groupResponseFeedback>
-                            <responseCorrect msToNext="60">
+                            <responseCorrect>
                                 <plainText featureText="plainText in responseCorrect"/>
                             </responseCorrect>
-                            <responseIncorrect msToNext="60">
+                            <responseIncorrect>
                                 <plainText featureText="plainText in responseIncorrect"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
@@ -741,18 +741,18 @@
                     <plainText featureText="plainText in showStimulus"/>
                 </showStimulus>
                 <showStimulusGrid imageWidth="imageWidth" eventTag="eventTag" dataChannel="2" columnCount="3" maxStimuli="3" animate="bounce">
-                    <responseCorrect msToNext="60">
+                    <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
-                    <responseIncorrect msToNext="60">
+                    <responseIncorrect>
                         <plainText featureText="plainText in responseIncorrect"/>
                     </responseIncorrect>
                 </showStimulusGrid>
                 <matchingStimulusGrid randomise="true" matchingRegex="matchingRegex" dataChannel="2" columnCount="3" maxStimuli="3" animate="bounce" maxWidth="60">
-                    <responseCorrect msToNext="60">
+                    <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
-                    <responseIncorrect msToNext="60">
+                    <responseIncorrect>
                         <plainText featureText="plainText in responseIncorrect"/>
                     </responseIncorrect>
                 </matchingStimulusGrid>
@@ -896,10 +896,10 @@
                             </mediaPlaybackComplete>
                         </groupResponseStimulusImage>
                         <groupResponseFeedback>
-                            <responseCorrect msToNext="60">
+                            <responseCorrect>
                                 <plainText featureText="plainText in responseCorrect"/>
                             </responseCorrect>
-                            <responseIncorrect msToNext="60">
+                            <responseIncorrect>
                                 <plainText featureText="plainText in responseIncorrect"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
@@ -930,10 +930,10 @@
                             </mediaPlaybackComplete>
                         </groupResponseStimulusImage>
                         <groupResponseFeedback>
-                            <responseCorrect msToNext="60">
+                            <responseCorrect>
                                 <plainText featureText="plainText in responseCorrect"/>
                             </responseCorrect>
-                            <responseIncorrect msToNext="60">
+                            <responseIncorrect>
                                 <plainText featureText="plainText in responseIncorrect"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
@@ -965,10 +965,10 @@
                             </mediaPlaybackComplete>
                         </groupResponseStimulusImage>
                         <groupResponseFeedback>
-                            <responseCorrect msToNext="60">
+                            <responseCorrect>
                                 <plainText featureText="plainText in responseCorrect"/>
                             </responseCorrect>
-                            <responseIncorrect msToNext="60">
+                            <responseIncorrect>
                                 <plainText featureText="plainText in responseIncorrect"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
@@ -1091,18 +1091,18 @@
                     <plainText featureText="plainText in showStimulus"/>
                 </showStimulus>
                 <showStimulusGrid imageWidth="imageWidth" eventTag="eventTag" dataChannel="2" columnCount="3" maxStimuli="3" animate="bounce">
-                    <responseCorrect msToNext="60">
+                    <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
-                    <responseIncorrect msToNext="60">
+                    <responseIncorrect>
                         <plainText featureText="plainText in responseIncorrect"/>
                     </responseIncorrect>
                 </showStimulusGrid>
                 <matchingStimulusGrid randomise="true" matchingRegex="matchingRegex" dataChannel="2" columnCount="3" maxStimuli="3" animate="bounce" maxWidth="60">
-                    <responseCorrect msToNext="60">
+                    <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
-                    <responseIncorrect msToNext="60">
+                    <responseIncorrect>
                         <plainText featureText="plainText in responseIncorrect"/>
                     </responseIncorrect>
                 </matchingStimulusGrid>
@@ -1246,10 +1246,10 @@
                             </mediaPlaybackComplete>
                         </groupResponseStimulusImage>
                         <groupResponseFeedback>
-                            <responseCorrect msToNext="60">
+                            <responseCorrect>
                                 <plainText featureText="plainText in responseCorrect"/>
                             </responseCorrect>
-                            <responseIncorrect msToNext="60">
+                            <responseIncorrect>
                                 <plainText featureText="plainText in responseIncorrect"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
@@ -1280,10 +1280,10 @@
                             </mediaPlaybackComplete>
                         </groupResponseStimulusImage>
                         <groupResponseFeedback>
-                            <responseCorrect msToNext="60">
+                            <responseCorrect>
                                 <plainText featureText="plainText in responseCorrect"/>
                             </responseCorrect>
-                            <responseIncorrect msToNext="60">
+                            <responseIncorrect>
                                 <plainText featureText="plainText in responseIncorrect"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
@@ -1315,10 +1315,10 @@
                             </mediaPlaybackComplete>
                         </groupResponseStimulusImage>
                         <groupResponseFeedback>
-                            <responseCorrect msToNext="60">
+                            <responseCorrect>
                                 <plainText featureText="plainText in responseCorrect"/>
                             </responseCorrect>
-                            <responseIncorrect msToNext="60">
+                            <responseIncorrect>
                                 <plainText featureText="plainText in responseIncorrect"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
@@ -2194,18 +2194,18 @@
                     <plainText featureText="plainText in showStimulus"/>
                 </showStimulus>
                 <showStimulusGrid imageWidth="imageWidth" eventTag="eventTag" columnCount="3">
-                    <responseCorrect msToNext="60">
+                    <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
-                    <responseIncorrect msToNext="60">
+                    <responseIncorrect>
                         <plainText featureText="plainText in responseIncorrect"/>
                     </responseIncorrect>
                 </showStimulusGrid>
                 <matchingStimulusGrid randomise="true" matchingRegex="matchingRegex" columnCount="3" maxWidth="60">
-                    <responseCorrect msToNext="60">
+                    <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
-                    <responseIncorrect msToNext="60">
+                    <responseIncorrect>
                         <plainText featureText="plainText in responseIncorrect"/>
                     </responseIncorrect>
                 </matchingStimulusGrid>
@@ -2349,10 +2349,10 @@
                             </mediaPlaybackComplete>
                         </groupResponseStimulusImage>
                         <groupResponseFeedback>
-                            <responseCorrect msToNext="60">
+                            <responseCorrect>
                                 <plainText featureText="plainText in responseCorrect"/>
                             </responseCorrect>
-                            <responseIncorrect msToNext="60">
+                            <responseIncorrect>
                                 <plainText featureText="plainText in responseIncorrect"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
@@ -2383,10 +2383,10 @@
                             </mediaPlaybackComplete>
                         </groupResponseStimulusImage>
                         <groupResponseFeedback>
-                            <responseCorrect msToNext="60">
+                            <responseCorrect>
                                 <plainText featureText="plainText in responseCorrect"/>
                             </responseCorrect>
-                            <responseIncorrect msToNext="60">
+                            <responseIncorrect>
                                 <plainText featureText="plainText in responseIncorrect"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
@@ -2418,10 +2418,10 @@
                             </mediaPlaybackComplete>
                         </groupResponseStimulusImage>
                         <groupResponseFeedback>
-                            <responseCorrect msToNext="60">
+                            <responseCorrect>
                                 <plainText featureText="plainText in responseCorrect"/>
                             </responseCorrect>
-                            <responseIncorrect msToNext="60">
+                            <responseIncorrect>
                                 <plainText featureText="plainText in responseIncorrect"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
@@ -2544,18 +2544,18 @@
                     <plainText featureText="plainText in showStimulus"/>
                 </showStimulus>
                 <showStimulusGrid imageWidth="imageWidth" eventTag="eventTag" columnCount="3">
-                    <responseCorrect msToNext="60">
+                    <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
-                    <responseIncorrect msToNext="60">
+                    <responseIncorrect>
                         <plainText featureText="plainText in responseIncorrect"/>
                     </responseIncorrect>
                 </showStimulusGrid>
                 <matchingStimulusGrid randomise="true" matchingRegex="matchingRegex" columnCount="3" maxWidth="60">
-                    <responseCorrect msToNext="60">
+                    <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
-                    <responseIncorrect msToNext="60">
+                    <responseIncorrect>
                         <plainText featureText="plainText in responseIncorrect"/>
                     </responseIncorrect>
                 </matchingStimulusGrid>
@@ -2699,10 +2699,10 @@
                             </mediaPlaybackComplete>
                         </groupResponseStimulusImage>
                         <groupResponseFeedback>
-                            <responseCorrect msToNext="60">
+                            <responseCorrect>
                                 <plainText featureText="plainText in responseCorrect"/>
                             </responseCorrect>
-                            <responseIncorrect msToNext="60">
+                            <responseIncorrect>
                                 <plainText featureText="plainText in responseIncorrect"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
@@ -2733,10 +2733,10 @@
                             </mediaPlaybackComplete>
                         </groupResponseStimulusImage>
                         <groupResponseFeedback>
-                            <responseCorrect msToNext="60">
+                            <responseCorrect>
                                 <plainText featureText="plainText in responseCorrect"/>
                             </responseCorrect>
-                            <responseIncorrect msToNext="60">
+                            <responseIncorrect>
                                 <plainText featureText="plainText in responseIncorrect"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
@@ -2768,10 +2768,10 @@
                             </mediaPlaybackComplete>
                         </groupResponseStimulusImage>
                         <groupResponseFeedback>
-                            <responseCorrect msToNext="60">
+                            <responseCorrect>
                                 <plainText featureText="plainText in responseCorrect"/>
                             </responseCorrect>
-                            <responseIncorrect msToNext="60">
+                            <responseIncorrect>
                                 <plainText featureText="plainText in responseIncorrect"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
@@ -2894,18 +2894,18 @@
                     <plainText featureText="plainText in showStimulus"/>
                 </showStimulus>
                 <showStimulusGrid imageWidth="imageWidth" eventTag="eventTag" columnCount="3">
-                    <responseCorrect msToNext="60">
+                    <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
-                    <responseIncorrect msToNext="60">
+                    <responseIncorrect>
                         <plainText featureText="plainText in responseIncorrect"/>
                     </responseIncorrect>
                 </showStimulusGrid>
                 <matchingStimulusGrid randomise="true" matchingRegex="matchingRegex" columnCount="3" maxWidth="60">
-                    <responseCorrect msToNext="60">
+                    <responseCorrect>
                         <plainText featureText="plainText in responseCorrect"/>
                     </responseCorrect>
-                    <responseIncorrect msToNext="60">
+                    <responseIncorrect>
                         <plainText featureText="plainText in responseIncorrect"/>
                     </responseIncorrect>
                 </matchingStimulusGrid>
@@ -3049,10 +3049,10 @@
                             </mediaPlaybackComplete>
                         </groupResponseStimulusImage>
                         <groupResponseFeedback>
-                            <responseCorrect msToNext="60">
+                            <responseCorrect>
                                 <plainText featureText="plainText in responseCorrect"/>
                             </responseCorrect>
-                            <responseIncorrect msToNext="60">
+                            <responseIncorrect>
                                 <plainText featureText="plainText in responseIncorrect"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
@@ -3083,10 +3083,10 @@
                             </mediaPlaybackComplete>
                         </groupResponseStimulusImage>
                         <groupResponseFeedback>
-                            <responseCorrect msToNext="60">
+                            <responseCorrect>
                                 <plainText featureText="plainText in responseCorrect"/>
                             </responseCorrect>
-                            <responseIncorrect msToNext="60">
+                            <responseIncorrect>
                                 <plainText featureText="plainText in responseIncorrect"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
@@ -3118,10 +3118,10 @@
                             </mediaPlaybackComplete>
                         </groupResponseStimulusImage>
                         <groupResponseFeedback>
-                            <responseCorrect msToNext="60">
+                            <responseCorrect>
                                 <plainText featureText="plainText in responseCorrect"/>
                             </responseCorrect>
-                            <responseIncorrect msToNext="60">
+                            <responseIncorrect>
                                 <plainText featureText="plainText in responseIncorrect"/>
                             </responseIncorrect>
                         </groupResponseFeedback>
