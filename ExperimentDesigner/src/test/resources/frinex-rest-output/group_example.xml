@@ -36,7 +36,7 @@
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="All participants see this screen"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
@@ -83,7 +83,7 @@
                                 <conditionFalse>
                                     <stimulusLabel/>
                                     <htmlText featureText="Phase1"/>
-                                    <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                                    <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackComplete>
@@ -109,7 +109,7 @@
                             <addPadding/>
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <addPadding/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackComplete>
