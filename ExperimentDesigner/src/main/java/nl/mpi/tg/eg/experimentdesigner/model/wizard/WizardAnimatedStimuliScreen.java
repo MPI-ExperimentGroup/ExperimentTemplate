@@ -379,10 +379,10 @@ public class WizardAnimatedStimuliScreen extends AbstractWizardScreen {
             returnFeature.getPresenterFeatureList().add(presenterFeature);
         }
         final PresenterFeature responseCorrect = new PresenterFeature(FeatureType.responseCorrect, null);
-        responseCorrect.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+//        responseCorrect.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         matchingStimulusGrid.getPresenterFeatureList().add(responseCorrect);
         final PresenterFeature responseIncorrect = new PresenterFeature(FeatureType.responseIncorrect, null);
-        responseIncorrect.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+//        responseIncorrect.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         matchingStimulusGrid.getPresenterFeatureList().add(responseIncorrect);
 
         final PresenterFeature endAudioRecorderTagFeatureCorrect = new PresenterFeature(FeatureType.endAudioRecorderTag, null);
