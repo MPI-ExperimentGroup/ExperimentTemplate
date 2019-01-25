@@ -62,44 +62,50 @@
                         <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
                             <backgroundImage msToNext="0" src="" styleName=""/>
                             <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                            <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                            <stimulusCodeAudio codeFormat="&lt;code&gt;_a" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
-                                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
-                                        <mediaLoaded/>
-                                        <mediaLoadFailed/>
-                                        <mediaPlaybackStarted/>
-                                        <mediaPlaybackComplete>
-                                            <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                            <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
-                                            <pause msToNext="3000">
-                                                <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
-                                                    <mediaLoaded/>
-                                                    <mediaLoadFailed/>
-                                                    <mediaPlaybackStarted/>
-                                                    <mediaPlaybackComplete>
-                                                        <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
-                                                            <mediaLoaded/>
-                                                            <mediaLoadFailed/>
-                                                            <mediaPlaybackStarted/>
-                                                            <mediaPlaybackComplete>
-                                                                <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                                                <cancelPauseTimers/>
-                                                                <clearPage styleName=""/>
-                                                                <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                                <pause msToNext="1000">
-                                                                    <touchInputReportSubmit dataChannel="3"/>
-                                                                    <nextStimulus repeatIncorrect="false"/>
-                                                                </pause>
-                                                            </mediaPlaybackComplete>
-                                                        </stimulusCodeAudio>
-                                                    </mediaPlaybackComplete>
-                                                </stimulusCodeAudio>
-                                            </pause>
-                                        </mediaPlaybackComplete>
-                                    </stimulusCodeAudio>
+                                    <pause msToNext="500">
+                                        <stimulusCodeAudio codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                            <mediaLoaded/>
+                                            <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
+                                            <mediaPlaybackComplete>
+                                                <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
+                                                <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
+                                                <pause msToNext="3000">
+                                                    <stimulusCodeAudio codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                        <mediaLoaded/>
+                                                        <mediaLoadFailed/>
+                                                        <mediaPlaybackStarted/>
+                                                        <mediaPlaybackComplete>
+                                                            <pause msToNext="3000">
+                                                                <stimulusCodeAudio codeFormat="DrukOpHetPlaatje" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                                    <mediaLoaded/>
+                                                                    <mediaLoadFailed/>
+                                                                    <mediaPlaybackStarted/>
+                                                                    <mediaPlaybackComplete>
+                                                                        <pause msToNext="3000">
+                                                                            <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
+                                                                            <cancelPauseTimers/>
+                                                                            <clearPage styleName=""/>
+                                                                            <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                                                            <pause msToNext="1000">
+                                                                                <touchInputReportSubmit dataChannel="3"/>
+                                                                                <nextStimulus repeatIncorrect="false"/>
+                                                                            </pause>
+                                                                        </pause>
+                                                                    </mediaPlaybackComplete>
+                                                                </stimulusCodeAudio>
+                                                            </pause>
+                                                        </mediaPlaybackComplete>
+                                                    </stimulusCodeAudio>
+                                                </pause>
+                                            </mediaPlaybackComplete>
+                                        </stimulusCodeAudio>
+                                    </pause>
                                 </mediaPlaybackComplete>
                             </stimulusCodeAudio>
                         </triggerListener>
@@ -112,13 +118,15 @@
                                     <pause msToNext="1000">
                                         <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                        <stimulusCodeAudio codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
-                                                <touchInputReportSubmit dataChannel="3"/>
-                                                <nextStimulus repeatIncorrect="false"/>
+                                                <pause msToNext="500">
+                                                    <touchInputReportSubmit dataChannel="3"/>
+                                                    <nextStimulus repeatIncorrect="false"/>
+                                                </pause>
                                             </mediaPlaybackComplete>
                                         </stimulusCodeAudio>
                                     </pause>
@@ -136,13 +144,15 @@
                                     <pause msToNext="1000">
                                         <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                        <stimulusCodeAudio codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
-                                                <touchInputReportSubmit dataChannel="3"/>
-                                                <nextStimulus repeatIncorrect="false"/>
+                                                <pause msToNext="500">
+                                                    <touchInputReportSubmit dataChannel="3"/>
+                                                    <nextStimulus repeatIncorrect="false"/>
+                                                </pause>
                                             </mediaPlaybackComplete>
                                         </stimulusCodeAudio>
                                     </pause>
@@ -160,13 +170,15 @@
                                     <pause msToNext="1000">
                                         <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                        <stimulusCodeAudio codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
-                                                <touchInputReportSubmit dataChannel="3"/>
-                                                <nextStimulus repeatIncorrect="false"/>
+                                                <pause msToNext="500">
+                                                    <touchInputReportSubmit dataChannel="3"/>
+                                                    <nextStimulus repeatIncorrect="false"/>
+                                                </pause>
                                             </mediaPlaybackComplete>
                                         </stimulusCodeAudio>
                                     </pause>
@@ -233,44 +245,50 @@
                         <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
                             <backgroundImage msToNext="0" src="" styleName=""/>
                             <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                            <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                            <stimulusCodeAudio codeFormat="&lt;code&gt;_a" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete>
-                                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
-                                        <mediaLoaded/>
-                                        <mediaLoadFailed/>
-                                        <mediaPlaybackStarted/>
-                                        <mediaPlaybackComplete>
-                                            <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                            <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
-                                            <pause msToNext="3000">
-                                                <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
-                                                    <mediaLoaded/>
-                                                    <mediaLoadFailed/>
-                                                    <mediaPlaybackStarted/>
-                                                    <mediaPlaybackComplete>
-                                                        <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
-                                                            <mediaLoaded/>
-                                                            <mediaLoadFailed/>
-                                                            <mediaPlaybackStarted/>
-                                                            <mediaPlaybackComplete>
-                                                                <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                                                <cancelPauseTimers/>
-                                                                <clearPage styleName=""/>
-                                                                <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                                <pause msToNext="1000">
-                                                                    <touchInputReportSubmit dataChannel="3"/>
-                                                                    <nextStimulus repeatIncorrect="false"/>
-                                                                </pause>
-                                                            </mediaPlaybackComplete>
-                                                        </stimulusCodeAudio>
-                                                    </mediaPlaybackComplete>
-                                                </stimulusCodeAudio>
-                                            </pause>
-                                        </mediaPlaybackComplete>
-                                    </stimulusCodeAudio>
+                                    <pause msToNext="500">
+                                        <stimulusCodeAudio codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                            <mediaLoaded/>
+                                            <mediaLoadFailed/>
+                                            <mediaPlaybackStarted/>
+                                            <mediaPlaybackComplete>
+                                                <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
+                                                <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
+                                                <pause msToNext="3000">
+                                                    <stimulusCodeAudio codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                        <mediaLoaded/>
+                                                        <mediaLoadFailed/>
+                                                        <mediaPlaybackStarted/>
+                                                        <mediaPlaybackComplete>
+                                                            <pause msToNext="3000">
+                                                                <stimulusCodeAudio codeFormat="DrukOpHetPlaatje" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                                    <mediaLoaded/>
+                                                                    <mediaLoadFailed/>
+                                                                    <mediaPlaybackStarted/>
+                                                                    <mediaPlaybackComplete>
+                                                                        <pause msToNext="3000">
+                                                                            <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
+                                                                            <cancelPauseTimers/>
+                                                                            <clearPage styleName=""/>
+                                                                            <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                                                            <pause msToNext="1000">
+                                                                                <touchInputReportSubmit dataChannel="3"/>
+                                                                                <nextStimulus repeatIncorrect="false"/>
+                                                                            </pause>
+                                                                        </pause>
+                                                                    </mediaPlaybackComplete>
+                                                                </stimulusCodeAudio>
+                                                            </pause>
+                                                        </mediaPlaybackComplete>
+                                                    </stimulusCodeAudio>
+                                                </pause>
+                                            </mediaPlaybackComplete>
+                                        </stimulusCodeAudio>
+                                    </pause>
                                 </mediaPlaybackComplete>
                             </stimulusCodeAudio>
                         </triggerListener>
@@ -283,13 +301,15 @@
                                     <pause msToNext="1000">
                                         <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                        <stimulusCodeAudio codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
-                                                <touchInputReportSubmit dataChannel="3"/>
-                                                <nextStimulus repeatIncorrect="false"/>
+                                                <pause msToNext="500">
+                                                    <touchInputReportSubmit dataChannel="3"/>
+                                                    <nextStimulus repeatIncorrect="false"/>
+                                                </pause>
                                             </mediaPlaybackComplete>
                                         </stimulusCodeAudio>
                                     </pause>
@@ -307,13 +327,15 @@
                                     <pause msToNext="1000">
                                         <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                        <stimulusCodeAudio codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
-                                                <touchInputReportSubmit dataChannel="3"/>
-                                                <nextStimulus repeatIncorrect="false"/>
+                                                <pause msToNext="500">
+                                                    <touchInputReportSubmit dataChannel="3"/>
+                                                    <nextStimulus repeatIncorrect="false"/>
+                                                </pause>
                                             </mediaPlaybackComplete>
                                         </stimulusCodeAudio>
                                     </pause>
@@ -331,13 +353,15 @@
                                     <pause msToNext="1000">
                                         <clearPage styleName=""/>
                                         <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                        <stimulusCodeAudio msToNext="500" codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                        <stimulusCodeAudio codeFormat="chimes_welldoneditbetekend" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
-                                                <touchInputReportSubmit dataChannel="3"/>
-                                                <nextStimulus repeatIncorrect="false"/>
+                                                <pause msToNext="500">
+                                                    <touchInputReportSubmit dataChannel="3"/>
+                                                    <nextStimulus repeatIncorrect="false"/>
+                                                </pause>
                                             </mediaPlaybackComplete>
                                         </stimulusCodeAudio>
                                     </pause>
@@ -409,44 +433,50 @@
                                 <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
                                     <backgroundImage msToNext="0" src="" styleName=""/>
                                     <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                    <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                    <stimulusCodeAudio codeFormat="&lt;code&gt;_a" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete>
-                                            <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
-                                                <mediaLoaded/>
-                                                <mediaLoadFailed/>
-                                                <mediaPlaybackStarted/>
-                                                <mediaPlaybackComplete>
-                                                    <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                                    <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
-                                                    <pause msToNext="3000">
-                                                        <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
-                                                            <mediaLoaded/>
-                                                            <mediaLoadFailed/>
-                                                            <mediaPlaybackStarted/>
-                                                            <mediaPlaybackComplete>
-                                                                <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
-                                                                    <mediaLoaded/>
-                                                                    <mediaLoadFailed/>
-                                                                    <mediaPlaybackStarted/>
-                                                                    <mediaPlaybackComplete>
-                                                                        <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                                                        <cancelPauseTimers/>
-                                                                        <clearPage styleName=""/>
-                                                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                                        <pause msToNext="1000">
-                                                                            <touchInputReportSubmit dataChannel="3"/>
-                                                                            <nextStimulus repeatIncorrect="false"/>
-                                                                        </pause>
-                                                                    </mediaPlaybackComplete>
-                                                                </stimulusCodeAudio>
-                                                            </mediaPlaybackComplete>
-                                                        </stimulusCodeAudio>
-                                                    </pause>
-                                                </mediaPlaybackComplete>
-                                            </stimulusCodeAudio>
+                                            <pause msToNext="500">
+                                                <stimulusCodeAudio codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                    <mediaLoaded/>
+                                                    <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
+                                                    <mediaPlaybackComplete>
+                                                        <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
+                                                        <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
+                                                        <pause msToNext="3000">
+                                                            <stimulusCodeAudio codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                                <mediaLoaded/>
+                                                                <mediaLoadFailed/>
+                                                                <mediaPlaybackStarted/>
+                                                                <mediaPlaybackComplete>
+                                                                    <pause msToNext="3000">
+                                                                        <stimulusCodeAudio codeFormat="DrukOpHetPlaatje" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                                            <mediaLoaded/>
+                                                                            <mediaLoadFailed/>
+                                                                            <mediaPlaybackStarted/>
+                                                                            <mediaPlaybackComplete>
+                                                                                <pause msToNext="3000">
+                                                                                    <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
+                                                                                    <cancelPauseTimers/>
+                                                                                    <clearPage styleName=""/>
+                                                                                    <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                                                                    <pause msToNext="1000">
+                                                                                        <touchInputReportSubmit dataChannel="3"/>
+                                                                                        <nextStimulus repeatIncorrect="false"/>
+                                                                                    </pause>
+                                                                                </pause>
+                                                                            </mediaPlaybackComplete>
+                                                                        </stimulusCodeAudio>
+                                                                    </pause>
+                                                                </mediaPlaybackComplete>
+                                                            </stimulusCodeAudio>
+                                                        </pause>
+                                                    </mediaPlaybackComplete>
+                                                </stimulusCodeAudio>
+                                            </pause>
                                         </mediaPlaybackComplete>
                                     </stimulusCodeAudio>
                                 </triggerListener>
@@ -459,13 +489,15 @@
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio codeFormat="chimes_fantastisch" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
-                                                        <touchInputReportSubmit dataChannel="3"/>
-                                                        <nextStimulus repeatIncorrect="false"/>
+                                                        <pause msToNext="500">
+                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <nextStimulus repeatIncorrect="false"/>
+                                                        </pause>
                                                     </mediaPlaybackComplete>
                                                 </stimulusCodeAudio>
                                             </pause>
@@ -483,13 +515,15 @@
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio codeFormat="chimes_fantastisch" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
-                                                        <touchInputReportSubmit dataChannel="3"/>
-                                                        <nextStimulus repeatIncorrect="false"/>
+                                                        <pause msToNext="500">
+                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <nextStimulus repeatIncorrect="false"/>
+                                                        </pause>
                                                     </mediaPlaybackComplete>
                                                 </stimulusCodeAudio>
                                             </pause>
@@ -507,13 +541,15 @@
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_fantastisch" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio codeFormat="chimes_fantastisch" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
-                                                        <touchInputReportSubmit dataChannel="3"/>
-                                                        <nextStimulus repeatIncorrect="false"/>
+                                                        <pause msToNext="500">
+                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <nextStimulus repeatIncorrect="false"/>
+                                                        </pause>
                                                     </mediaPlaybackComplete>
                                                 </stimulusCodeAudio>
                                             </pause>
@@ -587,44 +623,50 @@
                                 <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
                                     <backgroundImage msToNext="0" src="" styleName=""/>
                                     <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                    <stimulusCodeAudio msToNext="500" codeFormat="&lt;code&gt;_a" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                    <stimulusCodeAudio codeFormat="&lt;code&gt;_a" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
                                         <mediaPlaybackComplete>
-                                            <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
-                                                <mediaLoaded/>
-                                                <mediaLoadFailed/>
-                                                <mediaPlaybackStarted/>
-                                                <mediaPlaybackComplete>
-                                                    <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                                    <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
-                                                    <pause msToNext="3000">
-                                                        <stimulusCodeAudio msToNext="3000" codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
-                                                            <mediaLoaded/>
-                                                            <mediaLoadFailed/>
-                                                            <mediaPlaybackStarted/>
-                                                            <mediaPlaybackComplete>
-                                                                <stimulusCodeAudio msToNext="3000" codeFormat="DrukOpHetPlaatje" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
-                                                                    <mediaLoaded/>
-                                                                    <mediaLoadFailed/>
-                                                                    <mediaPlaybackStarted/>
-                                                                    <mediaPlaybackComplete>
-                                                                        <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                                                        <cancelPauseTimers/>
-                                                                        <clearPage styleName=""/>
-                                                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                                        <pause msToNext="1000">
-                                                                            <touchInputReportSubmit dataChannel="3"/>
-                                                                            <nextStimulus repeatIncorrect="false"/>
-                                                                        </pause>
-                                                                    </mediaPlaybackComplete>
-                                                                </stimulusCodeAudio>
-                                                            </mediaPlaybackComplete>
-                                                        </stimulusCodeAudio>
-                                                    </pause>
-                                                </mediaPlaybackComplete>
-                                            </stimulusCodeAudio>
+                                            <pause msToNext="500">
+                                                <stimulusCodeAudio codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                    <mediaLoaded/>
+                                                    <mediaLoadFailed/>
+                                                    <mediaPlaybackStarted/>
+                                                    <mediaPlaybackComplete>
+                                                        <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
+                                                        <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
+                                                        <pause msToNext="3000">
+                                                            <stimulusCodeAudio codeFormat="&lt;code&gt;_b" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                                <mediaLoaded/>
+                                                                <mediaLoadFailed/>
+                                                                <mediaPlaybackStarted/>
+                                                                <mediaPlaybackComplete>
+                                                                    <pause msToNext="3000">
+                                                                        <stimulusCodeAudio codeFormat="DrukOpHetPlaatje" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                                            <mediaLoaded/>
+                                                                            <mediaLoadFailed/>
+                                                                            <mediaPlaybackStarted/>
+                                                                            <mediaPlaybackComplete>
+                                                                                <pause msToNext="3000">
+                                                                                    <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
+                                                                                    <cancelPauseTimers/>
+                                                                                    <clearPage styleName=""/>
+                                                                                    <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                                                                    <pause msToNext="1000">
+                                                                                        <touchInputReportSubmit dataChannel="3"/>
+                                                                                        <nextStimulus repeatIncorrect="false"/>
+                                                                                    </pause>
+                                                                                </pause>
+                                                                            </mediaPlaybackComplete>
+                                                                        </stimulusCodeAudio>
+                                                                    </pause>
+                                                                </mediaPlaybackComplete>
+                                                            </stimulusCodeAudio>
+                                                        </pause>
+                                                    </mediaPlaybackComplete>
+                                                </stimulusCodeAudio>
+                                            </pause>
                                         </mediaPlaybackComplete>
                                     </stimulusCodeAudio>
                                 </triggerListener>
@@ -637,13 +679,15 @@
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio codeFormat="chimes_goedgedaan" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
-                                                        <touchInputReportSubmit dataChannel="3"/>
-                                                        <nextStimulus repeatIncorrect="false"/>
+                                                        <pause msToNext="500">
+                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <nextStimulus repeatIncorrect="false"/>
+                                                        </pause>
                                                     </mediaPlaybackComplete>
                                                 </stimulusCodeAudio>
                                             </pause>
@@ -661,13 +705,15 @@
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio codeFormat="chimes_goedgedaan" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
-                                                        <touchInputReportSubmit dataChannel="3"/>
-                                                        <nextStimulus repeatIncorrect="false"/>
+                                                        <pause msToNext="500">
+                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <nextStimulus repeatIncorrect="false"/>
+                                                        </pause>
                                                     </mediaPlaybackComplete>
                                                 </stimulusCodeAudio>
                                             </pause>
@@ -685,13 +731,15 @@
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_goedgedaan" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio codeFormat="chimes_goedgedaan" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
-                                                        <touchInputReportSubmit dataChannel="3"/>
-                                                        <nextStimulus repeatIncorrect="false"/>
+                                                        <pause msToNext="500">
+                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <nextStimulus repeatIncorrect="false"/>
+                                                        </pause>
                                                     </mediaPlaybackComplete>
                                                 </stimulusCodeAudio>
                                             </pause>
@@ -765,7 +813,7 @@
                                 <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="2">
                                     <backgroundImage msToNext="0" src="" styleName=""/>
                                     <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                    <stimulusAudio msToNext="0" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                    <stimulusAudio dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -773,18 +821,20 @@
                                             <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
                                             <pause msToNext="3000">
-                                                <stimulusAudio msToNext="3000" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                <stimulusAudio dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
-                                                        <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                                        <cancelPauseTimers/>
-                                                        <clearPage styleName=""/>
-                                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                        <pause msToNext="1000">
-                                                            <touchInputReportSubmit dataChannel="3"/>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                        <pause msToNext="3000">
+                                                            <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
+                                                            <cancelPauseTimers/>
+                                                            <clearPage styleName=""/>
+                                                            <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                                            <pause msToNext="1000">
+                                                                <touchInputReportSubmit dataChannel="3"/>
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </pause>
                                                     </mediaPlaybackComplete>
                                                 </stimulusAudio>
@@ -801,13 +851,15 @@
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio codeFormat="chimes_super" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
-                                                        <touchInputReportSubmit dataChannel="3"/>
-                                                        <nextStimulus repeatIncorrect="false"/>
+                                                        <pause msToNext="500">
+                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <nextStimulus repeatIncorrect="false"/>
+                                                        </pause>
                                                     </mediaPlaybackComplete>
                                                 </stimulusCodeAudio>
                                             </pause>
@@ -825,13 +877,15 @@
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio codeFormat="chimes_super" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
-                                                        <touchInputReportSubmit dataChannel="3"/>
-                                                        <nextStimulus repeatIncorrect="false"/>
+                                                        <pause msToNext="500">
+                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <nextStimulus repeatIncorrect="false"/>
+                                                        </pause>
                                                     </mediaPlaybackComplete>
                                                 </stimulusCodeAudio>
                                             </pause>
@@ -849,13 +903,15 @@
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_super" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio codeFormat="chimes_super" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
-                                                        <touchInputReportSubmit dataChannel="3"/>
-                                                        <nextStimulus repeatIncorrect="false"/>
+                                                        <pause msToNext="500">
+                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <nextStimulus repeatIncorrect="false"/>
+                                                        </pause>
                                                     </mediaPlaybackComplete>
                                                 </stimulusCodeAudio>
                                             </pause>
@@ -929,7 +985,7 @@
                                 <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="2">
                                     <backgroundImage msToNext="0" src="" styleName=""/>
                                     <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                    <stimulusAudio msToNext="0" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                    <stimulusAudio dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                         <mediaLoaded/>
                                         <mediaLoadFailed/>
                                         <mediaPlaybackStarted/>
@@ -937,18 +993,20 @@
                                             <enableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
                                             <backgroundImage msToNext="0" src="" styleName="backgroundHighlight"/>
                                             <pause msToNext="3000">
-                                                <stimulusAudio msToNext="3000" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                <stimulusAudio dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
-                                                        <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
-                                                        <cancelPauseTimers/>
-                                                        <clearPage styleName=""/>
-                                                        <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                        <pause msToNext="1000">
-                                                            <touchInputReportSubmit dataChannel="3"/>
-                                                            <nextStimulus repeatIncorrect="false"/>
+                                                        <pause msToNext="3000">
+                                                            <disableButtonGroup matchingRegex="leftButtonGroup|centreButtonGroup|rightButtonGroup"/>
+                                                            <cancelPauseTimers/>
+                                                            <clearPage styleName=""/>
+                                                            <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
+                                                            <pause msToNext="1000">
+                                                                <touchInputReportSubmit dataChannel="3"/>
+                                                                <nextStimulus repeatIncorrect="false"/>
+                                                            </pause>
                                                         </pause>
                                                     </mediaPlaybackComplete>
                                                 </stimulusAudio>
@@ -965,13 +1023,15 @@
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio codeFormat="chimes_prima" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
-                                                        <touchInputReportSubmit dataChannel="3"/>
-                                                        <nextStimulus repeatIncorrect="false"/>
+                                                        <pause msToNext="500">
+                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <nextStimulus repeatIncorrect="false"/>
+                                                        </pause>
                                                     </mediaPlaybackComplete>
                                                 </stimulusCodeAudio>
                                             </pause>
@@ -989,13 +1049,15 @@
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio codeFormat="chimes_prima" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
-                                                        <touchInputReportSubmit dataChannel="3"/>
-                                                        <nextStimulus repeatIncorrect="false"/>
+                                                        <pause msToNext="500">
+                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <nextStimulus repeatIncorrect="false"/>
+                                                        </pause>
                                                     </mediaPlaybackComplete>
                                                 </stimulusCodeAudio>
                                             </pause>
@@ -1013,13 +1075,15 @@
                                             <pause msToNext="2000">
                                                 <clearPage styleName=""/>
                                                 <backgroundImage msToNext="0" src="balloon.jpg" styleName=""/>
-                                                <stimulusCodeAudio msToNext="500" codeFormat="chimes_prima" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                <stimulusCodeAudio codeFormat="chimes_prima" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete>
-                                                        <touchInputReportSubmit dataChannel="3"/>
-                                                        <nextStimulus repeatIncorrect="false"/>
+                                                        <pause msToNext="500">
+                                                            <touchInputReportSubmit dataChannel="3"/>
+                                                            <nextStimulus repeatIncorrect="false"/>
+                                                        </pause>
                                                     </mediaPlaybackComplete>
                                                 </stimulusCodeAudio>
                                             </pause>
