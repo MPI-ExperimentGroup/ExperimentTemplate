@@ -164,7 +164,7 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         contextFeature.addFeatureAttributes(FeatureAttribute.animate, "none");
         contextFeature.addFeatureAttributes(FeatureAttribute.replacementRegex, "(\\\\.[^\\\\.]*)$");
         contextFeature.addFeatureAttributes(FeatureAttribute.replacement, "_context$1");
-        contextFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+//        contextFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         contextFeature.addFeatureAttributes(FeatureAttribute.showControls, "false");
         contextFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackStarted, FeatureType.mediaPlaybackComplete);
         final PresenterFeature contextFeatureColumn = new PresenterFeature(FeatureType.column, null);
@@ -174,7 +174,7 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, "80");
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, "80");
-        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+//        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         imageFeature.addFeatureAttributes(FeatureAttribute.animate, "none");
         imageFeature.addFeatureAttributes(FeatureAttribute.showControls, "false");
         imageFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackStarted, FeatureType.mediaPlaybackComplete);
