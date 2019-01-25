@@ -63,7 +63,7 @@
                 <centrePage/>
                 <stimulusLabel/>
                 <showStimulusProgress/>
-                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
@@ -102,7 +102,7 @@
                 <centrePage/>
                 <stimulusLabel/>
                 <showStimulusProgress/>
-                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
@@ -141,7 +141,7 @@
                 <withMatchingStimulus eventTag="" randomise="true" repeatRandomWindow="0" matchingRegex="([^_]*_)*" maxStimuli="1000" repeatCount="1">
                     <hasMoreStimulus>
                         <clearPage/>
-                        <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" animate="none" showControls="false" maxWidth="80">
+                        <stimulusPresent maxHeight="80" percentOfPage="0" animate="none" showControls="false" maxWidth="80">
                             <mediaLoaded/>
                             <mediaLoadFailed/>
                             <mediaPlaybackStarted/>
@@ -151,20 +151,20 @@
                                     <endAudioRecorderTag eventTier="1" eventTag="image"/>
                                     <clearPage/>
                                     <backgroundImage msToNext="1" src="file:///storage/emulated/0/MPI_STIMULI/background1.png" styleName="">
-                                        <stimulusPresent msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" showControls="false" maxWidth="30">
+                                        <stimulusPresent maxHeight="30" percentOfPage="0" animate="bounce" showControls="false" maxWidth="30">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackStarted/>
                                             <mediaPlaybackComplete>
                                                 <addPadding/>
-                                                <stimulusAudio msToNext="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                <stimulusAudio autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                     <mediaLoaded/>
                                                     <mediaLoadFailed/>
                                                     <mediaPlaybackStarted/>
                                                     <mediaPlaybackComplete/>
                                                 </stimulusAudio>
                                                 <actionButton featureText="Play Sound" styleName="hiddenTopRight">
-                                                    <stimulusAudio msToNext="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                                    <stimulusAudio autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                                         <mediaLoaded/>
                                                         <mediaLoadFailed/>
                                                         <mediaPlaybackStarted/>
@@ -218,21 +218,21 @@
                         <endAudioRecorderTag eventTier="4" eventTag="correct image clicked"/>
                         <clearPage/>
                         <backgroundImage msToNext="1" src="file:///storage/emulated/0/MPI_STIMULI/background2.png" styleName="">
-                            <stimulusPresent msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" showControls="false" maxWidth="30">
+                            <stimulusPresent maxHeight="30" percentOfPage="0" animate="bounce" showControls="false" maxWidth="30">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete/>
                             </stimulusPresent>
                             <addPadding/>
-                            <stimulusAudio msToNext="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                            <stimulusAudio autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete/>
                             </stimulusAudio>
                             <actionButton featureText="Play Sound" styleName="hiddenTopRight">
-                                <stimulusAudio msToNext="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                <stimulusAudio autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                     <mediaLoaded/>
                                     <mediaLoadFailed/>
                                     <mediaPlaybackStarted/>
@@ -249,21 +249,21 @@
                         <endAudioRecorderTag eventTier="4" eventTag="incorrect image clicked"/>
                         <clearPage/>
                         <backgroundImage msToNext="1" src="file:///storage/emulated/0/MPI_STIMULI/background2.png" styleName="">
-                            <stimulusPresent msToNext="0" maxHeight="30" percentOfPage="0" animate="bounce" showControls="false" maxWidth="30">
+                            <stimulusPresent maxHeight="30" percentOfPage="0" animate="bounce" showControls="false" maxWidth="30">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete/>
                             </stimulusPresent>
                             <addPadding/>
-                            <stimulusAudio msToNext="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                            <stimulusAudio autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
                                 <mediaPlaybackComplete/>
                             </stimulusAudio>
                             <actionButton featureText="Play Sound" styleName="hiddenTopRight">
-                                <stimulusAudio msToNext="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                                <stimulusAudio autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                                     <mediaLoaded/>
                                     <mediaLoadFailed/>
                                     <mediaPlaybackStarted/>
@@ -279,14 +279,14 @@
                 </matchingStimulusGrid>
                 <addPadding/>
                 <actionButton featureText="Play Sound" styleName="hiddenTopRight">
-                    <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_question" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                    <stimulusCodeAudio codeFormat="&lt;code&gt;_question" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                         <mediaLoaded/>
                         <mediaLoadFailed/>
                         <mediaPlaybackStarted/>
                         <mediaPlaybackComplete/>
                     </stimulusCodeAudio>
                 </actionButton>
-                <stimulusCodeAudio msToNext="0" codeFormat="&lt;code&gt;_question" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
+                <stimulusCodeAudio codeFormat="&lt;code&gt;_question" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
