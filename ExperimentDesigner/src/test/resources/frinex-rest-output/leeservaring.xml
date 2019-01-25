@@ -32,15 +32,17 @@
     <presenter menuLabel="Introduction" next="StoryPresentation" type="stimulus" self="Introduction" title="Leeservaring 3">
         <loadStimulus eventTag="Introduction" randomise="true" repeatRandomWindow="0" maxStimuli="1" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                        <addPadding/>
-                        <actionButton featureText="volgende [ spatiebalk ]" hotKey="SPACE">
-                            <nextStimulus repeatIncorrect="false"/>
-                        </actionButton>
+                        <pause msToNext="0">
+                            <addPadding/>
+                            <actionButton featureText="volgende [ spatiebalk ]" hotKey="SPACE">
+                                <nextStimulus repeatIncorrect="false"/>
+                            </actionButton>
+                        </pause>
                     </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
@@ -59,15 +61,17 @@
     <presenter menuLabel="StoryPresentation" next="Survey1Instructions" type="stimulus" self="StoryPresentation" title="Leeservaring 4">
         <loadStimulus eventTag="StoryPresentation" randomise="true" repeatRandomWindow="0" maxStimuli="1" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                        <addPadding/>
-                        <actionButton featureText="volgende [ spatiebalk ]" hotKey="SPACE">
-                            <nextStimulus repeatIncorrect="false"/>
-                        </actionButton>
+                        <pause msToNext="0">
+                            <addPadding/>
+                            <actionButton featureText="volgende [ spatiebalk ]" hotKey="SPACE">
+                                <nextStimulus repeatIncorrect="false"/>
+                            </actionButton>
+                        </pause>
                     </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
@@ -93,15 +97,17 @@
         <centrePage/>
         <loadStimulus eventTag="Survey1" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                        <addPadding/>
-                        <ratingButton ratingLabelRight="helemaal van toepassing" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="helemaal niet van toepassing">
-                            <nextStimulus repeatIncorrect="false"/>
-                        </ratingButton>
+                        <pause msToNext="0">
+                            <addPadding/>
+                            <ratingButton ratingLabelRight="helemaal van toepassing" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="helemaal niet van toepassing">
+                                <nextStimulus repeatIncorrect="false"/>
+                            </ratingButton>
+                        </pause>
                     </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
@@ -118,15 +124,17 @@
         <centrePage/>
         <loadStimulus eventTag="Survey2" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                        <addPadding/>
-                        <ratingButton ratingLabelRight="helemaal van toepassing" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="helemaal niet van toepassing">
-                            <nextStimulus repeatIncorrect="false"/>
-                        </ratingButton>
+                        <pause msToNext="0">
+                            <addPadding/>
+                            <ratingButton ratingLabelRight="helemaal van toepassing" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="helemaal niet van toepassing">
+                                <nextStimulus repeatIncorrect="false"/>
+                            </ratingButton>
+                        </pause>
                     </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
@@ -155,15 +163,17 @@
         <centrePage/>
         <loadStimulus eventTag="PictureTask" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                        <addPadding/>
-                        <ratingButton ratingLabelRight="" ratingLabels="ja [ z ],nee [ . ]" dataChannel="1" ratingLabelLeft="">
-                            <nextStimulus repeatIncorrect="false"/>
-                        </ratingButton>
+                        <pause msToNext="0">
+                            <addPadding/>
+                            <ratingButton ratingLabelRight="" ratingLabels="ja [ z ],nee [ . ]" dataChannel="1" ratingLabelLeft="">
+                                <nextStimulus repeatIncorrect="false"/>
+                            </ratingButton>
+                        </pause>
                     </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
@@ -184,15 +194,17 @@
         <centrePage/>
         <loadStimulus eventTag="ReadingBehavior" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                        <addPadding/>
-                        <ratingButton ratingLabelRight="" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="">
-                            <nextStimulus repeatIncorrect="false"/>
-                        </ratingButton>
+                        <pause msToNext="0">
+                            <addPadding/>
+                            <ratingButton ratingLabelRight="" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="">
+                                <nextStimulus repeatIncorrect="false"/>
+                            </ratingButton>
+                        </pause>
                     </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
