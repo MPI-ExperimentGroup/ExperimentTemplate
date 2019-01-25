@@ -1471,38 +1471,26 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         super.startAudioRecorder(submissionService, "wav".equals(recordingFormat), deviceRegex, subdirectoryName, directoryName, (filePerStimulus) ? currentStimulus.getUniqueId() : "", userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener);
     }
 
-    protected void showStimulusGrid(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener, final int columnCount, final String imageWidth, final String eventTag, final int dataChannel) {
+    protected void showStimulusGrid(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener, final int columnCount, final String imageWidth, final String eventTag, final int dataChannel) {
         final int maxStimuli = -1;
         final AnimateTypes animateType = AnimateTypes.none;
-        showStimulusGrid(appEventListner, stimulusProvider, currentStimulus, postLoadCorrectMs, correctListener, postLoadIncorrectMs, incorrectListener, maxStimuli, columnCount, imageWidth, animateType, eventTag, dataChannel);
+        showStimulusGrid(appEventListner, stimulusProvider, currentStimulus, correctListener, incorrectListener, maxStimuli, columnCount, imageWidth, animateType, eventTag, dataChannel);
     }
 
-    protected void showStimulusGrid(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final int postLoadCorrectMs, final TimedStimulusListener correctListener, final int postLoadIncorrectMs, final TimedStimulusListener incorrectListener, final int maxStimuli, final int columnCount, final String imageWidth, final AnimateTypes animateType, final String eventTag, final int dataChannel) {
+    protected void showStimulusGrid(final AppEventListner appEventListner, final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final TimedStimulusListener correctListener, final TimedStimulusListener incorrectListener, final int maxStimuli, final int columnCount, final String imageWidth, final AnimateTypes animateType, final String eventTag, final int dataChannel) {
         ((TimedStimulusView) simpleView).stopAudio();
         TimedStimulusListener correctTimedListener = new TimedStimulusListener() {
 
             @Override
             public void postLoadTimerFired() {
-                Timer timer = new Timer() {
-                    @Override
-                    public void run() {
-                        correctListener.postLoadTimerFired();
-                    }
-                };
-                timer.schedule(postLoadCorrectMs);
+                correctListener.postLoadTimerFired();
             }
         };
         TimedStimulusListener incorrectTimedListener = new TimedStimulusListener() {
 
             @Override
             public void postLoadTimerFired() {
-                Timer timer = new Timer() {
-                    @Override
-                    public void run() {
-                        incorrectListener.postLoadTimerFired();
-                    }
-                };
-                timer.schedule(postLoadIncorrectMs);
+                incorrectListener.postLoadTimerFired();
             }
         };
         final String gridStyle = "stimulusGrid";
@@ -1879,12 +1867,12 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
         ((TimedStimulusView) simpleView).stopMedia(formattedMediaId);
     }
 
-    protected void groupResponseStimulusImage(final StimuliProvider stimulusProvider, int percentOfPage, int maxHeight, int maxWidth, int postLoadMs, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
+    protected void groupResponseStimulusImage(final StimuliProvider stimulusProvider, int percentOfPage, int maxHeight, int maxWidth, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         final AnimateTypes animateType = AnimateTypes.none;
-        groupResponseStimulusImage(stimulusProvider, percentOfPage, maxHeight, maxWidth, animateType, postLoadMs, dataChannel, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener);
+        groupResponseStimulusImage(stimulusProvider, percentOfPage, maxHeight, maxWidth, animateType, dataChannel, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener);
     }
 
-    protected void groupResponseStimulusImage(final StimuliProvider stimulusProvider, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, int postLoadMs, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
+    protected void groupResponseStimulusImage(final StimuliProvider stimulusProvider, int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
         stimulusPresent(stimulusProvider, stimulusProvider.getStimuliFromString(groupParticipantService.getResponseStimulusId()), percentOfPage, maxHeight, maxWidth, animateType, false, null, null, null, dataChannel, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, null);
     }
 
