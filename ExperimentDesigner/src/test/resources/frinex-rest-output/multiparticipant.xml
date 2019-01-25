@@ -403,7 +403,7 @@
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <scoreIncrement scoreValue="true"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -415,7 +415,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <scoreIncrement scoreValue="false"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -435,10 +435,10 @@
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -457,10 +457,10 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect msToNext="0">
+                                        <responseCorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect msToNext="0">
+                                        <responseIncorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
@@ -543,7 +543,7 @@
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <scoreIncrement scoreValue="true"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -555,7 +555,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <scoreIncrement scoreValue="false"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -575,10 +575,10 @@
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -597,10 +597,10 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect msToNext="0">
+                                        <responseCorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect msToNext="0">
+                                        <responseIncorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
@@ -683,7 +683,7 @@
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <scoreIncrement scoreValue="true"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -695,7 +695,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <scoreIncrement scoreValue="false"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -715,10 +715,10 @@
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -737,10 +737,10 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect msToNext="0">
+                                        <responseCorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect msToNext="0">
+                                        <responseIncorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
@@ -823,7 +823,7 @@
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <scoreIncrement scoreValue="true"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -835,7 +835,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <scoreIncrement scoreValue="false"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -855,10 +855,10 @@
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -877,10 +877,10 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect msToNext="0">
+                                        <responseCorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect msToNext="0">
+                                        <responseIncorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
@@ -963,7 +963,7 @@
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <scoreIncrement scoreValue="true"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -975,7 +975,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <scoreIncrement scoreValue="false"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -995,10 +995,10 @@
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -1017,10 +1017,10 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect msToNext="0">
+                                        <responseCorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect msToNext="0">
+                                        <responseIncorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
@@ -1103,7 +1103,7 @@
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <scoreIncrement scoreValue="true"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -1115,7 +1115,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <scoreIncrement scoreValue="false"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -1135,10 +1135,10 @@
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -1157,10 +1157,10 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect msToNext="0">
+                                        <responseCorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect msToNext="0">
+                                        <responseIncorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
@@ -1243,7 +1243,7 @@
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <scoreIncrement scoreValue="true"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -1255,7 +1255,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <scoreIncrement scoreValue="false"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -1275,10 +1275,10 @@
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; speelt met &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -1297,10 +1297,10 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect msToNext="0">
+                                        <responseCorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect msToNext="0">
+                                        <responseIncorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
@@ -1652,7 +1652,7 @@
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <scoreIncrement scoreValue="true"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -1664,7 +1664,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <scoreIncrement scoreValue="false"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -1684,10 +1684,10 @@
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -1706,10 +1706,10 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect msToNext="0">
+                                        <responseCorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect msToNext="0">
+                                        <responseIncorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
@@ -1792,7 +1792,7 @@
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <scoreIncrement scoreValue="true"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -1804,7 +1804,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <scoreIncrement scoreValue="false"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -1824,10 +1824,10 @@
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -1846,10 +1846,10 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect msToNext="0">
+                                        <responseCorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect msToNext="0">
+                                        <responseIncorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
@@ -1932,7 +1932,7 @@
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <scoreIncrement scoreValue="true"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -1944,7 +1944,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <scoreIncrement scoreValue="false"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -1964,10 +1964,10 @@
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -1986,10 +1986,10 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect msToNext="0">
+                                        <responseCorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect msToNext="0">
+                                        <responseIncorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
@@ -2072,7 +2072,7 @@
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <scoreIncrement scoreValue="true"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -2084,7 +2084,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <scoreIncrement scoreValue="false"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -2104,10 +2104,10 @@
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -2126,10 +2126,10 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect msToNext="0">
+                                        <responseCorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect msToNext="0">
+                                        <responseIncorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
@@ -2212,7 +2212,7 @@
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <scoreIncrement scoreValue="true"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -2224,7 +2224,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <scoreIncrement scoreValue="false"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -2244,10 +2244,10 @@
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -2266,10 +2266,10 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect msToNext="0">
+                                        <responseCorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect msToNext="0">
+                                        <responseIncorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
@@ -2352,7 +2352,7 @@
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <scoreIncrement scoreValue="true"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -2364,7 +2364,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <scoreIncrement scoreValue="false"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -2384,10 +2384,10 @@
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -2406,10 +2406,10 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect msToNext="0">
+                                        <responseCorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect msToNext="0">
+                                        <responseIncorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
@@ -2492,7 +2492,7 @@
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <scoreIncrement scoreValue="true"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -2504,7 +2504,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <scoreIncrement scoreValue="false"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -2524,10 +2524,10 @@
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -2546,10 +2546,10 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect msToNext="0">
+                                        <responseCorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect msToNext="0">
+                                        <responseIncorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
@@ -2679,7 +2679,7 @@
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <scoreIncrement scoreValue="true"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -2691,7 +2691,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <scoreIncrement scoreValue="false"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -2711,10 +2711,10 @@
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -2733,10 +2733,10 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect msToNext="0">
+                                        <responseCorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect msToNext="0">
+                                        <responseIncorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
@@ -2819,7 +2819,7 @@
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <scoreIncrement scoreValue="true"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -2831,7 +2831,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <scoreIncrement scoreValue="false"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -2851,10 +2851,10 @@
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -2873,10 +2873,10 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect msToNext="0">
+                                        <responseCorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect msToNext="0">
+                                        <responseIncorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
@@ -2959,7 +2959,7 @@
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <scoreIncrement scoreValue="true"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -2971,7 +2971,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <scoreIncrement scoreValue="false"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -2991,10 +2991,10 @@
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -3013,10 +3013,10 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect msToNext="0">
+                                        <responseCorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect msToNext="0">
+                                        <responseIncorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
@@ -3099,7 +3099,7 @@
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <scoreIncrement scoreValue="true"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -3111,7 +3111,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <scoreIncrement scoreValue="false"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -3131,10 +3131,10 @@
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -3153,10 +3153,10 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect msToNext="0">
+                                        <responseCorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect msToNext="0">
+                                        <responseIncorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
@@ -3239,7 +3239,7 @@
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <scoreIncrement scoreValue="true"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -3251,7 +3251,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <scoreIncrement scoreValue="false"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -3271,10 +3271,10 @@
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -3293,10 +3293,10 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect msToNext="0">
+                                        <responseCorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect msToNext="0">
+                                        <responseIncorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
@@ -3379,7 +3379,7 @@
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <scoreIncrement scoreValue="true"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -3391,7 +3391,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <scoreIncrement scoreValue="false"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -3411,10 +3411,10 @@
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -3433,10 +3433,10 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect msToNext="0">
+                                        <responseCorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect msToNext="0">
+                                        <responseIncorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
@@ -3519,7 +3519,7 @@
                             <groupMessageLabel styleName="groupMessageLabel"/>
                             <countdownLabel featureText="Time is up! Play now!" msToNext="20000" msLabelFormat="ss" styleName="countDownLabel"/>
                             <showStimulusGrid imageWidth="100" eventTag="guesserNetworkActivity1Grid" columnCount="4" maxStimuli="8" animate="stimuliCode">
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <scoreIncrement scoreValue="true"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -3531,7 +3531,7 @@
                                     </scoreAboveThreshold>
                                     <submitGroupEvent/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <scoreIncrement scoreValue="false"/>
                                     <scoreAboveThreshold scoreThreshold="5">
                                         <aboveThreshold>
@@ -3551,10 +3551,10 @@
                             <logTokenText headerKey="logTokenText" dataChannel="3" type="groupNetworkActivity" dataLogFormat="Group:'&lt;groupId&gt;';Members:'&lt;groupAllMemberCodes&gt;';Score:&lt;groupScore&gt;;Channels:'&lt;groupCommunicationChannels&gt;';Scores:'&lt;channelLoop&gt;&lt;channelLabel&gt;-&lt;channelScore&gt; &lt;/channelLoop&gt;';&lt;groupMemberCode&gt;-best:&lt;playerBestScore&gt;;&lt;groupMemberCode&gt;-current:&lt;playerScore&gt;;GroupOther:'&lt;groupOtherMemberCodes&gt;';ChannelOther:'&lt;channelOtherMemberCodes&gt;';&lt;groupActiveChannel&gt;:&lt;channelScore&gt;;Message:'&lt;groupMessageString&gt;';"/>
                             <htmlTokenText featureText="(&lt;groupMemberCode&gt; playing with &lt;channelOtherMemberCodes&gt;)" styleName="headerLabelCentered"/>
                             <groupResponseFeedback>
-                                <responseCorrect msToNext="0">
+                                <responseCorrect>
                                     <htmlText featureText="&lt;br/&gt;Goed gedaan! Jij en je partner hebben een punt verdiend voor jullie groep!"/>
                                 </responseCorrect>
-                                <responseIncorrect msToNext="0">
+                                <responseIncorrect>
                                     <htmlText featureText="&lt;br/&gt;Helaas hebben jij en je partner elkaar niet goed begrepen. Volgende keer beter!"/>
                                 </responseIncorrect>
                             </groupResponseFeedback>
@@ -3573,10 +3573,10 @@
                                 </column>
                                 <column>
                                     <groupResponseFeedback>
-                                        <responseCorrect msToNext="0">
+                                        <responseCorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:green;&quot;&gt;&amp;#10004;&lt;/h1&gt;"/>
                                         </responseCorrect>
-                                        <responseIncorrect msToNext="0">
+                                        <responseIncorrect>
                                             <htmlText featureText="&lt;h1 style=&quot;color:red;&quot;&gt;&amp;#10008;&lt;/h1&gt;"/>
                                         </responseIncorrect>
                                     </groupResponseFeedback>
