@@ -33,16 +33,18 @@
     <presenter menuLabel="Zinnen afmaken" next="completion" type="stimulus" self="Zinnen_afmaken" title="Zinnen afmaken">
         <loadStimulus eventTag="Zinnen afmaken" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
                     <mediaPlaybackComplete>
-                        <addPadding/>
-                        <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." validationRegex=".{2,}" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
-                        <actionButton featureText="volgende">
-                            <nextStimulus repeatIncorrect="false"/>
-                        </actionButton>
+                        <pause msToNext="0">
+                            <addPadding/>
+                            <stimulusFreeText featureText="Vul een woord in de tekstbox in dat volgens u het best aan het einde van de zin past." validationRegex=".{2,}" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
+                            <actionButton featureText="volgende">
+                                <nextStimulus repeatIncorrect="false"/>
+                            </actionButton>
+                        </pause>
                     </mediaPlaybackComplete>
                 </stimulusPresent>
             </hasMoreStimulus>
