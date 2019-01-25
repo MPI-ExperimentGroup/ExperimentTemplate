@@ -221,7 +221,7 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         imageFeature.addFeatureAttributes(FeatureAttribute.maxHeight, imageFeatureValues.getPercentOfPage());
         imageFeature.addFeatureAttributes(FeatureAttribute.maxWidth, imageFeatureValues.getPercentOfPage());
         imageFeature.addFeatureAttributes(FeatureAttribute.percentOfPage, imageFeatureValues.getPercentOfPage());
-        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
+//        imageFeature.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         imageFeature.addFeatureAttributes(FeatureAttribute.showControls, "false");
         final PresenterFeature mediaLoaded = imageFeature.addFeatures(FeatureType.mediaLoaded, FeatureType.mediaLoadFailed, FeatureType.mediaPlaybackStarted, FeatureType.mediaPlaybackComplete)[3];
         parentFeature.getPresenterFeatureList().add(imageFeature);
