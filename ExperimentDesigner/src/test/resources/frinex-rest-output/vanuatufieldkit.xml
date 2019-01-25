@@ -86,7 +86,7 @@
                 <centrePage/>
                 <stimulusLabel/>
                 <showStimulusProgress/>
-                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
+                <stimulusPresent maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
                     <mediaPlaybackStarted/>
@@ -99,7 +99,7 @@
                             <centrePage/>
                             <stimulusLabel/>
                             <showStimulusProgress/>
-                            <stimulusPresent msToNext="0" maxHeight="60" percentOfPage="60" showControls="false" maxWidth="60">
+                            <stimulusPresent maxHeight="60" percentOfPage="60" showControls="false" maxWidth="60">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -112,7 +112,7 @@
                                         <centrePage/>
                                         <stimulusLabel/>
                                         <showStimulusProgress/>
-                                        <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
+                                        <stimulusPresent maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                                             <mediaLoaded/>
                                             <mediaLoadFailed/>
                                             <mediaPlaybackStarted/>
@@ -125,7 +125,7 @@
                                                     <centrePage/>
                                                     <stimulusLabel/>
                                                     <showStimulusProgress/>
-                                                    <stimulusPresent msToNext="0" maxHeight="60" percentOfPage="60" showControls="false" maxWidth="60">
+                                                    <stimulusPresent maxHeight="60" percentOfPage="60" showControls="false" maxWidth="60">
                                                         <mediaLoaded/>
                                                         <mediaLoadFailed/>
                                                         <mediaPlaybackStarted/>
@@ -138,7 +138,7 @@
                                                                 <centrePage/>
                                                                 <stimulusLabel/>
                                                                 <showStimulusProgress/>
-                                                                <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
+                                                                <stimulusPresent maxHeight="80" percentOfPage="80" showControls="false" maxWidth="80">
                                                                     <mediaLoaded/>
                                                                     <mediaLoadFailed/>
                                                                     <mediaPlaybackStarted/>
@@ -151,7 +151,7 @@
                                                                             <centrePage/>
                                                                             <stimulusLabel/>
                                                                             <showStimulusProgress/>
-                                                                            <stimulusPresent msToNext="0" maxHeight="60" percentOfPage="60" showControls="false" maxWidth="60">
+                                                                            <stimulusPresent maxHeight="60" percentOfPage="60" showControls="false" maxWidth="60">
                                                                                 <mediaLoaded/>
                                                                                 <mediaLoadFailed/>
                                                                                 <mediaPlaybackStarted/>
