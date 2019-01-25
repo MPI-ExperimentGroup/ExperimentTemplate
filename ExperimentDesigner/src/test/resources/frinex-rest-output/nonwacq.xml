@@ -84,7 +84,7 @@
                 <table>
                     <row>
                         <column>
-                            <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" replacement="_context$1" animate="none" replacementRegex="(\\.[^\\.]*)$" showControls="false" maxWidth="80">
+                            <stimulusPresent maxHeight="80" percentOfPage="80" replacement="_context$1" animate="none" replacementRegex="(\\.[^\\.]*)$" showControls="false" maxWidth="80">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -92,7 +92,7 @@
                             </stimulusPresent>
                         </column>
                         <column>
-                            <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" animate="none" showControls="false" maxWidth="80">
+                            <stimulusPresent maxHeight="80" percentOfPage="80" animate="none" showControls="false" maxWidth="80">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -196,7 +196,7 @@
                 <table>
                     <row>
                         <column>
-                            <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" replacement="_context$1" animate="none" replacementRegex="(\\.[^\\.]*)$" showControls="false" maxWidth="80">
+                            <stimulusPresent maxHeight="80" percentOfPage="80" replacement="_context$1" animate="none" replacementRegex="(\\.[^\\.]*)$" showControls="false" maxWidth="80">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
@@ -204,7 +204,7 @@
                             </stimulusPresent>
                         </column>
                         <column>
-                            <stimulusPresent msToNext="0" maxHeight="80" percentOfPage="80" animate="none" showControls="false" maxWidth="80">
+                            <stimulusPresent maxHeight="80" percentOfPage="80" animate="none" showControls="false" maxWidth="80">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
