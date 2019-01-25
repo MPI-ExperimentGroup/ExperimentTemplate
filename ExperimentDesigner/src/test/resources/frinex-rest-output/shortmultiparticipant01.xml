@@ -36,7 +36,7 @@
                             <clearPage/>
                             <stimulusLabel/>
                             <htmlText featureText="All 23 stimuli are presented all participants in random order similar to the producer screen"/>
-                            <stimulusPresent msToNext="0" maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
+                            <stimulusPresent maxHeight="0" percentOfPage="0" animate="stimuliCode" showControls="false" maxWidth="0">
                                 <mediaLoaded/>
                                 <mediaLoadFailed/>
                                 <mediaPlaybackStarted/>
