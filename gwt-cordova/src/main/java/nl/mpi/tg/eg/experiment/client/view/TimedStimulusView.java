@@ -388,7 +388,7 @@ public class TimedStimulusView extends ComplexView {
         return stimulusFreeText;
     }
 
-    public void addTimedAudio(SafeUri oggPath, SafeUri mp3Path, final int postLoadMs, boolean showPlaybackIndicator, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final boolean autoPlay, final String mediaId) {
+    public void addTimedAudio(SafeUri oggPath, SafeUri mp3Path, boolean showPlaybackIndicator, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final boolean autoPlay, final String mediaId) {
         cancelableListnerList.add(loadedStimulusListener);
         cancelableListnerList.add(failedStimulusListener);
         cancelableListnerList.add(playbackStartedStimulusListener);
@@ -437,13 +437,7 @@ public class TimedStimulusView extends ComplexView {
 //                    playbackIndicatorTimer.cancel();
 //                    playbackIndicator.removeFromParent();
 //                    audioPlayer.setEventListner(null); // prevent multiple triggering
-                    Timer timer = new Timer() {
-                        public void run() {
-                            playedStimulusListener.postLoadTimerFired();
-                        }
-                    };
-                    timerList.add(timer);
-                    timer.schedule(postLoadMs);
+                    playedStimulusListener.postLoadTimerFired();
                 }
             });
         } catch (AudioException audioException) {
@@ -451,7 +445,7 @@ public class TimedStimulusView extends ComplexView {
         }
     }
 
-    public void addTimedVideo(SafeUri oggPath, SafeUri ogvPath, SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, final int postLoadMs, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final String mediaId) {
+    public void addTimedVideo(SafeUri oggPath, SafeUri ogvPath, SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final String mediaId) {
         cancelableListnerList.add(loadedStimulusListener);
         cancelableListnerList.add(failedStimulusListener);
         cancelableListnerList.add(playbackStartedStimulusListener);
@@ -503,13 +497,13 @@ public class TimedStimulusView extends ComplexView {
                     // prevent multiple triggering
                     if (!triggered) {
                         triggered = true;
-                        Timer timer = new Timer() {
-                            public void run() {
-                                playedStimulusListener.postLoadTimerFired();
-                            }
-                        };
-                        timerList.add(timer);
-                        timer.schedule(postLoadMs);
+//                        Timer timer = new Timer() {
+//                            public void run() {
+                        playedStimulusListener.postLoadTimerFired();
+//                            }
+//                        };
+//                        timerList.add(timer);
+//                        timer.schedule(postLoadMs);
                     }
                 }
             });
