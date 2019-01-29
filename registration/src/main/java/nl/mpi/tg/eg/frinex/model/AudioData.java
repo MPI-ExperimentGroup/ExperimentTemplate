@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.frinex.model;
 
 import java.util.Date;
+import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -41,19 +42,23 @@ public class AudioData {
     private String screenName;
     private String userId;
     private String stimulusId;
+    private UUID shortLivedToken;
+    private long downloadPermittedWindowMs;
     @Lob
     private byte[] dataBlob;
 
     public AudioData() {
     }
 
-    public AudioData(Date submitDate, String experimentName, String screenName, String userId, String stimulusId, byte[] dataBlob) {
+    public AudioData(Date submitDate, String experimentName, String screenName, String userId, String stimulusId, byte[] dataBlob, final UUID shortLivedToken, final long downloadPermittedWindowMs) {
         this.submitDate = submitDate;
         this.experimentName = experimentName;
         this.screenName = screenName;
         this.userId = userId;
         this.stimulusId = stimulusId;
         this.dataBlob = dataBlob;
+        this.shortLivedToken = shortLivedToken;
+        this.downloadPermittedWindowMs = downloadPermittedWindowMs;
     }
 
     public long getId() {
@@ -106,5 +111,21 @@ public class AudioData {
 
     public void setDataBlob(byte[] dataBlob) {
         this.dataBlob = dataBlob;
+    }
+
+    public UUID getShortLivedToken() {
+        return shortLivedToken;
+    }
+
+    public void setShortLivedToken(UUID shortLivedToken) {
+        this.shortLivedToken = shortLivedToken;
+    }
+
+    public long getDownloadPermittedWindowMs() {
+        return downloadPermittedWindowMs;
+    }
+
+    public void setDownloadPermittedWindowMs(long downloadPermittedWindowMs) {
+        this.downloadPermittedWindowMs = downloadPermittedWindowMs;
     }
 }
