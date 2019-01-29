@@ -87,6 +87,7 @@
         <field controlledMessage="Voer een getal in." controlledRegex="[0-3][0-9]/[0-1][0-9]/[1-2][0-9][0-9][0-9]" postName="dateOfBirth" preventServerDuplicates="false" registrationField="Geboortedatum"/>
         <field controlledMessage="." controlledRegex="|Set 1 Instapset 2;3-2;5 jaar|Set 2 Instapset 2;6-2;11 jaar|Set 3 Instapset 3;0-3;11 jaar|Set 4 Instapset 4;0-4;5 jaar|Set 5 Instapset 4;6-5;5 jaar|Set 6 Instapset 5;6-6;5 jaar|Set 7 Instapset 6;6-7;11 jaar|Set 8 Instapset 8;0-9;11 jaar|Set 9 Instapset 10;0-10;11 jaar|Set 10 Instapset 11;0 - 13;11 jaar" postName="ageGroup" preventServerDuplicates="false" registrationField="Instapset"/>
         <field controlledMessage="." controlledRegex=".*" postName="item" preventServerDuplicates="false" registrationField="item"/>
+        <!-- The attribute in the Experiment element userIdGetParam="uuid" allows the internal user id to be set via the get parameter and this metadata field -->
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="uuid" preventServerDuplicates="false" registrationField="Invitation UUID"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="validated_uuid" preventServerDuplicates="false" registrationField="Validated UUID"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="validation_error" preventServerDuplicates="false" registrationField="Validation Error"/>
@@ -1160,7 +1161,7 @@
                     <nextStimulus repeatIncorrect="false"/>
                 </actionButton>
                 <actionButton featureText="startAudioRecorder">
-                    <startAudioRecorder recordingFormat="ogg" filePerStimulus="true" eventTag="startAudioRecorder" deviceRegex="(046d:0a45)" mediaId="recordedMedia">
+                    <startAudioRecorder recordingFormat="ogg" downloadPermittedWindowMs="30000" filePerStimulus="true" eventTag="startAudioRecorder" deviceRegex="(046d:0a45)" mediaId="recordedMedia">
                         <onError>
                             <htmlText featureText="startAudioRecorder onError, please plug in device with the USB id: (046d:0a45)"/>
                         </onError>
@@ -1201,7 +1202,7 @@
             <hasMoreStimulus>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
-                <startAudioRecorder recordingFormat="ogg" filePerStimulus="true" eventTag="startAudioRecorder" deviceRegex="(046d:0a45)" mediaId="recordedMedia">
+                <startAudioRecorder recordingFormat="ogg" downloadPermittedWindowMs="30000" filePerStimulus="true" eventTag="startAudioRecorder" deviceRegex="(046d:0a45)" mediaId="recordedMedia">
                     <onError>
                         <htmlText featureText="startAudioRecorder onError, please plug in device with the USB id: (046d:0a45)"/>
                     </onError>
@@ -1284,7 +1285,7 @@
                     <row>
                         <column>
                             <actionButton featureText="StartRecorderA(USB)">
-                                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="(046d:0a45)" filePerStimulus="filePerStimulus" mediaId="recordedMediaA">
+                                <startAudioRecorder recordingFormat="recordingFormat" downloadPermittedWindowMs="30000" eventTag="eventTag" deviceRegex="(046d:0a45)" filePerStimulus="filePerStimulus" mediaId="recordedMediaA">
                                     <onError>
                                         <regionReplace regionId="recordedMediaResultA">
                                             <plainText featureText="Error"/>
@@ -1340,7 +1341,7 @@
                     <row>
                         <column>
                             <actionButton featureText="StartRecorderB(any)">
-                                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="" filePerStimulus="filePerStimulus" mediaId="recordedMediaB">
+                                <startAudioRecorder recordingFormat="recordingFormat" downloadPermittedWindowMs="30000" eventTag="eventTag" deviceRegex="" filePerStimulus="filePerStimulus" mediaId="recordedMediaB">
                                     <onError>
                                         <regionReplace regionId="recordedMediaResultB">
                                             <plainText featureText="Error"/>
@@ -1396,7 +1397,7 @@
                     <row>
                         <column>
                             <actionButton featureText="StartRecorderC(any)">
-                                <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="" filePerStimulus="filePerStimulus" mediaId="recordedMediaC">
+                                <startAudioRecorder recordingFormat="recordingFormat" downloadPermittedWindowMs="30000" eventTag="eventTag" deviceRegex="" filePerStimulus="filePerStimulus" mediaId="recordedMediaC">
                                     <onError>
                                         <regionReplace regionId="recordedMediaResultC">
                                             <plainText featureText="Error"/>
@@ -2232,7 +2233,7 @@
                     <stimulusLabel/>
                 </regionReplace>
                 <regionReplace regionId="recordedMediaResult">
-                    <startAudioRecorder recordingFormat="recordingFormat" eventTag="eventTag" deviceRegex="(046d:0a45)" filePerStimulus="filePerStimulus" mediaId="recordedMedia_&lt;stimulusId&gt;">
+                    <startAudioRecorder recordingFormat="recordingFormat" downloadPermittedWindowMs="30000" eventTag="eventTag" deviceRegex="(046d:0a45)" filePerStimulus="filePerStimulus" mediaId="recordedMedia_&lt;stimulusId&gt;">
                         <onError>
                             <regionReplace regionId="recordedMediaResult">
                                 <plainText featureText="Recording Error"/>
@@ -2270,8 +2271,10 @@
                     </actionButton>
                 </regionReplace>
             </hasMoreStimulus>
-            <endOfStimulus>
-                <clearPage/>
+            <endOfStimulus>                
+                <regionReplace regionId="stimulusProgress"></regionReplace>
+                <regionReplace regionId="stimulusLabel"></regionReplace>
+                <regionReplace regionId="stimulusButtons"></regionReplace>
                 <resetStimulus target="RecordingQualityTest"/>
                 <loadStimulus eventTag="RecordingQualityTest" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                     <hasMoreStimulus>
