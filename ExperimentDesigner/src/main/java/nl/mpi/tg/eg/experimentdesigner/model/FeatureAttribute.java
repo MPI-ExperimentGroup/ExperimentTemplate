@@ -82,6 +82,7 @@ public enum FeatureAttribute {
     //    @Deprecated
     //    webm,
     recordingFormat,
+    downloadPermittedWindowMs,
     deviceRegex(true),
     poster,
     autoPlay,
