@@ -58,5 +58,8 @@ public interface AudioDataRepository extends PagingAndSortingRepository<AudioDat
     public abstract void deleteAll();
 
     @Transactional
+    public List<AudioData> findByUserIdOrderBySubmitDateAsc(@Param("userId") String userId);
+
+    @Transactional
     public List<AudioData> findByShortLivedTokenAndUserId(@Param("shortLivedToken") UUID shortLivedToken, @Param("userId") String userId);
 }
