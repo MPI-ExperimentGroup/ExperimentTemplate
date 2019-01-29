@@ -133,8 +133,8 @@ public class AudioPlayer {
 //        audioPlayer.play();
 //    }
     public double getCurrentTime() {
-//        return (audioPlayer != null) ? audioPlayer.getCurrentTime() : -1;
-        return audioPlayer.getCurrentTime();
+        return (audioPlayer != null) ? audioPlayer.getCurrentTime() : -1;
+//        return audioPlayer.getCurrentTime();
     }
 
     public void play() {
