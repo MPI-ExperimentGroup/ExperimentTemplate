@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.frinex.rest;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import nl.mpi.tg.eg.frinex.model.AudioData;
 import nl.mpi.tg.eg.frinex.model.DataSubmissionResult;
@@ -30,9 +31,12 @@ import nl.mpi.tg.eg.frinex.model.StimulusResponse;
 import nl.mpi.tg.eg.frinex.model.TagPairData;
 import nl.mpi.tg.eg.frinex.model.TimeStamp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -102,18 +106,27 @@ public class ExperimentService {
 //    }
     @RequestMapping(value = "/audioBlob", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @ResponseBody
-    public ResponseEntity<String> registerAudioData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam("screenName") String screenName) throws IOException {
-        AudioData audioData = new AudioData(new java.util.Date(), null, screenName, userId, stimulusId, dataBlob.getBytes());
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(dataBlob.getSize());
-        stringBuilder.append(":");
-        stringBuilder.append(userId);
-        stringBuilder.append(":");
-        stringBuilder.append(stimulusId);
-        stringBuilder.append(":");
-        stringBuilder.append(screenName);
+    public ResponseEntity<String> registerAudioData(@RequestParam("dataBlob") MultipartFile dataBlob, @RequestParam("userId") String userId, @RequestParam("stimulusId") String stimulusId, @RequestParam("screenName") String screenName, @RequestParam("downloadPermittedWindowMs") long downloadPermittedWindowMs) throws IOException {
+        AudioData audioData = new AudioData(new java.util.Date(), null, screenName, userId, stimulusId, dataBlob.getBytes(), UUID.randomUUID(), downloadPermittedWindowMs);
         audioDataRepository.save(audioData);
-        return new ResponseEntity(stringBuilder.toString(), HttpStatus.OK);
+        // return the short lived token for the user to replay their recorded audio
+        return new ResponseEntity(audioData.getShortLivedToken(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/replayAudio/{shortLivedToken}/{userId}", method = RequestMethod.GET, produces = {MediaType.APPLICATION_OCTET_STREAM_VALUE})
+    public HttpEntity<byte[]> participantListing(@PathVariable("shortLivedToken") UUID shortLivedToken, @PathVariable("userId") String userId) {
+        HttpHeaders header = new HttpHeaders();
+        header.setContentType(new MediaType("audio", "ogg"));
+        final List<AudioData> audioDataRecords = this.audioDataRepository.findByShortLivedTokenAndUserId(shortLivedToken, userId);
+        if (audioDataRecords.size() == 1) {
+            AudioData audioData = audioDataRecords.get(0);
+            if (audioData.getSubmitDate().getTime() + (audioData.getDownloadPermittedWindowMs()) > System.currentTimeMillis()) {
+                final byte[] dataBlob = audioData.getDataBlob();
+                header.setContentLength(dataBlob.length);
+                return new HttpEntity<>(dataBlob, header);
+            }
+        }
+        return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
     }
 
     @RequestMapping(value = "/screenChange", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
