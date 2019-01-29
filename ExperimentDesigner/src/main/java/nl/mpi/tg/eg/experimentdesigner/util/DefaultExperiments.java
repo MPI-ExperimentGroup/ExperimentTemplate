@@ -314,6 +314,9 @@ public class DefaultExperiments {
                         case ranges:
                             presenterFeature.addFeatureAttributes(attribute, "10..100,1000");
                             break;
+                        case downloadPermittedWindowMs:
+                            presenterFeature.addFeatureAttributes(attribute, "30000");
+                            break;
                         default:
                             presenterFeature.addFeatureAttributes(attribute, attribute.name());
                     }
