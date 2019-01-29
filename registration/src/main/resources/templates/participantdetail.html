@@ -296,6 +296,29 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 </tr>
             </tbody>
         </table>
+        <h3>Audio Responses</h3>
+        <table id="datatable">
+            <thead>
+                <tr id='tableFloatingHeader'>
+                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=screenName'">ScreenName</a></th>
+                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=stimulusId'">StimulusID</a></th>
+                    <th><a  th:attr="href='?' + ${(param.detailed != null)? 'detailed' : 'simple'} + '&amp;sort=submitDate'">submitDate</a></th>
+                    <th><a>Audio File</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="prod,prodIndex : ${participantAudioData}">
+                    <td th:text="${prod.screenName}">screenName</td>
+                    <td th:text="${prod.stimulusId}">stimulusId</td>
+                    <td th:text="${prod.submitDate}">submitDate</td>
+                    <td>
+                        <audio controls="true">
+                            <source th:attr="src='audio/' + ${prod.userId} + '_' + ${prod.screenName} + '_' + ${prod.stimulusId} + '_' + ${prod.id}" type="audio/ogg"/>
+                        </audio>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <h3 th:if="${param.detailed}">Time Stamp Data</h3>    
         <table th:if="${param.detailed}" id="datatable">       
             <thead>
