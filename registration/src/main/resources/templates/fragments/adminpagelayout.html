@@ -75,7 +75,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <form th:action="@{/logout}" method="post">
                     <input type="submit" value="Sign Out"/>
                 </form>
-                <span style="color: red; border-bottom: solid 1px; padding: 10px; display: flex;" th:if="${!#strings.contains(#httpServletRequest.requestURI, 'ems12') and !#strings.contains(#httpServletRequest.requestURI, 'frinexproduction')}"> 
+                <span style="color: red; border-bottom: solid 1px; padding: 10px; display: flex;" th:if="${!#strings.contains(#httpServletRequest.requestURL, 'ems12') and !#strings.contains(#httpServletRequest.requestURL, 'frinexproduction')}"> 
                     This is the staging version which is for software testing only, data will not be preserved in this version. 
                     This text will also not be shown in the production version. 
                     Once you have verified that this version suits your needs, please request deployment of the production version.
