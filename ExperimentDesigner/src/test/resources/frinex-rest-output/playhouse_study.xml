@@ -57,6 +57,7 @@
             <pause msToNext="2000">
                 <loadStimulus eventTag="Practice1" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                     <hasMoreStimulus>
+                        <clearPage/>
                         <backgroundImage msToNext="0" src="" styleName=""/>
                         <clearPage styleName="fullScreenWidth"/>
                         <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
@@ -240,6 +241,7 @@
             <pause msToNext="2000">
                 <loadStimulus eventTag="Practice2" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                     <hasMoreStimulus>
+                        <clearPage/>
                         <backgroundImage msToNext="0" src="" styleName=""/>
                         <clearPage styleName="fullScreenWidth"/>
                         <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
@@ -428,6 +430,7 @@
                     <pause msToNext="2000">
                         <loadStimulus eventTag="Matching1" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                             <hasMoreStimulus>
+                                <clearPage/>
                                 <backgroundImage msToNext="0" src="" styleName=""/>
                                 <clearPage styleName="fullScreenWidth"/>
                                 <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
@@ -618,6 +621,7 @@
                     <pause msToNext="2000">
                         <loadStimulus eventTag="Matching2" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                             <hasMoreStimulus>
+                                <clearPage/>
                                 <backgroundImage msToNext="0" src="" styleName=""/>
                                 <clearPage styleName="fullScreenWidth"/>
                                 <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="1">
@@ -808,6 +812,7 @@
                     <pause msToNext="2000">
                         <loadStimulus eventTag="Test3" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                             <hasMoreStimulus>
+                                <clearPage/>
                                 <backgroundImage msToNext="0" src="" styleName=""/>
                                 <clearPage styleName="fullScreenWidth"/>
                                 <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="2">
@@ -980,6 +985,7 @@
                     <pause msToNext="2000">
                         <loadStimulus eventTag="Test4" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                             <hasMoreStimulus>
+                                <clearPage/>
                                 <backgroundImage msToNext="0" src="" styleName=""/>
                                 <clearPage styleName="fullScreenWidth"/>
                                 <triggerListener listenerId="imageLoadedAction" maximum="1" threshold="2">
