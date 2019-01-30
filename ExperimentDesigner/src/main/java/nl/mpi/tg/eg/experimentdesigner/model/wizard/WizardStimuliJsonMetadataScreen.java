@@ -123,6 +123,7 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, "1000");
         storedWizardScreenData.getPresenterScreen().getPresenterFeatureList().add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
+        hasMoreStimulusFeature.addFeature(FeatureType.clearPage, null);
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.centrePage, null));
         hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
         PresenterFeature presenterFeatureTable = new PresenterFeature(FeatureType.table, null);
@@ -199,6 +200,7 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
         final PresenterFeature htmlText = new PresenterFeature(FeatureType.htmlText, "End of stimuli");
+        endOfStimulusFeature.addFeature(FeatureType.clearPage, null);
         endOfStimulusFeature.getPresenterFeatureList().add(htmlText);
         loadStimuliFeature.getPresenterFeatureList().add(endOfStimulusFeature);
         if (storedWizardScreenData.getScreenText(1) != null && storedWizardScreenData.getMenuWizardScreenData().size() > 0) {
