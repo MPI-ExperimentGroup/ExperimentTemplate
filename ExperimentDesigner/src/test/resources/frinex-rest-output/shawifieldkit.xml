@@ -29,7 +29,8 @@
     <presenter back="AutoMenu" menuLabel="Metadata" next="ExperimentMenu" type="stimulus" self="MetadataScreen" title="Metadata">
         <loadStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder recordingFormat="wav" eventTag="Metadata" mediaId="mediaId" filePerStimulus="false">
+                <clearPage/>
+                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="Metadata" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
@@ -70,7 +71,8 @@
     <presenter back="ExperimentMenu" menuLabel="Grammaticality" type="stimulus" self="Grammaticality" title="Grammaticality">
         <loadSdCardStimulus eventTag="Grammaticality" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder recordingFormat="wav" eventTag="Grammaticality" mediaId="mediaId" filePerStimulus="false">
+                <clearPage/>
+                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="Grammaticality" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
@@ -107,7 +109,8 @@
     <presenter back="ExperimentMenu" menuLabel="Anti Nominal Hierrarchy" type="stimulus" self="Anti_Nominal_Hierrarchy" title="Anti Nominal Hierrarchy">
         <loadSdCardStimulus eventTag="Anti Nominal Hierrarchy" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder recordingFormat="wav" eventTag="Anti Nominal Hierrarchy" mediaId="mediaId" filePerStimulus="false">
+                <clearPage/>
+                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="Anti Nominal Hierrarchy" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
@@ -198,7 +201,8 @@
     <presenter back="ExperimentMenu" menuLabel="Anti Nominal Hierrarchy F" type="stimulus" self="Anti_Nominal_Hierrarchy_F" title="Anti Nominal Hierrarchy F">
         <loadSdCardStimulus eventTag="Anti Nominal Hierrarchy F" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder recordingFormat="wav" eventTag="Anti Nominal Hierrarchy F" mediaId="mediaId" filePerStimulus="false">
+                <clearPage/>
+                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="Anti Nominal Hierrarchy F" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
@@ -248,7 +252,8 @@
     <presenter back="ExperimentMenu" menuLabel="Pictures" type="stimulus" self="Pictures" title="Pictures">
         <loadSdCardStimulus eventTag="Pictures" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder recordingFormat="wav" eventTag="Pictures" mediaId="mediaId" filePerStimulus="false">
+                <clearPage/>
+                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="Pictures" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
@@ -287,7 +292,8 @@
     <presenter back="ExperimentMenu" menuLabel="Animals" type="stimulus" self="Animals" title="Animals">
         <loadSdCardStimulus eventTag="Animals" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder recordingFormat="wav" eventTag="Animals" mediaId="mediaId" filePerStimulus="false">
+                <clearPage/>
+                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="Animals" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
@@ -326,7 +332,8 @@
     <presenter back="ExperimentMenu" menuLabel="Frogs" type="stimulus" self="Frogs" title="Frogs">
         <loadSdCardStimulus eventTag="Frogs" randomise="false" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder recordingFormat="wav" eventTag="Frogs" mediaId="mediaId" filePerStimulus="false">
+                <clearPage/>
+                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="Frogs" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
@@ -365,7 +372,8 @@
     <presenter back="ExperimentMenu" menuLabel="bowped" type="stimulus" self="bowped" title="bowped">
         <loadSdCardStimulus eventTag="bowped" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder recordingFormat="wav" eventTag="bowped" mediaId="mediaId" filePerStimulus="false">
+                <clearPage/>
+                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="bowped" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
@@ -402,7 +410,8 @@
     <presenter back="ExperimentMenu" menuLabel="bodies" type="stimulus" self="bodies" title="bodies">
         <loadSdCardStimulus eventTag="bodies" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder recordingFormat="wav" eventTag="bodies" mediaId="mediaId" filePerStimulus="false">
+                <clearPage/>
+                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="bodies" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
@@ -439,7 +448,8 @@
     <presenter back="ExperimentMenu" menuLabel="vanuatu" type="stimulus" self="vanuatu" title="vanuatu">
         <loadSdCardStimulus eventTag="vanuatu" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder recordingFormat="wav" eventTag="vanuatu" mediaId="mediaId" filePerStimulus="false">
+                <clearPage/>
+                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="vanuatu" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
@@ -476,7 +486,8 @@
     <presenter back="ExperimentMenu" menuLabel="grammar" type="stimulus" self="grammar" title="grammar">
         <loadSdCardStimulus eventTag="grammar" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder recordingFormat="wav" eventTag="grammar" mediaId="mediaId" filePerStimulus="false">
+                <clearPage/>
+                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="grammar" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
@@ -513,7 +524,8 @@
     <presenter back="ExperimentMenu" menuLabel="cutbreak" type="stimulus" self="cutbreak" title="cutbreak">
         <loadSdCardStimulus eventTag="cutbreak" randomise="true" repeatRandomWindow="0" maxStimuliPerTag="1000" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder recordingFormat="wav" eventTag="cutbreak" mediaId="mediaId" filePerStimulus="false">
+                <clearPage/>
+                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="cutbreak" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
