@@ -43,7 +43,7 @@ public class AudioData {
     private String userId;
     private String stimulusId;
     private UUID shortLivedToken;
-    private long downloadPermittedWindowMs;
+    private long downloadPermittedWindowMs = 0;
     @Lob
     private byte[] dataBlob;
 
