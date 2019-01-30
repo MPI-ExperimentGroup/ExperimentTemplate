@@ -1465,7 +1465,7 @@ public abstract class AbstractStimulusPresenter extends AbstractPresenter implem
             public void submissionComplete(String message, String urlAudioData) {
                 String replayAudioUrl = serviceLocations.dataSubmitUrl() + "replayAudio/" + message.replaceAll("[^a-zA-Z0-9\\-]", "") + "/" + userResults.getUserData().getUserId();
 //                ((TimedStimulusView) simpleView).addText("(debug) Media Submission OK: " + message);
-                ((TimedStimulusView) simpleView).addTimedAudio(/*UriUtils.fromTrustedString(urlAudioData)*/UriUtils.fromString(replayAudioUrl), null, true, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
+                ((TimedStimulusView) simpleView).addTimedAudio((downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayAudioUrl), null, true, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
                 onSuccess.postLoadTimerFired();
             }
         };
