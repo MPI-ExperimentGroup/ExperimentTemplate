@@ -22,6 +22,7 @@
     <presenter back="Menu" menuLabel="Sample Stimuli" type="stimulus" self="Sample_Stimuli" title="Sample Stimuli">
         <loadStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
                 <table>
@@ -123,6 +124,7 @@
                 </table>
             </hasMoreStimulus>
             <endOfStimulus>
+                <clearPage/>
                 <htmlText featureText="End of stimuli"/>
             </endOfStimulus>
             <randomGrouping/>
@@ -134,6 +136,7 @@
     <presenter back="Menu" menuLabel="SdCard Stimuli" type="stimulus" self="SdCard_Stimuli" title="SdCard Stimuli">
         <loadSdCardStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <clearPage/>
                 <centrePage/>
                 <showStimulusProgress/>
                 <table>
@@ -235,6 +238,7 @@
                 </table>
             </hasMoreStimulus>
             <endOfStimulus>
+                <clearPage/>
                 <htmlText featureText="End of stimuli"/>
             </endOfStimulus>
             <randomGrouping/>
