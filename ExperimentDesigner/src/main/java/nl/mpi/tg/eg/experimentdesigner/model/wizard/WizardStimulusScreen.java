@@ -155,6 +155,7 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.repeatRandomWindow, "0");
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
+        hasMoreStimulusFeature.addFeature(FeatureType.clearPage, null);
         // todo: add more reverter tags as required
         if (isStimulusImageCapture(storedWizardScreenData)) {
             final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.stimulusImageCapture, "Take Photo"); // todo: add a paramter for this string
@@ -165,6 +166,7 @@ public class WizardStimulusScreen extends AbstractWizardScreen {
             hasMoreStimulusFeature.getPresenterFeatureList().add(startRecorderFeature);
         } else {
             final PresenterFeature startRecorderFeature = new PresenterFeature(FeatureType.startAudioRecorder, null);
+            startRecorderFeature.addFeatureAttributes(FeatureAttribute.downloadPermittedWindowMs, "0");
             startRecorderFeature.addFeatureAttributes(FeatureAttribute.recordingFormat, "wav");
             startRecorderFeature.addFeatureAttributes(FeatureAttribute.eventTag, storedWizardScreenData.getScreenTitle());
             startRecorderFeature.addFeatureAttributes(FeatureAttribute.filePerStimulus, (isFilePerStimulus(storedWizardScreenData)) ? "true" : "false");
