@@ -93,6 +93,7 @@
         <backgroundImage msToNext="3000" src="huisje_02.jpg" styleName="zoomToGarden">
             <loadStimulus eventTag="Training" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <backgroundImage msToNext="0" src="" styleName=""/>
                     <clearPage styleName="fullScreenWidth"/>
                     <stimulusCodeAudio codeFormat="&lt;code&gt;_1" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
@@ -202,6 +203,7 @@
                     <pause msToNext="2000">
                         <loadStimulus eventTag="Room 1" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                             <hasMoreStimulus>
+                                <clearPage/>
                                 <backgroundImage msToNext="0" src="" styleName=""/>
                                 <clearPage styleName="fullScreenWidth"/>
                                 <stimulusCodeAudio codeFormat="&lt;code&gt;_1" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
@@ -331,6 +333,7 @@
                     <pause msToNext="2000">
                         <loadStimulus eventTag="Room 2" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                             <hasMoreStimulus>
+                                <clearPage/>
                                 <backgroundImage msToNext="0" src="" styleName=""/>
                                 <clearPage styleName="fullScreenWidth"/>
                                 <stimulusCodeAudio codeFormat="&lt;code&gt;_1" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
@@ -460,6 +463,7 @@
                     <pause msToNext="2000">
                         <loadStimulus eventTag="Room 3" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                             <hasMoreStimulus>
+                                <clearPage/>
                                 <backgroundImage msToNext="0" src="" styleName=""/>
                                 <clearPage styleName="fullScreenWidth"/>
                                 <stimulusCodeAudio codeFormat="&lt;code&gt;_1" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
@@ -589,6 +593,7 @@
                     <pause msToNext="2000">
                         <loadStimulus eventTag="Room 4" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
                             <hasMoreStimulus>
+                                <clearPage/>
                                 <backgroundImage msToNext="0" src="" styleName=""/>
                                 <clearPage styleName="fullScreenWidth"/>
                                 <stimulusCodeAudio codeFormat="&lt;code&gt;_1" dataChannel="0" autoPlay="true" mediaId="media" showPlaybackIndicator="false">
