@@ -49,7 +49,8 @@
     <presenter back="Afio_mai__welcome_" menuLabel="Metadata" next="Stimulus" type="stimulus" self="MetadataScreen" title="Metadata">
         <loadStimulus eventTag="Metadata" randomise="false" repeatRandomWindow="0" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder recordingFormat="wav" eventTag="Metadata" mediaId="mediaId" filePerStimulus="false">
+                <clearPage/>
+                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="Metadata" mediaId="mediaId" filePerStimulus="false">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
@@ -78,7 +79,8 @@
     <presenter back="Afio_mai__welcome_" menuLabel="Va’ai i le ata (look at the picture)" type="stimulus" self="Stimulus" title="Va’ai i le ata (look at the picture)">
         <loadSdCardStimulus eventTag="Va’ai i le ata (look at the picture)" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <startAudioRecorder recordingFormat="wav" eventTag="Va’ai i le ata (look at the picture)" mediaId="mediaId" filePerStimulus="true">
+                <clearPage/>
+                <startAudioRecorder downloadPermittedWindowMs="0" recordingFormat="wav" eventTag="Va’ai i le ata (look at the picture)" mediaId="mediaId" filePerStimulus="true">
                     <onError/>
                     <onSuccess/>
                     <mediaLoaded/>
