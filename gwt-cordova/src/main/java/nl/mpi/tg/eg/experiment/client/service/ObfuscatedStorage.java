@@ -17,6 +17,7 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import com.google.gwt.http.client.URL;
 import com.google.gwt.storage.client.Storage;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -32,24 +33,32 @@ public class ObfuscatedStorage {
     private Storage dataStore = null;
 
     public ObfuscatedStorage(String appNameInternal, boolean enableObfuscation) {
-        this.appNameInternal = obfuscateString(appNameInternal, appNameInternal);
         this.enableObfuscation = enableObfuscation;
+        this.appNameInternal = obfuscateString(appNameInternal, appNameInternal);
+    }
+
+    private String processString(String storageKey, String input) {
+        if (enableObfuscation) {
+            while (input.length() < 50) {
+                input += " ";
+            }
+            byte[] outputBytes = input.getBytes();
+            byte[] storageKeyBytes = storageKey.getBytes();
+            for (int index = 0; index < input.length(); index++) {
+                outputBytes[index] ^= storageKeyBytes[storageKeyBytes.length - ((index * 3) % storageKeyBytes.length)];
+            }
+            return new String(outputBytes);
+        } else {
+            return input;
+        }
     }
 
     private String obfuscateString(String storageKey, String input) {
-        while (input.length() < 50) {
-            input += " ";
-        }
-        byte[] outputBytes = input.getBytes();
-        byte[] storageKeyBytes = storageKey.getBytes();
-        for (int index = 0; index < input.length(); index++) {
-            outputBytes[index] ^= storageKeyBytes[storageKeyBytes.length - ((index * 3) % storageKeyBytes.length)];
-        }
-        return new String(outputBytes);
+        return processString(storageKey, URL.encode(input));
     }
 
     private String revealString(String storageKey, String input) {
-        return obfuscateString(storageKey, input).trim();
+        return URL.decode(processString(storageKey, input).trim());
     }
 
     public ObfuscatedStorage loadStorage() {
