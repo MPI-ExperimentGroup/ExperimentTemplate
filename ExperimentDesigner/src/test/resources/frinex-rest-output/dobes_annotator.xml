@@ -7,6 +7,7 @@
     <presenter back="about" menuLabel="Annotation Timeline Panel" type="timeline" self="Annotation_Timeline_Panel" title="Annotation Timeline Panel">
         <loadStimulus eventTag="AnnotationTimelinePanel" randomise="true" repeatRandomWindow="0" maxStimuli="20" repeatCount="1">
             <hasMoreStimulus>
+                <clearPage/>
                 <AnnotationTimelinePanel eventTag="Annotation_Timeline_Panel" src="http://corpus1.mpi.nl/media-archive/Info/enctest/aspen" columnCount="2" maxStimuli="10" poster="poster.jpg"/>
             </hasMoreStimulus>
             <endOfStimulus/>
