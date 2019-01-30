@@ -495,6 +495,7 @@ public class WizardGridStimulusScreen extends AbstractWizardScreen {
         backgoundFeatureRemove.addFeatureAttributes(FeatureAttribute.msToNext, "0");
         backgoundFeatureRemove.addFeatureAttributes(FeatureAttribute.styleName, "");
         backgoundFeatureRemove.addFeatureAttributes(FeatureAttribute.src, "");
+        hasMoreStimulusFeature.addFeature(FeatureType.clearPage, null);
         hasMoreStimulusFeature.getPresenterFeatureList().add(backgoundFeatureRemove);
         final PresenterFeature clearScreenFeature = new PresenterFeature(FeatureType.clearPage, null);
         clearScreenFeature.addFeatureAttributes(FeatureAttribute.styleName, "fullScreenWidth");
