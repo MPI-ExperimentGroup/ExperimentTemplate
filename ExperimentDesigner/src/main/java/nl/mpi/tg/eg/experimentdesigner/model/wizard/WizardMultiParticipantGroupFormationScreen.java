@@ -109,6 +109,7 @@ public class WizardMultiParticipantGroupFormationScreen extends AbstractWizardSc
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, "100");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.minStimuliPerTag, "100");
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuliPerTag, "100");
+        hasMoreStimulusFeature.addFeature(FeatureType.clearPage, null);
         hasMoreStimulusFeature.getPresenterFeatureList().add(groupNetwork);
         return loadStimuliFeature;
     }
