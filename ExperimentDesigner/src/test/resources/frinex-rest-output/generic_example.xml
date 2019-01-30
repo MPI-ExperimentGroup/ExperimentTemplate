@@ -41,6 +41,7 @@
     <presenter menuLabel="First Stimuli Screen" next="Second_Informatie" type="stimulus" self="First_Stimuli_Screen" title="First Stimuli Screen">
         <loadStimulus eventTag="First Stimuli Screen" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <clearPage/>
                 <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
@@ -75,7 +76,8 @@
     </presenter>
     <presenter menuLabel="Second" next="Third_Informatie" type="stimulus" self="Second" title="Second">
         <loadStimulus eventTag="Second" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
-            <hasMoreStimulus>
+            <hasMoreStimulus> 
+                <clearPage/>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
                 <stimulusFreeText featureText="Vul minimal 1 nummer." allowedCharCodes="0123456789." styleName="stimuliLabel" validationRegex="[0-9]+[.]?[0-9]*" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
@@ -100,7 +102,8 @@
     </presenter>
     <presenter menuLabel="Third" next="completion" type="stimulus" self="Third" title="Third">
         <loadStimulus eventTag="Third" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
-            <hasMoreStimulus>
+            <hasMoreStimulus> 
+                <clearPage/>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
                 <stimulusFreeText featureText="Vul minimal 1 letter." styleName="stimuliLabel" validationRegex=".{1,}" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
