@@ -19,6 +19,7 @@
                             <conditionTrue>
                                 <loadStimulus adjacencyThreshold="0" eventTag="Introductie" randomise="false" repeatRandomWindow="0" minStimuliPerTag="100" maxStimuliPerTag="100" maxStimuli="100" repeatCount="1">
                                     <hasMoreStimulus>
+                                        <clearPage/>
                                         <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="0" groupCommunicationChannels="A,B,C,D">
                                             <groupNetworkActivity groupRole="A,B,C,D:-">
                                                 <clearPage/>
@@ -64,6 +65,7 @@
                                     <conditionTrue>
                                         <loadStimulus adjacencyThreshold="0" eventTag="Introductie" randomise="false" repeatRandomWindow="0" minStimuliPerTag="100" maxStimuliPerTag="100" maxStimuli="100" repeatCount="1">
                                             <hasMoreStimulus>
+                                                <clearPage/>
                                                 <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="0" groupCommunicationChannels="A,B,C,D,E,F,G,H">
                                                     <groupNetworkActivity groupRole="A,B,C,D,E,F,G,H:-">
                                                         <clearPage/>
@@ -142,6 +144,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R0-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D">
                         <groupNetworkActivity groupRole="A:-:-:B:-:-:C:-:-:D:-:-">
                             <clearPage/>
@@ -216,6 +219,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R0.1-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D">
                         <groupNetworkActivity groupRole="A:-:-:B:-:-:C:-:-:D:-:-">
                             <clearPage/>
@@ -290,6 +294,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R0.2-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D">
                         <groupNetworkActivity groupRole="A:-:-:B:-:-:C:-:-:D:-:-">
                             <clearPage/>
@@ -364,6 +369,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R1-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
                         <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
                             <clearPage/>
@@ -504,6 +510,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R2-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,A|D,B">
                         <groupNetworkActivity groupRole="C,D:-:-:A,B:-:-">
                             <clearPage/>
@@ -644,6 +651,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R3-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,C|A,D">
                         <groupNetworkActivity groupRole="B,A:-:-:C,D:-:-">
                             <clearPage/>
@@ -784,6 +792,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R4-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="B,A|C,D">
                         <groupNetworkActivity groupRole="B,C:-:-:A,D:-:-">
                             <clearPage/>
@@ -924,6 +933,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R5-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,C|B,D">
                         <groupNetworkActivity groupRole="A,B:-:-:C,D:-:-">
                             <clearPage/>
@@ -1064,6 +1074,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R6-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="C,B|D,A">
                         <groupNetworkActivity groupRole="C,D:-:-:B,A:-:-">
                             <clearPage/>
@@ -1204,6 +1215,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R7-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="3" groupCommunicationChannels="A,B|D,C">
                         <groupNetworkActivity groupRole="A,D:-:-:B,C:-:-">
                             <clearPage/>
@@ -1344,6 +1356,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R8-4" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D">
                         <groupNetworkActivity groupRole="A,B,C,D:-">
                             <clearPage/>
@@ -1391,6 +1404,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R0-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F,G,H">
                         <groupNetworkActivity groupRole="A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-:-">
                             <clearPage/>
@@ -1465,6 +1479,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R0.1-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F,G,H">
                         <groupNetworkActivity groupRole="A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-:-">
                             <clearPage/>
@@ -1539,6 +1554,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R0.2-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="1">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B,C,D,E,F,G,H">
                         <groupNetworkActivity groupRole="A:-:-:B:-:-:C:-:-:D:-:-:E:-:-:F:-:-:G:-:-:H:-:-">
                             <clearPage/>
@@ -1613,6 +1629,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R1-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,B|C,D|E,F|G,H">
                         <groupNetworkActivity groupRole="A,C,E,G:-:-:B,D,F,H:-:-">
                             <clearPage/>
@@ -1753,6 +1770,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R2-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="H,A|D,E|F,C|B,G">
                         <groupNetworkActivity groupRole="H,D,F,B:-:-:A,E,C,G:-:-">
                             <clearPage/>
@@ -1893,6 +1911,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R3-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,D|G,F|E,B|C,H">
                         <groupNetworkActivity groupRole="A,G,E,C:-:-:D,F,B,H:-:-">
                             <clearPage/>
@@ -2033,6 +2052,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R4-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="C,A|B,D|E,G|F,H">
                         <groupNetworkActivity groupRole="C,B,E,F:-:-:A,D,G,H:-:-">
                             <clearPage/>
@@ -2173,6 +2193,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R5-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,E|D,H|B,F|G,C">
                         <groupNetworkActivity groupRole="A,D,B,G:-:-:E,H,F,C:-:-">
                             <clearPage/>
@@ -2313,6 +2334,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R6-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="F,A|G,D|C,B|H,E">
                         <groupNetworkActivity groupRole="F,G,C,H:-:-:A,D,B,E:-:-">
                             <clearPage/>
@@ -2453,6 +2475,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R7-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,G|H,B|E,C|D,F">
                         <groupNetworkActivity groupRole="A,H,E,D:-:-:G,B,C,F:-:-">
                             <clearPage/>
@@ -2593,6 +2616,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R8-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D|E|F|G|H">
                         <groupNetworkActivity groupRole="A,B,C,D,E,F,G,H:-">
                             <clearPage/>
@@ -2640,6 +2664,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R9-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="B,A|D,C|F,E|H,G">
                         <groupNetworkActivity groupRole="B,D,F,H:-:-:A,C,E,G:-:-">
                             <clearPage/>
@@ -2780,6 +2805,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R10-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,H|E,D|C,F|G,B">
                         <groupNetworkActivity groupRole="A,E,C,G:-:-:H,D,F,B:-:-">
                             <clearPage/>
@@ -2920,6 +2946,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R11-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="D,A|F,G|B,E|H,C">
                         <groupNetworkActivity groupRole="D,F,B,H:-:-:A,G,E,C:-:-">
                             <clearPage/>
@@ -3060,6 +3087,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R12-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,C|D,B|G,E|H,F">
                         <groupNetworkActivity groupRole="A,D,G,H:-:-:C,B,E,F:-:-">
                             <clearPage/>
@@ -3200,6 +3228,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R13-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="E,A|H,D|F,B|C,G">
                         <groupNetworkActivity groupRole="E,H,F,C:-:-:A,D,B,G:-:-">
                             <clearPage/>
@@ -3340,6 +3369,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R14-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="A,F|D,G|B,C|E,H">
                         <groupNetworkActivity groupRole="A,D,B,E:-:-:F,G,C,H:-:-">
                             <clearPage/>
@@ -3480,6 +3510,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R15-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="3" groupCommunicationChannels="G,A|B,H|C,E|F,D">
                         <groupNetworkActivity groupRole="G,B,C,F:-:-:A,H,E,D:-:-">
                             <clearPage/>
@@ -3620,6 +3651,7 @@
         <actionButton featureText="Volgende [enter]" hotKey="ENTER">
             <loadStimulus adjacencyThreshold="3" eventTag="R16-8" randomise="true" repeatRandomWindow="6" minStimuliPerTag="1" maxStimuliPerTag="100" maxStimuli="23" repeatCount="3">
                 <hasMoreStimulus>
+                    <clearPage/>
                     <groupNetwork groupMembers="A,B,C,D,E,F,G,H" phasesPerStimulus="2" groupCommunicationChannels="A|B|C|D|E|F|G|H">
                         <groupNetworkActivity groupRole="A,B,C,D,E,F,G,H:-">
                             <clearPage/>
