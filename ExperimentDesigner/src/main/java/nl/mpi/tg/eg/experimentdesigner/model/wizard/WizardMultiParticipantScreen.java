@@ -644,6 +644,7 @@ public class WizardMultiParticipantScreen extends AbstractWizardScreen {
             mediaLoaded.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
             mediaLoaded.getPresenterFeatureList().add(nextStimulusFeature4);
         }
+        hasMoreStimulusFeature.addFeature(FeatureType.clearPage, null);
         hasMoreStimulusFeature.getPresenterFeatureList().add(groupNetwork);
 //        presenterFeatureList.add(groupNetwork);
 //        presenterFeatureList.add(loadStimuliFeature);
