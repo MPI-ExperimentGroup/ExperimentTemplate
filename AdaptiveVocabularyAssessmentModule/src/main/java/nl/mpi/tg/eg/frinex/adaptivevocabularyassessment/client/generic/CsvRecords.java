@@ -59,7 +59,7 @@ public class CsvRecords {
             if (row.length != this.header.length) {
                 throw new Exception("The length of the row differs from the length of the header row. "
                         + "\n The header row length is " + this.header.length + ",\n"
-                        + "and the current row number " + i + " is " + this.rawRecords[i]+" of length "+row.length);
+                        + "and the current row number " + i + " is " + " of length "+row.length);
             }
 
             LinkedHashMap<String, String> freshRecord = new LinkedHashMap<String, String>();
