@@ -43,7 +43,7 @@ public class AudioData {
     private String userId;
     private String stimulusId;
     private UUID shortLivedToken;
-    private long downloadPermittedWindowMs = 0;
+    private Long downloadPermittedWindowMs = null;
     @Lob
     private byte[] dataBlob;
 
@@ -122,7 +122,7 @@ public class AudioData {
     }
 
     public long getDownloadPermittedWindowMs() {
-        return downloadPermittedWindowMs;
+        return (downloadPermittedWindowMs != null) ? downloadPermittedWindowMs : 0;
     }
 
     public void setDownloadPermittedWindowMs(long downloadPermittedWindowMs) {
