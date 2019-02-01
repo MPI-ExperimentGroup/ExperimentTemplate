@@ -38,7 +38,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <script src="webjars/stomp-websocket/stomp.min.js"></script>
         <script src="opus-recorder/recorder.min.js"></script>
         <script>
-            function startRecorder(errorHandler) {
+            function startRecorder(successHandler, errorHandler) {
+                recorder.onstart = successHandler;
+
                 recorder.start().catch(function (e) {
                     console.log("startRecorder: " + e.message);
                     errorHandler(e.message);
