@@ -33,7 +33,7 @@ import nl.mpi.tg.eg.experiment.client.model.colour.ScoreData;
  * @since Oct 14, 2014 10:57:45 AM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public class ReportView extends ComplexView {
+public class ReportView extends TimedStimulusView {
 
     public void showResults(StimulusResponseGroup stimuliGroup, GroupScoreData calculatedScores) {
         int columnCount = calculatedScores.getScoreDataList().get(0).getColourData().size();
