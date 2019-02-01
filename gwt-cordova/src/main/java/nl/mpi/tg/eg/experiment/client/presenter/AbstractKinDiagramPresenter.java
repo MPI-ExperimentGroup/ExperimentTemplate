@@ -59,7 +59,7 @@ import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
  * @since Aug 3, 2015 1:21:43 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public abstract class AbstractKinDiagramPresenter extends AbstractPresenter implements Presenter {
+public abstract class AbstractKinDiagramPresenter extends AbstractTimedPresenter implements Presenter {
 
     private final DataSubmissionService submissionService;
     Stimulus currentStimulus = null;
