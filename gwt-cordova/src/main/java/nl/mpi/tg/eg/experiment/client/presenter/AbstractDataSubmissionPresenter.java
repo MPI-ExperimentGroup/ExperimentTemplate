@@ -44,19 +44,20 @@ import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.Registra
 import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.RegistrationListener;
 import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.RegistrationService;
 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
+import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
 /**
  * @since Jul 16, 2015 11:05:26 AM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public abstract class AbstractDataSubmissionPresenter extends AbstractPresenter implements Presenter {
+public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPresenter implements Presenter {
 
     private final DataSubmissionService submissionService;
     private final Duration duration;
 
     public AbstractDataSubmissionPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
-        super(widgetTag, new ComplexView(), userResults, localStorage, timerService);
+        super(widgetTag, new TimedStimulusView(), userResults, localStorage, timerService);
         duration = new Duration();
         this.submissionService = submissionService;
     }
