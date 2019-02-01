@@ -18,14 +18,10 @@
 package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.safehtml.shared.SafeUri;
-import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.ButtonBase;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import com.google.gwt.user.client.ui.Widget;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,7 +29,6 @@ import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
 import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
@@ -48,7 +43,6 @@ import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.SimpleView;
-import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
@@ -62,7 +56,7 @@ public abstract class AbstractPresenter implements Presenter {
     protected final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
     protected final ServiceLocations serviceLocations = GWT.create(ServiceLocations.class);
     protected final RootLayoutPanel widgetTag;
-    final protected SimpleView simpleView;
+    final protected ComplexView simpleView;
     private PresenterEventListner backEventListner = null;
     protected final List<TimedStimulusListener> backEventListners = new ArrayList<>();
     final HashMap<String, ArrayList<StimulusButton>> buttonGroupsList = new HashMap<>();
@@ -75,7 +69,7 @@ public abstract class AbstractPresenter implements Presenter {
     protected final TimerService timerService;
     protected GroupParticipantService groupParticipantService = null;
 
-    public AbstractPresenter(RootLayoutPanel widgetTag, SimpleView simpleView, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
+    public AbstractPresenter(RootLayoutPanel widgetTag, ComplexView simpleView, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
         this.widgetTag = widgetTag;
         this.simpleView = simpleView;
         this.userResults = userResults;
@@ -158,138 +152,19 @@ public abstract class AbstractPresenter implements Presenter {
     }
 
     protected void addText(String textString) {
-        ((ComplexView) simpleView).addText(textString);
+        simpleView.addText(textString);
     }
 
     protected void addHtmlText(String textString) {
-        ((ComplexView) simpleView).addHtmlText(textString, null);
+        simpleView.addHtmlText(textString, null);
     }
 
     protected void addHtmlText(String textString, String styleName) {
-        ((ComplexView) simpleView).addHtmlText(textString, styleName);
-    }
-
-    public void htmlTokenText(final Stimulus currentStimulus, final String textString, final String styleName) {
-        ((TimedStimulusView) simpleView).addHtmlText(new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(textString), styleName);
-        // the submitTagValue previously used here by the multiparticipant configuration has been migrated to logTokenText which should function the sames for the multiparticipant experiment except that it now uses submitTagPairValue
-    }
-
-    public void htmlTokenText(final Stimulus currentStimulus, String textString) {
-        htmlTokenText(currentStimulus, textString, null);
-    }
-
-    public void htmlText(String textString, final String styleName) {
-        ((TimedStimulusView) simpleView).addHtmlText(textString, styleName);
-    }
-
-    protected void image(final String imageString, int postLoadMs, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener) {
-        image(imageString, null, postLoadMs, loadedStimulusListener, failedStimulusListener);
-    }
-
-    protected void image(final String imageString, final String styleName, int postLoadMs, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener) {
-        // consider fromTrustedString if there are issues with fromString when sdcard stimuli are used
-        ((TimedStimulusView) simpleView).addTimedImage(UriUtils.fromString((imageString.startsWith("file")) ? imageString : serviceLocations.staticFilesUrl() + imageString), styleName, postLoadMs, null, loadedStimulusListener, failedStimulusListener, null);
-    }
-
-    protected void addPadding() {
-        ((ComplexView) simpleView).addPadding();
-    }
-
-    protected void centrePage() {
-        ((ComplexView) simpleView).centrePage();
-    }
-
-    public void ratingButtons(final List<PresenterEventListner> presenterListeners, final String ratingLabelLeft, final String ratingLabelRight, boolean footerButtons, String styleName, final String buttonGroupName, final String savedValue, final String buttonGroup, final HorizontalPanel buttonsPanel) {
-        final List<StimulusButton> ratingButtons = ((ComplexView) simpleView).addRatingButtons(presenterListeners, ratingLabelLeft, ratingLabelRight, footerButtons, styleName, buttonGroupName, savedValue, buttonsPanel);
-        addButtonToGroup(buttonGroup, ratingButtons);
-//        addButtonToGroup(buttonGroupName, ratingButtons);
-    }
-
-    public StimulusButton imageButton(final PresenterEventListner presenterListerner, final SafeUri imagePath, final String styleName, final boolean isTouchZone, final String buttonGroup) {
-        return addButtonToGroup(buttonGroup, ((ComplexView) simpleView).addImageButton(presenterListerner, imagePath, styleName, isTouchZone));
-    }
-
-    public void actionFooterButton(final PresenterEventListner presenterListerner, final String styleName, final String buttonGroup) {
-        addButtonToGroup(buttonGroup, ((ComplexView) simpleView).addFooterButton(presenterListerner, styleName));
-    }
-
-    public void targetFooterButton(final PresenterEventListner presenterListerner, final String styleName, final String buttonGroup) {
-        addButtonToGroup(buttonGroup, ((ComplexView) simpleView).addFooterButton(presenterListerner, styleName));
-    }
-
-    public void actionButton(final PresenterEventListner presenterListerner, final String styleName, final String buttonGroup) {
-        addButtonToGroup(buttonGroup, ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName));
+        simpleView.addHtmlText(textString, styleName);
     }
 
     public void targetButton(final PresenterEventListner presenterListerner, final String styleName, final String buttonGroup) {
-        addButtonToGroup(buttonGroup, ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName));
-    }
-
-    public StimulusButton optionButton(final PresenterEventListner presenterListerner, final String styleName, final String buttonGroup) {
-        final StimulusButton optionButton = ((ComplexView) simpleView).addOptionButton(presenterListerner, styleName);
-        addButtonToGroup(buttonGroup, optionButton);
-        return optionButton;
-    }
-
-    protected void table(final TimedStimulusListener timedStimulusListener) {
-        table(null, timedStimulusListener);
-    }
-
-    protected void table(final String styleName, final TimedStimulusListener timedStimulusListener) {
-        table(styleName, false, timedStimulusListener);
-    }
-
-    protected void table(final String styleName, boolean showOnBackButton, final TimedStimulusListener timedStimulusListener) {
-        final Widget tableWidget = ((ComplexView) simpleView).startTable(styleName);
-        timedStimulusListener.postLoadTimerFired();
-        ((ComplexView) simpleView).endTable();
-        if (showOnBackButton) {
-            tableWidget.setVisible(false);
-            // todo: backEventListners list should be emptied on screen clear etc
-            backEventListners.add(new TimedStimulusListener() {
-                @Override
-                public void postLoadTimerFired() {
-                    tableWidget.setVisible(!tableWidget.isVisible());
-                }
-            });
-        }
-    }
-
-    protected void row(final TimedStimulusListener timedStimulusListener) {
-        ((ComplexView) simpleView).startRow();
-        timedStimulusListener.postLoadTimerFired();
-        ((ComplexView) simpleView).endRow();
-    }
-
-    protected void column(final TimedStimulusListener timedStimulusListener) {
-        column(null, timedStimulusListener);
-    }
-
-    protected void column(final String styleName, final TimedStimulusListener timedStimulusListener) {
-        ((ComplexView) simpleView).startCell(styleName);
-        timedStimulusListener.postLoadTimerFired();
-        ((ComplexView) simpleView).endCell();
-    }
-
-    protected void region(final String regionId, final String styleName, final TimedStimulusListener timedStimulusListener) {
-        ((ComplexView) simpleView).startRegion(regionId, styleName);
-        timedStimulusListener.postLoadTimerFired();
-        ((ComplexView) simpleView).endRegion();
-    }
-
-    protected void regionStyle(final String regionId, final String styleName) {
-        ((ComplexView) simpleView).setRegionStyle(regionId, styleName);
-    }
-
-    protected void regionReplace(final String regionId, final String styleName, final TimedStimulusListener timedStimulusListener) {
-        ((ComplexView) simpleView).clearRegion(regionId);
-        ((ComplexView) simpleView).startRegion(regionId, styleName);
-        timedStimulusListener.postLoadTimerFired();
-        ((ComplexView) simpleView).endRegion();
-    }
-
-    protected void regionClear(final String regionId) {
-        ((ComplexView) simpleView).clearRegion(regionId);
+        addButtonToGroup(buttonGroup, simpleView.addOptionButton(presenterListerner, styleName));
     }
 
     protected void clearButtonList() {
@@ -320,7 +195,7 @@ public abstract class AbstractPresenter implements Presenter {
                 }
             }
         }
-//        ((TimedStimulusView) simpleView).addText("disableButtonGroup: " + duration.elapsedMillis() + "ms");
+//        simpleView.addText("disableButtonGroup: " + duration.elapsedMillis() + "ms");
     }
 
     protected void hideButtonGroup(final String machingRegex) {
@@ -331,7 +206,7 @@ public abstract class AbstractPresenter implements Presenter {
                 }
             }
         }
-//        ((TimedStimulusView) simpleView).addText("hideButtonGroup: " + duration.elapsedMillis() + "ms");
+//        simpleView.addText("hideButtonGroup: " + duration.elapsedMillis() + "ms");
     }
 
     protected void showButtonGroup(final String machingRegex) {
@@ -342,7 +217,7 @@ public abstract class AbstractPresenter implements Presenter {
                 }
             }
         }
-//        ((TimedStimulusView) simpleView).addText("showButtonGroup: " + duration.elapsedMillis() + "ms");
+//        simpleView.addText("showButtonGroup: " + duration.elapsedMillis() + "ms");
     }
 
     protected void enableButtonGroup(final String machingRegex) {
@@ -354,7 +229,7 @@ public abstract class AbstractPresenter implements Presenter {
                 }
             }
         }
-//        ((TimedStimulusView) simpleView).addText("enableButtonGroup: " + duration.elapsedMillis() + "ms");
+//        simpleView.addText("enableButtonGroup: " + duration.elapsedMillis() + "ms");
     }
 
     public void hasMetadataValue(final Stimulus currentStimulus, MetadataField metadataField, final String inputRegex, final TimedStimulusListener conditionTrue, final TimedStimulusListener conditionFalse) {
@@ -520,7 +395,7 @@ public abstract class AbstractPresenter implements Presenter {
                         dataSubmissionService.@nl.mpi.tg.eg.experiment.client.service.DataSubmissionService::submitAudioData(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/typedarrays/shared/Uint8Array;Lnl/mpi/tg/eg/experiment/client/listener/MediaSubmissionListener;Ljava/lang/Integer;)(userIdString, screenName, stimulusIdString, typedArray, mediaSubmissionListener, downloadPermittedWindowMs);
                     };
                     try {
-                        $wnd.startRecorder(function(errorMessage){mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(errorMessage)});
+                        $wnd.startRecorder(function(){mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderStarted()()}, function(errorMessage){mediaSubmissionListener.@nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener::recorderFailed(Ljava/lang/String;)(errorMessage)});
                         abstractPresenter.@nl.mpi.tg.eg.experiment.client.presenter.AbstractPresenter::audioOk(Ljava/lang/Boolean;Ljava/lang/String;)(@java.lang.Boolean::TRUE, $wnd.recorder.state);
                         //$wnd.recorder.start();
                     } catch(e) {
