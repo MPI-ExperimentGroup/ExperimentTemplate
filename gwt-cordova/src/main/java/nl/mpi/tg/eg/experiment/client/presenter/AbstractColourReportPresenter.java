@@ -45,7 +45,7 @@ import nl.mpi.tg.eg.experiment.client.util.ScoreCalculator;
  * @since Mar 7, 2016 4:10:23 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public abstract class AbstractColourReportPresenter extends AbstractPresenter implements Presenter {
+public abstract class AbstractColourReportPresenter extends AbstractTimedPresenter implements Presenter {
 
     private final DataSubmissionService submissionService;
 
