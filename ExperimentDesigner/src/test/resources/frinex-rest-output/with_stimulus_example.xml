@@ -494,6 +494,17 @@
                 <addPadding/>
                 <addPadding/>
                 <addPadding/>
+                <htmlText featureText="Or you can use a actionTokenButton with formatted labels as follows:"/>
+                <actionTokenButton featureText="&lt;stimulusRatingLabel_0&gt;"></actionTokenButton>
+                <addPadding/>
+                <actionTokenButton featureText="&lt;stimulusRatingLabel_1&gt;"></actionTokenButton>
+                <addPadding/>
+                <actionTokenButton featureText="&lt;stimulusRatingLabel_2&gt;"></actionTokenButton>
+                <addPadding/>
+                <actionTokenButton featureText="&lt;stimulusRatingLabel_3&gt;"></actionTokenButton>
+                <addPadding/>
+                <actionTokenButton featureText="&lt;stimulusRatingLabel_4&gt;"></actionTokenButton>
+                <addPadding/>
                 <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -1988,6 +1999,7 @@
                 </hasMetadataValue>
             </conditionTrue>
             <conditionFalse>
+                <htmlTokenText featureText="&lt;metadataField_uuid&gt;"/> 
                 <hasGetParameter parameterName="uuid">
                     <conditionTrue>
                         <htmlText featureText="get parameter uuid ok"/>
@@ -2229,20 +2241,32 @@
         <region regionId="stimulusButtons"></region>
         <loadStimulus eventTag="RecordingQualityTest" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
-                <regionReplace regionId="stimulusLabel">
-                    <stimulusLabel/>
-                </regionReplace>
                 <regionReplace regionId="recordedMediaResult">
                     <startAudioRecorder recordingFormat="recordingFormat" downloadPermittedWindowMs="30000" eventTag="eventTag" deviceRegex="(046d:0a45)" filePerStimulus="filePerStimulus" mediaId="recordedMedia_&lt;stimulusId&gt;">
                         <onError>
+                            <regionReplace regionId="stimulusLabel"></regionReplace>
+                            <regionReplace regionId="stimulusButtons"></regionReplace>
                             <regionReplace regionId="recordedMediaResult">
                                 <plainText featureText="Recording Error"/>
+                                <plainText featureText="Please make sure you are using the HTTPS version of this page."/>
+                                <plainText featureText="Please check that your USB headset is pluged in and that you have allowed this web page to access the microphone."/>
+                                <actionButton featureText="Retry">
+                                    <showStimulus/>
+                                </actionButton>
                             </regionReplace>
                         </onError>
                         <onSuccess>
-                            <!-- <regionReplace regionId="recordedMediaResult">
-                                <plainText featureText="Recording Success"/>
-                            </regionReplace>-->
+                            <regionReplace regionId="stimulusLabel">
+                                <stimulusLabel/>
+                            </regionReplace>
+                            <regionReplace regionId="stimulusButtons">
+                                <actionButton featureText="Continue">
+                                    <pause msToNext="1000">
+                                        <stopAudioRecorder/>
+                                        <nextStimulus repeatIncorrect="false"/>
+                                    </pause>
+                                </actionButton>
+                            </regionReplace>
                         </onSuccess>
                         <mediaLoaded>
                             <!-- <regionReplace regionId="recordedMediaResult">
@@ -2261,14 +2285,6 @@
                             </regionReplace>-->
                         </mediaPlaybackComplete>
                     </startAudioRecorder>
-                </regionReplace>
-                <regionReplace regionId="stimulusButtons">
-                    <actionButton featureText="Continue">
-                        <pause msToNext="1000">
-                            <stopAudioRecorder/>
-                            <nextStimulus repeatIncorrect="false"/>
-                        </pause>
-                    </actionButton>
                 </regionReplace>
             </hasMoreStimulus>
             <endOfStimulus>                
@@ -2514,5 +2530,6 @@
         <stimulus code="NC" identifier="7" correctResponses="2" ratingLabels="1,2,3,4,5" label="In tegenstelling tot andere feestgangers. 2" pauseMs="0" tags="RatingToggle"/>
         <stimulus code="NN" identifier="68" correctResponses="5" ratingLabels="1,2,3,4,5" label="De meeste vrienden. 5" pauseMs="0" tags="RatingToggle"/>
         <stimulus code="NC" identifier="32" correctResponses="1" ratingLabels="1,2,3,4,5" label="Bij de auditie waren. 1" pauseMs="0" tags="RatingToggle"/>
+        <stimulus code="NC1" identifier="322" correctResponses="ugly" ratingLabels="bad,good,ugly,cat,meow" label="Bij de auditie waren. 1" pauseMs="0" tags="RatingToggle"/>
     </stimuli>
 </experiment>
