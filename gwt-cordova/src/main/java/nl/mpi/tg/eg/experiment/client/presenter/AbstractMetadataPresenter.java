@@ -46,7 +46,7 @@ import nl.mpi.tg.eg.experiment.client.service.TimerService;
  * @since Oct 21, 2014 11:50:56 AM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public abstract class AbstractMetadataPresenter extends AbstractPresenter implements Presenter {
+public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter implements Presenter {
 
     private final DataSubmissionService submissionService;
 
