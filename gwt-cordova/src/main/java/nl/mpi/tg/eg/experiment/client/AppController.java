@@ -64,6 +64,12 @@ public abstract class AppController implements AppEventListner/*, AudioException
 
     public AppController(RootLayoutPanel widgetTag, String userIdGetParam) throws UserIdException {
         this.widgetTag = widgetTag;
+        boolean obfuscationDisabled = false;
+        String debugValue = Window.Location.getParameter("debug");
+        if (debugValue != null && !submissionService.isProductionVersion()) {
+            localStorage.disableObfuscation();
+            obfuscationDisabled = true;
+        }
         final UserId lastUserId = localStorage.getLastUserId(userIdGetParam);
         if (lastUserId == null) {
             userResults = new UserResults(new UserData());
@@ -71,6 +77,9 @@ public abstract class AppController implements AppEventListner/*, AudioException
             localStorage.storeData(userResults, metadataFieldProvider);
         } else {
             userResults = new UserResults(localStorage.getStoredData(lastUserId, metadataFieldProvider));
+        }
+        if (obfuscationDisabled) {
+            submissionService.submitScreenChange(userResults.getUserData().getUserId(), "obfuscationDisabled");
         }
         boolean hasNewMetadata = false;
         for (MetadataField metadataField : metadataFieldProvider.metadataFieldArray) {
@@ -84,7 +93,6 @@ public abstract class AppController implements AppEventListner/*, AudioException
         if (hasNewMetadata) {
             localStorage.storeData(userResults, metadataFieldProvider);
         }
-        String debugValue = Window.Location.getParameter("debug");
         if (debugValue != null) {
             try {
                 localStorage.saveAppState(userResults.getUserData().getUserId(), ApplicationState.valueOf("about"));
