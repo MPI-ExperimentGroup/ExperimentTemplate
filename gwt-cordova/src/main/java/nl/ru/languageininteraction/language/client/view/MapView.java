@@ -17,7 +17,6 @@
  */
 package nl.ru.languageininteraction.language.client.view;
 
-import nl.mpi.tg.eg.experiment.client.view.SimpleView;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
@@ -33,13 +32,15 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 //import nl.ru.languageininteraction.language.client.AutotypRegions;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
+import nl.mpi.tg.eg.experiment.client.view.ComplexView;
+import nl.mpi.tg.eg.experiment.client.view.SimpleView.ButtonType;
 import nl.ru.languageininteraction.language.client.util.SvgTemplate;
 
 /**
  * @since Nov 26, 2014 4:11:13 PM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public class MapView extends SimpleView {
+public class MapView extends ComplexView {
 
     final VerticalPanel verticalPanel = new VerticalPanel();
     private float zoomFactor = 1f;
