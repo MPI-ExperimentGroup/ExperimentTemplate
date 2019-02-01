@@ -29,7 +29,7 @@ import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
  * @since Oct 31, 2014 11:36:28 AM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public class MenuView extends ComplexView {
+public class MenuView extends TimedStimulusView {
 
 //    final private HashMap<FlexTable, ArrayList<IsWidget>> tableMap = new HashMap<>();
     private FlexTable flexTable = null;
