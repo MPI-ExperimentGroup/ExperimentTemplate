@@ -30,8 +30,8 @@ import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
+import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 import nl.mpi.tg.eg.experiment.client.view.MenuView;
-import nl.mpi.tg.eg.experiment.client.view.SimpleView;
 
 /**
  * @since Jul 14, 2015 1:37:00 PM (creation date)
@@ -41,7 +41,7 @@ public abstract class AbstractMenuPresenter extends AbstractPresenter implements
 
     private final List<ApplicationController.ApplicationState> nonCompletedScreens = new ArrayList<>();
 
-    public AbstractMenuPresenter(RootLayoutPanel widgetTag, SimpleView simpleView, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
+    public AbstractMenuPresenter(RootLayoutPanel widgetTag, ComplexView simpleView, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
         super(widgetTag, simpleView, userResults, localStorage, timerService);
     }
 
