@@ -38,7 +38,7 @@ import nl.mpi.tg.eg.experiment.client.model.UserLabelData;
  * @since Oct 21, 2014 11:56:23 AM (creation date)
  * @author Peter Withers <p.withers@psych.ru.nl>
  */
-public class MetadataView extends ComplexView {
+public class MetadataView extends TimedStimulusView {
 
     private FlexTable flexTable = null;
     final private HashMap<MetadataField, MetadataFieldWidget> fieldBoxes;
