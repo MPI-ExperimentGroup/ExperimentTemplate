@@ -213,6 +213,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 import nl.mpi.tg.eg.experiment.client.view.VideoPanel;
                 import nl.mpi.tg.eg.experiment.client.view.AnnotationTimelinePanel;
                 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
+                import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
                 import nl.mpi.tg.eg.experiment.client.view.MenuView;     
                 import nl.mpi.tg.eg.experiment.client.listener.GroupActivityListener;
                 import nl.mpi.tg.eg.experiment.client.listener.CurrentStimulusListener;
@@ -236,7 +237,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 public class </xsl:text>
             <xsl:value-of select="@self" />
             <xsl:text>Presenter extends </xsl:text>
-            <xsl:value-of select="if(@type = 'colourPicker') then 'AbstractColourPicker' else if(@type = 'colourReport') then 'AbstractColourReport' else if(@type = 'timeline') then 'AbstractTimeline' else if(@type = 'transmission') then 'AbstractDataSubmission' else if(@type = 'menu') then 'AbstractMenu' else if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else if(@type = 'kindiagram') then 'AbstractKinDiagram' else 'Abstract'" />
+            <xsl:value-of select="if(@type = 'colourPicker') then 'AbstractColourPicker' else if(@type = 'colourReport') then 'AbstractColourReport' else if(@type = 'timeline') then 'AbstractTimeline' else if(@type = 'transmission') then 'AbstractDataSubmission' else if(@type = 'menu') then 'AbstractMenu' else if(@type = 'stimulus') then 'AbstractStimulus' else if(@type = 'preload') then 'AbstractPreloadStimulus' else if(@type = 'debug') then 'LocalStorage' else if(@type = 'metadata') then 'AbstractMetadata' else if(@type = 'kindiagram') then 'AbstractKinDiagram' else 'AbstractTimed'" />
             <xsl:text>Presenter implements Presenter {
                 private final ApplicationState selfApplicationState = ApplicationState.</xsl:text>
             <xsl:value-of select="@self" />
@@ -264,7 +265,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
                 </xsl:when>
                 <xsl:when test="@type = 'text'">
                     <xsl:text>
-                        super(widgetTag, new ComplexView(), userResults, localStorage, timerService);
+                        super(widgetTag, new TimedStimulusView(), userResults, localStorage, timerService);
                     </xsl:text>
                 </xsl:when>
                 <xsl:when test="@type = 'debug'">
