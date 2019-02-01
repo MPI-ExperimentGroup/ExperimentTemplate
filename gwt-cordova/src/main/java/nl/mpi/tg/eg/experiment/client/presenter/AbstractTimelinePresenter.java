@@ -40,7 +40,7 @@ import nl.mpi.tg.eg.experiment.client.view.VideoPanel;
  * @since Oct 2, 2015 4:22:12 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public abstract class AbstractTimelinePresenter extends AbstractPresenter implements Presenter {
+public abstract class AbstractTimelinePresenter extends AbstractTimedPresenter implements Presenter {
 
     DataFactory dataFactory = GWT.create(DataFactory.class);
     private final StimulusProvider stimulusProvider;
