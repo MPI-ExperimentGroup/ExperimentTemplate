@@ -22,7 +22,7 @@ import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
-import nl.mpi.tg.eg.experiment.client.view.SimpleView;
+import nl.mpi.tg.eg.experiment.client.view.ComplexView;
 
 /**
  * @since Oct 22, 2014 3:00:25 PM (creation date)
@@ -33,7 +33,7 @@ public class ErrorPresenter extends AbstractPresenter implements Presenter {
     private final String errorMessage;
 
     public ErrorPresenter(RootLayoutPanel widgetTag, String errorMessage, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
-        super(widgetTag, new SimpleView(), userResults, localStorage, timerService);
+        super(widgetTag, new ComplexView(), userResults, localStorage, timerService);
         this.errorMessage = errorMessage;
     }
 
