@@ -25,7 +25,6 @@ import java.util.List;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
-import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
@@ -45,7 +44,7 @@ public abstract class AbstractPreloadStimulusPresenter extends AbstractStimulusP
     private void preloadAllStimuli(final HorizontalPanel progressBar, final TimedStimulusListener timedStimulusListener, final List<Stimulus> pictureList, final int totalImages) {
         ((TimedStimulusView) simpleView).updateProgressBar(progressBar, 0, totalImages - pictureList.size(), totalImages);
         if (!pictureList.isEmpty()) {
-            ((TimedStimulusView) simpleView).preloadImage(UriUtils.fromString(pictureList.remove(0).getImage()), new TimedStimulusListener() {
+            ((TimedStimulusView) simpleView).preloadImage(null, UriUtils.fromString(pictureList.remove(0).getImage()), new TimedStimulusListener() {
 
                 @Override
                 public void postLoadTimerFired() {
