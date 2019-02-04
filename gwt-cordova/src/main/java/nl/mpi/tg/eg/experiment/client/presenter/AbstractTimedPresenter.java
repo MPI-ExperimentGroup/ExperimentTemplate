@@ -66,7 +66,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
 
     protected void image(final String imageString, final String styleName, int postLoadMs, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener) {
         // consider fromTrustedString if there are issues with fromString when sdcard stimuli are used
-        timedStimulusView.addTimedImage(UriUtils.fromString((imageString.startsWith("file")) ? imageString : serviceLocations.staticFilesUrl() + imageString), styleName, postLoadMs, null, loadedStimulusListener, failedStimulusListener, null);
+        timedStimulusView.addTimedImage(null, UriUtils.fromString((imageString.startsWith("file")) ? imageString : serviceLocations.staticFilesUrl() + imageString), styleName, postLoadMs, null, loadedStimulusListener, failedStimulusListener, null);
     }
 
     protected void addPadding() {
