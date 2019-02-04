@@ -201,12 +201,14 @@ public class LocalStorage {
     }
 
     public void addStoredScreenData(UserId userId, String endpoint, String serialisedScreenData) {
-        loadStorage();
-        final String cleanStoredData = getCleanStoredData(dataStore.getSCREEN_DATA(endpoint, userId));
-        if (cleanStoredData.isEmpty()) {
-            dataStore.setItem(dataStore.getSCREEN_DATA(endpoint, userId), cleanStoredData + serialisedScreenData);
-        } else {
-            dataStore.setItem(dataStore.getSCREEN_DATA(endpoint, userId), cleanStoredData + "," + serialisedScreenData);
+        if (serialisedScreenData != null && !serialisedScreenData.isEmpty()) {
+            loadStorage();
+            final String cleanStoredData = getCleanStoredData(dataStore.getSCREEN_DATA(endpoint, userId));
+            if (cleanStoredData.isEmpty()) {
+                dataStore.setItem(dataStore.getSCREEN_DATA(endpoint, userId), cleanStoredData + serialisedScreenData);
+            } else {
+                dataStore.setItem(dataStore.getSCREEN_DATA(endpoint, userId), cleanStoredData + "," + serialisedScreenData);
+            }
         }
     }
 
