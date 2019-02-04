@@ -39,6 +39,7 @@ import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
+import nl.mpi.tg.eg.experiment.client.model.TimedEvent;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -235,7 +236,33 @@ public class DataSubmissionService extends AbstractSubmissionService {
                 + "\"eventMs\": \"" + eventMs + "\" \n}");
     }
 
-    public void submitTimeStamp(final UserId userId, String eventTag, int eventMs) {
+    public void submitTimestamps(final UserId userId, final TimedEventMonitor timedEventMonitor) {
+        final List<TimedEvent> eventList = timedEventMonitor.getEventList();
+        StringBuilder stringBuilder = new StringBuilder();
+        boolean isFirst = true;
+        for (TimedEvent timedEvent : eventList) {
+            if (isFirst) {
+                isFirst = false;
+            } else {
+                stringBuilder.append(",");
+            }
+            stringBuilder.append("{\"tagDate\" : ")
+                    .append(jsonEscape(format.format(new Date())))
+                    .append(",\n\"experimentName\": ")
+                    .append(jsonEscape(experimentName))
+                    .append(",\n\"userId\": ")
+                    .append(jsonEscape(userId.toString()))
+                    .append(",\n\"eventTag\": ")
+                    .append(jsonEscape(timedEvent.getEventName()))
+                    .append(",\n\"eventMs\": \"")
+                    .append(timedEvent.getEventMs())
+                    .append("\" \n}");
+        }
+        submitData(ServiceEndpoint.timeStamp, userId, stringBuilder.toString());
+        timedEventMonitor.clearEvents(eventList);
+    }
+
+    public void submitTimestamp(final UserId userId, String eventTag, int eventMs) {
         submitData(ServiceEndpoint.timeStamp, userId, "{\"tagDate\" : " + jsonEscape(format.format(new Date())) + ",\n"
                 + "\"experimentName\": " + jsonEscape(experimentName) + ",\n"
                 + "\"userId\": " + jsonEscape(userId.toString()) + ",\n"
