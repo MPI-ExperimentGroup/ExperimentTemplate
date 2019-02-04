@@ -455,7 +455,7 @@ public class TimedStimulusView extends ComplexView {
                 @Override
                 public void audioEnded() {
                     timedEventMonitor.registerEvent("audioEnded");
-                    timedEventMonitor.registerMediaLength((oggPath != null) ? oggPath.asString() : (mp3Path != null) ? mp3Path.asString() : "", (long) (audioPlayer.getCurrentTime() * 1000));
+                    timedEventMonitor.registerMediaLength(mediaId, (long) (audioPlayer.getCurrentTime() * 1000));
 //                    playbackIndicatorTimer.cancel();
 //                    playbackIndicator.removeFromParent();
 //                    audioPlayer.setEventListner(null); // prevent multiple triggering
@@ -518,7 +518,7 @@ public class TimedStimulusView extends ComplexView {
                 @Override
                 public void onEnded(EndedEvent event) {
                     timedEventMonitor.registerEvent("onEnded");
-                    timedEventMonitor.registerMediaLength((oggPath != null) ? oggPath.asString() : (ogvPath != null) ? ogvPath.asString() : (mp4Path != null) ? mp4Path.asString() : "", (long) (video.getCurrentTime() * 1000));
+                    timedEventMonitor.registerMediaLength(mediaId, (long) (video.getCurrentTime() * 1000));
                     // prevent multiple triggering
                     if (!triggered) {
                         triggered = true;
