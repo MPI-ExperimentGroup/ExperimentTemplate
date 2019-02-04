@@ -404,7 +404,7 @@ public class TimedStimulusView extends ComplexView {
         return stimulusFreeText;
     }
 
-    public void addTimedAudio(final TimedEventMonitor timedEventMonitor, SafeUri oggPath, SafeUri mp3Path, boolean showPlaybackIndicator, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final boolean autoPlay, final String mediaId) {
+    public void addTimedAudio(final TimedEventMonitor timedEventMonitor, final SafeUri oggPath, final SafeUri mp3Path, boolean showPlaybackIndicator, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final boolean autoPlay, final String mediaId) {
         cancelableListnerList.add(loadedStimulusListener);
         cancelableListnerList.add(failedStimulusListener);
         cancelableListnerList.add(playbackStartedStimulusListener);
@@ -455,6 +455,7 @@ public class TimedStimulusView extends ComplexView {
                 @Override
                 public void audioEnded() {
                     timedEventMonitor.registerEvent("audioEnded");
+                    timedEventMonitor.registerMediaLength((oggPath != null) ? oggPath.asString() : (mp3Path != null) ? mp3Path.asString() : "", (long) (audioPlayer.getCurrentTime() * 1000));
 //                    playbackIndicatorTimer.cancel();
 //                    playbackIndicator.removeFromParent();
 //                    audioPlayer.setEventListner(null); // prevent multiple triggering
@@ -466,7 +467,7 @@ public class TimedStimulusView extends ComplexView {
         }
     }
 
-    public void addTimedVideo(final TimedEventMonitor timedEventMonitor, SafeUri oggPath, SafeUri ogvPath, SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final String mediaId) {
+    public void addTimedVideo(final TimedEventMonitor timedEventMonitor, final SafeUri oggPath, final SafeUri ogvPath, final SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final String mediaId) {
         cancelableListnerList.add(loadedStimulusListener);
         cancelableListnerList.add(failedStimulusListener);
         cancelableListnerList.add(playbackStartedStimulusListener);
@@ -517,6 +518,7 @@ public class TimedStimulusView extends ComplexView {
                 @Override
                 public void onEnded(EndedEvent event) {
                     timedEventMonitor.registerEvent("onEnded");
+                    timedEventMonitor.registerMediaLength((oggPath != null) ? oggPath.asString() : (ogvPath != null) ? ogvPath.asString() : (mp4Path != null) ? mp4Path.asString() : "", (long) (video.getCurrentTime() * 1000));
                     // prevent multiple triggering
                     if (!triggered) {
                         triggered = true;
