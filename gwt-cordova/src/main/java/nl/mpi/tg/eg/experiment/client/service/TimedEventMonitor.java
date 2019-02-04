@@ -40,6 +40,10 @@ public class TimedEventMonitor {
         eventList.add(new TimedEvent(eventName, duration.elapsedMillis()));
     }
 
+    public void registerMediaLength(String mediaName, Long mediaLength) {
+        eventList.add(new TimedEvent(mediaName, mediaLength));
+    }
+
     public void clearEvents(final List<TimedEvent> completedList) {
         eventList.removeAll(completedList);
     }
