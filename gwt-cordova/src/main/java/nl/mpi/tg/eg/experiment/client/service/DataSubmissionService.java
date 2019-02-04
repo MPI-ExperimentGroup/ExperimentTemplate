@@ -238,28 +238,30 @@ public class DataSubmissionService extends AbstractSubmissionService {
 
     public void submitTimestamps(final UserId userId, final TimedEventMonitor timedEventMonitor) {
         final List<TimedEvent> eventList = timedEventMonitor.getEventList();
-        StringBuilder stringBuilder = new StringBuilder();
-        boolean isFirst = true;
-        for (TimedEvent timedEvent : eventList) {
-            if (isFirst) {
-                isFirst = false;
-            } else {
-                stringBuilder.append(",");
+        if (!eventList.isEmpty()) {
+            StringBuilder stringBuilder = new StringBuilder();
+            boolean isFirst = true;
+            for (TimedEvent timedEvent : eventList) {
+                if (isFirst) {
+                    isFirst = false;
+                } else {
+                    stringBuilder.append(",");
+                }
+                stringBuilder.append("{\"tagDate\" : ")
+                        .append(jsonEscape(format.format(new Date())))
+                        .append(",\n\"experimentName\": ")
+                        .append(jsonEscape(experimentName))
+                        .append(",\n\"userId\": ")
+                        .append(jsonEscape(userId.toString()))
+                        .append(",\n\"eventTag\": ")
+                        .append(jsonEscape(timedEvent.getEventName()))
+                        .append(",\n\"eventMs\": \"")
+                        .append(timedEvent.getEventMs())
+                        .append("\" \n}");
             }
-            stringBuilder.append("{\"tagDate\" : ")
-                    .append(jsonEscape(format.format(new Date())))
-                    .append(",\n\"experimentName\": ")
-                    .append(jsonEscape(experimentName))
-                    .append(",\n\"userId\": ")
-                    .append(jsonEscape(userId.toString()))
-                    .append(",\n\"eventTag\": ")
-                    .append(jsonEscape(timedEvent.getEventName()))
-                    .append(",\n\"eventMs\": \"")
-                    .append(timedEvent.getEventMs())
-                    .append("\" \n}");
+            submitData(ServiceEndpoint.timeStamp, userId, stringBuilder.toString());
+            timedEventMonitor.clearEvents(eventList);
         }
-        submitData(ServiceEndpoint.timeStamp, userId, stringBuilder.toString());
-        timedEventMonitor.clearEvents(eventList);
     }
 
     public void submitTimestamp(final UserId userId, String eventTag, int eventMs) {
