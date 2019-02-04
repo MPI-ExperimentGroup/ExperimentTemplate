@@ -52,6 +52,7 @@ import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
+import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
 import nl.mpi.tg.eg.experiment.client.service.VideoPlayer;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 
@@ -89,13 +90,16 @@ public class TimedStimulusView extends ComplexView {
         return stimulusGrid.addImageItem(menuItemListerner, imagePath, rowIndex, columnIndex, widthString, styleName, hotKeyIndex);
     }
 
-    public void preloadImage(SafeUri imagePath, final TimedStimulusListener timedStimulusListener) {
+    public void preloadImage(final TimedEventMonitor timedEventMonitor, SafeUri imagePath, final TimedStimulusListener timedStimulusListener) {
         final Image image = new Image(imagePath);
         image.setVisible(false);
         image.addLoadHandler(new LoadHandler() {
 
             @Override
             public void onLoad(LoadEvent event) {
+                if (timedEventMonitor != null) {
+                    timedEventMonitor.registerEvent("preloadImage");
+                }
                 timedStimulusListener.postLoadTimerFired();
             }
         });
@@ -151,7 +155,7 @@ public class TimedStimulusView extends ComplexView {
         audioList.clear();
     }
 
-    public void addTimedImage(SafeUri imagePath, final String styleName, final int postLoadMs, final CancelableStimulusListener shownStimulusListener, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener clickedStimulusListener) {
+    public void addTimedImage(final TimedEventMonitor timedEventMonitor, SafeUri imagePath, final String styleName, final int postLoadMs, final CancelableStimulusListener shownStimulusListener, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener clickedStimulusListener) {
         cancelableListnerList.add(shownStimulusListener);
         cancelableListnerList.add(loadedStimulusListener);
         cancelableListnerList.add(failedStimulusListener);
@@ -164,6 +168,9 @@ public class TimedStimulusView extends ComplexView {
         image.addErrorHandler(new ErrorHandler() {
             @Override
             public void onError(ErrorEvent event) {
+                if (timedEventMonitor != null) {
+                    timedEventMonitor.registerEvent("onError");
+                }
                 failedStimulusListener.postLoadTimerFired();
             }
         });
@@ -171,6 +178,9 @@ public class TimedStimulusView extends ComplexView {
 
             @Override
             public void onLoad(LoadEvent event) {
+                if (timedEventMonitor != null) {
+                    timedEventMonitor.registerEvent("onLoad");
+                }
                 image.setVisible(true);
                 if (shownStimulusListener != null) {
                     shownStimulusListener.postLoadTimerFired();
@@ -203,7 +213,7 @@ public class TimedStimulusView extends ComplexView {
     }
 
     @Deprecated
-    public void addTimedImage(SafeUri imagePath, int percentOfPage, int maxHeight, int maxWidth, final String animateStyle, final Integer fixedPositionY, final int postLoadMs, final CancelableStimulusListener shownStimulusListener, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener clickedStimulusListener) {
+    public void addTimedImage(final TimedEventMonitor timedEventMonitor, SafeUri imagePath, int percentOfPage, int maxHeight, int maxWidth, final String animateStyle, final Integer fixedPositionY, final int postLoadMs, final CancelableStimulusListener shownStimulusListener, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener clickedStimulusListener) {
         cancelableListnerList.add(shownStimulusListener);
         cancelableListnerList.add(loadedStimulusListener);
         cancelableListnerList.add(failedStimulusListener);
@@ -219,6 +229,9 @@ public class TimedStimulusView extends ComplexView {
         image.addErrorHandler(new ErrorHandler() {
             @Override
             public void onError(ErrorEvent event) {
+                if (timedEventMonitor != null) {
+                    timedEventMonitor.registerEvent("onError");
+                }
                 if (failedStimulusListener != null) {
                     failedStimulusListener.postLoadTimerFired();
                 }
@@ -228,6 +241,9 @@ public class TimedStimulusView extends ComplexView {
 
             @Override
             public void onLoad(LoadEvent event) {
+                if (timedEventMonitor != null) {
+                    timedEventMonitor.registerEvent("onLoad");
+                }
                 if (shownStimulusListener != null) {
                     shownStimulusListener.postLoadTimerFired();
                 }
@@ -388,7 +404,7 @@ public class TimedStimulusView extends ComplexView {
         return stimulusFreeText;
     }
 
-    public void addTimedAudio(SafeUri oggPath, SafeUri mp3Path, boolean showPlaybackIndicator, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final boolean autoPlay, final String mediaId) {
+    public void addTimedAudio(final TimedEventMonitor timedEventMonitor, SafeUri oggPath, SafeUri mp3Path, boolean showPlaybackIndicator, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final boolean autoPlay, final String mediaId) {
         cancelableListnerList.add(loadedStimulusListener);
         cancelableListnerList.add(failedStimulusListener);
         cancelableListnerList.add(playbackStartedStimulusListener);
@@ -397,6 +413,7 @@ public class TimedStimulusView extends ComplexView {
             final AudioPlayer audioPlayer = new AudioPlayer(new AudioExceptionListner() {
                 @Override
                 public void audioExceptionFired(AudioException audioException) {
+                    timedEventMonitor.registerEvent("audioExceptionFired");
                     failedStimulusListener.postLoadTimerFired();
                 }
             }, oggPath, mp3Path, autoPlay);
@@ -419,21 +436,25 @@ public class TimedStimulusView extends ComplexView {
             audioPlayer.setEventListner(new AudioEventListner() {
                 @Override
                 public void audioLoaded() {
+                    timedEventMonitor.registerEvent("audioLoaded");
                     loadedStimulusListener.postLoadTimerFired();
                 }
 
                 @Override
                 public void audioStarted() {
+                    timedEventMonitor.registerEvent("audioStarted");
                     playbackStartedStimulusListener.postLoadTimerFired();
                 }
 
                 @Override
                 public void audioFailed() {
+                    timedEventMonitor.registerEvent("audioFailed");
                     failedStimulusListener.postLoadTimerFired();
                 }
 
                 @Override
                 public void audioEnded() {
+                    timedEventMonitor.registerEvent("audioEnded");
 //                    playbackIndicatorTimer.cancel();
 //                    playbackIndicator.removeFromParent();
 //                    audioPlayer.setEventListner(null); // prevent multiple triggering
@@ -445,7 +466,7 @@ public class TimedStimulusView extends ComplexView {
         }
     }
 
-    public void addTimedVideo(SafeUri oggPath, SafeUri ogvPath, SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final String mediaId) {
+    public void addTimedVideo(final TimedEventMonitor timedEventMonitor, SafeUri oggPath, SafeUri ogvPath, SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final String mediaId) {
         cancelableListnerList.add(loadedStimulusListener);
         cancelableListnerList.add(failedStimulusListener);
         cancelableListnerList.add(playbackStartedStimulusListener);
@@ -477,6 +498,7 @@ public class TimedStimulusView extends ComplexView {
             video.addCanPlayThroughHandler(new CanPlayThroughHandler() {
                 @Override
                 public void onCanPlayThrough(CanPlayThroughEvent event) {
+                    timedEventMonitor.registerEvent("onCanPlayThrough");
                     loadedStimulusListener.postLoadTimerFired();
                     if (autoPlay) {
                         video.play();
@@ -494,6 +516,7 @@ public class TimedStimulusView extends ComplexView {
 
                 @Override
                 public void onEnded(EndedEvent event) {
+                    timedEventMonitor.registerEvent("onEnded");
                     // prevent multiple triggering
                     if (!triggered) {
                         triggered = true;
