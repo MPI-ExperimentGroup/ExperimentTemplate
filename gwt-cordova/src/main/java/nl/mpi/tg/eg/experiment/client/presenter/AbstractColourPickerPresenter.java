@@ -222,7 +222,7 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
             final CurrentStimulusListener hasMoreStimulusListener, final TimedStimulusListener endOfStimulusListener
     ) {
         this.stimulusProviderInternal = stimulusProvider;
-        submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
+        submissionService.submitTimestamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final List<Stimulus.Tag> selectionTags = new ArrayList<>();
         for (StimulusSelector selector : stimulusSelectors) {
             selectionTags.add(selector.getTag());
