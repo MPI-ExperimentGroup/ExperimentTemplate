@@ -69,6 +69,7 @@ import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.MatchingStimuliGroup;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.service.SdCardImageCapture;
+import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.frinex.common.StimuliProvider;
 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
@@ -88,6 +89,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     private static final String SEEN_STIMULUS_INDEX = "seenStimulusIndex";
     private final DataSubmissionService submissionService;
     private final Duration duration;
+    private final TimedEventMonitor timedEventMonitor;
     final ArrayList<StimulusButton> stimulusButtonList = new ArrayList<>();
     private final ArrayList<Timer> pauseTimers = new ArrayList<>();
     private CurrentStimulusListener hasMoreStimulusListener;
@@ -106,6 +108,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     public AbstractStimulusPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
         super(widgetTag, new TimedStimulusView(), userResults, localStorage, timerService);
         duration = new Duration();
+        timedEventMonitor = new TimedEventMonitor(duration);
         this.submissionService = submissionService;
 
 //        final Label debugLabel = new Label();
@@ -912,7 +915,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     timedStimulusListener.postLoadTimerFired();
                 }
             };
-            timedStimulusView.addTimedImage(UriUtils.fromTrustedString(sdCardImageCapture.getCapturedPath()), percentOfPage, maxHeight, maxWidth, null, null, postLoadMs, shownStimulusListener, shownStimulusListener, null, null);
+            timedStimulusView.addTimedImage(timedEventMonitor, UriUtils.fromTrustedString(sdCardImageCapture.getCapturedPath()), percentOfPage, maxHeight, maxWidth, null, null, postLoadMs, shownStimulusListener, shownStimulusListener, null, null);
         }
         timedStimulusView.addOptionButton(new PresenterEventListner() {
             @Override
@@ -945,7 +948,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusImageShown", uniqueId, imageString, duration.elapsedMillis());
             }
         };
-        timedStimulusView.addTimedImage(UriUtils.fromString(imageString), styleName, postLoadMs, shownStimulusListener, loadedStimulusListener, failedStimulusListener, null);
+        timedStimulusView.addTimedImage(timedEventMonitor, UriUtils.fromString(imageString), styleName, postLoadMs, shownStimulusListener, loadedStimulusListener, failedStimulusListener, null);
     }
 
     @Deprecated
@@ -996,7 +999,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             } else {
                 animateStyle = null;
             }
-            timedStimulusView.addTimedImage(UriUtils.fromTrustedString(image), percentOfPage, maxHeight, maxWidth, animateStyle, fixedPositionY, 0, shownStimulusListener, new CancelableStimulusListener() {
+            timedStimulusView.addTimedImage(timedEventMonitor, UriUtils.fromTrustedString(image), percentOfPage, maxHeight, maxWidth, animateStyle, fixedPositionY, 0, shownStimulusListener, new CancelableStimulusListener() {
                 @Override
                 protected void trigggerCancelableEvent() {
                     loadedStimulusListener.postLoadTimerFired();
@@ -1022,7 +1025,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 }
             };
 //            submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", currentStimulus.getAudio(), duration.elapsedMillis());
-            timedStimulusView.addTimedAudio(oggTrustedString, mp3TrustedString, false, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, true, "autoStimulus");
+            timedStimulusView.addTimedAudio(timedEventMonitor, oggTrustedString, mp3TrustedString, false, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, true, "autoStimulus");
         } else if (currentStimulus.hasVideo()) {
             String ogg = currentStimulus.getVideo() + ".ogg";
             String ogv = currentStimulus.getVideo() + ".ogv";
@@ -1043,7 +1046,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     loadedStimulusListener.postLoadTimerFired();
                 }
             };
-            timedStimulusView.addTimedVideo(oggTrustedString, ogvTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, null, false, false, showControls, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, "stimulusPresent");
+            timedStimulusView.addTimedVideo(timedEventMonitor, oggTrustedString, ogvTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, null, false, false, showControls, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, "stimulusPresent");
         } else if (currentStimulus.getLabel() != null) {
             timedStimulusView.addHtmlText(currentStimulus.getLabel(), null);
             // send label shown tag
@@ -1073,7 +1076,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusCodeImageShown", uniqueId, formattedCode, duration.elapsedMillis());
             }
         };
-        timedStimulusView.addTimedImage(UriUtils.fromString(serviceLocations.staticFilesUrl() + formattedCode), styleName, postLoadMs, shownStimulusListener, loadedStimulusListener, failedStimulusListener, null);
+        timedStimulusView.addTimedImage(timedEventMonitor, UriUtils.fromString(serviceLocations.staticFilesUrl() + formattedCode), styleName, postLoadMs, shownStimulusListener, loadedStimulusListener, failedStimulusListener, null);
 //        timedStimulusView.addText("addStimulusImage: " + duration.elapsedMillis() + "ms");
     }
 
@@ -1095,7 +1098,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 loadedStimulusListener.postLoadTimerFired();
             }
         };
-        timedStimulusView.addTimedAudio(oggTrustedString, mp3TrustedString, showPlaybackIndicator, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, autoPlay, formattedMediaId);
+        timedStimulusView.addTimedAudio(timedEventMonitor, oggTrustedString, mp3TrustedString, showPlaybackIndicator, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, autoPlay, formattedMediaId);
     }
 
     protected void stimulusVideo(final Stimulus currentStimulus, final String styleName, final boolean autoPlay, final String mediaId, final boolean loop, final boolean showControls, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
@@ -1117,7 +1120,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
         };
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", formattedCode, duration.elapsedMillis());
-        timedStimulusView.addTimedVideo(oggTrustedString, ogvTrustedString, mp4TrustedString, 0, 0, 0, styleName, autoPlay, loop, showControls, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, formattedMediaId);
+        timedStimulusView.addTimedVideo(timedEventMonitor, oggTrustedString, ogvTrustedString, mp4TrustedString, 0, 0, 0, styleName, autoPlay, loop, showControls, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, formattedMediaId);
     }
 
     protected void stimulusCodeVideo(final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final String codeStyleName, final boolean autoPlay, final String mediaId, final boolean loop, final boolean showControls, String codeFormat, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
@@ -1140,7 +1143,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
         };
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", formattedCode, duration.elapsedMillis());
-        timedStimulusView.addTimedVideo(oggTrustedString, ogvTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, styleName, autoPlay, loop, showControls, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, formattedMediaId);
+        timedStimulusView.addTimedVideo(timedEventMonitor, oggTrustedString, ogvTrustedString, mp4TrustedString, percentOfPage, maxHeight, maxWidth, styleName, autoPlay, loop, showControls, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, formattedMediaId);
     }
 
     protected void stimulusAudio(final Stimulus currentStimulus, final boolean autoPlay, final String mediaId, boolean showPlaybackIndicator, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
@@ -1157,7 +1160,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 loadedStimulusListener.postLoadTimerFired();
             }
         };
-        timedStimulusView.addTimedAudio(UriUtils.fromTrustedString(ogg), UriUtils.fromTrustedString(mp3), showPlaybackIndicator, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, autoPlay, formattedMediaId);
+        timedStimulusView.addTimedAudio(timedEventMonitor, UriUtils.fromTrustedString(ogg), UriUtils.fromTrustedString(mp3), showPlaybackIndicator, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, autoPlay, formattedMediaId);
 //        timedStimulusView.addText("playStimulusAudio: " + duration.elapsedMillis() + "ms");
     }
 
@@ -1470,7 +1473,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             public void submissionComplete(String message, String urlAudioData) {
                 String replayAudioUrl = serviceLocations.dataSubmitUrl() + "replayAudio/" + message.replaceAll("[^a-zA-Z0-9\\-]", "") + "/" + userResults.getUserData().getUserId();
 //                timedStimulusView.addText("(debug) Media Submission OK: " + message);
-                timedStimulusView.addTimedAudio((downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayAudioUrl), null, true, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
+                timedStimulusView.addTimedAudio(timedEventMonitor, (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayAudioUrl), null, true, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
             }
         };
         super.startAudioRecorder(submissionService, "wav".equals(recordingFormat), deviceRegex, subdirectoryName, directoryName, filePerStimulus, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener, downloadPermittedWindowMs);
@@ -1707,6 +1710,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         timedStimulusView.clearDomHandlers();
         stopAudioRecorder();
         timerService.clearAllTimers(); // clear all callbacks in timerService before exiting the presenter
+        submissionService.submitTimestamps(userResults.getUserData().getUserId(), timedEventMonitor);
     }
 
     public void cancelPauseTimers() {
@@ -1855,6 +1859,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         stimulusButtonList.clear();
         clearButtonList();
         backEventListners.clear();
+        submissionService.submitTimestamps(userResults.getUserData().getUserId(), timedEventMonitor);
     }
 
     protected void playMedia(final String mediaId, final Stimulus currentStimulus) {
@@ -2089,7 +2094,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                         loadedStimulusListener.postLoadTimerFired();
                     }
                 };
-                timedStimulusView.addTimedAudio(UriUtils.fromString(serviceLocations.staticFilesUrl() + oggPath), UriUtils.fromString(serviceLocations.staticFilesUrl() + mp3Path), false, shownStimulusListener, failedStimulusListener,
+                timedStimulusView.addTimedAudio(timedEventMonitor, UriUtils.fromString(serviceLocations.staticFilesUrl() + oggPath), UriUtils.fromString(serviceLocations.staticFilesUrl() + mp3Path), false, shownStimulusListener, failedStimulusListener,
                         new CancelableStimulusListener() {
                     @Override
                     protected void trigggerCancelableEvent() {
@@ -2125,5 +2130,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         stopAudioRecorder();
         timerService.clearAllTimers(); // clear all callbacks in timerService before exiting the presenter
         triggerListeners.clear();
+        submissionService.submitTimestamps(userResults.getUserData().getUserId(), timedEventMonitor);
     }
 }
