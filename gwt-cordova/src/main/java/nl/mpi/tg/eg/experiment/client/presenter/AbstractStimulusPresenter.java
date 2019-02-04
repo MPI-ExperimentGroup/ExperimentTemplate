@@ -139,7 +139,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             final CurrentStimulusListener hasMoreStimulusListener,
             final TimedStimulusListener endOfStimulusListener) {
         final String subDirectory = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag());
-        submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
+        submissionService.submitTimestamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final String storedStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag() + subDirectory);
         int seenStimulusIndextemp;
         try {
@@ -279,7 +279,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             final MetadataField stimulusAllocationField,
             final String consumedTagsGroupName
     ) {
-        submissionService.submitTimeStamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
+        submissionService.submitTimestamp(userResults.getUserData().getUserId(), eventTag, duration.elapsedMillis());
         final String storedStimulusList = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), LOADED_STIMULUS_LIST + getSelfTag());
         int seenStimulusIndex;
         try {
