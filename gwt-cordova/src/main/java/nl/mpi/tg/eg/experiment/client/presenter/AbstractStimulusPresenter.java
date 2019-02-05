@@ -1063,7 +1063,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final String styleName = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(codeStyleName);
         ((ComplexView) simpleView).setRegionStyle(regionId, styleName);
     }
-//    protected void stimulusCodeImage(int percentOfPage, int maxHeight, int maxWidth, final AnimateTypes animateType, String codeFormat, TimedStimulusListener timedStimulusListener) {
 
     protected void stimulusCodeImage(final Stimulus currentStimulus, final String codeStyleName, int postLoadMs, String codeFormat, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener) {
         final String formattedCode = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(codeFormat);
@@ -1223,6 +1222,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final StimulusButton buttonItem = optionButton(new PresenterEventListner() {
             @Override
             public String getLabel() {
+                // this stimulusButton label comes from featureText
                 return presenterListerner.getLabel();
             }
 
@@ -1473,7 +1473,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             public void submissionComplete(String message, String urlAudioData) {
                 String replayAudioUrl = serviceLocations.dataSubmitUrl() + "replayAudio/" + message.replaceAll("[^a-zA-Z0-9\\-]", "") + "/" + userResults.getUserData().getUserId();
 //                timedStimulusView.addText("(debug) Media Submission OK: " + message);
-                timedStimulusView.addTimedAudio(timedEventMonitor, (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayAudioUrl), null, true, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
+                timedStimulusView.addTimedAudio(timedEventMonitor, (downloadPermittedWindowMs <= 0) ? UriUtils.fromTrustedString(urlAudioData) : UriUtils.fromString(replayAudioUrl), null, false, loadedStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, false, formattedMediaId);
             }
         };
         super.startAudioRecorder(submissionService, "wav".equals(recordingFormat), deviceRegex, subdirectoryName, directoryName, filePerStimulus, currentStimulus.getUniqueId(), userResults.getUserData().getUserId().toString(), getSelfTag(), mediaSubmissionListener, downloadPermittedWindowMs);
