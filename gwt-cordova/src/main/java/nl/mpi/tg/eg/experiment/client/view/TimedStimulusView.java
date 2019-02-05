@@ -497,16 +497,21 @@ public class TimedStimulusView extends ComplexView {
                 video.addSource(mp4Path.asString(), "video/mp4");
             }
             video.addCanPlayThroughHandler(new CanPlayThroughHandler() {
+                boolean hasTriggeredOnLoaded = false;
+
                 @Override
                 public void onCanPlayThrough(CanPlayThroughEvent event) {
-                    timedEventMonitor.registerEvent("onCanPlayThrough");
-                    loadedStimulusListener.postLoadTimerFired();
-                    if (autoPlay) {
-                        video.play();
-                    }
-                    if (video.getError() != null) {
-                        // todo: check that this method is functioning correctly and if not then use the method in audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onAudioFailed()();
-                        failedStimulusListener.postLoadTimerFired();
+                    if (!hasTriggeredOnLoaded) {
+                        timedEventMonitor.registerEvent("onCanPlayThrough");
+                        hasTriggeredOnLoaded = true;
+                        loadedStimulusListener.postLoadTimerFired();
+                        if (autoPlay) {
+                            video.play();
+                        }
+                        if (video.getError() != null) {
+                            // todo: check that this method is functioning correctly and if not then use the method in audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onAudioFailed()();
+                            failedStimulusListener.postLoadTimerFired();
+                        }
                     }
                 }
             });
