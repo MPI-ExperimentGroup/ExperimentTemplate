@@ -1228,6 +1228,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                timedEventMonitor.registerEvent("stimulusButton");
                 submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusButton", currentStimulus.getUniqueId(), presenterListerner.getLabel(), duration.elapsedMillis());
                 Boolean isCorrect = null;
                 if (currentStimulus.hasCorrectResponses()) {
@@ -1385,6 +1386,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
                 @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
+                    timedEventMonitor.registerEvent("ratingButton");
                     endAudioRecorderTag(dataChannel, ratingItem, currentStimulus);
                     submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "RatingButton", stimulusString, ratingItem, duration.elapsedMillis());
                     Boolean isCorrect = null;
