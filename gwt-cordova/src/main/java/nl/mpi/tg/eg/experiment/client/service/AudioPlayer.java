@@ -34,6 +34,7 @@ public class AudioPlayer {
     private AudioEventListner audioEventListner;
     final private AudioExceptionListner audioExceptionListner;
     final private boolean autoPlay;
+    private boolean hasTriggeredOnLoaded = false;
 
     public AudioPlayer(AudioExceptionListner audioExceptionListner, SafeUri ogg, SafeUri mp3, boolean autoPlay) throws AudioException {
         this.audioExceptionListner = audioExceptionListner;
@@ -89,6 +90,7 @@ public class AudioPlayer {
             audioEventListner.audioStarted();
         }
     }
+
     public void onEndedAction() {
         if (audioEventListner != null) {
             audioEventListner.audioEnded();
@@ -102,7 +104,8 @@ public class AudioPlayer {
     }
 
     public void onLoadedAction() {
-        if (audioEventListner != null) {
+        if (audioEventListner != null && !hasTriggeredOnLoaded) {
+            hasTriggeredOnLoaded = true;
             audioEventListner.audioLoaded();
             if (autoPlay) {
                 audioPlayer.play();
