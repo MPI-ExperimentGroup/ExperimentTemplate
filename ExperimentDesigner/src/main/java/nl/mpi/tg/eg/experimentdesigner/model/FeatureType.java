@@ -162,6 +162,7 @@ public enum FeatureType {
     stimulusLabel(false, false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     onError(true, false, null, false, false, false, Contitionals.none, Contitionals.hasErrorSuccess),
     onSuccess(true, false, null, false, false, false, Contitionals.none, Contitionals.hasErrorSuccess),
+    onActivate(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMediaLoadingButton),
     kinTypeStringDiagram(true, false, new FeatureAttribute[]{msToNext, kintypestring}),
     loadKinTypeStringDiagram(true, false, new FeatureAttribute[]{msToNext, diagramName}),
     editableKinEntitesDiagram(true, false, new FeatureAttribute[]{msToNext, diagramName}),
@@ -198,6 +199,7 @@ public enum FeatureType {
     stimulusPresent(false, false, new FeatureAttribute[]{percentOfPage, dataChannel, maxHeight, maxWidth, animate, replacementRegex, replacement, showControls}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.stimulusAction), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
     stimulusImage(false, false, new FeatureAttribute[]{msToNext, styleName, dataChannel}, false, false, false, Contitionals.hasMediaLoading, Contitionals.stimulusAction), // todo: the child nodes of this (for example) are not in the same order after the unit test vs out of the DB
     stimulusCodeImage(false, false, new FeatureAttribute[]{msToNext, dataChannel, codeFormat, styleName}, false, false, false, Contitionals.hasMediaLoading, Contitionals.stimulusAction), //stimulusCodeImage can take both <code> and <rating_" + index + "> tags in its string value
+    stimulusCodeImageButton(false, false, new FeatureAttribute[]{dataChannel, codeFormat, styleName, groupId}, false, false, false, Contitionals.hasMediaLoadingButton, Contitionals.stimulusAction), //stimulusCodeImage can take both <code> and <rating_" + index + "> tags in its string value
     stimulusCodeVideo(false, false, new FeatureAttribute[]{dataChannel, maxHeight, codeFormat, percentOfPage, loop, styleName, autoPlay, showControls, maxWidth, mediaId}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.stimulusAction), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
     stimulusVideo(false, false, new FeatureAttribute[]{dataChannel, loop, styleName, autoPlay, showControls, mediaId}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.stimulusAction), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
     stimulusCodeAudio(false, false, new FeatureAttribute[]{dataChannel, codeFormat, showPlaybackIndicator, autoPlay, mediaId}, false, false, false, Contitionals.hasMediaPlayback, Contitionals.stimulusAction), // todo: add loading complete, failed and additinally for time based media, playback complete Contitionals.requiresLoading, isTimeBasedMedia
@@ -262,6 +264,7 @@ public enum FeatureType {
         groupNetworkActivity,
         groupNetworkAction,
         hasMediaLoading,
+        hasMediaLoadingButton,
         hasMediaPlayback,
         hasMediaRecorderPlayback,
         none,
