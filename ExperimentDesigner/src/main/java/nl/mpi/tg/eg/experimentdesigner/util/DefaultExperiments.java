@@ -400,6 +400,14 @@ public class DefaultExperiments {
                     presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
                 }
                 break;
+            case hasMediaLoadingButton:
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaLoaded, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaLoadFailed, presenterFeatureRepository, addOptionalAttributes));
+                presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.onActivate, presenterFeatureRepository, addOptionalAttributes));
+                if (presenterFeatureRepository != null) {
+                    presenterFeatureRepository.save(presenterFeature.getPresenterFeatureList());
+                }
+                break;
             case hasMediaPlayback:
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaLoaded, presenterFeatureRepository, addOptionalAttributes));
                 presenterFeature.getPresenterFeatureList().add(addFeature(experiment, presenterType, FeatureType.mediaLoadFailed, presenterFeatureRepository, addOptionalAttributes));
