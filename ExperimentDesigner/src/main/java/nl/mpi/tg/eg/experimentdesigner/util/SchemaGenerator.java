@@ -253,6 +253,13 @@ public class SchemaGenerator {
                     writer.append("<xs:element name=\"mediaLoadFailed\" type=\"mediaLoadFailedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
                     writer.append("</xs:all>\n");
                     break;
+                case hasMediaLoadingButton:
+                    writer.append("<xs:all>\n");
+                    writer.append("<xs:element name=\"mediaLoaded\" type=\"mediaLoadedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("<xs:element name=\"mediaLoadFailed\" type=\"mediaLoadFailedType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("<xs:element name=\"onActivate\" type=\"onActivateType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+                    writer.append("</xs:all>\n");
+                    break;
 //                case needsConditionalParent:
 //                    break;
                 case none:
