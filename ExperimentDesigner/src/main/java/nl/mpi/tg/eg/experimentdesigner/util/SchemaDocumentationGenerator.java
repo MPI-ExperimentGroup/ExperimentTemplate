@@ -251,6 +251,11 @@ public class SchemaDocumentationGenerator {
                     writer.append("&lt;mediaLoaded&gt;<br/>\n");
                     writer.append("&lt;mediaLoadFailed&gt;<br/>\n");
                     break;
+                case hasMediaLoadingButton:
+                    writer.append("&lt;mediaLoaded&gt;<br/>\n");
+                    writer.append("&lt;mediaLoadFailed&gt;<br/>\n");
+                    writer.append("&lt;onActivate&gt;<br/>\n");
+                    break;
 //                case needsConditionalParent:
 //                    break;
                 case none:
