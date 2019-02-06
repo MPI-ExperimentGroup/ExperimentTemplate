@@ -441,6 +441,17 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusCodeImage>
+                <stimulusCodeImageButton codeFormat="codeFormat" groupId="groupId" styleName="styleName" dataChannel="2">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <onActivate>
+                        <plainText featureText="plainText in onActivate"/>
+                    </onActivate>
+                </stimulusCodeImageButton>
                 <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -791,6 +802,17 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusCodeImage>
+                <stimulusCodeImageButton codeFormat="codeFormat" groupId="groupId" styleName="styleName" dataChannel="2">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <onActivate>
+                        <plainText featureText="plainText in onActivate"/>
+                    </onActivate>
+                </stimulusCodeImageButton>
                 <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -1141,6 +1163,17 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusCodeImage>
+                <stimulusCodeImageButton codeFormat="codeFormat" groupId="groupId" styleName="styleName" dataChannel="2">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <onActivate>
+                        <plainText featureText="plainText in onActivate"/>
+                    </onActivate>
+                </stimulusCodeImageButton>
                 <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" styleName="styleName" dataChannel="2" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -2244,6 +2277,17 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusCodeImage>
+                <stimulusCodeImageButton codeFormat="codeFormat">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <onActivate>
+                        <plainText featureText="plainText in onActivate"/>
+                    </onActivate>
+                </stimulusCodeImageButton>
                 <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -2594,6 +2638,17 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusCodeImage>
+                <stimulusCodeImageButton codeFormat="codeFormat">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <onActivate>
+                        <plainText featureText="plainText in onActivate"/>
+                    </onActivate>
+                </stimulusCodeImageButton>
                 <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
@@ -2944,6 +2999,17 @@
                         <plainText featureText="plainText in mediaLoadFailed"/>
                     </mediaLoadFailed>
                 </stimulusCodeImage>
+                <stimulusCodeImageButton codeFormat="codeFormat">
+                    <mediaLoaded>
+                        <plainText featureText="plainText in mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="plainText in mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <onActivate>
+                        <plainText featureText="plainText in onActivate"/>
+                    </onActivate>
+                </stimulusCodeImageButton>
                 <stimulusCodeVideo maxHeight="60" codeFormat="codeFormat" percentOfPage="56" loop="true" autoPlay="true" mediaId="mediaId" showControls="true" maxWidth="60">
                     <mediaLoaded>
                         <plainText featureText="plainText in mediaLoaded"/>
