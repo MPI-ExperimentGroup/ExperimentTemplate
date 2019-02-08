@@ -102,6 +102,11 @@ public class ComplexView extends SimpleView {
         setContent(outerPanel);
     }
 
+    private void clearAllRegions() {
+        regionPanels.clear();
+        regionPanel = null;
+    }
+
     public void startRegion(final String regionId, final String styleName) {
         VerticalPanel regionTemp = regionPanels.get(regionId);
         if (regionTemp == null) {
@@ -217,6 +222,7 @@ public class ComplexView extends SimpleView {
         removeFooterButtons();
         clearDomHandlers();
         scaledImagesList.clear();
+        clearAllRegions();
     }
 
     public void addText(String textString) {
