@@ -39,6 +39,101 @@ public class SchemaDocumentationGenerator {
                 + "        <title>Frinex XML Usage</title>\n"
                 + "        <meta charset=\"UTF-8\">\n"
                 + "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+                + "<script src=\"webjars/jquery/jquery.min.js\"></script>"
+                + "<script>\n"
+                + "    function getExample(tagName, targetId) {\n"
+                + "      console.log(\"getExample\");\n"
+                + "      \n"
+                + "    $.get( \"with_stimulus_example.xml\", function( data ) {\n"
+                + "    console.log(\"gotData\");\n"
+                + "    console.log(tagName);\n"
+                + "      console.log(targetId);\n"
+                + "/*      \n"
+                + "$(data).find(tagName).each(function() {\n"
+                + "  console.log(this.nodeValue);\n"
+                + "  console.log($);\n"
+                + "  $.each(function() {\n"
+                + "      console.log(this.name);\n"
+                + "      console.log(this.value);\n"
+                + "  }      );\n"
+                + "$.each(this.attributes, function(i, attrib){\n"
+                + "console.log(attrib);\n"
+                + "var name = attrib.name;\n"
+                + "var value = attrib.value;\n"
+                + "console.log(name);\n"
+                + "      console.log(value);\n"
+                + "      \n"
+                + "    $( \"#\" + targetId).append('<div>' + name + '</div>');      \n"
+                + "});\n"
+                + "});\n"
+                + "*/\n"
+                + "\n"
+                + "$(data).find(tagName).each(function() {\n"
+                + "$(\"#\" + targetId).first().append('<div>' + this.nodeName.toLowerCase() + '</div>');\n"
+                + "});\n"
+                + "\n"
+                + "$(data).find(tagName).children().each(function() {\n"
+                + "$(\"#\" + targetId).first().append('<div>' + this.nodeName.toLowerCase() + '</div>');\n"
+                + "});\n"
+                + "/*\n"
+                + "$(this).find(tagName).children().each(function() {\n"
+                + "alert((this).nodeName);\n"
+                + "//$(\"#\" + targetId).append((this).nodeName));\n"
+                + "$(\"#\" + targetId).append((this).text().replace(/&/g, \"&amp;\").replace(/</g, \"&lt;\")\n"
+                + ".replace(/>/g, \"&gt;\")\n"
+                + ".replace(/\"/g, \"&quot;\")\n"
+                + "+ \"<br />\");\n"
+                + "\n"
+                + "});\n"
+                + "\n"
+                + "$(data).find(tagName).each(function () {\n"
+                + "  console.log($(this).text());\n"
+                + "$(\"#\" + targetId).append($(this).text().replace(/&/g, \"&amp;\")\n"
+                + ".replace(/</g, \"&lt;\")\n"
+                + ".replace(/>/g, \"&gt;\")\n"
+                + ".replace(/\"/g, \"&quot;\")\n"
+                + "+ \"<br />\");\n"
+                + "});\n"
+                + "\n"
+                + "\n"
+                + "      $xml = $( data );\n"
+                + "    $tagUseage = $xml.find(tagName);\n"
+                + "    \n"
+                + "  console.log($tagUseage);    \n"
+                + "    \n"
+                + "    $.each($tagUseage.attributes, function(i, attrib){\n"
+                + "console.log(this.name);\n"
+                + "console.log(this.value);\n"
+                + "\n"
+                + "  //  var name = attrib.name;\n"
+                + "    //var value = attrib.value;\n"
+                + "//    $( \"#\" + targetId).append('<div>' + name + '</div>');      \n"
+                + "  \n"
+                + "    });\n"
+                + "    */\n"
+                + "//    $tagUseage.attr().each(function () {\n"
+                + "//   $( \"#\" + targetId).append('<div>' + this.name() + '</div>');      \n"
+                + "   // })\n"
+                + "\n"
+                + "    \n"
+                + "    \n"
+                + "    // document.getElementById('xmlResult').innerHTML =\n"
+                + "    //$xml.childNodes[0].attr(\"appNameDisplay\");\n"
+                + "    \n"
+                + "    \n"
+                + "    \n"
+                + "    \n"
+                + "    \n"
+                + "    // $presenter = $xml.find( \"presenter\" );\n"
+                + "    \n"
+                + "    // document.getElementById('xmlResult').innerHTML =\n"
+                + "    //   $presenter.attr(\"self\");\n"
+                + "    //xml.childNodes[0].attr(\"\");\n"
+                + "    // data.getElementsByTagName(\"Experiment\")[0].childNodes[0].nodeValue;\n"
+                + "    });\n"
+                + "    }\n"
+                + "    \n"
+                + "  </script>"
                 + "    </head>\n"
                 + "    <body>\n");
     }
@@ -99,6 +194,13 @@ public class SchemaDocumentationGenerator {
         writer.append("&lt;stimuli&gt;<br/>\n");
         writer.append("</td>\n");
         writer.append("</tr>\n");
+        writer.append("<tr>\n");
+        writer.append("<td colspan='2' id='target1'>\n");
+        writer.append("</td>");
+        writer.append("<td>\n");
+        writer.append("<button onclick=\"getExample('administration', 'target1');\">show example</button>\n");
+        writer.append("</td>");
+        writer.append("</tr>\n");
     }
 
     private void addPresenter(Writer writer, final PresenterType[] presenterTypes) throws IOException {
@@ -128,6 +230,13 @@ public class SchemaDocumentationGenerator {
 //        writer.append(")<br/>\n");
 
         writer.append("</td>\n");
+        writer.append("</tr>\n");
+        writer.append("<tr>\n");
+        writer.append("<td id='presenter1'>\n");
+        writer.append("</td>");
+        writer.append("<td>\n");
+        writer.append("<button onclick=\"getExample('presenter', 'presenter1');\">show example</button>\n");
+        writer.append("</td>");
         writer.append("</tr>\n");
     }
 
