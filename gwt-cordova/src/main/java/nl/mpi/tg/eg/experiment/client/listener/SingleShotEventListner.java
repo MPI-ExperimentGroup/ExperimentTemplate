@@ -34,6 +34,7 @@ import com.google.gwt.user.client.Command;
 public abstract class SingleShotEventListner extends HandlesAllTouchEvents implements ClickHandler {
 
     private boolean singleShotConsumed = false;
+    private boolean singleShotEnabled = true;
 //    private final Button button;
     boolean sawTouchStart = false;
 //    public SingleShotEventListner(Button button) {
@@ -45,21 +46,31 @@ public abstract class SingleShotEventListner extends HandlesAllTouchEvents imple
 //        button.setText("eventFired");
 //        hasTargetTouch = false;
 //        touchTarget = null;
-        if (!singleShotConsumed) {
-            Scheduler.get().scheduleDeferred(new Command() {
-                @Override
-                public void execute() {
+        if (singleShotEnabled) {
+            if (!singleShotConsumed) {
+                Scheduler.get().scheduleDeferred(new Command() {
+                    @Override
+                    public void execute() {
 //                    button.setText("scheduleDeferred");
-                    singleShotFired();
-                }
-            });
+                        singleShotFired();
+                    }
+                });
+            }
+            singleShotConsumed = true;
         }
-        singleShotConsumed = true;
     }
 
     public void resetSingleShot() {
 //        button.setText("resetSingleShot");
         singleShotConsumed = false;
+    }
+
+    public void setEnabled(boolean singleShotEnabled) {
+        this.singleShotEnabled = singleShotEnabled;
+    }
+
+    public boolean isEnabled() {
+        return singleShotEnabled;
     }
 
     @Override
