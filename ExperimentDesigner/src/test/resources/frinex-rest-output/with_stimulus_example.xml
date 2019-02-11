@@ -494,17 +494,6 @@
                 <addPadding/>
                 <addPadding/>
                 <addPadding/>
-                <htmlText featureText="Or you can use a actionTokenButton with formatted labels as follows:"/>
-                <actionTokenButton featureText="&lt;stimulusRatingLabel_0&gt;"></actionTokenButton>
-                <addPadding/>
-                <actionTokenButton featureText="&lt;stimulusRatingLabel_1&gt;"></actionTokenButton>
-                <addPadding/>
-                <actionTokenButton featureText="&lt;stimulusRatingLabel_2&gt;"></actionTokenButton>
-                <addPadding/>
-                <actionTokenButton featureText="&lt;stimulusRatingLabel_3&gt;"></actionTokenButton>
-                <addPadding/>
-                <actionTokenButton featureText="&lt;stimulusRatingLabel_4&gt;"></actionTokenButton>
-                <addPadding/>
                 <nextStimulusButton featureText="Next [TAB + ENTER]" eventTag="Next [TAB + ENTER]" hotKey="ENTER" repeatIncorrect="false"/>
             </hasMoreStimulus>
             <endOfStimulus>
@@ -518,6 +507,73 @@
                 <actionButton featureText="resetStimulus">
                     <resetStimulus target="Rating_Toggle_Example"/>
                     <gotoPresenter target="Rating_Toggle_Example"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>RatingToggle</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Menu" menuLabel="Rating Token Text Example" type="stimulus" self="Rating_Token_Text_Example" title="Rating Token Text Example">
+        <loadStimulus eventTag="Rating_Token_Text_Example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <showStimulusProgress/>
+                <addPadding/>
+                <htmlTokenText featureText="
+                playerScore:
+                &lt;playerScore&gt;&lt;br/&gt;
+                playerErrors:
+                &lt;playerErrors&gt;&lt;br/&gt;
+                playerPotentialScore:
+                &lt;playerPotentialScore&gt;&lt;br/&gt;
+                "/>
+                <addPadding/>
+                <stimulusLabel styleName="stimuliLabel"/>
+                <htmlTokenText featureText="
+                Please choose one out of &lt;stimulusRatingLabel_0&gt;, &lt;stimulusRatingLabel_1&gt;, &lt;stimulusRatingLabel_2&gt;, &lt;stimulusRatingLabel_3&gt;, &lt;stimulusRatingLabel_4&gt;"/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <addPadding/>
+                <actionTokenButton featureText="&lt;stimulusRatingLabel_0&gt;">
+                    <setStimulusCodeResponse codeFormat="User clicked &lt;stimulusRatingLabel_0&gt;" dataChannel="8" applyScore="true"/>
+                    <nextStimulus repeatIncorrect="false"/>
+                </actionTokenButton>
+                <addPadding/>
+                <actionTokenButton featureText="&lt;stimulusRatingLabel_1&gt;">
+                    <setStimulusCodeResponse codeFormat="User clicked &lt;stimulusRatingLabel_1&gt;" dataChannel="8" applyScore="true"/>
+                    <nextStimulus repeatIncorrect="false"/>
+                </actionTokenButton>
+                <addPadding/>
+                <actionTokenButton featureText="&lt;stimulusRatingLabel_2&gt;">
+                    <setStimulusCodeResponse codeFormat="User clicked &lt;stimulusRatingLabel_2&gt;" dataChannel="8" applyScore="true"/>
+                    <nextStimulus repeatIncorrect="false"/>
+                </actionTokenButton>
+                <addPadding/>
+                <actionTokenButton featureText="&lt;stimulusRatingLabel_3&gt;">
+                    <setStimulusCodeResponse codeFormat="User clicked &lt;stimulusRatingLabel_3&gt;" dataChannel="8" applyScore="true"/>
+                    <nextStimulus repeatIncorrect="false"/>
+                </actionTokenButton>
+                <addPadding/>
+                <actionTokenButton featureText="&lt;stimulusRatingLabel_4&gt;">
+                    <setStimulusCodeResponse codeFormat="User clicked &lt;stimulusRatingLabel_4&gt;" dataChannel="8" applyScore="true"/>
+                    <nextStimulus repeatIncorrect="false"/>
+                </actionTokenButton>
+                <addPadding/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage/>
+                <addPadding/>
+                <actionButton featureText="clearCurrentScore">
+                    <clearCurrentScore/>
+                    <gotoPresenter target="Rating_Token_Text_Example"/>
+                </actionButton>
+                <addPadding/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="Rating_Token_Text_Example"/>
+                    <gotoPresenter target="Rating_Token_Text_Example"/>
                 </actionButton>
             </endOfStimulus>
             <randomGrouping/>
@@ -1134,6 +1190,7 @@
     <presenter back="Menu" menuLabel="Second" next="Third_Informatie" type="stimulus" self="Second" title="Second">
         <loadStimulus eventTag="Second" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <clearPage/>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
                 <stimulusFreeText featureText="Vul minimal 1 nummer." allowedCharCodes="0123456789." styleName="stimuliLabel" validationRegex="[0-9]+[.]?[0-9]*" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
@@ -1165,6 +1222,7 @@
         </actionButton>-->
         <loadStimulus eventTag="Second" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <clearPage/>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
                 <stimulusFreeText featureText="Vul minimal 1 nummer." allowedCharCodes="0123456789." styleName="stimuliLabel" validationRegex="[0-9]+[.]?[0-9]*" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
@@ -1219,10 +1277,10 @@
                     </onError>
                     <onSuccess>
                         <htmlText featureText="startAudioRecorder onSuccess"/>
-                        <nextStimulus repeatIncorrect="false"/>
                     </onSuccess>
                     <mediaLoaded>
                         <plainText featureText="AudioRecordingLoaded"/>
+                        <nextStimulus repeatIncorrect="false"/>
                     </mediaLoaded>
                     <mediaLoadFailed>
                         <plainText featureText="AudioRecordingLoadFailed"/>
@@ -1237,7 +1295,7 @@
                 </stimulusPause>
             </hasMoreStimulus>
             <endOfStimulus>
-                <gotoNextPresenter/>
+                <stopAudioRecorder/>
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
@@ -1273,6 +1331,7 @@
     <presenter back="Menu" menuLabel="Media Playback Demo" type="stimulus" self="Media_Playback_Demo" title="Media Playback Demo">
         <loadStimulus eventTag="Third" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <clearPage/>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
                 <stimulusFreeText featureText="Vul minimal 1 letter." styleName="stimuliLabel" validationRegex=".{1,}" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
@@ -1906,6 +1965,37 @@
             <randomGrouping/>
             <stimuli>
                 <tag>RecorderPauseTest</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Menu" menuLabel="stimulusCodeImageButton" type="stimulus" self="stimulusCodeImageButton" title="stimulusCodeImageButton">
+        <loadStimulus eventTag="stimulusCodeImageButton" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <htmlText featureText="This demonstration screen provides an example usage of the stimulusCodeImageButton.&lt;br/&gt;"/>
+                <stimulusCodeImageButton codeFormat="&lt;code&gt;.jpg" dataChannel="8"  styleName="minimalWidth">
+                    <mediaLoaded>
+                        <htmlText featureText="mediaLoaded"/>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <htmlText featureText="mediaLoadFailed"/>
+                    </mediaLoadFailed>
+                    <onActivate>
+                        <htmlText featureText="onActivate"/>
+                    </onActivate>
+                </stimulusCodeImageButton>
+                <nextStimulusButton featureText="Next [ENTER]" eventTag="Next" hotKey="ENTER" repeatIncorrect="false"/>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="stimulusCodeImageButton"/>
+                    <gotoPresenter target="stimulusCodeImageButton"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>media</tag>
             </stimuli>
         </loadStimulus>
     </presenter>
