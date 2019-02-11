@@ -38,6 +38,7 @@ import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.TextArea;
+import com.google.gwt.user.client.ui.Widget;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -155,9 +156,9 @@ public class TimedStimulusView extends ComplexView {
         audioList.clear();
     }
 
-    public void addTimedImage(final TimedEventMonitor timedEventMonitor, SafeUri imagePath, final String styleName, final int postLoadMs, final CancelableStimulusListener shownStimulusListener, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener clickedStimulusListener) {
-        cancelableListnerList.add(shownStimulusListener);
-        cancelableListnerList.add(loadedStimulusListener);
+    public StimulusButton addTimedImage(final TimedEventMonitor timedEventMonitor, SafeUri imagePath, final String styleName, final int postLoadMs, final CancelableStimulusListener onLoadStimulusListener, final CancelableStimulusListener postLoadMsListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener clickedStimulusListener) {
+        cancelableListnerList.add(onLoadStimulusListener);
+        cancelableListnerList.add(postLoadMsListener);
         cancelableListnerList.add(failedStimulusListener);
         cancelableListnerList.add(clickedStimulusListener);
         final Image image = new Image(imagePath);
@@ -182,21 +183,22 @@ public class TimedStimulusView extends ComplexView {
                     timedEventMonitor.registerEvent("onLoad");
                 }
                 image.setVisible(true);
-                if (shownStimulusListener != null) {
-                    shownStimulusListener.postLoadTimerFired();
+                if (onLoadStimulusListener != null) {
+                    onLoadStimulusListener.postLoadTimerFired();
                 }
                 Timer timer = new Timer() {
                     @Override
                     public void run() {
-                        loadedStimulusListener.postLoadTimerFired();
+                        postLoadMsListener.postLoadTimerFired();
                     }
                 };
                 timerList.add(timer);
                 timer.schedule(postLoadMs);
             }
         });
+        final SingleShotEventListner singleShotEventListner;
         if (clickedStimulusListener != null) {
-            final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
+            singleShotEventListner = new SingleShotEventListner() {
 
                 @Override
                 protected void singleShotFired() {
@@ -208,8 +210,52 @@ public class TimedStimulusView extends ComplexView {
             image.addTouchStartHandler(singleShotEventListner);
             image.addTouchMoveHandler(singleShotEventListner);
             image.addTouchEndHandler(singleShotEventListner);
+        } else {
+            singleShotEventListner = null;
         }
         getActivePanel().add(image);
+        return new StimulusButton() {
+            @Override
+            public Widget getWidget() {
+                return image;
+            }
+
+            @Override
+            public void addStyleName(String styleName) {
+                image.addStyleName(styleName);
+            }
+
+            @Override
+            public void removeStyleName(String styleName) {
+                image.removeStyleName(styleName);
+            }
+
+            @Override
+            public void setEnabled(boolean enabled) {
+                if (singleShotEventListner != null) {
+                    singleShotEventListner.setEnabled(enabled);
+                }
+            }
+
+            @Override
+            public boolean isEnabled() {
+                if (singleShotEventListner != null) {
+                    return singleShotEventListner.isEnabled();
+                } else {
+                    return false;
+                }
+            }
+
+            @Override
+            public void setVisible(boolean visible) {
+                image.setVisible(visible);
+            }
+
+            @Override
+            public void triggerSingleShotEventListner() {
+                clickedStimulusListener.postLoadTimerFired();
+            }
+        };
     }
 
     @Deprecated
