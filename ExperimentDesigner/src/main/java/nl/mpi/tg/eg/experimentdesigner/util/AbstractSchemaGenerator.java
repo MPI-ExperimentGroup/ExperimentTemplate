@@ -79,7 +79,9 @@ public class AbstractSchemaGenerator {
             new String[0],
             new DocumentationElement[]{
                 new DocumentationElement("preventWindowClose", "When true the a popup will warn before closing the browser window by showing the message in 'featureText'. Not all browsers will respect this in the same way, so test this on the intended platforms.", 0, 1, new String[]{"featureText"}, null),
-                new DocumentationElement("administration", "<h3>Administration</h3>", 0, 1, null, new DocumentationElement[]{}),
+                new DocumentationElement("administration", "<h3>Administration</h3>", 0, 1, null, new DocumentationElement[]{
+            new DocumentationElement("dataChannel", "", 0, 0, new String[]{"label"}, null, null, new String[]{"logToSdCard"}, null, new String[]{"channel"}, null, null)
+        }),
                 new DocumentationElement("scss", "", 0, 1, null, null),
                 new DocumentationElement("metadata", "", 1, 1, null, new DocumentationElement[]{}),
                 new DocumentationElement("presenter", "", 1, 0, null, new DocumentationElement[]{}),
