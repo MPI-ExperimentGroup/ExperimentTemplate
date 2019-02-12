@@ -30,7 +30,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
  * @since October 1, 2018 15:38 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class SchemaDocumentationGenerator {
+public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
 
     private void getStart(Writer writer) throws IOException {
         writer.append("<!DOCTYPE html>\n"
@@ -139,6 +139,9 @@ public class SchemaDocumentationGenerator {
     }
 
     private void addExperiment(Writer writer) throws IOException {
+        writer.append("<tr><td colspan=3>\n");
+        writer.append(ROOT_ELEMENT_DOCUMENTATION);
+        writer.append("</td></tr>\n");
         writer.append("<tr><td>\n");
 //
 //        writer.append("<xs:simpleType name=\"rgbHexValue\">\n");
@@ -157,41 +160,46 @@ public class SchemaDocumentationGenerator {
         writer.append("&lt;experiment&gt;<br/>\n");
 //        writer.append("Root element of the experiment configuration file of which only one is permitted.\n");
         writer.append("</td><td>\n");
-        for (String attributeStrings : new String[]{"appNameDisplay"}) {
+        for (String attributeStrings : rootAttributeStrings) {
             writer.append(attributeStrings);
             writer.append("<br/>\n");
         }
-        for (String attributeLowercase : new String[]{"appNameInternal"}) {
+        for (String attributeLowercase : rootAttributeLowercase) {
             writer.append(attributeLowercase).append(" (lowercaseValue)\n");
             writer.append("<br/>\n");
         }
-        for (String attributeRGBs : new String[]{"backgroundColour", "complementColour0", "complementColour1", "complementColour2", "complementColour3", "complementColour4", "primaryColour0", "primaryColour1", "primaryColour2", "primaryColour3", "primaryColour4"}) {
+        for (String attributeRGBs : rootAttributeRGBs) {
             writer.append(attributeRGBs).append(" (rgbHexValue)\n");
             writer.append("<br/>\n");
         }
-        for (String attributeBooleans : new String[]{"isScalable", "preserveLastState", "rotatable", "showMenuBar"}) {
+        for (String attributeBooleans : rootAttributeBooleans) {
             writer.append(attributeBooleans).append(" (boolean)\n");
             writer.append("<br/>\n");
         }
-        for (String attributeFloats : new String[]{"defaultScale"}) {
+        for (String attributeFloats : rootAttributeFloats) {
             writer.append(attributeFloats).append(" (decimal)\n");
             writer.append("<br/>\n");
         }
-        for (String attributeIntegers : new String[]{"textFontSize"}) {
+        for (String attributeIntegers : rootAttributeIntegers) {
             writer.append(attributeIntegers).append(" (integer)\n");;
             writer.append("<br/>\n");
         }
-        for (String attributeIntegerLists : new String[]{}) {
+        for (String attributeIntegerLists : rootAttributeIntegerLists) {
             writer.append(attributeIntegerLists);
             writer.append("<br/>\n");
         }
         writer.append("</td><td>\n");
-        writer.append("&lt;preventWindowClose&gt;<br/>\n"); //featureText
-        writer.append("&lt;administration&gt;<br/>\n");
-        writer.append("&lt;scss&gt;<br/>\n");
-        writer.append("&lt;metadata&gt;<br/>\n");
-        writer.append("&lt;presenter&gt;<br/>\n");
-        writer.append("&lt;stimuli&gt;<br/>\n");
+        for (DocumentationElement chileElement : rootElement.childElements) {
+            writer.append("&lt;");
+            writer.append(chileElement.elementName);
+            writer.append("&gt;<br/>\n");
+        }
+//        writer.append("&lt;preventWindowClose&gt;<br/>\n"); //featureText
+//        writer.append("&lt;administration&gt;<br/>\n");
+//        writer.append("&lt;scss&gt;<br/>\n");
+//        writer.append("&lt;metadata&gt;<br/>\n");
+//        writer.append("&lt;presenter&gt;<br/>\n");
+//        writer.append("&lt;stimuli&gt;<br/>\n");
         writer.append("</td>\n");
         writer.append("</tr>\n");
         writer.append("<tr>\n");
