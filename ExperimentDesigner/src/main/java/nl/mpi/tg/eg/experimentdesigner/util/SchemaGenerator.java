@@ -60,7 +60,7 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         writer.append("<xs:element name=\"experiment\">\n").append("<xs:complexType>\n").append("<xs:sequence minOccurs=\"1\" maxOccurs=\"1\">\n");
         writer.append("<xs:annotation>\n");
         writer.append("<xs:documentation>");
-        writer.append(ROOT_ELEMENT_DOCUMENTATION);
+        writer.append(rootElement.documentationText);
         writer.append("</xs:documentation>\n");
         writer.append("</xs:annotation>\n");
 //        for (final PresenterType presenterType : presenterTypes) {
@@ -73,17 +73,17 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
                 writer.append("\" type=\"");
                 writer.append(chileElement.elementName);
                 writer.append("Type");
-            } else if (chileElement.attributes == null) {
+            } else if (chileElement.attributeStrings.length == 0) {
                 writer.append("\" type=\"xs:string");
             }
             writer.append("\" minOccurs=\"");
             writer.append(Integer.toString(chileElement.minBounds));
             writer.append("\" maxOccurs=\"");
             writer.append((chileElement.maxBounds > 0) ? Integer.toString(chileElement.maxBounds) : "unbounded");
-            if (chileElement.attributes != null) {
+            if (chileElement.attributeStrings.length > 0) {
                 writer.append("\">\n");
                 writer.append("<xs:complexType>\n");
-                for (String attributeName : chileElement.attributes) {
+                for (String attributeName : chileElement.attributeStrings) {
                     writer.append("<xs:attribute name=\"" + attributeName + "\" use=\"required\" type=\"xs:string\"/>\n");
                 }
                 writer.append("</xs:complexType>\n");
@@ -99,17 +99,17 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
 //        writer.append("<xs:element name=\"presenter\"  minOccurs=\"1\" maxOccurs=\"unbounded\" type=\"presenterType\"/>\n");
 //        writer.append("<xs:element name=\"stimuli\" type=\"stimuliType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
         writer.append("</xs:sequence>\n");
-        for (String attributeStrings : rootAttributeStrings) {
+        for (String attributeStrings : rootElement.attributeStrings) {
             writer.append("<xs:attribute name=\"").append(attributeStrings).append("\" type=\"xs:string\" use=\"required\"/>\n");
         }
         writer.append("<xs:attribute name=\"userIdGetParam\" type=\"xs:string\" use=\"optional\"/>\n");
-        for (String attributeLowercase : rootAttributeLowercase) {
+        for (String attributeLowercase : rootElement.attributeLowercase) {
             writer.append("<xs:attribute name=\"").append(attributeLowercase).append("\" type=\"lowercaseValue\" use=\"required\"/>\n");
         }
-        for (String attributeRGBs : rootAttributeRGBs) {
+        for (String attributeRGBs : rootElement.attributeRGBs) {
             writer.append("<xs:attribute name=\"").append(attributeRGBs).append("\" type=\"rgbHexValue\" use=\"required\"/>\n");
         }
-        for (String attributeBooleans : rootAttributeBooleans) {
+        for (String attributeBooleans : rootElement.attributeBooleans) {
             // add documentation indicating that when true the menu bar will be hidden when no back value is given
 
 //            The showMenuBar attribute has a relation to the back attribute. This is because if you provide a back attribute, then you presumably want it to be shown. 
@@ -130,13 +130,13 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
 //There are some more complex cases to be considered here, but this is the reason it still shows the title bar with your configuration.
             writer.append("<xs:attribute name=\"").append(attributeBooleans).append("\" type=\"xs:boolean\" use=\"required\"/>\n");
         }
-        for (String attributeFloats : rootAttributeFloats) {
+        for (String attributeFloats : rootElement.attributeFloats) {
             writer.append("<xs:attribute name=\"").append(attributeFloats).append("\" type=\"xs:decimal\" use=\"required\"/>\n");
         }
-        for (String attributeIntegers : rootAttributeIntegers) {
+        for (String attributeIntegers : rootElement.attributeIntegers) {
             writer.append("<xs:attribute name=\"").append(attributeIntegers).append("\" type=\"xs:integer\" use=\"required\"/>\n");
         }
-        for (String attributeIntegerLists : rootAttributeIntegerLists) {
+        for (String attributeIntegerLists : rootElement.attributeIntegerLists) {
             writer.append("<xs:attribute name=\"").append(attributeIntegerLists).append("\" type=\"integerList\" use=\"required\"/>\n");
         }
         writer.append("</xs:complexType>\n").append("</xs:element>\n");
