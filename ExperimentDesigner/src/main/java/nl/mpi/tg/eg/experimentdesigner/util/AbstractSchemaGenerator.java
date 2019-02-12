@@ -23,23 +23,19 @@ package nl.mpi.tg.eg.experimentdesigner.util;
  */
 public class AbstractSchemaGenerator {
 
-    protected static final String ROOT_ELEMENT_DOCUMENTATION = "Root element of the experiment configuration file of which only one is permitted.";
-    protected final String[] rootAttributeStrings = new String[]{"appNameDisplay"};
-    protected final String[] rootAttributeLowercase = new String[]{"appNameInternal"};
-    protected final String[] rootAttributeRGBs = new String[]{"backgroundColour", "complementColour0", "complementColour1", "complementColour2", "complementColour3", "complementColour4", "primaryColour0", "primaryColour1", "primaryColour2", "primaryColour3", "primaryColour4"};
-    protected final String[] rootAttributeBooleans = new String[]{"isScalable", "preserveLastState", "rotatable", "showMenuBar"};
-    protected final String[] rootAttributeFloats = new String[]{"defaultScale"};
-    protected final String[] rootAttributeIntegers = new String[]{"textFontSize"};
-    protected final String[] rootAttributeIntegerLists = new String[]{};
-    protected final String[] rootChildElements = new String[]{"preventWindowClose", "administration", "scss", "metadata", "presenter", "stimuli"};
-
     protected class DocumentationElement {
 
         final String elementName;
         final String documentationText;
         final int minBounds;
         final int maxBounds;
-        final String[] attributes;
+        final String[] attributeStrings;
+        final String[] attributeLowercase;
+        final String[] attributeRGBs;
+        final String[] attributeBooleans;
+        final String[] attributeFloats;
+        final String[] attributeIntegers;
+        final String[] attributeIntegerLists;
         final DocumentationElement[] childElements;
 
         public DocumentationElement(String elementName, String documentationText, int minBounds, int maxBounds, String[] attributes, DocumentationElement[] childElements) {
@@ -47,16 +43,46 @@ public class AbstractSchemaGenerator {
             this.documentationText = documentationText;
             this.minBounds = minBounds;
             this.maxBounds = maxBounds;
-            this.attributes = attributes;
+            this.attributeStrings = (attributes == null) ? new String[0] : attributes;
+            this.attributeLowercase = new String[0];
+            this.attributeRGBs = new String[0];
+            this.attributeBooleans = new String[0];
+            this.attributeFloats = new String[0];
+            this.attributeIntegers = new String[0];
+            this.attributeIntegerLists = new String[0];
             this.childElements = childElements;
         }
+
+        public DocumentationElement(String elementName, String documentationText, int minBounds, int maxBounds, String[] attributeStrings, String[] attributeLowercase, String[] attributeRGBs, String[] attributeBooleans, String[] attributeFloats, String[] attributeIntegers, String[] attributeIntegerLists, DocumentationElement[] childElements) {
+            this.elementName = elementName;
+            this.documentationText = documentationText;
+            this.minBounds = minBounds;
+            this.maxBounds = maxBounds;
+            this.attributeStrings = (attributeStrings == null) ? new String[0] : attributeStrings;
+            this.attributeLowercase = (attributeLowercase == null) ? new String[0] : attributeLowercase;
+            this.attributeRGBs = (attributeRGBs == null) ? new String[0] : attributeRGBs;
+            this.attributeBooleans = (attributeBooleans == null) ? new String[0] : attributeBooleans;
+            this.attributeFloats = (attributeFloats == null) ? new String[0] : attributeFloats;;
+            this.attributeIntegers = (attributeIntegers == null) ? new String[0] : attributeIntegers;;
+            this.attributeIntegerLists = (attributeIntegerLists == null) ? new String[0] : attributeIntegerLists;;
+            this.childElements = childElements;
+        }
+
     }
-    protected final DocumentationElement rootElement = new DocumentationElement("Experiment", ROOT_ELEMENT_DOCUMENTATION, 1, 1, null, new DocumentationElement[]{
-        new DocumentationElement("preventWindowClose", "When true the a popup will warn before closing the browser window by showing the message in 'featureText'. Not all browsers will respect this in the same way, so test this on the intended platforms.", 0, 1, new String[]{"featureText"}, null),
-        new DocumentationElement("administration", "", 0, 1, null, new DocumentationElement[]{}),
-        new DocumentationElement("scss", "", 0, 1, null, null),
-        new DocumentationElement("metadata", "", 1, 1, null, new DocumentationElement[]{}),
-        new DocumentationElement("presenter", "", 1, 0, null, new DocumentationElement[]{}),
-        new DocumentationElement("stimuli", "", 1, 1, null, new DocumentationElement[]{})
-    });
+    protected final DocumentationElement rootElement = new DocumentationElement("experiment", "<h3>Experiment</h3>Root element of the experiment configuration file of which only one is permitted.", 1, 1,
+            new String[]{"appNameDisplay"},
+            new String[]{"appNameInternal"},
+            new String[]{"backgroundColour", "complementColour0", "complementColour1", "complementColour2", "complementColour3", "complementColour4", "primaryColour0", "primaryColour1", "primaryColour2", "primaryColour3", "primaryColour4"},
+            new String[]{"isScalable", "preserveLastState", "rotatable", "showMenuBar"},
+            new String[]{"defaultScale"},
+            new String[]{"textFontSize"},
+            new String[0],
+            new DocumentationElement[]{
+                new DocumentationElement("preventWindowClose", "When true the a popup will warn before closing the browser window by showing the message in 'featureText'. Not all browsers will respect this in the same way, so test this on the intended platforms.", 0, 1, new String[]{"featureText"}, null),
+                new DocumentationElement("administration", "<h3>Administration</h3>", 0, 1, null, new DocumentationElement[]{}),
+                new DocumentationElement("scss", "", 0, 1, null, null),
+                new DocumentationElement("metadata", "", 1, 1, null, new DocumentationElement[]{}),
+                new DocumentationElement("presenter", "", 1, 0, null, new DocumentationElement[]{}),
+                new DocumentationElement("stimuli", "", 1, 1, null, new DocumentationElement[]{})
+            });
 }
