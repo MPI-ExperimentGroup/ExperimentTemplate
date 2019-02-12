@@ -32,7 +32,7 @@
 <xs:element name="administration" type="administrationType" minOccurs="0" maxOccurs="1"/>
 <xs:element name="scss" type="xs:string" minOccurs="0" maxOccurs="1"/>
 <xs:element name="metadata" type="metadataType" minOccurs="1" maxOccurs="1"/>
-<xs:element name="presenter"  minOccurs="1" maxOccurs="unbounded" type="presenterType"/>
+<xs:element name="presenter" type="presenterType" minOccurs="1" maxOccurs="unbounded"/>
 <xs:element name="stimuli" type="stimuliType" minOccurs="1" maxOccurs="1"/>
 </xs:sequence>
 <xs:attribute name="appNameDisplay" type="xs:string" use="required"/>
