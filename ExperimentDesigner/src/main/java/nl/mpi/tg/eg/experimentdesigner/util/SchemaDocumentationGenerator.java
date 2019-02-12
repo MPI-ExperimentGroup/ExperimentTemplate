@@ -138,10 +138,13 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
                 + "    <body>\n");
     }
 
-    private void addExperiment(Writer writer) throws IOException {
-        writer.append("<tr><td colspan=3>\n");
-        writer.append(ROOT_ELEMENT_DOCUMENTATION);
-        writer.append("</td></tr>\n");
+    private void addElement(Writer writer, DocumentationElement currentElement) throws IOException {
+        writer.append(currentElement.documentationText);
+        writer.append("\n<table border=1>\n");
+
+//        writer.append("<tr><td colspan=3>\n");
+//        writer.append(ROOT_ELEMENT_DOCUMENTATION);
+//        writer.append("</td></tr>\n");
         writer.append("<tr><td>\n");
 //
 //        writer.append("<xs:simpleType name=\"rgbHexValue\">\n");
@@ -157,39 +160,41 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
 //        writer.append("<xs:simpleType name=\"integerList\">\n");
 //        writer.append("<xs:list itemType=\"xs:integer\"/>\n");
 //        writer.append("</xs:simpleType>\n");
-        writer.append("&lt;experiment&gt;<br/>\n");
+        writer.append("&lt;");
+        writer.append(currentElement.elementName);
+        writer.append("&gt;<br/>\n");
 //        writer.append("Root element of the experiment configuration file of which only one is permitted.\n");
         writer.append("</td><td>\n");
-        for (String attributeStrings : rootAttributeStrings) {
+        for (String attributeStrings : currentElement.attributeStrings) {
             writer.append(attributeStrings);
             writer.append("<br/>\n");
         }
-        for (String attributeLowercase : rootAttributeLowercase) {
+        for (String attributeLowercase : currentElement.attributeLowercase) {
             writer.append(attributeLowercase).append(" (lowercaseValue)\n");
             writer.append("<br/>\n");
         }
-        for (String attributeRGBs : rootAttributeRGBs) {
+        for (String attributeRGBs : currentElement.attributeRGBs) {
             writer.append(attributeRGBs).append(" (rgbHexValue)\n");
             writer.append("<br/>\n");
         }
-        for (String attributeBooleans : rootAttributeBooleans) {
+        for (String attributeBooleans : currentElement.attributeBooleans) {
             writer.append(attributeBooleans).append(" (boolean)\n");
             writer.append("<br/>\n");
         }
-        for (String attributeFloats : rootAttributeFloats) {
+        for (String attributeFloats : currentElement.attributeFloats) {
             writer.append(attributeFloats).append(" (decimal)\n");
             writer.append("<br/>\n");
         }
-        for (String attributeIntegers : rootAttributeIntegers) {
+        for (String attributeIntegers : currentElement.attributeIntegers) {
             writer.append(attributeIntegers).append(" (integer)\n");;
             writer.append("<br/>\n");
         }
-        for (String attributeIntegerLists : rootAttributeIntegerLists) {
+        for (String attributeIntegerLists : currentElement.attributeIntegerLists) {
             writer.append(attributeIntegerLists);
             writer.append("<br/>\n");
         }
         writer.append("</td><td>\n");
-        for (DocumentationElement chileElement : rootElement.childElements) {
+        for (DocumentationElement chileElement : currentElement.childElements) {
             writer.append("&lt;");
             writer.append(chileElement.elementName);
             writer.append("&gt;<br/>\n");
@@ -209,6 +214,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         writer.append("<button onclick=\"getExample('administration', 'target1');\">show example</button>\n");
         writer.append("</td>");
         writer.append("</tr>\n");
+        writer.append("</table>\n");
     }
 
     private void addPresenter(Writer writer, final PresenterType[] presenterTypes) throws IOException {
@@ -415,12 +421,8 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
 
     public void appendContents(Writer writer) throws IOException {
         getStart(writer);
-        writer.append("<h3>Experiment</h3><table border=1>\n");
-        addExperiment(writer);
-        writer.append("</table>\n");
-        writer.append("<h3>Administration</h3><table border=1>\n");
-        addAdministration(writer);
-        writer.append("</table>\n");
+        addElement(writer, rootElement);
+        addElement(writer, rootElement.childElements[1]);
         writer.append("<h3>Metadata</h3><table border=1>\n");
         addMetadata(writer);
         writer.append("</table>\n");
