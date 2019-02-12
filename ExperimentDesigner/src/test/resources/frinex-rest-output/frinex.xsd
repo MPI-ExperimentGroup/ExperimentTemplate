@@ -57,12 +57,15 @@
 <xs:attribute name="textFontSize" type="xs:integer" use="required"/>
 </xs:complexType>
 </xs:element>
-<xs:complexType  name="administrationType">
+<xs:complexType name="administrationType">
 <xs:sequence>
+<xs:annotation>
+<xs:documentation><h3>Administration</h3></xs:documentation>
+</xs:annotation>
 <xs:element name="dataChannel" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
-<xs:attribute name="channel" type="xs:decimal" use="required"/>
 <xs:attribute name="label" type="xs:string" use="required"/>
+<xs:attribute name="channel" type="xs:integer" use="required"/>
 <xs:attribute name="logToSdCard" type="xs:boolean" use="required"/>
 </xs:complexType>
 </xs:element>
