@@ -30,7 +30,7 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
  * @since May 9, 2018 5:41:05 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
-public class SchemaGenerator {
+public class SchemaGenerator extends AbstractSchemaGenerator {
 
     private void getStart(Writer writer) throws IOException {
         writer.append("<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n"
@@ -59,42 +59,84 @@ public class SchemaGenerator {
 
         writer.append("<xs:element name=\"experiment\">\n").append("<xs:complexType>\n").append("<xs:sequence minOccurs=\"1\" maxOccurs=\"1\">\n");
         writer.append("<xs:annotation>\n");
-        writer.append("<xs:documentation>Root element of the experiment configuration file of which only one is permitted.</xs:documentation>\n");
+        writer.append("<xs:documentation>");
+        writer.append(ROOT_ELEMENT_DOCUMENTATION);
+        writer.append("</xs:documentation>\n");
         writer.append("</xs:annotation>\n");
 //        for (final PresenterType presenterType : presenterTypes) {
 //            writer.append("<xs:element ref=\"").append(presenterType.name()).append("\"/>\n");
 //        }
-        writer.append("<xs:element name=\"preventWindowClose\" minOccurs=\"0\" maxOccurs=\"1\">\n");
-        writer.append("<xs:complexType>\n");
-        writer.append("<xs:attribute name=\"featureText\" use=\"required\" type=\"xs:string\"/>\n");
-        writer.append("</xs:complexType>\n");
-        writer.append("</xs:element>\n");
-        writer.append("<xs:element name=\"administration\" type=\"administrationType\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
-        writer.append("<xs:element name=\"scss\" type=\"xs:string\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
-        writer.append("<xs:element name=\"metadata\" type=\"metadataType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
-        writer.append("<xs:element name=\"presenter\"  minOccurs=\"1\" maxOccurs=\"unbounded\" type=\"presenterType\"/>\n");
-        writer.append("<xs:element name=\"stimuli\" type=\"stimuliType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+        for (DocumentationElement chileElement : rootElement.childElements) {
+            writer.append("<xs:element name=\"");
+            writer.append(chileElement.elementName);
+            if (chileElement.childElements != null) {
+                writer.append("\" type=\"");
+                writer.append(chileElement.elementName);
+                writer.append("Type");
+            } else if (chileElement.attributes == null) {
+                writer.append("\" type=\"xs:string");
+            }
+            writer.append("\" minOccurs=\"");
+            writer.append(Integer.toString(chileElement.minBounds));
+            writer.append("\" maxOccurs=\"");
+            writer.append((chileElement.maxBounds > 0) ? Integer.toString(chileElement.maxBounds) : "unbounded");
+            if (chileElement.attributes != null) {
+                writer.append("\">\n");
+                writer.append("<xs:complexType>\n");
+                for (String attributeName : chileElement.attributes) {
+                    writer.append("<xs:attribute name=\"" + attributeName + "\" use=\"required\" type=\"xs:string\"/>\n");
+                }
+                writer.append("</xs:complexType>\n");
+                writer.append("</xs:element>\n");
+            } else {
+                writer.append("\"/>\n");
+            }
+        }
+
+//        writer.append("<xs:element name=\"administration\" type=\"administrationType\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
+//        writer.append("<xs:element name=\"scss\" type=\"xs:string\" minOccurs=\"0\" maxOccurs=\"1\"/>\n");
+//        writer.append("<xs:element name=\"metadata\" type=\"metadataType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
+//        writer.append("<xs:element name=\"presenter\"  minOccurs=\"1\" maxOccurs=\"unbounded\" type=\"presenterType\"/>\n");
+//        writer.append("<xs:element name=\"stimuli\" type=\"stimuliType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
         writer.append("</xs:sequence>\n");
-        for (String attributeStrings : new String[]{"appNameDisplay"}) {
+        for (String attributeStrings : rootAttributeStrings) {
             writer.append("<xs:attribute name=\"").append(attributeStrings).append("\" type=\"xs:string\" use=\"required\"/>\n");
         }
         writer.append("<xs:attribute name=\"userIdGetParam\" type=\"xs:string\" use=\"optional\"/>\n");
-        for (String attributeLowercase : new String[]{"appNameInternal"}) {
+        for (String attributeLowercase : rootAttributeLowercase) {
             writer.append("<xs:attribute name=\"").append(attributeLowercase).append("\" type=\"lowercaseValue\" use=\"required\"/>\n");
         }
-        for (String attributeRGBs : new String[]{"backgroundColour", "complementColour0", "complementColour1", "complementColour2", "complementColour3", "complementColour4", "primaryColour0", "primaryColour1", "primaryColour2", "primaryColour3", "primaryColour4"}) {
+        for (String attributeRGBs : rootAttributeRGBs) {
             writer.append("<xs:attribute name=\"").append(attributeRGBs).append("\" type=\"rgbHexValue\" use=\"required\"/>\n");
         }
-        for (String attributeBooleans : new String[]{"isScalable", "preserveLastState", "rotatable", "showMenuBar"}) {
+        for (String attributeBooleans : rootAttributeBooleans) {
+            // add documentation indicating that when true the menu bar will be hidden when no back value is given
+
+//            The showMenuBar attribute has a relation to the back attribute. This is because if you provide a back attribute, then you presumably want it to be shown. 
+//
+//For example:
+//
+//showMenuBar="true"
+//<presenter title="Toestemming"
+//<presenter back="Toestemming" title=“Welcome">
+//Shown in both cases.
+//
+//showMenuBar="false"
+//<presenter title="Toestemming"
+//<presenter back="Toestemming" title=“Welcome">
+//Shown in the second case but not the first.
+//
+//
+//There are some more complex cases to be considered here, but this is the reason it still shows the title bar with your configuration.
             writer.append("<xs:attribute name=\"").append(attributeBooleans).append("\" type=\"xs:boolean\" use=\"required\"/>\n");
         }
-        for (String attributeFloats : new String[]{"defaultScale"}) {
+        for (String attributeFloats : rootAttributeFloats) {
             writer.append("<xs:attribute name=\"").append(attributeFloats).append("\" type=\"xs:decimal\" use=\"required\"/>\n");
         }
-        for (String attributeIntegers : new String[]{"textFontSize"}) {
+        for (String attributeIntegers : rootAttributeIntegers) {
             writer.append("<xs:attribute name=\"").append(attributeIntegers).append("\" type=\"xs:integer\" use=\"required\"/>\n");
         }
-        for (String attributeIntegerLists : new String[]{}) {
+        for (String attributeIntegerLists : rootAttributeIntegerLists) {
             writer.append("<xs:attribute name=\"").append(attributeIntegerLists).append("\" type=\"integerList\" use=\"required\"/>\n");
         }
         writer.append("</xs:complexType>\n").append("</xs:element>\n");
@@ -142,6 +184,7 @@ public class SchemaGenerator {
         writer.append("<xs:attribute name=\"channel\" type=\"xs:decimal\" use=\"required\"/>\n");
         writer.append("<xs:attribute name=\"label\" type=\"xs:string\" use=\"required\"/>\n");
         writer.append("<xs:attribute name=\"logToSdCard\" type=\"xs:boolean\" use=\"required\"/>\n");
+//      todo: add headerKey, headerValues, separator and perhaps type
         writer.append("</xs:complexType>\n").append("</xs:element>\n");
         writer.append("</xs:sequence>\n");
         writer.append("</xs:complexType>\n");
@@ -284,6 +327,8 @@ public class SchemaGenerator {
             writer.append("<xs:attribute name=\"featureText\" type=\"xs:string\" use=\"required\"/>\n");
         }
         if (featureType.getFeatureAttributes() != null) {
+            // todo: hotKey needs to have a list of valid strings as should styleName
+            // todo: msToNext must always and only contain positive integers
             for (final FeatureAttribute featureAttribute : featureType.getFeatureAttributes()) {
                 writer.append("<xs:attribute name=\"");
                 writer.append(featureAttribute.name());
