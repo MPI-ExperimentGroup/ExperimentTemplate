@@ -93,21 +93,32 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         writer.append("</xs:complexType>\n");
     }
 
-    private void addElement(Writer writer, DocumentationElement currentElement) throws IOException {
+    private void addElement(final Writer writer, final DocumentationElement currentElement, final boolean insertType) throws IOException {
 //        for (final PresenterType presenterType : presenterTypes) {
 //            writer.append("<xs:element ref=\"").append(presenterType.name()).append("\"/>\n");
 //        }
 //        for (DocumentationElement chileElement : rootElement.childElements) {
-        writer.append("<xs:element name=\"");
+        if (insertType) {
+            writer.append("<xs:complexType name=\"");
+        } else {
+            writer.append("<xs:element name=\"");
+        }
         writer.append(currentElement.elementName);
+        if (insertType) {
+            writer.append("Type");
+        }
         writer.append("\">\n");
-        writer.append("<xs:complexType>\n");
-        writer.append("<xs:sequence");
-        writer.append(" minOccurs=\"");
-        writer.append(Integer.toString(currentElement.minBounds));
-        writer.append("\" maxOccurs=\"");
-        writer.append((currentElement.maxBounds > 0) ? Integer.toString(currentElement.maxBounds) : "unbounded");
-        writer.append("\">\n");
+        if (!insertType) {
+            writer.append("<xs:complexType>\n");
+            writer.append("<xs:sequence");
+            writer.append(" minOccurs=\"");
+            writer.append(Integer.toString(currentElement.minBounds));
+            writer.append("\" maxOccurs=\"");
+            writer.append((currentElement.maxBounds > 0) ? Integer.toString(currentElement.maxBounds) : "unbounded");
+            writer.append("\">\n");
+        } else {
+            writer.append("<xs:sequence>\n");
+        }
         writer.append("<xs:annotation>\n");
         writer.append("<xs:documentation>");
         writer.append(currentElement.documentationText);
@@ -133,6 +144,15 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
                 writer.append("<xs:complexType>\n");
                 for (String attributeStrings : childElement.attributeStrings) {
                     writer.append("<xs:attribute name=\"").append(attributeStrings).append("\" type=\"xs:string\" use=\"required\"/>\n");
+                }
+                for (String attributeIntegers : childElement.attributeIntegers) {
+                    writer.append("<xs:attribute name=\"").append(attributeIntegers).append("\" type=\"xs:integer\" use=\"required\"/>\n");
+                }
+                for (String attributeBooleans : childElement.attributeBooleans) {
+                    writer.append("<xs:attribute name=\"").append(attributeBooleans).append("\" type=\"xs:boolean\" use=\"required\"/>\n");
+                }
+                for (String attributeFloats : childElement.attributeFloats) {
+                    writer.append("<xs:attribute name=\"").append(attributeFloats).append("\" type=\"xs:decimal\" use=\"required\"/>\n");
                 }
                 writer.append("</xs:complexType>\n");
                 writer.append("</xs:element>\n");
@@ -193,7 +213,10 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
 //        writer.append("<xs:element name=\"presenter\"  minOccurs=\"1\" maxOccurs=\"unbounded\" type=\"presenterType\"/>\n");
 //        writer.append("<xs:element name=\"stimuli\" type=\"stimuliType\" minOccurs=\"1\" maxOccurs=\"1\"/>\n");
 //        writer.append("</xs:sequence>\n");
-        writer.append("</xs:complexType>\n").append("</xs:element>\n");
+        writer.append("</xs:complexType>\n");
+        if (!insertType) {
+            writer.append("</xs:element>\n");
+        }
 
 //        writer.append("<xs:complexType  name=\"administrationType\">\n").append("<xs:sequence>\n");
 //        writer.append("<xs:element name=\"dataChannel\" minOccurs=\"0\" maxOccurs=\"unbounded\">\n").append("<xs:complexType>\n");
@@ -400,8 +423,8 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
     public void appendContents(Writer writer) throws IOException {
         getStart(writer);
         addExperiment(writer);
-        addElement(writer, rootElement);
-        addElement(writer, rootElement.childElements[1]);
+        addElement(writer, rootElement, false);
+        addElement(writer, rootElement.childElements[1], true);
         addMetadata(writer);
         addPresenter(writer, PresenterType.values());
         addStimuli(writer);
