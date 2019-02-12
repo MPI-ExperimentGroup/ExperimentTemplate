@@ -26,14 +26,14 @@
 </xs:annotation>
 <xs:element name="preventWindowClose" minOccurs="0" maxOccurs="1">
 <xs:complexType>
-<xs:attribute name="featureText" use="required" type="xs:string"/>
+<xs:attribute name="featureText" type="xs:string" use="required"/>
 </xs:complexType>
 </xs:element>
-<xs:element name="administration" type="administrationType" minOccurs="0" maxOccurs="1"/>
-<xs:element name="scss" type="xs:string" minOccurs="0" maxOccurs="1"/>
-<xs:element name="metadata" type="metadataType" minOccurs="1" maxOccurs="1"/>
-<xs:element name="presenter" type="presenterType" minOccurs="1" maxOccurs="unbounded"/>
-<xs:element name="stimuli" type="stimuliType" minOccurs="1" maxOccurs="1"/>
+<xs:element name="administration" minOccurs="0" maxOccurs="1" type="administrationType"/>
+<xs:element name="scss" minOccurs="0" maxOccurs="1" type="xs:string"/>
+<xs:element name="metadata" minOccurs="1" maxOccurs="1" type="metadataType"/>
+<xs:element name="presenter" minOccurs="1" maxOccurs="unbounded" type="presenterType"/>
+<xs:element name="stimuli" minOccurs="1" maxOccurs="1" type="stimuliType"/>
 </xs:sequence>
 <xs:attribute name="appNameDisplay" type="xs:string" use="required"/>
 <xs:attribute name="userIdGetParam" type="xs:string" use="optional"/>
