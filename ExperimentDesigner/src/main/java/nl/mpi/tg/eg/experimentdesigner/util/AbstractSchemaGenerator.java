@@ -53,10 +53,10 @@ public class AbstractSchemaGenerator {
     }
     protected final DocumentationElement rootElement = new DocumentationElement("Experiment", ROOT_ELEMENT_DOCUMENTATION, 1, 1, null, new DocumentationElement[]{
         new DocumentationElement("preventWindowClose", "When true the a popup will warn before closing the browser window by showing the message in 'featureText'. Not all browsers will respect this in the same way, so test this on the intended platforms.", 0, 1, new String[]{"featureText"}, null),
-        new DocumentationElement("administration", "", 0, 1, new String[]{""}, null),
-        new DocumentationElement("scss", "", 0, 1, new String[]{""}, null),
-        new DocumentationElement("metadata", "", 1, 1, new String[]{""}, null),
-        new DocumentationElement("presenter", "", 1, 0, new String[]{""}, null),
-        new DocumentationElement("stimuli", "", 1, 0, new String[]{""}, null)
+        new DocumentationElement("administration", "", 0, 1, null, new DocumentationElement[]{}),
+        new DocumentationElement("scss", "", 0, 1, null, null),
+        new DocumentationElement("metadata", "", 1, 1, null, new DocumentationElement[]{}),
+        new DocumentationElement("presenter", "", 1, 0, null, new DocumentationElement[]{}),
+        new DocumentationElement("stimuli", "", 1, 1, null, new DocumentationElement[]{})
     });
 }
