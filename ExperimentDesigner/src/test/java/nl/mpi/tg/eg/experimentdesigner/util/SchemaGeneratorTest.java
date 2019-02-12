@@ -21,6 +21,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
@@ -94,5 +97,23 @@ public class SchemaGeneratorTest {
                 fail(fileName + " :" + saxe.getMessage());
             }
         }
+    }
+        /**
+     * Test of compareSchemaFile method, of class SchemaGenerator.
+     */
+    @Test
+    public void testCompareXsdFile() throws Exception {
+        System.out.println("compareSchemaFile");
+        final String inputDirectory = "/frinex-rest-output/";
+        URI outputDirectoryUri = this.getClass().getResource(inputDirectory).toURI();
+        final File htmlOutputFile = new File(new File(outputDirectoryUri), "frinex-testoutput.xsd");
+        SchemaGenerator instance = new SchemaGenerator();
+        instance.createSchemaFile(htmlOutputFile);
+        final String name = "/frinex-rest-output/" + "frinex.xsd";
+        System.out.println(name);
+        URI testXsdUri = this.getClass().getResource(name).toURI();
+        String expectedResult = new String(Files.readAllBytes(Paths.get(testXsdUri)), StandardCharsets.UTF_8);
+        String actualResult = new String(Files.readAllBytes(Paths.get(htmlOutputFile.toURI())), StandardCharsets.UTF_8);
+        assertEquals("frinex.xsd", expectedResult, actualResult);
     }
 }
