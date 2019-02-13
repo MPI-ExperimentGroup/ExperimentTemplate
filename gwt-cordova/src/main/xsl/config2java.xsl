@@ -109,6 +109,8 @@
         </xsl:if>
         <xsl:text>
             submissionService.submitScreenChange(userResults.getUserData().getUserId(), applicationState.name());
+            <!--submissionService.submitScreenChange(userResults.getUserData().getUserId(), Window.getClientWidth() + "x" + Window.getClientHeight());-->
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), applicationState.name(), "BrowserClientArea", Window.getClientWidth() + "x" + Window.getClientHeight(), 0);
             History.newItem(applicationState.name(), false);
             // todo:
             // on each state change check if there is an completed game data, if the share is true then upload or store if offline
