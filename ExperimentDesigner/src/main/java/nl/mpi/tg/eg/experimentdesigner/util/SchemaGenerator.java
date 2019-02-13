@@ -131,12 +131,12 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
             writer.append(Integer.toString(childElement.minBounds));
             writer.append("\" maxOccurs=\"");
             writer.append((childElement.maxBounds > 0) ? Integer.toString(childElement.maxBounds) : "unbounded");
-            if (childElement.childElements != null) {
+            if (childElement.childElements.length > 0) {
                 writer.append("\" type=\"");
                 writer.append(childElement.elementName);
                 writer.append("Type");
                 writer.append("\"/>\n");
-            } else if (childElement.attributeStrings.length == 0) {
+            } else if (childElement.hasStringContents) {
                 writer.append("\" type=\"xs:string");
                 writer.append("\"/>\n");
             } else {
