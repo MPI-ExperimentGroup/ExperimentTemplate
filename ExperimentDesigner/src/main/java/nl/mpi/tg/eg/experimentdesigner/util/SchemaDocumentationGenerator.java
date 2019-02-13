@@ -199,7 +199,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
 //        writer.append("</td><td>\n");
         addAttributes(writer, currentElement);
         writer.append("</td><td>");
-        if (currentElement.childElements.length == 0) {
+        if (currentElement.childElements.length == 0 && !currentElement.hasStringContents) {
             writer.append("<span style=\"color:red\">/</span>");
         }
         writer.append("<span style=\"color:purple\">&gt;</span></td><td>\n");
@@ -222,7 +222,13 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
 //        writer.append("&lt;stimuli&gt;<br/>\n");
         writer.append("</td>\n");
         writer.append("</tr>\n");
-        if (currentElement.childElements.length > 0) {
+        if (currentElement.hasStringContents) {
+            writer.append("<tr>\n");
+            writer.append("<td></td><td></td><td>\n");
+            writer.append("<span style=\"color:grey\">String</span></td>");
+            writer.append("</tr>\n");
+        }
+        if (currentElement.childElements.length > 0 || currentElement.hasStringContents) {
             writer.append("<tr>\n");
             writer.append("<td>\n");
             writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:red\">/</span><span style=\"color:blue\">");
