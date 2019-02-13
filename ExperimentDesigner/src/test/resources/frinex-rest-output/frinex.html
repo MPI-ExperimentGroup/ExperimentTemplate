@@ -4,9 +4,26 @@
         <title>Frinex XML Usage</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+<script src="webjars/jquery/jquery.min.js"></script><script>
+    function getExample(tagName, targetId) {
+      console.log("getExample");
+      
+    $.get( "with_stimulus_example.xml", function( data ) {
+    console.log("gotData");
+    console.log(tagName);
+      console.log(targetId);$(data).find(tagName).each(function() {
+$("#" + targetId).first().append('<div>' + this.nodeName.toLowerCase() + '</div>');
+});
+
+$(data).find(tagName).children().each(function() {
+$("#" + targetId).first().append('<div>' + this.nodeName.toLowerCase() + '</div>');
+});
+    });
+    }
+</script></head>
     <body>
-<h3>Experiment</h3><table border=1>
+<h3>Experiment</h3>Root element of the experiment configuration file of which only one is permitted.
+<table border=1>
 <tr><td>
 &lt;experiment&gt;<br/>
 </td><td>
@@ -56,8 +73,14 @@ textFontSize (integer)
 &lt;stimuli&gt;<br/>
 </td>
 </tr>
+<tr>
+<td colspan='2' id='target1'>
+</td><td>
+<button onclick="getExample('experiment', 'experiment1');">show example</button>
+</td></tr>
 </table>
-<h3>Administration</h3><table border=1>
+<h3>Administration</h3>
+<table border=1>
 <tr><td>
 &lt;administration&gt;<br/>
 </td><td>
@@ -105,6 +128,11 @@ timeline,
 )<br/>
 </td>
 </tr>
+<tr>
+<td id='presenter1'>
+</td><td>
+<button onclick="getExample('presenter', 'presenter1');">show example</button>
+</td></tr>
 </table>
 <h3>Stimuli</h3><table border=1>
 <tr><td>
