@@ -39,7 +39,12 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
                 + "        <title>Frinex XML Usage</title>\n"
                 + "        <meta charset=\"UTF-8\">\n"
                 + "        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
-                + "<script src=\"webjars/jquery/jquery.min.js\"></script>"
+                + "<style>\n"
+                + "td{\n"
+                + "    vertical-align: top;\n"
+                + "}\n"
+                + "</style>\n"
+                + "<script src=\"webjars/jquery/jquery.min.js\"></script>\n"
                 + "<script>\n"
                 + "    function getExample(tagName, targetId) {\n"
                 + "      console.log(\"getExample\");\n"
@@ -140,36 +145,46 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
 
     private void addAttributes(Writer writer, DocumentationElement currentElement) throws IOException {
         for (String attributeStrings : currentElement.attributeStrings) {
+            writer.append("<span style=\"color:green\">");
             writer.append(attributeStrings);
-            writer.append("=&quot;String&quot;<br/>");
+            writer.append("</span><span style=\"color:grey\">=&quot;String&quot;</span><br/>");
         }
         for (String attributeLowercase : currentElement.attributeLowercase) {
+            writer.append("<span style=\"color:green\">");
             writer.append(attributeLowercase);
-            writer.append("=&quot;String Lowercase&quot;<br/>");
+            writer.append("</span><span style=\"color:grey\">=&quot;String Lowercase&quot;</span><br/>");
         }
         for (String attributeRGBs : currentElement.attributeRGBs) {
+            writer.append("<span style=\"color:green\">");
             writer.append(attributeRGBs);
-            writer.append("=&quot;RGB Hex Value&quot;<br/>");
+            writer.append("</span><span style=\"color:grey\">=&quot;RGB Hex Value&quot;</span><br/>");
         }
         for (String attributeBooleans : currentElement.attributeBooleans) {
+            writer.append("<span style=\"color:green\">");
             writer.append(attributeBooleans);
-            writer.append("=&quot;Boolean&quot;<br/>");
+            writer.append("</span><span style=\"color:grey\">=&quot;Boolean&quot;</span><br/>");
         }
         for (String attributeFloats : currentElement.attributeFloats) {
+            writer.append("<span style=\"color:green\">");
             writer.append(attributeFloats);
-            writer.append("=&quot;Float&quot;<br/>");
+            writer.append("</span><span style=\"color:grey\">=&quot;Float&quot;</span><br/>");
         }
         for (String attributeIntegers : currentElement.attributeIntegers) {
+            writer.append("<span style=\"color:green\">");
             writer.append(attributeIntegers);
-            writer.append("=&quot;Integer&quot;<br/>");
+            writer.append("</span><span style=\"color:grey\">=&quot;Integer&quot;</span><br/>");
         }
         for (String attributeIntegerLists : currentElement.attributeIntegerLists) {
+            writer.append("<span style=\"color:green\">");
             writer.append(attributeIntegerLists);
-            writer.append("=&quot;Integer List&quot;<br/>");
+            writer.append("</span><span style=\"color:grey\">=&quot;Integer List&quot;</span><br/>");
         }
     }
 
     private void addElement(Writer writer, DocumentationElement currentElement) throws IOException {
+        writer.append("<h3 style=\"text-transform: uppercase;\">\n");
+        writer.append(currentElement.elementName);
+        writer.append("\n</h3>\n");
         writer.append(currentElement.documentationText);
         writer.append("\n<table>\n");
 
@@ -177,36 +192,25 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
 //        writer.append(ROOT_ELEMENT_DOCUMENTATION);
 //        writer.append("</td></tr>\n");
         writer.append("<tr><td>\n");
-//
-//        writer.append("<xs:simpleType name=\"rgbHexValue\">\n");
-//        writer.append("<xs:restriction base=\"xs:token\">\n");
-//        writer.append("<xs:pattern value=\"#[\\dA-Fa-f]{6}\"/>\n");
-//        writer.append("</xs:restriction>\n");
-//        writer.append("</xs:simpleType>\n");
-//        writer.append("<xs:simpleType name=\"lowercaseValue\">\n");
-//        writer.append("<xs:restriction base=\"xs:string\">\n");
-//        writer.append("<xs:pattern value=\"[a-z]([a-z_0-9]){3,}\"/>\n");
-//        writer.append("</xs:restriction>\n");
-//        writer.append("</xs:simpleType>\n");
-//        writer.append("<xs:simpleType name=\"integerList\">\n");
-//        writer.append("<xs:list itemType=\"xs:integer\"/>\n");
-//        writer.append("</xs:simpleType>\n");
-        writer.append("&lt;");
+        writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">");
         writer.append(currentElement.elementName);
-        writer.append("</td><td>");
+        writer.append("</span></td><td>");
 //        writer.append("Root element of the experiment configuration file of which only one is permitted.\n");
 //        writer.append("</td><td>\n");
         addAttributes(writer, currentElement);
-
-        writer.append("</td><td>&gt;</td><td>\n");
+        writer.append("</td><td>");
+        if (currentElement.childElements.length == 0) {
+            writer.append("<span style=\"color:red\">/</span>");
+        }
+        writer.append("<span style=\"color:purple\">&gt;</span></td><td>\n");
         for (DocumentationElement chileElement : currentElement.childElements) {
             writer.append("<table>\n");
             writer.append("<tr><td>\n");
-            writer.append("&lt;");
+            writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">");
             writer.append(chileElement.elementName);
-            writer.append("</td><td>");
+            writer.append("</span></td><td>");
             addAttributes(writer, chileElement);
-            writer.append("</td><td>&gt;\n");
+            writer.append("</td><td><span style=\"color:purple\">&gt;</span>\n");
             writer.append("</td></tr>\n");
             writer.append("</td></tr></table>\n");
         }
@@ -218,6 +222,14 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
 //        writer.append("&lt;stimuli&gt;<br/>\n");
         writer.append("</td>\n");
         writer.append("</tr>\n");
+        if (currentElement.childElements.length > 0) {
+            writer.append("<tr>\n");
+            writer.append("<td>\n");
+            writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:red\">/</span><span style=\"color:blue\">");
+            writer.append(currentElement.elementName);
+            writer.append("</span><span style=\"color:purple\">&gt;</span></td>");
+            writer.append("</tr>\n");
+        }
         writer.append("<tr>\n");
         writer.append("<td colspan='2' id='target1'>\n");
         writer.append("</td>");
@@ -226,6 +238,9 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         writer.append("</td>");
         writer.append("</tr>\n");
         writer.append("</table>\n");
+        for (DocumentationElement chileElement : currentElement.childElements) {
+            addElement(writer, chileElement);
+        }
     }
 
     private void addPresenter(Writer writer, final PresenterType[] presenterTypes) throws IOException {
@@ -433,7 +448,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
     public void appendContents(Writer writer) throws IOException {
         getStart(writer);
         addElement(writer, rootElement);
-        addElement(writer, rootElement.childElements[1]);
+//        addElement(writer, rootElement.childElements[1]);
         writer.append("<h3>Metadata</h3><table border=1>\n");
         addMetadata(writer);
         writer.append("</table>\n");
