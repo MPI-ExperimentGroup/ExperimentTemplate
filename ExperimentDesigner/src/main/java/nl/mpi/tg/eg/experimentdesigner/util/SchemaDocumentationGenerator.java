@@ -138,9 +138,40 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
                 + "    <body>\n");
     }
 
+    private void addAttributes(Writer writer, DocumentationElement currentElement) throws IOException {
+        for (String attributeStrings : currentElement.attributeStrings) {
+            writer.append(attributeStrings);
+            writer.append("=&quot;String&quot;<br/>");
+        }
+        for (String attributeLowercase : currentElement.attributeLowercase) {
+            writer.append(attributeLowercase);
+            writer.append("=&quot;String Lowercase&quot;<br/>");
+        }
+        for (String attributeRGBs : currentElement.attributeRGBs) {
+            writer.append(attributeRGBs);
+            writer.append("=&quot;RGB Hex Value&quot;<br/>");
+        }
+        for (String attributeBooleans : currentElement.attributeBooleans) {
+            writer.append(attributeBooleans);
+            writer.append("=&quot;Boolean&quot;<br/>");
+        }
+        for (String attributeFloats : currentElement.attributeFloats) {
+            writer.append(attributeFloats);
+            writer.append("=&quot;Float&quot;<br/>");
+        }
+        for (String attributeIntegers : currentElement.attributeIntegers) {
+            writer.append(attributeIntegers);
+            writer.append("=&quot;Integer&quot;<br/>");
+        }
+        for (String attributeIntegerLists : currentElement.attributeIntegerLists) {
+            writer.append(attributeIntegerLists);
+            writer.append("=&quot;Integer List&quot;<br/>");
+        }
+    }
+
     private void addElement(Writer writer, DocumentationElement currentElement) throws IOException {
         writer.append(currentElement.documentationText);
-        writer.append("\n<table border=1>\n");
+        writer.append("\n<table>\n");
 
 //        writer.append("<tr><td colspan=3>\n");
 //        writer.append(ROOT_ELEMENT_DOCUMENTATION);
@@ -162,42 +193,22 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
 //        writer.append("</xs:simpleType>\n");
         writer.append("&lt;");
         writer.append(currentElement.elementName);
-        writer.append("&gt;<br/>\n");
+        writer.append("</td><td>");
 //        writer.append("Root element of the experiment configuration file of which only one is permitted.\n");
-        writer.append("</td><td>\n");
-        for (String attributeStrings : currentElement.attributeStrings) {
-            writer.append(attributeStrings);
-            writer.append("<br/>\n");
-        }
-        for (String attributeLowercase : currentElement.attributeLowercase) {
-            writer.append(attributeLowercase).append(" (lowercaseValue)\n");
-            writer.append("<br/>\n");
-        }
-        for (String attributeRGBs : currentElement.attributeRGBs) {
-            writer.append(attributeRGBs).append(" (rgbHexValue)\n");
-            writer.append("<br/>\n");
-        }
-        for (String attributeBooleans : currentElement.attributeBooleans) {
-            writer.append(attributeBooleans).append(" (boolean)\n");
-            writer.append("<br/>\n");
-        }
-        for (String attributeFloats : currentElement.attributeFloats) {
-            writer.append(attributeFloats).append(" (decimal)\n");
-            writer.append("<br/>\n");
-        }
-        for (String attributeIntegers : currentElement.attributeIntegers) {
-            writer.append(attributeIntegers).append(" (integer)\n");;
-            writer.append("<br/>\n");
-        }
-        for (String attributeIntegerLists : currentElement.attributeIntegerLists) {
-            writer.append(attributeIntegerLists);
-            writer.append("<br/>\n");
-        }
-        writer.append("</td><td>\n");
+//        writer.append("</td><td>\n");
+        addAttributes(writer, currentElement);
+
+        writer.append("</td><td>&gt;</td><td>\n");
         for (DocumentationElement chileElement : currentElement.childElements) {
+            writer.append("<table>\n");
+            writer.append("<tr><td>\n");
             writer.append("&lt;");
             writer.append(chileElement.elementName);
-            writer.append("&gt;<br/>\n");
+            writer.append("</td><td>");
+            addAttributes(writer, chileElement);
+            writer.append("</td><td>&gt;\n");
+            writer.append("</td></tr>\n");
+            writer.append("</td></tr></table>\n");
         }
 //        writer.append("&lt;preventWindowClose&gt;<br/>\n"); //featureText
 //        writer.append("&lt;administration&gt;<br/>\n");
