@@ -16,6 +16,7 @@
         <xsl:text>package nl.mpi.tg.eg.experiment.client;
 
             import com.google.gwt.user.client.History;
+            import com.google.gwt.user.client.Window;
             import com.google.gwt.user.client.ui.RootLayoutPanel;
             import nl.mpi.tg.eg.experiment.client.exception.AudioException;
             import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
