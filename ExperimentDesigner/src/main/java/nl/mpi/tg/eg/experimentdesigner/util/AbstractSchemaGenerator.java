@@ -37,6 +37,23 @@ public class AbstractSchemaGenerator {
         final String[] attributeIntegers;
         final String[] attributeIntegerLists;
         final DocumentationElement[] childElements;
+        final boolean hasStringContents;
+
+        public DocumentationElement(String elementName, String documentationText, int minBounds, int maxBounds, final boolean hasStringContents) {
+            this.elementName = elementName;
+            this.documentationText = documentationText;
+            this.minBounds = minBounds;
+            this.maxBounds = maxBounds;
+            this.attributeStrings = new String[0];
+            this.attributeLowercase = new String[0];
+            this.attributeRGBs = new String[0];
+            this.attributeBooleans = new String[0];
+            this.attributeFloats = new String[0];
+            this.attributeIntegers = new String[0];
+            this.attributeIntegerLists = new String[0];
+            this.childElements = new DocumentationElement[0];
+            this.hasStringContents = hasStringContents;
+        }
 
         public DocumentationElement(String elementName, String documentationText, int minBounds, int maxBounds, String[] attributes, DocumentationElement[] childElements) {
             this.elementName = elementName;
@@ -51,6 +68,7 @@ public class AbstractSchemaGenerator {
             this.attributeIntegers = new String[0];
             this.attributeIntegerLists = new String[0];
             this.childElements = childElements;
+            this.hasStringContents = false;
         }
 
         public DocumentationElement(String elementName, String documentationText, int minBounds, int maxBounds, String[] attributeStrings, String[] attributeLowercase, String[] attributeRGBs, String[] attributeBooleans, String[] attributeFloats, String[] attributeIntegers, String[] attributeIntegerLists, DocumentationElement[] childElements) {
@@ -66,10 +84,10 @@ public class AbstractSchemaGenerator {
             this.attributeIntegers = (attributeIntegers == null) ? new String[0] : attributeIntegers;;
             this.attributeIntegerLists = (attributeIntegerLists == null) ? new String[0] : attributeIntegerLists;;
             this.childElements = childElements;
+            this.hasStringContents = false;
         }
-
     }
-    protected final DocumentationElement rootElement = new DocumentationElement("experiment", "<h3>Experiment</h3>Root element of the experiment configuration file of which only one is permitted.", 1, 1,
+    protected final DocumentationElement rootElement = new DocumentationElement("experiment", "Root element of the experiment configuration file of which only one is permitted and it must contain all other elements of the configuration file.", 1, 1,
             new String[]{"appNameDisplay"},
             new String[]{"appNameInternal"},
             new String[]{"backgroundColour", "complementColour0", "complementColour1", "complementColour2", "complementColour3", "complementColour4", "primaryColour0", "primaryColour1", "primaryColour2", "primaryColour3", "primaryColour4"},
@@ -78,13 +96,13 @@ public class AbstractSchemaGenerator {
             new String[]{"textFontSize"},
             new String[0],
             new DocumentationElement[]{
-                new DocumentationElement("preventWindowClose", "When true the a popup will warn before closing the browser window by showing the message in 'featureText'. Not all browsers will respect this in the same way, so test this on the intended platforms.", 0, 1, new String[]{"featureText"}, null),
-                new DocumentationElement("administration", "<h3>Administration</h3>", 0, 1, null, new DocumentationElement[]{
-            new DocumentationElement("dataChannel", "", 0, 0, new String[]{"label"}, null, null, new String[]{"logToSdCard"}, null, new String[]{"channel"}, null, null)
+                new DocumentationElement("preventWindowClose", "When true the a popup will warn before closing the browser window by showing the message in 'featureText'. Not all browsers will respect this in the same way, so test this on the intended platforms.", 0, 1, new String[]{"featureText"}, new DocumentationElement[0]),
+                new DocumentationElement("administration", "Administration", 0, 1, null, new DocumentationElement[]{
+            new DocumentationElement("dataChannel", "", 0, 0, new String[]{"label"}, null, null, new String[]{"logToSdCard"}, null, new String[]{"channel"}, null, new DocumentationElement[0])
         }),
-                new DocumentationElement("scss", "", 0, 1, null, null),
-                new DocumentationElement("metadata", "", 1, 1, null, new DocumentationElement[]{}),
-                new DocumentationElement("presenter", "", 1, 0, null, new DocumentationElement[]{}),
-                new DocumentationElement("stimuli", "", 1, 1, null, new DocumentationElement[]{})
+                new DocumentationElement("scss", "", 0, 1, true),
+                new DocumentationElement("metadata", "", 1, 1, null, new DocumentationElement[0]),
+                new DocumentationElement("presenter", "", 1, 0, null, new DocumentationElement[0]),
+                new DocumentationElement("stimuli", "", 1, 1, null, new DocumentationElement[0])
             });
 }
