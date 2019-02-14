@@ -93,6 +93,57 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         writer.append("</xs:complexType>\n");
     }
 
+    private void addAttributes(final Writer writer, final DocumentationElement currentElement) throws IOException {
+        for (String attributeStrings : currentElement.attributeStrings) {
+            writer.append("<xs:attribute name=\"").append(attributeStrings).append("\" type=\"xs:string\" use=\"required\"/>\n");
+        }
+        for (String attributeStrings : currentElement.attributeStringsOptional) {
+            writer.append("<xs:attribute name=\"").append(attributeStrings).append("\" type=\"xs:string\" use=\"optional\"/>\n");
+        }
+        for (String attributeStrings : currentElement.attributeBooleansOptional) {
+            writer.append("<xs:attribute name=\"").append(attributeStrings).append("\" type=\"xs:boolean\" use=\"optional\"/>\n");
+        }
+        for (String attributeStrings : currentElement.attributeIntegersOptional) {
+            writer.append("<xs:attribute name=\"").append(attributeStrings).append("\" type=\"xs:integer\" use=\"optional\"/>\n");
+        }
+        for (String attributeLowercase : currentElement.attributeLowercase) {
+            writer.append("<xs:attribute name=\"").append(attributeLowercase).append("\" type=\"lowercaseValue\" use=\"required\"/>\n");
+        }
+        for (String attributeRGBs : currentElement.attributeRGBs) {
+            writer.append("<xs:attribute name=\"").append(attributeRGBs).append("\" type=\"rgbHexValue\" use=\"required\"/>\n");
+        }
+        for (String attributeBooleans : currentElement.attributeBooleans) {
+            // add documentation indicating that when true the menu bar will be hidden when no back value is given
+
+//            The showMenuBar attribute has a relation to the back attribute. This is because if you provide a back attribute, then you presumably want it to be shown. 
+//
+//For example:
+//
+//showMenuBar="true"
+//<presenter title="Toestemming"
+//<presenter back="Toestemming" title=“Welcome">
+//Shown in both cases.
+//
+//showMenuBar="false"
+//<presenter title="Toestemming"
+//<presenter back="Toestemming" title=“Welcome">
+//Shown in the second case but not the first.
+//
+//
+//There are some more complex cases to be considered here, but this is the reason it still shows the title bar with your configuration.
+            writer.append("<xs:attribute name=\"").append(attributeBooleans).append("\" type=\"xs:boolean\" use=\"required\"/>\n");
+        }
+        for (String attributeFloats : currentElement.attributeFloats) {
+            writer.append("<xs:attribute name=\"").append(attributeFloats).append("\" type=\"xs:decimal\" use=\"required\"/>\n");
+        }
+        for (String attributeIntegers : currentElement.attributeIntegers) {
+            writer.append("<xs:attribute name=\"").append(attributeIntegers).append("\" type=\"xs:integer\" use=\"required\"/>\n");
+        }
+        for (String attributeIntegerLists : currentElement.attributeIntegerLists) {
+            writer.append("<xs:attribute name=\"").append(attributeIntegerLists).append("\" type=\"integerList\" use=\"required\"/>\n");
+        }
+    }
+
     private void addElement(final Writer writer, final DocumentationElement currentElement, final boolean insertType) throws IOException {
 //        for (final PresenterType presenterType : presenterTypes) {
 //            writer.append("<xs:element ref=\"").append(presenterType.name()).append("\"/>\n");
@@ -131,7 +182,7 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
             writer.append(Integer.toString(childElement.minBounds));
             writer.append("\" maxOccurs=\"");
             writer.append((childElement.maxBounds > 0) ? Integer.toString(childElement.maxBounds) : "unbounded");
-            if (childElement.childElements.length > 0) {
+            if (childElement.childElements.length > 0 || "presenter".equals(childElement.elementName)) {
                 writer.append("\" type=\"");
                 writer.append(childElement.elementName);
                 writer.append("Type");
@@ -142,64 +193,15 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
             } else {
                 writer.append("\">\n");
                 writer.append("<xs:complexType>\n");
-                for (String attributeStrings : childElement.attributeStrings) {
-                    writer.append("<xs:attribute name=\"").append(attributeStrings).append("\" type=\"xs:string\" use=\"required\"/>\n");
-                }
-                for (String attributeIntegers : childElement.attributeIntegers) {
-                    writer.append("<xs:attribute name=\"").append(attributeIntegers).append("\" type=\"xs:integer\" use=\"required\"/>\n");
-                }
-                for (String attributeBooleans : childElement.attributeBooleans) {
-                    writer.append("<xs:attribute name=\"").append(attributeBooleans).append("\" type=\"xs:boolean\" use=\"required\"/>\n");
-                }
-                for (String attributeFloats : childElement.attributeFloats) {
-                    writer.append("<xs:attribute name=\"").append(attributeFloats).append("\" type=\"xs:decimal\" use=\"required\"/>\n");
-                }
+                addAttributes(writer, childElement);
                 writer.append("</xs:complexType>\n");
                 writer.append("</xs:element>\n");
             }
         }
         writer.append("</xs:sequence>\n");
         if (currentElement.attributeStrings.length > 0) {
-            for (String attributeStrings : currentElement.attributeStrings) {
-                writer.append("<xs:attribute name=\"").append(attributeStrings).append("\" type=\"xs:string\" use=\"required\"/>\n");
-            }
-            writer.append("<xs:attribute name=\"userIdGetParam\" type=\"xs:string\" use=\"optional\"/>\n");
-            for (String attributeLowercase : currentElement.attributeLowercase) {
-                writer.append("<xs:attribute name=\"").append(attributeLowercase).append("\" type=\"lowercaseValue\" use=\"required\"/>\n");
-            }
-            for (String attributeRGBs : currentElement.attributeRGBs) {
-                writer.append("<xs:attribute name=\"").append(attributeRGBs).append("\" type=\"rgbHexValue\" use=\"required\"/>\n");
-            }
-            for (String attributeBooleans : currentElement.attributeBooleans) {
-                // add documentation indicating that when true the menu bar will be hidden when no back value is given
+            addAttributes(writer, currentElement);
 
-//            The showMenuBar attribute has a relation to the back attribute. This is because if you provide a back attribute, then you presumably want it to be shown. 
-//
-//For example:
-//
-//showMenuBar="true"
-//<presenter title="Toestemming"
-//<presenter back="Toestemming" title=“Welcome">
-//Shown in both cases.
-//
-//showMenuBar="false"
-//<presenter title="Toestemming"
-//<presenter back="Toestemming" title=“Welcome">
-//Shown in the second case but not the first.
-//
-//
-//There are some more complex cases to be considered here, but this is the reason it still shows the title bar with your configuration.
-                writer.append("<xs:attribute name=\"").append(attributeBooleans).append("\" type=\"xs:boolean\" use=\"required\"/>\n");
-            }
-            for (String attributeFloats : currentElement.attributeFloats) {
-                writer.append("<xs:attribute name=\"").append(attributeFloats).append("\" type=\"xs:decimal\" use=\"required\"/>\n");
-            }
-            for (String attributeIntegers : currentElement.attributeIntegers) {
-                writer.append("<xs:attribute name=\"").append(attributeIntegers).append("\" type=\"xs:integer\" use=\"required\"/>\n");
-            }
-            for (String attributeIntegerLists : currentElement.attributeIntegerLists) {
-                writer.append("<xs:attribute name=\"").append(attributeIntegerLists).append("\" type=\"integerList\" use=\"required\"/>\n");
-            }
 //            writer.append("</xs:complexType>\n");
 //            writer.append("</xs:element>\n");
         } else {
@@ -230,29 +232,27 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
 //        writer.append("</xs:complexType>\n");
     }
 
-    private void addMetadata(Writer writer) throws IOException {
-        writer.append("<xs:complexType  name=\"metadataType\">\n").append("<xs:sequence>\n");
-        writer.append("<xs:element name=\"field\" maxOccurs=\"unbounded\">\n").append("<xs:complexType>\n");
-//        writer.append("<xs:sequence>\n").append("</xs:sequence>\n");
-        writer.append("<xs:attribute name=\"controlledMessage\" type=\"xs:string\" use=\"required\"/>\n");
-        writer.append("<xs:attribute name=\"controlledRegex\" type=\"xs:string\" use=\"required\"/>\n");
-        writer.append("<xs:attribute name=\"postName\" type=\"xs:string\" use=\"required\"/>\n");
-        writer.append("<xs:attribute name=\"preventServerDuplicates\" type=\"xs:boolean\" use=\"optional\"/>\n");
-        writer.append("<xs:attribute name=\"duplicatesControlledMessage\" type=\"xs:string\" use=\"optional\"/>\n");
-        writer.append("<xs:attribute name=\"registrationField\" type=\"xs:string\" use=\"required\"/>\n");
-        writer.append("</xs:complexType>\n").append("</xs:element>\n");
-        writer.append("</xs:sequence>\n");
-        writer.append("</xs:complexType>\n");
-    }
-
-    private void addStimuli(Writer writer) throws IOException {
-        writer.append("<xs:complexType name=\"stimuliType\">\n").append("<xs:sequence>\n");
-        writer.append("<xs:element name=\"stimulus\" minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
-        writer.append("</xs:element>\n");
-        writer.append("</xs:sequence>\n");
-        writer.append("</xs:complexType>\n");
-    }
-
+//    private void addMetadata(Writer writer) throws IOException {
+//        writer.append("<xs:complexType  name=\"metadataType\">\n").append("<xs:sequence>\n");
+//        writer.append("<xs:element name=\"field\" maxOccurs=\"unbounded\">\n").append("<xs:complexType>\n");
+////        writer.append("<xs:sequence>\n").append("</xs:sequence>\n");
+//        writer.append("<xs:attribute name=\"controlledMessage\" type=\"xs:string\" use=\"required\"/>\n");
+//        writer.append("<xs:attribute name=\"controlledRegex\" type=\"xs:string\" use=\"required\"/>\n");
+//        writer.append("<xs:attribute name=\"postName\" type=\"xs:string\" use=\"required\"/>\n");
+//        writer.append("<xs:attribute name=\"preventServerDuplicates\" type=\"xs:boolean\" use=\"optional\"/>\n");
+//        writer.append("<xs:attribute name=\"duplicatesControlledMessage\" type=\"xs:string\" use=\"optional\"/>\n");
+//        writer.append("<xs:attribute name=\"registrationField\" type=\"xs:string\" use=\"required\"/>\n");
+//        writer.append("</xs:complexType>\n").append("</xs:element>\n");
+//        writer.append("</xs:sequence>\n");
+//        writer.append("</xs:complexType>\n");
+//    }
+//    private void addStimuli(Writer writer) throws IOException {
+//        writer.append("<xs:complexType name=\"stimuliType\">\n").append("<xs:sequence>\n");
+//        writer.append("<xs:element name=\"stimulus\" minOccurs=\"0\" maxOccurs=\"unbounded\">\n");
+//        writer.append("</xs:element>\n");
+//        writer.append("</xs:sequence>\n");
+//        writer.append("</xs:complexType>\n");
+//    }
     private void addFeature(Writer writer, final FeatureType featureType) throws IOException {
         writer.append("<xs:complexType name=\"").append(featureType.name()).append("Type\">\n");
         if (featureType.canHaveFeatures()) {
@@ -425,9 +425,12 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         addExperiment(writer);
         addElement(writer, rootElement, false);
         addElement(writer, rootElement.childElements[1], true);
-        addMetadata(writer);
+        addElement(writer, rootElement.childElements[3], true);
+//        addMetadata(writer);
         addPresenter(writer, PresenterType.values());
-        addStimuli(writer);
+        addElement(writer, rootElement.childElements[5], true);
+//        addElement(writer, rootElement.childElements[5].childElements[0], true);
+//        addStimuli(writer);
 //        for (PresenterType presenterType : PresenterType.values()) {
 //            addPresenter(writer, presenterType);
 //            for (FeatureType featureType : presenterType.getFeatureTypes()) {
