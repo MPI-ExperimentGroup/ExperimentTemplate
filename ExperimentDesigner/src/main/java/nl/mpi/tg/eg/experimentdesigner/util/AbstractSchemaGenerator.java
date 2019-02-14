@@ -36,6 +36,9 @@ public class AbstractSchemaGenerator {
         final String[] attributeFloats;
         final String[] attributeIntegers;
         final String[] attributeIntegerLists;
+        final String[] attributeStringsOptional;
+        final String[] attributeBooleansOptional;
+        final String[] attributeIntegersOptional;
         final DocumentationElement[] childElements;
         final boolean hasStringContents;
 
@@ -51,6 +54,9 @@ public class AbstractSchemaGenerator {
             this.attributeFloats = new String[0];
             this.attributeIntegers = new String[0];
             this.attributeIntegerLists = new String[0];
+            this.attributeStringsOptional = new String[0];
+            this.attributeBooleansOptional = new String[0];
+            this.attributeIntegersOptional = new String[0];
             this.childElements = new DocumentationElement[0];
             this.hasStringContents = hasStringContents;
         }
@@ -67,11 +73,14 @@ public class AbstractSchemaGenerator {
             this.attributeFloats = new String[0];
             this.attributeIntegers = new String[0];
             this.attributeIntegerLists = new String[0];
+            this.attributeStringsOptional = new String[0];
+            this.attributeBooleansOptional = new String[0];
+            this.attributeIntegersOptional = new String[0];
             this.childElements = childElements;
             this.hasStringContents = false;
         }
 
-        public DocumentationElement(String elementName, String documentationText, int minBounds, int maxBounds, String[] attributeStrings, String[] attributeLowercase, String[] attributeRGBs, String[] attributeBooleans, String[] attributeFloats, String[] attributeIntegers, String[] attributeIntegerLists, DocumentationElement[] childElements) {
+        public DocumentationElement(String elementName, String documentationText, int minBounds, int maxBounds, String[] attributeStrings, String[] attributeLowercase, String[] attributeRGBs, String[] attributeBooleans, String[] attributeFloats, String[] attributeIntegers, String[] attributeIntegerLists, String[] attributeStringsOptional, String[] attributeBooleansOptional, String[] attributeIntegersOptional, DocumentationElement[] childElements) {
             this.elementName = elementName;
             this.documentationText = documentationText;
             this.minBounds = minBounds;
@@ -83,6 +92,9 @@ public class AbstractSchemaGenerator {
             this.attributeFloats = (attributeFloats == null) ? new String[0] : attributeFloats;;
             this.attributeIntegers = (attributeIntegers == null) ? new String[0] : attributeIntegers;;
             this.attributeIntegerLists = (attributeIntegerLists == null) ? new String[0] : attributeIntegerLists;;
+            this.attributeStringsOptional = (attributeStringsOptional == null) ? new String[0] : attributeStringsOptional;;
+            this.attributeBooleansOptional = (attributeBooleansOptional == null) ? new String[0] : attributeBooleansOptional;;
+            this.attributeIntegersOptional = (attributeIntegersOptional == null) ? new String[0] : attributeIntegersOptional;;
             this.childElements = childElements;
             this.hasStringContents = false;
         }
@@ -95,14 +107,17 @@ public class AbstractSchemaGenerator {
             new String[]{"defaultScale"},
             new String[]{"textFontSize"},
             new String[0],
+            new String[]{"userIdGetParam"},
+            new String[0],
+            new String[0],
             new DocumentationElement[]{
                 new DocumentationElement("preventWindowClose", "When true the a popup will warn before closing the browser window by showing the message in 'featureText'. Not all browsers will respect this in the same way, so test this on the intended platforms.", 0, 1, new String[]{"featureText"}, new DocumentationElement[0]),
                 new DocumentationElement("administration", "Administration", 0, 1, null, new DocumentationElement[]{
-            new DocumentationElement("dataChannel", "", 0, 0, new String[]{"label"}, null, null, new String[]{"logToSdCard"}, null, new String[]{"channel"}, null, new DocumentationElement[0])
+            new DocumentationElement("dataChannel", "", 0, 0, new String[]{"label"}, null, null, new String[]{"logToSdCard"}, null, new String[]{"channel"}, null, null, null, null, new DocumentationElement[0])
         }),
                 new DocumentationElement("scss", "", 0, 1, true),
-                new DocumentationElement("metadata", "The fields of data to be collected for each participant and for use as storage data that will be reported in the admin tables.", 1, 1, null, new DocumentationElement[]{new DocumentationElement("field", "", 1, 0, new String[]{"controlledMessage", "controlledRegex", "postName", "preventServerDuplicates", "duplicatesControlledMessage", "registrationField"}, new DocumentationElement[0])}),
+                new DocumentationElement("metadata", "The fields of data to be collected for each participant and for use as storage data that will be reported in the admin tables.", 1, 1, null, new DocumentationElement[]{new DocumentationElement("field", "", 1, 0, new String[]{"controlledMessage", "controlledRegex", "postName", "registrationField"}, null, null, null, null, null, null, new String[]{"duplicatesControlledMessage"}, new String[]{"preventServerDuplicates"}, null, new DocumentationElement[0])}),
                 new DocumentationElement("presenter", "", 1, 0, new String[]{"back", "next", "self", "title", "menuLabel"}, new DocumentationElement[0]),
-                new DocumentationElement("stimuli", "All stimulus elements must be contained in the stimuli element.", 1, 1, null, new DocumentationElement[]{new DocumentationElement("stimulus", "Each individual stimulus can be described in the form of lebel, audio, video", 0, 0, new String[]{"label"}, null, null, new String[]{"audio"}, null, new String[]{"video", "code"}, null, new DocumentationElement[0])})
+                new DocumentationElement("stimuli", "All stimulus elements must be contained in the stimuli element.", 1, 1, null, new DocumentationElement[]{new DocumentationElement("stimulus", "Each individual stimulus can be described in the form of label, audio, video", 0, 0, new String[]{"identifier"}, null, null, null, null, null, null, new String[]{"videoPath", "imagePath", "code", "audioPath", "label", "correctResponses", "ratingLabels", "tags"}, null, new String[]{"pauseMs"}, new DocumentationElement[0])})
             });
 }
