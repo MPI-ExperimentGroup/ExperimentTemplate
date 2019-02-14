@@ -147,37 +147,37 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         for (String attributeStrings : currentElement.attributeStrings) {
             writer.append("<span style=\"color:green\">");
             writer.append(attributeStrings);
-            writer.append("</span><span style=\"color:grey\">=&quot;String&quot;</span><br/>");
+            writer.append("</span><span style=\"color:grey\">=&quot;String&quot;</span><br/>\n");
         }
         for (String attributeLowercase : currentElement.attributeLowercase) {
             writer.append("<span style=\"color:green\">");
             writer.append(attributeLowercase);
-            writer.append("</span><span style=\"color:grey\">=&quot;String Lowercase&quot;</span><br/>");
+            writer.append("</span><span style=\"color:grey\">=&quot;String Lowercase&quot;</span><br/>\n");
         }
         for (String attributeRGBs : currentElement.attributeRGBs) {
             writer.append("<span style=\"color:green\">");
             writer.append(attributeRGBs);
-            writer.append("</span><span style=\"color:grey\">=&quot;RGB Hex Value&quot;</span><br/>");
+            writer.append("</span><span style=\"color:grey\">=&quot;RGB Hex Value&quot;</span><br/>\n");
         }
         for (String attributeBooleans : currentElement.attributeBooleans) {
             writer.append("<span style=\"color:green\">");
             writer.append(attributeBooleans);
-            writer.append("</span><span style=\"color:grey\">=&quot;Boolean&quot;</span><br/>");
+            writer.append("</span><span style=\"color:grey\">=&quot;Boolean&quot;</span><br/>\n");
         }
         for (String attributeFloats : currentElement.attributeFloats) {
             writer.append("<span style=\"color:green\">");
             writer.append(attributeFloats);
-            writer.append("</span><span style=\"color:grey\">=&quot;Float&quot;</span><br/>");
+            writer.append("</span><span style=\"color:grey\">=&quot;Float&quot;</span><br/>\n");
         }
         for (String attributeIntegers : currentElement.attributeIntegers) {
             writer.append("<span style=\"color:green\">");
             writer.append(attributeIntegers);
-            writer.append("</span><span style=\"color:grey\">=&quot;Integer&quot;</span><br/>");
+            writer.append("</span><span style=\"color:grey\">=&quot;Integer&quot;</span><br/>\n");
         }
         for (String attributeIntegerLists : currentElement.attributeIntegerLists) {
             writer.append("<span style=\"color:green\">");
             writer.append(attributeIntegerLists);
-            writer.append("</span><span style=\"color:grey\">=&quot;Integer List&quot;</span><br/>");
+            writer.append("</span><span style=\"color:grey\">=&quot;Integer List&quot;</span><br/>\n");
         }
     }
 
@@ -186,7 +186,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         writer.append(currentElement.elementName);
         writer.append("\n</h3>\n");
         writer.append(currentElement.documentationText);
-        writer.append("\n<table>\n");
+        writer.append("\n<br/><br/><table>\n");
 
 //        writer.append("<tr><td colspan=3>\n");
 //        writer.append(ROOT_ELEMENT_DOCUMENTATION);
@@ -237,10 +237,10 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
             writer.append("</tr>\n");
         }
         writer.append("<tr>\n");
-        writer.append("<td colspan='2' id='target1'>\n");
+        writer.append("<td colspan='2' id='" + currentElement.elementName + "Target1'>\n");
         writer.append("</td>");
         writer.append("<td>\n");
-        writer.append("<button onclick=\"getExample('administration', 'target1');\">show example</button>\n");
+        writer.append("<button onclick=\"getExample('" + currentElement.elementName + "', '" + currentElement.elementName + "Target');\">show example</button>\n");
         writer.append("</td>");
         writer.append("</tr>\n");
         writer.append("</table>\n");
