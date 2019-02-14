@@ -101,8 +101,8 @@ public class AbstractSchemaGenerator {
             new DocumentationElement("dataChannel", "", 0, 0, new String[]{"label"}, null, null, new String[]{"logToSdCard"}, null, new String[]{"channel"}, null, new DocumentationElement[0])
         }),
                 new DocumentationElement("scss", "", 0, 1, true),
-                new DocumentationElement("metadata", "", 1, 1, null, new DocumentationElement[]{new DocumentationElement("field", "", 1, 0, new String[]{"controlledMessage", "controlledRegex", "postName", "preventServerDuplicates", "duplicatesControlledMessage", "registrationField"}, new DocumentationElement[0])}),
+                new DocumentationElement("metadata", "The fields of data to be collected for each participant and for use as storage data that will be reported in the admin tables.", 1, 1, null, new DocumentationElement[]{new DocumentationElement("field", "", 1, 0, new String[]{"controlledMessage", "controlledRegex", "postName", "preventServerDuplicates", "duplicatesControlledMessage", "registrationField"}, new DocumentationElement[0])}),
                 new DocumentationElement("presenter", "", 1, 0, new String[]{"back", "next", "self", "title", "menuLabel"}, new DocumentationElement[0]),
-                new DocumentationElement("stimuli", "", 1, 1, null, new DocumentationElement[0])
+                new DocumentationElement("stimuli", "All stimulus elements must be contained in the stimuli element.", 1, 1, null, new DocumentationElement[]{new DocumentationElement("stimulus", "Each individual stimulus can be described in the form of lebel, audio, video", 0, 0, new String[]{"label"}, null, null, new String[]{"audio"}, null, new String[]{"video", "code"}, null, new DocumentationElement[0])})
             });
 }
