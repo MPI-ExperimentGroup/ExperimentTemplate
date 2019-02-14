@@ -164,6 +164,11 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
             writer.append(attributeBooleans);
             writer.append("</span><span style=\"color:grey\">=&quot;Boolean&quot;</span><br/>\n");
         }
+        for (String attributeIntegerLists : currentElement.attributeBooleansOptional) {
+            writer.append("<span style=\"color:green\">");
+            writer.append(attributeIntegerLists);
+            writer.append("</span><span style=\"color:grey\">=&quot;Boolean (optional)&quot;</span><br/>\n");
+        }
         for (String attributeFloats : currentElement.attributeFloats) {
             writer.append("<span style=\"color:green\">");
             writer.append(attributeFloats);
@@ -173,6 +178,11 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
             writer.append("<span style=\"color:green\">");
             writer.append(attributeIntegers);
             writer.append("</span><span style=\"color:grey\">=&quot;Integer&quot;</span><br/>\n");
+        }
+        for (String attributeIntegerLists : currentElement.attributeIntegersOptional) {
+            writer.append("<span style=\"color:green\">");
+            writer.append(attributeIntegerLists);
+            writer.append("</span><span style=\"color:grey\">=&quot;Integer (optional)&quot;</span><br/>\n");
         }
         for (String attributeIntegerLists : currentElement.attributeIntegerLists) {
             writer.append("<span style=\"color:green\">");
