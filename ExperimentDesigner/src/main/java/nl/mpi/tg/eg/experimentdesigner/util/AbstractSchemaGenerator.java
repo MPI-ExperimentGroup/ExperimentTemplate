@@ -99,7 +99,7 @@ public class AbstractSchemaGenerator {
             this.hasStringContents = false;
         }
     }
-    protected final DocumentationElement rootElement = new DocumentationElement("experiment", "Root element of the experiment configuration file of which only one is permitted and it must contain all other elements of the configuration file.", 1, 1,
+    protected final DocumentationElement rootElement = new DocumentationElement("experiment", "Each experiment XML configuration file must have one EXPERIMENT element of which only one is permitted and it must contain all other elements of the configuration file.", 1, 1,
             new String[]{"appNameDisplay"},
             new String[]{"appNameInternal"},
             new String[]{"backgroundColour", "complementColour0", "complementColour1", "complementColour2", "complementColour3", "complementColour4", "primaryColour0", "primaryColour1", "primaryColour2", "primaryColour3", "primaryColour4"},
@@ -116,7 +116,7 @@ public class AbstractSchemaGenerator {
             new DocumentationElement("dataChannel", "", 0, 0, new String[]{"label"}, null, null, new String[]{"logToSdCard"}, null, new String[]{"channel"}, null, null, null, null, new DocumentationElement[0])
         }),
                 new DocumentationElement("scss", "", 0, 1, true),
-                new DocumentationElement("metadata", "The fields of data to be collected for each participant and for use as storage data that will be reported in the admin tables.", 1, 1, null, new DocumentationElement[]{new DocumentationElement("field", "", 1, 0, new String[]{"controlledMessage", "duplicatesControlledMessage", "controlledRegex", "postName", "registrationField"}, null, null, null, null, null, null, new String[]{"duplicatesControlledMessage"}, new String[]{"preventServerDuplicates"}, null, new DocumentationElement[0])}),
+                new DocumentationElement("metadata", "The fields of data to be collected for each participant and for use as storage data that will be reported in the admin tables.", 1, 1, null, new DocumentationElement[]{new DocumentationElement("field", "", 1, 0, new String[]{"controlledMessage", "controlledRegex", "postName", "registrationField"}, null, null, null, null, null, null, new String[]{"duplicatesControlledMessage"/* optional string*/}, new String[]{"preventServerDuplicates"}, null, new DocumentationElement[0])}),
                 new DocumentationElement("presenter", "", 1, 0, new String[]{"back", "next", "self", "title", "menuLabel"}, new DocumentationElement[0]),
                 new DocumentationElement("stimuli", "All stimulus elements must be contained in the stimuli element.", 1, 1, null, new DocumentationElement[]{new DocumentationElement("stimulus", "Each individual stimulus can be described in the form of label, audio, video", 0, 0, new String[]{"identifier"}, null, null, null, null, null, null, new String[]{"videoPath", "imagePath", "code", "audioPath", "label", "correctResponses", "ratingLabels", "tags"}, null, new String[]{"pauseMs"}, new DocumentationElement[0])})
             });
