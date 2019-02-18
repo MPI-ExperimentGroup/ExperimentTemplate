@@ -97,7 +97,13 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
                 + "if(lastElementNameCount === 1){\n"
                 + "$(\"#\" + targetId).first().append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&lt;...&gt;</span><br/>');\n"
                 + "}}});\n"
-                + "$(\"#\" + targetId).first().append('<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">' + currentElement.nodeName + '</span><span style=\"color:purple\">&gt;</span>');\n"
+                + "if($(currentElement).children().length === 0){\n"
+                + "var elementText = $(currentElement).text().trim();\n"
+                + "if(elementText.length > 0){\n"
+                + "$(\"#\" + targetId).first().append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<pre style=\"color:grey\">' + elementText + '</pre><br/>');\n"
+                + "}\n"
+                + "}\n"
+                + "$(\"#\" + targetId).first().append('<span style=\"color:purple\">&lt;</span><span style=\"color:red\">/</span><span style=\"color:blue\">' + currentElement.nodeName + '</span><span style=\"color:purple\">&gt;</span>');\n"
                 + "});\n"
                 + "\n"
                 + "/*\n"
@@ -266,6 +272,8 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
             writer.append("</span><span style=\"color:purple\">&gt;</span></td>");
             writer.append("</tr>\n");
         }
+        writer.append("</table>\n");
+        writer.append("<table style=\"width: 100%;\">\n");
         writer.append("<tr>\n");
         writer.append("<td colspan='2' id='" + currentElement.elementName + "Target'>\n");
         writer.append("</td>");
