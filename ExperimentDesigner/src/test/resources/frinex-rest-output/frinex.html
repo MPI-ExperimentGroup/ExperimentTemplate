@@ -4,93 +4,335 @@
         <title>Frinex XML Usage</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script src="webjars/jquery/jquery.min.js"></script><script>
+<style>
+td{
+    vertical-align: top;
+}
+</style>
+<script src="webjars/jquery/jquery.min.js"></script>
+<script>
     function getExample(tagName, targetId) {
       console.log("getExample");
       
     $.get( "with_stimulus_example.xml", function( data ) {
-    console.log("gotData");
-    console.log(tagName);
-      console.log(targetId);$(data).find(tagName).each(function() {
-$("#" + targetId).first().append('<div>' + this.nodeName.toLowerCase() + '</div>');
+$(data).find(tagName).each(function(currentIndex, currentElement) {
+$("#" + targetId).empty();
+$("#" + targetId).css({background: "lightgray"});
+$("#" + targetId).first().append('<span style="color:purple">&lt;</span><span style="color:blue">' + currentElement.nodeName);
+$(currentElement.attributes).each(function(attributeIndex, childAttribute) {
+if(attributeIndex > 0){
+$("#" + targetId).first().append('<br/>&nbsp;&nbsp;&nbsp;');
+}
+$("#" + targetId).first().append('&nbsp;<span style="color:green">' + childAttribute.name);
+$("#" + targetId).first().append('</span><span style="color:grey">=&quot;' + childAttribute.value + '&quot;</span>');
 });
-
-$(data).find(tagName).children().each(function() {
-$("#" + targetId).first().append('<div>' + this.nodeName.toLowerCase() + '</div>');
+$("#" + targetId).first().append('</span><span style="color:purple">&gt;</span><br/>');
+var lastElementName = '';
+var lastElementNameCount = 0;
+$(currentElement).children().each(function(childIndex, childElement) {
+if(lastElementName !== childElement.nodeName) {
+$("#" + targetId).first().append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:purple">&lt;</span><span style="color:blue">' + childElement.nodeName + '</span><span style="color:purple">&gt;</span><br/>');
+lastElementName = childElement.nodeName;
+lastElementNameCount = 0;
+} else {lastElementNameCount++;if(lastElementNameCount === 1){
+$("#" + targetId).first().append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&lt;...&gt;</span><br/>');
+}}});
+if($(currentElement).children().length === 0){
+var elementText = $(currentElement).text().trim();
+if(elementText.length > 0){
+$("#" + targetId).first().append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<pre style="color:grey">' + elementText + '</pre><br/>');
+}
+}
+$("#" + targetId).first().append('<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">' + currentElement.nodeName + '</span><span style="color:purple">&gt;</span>');
 });
     });
     }
-</script></head>
+    
+  </script>    </head>
     <body>
-<h3>Experiment</h3>Root element of the experiment configuration file of which only one is permitted.
-<table border=1>
+<h3 style="text-transform: uppercase;">
+experiment
+</h3>
+Each experiment XML configuration file must have one EXPERIMENT element of which only one is permitted and it must contain all other elements of the configuration file.
+<br/><br/><table>
 <tr><td>
-&lt;experiment&gt;<br/>
-</td><td>
-appNameDisplay<br/>
-appNameInternal (lowercaseValue)
-<br/>
-backgroundColour (rgbHexValue)
-<br/>
-complementColour0 (rgbHexValue)
-<br/>
-complementColour1 (rgbHexValue)
-<br/>
-complementColour2 (rgbHexValue)
-<br/>
-complementColour3 (rgbHexValue)
-<br/>
-complementColour4 (rgbHexValue)
-<br/>
-primaryColour0 (rgbHexValue)
-<br/>
-primaryColour1 (rgbHexValue)
-<br/>
-primaryColour2 (rgbHexValue)
-<br/>
-primaryColour3 (rgbHexValue)
-<br/>
-primaryColour4 (rgbHexValue)
-<br/>
-isScalable (boolean)
-<br/>
-preserveLastState (boolean)
-<br/>
-rotatable (boolean)
-<br/>
-showMenuBar (boolean)
-<br/>
-defaultScale (decimal)
-<br/>
-textFontSize (integer)
-<br/>
-</td><td>
-&lt;preventWindowClose&gt;<br/>
-&lt;administration&gt;<br/>
-&lt;scss&gt;<br/>
-&lt;metadata&gt;<br/>
-&lt;presenter&gt;<br/>
-&lt;stimuli&gt;<br/>
+<span style="color:purple">&lt;</span><span style="color:blue">experiment</span></td><td><span style="color:green">appNameDisplay</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">appNameInternal</span><span style="color:grey">=&quot;String Lowercase&quot;</span><br/>
+<span style="color:green">backgroundColour</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><br/>
+<span style="color:green">complementColour0</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><br/>
+<span style="color:green">complementColour1</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><br/>
+<span style="color:green">complementColour2</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><br/>
+<span style="color:green">complementColour3</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><br/>
+<span style="color:green">complementColour4</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><br/>
+<span style="color:green">primaryColour0</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><br/>
+<span style="color:green">primaryColour1</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><br/>
+<span style="color:green">primaryColour2</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><br/>
+<span style="color:green">primaryColour3</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><br/>
+<span style="color:green">primaryColour4</span><span style="color:grey">=&quot;RGB Hex Value&quot;</span><br/>
+<span style="color:green">isScalable</span><span style="color:grey">=&quot;Boolean&quot;</span><br/>
+<span style="color:green">preserveLastState</span><span style="color:grey">=&quot;Boolean&quot;</span><br/>
+<span style="color:green">rotatable</span><span style="color:grey">=&quot;Boolean&quot;</span><br/>
+<span style="color:green">showMenuBar</span><span style="color:grey">=&quot;Boolean&quot;</span><br/>
+<span style="color:green">defaultScale</span><span style="color:grey">=&quot;Float&quot;</span><br/>
+<span style="color:green">textFontSize</span><span style="color:grey">=&quot;Integer&quot;</span><br/>
+</td><td><span style="color:purple">&gt;</span></td><td>
+<table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">preventWindowClose</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
+</td></tr></table>
+<table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">administration</span></td><td></td><td><span style="color:purple">&gt;</span>
+</td></tr>
+</td></tr></table>
+<table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">scss</span></td><td></td><td><span style="color:purple">&gt;</span>
+</td></tr>
+</td></tr></table>
+<table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">metadata</span></td><td></td><td><span style="color:purple">&gt;</span>
+</td></tr>
+</td></tr></table>
+<table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">presenter</span></td><td><span style="color:green">back</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">next</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">self</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">title</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">menuLabel</span><span style="color:grey">=&quot;String&quot;</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
+</td></tr></table>
+<table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">stimuli</span></td><td></td><td><span style="color:purple">&gt;</span>
+</td></tr>
+</td></tr></table>
 </td>
 </tr>
 <tr>
-<td colspan='2' id='target1'>
+<td>
+<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">experiment</span><span style="color:purple">&gt;</span></td></tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='experimentTarget'>
 </td><td>
-<button onclick="getExample('experiment', 'experiment1');">show example</button>
+<button onclick="getExample('experiment', 'experimentTarget');">search for examples</button>
 </td></tr>
 </table>
-<h3>Administration</h3>
-<table border=1>
+<h3 style="text-transform: uppercase;">
+preventWindowClose
+</h3>
+When true the a popup will warn before closing the browser window by showing the message in 'featureText'. Not all browsers will respect this in the same way, so test this on the intended platforms.
+<br/><br/><table>
 <tr><td>
-&lt;administration&gt;<br/>
-</td><td>
-&lt;dataChannel&gt;<br/>
-</td><td>
-channel (decimal)<br/>
-label<br/>
-logToSdCard (boolean)<br/>
+<span style="color:purple">&lt;</span><span style="color:blue">preventWindowClose</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='preventWindowCloseTarget'>
+</td><td>
+<button onclick="getExample('preventWindowClose', 'preventWindowCloseTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 style="text-transform: uppercase;">
+administration
+</h3>
+Administration
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">administration</span></td><td></td><td><span style="color:purple">&gt;</span></td><td>
+<table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">dataChannel</span></td><td><span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">logToSdCard</span><span style="color:grey">=&quot;Boolean&quot;</span><br/>
+<span style="color:green">channel</span><span style="color:grey">=&quot;Integer&quot;</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
+</td></tr></table>
+</td>
+</tr>
+<tr>
+<td>
+<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">administration</span><span style="color:purple">&gt;</span></td></tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='administrationTarget'>
+</td><td>
+<button onclick="getExample('administration', 'administrationTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 style="text-transform: uppercase;">
+dataChannel
+</h3>
+
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">dataChannel</span></td><td><span style="color:green">label</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">logToSdCard</span><span style="color:grey">=&quot;Boolean&quot;</span><br/>
+<span style="color:green">channel</span><span style="color:grey">=&quot;Integer&quot;</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
+</td>
+</tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='dataChannelTarget'>
+</td><td>
+<button onclick="getExample('dataChannel', 'dataChannelTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 style="text-transform: uppercase;">
+scss
+</h3>
+
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">scss</span></td><td></td><td><span style="color:purple">&gt;</span></td><td>
+</td>
+</tr>
+<tr>
+<td></td><td></td><td>
+<span style="color:grey">String</span></td></tr>
+<tr>
+<td>
+<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">scss</span><span style="color:purple">&gt;</span></td></tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='scssTarget'>
+</td><td>
+<button onclick="getExample('scss', 'scssTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 style="text-transform: uppercase;">
+metadata
+</h3>
+The fields of data to be collected for each participant and for use as storage data that will be reported in the admin tables.
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">metadata</span></td><td></td><td><span style="color:purple">&gt;</span></td><td>
+<table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">field</span></td><td><span style="color:green">controlledMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">controlledRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">postName</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">registrationField</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">preventServerDuplicates</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
+</td></tr></table>
+</td>
+</tr>
+<tr>
+<td>
+<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">metadata</span><span style="color:purple">&gt;</span></td></tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='metadataTarget'>
+</td><td>
+<button onclick="getExample('metadata', 'metadataTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 style="text-transform: uppercase;">
+field
+</h3>
+
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">field</span></td><td><span style="color:green">controlledMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">controlledRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">postName</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">registrationField</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">preventServerDuplicates</span><span style="color:grey">=&quot;Boolean (optional)&quot;</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
+</td>
+</tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='fieldTarget'>
+</td><td>
+<button onclick="getExample('field', 'fieldTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 style="text-transform: uppercase;">
+presenter
+</h3>
+
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">presenter</span></td><td><span style="color:green">back</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">next</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">self</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">title</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">menuLabel</span><span style="color:grey">=&quot;String&quot;</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
+</td>
+</tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='presenterTarget'>
+</td><td>
+<button onclick="getExample('presenter', 'presenterTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 style="text-transform: uppercase;">
+stimuli
+</h3>
+All stimulus elements must be contained in the stimuli element.
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">stimuli</span></td><td></td><td><span style="color:purple">&gt;</span></td><td>
+<table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulus</span></td><td><span style="color:green">identifier</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">pauseMs</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><br/>
+</td><td><span style="color:purple">&gt;</span>
+</td></tr>
+</td></tr></table>
+</td>
+</tr>
+<tr>
+<td>
+<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">stimuli</span><span style="color:purple">&gt;</span></td></tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='stimuliTarget'>
+</td><td>
+<button onclick="getExample('stimuli', 'stimuliTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 style="text-transform: uppercase;">
+stimulus
+</h3>
+Each individual stimulus can be described in the form of label, audio, video
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulus</span></td><td><span style="color:green">identifier</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">pauseMs</span><span style="color:grey">=&quot;Integer (optional)&quot;</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
+</td>
+</tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='stimulusTarget'>
+</td><td>
+<button onclick="getExample('stimulus', 'stimulusTarget');">search for examples</button>
+</td></tr>
 </table>
 <h3>Metadata</h3><table border=1>
 <tr><td>
