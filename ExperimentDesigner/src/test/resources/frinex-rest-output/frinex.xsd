@@ -22,7 +22,7 @@
 <xs:complexType>
 <xs:sequence minOccurs="1" maxOccurs="1">
 <xs:annotation>
-<xs:documentation>Root element of the experiment configuration file of which only one is permitted and it must contain all other elements of the configuration file.</xs:documentation>
+<xs:documentation>Each experiment XML configuration file must have one EXPERIMENT element of which only one is permitted and it must contain all other elements of the configuration file.</xs:documentation>
 </xs:annotation>
 <xs:element name="preventWindowClose" minOccurs="0" maxOccurs="1">
 <xs:complexType>
@@ -223,11 +223,13 @@
 <xs:element name="stimulus" minOccurs="0" maxOccurs="unbounded">
 <xs:complexType>
 <xs:attribute name="identifier" type="xs:string" use="required"/>
-<xs:attribute name="video" type="xs:string" use="optional"/>
+<xs:attribute name="videoPath" type="xs:string" use="optional"/>
+<xs:attribute name="imagePath" type="xs:string" use="optional"/>
 <xs:attribute name="code" type="xs:string" use="optional"/>
 <xs:attribute name="audioPath" type="xs:string" use="optional"/>
 <xs:attribute name="label" type="xs:string" use="optional"/>
 <xs:attribute name="correctResponses" type="xs:string" use="optional"/>
+<xs:attribute name="ratingLabels" type="xs:string" use="optional"/>
 <xs:attribute name="tags" type="xs:string" use="optional"/>
 <xs:attribute name="pauseMs" type="xs:integer" use="optional"/>
 </xs:complexType>
