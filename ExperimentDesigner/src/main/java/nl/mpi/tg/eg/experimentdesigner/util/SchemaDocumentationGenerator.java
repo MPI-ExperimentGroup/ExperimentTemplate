@@ -73,13 +73,19 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
                 + "});\n"
                 + "*/\n"
                 + "\n"
-                + "$(data).find(tagName).each(function() {\n"
-                + "$(\"#\" + targetId).first().append('<div>' + this.nodeName.toLowerCase() + '</div>');\n"
+                + "$(data).find(tagName).each(function(currentIndex, currentElement) {\n"
+                + "$(\"#\" + targetId).first().append('<span>&lt;' + currentElement.nodeName + '&gt;</span><br/>');\n"
+                + "var lastElementName = '';\n"
+                + "$(currentElement).children().each(function() {\n"
+                + "var $childElement = this;\n"
+                + "if(lastElementName !== $childElement.nodeName) {\n"
+                + "$(\"#\" + targetId).first().append('&nbsp;&nbsp;&nbsp;<span>&lt;' + $childElement.nodeName + '&gt;</span><br/>');\n"
+                + "lastElementName = $childElement.nodeName;\n"
+                + "} else {\n"
+                + "}});\n"
+                + "$(\"#\" + targetId).first().append('<span>&lt;' + currentElement.nodeName + '&gt;</span>');\n"
                 + "});\n"
                 + "\n"
-                + "$(data).find(tagName).children().each(function() {\n"
-                + "$(\"#\" + targetId).first().append('<div>' + this.nodeName.toLowerCase() + '</div>');\n"
-                + "});\n"
                 + "/*\n"
                 + "$(this).find(tagName).children().each(function() {\n"
                 + "alert((this).nodeName);\n"
@@ -247,7 +253,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
             writer.append("</tr>\n");
         }
         writer.append("<tr>\n");
-        writer.append("<td colspan='2' id='" + currentElement.elementName + "Target1'>\n");
+        writer.append("<td colspan='2' style=\"background: lightgray;\" id='" + currentElement.elementName + "Target'>\n");
         writer.append("</td>");
         writer.append("<td>\n");
         writer.append("<button onclick=\"getExample('" + currentElement.elementName + "', '" + currentElement.elementName + "Target');\">show example</button>\n");
