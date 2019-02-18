@@ -74,15 +74,29 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
                 + "*/\n"
                 + "\n"
                 + "$(data).find(tagName).each(function(currentIndex, currentElement) {\n"
-                + "$(\"#\" + targetId).first().append('<span>&lt;' + currentElement.nodeName + '&gt;</span><br/>');\n"
+                + "$(\"#\" + targetId).empty();\n"
+                + "$(\"#\" + targetId).css({background: \"lightgray\"});\n"
+                + "$(\"#\" + targetId).first().append('<span>&lt;' + currentElement.nodeName);\n"
+                + "$(currentElement.attributes).each(function(attributeIndex, childAttribute) {\n"
+                + "if(attributeIndex > 0){\n"
+                + "$(\"#\" + targetId).first().append('<br/>&nbsp;&nbsp;&nbsp;');\n"
+                + "}\n"
+                + "$(\"#\" + targetId).first().append('&nbsp;' + childAttribute.name);\n"
+                + "$(\"#\" + targetId).first().append('=&quot;' + childAttribute.value + '&quot;');\n"
+                + "});\n"
+                + "$(\"#\" + targetId).first().append('&gt;</span><br/>');\n"
                 + "var lastElementName = '';\n"
-                + "$(currentElement).children().each(function() {\n"
-                + "var $childElement = this;\n"
-                + "if(lastElementName !== $childElement.nodeName) {\n"
-                + "$(\"#\" + targetId).first().append('&nbsp;&nbsp;&nbsp;<span>&lt;' + $childElement.nodeName + '&gt;</span><br/>');\n"
-                + "lastElementName = $childElement.nodeName;\n"
-                + "} else {\n"
-                + "}});\n"
+                + "var lastElementNameCount = 0;\n"
+                + "$(currentElement).children().each(function(childIndex, childElement) {\n"
+                + "if(lastElementName !== childElement.nodeName) {\n"
+                + "$(\"#\" + targetId).first().append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&lt;' + childElement.nodeName + '&gt;</span><br/>');\n"
+                + "lastElementName = childElement.nodeName;\n"
+                + "lastElementNameCount = 0;\n"
+                + "} else {"
+                + "lastElementNameCount++;"
+                + "if(lastElementNameCount === 1){\n"
+                + "$(\"#\" + targetId).first().append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&lt;...&gt;</span><br/>');\n"
+                + "}}});\n"
                 + "$(\"#\" + targetId).first().append('<span>&lt;' + currentElement.nodeName + '&gt;</span>');\n"
                 + "});\n"
                 + "\n"
@@ -253,10 +267,10 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
             writer.append("</tr>\n");
         }
         writer.append("<tr>\n");
-        writer.append("<td colspan='2' style=\"background: lightgray;\" id='" + currentElement.elementName + "Target'>\n");
+        writer.append("<td colspan='2' id='" + currentElement.elementName + "Target'>\n");
         writer.append("</td>");
         writer.append("<td>\n");
-        writer.append("<button onclick=\"getExample('" + currentElement.elementName + "', '" + currentElement.elementName + "Target');\">show example</button>\n");
+        writer.append("<button onclick=\"getExample('" + currentElement.elementName + "', '" + currentElement.elementName + "Target');\">search for examples</button>\n");
         writer.append("</td>");
         writer.append("</tr>\n");
         writer.append("</table>\n");
