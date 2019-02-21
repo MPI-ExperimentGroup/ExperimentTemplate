@@ -29,22 +29,30 @@ import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
  */
 public class AbstractSchemaGenerator {
 
+    protected class DocumentationAttribute {
+
+        final String name;
+        final String documentation;
+        final String type;
+        final boolean optional;
+        final String[] restriction;
+
+        public DocumentationAttribute(final String name, final String documentation, final String type, final boolean optional, String[] restriction) {
+            this.name = name;
+            this.documentation = documentation;
+            this.type = type;
+            this.optional = optional;
+            this.restriction = restriction;
+        }
+    }
+
     protected class DocumentationElement {
 
         final String elementName;
         final String documentationText;
         final int minBounds;
         final int maxBounds;
-        final String[] attributeStrings;
-        final String[] attributeLowercase;
-        final String[] attributeRGBs;
-        final String[] attributeBooleans;
-        final String[] attributeFloats;
-        final String[] attributeIntegers;
-        final String[] attributeIntegerLists;
-        final String[] attributeStringsOptional;
-        final String[] attributeBooleansOptional;
-        final String[] attributeIntegersOptional;
+        final List<DocumentationAttribute> attributeTypes = new ArrayList<>();
         final String[] childTypeNames;
         final DocumentationElement[] childElements;
         final boolean hasStringContents;
@@ -54,36 +62,16 @@ public class AbstractSchemaGenerator {
             this.documentationText = documentationText;
             this.minBounds = minBounds;
             this.maxBounds = maxBounds;
-            this.attributeStrings = new String[0];
-            this.attributeLowercase = new String[0];
-            this.attributeRGBs = new String[0];
-            this.attributeBooleans = new String[0];
-            this.attributeFloats = new String[0];
-            this.attributeIntegers = new String[0];
-            this.attributeIntegerLists = new String[0];
-            this.attributeStringsOptional = new String[0];
-            this.attributeBooleansOptional = new String[0];
-            this.attributeIntegersOptional = new String[0];
             this.childTypeNames = new String[0];
             this.childElements = new DocumentationElement[0];
             this.hasStringContents = hasStringContents;
         }
 
-        public DocumentationElement(final String elementName, final String documentationText, final int minBounds, final int maxBounds, final String[] attributes, final DocumentationElement[] childElements) {
+        public DocumentationElement(final String elementName, final String documentationText, final int minBounds, final int maxBounds, final DocumentationElement[] childElements) {
             this.elementName = elementName;
             this.documentationText = documentationText;
             this.minBounds = minBounds;
             this.maxBounds = maxBounds;
-            this.attributeStrings = (attributes == null) ? new String[0] : attributes;
-            this.attributeLowercase = new String[0];
-            this.attributeRGBs = new String[0];
-            this.attributeBooleans = new String[0];
-            this.attributeFloats = new String[0];
-            this.attributeIntegers = new String[0];
-            this.attributeIntegerLists = new String[0];
-            this.attributeStringsOptional = new String[0];
-            this.attributeBooleansOptional = new String[0];
-            this.attributeIntegersOptional = new String[0];
             this.childTypeNames = new String[0];
             this.childElements = childElements;
             this.hasStringContents = false;
@@ -94,15 +82,6 @@ public class AbstractSchemaGenerator {
             this.documentationText = "";
             this.minBounds = 0;
             this.maxBounds = 0;
-            this.attributeLowercase = new String[0];
-            this.attributeRGBs = new String[0];
-            this.attributeBooleans = new String[0];
-            this.attributeFloats = new String[0];
-            this.attributeIntegers = new String[0];
-            this.attributeIntegerLists = new String[0];
-            this.attributeStringsOptional = new String[0];
-            this.attributeBooleansOptional = new String[0];
-            this.attributeIntegersOptional = new String[0];
             List<String> childTypeList = new ArrayList<>();
             for (final FeatureType featureRef : FeatureType.values()) {
                 if (featureRef.getIsChildType() == FeatureType.Contitionals.none || featureRef.getIsChildType() == featureType.getRequiresChildType()
@@ -115,16 +94,14 @@ public class AbstractSchemaGenerator {
             this.childTypeNames = childTypeList.toArray(new String[childTypeList.size()]);
             this.childElements = new DocumentationElement[0];
             this.hasStringContents = false;
-            List<String> requiredAttributeStringList = new ArrayList<>();
             if (featureType.getFeatureAttributes() != null) {
                 for (FeatureAttribute featureAttribute : featureType.getFeatureAttributes()) {
-                    requiredAttributeStringList.add(featureAttribute.name());
+                    stringAttribute(featureAttribute.name(), featureAttribute.isOptional());
                 }
             }
-            this.attributeStrings = requiredAttributeStringList.toArray(new String[requiredAttributeStringList.size()]);
         }
 
-        public DocumentationElement(final String elementName, final String documentationText, final int minBounds, final int maxBounds, final String[] attributes, final String[] attributeStringsOptional, final FeatureType[] featureTypes, final PresenterType[] presenterTypes) {
+        public DocumentationElement(final String elementName, final String documentationText, final int minBounds, final int maxBounds, final FeatureType[] featureTypes, final PresenterType[] presenterTypes) {
             this.elementName = elementName;
             String documentationTemp = documentationText;
             for (final PresenterType presenterType : presenterTypes) {
@@ -133,16 +110,6 @@ public class AbstractSchemaGenerator {
             this.documentationText = documentationTemp;
             this.minBounds = minBounds;
             this.maxBounds = maxBounds;
-            this.attributeStrings = (attributes == null) ? new String[0] : attributes;
-            this.attributeLowercase = new String[0];
-            this.attributeRGBs = new String[0];
-            this.attributeBooleans = new String[0];
-            this.attributeFloats = new String[0];
-            this.attributeIntegers = new String[0];
-            this.attributeIntegerLists = new String[0];
-            this.attributeStringsOptional = (attributeStringsOptional == null) ? new String[0] : attributeStringsOptional;
-            this.attributeBooleansOptional = new String[0];
-            this.attributeIntegersOptional = new String[0];
             List<String> childTypeList = new ArrayList<>();
             for (final FeatureType featureRef : FeatureType.values()) {
                 if (featureRef.getIsChildType() == FeatureType.Contitionals.none) {
@@ -154,45 +121,110 @@ public class AbstractSchemaGenerator {
             this.hasStringContents = false;
         }
 
-        public DocumentationElement(final String elementName, final String documentationText, final int minBounds, final int maxBounds, final String[] attributeStrings, final String[] attributeLowercase, final String[] attributeRGBs, final String[] attributeBooleans, final String[] attributeFloats, final String[] attributeIntegers, final String[] attributeIntegerLists, final String[] attributeStringsOptional, final String[] attributeBooleansOptional, final String[] attributeIntegersOptional, final DocumentationElement[] childElements) {
-            this.elementName = elementName;
-            this.documentationText = documentationText;
-            this.minBounds = minBounds;
-            this.maxBounds = maxBounds;
-            this.attributeStrings = (attributeStrings == null) ? new String[0] : attributeStrings;
-            this.attributeLowercase = (attributeLowercase == null) ? new String[0] : attributeLowercase;
-            this.attributeRGBs = (attributeRGBs == null) ? new String[0] : attributeRGBs;
-            this.attributeBooleans = (attributeBooleans == null) ? new String[0] : attributeBooleans;
-            this.attributeFloats = (attributeFloats == null) ? new String[0] : attributeFloats;
-            this.attributeIntegers = (attributeIntegers == null) ? new String[0] : attributeIntegers;
-            this.attributeIntegerLists = (attributeIntegerLists == null) ? new String[0] : attributeIntegerLists;
-            this.attributeStringsOptional = (attributeStringsOptional == null) ? new String[0] : attributeStringsOptional;
-            this.attributeBooleansOptional = (attributeBooleansOptional == null) ? new String[0] : attributeBooleansOptional;
-            this.attributeIntegersOptional = (attributeIntegersOptional == null) ? new String[0] : attributeIntegersOptional;
-            this.childTypeNames = new String[0];
-            this.childElements = childElements;
-            this.hasStringContents = false;
+        public DocumentationElement stringAttribute(final String attributeName, final boolean optional) {
+            attributeTypes.add(new DocumentationAttribute(attributeName, "String", "xs:string", optional, null));
+            return this;
+        }
+
+        public DocumentationElement restrictedAttribute(final String attributeName, final boolean optional, final String... restriction) {
+            attributeTypes.add(new DocumentationAttribute(attributeName, "Option List", null, optional, restriction));
+            return this;
+        }
+
+        public DocumentationElement stringLowercaseAttribute(final String attributeName, final boolean optional) {
+            attributeTypes.add(new DocumentationAttribute(attributeName, "String Lowercase", "lowercaseValue", optional, null));
+            return this;
+        }
+
+        public DocumentationElement colourRGBAttribute(final String attributeName, final boolean optional) {
+            attributeTypes.add(new DocumentationAttribute(attributeName, "RGB Hex Value", "rgbHexValue", optional, null));
+            return this;
+        }
+
+        public DocumentationElement booleanAttribute(final String attributeName, final boolean optional) {
+            attributeTypes.add(new DocumentationAttribute(attributeName, "Boolean", "xs:boolean", optional, null));
+            return this;
+        }
+
+        public DocumentationElement decimalAttribute(final String attributeName, final boolean optional) {
+            attributeTypes.add(new DocumentationAttribute(attributeName, "Decimal Number", "xs:decimal", optional, null));
+            return this;
+        }
+
+        public DocumentationElement integerAttribute(final String attributeName, final boolean optional) {
+            attributeTypes.add(new DocumentationAttribute(attributeName, "Integral Number", "xs:integer", optional, null));
+            return this;
+        }
+
+        public DocumentationElement integerListAttribute(final String attributeName, final boolean optional) {
+            attributeTypes.add(new DocumentationAttribute(attributeName, "Integer List", "integerList", optional, null));
+            return this;
         }
     }
     protected final DocumentationElement rootElement = new DocumentationElement("experiment", "Each experiment XML configuration file must have one EXPERIMENT element of which only one is permitted and it must contain all other elements of the configuration file.", 1, 1,
-            new String[]{"appNameDisplay"},
-            new String[]{"appNameInternal"},
-            new String[]{"backgroundColour", "complementColour0", "complementColour1", "complementColour2", "complementColour3", "complementColour4", "primaryColour0", "primaryColour1", "primaryColour2", "primaryColour3", "primaryColour4"},
-            new String[]{"isScalable", "preserveLastState", "rotatable", "showMenuBar"},
-            new String[]{"defaultScale"},
-            new String[]{"textFontSize"},
-            new String[0],
-            new String[]{"userIdGetParam"},
-            new String[0],
-            new String[0],
             new DocumentationElement[]{
-                new DocumentationElement("preventWindowClose", "When true the a popup will warn before closing the browser window by showing the message in 'featureText'. Not all browsers will respect this in the same way, so test this on the intended platforms.", 0, 1, new String[]{"featureText"}, new DocumentationElement[0]),
-                new DocumentationElement("administration", "Administration", 0, 1, null, new DocumentationElement[]{
-            new DocumentationElement("dataChannel", "", 0, 0, new String[]{"label"}, null, null, new String[]{"logToSdCard"}, null, new String[]{"channel"}, null, null, null, null, new DocumentationElement[0])
-        }),
+                new DocumentationElement("preventWindowClose", "When true the a popup will warn before closing the browser window by showing the message in 'featureText'. Not all browsers will respect this in the same way, so test this on the intended platforms.", 0, 1,
+                        new DocumentationElement[0]).stringAttribute("featureText", false),
+                new DocumentationElement("administration", "Administration", 0, 1,
+                        new DocumentationElement[]{
+                            new DocumentationElement("dataChannel", "", 0, 0, new DocumentationElement[0])
+                                    .stringAttribute("label", false)
+                                    .booleanAttribute("logToSdCard", false)
+                                    .integerAttribute("channel", false)
+                        }),
                 new DocumentationElement("scss", "", 0, 1, true),
-                new DocumentationElement("metadata", "The fields of data to be collected for each participant and for use as storage data that will be reported in the admin tables.", 1, 1, null, new DocumentationElement[]{new DocumentationElement("field", "", 1, 0, new String[]{"controlledMessage", "controlledRegex", "postName", "registrationField"}, null, null, null, null, null, null, new String[]{"duplicatesControlledMessage"/* optional string*/}, new String[]{"preventServerDuplicates"}, null, new DocumentationElement[0])}),
-                new DocumentationElement("presenter", "Each screen in an experiment configuration is described in a PRESENTER element.", 1, 0, new String[]{"self", "title", "menuLabel", "type"}, new String[]{"back", "next"}, FeatureType.values(), PresenterType.values()),
-                new DocumentationElement("stimuli", "All stimulus elements must be contained in the stimuli element.", 1, 1, null, new DocumentationElement[]{new DocumentationElement("stimulus", "Each individual stimulus can be described in the form of label, audio, video", 0, 0, new String[]{"identifier"}, null, null, null, null, null, null, new String[]{"videoPath", "imagePath", "code", "audioPath", "label", "correctResponses", "ratingLabels", "tags"}, null, new String[]{"pauseMs"}, new DocumentationElement[0])})
-            });
+                new DocumentationElement("metadata", "The fields of data to be collected for each participant and for use as storage data that will be reported in the admin tables.", 1, 1,
+                        new DocumentationElement[]{
+                            new DocumentationElement("field", "", 1, 0, new DocumentationElement[0])
+                                    .stringAttribute("controlledMessage", false)
+                                    .stringAttribute("controlledRegex", false)
+                                    .stringAttribute("postName", false)
+                                    .stringAttribute("registrationField", false)
+                                    .stringAttribute("duplicatesControlledMessage", true)
+                                    .booleanAttribute("preventServerDuplicates", true)
+                        }),
+                new DocumentationElement("presenter", "Each screen in an experiment configuration is described in a PRESENTER element.", 1, 0, FeatureType.values(), PresenterType.values())
+                        .stringAttribute("self", false)
+                        .stringAttribute("title", true)
+                        .stringAttribute("menuLabel", false)
+                        .stringAttribute("back", true)
+                        .stringAttribute("next", true)
+                        .restrictedAttribute("type", false, "transmission", "metadata", "preload", "stimulus", "colourPicker", "colourReport", "kindiagram", "menu", "debug", "text", "timeline"),
+                new DocumentationElement(
+                        "stimuli", "All stimulus elements must be contained in the stimuli element.", 1, 1,
+                        new DocumentationElement[]{
+                            new DocumentationElement("stimulus", "Each individual stimulus can be described in the form of label, audio, video", 0, 0, new DocumentationElement[0])
+                                    .stringAttribute("identifier", false)
+                                    .stringAttribute("videoPath", true)
+                                    .stringAttribute("imagePath", true)
+                                    .stringAttribute("code", true)
+                                    .stringAttribute("audioPath", true)
+                                    .stringAttribute("label", true)
+                                    .stringAttribute("correctResponses", true)
+                                    .stringAttribute("ratingLabels", true)
+                                    .stringAttribute("tags", true)
+                                    .integerAttribute("pauseMs", true)
+                        }
+                )
+            })
+            .stringAttribute("appNameDisplay", false)
+            .stringLowercaseAttribute("appNameInternal", false)
+            .colourRGBAttribute("backgroundColour", false)
+            .colourRGBAttribute("complementColour0", false)
+            .colourRGBAttribute("complementColour1", false)
+            .colourRGBAttribute("complementColour2", false)
+            .colourRGBAttribute("complementColour3", false)
+            .colourRGBAttribute("complementColour4", false)
+            .colourRGBAttribute("primaryColour0", false)
+            .colourRGBAttribute("primaryColour1", false)
+            .colourRGBAttribute("primaryColour2", false)
+            .colourRGBAttribute("primaryColour3", false)
+            .colourRGBAttribute("primaryColour4", false)
+            .booleanAttribute("isScalable", false)
+            .booleanAttribute("preserveLastState", false)
+            .stringAttribute("userIdGetParam", true)
+            .booleanAttribute("rotatable", false)
+            .booleanAttribute("showMenuBar", false)
+            .decimalAttribute("defaultScale", false)
+            .integerAttribute("textFontSize", false);
 }
