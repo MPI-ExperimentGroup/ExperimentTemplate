@@ -50,28 +50,28 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
                 + "      console.log(\"getExample\");\n"
                 + "      \n"
                 + "    $.get( \"with_stimulus_example.xml\", function( data ) {\n"
-                + "    console.log(\"gotData\");\n"
-                + "    console.log(tagName);\n"
-                + "      console.log(targetId);\n"
-                + "/*      \n"
-                + "$(data).find(tagName).each(function() {\n"
-                + "  console.log(this.nodeValue);\n"
-                + "  console.log($);\n"
-                + "  $.each(function() {\n"
-                + "      console.log(this.name);\n"
-                + "      console.log(this.value);\n"
-                + "  }      );\n"
-                + "$.each(this.attributes, function(i, attrib){\n"
-                + "console.log(attrib);\n"
-                + "var name = attrib.name;\n"
-                + "var value = attrib.value;\n"
-                + "console.log(name);\n"
-                + "      console.log(value);\n"
-                + "      \n"
-                + "    $( \"#\" + targetId).append('<div>' + name + '</div>');      \n"
-                + "});\n"
-                + "});\n"
-                + "*/\n"
+                //                + "    console.log(\"gotData\");\n"
+                //                + "    console.log(tagName);\n"
+                //                + "      console.log(targetId);\n"
+                //+ "/*      \n"
+                //+ "$(data).find(tagName).each(function() {\n"
+                //+ "  console.log(this.nodeValue);\n"
+                //+ "  console.log($);\n"
+                //+ "  $.each(function() {\n"
+                //+ "      console.log(this.name);\n"
+                //+ "      console.log(this.value);\n"
+                //+ "  }      );\n"
+                //+ "$.each(this.attributes, function(i, attrib){\n"
+                //+ "console.log(attrib);\n"
+                //+ "var name = attrib.name;\n"
+                //+ "var value = attrib.value;\n"
+                //+ "console.log(name);\n"
+                //+ "      console.log(value);\n"
+                //+ "      \n"
+                //+ "    $( \"#\" + targetId).append('<div>' + name + '</div>');      \n"
+                //+ "});\n"
+                //+ "});\n"
+                //+ "*/\n"
                 + "\n"
                 + "$(data).find(tagName).each(function(currentIndex, currentElement) {\n"
                 + "$(\"#\" + targetId).empty();\n"
@@ -106,61 +106,61 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
                 + "$(\"#\" + targetId).first().append('<span style=\"color:purple\">&lt;</span><span style=\"color:red\">/</span><span style=\"color:blue\">' + currentElement.nodeName + '</span><span style=\"color:purple\">&gt;</span>');\n"
                 + "});\n"
                 + "\n"
-                + "/*\n"
-                + "$(this).find(tagName).children().each(function() {\n"
-                + "alert((this).nodeName);\n"
-                + "//$(\"#\" + targetId).append((this).nodeName));\n"
-                + "$(\"#\" + targetId).append((this).text().replace(/&/g, \"&amp;\").replace(/</g, \"&lt;\")\n"
-                + ".replace(/>/g, \"&gt;\")\n"
-                + ".replace(/\"/g, \"&quot;\")\n"
-                + "+ \"<br />\");\n"
-                + "\n"
-                + "});\n"
-                + "\n"
-                + "$(data).find(tagName).each(function () {\n"
-                + "  console.log($(this).text());\n"
-                + "$(\"#\" + targetId).append($(this).text().replace(/&/g, \"&amp;\")\n"
-                + ".replace(/</g, \"&lt;\")\n"
-                + ".replace(/>/g, \"&gt;\")\n"
-                + ".replace(/\"/g, \"&quot;\")\n"
-                + "+ \"<br />\");\n"
-                + "});\n"
-                + "\n"
-                + "\n"
-                + "      $xml = $( data );\n"
-                + "    $tagUseage = $xml.find(tagName);\n"
-                + "    \n"
-                + "  console.log($tagUseage);    \n"
-                + "    \n"
-                + "    $.each($tagUseage.attributes, function(i, attrib){\n"
-                + "console.log(this.name);\n"
-                + "console.log(this.value);\n"
-                + "\n"
-                + "  //  var name = attrib.name;\n"
-                + "    //var value = attrib.value;\n"
-                + "//    $( \"#\" + targetId).append('<div>' + name + '</div>');      \n"
-                + "  \n"
-                + "    });\n"
-                + "    */\n"
-                + "//    $tagUseage.attr().each(function () {\n"
-                + "//   $( \"#\" + targetId).append('<div>' + this.name() + '</div>');      \n"
-                + "   // })\n"
-                + "\n"
-                + "    \n"
-                + "    \n"
-                + "    // document.getElementById('xmlResult').innerHTML =\n"
-                + "    //$xml.childNodes[0].attr(\"appNameDisplay\");\n"
-                + "    \n"
-                + "    \n"
-                + "    \n"
-                + "    \n"
-                + "    \n"
-                + "    // $presenter = $xml.find( \"presenter\" );\n"
-                + "    \n"
-                + "    // document.getElementById('xmlResult').innerHTML =\n"
-                + "    //   $presenter.attr(\"self\");\n"
-                + "    //xml.childNodes[0].attr(\"\");\n"
-                + "    // data.getElementsByTagName(\"Experiment\")[0].childNodes[0].nodeValue;\n"
+                //+ "/*\n"
+                //+ "$(this).find(tagName).children().each(function() {\n"
+                //+ "alert((this).nodeName);\n"
+                //+ "//$(\"#\" + targetId).append((this).nodeName));\n"
+                //+ "$(\"#\" + targetId).append((this).text().replace(/&/g, \"&amp;\").replace(/</g, \"&lt;\")\n"
+                //+ ".replace(/>/g, \"&gt;\")\n"
+                //+ ".replace(/\"/g, \"&quot;\")\n"
+                //+ "+ \"<br />\");\n"
+                //+ "\n"
+                //+ "});\n"
+                //+ "\n"
+                //+ "$(data).find(tagName).each(function () {\n"
+                //+ "  console.log($(this).text());\n"
+                //+ "$(\"#\" + targetId).append($(this).text().replace(/&/g, \"&amp;\")\n"
+                //+ ".replace(/</g, \"&lt;\")\n"
+                //+ ".replace(/>/g, \"&gt;\")\n"
+                //+ ".replace(/\"/g, \"&quot;\")\n"
+                //+ "+ \"<br />\");\n"
+                //+ "});\n"
+                //+ "\n"
+                //+ "\n"
+                //+ "      $xml = $( data );\n"
+                //+ "    $tagUseage = $xml.find(tagName);\n"
+                //+ "    \n"
+                //+ "  console.log($tagUseage);    \n"
+                //+ "    \n"
+                //+ "    $.each($tagUseage.attributes, function(i, attrib){\n"
+                //+ "console.log(this.name);\n"
+                //+ "console.log(this.value);\n"
+                //+ "\n"
+                //+ "  //  var name = attrib.name;\n"
+                //+ "    //var value = attrib.value;\n"
+                //+ "//    $( \"#\" + targetId).append('<div>' + name + '</div>');      \n"
+                //+ "  \n"
+                //+ "    });\n"
+                //+ "    */\n"
+                //+ "//    $tagUseage.attr().each(function () {\n"
+                //+ "//   $( \"#\" + targetId).append('<div>' + this.name() + '</div>');      \n"
+                //+ "   // })\n"
+                //+ "\n"
+                //+ "    \n"
+                //+ "    \n"
+                //+ "    // document.getElementById('xmlResult').innerHTML =\n"
+                //+ "    //$xml.childNodes[0].attr(\"appNameDisplay\");\n"
+                //+ "    \n"
+                //+ "    \n"
+                //+ "    \n"
+                //+ "    \n"
+                //+ "    \n"
+                //+ "    // $presenter = $xml.find( \"presenter\" );\n"
+                //+ "    \n"
+                //+ "    // document.getElementById('xmlResult').innerHTML =\n"
+                //+ "    //   $presenter.attr(\"self\");\n"
+                //+ "    //xml.childNodes[0].attr(\"\");\n"
+                //+ "    // data.getElementsByTagName(\"Experiment\")[0].childNodes[0].nodeValue;\n"
                 + "    });\n"
                 + "    }\n"
                 + "    \n"
@@ -170,50 +170,27 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
     }
 
     private void addAttributes(Writer writer, DocumentationElement currentElement) throws IOException {
-        for (String attributeStrings : currentElement.attributeStrings) {
+        for (DocumentationAttribute attributeTypes : currentElement.attributeTypes) {
             writer.append("<span style=\"color:green\">");
-            writer.append(attributeStrings);
-            writer.append("</span><span style=\"color:grey\">=&quot;String&quot;</span><br/>\n");
-        }
-        for (String attributeLowercase : currentElement.attributeLowercase) {
-            writer.append("<span style=\"color:green\">");
-            writer.append(attributeLowercase);
-            writer.append("</span><span style=\"color:grey\">=&quot;String Lowercase&quot;</span><br/>\n");
-        }
-        for (String attributeRGBs : currentElement.attributeRGBs) {
-            writer.append("<span style=\"color:green\">");
-            writer.append(attributeRGBs);
-            writer.append("</span><span style=\"color:grey\">=&quot;RGB Hex Value&quot;</span><br/>\n");
-        }
-        for (String attributeBooleans : currentElement.attributeBooleans) {
-            writer.append("<span style=\"color:green\">");
-            writer.append(attributeBooleans);
-            writer.append("</span><span style=\"color:grey\">=&quot;Boolean&quot;</span><br/>\n");
-        }
-        for (String attributeIntegerLists : currentElement.attributeBooleansOptional) {
-            writer.append("<span style=\"color:green\">");
-            writer.append(attributeIntegerLists);
-            writer.append("</span><span style=\"color:grey\">=&quot;Boolean (optional)&quot;</span><br/>\n");
-        }
-        for (String attributeFloats : currentElement.attributeFloats) {
-            writer.append("<span style=\"color:green\">");
-            writer.append(attributeFloats);
-            writer.append("</span><span style=\"color:grey\">=&quot;Float&quot;</span><br/>\n");
-        }
-        for (String attributeIntegers : currentElement.attributeIntegers) {
-            writer.append("<span style=\"color:green\">");
-            writer.append(attributeIntegers);
-            writer.append("</span><span style=\"color:grey\">=&quot;Integer&quot;</span><br/>\n");
-        }
-        for (String attributeIntegerLists : currentElement.attributeIntegersOptional) {
-            writer.append("<span style=\"color:green\">");
-            writer.append(attributeIntegerLists);
-            writer.append("</span><span style=\"color:grey\">=&quot;Integer (optional)&quot;</span><br/>\n");
-        }
-        for (String attributeIntegerLists : currentElement.attributeIntegerLists) {
-            writer.append("<span style=\"color:green\">");
-            writer.append(attributeIntegerLists);
-            writer.append("</span><span style=\"color:grey\">=&quot;Integer List&quot;</span><br/>\n");
+            writer.append(attributeTypes.name);
+            writer.append("</span><span style=\"color:grey\">=&quot;");
+            writer.append(attributeTypes.documentation);
+            if (attributeTypes.restriction != null) {
+                writer.append(" [");
+                boolean isFirst = true;
+                for (String value : attributeTypes.restriction) {
+                    if (!isFirst) {
+                        writer.append(", ");
+                    }
+                    isFirst = false;
+                    writer.append(value);
+                }
+                writer.append("]");
+            }
+            if (attributeTypes.optional) {
+                writer.append(" (optional)");
+            }
+            writer.append("&quot;</span><br/>\n");
         }
     }
 
@@ -223,39 +200,37 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         writer.append("\n</h3>\n");
         writer.append(currentElement.documentationText);
         writer.append("\n<br/><br/><table>\n");
-
-//        writer.append("<tr><td colspan=3>\n");
-//        writer.append(ROOT_ELEMENT_DOCUMENTATION);
-//        writer.append("</td></tr>\n");
         writer.append("<tr><td>\n");
         writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">");
         writer.append(currentElement.elementName);
         writer.append("</span></td><td>");
-//        writer.append("Root element of the experiment configuration file of which only one is permitted.\n");
-//        writer.append("</td><td>\n");
         addAttributes(writer, currentElement);
         writer.append("</td><td>");
         if (currentElement.childElements.length == 0 && !currentElement.hasStringContents) {
             writer.append("<span style=\"color:red\">/</span>");
         }
         writer.append("<span style=\"color:purple\">&gt;</span></td><td>\n");
-        for (DocumentationElement chileElement : currentElement.childElements) {
+        for (String childElement : currentElement.childTypeNames) {
             writer.append("<table>\n");
             writer.append("<tr><td>\n");
             writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">");
-            writer.append(chileElement.elementName);
+            writer.append(childElement);
             writer.append("</span></td><td>");
-            addAttributes(writer, chileElement);
             writer.append("</td><td><span style=\"color:purple\">&gt;</span>\n");
             writer.append("</td></tr>\n");
             writer.append("</td></tr></table>\n");
         }
-//        writer.append("&lt;preventWindowClose&gt;<br/>\n"); //featureText
-//        writer.append("&lt;administration&gt;<br/>\n");
-//        writer.append("&lt;scss&gt;<br/>\n");
-//        writer.append("&lt;metadata&gt;<br/>\n");
-//        writer.append("&lt;presenter&gt;<br/>\n");
-//        writer.append("&lt;stimuli&gt;<br/>\n");
+        for (DocumentationElement childElement : currentElement.childElements) {
+            writer.append("<table>\n");
+            writer.append("<tr><td>\n");
+            writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">");
+            writer.append(childElement.elementName);
+            writer.append("</span></td><td>");
+            addAttributes(writer, childElement);
+            writer.append("</td><td><span style=\"color:purple\">&gt;</span>\n");
+            writer.append("</td></tr>\n");
+            writer.append("</td></tr></table>\n");
+        }
         writer.append("</td>\n");
         writer.append("</tr>\n");
         if (currentElement.hasStringContents) {
@@ -282,8 +257,8 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         writer.append("</td>");
         writer.append("</tr>\n");
         writer.append("</table>\n");
-        for (DocumentationElement chileElement : currentElement.childElements) {
-            addElement(writer, chileElement);
+        for (DocumentationElement childElement : currentElement.childElements) {
+            addElement(writer, childElement);
         }
     }
 
@@ -303,16 +278,6 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
             writer.append(presenterType.name()).append(", \n");
         }
         writer.append(")<br/>\n");
-//        writer.append("</td><td>\n");
-//        writer.append("type (\n");
-//        for (final FeatureType featureRef : FeatureType.values()) {
-//            if (featureRef.getIsChildType() == FeatureType.Contitionals.none) {
-//                writer.append(featureRef.name());
-//                writer.append(", ");
-//            }
-//        }
-//        writer.append(")<br/>\n");
-
         writer.append("</td>\n");
         writer.append("</tr>\n");
         writer.append("<tr>\n");
@@ -470,20 +435,6 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         writer.append("</tr>\n");
     }
 
-    private void endState(Writer writer) throws IOException {
-        writer.append("}\n");
-    }
-
-    private void getStateChange(Writer writer, final String state1, final String state2, final String... attributes) throws IOException {
-        writer.append("<div class=\"element\">\"").append(state1).append("\">\n")
-                .append("<div class=\"complexType\">\n")
-                .append("<div class=\"sequence>\n");
-        for (final String value : attributes) {
-            writer.append("<div class=\"element ref=\"").append(value).append("\"/>\n");
-        }
-        writer.append("</div>\n").append("</div>\n").append("</div>\n");
-    }
-
     private void getEnd(Writer writer) throws IOException {
         writer.append("    </body>\n"
                 + "</html>\n");
@@ -502,13 +453,6 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         writer.append("<h3>Stimuli</h3><table border=1>\n");
         addStimuli(writer);
         writer.append("</table>\n");
-//        for (PresenterType presenterType : PresenterType.values()) {
-//            addPresenter(writer, presenterType);
-//            for (FeatureType featureType : presenterType.getFeatureTypes()) {
-//                getStateChange(writer, presenterType.name(), featureType.name());
-//            }
-//            endState(writer);
-//        }
         writer.append("<h3>Features</h3><table border=1>\n");
         for (FeatureType featureType : FeatureType.values()) {
             addFeature(writer, featureType);
