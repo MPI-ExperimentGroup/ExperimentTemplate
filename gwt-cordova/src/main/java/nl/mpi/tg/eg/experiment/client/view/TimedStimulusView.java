@@ -92,6 +92,7 @@ public class TimedStimulusView extends ComplexView {
     }
 
     public void preloadImage(final TimedEventMonitor timedEventMonitor, SafeUri imagePath, final TimedStimulusListener timedStimulusListener) {
+        timedEventMonitor.registerEvent("preloadImage");
         final Image image = new Image(imagePath);
         image.setVisible(false);
         image.addLoadHandler(new LoadHandler() {
@@ -99,7 +100,7 @@ public class TimedStimulusView extends ComplexView {
             @Override
             public void onLoad(LoadEvent event) {
                 if (timedEventMonitor != null) {
-                    timedEventMonitor.registerEvent("preloadImage");
+                    timedEventMonitor.registerEvent("onPreloadImage");
                 }
                 timedStimulusListener.postLoadTimerFired();
             }
@@ -161,6 +162,7 @@ public class TimedStimulusView extends ComplexView {
         cancelableListnerList.add(postLoadMsListener);
         cancelableListnerList.add(failedStimulusListener);
         cancelableListnerList.add(clickedStimulusListener);
+        timedEventMonitor.registerEvent("addTimedImage");
         final Image image = new Image(imagePath);
         if (styleName != null) {
             image.addStyleName(styleName);
@@ -264,6 +266,7 @@ public class TimedStimulusView extends ComplexView {
         cancelableListnerList.add(loadedStimulusListener);
         cancelableListnerList.add(failedStimulusListener);
         cancelableListnerList.add(clickedStimulusListener);
+        timedEventMonitor.registerEvent("addTimedImage");
         final Image image = new Image(imagePath);
         if (animateStyle != null && !animateStyle.isEmpty()) {
             image.addStyleName(animateStyle);
@@ -456,6 +459,7 @@ public class TimedStimulusView extends ComplexView {
         cancelableListnerList.add(playbackStartedStimulusListener);
         cancelableListnerList.add(playedStimulusListener);
         try {
+            timedEventMonitor.registerEvent("addTimedAudio");
             final AudioPlayer audioPlayer = new AudioPlayer(new AudioExceptionListner() {
                 @Override
                 public void audioExceptionFired(AudioException audioException) {
@@ -518,6 +522,7 @@ public class TimedStimulusView extends ComplexView {
         cancelableListnerList.add(failedStimulusListener);
         cancelableListnerList.add(playbackStartedStimulusListener);
         cancelableListnerList.add(playedStimulusListener);
+        timedEventMonitor.registerEvent("addTimedVideo");
         final Video video = Video.createIfSupported();
         if (video == null) {
             failedStimulusListener.postLoadTimerFired();
