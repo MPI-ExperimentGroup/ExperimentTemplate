@@ -69,16 +69,18 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
     }
 
     public void redirectToUrl(final String targetUrl/*, final boolean submitDataFirst*/) {
+        final String targetUrlFormatted = new HtmlTokenFormatter(null, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(targetUrl);
         submissionService.submitAllData(userResults, new DataSubmissionListener() {
             @Override
             public void scoreSubmissionFailed(DataSubmissionException exception) {
 //                onError.postLoadTimerFired();
-                Window.Location.replace(targetUrl);
+                // we try to send data here but do not act on failure because that should handled outside of this tag
+                Window.Location.replace(targetUrlFormatted);
             }
 
             @Override
             public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
-                Window.Location.replace(targetUrl);
+                Window.Location.replace(targetUrlFormatted);
             }
         });
     }
