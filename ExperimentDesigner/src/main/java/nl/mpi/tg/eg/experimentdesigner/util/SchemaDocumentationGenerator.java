@@ -195,7 +195,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
     }
 
     private void addElement(Writer writer, DocumentationElement currentElement) throws IOException {
-        writer.append("<h3 style=\"text-transform: uppercase;\">\n");
+        writer.append("<h3 id=\"" + currentElement.elementName + "Type\" style=\"text-transform: uppercase;\">\n");
         writer.append(currentElement.elementName);
         writer.append("\n</h3>\n");
         writer.append(currentElement.documentationText);
@@ -205,18 +205,23 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         writer.append(currentElement.elementName);
         writer.append("</span></td><td>");
         addAttributes(writer, currentElement);
-        writer.append("</td><td>");
-        if (currentElement.childElements.length == 0 && !currentElement.hasStringContents) {
-            writer.append("<span style=\"color:red\">/</span>");
+//        writer.append("</td><td>");
+        if (currentElement.childElements.length == 0 && currentElement.childTypeNames.length == 0 && !currentElement.hasStringContents) {
+            writer.append("</td><td><span style=\"color:red\">/</span>");
         }
         writer.append("<span style=\"color:purple\">&gt;</span></td><td>\n");
+        if (currentElement.childElements.length > 0 || currentElement.childTypeNames.length > 0) {
+            writer.append("</td></tr><tr><td></td><td>\n");
+        }
         for (String childElement : currentElement.childTypeNames) {
             writer.append("<table>\n");
             writer.append("<tr><td>\n");
+
+            writer.append("<a href=\"#" + childElement + "Type\"");
             writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">");
             writer.append(childElement);
-            writer.append("</span></td><td>");
-            writer.append("</td><td><span style=\"color:purple\">&gt;</span>\n");
+            writer.append("</span><span style=\"color:purple\">&gt;</span>\n");
+            writer.append("</a");
             writer.append("</td></tr>\n");
             writer.append("</td></tr></table>\n");
         }
@@ -239,7 +244,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
             writer.append("<span style=\"color:grey\">String</span></td>");
             writer.append("</tr>\n");
         }
-        if (currentElement.childElements.length > 0 || currentElement.hasStringContents) {
+        if (currentElement.childElements.length > 0 || currentElement.childTypeNames.length > 0 || currentElement.hasStringContents) {
             writer.append("<tr>\n");
             writer.append("<td>\n");
             writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:red\">/</span><span style=\"color:blue\">");
@@ -260,70 +265,6 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         for (DocumentationElement childElement : currentElement.childElements) {
             addElement(writer, childElement);
         }
-    }
-
-    private void addPresenter(Writer writer, final PresenterType[] presenterTypes) throws IOException {
-        writer.append("<tr><td>\n");
-        writer.append("&lt;presenter&gt;<br/>\n");
-        writer.append("</td><td>\n");
-
-        writer.append("back<br/>\n"); // todo: constrain back to always refer to an presenter that exists
-        writer.append("next<br/>\n"); // todo: constrain back to always refer to an presenter that exists
-        writer.append("self<br/>\n");
-        writer.append("title<br/>\n");
-        writer.append("menuLabel<br/>\n");
-        writer.append("type (");
-
-        for (final PresenterType presenterType : presenterTypes) {
-            writer.append(presenterType.name()).append(", \n");
-        }
-        writer.append(")<br/>\n");
-        writer.append("</td>\n");
-        writer.append("</tr>\n");
-        writer.append("<tr>\n");
-        writer.append("<td id='presenter1'>\n");
-        writer.append("</td>");
-        writer.append("<td>\n");
-        writer.append("<button onclick=\"getExample('presenter', 'presenter1');\">show example</button>\n");
-        writer.append("</td>");
-        writer.append("</tr>\n");
-    }
-
-    private void addAdministration(Writer writer) throws IOException {
-        writer.append("<tr><td>\n");
-        writer.append("&lt;administration&gt;<br/>\n");
-        writer.append("</td><td>\n");
-        writer.append("&lt;dataChannel&gt;<br/>\n");
-        writer.append("</td><td>\n");
-        writer.append("channel (decimal)<br/>\n");
-        writer.append("label<br/>\n");
-        writer.append("logToSdCard (boolean)<br/>\n");
-        writer.append("</td>\n");
-        writer.append("</tr>\n");
-    }
-
-    private void addMetadata(Writer writer) throws IOException {
-        writer.append("<tr><td>\n");
-        writer.append("&lt;metadata&gt;<br/>\n");
-        writer.append("</td><td>\n");
-        writer.append("controlledMessage<br/>\n");
-        writer.append("controlledRegex<br/>\n");
-        writer.append("postName<br/>\n");
-        writer.append("preventServerDuplicates (boolean)<br/>\n");
-        writer.append("duplicatesControlledMessage<br/>\n");
-        writer.append("registrationField<br/>\n");
-        writer.append("</td>\n");
-        writer.append("</tr>\n");
-    }
-
-    private void addStimuli(Writer writer) throws IOException {
-        writer.append("<tr><td>\n");
-        writer.append("&lt;stimuli&gt;<br/>\n");
-        writer.append("</td><td>\n");
-        writer.append("&lt;stimulus&gt;<br/>\n");
-        writer.append("</td><td>\n");
-        writer.append("</td>\n");
-        writer.append("</tr>\n");
     }
 
     private void addFeature(Writer writer, final FeatureType featureType) throws IOException {
@@ -444,19 +385,16 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         getStart(writer);
         addElement(writer, rootElement);
 //        addElement(writer, rootElement.childElements[1]);
-        writer.append("<h3>Metadata</h3><table border=1>\n");
-        addMetadata(writer);
-        writer.append("</table>\n");
-        writer.append("<h3>Presenter</h3><table border=1>\n");
-        addPresenter(writer, PresenterType.values());
-        writer.append("</table>\n");
-        writer.append("<h3>Stimuli</h3><table border=1>\n");
-        addStimuli(writer);
-        writer.append("</table>\n");
         writer.append("<h3>Features</h3><table border=1>\n");
         for (FeatureType featureType : FeatureType.values()) {
-            addFeature(writer, featureType);
+//            addFeature(writer, featureType);
+            addElement(writer, new DocumentationElement(featureType));
         }
+//        for (final FeatureType featureRef : FeatureType.values()) {
+//                if (featureRef.getIsChildType() == FeatureType.Contitionals.none) {
+//                    childList.add(new DocumentationElement(featureRef));
+//                }
+//            }
         writer.append("</table>\n");
         getEnd(writer);
         System.out.println(writer);
