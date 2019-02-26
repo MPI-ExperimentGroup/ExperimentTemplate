@@ -96,10 +96,10 @@ public class AbstractSchemaGenerator {
             switch (featureType.getRequiresChildType()) {
                 // these items link to separate lists of element groups: general, stimuli, group...
                 case stimulusAction:
-                    childTypeList.add("...General Features...");
+                    childTypeList.add("...Stimulus Features...");
                     break;
                 case groupNetworkAction:
-                    childTypeList.add("...General Features...");
+                    childTypeList.add("...Group Features...");
                     break;
                 case none:
                     childTypeList.add("...General Features...");
