@@ -217,20 +217,23 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
             writer.append("<table>\n");
             writer.append("<tr><td>\n");
 
-            writer.append("<a href=\"#" + childElement + "Type\"");
+            writer.append("<a href=\"#" + childElement + "Type\">");
             writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">");
             writer.append(childElement);
             writer.append("</span><span style=\"color:purple\">&gt;</span>\n");
-            writer.append("</a");
+            writer.append("</a>");
             writer.append("</td></tr>\n");
             writer.append("</td></tr></table>\n");
         }
         for (DocumentationElement childElement : currentElement.childElements) {
             writer.append("<table>\n");
             writer.append("<tr><td>\n");
+            writer.append("<a href=\"#" + childElement.elementName + "Type\">");
             writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">");
             writer.append(childElement.elementName);
-            writer.append("</span></td><td>");
+            writer.append("</span>");
+            writer.append("</a>");
+            writer.append("</td><td>");
             addAttributes(writer, childElement);
             writer.append("</td><td><span style=\"color:purple\">&gt;</span>\n");
             writer.append("</td></tr>\n");
@@ -414,8 +417,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         for (FeatureType featureType : FeatureType.values()) {
             if (featureType.getIsChildType() != FeatureType.Contitionals.none
                     && featureType.getIsChildType() != FeatureType.Contitionals.stimulusAction
-                    && featureType.getIsChildType() != FeatureType.Contitionals.groupNetworkAction
-                    ) {
+                    && featureType.getIsChildType() != FeatureType.Contitionals.groupNetworkAction) {
                 addElement(writer, new DocumentationElement(featureType));
             }
         }
