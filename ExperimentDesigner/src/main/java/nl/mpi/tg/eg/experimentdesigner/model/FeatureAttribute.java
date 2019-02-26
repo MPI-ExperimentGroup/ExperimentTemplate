@@ -71,8 +71,148 @@ public enum FeatureAttribute {
     repeatCount(true),
     repeatRandomWindow(true), // todo: document how this works, which currently is to compare in sequence, image, audio, video and label and use the first found one as the comparitor. This could be made more explicit by adding a comparitor attribute that would be default be set to "image audio video label" for example
     adjacencyThreshold(true),
-    repeatIncorrect,
-    hotKey(true), // todo: this could provide a list for the schema to know what are valid values
+    repeatIncorrect, 
+//    repeatMatching(true),
+    hotKey(true, new String[]{
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+        "ZERO",
+        "ONE",
+        "TWO",
+        "THREE",
+        "FOUR",
+        "FIVE",
+        "SIX",
+        "SEVEN",
+        "EIGHT",
+        "NINE",
+        "NUM_ZERO",
+        "NUM_ONE",
+        "NUM_TWO",
+        "NUM_THREE",
+        "NUM_FOUR",
+        "NUM_FIVE",
+        "NUM_SIX",
+        "NUM_SEVEN",
+        "NUM_EIGHT",
+        "NUM_NINE",
+        "NUM_MULTIPLY",
+        "NUM_PLUS",
+        "NUM_MINUS",
+        "NUM_PERIOD",
+        "NUM_DIVISION",
+        "ALT",
+        "BACKSPACE",
+        "CTRL",
+        "DELETE",
+        "DOWN",
+        "END",
+        "ENTER",
+        "ESCAPE",
+        "HOME",
+        "LEFT",
+        "PAGEDOWN",
+        "PAGEUP",
+        "RIGHT",
+        "SHIFT",
+        "TAB",
+        "UP",
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8",
+        "F9",
+        "F10",
+        "F11",
+        "F12",
+        "PAUSE",
+        "SPACE" // Bluetooth remote R1 with mode M+A
+        ,
+         "R1_MA_A" //    ,"R1_MA_B = -1;
+        //    ,"R1_MA_C = -1; // vol
+        //    ,"R1_MA_D = -1; // vol
+        ,
+         "R1_MA_ENTER",
+        "R1_MA_BACK" // back
+        //    ,"R1_MA_UP = -1; // vol
+        //    ,"R1_MA_DOWN = -1; // vol
+        ,
+         "R1_MA_LEFT",
+        "R1_MA_RIGHT" // Bluetooth remote R1 with mode M+B
+        ,
+         "R1_MB_A",
+        "R1_MB_B",
+        "R1_MB_C",
+        "R1_MB_D" // back
+        ,
+         "R1_MB_ENTER",
+        "R1_MB_BACK" //    ,"R1_MB_UP = -1;
+        //    ,"R1_MB_DOWN = -1;
+        //    ,"R1_MB_LEFT = -1;
+        //    ,"R1_MB_RIGHT = -1;
+        // Bluetooth remote R1 with mode M+C
+        ,
+         "R1_MC_A" // back
+        ,
+         "R1_MC_B",
+        "R1_MC_C",
+        "R1_MC_D",
+        "R1_MC_ENTER",
+        "R1_MC_BACK" //    ,"R1_MC_UP = -1;
+        //    ,"R1_MC_DOWN = -1;
+        //    ,"R1_MC_LEFT = -1;
+        //    ,"R1_MC_RIGHT = -1;
+        // Bluetooth remote R1 with mode M+D
+        ,
+         "R1_MD_A",
+        "R1_MD_B" // back
+        //    ,"R1_MD_C = -1; // vol
+        //    ,"R1_MD_D = -1; // vol
+        //    ,"R1_MD_ENTER = -1; // mouse
+        //    ,"R1_MD_BACK = -1; // mouse
+        //    ,"R1_MD_UP = -1; // mouse
+        //    ,"R1_MD_DOWN = -1; // mouse
+        //    ,"R1_MD_LEFT = -1; // mouse
+        //    ,"R1_MD_RIGHT = -1; // mouse
+        // USB LP310 laser pointer remote
+        ,
+         "LP310_UP",
+        "LP310_UP_LONG_A",
+        "LP310_UP_LONG_B",
+        "LP310_DOWN",
+        "LP310_DOWN_LONG",
+        "LP310_MIDDLE",
+        "LP310_MIDDLE_LONG",
+        "LP310_MIDDLE_DOUBLE"
+    }), // todo: this could provide a list for the schema to know what are valid values --
     //    @Deprecated
     //    mp3,
     //    @Deprecated
@@ -119,16 +259,28 @@ public enum FeatureAttribute {
     applyScore,
     scoreValue;
     final boolean isOptional;
+    final String[] typeValues;
 
     private FeatureAttribute() {
         this.isOptional = false;
+        this.typeValues = null;
     }
 
     private FeatureAttribute(boolean isOptional) {
         this.isOptional = isOptional;
+        this.typeValues = null;
+    }
+
+    private FeatureAttribute(boolean isOptional, final String[] typeValues) {
+        this.isOptional = isOptional;
+        this.typeValues = typeValues;
     }
 
     public boolean isOptional() {
         return isOptional;
+    }
+
+    public String[] getTypeValues() {
+        return typeValues;
     }
 }
