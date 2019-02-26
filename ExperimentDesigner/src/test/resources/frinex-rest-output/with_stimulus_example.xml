@@ -74,6 +74,14 @@
         background: none;
         color: none;
         }
+        .stimulusImageButton {
+        border: 1px solid blueviolet;
+        padding: 5px;
+        }
+        .stimulusImageButton:hover {
+        border: 3px solid blueviolet;
+        padding: 3px;
+        }
     </scss>
     <metadata>
         <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
@@ -1973,7 +1981,7 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <htmlText featureText="This demonstration screen provides an example usage of the stimulusCodeImageButton.&lt;br/&gt;"/>
-                <stimulusCodeImageButton codeFormat="&lt;code&gt;.jpg" dataChannel="8"  styleName="minimalWidth">
+                <stimulusCodeImageButton codeFormat="&lt;code&gt;.jpg" dataChannel="8"  styleName="stimulusImageButton">
                     <mediaLoaded>
                         <htmlText featureText="mediaLoaded"/>
                     </mediaLoaded>
@@ -2460,7 +2468,7 @@
         <addPadding/>
         <targetButton featureText="To the admin page" target="Admin"/>   
     </presenter>   
-    <presenter type="transmission" self="Admin" title="" next="Menu">
+    <presenter type="transmission" menuLabel="Einde van deze test." self="Admin" title="Einde van deze test." next="Menu">
         <centrePage/>
         <sendMetadata>
             <onSuccess>
