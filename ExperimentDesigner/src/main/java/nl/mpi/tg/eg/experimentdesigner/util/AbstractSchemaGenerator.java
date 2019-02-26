@@ -83,20 +83,28 @@ public class AbstractSchemaGenerator {
             this.minBounds = 0;
             this.maxBounds = 0;
             List<String> childTypeList = new ArrayList<>();
-            for (final FeatureType featureRef : FeatureType.values()) {
-                if (featureRef.getIsChildType() == FeatureType.Contitionals.none || featureRef.getIsChildType() == featureType.getRequiresChildType()
-                        || featureRef.getIsChildType() == FeatureType.Contitionals.groupNetworkAction // currently allowing all groupNetworkAction in any element
-                        || featureRef.getIsChildType() == FeatureType.Contitionals.stimulusAction // currently allowing all stimulusAction in any element
-                        ) {
-                    childTypeList.add(featureRef.name());
+            if (featureType.getRequiresChildType() != FeatureType.Contitionals.none) {
+                for (final FeatureType featureRef : FeatureType.values()) {
+                    if (//featureRef.getIsChildType() == FeatureType.Contitionals.none || 
+                            featureRef.getIsChildType() == featureType.getRequiresChildType() //|| featureRef.getIsChildType() == FeatureType.Contitionals.groupNetworkAction // currently allowing all groupNetworkAction in any element
+                            //|| featureRef.getIsChildType() == FeatureType.Contitionals.stimulusAction // currently allowing all stimulusAction in any element
+                            ) {
+                        childTypeList.add(featureRef.name());
+                    }
                 }
+            }else{
+                childTypeList.add("...any...");
             }
             this.childTypeNames = childTypeList.toArray(new String[childTypeList.size()]);
             this.childElements = new DocumentationElement[0];
             this.hasStringContents = false;
             if (featureType.getFeatureAttributes() != null) {
                 for (FeatureAttribute featureAttribute : featureType.getFeatureAttributes()) {
-                    stringAttribute(featureAttribute.name(), featureAttribute.isOptional());
+                    if (featureAttribute.getTypeValues() == null) {
+                        stringAttribute(featureAttribute.name(), featureAttribute.isOptional());
+                    } else {
+                        restrictedAttribute(featureAttribute.name(), featureAttribute.isOptional(), featureAttribute.getTypeValues());
+                    }
                 }
             }
         }
@@ -121,42 +129,42 @@ public class AbstractSchemaGenerator {
             this.hasStringContents = false;
         }
 
-        public DocumentationElement stringAttribute(final String attributeName, final boolean optional) {
+        public final DocumentationElement stringAttribute(final String attributeName, final boolean optional) {
             attributeTypes.add(new DocumentationAttribute(attributeName, "String", "xs:string", optional, null));
             return this;
         }
 
-        public DocumentationElement restrictedAttribute(final String attributeName, final boolean optional, final String... restriction) {
+        public final DocumentationElement restrictedAttribute(final String attributeName, final boolean optional, final String... restriction) {
             attributeTypes.add(new DocumentationAttribute(attributeName, "Option List", null, optional, restriction));
             return this;
         }
 
-        public DocumentationElement stringLowercaseAttribute(final String attributeName, final boolean optional) {
+        public final DocumentationElement stringLowercaseAttribute(final String attributeName, final boolean optional) {
             attributeTypes.add(new DocumentationAttribute(attributeName, "String Lowercase", "lowercaseValue", optional, null));
             return this;
         }
 
-        public DocumentationElement colourRGBAttribute(final String attributeName, final boolean optional) {
+        public final DocumentationElement colourRGBAttribute(final String attributeName, final boolean optional) {
             attributeTypes.add(new DocumentationAttribute(attributeName, "RGB Hex Value", "rgbHexValue", optional, null));
             return this;
         }
 
-        public DocumentationElement booleanAttribute(final String attributeName, final boolean optional) {
+        public final DocumentationElement booleanAttribute(final String attributeName, final boolean optional) {
             attributeTypes.add(new DocumentationAttribute(attributeName, "Boolean", "xs:boolean", optional, null));
             return this;
         }
 
-        public DocumentationElement decimalAttribute(final String attributeName, final boolean optional) {
+        public final DocumentationElement decimalAttribute(final String attributeName, final boolean optional) {
             attributeTypes.add(new DocumentationAttribute(attributeName, "Decimal Number", "xs:decimal", optional, null));
             return this;
         }
 
-        public DocumentationElement integerAttribute(final String attributeName, final boolean optional) {
+        public final DocumentationElement integerAttribute(final String attributeName, final boolean optional) {
             attributeTypes.add(new DocumentationAttribute(attributeName, "Integral Number", "xs:integer", optional, null));
             return this;
         }
 
-        public DocumentationElement integerListAttribute(final String attributeName, final boolean optional) {
+        public final DocumentationElement integerListAttribute(final String attributeName, final boolean optional) {
             attributeTypes.add(new DocumentationAttribute(attributeName, "Integer List", "integerList", optional, null));
             return this;
         }
