@@ -385,11 +385,41 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         getStart(writer);
         addElement(writer, rootElement);
 //        addElement(writer, rootElement.childElements[1]);
-        writer.append("<h3>Features</h3><table border=1>\n");
+        writer.append("<div style=\"background-color:#add8e630;border: 1px solid black;\">\n");
+        writer.append("<h2 id=\"...General Features...Type\">General Features</h2><table border=1>\n");
         for (FeatureType featureType : FeatureType.values()) {
-//            addFeature(writer, featureType);
-            addElement(writer, new DocumentationElement(featureType));
+            if (featureType.getIsChildType() == FeatureType.Contitionals.none) {
+                addElement(writer, new DocumentationElement(featureType));
+            }
         }
+        writer.append("</div><br/><br/>\n");
+        writer.append("<div style=\"background-color:#adc3e630;border: 1px solid black;\">\n");
+        writer.append("<h2 id=\"...Stimulus Features...Type\">Stimulus Features</h2><table border=1>\n");
+        for (FeatureType featureType : FeatureType.values()) {
+            if (featureType.getIsChildType() == FeatureType.Contitionals.stimulusAction) {
+                addElement(writer, new DocumentationElement(featureType));
+            }
+        }
+        writer.append("</div><br/><br/>\n");
+        writer.append("<div style=\"background-color:#c3ade630;border: 1px solid black;\">\n");
+        writer.append("<h2 id=\"...Group Features...Type\">Group Features</h2><table border=1>\n");
+        for (FeatureType featureType : FeatureType.values()) {
+            if (featureType.getIsChildType() == FeatureType.Contitionals.groupNetworkAction) {
+                addElement(writer, new DocumentationElement(featureType));
+            }
+        }
+        writer.append("</div><br/><br/>\n");
+        writer.append("<div style=\"background-color:#ade6d930;border: 1px solid black;\">\n");
+        writer.append("<h2 id=\"...Other Specialised Features...Type\">Other Specialised Features</h2><table border=1>\n");
+        for (FeatureType featureType : FeatureType.values()) {
+            if (featureType.getIsChildType() != FeatureType.Contitionals.none
+                    && featureType.getIsChildType() != FeatureType.Contitionals.stimulusAction
+                    && featureType.getIsChildType() != FeatureType.Contitionals.groupNetworkAction
+                    ) {
+                addElement(writer, new DocumentationElement(featureType));
+            }
+        }
+        writer.append("</div>\n");
 //        for (final FeatureType featureRef : FeatureType.values()) {
 //                if (featureRef.getIsChildType() == FeatureType.Contitionals.none) {
 //                    childList.add(new DocumentationElement(featureRef));
