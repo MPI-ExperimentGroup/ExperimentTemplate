@@ -22,6 +22,7 @@ import java.util.List;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
 import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
+import org.codehaus.groovy.runtime.AbstractComparator;
 
 /**
  * @since Feb 11, 2019 5:09:05 PM (creation date)
@@ -107,6 +108,12 @@ public class AbstractSchemaGenerator {
                     childTypeList.add("...General Features...");
                     break;
             }
+            childTypeList.sort(new AbstractComparator<String>() {
+                @Override
+                public int compare(String o1, String o2) {
+                    return o1.compareTo(o2);
+                }
+            });
             this.childTypeNames = childTypeList.toArray(new String[childTypeList.size()]);
             this.childElements = new DocumentationElement[0];
             this.hasStringContents = false;
@@ -136,6 +143,12 @@ public class AbstractSchemaGenerator {
                     childTypeList.add(featureRef.name());
                 }
             }
+            childTypeList.sort(new AbstractComparator<String>() {
+                @Override
+                public int compare(String o1, String o2) {
+                    return o1.compareTo(o2);
+                }
+            });
             this.childTypeNames = childTypeList.toArray(new String[childTypeList.size()]);
             this.childElements = new DocumentationElement[0];
             this.hasStringContents = false;
