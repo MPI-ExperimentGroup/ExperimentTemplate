@@ -92,8 +92,18 @@ public class AbstractSchemaGenerator {
                         childTypeList.add(featureRef.name());
                     }
                 }
-            }else{
-                childTypeList.add("...any...");
+            }
+            switch (featureType.getRequiresChildType()) {
+                // these items link to separate lists of element groups: general, stimuli, group...
+                case stimulusAction:
+                    childTypeList.add("...General Features...");
+                    break;
+                case groupNetworkAction:
+                    childTypeList.add("...General Features...");
+                    break;
+                case none:
+                    childTypeList.add("...General Features...");
+                    break;
             }
             this.childTypeNames = childTypeList.toArray(new String[childTypeList.size()]);
             this.childElements = new DocumentationElement[0];
