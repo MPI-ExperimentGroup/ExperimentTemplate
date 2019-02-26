@@ -22,9 +22,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.Arrays;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
-import nl.mpi.tg.eg.experimentdesigner.model.PresenterType;
+import org.codehaus.groovy.runtime.AbstractComparator;
 
 /**
  * @since October 1, 2018 15:38 PM (creation date)
@@ -270,7 +271,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         }
     }
 
-    private void addFeature(Writer writer, final FeatureType featureType) throws IOException {
+    private void addFeature(Writer writer, final FeatureType featureType, FeatureType[] sortedFeatureTypes) throws IOException {
         writer.append("<tr><td>\n");
         writer.append("<div class=\"complexType\">&lt;").append(featureType.name()).append("&gt;<br/>\n");
         writer.append("</td><td>\n");
@@ -296,7 +297,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
 //        writer.append("&gt;<br/>\n");
         if (featureType.canHaveFeatures()) {
             writer.append("can have features<br/>\n");
-//            for (final FeatureType featureRef : FeatureType.values()) {
+//            for (final FeatureType featureRef : sortedFeatureTypes) {
 //                if (featureRef.getIsChildType() == FeatureType.Contitionals.none || featureRef.getIsChildType() == featureType.getRequiresChildType()
 //                        || featureRef.getIsChildType() == FeatureType.Contitionals.groupNetworkAction // currently allowing all groupNetworkAction in any element
 //                        || featureRef.getIsChildType() == FeatureType.Contitionals.stimulusAction // currently allowing all stimulusAction in any element
@@ -363,7 +364,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
                 case none:
                     break;
                 default:
-                    for (FeatureType featureType1 : FeatureType.values()) {
+                    for (FeatureType featureType1 : sortedFeatureTypes) {
                         if (featureType1.getIsChildType() == featureType.getRequiresChildType()) {
                             writer.append("&lt;").append(featureType1.name()).append("&gt;<br/>\n");
                         }
@@ -387,10 +388,17 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
     public void appendContents(Writer writer) throws IOException {
         getStart(writer);
         addElement(writer, rootElement);
+        FeatureType[] sortedFeatureTypes = FeatureType.values();
+        Arrays.sort(sortedFeatureTypes, new AbstractComparator<FeatureType>() {
+            @Override
+            public int compare(FeatureType o1, FeatureType o2) {
+                return o1.name().compareTo(o2.name());
+            }
+        });
 //        addElement(writer, rootElement.childElements[1]);
         writer.append("<div style=\"background-color:#add8e630;border: 1px solid black;\">\n");
         writer.append("<h2 id=\"...General Features...Type\">General Features</h2><table border=1>\n");
-        for (FeatureType featureType : FeatureType.values()) {
+        for (FeatureType featureType : sortedFeatureTypes) {
             if (featureType.getIsChildType() == FeatureType.Contitionals.none) {
                 addElement(writer, new DocumentationElement(featureType));
             }
@@ -398,7 +406,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         writer.append("</div><br/><br/>\n");
         writer.append("<div style=\"background-color:#adc3e630;border: 1px solid black;\">\n");
         writer.append("<h2 id=\"...Stimulus Features...Type\">Stimulus Features</h2><table border=1>\n");
-        for (FeatureType featureType : FeatureType.values()) {
+        for (FeatureType featureType : sortedFeatureTypes) {
             if (featureType.getIsChildType() == FeatureType.Contitionals.stimulusAction) {
                 addElement(writer, new DocumentationElement(featureType));
             }
@@ -406,7 +414,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         writer.append("</div><br/><br/>\n");
         writer.append("<div style=\"background-color:#c3ade630;border: 1px solid black;\">\n");
         writer.append("<h2 id=\"...Group Features...Type\">Group Features</h2><table border=1>\n");
-        for (FeatureType featureType : FeatureType.values()) {
+        for (FeatureType featureType : sortedFeatureTypes) {
             if (featureType.getIsChildType() == FeatureType.Contitionals.groupNetworkAction) {
                 addElement(writer, new DocumentationElement(featureType));
             }
@@ -414,7 +422,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         writer.append("</div><br/><br/>\n");
         writer.append("<div style=\"background-color:#ade6d930;border: 1px solid black;\">\n");
         writer.append("<h2 id=\"...Other Specialised Features...Type\">Other Specialised Features</h2><table border=1>\n");
-        for (FeatureType featureType : FeatureType.values()) {
+        for (FeatureType featureType : sortedFeatureTypes) {
             if (featureType.getIsChildType() != FeatureType.Contitionals.none
                     && featureType.getIsChildType() != FeatureType.Contitionals.stimulusAction
                     && featureType.getIsChildType() != FeatureType.Contitionals.groupNetworkAction) {
@@ -422,7 +430,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
             }
         }
         writer.append("</div>\n");
-//        for (final FeatureType featureRef : FeatureType.values()) {
+//        for (final FeatureType featureRef : sortedFeatureTypes) {
 //                if (featureRef.getIsChildType() == FeatureType.Contitionals.none) {
 //                    childList.add(new DocumentationElement(featureRef));
 //                }
