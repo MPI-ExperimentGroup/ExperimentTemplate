@@ -148,4 +148,13 @@ public class ObfuscatedStorage {
     public void clear() {
         dataStore.clear();
     }
+
+    public void clearUserData(UserId userId) {
+        for (int itemIndex = dataStore.getLength() - 1; itemIndex > -1; itemIndex--) {
+            final String key = dataStore.key(itemIndex);
+            if (key.startsWith(appNameInternal + "." + userId.toString())) {
+                dataStore.removeItem(key);
+            }
+        }
+    }
 }

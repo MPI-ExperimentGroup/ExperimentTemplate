@@ -71,14 +71,8 @@ public class LocalStorage {
     public void clearUserData(UserId userId) {
         loadStorage();
         // todo: it would be good to do this on an application basis
-//        clear();
         if (dataStore != null) {
-            for (int itemIndex = dataStore.getLength() - 1; itemIndex > -1; itemIndex--) {
-                final String key = dataStore.key(itemIndex);
-                if (key.startsWith(appNameInternal + "." + userId.toString())) {
-                    dataStore.removeItem(key);
-                }
-            }
+            dataStore.clearUserData(userId);
         }
     }
 
