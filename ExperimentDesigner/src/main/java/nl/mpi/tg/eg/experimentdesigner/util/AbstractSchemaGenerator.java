@@ -219,7 +219,7 @@ public class AbstractSchemaGenerator {
                 new DocumentationElement("presenter", "Each screen in an experiment configuration is described in a PRESENTER element.", 1, 0, FeatureType.values(), PresenterType.values())
                         .stringAttribute("self", false)
                         .stringAttribute("title", true)
-                        .stringAttribute("menuLabel", false)
+                        .stringAttribute("menuLabel", true)
                         .stringAttribute("back", true)
                         .stringAttribute("next", true)
                         .restrictedAttribute("type", false, "transmission", "metadata", "preload", "stimulus", "colourPicker", "colourReport", "kindiagram", "menu", "debug", "text", "timeline"),
