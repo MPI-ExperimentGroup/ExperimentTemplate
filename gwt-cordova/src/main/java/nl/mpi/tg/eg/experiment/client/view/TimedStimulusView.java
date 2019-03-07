@@ -92,7 +92,9 @@ public class TimedStimulusView extends ComplexView {
     }
 
     public void preloadImage(final TimedEventMonitor timedEventMonitor, SafeUri imagePath, final TimedStimulusListener timedStimulusListener) {
-        timedEventMonitor.registerEvent("preloadImage");
+        if (timedEventMonitor != null) {
+            timedEventMonitor.registerEvent("preloadImage");
+        }
         final Image image = new Image(imagePath);
         image.setVisible(false);
         image.addLoadHandler(new LoadHandler() {
@@ -162,7 +164,9 @@ public class TimedStimulusView extends ComplexView {
         cancelableListnerList.add(postLoadMsListener);
         cancelableListnerList.add(failedStimulusListener);
         cancelableListnerList.add(clickedStimulusListener);
-        timedEventMonitor.registerEvent("addTimedImage");
+        if (timedEventMonitor != null) {
+            timedEventMonitor.registerEvent("addTimedImage");
+        }
         final Image image = new Image(imagePath);
         if (styleName != null) {
             image.addStyleName(styleName);
@@ -266,7 +270,9 @@ public class TimedStimulusView extends ComplexView {
         cancelableListnerList.add(loadedStimulusListener);
         cancelableListnerList.add(failedStimulusListener);
         cancelableListnerList.add(clickedStimulusListener);
-        timedEventMonitor.registerEvent("addTimedImage");
+        if (timedEventMonitor != null) {
+            timedEventMonitor.registerEvent("addTimedImage");
+        }
         final Image image = new Image(imagePath);
         if (animateStyle != null && !animateStyle.isEmpty()) {
             image.addStyleName(animateStyle);
@@ -459,11 +465,15 @@ public class TimedStimulusView extends ComplexView {
         cancelableListnerList.add(playbackStartedStimulusListener);
         cancelableListnerList.add(playedStimulusListener);
         try {
-            timedEventMonitor.registerEvent("addTimedAudio");
+            if (timedEventMonitor != null) {
+                timedEventMonitor.registerEvent("addTimedAudio");
+            }
             final AudioPlayer audioPlayer = new AudioPlayer(new AudioExceptionListner() {
                 @Override
                 public void audioExceptionFired(AudioException audioException) {
-                    timedEventMonitor.registerEvent("audioExceptionFired");
+                    if (timedEventMonitor != null) {
+                        timedEventMonitor.registerEvent("audioExceptionFired");
+                    }
                     failedStimulusListener.postLoadTimerFired();
                 }
             }, oggPath, mp3Path, autoPlay);
@@ -486,26 +496,34 @@ public class TimedStimulusView extends ComplexView {
             audioPlayer.setEventListner(new AudioEventListner() {
                 @Override
                 public void audioLoaded() {
-                    timedEventMonitor.registerEvent("audioLoaded");
+                    if (timedEventMonitor != null) {
+                        timedEventMonitor.registerEvent("audioLoaded");
+                    }
                     loadedStimulusListener.postLoadTimerFired();
                 }
 
                 @Override
                 public void audioStarted() {
-                    timedEventMonitor.registerEvent("audioStarted");
+                    if (timedEventMonitor != null) {
+                        timedEventMonitor.registerEvent("audioStarted");
+                    }
                     playbackStartedStimulusListener.postLoadTimerFired();
                 }
 
                 @Override
                 public void audioFailed() {
-                    timedEventMonitor.registerEvent("audioFailed");
+                    if (timedEventMonitor != null) {
+                        timedEventMonitor.registerEvent("audioFailed");
+                    }
                     failedStimulusListener.postLoadTimerFired();
                 }
 
                 @Override
                 public void audioEnded() {
-                    timedEventMonitor.registerEvent("audioEnded");
-                    timedEventMonitor.registerMediaLength(mediaId, (long) (audioPlayer.getCurrentTime() * 1000));
+                    if (timedEventMonitor != null) {
+                        timedEventMonitor.registerEvent("audioEnded");
+                        timedEventMonitor.registerMediaLength(mediaId, (long) (audioPlayer.getCurrentTime() * 1000));
+                    }
 //                    playbackIndicatorTimer.cancel();
 //                    playbackIndicator.removeFromParent();
 //                    audioPlayer.setEventListner(null); // prevent multiple triggering
@@ -522,7 +540,9 @@ public class TimedStimulusView extends ComplexView {
         cancelableListnerList.add(failedStimulusListener);
         cancelableListnerList.add(playbackStartedStimulusListener);
         cancelableListnerList.add(playedStimulusListener);
-        timedEventMonitor.registerEvent("addTimedVideo");
+        if (timedEventMonitor != null) {
+            timedEventMonitor.registerEvent("addTimedVideo");
+        }
         final Video video = Video.createIfSupported();
         if (video == null) {
             failedStimulusListener.postLoadTimerFired();
@@ -553,7 +573,9 @@ public class TimedStimulusView extends ComplexView {
                 @Override
                 public void onCanPlayThrough(CanPlayThroughEvent event) {
                     if (!hasTriggeredOnLoaded) {
-                        timedEventMonitor.registerEvent("onCanPlayThrough");
+                        if (timedEventMonitor != null) {
+                            timedEventMonitor.registerEvent("onCanPlayThrough");
+                        }
                         hasTriggeredOnLoaded = true;
                         loadedStimulusListener.postLoadTimerFired();
                         if (autoPlay) {
@@ -573,8 +595,10 @@ public class TimedStimulusView extends ComplexView {
 
                 @Override
                 public void onEnded(EndedEvent event) {
-                    timedEventMonitor.registerEvent("onEnded");
-                    timedEventMonitor.registerMediaLength(mediaId, (long) (video.getCurrentTime() * 1000));
+                    if (timedEventMonitor != null) {
+                        timedEventMonitor.registerEvent("onEnded");
+                        timedEventMonitor.registerMediaLength(mediaId, (long) (video.getCurrentTime() * 1000));
+                    }
                     // prevent multiple triggering
                     if (!triggered) {
                         triggered = true;
