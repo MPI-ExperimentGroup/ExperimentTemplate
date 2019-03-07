@@ -1195,6 +1195,18 @@
         <htmlText featureText="Please make sure that the accent is correctly displayed on this screen: café"/>
         <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="Second"/>
     </presenter>
+    <presenter back="Menu" menuLabel="Single Image Example" type="text" self="Single_Image_Example" title="Single Image Example">
+        <htmlText featureText="This is a simple example showing a single image."/>
+        <image msToNext="1000" src="d1e269.jpg" styleName="exampleBorderedBackground">
+            <mediaLoaded>
+                <htmlText featureText="mediaLoaded"/>
+            </mediaLoaded>
+            <mediaLoadFailed>
+                <htmlText featureText="mediaLoadFailed"/>
+            </mediaLoadFailed>
+        </image>
+        <htmlText featureText="This label is after the image but before mediaLoaded and mediaLoadFailed are evaluated."/>
+    </presenter>
     <presenter back="Menu" menuLabel="Second" next="Third_Informatie" type="stimulus" self="Second" title="Second">
         <loadStimulus eventTag="Second" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
