@@ -1265,13 +1265,23 @@
                 <clearPage/>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
-                <stimulusFreeText featureText="Vul minimal 1 nummer." allowedCharCodes="0123456789." styleName="stimuliLabel" validationRegex="[0-9]+[.]?[0-9]*" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
-                <actionButton featureText="Volgende [tab + enter]">
+                <htmlText featureText="Enter a number with or without a decimal point. There cannot be a leading nor trailing decimal point. Only one decimal point is valid."/>
+                <htmlText featureText="Only the keys 0, 1, 2, 3, 4, 5,6, 7, 8, 9 and . can be used in this text box example. The enter key will go to the next stimulus."/>
+                <addPadding/>
+                <stimulusFreeText featureText="Vul minimal 1 nummer." hotKey="ENTER" allowedCharCodes="0123456789." styleName="stimuliLabel" validationRegex="[0-9]+([.]?[0-9]+)?" inputErrorMessage="Sorry, dit teken is niet toegestaan."/>
+                <actionButton featureText="Volgende [enter]" hotKey="ENTER" >
                     <nextStimulus repeatIncorrect="false"/>
                 </actionButton>
             </hasMoreStimulus>
-            <endOfStimulus>
-                <gotoNextPresenter/>
+            <endOfStimulus>                
+                <clearPage/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="Second"/>
+                    <gotoPresenter target="Second"/>
+                </actionButton>
+                <actionButton featureText="Next">
+                    <gotoNextPresenter/>
+                </actionButton>
             </endOfStimulus>
             <randomGrouping storageField="item">
                 <tag>second</tag>
