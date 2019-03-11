@@ -1207,6 +1207,58 @@
         </image>
         <htmlText featureText="This label is after the image but before mediaLoaded and mediaLoadFailed are evaluated."/>
     </presenter>
+    <presenter back="Menu" menuLabel="Rating Buttons Example" type="stimulus" self="rating_buttons_example" title="Rating Buttons Example">
+        <loadStimulus eventTag="rating_buttons_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <plainText featureText="Rating buttons can be different for each stimulus, or the same for all. In this example we have the same set of options for all."/>
+                <addPadding/>
+                <stimulusLabel styleName="stimuliLabel"/>
+                <addPadding/>
+                <ratingButton ratingLabelRight="zeer waarschijnlijk positief" ratingLabels="1,2,3,4,5,6,7" dataChannel="1" ratingLabelLeft="zeer waarschijnlijk negatief">
+                    <nextStimulus repeatIncorrect="false"/>
+                </ratingButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="rating_buttons_example"/>
+                    <gotoPresenter target="rating_buttons_example"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>First_Stimuli_Screen</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Menu" menuLabel="Single Line Text Box Example" type="stimulus" self="single_line_text_box_example" title="Single Line Text Box Example">
+        <loadStimulus eventTag="single_line_text_box_example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearPage/>
+                <plainText featureText="The stimulus text box can be single line or multi line, it can also pass hot keys to buttons in the page, if those keys are not valid input for that text box. In this case the box is single line, so the enter key is not valid input and therefore enter can trigger the next stimulus."/>
+                <addPadding/>
+                <stimulusLabel styleName="stimuliLabel"/>
+                <addPadding/>
+                <stimulusFreeText featureText="Please enter at least three characters." validationRegex=".{1,}" hotKey="ENTER" inputErrorMessage=" " styleName="minimalWidth"/>
+                <addPadding/>
+                <actionButton featureText="Next [ENTER]" hotKey="ENTER">
+                    <nextStimulus repeatIncorrect="false"/>
+                </actionButton>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <clearPage/>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="single_line_text_box_example"/>
+                    <gotoPresenter target="single_line_text_box_example"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>First_Stimuli_Screen</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
     <presenter back="Menu" menuLabel="Second" next="Third_Informatie" type="stimulus" self="Second" title="Second">
         <loadStimulus eventTag="Second" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
@@ -2270,6 +2322,15 @@
             </stimuli>
         </loadStimulus>
     </presenter>
+    <presenter back="Menu" menuLabel="RedirectToUrlExample" type="transmission" self="RedirectToUrlExample" title="RedirectToUrlExample">
+        <htmlText featureText="https://frinexstaging.mpi.nl/with_stimulus_example/?session_next_step=thenextexperiment&amp;validated_uuid=theusersid&amp;session_steps=allthesteps#RedirectToUrlExample"/>
+        <setMetadataValue fieldName="session_next_step" dataLogFormat="thenextexperiment"/>
+        <setMetadataValue fieldName="validated_uuid" dataLogFormat="theusersid"/>
+        <setMetadataValue fieldName="session_steps" dataLogFormat="allthesteps"/>
+        <actionButton featureText="redirectToUrl">
+            <redirectToUrl src="/&lt;metadataField_session_next_step&gt;?uuid=&lt;metadataField_validated_uuid&gt;&amp;session_steps=&lt;metadataField_session_steps&gt;"/>
+        </actionButton>            
+    </presenter>
     <presenter menuLabel="InvitationCodeExampleCompletion" type="transmission" self="InvitationCodeExampleCompletion" title="Invitation Code Example Completion">
         <generateCompletionCode>
             <onSuccess>
@@ -2327,6 +2388,32 @@
         <addPadding/>
         <htmlText featureText="It is worth noting that both Prolific and Mechanical Turk do not use return values from the experiment software. Instead they take a single experiment code which is the same for all users and require the user to log in to their website by following that link.&lt;br/&gt;"/>
         <targetButton featureText="Continue" target="InvitationCodeExampleRestart"/>
+    </presenter>
+    <presenter back="Menu" menuLabel="Next Step Example" type="stimulus" self="NextStepExample" title="Next Step Example">
+        <htmlText featureText="The regular expression used in this example finds the session_step in the list session_steps and places the next value from the list into session_next_step."/>
+        <htmlText featureText="To test this we iterate over the items in the list and test the result of each element, the results of which are below:"/>
+        <addPadding/>
+        <setMetadataValue fieldName="session_steps" dataLogFormat="one_two_three"/>
+        <htmlTokenText featureText="session_steps: &lt;b&gt;&lt;metadataField_session_steps&gt;&lt;/b&gt;"/>
+        <addPadding/>
+        <setMetadataValue fieldName="session_step" dataLogFormat="one"/>
+        <htmlTokenText featureText="session_step: &lt;metadataField_session_step&gt;"/>
+        <setMetadataValue fieldName="session_next_step" replacementRegex="&lt;metadataField_session_step&gt;_([^_]*)" dataLogFormat="&lt;metadataField_session_steps&gt;"/>
+        <htmlTokenText featureText="session_next_step: &lt;b&gt;&lt;metadataField_session_next_step&gt;&lt;/b&gt;"/>
+        <addPadding/>
+        <setMetadataValue fieldName="session_step" dataLogFormat="two"/>
+        <htmlTokenText featureText="session_step: &lt;metadataField_session_step&gt;"/>
+        <setMetadataValue fieldName="session_next_step" replacementRegex="&lt;metadataField_session_step&gt;_([^_]*)" dataLogFormat="&lt;metadataField_session_steps&gt;"/>
+        <htmlTokenText featureText="session_next_step: &lt;b&gt;&lt;metadataField_session_next_step&gt;&lt;/b&gt;"/>
+        <addPadding/>
+        <htmlText featureText="Because there are no more items in the list, session_next_step should be empty and no error sould occur."/>
+        <setMetadataValue fieldName="session_step" dataLogFormat="three"/>
+        <htmlTokenText featureText="session_step: &lt;metadataField_session_step&gt;"/>
+        <setMetadataValue fieldName="session_next_step" replacementRegex="&lt;metadataField_session_step&gt;_([^_]*)" dataLogFormat="&lt;metadataField_session_steps&gt;"/>
+        <htmlTokenText featureText="session_next_step: &lt;b&gt;&lt;metadataField_session_next_step&gt;&lt;/b&gt;"/>
+        <addPadding/>
+        <htmlText featureText="This example is achieved with &amp;lt;setMetadataValue&amp;gt; where the dataLogFormat is the input string and the regular expression in replacementRegex captures the required value."/>
+        <htmlText featureText="The regular expression resolves to, for example &quot;one_([^_]*)&quot; and first finds the current step string &quot;one&quot; followed by a &quot;_&quot; and then captures all following characters until it finds another &quot;_&quot; or reaches the end of the input string. The result is specified by the capture group inside the ( ) which is then stored into the metadata field specified in fieldName."/>
     </presenter>
     <presenter menuLabel="InvitationCodeExampleRestart" type="transmission" self="InvitationCodeExampleRestart" title="Invitation Code Example Restart">
         <generateCompletionCode>
@@ -2425,7 +2512,7 @@
                     </hasMoreStimulus>
                     <endOfStimulus>
                         <clearPage/>
-                        <scoreAboveThreshold correctStreak="4">
+                        <scoreAboveThreshold correctStreak="3">
                             <aboveThreshold>
                                 <htmlText featureText="Your efforts have proved adequate."/>
                             </aboveThreshold>
