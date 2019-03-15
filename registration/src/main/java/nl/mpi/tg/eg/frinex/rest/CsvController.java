@@ -20,11 +20,15 @@ package nl.mpi.tg.eg.frinex.rest;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 import javax.servlet.http.HttpServletResponse;
+import nl.mpi.tg.eg.frinex.model.AudioData;
 import nl.mpi.tg.eg.frinex.model.GroupData;
 import nl.mpi.tg.eg.frinex.model.Participant;
 import nl.mpi.tg.eg.frinex.model.ScreenData;
@@ -37,6 +41,7 @@ import nl.mpi.tg.eg.frinex.util.StimuliTagExpander;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -61,15 +66,48 @@ public class CsvController {
     TagPairRepository tagPairRepository;
     @Autowired
     private GroupDataRepository groupDataRepository;
+    @Autowired
+    private StimulusResponseRepository stimulusResponseRepository;
+    @Autowired
+    private AudioDataRepository audioDataRepository;
 
-    @RequestMapping(value = "/zip", method = RequestMethod.GET)
+    @RequestMapping(value = "/csv.zip", method = RequestMethod.GET)
     @ResponseBody
-    public void getZip(HttpServletResponse response) throws IOException {
+    public void getCsvZip(HttpServletResponse response) throws IOException {
         response.setContentType("application/zip");
         response.addHeader("Content-Disposition", "attachment; filename=\"results.zip\"");
         response.addHeader("Content-Transfer-Encoding", "binary");
         try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
             compressResults(outputStream);
+            response.getOutputStream().write(outputStream.toByteArray());
+            response.getOutputStream().flush();
+        }
+    }
+
+    @RequestMapping(value = "/audio_{yearString}-{monthString}-{dayString}.zip", method = RequestMethod.GET)
+    @ResponseBody
+    public void getAudioZip(HttpServletResponse response,
+            @PathVariable(value = "yearString", required = true) int selectedYear,
+            @PathVariable(value = "monthString", required = true) int selectedMonth,
+            @PathVariable(value = "dayString", required = true) int selectedDay) throws IOException {
+        response.setContentType("application/zip");
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.YEAR, selectedYear);
+        calendar.set(Calendar.MONTH, selectedMonth - 1);
+        calendar.set(Calendar.DAY_OF_MONTH, selectedDay);
+        Date selectedDate = calendar.getTime();
+        calendar.set(Calendar.DAY_OF_MONTH, selectedDay + 1);
+        Date selectedEndDate = calendar.getTime();
+        String selectedDateString = new SimpleDateFormat("yyyy-MM-dd").format(selectedDate);
+        response.addHeader("Content-Disposition", "attachment; filename=\"audio_" + selectedDateString + ".zip\"");
+        response.addHeader("Content-Transfer-Encoding", "binary");
+        try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+            try (ZipOutputStream zipOutputStream = new ZipOutputStream(outputStream)) {
+                zipOutputStream.setLevel(ZipOutputStream.STORED);
+                for (AudioData audioData : audioDataRepository.findAllBySubmitDateBetween(selectedDate, selectedEndDate)) {
+                    addToZipArchive(zipOutputStream, audioData.getUserId() + "_" + audioData.getScreenName() + "_" + audioData.getStimulusId() + "_" + audioData.getId() + ".ogg", audioData.getDataBlob());
+                }
+            }
             response.getOutputStream().write(outputStream.toByteArray());
             response.getOutputStream().flush();
         }
