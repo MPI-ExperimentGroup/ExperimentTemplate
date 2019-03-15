@@ -17,9 +17,11 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import nl.mpi.tg.eg.frinex.model.AudioData;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -58,7 +60,17 @@ public interface AudioDataRepository extends PagingAndSortingRepository<AudioDat
     public abstract void deleteAll();
 
     @Transactional
+    @Query(value = "select distinct to_char(submitDate,'YYYY-MM-DD') as resultString from AudioData order by resultString asc")
+    public List<String> findSubmitDateDistinctByOrderBySubmitDateAsc();
+
+    @Transactional
+    List<AudioData> findAllBySubmitDateBetween(Date submitDateStart, Date submitDateEnd);
+
+    @Transactional
     public List<AudioData> findByUserIdOrderBySubmitDateAsc(@Param("userId") String userId);
+
+    @Transactional
+    public List<AudioData> findBySubmitDateOrderBySubmitDateAsc(@Param("submitDate") String userId);
 
     @Transactional
     public List<AudioData> findByShortLivedTokenAndUserId(@Param("shortLivedToken") UUID shortLivedToken, @Param("userId") String userId);
