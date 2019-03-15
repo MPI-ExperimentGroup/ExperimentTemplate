@@ -145,24 +145,28 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
         timedStimulusView.endCell();
     }
 
-    protected void region(final String regionId, final String styleName, final TimedStimulusListener timedStimulusListener) {
+    protected void region(final Stimulus currentStimulus, final String regionIdToken, final String styleName, final TimedStimulusListener timedStimulusListener) {
+        final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(regionIdToken);
         timedStimulusView.startRegion(regionId, styleName);
         timedStimulusListener.postLoadTimerFired();
         timedStimulusView.endRegion();
     }
 
-    protected void regionStyle(final String regionId, final String styleName) {
+    protected void regionStyle(final Stimulus currentStimulus, final String regionIdToken, final String styleName) {
+        final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(regionIdToken);
         timedStimulusView.setRegionStyle(regionId, styleName);
     }
 
-    protected void regionReplace(final String regionId, final String styleName, final TimedStimulusListener timedStimulusListener) {
+    protected void regionReplace(final Stimulus currentStimulus, final String regionIdToken, final String styleName, final TimedStimulusListener timedStimulusListener) {
+        final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(regionIdToken);
         timedStimulusView.clearRegion(regionId);
         timedStimulusView.startRegion(regionId, styleName);
         timedStimulusListener.postLoadTimerFired();
         timedStimulusView.endRegion();
     }
 
-    protected void regionClear(final String regionId) {
+    protected void regionClear(final Stimulus currentStimulus, final String regionIdToken) {
+        final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(regionIdToken);
         timedStimulusView.clearRegion(regionId);
     }
 }
