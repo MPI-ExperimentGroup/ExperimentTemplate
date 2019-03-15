@@ -48,7 +48,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             <h3>Download Data</h3>
             <a th:href="'groupdatacsv?' + ${(param.detailed != null)? 'detailed' : 'simple'}">Group Data CSV</a><br/>
             <a href="aggregate">Download Single CSV</a><br/>
-            <a href="zip">Download Zipped Data</a><br/>
+            <a href="csv.zip">Download Zipped Data</a><br/>
+            <div>
+                Download Zipped Audio [
+                <a th:each="dateString,dateIndex : ${audioDates}" th:href="'audio_'+${dateString}+'.zip'" th:text="${dateString}"/>
+                ]
+            </div>
         </section>
         <section>
             <h3>JSON REST Interface</h3>
