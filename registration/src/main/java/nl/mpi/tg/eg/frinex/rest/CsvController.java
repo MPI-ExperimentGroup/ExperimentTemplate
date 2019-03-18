@@ -95,6 +95,9 @@ public class CsvController {
         calendar.set(Calendar.YEAR, selectedYear);
         calendar.set(Calendar.MONTH, selectedMonth - 1);
         calendar.set(Calendar.DAY_OF_MONTH, selectedDay);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
         Date selectedDate = calendar.getTime();
         calendar.set(Calendar.DAY_OF_MONTH, selectedDay + 1);
         Date selectedEndDate = calendar.getTime();
