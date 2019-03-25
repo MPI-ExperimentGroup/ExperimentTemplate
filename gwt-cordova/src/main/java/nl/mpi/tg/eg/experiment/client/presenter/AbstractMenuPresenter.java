@@ -28,6 +28,7 @@ import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.experiment.client.view.ComplexView;
@@ -42,8 +43,8 @@ public abstract class AbstractMenuPresenter extends AbstractTimedPresenter imple
 
     private final List<ApplicationController.ApplicationState> nonCompletedScreens = new ArrayList<>();
 
-    public AbstractMenuPresenter(RootLayoutPanel widgetTag, TimedStimulusView simpleView, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
-        super(widgetTag, simpleView, userResults, localStorage, timerService);
+    public AbstractMenuPresenter(RootLayoutPanel widgetTag, TimedStimulusView simpleView, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
+        super(widgetTag, simpleView, submissionService, userResults, localStorage, timerService);
     }
 
     public void allMenuItems(final AppEventListner appEventListner, final ApplicationController.ApplicationState selfApplicationState) {
