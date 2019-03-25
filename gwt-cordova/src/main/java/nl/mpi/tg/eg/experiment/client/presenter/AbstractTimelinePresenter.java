@@ -47,7 +47,7 @@ public abstract class AbstractTimelinePresenter extends AbstractTimedPresenter i
     private String storageTag = "temp_tag";
 
     public AbstractTimelinePresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
-        super(widgetTag, new AnnotationTimelineView(), userResults, localStorage, timerService);
+        super(widgetTag, new AnnotationTimelineView(), submissionService, userResults, localStorage, timerService);
         this.stimulusProvider = new nl.mpi.tg.eg.experiment.client.service.StimulusProvider(GeneratedStimulusProvider.values);
     }
 
