@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experiment.client;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.event.logical.shared.CloseEvent;
 import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
@@ -33,7 +34,10 @@ import nl.mpi.tg.eg.experiment.client.presenter.Presenter;
 import nl.mpi.tg.eg.experiment.client.presenter.ErrorPresenter;
 import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
+import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.exception.UserIdException;
+import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
+import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserData;
 import nl.mpi.tg.eg.experiment.client.model.UserId;
@@ -173,6 +177,22 @@ public abstract class AppController implements AppEventListner/*, AudioException
                     } catch (IllegalArgumentException argumentException) {
                     }
                 }
+            }
+        });
+        Window.addWindowClosingHandler(new Window.ClosingHandler() {
+
+            @Override
+            public void onWindowClosing(ClosingEvent event) {
+                presenter.savePresenterState();
+                submissionService.submitAllData(userResults, new DataSubmissionListener() {
+                    @Override
+                    public void scoreSubmissionFailed(DataSubmissionException exception) {
+                    }
+
+                    @Override
+                    public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                    }
+                });
             }
         });
         try {
