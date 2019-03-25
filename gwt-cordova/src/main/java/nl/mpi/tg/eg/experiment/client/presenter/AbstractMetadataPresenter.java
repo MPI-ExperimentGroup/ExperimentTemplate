@@ -48,11 +48,8 @@ import nl.mpi.tg.eg.experiment.client.service.TimerService;
  */
 public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter implements Presenter {
 
-    private final DataSubmissionService submissionService;
-
     public AbstractMetadataPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
-        super(widgetTag, new MetadataView(), userResults, localStorage, timerService);
-        this.submissionService = submissionService;
+        super(widgetTag, new MetadataView(), submissionService, userResults, localStorage, timerService);
     }
 
     @Override
