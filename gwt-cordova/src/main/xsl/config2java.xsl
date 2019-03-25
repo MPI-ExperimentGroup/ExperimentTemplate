@@ -129,7 +129,7 @@
             <xsl:value-of select="@self" />
             <xsl:text>Presenter(widgetTag</xsl:text>
             <xsl:value-of select="
-if(@type = 'transmission' or @type = 'metadata'  or @type = 'colourReport') then ', submissionService' else
+if(@type = 'transmission' or @type = 'metadata' or @type = 'menu' or @type = 'text' or @type = 'colourReport') then ', submissionService' else
 if(@type = 'preload') then ', submissionService' else
 if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', submissionService' else ''" />
             <!--<xsl:value-of select="if(@type = 'stimulus') then ', timerService' else ''" />-->
@@ -255,7 +255,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <xsl:value-of select="@self" />
             <xsl:text>Presenter(RootLayoutPanel widgetTag</xsl:text>
             <xsl:value-of select="
-if(@type = 'transmission' or @type = 'metadata' or @type = 'colourReport') then ', DataSubmissionService submissionService' else 
+if(@type = 'transmission' or @type = 'metadata' or @type = 'menu' or @type = 'text' or @type = 'colourReport') then ', DataSubmissionService submissionService' else 
 if(@type = 'preload') then ', DataSubmissionService submissionService' else 
 if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = 'colourPicker') then ', DataSubmissionService submissionService' else ''" />
             <xsl:text>, UserResults userResults, LocalStorage localStorage, final TimerService timerService</xsl:text>
@@ -263,12 +263,12 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             <xsl:choose>
                 <xsl:when test="@type = 'menu'">
                     <xsl:text>
-                        super(widgetTag, new MenuView(), userResults, localStorage, timerService);
+                        super(widgetTag, new MenuView(), submissionService, userResults, localStorage, timerService);
                     </xsl:text>
                 </xsl:when>
                 <xsl:when test="@type = 'text'">
                     <xsl:text>
-                        super(widgetTag, new TimedStimulusView(), userResults, localStorage, timerService);
+                        super(widgetTag, new TimedStimulusView(), submissionService, userResults, localStorage, timerService);
                     </xsl:text>
                 </xsl:when>
                 <xsl:when test="@type = 'debug'">
@@ -480,7 +480,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="redirectToUrl|setMetadataValue|hasMetadataValue|showStimuliReport|sendStimuliReport|logTokenText|htmlTokenText|transmitResults|submitGroupEvent|helpDialogue|eraseUsersDataButton|saveMetadataButton|localStorageData|stimulusMetadataField|allMetadataFields|metadataField|metadataFieldConnection|metadataFieldVisibilityDependant|metadataFieldDateTriggered|eraseLocalStorageButton|showCurrentMs|enableButtonGroup|cancelPauseAll|cancelPauseTimers|disableButtonGroup|showStimulus|showStimulusProgress|hideButtonGroup|showButtonGroup|displayCompletionCode|generateCompletionCode|sendAllData|sendMetadata|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|removeMatchingStimulus|stimulusLabel">
+    <xsl:template match="redirectToUrl|setMetadataValue|hasMetadataValue|showStimuliReport|sendStimuliReport|logTokenText|htmlTokenText|transmitResults|submitGroupEvent|showHtmlPopup|helpDialogue|eraseUsersDataButton|saveMetadataButton|localStorageData|stimulusMetadataField|allMetadataFields|metadataField|metadataFieldConnection|metadataFieldVisibilityDependant|metadataFieldDateTriggered|eraseLocalStorageButton|showCurrentMs|enableButtonGroup|cancelPauseAll|cancelPauseTimers|disableButtonGroup|showStimulus|showStimulusProgress|hideButtonGroup|showButtonGroup|displayCompletionCode|generateCompletionCode|sendAllData|sendMetadata|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|removeMatchingStimulus|stimulusLabel">
         <xsl:text>    </xsl:text>     
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
@@ -554,7 +554,7 @@ or local-name() eq 'removeStimulus'
         <xsl:value-of select="if(not(@replacementRegex) and local-name() eq 'setMetadataValue') then ', null' else ''" />
         <xsl:value-of select="if(local-name() eq 'sendAllData' or local-name() eq 'sendMetadata') then 'null' else ''" />   
         <xsl:value-of select="if(local-name() eq 'saveMetadataButton') then concat(', messages.errorMessage', generate-id(.), '()') else ''" />
-        <xsl:value-of select="if(local-name() eq 'helpDialogue') then concat(', messages.closeButtonLabel', generate-id(.), '()') else ''" />
+        <xsl:value-of select="if(local-name() eq 'helpDialogue' or local-name() eq 'showHtmlPopup') then concat(', messages.closeButtonLabel', generate-id(.), '()') else ''" />
         <xsl:apply-templates select="conditionTrue" />
         <xsl:apply-templates select="conditionFalse" />
         <xsl:apply-templates select="onError" />        
@@ -632,6 +632,7 @@ or local-name() eq 'sendGroupMessageButton'
         <xsl:value-of select="if(@autoPlay) then concat(', ', @autoPlay) else ''" />        
         <xsl:value-of select="if(local-name() eq 'nextStimulusButton' or local-name() eq 'sendGroupMessageButton' or local-name() eq 'prevStimulusButton') then ', ' else ''" />        
         <xsl:value-of select="if(@repeatIncorrect) then @repeatIncorrect eq 'true' else ''" />
+        <xsl:value-of select="if(@repeatMatching) then @repeatMatching eq 'true' else ''" />
         <xsl:value-of select="if(not (@hotKey) and (
             local-name() eq 'audioButton'
             or local-name() eq 'sendGroupMessageButton'
