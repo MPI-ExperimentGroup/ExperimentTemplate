@@ -29,6 +29,7 @@ import java.util.Set;
 public class UserData {
 
     private final HashMap<MetadataField, String> metadataValues = new HashMap<>();
+    boolean metadataChanged = false;
     private final HashMap<MetadataField, List<UserId>> metadataConnections = new HashMap<>();
     private final UserId userId;
     private int gamesPlayed = 0;
@@ -66,6 +67,7 @@ public class UserData {
 //    }
     public void setMetadataValue(MetadataField metadataField, String value) {
         metadataValues.put(metadataField, value);
+        metadataChanged = true;
     }
 
     public void setMetadataConnection(MetadataField metadataField, List<UserId> value) {
@@ -221,6 +223,14 @@ public class UserData {
 
     public void setMaxPotentialScore(int maxPotentialScore) {
         this.maxPotentialScore = maxPotentialScore;
+    }
+
+    public boolean isMetadataChanged() {
+        return metadataChanged;
+    }
+
+    public void clearMetadataChanged() {
+        metadataChanged = false;
     }
 
     public void updateMaxScore(double currentScore, int currentErrors, int potentialScore, int correctStreak, int errorStreak) {
