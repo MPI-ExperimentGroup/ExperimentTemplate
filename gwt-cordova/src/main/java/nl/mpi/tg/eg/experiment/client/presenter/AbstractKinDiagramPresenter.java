@@ -68,7 +68,7 @@ public abstract class AbstractKinDiagramPresenter extends AbstractTimedPresenter
     private static final String RHOMBUS = "rhombus";
 
     public AbstractKinDiagramPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
-        super(widgetTag, new KinTypeView(), userResults, localStorage, timerService);
+        super(widgetTag, new KinTypeView(), submissionService, userResults, localStorage, timerService);
         duration = new Duration();
         this.submissionService = submissionService;
     }
