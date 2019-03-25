@@ -87,7 +87,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     private static final String LOADED_STIMULUS_LIST = "loadedStimulusList";
     private static final String CONSUMED_TAGS_LIST = "consumedTagsList";
     private static final String SEEN_STIMULUS_INDEX = "seenStimulusIndex";
-    private final DataSubmissionService submissionService;
     private final Duration duration;
     private final TimedEventMonitor timedEventMonitor;
     final ArrayList<StimulusButton> stimulusButtonList = new ArrayList<>();
@@ -106,10 +105,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     public AbstractStimulusPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
-        super(widgetTag, new TimedStimulusView(), userResults, localStorage, timerService);
+        super(widgetTag, new TimedStimulusView(), submissionService, userResults, localStorage, timerService);
         duration = new Duration();
         timedEventMonitor = new TimedEventMonitor(duration);
-        this.submissionService = submissionService;
 
 //        final Label debugLabel = new Label();
 //        debugLabel.setStyleName("debugLabel");
