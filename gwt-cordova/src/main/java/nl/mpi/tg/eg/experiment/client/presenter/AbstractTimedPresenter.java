@@ -17,16 +17,22 @@
  */
 package nl.mpi.tg.eg.experiment.client.presenter;
 
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 import java.util.List;
+import nl.mpi.tg.eg.experiment.client.exception.DataSubmissionException;
 import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
+import nl.mpi.tg.eg.experiment.client.listener.DataSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
+import nl.mpi.tg.eg.experiment.client.model.DataSubmissionResult;
+import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
+import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
 import nl.mpi.tg.eg.experiment.client.util.HtmlTokenFormatter;
@@ -41,10 +47,19 @@ import nl.mpi.tg.eg.frinex.common.model.Stimulus;
 public abstract class AbstractTimedPresenter extends AbstractPresenter implements Presenter {
 
     final protected TimedStimulusView timedStimulusView;
+    protected final DataSubmissionService submissionService;
 
-    public AbstractTimedPresenter(RootLayoutPanel widgetTag, final TimedStimulusView timedStimulusView, UserResults userResults, LocalStorage localStorage, TimerService timerService) {
+    public AbstractTimedPresenter(RootLayoutPanel widgetTag, final TimedStimulusView timedStimulusView, final DataSubmissionService submissionService, UserResults userResults, LocalStorage localStorage, TimerService timerService) {
         super(widgetTag, timedStimulusView, userResults, localStorage, timerService);
         this.timedStimulusView = timedStimulusView;
+        this.submissionService = submissionService;
+    }
+
+    public void setMetadataValue(final Stimulus currentStimulus, MetadataField metadataField, final String dataLogFormat, final String replacementRegex) {
+        final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray);
+        final String dataLogString = (replacementRegex == null) ? htmlTokenFormatter.formatString(dataLogFormat) : htmlTokenFormatter.formatReplaceString(dataLogFormat, replacementRegex);
+        userResults.getUserData().setMetadataValue(metadataField, dataLogString);
+        localStorage.storeData(userResults, metadataFieldProvider);
     }
 
     public void htmlTokenText(final Stimulus currentStimulus, final String textString, final String styleName) {
@@ -168,5 +183,21 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
     protected void regionClear(final Stimulus currentStimulus, final String regionIdToken) {
         final String regionId = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(regionIdToken);
         timedStimulusView.clearRegion(regionId);
+    }
+
+    @Override
+    public void savePresenterState() {
+        if (submissionService != null && userResults.getUserData().isMetadataChanged()) {
+            submissionService.submitMetadata(userResults, new DataSubmissionListener() {
+                @Override
+                public void scoreSubmissionFailed(DataSubmissionException exception) {
+                }
+
+                @Override
+                public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                }
+            });
+        }
+        super.savePresenterState();
     }
 }
