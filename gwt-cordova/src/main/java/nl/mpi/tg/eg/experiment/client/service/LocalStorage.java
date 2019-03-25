@@ -221,6 +221,7 @@ public class LocalStorage {
                     userData.setMetadataConnection(metadataField, userIdList);
                 }
             }
+            userData.clearMetadataChanged();
         }
         userData.updateMaxScore(getCleanStoredDouble(dataStore.getUSER_RESULTS(userData.getUserId(), MAX_SCORE)),
                 getCleanStoredInt(dataStore.getUSER_RESULTS(userData.getUserId(), MAX_ERRORS)),
