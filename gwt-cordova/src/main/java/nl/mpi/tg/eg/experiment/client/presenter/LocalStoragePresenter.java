@@ -49,7 +49,7 @@ import nl.mpi.tg.eg.experiment.client.view.TimedStimulusView;
 public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
 
     public LocalStoragePresenter(RootLayoutPanel widgetTag) {
-        super(widgetTag, new TimedStimulusView(), null, null, null);
+        super(widgetTag, new TimedStimulusView(), null, null, null, null);
     }
 
     @Override
