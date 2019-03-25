@@ -195,6 +195,7 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
 
                 @Override
                 public void scoreSubmissionComplete(JsArray<DataSubmissionResult> highScoreData) {
+                    userResults.getUserData().clearMetadataChanged();
                 }
             });
         }
