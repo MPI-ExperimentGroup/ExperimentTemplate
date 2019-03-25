@@ -242,13 +242,6 @@ public abstract class AbstractPresenter implements Presenter {
         }
     }
 
-    public void setMetadataValue(final Stimulus currentStimulus, MetadataField metadataField, final String dataLogFormat, final String replacementRegex) {
-        final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray);
-        final String dataLogString = (replacementRegex == null) ? htmlTokenFormatter.formatString(dataLogFormat) : htmlTokenFormatter.formatReplaceString(dataLogFormat, replacementRegex);
-        userResults.getUserData().setMetadataValue(metadataField, dataLogString);
-        localStorage.storeData(userResults, metadataFieldProvider);
-    }
-
     @Override
     public void fireBackEvent() {
         if (backEventListner != null) {
