@@ -50,7 +50,7 @@ public abstract class AbstractColourReportPresenter extends AbstractTimedPresent
     private final DataSubmissionService submissionService;
 
     public AbstractColourReportPresenter(RootLayoutPanel widgetTag, DataSubmissionService submissionService, UserResults userResults, final LocalStorage localStorage, final TimerService timerService) {
-        super(widgetTag, new ReportView(), userResults, localStorage, timerService);
+        super(widgetTag, new ReportView(), submissionService, userResults, localStorage, timerService);
         this.submissionService = submissionService;
     }
 
