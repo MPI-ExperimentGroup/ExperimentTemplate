@@ -96,7 +96,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
                 + "} else {"
                 + "lastElementNameCount++;"
                 + "if(lastElementNameCount === 1){\n"
-                + "$(\"#\" + targetId).first().append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&lt;...&gt;</span><br/>');\n"
+                + "$(\"#\" + targetId).first().append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id=\"' + lastElementName + '.' + targetId + '\" onclick=\"getExample(\\'' + lastElementName + '\\', \\'' + lastElementName + '.' + targetId + '\\');\">&lt;...&gt;</span><br/>');\n"
                 + "}}});\n"
                 + "if($(currentElement).children().length === 0){\n"
                 + "var elementText = $(currentElement).text().trim();\n"
@@ -260,8 +260,6 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         writer.append("<table style=\"width: 100%;\">\n");
         writer.append("<tr>\n");
         writer.append("<td colspan='2' id='" + currentElement.elementName + "Target'>\n");
-        writer.append("</td>");
-        writer.append("<td>\n");
         writer.append("<button onclick=\"getExample('" + currentElement.elementName + "', '" + currentElement.elementName + "Target');\">search for examples</button>\n");
         writer.append("</td>");
         writer.append("</tr>\n");
@@ -271,114 +269,114 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         }
     }
 
-    private void addFeature(Writer writer, final FeatureType featureType, FeatureType[] sortedFeatureTypes) throws IOException {
-        writer.append("<tr><td>\n");
-        writer.append("<div class=\"complexType\">&lt;").append(featureType.name()).append("&gt;<br/>\n");
-        writer.append("</td><td>\n");
-        if (featureType.canHaveText()) {
-            writer.append("featureText<br/>\n");
-        }
-        if (featureType.getFeatureAttributes() != null) {
-            for (final FeatureAttribute featureAttribute : featureType.getFeatureAttributes()) {
-                if (!featureAttribute.isOptional() && !featureType.allowsCustomImplementation()) {
-                    writer.append("*");
-                }
-                writer.append(featureAttribute.name());
-                writer.append("<br/>\n");
-            }
-        }
-        if (featureType.canHaveStimulusTags() && !featureType.isCanHaveRandomGrouping()) {
-            writer.append("tags<br/>\n");
-        }
-        if (featureType.allowsCustomImplementation()) {
-            writer.append("class<br/>\n");
-        }
-        writer.append("</td><td>\n");
-//        writer.append("&gt;<br/>\n");
-        if (featureType.canHaveFeatures()) {
-            writer.append("can have features<br/>\n");
-//            for (final FeatureType featureRef : sortedFeatureTypes) {
-//                if (featureRef.getIsChildType() == FeatureType.Contitionals.none || featureRef.getIsChildType() == featureType.getRequiresChildType()
-//                        || featureRef.getIsChildType() == FeatureType.Contitionals.groupNetworkAction // currently allowing all groupNetworkAction in any element
-//                        || featureRef.getIsChildType() == FeatureType.Contitionals.stimulusAction // currently allowing all stimulusAction in any element
-//                        ) {
-//                    writer.append("<div class=\"element\">\"").append(featureRef.name()).append(featureRef.name()).append("\"\n");
+//    private void addFeature(Writer writer, final FeatureType featureType, FeatureType[] sortedFeatureTypes) throws IOException {
+//        writer.append("<tr><td>\n");
+//        writer.append("<div class=\"complexType\">&lt;").append(featureType.name()).append("&gt;<br/>\n");
+//        writer.append("</td><td>\n");
+//        if (featureType.canHaveText()) {
+//            writer.append("featureText<br/>\n");
+//        }
+//        if (featureType.getFeatureAttributes() != null) {
+//            for (final FeatureAttribute featureAttribute : featureType.getFeatureAttributes()) {
+//                if (!featureAttribute.isOptional() && !featureType.allowsCustomImplementation()) {
+//                    writer.append("*");
 //                }
+//                writer.append(featureAttribute.name());
+//                writer.append("<br/>\n");
 //            }
-//            writer.append("</div>\n");
-        } else {
-            switch (featureType.getRequiresChildType()) {
-                case hasTrueFalseCondition:
-                    writer.append("&lt;conditionTrue&gt;<br/>\n");
-                    writer.append("&lt;conditionFalse&gt;<br/>\n");
-                    break;
-                case hasCorrectIncorrect:
-                    writer.append("&lt;responseCorrect&gt;<br/>\n");
-                    writer.append("&lt;responseIncorrect&gt;<br/>\n");
-                    break;
-                case hasMoreStimulus:
-                    writer.append("&lt;hasMoreStimulus&gt;<br/>\n");
-                    writer.append("&lt;endOfStimulus&gt;<br/>\n");
-                    writer.append("&lt;randomGrouping&gt;<br/>\n");
-                    writer.append("&lt;stimuli&gt;<br/>\n");
-                    break;
-                case hasErrorSuccess:
-                    writer.append("&lt;onError&gt;<br/>\n");
-                    writer.append("&lt;onSuccess&gt;<br/>\n");
-                    break;
-                case hasUserCount:
-                    writer.append("&lt;multipleUsers&gt;<br/>\n");
-                    writer.append("&lt;singleUser&gt;<br/>\n");
-                    break;
-                case hasThreshold:
-                    writer.append("&lt;aboveThreshold&gt;<br/>\n");
-                    writer.append("&lt;withinThreshold&gt;<br/>\n");
-                    break;
-                case groupNetworkActivity:
-                    writer.append("&lt;groupNetworkActivity&gt;<br/>\n");
-                    writer.append("&lt;sendGroupEndOfStimuli&gt;<br/>\n");
-                    break;
-                case hasMediaPlayback:
-                    writer.append("&lt;mediaLoaded&gt;<br/>\n");
-                    writer.append("&lt;mediaLoadFailed&gt;<br/>\n");
-                    writer.append("&lt;mediaPlaybackComplete&gt;<br/>\n");
-                    break;
-                case hasMediaRecorderPlayback:
-                    writer.append("&lt;onError&gt;<br/>\n");
-                    writer.append("&lt;onSuccess&gt;<br/>\n");
-                    writer.append("&lt;mediaLoaded&gt;<br/>\n");
-                    writer.append("&lt;mediaLoadFailed&gt;<br/>\n");
-                    writer.append("&lt;mediaPlaybackComplete&gt;<br/>\n");
-                    break;
-                case hasMediaLoading:
-                    writer.append("&lt;mediaLoaded&gt;<br/>\n");
-                    writer.append("&lt;mediaLoadFailed&gt;<br/>\n");
-                    break;
-                case hasMediaLoadingButton:
-                    writer.append("&lt;mediaLoaded&gt;<br/>\n");
-                    writer.append("&lt;mediaLoadFailed&gt;<br/>\n");
-                    writer.append("&lt;onActivate&gt;<br/>\n");
-                    break;
-//                case needsConditionalParent:
+//        }
+//        if (featureType.canHaveStimulusTags() && !featureType.isCanHaveRandomGrouping()) {
+//            writer.append("tags<br/>\n");
+//        }
+//        if (featureType.allowsCustomImplementation()) {
+//            writer.append("class<br/>\n");
+//        }
+//        writer.append("</td><td>\n");
+////        writer.append("&gt;<br/>\n");
+//        if (featureType.canHaveFeatures()) {
+//            writer.append("can have features<br/>\n");
+////            for (final FeatureType featureRef : sortedFeatureTypes) {
+////                if (featureRef.isChildType(FeatureType.Contitionals.none) || featureRef.isChildType(featureType.getRequiresChildType())
+////                        || featureRef.isChildType(FeatureType.Contitionals.groupNetworkAction) // currently allowing all groupNetworkAction in any element
+////                        || featureRef.isChildType(FeatureType.Contitionals.stimulusAction) // currently allowing all stimulusAction in any element
+////                        ) {
+////                    writer.append("<div class=\"element\">\"").append(featureRef.name()).append(featureRef.name()).append("\"\n");
+////                }
+////            }
+////            writer.append("</div>\n");
+//        } else {
+//            switch (featureType.getRequiresChildType()) {
+//                case hasTrueFalseCondition:
+//                    writer.append("&lt;conditionTrue&gt;<br/>\n");
+//                    writer.append("&lt;conditionFalse&gt;<br/>\n");
 //                    break;
-                case none:
-                    break;
-                default:
-                    for (FeatureType featureType1 : sortedFeatureTypes) {
-                        if (featureType1.getIsChildType() == featureType.getRequiresChildType()) {
-                            writer.append("&lt;").append(featureType1.name()).append("&gt;<br/>\n");
-                        }
-                    }
-                    if (featureType.canHaveStimulusTags() && featureType.isCanHaveRandomGrouping()) {
-                        writer.append("&lt;randomGrouping&gt;<br/>\n");
-                        writer.append("&lt;stimuli&gt;<br/>\n");
-                    }
-                    break;
-            }
-        }
-        writer.append("</td>\n");
-        writer.append("</tr>\n");
-    }
+//                case hasCorrectIncorrect:
+//                    writer.append("&lt;responseCorrect&gt;<br/>\n");
+//                    writer.append("&lt;responseIncorrect&gt;<br/>\n");
+//                    break;
+//                case hasMoreStimulus:
+//                    writer.append("&lt;hasMoreStimulus&gt;<br/>\n");
+//                    writer.append("&lt;endOfStimulus&gt;<br/>\n");
+//                    writer.append("&lt;randomGrouping&gt;<br/>\n");
+//                    writer.append("&lt;stimuli&gt;<br/>\n");
+//                    break;
+//                case hasErrorSuccess:
+//                    writer.append("&lt;onError&gt;<br/>\n");
+//                    writer.append("&lt;onSuccess&gt;<br/>\n");
+//                    break;
+//                case hasUserCount:
+//                    writer.append("&lt;multipleUsers&gt;<br/>\n");
+//                    writer.append("&lt;singleUser&gt;<br/>\n");
+//                    break;
+//                case hasThreshold:
+//                    writer.append("&lt;aboveThreshold&gt;<br/>\n");
+//                    writer.append("&lt;withinThreshold&gt;<br/>\n");
+//                    break;
+//                case groupNetworkActivity:
+//                    writer.append("&lt;groupNetworkActivity&gt;<br/>\n");
+//                    writer.append("&lt;sendGroupEndOfStimuli&gt;<br/>\n");
+//                    break;
+//                case hasMediaPlayback:
+//                    writer.append("&lt;mediaLoaded&gt;<br/>\n");
+//                    writer.append("&lt;mediaLoadFailed&gt;<br/>\n");
+//                    writer.append("&lt;mediaPlaybackComplete&gt;<br/>\n");
+//                    break;
+//                case hasMediaRecorderPlayback:
+//                    writer.append("&lt;onError&gt;<br/>\n");
+//                    writer.append("&lt;onSuccess&gt;<br/>\n");
+//                    writer.append("&lt;mediaLoaded&gt;<br/>\n");
+//                    writer.append("&lt;mediaLoadFailed&gt;<br/>\n");
+//                    writer.append("&lt;mediaPlaybackComplete&gt;<br/>\n");
+//                    break;
+//                case hasMediaLoading:
+//                    writer.append("&lt;mediaLoaded&gt;<br/>\n");
+//                    writer.append("&lt;mediaLoadFailed&gt;<br/>\n");
+//                    break;
+//                case hasMediaLoadingButton:
+//                    writer.append("&lt;mediaLoaded&gt;<br/>\n");
+//                    writer.append("&lt;mediaLoadFailed&gt;<br/>\n");
+//                    writer.append("&lt;onActivate&gt;<br/>\n");
+//                    break;
+////                case needsConditionalParent:
+////                    break;
+//                case none:
+//                    break;
+//                default:
+//                    for (FeatureType featureType1 : sortedFeatureTypes) {
+//                        if (featureType1.isChildType(featureType.getRequiresChildType())) {
+//                            writer.append("&lt;").append(featureType1.name()).append("&gt;<br/>\n");
+//                        }
+//                    }
+//                    if (featureType.canHaveStimulusTags() && featureType.isCanHaveRandomGrouping()) {
+//                        writer.append("&lt;randomGrouping&gt;<br/>\n");
+//                        writer.append("&lt;stimuli&gt;<br/>\n");
+//                    }
+//                    break;
+//            }
+//        }
+//        writer.append("</td>\n");
+//        writer.append("</tr>\n");
+//    }
 
     private void getEnd(Writer writer) throws IOException {
         writer.append("    </body>\n"
@@ -399,7 +397,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         writer.append("<div style=\"background-color:#add8e630;border: 1px solid black;\">\n");
         writer.append("<h2 id=\"...General Features...Type\">General Features</h2><table border=1>\n");
         for (FeatureType featureType : sortedFeatureTypes) {
-            if (featureType.getIsChildType() == FeatureType.Contitionals.none) {
+            if (featureType.isChildType(FeatureType.Contitionals.none)) {
                 addElement(writer, new DocumentationElement(featureType));
             }
         }
@@ -407,7 +405,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         writer.append("<div style=\"background-color:#adc3e630;border: 1px solid black;\">\n");
         writer.append("<h2 id=\"...Stimulus Features...Type\">Stimulus Features</h2><table border=1>\n");
         for (FeatureType featureType : sortedFeatureTypes) {
-            if (featureType.getIsChildType() == FeatureType.Contitionals.stimulusAction) {
+            if (featureType.isChildType(FeatureType.Contitionals.stimulusAction)) {
                 addElement(writer, new DocumentationElement(featureType));
             }
         }
@@ -415,7 +413,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         writer.append("<div style=\"background-color:#c3ade630;border: 1px solid black;\">\n");
         writer.append("<h2 id=\"...Group Features...Type\">Group Features</h2><table border=1>\n");
         for (FeatureType featureType : sortedFeatureTypes) {
-            if (featureType.getIsChildType() == FeatureType.Contitionals.groupNetworkAction) {
+            if (featureType.isChildType(FeatureType.Contitionals.groupNetworkAction)) {
                 addElement(writer, new DocumentationElement(featureType));
             }
         }
@@ -423,15 +421,15 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         writer.append("<div style=\"background-color:#ade6d930;border: 1px solid black;\">\n");
         writer.append("<h2 id=\"...Other Specialised Features...Type\">Other Specialised Features</h2><table border=1>\n");
         for (FeatureType featureType : sortedFeatureTypes) {
-            if (featureType.getIsChildType() != FeatureType.Contitionals.none
-                    && featureType.getIsChildType() != FeatureType.Contitionals.stimulusAction
-                    && featureType.getIsChildType() != FeatureType.Contitionals.groupNetworkAction) {
+            if (!featureType.isChildType(FeatureType.Contitionals.none)
+                    && !featureType.isChildType(FeatureType.Contitionals.stimulusAction)
+                    && !featureType.isChildType(FeatureType.Contitionals.groupNetworkAction)) {
                 addElement(writer, new DocumentationElement(featureType));
             }
         }
         writer.append("</div>\n");
 //        for (final FeatureType featureRef : sortedFeatureTypes) {
-//                if (featureRef.getIsChildType() == FeatureType.Contitionals.none) {
+//                if (featureRef.isChildType(FeatureType.Contitionals.none)) {
 //                    childList.add(new DocumentationElement(featureRef));
 //                }
 //            }
