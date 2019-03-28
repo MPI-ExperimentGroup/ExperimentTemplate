@@ -23,7 +23,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.Arrays;
-import nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute;
 import nl.mpi.tg.eg.experimentdesigner.model.FeatureType;
 import org.codehaus.groovy.runtime.AbstractComparator;
 
@@ -196,7 +195,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
     }
 
     private void addElement(Writer writer, DocumentationElement currentElement) throws IOException {
-        writer.append("<h3 id=\"" + currentElement.elementName + "Type\" style=\"text-transform: uppercase;\">\n");
+        writer.append("<h3 id=\"" + currentElement.typeName + "\" style=\"text-transform: uppercase;\">\n");
         writer.append(currentElement.elementName);
         writer.append("\n</h3>\n");
         writer.append(currentElement.documentationText);
@@ -229,7 +228,7 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         for (DocumentationElement childElement : currentElement.childElements) {
             writer.append("<table>\n");
             writer.append("<tr><td>\n");
-            writer.append("<a href=\"#" + childElement.elementName + "Type\">");
+            writer.append("<a href=\"#" + childElement.typeName + "\">");
             writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">");
             writer.append(childElement.elementName);
             writer.append("</span>");
@@ -377,7 +376,6 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
 //        writer.append("</td>\n");
 //        writer.append("</tr>\n");
 //    }
-
     private void getEnd(Writer writer) throws IOException {
         writer.append("    </body>\n"
                 + "</html>\n");
