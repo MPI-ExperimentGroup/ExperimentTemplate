@@ -36,7 +36,7 @@ $("#" + targetId).first().append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span styl
 lastElementName = childElement.nodeName;
 lastElementNameCount = 0;
 } else {lastElementNameCount++;if(lastElementNameCount === 1){
-$("#" + targetId).first().append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&lt;...&gt;</span><br/>');
+$("#" + targetId).first().append('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="' + lastElementName + '.' + targetId + '" onclick="getExample(\'' + lastElementName + '\', \'' + lastElementName + '.' + targetId + '\');">&lt;...&gt;</span><br/>');
 }}});
 if($(currentElement).children().length === 0){
 var elementText = $(currentElement).text().trim();
@@ -126,7 +126,6 @@ Each experiment XML configuration file must have one EXPERIMENT element of which
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='experimentTarget'>
-</td><td>
 <button onclick="getExample('experiment', 'experimentTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -144,7 +143,6 @@ When true the a popup will warn before closing the browser window by showing the
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='preventWindowCloseTarget'>
-</td><td>
 <button onclick="getExample('preventWindowClose', 'preventWindowCloseTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -173,7 +171,6 @@ Administration
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='administrationTarget'>
-</td><td>
 <button onclick="getExample('administration', 'administrationTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -193,7 +190,6 @@ dataChannel
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='dataChannelTarget'>
-</td><td>
 <button onclick="getExample('dataChannel', 'dataChannelTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -216,7 +212,6 @@ scss
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='scssTarget'>
-</td><td>
 <button onclick="getExample('scss', 'scssTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -248,7 +243,6 @@ The fields of data to be collected for each participant and for use as storage d
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='metadataTarget'>
-</td><td>
 <button onclick="getExample('metadata', 'metadataTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -271,7 +265,6 @@ field
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='fieldTarget'>
-</td><td>
 <button onclick="getExample('field', 'fieldTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -686,6 +679,11 @@ Each screen in an experiment configuration is described in a PRESENTER element.t
 </td></tr></table>
 <table>
 <tr><td>
+<a href="#showHtmlPopupType"><span style="color:purple">&lt;</span><span style="color:blue">showHtmlPopup</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+</td></tr></table>
+<table>
+<tr><td>
 <a href="#startTimerType"><span style="color:purple">&lt;</span><span style="color:blue">startTimer</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
@@ -758,7 +756,6 @@ Each screen in an experiment configuration is described in a PRESENTER element.t
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='presenterTarget'>
-</td><td>
 <button onclick="getExample('presenter', 'presenterTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -794,7 +791,6 @@ All stimulus elements must be contained in the stimuli element.
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stimuliTarget'>
-</td><td>
 <button onclick="getExample('stimuli', 'stimuliTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -821,7 +817,6 @@ Each individual stimulus can be described in the form of label, audio, video
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stimulusTarget'>
-</td><td>
 <button onclick="getExample('stimulus', 'stimulusTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -833,26 +828,17 @@ actionButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">actionButton</span></td><td><span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE] (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">actionButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE] (optional)&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">actionButton</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='actionButtonTarget'>
-</td><td>
 <button onclick="getExample('actionButton', 'actionButtonTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -862,27 +848,18 @@ actionFooterButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">actionFooterButton</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">actionFooterButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE] (optional)&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">actionFooterButton</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='actionFooterButtonTarget'>
-</td><td>
 <button onclick="getExample('actionFooterButton', 'actionFooterButtonTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -892,26 +869,17 @@ actionTokenButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">actionTokenButton</span></td><td><span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE] (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">actionTokenButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE] (optional)&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">actionTokenButton</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='actionTokenButtonTarget'>
-</td><td>
 <button onclick="getExample('actionTokenButton', 'actionTokenButtonTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -921,23 +889,13 @@ activateRandomItem
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">activateRandomItem</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">activateRandomItem</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">activateRandomItem</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='activateRandomItemTarget'>
-</td><td>
 <button onclick="getExample('activateRandomItem', 'activateRandomItemTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -948,23 +906,13 @@ addKinTypeGui
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">addKinTypeGui</span></td><td><span style="color:green">diagramName</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">addKinTypeGui</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='addKinTypeGuiTarget'>
-</td><td>
 <button onclick="getExample('addKinTypeGui', 'addKinTypeGuiTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -974,23 +922,13 @@ addPadding
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">addPadding</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">addPadding</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">addPadding</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='addPaddingTarget'>
-</td><td>
 <button onclick="getExample('addPadding', 'addPaddingTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1000,23 +938,13 @@ allMenuItems
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">allMenuItems</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">allMenuItems</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">allMenuItems</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='allMenuItemsTarget'>
-</td><td>
 <button onclick="getExample('allMenuItems', 'allMenuItemsTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1026,23 +954,13 @@ allMetadataFields
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">allMetadataFields</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">allMetadataFields</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">allMetadataFields</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='allMetadataFieldsTarget'>
-</td><td>
 <button onclick="getExample('allMetadataFields', 'allMetadataFieldsTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1081,7 +999,6 @@ audioButton
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='audioButtonTarget'>
-</td><td>
 <button onclick="getExample('audioButton', 'audioButtonTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1094,23 +1011,13 @@ backgroundImage
 <span style="color:purple">&lt;</span><span style="color:blue">backgroundImage</span></td><td><span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">src</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">backgroundImage</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='backgroundImageTarget'>
-</td><td>
 <button onclick="getExample('backgroundImage', 'backgroundImageTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1146,7 +1053,6 @@ bestScoreAboveThreshold
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='bestScoreAboveThresholdTarget'>
-</td><td>
 <button onclick="getExample('bestScoreAboveThreshold', 'bestScoreAboveThresholdTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1156,23 +1062,13 @@ cancelPauseAll
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">cancelPauseAll</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">cancelPauseAll</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">cancelPauseAll</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='cancelPauseAllTarget'>
-</td><td>
 <button onclick="getExample('cancelPauseAll', 'cancelPauseAllTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1182,23 +1078,13 @@ cancelPauseTimers
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">cancelPauseTimers</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">cancelPauseTimers</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">cancelPauseTimers</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='cancelPauseTimersTarget'>
-</td><td>
 <button onclick="getExample('cancelPauseTimers', 'cancelPauseTimersTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1208,23 +1094,13 @@ centrePage
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">centrePage</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">centrePage</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">centrePage</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='centrePageTarget'>
-</td><td>
 <button onclick="getExample('centrePage', 'centrePageTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1234,23 +1110,13 @@ clearCurrentScore
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">clearCurrentScore</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">clearCurrentScore</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">clearCurrentScore</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='clearCurrentScoreTarget'>
-</td><td>
 <button onclick="getExample('clearCurrentScore', 'clearCurrentScoreTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1261,23 +1127,13 @@ clearPage
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">clearPage</span></td><td><span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">clearPage</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='clearPageTarget'>
-</td><td>
 <button onclick="getExample('clearPage', 'clearPageTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1288,23 +1144,13 @@ clearTimer
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">clearTimer</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">clearTimer</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='clearTimerTarget'>
-</td><td>
 <button onclick="getExample('clearTimer', 'clearTimerTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1315,23 +1161,13 @@ column
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">column</span></td><td><span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">column</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='columnTarget'>
-</td><td>
 <button onclick="getExample('column', 'columnTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1364,7 +1200,6 @@ compareTimer
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='compareTimerTarget'>
-</td><td>
 <button onclick="getExample('compareTimer', 'compareTimerTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1374,26 +1209,17 @@ countdownLabel
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">countdownLabel</span></td><td><span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">countdownLabel</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">msLabelFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">countdownLabel</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='countdownLabelTarget'>
-</td><td>
 <button onclick="getExample('countdownLabel', 'countdownLabelTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1403,26 +1229,17 @@ createUserButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">createUserButton</span></td><td><span style="color:green">target</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">createUserButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">target</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">createUserButton</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='createUserButtonTarget'>
-</td><td>
 <button onclick="getExample('createUserButton', 'createUserButtonTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1433,23 +1250,13 @@ disableButtonGroup
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">disableButtonGroup</span></td><td><span style="color:green">matchingRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">disableButtonGroup</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='disableButtonGroupTarget'>
-</td><td>
 <button onclick="getExample('disableButtonGroup', 'disableButtonGroupTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1459,23 +1266,13 @@ displayCompletionCode
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">displayCompletionCode</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">displayCompletionCode</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">displayCompletionCode</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='displayCompletionCodeTarget'>
-</td><td>
 <button onclick="getExample('displayCompletionCode', 'displayCompletionCodeTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1487,23 +1284,13 @@ editableKinEntitesDiagram
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">editableKinEntitesDiagram</span></td><td><span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">diagramName</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">editableKinEntitesDiagram</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='editableKinEntitesDiagramTarget'>
-</td><td>
 <button onclick="getExample('editableKinEntitesDiagram', 'editableKinEntitesDiagramTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1514,23 +1301,13 @@ enableButtonGroup
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">enableButtonGroup</span></td><td><span style="color:green">matchingRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">enableButtonGroup</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='enableButtonGroupTarget'>
-</td><td>
 <button onclick="getExample('enableButtonGroup', 'enableButtonGroupTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1542,23 +1319,13 @@ eraseLocalStorageButton
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">eraseLocalStorageButton</span></td><td><span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">eraseLocalStorageButton</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='eraseLocalStorageButtonTarget'>
-</td><td>
 <button onclick="getExample('eraseLocalStorageButton', 'eraseLocalStorageButtonTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1568,23 +1335,13 @@ eraseLocalStorageOnWindowClosing
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">eraseLocalStorageOnWindowClosing</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">eraseLocalStorageOnWindowClosing</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">eraseLocalStorageOnWindowClosing</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='eraseLocalStorageOnWindowClosingTarget'>
-</td><td>
 <button onclick="getExample('eraseLocalStorageOnWindowClosing', 'eraseLocalStorageOnWindowClosingTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1594,26 +1351,17 @@ eraseUsersDataButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">eraseUsersDataButton</span></td><td><span style="color:green">target</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">eraseUsersDataButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">target</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">eraseUsersDataButton</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='eraseUsersDataButtonTarget'>
-</td><td>
 <button onclick="getExample('eraseUsersDataButton', 'eraseUsersDataButtonTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1644,7 +1392,6 @@ existingUserCheck
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='existingUserCheckTarget'>
-</td><td>
 <button onclick="getExample('existingUserCheck', 'existingUserCheckTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1675,7 +1422,6 @@ generateCompletionCode
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='generateCompletionCodeTarget'>
-</td><td>
 <button onclick="getExample('generateCompletionCode', 'generateCompletionCodeTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1685,23 +1431,13 @@ gotoNextPresenter
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">gotoNextPresenter</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">gotoNextPresenter</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">gotoNextPresenter</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='gotoNextPresenterTarget'>
-</td><td>
 <button onclick="getExample('gotoNextPresenter', 'gotoNextPresenterTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1712,23 +1448,13 @@ gotoPresenter
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">gotoPresenter</span></td><td><span style="color:green">target</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">gotoPresenter</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='gotoPresenterTarget'>
-</td><td>
 <button onclick="getExample('gotoPresenter', 'gotoPresenterTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1741,23 +1467,13 @@ habituationParadigmListener
 <span style="color:purple">&lt;</span><span style="color:blue">habituationParadigmListener</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">threshold</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">maximum</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">habituationParadigmListener</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='habituationParadigmListenerTarget'>
-</td><td>
 <button onclick="getExample('habituationParadigmListener', 'habituationParadigmListenerTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1789,7 +1505,6 @@ hasGetParameter
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='hasGetParameterTarget'>
-</td><td>
 <button onclick="getExample('hasGetParameter', 'hasGetParameterTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1822,7 +1537,6 @@ hasMetadataValue
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='hasMetadataValueTarget'>
-</td><td>
 <button onclick="getExample('hasMetadataValue', 'hasMetadataValueTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1832,24 +1546,15 @@ helpDialogue
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">helpDialogue</span></td><td><span style="color:green">closeButtonLabel</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">helpDialogue</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">closeButtonLabel</span><span style="color:grey">=&quot;String&quot;</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">helpDialogue</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='helpDialogueTarget'>
-</td><td>
 <button onclick="getExample('helpDialogue', 'helpDialogueTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1860,23 +1565,13 @@ hideButtonGroup
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">hideButtonGroup</span></td><td><span style="color:green">matchingRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">hideButtonGroup</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='hideButtonGroupTarget'>
-</td><td>
 <button onclick="getExample('hideButtonGroup', 'hideButtonGroupTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1886,24 +1581,15 @@ htmlText
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">htmlText</span></td><td><span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">htmlText</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">htmlText</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='htmlTextTarget'>
-</td><td>
 <button onclick="getExample('htmlText', 'htmlTextTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1913,24 +1599,15 @@ htmlTokenText
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">htmlTokenText</span></td><td><span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">htmlTokenText</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">htmlTokenText</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='htmlTokenTextTarget'>
-</td><td>
 <button onclick="getExample('htmlTokenText', 'htmlTokenTextTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1964,7 +1641,6 @@ image
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='imageTarget'>
-</td><td>
 <button onclick="getExample('image', 'imageTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -1976,23 +1652,13 @@ kinTypeStringDiagram
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">kinTypeStringDiagram</span></td><td><span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">kintypestring</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">kinTypeStringDiagram</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='kinTypeStringDiagramTarget'>
-</td><td>
 <button onclick="getExample('kinTypeStringDiagram', 'kinTypeStringDiagramTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2004,23 +1670,13 @@ loadKinTypeStringDiagram
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">loadKinTypeStringDiagram</span></td><td><span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">diagramName</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">loadKinTypeStringDiagram</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='loadKinTypeStringDiagramTarget'>
-</td><td>
 <button onclick="getExample('loadKinTypeStringDiagram', 'loadKinTypeStringDiagramTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2060,7 +1716,6 @@ loadSdCardStimulus
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='loadSdCardStimulusTarget'>
-</td><td>
 <button onclick="getExample('loadSdCardStimulus', 'loadSdCardStimulusTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2099,7 +1754,6 @@ loadStimulus
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='loadStimulusTarget'>
-</td><td>
 <button onclick="getExample('loadStimulus', 'loadStimulusTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2109,23 +1763,13 @@ localStorageData
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">localStorageData</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">localStorageData</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">localStorageData</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='localStorageDataTarget'>
-</td><td>
 <button onclick="getExample('localStorageData', 'localStorageDataTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2138,23 +1782,13 @@ logTimerValue
 <span style="color:purple">&lt;</span><span style="color:blue">logTimerValue</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">logTimerValue</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='logTimerValueTarget'>
-</td><td>
 <button onclick="getExample('logTimerValue', 'logTimerValueTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2168,23 +1802,13 @@ logTokenText
 <span style="color:green">type</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">headerKey</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">dataLogFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">logTokenText</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='logTokenTextTarget'>
-</td><td>
 <button onclick="getExample('logTokenText', 'logTokenTextTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2194,25 +1818,16 @@ menuItem
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">menuItem</span></td><td><span style="color:green">target</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">menuItem</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">target</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE] (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">menuItem</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='menuItemTarget'>
-</td><td>
 <button onclick="getExample('menuItem', 'menuItemTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2223,23 +1838,13 @@ metadataField
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">metadataField</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">metadataField</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='metadataFieldTarget'>
-</td><td>
 <button onclick="getExample('metadataField', 'metadataFieldTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2252,23 +1857,13 @@ metadataFieldConnection
 <span style="color:purple">&lt;</span><span style="color:blue">metadataFieldConnection</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">linkedFieldName</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">oneToMany</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">metadataFieldConnection</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='metadataFieldConnectionTarget'>
-</td><td>
 <button onclick="getExample('metadataFieldConnection', 'metadataFieldConnectionTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2283,23 +1878,13 @@ metadataFieldDateTriggered
 <span style="color:green">daysThresholds</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">visibleRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">enabledRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">metadataFieldDateTriggered</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='metadataFieldDateTriggeredTarget'>
-</td><td>
 <button onclick="getExample('metadataFieldDateTriggered', 'metadataFieldDateTriggeredTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2313,23 +1898,13 @@ metadataFieldVisibilityDependant
 <span style="color:green">linkedFieldName</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">visibleRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">enabledRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">metadataFieldVisibilityDependant</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='metadataFieldVisibilityDependantTarget'>
-</td><td>
 <button onclick="getExample('metadataFieldVisibilityDependant', 'metadataFieldVisibilityDependantTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2340,23 +1915,13 @@ pause
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">pause</span></td><td><span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">pause</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='pauseTarget'>
-</td><td>
 <button onclick="getExample('pause', 'pauseTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2367,23 +1932,13 @@ pauseMedia
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">pauseMedia</span></td><td><span style="color:green">mediaId</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">pauseMedia</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='pauseMediaTarget'>
-</td><td>
 <button onclick="getExample('pauseMedia', 'pauseMediaTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2393,23 +1948,14 @@ plainText
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">plainText</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">plainText</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">plainText</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='plainTextTarget'>
-</td><td>
 <button onclick="getExample('plainText', 'plainTextTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2420,23 +1966,13 @@ playMedia
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">playMedia</span></td><td><span style="color:green">mediaId</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">playMedia</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='playMediaTarget'>
-</td><td>
 <button onclick="getExample('playMedia', 'playMediaTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2467,7 +2003,6 @@ preloadAllStimuli
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='preloadAllStimuliTarget'>
-</td><td>
 <button onclick="getExample('preloadAllStimuli', 'preloadAllStimuliTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2477,23 +2012,14 @@ preventWindowClose
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">preventWindowClose</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">preventWindowClose</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">preventWindowClose</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='preventWindowCloseTarget'>
-</td><td>
 <button onclick="getExample('preventWindowClose', 'preventWindowCloseTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2506,23 +2032,13 @@ randomMsPause
 <span style="color:purple">&lt;</span><span style="color:blue">randomMsPause</span></td><td><span style="color:green">minimum</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">maximum</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">ranges</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">randomMsPause</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='randomMsPauseTarget'>
-</td><td>
 <button onclick="getExample('randomMsPause', 'randomMsPauseTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2533,23 +2049,13 @@ redirectToUrl
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">redirectToUrl</span></td><td><span style="color:green">src</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">redirectToUrl</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='redirectToUrlTarget'>
-</td><td>
 <button onclick="getExample('redirectToUrl', 'redirectToUrlTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2561,23 +2067,13 @@ region
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">region</span></td><td><span style="color:green">regionId</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">region</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='regionTarget'>
-</td><td>
 <button onclick="getExample('region', 'regionTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2588,23 +2084,13 @@ regionClear
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">regionClear</span></td><td><span style="color:green">regionId</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">regionClear</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='regionClearTarget'>
-</td><td>
 <button onclick="getExample('regionClear', 'regionClearTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2616,23 +2102,13 @@ regionReplace
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">regionReplace</span></td><td><span style="color:green">regionId</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">regionReplace</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='regionReplaceTarget'>
-</td><td>
 <button onclick="getExample('regionReplace', 'regionReplaceTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2644,23 +2120,13 @@ regionStyle
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">regionStyle</span></td><td><span style="color:green">regionId</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">regionStyle</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='regionStyleTarget'>
-</td><td>
 <button onclick="getExample('regionStyle', 'regionStyleTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2671,23 +2137,13 @@ resetStimulus
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">resetStimulus</span></td><td><span style="color:green">target</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">resetStimulus</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='resetStimulusTarget'>
-</td><td>
 <button onclick="getExample('resetStimulus', 'resetStimulusTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2698,23 +2154,13 @@ resetTrigger
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">resetTrigger</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">resetTrigger</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='resetTriggerTarget'>
-</td><td>
 <button onclick="getExample('resetTrigger', 'resetTriggerTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2725,23 +2171,13 @@ rewindMedia
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">rewindMedia</span></td><td><span style="color:green">mediaId</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">rewindMedia</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='rewindMediaTarget'>
-</td><td>
 <button onclick="getExample('rewindMedia', 'rewindMediaTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2751,23 +2187,13 @@ row
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">row</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">row</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">row</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='rowTarget'>
-</td><td>
 <button onclick="getExample('row', 'rowTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2777,7 +2203,8 @@ saveMetadataButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">saveMetadataButton</span></td><td><span style="color:green">sendData</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">saveMetadataButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">sendData</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">networkErrorMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
@@ -2802,7 +2229,6 @@ saveMetadataButton
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='saveMetadataButtonTarget'>
-</td><td>
 <button onclick="getExample('saveMetadataButton', 'saveMetadataButtonTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2838,7 +2264,6 @@ scoreAboveThreshold
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='scoreAboveThresholdTarget'>
-</td><td>
 <button onclick="getExample('scoreAboveThreshold', 'scoreAboveThresholdTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2849,23 +2274,13 @@ scoreIncrement
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">scoreIncrement</span></td><td><span style="color:green">scoreValue</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">scoreIncrement</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='scoreIncrementTarget'>
-</td><td>
 <button onclick="getExample('scoreIncrement', 'scoreIncrementTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2876,23 +2291,13 @@ scoreLabel
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">scoreLabel</span></td><td><span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">scoreLabel</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='scoreLabelTarget'>
-</td><td>
 <button onclick="getExample('scoreLabel', 'scoreLabelTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2903,23 +2308,13 @@ selectUserMenu
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">selectUserMenu</span></td><td><span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">selectUserMenu</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='selectUserMenuTarget'>
-</td><td>
 <button onclick="getExample('selectUserMenu', 'selectUserMenuTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2950,7 +2345,6 @@ sendAllData
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='sendAllDataTarget'>
-</td><td>
 <button onclick="getExample('sendAllData', 'sendAllDataTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2981,7 +2375,6 @@ sendMetadata
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='sendMetadataTarget'>
-</td><td>
 <button onclick="getExample('sendMetadata', 'sendMetadataTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -2994,23 +2387,13 @@ setMetadataValue
 <span style="color:purple">&lt;</span><span style="color:blue">setMetadataValue</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">dataLogFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">replacementRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">setMetadataValue</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='setMetadataValueTarget'>
-</td><td>
 <button onclick="getExample('setMetadataValue', 'setMetadataValueTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3021,23 +2404,13 @@ showButtonGroup
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">showButtonGroup</span></td><td><span style="color:green">matchingRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">showButtonGroup</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='showButtonGroupTarget'>
-</td><td>
 <button onclick="getExample('showButtonGroup', 'showButtonGroupTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3069,7 +2442,6 @@ showColourReport
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='showColourReportTarget'>
-</td><td>
 <button onclick="getExample('showColourReport', 'showColourReportTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3079,24 +2451,32 @@ showCurrentMs
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">showCurrentMs</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">showCurrentMs</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">showCurrentMs</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='showCurrentMsTarget'>
-</td><td>
 <button onclick="getExample('showCurrentMs', 'showCurrentMsTarget');">search for examples</button>
+</td></tr>
+</table>
+<h3 id="showHtmlPopupType" style="text-transform: uppercase;">
+showHtmlPopup
+</h3>
+
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">showHtmlPopup</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">closeButtonLabel</span><span style="color:grey">=&quot;String&quot;</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
+</td>
+</tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='showHtmlPopupTarget'>
+<button onclick="getExample('showHtmlPopup', 'showHtmlPopupTarget');">search for examples</button>
 </td></tr>
 </table>
 <h3 id="startTimerType" style="text-transform: uppercase;">
@@ -3107,23 +2487,13 @@ startTimer
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">startTimer</span></td><td><span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">startTimer</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='startTimerTarget'>
-</td><td>
 <button onclick="getExample('startTimer', 'startTimerTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3154,7 +2524,6 @@ submitTestResults
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='submitTestResultsTarget'>
-</td><td>
 <button onclick="getExample('submitTestResults', 'submitTestResultsTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3166,23 +2535,13 @@ table
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">table</span></td><td><span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">showOnBackButton</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">table</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='tableTarget'>
-</td><td>
 <button onclick="getExample('table', 'tableTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3192,27 +2551,18 @@ targetButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">targetButton</span></td><td><span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE] (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">targetButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE] (optional)&quot;</span><br/>
 <span style="color:green">target</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">targetButton</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='targetButtonTarget'>
-</td><td>
 <button onclick="getExample('targetButton', 'targetButtonTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3222,26 +2572,17 @@ targetFooterButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">targetFooterButton</span></td><td><span style="color:green">target</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">targetFooterButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">target</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">targetFooterButton</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='targetFooterButtonTarget'>
-</td><td>
 <button onclick="getExample('targetFooterButton', 'targetFooterButtonTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3255,23 +2596,13 @@ timerLabel
 <span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">msLabelFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">timerLabel</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='timerLabelTarget'>
-</td><td>
 <button onclick="getExample('timerLabel', 'timerLabelTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3305,7 +2636,6 @@ totalScoreAboveThreshold
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='totalScoreAboveThresholdTarget'>
-</td><td>
 <button onclick="getExample('totalScoreAboveThreshold', 'totalScoreAboveThresholdTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3339,7 +2669,6 @@ transmitResults
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='transmitResultsTarget'>
-</td><td>
 <button onclick="getExample('transmitResults', 'transmitResultsTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3350,23 +2679,13 @@ trigger
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">trigger</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">trigger</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='triggerTarget'>
-</td><td>
 <button onclick="getExample('trigger', 'triggerTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3379,23 +2698,13 @@ triggerListener
 <span style="color:purple">&lt;</span><span style="color:blue">triggerListener</span></td><td><span style="color:green">listenerId</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">threshold</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">maximum</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">triggerListener</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='triggerListenerTarget'>
-</td><td>
 <button onclick="getExample('triggerListener', 'triggerListenerTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3405,23 +2714,13 @@ userInfo
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">userInfo</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">userInfo</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">userInfo</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='userInfoTarget'>
-</td><td>
 <button onclick="getExample('userInfo', 'userInfoTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3431,23 +2730,13 @@ versionData
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">versionData</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">versionData</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">versionData</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='versionDataTarget'>
-</td><td>
 <button onclick="getExample('versionData', 'versionDataTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3491,7 +2780,6 @@ withStimuli
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='withStimuliTarget'>
-</td><td>
 <button onclick="getExample('withStimuli', 'withStimuliTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3509,23 +2797,13 @@ AnnotationTimelinePanel
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">columnCount</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">maxStimuli</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">AnnotationTimelinePanel</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='AnnotationTimelinePanelTarget'>
-</td><td>
 <button onclick="getExample('AnnotationTimelinePanel', 'AnnotationTimelinePanelTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3540,23 +2818,13 @@ VideoPanel
 <span style="color:green">maxHeight</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">maxWidth</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">poster</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">VideoPanel</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='VideoPanelTarget'>
-</td><td>
 <button onclick="getExample('VideoPanel', 'VideoPanelTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3566,23 +2834,13 @@ clearStimulus
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">clearStimulus</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">clearStimulus</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">clearStimulus</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='clearStimulusTarget'>
-</td><td>
 <button onclick="getExample('clearStimulus', 'clearStimulusTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3614,7 +2872,6 @@ currentStimulusHasTag
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='currentStimulusHasTagTarget'>
-</td><td>
 <button onclick="getExample('currentStimulusHasTag', 'currentStimulusHasTagTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3626,23 +2883,13 @@ endAudioRecorderTag
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">endAudioRecorderTag</span></td><td><span style="color:green">eventTier</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">endAudioRecorderTag</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='endAudioRecorderTagTarget'>
-</td><td>
 <button onclick="getExample('endAudioRecorderTag', 'endAudioRecorderTagTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3676,7 +2923,6 @@ groupNetwork
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='groupNetworkTarget'>
-</td><td>
 <button onclick="getExample('groupNetwork', 'groupNetworkTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3686,23 +2932,13 @@ keepStimulus
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">keepStimulus</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">keepStimulus</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">keepStimulus</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='keepStimulusTarget'>
-</td><td>
 <button onclick="getExample('keepStimulus', 'keepStimulusTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3714,23 +2950,13 @@ logTimeStamp
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">logTimeStamp</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">logTimeStamp</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='logTimeStampTarget'>
-</td><td>
 <button onclick="getExample('logTimeStamp', 'logTimeStampTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3768,7 +2994,6 @@ matchingStimulusGrid
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='matchingStimulusGridTarget'>
-</td><td>
 <button onclick="getExample('matchingStimulusGrid', 'matchingStimulusGridTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3778,23 +3003,13 @@ nextMatchingStimulus
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">nextMatchingStimulus</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">nextMatchingStimulus</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">nextMatchingStimulus</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='nextMatchingStimulusTarget'>
-</td><td>
 <button onclick="getExample('nextMatchingStimulus', 'nextMatchingStimulusTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3805,23 +3020,13 @@ nextStimulus
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">nextStimulus</span></td><td><span style="color:green">repeatIncorrect</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">nextStimulus</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='nextStimulusTarget'>
-</td><td>
 <button onclick="getExample('nextStimulus', 'nextStimulusTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3831,28 +3036,19 @@ nextStimulusButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">nextStimulusButton</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">nextStimulusButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">repeatIncorrect</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE] (optional)&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">nextStimulusButton</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='nextStimulusButtonTarget'>
-</td><td>
 <button onclick="getExample('nextStimulusButton', 'nextStimulusButtonTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3863,23 +3059,13 @@ prevStimulus
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">prevStimulus</span></td><td><span style="color:green">repeatIncorrect</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">prevStimulus</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='prevStimulusTarget'>
-</td><td>
 <button onclick="getExample('prevStimulus', 'prevStimulusTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3889,28 +3075,19 @@ prevStimulusButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">prevStimulusButton</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">prevStimulusButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">repeatIncorrect</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE] (optional)&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">prevStimulusButton</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='prevStimulusButtonTarget'>
-</td><td>
 <button onclick="getExample('prevStimulusButton', 'prevStimulusButtonTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3926,23 +3103,13 @@ ratingButton
 <span style="color:green">ratingLabelRight</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">ratingButton</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='ratingButtonTarget'>
-</td><td>
 <button onclick="getExample('ratingButton', 'ratingButtonTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3958,23 +3125,13 @@ ratingFooterButton
 <span style="color:green">ratingLabelRight</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">ratingFooterButton</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='ratingFooterButtonTarget'>
-</td><td>
 <button onclick="getExample('ratingFooterButton', 'ratingFooterButtonTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -3990,23 +3147,13 @@ ratingRadioButton
 <span style="color:green">ratingLabelRight</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">ratingRadioButton</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='ratingRadioButtonTarget'>
-</td><td>
 <button onclick="getExample('ratingRadioButton', 'ratingRadioButtonTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4018,23 +3165,13 @@ regionCodeStyle
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">regionCodeStyle</span></td><td><span style="color:green">regionId</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">regionCodeStyle</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='regionCodeStyleTarget'>
-</td><td>
 <button onclick="getExample('regionCodeStyle', 'regionCodeStyleTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4045,23 +3182,13 @@ removeMatchingStimulus
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">removeMatchingStimulus</span></td><td><span style="color:green">matchingRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">removeMatchingStimulus</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='removeMatchingStimulusTarget'>
-</td><td>
 <button onclick="getExample('removeMatchingStimulus', 'removeMatchingStimulusTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4071,23 +3198,13 @@ removeStimulus
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">removeStimulus</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">removeStimulus</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">removeStimulus</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='removeStimulusTarget'>
-</td><td>
 <button onclick="getExample('removeStimulus', 'removeStimulusTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4101,23 +3218,13 @@ sendStimuliReport
 <span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">headerKey</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">separator</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">sendStimuliReport</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='sendStimuliReportTarget'>
-</td><td>
 <button onclick="getExample('sendStimuliReport', 'sendStimuliReportTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4130,23 +3237,13 @@ setStimulusCodeResponse
 <span style="color:purple">&lt;</span><span style="color:blue">setStimulusCodeResponse</span></td><td><span style="color:green">codeFormat</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">applyScore</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">setStimulusCodeResponse</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='setStimulusCodeResponseTarget'>
-</td><td>
 <button onclick="getExample('setStimulusCodeResponse', 'setStimulusCodeResponseTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4156,23 +3253,13 @@ showStimuliReport
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">showStimuliReport</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">showStimuliReport</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">showStimuliReport</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='showStimuliReportTarget'>
-</td><td>
 <button onclick="getExample('showStimuliReport', 'showStimuliReportTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4182,23 +3269,13 @@ showStimulus
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">showStimulus</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">showStimulus</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">showStimulus</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='showStimulusTarget'>
-</td><td>
 <button onclick="getExample('showStimulus', 'showStimulusTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4235,7 +3312,6 @@ showStimulusGrid
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='showStimulusGridTarget'>
-</td><td>
 <button onclick="getExample('showStimulusGrid', 'showStimulusGridTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4246,23 +3322,13 @@ showStimulusProgress
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">showStimulusProgress</span></td><td><span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">showStimulusProgress</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='showStimulusProgressTarget'>
-</td><td>
 <button onclick="getExample('showStimulusProgress', 'showStimulusProgressTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4278,14 +3344,37 @@ startAudioRecorder
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">deviceRegex</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">mediaId</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
+<span style="color:purple">&gt;</span></td><td>
+</td></tr><tr><td></td><td>
+<table>
+<tr><td>
+<a href="#mediaLoadFailedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaLoadFailed</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+</td></tr></table>
+<table>
+<tr><td>
+<a href="#mediaLoadedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaLoaded</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+</td></tr></table>
+<table>
+<tr><td>
+<a href="#mediaPlaybackCompleteType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackComplete</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+</td></tr></table>
+<table>
+<tr><td>
+<a href="#mediaPlaybackStartedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackStarted</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+</td></tr></table>
 </td>
 </tr>
+<tr>
+<td>
+<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">startAudioRecorder</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='startAudioRecorderTarget'>
-</td><td>
 <button onclick="getExample('startAudioRecorder', 'startAudioRecorderTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4296,23 +3385,13 @@ startAudioRecorderTag
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">startAudioRecorderTag</span></td><td><span style="color:green">eventTier</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">startAudioRecorderTag</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='startAudioRecorderTagTarget'>
-</td><td>
 <button onclick="getExample('startAudioRecorderTag', 'startAudioRecorderTagTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4347,7 +3426,6 @@ stimulusAudio
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stimulusAudioTarget'>
-</td><td>
 <button onclick="getExample('stimulusAudio', 'stimulusAudioTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4357,27 +3435,18 @@ stimulusButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusButton</span></td><td><span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE] (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE] (optional)&quot;</span><br/>
 <span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">stimulusButton</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stimulusButtonTarget'>
-</td><td>
 <button onclick="getExample('stimulusButton', 'stimulusButtonTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4413,7 +3482,6 @@ stimulusCodeAudio
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stimulusCodeAudioTarget'>
-</td><td>
 <button onclick="getExample('stimulusCodeAudio', 'stimulusCodeAudioTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4448,7 +3516,6 @@ stimulusCodeImage
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stimulusCodeImageTarget'>
-</td><td>
 <button onclick="getExample('stimulusCodeImage', 'stimulusCodeImageTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4478,7 +3545,6 @@ stimulusCodeImageButton
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stimulusCodeImageButtonTarget'>
-</td><td>
 <button onclick="getExample('stimulusCodeImageButton', 'stimulusCodeImageButtonTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4519,7 +3585,6 @@ stimulusCodeVideo
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stimulusCodeVideoTarget'>
-</td><td>
 <button onclick="getExample('stimulusCodeVideo', 'stimulusCodeVideoTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4551,7 +3616,6 @@ stimulusExists
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stimulusExistsTarget'>
-</td><td>
 <button onclick="getExample('stimulusExists', 'stimulusExistsTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4561,29 +3625,20 @@ stimulusFreeText
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusFreeText</span></td><td><span style="color:green">validationRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusFreeText</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">validationRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">allowedCharCodes</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE] (optional)&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">inputErrorMessage</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">stimulusFreeText</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stimulusFreeTextTarget'>
-</td><td>
 <button onclick="getExample('stimulusFreeText', 'stimulusFreeTextTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4614,7 +3669,6 @@ stimulusHasRatingOptions
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stimulusHasRatingOptionsTarget'>
-</td><td>
 <button onclick="getExample('stimulusHasRatingOptions', 'stimulusHasRatingOptionsTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4645,7 +3699,6 @@ stimulusHasResponse
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stimulusHasResponseTarget'>
-</td><td>
 <button onclick="getExample('stimulusHasResponse', 'stimulusHasResponseTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4679,7 +3732,6 @@ stimulusImage
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stimulusImageTarget'>
-</td><td>
 <button onclick="getExample('stimulusImage', 'stimulusImageTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4689,27 +3741,18 @@ stimulusImageCapture
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusImageCapture</span></td><td><span style="color:green">percentOfPage</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusImageCapture</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">percentOfPage</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">maxHeight</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">maxWidth</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">stimulusImageCapture</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stimulusImageCaptureTarget'>
-</td><td>
 <button onclick="getExample('stimulusImageCapture', 'stimulusImageCaptureTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4720,23 +3763,13 @@ stimulusLabel
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">stimulusLabel</span></td><td><span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">stimulusLabel</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stimulusLabelTarget'>
-</td><td>
 <button onclick="getExample('stimulusLabel', 'stimulusLabelTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4748,23 +3781,13 @@ stimulusMetadataField
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">stimulusMetadataField</span></td><td><span style="color:green">fieldName</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">stimulusMetadataField</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stimulusMetadataFieldTarget'>
-</td><td>
 <button onclick="getExample('stimulusMetadataField', 'stimulusMetadataFieldTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4774,23 +3797,13 @@ stimulusPause
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stimulusPause</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">stimulusPause</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">stimulusPause</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stimulusPauseTarget'>
-</td><td>
 <button onclick="getExample('stimulusPause', 'stimulusPauseTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4829,7 +3842,6 @@ stimulusPresent
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stimulusPresentTarget'>
-</td><td>
 <button onclick="getExample('stimulusPresent', 'stimulusPresentTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4844,23 +3856,13 @@ stimulusRatingButton
 <span style="color:green">ratingLabelRight</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">stimulusRatingButton</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stimulusRatingButtonTarget'>
-</td><td>
 <button onclick="getExample('stimulusRatingButton', 'stimulusRatingButtonTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4874,23 +3876,13 @@ stimulusRatingRadio
 <span style="color:green">ratingLabelLeft</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">ratingLabelRight</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">stimulusRatingRadio</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stimulusRatingRadioTarget'>
-</td><td>
 <button onclick="getExample('stimulusRatingRadio', 'stimulusRatingRadioTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4927,7 +3919,6 @@ stimulusVideo
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stimulusVideoTarget'>
-</td><td>
 <button onclick="getExample('stimulusVideo', 'stimulusVideoTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4937,23 +3928,13 @@ stopAudioRecorder
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">stopAudioRecorder</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">stopAudioRecorder</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">stopAudioRecorder</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='stopAudioRecorderTarget'>
-</td><td>
 <button onclick="getExample('stopAudioRecorder', 'stopAudioRecorderTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4965,23 +3946,13 @@ touchInputCaptureStart
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">touchInputCaptureStart</span></td><td><span style="color:green">showControls</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">msToNext</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">touchInputCaptureStart</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='touchInputCaptureStartTarget'>
-</td><td>
 <button onclick="getExample('touchInputCaptureStart', 'touchInputCaptureStartTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -4992,23 +3963,13 @@ touchInputReportSubmit
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">touchInputReportSubmit</span></td><td><span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">touchInputReportSubmit</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='touchInputReportSubmitTarget'>
-</td><td>
 <button onclick="getExample('touchInputReportSubmit', 'touchInputReportSubmitTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5018,28 +3979,19 @@ touchInputStimulusButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">touchInputStimulusButton</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">touchInputStimulusButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">src</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">touchInputStimulusButton</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='touchInputStimulusButtonTarget'>
-</td><td>
 <button onclick="getExample('touchInputStimulusButton', 'touchInputStimulusButtonTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5070,7 +4022,6 @@ validateStimuliResponses
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='validateStimuliResponsesTarget'>
-</td><td>
 <button onclick="getExample('validateStimuliResponses', 'validateStimuliResponsesTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5107,7 +4058,6 @@ withMatchingStimulus
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='withMatchingStimulusTarget'>
-</td><td>
 <button onclick="getExample('withMatchingStimulus', 'withMatchingStimulusTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5121,23 +4071,13 @@ groupChannelScoreLabel
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">groupChannelScoreLabel</span></td><td><span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">groupChannelScoreLabel</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='groupChannelScoreLabelTarget'>
-</td><td>
 <button onclick="getExample('groupChannelScoreLabel', 'groupChannelScoreLabelTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5148,23 +4088,13 @@ groupMemberCodeLabel
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">groupMemberCodeLabel</span></td><td><span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">groupMemberCodeLabel</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='groupMemberCodeLabelTarget'>
-</td><td>
 <button onclick="getExample('groupMemberCodeLabel', 'groupMemberCodeLabelTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5175,23 +4105,13 @@ groupMemberLabel
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">groupMemberLabel</span></td><td><span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">groupMemberLabel</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='groupMemberLabelTarget'>
-</td><td>
 <button onclick="getExample('groupMemberLabel', 'groupMemberLabelTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5202,23 +4122,13 @@ groupMessageLabel
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">groupMessageLabel</span></td><td><span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">groupMessageLabel</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='groupMessageLabelTarget'>
-</td><td>
 <button onclick="getExample('groupMessageLabel', 'groupMessageLabelTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5249,7 +4159,6 @@ groupResponseFeedback
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='groupResponseFeedbackTarget'>
-</td><td>
 <button onclick="getExample('groupResponseFeedback', 'groupResponseFeedbackTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5285,7 +4194,6 @@ groupResponseStimulusImage
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='groupResponseStimulusImageTarget'>
-</td><td>
 <button onclick="getExample('groupResponseStimulusImage', 'groupResponseStimulusImageTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5296,23 +4204,13 @@ groupScoreLabel
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">groupScoreLabel</span></td><td><span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">groupScoreLabel</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='groupScoreLabelTarget'>
-</td><td>
 <button onclick="getExample('groupScoreLabel', 'groupScoreLabelTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5324,23 +4222,13 @@ sendGroupMessage
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">sendGroupMessage</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">incrementPhase</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">sendGroupMessage</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='sendGroupMessageTarget'>
-</td><td>
 <button onclick="getExample('sendGroupMessage', 'sendGroupMessageTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5350,30 +4238,21 @@ sendGroupMessageButton
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">sendGroupMessageButton</span></td><td><span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE] (optional)&quot;</span><br/>
+<span style="color:purple">&lt;</span><span style="color:blue">sendGroupMessageButton</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">hotKey</span><span style="color:grey">=&quot;Option List [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, NUM_ZERO, NUM_ONE, NUM_TWO, NUM_THREE, NUM_FOUR, NUM_FIVE, NUM_SIX, NUM_SEVEN, NUM_EIGHT, NUM_NINE, NUM_MULTIPLY, NUM_PLUS, NUM_MINUS, NUM_PERIOD, NUM_DIVISION, ALT, BACKSPACE, CTRL, DELETE, DOWN, END, ENTER, ESCAPE, HOME, LEFT, PAGEDOWN, PAGEUP, RIGHT, SHIFT, TAB, UP, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PAUSE, SPACE, R1_MA_A, R1_MA_ENTER, R1_MA_BACK, R1_MA_LEFT, R1_MA_RIGHT, R1_MB_A, R1_MB_B, R1_MB_C, R1_MB_D, R1_MB_ENTER, R1_MB_BACK, R1_MC_A, R1_MC_B, R1_MC_C, R1_MC_D, R1_MC_ENTER, R1_MC_BACK, R1_MD_A, R1_MD_B, LP310_UP, LP310_UP_LONG_A, LP310_UP_LONG_B, LP310_DOWN, LP310_DOWN_LONG, LP310_MIDDLE, LP310_MIDDLE_LONG, LP310_MIDDLE_DOUBLE] (optional)&quot;</span><br/>
 <span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">repeatIncorrect</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">incrementPhase</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">styleName</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">groupId</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">sendGroupMessageButton</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='sendGroupMessageButtonTarget'>
-</td><td>
 <button onclick="getExample('sendGroupMessageButton', 'sendGroupMessageButtonTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5385,23 +4264,13 @@ sendGroupStoredMessage
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">sendGroupStoredMessage</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
 <span style="color:green">incrementPhase</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">sendGroupStoredMessage</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='sendGroupStoredMessageTarget'>
-</td><td>
 <button onclick="getExample('sendGroupStoredMessage', 'sendGroupStoredMessageTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5411,23 +4280,13 @@ submitGroupEvent
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">submitGroupEvent</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">submitGroupEvent</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">submitGroupEvent</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='submitGroupEventTarget'>
-</td><td>
 <button onclick="getExample('submitGroupEvent', 'submitGroupEventTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5440,23 +4299,13 @@ aboveThreshold
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">aboveThreshold</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">aboveThreshold</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">aboveThreshold</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='aboveThresholdTarget'>
-</td><td>
 <button onclick="getExample('aboveThreshold', 'aboveThresholdTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5466,23 +4315,13 @@ afterStimulus
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">afterStimulus</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">afterStimulus</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">afterStimulus</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='afterStimulusTarget'>
-</td><td>
 <button onclick="getExample('afterStimulus', 'afterStimulusTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5492,23 +4331,13 @@ beforeStimulus
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">beforeStimulus</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">beforeStimulus</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">beforeStimulus</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='beforeStimulusTarget'>
-</td><td>
 <button onclick="getExample('beforeStimulus', 'beforeStimulusTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5518,23 +4347,13 @@ conditionFalse
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">conditionFalse</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">conditionFalse</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">conditionFalse</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='conditionFalseTarget'>
-</td><td>
 <button onclick="getExample('conditionFalse', 'conditionFalseTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5544,23 +4363,13 @@ conditionTrue
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">conditionTrue</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">conditionTrue</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">conditionTrue</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='conditionTrueTarget'>
-</td><td>
 <button onclick="getExample('conditionTrue', 'conditionTrueTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5856,7 +4665,6 @@ eachStimulus
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='eachStimulusTarget'>
-</td><td>
 <button onclick="getExample('eachStimulus', 'eachStimulusTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5866,23 +4674,13 @@ endOfStimulus
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">endOfStimulus</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">endOfStimulus</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">endOfStimulus</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='endOfStimulusTarget'>
-</td><td>
 <button onclick="getExample('endOfStimulus', 'endOfStimulusTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -5969,7 +4767,6 @@ groupNetworkActivity
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='groupNetworkActivityTarget'>
-</td><td>
 <button onclick="getExample('groupNetworkActivity', 'groupNetworkActivityTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -6265,7 +5062,6 @@ hasMoreStimulus
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='hasMoreStimulusTarget'>
-</td><td>
 <button onclick="getExample('hasMoreStimulus', 'hasMoreStimulusTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -6275,23 +5071,13 @@ mediaLoadFailed
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">mediaLoadFailed</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">mediaLoadFailed</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">mediaLoadFailed</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='mediaLoadFailedTarget'>
-</td><td>
 <button onclick="getExample('mediaLoadFailed', 'mediaLoadFailedTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -6301,23 +5087,13 @@ mediaLoaded
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">mediaLoaded</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">mediaLoaded</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">mediaLoaded</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='mediaLoadedTarget'>
-</td><td>
 <button onclick="getExample('mediaLoaded', 'mediaLoadedTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -6327,23 +5103,13 @@ mediaPlaybackComplete
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackComplete</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackComplete</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">mediaPlaybackComplete</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='mediaPlaybackCompleteTarget'>
-</td><td>
 <button onclick="getExample('mediaPlaybackComplete', 'mediaPlaybackCompleteTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -6353,23 +5119,13 @@ mediaPlaybackStarted
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackStarted</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackStarted</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">mediaPlaybackStarted</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='mediaPlaybackStartedTarget'>
-</td><td>
 <button onclick="getExample('mediaPlaybackStarted', 'mediaPlaybackStartedTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -6379,23 +5135,13 @@ multipleUsers
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">multipleUsers</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">multipleUsers</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">multipleUsers</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='multipleUsersTarget'>
-</td><td>
 <button onclick="getExample('multipleUsers', 'multipleUsersTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -6405,23 +5151,13 @@ onActivate
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">onActivate</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">onActivate</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">onActivate</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='onActivateTarget'>
-</td><td>
 <button onclick="getExample('onActivate', 'onActivateTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -6431,23 +5167,13 @@ onError
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">onError</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">onError</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">onError</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='onErrorTarget'>
-</td><td>
 <button onclick="getExample('onError', 'onErrorTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -6457,23 +5183,13 @@ onSuccess
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">onSuccess</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">onSuccess</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">onSuccess</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='onSuccessTarget'>
-</td><td>
 <button onclick="getExample('onSuccess', 'onSuccessTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -6483,23 +5199,13 @@ responseCorrect
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">responseCorrect</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">responseCorrect</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">responseCorrect</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='responseCorrectTarget'>
-</td><td>
 <button onclick="getExample('responseCorrect', 'responseCorrectTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -6509,23 +5215,13 @@ responseIncorrect
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">responseIncorrect</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">responseIncorrect</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">responseIncorrect</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='responseIncorrectTarget'>
-</td><td>
 <button onclick="getExample('responseIncorrect', 'responseIncorrectTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -6536,23 +5232,13 @@ sendGroupEndOfStimuli
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">sendGroupEndOfStimuli</span></td><td><span style="color:green">eventTag</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">sendGroupEndOfStimuli</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='sendGroupEndOfStimuliTarget'>
-</td><td>
 <button onclick="getExample('sendGroupEndOfStimuli', 'sendGroupEndOfStimuliTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -6562,23 +5248,13 @@ singleUser
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">singleUser</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">singleUser</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">singleUser</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='singleUserTarget'>
-</td><td>
 <button onclick="getExample('singleUser', 'singleUserTarget');">search for examples</button>
 </td></tr>
 </table>
@@ -6588,23 +5264,13 @@ withinThreshold
 
 <br/><br/><table>
 <tr><td>
-<span style="color:purple">&lt;</span><span style="color:blue">withinThreshold</span></td><td><span style="color:purple">&gt;</span></td><td>
-</td></tr><tr><td></td><td>
-<table>
-<tr><td>
-<a href="#...General Features...Type"><span style="color:purple">&lt;</span><span style="color:blue">...General Features...</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
+<span style="color:purple">&lt;</span><span style="color:blue">withinThreshold</span></td><td></td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
 </td>
 </tr>
-<tr>
-<td>
-<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">withinThreshold</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
 <td colspan='2' id='withinThresholdTarget'>
-</td><td>
 <button onclick="getExample('withinThreshold', 'withinThresholdTarget');">search for examples</button>
 </td></tr>
 </table>
