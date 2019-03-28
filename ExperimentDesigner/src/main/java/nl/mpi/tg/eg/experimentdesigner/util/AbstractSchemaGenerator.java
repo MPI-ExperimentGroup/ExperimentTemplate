@@ -50,6 +50,7 @@ public class AbstractSchemaGenerator {
     protected class DocumentationElement {
 
         final String elementName;
+        final String typeName;
         final String documentationText;
         final int minBounds;
         final int maxBounds;
@@ -60,6 +61,7 @@ public class AbstractSchemaGenerator {
 
         public DocumentationElement(final String elementName, final String documentationText, final int minBounds, final int maxBounds, final boolean hasStringContents) {
             this.elementName = elementName;
+            this.typeName = elementName + "Type";
             this.documentationText = documentationText;
             this.minBounds = minBounds;
             this.maxBounds = maxBounds;
@@ -70,6 +72,18 @@ public class AbstractSchemaGenerator {
 
         public DocumentationElement(final String elementName, final String documentationText, final int minBounds, final int maxBounds, final DocumentationElement[] childElements) {
             this.elementName = elementName;
+            this.typeName = elementName + "Type";
+            this.documentationText = documentationText;
+            this.minBounds = minBounds;
+            this.maxBounds = maxBounds;
+            this.childTypeNames = new String[0];
+            this.childElements = childElements;
+            this.hasStringContents = false;
+        }
+
+        public DocumentationElement(final String elementName, final String typeName, final String documentationText, final int minBounds, final int maxBounds, final DocumentationElement[] childElements) {
+            this.elementName = elementName;
+            this.typeName = typeName + "Type";
             this.documentationText = documentationText;
             this.minBounds = minBounds;
             this.maxBounds = maxBounds;
@@ -80,6 +94,7 @@ public class AbstractSchemaGenerator {
 
         public DocumentationElement(final FeatureType featureType) {
             this.elementName = featureType.name();
+            this.typeName = featureType.name() + "Type";
             this.documentationText = "";
             this.minBounds = 0;
             this.maxBounds = 0;
@@ -87,7 +102,7 @@ public class AbstractSchemaGenerator {
             if (featureType.getRequiresChildType() != FeatureType.Contitionals.none) {
                 for (final FeatureType featureRef : FeatureType.values()) {
                     if (//featureRef.getIsChildType() == FeatureType.Contitionals.none || 
-                            featureRef.getIsChildType() == featureType.getRequiresChildType() //|| featureRef.getIsChildType() == FeatureType.Contitionals.groupNetworkAction // currently allowing all groupNetworkAction in any element
+                            featureRef.isChildType(featureType.getRequiresChildType()) //|| featureRef.getIsChildType() == FeatureType.Contitionals.groupNetworkAction // currently allowing all groupNetworkAction in any element
                             //|| featureRef.getIsChildType() == FeatureType.Contitionals.stimulusAction // currently allowing all stimulusAction in any element
                             ) {
                         childTypeList.add(featureRef.name());
@@ -105,8 +120,14 @@ public class AbstractSchemaGenerator {
                     childTypeList.add("...General Features...");
                     break;
                 case none:
-                    childTypeList.add("...General Features...");
                     break;
+            }
+            List<DocumentationElement> documentationElements = new ArrayList<>();
+            if (featureType.isCanHaveRandomGrouping()) {
+                documentationElements.add(new DocumentationElement("randomGrouping", "List of stimuli tag names one of which will be randomly selected, or determined by metadata fields or get parameters.", 0, 1, new DocumentationElement[0]));
+            }
+            if (featureType.canHaveStimulusTags()) {
+                documentationElements.add(new DocumentationElement("stimuli", "stimuliSelect", "List of stimuli tag names which determine which stimuli are selected.", 0, 1, new DocumentationElement[0]));
             }
             childTypeList.sort(new AbstractComparator<String>() {
                 @Override
@@ -115,8 +136,11 @@ public class AbstractSchemaGenerator {
                 }
             });
             this.childTypeNames = childTypeList.toArray(new String[childTypeList.size()]);
-            this.childElements = new DocumentationElement[0];
+            this.childElements = documentationElements.toArray(new DocumentationElement[documentationElements.size()]);
             this.hasStringContents = false;
+            if (featureType.canHaveText()) {
+                stringAttribute("featureText", false);
+            }
             if (featureType.getFeatureAttributes() != null) {
                 for (FeatureAttribute featureAttribute : featureType.getFeatureAttributes()) {
                     if (featureAttribute.getTypeValues() == null) {
@@ -130,6 +154,7 @@ public class AbstractSchemaGenerator {
 
         public DocumentationElement(final String elementName, final String documentationText, final int minBounds, final int maxBounds, final FeatureType[] featureTypes, final PresenterType[] presenterTypes) {
             this.elementName = elementName;
+            this.typeName = elementName + "Type";
             String documentationTemp = documentationText;
             for (final PresenterType presenterType : presenterTypes) {
                 documentationTemp += presenterType.name() + ",";
@@ -139,7 +164,7 @@ public class AbstractSchemaGenerator {
             this.maxBounds = maxBounds;
             List<String> childTypeList = new ArrayList<>();
             for (final FeatureType featureRef : FeatureType.values()) {
-                if (featureRef.getIsChildType() == FeatureType.Contitionals.none) {
+                if (featureRef.isChildType(FeatureType.Contitionals.none)) {
                     childTypeList.add(featureRef.name());
                 }
             }
