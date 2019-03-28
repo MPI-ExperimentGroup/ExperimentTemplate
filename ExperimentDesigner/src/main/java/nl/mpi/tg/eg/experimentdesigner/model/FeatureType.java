@@ -24,7 +24,7 @@ import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.*;
  * ~/Documents/ExperimentTemplate/gwt-cordova/src/main/xsl/config2java.xsl
  *
  * @since Aug 18, 2015 4:29:03 PM (creation date)
- * @author Peter Withers <peter.withers@mpi.nl,
+ * @author Peter Withers <peter.withers@mpi.nl>
  */
 public enum FeatureType {
 
@@ -181,10 +181,10 @@ public enum FeatureType {
     singleUser(true, false, null, false, false, false, Contitionals.none, Contitionals.hasUserCount),
     aboveThreshold(true, false, null, false, false, false, Contitionals.none, Contitionals.hasThreshold),
     withinThreshold(true, false, null, false, false, false, Contitionals.none, Contitionals.hasThreshold),
-    mediaLoaded(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMediaLoading),
-    mediaLoadFailed(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMediaLoading),
-    mediaPlaybackStarted(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMediaPlayback),
-    mediaPlaybackComplete(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMediaPlayback),
+    mediaLoaded(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMediaLoading, Contitionals.hasMediaRecorderPlayback),
+    mediaLoadFailed(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMediaLoading, Contitionals.hasMediaRecorderPlayback),
+    mediaPlaybackStarted(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMediaPlayback, Contitionals.hasMediaRecorderPlayback),
+    mediaPlaybackComplete(true, false, null, false, false, false, Contitionals.none, Contitionals.hasMediaPlayback, Contitionals.hasMediaRecorderPlayback),
     //    clearRegion(true, false, new FeatureAttribute[]{target}), // these tags would require the handling the clearing of timers and button handlers
     //    updateRegion(true, false, new FeatureAttribute[]{target}), // these tags would require the handling the clearing of timers and button handlers
     table(true, false, new FeatureAttribute[]{styleName, showOnBackButton}),
@@ -250,7 +250,7 @@ public enum FeatureType {
     private final boolean allowsCustomImplementation;
     private final FeatureAttribute[] featureAttributes;
     private final Contitionals requiresChildType;
-    private final Contitionals isChildType;
+    private final Contitionals[] isChildType;
 
     public enum Contitionals {
         hasTrueFalseCondition,
@@ -276,14 +276,14 @@ public enum FeatureType {
         this.canHaveText = canHaveText;
         this.featureAttributes = featureAttributes;
         this.requiresChildType = Contitionals.none;
-        this.isChildType = Contitionals.none;
+        this.isChildType = new Contitionals[]{Contitionals.none};
         this.canHaveStimulusTags = false;
         this.canHaveRandomGrouping = false;
         this.canHaveUndefinedAttribute = false;
         this.allowsCustomImplementation = false;
     }
 
-    private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean canHaveStimulus, boolean canHaveRandomGrouping, boolean canHaveUndefinedAttribute, Contitionals requiresChildType, Contitionals isChildType) {
+    private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean canHaveStimulus, boolean canHaveRandomGrouping, boolean canHaveUndefinedAttribute, Contitionals requiresChildType, Contitionals... isChildType) {
         this.canHaveFeatures = canHaveFeatures;
         this.canHaveText = canHaveText;
         this.featureAttributes = featureAttributes;
@@ -293,9 +293,9 @@ public enum FeatureType {
         this.isChildType = isChildType;
         this.canHaveUndefinedAttribute = canHaveUndefinedAttribute;
         this.allowsCustomImplementation = false;
-        if (requiresChildType != Contitionals.none && isChildType != Contitionals.none
-                && isChildType != Contitionals.groupNetworkAction
-                && isChildType != Contitionals.groupNetworkActivity
+        if (requiresChildType != Contitionals.none && isChildType[0] != Contitionals.none
+                && isChildType[0] != Contitionals.groupNetworkAction
+                && isChildType[0] != Contitionals.groupNetworkActivity
                 && requiresChildType != Contitionals.stimulusAction
                 && canHaveFeatures) {
             throw new IllegalArgumentException("canHaveFeatures may only be used with Contitionals.none");
@@ -310,7 +310,7 @@ public enum FeatureType {
         this.canHaveStimulusTags = canHaveStimulus;
         this.canHaveRandomGrouping = canHaveRandomGrouping;
         this.requiresChildType = requiresChildType;
-        this.isChildType = isChildType;
+        this.isChildType = new Contitionals[]{isChildType};
         this.canHaveUndefinedAttribute = canHaveUndefinedAttribute;
         this.allowsCustomImplementation = allowsCustomImplementation;
         if (requiresChildType != Contitionals.none && isChildType != Contitionals.none && canHaveFeatures) {
@@ -351,7 +351,16 @@ public enum FeatureType {
         return requiresChildType;
     }
 
-    public Contitionals getIsChildType() {
+    public Contitionals[] getIsChildType() {
         return isChildType;
+    }
+
+    public boolean isChildType(Contitionals value) {
+        for (Contitionals contitional : isChildType) {
+            if (contitional == value) {
+                return true;
+            }
+        }
+        return false;
     }
 }
