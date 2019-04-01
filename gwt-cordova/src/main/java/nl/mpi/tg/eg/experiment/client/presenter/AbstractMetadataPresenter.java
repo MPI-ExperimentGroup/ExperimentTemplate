@@ -102,11 +102,16 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
             }
 
             @Override
+            public String getStyleName() {
+                return styleName;
+            }
+
+            @Override
             public String getLabel() {
                 return buttonLabel;
             }
         };
-        optionButton(saveEventListner, styleName, buttonGroup);
+        optionButton(saveEventListner, buttonGroup);
     }
 
     protected void validateFields() throws MetadataFieldException {
@@ -145,6 +150,11 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
                 }
 
                 @Override
+                public String getStyleName() {
+                    return null;
+                }
+
+                @Override
                 public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                     try {
                         userResults.setUser(localStorage.getStoredData(labelData.getUserId(), metadataFieldProvider));
@@ -154,7 +164,7 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
                         // this should not occur since the field value should have originated from a UserId instance
                     }
                 }
-            }, null);
+            });
             if (labelData.getUserId().equals(userResults.getUserData().getUserId())) {
                 optionButton.addStyleName("optionButtonHighlight");
             }
@@ -175,12 +185,17 @@ public abstract class AbstractMetadataPresenter extends AbstractTimedPresenter i
             }
 
             @Override
+            public String getStyleName() {
+                return styleName;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 userResults.setUser(new UserData());
                 localStorage.storeData(userResults, metadataFieldProvider);
                 appEventListner.requestApplicationState(targetApplicationState);
             }
-        }, styleName, buttonGroup);
+        }, buttonGroup);
     }
 
     protected void existingUserCheck(TimedStimulusListener multipleUsers, TimedStimulusListener singleUser) {
