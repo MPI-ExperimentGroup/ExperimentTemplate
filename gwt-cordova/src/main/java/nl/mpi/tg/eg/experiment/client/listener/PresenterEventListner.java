@@ -27,7 +27,9 @@ public interface PresenterEventListner {
 
     public String getLabel();
 
+    public String getStyleName();
+
     public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner);
-    
+
     public int getHotKey();
 }
