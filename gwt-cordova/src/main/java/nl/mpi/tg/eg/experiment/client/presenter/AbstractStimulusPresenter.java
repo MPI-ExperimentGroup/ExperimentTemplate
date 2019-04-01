@@ -186,6 +186,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                             }
 
                             @Override
+                            public String getStyleName() {
+                                return null;
+                            }
+
+                            @Override
                             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                                 // show the subdirectorydirectory[0], 
                                 localStorage.setStoredDataValue(userResults.getUserData().getUserId(), "sdcard-directory-" + getSelfTag(), directory[0]);
@@ -204,7 +209,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                             public int getHotKey() {
                                 return -1;
                             }
-                        }, null);
+                        });
                     }
                 }
             }
@@ -350,24 +355,29 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, reportType, headerKey, new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray).formatString(dataLogFormat), duration.elapsedMillis());
     }
 
-    public void actionTokenButton(final Stimulus currentStimulus, final PresenterEventListner presenterListerner, final String styleName, final String buttonGroup) {
+    public void actionTokenButton(final Stimulus currentStimulus, final PresenterEventListner presenterListener, final String buttonGroup) {
         final HtmlTokenFormatter htmlTokenFormatter = new HtmlTokenFormatter(currentStimulus, localStorage, groupParticipantService, userResults.getUserData(), timerService, metadataFieldProvider.metadataFieldArray);
         addButtonToGroup(buttonGroup, ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
             @Override
             public String getLabel() {
-                return htmlTokenFormatter.formatString(presenterListerner.getLabel());
+                return htmlTokenFormatter.formatString(presenterListener.getLabel());
             }
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
-                presenterListerner.eventFired(button, shotEventListner);
+                presenterListener.eventFired(button, shotEventListner);
+            }
+
+            @Override
+            public String getStyleName() {
+                return presenterListener.getStyleName();
             }
 
             @Override
             public int getHotKey() {
-                return presenterListerner.getHotKey();
+                return presenterListener.getHotKey();
             }
-        }, styleName));
+        }));
     }
 
     protected void timerLabel(final String styleName, final int postLoadMs, final String listenerId, final String msLabelFormat) {
@@ -632,6 +642,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //                                    + "\n\nGroupReady\n" + groupParticipantService.isGroupReady()
 //                            );
                             shotEventListner.resetSingleShot();
+                        }
+
+                        @Override
+                        public String getStyleName() {
+                            return null;
                         }
 
                         @Override
@@ -922,6 +937,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
+            public String getStyleName() {
+                return null;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                 sdCardImageCapture.captureImage();
             }
@@ -930,7 +950,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             public int getHotKey() {
                 return -1;
             }
-        }, null);
+        });
     }
 
     protected void backgroundImage(final String imageSrc, String styleName, int postLoadMs, final TimedStimulusListener timedStimulusListener) {
@@ -1175,12 +1195,12 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         }
     }
 
-    public void touchInputStimulusButton(final PresenterEventListner presenterListerner, final String eventTag, final String styleName, final String imagePath, final String buttonGroup) {
+    public void touchInputStimulusButton(final PresenterEventListner presenterListener, final String eventTag, final String imagePath, final String buttonGroup) {
         final StimulusButton buttonItem;
         if (imagePath == null || imagePath.isEmpty()) {
-            buttonItem = optionButton(presenterListerner, styleName, buttonGroup);
+            buttonItem = optionButton(presenterListener, buttonGroup);
         } else {
-            buttonItem = imageButton(presenterListerner, UriUtils.fromString(serviceLocations.staticFilesUrl() + imagePath), styleName, true, buttonGroup);
+            buttonItem = imageButton(presenterListener, UriUtils.fromString(serviceLocations.staticFilesUrl() + imagePath), true, buttonGroup);
         }
         stimulusButtonList.add(buttonItem);
         touchInputCapture.addTouchZone(new TouchInputZone() {
@@ -1209,48 +1229,53 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             public void triggerEvent() {
                 if (!isTriggered) {
                     isTriggered = true;
-                    buttonItem.addStyleName(styleName + "Intersection");
+                    buttonItem.addStyleName(presenterListener.getStyleName() + "Intersection");
                     buttonItem.triggerSingleShotEventListner();
                 }
             }
 
             @Override
             public void clearEvent() {
-                buttonItem.removeStyleName(styleName + "Intersection");
+                buttonItem.removeStyleName(presenterListener.getStyleName() + "Intersection");
                 isTriggered = false;
             }
         });
     }
 
-    public void stimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final PresenterEventListner presenterListerner, String styleName, final int dataChannel, final String buttonGroup) {
+    public void stimulusButton(final StimuliProvider stimulusProvider, final Stimulus currentStimulus, final PresenterEventListner presenterListener, final int dataChannel, final String buttonGroup) {
         final StimulusButton buttonItem = optionButton(new PresenterEventListner() {
             @Override
             public String getLabel() {
                 // this stimulusButton label comes from featureText
-                return presenterListerner.getLabel();
+                return presenterListener.getLabel();
             }
 
             @Override
             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                 timedEventMonitor.registerEvent("stimulusButton");
-                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusButton", currentStimulus.getUniqueId(), presenterListerner.getLabel(), duration.elapsedMillis());
+                submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, "StimulusButton", currentStimulus.getUniqueId(), presenterListener.getLabel(), duration.elapsedMillis());
                 Boolean isCorrect = null;
                 if (currentStimulus.hasCorrectResponses()) {
-                    final boolean correctness = currentStimulus.isCorrect(presenterListerner.getLabel());
-                    submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, presenterListerner.getLabel(), currentStimulus.getUniqueId(), (correctness) ? "correct" : "incorrect", duration.elapsedMillis());
+                    final boolean correctness = currentStimulus.isCorrect(presenterListener.getLabel());
+                    submissionService.submitTagPairValue(userResults.getUserData().getUserId(), getSelfTag(), dataChannel, presenterListener.getLabel(), currentStimulus.getUniqueId(), (correctness) ? "correct" : "incorrect", duration.elapsedMillis());
                     // if there are correct responses to this stimulus then increment the score
                     userResults.getUserData().addPotentialScore(correctness);
                     isCorrect = correctness;
                 }
-                submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, currentStimulus, presenterListerner.getLabel(), isCorrect, duration.elapsedMillis());
-                presenterListerner.eventFired(button, shotEventListner);
+                submissionService.submitStimulusResponse(userResults.getUserData(), getSelfTag(), dataChannel, currentStimulus, presenterListener.getLabel(), isCorrect, duration.elapsedMillis());
+                presenterListener.eventFired(button, shotEventListner);
+            }
+
+            @Override
+            public String getStyleName() {
+                return presenterListener.getStyleName();
             }
 
             @Override
             public int getHotKey() {
-                return presenterListerner.getHotKey();
+                return presenterListener.getHotKey();
             }
-        }, styleName, buttonGroup);
+        }, buttonGroup);
         stimulusButtonList.add(buttonItem);
     }
 
@@ -1278,6 +1303,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
                     storedStimulusJSONObject.put("stimulusRatingRadio", new JSONString(ratingItem));
                     localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), currentStimulus, storedStimulusJSONObject);
+                }
+
+                @Override
+                public String getStyleName() {
+                    return null;
                 }
 
                 @Override
@@ -1406,6 +1436,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 }
 
                 @Override
+                public String getStyleName() {
+                    return null;
+                }
+
+                @Override
                 public int getHotKey() {
                     return hotKey;
                 }
@@ -1463,10 +1498,15 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                     }
 
                     @Override
+                    public String getStyleName() {
+                        return null;
+                    }
+
+                    @Override
                     public int getHotKey() {
                         return -1;
                     }
-                }, null, "startAudioRecorderRetry");
+                }, "startAudioRecorderRetry");
             }
 
             @Override
@@ -1641,6 +1681,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
+            public String getStyleName() {
+                return null;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 for (StimulusButton currentButton : buttonList) {
                     currentButton.setEnabled(false);
@@ -1745,8 +1790,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //        timedStimulusView.addText("showStimulusProgress: " + duration.elapsedMillis() + "ms");
     }
 
-//    public void popupMessage(final PresenterEventListner presenterListerner, String message) {
-//        timedStimulusView.showHtmlPopup(presenterListerner, message);
+//    public void popupMessage(final PresenterEventListner presenterListener, String message) {
+//        timedStimulusView.showHtmlPopup(presenterListener, message);
 //    }
 
     /*protected boolean stimulusIndexIn(int[] validIndexes) {
@@ -1929,6 +1974,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
+            public String getStyleName() {
+                return styleName;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
                     if (!stimulusFreeText.isValid()) {
@@ -1945,7 +1995,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
         };
         nextButtonEventListnerList.add(eventListner);
-        optionButton(eventListner, styleName, buttonGroup);
+        optionButton(eventListner, buttonGroup);
     }
 
     protected void setStimulusCodeResponse(
@@ -2038,12 +2088,17 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
+            public String getStyleName() {
+                return styleName;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 nextStimulus(stimulusProvider, currentStimulus, repeatIncorrect, -1);
             }
         };
         nextButtonEventListnerList.add(eventListner);
-        final StimulusButton prevButton = optionButton(eventListner, styleName, buttonGroup);
+        final StimulusButton prevButton = optionButton(eventListner, buttonGroup);
         prevButton.setEnabled(stimulusProvider.hasNextStimulus(-1));
     }
 
@@ -2067,12 +2122,17 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
 
             @Override
+            public String getStyleName() {
+                return styleName;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 nextStimulus(stimulusProvider, currentStimulus, repeatIncorrect, 1);
             }
         };
         nextButtonEventListnerList.add(eventListner);
-        optionButton(eventListner, styleName, buttonGroup);
+        optionButton(eventListner, buttonGroup);
     }
 
     protected void audioButton(final String eventTag, final int dataChannel, final String srcString, final String styleName, final String imagePath, final boolean autoPlay, final int hotKey, final String buttonGroup, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
@@ -2089,6 +2149,11 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             @Override
             public int getHotKey() {
                 return hotKey;
+            }
+
+            @Override
+            public String getStyleName() {
+                return styleName;
             }
 
             @Override
@@ -2118,7 +2183,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 }, true, "audioButton");
             }
         };
-        imageButton(presenterEventListner, UriUtils.fromString(serviceLocations.staticFilesUrl() + imagePath), styleName, false, buttonGroup);
+        imageButton(presenterEventListner, UriUtils.fromString(serviceLocations.staticFilesUrl() + imagePath), false, buttonGroup);
         if (autoPlay) {
             presenterEventListner.eventFired(null, null);
         }
