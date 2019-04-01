@@ -68,6 +68,11 @@ public abstract class AbstractSvgPresenter implements Presenter {
                 }
 
                 @Override
+                public String getStyleName() {
+                    return null;
+                }
+
+                @Override
                 public int getHotKey() {
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                 }
@@ -88,6 +93,11 @@ public abstract class AbstractSvgPresenter implements Presenter {
                 }
 
                 @Override
+                public String getStyleName() {
+                    return null;
+                }
+
+                @Override
                 public int getHotKey() {
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                 }
@@ -102,6 +112,11 @@ public abstract class AbstractSvgPresenter implements Presenter {
                     if (nextEventFired()) {
                         appEventListner.requestApplicationState(nextState);
                     }
+                }
+
+                @Override
+                public String getStyleName() {
+                    return null;
                 }
 
                 @Override
