@@ -29,7 +29,6 @@ import nl.mpi.tg.eg.experiment.client.ApplicationController.ApplicationState;
 import nl.mpi.tg.eg.experiment.client.Messages;
 import nl.mpi.tg.eg.experiment.client.ServiceLocations;
 import nl.mpi.tg.eg.experiment.client.listener.AppEventListner;
-import nl.mpi.tg.eg.experiment.client.listener.MediaSubmissionListener;
 import nl.mpi.tg.eg.experiment.client.listener.PresenterEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
@@ -104,6 +103,11 @@ public abstract class AbstractPresenter implements Presenter {
                 }
 
                 @Override
+                public String getStyleName() {
+                    return null;
+                }
+
+                @Override
                 public String getLabel() {
                     return prevState.label;
                 }
@@ -140,6 +144,11 @@ public abstract class AbstractPresenter implements Presenter {
                 }
 
                 @Override
+                public String getStyleName() {
+                    return null;
+                }
+
+                @Override
                 public String getLabel() {
                     return nextState.label;
                 }
@@ -163,8 +172,12 @@ public abstract class AbstractPresenter implements Presenter {
         simpleView.addHtmlText(textString, styleName);
     }
 
-    public void targetButton(final PresenterEventListner presenterListerner, final String styleName, final String buttonGroup) {
-        addButtonToGroup(buttonGroup, simpleView.addOptionButton(presenterListerner, styleName));
+    protected void showHtmlPopup(String textString, final PresenterEventListner... buttonListeners) {
+        simpleView.showHtmlPopup(textString, buttonListeners);
+    }
+
+    public void targetButton(final PresenterEventListner presenterListerner, final String buttonGroup) {
+        addButtonToGroup(buttonGroup, simpleView.addOptionButton(presenterListerner));
     }
 
     protected void clearButtonList() {
