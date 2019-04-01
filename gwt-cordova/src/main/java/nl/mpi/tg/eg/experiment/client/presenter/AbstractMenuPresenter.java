@@ -73,6 +73,11 @@ public abstract class AbstractMenuPresenter extends AbstractTimedPresenter imple
             }
 
             @Override
+            public String getStyleName() {
+                return null;
+            }
+
+            @Override
             public int getHotKey() {
                 return hotkey;
             }
