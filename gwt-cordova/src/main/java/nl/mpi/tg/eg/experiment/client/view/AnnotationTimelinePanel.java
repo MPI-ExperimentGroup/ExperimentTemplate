@@ -194,6 +194,11 @@ public class AnnotationTimelinePanel extends FocusPanel {
             }
 
             @Override
+            public String getStyleName() {
+                return null;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 insertAnnotation(stimulus, videoPanel, annotationTimelineView, dataFactory);
                 singleShotEventListner.resetSingleShot();
