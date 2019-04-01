@@ -162,13 +162,18 @@ public abstract class AbstractKinDiagramPresenter extends AbstractTimedPresenter
             }
 
             @Override
+            public String getStyleName() {
+                return null;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 saveKinTypeString(diagramName, ((KinTypeView) simpleView).getKinTypeString());
                 ((TimedStimulusView) simpleView).clearPageAndTimers(null);
                 setContent(appEventListner);
                 submissionService.submitTimestamp(userResults.getUserData().getUserId(), "AddToDiagram", duration.elapsedMillis());
             }
-        }, null);
+        });
         ((KinTypeView) simpleView).addOptionButton(new PresenterEventListner() {
 
             @Override
@@ -182,10 +187,15 @@ public abstract class AbstractKinDiagramPresenter extends AbstractTimedPresenter
             }
 
             @Override
+            public String getStyleName() {
+                return null;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 submissionService.submitTagValue(userResults.getUserData().getUserId(), getSelfTag(), "SaveDiagram", loadKinTypeString(diagramName), duration.elapsedMillis());
             }
-        }, null);
+        });
         ((KinTypeView) simpleView).addOptionButton(new PresenterEventListner() {
 
             @Override
@@ -199,13 +209,18 @@ public abstract class AbstractKinDiagramPresenter extends AbstractTimedPresenter
             }
 
             @Override
+            public String getStyleName() {
+                return null;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 clearKinTypeString(diagramName);
                 ((TimedStimulusView) simpleView).clearPageAndTimers(null);
                 setContent(appEventListner);
                 submissionService.submitTimestamp(userResults.getUserData().getUserId(), "ClearDiagram", duration.elapsedMillis());
             }
-        }, null);
+        });
     }
 
     public void clearKinTypeString(String diagramName) {
