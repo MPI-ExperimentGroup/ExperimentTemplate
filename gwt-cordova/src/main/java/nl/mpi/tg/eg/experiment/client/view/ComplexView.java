@@ -323,19 +323,19 @@ public class ComplexView extends SimpleView {
         anchor.addStyleName("pageLink");
     }
 
-    public StimulusButton addOptionButton(final PresenterEventListner presenterListerner, String styleName) {
-        StimulusButton nextButton = getOptionButton(presenterListerner);
-        if (styleName != null && !styleName.isEmpty()) {
-            nextButton.addStyleName(styleName);
+    public StimulusButton addOptionButton(final PresenterEventListner presenterListener) {
+        StimulusButton nextButton = getOptionButton(presenterListener);
+        if (presenterListener.getStyleName() != null && !presenterListener.getStyleName().isEmpty()) {
+            nextButton.addStyleName(presenterListener.getStyleName());
         }
         getActivePanel().add(nextButton.getWidget());
         return nextButton;
     }
 
-    public StimulusButton addFooterButton(final PresenterEventListner presenterListener, String styleName) {
+    public StimulusButton addFooterButton(final PresenterEventListner presenterListener) {
         StimulusButton nextButton = getOptionButton(presenterListener);
-        if (styleName != null && !styleName.isEmpty()) {
-            nextButton.addStyleName(styleName);
+        if (presenterListener.getStyleName() != null && !presenterListener.getStyleName().isEmpty()) {
+            nextButton.addStyleName(presenterListener.getStyleName());
         } else {
             nextButton.addStyleName("footerButton");
         }
@@ -395,15 +395,15 @@ public class ComplexView extends SimpleView {
         domHandlerArray.add(Event.addNativePreviewHandler(touchInputCapture));
     }
 
-    private void addHotKeyListner(final PresenterEventListner presenterListerner, final SingleShotEventListner singleShotEventListner) {
-        if (presenterListerner.getHotKey() > 0) {
+    private void addHotKeyListner(final PresenterEventListner presenterListener, final SingleShotEventListner singleShotEventListner) {
+        if (presenterListener.getHotKey() > 0) {
             RootPanel root = RootPanel.get();
             domHandlerArray.add(root.addDomHandler(new KeyDownHandler() {
                 @Override
                 public void onKeyDown(KeyDownEvent event) {
                     final int nativeKeyCode = event.getNativeKeyCode();
                     // we map 190 which is the period key to the numeric period key
-                    if (((nativeKeyCode == 190) ? KeyCodes.KEY_NUM_PERIOD : nativeKeyCode) == presenterListerner.getHotKey()) {
+                    if (((nativeKeyCode == 190) ? KeyCodes.KEY_NUM_PERIOD : nativeKeyCode) == presenterListener.getHotKey()) {
                         event.stopPropagation();
 //                        clearDomHandlers();
                         singleShotEventListner.eventFired();
@@ -413,18 +413,18 @@ public class ComplexView extends SimpleView {
         }
     }
 
-    public StimulusButton getOptionButton(final PresenterEventListner presenterListerner) {
-        final Button nextButton = new Button(presenterListerner.getLabel());
-        return configureButton(nextButton, presenterListerner);
+    public StimulusButton getOptionButton(final PresenterEventListner presenterListener) {
+        final Button nextButton = new Button(presenterListener.getLabel());
+        return configureButton(nextButton, presenterListener);
     }
 
-    public StimulusButton getRadioButton(final PresenterEventListner presenterListerner, final String buttonGroupName, final String savedValue) {
-        final RadioButton nextButton = new RadioButton(buttonGroupName, presenterListerner.getLabel());
-        nextButton.setValue(presenterListerner.getLabel().equals(savedValue));
-        return configureButton(nextButton, presenterListerner);
+    public StimulusButton getRadioButton(final PresenterEventListner presenterListener, final String buttonGroupName, final String savedValue) {
+        final RadioButton nextButton = new RadioButton(buttonGroupName, presenterListener.getLabel());
+        nextButton.setValue(presenterListener.getLabel().equals(savedValue));
+        return configureButton(nextButton, presenterListener);
     }
 
-    private StimulusButton configureButton(final ButtonBase nextButton, final PresenterEventListner presenterListerner) {
+    private StimulusButton configureButton(final ButtonBase nextButton, final PresenterEventListner presenterListener) {
         nextButton.addStyleName("optionButton");
         nextButton.setEnabled(true);
         final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
@@ -433,7 +433,7 @@ public class ComplexView extends SimpleView {
             protected void singleShotFired() {
                 if (nextButton.isEnabled()) {
                     nextButton.addStyleName("optionButtonActivated");
-                    presenterListerner.eventFired(nextButton, this);
+                    presenterListener.eventFired(nextButton, this);
                     if (nextButton instanceof RadioButton) {
                         ((RadioButton) nextButton).setValue(Boolean.TRUE);
                     }
@@ -445,7 +445,7 @@ public class ComplexView extends SimpleView {
         nextButton.addTouchStartHandler(singleShotEventListner);
         nextButton.addTouchMoveHandler(singleShotEventListner);
         nextButton.addTouchEndHandler(singleShotEventListner);
-        addHotKeyListner(presenterListerner, singleShotEventListner);
+        addHotKeyListner(presenterListener, singleShotEventListner);
         return new StimulusButton() {
 
             @Override
@@ -495,21 +495,21 @@ public class ComplexView extends SimpleView {
         domHandlerArray.clear();
     }
 
-    public StimulusButton addImageButton(final PresenterEventListner presenterListerner, final SafeUri imagePath, final String styleName, final boolean isTouchZone) {
+    public StimulusButton addImageButton(final PresenterEventListner presenterListener, final SafeUri imagePath, final boolean isTouchZone) {
         final Image image = new Image(imagePath);
         final Button imageButton = new Button();
         imageButton.getElement().appendChild(image.getElement());
-        if (styleName != null && !styleName.isEmpty()) {
-            image.addStyleName(styleName);
+        if (presenterListener.getStyleName() != null && !presenterListener.getStyleName().isEmpty()) {
+            image.addStyleName(presenterListener.getStyleName());
         }
-        imageButton.addStyleName((styleName == null || styleName.isEmpty()) ? "imageButton" : styleName);
+        imageButton.addStyleName((presenterListener.getStyleName() == null || presenterListener.getStyleName().isEmpty()) ? "imageButton" : presenterListener.getStyleName());
         getActivePanel().add(imageButton);
         final SingleShotEventListner singleShotEventListner = new SingleShotEventListner() {
 
             @Override
             protected void singleShotFired() {
                 if (imageButton.isEnabled()) {
-                    presenterListerner.eventFired(imageButton, this);
+                    presenterListener.eventFired(imageButton, this);
                 }
                 resetSingleShot();
             }
@@ -520,7 +520,7 @@ public class ComplexView extends SimpleView {
             imageButton.addTouchStartHandler(singleShotEventListner);
             imageButton.addTouchMoveHandler(singleShotEventListner);
             imageButton.addTouchEndHandler(singleShotEventListner);
-            addHotKeyListner(presenterListerner, singleShotEventListner);
+            addHotKeyListner(presenterListener, singleShotEventListner);
         } else {
             // setting this to false breaks the touch input capture
 //            imageButton.setEnabled(false);
@@ -569,7 +569,7 @@ public class ComplexView extends SimpleView {
             public void triggerSingleShotEventListner() {
                 if (isEnabled) {
                     if (isTouchZone) {
-                        presenterListerner.eventFired(imageButton, null);
+                        presenterListener.eventFired(imageButton, null);
                     } else {
                         singleShotEventListner.eventFired();
                     }
@@ -597,40 +597,30 @@ public class ComplexView extends SimpleView {
         bargraphInner.setWidth((int) (100.0 / maximum * value) + "%");
     }
 
-    public void showHtmlPopup(final PresenterEventListner saveEventListner, String popupText) {
+    public void showHtmlPopup(String popupText, final PresenterEventListner... buttonListeners) {
         final PopupPanel popupPanel = new PopupPanel(false); // the close action to this panel causes background buttons to be clicked
         popupPanel.setGlassEnabled(true);
         popupPanel.setStylePrimaryName("svgPopupPanel");
         final VerticalPanel popupverticalPanel = new VerticalPanel();
-        final HTML htmlText = new HTML(new SafeHtmlBuilder().appendEscapedLines(popupText).toSafeHtml());
+        final HTML htmlText = new HTML(new SafeHtmlBuilder().appendHtmlConstant(popupText).toSafeHtml());
         htmlText.setStylePrimaryName("popupTextBox");
         popupverticalPanel.add(htmlText);
 
         popupverticalPanel.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_RIGHT);
-        final SingleShotEventListner cancelSingleShotEventListner = new SingleShotEventListner() {
-
-            @Override
-            protected void singleShotFired() {
-                popupPanel.hide();
-            }
-        };
         final HorizontalPanel buttonPanel = new HorizontalPanel();
-        final Button cancelButton = new Button((saveEventListner != null) ? messages.popupCancelButtonLabel() : messages.popupOkButtonLabel());
-        cancelButton.addClickHandler(cancelSingleShotEventListner);
-        cancelButton.addTouchStartHandler(cancelSingleShotEventListner);
-        cancelButton.addTouchMoveHandler(cancelSingleShotEventListner);
-        cancelButton.addTouchEndHandler(cancelSingleShotEventListner);
-        buttonPanel.add(cancelButton);
-        if (saveEventListner != null) {
+        for (final PresenterEventListner buttonListener : buttonListeners) {
             final SingleShotEventListner okSingleShotEventListner = new SingleShotEventListner() {
 
                 @Override
                 protected void singleShotFired() {
                     popupPanel.hide();
-                    saveEventListner.eventFired(null, null);
+                    buttonListener.eventFired(null, null);
                 }
             };
-            final Button okButton = new Button(messages.popupOkButtonLabel());
+            final Button okButton = new Button(buttonListener.getLabel());
+            if (buttonListener.getStyleName() != null && !buttonListener.getStyleName().isEmpty()) {
+                okButton.addStyleName(buttonListener.getStyleName());
+            }
             okButton.addClickHandler(okSingleShotEventListner);
             okButton.addTouchStartHandler(okSingleShotEventListner);
             okButton.addTouchMoveHandler(okSingleShotEventListner);
