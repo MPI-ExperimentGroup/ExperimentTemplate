@@ -68,6 +68,11 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
             }
 
             @Override
+            public String getStyleName() {
+                return null;
+            }
+
+            @Override
             public int getHotKey() {
                 return -1;
             }
@@ -76,12 +81,17 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 appEventListner.requestApplicationState(ApplicationState.metadata);
             }
-        }, null);
+        });
         ((ComplexView) simpleView).addOptionButton(new PresenterEventListner() {
 
             @Override
             public String getLabel() {
                 return ApplicationState.scores.label;
+            }
+
+            @Override
+            public String getStyleName() {
+                return null;
             }
 
             @Override
@@ -93,7 +103,7 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 appEventListner.requestApplicationState(ApplicationState.scores);
             }
-        }, null);
+        });
     }
 
     protected void eraseLocalStorageButton(final String styleName, final String buttonGroup) {
@@ -102,6 +112,11 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
             @Override
             public String getLabel() {
                 return "Erase Stored Data";
+            }
+
+            @Override
+            public String getStyleName() {
+                return styleName;
             }
 
             @Override
@@ -115,7 +130,7 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
                 localStorage.clear();
                 Window.Location.replace(Window.Location.getPath());
             }
-        }, styleName, buttonGroup);
+        }, buttonGroup);
     }
 
     protected void stimuliValidation() {
@@ -124,6 +139,11 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
                 @Override
                 public String getLabel() {
                     return "Stimuli Check: " + tag.name();
+                }
+
+                @Override
+                public String getStyleName() {
+                    return null;
                 }
 
                 @Override
@@ -173,7 +193,7 @@ public abstract class LocalStoragePresenter extends AbstractTimedPresenter {
                 public int getHotKey() {
                     return -1;
                 }
-            }, null);
+            });
         }
     }
 
