@@ -169,12 +169,17 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
             }
 
             @Override
+            public String getStyleName() {
+                return styleName;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 userResults.setUser(new UserData());
                 localStorage.storeData(userResults, metadataFieldProvider);
                 appEventListner.requestApplicationState(targetApplicationState);
             }
-        }, styleName, buttonGroup);
+        }, buttonGroup);
     }
 
     protected void eraseUsersDataButton(final String buttonLabel, final String styleName, final ApplicationController.ApplicationState nextState, final String buttonGroup) {
@@ -191,6 +196,11 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
             }
 
             @Override
+            public String getStyleName() {
+                return styleName;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner singleShotEventListner) {
                 submissionService.eraseUsersStoredData(userResults.getUserData().getUserId());
                 List<UserLabelData> userList = localStorage.getUserIdList(metadataFieldProvider.workerIdMetadataField);
@@ -202,7 +212,7 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
                 }
                 Window.Location.replace(Window.Location.getPath());
             }
-        }, styleName, buttonGroup);
+        }, buttonGroup);
     }
 
     protected void pause(int postLoadMs, final TimedStimulusListener timedStimulusListener) {
@@ -226,6 +236,11 @@ public abstract class AbstractDataSubmissionPresenter extends AbstractTimedPrese
             @Override
             public int getHotKey() {
                 return -1;
+            }
+
+            @Override
+            public String getStyleName() {
+                return null;
             }
 
             @Override
