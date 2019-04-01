@@ -106,10 +106,15 @@ public abstract class AbstractColourReportPresenter extends AbstractTimedPresent
                     }
 
                     @Override
+                    public String getStyleName() {
+                        return null;
+                    }
+
+                    @Override
                     public int getHotKey() {
                         return -1;
                     }
-                }, null);
+                });
             }
 
             @Override
