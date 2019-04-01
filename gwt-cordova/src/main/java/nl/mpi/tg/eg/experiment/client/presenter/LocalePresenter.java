@@ -82,6 +82,11 @@ public class LocalePresenter extends AbstractPresenter implements Presenter {
                     }
 
                     @Override
+                    public String getStyleName() {
+                        return null;
+                    }
+
+                    @Override
                     public String getLabel() {
                         return displayName;
                     }
