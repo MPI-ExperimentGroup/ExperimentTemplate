@@ -70,6 +70,11 @@ public class MatchLanguagePresenter implements Presenter {
                 }
 
                 @Override
+                public String getStyleName() {
+                    return null;
+                }
+
+                @Override
                 public String getLabel() {
                     return prevState.label;
                 }
@@ -94,6 +99,11 @@ public class MatchLanguagePresenter implements Presenter {
                 }
 
                 @Override
+                public String getStyleName() {
+                    return null;
+                }
+
+                @Override
                 public int getHotKey() {
                     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                 }
@@ -111,6 +121,11 @@ public class MatchLanguagePresenter implements Presenter {
                 @Override
                 public String getLabel() {
                     return nextState.label;
+                }
+
+                @Override
+                public String getStyleName() {
+                    return null;
                 }
 
                 @Override
