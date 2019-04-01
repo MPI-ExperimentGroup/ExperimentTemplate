@@ -397,13 +397,16 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
     </xsl:template>
     <!--it should be possible to merge the two following templates into one-->
     <xsl:template match="touchInputStimulusButton|stimulusButton|targetButton|actionButton|actionTokenButton|targetFooterButton|actionFooterButton"> 
-        <xsl:value-of select="local-name()"/>
-        <xsl:text>(</xsl:text>
-        <xsl:if test="local-name() eq 'stimulusButton'">
-            <xsl:text>stimulusProvider, </xsl:text>
-            <xsl:text>currentStimulus,</xsl:text>
+        <xsl:if test="parent::element()/local-name() eq 'showHtmlPopup'">, </xsl:if>
+        <xsl:if test="parent::element()/local-name() ne 'showHtmlPopup'">
+            <xsl:value-of select="local-name()"/>
+            <xsl:text>(</xsl:text>
+            <xsl:if test="local-name() eq 'stimulusButton'">
+                <xsl:text>stimulusProvider, </xsl:text>
+                <xsl:text>currentStimulus,</xsl:text>
+            </xsl:if>
+            <xsl:value-of select="if(local-name() eq 'actionTokenButton') then if (contains(@featureText, '&lt;stimulus')) then 'currentStimulus, ' else 'null, ' else ''" />
         </xsl:if>
-        <xsl:value-of select="if(local-name() eq 'actionTokenButton') then if (contains(@featureText, '&lt;stimulus')) then 'currentStimulus, ' else 'null, ' else ''" />
         <xsl:text>new PresenterEventListner() {
 
             @Override
@@ -411,6 +414,13 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
             return messages.</xsl:text>
         <xsl:value-of select="generate-id(.)" />
         <xsl:text>();
+            }
+            
+            @Override
+            public String getStyleName() {
+            return </xsl:text>
+        <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else 'null'" />
+        <xsl:text>;
             }
             
             @Override
@@ -438,17 +448,18 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>
             }
             }</xsl:text>
-        <xsl:value-of select="if(local-name() eq 'touchInputStimulusButton') then concat(', &quot;', @eventTag, '&quot;') else ''" />
-        <xsl:value-of select="if(@styleName) then concat(', &quot;', @styleName, '&quot;') else ', null'" />
-        <xsl:if test="local-name() eq 'stimulusButton'">
-            <xsl:value-of select="if(@dataChannel) then concat(', ', @dataChannel) else ', 0'" />
+        <xsl:if test="parent::element()/local-name() ne 'showHtmlPopup'">
+            <xsl:value-of select="if(local-name() eq 'touchInputStimulusButton') then concat(', &quot;', @eventTag, '&quot;') else ''" />
+            <xsl:if test="local-name() eq 'stimulusButton'">
+                <xsl:value-of select="if(@dataChannel) then concat(', ', @dataChannel) else ', 0'" />
+            </xsl:if>
+            <xsl:value-of select="if(local-name() eq 'touchInputStimulusButton') then if(@src) then concat(', &quot;', @src, '&quot;') else ', null' else ''" />
+            <xsl:value-of select="if(@listenerId) then concat(', &quot;',@listenerId, '&quot;') else ''" />
+            <xsl:value-of select="if(contains(local-name(), 'Button')) then if (contains(local-name(), 'ButtonGroup')) then '' else ', ' else ''" />
+            <xsl:value-of select="if(contains(local-name(), 'Button') or contains(local-name(), 'Radio') or contains(local-name(), 'Checkbox')) then if (@groupId) then concat('&quot;',@groupId, '&quot;') else if(contains(local-name(), 'Stimulus')) then '&quot;defaultStimulusGroup&quot;' else '&quot;defaultGroup&quot;' else ''" />
+            <xsl:text>);
+            </xsl:text>
         </xsl:if>
-        <xsl:value-of select="if(local-name() eq 'touchInputStimulusButton') then if(@src) then concat(', &quot;', @src, '&quot;') else ', null' else ''" />
-        <xsl:value-of select="if(@listenerId) then concat(', &quot;',@listenerId, '&quot;') else ''" />
-        <xsl:value-of select="if(contains(local-name(), 'Button')) then if (contains(local-name(), 'ButtonGroup')) then '' else ', ' else ''" />
-        <xsl:value-of select="if(contains(local-name(), 'Button') or contains(local-name(), 'Radio') or contains(local-name(), 'Checkbox')) then if (@groupId) then concat('&quot;',@groupId, '&quot;') else if(contains(local-name(), 'Stimulus')) then '&quot;defaultStimulusGroup&quot;' else '&quot;defaultGroup&quot;' else ''" />
-        <xsl:text>);
-        </xsl:text>
     </xsl:template>
     <xsl:template match="endOfStimulusButton">
         <xsl:value-of select ="local-name()"/>
@@ -554,7 +565,8 @@ or local-name() eq 'removeStimulus'
         <xsl:value-of select="if(not(@replacementRegex) and local-name() eq 'setMetadataValue') then ', null' else ''" />
         <xsl:value-of select="if(local-name() eq 'sendAllData' or local-name() eq 'sendMetadata') then 'null' else ''" />   
         <xsl:value-of select="if(local-name() eq 'saveMetadataButton') then concat(', messages.errorMessage', generate-id(.), '()') else ''" />
-        <xsl:value-of select="if(local-name() eq 'helpDialogue' or local-name() eq 'showHtmlPopup') then concat(', messages.closeButtonLabel', generate-id(.), '()') else ''" />
+        <xsl:value-of select="if(local-name() eq 'helpDialogue') then concat(', messages.closeButtonLabel', generate-id(.), '()') else ''" />
+        <xsl:apply-templates select="actionButton" />
         <xsl:apply-templates select="conditionTrue" />
         <xsl:apply-templates select="conditionFalse" />
         <xsl:apply-templates select="onError" />        
