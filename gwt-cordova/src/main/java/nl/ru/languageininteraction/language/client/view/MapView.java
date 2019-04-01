@@ -73,6 +73,11 @@ public class MapView extends ComplexView {
             }
 
             @Override
+            public String getStyleName() {
+                return null;
+            }
+
+            @Override
             public int getHotKey() {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
@@ -95,6 +100,11 @@ public class MapView extends ComplexView {
                     svgElement.setAttribute("height", Float.toString(height * zoomFactor));
                     Document.get().getElementById("zoomableGroup").setAttribute("transform", "scale(" + zoomFactor + ")");
                 }
+            }
+
+            @Override
+            public String getStyleName() {
+                return null;
             }
 
             @Override
