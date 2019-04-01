@@ -165,6 +165,11 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
             }
 
             @Override
+            public String getStyleName() {
+                return null;
+            }
+
+            @Override
             public String getLabel() {
                 return messages.stimulusscreenselectbutton();
             }
@@ -185,6 +190,11 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
             }
 
             @Override
+            public String getStyleName() {
+                return null;
+            }
+
+            @Override
             public String getLabel() {
                 return messages.stimulusscreenrejectbutton();
             }
@@ -199,6 +209,11 @@ public abstract class AbstractColourPickerPresenter implements Presenter {
             @Override
             public int getHotKey() {
                 return -1;
+            }
+
+            @Override
+            public String getStyleName() {
+                return null;
             }
 
             @Override
