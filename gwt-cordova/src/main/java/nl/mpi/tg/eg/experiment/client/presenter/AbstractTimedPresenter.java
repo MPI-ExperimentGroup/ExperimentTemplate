@@ -98,24 +98,24 @@ public abstract class AbstractTimedPresenter extends AbstractPresenter implement
 //        addButtonToGroup(buttonGroupName, ratingButtons);
     }
 
-    public StimulusButton imageButton(final PresenterEventListner presenterListerner, final SafeUri imagePath, final String styleName, final boolean isTouchZone, final String buttonGroup) {
-        return addButtonToGroup(buttonGroup, timedStimulusView.addImageButton(presenterListerner, imagePath, styleName, isTouchZone));
+    public StimulusButton imageButton(final PresenterEventListner presenterListerner, final SafeUri imagePath, final boolean isTouchZone, final String buttonGroup) {
+        return addButtonToGroup(buttonGroup, timedStimulusView.addImageButton(presenterListerner, imagePath, isTouchZone));
     }
 
-    public void actionFooterButton(final PresenterEventListner presenterListerner, final String styleName, final String buttonGroup) {
-        addButtonToGroup(buttonGroup, timedStimulusView.addFooterButton(presenterListerner, styleName));
+    public void actionFooterButton(final PresenterEventListner presenterListerner, final String buttonGroup) {
+        addButtonToGroup(buttonGroup, timedStimulusView.addFooterButton(presenterListerner));
     }
 
-    public void targetFooterButton(final PresenterEventListner presenterListerner, final String styleName, final String buttonGroup) {
-        addButtonToGroup(buttonGroup, timedStimulusView.addFooterButton(presenterListerner, styleName));
+    public void targetFooterButton(final PresenterEventListner presenterListerner, final String buttonGroup) {
+        addButtonToGroup(buttonGroup, timedStimulusView.addFooterButton(presenterListerner));
     }
 
-    public void actionButton(final PresenterEventListner presenterListerner, final String styleName, final String buttonGroup) {
-        addButtonToGroup(buttonGroup, timedStimulusView.addOptionButton(presenterListerner, styleName));
+    public void actionButton(final PresenterEventListner presenterListerner, final String buttonGroup) {
+        addButtonToGroup(buttonGroup, timedStimulusView.addOptionButton(presenterListerner));
     }
 
-    public StimulusButton optionButton(final PresenterEventListner presenterListerner, final String styleName, final String buttonGroup) {
-        final StimulusButton optionButton = timedStimulusView.addOptionButton(presenterListerner, styleName);
+    public StimulusButton optionButton(final PresenterEventListner presenterListerner, final String buttonGroup) {
+        final StimulusButton optionButton = timedStimulusView.addOptionButton(presenterListerner);
         addButtonToGroup(buttonGroup, optionButton);
         return optionButton;
     }
