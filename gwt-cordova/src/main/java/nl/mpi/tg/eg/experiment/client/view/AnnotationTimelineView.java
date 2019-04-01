@@ -92,6 +92,11 @@ public class AnnotationTimelineView extends TimedStimulusView {
             }
 
             @Override
+            public String getStyleName() {
+                return null;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                 annotationData.setInTime(videoPanel.getCurrentTime());
                 annotationTimelinePanel.updateAnnotation(annotationData);
@@ -110,6 +115,11 @@ public class AnnotationTimelineView extends TimedStimulusView {
             }
 
             @Override
+            public String getStyleName() {
+                return null;
+            }
+
+            @Override
             public void eventFired(ButtonBase button, SingleShotEventListner shotEventListner) {
                 annotationTimelinePanel.deleteAnnotation(annotationData);
                 flexTable.remove(verticalPanel);
@@ -125,6 +135,11 @@ public class AnnotationTimelineView extends TimedStimulusView {
             @Override
             public int getHotKey() {
                 return -1;
+            }
+
+            @Override
+            public String getStyleName() {
+                return null;
             }
 
             @Override
