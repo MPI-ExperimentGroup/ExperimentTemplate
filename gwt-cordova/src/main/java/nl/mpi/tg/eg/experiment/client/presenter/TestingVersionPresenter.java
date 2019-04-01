@@ -82,6 +82,11 @@ public class TestingVersionPresenter extends LocalStoragePresenter implements Pr
             public String getLabel() {
                 return "Begin Software Testing";
             }
-        }, null);
+
+            @Override
+            public String getStyleName() {
+                return null;
+            }
+        });
     }
 }
