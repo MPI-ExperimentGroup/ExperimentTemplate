@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.service;
 
 import com.google.gwt.core.client.Duration;
+import com.google.gwt.dom.client.Element;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -51,4 +52,21 @@ public class TimedEventMonitor {
     public List<TimedEvent> getEventList() {
         return Collections.unmodifiableList(eventList);
     }
+
+    public native void addVisibilityListener(final Element element, final String regionId) /*-{
+        var timedEventMonitor = this;
+        var regionIn = regionId + "_in";
+        var regionOut = regionId + "_out";
+        new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function(entry) {
+                if(entry.intersectionRatio > 0){
+                    timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)(regionOut);
+                } else {
+                    timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)(regionIn);
+                }
+            });
+        }, {
+            root: document.documentElement
+        }).observe(element);
+    }-*/;
 }
