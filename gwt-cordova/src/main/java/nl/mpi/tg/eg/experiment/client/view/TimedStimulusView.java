@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.view;
 
 import com.google.gwt.core.client.Duration;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.MediaElement;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.event.dom.client.CanPlayThroughEvent;
@@ -535,17 +536,19 @@ public class TimedStimulusView extends ComplexView {
         }
     }
 
-    public void addTimedVideo(final TimedEventMonitor timedEventMonitor, final SafeUri oggPath, final SafeUri ogvPath, final SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final String mediaId) {
+    public Element addTimedVideo(final TimedEventMonitor timedEventMonitor, final SafeUri oggPath, final SafeUri ogvPath, final SafeUri mp4Path, int percentOfPage, int maxHeight, int maxWidth, final String styleName, final boolean autoPlay, final boolean loop, final boolean showControls, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener, final String mediaId) {
         cancelableListnerList.add(loadedStimulusListener);
         cancelableListnerList.add(failedStimulusListener);
         cancelableListnerList.add(playbackStartedStimulusListener);
         cancelableListnerList.add(playedStimulusListener);
+        final Element videoElement;
         if (timedEventMonitor != null) {
             timedEventMonitor.registerEvent("addTimedVideo");
         }
         final Video video = Video.createIfSupported();
         if (video == null) {
             failedStimulusListener.postLoadTimerFired();
+            videoElement = null;
         } else {
             video.setAutoplay(autoPlay);
             videoList.put(mediaId, video);
@@ -622,7 +625,9 @@ public class TimedStimulusView extends ComplexView {
                 // todo: check that this method is functioning correctly and if not then use the method in audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::onAudioFailed()();
                 failedStimulusListener.postLoadTimerFired();
             }
+            videoElement = video.getElement();
         }
+        return videoElement;
     }
 
     public void addAudioPlayerGui(final String mediaId) {
