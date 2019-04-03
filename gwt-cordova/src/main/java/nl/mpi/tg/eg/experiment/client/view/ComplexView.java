@@ -116,6 +116,9 @@ public class ComplexView extends SimpleView {
         if (regionTemp.getParent() == null) {
             getActivePanel().add(regionTemp);
         }
+        if (regionTemp != null) {
+            regionTemp.setStyleName(styleName);
+        }
         regionPanel = regionTemp;
     }
 
