@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.experiment.client.presenter;
 
 import com.google.gwt.core.client.Duration;
 import com.google.gwt.core.client.JsArray;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.json.client.JSONObject;
@@ -480,7 +481,8 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     public void stimulusLabel(final Stimulus currentStimulus, String styleName) {
         final String label = currentStimulus.getLabel();
         if (label != null) {
-            timedStimulusView.addHtmlText(label, styleName);
+            HTML html = timedStimulusView.addHtmlText(label, styleName);
+            timedEventMonitor.addVisibilityListener(html.getElement(), "stimulusLabel");
         }
     }
 
@@ -1143,7 +1145,10 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
             }
         };
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", formattedCode, duration.elapsedMillis());
-        timedStimulusView.addTimedVideo(timedEventMonitor, oggTrustedString, ogvTrustedString, mp4TrustedString, 0, 0, 0, styleName, autoPlay, loop, showControls, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, formattedMediaId);
+        Element videoElement = timedStimulusView.addTimedVideo(timedEventMonitor, oggTrustedString, ogvTrustedString, mp4TrustedString, 0, 0, 0, styleName, autoPlay, loop, showControls, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, formattedMediaId);
+        if (videoElement != null) {
+            timedEventMonitor.addVisibilityListener(videoElement, "stimulusVideo");
+        }
     }
 
     protected void stimulusCodeVideo(final Stimulus currentStimulus, int percentOfPage, int maxHeight, int maxWidth, final String codeStyleName, final boolean autoPlay, final String mediaId, final boolean loop, final boolean showControls, String codeFormat, final int dataChannel, final CancelableStimulusListener loadedStimulusListener, final CancelableStimulusListener failedStimulusListener, final CancelableStimulusListener playbackStartedStimulusListener, final CancelableStimulusListener playedStimulusListener) {
