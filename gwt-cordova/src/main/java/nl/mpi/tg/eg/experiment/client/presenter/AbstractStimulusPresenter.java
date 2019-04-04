@@ -482,7 +482,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         final String label = currentStimulus.getLabel();
         if (label != null) {
             HTML html = timedStimulusView.addHtmlText(label, styleName);
-            timedEventMonitor.addVisibilityListener(html.getElement(), "stimulusLabel");
+            timedEventMonitor.addVisibilityListener(widgetTag.getElement(), html.getElement(), "stimulusLabel");
         }
     }
 
@@ -1147,7 +1147,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 //        submissionService.submitTagValue(userResults.getUserData().getUserId(), "StimulusAudio", formattedCode, duration.elapsedMillis());
         Element videoElement = timedStimulusView.addTimedVideo(timedEventMonitor, oggTrustedString, ogvTrustedString, mp4TrustedString, 0, 0, 0, styleName, autoPlay, loop, showControls, shownStimulusListener, failedStimulusListener, playbackStartedStimulusListener, playedStimulusListener, formattedMediaId);
         if (videoElement != null) {
-            timedEventMonitor.addVisibilityListener(videoElement, "stimulusVideo");
+            timedEventMonitor.addVisibilityListener(widgetTag.getElement(), videoElement, "stimulusVideo");
         }
     }
 
