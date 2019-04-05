@@ -18,6 +18,7 @@
 package nl.mpi.tg.eg.experiment.client.service;
 
 import com.google.gwt.dom.client.AudioElement;
+import com.google.gwt.dom.client.SourceElement;
 import com.google.gwt.media.client.Audio;
 import com.google.gwt.safehtml.shared.SafeUri;
 import nl.mpi.tg.eg.experiment.client.exception.AudioException;
@@ -35,6 +36,7 @@ public class AudioPlayer {
     final private AudioExceptionListner audioExceptionListner;
     final private boolean autoPlay;
     private boolean hasTriggeredOnLoaded = false;
+    private int sourceLoadingCounter = 0;
 
     public AudioPlayer(AudioExceptionListner audioExceptionListner, SafeUri ogg, SafeUri mp3, boolean autoPlay) throws AudioException {
         this.audioExceptionListner = audioExceptionListner;
@@ -42,10 +44,12 @@ public class AudioPlayer {
         try {
             createPlayer();
             if (ogg != null) {
-                audioPlayer.addSource(ogg.asString(), AudioElement.TYPE_OGG);
+                final SourceElement sourceElement = audioPlayer.addSource(ogg.asString(), AudioElement.TYPE_OGG);
+                onNoFoundSetup(sourceElement);
             }
             if (mp3 != null) {
-                audioPlayer.addSource(mp3.asString(), AudioElement.TYPE_MP3);
+                final SourceElement sourceElement = audioPlayer.addSource(mp3.asString(), AudioElement.TYPE_MP3);
+                onNoFoundSetup(sourceElement);
             }
             //audioPlayer.setCurrentTime(0); // on android the if the ready state is not correct then this will fail and audio will not play
             audioPlayer.load();
@@ -68,6 +72,25 @@ public class AudioPlayer {
         final AudioElement audioElement = audioPlayer.getAudioElement();
         onEndedSetup(audioElement);
     }
+
+    private void incrementSourceLoadingCounter() {
+        sourceLoadingCounter++;
+    }
+
+    private void registerSourceLoadingError() {
+        sourceLoadingCounter--;
+        if (sourceLoadingCounter <= 0) {
+            onAudioFailed();
+        }
+    }
+
+    private native void onNoFoundSetup(final SourceElement sourceElement) /*-{
+        var audioPlayer = this;
+        audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::incrementSourceLoadingCounter()();
+        sourceElement.addEventListener("error", function(){
+            audioPlayer.@nl.mpi.tg.eg.experiment.client.service.AudioPlayer::registerSourceLoadingError()();
+        }, false);
+    }-*/;
 
     private native void onEndedSetup(final AudioElement audioElement) /*-{
      var audioPlayer = this;
