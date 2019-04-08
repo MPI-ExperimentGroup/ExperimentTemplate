@@ -53,20 +53,38 @@ public class TimedEventMonitor {
         return Collections.unmodifiableList(eventList);
     }
 
-    public native void addVisibilityListener(final Element element, final String regionId) /*-{
+    public native void addVisibilityListener(final Element widgetTag, final Element element, final String regionId) /*-{
         var timedEventMonitor = this;
         var regionIn = regionId + "_in";
         var regionOut = regionId + "_out";
+        var regionDisplay = regionId + "_display";
+        var regionNone = regionId + "_none";
         new IntersectionObserver(function(entries, observer) {
             entries.forEach(function(entry) {
                 if(entry.intersectionRatio > 0){
-                    timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)(regionOut);
-                } else {
                     timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)(regionIn);
+                } else {
+                    timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)(regionOut);
                 }
             });
+//            if(element.style.display === "none" ) {
+//                timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)(regionNone);
+//            } else {
+//                timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)(regionDisplay);
+//            }
         }, {
-            root: document.documentElement
+            root: widgetTag
         }).observe(element);
+//        new MutationObserver(function(mutationsList, observer){
+//            mutationsList.forEach(function(mutation) {
+//                console.log(mutation.type);
+//                timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)(regionId + "_" + mutation.type);
+//            });
+//            if(element.style.display === "none" ) {
+//                timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)(regionNone);
+//            } else {
+//                timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)(regionDisplay);
+//            }
+//        }).observe(element, {attributes: true, childList: true, subtree: true});
     }-*/;
 }
