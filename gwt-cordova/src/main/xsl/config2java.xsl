@@ -376,21 +376,23 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="stimulusFreeText">           
+    <xsl:template match="stimulusFreeText|setStimulusValidation">           
         <xsl:value-of select ="local-name()"/>    
         <xsl:text>(currentStimulus, </xsl:text>
         <xsl:value-of select="if(@validationRegex) then concat('&quot;', @validationRegex, '&quot;') else 'null'" />
-        <xsl:text>, messages.inputErrorMessage</xsl:text>
-        <xsl:value-of select="generate-id(.)" />
-        <xsl:text>(),</xsl:text>
-        <xsl:text>messages.</xsl:text>
-        <xsl:value-of select="generate-id(.)" />
-        <xsl:text>(),</xsl:text>
-        <xsl:value-of select="if(@allowedCharCodes) then concat('&quot;', @allowedCharCodes, '&quot;') else 'null'" />
-        <xsl:text>,</xsl:text>
-        <xsl:value-of select="if(@hotKey eq '-1' or @hotKey eq '') then '-1' else if(@hotKey) then concat('ExtendedKeyCodes.KEY_', @hotKey) else '-1'" />
-        <xsl:text>,</xsl:text>
-        <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else 'null'" />
+        <xsl:if test="local-name() ne 'setStimulusValidation'">    
+            <xsl:text>, messages.inputErrorMessage</xsl:text>
+            <xsl:value-of select="generate-id(.)" />
+            <xsl:text>(),</xsl:text>
+            <xsl:text>messages.</xsl:text>
+            <xsl:value-of select="generate-id(.)" />
+            <xsl:text>(),</xsl:text>
+            <xsl:value-of select="if(@allowedCharCodes) then concat('&quot;', @allowedCharCodes, '&quot;') else 'null'" />
+            <xsl:text>,</xsl:text>
+            <xsl:value-of select="if(@hotKey eq '-1' or @hotKey eq '') then '-1' else if(@hotKey) then concat('ExtendedKeyCodes.KEY_', @hotKey) else '-1'" />
+            <xsl:text>,</xsl:text>
+            <xsl:value-of select="if(@styleName) then concat('&quot;', @styleName, '&quot;') else 'null'" />
+        </xsl:if>
         <xsl:value-of select="if(@dataChannel) then concat(', ', @dataChannel) else ', 0'" />
         <xsl:text>);
         </xsl:text>
