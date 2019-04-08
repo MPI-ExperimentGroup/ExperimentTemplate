@@ -229,7 +229,7 @@ public class DefaultExperiments {
 //            maxScreenAddCount--;
             final PresenterScreen presenterScreen = new PresenterScreen(presenterName, presenterName, backPresenter, presenterName + "Screen", null, presenterType, displayOrder);
             for (FeatureType featureType : presenterType.getFeatureTypes()) {
-                if (featureType.getIsChildType() == FeatureType.Contitionals.none) {
+                if (featureType.isChildType(FeatureType.Contitionals.none)) {
                     if (featureType == FeatureType.clearPage) {
                         final PresenterFeature clearScreenButton = new PresenterFeature(FeatureType.actionButton, "Clear Screen");
                         clearScreenButton.getPresenterFeatureList().add(addFeature(experiment, presenterType, featureType, presenterFeatureRepository, addOptionalAttributes));
@@ -443,7 +443,7 @@ public class DefaultExperiments {
 //                            || featureType1.getIsChildType() == FeatureType.Contitionals.hasMoreStimulus) {
 //                        presenterFeature.addFeature(FeatureType.plainText, featureType1.name() + " in " + featureType.name());
 //                    } else 
-                    if (featureType1.getIsChildType() == featureType.getRequiresChildType()) {
+                    if (featureType1.isChildType(featureType.getRequiresChildType())) {
 //                        if (featureType == FeatureType.withMatchingStimulus) {
 //                            presenterFeature.addFeature(FeatureType.plainText, featureType1.name() + " in " + featureType.name());
 //                        } else {
