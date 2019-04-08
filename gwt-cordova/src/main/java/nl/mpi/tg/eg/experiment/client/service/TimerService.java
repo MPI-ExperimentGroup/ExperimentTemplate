@@ -17,7 +17,9 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 import nl.mpi.tg.eg.experiment.client.listener.TimerListner;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
@@ -28,11 +30,16 @@ import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
  */
 public class TimerService {
 
-    final HashMap<String, TimerListner> timerListeners = new HashMap<>();
+    final HashMap<String, List<TimerListner>> timerListeners = new HashMap<>();
 
     public void clearAllTimers() {
-        for (TimerListner listner : timerListeners.values()) {
-            listner.clearTimer();
+        for (List<TimerListner> listnerList : timerListeners.values()) {
+            while (!listnerList.isEmpty()) {
+                final TimerListner timerEntry = listnerList.remove(0);
+                if (timerEntry != null) {
+                    timerEntry.clearTimer();
+                }
+            }
         }
     }
 
@@ -50,12 +57,20 @@ public class TimerService {
             }
 
         };
-        timerListeners.put(listenerId, timerListner);
+        final List<TimerListner> listnerList;
+        if (timerListeners.containsKey(listenerId)) {
+            listnerList = timerListeners.get(listenerId);
+        } else {
+            listnerList = new ArrayList<>();
+            timerListeners.put(listenerId, listnerList);
+        }
+        listnerList.add(timerListner);
         timerListner.startTimer(msToNext);
     }
 
     public int getTimerValue(final String listenerId) {
-        final TimerListner timerEntry = timerListeners.get(listenerId);
+        final List<TimerListner> listnerList = timerListeners.get(listenerId);
+        final TimerListner timerEntry = (listnerList == null || listnerList.isEmpty()) ? null : listnerList.get(0);
         if (timerEntry == null) {
             return -1;
         } else {
@@ -64,9 +79,14 @@ public class TimerService {
     }
 
     public void clearTimer(final String listenerId) {
-        final TimerListner timerEntry = timerListeners.get(listenerId);
-        if (timerEntry != null) {
-            timerEntry.clearTimer();
+        final List<TimerListner> listnerList = timerListeners.get(listenerId);
+        if (listnerList != null) {
+            while (!listnerList.isEmpty()) {
+                final TimerListner timerEntry = listnerList.remove(0);
+                if (timerEntry != null) {
+                    timerEntry.clearTimer();
+                }
+            }
         }
     }
 
