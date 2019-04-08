@@ -155,7 +155,11 @@ public abstract class DateOfBirthField extends HorizontalPanel {
 
     public long getDaysSince() {
         final Date parseStrict = dateFormat.parseStrict(getValue());
-        long diffMs = new Date().getTime() - parseStrict.getTime();
+        final Date currentDate = new Date();
+        currentDate.setHours(0);
+        currentDate.setMinutes(0);
+        currentDate.setSeconds(0);
+        long diffMs = currentDate.getTime() - parseStrict.getTime();
         return (diffMs / (1000 * 60 * 60 * 24));
     }
 
