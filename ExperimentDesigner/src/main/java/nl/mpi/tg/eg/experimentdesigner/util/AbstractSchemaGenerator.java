@@ -57,6 +57,7 @@ public class AbstractSchemaGenerator {
         final List<DocumentationAttribute> attributeTypes = new ArrayList<>();
         final String[] childTypeNames;
         final DocumentationElement[] childElements;
+        final boolean isChildOrderOptional;
         final boolean hasStringContents;
 
         public DocumentationElement(final String elementName, final String documentationText, final int minBounds, final int maxBounds, final boolean hasStringContents) {
@@ -68,6 +69,7 @@ public class AbstractSchemaGenerator {
             this.childTypeNames = new String[0];
             this.childElements = new DocumentationElement[0];
             this.hasStringContents = hasStringContents;
+            this.isChildOrderOptional = false;
         }
 
         public DocumentationElement(final String elementName, final String documentationText, final int minBounds, final int maxBounds, final DocumentationElement[] childElements) {
@@ -79,6 +81,7 @@ public class AbstractSchemaGenerator {
             this.childTypeNames = new String[0];
             this.childElements = childElements;
             this.hasStringContents = false;
+            this.isChildOrderOptional = false;
         }
 
         public DocumentationElement(final String elementName, final String typeName, final String documentationText, final int minBounds, final int maxBounds, final DocumentationElement[] childElements) {
@@ -90,6 +93,7 @@ public class AbstractSchemaGenerator {
             this.childTypeNames = new String[0];
             this.childElements = childElements;
             this.hasStringContents = false;
+            this.isChildOrderOptional = false;
         }
 
         public DocumentationElement(final FeatureType featureType) {
@@ -129,15 +133,10 @@ public class AbstractSchemaGenerator {
             if (featureType.canHaveStimulusTags()) {
                 documentationElements.add(new DocumentationElement("stimuli", "stimuliSelect", "List of stimuli tag names which determine which stimuli are selected.", 0, 1, new DocumentationElement[0]));
             }
-            childTypeList.sort(new AbstractComparator<String>() {
-                @Override
-                public int compare(String o1, String o2) {
-                    return o1.compareTo(o2);
-                }
-            });
             this.childTypeNames = childTypeList.toArray(new String[childTypeList.size()]);
             this.childElements = documentationElements.toArray(new DocumentationElement[documentationElements.size()]);
             this.hasStringContents = false;
+            this.isChildOrderOptional = featureType.getRequiresChildType().isChildOrderOptional;
             if (featureType.canHaveText()) {
                 stringAttribute("featureText", false);
             }
@@ -149,6 +148,9 @@ public class AbstractSchemaGenerator {
                         restrictedAttribute(featureAttribute.name(), featureAttribute.isOptional(), featureAttribute.getTypeValues());
                     }
                 }
+            }
+            if (featureType.canHaveStimulusTags() && !featureType.isCanHaveRandomGrouping()) {
+                stringAttribute("tags", false);
             }
         }
 
@@ -177,6 +179,7 @@ public class AbstractSchemaGenerator {
             this.childTypeNames = childTypeList.toArray(new String[childTypeList.size()]);
             this.childElements = new DocumentationElement[0];
             this.hasStringContents = false;
+            this.isChildOrderOptional = false;
         }
 
         public final DocumentationElement stringAttribute(final String attributeName, final boolean optional) {
