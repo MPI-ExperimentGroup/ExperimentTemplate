@@ -11,6 +11,9 @@
         .gwt-Button.optionButton.toggleBox {
         background: none;
         }
+        .gwt-Button.popupButton {
+        margin: 0px 10px 0px 10px;
+        }
         .toggleBoxOn, .toggleBoxOff
         {
         position: absolute;
@@ -300,6 +303,32 @@
             </row>
         </table>
     </presenter>
+    <presenter back="Menu" menuLabel="Popup Dialogue Example" type="stimulus" self="popup_dialogue_example" title="Popup Dialogue Example">
+        <clearPage/>
+        <plainText featureText="This presenter shows a few demonstration popups. Popups direct the user to the information and the actions of the popup. However the user can always close the browser or application if they don't like the options you give them."/>
+        <actionButton featureText="Popup">
+            <showHtmlPopup featureText="This is some text in the popup dialogue.">  
+                <actionButton featureText="OK">
+                    <clearPage/>
+                    <plainText featureText="The first demonstration popup has closed. The next one is different."/>
+                    <actionButton featureText="Show Another Popup">
+                        <showHtmlPopup featureText="This popup dialogue also has text, but it has &lt;b&gt;two&lt;/b&gt; buttons not one.">
+                            <actionButton featureText="ActionButtonA (close)" styleName="popupButton">
+                                <clearPage/>
+                                <plainText featureText="The second popup has closed."/>                
+                                <actionButton featureText="Reload This Presenter">
+                                    <gotoPresenter target="popup_dialogue_example"/>
+                                </actionButton>
+                            </actionButton>
+                            <actionButton featureText="ActionButtonB (reload this presenter)" styleName="popupButton">
+                                <gotoPresenter target="popup_dialogue_example"/>
+                            </actionButton>
+                        </showHtmlPopup>
+                    </actionButton>
+                </actionButton>
+            </showHtmlPopup>
+        </actionButton>
+    </presenter>
     <presenter back="Menu" menuLabel="Timer Label Screen" type="stimulus" self="Timer_Label_Screen" title="Timer Label Screen">
         <startTimer msToNext="150000" listenerId="timerA">
             <region regionId="regionTimerC">
@@ -321,6 +350,215 @@
                 </region>
             </startTimer>
         </actionButton>
+    </presenter>
+    <presenter back="Menu" menuLabel="Sequential Display Example (using 7 separate timers)" type="stimulus" self="Sequential_Display_Example0_6" title="Sequential Display Example (using 7 separate timers)">
+        <loadStimulus eventTag="Sequential_Display_Example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearTimer listenerId="sequentialDisplayTimer0"/>
+                <clearTimer listenerId="sequentialDisplayTimer1"/>
+                <clearTimer listenerId="sequentialDisplayTimer2"/>
+                <clearTimer listenerId="sequentialDisplayTimer3"/>
+                <clearTimer listenerId="sequentialDisplayTimer4"/>
+                <clearTimer listenerId="sequentialDisplayTimer5"/>
+                <clearTimer listenerId="sequentialDisplayTimer6"/>
+                <clearPage/>
+                <region regionId="crossLabelRegion" styleName="hiddenRegion">
+                    <htmlText featureText="+" styleName="stimuliLabel"/>
+                </region>
+                <region regionId="stimuliLabelRegion" styleName="hiddenRegion">
+                    <stimulusLabel styleName="stimuliLabel"/>
+                </region>
+                <actionButton groupId="respondButtonGroup" featureText="Respond [tab + enter]">
+                    <nextStimulus repeatIncorrect="false"/>
+                </actionButton>
+                <disableButtonGroup matchingRegex="respondButtonGroup"/>
+                <stimulusAudio dataChannel="2" autoPlay="false" mediaId="stimulusAudioExample" showPlaybackIndicator="false">
+                    <mediaLoaded>
+                        <plainText featureText="stimulusAudioLoaded"/>
+                        <region regionId="stimuliVideoRegion" styleName="hiddenRegion">
+                            <stimulusVideo loop="false" styleName="smallVideo" dataChannel="2" autoPlay="false" mediaId="stimulusVideoExample" showControls="false">
+                                <mediaLoaded>
+                                    <plainText featureText="stimulusVideoLoaded"/>
+                                    <clearTimer listenerId="sequentialDisplayTimer0"/>
+                                    <clearTimer listenerId="sequentialDisplayTimer1"/>
+                                    <clearTimer listenerId="sequentialDisplayTimer2"/>
+                                    <clearTimer listenerId="sequentialDisplayTimer3"/>
+                                    <clearTimer listenerId="sequentialDisplayTimer4"/>
+                                    <clearTimer listenerId="sequentialDisplayTimer5"/>
+                                    <clearTimer listenerId="sequentialDisplayTimer6"/>
+                                    <startTimer msToNext="100" listenerId="sequentialDisplayTimer0">
+                                        <regionStyle regionId="crossLabelRegion" styleName=""/>
+                                        <htmlTokenText featureText="crossLabelShow (100) &lt;sequentialDisplayTimer0&gt;ms"/>
+                                    </startTimer>
+                                    <timerLabel listenerId="sequentialDisplayTimer0" msLabelFormat="mm:ss" msToNext="0" styleName="countDownLabel"/>
+                                    <startTimer msToNext="350" listenerId="sequentialDisplayTimer1">
+                                        <regionStyle regionId="crossLabelRegion" styleName="hiddenRegion"/>
+                                        <regionStyle regionId="stimuliLabelRegion" styleName=""/>
+                                        <htmlTokenText featureText="stimuliLabelShow (350) &lt;sequentialDisplayTimer0&gt;ms"/>
+                                    </startTimer>
+                                    <startTimer msToNext="1350" listenerId="sequentialDisplayTimer2">
+                                        <regionStyle regionId="stimuliLabelRegion" styleName="hiddenRegion"/>
+                                        <playMedia mediaId="stimulusAudioExample"/>
+                                        <htmlTokenText featureText="stimuliLabelHide (1350) &lt;sequentialDisplayTimer0&gt;ms"/>
+                                    </startTimer>
+                                    <startTimer msToNext="2350" listenerId="sequentialDisplayTimer3">
+                                        <!-- it is probably better to never hide the video but make sure the first frames are blank instead, but this assumption needs to be tested -->
+                                        <regionStyle regionId="stimuliVideoRegion" styleName=""/>
+                                        <playMedia mediaId="stimulusVideoExample"/>
+                                    </startTimer>
+                                    <startTimer msToNext="3350" listenerId="sequentialDisplayTimer4">
+                                        <regionStyle regionId="stimuliVideoRegion" styleName="hiddenRegion"/>
+                                        <htmlTokenText featureText="stimuliVideoHide (3350) &lt;sequentialDisplayTimer0&gt;ms"/>
+                                    </startTimer>
+                                    <startTimer msToNext="400" listenerId="sequentialDisplayTimer5">
+                                        <enableButtonGroup matchingRegex="respondButtonGroup"/>
+                                        <htmlTokenText featureText="respondButtonEnabled (400) &lt;sequentialDisplayTimer0&gt;ms"/>
+                                    </startTimer>
+                                    <startTimer msToNext="3350" listenerId="sequentialDisplayTimer6">
+                                        <disableButtonGroup matchingRegex="respondButtonGroup"/>
+                                        <htmlTokenText featureText="respondButtonDisabled (3350) &lt;sequentialDisplayTimer0&gt;ms"/>
+                                        <htmlTokenText featureText="all timer values &lt;sequentialDisplayTimer0&gt;ms &lt;sequentialDisplayTimer1&gt;ms &lt;sequentialDisplayTimer2&gt;ms &lt;sequentialDisplayTimer3&gt;ms &lt;sequentialDisplayTimer4&gt;ms &lt;sequentialDisplayTimer5&gt;ms &lt;sequentialDisplayTimer6&gt;ms"/>
+                                        <actionButton groupId="nextButtonGroup" featureText="Volgende [tab + enter]">
+                                            <nextStimulus repeatIncorrect="false"/>
+                                        </actionButton>
+                                    </startTimer>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="stimulusVideoFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackStarted>
+                                    <htmlTokenText featureText="stimulusVideoPlaybackStarted &lt;sequentialDisplayTimer0&gt;ms"/>
+                                </mediaPlaybackStarted>
+                                <mediaPlaybackComplete>
+                                    <htmlTokenText featureText="stimulusVideoComplete &lt;sequentialDisplayTimer0&gt;ms"/>
+                                </mediaPlaybackComplete>
+                            </stimulusVideo>  
+                        </region>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="stimulusAudioFailed"/>
+                        <stimulusLabel/>
+                        <actionButton featureText="Skip">
+                            <nextStimulus repeatIncorrect="false"/>
+                        </actionButton>
+                    </mediaLoadFailed>
+                    <mediaPlaybackStarted>
+                        <htmlTokenText featureText="stimulusAudioPlaybackStarted &lt;sequentialDisplayTimer0&gt;ms"/>
+                    </mediaPlaybackStarted>
+                    <mediaPlaybackComplete>
+                        <htmlTokenText featureText="stimulusAudioComplete &lt;sequentialDisplayTimer0&gt;ms"/>
+                    </mediaPlaybackComplete>
+                </stimulusAudio>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="Sequential_Display_Example"/>
+                    <gotoPresenter target="Sequential_Display_Example"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>media</tag>
+            </stimuli>
+        </loadStimulus>
+    </presenter>
+    <presenter back="Menu" menuLabel="Sequential Display Example (single timer)" type="stimulus" self="Sequential_Display_Example" title="Sequential Display Example (single timer)">
+        <loadStimulus eventTag="Sequential_Display_Example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <hasMoreStimulus>
+                <clearTimer listenerId="sequentialDisplayTimer"/>
+                <clearPage/>
+                <timerLabel listenerId="sequentialDisplayTimer" msLabelFormat="mm:ss" msToNext="0" styleName="countDownLabel"/>
+                <region regionId="crossLabelRegion" styleName="hiddenRegion">
+                    <htmlText featureText="+" styleName="stimuliLabel"/>
+                </region>
+                <region regionId="stimuliLabelRegion" styleName="hiddenRegion">
+                    <stimulusLabel styleName="stimuliLabel"/>
+                </region>
+                <actionButton groupId="respondButtonGroup" featureText="Respond [tab + enter]">
+                    <nextStimulus repeatIncorrect="false"/>
+                </actionButton>
+                <disableButtonGroup matchingRegex="respondButtonGroup"/>
+                <stimulusAudio dataChannel="2" autoPlay="false" mediaId="stimulusAudioExample" showPlaybackIndicator="false">
+                    <mediaLoaded>
+                        <plainText featureText="stimulusAudioLoaded"/>
+                        <region regionId="stimuliVideoRegion" styleName="hiddenRegion">
+                            <stimulusVideo loop="false" styleName="smallVideo" dataChannel="2" autoPlay="false" mediaId="stimulusVideoExample" showControls="false">
+                                <mediaLoaded>
+                                    <plainText featureText="stimulusVideoLoaded"/>
+                                    <clearTimer listenerId="sequentialDisplayTimer"/>
+                                    <startTimer msToNext="100" listenerId="sequentialDisplayTimer">
+                                        <regionStyle regionId="crossLabelRegion" styleName=""/>
+                                        <htmlTokenText featureText="crossLabelShow (100) &lt;sequentialDisplayTimer&gt;ms"/>
+                                    </startTimer>
+                                    <startTimer msToNext="350" listenerId="sequentialDisplayTimer">
+                                        <regionStyle regionId="crossLabelRegion" styleName="hiddenRegion"/>
+                                        <regionStyle regionId="stimuliLabelRegion" styleName=""/>
+                                        <htmlTokenText featureText="stimuliLabelShow (350) &lt;sequentialDisplayTimer&gt;ms"/>
+                                    </startTimer>
+                                    <startTimer msToNext="1350" listenerId="sequentialDisplayTimer">
+                                        <regionStyle regionId="stimuliLabelRegion" styleName="hiddenRegion"/>
+                                        <playMedia mediaId="stimulusAudioExample"/>
+                                        <htmlTokenText featureText="stimuliLabelHide (1350) &lt;sequentialDisplayTimer&gt;ms"/>
+                                    </startTimer>
+                                    <startTimer msToNext="2350" listenerId="sequentialDisplayTimer">
+                                        <!-- it is probably better to never hide the video but make sure the first frames are blank instead -->
+                                        <regionStyle regionId="stimuliVideoRegion" styleName=""/>
+                                        <playMedia mediaId="stimulusVideoExample"/>
+                                    </startTimer>
+                                    <startTimer msToNext="3350" listenerId="sequentialDisplayTimer">
+                                        <regionStyle regionId="stimuliVideoRegion" styleName="hiddenRegion"/>
+                                        <htmlTokenText featureText="stimuliVideoHide (3350) &lt;sequentialDisplayTimer&gt;ms"/>
+                                    </startTimer>
+                                    <startTimer msToNext="400" listenerId="sequentialDisplayTimer">
+                                        <enableButtonGroup matchingRegex="respondButtonGroup"/>
+                                        <htmlTokenText featureText="respondButtonEnabled (400) &lt;sequentialDisplayTimer&gt;ms"/>
+                                    </startTimer>
+                                    <startTimer msToNext="3350" listenerId="sequentialDisplayTimer">
+                                        <disableButtonGroup matchingRegex="respondButtonGroup"/>
+                                        <htmlTokenText featureText="respondButtonDisabled (3350) &lt;sequentialDisplayTimer&gt;ms"/>
+                                        <actionButton groupId="nextButtonGroup" featureText="Volgende [tab + enter]">
+                                            <nextStimulus repeatIncorrect="false"/>
+                                        </actionButton>
+                                    </startTimer>
+                                </mediaLoaded>
+                                <mediaLoadFailed>
+                                    <plainText featureText="stimulusVideoFailed"/>
+                                </mediaLoadFailed>
+                                <mediaPlaybackStarted>
+                                    <htmlTokenText featureText="stimulusVideoPlaybackStarted &lt;sequentialDisplayTimer&gt;ms"/>
+                                </mediaPlaybackStarted>
+                                <mediaPlaybackComplete>
+                                    <htmlTokenText featureText="stimulusVideoComplete &lt;sequentialDisplayTimer&gt;ms"/>
+                                </mediaPlaybackComplete>
+                            </stimulusVideo>  
+                        </region>
+                    </mediaLoaded>
+                    <mediaLoadFailed>
+                        <plainText featureText="stimulusAudioFailed"/>
+                        <stimulusLabel/>
+                        <actionButton featureText="Skip">
+                            <nextStimulus repeatIncorrect="false"/>
+                        </actionButton>
+                    </mediaLoadFailed>
+                    <mediaPlaybackStarted>
+                        <htmlTokenText featureText="stimulusAudioPlaybackStarted &lt;sequentialDisplayTimer&gt;ms"/>
+                    </mediaPlaybackStarted>
+                    <mediaPlaybackComplete>
+                        <htmlTokenText featureText="stimulusAudioComplete &lt;sequentialDisplayTimer&gt;ms"/>
+                    </mediaPlaybackComplete>
+                </stimulusAudio>
+            </hasMoreStimulus>
+            <endOfStimulus>
+                <actionButton featureText="resetStimulus">
+                    <resetStimulus target="Sequential_Display_Example"/>
+                    <gotoPresenter target="Sequential_Display_Example"/>
+                </actionButton>
+            </endOfStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>media</tag>
+            </stimuli>
+        </loadStimulus>
     </presenter>
     <presenter back="Menu" menuLabel="Region Timer Screen" next="With_Stimuli_Screen" type="stimulus" self="Region_Timer_Screen" title="With Stimuli Screen">
         <region regionId="regionTimerC">
@@ -644,6 +882,53 @@
                 </actionButton>
                 <plainText featureText="plainText in afterStimulus"/>
                 <targetButton featureText="Next Screen" target="First_Stimuli_Screen_Informatie"/>
+            </afterStimulus>
+            <randomGrouping/>
+            <stimuli>
+                <tag>First_Stimuli_Screen</tag>
+            </stimuli>
+        </withStimuli>
+    </presenter>
+    <presenter back="Menu" menuLabel="Has Stimulus Response" type="stimulus" self="Has_Stimulus_Response" title="Has Stimulus Response">
+        <withStimuli eventTag="Has Stimulus Response" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+            <beforeStimulus>
+                <plainText featureText="Clicking a button adds a response."/>
+            </beforeStimulus>
+            <eachStimulus>
+                <stimulusLabel/>
+                <addStimulusValidation featureText="Please respond to this item." validationRegex=".{1,}" dataChannel="8"/>
+                <htmlTokenText featureText="The current response: &lt;stimulusResponse&gt;"/>
+                <table>
+                    <row>
+                        <column>
+                            <actionTokenButton featureText="Clear" styleName="ratingBox">
+                                <setStimulusCodeResponse codeFormat="" dataChannel="8" applyScore="false"/>
+                            </actionTokenButton>
+                        </column>
+                        <column>
+                            <actionTokenButton featureText="Respond" styleName="ratingBox">
+                                <setStimulusCodeResponse codeFormat="5" dataChannel="8" applyScore="true"/>
+                            </actionTokenButton>
+                        </column>
+                    </row>
+                </table>
+            </eachStimulus>
+            <afterStimulus>
+                <addPadding/>
+                <actionButton featureText="validateStimuliResponses">
+                    <validateStimuliResponses>
+                        <conditionFalse>
+                            <plainText featureText="validateStimuliResponses conditionFalse"/>
+                        </conditionFalse>
+                        <conditionTrue>
+                            <plainText featureText="validateStimuliResponses conditionTrue"/>
+                            <actionButton featureText="resetStimulus">
+                                <resetStimulus target="Has_Stimulus_Response"/>
+                                <gotoPresenter target="Has_Stimulus_Response"/>
+                            </actionButton>
+                        </conditionTrue>
+                    </validateStimuliResponses>
+                </actionButton>
             </afterStimulus>
             <randomGrouping/>
             <stimuli>
@@ -1212,6 +1497,9 @@
             <hasMoreStimulus>
                 <clearPage/>
                 <plainText featureText="Rating buttons can be different for each stimulus, or the same for all. In this example we have the same set of options for all."/>
+                <htmlText featureText="For an example of stimulus based rating buttons see: &lt;a href=&quot;#InvitationCodeExampleStimuliScreen&quot;&gt;InvitationCodeExampleStimuliScreen&lt;/a&gt;"/>
+                <addPadding/>
+                <plainText featureText="These rating buttons also respond to key press events, eg numbers in this case."/>
                 <addPadding/>
                 <stimulusLabel styleName="stimuliLabel"/>
                 <addPadding/>
@@ -2719,7 +3007,7 @@
         <stimulus audioPath="d1e287" code="d1e287" identifier="d1e287" imagePath="d1e287.jpg" label="d1e287" pauseMs="0" tags="media" videoPath="d1e287"/>
         <stimulus audioPath="d1e293" code="d1e293" identifier="d1e293" imagePath="d1e293.jpg" label="d1e293" pauseMs="0" tags="media" videoPath="d1e293"/>
         <stimulus audioPath="d1e223" code="d1e223" identifier="d1e223" imagePath="d1e223.jpg" label="d1e223" pauseMs="0" tags="media" videoPath="d1e223"/>
-        <stimulus audioPath="missing" code="missing" identifier="missing" imagePath="missing.jpg" label="this stimuli is missing and should be handled nicely" pauseMs="0" tags="media" videoPath="missing"/>
+        <stimulus audioPath="missing" code="missing" identifier="missing" imagePath="missing.jpg" label="this stimuli has no media files and when loaded as audio or video should trigger an error should be handled nicely" pauseMs="0" tags="media" videoPath="missing"/>
         <stimulus identifier="R1" label="Speak the word &lt;b&gt;'continue'&lt;/b&gt; into the microphone, then after speaking press 'continue'" correctResponses="continue" ratingLabels="continue,arrête,thème,récurrent" pauseMs="0" tags="RecordingQualityTest"/>
         <stimulus identifier="R2" label="Speak the word &lt;b&gt;'arrête'&lt;/b&gt; into the microphone, then after speaking press 'continue'" correctResponses="arrête" ratingLabels="continue,arrête,thème,récurrent" pauseMs="0" tags="RecordingQualityTest"/>
         <stimulus identifier="R3" label="Speak the word &lt;b&gt;'thème'&lt;/b&gt; into the microphone, then after speaking press 'continue'" correctResponses="thème" ratingLabels="continue,arrête,thème,récurrent" pauseMs="0" tags="RecordingQualityTest"/>
