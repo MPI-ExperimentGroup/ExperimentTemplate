@@ -792,7 +792,9 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
     }
 
     protected void clearCurrentScore() {
-        userResults.getUserData().addGamePlayed();
+        if (userResults.getUserData().getPotentialScore() > 0) {
+            userResults.getUserData().addGamePlayed();
+        }
         userResults.getUserData().clearCurrentScore();
         localStorage.storeUserScore(userResults);
     }
@@ -1312,7 +1314,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
 
                 @Override
                 public String getStyleName() {
-                    return null;
+                    return null; // should this one return styleName or a sibling object?
                 }
 
                 @Override
@@ -1727,7 +1729,7 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         triggerListeners.get(listenerId).reset();
     }
 
-    protected void startTimer(final int msToNext, final String listenerId, final TimedStimulusListener timeoutListener) {
+    protected void /* this could be changed to addTimer since it now allows multiple timer listeners */ startTimer(final int msToNext, final String listenerId, final TimedStimulusListener timeoutListener) {
         final String storedDataValue = localStorage.getStoredDataValue(userResults.getUserData().getUserId(), "timer_" + listenerId);
         final long initialTimerStartMs;
         if (storedDataValue == null || storedDataValue.isEmpty()) {
@@ -1736,7 +1738,6 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         } else {
             initialTimerStartMs = Long.parseLong(storedDataValue);
         }
-        timerService.clearTimer(listenerId);
         timerService.startTimer(initialTimerStartMs, msToNext, listenerId, timeoutListener);
     }
 
@@ -1838,10 +1839,12 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
                 storedStimulusJSONObject = (storedStimulusJSONObject == null) ? new JSONObject() : storedStimulusJSONObject;
                 jsonStimulusMap.put(stimulusFreeText.getStimulus(), storedStimulusJSONObject);
             }
-
-            jsonStimulusMap.get(stimulusFreeText.getStimulus()).put(stimulusFreeText.getPostName(), new JSONString(stimulusFreeText.getValue()));
+            final String value = stimulusFreeText.getValue();
+            if (value != null) {
+                jsonStimulusMap.get(stimulusFreeText.getStimulus()).put(stimulusFreeText.getPostName(), new JSONString(value));
+            }
         }
-        for (Stimulus stimulus : jsonStimulusMap.keySet()) {
+        for (Stimulus stimulus : jsonStimulusMap.keySet()) { // we save the current responses here, so that a page reload can pre populate the page when allowed
             localStorage.setStoredJSONObject(userResults.getUserData().getUserId(), stimulus, jsonStimulusMap.get(stimulus));
         }
         for (StimulusFreeText stimulusFreeText : stimulusFreeTextList) {
@@ -2001,6 +2004,10 @@ public abstract class AbstractStimulusPresenter extends AbstractTimedPresenter i
         };
         nextButtonEventListnerList.add(eventListner);
         optionButton(eventListner, buttonGroup);
+    }
+
+    protected void addStimulusValidation(final Stimulus currentStimulus, final String validationRegex, final String validationChallenge, final int dataChannel) {
+        stimulusFreeTextList.add(timedStimulusView.addStimulusValidation(localStorage, userResults.getUserData().getUserId(), currentStimulus, "CodeResponse", validationRegex, validationChallenge, dataChannel));
     }
 
     protected void setStimulusCodeResponse(
