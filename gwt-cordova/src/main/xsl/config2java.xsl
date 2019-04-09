@@ -376,11 +376,16 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="stimulusFreeText|setStimulusValidation">           
+    <xsl:template match="stimulusFreeText|addStimulusValidation">           
         <xsl:value-of select ="local-name()"/>    
         <xsl:text>(currentStimulus, </xsl:text>
         <xsl:value-of select="if(@validationRegex) then concat('&quot;', @validationRegex, '&quot;') else 'null'" />
-        <xsl:if test="local-name() ne 'setStimulusValidation'">    
+        <xsl:if test="local-name() eq 'addStimulusValidation'">
+            <xsl:text>, messages.</xsl:text>
+            <xsl:value-of select="generate-id(.)" />
+            <xsl:text>()</xsl:text>
+        </xsl:if>
+        <xsl:if test="local-name() ne 'addStimulusValidation'">    
             <xsl:text>, messages.inputErrorMessage</xsl:text>
             <xsl:value-of select="generate-id(.)" />
             <xsl:text>(),</xsl:text>
