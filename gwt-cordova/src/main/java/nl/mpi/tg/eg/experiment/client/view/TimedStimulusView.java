@@ -32,6 +32,8 @@ import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.event.dom.client.LoadEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
+import com.google.gwt.json.client.JSONObject;
+import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.media.client.Video;
 import com.google.gwt.safehtml.shared.SafeUri;
 import com.google.gwt.user.client.Timer;
@@ -53,7 +55,9 @@ import nl.mpi.tg.eg.experiment.client.listener.SingleShotEventListner;
 import nl.mpi.tg.eg.experiment.client.listener.StimulusButton;
 import nl.mpi.tg.eg.frinex.common.listener.TimedStimulusListener;
 import nl.mpi.tg.eg.experiment.client.model.StimulusFreeText;
+import nl.mpi.tg.eg.experiment.client.model.UserId;
 import nl.mpi.tg.eg.experiment.client.service.AudioPlayer;
+import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor;
 import nl.mpi.tg.eg.experiment.client.service.VideoPlayer;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -337,6 +341,65 @@ public class TimedStimulusView extends ComplexView {
         final HTMLPanel htmlPanel = new HTMLPanel(svgContent);
         htmlPanel.setWidth(percentWidth + "%");
         getActivePanel().add(htmlPanel);
+    }
+
+    public StimulusFreeText addStimulusValidation(final LocalStorage localStorage, final UserId userId, final Stimulus currentStimulus, final String postName, final String validationRegex, final String validationChallenge, final int dataChannel) {
+        final Label errorLabel = new Label(validationChallenge);
+        errorLabel.setStylePrimaryName("metadataErrorMessage");
+        errorLabel.setVisible(false);
+        getActivePanel().add(errorLabel);
+        return new StimulusFreeText() {
+            @Override
+            public Stimulus getStimulus() {
+                return currentStimulus;
+            }
+
+            @Override
+            public String getPostName() {
+                return postName;
+            }
+
+            @Override
+            public String getResponseTimes() {
+                return null;
+            }
+
+            @Override
+            public String getValue() {
+                JSONObject storedStimulusJSONObject = localStorage.getStoredJSONObject(userId, currentStimulus);
+                final JSONValue codeResponse = (storedStimulusJSONObject == null) ? null : storedStimulusJSONObject.get(postName);
+                return (codeResponse != null) ? codeResponse.isString().stringValue() : null;
+            }
+
+            @Override
+            public boolean isValid() {
+                final String currentValue = getValue();
+                final boolean isValid;
+                if (currentValue != null) {
+                    isValid = currentValue.matches(validationRegex);
+                } else {
+                    isValid = false;
+                }
+                if (isValid) {
+                    errorLabel.setVisible(false);
+                    return true;
+                } else {
+                    errorLabel.setText(validationChallenge);
+                    errorLabel.setVisible(true);
+                    return false;
+                }
+            }
+
+            @Override
+            public int getDataChannel() {
+                return dataChannel;
+            }
+
+            @Override
+            public void setFocus(boolean wantsFocus) {
+                // todo: we could use a scroll to method to focus the message here
+            }
+        };
     }
 
     public StimulusFreeText addStimulusFreeText(final Stimulus stimulus, final String postName, final String validationRegex, final String keyCodeChallenge, final String validationChallenge, final String allowedCharCodes, final SingleShotEventListner enterKeyListner, final int hotKey, final String styleName, final int dataChannel, final String textValue) {
