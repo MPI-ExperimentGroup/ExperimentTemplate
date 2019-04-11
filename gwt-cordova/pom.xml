@@ -559,6 +559,11 @@
                         <artifactId>saxon</artifactId>
                         <version>8.7</version>
                     </dependency>
+                    <dependency>
+                        <groupId>nl.mpi.tg.eg.frinex</groupId>
+                        <artifactId>common</artifactId>
+                        <version>0.1-testing-SNAPSHOT</version>
+                    </dependency>     
                 </dependencies>
             </plugin>
             <plugin>
