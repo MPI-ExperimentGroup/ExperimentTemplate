@@ -43,7 +43,7 @@
                 <xsl:text> = "</xsl:text>
                 <xsl:value-of select="@code" />
                 <xsl:text>";
-                </xsl:text>
+                </xsl:text>                
             </xsl:for-each>
             <xsl:text>}</xsl:text>
         </xsl:result-document>        
@@ -114,6 +114,11 @@
                     <xsl:value-of select="if($parameterValue) then concat('&quot;', $parameterValue, '&quot;') else 'null'" />
                 </xsl:for-each>
                 <xsl:text>);
+                    }
+                    public String getHash() {
+                    return "</xsl:text>
+                <xsl:value-of xmlns:stimulusHash="nl.mpi.tg.eg.frinex.common.util.StimulusHash" select="stimulusHash:getHash($stimuliElement/@*)"/>
+                <xsl:text>";
                     }
                 }</xsl:text>
                 </xsl:result-document>
