@@ -30,6 +30,10 @@ import org.codehaus.groovy.runtime.AbstractComparator;
  */
 public class AbstractSchemaGenerator {
 
+    enum ChildType {
+        allOnceUnordered, choiceAnyCount, sequenceOnceOrdered
+    }
+
     protected class DocumentationAttribute {
 
         final String name;
@@ -57,8 +61,9 @@ public class AbstractSchemaGenerator {
         final List<DocumentationAttribute> attributeTypes = new ArrayList<>();
         final String[] childTypeNames;
         final DocumentationElement[] childElements;
-        final boolean isChildOrderOptional;
+        final ChildType childOption;
         final boolean hasStringContents;
+        final boolean allowsCustomImplementation;
 
         public DocumentationElement(final String elementName, final String documentationText, final int minBounds, final int maxBounds, final boolean hasStringContents) {
             this.elementName = elementName;
@@ -69,7 +74,8 @@ public class AbstractSchemaGenerator {
             this.childTypeNames = new String[0];
             this.childElements = new DocumentationElement[0];
             this.hasStringContents = hasStringContents;
-            this.isChildOrderOptional = false;
+            this.childOption = ChildType.sequenceOnceOrdered;
+            this.allowsCustomImplementation = false;
         }
 
         public DocumentationElement(final String elementName, final String documentationText, final int minBounds, final int maxBounds, final DocumentationElement[] childElements) {
@@ -81,7 +87,8 @@ public class AbstractSchemaGenerator {
             this.childTypeNames = new String[0];
             this.childElements = childElements;
             this.hasStringContents = false;
-            this.isChildOrderOptional = false;
+            this.childOption = ChildType.sequenceOnceOrdered;
+            this.allowsCustomImplementation = false;
         }
 
         public DocumentationElement(final String elementName, final String typeName, final String documentationText, final int minBounds, final int maxBounds, final DocumentationElement[] childElements) {
@@ -93,50 +100,79 @@ public class AbstractSchemaGenerator {
             this.childTypeNames = new String[0];
             this.childElements = childElements;
             this.hasStringContents = false;
-            this.isChildOrderOptional = false;
+            this.childOption = ChildType.sequenceOnceOrdered;
+            this.allowsCustomImplementation = false;
         }
 
         public DocumentationElement(final FeatureType featureType) {
             this.elementName = featureType.name();
             this.typeName = featureType.name() + "Type";
-            this.documentationText = "";
+            this.documentationText = featureType.getDocumentationText();
             this.minBounds = 0;
             this.maxBounds = 0;
+            this.childOption = (featureType.getRequiresChildType().areChildenOptional) ? ChildType.choiceAnyCount : ChildType.allOnceUnordered;
             List<String> childTypeList = new ArrayList<>();
-            if (featureType.getRequiresChildType() != FeatureType.Contitionals.none) {
+            switch (featureType.getRequiresChildType()) {
+                // these items link to separate lists of element groups: general, stimuli, group...
+                case stimulusAction:
+//                    childTypeList.add("...Stimulus Features...");
+//                    childTypeList.add("...General Features...");
+                    break;
+                case groupNetworkAction:
+//                    childTypeList.add("...Group Features...");
+//                    childTypeList.add("...General Features...");
+                    break;
+                case none:
+                    break;
+//                case hasMediaLoading:
+//                    childTypeList.add("mediaLoaded");
+//                    childTypeList.add("mediaLoadFailed");
+//                    break;
+                case hasMediaPlayback:
+                case hasMediaLoadingButton:
+                    childTypeList.add("mediaLoaded");
+                    childTypeList.add("mediaLoadFailed");
+//                    childTypeList.add("mediaPlaybackStarted");
+//                    childTypeList.add("mediaPlaybackComplete");
+                    break;
+                case hasMediaRecorderPlayback:
+                    childTypeList.add("onError");
+                    childTypeList.add("onSuccess");
+                    break;
+//                case hasMoreStimulus:
+//                    childTypeList.add("onError");
+//                    childTypeList.add("onSuccess");
+//                    break;
+            }
+//            if (featureType.getRequiresChildType() != FeatureType.Contitionals.none) {
+            if (featureType.canHaveFeatures()) {
                 for (final FeatureType featureRef : FeatureType.values()) {
-                    if (//featureRef.getIsChildType() == FeatureType.Contitionals.none || 
-                            featureRef.isChildType(featureType.getRequiresChildType()) //|| featureRef.getIsChildType() == FeatureType.Contitionals.groupNetworkAction // currently allowing all groupNetworkAction in any element
+                    if (featureRef.isChildType(FeatureType.Contitionals.stimulusAction)
+                            || featureRef.isChildType(FeatureType.Contitionals.none)
+                            /* note: we are falsely allowing all stimulus types here because the XSD does not consider the parent element which might be loadStimulus for example */ || featureRef.isChildType(FeatureType.Contitionals.groupNetworkAction)
+                            /* note: we are falsely allowing all group types here because the XSD does not consider the parent element */ || featureRef.isChildType(featureType.getRequiresChildType()) //|| featureRef.getIsChildType() == FeatureType.Contitionals.groupNetworkAction // currently allowing all groupNetworkAction in any element
                             //|| featureRef.getIsChildType() == FeatureType.Contitionals.stimulusAction // currently allowing all stimulusAction in any element
                             ) {
                         childTypeList.add(featureRef.name());
                     }
                 }
-            }
-            switch (featureType.getRequiresChildType()) {
-                // these items link to separate lists of element groups: general, stimuli, group...
-                case stimulusAction:
-                    childTypeList.add("...Stimulus Features...");
-                    childTypeList.add("...General Features...");
-                    break;
-                case groupNetworkAction:
-                    childTypeList.add("...Group Features...");
-                    childTypeList.add("...General Features...");
-                    break;
-                case none:
-                    break;
+            } else {
+                for (final FeatureType featureRef : FeatureType.values()) {
+                    if (featureType.getRequiresChildType() != FeatureType.Contitionals.none
+                            && featureRef.isChildType(featureType.getRequiresChildType())) {
+                        childTypeList.add(featureRef.name());
+                    }
+                }
             }
             List<DocumentationElement> documentationElements = new ArrayList<>();
-            if (featureType.isCanHaveRandomGrouping()) {
-                documentationElements.add(new DocumentationElement("randomGrouping", "List of stimuli tag names one of which will be randomly selected, or determined by metadata fields or get parameters.", 0, 1, new DocumentationElement[0]));
-            }
-            if (featureType.canHaveStimulusTags()) {
-                documentationElements.add(new DocumentationElement("stimuli", "stimuliSelect", "List of stimuli tag names which determine which stimuli are selected.", 0, 1, new DocumentationElement[0]));
+            if (featureType.isCanHaveRandomGrouping() && featureType.canHaveStimulusTags()) {
+                documentationElements.add(new DocumentationElement("randomGrouping", "List of stimuli tag names one of which will be randomly selected, or determined by metadata fields or get parameters.", 0, 1, new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, new DocumentationElement[0]).stringAttribute("alias", true)}).stringAttribute("storageField", true));
+                documentationElements.add(new DocumentationElement("stimuli", "stimuliSelect", "List of stimuli tag names which determine which stimuli are selected.", 0, 1, new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, new DocumentationElement[0])}));
             }
             this.childTypeNames = childTypeList.toArray(new String[childTypeList.size()]);
             this.childElements = documentationElements.toArray(new DocumentationElement[documentationElements.size()]);
             this.hasStringContents = false;
-            this.isChildOrderOptional = featureType.getRequiresChildType().isChildOrderOptional;
+            this.allowsCustomImplementation = featureType.allowsCustomImplementation();
             if (featureType.canHaveText()) {
                 stringAttribute("featureText", false);
             }
@@ -145,7 +181,7 @@ public class AbstractSchemaGenerator {
                     if (featureAttribute.getTypeValues() == null) {
                         stringAttribute(featureAttribute.name(), featureAttribute.isOptional());
                     } else {
-                        restrictedAttribute(featureAttribute.name(), featureAttribute.isOptional(), featureAttribute.getTypeValues());
+                        restrictedAttribute(featureAttribute.name(), featureAttribute.name() + "Type", featureAttribute.isOptional(), featureAttribute.getTypeValues());
                     }
                 }
             }
@@ -179,7 +215,8 @@ public class AbstractSchemaGenerator {
             this.childTypeNames = childTypeList.toArray(new String[childTypeList.size()]);
             this.childElements = new DocumentationElement[0];
             this.hasStringContents = false;
-            this.isChildOrderOptional = false;
+            this.childOption = ChildType.sequenceOnceOrdered;
+            this.allowsCustomImplementation = false;
         }
 
         public final DocumentationElement stringAttribute(final String attributeName, final boolean optional) {
@@ -187,8 +224,8 @@ public class AbstractSchemaGenerator {
             return this;
         }
 
-        public final DocumentationElement restrictedAttribute(final String attributeName, final boolean optional, final String... restriction) {
-            attributeTypes.add(new DocumentationAttribute(attributeName, "Option List", null, optional, restriction));
+        public final DocumentationElement restrictedAttribute(final String attributeName, final String typeName, final boolean optional, final String... restriction) {
+            attributeTypes.add(new DocumentationAttribute(attributeName, "Option List", typeName, optional, restriction));
             return this;
         }
 
@@ -250,7 +287,7 @@ public class AbstractSchemaGenerator {
                         .stringAttribute("menuLabel", true)
                         .stringAttribute("back", true)
                         .stringAttribute("next", true)
-                        .restrictedAttribute("type", false, "transmission", "metadata", "preload", "stimulus", "colourPicker", "colourReport", "kindiagram", "menu", "debug", "text", "timeline"),
+                        .restrictedAttribute("type", null, false, "transmission", "metadata", "preload", "stimulus", "colourPicker", "colourReport", "kindiagram", "menu", "debug", "text", "timeline"),
                 new DocumentationElement(
                         "stimuli", "All stimulus elements must be contained in the stimuli element.", 1, 1,
                         new DocumentationElement[]{
