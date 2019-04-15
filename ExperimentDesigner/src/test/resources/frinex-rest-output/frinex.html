@@ -982,12 +982,12 @@ audioButton
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#mediaPlaybackCompleteType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackComplete</span><span style="color:purple">&gt;</span>
+<a href="#mediaPlaybackStartedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackStarted</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
-<a href="#mediaPlaybackStartedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackStarted</span><span style="color:purple">&gt;</span>
+<a href="#mediaPlaybackCompleteType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackComplete</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 </td>
@@ -1488,12 +1488,12 @@ hasGetParameter
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#conditionFalseType"><span style="color:purple">&lt;</span><span style="color:blue">conditionFalse</span><span style="color:purple">&gt;</span>
+<a href="#conditionTrueType"><span style="color:purple">&lt;</span><span style="color:blue">conditionTrue</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
-<a href="#conditionTrueType"><span style="color:purple">&lt;</span><span style="color:blue">conditionTrue</span><span style="color:purple">&gt;</span>
+<a href="#conditionFalseType"><span style="color:purple">&lt;</span><span style="color:blue">conditionFalse</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 </td>
@@ -1520,12 +1520,12 @@ hasMetadataValue
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#conditionFalseType"><span style="color:purple">&lt;</span><span style="color:blue">conditionFalse</span><span style="color:purple">&gt;</span>
+<a href="#conditionTrueType"><span style="color:purple">&lt;</span><span style="color:blue">conditionTrue</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
-<a href="#conditionTrueType"><span style="color:purple">&lt;</span><span style="color:blue">conditionTrue</span><span style="color:purple">&gt;</span>
+<a href="#conditionFalseType"><span style="color:purple">&lt;</span><span style="color:blue">conditionFalse</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 </td>
@@ -1578,7 +1578,7 @@ hideButtonGroup
 <h3 id="htmlTextType" style="text-transform: uppercase;">
 htmlText
 </h3>
-
+The contents of featureText will be shown as HTML and styled with styleName if provided
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">htmlText</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
@@ -1596,7 +1596,7 @@ htmlText
 <h3 id="htmlTokenTextType" style="text-transform: uppercase;">
 htmlTokenText
 </h3>
-
+When the featureText contains string tokens they will be replaced with the relevant values, eg score values &lt;groupScore&gt; &lt;channelScore&gt; etc.
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">htmlTokenText</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
@@ -1624,12 +1624,12 @@ image
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#mediaLoadFailedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaLoadFailed</span><span style="color:purple">&gt;</span>
+<a href="#mediaLoadedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaLoaded</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
-<a href="#mediaLoadedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaLoaded</span><span style="color:purple">&gt;</span>
+<a href="#mediaLoadFailedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaLoadFailed</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 </td>
@@ -1699,12 +1699,12 @@ loadSdCardStimulus
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#endOfStimulusType"><span style="color:purple">&lt;</span><span style="color:blue">endOfStimulus</span><span style="color:purple">&gt;</span>
+<a href="#hasMoreStimulusType"><span style="color:purple">&lt;</span><span style="color:blue">hasMoreStimulus</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
-<a href="#hasMoreStimulusType"><span style="color:purple">&lt;</span><span style="color:blue">hasMoreStimulus</span><span style="color:purple">&gt;</span>
+<a href="#endOfStimulusType"><span style="color:purple">&lt;</span><span style="color:blue">endOfStimulus</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
@@ -1775,16 +1775,17 @@ loadStimulus
 <span style="color:green">repeatCount</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">repeatRandomWindow</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
 <span style="color:green">adjacencyThreshold</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+<span style="color:green">*</span><span style="color:grey">=&quot;Custom attributes can be assigned in the plugin associated with this feature&quot;</span><br/>
 <span style="color:purple">&gt;</span></td><td>
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#endOfStimulusType"><span style="color:purple">&lt;</span><span style="color:blue">endOfStimulus</span><span style="color:purple">&gt;</span>
+<a href="#hasMoreStimulusType"><span style="color:purple">&lt;</span><span style="color:blue">hasMoreStimulus</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
-<a href="#hasMoreStimulusType"><span style="color:purple">&lt;</span><span style="color:blue">hasMoreStimulus</span><span style="color:purple">&gt;</span>
+<a href="#endOfStimulusType"><span style="color:purple">&lt;</span><span style="color:blue">endOfStimulus</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
@@ -2573,10 +2574,18 @@ showHtmlPopup
 <br/><br/><table>
 <tr><td>
 <span style="color:purple">&lt;</span><span style="color:blue">showHtmlPopup</span></td><td><span style="color:green">featureText</span><span style="color:grey">=&quot;String&quot;</span><br/>
-<span style="color:green">closeButtonLabel</span><span style="color:grey">=&quot;String&quot;</span><br/>
-</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
+<span style="color:purple">&gt;</span></td><td>
+</td></tr><tr><td></td><td>
+<table>
+<tr><td>
+<a href="#actionButtonType"><span style="color:purple">&lt;</span><span style="color:blue">actionButton</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+</td></tr></table>
 </td>
 </tr>
+<tr>
+<td>
+<span style="color:purple">&lt;</span><span style="color:red">/</span><span style="color:blue">showHtmlPopup</span><span style="color:purple">&gt;</span></td></tr>
 </table>
 <table style="width: 100%;">
 <tr>
@@ -2863,17 +2872,17 @@ withStimuli
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#afterStimulusType"><span style="color:purple">&lt;</span><span style="color:blue">afterStimulus</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
-<table>
-<tr><td>
 <a href="#beforeStimulusType"><span style="color:purple">&lt;</span><span style="color:blue">beforeStimulus</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
 <a href="#eachStimulusType"><span style="color:purple">&lt;</span><span style="color:blue">eachStimulus</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+</td></tr></table>
+<table>
+<tr><td>
+<a href="#afterStimulusType"><span style="color:purple">&lt;</span><span style="color:blue">afterStimulus</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
@@ -2975,6 +2984,24 @@ VideoPanel
 <button onclick="getExample('VideoPanel', 'VideoPanelTarget');">search for examples</button>
 </td></tr>
 </table>
+<h3 id="addStimulusValidationType" style="text-transform: uppercase;">
+addStimulusValidation
+</h3>
+
+<br/><br/><table>
+<tr><td>
+<span style="color:purple">&lt;</span><span style="color:blue">addStimulusValidation</span></td><td><span style="color:green">validationRegex</span><span style="color:grey">=&quot;String&quot;</span><br/>
+<span style="color:green">dataChannel</span><span style="color:grey">=&quot;String (optional)&quot;</span><br/>
+</td><td><span style="color:red">/</span><span style="color:purple">&gt;</span></td><td>
+</td>
+</tr>
+</table>
+<table style="width: 100%;">
+<tr>
+<td colspan='2' id='addStimulusValidationTarget'>
+<button onclick="getExample('addStimulusValidation', 'addStimulusValidationTarget');">search for examples</button>
+</td></tr>
+</table>
 <h3 id="clearStimulusType" style="text-transform: uppercase;">
 clearStimulus
 </h3>
@@ -3002,12 +3029,12 @@ currentStimulusHasTag
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#conditionFalseType"><span style="color:purple">&lt;</span><span style="color:blue">conditionFalse</span><span style="color:purple">&gt;</span>
+<a href="#conditionTrueType"><span style="color:purple">&lt;</span><span style="color:blue">conditionTrue</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
-<a href="#conditionTrueType"><span style="color:purple">&lt;</span><span style="color:blue">conditionTrue</span><span style="color:purple">&gt;</span>
+<a href="#conditionFalseType"><span style="color:purple">&lt;</span><span style="color:blue">conditionFalse</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
@@ -3516,22 +3543,22 @@ startAudioRecorder
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#mediaLoadFailedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaLoadFailed</span><span style="color:purple">&gt;</span>
-</a></td></tr>
-</td></tr></table>
-<table>
-<tr><td>
 <a href="#mediaLoadedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaLoaded</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
-<a href="#mediaPlaybackCompleteType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackComplete</span><span style="color:purple">&gt;</span>
+<a href="#mediaLoadFailedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaLoadFailed</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
 <a href="#mediaPlaybackStartedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackStarted</span><span style="color:purple">&gt;</span>
+</a></td></tr>
+</td></tr></table>
+<table>
+<tr><td>
+<a href="#mediaPlaybackCompleteType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackComplete</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 </td>
@@ -3577,12 +3604,12 @@ stimulusAudio
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#mediaPlaybackCompleteType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackComplete</span><span style="color:purple">&gt;</span>
+<a href="#mediaPlaybackStartedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackStarted</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
-<a href="#mediaPlaybackStartedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackStarted</span><span style="color:purple">&gt;</span>
+<a href="#mediaPlaybackCompleteType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackComplete</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 </td>
@@ -3633,12 +3660,12 @@ stimulusCodeAudio
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#mediaPlaybackCompleteType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackComplete</span><span style="color:purple">&gt;</span>
+<a href="#mediaPlaybackStartedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackStarted</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
-<a href="#mediaPlaybackStartedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackStarted</span><span style="color:purple">&gt;</span>
+<a href="#mediaPlaybackCompleteType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackComplete</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 </td>
@@ -3667,12 +3694,12 @@ stimulusCodeImage
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#mediaLoadFailedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaLoadFailed</span><span style="color:purple">&gt;</span>
+<a href="#mediaLoadedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaLoaded</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
-<a href="#mediaLoadedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaLoaded</span><span style="color:purple">&gt;</span>
+<a href="#mediaLoadFailedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaLoadFailed</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 </td>
@@ -3736,12 +3763,12 @@ stimulusCodeVideo
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#mediaPlaybackCompleteType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackComplete</span><span style="color:purple">&gt;</span>
+<a href="#mediaPlaybackStartedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackStarted</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
-<a href="#mediaPlaybackStartedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackStarted</span><span style="color:purple">&gt;</span>
+<a href="#mediaPlaybackCompleteType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackComplete</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 </td>
@@ -3767,12 +3794,12 @@ stimulusExists
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#conditionFalseType"><span style="color:purple">&lt;</span><span style="color:blue">conditionFalse</span><span style="color:purple">&gt;</span>
+<a href="#conditionTrueType"><span style="color:purple">&lt;</span><span style="color:blue">conditionTrue</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
-<a href="#conditionTrueType"><span style="color:purple">&lt;</span><span style="color:blue">conditionTrue</span><span style="color:purple">&gt;</span>
+<a href="#conditionFalseType"><span style="color:purple">&lt;</span><span style="color:blue">conditionFalse</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 </td>
@@ -3820,12 +3847,12 @@ stimulusHasRatingOptions
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#conditionFalseType"><span style="color:purple">&lt;</span><span style="color:blue">conditionFalse</span><span style="color:purple">&gt;</span>
+<a href="#conditionTrueType"><span style="color:purple">&lt;</span><span style="color:blue">conditionTrue</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
-<a href="#conditionTrueType"><span style="color:purple">&lt;</span><span style="color:blue">conditionTrue</span><span style="color:purple">&gt;</span>
+<a href="#conditionFalseType"><span style="color:purple">&lt;</span><span style="color:blue">conditionFalse</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 </td>
@@ -3850,12 +3877,12 @@ stimulusHasResponse
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#conditionFalseType"><span style="color:purple">&lt;</span><span style="color:blue">conditionFalse</span><span style="color:purple">&gt;</span>
+<a href="#conditionTrueType"><span style="color:purple">&lt;</span><span style="color:blue">conditionTrue</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
-<a href="#conditionTrueType"><span style="color:purple">&lt;</span><span style="color:blue">conditionTrue</span><span style="color:purple">&gt;</span>
+<a href="#conditionFalseType"><span style="color:purple">&lt;</span><span style="color:blue">conditionFalse</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 </td>
@@ -3883,12 +3910,12 @@ stimulusImage
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#mediaLoadFailedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaLoadFailed</span><span style="color:purple">&gt;</span>
+<a href="#mediaLoadedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaLoaded</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
-<a href="#mediaLoadedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaLoaded</span><span style="color:purple">&gt;</span>
+<a href="#mediaLoadFailedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaLoadFailed</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 </td>
@@ -3993,12 +4020,12 @@ stimulusPresent
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#mediaPlaybackCompleteType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackComplete</span><span style="color:purple">&gt;</span>
+<a href="#mediaPlaybackStartedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackStarted</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
-<a href="#mediaPlaybackStartedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackStarted</span><span style="color:purple">&gt;</span>
+<a href="#mediaPlaybackCompleteType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackComplete</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 </td>
@@ -4070,12 +4097,12 @@ stimulusVideo
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#mediaPlaybackCompleteType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackComplete</span><span style="color:purple">&gt;</span>
+<a href="#mediaPlaybackStartedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackStarted</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
-<a href="#mediaPlaybackStartedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackStarted</span><span style="color:purple">&gt;</span>
+<a href="#mediaPlaybackCompleteType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackComplete</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 </td>
@@ -4173,12 +4200,12 @@ validateStimuliResponses
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#conditionFalseType"><span style="color:purple">&lt;</span><span style="color:blue">conditionFalse</span><span style="color:purple">&gt;</span>
+<a href="#conditionTrueType"><span style="color:purple">&lt;</span><span style="color:blue">conditionTrue</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
-<a href="#conditionTrueType"><span style="color:purple">&lt;</span><span style="color:blue">conditionTrue</span><span style="color:purple">&gt;</span>
+<a href="#conditionFalseType"><span style="color:purple">&lt;</span><span style="color:blue">conditionFalse</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 </td>
@@ -4209,12 +4236,12 @@ withMatchingStimulus
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#endOfStimulusType"><span style="color:purple">&lt;</span><span style="color:blue">endOfStimulus</span><span style="color:purple">&gt;</span>
+<a href="#hasMoreStimulusType"><span style="color:purple">&lt;</span><span style="color:blue">hasMoreStimulus</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
-<a href="#hasMoreStimulusType"><span style="color:purple">&lt;</span><span style="color:blue">hasMoreStimulus</span><span style="color:purple">&gt;</span>
+<a href="#endOfStimulusType"><span style="color:purple">&lt;</span><span style="color:blue">endOfStimulus</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 </td>
@@ -4345,12 +4372,12 @@ groupResponseStimulusImage
 </td></tr><tr><td></td><td>
 <table>
 <tr><td>
-<a href="#mediaPlaybackCompleteType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackComplete</span><span style="color:purple">&gt;</span>
+<a href="#mediaPlaybackStartedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackStarted</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 <table>
 <tr><td>
-<a href="#mediaPlaybackStartedType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackStarted</span><span style="color:purple">&gt;</span>
+<a href="#mediaPlaybackCompleteType"><span style="color:purple">&lt;</span><span style="color:blue">mediaPlaybackComplete</span><span style="color:purple">&gt;</span>
 </a></td></tr>
 </td></tr></table>
 </td>
