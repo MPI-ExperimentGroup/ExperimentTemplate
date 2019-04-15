@@ -28,8 +28,8 @@ import static nl.mpi.tg.eg.experimentdesigner.model.FeatureAttribute.*;
  */
 public enum FeatureType {
 
-    htmlText(false, true, new FeatureAttribute[]{styleName}),
-    htmlTokenText(false, true, new FeatureAttribute[]{styleName}) /* string tokens will be replaced with score values eg <groupScore> <channelScore> etc. */,
+    htmlText(false, true, new FeatureAttribute[]{styleName}, "The contents of featureText will be shown as HTML and styled with styleName if provided"),
+    htmlTokenText(false, true, new FeatureAttribute[]{styleName}, "When the featureText contains string tokens they will be replaced with the relevant values, eg score values &lt;groupScore&gt; &lt;channelScore&gt; etc.") /* string tokens will be replaced with score values eg <groupScore> <channelScore> etc. */,
     logTokenText(false, false, new FeatureAttribute[]{dataChannel, type, headerKey, dataLogFormat}) /* string tokens will be replaced with score values eg <groupScore> <channelScore> etc. */, // if headerKey is not provided then the stimulus id will be used // todo: headerKey is perhaps in conflict with sendStimuliReport where headerKey is used by the administration and perhaps should be moved to the administration element
     plainText(false, true, null),
     image(false, false, new FeatureAttribute[]{src, styleName, msToNext}, false, false, false, Contitionals.hasMediaLoading, Contitionals.none),
@@ -41,7 +41,7 @@ public enum FeatureType {
     withMatchingStimulus(false, false, new FeatureAttribute[]{eventTag, maxStimuli, randomise, repeatCount, repeatRandomWindow, matchingRegex}, true, true, false, Contitionals.hasMoreStimulus, Contitionals.stimulusAction),
     loadSdCardStimulus(false, false, new FeatureAttribute[]{eventTag, minStimuliPerTag, maxStimuliPerTag, maxStimuli, excludeRegex, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, true, true, Contitionals.hasMoreStimulus, Contitionals.none),
     //    loadAllStimulus(false, false, new FeatureAttribute[]{eventTag, randomise, repeatCount, repeatRandomWindow, adjacencyThreshold}, true, false, false, Contitionals.hasMoreStimulus),
-    currentStimulusHasTag(false, false, new FeatureAttribute[]{msToNext}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction), // todo: consider updating this to take a tags attribute rather than a stimuli element
+    currentStimulusHasTag(false, false, new FeatureAttribute[]{msToNext}, true, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction), // todo: consider updating this to take a tags attribute rather than a stimuli element
     validateStimuliResponses(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     stimulusExists(false, false, new FeatureAttribute[]{offset}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     showStimuliReport(false, false, null, false, false, false, Contitionals.none, Contitionals.stimulusAction),
@@ -58,10 +58,6 @@ public enum FeatureType {
     //// todo: touch input needs a threshold before touch is registered and another before touch is ended to allow gaps in touch being recorded as on touch
     touchInputCaptureStart(true, false, new FeatureAttribute[]{showControls, msToNext}, false, false, false, Contitionals.none, Contitionals.stimulusAction), /* sub elements are triggered after the touch ends or after msToNext of no touch activity */
     touchInputReportSubmit(false, false, new FeatureAttribute[]{dataChannel}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    sendGroupMessageButton(false, true, new FeatureAttribute[]{hotKey, dataChannel, eventTag, repeatIncorrect, incrementPhase, styleName, groupId/* incrementPhaseOnDictionaryincrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
-    sendGroupMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
-    sendGroupStoredMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
-    sendGroupEndOfStimuli(false, false, new FeatureAttribute[]{eventTag}, false, false, false, Contitionals.none, Contitionals.groupNetworkActivity),
     ratingButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     ratingRadioButton(false, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     stimulusFreeText(false, true, new FeatureAttribute[]{validationRegex, dataChannel, allowedCharCodes, hotKey, styleName, inputErrorMessage}, false, false, false, Contitionals.none, Contitionals.stimulusAction), // the hotKey in stimulusFreeText will trigger any button with the same hotkey. // todo: The current use of the featureText attribute could be changed to allowedCharErrorMessage and inputErrorMessage could be changed to validationErrorMessage
@@ -70,7 +66,7 @@ public enum FeatureType {
     stimulusHasRatingOptions(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     stimulusHasResponse(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.hasTrueFalseCondition, Contitionals.stimulusAction),
     setStimulusCodeResponse(false, false, new FeatureAttribute[]{codeFormat, dataChannel, applyScore}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
-    setStimulusValidation(false, false, new FeatureAttribute[]{validationRegex}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
+    addStimulusValidation(false, true, new FeatureAttribute[]{validationRegex, dataChannel}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     ratingFooterButton(true, false, new FeatureAttribute[]{dataChannel, ratingLabels, ratingLabelLeft, ratingLabelRight, styleName, groupId}, false, false, false, Contitionals.none, Contitionals.stimulusAction),
     targetFooterButton(false, true, new FeatureAttribute[]{target, styleName, groupId}),
     actionFooterButton(true, true, new FeatureAttribute[]{eventTag, hotKey, styleName, groupId}),
@@ -238,6 +234,10 @@ public enum FeatureType {
     groupChannelScoreLabel(false, false, new FeatureAttribute[]{styleName}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
     scoreLabel(false, false, new FeatureAttribute[]{styleName}),
     submitGroupEvent(false, false, null, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
+    sendGroupMessageButton(false, true, new FeatureAttribute[]{hotKey, dataChannel, eventTag, repeatIncorrect, incrementPhase, styleName, groupId/* incrementPhaseOnDictionaryincrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
+    sendGroupMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
+    sendGroupStoredMessage(false, false, new FeatureAttribute[]{eventTag, incrementPhase /*, incrementStimulus */}, false, false, false, Contitionals.none, Contitionals.groupNetworkAction),
+    sendGroupEndOfStimuli(false, false, new FeatureAttribute[]{eventTag}, false, false, false, Contitionals.none, Contitionals.groupNetworkActivity),
     clearCurrentScore(false, false, new FeatureAttribute[]{}, false, false, false, Contitionals.none, Contitionals.none),
     scoreIncrement(true, false, new FeatureAttribute[]{scoreValue}, false, false, false, Contitionals.none, Contitionals.none),
     // todo: using scoreAboveThreshold testing gamesPlayed would be nice 
@@ -256,18 +256,19 @@ public enum FeatureType {
     private final FeatureAttribute[] featureAttributes;
     private final Contitionals requiresChildType;
     private final Contitionals[] isChildType;
+    private final String documentationText;
 
     public enum Contitionals {
         hasTrueFalseCondition(false),
         hasCorrectIncorrect(false),
         hasMoreStimulus(false),
         eachStimulus(false),
-        stimulusAction(false),
+        stimulusAction(true),
         hasErrorSuccess(false),
         hasUserCount(false),
         hasThreshold(false),
-        groupNetworkActivity(false),
-        groupNetworkAction(false),
+        groupNetworkActivity(true),
+        groupNetworkAction(true),
         hasMediaLoading(false),
         hasMediaLoadingButton(false),
         hasMediaPlayback(false),
@@ -275,10 +276,10 @@ public enum FeatureType {
         hasActionButtons(false),
         none(true);
 //        needsConditionalParent // when true, the element cannot be used alone but must be in its conditional parent element
-        final public boolean isChildOrderOptional;
+        final public boolean areChildenOptional;
 
-        private Contitionals(boolean isChildOrderOptional) {
-            this.isChildOrderOptional = isChildOrderOptional;
+        private Contitionals(boolean areChildenOptional) {
+            this.areChildenOptional = areChildenOptional;
         }
 
     }
@@ -293,6 +294,20 @@ public enum FeatureType {
         this.canHaveRandomGrouping = false;
         this.canHaveUndefinedAttribute = false;
         this.allowsCustomImplementation = false;
+        this.documentationText = null;
+    }
+
+    private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, final String documentationText) {
+        this.canHaveFeatures = canHaveFeatures;
+        this.canHaveText = canHaveText;
+        this.featureAttributes = featureAttributes;
+        this.requiresChildType = Contitionals.none;
+        this.isChildType = new Contitionals[]{Contitionals.none};
+        this.canHaveStimulusTags = false;
+        this.canHaveRandomGrouping = false;
+        this.canHaveUndefinedAttribute = false;
+        this.allowsCustomImplementation = false;
+        this.documentationText = documentationText;
     }
 
     private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean canHaveStimulus, boolean canHaveRandomGrouping, boolean canHaveUndefinedAttribute, Contitionals requiresChildType, Contitionals... isChildType) {
@@ -314,6 +329,7 @@ public enum FeatureType {
             throw new IllegalArgumentException("canHaveFeatures may only be used with Contitionals.none");
         }
         //    todo: set all hasMediaPlayback and hasMediaLoading to canHaveFeatures = false
+        this.documentationText = null;
     }
 
     private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean canHaveStimulus, boolean canHaveRandomGrouping, boolean canHaveUndefinedAttribute, Contitionals requiresChildType, Contitionals isChildType, final boolean allowsCustomImplementation) {
@@ -329,6 +345,7 @@ public enum FeatureType {
         if (requiresChildType != Contitionals.none && isChildType != Contitionals.none && canHaveFeatures) {
             throw new IllegalArgumentException("canHaveFeatures may only be used with Contitionals.none");
         }
+        this.documentationText = null;
         //    todo: set all hasMediaPlayback and hasMediaLoading to canHaveFeatures = false
     }
 
@@ -375,5 +392,9 @@ public enum FeatureType {
             }
         }
         return false;
+    }
+
+    public String getDocumentationText() {
+        return documentationText;
     }
 }
