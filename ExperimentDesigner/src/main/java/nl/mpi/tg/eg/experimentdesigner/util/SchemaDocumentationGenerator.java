@@ -192,13 +192,22 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
             }
             writer.append("&quot;</span><br/>\n");
         }
+        if (currentElement.allowsCustomImplementation) {
+            writer.append("<span style=\"color:green\">");
+            writer.append("*");
+            writer.append("</span><span style=\"color:grey\">=&quot;");
+            writer.append("Custom attributes can be assigned in the plugin associated with this feature");
+            writer.append("&quot;</span><br/>\n");
+        }
     }
 
     private void addElement(Writer writer, DocumentationElement currentElement) throws IOException {
         writer.append("<h3 id=\"" + currentElement.typeName + "\" style=\"text-transform: uppercase;\">\n");
         writer.append(currentElement.elementName);
         writer.append("\n</h3>\n");
-        writer.append(currentElement.documentationText);
+        if (currentElement.documentationText != null) {
+            writer.append(currentElement.documentationText);
+        }
         writer.append("\n<br/><br/><table>\n");
         writer.append("<tr><td>\n");
         writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">");
@@ -213,31 +222,48 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
         if (currentElement.childElements.length > 0 || currentElement.childTypeNames.length > 0) {
             writer.append("</td></tr><tr><td></td><td>\n");
         }
-        for (String childElement : currentElement.childTypeNames) {
-            writer.append("<table>\n");
-            writer.append("<tr><td>\n");
+//        List<String> childTypeNames = new ArrayList<>(Arrays.asList(currentElement.childTypeNames));
+//        childTypeNames.sort(new AbstractComparator<String>() {
+//            @Override
+//            public int compare(String o1, String o2) {
+//                return o1.compareTo(o2);
+//            }
+//        });
+        if (currentElement.childTypeNames.length > 10) {
+            writer.append("<span style=\"color:red\">Truncated 1:");
+            writer.append(Integer.toString(currentElement.childTypeNames.length));
+            writer.append("</span>\n");
+        } else {
+            for (String childElement : currentElement.childTypeNames) {
+                writer.append("<table>\n");
+                writer.append("<tr><td>\n");
 
-            writer.append("<a href=\"#" + childElement + "Type\">");
-            writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">");
-            writer.append(childElement);
-            writer.append("</span><span style=\"color:purple\">&gt;</span>\n");
-            writer.append("</a>");
-            writer.append("</td></tr>\n");
-            writer.append("</td></tr></table>\n");
+                writer.append("<a href=\"#" + childElement + "Type\">");
+                writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">");
+                writer.append(childElement);
+                writer.append("</span><span style=\"color:purple\">&gt;</span>\n");
+                writer.append("</a>");
+                writer.append("</td></tr>\n");
+                writer.append("</td></tr></table>\n");
+            }
         }
-        for (DocumentationElement childElement : currentElement.childElements) {
-            writer.append("<table>\n");
-            writer.append("<tr><td>\n");
-            writer.append("<a href=\"#" + childElement.typeName + "\">");
-            writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">");
-            writer.append(childElement.elementName);
-            writer.append("</span>");
-            writer.append("</a>");
-            writer.append("</td><td>");
-            addAttributes(writer, childElement);
-            writer.append("</td><td><span style=\"color:purple\">&gt;</span>\n");
-            writer.append("</td></tr>\n");
-            writer.append("</td></tr></table>\n");
+        if (currentElement.childElements.length > 10) {
+            writer.append("<span style=\"color:red\">Truncated 2</span>\n");
+        } else {
+            for (DocumentationElement childElement : currentElement.childElements) {
+                writer.append("<table>\n");
+                writer.append("<tr><td>\n");
+                writer.append("<a href=\"#" + childElement.typeName + "\">");
+                writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">");
+                writer.append(childElement.elementName);
+                writer.append("</span>");
+                writer.append("</a>");
+                writer.append("</td><td>");
+                addAttributes(writer, childElement);
+                writer.append("</td><td><span style=\"color:purple\">&gt;</span>\n");
+                writer.append("</td></tr>\n");
+                writer.append("</td></tr></table>\n");
+            }
         }
         writer.append("</td>\n");
         writer.append("</tr>\n");
