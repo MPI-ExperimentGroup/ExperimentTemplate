@@ -65,6 +65,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
     protected Presenter presenter;
     protected final UserResults userResults;
     final MetadataFieldProvider metadataFieldProvider = new MetadataFieldProvider();
+    final boolean isDebugMode;
 
     public AppController(RootLayoutPanel widgetTag, String userIdGetParam) throws UserIdException {
         this.widgetTag = widgetTag;
@@ -73,6 +74,9 @@ public abstract class AppController implements AppEventListner/*, AudioException
         if (debugValue != null && !submissionService.isProductionVersion()) {
             localStorage.disableObfuscation();
             obfuscationDisabled = true;
+            isDebugMode = true;
+        } else {
+            isDebugMode = false;
         }
         final UserId lastUserId = localStorage.getLastUserId(userIdGetParam);
         if (lastUserId == null) {
@@ -95,6 +99,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
             }
         }
         if (hasNewMetadata) {
+            // todo: should we transmit this change here
             localStorage.storeData(userResults, metadataFieldProvider);
         }
         if (debugValue != null) {
@@ -219,11 +224,12 @@ public abstract class AppController implements AppEventListner/*, AudioException
                 lastAppState = (appState != null) ? ApplicationState.valueOf(appState) : lastAppState;
             } catch (IllegalArgumentException argumentException) {
             }
-            if (!preserveLastState()) {
+            if (!preserveLastState() || isDebugMode /* checking for debug mode here and allowing presenter navigation here if true */) {
                 // if the history token is valid then that is used otherwise the last saved or the start states are used
                 final String token = History.getToken();
                 if (token != null) {
                     try {
+                        submissionService.submitScreenChange(userResults.getUserData().getUserId(), "usingHistoryToken");
                         // this allows the URL to control the screen shown
                         lastAppState = ApplicationState.valueOf(token);
                     } catch (IllegalArgumentException argumentException) {
