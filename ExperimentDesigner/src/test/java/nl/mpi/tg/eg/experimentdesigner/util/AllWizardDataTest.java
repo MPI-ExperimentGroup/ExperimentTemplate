@@ -140,8 +140,8 @@ public class AllWizardDataTest {
         System.out.println("testAllGetWizardData");
         final DefaultTranslations defaultTranslations = new DefaultTranslations();
 //        defaultTranslations.insertTranslations();
-//        testGetWizardData(new DefaultExperiments().getAllOptionsExperiment(null, null, null));
-//        testGetWizardData(new DobesAnnotator().getExperiment());
+        testGetWizardData(new DefaultExperiments().getAllOptionsExperiment(null, null, null));
+        testGetWizardData(new DobesAnnotator().getExperiment());
         testGetWizardData(new JenaFieldKit().getExperiment());
 //        testGetWizardData(new TransmissionChain().getExperiment());
         testGetWizardData(new ShawiFieldKit().getShawiExperiment());
@@ -155,7 +155,7 @@ public class AllWizardDataTest {
         testGetWizardData(new HRPretest02().getExperiment());
         testGetWizardData(new HROnlinePretest().getExperiment());
         testGetWizardData(new KinOathExample().getExperiment());
-//        testGetWizardData(new RosselFieldKit().getExperiment());
+        testGetWizardData(new RosselFieldKit().getExperiment());
         testGetWizardData(new SentenceCompletion(new Parcours()).getExperiment());
         testGetWizardData(new MultiParticipant().getExperiment());
         testGetWizardData(new ShortMultiparticipant01().getExperiment());
@@ -165,10 +165,10 @@ public class AllWizardDataTest {
         testGetWizardData(new SentencesRatingTask().getExperiment());
         testGetWizardData(new WellspringsSamoanFieldKit().getExperiment());
         testGetWizardData(new GuineaPigProject().getExperiment());
-//        testGetWizardData(new PlayhouseStudy().getExperiment());
+        testGetWizardData(new PlayhouseStudy().getExperiment());
 //        testGetWizardData(new SentenceCompletion(new Joost01()).getExperiment());
 //        testGetWizardData(new SentenceCompletion(new Joost02()).getExperiment());
-//        testGetWizardData(new PlaybackPreferenceMeasureExperiment().getExperiment());
+        testGetWizardData(new PlaybackPreferenceMeasureExperiment().getExperiment());
     }
 
     /**
@@ -243,12 +243,14 @@ public class AllWizardDataTest {
         final String inputDirectory = "/frinex-rest-output/";
         URI outputDirectoryUri = this.getClass().getResource(inputDirectory).toURI();
         System.out.println(inputDirectory);
+//        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "autoprediction.json"));
 //        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "heoexp01.json"));
 //        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "parcours01.json"));
 //        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "joseco01.json"));
 //        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "joseco02.json"));
 //        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "generic_example.json"));
-//        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "playhouse_study.json"));
-//        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "ppvt.json"));
+//        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "playhouse_studyJ.json"));
+//        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "sentenceplausibility.json"));
+//        testDeserialiseWizardUtil(new File(new File(outputDirectoryUri), "ppvt.json")); // todo: this test requires the metadataLinks to connect date to age and result in different presenter screen targets 
     }
 }
