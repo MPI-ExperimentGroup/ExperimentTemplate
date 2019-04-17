@@ -74,10 +74,10 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
                 writer.append("</xs:simpleType>\n");
                 writer.append("</xs:list>\n");
                 writer.append("</xs:simpleType>\n");
-                writer.append("<xs:minLength value=\"1\"/>\n");
+//                writer.append("<xs:minLength value=\"1\"/>\n");
                 writer.append("</xs:restriction>\n");
                 writer.append("</xs:simpleType>\n");
-                writer.append("</xs:attribute>\n");
+//                writer.append("</xs:attribute>\n");
             }
         }
     }
@@ -153,12 +153,10 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         final boolean isPresenterType = "presenter".equals(currentElement.elementName);
         if (insertType) {
             writer.append("<xs:complexType name=\"");
+            writer.append(currentElement.typeName);
         } else {
             writer.append("<xs:element name=\"");
-        }
-        writer.append(currentElement.elementName);
-        if (insertType) {
-            writer.append("Type");
+            writer.append(currentElement.elementName);
         }
         writer.append("\">\n");
         if (!insertType) {
@@ -219,12 +217,22 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
             }
             if (childElement.childElements.length > 0 || "presenter".equals(childElement.elementName)) {
                 writer.append("\" type=\"");
-                writer.append(childElement.elementName);
-                writer.append("Type");
+                writer.append(childElement.typeName);
                 writer.append("\"/>\n");
             } else if (childElement.hasStringContents) {
-                writer.append("\" type=\"xs:string");
-                writer.append("\"/>\n");
+                if (childElement.attributeTypes.size() > 0) {
+                    writer.append("\">\n");
+                    writer.append("<xs:complexType>\n");
+                    writer.append("<xs:simpleContent>\n");
+                    writer.append("<xs:extension base=\"xs:string\">\n");
+                    addAttributes(writer, childElement);
+                    writer.append("</xs:extension>\n");
+                    writer.append("</xs:simpleContent>\n");
+                    writer.append("</xs:complexType>\n");
+                    writer.append("</xs:element>\n");
+                } else {
+                    writer.append("\" type=\"xs:string\"/>\n");
+                }
             } else {
                 writer.append("\">\n");
                 writer.append("<xs:complexType>\n");
@@ -428,6 +436,8 @@ public class SchemaGenerator extends AbstractSchemaGenerator {
         for (FeatureType featureType : FeatureType.values()) {
             addElement(writer, new DocumentationElement(featureType), true);
         }
+        addElement(writer, new DocumentationElement(FeatureType.loadStimulus).childElements[0], true);
+        addElement(writer, new DocumentationElement(FeatureType.loadStimulus).childElements[1], true);
         getEnd(writer);
         System.out.println(writer);
     }
