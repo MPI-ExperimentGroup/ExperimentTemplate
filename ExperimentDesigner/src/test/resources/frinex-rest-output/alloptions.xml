@@ -7,7 +7,6 @@
         <field controlledMessage="Please enter a short description of the issue" controlledRegex=".'{'2,'}'" postName="errordescription" preventServerDuplicates="false" registrationField="Please describe the error"/>
         <field controlledMessage="Please enter a short description of the issue" controlledRegex=".'{'2,'}'" postName="emailAddress" preventServerDuplicates="false" registrationField="Please enter an email address"/>
         <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_withStimuli" preventServerDuplicates="false" registrationField="groupAllocation_withStimuli"/>
-        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_withMatchingStimulus" preventServerDuplicates="false" registrationField="groupAllocation_withMatchingStimulus"/>
         <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_loadStimulus" preventServerDuplicates="false" registrationField="groupAllocation_loadStimulus"/>
         <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_loadSdCardStimulus" preventServerDuplicates="false" registrationField="groupAllocation_loadSdCardStimulus"/>
     </metadata>
@@ -325,22 +324,6 @@
                     <endOfStimulus>
                         <plainText featureText="endOfStimulus in withMatchingStimulus"/>
                     </endOfStimulus>
-                    <randomGrouping storageField="groupAllocation_withMatchingStimulus">
-                        <tag>ประเพณีบุญบั้งไฟ</tag>
-                        <tag>Rocket</tag>
-                        <tag>Festival</tag>
-                        <tag>Lao</tag>
-                        <tag>Thai</tag>
-                        <tag>ບຸນບັ້ງໄຟ</tag>
-                    </randomGrouping>
-                    <stimuli>
-                        <tag>ประเพณีบุญบั้งไฟ</tag>
-                        <tag>Rocket</tag>
-                        <tag>Festival</tag>
-                        <tag>Lao</tag>
-                        <tag>Thai</tag>
-                        <tag>ບຸນບັ້ງໄຟ</tag>
-                    </stimuli>
                 </withMatchingStimulus>
                 <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
                     <conditionTrue>
@@ -703,22 +686,6 @@
                     <endOfStimulus>
                         <plainText featureText="endOfStimulus in withMatchingStimulus"/>
                     </endOfStimulus>
-                    <randomGrouping storageField="groupAllocation_withMatchingStimulus">
-                        <tag>ประเพณีบุญบั้งไฟ</tag>
-                        <tag>Rocket</tag>
-                        <tag>Festival</tag>
-                        <tag>Lao</tag>
-                        <tag>Thai</tag>
-                        <tag>ບຸນບັ້ງໄຟ</tag>
-                    </randomGrouping>
-                    <stimuli>
-                        <tag>ประเพณีบุญบั้งไฟ</tag>
-                        <tag>Rocket</tag>
-                        <tag>Festival</tag>
-                        <tag>Lao</tag>
-                        <tag>Thai</tag>
-                        <tag>ບຸນບັ້ງໄຟ</tag>
-                    </stimuli>
                 </withMatchingStimulus>
                 <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
                     <conditionTrue>
@@ -1081,22 +1048,6 @@
                     <endOfStimulus>
                         <plainText featureText="endOfStimulus in withMatchingStimulus"/>
                     </endOfStimulus>
-                    <randomGrouping storageField="groupAllocation_withMatchingStimulus">
-                        <tag>ประเพณีบุญบั้งไฟ</tag>
-                        <tag>Rocket</tag>
-                        <tag>Festival</tag>
-                        <tag>Lao</tag>
-                        <tag>Thai</tag>
-                        <tag>ບຸນບັ້ງໄຟ</tag>
-                    </randomGrouping>
-                    <stimuli>
-                        <tag>ประเพณีบุญบั้งไฟ</tag>
-                        <tag>Rocket</tag>
-                        <tag>Festival</tag>
-                        <tag>Lao</tag>
-                        <tag>Thai</tag>
-                        <tag>ບຸນບັ້ງໄຟ</tag>
-                    </stimuli>
                 </withMatchingStimulus>
                 <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
                     <conditionTrue>
@@ -2263,22 +2214,6 @@
                     <endOfStimulus>
                         <plainText featureText="endOfStimulus in withMatchingStimulus"/>
                     </endOfStimulus>
-                    <randomGrouping storageField="groupAllocation_withMatchingStimulus">
-                        <tag>ประเพณีบุญบั้งไฟ</tag>
-                        <tag>Rocket</tag>
-                        <tag>Festival</tag>
-                        <tag>Lao</tag>
-                        <tag>Thai</tag>
-                        <tag>ບຸນບັ້ງໄຟ</tag>
-                    </randomGrouping>
-                    <stimuli>
-                        <tag>ประเพณีบุญบั้งไฟ</tag>
-                        <tag>Rocket</tag>
-                        <tag>Festival</tag>
-                        <tag>Lao</tag>
-                        <tag>Thai</tag>
-                        <tag>ບຸນບັ້ງໄຟ</tag>
-                    </stimuli>
                 </withMatchingStimulus>
                 <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
                     <conditionTrue>
@@ -2641,22 +2576,6 @@
                     <endOfStimulus>
                         <plainText featureText="endOfStimulus in withMatchingStimulus"/>
                     </endOfStimulus>
-                    <randomGrouping storageField="groupAllocation_withMatchingStimulus">
-                        <tag>ประเพณีบุญบั้งไฟ</tag>
-                        <tag>Rocket</tag>
-                        <tag>Festival</tag>
-                        <tag>Lao</tag>
-                        <tag>Thai</tag>
-                        <tag>ບຸນບັ້ງໄຟ</tag>
-                    </randomGrouping>
-                    <stimuli>
-                        <tag>ประเพณีบุญบั้งไฟ</tag>
-                        <tag>Rocket</tag>
-                        <tag>Festival</tag>
-                        <tag>Lao</tag>
-                        <tag>Thai</tag>
-                        <tag>ບຸນບັ້ງໄຟ</tag>
-                    </stimuli>
                 </withMatchingStimulus>
                 <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
                     <conditionTrue>
@@ -3019,22 +2938,6 @@
                     <endOfStimulus>
                         <plainText featureText="endOfStimulus in withMatchingStimulus"/>
                     </endOfStimulus>
-                    <randomGrouping storageField="groupAllocation_withMatchingStimulus">
-                        <tag>ประเพณีบุญบั้งไฟ</tag>
-                        <tag>Rocket</tag>
-                        <tag>Festival</tag>
-                        <tag>Lao</tag>
-                        <tag>Thai</tag>
-                        <tag>ບຸນບັ້ງໄຟ</tag>
-                    </randomGrouping>
-                    <stimuli>
-                        <tag>ประเพณีบุญบั้งไฟ</tag>
-                        <tag>Rocket</tag>
-                        <tag>Festival</tag>
-                        <tag>Lao</tag>
-                        <tag>Thai</tag>
-                        <tag>ບຸນບັ້ງໄຟ</tag>
-                    </stimuli>
                 </withMatchingStimulus>
                 <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
                     <conditionTrue>
