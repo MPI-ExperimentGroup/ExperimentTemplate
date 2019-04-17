@@ -211,7 +211,8 @@ public enum FeatureAttribute {
         "LP310_DOWN_LONG",
         "LP310_MIDDLE",
         "LP310_MIDDLE_LONG",
-        "LP310_MIDDLE_DOUBLE"
+        "LP310_MIDDLE_DOUBLE",
+        ""
     }), // todo: this could provide a list for the schema to know what are valid values --
     //    @Deprecated
     //    mp3,
