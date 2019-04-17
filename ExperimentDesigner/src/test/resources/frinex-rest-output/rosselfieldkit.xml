@@ -191,6 +191,8 @@
                     <endOfStimulus>
                         <nextStimulus repeatIncorrect="false"/>
                     </endOfStimulus>
+                    <randomGrouping/>
+                    <stimuli/>
                 </withMatchingStimulus>
             </hasMoreStimulus>
             <endOfStimulus>
