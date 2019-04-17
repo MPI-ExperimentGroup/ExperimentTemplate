@@ -439,8 +439,6 @@
         <xs:all>
             <xs:element name="hasMoreStimulus" type="hasMoreStimulusType"/>
             <xs:element name="endOfStimulus" type="endOfStimulusType"/>
-            <xs:element name="randomGrouping" minOccurs="0" type="randomGroupingType"/>
-            <xs:element name="stimuli" minOccurs="0" type="stimuliSelectType"/>
         </xs:all>
         <xs:attribute name="eventTag" type="xs:string" use="required"/>
         <xs:attribute name="maxStimuli" type="xs:string"/>
@@ -8839,9 +8837,9 @@
         <xs:attribute name="eventTag" type="xs:string" use="required"/>
     </xs:complexType>
     <xs:complexType name="showHtmlPopupType">
-        <xs:all>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element name="actionButton" type="actionButtonType"/>
-        </xs:all>
+        </xs:choice>
         <xs:attribute name="featureText" type="xs:string" use="required"/>
     </xs:complexType>
     <xs:complexType name="helpDialogueType">
@@ -9313,9 +9311,13 @@
             <xs:annotation>
                 <xs:documentation>List of stimuli tag names one of which will be randomly selected, or determined by metadata fields or get parameters.</xs:documentation>
             </xs:annotation>
-            <xs:element name="tag" minOccurs="0" maxOccurs="unbounded" type="xs:string">
+            <xs:element name="tag" minOccurs="0" maxOccurs="unbounded">
                 <xs:complexType>
-                    <xs:attribute name="alias" type="xs:string"/>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="alias" type="xs:string"/>
+                        </xs:extension>
+                    </xs:simpleContent>
                 </xs:complexType>
             </xs:element>
         </xs:sequence>
