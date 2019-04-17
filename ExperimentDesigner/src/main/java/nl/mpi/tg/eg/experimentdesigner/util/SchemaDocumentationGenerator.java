@@ -229,64 +229,64 @@ public class SchemaDocumentationGenerator extends AbstractSchemaGenerator {
 //                return o1.compareTo(o2);
 //            }
 //        });
-        if (currentElement.childTypeNames.length + currentElement.childElements.length > 10) {
-            writer.append("<button");
-            writer.append(" id=\"");
-            writer.append(currentElement.elementName);
-            writer.append("ChildShow\" style=\"display: block;\" onclick=\"$('#");
-            writer.append(currentElement.elementName);
-            writer.append("ChildDocumentation').show();$('#");
-            writer.append(currentElement.elementName);
-            writer.append("ChildHide').show();$('#");
-            writer.append(currentElement.elementName);
-            writer.append("ChildShow').hide();\">show ");
-            writer.append(Integer.toString(currentElement.childTypeNames.length + currentElement.childElements.length));
-            writer.append(" truncated items</button>\n");
-            writer.append("<button");
-            writer.append(" id=\"");
-            writer.append(currentElement.elementName);
-            writer.append("ChildHide\" style=\"display: none;\" onclick=\"$('#");
-            writer.append(currentElement.elementName);
-            writer.append("ChildDocumentation').hide();$('#");
-            writer.append(currentElement.elementName);
-            writer.append("ChildHide').hide();$('#");
-            writer.append(currentElement.elementName);
-            writer.append("ChildShow').show();\">hide ");
-            writer.append(Integer.toString(currentElement.childTypeNames.length + currentElement.childElements.length));
-            writer.append(" items</button>\n");
-        }
-        writer.append("<table");
-        if (currentElement.childTypeNames.length > 10) {
-            writer.append(" id=\"");
-            writer.append(currentElement.elementName);
-            writer.append("ChildDocumentation\" style=\"display: none;\"");
-        }
-        writer.append(">\n");
-        for (String childElement : currentElement.childTypeNames) {
-            writer.append("<tr><td>\n");
+        if (currentElement.childTypeNames.length + currentElement.childElements.length > 0) {
+            if (currentElement.childTypeNames.length + currentElement.childElements.length > 10) {
+                writer.append("<button");
+                writer.append(" id=\"");
+                writer.append(currentElement.elementName);
+                writer.append("ChildShow\" style=\"display: block;\" onclick=\"$('#");
+                writer.append(currentElement.elementName);
+                writer.append("ChildDocumentation').show();$('#");
+                writer.append(currentElement.elementName);
+                writer.append("ChildHide').show();$('#");
+                writer.append(currentElement.elementName);
+                writer.append("ChildShow').hide();\">show ");
+                writer.append(Integer.toString(currentElement.childTypeNames.length + currentElement.childElements.length));
+                writer.append(" truncated items</button>\n");
+                writer.append("<button");
+                writer.append(" id=\"");
+                writer.append(currentElement.elementName);
+                writer.append("ChildHide\" style=\"display: none;\" onclick=\"$('#");
+                writer.append(currentElement.elementName);
+                writer.append("ChildDocumentation').hide();$('#");
+                writer.append(currentElement.elementName);
+                writer.append("ChildHide').hide();$('#");
+                writer.append(currentElement.elementName);
+                writer.append("ChildShow').show();\">hide ");
+                writer.append(Integer.toString(currentElement.childTypeNames.length + currentElement.childElements.length));
+                writer.append(" items</button>\n");
+            }
+            writer.append("<table");
+            if (currentElement.childTypeNames.length > 10) {
+                writer.append(" id=\"");
+                writer.append(currentElement.elementName);
+                writer.append("ChildDocumentation\" style=\"display: none;\"");
+            }
+            writer.append(">\n");
+            for (String childElement : currentElement.childTypeNames) {
+                writer.append("<tr><td>\n");
 
-            writer.append("<a href=\"#" + childElement + "Type\">");
-            writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">");
-            writer.append(childElement);
-            writer.append("</span><span style=\"color:purple\">&gt;</span>\n");
-            writer.append("</a>");
-            writer.append("</td></tr>\n");
-            writer.append("</td></tr>\n");
+                writer.append("<a href=\"#" + childElement + "Type\">");
+                writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">");
+                writer.append(childElement);
+                writer.append("</span><span style=\"color:purple\">&gt;</span>\n");
+                writer.append("</a>");
+                writer.append("</td></tr>\n");
+            }
+            for (DocumentationElement childElement : currentElement.childElements) {
+                writer.append("<tr><td>\n");
+                writer.append("<a href=\"#" + childElement.typeName + "\">");
+                writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">");
+                writer.append(childElement.elementName);
+                writer.append("</span>");
+                writer.append("</a>");
+                writer.append("</td><td>");
+                addAttributes(writer, childElement);
+                writer.append("</td><td><span style=\"color:purple\">&gt;</span>\n");
+                writer.append("</td></tr>\n");
+            }
+            writer.append("</table>\n");
         }
-        for (DocumentationElement childElement : currentElement.childElements) {
-            writer.append("<tr><td>\n");
-            writer.append("<a href=\"#" + childElement.typeName + "\">");
-            writer.append("<span style=\"color:purple\">&lt;</span><span style=\"color:blue\">");
-            writer.append(childElement.elementName);
-            writer.append("</span>");
-            writer.append("</a>");
-            writer.append("</td><td>");
-            addAttributes(writer, childElement);
-            writer.append("</td><td><span style=\"color:purple\">&gt;</span>\n");
-            writer.append("</td></tr>\n");
-            writer.append("</td></tr>\n");
-        }
-        writer.append("</table>\n");
         writer.append("</td>\n");
         writer.append("</tr>\n");
         if (currentElement.hasStringContents) {
