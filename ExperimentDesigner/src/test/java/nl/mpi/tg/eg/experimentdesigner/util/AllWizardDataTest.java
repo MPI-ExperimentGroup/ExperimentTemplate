@@ -168,7 +168,7 @@ public class AllWizardDataTest {
         testGetWizardData(new PlayhouseStudy().getExperiment());
 //        testGetWizardData(new SentenceCompletion(new Joost01()).getExperiment());
 //        testGetWizardData(new SentenceCompletion(new Joost02()).getExperiment());
-        testGetWizardData(new PlaybackPreferenceMeasureExperiment().getExperiment());
+//        testGetWizardData(new PlaybackPreferenceMeasureExperiment().getExperiment());
     }
 
     /**
