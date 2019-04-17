@@ -273,7 +273,7 @@ public enum FeatureType {
         hasMediaLoadingButton(false),
         hasMediaPlayback(false),
         hasMediaRecorderPlayback(false),
-        hasActionButtons(false),
+        hasActionButtons(true),
         none(true);
 //        needsConditionalParent // when true, the element cannot be used alone but must be in its conditional parent element
         final public boolean areChildenOptional;
