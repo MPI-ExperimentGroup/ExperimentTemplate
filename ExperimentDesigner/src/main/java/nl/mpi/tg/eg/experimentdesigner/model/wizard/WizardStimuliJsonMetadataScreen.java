@@ -192,10 +192,10 @@ public class WizardStimuliJsonMetadataScreen extends AbstractWizardScreen {
         buttonsFeatureRow.getPresenterFeatureList().add(nextFeatureColumn);
         presenterFeatureTableB.getPresenterFeatureList().add(buttonsFeatureRow);
         final PresenterFeature stimulusExistsPrev = prevFeatureColumn.addFeature(FeatureType.stimulusExists, null, "-1");
-        stimulusExistsPrev.addFeature(FeatureType.conditionTrue, null).addFeature(FeatureType.prevStimulusButton, "Previous", "prevStimulusButton", "false", "-1", "");
+        stimulusExistsPrev.addFeature(FeatureType.conditionTrue, null).addFeature(FeatureType.prevStimulusButton, "Previous", "prevStimulusButton", "false", "", "");
         stimulusExistsPrev.addFeature(FeatureType.conditionFalse, null);
         final PresenterFeature stimulusExistsNext = nextFeatureColumn.addFeature(FeatureType.stimulusExists, null, "+1");
-        stimulusExistsNext.addFeature(FeatureType.conditionTrue, null).addFeature(FeatureType.nextStimulusButton, "Next", "nextStimulusButton", "false", "-1", "");
+        stimulusExistsNext.addFeature(FeatureType.conditionTrue, null).addFeature(FeatureType.nextStimulusButton, "Next", "nextStimulusButton", "false", "", "");
         stimulusExistsNext.addFeature(FeatureType.conditionFalse, null);
         loadStimuliFeature.getPresenterFeatureList().add(hasMoreStimulusFeature);
         final PresenterFeature endOfStimulusFeature = new PresenterFeature(FeatureType.endOfStimulus, null);
