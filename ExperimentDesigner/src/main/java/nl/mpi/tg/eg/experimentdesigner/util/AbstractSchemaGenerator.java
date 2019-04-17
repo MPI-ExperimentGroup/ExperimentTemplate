@@ -166,8 +166,8 @@ public class AbstractSchemaGenerator {
             }
             List<DocumentationElement> documentationElements = new ArrayList<>();
             if (featureType.isCanHaveRandomGrouping() && featureType.canHaveStimulusTags()) {
-                documentationElements.add(new DocumentationElement("randomGrouping", "List of stimuli tag names one of which will be randomly selected, or determined by metadata fields or get parameters.", 0, 1, new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, new DocumentationElement[0]).stringAttribute("alias", true)}).stringAttribute("storageField", true));
-                documentationElements.add(new DocumentationElement("stimuli", "stimuliSelect", "List of stimuli tag names which determine which stimuli are selected.", 0, 1, new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, new DocumentationElement[0])}));
+                documentationElements.add(new DocumentationElement("randomGrouping", "List of stimuli tag names one of which will be randomly selected, or determined by metadata fields or get parameters.", 0, 1, new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true).stringAttribute("alias", true)}).stringAttribute("storageField", true).stringAttribute("consumedTagGroup", true));
+                documentationElements.add(new DocumentationElement("stimuli", "stimuliSelect", "List of stimuli tag names which determine which stimuli are selected.", 0, 1, new DocumentationElement[]{new DocumentationElement("tag", "", 0, -1, true)}));
             }
             this.childTypeNames = childTypeList.toArray(new String[childTypeList.size()]);
             this.childElements = documentationElements.toArray(new DocumentationElement[documentationElements.size()]);
