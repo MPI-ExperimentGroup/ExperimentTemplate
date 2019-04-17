@@ -251,7 +251,7 @@ public enum PresenterType {
         displayCompletionCode,
         sendMetadata, prevStimulusButton,
         prevStimulus,
-        hasGetParameter, activateRandomItem,
+        hasGetParameter, activateRandomItem, showHtmlPopup,
         randomMsPause, playMedia,
         rewindMedia,
         pauseMedia,
