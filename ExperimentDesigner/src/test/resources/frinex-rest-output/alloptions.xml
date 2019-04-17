@@ -7,6 +7,7 @@
         <field controlledMessage="Please enter a short description of the issue" controlledRegex=".'{'2,'}'" postName="errordescription" preventServerDuplicates="false" registrationField="Please describe the error"/>
         <field controlledMessage="Please enter a short description of the issue" controlledRegex=".'{'2,'}'" postName="emailAddress" preventServerDuplicates="false" registrationField="Please enter an email address"/>
         <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_withStimuli" preventServerDuplicates="false" registrationField="groupAllocation_withStimuli"/>
+        <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_withMatchingStimulus" preventServerDuplicates="false" registrationField="groupAllocation_withMatchingStimulus"/>
         <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_loadStimulus" preventServerDuplicates="false" registrationField="groupAllocation_loadStimulus"/>
         <field controlledMessage="." controlledRegex=".*" postName="groupAllocation_loadSdCardStimulus" preventServerDuplicates="false" registrationField="groupAllocation_loadSdCardStimulus"/>
     </metadata>
@@ -92,6 +93,11 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <showHtmlPopup featureText="showHtmlPopup">
+            <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+                <plainText featureText="plainText in actionButton"/>
+            </actionButton>
+        </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
         <transmitResults matchingRegex="matchingRegex" enabledRegex="enabledRegex" dataLogFormat="dataLogFormat">
             <onError>
@@ -173,6 +179,11 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <showHtmlPopup featureText="showHtmlPopup">
+            <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+                <plainText featureText="plainText in actionButton"/>
+            </actionButton>
+        </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="preload_all_attributes" type="preload" self="preload_all_attributesScreen" title="preload_all_attributes">
@@ -280,6 +291,11 @@
         <playMedia mediaId="mediaId"/>
         <rewindMedia mediaId="mediaId"/>
         <pauseMedia mediaId="mediaId"/>
+        <showHtmlPopup featureText="showHtmlPopup">
+            <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+                <plainText featureText="plainText in actionButton"/>
+            </actionButton>
+        </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
         <clearCurrentScore/>
         <resetStimulus target="target"/>
@@ -309,6 +325,22 @@
                     <endOfStimulus>
                         <plainText featureText="endOfStimulus in withMatchingStimulus"/>
                     </endOfStimulus>
+                    <randomGrouping storageField="groupAllocation_withMatchingStimulus">
+                        <tag>ประเพณีบุญบั้งไฟ</tag>
+                        <tag>Rocket</tag>
+                        <tag>Festival</tag>
+                        <tag>Lao</tag>
+                        <tag>Thai</tag>
+                        <tag>ບຸນບັ້ງໄຟ</tag>
+                    </randomGrouping>
+                    <stimuli>
+                        <tag>ประเพณีบุญบั้งไฟ</tag>
+                        <tag>Rocket</tag>
+                        <tag>Festival</tag>
+                        <tag>Lao</tag>
+                        <tag>Thai</tag>
+                        <tag>ບຸນບັ້ງໄຟ</tag>
+                    </stimuli>
                 </withMatchingStimulus>
                 <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
                     <conditionTrue>
@@ -372,6 +404,7 @@
                     </conditionFalse>
                 </stimulusHasResponse>
                 <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true" dataChannel="2"/>
+                <addStimulusValidation featureText="addStimulusValidation" dataChannel="2" validationRegex="validationRegex"/>
                 <ratingFooterButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
@@ -536,9 +569,6 @@
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
@@ -567,12 +597,12 @@
                         <groupScoreLabel styleName="styleName"/>
                         <groupChannelScoreLabel styleName="styleName"/>
                         <submitGroupEvent/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
@@ -601,43 +631,46 @@
                         <groupScoreLabel styleName="styleName"/>
                         <groupChannelScoreLabel styleName="styleName"/>
                         <submitGroupEvent/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <plainText featureText="plainText in groupNetworkActivity"/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="groupRole">
+                        <groupMemberCodeLabel styleName="styleName"/>
+                        <groupMemberLabel styleName="styleName"/>
+                        <groupMessageLabel styleName="styleName"/>
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <mediaPlaybackStarted>
+                                <plainText featureText="plainText in mediaPlaybackStarted"/>
+                            </mediaPlaybackStarted>
+                            <mediaPlaybackComplete>
+                                <plainText featureText="plainText in mediaPlaybackComplete"/>
+                            </mediaPlaybackComplete>
+                        </groupResponseStimulusImage>
+                        <groupResponseFeedback>
+                            <responseCorrect>
+                                <plainText featureText="plainText in responseCorrect"/>
+                            </responseCorrect>
+                            <responseIncorrect>
+                                <plainText featureText="plainText in responseIncorrect"/>
+                            </responseIncorrect>
+                        </groupResponseFeedback>
+                        <groupScoreLabel styleName="styleName"/>
+                        <groupChannelScoreLabel styleName="styleName"/>
+                        <submitGroupEvent/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <sendGroupEndOfStimuli eventTag="eventTag"/>
-                    <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-                        <groupMemberCodeLabel styleName="styleName"/>
-                        <groupMemberLabel styleName="styleName"/>
-                        <groupMessageLabel styleName="styleName"/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel styleName="styleName"/>
-                        <groupChannelScoreLabel styleName="styleName"/>
-                        <submitGroupEvent/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
                 </groupNetwork>
                 <plainText featureText="plainText in eachStimulus"/>
             </eachStimulus>
@@ -670,6 +703,22 @@
                     <endOfStimulus>
                         <plainText featureText="endOfStimulus in withMatchingStimulus"/>
                     </endOfStimulus>
+                    <randomGrouping storageField="groupAllocation_withMatchingStimulus">
+                        <tag>ประเพณีบุญบั้งไฟ</tag>
+                        <tag>Rocket</tag>
+                        <tag>Festival</tag>
+                        <tag>Lao</tag>
+                        <tag>Thai</tag>
+                        <tag>ບຸນບັ້ງໄຟ</tag>
+                    </randomGrouping>
+                    <stimuli>
+                        <tag>ประเพณีบุญบั้งไฟ</tag>
+                        <tag>Rocket</tag>
+                        <tag>Festival</tag>
+                        <tag>Lao</tag>
+                        <tag>Thai</tag>
+                        <tag>ບຸນບັ້ງໄຟ</tag>
+                    </stimuli>
                 </withMatchingStimulus>
                 <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
                     <conditionTrue>
@@ -733,6 +782,7 @@
                     </conditionFalse>
                 </stimulusHasResponse>
                 <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true" dataChannel="2"/>
+                <addStimulusValidation featureText="addStimulusValidation" dataChannel="2" validationRegex="validationRegex"/>
                 <ratingFooterButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
@@ -897,9 +947,6 @@
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
@@ -928,12 +975,12 @@
                         <groupScoreLabel styleName="styleName"/>
                         <groupChannelScoreLabel styleName="styleName"/>
                         <submitGroupEvent/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
@@ -962,43 +1009,46 @@
                         <groupScoreLabel styleName="styleName"/>
                         <groupChannelScoreLabel styleName="styleName"/>
                         <submitGroupEvent/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <plainText featureText="plainText in groupNetworkActivity"/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="groupRole">
+                        <groupMemberCodeLabel styleName="styleName"/>
+                        <groupMemberLabel styleName="styleName"/>
+                        <groupMessageLabel styleName="styleName"/>
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <mediaPlaybackStarted>
+                                <plainText featureText="plainText in mediaPlaybackStarted"/>
+                            </mediaPlaybackStarted>
+                            <mediaPlaybackComplete>
+                                <plainText featureText="plainText in mediaPlaybackComplete"/>
+                            </mediaPlaybackComplete>
+                        </groupResponseStimulusImage>
+                        <groupResponseFeedback>
+                            <responseCorrect>
+                                <plainText featureText="plainText in responseCorrect"/>
+                            </responseCorrect>
+                            <responseIncorrect>
+                                <plainText featureText="plainText in responseIncorrect"/>
+                            </responseIncorrect>
+                        </groupResponseFeedback>
+                        <groupScoreLabel styleName="styleName"/>
+                        <groupChannelScoreLabel styleName="styleName"/>
+                        <submitGroupEvent/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <sendGroupEndOfStimuli eventTag="eventTag"/>
-                    <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-                        <groupMemberCodeLabel styleName="styleName"/>
-                        <groupMemberLabel styleName="styleName"/>
-                        <groupMessageLabel styleName="styleName"/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel styleName="styleName"/>
-                        <groupChannelScoreLabel styleName="styleName"/>
-                        <submitGroupEvent/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
                 </groupNetwork>
                 <plainText featureText="plainText in hasMoreStimulus"/>
             </hasMoreStimulus>
@@ -1031,6 +1081,22 @@
                     <endOfStimulus>
                         <plainText featureText="endOfStimulus in withMatchingStimulus"/>
                     </endOfStimulus>
+                    <randomGrouping storageField="groupAllocation_withMatchingStimulus">
+                        <tag>ประเพณีบุญบั้งไฟ</tag>
+                        <tag>Rocket</tag>
+                        <tag>Festival</tag>
+                        <tag>Lao</tag>
+                        <tag>Thai</tag>
+                        <tag>ບຸນບັ້ງໄຟ</tag>
+                    </randomGrouping>
+                    <stimuli>
+                        <tag>ประเพณีบุญบั้งไฟ</tag>
+                        <tag>Rocket</tag>
+                        <tag>Festival</tag>
+                        <tag>Lao</tag>
+                        <tag>Thai</tag>
+                        <tag>ບຸນບັ້ງໄຟ</tag>
+                    </stimuli>
                 </withMatchingStimulus>
                 <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
                     <conditionTrue>
@@ -1094,6 +1160,7 @@
                     </conditionFalse>
                 </stimulusHasResponse>
                 <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true" dataChannel="2"/>
+                <addStimulusValidation featureText="addStimulusValidation" dataChannel="2" validationRegex="validationRegex"/>
                 <ratingFooterButton ratingLabelRight="ratingLabelRight" groupId="groupId" ratingLabels="ratingLabels" styleName="styleName" dataChannel="2" ratingLabelLeft="ratingLabelLeft">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
@@ -1258,9 +1325,6 @@
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
@@ -1289,12 +1353,12 @@
                         <groupScoreLabel styleName="styleName"/>
                         <groupChannelScoreLabel styleName="styleName"/>
                         <submitGroupEvent/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel styleName="styleName"/>
                         <groupMemberLabel styleName="styleName"/>
                         <groupMessageLabel styleName="styleName"/>
@@ -1323,43 +1387,46 @@
                         <groupScoreLabel styleName="styleName"/>
                         <groupChannelScoreLabel styleName="styleName"/>
                         <submitGroupEvent/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <plainText featureText="plainText in groupNetworkActivity"/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="groupRole">
+                        <groupMemberCodeLabel styleName="styleName"/>
+                        <groupMemberLabel styleName="styleName"/>
+                        <groupMessageLabel styleName="styleName"/>
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <mediaPlaybackStarted>
+                                <plainText featureText="plainText in mediaPlaybackStarted"/>
+                            </mediaPlaybackStarted>
+                            <mediaPlaybackComplete>
+                                <plainText featureText="plainText in mediaPlaybackComplete"/>
+                            </mediaPlaybackComplete>
+                        </groupResponseStimulusImage>
+                        <groupResponseFeedback>
+                            <responseCorrect>
+                                <plainText featureText="plainText in responseCorrect"/>
+                            </responseCorrect>
+                            <responseIncorrect>
+                                <plainText featureText="plainText in responseIncorrect"/>
+                            </responseIncorrect>
+                        </groupResponseFeedback>
+                        <groupScoreLabel styleName="styleName"/>
+                        <groupChannelScoreLabel styleName="styleName"/>
+                        <submitGroupEvent/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <sendGroupEndOfStimuli eventTag="eventTag"/>
-                    <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" groupId="groupId" hotKey="A" styleName="styleName" dataChannel="2" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-                        <groupMemberCodeLabel styleName="styleName"/>
-                        <groupMemberLabel styleName="styleName"/>
-                        <groupMessageLabel styleName="styleName"/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" dataChannel="2" animate="bounce" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel styleName="styleName"/>
-                        <groupChannelScoreLabel styleName="styleName"/>
-                        <submitGroupEvent/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
                 </groupNetwork>
                 <plainText featureText="plainText in hasMoreStimulus"/>
             </hasMoreStimulus>
@@ -1493,6 +1560,11 @@
         <playMedia mediaId="mediaId"/>
         <rewindMedia mediaId="mediaId"/>
         <pauseMedia mediaId="mediaId"/>
+        <showHtmlPopup featureText="showHtmlPopup">
+            <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+                <plainText featureText="plainText in actionButton"/>
+            </actionButton>
+        </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
         <scoreLabel styleName="styleName"/>
         <clearCurrentScore/>
@@ -1526,6 +1598,7 @@
         <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes">
+        <showHtmlPopup featureText="showHtmlPopup"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_all_attributes" type="colourReport" self="colourReport_all_attributesScreen" title="colourReport_all_attributes">
@@ -1576,6 +1649,11 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <showHtmlPopup featureText="showHtmlPopup">
+            <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+                <plainText featureText="plainText in actionButton"/>
+            </actionButton>
+        </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
         <showColourReport scoreThreshold="3">
             <aboveThreshold>
@@ -1652,6 +1730,11 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <showHtmlPopup featureText="showHtmlPopup">
+            <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+                <plainText featureText="plainText in actionButton"/>
+            </actionButton>
+        </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="menu_all_attributes" type="menu" self="menu_all_attributesScreen" title="menu_all_attributes">
@@ -1705,6 +1788,11 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <showHtmlPopup featureText="showHtmlPopup">
+            <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+                <plainText featureText="plainText in actionButton"/>
+            </actionButton>
+        </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="debug_all_attributes" type="debug" self="debug_all_attributesScreen" title="debug_all_attributes">
@@ -1757,6 +1845,11 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <showHtmlPopup featureText="showHtmlPopup">
+            <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+                <plainText featureText="plainText in actionButton"/>
+            </actionButton>
+        </showHtmlPopup>
         <versionData/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
@@ -1800,6 +1893,11 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <showHtmlPopup featureText="showHtmlPopup">
+            <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+                <plainText featureText="plainText in actionButton"/>
+            </actionButton>
+        </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="timeline_all_attributes" type="timeline" self="timeline_all_attributesScreen" title="timeline_all_attributes">
@@ -1850,6 +1948,11 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <showHtmlPopup featureText="showHtmlPopup">
+            <actionButton featureText="actionButton" groupId="groupId" hotKey="A" styleName="styleName">
+                <plainText featureText="plainText in actionButton"/>
+            </actionButton>
+        </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="transmission_minimal_attributes" type="transmission" self="transmission_minimal_attributesScreen" title="transmission_minimal_attributes">
@@ -1928,6 +2031,11 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <showHtmlPopup featureText="showHtmlPopup">
+            <actionButton featureText="actionButton">
+                <plainText featureText="plainText in actionButton"/>
+            </actionButton>
+        </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
         <transmitResults matchingRegex="matchingRegex" enabledRegex="enabledRegex" dataLogFormat="dataLogFormat">
             <onError>
@@ -2009,6 +2117,11 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <showHtmlPopup featureText="showHtmlPopup">
+            <actionButton featureText="actionButton">
+                <plainText featureText="plainText in actionButton"/>
+            </actionButton>
+        </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="preload_minimal_attributes" type="preload" self="preload_minimal_attributesScreen" title="preload_minimal_attributes">
@@ -2116,6 +2229,11 @@
         <playMedia mediaId="mediaId"/>
         <rewindMedia mediaId="mediaId"/>
         <pauseMedia mediaId="mediaId"/>
+        <showHtmlPopup featureText="showHtmlPopup">
+            <actionButton featureText="actionButton">
+                <plainText featureText="plainText in actionButton"/>
+            </actionButton>
+        </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
         <clearCurrentScore/>
         <resetStimulus target="target"/>
@@ -2145,6 +2263,22 @@
                     <endOfStimulus>
                         <plainText featureText="endOfStimulus in withMatchingStimulus"/>
                     </endOfStimulus>
+                    <randomGrouping storageField="groupAllocation_withMatchingStimulus">
+                        <tag>ประเพณีบุญบั้งไฟ</tag>
+                        <tag>Rocket</tag>
+                        <tag>Festival</tag>
+                        <tag>Lao</tag>
+                        <tag>Thai</tag>
+                        <tag>ບຸນບັ້ງໄຟ</tag>
+                    </randomGrouping>
+                    <stimuli>
+                        <tag>ประเพณีบุญบั้งไฟ</tag>
+                        <tag>Rocket</tag>
+                        <tag>Festival</tag>
+                        <tag>Lao</tag>
+                        <tag>Thai</tag>
+                        <tag>ບຸນບັ້ງໄຟ</tag>
+                    </stimuli>
                 </withMatchingStimulus>
                 <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
                     <conditionTrue>
@@ -2208,6 +2342,7 @@
                     </conditionFalse>
                 </stimulusHasResponse>
                 <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true"/>
+                <addStimulusValidation featureText="addStimulusValidation" validationRegex="validationRegex"/>
                 <ratingFooterButton ratingLabels="ratingLabels">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
@@ -2372,9 +2507,6 @@
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -2403,12 +2535,12 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -2437,43 +2569,46 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <plainText featureText="plainText in groupNetworkActivity"/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="groupRole">
+                        <groupMemberCodeLabel/>
+                        <groupMemberLabel/>
+                        <groupMessageLabel/>
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <mediaPlaybackStarted>
+                                <plainText featureText="plainText in mediaPlaybackStarted"/>
+                            </mediaPlaybackStarted>
+                            <mediaPlaybackComplete>
+                                <plainText featureText="plainText in mediaPlaybackComplete"/>
+                            </mediaPlaybackComplete>
+                        </groupResponseStimulusImage>
+                        <groupResponseFeedback>
+                            <responseCorrect>
+                                <plainText featureText="plainText in responseCorrect"/>
+                            </responseCorrect>
+                            <responseIncorrect>
+                                <plainText featureText="plainText in responseIncorrect"/>
+                            </responseIncorrect>
+                        </groupResponseFeedback>
+                        <groupScoreLabel/>
+                        <groupChannelScoreLabel/>
+                        <submitGroupEvent/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <sendGroupEndOfStimuli eventTag="eventTag"/>
-                    <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-                        <groupMemberCodeLabel/>
-                        <groupMemberLabel/>
-                        <groupMessageLabel/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <submitGroupEvent/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
                 </groupNetwork>
                 <plainText featureText="plainText in eachStimulus"/>
             </eachStimulus>
@@ -2506,6 +2641,22 @@
                     <endOfStimulus>
                         <plainText featureText="endOfStimulus in withMatchingStimulus"/>
                     </endOfStimulus>
+                    <randomGrouping storageField="groupAllocation_withMatchingStimulus">
+                        <tag>ประเพณีบุญบั้งไฟ</tag>
+                        <tag>Rocket</tag>
+                        <tag>Festival</tag>
+                        <tag>Lao</tag>
+                        <tag>Thai</tag>
+                        <tag>ບຸນບັ້ງໄຟ</tag>
+                    </randomGrouping>
+                    <stimuli>
+                        <tag>ประเพณีบุญบั้งไฟ</tag>
+                        <tag>Rocket</tag>
+                        <tag>Festival</tag>
+                        <tag>Lao</tag>
+                        <tag>Thai</tag>
+                        <tag>ບຸນບັ້ງໄຟ</tag>
+                    </stimuli>
                 </withMatchingStimulus>
                 <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
                     <conditionTrue>
@@ -2569,6 +2720,7 @@
                     </conditionFalse>
                 </stimulusHasResponse>
                 <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true"/>
+                <addStimulusValidation featureText="addStimulusValidation" validationRegex="validationRegex"/>
                 <ratingFooterButton ratingLabels="ratingLabels">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
@@ -2733,9 +2885,6 @@
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -2764,12 +2913,12 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -2798,43 +2947,46 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <plainText featureText="plainText in groupNetworkActivity"/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="groupRole">
+                        <groupMemberCodeLabel/>
+                        <groupMemberLabel/>
+                        <groupMessageLabel/>
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <mediaPlaybackStarted>
+                                <plainText featureText="plainText in mediaPlaybackStarted"/>
+                            </mediaPlaybackStarted>
+                            <mediaPlaybackComplete>
+                                <plainText featureText="plainText in mediaPlaybackComplete"/>
+                            </mediaPlaybackComplete>
+                        </groupResponseStimulusImage>
+                        <groupResponseFeedback>
+                            <responseCorrect>
+                                <plainText featureText="plainText in responseCorrect"/>
+                            </responseCorrect>
+                            <responseIncorrect>
+                                <plainText featureText="plainText in responseIncorrect"/>
+                            </responseIncorrect>
+                        </groupResponseFeedback>
+                        <groupScoreLabel/>
+                        <groupChannelScoreLabel/>
+                        <submitGroupEvent/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <sendGroupEndOfStimuli eventTag="eventTag"/>
-                    <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-                        <groupMemberCodeLabel/>
-                        <groupMemberLabel/>
-                        <groupMessageLabel/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <submitGroupEvent/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
                 </groupNetwork>
                 <plainText featureText="plainText in hasMoreStimulus"/>
             </hasMoreStimulus>
@@ -2867,6 +3019,22 @@
                     <endOfStimulus>
                         <plainText featureText="endOfStimulus in withMatchingStimulus"/>
                     </endOfStimulus>
+                    <randomGrouping storageField="groupAllocation_withMatchingStimulus">
+                        <tag>ประเพณีบุญบั้งไฟ</tag>
+                        <tag>Rocket</tag>
+                        <tag>Festival</tag>
+                        <tag>Lao</tag>
+                        <tag>Thai</tag>
+                        <tag>ບຸນບັ້ງໄຟ</tag>
+                    </randomGrouping>
+                    <stimuli>
+                        <tag>ประเพณีบุญบั้งไฟ</tag>
+                        <tag>Rocket</tag>
+                        <tag>Festival</tag>
+                        <tag>Lao</tag>
+                        <tag>Thai</tag>
+                        <tag>ບຸນບັ້ງໄຟ</tag>
+                    </stimuli>
                 </withMatchingStimulus>
                 <currentStimulusHasTag tags="ประเพณีบุญบั้งไฟ Rocket Festival Lao Thai ບຸນບັ້ງໄຟ" msToNext="60">
                     <conditionTrue>
@@ -2930,6 +3098,7 @@
                     </conditionFalse>
                 </stimulusHasResponse>
                 <setStimulusCodeResponse codeFormat="codeFormat" applyScore="true"/>
+                <addStimulusValidation featureText="addStimulusValidation" validationRegex="validationRegex"/>
                 <ratingFooterButton ratingLabels="ratingLabels">
                     <plainText featureText="plainText in ratingFooterButton"/>
                 </ratingFooterButton>
@@ -3094,9 +3263,6 @@
                 <endAudioRecorderTag eventTier="8" eventTag="eventTag"/>
                 <groupNetwork groupMembers="groupMembers" phasesPerStimulus="8" groupCommunicationChannels="groupCommunicationChannels">
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -3125,12 +3291,12 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <groupMemberCodeLabel/>
                         <groupMemberLabel/>
                         <groupMessageLabel/>
@@ -3159,43 +3325,46 @@
                         <groupScoreLabel/>
                         <groupChannelScoreLabel/>
                         <submitGroupEvent/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
+                        <plainText featureText="plainText in groupNetworkActivity"/>
+                    </groupNetworkActivity>
+                    <groupNetworkActivity groupRole="groupRole">
+                        <groupMemberCodeLabel/>
+                        <groupMemberLabel/>
+                        <groupMessageLabel/>
+                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
+                            <mediaLoaded>
+                                <plainText featureText="plainText in mediaLoaded"/>
+                            </mediaLoaded>
+                            <mediaLoadFailed>
+                                <plainText featureText="plainText in mediaLoadFailed"/>
+                            </mediaLoadFailed>
+                            <mediaPlaybackStarted>
+                                <plainText featureText="plainText in mediaPlaybackStarted"/>
+                            </mediaPlaybackStarted>
+                            <mediaPlaybackComplete>
+                                <plainText featureText="plainText in mediaPlaybackComplete"/>
+                            </mediaPlaybackComplete>
+                        </groupResponseStimulusImage>
+                        <groupResponseFeedback>
+                            <responseCorrect>
+                                <plainText featureText="plainText in responseCorrect"/>
+                            </responseCorrect>
+                            <responseIncorrect>
+                                <plainText featureText="plainText in responseIncorrect"/>
+                            </responseIncorrect>
+                        </groupResponseFeedback>
+                        <groupScoreLabel/>
+                        <groupChannelScoreLabel/>
+                        <submitGroupEvent/>
+                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
+                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
+                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
                         <plainText featureText="plainText in groupNetworkActivity"/>
                     </groupNetworkActivity>
                     <sendGroupEndOfStimuli eventTag="eventTag"/>
-                    <groupNetworkActivity groupRole="groupRole">
-                        <sendGroupMessageButton featureText="sendGroupMessageButton" eventTag="eventTag" incrementPhase="3" repeatIncorrect="repeatIncorrect"/>
-                        <sendGroupMessage eventTag="eventTag" incrementPhase="3"/>
-                        <sendGroupStoredMessage eventTag="eventTag" incrementPhase="3"/>
-                        <groupMemberCodeLabel/>
-                        <groupMemberLabel/>
-                        <groupMessageLabel/>
-                        <groupResponseStimulusImage maxHeight="60" percentOfPage="56" maxWidth="60">
-                            <mediaLoaded>
-                                <plainText featureText="plainText in mediaLoaded"/>
-                            </mediaLoaded>
-                            <mediaLoadFailed>
-                                <plainText featureText="plainText in mediaLoadFailed"/>
-                            </mediaLoadFailed>
-                            <mediaPlaybackStarted>
-                                <plainText featureText="plainText in mediaPlaybackStarted"/>
-                            </mediaPlaybackStarted>
-                            <mediaPlaybackComplete>
-                                <plainText featureText="plainText in mediaPlaybackComplete"/>
-                            </mediaPlaybackComplete>
-                        </groupResponseStimulusImage>
-                        <groupResponseFeedback>
-                            <responseCorrect>
-                                <plainText featureText="plainText in responseCorrect"/>
-                            </responseCorrect>
-                            <responseIncorrect>
-                                <plainText featureText="plainText in responseIncorrect"/>
-                            </responseIncorrect>
-                        </groupResponseFeedback>
-                        <groupScoreLabel/>
-                        <groupChannelScoreLabel/>
-                        <submitGroupEvent/>
-                        <plainText featureText="plainText in groupNetworkActivity"/>
-                    </groupNetworkActivity>
                 </groupNetwork>
                 <plainText featureText="plainText in hasMoreStimulus"/>
             </hasMoreStimulus>
@@ -3329,6 +3498,11 @@
         <playMedia mediaId="mediaId"/>
         <rewindMedia mediaId="mediaId"/>
         <pauseMedia mediaId="mediaId"/>
+        <showHtmlPopup featureText="showHtmlPopup">
+            <actionButton featureText="actionButton">
+                <plainText featureText="plainText in actionButton"/>
+            </actionButton>
+        </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
         <scoreLabel/>
         <clearCurrentScore/>
@@ -3362,6 +3536,7 @@
         <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes">
+        <showHtmlPopup featureText="showHtmlPopup"/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_minimal_attributes" type="colourReport" self="colourReport_minimal_attributesScreen" title="colourReport_minimal_attributes">
@@ -3412,6 +3587,11 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <showHtmlPopup featureText="showHtmlPopup">
+            <actionButton featureText="actionButton">
+                <plainText featureText="plainText in actionButton"/>
+            </actionButton>
+        </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
         <showColourReport>
             <aboveThreshold>
@@ -3488,6 +3668,11 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <showHtmlPopup featureText="showHtmlPopup">
+            <actionButton featureText="actionButton">
+                <plainText featureText="plainText in actionButton"/>
+            </actionButton>
+        </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="menu_minimal_attributes" type="menu" self="menu_minimal_attributesScreen" title="menu_minimal_attributes">
@@ -3541,6 +3726,11 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <showHtmlPopup featureText="showHtmlPopup">
+            <actionButton featureText="actionButton">
+                <plainText featureText="plainText in actionButton"/>
+            </actionButton>
+        </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="debug_minimal_attributes" type="debug" self="debug_minimal_attributesScreen" title="debug_minimal_attributes">
@@ -3593,6 +3783,11 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <showHtmlPopup featureText="showHtmlPopup">
+            <actionButton featureText="actionButton">
+                <plainText featureText="plainText in actionButton"/>
+            </actionButton>
+        </showHtmlPopup>
         <versionData/>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
@@ -3636,6 +3831,11 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <showHtmlPopup featureText="showHtmlPopup">
+            <actionButton featureText="actionButton">
+                <plainText featureText="plainText in actionButton"/>
+            </actionButton>
+        </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="timeline_minimal_attributes" type="timeline" self="timeline_minimal_attributesScreen" title="timeline_minimal_attributes">
@@ -3686,6 +3886,11 @@
             <plainText featureText="plainText in regionReplace"/>
         </regionReplace>
         <regionClear regionId="regionId"/>
+        <showHtmlPopup featureText="showHtmlPopup">
+            <actionButton featureText="actionButton">
+                <plainText featureText="plainText in actionButton"/>
+            </actionButton>
+        </showHtmlPopup>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter menuLabel="about" type="debug" self="about" title="about"/>
