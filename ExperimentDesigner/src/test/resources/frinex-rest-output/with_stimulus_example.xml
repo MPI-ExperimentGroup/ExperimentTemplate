@@ -2380,7 +2380,7 @@
                         <column>
                             <stimulusExists offset="-1">
                                 <conditionTrue>
-                                    <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="-1" styleName="" repeatIncorrect="false"/>
+                                    <prevStimulusButton featureText="Previous" eventTag="prevStimulusButton" hotKey="" styleName="" repeatIncorrect="false"/>
                                 </conditionTrue>
                                 <conditionFalse/>
                             </stimulusExists>
@@ -2388,7 +2388,7 @@
                         <column>
                             <stimulusExists offset="+1">
                                 <conditionTrue>
-                                    <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="-1" styleName="" repeatIncorrect="false"/>
+                                    <nextStimulusButton featureText="Next" eventTag="nextStimulusButton" hotKey="" styleName="" repeatIncorrect="false"/>
                                 </conditionTrue>
                                 <conditionFalse/>
                             </stimulusExists>
