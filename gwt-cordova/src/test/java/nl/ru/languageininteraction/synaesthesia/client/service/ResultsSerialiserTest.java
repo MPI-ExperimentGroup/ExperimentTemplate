@@ -17,11 +17,13 @@
  */
 package nl.ru.languageininteraction.synaesthesia.client.service;
 
+import java.text.SimpleDateFormat;
 import nl.mpi.tg.eg.experiment.client.service.synaesthesia.registration.ResultsSerialiser;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.TimeZone;
 import nl.mpi.tg.eg.experiment.client.exception.StimulusError;
 import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.frinex.common.model.Stimulus;
@@ -196,7 +198,9 @@ public class ResultsSerialiserTest {
         ResultsSerialiser instance = new ResultsSerialiser() {
             @Override
             protected String formatDate(Date date) {
-                return date.toString();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                dateFormat.setTimeZone(TimeZone.getTimeZone("CET"));
+                return dateFormat.format(date);
             }
 
             @Override
@@ -209,42 +213,42 @@ public class ResultsSerialiserTest {
                 return "\n";
             }
         };
-        String expResult = "postName@email	test-group-1	a1	Thu Jan 01 01:02:03 CET 1970	23.0	#ffffff	255	255	255\n"
-                + "postName@email	test-group-1	a1	Thu Jan 01 01:00:12 CET 1970	21.0	#000000	0	0	0\n"
-                + "postName@email	test-group-1	a1	Thu Jan 01 01:02:03 CET 1970	20.0	#807f7e	128	127	126\n"
-                + "postName@email	test-group-1	b1	Thu Jan 01 01:02:03 CET 1970	23.0	#ffffff	255	255	255\n"
-                + "postName@email	test-group-1	b1	Thu Jan 01 01:00:12 CET 1970	21.0	#000000	0	0	0\n"
-                + "postName@email	test-group-1	b1	Thu Jan 01 01:02:03 CET 1970	20.0	#807f7e	128	127	126\n"
-                + "postName@email	test-group-1	c1	Thu Jan 01 01:02:03 CET 1970	23.0	#ffffff	255	255	255\n"
-                + "postName@email	test-group-1	c1	Thu Jan 01 01:00:12 CET 1970	21.0	#000000	0	0	0\n"
-                + "postName@email	test-group-1	c1	Thu Jan 01 01:02:03 CET 1970	20.0	#807f7e	128	127	126\n"
-                + "postName@email	test-group-1	d1	Thu Jan 01 01:02:03 CET 1970	23.0	#ffffff	255	255	255\n"
-                + "postName@email	test-group-1	d1	Thu Jan 01 01:00:12 CET 1970	21.0	#000000	0	0	0\n"
-                + "postName@email	test-group-1	d1	Thu Jan 01 01:02:03 CET 1970	20.0	#807f7e	128	127	126\n"
-                + "postName@email	test-group-1	e1	Thu Jan 01 01:02:03 CET 1970	23.0	#ffffff	255	255	255\n"
-                + "postName@email	test-group-1	e1	Thu Jan 01 01:00:12 CET 1970	21.0	#000000	0	0	0\n"
-                + "postName@email	test-group-1	e1	Thu Jan 01 01:02:03 CET 1970	20.0	#807f7e	128	127	126\n"
-                + "postName@email	test-group-1	f1	Thu Jan 01 01:02:03 CET 1970	23.0	#ffffff	255	255	255\n"
-                + "postName@email	test-group-1	f1	Thu Jan 01 01:00:12 CET 1970	21.0	#000000	0	0	0\n"
-                + "postName@email	test-group-1	f1	Thu Jan 01 01:02:03 CET 1970	20.0	#807f7e	128	127	126\n"
-                + "postName@email	test-group-2	a2	Thu Jan 01 03:46:39 CET 1970	141.0	#ffff00	255	255	0\n"
-                + "postName@email	test-group-2	a2	Thu Jan 01 01:00:33 CET 1970	121.0	#ff00ff	255	0	255\n"
-                + "postName@email	test-group-2	a2	Thu Jan 01 01:01:51 CET 1970	12.0	#00ffff	0	255	255\n"
-                + "postName@email	test-group-2	b2	Thu Jan 01 03:46:39 CET 1970	141.0	#ffff00	255	255	0\n"
-                + "postName@email	test-group-2	b2	Thu Jan 01 01:00:33 CET 1970	121.0	#ff00ff	255	0	255\n"
-                + "postName@email	test-group-2	b2	Thu Jan 01 01:01:51 CET 1970	12.0	#00ffff	0	255	255\n"
-                + "postName@email	test-group-2	c2	Thu Jan 01 03:46:39 CET 1970	141.0	#ffff00	255	255	0\n"
-                + "postName@email	test-group-2	c2	Thu Jan 01 01:00:33 CET 1970	121.0	#ff00ff	255	0	255\n"
-                + "postName@email	test-group-2	c2	Thu Jan 01 01:01:51 CET 1970	12.0	#00ffff	0	255	255\n"
-                + "postName@email	test-group-2	d2	Thu Jan 01 03:46:39 CET 1970	141.0	#ffff00	255	255	0\n"
-                + "postName@email	test-group-2	d2	Thu Jan 01 01:00:33 CET 1970	121.0	#ff00ff	255	0	255\n"
-                + "postName@email	test-group-2	d2	Thu Jan 01 01:01:51 CET 1970	12.0	#00ffff	0	255	255\n"
-                + "postName@email	test-group-2	e2	Thu Jan 01 03:46:39 CET 1970	141.0	#ffff00	255	255	0\n"
-                + "postName@email	test-group-2	e2	Thu Jan 01 01:00:33 CET 1970	121.0	#ff00ff	255	0	255\n"
-                + "postName@email	test-group-2	e2	Thu Jan 01 01:01:51 CET 1970	12.0	#00ffff	0	255	255\n"
-                + "postName@email	test-group-2	f2	Thu Jan 01 03:46:39 CET 1970	141.0	#ffff00	255	255	0\n"
-                + "postName@email	test-group-2	f2	Thu Jan 01 01:00:33 CET 1970	121.0	#ff00ff	255	0	255\n"
-                + "postName@email	test-group-2	f2	Thu Jan 01 01:01:51 CET 1970	12.0	#00ffff	0	255	255\n";
+        String expResult = "postName@email	test-group-1	a1	1970-01-01T01:02:03	23.0	#ffffff	255	255	255\n"
+                + "postName@email	test-group-1	a1	1970-01-01T01:00:12	21.0	#000000	0	0	0\n"
+                + "postName@email	test-group-1	a1	1970-01-01T01:02:03	20.0	#807f7e	128	127	126\n"
+                + "postName@email	test-group-1	b1	1970-01-01T01:02:03	23.0	#ffffff	255	255	255\n"
+                + "postName@email	test-group-1	b1	1970-01-01T01:00:12	21.0	#000000	0	0	0\n"
+                + "postName@email	test-group-1	b1	1970-01-01T01:02:03	20.0	#807f7e	128	127	126\n"
+                + "postName@email	test-group-1	c1	1970-01-01T01:02:03	23.0	#ffffff	255	255	255\n"
+                + "postName@email	test-group-1	c1	1970-01-01T01:00:12	21.0	#000000	0	0	0\n"
+                + "postName@email	test-group-1	c1	1970-01-01T01:02:03	20.0	#807f7e	128	127	126\n"
+                + "postName@email	test-group-1	d1	1970-01-01T01:02:03	23.0	#ffffff	255	255	255\n"
+                + "postName@email	test-group-1	d1	1970-01-01T01:00:12	21.0	#000000	0	0	0\n"
+                + "postName@email	test-group-1	d1	1970-01-01T01:02:03	20.0	#807f7e	128	127	126\n"
+                + "postName@email	test-group-1	e1	1970-01-01T01:02:03	23.0	#ffffff	255	255	255\n"
+                + "postName@email	test-group-1	e1	1970-01-01T01:00:12	21.0	#000000	0	0	0\n"
+                + "postName@email	test-group-1	e1	1970-01-01T01:02:03	20.0	#807f7e	128	127	126\n"
+                + "postName@email	test-group-1	f1	1970-01-01T01:02:03	23.0	#ffffff	255	255	255\n"
+                + "postName@email	test-group-1	f1	1970-01-01T01:00:12	21.0	#000000	0	0	0\n"
+                + "postName@email	test-group-1	f1	1970-01-01T01:02:03	20.0	#807f7e	128	127	126\n"
+                + "postName@email	test-group-2	a2	1970-01-01T03:46:39	141.0	#ffff00	255	255	0\n"
+                + "postName@email	test-group-2	a2	1970-01-01T01:00:33	121.0	#ff00ff	255	0	255\n"
+                + "postName@email	test-group-2	a2	1970-01-01T01:01:51	12.0	#00ffff	0	255	255\n"
+                + "postName@email	test-group-2	b2	1970-01-01T03:46:39	141.0	#ffff00	255	255	0\n"
+                + "postName@email	test-group-2	b2	1970-01-01T01:00:33	121.0	#ff00ff	255	0	255\n"
+                + "postName@email	test-group-2	b2	1970-01-01T01:01:51	12.0	#00ffff	0	255	255\n"
+                + "postName@email	test-group-2	c2	1970-01-01T03:46:39	141.0	#ffff00	255	255	0\n"
+                + "postName@email	test-group-2	c2	1970-01-01T01:00:33	121.0	#ff00ff	255	0	255\n"
+                + "postName@email	test-group-2	c2	1970-01-01T01:01:51	12.0	#00ffff	0	255	255\n"
+                + "postName@email	test-group-2	d2	1970-01-01T03:46:39	141.0	#ffff00	255	255	0\n"
+                + "postName@email	test-group-2	d2	1970-01-01T01:00:33	121.0	#ff00ff	255	0	255\n"
+                + "postName@email	test-group-2	d2	1970-01-01T01:01:51	12.0	#00ffff	0	255	255\n"
+                + "postName@email	test-group-2	e2	1970-01-01T03:46:39	141.0	#ffff00	255	255	0\n"
+                + "postName@email	test-group-2	e2	1970-01-01T01:00:33	121.0	#ff00ff	255	0	255\n"
+                + "postName@email	test-group-2	e2	1970-01-01T01:01:51	12.0	#00ffff	0	255	255\n"
+                + "postName@email	test-group-2	f2	1970-01-01T03:46:39	141.0	#ffff00	255	255	0\n"
+                + "postName@email	test-group-2	f2	1970-01-01T01:00:33	121.0	#ff00ff	255	0	255\n"
+                + "postName@email	test-group-2	f2	1970-01-01T01:01:51	12.0	#00ffff	0	255	255\n";
         String result = instance.serialise(userResults, metadataFieldEmail);
         assertEquals(expResult, result);
     }
