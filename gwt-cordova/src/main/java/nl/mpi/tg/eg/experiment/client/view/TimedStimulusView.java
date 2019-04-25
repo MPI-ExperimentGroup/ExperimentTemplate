@@ -624,15 +624,6 @@ public class TimedStimulusView extends ComplexView {
                 addSizeAttributes(video.getElement(), percentOfPage, maxHeight, maxWidth);
             }
             getActivePanel().add(video);
-            if (oggPath != null) {
-                video.addSource(oggPath.asString(), "video/ogg");
-            }
-            if (ogvPath != null) {
-                video.addSource(ogvPath.asString(), "video/ogg");
-            }
-            if (mp4Path != null) {
-                video.addSource(mp4Path.asString(), "video/mp4");
-            }
             video.addCanPlayThroughHandler(new CanPlayThroughHandler() {
                 boolean hasTriggeredOnLoaded = false;
 
@@ -678,6 +669,16 @@ public class TimedStimulusView extends ComplexView {
                     }
                 }
             });
+            if (oggPath != null) {
+                video.addSource(oggPath.asString(), "video/ogg");
+            }
+            if (ogvPath != null) {
+                video.addSource(ogvPath.asString(), "video/ogg");
+            }
+            if (mp4Path != null) {
+                video.addSource(mp4Path.asString(), "video/mp4");
+            }
+
             if (!autoPlay) {
                 video.pause();
                 video.setCurrentTime(0);
