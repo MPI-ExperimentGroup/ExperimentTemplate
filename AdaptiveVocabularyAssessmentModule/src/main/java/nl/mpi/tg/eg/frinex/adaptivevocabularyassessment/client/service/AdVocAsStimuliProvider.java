@@ -119,6 +119,10 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
         this.nonwordsSource = nonwordsSource;
     }
 
+    public void setrandomise(String value) {
+
+    }
+
     public void setnonwordsPerBlock(String nonWrodsPerBlock) {
         this.nonWordsPerBlock = Integer.parseInt(nonWrodsPerBlock);
     }
@@ -241,7 +245,7 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
             // hit incorrect? 
             if (this.secondChanceFastTrackIsFired) {
                 retVal = false;
-                if (this.currentBandIndex >0 ) {
+                if (this.currentBandIndex > 0) {
                     this.currentBandIndex--;
                 }
             } else {
@@ -325,7 +329,8 @@ public class AdVocAsStimuliProvider extends BandStimuliProvider<AdVocAsStimulus>
     }
 
     @Override
-    protected void checkTimeOut() {}
+    protected void checkTimeOut() {
+    }
 
     @Override
     public String getStringFastTrack(String startRow, String endRow, String startColumn, String endColumn) {
