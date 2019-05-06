@@ -47,6 +47,34 @@
         .smallVideo {
         width: 100px;
         }
+        .hardwareLightSensorPadding {
+        display: block;
+        height: 225px;
+        }
+        .hardwareLightSensor1Show, .hardwareLightSensor2Show,
+        .hardwareLightSensor1Hide, .hardwareLightSensor2Hide,
+        .hardwareLightSensor1Outline, .hardwareLightSensor2Outline {
+        position: fixed;
+        left: 50%; 
+        height: 200px;
+        width: 200px;
+        }
+        .hardwareLightSensor1Show, .hardwareLightSensor1Hide, .hardwareLightSensor1Outline {
+            transform: translate(-125%,0);
+        }
+        .hardwareLightSensor2Show, .hardwareLightSensor2Hide, .hardwareLightSensor2Outline {
+            transform: translate(25%,0);
+        }
+        .hardwareLightSensor1Outline, .hardwareLightSensor2Outline {
+        border: 1px black solid;
+        }
+        .hardwareLightSensor1Show, .hardwareLightSensor2Show {
+        background: black;
+        display: block;
+        }
+        .hardwareLightSensor1Hide, .hardwareLightSensor2Hide {
+        display: none;
+        }
         $boxPositions: (
         ("10X15_30X60_45X60_75X90",10,15,30,60,45,60,75,90),
         ("45X10_15X60_75X30_60X90",45,10,15,60,75,30,60,90),
@@ -352,7 +380,7 @@
         </actionButton>
     </presenter>
     <presenter back="Menu" menuLabel="Sequential Display Example (using 7 separate timers)" type="stimulus" self="Sequential_Display_Example0_6" title="Sequential Display Example (using 7 separate timers)">
-        <loadStimulus eventTag="Sequential_Display_Example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+        <loadStimulus eventTag="Sequential_Display_Example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="10">
             <hasMoreStimulus>
                 <clearTimer listenerId="sequentialDisplayTimer0"/>
                 <clearTimer listenerId="sequentialDisplayTimer1"/>
@@ -362,20 +390,28 @@
                 <clearTimer listenerId="sequentialDisplayTimer5"/>
                 <clearTimer listenerId="sequentialDisplayTimer6"/>
                 <clearPage/>
-                <region regionId="crossLabelRegion" styleName="hiddenRegion">
+                <region regionId="hardwareLightSensor1Outline" styleName="hardwareLightSensor1Show">
+                    <htmlText featureText="sync" styleName="stimuliLabel"/>
+                </region>
+                <region regionId="hardwareLightSensor2Outline" styleName="hardwareLightSensor2Outline">
+                    <htmlText featureText="&amp;nbsp;" styleName="stimuliLabel"/>
+                </region>
+                <region regionId="crossLabelRegion" styleName="hardwareLightSensor1Hide">
                     <htmlText featureText="+" styleName="stimuliLabel"/>
                 </region>
-                <region regionId="stimuliLabelRegion" styleName="hiddenRegion">
+                <region regionId="stimuliLabelRegion" styleName="hardwareLightSensor2Hide">
                     <stimulusLabel styleName="stimuliLabel"/>
                 </region>
-                <actionButton groupId="respondButtonGroup" featureText="Respond [tab + enter]">
-                    <nextStimulus repeatIncorrect="false"/>
+                <region regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide"/>
+                <region regionId="paddingRegion" styleName="hardwareLightSensorPadding"/>
+                <actionButton groupId="respondButtonGroup" featureText="Respond [space]" hotKey="SPACE">
+                    <htmlTokenText featureText="respondButton &lt;sequentialDisplayTimer0&gt;ms"/>
                 </actionButton>
                 <disableButtonGroup matchingRegex="respondButtonGroup"/>
                 <stimulusAudio dataChannel="2" autoPlay="false" mediaId="stimulusAudioExample" showPlaybackIndicator="false">
                     <mediaLoaded>
                         <plainText featureText="stimulusAudioLoaded"/>
-                        <region regionId="stimuliVideoRegion" styleName="hiddenRegion">
+                        <regionReplace regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide">
                             <stimulusVideo loop="false" styleName="smallVideo" dataChannel="2" autoPlay="false" mediaId="stimulusVideoExample" showControls="false">
                                 <mediaLoaded>
                                     <plainText featureText="stimulusVideoLoaded"/>
@@ -387,27 +423,29 @@
                                     <clearTimer listenerId="sequentialDisplayTimer5"/>
                                     <clearTimer listenerId="sequentialDisplayTimer6"/>
                                     <startTimer msToNext="100" listenerId="sequentialDisplayTimer0">
-                                        <regionStyle regionId="crossLabelRegion" styleName=""/>
+                                        <regionStyle regionId="hardwareLightSensor1Outline" styleName="hardwareLightSensor1Outline"/>
+                                        <regionStyle regionId="crossLabelRegion" styleName="hardwareLightSensor1Outline"/>
                                         <htmlTokenText featureText="crossLabelShow (100) &lt;sequentialDisplayTimer0&gt;ms"/>
                                     </startTimer>
                                     <timerLabel listenerId="sequentialDisplayTimer0" msLabelFormat="mm:ss" msToNext="0" styleName="countDownLabel"/>
                                     <startTimer msToNext="350" listenerId="sequentialDisplayTimer1">
-                                        <regionStyle regionId="crossLabelRegion" styleName="hiddenRegion"/>
-                                        <regionStyle regionId="stimuliLabelRegion" styleName=""/>
+                                        <regionStyle regionId="crossLabelRegion" styleName="hardwareLightSensor1Hide"/>
+                                        <regionStyle regionId="stimuliLabelRegion" styleName="hardwareLightSensor2Show"/>
                                         <htmlTokenText featureText="stimuliLabelShow (350) &lt;sequentialDisplayTimer0&gt;ms"/>
                                     </startTimer>
                                     <startTimer msToNext="1350" listenerId="sequentialDisplayTimer2">
-                                        <regionStyle regionId="stimuliLabelRegion" styleName="hiddenRegion"/>
+                                        <regionStyle regionId="stimuliLabelRegion" styleName="hardwareLightSensor2Hide"/>
                                         <playMedia mediaId="stimulusAudioExample"/>
                                         <htmlTokenText featureText="stimuliLabelHide (1350) &lt;sequentialDisplayTimer0&gt;ms"/>
                                     </startTimer>
                                     <startTimer msToNext="2350" listenerId="sequentialDisplayTimer3">
                                         <!-- it is probably better to never hide the video but make sure the first frames are blank instead, but this assumption needs to be tested -->
-                                        <regionStyle regionId="stimuliVideoRegion" styleName=""/>
+                                        <regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Show"/>
                                         <playMedia mediaId="stimulusVideoExample"/>
+                                        <htmlTokenText featureText="stimuliVideoShow (2350) &lt;sequentialDisplayTimer0&gt;ms"/>
                                     </startTimer>
                                     <startTimer msToNext="3350" listenerId="sequentialDisplayTimer4">
-                                        <regionStyle regionId="stimuliVideoRegion" styleName="hiddenRegion"/>
+                                        <regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide"/>
                                         <htmlTokenText featureText="stimuliVideoHide (3350) &lt;sequentialDisplayTimer0&gt;ms"/>
                                     </startTimer>
                                     <startTimer msToNext="400" listenerId="sequentialDisplayTimer5">
@@ -418,7 +456,7 @@
                                         <disableButtonGroup matchingRegex="respondButtonGroup"/>
                                         <htmlTokenText featureText="respondButtonDisabled (3350) &lt;sequentialDisplayTimer0&gt;ms"/>
                                         <htmlTokenText featureText="all timer values &lt;sequentialDisplayTimer0&gt;ms &lt;sequentialDisplayTimer1&gt;ms &lt;sequentialDisplayTimer2&gt;ms &lt;sequentialDisplayTimer3&gt;ms &lt;sequentialDisplayTimer4&gt;ms &lt;sequentialDisplayTimer5&gt;ms &lt;sequentialDisplayTimer6&gt;ms"/>
-                                        <actionButton groupId="nextButtonGroup" featureText="Volgende [tab + enter]">
+                                        <actionButton groupId="nextButtonGroup" featureText="Volgende [space]" hotKey="SPACE">
                                             <nextStimulus repeatIncorrect="false"/>
                                         </actionButton>
                                     </startTimer>
@@ -427,23 +465,23 @@
                                     <plainText featureText="stimulusVideoFailed"/>
                                 </mediaLoadFailed>
                                 <mediaPlaybackStarted>
-                                    <htmlTokenText featureText="stimulusVideoPlaybackStarted &lt;sequentialDisplayTimer0&gt;ms"/>
+                                    <htmlTokenText featureText="stimulusVideoPlaybackStarted (2350) &lt;sequentialDisplayTimer0&gt;ms"/>
                                 </mediaPlaybackStarted>
                                 <mediaPlaybackComplete>
                                     <htmlTokenText featureText="stimulusVideoComplete &lt;sequentialDisplayTimer0&gt;ms"/>
                                 </mediaPlaybackComplete>
                             </stimulusVideo>  
-                        </region>
+                        </regionReplace>
                     </mediaLoaded>
                     <mediaLoadFailed>
                         <plainText featureText="stimulusAudioFailed"/>
                         <stimulusLabel/>
-                        <actionButton featureText="Skip">
+                        <actionButton featureText="Skip" hotKey="SPACE">
                             <nextStimulus repeatIncorrect="false"/>
                         </actionButton>
                     </mediaLoadFailed>
                     <mediaPlaybackStarted>
-                        <htmlTokenText featureText="stimulusAudioPlaybackStarted &lt;sequentialDisplayTimer0&gt;ms"/>
+                        <htmlTokenText featureText="stimulusAudioPlaybackStarted (1350) &lt;sequentialDisplayTimer0&gt;ms"/>
                     </mediaPlaybackStarted>
                     <mediaPlaybackComplete>
                         <htmlTokenText featureText="stimulusAudioComplete &lt;sequentialDisplayTimer0&gt;ms"/>
@@ -451,6 +489,7 @@
                 </stimulusAudio>
             </hasMoreStimulus>
             <endOfStimulus>
+                <clearPage/>
                 <actionButton featureText="resetStimulus">
                     <resetStimulus target="Sequential_Display_Example"/>
                     <gotoPresenter target="Sequential_Display_Example"/>
@@ -458,65 +497,80 @@
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
-                <tag>media</tag>
+                <tag>ToneVideos</tag>
             </stimuli>
         </loadStimulus>
     </presenter>
     <presenter back="Menu" menuLabel="Sequential Display Example (single timer)" type="stimulus" self="Sequential_Display_Example" title="Sequential Display Example (single timer)">
-        <loadStimulus eventTag="Sequential_Display_Example" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
+        <loadStimulus eventTag="Sequential_Display_Example" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="10">
             <hasMoreStimulus>
                 <clearTimer listenerId="sequentialDisplayTimer"/>
                 <clearPage/>
                 <timerLabel listenerId="sequentialDisplayTimer" msLabelFormat="mm:ss" msToNext="0" styleName="countDownLabel"/>
-                <region regionId="crossLabelRegion" styleName="hiddenRegion">
+                <region regionId="hardwareLightSensor1Outline" styleName="hardwareLightSensor1Show">
+                    <htmlText featureText="sync" styleName="stimuliLabel"/>
+                </region>
+                <region regionId="hardwareLightSensor2Outline" styleName="hardwareLightSensor2Outline">
+                    <htmlText featureText="&amp;nbsp;" styleName="stimuliLabel"/>
+                </region>
+                <region regionId="crossLabelRegion" styleName="hardwareLightSensor1Hide">
                     <htmlText featureText="+" styleName="stimuliLabel"/>
                 </region>
-                <region regionId="stimuliLabelRegion" styleName="hiddenRegion">
+                <region regionId="stimuliLabelRegion" styleName="hardwareLightSensor2Hide">
                     <stimulusLabel styleName="stimuliLabel"/>
                 </region>
-                <actionButton groupId="respondButtonGroup" featureText="Respond [tab + enter]">
-                    <nextStimulus repeatIncorrect="false"/>
+                <region regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide"/>
+                <region regionId="paddingRegion" styleName="hardwareLightSensorPadding"/>
+                <actionButton groupId="respondButtonGroup" featureText="Respond [space]" hotKey="SPACE">
+                    <htmlTokenText featureText="respondButton &lt;sequentialDisplayTimer&gt;ms"/>
                 </actionButton>
                 <disableButtonGroup matchingRegex="respondButtonGroup"/>
+                <stimulusLabel/>
+                <showStimulusProgress/>
                 <stimulusAudio dataChannel="2" autoPlay="false" mediaId="stimulusAudioExample" showPlaybackIndicator="false">
                     <mediaLoaded>
                         <plainText featureText="stimulusAudioLoaded"/>
-                        <region regionId="stimuliVideoRegion" styleName="hiddenRegion">
+                        <regionReplace regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide">
                             <stimulusVideo loop="false" styleName="smallVideo" dataChannel="2" autoPlay="false" mediaId="stimulusVideoExample" showControls="false">
                                 <mediaLoaded>
                                     <plainText featureText="stimulusVideoLoaded"/>
                                     <clearTimer listenerId="sequentialDisplayTimer"/>
                                     <startTimer msToNext="100" listenerId="sequentialDisplayTimer">
-                                        <regionStyle regionId="crossLabelRegion" styleName=""/>
+                                        <regionStyle regionId="hardwareLightSensor1Outline" styleName="hardwareLightSensor1Outline"/>
+                                        <regionStyle regionId="crossLabelRegion" styleName="hardwareLightSensor1Outline"/>
                                         <htmlTokenText featureText="crossLabelShow (100) &lt;sequentialDisplayTimer&gt;ms"/>
                                     </startTimer>
                                     <startTimer msToNext="350" listenerId="sequentialDisplayTimer">
-                                        <regionStyle regionId="crossLabelRegion" styleName="hiddenRegion"/>
-                                        <regionStyle regionId="stimuliLabelRegion" styleName=""/>
+                                        <regionStyle regionId="crossLabelRegion" styleName="hardwareLightSensor1Hide"/>
+                                        <regionStyle regionId="stimuliLabelRegion" styleName="hardwareLightSensor2Show"/>
                                         <htmlTokenText featureText="stimuliLabelShow (350) &lt;sequentialDisplayTimer&gt;ms"/>
                                     </startTimer>
-                                    <startTimer msToNext="1350" listenerId="sequentialDisplayTimer">
-                                        <regionStyle regionId="stimuliLabelRegion" styleName="hiddenRegion"/>
+                                    <startTimer msToNext="500" listenerId="sequentialDisplayTimer">
+                                        <regionStyle regionId="stimuliLabelRegion" styleName="hardwareLightSensor2Hide"/>
+                                        <htmlTokenText featureText="stimuliLabelHide (500) &lt;sequentialDisplayTimer&gt;ms"/>
+                                    </startTimer>
+                                    <startTimer msToNext="1000" listenerId="sequentialDisplayTimer">
                                         <playMedia mediaId="stimulusAudioExample"/>
-                                        <htmlTokenText featureText="stimuliLabelHide (1350) &lt;sequentialDisplayTimer&gt;ms"/>
+                                        <htmlTokenText featureText="play audio request (1000) &lt;sequentialDisplayTimer&gt;ms"/>
                                     </startTimer>
-                                    <startTimer msToNext="2350" listenerId="sequentialDisplayTimer">
+                                    <startTimer msToNext="7000" listenerId="sequentialDisplayTimer">
                                         <!-- it is probably better to never hide the video but make sure the first frames are blank instead -->
-                                        <regionStyle regionId="stimuliVideoRegion" styleName=""/>
+                                        <!--<regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Show"/>-->
                                         <playMedia mediaId="stimulusVideoExample"/>
+                                        <htmlTokenText featureText="stimuliVideoPlay (7000) &lt;sequentialDisplayTimer&gt;ms"/>
                                     </startTimer>
-                                    <startTimer msToNext="3350" listenerId="sequentialDisplayTimer">
-                                        <regionStyle regionId="stimuliVideoRegion" styleName="hiddenRegion"/>
-                                        <htmlTokenText featureText="stimuliVideoHide (3350) &lt;sequentialDisplayTimer&gt;ms"/>
+                                    <startTimer msToNext="11000" listenerId="sequentialDisplayTimer">
+                                        <!--<regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide"/>-->
+                                        <htmlTokenText featureText="stimuliVideoHide (11000) &lt;sequentialDisplayTimer&gt;ms"/>
                                     </startTimer>
                                     <startTimer msToNext="400" listenerId="sequentialDisplayTimer">
                                         <enableButtonGroup matchingRegex="respondButtonGroup"/>
                                         <htmlTokenText featureText="respondButtonEnabled (400) &lt;sequentialDisplayTimer&gt;ms"/>
                                     </startTimer>
-                                    <startTimer msToNext="3350" listenerId="sequentialDisplayTimer">
+                                    <startTimer msToNext="13000" listenerId="sequentialDisplayTimer">
                                         <disableButtonGroup matchingRegex="respondButtonGroup"/>
-                                        <htmlTokenText featureText="respondButtonDisabled (3350) &lt;sequentialDisplayTimer&gt;ms"/>
-                                        <actionButton groupId="nextButtonGroup" featureText="Volgende [tab + enter]">
+                                        <htmlTokenText featureText="respondButtonDisabled (13000) &lt;sequentialDisplayTimer&gt;ms"/>
+                                        <actionButton groupId="nextButtonGroup" featureText="Volgende [space]" hotKey="SPACE">
                                             <nextStimulus repeatIncorrect="false"/>
                                         </actionButton>
                                     </startTimer>
@@ -525,23 +579,25 @@
                                     <plainText featureText="stimulusVideoFailed"/>
                                 </mediaLoadFailed>
                                 <mediaPlaybackStarted>
-                                    <htmlTokenText featureText="stimulusVideoPlaybackStarted &lt;sequentialDisplayTimer&gt;ms"/>
+                                    <regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Show"/>
+                                    <htmlTokenText featureText="stimulusVideoPlaybackStarted and show (7000) &lt;sequentialDisplayTimer&gt;ms"/>
                                 </mediaPlaybackStarted>
                                 <mediaPlaybackComplete>
-                                    <htmlTokenText featureText="stimulusVideoComplete &lt;sequentialDisplayTimer&gt;ms"/>
+                                    <regionStyle regionId="stimuliVideoRegion" styleName="hardwareLightSensor2Hide"/>
+                                    <htmlTokenText featureText="stimulusVideoComplete and hide &lt;sequentialDisplayTimer&gt;ms"/>
                                 </mediaPlaybackComplete>
                             </stimulusVideo>  
-                        </region>
+                        </regionReplace>
                     </mediaLoaded>
                     <mediaLoadFailed>
                         <plainText featureText="stimulusAudioFailed"/>
                         <stimulusLabel/>
-                        <actionButton featureText="Skip">
+                        <actionButton featureText="Skip" hotKey="SPACE">
                             <nextStimulus repeatIncorrect="false"/>
                         </actionButton>
                     </mediaLoadFailed>
                     <mediaPlaybackStarted>
-                        <htmlTokenText featureText="stimulusAudioPlaybackStarted &lt;sequentialDisplayTimer&gt;ms"/>
+                        <htmlTokenText featureText="stimulusAudioPlaybackStarted (1000) &lt;sequentialDisplayTimer&gt;ms"/>
                     </mediaPlaybackStarted>
                     <mediaPlaybackComplete>
                         <htmlTokenText featureText="stimulusAudioComplete &lt;sequentialDisplayTimer&gt;ms"/>
@@ -549,6 +605,7 @@
                 </stimulusAudio>
             </hasMoreStimulus>
             <endOfStimulus>
+                <clearPage/>
                 <actionButton featureText="resetStimulus">
                     <resetStimulus target="Sequential_Display_Example"/>
                     <gotoPresenter target="Sequential_Display_Example"/>
@@ -556,7 +613,7 @@
             </endOfStimulus>
             <randomGrouping/>
             <stimuli>
-                <tag>media</tag>
+                <tag>ToneVideos</tag>
             </stimuli>
         </loadStimulus>
     </presenter>
@@ -2985,28 +3042,33 @@
         <stimulus identifier="RecorderPauseTest8000" label="8000" pauseMs="8000" tags="RecorderPauseTest"/>
         <stimulus identifier="RecorderPauseTest9000" label="9000" pauseMs="9000" tags="RecorderPauseTest"/>
         <stimulus identifier="RecorderPauseTest10000" label="10000" pauseMs="10000" tags="RecorderPauseTest"/>
-        <stimulus audioPath="d1e269" code="d1e269" identifier="d1e269" imagePath="d1e269.jpg" label="d1e269" pauseMs="0" tags="media" videoPath="d1e269"/>
-        <stimulus audioPath="d1e235" code="d1e235" identifier="d1e235" imagePath="d1e235.jpg" label="d1e235" pauseMs="0" tags="media" videoPath="d1e235"/>
-        <stimulus audioPath="d1e241" code="d1e241" identifier="d1e241" imagePath="d1e241.jpg" label="d1e241" pauseMs="0" tags="media" videoPath="d1e241"/>
-        <stimulus audioPath="d1e247" code="d1e247" identifier="d1e247" imagePath="d1e247.jpg" label="d1e247" pauseMs="0" tags="media" videoPath="d1e247"/>
-        <stimulus audioPath="d1e253" code="d1e253" identifier="d1e253" imagePath="d1e253.jpg" label="d1e253" pauseMs="0" tags="media" videoPath="d1e253"/>
-        <stimulus audioPath="d1e259" code="d1e259" identifier="d1e259" imagePath="d1e259.jpg" label="d1e259" pauseMs="0" tags="media" videoPath="d1e259"/>
-        <stimulus audioPath="d1e266" code="d1e266" identifier="d1e266" imagePath="d1e266.jpg" label="d1e266" pauseMs="0" tags="media" videoPath="d1e266"/>
-        <stimulus audioPath="d1e272" code="d1e272" identifier="d1e272" imagePath="d1e272.jpg" label="d1e272" pauseMs="0" tags="media" videoPath="d1e272"/>
-        <stimulus audioPath="d1e278" code="d1e278" identifier="d1e278" imagePath="d1e278.jpg" label="d1e278" pauseMs="0" tags="media" videoPath="d1e278"/>
-        <stimulus audioPath="d1e284" code="d1e284" identifier="d1e284" imagePath="d1e284.jpg" label="d1e284" pauseMs="0" tags="media" videoPath="d1e284"/>
-        <stimulus audioPath="d1e290" code="d1e290" identifier="d1e290" imagePath="d1e290.jpg" label="d1e290" pauseMs="0" tags="media" videoPath="d1e290"/>
-        <stimulus audioPath="d1e228" code="d1e228" identifier="d1e228" imagePath="d1e228.jpg" label="d1e228" pauseMs="0" tags="media" videoPath="d1e228"/>
-        <stimulus audioPath="d1e238" code="d1e238" identifier="d1e238" imagePath="d1e238.jpg" label="d1e238" pauseMs="0" tags="media" videoPath="d1e238"/>
-        <stimulus audioPath="d1e244" code="d1e244" identifier="d1e244" imagePath="d1e244.jpg" label="d1e244" pauseMs="0" tags="media" videoPath="d1e244"/>
-        <stimulus audioPath="d1e250" code="d1e250" identifier="d1e250" imagePath="d1e250.jpg" label="d1e250" pauseMs="0" tags="media" videoPath="d1e250"/>
-        <stimulus audioPath="d1e256" code="d1e256" identifier="d1e256" imagePath="d1e256.jpg" label="d1e256" pauseMs="0" tags="media" videoPath="d1e256"/>
-        <stimulus audioPath="d1e263" code="d1e263" identifier="d1e263" imagePath="d1e263.jpg" label="d1e263" pauseMs="0" tags="media" videoPath="d1e263"/>
-        <stimulus audioPath="d1e275" code="d1e275" identifier="d1e275" imagePath="d1e275.jpg" label="d1e275" pauseMs="0" tags="media" videoPath="d1e275"/>
-        <stimulus audioPath="d1e281" code="d1e281" identifier="d1e281" imagePath="d1e281.jpg" label="d1e281" pauseMs="0" tags="media" videoPath="d1e281"/>
-        <stimulus audioPath="d1e287" code="d1e287" identifier="d1e287" imagePath="d1e287.jpg" label="d1e287" pauseMs="0" tags="media" videoPath="d1e287"/>
-        <stimulus audioPath="d1e293" code="d1e293" identifier="d1e293" imagePath="d1e293.jpg" label="d1e293" pauseMs="0" tags="media" videoPath="d1e293"/>
-        <stimulus audioPath="d1e223" code="d1e223" identifier="d1e223" imagePath="d1e223.jpg" label="d1e223" pauseMs="0" tags="media" videoPath="d1e223"/>
+        <stimulus audioPath="d1e269_a" code="d1e269" identifier="d1e269" imagePath="d1e269.jpg" label="d1e269" pauseMs="0" tags="media" videoPath="d1e269_v"/>
+        <stimulus audioPath="d1e235_a" code="d1e235" identifier="d1e235" imagePath="d1e235.jpg" label="d1e235" pauseMs="0" tags="media" videoPath="d1e235_v"/>
+        <stimulus audioPath="d1e241_a" code="d1e241" identifier="d1e241" imagePath="d1e241.jpg" label="d1e241" pauseMs="0" tags="media" videoPath="d1e241_v"/>
+        <stimulus audioPath="d1e247_a" code="d1e247" identifier="d1e247" imagePath="d1e247.jpg" label="d1e247" pauseMs="0" tags="media" videoPath="d1e247_v"/>
+        <stimulus audioPath="d1e253_a" code="d1e253" identifier="d1e253" imagePath="d1e253.jpg" label="d1e253" pauseMs="0" tags="media" videoPath="d1e253_v"/>
+        <stimulus audioPath="d1e259_a" code="d1e259" identifier="d1e259" imagePath="d1e259.jpg" label="d1e259" pauseMs="0" tags="media" videoPath="d1e259_v"/>
+        <stimulus audioPath="d1e266_a" code="d1e266" identifier="d1e266" imagePath="d1e266.jpg" label="d1e266" pauseMs="0" tags="media" videoPath="d1e266_v"/>
+        <stimulus audioPath="d1e272_a" code="d1e272" identifier="d1e272" imagePath="d1e272.jpg" label="d1e272" pauseMs="0" tags="media" videoPath="d1e272_v"/>
+        <stimulus audioPath="d1e278_a" code="d1e278" identifier="d1e278" imagePath="d1e278.jpg" label="d1e278" pauseMs="0" tags="media" videoPath="d1e278_v"/>
+        <stimulus audioPath="d1e284_a" code="d1e284" identifier="d1e284" imagePath="d1e284.jpg" label="d1e284" pauseMs="0" tags="media" videoPath="d1e284_v"/>
+        <stimulus audioPath="d1e290_a" code="d1e290" identifier="d1e290" imagePath="d1e290.jpg" label="d1e290" pauseMs="0" tags="media" videoPath="d1e290_v"/>
+        <stimulus audioPath="d1e228_a" code="d1e228" identifier="d1e228" imagePath="d1e228.jpg" label="d1e228" pauseMs="0" tags="media" videoPath="d1e228_v"/>
+        <stimulus audioPath="d1e238_a" code="d1e238" identifier="d1e238" imagePath="d1e238.jpg" label="d1e238" pauseMs="0" tags="media" videoPath="d1e238_v"/>
+        <stimulus audioPath="d1e244_a" code="d1e244" identifier="d1e244" imagePath="d1e244.jpg" label="d1e244" pauseMs="0" tags="media" videoPath="d1e244_v"/>
+        <stimulus audioPath="d1e250_a" code="d1e250" identifier="d1e250" imagePath="d1e250.jpg" label="d1e250" pauseMs="0" tags="media" videoPath="d1e250_v"/>
+        <stimulus audioPath="d1e256_a" code="d1e256" identifier="d1e256" imagePath="d1e256.jpg" label="d1e256" pauseMs="0" tags="media" videoPath="d1e256_v"/>
+        <stimulus audioPath="d1e263_a" code="d1e263" identifier="d1e263" imagePath="d1e263.jpg" label="d1e263" pauseMs="0" tags="media" videoPath="d1e263_v"/>
+        <stimulus audioPath="d1e275_a" code="d1e275" identifier="d1e275" imagePath="d1e275.jpg" label="d1e275" pauseMs="0" tags="media" videoPath="d1e275_v"/>
+        <stimulus audioPath="d1e281_a" code="d1e281" identifier="d1e281" imagePath="d1e281.jpg" label="d1e281" pauseMs="0" tags="media" videoPath="d1e281_v"/>
+        <stimulus audioPath="d1e287_a" code="d1e287" identifier="d1e287" imagePath="d1e287.jpg" label="d1e287" pauseMs="0" tags="media" videoPath="d1e287_v"/>
+        <stimulus audioPath="d1e293_a" code="d1e293" identifier="d1e293" imagePath="d1e293.jpg" label="d1e293" pauseMs="0" tags="media" videoPath="d1e293_v"/>
+        <stimulus audioPath="d1e223_a" code="d1e223" identifier="d1e223" imagePath="d1e223.jpg" label="d1e223" pauseMs="0" tags="media" videoPath="d1e223_v"/>
+        <stimulus audioPath="100ms_a" code="100ms" identifier="100ms" imagePath="100ms.jpg" label="100ms" pauseMs="100" tags="ToneVideos" videoPath="100ms_v"/>
+        <stimulus audioPath="500ms_a" code="500ms" identifier="500ms" imagePath="500ms.jpg" label="500ms" pauseMs="500" tags="ToneVideos" videoPath="500ms_v"/>
+        <stimulus audioPath="1000ms_a" code="1000ms" identifier="1000ms" imagePath="1000ms.jpg" label="1000ms" pauseMs="1000" tags="ToneVideos" videoPath="1000ms_v"/>
+        <stimulus audioPath="2000ms_a" code="2000ms" identifier="2000ms" imagePath="2000ms.jpg" label="2000ms" pauseMs="2000" tags="ToneVideos" videoPath="2000ms_v"/>
+        <stimulus audioPath="5000ms_a" code="5000ms" identifier="5000ms" imagePath="5000ms.jpg" label="5000ms" pauseMs="5000" tags="ToneVideos" videoPath="5000ms_v"/>
         <stimulus audioPath="missing" code="missing" identifier="missing" imagePath="missing.jpg" label="this stimuli has no media files and when loaded as audio or video should trigger an error should be handled nicely" pauseMs="0" tags="media" videoPath="missing"/>
         <stimulus identifier="R1" label="Speak the word &lt;b&gt;'continue'&lt;/b&gt; into the microphone, then after speaking press 'continue'" correctResponses="continue" ratingLabels="continue,arrête,thème,récurrent" pauseMs="0" tags="RecordingQualityTest"/>
         <stimulus identifier="R2" label="Speak the word &lt;b&gt;'arrête'&lt;/b&gt; into the microphone, then after speaking press 'continue'" correctResponses="arrête" ratingLabels="continue,arrête,thème,récurrent" pauseMs="0" tags="RecordingQualityTest"/>
