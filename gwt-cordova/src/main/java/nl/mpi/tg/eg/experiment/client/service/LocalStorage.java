@@ -68,6 +68,10 @@ public class LocalStorage {
         return dataStore;
     }
 
+    public int getStorageLength() {
+        return loadStorage().getStorageLength();
+    }
+
     public void clearUserData(UserId userId) {
         loadStorage();
         // todo: it would be good to do this on an application basis
