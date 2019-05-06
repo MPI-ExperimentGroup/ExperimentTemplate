@@ -775,7 +775,7 @@ public abstract class BandStimuliProvider<A extends BandStimulus> extends Abstra
         stringBuilder.append(startColumn).append(bandLabelScore).append(endColumn);
         if (this.fastTrackPresent) {
             String bandLabelFastTrack = this.bandIndexToLabel(this.bestIndexBandFastTrack);
-            if (Integer.getInteger(bandLabelFastTrack) < this.startBand) {
+            if (Integer.parseInt(bandLabelFastTrack) < this.startBand) {
                 bandLabelFastTrack = "NA";
             }
             stringBuilder.append(startColumn).append(bandLabelFastTrack).append(endColumn);
