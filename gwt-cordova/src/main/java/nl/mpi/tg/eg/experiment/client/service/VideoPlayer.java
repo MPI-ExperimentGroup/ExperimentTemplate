@@ -26,9 +26,31 @@ import nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener;
  */
 public class VideoPlayer {
 
-    public native void addNativeCallbacks(final VideoElement videoElement, final CancelableStimulusListener playbackStartedStimulusListener) /*-{
+    public native void addNativeCallbacks(final TimedEventMonitor timedEventMonitor, final VideoElement videoElement, final CancelableStimulusListener playbackStartedStimulusListener) /*-{
      videoElement.addEventListener("play", function(){
+     timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)("Video_play");
      playbackStartedStimulusListener.@nl.mpi.tg.eg.experiment.client.listener.CancelableStimulusListener::postLoadTimerFired()();
+     }, false);            
+     videoElement.addEventListener("loadstart", function(){
+     timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)("Video_loadstart");
+     }, false);
+     videoElement.addEventListener("durationchange", function(){
+     timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)("Video_durationchange");
+     }, false);
+     videoElement.addEventListener("loadedmetadata", function(){
+     timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)("Video_loadedmetadata");
+     }, false);
+     videoElement.addEventListener("loadeddata", function(){
+     timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)("Video_loadeddata");
+     }, false);
+     videoElement.addEventListener("progress", function(){
+     timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)("Video_progress");
+     }, false);
+     videoElement.addEventListener("canplay", function(){
+     timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)("Video_canplay");
+     }, false);
+     videoElement.addEventListener("canplaythrough", function(){
+     timedEventMonitor.@nl.mpi.tg.eg.experiment.client.service.TimedEventMonitor::registerEvent(Ljava/lang/String;)("Video_canplaythrough");
      }, false);
      }-*/;
 }
