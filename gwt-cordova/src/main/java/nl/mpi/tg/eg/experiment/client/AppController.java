@@ -209,6 +209,7 @@ public abstract class AppController implements AppEventListner/*, AudioException
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "navigator.platform", Window.Navigator.getPlatform(), 0);
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "navigator.userAgent", Window.Navigator.getUserAgent(), 0);
             submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "navigator.cookieEnabled", Boolean.toString(Window.Navigator.isCookieEnabled()), 0);
+            submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "storageLength", Integer.toString(localStorage.getStorageLength()), 0);
             if (hasCordova()) {
                 // cordova specific information
                 submissionService.submitTagValue(userResults.getUserData().getUserId(), "ApplicationStarted", "cordovaVersion", getCordovaVersion(), 0);
