@@ -645,7 +645,7 @@ public class TimedStimulusView extends ComplexView {
                     }
                 }
             });
-            new VideoPlayer().addNativeCallbacks(video.getVideoElement(), playbackStartedStimulusListener);
+            new VideoPlayer().addNativeCallbacks(timedEventMonitor, video.getVideoElement(), playbackStartedStimulusListener);
 //            todo: move the video handling code from here into the VideoPlayer class, in such a way is it can be used like the AudioPlayer class of the same package
             video.addEndedHandler(new EndedHandler() {
                 private boolean triggered = false;
