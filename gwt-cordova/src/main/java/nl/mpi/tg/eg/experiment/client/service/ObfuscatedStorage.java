@@ -37,6 +37,11 @@ public class ObfuscatedStorage {
         this.appNameInternal = obfuscateString(appNameInternal, appNameInternal);
     }
 
+    public int getStorageLength() {
+        // we could check the size of each item, but for now the length is enough
+        return dataStore.getLength();
+    }
+
     private String processString(String storageKey, String input) {
         if (enableObfuscation) {
             while (input.length() < 50) {
