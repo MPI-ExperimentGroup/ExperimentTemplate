@@ -728,7 +728,7 @@ public class BandStimuliProviderTest {
         String startColumn = "";
         String endColumn = ";";
         String result = this.instance.getStringSummary(startRow, endRow, startColumn, endColumn);
-        String expResult = "Score;BestFastTrack;Cycel2oscillation;EnoughFineTuningStimuli;Champion;Looser;\n0;0;false;true;false;false;\n";
+        String expResult = "Score;BestFastTrack;Cycel2oscillation;EnoughFineTuningStimuli;Champion;Looser;\n0;NA;false;true;false;false;\n";
         assertEquals(expResult, result);
 
         this.instance.setfastTrackPresent("false");
