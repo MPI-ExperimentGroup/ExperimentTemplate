@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<!--
+Copyright (C) 2019 Max Planck Institute for Psycholinguistics, Nijmegen
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+-->
+<!--
+ * @since 7 May 2019 15:14 PM (creation date)
+ * @author Peter Withers <peter.withers@mpi.nl>
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <title>Event Chart</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link type="text/css" rel="stylesheet" href="adminpages.css"/>
+        <script src="webjars/jquery/jquery.min.js"></script>
+        <script src="webjars/chartjs/Chart.min.js"></script>
+        <!--<script th:replace="fragments/adminpagelayout :: tableHeaderScript"></script>-->
+    </head>
+    <body>
+        <div th:replace="fragments/adminpagelayout :: header"></div>
+        <p th:text="'Activity Count, ' + ${count}" />
+        <!--<div th:replace="fragments/adminpagelayout :: pagemenu"></div>-->
+        <div style="width:95%">
+            <canvas id="canvas"></canvas>
+        </div>
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            var timeStampLabels = /*[[${timeStampLabels}]]*/ null;
+            var color = Chart.helpers.color;
+            var eventChartData = {
+                yLabels: timeStampLabels,
+                datasets: [{
+                        borderColor: 'red',
+                        backgroundColor: color('red').alpha(0.5).rgbString(),
+                        label: 'Participants',
+                        data: []
+                    }]
+            };
+            window.onload = function () {
+                var ctx = document.getElementById('canvas').getContext('2d');
+                window.eventChart = Chart.Scatter(ctx, {
+                    data: eventChartData,
+                    options: {
+                        title: {
+                            display: true,
+                            text: 'Timestamp Events'
+                        },
+                        scales: {
+                            xAxes: [{
+                                    type: 'linear',
+                                    position: 'bottom',
+                                    ticks: {
+                                        userCallback: function (tick) {
+                                            var remain = tick / (Math.pow(10, Math.floor(Chart.helpers.log10(tick))));
+                                            if (remain === 1 || remain === 2 || remain === 5) {
+                                                return tick.toString() + 'ms';
+                                            }
+                                            return '';
+                                        },
+                                    },
+                                    display: true,
+                                    scaleLabel: {
+                                        labelString: 'ms',
+                                        display: true,
+                                    }
+                                }],
+                            yAxes: [{
+                                    type: 'category',
+                                    display: true,
+                                    scaleLabel: {
+                                        labelString: 'Event',
+                                        display: true
+                                    }
+                                }]
+                        }
+                    }
+                });
+                $.getJSON("timestamps?page=0&size=2000", function (data) {
+                    $.each(data._embedded.timestamps, function (key, timeStamp) {
+                        eventChartData.datasets[0].data.push({'x': timeStamp.eventMs, 'y': timeStamp.eventTag});
+                    });
+                    eventChart.update();
+                });
+            };
+            /*]]>*/
+        </script>
+    </body>
+</html>
