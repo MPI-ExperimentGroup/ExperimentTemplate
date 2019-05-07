@@ -17,6 +17,9 @@
  */
 package nl.mpi.tg.eg.frinex.rest;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,5 +40,20 @@ public class TimeStampController {
         model.addAttribute("count", this.timeStampRepository.count());
         model.addAttribute("allTimeStampData", this.timeStampRepository.findAllDistinctRecords());
         return "timestampviewer";
+    }
+
+    @RequestMapping("eventchart")
+    public String eventChart(Model model) {
+        model.addAttribute("count", this.timeStampRepository.count());
+        model.addAttribute("allTimeStampData", this.timeStampRepository.findAllDistinctRecords());
+        final List<String> cleanedDistinctEventTag = new ArrayList<>();
+        for (String item : this.timeStampRepository.findDistinctEventTag()) {
+            if (!item.startsWith("http")) {
+                cleanedDistinctEventTag.add(item);
+            }
+        }
+        Collections.sort(cleanedDistinctEventTag);
+        model.addAttribute("timeStampLabels", cleanedDistinctEventTag);
+        return "eventchart";
     }
 }
