@@ -40,6 +40,9 @@ public interface TimeStampRepository extends PagingAndSortingRepository<TimeStam
 
     @Query("select distinct new TimeStamp(userId, eventTag, eventMs, tagDate) from TimeStamp where userId = :userId and eventTag = :eventTag order by tagDate asc, eventMs asc")
     List<TimeStamp> findByUserIdAndEventTagOrderByTagDateAsc(@Param("userId") String userId, @Param("eventTag") String eventTag);
+    
+    @Query("select distinct eventTag from TimeStamp order by eventTag")
+    List<String> findDistinctEventTag();
 
     @Override
     @RestResource(exported = false)
