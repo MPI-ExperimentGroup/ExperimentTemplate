@@ -52,11 +52,11 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         </select>
         Page Size:
         <input type="number" id="pageSize" value="1000"/>
-        Page Index:
+        Start Page:
         <input type="number" id="pageIndex" value="0"/>
         <br/>
         <div id="pageInfo"/>
-        <button onclick="generateChart($('#startOnValue option:selected').val(), $('#zeroOnValue option:selected').val(), $('#stopOnValue option:selected').val(), $('#pageSize').val(), $('#pageIndex').val())">Generate Chart</button>
+        <button onclick="generateChart($('#startOnValue option:selected').val(), $('#zeroOnValue option:selected').val(), $('#stopOnValue option:selected').val(), $('#pageSize').val(), $('#pageIndex').val(), {})">Generate Chart</button>
         <div style="width:95%">
             <canvas id="canvas"></canvas>
         </div>
@@ -113,14 +113,16 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     }
                 });
             };
-            function generateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex) {
+            function generateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, processedData) {
                 $("body").append(startOnValue + ", " + zeroOnValue + ", " + stopOnValue + ", " + pageSize + ", " + pageIndex + "<br/>");
-                var processedData = {};
+                if (jQuery.isEmptyObject(processedData)) {
+                    $("#pageInfo").html("");
+                }
                 $.getJSON("timestamps?page=" + pageIndex + "&size=" + pageSize, function (data) {
-                    
+
                     $("#pageSize").val(data.page.size);
-                    $("#pageIndex").val(data.page.number);
-                    $("#pageInfo").html("page "+data.page.number+" of "+data.page.totalPages+" pages");
+//                    $("#pageIndex").val(data.page.number);
+                    $("#pageInfo").append("page " + data.page.number + " of " + data.page.totalPages + " pages<br/>");
                     $.each(data._embedded.timestamps, function (key, timeStamp) {
                         if (typeof (processedData[timeStamp.userId]) === 'undefined') {
                             processedData[timeStamp.userId] = {started: false, offset: timeStamp.eventMs, data: []};
@@ -145,18 +147,22 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             }
                         }
                     });
-                    eventChartData.datasets = [];
-                    $.each(processedData, function (key, data) {
-                        if (data.data.length > 0) {
-                            eventChartData.datasets.push({
-                                borderColor: 'red',
-                                backgroundColor: color('red').alpha(0.5).rgbString(),
-                                label: key,
-                                data: data.data
-                            });
-                        }
-                    });
-                    eventChart.update();
+                    if (data.page.number < data.page.totalPages) {
+                        generateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, ++pageIndex, processedData);
+                    } else {
+                        eventChartData.datasets = [];
+                        $.each(processedData, function (key, data) {
+                            if (data.data.length > 0) {
+                                eventChartData.datasets.push({
+                                    borderColor: 'red',
+                                    backgroundColor: color('red').alpha(0.5).rgbString(),
+                                    label: key,
+                                    data: data.data
+                                });
+                            }
+                        });
+                        eventChart.update();
+                    }
                 });
             }
             /*]]>*/
