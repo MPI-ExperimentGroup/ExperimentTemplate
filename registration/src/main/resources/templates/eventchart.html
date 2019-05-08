@@ -54,6 +54,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <input type="number" id="pageSize" value="1000"/>
         Page Index:
         <input type="number" id="pageIndex" value="0"/>
+        <br/>
+        <div id="pageInfo"/>
         <button onclick="generateChart($('#startOnValue option:selected').val(), $('#zeroOnValue option:selected').val(), $('#stopOnValue option:selected').val(), $('#pageSize').val(), $('#pageIndex').val())">Generate Chart</button>
         <div style="width:95%">
             <canvas id="canvas"></canvas>
@@ -115,28 +117,43 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 $("body").append(startOnValue + ", " + zeroOnValue + ", " + stopOnValue + ", " + pageSize + ", " + pageIndex + "<br/>");
                 var processedData = {};
                 $.getJSON("timestamps?page=" + pageIndex + "&size=" + pageSize, function (data) {
+                    
+                    $("#pageSize").val(data.page.size);
+                    $("#pageIndex").val(data.page.number);
+                    $("#pageInfo").html("page "+data.page.number+" of "+data.page.totalPages+" pages");
                     $.each(data._embedded.timestamps, function (key, timeStamp) {
-                        if (typeof(processedData[timeStamp.userId]) === 'undefined') {
-                            processedData[timeStamp.userId] = {started: false, offset: timeStamp.eventMs};
+                        if (typeof (processedData[timeStamp.userId]) === 'undefined') {
+                            processedData[timeStamp.userId] = {started: false, offset: timeStamp.eventMs, data: []};
                         }
                         if (timeStamp.eventTag === startOnValue) {
                             processedData[timeStamp.userId].started = true;
-                            $("body").append("started: " + timeStamp.eventTag+ ", " + timeStamp.eventMs + "<br/>");
+                            $("body").append("started: " + timeStamp.eventTag + ", " + timeStamp.eventMs + "<br/>");
                         } else if (timeStamp.eventTag === zeroOnValue) {
                             processedData[timeStamp.userId].offset = timeStamp.eventMs;
-                            $("body").append("set zero: " + timeStamp.eventTag+ ", " + timeStamp.eventMs + "<br/>");
+                            $("body").append("set zero: " + timeStamp.eventTag + ", " + timeStamp.eventMs + "<br/>");
                         } else if (timeStamp.eventTag === stopOnValue) {
                             processedData[timeStamp.userId].started = false;
-                            $("body").append("stopped: " + timeStamp.eventTag+ ", " + timeStamp.eventMs + "<br/>");
+                            $("body").append("stopped: " + timeStamp.eventTag + ", " + timeStamp.eventMs + "<br/>");
                         }
                         if (processedData[timeStamp.userId].started) {
                             var correctedMs = timeStamp.eventMs - processedData[timeStamp.userId].offset;
                             if (correctedMs >= 0) {
-                                $("body").append("<div style='color:green'>consumed: " + timeStamp.eventTag+ ", " + timeStamp.eventMs + "</div>");
-                                eventChartData.datasets[0].data.push({'x': correctedMs, 'y': timeStamp.eventTag});
+                                $("body").append("<div style='color:green'>consumed: " + timeStamp.eventTag + ", " + timeStamp.eventMs + "</div>");
+                                processedData[timeStamp.userId].data.push({'x': correctedMs, 'y': timeStamp.eventTag});
                             } else {
-                                $("body").append("<div style='color:red>'discarded: " + timeStamp.eventTag+ ", " + timeStamp.eventMs + "</div>");
+                                $("body").append("<div style='color:red>'discarded: " + timeStamp.eventTag + ", " + timeStamp.eventMs + "</div>");
                             }
+                        }
+                    });
+                    eventChartData.datasets = [];
+                    $.each(processedData, function (key, data) {
+                        if (data.data.length > 0) {
+                            eventChartData.datasets.push({
+                                borderColor: 'red',
+                                backgroundColor: color('red').alpha(0.5).rgbString(),
+                                label: key,
+                                data: data.data
+                            });
                         }
                     });
                     eventChart.update();
