@@ -181,7 +181,7 @@ public class TimedStimulusView extends ComplexView {
             @Override
             public void onError(ErrorEvent event) {
                 if (timedEventMonitor != null) {
-                    timedEventMonitor.registerEvent("onError");
+                    timedEventMonitor.registerEvent("imageOnError");
                 }
                 failedStimulusListener.postLoadTimerFired();
             }
@@ -191,7 +191,7 @@ public class TimedStimulusView extends ComplexView {
             @Override
             public void onLoad(LoadEvent event) {
                 if (timedEventMonitor != null) {
-                    timedEventMonitor.registerEvent("onLoad");
+                    timedEventMonitor.registerEvent("imageOnLoad");
                 }
                 image.setVisible(true);
                 if (onLoadStimulusListener != null) {
@@ -631,7 +631,7 @@ public class TimedStimulusView extends ComplexView {
                 public void onCanPlayThrough(CanPlayThroughEvent event) {
                     if (!hasTriggeredOnLoaded) {
                         if (timedEventMonitor != null) {
-                            timedEventMonitor.registerEvent("onCanPlayThrough");
+                            timedEventMonitor.registerEvent("videoCanPlayThrough");
                         }
                         hasTriggeredOnLoaded = true;
                         loadedStimulusListener.postLoadTimerFired();
@@ -653,7 +653,7 @@ public class TimedStimulusView extends ComplexView {
                 @Override
                 public void onEnded(EndedEvent event) {
                     if (timedEventMonitor != null) {
-                        timedEventMonitor.registerEvent("onEnded");
+                        timedEventMonitor.registerEvent("videoEnded");
                         timedEventMonitor.registerMediaLength(mediaId, (long) (video.getCurrentTime() * 1000));
                     }
                     // prevent multiple triggering
