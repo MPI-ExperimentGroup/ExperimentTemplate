@@ -78,12 +78,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             var color = Chart.helpers.color;
             var eventChartData = {
                 yLabels: timeStampLabels,
-                datasets: [{
-                        borderColor: 'red',
-                        backgroundColor: color('red').alpha(0.5).rgbString(),
-                        label: 'Participants',
-                        data: []
-                    }]
+                datasets: []
             };
             window.onload = function () {
                 var ctx = document.getElementById('canvas').getContext('2d');
@@ -163,11 +158,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         generateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, ++pageIndex, includeValues, processedData);
                     } else {
                         eventChartData.datasets = [];
+                        var colourIndex = 130;
                         $.each(processedData, function (key, data) {
                             if (data.data.length > 0) {
+                                colourIndex += 1;
                                 eventChartData.datasets.push({
-                                    borderColor: 'red',
-                                    backgroundColor: color('red').alpha(0.5).rgbString(),
+                                    borderColor: 'hsl(' + ((colourIndex * 25) % 360) + ',100%,50%,0.5)',
+                                    backgroundColor: 'hsl(' + ((colourIndex * 25) % 360) + ',100%,50%,0.5)',
                                     label: key,
                                     data: data.data
                                 });
