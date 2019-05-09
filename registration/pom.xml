@@ -235,6 +235,11 @@
             <artifactId>font-awesome</artifactId>
             <version>5.7.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>chartjs</artifactId>
+            <version>2.7.3</version>
+        </dependency>
     </dependencies>
     <reporting>                                                                              
         <plugins>                                                                            
