@@ -158,13 +158,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         generateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, ++pageIndex, includeValues, processedData);
                     } else {
                         eventChartData.datasets = [];
-                        var colourIndex = 130;
+                        var colourIndex = 80;
                         $.each(processedData, function (key, data) {
                             if (data.data.length > 0) {
                                 colourIndex += 1;
                                 eventChartData.datasets.push({
-                                    borderColor: 'hsl(' + ((colourIndex * 25) % 360) + ',100%,50%,0.5)',
-                                    backgroundColor: 'hsl(' + ((colourIndex * 25) % 360) + ',100%,50%,0.5)',
+                                    borderColor: 'hsl(' + ((colourIndex * 30) % 360) + ',100%,50%,0.5)',
+                                    backgroundColor: 'hsl(' + ((colourIndex * 30) % 360) + ',100%,50%,0.5)',
                                     label: key,
                                     data: data.data
                                 });
