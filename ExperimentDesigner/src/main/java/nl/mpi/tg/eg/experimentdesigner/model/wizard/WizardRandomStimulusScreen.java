@@ -378,8 +378,8 @@ public class WizardRandomStimulusScreen extends AbstractWizardScreen {
         loadStimuliFeature.addFeatureAttributes(FeatureAttribute.maxStimuli, Integer.toString(storedWizardScreenData.getStimuliCount()));
         presenterFeatureList.add(loadStimuliFeature);
         final PresenterFeature hasMoreStimulusFeature = new PresenterFeature(FeatureType.hasMoreStimulus, null);
+        hasMoreStimulusFeature.addFeature(FeatureType.clearPage, null);
         if (isShowProgress(storedWizardScreenData)) {
-            hasMoreStimulusFeature.addFeature(FeatureType.clearPage, null);
             hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.showStimulusProgress, null));
             hasMoreStimulusFeature.getPresenterFeatureList().add(new PresenterFeature(FeatureType.addPadding, null));
         }
