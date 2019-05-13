@@ -58,23 +58,30 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <input type="text" id="endDate" value="2019-10-08T17:17"/>
         <br/>
         <br/>
-        Include:
+        Include With Offset:
         <!--        <span th:each="labelValue : ${timeStampLabels}">
                     <input type="checkbox" th:id="${labelValue}" th:value="${labelValue}" checked="checked" />
                     <label th:text="${labelValue}" />
                 </span>-->
-        <select id="includeValues" multiple="multiple">
-            <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" selected="selected"></option>
+        <select id="includeValuesOffset" multiple="multiple">
+            <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'audioStarted','audioEnded','videoPlay','videoEnded'}, labelValue)}"></option>
         </select>
         <br/>
         <br/>
+        Include Without Offset:
+        <select id="includeValuesOriginal" multiple="multiple">
+            <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'Offset1','Offset2','Offset3','Offset4','Onset1','Onset2','Onset3','Onset4','Opto1_onset','Opto1_offset'}, labelValue)}"></option>
+        </select>
+        <br/>
+        <br/>
+        
         Page Size:
         <input type="number" id="pageSize" value="1000"/>
         Start Page:
         <input type="number" id="pageIndex" value="0"/>
         <br/>
         <div id="pageInfo"/>
-        <button onclick="generateChart($('#startOnValue option:selected').val(), $('#zeroOnValue option:selected').val(), $('#stopOnValue option:selected').val(), $('#pageSize').val(), $('#pageIndex').val(), $('#includeValues').val(), $('#startDate').val(), $('#endDate').val(), {})">Generate Chart</button>
+        <button onclick="generateChart($('#startOnValue option:selected').val(), $('#zeroOnValue option:selected').val(), $('#stopOnValue option:selected').val(), $('#pageSize').val(), $('#pageIndex').val(), $('#includeValuesOffset').val(), $('#includeValuesOriginal').val(), $('#startDate').val(), $('#endDate').val(), {})">Generate Chart</button>
         <div style="width:95%">
             <canvas id="canvas"></canvas>
         </div>
@@ -126,7 +133,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                     }
                 });
             };
-            function generateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValues, startDate, endDate, processedData) {
+            function generateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData) {
                 $("body").append(startOnValue + ", " + zeroOnValue + ", " + stopOnValue + ", " + pageSize + ", " + pageIndex + "<br/>");
                 if (jQuery.isEmptyObject(processedData)) {
                     $("#pageInfo").html("<span id='donePages'/><span id='ofPages'/>");
@@ -151,8 +158,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             $("body").append("stopped: " + timeStamp.eventTag + ", " + timeStamp.eventMs + "<br/>");
                         }
                         if (processedData[timeStamp.userId].started) {
-                            var correctedMs = timeStamp.eventMs - processedData[timeStamp.userId].offset;
-                            if (correctedMs >= 0 && includeValues.includes(timeStamp.eventTag)
+                            var correctedMs = (includeValuesOffset.includes(timeStamp.eventTag)) ? timeStamp.eventMs - processedData[timeStamp.userId].offset : processedData[timeStamp.userId].offset;
+                            if (correctedMs >= 0 
+                                    && (includeValuesOffset.includes(timeStamp.eventTag) || includeValuesOriginal.includes(timeStamp.eventTag))
                                     && timeStamp.tagDate > startDate && timeStamp.tagDate < endDate) {
                                 $("body").append("<div style='color:green'>consumed: " + timeStamp.eventTag + ", " + timeStamp.eventMs + ", " + correctedMs + "</div>");
                                 processedData[timeStamp.userId].data.push({'x': correctedMs, 'y': timeStamp.eventTag});
@@ -162,7 +170,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         }
                     });
                     if (data.page.number < data.page.totalPages) {
-                        generateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, ++pageIndex, includeValues, startDate, endDate, processedData);
+                        generateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, ++pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData);
                     } else {
                         eventChartData.datasets = [];
                         var colourIndex = 80;
