@@ -52,7 +52,7 @@ public class TimeStampController {
                 cleanedDistinctEventTag.add(item);
             }
         }
-        Collections.sort(cleanedDistinctEventTag);
+        Collections.sort(cleanedDistinctEventTag, String.CASE_INSENSITIVE_ORDER);
         model.addAttribute("timeStampLabels", cleanedDistinctEventTag);
         return "eventchart";
     }
