@@ -35,21 +35,39 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <div th:replace="fragments/adminpagelayout :: header"></div>
         <p th:text="'Activity Count, ' + ${count}" />
         <!--<div th:replace="fragments/adminpagelayout :: pagemenu"></div>-->
-        Start On:
-        <select id="startOnValue">
-            <option value="0">select start marker</option>
-            <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${labelValue eq 'Sequential_Display_Example'}">></option>
-        </select>
-        Zero On:
-        <select id="zeroOnValue">
-            <option value="0">select zero marker</option>
-            <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${labelValue eq 'addTimedAudio'}">></option>
-        </select>
-        Stop On:
-        <select id="stopOnValue">
-            <option value="0">select stop marker</option>
-            <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${labelValue eq 'First Stimuli Screen'}">></option>
-        </select>
+        <table>
+            <tr>
+                <td>
+                    Start On:
+                </td>
+                <td>
+                    Zero On:
+                </td>
+                <td>
+                    Stop On:
+                </td>
+            </tr>            
+            <tr>
+                <td>
+                    <select id="startOnValue" multiple="multiple">
+                        <option value="0">select start marker</option>
+                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'Sequential_Display_Example','Onset1'}, labelValue)}"></option>
+                    </select>
+                </td>
+                <td>
+                    <select id="zeroOnValue" multiple="multiple">
+                        <option value="0">select zero marker</option>
+                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${labelValue eq 'addTimedAudio'}"></option>
+                    </select>
+                </td>
+                <td>
+                    <select id="stopOnValue" multiple="multiple">
+                        <option value="0">select stop marker</option>
+                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${labelValue eq 'First Stimuli Screen'}"></option>
+                    </select>        
+                </td>
+            </tr>
+        </table>
         <br/>
         <br/>
         Start Date:
@@ -92,7 +110,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <input type="number" id="pageIndex" value="0"/>
         <br/>
         <div id="pageInfo"/>
-        <button onclick="generateChart($('#startOnValue option:selected').val(), $('#zeroOnValue option:selected').val(), $('#stopOnValue option:selected').val(), $('#pageSize').val(), $('#pageIndex').val(), $('#includeValuesOffset').val(), $('#includeValuesOriginal').val(), $('#startDate').val(), $('#endDate').val(), {})">Generate Chart</button>
+        <button onclick="generateChart($('#startOnValue').val(), $('#zeroOnValue').val(), $('#stopOnValue').val(), $('#pageSize').val(), $('#pageIndex').val(), $('#includeValuesOffset').val(), $('#includeValuesOriginal').val(), $('#startDate').val(), $('#endDate').val(), {})">Generate Chart</button>
         <div style="width:95%">
             <canvas id="canvas"></canvas>
         </div>
@@ -167,13 +185,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         if (typeof (processedData[timeStamp.userId]) === 'undefined') {
                             processedData[timeStamp.userId] = {started: false, offset: timeStamp.eventMs, data: []};
                         }
-                        if (timeStamp.eventTag === startOnValue) {
+                        if (startOnValue.includes(timeStamp.eventTag)) {
                             processedData[timeStamp.userId].started = true;
                             $("#outputDiv").append("started: " + timeStamp.eventTag + ", " + timeStamp.eventMs + "<br/>");
-                        } else if (timeStamp.eventTag === zeroOnValue) {
+                        }
+                        if (zeroOnValue.includes(timeStamp.eventTag)) {
                             processedData[timeStamp.userId].offset = timeStamp.eventMs;
                             $("#outputDiv").append("set zero: " + timeStamp.eventTag + ", " + timeStamp.eventMs + "<br/>");
-                        } else if (timeStamp.eventTag === stopOnValue) {
+                        }
+                        if (stopOnValue.includes(timeStamp.eventTag)) {
                             processedData[timeStamp.userId].started = false;
                             $("#outputDiv").append("stopped: " + timeStamp.eventTag + ", " + timeStamp.eventMs + "<br/>");
                         }
