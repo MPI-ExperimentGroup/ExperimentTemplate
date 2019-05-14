@@ -58,23 +58,34 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <input type="text" id="endDate" value="2019-10-08T17:17"/>
         <br/>
         <br/>
-        Include With Offset:
-        <!--        <span th:each="labelValue : ${timeStampLabels}">
-                    <input type="checkbox" th:id="${labelValue}" th:value="${labelValue}" checked="checked" />
-                    <label th:text="${labelValue}" />
-                </span>-->
-        <select id="includeValuesOffset" multiple="multiple">
-            <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'audioStarted','audioEnded','videoPlay','videoEnded'}, labelValue)}"></option>
-        </select>
+        <table>
+            <tr>
+                <td>
+                    Include With Offset:
+                </td>
+                <td>
+                    Include Without Offset:
+                </td>
+            </tr>            
+            <tr>
+                <td>
+                    <!--        <span th:each="labelValue : ${timeStampLabels}">
+                                <input type="checkbox" th:id="${labelValue}" th:value="${labelValue}" checked="checked" />
+                                <label th:text="${labelValue}" />
+                            </span>-->
+                    <select id="includeValuesOffset" multiple="multiple">
+                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'audioStarted','audioEnded','videoPlay','videoEnded'}, labelValue)}"></option>
+                    </select>
+                </td>
+                <td>
+                    <select id="includeValuesOriginal" multiple="multiple">
+                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'Offset1','Offset2','Offset3','Offset4','Onset1','Onset2','Onset3','Onset4','Opto1_onset','Opto1_offset'}, labelValue)}"></option>
+                    </select>
+                </td>
+            </tr>
+        </table>
         <br/>
-        <br/>
-        Include Without Offset:
-        <select id="includeValuesOriginal" multiple="multiple">
-            <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'Offset1','Offset2','Offset3','Offset4','Onset1','Onset2','Onset3','Onset4','Opto1_onset','Opto1_offset'}, labelValue)}"></option>
-        </select>
-        <br/>
-        <br/>
-        
+
         Page Size:
         <input type="number" id="pageSize" value="1000"/>
         Start Page:
@@ -85,15 +96,19 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <div style="width:95%">
             <canvas id="canvas"></canvas>
         </div>
+        <div id="outputDiv"/>
         <script th:inline="javascript">
             /*<![CDATA[*/
             var timeStampLabels = /*[[${timeStampLabels}]]*/ null;
             var color = Chart.helpers.color;
             var eventChartData = {
-                yLabels: timeStampLabels,
+                yLabels: [],
                 datasets: []
             };
-            window.onload = function () {
+            function createChart(includeValuesOffset, includeValuesOriginal) {
+                var chartLabels = includeValuesOffset.concat(includeValuesOriginal);
+                chartLabels.sort();
+                eventChartData.yLabels = jQuery.unique(chartLabels);
                 var ctx = document.getElementById('canvas').getContext('2d');
                 window.eventChart = Chart.Scatter(ctx, {
                     data: eventChartData,
@@ -132,10 +147,15 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         }
                     }
                 });
-            };
+            }
             function generateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData) {
-                $("body").append(startOnValue + ", " + zeroOnValue + ", " + stopOnValue + ", " + pageSize + ", " + pageIndex + "<br/>");
+                createChart(includeValuesOffset, includeValuesOriginal);
+                populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData);
+            }
+            function populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData) {
+                $("#outputDiv").append(startOnValue + ", " + zeroOnValue + ", " + stopOnValue + ", " + pageSize + ", " + pageIndex + "<br/>");
                 if (jQuery.isEmptyObject(processedData)) {
+                    $("#outputDiv").html("");
                     $("#pageInfo").html("<span id='donePages'/><span id='ofPages'/>");
                 }
                 $.getJSON("timestamps?page=" + pageIndex + "&size=" + pageSize, function (data) {
@@ -149,28 +169,28 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                         }
                         if (timeStamp.eventTag === startOnValue) {
                             processedData[timeStamp.userId].started = true;
-                            $("body").append("started: " + timeStamp.eventTag + ", " + timeStamp.eventMs + "<br/>");
+                            $("#outputDiv").append("started: " + timeStamp.eventTag + ", " + timeStamp.eventMs + "<br/>");
                         } else if (timeStamp.eventTag === zeroOnValue) {
                             processedData[timeStamp.userId].offset = timeStamp.eventMs;
-                            $("body").append("set zero: " + timeStamp.eventTag + ", " + timeStamp.eventMs + "<br/>");
+                            $("#outputDiv").append("set zero: " + timeStamp.eventTag + ", " + timeStamp.eventMs + "<br/>");
                         } else if (timeStamp.eventTag === stopOnValue) {
                             processedData[timeStamp.userId].started = false;
-                            $("body").append("stopped: " + timeStamp.eventTag + ", " + timeStamp.eventMs + "<br/>");
+                            $("#outputDiv").append("stopped: " + timeStamp.eventTag + ", " + timeStamp.eventMs + "<br/>");
                         }
                         if (processedData[timeStamp.userId].started) {
                             var correctedMs = (includeValuesOffset.includes(timeStamp.eventTag)) ? timeStamp.eventMs - processedData[timeStamp.userId].offset : processedData[timeStamp.userId].offset;
-                            if (correctedMs >= 0 
+                            if (correctedMs >= 0
                                     && (includeValuesOffset.includes(timeStamp.eventTag) || includeValuesOriginal.includes(timeStamp.eventTag))
                                     && timeStamp.tagDate > startDate && timeStamp.tagDate < endDate) {
-                                $("body").append("<div style='color:green'>consumed: " + timeStamp.eventTag + ", " + timeStamp.eventMs + ", " + correctedMs + "</div>");
+                                $("#outputDiv").append("<div style='color:green'>consumed: " + timeStamp.eventTag + ", " + timeStamp.eventMs + ", " + correctedMs + "</div>");
                                 processedData[timeStamp.userId].data.push({'x': correctedMs, 'y': timeStamp.eventTag});
                             } else {
-                                $("body").append("<div style='color:red>'discarded: " + timeStamp.eventTag + ", " + timeStamp.eventMs + ", " + correctedMs + "</div>");
+                                $("#outputDiv").append("<div style='color:red>'discarded: " + timeStamp.eventTag + ", " + timeStamp.eventMs + ", " + correctedMs + "</div>");
                             }
                         }
                     });
                     if (data.page.number < data.page.totalPages) {
-                        generateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, ++pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData);
+                        setTimeout(populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, ++pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData), 0);
                     } else {
                         eventChartData.datasets = [];
                         var colourIndex = 80;
