@@ -198,7 +198,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             $("#outputDiv").append("stopped: " + timeStamp.eventTag + ", " + timeStamp.eventMs + "<br/>");
                         }
                         if (processedData[timeStamp.userId].started) {
-                            var correctedMs = (includeValuesOffset.includes(timeStamp.eventTag)) ? timeStamp.eventMs - processedData[timeStamp.userId].offset : processedData[timeStamp.userId].offset;
+                            var correctedMs = (includeValuesOffset.includes(timeStamp.eventTag)) ? timeStamp.eventMs - processedData[timeStamp.userId].offset : timeStamp.eventMs;
                             if (correctedMs >= 0
                                     && (includeValuesOffset.includes(timeStamp.eventTag) || includeValuesOriginal.includes(timeStamp.eventTag))
                                     && timeStamp.tagDate > startDate && timeStamp.tagDate < endDate) {
