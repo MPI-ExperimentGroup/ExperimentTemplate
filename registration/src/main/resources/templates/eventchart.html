@@ -51,13 +51,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <td>
                     <select id="startOnValue" multiple="multiple">
                         <option value="0">select start marker</option>
-                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'Sequential_Display_Example','Onset1'}, labelValue)}"></option>
+                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'Sequential_Display_Example','Offset1'}, labelValue)}"></option>
                     </select>
                 </td>
                 <td>
                     <select id="zeroOnValue" multiple="multiple">
                         <option value="0">select zero marker</option>
-                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${labelValue eq 'addTimedAudio'}"></option>
+                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'stimulusLabel_in',audioStarted','videoPlay'}"></option>
                     </select>
                 </td>
                 <td>
@@ -71,7 +71,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <br/>
         <br/>
         Start Date:
-        <input type="text" id="startDate" value="2019-05-08T14:08"/>
+        <input type="text" id="startDate" value="2019-05-14T10:00"/>
         End Date:
         <input type="text" id="endDate" value="2019-10-08T17:17"/>
         <br/>
@@ -92,12 +92,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 <label th:text="${labelValue}" />
                             </span>-->
                     <select id="includeValuesOffset" multiple="multiple">
-                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'audioStarted','audioEnded','videoPlay','videoEnded'}, labelValue)}"></option>
+                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'stimulusLabel_in','stimulusLabel_out','audioStarted','audioEnded','videoPlay','videoEnded'}, labelValue)}"></option>
                     </select>
                 </td>
                 <td>
                     <select id="includeValuesOriginal" multiple="multiple">
-                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'Offset1','Offset2','Offset3','Offset4','Onset1','Onset2','Onset3','Onset4','Opto1_onset','Opto1_offset'}, labelValue)}"></option>
+                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'Offset1','Offset2','Offset3','Offset4','Onset1','Onset2','Onset3','Onset4','Opto1_onset','Opto1_offset','stimulusAudioExample','stimulusVideoExample'}, labelValue)}"></option>
                     </select>
                 </td>
             </tr>
@@ -105,9 +105,9 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
         <br/>
 
         Page Size:
-        <input type="number" id="pageSize" value="1000"/>
+        <input type="number" id="pageSize" value="200"/>
         Start Page:
-        <input type="number" id="pageIndex" value="0"/>
+        <input type="number" id="pageIndex" value="40"/>
         <br/>
         <div id="pageInfo"/>
         <button onclick="generateChart($('#startOnValue').val(), $('#zeroOnValue').val(), $('#stopOnValue').val(), $('#pageSize').val(), $('#pageIndex').val(), $('#includeValuesOffset').val(), $('#includeValuesOriginal').val(), $('#startDate').val(), $('#endDate').val(), {})">Generate Chart</button>
@@ -127,6 +127,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 var chartLabels = includeValuesOffset.concat(includeValuesOriginal);
                 chartLabels.sort();
                 eventChartData.yLabels = jQuery.unique(chartLabels);
+                eventChartData.datasets = [];
                 var ctx = document.getElementById('canvas').getContext('2d');
                 window.eventChart = Chart.Scatter(ctx, {
                     data: eventChartData,
@@ -168,13 +169,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
             }
             function generateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData) {
                 createChart(includeValuesOffset, includeValuesOriginal);
+                    $("#outputDiv").html("");
+                    $("#pageInfo").html("<span id='donePages'/><span id='ofPages'/>");
                 populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData);
             }
             function populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData) {
                 $("#outputDiv").append(startOnValue + ", " + zeroOnValue + ", " + stopOnValue + ", " + pageSize + ", " + pageIndex + "<br/>");
                 if (jQuery.isEmptyObject(processedData)) {
-                    $("#outputDiv").html("");
-                    $("#pageInfo").html("<span id='donePages'/><span id='ofPages'/>");
                 }
                 $.getJSON("timestamps?page=" + pageIndex + "&size=" + pageSize, function (data) {
                     $("#pageSize").val(data.page.size);
