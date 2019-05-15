@@ -57,7 +57,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <td>
                     <select id="zeroOnValue" multiple="multiple">
                         <option value="0">select zero marker</option>
-                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'stimulusLabel_in','audioStarted','videoPlay'}"></option>
+                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'stimulusLabel_in','audioStarted','videoPlay'}, labelValue)}"></option>
                     </select>
                 </td>
                 <td>
