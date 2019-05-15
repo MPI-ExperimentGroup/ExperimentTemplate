@@ -51,13 +51,13 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <td>
                     <select id="startOnValue" multiple="multiple">
                         <option value="0">select start marker</option>
-                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'Sequential_Display_Example','Offset1'}, labelValue)}"></option>
+                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'Sequential_Display_Example','Offset1','OnsetOpto1'}, labelValue)}"></option>
                     </select>
                 </td>
                 <td>
                     <select id="zeroOnValue" multiple="multiple">
                         <option value="0">select zero marker</option>
-                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'stimulusLabel_in','audioStarted','videoPlay'}, labelValue)}"></option>
+                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'stimulusLabel_in','audioStarted','videoPlay','OnsetAudio'}, labelValue)}"></option>
                     </select>
                 </td>
                 <td>
@@ -92,12 +92,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                                 <label th:text="${labelValue}" />
                             </span>-->
                     <select id="includeValuesOffset" multiple="multiple">
-                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'stimulusLabel_in','stimulusLabel_out','audioStarted','audioEnded','videoPlay','videoEnded'}, labelValue)}"></option>
+                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'OffsetAudio','stimulusLabel_in','stimulusLabel_out','audioStarted','audioEnded','videoPlay','videoEnded'}, labelValue)}"></option>
                     </select>
                 </td>
                 <td>
                     <select id="includeValuesOriginal" multiple="multiple">
-                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'Offset1','Offset2','Offset3','Offset4','Onset1','Onset2','Onset3','Onset4','Opto1_onset','Opto1_offset','stimulusAudioExample','stimulusVideoExample'}, labelValue)}"></option>
+                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'stimulusAudioExample','stimulusVideoExample'}, labelValue)}"></option>
                     </select>
                 </td>
             </tr>
