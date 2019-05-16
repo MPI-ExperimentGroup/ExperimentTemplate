@@ -491,7 +491,7 @@ public class TimedStimulusView extends ComplexView {
 
             @Override
             public boolean isValid() {
-                if (validationRegex == null || getValue().matches(validationRegex)) {
+                if ((getValue().length() <= inputLengthLimit + 2) && (validationRegex == null || getValue().matches(validationRegex))) {
                     textBox.setStylePrimaryName("metadataOK");
                     errorLabel.setVisible(false);
                     return true;
