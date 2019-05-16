@@ -19,6 +19,7 @@ package nl.mpi.tg.eg.frinex.model;
 
 import java.util.Date;
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -43,6 +44,7 @@ public class StimulusResponse {
     private String screenName;
     private Integer dataChannel;
     private String stimulusId;
+    @Column(length = 1024)
     private String response;
     private Boolean isCorrect;
     private String userId;
