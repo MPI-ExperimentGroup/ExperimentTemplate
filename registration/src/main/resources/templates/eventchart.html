@@ -63,7 +63,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 <td>
                     <select id="stopOnValue" multiple="multiple">
                         <option value="0">select stop marker</option>
-                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${labelValue eq 'First Stimuli Screen'}"></option>
+                        <option th:each="labelValue : ${timeStampLabels}" th:value="${labelValue}" th:text="${labelValue}" th:selected="${#arrays.contains({'stimulusLabel_out','First Stimuli Screen'}, labelValue)}"></option>
                     </select>        
                 </td>
             </tr>
@@ -174,7 +174,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                 populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData);
             }
             function populateChart(startOnValue, zeroOnValue, stopOnValue, pageSize, pageIndex, includeValuesOffset, includeValuesOriginal, startDate, endDate, processedData) {
-                $("#outputDiv").append(startOnValue + ", " + zeroOnValue + ", " + stopOnValue + ", " + pageSize + ", " + pageIndex + "<br/>");
+                $("#outputDiv").append(startOnValue + "<br/>" + zeroOnValue + "<br/>" + stopOnValue + "<br/>" + pageSize + "<br/>" + pageIndex + "<br/>");
                 if (jQuery.isEmptyObject(processedData)) {
                 }
                 $.getJSON("timestamps?page=" + pageIndex + "&size=" + pageSize, function (data) {
@@ -194,10 +194,6 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             processedData[timeStamp.userId].offset = timeStamp.eventMs;
                             $("#outputDiv").append("set zero: " + timeStamp.eventTag + ", " + timeStamp.eventMs + "<br/>");
                         }
-                        if (stopOnValue.includes(timeStamp.eventTag)) {
-                            processedData[timeStamp.userId].started = false;
-                            $("#outputDiv").append("stopped: " + timeStamp.eventTag + ", " + timeStamp.eventMs + "<br/>");
-                        }
                         if (processedData[timeStamp.userId].started) {
                             var correctedMs = (includeValuesOffset.includes(timeStamp.eventTag)) ? timeStamp.eventMs - processedData[timeStamp.userId].offset : timeStamp.eventMs;
                             if (correctedMs >= 0
@@ -208,6 +204,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
                             } else {
                                 $("#outputDiv").append("<div style='color:red>'discarded: " + timeStamp.eventTag + ", " + timeStamp.eventMs + ", " + correctedMs + "</div>");
                             }
+                        }
+                        if (stopOnValue.includes(timeStamp.eventTag)) {
+                            processedData[timeStamp.userId].started = false;
+                            $("#outputDiv").append("stopped: " + timeStamp.eventTag + ", " + timeStamp.eventMs + "<br/>");
                         }
                     });
                     if (data.page.number < data.page.totalPages) {
