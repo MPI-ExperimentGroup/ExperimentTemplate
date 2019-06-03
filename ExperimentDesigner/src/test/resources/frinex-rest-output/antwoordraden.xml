@@ -48,6 +48,7 @@
         <centrePage/>
         <loadStimulus eventTag="StimulusScreenP" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <clearPage/>
                 <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
@@ -93,6 +94,7 @@
         <centrePage/>
         <loadStimulus eventTag="StimulusScreenE" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <clearPage/>
                 <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
