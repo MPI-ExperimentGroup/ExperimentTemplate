@@ -21,7 +21,7 @@ fi
 
 /usr/bin/npm config set prefix '/srv/ExperimentTemplate/.npm-global'
 PATH=/srv/ExperimentTemplate/.npm-global/bin:$PATH
-/usr/bin/npm install -g cordova
+/usr/bin/npm install -g cordova@8.1.2
 cordova requirements
 
 #cordova platform add ios
