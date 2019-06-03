@@ -32,6 +32,7 @@
     <presenter menuLabel="Introduction" next="StoryPresentation" type="stimulus" self="Introduction" title="Leeservaring 3">
         <loadStimulus eventTag="Introduction" randomise="true" repeatRandomWindow="0" maxStimuli="1" repeatCount="1">
             <hasMoreStimulus>
+                <clearPage/>
                 <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
@@ -61,6 +62,7 @@
     <presenter menuLabel="StoryPresentation" next="Survey1Instructions" type="stimulus" self="StoryPresentation" title="Leeservaring 4">
         <loadStimulus eventTag="StoryPresentation" randomise="true" repeatRandomWindow="0" maxStimuli="1" repeatCount="1">
             <hasMoreStimulus>
+                <clearPage/>
                 <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
@@ -97,6 +99,7 @@
         <centrePage/>
         <loadStimulus eventTag="Survey1" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <clearPage/>
                 <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
@@ -124,6 +127,7 @@
         <centrePage/>
         <loadStimulus eventTag="Survey2" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <clearPage/>
                 <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
@@ -163,6 +167,7 @@
         <centrePage/>
         <loadStimulus eventTag="PictureTask" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <clearPage/>
                 <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
@@ -194,6 +199,7 @@
         <centrePage/>
         <loadStimulus eventTag="ReadingBehavior" randomise="false" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <clearPage/>
                 <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
