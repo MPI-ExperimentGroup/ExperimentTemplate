@@ -58,6 +58,7 @@
         <centrePage/>
         <loadStimulus eventTag="To which degree is the object changed visibly?" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <clearPage/>
                 <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
@@ -88,6 +89,7 @@
         <centrePage/>
         <loadStimulus eventTag="Is this action familiar?" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <clearPage/>
                 <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
@@ -118,6 +120,7 @@
         <centrePage/>
         <loadStimulus eventTag="Can you create a clear mental image of the situation?" randomise="true" repeatRandomWindow="0" maxStimuli="1000" repeatCount="1">
             <hasMoreStimulus>
+                <clearPage/>
                 <stimulusPresent maxHeight="80" percentOfPage="0" showControls="false" maxWidth="80">
                     <mediaLoaded/>
                     <mediaLoadFailed/>
