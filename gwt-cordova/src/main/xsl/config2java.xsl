@@ -821,7 +821,6 @@ or local-name() eq 'stimulusImage'
 or local-name() eq 'stimulusAudio' 
 or local-name() eq 'stimulusCodeImage'
 or local-name() eq 'stimulusCodeImageButton'
-or local-name() eq 'regionCodeStyle'
 or local-name() eq 'stimulusPause'
 or local-name() eq 'stimulusImageCapture'
 or local-name() eq 'setStimulusCodeResponse'
@@ -833,7 +832,10 @@ or local-name() eq 'setStimulusCodeResponse'
             <!--some multiparticipant features require the current stimulus, except the case of an end of stimulus event, in this case the group still needs to be informed-->
             <xsl:value-of select="if(local-name(..) ne 'endOfStimulus') then 'currentStimulus, ' else 'null, '" />
         </xsl:if>
-        <xsl:value-of select="if(@regionId) then if (contains(@regionId, '&lt;stimulus')) then 'currentStimulus, ' else 'null, ' else ''" />
+        <xsl:value-of select="if(@regionId) then if (
+        contains(@regionId, '&lt;stimulus') or contains(@regionId, '&lt;code') or contains(@regionId, '&lt;rating') or 
+        contains(@styleName, '&lt;stimulus') or contains(@styleName, '&lt;code') or contains(@styleName, '&lt;rating')
+        ) then 'currentStimulus, ' else 'null, ' else ''" />
         <xsl:value-of select="if(local-name() eq 'stimulusImageCapture' or local-name() eq 'countdownLabel') then concat('messages.', generate-id(.), '(), ') else ''" />
         <xsl:value-of select="if(@percentOfPage) then concat(@percentOfPage, ', ') else ''" />
         <xsl:value-of select="if(@maxHeight) then concat(@maxHeight, ', ') else ''" />
