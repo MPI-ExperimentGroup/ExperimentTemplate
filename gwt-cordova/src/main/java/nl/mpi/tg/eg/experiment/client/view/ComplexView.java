@@ -116,7 +116,8 @@ public class ComplexView extends SimpleView {
         if (regionTemp.getParent() == null) {
             getActivePanel().add(regionTemp);
         }
-        if (regionTemp != null) {
+        if (styleName != null) {
+            // we set or remove the style if it is provided, however if the style is null (no style attribute) we allow the old style to persist.
             regionTemp.setStyleName(styleName);
         }
         regionPanel = regionTemp;
