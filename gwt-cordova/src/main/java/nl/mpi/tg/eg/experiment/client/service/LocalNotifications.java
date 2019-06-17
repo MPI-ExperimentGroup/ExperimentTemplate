@@ -25,22 +25,28 @@ public abstract class LocalNotifications {
 
     protected native void setNotification(final String notificationTitle, final String notificationText, final Integer yearInt, final Integer monthInt, final Integer dayInt, final Integer hourInt) /*-{
         var localNotifications = this;
-        cordova.plugins.notification.local.schedule({
+        $wnd.cordova.plugins.notification.local.clearAll();
+        $wnd.cordova.plugins.notification.local.schedule({
             title: notificationTitle,
             text: notificationText,
-            trigger: { at: new Date(yearInt, monthInt, dayInt, hourInt) }
+//            trigger: { at: new Date(yearInt, monthInt, dayInt, hourInt) }
+            trigger: { 'in': 1, unit: 'minute' }
         });
         localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotificationSucceded()();
      }-*/;
 
     public native void requestNotification(final String notificationTitle, final String notificationText, final int yearInt, final int monthInt, final int dayInt, final int hourInt) /*-{
         var localNotifications = this;
-        if($wnd.plugins){
+//            "weekdays:09:30,17:45 weekends:13:15"
+        if($wnd.cordova){
+        console.log("$wnd: " + $wnd);
+        console.log("$wnd.plugins: " + $wnd.plugins);
+        console.log("$wnd.cordova.plugins: " + $wnd.cordova.plugins);
             $wnd.cordova.plugins.notification.local.hasPermission(function (granted) {
             if (granted) {
                 localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotification(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)(notificationTitle, notificationText, yearInt, monthInt, dayInt, hourInt);
             } else {
-                cordova.plugins.notification.local.requestPermission(function (grantedInner) {
+                $wnd.cordova.plugins.notification.local.requestPermission(function (grantedInner) {
                     if (grantedInner) {
                         localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotification(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)(notificationTitle, notificationText, yearInt, monthInt, dayInt, hourInt);
                     } else {
