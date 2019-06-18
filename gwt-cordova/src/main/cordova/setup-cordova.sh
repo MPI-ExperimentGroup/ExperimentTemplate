@@ -21,7 +21,7 @@ fi
 
 /usr/bin/npm config set prefix '/srv/ExperimentTemplate/.npm-global'
 PATH=/srv/ExperimentTemplate/.npm-global/bin:$PATH
-/usr/bin/npm install -g cordova@8.1.2
+/usr/bin/npm install -g cordova@9.0.0
 cordova requirements
 
 #cordova platform add ios
@@ -60,6 +60,7 @@ cordova plugin add cordova-plugin-file
 cordova plugin add cordova-plugin-fullscreen 
 cordova plugin add cordova-plugin-media-capture
 #cordova plugin add cordova-plugin-camera
+cordova plugin add cordova-plugin-local-notification
 
 #splashResourcesDir="./platforms/ios/LingQuest/Resources/splash/"
 #echo $splashResourcesDir
@@ -192,3 +193,5 @@ find .. -iname *.ipa
 
 # allow other users (outside the docker image) to modify the resulting files in target, eg mvn clean 
 chmod -R a+rwx "$(dirname "$0")"
+
+# cordova run android --device
