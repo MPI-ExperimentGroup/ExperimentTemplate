@@ -17,38 +17,95 @@
  */
 package nl.mpi.tg.eg.experiment.client.service;
 
+import java.util.Date;
+
 /**
  * @since 6 June, 2019 17:09:32 PM (creation date)
  * @author Peter Withers <peter.withers@mpi.nl>
  */
 public abstract class LocalNotifications {
 
-    protected native void setNotification(final String notificationTitle, final String notificationText, final Integer yearInt, final Integer monthInt, final Integer dayInt, final Integer hourInt) /*-{
-        var localNotifications = this;
+    protected void setNotification(final String notificationTitle, final String notificationText, final String notificationCommand) {
+        clearNotifications();
+        boolean onWeekends = false;
+        for (final String currentEntry : notificationCommand.split(" ")) {
+            notificationLog(currentEntry);
+            final String[] currentParts = currentEntry.split(":");
+            if (currentParts.length > 1) {
+                switch (currentParts[0]) {
+                    case "in_minutes":
+                        setNotificationInMinutes(notificationTitle, notificationText + "\n" + currentEntry, Integer.parseInt(currentParts[1]));
+                        break;
+                    case "weekends":
+                        onWeekends = true;
+                    case "weekdays":
+                        findNotificationDays(notificationTitle, notificationText + "\n" + currentEntry, 7, onWeekends, Integer.parseInt(currentParts[1]), (currentParts.length > 2) ? Integer.parseInt(currentParts[2]) : 0);
+                        break;
+                }
+            }
+        }
+        setNotificationSucceded();
+    }
+
+    protected void findNotificationDays(final String notificationTitle, final String notificationText, final int maxDaysInAdvance, final boolean onWeekends, final int hourInt, final int minuteInt) {
+        Date startDate = new Date();
+        startDate.setHours(hourInt);
+        startDate.setMinutes(minuteInt);
+        final int secondsPerDay = 1000 * 60 * 60 * 24;
+        final int minimumTimeWindow = 1000 * 60 * 5;
+        for (int daysInAdvance = 0; daysInAdvance <= maxDaysInAdvance; daysInAdvance++) {
+            Date currentDate = new Date(startDate.getTime() + (secondsPerDay * daysInAdvance));
+            if ((currentDate.getDay() == 1 && !onWeekends)
+                    || (currentDate.getDay() == 2 && !onWeekends)
+                    || (currentDate.getDay() == 3 && !onWeekends)
+                    || (currentDate.getDay() == 4 && !onWeekends)
+                    || (currentDate.getDay() == 5 && !onWeekends)
+                    || (currentDate.getDay() == 6 && onWeekends)
+                    || (currentDate.getDay() == 0 && onWeekends)) {
+                if (currentDate.getTime() - new Date().getTime() > minimumTimeWindow) {
+                    notificationLog("adding date time notification: " + currentDate);
+                    setDayNotification(notificationTitle, notificationText, currentDate.getYear(), currentDate.getMonth(), currentDate.getDate(), hourInt, minuteInt);
+                } else {
+                    notificationLog("not setting because time too close to now: " + currentDate);
+                }
+            }
+        }
+    }
+
+    protected native void clearNotifications() /*-{
         $wnd.cordova.plugins.notification.local.clearAll();
+     }-*/;
+
+    protected native void setNotificationInMinutes(final String notificationTitle, final String notificationText, final int minutes) /*-{
         $wnd.cordova.plugins.notification.local.schedule({
             title: notificationTitle,
             text: notificationText,
-//            trigger: { at: new Date(yearInt, monthInt, dayInt, hourInt) }
-            trigger: { 'in': 1, unit: 'minute' }
+            trigger: { 'in': minutes, unit: 'minute' }
         });
-        localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotificationSucceded()();
      }-*/;
 
-    public native void requestNotification(final String notificationTitle, final String notificationText, final int yearInt, final int monthInt, final int dayInt, final int hourInt) /*-{
+    protected native void setDayNotification(final String notificationTitle, final String notificationText, final int yearInt, final int monthInt, final int dayInt, final int hourInt, final int minuteInt) /*-{
         var localNotifications = this;
-//            "weekdays:09:30,17:45 weekends:13:15"
+        $wnd.cordova.plugins.notification.local.schedule({
+            title: notificationTitle,
+            text: notificationText,
+            trigger: { at: new Date(yearInt, monthInt, dayInt, hourInt, minuteInt) }
+        });
+     }-*/;
+
+    public native void requestNotification(final String notificationTitle, final String notificationText, final String notificationCommand) /*-{
+        var localNotifications = this;
         if($wnd.cordova){
         console.log("$wnd: " + $wnd);
         console.log("$wnd.plugins: " + $wnd.plugins);
         console.log("$wnd.cordova.plugins: " + $wnd.cordova.plugins);
             $wnd.cordova.plugins.notification.local.hasPermission(function (granted) {
             if (granted) {
-                localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotification(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)(notificationTitle, notificationText, yearInt, monthInt, dayInt, hourInt);
+                localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotification(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(notificationTitle, notificationText, notificationCommand);
             } else {
                 $wnd.cordova.plugins.notification.local.requestPermission(function (grantedInner) {
                     if (grantedInner) {
-                        localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotification(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)(notificationTitle, notificationText, yearInt, monthInt, dayInt, hourInt);
+                        localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotification(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(notificationTitle, notificationText, notificationCommand);
                     } else {
                         localNotifications.@nl.mpi.tg.eg.experiment.client.service.LocalNotifications::setNotificationFailed()();
                     }
@@ -63,4 +120,6 @@ public abstract class LocalNotifications {
     protected abstract void setNotificationSucceded();
 
     protected abstract void setNotificationFailed();
+
+    protected abstract void notificationLog(final String logString);
 }
