@@ -144,6 +144,7 @@ public enum FeatureType {
     showStimulusGrid(false, false, new FeatureAttribute[]{maxStimuli, dataChannel, columnCount, imageWidth, eventTag, animate}, false, false, false, Contitionals.hasCorrectIncorrect, Contitionals.stimulusAction),
     matchingStimulusGrid(false, false, new FeatureAttribute[]{columnCount, dataChannel, maxWidth, animate, matchingRegex, maxStimuli, randomise}, false, false, false, Contitionals.hasCorrectIncorrect, Contitionals.stimulusAction),
     pause(true, false, new FeatureAttribute[]{msToNext}),
+    requestNotification(false, true, new FeatureAttribute[]{listenerId, fieldName, dataLogFormat}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
     // todo: consider renaming so that timer is the first part: timerStart, timerCompare, timerClear, timerLog
     startTimer(true, false, new FeatureAttribute[]{msToNext, listenerId}), // the start time of the first instance of startTimer is persistent over page loads and navigation, but the content of the startTimer element is scoped to the presenter and will not fire outside of the presenter, each startTimer tag will create a callback that will trigger when the timer passes the ms value, but will not fire on reload if that time has already passed.
     compareTimer(false, false, new FeatureAttribute[]{msToNext, listenerId}, false, false, false, Contitionals.hasThreshold, Contitionals.none),
@@ -329,8 +330,8 @@ public enum FeatureType {
             throw new IllegalArgumentException("canHaveFeatures may only be used with Contitionals.none");
         }
         //    todo: set all hasMediaPlayback and hasMediaLoading to canHaveFeatures = false
-        this.documentationText = null;
-    }
+            this.documentationText = null;
+        }
 
     private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean canHaveStimulus, boolean canHaveRandomGrouping, boolean canHaveUndefinedAttribute, Contitionals requiresChildType, Contitionals isChildType, final boolean allowsCustomImplementation) {
         this.canHaveFeatures = canHaveFeatures;
