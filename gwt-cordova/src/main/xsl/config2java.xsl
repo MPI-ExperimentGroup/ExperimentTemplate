@@ -498,7 +498,7 @@ if(@type = 'stimulus' or @type = 'kindiagram' or @type = 'timeline' or @type = '
         <xsl:text>);
         </xsl:text>
     </xsl:template>
-    <xsl:template match="redirectToUrl|setMetadataValue|hasMetadataValue|showStimuliReport|sendStimuliReport|logTokenText|htmlTokenText|transmitResults|submitGroupEvent|showHtmlPopup|helpDialogue|eraseUsersDataButton|saveMetadataButton|localStorageData|stimulusMetadataField|allMetadataFields|metadataField|metadataFieldConnection|metadataFieldVisibilityDependant|metadataFieldDateTriggered|eraseLocalStorageButton|showCurrentMs|enableButtonGroup|cancelPauseAll|cancelPauseTimers|disableButtonGroup|showStimulus|showStimulusProgress|hideButtonGroup|showButtonGroup|displayCompletionCode|generateCompletionCode|sendAllData|sendMetadata|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|removeMatchingStimulus|stimulusLabel">
+    <xsl:template match="requestNotification|redirectToUrl|setMetadataValue|hasMetadataValue|showStimuliReport|sendStimuliReport|logTokenText|htmlTokenText|transmitResults|submitGroupEvent|showHtmlPopup|helpDialogue|eraseUsersDataButton|saveMetadataButton|localStorageData|stimulusMetadataField|allMetadataFields|metadataField|metadataFieldConnection|metadataFieldVisibilityDependant|metadataFieldDateTriggered|eraseLocalStorageButton|showCurrentMs|enableButtonGroup|cancelPauseAll|cancelPauseTimers|disableButtonGroup|showStimulus|showStimulusProgress|hideButtonGroup|showButtonGroup|displayCompletionCode|generateCompletionCode|sendAllData|sendMetadata|eraseLocalStorageOnWindowClosing|clearStimulus|removeStimulus|keepStimulus|removeMatchingStimulus|stimulusLabel">
         <xsl:text>    </xsl:text>     
         <xsl:value-of select ="local-name()"/>
         <xsl:text>(</xsl:text>
@@ -531,6 +531,7 @@ or local-name() eq 'removeStimulus'
             <xsl:value-of select="if(@headerKey) then concat('&quot;', @headerKey, '&quot;, ') else '&quot;logTokenText&quot;, '" />
         </xsl:if>
         <xsl:value-of select="if(@featureText) then concat('messages.', generate-id(.), '()') else ''" />    
+        <xsl:value-of select="if(local-name() eq 'requestNotification') then ', ' else ''" />
         <xsl:value-of select="if(@fieldName) then concat('metadataFieldProvider.', @fieldName, 'MetadataField') else ''" />
         <xsl:value-of select="if(@linkedFieldName) then concat(', metadataFieldProvider.', @linkedFieldName, 'MetadataField') else ''" />
         <xsl:value-of select="if(@featureText and (@styleName or contains(local-name(), 'Button'))) then if (contains(local-name(), 'ButtonGroup')) then '' else ', ' else ''" />    
