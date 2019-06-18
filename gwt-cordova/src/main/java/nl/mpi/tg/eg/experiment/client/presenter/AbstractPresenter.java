@@ -37,6 +37,7 @@ import nl.mpi.tg.eg.experiment.client.model.MetadataField;
 import nl.mpi.tg.eg.experiment.client.model.UserResults;
 import nl.mpi.tg.eg.experiment.client.service.DataSubmissionService;
 import nl.mpi.tg.eg.experiment.client.service.GroupParticipantService;
+import nl.mpi.tg.eg.experiment.client.service.LocalNotifications;
 import nl.mpi.tg.eg.experiment.client.service.LocalStorage;
 import nl.mpi.tg.eg.experiment.client.service.MetadataFieldProvider;
 import nl.mpi.tg.eg.experiment.client.service.TimerService;
@@ -331,6 +332,27 @@ public abstract class AbstractPresenter implements Presenter {
             }
         };
         timer.schedule(100);
+    }
+
+    public void requestNotification(final Stimulus currentStimulus, final String messageTitle, final MetadataField metadataField, final String dataLogFormat, final TimedStimulusListener errorEventListner, final TimedStimulusListener successEventListner) {
+        new LocalNotifications() {
+            @Override
+            protected void setNotificationSucceded() {
+                successEventListner.postLoadTimerFired();
+            }
+
+            @Override
+            protected void setNotificationFailed() {
+                errorEventListner.postLoadTimerFired();
+            }
+
+            @Override
+            protected void notificationLog(String logString) {
+                ((ComplexView) simpleView).addText(logString);
+            }
+
+        }.requestNotification(messageTitle, dataLogFormat, userResults.getUserData().getMetadataValue(metadataField));
+        ((ComplexView) simpleView).addPadding();
     }
 
     protected void bumpAudioTicker() {
