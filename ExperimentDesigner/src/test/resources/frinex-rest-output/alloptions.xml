@@ -75,6 +75,14 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -153,6 +161,14 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="plainText in multipleUsers"/>
@@ -246,6 +262,14 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </preloadAllStimuli>
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <startTimer msToNext="60" listenerId="listenerId">
             <plainText featureText="plainText in startTimer"/>
         </startTimer>
@@ -1463,6 +1487,14 @@
         <pause msToNext="60">
             <plainText featureText="plainText in pause"/>
         </pause>
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <startTimer msToNext="60" listenerId="listenerId">
             <plainText featureText="plainText in startTimer"/>
         </startTimer>
@@ -1549,6 +1581,14 @@
         <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_all_attributes" type="colourPicker" self="colourPicker_all_attributesScreen" title="colourPicker_all_attributes">
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_all_attributes" type="colourReport" self="colourReport_all_attributesScreen" title="colourReport_all_attributes">
@@ -1582,6 +1622,14 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -1654,6 +1702,14 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <kinTypeStringDiagram msToNext="60" kintypestring="kintypestring">
             <plainText featureText="plainText in kinTypeStringDiagram"/>
         </kinTypeStringDiagram>
@@ -1721,6 +1777,14 @@
         <activateRandomItem/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -1778,6 +1842,14 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -1826,6 +1898,14 @@
         <centrePage/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -1881,6 +1961,14 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <table showOnBackButton="showOnBackButton" styleName="styleName">
             <plainText featureText="plainText in table"/>
         </table>
@@ -1964,6 +2052,14 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
@@ -2042,6 +2138,14 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <existingUserCheck>
             <multipleUsers>
                 <plainText featureText="plainText in multipleUsers"/>
@@ -2135,6 +2239,14 @@
                 <plainText featureText="plainText in onSuccess"/>
             </onSuccess>
         </preloadAllStimuli>
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <startTimer msToNext="60" listenerId="listenerId">
             <plainText featureText="plainText in startTimer"/>
         </startTimer>
@@ -3352,6 +3464,14 @@
         <pause msToNext="60">
             <plainText featureText="plainText in pause"/>
         </pause>
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <startTimer msToNext="60" listenerId="listenerId">
             <plainText featureText="plainText in startTimer"/>
         </startTimer>
@@ -3438,6 +3558,14 @@
         <resetStimulus target="target"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourPicker_minimal_attributes" type="colourPicker" self="colourPicker_minimal_attributesScreen" title="colourPicker_minimal_attributes">
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <preventWindowClose featureText="preventWindowClose"/>
     </presenter>
     <presenter back="AutoMenu" menuLabel="colourReport_minimal_attributes" type="colourReport" self="colourReport_minimal_attributesScreen" title="colourReport_minimal_attributes">
@@ -3471,6 +3599,14 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
@@ -3543,6 +3679,14 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <kinTypeStringDiagram msToNext="60" kintypestring="kintypestring">
             <plainText featureText="plainText in kinTypeStringDiagram"/>
         </kinTypeStringDiagram>
@@ -3610,6 +3754,14 @@
         <activateRandomItem/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
@@ -3667,6 +3819,14 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
@@ -3715,6 +3875,14 @@
         <centrePage/>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
@@ -3770,6 +3938,14 @@
         </hasGetParameter>
         <gotoPresenter target="target"/>
         <gotoNextPresenter/>
+        <requestNotification featureText="requestNotification" listenerId="listenerId" fieldName="workerId" dataLogFormat="dataLogFormat">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </requestNotification>
         <table>
             <plainText featureText="plainText in table"/>
         </table>
