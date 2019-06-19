@@ -484,5 +484,74 @@
                     &lt;/script&gt;
             </xsl:text>
         </xsl:result-document>
+        <xsl:result-document href="{$targetClientDirectory}/rest/ParticipantValidationController.java" method="text">
+            <xsl:text>package nl.mpi.tg.eg.frinex.rest;
+
+                import java.io.IOException;
+                import java.util.Date;
+                import nl.mpi.tg.eg.frinex.model.DataSubmissionResult;
+                import nl.mpi.tg.eg.frinex.model.TagData;
+                import org.springframework.beans.factory.annotation.Autowired;
+                import org.springframework.http.HttpStatus;
+                import org.springframework.http.MediaType;
+                import org.springframework.http.ResponseEntity;
+                import org.springframework.web.bind.annotation.RequestBody;
+                import org.springframework.web.bind.annotation.RequestMapping;
+                import org.springframework.web.bind.annotation.RequestMethod;
+                import org.springframework.web.bind.annotation.RequestParam;
+                import org.springframework.web.bind.annotation.ResponseBody;
+                import org.springframework.web.bind.annotation.RestController;
+
+                @RestController                  
+                public class ParticipantValidationController {
+
+                @Autowired
+                ScreenDataRepository screenDataRepository;
+                @Autowired
+                TimeStampRepository timeStampRepository;
+                @Autowired
+                ParticipantRepository participantRepository;
+                @Autowired
+                TagRepository tagRepository;
+                
+                @RequestMapping(value = "/validate", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+                @ResponseBody
+                public ResponseEntity&lt;String&gt; validate(
+                @RequestParam("userId") String userId,
+            </xsl:text>
+            <xsl:for-each select="experiment/administration/validation">
+                <xsl:text>@RequestParam("</xsl:text>
+                <xsl:value-of select="@postName" />
+                <xsl:text>") String </xsl:text>
+                <xsl:value-of select="@postName" />
+                <!--<xsl:if test="position() != last()">-->
+                <xsl:text>,</xsl:text> 
+                <!--</xsl:if>-->
+            </xsl:for-each>
+            <xsl:text>
+                @RequestParam("applicationversion") String applicationversion,
+                @RequestParam("datalog") String datalog) throws IOException {
+                final Date tagDate = new java.util.Date();
+            </xsl:text>
+            <xsl:for-each select="experiment/administration/validation">
+                <xsl:text>tagRepository.save(new TagData(userId, "validate", "</xsl:text>
+                <xsl:value-of select="@postName" />
+                <xsl:text>", (</xsl:text>
+                <xsl:value-of select="@postName" />
+                <xsl:text>.length() > 254) ? </xsl:text>
+                <xsl:value-of select="@postName" />
+                <xsl:text>.substring(0, 254) : </xsl:text>
+                <xsl:value-of select="@postName" />
+                <xsl:text>, 0, tagDate));
+                </xsl:text>
+            </xsl:for-each>
+            <xsl:text>
+                tagRepository.save(new TagData(userId, "validate", "applicationversion", (applicationversion.length() > 254) ? applicationversion.substring(0, 254) : applicationversion, 0, tagDate));
+                tagRepository.save(new TagData(userId, "validate", "datalog", (datalog.length() > 254) ? datalog.substring(0, 254) : datalog, 0, tagDate));
+                return new ResponseEntity("{\"validated_uuid\":\"" + uuid + "\",\"error_message\":\"this is a mock response\"}", HttpStatus.OK);
+                }            
+                }
+            </xsl:text>
+        </xsl:result-document>
     </xsl:template>
 </xsl:stylesheet>
