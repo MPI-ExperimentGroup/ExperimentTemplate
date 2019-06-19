@@ -19,10 +19,10 @@ else
     exit 1
 fi
 
-/usr/bin/npm config set prefix '/srv/ExperimentTemplate/.npm-global'
-PATH=/srv/ExperimentTemplate/.npm-global/bin:$PATH
-/usr/bin/npm install -g cordova@9.0.0
-cordova requirements
+#/usr/bin/npm config set prefix '/srv/ExperimentTemplate/.npm-global'
+#PATH=/srv/ExperimentTemplate/.npm-global/bin:$PATH
+#/usr/bin/npm install -g cordova@9.0.0
+#cordova requirements
 
 #cordova platform add ios
 #cordova platform add windows
@@ -54,13 +54,13 @@ cordova platform add android
 #PATH=$PATH:$ANDROID_HOME:$ANDROID_TOOLS:$ANDROID_PLATFORM_TOOLS
 
 
-cordova plugin add /FieldKitRecorder/
-cordova plugin add cordova-plugin-file
+cordova plugin add /ExperimentTemplate/FieldKitRecorder/
+#cordova plugin add cordova-plugin-file
 #cordova plugin add cordova-plugin-statusbar
-cordova plugin add cordova-plugin-fullscreen 
-cordova plugin add cordova-plugin-media-capture
+#cordova plugin add cordova-plugin-fullscreen 
+#cordova plugin add cordova-plugin-media-capture
 #cordova plugin add cordova-plugin-camera
-cordova plugin add cordova-plugin-local-notification
+#cordova plugin add cordova-plugin-local-notification
 
 #splashResourcesDir="./platforms/ios/LingQuest/Resources/splash/"
 #echo $splashResourcesDir
