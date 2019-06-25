@@ -489,13 +489,13 @@
 
                 import java.io.IOException;
                 import java.util.Date;
-                import nl.mpi.tg.eg.frinex.model.DataSubmissionResult;
+                import java.util.List;
+                import nl.mpi.tg.eg.frinex.model.Participant;
                 import nl.mpi.tg.eg.frinex.model.TagData;
                 import org.springframework.beans.factory.annotation.Autowired;
                 import org.springframework.http.HttpStatus;
                 import org.springframework.http.MediaType;
                 import org.springframework.http.ResponseEntity;
-                import org.springframework.web.bind.annotation.RequestBody;
                 import org.springframework.web.bind.annotation.RequestMapping;
                 import org.springframework.web.bind.annotation.RequestMethod;
                 import org.springframework.web.bind.annotation.RequestParam;
@@ -520,13 +520,13 @@
                 @RequestParam("userId") String userId,
             </xsl:text>
             <xsl:for-each select="experiment/administration/validation">
-                <xsl:text>@RequestParam("</xsl:text>
-                <xsl:value-of select="@postName" />
-                <xsl:text>") String </xsl:text>
-                <xsl:value-of select="@postName" />
-                <!--<xsl:if test="position() != last()">-->
-                <xsl:text>,</xsl:text> 
-                <!--</xsl:if>-->
+                <xsl:if test="@postName">
+                    <xsl:text>@RequestParam("</xsl:text>
+                    <xsl:value-of select="@postName" />
+                    <xsl:text>") String </xsl:text>
+                    <xsl:value-of select="@postName" />
+                    <xsl:text>,</xsl:text> 
+                </xsl:if>
             </xsl:for-each>
             <xsl:text>
                 @RequestParam("applicationversion") String applicationversion,
@@ -548,7 +548,71 @@
             <xsl:text>
                 tagRepository.save(new TagData(userId, "validate", "applicationversion", (applicationversion.length() > 254) ? applicationversion.substring(0, 254) : applicationversion, 0, tagDate));
                 tagRepository.save(new TagData(userId, "validate", "datalog", (datalog.length() > 254) ? datalog.substring(0, 254) : datalog, 0, tagDate));
-                return new ResponseEntity("{\"validated_uuid\":\"" + uuid + "\",\"error_message\":\"this is a mock response\"}", HttpStatus.OK);
+                final List&lt;Participant&gt; foundRecords = participantRepository.findByStaleCopyAndUserId(false, userId);
+                final StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append("\"{");
+                if(foundRecords.size()!=1){
+                stringBuilder.append("\"error_message\":\"Found ");
+                stringBuilder.append(foundRecords.size());
+                stringBuilder.append(" records, cannot proceed\"");
+                } else {
+                String errorMessage = "";
+                boolean foundError = false;
+            </xsl:text>
+            <xsl:for-each select="experiment/administration/validation[@fieldName]">
+                <!--// case: compare the provided value to the DB counterpart-->
+                <!--// case: match the provided value to the regex-->
+                <xsl:if test="@validationRegex">
+                    <xsl:text>if (!foundRecords.get(0).get</xsl:text>
+                    <xsl:value-of select="concat(upper-case(substring(@fieldName,1,1)), substring(@fieldName, 2))" />
+                    <xsl:text>().matches("</xsl:text>
+                    <xsl:value-of select="@validationRegex" />
+                    <xsl:text>")){errorMessage+="</xsl:text>
+                    <xsl:value-of select="@errorMessage" />
+                    <xsl:text>"; foundError = true;} else </xsl:text>
+                </xsl:if>
+                <xsl:if test="@postName and @fieldName">
+                    <xsl:text>if (!foundRecords.get(0).get</xsl:text>
+                    <xsl:value-of select="concat(upper-case(substring(@fieldName,1,1)), substring(@fieldName, 2))" />
+                    <xsl:text>().equals(</xsl:text>
+                    <xsl:value-of select="@postName" />
+                    <xsl:text>)){errorMessage+="</xsl:text>
+                    <xsl:value-of select="@errorMessage" />
+                    <xsl:text>"; foundError = true;}</xsl:text>
+                    <!--                    matchExistingValue=
+                    postName="uuid" fieldName="userId"-->
+                    <!--matchingRegex="" validationRegex=""-->
+                    <!--                    <xsl:text>@RequestParam("</xsl:text>
+                    <xsl:value-of select="@postName" />
+                    <xsl:text>") String </xsl:text>
+                    <xsl:value-of select="@postName" />
+                    <xsl:text>,</xsl:text> -->
+                </xsl:if>
+            </xsl:for-each>
+            <xsl:text>
+                if (foundError) {
+                stringBuilder.append("\"error_message\":\"");
+                stringBuilder.append(errorMessage);
+                stringBuilder.append("\",");
+                } else {
+            </xsl:text>
+            <xsl:for-each select="experiment/administration/validation">
+                <xsl:if test="@returnName">
+                    <xsl:text>stringBuilder.append("\"</xsl:text>
+                    <xsl:value-of select="@returnName" />
+                    <xsl:text>\":\"");</xsl:text>
+                    <xsl:text>stringBuilder.append(foundRecords.get(0).get</xsl:text>
+                    <xsl:value-of select="concat(upper-case(substring(@fieldName,1,1)), substring(@fieldName, 2))" />
+                    <xsl:text>());
+                        stringBuilder.append("\",");</xsl:text>
+                </xsl:if>
+            </xsl:for-each>
+            <xsl:text>
+                }
+                }
+                <!--stringBuilder.append("\"error_message\":\"this is a mock response\"");-->
+                stringBuilder.append("}");
+                return new ResponseEntity(stringBuilder.toString(), HttpStatus.OK);
                 }            
                 }
             </xsl:text>
