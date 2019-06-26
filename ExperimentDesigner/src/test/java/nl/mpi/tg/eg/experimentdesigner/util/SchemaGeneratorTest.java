@@ -81,6 +81,7 @@ public class SchemaGeneratorTest {
             "hrpretest.xml", "kinship_example.xml",
 //            "ppvt.xml",
             "with_stimulus_example.xml",
+            "invitation_validation_example.xml",
 //            "sentenceplausibility.xml",
             //            "synquiz2.xml"
         };
