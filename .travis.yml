@@ -17,6 +17,7 @@ script:
   - mvn clean install -Dgwt.validateOnly -DskipTests=true -Dmaven.javadoc.skip=true -B -V -Dexperiment.configuration.name=antwoordraden
   - mvn clean install -Dgwt.validateOnly -DskipTests=true -Dmaven.javadoc.skip=true -B -V -Dexperiment.configuration.name=synquiz2
   - mvn clean install -Dgwt.validateOnly -DskipTests=true -Dmaven.javadoc.skip=true -B -V -Dexperiment.configuration.name=alloptions
+  - mvn clean install -Dgwt.validateOnly -DskipTests=true -Dmaven.javadoc.skip=true -B -V -Dexperiment.configuration.name=invitation_validation_example
   - pwd
   - cd gwt-cordova
   - mvn clean package -DskipTests=true -Dmaven.javadoc.skip=true -B -V -Dexperiment.configuration.name=with_stimulus_example -Dexperiment.destinationServer=$serverName -Dexperiment.destinationServerUrl=$serverUrl -Dexperiment.groupsSocketUrl=$groupsSocketUrl -Dexperiment.staticFilesUrl=$staticFilesUrl -Dexperiment.registrationUrl=$serverUrl/registrationUrl/demo_submit.pl
