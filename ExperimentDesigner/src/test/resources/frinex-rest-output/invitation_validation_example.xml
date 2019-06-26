@@ -3,16 +3,20 @@
     <administration>
         <!--// todo: there probably needs to be a tag: set userId from MetadataFieldValue, or directly from an input field, so that iOS app users can use a consistant userId over app updates, from there the user can be validated and the known metadata can be repopulated fromthe validatoin request--> 
         <!--<validation matchingRegex="uuid|session_id|session_steps|session_step|session_next_step|validation_error" enabledRegex="validated_uuid|validation_error"-->
-        <authentication tokenField="userTokenField" errorMessage="The userId and the hashed contents of the token field must be sent in the HTTP authentication header,before any data can be sent to the admin server"/>
-        <validation postName="uuid" fieldName="userId" matchExistingValue="true" returnName="validated_uuid" errorMessage="User not found"/>
+        <!--<authentication tokenField="userTokenField" errorMessage="The userId and the hashed contents of the token field must be sent in the HTTP authentication header,before any data can be sent to the admin server"/>-->
+        <validation postName="uuid" fieldName="userId" returnName="validated_uuid" errorMessage="User not found"/>
+        <!--matchExistingValue="true"--> 
+        <!--allowInsertOnEmpty="true"-->
+        <!--validationRegex="" matchingRegex=""--> 
         <validation postName="session_id" fieldName="session_id" validationRegex="[0-6]" errorMessage="session id not found or invalid[0-6]" />
-        <validation postName="session_steps" fieldName="session_steps" validationRegex="[a-Z]+(_[a-Z])*" errorMessage="session_steps not found or invalid" matchExistingValue="true" />
-        <validation postName="session_step" fieldName="session_step" validationRegex="" errorMessage="" matchExistingValue="true" allowInsertOnEmpty="true" />
-        <validation postName="session_next_step" fieldName="session_next_step" validationRegex="" matchingRegex="" errorMessage="" matchExistingValue="true" allowInsertOnEmpty="true" />
+        <validation postName="session_steps" fieldName="session_steps" validationRegex="[a-Z]+(_[a-Z])*" errorMessage="session_steps not found or invalid"/>
+        <validation postName="session_step" fieldName="session_step" validationRegex="" errorMessage="" />
+        <validation postName="session_next_step" fieldName="session_next_step" errorMessage="" />
         <!--note that we are not currenty trying to authenticate here, we are only testing values and optinally returning them in a new variable name and or a message variable-->
     </administration>
     <scss/>
     <metadata>
+        <field controlledMessage="Voer minimaal drie letters." controlledRegex=".'{'3,'}'" postName="workerId" preventServerDuplicates="false" registrationField="Proefpersoon ID"/>
         <!-- The attribute in the Experiment element userIdGetParam="uuid" allows the internal user id to be set via the get parameter and this metadata field -->
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="uuid" preventServerDuplicates="false" registrationField="Invitation UUID"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="validated_uuid" preventServerDuplicates="false" registrationField="Validated UUID"/>
@@ -24,23 +28,29 @@
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="session_next_step" preventServerDuplicates="false" registrationField="session_next_step"/>
         <field controlledMessage="." controlledRegex=".'{'3,'}'" postName="invitation_code" preventServerDuplicates="false" registrationField="invitation code"/>
     </metadata>
-    <presenter back="Menu" menuLabel="Terug" next="Informatie" type="metadata" self="Toestemming" title="Toestemming">
-        <htmlText featureText="This example demostrates three ways of providing contiguous use by a participant, over separate days or via separate devices. Normally a participant will be given a new identifer when they change to a different browser or device. This is because the system has no way to know who the participant is. These methods can be used to overcome this by providing a consistant identifier to each particpant."/>
+    <presenter menuLabel="Menu" type="menu" self="Menu" title="Overview">
+        <htmlText featureText="This example demostrates three ways of allowing a participant complete an experiment over separate days or via separate devices. Normally a participant will be given a new identifer when they change to a different browser or device. This is because the system has no way to know who the participant is. These methods can be used to overcome this by providing a consistant identifier to each particpant."/>
+        <addPadding/>
         <targetButton featureText="Invitation URL Example" target="InvitationUrlExample"/>
+        <addPadding/>
         <targetButton featureText="Invitation Code Example" target="InvitationCodeExample"/>
+        <addPadding/>
         <targetButton featureText="Invitation Validation Example" target="InvitationValidationExample"/>
     </presenter>
     <presenter back="Menu" menuLabel="InvitationUrlExample" type="stimulus" self="InvitationUrlExample" title="Invitation URL Example">
         <htmlText featureText="The first method requires providing your participant with a URL containing thier specific identfier and setting userIdGetParam=&quot;invitation_id&quot; in the experiment configuration. For example a URL GET parameter could look like (&lt;a href=&quot;?invitation_id=yourcode&quot;&gt;?invitation_id=[yourcode]&lt;/a&gt;), which they can enter into the browser."/>
-        <hasGetParameter parameterName="uuid">
+        <addPadding/>
+        <htmlText featureText="This method only sends collected data to the server. Which means the participant will start from scratch if they do change to a different machine or browser or clear the browser data storage. However they participant will have the same identifier each time."/>
+        <addPadding/>
+        <hasGetParameter parameterName="invitation_id">
             <conditionTrue>
                 <htmlTokenText featureText="
-                Your invitation code has been received and is:
-                &lt;metadataField_invitation_code&gt;&lt;br/&gt;
-                Your results should now be collected using the provided participant id."/>
+                The participants invitation identifier has been received and is:
+                &lt;metadataField_invitation_id&gt;&lt;br/&gt;
+                The collected results should now be available via the provided participant id."/>
             </conditionTrue>
             <conditionFalse>
-                <htmlText featureText="Your invitation code has not been found.&lt;br/&gt;
+                <htmlText featureText="The invitation identifier has not been found.&lt;br/&gt;"/>
             </conditionFalse>
         </hasGetParameter>
     </presenter>
@@ -52,14 +62,22 @@
                 Your invitation code has been received and is:
                 &lt;metadataField_invitation_code&gt;&lt;br/&gt;
                 "/>
-                <startTimer msToNext="150000" listenerId="invitationTimer"/>
-                <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleStimuliScreen"/>
+                
+                <!--                <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleStimuliScreen"/>-->
             </conditionTrue>
             <conditionFalse>
                 <htmlText featureText="Your invitation code has not been found or is less that three characters long.&lt;br/&gt;
                 Please provide this code as a URL GET parameter (&lt;a href=&quot;?invitation_code=yourcode&quot;&gt;?invitation_code=[yourcode]&lt;/a&gt;) and reload this page."/>
             </conditionFalse>
         </hasMetadataValue>
+        <switchUserIdButton featureText="switchUserIdButton" fieldName="uuid" validationRegex="[a-z][a-z][a-z][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]">
+            <onError>
+                <htmlText featureText="onError"/>
+            </onError>
+            <onSuccess>
+                <htmlText featureText="onSuccess"/>
+            </onSuccess>
+        </switchUserIdButton>
     </presenter>
     <!--    <presenter back="Informatie" menuLabel="Gegevens" next="Metadata_Jump_Test" type="metadata" self="Gegevens" title="Gegevens">
         <metadataField fieldName="workerId"/>
@@ -91,100 +109,60 @@
                 <hasMetadataValue fieldName="uuid" matchingRegex="&lt;metadataField_validated_uuid&gt;">
                     <conditionTrue>
                         <htmlText featureText="The &quot;validated_uuid&quot; does match &quot;uuid&quot; and you can continue."/>
-                        <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleStimuliScreen"/>
+                        <!--<targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleStimuliScreen"/>-->
                     </conditionTrue>
                     <conditionFalse>
                         <htmlText featureText="The &quot;validated_uuid&quot; does NOT match &quot;uuid&quot;."/>
-                        <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleInvalid"/>
+                        <!--<targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleInvalid"/>-->
                         <!--<eraseUsersDataButton featureText="Erase old data" target="InvitationSessionStepsExample"/>-->
                     </conditionFalse>
                 </hasMetadataValue>
             </conditionTrue>
             <conditionFalse>
-                <htmlTokenText featureText="&lt;metadataField_uuid&gt;"/> 
-                <hasGetParameter parameterName="uuid">
-                    <conditionTrue>
-                        <htmlText featureText="get parameter uuid ok"/>
-                        <hasGetParameter parameterName="session_id">
-                            <conditionTrue>
-                                <htmlText featureText="get parameter session_id ok"/>                        
-                                <hasGetParameter parameterName="session_steps">
-                                    <conditionTrue>
-                                        <htmlText featureText="get parameter session_steps ok"/>
-                                        <hasMetadataValue fieldName="uuid" matchingRegex="...*">
-                                            <conditionTrue>
-                                                <hasMetadataValue fieldName="session_id" matchingRegex="[0-6]">
-                                                    <conditionTrue>
-                                                        <hasMetadataValue fieldName="session_steps" matchingRegex="audiosimplereactiontime_lilbq4_audioas2_peabodyas_audiononwordmonitoring_grammaras_visualsimplereactiontime">
-                                                            <conditionTrue>
-                                                                <htmlText featureText="This example takes the list &quot;session_steps&quot; and extracts the next item after &quot;audioas2&quot; from that list which will be &quot;peabodyas&quot;. That value is then placed into the &quot;session_next_step&quot; metadata field."/>
-                                                                <!--<htmlText featureText="Assuming the list contains audioas2 we act as if the name of this experiment is audioas2 and using setMetadataValue get the next item which is peabodyas."/>-->
-                                                                <htmlText featureText="The resulting value in &quot;session_next_step&quot; will later be used to redirect the user to that next experiment after this one is complete."/>
-                                                                <htmlText featureText="We also put the hypothetical name of this experiment &quot;audioas2&quot; into &quot;session_step&quot; for convenience."/>
-                                                                <setMetadataValue fieldName="session_step" dataLogFormat="audioas2"/>                                                               
-                                                                <setMetadataValue fieldName="session_next_step" replacementRegex="&lt;metadataField_session_step&gt;_([^_]*)[_$]" dataLogFormat="&lt;metadataField_session_steps&gt;"/>
-                                                                <!--// if the response uuid does not exist then transmit-->
-                                                                <transmitResults matchingRegex="uuid|session_id|session_steps|session_step|session_next_step|validation_error" enabledRegex="validated_uuid|validation_error" dataLogFormat="Is this UUID for this session step valid? Please respond with a 200 if it is and provide either validated_uuid or a variable validation_error if you want a human readable message to be shown. Otherwise a non 200 / error code will just prevent the user proceeding.">
-                                                                    <onError>
-                                                                        <htmlText featureText="Transmitting the data for this session step failed."/>
-                                                                    </onError>
-                                                                    <onSuccess>
-                                                                        <htmlText featureText="Transmitting the data for this session step ok"/>
-                                                                        <hasMetadataValue fieldName="validation_error" matchingRegex=".+">
-                                                                            <conditionTrue>
-                                                                                <addPadding/>
-                                                                                <addPadding/>
-                                                                                <htmlTokenText featureText="&lt;metadataField_validation_error&gt;"/>                                                                                
-                                                                            </conditionTrue>
-                                                                            <conditionFalse>
-                                                                                <hasMetadataValue fieldName="uuid" matchingRegex="&lt;metadataField_validated_uuid&gt;">
-                                                                                    <conditionTrue>
-                                                                                        <htmlText featureText="The the return value validated_uuid from transmitResults matches the provided uuid."/>
-                                                                                        <targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleStimuliScreen"/>
-                                                                                    </conditionTrue>
-                                                                                    <conditionFalse>
-                                                                                        <htmlText featureText="The the return value validated_uuid from transmitResults does NOT match the provided uuid."/>
-                                                                                    </conditionFalse>
-                                                                                </hasMetadataValue>
-                                                                            </conditionFalse>
-                                                                        </hasMetadataValue>
-                                                                    </onSuccess>
-                                                                </transmitResults>
-                                                            </conditionTrue>
-                                                            <conditionFalse>
-                                                                <htmlText featureText="The session_steps value is incorrect, please provide it exactly as described below and reload this page."/>
-                                                                <htmlText featureText="The get parameter session_steps is a _ separated list and should contain the value &quot;audiosimplereactiontime_lilbq4_audioas2_peabodyas_audiononwordmonitoring_grammaras_visualsimplereactiontime&quot;."/>
-                                                            </conditionFalse>
-                                                        </hasMetadataValue>
-                                                    </conditionTrue>
-                                                    <conditionFalse>
-                                                        <htmlText featureText="session_id must be between 0 - 6.&lt;br/&gt;
-                Please provide this as a URL GET parameter and reload this page."/>
-                                                    </conditionFalse>
-                                                </hasMetadataValue>
-                                            </conditionTrue>
-                                            <conditionFalse>
-                                                <htmlText featureText="uuid has not been found.&lt;br/&gt;
-                Please provide this as a URL GET parameter and reload this page."/>
-                                            </conditionFalse>
-                                        </hasMetadataValue>
-                                    </conditionTrue>
-                                    <conditionFalse>
-                                        <htmlText featureText="get parameter session_steps NOT provided"/>
-                                    </conditionFalse>
-                                </hasGetParameter>
-                            </conditionTrue>
-                            <conditionFalse>
-                                <htmlText featureText="get parameter session_id NOT provided"/>
-                            </conditionFalse>
-                        </hasGetParameter>
-                    </conditionTrue>
-                    <conditionFalse>
-                        <htmlText featureText="get parameter uuid NOT provided"/>
-                    </conditionFalse>
-                </hasGetParameter>
             </conditionFalse>
         </hasMetadataValue>
+        <htmlTokenText featureText="userId: &lt;userId&gt;"/> 
+        <htmlTokenText featureText="uuid: &lt;metadataField_uuid&gt;"/> 
+        <htmlTokenText featureText="validated_uuid: &lt;metadataField_validated_uuid&gt;"/> 
+        <metadataField fieldName="uuid"/>
+        <metadataField fieldName="session_id"/>
+        <metadataField fieldName="session_steps"/>
+        <htmlText featureText="This example takes the list &quot;session_steps&quot; and extracts the next item after &quot;audioas2&quot; from that list which will be &quot;peabodyas&quot;. That value is then placed into the &quot;session_next_step&quot; metadata field."/>
+        <!--<htmlText featureText="Assuming the list contains audioas2 we act as if the name of this experiment is audioas2 and using setMetadataValue get the next item which is peabodyas."/>-->
+        <htmlText featureText="The resulting value in &quot;session_next_step&quot; will later be used to redirect the user to that next experiment after this one is complete."/>
+        <htmlText featureText="We also put the hypothetical name of this experiment &quot;audioas2&quot; into &quot;session_step&quot; for convenience."/>
+        <setMetadataValue fieldName="session_step" dataLogFormat="audioas2"/>                                                               
+        <setMetadataValue fieldName="session_next_step" replacementRegex="&lt;metadataField_session_step&gt;_([^_]*)[_$]" dataLogFormat="&lt;metadataField_session_steps&gt;"/>
+        <!--// if the response uuid does not exist then transmit-->
+        <transmitResults matchingRegex="uuid|session_id|session_steps|session_step|session_next_step|validation_error" enabledRegex="validated_uuid|validation_error" dataLogFormat="Is this UUID for this session step valid? Please respond with a 200 if it is and provide either validated_uuid or a variable validation_error if you want a human readable message to be shown. Otherwise a non 200 / error code will just prevent the user proceeding.">
+            <onError>
+                <htmlText featureText="Transmitting the data for this session step failed."/>
+            </onError>
+            <onSuccess>
+                <htmlText featureText="Transmitting the data for this session step ok"/>
+                <hasMetadataValue fieldName="validation_error" matchingRegex=".+">
+                    <conditionTrue>
+                        <addPadding/>
+                        <addPadding/>
+                        <htmlTokenText featureText="&lt;metadataField_validation_error&gt;"/>                                                                                
+                    </conditionTrue>
+                    <conditionFalse>
+                        <hasMetadataValue fieldName="uuid" matchingRegex="&lt;metadataField_validated_uuid&gt;">
+                            <conditionTrue>
+                                <htmlText featureText="The the return value validated_uuid from transmitResults matches the provided uuid."/>
+                                <!--<targetButton featureText="volgende [ spatiebalk ]" hotKey="SPACE" target="InvitationCodeExampleStimuliScreen"/>-->
+                            </conditionTrue>
+                            <conditionFalse>
+                                <htmlText featureText="The the return value validated_uuid from transmitResults does NOT match the provided uuid."/>
+                            </conditionFalse>
+                        </hasMetadataValue>
+                    </conditionFalse>
+                </hasMetadataValue>
+            </onSuccess>
+        </transmitResults>
         <!--<htmlText featureText="Valid get parameters for this screen for example: &quot;?uuid=98dfc59e-f4bf-46c1-8b62-48f12ebe7c29&amp;session_id=6&amp;session_steps=audiosimplereactiontime_lilbq4_audioas2_peabodyas_audiononwordmonitoring_grammaras_visualsimplereactiontime#InvitationSessionStepsExample&quot;.&lt;br/&gt;You can append these GET parameters to the URL and reload this page."/>-->
     </presenter>
+    <stimuli>
+        <stimulus code="NC1" identifier="322" correctResponses="ugly" ratingLabels="bad,good,ugly,cat,meow" label="Bij de auditie waren. 1" pauseMs="0" tags="RatingToggle"/>
+    </stimuli>
 </experiment>
