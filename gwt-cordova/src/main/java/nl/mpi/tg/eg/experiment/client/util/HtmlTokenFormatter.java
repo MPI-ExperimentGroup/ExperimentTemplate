@@ -106,6 +106,7 @@ public class HtmlTokenFormatter {
             final String channelScore = groupParticipantService.getChannelScore();
             replacedTokensString = replacedTokensString.replaceAll("<channelScore>", (channelScore != null) ? channelScore : "---");
         }
+        replacedTokensString = replacedTokensString.replaceAll("<userId>", userData.getUserId().toString());
         replacedTokensString = replacedTokensString.replaceAll("<playerScore>", Integer.toString(userData.getCurrentScore()));
         replacedTokensString = replacedTokensString.replaceAll("<playerErrors>", Integer.toString(userData.getPotentialScore() - userData.getCurrentScore()));
         replacedTokensString = replacedTokensString.replaceAll("<playerPotentialScore>", Integer.toString(userData.getPotentialScore()));
