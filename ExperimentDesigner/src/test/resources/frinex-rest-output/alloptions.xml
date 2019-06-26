@@ -141,6 +141,14 @@
             </onSuccess>
         </saveMetadataButton>
         <createUserButton featureText="createUserButton" groupId="groupId" styleName="styleName" target="target"/>
+        <switchUserIdButton featureText="switchUserIdButton" fieldName="workerId" groupId="groupId" styleName="styleName" validationRegex="validationRegex">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </switchUserIdButton>
         <selectUserMenu styleName="styleName"/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
@@ -2046,6 +2054,14 @@
             </onSuccess>
         </saveMetadataButton>
         <createUserButton featureText="createUserButton" target="target"/>
+        <switchUserIdButton featureText="switchUserIdButton" fieldName="workerId" validationRegex="validationRegex">
+            <onError>
+                <plainText featureText="plainText in onError"/>
+            </onError>
+            <onSuccess>
+                <plainText featureText="plainText in onSuccess"/>
+            </onSuccess>
+        </switchUserIdButton>
         <selectUserMenu/>
         <centrePage/>
         <hasGetParameter parameterName="parameterName">
