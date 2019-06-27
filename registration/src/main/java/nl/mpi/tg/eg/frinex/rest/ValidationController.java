@@ -48,7 +48,7 @@ public class ValidationController {
 
     @RequestMapping(value = "/mock_validate", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseBody
-    public ResponseEntity<String> registerAudioData(
+    public ResponseEntity<String> mockValidate(
             @RequestParam("uuid") String uuid,
             @RequestParam("session_steps") String session_steps,
             @RequestParam("session_next_step") String session_next_step,
