@@ -565,21 +565,33 @@
                 tagRepository.save(new TagData(requestingUserId, "validate", "datalog", (datalog.length() > 254) ? datalog.substring(0, 254) : datalog, 0, tagDate));
                 final List&lt;Participant&gt; foundRecords = new ArrayList();
             </xsl:text>
+            <xsl:for-each select="distinct-values(experiment/administration/validation/@errorField)">
+                <xsl:text>
+                    String errorMessage</xsl:text>
+                <xsl:value-of select="." />
+                <xsl:text> = "";
+                </xsl:text>    
+            </xsl:for-each>
             <xsl:for-each select="experiment/administration/validation[@fieldName eq'userId']">
                 <xsl:text>foundRecords.addAll(participantRepository.findByStaleCopyAndUserId(false, </xsl:text>
                 <xsl:value-of select="@postName"/>
-                <xsl:text>));</xsl:text>
+                <xsl:text>));
+                    if(foundRecords.isEmpty()){
+                    errorMessage</xsl:text>
+                <xsl:value-of select="@errorField" />
+                <xsl:text> += "</xsl:text>
+                <xsl:value-of select="@errorMessage" />
+                <xsl:text> ";
+                    }</xsl:text>
             </xsl:for-each>                
             <xsl:text>
                 final StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.append("\"{");
                 if(foundRecords.size()!=1){
-                stringBuilder.append("\"error_message\":\"Found ");
-                stringBuilder.append(foundRecords.size());
-                stringBuilder.append(" records, cannot proceed\"");
+                <!--stringBuilder.append("\"error_message\":\"Found ");-->
+                <!--stringBuilder.append(foundRecords.size());-->
+                <!--stringBuilder.append(" records, cannot proceed\"");-->
                 } else {
-                String errorMessage = "";
-                boolean foundError = false;
             </xsl:text>
             <xsl:for-each select="experiment/administration/validation[@fieldName]">
                 <!--// case: compare the provided value to the DB counterpart-->
@@ -589,18 +601,22 @@
                     <xsl:value-of select="concat(upper-case(substring(@fieldName,1,1)), substring(@fieldName, 2))" />
                     <xsl:text>().matches("</xsl:text>
                     <xsl:value-of select="@validationRegex" />
-                    <xsl:text>")){errorMessage+="</xsl:text>
+                    <xsl:text>")){errorMessage</xsl:text>
+                    <xsl:value-of select="@errorField" />
+                    <xsl:text>+="</xsl:text>
                     <xsl:value-of select="@errorMessage" />
-                    <xsl:text>"; foundError = true;} else </xsl:text>
+                    <xsl:text> "; } else </xsl:text>
                 </xsl:if>
                 <xsl:if test="@postName and @fieldName">
                     <xsl:text>if (!foundRecords.get(0).get</xsl:text>
                     <xsl:value-of select="concat(upper-case(substring(@fieldName,1,1)), substring(@fieldName, 2))" />
                     <xsl:text>().equals(</xsl:text>
                     <xsl:value-of select="@postName" />
-                    <xsl:text>)){errorMessage+="</xsl:text>
+                    <xsl:text>)){errorMessage</xsl:text>
+                    <xsl:value-of select="@errorField" />
+                    <xsl:text>+="</xsl:text>
                     <xsl:value-of select="@errorMessage" />
-                    <xsl:text>"; foundError = true;}</xsl:text>
+                    <xsl:text> ";}</xsl:text>
                     <!--                    matchExistingValue=
                     postName="uuid" fieldName="userId"-->
                     <!--matchingRegex="" validationRegex=""-->
@@ -611,13 +627,6 @@
                     <xsl:text>,</xsl:text> -->
                 </xsl:if>
             </xsl:for-each>
-            <xsl:text>
-                if (foundError) {
-                stringBuilder.append("\"error_message\":\"");
-                stringBuilder.append(errorMessage);
-                stringBuilder.append("\",");
-                } else {
-            </xsl:text>
             <xsl:for-each select="experiment/administration/validation">
                 <xsl:if test="@returnName">
                     <xsl:text>stringBuilder.append("\"</xsl:text>
@@ -631,8 +640,28 @@
             </xsl:for-each>
             <xsl:text>
                 }
-                }
-                <!--stringBuilder.append("\"error_message\":\"this is a mock response\"");-->
+            </xsl:text>
+            <xsl:for-each select="distinct-values(experiment/administration/validation/@errorField)">
+                <xsl:text>
+                    if(!errorMessage</xsl:text>
+                <xsl:value-of select="." />
+                <xsl:text>.isEmpty()){
+                    stringBuilder.append("\"</xsl:text>
+                <xsl:value-of select="." />
+                <xsl:text>\":\"");
+                    stringBuilder.append(errorMessage</xsl:text>
+                <xsl:value-of select="." />
+                <xsl:text>);
+                    stringBuilder.append("\",");
+                    tagRepository.save(new TagData(requestingUserId, "validate", "</xsl:text>
+                <xsl:value-of select="." />
+                <xsl:text>", errorMessage</xsl:text>
+                <xsl:value-of select="." />
+                <xsl:text>, 0, tagDate));
+                    }
+                </xsl:text>    
+            </xsl:for-each>
+            <xsl:text>
                 stringBuilder.append("}");
                 return new ResponseEntity(stringBuilder.toString(), HttpStatus.OK);
                 }            
