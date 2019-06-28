@@ -48,10 +48,11 @@ public class RegistrationService {
     private final Version version = GWT.create(Version.class);
 
     public void submitRegistration(final UserResults userResults, final String sendingRegex, final String receivingRegex, final String dataLogFormated, RegistrationListener registrationListener) {
-        final String registratinoUrl = serviceLocations.registrationUrl();
-        final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, registratinoUrl);
+        final String registrationUrl = (serviceLocations.registrationUrl() != null && serviceLocations.registrationUrl().toLowerCase().startsWith("http")) ? serviceLocations.registrationUrl() : serviceLocations.dataSubmitUrl() + "/validate";
+        final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, registrationUrl);
         builder.setHeader("Content-type", "application/x-www-form-urlencoded");
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("requestingUserId=").append(URL.encodeQueryString(userResults.getUserData().getUserId().toString()));
         for (MetadataField key : userResults.getUserData().getMetadataFields()) {
             final String postName = key.getPostName();
             if (sendingRegex == null || postName.matches(sendingRegex)) {
@@ -69,7 +70,7 @@ public class RegistrationService {
         String dataLogEncoded = URL.encodeQueryString(dataLogFormated);
         stringBuilder.append("datalog").append("=").append(dataLogEncoded).append("&");
         try {
-            builder.sendRequest(stringBuilder.toString(), geRequestBuilder(userResults, builder, registrationListener, registratinoUrl, receivingRegex));
+            builder.sendRequest(stringBuilder.toString(), geRequestBuilder(userResults, builder, registrationListener, registrationUrl, receivingRegex));
         } catch (RequestException exception) {
             registrationListener.registrationFailed(new RegistrationException(RegistrationException.ErrorType.buildererror, exception));
             logger.log(Level.SEVERE, "SubmitRegistration", exception);
@@ -77,8 +78,8 @@ public class RegistrationService {
     }
 
     public void submitRegistration(UserResults userResults, RegistrationListener registrationListener, final String reportDateFormat, final MetadataField emailAddressMetadataField, final String scoreLog) {
-        final String registratinoUrl = serviceLocations.registrationUrl();
-        final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, registratinoUrl);
+        final String registrationUrl = serviceLocations.registrationUrl();
+        final RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, registrationUrl);
         builder.setHeader("Content-type", "application/x-www-form-urlencoded");
         StringBuilder stringBuilder = new StringBuilder();
         for (MetadataField key : userResults.getUserData().getMetadataFields()) {
@@ -114,7 +115,7 @@ public class RegistrationService {
         }.serialise(userResults, emailAddressMetadataField));
         stringBuilder.append("quiz_results=").append(restultsData);
         try {
-            builder.sendRequest(stringBuilder.toString(), geRequestBuilder(userResults, builder, registrationListener, registratinoUrl, null));
+            builder.sendRequest(stringBuilder.toString(), geRequestBuilder(userResults, builder, registrationListener, registrationUrl, null));
         } catch (RequestException exception) {
             registrationListener.registrationFailed(new RegistrationException(RegistrationException.ErrorType.buildererror, exception));
             logger.log(Level.SEVERE, "SubmitRegistration", exception);
