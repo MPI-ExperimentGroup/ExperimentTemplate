@@ -93,6 +93,7 @@ public enum FeatureType {
 
     saveMetadataButton(false, true, new FeatureAttribute[]{sendData, networkErrorMessage, styleName, groupId}, false, false, false, Contitionals.hasErrorSuccess, Contitionals.none),
     createUserButton(false, true, new FeatureAttribute[]{target, styleName, groupId}),
+    switchUserIdButton(true, new FeatureAttribute[]{styleName, groupId, fieldName, validationRegex}, "Switch the user id to the value in the specified metadata field. The value of the field is first validated against the provided regex. Care should be used to make sure that the field contains a valid user id.", Contitionals.hasErrorSuccess, Contitionals.none),
     selectUserMenu(false, false, new FeatureAttribute[]{styleName}),
     eraseLocalStorageButton(false, false, new FeatureAttribute[]{styleName, groupId}),
     eraseUsersDataButton(false, true, new FeatureAttribute[]{target, styleName, groupId}), // if users still exist in the system target will be used, otherwise the application will start at the begining.
@@ -311,7 +312,20 @@ public enum FeatureType {
         this.documentationText = documentationText;
     }
 
-    private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean canHaveStimulus, boolean canHaveRandomGrouping, boolean canHaveUndefinedAttribute, Contitionals requiresChildType, Contitionals... isChildType) {
+    private FeatureType(final boolean canHaveText, final FeatureAttribute[] featureAttributes, final String documentationText, final Contitionals requiresChildType, final Contitionals... isChildType) {
+        this.canHaveFeatures = false;
+        this.canHaveText = canHaveText;
+        this.featureAttributes = featureAttributes;
+        this.requiresChildType = requiresChildType;
+        this.isChildType = isChildType;
+        this.canHaveStimulusTags = false;
+        this.canHaveRandomGrouping = false;
+        this.canHaveUndefinedAttribute = false;
+        this.allowsCustomImplementation = false;
+        this.documentationText = documentationText;
+    }
+
+    private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean canHaveStimulus, boolean canHaveRandomGrouping, boolean canHaveUndefinedAttribute, final Contitionals requiresChildType, final Contitionals... isChildType) {
         this.canHaveFeatures = canHaveFeatures;
         this.canHaveText = canHaveText;
         this.featureAttributes = featureAttributes;
@@ -330,8 +344,8 @@ public enum FeatureType {
             throw new IllegalArgumentException("canHaveFeatures may only be used with Contitionals.none");
         }
         //    todo: set all hasMediaPlayback and hasMediaLoading to canHaveFeatures = false
-            this.documentationText = null;
-        }
+        this.documentationText = null;
+    }
 
     private FeatureType(boolean canHaveFeatures, boolean canHaveText, FeatureAttribute[] featureAttributes, boolean canHaveStimulus, boolean canHaveRandomGrouping, boolean canHaveUndefinedAttribute, Contitionals requiresChildType, Contitionals isChildType, final boolean allowsCustomImplementation) {
         this.canHaveFeatures = canHaveFeatures;
