@@ -274,6 +274,7 @@ public class AbstractSchemaGenerator {
                                     .stringAttribute("fieldName", true)
                                     .stringAttribute("returnName", true)
                                     .stringAttribute("errorMessage", false)
+                                    .stringAttribute("errorField", false)
                                     .stringAttribute("validationRegex", true)
                         }),
                 new DocumentationElement("scss", "", 0, 1, true),
