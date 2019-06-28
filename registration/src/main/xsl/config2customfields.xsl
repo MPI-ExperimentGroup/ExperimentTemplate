@@ -586,12 +586,13 @@
             </xsl:for-each>                
             <xsl:text>
                 final StringBuilder stringBuilder = new StringBuilder();
-                stringBuilder.append("\"{");
+                stringBuilder.append("{");
                 if(foundRecords.size()!=1){
                 <!--stringBuilder.append("\"error_message\":\"Found ");-->
                 <!--stringBuilder.append(foundRecords.size());-->
                 <!--stringBuilder.append(" records, cannot proceed\"");-->
                 } else {
+                boolean foundError = false;
             </xsl:text>
             <xsl:for-each select="experiment/administration/validation[@fieldName]">
                 <!--// case: compare the provided value to the DB counterpart-->
@@ -605,7 +606,7 @@
                     <xsl:value-of select="@errorField" />
                     <xsl:text>+="</xsl:text>
                     <xsl:value-of select="@errorMessage" />
-                    <xsl:text> "; } else </xsl:text>
+                    <xsl:text> "; foundError = true;}</xsl:text>
                 </xsl:if>
                 <xsl:if test="@postName and @fieldName">
                     <xsl:text>if (!foundRecords.get(0).get</xsl:text>
@@ -616,7 +617,7 @@
                     <xsl:value-of select="@errorField" />
                     <xsl:text>+="</xsl:text>
                     <xsl:value-of select="@errorMessage" />
-                    <xsl:text> ";}</xsl:text>
+                    <xsl:text> "; foundError = true;}</xsl:text>
                     <!--                    matchExistingValue=
                     postName="uuid" fieldName="userId"-->
                     <!--matchingRegex="" validationRegex=""-->
@@ -629,13 +630,15 @@
             </xsl:for-each>
             <xsl:for-each select="experiment/administration/validation">
                 <xsl:if test="@returnName">
-                    <xsl:text>stringBuilder.append("\"</xsl:text>
+                    <xsl:text>if (!foundError) {
+                        stringBuilder.append("\"</xsl:text>
                     <xsl:value-of select="@returnName" />
                     <xsl:text>\":\"");</xsl:text>
                     <xsl:text>stringBuilder.append(foundRecords.get(0).get</xsl:text>
                     <xsl:value-of select="concat(upper-case(substring(@fieldName,1,1)), substring(@fieldName, 2))" />
                     <xsl:text>());
-                        stringBuilder.append("\",");</xsl:text>
+                        stringBuilder.append("\",");
+                    }</xsl:text>
                 </xsl:if>
             </xsl:for-each>
             <xsl:text>
@@ -662,6 +665,9 @@
                 </xsl:text>    
             </xsl:for-each>
             <xsl:text>
+                if (stringBuilder.length() > 1) {
+                stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+                }
                 stringBuilder.append("}");
                 return new ResponseEntity(stringBuilder.toString(), HttpStatus.OK);
                 }            
